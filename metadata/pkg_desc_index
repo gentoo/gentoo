@@ -6098,36 +6098,36 @@ dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
 dev-perl/Class-DBI-AbstractSearch 0.70.0-r2: Abstract Class::DBI's SQL with SQL::Abstract::Limit
 dev-perl/Class-DBI-Plugin 0.30.0-r1: Abstract base class for Class::DBI plugins
 dev-perl/Class-DBI-Plugin-DeepAbstractSearch 0.80.0-r1: deep_search_where() method for Class::DBI
-dev-perl/Class-DBI-mysql 1.0.0-r2 1.0.0-r3: Extensions to Class::DBI for MySQL
+dev-perl/Class-DBI-mysql 1.0.0-r3: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r2: Inheritable, overridable class and instance data accessor creation
-dev-perl/Class-Data-Inheritable 0.80.0-r2 0.80.0-r3: Inheritable, overridable class data
+dev-perl/Class-Data-Inheritable 0.80.0-r3: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r2: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r2: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.360.0: Report the search path thru an ISA tree
 dev-perl/Class-InsideOut 1.140.0: A safe, simple inside-out object construction kit
-dev-perl/Class-Inspector 1.320.0 1.360.0: Provides information about Classes
-dev-perl/Class-Load 0.240.0 0.250.0: A working (require q{Class::Name}) and more
-dev-perl/Class-Load-XS 0.100.0 0.100.0-r1: XS implementation of parts of Class::Load
+dev-perl/Class-Inspector 1.360.0: Provides information about Classes
+dev-perl/Class-Load 0.250.0: A working (require q{Class::Name}) and more
+dev-perl/Class-Load-XS 0.100.0-r1: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r2: Load modules and create objects on demand
-dev-perl/Class-MakeMethods 1.10.0-r1 1.10.0-r2: Automated method creation module for Perl
+dev-perl/Class-MakeMethods 1.10.0-r2: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r2: A set of modules to make the module developement easier
-dev-perl/Class-Method-Modifiers 2.120.0 2.130.0: provides Moose-like method modifiers
-dev-perl/Class-MethodMaker 2.240.0 2.240.0-r2: Create generic methods for OO Perl
+dev-perl/Class-Method-Modifiers 2.130.0: provides Moose-like method modifiers
+dev-perl/Class-MethodMaker 2.240.0-r2: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.6.0-r1: dynamic class mixing
-dev-perl/Class-ReturnValue 0.550.0-r1 0.550.0-r2: A return-value object that lets you treat it as as a boolean, array or object
-dev-perl/Class-Singleton 1.500.0 1.500.0-r1: Implementation of a Singleton class
+dev-perl/Class-ReturnValue 0.550.0-r2: A return-value object that lets you treat it as as a boolean, array or object
+dev-perl/Class-Singleton 1.500.0-r1: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r2: Spiffy Perl Interface Framework For You
 dev-perl/Class-Std 0.13.0: Support for creating standard "inside-out" classes
 dev-perl/Class-Std-Fast 0.0.8-r2: Faster but less secure than Class::Std
 dev-perl/Class-Tiny 1.6.0 1.8.0: Minimalist class construction
-dev-perl/Class-Trigger 0.140.0-r1 0.150.0: Mixin to add / call inheritable triggers
+dev-perl/Class-Trigger 0.150.0: Mixin to add / call inheritable triggers
 dev-perl/Class-Unload 0.110.0: Unload a class
 dev-perl/Class-Virtual 0.80.0: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r2: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r2: adds xpath matching to object trees
-dev-perl/Class-XSAccessor 1.190.0 1.190.0-r1: Generate fast XS accessors without runtime compilation
-dev-perl/Clipboard 0.130.0-r3 0.260.0: Copy and paste with any OS
+dev-perl/Class-XSAccessor 1.190.0-r1: Generate fast XS accessors without runtime compilation
+dev-perl/Clipboard 0.260.0: Copy and paste with any OS
 dev-perl/Clone 0.390.0 0.450.0: Recursively copy Perl datatypes
 dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
@@ -6209,7 +6209,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpass
 dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0 0.530.0: Parse a X.509 certificate
-dev-perl/CryptX 0.64.0 0.68.0 0.69.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.64.0 0.69.0: Self-contained crypto toolkit
 dev-perl/Curses 1.360.0 1.360.0-r1: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
