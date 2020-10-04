@@ -69,17 +69,3 @@ src_configure() {
 		$(use_enable openmp) \
 		$(use_enable static)
 }
-
-pkg_postinst() {
-	local pvr
-	local doshow=
-	for pvr in ${REPLACING_VERSIONS} ; do
-		[[ ${pvr} != "0.8"[012]* ]] && doshow=true
-	done
-
-	if [[ ${doshow} == true ]] ; then
-		elog "This version of Portage utils has undergone significant changes."
-		elog "Please read the elog manpages for applets like qlop(1) and"
-		elog "qfile(1) where argument options have changed."
-	fi
-}
