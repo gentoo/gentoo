@@ -7,19 +7,13 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 virtualx
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/nschloe/${PN}.git git://github.com/nschloe/${PN}.git"
-else
-	SRC_URI="https://github.com/nschloe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
 DESCRIPTION="Convert matplotlib figures into TikZ/PGFPlots"
 HOMEPAGE="https://github.com/nschloe/tikzplotlib"
+SRC_URI="https://github.com/nschloe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	app-text/texlive
