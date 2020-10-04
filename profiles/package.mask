@@ -549,11 +549,6 @@ www-servers/cherokee
 # Removal in ~30 days. Bug #740868.
 dev-python/mini-amf
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-09-04)
-# No maintainer, defunct with modern browsers, bug #694024.
-# Masked for removal in 30 days.
-www-plugins/freshplayerplugin
-
 # Louis Sautier <sbraz@gentoo.org> (2020-09-04)
 # Masked for removal in 30 days, no revdeps. Dependency of
 # previously removed dev-python/flask-bootstrap
