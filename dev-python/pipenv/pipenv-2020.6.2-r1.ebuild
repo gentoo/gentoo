@@ -25,8 +25,8 @@ RDEPEND="
 	>=dev-python/pip-18.0[${PYTHON_USEDEP}]
 	dev-python/virtualenv[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]
-	dev-python/six
-	dev-python/appdirs
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/appdirs[${PYTHON_USEDEP}]
 	"
 
 BDEPEND="
