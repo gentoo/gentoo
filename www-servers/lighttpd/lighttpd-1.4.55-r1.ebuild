@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	bzip2?    ( app-arch/bzip2 )
 	dbi?	( dev-db/libdbi )
 	fam?    ( virtual/fam )
-	gdbm?   ( sys-libs/gdbm )
+	gdbm?   ( sys-libs/gdbm:= )
 	geoip?	( dev-libs/geoip )
 	ldap?   ( >=net-nds/openldap-2.1.26 )
 	libev?  ( >=dev-libs/libev-4.01 )
