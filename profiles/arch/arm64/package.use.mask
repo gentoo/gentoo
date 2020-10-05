@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Guile only supports JIT on some arches
+# (See 9.3.8 in the Guile manual)
+dev-scheme/guile -jit
+
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
 # luajit not available on this arch.
 dev-libs/efl luajit
