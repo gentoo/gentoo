@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
+app-office/libreoffice base
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-02)
 # media-video/pipewire not yet stabilized and without
 # sys-apps/xdg-desktop-portal-gtk not useable at all
