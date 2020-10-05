@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/lua-5.1.5-r2[deprecated,${MULTILIB_USEDEP}]
+RDEPEND=">=dev-lang/lua-5.1.5-r2:0[deprecated,${MULTILIB_USEDEP}]
 	>=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
