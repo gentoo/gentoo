@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit go-module systemd
+inherit bash-completion-r1 go-module systemd
 
 DESCRIPTION="Easily and securely send things from one computer to another"
 HOMEPAGE="https://github.com/schollz/croc"
@@ -48,6 +48,8 @@ EGO_SUM=(
 	"github.com/pmezard/go-difflib v1.0.0/go.mod"
 	"github.com/russross/blackfriday/v2 v2.0.1"
 	"github.com/russross/blackfriday/v2 v2.0.1/go.mod"
+	"github.com/schollz/cli/v2 v2.2.1"
+	"github.com/schollz/cli/v2 v2.2.1/go.mod"
 	"github.com/schollz/logger v1.2.0"
 	"github.com/schollz/logger v1.2.0/go.mod"
 	"github.com/schollz/mnemonicode v1.0.1"
@@ -73,8 +75,6 @@ EGO_SUM=(
 	"github.com/stretchr/testify v1.4.0/go.mod"
 	"github.com/tscholl2/siec v0.0.0-20191122224205-8da93652b094"
 	"github.com/tscholl2/siec v0.0.0-20191122224205-8da93652b094/go.mod"
-	"github.com/urfave/cli/v2 v2.2.0"
-	"github.com/urfave/cli/v2 v2.2.0/go.mod"
 	"golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod"
 	"golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9"
 	"golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9/go.mod"
@@ -123,7 +123,24 @@ LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="
+	acct-group/croc
+	acct-user/croc
+"
+
 DOCS=( README.md )
+
+src_prepare() {
+	default
+	# Replace User=nobody with User=croc
+	sed -i -e "s|\(^User=\).*|\1croc|g" croc.service || die
+	# Rename bash completion function
+	sed -i -e "s|_cli_bash_autocomplete|_croc|g" \
+		src/install/bash_autocomplete || die
+	# Set correct version
+	sed -i -e "s|v8.3.2-7d155ad|v${PV}|g" \
+		src/cli/cli.go || die
+}
 
 src_compile() {
 	go build || die
@@ -132,5 +149,6 @@ src_compile() {
 src_install() {
 	dobin croc
 	systemd_dounit croc.service
+	newbashcomp src/install/bash_autocomplete croc
 	einstalldocs
 }
