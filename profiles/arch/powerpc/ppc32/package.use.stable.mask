@@ -21,10 +21,6 @@
 # Unstable test deps.
 dev-cpp/eigen test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-08-15)
-# media-libs/libsidplay:2 appears to be broken, bug #660288
-media-video/vlc sid
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
 # Requires not yet stable dependencies
 sys-libs/gwenhywfar sensors serialport webkit
