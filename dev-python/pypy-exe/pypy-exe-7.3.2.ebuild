@@ -59,6 +59,10 @@ check_env() {
 	check-reqs_pkg_pretend
 }
 
+PATCHES=(
+	"${FILESDIR}"/pypy-7.3.2-ppc64-segfault.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
