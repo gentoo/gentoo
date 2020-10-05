@@ -14697,7 +14697,7 @@ net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LIN
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
 net-irc/irker 2.19: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
-net-irc/irssi 1.2.2 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.2.2 1.2.2-r1 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.54: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5-r2 1.7.6: User friendly IRC Client
@@ -15460,7 +15460,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.25-r1 1.8.26 2.0.14 2.0.14-r1 2.0.15 2.0.16 2.0.17 2.0.9999 2.1.4 2.1.4-r1 2.1.7 2.1.8 2.1.9999 2.2.0 2.2.1 2.2.3 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.26 2.0.14 2.0.14-r1 2.0.17 2.0.18 2.0.9999 2.1.4 2.1.4-r1 2.1.8 2.1.9 2.1.9999 2.2.0 2.2.3 2.2.4 2.2.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
