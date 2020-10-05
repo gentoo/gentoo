@@ -6894,7 +6894,7 @@ dev-perl/MooseX-Types-Path-Tiny 0.12.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/MooseX-Types-URI 0.80.0: URI related types and coercions for Moose
-dev-perl/Mouse 2.4.10: Moose minus the antlers
+dev-perl/Mouse 2.4.10 2.4.10-r1: Moose minus the antlers
 dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
 dev-perl/MouseX-Types 0.60.0-r1: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
@@ -7481,7 +7481,7 @@ dev-perl/Wx-Scintilla 0.390.0-r3: Scintilla source code editing component for wx
 dev-perl/X-Osd 0.700.0-r2: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1 0.560.0-r2: Client-side interface to the X11 Protocol
-dev-perl/X11-XCB 0.170.0-r1: Perl bindings for libxcb
+dev-perl/X11-XCB 0.170.0-r1 0.180.0: Perl bindings for libxcb
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.420.0: Atom feed and API implementation
 dev-perl/XML-Catalog 1.30.0-r1: Resolve public identifiers and remap system identifiers
@@ -13234,7 +13234,7 @@ media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.1.8 20.1.9 20.2.0 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.20.0-r2 6.22.1: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.20.0-r2 6.22.1-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.43.0-r1 1.44.0: Audio metadata tag reader and writer implemented in pure Python
@@ -17073,7 +17073,7 @@ sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30_p20190617: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.6.0-r2 1.7.2 1.8.0: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.6.0-r2 1.8.0: Desktop integration portal
 sys-apps/xdg-desktop-portal-gtk 1.7.1_pre: portal backend implementation that is using GTK+ and various pieces of GNOME
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
