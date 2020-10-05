@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Masked for testing. New major versions of Guile
+# often break reverse dependencies.
+# Guile in Gentoo is not slotted, so let's be cautious.
+# bug #705554, bug #689408.
+>=dev-scheme/guile-3.0.4
+
 # Ulrich Müller <ulm@gentoo.org> (2020-10-04)
 # Version 1.11 introduced different startup conventions for the server
 # which breaks the OpenRC init script. Bug #746227.
