@@ -69,10 +69,6 @@ media-libs/openimageio dicom
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
 net-analyzer/snort open-appid
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-13)
-# missing keyword on media-libs/portmidi
-media-sound/hydrogen portmidi
-
 # Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
