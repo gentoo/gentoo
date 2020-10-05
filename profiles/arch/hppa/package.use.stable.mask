@@ -81,7 +81,6 @@ sys-libs/freeipmi nagios
 media-gfx/imagemagick raw
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
-# media-video/faac is not stable.
 # media-libs/{libdc1394,x264} is not stable.
 # media-libs/game-music-emu is not stable.
 media-video/ffmpeg gme ieee1394 x264
