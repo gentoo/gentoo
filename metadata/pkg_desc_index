@@ -32,6 +32,7 @@ acct-group/cmd5checkpw 0: System group: cmd5checkpw
 acct-group/consul 0: System group: consul
 acct-group/consul-template 0: System group: consul-template
 acct-group/consul_exporter 0: System group: consul_exporter
+acct-group/croc 0: Group for net-misc/croc
 acct-group/cvmfs 0: Group for the CernVM-FS network file system
 acct-group/davfs2 0: System group: davfs2
 acct-group/ddclient 0: A group for the dynamic DNS client
@@ -273,6 +274,7 @@ acct-user/cmd5checkpw 0: User for cmd5checkpw
 acct-user/consul 0: User for consul
 acct-user/consul-template 0: User for consul-template
 acct-user/consul_exporter 0: user for consul_exporter
+acct-user/croc 0: User for net-misc/croc
 acct-user/cvmfs 0: User for the CernVM-FS network file system
 acct-user/cyrus 0-r1: user for cyrus-imapd daemon
 acct-user/darkstat 0: uid for net-analyzer/darkstat
@@ -2890,7 +2892,7 @@ app-text/ghostscript-gpl 9.52-r1 9.53.0 9.53.1 9.53.2 9.53.3: Interpreter for th
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
-app-text/grip 4.5.2: Preview GitHub Markdown files like Readme locally before committing them
+app-text/grip 4.5.2-r1: Preview GitHub Markdown files like Readme locally before committing them
 app-text/groonga 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
@@ -13841,7 +13843,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.25 0.21.26 0.22: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.25 0.21.26 0.22-r1: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -15061,7 +15063,7 @@ net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/croc 8.3.2: Easily and securely send things from one computer to another
+net-misc/croc 8.4.0: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.71.0 7.71.1 7.71.1-r1 7.72.0: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
