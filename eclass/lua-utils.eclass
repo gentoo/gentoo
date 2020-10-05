@@ -14,8 +14,6 @@
 # A utility eclass providing functions to query Lua implementations,
 # install Lua modules and scripts.
 #
-# Please note that for the time being this eclass does NOT support luajit.
-#
 # This eclass neither sets any metadata variables nor exports any phase
 # functions. It can be inherited safely.
 
@@ -39,6 +37,7 @@ inherit toolchain-funcs
 # @DESCRIPTION:
 # All supported Lua implementations, most preferred last
 _LUA_ALL_IMPLS=(
+	luajit
 	lua5-1
 	lua5-2
 	lua5-3
@@ -141,9 +140,16 @@ _lua_wrapper_setup() {
 		local ELUA LUA
 		_lua_export "${impl}" ELUA LUA
 
-		# Lua interpreter and compiler
+		# Lua interpreter
 		ln -s "${EPREFIX}"/usr/bin/${ELUA} "${workdir}"/bin/lua || die
-		ln -s "${EPREFIX}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
+
+		# Lua compiler, or a stub for it in case of luajit
+		if [[ ${ELUA} == luajit ]]; then
+			# Just in case
+			ln -s "${EPREFIX}"/bin/true "${workdir}"/bin/luac || die
+		else
+			ln -s "${EPREFIX}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
+		fi
 
 		# pkg-config
 		ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${ELUA}.pc \
@@ -201,6 +207,10 @@ _lua_export() {
 	local impl var
 
 	case "${1}" in
+		luajit)
+			impl=${1}
+			shift
+			;;
 		lua*)
 			impl=${1/-/.}
 			shift
@@ -259,6 +269,9 @@ _lua_export() {
 			LUA_PKG_DEP)
 				local d
 				case ${impl} in
+					luajit)
+						LUA_PKG_DEP="dev-lang/luajit:="
+						;;
 					lua*)
 						LUA_PKG_DEP="dev-lang/lua:${impl#lua}"
 						;;
