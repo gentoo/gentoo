@@ -50,10 +50,6 @@ dev-lang/rust miri nightly parallel-compiler system-bootstrap
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# sci-libs/vtk is not stable anymore
-media-libs/opencv vtk
-
 # Kent Fredric <kentnl@gentoo.org> (2019-08-29)
 # Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
 # instead if you can.
@@ -171,10 +167,6 @@ kde-apps/cantor julia
 # Brian Dolbec <dolsen@gentoo.org> (2017-02-14)
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
-
-# Michael Palimaka <kensington@gentoo.org (2017-01-26)
-# Requires testing version of media-libs/opencv
-media-libs/mlt opencv
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
 # Has no stable reverse deps requiring this useflag

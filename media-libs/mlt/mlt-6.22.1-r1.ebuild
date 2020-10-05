@@ -84,6 +84,7 @@ DOCS=( AUTHORS NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
+	"${FILESDIR}"/${P}-fix-regression-w-multiple-affine-filters.patch
 )
 
 pkg_setup() {

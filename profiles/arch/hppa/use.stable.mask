@@ -66,10 +66,6 @@ pulseaudio
 # sys-auth/elogind is not stable here.
 elogind
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
-# sys-auth/consolekit will not be stabilised anymore.
-consolekit
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-03-03)
 # No stable sys-apps/systemd on hppa.
 systemd
