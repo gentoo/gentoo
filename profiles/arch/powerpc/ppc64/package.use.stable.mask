@@ -21,11 +21,6 @@
 # Unstable test deps.
 dev-cpp/eigen test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-04)
-# dev-python/pygtk is broken, bug #716294; Bugs #706500, #710160
-# Stable-mask all revdeps, all of them are pending cleanup already.
-media-gfx/gimp python
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # media-libs/libheif not stable, bugs #717242, #720438
 media-gfx/gimp heif
