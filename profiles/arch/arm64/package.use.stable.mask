@@ -55,10 +55,8 @@ net-misc/curl quiche
 sys-firmware/seabios debug
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-14)
-# media-video/pipewire is not stable yet
-dev-libs/weston pipewire
-<kde-apps/krfb-20.07.80 wayland
-<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
+# media-video/pipewire-0.2 will never be stable, to be dropped.
+<dev-libs/weston-9 pipewire
 <sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
 
