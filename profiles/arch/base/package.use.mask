@@ -58,6 +58,7 @@ dev-libs/gjs sysprof
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
 dev-qt/qtwayland vulkan
+media-video/pipewire vulkan
 
 # dev-python/pandas is only keyworded for amd64 & x86
 sys-block/fio python gnuplot
