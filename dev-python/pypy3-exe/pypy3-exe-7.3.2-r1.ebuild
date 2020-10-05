@@ -37,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/pypy3-7.3.2-sethostname-bytes.patch
+	"${FILESDIR}"/pypy3-7.3.2-ppc64-segfault.patch
 )
 
 check_env() {
