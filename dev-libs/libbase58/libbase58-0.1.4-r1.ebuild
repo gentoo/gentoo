@@ -46,7 +46,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	if [[ -d ${ED}/TRASH ]]; then
-		rm -r "${ED}/TRASH" || die
+	if use test; then
+		# It's hard to control this directory with multilib_is_native_abi && use tools, hence -f.
+		rm -rf "${ED}/TRASH" || die
 	fi
 }
