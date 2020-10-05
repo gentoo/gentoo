@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Guile only supports JIT on some arches
+# (See 9.3.8 in the Guile manual)
+dev-scheme/guile -jit
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
 # dev-util/nvidia-cuda-toolkit is keyworded on amd64
 app-metrics/collectd -collectd_plugins_gpu_nvidia
