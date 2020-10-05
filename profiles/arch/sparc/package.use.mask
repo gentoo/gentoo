@@ -247,10 +247,6 @@ sys-libs/libcxxabi libunwind
 net-libs/gnome-online-accounts gnome
 x11-terms/gnome-terminal gnome-shell
 
-# Pacho Ramos <pacho@gentoo.org> (2017-01-15)
-# Missing keywords, bug #559770
->=net-misc/networkmanager-1.4.4 consolekit
-
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las

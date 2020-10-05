@@ -8,10 +8,6 @@
 # Does not build on arm64
 ocamlopt
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-20)
-# sys-auth/consolekit will not be stabilised anymore.
-consolekit
-
 # Mart Raudsepp <leio@gentoo.org> (2019-02-07)
 # media-sound/musepack-tools not stable yet
 musepack

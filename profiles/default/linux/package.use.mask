@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Tony Vroon <chainsaw@gentoo.org> (2020-10-01)
-# Upstream requires Lua 5.2 which is not a satisfiable 
+# Upstream requires Lua 5.2 which is not a satisfiable
 # dependency at this point in time.
 app-arch/rpm lua
 
@@ -19,10 +19,6 @@ net-fs/samba fam
 # Masked due to upstream build failures (bug #693018)
 # One example: https://tracker.ceph.com/issues/41523
 >=sys-cluster/ceph-14.2 dpdk
-
-# Jason Zaman <perfinion@gentoo.org> (2015-09-06)
-# This is masked in base/package.use.mask as Linux only.
-sys-auth/consolekit -cgroups
 
 # Michael Palimaka <kensington@gentoo.org> (2015-09-03)
 # Native inotify support is preferred on linux.
@@ -43,10 +39,6 @@ sys-auth/pam_mktemp -prevent-removal
 
 sys-devel/gcc hardened
 sys-libs/glibc hardened
-
-# Samuli Suominen <ssuominen@gentoo.org (2012-03-20)
-# This is masked in base/package.use.mask as Linux only.
-sys-auth/consolekit -acl
 
 # Samuli Suominen <ssuominen@gentoo.org> (2012-01-10)
 # Masked in base/package.use.mask as Linux -only feature

@@ -96,11 +96,6 @@ dev-vcs/git mediawiki mediawiki-experimental
 media-libs/leptonica	webp
 app-text/tesseract	webp
 
-# Pacho Ramos <pacho@gentoo.org> (2013-09-01)
-# CONFIG_AUDITSYSCALL=y is not implemented, bug #438368
-sys-auth/consolekit pam
-sys-auth/pambase consolekit
-
 # Richard Brown <rbrown@gentoo.org> (2008-01-21)
 # Needs dev-ruby/builder, which isn't keyworded
 dev-ruby/rubygems server
