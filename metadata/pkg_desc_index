@@ -8381,7 +8381,7 @@ dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.33.0 0.34.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 0.92: Python bindings for the Lightning Database
+dev-python/lmdb 0.92 1.0.0: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
