@@ -21,7 +21,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-#X509_VER="12.5.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.6" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -189,13 +189,7 @@ src_prepare() {
 		pushd "${hpn_patchdir}" &>/dev/null || die
 		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-glue.patch
 		eapply "${FILESDIR}"/${PN}-8.4_p1-hpn-${HPN_VER}-libressl.patch
-		if use X509; then
-		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
-		#	# X509 and AES-CTR-MT don't get along, let's just drop it
-		#	rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
-
-			eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-X509-glue.patch
-		fi
+		use X509 && eapply "${FILESDIR}"/${PN}-8.4_p1-hpn-${HPN_VER}-X509-glue.patch
 		use sctp && eapply "${FILESDIR}"/${PN}-8.4_p1-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
 
@@ -436,7 +430,7 @@ src_install() {
 			|| die "failed to remove scp"
 	fi
 
-	keepdir /var/empty
+	rmdir "${D}"/var/empty || die
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
