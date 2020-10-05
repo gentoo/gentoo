@@ -67,10 +67,6 @@ net-misc/whois xcrypt
 # and as for now we have only stable mate versions
 mate-base/mate bluetooth
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
-
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on arm
 dev-util/schroot zfs
