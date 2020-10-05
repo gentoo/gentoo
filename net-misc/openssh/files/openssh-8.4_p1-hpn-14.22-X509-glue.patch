@@ -1,0 +1,129 @@
+diff -u a/openssh-8_3_P1-hpn-AES-CTR-14.22.diff b/openssh-8_3_P1-hpn-AES-CTR-14.22.diff
+--- a/openssh-8_3_P1-hpn-AES-CTR-14.22.diff	2020-10-04 11:04:44.495171346 -0700
++++ b/openssh-8_3_P1-hpn-AES-CTR-14.22.diff	2020-10-04 11:48:05.099637206 -0700
+@@ -3,9 +3,9 @@
+ --- a/Makefile.in
+ +++ b/Makefile.in
+ @@ -46,7 +46,7 @@ CFLAGS=@CFLAGS@
+- CFLAGS_NOPIE=@CFLAGS_NOPIE@
+- CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ $(PATHS) @DEFS@
+- PICFLAG=@PICFLAG@
++ LD=@LD@
++ CFLAGS=@CFLAGS@ $(CFLAGS_EXTRA)
++ CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ @LDAP_CPPFLAGS@ $(PATHS) @DEFS@
+ -LIBS=@LIBS@
+ +LIBS=@LIBS@ -lpthread
+  K5LIBS=@K5LIBS@
+@@ -803,7 +803,7 @@
+  ssh_packet_set_connection(struct ssh *ssh, int fd_in, int fd_out)
+  {
+  	struct session_state *state;
+--	const struct sshcipher *none = cipher_by_name("none");
++-	const struct sshcipher *none = cipher_none();
+ +	struct sshcipher *none = cipher_by_name("none");
+  	int r;
+  
+@@ -901,17 +901,18 @@
+  }
+  
+  /*
+-@@ -2203,6 +2210,10 @@ fill_default_options(Options * options)
++@@ -2203,5 +2210,10 @@ fill_default_options(Options * options)
+  	if (options->sk_provider == NULL)
+  		options->sk_provider = xstrdup("$SSH_SK_PROVIDER");
+- #endif
++ 
+ +	if (options->update_hostkeys == -1)
+ +		options->update_hostkeys = 0;
+ +	if (options->disable_multithreaded == -1)
+ +		options->disable_multithreaded = 0;
+- 
+- 	/* Expand KEX name lists */
+- 	all_cipher = cipher_alg_list(',', 0);
+++
++ 	/* expand KEX and etc. name lists */
++ {	char *all;
++ #define ASSEMBLE(what, defaults, all) \
+ diff --git a/readconf.h b/readconf.h
+ index e143a108..1383a3cd 100644
+ --- a/readconf.h
+@@ -950,9 +951,9 @@
+  	/* Portable-specific options */
+  	sUsePAM,
+ +	sDisableMTAES,
+- 	/* Standard Options */
+- 	sPort, sHostKeyFile, sLoginGraceTime,
+- 	sPermitRootLogin, sLogFacility, sLogLevel,
++ 	/* X.509 Standard Options */
++ 	sHostbasedAlgorithms,
++ 	sPubkeyAlgorithms,
+ @@ -679,6 +683,7 @@ static struct {
+  	{ "authorizedprincipalsfile", sAuthorizedPrincipalsFile, SSHCFG_ALL },
+  	{ "kexalgorithms", sKexAlgorithms, SSHCFG_GLOBAL },
+diff -u a/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff b/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff
+--- a/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff	2020-10-04 11:04:37.441213650 -0700
++++ b/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff	2020-10-04 11:50:55.865616716 -0700
+@@ -382,7 +382,7 @@
+ @@ -888,6 +888,10 @@ kex_choose_conf(struct ssh *ssh)
+  	int nenc, nmac, ncomp;
+  	u_int mode, ctos, need, dh_need, authlen;
+- 	int r, first_kex_follows;
++ 	int r, first_kex_follows = 0;
+ +	int auth_flag;
+ +
+ +	auth_flag = packet_authentication_state(ssh);
+@@ -1193,14 +1193,3 @@
+  # Example of overriding settings on a per-user basis
+  #Match User anoncvs
+  #	X11Forwarding no
+-diff --git a/version.h b/version.h
+-index a2eca3ec..ff654fc3 100644
+---- a/version.h
+-+++ b/version.h
+-@@ -3,4 +3,5 @@
+- #define SSH_VERSION	"OpenSSH_8.3"
+- 
+- #define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_HPN         "-hpn14v22"
+-+#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE SSH_HPN
+diff -u a/openssh-8_3_P1-hpn-PeakTput-14.22.diff b/openssh-8_3_P1-hpn-PeakTput-14.22.diff
+--- a/openssh-8_3_P1-hpn-PeakTput-14.22.diff	2020-10-04 11:51:46.409313155 -0700
++++ b/openssh-8_3_P1-hpn-PeakTput-14.22.diff	2020-10-04 11:56:57.407445258 -0700
+@@ -12,9 +12,9 @@
+  static long stalled;		/* how long we have been stalled */
+  static int bytes_per_second;	/* current speed in bytes per second */
+ @@ -127,6 +129,7 @@ refresh_progress_meter(int force_update)
++ 	off_t bytes_left;
+  	int cur_speed;
+- 	int hours, minutes, seconds;
+- 	int file_len;
++ 	int len;
+ +	off_t delta_pos;
+  
+  	if ((!force_update && !alarm_fired && !win_resized) || !can_output())
+@@ -30,15 +30,17 @@
+  	if (bytes_left > 0)
+  		elapsed = now - last_update;
+  	else {
+-@@ -166,7 +173,7 @@ refresh_progress_meter(int force_update)
++@@ -166,8 +173,8 @@ refresh_progress_meter(int force_update)
++ 	buf[1] = '\0';
+  
+  	/* filename */
+- 	buf[0] = '\0';
+--	file_len = win_size - 36;
+-+	file_len = win_size - 45;
+- 	if (file_len > 0) {
+- 		buf[0] = '\r';
+- 		snmprintf(buf+1, sizeof(buf)-1, &file_len, "%-*s",
++-	if (win_size > 36) {
++-		int file_len = win_size - 36;
+++	if (win_size > 45) {
+++		int file_len = win_size - 45;
++ 		snmprintf(buf+1, sizeof(buf)-1, &file_len, "%-*s ",
++ 		    file_len, file);
++ 	}
+ @@ -191,6 +198,15 @@ refresh_progress_meter(int force_update)
+  	    (off_t)bytes_per_second);
+  	strlcat(buf, "/s ", win_size);
