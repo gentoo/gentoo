@@ -24,14 +24,14 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="examples"
 
 DEPEND="
 	sys-libs/readline:=
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
-BDEPEND="dev-util/gperf
+BDEPEND="
+    dev-util/gperf
 	sys-devel/bison
 	sys-devel/flex
 "
@@ -44,7 +44,8 @@ src_prepare() {
 	# > sh autoconf.sh
 
 	# Autoconf in root ...
-	eautoconf --force
+	eautoconf
+
 	# Precompiling lexor_keyword.gperf
 	gperf -o -i 7 -C -k 1-4,6,9,\$ -H keyword_hash -N check_identifier -t ./lexor_keyword.gperf > lexor_keyword.cc || die
 	# Precompiling vhdlpp/lexor_keyword.gperf
@@ -54,13 +55,9 @@ src_prepare() {
 
 src_install() {
 	local DOCS=( *.txt )
-	# Default build fails with parallel jobs,
-	# https://github.com/steveicarus/iverilog/pull/294
-	emake installdirs DESTDIR="${D}"
+
 	default
 
-	if use examples; then
-		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
+	dodoc -r examples
+	docompress -x /usr/share/doc/${PF}/examples
 }
