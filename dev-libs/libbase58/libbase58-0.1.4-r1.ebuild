@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="C implementation of Bitcoin's base58 encoding"
@@ -24,7 +25,8 @@ src_prepare() {
 	eapply_user
 	eautoreconf
 
-	# NOTE: Needed because test suite uses srcdir instead of builddir to set PATH
+	# NOTE: Needed because test suite uses srcdir instead of builddir to set PATH and for 
+	# multilib support.
 	multilib_copy_sources
 }
 
@@ -44,5 +46,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	rm -rf "${ED}/TRASH" || die
+	if use test; then
+		rm -r "${ED}/TRASH" || die
+	fi
 }
