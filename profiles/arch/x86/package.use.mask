@@ -75,10 +75,6 @@ dev-qt/qtdeclarative -vulkan
 dev-qt/qtgui -vulkan
 dev-qt/qtwayland -vulkan
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-29)
-# media-libs/pulseaudio-qt is not keyworded
-kde-misc/kdeconnect pulseaudio
-
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on x86
 dev-util/schroot zfs
