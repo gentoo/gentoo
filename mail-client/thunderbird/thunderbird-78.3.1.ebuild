@@ -725,6 +725,10 @@ src_configure() {
 			;;
 	esac
 
+	if ! use elibc_glibc ; then
+		mozconfig_add_options_ac '!elibc_glibc' --disable-jemalloc
+	fi
+
 	# Allow elfhack to work in combination with unstripped binaries
 	# when they would normally be larger than 2GiB.
 	append-ldflags "-Wl,--compress-debug-sections=zlib"
