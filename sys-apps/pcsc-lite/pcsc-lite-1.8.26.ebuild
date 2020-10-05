@@ -28,7 +28,7 @@ REQUIRED_USE="^^ ( udev libusb ) ${PYTHON_REQUIRED_USE}"
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
 # standalone, the deps are only needed for the daemon itself.
 DEPEND="libusb? ( virtual/libusb:1 )
-	udev? ( virtual/udev )
+	udev? ( virtual/libudev:= )
 	policykit? ( >=sys-auth/polkit-0.111 )
 	acct-group/openct
 	acct-group/pcscd
