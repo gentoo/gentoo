@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">lmdb</remote-id>
-    <remote-id type="github">dw/py-lmdb</remote-id>
+    <remote-id type="github">jnwatson/py-lmdb</remote-id>
   </upstream>
 </pkgmetadata>
