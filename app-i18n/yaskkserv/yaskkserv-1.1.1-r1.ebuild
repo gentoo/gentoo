@@ -20,7 +20,7 @@ RDEPEND="app-i18n/skk-jisyo
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	systemd? ( virtual/udev[systemd] )"
+	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}
 	dev-lang/perl"
 
