@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 XORG_TARBALL_SUFFIX="xz"
 XORG_MODULE=proto/
 XORG_MULTILIB=yes
@@ -29,6 +29,8 @@ BDEPEND="
 "
 
 ECONF_SOURCE="${S}"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.14-python3_9.patch )
 
 multilib_src_configure() {
 	# Don't use Python to find sitedir here.
