@@ -35,7 +35,12 @@ IUSE="+alsa +ffmpeg +pulseaudio selinux startup-notification wayland"
 
 RESTRICT="strip"
 
-BDEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip
+	alsa? (
+		!pulseaudio? (
+			dev-util/patchelf
+		)
+	)"
 
 CDEPEND="alsa? (
 		!pulseaudio? (
@@ -175,6 +180,13 @@ src_install() {
 		"${MOZILLA_FIVE_HOME}"/firefox \
 		"${MOZILLA_FIVE_HOME}"/firefox-bin \
 		"${MOZILLA_FIVE_HOME}"/plugin-container
+
+	# Patch alsa support
+	local apulselib=
+	if use alsa && ! use pulseaudio ; then
+		apulselib="${EPREFIX}/usr/$(get_libdir)/apulse"
+		patchelf --set-rpath "${apulselib}" "${ED}${MOZILLA_FIVE_HOME}/libxul.so" || die
+	fi
 
 	# Install policy (currently only used to disable application updates)
 	insinto "${MOZILLA_FIVE_HOME}/distribution"
