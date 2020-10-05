@@ -46,7 +46,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	if use test; then
+	if [[ -d ${ED}/TRASH ]]; then
 		rm -r "${ED}/TRASH" || die
 	fi
 }
