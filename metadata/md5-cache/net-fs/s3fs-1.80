@@ -1,15 +1,15 @@
 DEFINED_PHASES=configure prepare
-DEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0 ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls ) nettle? ( dev-libs/nettle ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0 ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls ) nettle? ( dev-libs/nettle ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4:0 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Amazon S3 mounting via fuse
 EAPI=6
 HOMEPAGE=https://github.com/s3fs-fuse/s3fs-fuse/
 IUSE=openssl nss gnutls nettle
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
-RDEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0 ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls ) nettle? ( dev-libs/nettle ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4 app-misc/mime-types
+RDEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0 ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls ) nettle? ( dev-libs/nettle ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4:0 app-misc/mime-types
 REQUIRED_USE=^^ ( openssl nss gnutls ) nettle? ( gnutls )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.80.tar.gz -> s3fs-1.80.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=da1e91d2b58fcaef2fd446d890ac51ad
+_md5_=b9d79d15c446876d395e9d33566903d6
