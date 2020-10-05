@@ -20,6 +20,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}_makefile.patch"
+	"${FILESDIR}/${P}_getcurrentbytecount.patch"
 )
 
 src_prepare() {

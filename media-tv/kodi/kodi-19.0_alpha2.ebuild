@@ -19,10 +19,14 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 else
-	GIT_COMMIT="7f6bf8fdddaabcf911786099024ecc45df35c8bd"
-	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S=${WORKDIR}/xbmc-${GIT_COMMIT}
+	MY_PV=${PV/_p/_r}
+	MY_PV=${MY_PV/_alpha/a}
+	MY_PV=${MY_PV/_beta/b}
+	MY_PV=${MY_PV/_rc/rc}
+	MY_P="${PN}-${MY_PV}"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 fi
 
 inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
