@@ -737,6 +737,9 @@ src_configure() {
 			tools/generate_shim_headers/generate_shim_headers.py || die
 		# Disable CFI: unsupported for GCC, requires clang+lto+lld
 		myconf_gn+=" is_cfi=false"
+		# Disable PGO, because profile data is missing in tarball
+		# (https://groups.google.com/a/chromium.org/g/chromium-packagers/c/2ID9c4j6UkY)
+		myconf_gn+=" chrome_pgo_phase=0"
 	fi
 
 	einfo "Configuring Chromium..."
