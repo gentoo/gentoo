@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools bash-completion-r1 multilib python-r1
 
@@ -30,8 +30,7 @@ IUSE="debug doc libressl lzma pkcs7 python static-libs +tools zlib"
 RESTRICT="test"
 
 # Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
-RDEPEND="!sys-apps/module-init-tools
-	!sys-apps/modutils
+RDEPEND="!sys-apps/modutils
 	!<sys-apps/openrc-0.13.8
 	!<sys-apps/systemd-216-r3
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
