@@ -2200,7 +2200,7 @@ app-i18n/unicode-emoji 11.0 12.0 13.0: UTS #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 2.0.4_pre20200306162733 3.0.0_rc1: A standalone XIM server for SunPinyin
 app-i18n/xvnkb 0.2.9a-r1: Vietnamese input keyboard for X
-app-i18n/yaskkserv 1.1.1: Yet Another SKK server
+app-i18n/yaskkserv 1.1.1-r1: Yet Another SKK server
 app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine learning
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
@@ -17933,7 +17933,7 @@ virtual/tex-base 0: Virtual for basic TeX binaries (tex, kpathsea)
 virtual/texi2dvi 0-r2: Virtual for texi2dvi (and texi2pdf)
 virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
-virtual/udev 215 217 217-r1: Virtual to select between different udev daemon providers
+virtual/udev 215 217 217-r2: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
 virtual/wine 0-r7: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
