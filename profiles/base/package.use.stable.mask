@@ -51,10 +51,6 @@ dev-libs/boost numpy
 # for stable systems
 dev-lang/rust miri nightly parallel-compiler system-bootstrap
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-18)
-# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are stable
-<kde-plasma/plasma-meta-5.19 thunderbolt
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
