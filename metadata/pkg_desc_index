@@ -12960,6 +12960,7 @@ media-gfx/yafaray 3.4.1: A free open-source montecarlo raytracing engine
 media-gfx/zbar 0.23-r1 0.23.1: Library and tools for reading barcodes from images or video
 media-gfx/zgv 5.9: A svgalib console image viewer
 media-libs/Field3D 1.7.2: A library for storing voxel data
+media-libs/SoQt 1.6.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/SoXt 1.4.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
@@ -13277,6 +13278,7 @@ media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
 media-libs/qhull 2015.2: Geometry library
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0-r2: Multimedia playback framework based on Qt + FFmpeg
+media-libs/quarter 1.1.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
