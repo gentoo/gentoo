@@ -815,7 +815,7 @@ app-backup/rdedup 1.0.2: data deduplication with compression and public key encr
 app-backup/rdiff-backup 2.0.0 2.0.3 2.0.5: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
-app-backup/rear 2.4: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
+app-backup/rear 2.4 2.6: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/restic 0.9.4 0.9.5 0.9.6: A backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.4.2 1.4.3: A filesystem backup utility based on rsync
@@ -5348,7 +5348,7 @@ dev-libs/libatasmart 0.19_p5: A small and lightweight parser library for ATA S.M
 dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operations
 dev-libs/libax25 0.0.12_rc5: AX.25 library for hamradio applications
 dev-libs/libb64 1.2.1: Fast Base64 encoding/decoding routines
-dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
+dev-libs/libbase58 0.1.4 0.1.4-r1: C implementation of Bitcoin's base58 encoding
 dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 0.1.0-r1 0.1.1 9999: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
@@ -14777,7 +14777,7 @@ net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and han
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.16.3 0.19.1 0.20.0 0.20.1: Bitcoin Core consensus library
-net-libs/libblkmaker 0.3.2 0.4.3 0.5.3: C implementation of getblocktemplate (BIP 22)
+net-libs/libblkmaker 0.3.2 0.4.3 0.5.3 0.6.0: C implementation of Bitcoin's getblocktemplate interface
 net-libs/libbloom 1.5-r2 1.6: A simple and small bloom filter implementation in plain C.
 net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
