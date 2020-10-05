@@ -7734,7 +7734,7 @@ dev-php/myclabs-deepcopy 1.6.0 1.6.1 1.9.4: Create deep copies (clones) of your 
 dev-php/onphp 1.0.11_pre20141124: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.10.1-r1 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.10.2: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 5.1.18: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 5.1.18 5.1.19: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1: dBase database file access functions
@@ -16856,7 +16856,7 @@ sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
 sys-apps/ethtool 5.4 5.6-r1 5.7 5.8-r1: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/exa 0.9.0-r1: A modern replacement for 'ls' written in Rust
 sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requiring root privileges
-sys-apps/fakeroot 1.22 1.23 1.24 1.25.1: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
+sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1: Alternative to find that provides sensible defaults for 80% of the use cases
@@ -16950,7 +16950,7 @@ sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often f
 sys-apps/mcstrans 2.9 3.0 3.1 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4 5.01-r5: Memory tester based on memtest86
-sys-apps/memtester 4.3.0 4.4.0: userspace utility for testing the memory subsystem for faults
+sys-apps/memtester 4.3.0 4.4.0 4.5.0: userspace utility for testing the memory subsystem for faults
 sys-apps/miller 5.3.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
