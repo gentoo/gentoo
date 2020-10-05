@@ -37,10 +37,6 @@ ayatana
 # mongodb is not keyworded on sparc
 mongodb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-06)
-# dev-qt/qtdeclarative-5.11.x is broken and blocks re-keywording of Qt5.
-qml
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-11-19)
 # There is no luajit support on sparc. Bug #554376
 luajit
