@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
-inherit cmake-utils python-single-r1 xdg
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="https://www.freeorion.org"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	KEYWORDS="~amd64"
 	if [[ ${PV} = *_p* ]]; then
-		COMMIT="1570afb475763b13f5d2f434037ec907da812bb4"
+		COMMIT=""
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${COMMIT}"
 	else
@@ -35,7 +35,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.67:=[python,threads,${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.60:=[nls,python,threads,${PYTHON_MULTI_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -e "s/-O3//" -i CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -67,11 +67,11 @@ src_configure() {
 		-DBUILD_HEADLESS="$(usex dedicated)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newenvd "${FILESDIR}/${PN}.envd" 99${PN}
 }
