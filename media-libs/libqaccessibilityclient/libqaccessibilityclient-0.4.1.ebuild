@@ -15,7 +15,7 @@ SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
