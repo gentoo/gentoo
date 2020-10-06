@@ -5,7 +5,6 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
 	</use>
