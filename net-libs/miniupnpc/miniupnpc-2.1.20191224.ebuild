@@ -3,11 +3,12 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="UPnP client library and a simple UPnP client"
 HOMEPAGE="http://miniupnp.free.fr/"
-SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz"
+SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz
+	verify-sig? ( http://miniupnp.free.fr/files/${P}.tar.gz.sig )"
 
 LICENSE="BSD"
 SLOT="0/17"
@@ -15,7 +16,11 @@ KEYWORDS="amd64 arm arm64 hppa ~mips ppc ppc64 s390 sparc x86"
 IUSE="ipv6 kernel_linux static-libs"
 
 RDEPEND=""
-DEPEND="kernel_linux? ( sys-apps/lsb-release sys-apps/which )"
+BDEPEND="
+	kernel_linux? ( sys-apps/lsb-release sys-apps/which )
+	verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 
 src_prepare() {
 	eapply_user
