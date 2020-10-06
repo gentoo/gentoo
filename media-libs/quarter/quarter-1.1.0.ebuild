@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/quarter"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0-cmake.patch
+)
+
 DOCS=(AUTHORS ChangeLog NEWS README)
 
 src_configure() {
@@ -47,7 +51,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DQUARTER_BUILD_SHARED_LIBS=ON
-		-DQUARTER_BUILD_PLUGIN=ON
+		-DQUARTER_BUILD_PLUGIN=$(usex designer)
 		-DQUARTER_BUILD_EXAMPLES=OFF
 		-DQUARTER_BUILD_DOCUMENTATION=$(usex doc)
 		-DQUARTER_BUILD_INTERNAL_DOCUMENTATION=OFF
