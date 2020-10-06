@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-g++.patch
 	"${FILESDIR}"/${P}-dcraw.patch
+	"${FILESDIR}"/${P}-php.patch
 )
 
 src_prepare() {
