@@ -53,18 +53,19 @@ src_install() {
 	dodoc README.md
 
 	if use mfc ; then
-		insinto /usr/share/doc/${PF}
-		doins "${FILESDIR}"/cccc-MFC-dialect.opt
+		docinto examples
+		dodoc "${FILESDIR}"/cccc-MFC-dialect.opt
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 
 	if use doc ; then
-		insinto /usr/share/doc/${PF}/html
-		doins cccc/*.html || die "html docs failed"
+		docinto html
+		dodoc cccc/*.html || die "html docs failed"
 		if use apidoc ; then
-			insinto /usr/share/doc/${PF}/html/api
-			doins -r doxygen/html/* || die "dox failed"
-			insinto /usr/share/doc/${PF}/html/metrics
-			doins ccccout/* || die "metrics failed"
+			docinto html/api
+			dodoc -r doxygen/html/. || die "apidocs failed"
+			docinto html/metrics
+			dodoc ccccout/* || die "metrics failed"
 		fi
 	fi
 }
