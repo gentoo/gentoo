@@ -15,7 +15,7 @@ DESCRIPTION="Library and components for secure lock screen architecture"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="consolekit +pam seccomp"
+IUSE="+pam seccomp"
 
 REQUIRED_USE="seccomp? ( pam )"
 
@@ -47,7 +47,6 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libxcb
 	x11-libs/xcb-util-keysyms
-	consolekit? ( sys-auth/consolekit )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
 "
@@ -79,7 +78,7 @@ src_test() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package consolekit loginctl)
+		-DCMAKE_DISABLE_FIND_PACKAGE_loginctl=ON
 		-DPAM_REQUIRED=$(usex pam)
 		$(cmake_use_find_package pam PAM)
 		$(cmake_use_find_package seccomp Seccomp)
