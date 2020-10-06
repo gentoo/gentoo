@@ -286,6 +286,8 @@ src_install() {
 	keepdir /var/lib/mpd/music
 	keepdir /var/lib/mpd/playlists
 
+	rm -r "${ED}"/usr/share/doc/mpd || die
+
 }
 
 pkg_postinst() {
