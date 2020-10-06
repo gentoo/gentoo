@@ -39,7 +39,7 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	ncurses nfs nls numa opengl +oss +pin-upstream-blobs
 	plugins +png pulseaudio python rbd sasl +seccomp sdl sdl-image selinux
 	+slirp
-	smartcard snappy spice ssh static static-user systemtap tci test usb
+	smartcard snappy spice ssh static static-user systemtap test usb
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
 	xfs +xkb zstd"
 
@@ -418,6 +418,16 @@ qemu_src_configure() {
 		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
+
+		# bug #746752: TCG interpreter has a few limitations:
+		# - it does not support FPU
+		# - it's generally slower on non-self-modifying code
+		# It's advantage is support for host architectures
+		# where native codegeneration is not implemented.
+		# Gentoo has qemu keyworded only on targets with
+		# native code generation available. Avoid the interpreter.
+		--disable-tcg-interpreter
+
 		--disable-werror
 		# We support gnutls/nettle for crypto operations.  It is possible
 		# to use gcrypt when gnutls/nettle are disabled (but not when they
@@ -432,7 +442,6 @@ qemu_src_configure() {
 		$(use_enable debug debug-tcg)
 		$(use_enable doc docs)
 		$(use_enable plugins)
-		$(use_enable tci tcg-interpreter)
 		$(use_enable xattr attr)
 	)
 
