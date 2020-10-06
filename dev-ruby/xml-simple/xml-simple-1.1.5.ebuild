@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/maik/xml-simple"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~x86"
 IUSE=""
 
 each_ruby_test() {
