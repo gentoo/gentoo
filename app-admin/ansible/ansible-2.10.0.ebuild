@@ -37,10 +37,8 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
-	!app-admin/ansible-base
 "
 DEPEND="
-	!app-admin/ansible-base
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
