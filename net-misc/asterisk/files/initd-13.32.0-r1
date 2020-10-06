@@ -52,7 +52,7 @@ setup_svc_variables()
 	[ -n "${ASTERISK_CONFDIR}" ] && ast_confdir="${ASTERISK_CONFDIR}"
 	[ -n "${ASTERISK_STOP_TIMEOUT}" ] && ast_stop_timeout="${ASTERISK_STOP_TIMEOUT}"
 	case "${ASTERISK_STOP_METHOD}" in
-		grasefully|when\ convenient|now)
+		gracefully|when\ convenient|now)
 			ast_stop_method="${ASTERISK_STOP_METHOD}"
 		;;
 	esac

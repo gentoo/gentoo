@@ -72,8 +72,6 @@ CDEPEND="acct-user/asterisk
 	vorbis? ( media-libs/libvorbis )"
 
 DEPEND="${CDEPEND}
-	!net-libs/openh323
-	!net-libs/pjsip
 	voicemail_storage_imap? ( virtual/imap-c-client )
 	virtual/pkgconfig
 "
