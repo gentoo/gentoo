@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 	~virtual/leechcraft-trayarea-${PV}
 	battery? ( sys-power/upower )
 	poweractions? ( sys-power/upower )
-	powerevents? ( || ( sys-auth/consolekit sys-auth/elogind sys-power/upower ) )
+	powerevents? ( || ( sys-auth/elogind sys-power/upower ) )
 "
 
 REQUIRED_USE="|| ( battery poweractions powerevents )"
