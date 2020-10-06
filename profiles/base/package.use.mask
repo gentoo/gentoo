@@ -242,11 +242,6 @@ sys-libs/libxcrypt split-usr system
 sys-block/open-iscsi slp
 sys-block/open-isns slp
 
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# PHP support is broken with current version
-# Mask USE until they are fixed
-media-gfx/exact-image php
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-28)
 # media-fonts/hkscs-ming is slated for removal.
 app-i18n/xcin unicode
