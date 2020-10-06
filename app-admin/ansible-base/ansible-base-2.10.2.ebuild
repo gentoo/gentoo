@@ -29,7 +29,6 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
-	>=app-admin/ansible-2.10
 	!<app-admin/ansible-2.10
 "
 # ansible-2.10 or above is needed for the collections
