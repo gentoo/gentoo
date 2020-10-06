@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 DESCRIPTION="simple & stable nscd replacement"
 HOMEPAGE="https://busybox.net/~vda/unscd/README"
-SRC_URI="https://busybox.net/~vda/unscd/nscd-${PV}.c"
+SRC_URI="https://busybox.net/~vda/unscd/nscd-${PV}.c -> nscd-${PV}-r1.c"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}
 
 src_unpack() {
-	cp "${DISTDIR}"/nscd-${PV}.c ${PN}.c || die
+	cp "${DISTDIR}"/nscd-${PV}-r1.c unscd.c || die
 }
 
 src_compile() {

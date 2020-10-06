@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python 3 library for XMPP"
-HOMEPAGE="https://dev.louiz.org/projects/slixmpp"
+HOMEPAGE="https://lab.louiz.org/poezio/slixmpp"
 LICENSE="MIT"
 SLOT="0"
 
