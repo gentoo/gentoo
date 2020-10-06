@@ -430,7 +430,7 @@ src_install() {
 			|| die "failed to remove scp"
 	fi
 
-	rmdir "${D}"/var/empty || die
+	rmdir "${ED}"/var/empty || die
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
