@@ -5,7 +5,6 @@
 		<email>xfce@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='consolekit'>Enable ConsoleKit support</flag>
 		<flag name='locking'>Enable screen locking support</flag>
 	</use>
 </pkgmetadata>
