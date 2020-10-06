@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit toolchain-funcs python-any-r1 udev
 
 DESCRIPTION="Central Regulatory Domain Agent for wireless networks"
@@ -22,8 +22,8 @@ RDEPEND="!gcrypt? (
 	gcrypt? ( dev-libs/libgcrypt:0= )
 	dev-libs/libnl:3
 	net-wireless/wireless-regdb"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/m2crypto[${PYTHON_USEDEP}]')
 	virtual/pkgconfig"
 
