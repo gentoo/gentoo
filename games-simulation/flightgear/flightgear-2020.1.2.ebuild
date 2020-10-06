@@ -96,7 +96,6 @@ src_configure() {
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
 		-DENABLE_SIMD=OFF # see CPU_FLAGS
-		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_SWIFT=OFF # swift pilot client not packaged yet
 		-DENABLE_TERRASYNC=$(usex utils)
