@@ -4,25 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1 eutils
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://ansible.com/"
-
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
-	EGIT_BRANCH="devel"
-	KEYWORDS=""
-else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
-fi
+SRC_URI="https://releases.ansible.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="doc test"
 RESTRICT="test"
 
@@ -30,6 +21,7 @@ RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
@@ -37,10 +29,12 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
-	!app-admin/ansible-base
+	!<app-admin/ansible-2.10
 "
+# ansible-2.10 or above is needed for the collections
 DEPEND="
-	!app-admin/ansible-base
+	!<app-admin/ansible-2.10
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
@@ -58,6 +52,7 @@ DEPEND="
 	)"
 
 python_compile() {
+	# disable version checks on upgrade
 	export ANSIBLE_SKIP_CONFLICT_CHECK=1
 	distutils-r1_python_compile
 }
@@ -77,4 +72,6 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/docsite/_build/html/. )
 	distutils-r1_python_install_all
+
+	dodoc -r examples
 }
