@@ -22,8 +22,8 @@ RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl2-ttf-2.0.6
 	>=media-libs/smpeg2-0.4.4-r1
 	midi? ( media-libs/portmidi )
-	X? ( >=media-libs/libsdl2-1.2.5[opengl?,video,X] )
-	!X? ( >=media-libs/libsdl2-1.2.5 )"
+	X? ( >=media-libs/libsdl2-1.2.5[opengl?,threads,video,X] )
+	!X? ( >=media-libs/libsdl2-1.2.5[threads] )"
 DEPEND="${RDEPEND}
 	test? (
 		media-libs/sdl2-image[gif,jpeg,png]
