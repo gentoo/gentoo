@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ KEYWORDS="amd64 ~arm ~arm64 x86"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
-IUSE="consolekit elogind +pam systemd"
+IUSE="elogind +pam systemd"
 
 REQUIRED_USE="?? ( elogind systemd )"
 
@@ -24,7 +24,6 @@ RDEPEND="
 	>=dev-qt/qtnetwork-5.6:5
 	>=x11-base/xorg-server-1.15.1
 	x11-libs/libxcb[xkb]
-	consolekit? ( >=sys-auth/consolekit-0.9.4 )
 	elogind? ( sys-auth/elogind )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd:= )
@@ -41,7 +40,6 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch" )
 
 src_prepare() {
-	use consolekit && eapply "${FILESDIR}/${PN}-0.14.0-consolekit.patch"
 	cmake-utils_src_prepare
 }
 
