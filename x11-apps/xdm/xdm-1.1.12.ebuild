@@ -12,7 +12,7 @@ DEFAULTVT=vt7
 DESCRIPTION="X.Org xdm application"
 
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="consolekit ipv6 pam systemd truetype xinerama xpm"
+IUSE="ipv6 pam systemd truetype xinerama xpm"
 
 RDEPEND="
 	x11-apps/sessreg
@@ -25,7 +25,6 @@ RDEPEND="
 	x11-libs/libXdmcp
 	x11-libs/libXmu
 	x11-libs/libXt
-	consolekit? ( sys-auth/consolekit )
 	pam? ( sys-libs/pam )
 	systemd? ( >=sys-apps/systemd-209 )
 	truetype? (
@@ -40,13 +39,11 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	PATCHES=(
-		"${FILESDIR}"/${P}-consolekit.patch
 		"${FILESDIR}"/${P}-make-xinerama-optional.patch
 	)
 
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
-		$(use_with consolekit)
 		$(use_with pam)
 		$(use_with systemd systemd-daemon)
 		$(use_with truetype xft)
@@ -55,6 +52,7 @@ pkg_setup() {
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--with-default-vt=${DEFAULTVT}
 		--with-xdmconfigdir=/etc/X11/xdm
+		--without-consolekit
 	)
 }
 
