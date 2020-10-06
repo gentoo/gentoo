@@ -1,0 +1,23 @@
+diff --git a/libftdi/lib_table/Makefile b/libftdi/lib_table/Makefile
+index cf4316b..dd393b8 100644
+--- a/libftdi/lib_table/Makefile
++++ b/libftdi/lib_table/Makefile
+@@ -1,15 +1,15 @@
+ # which compiler
+-CC = gcc
++CC ?= gcc
+ 
+ VERSION = _RELEASE
+ 
+ LIBNAME = libd2xx_table.so
+ 
+-CFLAGS =  -DLINUX -D$(VERSION)
++CFLAGS +=  -DLINUX -D$(VERSION)
+ 
+ $(LIBNAME):	ftdi_table.o 
+ 
+-	$(CC) 	-Wall -shared -fPIC -o  $(LIBNAME) ftdi_table.o
++	$(CC) 	-Wall -shared -fPIC ${LDFLAGS} -o  $(LIBNAME) ftdi_table.o
+ 
+ ftdi_table.o:	ftdi_table.c
+ 		$(CC) -I. $(CFLAGS) -c -fPIC ftdi_table.c
