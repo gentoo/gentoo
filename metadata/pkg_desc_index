@@ -17063,7 +17063,7 @@ sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for buildin
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
-sys-apps/unscd 0.53 0.54: simple & stable nscd replacement
+sys-apps/unscd 0.53 0.54-r1: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
