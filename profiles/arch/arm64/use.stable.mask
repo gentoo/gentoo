@@ -4,6 +4,18 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sam James <sam@gentoo.org> (2020-10-06)
+# app-misc/lirc not stable yet
+# dev-db/tokyocabinet not stable yet
+# sci-mathematics/octave not stable yet
+# dev-libs/libtar not stable yet
+# net-libs/ldns not stable yet
+lirc
+tokyocabinet
+octave
+libtar
+ldns
+
 # Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # Does not build on arm64
 ocamlopt
