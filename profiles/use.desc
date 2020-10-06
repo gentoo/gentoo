@@ -334,6 +334,7 @@ vala - Enable bindings for dev-lang/vala
 vanilla - Do not add extra patches which change default behaviour; DO NOT USE THIS ON A GLOBAL SCALE as the severity of the meaning changes drastically
 vcd - Video CD support
 vdpau - Enable the Video Decode and Presentation API for Unix acceleration interface
+verify-sig - Verify upstream signatures on distfiles
 vhosts - Add support for installing web-based applications into a virtual-hosting environment
 videos - Install optional video files (used in some games)
 vim-syntax - Pulls in related vim syntax scripts
