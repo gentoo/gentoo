@@ -1,0 +1,26 @@
+Title: kubernetes Split Packages Returning
+Author: William Hubbs <williamh@gentoo.org>
+Posted: 2020-10-06
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-cluster/kubernetes
+
+In order to fix the ability to upgrade kubernetes components separately,
+the kubernetes split packages are returning [1].
+
+Starting with kubernetes 1.17.12, 1.18.9 and 1.19.2, you will need to
+install the following packages in the appropriate configuration for
+your cluster.
+
+sys-cluster/kubeadm
+sys-cluster/kube-apiserver
+sys-cluster/kube-controller-manager
+sys-cluster/kubectl
+sys-cluster/kubelet
+sys-cluster/kube-proxy
+sys-cluster/kube-scheduler
+
+Once the split packages are stabilized, sys-cluster/kubernetes will be
+masked and removed.
+
+[1] https://bugs.gentoo.org/741572
