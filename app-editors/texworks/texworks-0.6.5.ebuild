@@ -28,7 +28,8 @@ RDEPEND="app-text/hunspell:=
 	lua? ( dev-lang/lua:0 )
 	python? ( ${PYTHON_DEPS} ) "
 
-DEPEND="${RDEPEND}"
+DEPEND="dev-qt/linguist-tools:5
+	${RDEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
