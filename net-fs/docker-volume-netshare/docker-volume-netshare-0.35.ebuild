@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 DESCRIPTION="Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin"
 HOMEPAGE="https://github.com/ContainX/docker-volume-netshare"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 SLOT="0"
 IUSE=""
 
