@@ -29,10 +29,12 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
-	!app-admin/ansible
+	>=app-admin/ansible-2.10
+	!<app-admin/ansible-2.10
 "
+# ansible-2.10 or above is needed for the collections
 DEPEND="
-	!app-admin/ansible
+	!<app-admin/ansible-2.10
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	doc? (
