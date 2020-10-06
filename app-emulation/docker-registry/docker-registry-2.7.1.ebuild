@@ -4,7 +4,7 @@
 EAPI=6
 inherit golang-vcs-snapshot systemd user
 
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 EGO_PN="github.com/docker/distribution"
 EGIT_COMMIT="2461543d988979529609e8cb6fca9ca190dc48da"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
