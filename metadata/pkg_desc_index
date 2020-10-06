@@ -1048,7 +1048,7 @@ app-crypt/veracrypt 1.24_p2 1.24_p4 1.24_p7: Disk encryption with strong securit
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 3.1.0-r1 3.1.1-r1: Python library and command line tool for configuring a YubiKey
-app-crypt/yubikey-manager-qt 1.1.4-r2: Cross-platform application for configuring any YubiKey over all USB transports
+app-crypt/yubikey-manager-qt 1.1.4-r2 1.1.5: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zulucrypt 5.1.0 5.4.0_pre20180223 5.4.0: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
