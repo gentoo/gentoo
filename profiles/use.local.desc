@@ -6135,6 +6135,7 @@ net-libs/pjproject:openh264 - Include Open H.264 support in the build
 net-libs/pjproject:resample - Include resampling implementations in the build
 net-libs/pjproject:silk - Include SILK support in the build
 net-libs/pjproject:v4l2 - Include Video4Linux v2 support in the build
+net-libs/pjproject:vpx - Include VP8 and VP9 codec support in the build
 net-libs/pjproject:webrtc - Enable WebRTC support
 net-libs/qxmpp:vpx - Enable VP8 codec support via media-libs/libvpx
 net-libs/rabbitmq-c:tools - Builds cli tools to interact with brokers
