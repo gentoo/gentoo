@@ -5,7 +5,4 @@
     <email>x11@gentoo.org</email>
     <name>X11</name>
   </maintainer>
-  <use>
-    <flag name="consolekit">Enable native <pkg>sys-auth/consolekit</pkg> support</flag>
-  </use>
 </pkgmetadata>
