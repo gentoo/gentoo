@@ -10,7 +10,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 x86"
-IUSE="consolekit elogind +locking opengl pam systemd"
+IUSE="elogind +locking opengl pam systemd"
 
 # Xrandr: optional but automagic
 RDEPEND="
@@ -29,7 +29,6 @@ RDEPEND="
 	>=xfce-base/libxfce4ui-4.12.1:=
 	>=xfce-base/libxfce4util-4.12.1:=
 	>=xfce-base/xfconf-4.12.1:=
-	consolekit? ( sys-auth/consolekit )
 	elogind? ( sys-auth/elogind )
 	locking? (
 		pam? ( sys-libs/pam )
@@ -51,11 +50,11 @@ src_configure() {
 		# xscreensaver dirs autodetection doesn't seem to work
 		--with-xscreensaverdir=/usr/share/xscreensaver/config
 		--with-xscreensaverhackdir=/usr/$(get_libdir)/misc/xscreensaver
+		--without-console-kit
 
 		$(use_with opengl libgl)
 		$(use_enable locking)
 		$(use_enable pam)
-		$(use_with consolekit console-kit)
 		$(use_with elogind)
 		$(use_with systemd)
 	)
