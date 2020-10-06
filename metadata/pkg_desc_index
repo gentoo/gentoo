@@ -5100,7 +5100,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.10.4: Elixir programming language
-dev-lang/erlang 22.3.2 22.3.4 23.0.2 23.0.3: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 22.3.2 22.3.4 23.0.2 23.0.3 23.0.4 23.1.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
