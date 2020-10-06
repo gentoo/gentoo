@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,9 +14,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
 
-IUSE="consolekit debug elogind +gtk3 nls pam systemd"
+IUSE="debug elogind +gtk3 nls pam systemd"
 
-DEPEND="consolekit? ( sys-auth/consolekit )
+DEPEND="
 	x11-libs/libxcb
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
@@ -31,7 +31,7 @@ BDEPEND=">=dev-util/intltool-0.40
 	virtual/pkgconfig"
 DOCS=( AUTHORS README TODO )
 
-REQUIRED_USE="?? ( consolekit elogind systemd ) elogind? ( pam ) systemd? ( pam )"
+REQUIRED_USE="?? ( elogind systemd ) elogind? ( pam ) systemd? ( pam )"
 
 src_prepare() {
 	# Upstream bug, tarball contains pre-made lxdm.conf
@@ -58,7 +58,7 @@ src_configure() {
 		--with-x \
 		--with-xconn=xcb \
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir) \
-		$(use_enable consolekit) \
+		--disable-consolekit \
 		$(use_enable gtk3) \
 		$(use_enable nls) \
 		$(use_enable debug) \

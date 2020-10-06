@@ -6,7 +6,6 @@
 		<name>Brian Evans</name>
 	</maintainer>
 	<use>
-		<flag name="consolekit">Enables support for authorization using consolekit</flag>
 		<flag name="gtk3">Use GTK+3 instead of 2</flag>
 	</use>
 	<upstream>
