@@ -22,9 +22,11 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]"
+	dev-python/numpy[${PYTHON_USEDEP}]
+	<dev-python/scipy-1.5[${PYTHON_USEDEP}]"
 BDEPEND=""
 
 src_prepare(){
