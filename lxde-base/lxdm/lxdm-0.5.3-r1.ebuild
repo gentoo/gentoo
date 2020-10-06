@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,9 +14,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
 
-IUSE="consolekit debug gtk3 nls pam"
+IUSE="debug gtk3 nls pam"
 
-RDEPEND="consolekit? ( sys-auth/consolekit )
+RDEPEND="
 	x11-libs/libxcb
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
@@ -52,7 +52,7 @@ src_configure() {
 		--with-x \
 		--with-xconn=xcb \
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir) \
-		$(use_enable consolekit) \
+		--disable-consolekit \
 		$(use_enable gtk3) \
 		$(use_enable nls) \
 		$(use_enable debug) \
