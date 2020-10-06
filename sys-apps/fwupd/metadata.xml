@@ -8,7 +8,6 @@
   <use>
     <flag name="agent">Enable update notification agent</flag>
     <flag name="amt">Build and install Intel AMT plugin</flag>
-    <flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
     <flag name="dell">Enable Dell-specific support.</flag>
     <flag name="gpg">Enable GPG support.</flag>
     <flag name="man">Build and install man pages</flag>

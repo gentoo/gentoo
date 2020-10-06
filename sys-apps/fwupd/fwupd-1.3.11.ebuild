@@ -14,9 +14,9 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt tpm uefi"
+IUSE="agent amt dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	^^ ( consolekit elogind minimal systemd )
+	^^ ( elogind minimal systemd )
 	dell? ( uefi )
 	minimal? ( !introspection )
 "
@@ -53,7 +53,6 @@ CDEPEND="${PYTHON_DEPS}
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
 	virtual/libelf:0=
 	virtual/udev
-	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dell? (
 		sys-libs/efivar
 		>=sys-libs/libsmbios-2.4.0
@@ -119,7 +118,6 @@ src_configure() {
 		-Dbuild="$(usex minimal standalone all)"
 		$(meson_use agent)
 		$(meson_use amt plugin_amt)
-		$(meson_use consolekit)
 		$(meson_use dell plugin_dell)
 		$(meson_use elogind)
 		$(meson_use gpg)
@@ -140,6 +138,7 @@ src_configure() {
 		-Dplugin_flashrom="false"
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
+		-Dconsolekit="false"
 	)
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
@@ -149,7 +148,7 @@ src_install() {
 	meson_src_install
 
 	if ! use minimal ; then
-		sed "s@%SEAT_MANAGER%@$(usex elogind elogind consolekit)@" \
+		sed "s@%SEAT_MANAGER%@elogind@" \
 			"${FILESDIR}"/${PN}-r1 \
 			> "${T}"/${PN} || die
 		doinitd "${T}"/${PN}
