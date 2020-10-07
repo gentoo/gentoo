@@ -636,7 +636,7 @@ app-admin/rasdaemon 0.6.1-r1 0.6.2-r1 0.6.2-r3 0.6.2-r4 0.6.5 0.6.6: Reliability
 app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/recursos 2.0-r1: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
-app-admin/restart-services 0.15.2 0.16.0: Tool to manage OpenRC services that need to be restarted
+app-admin/restart-services 0.15.2 0.16.0 0.16.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
@@ -6169,7 +6169,7 @@ dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0 0.110.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0 0.110.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.550.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 4.190.0 4.210.0 4.230.0: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 4.190.0 4.210.0 4.230.0 4.240.0: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
