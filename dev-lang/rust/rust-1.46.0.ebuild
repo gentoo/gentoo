@@ -114,8 +114,7 @@ QA_SONAME="
 	usr/lib.*/${P}/rustlib/.*/lib/lib.*.so.*
 "
 
-# tests need a bit more work, currently they are causing multiple
-# re-compilations and somewhat fragile.
+# still disabled, almost ready to enable
 RESTRICT="test"
 
 PATCHES=(
@@ -419,19 +418,57 @@ src_compile() {
 }
 
 src_test() {
-	env $(cat "${S}"/config.env) RUST_BACKTRACE=1\
-		"${EPYTHON}" ./x.py test -vv --config="${S}"/config.toml -j$(makeopts_jobs) --no-doc --no-fail-fast \
-		src/test/codegen \
-		src/test/codegen-units \
-		src/test/compile-fail \
-		src/test/incremental \
-		src/test/mir-opt \
-		src/test/pretty \
-		src/test/run-fail \
-		src/test/run-make \
-		src/test/run-make-fulldeps \
-		src/test/ui \
-		src/test/ui-fulldeps || die
+	# https://rustc-dev-guide.rust-lang.org/tests/intro.html
+
+	# those are basic and codegen tests.
+	local tests=(
+		codegen
+		codegen-units
+		compile-fail
+		incremental
+		mir-opt
+		pretty
+		run-make
+	)
+
+	# known to fail with system-llvm sometimes
+	# system-llvm is stable-masked for time-being
+	# so only test internal one.
+	use system-llvm || tests+=( assembly )
+
+	# fragile/expensive/less important tests
+	# or tests that require extra build time
+	# TODO: instead of skipping, just make some nonfatal.
+	if [[ ${ERUST_RUN_EXTRA_TESTS:-no} != no ]]; then
+		tests+=(
+			rustdoc
+			rustdoc-js
+			rustdoc-js-std
+			rustdoc-ui
+			run-make-fulldeps
+			ui
+			ui-fulldeps
+		)
+	fi
+
+	local i failed=()
+	einfo "rust_src_test: enabled tests ${tests[@]/#/src/test/}"
+	for i in "${tests[@]}"; do
+		local t="src/test/${i}"
+		einfo "rust_src_test: running ${t}"
+		if ! nonfatal env $(cat "${S}"/config.env) RUST_BACKTRACE=1 \
+			"${EPYTHON}" ./x.py test -vv --config="${S}"/config.toml \
+			-j$(makeopts_jobs) --no-doc --no-fail-fast "${t}"; then
+
+				failed+=( "${t}" )
+				eerror "rust_src_test: ${t} failed"
+		fi
+	done
+
+	if [[ ${#failed[@]} -ne 0 ]]; then
+		eerror "rust_src_test: failure summary: ${failed[@]}"
+		die "aborting due to test failures"
+	fi
 }
 
 src_install() {
@@ -478,7 +515,7 @@ src_install() {
 		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		mkdir -p "${ED}/usr/${abi_libdir}/${P}"
 		cp "${ED}/usr/$(get_libdir)/${P}/rustlib/${rust_target}/lib"/*.so \
-		   "${ED}/usr/${abi_libdir}/${P}" || die
+			"${ED}/usr/${abi_libdir}/${P}" || die
 	done
 
 	# versioned libdir/mandir support
