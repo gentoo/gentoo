@@ -18056,8 +18056,8 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 68.12.0 78.3.1 80.0 80.0.1 80.0.1-r1 81.0.1: Firefox Web Browser
 www-client/firefox-bin 68.12.0 78.3.1-r1 80.0 80.0.1 81.0.1-r1: Firefox Web Browser
-www-client/google-chrome 85.0.4183.121: The web browser from Google
-www-client/google-chrome-beta 86.0.4240.72: The web browser from Google
+www-client/google-chrome 86.0.4240.75: The web browser from Google
+www-client/google-chrome-beta 86.0.4240.75: The web browser from Google
 www-client/google-chrome-unstable 87.0.4278.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18100,7 +18100,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.433: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 85.0.4183.121 86.0.4240.72_beta 87.0.4278.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.75_beta 86.0.4240.75 87.0.4278.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
@@ -18625,7 +18625,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.65 5.66_alpha08 5.66_alpha09: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.65 5.66_alpha08 5.66_alpha09 5.66_alpha10: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
