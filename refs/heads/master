@@ -1,22 +1,13 @@
 certificate version 0.1
-pusher 0x5CA7E64652290CF0 1602088362 -0500
-pushee git.gentoo.org:repo/gentoo
-nonce 1602088362-c4fbb229675abc45c5a0482a0e5c7e7b9d1640c3
+pusher Sam James <sam@gentoo.org> 1602088556 +0000
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1602088556-cdf0bafbf54b647210f792a84fa0638b91b2b499
 
-2e86eaa32373231dac57c5049bde8b1e78b05bfd 8227697146fb6d76d06749dbe2fbdc11c6979d1d refs/heads/master
+8227697146fb6d76d06749dbe2fbdc11c6979d1d 0141d44d37a7bb7b5d23479a1f4890ccdea1dd2f refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEnB9e/J8YI6T0NBsJm0Co7cr65zMFAl997aoACgkQm0Co7cr6
-5zOBkBAAg/6N1hmRE84VSztt409r75IMienW4Ym5mjlF46rxiYW0bfnXNCm/yNDH
-h4kDXO3TQvixsCRXmBu/GLQqJMPfrm/QlAof5/a+3qtRqHWzjnaDfCkqcNnFUWsb
-PWf7+F3wWLLX43pQTCoT38fP2wyW06aYNi4mJa/uZ5hZNvb3mQq5v6ylVotkAOEh
-rmgTSYOuHkMbAtrLZGzNiq//bQAeJaKA2V6eyHQSUM60HC1MvNztqjScPKret/P9
-mba8j1qdAXexFwMkqDuPc69lDfB1pSR739UZW2GQsmqJxw8+6yDDV9+7ndfmTRnR
-hyt2Lvs1yqLX6w/tt2BmQT1lVfm7lJtPYY+r0sdCuqFNWSsafdMQRor+dcJ6DpCj
-xvJkpINR1kQIXSSwCGt1Pytfn6/Q1vAJjdrdptW25yEZ1D8nX/KztAm4ekB/NXA0
-Cht9grUZOcG7FbLXdcDHOqyIqr2OGbjRMTEW+/QhfpvXn/kn0mZ3IN086gNnnl7b
-DXDXlUC9moVSsWPBcgdoa0emEQfUaStyIg1BQdyw8VoNLlOgBZL5Pvn7qhRxPQLl
-NjB+Y36s4duvGdid45tHySB3r1rnQ0XWHIZTpqO6pq4l3pO2p1UlQfoOAwQEG5Ey
-miU8ddXbSCXxUNsWx5O23WWHEl19i/rfA98H1biHy3L8uk0H2Ag=
-=eN9r
+iIUEABYIAC0WIQSONjK3ErBA5VvN3hCxfj6E5hA8mwUCX33ubA8cc2FtQGdlbnRv
+by5vcmcACgkQsX4+hOYQPJuKrgEAiC6SnS6z9R43VX8GQC5A5mMi52qjiI9unZGS
+o6OwEDUBAKgjPlduhkSknJpvWb5Q1tkFSceVtTV0DpddZE31s7cG
+=jLxA
 -----END PGP SIGNATURE-----
