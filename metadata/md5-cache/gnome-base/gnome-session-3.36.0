@@ -1,15 +1,15 @@
 BDEPEND=dev-libs/libxslt dev-util/gdbus-codegen >=sys-devel/gettext-0.19.8 x11-libs/xtrans virtual/pkgconfig doc? ( app-text/xmlto app-text/docbook-xml-dtd:4.1.2 ) app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
-DEPEND=>=dev-libs/glib-2.46.0:2 >=x11-libs/gtk+-3.18.0:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=gnome-base/gnome-desktop-3.34.2:3= >=dev-libs/json-glib-0.10 media-libs/mesa[egl,gles2,X(+)] media-libs/libepoxy x11-libs/libXcomposite systemd? ( >=sys-apps/systemd-183:0= ) elogind? ( >=sys-auth/elogind-239.4 ) consolekit? ( >=dev-libs/dbus-glib-0.76 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=dev-libs/glib-2.46.0:2 >=x11-libs/gtk+-3.18.0:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=gnome-base/gnome-desktop-3.34.2:3= >=dev-libs/json-glib-0.10 media-libs/mesa[egl,gles2,X(+)] media-libs/libepoxy x11-libs/libXcomposite systemd? ( >=sys-apps/systemd-183:0= ) elogind? ( >=sys-auth/elogind-239.4 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Gnome session manager
 EAPI=7
 HOMEPAGE=https://gitlab.gnome.org/GNOME/gnome-session
-IUSE=consolekit doc elogind systemd
+IUSE=doc elogind systemd
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2+
-RDEPEND=>=dev-libs/glib-2.46.0:2 >=x11-libs/gtk+-3.18.0:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=gnome-base/gnome-desktop-3.34.2:3= >=dev-libs/json-glib-0.10 media-libs/mesa[egl,gles2,X(+)] media-libs/libepoxy x11-libs/libXcomposite systemd? ( >=sys-apps/systemd-183:0= ) elogind? ( >=sys-auth/elogind-239.4 ) consolekit? ( >=dev-libs/dbus-glib-0.76 ) >=gnome-base/gnome-settings-daemon-3.35.91 >=gnome-base/gsettings-desktop-schemas-0.1.7 sys-apps/dbus[X] consolekit? ( sys-auth/consolekit ) x11-misc/xdg-user-dirs x11-misc/xdg-user-dirs-gtk
+RDEPEND=>=dev-libs/glib-2.46.0:2 >=x11-libs/gtk+-3.18.0:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=gnome-base/gnome-desktop-3.34.2:3= >=dev-libs/json-glib-0.10 media-libs/mesa[egl,gles2,X(+)] media-libs/libepoxy x11-libs/libXcomposite systemd? ( >=sys-apps/systemd-183:0= ) elogind? ( >=sys-auth/elogind-239.4 ) >=gnome-base/gnome-settings-daemon-3.35.91 >=gnome-base/gsettings-desktop-schemas-0.1.7 sys-apps/dbus[X] x11-misc/xdg-user-dirs x11-misc/xdg-user-dirs-gtk
 REQUIRED_USE=?? ( elogind systemd )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-session/3.36/gnome-session-3.36.0.tar.xz https://dev.gentoo.org/~leio/distfiles/gnome-session-3.36.0-patchset.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	71d293a701d6362387e1214da368c848	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d278cfbebf7531395ede10694c5e9448
+_md5_=7a8ed00c287a20cbf9ce0b835c009f17

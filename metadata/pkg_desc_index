@@ -12871,7 +12871,7 @@ media-gfx/opencsg 1.4.2-r1: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 2.3.0: OpenEXR Viewers
 media-gfx/openmesh 7.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2019.05-r2 2019.05-r3 9999: The Programmers Solid 3D CAD Modeller
-media-gfx/opentoonz 1.1.2 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: An open-source full-featured 2D animation creation software
+media-gfx/opentoonz 1.3.0-r1 1.4.0: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 4.0.2-r4 5.2.0-r2 6.2.1-r1 7.0.0-r1 7.1.0-r1: Library for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.73.0: OpenGL-based panoramic image viewer
@@ -13246,7 +13246,7 @@ media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r4: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 4.1.2-r3 4.4.0: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0 2.5.2: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
@@ -18072,7 +18072,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.3.2022.47_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1 3.4.2049.2_p1 3.4.2056.19_p1 3.4.2059.2_p1 3.4.2064.6_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1 3.4.2049.2_p1 3.4.2056.19_p1 3.4.2059.2_p1 3.4.2064.6_p1 3.4.2066.7_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
