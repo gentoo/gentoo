@@ -8719,7 +8719,7 @@ dev-python/pyjwt 1.7.1-r1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.3.0 1.3.0-r1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylama 7.7.1: Code audit tool for python
+dev-python/pylama 7.7.1 7.7.1-r1: Code audit tool for python
 dev-python/pylast 3.3.0 4.0.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylatex 1.3.3 1.4.0: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
@@ -14655,6 +14655,7 @@ net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.12 0.13.1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5-r1 0.11.7: Prosody is a flexible communications server for Jabber/XMPP written in Lua
+net-im/prosody-modules 0_pre20201004 9999: A collection of community-maintained modules for Prosody
 net-im/psi 1.5 9999: Qt XMPP client
 net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
