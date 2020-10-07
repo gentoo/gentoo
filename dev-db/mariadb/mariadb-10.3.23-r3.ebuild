@@ -238,6 +238,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
+	eapply "${FILESDIR}"/mariadb-10.3-CVE-2020-15180.patch
 
 	eapply_user
 
