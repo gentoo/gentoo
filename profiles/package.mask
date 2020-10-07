@@ -556,11 +556,6 @@ www-servers/cherokee
 # Removal in ~30 days. Bug #740868.
 dev-python/mini-amf
 
-# Louis Sautier <sbraz@gentoo.org> (2020-09-04)
-# Masked for removal in 30 days, no revdeps. Dependency of
-# previously removed dev-python/flask-bootstrap
-dev-python/flask-appconfig
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
