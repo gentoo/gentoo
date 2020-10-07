@@ -1,4 +1,4 @@
-From 4daa685588ee3848fc98fd9c6328b76f136ee876 Mon Sep 17 00:00:00 2001
+From fd78f200ac8e9d1eb7579cd9e4adaaa1a4dc2d46 Mon Sep 17 00:00:00 2001
 From: Kurt Kanzenbach <kurt@kmk-computers.de>
 Date: Wed, 1 Apr 2020 20:15:24 +0200
 Subject: [PATCH] all: Fix musl build
@@ -30,7 +30,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  create mode 100644 src/include/musl.h
 
 diff --git a/Makefile b/Makefile
-index 05fc5eda71fa..9340f28f2c32 100644
+index c3ebbd7b2a2e..8815c113c0df 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -7,7 +7,6 @@ OBJDIR = bld
@@ -41,7 +41,7 @@ index 05fc5eda71fa..9340f28f2c32 100644
  	  pmqtest.c \
  	  ptsematest.c \
  	  rt-migrate-test.c \
-@@ -35,7 +34,6 @@ LDFLAGS ?=
+@@ -36,7 +35,6 @@ LDFLAGS ?=
  PYLIB  ?= $(shell python3 -c 'import distutils.sysconfig;  print (distutils.sysconfig.get_python_lib())')
  
  MANPAGES = src/cyclictest/cyclictest.8 \
@@ -49,7 +49,7 @@ index 05fc5eda71fa..9340f28f2c32 100644
  	   src/ptsematest/ptsematest.8 \
  	   src/rt-migrate-test/rt-migrate-test.8 \
  	   src/sigwaittest/sigwaittest.8 \
-@@ -125,9 +123,6 @@ deadline_test: $(OBJDIR)/deadline_test.o $(OBJDIR)/librttest.a
+@@ -129,9 +127,6 @@ deadline_test: $(OBJDIR)/deadline_test.o $(OBJDIR)/librttest.a
  signaltest: $(OBJDIR)/signaltest.o $(OBJDIR)/librttest.a
  	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB)
  
@@ -60,7 +60,7 @@ index 05fc5eda71fa..9340f28f2c32 100644
  	chmod +x src/hwlatdetect/hwlatdetect.py
  	ln -s src/hwlatdetect/hwlatdetect.py hwlatdetect
 diff --git a/src/backfire/sendme.c b/src/backfire/sendme.c
-index c1854d9660cb..ecec5c201bef 100644
+index d963723b1c93..b355bbbcfece 100644
 --- a/src/backfire/sendme.c
 +++ b/src/backfire/sendme.c
 @@ -31,6 +31,7 @@
@@ -72,7 +72,7 @@ index c1854d9660cb..ecec5c201bef 100644
  #include <utmpx.h>
  #include <sys/types.h>
 diff --git a/src/cyclictest/cyclictest.c b/src/cyclictest/cyclictest.c
-index c5f1fd46567a..8204e57cbbac 100644
+index b41d42f13f24..56b27a4e0547 100644
 --- a/src/cyclictest/cyclictest.c
 +++ b/src/cyclictest/cyclictest.c
 @@ -36,6 +36,7 @@
@@ -83,7 +83,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  
  #include <bionic.h>
  
-@@ -628,12 +629,8 @@ static void *timerthread(void *param)
+@@ -501,12 +502,8 @@ static void *timerthread(void *param)
  {
  	struct thread_param *par = param;
  	struct sched_param schedp;
@@ -96,7 +96,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  	struct thread_stat *stat = par->stats;
  	int stopped = 0;
  	cpu_set_t mask;
-@@ -664,14 +661,6 @@ static void *timerthread(void *param)
+@@ -537,14 +534,6 @@ static void *timerthread(void *param)
  	sigaddset(&sigset, par->signal);
  	sigprocmask(SIG_BLOCK, &sigset, NULL);
  
@@ -111,7 +111,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  	memset(&schedp, 0, sizeof(schedp));
  	schedp.sched_priority = par->prio;
  	if (setscheduler(0, par->policy, &schedp))
-@@ -726,20 +715,6 @@ static void *timerthread(void *param)
+@@ -599,20 +588,6 @@ static void *timerthread(void *param)
  		stop = now;
  		stop.tv_sec += duration;
  	}
@@ -132,7 +132,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  
  	stat->threadstarted++;
  
-@@ -747,16 +722,10 @@ static void *timerthread(void *param)
+@@ -620,16 +595,10 @@ static void *timerthread(void *param)
  
  		uint64_t diff;
  		unsigned long diff_smi = 0;
@@ -150,7 +150,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  		case MODE_CLOCK_NANOSLEEP:
  			if (par->timermode == TIMER_ABSTIME) {
  				ret = clock_nanosleep(par->clock, TIMER_ABSTIME,
-@@ -878,11 +847,6 @@ static void *timerthread(void *param)
+@@ -751,11 +720,6 @@ static void *timerthread(void *param)
  
  		next.tv_sec += interval.tv_sec;
  		next.tv_nsec += interval.tv_nsec;
@@ -162,7 +162,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  		tsnorm(&next);
  
  		while (tsgreater(&now, &next)) {
-@@ -907,17 +871,6 @@ out:
+@@ -780,17 +744,6 @@ out:
  		pthread_mutex_unlock(&refresh_on_max_lock);
  	}
  
@@ -180,7 +180,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  	/* close msr file */
  	if (smi)
  		close(par->msr_fd);
-@@ -1417,7 +1370,8 @@ static void process_options (int argc, char *argv[], int max_cpus)
+@@ -1305,7 +1258,8 @@ static void process_options (int argc, char *argv[], int max_cpus)
  		case OPT_VERBOSE: verbose = 1; break;
  		case 'x':
  		case OPT_POSIX_TIMERS:
@@ -190,7 +190,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  		case '?':
  		case OPT_HELP:
  			display_help(0); break;
-@@ -1450,13 +1404,6 @@ static void process_options (int argc, char *argv[], int max_cpus)
+@@ -1338,13 +1292,6 @@ static void process_options (int argc, char *argv[], int max_cpus)
  		}
  	}
  
@@ -204,7 +204,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  	/* if smp wasn't requested, test for numa automatically */
  	if (!smp) {
  #ifdef NUMA
-@@ -2157,7 +2104,6 @@ int main(int argc, char **argv)
+@@ -2038,7 +1985,6 @@ int main(int argc, char **argv)
  
  	}
  
@@ -212,7 +212,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  	mode = use_nanosleep + use_system;
  
  	sigemptyset(&sigset);
-@@ -2207,16 +2153,18 @@ int main(int argc, char **argv)
+@@ -2088,16 +2034,18 @@ int main(int argc, char **argv)
  			void *stack;
  			void *currstk;
  			size_t stksize;
@@ -234,7 +234,7 @@ index c5f1fd46567a..8204e57cbbac 100644
  
  			/*  allocate memory for a stack on appropriate node */
 diff --git a/src/hackbench/hackbench.c b/src/hackbench/hackbench.c
-index 5a883d341f2e..9f1e4db736a7 100644
+index 2cddff654df6..46f09fa9e7ba 100644
 --- a/src/hackbench/hackbench.c
 +++ b/src/hackbench/hackbench.c
 @@ -24,13 +24,15 @@
@@ -289,7 +289,7 @@ index 000000000000..ea5075e768c8
 +
 +#endif /* _MUSL_H_ */
 diff --git a/src/lib/rt-utils.c b/src/lib/rt-utils.c
-index 1998a327d036..f7adda9c5987 100644
+index f786588706cd..c1a55272dfdb 100644
 --- a/src/lib/rt-utils.c
 +++ b/src/lib/rt-utils.c
 @@ -23,6 +23,7 @@
@@ -298,7 +298,7 @@ index 1998a327d036..f7adda9c5987 100644
  #include "error.h"
 +#include "musl.h"
  
- static char debugfileprefix[MAX_PATH];
+ #define  TRACEBUFSIZ  1024
  
 diff --git a/src/pi_tests/classic_pi.c b/src/pi_tests/classic_pi.c
 index 64af8890276f..bb088d3973b2 100644
@@ -327,7 +327,7 @@ index 97a345edd26e..1028d344edff 100644
  #define TIMEOUT 2
  
 diff --git a/src/pmqtest/pmqtest.c b/src/pmqtest/pmqtest.c
-index 3ce29252b9a2..1a57841cb7e8 100644
+index 5db8d348cdf8..2de6c1417e4a 100644
 --- a/src/pmqtest/pmqtest.c
 +++ b/src/pmqtest/pmqtest.c
 @@ -24,6 +24,7 @@
@@ -339,7 +339,7 @@ index 3ce29252b9a2..1a57841cb7e8 100644
  #include <pthread.h>
  
 diff --git a/src/ptsematest/ptsematest.c b/src/ptsematest/ptsematest.c
-index 485c991ec173..c000e083615f 100644
+index de8ea2fe1b0c..1568f3b78711 100644
 --- a/src/ptsematest/ptsematest.c
 +++ b/src/ptsematest/ptsematest.c
 @@ -22,6 +22,7 @@
@@ -376,5 +376,5 @@ index a08e28e73c42..675a0ea1a162 100644
  #define STR(x) _STR(x)
  #ifndef MAXPATH
 -- 
-2.24.1
+2.26.2
 
