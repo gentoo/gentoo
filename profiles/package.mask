@@ -551,11 +551,6 @@ dev-python/backports-unittest-mock
 # Removal in 30 days.  Bug #715204.
 www-servers/cherokee
 
-# Joonas Niilola <juippis@gentoo.org> (2020-09-07)
-# Nothing in the tree uses this lib anymore. Removing as redundant.
-# Removal in ~30 days. Bug #740868.
-dev-python/mini-amf
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
