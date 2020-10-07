@@ -431,10 +431,8 @@ src_test() {
 		run-make
 	)
 
-	# known to fail with system-llvm sometimes
-	# system-llvm is stable-masked for time-being
-	# so only test internal one.
-	use system-llvm || tests+=( assembly )
+	# fails if llvm is not built with ALL targets.
+	# use system-llvm || tests+=( assembly )
 
 	# fragile/expensive/less important tests
 	# or tests that require extra build time
