@@ -15561,6 +15561,7 @@ net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
 net-wireless/gr-ieee802154 0.0_p20190606 0.0_p20191006 9999: IEEE 802.15.4 ZigBee Transceiver
 net-wireless/gr-iio 0.3-r3 0.3_p20191219-r1 9999: GNU Radio IIO Blocks
 net-wireless/gr-iqbal 0.37.3 0.38.1 9999: gnuradio I/Q balancing
+net-wireless/gr-m2k 9999: A C++ library for interfacing with the ADALM2000
 net-wireless/gr-ntsc 9999: RTL2832U NTSC viewer
 net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
 net-wireless/gr-osmosdr 0.1.5-r1 0.2.0 0.2.2 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
@@ -15569,6 +15570,7 @@ net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modu
 net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
+net-wireless/gr-scopy 0.0_p20201005 9999: Scopy IIO blocks for GNU Radio
 net-wireless/gr-specest 9999: A module adding spectral estimation routines to GNU Radio
 net-wireless/hackrf-tools 2018.01.1-r2 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
@@ -15584,6 +15586,7 @@ net-wireless/kismet 2020.04.3 2020.09.4 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
 net-wireless/kismetmobiledashboard 1.5_beta1-r2 9999: Mobile UI for kismet
+net-wireless/libm2k 0.0_p20201005 9999: A C++ library for interfacing with the ADALM2000
 net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 0.0_p20200214 9999: A generic library for injecting 802.11 frames
@@ -18349,7 +18352,7 @@ x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.40.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.11.5: Qt port of Neil Hodgson's Scintilla C++ editor control
 x11-libs/qtermwidget 0.14.1 0.15.0 9999: Qt terminal emulator widget
-x11-libs/qwt 6.1.4: 2D plotting library for Qt5
+x11-libs/qwt 6.1.4 6.1.5: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/scw 0.4.7-r2: A GTK+ widget set specifically designed for chat programs
