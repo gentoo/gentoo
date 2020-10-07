@@ -5816,7 +5816,7 @@ dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5 2.18.8-r1 2.18.10: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2 8.06.7: OCaml interface to the Tcl/Tk GUI framework
-dev-ml/llvm-ocaml 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: OCaml bindings for LLVM
+dev-ml/llvm-ocaml 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
 dev-ml/lwt 3.0.0 3.1.0: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
@@ -7985,7 +7985,7 @@ dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framewo
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2-r1: A library for wrapping and filling UTF-8 CJK text
-dev-python/clang-python 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Python bindings for sys-devel/clang
+dev-python/clang-python 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 2.1.0 9999: Python helpers for common CLI tasks
 dev-python/cliapp 1.20180812.1: Framework for Unix-like command line programs
 dev-python/click 6.7-r2 7.1.2-r1: A Python package for creating beautiful command line interfaces
@@ -8233,7 +8233,7 @@ dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0-r1: Python based U2F host library
 dev-python/googleapis-common-protos 1.51.0: python classes generated from the common protos in the googleapis repository
 dev-python/graph-tool 2.35 9999: An efficient python module for manipulation and statistical analysis of graphs
-dev-python/graphviz 0.14.1: Simple Python interface for Graphviz
+dev-python/graphviz 0.14.1 0.14.2: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.16-r1 0.4.17: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
 dev-python/grpcio 1.28.1 1.32.0: High-performance RPC framework (python libraries)
@@ -8377,7 +8377,7 @@ dev-python/libtmux 0.8.2-r2 0.8.3: python api for tmux
 dev-python/libvirt-python 6.7.0 6.8.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
-dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
+dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.33.0 0.34.0: Python wrapper around the llvm C++ library
@@ -8399,7 +8399,7 @@ dev-python/mako 1.1.3-r1: A Python templating language
 dev-python/mamba 0.11.0 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.11 3.1.1-r1 3.2.2: Python implementation of the markdown markup language
+dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -8720,7 +8720,7 @@ dev-python/pykerberos 1.3.0 1.3.0-r1: A high-level Python wrapper for Kerberos/G
 dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1: Code audit tool for python
-dev-python/pylast 3.3.0: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 3.3.0 4.0.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylatex 1.3.3 1.4.0: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
@@ -9126,7 +9126,7 @@ dev-python/spyder-vim 0_pre20200721: Plugin for Spyder to enable Vim keybindings
 dev-python/sqlalchemy 1.3.11 1.3.17: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
-dev-python/sqlparse 0.3.1: A non-validating SQL parser module for Python
+dev-python/sqlparse 0.3.1 0.4.0: A non-validating SQL parser module for Python
 dev-python/sshtunnel 0.1.4-r2 0.1.5: Pure Python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
 dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation written in Python
@@ -9183,7 +9183,7 @@ dev-python/toolz 0.10.0 0.11.0 0.11.1: List processing tools and functional util
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.19.0 3.20.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.48.2 4.49.0 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.48.2 4.49.0 4.50.1 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.4: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
@@ -9206,7 +9206,7 @@ dev-python/typing-extensions 3.7.4.2 3.7.4.3: Type Hint extensions from Python 3
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.6.0 2.7.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
-dev-python/ujson 1.35-r1 3.1.0 3.2.0: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.35-r1 3.1.0 3.2.0 4.0.0: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
@@ -10777,7 +10777,7 @@ dev-util/lcov 1.13-r2 1.14 1.14_p2 1.15 9999: A graphical front-end for GCC's co
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/libabigail 1.6: Suite of tools for checking ABI differences between ELF objects
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lldb 9.0.1-r1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: The LLVM debugger
+dev-util/lldb 9.0.1-r1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.3_p4-r1: trace library calls made at runtime
@@ -17328,9 +17328,9 @@ sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1: Tools necessary to buil
 sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
-sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
-sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
-sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
+sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
+sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
+sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20200801 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17348,9 +17348,9 @@ sys-devel/gnuconfig 20190912 20200621 99999999: Updated config.sub and config.gu
 sys-devel/icecream 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 4.9.4 4.9.4-r1 5.4.0 5.5.0 6.4.0 6.5.0 7.3.0 7.5.0 8.3.0 8.4.0 9.3.0-r1 9.3.0-r2 10.1.0 10.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
-sys-devel/lld 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
-sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
-sys-devel/llvm-common 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
+sys-devel/lld 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
+sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
+sys-devel/llvm-common 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
 sys-devel/llvm-roc 3.7.0-r1 3.8.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
@@ -17583,8 +17583,8 @@ sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
-sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
-sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
+sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
+sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
@@ -17608,8 +17608,8 @@ sys-libs/libblockdev 2.24 9999: A library for manipulating block devices
 sys-libs/libcap 2.43: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.10 0.7.11 0.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
-sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
-sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
+sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
 sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system functions
@@ -17617,7 +17617,7 @@ sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r3 1.0.3-r4: Light-weight 'standard library' of C functions
-sys-libs/libomp 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
+sys-libs/libomp 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.6.0 1.8.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2 2.0.2-r1: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
@@ -17637,7 +17637,7 @@ sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged ap
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt, bcrypt, and others
-sys-libs/llvm-libunwind 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 9999: Light, fast and simple C library focused on standards-conformance and safety
@@ -17972,7 +17972,7 @@ www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.7.0 4.7.1: An Apache2 module for running Python WSGI applications
 www-apache/mod_xsendfile 1.0_beta1-r1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
-www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
+www-apache/modsecurity-crs 3.0.2 3.1.0 3.3.0: OWASP ModSecurity Core Rule Set
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 6.0.4 6.0.5 6.0.6: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
