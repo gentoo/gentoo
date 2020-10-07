@@ -57,7 +57,6 @@ app-metrics/collectd collectd_plugins_onewire
 # These flags depend on dev-python/pygtk that is masked for removal.
 app-mobilephone/sobexsrv gtk
 <media-gfx/gimp-3 python
-<x11-libs/vte-0.58 python
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
@@ -72,11 +71,9 @@ dev-db/mariadb columnstore
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Require dev-python/twisted with py2.7.
 net-voip/telepathy-haze test
-<net-voip/telepathy-salut-0.8.1-r3 test
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # dev-python/distributed is going to be last rited.
-dev-python/dask distributed
 dev-python/joblib doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-30)
@@ -193,7 +190,6 @@ dev-python/zeep tornado
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
 net-irc/telepathy-idle test
-net-voip/telepathy-rakia test
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # libcxxrt is unmaintained and it's going to be removed.
