@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE='bzip2(+)'
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git"
 	S="${WORKDIR}/${P}/repoman"
 else
-	SRC_URI="https://dev.gentoo.org/~dolsen/releases/${PN}/${P}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -26,7 +26,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=sys-apps/portage-2.3.0_rc[${PYTHON_USEDEP}]
+	>=sys-apps/portage-3.0.4[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "

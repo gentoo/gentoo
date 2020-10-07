@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -327,6 +327,7 @@ S=${WORKDIR}/${P/_/-}
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
 	"${FILESDIR}"/${PN}-4.3-fix-build-without-SSSE3.patch
+	"${FILESDIR}"/${PN}-4.3-altivec-novsx-yuv2rgb.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
