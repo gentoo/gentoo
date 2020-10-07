@@ -10,7 +10,7 @@ SRC_URI="https://github.com/conformal/spectrwm/archive/${PN^^}_${PV//./_}.tar.gz
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	!x11-wm/scrotwm
