@@ -6,7 +6,6 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
-	<flag name="consolekit">Support <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
 	<flag name="elogind">Support <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 </use>
 </pkgmetadata>

@@ -11,9 +11,8 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${PF}-patchset.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="consolekit doc elogind systemd"
+IUSE="doc elogind systemd"
 # There is a null backend available, thus ?? not ^^
-# consolekit can be enabled alone, or together with a logind provider; in latter case CK is used as fallback
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -30,7 +29,6 @@ DEPEND="
 
 	systemd? ( >=sys-apps/systemd-183:0= )
 	elogind? ( >=sys-auth/elogind-239.4 )
-	consolekit? ( >=dev-libs/dbus-glib-0.76 )
 "
 
 # Pure-runtime deps from the session files should *NOT* be added here.
@@ -46,7 +44,6 @@ RDEPEND="${DEPEND}
 	>=gnome-base/gnome-settings-daemon-3.23.2
 	>=gnome-base/gsettings-desktop-schemas-0.1.7
 	sys-apps/dbus[X]
-	consolekit? ( sys-auth/consolekit )
 
 	x11-misc/xdg-user-dirs
 	x11-misc/xdg-user-dirs-gtk
@@ -80,8 +77,8 @@ src_configure() {
 		$(meson_use systemd)
 		-Dsystemd_session=$(usex systemd default disable)
 		$(meson_use systemd systemd_journal)
-		$(meson_use consolekit)
 		$(meson_use doc docbook)
+		-Dconsolekit=false
 		-Dman=true
 	)
 	meson_src_configure
@@ -119,8 +116,8 @@ pkg_postinst() {
 		ewarn "make sure that the commands in the xinitrc.d scripts are run."
 	fi
 
-	if ! use systemd && ! use elogind && ! use consolekit; then
-		ewarn "You are building without systemd, elogind and/or consolekit support."
+	if ! use systemd && ! use elogind; then
+		ewarn "You are building without systemd or elogind support."
 		ewarn "gnome-session won't be able to correctly track and manage your session."
 	fi
 }
