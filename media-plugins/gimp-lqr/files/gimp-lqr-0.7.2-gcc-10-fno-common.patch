@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/708520
+https://github.com/carlobaldassi/gimp-lqr-plugin/issues/7
+--- a/src/interface_aux.c	2013-08-05 06:06:03.000000000 -0700
++++ b/src/interface_aux.c	2020-10-06 10:44:45.349564022 -0700
+@@ -48,11 +48,11 @@
+ 
+ gint dialog_aux_response = GTK_RESPONSE_OK;
+ 
+-PlugInUIVals *ui_state;
+-PlugInVals *state;
+-PlugInDialogVals *dialog_state;
++extern PlugInUIVals *ui_state;
++extern PlugInVals *state;
++extern PlugInDialogVals *dialog_state;
+ 
+-GtkWidget *dlg;
++extern GtkWidget *dlg;
+ 
+ /***  Public functions  ***/
+ 
+--- a/src/interface_I.c	2013-08-05 06:06:03.000000000 -0700
++++ b/src/interface_I.c	2020-10-06 10:44:45.349564022 -0700
+@@ -65,13 +65,13 @@
+ 
+ gint dialog_I_response = GTK_RESPONSE_OK;
+ 
+-PlugInUIVals *ui_state;
+-PlugInVals *state;
+-PlugInDialogVals *dialog_state;
+-gboolean features_are_sensitive;
++extern PlugInUIVals *ui_state;
++extern PlugInVals *state;
++extern PlugInDialogVals *dialog_state;
++extern gboolean features_are_sensitive;
+ InterfaceIData interface_I_data;
+ 
+-GtkWidget *dlg;
++extern GtkWidget *dlg;
+ GtkWidget *coordinates;
+ 
+ gulong size_changed = 0;
+--- a/src/main.c	2013-08-05 06:06:03.000000000 -0700
++++ a/src/main.c	2020-10-06 10:44:45.349564022 -0700
+@@ -179,7 +179,7 @@
+   {GIMP_PDB_INT32, "resize_aux_layers",
+    "Whether to resize auxiliary layers"},
+   {GIMP_PDB_INT32, "resize_canvas", "Whether to resize canvas"},
+-  {GIMP_PDB_INT32, "output target", "Output target (same layer, new layer, new image)"},
++  {GIMP_PDB_INT32, "output_target", "Output target (same layer, new layer, new image)"},
+   {GIMP_PDB_INT32, "seams", "Whether to output the seam map"},
+   {GIMP_PDB_INT32, "nrg_func", "Energy function to use"},
+   {GIMP_PDB_INT32, "res_order", "Resize order"},

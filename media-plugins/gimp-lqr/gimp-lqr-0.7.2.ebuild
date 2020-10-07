@@ -18,3 +18,7 @@ RDEPEND="
 	>=media-gfx/gimp-2.8
 	media-libs/liblqr"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.7.2-gcc-10-fno-common.patch"
+)
