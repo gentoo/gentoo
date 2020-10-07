@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0"
 
-IUSE="audit bluetooth connection-sharing consolekit dhclient dhcpcd elogind gnutls +introspection iwd json kernel_linux +nss +modemmanager ncurses ofono ovs policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
+IUSE="audit bluetooth connection-sharing dhclient dhcpcd elogind gnutls +introspection iwd json kernel_linux +nss +modemmanager ncurses ofono ovs policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -24,10 +24,10 @@ REQUIRED_USE="
 	vala? ( introspection )
 	wext? ( wifi )
 	|| ( nss gnutls )
-	?? ( consolekit elogind systemd )
+	?? ( elogind systemd )
 "
 
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # gobject-introspection-0.10.3 is needed due to gnome bug 642300
 # wpa_supplicant-0.7.3-r3 is needed due to bug 359271
@@ -45,14 +45,12 @@ COMMON_DEPEND="
 	connection-sharing? (
 		net-dns/dnsmasq[dbus,dhcp]
 		net-firewall/iptables )
-	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dhclient? ( >=net-misc/dhcp-4[client] )
 	dhcpcd? ( net-misc/dhcpcd )
 	elogind? ( >=sys-auth/elogind-219 )
 	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
 	json? ( >=dev-libs/jansson-2.5[${MULTILIB_USEDEP}] )
-	modemmanager? ( >=net-misc/modemmanager-0.7.991:0=
-		net-misc/mobile-broadband-provider-info )
+	modemmanager? ( >=net-misc/modemmanager-0.7.991:0= )
 	ncurses? ( >=dev-libs/newt-0.52.15 )
 	nss? ( >=dev-libs/nss-3.11:=[${MULTILIB_USEDEP}] )
 	!nss? ( gnutls? (
@@ -175,12 +173,7 @@ multilib_src_configure() {
 		--with-iptables=/sbin/iptables
 		--with-ebpf=yes
 		$(multilib_native_enable concheck)
-		--with-nm-cloud-setup=$(multilib_is_native_abi && echo yes || echo no)
 		--with-crypto=$(usex nss nss gnutls)
-		--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind $(multilib_native_usex consolekit consolekit no)))
-		# ConsoleKit has no build-time dependency, so use it as the default case.
-		# There is no off switch, and we do not support upower.
-		--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
 		$(multilib_native_use_with audit libaudit)
 		$(multilib_native_use_enable bluetooth bluez5-dun)
 		--without-dhcpcanon
@@ -196,6 +189,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with ofono)
 		$(multilib_native_use_enable ovs)
 		$(multilib_native_use_enable policykit polkit)
+		$(multilib_native_use_enable policykit polkit-agent)
 		$(multilib_native_use_with resolvconf)
 		$(multilib_native_use_with selinux)
 		$(multilib_native_use_with systemd systemd-journal)
@@ -207,6 +201,19 @@ multilib_src_configure() {
 		$(multilib_native_use_with wext)
 		$(multilib_native_use_enable wifi)
 	)
+
+	# There is no off switch, and we do not support upower.
+	if use systemd; then
+		myconf+=(
+			--with-session-tracking=systemd
+			--with-suspend-resume=systemd
+		)
+	elif use elogind; then
+		myconf+=(
+			--with-session-tracking=elogind
+			--with-suspend-resume=elogind
+		)
+	fi
 
 	# Same hack as net-dialup/pptpd to get proper plugin dir for ppp, bug #519986
 	if use ppp; then

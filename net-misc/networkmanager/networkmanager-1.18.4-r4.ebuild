@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname version
 
-IUSE="audit bluetooth connection-sharing consolekit +dhclient dhcpcd elogind gnutls +introspection iwd json kernel_linux +nss +modemmanager ncurses ofono ovs policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
+IUSE="audit bluetooth connection-sharing +dhclient dhcpcd elogind gnutls +introspection iwd json kernel_linux +nss +modemmanager ncurses ofono ovs policykit +ppp resolvconf selinux systemd teamd test vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -24,7 +24,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 	wext? ( wifi )
 	|| ( nss gnutls )
-	?? ( consolekit elogind systemd )
+	?? ( elogind systemd )
 "
 
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~sparc x86"
@@ -47,7 +47,6 @@ COMMON_DEPEND="
 	connection-sharing? (
 		net-dns/dnsmasq[dbus,dhcp]
 		net-firewall/iptables )
-	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dhclient? ( >=net-misc/dhcp-4[client] )
 	dhcpcd? ( net-misc/dhcpcd )
 	elogind? ( >=sys-auth/elogind-219 )
@@ -104,7 +103,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-data-fix-the-ID_NET_DRIVER-udev-rule.patch
-	"${FILESDIR}"/1.18.4-iwd1-compat.patch # included in 1.21.3+
+	"${FILESDIR}"/${PV}-iwd1-compat.patch # included in 1.21.3+
 )
 
 python_check_deps() {
@@ -185,10 +184,6 @@ multilib_src_configure() {
 		--with-ebpf=yes
 		$(multilib_native_enable concheck)
 		--with-crypto=$(usex nss nss gnutls)
-		--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind $(multilib_native_usex consolekit consolekit no)))
-		# ConsoleKit has no build-time dependency, so use it as the default case.
-		# There is no off switch, and we do not support upower.
-		--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
 		$(multilib_native_use_with audit libaudit)
 		$(multilib_native_use_enable bluetooth bluez5-dun)
 		$(use_with dhclient)
@@ -214,6 +209,18 @@ multilib_src_configure() {
 		$(multilib_native_use_with wext)
 		$(multilib_native_use_enable wifi)
 	)
+
+	if use systemd; then
+		myconf+=(
+			--with-session-tracking=systemd
+			--with-suspend-resume=systemd
+		)
+	elif use elogind; then
+		myconf+=(
+			--with-session-tracking=elogind
+			--with-suspend-resume=elogind
+		)
+	fi
 
 	# Same hack as net-dialup/pptpd to get proper plugin dir for ppp, bug #519986
 	if use ppp; then
@@ -285,7 +292,7 @@ multilib_src_install_all() {
 	einstalldocs
 	! use systemd && readme.gentoo_create_doc
 
-	newinitd "${FILESDIR}/init.d.NetworkManager-r2" NetworkManager
+	newinitd "${FILESDIR}/init.d.NetworkManager-r1" NetworkManager
 	newconfd "${FILESDIR}/conf.d.NetworkManager" NetworkManager
 
 	# Need to keep the /etc/NetworkManager/dispatched.d for dispatcher scripts

@@ -9,8 +9,6 @@
 		<flag name="concheck">Enable connectivity checking support</flag>
 		<flag name="connection-sharing">Use <pkg>net-dns/dnsmasq</pkg> and
 			<pkg>net-firewall/iptables</pkg> for connection sharing</flag>
-		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> for session
-			tracking</flag>
 		<flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for
 			getting ip</flag>
 		<flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting ip</flag>
