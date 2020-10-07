@@ -15,7 +15,7 @@ if [[ "${PV}" =~ [9]{4,} ]]; then
 	EGIT_REPO_URI="https://github.com/python/${PN}"
 	EGIT_COMMIT="master"
 else
-	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv sparc x86"
 fi
 
 LICENSE="MIT"
