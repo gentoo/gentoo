@@ -4,6 +4,8 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
+DISTUTILS_USE_SETUPTOOLS=no
+
 inherit desktop distutils-r1 xdg-utils
 
 if [[ ${PV} != *9999* ]]; then
@@ -29,7 +31,8 @@ RDEPEND="
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt5[network,svg,${PYTHON_USEDEP}]
-	>=dev-python/qscintilla-python-2.9.4[qt5(+),${PYTHON_USEDEP}]"
+	>=dev-python/qscintilla-python-2.9.4[qt5(+),${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}"
 
 distutils_enable_sphinx doc/source
