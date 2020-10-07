@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic xdg-utils
 
-DESCRIPTION="oidc-agent for managing OpenID Connect tokens on the command line"
+DESCRIPTION="Agent and tools for managing OpenID Connect tokens on the command line"
 HOMEPAGE="https://github.com/indigo-dc/oidc-agent"
 SRC_URI="https://github.com/indigo-dc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
