@@ -22,8 +22,7 @@ app-emulation/spice smartcard
 media-libs/mesa vulkan-overlay
 
 # Sam James <sam@gentoo.org> (2020-07-16)
-# Pulls in too many yet unstable versions of
-# e.g. matplotlib
+# Needs unstable dev-python/networkx
 # bug #732492
 app-portage/nattka depgraph-order
 
