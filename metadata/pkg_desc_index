@@ -814,7 +814,7 @@ app-backup/mkstage4 0.1 0.2 0.3 9999: Bash Utility for Creating Stage 4 Tarballs
 app-backup/mylvmbackup 0.14: Tool for creating backups of MySQL server's data files using LVM snapshots
 app-backup/pdumpfs 1.3-r2: A daily backup system similar to Plan9's dumpfs
 app-backup/rdedup 1.0.2: data deduplication with compression and public key encryption
-app-backup/rdiff-backup 2.0.0 2.0.3 2.0.5: Local/remote mirroring+incremental backup
+app-backup/rdiff-backup 2.0.0 2.0.5 2.0.5-r1: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
 app-backup/rear 2.4 2.6: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
@@ -1932,7 +1932,7 @@ app-emulation/faudio 19.06 19.09 20.02 20.09 9999: FAudio - Accuracy-focused XAu
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.22.0: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.5.14 2.5.16 2.5.17 2.5.18: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.20 2.5.18 2.5.20: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
@@ -2975,7 +2975,7 @@ app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML pars
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 2.9.2.1: Conversion between markup formats
 app-text/paperwork 1.3.1: a personal document manager for scanned documents (and PDFs)
-app-text/paperwork-backend 1.3.1: Backend part of Paperwork (Python API, no UI)
+app-text/paperwork-backend 1.3.1 1.3.1-r1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1 1.53.0: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/pastebinit 1.5-r1 1.5.1: A software that lets you send anything you want directly to a pastebin
@@ -18022,7 +18022,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 17.0.8 17.0.9 18.0.7 18.0.8 18.0.9 19.0.1 19.0.2 19.0.3: Personal cloud that runs on your own server
+www-apps/nextcloud 17.0.8 17.0.9 18.0.7 18.0.8 18.0.9 19.0.1 19.0.2 19.0.3 20.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
