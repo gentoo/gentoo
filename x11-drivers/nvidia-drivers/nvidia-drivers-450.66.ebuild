@@ -50,12 +50,13 @@ COMMON="
 		x11-libs/pango[X]
 	)
 	X? (
+		>=x11-libs/libvdpau-1.0[${MULTILIB_USEDEP}]
+		app-misc/pax-utils
 		!libglvnd? ( >=app-eselect/eselect-opengl-1.0.9 )
 		libglvnd? (
-			media-libs/libglvnd[${MULTILIB_USEDEP}]
 			!app-eselect/eselect-opengl
+			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
 		)
-		app-misc/pax-utils
 	)
 "
 DEPEND="
@@ -72,7 +73,6 @@ RDEPEND="
 		<x11-base/xorg-server-1.20.99:=
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libvdpau-1.0[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 	)
 	kernel_linux? ( net-libs/libtirpc )
