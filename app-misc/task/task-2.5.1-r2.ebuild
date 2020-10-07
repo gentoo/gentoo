@@ -11,7 +11,7 @@ SRC_URI="https://taskwarrior.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~x86 ~x64-macos"
 IUSE="+sync"
 
 DEPEND="
