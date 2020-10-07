@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Sam James <sam@gentoo.org> (2020-10-08)
+# PyPy3 works on arm64
+-python_targets_pypy3
+-python_single_target_pypy3
+
 # David Seifert <soap@gentoo.org (2020-05-17)
 # Mono is hopelessly broken on arm64
 mono
