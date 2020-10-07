@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -17,12 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/snowballstemmer[${PYTHON_USEDEP}]"
-
-DEPEND="test? (
-	dev-python/pytest-pep8[${PYTHON_USEDEP}]
-	dev-python/mypy[${PYTHON_USEDEP}]
-	dev-python/tox[${PYTHON_USEDEP}]
-)"
 
 distutils_enable_tests pytest
 # Requires network to lookup github issues
