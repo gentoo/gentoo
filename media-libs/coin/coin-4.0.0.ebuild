@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/coin3d/coin/wiki"
 SRC_URI="https://github.com/coin3d/coin/releases/download/${MY_P}/${P}-src.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="~amd64 ~arm ~hppa ppc ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="debug doc +exceptions javascript man openal qthelp test threads"
 RESTRICT="!test? ( test )"
