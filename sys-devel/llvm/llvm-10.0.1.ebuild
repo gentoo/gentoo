@@ -60,7 +60,7 @@ BDEPEND="
 	)
 	libffi? ( virtual/pkgconfig )
 	$(python_gen_any_dep '
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 		doc? ( dev-python/recommonmark[${PYTHON_USEDEP}] )
 	')"
 # There are no file collisions between these versions but having :0
@@ -80,8 +80,9 @@ python_check_deps() {
 	if use doc; then
 		has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" ||
 			return 1
+		has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]" ||
+			return 1
 	fi
-	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
 check_distribution_components() {
@@ -275,14 +276,14 @@ get_distribution_components() {
 
 			# python modules
 			opt-viewer
+		)
+		use doc && out+=(
+			docs-llvm-html
 
 			# manpages
 			docs-dsymutil-man
 			docs-llvm-dwarfdump-man
 			docs-llvm-man
-		)
-		use doc && out+=(
-			docs-llvm-html
 		)
 
 		use gold && out+=(
@@ -363,9 +364,9 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=ON
+			-DLLVM_BUILD_DOCS=$(usex doc)
 			-DLLVM_ENABLE_OCAMLDOC=OFF
-			-DLLVM_ENABLE_SPHINX=ON
+			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_UTILS=ON
 			-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
