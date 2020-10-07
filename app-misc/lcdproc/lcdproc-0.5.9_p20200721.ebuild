@@ -11,7 +11,7 @@ DESCRIPTION="Displays real-time system information from your Linux/*BSD box on a
 HOMEPAGE="http://www.lcdproc.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ppc ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug doc ethlcd extra-charmaps freetype menu nfs png samba test-menu"
