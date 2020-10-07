@@ -52,7 +52,6 @@ pkg_setup() {
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--with-default-vt=${DEFAULTVT}
 		--with-xdmconfigdir=/etc/X11/xdm
-		--without-consolekit
 	)
 }
 
