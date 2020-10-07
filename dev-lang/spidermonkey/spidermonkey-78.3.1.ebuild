@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 
 WANT_AUTOCONF="2.1"
 
-inherit autotools check-reqs multiprocessing python-any-r1 toolchain-funcs
+inherit autotools check-reqs flag-o-matic multiprocessing python-any-r1 toolchain-funcs
 
 MY_PN="mozjs"
 MY_PV="${PV/_pre*}" # Handle Gentoo pre-releases
@@ -53,7 +53,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~s390 ~x86"
 
 SLOT="78"
 LICENSE="MPL-2.0"
-IUSE="cpu_flags_arm_neon debug +jit test"
+IUSE="cpu_flags_arm_neon debug +jit lto test"
 
 RESTRICT="!test? ( test )"
 
@@ -106,6 +106,8 @@ pkg_setup() {
 
 src_prepare() {
 	pushd ../.. &>/dev/null || die
+
+	use lto && rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch
 
 	eapply "${WORKDIR}"/firefox-patches
 	eapply "${WORKDIR}"/spidermonkey-patches
@@ -174,6 +176,14 @@ src_configure() {
 			myeconfargs+=( --with-thumb-interwork=no )
 		fi
 	fi
+
+	# Tell build system that we want to use LTO
+	if use lto ; then
+		myeconfargs+=( --enable-lto )
+	fi
+
+	# LTO flag was handled via configure
+	filter-flags '-flto*'
 
 	# Forcing system-icu allows us to skip patching bundled ICU for PPC
 	# and other minor arches
