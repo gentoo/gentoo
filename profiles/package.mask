@@ -566,7 +566,6 @@ dev-python/flask-appconfig
 # of kismet and tools which use it are no longer maintained.
 # Users should upgrade to a newer version of kismet which
 # is supported.
-dev-perl/Net-Kismet
 net-wireless/kismet-ubertooth
 <net-wireless/kismet-2017
 
