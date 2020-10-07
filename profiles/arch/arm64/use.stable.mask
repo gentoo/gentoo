@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sam James <sam@gentoo.org> (2020-10-08)
+# Not enough packages stable w/ PyPy3 support
+python_targets_pypy3
+python_single_target_pypy3
+
 # Sam James <sam@gentoo.org> (2020-10-07)
 # app-misc/lirc not stable yet
 # dev-db/tokyocabinet not stable yet
