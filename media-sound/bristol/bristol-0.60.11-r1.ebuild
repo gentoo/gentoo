@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/bristol/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa oss static-libs"
 # osc : configure option but no code it seems...
 # jack: fails to build if disabled
