@@ -52,7 +52,7 @@ COMMON="
 	X? (
 		!libglvnd? ( >=app-eselect/eselect-opengl-1.0.9 )
 		libglvnd? (
-			media-libs/libglvnd[${MULTILIB_USEDEP}]
+			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
 			!app-eselect/eselect-opengl
 		)
 		app-misc/pax-utils

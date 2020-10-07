@@ -55,7 +55,7 @@ COMMON="
 		!libglvnd? ( >=app-eselect/eselect-opengl-1.0.9 )
 		libglvnd? (
 			!app-eselect/eselect-opengl
-			media-libs/libglvnd[${MULTILIB_USEDEP}]
+			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
 		)
 	)
 "
