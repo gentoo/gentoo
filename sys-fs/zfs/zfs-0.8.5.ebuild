@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info pam systemd toolchain-funcs udev usr-ldscript
+inherit autotools bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -15,15 +15,13 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 linux-mod
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	MY_P="${P/_rc/-rc}"
-	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${MY_P}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
-	S="${WORKDIR}/${P%_rc?}"
 fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin libressl minimal nls pam python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl minimal nls python +rootfs test-suite static-libs"
 
 DEPEND="
 	net-libs/libtirpc[static-libs?]
@@ -34,7 +32,6 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
 	!minimal? ( ${PYTHON_DEPS} )
-	pam? ( sys-libs/pam )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
@@ -78,7 +75,6 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/bash-completion-sudo.patch"
-	"${FILESDIR}/${PV}-exports-d-permissions.patch"
 )
 
 pkg_setup() {
@@ -140,20 +136,16 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
-		--with-pamconfigsdir="${EPREFIX}/unwanted_files"
-		--with-pammoduledir="$(getpam_mod_dir)"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
-		--with-vendor=gentoo
 		$(use_enable debug)
 		$(use_enable nls)
-		$(use_enable pam)
 		$(use_enable python pyzfs)
 		$(use_enable static-libs static)
 		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)
 
-	econf "${myconf[@]}"
+	CONFIG_SHELL="${EPREFIX}/bin/bash" econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -170,9 +162,7 @@ src_install() {
 
 	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
 
-	use pam && { rm -rv "${ED}/unwanted_files" || die ; }
-
-	use test-suite || { rm -r "${ED}/usr/share/zfs" || die ; }
+	use test-suite || rm -rf "${ED}/usr/share/zfs"
 
 	if ! use static-libs; then
 		find "${ED}/" -name '*.la' -delete || die
