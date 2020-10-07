@@ -5577,7 +5577,7 @@ dev-libs/ncnn 20200226 20200413 20200727: A high-performance neural network infe
 dev-libs/nettle 3.4.1 3.5.1-r1 3.6-r2: Low-level cryptographic library
 dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
-dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
+dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
 dev-libs/nss 3.55 3.56 3.57: Mozilla's Network Security Services library that implements PKI support
@@ -9019,7 +9019,7 @@ dev-python/rq 1.5.0 1.5.2: simple, lightweight library for creating and processi
 dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
-dev-python/rtslib-fb 2.1.73: A Python object API for managing the Linux LIO kernel target
+dev-python/rtslib-fb 2.1.73 2.1.74: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-yaml 0.16.10 0.16.12-r1: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
@@ -9216,7 +9216,7 @@ dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv modul
 dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
-dev-python/uranium 4.7.0: A Python framework for building 3D printing related applications
+dev-python/uranium 4.6.1 4.7.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
@@ -12751,7 +12751,7 @@ media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimet
 media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMagick
 media-gfx/cropgui 0.4.1 0.5: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0-r1 4.6.1: A 3D model slicing application for 3D printing
+media-gfx/cura 3.4.1 3.6.0 4.2.1 4.3.0-r1 4.6.1-r1 4.7.0: A 3D model slicing application for 3D printing
 media-gfx/curaengine 3.4.1 3.6.0 4.2.0 4.3.0 4.6.1 4.7.0: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 3.0.2 3.2.1 3.2.1-r1 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
@@ -12825,7 +12825,7 @@ media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and curso
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.11.31 7.0.10.31 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
-media-gfx/img2pdf 0.3.3 0.3.4 0.3.6: Losslessly convert raster images to PDF
+media-gfx/img2pdf 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 1.0-r1 1.0.1 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.4.2 3.62.0 3.63.0: EPSON Image Scan v3 for Linux
