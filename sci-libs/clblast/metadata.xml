@@ -15,9 +15,8 @@
     matrices.
   </longdescription>
   <use>
-    <flag name="client">
-      Enable compilation of the clients to test and compare performance with reference libraries
-    </flag>
+    <flag name="client">Enable compilation of the clients to test and compare performance with reference libraries</flag>
+    <flag name="persistent">Make OpenCL device and context in the CBLAS Netlib API static</flag>
   </use>
   <upstream>
     <remote-id type="github">CNugteren/CLBlast</remote-id>
