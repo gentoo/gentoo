@@ -51,10 +51,6 @@ opencl
 # net-libs/libsmi not tested on arm64 yet
 smi
 
-# Michał Górny <mgorny@gentoo.org> (2018-01-23)
-# sci-geosciences/gpsd is not keyworded here.
-gps
-
 # Mart Raudsepp <leio@gentoo.org> (2017-02-01)
 # Unmask systemd since it is keyworded here.
 -systemd
