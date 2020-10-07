@@ -11,7 +11,7 @@ SRC_URI="https://github.com/FFmpeg/nv-codec-headers/releases/download/n${PV}/${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=""
