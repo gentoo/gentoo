@@ -11,6 +11,7 @@ sys-apps/portage python_targets_pypy3
 app-portage/elogv python_targets_pypy3
 app-portage/gentoolkit python_targets_pypy3
 app-portage/layman python_targets_pypy3
+app-portage/repoman python_targets_pypy3
 
 # Jason Zaman <perfinion@gentoo.org> (2015-06-27)
 # SystemD has no support in the SELinux policy at the moment.
