@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Library to load, handle and manipulate images in the PGF format"
 HOMEPAGE="https://www.libpgf.org/"
-SRC_URI="https://master.dl.sourceforge.net/project/libpgf/libpgf/${PV}-latest/libPGF-codec-and-console-src.zip -> ${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/project/libpgf/libpgf/${PV}-latest/libPGF-codec-and-console-src.zip -> ${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
