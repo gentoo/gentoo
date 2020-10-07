@@ -551,31 +551,6 @@ dev-python/backports-unittest-mock
 # Removal in 30 days.  Bug #715204.
 www-servers/cherokee
 
-# Joonas Niilola <juippis@gentoo.org> (2020-09-07)
-# Nothing in the tree uses this lib anymore. Removing as redundant.
-# Removal in ~30 days. Bug #740868.
-dev-python/mini-amf
-
-# Louis Sautier <sbraz@gentoo.org> (2020-09-04)
-# Masked for removal in 30 days, no revdeps. Dependency of
-# previously removed dev-python/flask-bootstrap
-dev-python/flask-appconfig
-
-# Rick Farina <zerochaos@gentoo.org> (2020-09-02)
-# Masked for removal in 30 days. Obsolete versions
-# of kismet and tools which use it are no longer maintained.
-# Users should upgrade to a newer version of kismet which
-# is supported.
-dev-perl/Net-Kismet
-net-wireless/kismet-ubertooth
-<net-wireless/kismet-2017
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2020-09-02)
-# Abandoned upstream in favor of media-libs/libinsane
-# No more in-tree users
-# Removal in 30 days. Bug #740100
-dev-python/pyinsane
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
