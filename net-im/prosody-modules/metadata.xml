@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Prosody can be customized extensively using modules (plugins) to change
+		its default behaviour and to add new features and functionality.
+
+		Please note that each module is in a different state of development.
+		Some are proof-of-concept, others are quite stable and ready for production use.
+		Be sure to read the documentation page of any module before installing it on your server.
+	</longdescription>
+</pkgmetadata>
