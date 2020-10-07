@@ -11,7 +11,7 @@ SRC_URI="https://github.com/swh/ladspa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="nls cpu_flags_x86_3dnow cpu_flags_x86_sse"
 
 RDEPEND="
