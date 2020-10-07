@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/
 LICENSE="GPL-2+"
 SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="audit bluetooth +concheck connection-sharing consolekit +dhclient dhcpcd "
+IUSE="audit bluetooth +concheck connection-sharing +dhclient dhcpcd "
 IUSE+="debug elogind examples +gnutls gtk-doc introspection iwd json kernel_linux "
 IUSE+="libpsl lto modemmanager nss ofono ovs +policykit ppp resolvconf selinux "
 IUSE+="syslog systemd teamd test +tools vala wext +wifi"
@@ -24,7 +24,7 @@ REQUIRED_USE="
 	iwd? ( wifi )
 	vala? ( introspection )
 	^^ ( gnutls nss )
-	?? ( consolekit elogind systemd )
+	?? ( elogind systemd )
 	?? ( dhclient dhcpcd )
 	?? ( syslog systemd )
 "
@@ -43,7 +43,6 @@ DEPEND="
 		net-dns/dnsmasq[dbus,dhcp]
 		net-firewall/iptables
 	)
-	consolekit? ( sys-auth/consolekit )
 	dhclient? ( net-misc/dhcp[client] )
 	dhcpcd? ( net-misc/dhcpcd )
 	elogind? ( sys-auth/elogind )
@@ -235,11 +234,7 @@ src_configure() {
 		$(meson_use lto b_lto)
 	)
 
-	if use consolekit; then
-		emesonargs+=( -D session_tracking_consolekit=true )
-		emesonargs+=( -D session_tracking=no )
-		emesonargs+=( -D suspend_resume=consolekit )
-	elif use systemd; then
+	if use systemd; then
 		emesonargs+=( -D session_tracking_consolekit=false )
 		emesonargs+=( -D session_tracking=systemd )
 		emesonargs+=( -D suspend_resume=systemd )
