@@ -6,11 +6,11 @@ inherit eutils toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="x86"
 	EGIT_REPO_URI="git://github.com/tomszilagyi/${PN}.git"
 	EGIT_PROJECT="${PN}.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc x86"
 	SRC_URI="https://github.com/tomszilagyi/tap-plugins/archive/v${PV}.tar.gz -> $P.tar.gz"
 fi
 
