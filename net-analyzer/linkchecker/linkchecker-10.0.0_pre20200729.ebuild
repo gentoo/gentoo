@@ -18,7 +18,7 @@ else
 	GIT_COMMIT="a977e4d7129450ba9fda8389724c80c1bde66883"
 	SRC_URI="https://github.com/linkchecker/linkchecker/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-2"
