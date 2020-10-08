@@ -10,12 +10,11 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="kernel_linux networkmanager +panel-plugin policykit"
 
 COMMON_DEPEND=">=dev-libs/glib-2.42
 	>=sys-power/upower-0.99.0
-	sys-power/pm-utils
 	>=x11-libs/gtk+-3.14:3
 	>=x11-libs/libnotify-0.7
 	x11-libs/libX11
@@ -52,6 +51,12 @@ src_install() {
 
 pkg_postinst() {
 	xdg_icon_cache_update
+
+	if ! has_version sys-apps/systemd && ! has_version sys-auth/elogind
+	then
+		elog "Suspend/hibernate support requires a logind provider installed"
+		elog "(sys-apps/systemd or sys-auth/elogind)"
+	fi
 }
 
 pkg_postrm() {
