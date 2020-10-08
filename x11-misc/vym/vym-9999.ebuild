@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PLOCALES="cs_CZ de_DE el es fr ia it ja pt_BR ru sv zh_CN zh_TW"
+PLOCALES="cs_CZ de_DE el es fr hr_HR ia it ja pt_BR ru sv zh_CN zh_TW"
 inherit desktop git-r3 l10n qmake-utils
 
 DESCRIPTION="View Your Mind, a mindmap tool"
@@ -15,6 +15,7 @@ KEYWORDS=""
 IUSE="dbus"
 
 RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
@@ -24,6 +25,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/linguist-tools:5
 "
 DOCS=( README.md )
