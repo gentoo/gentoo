@@ -13,7 +13,7 @@ DESCRIPTION="Replaces xscreensaver, integrating with the MATE desktop"
 
 LICENSE="GPL-2+ HPND LGPL-2+"
 SLOT="0"
-IUSE="X debug consolekit elogind kernel_linux libnotify opengl pam systemd"
+IUSE="X debug elogind kernel_linux libnotify opengl pam systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DOC_CONTENTS="
@@ -39,7 +39,6 @@ COMMON_DEPEND="
 	x11-libs/libXxf86vm
 	x11-libs/libxklavier
 	x11-libs/pango
-	consolekit? ( sys-auth/consolekit )
 	libnotify? ( >=x11-libs/libnotify-0.7:0 )
 	opengl? ( virtual/opengl )
 	pam? ( gnome-base/gnome-keyring sys-libs/pam )
@@ -68,8 +67,8 @@ src_configure() {
 		--with-xf86gamma-ext
 		--with-xscreensaverdir=/usr/share/xscreensaver/config
 		--with-xscreensaverhackdir=/usr/$(get_libdir)/misc/xscreensaver
+		--without-console-kit
 		$(use_with X x)
-		$(use_with consolekit console-kit)
 		$(use_with elogind)
 		$(use_with libnotify)
 		$(use_with opengl libgl)
