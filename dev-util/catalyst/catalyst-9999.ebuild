@@ -37,6 +37,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
+	app-arch/pixz
 	app-arch/tar[xattr]
 	dev-vcs/git
 	sys-fs/dosfstools
