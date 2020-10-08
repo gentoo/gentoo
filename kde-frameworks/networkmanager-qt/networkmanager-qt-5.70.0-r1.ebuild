@@ -21,7 +21,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	|| (
-		>=net-misc/networkmanager-1.4.0-r1[consolekit]
 		>=net-misc/networkmanager-1.4.0-r1[elogind]
 		>=net-misc/networkmanager-1.4.0-r1[systemd]
 	)
