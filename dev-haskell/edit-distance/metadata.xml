@@ -5,10 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Optimized edit distances for fuzzy matching, including Levenshtein and restricted Damerau-Levenshtein algorithms.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">batterseapower/edit-distance</remote-id>
-	</upstream>
 </pkgmetadata>
