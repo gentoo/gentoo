@@ -5,10 +5,10 @@ DESCRIPTION=Desktop integration portal
 EAPI=7
 HOMEPAGE=https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal
 IUSE=geolocation screencast
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib media-libs/fontconfig sys-fs/fuse:0 geolocation? ( >=app-misc/geoclue-2.5.3:2.0 ) screencast? ( >=media-video/pipewire-0.3:= ) sys-apps/dbus
 SLOT=0
 SRC_URI=https://github.com/flatpak/xdg-desktop-portal/releases/download/1.8.0/xdg-desktop-portal-1.8.0.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4a5ea5b2e360f90f41e397f8a4d51a6b
+_md5_=3c50daba3f09e82fa27a5ca121dbcc30
