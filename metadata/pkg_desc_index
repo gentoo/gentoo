@@ -8567,7 +8567,7 @@ dev-python/parsedatetime 2.4-r1 2.6: Parse human-readable date/time strings
 dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 1.1.0: Appendable key-value storage
 dev-python/parver 0.3 0.3.1: Parse and manipulate version numbers
-dev-python/passlib 1.7.2: Password hashing framework supporting over 20 schemes
+dev-python/passlib 1.7.2 1.7.4: Password hashing framework supporting over 20 schemes
 dev-python/paste 3.4.3 3.4.4 3.4.5 3.4.6: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.1.0: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
@@ -19096,7 +19096,7 @@ xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.6.1 0.6.2: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel layouts
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
-xfce-extra/xfce4-power-manager 1.6.6 1.7.0: Power manager for the Xfce desktop environment
+xfce-extra/xfce4-power-manager 1.6.6-r1 1.7.0-r1: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.3: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-screensaver 0.1.10: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
