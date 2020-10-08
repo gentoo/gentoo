@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2020-10-08)
+# Dependency keyworded on this arm profile.
+dev-libs/efl -avif
+
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (armv7 only for arm)
