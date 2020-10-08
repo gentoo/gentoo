@@ -5,5 +5,5 @@ EAPI=7
 
 inherit acct-group
 
-DESCRIPTION="Group for sks OpenPGP keyserver"
+DESCRIPTION="Group for SKS OpenPGP keyserver"
 ACCT_GROUP_ID=370
