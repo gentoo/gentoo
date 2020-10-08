@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-19*
 	dev-libs/tinyxml2
 	"
 

@@ -5,21 +5,21 @@ EAPI=7
 
 inherit cmake kodi-addon
 
-DESCRIPTION="Kodi's NextPVR client addon"
-HOMEPAGE="https://github.com/kodi-pvr/pvr.nextpvr"
+DESCRIPTION="Kodi's VBox Home TV Gateway PVR client addon"
+HOMEPAGE="https://github.com/kodi-pvr/pvr.vbox"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.nextpvr.git"
+	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.vbox.git"
 	inherit git-r3
 	;;
 *)
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.nextpvr/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/pvr.nextpvr-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/kodi-pvr/pvr.vbox/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/pvr.vbox-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -28,7 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-19*
 	dev-libs/tinyxml2
 	"
 
