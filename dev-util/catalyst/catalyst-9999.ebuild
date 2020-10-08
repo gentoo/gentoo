@@ -45,6 +45,9 @@ RDEPEND="
 	iso? (
 		virtual/cdrtools
 
+		amd64? (
+			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
+		)
 		alpha? (
 			dev-libs/libisoburn
 		)
@@ -65,14 +68,9 @@ RDEPEND="
 			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
-	)
-"
-PDEPEND="
-	system-bootloader? (
-		sys-boot/grub:2
-
-		amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
-		x86?   ( sys-boot/grub[grub_platforms_efi-32] )
+		x86?   (
+			sys-boot/grub[grub_platforms_efi-32]
+		)
 	)
 "
 
