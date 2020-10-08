@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Tools for the TPM 2.0 TSS"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tools"
 SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar.gz"
@@ -24,8 +26,14 @@ RDEPEND="net-misc/curl:=
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 PATCHES=(
-	"${FILESDIR}/${P}-libressl.patch"
+	"${FILESDIR}/${PN}-4.2.1-libressl.patch"
+	"${FILESDIR}/${PN}-4.3.0-Remove-WError.patch"
 )
+
+src_prepare() {
+	eautoreconf
+	default
+}
 
 src_configure() {
 	econf \
