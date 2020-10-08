@@ -25,6 +25,7 @@ SLOT="0"
 IUSE="ccache doc +iso kernel_linux system-bootloader"
 
 COMMON_DEPEND="
+	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
