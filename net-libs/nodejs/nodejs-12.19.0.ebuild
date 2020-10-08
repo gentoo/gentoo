@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 eutils flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -34,6 +34,7 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	sys-apps/coreutils
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
 "
@@ -168,7 +169,7 @@ src_install() {
 		# npm otherwise tries to write outside of the sandbox
 		local npm_config="usr/$(get_libdir)/node_modules/npm/lib/config/core.js"
 		sed -i -e "s|'/etc'|'${ED}/etc'|g" "${ED}/${npm_config}" || die
-		local tmp_npm_completion_file="$(emktemp)"
+		local tmp_npm_completion_file="$(TMPDIR="${T}" mktemp -t npm.XXXXXXXXXX)"
 		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
 		newbashcomp "${tmp_npm_completion_file}" npm
 		sed -i -e "s|'${ED}/etc'|'/etc'|g" "${ED}/${npm_config}" || die
