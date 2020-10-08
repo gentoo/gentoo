@@ -8254,7 +8254,7 @@ dev-python/hiredis 1.0.1: Python extension that wraps hiredis
 dev-python/hpack 3.0.0 4.0.0: Pure-Python HPACK header compression
 dev-python/html2text 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
-dev-python/html5lib 1.0.1-r2 1.1: HTML parser based on the HTML5 specification
+dev-python/html5lib 1.1: HTML parser based on the HTML5 specification
 dev-python/httmock 1.2.5: A mocking library for requests
 dev-python/http-parser 0.9.0: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
