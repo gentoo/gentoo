@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-r3"
@@ -24,17 +24,16 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc +iso system-bootloader"
 
-COMMON_DEPEND="
+BDEPEND="
+	app-text/asciidoc
+"
+DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-DEPEND="
-	${COMMON_DEPEND}
-	app-text/asciidoc
-"
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-arch/pixz
