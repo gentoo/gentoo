@@ -38,10 +38,7 @@ src_test() {
 
 src_install() {
 	dobin "${PN}.sh"
-	dosym "${PN}.sh" "/usr/bin/${PN}cli"
-	dosym "${PN}.sh" "/usr/bin/${PN}txt"
 	newbashcomp "${PN}_completion" "${PN}.sh"
-	bashcomp_alias "${PN}.sh" "${PN}cli" "${PN}txt"
 	einstalldocs
 }
 
@@ -63,4 +60,9 @@ pkg_postinst() {
 	einfo 'You can then edit this file as you see fit.'
 	einfo 'Enjoy!'
 	einfo
+	ewarn 'The Gentoo-specific todocli and todotxt aliases have been removed.'
+	ewarn 'If you still need them, add the following lines to your ~/.bashrc:'
+	ewarn
+	ewarn 'alias todocli=todo.sh'
+	ewarn 'complete -F _todo todocli'
 }
