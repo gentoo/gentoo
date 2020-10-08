@@ -5,10 +5,6 @@
 # app-office/openoffice-bin is being removed.
 office_implementation_openoffice
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
-# consolekit is masked for removal
-consolekit
-
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
