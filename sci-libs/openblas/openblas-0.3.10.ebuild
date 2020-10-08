@@ -84,7 +84,7 @@ src_test() {
 }
 
 src_install() {
-	emake install DESTDIR="${ED}" OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} \
+	emake install DESTDIR="${D}" OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} \
 		OPENBLAS_LIBRARY_DIR='$(PREFIX)'/$(get_libdir)
 	dodoc GotoBLAS_*.txt *.md Changelog.txt
 
