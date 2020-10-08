@@ -22,7 +22,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="doc +iso kernel_linux system-bootloader"
+IUSE="doc +iso system-bootloader"
 
 COMMON_DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
