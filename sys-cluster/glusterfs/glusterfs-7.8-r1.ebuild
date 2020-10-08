@@ -175,6 +175,8 @@ src_install() {
 	if ! use static-libs; then
 		find "${D}" -type f -name '*.la' -delete || die
 	fi
+
+	python_optimize "${ED}"
 }
 
 src_test() {
