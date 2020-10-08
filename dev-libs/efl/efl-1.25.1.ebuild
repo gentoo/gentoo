@@ -133,8 +133,8 @@ BDEPEND="virtual/pkgconfig
 
 pkg_setup() {
 	# Deprecated, provided for backward-compatibility. Everything is moved to libefreet.so.
-	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libefreet_trash.so.1.25.0
-		/usr/$(get_libdir)/libefreet_mime.so.1.25.0"
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libefreet_trash.so.1.25.1
+		/usr/$(get_libdir)/libefreet_mime.so.1.25.1"
 }
 
 src_prepare() {
