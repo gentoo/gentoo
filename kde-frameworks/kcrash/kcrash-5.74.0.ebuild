@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for intercepting and handling application crashes"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="nls"
 
 # requires running kde environment
