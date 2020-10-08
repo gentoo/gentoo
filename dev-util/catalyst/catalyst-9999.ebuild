@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-r3"
@@ -15,36 +15,39 @@ fi
 PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 ${SRC_ECLASS}
+inherit distutils-r1 optfeature ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ccache doc +iso kernel_linux system-bootloader"
+IUSE="doc +iso"
 
-COMMON_DEPEND="
+BDEPEND="
+	app-text/asciidoc
+"
+DEPEND="
+	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-DEPEND="
-	${COMMON_DEPEND}
-	app-text/asciidoc
-"
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
+	app-arch/pixz
 	app-arch/tar[xattr]
 	dev-vcs/git
 	sys-fs/dosfstools
 	sys-fs/squashfs-tools-ng
-	ccache? ( dev-util/ccache )
 
 	iso? (
 		virtual/cdrtools
 
+		amd64? (
+			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
+		)
 		alpha? (
 			dev-libs/libisoburn
 		)
@@ -65,20 +68,9 @@ RDEPEND="
 			dev-libs/libisoburn
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
-	)
-
-	amd64? ( >=sys-boot/syslinux-3.72 )
-	x86?   ( >=sys-boot/syslinux-3.72 )
-"
-PDEPEND="
-	system-bootloader? (
-		>=sys-apps/memtest86+-5.01-r4
-		sys-boot/grub:2
-		sys-boot/shim
-		sys-boot/syslinux
-
-		amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
-		x86?   ( sys-boot/grub[grub_platforms_efi-32] )
+		x86?   (
+			sys-boot/grub[grub_platforms_efi-32]
+		)
 	)
 "
 
@@ -99,4 +91,8 @@ python_install_all() {
 	if use doc; then
 		dodoc files/HOWTO.html files/docbook-xsl.css
 	fi
+}
+
+pkg_postinst() {
+	optfeature "ccache support" "dev-util/ccache"
 }
