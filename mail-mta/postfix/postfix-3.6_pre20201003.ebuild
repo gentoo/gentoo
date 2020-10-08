@@ -15,10 +15,14 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
-DEPEND=">=dev-libs/libpcre-3.4
+DEPEND="
+	acct-group/postfix
+	acct-group/postdrop
+	acct-user/postfix
+	>=dev-libs/libpcre-3.4
 	dev-lang/perl
 	berkdb? ( >=sys-libs/db-3.2:* )
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
@@ -38,9 +42,6 @@ DEPEND=">=dev-libs/libpcre-3.4
 	)"
 
 RDEPEND="${DEPEND}
-	acct-group/postfix
-	acct-group/postdrop
-	acct-user/postfix
 	memcached? ( net-misc/memcached )
 	net-mail/mailbase
 	!mail-mta/courier
