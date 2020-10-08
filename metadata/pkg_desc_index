@@ -3953,11 +3953,11 @@ dev-haskell/doctemplates 0.8.2: Pandoc-style document templates
 dev-haskell/doctest 0.16.3: Test interactive Haskell examples
 dev-haskell/double-conversion 2.0.2.0: Fast conversion between double precision floating point and text
 dev-haskell/drbg 0.5.5: Deterministic random bit generator (aka PRNG) based HMACs, Hashes, and Ciphers
-dev-haskell/easy-file 0.2.1: Cross-platform File handling
+dev-haskell/easy-file 0.2.2: Cross-platform File handling
 dev-haskell/echo 0.1.3: A cross-platform, cross-console way to handle echoing terminal input
 dev-haskell/ed25519 0.0.5.0: Ed25519 cryptographic signatures
 dev-haskell/edisonapi 1.3.1-r1: A library of efficient, purely-functional data structures (API)
-dev-haskell/edisoncore 1.3.1.1 1.3.2.1-r1: A library of efficent, purely-functional data structures (Core Implementations)
+dev-haskell/edisoncore 1.3.2.1-r1: A library of efficent, purely-functional data structures (Core Implementations)
 dev-haskell/edit-distance 0.2.2.1-r1: Levenshtein and restricted Damerau-Levenshtein edit distances
 dev-haskell/edit-distance-vector 1.0.0.4: Calculate edit distances and edit scripts between vectors
 dev-haskell/editline 0.2.1.1-r1: Bindings to the editline library (libedit)
@@ -3965,7 +3965,7 @@ dev-haskell/either 5.0.1.1: An either monad transformer
 dev-haskell/ekg 0.4.0.15-r7: Remote monitoring of processes
 dev-haskell/ekg-core 0.1.1.6: Tracking of system metrics
 dev-haskell/ekg-json 0.1.0.6-r1: JSON encoding of ekg metrics
-dev-haskell/email-validate 2.0.1: Validating an email address string against RFC 5322
+dev-haskell/email-validate 2.3.2.13: Email address validation
 dev-haskell/emojis 0.1: Conversion between emoji characters and their names.
 dev-haskell/enclosed-exceptions 1.0.3: Catching all exceptions from within an enclosed computation
 dev-haskell/encoding 0.8.5: A library for various character encodings
@@ -16372,9 +16372,9 @@ sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Gr
 sci-libs/xkaapi 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.6: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
-sci-mathematics/agda 2.4.2.5-r2 2.5.2-r1 2.5.2-r2: A dependently typed functional programming language and proof assistant
+sci-mathematics/agda 2.5.2-r2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
-sci-mathematics/agda-stdlib 2.4.2.5 2.5.2.0.13: Agda standard library
+sci-mathematics/agda-stdlib 2.5.2.0.13: Agda standard library
 sci-mathematics/alt-ergo 1.30 2.3.0: Automatic theorem prover
 sci-mathematics/arb 2.17.0 2.18.1: C library for arbitrary-precision interval arithmetic
 sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
