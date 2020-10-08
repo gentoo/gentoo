@@ -6505,7 +6505,6 @@ net-misc/mulk:metalink - Enable support for media-libs/libmetalink
 net-misc/netkit-bootparamd:libtirpc - Build against net-libs/libtirpc for RPC support
 net-misc/networkmanager:concheck - Enable connectivity checking support
 net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing
-net-misc/networkmanager:consolekit - Use sys-auth/consolekit for session tracking
 net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip
 net-misc/networkmanager:dhcpcd - Use net-misc/dhcpcd for getting ip
 net-misc/networkmanager:elogind - Use sys-auth/elogind for session tracking
@@ -7871,7 +7870,6 @@ sys-apps/portage:native-extensions - Compiles native "C" extensions (speedups, i
 sys-apps/portage:rsync-verify - Enable full-tree cryptographic verification of Gentoo repository rsync checkouts using app-portage/gemato.
 sys-apps/portage:xattr - Preserve extended attributes (filesystem-stored metadata) when installing files. Usually only required for hardened systems.
 sys-apps/proot:care - Build dynamic CARE binary (more info - https://proot-me.github.io)
-sys-apps/qingy:consolekit - Enable native consolekit support
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
 sys-apps/razercfg:gui - Installs GUI configuration utility and status bar applet. Requires dev-python/PyQt5
 sys-apps/razercfg:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils

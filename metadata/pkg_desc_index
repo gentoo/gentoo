@@ -5301,7 +5301,7 @@ dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/hiredis 0.14.1: Minimalistic C client library for the Redis database
+dev-libs/hiredis 0.14.1 1.0.0: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.2.1-r1 5.3.0: High-performance regular expression matching library
@@ -5743,7 +5743,7 @@ dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
 dev-lua/luadbi 0.5-r5 0.5-r6: DBI module for Lua
 dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.4 0.4.6: libevent bindings for Lua
-dev-lua/luaexpat 1.3.0-r1 1.3.3-r1: LuaExpat is a SAX XML parser based on the Expat library
+dev-lua/luaexpat 1.3.0-r1 1.3.0-r2 1.3.3-r1 1.3.3-r2: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.5.0 1.6.2 1.6.3 1.7.0.2: File System Library for the Lua Programming Language
 dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
@@ -12269,7 +12269,7 @@ kde-frameworks/kwindowsystem 5.70.0 5.74.0: Framework providing access to proper
 kde-frameworks/kxmlgui 5.70.0 5.74.0-r1: Framework for managing menu and toolbar actions in an abstract way
 kde-frameworks/kxmlrpcclient 5.70.0 5.74.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.70.0 5.74.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.70.0 5.74.0: NetworkManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.70.0-r1 5.74.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.70.0 5.74.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.70.1 5.74.0-r1: Plasma framework
 kde-frameworks/prison 5.70.0 5.74.0: QRCode and data matrix barcode library
@@ -15195,7 +15195,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.4-r3 1.18.6 1.20.12 1.22.10-r11 1.22.14 1.24.2 1.26.0 1.26.2: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.4-r4 1.18.6-r1 1.20.12-r1 1.22.10-r12 1.22.14-r1 1.24.2-r1 1.26.0-r1 1.26.2-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.6.5 3.0.0 3.0.1 3.0.2: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
