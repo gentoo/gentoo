@@ -1,18 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit multilib user readme.gentoo-r1 systemd
+inherit readme.gentoo-r1 systemd toolchain-funcs
 
+COMMIT="591a7834dc9f1dff3d336d769a6561138a5befe7"
 DESCRIPTION="An OpenPGP keyserver which is decentralized with highly reliable synchronization"
-HOMEPAGE="https://bitbucket.org/skskeyserver/sks-keyserver"
-SRC_URI="https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${P}.tgz"
+HOMEPAGE="https://github.com/SKS-Keyserver/sks-keyserver"
+SRC_URI="https://github.com/SKS-Keyserver/sks-keyserver/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-keyserver-${COMMIT}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="optimize test"
 RESTRICT="!test? ( test )"
+
 DOC_CONTENTS="To get sks running, first build the database,
 start the database, import atleast one key, then
 run a cleandb. See the sks man page for more information
@@ -30,25 +34,28 @@ Important: It is strongly recommended to set up SKS behind a
 reverse proxy. Instructions on properly configuring SKS can be
 found at https://bitbucket.org/skskeyserver/sks-keyserver/wiki/Peering"
 
-RDEPEND=">=dev-lang/ocaml-4.0:=
+RDEPEND="
+	acct-user/sks
+	acct-group/sks
+	>=dev-lang/ocaml-4.0:=
 	dev-ml/camlp4:=
 	dev-ml/cryptokit:=
-	sys-libs/db:5.3"
+	dev-ml/num:=
+	sys-libs/db:5.3
+"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
 
-pkg_setup() {
-	ebegin "Creating named group and user"
-	enewgroup sks
-	enewuser sks -1 -1 /var/lib/sks sks
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.6_p20200624-respect-CFLAGS-CXXFLAGS.patch"
+	"${FILESDIR}/${PN}-1.1.6_p20200624-QA-fixups.patch"
+)
+
+QA_FLAGS_IGNORED=(
+	/usr/bin/sks_add_mail
+)
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-unbundle-cryptokit.patch" \
-			"${FILESDIR}/${P}-use-ocamlfind.patch" \
-			"${FILESDIR}/${P}-use-ocamlfind2.patch" \
-			"${FILESDIR}/${P}-use-ocamlfind3.patch"
-
 	cp Makefile.local.unused Makefile.local || die
 	sed -i \
 		-e "s:^BDBLIB=.*$:BDBLIB=-L/usr/$(get_libdir):g" \
@@ -60,13 +67,16 @@ src_prepare() {
 	sed -i \
 		-e 's:/usr/sbin/sks:/usr/bin/sks:g' \
 		sks_build.sh || die
-	dosym /usr/bin/sks_build.sh /usr/bin/sks_build.bc.sh
-	eapply_user
+
+	dosym sks_build.sh /usr/bin/sks_build.bc.sh
+	default
 }
 
 src_compile() {
+	tc-export CC CXX RANLIB
+
 	emake dep
-	# sks build fails with paralell build in module Bdb
+	# sks build fails with parallel build in module Bdb
 	emake -j1 all
 	if use optimize; then
 		emake all.bc
@@ -80,8 +90,8 @@ src_test() {
 src_install() {
 	if use optimize; then
 		emake install.bc
-		dosym /usr/bin/sks.bc usr/bin/sks
-		dosym /usr/bin/sks_add_mail.bc usr/bin/sks_add_mail
+		dosym sks.bc usr/bin/sks
+		dosym sks_add_mail.bc usr/bin/sks_add_mail
 	else
 		emake install
 	fi
@@ -95,7 +105,10 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/sks-recon.service
 
 	dodir "/var/lib/sks/web.typical"
+
 	insinto /var/lib/sks
+	fowners sks:sks /var/lib/sks
+
 	newins sampleConfig/DB_CONFIG DB_CONFIG.typical
 	newins sampleConfig/sksconf.typical sksconf.typical
 	insinto /var/lib/sks/web.typical
@@ -108,7 +121,7 @@ src_install() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
+	if [[ -n "${REPLACING_VERSIONS}" ]]; then
 		einfo "Note when upgrading from versions of SKS earlier than 1.1.4"
 		einfo "The default values for pagesize settings have changed. To continue"
 		einfo "using an existing DB without rebuilding, explicit settings have to be"
