@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="nls"
 
 BDEPEND="
