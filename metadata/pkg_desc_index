@@ -11517,7 +11517,7 @@ games-puzzle/hitori 3.34.0 3.36.0: Logic puzzle game for GNOME
 games-puzzle/icebreaker 1.9.6-r1: Trap and capture penguins on Antarctica
 games-puzzle/ksokoban 0.5.0_pre20190225 9999: The Japanese warehouse keeper game
 games-puzzle/lightsoff 3.34.0 3.36.0: Turn off all the lights
-games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
+games-puzzle/lmarbles 1.0.8-r1: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4-r1: A classical memory game
 games-puzzle/ltris 1.0.19-r1: Very polished Tetris clone
 games-puzzle/magiccube4d 2.2-r1: Four-dimensional analog of Rubik's cube
@@ -13495,7 +13495,7 @@ media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 5.10.18 5.10.19 7.0.5 7.1.1 9999: 
 media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 3.3.20 3.3.21 7.0.0 7.0.2 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 3.4.2 6.0.0 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 2.4.7 5.0.0 9999: Kodi's PCTV client addon
-media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 6.0.0 9999: Kodi's Stalker client addon
+media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 6.0.0 6.0.1 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 4.4.6 4.4.7 4.4.8 4.5.0 4.6.0 4.7.0 7.0.0 7.0.1 7.0.2 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 3.6.2 3.6.3 3.6.3-r1 6.0.0 7.0.0 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 3.28.0 3.28.1 3.28.2 3.28.4 3.28.5 3.28.6 3.28.7 3.28.8 3.28.9 6.1.1 6.1.2 6.1.3 6.2.1 9999: Kodi's VuPlus client addon
