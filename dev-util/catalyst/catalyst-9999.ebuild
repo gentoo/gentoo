@@ -20,7 +20,7 @@ inherit distutils-r1 optfeature ${SRC_ECLASS}
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc +iso"
 
