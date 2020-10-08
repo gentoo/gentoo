@@ -1,0 +1,81 @@
+https://sources.debian.org/src/sks/1.1.6+git20200620.9e9d504-1/debian/patches/0008-accept-and-use-CFLAGS-and-CPPFLAGS-from-environment.patch/
+----
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Mon, 8 Aug 2016 13:20:38 -0400
+Subject: accept and use CFLAGS and CPPFLAGS from environment
+
+---
+ Makefile     |  9 +++++----
+ bdb/Makefile | 14 ++++++++------
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@
+ #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ #   USA
+ #
+-CINCLUDES=-I`ocamlc -where`
++CINCLUDES=-I$(shell ocamlc -where)
+ CFLAGS+=-O3 -Werror-implicit-function-declaration $(CINCLUDES) -I .
+ CXXFLAGS+=-O3 $(CINCLUDES) -I .
+ 
+@@ -43,6 +43,7 @@ else
+ endif
+ 
+ CAMLLDFLAGS=$(foreach x, $(LDFLAGS), -ccopt $(x))
++CAMLCFLAGS=$(foreach x, $(CFLAGS), -ccopt $(x)) $(foreach x, $(CPPFLAGS), -ccopt $(x))
+ 
+ SKSVS=$(shell grep 'version_suffix = "+"' common.ml)
+ ifeq ($(strip $(SKSVS)),)
+@@ -52,7 +53,7 @@ WARNERR=-warn-error A
+ endif
+ 
+ CAMLINCLUDE= -package cryptokit,unix,str,bigarray,num -I bdb
+-COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLLDFLAGS) -ccopt -Lbdb -annot -bin-annot $(WARNERR)
++COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLCFLAGS) $(CAMLLDFLAGS) -ccopt -Lbdb -annot -bin-annot $(WARNERR)
+ OCAMLDEP=ocamldep
+ CAMLLIBS=bdb.cma
+ OCAMLFLAGS=$(COMMONCAMLFLAGS) -linkpkg -g $(CAMLLIBS)
+--- a/bdb/Makefile
++++ b/bdb/Makefile
+@@ -14,7 +14,7 @@
+ # $Id: Makefile,v 1.6 2003/07/05 15:16:29 yminsky Exp $
+ -include ../Makefile.local
+ 
+-CINCLUDES=-I`ocamlc -where` $(BDBINCLUDE)
++CINCLUDES=-I$(shell ocamlc -where) $(BDBINCLUDE)
+ CFLAGS+=-O3 -Werror-implicit-function-declaration $(CINCLUDES) $(BDBLIB) -I .
+ CXXFLAGS+=-O3 $(CINCLUDES) $(BDBLIB) -I .
+ 
+@@ -27,6 +27,8 @@ CAMLLIBS=unix.cma str.cma mylibs.cma
+ OCAMLFLAGS=$(COMMONCAMLFLAGS) -g
+ OCAMLOPTFLAGS=$(COMMONCAMLFLAGS) -inline 40
+ 
++CAMLCFLAGS=$(foreach x, $(CFLAGS), -ccopt $(x)) $(foreach x, $(CPPFLAGS), -ccopt $(x))
++
+ ifndef LIBDB
+ LIBDB=-ldb-4.6
+ endif
+@@ -37,7 +39,7 @@ ocextr: ocextr.ml
+ 	$(OCAMLC) -o ocextr ocextr.ml
+ 
+ libbdb.a: $(COBJS)
+-	$(MKLIB) -custom -o bdb $(COBJS)
++	$(MKLIB) $(CAMLCFLAGS) -custom -o bdb $(COBJS)
+ 
+ bdb_stubs.o: bdb_stubs.h bdb_stubs.c
+ 
+@@ -45,10 +47,10 @@ bdb.ml: ocextr bdb_stubs.c
+ 	./ocextr bdb_stubs.c > bdb.ml
+ 
+ bdb.cma: bdb.cmo libbdb.a
+-	$(MKLIB) -custom -o bdb bdb.cmo -lbdb $(LIBDB)
++	$(MKLIB) $(CAMLCFLAGS) -custom -o bdb bdb.cmo -lbdb $(LIBDB)
+ 
+ bdb.cmxa: bdb.cmx libbdb.a
+-	$(MKLIB) -custom -o bdb bdb.cmx -lbdb $(LIBDB)
++	$(MKLIB) $(CAMLCFLAGS) -custom -o bdb bdb.cmx -lbdb $(LIBDB)
+ 
+ bdbcaml: bdb.cma
+ 	ocamlmktop -o bdbcaml -custom unix.cma bdb.cma $^
