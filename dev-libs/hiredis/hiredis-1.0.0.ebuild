@@ -12,10 +12,12 @@ SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/1.0.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-solaris"
-IUSE="examples static-libs test"
+IUSE="examples ssl static-libs test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-db/redis )"
+DEPEND="
+	ssl? ( dev-libs/openssl )
+	test? ( dev-db/redis )"
 
 src_prepare() {
 	local PATCHES=(
@@ -33,6 +35,7 @@ _build() {
 		CC="$(tc-getCC)" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBRARY_PATH="$(get_libdir)" \
+		USE_SSL=$(usex ssl 1 0) \
 		DEBUG_FLAGS= \
 		OPTIMIZATION= \
 		"$@"
@@ -68,7 +71,8 @@ src_test() {
 src_install() {
 	_build PREFIX="${ED}/usr" install
 	if ! use static-libs; then
-		rm "${ED}/usr/$(get_libdir)/libhiredis.a" || die
+		rm "${ED}/usr/$(get_libdir)/libhiredis.a" \
+			"${ED}/usr/$(get_libdir)/libhiredis_ssl.a" || die
 	fi
 
 	insinto /usr/$(get_libdir)/pkgconfig
