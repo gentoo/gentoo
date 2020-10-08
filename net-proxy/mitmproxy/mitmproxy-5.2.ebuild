@@ -5,6 +5,7 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_REQ_USE="sqlite"
 inherit distutils-r1
 
 DESCRIPTION="An interactive, SSL-capable, man-in-the-middle HTTP proxy"
