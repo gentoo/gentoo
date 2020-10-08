@@ -15,14 +15,14 @@ fi
 PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 ${SRC_ECLASS}
+inherit distutils-r1 optfeature ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ccache doc +iso kernel_linux system-bootloader"
+IUSE="doc +iso kernel_linux system-bootloader"
 
 COMMON_DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
@@ -42,7 +42,6 @@ RDEPEND="
 	dev-vcs/git
 	sys-fs/dosfstools
 	sys-fs/squashfs-tools-ng
-	ccache? ( dev-util/ccache )
 
 	iso? (
 		virtual/cdrtools
@@ -95,4 +94,8 @@ python_install_all() {
 	if use doc; then
 		dodoc files/HOWTO.html files/docbook-xsl.css
 	fi
+}
+
+pkg_postinst() {
+	optfeature "ccache support" "dev-util/ccache"
 }
