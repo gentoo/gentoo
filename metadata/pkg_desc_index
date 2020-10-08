@@ -7946,8 +7946,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19: Syntax highlighting and autocompletion for the Python interpreter
@@ -12792,7 +12792,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.10.18-r1 2.10.18-r2 2.10.20-r1 2.10.20-r2 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.10.18-r1 2.10.18-r2 2.10.20-r1 2.10.20-r2 2.10.22 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.0 2.9.1: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20200821: A program for drawing beautiful mathematically-based images known as fractals
@@ -13020,7 +13020,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.6.0-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.3.0: Graphics library for fast image creation
-media-libs/gegl 0.4.22 0.4.22-r1 0.4.24 9999: A graph based image processing framework
+media-libs/gegl 0.4.22 0.4.22-r1 0.4.24 0.4.26 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 0.12.1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
