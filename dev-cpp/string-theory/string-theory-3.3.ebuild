@@ -3,11 +3,6 @@
 
 EAPI=7
 
-if [[ ${PV} = 9999 ]]; then
-	  GIT_ECLASS="git-r3"
-	  EXPERIMENTAL="true"
-fi
-
 inherit cmake ${GIT_ECLASS}
 
 DESCRIPTION="A flexible modern C++ library for string manipulation and storage"
@@ -19,4 +14,4 @@ S="${WORKDIR}/string_theory-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
