@@ -3,13 +3,11 @@
 
 EAPI=7
 
-inherit cmake ${GIT_ECLASS}
+inherit cmake
 
 DESCRIPTION="A flexible modern C++ library for string manipulation and storage"
 HOMEPAGE="https://github.com/zrax/string_theory/"
-
 SRC_URI="https://github.com/zrax/string_theory/archive/${PV}.tar.gz -> ${P}.tar.gz"
-
 S="${WORKDIR}/string_theory-${PV}"
 
 LICENSE="MIT"
