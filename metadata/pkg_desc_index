@@ -380,6 +380,7 @@ acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
 acct-user/pcscd 0: A user for pcsc-lite
 acct-user/pdns 0: System user: pdns
 acct-user/pdnsd 0: user for pdns daemon
+acct-user/pgbouncer 0: PgBouncer program user
 acct-user/placement 0: User for the placement openstack service
 acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
