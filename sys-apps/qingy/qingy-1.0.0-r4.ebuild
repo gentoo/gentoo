@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,13 +10,12 @@ DESCRIPTION="A DirectFB getty replacement"
 HOMEPAGE="http://qingy.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 	mirror://gentoo/${PN}-gentoo-theme-${GENTOO_THEME_VERSION}.tar.bz2
-	https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/${P}-screensavers.patch.gz
-	https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/${P}-consolekit-pam.patch.gz"
+	https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/${P}-screensavers.patch.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="consolekit crypt emacs gpm opensslcrypt pam static X"
+IUSE="crypt emacs gpm opensslcrypt pam static X"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.7-r7:=
@@ -34,9 +33,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 RDEPEND="${RDEPEND}
-	consolekit? (
-		sys-auth/consolekit
-		sys-apps/dbus )
 	pam? ( sys-auth/pambase )
 "
 
@@ -46,8 +42,6 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-tinfo.patch
 	# bug #359637 and bug #462634 - fixes from upstream
 	epatch "${DISTDIR}"/${P}-screensavers.patch.gz
-	# bug #372675 - fix from upstream
-	epatch "${DISTDIR}"/${P}-consolekit-pam.patch.gz
 	default
 	mv configure.in configure.ac || die
 	eautoreconf
@@ -72,7 +66,6 @@ src_configure() {
 		--disable-optimizations \
 		--disable-static \
 		--disable-DirectFB-support \
-		$(use_enable consolekit) \
 		$(use_enable pam) \
 		$(use_enable static static-build) \
 		$(use_enable gpm gpm-lock) \
