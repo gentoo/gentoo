@@ -37,7 +37,7 @@ BDEPEND="sys-devel/autoconf-archive
 
 PATCHES=(
 	"$FILESDIR/${PN}-1.3.2-Remove-WError.patch"
-	)
+)
 
 src_prepare() {
 	default
