@@ -19,11 +19,10 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="
-	+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock
+	+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps +refclock
 	+rtc samba +seccomp +sechash selinux
 "
 REQUIRED_USE="
-	?? ( libedit readline )
 	sechash? ( nettle )
 "
 RESTRICT=test
@@ -31,7 +30,6 @@ CDEPEND="
 	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
 	nettle? ( dev-libs/nettle:= )
-	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
 DEPEND="
@@ -86,18 +84,6 @@ src_configure() {
 
 	tc-export CC PKG_CONFIG
 
-	local CHRONY_EDITLINE
-	# ./configure legend:
-	# --disable-readline : disable line editing entirely
-	# --without-readline : do not use sys-libs/readline (enabled by default)
-	# --without-editline : do not use dev-libs/libedit (enabled by default)
-	if ! use readline && ! use libedit; then
-		CHRONY_EDITLINE='--disable-readline'
-	else
-		CHRONY_EDITLINE+=" $(usex readline '' --without-readline)"
-		CHRONY_EDITLINE+=" $(usex libedit '' --without-editline)"
-	fi
-
 	# Note: ncurses and nss switches are mentioned in the configure script but
 	# do nothing
 	# not an autotools generated script
@@ -106,6 +92,7 @@ src_configure() {
 		$(usex caps '' --disable-linuxcaps)
 		$(usex cmdmon '' --disable-cmdmon)
 		$(usex ipv6 '' --disable-ipv6)
+		$(usex libedit '' --without-editline)
 		$(usex nettle '' --without-nettle)
 		$(usex ntp '' --disable-ntp)
 		$(usex phc '' --disable-phc)
@@ -114,7 +101,6 @@ src_configure() {
 		$(usex rtc '' --disable-rtc)
 		$(usex samba --enable-ntp-signd '')
 		$(usex sechash '' --disable-sechash)
-		${CHRONY_EDITLINE}
 		${EXTRA_ECONF}
 		--chronysockdir="${EPREFIX}/run/chrony"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
