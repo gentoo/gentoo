@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index d035653..1db5c5c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -461,7 +461,7 @@ AC_SUBST([TSS_USER])
+ AC_SUBST([TSS_GROUP])
+ 
+ CFLAGS="$CFLAGS -Wreturn-type -Wsign-compare -Wswitch-enum"
+-CFLAGS="$CFLAGS -Wmissing-prototypes -Wall -Werror"
++CFLAGS="$CFLAGS -Wmissing-prototypes -Wall"
+ CFLAGS="$CFLAGS -Wformat -Wformat-security"
+ CFLAGS="$CFLAGS $GNUTLS_CFLAGS $COVERAGE_CFLAGS"
+ 
