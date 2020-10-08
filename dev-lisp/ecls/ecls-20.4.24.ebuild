@@ -51,7 +51,7 @@ pkg_setup() {
 src_prepare() {
 	default
 	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
-	cd src
+	cd src || die "Cannot enter the src directory"
 	eautoreconf
 }
 
