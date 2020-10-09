@@ -506,7 +506,6 @@ dev-python/oauth
 dev-ruby/pygments_rb
 dev-util/doxy-coverage
 dev-util/mpatch
-dev-vcs/cvs2svn
 dev-vcs/gitstats
 games-strategy/0ad
 
