@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	PATCHES=(
+		"${FILESDIR}"/${P}-consolekit.patch # bug 747124
 		"${FILESDIR}"/${P}-make-xinerama-optional.patch
 	)
 
