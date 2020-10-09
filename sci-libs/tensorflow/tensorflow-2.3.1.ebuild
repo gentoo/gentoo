@@ -106,6 +106,7 @@ RDEPEND="
 		>=dev-python/google-pasta-0.1.8[${PYTHON_USEDEP}]
 		dev-python/opt-einsum[${PYTHON_USEDEP}]
 		>=dev-python/protobuf-python-3.8.0[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 		>=dev-python/grpcio-1.28[${PYTHON_USEDEP}]
