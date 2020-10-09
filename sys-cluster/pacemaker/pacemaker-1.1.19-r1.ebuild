@@ -16,17 +16,16 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/archive/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
-IUSE="acl heartbeat smtp snmp"
+IUSE="acl smtp snmp"
 
 DEPEND="${PYTHON_DEPS}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	sys-cluster/cluster-glue
+	sys-cluster/corosync
 	>=sys-cluster/libqb-0.14.0
 	sys-cluster/resource-agents
 
-	heartbeat?	( >=sys-cluster/heartbeat-3.0.0 )
-	!heartbeat?	( sys-cluster/corosync )
 	smtp?		( net-libs/libesmtp )
 	snmp?		( net-analyzer/net-snmp )
 "
@@ -52,16 +51,11 @@ src_configure() {
 		--without-cs-quorum
 		--without-cman
 		$(use_with acl)
-		$(use_with heartbeat)
+		--without-heartbeat
 		$(use_with smtp esmtp)
 		$(use_with snmp)
+		--with-ais
 	)
-
-	if use heartbeat ; then
-		myconf+=( --without-corosync )
-	else
-		myconf+=( --with-ais )
-	fi
 
 	econf "${myconf[@]}"
 }
