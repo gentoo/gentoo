@@ -13517,8 +13517,8 @@ media-plugins/mythplugins 31.0: Official MythTV plugins
 media-plugins/qmmp-plugin-pack 1.4.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
-media-plugins/swh-plugins 0.4.15-r3 0.4.17: Large collection of LADSPA audio plugins/effects
-media-plugins/tap-plugins 0.7.3 1.0.1 9999: Tom's audio processing (TAP) LADSPA plugins
+media-plugins/swh-plugins 0.4.17: Large collection of LADSPA audio plugins/effects
+media-plugins/tap-plugins 1.0.1 9999: Tom's audio processing (TAP) LADSPA plugins
 media-plugins/vamp-aubio-plugins 0.5.0 0.5.1-r1: Onset detection, pitch tracking, note tracking and tempo tracking plugins
 media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating many of the functions of the LibXtract library
 media-plugins/vco-plugins 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased oscillators
@@ -13612,7 +13612,7 @@ media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04-r1: VDR Plugin: Scan for channe
 media-plugins/vdr-xineliboutput 2.1.0-r1 2.1.0-r2 2.2.0-r1 2.2.0-r2 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
-media-plugins/xsynth-dssi 0.9.2 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
+media-plugins/xsynth-dssi 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
 media-radio/KochMorse 3.4.0-r1: Morse-code tutor using the Koch method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
 media-radio/ax25-apps 0.0.8_rc5: Basic AX.25 (Amateur Radio) user tools, additional daemons
@@ -14450,7 +14450,7 @@ net-analyzer/wireshark 3.2.7 3.3.0 99999999: A network protocol analyzer formerl
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31-r1 4.0.23 4.0.24 5.0.2 5.0.3: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31-r1 4.0.24 5.0.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0_p20200913 9999: High performance PPTP, PPPoE and L2TP server
