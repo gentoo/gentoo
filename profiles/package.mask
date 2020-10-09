@@ -535,11 +535,6 @@ net-analyzer/mk-livestatus
 sci-biology/vienna-rna
 sys-fs/owfs
 
-# Louis Sautier <sbraz@gentoo.org> (2020-09-09)
-# Masked for removal in 30 days, no revdeps.
-# Backport of a module included in Python >= 3.3.
-dev-python/backports-unittest-mock
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
