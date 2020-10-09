@@ -504,7 +504,6 @@ dev-libs/qrosspython
 dev-python/SchemaObject
 dev-python/oauth
 dev-ruby/pygments_rb
-dev-util/doxy-coverage
 dev-vcs/gitstats
 games-strategy/0ad
 
