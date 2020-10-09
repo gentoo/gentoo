@@ -9175,7 +9175,7 @@ dev-python/toml 0.10.1-r1: Python library for handling TOML files
 dev-python/toolz 0.10.0 0.11.0 0.11.1: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.19.0 3.20.0: virtualenv-based automation of test activities
+dev-python/tox 3.19.0 3.20.0-r1: virtualenv-based automation of test activities
 dev-python/tqdm 4.48.2 4.49.0 4.50.1 4.50.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.4: A configuration system for Python applications
@@ -17231,7 +17231,7 @@ sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3 26.4.4 26.4.
 sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
-sys-cluster/glusterfs 6.8 6.9 7.5 7.6 7.7 7.8 9999: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 7.7 7.8 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heat 14.0.0 14.1.0 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
