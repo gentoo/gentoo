@@ -485,7 +485,6 @@ media-sound/freebirth
 # Removal in 30 days.  Please find relevant bugs on tracker bug #695996.
 app-crypt/acmebot
 app-vim/conque
-dev-python/redlock-py
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
