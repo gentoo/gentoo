@@ -830,7 +830,7 @@ app-backup/snapper 0.5.6-r1 0.8.6 0.8.7 0.8.9-r1: Command-line program for btrfs
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/synology-cloud-station-backup 4469: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.37 1.0.39: Online backups for the truly paranoid
-app-backup/tsm 7.1.8.0-r1 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
+app-backup/tsm 8.1.6.0 8.1.6.0-r1: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
 app-backup/untangle-https-backup 0.0.10-r1: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-backup/zbackup 1.4.4-r1 9999: A versatile deduplicating backup tool
