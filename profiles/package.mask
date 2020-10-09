@@ -484,7 +484,6 @@ media-sound/freebirth
 # port them to Python 3.7 *and* 3.8 (3.9 would also be nice).
 # Removal in 30 days.  Please find relevant bugs on tracker bug #695996.
 app-crypt/acmebot
-app-vim/conque
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
