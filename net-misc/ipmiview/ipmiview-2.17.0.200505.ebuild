@@ -11,7 +11,7 @@ MY_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="A GUI application that allows to manage multiple target systems through BMC"
 HOMEPAGE="https://www.supermicro.com/"
-SRC_URI="ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz"
+SRC_URI="https://www.supermicro.com/wftp/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz"
 
 LICENSE="supermicro"
 SLOT="0"
@@ -24,16 +24,10 @@ RDEPEND="
 
 BDEPEND="app-arch/unzip"
 
-RESTRICT="bindist fetch mirror"
+RESTRICT="bindist mirror"
 
 DIR="/usr/share/${PN}"
 QA_PREBUILT="usr/lib*"
-
-pkg_nofetch() {
-	elog "Please download ${A} from"
-	elog "https://www.supermicro.com/SwDownload/UserInfo.aspx?sw=0&cat=IPMI"
-	elog "and place it in your DISTDIR directory."
-}
 
 src_unpack() {
 	unpack ${A}

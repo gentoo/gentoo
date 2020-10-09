@@ -11,7 +11,7 @@ MY_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="Supermicro Thin-Agent Service for monitoring through the BMC/IPMI"
 HOMEPAGE="https://www.supermicro.com"
-SRC_URI="${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
+SRC_URI="https://www.supermicro.com/wftp/utility/${MY_PN}/${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
 
 KEYWORDS="-* ~amd64 ~x86"
 LICENSE="BSD supermicro"
@@ -29,7 +29,7 @@ RDEPEND="
 
 BDEPEND="app-arch/unzip"
 
-RESTRICT="bindist fetch mirror"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
 
@@ -43,12 +43,6 @@ DOCS=(
 )
 
 CONFIG_CHECK="~IPMI_DEVICE_INTERFACE ~IPMI_HANDLER ~IPMI_SI"
-
-pkg_nofetch() {
-	elog "Please download ${A} from"
-	elog "https://www.supermicro.com/SwDownload/UserInfo.aspx?sw=0&cat=TAS"
-	elog "and place it in your DISTDIR directory."
-}
 
 src_unpack() {
 	unpack ${A}
