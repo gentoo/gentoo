@@ -503,7 +503,6 @@ app-text/silvercity
 dev-libs/qrosspython
 dev-python/SchemaObject
 dev-python/oauth
-dev-ruby/pygments_rb
 dev-vcs/gitstats
 games-strategy/0ad
 
