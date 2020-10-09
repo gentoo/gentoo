@@ -529,9 +529,7 @@ x11-misc/dsx
 # to build anyway.
 #
 # net-analyzer/mk-livestatus: py3 bug #735394, build failure bug #705430
-# sci-biology/vienna-rna: py3 bug #735438, build failure bug #707158
 net-analyzer/mk-livestatus
-sci-biology/vienna-rna
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
