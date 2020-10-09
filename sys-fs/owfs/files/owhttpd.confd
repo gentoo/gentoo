@@ -1,2 +1,0 @@
-# owfs owhttpd configuration
-OWHTTPD_OPTS="--nozero -p 127.0.0.1:4380 -s 127.0.0.1:4304"

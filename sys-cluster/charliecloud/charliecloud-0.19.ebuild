@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools optfeature python-single-r1
 
@@ -21,7 +21,7 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-IUSE="ch-grow doc examples +pv +squashfs squashfuse"
+IUSE="ch-grow doc examples +squashfs squashfuse"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
@@ -31,7 +31,6 @@ RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	pv? ( sys-apps/pv )
 	squashfs? ( sys-fs/squashfs-tools )
 	squashfuse? ( sys-fs/squashfuse )"
 DEPEND="
@@ -51,7 +50,6 @@ DEPEND="
 
 src_prepare() {
 	default
-	sed -i 's/ -Werror//' configure.ac || die
 	eautoreconf
 }
 
@@ -64,6 +62,8 @@ src_configure() {
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
 		--with-sphinx-python=${PYTHON}
+		# This disables -Werror, see also: https://github.com/hpc/charliecloud/pull/808
+		--enable-buggy-build
 	)
 	econf "${econf_args[@]}"
 }
@@ -71,8 +71,10 @@ src_configure() {
 pkg_postinst() {
 	elog "Various builders are supported, as alternative "
 	elog "to the internal ch-grow. The following packages "
-	elog "can be installed to get the corresponding support."
+	elog "can be installed to get the corresponding support "
+	elog "and related functionality."
 
 	optfeature "Building with Buildah" app-emulation/buildah
 	optfeature "Building with Docker" app-emulation/docker
+	optfeature "Progress bars during long operations" sys-apps/pv
 }
