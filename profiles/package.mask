@@ -523,14 +523,6 @@ sci-physics/rivet
 sys-cluster/heartbeat
 x11-misc/dsx
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-09)
-# These packages are stuck on Python 2.7.  While the Python dependency
-# is optional, I can't test removing it because the packages fail
-# to build anyway.
-#
-# net-analyzer/mk-livestatus: py3 bug #735394, build failure bug #705430
-net-analyzer/mk-livestatus
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
