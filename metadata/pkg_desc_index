@@ -13224,7 +13224,7 @@ media-libs/mesa 20.1.8 20.1.9 20.2.0 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.20.0-r2 6.22.1-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
-media-libs/mutagen 1.43.0-r1 1.44.0: Audio metadata tag reader and writer implemented in pure Python
+media-libs/mutagen 1.43.0-r1 1.44.0 1.45.1: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
@@ -14414,7 +14414,7 @@ net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.0 2.0.1 2.0.2 2.0.2-r1: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
-net-analyzer/suricata 5.0.3: High performance Network IDS, IPS and Network Security Monitoring engine
+net-analyzer/suricata 5.0.4: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.87 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.01 5.02: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
@@ -14782,7 +14782,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1 1.8.1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
-net-libs/libhtp 0.5.33 0.5.34: security-aware parser for the HTTP protocol and the related bits and pieces
+net-libs/libhtp 0.5.35: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.6 0.3.6-r2 0.3.7: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
@@ -17987,7 +17987,7 @@ www-apps/kibana-bin 6.8.11 6.8.12 7.8.1 7.9.1: Analytics and search dashboard fo
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
-www-apps/mediawiki 1.34.2 1.34.4 1.35.0: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.34.4 1.35.0: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
 www-apps/moodle 3.5.14 3.7.8 3.8.5 3.9.2: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
@@ -18048,7 +18048,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.3.2022.47_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1 3.4.2049.2_p1 3.4.2056.19_p1 3.4.2059.2_p1 3.4.2064.6_p1 3.4.2066.7_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1 3.4.2049.2_p1 3.4.2056.19_p1 3.4.2059.2_p1 3.4.2064.6_p1 3.4.2066.7_p1 3.4.2066.37_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
