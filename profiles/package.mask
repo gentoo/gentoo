@@ -540,14 +540,6 @@ sys-fs/owfs
 # Backport of a module included in Python >= 3.3.
 dev-python/backports-unittest-mock
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-09)
-# Multiple unresolved vulnerabilities.  Last release in 2013 (but has
-# some activity in git).  Not touched by maintainer since 2015.  Stuck
-# on Python 2 (bug #735522) with incorrect eclass usage (bug #710258).
-# Apparently broken with openssl-1.1 (bug #674246).
-# Removal in 30 days.  Bug #715204.
-www-servers/cherokee
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
 # (Mask should remain after ebuilds are deleted, until 2021-03-01 or
