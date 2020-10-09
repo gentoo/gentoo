@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
+MULTILIB_COMPAT=( abi_x86_{32,x32,64} )
 
 inherit flag-o-matic multilib-build toolchain-funcs
 
