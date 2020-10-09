@@ -2622,7 +2622,7 @@ app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
 app-mobilephone/smstools 3.1.21-r1: Send and receive short messages through GSM modems
-app-mobilephone/sobexsrv 1.0.1-r2 1.0.1-r3: Scripting/Secure OBEX Server (for BlueZ Linux)
+app-mobilephone/sobexsrv 1.0.1-r3: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-office/abiword 3.0.4: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.2: Fully featured yet light and fast cross platform word processor documentation
@@ -2786,7 +2786,7 @@ app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
 app-shells/powerline 2.7-r1 2.7-r2 9999: The ultimate statusline/prompt utility.
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
 app-shells/push 2.0-r1 3.4: A POSIX shell function to treat a variable like an array, quoting args
-app-shells/quoter 3.0_p2-r1 4.2: Quote arguments or standard input for usage in POSIX shell by eval
+app-shells/quoter 4.2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4-r1: A reimplementation of the Plan 9 shell
 app-shells/rrs 1.70-r2: Reverse Remote Shell
 app-shells/rush 2.0 2.1: Restricted User Shell
@@ -3458,7 +3458,7 @@ dev-cpp/gflags 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.62.0 2.64.2: C++ interface for glib2
 dev-cpp/glog 0.3.4-r1 0.4.0: Google's C++ logging library
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
-dev-cpp/gtest 1.9.0_pre20190607 1.10.0_p20200702 9999: Google C++ Testing Framework
+dev-cpp/gtest 1.10.0_p20200702 9999: Google C++ Testing Framework
 dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
@@ -7962,7 +7962,7 @@ dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
 dev-python/catkin_pkg 0.4.23 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
-dev-python/cbor2 5.1.0 5.1.2: Pure Python CBOR (de)serializer with extensive tag support
+dev-python/cbor2 5.1.2: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
@@ -8491,7 +8491,7 @@ dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus we
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.8: Python to native compiler
-dev-python/numexpr 2.7.1 2.7.2: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.7.2: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.19.0 1.19.1 1.19.2: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
@@ -8619,7 +8619,7 @@ dev-python/pretend 1.0.9-r1: A library for stubbing in Python
 dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
-dev-python/process-tests 2.0.2 2.1.1: Tools for testing processes
+dev-python/process-tests 2.1.1: Tools for testing processes
 dev-python/progress 1.3: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3: Text progressbar library for python
@@ -8705,7 +8705,7 @@ dev-python/pygments 2.6.1 2.7.0 2.7.1: Pygments is a syntax highlighting package
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
-dev-python/pygraphviz 1.5 1.6: Python wrapper for the Graphviz Agraph data structure
+dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.1 5.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
@@ -8731,7 +8731,7 @@ dev-python/pymongo 3.11.0 3.11.0-r1: Python driver for MongoDB
 dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
-dev-python/pymysql 0.9.3 0.10.0 0.10.1: Pure-Python MySQL Driver
+dev-python/pymysql 0.10.1: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
@@ -8968,7 +8968,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 2.11.3 3.2.0: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.42 3.5.48: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.48: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1: HTTP library for human beings
@@ -14446,7 +14446,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.2.6 3.2.7 3.3.0 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.2.7 3.3.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
