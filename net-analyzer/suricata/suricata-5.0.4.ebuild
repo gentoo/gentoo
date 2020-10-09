@@ -35,11 +35,11 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	>=net-libs/libhtp-0.5.33
+	>=net-libs/libhtp-0.5.35
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng
-	bpf?        ( >=dev-libs/libbpf-0.0.6 )
+	bpf?        ( >=dev-libs/libbpf-0.1.0 )
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/libmaxminddb )
 	logrotate?  ( app-admin/logrotate )
