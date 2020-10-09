@@ -8819,7 +8819,7 @@ dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression tests
-dev-python/pytest-rerunfailures 8.0: pytest plugin to re-run tests to eliminate flaky failures
+dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.92.0: The new generation of the pytest-salt Plugin
 dev-python/pytest-services 2.1.0 2.2.0: Collection of fixtures and utility functions to run service processes for pytest
@@ -8872,7 +8872,7 @@ dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOS
 dev-python/python-jsonrpc-server 0.3.4 0.4.0: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0: Client Library for OpenStack Identity
 dev-python/python-language-server 0.34.1 0.35.1: An implementation of the Language Server Protocol for Python
-dev-python/python-ldap 3.2.0 9999: Various LDAP-related Python modules
+dev-python/python-ldap 3.2.0 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
 dev-python/python-libevdev 0.8: Python wrappers for the libevdev library
