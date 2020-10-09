@@ -14,15 +14,15 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc +dyn-manifest static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/serd-0.30.0-r1[${MULTILIB_USEDEP}]
-	>=dev-libs/sord-0.16.0-r1[${MULTILIB_USEDEP}]
+	dev-libs/serd[${MULTILIB_USEDEP}]
+	dev-libs/sord[${MULTILIB_USEDEP}]
 	media-libs/libsndfile
-	>=media-libs/lv2-1.16.0[${MULTILIB_USEDEP}]
+	media-libs/lv2[${MULTILIB_USEDEP}]
 	media-libs/sratom[${MULTILIB_USEDEP}]
 "
 DEPEND="
