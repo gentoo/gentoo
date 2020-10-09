@@ -22,9 +22,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/openssl:*"
-RDEPEND="${DEPEND}"
-
 # Requires a docker environment
 RESTRICT="test"
 
