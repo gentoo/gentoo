@@ -499,7 +499,6 @@ dev-util/setconf
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
 app-misc/mswinurl_launcher
 app-misc/mtail
-app-text/silvercity
 dev-vcs/gitstats
 games-strategy/0ad
 
