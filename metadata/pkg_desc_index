@@ -8232,7 +8232,7 @@ dev-python/graph-tool 2.35 9999: An efficient python module for manipulation and
 dev-python/graphviz 0.14.1 0.14.2: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.16-r1 0.4.17: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
-dev-python/grpcio 1.28.1 1.32.0: High-performance RPC framework (python libraries)
+dev-python/grpcio 1.28.1 1.32.0-r1: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.28.1 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.28.1 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read and write it
@@ -15927,7 +15927,7 @@ sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed informati
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.1-r1 2020.2 2020.3 2020.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.1-r1 2020.2 2020.3 2020.4 2020.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.1 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
