@@ -486,7 +486,6 @@ media-sound/freebirth
 app-crypt/acmebot
 app-vim/conque
 dev-python/redlock-py
-dev-python/root_numpy
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
