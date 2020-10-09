@@ -497,7 +497,6 @@ dev-util/setconf
 # Please do not remove any packages from this list unless you actually
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-app-misc/mswinurl_launcher
 dev-vcs/gitstats
 games-strategy/0ad
 
