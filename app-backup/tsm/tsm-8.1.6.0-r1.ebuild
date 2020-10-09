@@ -195,6 +195,7 @@ src_install() {
 	echo 'DSM_CONFIG="/etc/tivoli/dsm.opt"' >> ${ENV_FILE}
 	echo 'DSM_DIR="/opt/tivoli/tsm/client/ba/bin"' >> ${ENV_FILE}
 	echo 'DSM_LOG="/var/log/tsm"' >> ${ENV_FILE}
+	# echo 'ROOTPATH="/opt/tivoli/tsm/client/ba/bin"' >> ${ENV_FILE}
 
 	echo 'SEARCH_DIRS_MASK="/opt/tivoli/tsm/client/ba/bin"' > "${T}/80${PN}" || die
 	insinto "/etc/revdep-rebuild"
