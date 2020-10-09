@@ -497,31 +497,8 @@ dev-util/setconf
 # Please do not remove any packages from this list unless you actually
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-app-misc/mswinurl_launcher
-app-misc/mtail
-app-text/silvercity
-dev-libs/qrosspython
-dev-python/SchemaObject
-dev-python/oauth
-dev-ruby/pygments_rb
-dev-util/doxy-coverage
-dev-util/mpatch
-dev-vcs/cvs2svn
 dev-vcs/gitstats
 games-strategy/0ad
-media-sound/codecgraph
-net-misc/pssh
-net-misc/ris-linux
-net-wireless/mousejack
-net-wireless/python-wifi
-sci-biology/amos
-sci-biology/embassy-meme
-sci-biology/meme
-sci-biology/shrimp
-sci-misc/gato
-sci-physics/rivet
-sys-cluster/heartbeat
-x11-misc/dsx
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
