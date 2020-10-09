@@ -6628,10 +6628,6 @@ net-misc/sitecopy:rsh - This allows the use of rsh (remote shell) and rcp (remot
 net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Versioning) support. This system allows users to collaborate on websites using a web based interface. See the ebuild for an FAQ page. Enables neon as well to handle webdav support.
 net-misc/sks:optimize - Enables bytecode optimization
 net-misc/sntpd:adjtimex - Install adjtimex for the clock adjustment algorithm.
-net-misc/sntpd:debug - Enable analysis code path and debugging of NTP protocol.
-net-misc/sntpd:embedded - Build a very small ntpclient, from OpenWRT project.
-net-misc/sntpd:obsolete - Enable obsolete features, to use with kernel versions older than 3.0
-net-misc/sntpd:syslog - Enable logging to syslog instead of logging to stderr.
 net-misc/spice-gtk:gtk3 - Build the spice client (spicy), requires x11-libs/gtk+:3
 net-misc/spice-gtk:mjpeg - Enable builtin mjpeg video decoder
 net-misc/spice-gtk:policykit - Enable sys-auth/polkit support for the usbredir acl helper

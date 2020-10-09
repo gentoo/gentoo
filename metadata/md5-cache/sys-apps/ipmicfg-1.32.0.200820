@@ -1,12 +1,12 @@
 BDEPEND=app-arch/unzip
-DEFINED_PHASES=install nofetch
+DEFINED_PHASES=install
 DESCRIPTION=An in-band utility for configuring Supermicro IPMI devices
 EAPI=7
 HOMEPAGE=https://www.supermicro.com
 IUSE=uefi
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=supermicro
-RESTRICT=bindist fetch mirror
+RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=ftp://ftp.supermicro.com/utility/IPMICFG/IPMICFG_1.31.1_build.200623.zip
-_md5_=3e49de62a43e6d160550a7af7eacad15
+SRC_URI=https://www.supermicro.com/wftp/utility/{MY_PN}/IPMICFG_1.32.0_build.200820.zip
+_md5_=7a3375fd83f895c671ecbd6b1e27fa36
