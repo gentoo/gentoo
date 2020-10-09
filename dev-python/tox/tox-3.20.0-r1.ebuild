@@ -60,6 +60,8 @@ src_prepare() {
 	sed -i -e 's:test_tox_get_python_executable:_&:' \
 		-e 's:test_find_alias_on_path:_&:' \
 		tests/unit/interpreters/test_interpreters.py || die
+	# ignore importlib_metadata version constraints
+	sed -i -e '/^[[:space:]]*importlib-metadata\b/d' setup.cfg || die
 
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
