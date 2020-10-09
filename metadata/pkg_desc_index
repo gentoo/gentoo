@@ -3556,7 +3556,7 @@ dev-db/oracle-instantclient-basic 12: Transition package moving to single dev-db
 dev-db/oracle-instantclient-jdbc 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.7.27.30-r1 8.0.19.10-r1 8.0.20.11-r1: Fully compatible, enhanced and open source drop-in replacement for MySQL
+dev-db/percona-server 5.7.27.30-r1 8.0.19.10-r1 8.0.20.11-r2: Fully compatible, enhanced and open source drop-in replacement for MySQL
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
