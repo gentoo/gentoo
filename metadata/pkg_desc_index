@@ -5639,7 +5639,7 @@ dev-libs/roct-thunk-interface 3.7.0 3.8.0 9999: Radeon Open Compute Thunk Interf
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.27 0.30 0.31: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.2.0 9.2.0: Simulation Description Format (SDF) parser
-dev-libs/serd 0.30.2 0.30.4 0.30.6: Library for RDF syntax which supports reading and writing Turtle and NTriples
+dev-libs/serd 0.30.4 0.30.6: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
@@ -13215,7 +13215,7 @@ media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio fea
 media-libs/libyami 1.3.2 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
-media-libs/lilv 0.24.6-r2 0.24.8-r1: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lilv 0.24.8-r1 0.24.10: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio Plugins
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
@@ -13311,7 +13311,7 @@ media-libs/tiff 4.1.0: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
-media-libs/vamp-plugin-sdk 2.7.1-r1 2.10: Audio processing system for plugins to extract information from audio data
+media-libs/vamp-plugin-sdk 2.10: Audio processing system for plugins to extract information from audio data
 media-libs/vidstab 1.1.0-r2 9999: Video stabilization library
 media-libs/vigra 1.11.1-r3 9999: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.8.2 9999: library used implement a virtual 3D GPU used by qemu
@@ -13343,7 +13343,7 @@ media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters b
 media-plugins/ams-lv2 1.2.2: A port of the AMS internal modules to LV2 plugins to create modular synthesizers
 media-plugins/audacious-plugins 3.10.1-r3 4.0.5 9999: Lightweight and versatile audio player
 media-plugins/calf 0.90.3 9999: A set of open source instruments and effects for digital audio workstations
-media-plugins/caps-plugins 0.9.24 0.9.26: The CAPS Audio Plugin Suite - LADSPA plugin suite
+media-plugins/caps-plugins 0.9.26: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/cmt-plugins 1.17-r1: CMT (computer music toolkit) LADSPA library plugins
 media-plugins/fil-plugins 0.3.0-r1: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/frei0r-plugins 1.6.1: A minimalistic plugin API for video effects
@@ -13864,7 +13864,7 @@ media-sound/pavucontrol-qt 0.15.0: Qt GUI Pulseaudio Mixer
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2020.04.05 9999: A console-based replacement for Pandora's flash player
-media-sound/picard 2.3.1 2.4.2 9999: Cross-platform music tagger
+media-sound/picard 2.4.2 9999: Cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.5.0: Pandora.com client for the GNOME desktop
@@ -14414,7 +14414,7 @@ net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.0 2.0.1 2.0.2 2.0.2-r1: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
-net-analyzer/suricata 5.0.4: High performance Network IDS, IPS and Network Security Monitoring engine
+net-analyzer/suricata 5.0.4 6.0.0: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.87 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.01 5.02: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
@@ -15224,7 +15224,7 @@ net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python AP
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.00-r1 8.048.02-r1 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.8.4 3.8.7: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.8.7: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.52.2 1.53.0 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of another machine
@@ -17231,7 +17231,7 @@ sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3 26.4.4 26.4.
 sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
-sys-cluster/glusterfs 7.7 7.8 9999: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 7.7 7.8-r1 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heat 14.0.0 14.1.0 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
