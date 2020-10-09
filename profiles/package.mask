@@ -505,7 +505,6 @@ dev-python/SchemaObject
 dev-python/oauth
 dev-ruby/pygments_rb
 dev-util/doxy-coverage
-dev-util/mpatch
 dev-vcs/gitstats
 games-strategy/0ad
 
