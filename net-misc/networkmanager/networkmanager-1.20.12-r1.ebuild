@@ -174,6 +174,12 @@ multilib_src_configure() {
 		--with-ebpf=yes
 		$(multilib_native_enable concheck)
 		--with-crypto=$(usex nss nss gnutls)
+		# elogind lacks multilib for now, and consolekit doesn't require linking against, so we use it as a fake option
+		# This SHOULD be removable once elogind has that. We abuse the fact that 'consolekit' does nothing at buildtime.
+		# (There is no off switch, and we do not support upower.)
+		# bug #747358
+		--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
+		--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
 		$(multilib_native_use_with audit libaudit)
 		$(multilib_native_use_enable bluetooth bluez5-dun)
 		--without-dhcpcanon
@@ -201,19 +207,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with wext)
 		$(multilib_native_use_enable wifi)
 	)
-
-	# There is no off switch, and we do not support upower.
-	if use systemd; then
-		myconf+=(
-			--with-session-tracking=systemd
-			--with-suspend-resume=systemd
-		)
-	elif use elogind; then
-		myconf+=(
-			--with-session-tracking=elogind
-			--with-suspend-resume=elogind
-		)
-	fi
 
 	# Same hack as net-dialup/pptpd to get proper plugin dir for ppp, bug #519986
 	if use ppp; then
