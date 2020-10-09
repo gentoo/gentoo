@@ -42,10 +42,8 @@ app-emulation/lxd apparmor
 net-misc/curl quiche
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
-# media-video/pipewire is not stable yet
-dev-libs/weston pipewire
-<kde-apps/krfb-20.07.80 wayland
-<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
+# media-video/pipewire-0.2 will never be stable, to be dropped.
+<dev-libs/weston-9 pipewire
 <sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
 
@@ -55,7 +53,9 @@ dev-qt/qtsql oci8
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
-media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d gflags glog tesseract
+# (except what's needed by digikam, dilfridge)
+media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glog tesseract
+<media-libs/opencv-4.4.0 contrib contribdnn
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
