@@ -19,6 +19,5 @@
 		<flag name="hepmc">Adds support for High Energy Physics Monte Carlo
 		Generators <pkg>sci-physics/hepmc</pkg></flag>
 		<flag name="lhapdf">Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
-		<flag name="rivet">Adds support for <pkg>sci-physics/rivet</pkg></flag>
 	</use>
 </pkgmetadata>

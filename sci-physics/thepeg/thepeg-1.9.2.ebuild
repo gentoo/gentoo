@@ -24,7 +24,7 @@ LICENSE="GPL-2"
 
 SLOT="0/18"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="c++11 emacs fastjet hepmc java lhapdf rivet static-libs test zlib"
+IUSE="c++11 emacs fastjet hepmc java lhapdf static-libs test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -34,7 +34,6 @@ RDEPEND="
 	hepmc? ( sci-physics/hepmc:0= )
 	java? ( >=virtual/jre-1.5:* )
 	lhapdf? ( sci-physics/lhapdf:0= )
-	rivet? ( sci-physics/rivet:0= )
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}
 	test? ( sys-process/time )"
@@ -62,7 +61,7 @@ src_configure() {
 		$(use_with hepmc hepmc "${EPREFIX}"/usr)
 		$(use_with java javagui)
 		$(use_with lhapdf lhapdf "${EPREFIX}"/usr)
-		$(use_with rivet rivet "${EPREFIX}"/usr)
+		--without-rivet
 		$(use_with zlib zlib "${EPREFIX}"/usr)
 	)
 	autotools-utils_src_configure
