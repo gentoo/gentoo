@@ -24,10 +24,6 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 ~dev-db/percona-server-5.7.27.30 test
 sci-geosciences/viking mapnik
 
-# Ulrich Müller <ulm@gentoo.org> (2020-09-25)
-# Python 2 only. Bug #735496.
-sys-cluster/ganglia python
-
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
 # Highly experimental, may cause breakages when updating. Use with 
 # caution!
