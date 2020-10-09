@@ -34,6 +34,8 @@ python_prepare_all() {
 }
 
 python_configure_all() {
+	# os.environ.get('GRPC_BUILD_WITH_BORING_SSL_ASM', True)
+	export GRPC_BUILD_WITH_BORING_SSL_ASM=
 	export GRPC_PYTHON_DISABLE_LIBC_COMPATIBILITY=1
 	export GRPC_PYTHON_BUILD_SYSTEM_CARES=1
 	export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
