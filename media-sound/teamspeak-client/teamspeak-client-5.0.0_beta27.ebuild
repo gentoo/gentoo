@@ -7,7 +7,7 @@ inherit desktop xdg-utils
 
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="teamspeak-client.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://files.teamspeak-services.com/teamspeak/teamspeak-client.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS=""
 LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
@@ -43,7 +43,7 @@ RDEPEND="
 	x11-libs/pango
 "
 
-RESTRICT="bindist fetch mirror"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
 
@@ -56,15 +56,6 @@ QA_PREBUILT="
 	opt/teamspeak5-client/soundbackends/libalsa_linux_amd64.so
 	opt/teamspeak5-client/soundbackends/libpulseaudio_linux_amd64.so
 "
-
-pkg_nofetch() {
-	elog "Please download ${A} from"
-	elog "https://beta.teamspeak.com"
-	elog "and place it in your DISTDIR directory."
-	elog ""
-	elog "Please keep in mind, that this is a closed beta!"
-	elog "If you are not participating, you won't be able to download it!"
-}
 
 src_install() {
 	exeinto /opt/teamspeak5-client
