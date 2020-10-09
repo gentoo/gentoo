@@ -500,7 +500,6 @@ dev-util/setconf
 app-misc/mswinurl_launcher
 app-misc/mtail
 app-text/silvercity
-dev-libs/qrosspython
 dev-vcs/gitstats
 games-strategy/0ad
 
