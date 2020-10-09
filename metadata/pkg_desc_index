@@ -913,7 +913,6 @@ app-crypt/acme 1.7.0 1.8.0 1.9.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.7 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
-app-crypt/acmebot 2.3.0-r1 2.7.0 9999: Certificate manager bot using ACME protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.4e 2.4f: Encrypts data from stdin to stdout
@@ -3124,7 +3123,6 @@ app-vim/cmdalias 3.0-r1: vim plugin: library for alias creation
 app-vim/colorschemes 20140623-r1: vim plugin: a collection of color schemes from vim.org
 app-vim/colorsel 20100406: vim plugin: RGB / HSV color selector
 app-vim/command-t 5.0.3: vim plugin: fast file navigation for vim
-app-vim/conque 2.3-r1: vim plugin: Run interactive commands inside a Vim buffer
 app-vim/csound-syntax 20160804: vim plugin: set of tools for editing Csound files with vim
 app-vim/csscomplete 1.0: vim plugin: CSS 3 omni complete function
 app-vim/csv 0.31-r1: vim plugin: display and alter csv files
@@ -8965,7 +8963,6 @@ dev-python/readthedocs-sphinx-ext 2.1.0 2.1.1: Code specific for Read the Docs a
 dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.3.11 3.5.3: Python client for Redis key-value store
-dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
@@ -8999,8 +8996,6 @@ dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs 
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.2: An Integer to Roman numerals converter
-dev-python/root_numpy 4.7.3-r1: Interface between ROOT and numpy
-dev-python/rootpy 1.0.1-r1: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.16.0 0.17.0: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.2 9999: Tools to work with catkinized rosdistro files
@@ -10855,7 +10850,6 @@ dev-util/schroot 1.6.10_p7: Utility to execute commands in a chroot environment
 dev-util/scons 3.1.1 3.1.2 4.0.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
-dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
 dev-util/shards 0.12.0-r1: Dependency manager for the Crystal language
@@ -12546,7 +12540,7 @@ media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed wi
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
-media-fonts/fira-code 3.1 4 5.2: Monospaced font with programming ligatures
+media-fonts/fira-code 4 5.2: Monospaced font with programming ligatures
 media-fonts/fira-mono 3.205: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r2: X.Org Adobe bitmap fonts
@@ -13741,7 +13735,6 @@ media-sound/fluidsynth 2.1.0 2.1.4: Software real-time synthesizer based on the 
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15-r3: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
-media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/frescobaldi 3.1.1: A LilyPond sheet music text editor
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
 media-sound/gigedit 1.1.1-r1 9999: An instrument editor for gig files
@@ -14418,7 +14411,7 @@ net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.13-r1 2.0.0 2.0.1 2.0.2: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.13-r1 2.0.0 2.0.1 2.0.2 2.0.2-r1: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 5.0.3: High performance Network IDS, IPS and Network Security Monitoring engine

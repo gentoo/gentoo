@@ -7647,7 +7647,6 @@ sci-physics/thepeg:c++11 - Build ThePEG using the C++11 standard. Experimental f
 sci-physics/thepeg:fastjet - Adds support for sci-physics/fastjet
 sci-physics/thepeg:hepmc - Adds support for High Energy Physics Monte Carlo Generators sci-physics/hepmc
 sci-physics/thepeg:lhapdf - Adds support for sci-physics/lhapdf
-sci-physics/thepeg:rivet - Adds support for sci-physics/rivet
 sci-physics/vgm:c++11 - Build using the C++11 standard
 sci-physics/vgm:c++14 - Build using the C++14 standard
 sci-physics/vgm:c++17 - Build using the C++17 standard
@@ -8158,7 +8157,6 @@ sys-cluster/openstack-meta:neutron - Installs Openstack Neutron
 sys-cluster/openstack-meta:nova - Installs Openstack Nova
 sys-cluster/openstack-meta:placement - Installs Openstack Placement
 sys-cluster/openstack-meta:swift - Installs Openstack Swift
-sys-cluster/pacemaker:heartbeat - Enable sys-cluster/heartbeat support.
 sys-cluster/pacemaker:smtp - Enable SMTP support via net-libs/libesmtp
 sys-cluster/pmix:munge - Enable authentication via munge
 sys-cluster/pmix:pmi - Build PMI1 and PMI2 interface
