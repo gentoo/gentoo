@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-10-09)
+# Mask older erlang releases for removal.
+# Bug #740894.
+<dev-lang/erlang-23
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-09)
 # Regressions, can't build firefox/thunderbird
 # Masking until fixes land to FF or Rust itself.
