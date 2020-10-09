@@ -514,7 +514,7 @@ multilib_src_configure() {
 	done
 
 	tc-export AR CC CXX
-	CONFIG_SHELL="/bin/bash" \
+	CONFIG_SHELL="/bin/sh" \
 	ECONF_SOURCE="${S}" \
 	STRIP=/bin/true \
 	econf \
@@ -548,7 +548,7 @@ src_configure_cxx() {
 
 multilib_src_compile() {
 	tc-export AR CC CXX
-	emake CC="${CC}" AR="${AR}" SHELL="${EPREFIX}"/bin/bash
+	emake CC="${CC}" AR="${AR}" SHELL="${EPREFIX}"/bin/sh
 	local lt="${BUILD_DIR}/libtool"
 	export echo="echo"
 
@@ -730,7 +730,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 	local lt="${BUILD_DIR}/libtool"
-	emake DESTDIR="${D}" SHELL="${EPREFIX}"/bin/bash install
+	emake DESTDIR="${D}" SHELL="${EPREFIX}"/bin/sh install
 
 	if ! use minimal && multilib_is_native_abi; then
 		# openldap modules go here
