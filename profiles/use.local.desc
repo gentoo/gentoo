@@ -5831,6 +5831,8 @@ net-im/spectrum2:twitter - Enables the Twitter backend.
 net-im/spectrum2:whatsapp - Enables the WhatsApp backend, based on net-im/transwhat.
 net-im/swift:client - Build the full graphical XMPP client.
 net-im/swift:gconf - Enable configuration through gnome-base/gconf.
+net-im/teams:system-ffmpeg - Use the system-wide media-video/ffmpeg instead of bundled.
+net-im/teams:system-mesa - Use the system-wide media-libs/mesa instead of bundled.
 net-im/telegram-desktop:enchant - Enable the app-text/aspell spell-checking backend
 net-im/telegram-desktop:hunspell - Enable the app-text/hunspell spell-checking backend
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
