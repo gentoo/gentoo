@@ -521,7 +521,6 @@ sci-biology/shrimp
 sci-misc/gato
 sci-physics/rivet
 sys-cluster/heartbeat
-x11-misc/dsx
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
