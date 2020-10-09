@@ -40,7 +40,6 @@ src_prepare() {
 }
 
 src_configure() {
-	hprefixify engine/Jambase
 	tc-export CXX
 }
 
