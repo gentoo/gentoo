@@ -5,4 +5,8 @@
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
   </maintainer>
+  <use>
+    <flag name="system-ffmpeg">Use the system-wide <pkg>media-video/ffmpeg</pkg> instead of bundled.</flag>
+    <flag name="system-mesa">Use the system-wide <pkg>media-libs/mesa</pkg> instead of bundled.</flag>
+  </use>
 </pkgmetadata>
