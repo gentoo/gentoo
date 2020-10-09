@@ -502,7 +502,6 @@ app-misc/mtail
 app-text/silvercity
 dev-libs/qrosspython
 dev-python/SchemaObject
-dev-python/oauth
 dev-vcs/gitstats
 games-strategy/0ad
 
