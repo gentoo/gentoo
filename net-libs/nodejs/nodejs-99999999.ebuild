@@ -40,9 +40,6 @@ BDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
-)
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
