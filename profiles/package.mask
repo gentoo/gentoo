@@ -498,7 +498,6 @@ dev-util/setconf
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
 app-misc/mswinurl_launcher
-app-misc/mtail
 dev-vcs/gitstats
 games-strategy/0ad
 
