@@ -5,8 +5,6 @@
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7
-# @AUTHOR:
-# Michał Górny <mgorny@gentoo.org>
 # @BLURB: Eclass to verify upstream signatures on distfiles
 # @DESCRIPTION:
 # verify-sig eclass provides a streamlined approach to verifying
