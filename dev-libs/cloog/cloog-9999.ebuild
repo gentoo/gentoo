@@ -3,12 +3,10 @@
 
 EAPI="7"
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A loop generator for scanning polyhedra"
-HOMEPAGE="http://www.bastoul.net/cloog/
-	https://github.com/periscop/cloog
-"
+HOMEPAGE="http://www.bastoul.net/cloog/ https://github.com/periscop/cloog"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -24,8 +22,8 @@ SLOT="0/4"
 IUSE="static-libs"
 
 RDEPEND="
-	dev-libs/gmp
-	dev-libs/isl
+	dev-libs/gmp:=
+	dev-libs/isl:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -55,6 +53,5 @@ src_configure() {
 
 # The default src_test() fails, so we'll just run these directly
 src_test() {
-	elog ">>> Test phase [check]: ${CATEGORY}/${PF}"
 	emake -j1 check
 }
