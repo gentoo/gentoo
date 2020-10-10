@@ -21,7 +21,7 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 		 >=dev-libs/ffcall-1.10
 		 dbus? ( sys-apps/dbus )
 		 fastcgi? ( dev-libs/fcgi )
-		 gdbm? ( sys-libs/gdbm )
+		 gdbm? ( sys-libs/gdbm:0= )
 		 gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6 )
 		 postgres? ( >=dev-db/postgresql-8.0:* )
 		 readline? ( >=sys-libs/readline-7.0:0= )
