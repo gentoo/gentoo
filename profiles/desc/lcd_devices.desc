@@ -20,6 +20,7 @@ ddusbt - Add support for DD usb touch screen
 directgfx - Add support for output via SDL
 displaylink - Add support for displaylink based LCDs
 dpf - Add support for DPF display modulees
+dpfax - Add support for AX206 photo frames
 ea232graphic - Add support for the Electronic Assembly RS232 graphic driver
 ea65 - Add support for the VFD in the AOpen XC Cube-AV EA65 media barebone
 efn - Add support for the English Font display Network based displays
@@ -121,6 +122,7 @@ usbhub - Add support for USBHUB displays
 usblcd - Add support for USBLCD displays
 vlsys_m428 - Add support for MonCaso 320 LCD displays
 vnc - Add support for output on a vnc connection
+vssdcp - Add support for network-based vssdcp protocol LCD displays
 wincornixdorf - Add support for the WincorNixdorf serial cashier displays BA63 and BA66
 x11 - Add support for X11 displaying
 xosd - Add support for xosdlib
