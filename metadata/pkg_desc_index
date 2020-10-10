@@ -12850,7 +12850,7 @@ media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 2.0.1-r2: Fast and easy graphics application for digital painters
 media-gfx/mypaint-brushes 2.0.2: Default MyPaint brushes
 media-gfx/netpaint 1.1.2: curses-based drawing tool
-media-gfx/nomacs 3.14.2 3.16.224: Qt-based image viewer
+media-gfx/nomacs 3.16.224: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r4 2.1.2: A set of cuda-enabled texture tools and compressors
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
@@ -13884,7 +13884,7 @@ media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, 
 media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.0 4.8.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
-media-sound/qastools 0.22.0 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
+media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.3 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
@@ -16016,7 +16016,7 @@ sci-electronics/pcb 4.2.2: GPL Electronic Design Automation: Printed Circuit Boa
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.2 9999: Qt based logic analyzer GUI for sigrok
-sci-electronics/qelectrotech 0.61 0.70 9999: Qt5 application to design electric diagrams
+sci-electronics/qelectrotech 0.70 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured EDA product for altera devices
 sci-electronics/sigrok-cli 0.7.1-r1 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
@@ -17108,7 +17108,7 @@ sys-auth/rtkit 0.12-r1 0.13-r1: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/solo-python 0.0.26: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
-sys-auth/sssd 1.16.3-r3 2.1.0-r1 2.2.0-r1 2.2.2 2.2.3 2.3.1-r1: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 2.2.0-r1 2.2.2 2.2.3 2.3.1-r1: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
