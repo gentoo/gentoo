@@ -1,10 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils ltprune
+EAPI=7
 
-DESCRIPTION="relatively thin, simple and robust network communication layer on top of UDP"
+DESCRIPTION="Relatively thin, simple and robust network communication layer on top of UDP"
 HOMEPAGE="http://enet.bespin.org/"
 SRC_URI="http://enet.bespin.org/download/${P}.tar.gz"
 
@@ -21,5 +20,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
