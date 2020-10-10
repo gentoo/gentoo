@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="A menu-driven tool to draw and manipulate objects interactively in an X window"
 HOMEPAGE="http://mcj.sourceforge.net/"
-SRC_URI="https://kumisystems.dl.sourceforge.net/project/mcj/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/project/mcj/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
