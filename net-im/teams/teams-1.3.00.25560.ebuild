@@ -84,7 +84,7 @@ src_install() {
 		elog "Using system mesa. This is experimental and may lead to crashes."
 	fi
 
-	rm -f "${D}"/usr/share/teams/resources/app.asar.unpacked/node_modules/keytar3 || die
+	rm -rf "${D}"/usr/share/teams/resources/app.asar.unpacked/node_modules/keytar3 || die
 
 	sed -i '/OnlyShowIn=/d' "${S}"/usr/share/applications/teams.desktop || die
 	domenu usr/share/applications/teams.desktop
