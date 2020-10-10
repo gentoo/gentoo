@@ -21,7 +21,7 @@ BDEPEND="dev-lang/perl"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${PN}-configure-strip.patch )
+PATCHES=( "${FILESDIR}"/${PN}-build-fixes.patch )
 
 src_prepare() {
 	default
@@ -29,15 +29,15 @@ src_prepare() {
 	# configure.in files are deprecated
 	mv configure.{in,ac} || die
 
-	# upstream thinks they're being helpful by running configure with `make`
-	sed -i '/Makedep/s/ .\/configure.*//' Makefile || die
+	# missing include for memset
+	sed -i '1s;^;#include <string.h>\n;' pts_defl.c
 
 	# eautoreconf is still needed or you get bad warnings
 	eautoreconf
 }
 
 src_configure() {
-	tc-export CXX
+	tc-export CC CXX
 
 	econf \
 		--enable-lzw \
