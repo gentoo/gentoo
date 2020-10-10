@@ -14,6 +14,8 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="hardened"
 
 DEPEND="!sys-cluster/kubernetes"
+BDEPEND=">=dev-lang/go-1.15"
+
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
