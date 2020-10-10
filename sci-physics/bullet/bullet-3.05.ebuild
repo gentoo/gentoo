@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake toolchain-funcs
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
-HOMEPAGE="http://www.bulletphysics.com/"
+HOMEPAGE="https://www.bulletphysics.com/"
 SRC_URI="https://github.com/bulletphysics/bullet3/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
