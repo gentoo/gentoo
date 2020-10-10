@@ -43,6 +43,7 @@ for LCD_DEVICE in "${IUSE_LCD_DEVICES[@]}"; do
 	IUSE+=" lcd_devices_${LCD_DEVICE} "
 	REQUIRED_USE+=" lcd_devices_${LCD_DEVICE} "
 done
+IUSE="${IUSE/lcd_devices_glcd/+lcd_devices_glcd}"
 REQUIRED_USE+=" ) "
 unset LCD_DEVICE
 
