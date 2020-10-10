@@ -26,15 +26,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
 
-RESTRICT="bindist fetch mirror"
-
-pkg_nofetch() {
-	elog "Please download ${A} from"
-	elog "https://infinitekind.com/stabledl/${MY_PV}/${MY_PN}_linux_amd64.tar.gz"
-	elog "and place it in your DISTDIR directory."
-	elog ""
-	elog "Please keep in mind, that you have to rename the download to ${P}-amd64.tar.gz."
-}
+RESTRICT="bindist mirror"
 
 src_compile() {
 	:;
