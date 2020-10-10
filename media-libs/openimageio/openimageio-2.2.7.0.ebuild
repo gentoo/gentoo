@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenImageIO/oiio/archive/Release-${PV}.tar.gz -> ${P
 S="${WORKDIR}/oiio-Release-${PV}"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/2.2"
 KEYWORDS="~amd64 ~x86"
 
 X86_CPU_FEATURES=(
@@ -72,8 +72,8 @@ RDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-libs/boost:=[python,${PYTHON_USEDEP}]
-			dev-python/numpy:=[${PYTHON_USEDEP}]
-			dev-python/pybind11:=[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+			dev-python/pybind11[${PYTHON_USEDEP}]
 		')
 	)
 	qt5? (
@@ -89,7 +89,9 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES.md CREDITS.md README.md )
 
-PATCHES=( "${FILESDIR}"/${P}-pugixml.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.6.1-pugixml.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
