@@ -78,7 +78,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	opencl? ( virtual/opencl )
-	openimageio? ( media-libs/openimageio )
+	openimageio? ( media-libs/openimageio:= )
 	openexr? (
 		media-libs/ilmbase:=
 		media-libs/openexr:=
@@ -181,11 +181,13 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_DEVICE_OPENCL=$(usex opencl)
+		-DWITH_CYCLES_EMBREE=OFF
 		-DWITH_CYCLES_STANDALONE=$(usex standalone)
 		-DWITH_CYCLES_STANDALONE_GUI=$(usex standalone)
 		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
+		-DWITH_GHOST_X11=$(usex !headless)
 		-DWITH_GTESTS=$(usex test)
 		-DWITH_HEADLESS=$(usex headless)
 		-DWITH_INSTALL_PORTABLE=OFF
@@ -217,7 +219,6 @@ src_configure() {
 		-DWITH_SYSTEM_GLEW=ON
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
-		-DWITH_X11=$(usex !headless)
 	)
 	cmake_src_configure
 }
