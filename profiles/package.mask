@@ -608,11 +608,6 @@ dev-python/matplotlib-python2
 # and accept a more unstable release.
 >=www-client/chromium-87
 
-# Mart Raudsepp <leio@gentoo.org> (2020-06-06)
-# Meson port does not handle multilib yet and has issues
-# regarding runstatedir (not using /run).
-=net-misc/networkmanager-1.22.10-r11
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 <dev-java/icedtea-web-1.8.4
@@ -693,42 +688,6 @@ app-office/texmacs
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
 
-# Matt Turner <mattst88@gentoo.org> (2019-03-16)
-# Previously packaged drivers, now removed from Gentoo.
-# Keep this mask in place so users are aware, but can also easily unmask them
-# in an overlay if so desired.
-x11-drivers/xf86-input-citron
-x11-drivers/xf86-video-apm
-x11-drivers/xf86-video-ark
-x11-drivers/xf86-video-chips
-x11-drivers/xf86-video-cirrus
-x11-drivers/xf86-video-cyrix
-x11-drivers/xf86-video-i128
-x11-drivers/xf86-video-i740
-x11-drivers/xf86-video-impact
-x11-drivers/xf86-video-mach64
-x11-drivers/xf86-video-neomagic
-x11-drivers/xf86-video-newport
-x11-drivers/xf86-video-nsc
-x11-drivers/xf86-video-rendition
-x11-drivers/xf86-video-s3
-x11-drivers/xf86-video-s3virge
-x11-drivers/xf86-video-savage
-x11-drivers/xf86-video-sis
-x11-drivers/xf86-video-sisusb
-x11-drivers/xf86-video-sunbw2
-x11-drivers/xf86-video-suncg14
-x11-drivers/xf86-video-suncg3
-x11-drivers/xf86-video-suncg6
-x11-drivers/xf86-video-sunffb
-x11-drivers/xf86-video-sunleo
-x11-drivers/xf86-video-suntcx
-x11-drivers/xf86-video-tdfx
-x11-drivers/xf86-video-tga
-x11-drivers/xf86-video-trident
-x11-drivers/xf86-video-tseng
-x11-drivers/xf86-video-voodoo
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 dev-java/ant-eclipse-ecj:4.10
@@ -796,7 +755,6 @@ sys-devel/automake:1.10
 # If you still use one of these old toolchain packages, please upgrade (and
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
-<sys-devel/gcc-5.4
 <sys-libs/glibc-2.30-r8
 <sys-devel/binutils-2.33.1-r1
 <sys-devel/binutils-hppa64-2.33.1
