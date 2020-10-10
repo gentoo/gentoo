@@ -8351,7 +8351,7 @@ dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use 
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.9: Personal shell command keeper and snippets manager
 dev-python/keyring 21.4.0: Provides access to the system keyring service
-dev-python/keystoneauth 4.0.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 4.0.1 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 20.6.0: micro-framework for developing production-ready web services with Python
@@ -8508,7 +8508,7 @@ dev-python/olefile 0.46 0.46-r1: Python package to parse, read and write Microso
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
 dev-python/openpyxl 3.0.3 3.0.5: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 1.18.1 2.2.5: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.46.0: A collection of libraries for building applications to work with OpenStack.
+dev-python/openstacksdk 0.46.0 0.50.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1 3.0.1-r1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1 4.0.2: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2 3.0.1: OpenStack Cinder brick library for managing local volume attaches
@@ -8908,7 +8908,7 @@ dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles
 dev-python/python-socks 1.1.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14: A module to handle standardized numbers and codes
-dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
+dev-python/python-swiftclient 3.7.0 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 2.17.0: A client for the OpenStack Trove API, a scalable relational database service
