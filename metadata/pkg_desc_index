@@ -8620,7 +8620,7 @@ dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readabl
 dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.1.1: Tools for testing processes
-dev-python/progress 1.3: Easy to use progress bars
+dev-python/progress 1.3 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3: Text progressbar library for python
 dev-python/prometheus_client 0.8.0: Python client for the Prometheus monitoring system
@@ -8777,7 +8777,6 @@ dev-python/pyrsistent 0.16.0 0.17.3: Persistent/Functional/Immutable data struct
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pyscreenshot 2.2: Python screenshot library
-dev-python/pysendfile 2.0.1-r1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.4: Python Serial Port extension
 dev-python/pyside2 5.14.2: Python bindings for the Qt framework
 dev-python/pysmi 0.3.4: Python Lex & Yacc
@@ -10477,7 +10476,6 @@ dev-tex/culmus-latex 0.7-r1: Culmus fonts support for latex
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
 dev-tex/dot2tex 2.11.3: A Graphviz to LaTeX converter
 dev-tex/dvi2gr 0.4-r1: DVI to Grace translator
-dev-tex/dvi2tty 5.3.4-r1: Preview dvi-files on text-only devices
 dev-tex/dvipost 1.1-r3: post processor for dvi files
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
