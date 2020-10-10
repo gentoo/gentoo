@@ -32,6 +32,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		# Don't build with -Werror: https://bugs.gentoo.org/747583
+		-DUTPP_AMPLIFY_WARNINGS=OFF
 		-DUTPP_INCLUDE_TESTS_IN_BUILD=$(usex test)
 	)
 	cmake_src_configure
