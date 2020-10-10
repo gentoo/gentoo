@@ -27,7 +27,7 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/lua-compat-5.3-${LUA_COMPAT_V}"
 
 src_compile() {
-	# TODO maybe sometime there will be luarocks eclass...	
+	# TODO maybe sometime there will be luarocks eclass...
 	compile="$(tc-getCC) ${CFLAGS} ${LDFLAGS} -fPIC -I/usr/include -c lbitlib.c -o lbitlib.o -DLUA_COMPAT_BITLIB -Ic-api"
 	einfo "${compile}"
 	eval "${compile}" || die
