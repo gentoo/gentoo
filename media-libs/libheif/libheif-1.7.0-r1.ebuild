@@ -19,6 +19,8 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 LICENSE="GPL-3"
 SLOT="0/1.7"
 IUSE="gdk-pixbuf go static-libs test +threads"
+REQUIRED_USE="test? ( go )"
+
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
@@ -49,12 +51,17 @@ src_prepare() {
 
 multilib_src_configure() {
 	local econf_args=(
-		$(multilib_is_native_abi && use_enable go || echo --disable-go)
+		$(multilib_is_native_abi && use go || echo --disable-go)
 		$(use_enable gdk-pixbuf)
 		$(use_enable static-libs static)
 		$(use_enable threads multithreading)
 	)
 	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
+}
+
+multilib_src_test() {
+	default
+	emake -C go test
 }
 
 multilib_src_install_all() {
