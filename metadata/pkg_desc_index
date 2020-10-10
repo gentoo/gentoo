@@ -9182,7 +9182,7 @@ dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.4: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.5.0: Toolkit to convert between many translation formats
-dev-python/treq 20.4.1: A requests-like API built on top of twisted.web's Agent
+dev-python/treq 20.4.1 20.9.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
@@ -10586,15 +10586,15 @@ dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/build2 0.13.0: cross-platform toolchain for building and packaging C++ code
-dev-util/buildbot 2.8.2-r1 9999: BuildBot build automation system
-dev-util/buildbot-badges 2.8.2: Buildbot badges plugin produces an image in SVG or PNG format...
-dev-util/buildbot-console-view 2.8.2: Buildbot console-view plugin
-dev-util/buildbot-grid-view 2.8.2: BuildBot grid view web interface
-dev-util/buildbot-pkg 2.8.2: BuildBot common www build tools for packaging releases
-dev-util/buildbot-waterfall-view 2.8.2: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 2.8.2 9999: BuildBot Worker (slave) Daemon
-dev-util/buildbot-wsgi-dashboards 2.8.2: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-dev-util/buildbot-www 2.8.2: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot 2.8.2-r1 2.8.4 9999: BuildBot build automation system
+dev-util/buildbot-badges 2.8.2 2.8.4: Buildbot badges plugin produces an image in SVG or PNG format...
+dev-util/buildbot-console-view 2.8.2 2.8.4: Buildbot console-view plugin
+dev-util/buildbot-grid-view 2.8.2 2.8.4: BuildBot grid view web interface
+dev-util/buildbot-pkg 2.8.2 2.8.4: BuildBot common www build tools for packaging releases
+dev-util/buildbot-waterfall-view 2.8.2 2.8.4: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 2.8.2 2.8.4 9999: BuildBot Worker (slave) Daemon
+dev-util/buildbot-wsgi-dashboards 2.8.2 2.8.4: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
+dev-util/buildbot-www 2.8.2 2.8.4: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
@@ -17050,7 +17050,7 @@ sys-apps/which 2.21: Prints out location of specified executables that are in yo
 sys-apps/x86info 1.30_p20190617: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
 sys-apps/xdg-desktop-portal 1.6.0-r2 1.8.0: Desktop integration portal
-sys-apps/xdg-desktop-portal-gtk 1.7.1_pre: portal backend implementation that is using GTK+ and various pieces of GNOME
+sys-apps/xdg-desktop-portal-gtk 1.8.0: portal backend implementation that is using GTK+ and various pieces of GNOME
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.4 1.22.5 1.22.10: Fast, reliable, and secure node dependency management
