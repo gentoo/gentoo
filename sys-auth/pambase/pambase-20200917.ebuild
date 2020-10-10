@@ -77,7 +77,7 @@ src_configure() {
 src_test() { :; }
 
 src_install() {
-	DOC_CONTENTS=
+	local DOC_CONTENTS
 
 	if use passwdqc; then
 		DOC_CONTENTS="To amend the existing password policy please see the man 5 passwdqc.conf
