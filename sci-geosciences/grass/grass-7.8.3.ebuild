@@ -79,6 +79,11 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-7.8-flock.patch"
+)
+
 pkg_setup() {
 	if use lapack; then
 		local mylapack=$(eselect lapack show)
