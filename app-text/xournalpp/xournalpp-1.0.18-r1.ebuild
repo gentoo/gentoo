@@ -40,6 +40,10 @@ BDEPEND="
 	sys-apps/lsb-release
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-nostrip.patch" # bug 745255
+)
+
 src_prepare() {
 	cmake-utils_src_prepare
 }
