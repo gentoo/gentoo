@@ -3995,7 +3995,7 @@ dev-haskell/filepath-bytestring 1.4.2.1.6: Library for manipulating RawFilePaths
 dev-haskell/filestore 0.6.5: Interface for versioning file stores
 dev-haskell/findbin 0.0.5-r1: Locate directory of original program
 dev-haskell/fingertree 0.1.4.2: Generic finger-tree structure, with example instances
-dev-haskell/fixed 0.2.1.1: Signed 15.16 precision fixed point arithmetic
+dev-haskell/fixed 0.3: Signed 15.16 precision fixed point arithmetic
 dev-haskell/fmlist 0.9.3: FoldMap lists
 dev-haskell/foldl 1.4.7: Composable, streaming, and efficient left folds
 dev-haskell/foundation 0.0.25: Alternative prelude with batteries and no dependencies
