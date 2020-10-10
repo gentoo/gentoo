@@ -21,3 +21,10 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libxcb
 "
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_PythonModuleGeneration=ON # bug 746866
+	)
+	ecm_src_configure
+}
