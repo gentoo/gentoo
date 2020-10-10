@@ -41,6 +41,7 @@ RESTRICT+=" test"
 PATCHES=(
 	"${FILESDIR}/${P}-tests-optional.patch"
 	"${FILESDIR}/${P}-require-cxx14.patch"
+	"${FILESDIR}/${P}-appdata-location.patch"
 )
 
 src_prepare() {

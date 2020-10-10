@@ -1,0 +1,23 @@
+From bf9e6bc6e9885d30f2db124e803403ea327af138 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 10 Oct 2020 17:55:19 +0200
+Subject: [PATCH] Fix appdata installation path to /usr/share/metainfo
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ applications/kube/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/applications/kube/CMakeLists.txt b/applications/kube/CMakeLists.txt
+index 761d1f18..f92f66f0 100644
+--- a/applications/kube/CMakeLists.txt
++++ b/applications/kube/CMakeLists.txt
+@@ -49,4 +49,4 @@ set(KUBE_APPDATA_HELP "https://kube.readthedocs.io/en/latest/" CACHE STRING "app
+ set(KUBE_APPDATA_PROJECTGROUP "KDE" CACHE STRING "appdata projectgroup property")
+ set(KUBE_APPDATAFILENAME "${KUBE_APPLICATION_ID}.appdata.xml")
+ configure_file(kube.appdata.xml.in ${KUBE_APPDATAFILENAME})
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${KUBE_APPDATAFILENAME} DESTINATION ${KDE_INSTALL_DATAROOTDIR}/appdata/)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${KUBE_APPDATAFILENAME} DESTINATION ${KDE_INSTALL_DATAROOTDIR}/metainfo/)
+-- 
+2.28.0
+
