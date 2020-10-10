@@ -3,12 +3,14 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs verify-sig
 
+MY_P=${P/_rc/-RC}
 DESCRIPTION="MiniUPnP IGD Daemon"
 HOMEPAGE="http://miniupnp.free.fr/"
-SRC_URI="http://miniupnp.free.fr/files/${P/_rc/-RC}.tar.gz"
-S=${WORKDIR}/${P/_rc/-RC}
+SRC_URI="http://miniupnp.free.fr/files/${MY_P}.tar.gz
+	verify-sig? ( http://miniupnp.free.fr/files/${MY_P}.tar.gz.sig )"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
@@ -29,8 +31,12 @@ RDEPEND="
 		net-libs/libnftnl:=
 		net-libs/libmnl:=
 	)"
-DEPEND="${RDEPEND}
-	sys-apps/lsb-release"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-apps/lsb-release
+	verify-sig? ( app-crypt/openpgp-keys-miniupnp )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/miniupnp.asc
 
 src_configure() {
 	local opts=(
