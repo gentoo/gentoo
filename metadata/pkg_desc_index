@@ -791,7 +791,7 @@ app-backup/backupninja 1.0.1-r1 1.1.0: lightweight, extensible meta-backup syste
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5 9.6.6: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.9 19.2.8: Featureful client/server network backup suite
-app-backup/borgbackup 1.1.11-r2 1.1.13 9999: Deduplicating backup program with compression and authenticated encryption
+app-backup/borgbackup 1.1.11-r2 1.1.13 1.1.14 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.29.1 0.30.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
@@ -11569,7 +11569,7 @@ games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with r
 games-roguelike/nethack 3.6.6: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
-games-roguelike/stone-soup 0.23.2 0.24.0 0.25.0: Role-playing roguelike game of exploration and treasure-hunting in dungeons
+games-roguelike/stone-soup 0.23.2 0.24.0 0.25.0 0.25.1: Role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.6.1a 4.7.2: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b-r1: Gothic science fantasy roguelike game
