@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools desktop wxwidgets
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
 DESCRIPTION="A PC emulator that specializes in running old operating systems and software"
 HOMEPAGE="

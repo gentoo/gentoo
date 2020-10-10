@@ -16,13 +16,15 @@ IUSE="threads tools"
 
 # Define the list of valid lcd devices.
 IUSE_LCD_DEVICES=(
-	acoolsdcm ddusbt directgfx displaylink framebuffer glcd2usb
-	goldelox i2c ks0108 l4m lc7981 lh155 nokcol pcd8544
-	remote rs232 sed133x sed153x sed156x ssdoled stv8105 t6963
+	acoolsdcm ddusbt directgfx displaylink dpfax framebuffer glcd2usb
+	goldelox i2c ks0108 l4m lc7981 lh155 nokcol pcd8544 remote
+	rs232 sed133x sed153x sed156x ssdoled stv8105 t6963 vssdcp
 )
 
-# Add supported drivers from 'IUSE_LCD_DEVICES' to 'IUSE' and 'REQUIRED_USE'
+# Add supported drivers from 'IUSE_LCD_DEVICES' to 'IUSE' and 'REQUIRED_USE'.
+# Also enable 'lcd_devices_directgfx' as default.
 IUSE+=" $(printf 'lcd_devices_%s ' ${IUSE_LCD_DEVICES[@]}) "
+IUSE="${IUSE/lcd_devices_directgfx/+lcd_devices_directgfx}"
 REQUIRED_USE+="
 	|| ( $(printf 'lcd_devices_%s ' ${IUSE_LCD_DEVICES[@]}) )
 	lcd_devices_framebuffer? ( threads )
@@ -34,6 +36,7 @@ RDEPEND="
 	lcd_devices_acoolsdcm? ( virtual/libusb:1 )
 	lcd_devices_directgfx? ( media-libs/libsdl )
 	lcd_devices_displaylink? ( x11-libs/libdlo )
+	lcd_devices_dpfax? ( virtual/libusb:1 )
 	lcd_devices_glcd2usb? ( virtual/libusb:1 )
 "
 
@@ -41,7 +44,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( "AUTHORS" "BUGS" "DOCS" "HISTORY" "PINOUTS" "README" "TODO" )
 
-PATCHES=( "${FILESDIR}/use-destdir.patch" "${FILESDIR}/disable-static-build.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.02-use-destdir.patch"
+	"${FILESDIR}/${PN}-2.02-disable-static-build.patch"
+)
 
 src_prepare() {
 	default
@@ -65,7 +71,7 @@ src_configure() {
 	done
 
 	local use_usb="--disable-libusb"
-	if use lcd_devices_acoolsdcm || use lcd_devices_glcd2usb; then
+	if use lcd_devices_acoolsdcm || use lcd_devices_dpfax || use lcd_devices_glcd2usb; then
 		use_usb="--enable-libusb"
 	fi
 
@@ -74,6 +80,7 @@ src_configure() {
 		$(use_enable lcd_devices_displaylink deprecated)
 		$(use_enable lcd_devices_displaylink libdlo)
 		$(use_enable lcd_devices_remote experimental)
+		$(use_enable lcd_devices_vssdcp experimental)
 		$(use_enable threads pthread)
 		$(use_enable tools)
 		${use_usb}
