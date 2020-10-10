@@ -3,20 +3,23 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd tmpfiles toolchain-funcs
 
-DESCRIPTION="Prosody is a flexible communications server for Jabber/XMPP written in Lua"
+DESCRIPTION="Prosody is a modern XMPP communication server"
 HOMEPAGE="https://prosody.im/"
 SRC_URI="https://prosody.im/downloads/source/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="libevent libressl luajit mysql postgres sqlite ssl test zlib"
+IUSE="+libevent libressl luajit mysql postgres +sqlite +ssl test +zlib"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	dev-lua/LuaBitOp
+	|| (
+		>=dev-lang/lua-5.2:*
+		dev-lua/lua-bit32
+	)
 	net-dns/libidn
 	net-im/jabber-base
 	libressl? ( dev-libs/libressl:= )
@@ -32,7 +35,7 @@ DEPEND="
 
 RDEPEND="
 	${COMMON_DEPEND}
-	~dev-lua/luaexpat-1.3.0
+	dev-lua/luaexpat
 	dev-lua/luafilesystem
 	dev-lua/luasocket
 	libevent? ( dev-lua/luaevent )
@@ -43,7 +46,17 @@ RDEPEND="
 	zlib? ( dev-lua/lua-zlib )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.11.2-r1-gentoo.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.11.7-bit32.patch"
+	"${FILESDIR}/${PN}-0.11.7-gentoo.patch"
+)
+
+src_prepare() {
+	default
+
+	# Set correct plugin path for optional net-im/prosody-modules package
+	sed -e "s/GENTOO_LIBDIR/$(get_libdir)/g" -i prosody.cfg.lua.dist || die
+}
 
 src_configure() {
 	local myeconfargs=(
@@ -68,12 +81,16 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
+
+	newinitd "${FILESDIR}"/prosody.initd-r4 prosody
+	systemd_newunit "${FILESDIR}"/prosody.service-r1 prosody.service
+
+	newtmpfiles "${FILESDIR}"/prosody.tmpfilesd-r1 prosody.conf
 
 	keepdir /var/spool/jabber
+}
 
-	newinitd "${FILESDIR}"/prosody.initd-r3 prosody
-
-	systemd_dounit "${FILESDIR}"/prosody.service
-	systemd_newtmpfilesd "${FILESDIR}"/prosody.tmpfilesd prosody.conf
+pkg_postinst() {
+	tmpfiles_process prosody.conf
 }

@@ -5,26 +5,29 @@ EAPI=7
 
 inherit toolchain-funcs
 
+# Weird upstream version descisions...
+# Result tarball may be reused for future lua-compat53 package
+LUA_COMPAT_PN="lua-compat-5.3"
+LUA_COMPAT_PV="0.9"
+
 DESCRIPTION="Backported Lua bit manipulation library"
 HOMEPAGE="https://github.com/keplerproject/lua-compat-5.3"
-# Wierd upstream version descisions...
-# Result tarball may be reused for future lua-compat53 package
-LUA_COMPAT_V=0.9
-SRC_URI="https://github.com/keplerproject/lua-compat-5.3/archive/v${LUA_COMPAT_V}.tar.gz -> lua-compat53-${LUA_COMPAT_V}.tar.gz"
+SRC_URI="https://github.com/keplerproject/${LUA_COMPAT_PN}/archive/v${LUA_COMPAT_PV}.tar.gz -> lua-compat53-${LUA_COMPAT_PV}.tar.gz"
+
+S="${WORKDIR}/${LUA_COMPAT_PN}-${LUA_COMPAT_PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-# Strictly for lua 5.1
 DEPEND="dev-lang/lua:0="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/lua-compat-5.3-${LUA_COMPAT_V}"
+PATCHES=( "${FILESDIR}/${P}-fix-32bit-conversion.patch" )
 
 src_compile() {
 	# TODO maybe sometime there will be luarocks eclass...
