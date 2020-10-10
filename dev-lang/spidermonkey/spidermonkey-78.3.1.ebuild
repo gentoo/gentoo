@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-FIREFOX_PATCHSET="firefox-esr-78-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-esr-78-patches-03.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-01.tar.xz"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/firefox/releases"

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-esr-78-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-esr-78-patches-03.tar.xz"
 
 LLVM_MAX_SLOT=11
 
@@ -49,7 +49,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="https://www.mozilla.org/thunderbird"
 
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -480,6 +480,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Show flags set at the beginning
+	einfo "Current CFLAGS:    ${CFLAGS}"
+	einfo "Current LDFLAGS:   ${LDFLAGS}"
+	einfo "Current RUSTFLAGS: ${RUSTFLAGS}"
+
 	local have_switched_compiler=
 	if use clang && ! tc-is-clang ; then
 		# Force clang
@@ -733,6 +738,9 @@ src_configure() {
 	# when they would normally be larger than 2GiB.
 	append-ldflags "-Wl,--compress-debug-sections=zlib"
 
+	# Make revdep-rebuild.sh happy; Also required for musl
+	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags
+
 	# Pass $MAKEOPTS to build system
 	export MOZ_MAKE_FLAGS="${MAKEOPTS}"
 
@@ -747,6 +755,11 @@ src_configure() {
 
 	# Set build dir
 	mozconfig_add_options_mk 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
+
+	# Show flags we will use
+	einfo "Build CFLAGS:    ${CFLAGS}"
+	einfo "Build LDFLAGS:   ${LDFLAGS}"
+	einfo "Build RUSTFLAGS: ${RUSTFLAGS}"
 
 	# Handle EXTRA_CONF and show summary
 	local ac opt hash reason
