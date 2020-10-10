@@ -10,12 +10,6 @@
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="cracklib">
-			Enable pam_cracklib module on system authentication stack. This
-			produces warnings when changing password to something easily
-			crackable. It requires the same USE flag to be enabled on
-			<pkg>sys-libs/pam</pkg> or system login might be impossible.
-		</flag>
 		<flag name="elogind">
 			Use pam_elogind module to register user sessions with elogind.
 		</flag>
