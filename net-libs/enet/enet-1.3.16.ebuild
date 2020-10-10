@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Relatively thin, simple and robust network communication layer on top of UDP"
-HOMEPAGE="http://enet.bespin.org/"
+HOMEPAGE="http://enet.bespin.org/ https://github.com/lsalzman/enet/"
 SRC_URI="http://enet.bespin.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
