@@ -74,5 +74,4 @@ pkg_postinst() {
 	einfo "  diabdat.mpq"
 	einfo "from the original game CD into the following directory:"
 	einfo "  \${HOME}/.local/share/diasurgical/devilution/"
-	einfo "and make sure it's writeable (chmod u+w)."
 }
