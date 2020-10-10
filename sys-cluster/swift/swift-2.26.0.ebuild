@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_7 python3_8 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 eutils linux-info
 
@@ -23,10 +24,7 @@ IUSE="account container doc +memcached +object proxy"
 REQUIRED_USE="|| ( proxy account container object )"
 
 CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}"
-
+DEPEND="${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/eventlet-0.25.0[${PYTHON_USEDEP}]
