@@ -474,11 +474,6 @@ net-vpn/peervpn
 dev-db/mariadb:5.5
 dev-db/mariadb:10.1
 
-# Louis Sautier <sbraz@gentoo.org> (2020-09-10)
-# Masked for removal in 30 days, no revdeps.
-# All former consumers now use os.sendfile available in Python >= 3.3.
-dev-python/pysendfile
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
