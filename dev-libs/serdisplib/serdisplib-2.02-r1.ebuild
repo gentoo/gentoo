@@ -45,8 +45,8 @@ DEPEND="${RDEPEND}"
 DOCS=( "AUTHORS" "BUGS" "DOCS" "HISTORY" "PINOUTS" "README" "TODO" )
 
 PATCHES=(
-	"${FILESDIR}/use-destdir.patch"
-	"${FILESDIR}/disable-static-build.patch"
+	"${FILESDIR}/${PN}-2.02-use-destdir.patch"
+	"${FILESDIR}/${PN}-2.02-disable-static-build.patch"
 )
 
 src_prepare() {
