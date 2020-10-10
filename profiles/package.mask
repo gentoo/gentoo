@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-10-09)
+# pam module separated from
+# the sys-auth/pam_passwdqc package
+# (now merged back).
+# Removal in 30 days
+sys-auth/pam_passwdqc
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-10-09)
 # Mask older erlang releases for removal.
 # Bug #740894.
