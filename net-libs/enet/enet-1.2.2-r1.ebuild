@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DESCRIPTION="relatively thin, simple and robust network communication layer on top of UDP"
+DESCRIPTION="Relatively thin, simple and robust network communication layer on top of UDP"
 HOMEPAGE="http://enet.bespin.org/"
 SRC_URI="http://enet.bespin.org/download/${P}.tar.gz"
 
@@ -14,4 +14,9 @@ IUSE="static-libs"
 
 src_configure() {
 	econf $(use_enable static-libs static)
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

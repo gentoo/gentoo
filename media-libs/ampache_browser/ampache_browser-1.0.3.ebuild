@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Ampache desktop client library"
-HOMEPAGE="http://ampache-browser.org"
+HOMEPAGE="http://ampache-browser.org https://github.com/ampache-browser/ampache_browser"
 SRC_URI="https://github.com/ampache-browser/ampache_browser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -24,5 +24,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_NLS="$(usex nls)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
