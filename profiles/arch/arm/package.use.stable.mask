@@ -25,7 +25,6 @@ dev-util/geany-plugins markdown
 # media-video/pipewire is not stable yet
 dev-libs/weston pipewire
 <kde-apps/krfb-20.07.80 wayland
-<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
 <sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
 
