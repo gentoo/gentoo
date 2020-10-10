@@ -491,6 +491,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Show flags set at the beginning
+	einfo "Current CFLAGS:    ${CFLAGS}"
+	einfo "Current LDFLAGS:   ${LDFLAGS}"
+	einfo "Current RUSTFLAGS: ${RUSTFLAGS}"
+
 	local have_switched_compiler=
 	if use clang && ! tc-is-clang ; then
 		# Force clang
@@ -764,6 +769,11 @@ src_configure() {
 
 	# Set build dir
 	mozconfig_add_options_mk 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
+
+	# Show flags we will use
+	einfo "Build CFLAGS:    ${CFLAGS}"
+	einfo "Build LDFLAGS:   ${LDFLAGS}"
+	einfo "Build RUSTFLAGS: ${RUSTFLAGS}"
 
 	# Handle EXTRA_CONF and show summary
 	local ac opt hash reason
