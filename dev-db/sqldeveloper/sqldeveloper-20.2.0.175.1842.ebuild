@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop java-pkg-2
 
 DESCRIPTION="Oracle SQL Developer is a graphical tool for database development"
-HOMEPAGE="http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html"
+HOMEPAGE="https://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html"
 SRC_URI="${P}-no-jre.zip"
 
 RESTRICT="fetch"
