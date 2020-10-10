@@ -15,3 +15,10 @@ BDEPEND="
 	dev-util/gperf
 	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
 "
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_PythonModuleGeneration=ON # bug 746866
+	)
+	ecm_src_configure
+}
