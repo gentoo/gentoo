@@ -5,11 +5,8 @@ EAPI="7"
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
-
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit git-r3
 inherit readme.gentoo-r1 systemd distutils-r1
 
 MY_PV="${PV/_p/.post}"
@@ -17,11 +14,13 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot/"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
+	https://dev.gentoo.org/~dolsen/distfiles/buildbot-2.8.0-fakedb.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
 
 IUSE="crypt doc docker examples irc test"
 RESTRICT="!test? ( test )"
@@ -55,7 +54,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	doc? (
-		>=dev-python/sphinx-3.2.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
+		<dev-python/sphinx-2.1.0[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
@@ -74,14 +74,18 @@ DEPEND="${RDEPEND}
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
-		dev-util/buildbot-pkg[${PYTHON_USEDEP}]
-		dev-util/buildbot-worker[${PYTHON_USEDEP}]
-		dev-util/buildbot-www[${PYTHON_USEDEP}]
+		~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
+		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+		~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
 	)"
 
-S=${S}/master
+S=${WORKDIR}/${MY_P}
 
 distutils_enable_tests setup.py
+
+PATCHES=(
+		"${FILESDIR}/pypugjs-2.8.0.patch"
+)
 
 pkg_setup() {
 	DOC_CONTENTS="The \"buildbot\" user and the \"buildmaster\" init script has been added
@@ -93,11 +97,12 @@ pkg_setup() {
 src_compile() {
 	distutils-r1_src_compile
 
+	# missing files, so skip building
 	if use doc; then
 		einfo "Generation of documentation"
 		pushd docs > /dev/null
 		#'man' target is currently broken
-		emake html
+		emake html || die "Docs generation failed"
 		popd > /dev/null
 	fi
 }
@@ -109,7 +114,6 @@ src_install() {
 
 	if use doc; then
 		HTML_DOCS=( docs/_build/html/ )
-		# TODO: install man pages
 	fi
 
 	if use examples; then
