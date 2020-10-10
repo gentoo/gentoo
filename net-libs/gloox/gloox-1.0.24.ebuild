@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0/18"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug gnutls idn libressl ssl static-libs test zlib"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	idn? ( net-dns/libidn:= )
