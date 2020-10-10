@@ -1,0 +1,11 @@
+--- a/newfs_hfs.tproj/Makefile.lnx
++++ b/newfs_hfs.tproj/Makefile.lnx
+@@ -4,7 +4,7 @@ OFILES = $(CFILES:.c=.o)
+ all: newfs_hfs
+ 
+ newfs_hfs: $(OFILES)
+-	${CC} ${CFLAGS} -o newfs_hfs ${OFILES} -lcrypto
++	${CC} ${CFLAGS} -o newfs_hfs ${OFILES} ${LDFLAGS} -lcrypto
+ 
+ clean:
+ 	$(RM) newfs_hfs $(OFILES)
