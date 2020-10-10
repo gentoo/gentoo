@@ -1000,6 +1000,7 @@ app-crypt/nwipe 0.28: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
