@@ -18,7 +18,7 @@ COMMON_DEPEND="acct-group/kube-controller-manager
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	!sys-cluster/kubernetes"
-BDEPEND="=dev-lang/go-1.14*"
+BDEPEND=">=dev-lang/go-1.15"
 
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
