@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-10-11)
+# Mask new version until calendar apps are sorted out:
+# bug #747538.
+>=sys-libs/timezone-data-2020b
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-10-09)
 # pam module separated from
 # the sys-auth/pam_passwdqc package
