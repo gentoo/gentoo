@@ -822,7 +822,7 @@ app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
 app-backup/rear 2.4 2.6: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
-app-backup/restic 0.9.4 0.9.5 0.9.6: A backup program that is fast, efficient and secure
+app-backup/restic 0.9.6 0.10.0: A backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.4.2 1.4.3: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
@@ -1937,7 +1937,7 @@ app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.0.20 2.5.18 2.5.20: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
-app-emulation/fuse 1.5.6 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
+app-emulation/fuse 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.4.3: Utils for the Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/gallium-nine-standalone 0.7 9999: A standalone version of the WINE parts of Gallium Nine
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
@@ -3083,7 +3083,7 @@ app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.7.6: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
-app-text/xmldiff 2.3: A tool that figures out the differences between two similar XML files
+app-text/xmldiff 2.3 2.4: A tool that figures out the differences between two similar XML files
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.28-r3: script for converting XML and DocBook documents to a variety of output formats
@@ -3586,7 +3586,7 @@ dev-db/spatialite 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlit
 dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 20.2.0.174.1557: Oracle SQLcl is the new SQL*Plus
-dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
+dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.32.3-r1 3.33.0: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
@@ -5618,6 +5618,7 @@ dev-libs/qcustomplot 2.0.1: Qt C++ widget for plotting and data visualization
 dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qrosscore 0.3.2 9999: KDE-free version of Kross (core libraries and Qt Script backend)
+dev-libs/qtcompress 0_p20180513: A public API for QZip in an easy to use module
 dev-libs/qtkeychain 0.10.0: Qt API for storing passwords securely
 dev-libs/quazip 0.9.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
@@ -8490,7 +8491,7 @@ dev-python/notify2 0.3.1-r1 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
-dev-python/nuitka 0.6.8: Python to native compiler
+dev-python/nuitka 0.6.8 0.6.9.1: Python to native compiler
 dev-python/numexpr 2.7.2: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.19.0 1.19.1 1.19.2: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
@@ -8647,7 +8648,7 @@ dev-python/pyClamd 0.4.0-r2: python interface to Clamd (Clamav daemon)
 dev-python/pyFFTW 0.11.1 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyTenable 1.1.3: Tenable API Library for Tenable.io and SecurityCenter
-dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID web service
+dev-python/pyacoustid 1.1.7 1.2.0: Python bindings for Chromaprint and the AcoustID web service
 dev-python/pyaes 1.6.1-r2: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.1.6-r1: Python bindings for ALSA library
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
@@ -12931,7 +12932,7 @@ media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5 2.2.6.1: Wings 3D is an advanced subdivi
 media-gfx/wkhtmltopdf 0.12.5: Convert html to pdf (and various image formats) using webkit
 media-gfx/word_cloud 1.6.0 1.8.0: A little word cloud generator in Python
 media-gfx/xdot 1.1 9999: Interactive viewer for Graphviz dot files
-media-gfx/xfig 3.2.6a-r1: A menu-driven tool to draw and manipulate objects interactively in an X window
+media-gfx/xfig 3.2.6a-r1 3.2.7b: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
 media-gfx/xpaint 2.10.2: Image editor with tiff, jpeg and png support
@@ -12953,7 +12954,7 @@ media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility l
 media-libs/alsa-topology-conf 1.2.2 1.2.3: ALSA topology configuration files
 media-libs/alsa-ucm-conf 1.2.2 1.2.3: ALSA ucm configuration files
 media-libs/alure 1.2-r1 1.2-r2: The OpenAL Utility Toolkit
-media-libs/ampache_browser 1.0.1 1.0.2: Ampache desktop client library
+media-libs/ampache_browser 1.0.2 1.0.3: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
 media-libs/assimp 5.0.1: Importer library to import assets from 3D files
 media-libs/aubio 0.4.9: Library for audio labelling
@@ -14728,11 +14729,11 @@ net-libs/davix 0.7.5 0.7.6: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.6.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.6.0: library implementing services that allow clients to discover and manipulate DLNA renderers
-net-libs/enet 1.2.2-r1 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
+net-libs/enet 1.2.2-r1 1.3.13 1.3.16: Relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.2.8-r2: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
 net-libs/glib-networking 2.62.4 2.64.3: Network-related giomodules for glib
-net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
+net-libs/gloox 1.0.22 1.0.24: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.34.1 3.36.0: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.15: A TLS 1.2 and SSL 3.0 implementation for the GNU project
@@ -15376,7 +15377,7 @@ net-p2p/freenet 0.7.5_p1484 0.7.5_p1486: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.4.23 0.5.1: Main implementation of IPFS
-net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
+net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.15 1.2.0: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
@@ -15745,7 +15746,7 @@ sci-astronomy/sextractor 2.19.5-r1: Extract catalogs of sources from astronomica
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.20.1 0.20.2: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.20.2 0.20.3: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
@@ -16442,7 +16443,7 @@ sci-misc/netlogo-bin 5.0.3-r1 6.0.2: Cross-platform multi-agent programmable mod
 sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/tango 9.2.5a: Tango is an Open Source solution for SCADA and DCS
 sci-misc/vitables 3.0.0-r1 3.0.0-r2: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
-sci-physics/bullet 2.86 2.89: Continuous Collision Detection and Physics Library
+sci-physics/bullet 2.86 2.89 3.05: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6 2006-r7: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
 sci-physics/clhep 2.2.0.5 2.4.0.4 2.4.1.2 2.4.1.3-r1: High Energy Physics C++ library

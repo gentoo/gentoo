@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Relatively thin, simple and robust network communication layer on top of UDP
+EAPI=7
+HOMEPAGE=http://enet.bespin.org/ https://github.com/lsalzman/enet/
+IUSE=static-libs
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=!net-libs/enet:0
+SLOT=1.3/7
+SRC_URI=http://enet.bespin.org/download/enet-1.3.16.tar.gz
+_md5_=f614dd6d053706e77a07cafd96e70641
