@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Ampache desktop client library"
-HOMEPAGE="http://ampache-browser.org"
+HOMEPAGE="http://ampache-browser.org https://github.com/ampache-browser/ampache_browser"
 SRC_URI="https://github.com/ampache-browser/ampache_browser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
