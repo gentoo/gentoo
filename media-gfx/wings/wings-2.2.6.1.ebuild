@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="Wings 3D is an advanced subdivision modeler"
 HOMEPAGE="http://www.wings3d.com/"
@@ -22,8 +23,14 @@ DEPEND="
 	${RDEPEND}
 "
 
+src_prepare() {
+	sed -i -e 's# -Werror##g;s# -O3##g' $(find -name Makefile) || die
+	default
+}
+
 src_compile() {
 	export ERL_PATH="/usr/$(get_libdir)/erlang/lib/"
+	tc-export CC
 	# Work around parallel make issues
 	# Set ER_LIBS to the top source directory
 	emake vsn.mk
