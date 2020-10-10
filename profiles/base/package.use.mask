@@ -40,9 +40,7 @@ app-office/lyx docbook
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
 media-plugins/mythplugins mythnetvision
-sci-physics/thepeg rivet
 sys-cluster/drbd-utils heartbeat
-sys-cluster/pacemaker heartbeat
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
@@ -51,7 +49,6 @@ app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on dev-python/pygtk that is masked for removal.
-app-mobilephone/sobexsrv gtk
 <media-gfx/gimp-3 python
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
