@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_7 )
 
 inherit distutils-r1
@@ -13,11 +15,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE=""
 
-CDEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}"
+DEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/Babel-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/cliff-2.8.0[${PYTHON_USEDEP}]
