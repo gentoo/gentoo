@@ -1,0 +1,78 @@
+--- a/dbd/mysql/statement.c	2020-03-09 15:55:43.212010825 +0100
++++ b/dbd/mysql/statement.c	2020-03-09 15:57:37.703464570 +0100
+@@ -200,7 +200,10 @@
+ 	switch(type) {
+ 	    case LUA_TNIL:
+ 		bind[i].buffer_type = MYSQL_TYPE_NULL;
++#if MYSQL_VERSION_ID >= 80000
++#else
+ 		bind[i].is_null = (my_bool*)1;
++#endif
+ 		break;
+ 
+ 	    case LUA_TBOOLEAN:
+@@ -209,7 +213,11 @@
+ 		*boolean = lua_toboolean(L, p);
+ 
+ 		bind[i].buffer_type = MYSQL_TYPE_LONG;
+-		bind[i].is_null = (my_bool*)0;
++#if MYSQL_VERSION_ID >= 80000
++                bind[i].is_null = (bool*) 0;
++#else
++                bind[i].is_null = (my_bool*)0;
++#endif
+ 		bind[i].buffer = (char *)boolean;
+ 		bind[i].length = 0;
+ 		break;
+@@ -224,7 +232,11 @@
+ 		*num = lua_tonumber(L, p);
+ 
+ 		bind[i].buffer_type = MYSQL_TYPE_DOUBLE;
+-		bind[i].is_null = (my_bool*)0;
++#if MYSQL_VERSION_ID >= 80000
++                bind[i].is_null = (bool*) 0;
++#else
++                bind[i].is_null = (my_bool*)0;
++#endif
+ 		bind[i].buffer = (char *)num;
+ 		bind[i].length = 0;
+ 		break;
+@@ -235,7 +247,11 @@
+ 		str = lua_tolstring(L, p, str_len);
+ 
+ 		bind[i].buffer_type = MYSQL_TYPE_STRING;
+-		bind[i].is_null = (my_bool*)0;
++#if MYSQL_VERSION_ID >= 80000
++                bind[i].is_null = (bool*) 0;
++#else
++                bind[i].is_null = (my_bool*)0;
++#endif
+ 		bind[i].buffer = (char *)str;
+ 		bind[i].length = str_len;
+ 		break;
+@@ -385,7 +385,7 @@
+ 
+ 		    if (fields[i].type == MYSQL_TYPE_TIMESTAMP || fields[i].type == MYSQL_TYPE_DATETIME) {
+ 			char str[20];
+-			struct st_mysql_time *t = bind[i].buffer;
++			MYSQL_TIME *t = bind[i].buffer;
+ 
+ 			snprintf(str, 20, "%d-%02d-%02d %02d:%02d:%02d", t->year, t->month, t->day, t->hour, t->minute, t->second);
+ 
+@@ -396,7 +396,7 @@
+ 			}
+ 		    } else if (fields[i].type == MYSQL_TYPE_TIME) {
+ 			char str[9];
+-			struct st_mysql_time *t = bind[i].buffer;
++			MYSQL_TIME *t = bind[i].buffer;
+ 
+ 			snprintf(str, 9, "%02d:%02d:%02d", t->hour, t->minute, t->second);
+ 
+@@ -407,7 +407,7 @@
+ 			}
+ 		    } else if (fields[i].type == MYSQL_TYPE_DATE) {
+ 			char str[20];
+-			struct st_mysql_time *t = bind[i].buffer;
++			MYSQL_TIME *t = bind[i].buffer;
+ 
+ 			snprintf(str, 11, "%d-%02d-%02d", t->year, t->month, t->day);
