@@ -67,8 +67,7 @@ RDEPEND+="
 		!<sys-apps/shadow-4.7-r2
 		!>=sys-apps/shadow-4.7-r2[su]
 	)
-	!net-wireless/rfkill
-	!<app-shells/bash-completion-2.7-r1"
+	!net-wireless/rfkill"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"

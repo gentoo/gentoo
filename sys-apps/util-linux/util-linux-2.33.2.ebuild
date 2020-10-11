@@ -50,8 +50,7 @@ RDEPEND+="
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
 	)
-	!net-wireless/rfkill
-	!<app-shells/bash-completion-2.7-r1"
+	!net-wireless/rfkill"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
