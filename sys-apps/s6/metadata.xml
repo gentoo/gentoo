@@ -13,4 +13,7 @@
 		S6 is a small suite of programs for UNIX designed to allow
 		service supervision similar to daemontools or runit.
 	</longdescription>
+	<use>
+		<flag name="execline">enable support for <pkg>dev-lang/execline</pkg></flag>
+	</use>
 </pkgmetadata>
