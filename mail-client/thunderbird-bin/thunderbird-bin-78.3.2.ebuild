@@ -177,9 +177,9 @@ src_install() {
 	popd &>/dev/null || die
 
 	pax-mark m \
-		"${MOZILLA_FIVE_HOME}"/firefox \
-		"${MOZILLA_FIVE_HOME}"/firefox-bin \
-		"${MOZILLA_FIVE_HOME}"/plugin-container
+		"${ED}${MOZILLA_FIVE_HOME}"/firefox \
+		"${ED}${MOZILLA_FIVE_HOME}"/firefox-bin \
+		"${ED}${MOZILLA_FIVE_HOME}"/plugin-container
 
 	# Patch alsa support
 	local apulselib=

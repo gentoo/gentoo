@@ -11,7 +11,7 @@ SRC_URI="https://github.com/DNSSEC-Tools/DNSSEC-Tools/archive/dnssec-tools-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="dlv +ipv6 +nsec3 static-libs +threads"
 
 RDEPEND=">=dev-libs/openssl-1.1.0:0"
