@@ -2,15 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+NEED_EMACS=24.3
 
 inherit elisp
 
-COMMIT="35b6e4c20b8b4eaf783ccc8e613d0dd06dbd165c"
 DESCRIPTION="An Emacs major mode for editing Lua scripts"
 HOMEPAGE="http://lua-users.org/wiki/LuaEditorSupport
 	http://immerrr.github.io/lua-mode/"
-SRC_URI="https://github.com/immerrr/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+SRC_URI="https://github.com/immerrr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
