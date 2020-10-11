@@ -133,7 +133,7 @@ src_install() {
 
 src_test() {
 	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
-	ln -s "${S}_build/eeschema/_eeschema.kiface" "${S}_build/qa/eeschema/_eeschema.kiface"
+	ln -s "${S}_build/eeschema/_eeschema.kiface" "${S}_build/qa/eeschema/_eeschema.kiface" || die
 
 	default
 }
