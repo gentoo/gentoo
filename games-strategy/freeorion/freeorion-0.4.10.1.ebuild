@@ -9,21 +9,10 @@ inherit cmake python-single-r1 xdg
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="https://www.freeorion.org"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
-else
-	if [[ ${PV} = *_p* ]]; then
-		KEYWORDS="~amd64"
-		COMMIT="1570afb475763b13f5d2f434037ec907da812bb4"
-		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN}-${COMMIT}"
-	else
-		inherit git-r3
-		EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
-		EGIT_BRANCH="release-v${PV}"
-	fi
-fi
+# Github release
+KEYWORDS="~amd64"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${PV/_/-}"
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
