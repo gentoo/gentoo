@@ -40,6 +40,11 @@ src_prepare() {
 	# remove warning about missing file that controls features
 	# we don't currently support
 	sed -e "/installation problem/ctrue" -i rc.apparmor.functions || die
+
+	# bug 634782
+	sed -e "s/cpp/$(tc-getCPP) -/" \
+		-i ../common/list_capabilities.sh \
+		-i ../common/list_af_names.sh || die
 }
 
 src_compile() {
