@@ -617,6 +617,11 @@ net-libs/nDPI
 # and accept a more unstable release.
 >=www-client/chromium-87
 
+# Mart Raudsepp <leio@gentoo.org> (2020-06-06)
+# Meson port does not handle multilib yet and has issues
+# regarding runstatedir (not using /run).
+=net-misc/networkmanager-1.22*
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-27)
 # Vulnerable old version of icedtea-web #711392
 <dev-java/icedtea-web-1.8.4

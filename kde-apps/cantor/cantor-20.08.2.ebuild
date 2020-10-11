@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake"
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.72.0
 QTMIN=5.14.2
@@ -74,6 +74,8 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-python.patch" )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	ecm_pkg_setup
@@ -87,10 +89,11 @@ src_configure() {
 		$(cmake_use_find_package julia Julia)
 		$(cmake_use_find_package lua LuaJIT)
 		-DUSE_LIBSPECTRE=$(usex postscript)
-		$(cmake_use_find_package python PythonLibs3)
+		$(cmake_use_find_package python Python3)
 		$(cmake_use_find_package qalculate Qalculate)
 		$(cmake_use_find_package R R)
 	)
+	use python && mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
 	ecm_src_configure
 }
 

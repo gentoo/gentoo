@@ -151,6 +151,7 @@ multilib_src_configure() {
 		--disable-rpath
 		--sbindir=/usr/sbin
 		--with-crypto="libcrypto"
+		--enable-local-provider
 		$(multilib_native_use_with systemd kcm)
 		$(multilib_native_use_with systemd secrets)
 		$(use_with samba)
@@ -170,7 +171,6 @@ multilib_src_configure() {
 		$(use_enable valgrind)
 		--without-python2-bindings
 		$(multilib_native_use_with python python3-bindings)
-
 	)
 
 	# Annoyingly configure requires that you pick systemd XOR sysv
