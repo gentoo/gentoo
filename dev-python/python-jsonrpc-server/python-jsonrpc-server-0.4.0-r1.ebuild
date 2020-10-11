@@ -21,17 +21,15 @@ BDEPEND="dev-python/versioneer[${PYTHON_USEDEP}]
 		dev-python/pycodestyle[${PYTHON_USEDEP}]
 )"
 
-RDEPEND="~dev-python/ujson-1.35[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/ujson-3[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+PATCHES=( "${FILESDIR}/${PN}-0.4.0-fix-test-with-ujson-3-and-up.patch" )
 
 python_prepare_all() {
 	# Remove pytest-cov dep
 	sed -i -e '0,/addopts/I!d' setup.cfg || die
-
-	# jsonrpc-server does not actually work with ujson>3.0.0: tests fail
-	sed -i -e 's/ujson>=3.0.0/ujson==1.35/g' setup.py || die
-	sed -i -e 's/ujson>=3.0.0/ujson==1.35/g' python_jsonrpc_server.egg-info/requires.txt || die
 
 	distutils-r1_python_prepare_all
 }
