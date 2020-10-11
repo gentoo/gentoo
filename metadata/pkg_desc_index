@@ -10782,7 +10782,7 @@ dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.6.0 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.2-r1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.54.3 0.55.3 9999: Open source build system
+dev-util/meson 0.55.3 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw64-runtime 7.0.0-r1 8.0.0: Free Win64 runtime and import library definitions
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
@@ -18594,7 +18594,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.65 5.66_alpha08 5.66_alpha09 5.66_alpha10: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.65 5.66_alpha10 5.66_alpha11: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
