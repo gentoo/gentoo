@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
@@ -20,7 +21,7 @@ RDEPEND=">=dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	>=dev-python/python-editor-0.3[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
 	test? ( ${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
