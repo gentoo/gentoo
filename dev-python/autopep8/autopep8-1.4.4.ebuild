@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
@@ -22,7 +23,6 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND=">=dev-python/pycodestyle-2.4.0[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
+BDEPEND="test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
