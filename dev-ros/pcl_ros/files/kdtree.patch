@@ -1,0 +1,12 @@
+Index: pcl_ros/include/pcl_ros/surface/moving_least_squares.h
+===================================================================
+--- pcl_ros.orig/include/pcl_ros/surface/moving_least_squares.h
++++ pcl_ros/include/pcl_ros/surface/moving_least_squares.h
+@@ -42,6 +42,7 @@
+ 
+ // PCL includes
+ #include <pcl/surface/mls.h>
++#include <pcl/search/kdtree.h> // for KdTree
+ 
+ // Dynamic reconfigure
+ #include <dynamic_reconfigure/server.h>
