@@ -1796,7 +1796,7 @@ app-emacs/jde 2.4.1-r1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/ledger-mode 3.1.1: An Emacs major mode for editing ledger files
 app-emacs/lookup 1.99.96_pre20180209: An interface to search CD-ROM books and network dictionaries
-app-emacs/lua-mode 20151025 20151025_p20200513: An Emacs major mode for editing Lua scripts
+app-emacs/lua-mode 20151025 20201010: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410 0.48_p20200226: Elisp client for the LysKOM conference system
 app-emacs/magit 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.13.0 2.13.2 2.13.3: Define prefix-infix-suffix command combos
