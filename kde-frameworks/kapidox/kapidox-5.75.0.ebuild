@@ -4,8 +4,8 @@
 EAPI=7
 
 DISTUTILS_SINGLE_IMPL="true"
-DISTUTILS_USE_SETUPTOOLS="no"
-PYTHON_COMPAT=( python3_{7,8} )
+DISTUTILS_USE_SETUPTOOLS="bdepend"
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit kde.org distutils-r1
 
 DESCRIPTION="Framework for building KDE API documentation in a standard format and style"
