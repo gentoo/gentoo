@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>expeditioneer@gentoo.org</email>
-		<name>Dennis Lamm</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Firejail is a SUID program that reduces the risk of security breaches by restricting the running environment of
 		untrusted applications using Linux namespaces and seccomp-bpf. It allows a process and all its descendants to
