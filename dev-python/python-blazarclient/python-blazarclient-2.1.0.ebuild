@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_6 python3_7 )
 
 inherit distutils-r1
@@ -17,8 +19,7 @@ IUSE=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}"
+DEPEND="${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/cliff-2.8.0[${PYTHON_USEDEP}]
