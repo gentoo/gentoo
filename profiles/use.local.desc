@@ -7855,6 +7855,7 @@ sys-apps/s390-tools:ncurses - build hyptop monitoring program
 sys-apps/s390-tools:openssl - build the zkey utility
 sys-apps/s390-tools:pfm - build the cpacfstats tool
 sys-apps/s390-tools:zlib - build the zgetdump and dump2tar utilities
+sys-apps/s6:execline - enable support for dev-lang/execline
 sys-apps/s6-linux-init:sysv-utils - Install sysvinit compatibility symlinks for telinit, halt, poweroff, reboot, and shutdown
 sys-apps/shadow:bcrypt - build the bcrypt password encryption algorithm
 sys-apps/shadow:su - build the su program
