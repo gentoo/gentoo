@@ -22,7 +22,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/${PV}" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d cuda debug dnnsamples -download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack lto opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
+IUSE="contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d cuda debug dnnsamples download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack lto opencl openexr opengl openmp opencvapps png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 
 # The following lines are shamelessly stolen from ffmpeg-9999.ebuild with modifications
 ARM_CPU_FEATURES=(
@@ -110,6 +110,7 @@ RDEPEND="
 	)
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
+	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	lapack? ( virtual/lapack )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	openexr? ( media-libs/openexr[${MULTILIB_USEDEP}] )
@@ -328,8 +329,12 @@ multilib_src_configure() {
 		-DWITH_GTK=$(usex gtk3)
 		-DWITH_GTK_2_X=OFF # only want gtk3 nowadays
 		-DWITH_IPP=OFF
+		# Jasper was removed from tree because of security problems.
+		# Upstream were/are making progress. We use openjpeg instead.
+		# bug 734284
 		-DWITH_JASPER=OFF
 		-DWITH_JPEG=$(usex jpeg)
+		-DWITH_OPENJPEG=$(usex jpeg2k)
 		-DWITH_WEBP=$(usex webp)
 		-DWITH_OPENEXR=$(usex openexr)
 		-DWITH_OPENGL=$(usex opengl)
@@ -416,7 +421,8 @@ multilib_src_configure() {
 	# OpenCV build options
 	# ===================================================
 		-DENABLE_CCACHE=OFF
-		-DENABLE_PRECOMPILED_HEADERS=$(usex pch)
+		# bug 733796, but PCH is a risky game in CMake anyway
+		-DENABLE_PRECOMPILED_HEADERS=OFF
 		-DENABLE_SOLUTION_FOLDERS=OFF
 		-DENABLE_PROFILING=OFF
 		-DENABLE_COVERAGE=OFF
@@ -453,6 +459,7 @@ multilib_src_configure() {
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		use ${i%:*} && CPU_BASELINE="${CPU_BASELINE}${i#*:};"
 	done
+
 	GLOBALCMAKEARGS+=(
 		-DOPENCV_CPU_OPT_IMPLIES_IGNORE=ON
 		-DCPU_BASELINE=${CPU_BASELINE}
@@ -509,7 +516,7 @@ multilib_src_configure() {
 }
 
 python_module_compile() {
-	local BUILD_DIR=${orig_BUILD_DIR}
+	local BUILD_DIR="${orig_BUILD_DIR}"
 	local mycmakeargs=( ${GLOBALCMAKEARGS[@]} )
 
 	# Set all python variables to load the correct Gentoo paths
