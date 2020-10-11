@@ -24,7 +24,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"
 
-PATCHES=( "${FILESDIR}"/${PV}-r2-Makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${PV}-r2-Makefile.patch
+	"${FILESDIR}"/${P}-mysql-8.patch
+)
 
 src_prepare() {
 	default
