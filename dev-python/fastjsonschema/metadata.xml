@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>haskell@gentoo.org</email>
-		<name>Gentoo Haskell</name>
+		<email>python@gentoo.org</email>
 	</maintainer>
 </pkgmetadata>

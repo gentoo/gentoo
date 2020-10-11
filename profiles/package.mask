@@ -39,7 +39,7 @@
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-10-09)
 # pam module separated from
-# the sys-auth/pam_passwdqc package
+# the sys-auth/passwdqc package
 # (now merged back).
 # Removal in 30 days
 sys-auth/pam_passwdqc
@@ -593,19 +593,6 @@ net-libs/nDPI
 ~virtual/perl-Time-HiRes-1.976.400
 ~virtual/perl-Time-Piece-1.340.100
 ~virtual/perl-Unicode-Normalize-1.270.0
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-13)
-# Python 2 dev-python/pillow revdeps with extended removal time.
-# Also the only revdeps of dev-python/matplotlib-python2.
-# Removal in 90 days.  Bug #729672.
-<net-wireless/gnuradio-3.8
-<net-wireless/gr-iio-0.3_p20191219-r1
-<net-wireless/gr-paint-0.0_p20200517
-<net-analyzer/gr-fosphor-0.0_p20200131
-<net-wireless/gr-ieee802154-0.0_p20191006
-<net-wireless/gr-iqbal-0.38.1
-<net-wireless/gr-osmosdr-0.2.0
-dev-python/matplotlib-python2
 
 # Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
 # Dev channel releases are only for people who

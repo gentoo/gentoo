@@ -19,6 +19,3 @@ PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"
 # perl and python are now disabled by default anyway, truetype and xml are enabled
 # by the also inherited desktop profile
 USE="${USE} snmp"
-
-# Verify upstream signatures by default.
-USE="${USE} verify-sig"
