@@ -31,6 +31,8 @@ RDEPEND="
 	app-text/tidy-html5
 "
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${MY_P}"
 
 python_compile_all() {
