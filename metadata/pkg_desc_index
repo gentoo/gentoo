@@ -1043,7 +1043,7 @@ app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.2 1.4.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.3.0: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.4.1 2.4.2 3.0.0: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.4.1 2.4.3 3.0.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
@@ -1593,7 +1593,7 @@ app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.8b 4.0 4.1 4.2: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
-app-doc/kicad-doc 4.0.7 4.0.7-r1 5.1.5 5.1.6: Electronic Schematic and PCB design tools manuals
+app-doc/kicad-doc 5.1.6 5.1.7: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1-r1: The Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
@@ -3057,7 +3057,7 @@ app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK forma
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.6.0 1.7.0 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
-app-text/txt2tags 3.3: Generate marked up documents (HTML, etc.)from a plain text file with markup
+app-text/txt2tags 3.3 3.7: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 0.8.4 1.1: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
@@ -3624,7 +3624,7 @@ dev-embedded/avrdude 6.3 9999: AVR Downloader/UploaDEr
 dev-embedded/cpik 0.7.4_p4: C compiler for PIC18 devices
 dev-embedded/dc-tool-ip 1.0.4: Ethernet program loader for the Dreamcast
 dev-embedded/dfu-programmer 0.7.2-r1: A Device Firmware Update based USB programmer for Atmel chips
-dev-embedded/esptool 2.8 2.8-r1: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
+dev-embedded/esptool 2.8 2.8-r1 2.8-r2: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/freaklabs-boards 1.0.0: Arduino hardware definitions for freaklabs boards
 dev-embedded/gnusim8085 1.3.7: A GTK2 8085 Simulator
 dev-embedded/gpsim 0.29.0 0.30.0: A simulator for the Microchip PIC microcontrollers
@@ -14525,7 +14525,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.2.4 4.3.2 4.3.3: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
-net-dns/openresolv 3.9.0 3.9.2 3.10.0 3.11.0: A framework for managing DNS information
+net-dns/openresolv 3.9.0 3.10.0 3.11.0: A framework for managing DNS information
 net-dns/pdns 4.3.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.3.3 4.3.4 4.4.0_rc2: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
@@ -15997,14 +15997,14 @@ sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.106: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
-sci-electronics/iverilog 10.3 10.3-r1 10.3-r2 9999: A Verilog simulation and synthesis tool
-sci-electronics/kicad 5.1.5-r2 5.1.6: Electronic Schematic and PCB design tools
-sci-electronics/kicad-footprints 5.1.5 5.1.6: Electronic Schematic and PCB design tools footprint libraries
-sci-electronics/kicad-i18n 5.1.5 5.1.6: Electronic Schematic and PCB design tools GUI translations
-sci-electronics/kicad-meta 5.1.5 5.1.6: Electronic Schematic and PCB design tools (meta package)
-sci-electronics/kicad-packages3d 5.1.5 5.1.6: Electronic Schematic and PCB design tools 3D package libraries
-sci-electronics/kicad-symbols 5.1.5 5.1.6: Electronic Schematic and PCB design tools symbol libraries
-sci-electronics/kicad-templates 5.1.5 5.1.6: Electronic Schematic and PCB design tools project templates
+sci-electronics/iverilog 10.3 10.3-r1 10.3-r2 11.0 9999: A Verilog simulation and synthesis tool
+sci-electronics/kicad 5.1.6 5.1.7: Electronic Schematic and PCB design tools
+sci-electronics/kicad-footprints 5.1.6 5.1.7: Electronic Schematic and PCB design tools footprint libraries
+sci-electronics/kicad-i18n 5.1.6 5.1.7: Electronic Schematic and PCB design tools GUI translations
+sci-electronics/kicad-meta 5.1.6 5.1.7: Electronic Schematic and PCB design tools (meta package)
+sci-electronics/kicad-packages3d 5.1.6 5.1.7: Electronic Schematic and PCB design tools 3D package libraries
+sci-electronics/kicad-symbols 5.1.6 5.1.7: Electronic Schematic and PCB design tools symbol libraries
+sci-electronics/kicad-templates 5.1.6 5.1.7: Electronic Schematic and PCB design tools project templates
 sci-electronics/klayout 0.26.5 0.26.8 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/ktechlab 0.50.0: IDE for microcontrollers and electronics
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
@@ -17408,7 +17408,7 @@ sys-fs/aufs-headers 4.1_p20170130 4.14_p20180709 4.14_p20190603: User space head
 sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are always necessary for aufs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
-sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
+sys-fs/bashmount 3.2.0 4.3.2: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7 1.14.8: FUSE filesystem for bind mounting with altered permissions
@@ -18089,7 +18089,7 @@ www-servers/lighttpd 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.17.0 1.18.0: Dynamic web and application server
+www-servers/nginx-unit 1.17.0 1.18.0 1.20.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.4 0.3.5 0.4.1: Pretty small HTTP server -- a command-line tool to share files
@@ -18539,7 +18539,7 @@ x11-misc/urxvt-font-size 1.3 9999: Perl extension for rxvt-unicode to change the
 x11-misc/urxvt-perls 2.3-r1: Perl extensions for rxvt-unicode
 x11-misc/urxvt-tabbedex 20.09: An extended version of rxvt-unicode's tabbed perl extension
 x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode terminal emulator
-x11-misc/util-macros 1.19.2-r1: X.Org autotools utility macros
+x11-misc/util-macros 1.19.2-r1 1.19.2-r2: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.3 1.4 99999: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
 x11-misc/virtualgl 2.6.1-r1 2.6.3-r1 2.6.4-r1 9999: Run OpenGL applications remotely with full 3D hardware acceleration
