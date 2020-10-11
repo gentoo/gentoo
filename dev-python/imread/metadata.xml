@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D Printer Project</name>
+	</maintainer>
+	<longdescription>
+		IO with images and numpy arrays.
+		Mahotas-imread is a simple module with a small number of functions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">cgohlke/tifffile</remote-id>
+		<remote-id type="pypi">tifffile</remote-id>
+	</upstream>
+</pkgmetadata>
