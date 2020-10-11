@@ -30,7 +30,7 @@ DEPEND="
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
 	go? ( dev-lang/go )
 "
 RDEPEND="${DEPEND}"
