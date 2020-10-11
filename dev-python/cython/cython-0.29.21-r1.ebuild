@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
@@ -23,7 +24,6 @@ RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' \
 			'python3*')
