@@ -3,6 +3,10 @@
 
 EAPI=7
 
+MY_PN="Shapely"
+MY_PV="$(ver_cut 1-3).post$(ver_cut 5)"
+MY_P="${MY_PN}-${MY_PV}"
+
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
@@ -10,14 +14,12 @@ inherit distutils-r1
 DESCRIPTION="Geometric objects, predicates, and operations"
 HOMEPAGE="https://pypi.org/project/Shapely/"
 
-MY_PV="$(ver_cut 1-3).post$(ver_cut 5)"
-
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/Toblerity/${PN}.git"
+	EGIT_REPO_URI="https://github.com/Toblerity/${MY_PN}.git"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${MY_P}.tar.gz"
 	KEYWORDS="amd64 ~arm64 x86"
 fi
 
@@ -36,7 +38,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}/${P}-test_operations.patch" ) # bug 701624
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	# fix install path for Cython definition file
