@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=(python3_{6..9})
 
 inherit distutils-r1
@@ -22,8 +24,7 @@ RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/zope-event[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.0[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND}
-	dev-python/nose[${PYTHON_USEDEP}] )
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/nose[${PYTHON_USEDEP}] )"
 
 S=${WORKDIR}/${MY_P}
 
