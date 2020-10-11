@@ -6,6 +6,7 @@
 	<name>Gentoo Games Project</name>
 </maintainer>
 <use>
+	<flag name="gtk">Install Python-based GTK menu</flag>
 	<flag name="music">Enable playing of background music</flag>
 </use>
 </pkgmetadata>
