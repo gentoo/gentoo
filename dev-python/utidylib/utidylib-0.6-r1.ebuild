@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 MY_P="uTidylib-${PV}"
 inherit distutils-r1
@@ -17,9 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ppc ppc64 x86"
 IUSE="doc test"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	test? ( || ( $(python_gen_useflags 'python2*' python3_6 python3_7) ) )
-"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -32,8 +30,6 @@ DEPEND="
 RDEPEND="
 	app-text/tidy-html5
 "
-
-RESTRICT="test" # 1/11 tests fail
 
 S="${WORKDIR}/${MY_P}"
 
