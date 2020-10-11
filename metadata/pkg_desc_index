@@ -5171,7 +5171,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.2.0 78.3.0 78.3.1: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.3.1: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.0.3 8.2.0 8.2.1 8.3.6 8.3.7: versatile implementation of the Prolog programming language
@@ -14116,7 +14116,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.2.7 0.3.10: Multimedia processing graphs
+media-video/pipewire 0.2.7 0.3.10 0.3.13: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
@@ -16091,7 +16091,6 @@ sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydr
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
-sci-libs/Rtree 0.8.3_p20180802 0.9.4: R-Tree spatial index for Python GIS
 sci-libs/Shapely 1.6.4_p2-r1 1.7.0: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 2.7.2 9999: Automatic differentiation system for C/C++
@@ -16306,6 +16305,7 @@ sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositio
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
 sci-libs/rtabmap 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtree 0.9.4: R-Tree spatial index for Python GIS
 sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
