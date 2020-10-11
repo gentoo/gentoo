@@ -6,8 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Electronic Schematic and PCB design tools manuals"
-HOMEPAGE="http://docs.kicad-pcb.org/"
-SRC_URI="https://github.com/KiCad/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://docs.kicad-pcb.org/"
 SRC_URI="https://gitlab.com/kicad/services/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-3+ CC-BY-3.0 ) GPL-2"
