@@ -14829,7 +14829,7 @@ net-libs/libpcap 1.9.1 1.9.1-r3 1.10.0_pre 9999: A system-independent library fo
 net-libs/libpcapnav 0.8 0.8-r1: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
-net-libs/libproxy 0.4.15-r1: Library for automatic proxy configuration management
+net-libs/libproxy 0.4.15-r1 0.4.15-r2: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1.22.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
