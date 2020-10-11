@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-10-11)
+# Current Wireshark in ~arch is vulnerable.
+# Maintainer did not want to update after QA
+# intervention.
+# Please use stable Wireshark for now.
+# 744592
+=net-analyzer/wireshark-3.3.0
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-10-11)
 # Mask new version until calendar apps are sorted out:
 # bug #747538.
