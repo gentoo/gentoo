@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-r2-Makefile.patch
+	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-mysql-8.patch
 )
 
