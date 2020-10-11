@@ -13234,7 +13234,7 @@ media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r4 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 4.1.2-r3 4.4.0: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 4.1.2-r3 4.4.0-r1: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0 2.5.2-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
