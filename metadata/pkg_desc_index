@@ -8045,7 +8045,7 @@ dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
-dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
+dev-python/debtcollector 1.21.0 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.6.0 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -8512,7 +8512,7 @@ dev-python/openstacksdk 0.46.0 0.50.0: A collection of libraries for building ap
 dev-python/opt-einsum 3.0.1 3.0.1-r1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1 4.0.2: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2 3.0.1: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-client-config 1.32.0: OpenStack Client Configuation Library
+dev-python/os-client-config 1.32.0 2.1.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 0.3.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-resource-classes 0.5.0: A list of standardized resource classes for OpenStack.
@@ -8522,25 +8522,25 @@ dev-python/os-traits 2.3.0: os-traits is a library containing standardized trait
 dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
-dev-python/osc-lib 2.0.0: A package of common support modules for writing OSC plugins.
+dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.0.2: library for running multi-thread, multi-process applications
-dev-python/oslo-config 8.0.3: Oslo Configuration API
-dev-python/oslo-context 2.22.1: Helpers to maintain useful information about a request context
+dev-python/oslo-config 8.0.3 8.3.2: Oslo Configuration API
+dev-python/oslo-context 2.22.1 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0: OpenStack Common DB Code
-dev-python/oslo-i18n 3.23.1: Oslo i18n library
-dev-python/oslo-log 4.1.2: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-i18n 3.23.1 5.0.1: Oslo i18n library
+dev-python/oslo-log 4.1.2 4.4.0: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 12.1.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 4.0.2: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 3.1.1: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 3.1.1: Oslo Serialization library
+dev-python/oslo-serialization 3.1.1 4.0.1: Oslo Serialization library
 dev-python/oslo-service 2.1.1: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.0.1: Oslo i18n library
-dev-python/oslo-utils 4.1.2: Oslo Utility library
+dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
@@ -8842,7 +8842,7 @@ dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar 
 dev-python/python-bugzilla 2.5.0 3.0.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 4.2.2: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 4.2.2 7.2.0: A client for the OpenStack Cinder API
 dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.5.0: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.1.2 2.2.4: Library to implement a well-behaved Unix daemon process
@@ -8871,7 +8871,7 @@ dev-python/python-iptables 1.0.0: Python bindings for iptables
 dev-python/python-ironicclient 4.1.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4 0.4.0: A Python 2 and 3 asynchronous JSON RPC server
-dev-python/python-keystoneclient 4.0.0: Client Library for OpenStack Identity
+dev-python/python-keystoneclient 4.0.0 4.1.1: Client Library for OpenStack Identity
 dev-python/python-language-server 0.34.1 0.35.1: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
@@ -8893,9 +8893,9 @@ dev-python/python-musicbrainz-ngs 0.7.1: Python bindings for the MusicBrainz NGS
 dev-python/python-nbxmpp 1.0.1 1.0.2: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
-dev-python/python-novaclient 17.0.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 17.0.0 17.2.1: A client for the OpenStack Nova API
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
-dev-python/python-openstackclient 5.2.1: A client for the OpenStack APIs
+dev-python/python-openstackclient 5.2.1 5.4.0: A client for the OpenStack APIs
 dev-python/python-podman 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
@@ -8920,7 +8920,7 @@ dev-python/python-xmlsec 1.3.8: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.13.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
-dev-python/python-zunclient 4.0.1: A client for the OpenStack Zun API
+dev-python/python-zunclient 4.0.1 4.1.1: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.2: Python bindings for LXC
 dev-python/python3-openid 3.2.0: OpenID support for modern servers and consumers
 dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
