@@ -31,8 +31,6 @@ RESTRICT="test"
 
 # Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
 RDEPEND="!sys-apps/modutils
-	!<sys-apps/openrc-0.13.8
-	!<sys-apps/systemd-216-r3
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
 	python? ( ${PYTHON_DEPS} )
 	pkcs7? (
