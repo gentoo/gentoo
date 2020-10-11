@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>andreacerisara@gmail.com</email>
+    <name>Andrea Cerisara</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Greenstalk is a small and unopinionated Python client library
+    for communicating with the beanstalkd work queue. The API provided
+    mostly maps one-to-one with commands in the protocol.
+  </longdescription>
   <upstream>
     <remote-id type="pypi">mayhewj/greenstalk</remote-id>
   </upstream>
