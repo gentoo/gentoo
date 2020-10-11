@@ -84,6 +84,7 @@ acct-group/influxdb 0: System group: influxdb
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
+acct-group/jabber 0: A group for various jabber services
 acct-group/kafka 0: System group: kafka
 acct-group/kapacitor 0: System group: kapacitor
 acct-group/keystone 0: System group: keystone
@@ -321,6 +322,7 @@ acct-user/influxdb 0: User for influxdb
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0: user for net-analyzer/ippl
+acct-user/jabber 0: A user for various jabber services
 acct-user/kafka 0: User for kafka
 acct-user/kapacitor 0: User for kapacitor
 acct-user/keystone 0: user for the keystone openstack service
@@ -14627,7 +14629,7 @@ net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and mai
 net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
-net-im/jabber-base 0.01-r1: Jabber servers and transports layout package
+net-im/jabber-base 0.01-r1 0.01-r2: Base layout package for various jabber services
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20200711: A cross-platform IRC framework written with Qt
