@@ -44,7 +44,7 @@ RDEPEND="
 	<dev-python/jedi-0.18.0[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
 	>=dev-python/python-jsonrpc-server-0.4.0[${PYTHON_USEDEP}]
-	~dev-python/ujson-1.35[${PYTHON_USEDEP}]
+	>=dev-python/ujson-3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
@@ -52,10 +52,6 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# remove pytest-cov dep
 	sed -i -e '0,/addopts/I!d' setup.cfg || die
-
-	# jsonrpc-server does not actually work with ujson>3.0.0: test fail
-	sed -i -e 's/ujson>=3.0.0/ujson==1.35/g' setup.py || die
-	sed -i -e 's/ujson>=3.0.0/ujson==1.35/g' python_language_server.egg-info/requires.txt || die
 
 	distutils-r1_python_prepare_all
 }
