@@ -31,7 +31,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-    dev-util/gperf
+	dev-util/gperf
 	sys-devel/bison
 	sys-devel/flex
 "
