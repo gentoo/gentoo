@@ -3,6 +3,9 @@
 
 EAPI=7
 
+MY_PN="Shapely"
+MY_P="${MY_PN}-${PV}"
+
 PYTHON_COMPAT=( python3_{7..8} )
 
 inherit distutils-r1
@@ -23,6 +26,8 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 "
+
+S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests pytest
 
