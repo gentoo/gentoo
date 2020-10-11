@@ -2,10 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chainsaw@gentoo.org</email>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
-		Package that creats the users and directory's for jabber
-		related packages. See ebuild for more info.
+		This package creates the base layout,
+		which is used by several jabber services.
+		See ebuild for more information.
 	</longdescription>
 </pkgmetadata>
