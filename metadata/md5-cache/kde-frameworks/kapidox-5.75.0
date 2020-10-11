@@ -1,14 +1,14 @@
-BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
+BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/setuptools-42.0.2[python_targets_python3_9(-)] )
 DEFINED_PHASES=compile configure install nofetch prepare setup test unpack
 DESCRIPTION=Framework for building KDE API documentation in a standard format and style
 EAPI=7
 HOMEPAGE=https://kde.org/products/frameworks/
-IUSE=python_single_target_python3_7 python_single_target_python3_8
+IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=BSD-2
-RDEPEND=app-doc/doxygen python_single_target_python3_7? ( dev-python/jinja[python_targets_python3_7(-)] dev-python/pyyaml[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/jinja[python_targets_python3_8(-)] dev-python/pyyaml[python_targets_python3_8(-)] ) media-gfx/graphviz[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] )
-REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
+RDEPEND=app-doc/doxygen python_single_target_python3_7? ( dev-python/jinja[python_targets_python3_7(-)] dev-python/pyyaml[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/jinja[python_targets_python3_8(-)] dev-python/pyyaml[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/jinja[python_targets_python3_9(-)] dev-python/pyyaml[python_targets_python3_9(-)] ) media-gfx/graphviz[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?,python_single_target_python3_9(-)?] python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=5/5.75
 SRC_URI=mirror://kde/stable/frameworks/5.75/kapidox-5.75.0.tar.xz
 _eclasses_=distutils-r1	409cd1220f9f980d21980293a50e2a8e	kde.org	16ab706e1b049cfaa65425a0c0e28cac	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=762485542270fd0362f0c55c024425d7
+_md5_=966cb57d0951c8acb5fb35ff01e42062

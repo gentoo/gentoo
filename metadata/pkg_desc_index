@@ -3453,7 +3453,7 @@ dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-re
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 2.4.0-r1 2.6.0: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.4: A simple but powerful template language for C++
-dev-cpp/eigen 3.3.7 3.3.7-r1: C++ template library for linear algebra
+dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.62.0 2.64.2: C++ interface for glib2
@@ -5181,7 +5181,7 @@ dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
 dev-lang/tuprolog 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.36.20 0.40.20 0.40.23 0.40.24 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.46.13 0.48.6 0.48.7 0.48.8 0.48.9 0.48.11 0.49.91: Compiler for the GObject type system
+dev-lang/vala 0.36.20 0.40.20 0.40.23 0.40.24 0.44.11 0.46.7 0.46.10 0.46.11 0.46.12 0.46.13 0.48.6 0.48.7 0.48.8 0.48.9 0.48.11 0.50.1: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.8.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3-r1 6.3.4: YAP is a high-performance Prolog compiler
@@ -5680,7 +5680,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2 2.1.0: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.46.7 0.46.10 0.48.6 0.48.7 0.48.8 0.48.9 0.48.11 0.49.91: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.46.7 0.46.10 0.48.6 0.48.7 0.48.8 0.48.9 0.48.11 0.50.1: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/vc-intrinsics 0_p20200904: LLVM intrinsics representing SIMD semantics of a program targeting GPU
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
@@ -8284,7 +8284,7 @@ dev-python/inflect 4.1.0: Correctly inflect words and numbers
 dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 5.3.0-r1: InfluxDB client
 dev-python/iniconfig 1.0.0: Brain-dead simple config-ini parsing
-dev-python/iniparse 0.4-r2: Better INI parser for Python
+dev-python/iniparse 0.4-r2 0.5: Better INI parser for Python
 dev-python/intelhex 2.2.1-r1: Python library for Intel HEX files manipulations
 dev-python/intervaltree 3.0.2: Editable interval tree data structure for Python 2 and 3
 dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
@@ -9181,7 +9181,7 @@ dev-python/tqdm 4.48.2 4.49.0 4.50.1 4.50.2 9999: Add a progress meter to your l
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.4: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 2.5.0: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 2.5.0 2.5.1: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1 20.9.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
@@ -12154,7 +12154,7 @@ kde-apps/libkomparediff2 20.04.3 20.08.2: KDE library to compare files and strin
 kde-apps/libksane 20.04.3 20.08.2: SANE Library interface based on KDE Frameworks
 kde-apps/libksieve 20.04.3 20.08.2: Common PIM libraries
 kde-apps/libktnef 20.04.3 20.08.2: Library for handling TNEF data
-kde-apps/lokalize 20.04.3 20.08.2: KDE Applications 5 translation tool
+kde-apps/lokalize 20.04.3-r1 20.08.2: Localization tool for KDE software and other free and open source software
 kde-apps/lskat 20.04.3 20.08.2: Skat game by KDE
 kde-apps/mailcommon 20.04.3 20.08.2: Common mail library
 kde-apps/mailimporter 20.04.3 20.08.2: Library to import mail from various sources
@@ -13791,7 +13791,7 @@ media-sound/lilypond 2.21.5 2.21.6 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
-media-sound/lltag 0.14.5 0.14.6: Automatic command-line mp3/ogg/flac file tagger and renamer
+media-sound/lltag 0.14.6: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.2.2 9999: Cross-platform music production software
 media-sound/lollypop 1.2.35: Modern music player for GNOME
 media-sound/loudness-scanner 0.5.1_p20190709 9999: Scans your music files and tags them with loudness information
@@ -15179,7 +15179,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.4-r4 1.18.6-r1 1.20.12-r1 1.22.10-r12 1.22.14-r1 1.24.2-r1 1.26.0-r1 1.26.2-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.22.10-r12 1.26.0-r1 1.26.2-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.6.5 3.0.0 3.0.1 3.0.2: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
@@ -17109,7 +17109,7 @@ sys-auth/rtkit 0.12-r1 0.13-r1: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/solo-python 0.0.26: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
-sys-auth/sssd 2.2.0-r1 2.2.2 2.2.3 2.3.1-r1: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 2.2.0-r1 2.2.2 2.2.3 2.3.1-r2: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
