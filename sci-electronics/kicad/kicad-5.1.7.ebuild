@@ -11,7 +11,7 @@ inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets x
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad-pcb.org"
-SRC_URI="https://launchpad.net/${PN}/5.0/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
@@ -55,12 +55,11 @@ BDEPEND="doc? ( app-doc/doxygen )"
 CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
-	"${FILESDIR}/${P}-help.patch"
-	"${FILESDIR}/${P}-ninja-build.patch"
-	"${FILESDIR}/${P}-strict-aliasing.patch"
-	"${FILESDIR}/${P}-algorithm-header.patch"
-	"${FILESDIR}/${P}-metainfo.patch"
-	"${FILESDIR}/${P}-ldflags.patch"
+	"${FILESDIR}/${PN}-5.1.5-help.patch"
+	"${FILESDIR}/${PN}-5.1.6-ninja-build.patch"
+	"${FILESDIR}/${PN}-5.1.5-strict-aliasing.patch"
+	"${FILESDIR}/${PN}-5.1.6-metainfo.patch"
+	"${FILESDIR}/${PN}-5.1.5-ldflags.patch"
 )
 
 pkg_setup() {
@@ -129,6 +128,13 @@ src_install() {
 		cd Documentation || die
 		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/. development/doxygen/.
 	fi
+}
+
+src_test() {
+	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
+	ln -s "${S}_build/eeschema/_eeschema.kiface" "${S}_build/qa/eeschema/_eeschema.kiface" || die
+
+	default
 }
 
 pkg_postinst() {

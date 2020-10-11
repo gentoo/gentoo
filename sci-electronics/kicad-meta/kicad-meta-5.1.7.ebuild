@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,17 +13,17 @@ KEYWORDS="~amd64"
 IUSE="doc minimal nls"
 
 RDEPEND="
-	>=sci-electronics/kicad-5.1.5
-	>=sci-electronics/kicad-symbols-5.1.5
-	>=sci-electronics/kicad-footprints-5.1.5
+	>=sci-electronics/kicad-5.1.7
+	>=sci-electronics/kicad-symbols-5.1.7
+	>=sci-electronics/kicad-footprints-5.1.7
 	doc? (
-		>=app-doc/kicad-doc-5.1.5
+		>=app-doc/kicad-doc-5.1.7
 	)
 	!minimal? (
-		>=sci-electronics/kicad-packages3d-5.1.5
-		>=sci-electronics/kicad-templates-5.1.5
+		>=sci-electronics/kicad-packages3d-5.1.7
+		>=sci-electronics/kicad-templates-5.1.7
 	)
 	nls? (
-		>=sci-electronics/kicad-i18n-5.1.5
+		>=sci-electronics/kicad-i18n-5.1.7
 	)
 "

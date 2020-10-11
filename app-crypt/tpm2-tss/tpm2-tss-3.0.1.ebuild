@@ -31,7 +31,7 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-Dont-run-systemd-sysusers-in-Makefile.patch"
+	"${FILESDIR}/${PN}-3.0.0-Dont-run-systemd-sysusers-in-Makefile.patch"
 )
 
 pkg_setup() {
