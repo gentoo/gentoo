@@ -138,7 +138,7 @@ src_configure() {
 src_compile() {
 	env RUST_BACKTRACE=1 \
 		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) \
-		src/libstd --stage 0 || die
+		library/std --stage 0 || die
 }
 
 src_test() {
