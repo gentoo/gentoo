@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 # sys-apps/util-linux -> lsblk
 RDEPEND="
-	app-shells/bash:=
+	app-shells/bash
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-fs/udisks:2
