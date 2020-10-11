@@ -27,13 +27,11 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
 	test? (
-		$(python_gen_cond_dep '
-			dev-libs/atk[introspection]
-			dev-python/pytest[${PYTHON_USEDEP}]
-			x11-libs/gdk-pixbuf:2[introspection,jpeg]
-			x11-libs/gtk+:3[introspection]
-			x11-libs/pango[introspection]
-		' -3)
+		dev-libs/atk[introspection]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		x11-libs/gdk-pixbuf:2[introspection,jpeg]
+		x11-libs/gtk+:3[introspection]
+		x11-libs/pango[introspection]
 	)
 "
 BDEPEND="
@@ -62,11 +60,6 @@ src_test() {
 	local -x GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
 
 	testing() {
-		if ! python_is_python3; then
-			einfo "Skipping tests on Python 2 to unblock deps"
-			return
-		fi
-
 		local -x XDG_CACHE_HOME="${T}/${EPYTHON}"
 		meson_src_test || die "test failed for ${EPYTHON}"
 	}
