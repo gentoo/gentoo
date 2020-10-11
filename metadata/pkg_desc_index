@@ -17340,7 +17340,7 @@ sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian
 sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
-sys-devel/rust-std 1.46.0: Rust standard library, standalone (for crossdev)
+sys-devel/rust-std 1.46.0 1.47.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.1 0.6.2 9999: C semantic parser
