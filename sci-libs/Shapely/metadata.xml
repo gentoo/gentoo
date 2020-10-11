@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>expeditioneer@gentoo.org</email>
-    <name>Dennis Lamm</name>
+  <maintainer type="project">
+    <email>3dprint@gentoo.org</email>
+    <name>Gentoo 3D Printer Project</name>
   </maintainer>
   <longdescription>
     Shapely is a BSD-licensed Python package for manipulation and analysis of planar geometric objects.
