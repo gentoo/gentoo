@@ -13656,7 +13656,7 @@ media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio player
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
-media-sound/apulse 0.1.12-r4 0.1.13: PulseAudio emulation for ALSA
+media-sound/apulse 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r5 1.1: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 6.2-r1 6.3 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
@@ -18971,7 +18971,7 @@ x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.2 9999: a dynamic window manager for X11
-x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
+x11-wm/e16 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.24.1 0.24.2: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
