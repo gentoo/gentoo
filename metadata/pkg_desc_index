@@ -4011,7 +4011,7 @@ dev-haskell/genvalidity-hspec 0.7.0.4: Standard spec's for GenValidity instances
 dev-haskell/genvalidity-property 0.5.0.1: Standard properties for functions on 'Validity' types
 dev-haskell/getopt-generics 0.13.0.4: Create command line interfaces with ease
 dev-haskell/ghc-paths 0.1.0.12-r1: Knowledge of GHC's installation directories
-dev-haskell/ghc-syb-utils 0.2.3: Scrap Your Boilerplate utilities for the GHC API
+dev-haskell/ghc-syb-utils 0.3.0.0: Scrap Your Boilerplate utilities for the GHC API
 dev-haskell/gio 0.13.8.1: Binding to GIO
 dev-haskell/git 0.3.0: Git operations in haskell
 dev-haskell/git-lfs 1.1.0: git-lfs protocol
@@ -4025,7 +4025,7 @@ dev-haskell/gnuidn 0.2.2-r1: Bindings for GNU IDN
 dev-haskell/gnutls 0.2: Bindings for GNU libgnutls
 dev-haskell/graphviz 2999.20.0.4: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 4.0: This package has been absorbed into semigroupoids 4.0
-dev-haskell/gsasl 0.3.6: Bindings for GNU libgsasl
+dev-haskell/gsasl 0.3.7: Bindings for GNU libgsasl
 dev-haskell/gtk 0.14.10-r3 0.15.5-r1: Binding to the Gtk+ graphical user interface library
 dev-haskell/gtk2hs-buildtools 0.13.8.0: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.15.5: Binding to the Gtk+ 3 graphical user interface library
@@ -8140,6 +8140,7 @@ dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in 
 dev-python/fakeredis 1.4.3: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
+dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1 1.9.1-r1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1 6.0.0_beta1 6.0.1: Parse RSS and Atom feeds in Python
@@ -8460,7 +8461,7 @@ dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manag
 dev-python/nbclient 0.5.0: A client library for executing Jupyter notebooks
 dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.3 6.0.4 6.0.5 6.0.6 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
-dev-python/nbformat 5.0.7: Reference implementation of the Jupyter Notebook format
+dev-python/nbformat 5.0.7 5.0.8: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
@@ -8499,7 +8500,7 @@ dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
 dev-python/oauth2client 4.1.3-r1: Library for accessing resources protected by OAuth 2.0
 dev-python/oauthlib 3.1.0: Spec-compliant and thorough implementation of the OAuth request-signing logic
-dev-python/objgraph 3.4.1: Draws Python object reference graphs with graphviz
+dev-python/objgraph 3.4.1 3.5.0: Draws Python object reference graphs with graphviz
 dev-python/oct2py 5.2.0-r1: Python to GNU Octave bridge
 dev-python/octave_kernel 0.32.0-r1: Jupyter kernel for octave
 dev-python/odfpy 1.3.6: Python API and tools to manipulate OpenDocument files
@@ -9107,7 +9108,7 @@ dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp doc
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 5.1.2 5.3.0 5.4.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
-dev-python/spur 0.3.21: Run commands locally or over SSH using the same interface
+dev-python/spur 0.3.21 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.5: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.9.4: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
@@ -12863,7 +12864,7 @@ media-gfx/openvdb 4.0.2-r4 5.2.0-r2 6.2.1-r1 7.0.0-r1 7.1.0-r1: Library for the 
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.73.0: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
-media-gfx/pencil 0.6.4 0.6.4-r1: 2D animation and drawing program based on Qt5
+media-gfx/pencil 0.6.4 0.6.4-r1 0.6.5: 2D animation and drawing program based on Qt5
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
 media-gfx/photoqt 1.7.1-r1: Simple but powerful Qt-based image viewer
@@ -14235,7 +14236,7 @@ net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
 net-analyzer/gensink 4.1-r2: A simple TCP benchmark suite
 net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking command-line
 net-analyzer/goaccess 1.2 1.3 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
-net-analyzer/gr-fosphor 0.0_p20191202 0.0_p20200131 9999: gnuradio fosphor block (GPU spectrum display)
+net-analyzer/gr-fosphor 0.0_p20200131 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.5-r1 1.1.7: Enterprise scalable realtime graphing
 net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.1: Greenbone Security Assistant
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
@@ -15534,21 +15535,21 @@ net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Def
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/dump978 9999: simple Mode S decoder for soapysdr supported devices
 net-wireless/gnome-bluetooth 3.34.1: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.7.13.5-r3 3.7.13.5-r4 3.8.1.0-r1 3.8.1.0-r2 3.8.2.0 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.8.1.0-r1 3.8.1.0-r2 3.8.2.0 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.11.5-r1 2.12.1-r1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
 net-wireless/gr-baz 9999: Gnuradio baz
 net-wireless/gr-doa 9999: Gnuradio flowgraphs and modules for Direction of Arrival analysis
 net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
-net-wireless/gr-ieee802154 0.0_p20190606 0.0_p20191006 9999: IEEE 802.15.4 ZigBee Transceiver
-net-wireless/gr-iio 0.3-r3 0.3_p20191219-r1 9999: GNU Radio IIO Blocks
-net-wireless/gr-iqbal 0.37.3 0.38.1 9999: gnuradio I/Q balancing
+net-wireless/gr-ieee802154 0.0_p20191006 9999: IEEE 802.15.4 ZigBee Transceiver
+net-wireless/gr-iio 0.3_p20191219-r1 9999: GNU Radio IIO Blocks
+net-wireless/gr-iqbal 0.38.1 9999: gnuradio I/Q balancing
 net-wireless/gr-m2k 9999: A C++ library for interfacing with the ADALM2000
 net-wireless/gr-ntsc 9999: RTL2832U NTSC viewer
 net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
-net-wireless/gr-osmosdr 0.1.5-r1 0.2.0 0.2.2 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
-net-wireless/gr-paint 0.0_p20200418 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
+net-wireless/gr-osmosdr 0.2.0 0.2.2 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
+net-wireless/gr-paint 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
 net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modulation/Demodulation) plugin
 net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
