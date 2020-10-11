@@ -35,6 +35,7 @@ DEPEND="
 	app-text/libpaper
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.9:2=
+	<media-libs/freetype-2.10.3
 	>=media-libs/jbig2dec-0.19:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/libpng-1.6.2:0=
