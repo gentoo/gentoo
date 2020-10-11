@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
