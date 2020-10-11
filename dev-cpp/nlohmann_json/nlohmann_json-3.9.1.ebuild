@@ -26,11 +26,17 @@ DOCS=( ChangeLog.md README.md )
 
 src_configure() {
 	local mycmakeargs=(
-		-DJSON_BuildTests=$(usex test)
-		-DJSON_TestDataDirectory="${S}/json_test_data"
 		-DJSON_MultipleHeaders=ON
 	)
 
+	if use test ; then
+		# Define test data directory here to avoid unused var QA warning
+		# #747826
+		mycmakeargs+=(
+			-DJSON_BuildTests=ON
+			-DJSON_TestDataDirectory="${S}/json_test_data"
+		)
+	fi
 	cmake_src_configure
 }
 
