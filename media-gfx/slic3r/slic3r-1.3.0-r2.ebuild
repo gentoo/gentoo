@@ -3,16 +3,15 @@
 
 EAPI=6
 
-inherit eutils git-r3 perl-module
+inherit eutils flag-o-matic perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/Slic3r/Slic3r.git"
+SRC_URI="https://github.com/alexrj/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
 RESTRICT="!test? ( test )"
 
@@ -65,19 +64,24 @@ DEPEND="${RDEPEND}
 	test? (	virtual/perl-Test-Harness
 		virtual/perl-Test-Simple )"
 
-S="${WORKDIR}/slic3r-${PV}/xs"
+S="${WORKDIR}/Slic3r-${PV}/xs"
 
-src_unpack() {
-	git-r3_src_unpack
+pkg_pretend() {
+	einfo "Checking for -std=c++11 support in compiler"
+	test-flags-CXX -std=c++11 > /dev/null || die
 }
 
 src_prepare() {
-	pushd "${WORKDIR}/slic3r-${PV}" || die
+	pushd "${WORKDIR}/Slic3r-${PV}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
 	eapply "${FILESDIR}"/${P}-no-locallib.patch
-	eapply "${FILESDIR}"/${P}-boost-173.patch
+	eapply "${FILESDIR}"/${P}-boost.patch
 	eapply_user
 	popd || die
+	# drop std=c++11 to compiler defaults...
+	sed \
+		-e '/c++11/d' \
+		-i Build.PL || die
 }
 
 src_configure() {
