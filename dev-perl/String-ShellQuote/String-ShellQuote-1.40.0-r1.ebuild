@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Quote strings for passing through the shell"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 hppa ~mips ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm64 hppa ~mips ppc ppc64 x86"
 IUSE=""
 
 SRC_TEST=do
