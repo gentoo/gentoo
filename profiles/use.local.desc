@@ -2514,8 +2514,6 @@ dev-python/kombu:sqs - Enables Amazon SQS transport module for Kombu
 dev-python/kombu:yaml - Enables yaml backend
 dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
 dev-python/matplotlib:gtk3 - Enable x11-libs/gtk+:3 support
-dev-python/matplotlib-python2:excel - Pull dev-python/xlwt for the exceltools toolkit
-dev-python/matplotlib-python2:gtk3 - Enable x11-libs/gtk+:3 support
 dev-python/mpmath:matplotlib - Add support for dev-python/matplotlib
 dev-python/msgpack:native-extensions - Compiles native "C" extensions (speedups, instead of using python fallback code).
 dev-python/nbdime:webtools - Install web-based diff and merge tools.
