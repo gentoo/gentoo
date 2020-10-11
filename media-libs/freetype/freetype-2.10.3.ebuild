@@ -1,22 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs
+inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
-IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug fontforge harfbuzz infinality png static-libs utils"
+IUSE="X +adobe-cff bindist brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality png static-libs utils"
 
 if [[ "${PV}" != 9999 ]] ; then
-	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
-		mirror://nongnu/freetype/${P/_/}.tar.bz2
-		utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
-			mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
-		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
-			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.xz
+		mirror://nongnu/freetype/${P/_/}.tar.xz
+		utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.xz
+			mirror://nongnu/freetype/ft2demos-${PV}.tar.xz )
+		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.xz
+			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.xz )"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
 	inherit autotools git-r3
@@ -26,7 +26,9 @@ LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
-RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	brotli? ( app-arch/brotli[${MULTILIB_USEDEP}] )
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
@@ -37,15 +39,14 @@ RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 			>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
 		)
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
-	# This is the same as the 01 patch from infinality
-	"${FILESDIR}"/${PN}-2.7-enable-valid.patch
-
-	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
+	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
 )
 
 _egit_repo_handler() {
@@ -74,11 +75,11 @@ _egit_repo_handler() {
 }
 
 src_fetch() {
-	_egit_repo_handler fetch
+	_egit_repo_handler ${EBUILD_PHASE}
 }
 
 src_unpack() {
-	_egit_repo_handler unpack
+	_egit_repo_handler ${EBUILD_PHASE}
 }
 
 src_prepare() {
@@ -96,6 +97,9 @@ src_prepare() {
 	fi
 
 	default
+
+	# This is the same as the 01 patch from infinality
+	sed '/AUX_MODULES += \(gx\|ot\)valid/s@^# @@' -i modules.cfg || die
 
 	enable_option() {
 		sed -i -e "/#define $1/ { s:/\* ::; s: \*/:: }" \
@@ -150,7 +154,7 @@ src_prepare() {
 
 	# we need non-/bin/sh to run configure
 	if [[ -n ${CONFIG_SHELL} ]] ; then
-		sed -i -e "1s:^#![[:space:]]*/bin/sh:#!$CONFIG_SHELL:" \
+		sed -i -e "1s:^#![[:space:]]*/bin/sh:#!${CONFIG_SHELL}:" \
 			"${S}"/builds/unix/configure || die
 	fi
 
@@ -165,6 +169,7 @@ multilib_src_configure() {
 		--disable-freetype-config
 		--enable-biarch-config
 		--enable-shared
+		$(use_with brotli)
 		$(use_with bzip2)
 		$(use_with harfbuzz)
 		$(use_with png)
@@ -207,7 +212,7 @@ multilib_src_install() {
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
 			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
-				"${ED%/}"/usr/bin || die
+				"${ED}"/usr/bin || die
 		done
 	fi
 }
@@ -219,8 +224,8 @@ multilib_src_install_all() {
 		local header
 		find src/truetype include/freetype/internal -name '*.h' | \
 		while read header; do
-			mkdir -p "${ED%/}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
-			cp ${header} "${ED%/}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
+			mkdir -p "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
+			cp ${header} "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 		done
 	fi
 
