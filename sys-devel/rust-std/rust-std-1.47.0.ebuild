@@ -146,7 +146,7 @@ src_test() {
 }
 
 src_install() {
-	local rustlib="lib/rust/${PV}/rustlib"
+	local rustlib="lib/rust/${PV}/lib/rustlib"
 	dodir "/usr/${rustlib}"
 	pushd "build/${rhost}/stage0-sysroot/lib/rustlib" > /dev/null || die
 	cp -pPRv "${rtarget}" "${ED}/usr/${rustlib}" || die
