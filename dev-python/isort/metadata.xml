@@ -10,5 +10,8 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">isort</remote-id>
+		<remote-id type="github">PyCQA/isort</remote-id>
+		<bugs-to>https://github.com/PyCQA/isort/issues</bugs-to>
+		<doc>https://pycqa.github.io/isort/</doc>
 	</upstream>
 </pkgmetadata>
