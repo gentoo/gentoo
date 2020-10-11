@@ -42,4 +42,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)
 "
-PATCHES=( "${FILESDIR}/pcl111.patch" )
+PATCHES=( "${FILESDIR}/pcl111.patch" "${FILESDIR}/kdtree.patch" )
