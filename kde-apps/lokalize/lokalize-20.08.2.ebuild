@@ -4,14 +4,13 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 KFMIN=5.72.0
 QTMIN=5.14.2
 inherit python-single-r1 ecm kde.org optfeature
 
-DESCRIPTION="KDE Applications 5 translation tool"
-HOMEPAGE="https://kde.org/applications/office/org.kde.lokalize
-https://l10n.kde.org/tools/"
+DESCRIPTION="Localization tool for KDE software and other free and open source software"
+HOMEPAGE="https://kde.org/applications/en/lokalize https://l10n.kde.org/tools/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
