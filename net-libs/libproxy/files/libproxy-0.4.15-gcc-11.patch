@@ -1,0 +1,118 @@
+https://bugs.gentoo.org/732700
+https://github.com/libproxy/libproxy/issues/127
+
+--- a/libproxy/extension_config.hpp
++++ b/libproxy/extension_config.hpp
+@@ -31,7 +31,7 @@ using namespace libmodman;
+ class DLL_PUBLIC config_extension : public extension<config_extension> {
+ public:
+ 	// Abstract methods
+-	virtual vector<url>      get_config(const url &dst) throw (runtime_error)=0;
++	virtual vector<url>      get_config(const url &dst)=0;
+ 
+ 	// Virtual methods
+ 	virtual string   get_ignore(const url &dst);
+--- a/libproxy/extension_pacrunner.cpp
++++ b/libproxy/extension_pacrunner.cpp
+@@ -30,7 +30,7 @@ pacrunner_extension::~pacrunner_extension() {
+ 	if (this->pr) delete this->pr;
+ }
+ 
+-pacrunner* pacrunner_extension::get(string pac, const url& pacurl) throw (bad_alloc) {
++pacrunner* pacrunner_extension::get(string pac, const url& pacurl) {
+ 	if (this->pr) {
+ 		if (this->last == pac)
+ 			return this->pr;
+--- a/libproxy/extension_pacrunner.hpp
++++ b/libproxy/extension_pacrunner.hpp
+@@ -26,7 +26,7 @@
+ #define PX_PACRUNNER_MODULE_EZ(name, symb, smod) \
+ 	class name ## _pacrunner_extension : public pacrunner_extension { \
+ 	protected: \
+-		virtual pacrunner* create(string pac, const url& pacurl) throw (bad_alloc) { \
++		virtual pacrunner* create(string pac, const url& pacurl) { \
+ 			return new name ## _pacrunner(pac, pacurl); \
+ 		} \
+ 	}; \
+@@ -41,13 +41,13 @@ class DLL_PUBLIC pacrunner {
+ public:
+ 	pacrunner(string pac, const url& pacurl);
+ 	virtual ~pacrunner() {};
+-	virtual string run(const url& url) throw (bad_alloc)=0;
++	virtual string run(const url& url)=0;
+ };
+ 
+ class DLL_PUBLIC pacrunner_extension : public extension<pacrunner_extension, true> {
+ public:
+ 	// Virtual methods
+-	virtual pacrunner* get(string pac, const url& pacurl) throw (bad_alloc);
++	virtual pacrunner* get(string pac, const url& pacurl);
+ 	virtual ~pacrunner_extension();
+ 
+ 	// Final methods
+@@ -55,7 +55,7 @@ public:
+ 
+ protected:
+ 	// Abstract methods
+-	virtual pacrunner* create(string pac, const url& pacurl) throw (bad_alloc)=0;
++	virtual pacrunner* create(string pac, const url& pacurl)=0;
+ 
+ private:
+ 	pacrunner* pr;
+--- a/libproxy/modules/config_envvar.cpp
++++ b/libproxy/modules/config_envvar.cpp
+@@ -24,7 +24,7 @@ using namespace libproxy;
+ 
+ class envvar_config_extension : public config_extension {
+ public:
+-	vector<url> get_config(const url &dst) throw (runtime_error) {
++	vector<url> get_config(const url &dst) {
+ 		const char *proxy = NULL;
+                 vector<url> response;
+ 
+--- a/libproxy/modules/config_sysconfig.cpp
++++ b/libproxy/modules/config_sysconfig.cpp
+@@ -124,7 +124,7 @@ public:
+ 	~sysconfig_config_extension() {
+ 	}
+    
+-	vector<url> get_config(const url &dst) throw (runtime_error) {
++	vector<url> get_config(const url &dst) {
+ 		map<string,string>::const_iterator it = _data.find("PROXY_ENABLED");
+ 		vector<url> response;
+ 
+--- a/libproxy/url.cpp
++++ b/libproxy/url.cpp
+@@ -115,7 +115,7 @@ string url::encode(const string &data, const string &valid_reserved) {
+ 	return encoded.str();
+ }
+ 
+-url::url(const string &url) throw(parse_error)
++url::url(const string &url)
+ 	: m_orig(url), m_port(0), m_ips(NULL) {
+ 	size_t idx = 0;
+ 	size_t hier_part_start, hier_part_end;
+@@ -298,7 +298,7 @@ url& url::operator=(const url& url) {
+ 	return *this;
+ }
+ 
+-url& url::operator=(string strurl) throw (parse_error) {
++url& url::operator=(string strurl) {
+ 	url tmp(strurl);
+ 	*this = tmp;
+ 	return *this;
+--- a/libproxy/url.hpp
++++ b/libproxy/url.hpp
+@@ -50,10 +50,10 @@ public:
+ 
+ 	~url();
+ 	url(const url& url);
+-	url(const string& url) throw (parse_error);
++	url(const string& url);
+ 	bool operator==(const url& url) const;
+ 	url& operator=(const url& url);
+-	url& operator=(string url) throw (parse_error);
++	url& operator=(string url);
+ 
+ 	string   get_host()     const;
+ 	sockaddr const* const* get_ips(bool usedns);
