@@ -201,7 +201,7 @@ llvm_check_deps() {
 		fi
 	fi
 
-	einfo "Will use LLVM slot ${LLVM_SLOT}!" >&2
+	einfo "Using LLVM slot ${LLVM_SLOT} to build" >&2
 }
 
 MOZ_LANGS=(
