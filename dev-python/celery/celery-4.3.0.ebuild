@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 
 inherit bash-completion-r1 distutils-r1 optfeature
@@ -32,7 +33,6 @@ RDEPEND="
 "
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
 		>=dev-python/eventlet-0.24.1[${PYTHON_USEDEP}]
