@@ -473,11 +473,6 @@ dev-tex/detex
 # Removal in 30 days
 dev-tex/csindex
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
-# Dead upstream and does not build.
-# Removal in 30 days
-dev-tex/dvipost
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
