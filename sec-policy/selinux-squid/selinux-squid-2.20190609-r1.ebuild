@@ -11,7 +11,7 @@ inherit selinux-policy-2
 DESCRIPTION="SELinux policy for squid"
 
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 -arm ~arm64 ~mips x86"
 fi
 DEPEND="${DEPEND}
 	sec-policy/selinux-apache
