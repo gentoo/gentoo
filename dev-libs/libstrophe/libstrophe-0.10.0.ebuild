@@ -7,7 +7,7 @@ HOMEPAGE="http://strophe.im/libstrophe/"
 SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="|| ( MIT GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc expat libressl"
 
 RDEPEND="
