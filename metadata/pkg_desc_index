@@ -9403,9 +9403,9 @@ dev-ros/ament_pep257 0.10.0 9999: Checks code against style conventions in PEP 8
 dev-ros/ament_uncrustify 0.10.0 9999: The ability to check code against style conventions using uncrustify
 dev-ros/ament_xmllint 0.10.0 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
-dev-ros/audio_capture 0.3.6 0.3.7 9999: Transports audio from a source to a destination
-dev-ros/audio_common_msgs 0.3.6 0.3.7 9999: Messages for transmitting audio via ROS
-dev-ros/audio_play 0.3.6 0.3.7 9999: Outputs audio to a speaker from a source node
+dev-ros/audio_capture 0.3.6 0.3.7 0.3.8 9999: Transports audio from a source to a destination
+dev-ros/audio_common_msgs 0.3.6 0.3.7 0.3.8 9999: Messages for transmitting audio via ROS
+dev-ros/audio_play 0.3.6 0.3.7 0.3.8 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.17.0 9999: Trajectory Rollout and Dynamic Window approaches to robot navigation on a plane
 dev-ros/bond 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.8.5 1.8.6 9999: C++ implementation of bond, for checking when another process has terminated
@@ -9440,11 +9440,11 @@ dev-ros/cpp_common 0.7.2 9999: C++ code for doing things that are not necessaril
 dev-ros/cv_bridge 1.15.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.8 9999: Converts a depth image to a laser scan for use with navigation and localization
-dev-ros/diagnostic_aggregator 1.10.1 9999: Aggregates ROS diagnostics
-dev-ros/diagnostic_analysis 1.9.4 1.9.6 1.10.1 9999: Converts diagnostics data into a series of CSV files
-dev-ros/diagnostic_common_diagnostics 1.9.4 1.9.6 1.10.1 9999: Generic nodes for monitoring a linux host
+dev-ros/diagnostic_aggregator 1.10.1 1.10.2 9999: Aggregates ROS diagnostics
+dev-ros/diagnostic_analysis 1.9.4 1.9.6 1.10.1 1.10.2 9999: Converts diagnostics data into a series of CSV files
+dev-ros/diagnostic_common_diagnostics 1.9.4 1.9.6 1.10.1 1.10.2 9999: Generic nodes for monitoring a linux host
 dev-ros/diagnostic_msgs 1.13.0 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
-dev-ros/diagnostic_updater 1.9.4 1.9.6 1.10.1 9999: Tools for updating diagnostics
+dev-ros/diagnostic_updater 1.9.4 1.9.6 1.10.1 1.10.2 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers
 dev-ros/dwa_local_planner 1.17.0 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.7.1 9999: Provides a means to change node parameters at runtime
@@ -9592,7 +9592,7 @@ dev-ros/roscpp_serialization 0.7.2 9999: Code for serialization
 dev-ros/roscpp_traits 0.7.2 9999: Message traits code
 dev-ros/roscpp_tutorials 0.10.1 0.10.2 9999: Attempts to show the features of ROS step-by-step
 dev-ros/roscreate 1.15.6 9999: Tool that assists in the creation of ROS filesystem resources
-dev-ros/rosdiagnostic 1.9.4 1.9.6 1.10.1 9999: Command to print aggregated diagnostic contents to the command line
+dev-ros/rosdiagnostic 1.9.4 1.9.6 1.10.1 1.10.2 9999: Command to print aggregated diagnostic contents to the command line
 dev-ros/rosgraph 1.15.8 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/roslang 1.15.5 1.15.6 9999: Common package for all ROS client libraries
@@ -9664,7 +9664,7 @@ dev-ros/rviz 1.14.1 9999: 3D visualization tool for ROS
 dev-ros/rviz_imu_plugin 1.2.2 9999: RVIZ plugin for IMU visualization
 dev-ros/rviz_plugin_tutorials 0.11.0 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.11.0 9999: Tutorials showing how to call into rviz internals from python scripts
-dev-ros/self_test 1.9.4 1.9.6 1.10.1 9999: Robot self-test node
+dev-ros/self_test 1.9.4 1.9.6 1.10.1 1.10.2 9999: Robot self-test node
 dev-ros/sensor_msgs 1.13.0 9999: Messages for commonly used sensors: cameras and scanning laser rangefinders
 dev-ros/settlerlib 0.10.14 9999: Helper functions for creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.13.0 9999: Messages for defining shapes: simple solid object primitives, planes, and meshes
@@ -9678,7 +9678,7 @@ dev-ros/std_srvs 1.11.3 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.15.2 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.13.0 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.8.5 1.8.6 9999: Tests for bond, bondpy and bondcpp
-dev-ros/test_diagnostic_aggregator 1.9.4 1.9.6 1.10.1 9999: diagnostic_aggregator tests
+dev-ros/test_diagnostic_aggregator 1.9.4 1.9.6 1.10.1 1.10.2 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.10.0 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.10.0 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.15.8 9999: Unit tests for rosbag
@@ -15664,14 +15664,14 @@ perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at co
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 9999: The entry point package for the ament buildsystem
-ros-meta/audio_common 0.3.6 0.3.7 9999: Common code for working with audio in ROS
+ros-meta/audio_common 0.3.6 0.3.7 0.3.8 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.13.0 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.12 0.2.0 9999: Metapackage that contains common tutorials
 ros-meta/desktop 1.5.0 9999: Metapackage for a basic ROS desktop install
 ros-meta/desktop_full 1.5.0 9999: Metapackage for ROS complete desktop install
-ros-meta/diagnostics 1.9.4 1.9.6 1.10.1 9999: Packages related to gathering, viewing, and analyzing diagnostics data
+ros-meta/diagnostics 1.9.4 1.9.6 1.10.1 1.10.2 9999: Packages related to gathering, viewing, and analyzing diagnostics data
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.5.0 9999: SMACH library and ROS SMACH integration packages
 ros-meta/gazebo_ros_pkgs 2.9.1 9999: Interface for using ROS with the gazebo simulator
