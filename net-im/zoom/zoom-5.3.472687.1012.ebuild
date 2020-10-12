@@ -23,8 +23,7 @@ RDEPEND="!games-engines/zoom
 	dev-libs/quazip
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	amd64? ( dev-qt/qtdeclarative:5[widgets] )
-	x86? ( dev-qt/qtdeclarative:5 )
+	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtdiag:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
