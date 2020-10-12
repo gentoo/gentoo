@@ -899,7 +899,7 @@ app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd 
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
 app-cdr/isoimagewriter 0.8: Write hybrid ISO files onto a USB disk
 app-cdr/isomaster 1.3.13 1.3.14 1.3.15: Graphical CD image editor for reading, modifying and writing ISO images
-app-cdr/kcdemu 0.7.3: Frontend to cdemu daemon based on KDE Frameworks
+app-cdr/kcdemu 0.7.3 0.8.0: Frontend to cdemu daemon based on KDE Frameworks
 app-cdr/mirage2iso 0.4.2 9999: CD/DVD image converter using libmirage
 app-cdr/mkcdtoc 1.0: command-line utility to create toc-files for cdrdao
 app-cdr/mp3burn 0.4.2: Burn mp3s without filling up your disk with .wav files
@@ -3456,7 +3456,7 @@ dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-re
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 2.4.0-r1 2.6.0: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.4: A simple but powerful template language for C++
-dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8: C++ template library for linear algebra
+dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8-r1: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.62.0 2.64.2: C++ interface for glib2
@@ -3679,7 +3679,7 @@ dev-erlang/fast_xml 1.1.41 1.1.43: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.25 1.0.27: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
-dev-erlang/iconv 1.0.4 1.0.10: Fast encoding conversion library for Erlang and Elixir
+dev-erlang/iconv 1.0.10: Fast encoding conversion library for Erlang and Elixir
 dev-erlang/idna 6.0.0: Erlang IDNA implementation
 dev-erlang/jiffy 0.14.9 0.14.11 1.0.1 1.0.4 1.0.5: JSON NIFs for Erlang
 dev-erlang/jose 1.9.0 1.10.1: JSON Object Signing and Encryption (JOSE) for Erlang and Elixir
@@ -3709,7 +3709,7 @@ dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
-dev-games/freecell-solver 5.24.0 6.0.1: C library for automatically solving Freecell and some other solitaire variants
+dev-games/freecell-solver 5.24.0 6.2.0: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r3: A cross-platform network library designed for games
@@ -5632,7 +5632,7 @@ dev-libs/re2 0.2020.08.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
-dev-libs/rinutils 0.4.0 0.4.1 0.6.0: Set of C headers containing macros and static functions
+dev-libs/rinutils 0.4.0 0.6.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.8.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.7.0 3.8.0: Radeon Open Compute Code Object Manager
@@ -12036,7 +12036,7 @@ kde-apps/kdepim-apps-libs 20.04.3 20.08.2: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 20.04.3 20.08.2: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 20.04.3-r1 20.08.2: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdesdk-kioslaves 20.04.3 20.08.2: kioslaves from kdesdk package
-kde-apps/kdesdk-meta 20.04.3 20.08.2: KDE SDK - merge this to pull in all kdesdk-derived packages
+kde-apps/kdesdk-meta 20.04.3 20.08.2-r1: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 20.04.3 20.08.2: Thumbnail generator for PO files
 kde-apps/kdeutils-meta 20.04.3 20.08.2: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdf 20.04.3 20.08.2: KDE free disk space utility
@@ -12177,7 +12177,7 @@ kde-apps/step 20.04.3 20.08.2: Interactive physics simulator
 kde-apps/svgpart 20.04.3 20.08.2: Kpart for viewing SVGs
 kde-apps/sweeper 20.04.3 20.08.2: Privacy settings widget to clean unwanted traces on the system
 kde-apps/thumbnailers 20.04.3 20.08.2: Thumbnail generators for PDF/PS and RAW files
-kde-apps/umbrello 20.04.3 20.08.2: KDE UML Modeller
+kde-apps/umbrello 20.04.3 20.08.2-r1: KDE UML Modeller
 kde-apps/yakuake 20.04.3-r1 20.08.2: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 20.04.3 20.08.2: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.74.0 5.75.0: Framework providing access to Open Collaboration Services
@@ -15054,7 +15054,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 8.1.9 9.2.0 9.3.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 8.1.9 9.2.0 9.3.0 9.3.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.7-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
