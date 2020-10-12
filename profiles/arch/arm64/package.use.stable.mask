@@ -103,7 +103,7 @@ dev-python/gmpy mpir
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
 app-text/xmlto latex
-sys-auth/pambase pam_krb5 pam_ssh passwdqc
+sys-auth/pambase pam_krb5 pam_ssh
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
 
