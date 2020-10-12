@@ -8,7 +8,7 @@ PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
 inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils
 
 DESCRIPTION="Digital Audio Workstation"
-HOMEPAGE="http://ardour.org/"
+HOMEPAGE="https://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
