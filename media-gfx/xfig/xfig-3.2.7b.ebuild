@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.6a-urwfonts.patch"
 	"${FILESDIR}/${PN}-3.2.6a-solaris.patch"
 	"${FILESDIR}/${PN}-3.2.6a-app-defaults.patch"
+	"${FILESDIR}/${PN}-3.2.7b-ghostscript.patch"
 )
 
 src_configure() {
