@@ -5,11 +5,11 @@ DESCRIPTION=Prosody is a modern XMPP communication server
 EAPI=7
 HOMEPAGE=https://prosody.im/
 IUSE=+libevent libressl luajit mysql postgres +sqlite +ssl test +zlib
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
 RDEPEND=|| ( >=dev-lang/lua-5.2:* dev-lua/lua-bit32 ) net-dns/libidn net-im/jabber-base libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 ) dev-lua/luaexpat dev-lua/luafilesystem dev-lua/luasocket libevent? ( dev-lua/luaevent ) mysql? ( dev-lua/luadbi[mysql] ) postgres? ( dev-lua/luadbi[postgres] ) sqlite? ( dev-lua/luadbi[sqlite] ) ssl? ( dev-lua/luasec ) zlib? ( dev-lua/lua-zlib ) virtual/tmpfiles
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://prosody.im/downloads/source/prosody-0.11.7.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5482d4cb32052d0268e2187bbd9e6658
+_md5_=246dd6bdc6494be88b03fd00f4b0455d

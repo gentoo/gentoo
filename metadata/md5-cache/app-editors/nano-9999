@@ -4,11 +4,11 @@ DEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= mag
 DESCRIPTION=GNU GPL'd Pico clone with more functionality
 EAPI=7
 HOMEPAGE=https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_Guide
-IUSE=debug justify +magic minimal ncurses nls slang +spell +split-usr static unicode
+IUSE=debug justify magic minimal ncurses nls slang +spell +split-usr static unicode
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= magic? ( sys-apps/file ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang ) ) )
-REQUIRED_USE=!ncurses? ( slang? ( minimal ) )
+REQUIRED_USE=!ncurses? ( slang? ( minimal ) ) magic? ( !minimal )
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=bb4012add878cf4309752359a79664af
+_md5_=4d4e0f3ee1a1533b201d4fb8301cc4cb

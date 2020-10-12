@@ -1664,7 +1664,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20171014 20180408 20200215: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.2: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 4.9.3 5.2 5.3 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 4.9.3 5.2 5.3-r1 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1 3.3.0: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.4.3 0.4.4 9999: Vim-fork focused on extensibility and agility.
@@ -17533,7 +17533,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.8.12 5.8.13 5.8.14: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.4.69-r1 5.4.70 5.4.70-r1 5.8.12 5.8.12-r1 5.8.13 5.8.13-r1 5.8.14 5.8.14-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.9.236 4.9.237 4.9.238 4.14.198 4.14.199 4.14.200 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14: Full sources including the Gentoo patchset for the 5.8 kernel tree
+sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.9.236 4.9.237 4.9.238 4.14.198 4.14.199 4.14.200 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.9.0: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
