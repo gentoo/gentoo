@@ -60,6 +60,7 @@ dev-libs/gjs sysprof
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
+dev-qt/qt3d vulkan
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
 dev-qt/qtwayland vulkan
