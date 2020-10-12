@@ -8,6 +8,7 @@
 	<use>
 		<flag name="gamepad">Add support for gamepad hardware via <pkg>dev-qt/qtgamepad</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings</flag>
+		<flag name="vulkan">Enable support for Vulkan</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
