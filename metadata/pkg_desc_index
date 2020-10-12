@@ -8443,7 +8443,7 @@ dev-python/mpi4py 3.0.3: Message Passing Interface for Python
 dev-python/mpmath 1.1.0: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.6.2 1.0.0: MessagePack (de)serializer for Python
 dev-python/mss 6.0.0: An ultra fast cross-platform multiple screenshots module in python using ctypes
-dev-python/multidict 4.7.6: multidict implementation
+dev-python/multidict 4.7.6 5.0.0: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mygpoclient 1.8: A gpodder.net client library
@@ -8567,8 +8567,8 @@ dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error re
 dev-python/partd 1.1.0: Appendable key-value storage
 dev-python/parver 0.3 0.3.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.2 1.7.4: Password hashing framework supporting over 20 schemes
-dev-python/paste 3.4.3 3.4.4 3.4.5 3.4.6: Tools for using a Web Server Gateway Interface stack
-dev-python/pastedeploy 2.1.0: Load, configure, and compose WSGI applications and servers
+dev-python/paste 3.4.3 3.4.4 3.4.5 3.4.6 3.5.0: Tools for using a Web Server Gateway Interface stack
+dev-python/pastedeploy 2.1.0 2.1.1: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 14.0.1 15.0.0: A module wrapper for os.path
@@ -9227,7 +9227,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.0.31-r1 20.0.32 20.0.33: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.0.31-r1 20.0.32 20.0.33 20.0.34: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
