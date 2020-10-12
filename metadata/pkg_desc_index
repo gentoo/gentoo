@@ -10161,7 +10161,7 @@ dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 4.0.1 4.1.4: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
-dev-ruby/regexp_parser 0.5.0 1.5.1 1.7.1 1.8.0 1.8.1: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_parser 0.5.0 1.5.1 1.7.1 1.8.0 1.8.1 1.8.2: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/regexp_property_values 1.0.0: See which property values are supported by the regular expression engine
 dev-ruby/request_store 1.5.0: Per-request global storage for Rack
 dev-ruby/rest-client 2.1.0: Simple Simple HTTP and REST client for Ruby
