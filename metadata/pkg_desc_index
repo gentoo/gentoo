@@ -16088,7 +16088,6 @@ sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydr
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
-sci-libs/Shapely 1.6.4_p2-r1 1.7.0: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
@@ -16302,7 +16301,7 @@ sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositio
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
 sci-libs/rtabmap 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
-sci-libs/rtree 0.9.4: R-Tree spatial index for Python GIS
+sci-libs/rtree 0.9.4-r1: R-Tree spatial index for Python GIS
 sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
@@ -16311,6 +16310,7 @@ sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
+sci-libs/shapely 1.6.4_p2-r1 1.7.0 1.7.1: Geometric objects, predicates, and operations
 sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
 sci-libs/spglib 1.14.1: Spglib is a C library for finding and handling crystal symmetries
