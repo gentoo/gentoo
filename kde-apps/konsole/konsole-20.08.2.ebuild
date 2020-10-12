@@ -11,8 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE's terminal emulator"
-HOMEPAGE="https://kde.org/applications/system/org.kde.konsole
-https://konsole.kde.org"
+HOMEPAGE="https://apps.kde.org/en/konsole https://konsole.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Simple music player by KDE"
-HOMEPAGE="https://elisa.kde.org/ https://kde.org/applications/en/elisa"
+HOMEPAGE="https://elisa.kde.org/ https://apps.kde.org/en/elisa"
 
 LICENSE="LGPL-3+"
 SLOT="5"

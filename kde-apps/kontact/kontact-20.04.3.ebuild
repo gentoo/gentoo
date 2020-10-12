@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Container application to unify several major PIM applications within one"
-HOMEPAGE="https://kontact.kde.org/ https://kde.org/applications/en/office/org.kde.kontact"
+HOMEPAGE="https://kontact.kde.org/ https://apps.kde.org/en/en/kontact"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"

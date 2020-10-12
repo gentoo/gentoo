@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes."
-HOMEPAGE="https://kde.org/applications/office/org.kde.kmail2
+HOMEPAGE="https://apps.kde.org/en/kmail2
 https://kontact.kde.org/components/kmail.html"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"

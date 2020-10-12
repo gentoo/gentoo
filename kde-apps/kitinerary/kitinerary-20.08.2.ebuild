@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Data Model and Extraction System for Travel Reservation information"
-HOMEPAGE="https://kde.org/applications/office/org.kde.kontact"
+HOMEPAGE="https://apps.kde.org/en/kontact"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"

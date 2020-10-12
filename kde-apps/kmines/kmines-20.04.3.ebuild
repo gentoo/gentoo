@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Classic mine sweeper game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.kmines
+HOMEPAGE="https://apps.kde.org/en/kmines
 https://games.kde.org/game.php?game=kmines"
 
 LICENSE="GPL-2" # TODO: CHECK

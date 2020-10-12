@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Certificate manager and GUI for OpenPGP and CMS cryptography"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kleopatra"
+HOMEPAGE="https://apps.kde.org/en/kleopatra"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"

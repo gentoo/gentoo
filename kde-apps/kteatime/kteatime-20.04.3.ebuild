@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE timer for making a fine cup of tea"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kteatime"
+HOMEPAGE="https://apps.kde.org/en/kteatime"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

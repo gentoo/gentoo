@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Simple image scanning application based on libksane and KDE Frameworks"
-HOMEPAGE="https://kde.org/applications/graphics/org.kde.skanlite"
+HOMEPAGE="https://apps.kde.org/en/skanlite"
 SRC_URI="mirror://kde/stable/${PN}/2.2/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 ) handbook? ( FDL-1.2+ )"

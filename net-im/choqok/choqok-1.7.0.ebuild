@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Free/Open Source micro-blogging client by KDE"
 HOMEPAGE="https://choqok.kde.org/
-https://kde.org/applications/internet/org.kde.choqok"
+https://apps.kde.org/en/choqok"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV%.0}/src/${P}.tar.xz"

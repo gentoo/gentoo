@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Address book application based on KDE Frameworks"
-HOMEPAGE="https://kde.org/applications/office/org.kde.kaddressbook"
+HOMEPAGE="https://apps.kde.org/en/kaddressbook"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"

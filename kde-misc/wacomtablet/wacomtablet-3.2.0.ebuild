@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="System settings module for Wacom tablets"
-HOMEPAGE="https://kde.org/applications/system/org.kde.wacomtablet
+HOMEPAGE="https://apps.kde.org/en/wacomtablet
 https://userbase.kde.org/Wacomtablet"
 
 LICENSE="GPL-2"

@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="An adaptation of the Clickomania game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.klickety
+HOMEPAGE="https://apps.kde.org/en/klickety
 https://games.kde.org/game.php?game=klickety"
 
 LICENSE="GPL-2" # TODO: CHECK

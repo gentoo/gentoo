@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE Task Scheduler"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kcron"
+HOMEPAGE="https://apps.kde.org/en/kcron"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

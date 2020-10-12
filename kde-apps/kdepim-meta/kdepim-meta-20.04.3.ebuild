@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="KDE PIM - merge this to pull in all kdepim-derived packages"
-HOMEPAGE="https://kde.org/applications/office/org.kde.kontact"
+HOMEPAGE="https://apps.kde.org/en/kontact"
 
 LICENSE="metapackage"
 SLOT="5"

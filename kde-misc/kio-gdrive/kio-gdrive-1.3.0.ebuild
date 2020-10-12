@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="KIO Slave for Google Drive service"
-HOMEPAGE="https://phabricator.kde.org/project/profile/72/"
+HOMEPAGE="https://apps.kde.org/en/kio_gdrive"
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"

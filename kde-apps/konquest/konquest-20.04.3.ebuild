@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Galactic Strategy KDE Game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.konquest
+HOMEPAGE="https://apps.kde.org/en/konquest
 https://games.kde.org/game.php?game=konquest"
 
 LICENSE="GPL-2" # TODO: CHECK

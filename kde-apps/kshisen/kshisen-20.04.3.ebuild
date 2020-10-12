@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Solitaire-like game played using the standard set of Mahjong tiles"
-HOMEPAGE="https://kde.org/applications/games/org.kde.kshisen
+HOMEPAGE="https://apps.kde.org/en/kshisen
 https://games.kde.org/game.php?game=kshisen"
 
 LICENSE="GPL-2" # TODO: CHECK

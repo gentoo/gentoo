@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Straightforward graphical means to format 3.5\" and 5.25\" floppy disks"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kfloppy
+HOMEPAGE="https://apps.kde.org/en/kfloppy
 https://utils.kde.org/projects/kfloppy/"
 
 LICENSE="GPL-2" # TODO: CHECK

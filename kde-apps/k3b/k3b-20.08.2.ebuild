@@ -11,8 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Full-featured burning and ripping application based on KDE Frameworks"
-HOMEPAGE="https://kde.org/applications/multimedia/org.kde.k3b
-https://userbase.kde.org/K3b"
+HOMEPAGE="https://apps.kde.org/en/k3b https://userbase.kde.org/K3b"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="5"

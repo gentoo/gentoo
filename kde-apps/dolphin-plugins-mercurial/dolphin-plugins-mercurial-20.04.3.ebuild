@@ -12,7 +12,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Dolphin plugin for Mercurial integration"
-HOMEPAGE="https://kde.org/applications/system/org.kde.dolphin_plugins"
+HOMEPAGE="https://apps.kde.org/en/dolphin_plugins"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

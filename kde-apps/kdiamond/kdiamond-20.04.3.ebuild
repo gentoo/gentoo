@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Single player three-in-a-row game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.kdiamond
+HOMEPAGE="https://apps.kde.org/en/kdiamond
 https://games.kde.org/game.php?game=kdiamond"
 
 LICENSE="GPL-2" # TODO: CHECK

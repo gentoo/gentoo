@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Hex editor by KDE"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.okteta
+HOMEPAGE="https://apps.kde.org/en/okteta
 https://utils.kde.org/projects/okteta/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then

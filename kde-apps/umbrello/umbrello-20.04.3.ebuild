@@ -12,8 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE UML Modeller"
-HOMEPAGE="https://kde.org/applications/development/org.kde.umbrello
-https://umbrello.kde.org"
+HOMEPAGE="https://apps.kde.org/en/umbrello https://umbrello.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
