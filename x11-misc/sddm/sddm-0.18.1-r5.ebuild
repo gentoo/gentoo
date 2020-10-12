@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch"
+	"${FILESDIR}/${P}-respect-user-flags.patch"
 	"${FILESDIR}/${PN}-0.18.0-Xsession.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.18.0-sddmconfdir.patch"
 	# fix for groups: https://github.com/sddm/sddm/issues/1159
