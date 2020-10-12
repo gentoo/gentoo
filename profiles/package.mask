@@ -451,11 +451,6 @@ dev-python/args
 # Removal in 30 days
 net-dialup/tkvoice
 
-# Sam James <sam@gentoo.org> (2020-09-12)
-# Merged into app-text/texlive-core
-# Removal in 30 days
-dev-tex/chktex
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
