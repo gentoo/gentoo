@@ -25,7 +25,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-r2-Makefile.patch
+	epatch "${FILESDIR}"/${P}-makefile.patch
+	epatch "${FILESDIR}"/${P}-mysql-8.patch
 	sed -i -e "s#^INSTALL_DIR_LUA=.*#INSTALL_DIR_LUA=$(pkg-config --variable INSTALL_LMOD lua)#" \
 		-e "s#^INSTALL_DIR_BIN=.*#INSTALL_DIR_BIN=$(pkg-config --variable INSTALL_CMOD lua)#" \
 		-e "s#^LUA_INC_DIR=.*#LUA_INC_DIR=$(pkg-config --variable INSTALL_INC lua)#" \
