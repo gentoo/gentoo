@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Tool for reporting diagnostic information about Qt and its environment"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
 fi
 
 IUSE="+network +widgets"
