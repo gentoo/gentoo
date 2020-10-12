@@ -5,11 +5,11 @@ DESCRIPTION=Lua Assertions Extension
 EAPI=7
 HOMEPAGE=http://olivinelabs.com/busted/
 IUSE=luajit test
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-lua/say-1.3_p1[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/luassert/archive/v1.8.0.tar.gz -> luassert-1.8.0.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=361d15db86783597d941fb9a6499bd84
+_md5_=5f14b9ddc42e0c7788afd907c03aa2bd

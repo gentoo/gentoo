@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/lua-5.1:= virtual/pkgconfig
 DESCRIPTION=Event handling through channels
 EAPI=5
 HOMEPAGE=http://olivinelabs.com/mediator_lua/,
-KEYWORDS=amd64 arm ppc ppc64 x86
+KEYWORDS=amd64 arm ~arm64 ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:=
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/mediator_lua/archive/v1.1.2-0.tar.gz -> mediator_lua-1.1.2_p0.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=5fdf181f79d624cad63c5d078cc0849b
+_md5_=79c3090ce20d49c2f50a5cb266c5bf2d

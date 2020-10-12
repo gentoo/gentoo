@@ -5,11 +5,11 @@ DESCRIPTION=platform independent system calls for lua
 EAPI=7
 HOMEPAGE=https://github.com/LuaDist2/luasystem
 IUSE=luajit test
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/LuaDist2/luasystem/archive/0.2.1-0.tar.gz -> luasystem-0.2.1_p0.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=190f4aa2c4e68d7a451df6a40ab5a86c
+_md5_=4f0fb18f59cb1230e505979b68194d89

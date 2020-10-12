@@ -5,11 +5,11 @@ DESCRIPTION=Elegant Lua unit testing
 EAPI=7
 HOMEPAGE=http://olivinelabs.com/busted/
 IUSE=test
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:= >=dev-lua/lua_cliargs-3.0 >=dev-lua/luafilesystem-1.5.0 >=dev-lua/luasystem-0.2.0 >=dev-lua/dkjson-2.1.0 >=dev-lua/say-1.3 >=dev-lua/luassert-1.7.8 >=dev-lua/lua-term-0.1_p1 >=dev-lua/penlight-1.3.2 >=dev-lua/mediator_lua-1.1.1_p0
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/busted/archive/v2.0.0.tar.gz -> busted-2.0.0.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=62a5122abb322bb34120430d992378d1
+_md5_=3a2e2580d6b0e631b0541f97ecf98014
