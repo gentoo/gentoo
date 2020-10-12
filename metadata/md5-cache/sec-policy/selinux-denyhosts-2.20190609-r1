@@ -3,10 +3,10 @@ DEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.2019
 DESCRIPTION=SELinux policy for denyhosts
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20190609-r1
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20190609/refpolicy-2.20190609.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20190609-r1.tar.bz2
 _eclasses_=selinux-policy-2	fc82a837585d258b211de18f9a74d72a
-_md5_=f3f380362b938f94da9a3f31b56b200d
+_md5_=bcd69e3afd859002241764ba12fceb94

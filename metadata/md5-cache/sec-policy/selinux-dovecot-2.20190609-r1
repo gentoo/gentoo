@@ -3,10 +3,10 @@ DEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.2019
 DESCRIPTION=SELinux policy for dovecot
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20190609-r1
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20190609/refpolicy-2.20190609.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20190609-r1.tar.bz2
 _eclasses_=selinux-policy-2	fc82a837585d258b211de18f9a74d72a
-_md5_=5dd0b007795d09cd024a6a190d9097d6
+_md5_=08bc70707b1c4713c57ff99be0ab5c47

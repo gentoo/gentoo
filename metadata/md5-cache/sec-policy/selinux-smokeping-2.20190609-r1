@@ -3,10 +3,10 @@ DEPEND=sec-policy/selinux-apache >=sys-apps/policycoreutils-2.0.82 >=sec-policy/
 DESCRIPTION=SELinux policy for smokeping
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=sec-policy/selinux-apache >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20190609-r1
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20190609/refpolicy-2.20190609.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20190609-r1.tar.bz2
 _eclasses_=selinux-policy-2	fc82a837585d258b211de18f9a74d72a
-_md5_=61f3f767dcf8ca701b738487f37a73c4
+_md5_=10537e3420c819d5fd69bf948c8c0e6a

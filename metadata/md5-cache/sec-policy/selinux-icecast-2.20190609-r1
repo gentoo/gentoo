@@ -3,10 +3,10 @@ DEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.2019
 DESCRIPTION=SELinux policy for icecast
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20190609-r1
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20190609/refpolicy-2.20190609.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20190609-r1.tar.bz2
 _eclasses_=selinux-policy-2	fc82a837585d258b211de18f9a74d72a
-_md5_=b52103577c527aad5f2dd2df8908f4e5
+_md5_=a1ab1b49389adecac0bf71b182a49882

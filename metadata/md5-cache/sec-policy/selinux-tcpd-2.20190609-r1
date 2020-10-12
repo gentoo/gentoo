@@ -3,10 +3,10 @@ DEPEND=sec-policy/selinux-inetd >=sys-apps/policycoreutils-2.0.82 >=sec-policy/s
 DESCRIPTION=SELinux policy for tcpd
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=sec-policy/selinux-inetd >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20190609-r1
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20190609/refpolicy-2.20190609.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20190609-r1.tar.bz2
 _eclasses_=selinux-policy-2	fc82a837585d258b211de18f9a74d72a
-_md5_=fb67aa6e14a4b730237033523bcf6f9e
+_md5_=9c7749ba99f6754689bff4c3088f9c9f
