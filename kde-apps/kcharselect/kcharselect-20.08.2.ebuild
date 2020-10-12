@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE character selection utility"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kcharselect
+HOMEPAGE="https://apps.kde.org/en/kcharselect
 https://utils.kde.org/projects/kcharselect/"
 
 LICENSE="GPL-2" # TODO: CHECK

@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Advanced download manager by KDE"
-HOMEPAGE="https://kde.org/applications/en/kget"
+HOMEPAGE="https://apps.kde.org/en/kget"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

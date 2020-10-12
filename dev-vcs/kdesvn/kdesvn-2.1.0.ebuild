@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="A frontend to the subversion vcs"
-HOMEPAGE="https://kde.org/applications/development/org.kde.kdesvn"
+HOMEPAGE="https://apps.kde.org/en/kdesvn"
 
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"

@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE clone of the game squares"
-HOMEPAGE="https://kde.org/applications/games/org.kde.ksquares
+HOMEPAGE="https://apps.kde.org/en/ksquares
 https://games.kde.org/game.php?game=ksquares"
 
 LICENSE="GPL-2" # TODO: CHECK

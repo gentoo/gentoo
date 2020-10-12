@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Space Game by KDE"
-HOMEPAGE="https://kde.org/applications/games/org.kde.kspaceduel
+HOMEPAGE="https://apps.kde.org/en/kspaceduel
 https://games.kde.org/game.php?game=kspaceduel"
 
 LICENSE="GPL-2" # TODO: CHECK

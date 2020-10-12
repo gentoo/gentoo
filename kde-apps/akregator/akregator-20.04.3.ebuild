@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="News feed aggregator"
-HOMEPAGE="https://kde.org/applications/internet/org.kde.akregator"
+HOMEPAGE="https://apps.kde.org/en/akregator"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"

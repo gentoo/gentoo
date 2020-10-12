@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="A little KDE game about balls and how to get rid of them"
-HOMEPAGE="https://kde.org/applications/games/org.kde.klines
+HOMEPAGE="https://apps.kde.org/en/klines
 https://games.kde.org/game.php?game=klines"
 
 LICENSE="GPL-2" # TODO: CHECK

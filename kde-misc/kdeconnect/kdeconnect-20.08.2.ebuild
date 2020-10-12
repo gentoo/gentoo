@@ -14,7 +14,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
 HOMEPAGE="https://kdeconnect.kde.org/
-https://kde.org/applications/en/kdeconnect.kcm"
+https://apps.kde.org/en/kdeconnect.kcm"
 
 LICENSE="GPL-2+"
 SLOT="5"
@@ -81,5 +81,5 @@ pkg_postinst(){
 	elog "The Android .apk file is available via"
 	elog "https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp"
 	elog "or via"
-	elog "https://f-droid.org/repository/browse/?fdid=org.kde.kdeconnect_tp"
+	elog "https://f-droid.org/packages/org.kde.kdeconnect_tp/"
 }

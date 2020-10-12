@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Single player arcade bombing game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.bomber"
+HOMEPAGE="https://apps.kde.org/en/bomber"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

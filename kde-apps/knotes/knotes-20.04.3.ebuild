@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Note taking application"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.knotes
+HOMEPAGE="https://apps.kde.org/en/knotes
 https://kontact.kde.org/components/knotes.html"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"

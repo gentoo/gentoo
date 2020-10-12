@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Plugins for KDE Personal Information Management Suite"
-HOMEPAGE="https://kde.org/applications/office/org.kde.kontact"
+HOMEPAGE="https://apps.kde.org/en/kontact"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"

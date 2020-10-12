@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit python-single-r1 ecm kde.org optfeature
 
 DESCRIPTION="Localization tool for KDE software and other free and open source software"
-HOMEPAGE="https://kde.org/applications/en/lokalize https://l10n.kde.org/tools/"
+HOMEPAGE="https://apps.kde.org/en/lokalize https://l10n.kde.org/tools/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

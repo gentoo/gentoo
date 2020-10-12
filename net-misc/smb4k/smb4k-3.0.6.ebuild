@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Advanced network neighborhood browser"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.smb4k
+HOMEPAGE="https://apps.kde.org/en/smb4k
 https://sourceforge.net/p/smb4k/home/Home/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then

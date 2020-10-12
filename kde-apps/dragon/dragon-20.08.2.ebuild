@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Simple video player"
-HOMEPAGE="https://kde.org/applications/multimedia/org.kde.dragonplayer"
+HOMEPAGE="https://apps.kde.org/en/dragonplayer"
 
 LICENSE="GPL-2+ || ( GPL-2 GPL-3 ) handbook? ( FDL-1.2 )"
 SLOT="5"
