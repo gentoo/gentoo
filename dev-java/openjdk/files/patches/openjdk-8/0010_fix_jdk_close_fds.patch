@@ -1,0 +1,103 @@
+diff -Naur openjdk-8.265_p01/jdk/src/solaris/native/java/lang/childproc.c openjdk-8.265_p01-copy/jdk/src/solaris/native/java/lang/childproc.c
+--- openjdk-8.265_p01/jdk/src/solaris/native/java/lang/childproc.c	2020-10-11 15:53:09.308010360 -0400
++++ openjdk-8.265_p01-copy/jdk/src/solaris/native/java/lang/childproc.c	2020-10-11 21:38:33.888020409 -0400
+@@ -30,6 +30,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <limits.h>
++#include <poll.h>
+ 
+ #include "childproc.h"
+ 
+@@ -57,59 +58,46 @@
+ }
+ 
+ int
+-isAsciiDigit(char c)
+-{
+-  return c >= '0' && c <= '9';
+-}
+-
+-#ifdef _ALLBSD_SOURCE
+-#define FD_DIR "/dev/fd"
+-#define dirent64 dirent
+-#define readdir64 readdir
+-#elif defined(_AIX)
+-/* AIX does not understand '/proc/self' - it requires the real process ID */
+-#define FD_DIR aix_fd_dir
+-#else
+-#define FD_DIR "/proc/self/fd"
+-#endif
+-
+-int
+ closeDescriptors(void)
+ {
+-    DIR *dp;
+-    struct dirent64 *dirp;
+     int from_fd = FAIL_FILENO + 1;
++    struct pollfd pfds[1024];
++    int i, total, nclosed = 0;
++    int max_fd = sysconf(_SC_OPEN_MAX);
+ 
+-    /* We're trying to close all file descriptors, but opendir() might
+-     * itself be implemented using a file descriptor, and we certainly
+-     * don't want to close that while it's in use.  We assume that if
+-     * opendir() is implemented using a file descriptor, then it uses
+-     * the lowest numbered file descriptor, just like open().  So we
+-     * close a couple explicitly.  */
+-
+-    close(from_fd);          /* for possible use by opendir() */
+-    close(from_fd + 1);      /* another one for good luck */
+-
+-#if defined(_AIX)
+-    /* AIX does not understand '/proc/self' - it requires the real process ID */
+-    char aix_fd_dir[32];     /* the pid has at most 19 digits */
+-    snprintf(aix_fd_dir, 32, "/proc/%d/fd", getpid());
+-#endif
+-
+-    if ((dp = opendir(FD_DIR)) == NULL)
++    if (max_fd < 0)
+         return 0;
+ 
+-    /* We use readdir64 instead of readdir to work around Solaris bug
+-     * 6395699: /proc/self/fd fails to report file descriptors >= 1024 on Solaris 9
+-     */
+-    while ((dirp = readdir64(dp)) != NULL) {
+-        int fd;
+-        if (isAsciiDigit(dirp->d_name[0]) &&
+-            (fd = strtol(dirp->d_name, NULL, 10)) >= from_fd + 2)
+-            close(fd);
++    /* init events */
++    total = max_fd - from_fd;
++    for (i = 0; i < (total < 1024 ? total : 1024); i++) {
++        pfds[i].events = 0;
+     }
+ 
+-    closedir(dp);
++    while (from_fd < max_fd) {
++        int nfds, r = 0;
++
++        total = max_fd - from_fd;
++        nfds =  total < 1024 ? total : 1024;
++
++        for (i = 0; i < nfds; i++)
++            pfds[i].fd = from_fd + i;
++
++        do {
++            r = poll(pfds, nfds, 0);
++        } while (r == -1 && errno == EINTR);
++
++        if (r < 0)
++            return 0;
++
++
++        for (i = 0; i < nfds; i++)
++            if (pfds[i].revents != POLLNVAL) {
++                nclosed++;
++                close(pfds[i].fd);
++            }
++        from_fd += nfds;
++    }
+ 
+     return 1;
+ }

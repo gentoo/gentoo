@@ -1,0 +1,18 @@
+Author: Simon Frankenberger <simon-alpine@fraho.eu>
+Upstream: no
+Reason: The alpine builders print out a warning about sched_getaffinity() not working.
+        This causes the version check for the boot jdk to fail.
+        Patch the command to determine the version number to ignore any errors and warnings.
+
+--- old/make/autoconf/boot-jdk.m4
++++ new/make/autoconf/boot-jdk.m4
+@@ -74,7 +74,7 @@
+           BOOT_JDK_FOUND=no
+         else
+           # Oh, this is looking good! We probably have found a proper JDK. Is it the correct version?
+-          BOOT_JDK_VERSION=`"$BOOT_JDK/bin/java" -version 2>&1 | $HEAD -n 1`
++          BOOT_JDK_VERSION=`"$BOOT_JDK/bin/java" -version 2>&1 | $GREP version | $HEAD -n 1`
+ 
+           # Extra M4 quote needed to protect [] in grep expression.
+           [FOUND_CORRECT_VERSION=`$ECHO $BOOT_JDK_VERSION \
+

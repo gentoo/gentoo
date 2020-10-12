@@ -91,6 +91,19 @@ DEPEND="
 
 PDEPEND="javafx? ( dev-java/openjfx:${SLOT} )"
 
+PATCHES=(
+        "${FILESDIR}/patches/${PN}-${SLOT}/0001_musl_hotspot.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0002_musl_hotspot_ppc.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0003_musl_hotspot_aarch64.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0004_musl_hotspot_noagent.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0005_musl_fix_libjvm_load.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0006_musl_jdk.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0007_musl_jdk_includes.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0008_musl_jdk_execinfo.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0009_fix_jdk_ipv6_init.patch"
+        "${FILESDIR}/patches/${PN}-${SLOT}/0010_fix_jdk_close_fds.patch"
+)
+
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
@@ -138,6 +151,11 @@ src_prepare() {
 	# new warnings in new gcc https://bugs.gentoo.org/685426
 	sed -i '/^WARNINGS_ARE_ERRORS/ s/-Werror/-Wno-error/' \
 		hotspot/make/linux/makefiles/gcc.make || die
+
+        # apply this patch here as the sources are not available unless ARCH == arm64
+        if use arm64; then
+            eapply "${FILESDIR}/patches/${PN}-${SLOT}/0003_musl_hotspot_aarch64.patch"
+        fi
 
 	chmod +x configure || die
 }

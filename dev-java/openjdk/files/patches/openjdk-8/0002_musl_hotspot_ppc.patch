@@ -1,0 +1,24 @@
+diff -Naur openjdk-8.265_p01/hotspot/src/cpu/ppc/vm/macroAssembler_ppc.cpp openjdk-8.265_p01-copy/hotspot/src/cpu/ppc/vm/macroAssembler_ppc.cpp
+--- openjdk-8.265_p01/hotspot/src/cpu/ppc/vm/macroAssembler_ppc.cpp	2020-10-11 15:53:08.452010359 -0400
++++ openjdk-8.265_p01-copy/hotspot/src/cpu/ppc/vm/macroAssembler_ppc.cpp	2020-10-11 20:51:15.688019033 -0400
+@@ -44,6 +44,8 @@
+ #include "gc_implementation/g1/heapRegion.hpp"
+ #endif // INCLUDE_ALL_GCS
+ 
++#include <asm/ptrace.h>
++
+ #ifdef PRODUCT
+ #define BLOCK_COMMENT(str) // nothing
+ #else
+diff -Naur openjdk-8.265_p01/hotspot/src/os_cpu/linux_ppc/vm/thread_linux_ppc.cpp openjdk-8.265_p01-copy/hotspot/src/os_cpu/linux_ppc/vm/thread_linux_ppc.cpp
+--- openjdk-8.265_p01/hotspot/src/os_cpu/linux_ppc/vm/thread_linux_ppc.cpp	2020-10-11 15:53:08.472010359 -0400
++++ openjdk-8.265_p01-copy/hotspot/src/os_cpu/linux_ppc/vm/thread_linux_ppc.cpp	2020-10-11 20:51:42.444019045 -0400
+@@ -27,6 +27,8 @@
+ #include "runtime/frame.inline.hpp"
+ #include "runtime/thread.hpp"
+ 
++#include <asm/ptrace.h>
++
+ bool JavaThread::pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava) {
+   assert(this->is_Java_thread(), "must be JavaThread");
+ 

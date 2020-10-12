@@ -1,0 +1,85 @@
+diff -Naur openjdk-8.265_p01/common/autoconf/configure openjdk-8.265_p01-copy/common/autoconf/configure
+--- openjdk-8.265_p01/common/autoconf/configure	2020-10-11 15:53:08.360010359 -0400
++++ openjdk-8.265_p01-copy/common/autoconf/configure	2020-10-11 21:19:41.768019860 -0400
+@@ -103,7 +103,7 @@
+ }
+ 
+ # Check for local changes
+-check_hg_updates
++run_autogen_or_fail
+ 
+ if test -e $conf_custom_script_dir/generated-configure.sh; then
+   # Test if open configure is newer than custom configure, if so, custom needs to
+diff -Naur openjdk-8.265_p01/common/autoconf/jdk-options.m4 openjdk-8.265_p01-copy/common/autoconf/jdk-options.m4
+--- openjdk-8.265_p01/common/autoconf/jdk-options.m4	2020-10-11 15:53:08.364010359 -0400
++++ openjdk-8.265_p01-copy/common/autoconf/jdk-options.m4	2020-10-11 21:20:14.764019876 -0400
+@@ -151,7 +151,7 @@
+   AC_SUBST(JVM_VARIANT_ZEROSHARK)
+   AC_SUBST(JVM_VARIANT_CORE)
+ 
+-  INCLUDE_SA=true
++  AC_CHECK_HEADER(thread_db.h,INCLUDE_SA=true,INCLUDE_SA=false)
+   if test "x$JVM_VARIANT_ZERO" = xtrue ; then
+     INCLUDE_SA=false
+   fi
+diff -Naur openjdk-8.265_p01/hotspot/make/linux/makefiles/defs.make openjdk-8.265_p01-copy/hotspot/make/linux/makefiles/defs.make
+--- openjdk-8.265_p01/hotspot/make/linux/makefiles/defs.make	2020-10-11 15:53:08.448010359 -0400
++++ openjdk-8.265_p01-copy/hotspot/make/linux/makefiles/defs.make	2020-10-11 21:21:24.716019910 -0400
+@@ -296,6 +296,9 @@
+ 
+ # Serviceability Binaries
+ # No SA Support for PPC, IA64, ARM or zero
++# or if thread_db.h missing (musl)
++
++ifneq ($(wildcard /usr/include/thread_db.h),)
+ ADD_SA_BINARIES/x86   = $(EXPORT_JRE_LIB_ARCH_DIR)/libsaproc.$(LIBRARY_SUFFIX) \
+                         $(EXPORT_LIB_DIR)/sa-jdi.jar
+ ADD_SA_BINARIES/sparc = $(EXPORT_JRE_LIB_ARCH_DIR)/libsaproc.$(LIBRARY_SUFFIX) \
+@@ -311,6 +314,11 @@
+     endif
+   endif
+ endif
++else
++ADD_SA_BINARIES/x86     =
++ADD_SA_BINARIES/sparc   =
++ADD_SA_BINARIES/aarch64 =
++endif
+ ADD_SA_BINARIES/ppc   =
+ ADD_SA_BINARIES/ia64  =
+ ADD_SA_BINARIES/arm   =
+diff -Naur openjdk-8.265_p01/hotspot/make/linux/makefiles/sa.make openjdk-8.265_p01-copy/hotspot/make/linux/makefiles/sa.make
+--- openjdk-8.265_p01/hotspot/make/linux/makefiles/sa.make	2020-10-11 15:53:08.448010359 -0400
++++ openjdk-8.265_p01-copy/hotspot/make/linux/makefiles/sa.make	2020-10-11 21:22:39.556019946 -0400
+@@ -59,9 +59,11 @@
+ 
+ # if $(AGENT_DIR) does not exist, we don't build SA
+ # also, we don't build SA on Itanium or zero.
++# check for thread_db.h too (musl does not have it).
+ 
+-all: 
+-	if [ -d $(AGENT_DIR) -a "$(SRCARCH)" != "ia64" \
++all:
++	if [ -d $(AGENT_DIR) -a -f /usr/include/thread_db.h \
++             -a "$(SRCARCH)" != "ia64" \
+              -a "$(SRCARCH)" != "zero" ] ; then \
+ 	   $(MAKE) -f sa.make $(GENERATED)/sa-jdi.jar; \
+ 	fi
+diff -Naur openjdk-8.265_p01/hotspot/make/linux/makefiles/saproc.make openjdk-8.265_p01-copy/hotspot/make/linux/makefiles/saproc.make
+--- openjdk-8.265_p01/hotspot/make/linux/makefiles/saproc.make	2020-10-11 15:53:08.448010359 -0400
++++ openjdk-8.265_p01-copy/hotspot/make/linux/makefiles/saproc.make	2020-10-11 21:23:13.672019963 -0400
+@@ -66,12 +66,15 @@
+ 
+ # if $(AGENT_DIR) does not exist, we don't build SA
+ # also, we don't build SA on Itanium or zero.
++# check for thread_db.h too (musl does not have it).
+ 
++ifneq ($(wildcard /usr/include/thread_db.h),)
+ ifneq ($(wildcard $(AGENT_DIR)),)
+ ifneq ($(filter-out ia64 zero,$(SRCARCH)),)
+   BUILDLIBSAPROC = $(LIBSAPROC)
+ endif
+ endif
++endif
+ 
+ ifneq ($(ALT_SASRCDIR),)
+ ALT_SAINCDIR=-I$(ALT_SASRCDIR) -DALT_SASRCDIR

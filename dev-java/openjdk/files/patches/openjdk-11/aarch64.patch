@@ -1,0 +1,15 @@
+Author: Simon Frankenberger <simon-alpine@fraho.eu>
+Upstream: no
+Reason: This file is not present when building on aarch64 alpine.
+        Furthermore, the build runs just fine without it.
+
+--- old/src/hotspot/os_cpu/linux_aarch64/os_linux_aarch64.cpp
++++ new/src/hotspot/os_cpu/linux_aarch64/os_linux_aarch64.cpp
+@@ -74,7 +74,6 @@
+ # include <pwd.h>
+ # include <poll.h>
+ # include <ucontext.h>
+-# include <fpu_control.h>
+ 
+ #define REG_FP 29
+ #define REG_LR 30

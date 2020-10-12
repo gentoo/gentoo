@@ -1,0 +1,12 @@
+diff -Naur openjdk-8.265_p01/hotspot/src/os_cpu/linux_aarch64/vm/os_linux_aarch64.cpp openjdk-8.265_p01-copy/hotspot/src/os_cpu/linux_aarch64/vm/os_linux_aarch64.cpp
+--- openjdk-8.265_p01/hotspot/src/os_cpu/linux_aarch64/vm/os_linux_aarch64.cpp	2020-07-26 20:20:35.000000000 -0400
++++ openjdk-8.265_p01-copy/hotspot/src/os_cpu/linux_aarch64/vm/os_linux_aarch64.cpp	2020-10-11 21:49:21.268020723 -0400
+@@ -72,7 +72,7 @@
+ # include <pwd.h>
+ # include <poll.h>
+ # include <ucontext.h>
+-# include <fpu_control.h>
++# include <linux/types.h>  /* provides __u64 */
+ 
+ #define REG_FP 29
+ 

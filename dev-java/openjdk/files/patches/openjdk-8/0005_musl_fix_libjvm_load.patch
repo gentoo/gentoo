@@ -1,0 +1,12 @@
+diff -Naur openjdk-8.265_p01/jdk/src/solaris/bin/java_md_solinux.c openjdk-8.265_p01-copy/jdk/src/solaris/bin/java_md_solinux.c
+--- openjdk-8.265_p01/jdk/src/solaris/bin/java_md_solinux.c	2020-10-11 15:53:09.288010360 -0400
++++ openjdk-8.265_p01-copy/jdk/src/solaris/bin/java_md_solinux.c	2020-10-11 20:57:18.932019209 -0400
+@@ -291,6 +291,8 @@
+     char *dmllp = NULL;
+     char *p; /* a utility pointer */
+ 
++    return JNI_TRUE;
++
+ #ifdef AIX
+     /* We always have to set the LIBPATH on AIX because ld doesn't support $ORIGIN. */
+     return JNI_TRUE;
