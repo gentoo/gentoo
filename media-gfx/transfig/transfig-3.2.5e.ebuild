@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
-inherit toolchain-funcs eutils flag-o-matic multilib
+EAPI=7
+inherit flag-o-matic toolchain-funcs
 
 MY_P=${PN}.${PV}
 
@@ -10,12 +10,11 @@ DESCRIPTION="A set of tools for creating TeX documents with graphics"
 HOMEPAGE="https://www.xfig.org/"
 SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/${P}-gentoo-patchset.tar.bz2"
+	https://dev.gentoo.org/~sultan/distfiles/media-gfx/transfig/${P}-gentoo-patchset-r1.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
-IUSE=""
 
 RDEPEND="x11-libs/libXpm
 	virtual/jpeg
@@ -26,6 +25,20 @@ DEPEND="${RDEPEND}
 	app-text/rman"
 
 S=${WORKDIR}/${MY_P}
+
+PATCHES=(
+	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5d-fig2mpdf-r1.patch"
+	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5c-maxfontsize.patch"
+	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5-solaris.patch"
+	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5e-typos.patch"
+	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5e-man-hyphen.patch"
+	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5e-fprintf_format_warnings.patch"
+	"${FILESDIR}/${PN}-3.2.5e-gcc10-fno-common.patch"
+	"${FILESDIR}/${PN}-3.2.5e-clang.patch"
+)
+
+DOCS=( README CHANGES LATEX.AND.XFIG NOTES )
+HTML_DOCS=( "${WORKDIR}/fig2mpdf/doc/." )
 
 sed_Imakefile() {
 	# see fig2dev/Imakefile for details
@@ -41,20 +54,20 @@ sed_Imakefile() {
 	for variable in ${vars2subs} ; do
 		varname=${variable%%=*}
 		varval=${variable##*=}
-		sed -i "s:^\(XCOMM\)*[[:space:]]*${varname}[[:space:]]*=.*$:${varname} = ${varval}:" "$@"
+		sed -i "s:^\(XCOMM\)*[[:space:]]*${varname}[[:space:]]*=.*$:${varname} = ${varval}:" "$@" || die
 	done
 }
 
 src_prepare() {
-	find . -type f -exec chmod a-x '{}' \;
-	find . -name Makefile -delete
-	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5d-fig2mpdf-r1.patch
-	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5c-maxfontsize.patch
-	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5-solaris.patch
-	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-typos.patch
-	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-man-hyphen.patch
-	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-fprintf_format_warnings.patch
-	epatch "${FILESDIR}"/${PN}-3.2.5e-gcc10-fno-common.patch
+	default
+
+	# Create wrapper for gcc, bug #720820
+	printf '#!/bin/sh\n%s ${*}\n' "$(tc-getCC)" > "${T}"/gcc
+	chmod +x "${T}"/gcc
+	export PATH="${T}:${PATH}"
+
+	find . -type f -exec chmod a-x '{}' \; || die
+	find . -name Makefile -delete || die
 
 	sed -e 's:-L$(ZLIBDIR) -lz::' \
 		-e 's: -lX11::' \
@@ -66,7 +79,8 @@ src_compile() {
 	xmkmf || die "xmkmf failed"
 	emake Makefiles
 
-	emake CC="$(tc-getCC)" LOCAL_LDFLAGS="${LDFLAGS}" CDEBUGFLAGS="${CFLAGS}" \
+	emake CC="$(tc-getCC)" AR="$(tc-getAR) clq" RANLIB="$(tc-getRANLIB)" \
+		LOCAL_LDFLAGS="${LDFLAGS}" CDEBUGFLAGS="${CFLAGS}" \
 		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
 
@@ -82,11 +96,11 @@ src_install() {
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-ru_RU.KOI8-R.ps" ru_RU.KOI8-R.ps
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-uk_UA.KOI8-U.ps" uk_UA.KOI8-U.ps
 
-	dohtml "${WORKDIR}/fig2mpdf/doc/"*
+	einstalldocs
+
+	rm -f "${ED}/usr/share/doc/${PF}/html/"{Makefile,*.lfig,*.pdf,*.tex} || die
 
 	mv "${ED}"/usr/bin/fig2ps2tex{.sh,} || die #338295
-
-	dodoc README CHANGES LATEX.AND.XFIG NOTES
 }
 
 pkg_postinst() {
