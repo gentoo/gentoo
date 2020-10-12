@@ -11,7 +11,6 @@ move net-misc/logmein-hamachi net-vpn/logmein-hamachi
 move net-misc/openconnect net-vpn/openconnect
 move net-misc/openfortivpn net-vpn/openfortivpn
 move net-misc/openvpn net-vpn/openvpn
-move net-misc/peervpn net-vpn/peervpn
 move net-misc/strongswan net-vpn/strongswan
 move net-misc/tinc net-vpn/tinc
 move net-misc/vpnc net-vpn/vpnc
