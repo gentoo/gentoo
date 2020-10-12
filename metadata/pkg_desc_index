@@ -8413,7 +8413,6 @@ dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repo
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.4.5: Stateful programmatic web browsing in Python
 dev-python/mediafile 0.2.0: Read and write audio files' tags in Python
-dev-python/meld3 2.0.0: meld3 is an HTML/XML templating engine
 dev-python/memory_profiler 0.57: A module for monitoring memory usage of a python program
 dev-python/mergedict 1.0.0: A Python 'dict' with a merge() method
 dev-python/metakernel 0.25.0-r1: Metakernel for Jupyter
@@ -8701,7 +8700,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre12 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre12 2.0.0_pre14 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
@@ -10469,19 +10468,14 @@ dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development en
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
 dev-tex/biber 2.12 2.14: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.12 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
-dev-tex/biblatex-apa 7.5: APA style for BibLaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
-dev-tex/chktex 1.7.6: Checks latex source for common mistakes
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
-dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
 dev-tex/culmus-latex 0.7-r1: Culmus fonts support for latex
-dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
 dev-tex/dot2tex 2.11.3: A Graphviz to LaTeX converter
 dev-tex/dvi2gr 0.4-r1: DVI to Grace translator
-dev-tex/dvipost 1.1-r3: post processor for dvi files
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
 dev-tex/glossaries 4.41 4.46: Create glossaries and lists of acronyms
@@ -15505,7 +15499,6 @@ net-vpn/ocserv 1.0.1: Openconnect SSL VPN server
 net-vpn/openconnect 8.09-r1 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
-net-vpn/peervpn 0.044-r5: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.8.4 5.9.0: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
