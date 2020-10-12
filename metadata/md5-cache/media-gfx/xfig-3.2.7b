@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libXaw x11-libs/libXaw3d x11-libs/libXi x11-libs/libXt media-li
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/mcj/xfig-3.2.7b.tar.xz
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b5f751853311d73e0a363aa2ab7a3ae1
+_md5_=8aab5c55b29b68a2a6a7a436b48a977e

@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXpm virtual/jpeg media-libs/libpng x11-apps/rgb
 SLOT=0
 SRC_URI=mirror://sourceforge/mcj/transfig.3.2.5e.tar.gz mirror://gentoo/fig2mpdf-1.1.2.tar.bz2 https://dev.gentoo.org/~sultan/distfiles/media-gfx/transfig/transfig-3.2.5e-gentoo-patchset-r1.tar.bz2
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=df609923938b659c398c3c904838a723
+_md5_=1fdff8bbaac13f85803b4d85e74b33ab

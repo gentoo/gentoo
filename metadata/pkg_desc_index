@@ -12916,7 +12916,7 @@ media-gfx/termtosvg 0.7.0 0.8.0 1.1.0: Record terminal sessions as SVG animation
 media-gfx/tgif 4.2.5-r2: Xlib base 2-D drawing facility under X11
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
 media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue shift adjustments
-media-gfx/transfig 3.2.5e: A set of tools for creating TeX documents with graphics
+media-gfx/transfig 3.2.5e-r1: A set of tools for creating TeX documents with graphics
 media-gfx/ttygif 1.80_p20181218: Convert terminal recordings to animated gifs
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628-r1: Set of 'Rubber Stamp' images which can be used within Tux Paint
@@ -12975,7 +12975,7 @@ media-libs/cogl 1.22.6 1.22.8: A library for using 3D graphics hardware to draw 
 media-libs/coin 3.1.3-r2 4.0.0: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
 media-libs/ctl 1.5.2-r1: AMPAS' Color Transformation Language
-media-libs/dav1d 0.5.2 0.7.0 9999: dav1d is an AV1 Decoder :)
+media-libs/dav1d 0.5.2 0.7.0 0.7.1 9999: dav1d is an AV1 Decoder :)
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3 2.0.3: Module/tracker based music format parser and player library
@@ -18021,8 +18021,8 @@ www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web br
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.3.1 81.0.1 81.0.1-r1: Firefox Web Browser
-www-client/firefox-bin 78.3.1-r1 81.0.1-r1: Firefox Web Browser
+www-client/firefox 78.3.1 81.0.1 81.0.1-r1 81.0.2: Firefox Web Browser
+www-client/firefox-bin 78.3.1-r1 81.0.1-r1 81.0.2: Firefox Web Browser
 www-client/google-chrome 86.0.4240.75: The web browser from Google
 www-client/google-chrome-beta 86.0.4240.75: The web browser from Google
 www-client/google-chrome-unstable 87.0.4280.11: The web browser from Google
