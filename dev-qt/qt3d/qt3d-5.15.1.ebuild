@@ -11,18 +11,20 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # TODO: tools
-IUSE="gamepad gles2-only qml"
+IUSE="gamepad gles2-only qml vulkan"
 
-DEPEND="
+RDEPEND="
 	~dev-qt/qtconcurrent-${PV}
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}
+	~dev-qt/qtgui-${PV}:5=[vulkan=]
 	~dev-qt/qtnetwork-${PV}
 	>=media-libs/assimp-4.0.0
 	gamepad? ( ~dev-qt/qtgamepad-${PV} )
 	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2-only=] )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 
 src_prepare() {
 	rm -r src/3rdparty/assimp/{code,contrib,include} || die
