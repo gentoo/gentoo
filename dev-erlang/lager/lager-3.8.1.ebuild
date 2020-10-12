@@ -19,6 +19,9 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md TODO )
 
+# tests broken upstream with erlang 23.x
+RESTRICT="test"
+
 src_prepare() {
 	rebar_src_prepare
 	sed -i '/goldrush/d' rebar.config.script
