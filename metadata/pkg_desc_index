@@ -3675,15 +3675,15 @@ dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32 1.0.34: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
 dev-erlang/fast_tls 1.1.6 1.1.8: TLS/SSL native driver for Erlang and Elixir
-dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37 1.1.39 1.1.40 1.1.41: Fast Expat based Erlang XML parsing library
-dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21 1.0.24 1.0.25: Fast Yaml native library for Erlang and Elixir
+dev-erlang/fast_xml 1.1.41 1.1.43: Fast Expat based Erlang XML parsing library
+dev-erlang/fast_yaml 1.0.25 1.0.27: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20160709: Erlang port of Hamcrest
 dev-erlang/iconv 1.0.4 1.0.10: Fast encoding conversion library for Erlang and Elixir
 dev-erlang/idna 6.0.0: Erlang IDNA implementation
 dev-erlang/jiffy 0.14.9 0.14.11 1.0.1 1.0.4 1.0.5: JSON NIFs for Erlang
 dev-erlang/jose 1.9.0 1.10.1: JSON Object Signing and Encryption (JOSE) for Erlang and Elixir
-dev-erlang/lager 3.2.4 3.8.0: Logging framework for Erlang/OTP
+dev-erlang/lager 3.2.4 3.8.0 3.8.1: Logging framework for Erlang/OTP
 dev-erlang/luerl 0.2 0.3: Lua in Erlang
 dev-erlang/meck 0.8.4 0.8.12 0.8.13: Mocking library for Erlang
 dev-erlang/mqtree 1.0.4 1.0.5 1.0.7: Index tree for MQTT topic filters
@@ -3702,7 +3702,7 @@ dev-erlang/sqlite3 1.1.5 1.1.6 1.1.7: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.8 1.0.17 1.0.19 1.0.20: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31 1.0.32 1.0.33: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6 1.4.7: XMPP parsing and serialization library on top of Fast XML
-dev-erlang/yconf 1.0.1 1.0.4: YAML configuration processor
+dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4-r1: set of free cards sets
@@ -5134,7 +5134,7 @@ dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.6: Lazarus IDE is a feature rich visual pro
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
-dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.1.5-r103 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.2.4-r2 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1 5.3.5-r2: A powerful light-weight programming language designed for extending applications
+dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r103 5.2.4-r2 5.3.5-r2: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r2 2.1.0_beta3-r1: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
