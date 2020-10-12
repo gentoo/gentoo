@@ -461,11 +461,6 @@ dev-tex/chktex
 # Removal in 30 days
 dev-tex/biblatex-apa
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
-# Merged into the texlive-core package.
-# Removal in 30 days
-dev-tex/detex
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
