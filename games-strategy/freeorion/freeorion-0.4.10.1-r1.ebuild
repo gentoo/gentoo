@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	sed -e "s/-O3//" -i CMakeLists.txt || die
 
-	cmake-src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -67,7 +67,7 @@ src_configure() {
 		-DBUILD_HEADLESS="$(usex dedicated)"
 	)
 
-	cmake-src_configure
+	cmake_src_configure
 }
 
 src_install() {
