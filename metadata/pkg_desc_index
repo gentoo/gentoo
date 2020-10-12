@@ -3443,7 +3443,7 @@ dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and
 dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
-dev-cpp/abseil-cpp 20200225.2 20200923: Abseil Common Libraries (C++), LTS Branch
+dev-cpp/abseil-cpp 20200225.2 20200923.1: Abseil Common Libraries (C++), LTS Branch
 dev-cpp/aixlog 1.4.0 9999: Header-only C++ logging library
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/asio 1.10.8 1.17.0 1.18.0: Asynchronous Network Library
