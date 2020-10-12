@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Tieske/Penlight/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 BDEPEND="virtual/pkgconfig"
