@@ -6,7 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> instead of <pkg>dev-qt/qtwebkit</pkg></flag>
+		<flag name="webkit">Use <pkg>dev-qt/qtwebkit</pkg> instead of <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>mailto:webmaster@molspaces.com</bugs-to>
