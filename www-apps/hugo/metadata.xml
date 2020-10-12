@@ -6,7 +6,7 @@
 		<flag name="sass">Enable SASS/SCSS support</flag>
 	</use>
 	<upstream>
-	<remote-id type="github">https://github.com/gohugoio/hugo</remote-id>
+	<remote-id type="github">gohugoio/hugo</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		Hugo is a static HTML and CSS website generator written in Go.
