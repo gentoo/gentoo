@@ -3701,7 +3701,7 @@ dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6 1.1.7: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.20: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.33: STUN and TURN library for Erlang and Elixir
-dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6 1.4.7: XMPP parsing and serialization library on top of Fast XML
+dev-erlang/xmpp 1.4.7: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
@@ -8281,6 +8281,7 @@ dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.7.0-r2 2.0.0: Read metadata from Python packages
 dev-python/importlib_resources 1.5.0-r2 3.0.0-r2: Read resources from Python packages
+dev-python/imread 0.7.3: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
 dev-python/inflect 4.1.0: Correctly inflect words and numbers
