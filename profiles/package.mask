@@ -466,13 +466,6 @@ dev-tex/biblatex-apa
 # Removal in 30 days
 dev-tex/detex
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-09-12)
-# Has been a part of a cstex macro for a long time.
-# The cste xmacro is provided by the
-# dev-texlive/texlive-langczechslovak package.
-# Removal in 30 days
-dev-tex/csindex
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
