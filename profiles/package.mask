@@ -483,11 +483,6 @@ dev-tex/dvipost
 # Former dependency of app-admin/supervisor.
 dev-python/meld3
 
-# Zac Medico <zmedico@gentoo.org> (2020-09-11)
-# Upstream is inactive and does not support OpenSSL 1.1.
-# Removal in 30 days. Bug #741614.
-net-vpn/peervpn
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
