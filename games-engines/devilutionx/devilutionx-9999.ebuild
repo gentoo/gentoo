@@ -29,7 +29,6 @@ IUSE="debug lto"
 
 RDEPEND="
 	dev-libs/libsodium
-	media-fonts/sil-charis
 	media-libs/libsdl2[haptic]
 	media-libs/sdl2-mixer
 	media-libs/sdl2-ttf
@@ -39,34 +38,18 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	sed "/PROJECT_VERSION/s|@PROJECT_VERSION@|${PV}|" \
-		-i SourceS/config.h.in || die
-	sed 's/CharisSILB.ttf/CharisSIL-B.ttf/g' \
-		-i SourceX/DiabloUI/fonts.h || die
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DASAN="OFF"
 		-DDEBUG="$(usex debug)"
+		-DDISABLE_LTO="$(usex !lto)"
 		-DDIST="ON"
-		-DFASTER="OFF"
-		-DLTO="$(usex lto)"
 		-DUBSAN="OFF"
 	)
 	cmake_src_configure
-}
 
-src_install() {
-	dobin "${BUILD_DIR}/${PN}"
-
-	local size
-	for size in 32 48 ; do
-		newicon -s ${size} Packaging/resources/Diablo_${size}.png ${PN}.png
-	done
-	make_desktop_entry ${PN} "Diablo devolved" "/usr/share/icons/hicolor/48x48/apps/devilutionx.png"
+	# Build system still doesn't reliably set release version in the build
+	sed "/PROJECT_VERSION/s@-@${PV}@" -i "${BUILD_DIR}/config.h" || die
 }
 
 pkg_postinst() {
