@@ -24,7 +24,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/pyshp[${PYTHON_USEDEP}]
-	sci-libs/Shapely[${PYTHON_USEDEP}]
+	sci-libs/shapely[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]

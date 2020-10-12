@@ -24,7 +24,7 @@ BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		sci-libs/Shapely[${PYTHON_USEDEP}]
+		sci-libs/shapely[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=( "${FILESDIR}"/${P}-conftest.patch )
