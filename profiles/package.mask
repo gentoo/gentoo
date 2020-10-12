@@ -478,11 +478,6 @@ dev-tex/csindex
 # Removal in 30 days
 dev-tex/dvipost
 
-# Louis Sautier <sbraz@gentoo.org> (2020-09-12)
-# Masked for removal in 30 days, unmaintained, no revdeps.
-# Former dependency of app-admin/supervisor.
-dev-python/meld3
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
