@@ -12,8 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE UML Modeller"
-HOMEPAGE="https://kde.org/applications/development/org.kde.umbrello
-https://umbrello.kde.org"
+HOMEPAGE="https://kde.org/applications/en/umbrello https://umbrello.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -26,7 +25,6 @@ RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwebkit-5.212.0_pre20180120:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
@@ -35,6 +33,7 @@ RDEPEND="
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kcrash-${KFMIN}:5
+	>=kde-frameworks/kdelibs4support-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
@@ -49,9 +48,9 @@ RDEPEND="
 		dev-util/kdevelop-pg-qt
 	)
 "
-DEPEND="${RDEPEND}
-	>=kde-frameworks/kdelibs4support-${KFMIN}:5
-"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-20.08.3-{no,unused}-qtwebkit.patch )
 
 src_configure() {
 	local mycmakeargs=(
