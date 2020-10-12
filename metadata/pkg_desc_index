@@ -3668,13 +3668,13 @@ dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapt
 dev-embedded/xa 2.3.10: High-speed, two-pass portable 6502 cross-assembler
 dev-embedded/zmac 1.3-r1: Z80 macro cross-assembler
 dev-erlang/base64url 1.0.1: URL safe base64-compatible codec
-dev-erlang/cache_tab 1.0.7 1.0.20 1.0.22 1.0.23: In-memory cache Erlang and Elixir library
-dev-erlang/eimp 1.0.9 1.0.12 1.0.14 1.0.15: Erlang Image Manipulation Process
+dev-erlang/cache_tab 1.0.23 1.0.25: In-memory cache Erlang and Elixir library
+dev-erlang/eimp 1.0.15 1.0.17: Erlang Image Manipulation Process
 dev-erlang/epam 1.0.2 1.0.6 1.0.7 1.0.8: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32 1.0.34: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.26 1.1.2 1.1.4 1.1.5 1.1.6: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_tls 1.1.6 1.1.8: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.22 1.1.34 1.1.37 1.1.39 1.1.40 1.1.41: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.9 1.0.20 1.0.21 1.0.24 1.0.25: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.9 0.2.0: Small Erlang app that provides fast event stream processing
@@ -3691,7 +3691,7 @@ dev-erlang/p1_acme 1.0.5: ACME client library for Erlang
 dev-erlang/p1_mysql 1.0.2 1.0.11 1.0.14 1.0.15: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1 0.6.5 0.6.6: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8 1.1.9: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.13 1.0.16 1.0.18 1.0.19: Erlang utility modules from ProcessOne
+dev-erlang/p1_utils 1.0.19 1.0.20: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/pkix 1.0.3 1.0.4 1.0.5: PKIX certificates management library for Erlang
 dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for Erlang
