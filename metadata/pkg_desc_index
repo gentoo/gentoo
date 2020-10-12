@@ -765,7 +765,6 @@ app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
 app-arch/unace 2.5-r5: ACE unarchiver
 app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
-app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
 app-arch/unrar 5.9.4: Uncompress rar files
