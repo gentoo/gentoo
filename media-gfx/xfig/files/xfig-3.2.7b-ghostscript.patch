@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 7426253..ae5b045 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -1356,7 +1356,7 @@ splash.xpm: $(top_srcdir)/splash-image/spl_bckgnd.fig.in \
+ 	fig2dev -L xpm $(top_srcdir)/splash-image/spl_bckgnd.fig \
+ 	| sed '2 {s/static //; s/noname/spl_bckgnd_xpm/}' > $@
+ 
+-splash.xbm: $(top_srcdir)/splash-image/spl_bckgnd.fig $(top_srcdir)/version.m4
++splash.xbm: $(top_srcdir)/splash-image/spl_bckgnd.fig.in $(top_srcdir)/version.m4
+ 	fig2dev -L xbm -S 4 $(top_srcdir)/splash-image/spl_bckgnd.fig \
+ 	| sed '1,3 s/noname/spl_bckgnd/; 3 s/char/unsigned &/' > $@
+ 
