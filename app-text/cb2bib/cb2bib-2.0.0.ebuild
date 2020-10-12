@@ -12,9 +12,7 @@ SRC_URI="https://www.molspaces.com/dl/progs/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+lzo webengine +webkit"
-
-REQUIRED_USE="?? ( webkit webengine )"
+IUSE="+lzo webkit"
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -22,7 +20,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	lzo? ( dev-libs/lzo:2 )
-	webengine? ( dev-qt/qtwebengine:5[widgets] )
+	!webkit? ( dev-qt/qtwebengine:5[widgets] )
 	webkit? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="${DEPEND}"
@@ -32,10 +30,14 @@ DOCS=( AUTHORS CHANGELOG COPYRIGHT )
 src_prepare() {
 	default
 
-	sed -i -e "s|../AUTHORS ../COPYRIGHT ../LICENSE ../CHANGELOG||" src/src.pro || die
+	sed -e "s|../AUTHORS ../COPYRIGHT ../LICENSE ../CHANGELOG||" \
+		-i src/src.pro || die
 
-	use webengine || sed -i -e "s/qtHaveModule(webenginewidgets)/false/g" src/src.pro || die
-	use webkit || sed -i -e "s/qtHaveModule(webkitwidgets)/false/g" src/src.pro || die
+	if use webkit; then
+		sed -i -e "s/qtHaveModule(webenginewidgets)/false/g" src/src.pro || die
+	else
+		sed -i -e "s/qtHaveModule(webkitwidgets)/false/g" src/src.pro || die
+	fi
 }
 
 src_configure() {
