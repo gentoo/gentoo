@@ -9,6 +9,6 @@ SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="!app-doc/edox-data"
