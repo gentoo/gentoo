@@ -63,10 +63,12 @@ python_configure() {
 }
 
 python_test() {
-	local -x PYTHONPATH=
+	local -x PYTHONPATH=${BUILD_DIR}/install/lib
 	local -x SDL_VIDEODRIVER=dummy
 	local -x SDL_AUDIODRIVER=disk
-	distutils_install_for_testing
+	esetup.py install \
+		--root="${BUILD_DIR}"/install \
+		--install-lib=lib
 	script -eqc "${EPYTHON} -m pygame.tests" || die
 }
 
