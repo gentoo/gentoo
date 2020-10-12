@@ -10,13 +10,13 @@ DESCRIPTION="A public API for QZip in an easy to use module"
 HOMEPAGE="https://github.com/nezticle/qtcompress"
 MY_COMMIT="23f8831826cd72aedf99fc3699148b6c994fd677"
 SRC_URI="https://github.com/nezticle/qtcompress/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/qtcompress-${MY_COMMIT}"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 ) FDL-1.3"
 SLOT="0/5.11.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
-S="${WORKDIR}/qtcompress-${MY_COMMIT}"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -33,6 +33,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-remove-zlib.patch"
 	"${FILESDIR}/${P}-test-include.patch"
+	"${FILESDIR}/${P}-nogui.patch"
 )
 
 src_prepare() {

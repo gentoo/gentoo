@@ -6,40 +6,40 @@ EAPI=7
 inherit autotools xdg multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
+	EGIT_REPO_URI="https://github.com/strukturag/libheif.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/strukturag/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm64 x86"
+	SRC_URI="https://github.com/strukturag/libheif/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
-SLOT="0/1.5"
-IUSE="static-libs test +threads"
+SLOT="0/1.9"
+IUSE="gdk-pixbuf go static-libs test +threads"
+REQUIRED_USE="test? ( go )"
+
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
 DEPEND="
+	>=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}]
 	media-libs/libde265:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
+	go? ( dev-lang/go )
 "
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
 
-	# heif_test.go is not included in the tarball
-	# https://github.com/strukturag/libheif/issues/289
-	cp "${FILESDIR}/heif_test.go" "${S}/go/heif" || die
-
-	sed -i -e 's:-Werror::' \
-		configure.ac || die
+	sed -i -e 's:-Werror::' configure.ac || die
 
 	eautoreconf
 
@@ -48,11 +48,13 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		$(use_enable threads multithreading)
+	local econf_args=(
+		$(multilib_is_native_abi && use go || echo --disable-go)
+		$(use_enable gdk-pixbuf)
 		$(use_enable static-libs static)
+		$(use_enable threads multithreading)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
 }
 
 multilib_src_test() {
@@ -62,7 +64,4 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name "*.a" -delete || die
-	fi
 }
