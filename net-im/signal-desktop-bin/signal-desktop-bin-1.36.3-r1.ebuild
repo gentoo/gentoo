@@ -27,7 +27,10 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/mesa[X(+)]
-	media-sound/pulseaudio
+	|| (
+		media-sound/pulseaudio
+		media-sound/apulse[sdk]
+	)
 	net-print/cups
 	sys-apps/dbus[X]
 	x11-libs/cairo
