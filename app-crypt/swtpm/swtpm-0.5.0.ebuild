@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit autotools distutils-r1
 
@@ -23,19 +22,19 @@ COMMON_DEPEND="
 	fuse? (
 		dev-libs/glib:2
 		sys-fs/fuse:0
-	      )
+	)
 	gnutls? (
-		   dev-libs/libtasn1:=
-		   >=net-libs/gnutls-3.1.0[tools]
+		dev-libs/libtasn1:=
+		>=net-libs/gnutls-3.1.0[tools]
 		)
 	!libressl? (
-		 dev-libs/openssl:0=
-		 dev-libs/libtpms[-libressl]
-		   )
+		dev-libs/openssl:0=
+		dev-libs/libtpms[-libressl]
+	)
 	libressl? (
-		    dev-libs/libressl:0=
-		    dev-libs/libtpms[libressl]
-		  )
+		dev-libs/libressl:0=
+		dev-libs/libtpms[libressl]
+	)
 	seccomp? ( sys-libs/libseccomp )
 "
 
@@ -44,7 +43,7 @@ DEPEND="${COMMON_DEPEND}
 		net-misc/socat
 		dev-tcltk/expect
 		${PYTHON_DEPS}
-	      )
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -56,7 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-0.5.0-fix-localca-path.patch"
 	"${FILESDIR}/${PN}-0.5.0-build-sys-Remove-WError.patch"
-	)
+)
 
 src_prepare() {
 	use test || eapply "${FILESDIR}/${PN}-0.5.0-disable-test-dependencies.patch"
@@ -67,12 +66,12 @@ src_prepare() {
 
 src_configure() {
 	econf \
-	  --disable-static \
-	  --with-openssl \
-	  --without-selinux \
-	  $(use_with fuse cuse) \
-	  $(use_with gnutls) \
-	  $(use_with seccomp)
+		--disable-static \
+		--with-openssl \
+		--without-selinux \
+		$(use_with fuse cuse) \
+		$(use_with gnutls) \
+		$(use_with seccomp)
 }
 
 src_compile() {
