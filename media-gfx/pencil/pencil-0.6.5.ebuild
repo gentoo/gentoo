@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${P/_/-}"
+PATCHES="${FILESDIR}/${P}-skip-building-tests.patch"
 
 src_prepare() {
 	default
@@ -38,7 +39,7 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 PREFIX=/usr
+	eqmake5 PREFIX=/usr $(usex test "" "CONFIG+=NO_TESTS")
 }
 
 src_install() {

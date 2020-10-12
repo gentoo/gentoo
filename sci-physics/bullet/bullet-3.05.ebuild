@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bulletphysics/bullet3/archive/${PV}.tar.gz -> ${P}.t
 LICENSE="ZLIB"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples openmp tbb test threads"
+IUSE="doc double-precision examples openmp tbb test threads"
 
 REQUIRED_USE="
 	openmp? ( threads )
@@ -60,7 +60,7 @@ src_configure() {
 		-DINSTALL_LIBS=ON
 		-DBUILD_BULLET3=ON
 		-DBUILD_EXTRAS=OFF
-		-DUSE_DOUBLE_PRECISION=ON
+		-DUSE_DOUBLE_PRECISION=$(usex double-precision)
 		-DBUILD_UNIT_TESTS=$(usex test)
 		-DBULLET2_MULTITHREADING=$(usex threads)
 		-DBULLET2_USE_OPEN_MP_MULTITHREADING=$(usex openmp)
