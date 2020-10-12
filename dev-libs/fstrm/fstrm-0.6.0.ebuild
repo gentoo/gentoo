@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="Frame Streams implementation in C"
@@ -31,5 +32,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	default
-	find "${ED}" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
 }
