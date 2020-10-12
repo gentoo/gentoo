@@ -50,7 +50,10 @@ DEPEND="
 # METIS-5
 # GOOGLEHASH
 
-PATCHES=( "${FILESDIR}"/${PN}-3.3.7-gentoo-cmake.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3.7-gentoo-cmake.patch
+	"${FILESDIR}"/${P}-no-error-counting-in-openmp-parallelize_gemm.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
