@@ -138,8 +138,9 @@ RDEPEND="
 	vtk? ( sci-libs/vtk[rendering] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	xine? ( media-libs/xine-lib )"
+# bug #747949 for eigen restriction
 DEPEND="${RDEPEND}
-	eigen? ( dev-cpp/eigen:3 )
+	eigen? ( <dev-cpp/eigen-3.3.8:3 )
 	java? ( >=virtual/jdk-1.6 )"
 BDEPEND="virtual/pkgconfig"
 
