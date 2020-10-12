@@ -430,11 +430,6 @@ sys-fs/ufsutils
 # #742158.
 net-nntp/sn
 
-# James Le Cuirot <chewi@gentoo.org> (2020-09-13)
-# License issues. app-arch/arj is a better alternative. Removal in 30
-# days. See bug #694746.
-app-arch/unarj
-
 # Jonas Stein <jstein@gentoo.org> (2020-09-13)
 # mpv bash completion is no longer needed and the package is not
 # compatible with the remaining packages.
