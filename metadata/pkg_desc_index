@@ -617,7 +617,7 @@ app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.27 2.28 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
 app-admin/pprocm 1.0-r2: ncurses-based program to monitor CPU, disk, network and memory usage
-app-admin/prelude-manager 3.0.0 4.0.0 4.1.1 5.1.0: Bus communication for all Prelude modules
+app-admin/prelude-manager 3.0.0 4.0.0 4.1.1 5.1.0 5.2.0: Bus communication for all Prelude modules
 app-admin/procinfo-ng 2.0.304-r1: Completely rewrite of the old system monitoring app procinfo
 app-admin/profile-cleaner 2.36: Vacuum and reindex browser sqlite databases
 app-admin/ps_mem 3.13-r1 3.13_p20200417: A utility to report core memory usage per program
@@ -5482,8 +5482,8 @@ dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 7.1.2: Standard front-end for writing C++ programs that use PostgreSQL
-dev-libs/libprelude 4.0.0 4.1.0 5.1.1: Prelude-SIEM Framework Library
-dev-libs/libpreludedb 4.0.0-r1 4.1.0-r1 5.1.0: Framework to easy access to the Prelude database
+dev-libs/libprelude 4.0.0 4.1.0 5.1.1 5.2.0: Prelude-SIEM Framework Library
+dev-libs/libpreludedb 4.0.0-r1 4.1.0-r1 5.1.0 5.2.0: Framework to easy access to the Prelude database
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.2: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.5.0: Qt Implementation of XDG Standards
@@ -5819,7 +5819,7 @@ dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5 2.18.8-r1 2.18.10: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2 8.06.7: OCaml interface to the Tcl/Tk GUI framework
-dev-ml/llvm-ocaml 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: OCaml bindings for LLVM
+dev-ml/llvm-ocaml 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
 dev-ml/lwt 3.0.0 3.1.0: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
@@ -7986,7 +7986,7 @@ dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framewo
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2-r1: A library for wrapping and filling UTF-8 CJK text
-dev-python/clang-python 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Python bindings for sys-devel/clang
+dev-python/clang-python 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 2.1.0 9999: Python helpers for common CLI tasks
 dev-python/cliapp 1.20180812.1: Framework for Unix-like command line programs
 dev-python/click 6.7-r2 7.1.2-r1: A Python package for creating beautiful command line interfaces
@@ -8379,7 +8379,7 @@ dev-python/libtmux 0.8.2-r2 0.8.3: python api for tmux
 dev-python/libvirt-python 6.7.0 6.8.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
-dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
+dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.33.0 0.34.0: Python wrapper around the llvm C++ library
@@ -8597,7 +8597,7 @@ dev-python/pikepdf 1.18.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.2.0: Python Imaging Library (fork)
 dev-python/pip 20.2.2-r1 20.2.3-r1: Installs python packages -- replacement for easy_install
-dev-python/pipenv 2020.6.2: Python Development Workflow for Humans
+dev-python/pipenv 2020.6.2 2020.8.13: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1-r1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -10633,7 +10633,7 @@ dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 3.8 4.0: Unit testing and mocking framework for C/C++
-dev-util/cproto 4.7o: Generate C function prototypes from C source code
+dev-util/cproto 4.7o 4.7q: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.8-r1: Red Hat crash utility; used for analyzing kernel core dumps
@@ -10765,7 +10765,7 @@ dev-util/lcov 1.13-r2 1.14 1.14_p2 1.15 9999: A graphical front-end for GCC's co
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/libabigail 1.6: Suite of tools for checking ABI differences between ELF objects
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lldb 9.0.1-r1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: The LLVM debugger
+dev-util/lldb 9.0.1-r1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.3_p4-r1: trace library calls made at runtime
@@ -10970,7 +10970,7 @@ dev-vcs/svneverever 1.3.2 1.4.2 1.5.0: Tool collecting path entries across SVN h
 dev-vcs/tig 2.5.1 9999: text mode interface for git
 dev-vcs/tkcvs 9.3.2: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1 0.19.12: A different patch queue manager
-dev-vcs/tortoisehg 5.5.1 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 5.5.1 5.5.2 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.9_p20181213-r1: Port of Abuse by Crack Dot Com
@@ -14365,9 +14365,9 @@ net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0 2.0-r1: Portmon is a network service monitoring daemon
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
-net-analyzer/prelude-correlator 4.0.0 4.1.1 5.1.0: Real time correlator of events received by Prelude Manager
-net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0: The prelude log analyzer
-net-analyzer/prelude-lml-rules 3.0.1 4.0.0 4.1.0 5.1.0: Prelude LML community ruleset
+net-analyzer/prelude-correlator 4.0.0 4.1.1 5.1.0 5.2.0: Real time correlator of events received by Prelude Manager
+net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0 5.2.0: The prelude log analyzer
+net-analyzer/prelude-lml-rules 3.0.1 4.0.0 4.1.0 5.1.0 5.2.0: Prelude LML community ruleset
 net-analyzer/prettyping 1.0.1: Ping wrapper that produces coloured, easily readable output.
 net-analyzer/pypacker 2.9 4.6 4.7 4.8 4.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/python-gvm 1.1.0 1.2.0 1.5.0 1.6.0: Greenbone Vulnerability Management Python Library
@@ -17301,9 +17301,9 @@ sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1: Tools necessary to buil
 sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.2: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
-sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
-sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
-sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
+sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
+sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
+sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20200801 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17321,9 +17321,9 @@ sys-devel/gnuconfig 20190912 20200621 99999999: Updated config.sub and config.gu
 sys-devel/icecream 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 6.4.0 6.5.0 7.3.0 7.5.0 8.3.0 8.4.0 9.3.0-r1 9.3.0-r2 10.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
-sys-devel/lld 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
-sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
-sys-devel/llvm-common 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
+sys-devel/lld 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
+sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
+sys-devel/llvm-common 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
 sys-devel/llvm-roc 3.7.0-r1 3.8.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
@@ -17555,8 +17555,8 @@ sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
-sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
-sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
+sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
+sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
@@ -17580,8 +17580,8 @@ sys-libs/libblockdev 2.24 9999: A library for manipulating block devices
 sys-libs/libcap 2.43 2.44: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.10 0.7.11 0.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
-sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
-sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
+sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
 sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system functions
@@ -17589,7 +17589,7 @@ sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r3 1.0.3-r4: Light-weight 'standard library' of C functions
-sys-libs/libomp 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
+sys-libs/libomp 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.6.0 1.8.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2 2.0.2-r1: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
@@ -17609,7 +17609,7 @@ sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged ap
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds
 sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt, bcrypt, and others
-sys-libs/llvm-libunwind 9.0.1 10.0.0 10.0.1 11.0.0_rc3 11.0.0_rc4 11.0.0_rc6 11.0.0.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 9999: Light, fast and simple C library focused on standards-conformance and safety
@@ -17999,7 +17999,7 @@ www-apps/phpBB 3.3.1: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
 www-apps/postfixadmin 3.2.3 3.2.4: Web Based Management tool for Postfix style virtual domains and users
-www-apps/prewikka 5.1.1: Graphical front-end analysis console for the Prelude Framework
+www-apps/prewikka 5.1.1 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML

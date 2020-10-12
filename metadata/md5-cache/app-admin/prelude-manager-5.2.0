@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=net-libs/gnutls:= >=dev-libs/libprelude-5.2.0 <dev-libs/libprelude-6 dbx? ( >=dev-libs/libpreludedb-5.2.0 <dev-libs/libpreludedb-6 ) geoip? ( dev-libs/libmaxminddb ) snmp? ( net-analyzer/net-snmp ) tcpwrapper? ( sys-apps/tcp-wrappers ) xml? ( dev-libs/libxml2 )
+DESCRIPTION=Bus communication for all Prelude modules
+EAPI=7
+HOMEPAGE=https://www.prelude-siem.org
+IUSE=dbx geoip snmp tcpwrapper xml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=net-libs/gnutls:= >=dev-libs/libprelude-5.2.0 <dev-libs/libprelude-6 dbx? ( >=dev-libs/libpreludedb-5.2.0 <dev-libs/libpreludedb-6 ) geoip? ( dev-libs/libmaxminddb ) snmp? ( net-analyzer/net-snmp ) tcpwrapper? ( sys-apps/tcp-wrappers ) xml? ( dev-libs/libxml2 ) virtual/tmpfiles
+SLOT=0
+SRC_URI=https://www.prelude-siem.org/pkg/src/5.2.0/prelude-manager-5.2.0.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=00f3fcf5dca8e5e44c68e0b30c65b0d2
