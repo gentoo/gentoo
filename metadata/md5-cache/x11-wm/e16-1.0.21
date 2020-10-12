@@ -5,10 +5,10 @@ DESCRIPTION=Enlightenment Window Manager (E16)
 EAPI=7
 HOMEPAGE=https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/
 IUSE=audiofile container dbus debug +dialogs doc examples gnome libhack modules nls opengl +pango sndfile sound +themes xcomposite +xft xi2 xinerama xpresent +xrandr +xrender +xsm +xsync zoom
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=BSD
 RDEPEND=media-libs/freetype:2 media-libs/imlib2[X] virtual/libiconv x11-libs/libX11 x11-libs/libXext x11-misc/xbitmaps dbus? ( sys-apps/dbus ) opengl? ( media-libs/glu media-libs/mesa ) pango? ( dev-libs/glib:2 x11-libs/pango[X] ) sound? ( || ( media-sound/apulse[sdk] media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) audiofile? ( media-libs/audiofile:= ) ) xcomposite? ( x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXfixes ) xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpresent? ( x11-libs/libXpresent ) xrandr? ( x11-libs/libXrandr ) xrender? ( x11-libs/libXrender ) xsm? ( x11-libs/libICE x11-libs/libSM ) zoom? ( x11-libs/libXxf86vm ) doc? ( app-doc/e16-docs ) nls? ( virtual/libintl ) themes? ( x11-themes/e16-themes ) !x11-wm/enlightenment:0
 REQUIRED_USE=audiofile? ( sound ) opengl? ( xcomposite ) pango? ( xft ) sndfile? ( sound ) sound? ( ^^ ( sndfile audiofile ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/enlightenment/e16-1.0.21.tar.xz
-_md5_=2df925ebd114c996c84f2bc96e613f9a
+_md5_=6fb472aa5927479a58f5a6a71bdf335d
