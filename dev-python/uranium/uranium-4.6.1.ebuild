@@ -36,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},declarative,network,svg]
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/scipy-1.1[${PYTHON_MULTI_USEDEP}]
-		sci-libs/Shapely[${PYTHON_MULTI_USEDEP}]
+		sci-libs/shapely[${PYTHON_MULTI_USEDEP}]
 	')"
 
 RDEPEND="${DEPEND}
