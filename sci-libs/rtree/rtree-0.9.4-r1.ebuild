@@ -26,3 +26,7 @@ RDEPEND="sci-libs/libspatialindex"
 distutils_enable_sphinx docs/source
 
 distutils_enable_tests pytest
+
+DEPEND+="
+	test? ( dev-python/numpy[${PYTHON_USEDEP}] )
+"

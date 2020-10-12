@@ -32,7 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 			dev-python/PyQt5[${PYTHON_MULTI_USEDEP}]
 			dev-python/requests[${PYTHON_MULTI_USEDEP}]
 			dev-python/sentry-sdk[${PYTHON_MULTI_USEDEP}]
-			sci-libs/Shapely[${PYTHON_MULTI_USEDEP}]
+			sci-libs/shapely[${PYTHON_MULTI_USEDEP}]
 			usb? ( dev-python/pyserial[${PYTHON_MULTI_USEDEP}] )
 			zeroconf? ( dev-python/zeroconf[${PYTHON_MULTI_USEDEP}] )
 	')"
