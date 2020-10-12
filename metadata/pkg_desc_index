@@ -3672,7 +3672,7 @@ dev-erlang/cache_tab 1.0.23 1.0.25: In-memory cache Erlang and Elixir library
 dev-erlang/eimp 1.0.15 1.0.17: Erlang Image Manipulation Process
 dev-erlang/epam 1.0.2 1.0.6 1.0.7 1.0.8: epam for ejabberd to help with PAM authentication support
 dev-erlang/eredis 1.0.8: Erlang Redis client
-dev-erlang/esip 1.0.11 1.0.26 1.0.30 1.0.32 1.0.34: ProcessOne SIP server component
+dev-erlang/esip 1.0.34: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.2 1.0.6 1.0.7: Native zlib driver for Erlang and Elixir
 dev-erlang/fast_tls 1.1.6 1.1.8: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.41 1.1.43: Fast Expat based Erlang XML parsing library
@@ -3699,8 +3699,8 @@ dev-erlang/protobuffs 0.9.0: Google's Protocol Buffers for Erlang
 dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
 dev-erlang/riakc 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5 1.1.6 1.1.7: SQLite gen_server port for Erlang
-dev-erlang/stringprep 1.0.8 1.0.17 1.0.19 1.0.20: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.10 1.0.25 1.0.29 1.0.31 1.0.32 1.0.33: STUN and TURN library for Erlang and Elixir
+dev-erlang/stringprep 1.0.20: Fast Stringprep implementation for Erlang and Elixir
+dev-erlang/stun 1.0.33: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.1.9 1.2.5 1.4.2-r1 1.4.5 1.4.6 1.4.7: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X

@@ -3987,6 +3987,7 @@ media-gfx/darktable:geolocation - Enable geotagging support
 media-gfx/darktable:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
 media-gfx/darktable:lto - Enable link-time optimisations in the RawSpeed library
 media-gfx/darktable:opencl - Enable opencl support
+media-gfx/darktable:system-lua - Use dev-lang/lua instead of the bundled liblua
 media-gfx/darktable:tools - Install tools for generating base curves and noise profiles
 media-gfx/digikam:addressbook - Enable akonadi contact integration
 media-gfx/digikam:dnn - Build neural network faces engine module
