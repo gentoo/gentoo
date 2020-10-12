@@ -1,0 +1,87 @@
+From 7d29def405738451a40ffa9b81371b9bc7a97cc3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 13 Oct 2020 01:04:44 +0200
+Subject: [PATCH 1/2] Add option INSTALL_PAM_EXAMPLES to conditionally install
+ pam.d config
+
+---
+ CMakeLists.txt          | 1 +
+ services/CMakeLists.txt | 8 +++++---
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0bb18bf..8a53675 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,6 +31,7 @@ add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
+ option(BUILD_MAN_PAGES "Build man pages" OFF)
+ option(ENABLE_JOURNALD "Enable logging to journald" ON)
+ option(ENABLE_PAM "Enable PAM support" ON)
++option(INSTALL_PAM_EXAMPLES "Install PAM configuration examples" ON)
+ option(NO_SYSTEMD "Disable systemd support" OFF)
+ option(USE_ELOGIND "Use elogind instead of logind" OFF)
+ 
+diff --git a/services/CMakeLists.txt b/services/CMakeLists.txt
+index fbf7608..58adbc9 100644
+--- a/services/CMakeLists.txt
++++ b/services/CMakeLists.txt
+@@ -10,6 +10,8 @@ else()
+ endif()
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/sddm-greeter.pam.in" "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam")
+ 
+-install(FILES sddm.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm)
+-install(FILES sddm-autologin.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-autologin)
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam" DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-greeter)
++if(INSTALL_PAM_EXAMPLES)
++    install(FILES sddm.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm)
++    install(FILES sddm-autologin.pam DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-autologin)
++    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam" DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/pam.d RENAME sddm-greeter)
++endif()
+-- 
+2.28.0
+
+
+From 0127890925cb7a25ce4fda202ae93cea5d92826a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 13 Oct 2020 01:10:00 +0200
+Subject: [PATCH 2/2] Don't add pam_systemd.so to pam.d/sddm-greeter in case of
+ NO_SYSTEMD
+
+---
+ services/CMakeLists.txt      | 7 +++++--
+ services/sddm-greeter.pam.in | 2 +-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/services/CMakeLists.txt b/services/CMakeLists.txt
+index 58adbc9..4e8ec11 100644
+--- a/services/CMakeLists.txt
++++ b/services/CMakeLists.txt
+@@ -3,10 +3,13 @@ if(SYSTEMD_FOUND)
+     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sddm.service" DESTINATION "${SYSTEMD_SYSTEM_UNIT_DIR}")
+ endif()
+ 
++set(LOGIND_PAM_MODULE "session		optional")
+ if(USE_ELOGIND)
+-    set(LOGIND_PAM_MODULE "pam_elogind.so")
++    set(LOGIND_PAM_MODULE "${LOGIND_PAM_MODULE}	pam_elogind.so")
++elseif(NOT NO_SYSTEMD)
++    set(LOGIND_PAM_MODULE "${LOGIND_PAM_MODULE}	pam_systemd.so")
+ else()
+-    set(LOGIND_PAM_MODULE "pam_systemd.so")
++    set(LOGIND_PAM_MODULE "")
+ endif()
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/sddm-greeter.pam.in" "${CMAKE_CURRENT_BINARY_DIR}/sddm-greeter.pam")
+ 
+diff --git a/services/sddm-greeter.pam.in b/services/sddm-greeter.pam.in
+index d41792d..35dcfd5 100644
+--- a/services/sddm-greeter.pam.in
++++ b/services/sddm-greeter.pam.in
+@@ -14,4 +14,4 @@ password	required pam_deny.so
+ 
+ # Setup session
+ session		required pam_unix.so
+-session		optional @LOGIND_PAM_MODULE@
++@LOGIND_PAM_MODULE@
+-- 
+2.28.0
+
