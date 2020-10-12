@@ -1,9 +1,8 @@
-diff -u CMakeLists.txt CMakeLists.txt 
---- a/CMakeLists.txt      2015-09-05 22:40:50.000000000 +0200
-+++ b/CMakeLists.txt      2015-09-07 12:15:33.419530808 +0200
-@@ -35,22 +35,6 @@
+--- a/CMakeLists.txt	2020-10-12 13:03:39.000000000 +0200
++++ b/CMakeLists.txt	2020-10-12 23:40:04.480687143 +0200
+@@ -41,22 +41,6 @@
  # Definitions
- add_definitions(-Wall -std=c++11 -DQT_NO_CAST_FROM_ASCII)
+ add_definitions(-Wall -std=c++11 -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_FOREACH)
  
 -# Default build type
 -if(NOT CMAKE_BUILD_TYPE)
