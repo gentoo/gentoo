@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -17,8 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.7.1[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/jinja-2.7.1[${PYTHON_USEDEP}]
 	dev-python/jinja2_pluralize[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
