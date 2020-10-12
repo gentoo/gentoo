@@ -1,0 +1,12 @@
+diff -Naur makemkv-oss-1.15.3~/configure makemkv-oss-1.15.3/configure
+--- makemkv-oss-1.15.3~/configure	2020-10-01 13:59:27.000000000 +0000
++++ makemkv-oss-1.15.3/configure	2020-10-03 20:49:45.588257151 +0000
+@@ -11726,7 +11726,7 @@
+ ENABLE_DEBUG=$enable_debug
+ 
+ 
+-if test -z $CXXFLAGS; then
++if test -z "$CXXFLAGS"; then
+     CXXFLAGS='-std=c++11'
+ fi
+ 
