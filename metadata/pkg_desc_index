@@ -5318,7 +5318,7 @@ dev-libs/inih 51: inih (INI not invented here) simple .INI file parser
 dev-libs/iniparser 3.1-r2 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
-dev-libs/intel-neo 20.16.16582 20.36.17813 20.37.17906: Intel Graphics Compute Runtime for L0 and OpenCL, for Broadwell and beyond
+dev-libs/intel-neo 20.16.16582 20.37.17906: Intel Graphics Compute Runtime for L0 and OpenCL, for Broadwell and beyond
 dev-libs/isl 0.22.1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.12 2.13.1: C library for encoding, decoding and manipulating JSON data
@@ -5590,7 +5590,7 @@ dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
 dev-libs/ocl-icd 2.2.12-r3: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3 6.2.0: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.4 9999: Regular expression library for different character encodings
-dev-libs/opencl-clang 9.0.1 10.0.0.1 10.0.0.1-r1 10.0.0.2 10.0.0.2-r1: OpenCL-oriented thin wrapper library around clang
+dev-libs/opencl-clang 10.0.0.1-r1 10.0.0.2-r1: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
@@ -10860,7 +10860,7 @@ dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.5-r1: A tool that can give numerous reports on memory usage on Linux systems
 dev-util/source-highlight 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spirv-headers 1.5.3 9999: Machine-readable files for the SPIR-V Registry
-dev-util/spirv-llvm-translator 9.0.1.1 10.0.0 10.0.0_p20200909: Bi-directional translator between SPIR-V and LLVM IR
+dev-util/spirv-llvm-translator 10.0.0 10.0.0_p20200909: Bi-directional translator between SPIR-V and LLVM IR
 dev-util/spirv-tools 2020.3 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
@@ -14662,7 +14662,7 @@ net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 an
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.2.458699.0906 5.3.465578.0920-r1 5.3.469451.0927: Video conferencing and web conferencing service
+net-im/zoom 5.2.458699.0906 5.3.469451.0927 5.3.472687.1012: Video conferencing and web conferencing service
 net-irc/anope 2.0.7: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
