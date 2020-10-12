@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+
+PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -17,7 +19,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/tzlocal-1.2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
