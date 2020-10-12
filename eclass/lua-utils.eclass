@@ -250,6 +250,14 @@ _lua_export() {
 				export LUA_CMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_CMOD_DIR = ${LUA_CMOD_DIR}"
 				;;
+			LUA_INCLUDE_DIR)
+				local val
+
+				val=$($(tc-getPKG_CONFIG) --variable includedir ${impl}) || die
+
+				export LUA_INCLUDE_DIR=${val}
+				debug-print "${FUNCNAME}: LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}"
+				;;
 			LUA_LIBS)
 				local val
 
@@ -333,6 +341,22 @@ lua_get_cmod_dir() {
 
 	_lua_export "${@}" LUA_CMOD_DIR
 	echo "${LUA_CMOD_DIR}"
+}
+
+# @FUNCTION: lua_get_include_dir
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the name of the directory containing header files
+# of the given Lua implementation. If no implementation is provided,
+# ${ELUA} will be used.
+#
+# Please note that this function requires Lua and pkg-config installed,
+# and therefore proper build-time dependencies need be added to the ebuild.
+lua_get_include_dir() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	_lua_export "${@}" LUA_INCLUDE_DIR
+	echo "${LUA_INCLUDE_DIR}"
 }
 
 # @FUNCTION: lua_get_LIBS
