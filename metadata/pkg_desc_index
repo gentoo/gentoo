@@ -11683,7 +11683,7 @@ games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
 games-strategy/endless-sky 0.9.6: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.12 2.6.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
-games-strategy/freeorion 0.4.10.1 9999: A free turn-based space empire and galactic conquest game
+games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r2: Real Time Strategy (RTS) game involving a brave army of globs
