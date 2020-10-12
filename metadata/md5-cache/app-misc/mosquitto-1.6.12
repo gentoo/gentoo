@@ -5,7 +5,7 @@ DESCRIPTION=An Open Source MQTT v3 Broker
 EAPI=7
 HOMEPAGE=https://mosquitto.org/ https://github.com/eclipse/mosquitto
 IUSE=bridge examples libressl +persistence +srv ssl tcpd test websockets
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=~amd64 arm ~arm64 ~x86
 LICENSE=EPL-1.0
 RDEPEND=acct-user/mosquitto acct-group/mosquitto srv? ( net-dns/c-ares:= ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcpd? ( sys-apps/tcp-wrappers )
 REQUIRED_USE=test? ( bridge )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://mosquitto.org/files/source/mosquitto-1.6.12.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e40f47b2d56d1b9e8822370d88a29068
+_md5_=c270874ff96c3dfbf82cc5deade303f4
