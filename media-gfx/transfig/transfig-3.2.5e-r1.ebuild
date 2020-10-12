@@ -86,7 +86,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		${transfig_conf} install install.man
+		INSTDATFLAGS="-m 644" \
+		INSTMANFLAGS="-m 644" \
+		install install.man
 
 	dobin "${WORKDIR}/fig2mpdf/fig2mpdf"
 	doman "${WORKDIR}/fig2mpdf/fig2mpdf.1"
