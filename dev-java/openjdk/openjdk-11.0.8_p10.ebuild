@@ -72,13 +72,6 @@ REQUIRED_USE="javafx? ( alsa !headless-awt )"
 
 S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
-PATCHES=(
-        "${FILESDIR}/patches/${PN}-${SLOT}/build.patch"
-        "${FILESDIR}/patches/${PN}-${SLOT}/fix-bootjdk-check.patch"
-        "${FILESDIR}/patches/${PN}-${SLOT}/ppc64le.patch"
-        "${FILESDIR}/patches/${PN}-${SLOT}/aarch64.patch"
-)
-
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
@@ -139,12 +132,21 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# conditionally apply patches for musl compatibility
+	if use elibc_musl; then
+		eapply "${FILESDIR}/musl/${SLOT}/build.patch"
+		eapply "${FILESDIR}/musl/${SLOT}/fix-bootjdk-check.patch"
+		eapply "${FILESDIR}/musl/${SLOT}/ppc64le.patch"
+		eapply "${FILESDIR}/musl/${SLOT}/aarch64.patch"
+	fi
 
-	# remove not compilable module (hotspot jdk.hotspot.agent)
+	# conditionally remove not compilable module (hotspot jdk.hotspot.agent)
 	# this needs libthread_db which is only provided by glibc
 	#
 	# haven't found any way to disable this module so just remove it.
-        rm -rf "${S}"/src/jdk.hotspot.agent
+	if use elibc_musl; then
+		rm -rf "${S}"/src/jdk.hotspot.agent || die "failed to remove HotSpot agent"
+	fi
 
 	chmod +x configure || die
 }
