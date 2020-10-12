@@ -30,6 +30,10 @@ DEPEND="${COMMON}
 	media-libs/mesa"	# for Khronos OpenGL headers
 RDEPEND="${COMMON}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.37.17906-no_Werror.patch
+)
+
 DOCS=(
 	README.md
 	FAQ.md
