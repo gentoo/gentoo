@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic toolchain-funcs xdg
+LUA_COMPAT=( lua5-3 )
+
+inherit cmake flag-o-matic lua-single toolchain-funcs xdg
 
 DOC_PV="3.0.0"
 MY_PV="${PV/_/}"
@@ -19,8 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 LANGS=" de es fr he it pl pt-BR ru sl"
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-	lto lua nls opencl openmp openexr tools webp
+	lto lua nls opencl openmp openexr system-lua tools webp
 	${LANGS// / l10n_}"
+
+REQUIRED_USE="system-lua? ( lua ${LUA_REQUIRED_USE} )"
 
 BDEPEND="
 	dev-util/intltool
@@ -55,6 +59,7 @@ COMMON_DEPEND="
 	jpeg2k? ( media-libs/openjpeg:2= )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:0= )
+	system-lua? ( ${LUA_DEPS} )
 	webp? ( media-libs/libwebp:0= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -98,13 +103,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# TODO: switch to system Lua once 5.3 has been unmasked
 	local mycmakeargs=(
-		-DDONT_USE_INTERNAL_LUA=OFF
 		-DBUILD_CURVE_TOOLS=$(usex tools)
 		-DBUILD_NOISE_TOOLS=$(usex tools)
 		-DBUILD_PRINT=$(usex cups)
 		-DCUSTOM_CFLAGS=ON
+		-DDONT_USE_INTERNAL_LUA=$(usex system-lua)
 		-DRAWSPEED_ENABLE_LTO=$(usex lto)
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)

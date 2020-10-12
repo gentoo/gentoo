@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Marek Szuba <marecki@gentoo.org> (2020-10-12)
+# Requires slotted Lua, which is still masked.
+media-gfx/darktable system-lua
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
 # Broken
 # error: unresolved link to `crate::os::unix::ffi::OsStrExt`
