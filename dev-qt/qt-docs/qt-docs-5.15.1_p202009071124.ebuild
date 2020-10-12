@@ -53,7 +53,7 @@ HOMEPAGE="https://doc.qt.io/"
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
 
 IUSE="charts datavis +html networkauth +qch script timeline virtualkeyboard webengine"
 REQUIRED_USE="|| ( html qch )"
