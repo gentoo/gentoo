@@ -456,11 +456,6 @@ net-dialup/tkvoice
 # Removal in 30 days
 dev-tex/chktex
 
-# Sam James <sam@gentoo.org> (2020-09-12)
-# Merged into dev-texlive/texlive-bibtexextra
-# Removal in 30 days
-dev-tex/biblatex-apa
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
