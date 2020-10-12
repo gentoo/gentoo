@@ -1025,7 +1025,7 @@ app-crypt/rhash 1.3.6-r1 1.4.0: Console utility and library for computing and ve
 app-crypt/rotix 0.83-r1: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntools 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scdrand 0.3.5: Feed kernel entropy pool from smartcard's TRNG
-app-crypt/scrypt 1.3.0 1.3.1: A simple password-based encryption utility using scrypt key derivation function
+app-crypt/scrypt 1.3.1: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.5.0 1.6.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.34.1 3.36.2: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
@@ -1038,7 +1038,7 @@ app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hash
 app-crypt/ssss 0.5-r1: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
-app-crypt/swtpm 0.3.2: Libtpms-based TPM emulator
+app-crypt/swtpm 0.5.0: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
@@ -5281,7 +5281,7 @@ dev-libs/folks 0.13.1 0.14.0: Library for aggregating people from multiple sourc
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
 dev-libs/freexl 1.0.5: Simple XLS data extraction library
 dev-libs/fribidi 1.0.9: A free implementation of the unicode bidirectional algorithm
-dev-libs/fstrm 0.3.0: Frame Streams implementation in C
+dev-libs/fstrm 0.3.0 0.6.0: Frame Streams implementation in C
 dev-libs/gdl 3.28.0 3.34.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0 2.0.0-r1: A Comprehensive Open Source Library for Galois Field Arithmetic
@@ -10605,7 +10605,7 @@ dev-util/ccache 3.7.11 3.7.12: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
-dev-util/cgdb 0.7.0-r2 0.7.1 9999: A curses front-end for GDB, the GNU debugger
+dev-util/cgdb 0.7.1 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
 dev-util/checkbashisms 2.19.7 2.20.1 2.20.2 2.20.3 2.20.4: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
@@ -12577,7 +12577,7 @@ media-fonts/font-sun-misc 1.0.3-r2: X.Org Sun fonts
 media-fonts/font-util 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r2: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r2: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 4.7.0 5.1.0 5.11.2 5.13.0 5.13.1 5.14.0 9999: The iconic font
+media-fonts/fontawesome 5.14.0 5.15.1 9999: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
@@ -13111,7 +13111,7 @@ media-libs/libgpod 0.8.3-r3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libhdhomerun 20150826 20190621 20200521: SiliconDust HDHomeRun Utilties
-media-libs/libheif 1.5.1 1.6.1 1.6.2 1.7.0-r1 1.8.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+media-libs/libheif 1.7.0-r1 1.7.0-r2 1.9.1 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
@@ -15471,7 +15471,7 @@ net-voip/telepathy-haze 0.8.0-r2: Telepathy connection manager providing libpurp
 net-voip/telepathy-rakia 0.8.0-r1: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r3: A link-local XMPP connection manager for Telepathy
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
-net-vpn/6tunnel 0.12 0.13: TCP proxy for applications that don't speak IPv6
+net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
@@ -17497,7 +17497,7 @@ sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/sandboxfs 0.2.0: A virtual file system for sandboxing
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
-sys-fs/simple-mtpfs 0.3.0 0.4.0: Simple MTP fuse filesystem driver
+sys-fs/simple-mtpfs 0.4.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.4 9999: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 1.0.1 1.0.2 9999: A new set of tools for working with SquashFS images
@@ -18081,7 +18081,7 @@ www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.15: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
-www-servers/lighttpd 1.4.55: Lightweight high-performance web server
+www-servers/lighttpd 1.4.55-r1: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3: Robust, small and high performance http and reverse proxy server
