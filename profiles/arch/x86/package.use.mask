@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mark Wright <gienah@gentoo.org> (2020-10-11)
+# dev-ml/ppx_jane is not keyworded
+dev-ml/cinaps test
+dev-ml/ppx_expect test
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-07)
 # <app-admin/salt-3000 is Python 3.6 but last Python 3.6
 # compatible dev-python/libvirt-python version was removed
