@@ -26,7 +26,7 @@ fi
 
 LICENSE="|| ( CDDL LGPL-2.1 )"
 SLOT="0/3"
-KEYWORDS="~amd64 ppc ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 ~x86"
 IUSE=""
 
 BDEPEND="dev-lang/perl
