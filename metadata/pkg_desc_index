@@ -9426,7 +9426,7 @@ dev-ros/combined_robot_hw 0.19.1 0.19.2 0.19.3 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.19.1 0.19.2 0.19.3 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.14.0 9999: Plugin for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.14.0 9999: Plugin for transparently sending images encoded as JPEG or PNG
-dev-ros/console_bridge_vendor 1.2.1 9999: Wrapper around console_bridge
+dev-ros/console_bridge_vendor 1.2.2 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.5.2 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.18.2 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.19.1-r1 0.19.2 0.19.3 9999: Interface base class for controllers
@@ -9450,7 +9450,7 @@ dev-ros/dynamic_reconfigure 1.7.1 9999: Provides a means to change node paramete
 dev-ros/eigen_conversions 1.13.2 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.17.0 1.17.1 9999: A ROS node that simply forwards odometry information
-dev-ros/filters 1.9.0 9999: Standardized interface for processing data as a sequence of filters
+dev-ros/filters 1.9.1 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_dev 2.9.1 9999: Cmake config for the default version of Gazebo for the ROS distribution
 dev-ros/gazebo_msgs 2.9.1 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.9.1 9999: Robot-independent Gazebo plugins
@@ -9464,7 +9464,7 @@ dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
 dev-ros/genpy 0.6.11 0.6.14 9999: Python ROS message and service generators
 dev-ros/geodesy 0.5.5 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.5.5 9999: ROS messages for Geographic Information Systems
-dev-ros/geometric_shapes 0.7.0 9999: Generic definitions of geometric shapes and bodies
+dev-ros/geometric_shapes 0.7.2 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.13.0 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.17.0 1.17.1 9999: Path planner library and node
 dev-ros/gmapping 1.4.1 1.4.2 9999: ROS wrapper for OpenSlam's Gmapping
@@ -9536,7 +9536,7 @@ dev-ros/nmea_msgs 1.1.0 9999: Messages related to data in the NMEA format
 dev-ros/nodelet 1.10.0-r1 9999: Runs multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.10.0 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.12 0.2.0 9999: Nodelet tutorial
-dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
+dev-ros/object_recognition_msgs 0.4.2 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.5 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.1 9999: Conversion functions between ROS / PCL and OctoMap's native types
 dev-ros/opencv_apps 2.0.2 9999: OpenCV applications for ROS
@@ -9626,8 +9626,8 @@ dev-ros/rosunit 1.15.5 1.15.6 1.15.7 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.15.8 9999: Tool for diagnosing issues with a running ROS system
 dev-ros/rotate_recovery 1.17.0 1.17.1 9999: Recovery behavior that attempts performing a 360 degree rotation of the robot
 dev-ros/rqt_action 0.4.9 9999: Introspect all available ROS action (from actionlib) types
-dev-ros/rqt_bag 0.4.13 9999: GUI plugin for displaying and replaying ROS bag files
-dev-ros/rqt_bag_plugins 0.4.13 9999: GUI plugin for displaying and replaying ROS bag files
+dev-ros/rqt_bag 0.4.15 9999: GUI plugin for displaying and replaying ROS bag files
+dev-ros/rqt_bag_plugins 0.4.15 9999: GUI plugin for displaying and replaying ROS bag files
 dev-ros/rqt_console 0.4.11 9999: GUI plugin for displaying and filtering ROS messages
 dev-ros/rqt_controller_manager 0.19.1 0.19.2 0.19.3 9999: RQT control manager plugin
 dev-ros/rqt_dep 0.4.10 9999: GUI plugin for visualizing the ROS dependency graph
@@ -9635,7 +9635,7 @@ dev-ros/rqt_graph 0.4.14 9999: GUI plugin for visualizing the ROS computation gr
 dev-ros/rqt_gui 0.5.2 9999: Instance of the ROS integrated graphical user interface provided by qt_gui
 dev-ros/rqt_gui_cpp 0.5.2 9999: Enables GUI plugins to use the C++ client library for ROS
 dev-ros/rqt_gui_py 0.5.2 9999: Enables GUI plugins to use the Python client library for ROS
-dev-ros/rqt_image_view 0.4.15 9999: GUI plugin for displaying images using image_transport
+dev-ros/rqt_image_view 0.4.16 9999: GUI plugin for displaying images using image_transport
 dev-ros/rqt_launch 0.4.8 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.4.11 9999: GUI plugin for configuring the logger level of ROS nodes
 dev-ros/rqt_moveit 0.5.9 9999: Assists monitoring tasks for MoveIt! motion planner
@@ -9648,14 +9648,14 @@ dev-ros/rqt_py_common 0.5.2 9999: Common functionality for rqt plugins written i
 dev-ros/rqt_py_console 0.4.9 9999: Python GUI plugin providing an interactive Python console
 dev-ros/rqt_reconfigure 0.5.3 9999: Provides the way to view and edit the parameters from dynamic_reconfigure
 dev-ros/rqt_robot_dashboard 0.5.8 9999: Infrastructure for building robot dashboard plugins in rqt
-dev-ros/rqt_robot_monitor 0.5.12 9999: Displays messages that are published by diagnostic_aggregator
+dev-ros/rqt_robot_monitor 0.5.13 9999: Displays messages that are published by diagnostic_aggregator
 dev-ros/rqt_robot_steering 0.5.11 9999: GUI plugin for steering a robot using Twist messages
 dev-ros/rqt_runtime_monitor 0.5.8 9999: GUI plugin viewing DiagnosticsArray messages
 dev-ros/rqt_rviz 0.6.1 9999: GUI plugin embedding RViz
 dev-ros/rqt_service_caller 0.4.9 9999: GUI plugin for calling arbitrary services
 dev-ros/rqt_shell 0.4.10 9999: GUI plugin providing an interactive shell
 dev-ros/rqt_srv 0.4.8 9999: GUI plugin for introspecting available ROS message types
-dev-ros/rqt_tf_tree 0.6.1 9999: GUI plugin for visualizing the ROS TF frame tree
+dev-ros/rqt_tf_tree 0.6.2 9999: GUI plugin for visualizing the ROS TF frame tree
 dev-ros/rqt_top 0.4.9 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.4.12 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.4.9 9999: Simple web content viewer for rqt
@@ -9717,7 +9717,7 @@ dev-ros/urdf 1.13.2 9999: C++ parser for the Unified Robot Description Format (U
 dev-ros/urdf_parser_plugin 1.13.2 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.5.0 9999: URDF tutorials
 dev-ros/urg_c 1.0.405 9999: URG Helper / URG Widget / URG Library / urg_c
-dev-ros/urg_node 0.1.13 9999: ROS wrapper for the Hokuyo urg_c library
+dev-ros/urg_node 0.1.14 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.6 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.11.1-r1 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.11.1 9999: Converts between ROS structures and ViSP structures
@@ -9727,7 +9727,7 @@ dev-ros/visp_tracker 0.11.1 9999: Wraps the ViSP moving edge tracker provided by
 dev-ros/visualization_marker_tutorials 0.11.0 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.7 1.13.0 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.16.6 1.17.0 1.17.1 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.14.1 9999: XML macro language
+dev-ros/xacro 1.14.4 9999: XML macro language
 dev-ros/xmlrpcpp 1.15.8 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby

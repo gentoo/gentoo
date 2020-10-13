@@ -5,10 +5,10 @@ DESCRIPTION=Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 EAPI=7
 HOMEPAGE=http://www.live555.com/
 IUSE=libressl ssl
-KEYWORDS=~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0/9
 SRC_URI=http://www.live555.com/liveMedia/public/live.2020.05.15.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=336d319949ecbc5c83229a589c0f4c88
+_md5_=bf3d8b931950147fbf10cf12aba0e16e
