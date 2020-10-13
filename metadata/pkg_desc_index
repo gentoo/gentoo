@@ -17126,7 +17126,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20200917 20201010: PAM base configuration files
+sys-auth/pambase 20201013: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
