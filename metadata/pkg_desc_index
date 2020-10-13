@@ -9561,7 +9561,7 @@ dev-ros/python_qt_binding 0.4.3-r1 9999: Infrastructure for an integrated graphi
 dev-ros/qt_dotgraph 0.4.1 0.4.2 9999: Helpers to work with dot graphs
 dev-ros/qt_gui 0.4.1 0.4.2 9999: ROS infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_gui_app 0.4.1 0.4.2 9999: Instance of the integrated graphical user interface provided by qt_gui
-dev-ros/qt_gui_cpp 0.4.1 0.4.2 9999: C++-bindings for qt_gui and creates bindings for every generator available
+dev-ros/qt_gui_cpp 0.4.2-r1 9999: C++-bindings for qt_gui and creates bindings for every generator available
 dev-ros/qt_gui_py_common 0.4.1 0.4.2 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.2 9999: Wrappers for generating floating point values, integers and quaternions
 dev-ros/realtime_tools 1.16.0-r1 9999: Set of tools that can be used from a hard realtime thread
@@ -18064,7 +18064,7 @@ www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10 3.6.10-r1: WWW Admin for the Video Di
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
-www-plugins/adobe-flash 32.0.0.433: Adobe Flash Player
+www-plugins/adobe-flash 32.0.0.445: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 86.0.4240.75_beta 86.0.4240.75 87.0.4280.11_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
