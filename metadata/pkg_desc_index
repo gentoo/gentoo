@@ -18661,7 +18661,7 @@ x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent re
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/yabar 0.4.0_p20190316-r1: A modern and lightweight status bar for X window managers
-x11-misc/zim 0.73.1 0.73.2: A desktop wiki
+x11-misc/zim 0.73.1 0.73.2 0.73.3: A desktop wiki
 x11-plugins/allin1 0.5.0-r2: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r3: Clock applet for AfterStep
