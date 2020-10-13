@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A framework for 2D games in Lua"
-HOMEPAGE="http://love2d.org/"
-SRC_URI="https://www.bitbucket.org/rude/${PN}/downloads/${P}-linux-src.tar.gz"
+HOMEPAGE="https://love2d.org/"
+SRC_URI="https://github.com/love2d/${PN}/releases/download/${PV}/${P}-linux-src.tar.gz"
 KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="ZLIB"
@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}
 	media-libs/tiff:0
 "
 
-PATCHES=( "${FILESDIR}"/${P}-freetype2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.0-freetype2.patch
+	"${FILESDIR}"/${PN}-0.8.0-opengl_glext_prototypes.patch
+)
 
 src_install() {
 	DOCS="readme.md changes.txt" \

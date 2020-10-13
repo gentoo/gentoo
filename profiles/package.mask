@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-10-13)
+# All these ebuilds require slotted Lua, which is still masked.
+>=app-misc/worker-3.8.3-r100
+>=dev-lua/luv-1.32.0.0-r100
+>=dev-lua/messagepack-0.3.2-r100
+>=dev-lua/toluapp-1.0.93_p20190513-r100
+>=games-engines/love-11.3-r100:0
+
 # Andrew Savchenko <bircoph@gentoo.org> (2020-10-11)
 # Mask old openafs version and corresponding openafs-kernel with
 # multiple CVEs.
