@@ -2370,7 +2370,7 @@ app-misc/cdctl 0.16: Utility to control your cd/dvd drive
 app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
 app-misc/cfiles 1.5 1.8: A ncurses file manager written in C with vim like keybindings
-app-misc/chkcrontab 1.7: A tool to detect crontab errors
+app-misc/chkcrontab 1.7 1.7-r1: A tool to detect crontab errors
 app-misc/ckb 0.2.9-r1 0.4.0 0.4.1 0.4.2: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4 9.0.302: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
@@ -8124,7 +8124,7 @@ dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elastics
 dev-python/elementpath 2.0.0 2.0.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
-dev-python/empy 3.3.3: A powerful and robust templating system for Python
+dev-python/empy 3.3.3 3.3.4: A powerful and robust templating system for Python
 dev-python/entrypoint2 0.2.1: Easy to use command-line interface for python modules
 dev-python/entrypoints 0.3-r2: Discover and load entry points from installed packages
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
@@ -8134,6 +8134,7 @@ dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/eventlet 0.26.1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
+dev-python/exdown 0.7.0: Extract code blocks from markdown
 dev-python/execnet 1.7.1-r1: Rapid multi-Python deployment
 dev-python/executing 0.5.2: Get information about what a Python frame is currently doing
 dev-python/expects 0.8.0-r1 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
@@ -9031,7 +9032,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.10.2: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.16.3 0.17.6 0.17.7 0.17.8 0.18.0: Python client for Sentry
+dev-python/sentry-sdk 0.16.3 0.17.6 0.17.7 0.17.8 0.18.0 0.19.0: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -9168,7 +9169,7 @@ dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematic
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
-dev-python/tikzplotlib 0.9.1: Convert matplotlib figures into TikZ/PGFPlots
+dev-python/tikzplotlib 0.9.4: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 1.0.2: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
@@ -9269,7 +9270,7 @@ dev-python/xarray 0.12.1 0.16.0 0.16.1: N-D labeled arrays and datasets in Pytho
 dev-python/xcffib 0.10.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdoctest 0.11.0: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
-dev-python/xlsxwriter 1.3.3 1.3.4 1.3.5 1.3.6: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 1.3.3 1.3.4 1.3.5 1.3.6 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.2.3-r1 1.2.4: An XML Schema validator and decoder
@@ -10599,7 +10600,7 @@ dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.14 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/catkin 0.8.3-r1 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
+dev-util/catkin 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.14.6 0.15.0: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.11 3.7.12: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
@@ -15887,7 +15888,7 @@ sci-biology/velvet 1.2.10: A sequence assembler for very short reads
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 2.7.2 3.1.3 3.1.5: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 3.1.5 3.1.6: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.4 1.5 1.6 1.7: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
@@ -16373,7 +16374,7 @@ sci-mathematics/geogebra-bin 5.0.604.0-r2: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 29.8.6-r1: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 29.8.6-r1 30.3.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.8 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices

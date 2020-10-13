@@ -1,0 +1,15 @@
+BDEPEND=dev-python/wheel[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] test? ( python_targets_python3_7? ( dev-python/importlib_metadata[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] ) >=dev-python/pytest-4.5.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Extract code blocks from markdown
+EAPI=7
+HOMEPAGE=https://github.com/nschloe/exdown
+IUSE=test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=python_targets_python3_7? ( dev-python/importlib_metadata[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
+RESTRICT=!test? ( test ) !test? ( test )
+SLOT=0
+SRC_URI=https://github.com/nschloe/exdown/archive/v0.7.0.tar.gz -> exdown-0.7.0.tar.gz
+_eclasses_=distutils-r1	409cd1220f9f980d21980293a50e2a8e	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307
+_md5_=96260646355b6808ed40a5527a887f4a
