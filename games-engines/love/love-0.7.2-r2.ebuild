@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-HEAD"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.8.0-freetype2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.2-opengl_glext_prototypes.patch
+	"${FILESDIR}"/${PN}-0.8.0-freetype2.patch
+)
 
 src_install() {
 	DOCS="readme.txt changes.txt" \

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}
 	media-libs/tiff:0
 "
 
-PATCHES=( "${FILESDIR}"/${P}-freetype2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.0-freetype2.patch
+	"${FILESDIR}"/${PN}-0.8.0-opengl_glext_prototypes.patch
+)
 
 src_install() {
 	DOCS="readme.md changes.txt" \
