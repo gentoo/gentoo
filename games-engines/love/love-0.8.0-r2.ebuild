@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="A framework for 2D games in Lua"
-HOMEPAGE="http://love2d.org/"
+HOMEPAGE="https://love2d.org/"
 SRC_URI="https://github.com/love2d/${PN}/releases/download/${PV}/${P}-linux-src.tar.gz"
 KEYWORDS="~amd64 ~arm ~x86"
 

@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="A framework for 2D games in Lua"
-HOMEPAGE="http://love2d.org/"
+HOMEPAGE="https://love2d.org/"
 
 LICENSE="ZLIB"
 SLOT="0"
