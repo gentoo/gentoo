@@ -1,0 +1,20 @@
+Index: cairo-ocaml-1.2.0/src/cairo_png.ml
+===================================================================
+--- cairo-ocaml-1.2.0.orig/src/cairo_png.ml
++++ cairo-ocaml-1.2.0/src/cairo_png.ml
+@@ -7,13 +7,13 @@
+ (**************************************************************************)
+ 
+ external image_surface_create_from_stream_unsafe : 
+-  (string -> int -> unit) -> Cairo.image_surface = "ml_cairo_image_surface_create_from_png_stream_unsafe"
++  (bytes -> int -> unit) -> Cairo.image_surface = "ml_cairo_image_surface_create_from_png_stream_unsafe"
+ 
+ let image_surface_create_from_channel ic =
+   image_surface_create_from_stream_unsafe
+     (fun s n ->
+       for i = 0 to n - 1 do
+-	String.unsafe_set s i (input_char ic)
++	Bytes.unsafe_set s i (input_char ic)
+       done)
+ 
+ let image_surface_create_from_file fname =
