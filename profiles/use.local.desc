@@ -3643,11 +3643,16 @@ kde-plasma/kdeplasma-addons:comic - Enable comic applet (requires deprecated kde
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
 kde-plasma/kdeplasma-addons:webengine - Enable dictionary and web browser applets using dev-qt/qtwebengine
 kde-plasma/kinfocenter:pci - Show advanced PCI information
+kde-plasma/ksysguard:network - Enable per-process network statistic collection using dev-libs/libnl
+kde-plasma/ksysguard:networkmanager - Enable improved backend for Network statistics using kde-frameworks/networkmanager-qt
 kde-plasma/ksysguard:pcap - Enable per-process network statistic collection using net-libs/libpcap
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
+kde-plasma/kwin:screencast - Enable screencast portal using media-video/pipewire
+kde-plasma/libksysguard:designer - Build plugins for dev-qt/designer
 kde-plasma/libksysguard:webengine - Enable display of detailed memory information using dev-qt/qtwebengine.
 kde-plasma/plasma-desktop:emoji - Build emojipicker applet using app-i18n/ibus and media-fonts/noto-emoji
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
+kde-plasma/plasma-desktop:kaccounts - Build the OpenDesktop integration plugin
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-meta:browser-integration - Enable integration with Chrome/Firefox with browser extensions
 kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vaults integration
@@ -3673,6 +3678,7 @@ kde-plasma/plasma-workspace:appstream - Enable AppStream software metadata suppo
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/plasma-workspace:qrcode - Enable support for creating QR codes from clipboard data using kde-frameworks/prison
+kde-plasma/plasma-workspace:screencast - Enable screencast portal using media-video/pipewire
 kde-plasma/plasma-workspace:telemetry - Enable User Feedback control module for kde-plasma/systemsettings
 kde-plasma/powerdevil:brightness-control - Enable screen brightness control using app-misc/ddcutil
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
