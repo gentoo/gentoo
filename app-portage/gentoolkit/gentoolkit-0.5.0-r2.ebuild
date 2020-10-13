@@ -27,7 +27,10 @@ RDEPEND="${DEPEND}
 
 distutils_enable_tests setup.py
 
-PATCHES=( "${FILESDIR}"/${PN}-0.5.0-python3_9.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.0-python3_9.patch
+	"${FILESDIR}"/${PN}-0.5.0-r1-python3_9.patch
+)
 
 python_prepare_all() {
 	python_setup
