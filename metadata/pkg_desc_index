@@ -2608,7 +2608,7 @@ app-misc/vzstats 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 5.2.7 5.3.4 6.0.1 6.0.2: Wherever Change Directory
 app-misc/when 1.1.36 1.1.37: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
-app-misc/worker 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
+app-misc/worker 3.8.3 3.8.3-r100: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
 app-misc/yq 2.9.2-r1 2.11.1: Command-line YAML processor - jq wrapper for YAML documents
 app-misc/ytree 2.02: A curses-based file manager
@@ -5755,13 +5755,13 @@ dev-lua/luasocket 3.0_rc1-r4 3.0_rc1-r5: Networking support library for the Lua 
 dev-lua/luassert 1.7.9 1.7.10 1.8.0: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1 0.4-r2: Lightweight C++ API library for Lua
-dev-lua/luv 1.32.0.0: Bare libuv bindings for lua
+dev-lua/luv 1.32.0.0 1.32.0.0-r100: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
-dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
+dev-lua/messagepack 0.3.2 0.3.2-r100: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2 1.5.4 1.7.0: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1 1.3_p1-r1: Lua String Hashing/Indexing Library
-dev-lua/toluapp 1.0.93_p20190513-r1: A tool to integrate C/C++ code with Lua
+dev-lua/toluapp 1.0.93_p20190513-r1 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 0.8.2: A lightweight and colourful test framework
 dev-ml/astring 0.8.3: Alternative String module for OCaml
 dev-ml/async 0.9.0: Jane Street Capital's asynchronous execution library
@@ -8755,7 +8755,7 @@ dev-python/pylast 3.3.0 4.0.0: Python interface to last.fm and other api-compati
 dev-python/pylatex 1.3.3 1.4.0: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.5.3: Python code static checker
+dev-python/pylint 2.5.3 2.6.0: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
@@ -11336,7 +11336,7 @@ games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating 
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.52: Interpreter for Z-code based text games
 games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting all major formats
-games-engines/love 0.7.2-r2 0.8.0-r1 0.8.0-r2 0.10.2 11.1 9999: A framework for 2D games in Lua
+games-engines/love 0.7.2-r2 0.8.0-r2 11.3 11.3-r100 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.8.3: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.46.0 9999: Open source reimplementation of TES III: Morrowind
@@ -16255,7 +16255,7 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1: C++ bindings for libh2o
 sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
-sci-libs/libint 1.1.6 2.6.0: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
+sci-libs/libint 1.1.6 2.6.0 2.6.0-r1: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Library

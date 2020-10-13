@@ -1,13 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install postinst postrm prepare unpack
+DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=sys-libs/zlib !luajit? ( dev-lang/lua:0 ) luajit? ( dev-lang/luajit:2 ) media-libs/freetype media-libs/libmodplug media-libs/libsdl2[joystick,opengl] media-libs/libogg media-libs/libtheora media-libs/libvorbis media-libs/openal media-sound/mpg123 virtual/opengl
 DESCRIPTION=A framework for 2D games in Lua
 EAPI=7
-HOMEPAGE=http://love2d.org/
+HOMEPAGE=https://love2d.org/
 IUSE=+luajit
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=ZLIB
-PROPERTIES=live
 RDEPEND=sys-libs/zlib !luajit? ( dev-lang/lua:0 ) luajit? ( dev-lang/luajit:2 ) media-libs/freetype media-libs/libmodplug media-libs/libsdl2[joystick,opengl] media-libs/libogg media-libs/libtheora media-libs/libvorbis media-libs/openal media-sound/mpg123 virtual/opengl
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=3cbcc554b4415ccab122d3e98f621746
+SRC_URI=https://github.com/love2d/love/releases/download/11.3/love-11.3-linux-src.tar.gz
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ebb8e158f52645b3f4e18ae435024e7a

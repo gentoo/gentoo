@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=sys-libs/zlib lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) media-libs/freetype media-libs/libmodplug media-libs/libsdl2[joystick,opengl] media-libs/libogg media-libs/libtheora media-libs/libvorbis media-libs/openal media-sound/mpg123 virtual/opengl
+DESCRIPTION=A framework for 2D games in Lua
+EAPI=7
+HOMEPAGE=https://love2d.org/
+IUSE=lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ZLIB
+RDEPEND=sys-libs/zlib lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) media-libs/freetype media-libs/libmodplug media-libs/libsdl2[joystick,opengl] media-libs/libogg media-libs/libtheora media-libs/libvorbis media-libs/openal media-sound/mpg123 virtual/opengl
+REQUIRED_USE=^^ ( lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 )
+SLOT=0
+SRC_URI=https://github.com/love2d/love/releases/download/11.3/love-11.3-linux-src.tar.gz
+_eclasses_=lua-single	d51249bd993b9dda6dde2d2276b8dc90	lua-utils	e46ac6841ad67e06b94d930fc64adf6c	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=771fbb30f04cf5c19ff95f0f7e98e9c5
