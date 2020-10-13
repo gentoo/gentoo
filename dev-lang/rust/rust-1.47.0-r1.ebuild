@@ -527,9 +527,10 @@ src_install() {
 	done
 
 	# symlinks to switch components to active rust in eselect
-	dosym "../../lib/${PN}/${PV}/share/doc" "/usr/share/doc/${P}"
-	dosym "rust/${PV}/lib/rustlib" "/usr/lib/rustlib-${PV}"
+	dosym "${PV}/lib" "/usr/lib/${PN}/lib-${PV}"
 	dosym "${PV}/share/man" "/usr/lib/${PN}/man-${PV}"
+	dosym "rust/${PV}/lib/rustlib" "/usr/lib/rustlib-${PV}"
+	dosym "../../lib/${PN}/${PV}/share/doc" "/usr/share/doc/${P}"
 
 	newenvd - "50${P}" <<-_EOF_
 		LDPATH="${EPREFIX}/usr/lib/rust/lib"
