@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ros/catkin"
 fi
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
 
 inherit ${SCM} cmake python-r1 python-utils-r1
 
