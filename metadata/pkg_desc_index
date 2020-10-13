@@ -2871,7 +2871,7 @@ app-text/docbook-xsl-ns-stylesheets 1.78.0 1.79.1: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 7.3.5 7.4.1 7.4.2_beta1: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
