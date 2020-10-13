@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexis Ballier <aballier@gentoo.org> (2020-10-13)
+# Nothing depends on those ROS messages. dev-ros/geneus
+# is half broken in our setup where it looks for packages
+# on the filesystem and causes build failures.
+# See e.g. https://bugs.gentoo.org/741076
+ros_messages_eus
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # app-office/openoffice-bin is being removed.
 office_implementation_openoffice
