@@ -10838,7 +10838,7 @@ dev-util/rosinstall_generator 0.1.22 9999: Generates rosinstall metadata about r
 dev-util/rpmdevtools 8.10-r2 9.2: Collection of rpm packaging related utilities
 dev-util/rr 5.3.0-r2: Record and Replay Framework
 dev-util/rt-tests 1.9: A collection of latency testing tools for the linux(-rt) kernel
-dev-util/rustup 1.22.1-r1 9999: Rust toolchain installer
+dev-util/rustup 1.22.1-r2 9999: Rust toolchain installer
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes

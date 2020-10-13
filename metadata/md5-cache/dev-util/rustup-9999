@@ -11,4 +11,4 @@ RDEPEND=app-arch/xz-utils net-misc/curl:=[http2,ssl] dev-libs/openssl:0=
 RESTRICT=test
 SLOT=0
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	cargo	1718e7e65d7fe0fe3fd34abbf3c3310b	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a8c2ce8030d3085ac7ef89bd761ed488
+_md5_=0eb07690b3035cd4c293a5c1f0dd9e5b
