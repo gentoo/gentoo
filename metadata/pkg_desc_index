@@ -2781,7 +2781,6 @@ app-shells/loksh 6.7.2 6.7.4 6.7.5: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 57-r2 58 59 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
-app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.7: Simplistic interactive filtering tool
@@ -5381,7 +5380,7 @@ dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdivecomputer 0.6.0-r1 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1: Suffix-sorting library (for BWT)
-dev-libs/libdnet 1.12 1.12-r1 1.14 1.14-r1 9999: simplified, portable interface to several low-level networking routines
+dev-libs/libdnet 1.14-r1 9999: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2 0.1a-r3: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
@@ -7916,7 +7915,6 @@ dev-python/argcomplete 1.12.0-r1 1.12.1-r1: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
-dev-python/args 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.9.2: Parser interpreter based on PEG grammars
 dev-python/arrow 0.15.8 0.16.0 0.17.0: Better dates and times for Python
 dev-python/asgiref 3.2.10 3.3.0: ASGI utilities (successor to WSGI)
@@ -14261,7 +14259,7 @@ net-analyzer/flow-tools 0.68.5.1-r11 0.68.6-r1: library and programs to process 
 net-analyzer/flowgrind 0.7.1 0.8.0 0.8.0-r1: Network performance measurement tool
 net-analyzer/fping 2.4_beta2_p161-r2 3.13 4.0 4.1 4.2 4.2-r1 4.4 5.0: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
-net-analyzer/fragroute 1.2.6-r1 1.2.6-r3 1.2.6-r4: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
+net-analyzer/fragroute 1.2.6-r4: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
 net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
 net-analyzer/gensink 4.1-r2: A simple TCP benchmark suite
@@ -14515,7 +14513,6 @@ net-dialup/rp-pppoe 3.12-r1 3.13 3.14: A user-mode PPPoE client and server suite
 net-dialup/sendpage 1.1.0-r3: Dialup alphapaging software
 net-dialup/sercd 3.0.0-r2: RFC2217-compliant serial port redirector
 net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware and configuration instructions for Alcatel SpeedTouch USB modems
-net-dialup/tkvoice 1.5: Voice mail and Fax frontend program
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
