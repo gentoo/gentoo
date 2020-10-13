@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PLOCALES="da de eo es fr hu ja nb nl pl pt_BR ru sr sv uk vi zh_CN zh_TW"
+PLOCALES="da de eo es fr fur hu ja nb nl pl pt_BR ru sr sv uk vi zh_CN zh_TW"
 
 inherit l10n toolchain-funcs
 
