@@ -5,6 +5,10 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>gienah@gentoo.org</email>
+		<name>Mark Wright</name>
+	</maintainer>
 <use>
 	<flag name="glade">Enable libglade bindings compilation.</flag>
 	<flag name="gnomecanvas">Enable libgnomecanvas bindings compilation.</flag>
