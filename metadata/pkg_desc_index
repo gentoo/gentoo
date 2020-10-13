@@ -607,7 +607,7 @@ app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from applic
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1 1.1.0.81: a highly configurable program for managing and archiving log files
-app-admin/ngxtop 0.0.3_pre141201: real-time metrics for nginx server (and others)
+app-admin/ngxtop 0.0.3_pre141201 0.0.3_pre141201-r1: real-time metrics for nginx server (and others)
 app-admin/op-cli-bin 1.7.0: command line interface for the 1password password manager
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
 app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
@@ -13199,7 +13199,7 @@ media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502 0.1.9 0.2.0: Library for au
 media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
-media-libs/libpgf 6.12.27 7.19.3: Library to load, handle and manipulate images in the PGF format
+media-libs/libpgf 7.19.3: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 2.43.0 2.72.0 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
