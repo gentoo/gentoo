@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND+="test? ( =dev-util/ragel-6* )"
+DEPEND+=" =dev-util/ragel-6*"
 
 ruby_add_bdepend "test? (
 	dev-ruby/minitest:5
