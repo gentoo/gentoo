@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/libdir.patch"
+	"${FILESDIR}/rpaths.patch"
 )
 
 # FIXME: fails to build with ninja
