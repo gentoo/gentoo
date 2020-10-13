@@ -22,11 +22,10 @@ RDEPEND=">=app-eselect/eselect-rust-20190311"
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
 QA_PREBUILT="
-	opt/${P}/bin/*-${PV}
-	opt/${P}/lib/*.so
-	opt/${P}/lib/rustlib/*/bin/*
-	opt/${P}/lib/rustlib/*/lib/*.so
-	opt/${P}/lib/rustlib/*/lib/*.rlib*
+	opt/${P}/bin/.*
+	opt/${P}/lib/.*.so
+	opt/${P}/lib/rustlib/.*/bin/.*
+	opt/${P}/lib/rustlib/.*/lib/.*
 "
 
 pkg_pretend() {
