@@ -3,9 +3,12 @@
 
 EAPI=7
 
+inherit verify-sig
+
 DESCRIPTION="Free Finnish spell checking and hyphenation for LibreOffice"
 HOMEPAGE="https://voikko.puimula.org/"
-SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz"
+SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz
+	verify-sig? ( https://www.puimula.org/voikko-sources/libreoffice-voikko/${P}.tar.gz.asc )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,6 +18,9 @@ DEPEND="app-office/libreoffice[odk]
 	dev-libs/voikko-fi"
 RDEPEND="${DEPEND}
 	dev-libs/libvoikko"
+BDEPEND="verify-sig? ( app-crypt/openpgp-keys-voikko )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 
 src_compile() {
 	emake oxt
