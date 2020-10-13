@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,3 +32,8 @@ else
 	SRC_URI="https://github.com/gost-engine/engine/archive/e5cc3684f3b3ad40e186e23b00b253d234df92ab.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/engine-e5cc3684f3b3ad40e186e23b00b253d234df92ab"
 fi
+
+src_prepare() {
+	cmake-utils_src_prepare
+	sed 's:Werror:Wno-error:g' -i "${S}/CMakeLists.txt" || die
+}
