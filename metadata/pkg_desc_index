@@ -18043,8 +18043,8 @@ www-client/seamonkey 2.53.2 2.53.3 2.53.4: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.3.2022.47_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.4.2035.3_p1 3.4.2036.3_p1 3.4.2038.4_p1 3.4.2049.2_p1 3.4.2056.19_p1 3.4.2059.2_p1 3.4.2064.6_p1 3.4.2066.7_p1 3.4.2066.37_p1: A browser for our friends
+www-client/vivaldi 3.3.2022.47_p1 3.4.2066.65_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2066.7_p1 3.4.2066.37_p1 3.4.2066.64_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
