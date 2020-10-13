@@ -49,6 +49,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.18.0-cross-fixes.patch
+	# Additional security patches post-1.18.0
+	"${FILESDIR}"/${P}-fix-oob-in-pdf-layer.c
+	"${FILESDIR}"/${P}-fix-oob-in-pixmap.c
 )
 
 src_prepare() {
