@@ -9,7 +9,8 @@ inherit autotools prefix python-any-r1 xdg
 
 DESCRIPTION="A Doom source port that is minimalist and historically accurate"
 HOMEPAGE="https://www.chocolate-doom.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz
+	https://gist.githubusercontent.com/vilhelmgray/28d4713cb6387ad62ab76cfac1443355/raw/f7600d93ca45a5102969b8f89974a3c36a3563f5/${P}-overhaul-manpages-add-parameters.patch"
 
 LICENSE="BSD GPL-2+"
 SLOT="0"
@@ -30,7 +31,7 @@ BDEPEND="
 S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-overhaul-manpages-add-parameters.patch"
+	"${DISTDIR}/${P}-overhaul-manpages-add-parameters.patch"
 	"${FILESDIR}/${P}-further-manpage-substitutions-and-fixes.patch"
 	"${FILESDIR}/${P}-bash-completion-run-docgen-with-z-argument.patch"
 	"${FILESDIR}/${P}-install-AppStream-metadata-into-the-proper-location.patch"
