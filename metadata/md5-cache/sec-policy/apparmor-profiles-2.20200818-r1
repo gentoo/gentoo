@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install setup unpack
+DESCRIPTION=A collection of profiles for the AppArmor application security system
+EAPI=7
+HOMEPAGE=https://gitlab.com/apparmor/apparmor/wikis/home
+IUSE=minimal vanilla
+LICENSE=GPL-2
+PROPERTIES=live
+RESTRICT=test
+SLOT=0
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=4745077393d3207da5a7980eafabab01
