@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jinglemansweep/${PN}/archive/${EGIT_COMMIT}.tar.gz -
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="app-misc/lcdproc"
 
