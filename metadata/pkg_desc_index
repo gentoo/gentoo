@@ -14347,7 +14347,7 @@ net-analyzer/nbwmon 0.5.2: ncurses bandwidth monitor
 net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL database
 net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
 net-analyzer/nessus-agent-bin 8.1.0: A remote security scanner for Linux - agent component
-net-analyzer/nessus-bin 8.11.1-r1: A remote security scanner for Linux
+net-analyzer/nessus-bin 8.12.0: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.23.2 1.24.0 1.25.0 9999: Linux real time system monitoring, done right!

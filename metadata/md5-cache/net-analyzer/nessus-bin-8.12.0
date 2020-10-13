@@ -7,6 +7,6 @@ KEYWORDS=~amd64
 LICENSE=GPL-2 Nessus-EULA
 RESTRICT=mirror fetch strip
 SLOT=0
-SRC_URI=Nessus-8.11.1-es8.x86_64.rpm
+SRC_URI=Nessus-8.12.0-es8.x86_64.rpm
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	rpm	760ff223c2c4299b68ea901e24c4cabd	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=c63bb226ee69de8bd462a4ebedbf401e
