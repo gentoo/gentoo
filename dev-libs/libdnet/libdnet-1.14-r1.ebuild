@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ofalk/${PN}/archive/${P}.tar.gz"
 LICENSE="LGPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc ~x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="python static-libs test"
 
 DEPEND="
