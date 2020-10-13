@@ -52,7 +52,6 @@ IUSE="clippy cpu_flags_x86_sse2 debug doc libressl miri nightly parallel-compile
 LLVM_DEPEND="
 	|| (
 		sys-devel/llvm:11[${LLVM_TARGET_USEDEPS// /,}]
-		sys-devel/llvm:10[${LLVM_TARGET_USEDEPS// /,}]
 	)
 	<sys-devel/llvm-12:=
 	wasm? ( sys-devel/lld )
