@@ -34,8 +34,8 @@ EGO_SUM=(
 	"github.com/kr/text v0.1.0"
 	"github.com/kr/text v0.1.0/go.mod"
 	"github.com/mattn/go-colorable v0.1.4/go.mod"
-	"github.com/mattn/go-colorable v0.1.7"
-	"github.com/mattn/go-colorable v0.1.7/go.mod"
+	"github.com/mattn/go-colorable v0.1.8"
+	"github.com/mattn/go-colorable v0.1.8/go.mod"
 	"github.com/mattn/go-isatty v0.0.8/go.mod"
 	"github.com/mattn/go-isatty v0.0.11/go.mod"
 	"github.com/mattn/go-isatty v0.0.12"
@@ -60,8 +60,8 @@ EGO_SUM=(
 	"github.com/schollz/peerdiscovery v1.6.0/go.mod"
 	"github.com/schollz/progressbar/v2 v2.15.0"
 	"github.com/schollz/progressbar/v2 v2.15.0/go.mod"
-	"github.com/schollz/progressbar/v3 v3.5.1"
-	"github.com/schollz/progressbar/v3 v3.5.1/go.mod"
+	"github.com/schollz/progressbar/v3 v3.6.0"
+	"github.com/schollz/progressbar/v3 v3.6.0/go.mod"
 	"github.com/schollz/spinner v0.0.0-20180925172146-6bbc5f7804f9"
 	"github.com/schollz/spinner v0.0.0-20180925172146-6bbc5f7804f9/go.mod"
 	"github.com/shurcooL/sanitized_anchor_name v1.0.0"
@@ -80,13 +80,13 @@ EGO_SUM=(
 	"golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9/go.mod"
 	"golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9"
 	"golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod"
-	"golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a"
-	"golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a/go.mod"
+	"golang.org/x/crypto v0.0.0-20201012173705-84dcc777aaee"
+	"golang.org/x/crypto v0.0.0-20201012173705-84dcc777aaee/go.mod"
 	"golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3/go.mod"
 	"golang.org/x/net v0.0.0-20200707034311-ab3426394381"
 	"golang.org/x/net v0.0.0-20200707034311-ab3426394381/go.mod"
-	"golang.org/x/net v0.0.0-20200904194848-62affa334b73"
-	"golang.org/x/net v0.0.0-20200904194848-62affa334b73/go.mod"
+	"golang.org/x/net v0.0.0-20201010224723-4f7140c49acb"
+	"golang.org/x/net v0.0.0-20201010224723-4f7140c49acb/go.mod"
 	"golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod"
 	"golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod"
 	"golang.org/x/sys v0.0.0-20190412213103-97732733099d/go.mod"
@@ -99,8 +99,9 @@ EGO_SUM=(
 	"golang.org/x/sys v0.0.0-20200615200032-f1bc736245b1/go.mod"
 	"golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae"
 	"golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae/go.mod"
-	"golang.org/x/sys v0.0.0-20200916084744-dbad9cb7cb7a"
-	"golang.org/x/sys v0.0.0-20200916084744-dbad9cb7cb7a/go.mod"
+	"golang.org/x/sys v0.0.0-20200930185726-fdedc70b468f/go.mod"
+	"golang.org/x/sys v0.0.0-20201009025420-dfb3f7c4e634"
+	"golang.org/x/sys v0.0.0-20201009025420-dfb3f7c4e634/go.mod"
 	"golang.org/x/text v0.3.0/go.mod"
 	"golang.org/x/text v0.3.3"
 	"golang.org/x/text v0.3.3/go.mod"
@@ -138,7 +139,7 @@ src_prepare() {
 	sed -i -e "s|_cli_bash_autocomplete|_croc|g" \
 		src/install/bash_autocomplete || die
 	# Set correct version
-	sed -i -e "s|v8.3.2-7d155ad|v${PV}|g" \
+	sed -i -e "s|v8.4.0-224c442|v${PV}|g" \
 		src/cli/cli.go || die
 }
 
