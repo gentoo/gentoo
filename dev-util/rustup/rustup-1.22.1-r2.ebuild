@@ -239,19 +239,25 @@ zeroize-1.1.0
 zeroize_derive-1.0.0
 "
 
-inherit bash-completion-r1 cargo prefix
-
 HOME_CRATE_COMMIT="a243ee2fbee6022c57d56f5aa79aefe194eabe53"
+
+inherit bash-completion-r1 cargo prefix
 
 DESCRIPTION="Rust toolchain installer"
 HOMEPAGE="https://rust-lang.github.io/rustup/"
-SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/rbtcollins/home/archive/${HOME_CRATE_COMMIT}.tar.gz -> ${P}_home_crate.tar.gz
-	$(cargo_crate_uris ${CRATES})"
+
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rust-lang/${PN}.git"
+else
+	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/rbtcollins/home/archive/${HOME_CRATE_COMMIT}.tar.gz -> ${P}_home_crate.tar.gz
+		$(cargo_crate_uris ${CRATES})"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
+fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 # requires old libressl-2.5, so openssl only for now.
@@ -274,6 +280,15 @@ src_prepare() {
 	sed -i "/^home =/s:.*:home = { path = \"../home-${HOME_CRATE_COMMIT}\" }:" Cargo.toml || die
 }
 
+src_unpack() {
+	if [[ "${PV}" == *9999* ]]; then
+		git-r3_src_unpack
+		cargo_live_src_unpack
+	else
+		cargo_src_unpack
+	fi
+}
+
 src_configure() {
 	local myfeatures=( no-self-update )
 	cargo_src_configure
@@ -287,8 +302,7 @@ src_compile() {
 src_install() {
 	cargo_src_install
 	einstalldocs
-	exeinto /usr/share/rustup
-	newexe "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" symlink_rustup
+	newbin "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" rustup-init-gentoo
 
 	ln -s "${ED}/usr/bin/rustup-init" rustup || die
 	./rustup completions bash rustup > "${T}/rustup" || die
@@ -302,9 +316,10 @@ src_install() {
 
 pkg_postinst() {
 		einfo "No rustup toolchains installed by default"
-		einfo "system rust toolchain can be added to rustup by running"
-		einfo "helper script installed to ${EPREFIX}/usr/share/rustup/symlink_rustup"
-		einfo "it will create proper symlinks in user home directory"
+		einfo "eselect activated system rust toolchain can be added to rustup by running"
+		einfo "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
+		einfo "it will create symlinks to system-installed rustup in home directory"
 		einfo "and rustup updates will be managed by portage"
-		einfo "please delete current rustup installation (if any) before running the script"
+		einfo "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
+		einfo "before running rustup-init-gentoo"
 }
