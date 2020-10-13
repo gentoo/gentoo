@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop flag-o-matic toolchain-funcs xdg
 
-DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
+DESCRIPTION="A lightweight PDF viewer and toolkit written in portable C"
 HOMEPAGE="https://mupdf.com/"
 SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.xz"
 S="${WORKDIR}/${P}-source"
