@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/opam-installer dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/findlib >=dev-ml/topkg-0.9 >=dev-lang/ocaml-4:=
+DESCRIPTION=OCaml module for functional reactive programming
+EAPI=7
+HOMEPAGE=http://erratique.ch/software/react https://github.com/dbuenzli/react
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-4:=
+RESTRICT=!test? ( test )
+SLOT=0/1.2.1
+SRC_URI=http://erratique.ch/software/react/releases/react-1.2.1.tbz
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
+_md5_=5f9b7da0ff7b05c46a40e24e6e824ad4

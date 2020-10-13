@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install test
-DEPEND=dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=OCaml module to access monotonic wall-clock time
 EAPI=5
 HOMEPAGE=https://erratique.ch/software/mtime https://github.com/dbuenzli/mtime
@@ -10,5 +10,5 @@ RDEPEND=dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) >=dev-la
 RESTRICT=!test? ( test )
 SLOT=0/1.1.0
 SRC_URI=https://erratique.ch/software/mtime/releases/mtime-1.1.0.tbz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	opam	c053036d04fbcede5c53fe5752699eb5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	opam	4f1cff0457cf4790a5510753a67d1cc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=93c7bbb805f54c67e55b061897770193

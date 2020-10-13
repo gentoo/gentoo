@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=>=dev-lang/ocaml-4.08.0:= virtual/latex-base dev-texlive/texlive-latexextra virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=O'Caml literate programming tool
+EAPI=7
+HOMEPAGE=https://www.lri.fr/~filliatr/ocamlweb/
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=LGPL-2
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=https://www.lri.fr/~filliatr/ftp/ocamlweb/ocamlweb-1.41.tar.gz
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
+_md5_=f2b4a8483d514ed7d81477bb5d3e84a6

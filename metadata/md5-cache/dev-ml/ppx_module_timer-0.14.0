@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/base:= dev-ml/ppx_base:= dev-ml/stdio:= dev-ml/time_now:= dev-ml/ppxlib:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Ppx rewriter that records top-level module startup times
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/ppx_module_timer
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-ml/base:= dev-ml/ppx_base:= dev-ml/stdio:= dev-ml/time_now:= dev-ml/ppxlib:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.14.0
+SRC_URI=https://github.com/janestreet/ppx_module_timer/archive/v0.14.0.tar.gz -> ppx_module_timer-0.14.0.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=3aa136d6235ef83f021e1d704cd14bb8

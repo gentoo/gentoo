@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/jbuilder test? ( dev-ml/iTeML ) >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/jbuilder test? ( dev-ml/iTeML ) >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=Extra string functions for OCaml
 EAPI=6
 HOMEPAGE=https://github.com/rgrinberg/stringext
@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.5.0
 SRC_URI=https://github.com/rgrinberg/stringext/archive/1.5.0.tar.gz -> stringext-1.5.0.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=6c33702dec8e27042484c71df5e0e8c1

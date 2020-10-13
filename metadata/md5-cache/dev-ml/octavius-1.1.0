@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/jbuilder dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/jbuilder dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=ocamldoc comment syntax parser
 EAPI=6
 HOMEPAGE=https://github.com/ocaml-doc/octavius
@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/1.1.0
 SRC_URI=https://github.com/ocaml-doc/octavius/archive/v1.1.0.tar.gz -> octavius-1.1.0.tar.gz
-_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a	opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a	opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=cbcb5b3732af72b5c28797739eaf0f15

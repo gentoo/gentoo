@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=!dev-ml/ocaml-re dev-ml/seq:= test? ( dev-ml/ounit ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Regular expression library for OCaml
+EAPI=7
+HOMEPAGE=https://github.com/ocaml/ocaml-re
+IUSE=+ocamlopt test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=LGPL-2-with-linking-exception
+RDEPEND=!dev-ml/ocaml-re dev-ml/seq:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/1.9.0
+SRC_URI=https://github.com/ocaml/ocaml-re/archive/1.9.0.tar.gz -> ocaml-re-1.9.0.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=5cf80ac3d60730cc5d5867d0e4b1fa72

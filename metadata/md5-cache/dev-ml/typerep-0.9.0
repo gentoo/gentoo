@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/base:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/base:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=Library for creating runtime representation of OCaml types
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/typerep
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/typerep/archive/v0.9.0.tar.gz -> typerep-0.9.0.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=9715ff2e47717286dc2a7c1dc71b7e5f

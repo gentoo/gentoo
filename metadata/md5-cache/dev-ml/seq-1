@@ -1,0 +1,12 @@
+BDEPEND=dev-ml/opam-installer dev-lang/ocaml
+DEFINED_PHASES=install prepare
+DEPEND=>=dev-lang/ocaml-4:=
+DESCRIPTION=Compatibility package for OCaml's standard iterator type starting from 4.07.
+EAPI=7
+HOMEPAGE=https://github.com/ocaml/opam-repository/blob/master/packages/seq/seq.base/opam
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=dev-lang/ocaml-4:=
+SLOT=0/1
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
+_md5_=92db90c4feb0a12b78360db475fb3c33

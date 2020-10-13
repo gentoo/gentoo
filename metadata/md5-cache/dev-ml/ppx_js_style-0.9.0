@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ocaml-migrate-parsetree:= dev-ml/octavius:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ocaml-migrate-parsetree:= dev-ml/octavius:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=Code style checker for Jane Street Packages
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_js_style
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ocaml-migrate-parsetree:= dev-ml/octavius:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_js_style/archive/v0.9.0.tar.gz -> ppx_js_style-0.9.0.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=2c76d118f31c13292ce2ccc5461e0f61

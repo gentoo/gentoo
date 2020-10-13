@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=Shared [@@deriving] plugin registry
 EAPI=6
 HOMEPAGE=https://github.com/diml/ppx_derivers
@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-4:=
 SLOT=0/1.0
 SRC_URI=https://github.com/diml/ppx_derivers/archive/1.0.tar.gz -> ppx_derivers-1.0.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=db65d659fb2c39bbe68597337ed82d5d

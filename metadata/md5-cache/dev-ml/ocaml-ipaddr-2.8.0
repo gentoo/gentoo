@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_core:= dev-ml/ppx_type_conv:= dev-lang/ocaml:=[ocamlopt?] dev-ml/jbuilder dev-ml/findlib test? ( dev-ml/ounit ) >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_core:= dev-ml/ppx_type_conv:= dev-lang/ocaml:=[ocamlopt?] dev-ml/jbuilder dev-ml/findlib test? ( dev-ml/ounit ) >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=OCaml library for manipulation of IP (and MAC) address representations
 EAPI=5
 HOMEPAGE=https://github.com/mirage/ocaml-ipaddr
@@ -10,5 +10,5 @@ RDEPEND=dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_core:= dev-ml/ppx_typ
 RESTRICT=!test? ( test )
 SLOT=0/2.8.0
 SRC_URI=https://github.com/mirage/ocaml-ipaddr/archive/2.8.0.tar.gz -> ocaml-ipaddr-2.8.0.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=bd5949dbdf484129d9b3b6ad716fb3cb

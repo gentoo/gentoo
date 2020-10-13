@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=test? ( dev-ml/menhir ) >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=test? ( dev-ml/menhir ) >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=A composable build system for OCaml
 EAPI=5
 HOMEPAGE=https://github.com/janestreet/jbuilder
@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.0_beta14
 SRC_URI=https://github.com/janestreet/jbuilder/archive/1.0+beta14.tar.gz -> jbuilder-1.0-beta14.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=c506b3bd50e5dc7af6ef1e8ceab4a7b5

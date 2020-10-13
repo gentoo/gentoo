@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/base:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Pattern matching on flat options
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/ppx_optional
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/base:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.14.0
+SRC_URI=https://github.com/janestreet/ppx_optional/archive/v0.14.0.tar.gz -> ppx_optional-0.14.0.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=fac29e077f0b9c5bdd9c643f94289780

@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-ml/ppx_compare:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_hash:= dev-ml/ppx_js_style:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/ppx_compare:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_hash:= dev-ml/ppx_js_style:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=Base set of ppx rewriters
 EAPI=6
 HOMEPAGE=https://github.com/janestreet/ppx_base
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/ppx_compare:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_hash:= dev-ml/ppx_js_style:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_base/archive/v0.9.0.tar.gz -> ppx_base-0.9.0.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=d2eda158fb743ca8beea2f0c327bd1ef

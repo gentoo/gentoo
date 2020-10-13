@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/base:= dev-ml/jane-street-headers:= dev-ml/jst-config:= dev-ml/ppx_base:= dev-ml/ppx_optcomp:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Reports the current time
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/time_now
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=MIT
+RDEPEND=dev-ml/base:= dev-ml/jane-street-headers:= dev-ml/jst-config:= dev-ml/ppx_base:= dev-ml/ppx_optcomp:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.14.0
+SRC_URI=https://github.com/janestreet/time_now/archive/v0.14.0.tar.gz -> time_now-0.14.0.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=f9a636e5e7678a13731deaae40e26470

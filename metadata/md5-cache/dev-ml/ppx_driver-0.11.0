@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Feature-full driver for OCaml AST transformers
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/ppx_driver
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.11.0
+SRC_URI=https://github.com/janestreet/ppx_driver/archive/v0.11.0.tar.gz -> ppx_driver-0.11.0.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=112d66fa612dea180032f1d1fd159421

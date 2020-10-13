@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_derivers:= dev-ml/result:= dev-ml/cppo test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_derivers:= dev-ml/result:= dev-ml/cppo test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam-installer
 DESCRIPTION=Type-driven code generation for OCaml
 EAPI=5
 HOMEPAGE=https://github.com/ocaml-ppx/ppx_deriving
@@ -10,5 +10,5 @@ RDEPEND=dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_derivers:
 RESTRICT=!test? ( test )
 SLOT=0/4.2
 SRC_URI=https://github.com/ocaml-ppx/ppx_deriving/archive/v4.2.tar.gz -> ppx_deriving-4.2.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	17c71a5d96323df925f9f6db1215668a	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	opam	c053036d04fbcede5c53fe5752699eb5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	17c71a5d96323df925f9f6db1215668a	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	opam	4f1cff0457cf4790a5510753a67d1cc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=50a684a5c7daf6fd58e4ac8b3df38370

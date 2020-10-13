@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=>=dev-lang/ocaml-4.11.0:=[ocamlopt?] dev-ml/camlp5:=[ocamlopt?] dev-ml/num:= gtk? ( dev-ml/lablgtk:3=[sourceview,ocamlopt?] dev-ml/lablgtk-sourceview:3=[ocamlopt?] ) dev-ml/findlib doc? ( media-libs/netpbm[png,zlib] virtual/latex-base dev-tex/hevea dev-texlive/texlive-latexrecommended dev-texlive/texlive-pictures dev-texlive/texlive-mathscience dev-texlive/texlive-latexextra )
+DESCRIPTION=Proof assistant written in O'Caml
+EAPI=7
+HOMEPAGE=http://coq.inria.fr/
+IUSE=gtk debug +ocamlopt doc
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-4.11.0:=[ocamlopt?] dev-ml/camlp5:=[ocamlopt?] dev-ml/num:= gtk? ( dev-ml/lablgtk:3=[sourceview,ocamlopt?] dev-ml/lablgtk-sourceview:3=[ocamlopt?] )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/coq/coq/archive/V8.12.0.tar.gz -> coq-8.12.0.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=f94d533340503ac45a65dbb2cca70f6c

@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/result:= test? ( dev-ml/ppx_expect ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Parsing and printing of S-expressions in Canonical form
+EAPI=7
+HOMEPAGE=https://github.com/ocaml-dune/csexp
+IUSE=+ocamlopt test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=MIT
+RDEPEND=dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/1.3.2
+SRC_URI=https://github.com/ocaml-dune/csexp/releases/download/1.3.2/csexp-1.3.2.tbz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=08158d447a963ef5815a825854acea46

@@ -1,5 +1,6 @@
+BDEPEND=dev-ml/opam-installer dev-lang/ocaml
 DEFINED_PHASES=compile install
-DEPEND=dev-ml/ocamlbuild >=dev-lang/ocaml-4:= dev-ml/opam
+DEPEND=dev-ml/ocamlbuild >=dev-lang/ocaml-4:=
 DESCRIPTION=The Herd toolsuite to deal with .cat memory models
 EAPI=7
 HOMEPAGE=http://diy.inria.fr/sources/index.html
@@ -8,5 +9,5 @@ LICENSE=CeCILL-B
 RDEPEND=>=dev-lang/ocaml-4.02.0 >=dev-lang/ocaml-4:=
 SLOT=0
 SRC_URI=https://github.com/herd/herdtools7/archive/7.51.tar.gz -> herdtools7-7.51.tar.gz
-_eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=974f9fc0521c1807ea539d583457c728

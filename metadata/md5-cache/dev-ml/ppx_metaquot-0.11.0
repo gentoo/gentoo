@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/ppxlib:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Write OCaml AST fragment using OCaml syntax
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/ppx_metaquot
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~arm ~arm64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppxlib:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.11.0
+SRC_URI=https://github.com/janestreet/ppx_metaquot/archive/v0.11.0.tar.gz -> ppx_metaquot-0.11.0.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=d5ec5db9a8862ff64ed6d2efee890ff1
