@@ -23,6 +23,7 @@ BDEPEND="
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pylama[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)
 "
 
