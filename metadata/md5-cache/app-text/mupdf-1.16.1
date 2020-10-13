@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare
 DEPEND=media-libs/freetype:2=[static-libs?] media-libs/harfbuzz:=[static-libs?,truetype] media-libs/jbig2dec:=[static-libs?] media-libs/libpng:0=[static-libs?] >=media-libs/openjpeg-2.1:2=[static-libs?] virtual/jpeg[static-libs?] opengl? ( >=media-libs/freeglut-3.0.0:= ) ssl? ( libressl? ( >=dev-libs/libressl-2.8:0=[static-libs?] ) !libressl? ( >=dev-libs/openssl-1.1:0=[static-libs?] ) ) X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
-DESCRIPTION=a lightweight PDF viewer and toolkit written in portable C
+DESCRIPTION=A lightweight PDF viewer and toolkit written in portable C
 EAPI=7
 HOMEPAGE=https://mupdf.com/
 IUSE=X +javascript libressl opengl ssl static-libs
@@ -11,4 +11,4 @@ REQUIRED_USE=opengl? ( !static-libs )
 SLOT=0/1.16.1
 SRC_URI=https://mupdf.com/downloads/archive/mupdf-1.16.1-source.tar.xz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=cb208646ab3869d9e9e31035b8a2b2ff
+_md5_=a31e05fe58f3f8b23d160ab7e8f0fa2c

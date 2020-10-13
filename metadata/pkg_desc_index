@@ -2964,7 +2964,7 @@ app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.2: Tail with multiple windows
-app-text/mupdf 1.16.1 1.17.0: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.16.1 1.17.0 1.18.0: A lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -5145,7 +5145,7 @@ dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compi
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
-dev-lang/mujs 1.0.6 1.0.7: An embeddable Javascript interpreter in C.
+dev-lang/mujs 1.0.6 1.0.7 1.0.9: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.2.6: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
@@ -8850,7 +8850,7 @@ dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to te
 dev-python/pytest-mock 3.3.1: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific order
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
-dev-python/pytest-pylint 0.14.1: pytest plugin to check source code with pylint
+dev-python/pytest-pylint 0.14.1 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
