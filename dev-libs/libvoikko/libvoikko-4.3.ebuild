@@ -5,16 +5,18 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
 
-inherit python-r1
+inherit python-r1 verify-sig
 
 DESCRIPTION="Spell checking, hyphenation and morphological analysis tool for Finnish language"
 HOMEPAGE="https://voikko.puimula.org/"
-SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz"
+SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz
+	verify-sig? ( https://www.puimula.org/voikko-sources/libvoikko/${P}.tar.gz.asc )"
+
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="+expvfst +hfst"
+IUSE="+expvfst +hfst verify-sig"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -23,6 +25,9 @@ RESTRICT="test"
 DEPEND="${PYTHON_DEPS}
 	hfst? ( >=dev-util/hfstospell-0.5.0 )"
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( app-crypt/openpgp-keys-voikko )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 
 src_configure() {
 	local myconf=(
