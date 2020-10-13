@@ -3,7 +3,8 @@
 
 EAPI=7
 
-CRATES=""
+CRATES="
+"
 
 inherit bash-completion-r1 cargo prefix
 
@@ -23,6 +24,7 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 MIT Un
 SLOT="0"
 IUSE=""
 
+# requires old libressl-2.5, so openssl only for now.
 DEPEND="
 	app-arch/xz-utils
 	net-misc/curl:=[http2,ssl]
@@ -58,8 +60,7 @@ src_compile() {
 src_install() {
 	cargo_src_install
 	einstalldocs
-	exeinto /usr/share/rustup
-	newexe "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" symlink_rustup
+	newbin "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" rustup-init-gentoo
 
 	ln -s "${ED}/usr/bin/rustup-init" rustup || die
 	./rustup completions bash rustup > "${T}/rustup" || die
@@ -73,9 +74,10 @@ src_install() {
 
 pkg_postinst() {
 		einfo "No rustup toolchains installed by default"
-		einfo "system rust toolchain can be added to rustup by running"
-		einfo "helper script installed to ${EPREFIX}/usr/share/rustup/symlink_rustup"
-		einfo "it will create proper symlinks in user home directory"
+		einfo "eselect activated system rust toolchain can be added to rustup by running"
+		einfo "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
+		einfo "it will create symlinks to system-installed rustup in home directory"
 		einfo "and rustup updates will be managed by portage"
-		einfo "please delete current rustup installation (if any) before running the script"
+		einfo "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
+		einfo "before running rustup-init-gentoo"
 }
