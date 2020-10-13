@@ -9349,7 +9349,7 @@ dev-qt/qtbluetooth 5.14.2-r1 5.15.1: Bluetooth support library for the Qt5 frame
 dev-qt/qtcharts 5.14.2 5.15.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.14.2 5.15.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.14.2 5.15.1 5.15.1-r1: Cross-platform application development framework
+dev-qt/qtcore 5.14.2 5.15.1-r1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.14.2 5.15.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.14.2 5.15.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.14.2-r4 5.15.1: The QML and Quick modules for the Qt5 framework
@@ -12300,7 +12300,7 @@ kde-frameworks/threadweaver 5.74.0 5.75.0: Framework for managing threads using 
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
 kde-misc/kdeconnect 20.04.3-r1 20.08.2: Adds communication between KDE Plasma and your smartphone
-kde-misc/kdiff3 1.8.3-r1 1.8.4: Frontend to diff3 based on KDE Frameworks
+kde-misc/kdiff3 1.8.4: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
 kde-misc/kio-fuse 4.95.0: FUSE interface for KIO
@@ -12863,7 +12863,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.7.0: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.2.9 4.3.0: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.3.0: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
@@ -13163,7 +13163,7 @@ media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for gener
 media-libs/liblo 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
-media-libs/liblscp 0.6.0 0.6.2 9999: C++ library for the Linux Sampler control protocol
+media-libs/liblscp 0.6.2 9999: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.24.0-r1 1.24.1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.5.2 1.6.2: Extensible multimedia container format based on EBML
@@ -13177,7 +13177,7 @@ media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
-media-libs/libmpdclient 2.16 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
+media-libs/libmpdclient 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
@@ -13922,12 +13922,12 @@ media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.1 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.6.2 0.6.3 9999: Qt application to control FluidSynth
+media-sound/qsynth 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.16 0.9.17: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
-media-sound/quimup 1.4.3 1.4.4: Qt5 client for the music player daemon (MPD)
+media-sound/quimup 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
@@ -14025,7 +14025,7 @@ media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6-r1 1.7: Digital vinyl emulation software
 media-sound/yarock 1.4.0-r1: Qt-based music player
-media-sound/yoshimi 1.7.1-r1 1.7.2: Software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.7.2: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
 media-tv/channeleditor 1.9.2.1-r2: Editor for VDR channels.conf
 media-tv/dtv-scan-tables 0_p20171003 0_p20190922 9999: Digital TV scan tables in v3 and v5 format
@@ -15373,7 +15373,7 @@ net-news/canto-curses 0.9.9: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.7-r1 1.12.9: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.13 2.19-r1 2.20.1: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.19.3 0.19.4 9999: Qt-based RSS/Atom feed reader
+net-news/quiterss 0.19.4 9999: Qt-based RSS/Atom feed reader
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8 2.1 2.1_p20200310: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
@@ -16113,7 +16113,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.10.7 3.10.9 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.10.9 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.14.0 1.15.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
