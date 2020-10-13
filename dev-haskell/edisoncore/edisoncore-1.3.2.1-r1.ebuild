@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,10 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A library of efficent, purely-functional data structures (Core Implementations)"
 HOMEPAGE="http://rwd.rdockins.name/edison/home/"
-SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
+SRC_URI="
+	https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz
+	https://dev.gentoo.org/~slyfox/distfiles/edisoncore-1.3.2.1-ghc-8.8.patch
+"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
@@ -32,4 +35,4 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.3.2.1-ghc-8.8.patch" )
+PATCHES=( "${DISTDIR}/${PN}-1.3.2.1-ghc-8.8.patch" )
