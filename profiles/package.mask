@@ -437,10 +437,6 @@ net-nntp/sn
 # Bug #742395
 app-shells/mpv-bash-completion
 
-# Louis Sautier <sbraz@gentoo.org> (2020-09-13)
-# Masked for removal in 30 days, unmaintained, no more revdeps.
-dev-python/args
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
