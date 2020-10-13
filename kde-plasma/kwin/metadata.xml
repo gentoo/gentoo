@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="multimedia">Enable effect video button in desktop effects KCM</flag>
+		<flag name="screencast">Enable screencast portal using <pkg>media-video/pipewire</pkg></flag>
 	</use>
 </pkgmetadata>
