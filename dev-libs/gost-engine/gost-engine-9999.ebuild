@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/gost-engine/engine.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~hppa"
 	SRC_URI="https://github.com/gost-engine/engine/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/engine-${PV}"
 fi
+
+src_prepare() {
+	cmake-utils_src_prepare
+	sed 's:Werror:Wno-error:g' -i "${S}/CMakeLists.txt" || die
+}
