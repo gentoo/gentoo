@@ -1,0 +1,60 @@
+commit f3c6846ad9015de0adb44f519ff010ff0ed51180 (HEAD, origin/upgrade-ppxlib-0.18.0)
+Author: Nathan Rebours <nathan.p.rebours@gmail.com>
+Date:   Mon Oct 5 18:20:23 2020 +0200
+
+    Make ppx_fields_conv compatible with ppxlib.0.18.0
+    
+    ppxlib.0.18.0 upgrades to the 4.11 AST which results in a change
+    in string constants representation. This PR makes ppx_fields_conv
+    compatible with the latest ppxlib.
+    
+    You might want for the actual release of ppxlib.0.18.0 before merging
+    this!
+    
+    Signed-off-by: Nathan Rebours <nathan.p.rebours@gmail.com>
+
+diff --git a/ppx_fields_conv.opam b/ppx_fields_conv.opam
+index 91a9692..3e2d24a 100644
+--- a/ppx_fields_conv.opam
++++ b/ppx_fields_conv.opam
+@@ -15,7 +15,7 @@ depends: [
+   "base"      {>= "v0.14" & < "v0.15"}
+   "fieldslib" {>= "v0.14" & < "v0.15"}
+   "dune"      {>= "2.0.0"}
+-  "ppxlib"    {>= "0.14.0"}
++  "ppxlib"    {>= "0.18.0"}
+ ]
+ synopsis: "Generation of accessor and iteration functions for ocaml records"
+ description: "
+diff --git a/src/ppx_fields_conv.ml b/src/ppx_fields_conv.ml
+index 130e82b..87752cb 100644
+--- a/src/ppx_fields_conv.ml
++++ b/src/ppx_fields_conv.ml
+@@ -34,9 +34,6 @@ let check_no_collision =
+ 
+ module A = struct (* Additional AST construction helpers *)
+ 
+-  let exp_string : (loc:Location.t -> string -> expression) = fun ~loc s ->
+-    pexp_constant ~loc (Pconst_string (s,None))
+-
+   let pat_name : (loc:Location.t -> string -> pattern) = fun ~loc name ->
+     ppat_var ~loc (Loc.make name ~loc)
+ 
+@@ -440,7 +437,7 @@ module Gen_struct = struct
+           [%expr
+               Fieldslib.Field.Field { Fieldslib.Field.For_generated_code.
+                 force_variance = (fun (_ : [%t perm]) -> ());
+-                name = [%e A.exp_string ~loc name];
++                name = [%e estring ~loc name];
+                 getter = [%e A.exp_name ~loc name];
+                 setter = [%e setter_field];
+                 fset = [%e fset];}]
+@@ -725,7 +722,7 @@ module Gen_struct = struct
+     let getter_and_setters, fields = gen_fields ~private_ ~loc labdecs in
+     let create = creation_fun ~loc record_name labdecs in
+     let simple_create = simple_creation_fun ~loc record_name labdecs in
+-    let names = List.map (Inspect.field_names labdecs) ~f:(A.exp_string ~loc) in
++    let names = List.map (Inspect.field_names labdecs) ~f:(estring ~loc) in
+     let fields_module =
+       if String.equal record_name "t" then "Fields" else "Fields_of_" ^ record_name
+     in
