@@ -1,20 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit rebar
 
-DESCRIPTION="Pure Erlang MySQL driver"
-HOMEPAGE="https://github.com/processone/p1_mysql"
+DESCRIPTION="Index tree for MQTT topic filters"
+HOMEPAGE="https://github.com/processone/mqtree"
 SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
-DEPEND=">=dev-lang/erlang-17.1"
+DEPEND=">=dev-lang/erlang-17.5
+	>=dev-erlang/p1_utils-1.0.20"
 RDEPEND="${DEPEND}"
 
-DOCS=( CHANGELOG.md README.md )
+DOCS=( README.md )
