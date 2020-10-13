@@ -16,10 +16,10 @@ operator. This PR makes this known to SIP as well.
  python_orocos_kdl/PyKDL/kinfam.sip   | 29 ++++++++++++++++++++++++++++
  2 files changed, 32 insertions(+)
 
-diff --git a/python_orocos_kdl/PyKDL/dynamics.sip b/python_orocos_kdl/PyKDL/dynamics.sip
+diff --git a/PyKDL/dynamics.sip b/python_orocos_kdl/PyKDL/dynamics.sip
 index e0096dd..36f833c 100644
---- a/python_orocos_kdl/PyKDL/dynamics.sip
-+++ b/python_orocos_kdl/PyKDL/dynamics.sip
+--- a/PyKDL/dynamics.sip
++++ b/PyKDL/dynamics.sip
 @@ -72,4 +72,7 @@ public:
      int JntToCoriolis(const JntArray &q, const JntArray &q_dot, JntArray &coriolis);
  	int JntToMass(const JntArray &q, JntSpaceInertiaMatrix& H);
@@ -28,10 +28,10 @@ index e0096dd..36f833c 100644
 +private:
 +    ChainDynParam& operator=(const ChainDynParam&);
  };
-diff --git a/python_orocos_kdl/PyKDL/kinfam.sip b/python_orocos_kdl/PyKDL/kinfam.sip
+diff --git a/PyKDL/kinfam.sip b/python_orocos_kdl/PyKDL/kinfam.sip
 index d87fd00..e87ceb8 100644
---- a/python_orocos_kdl/PyKDL/kinfam.sip
-+++ b/python_orocos_kdl/PyKDL/kinfam.sip
+--- a/PyKDL/kinfam.sip
++++ b/PyKDL/kinfam.sip
 @@ -344,6 +344,9 @@ public:
      ChainFkSolverPos_recursive(const Chain& chain);
      virtual int JntToCart(const JntArray& q_in, Frame& p_out,int segmentNr=-1);

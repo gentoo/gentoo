@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+EAPI=7
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/orocos/orocos_kinematics_dynamics"
 fi
 
-inherit ${SCM} python-r1 cmake-utils
+inherit ${SCM} python-r1 cmake
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
@@ -41,19 +41,19 @@ else
 fi
 
 src_configure() {
-	python_foreach_impl cmake-utils_src_configure
+	python_foreach_impl cmake_src_configure
 }
 
 src_compile() {
-	python_foreach_impl cmake-utils_src_compile
+	python_foreach_impl cmake_src_compile
 }
 
 src_test() {
-	python_foreach_impl cmake-utils_src_test
+	python_foreach_impl cmake_src_test
 }
 
 src_install() {
-	python_foreach_impl cmake-utils_src_install
+	python_foreach_impl cmake_src_install
 
 	# Need to have package.xml in our custom gentoo path
 	insinto /usr/share/ros_packages/${PN}
