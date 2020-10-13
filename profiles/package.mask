@@ -430,13 +430,6 @@ sys-fs/ufsutils
 # #742158.
 net-nntp/sn
 
-# Jonas Stein <jstein@gentoo.org> (2020-09-13)
-# mpv bash completion is no longer needed and the package is not
-# compatible with the remaining packages.
-# Masked for removal after 2020-11-01.
-# Bug #742395
-app-shells/mpv-bash-completion
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
