@@ -5414,7 +5414,7 @@ dev-libs/libgcrypt 1.8.6: General purpose crypto library based on the code used 
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 1.0.1: A linkable library for Git
+dev-libs/libgit2 1.0.1 1.1.0: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4 1.6.1: Library for code common to Gnome games
 dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
@@ -8401,7 +8401,7 @@ dev-python/mako 1.1.3-r1: A Python templating language
 dev-python/mamba 0.11.0 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3: Python implementation of the markdown markup language
+dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3 3.3.1: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.9: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -9280,7 +9280,7 @@ dev-python/yapf 0.30.0: A formatter for Python files
 dev-python/yappi 1.2.5-r1: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 1.5.1 1.6.0: Yet another URL library
+dev-python/yarl 1.5.1 1.6.0 1.6.2: Yet another URL library
 dev-python/yaswfp 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
 dev-python/zc-lockfile 2.0: Basic inter-process locks
