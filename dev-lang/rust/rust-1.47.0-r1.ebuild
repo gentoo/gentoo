@@ -247,7 +247,7 @@ src_configure() {
 
 	rust_target="$(rust_abi)"
 
-	cat <<- EOF > "${S}"/config.toml
+	cat <<- _EOF_ > "${S}"/config.toml
 		[llvm]
 		optimize = $(toml_usex !debug)
 		release-debuginfo = $(toml_usex debug)
@@ -304,40 +304,40 @@ src_configure() {
 		jemalloc = false
 		[dist]
 		src-tarball = false
-	EOF
+	_EOF_
 
 	for v in $(multilib_get_enabled_abi_pairs); do
 		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
 
-		cat <<- EOF >> "${S}"/config.env
+		cat <<- _EOF_ >> "${S}"/config.env
 			CFLAGS_${rust_target}=${arch_cflags}
-		EOF
+		_EOF_
 
-		cat <<- EOF >> "${S}"/config.toml
+		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.${rust_target}]
 			cc = "$(tc-getBUILD_CC)"
 			cxx = "$(tc-getBUILD_CXX)"
 			linker = "$(tc-getCC)"
 			ar = "$(tc-getAR)"
-		EOF
+		_EOF_
 		# librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
 		if use elibc_musl; then
-			cat <<- EOF >> "${S}"/config.toml
+			cat <<- _EOF_ >> "${S}"/config.toml
 				crt-static = false
-			EOF
+			_EOF_
 		fi
 		if use system-llvm; then
-			cat <<- EOF >> "${S}"/config.toml
+			cat <<- _EOF_ >> "${S}"/config.toml
 				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
-			EOF
+			_EOF_
 		fi
 	done
 	if use wasm; then
-		cat <<- EOF >> "${S}"/config.toml
+		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.wasm32-unknown-unknown]
 			linker = "$(usex system-llvm lld rust-lld)"
-		EOF
+		_EOF_
 	fi
 
 	if [[ -n ${I_KNOW_WHAT_I_AM_DOING_CROSS} ]]; then # whitespace intentionally shifted below
@@ -380,17 +380,17 @@ src_configure() {
 		use llvm_targets_${cross_llvm_target} || die "need llvm_targets_${cross_llvm_target} target enabled"
 		command -v ${cross_toolchain}-gcc > /dev/null 2>&1 || die "need ${cross_toolchain} cross toolchain"
 
-		cat <<- EOF >> "${S}"/config.toml
+		cat <<- _EOF_ >> "${S}"/config.toml
 			[target.${cross_rust_target}]
 			cc = "${cross_toolchain}-gcc"
 			cxx = "${cross_toolchain}-g++"
 			linker = "${cross_toolchain}-gcc"
 			ar = "${cross_toolchain}-ar"
-		EOF
+		_EOF_
 		if use system-llvm; then
-			cat <<- EOF >> "${S}"/config.toml
+			cat <<- _EOF_ >> "${S}"/config.toml
 				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
-			EOF
+			_EOF_
 		fi
 
 		# append cross target to "normal" target list
@@ -426,7 +426,7 @@ src_compile() {
 	(
 	IFS=$'\n'
 	env $(cat "${S}"/config.env) RUST_BACKTRACE=1\
-		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+		"${EPYTHON}" ./x.py dist -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 	)
 }
 
@@ -502,12 +502,12 @@ src_install() {
 	dobashcomp build/tmp/dist/cargo-image/etc/bash_completion.d/cargo
 
 	local symlinks=(
+		cargo
 		rustc
 		rustdoc
 		rust-gdb
 		rust-gdbgui
 		rust-lldb
-		cargo
 	)
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
@@ -515,20 +515,26 @@ src_install() {
 	use rls && symlinks+=( rls )
 	use rustfmt && symlinks+=( rustfmt cargo-fmt )
 
+	einfo "installing eselect-rust symlinks and paths"
 	local i
 	for i in "${symlinks[@]}"; do
 		# we need realpath on /usr/bin/* symlink return version-appended binary path.
 		# so /usr/bin/rustc should point to /usr/lib/rust/<ver>/bin/rustc-<ver>
 		# need to fix eselect-rust to remove this hack.
-		mv -v "${ED}/usr/lib/${PN}/${PV}/bin/${i}" "${ED}/usr/lib/${PN}/${PV}/bin/${i}-${PV}" || die
-		ln -v "${ED}/usr/lib/${PN}/${PV}/bin/${i}-${PV}" "${ED}/usr/lib/${PN}/${PV}/bin/${i}" || die
-		dosym "../lib/${PN}/${PV}/bin/${i}-${PV}" "/usr/bin/${i}-${PV}"
+		local ver_i="${i}-${PV}"
+		mv -v "${ED}/usr/lib/${PN}/${PV}/bin/${i}" "${ED}/usr/lib/${PN}/${PV}/bin/${ver_i}" || die
+		ln -v "${ED}/usr/lib/${PN}/${PV}/bin/${ver_i}" "${ED}/usr/lib/${PN}/${PV}/bin/${i}" || die
+		dosym "../lib/${PN}/${PV}/bin/${ver_i}" "/usr/bin/${ver_i}"
 	done
+
+	# symlinks to switch components to active rust in eselect
 	dosym "../../lib/${PN}/${PV}/share/doc" "/usr/share/doc/${P}"
+	dosym "rust/${PV}/lib/rustlib" "/usr/lib/rustlib-${PV}"
+	dosym "${PV}/share/man" "/usr/lib/${PN}/man-${PV}"
 
 	newenvd - "50${P}" <<-_EOF_
-		LDPATH="${EPREFIX}/usr/lib/${PN}/${PV}/lib"
-		MANPATH="${EPREFIX}/usr/lib/${PN}/${PV}/share/man"
+		LDPATH="${EPREFIX}/usr/lib/rust/lib"
+		MANPATH="${EPREFIX}/usr/lib/rust/man"
 		$(usex elibc_musl 'CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_RUSTFLAGS="-C target-feature=-crt-static"' '')
 	_EOF_
 
@@ -536,14 +542,18 @@ src_install() {
 	rm -rf "${ED}/usr/lib/${PN}/${PV}/doc"/*.old || die
 
 	# note: eselect-rust adds EROOT to all paths below
-	cat <<-EOF > "${T}/provider-${P}"
+	cat <<-_EOF_ > "${T}/provider-${P}"
 		/usr/bin/cargo
 		/usr/bin/rustdoc
 		/usr/bin/rust-gdb
 		/usr/bin/rust-gdbgui
 		/usr/bin/rust-lldb
+		/usr/lib/rustlib
+		/usr/lib/rust/lib
+		/usr/lib/rust/man
 		/usr/share/doc/rust
-	EOF
+	_EOF_
+
 	if use clippy; then
 		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
