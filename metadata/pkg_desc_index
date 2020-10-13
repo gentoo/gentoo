@@ -13966,7 +13966,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26-r1 1.1.26-r2 1.1.42: Spotify is a social music platform
-media-sound/strawberry 0.6.13 0.7.2 0.8.1 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.6.13 0.7.2 0.8.1 0.8.2 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
