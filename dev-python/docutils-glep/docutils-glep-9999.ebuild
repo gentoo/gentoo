@@ -3,6 +3,7 @@
 
 EAPI=6
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 EGIT_REPO_URI="https://github.com/mgorny/docutils-glep.git"
 
@@ -14,10 +15,5 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND=">=dev-python/docutils-0.10[${PYTHON_USEDEP}]
-	${COMMON_DEPEND}"
-DEPEND="${COMMON_DEPEND}"
+RDEPEND=">=dev-python/docutils-0.10[${PYTHON_USEDEP}]"
