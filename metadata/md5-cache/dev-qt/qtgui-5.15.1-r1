@@ -5,7 +5,7 @@ DESCRIPTION=The GUI module and platform plugins for the Qt5 framework
 EAPI=7
 HOMEPAGE=https://www.qt.io/
 IUSE=accessibility dbus egl eglfs evdev +gif gles2-only ibus jpeg +libinput +png tslib tuio +udev vnc vulkan wayland +X debug test
-KEYWORDS=amd64 arm arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 arm arm64 ~hppa ppc ppc64 ~sparc ~x86
 LICENSE=|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3
 PDEPEND=ibus? ( app-i18n/ibus ) wayland? ( ~dev-qt/qtwayland-5.15.1 )
 RDEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.15.1:5= dev-util/gtk-update-icon-cache media-libs/fontconfig >=media-libs/freetype-2.6.1:2 >=media-libs/harfbuzz-1.6.0:= sys-libs/zlib:= dbus? ( ~dev-qt/qtdbus-5.15.1 ) egl? ( media-libs/mesa[egl] ) eglfs? ( media-libs/mesa[gbm] x11-libs/libdrm ) evdev? ( sys-libs/mtdev ) gles2-only? ( media-libs/mesa[gles2] ) !gles2-only? ( virtual/opengl ) jpeg? ( virtual/jpeg:0 ) libinput? ( dev-libs/libinput:= >=x11-libs/libxkbcommon-0.5.0 ) png? ( media-libs/libpng:0= ) tslib? ( >=x11-libs/tslib-1.21 ) tuio? ( ~dev-qt/qtnetwork-5.15.1 ) udev? ( virtual/libudev:= ) vnc? ( ~dev-qt/qtnetwork-5.15.1 ) vulkan? ( dev-util/vulkan-headers ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libxcb-1.12:=[xkb] >=x11-libs/libxkbcommon-0.5.0[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm ) dev-qt/qtchooser
@@ -14,4 +14,4 @@ RESTRICT=test
 SLOT=5/5.15.1
 SRC_URI=https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtbase-everywhere-src-5.15.1.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	qt5-build	b73c1a2aa059052f72ed80be501ea5ca	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=19ae751960edbdd1fc773257f039518c
+_md5_=4f6e2712bbfc11df650637e1b6a58130

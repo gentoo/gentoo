@@ -3688,7 +3688,7 @@ dev-erlang/meck 0.8.4 0.8.12 0.8.13: Mocking library for Erlang
 dev-erlang/mqtree 1.0.4 1.0.5 1.0.7: Index tree for MQTT topic filters
 dev-erlang/p1_acme 1.0.5: ACME client library for Erlang
 dev-erlang/p1_mysql 1.0.2 1.0.11 1.0.14 1.0.15: Pure Erlang MySQL driver
-dev-erlang/p1_oauth2 0.6.1 0.6.5 0.6.6: Erlang OAuth 2.0 implementation
+dev-erlang/p1_oauth2 0.6.6 0.6.7: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8 1.1.9: Pure Erlang PostgreSQL driver
 dev-erlang/p1_utils 1.0.19 1.0.20: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication

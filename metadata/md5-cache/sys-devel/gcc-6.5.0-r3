@@ -5,7 +5,7 @@ DESCRIPTION=The GNU Compiler Collection
 EAPI=7
 HOMEPAGE=https://gcc.gnu.org/
 IUSE=test vanilla +nls altivec debug +cxx +nptl +fortran doc hardened multilib objc awt gcj pgo objc-gc libssp objc++ +openmp fixed-point go +sanitize graphite cilk ada +vtv jit mpx +pie +ssp +pch
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 LICENSE=GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+
 PDEPEND=elibc_glibc? ( >=sys-libs/glibc-2.13 ) >=sys-devel/gcc-config-2.3
 RDEPEND=sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0= >=dev-libs/mpc-0.8.1:0= graphite? ( >=dev-libs/isl-0.14:0= )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=6.5.0
 SRC_URI=mirror://gnu/gcc/gcc-6.5.0/gcc-6.5.0.tar.xz mirror://gentoo/gcc-6.5.0-patches-5.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-6.5.0-patches-5.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-6.5.0-patches-5.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-6.5.0-patches-5.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-6.5.0-patches-5.tar.bz2 https://dev.gentoo.org/~tamiko/distfiles/gcc-6.5.0-patches-5.tar.bz2 https://dev.gentoo.org/~slyfox/distfiles/gcc-6.5.0-patches-5.tar.bz2 gcj? ( ftp://sourceware.org/pub/java/ecj-4.5.jar )
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain	95b9d37e17621738d2113a52fb4f59dd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=f414cd713c37eb8a2e23cb7c5a0d1f13
+_md5_=b2ec83ec77003d2a6717241f6e221a81
