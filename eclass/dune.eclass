@@ -4,6 +4,7 @@
 # @ECLASS: dune.eclass
 # @MAINTAINER:
 # rkitover@gmail.com
+# Mark Wright <gienah@gentoo.org>
 # @AUTHOR:
 # Rafael Kitover <rkitover@gmail.com>
 # @SUPPORTED_EAPIS: 5 6 7
@@ -25,8 +26,10 @@ esac
 EXPORT_FUNCTIONS src_compile src_test src_install
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
-DEPEND="${RDEPEND}
-	dev-ml/dune"
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) DEPEND="${RDEPEND} dev-ml/dune";;
+	*) BDEPEND="dev-ml/dune dev-lang/ocaml"; DEPEND="${RDEPEND}" ;;
+esac
 
 dune_src_compile() {
 	dune build @install || die

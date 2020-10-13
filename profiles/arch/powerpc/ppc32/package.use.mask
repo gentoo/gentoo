@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mark Wright <gienah@gentoo.org> (2020-10-11)
+# dev-ml/ounit2 is not keyworded
+dev-ml/cudf test
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # ppc32 has no virtual/rust support yet, needed by newer
 # gnome-base/librsvg, et al
