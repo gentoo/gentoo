@@ -3650,7 +3650,7 @@ dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ progra
 dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port
 dev-embedded/pista 0.70: Commandline-driven interface to PICSTART+ PIC programmer
 dev-embedded/pk2cmd 1.20: An application for working with the Microchip PicKit2 PIC programmer
-dev-embedded/platformio 4.3.4: An open source ecosystem for IoT development
+dev-embedded/platformio 5.0.1: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
 dev-embedded/sdcc 3.8.0-r1 4.0.0 9999: Small device C compiler (for various microprocessors)
