@@ -129,6 +129,10 @@ RDEPEND="
 	acct-user/croc
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-disable-network-tests.patch"
+)
+
 DOCS=( README.md )
 
 src_prepare() {
@@ -152,4 +156,8 @@ src_install() {
 	systemd_dounit croc.service
 	newbashcomp src/install/bash_autocomplete croc
 	einstalldocs
+}
+
+src_test() {
+	go test -work ./... || die
 }
