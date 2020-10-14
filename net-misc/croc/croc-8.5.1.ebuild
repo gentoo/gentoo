@@ -100,8 +100,8 @@ EGO_SUM=(
 	"golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae"
 	"golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae/go.mod"
 	"golang.org/x/sys v0.0.0-20200930185726-fdedc70b468f/go.mod"
-	"golang.org/x/sys v0.0.0-20201009025420-dfb3f7c4e634"
-	"golang.org/x/sys v0.0.0-20201009025420-dfb3f7c4e634/go.mod"
+	"golang.org/x/sys v0.0.0-20201013132646-2da7054afaeb"
+	"golang.org/x/sys v0.0.0-20201013132646-2da7054afaeb/go.mod"
 	"golang.org/x/text v0.3.0/go.mod"
 	"golang.org/x/text v0.3.3"
 	"golang.org/x/text v0.3.3/go.mod"
@@ -139,7 +139,7 @@ src_prepare() {
 	sed -i -e "s|_cli_bash_autocomplete|_croc|g" \
 		src/install/bash_autocomplete || die
 	# Set correct version
-	sed -i -e "s|v8.4.0-224c442|v${PV}|g" \
+	sed -i -e "s|v8.5.0-586fc08|v${PV}|g" \
 		src/cli/cli.go || die
 }
 
