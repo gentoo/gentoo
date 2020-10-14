@@ -1,14 +1,15 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-ml/csexp:= test? ( dev-ml/ppx_expect ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=dev-ml/csexp:= dev-ml/findlib:= test? ( dev-ml/ppx_expect ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=A composable build system for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/dune
 IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=dev-ml/csexp:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=dev-ml/csexp:= dev-ml/findlib:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
 SLOT=0/2.7.1
 SRC_URI=https://github.com/ocaml/dune/archive/2.7.1.tar.gz -> dune-2.7.1.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=93a87b419426c7da5d773de02a204964
+_md5_=d2ea8b4cced2c73af38ae88c818cca30

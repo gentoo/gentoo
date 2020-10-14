@@ -11,4 +11,4 @@ RDEPEND=dev-lang/ocaml:= x11-libs/cairo gtk? ( dev-ml/lablgtk:2= ) pango? ( x11-
 SLOT=0/1.2.0
 SRC_URI=https://cgit.freedesktop.org/cairo-ocaml/snapshot/cairo-ocaml-1.2.0.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	findlib	17c71a5d96323df925f9f6db1215668a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=cde9e96f6459c098b39b2c97362e95a8
+_md5_=03d2a65ae09b5132526e5dbed1dd8886

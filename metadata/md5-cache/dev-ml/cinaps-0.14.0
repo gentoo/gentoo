@@ -8,7 +8,8 @@ IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/ocaml-ppx/cinaps/archive/v0.14.0.tar.gz -> cinaps-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=74a0134817de7de8da517cf29af699cd
+_md5_=c2985d5b68e3b73ef802f7c9eff5980f
