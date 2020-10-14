@@ -13,9 +13,11 @@ LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-ml/csexp:=
+	dev-ml/findlib:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
