@@ -16,10 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	app-text/texlive
+	app-text/texlive[extra]
 	$( python_gen_cond_dep \
 		'dev-python/importlib_metadata[${PYTHON_USEDEP}]' python3_7 )
-	dev-python/matplotlib[${PYTHON_USEDEP}]
+	dev-python/matplotlib[latex,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 "
