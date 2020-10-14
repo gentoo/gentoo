@@ -11337,7 +11337,7 @@ games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating 
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.52: Interpreter for Z-code based text games
 games-engines/gargoyle 2011.1-r1: An Interactive Fiction (IF) player supporting all major formats
-games-engines/love 0.7.2-r2 0.8.0-r2 11.3 11.3-r100 9999: A framework for 2D games in Lua
+games-engines/love 0.7.2-r2 0.7.2-r100 0.8.0-r2 0.8.0-r100 11.3 11.3-r100 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.8.3: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.46.0 9999: Open source reimplementation of TES III: Morrowind
@@ -12446,7 +12446,7 @@ mail-filter/dovecot_deleted_to_trash 0.6: Deleted to trash IMAP plugin for Dovec
 mail-filter/exim-geoip 0.1-r1: This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim
 mail-filter/exim-p0f 0.1-r1: This is p0f version 3 dlfunc library for Exim
 mail-filter/gld 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
-mail-filter/imapfilter 2.6.16: An IMAP mail filtering utility
+mail-filter/imapfilter 2.6.16 2.6.16-r100: An IMAP mail filtering utility
 mail-filter/libmilter 1.0.2 1.0.2_p1 1.0.2_p1-r1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
@@ -14444,7 +14444,7 @@ net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.0 2.0.1 2.0.2 2.0.2-r1 2.0.3: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
-net-analyzer/suricata 5.0.4 6.0.0: High performance Network IDS, IPS and Network Security Monitoring engine
+net-analyzer/suricata 5.0.4 6.0.0 6.0.0-r100: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.87 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.01 5.02: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
@@ -15401,7 +15401,7 @@ net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client writ
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 2.0.3-r4 2.0.3-r5 2.0.3-r6 2.0.3-r7 2.0.3-r8 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
-net-p2p/eiskaltdcpp 2.2.10 9999: Qt/DC++ based client for DirectConnect and ADC protocols
+net-p2p/eiskaltdcpp 2.2.10 2.2.10-r100 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1484 0.7.5_p1486: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
@@ -17142,7 +17142,7 @@ sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.19.3-r1 1.20.0: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubico-piv-tool 2.1.1 2.1.1-r1 2.1.1-r2: Command line tool for the YubiKey PIV application
+sys-auth/yubico-piv-tool 2.1.1 2.1.1-r1 2.1.1-r2: Command-line tool and p11-kit module for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 2.01.22270-r1 3.04.23699: Microsemi Adaptec RAID Controller Command Line Utility
@@ -18113,7 +18113,7 @@ www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.15: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
-www-servers/lighttpd 1.4.55-r1: Lightweight high-performance web server
+www-servers/lighttpd 1.4.55-r1 1.4.55-r100: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3: Robust, small and high performance http and reverse proxy server
