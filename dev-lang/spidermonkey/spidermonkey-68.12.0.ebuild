@@ -198,6 +198,10 @@ src_test() {
 		KNOWN_TESTFAILURES+=( non262/Date/timeclip.js )
 	fi
 
+	if [[ $(tc-endian) == "big" ]] ; then
+		KNOWN_TESTFAILURES+=( test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js )
+	fi
+
 	echo "" > "${T}"/known_failures.list || die
 
 	local KNOWN_TESTFAILURE
