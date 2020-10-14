@@ -9542,14 +9542,14 @@ dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a den
 dev-ros/laser_filters 1.8.11 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.5 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.6 9999: Converts representations of LaserScan and MultiEchoLaserScan
-dev-ros/libmavconn 1.2.0 9999: MAVLink communication library
+dev-ros/libmavconn 1.2.0 1.4.0 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.11.0 9999: Tutorial showing how to build a C++ program with RViz displays and features
 dev-ros/map_msgs 1.14.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.17.0 1.17.1 9999: Offers map data as a ROS service
-dev-ros/mavlink-gbp-release 2020.7.7-r1: MAVLink message marshaling library
-dev-ros/mavros 1.2.0 9999: MAVLink extendable communication node for ROS
-dev-ros/mavros_extras 1.2.0 9999: Extra nodes and plugins for mavros
-dev-ros/mavros_msgs 1.2.0 9999: Messages for MAVROS
+dev-ros/mavlink-gbp-release 2020.9.10: MAVLink message marshaling library
+dev-ros/mavros 1.2.0 1.4.0 9999: MAVLink extendable communication node for ROS
+dev-ros/mavros_extras 1.2.0 1.4.0 9999: Extra nodes and plugins for mavros
+dev-ros/mavros_msgs 1.2.0 1.4.0 9999: Messages for MAVROS
 dev-ros/media_export 0.3.0 9999: Allow ROS packages to export media paths to each other
 dev-ros/message_filters 1.15.8 9999: Set of message filters which take in messages and outputs those at a later time
 dev-ros/message_generation 0.4.1 9999: Build-time dependencies for generating language bindings of messages
@@ -9560,7 +9560,7 @@ dev-ros/monocam_settler 0.10.14 9999: Listens on a ImageFeatures topic, and wait
 dev-ros/move_base 1.17.0 1.17.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.14.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.17.0 1.17.1 9999: Move slow and clear
-dev-ros/moveit_msgs 0.10.1 9999: Messages, services and actions used by MoveIt
+dev-ros/moveit_msgs 0.11.1 9999: Messages, services and actions used by MoveIt
 dev-ros/nav_core 1.17.0 1.17.1 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.13.0 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.17.0 1.17.1 9999: Fast interpolated navigation function for creating plans for a mobile base
@@ -9641,15 +9641,15 @@ dev-ros/rospack 2.6.2 9999: Retrieves information about ROS packages available o
 dev-ros/rosparam 1.15.7 1.15.8 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.15.7 1.15.8 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.10.1 0.10.2 9999: Attempts to show the features of ROS step-by-step
-dev-ros/rosserial_arduino 0.8.0 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
-dev-ros/rosserial_client 0.8.0 9999: Generalized client side source for rosserial
-dev-ros/rosserial_embeddedlinux 0.8.0 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
-dev-ros/rosserial_msgs 0.8.0 9999: Messages for automatic topic configuration using rosserial
-dev-ros/rosserial_python 0.8.0 9999: A Python-based implementation of the ROS serial protocol
-dev-ros/rosserial_server 0.8.0 9999: C++ implementation of the rosserial server side
-dev-ros/rosserial_tivac 0.8.0 9999: Definitions for rosserial_client targets for TivaC Launchpad evaluation boards.
-dev-ros/rosserial_windows 0.8.0 9999: Libraries and examples for ROSserial usage on Windows Platforms
-dev-ros/rosserial_xbee 0.8.0 9999: Tools to do communicate between rosserial nodes connected to an xbee
+dev-ros/rosserial_arduino 0.8.0 0.9.1 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
+dev-ros/rosserial_client 0.8.0 0.9.1 9999: Generalized client side source for rosserial
+dev-ros/rosserial_embeddedlinux 0.8.0 0.9.1 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
+dev-ros/rosserial_msgs 0.8.0 0.9.1 9999: Messages for automatic topic configuration using rosserial
+dev-ros/rosserial_python 0.8.0 0.9.1 9999: A Python-based implementation of the ROS serial protocol
+dev-ros/rosserial_server 0.9.1 9999: C++ implementation of the rosserial server side
+dev-ros/rosserial_tivac 0.8.0 0.9.1 9999: Definitions for rosserial_client targets for TivaC Launchpad evaluation boards.
+dev-ros/rosserial_windows 0.8.0 0.9.1 9999: Libraries and examples for ROSserial usage on Windows Platforms
+dev-ros/rosserial_xbee 0.8.0 0.9.1 9999: Tools to do communicate between rosserial nodes connected to an xbee
 dev-ros/rosservice 1.15.7 1.15.8 9999: Command-line tool for listing and querying ROS Services
 dev-ros/rostest 1.15.8 9999: Integration test suite based on roslaunch compatible with xUnit frameworks
 dev-ros/rostime 0.7.2 9999: Time and Duration implementations for C++ libraries
@@ -9668,7 +9668,7 @@ dev-ros/rqt_gui 0.5.2 9999: Instance of the ROS integrated graphical user interf
 dev-ros/rqt_gui_cpp 0.5.2 9999: Enables GUI plugins to use the C++ client library for ROS
 dev-ros/rqt_gui_py 0.5.2 9999: Enables GUI plugins to use the Python client library for ROS
 dev-ros/rqt_image_view 0.4.16 9999: GUI plugin for displaying images using image_transport
-dev-ros/rqt_launch 0.4.8 9999: Easy view of .launch files
+dev-ros/rqt_launch 0.4.9 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.4.11 9999: GUI plugin for configuring the logger level of ROS nodes
 dev-ros/rqt_moveit 0.5.9 9999: Assists monitoring tasks for MoveIt! motion planner
 dev-ros/rqt_msg 0.4.9 9999: Python GUI plugin for introspecting available ROS message types
@@ -9759,7 +9759,7 @@ dev-ros/visp_tracker 0.11.1 9999: Wraps the ViSP moving edge tracker provided by
 dev-ros/visualization_marker_tutorials 0.11.0 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.7 1.13.0 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.16.6 1.17.0 1.17.1 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.14.4 9999: XML macro language
+dev-ros/xacro 1.14.5 9999: XML macro language
 dev-ros/xmlrpcpp 1.15.8 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -15076,7 +15076,7 @@ net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/croc 8.5.0: Easily and securely send things from one computer to another
+net-misc/croc 8.5.1: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.71.0 7.71.1 7.71.1-r1 7.72.0 7.72.0-r1: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
@@ -15639,7 +15639,7 @@ net-wireless/suwidgets 0.1.0: graphical library containing all SigDigger's custo
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 6.0.23 6.0.26 6.0.27 6.1.16: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 6.0.23 6.0.26 6.0.27 6.1.16 6.1.19: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
@@ -15718,7 +15718,7 @@ ros-meta/image_transport_plugins 1.14.0 9999: Plugins for creating topics in rep
 ros-meta/imu_pipeline 0.3.0 9999: Tools for processing IMU messages for easier use by later subscribers
 ros-meta/imu_tools 1.2.2 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.4 9999: Meta-package for processing laser data
-ros-meta/mavros 1.2.0 9999: Metapackage for mavros packages
+ros-meta/mavros 1.2.0 1.4.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.17.0 1.17.1 9999: 2D navigation stack
 ros-meta/nodelet_core 1.10.0 9999: Nodelet Core Metapackage
 ros-meta/perception 1.5.0 9999: Metapackage for ROS perception stack
@@ -15735,7 +15735,7 @@ ros-meta/ros_core 1.5.0 9999: Metapackage to aggregate the packages required to 
 ros-meta/ros_tutorials 0.10.1 0.10.2 9999: Demonstrates various features of ROS
 ros-meta/rosbridge_suite 0.11.3 0.11.9 0.11.10 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.7.2 9999: Underlying data libraries for roscpp messages
-ros-meta/rosserial 0.8.0 9999: Metapackage for core of rosserial
+ros-meta/rosserial 0.8.0 0.9.1 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.5.2 9999: Qt-based framework for GUI development for ROS
 ros-meta/rqt_common_plugins 0.4.9 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
 ros-meta/rqt_robot_plugins 0.5.8 9999: rqt plugins that are particularly used with robots during its operation
