@@ -3,17 +3,18 @@
 
 EAPI=7
 
-inherit autotools bash-completion-r1 linux-info optfeature systemd
+inherit autotools bash-completion-r1 linux-info optfeature systemd verify-sig
 
 DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd"
-SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
+SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz
+	verify-sig? ( https://linuxcontainers.org/downloads/lxd/${P}.tar.gz.asc )"
 
 # Needs to include licenses for all bundled programs and libraries.
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="apparmor +ipv6 nls"
+IUSE="apparmor +ipv6 nls verify-sig"
 
 DEPEND="app-arch/xz-utils
 	>=app-emulation/lxc-3.0.0[apparmor?,seccomp]
@@ -31,7 +32,8 @@ RDEPEND="${DEPEND}
 	sys-fs/squashfs-tools
 	virtual/acl"
 BDEPEND=">=dev-lang/go-1.13
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	verify-sig? ( app-crypt/openpgp-keys-linuxcontainers )"
 
 CONFIG_CHECK="
 	~BRIDGE
@@ -66,6 +68,8 @@ QA_PREBUILT="/usr/lib/lxd/libdqlite.so.0.0.1
 
 EGO_PN="github.com/lxc/lxd"
 GOPATH="${S}/_dist" # this seems to reset every now and then, though
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 
 common_op() {
 	local i
