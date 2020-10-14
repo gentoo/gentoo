@@ -138,6 +138,9 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-putty-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
 
+	# https://bugs.gentoo.org/749026
+	use X509 || eapply "${FILESDIR}"/${PN}-8.4_p1-fix-ssh-copy-id.patch
+
 	# workaround for https://bugs.gentoo.org/734984
 	use X509 || eapply "${FILESDIR}"/${PN}-8.3_p1-sha2-include.patch
 
