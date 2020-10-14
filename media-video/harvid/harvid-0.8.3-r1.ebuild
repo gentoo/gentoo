@@ -21,6 +21,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+BDEPEND="
+	app-editors/vim-core
+"
 
 PATCHES=( "${FILESDIR}/jpeg.patch" )
 
