@@ -3571,7 +3571,7 @@ dev-db/pgpool2 3.7.10 4.0.5 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.6.2-r1: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.3-r2: PostgreSQL Extension Network Client
-dev-db/phpmyadmin 4.9.5 5.0.2: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.9.5 4.9.6 5.0.3: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 7.12.1: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17 8.4.1: R language extension for postgresql database
 dev-db/postgis 2.5.3-r1 2.5.4 2.5.5 3.0.0-r1 3.0.1 3.0.2 9999: Geographic Objects for PostgreSQL
@@ -14426,7 +14426,7 @@ net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
 net-analyzer/siphon 666-r1 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
 net-analyzer/smokeping 2.6.9-r1 2.7.2 2.7.3: A powerful latency measurement tool
-net-analyzer/snallygaster 0.0.6 0.0.8: Finds file leaks and other security problems on HTTP servers
+net-analyzer/snallygaster 0.0.6 0.0.8 0.0.9: Finds file leaks and other security problems on HTTP servers
 net-analyzer/sngrep 1.4.6-r3 1.4.7: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.3.7-r4 0.4.0 0.5: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
@@ -14648,7 +14648,7 @@ net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpo
 net-im/dianara 1.4.2: Qt-based client for the pump.io distributed social network
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/discord-bin 0.0.12: All-in-one voice and text chat for gamers
-net-im/ejabberd 20.04: Robust, scalable and extensible XMPP server
+net-im/ejabberd 20.04 20.07: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/element-desktop-bin 1.7.7: A glossy Matrix collaboration client for desktop (binary package)
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
