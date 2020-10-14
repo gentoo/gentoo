@@ -16256,7 +16256,7 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1: C++ bindings for libh2o
 sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
-sci-libs/libint 1.1.6 2.6.0 2.6.0-r1: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
+sci-libs/libint 1.1.6 2.6.0 2.6.0-r2: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Library
@@ -17995,7 +17995,7 @@ www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
-www-apps/drupal 7.73 8.8.10 8.9.6 9.0.6: PHP-based open-source platform and content management system
+www-apps/drupal 7.73 8.8.10 8.9.6 8.9.7 9.0.6 9.0.7: PHP-based open-source platform and content management system
 www-apps/gitea 1.12.4 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4 7.1.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
