@@ -12,13 +12,14 @@ HOMEPAGE="https://codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
-https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.xz
+https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz
+https://dev.gentoo.org/~leio/distfiles/${P}_update_astyle_plugin_to_v3.1.patch.xz"
 
-# USE="fortran" enables FortranProject plugin (v1.6 updated to 2020-04-06 [r277])
-# that is delivered with Code::Blocks 20.03 source code.
+# USE="fortran" enables FortranProject plugin (v1.5)
+# that is delivered with Code::Blocks 17.12 source code.
 # https://sourceforge.net/projects/fortranproject
-# http://cbfortran.sourceforge.net
+# https://cbfortran.sourceforge.io
 
 IUSE="contrib debug fortran pch"
 
@@ -26,7 +27,7 @@ BDEPEND="virtual/pkgconfig"
 
 RDEPEND="app-arch/zip
 	>=dev-libs/tinyxml-2.6.2-r3
-	>=dev-util/astyle-3.1-r2:0/3.1
+	>=dev-util/astyle-3.0.1-r1:0=
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	contrib? (
 		app-admin/gamin
@@ -37,12 +38,19 @@ RDEPEND="app-arch/zip
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-env.patch
+	"${FILESDIR}"/${P}-fix-crash-on-copypaste.patch
+	"${FILESDIR}"/${P}-nodebug.diff
+	"${FILESDIR}"/${PN}-20.03_gcc11_compatibility.patch
 	"${WORKDIR}"/patches/
 	)
 
 src_prepare() {
 	default
+	if has_version ">=dev-util/astyle-3.1" ; then
+		eapply "${WORKDIR}"/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch
+	fi
+	sed -i "s:appdatadir = \$(datarootdir)/appdata:appdatadir = \$(datarootdir)/metainfo:" Makefile.am || die # bug 709450
+	sed -i "s:appdatadir = \$(datarootdir)/appdata:appdatadir = \$(datarootdir)/metainfo:" src/plugins/contrib/appdata/Makefile.am || die # bug 709450
 	eautoreconf
 }
 
