@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit cmake linux-info readme.gentoo-r1 xdg
+LUA_COMPAT=( lua5-3 )
+
+inherit cmake linux-info lua-single readme.gentoo-r1 xdg
 
 DESCRIPTION="An advanced, highly configurable system monitor for X"
 HOMEPAGE="https://github.com/brndnmtthws/conky"
@@ -45,7 +47,7 @@ COMMON_DEPEND="
 	weather-metar? ( net-misc/curl )
 	webserver? ( net-libs/libmicrohttpd )
 	xmms2? ( media-sound/xmms2 )
-	|| ( dev-lang/lua:5.3 dev-lang/lua:5.2 )
+	${LUA_DEPS}
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -85,6 +87,8 @@ Also see https://wiki.gentoo.org/wiki/Conky/HOWTO"
 
 pkg_setup() {
 	use ipv6 && linux-info_pkg_setup
+
+	lua-single_pkg_setup
 }
 
 src_prepare() {
