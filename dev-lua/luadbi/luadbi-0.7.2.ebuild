@@ -12,8 +12,9 @@ SRC_URI="https://github.com/mwild1/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="mysql postgres +sqlite"
+IUSE="mysql postgres +sqlite test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:=
@@ -45,6 +46,10 @@ src_compile() {
 	use mysql && emake ${myemakeargs} MYSQL_INC="-I$(mariadb_config --libs)" mysql
 	use postgres && emake ${myemakeargs} PSQL_INC="-I$(pg_config --libdir)" psql
 	use sqlite emake ${myemakeargs} SQLITE3_INC="-I/usr/include" sqlite
+}
+
+src_test() {
+	cd "${S}"/tests && lua run_tests.lua || die
 }
 
 src_install() {
