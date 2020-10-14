@@ -9,7 +9,7 @@ ANT_TASK_DEPNAME="junit-4"
 
 inherit ant-tasks
 
-KEYWORDS="~amd64 arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 
 DEPEND="dev-java/junit:4
 	~dev-java/ant-junit-${PV}"
