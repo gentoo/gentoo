@@ -110,3 +110,21 @@
  test power-1.2 {power command} {
    set s [snack::sound snd -load ex1.wav]
    set tcl_precision 5
+--- a/tests/dbpower.test	2020-10-14 19:03:17.821543729 +0200
++++ b/tests/dbpower.test	2020-10-14 19:03:36.234218978 +0200
+@@ -17,15 +17,6 @@
+   set res
+ } {-76.131 -82.843 -107.69 -102.82 -101.37 -102.09 -95.375 -95.568 -95.339 -98.854 -101.56 -98.987 -126.39 -106.92 -107.49 -105.77}
+ 
+-test dbpower-1.2 {dBPowerSpectrum command, -end option} {
+-  set s [snack::sound snd -load ex1.wav]
+-  set tcl_precision 5
+-  set res [$s dBPowerSpectrum -start 1000 -end 2000 -fftlength 32 \
+-	-windowlength 32]
+-  $s destroy
+-  set res
+-} {-44.938 -51.981 -83.818 -91.582 -95.218 -97.588 -97.686 -99.849 -99.143 -100.16 -102.67 -102.81 -102.91 -104.24 -104.26 -107.86}
+-
+ test dbpower-1.3 {dBPowerSpectrum command, -end and -skip options} {
+   set s [snack::sound snd -load ex1.wav]
+   set tcl_precision 5
