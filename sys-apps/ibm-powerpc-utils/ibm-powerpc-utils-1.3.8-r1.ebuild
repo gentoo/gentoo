@@ -13,7 +13,7 @@ S="${WORKDIR}/${P//ibm-}"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="ppc ~ppc64"
+KEYWORDS="ppc ppc64"
 
 RDEPEND="
 	!<sys-apps/powerpc-utils-1.1.3.18-r4
