@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,13 +20,13 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~ppc -ppc64"
+KEYWORDS="-* ppc -ppc64"
 IUSE="ibm"
 
-DEPEND="
-	sys-apps/powerpc-utils
-"
-RDEPEND="!sys-boot/yaboot-static
+DEPEND=""
+RDEPEND="
+	!sys-boot/yaboot-static
+	sys-apps/ibm-powerpc-utils
 	!ibm? (
 		sys-fs/hfsutils
 		sys-fs/hfsplusutils
