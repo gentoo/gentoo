@@ -20,7 +20,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )"
+BDEPEND="test? (
+		>=dev-util/cmake-3.16
+		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
+	)"
 
 python_check_deps() {
 	has_version -b "dev-python/lit[${PYTHON_USEDEP}]"
@@ -42,6 +45,7 @@ src_configure() {
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 
 	cmake_src_configure
