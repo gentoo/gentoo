@@ -21,4 +21,3 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
-PATCHES=( "${FILESDIR}/boost170.patch" )
