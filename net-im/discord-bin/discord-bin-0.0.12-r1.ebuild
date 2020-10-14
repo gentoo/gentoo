@@ -6,7 +6,7 @@ EAPI=7
 MY_PN=${PN/-bin/}
 MY_BIN="D${MY_PN/d/}"
 
-inherit desktop linux-info pax-utils unpacker xdg
+inherit desktop linux-info optfeature pax-utils unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -83,4 +83,9 @@ src_install() {
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
 	pax-mark -m "${ED}"/opt/${MY_PN}/${MY_PN}
+}
+
+pkg_postinst() {
+	elog "Optional features:"
+	optfeature "system tray indicator support" dev-libs/libappindicator:3[appindicator]
 }
