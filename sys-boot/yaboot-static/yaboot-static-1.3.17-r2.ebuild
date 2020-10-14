@@ -33,7 +33,8 @@ QA_PRESTRIPPED="
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/new-ofpath-devspec.patch"
+	default
+	eapply "${FILESDIR}/new-ofpath-devspec.patch"
 }
 
 src_install() {

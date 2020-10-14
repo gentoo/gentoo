@@ -1,7 +1,7 @@
 Fix the devspec path on newer kernels
 
---- usr/sbin/ofpath
-+++ usr/sbin/ofpath
+--- a/usr/sbin/ofpath
++++ b/usr/sbin/ofpath
 @@ -85,11 +85,20 @@
  [ "$DEBUG" = 1 ] && echo "Devpath is: $DEVPATH"
  
