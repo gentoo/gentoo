@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
 	dev-ml/findlib
+	>=dev-util/cmake-3.16
 	test? ( dev-ml/ounit )
 	${PYTHON_DEPS}"
 
@@ -68,6 +69,8 @@ src_configure() {
 		-DLLVM_ENABLE_RTTI=ON
 
 		-DLLVM_HOST_TRIPLE="${CHOST}"
+
+		-DPython3_EXECUTABLE="${PYTHON}"
 
 		# disable go bindings
 		-DGO_EXECUTABLE=GO_EXECUTABLE-NOTFOUND
