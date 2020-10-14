@@ -8,7 +8,7 @@ HOMEPAGE="https://kde.org/applications/office/org.kde.kontact"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="bogofilter clamav spamassassin"
 
 RDEPEND="
