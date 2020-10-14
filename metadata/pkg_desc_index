@@ -11767,7 +11767,7 @@ games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.5.7 0.5.7.1 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r3 0.5.2: Compiler of NML files into GRF/NFO files
-games-util/pyfa 2.24.1 2.28.3 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.28.3 2.29.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/slade 3.1.12a: Modern editor for Doom-engine based games and source ports
