@@ -119,7 +119,7 @@ verify-sig_src_unpack() {
 		# find all distfiles and signatures, and combine them
 		for f in ${A}; do
 			found=
-			for suffix in .sig; do
+			for suffix in .asc .sig; do
 				if [[ ${f} == *${suffix} ]]; then
 					signatures+=( "${f}" )
 					found=sig
