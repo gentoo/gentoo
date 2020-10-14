@@ -50,8 +50,8 @@ src_install() {
 	findlib_src_install
 	dodoc README ChangeLog
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins test/*.ml
+		docinto examples
+		dodoc test/*.ml
 	fi
 	# ocamlfind support
 	cat <<-EOF > META
