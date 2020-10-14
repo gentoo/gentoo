@@ -2581,7 +2581,7 @@ app-misc/tmux 3.1b 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.4 1.5.5: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.4 1.5.5 1.5.6: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
@@ -10651,7 +10651,7 @@ dev-util/cloc 1.84: Count Lines of Code
 dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.3 3.18.4: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
-dev-util/codeblocks 17.12-r302 17.12-r303 20.03 20.03-r1 9999: The open source, cross platform, free C, C++ and Fortran IDE
+dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1 0.13.0.7: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.12: ESR's utility for making fast comparisons among large source trees
