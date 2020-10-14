@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
-SLOT=5.6_p8
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz https://github.com/pfactum/pf-kernel/compare/v5.6...v5.6-pf8.diff -> pf-sources-5.6_p8.patch https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.6-2.base.tar.xz https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.6-2.extras.tar.xz
+SLOT=5.9_p1
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.xz https://github.com/pfactum/pf-kernel/compare/v5.9...v5.9-pf1.diff -> pf-sources-5.9_p1.patch https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.9-1.base.tar.xz https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.9-1.extras.tar.xz
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	b018f94025c867de0d2a56af55679a7a	multilib	98584e405e2b0264d37e8f728327fed1	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=29ef281426c289e336261ea4a444c054
+_md5_=81909829d73580edff12101160a473b2

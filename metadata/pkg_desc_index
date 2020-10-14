@@ -8000,7 +8000,7 @@ dev-python/cbor2 5.1.2: Pure Python CBOR (de)serializer with extensive tag suppo
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.0 0.36.1 0.37.0 0.37.1: CloudFormation Linter
+dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.0 0.36.1 0.37.0 0.37.1 0.38.0: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -9034,7 +9034,7 @@ dev-python/rope 0.16.0 0.17.0: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package system
-dev-python/routes 2.4.1-r1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
+dev-python/routes 2.4.1-r1 2.5.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.7-r1: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
@@ -17574,7 +17574,7 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9: Linux system headers
 sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.6_p8 5.7_p5 5.7_p7 5.8_p1 5.8_p2 5.8_p3 5.8_p4 5.8_p5 5.8_p6 5.8_p7: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
