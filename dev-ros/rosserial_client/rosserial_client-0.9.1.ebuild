@@ -8,17 +8,15 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="C++ implementation of the rosserial server side"
+DESCRIPTION="Generalized client side source for rosserial"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/topic_tools
-	dev-libs/boost:=[threads]
+	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-"
-PATCHES=( "${FILESDIR}/boost170.patch" )
+DEPEND="${RDEPEND}"

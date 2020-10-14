@@ -8,16 +8,13 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="C++ implementation of the rosserial server side"
+DESCRIPTION="Definitions for rosserial_client targets for TivaC Launchpad evaluation boards."
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/topic_tools
-	dev-libs/boost:=[threads]
+	dev-ros/rosserial_client[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-"
+DEPEND="${RDEPEND}"

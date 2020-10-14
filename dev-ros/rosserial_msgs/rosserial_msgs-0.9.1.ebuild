@@ -3,21 +3,16 @@
 
 EAPI=7
 ROS_REPO_URI="https://github.com/ros-drivers/rosserial"
+CATKIN_HAS_MESSAGES=yes
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="C++ implementation of the rosserial server side"
+DESCRIPTION="Messages for automatic topic configuration using rosserial"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/roscpp
-	dev-ros/topic_tools
-	dev-libs/boost:=[threads]
-"
-DEPEND="${RDEPEND}
-	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-"
+RDEPEND=""
+DEPEND="${RDEPEND}"
