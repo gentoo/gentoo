@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>ramage.lucas@protonmail.com</email>
-		<description>Lucas Ramage</description>
+		<name>Lucas Ramage</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
