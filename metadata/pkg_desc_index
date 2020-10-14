@@ -5217,7 +5217,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r2 1.73.0-r1 1.74.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.14.0-r1 2.15.0 2.16.0: C++ crypto library
+dev-libs/botan 2.15.0 2.16.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
