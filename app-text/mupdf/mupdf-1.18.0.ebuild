@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}-source"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="X +javascript libressl opengl ssl static-libs"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
