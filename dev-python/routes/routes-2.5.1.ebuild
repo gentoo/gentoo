@@ -25,7 +25,10 @@ RDEPEND="
 "
 
 BDEPEND="
-	test? ( dev-python/webob[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/webob[${PYTHON_USEDEP}]
+		dev-python/webtest[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests nose
 distutils_enable_sphinx doc
