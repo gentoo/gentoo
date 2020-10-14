@@ -22,6 +22,7 @@ CLANG_SLOT=${SLOT%%.*}
 DEPEND="
 	>=sys-devel/llvm-6"
 BDEPEND="
+	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
@@ -76,6 +77,8 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_PROFILE=OFF
 		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
 		-DCOMPILER_RT_BUILD_XRAY=OFF
+
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 
 	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
