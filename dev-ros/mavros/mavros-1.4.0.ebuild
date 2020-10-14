@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-ros/eigen_conversions
 	sci-geosciences/GeographicLib
-	>=dev-ros/mavlink-gbp-release-2016.11.11
+	>=dev-ros/mavlink-gbp-release-2020.9.10
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
