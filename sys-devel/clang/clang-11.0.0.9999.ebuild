@@ -45,6 +45,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/sphinx
+	>=dev-util/cmake-3.16
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
@@ -246,6 +247,8 @@ multilib_src_configure() {
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
