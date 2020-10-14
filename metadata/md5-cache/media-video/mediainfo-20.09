@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=sys-libs/zlib >=media-libs/libzen-0.4.37 ~media-libs/libmediainfo-20.09[curl=,mms=] wxwidgets? ( x11-libs/wxGTK:3.0[X] ) virtual/pkgconfig
+DESCRIPTION=MediaInfo supplies technical and tag information about media files
+EAPI=7
+HOMEPAGE=https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfo
+IUSE=curl mms wxwidgets
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-libs/zlib >=media-libs/libzen-0.4.37 ~media-libs/libmediainfo-20.09[curl=,mms=] wxwidgets? ( x11-libs/wxGTK:3.0[X] )
+SLOT=0
+SRC_URI=https://mediaarea.net/download/source/mediainfo/20.09/mediainfo_20.09.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7b356a60d7d14b98d1112fd2affec738
