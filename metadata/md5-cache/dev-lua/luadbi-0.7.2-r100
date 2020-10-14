@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig test? ( dev-lua/busted dev-lua/luarocks )
+DEFINED_PHASES=compile install prepare test
+DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite )
+DESCRIPTION=A database interface library for Lua
+EAPI=7
+HOMEPAGE=https://github.com/mwild1/luadbi
+IUSE=mysql postgres +sqlite test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=MIT
+RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 ) || ( mysql postgres sqlite )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/mwild1/luadbi/archive/v0.7.2.tar.gz -> luadbi-0.7.2.tar.gz
+_eclasses_=lua	a0554aeb2bf64fc720676ffaa544130d	lua-utils	e46ac6841ad67e06b94d930fc64adf6c	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=c6cbb260d8cd4690761f4caed2a275b2

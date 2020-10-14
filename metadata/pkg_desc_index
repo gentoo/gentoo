@@ -5736,14 +5736,14 @@ dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.8_p0: OpenSSL binding for Lua
 dev-lua/lua-term 0.3 0.7: Terminal functions for Lua
 dev-lua/lua-utf8 0.1.1: UTF-8 support for Lua
-dev-lua/lua-zlib 1.1 1.2: Lua bindings to zlib
+dev-lua/lua-zlib 1.2: Lua bindings to zlib
 dev-lua/lua_cliargs 2.5_p5 3.0_p1 3.0_p2: A command-line argument parser.
 dev-lua/luacheck 0.20.0 0.23.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
-dev-lua/luadbi 0.5-r5 0.5-r6 0.7.2: A database interface library for Lua
+dev-lua/luadbi 0.5-r6 0.7.2 0.7.2-r100: A database interface library for Lua
 dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
-dev-lua/luaevent 0.4.4 0.4.6: libevent bindings for Lua
+dev-lua/luaevent 0.4.6: libevent bindings for Lua
 dev-lua/luaexpat 1.3.0-r1 1.3.0-r2 1.3.3-r1 1.3.3-r2: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.5.0 1.6.2 1.6.3 1.7.0.2: File System Library for the Lua Programming Language
 dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
@@ -5751,7 +5751,7 @@ dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
 dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL module in the Lua universe.
 dev-lua/luaposix 35.0: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1: A deployment and management system for Lua modules
-dev-lua/luasec 0.7 0.9 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
+dev-lua/luasec 0.9 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r4 3.0_rc1-r5: Networking support library for the Lua language
 dev-lua/luassert 1.7.9 1.7.10 1.8.0: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0: platform independent system calls for lua
@@ -15225,7 +15225,7 @@ net-misc/omniORB 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5 8.4_p1-r1: Port of OpenBSD's free SSH release
+net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5 8.4_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.13.0-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1 2.6.3.14058: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
@@ -17478,7 +17478,7 @@ sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic t
 sys-fs/fatresize 1.0.4 1.1.0: Resize FAT partitions using libparted
 sys-fs/fatsort 1.6.2.605 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3 3.10.0: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.9.1 3.9.2 3.9.3: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
