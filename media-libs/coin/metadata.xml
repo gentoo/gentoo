@@ -8,9 +8,8 @@
     <flag name="exceptions">Compile with C++ exceptions</flag>
     <flag name="man">Build and install man pages</flag>
     <flag name="qthelp">Build API documentation in QtHelp format</flag>
-    <flag name="simage">Texture loading via <pkg>media-libs/simage</pkg> library</flag>
   </use>
   <upstream>
-    <remote-id type="bitbucket">Coin3D/coin</remote-id>
+    <remote-id type="github">coin3d/coin</remote-id>
   </upstream>
 </pkgmetadata>
