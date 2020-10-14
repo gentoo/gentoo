@@ -1,0 +1,13 @@
+BDEPEND=cinnamon? ( dev-lang/sassc gnome-extra/cinnamon ) gnome-shell? ( dev-lang/sassc >=gnome-base/gnome-shell-3.18 ) gtk2? ( !pre-rendered? ( media-gfx/inkscape media-gfx/optipng ) ) gtk3? ( dev-lang/sassc !pre-rendered? ( media-gfx/inkscape media-gfx/optipng ) virtual/pkgconfig >=x11-libs/gtk+-3.18:3 ) xfce? ( !pre-rendered? ( media-gfx/inkscape media-gfx/optipng ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure prepare
+DESCRIPTION=A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+EAPI=7
+HOMEPAGE=https://github.com/jnsh/arc-theme
+IUSE=cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=gtk2? ( x11-themes/gnome-themes-standard x11-themes/gtk-engines-murrine )
+SLOT=0
+SRC_URI=https://github.com/jnsh/arc-theme/releases/download/20201013/arc-theme-20201013.tar.xz pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/arc-theme-20201013-pngs.tar.xz )
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=1e3f2e1844979d493a9f8a6dcb9823f4

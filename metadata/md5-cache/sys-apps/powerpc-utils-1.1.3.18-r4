@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DESCRIPTION=PowerPC utilities including nvsetenv, and additional OldWorld apps
+DESCRIPTION=PowerPC utilities and additional OldWorld apps
 EAPI=7
 HOMEPAGE=http://http.us.debian.org/debian/pool/main/p/powerpc-utils/
 KEYWORDS=-* ppc ppc64
@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://http.us.debian.org/debian/pool/main/p/powerpc-utils/powerpc-utils_1.1.3.orig.tar.gz http://http.us.debian.org/debian/pool/main/p/powerpc-utils/powerpc-utils_1.1.3-18.diff.gz mirror://gentoo/powerpc-utils-cleanup.patch.bz2
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7ad9554838139957c57130ff64055ab2
+_md5_=1da2a149b829303ebd217e44102a6106

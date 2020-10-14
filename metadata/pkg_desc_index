@@ -8627,7 +8627,7 @@ dev-python/piexif 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
-dev-python/pillow 6.2.2 7.0.0 7.2.0: Python Imaging Library (fork)
+dev-python/pillow 6.2.2 7.0.0 7.2.0 8.0.0: Python Imaging Library (fork)
 dev-python/pip 20.2.2-r1 20.2.3-r1: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.6.2 2020.8.13: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
@@ -14564,7 +14564,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1 2.3.3.0: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.10.1-r1 1.11.0 1.12.0: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.10.1-r1 1.11.0 1.12.0 1.12.0-r1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0 2.1.1: Arno's iptables firewall script
@@ -16903,7 +16903,7 @@ sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4 2.1.0: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 4.1-r1 4.2: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
-sys-apps/ibm-powerpc-utils 1.3.6 1.3.7 1.3.8 99999: Utilities for the maintainance of the IBM and Apple PowerPC platforms
+sys-apps/ibm-powerpc-utils 1.3.8-r1 99999: Utilities for the maintainance of the IBM and Apple PowerPC platforms
 sys-apps/idle3-tools 0.9.3_pre20120123-r1: Set, get or disable the value of the idle3 timer found on WD HDDs
 sys-apps/ifd-gempc 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
 sys-apps/ifplugd 0.28-r11: Brings up/down ethernet ports automatically with cable detection
@@ -16994,7 +16994,7 @@ sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 3.1 9999: SELinux core utilities
 sys-apps/portage 2.3.99-r2 3.0.4-r1 3.0.8 9999: Portage is the package management and distribution system for Gentoo
-sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
+sys-apps/powerpc-utils 1.1.3.18-r4: PowerPC utilities and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13 0.15: Coreutils Viewer: show progress for cp, rm, dd, and so forth
@@ -17239,8 +17239,8 @@ sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted
 sys-boot/unetbootin 661 675 677-r1 681: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 72_p20181229-r1 80_p20200108: Chrome OS verified boot tools
 sys-boot/woeusb 3.3.1: Creates windows installer on usb media from an iso image
-sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2 1.3.17-r3: PPC Bootloader
-sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loader for machines with open firmware
+sys-boot/yaboot 1.3.17-r4: PPC Bootloader
+sys-boot/yaboot-static 1.3.17-r2: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ceph 12.2.12-r3 14.2.11 14.2.11-r1 15.2.4-r3 15.2.5-r1: Ceph distributed filesystem
@@ -18862,7 +18862,7 @@ x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material 
 x11-themes/adwaita-icon-theme 3.32.0 3.36.1: GNOME default icon theme
 x11-themes/adwaita-qt 1.1.1 1.1.4: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
-x11-themes/arc-theme 20190330 20200819: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+x11-themes/arc-theme 20190330 20200819 20201013: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/chameleon-xcursors 0.5-r1: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
