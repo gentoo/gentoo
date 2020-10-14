@@ -30,7 +30,6 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc
 
 python_prepare_all() {
 	# Disable tests hardcoding function call counts specific to Python versions.
