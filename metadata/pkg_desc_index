@@ -7967,7 +7967,7 @@ dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 20.8_beta1: The uncompromising Python code formatter
 dev-python/bleach 3.1.5 3.2.0 3.2.1: an easy whitelist-based HTML-sanitizing tool
-dev-python/blessed 1.17.10: Library for making terminal apps using colors, keyboard input and positioning
+dev-python/blessed 1.17.10 1.17.11: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r2: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 1.5.4 2.0.1: Generate block-diagram image from text
