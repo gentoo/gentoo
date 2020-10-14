@@ -11,7 +11,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug dnstap libressl luajit protobuf snmp sodium systemd"
 REQUIRED_USE="dnstap? ( protobuf )"
 

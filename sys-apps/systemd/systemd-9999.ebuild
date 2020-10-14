@@ -28,7 +28,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb +zstd"
 
 REQUIRED_USE="
 	homed? ( cryptsetup )
@@ -72,7 +72,9 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	repart? ( ${OPENSSL_DEP} )
 	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
+	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
+	zstd? ( >=app-arch/zstd-1.4.0:0=[${MULTILIB_USEDEP}] )
+"
 
 # Newer linux-headers needed by ia64, bug #480218
 DEPEND="${COMMON_DEPEND}
@@ -281,6 +283,7 @@ multilib_src_configure() {
 		-Dkmod=$(meson_multilib_native_use kmod)
 		-Dlz4=$(meson_use lz4)
 		-Dxz=$(meson_use lzma)
+		-Dzstd=$(meson_use zstd)
 		-Dlibiptc=$(meson_multilib_native_use nat)
 		-Dpam=$(meson_use pam)
 		-Dp11kit=$(meson_multilib_native_use pkcs11)
