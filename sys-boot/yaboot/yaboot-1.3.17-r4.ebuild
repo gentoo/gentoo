@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~ppc -ppc64"
+KEYWORDS="-* ppc -ppc64"
 IUSE="ibm"
 
 DEPEND=""
