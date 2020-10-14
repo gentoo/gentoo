@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 BASEVER=$(ver_cut 1-3)
 DEBREV=$(ver_cut 4)
 
-DESCRIPTION="PowerPC utilities including nvsetenv, and additional OldWorld apps"
+DESCRIPTION="PowerPC utilities and additional OldWorld apps"
 SRC_URI="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/${PN}_${BASEVER}.orig.tar.gz
 	http://http.us.debian.org/debian/pool/main/p/powerpc-utils/${PN}_${BASEVER}-${DEBREV}.diff.gz
 	mirror://gentoo/${PN}-cleanup.patch.bz2"
@@ -44,10 +44,11 @@ src_compile() {
 src_install() {
 	into /usr
 	dosbin autoboot backlight bootsched clock fblevel fdeject fnset
-	dosbin macos mousemode nvsetenv nvsetvol nvvideo sndvolmix trackpad
+	dosbin macos mousemode nvsetvol nvvideo sndvolmix trackpad
 
 	doman autoboot.8 bootsched.8 clock.8 fblevel.8 fdeject.8 macos.8
-	doman mousemode.8 nvsetenv.8 nvsetvol.8 nvvideo.8 sndvolmix.8 trackpad.8
+	doman mousemode.8 nvsetvol.8 nvvideo.8 sndvolmix.8 trackpad.8
 
-	ewarn "The lsprop utility has been moved into the ibm-powerpc-utils package."
+	ewarn "The lsprop and nvsetenv utilities have been moved into the"
+	ewarn "sys-apps/ibm-powerpc-utils package."
 }
