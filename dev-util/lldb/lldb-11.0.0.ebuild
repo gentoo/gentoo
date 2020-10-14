@@ -34,6 +34,7 @@ RDEPEND="
 	!<sys-devel/llvm-4.0"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>=dev-util/cmake-3.16
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
 		$(python_gen_cond_dep "
@@ -68,6 +69,8 @@ src_configure() {
 		# ncurses with complete library set (including autodetection
 		# of -ltinfo)
 		-DCURSES_NEED_NCURSES=ON
+
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=$(usex test)
