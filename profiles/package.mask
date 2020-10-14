@@ -617,12 +617,6 @@ net-misc/gnome-remote-desktop
 # v3.6.1 is the latest version without this issue
 >=dev-libs/libsass-3.6.2
 
-# Victor Payno <vpayno+gentoo@gmail.com> (2020-01-23)
-# Requires slotted lua.
-=dev-lang/lua-5.1.5-r103
-=dev-lang/lua-5.2.4-r2
-=dev-lang/lua-5.3.5-r2
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
@@ -778,20 +772,9 @@ app-admin/amazon-ec2-init
 # Rafael Martins <rafaelmartins@gentoo.org> (2016-12-04)
 # Adding Lua 5.3 to mask
 app-eselect/eselect-lua
-=dev-lang/lua-5.1.5-r100
-=dev-lang/lua-5.1.5-r101
-=dev-lang/lua-5.1.5-r102
-=dev-lang/lua-5.2.3
-=dev-lang/lua-5.2.3-r1
-=dev-lang/lua-5.2.3-r2
-=dev-lang/lua-5.2.3-r3
-=dev-lang/lua-5.2.4
-=dev-lang/lua-5.2.4-r1
-=dev-lang/lua-5.3.3
-=dev-lang/lua-5.3.3-r1
-=dev-lang/lua-5.3.3-r2
-=dev-lang/lua-5.3.5
-=dev-lang/lua-5.3.5-r1
+=dev-lang/lua-5.1.5-r103
+=dev-lang/lua-5.2.4-r2
+=dev-lang/lua-5.3.5-r2
 
 # Samuli Suominen <ssuominen@gentoo.org> (2012-03-06)
 # Masked for testing since this is known to break nearly
