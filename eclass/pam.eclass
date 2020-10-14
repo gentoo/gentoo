@@ -182,11 +182,7 @@ pamd_mimic() {
 	originalstack=$1
 	authlevels="auth account password session"
 
-	if has_version '<sys-libs/pam-0.78'; then
-		mimic="\trequired\t\tpam_stack.so service=${originalstack}"
-	else
-		mimic="\tinclude\t\t${originalstack}"
-	fi
+	mimic="\tsubstack\t\t${originalstack}"
 
 	shift; shift
 
