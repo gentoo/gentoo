@@ -3670,8 +3670,8 @@ dev-erlang/base64url 1.0.1: URL safe base64-compatible codec
 dev-erlang/cache_tab 1.0.23 1.0.25: In-memory cache Erlang and Elixir library
 dev-erlang/eimp 1.0.15 1.0.17: Erlang Image Manipulation Process
 dev-erlang/epam 1.0.8 1.0.9: epam for ejabberd to help with PAM authentication support
-dev-erlang/eredis 1.0.8: Erlang Redis client
-dev-erlang/esip 1.0.34: ProcessOne SIP server component
+dev-erlang/eredis 1.0.8 1.2.0: Erlang Redis client
+dev-erlang/esip 1.0.34 1.0.37: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.7 1.0.8: Native zlib driver for Erlang and Elixir
 dev-erlang/fast_tls 1.1.6 1.1.8: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.41 1.1.43: Fast Expat based Erlang XML parsing library
@@ -3687,9 +3687,9 @@ dev-erlang/luerl 0.2 0.3: Lua in Erlang
 dev-erlang/meck 0.8.4 0.8.12 0.8.13: Mocking library for Erlang
 dev-erlang/mqtree 1.0.7 1.0.10: Index tree for MQTT topic filters
 dev-erlang/p1_acme 1.0.5 1.0.8: ACME client library for Erlang
-dev-erlang/p1_mysql 1.0.15: Pure Erlang MySQL driver
+dev-erlang/p1_mysql 1.0.15 1.0.16: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.6 0.6.7: Erlang OAuth 2.0 implementation
-dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8 1.1.9: Pure Erlang PostgreSQL driver
+dev-erlang/p1_pgsql 1.1.9 1.1.10: Pure Erlang PostgreSQL driver
 dev-erlang/p1_utils 1.0.19 1.0.20: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/pkix 1.0.5 1.0.6: PKIX certificates management library for Erlang
@@ -3697,9 +3697,9 @@ dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for E
 dev-erlang/protobuffs 0.9.0: Google's Protocol Buffers for Erlang
 dev-erlang/riak_pb 2.2.0.2: Riak Protocol Buffers messages
 dev-erlang/riakc 2.4.2: Erlang clients for Riak
-dev-erlang/sqlite3 1.1.5 1.1.6 1.1.7: SQLite gen_server port for Erlang
+dev-erlang/sqlite3 1.1.7 1.1.8: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.20 1.0.22: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.33: STUN and TURN library for Erlang and Elixir
+dev-erlang/stun 1.0.33 1.0.38: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.4.7 1.4.9: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X

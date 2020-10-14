@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile install prepare test
 DEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang:= dev-util/rebar >=sys-apps/gawk-4.1
-DESCRIPTION=Pure Erlang PostgreSQL driver
+DESCRIPTION=Erlang Redis client
 EAPI=6
-HOMEPAGE=https://github.com/processone/p1_pgsql
+HOMEPAGE=https://github.com/wooga/eredis
 KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
-LICENSE=ErlPL-1.1
+LICENSE=MIT
 RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang:=
+RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/processone/p1_pgsql/archive/1.1.8.tar.gz -> p1_pgsql-1.1.8.tar.gz
+SRC_URI=https://github.com/wooga/eredis/archive/v1.2.0.tar.gz -> eredis-1.2.0.tar.gz
 _eclasses_=rebar	43c151aeda0dc4bf44b59e949df136aa
-_md5_=7b5e3344e542a3c3005fd06319a8b4ed
+_md5_=ecdf5423804b3cecff980d3117b34dce
