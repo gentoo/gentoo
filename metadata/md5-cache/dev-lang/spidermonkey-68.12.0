@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=68
 SRC_URI=https://archive.mozilla.org/pub/firefox/releases/68.12.0esr/source/firefox-68.12.0esr.source.tar.xz https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/spidermonkey-68.6.0-patches-03.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/spidermonkey-68.6.0-patches-03.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/spidermonkey-68.6.0-patches-03.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e378599394b5f4fd1d7578ef7eda0cfd
+_md5_=9def4589f3501f4c8c4680495dc3177b
