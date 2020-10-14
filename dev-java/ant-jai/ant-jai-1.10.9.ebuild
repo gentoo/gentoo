@@ -9,7 +9,7 @@ ANT_TASK_DEPNAME="sun-jai-bin"
 
 inherit ant-tasks
 
-KEYWORDS="amd64 ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Unmigrated, has textrels and there's also some source one now too.
 DEPEND=">=dev-java/sun-jai-bin-1.1.2.01-r1"
