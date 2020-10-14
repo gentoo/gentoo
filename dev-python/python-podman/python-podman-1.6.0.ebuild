@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
@@ -20,8 +21,7 @@ RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/python-varlink[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/pbr[${PYTHON_USEDEP}]
-	>=dev-python/setuptools-39[${PYTHON_USEDEP}]"
+	dev-python/pbr[${PYTHON_USEDEP}]"
 
 S=${WORKDIR}/${MY_P}
 
