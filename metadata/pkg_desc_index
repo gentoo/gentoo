@@ -9046,7 +9046,7 @@ dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU libra
 dev-python/rtslib-fb 2.1.73 2.1.74: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-yaml 0.16.10 0.16.12-r1: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.0 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
-dev-python/ryu 4.26-r1: Component-based Software-defined Networking Framework
+dev-python/ryu 4.26-r1 4.34: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.4.2: Pythonic file interface to S3
 dev-python/s3transfer 0.3.3: An Amazon S3 Transfer Manager
 dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
