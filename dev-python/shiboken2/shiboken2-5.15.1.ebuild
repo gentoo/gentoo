@@ -14,7 +14,7 @@ EAPI=7
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils llvm python-r1 toolchain-funcs
+inherit cmake llvm python-r1 toolchain-funcs
 
 MY_P=pyside-setup-opensource-src-${PV}
 
@@ -103,7 +103,7 @@ src_prepare() {
 		ApiExtractor/clangparser/compilersupport.cpp || die
 	CPP="${_CPP_old}"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -120,22 +120,22 @@ src_configure() {
 			-DUSE_PYTHON_VERSION="${EPYTHON#python}"
 		)
 		# CMakeLists.txt expects LLVM_INSTALL_DIR as an environment variable.
-		LLVM_INSTALL_DIR="$(get_llvm_prefix)" cmake-utils_src_configure
+		LLVM_INSTALL_DIR="$(get_llvm_prefix)" cmake_src_configure
 	}
 	python_foreach_impl shiboken2_configure
 }
 
 src_compile() {
-	python_foreach_impl cmake-utils_src_compile
+	python_foreach_impl cmake_src_compile
 }
 
 src_test() {
-	python_foreach_impl cmake-utils_src_test
+	python_foreach_impl cmake_src_test
 }
 
 src_install() {
 	shiboken2_install() {
-		cmake-utils_src_install
+		cmake_src_install
 		python_optimize
 
 		# Uniquify the "shiboken2" executable for the current Python target,
