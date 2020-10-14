@@ -44,7 +44,13 @@ dev-lua/luacrypto
 >=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/messagepack-0.3.2-r100
 >=dev-lua/toluapp-1.0.93_p20190513-r100
+>=games-engines/love-0.7.2-r100:0.7
+>=games-engines/love-0.8.0-r100:0.8
 >=games-engines/love-11.3-r100:0
+>=mail-filter/imapfilter-2.6.16-r100
+>=net-analyzer/suricata-6.0.0-r100
+>=net-p2p/eiskaltdcpp-2.2.10-r100
+>=www-servers/lighttpd-1.4.55-r100
 
 # Andrew Savchenko <bircoph@gentoo.org> (2020-10-11)
 # Mask old openafs version and corresponding openafs-kernel with
