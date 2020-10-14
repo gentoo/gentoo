@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/kdepim/kdav/html/index.html"
 
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="
