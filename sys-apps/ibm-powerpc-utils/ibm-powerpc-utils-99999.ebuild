@@ -14,7 +14,7 @@ LICENSE="GPL-2+"
 KEYWORDS=""
 
 RDEPEND="
-	!sys-apps/powerpc-utils
+	!<sys-apps/powerpc-utils-1.1.3.18-r4
 	rtas? ( >=sys-libs/librtas-2.0.2 )
 "
 
