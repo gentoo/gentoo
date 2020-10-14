@@ -11,7 +11,7 @@ HOMEPAGE="https://developers.yubico.com/yubico-piv-tool/ https://github.com/Yubi
 
 LICENSE="BSD-2"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="libressl test"
 
 RESTRICT="!test? ( test )"
