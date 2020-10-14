@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,10 @@ DEPEND="${RDEPEND}
 # https://github.com/vogel/injeqt/issues/18
 RESTRICT=test
 
-PATCHES=( "${FILESDIR}/${P}-gcc7.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gcc7.patch"
+	"${FILESDIR}/${PN}-1.2.0-no-Werror.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
