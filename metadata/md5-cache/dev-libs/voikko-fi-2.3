@@ -1,13 +1,14 @@
-BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) dev-libs/libvoikko
-DEFINED_PHASES=compile install setup
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) dev-libs/libvoikko verify-sig? ( app-crypt/openpgp-keys-voikko ) verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=compile install setup unpack
 DEPEND=dev-libs/foma dev-libs/libvoikko
 DESCRIPTION=Finnish dictionary for libvoikko based spell checkers (vvfst format)
 EAPI=7
 HOMEPAGE=https://voikko.puimula.org/
+IUSE=verify-sig
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/foma dev-libs/libvoikko
 SLOT=0
-SRC_URI=https://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.3.tar.gz
-_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=acbe4090ffe3d78bfae7d9c6d869160f
+SRC_URI=https://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.3.tar.gz verify-sig? ( https://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.3.tar.gz.asc )
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	verify-sig	f2f84a35f167f86e5da84a2a2f4f7d65
+_md5_=afcab0a98cb4afb1169105a7d1cb7452

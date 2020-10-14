@@ -1003,6 +1003,7 @@ app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
+app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
@@ -17563,7 +17564,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.8.12 5.8.13 5.8.14 5.9.0: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.4.69-r1 5.4.70 5.4.70-r1 5.8.12 5.8.12-r1 5.8.13 5.8.13-r1 5.8.14 5.8.14-r1 5.9.0-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.4.69-r1 5.4.70 5.4.70-r1 5.8.12 5.8.12-r1 5.8.13 5.8.13-r1 5.8.14 5.8.14-r1 5.9.0 5.9.0-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.9.236 4.9.237 4.9.238 4.14.198 4.14.199 4.14.200 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.9.0: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -18621,7 +18622,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.65 5.66_alpha10 5.66_alpha11: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.65 5.66_alpha10 5.66_alpha11 5.66_alpha12: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions

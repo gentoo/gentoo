@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=net-libs/libnfnetlink || ( net-misc/miniupnpd net-libs/miniupnpc )
 SLOT=0
 SRC_URI=http://miniupnp.free.fr/files/minissdpd-1.5.20200928.tar.gz verify-sig? ( http://miniupnp.free.fr/files/minissdpd-1.5.20200928.tar.gz.sig )
-_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	verify-sig	4069de8c442b579579eb63348d72683f
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	verify-sig	f2f84a35f167f86e5da84a2a2f4f7d65
 _md5_=50527fbe201e220319258d3da40367a8

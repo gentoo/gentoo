@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/gmp:0= sys-apps/util-linux:= dev-libs/openssl:0= !nftables? ( >=net-firewall/iptables-1.4.6:0=[ipv6?] net-libs/libnfnetlink:= net-libs/libmnl:= ) nftables? ( net-firewall/nftables net-libs/libnftnl:= net-libs/libmnl:= )
 SLOT=0
 SRC_URI=http://miniupnp.free.fr/files/miniupnpd-2.2.0-RC2.tar.gz verify-sig? ( http://miniupnp.free.fr/files/miniupnpd-2.2.0-RC2.tar.gz.sig )
-_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	verify-sig	4069de8c442b579579eb63348d72683f
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	verify-sig	f2f84a35f167f86e5da84a2a2f4f7d65
 _md5_=f6d96e5020680ff508f9d28051bcfc51

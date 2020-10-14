@@ -4,10 +4,10 @@ DESCRIPTION=A menu-driven tool to draw and manipulate objects interactively in a
 EAPI=7
 HOMEPAGE=http://mcj.sourceforge.net/
 IUSE=jpeg nls postscript
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~hppa ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
 LICENSE=BSD
 RDEPEND=x11-libs/libXaw x11-libs/libXaw3d x11-libs/libXi x11-libs/libXt media-libs/libpng:0= media-fonts/font-misc-misc media-fonts/urw-fonts >=media-gfx/transfig-3.2.5-r1 media-libs/netpbm jpeg? ( virtual/jpeg:0= ) nls? ( x11-libs/libXaw3d[unicode] ) postscript? ( app-text/ghostscript-gpl )
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/mcj/xfig-3.2.7b.tar.xz
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8aab5c55b29b68a2a6a7a436b48a977e
+_md5_=763504a0f49e1ebfb76497a9fd33c287
