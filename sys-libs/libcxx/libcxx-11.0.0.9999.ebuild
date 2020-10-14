@@ -28,8 +28,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6"
 BDEPEND="
-	test? ( >=sys-devel/clang-3.9.0
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
+	test? (
+		>=dev-util/cmake-3.16
+		>=sys-devel/clang-3.9.0
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+	)"
 
 DOCS=( CREDITS.TXT )
 
@@ -130,6 +133,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
+			-DPython3_EXECUTABLE="${PYTHON}"
 		)
 	fi
 	cmake_src_configure
