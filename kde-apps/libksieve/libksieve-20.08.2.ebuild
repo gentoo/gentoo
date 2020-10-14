@@ -15,7 +15,7 @@ DESCRIPTION="Common PIM libraries"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 # drop qtnetwork subslot operator when QT_MINIMAL >= 5.15.0
