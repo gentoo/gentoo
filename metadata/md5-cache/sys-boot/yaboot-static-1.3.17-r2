@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=!sys-boot/yaboot sys-apps/ibm-powerpc-utils !ibm? ( sys-fs/hfsutils sys-fs/hfsplusutils sys-fs/mac-fdisk )
 SLOT=0
 SRC_URI=mirror://gentoo/yaboot-static-1.3.17.tbz2
-_md5_=7ad3fd4e546b29fbe66468e4c3eca42d
+_md5_=8175bbe1e684641fd985be3b2f80a975

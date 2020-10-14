@@ -1,6 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11 media-libs/glew virtual/glu x11-base/xorg-proto
+DEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11 virtual/glu x11-base/xorg-proto
 DESCRIPTION=Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
 EAPI=7
 HOMEPAGE=https://www.mesa3d.org/ https://mesa.freedesktop.org/ https://gitlab.freedesktop.org/mesa/demos
@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=38a6ceb47817fd13a73a8100b62bbfee
+_md5_=238e7c1a3a515f46a82b29c73750ddf4
