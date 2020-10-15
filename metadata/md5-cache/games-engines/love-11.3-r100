@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single
 REQUIRED_USE=^^ ( lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 )
 SLOT=0
 SRC_URI=https://github.com/love2d/love/releases/download/11.3/love-11.3-linux-src.tar.gz
-_eclasses_=lua-single	d51249bd993b9dda6dde2d2276b8dc90	lua-utils	e46ac6841ad67e06b94d930fc64adf6c	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=lua-single	d51249bd993b9dda6dde2d2276b8dc90	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=771fbb30f04cf5c19ff95f0f7e98e9c5
