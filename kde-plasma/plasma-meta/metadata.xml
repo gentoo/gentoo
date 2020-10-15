@@ -11,7 +11,6 @@
 		<flag name="desktop-portal">Enable <pkg>sys-apps/xdg-desktop-portal</pkg> backend implementation for Plasma</flag>
 		<flag name="discover">Pull in resources management GUI; a centralised GHNS alternative and optional <pkg>sys-apps/fwupd</pkg> frontend</flag>
 		<flag name="display-manager">Pull in a graphical display manager</flag>
-		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
 		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
@@ -21,6 +20,7 @@
 		<flag name="qrcode">Enable support for easy WiFi network sharing using QR codes with <pkg>kde-plasma/plasma-nm</pkg></flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
 		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
+		<flag name="smart">Pull in <pkg>kde-plasma/plasma-disks</pkg> for disk health monitoring</flag>
 		<flag name="thunderbolt">Pull in <pkg>kde-plasma/plasma-thunderbolt</pkg> control center module</flag>
 		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
 	</use>
