@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-ml/base-0.11.0:=
+	dev-ml/findlib:=
 	>=dev-ml/ocaml-compiler-libs-0.11:=
 	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
 		dev-ml/result:=
