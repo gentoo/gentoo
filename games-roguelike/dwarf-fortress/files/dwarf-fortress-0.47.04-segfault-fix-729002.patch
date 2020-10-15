@@ -1,0 +1,54 @@
+diff --git a/g_src/enabler.cpp b/g_src/enabler.cpp
+index c0cfda8..7db0142 100644
+--- a/g_src/enabler.cpp
++++ b/g_src/enabler.cpp
+@@ -590,6 +590,10 @@ int enablerst::loop(string cmdline) {
+ 
+   // Clean up graphical resources
+   delete renderer;
++
++  // FIX infinite loop
++  // https://www.bay12games.com/dwarves/mantisbt/view.php?id=11564
++  return 0;
+ }
+ 
+ void enablerst::override_grid_size(int x, int y) {
+diff --git a/g_src/music_and_sound_openal.cpp b/g_src/music_and_sound_openal.cpp
+index 1ee0941..fa431f3 100644
+--- a/g_src/music_and_sound_openal.cpp
++++ b/g_src/music_and_sound_openal.cpp
+@@ -250,7 +250,11 @@ void musicsoundst::deinitsound() {
+     alDeleteBuffers(1, &buffer);
+   }
+   // Deinit OpenAL
+-  alcMakeContextCurrent(NULL);
++
++  // FIX infinite loop
++  // https://www.bay12games.com/dwarves/mantisbt/view.php?id=11564
++  //alcMakeContextCurrent(NULL);
++
+   alcDestroyContext(context);
+   alcCloseDevice(device);
+ 
+@@ -480,7 +484,9 @@ static bool init_openal() {
+ 
+ void alEnable( ALenum capability ) { _alEnable(capability); }
+ void alDisable( ALenum capability ) { _alDisable(capability); }
+-ALboolean alIsEnabled( ALenum capability ) { _alIsEnabled(capability); }
++// FIX return statement
++// https://www.bay12games.com/dwarves/mantisbt/view.php?id=11564
++ALboolean alIsEnabled( ALenum capability ) { return _alIsEnabled(capability); }
+ const ALchar* alGetString( ALenum param ) { return _alGetString(param); }
+ void alGetBooleanv( ALenum param, ALboolean* data ) { _alGetBooleanv(param, data); }
+ void alGetIntegerv( ALenum param, ALint* data ) { _alGetIntegerv(param, data); }
+@@ -490,7 +496,9 @@ ALboolean alGetBoolean( ALenum param ) { return _alGetBoolean(param); }
+ ALint alGetInteger( ALenum param ) { return _alGetInteger(param); }
+ ALfloat alGetFloat( ALenum param ) { return _alGetFloat(param); }
+ ALdouble alGetDouble( ALenum param ) { return _alGetDouble(param); }
+-ALenum alGetError( void ) { _alGetError(); }
++// FIX return statement
++// https://www.bay12games.com/dwarves/mantisbt/view.php?id=11564
++ALenum alGetError( void ) { return _alGetError(); }
+ ALboolean alIsExtensionPresent( const ALchar* extname ) { return _alIsExtensionPresent(extname); }
+ void* alGetProcAddress( const ALchar* fname ) { return _alGetProcAddress(fname); }
+ ALenum alGetEnumValue( const ALchar* ename ) { return _alGetEnumValue(ename); }

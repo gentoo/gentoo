@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator toolchain-funcs
+inherit toolchain-funcs
 
-MY_PV=$(replace_all_version_separators _ "$(get_version_component_range 2-)")
-MY_PN=df
+MY_PV=$(ver_cut 2- $(ver_rs 2- '_'))
+MY_PN="df"
 MY_P=${MY_PN}_${MY_PV}
 
 DESCRIPTION="A single-player fantasy game"
@@ -43,6 +43,9 @@ RESTRICT="strip"
 src_prepare() {
 	rm -f libs/*.so* || die
 	sed -i -e '1i#include <cmath>' g_src/ttf_manager.cpp || die
+
+	eapply "${FILESDIR}/${P}-segfault-fix-729002.patch"
+
 	default
 }
 
