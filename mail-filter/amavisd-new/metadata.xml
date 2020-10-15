@@ -17,6 +17,5 @@
 		<flag name="rspamd">Add support for mail-filter/rspamd extension (HTTP only)</flag>
 		<flag name="rspamd-https">Add support for mail-filter/rspamd extension (both HTTP and HTTPS)</flag>
 		<flag name="spamassassin">Add support for mail-filter/spamassassin</flag>
-		<flag name="zmq">Add support for zeromq sockets</flag>
 	</use>
 </pkgmetadata>

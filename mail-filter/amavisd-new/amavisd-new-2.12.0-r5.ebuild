@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/amavis/amavis/-/archive/v${PV}/amavis-v${PV}.tar.bz2
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
-IUSE="clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https snmp spamassassin zmq"
+IUSE="clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https snmp spamassassin"
 
 MY_RSPAMD_DEPEND="dev-perl/HTTP-Message
 	dev-perl/JSON
@@ -70,8 +70,7 @@ RDEPEND="${DEPEND}
 		dev-perl/LWP-Protocol-https
 		dev-perl/Net-SSLeay )
 	snmp? ( net-analyzer/net-snmp[perl] )
-	spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info )
-	zmq? ( dev-perl/ZMQ-LibZMQ3 )"
+	spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info )"
 
 AMAVIS_ROOT="/var/lib/amavishome"
 S="${WORKDIR}/amavis-v${PV}"
@@ -99,11 +98,6 @@ src_prepare() {
 			|| die "missing conf file - dkim"
 	fi
 
-	if use zmq ; then
-		sed -i -e '/enable_zmq/s/# //' "${S}/amavisd.conf" \
-			|| die "missing conf file - zmq"
-	fi
-
 	if ! use spamassassin ; then
 		sed -i -e \
 			"/^#[[:space:]]*@bypass_spam_checks_maps[[:space:]]*=[[:space:]]*(1)/s/^#//" \
@@ -122,17 +116,6 @@ src_install() {
 		newinitd "${FILESDIR}/amavisd-snmp-subagent.initd" \
 				 amavisd-snmp-subagent
 		dodoc AMAVIS-MIB.txt
-
-		if use zmq ; then
-			dosbin amavisd-snmp-subagent-zmq
-			newinitd "${FILESDIR}/amavisd-snmp-subagent-zmq.initd" \
-					 amavisd-snmp-subagent-zmq
-		fi
-	fi
-
-	if use zmq ; then
-		dosbin amavis-services amavis-mc
-		newinitd "${FILESDIR}/amavis-mc.initd-r1" amavis-mc
 	fi
 
 	if use ldap ; then
