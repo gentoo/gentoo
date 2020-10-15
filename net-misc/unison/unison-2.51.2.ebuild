@@ -18,9 +18,9 @@ IUSE="gtk doc static debug threads +ocamlopt test"
 
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="dev-lang/ocaml[ocamlopt?]
-	gtk? ( dev-ml/lablgtk )"
+	gtk? ( dev-ml/lablgtk:2= )"
 
-RDEPEND="gtk? ( dev-ml/lablgtk
+RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 

@@ -15,10 +15,10 @@ KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~spa
 
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="dev-lang/ocaml[ocamlopt?]
-	gtk? ( dev-ml/lablgtk )
+	gtk? ( dev-ml/lablgtk:2= )
 	test? ( || ( dev-util/ctags >=app-editors/emacs-23.1:* ) )"
 
-RDEPEND="gtk? ( dev-ml/lablgtk
+RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	!net-misc/unison:0
 	app-eselect/eselect-unison"
