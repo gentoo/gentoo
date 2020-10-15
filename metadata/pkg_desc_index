@@ -17562,7 +17562,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.4.71 5.8.12 5.8.13 5.8.14 5.8.15 5.9.0: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.4.69-r1 5.4.70 5.4.70-r1 5.4.71 5.8.12 5.8.12-r1 5.8.13 5.8.13-r1 5.8.14 5.8.14-r1 5.8.15 5.9.0 5.9.0-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.4.69-r1 5.4.70 5.4.70-r1 5.4.71 5.4.71-r1 5.8.12 5.8.12-r1 5.8.13 5.8.13-r1 5.8.14 5.8.14-r1 5.8.15 5.8.15-r1 5.9.0 5.9.0-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.9.236 4.9.237 4.9.238 4.9.239 4.14.198 4.14.199 4.14.200 4.14.201 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.9.0: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
