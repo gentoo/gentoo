@@ -17577,7 +17577,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the 
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.4.71 5.8.12 5.8.13 5.8.14 5.8.15: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.4.71 5.8.12 5.8.13 5.8.14 5.8.15 5.9.0: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.238 4.9.238 4.14.200 4.19.150 5.4.70 5.8.14 5.9.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3

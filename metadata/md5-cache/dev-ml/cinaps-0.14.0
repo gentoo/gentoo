@@ -1,15 +1,15 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/re:= test? ( dev-ml/ppx_jane ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=dev-ml/findlib:= dev-ml/re:= test? ( dev-ml/ppx_jane ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Trivial metaprogramming tool
 EAPI=7
 HOMEPAGE=https://github.com/ocaml-ppx/cinaps
 IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
-RDEPEND=dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=dev-ml/findlib:= dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/ocaml-ppx/cinaps/archive/v0.14.0.tar.gz -> cinaps-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=c2985d5b68e3b73ef802f7c9eff5980f
+_md5_=288d8d21e4726288202a91f05e07f196
