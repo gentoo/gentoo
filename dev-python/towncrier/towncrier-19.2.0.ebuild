@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
@@ -22,7 +23,7 @@ RDEPEND="
 	dev-python/incremental[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		dev-vcs/git
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
