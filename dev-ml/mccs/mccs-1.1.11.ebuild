@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/cudf:=
