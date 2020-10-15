@@ -29,10 +29,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${WORKDIR}"/${PN}_${PV}+gtk2-${PATCH_LEVEL}.diff
-	"${FILESDIR}"/${P}-build-2.patch
-	"${FILESDIR}"/${P}-underlink.patch
-	"${FILESDIR}"/${P}-make-382.patch
+	"${WORKDIR}/${PN}_${PV}+gtk2-${PATCH_LEVEL}.diff"
+	"${FILESDIR}/${P}-build-2.patch"
+	"${FILESDIR}/${P}-underlink.patch"
+	"${FILESDIR}/${P}-make-382.patch"
 	"${FILESDIR}/${P}-fno-common.patch"
 	"${FILESDIR}/${P}-nolang.patch"
 )
