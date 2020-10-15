@@ -5,10 +5,10 @@ DESCRIPTION=Monadic let-bindings
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_let
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm
+KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_let/archive/v0.14.0.tar.gz -> ppx_let-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=e3887f62c5c03f290b292b87cc72d954
+_md5_=09b9416d9d0431c61091cf10d366279d

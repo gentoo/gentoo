@@ -5,10 +5,10 @@ DESCRIPTION=Standard library for ppx rewriters
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_sexp_value
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm
+KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/ppx_here:= dev-ml/ppx_sexp_conv:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= dev-ml/ppxlib:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_sexp_value/archive/v0.14.0.tar.gz -> ppx_sexp_value-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=c965e30ebd8ce2b3f13e1b979a9d92b9
+_md5_=6e33b93abcbb0e276a9b957e08471f58

@@ -5,10 +5,10 @@ DESCRIPTION=Add location to calls to failwiths
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_fail
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm
+KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/ppx_here:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_fail/archive/v0.14.0.tar.gz -> ppx_fail-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=acc2ba32b02419080c2761a5c51431e2
+_md5_=965d266a3aabf9790580dfc350fc17f0
