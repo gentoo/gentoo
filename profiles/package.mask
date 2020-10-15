@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2020-10-15)
+# dead packages with latest releases before 2013
+# these are superseded by other scikit packages
+# scikit-optimize, sktime
+# Removal in 30 days (Bug #749297)
+sci-libs/scikits_optimization
+sci-libs/scikits_timeseries
+
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
 # Not compatible with >=dev-libs/openssl-1.1.0, no maintainer in Gentoo,
 # no new commits to the upstream Git repository since September 2013.
