@@ -1,11 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mark Wright <gienah@gentoo.org> (2020-10-11)
-# dev-ml/ppx_jane is not keyworded
-dev-ml/cinaps test
-dev-ml/ppx_expect test
-
 # Sam James <sam@gentoo.org> (2020-10-06)
 # Deprecated. See bug #741855.
 net-mail/dovecot vpopmail
