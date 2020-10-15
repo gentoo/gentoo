@@ -172,3 +172,8 @@ PHP_TARGETS="php7-2 php7-3 php7-4"
 #
 # Default ADA target
 ADA_TARGET="gnat_2018"
+
+# Marek Szuba <marecki@gentoo.org> (2020-10-15)
+# Default targets for lua{,-single}.eclass
+LUA_SINGLE_TARGET="lua5-1"
+LUA_TARGETS="lua5-1"
