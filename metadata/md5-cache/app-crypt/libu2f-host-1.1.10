@@ -5,10 +5,10 @@ DESCRIPTION=Yubico Universal 2nd Factor (U2F) Host C Library
 EAPI=7
 HOMEPAGE=https://developers.yubico.com/libu2f-host/
 IUSE=kernel_linux static-libs systemd kernel_linux
-KEYWORDS=amd64 ~ppc64 x86
+KEYWORDS=amd64 ~arm64 ~ppc64 x86
 LICENSE=LGPL-2
 RDEPEND=dev-libs/hidapi dev-libs/json-c:= !systemd? ( acct-group/plugdev ) systemd? ( sys-apps/systemd[acl] )
 SLOT=0
 SRC_URI=https://developers.yubico.com/libu2f-host/Releases/libu2f-host-1.1.10.tar.xz
 _eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=bdfb2be01ca190617cb02e0502b08d0d
+_md5_=8cd993ec6c3ce9e867908e2efedf37e7
