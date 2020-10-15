@@ -13,6 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-ml/dune-private-libs:=
