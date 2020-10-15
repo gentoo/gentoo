@@ -99,9 +99,6 @@ src_configure() {
 	echo "CONFIG_EAP=y" >> ${CONFIG}
 	echo "CONFIG_ERP=y" >> ${CONFIG}
 	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
-	echo "CONFIG_SAE=y" >> ${CONFIG}
-	echo "CONFIG_OWE=y" >> ${CONFIG}
-	echo "CONFIG_DPP=y" >> ${CONFIG}
 
 	if use suiteb; then
 		echo "CONFIG_SUITEB=y" >> ${CONFIG}
@@ -112,14 +109,17 @@ src_configure() {
 		echo "CONFIG_TLS=internal" >> ${CONFIG}
 	else
 		# SSL authentication methods
+		echo "CONFIG_DPP=y" >> ${CONFIG}
 		echo "CONFIG_EAP_FAST=y" >> ${CONFIG}
-		echo "CONFIG_EAP_TLS=y" >> ${CONFIG}
-		echo "CONFIG_EAP_TTLS=y" >> ${CONFIG}
 		echo "CONFIG_EAP_MSCHAPV2=y" >> ${CONFIG}
 		echo "CONFIG_EAP_PEAP=y" >> ${CONFIG}
+		echo "CONFIG_EAP_PWD=y" >> ${CONFIG}
+		echo "CONFIG_EAP_TLS=y" >> ${CONFIG}
+		echo "CONFIG_EAP_TTLS=y" >> ${CONFIG}
+		echo "CONFIG_OWE=y" >> ${CONFIG}
+		echo "CONFIG_SAE=y" >> ${CONFIG}
 		echo "CONFIG_TLSV11=y" >> ${CONFIG}
 		echo "CONFIG_TLSV12=y" >> ${CONFIG}
-		echo "CONFIG_EAP_PWD=y" >> ${CONFIG}
 	fi
 
 	if use wps; then
