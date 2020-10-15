@@ -3099,7 +3099,7 @@ app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functio
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8 0.2.9 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
-app-text/zathura-pdf-mupdf 0.3.5 9999: PDF plug-in for zathura
+app-text/zathura-pdf-mupdf 0.3.5 0.3.6 9999: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.9 0.3.0 9999: PDF plug-in for zathura
 app-text/zathura-ps 0.2.6 9999: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
@@ -5756,7 +5756,7 @@ dev-lua/luasocket 3.0_rc1-r4 3.0_rc1-r5: Networking support library for the Lua 
 dev-lua/luassert 1.7.9 1.7.10 1.8.0: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1 0.4-r2: Lightweight C++ API library for Lua
-dev-lua/luv 1.32.0.0 1.32.0.0-r100: Bare libuv bindings for lua
+dev-lua/luv 1.32.0.0 1.32.0.0-r100 1.32.0.0-r101: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2 0.3.2-r100: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.4: Lua bindings for libmpack

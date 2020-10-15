@@ -8,7 +8,8 @@ IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=BSD
 RDEPEND=dev-ml/cudf:= sci-mathematics/glpk:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
 SLOT=0/1.1.11
 SRC_URI=https://github.com/AltGr/ocaml-mccs/archive/1.1+11.tar.gz -> mccs-1.1.11.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=00d0dbaabf6ebcbc4afa90cee2f2bf00
+_md5_=4f645e4c551a4529fdf7377b9ad3d878
