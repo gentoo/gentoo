@@ -11418,7 +11418,7 @@ games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an 
 games-fps/yamagi-quake2 7.42 7.43: Quake 2 engine focused on single player
 games-kids/gcompris 0.97-r1: Full featured educational application for children from 2 to 10
 games-kids/gmult 8.0-r1: Multiplication Puzzle emulates the multiplication game found in Emacs
-games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters and numbers
+games-kids/lletters 0.1.95-r4: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
 games-kids/tuxmath 2.0.3-r1: Educational arcade game where you have to solve maths problems
 games-kids/tuxtype 1.8.3-r1: Typing tutorial with lots of eye-candy
