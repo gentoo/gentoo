@@ -33,9 +33,7 @@ DEPEND="
 	dev-libs/libxml2:=
 	>=dev-libs/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
 "
-RDEPEND="${DEPEND}
-	!<media-libs/mesa-18.1.1-r1
-"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
