@@ -40,7 +40,7 @@ esac
 # complicated dep is needed.
 # You can specify the variable BEFORE inherit to add more dependencies.
 VIRTUALX_DEPEND="${VIRTUALX_DEPEND}
-	!prefix? ( x11-base/xorg-server[xvfb] )
+	x11-base/xorg-server[xvfb]
 	x11-apps/xhost
 "
 
