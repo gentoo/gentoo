@@ -2,16 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit autotools desktop flag-o-matic toolchain-funcs
 
-MY_P=${P/_beta/BETA}
-inherit autotools desktop flag-o-matic toolchain-funcs user
-
-DESCRIPTION="A utility for network discovery and security auditing"
+DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
-SRC_URI="
-	https://nmap.org/dist/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~jer/nmap-logo-64.png
-"
+SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -51,7 +46,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 )
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die
