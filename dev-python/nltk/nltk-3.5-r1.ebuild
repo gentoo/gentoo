@@ -31,7 +31,7 @@ BDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pyparsing[${PYTHON_USEDEP}]
 		dev-python/twython[${PYTHON_USEDEP}]
-		sci-libs/scikits_learn[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 	)"
 PDEPEND="dev-python/nltk-data"
