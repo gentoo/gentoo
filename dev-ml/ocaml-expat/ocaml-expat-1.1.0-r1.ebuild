@@ -6,6 +6,7 @@ EAPI=7
 inherit findlib
 
 IUSE="doc +ocamlopt test"
+RESTRICT="!test? ( test )"
 
 DESCRIPTION="OCaml bindings for expat"
 SRC_URI="https://github.com/whitequark/ocaml-expat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
