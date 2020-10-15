@@ -6,10 +6,7 @@ inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
-SRC_URI="
-	https://nmap.org/dist/${P}.tar.bz2
-	https://dev.gentoo.org/~jer/nmap-logo-64.png
-"
+SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
