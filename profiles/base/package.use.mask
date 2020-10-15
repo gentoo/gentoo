@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
+# Depends on masked net-libs/libkvkontakte
+kde-apps/kipi-plugins vkontakte
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-06)
 # waiting for lua to be slotted
 media-gfx/exact-image lua
