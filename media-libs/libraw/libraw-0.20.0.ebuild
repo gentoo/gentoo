@@ -20,6 +20,7 @@ IUSE="examples jpeg +lcms openmp"
 
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}"
 
 DEPEND="${RDEPEND}"
 
