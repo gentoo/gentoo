@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils
+EAPI=7
+
+inherit autotools desktop
 
 DESCRIPTION="DJ Delorie's Ace of Penguins solitaire games"
 HOMEPAGE="http://www.delorie.com/store/ace/"
@@ -11,20 +12,21 @@ SRC_URI="http://www.delorie.com/store/ace/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-no-xpm.patch
-	"${FILESDIR}"/${P}-libpng15.patch
-	"${FILESDIR}"/${P}-gold.patch
-	"${FILESDIR}"/${P}-CC.patch
-	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}/${P}-no-xpm.patch"
+	"${FILESDIR}/${P}-libpng15.patch"
+	"${FILESDIR}/${P}-gold.patch"
+	"${FILESDIR}/${P}-CC.patch"
+	"${FILESDIR}/${P}-clang.patch"
+	"${FILESDIR}/${P}-gcc10.patch"
+	"${FILESDIR}/${P}-malloc.patch"
 )
 
 src_prepare() {
@@ -43,12 +45,14 @@ src_configure() {
 src_install() {
 	default
 
+	rm "${ED}/usr/$(get_libdir)/libcards.la" || die
+
 	dodoc docs/*
 	newicon docs/as.gif ${PN}.gif
-	cd "${D}/usr/bin" || die
+
+	cd "${ED}/usr/bin" || die
 	local p
-	for p in *
-	do
+	for p in *; do
 		make_desktop_entry $p "Ace ${p/ace-/}" /usr/share/pixmaps/${PN}.gif
 	done
 }

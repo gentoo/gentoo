@@ -71,6 +71,8 @@ PDEPEND="
 # tests hang
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-special-char-file-selection.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package acl ACL)

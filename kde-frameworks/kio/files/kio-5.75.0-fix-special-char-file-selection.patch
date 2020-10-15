@@ -1,0 +1,201 @@
+From 4321b8ff8ac7a8ffdea1068d8bbc734a0a34c0d0 Mon Sep 17 00:00:00 2001
+From: Andreas Bontozoglou <a.bontozoglou@gmail.com>
+Date: Wed, 14 Oct 2020 15:01:02 +0100
+Subject: [PATCH] [BUG] Fixing regression on selecting files that contain `#`
+
+Introduced in tokenize() in https://invent.kde.org/frameworks/kio/-/merge_requests/89.
+Fixing by using setPath and adding test-case for parsing such filenames.
+---
+ autotests/kfilewidgettest.cpp   | 37 +++++++++++++++++++--------------
+ src/filewidgets/kfilewidget.cpp | 31 +++++++++++++++------------
+ 2 files changed, 39 insertions(+), 29 deletions(-)
+
+diff --git a/autotests/kfilewidgettest.cpp b/autotests/kfilewidgettest.cpp
+index 859ea958..ac34e387 100644
+--- a/autotests/kfilewidgettest.cpp
++++ b/autotests/kfilewidgettest.cpp
+@@ -24,6 +24,7 @@
+ #include <QAbstractItemView>
+ #include <QDropEvent>
+ #include <QMimeData>
++#include <QStringList>
+ #include <QStringLiteral>
+ #include <QList>
+ #include <QUrl>
+@@ -530,58 +531,62 @@ private Q_SLOTS:
+     }
+ 
+     void testTokenize_data()
+-    {   
+-        // Real filename (as in how they are stored in the fs) 
+-        QTest::addColumn<QList<QString>>("fileNames");
++    {
++        // Real filename (as in how they are stored in the fs)
++        QTest::addColumn<QStringList>("fileNames");
+         // Escaped value of the text-box in the dialog
+         QTest::addColumn<QString>("expectedCurrentText");
+ 
+-        QTest::newRow("simple") << QList<QString>{"test2"} << QString("test2");
++        QTest::newRow("simple") << QStringList{"test2"} << QString("test2");
+ 
+         // When a single file with space is selected, it is _not_ quoted ...
+-        QTest::newRow("space-single-file") 
+-            << QList<QString>{"test space"} 
++        QTest::newRow("space-single-file")
++            << QStringList{"test space"}
+             << QString("test space");
+ 
+         // However, when multiple files are selected, they are quoted
+         QTest::newRow("space-multi-file")
+-            << QList<QString>{"test space", "test2"} 
++            << QStringList{"test space", "test2"}
+             << QString("\"test space\" \"test2\"");
+ 
+         // All quotes in names should be escaped, however since this is a single
+         // file, the whole name will not be escaped.
+         QTest::newRow("quote-single-file")
+-            << QList<QString>{"test\"quote"} 
++            << QStringList{"test\"quote"}
+             << QString("test\\\"quote");
+-        
++
+         // Escape multiple files. Files should also be wrapped in ""
+         // Note that we are also testing quote at the end of the name
+         QTest::newRow("quote-multi-file")
+-            << QList<QString>{"test\"quote", "test2-quote\"", "test"} 
++            << QStringList{"test\"quote", "test2-quote\"", "test"}
+             << QString("\"test\\\"quote\" \"test2-quote\\\"\" \"test\"");
+ 
+         // Ok, enough with quotes... lets do some backslashes
+         // Backslash literals in file names - Unix only case
+         QTest::newRow("backslash-single-file")
+-            << QList<QString>{"test\\backslash"} 
++            << QStringList{"test\\backslash"}
+             << QString("test\\\\backslash");
+ 
+         QTest::newRow("backslash-multi-file")
+-            << QList<QString>{"test\\back\\slash", "test"} 
++            << QStringList{"test\\back\\slash", "test"}
+             << QString("\"test\\\\back\\\\slash\" \"test\"");
+ 
+         QTest::newRow("double-backslash-multi-file")
+-            << QList<QString>{"test\\\\back\\slash", "test"} 
++            << QStringList{"test\\\\back\\slash", "test"}
+             << QString("\"test\\\\\\\\back\\\\slash\" \"test\"");
+ 
+         QTest::newRow("double-backslash-end")
+-            << QList<QString>{"test\\\\"} 
++            << QStringList{"test\\\\"}
+             << QString("test\\\\\\\\");
+ 
+         QTest::newRow("single-backslash-end")
+-            << QList<QString>{"some thing", "test\\"} 
++            << QStringList{"some thing", "test\\"}
+             << QString("\"some thing\" \"test\\\\\"");
+ 
++        QTest::newRow("sharp")
++            << QStringList{"some#thing"}
++            << QString("some#thing");
++
+     }
+ 
+     void testTokenize()
+@@ -589,7 +594,7 @@ private Q_SLOTS:
+         // We will use setSelectedUrls([QUrl]) here in order to check correct
+         // filename escaping. Afterwards we will accept() the dialog to confirm
+         // correct result
+-        QFETCH(QList<QString>, fileNames);
++        QFETCH(QStringList, fileNames);
+         QFETCH(QString, expectedCurrentText);
+ 
+         QTemporaryDir tempDir;
+diff --git a/src/filewidgets/kfilewidget.cpp b/src/filewidgets/kfilewidget.cpp
+index 1bbf3e58..32ca0617 100644
+--- a/src/filewidgets/kfilewidget.cpp
++++ b/src/filewidgets/kfilewidget.cpp
+@@ -789,8 +789,8 @@ static QString relativePathOrUrl(const QUrl &baseUrl, const QUrl &url);
+ /**
+  * Escape the given Url so that is fit for use in the selected list of file. This
+  * mainly handles double quote (") characters. These are used to separate entries
+- * in the list, however, if `"` appears in the filename (or path), this will be 
+- * escaped as `\"`. Later, the tokenizer is able to understand the difference 
++ * in the list, however, if `"` appears in the filename (or path), this will be
++ * escaped as `\"`. Later, the tokenizer is able to understand the difference
+  * and do the right thing
+  */
+ static QString escapeDoubleQuotes(QString && path);
+@@ -1623,7 +1623,7 @@ void KFileWidget::setSelectedUrl(const QUrl &url)
+ }
+ 
+ void KFileWidget::setSelectedUrls(const QList<QUrl> &urls)
+-{   
++{
+     if (urls.isEmpty()) {
+         return;
+     }
+@@ -1717,7 +1717,7 @@ QList<QUrl> KFileWidget::selectedUrls() const
+ 
+ QList<QUrl> KFileWidgetPrivate::tokenize(const QString &line) const
+ {
+-    qCDebug(KIO_KFILEWIDGETS_FW) << "Tokenizing:" << line; 
++    qCDebug(KIO_KFILEWIDGETS_FW) << "Tokenizing:" << line;
+ 
+     QList<QUrl> urls;
+     QUrl u(ops->url().adjusted(QUrl::RemoveFilename));
+@@ -1727,15 +1727,21 @@ QList<QUrl> KFileWidgetPrivate::tokenize(const QString &line) const
+ 
+     // A helper that creates, validates and appends a new url based
+     // on the given filename.
+-    auto addUrl = [u, &urls](const QString & partial_name) 
+-    { 
++    auto addUrl = [u, &urls](const QString &partial_name)
++    {
+         if (partial_name.trimmed().isEmpty()) {
+             return;
+         }
+ 
++        // We have to use setPath here, so that something like "test#file"
++        // isn't interpreted to have path "test" and fragment "file".
++        QUrl partial_url;
++        partial_url.setPath(partial_name);
++
+         // This returns QUrl(partial_name) for absolute URLs.
+         // Otherwise, returns the concatenated url.
+-        QUrl finalUrl = u.resolved(QUrl(partial_name));
++        const QUrl finalUrl = u.resolved(partial_url);
++
+         if (finalUrl.isValid()) {
+             urls.append(finalUrl);
+         } else {
+@@ -1758,7 +1764,7 @@ QList<QUrl> KFileWidgetPrivate::tokenize(const QString &line) const
+             escape = false;
+             continue;
+         }
+-        
++
+         // Handle escape start
+         if (ch.toLatin1() == '\\') {
+             escape = true;
+@@ -1777,15 +1783,14 @@ QList<QUrl> KFileWidgetPrivate::tokenize(const QString &line) const
+         partial_name += ch;
+     }
+ 
+-    // Handle the last item which is buffered in 
+-    // partial_name. This is required for single-file
+-    // selection dialogs since the name will not be 
+-    // wrapped in quotes
++    // Handle the last item which is buffered in partial_name. This is
++    // required for single-file selection dialogs since the name will not
++    // be wrapped in quotes
+     if (!partial_name.isEmpty()) {
+         addUrl(partial_name);
+         partial_name.clear();
+     }
+-    
++
+     return urls;
+ }
+ 
+-- 
+GitLab
+
