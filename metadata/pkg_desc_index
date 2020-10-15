@@ -12980,7 +12980,7 @@ media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/allegro 4.4.2-r2 4.4.3.1 5.2.5.0 5.2.6.0: Cross-platform library aimed at video game and multimedia programming
-media-libs/alsa-lib 1.2.2-r1 1.2.3.1 1.2.3.2: Advanced Linux Sound Architecture Library
+media-libs/alsa-lib 1.2.2-r1 1.2.3.1 1.2.3.2 1.2.3.2-r1: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alsa-topology-conf 1.2.2 1.2.3: ALSA topology configuration files
 media-libs/alsa-ucm-conf 1.2.2 1.2.3: ALSA ucm configuration files
