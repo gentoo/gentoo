@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=wrapper for autoconf to manage multiple autoconf versions
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+LICENSE=GPL-2
+SLOT=0
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=8ff5185f8b53f790c4f336027f9f1016
