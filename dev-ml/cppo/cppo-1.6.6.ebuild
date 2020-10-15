@@ -15,5 +15,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 IUSE="+ocamlopt"
 
-RDEPEND="dev-ml/ocamlbuild"
+RDEPEND="dev-ml/ocamlbuild
+	dev-ml/findlib:="
 DEPEND="${RDEPEND}"

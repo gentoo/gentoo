@@ -18,11 +18,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/extlib:=
+	dev-ml/findlib:=
 	dev-libs/glib:2
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 )
-	dev-ml/findlib
 	dev-ml/ocamlbuild
 	dev-lang/perl
 "
