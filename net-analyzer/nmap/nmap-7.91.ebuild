@@ -2,16 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic git-r3 toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
-
-EGIT_REPO_URI="https://github.com/nmap/nmap"
-SRC_URI="https://dev.gentoo.org/~jer/nmap-logo-64.png"
+SRC_URI="
+	https://nmap.org/dist/${P}.tar.bz2
+	https://dev.gentoo.org/~jer/nmap-logo-64.png
+"
 
 LICENSE="NPSL"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="ipv6 libressl libssh2 ncat nping +nse ssl system-lua"
 REQUIRED_USE="system-lua? ( nse )"
 
@@ -42,7 +44,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
-	"${FILESDIR}"/${PN}-9999-netutil-else.patch
 )
 
 src_prepare() {
