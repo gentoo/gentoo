@@ -14368,7 +14368,7 @@ net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.80-r1 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 7.80-r1 7.91 9999: Network exploration tool and security / port scanner
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
