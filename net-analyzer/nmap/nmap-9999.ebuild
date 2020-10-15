@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 MY_P=${P/_beta/BETA}
-inherit autotools desktop flag-o-matic git-r3 toolchain-funcs user
+inherit autotools desktop flag-o-matic git-r3 toolchain-funcs
 
-DESCRIPTION="A utility for network discovery and security auditing"
+DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
 
 EGIT_REPO_URI="https://github.com/nmap/nmap"
