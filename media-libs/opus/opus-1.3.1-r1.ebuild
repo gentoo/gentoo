@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
 INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
-DEPEND="doc? (
+BDEPEND="doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
 	)"
