@@ -12,10 +12,10 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coin-or/ADOL-C"
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="~ppc"
 else
 	SRC_URI="https://github.com/coin-or/ADOL-C/archive/releases/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/ADOL-C-releases-${PV}"
 fi
 
