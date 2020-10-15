@@ -438,13 +438,6 @@ dev-ruby/meterpreter_bins
 dev-ruby/patch_finder
 dev-ruby/rb-readline-r7
 
-# Sam James <sam@gentoo.org> (2020-09-15)
-# No longer exists upstream, stuck on long-obsolete EAPI 4,
-# and fails to build with glibc-2.32.
-# Vestige of Gentoo/FreeBSD.
-# bug #715506, #737892, #740916, #547244.
-sys-fs/ufsutils
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
