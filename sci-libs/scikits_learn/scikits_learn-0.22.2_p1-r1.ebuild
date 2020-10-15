@@ -24,21 +24,15 @@ IUSE="examples"
 RDEPEND="
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/joblib[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
-	sci-libs/scikits[${PYTHON_USEDEP}]
 	virtual/blas:=
 	virtual/cblas:=
 "
 DEPEND="
 	virtual/blas:=
 	virtual/cblas:=
-"
-BDEPEND="
-	test? (
-		${RDEPEND}
-		dev-python/joblib[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest
