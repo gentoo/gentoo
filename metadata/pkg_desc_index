@@ -5393,7 +5393,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.11: Library for some string essentials
 dev-libs/libev 4.31 4.33: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.9.0 1.9.1 9999: Handler library for evdev events
+dev-libs/libevdev 1.9.1 9999: Handler library for evdev events
 dev-libs/libevent 2.1.11 2.1.12 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
@@ -5545,7 +5545,7 @@ dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
-dev-libs/libxls 1.5.3 1.6.1: A library which can read Excel (xls) files
+dev-libs/libxls 1.6.1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.9-r4 2.9.10-r2 2.9.10-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1 1.1.34 1.1.34-r1: XSLT libraries and tools
@@ -8807,7 +8807,7 @@ dev-python/pyquery 1.4.1-r1: A jQuery-like library for python
 dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
-dev-python/pyroute2 0.5.12-r1: A pure Python netlink and Linux network configuration library.
+dev-python/pyroute2 0.5.12-r1 0.5.14: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0: Python client for rqlite
 dev-python/pyrsistent 0.16.0 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
@@ -10635,7 +10635,7 @@ dev-util/catkin 0.8.8-r1 9999: Cmake macros and associated python code used to b
 dev-util/cbindgen 0.14.6 0.15.0: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.11 3.7.12: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
-dev-util/ccls 0.20190823.5 0.20190823.6 9999: C/C++/ObjC language server
+dev-util/ccls 0.20190823.6 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
 dev-util/cgdb 0.7.1 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.3: Minimal command-line source browsing tool similar to cscope
@@ -17344,8 +17344,8 @@ sys-devel/dwz 0.13: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.5.0-r2 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 10.2.0-r2 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
-sys-devel/gcc-config 2.3.1 2.3.2 9999: Utility to manage compilers
-sys-devel/gdb 9.1 9.2 9999: GNU debugger
+sys-devel/gcc-config 2.3.2 9999: Utility to manage compilers
+sys-devel/gdb 9.2 9999: GNU debugger
 sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.20.1 0.20.2 0.21: GNU locale utilities
 sys-devel/gnuconfig 20190912 20200621 99999999: Updated config.sub and config.guess file from GNU
