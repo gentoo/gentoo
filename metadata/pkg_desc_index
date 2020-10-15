@@ -7907,7 +7907,7 @@ dev-python/ansi 0.1.5: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.5.2-r1 1.5.2-r2: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
-dev-python/aodhclient 1.2.0: A client for the OpenStack Aodh API
+dev-python/aodhclient 1.2.0 2.1.1: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5-r1: Namespace control and lazy-import mechanism
 dev-python/apispec 3.3.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.4-r1: Module for determining appropriate platform-specific dirs
@@ -8558,7 +8558,7 @@ dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 4.0.2: library for running multi-thread, multi-process applications
+dev-python/oslo-concurrency 4.0.2 4.3.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 8.0.3 8.3.2: Oslo Configuration API
 dev-python/oslo-context 2.22.1 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0: OpenStack Common DB Code
@@ -8578,7 +8578,7 @@ dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
-dev-python/osprofiler 2.6.0: OpenStack Profiler Library
+dev-python/osprofiler 2.6.0 3.4.0: OpenStack Profiler Library
 dev-python/osrf_pycommon 0.1.10-r1: Commonly needed Python modules used by Python software developed at OSRF
 dev-python/ovs 2.13.0: OVS bindings for python.
 dev-python/ovsdbapp 0.17.2 1.1.0: A library for creating OVSDB applications
@@ -8872,10 +8872,10 @@ dev-python/python-axolotl 0.2.3-r1: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
-dev-python/python-blazarclient 2.1.0: This is a client for the OpenStack Blazar API
+dev-python/python-blazarclient 2.1.0 3.1.1: This is a client for the OpenStack Blazar API
 dev-python/python-bugzilla 2.5.0 3.0.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
-dev-python/python-ceilometerclient 2.6.2-r2: This is a client library for Ceilometer built on the Ceilometer API
+dev-python/python-ceilometerclient 2.6.2-r2 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2 7.2.0: A client for the OpenStack Cinder API
 dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.5.0: Exuberant Ctags indexing python bindings
@@ -8902,7 +8902,7 @@ dev-python/python-glanceclient 2.17.1 3.2.2: A client for the OpenStack Glance A
 dev-python/python-gnupg 0.4.6: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.17.0 2.2.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 1.0.0: Python bindings for iptables
-dev-python/python-ironicclient 4.1.0: Python bindings for the Ironic API
+dev-python/python-ironicclient 4.1.0 4.3.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4 0.4.0: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0 4.1.1: Client Library for OpenStack Identity
@@ -8916,17 +8916,17 @@ dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.18: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.12.0 3.2.1: A client for the OpenStack Magnum API
-dev-python/python-manilaclient 1.27.0: A client for the OpenStack Manila API
+dev-python/python-manilaclient 1.27.0 2.3.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.7: Math extension for Python-Markdown
 dev-python/python-memcached 1.59 1.59-r1: Pure python memcached client
 dev-python/python-mimeparse 1.6.0-r3: Basic functions for handling mime-types in python
-dev-python/python-mistralclient 3.8.1: A client for the OpenStack Mistral API
-dev-python/python-monascaclient 1.15.0: A client for the OpenStack Monasca API
+dev-python/python-mistralclient 3.8.1 4.1.1: A client for the OpenStack Mistral API
+dev-python/python-monascaclient 1.15.0 2.2.1: A client for the OpenStack Monasca API
 dev-python/python-mpd 1.1.0-r1: Python MPD client library
 dev-python/python-musicbrainz-ngs 0.7.1: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 1.0.1 1.0.2: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
-dev-python/python-neutronclient 6.12.1 7.1.1: A client for the OpenStack Quantum API
+dev-python/python-neutronclient 6.12.1 7.1.1 7.2.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 17.0.0 17.2.1: A client for the OpenStack Nova API
 dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
 dev-python/python-openstackclient 5.2.1 5.4.0: A client for the OpenStack APIs
@@ -8945,7 +8945,7 @@ dev-python/python-stdnum 1.14: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
-dev-python/python-troveclient 2.17.0: A client for the OpenStack Trove API, a scalable relational database service
+dev-python/python-troveclient 2.17.0 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.0.1 4.1.1: A client for the OpenStack Vitrage API
@@ -12435,7 +12435,7 @@ mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
 mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1: sendmail milter for amavisd-new
-mail-filter/amavisd-new 2.12.0-r4: High-performance interface between the MTA and content checkers
+mail-filter/amavisd-new 2.12.0-r5: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r3: Bayesian spam filter designed with fast algorithms, and tuned for speed
 mail-filter/courier-pythonfilter 3.0.2 3.0.2-r1: Python filtering architecture for the Courier MTA

@@ -3805,7 +3805,6 @@ mail-filter/amavisd-new:razor - Add support for mail-filter/razor
 mail-filter/amavisd-new:rspamd - Add support for mail-filter/rspamd extension (HTTP only)
 mail-filter/amavisd-new:rspamd-https - Add support for mail-filter/rspamd extension (both HTTP and HTTPS)
 mail-filter/amavisd-new:spamassassin - Add support for mail-filter/spamassassin
-mail-filter/amavisd-new:zmq - Add support for zeromq sockets
 mail-filter/bogofilter:tokyocabinet - Enable Tokyo Cabinet database support
 mail-filter/dcc:rrdtool - Enable net-analyzer/rrdtool interface scripts
 mail-filter/libmilter:poll - Use poll instead of select
