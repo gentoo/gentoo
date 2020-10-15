@@ -158,6 +158,11 @@ src_prepare() {
 
 	use vala && vala_src_prepare
 	gnome2_src_prepare
+
+	sed -i \
+		-e 's#/usr/bin/sed#/bin/sed#' \
+		data/84-nm-drivers.rules \
+		|| die
 }
 
 multilib_src_configure() {
