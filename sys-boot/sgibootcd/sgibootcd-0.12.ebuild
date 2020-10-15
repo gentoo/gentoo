@@ -1,15 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit eutils toolchain-funcs
+EAPI="7"
+inherit toolchain-funcs
 
 DESCRIPTION="Creates burnable CD images for SGI LiveCDs"
 HOMEPAGE="ftp://ftp.linux-mips.org/pub/linux/mips/people/skylark/"
 SRC_URI="ftp://ftp.linux-mips.org/pub/linux/mips/people/skylark/${P}.tar.bz2"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~mips"
+
 IUSE=""
 RDEPEND=""
 DEPEND=""
