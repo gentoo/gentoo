@@ -190,6 +190,34 @@ _lua_wrapper_setup() {
 # /usr/bin/lua5.1
 # @CODE
 
+# @FUNCTION: _lua_get_library_file
+# @USAGE: <impl>
+# @INTERNAL
+# @DESCRIPTION:
+# Get the core part (i.e. without the extension) of the library name,
+# with path, of the given Lua implementation.
+# Used internally by _lua_export().
+_lua_get_library_file() {
+	local impl="${1}"
+	local libdir libname
+
+	case ${impl} in
+		luajit)
+			libname=lib$($(tc-getPKG_CONFIG) --variable libname ${impl}) || die
+			;;
+		lua*)
+			libname=lib${impl}
+			;;
+		*)
+			die "Invalid implementation: ${impl}"
+			;;
+	esac
+	libdir=$($(tc-getPKG_CONFIG) --variable libdir ${impl}) || die
+
+	debug-print "${FUNCNAME}: libdir = ${libdir}, libname = ${libname}"
+	echo "${libdir}/${libname}"
+}
+
 # @FUNCTION: _lua_export
 # @USAGE: [<impl>] <variables>...
 # @INTERNAL
@@ -250,6 +278,14 @@ _lua_export() {
 				export LUA_CMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_CMOD_DIR = ${LUA_CMOD_DIR}"
 				;;
+			LUA_INCLUDE_DIR)
+				local val
+
+				val=$($(tc-getPKG_CONFIG) --variable includedir ${impl}) || die
+
+				export LUA_INCLUDE_DIR=${val}
+				debug-print "${FUNCNAME}: LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}"
+				;;
 			LUA_LIBS)
 				local val
 
@@ -287,6 +323,11 @@ _lua_export() {
 
 				export LUA_PKG_DEP
 				debug-print "${FUNCNAME}: LUA_PKG_DEP = ${LUA_PKG_DEP}"
+				;;
+			LUA_SHARED_LIB)
+				local val=$(_lua_get_library_file ${impl})
+				export LUA_SHARED_LIB="${val}".so
+				debug-print "${FUNCNAME}: LUA_SHARED_LIB = ${LUA_SHARED_LIB}"
 				;;
 			LUA_VERSION)
 				local val
@@ -335,6 +376,22 @@ lua_get_cmod_dir() {
 	echo "${LUA_CMOD_DIR}"
 }
 
+# @FUNCTION: lua_get_include_dir
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the name of the directory containing header files
+# of the given Lua implementation. If no implementation is provided,
+# ${ELUA} will be used.
+#
+# Please note that this function requires Lua and pkg-config installed,
+# and therefore proper build-time dependencies need be added to the ebuild.
+lua_get_include_dir() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	_lua_export "${@}" LUA_INCLUDE_DIR
+	echo "${LUA_INCLUDE_DIR}"
+}
+
 # @FUNCTION: lua_get_LIBS
 # @USAGE: [<impl>]
 # @DESCRIPTION:
@@ -365,6 +422,25 @@ lua_get_lmod_dir() {
 
 	_lua_export "${@}" LUA_LMOD_DIR
 	echo "${LUA_LMOD_DIR}"
+}
+
+# @FUNCTION: lua_get_shared_lib
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the expected name, with path, of the main shared library
+# of the given Lua implementation. If no implementation is provided,
+# ${ELUA} will be used.
+#
+# Note that it is up to the ebuild maintainer to ensure Lua actually
+# provides a shared library.
+#
+# Please note that this function requires Lua and pkg-config installed,
+# and therefore proper build-time dependencies need be added to the ebuild.
+lua_get_shared_lib() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	_lua_export "${@}" LUA_SHARED_LIB
+	echo "${LUA_SHARED_LIB}"
 }
 
 # @FUNCTION: lua_get_version
