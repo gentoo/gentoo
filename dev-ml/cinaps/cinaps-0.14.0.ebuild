@@ -16,6 +16,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	dev-ml/findlib:=
 	dev-ml/re:=
 "
 RDEPEND="${DEPEND}"
