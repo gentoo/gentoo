@@ -4566,33 +4566,33 @@ dev-java/airline 0.7-r1: Java annotation-based framework for parsing Git like co
 dev-java/android-util 4.1.1.4: Library providing APIs for applications written for Google Android
 dev-java/animal-sniffer-annotations 1.15: Java annotations for marking methods that Animal Sniffer should ignore
 dev-java/annogen 0.1.0-r3: A tool which helps you work with JSR175 annotations
-dev-java/ant 1.10.8 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
-dev-java/ant-antlr 1.10.8 1.10.9: Apache Ant's optional tasks for Antlr
-dev-java/ant-apache-bcel 1.10.8 1.10.9: Apache Ant's optional tasks depending on bcel
-dev-java/ant-apache-bsf 1.10.8 1.10.9: Apache Ant's optional tasks depending on bsf-2.3
-dev-java/ant-apache-log4j 1.10.8 1.10.9: Apache Ant's optional tasks depending on log4j
-dev-java/ant-apache-oro 1.10.8 1.10.9: Apache Ant's optional tasks depending on jakarta-oro-2.0
-dev-java/ant-apache-regexp 1.10.8 1.10.9: Apache Ant's optional tasks depending on jakarta-regexp-1.4
-dev-java/ant-apache-resolver 1.10.8 1.10.9: Apache Ant's optional tasks depending on xml-commons-resolver
-dev-java/ant-apache-xalan2 1.10.8 1.10.9: Apache Ant's optional tasks depending on xalan
-dev-java/ant-commons-logging 1.10.8 1.10.9: Apache Ant's optional tasks depending on commons-logging
-dev-java/ant-commons-net 1.10.8 1.10.9: Apache Ant's optional tasks depending on commons-net
+dev-java/ant 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
+dev-java/ant-antlr 1.10.9: Apache Ant's optional tasks for Antlr
+dev-java/ant-apache-bcel 1.10.9: Apache Ant's optional tasks depending on bcel
+dev-java/ant-apache-bsf 1.10.9: Apache Ant's optional tasks depending on bsf-2.3
+dev-java/ant-apache-log4j 1.10.9: Apache Ant's optional tasks depending on log4j
+dev-java/ant-apache-oro 1.10.9: Apache Ant's optional tasks depending on jakarta-oro-2.0
+dev-java/ant-apache-regexp 1.10.9: Apache Ant's optional tasks depending on jakarta-regexp-1.4
+dev-java/ant-apache-resolver 1.10.9: Apache Ant's optional tasks depending on xml-commons-resolver
+dev-java/ant-apache-xalan2 1.10.9: Apache Ant's optional tasks depending on xalan
+dev-java/ant-commons-logging 1.10.9: Apache Ant's optional tasks depending on commons-logging
+dev-java/ant-commons-net 1.10.9: Apache Ant's optional tasks depending on commons-net
 dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
-dev-java/ant-core 1.10.8 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
+dev-java/ant-core 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
-dev-java/ant-jai 1.10.8 1.10.9: Apache Ant's optional tasks depending on sun-jai-bin
-dev-java/ant-javamail 1.10.8 1.10.9: Apache Ant's optional tasks depending on gnu-jaf-1
-dev-java/ant-jdepend 1.10.8 1.10.9: Apache Ant's optional tasks depending on jdepend
-dev-java/ant-jmf 1.10.8 1.10.9: Apache Ant's optional tasks for the Java Media Framework (JMF)
-dev-java/ant-jsch 1.10.8 1.10.9: Apache Ant's optional tasks depending on jsch
-dev-java/ant-junit 1.10.8 1.10.9: Apache Ant's optional tasks depending on junit
-dev-java/ant-junit4 1.10.8 1.10.9: Apache Ant's optional tasks depending on junit-4
-dev-java/ant-junitlauncher 1.10.8 1.10.9: Apache Ant's optional tasks depending on
+dev-java/ant-jai 1.10.9: Apache Ant's optional tasks depending on sun-jai-bin
+dev-java/ant-javamail 1.10.9: Apache Ant's optional tasks depending on gnu-jaf-1
+dev-java/ant-jdepend 1.10.9: Apache Ant's optional tasks depending on jdepend
+dev-java/ant-jmf 1.10.9: Apache Ant's optional tasks for the Java Media Framework (JMF)
+dev-java/ant-jsch 1.10.9: Apache Ant's optional tasks depending on jsch
+dev-java/ant-junit 1.10.9: Apache Ant's optional tasks depending on junit
+dev-java/ant-junit4 1.10.9: Apache Ant's optional tasks depending on junit-4
+dev-java/ant-junitlauncher 1.10.9: Apache Ant's optional tasks depending on
 dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
-dev-java/ant-swing 1.10.8 1.10.9: Apache Ant's optional tasks for Swing
-dev-java/ant-testutil 1.10.8 1.10.9: Apache Ant's optional test utility classes
-dev-java/ant-xz 1.10.8 1.10.9: Apache Ant's optional tasks for XZ compression
+dev-java/ant-swing 1.10.9: Apache Ant's optional tasks for Swing
+dev-java/ant-testutil 1.10.9: Apache Ant's optional test utility classes
+dev-java/ant-xz 1.10.9: Apache Ant's optional tasks for XZ compression
 dev-java/antlr 2.7.7-r7 2.7.7-r8 3.2 3.5.2 4.5.1 4.5.3: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
@@ -18075,8 +18075,8 @@ www-client/seamonkey 2.53.2 2.53.3 2.53.4: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.3.2022.47_p1 3.4.2066.65_p1 3.4.2066.72_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.4.2066.7_p1 3.4.2066.37_p1 3.4.2066.64_p1 3.4.2066.70_p1: A browser for our friends
+www-client/vivaldi 3.3.2022.47_p1 3.4.2066.76_p1: A browser for our friends
+www-client/vivaldi-snapshot 3.4.2066.70_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
