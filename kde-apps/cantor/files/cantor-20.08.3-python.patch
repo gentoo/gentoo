@@ -1,13 +1,14 @@
-From c09628ae8c08e8ef0e57b801994acd4276b65b02 Mon Sep 17 00:00:00 2001
+From c794fb5f0f616ce2d9e4004fc459a1c50f077470 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Sun, 11 Oct 2020 22:47:55 +0200
 Subject: [PATCH] Use CMake FindPython3 module, raises minimum CMake to 3.12
 
+Gives us out-of-the-box future proof python detection (python-3.9 right now).
 ---
  CMakeLists.txt                     |  2 +-
  src/backends/CMakeLists.txt        | 10 ++++------
- src/backends/python/CMakeLists.txt |  4 ++--
- 3 files changed, 7 insertions(+), 9 deletions(-)
+ src/backends/python/CMakeLists.txt |  4 +---
+ 3 files changed, 6 insertions(+), 10 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index e96e6df0..a90328b5 100644
@@ -44,24 +45,24 @@ index e99e1731..9b6b615e 100644
  set_package_properties(LuaJIT PROPERTIES DESCRIPTION "A lightweight, extensible programming language (luajit implementation)."
      URL "https://www.lua.org/"
 diff --git a/src/backends/python/CMakeLists.txt b/src/backends/python/CMakeLists.txt
-index 04b4c313..ccf76193 100644
+index 04b4c313..c7868561 100644
 --- a/src/backends/python/CMakeLists.txt
 +++ b/src/backends/python/CMakeLists.txt
-@@ -14,7 +14,7 @@ set(PythonServer_SRCS
+@@ -14,8 +14,6 @@ set(PythonServer_SRCS
    pythonserver.cpp
  )
  
 -include_directories(${PYTHONLIBS3_INCLUDE_DIRS})
-+include_directories(${Python3_INCLUDE_DIRS})
- 
+-
  qt5_add_resources(PythonBackend_RSCS python.qrc)
  ki18n_wrap_ui(PythonBackend_SRCS settings.ui)
-@@ -34,7 +34,7 @@ set_target_properties(cantor_pythonserver PROPERTIES INSTALL_RPATH_USE_LINK_PATH
+ kconfig_add_kcfg_files(PythonBackend_SRCS settings.kcfgc)
+@@ -34,7 +32,7 @@ set_target_properties(cantor_pythonserver PROPERTIES INSTALL_RPATH_USE_LINK_PATH
  if(MSVC)
    set_property(TARGET cantor_pythonserver PROPERTY LINK_FLAGS "/SUBSYSTEM:CONSOLE")
  endif()
 -target_link_libraries(cantor_pythonserver ${PYTHONLIBS3_LIBRARIES})
-+target_link_libraries(cantor_pythonserver ${Python3_LIBRARIES})
++target_link_libraries(cantor_pythonserver Python3::Python)
  
  if(BUILD_TESTING)
    add_executable(testpython testpython.cpp settings.cpp)
