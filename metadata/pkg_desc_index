@@ -12360,7 +12360,7 @@ kde-plasma/plasma-browser-integration 5.19.5 5.20.0: Integrate Chrome/Firefox be
 kde-plasma/plasma-desktop 5.19.5 5.20.0: KDE Plasma desktop
 kde-plasma/plasma-disks 5.20.0: Monitors S.M.A.R.T. capable devices for imminent failure
 kde-plasma/plasma-integration 5.19.5-r1 5.20.0: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.19.5 5.20.0: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-meta 5.19.5 5.20.0-r1: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.19.5 5.20.0: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.19.5 5.20.0: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.19.5 5.20.0: Useful applications for Plasma development
@@ -19049,7 +19049,7 @@ xfce-base/garcon 0.6.4-r2 0.7.1: Xfce's freedesktop.org specification compatible
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.3: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.15 4.15.2: File manager for the Xfce desktop environment
-xfce-base/xfce4-appfinder 4.14.0 4.15.1: A tool to find and launch installed applications for the Xfce desktop
+xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.4: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.0: A session manager for the Xfce desktop environment
@@ -19069,10 +19069,10 @@ xfce-extra/tumbler 0.2.8 0.2.9 0.3.0: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
-xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
+xfce-extra/xfce4-cpufreq-plugin 1.2.1 1.2.2: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.1.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.0: A panel plug-in with date, time and embedded calender
-xfce-extra/xfce4-dict 0.8.3: A dict.org querying application and panel plug-in for the Xfce desktop
+xfce-extra/xfce4-dict 0.8.3 0.8.4: A dict.org querying application and panel plug-in for the Xfce desktop
 xfce-extra/xfce4-diskperf-plugin 2.6.2: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0-r4: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1-r2: Panel plug-in that displays information about earthquakes at regular intervals
