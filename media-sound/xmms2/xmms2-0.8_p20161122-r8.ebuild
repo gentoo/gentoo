@@ -308,8 +308,11 @@ src_install() {
 	# to avoid code changed let's just un-gzip manpages
 	local m
 	for m in "${ED}"/usr/share/man/man1/*.gz; do
-		einfo "Uncompressing '${m#${ED}}' back."
-		gzip -d "${m}" || die
+		# For some combination of USEs no mans are installed.
+		if [[ -f $m ]]; then
+			einfo "Uncompressing '${m#${ED}}' back."
+			gzip -d "${m}" || die
+		fi
 	done
 }
 
