@@ -19,9 +19,12 @@ KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
+CDEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
+
+DEPEND="${CDEPEND}
 	test? ( $(python_gen_impl_dep sqlite) )"
-RDEPEND="${DEPEND}"
+
+RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
 
