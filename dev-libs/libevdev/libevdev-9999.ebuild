@@ -43,7 +43,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	meson test -v -C "${BUILD_DIR}" -t 100
+	meson test -v -C "${BUILD_DIR}" -t 100 || die "tests failed"
 }
 
 multilib_src_install() {
