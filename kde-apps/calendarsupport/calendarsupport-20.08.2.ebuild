@@ -7,13 +7,14 @@ ECM_TEST="false"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.72.0
 QTMIN=5.14.2
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Calendar support library"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
