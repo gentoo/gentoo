@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop xdg-utils
+inherit autotools desktop xdg
 
 DESCRIPTION="a board game, up to 4 players, with AI and network"
 HOMEPAGE="http://biloba.sourceforge.net/"
@@ -37,12 +37,4 @@ src_install() {
 	default
 	newicon -s 64 biloba_icon.png ${PN}.png
 	make_desktop_entry biloba Biloba
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
