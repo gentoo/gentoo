@@ -8029,7 +8029,7 @@ dev-python/clint 0.5.1-r2 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.6.0: Extended pickling support for Python objects
 dev-python/cmd2 1.3.8 1.3.10 1.3.11: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2 0.2-r1: Distutils command to view/validate packages's rst text long_descriptions.
-dev-python/colorama 0.4.3-r1: ANSI escape character sequences for colored terminal text & cursor positioning
+dev-python/colorama 0.4.3-r1 0.4.4: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 10.0 14.0: Colored stream handler for the logging module
 dev-python/colorlog 3.1.4: Log formatting with colors
@@ -8299,7 +8299,7 @@ dev-python/humanize 2.6.0 3.0.0 3.0.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4 5.36.0 5.36.1 5.36.2 5.37.0 5.37.1: A library for property based testing
+dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4 5.36.0 5.36.1 5.36.2 5.37.0 5.37.1 5.37.3: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -15384,7 +15384,6 @@ net-nntp/nzbget 20.0 21.0 21.0-r1: A command-line based binary newsgrabber suppo
 net-nntp/pan 0.145: A newsreader for GNOME
 net-nntp/sabnzbd 3.0.0-r1 3.0.1 3.0.2: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
-net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.6.1 2.8.1: Cross-platform Direct Connect client
@@ -17543,7 +17542,6 @@ sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisks
 sys-fs/udisks 2.9.0 2.9.1: Daemon providing interfaces to work with storage devices
-sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
@@ -18851,7 +18849,7 @@ x11-terms/roxterm 3.9.3 3.9.4: A terminal emulator designed to integrate with th
 x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
-x11-terms/terminator 1.92-r1 1.92-r2: Multiple GNOME terminals in one window
+x11-terms/terminator 1.92-r1 1.92-r2 2.0.1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.8.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2: A terminal emulator for the Xfce desktop environment
