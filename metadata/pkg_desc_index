@@ -17141,7 +17141,7 @@ sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.19.3-r1 1.20.0: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubico-piv-tool 2.1.1 2.1.1-r1 2.1.1-r2: Command-line tool and p11-kit module for the YubiKey PIV application
+sys-auth/yubico-piv-tool 2.1.1-r2: Command-line tool and p11-kit module for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 2.01.22270-r1 3.04.23699: Microsemi Adaptec RAID Controller Command Line Utility
