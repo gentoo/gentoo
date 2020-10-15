@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
+
+inherit desktop
 
 PATCH_LEVEL=3
 
@@ -17,17 +18,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-RDEPEND="x11-libs/gtk+:2
-	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+RDEPEND="
+	x11-libs/gtk+:2
+	nls? ( virtual/libintl )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
-	"${WORKDIR}"/${PN}_${PV}+gtk2-${PATCH_LEVEL}.diff
-	"${FILESDIR}"/${P}-build-2.patch
-	"${FILESDIR}"/${P}-underlink.patch
-	"${FILESDIR}"/${P}-make-382.patch
+	"${WORKDIR}/${PN}_${PV}+gtk2-${PATCH_LEVEL}.diff"
+	"${FILESDIR}/${P}-build-2.patch"
+	"${FILESDIR}/${P}-underlink.patch"
+	"${FILESDIR}/${P}-make-382.patch"
+	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}/${P}-nolang.patch"
 )
 
 src_prepare() {
