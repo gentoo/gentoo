@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2020-10-15)
+# Requires PAM
+x11-base/xorg-server elogind
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-21)
 # depends on systemd
 sys-apps/ipmitool openbmc
