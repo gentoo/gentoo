@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
@@ -35,6 +35,8 @@ python_prepare_all() {
 	sed -e '/sphinxcontrib.manpage/d' -e '/sphinx_paramlinks/d' \
 		-e '/^for script in/,/runpy.run_path/d' \
 		-i docs/conf.py || die
+	# Requires pytest-xdist and has no value for us
+	sed -i '/^looponfailroots =/d' tox.ini || die
 	distutils-r1_python_prepare_all
 }
 
