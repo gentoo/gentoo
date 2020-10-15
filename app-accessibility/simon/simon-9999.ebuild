@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +6,7 @@ EAPI=7
 EGIT_BRANCH="kf5"
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
+KDE_ORG_CATEGORY="unmaintained"
 inherit ecm kde.org
 
 DESCRIPTION="Open-source speech recognition program for replacing mouse and keyboard"
@@ -58,13 +59,13 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package pim KF5CalendarCore)
-		$(cmake-utils_use_find_package pim KF5Akonadi)
+		$(cmake_use_find_package pim KF5CalendarCore)
+		$(cmake_use_find_package pim KF5Akonadi)
 		-DWITH_LibSampleRate=$(usex libsamplerate)
 		-DWITH_OpenCV=$(usex opencv)
 		-DBackendType=$(usex sphinx "both" "jhtk")
-		$(cmake-utils_use_find_package sphinx Sphinxbase)
-		$(cmake-utils_use_find_package sphinx Pocketsphinx)
+		$(cmake_use_find_package sphinx Sphinxbase)
+		$(cmake_use_find_package sphinx Pocketsphinx)
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 	)
