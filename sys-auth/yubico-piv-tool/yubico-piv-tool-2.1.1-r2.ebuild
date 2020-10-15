@@ -27,6 +27,7 @@ BDEPEND="dev-util/gengetopt
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.1-install-man-page.patch
+	"${FILESDIR}"/${PN}-2.1.1-no-Werror.patch
 	"${FILESDIR}"/${PN}-2.1.1-tests-optional.patch
 	"${FILESDIR}"/${PN}-2.1.1-ykcs11-threads.patch
 )
