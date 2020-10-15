@@ -18,23 +18,24 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/libevent
 	dev-libs/jansson
-	<dev-qt/qtcore-5.15:5
-	<dev-qt/qtdbus-5.15:5
-	<dev-qt/qtgui-5.15:5
-	<dev-qt/qtnetwork-5.15:5
-	<dev-qt/qtwidgets-5.15:5
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
 	net-libs/libsearpc
 	~net-misc/seafile-${PV}
-	shibboleth? ( <dev-qt/qtwebengine-5.15:5[widgets] )"
+	shibboleth? ( dev-qt/qtwebengine:5[widgets] )"
 DEPEND="${RDEPEND}
-	test? ( <dev-qt/qttest-5.15:5 )"
-BDEPEND="<dev-qt/linguist-tools-5.15:5"
+	test? ( dev-qt/qttest:5 )"
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-select-qt5.patch"
 	"${FILESDIR}/${P}-libressl.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
 )
 
 src_configure() {
