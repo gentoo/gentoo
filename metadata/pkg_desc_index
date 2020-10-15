@@ -8898,9 +8898,9 @@ dev-python/python-fastimport 0.9.8-r1: Library for parsing the fastimport VCS se
 dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
-dev-python/python-glanceclient 2.17.1: A client for the OpenStack Glance API
+dev-python/python-glanceclient 2.17.1 3.2.2: A client for the OpenStack Glance API
 dev-python/python-gnupg 0.4.6: A Python wrapper for GnuPG
-dev-python/python-heatclient 1.17.0: OpenStack Orchestration API Client Library
+dev-python/python-heatclient 1.17.0 2.2.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 1.0.0: Python bindings for iptables
 dev-python/python-ironicclient 4.1.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
@@ -8915,7 +8915,7 @@ dev-python/python-linux-procfs 0.6.1: Python classes to extract information from
 dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.18: Access the libmagic file type identification library
-dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
+dev-python/python-magnumclient 2.12.0 3.2.1: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.27.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.7: Math extension for Python-Markdown
 dev-python/python-memcached 1.59 1.59-r1: Pure python memcached client
@@ -8935,7 +8935,7 @@ dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
 dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
-dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
+dev-python/python-senlinclient 1.2.0 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
@@ -8948,7 +8948,7 @@ dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 2.17.0: A client for the OpenStack Trove API, a scalable relational database service
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
-dev-python/python-vitrageclient 4.0.1: A client for the OpenStack Vitrage API
+dev-python/python-vitrageclient 4.0.1 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.27 0.28: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.8: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
