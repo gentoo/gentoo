@@ -11,7 +11,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="bluetooth +browser-integration crypt +desktop-portal discover +display-manager
 +elogind grub gtk +handbook +kwallet +legacy-systray +networkmanager
-plymouth pulseaudio qrcode +sddm sdk systemd thunderbolt +wallpapers"
+plymouth pulseaudio qrcode +sddm sdk +smart systemd thunderbolt +wallpapers"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
@@ -79,6 +79,7 @@ RDEPEND="
 	)
 	pulseaudio? ( >=kde-plasma/plasma-pa-${PV}:${SLOT} )
 	sdk? ( >=kde-plasma/plasma-sdk-${PV}:${SLOT} )
+	smart? ( >=kde-plasma/plasma-disks-${PV}:${SLOT} )
 	thunderbolt? ( >=kde-plasma/plasma-thunderbolt-${PV}:${SLOT} )
 	wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-${PV}:${SLOT} )
 "
