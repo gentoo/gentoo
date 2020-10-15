@@ -8,7 +8,6 @@ DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
 
 EGIT_REPO_URI="https://github.com/nmap/nmap"
-SRC_URI="https://dev.gentoo.org/~jer/nmap-logo-64.png"
 
 LICENSE="NPSL"
 SLOT="0"
