@@ -3,7 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -17,10 +18,6 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]"
-
-DEPEND="
-	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # Required to run tests
 DISTUTILS_IN_SOURCE_BUILD=1
