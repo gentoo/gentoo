@@ -156,7 +156,7 @@ RDEPEND="${DEPEND}
 		diskprediction? (
 			$(python_gen_cond_dep '<dev-python/scipy-1.4.0[${PYTHON_USEDEP}]' python3_{6,7})
 		)
-		sci-libs/scikits_learn[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 "
