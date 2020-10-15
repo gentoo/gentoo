@@ -2,7 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{6,7,8,9} )
+
+DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit distutils-r1
 
@@ -16,9 +19,12 @@ KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
+CDEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
+
+DEPEND="${CDEPEND}
 	test? ( $(python_gen_impl_dep sqlite) )"
-RDEPEND="${DEPEND}"
+
+RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
 
