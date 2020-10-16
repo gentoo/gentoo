@@ -528,14 +528,20 @@ src_configure() {
 		# Force clang
 		einfo "Enforcing the use of clang due to USE=clang ..."
 		have_switched_compiler=yes
+		AR=llvm-ar
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
+		NM=llvm-nm
+		RANLIB=llvm-ranlib
 	elif ! use clang && ! tc-is-gcc ; then
 		# Force gcc
 		have_switched_compiler=yes
 		einfo "Enforcing the use of gcc due to USE=-clang ..."
+		AR=gcc-ar
 		CC=${CHOST}-gcc
 		CXX=${CHOST}-g++
+		NM=gcc-nm
+		RANLIB=gcc-ranlib
 	fi
 
 	if [[ -n "${have_switched_compiler}" ]] ; then
@@ -577,6 +583,11 @@ src_configure() {
 
 		if use pgo ; then
 			mozconfig_add_options_ac '+pgo' MOZ_PGO=1
+
+			if use clang ; then
+				# Used in build/pgo/profileserver.py
+				export LLVM_PROFDATA="llvm-profdata"
+			fi
 		fi
 	else
 		# Avoid auto-magic on linker
