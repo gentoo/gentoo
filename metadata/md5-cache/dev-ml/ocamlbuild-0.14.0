@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure install prepare
 DEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] test? ( dev-ml/findlib )
 DESCRIPTION=Generic build tool with built-in rules for building OCaml library and programs
 EAPI=5
@@ -10,4 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] !<dev-ml/findlib-1.6.1-r1
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/ocaml/ocamlbuild/archive/0.14.0.tar.gz -> ocamlbuild-0.14.0.tar.gz
-_md5_=31325a716eb272230ce2c68b16a83c36
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=7077f6ec2ca544b36b5a5b4dc0d33462
