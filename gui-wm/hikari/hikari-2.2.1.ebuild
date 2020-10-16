@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multiprocessing
+inherit multiprocessing toolchain-funcs
 
 DESCRIPTION="Wayland compositor inspired by CWM"
 HOMEPAGE="https://hikari.acmelabs.space/"
@@ -37,12 +37,17 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${P}-pkgconfig.patch )
+
 pkg_setup() {
 	export MAKE=bmake
+	tc-export CC PKG_CONFIG
 }
 
 src_compile() {
+
 	${MAKE} -j$(makeopts_jobs) VERSION="{PV}" \
+		LDFLAGS="${LDFLAGS}" \
 		-DWITH_POSIX_C_SOURCE \
 		$(usex gamma -DWITH_GAMMACONTROL "") \
 		$(usex layershell -DWITH_LAYERSHELL "") \
