@@ -5825,7 +5825,7 @@ dev-ml/jst-config 0.14.0: Compile-time configuration for Jane Street libraries
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5 2.18.8-r1 2.18.10 3.1.1: OCaml bindings to GTK-3
 dev-ml/lablgtk-sourceview 3.1.1: OCaml bindings to GTK-3
-dev-ml/labltk 8.06.2 8.06.7: OCaml interface to the Tcl/Tk GUI framework
+dev-ml/labltk 8.06.2 8.06.7 8.06.9: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/llvm-ocaml 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
 dev-ml/lwt 3.0.0 3.1.0 5.3.0: Cooperative light-weight thread library for OCaml
@@ -14927,8 +14927,8 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.12.0 4.12.4 5.0.2: Extended ROOT remote file server
-net-libs/xrootd-ceph 4.12.0 4.12.4 5.0.2: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd 4.12.4 4.12.5 5.0.2: Extended ROOT remote file server
+net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 2.2.0 3.2.5 4.3.2 4.3.3: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
