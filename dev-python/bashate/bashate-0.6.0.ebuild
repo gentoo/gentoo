@@ -4,6 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_IN_SOURCE_BUILD=TRUE
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 # time
 RESTRICT="test"
@@ -20,7 +21,6 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0
 "
