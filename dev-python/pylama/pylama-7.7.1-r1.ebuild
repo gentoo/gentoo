@@ -16,7 +16,7 @@ SRC_URI="https://github.com/klen/pylama/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~x86"
 
 RDEPEND="
 	>=dev-python/mccabe-0.5.2[${PYTHON_USEDEP}]
