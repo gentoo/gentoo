@@ -15,10 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+ocamlopt"
 
 DEPEND="
-	dev-ml/ppx_inline_test:=
-	dev-ml/ppxlib:=
-		dev-ml/stdio:=
-		dev-ml/ocaml-migrate-parsetree:=
-			dev-ml/result:=
+	>=dev-ml/ppx_inline_test-0.14.1:=
+	>=dev-ml/ppxlib-0.18.0:=
+		>=dev-ml/stdio-0.14.0:=
+		>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
+			dev-ml/cinaps:=
 "
 RDEPEND="${DEPEND}"

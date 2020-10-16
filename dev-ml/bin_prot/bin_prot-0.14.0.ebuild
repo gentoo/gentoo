@@ -15,12 +15,13 @@ KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	dev-ml/base:=
-	dev-ml/ppx_compare:=
-	dev-ml/ppx_custom_printf:=
-	dev-ml/ppx_fields_conv:=
-	dev-ml/ppx_sexp_conv:=
-	dev-ml/ppx_variants_conv:=
-	!dev-ml/bin-prot
+	>=dev-ml/base-0.14.0:=
+	dev-ml/findlib:=
+	>=dev-ml/ppx_compare-0.14.0:=
+	>=dev-ml/ppx_custom_printf-0.14.0:=
+	>=dev-ml/ppx_fields_conv-0.14.0:=
+	>=dev-ml/ppx_optcomp-0.14.0:=
+	>=dev-ml/ppx_sexp_conv-0.14.0:=
+	>=dev-ml/ppx_variants_conv-0.14.0:=
 "
 DEPEND="${RDEPEND}"

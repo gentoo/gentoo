@@ -15,10 +15,11 @@ KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+ocamlopt"
 
 DEPEND="
-	dev-ml/base:=
-	dev-ml/typerep:=
-	dev-ml/ppxlib:=
-		dev-ml/ocaml-migrate-parsetree:=
-			dev-ml/result:=
-	"
+	>=dev-ml/base-0.14.0:=
+	>=dev-ml/typerep-0.14.0:=
+	>=dev-ml/ppxlib-0.18.0:=
+		>=dev-ml/ocaml-compiler-libs-0.11.0:=
+		>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
+			dev-ml/cinaps:=
+"
 RDEPEND="${DEPEND}"
