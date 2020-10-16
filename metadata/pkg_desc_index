@@ -5237,7 +5237,7 @@ dev-libs/clipper 6.4.2: Polygon and line clipping and offsetting library (C++, C
 dev-libs/cloog 0.20.0 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.5.0 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/concurrencykit 0.6.0 0.7.0: A library with concurrency related algorithms and data structures in C
-dev-libs/confuse 3.0 3.2.2: a configuration file parser library
+dev-libs/confuse 3.0 3.2.2 3.3: a configuration file parser library
 dev-libs/console_bridge 1.0.1 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, base32, base32hex and hex
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
