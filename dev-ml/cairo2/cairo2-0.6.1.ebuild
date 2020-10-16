@@ -30,10 +30,5 @@ BDEPEND=""
 # Done: 70/72 (jobs: 1) * ERROR: dev-ml/cairo2-0.6.1::x-portage failed (test phase):
 RESTRICT=test
 
-# Remove lablgtk2 dep https://github.com/Chris00/ocaml-cairo/issues/21
 # Fix compiler warnings, from: https://github.com/Chris00/ocaml-cairo/pull/22
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.1-ignore-gtk-and-pango.patch
-	"${FILESDIR}"/${PN}-0.6.1-handle-safe-string.patch
-	"${FILESDIR}"/${PN}-0.6.1-Fix-multiple-definitions-of-variables.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.6.1-handle-safe-string.patch )
