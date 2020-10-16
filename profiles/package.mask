@@ -427,7 +427,6 @@ dev-ruby/coffee-rails:4.2
 dev-ruby/delayer:0
 dev-ruby/faker:0
 dev-ruby/roadie:0
-dev-ruby/roadie-rails:0
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
