@@ -500,7 +500,7 @@ app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.13 2.9.14 2.10.0-r1 2.10.0-r2 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.10.0-r2 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-base 2.10.2: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
