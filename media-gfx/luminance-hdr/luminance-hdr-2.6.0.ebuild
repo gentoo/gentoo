@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,6 +74,14 @@ src_configure() {
 		-DUSE_OPENMP="$(usex openmp)"
 	)
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	mkdir -p "${D}/usr/share/metainfo" || die
+	mv "${D}/usr/share/appdata/"* "${D}/usr/share/metainfo/" || die
+	rmdir "${D}/usr/share/appdata" || die
 }
 
 pkg_postinst() {
