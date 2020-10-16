@@ -32,7 +32,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 RDEPEND="
-	!<media-libs/mesa-20.2[-libglvnd(-)]
+	!media-libs/mesa[-libglvnd(+)]
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
