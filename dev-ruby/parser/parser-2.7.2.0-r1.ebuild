@@ -25,10 +25,12 @@ IUSE=""
 
 DEPEND+=" =dev-util/ragel-6*"
 
-ruby_add_bdepend "test? (
-	dev-ruby/minitest:5
-	dev-ruby/racc
-	dev-ruby/cliver )"
+ruby_add_bdepend "
+	test? (
+		dev-ruby/minitest:5
+		dev-ruby/racc )
+	dev-ruby/cliver
+"
 ruby_add_rdepend "=dev-ruby/ast-2.4* >=dev-ruby/ast-2.4.1"
 
 all_ruby_prepare() {
