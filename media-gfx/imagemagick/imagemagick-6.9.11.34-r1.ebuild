@@ -211,7 +211,7 @@ src_install() {
 
 	if use opencl; then
 		cat <<-EOF > "${T}"/99${PN}
-		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/renderD128"
+		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/card0:/dev/dri/renderD128"
 		EOF
 
 		insinto /etc/sandbox.d
