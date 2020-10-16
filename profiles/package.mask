@@ -428,7 +428,6 @@ dev-ruby/delayer:0
 dev-ruby/faker:0
 dev-ruby/roadie:0
 dev-ruby/roadie-rails:0
-dev-ruby/rbnacl:5
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
