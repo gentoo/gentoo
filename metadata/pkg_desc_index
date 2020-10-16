@@ -12959,7 +12959,7 @@ media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5 2.2.6.1: Wings 3D is an advanced subdivi
 media-gfx/wkhtmltopdf 0.12.5: Convert html to pdf (and various image formats) using webkit
 media-gfx/word_cloud 1.6.0 1.8.0: A little word cloud generator in Python
 media-gfx/xdot 1.1 9999: Interactive viewer for Graphviz dot files
-media-gfx/xfig 3.2.6a-r1 3.2.7b: A menu-driven tool to draw and manipulate objects interactively in an X window
+media-gfx/xfig 3.2.7b: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
 media-gfx/xpaint 2.10.2: Image editor with tiff, jpeg and png support
@@ -14892,7 +14892,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.18.4-r1 12.19.0 14.2.0 14.4.0 14.11.0 14.12.0 14.13.0-r1 14.13.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.18.4-r1 12.19.0 14.2.0 14.4.0 14.11.0 14.12.0 14.13.0-r1 14.13.1 14.14.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
