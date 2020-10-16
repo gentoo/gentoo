@@ -431,11 +431,6 @@ dev-ruby/roadie-rails:0
 dev-ruby/rbnacl:5
 dev-ruby/twitter:6
 
-# Hans de Graaff <graaff@gentoo.org> (2020-09-16)
-# Dependencies of the already removed metasploit that are relevant
-# only with metasploit. Masked for removal in 30 days.
-dev-ruby/meterpreter_bins
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
