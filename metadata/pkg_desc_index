@@ -13204,7 +13204,7 @@ media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clie
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.20.0: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.20.0 0.20.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.3-r2: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.9-r1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
@@ -14276,7 +14276,7 @@ net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 9.0 9.0-r1 9.1 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
-net-analyzer/icinga2 2.11.5 2.11.6 2.12.0 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.11.6 2.12.0 2.12.1 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
