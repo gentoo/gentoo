@@ -15,7 +15,5 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-ml/ppx_derivers
-"
+DEPEND="dev-ml/cinaps:="
 RDEPEND="${DEPEND}"
