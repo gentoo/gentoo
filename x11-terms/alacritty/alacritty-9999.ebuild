@@ -105,7 +105,7 @@ src_install() {
 	local DOCS=(
 		alacritty.yml
 		CHANGELOG.md INSTALL.md README.md
-		docs/{ansicode.txt,escape_support.md}
+		docs/{ansicode.txt,escape_support.md,features.md}
 	)
 	einstalldocs
 }
