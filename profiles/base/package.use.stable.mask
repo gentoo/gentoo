@@ -245,7 +245,7 @@ app-emulation/xen-tools ocaml
 # Samuli Suominen <ssuominen@gentoo.org> (2014-03-19)
 # Some open source OpenCL providers cause sandbox violation while accessing /dev/dri/card*
 # from a command like eg. `/usr/bin/mogrify -version`, see bug #472766
-media-gfx/imagemagick opencl
+<media-gfx/imagemagick-7.0.10.34 opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
 # Depends on unstable sci-libs/avogadrolibs
