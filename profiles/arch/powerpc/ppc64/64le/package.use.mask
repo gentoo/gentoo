@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+kde-apps/kdenetwork-meta webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # criu is unmasked on little-endian ppc64
 app-emulation/crun -criu
 
