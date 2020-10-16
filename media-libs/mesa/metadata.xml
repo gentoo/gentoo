@@ -14,7 +14,6 @@
 		<flag name="gbm">Enable the Graphics Buffer Manager for EGL on KMS.</flag>
 		<flag name="gles1">Enable GLESv1 support.</flag>
 		<flag name="gles2">Enable GLESv2 support.</flag>
-		<flag name="libglvnd">Use libglvnd for dispatch.</flag>
 		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
 		<flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
