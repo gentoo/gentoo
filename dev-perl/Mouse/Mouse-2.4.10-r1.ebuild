@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Moose minus the antlers"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
