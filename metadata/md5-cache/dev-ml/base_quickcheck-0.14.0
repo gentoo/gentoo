@@ -1,14 +1,14 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/base:= dev-ml/ppx_base:= dev-ml/ppx_fields_conv:= dev-ml/ppx_let:= dev-ml/ppx_sexp_message:= dev-ml/ppx_sexp_value:= dev-ml/splittable_random:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_base-0.14.0:= >=dev-ml/ppx_fields_conv-0.14.1:= >=dev-ml/ppx_let-0.14.0:= >=dev-ml/ppx_sexp_message-0.14.0:= >=dev-ml/ppx_sexp_value-0.14.0:= dev-ml/splittable_random:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Randomized testing framework, designed for compatibility with Base
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/base_quickcheck
 IUSE=+ocamlopt
 KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=MIT
-RDEPEND=dev-ml/base:= dev-ml/ppx_base:= dev-ml/ppx_fields_conv:= dev-ml/ppx_let:= dev-ml/ppx_sexp_message:= dev-ml/ppx_sexp_value:= dev-ml/splittable_random:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_base-0.14.0:= >=dev-ml/ppx_fields_conv-0.14.1:= >=dev-ml/ppx_let-0.14.0:= >=dev-ml/ppx_sexp_message-0.14.0:= >=dev-ml/ppx_sexp_value-0.14.0:= dev-ml/splittable_random:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/base_quickcheck/archive/v0.14.0.tar.gz -> base_quickcheck-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=708cd1ebe0dc320554a90d510bca27c5
+_md5_=47446eea6d5f2b84daf56c0292ddc398

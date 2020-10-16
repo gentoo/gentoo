@@ -1,14 +1,14 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=>=dev-ml/sexplib0-0.12:= dev-ml/dune-configurator:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=>=dev-ml/sexplib0-0.14.0:= dev-ml/dune-configurator:= >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Standard library for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/base
 IUSE=+ocamlopt
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=>=dev-ml/sexplib0-0.12:= dev-ml/dune-configurator:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=>=dev-ml/sexplib0-0.14.0:= dev-ml/dune-configurator:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/base/archive/v0.14.0.tar.gz -> base-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=aa48a8b3c55425c4392a78e11571289f
+_md5_=1788130b10cfc41565f94aca46a19ef2
