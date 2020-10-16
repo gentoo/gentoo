@@ -2046,7 +2046,7 @@ app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
 app-eselect/eselect-oodict 20100228: Manages configuration of dictionaries for OpenOffice.Org
 app-eselect/eselect-opencascade 1: Manages opencascade env file
 app-eselect/eselect-package-manager 20110108-r1: Manages PACKAGE_MANAGER environment variable
-app-eselect/eselect-php 0.9.4-r5 0.9.5 0.9.6 9999: PHP eselect module
+app-eselect/eselect-php 0.9.6 9999: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20190417 20200719 99999999: Eselect module for management of multiple Python versions
@@ -5112,7 +5112,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.14.7 1.14.9 1.14.10 1.15.2 1.15.3 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.14.7 1.14.9 1.14.10 1.15.3 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -7782,7 +7782,7 @@ dev-php/pecl-mailparse 3.0.4 3.1.0 3.1.1: PHP extension for parsing and working 
 dev-php/pecl-mcrypt 1.0.1 1.0.2 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.3-r1 3.1.5-r1: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4 1.7.5 1.8.0: MongoDB database driver for PHP
+dev-php/pecl-mongodb 1.5.3 1.5.3-r1 1.5.5 1.6.0 1.7.4 1.7.5 1.8.0 1.8.1: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
 dev-php/pecl-oauth 2.0.7: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
