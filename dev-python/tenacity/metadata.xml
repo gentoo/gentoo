@@ -12,6 +12,7 @@
 	<longdescription lang="en">
 	Tenacity is an Apache 2.0 licensed general-purpose retrying library, written in Python, to simplify the task of adding retry behavior to just about anything. It originates from a fork of Retrying.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">tenacity</remote-id>
 		<remote-id type="github">jd/tenacity</remote-id>
