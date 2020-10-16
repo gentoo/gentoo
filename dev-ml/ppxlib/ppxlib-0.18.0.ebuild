@@ -18,14 +18,16 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-ml/base-0.11.0:=
 	dev-ml/findlib:=
-	>=dev-ml/ocaml-compiler-libs-0.11:=
+	>=dev-ml/ocaml-compiler-libs-0.11.0:=
 	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
-		dev-ml/result:=
+		dev-ml/cinaps:=
 	dev-ml/sexplib0:=
 	dev-ml/stdlib-shims:=
-	dev-ml/ppx_derivers:=
+	>=dev-ml/ppx_derivers-1.2.1:=
 	>=dev-ml/stdio-0.11.0:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	test? ( dev-ml/cinaps )"
+	test? (
+		dev-ml/cinaps
+		)"
