@@ -1,26 +1,27 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit cmake systemd
+
 if [[ ${PV} != 9999 ]]; then
-	inherit cmake-utils depend.apache eutils systemd toolchain-funcs wxwidgets
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 else
-	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs wxwidgets
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
-	EGIT_BRANCH="master"
 fi
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
-HOMEPAGE="http://icinga.org/icinga2"
+HOMEPAGE="https://icinga.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
-WX_GTK_VER="3.0"
+IUSE="console jumbo-build libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 
-CDEPEND="
+# Add accounts to DEPEND because of fowners in src_install
+DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	>=dev-libs/boost-1.66.0:=[context]
@@ -28,39 +29,27 @@ CDEPEND="
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
-	dev-libs/yajl"
-
-DEPEND="
-	${CDEPEND}
+	dev-libs/yajl:=
+	acct-user/icinga
+	acct-group/icinga
+	acct-group/icingacmd"
+BDEPEND="
 	sys-devel/bison
 	>=sys-devel/flex-2.5.35"
-
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	plugins? ( || (
 		net-analyzer/monitoring-plugins
 		net-analyzer/nagios-plugins
 	) )
 	mail? ( virtual/mailx )
-	acct-user/icinga
-	acct-group/icinga
-	acct-group/icingacmd
 	acct-group/nagios"
 
 REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
-want_apache2
-
-pkg_setup() {
-	depend.apache_pkg_setup
-}
-
 src_configure() {
-	sed -i 's/FLAGS\}\ \-g/FLAGS\}\ \-lpthread\ /g' CMakeLists.txt || die
 	local mycmakeargs=(
-		-DICINGA2_UNITY_BUILD=FALSE
-		-DCMAKE_VERBOSE_MAKEFILE=ON
-		-DCMAKE_BUILD_TYPE=None
+		-DICINGA2_UNITY_BUILD=$(usex jumbo-build)
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DICINGA2_SYSCONFIGFILE=/etc/conf.d/icinga2
@@ -69,9 +58,10 @@ src_configure() {
 		-DICINGA2_GROUP=icingacmd
 		-DICINGA2_COMMAND_GROUP=icingacmd
 		-DICINGA2_RUNDIR=/run
-		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
-		-DUSE_SYSTEMD=$(usex systemd ON OFF)
+		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=ON
+		-DUSE_SYSTEMD=$(usex systemd)
 		-DLOGROTATE_HAS_SU=ON
+		-DICINGA2_LTO_BUILD=$(usex lto)
 	)
 	# default to off if minimal, allow the flags to be set otherwise
 	if use minimal; then
@@ -81,47 +71,26 @@ src_configure() {
 		)
 	else
 		mycmakeargs+=(
-			-DICINGA2_WITH_PGSQL=$(usex postgres ON OFF)
-			-DICINGA2_WITH_MYSQL=$(usex mysql ON OFF)
-		)
-	fi
-	# LTO
-	if use lto; then
-		mycmakeargs+=(
-			-DICINGA2_LTO_BUILD=ON
-		)
-	else
-		mycmakeargs+=(
-			-DICINGA2_LTO_BUILD=OFF
+			-DICINGA2_WITH_PGSQL=$(usex postgres)
+			-DICINGA2_WITH_MYSQL=$(usex mysql yes $(usex mariadb))
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	BUILDDIR="${WORKDIR}"/icinga2-${PV}_build
-	cd "${BUILDDIR}" || die
-
-	emake DESTDIR="${D}" install
-
-	einstalldocs
+	cmake_src_install
 
 	newinitd "${FILESDIR}"/icinga2.initd-3 icinga2
 
-	if use mysql ; then
+	if use mysql || use mariadb; then
 		docinto schema
 		newdoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/mysql.sql mysql.sql
 		docinto schema/upgrade
 		dodoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/upgrade/*
 	fi
-	if use mariadb ; then  # same as mysql
-		docinto schema
-		newdoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/mysql.sql mysql.sql
-		docinto schema/upgrade
-		dodoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/upgrade/*
-	fi
-	if use postgres ; then
+	if use postgres; then
 		docinto schema
 		newdoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_pgsql/schema/pgsql.sql pgsql.sql
 		docinto schema/upgrade
@@ -163,8 +132,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ${PV} != 9999 && -n ${REPLACING_VERSIONS} && ${REPLACING_VERSIONS} != ${PV} ]]; then
-		elog "DB IDO schema upgrade may be required required.
-		https://www.icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/"
+	if [[ "${PV}" != 9999 ]]; then
+		local v
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test "${PV}" -gt "${v}"; then
+				elog "DB IDO schema upgrade may be required."
+				elog "https://www.icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/"
+			fi
+		done
 	fi
 }
