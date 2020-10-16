@@ -423,7 +423,6 @@ sci-chemistry/ortep3
 # Mask old ruby slots for removal in 30 days. Please use a newer slot
 # instead.
 dev-ruby/bindata:2.4.1
-dev-ruby/coffee-rails:4.2
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
