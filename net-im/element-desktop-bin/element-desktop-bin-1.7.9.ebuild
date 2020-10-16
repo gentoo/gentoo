@@ -74,6 +74,8 @@ src_install() {
 	for f in ${QA_PREBUILT}; do
 		fperms +x "${f}"
 	done
+	fperms u+s /opt/Element/chrome-sandbox
+
 	dosym ../../opt/Element/${MY_PN} /usr/bin/${MY_PN}
 	dosym ${MY_PN} /usr/bin/riot-desktop
 }
