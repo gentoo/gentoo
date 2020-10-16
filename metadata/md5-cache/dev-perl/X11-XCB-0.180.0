@@ -5,11 +5,11 @@ DESCRIPTION=Perl bindings for libxcb
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/X11-XCB
 IUSE=test test
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Data-Dump dev-perl/Mouse dev-perl/MouseX-NativeTraits dev-perl/Try-Tiny dev-perl/XML-Descent dev-perl/XML-Simple >=virtual/perl-XSLoader-0.20.0 >=x11-libs/libxcb-1.2 x11-libs/xcb-util x11-libs/xcb-util-wm dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MS/MSTPLBG/X11-XCB-0.18.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	e49dbce7ac14426e1155497476915307
-_md5_=b04688e5e44a4fcea8a58a66826aaa2a
+_md5_=7f23adf6c62109aebf87b7a8765dacbe

@@ -13260,7 +13260,7 @@ media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COL
 media-libs/opencolorio 1.1.0-r4 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 4.1.2-r3 4.4.0-r1: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 4.1.2-r3 4.4.0-r1 4.5.0: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0 2.5.2-r1: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
@@ -15074,7 +15074,7 @@ net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for c
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/croc 8.5.1: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
-net-misc/curl 7.71.0 7.71.1 7.71.1-r1 7.72.0 7.72.0-r1: A Client that groks URLs
+net-misc/curl 7.71.0 7.71.1 7.71.1-r1 7.72.0 7.72.0-r1 7.73.0: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
@@ -18045,7 +18045,7 @@ www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web br
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.3.1 81.0.1 81.0.1-r1 81.0.2: Firefox Web Browser
+www-client/firefox 78.3.1 81.0.1 81.0.1-r1 81.0.2 82.0_rc2: Firefox Web Browser
 www-client/firefox-bin 78.3.1-r1 81.0.1-r1 81.0.2: Firefox Web Browser
 www-client/google-chrome 86.0.4240.75: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.20: The web browser from Google
