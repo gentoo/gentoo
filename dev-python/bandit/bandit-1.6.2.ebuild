@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -17,10 +17,8 @@ KEYWORDS="~amd64 ~arm64 ~s390 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}
+	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
 		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
@@ -35,7 +33,7 @@ DEPEND="
 		>=dev-python/pylint-1.4.5[${PYTHON_USEDEP}]
 	)"
 RDEPEND="
-	${CDEPEND}
+	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/GitPython-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.13.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
