@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	dev-ml/base:=
-	dev-ml/ocaml-migrate-parsetree:=
-	dev-ml/ppxlib:=
+	>=dev-ml/base-0.14.0:=
+	dev-ml/findlib:=
 "
 DEPEND="${RDEPEND}"
