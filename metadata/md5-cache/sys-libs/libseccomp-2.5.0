@@ -5,11 +5,11 @@ DESCRIPTION=high level interface to Linux seccomp filter
 EAPI=7
 HOMEPAGE=https://github.com/seccomp/libseccomp
 IUSE=python static-libs python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=-* ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=-* ~amd64 ~arm ~arm64 ~hppa -mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=dev-util/gperf python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] )
 REQUIRED_USE=python? ( static-libs || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 SLOT=0
 SRC_URI=https://github.com/seccomp/libseccomp/releases/download/v2.5.0/libseccomp-2.5.0.tar.gz
 _eclasses_=distutils-r1	409cd1220f9f980d21980293a50e2a8e	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=0907ee695598224f14ec19fe1ad6cf09
+_md5_=db6f75d3c8ae007721115fbd05507565
