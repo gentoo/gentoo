@@ -11,6 +11,7 @@
 		Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords (RFC 8265)
 		Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames (RFC 8266)
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/byllyfish/precis_i18n/issues</bugs-to>
 		<remote-id type="github">byllyfish/precis_i18n</remote-id>
