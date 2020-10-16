@@ -423,7 +423,6 @@ sci-chemistry/ortep3
 # These versions are not compatible with current stable
 # dev-libs/openssl version, bug #741622.
 # Removal in 30 days. Please migrate to newer slots.
-=virtual/mysql-5.5-r2
 dev-db/mariadb:5.5
 dev-db/mariadb:10.1
 
