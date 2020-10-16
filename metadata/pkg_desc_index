@@ -17205,7 +17205,7 @@ sys-block/viaideinfo 0.5-r1: Query VIA IDE controllers for various information
 sys-block/whdd 2.2 3.0 9999: Diagnostic and recovery tool for block devices
 sys-block/zram-init 8.1 8.1-r1 9.1 9999: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/aboot 1.0_pre20040408-r3: Alpha Linux boot loader for SRM
-sys-boot/arcload 0.50-r1 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems
+sys-boot/arcload 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems
 sys-boot/bootcreator 1.1 1.2: Simple generator for Forth based BootMenu scripts for Pegasos machines
 sys-boot/colo 1.22: CObalt LOader - Modern bootloader for Cobalt MIPS machines
 sys-boot/cromwell 2.40-r3: Xbox boot loader
