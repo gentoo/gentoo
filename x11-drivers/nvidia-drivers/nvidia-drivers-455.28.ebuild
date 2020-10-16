@@ -52,9 +52,7 @@ COMMON="
 	X? (
 		>=x11-libs/libvdpau-1.0[${MULTILIB_USEDEP}]
 		app-misc/pax-utils
-		!libglvnd? ( >=app-eselect/eselect-opengl-1.0.9 )
 		libglvnd? (
-			!app-eselect/eselect-opengl
 			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
 		)
 	)
@@ -66,7 +64,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON}
-	tools? ( !media-video/nvidia-settings )
 	uvm? ( >=virtual/opencl-3 )
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
@@ -547,11 +544,6 @@ pkg_preinst() {
 pkg_postinst() {
 	use driver && use kernel_linux && linux-mod_pkg_postinst
 
-	# Switch to the nvidia implementation
-	if ! use libglvnd; then
-		use X && "${ROOT}"/usr/bin/eselect opengl set --use-old nvidia
-	fi
-
 	readme.gentoo_print_elog
 
 	if ! use X; then
@@ -581,15 +573,6 @@ pkg_postinst() {
 	elog "${ROOT}/usr/share/doc/${PF}/html/powermanagement.html"
 }
 
-pkg_prerm() {
-	if ! use libglvnd; then
-		use X && "${ROOT}"/usr/bin/eselect opengl set --use-old xorg-x11
-	fi
-}
-
 pkg_postrm() {
 	use driver && use kernel_linux && linux-mod_pkg_postrm
-	if ! use libglvnd; then
-		use X && "${ROOT}"/usr/bin/eselect opengl set --use-old xorg-x11
-	fi
 }
