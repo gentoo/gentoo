@@ -17324,7 +17324,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1 9999: Tools necessar
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1: Tools necessary to build programs
-sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.2: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.2 3.7.3: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C language family frontend for LLVM
