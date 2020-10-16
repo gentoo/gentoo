@@ -15,7 +15,7 @@ SRC_URI="https://github.com/readthedocs/sphinx-notfound-page/archive/${PV}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x64-macos"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 
