@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/zfs-${PV}"
-	ZFS_KERNEL_COMPAT="5.8"
+	ZFS_KERNEL_COMPAT="5.9"
 fi
 
 LICENSE="CDDL debug? ( GPL-2+ )"
