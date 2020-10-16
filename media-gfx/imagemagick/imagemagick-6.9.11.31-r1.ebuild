@@ -20,8 +20,7 @@ IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg
 REQUIRED_USE="corefonts? ( truetype )
 	test? ( corefonts )"
 
-RESTRICT="perl? ( userpriv )
-	!test? ( test )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libltdl:0
