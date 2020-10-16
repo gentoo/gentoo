@@ -413,12 +413,6 @@ dev-ruby/ruby_dep
 # unmaintained, HOMEPAGE gone.
 app-admin/recursos
 
-# David Seifert <soap@gentoo.org> (2020-09-16)
-# EAPI 4, last release in 2001, the Fortran source code
-# is terrible and has buffer overflows.
-# Removal in 30 days.  Bug #664120, #742008.
-sci-chemistry/ortep3
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
