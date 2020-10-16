@@ -5,11 +5,11 @@ DESCRIPTION=Encrypted FUSE filesystem that conceals metadata
 EAPI=7
 HOMEPAGE=https://www.cryfs.org/
 IUSE=custom-optimization debug libressl test kernel_linux
-KEYWORDS=amd64 ~arm arm64 x86
+KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=LGPL-3 MIT
 RDEPEND=>=dev-libs/boost-1.65.1:= >=dev-libs/crypto++-8.2.0:= net-misc/curl:= >=sys-fs/fuse-2.8.6:0 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cryfs/cryfs/releases/download/0.10.2/cryfs-0.10.2.tar.xz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=88ac6ade1245eeb8153cd7f28d003477
+_md5_=8cc9b84351bd3a0551485656f4a06c6a

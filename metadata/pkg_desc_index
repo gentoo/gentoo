@@ -14646,7 +14646,7 @@ net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/discord-bin 0.0.12: All-in-one voice and text chat for gamers
 net-im/ejabberd 20.04 20.07: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
-net-im/element-desktop-bin 1.7.7: A glossy Matrix collaboration client for desktop (binary package)
+net-im/element-desktop-bin 1.7.9: A glossy Matrix collaboration client for desktop (binary package)
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
@@ -17300,7 +17300,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/rdma-core 30.0-r2 31.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
-sys-cluster/singularity 3.6.3: Application containers for Linux
+sys-cluster/singularity 3.6.4: Application containers for Linux
 sys-cluster/slurm 20.02.4.1 20.02.5.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.6 3.0.1: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.0 2.25.1 2.26.0 2020.1.9999 2020.2.9999: A highly available, distributed, and eventually consistent object/blob store
@@ -18841,7 +18841,7 @@ x11-terms/pangoterm 0.0_pre20171111: A GTK/Pango-based terminal that uses libvte
 x11-terms/qterminal 0.14.1-r1 0.15.0 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.9.3 3.9.4: A terminal emulator designed to integrate with the ROX environment
-x11-terms/rxvt-unicode 9.22-r1 9.22-r3 9999: rxvt clone with xft and unicode support
+x11-terms/rxvt-unicode 9.22-r3 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 1.92-r1 1.92-r2 2.0.1: Multiple GNOME terminals in one window
