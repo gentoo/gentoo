@@ -408,44 +408,6 @@ dev-ruby/rgen
 # No longer maintained, no deps
 dev-ruby/ruby_dep
 
-# Sam James <sam@gentoo.org> (2020-09-16)
-# Stuck on EAPI 4, only source is mirror://gentoo,
-# unmaintained, HOMEPAGE gone.
-app-admin/recursos
-
-# David Seifert <soap@gentoo.org> (2020-09-16)
-# EAPI 4, last release in 2001, the Fortran source code
-# is terrible and has buffer overflows.
-# Removal in 30 days.  Bug #664120, #742008.
-sci-chemistry/ortep3
-
-# Hans de Graaff <graaff@gentoo.org> (2020-09-16)
-# Mask old ruby slots for removal in 30 days. Please use a newer slot
-# instead.
-dev-ruby/bindata:2.4.1
-dev-ruby/coffee-rails:4.2
-dev-ruby/delayer:0
-dev-ruby/faker:0
-dev-ruby/roadie:0
-dev-ruby/roadie-rails:0
-dev-ruby/rbnacl:5
-dev-ruby/twitter:6
-
-# Hans de Graaff <graaff@gentoo.org> (2020-09-16)
-# Dependencies of the already removed metasploit that are relevant
-# only with metasploit. Masked for removal in 30 days.
-dev-ruby/meterpreter_bins
-dev-ruby/patch_finder
-dev-ruby/rb-readline-r7
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
-# These versions are not compatible with current stable
-# dev-libs/openssl version, bug #741622.
-# Removal in 30 days. Please migrate to newer slots.
-=virtual/mysql-5.5-r2
-dev-db/mariadb:5.5
-dev-db/mariadb:10.1
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
