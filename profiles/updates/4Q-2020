@@ -1,1 +1,2 @@
 move sci-libs/scikits_learn dev-python/scikit-learn
+move sci-libs/scikits_image dev-python/scikit-image
