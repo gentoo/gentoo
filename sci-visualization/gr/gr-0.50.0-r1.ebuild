@@ -28,7 +28,7 @@ DEPEND="
 	postscript? ( app-text/ghostscript-gpl )
 	tiff? ( media-libs/tiff )
 	truetype? ( media-libs/freetype )
-	X? ( x11-libs/libX11 )
+	X? ( x11-libs/libX11 x11-libs/libXt )
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
