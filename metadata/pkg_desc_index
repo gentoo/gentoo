@@ -15270,7 +15270,7 @@ net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1 2.3.2.0: Suite of small n
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sftp
 net-misc/seafile 7.0.9: File syncing and sharing software with file encryption and group sharing
-net-misc/seafile-client 7.0.9: Seafile desktop client
+net-misc/seafile-client 7.0.9-r1: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r2: Small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
