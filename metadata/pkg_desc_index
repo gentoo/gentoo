@@ -5123,7 +5123,7 @@ dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/ispc 1.14.1 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
-dev-lang/janet 1.9.1 1.11.1: A dynamic Lisp dialect and bytecode vm
+dev-lang/janet 1.9.1 1.12.2: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
 dev-lang/jsonnet 0.15.0 0.16.0: A data templating language for app and tool developers
 dev-lang/julia 1.2.0 1.3.0 1.4.0-r1 1.4.0-r2 1.5.2: High-performance programming language for technical computing
@@ -10759,7 +10759,7 @@ dev-util/gtk-update-icon-cache 3.24.16 3.24.20 3.24.21: GTK update icon cache
 dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
-dev-util/hfstospell 0.5.1: HFST spell checker library and command line tool
+dev-util/hfstospell 0.5.1 0.5.2: HFST spell checker library and command line tool
 dev-util/howdoi 1.2.1 2.0.5 2.0.6 2.0.7: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
@@ -11966,7 +11966,7 @@ gui-libs/wf-config 0.4.1 0.5.0 9999: library for managing wayfire configuration 
 gui-libs/wlroots 0.10.0 0.10.1 0.11.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
-gui-wm/hikari 2.1.1 2.1.2: Wayland compositor inspired by CWM
+gui-wm/hikari 2.2.1: Wayland compositor inspired by CWM
 gui-wm/sway 1.5 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.4.0-r2 0.5.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
@@ -12459,7 +12459,7 @@ mail-filter/milter-regex 2.6 2.7: A milter-based regular expression filter
 mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r17 2.10.3-r18: A milter providing DKIM signing and verification
-mail-filter/opendmarc 1.3.2-r3 1.3.3: Open source DMARC implementation
+mail-filter/opendmarc 1.3.3: Open source DMARC implementation
 mail-filter/opensmtpd-filter-rspamd 0.1.6: OpenSMTPD filter for putting emails through rspamd
 mail-filter/policyd 1.82-r3: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
