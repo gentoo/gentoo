@@ -435,7 +435,6 @@ dev-ruby/twitter:6
 # Dependencies of the already removed metasploit that are relevant
 # only with metasploit. Masked for removal in 30 days.
 dev-ruby/meterpreter_bins
-dev-ruby/patch_finder
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
