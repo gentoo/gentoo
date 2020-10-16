@@ -419,13 +419,6 @@ app-admin/recursos
 # Removal in 30 days.  Bug #664120, #742008.
 sci-chemistry/ortep3
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
-# These versions are not compatible with current stable
-# dev-libs/openssl version, bug #741622.
-# Removal in 30 days. Please migrate to newer slots.
-dev-db/mariadb:5.5
-dev-db/mariadb:10.1
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
