@@ -408,11 +408,6 @@ dev-ruby/rgen
 # No longer maintained, no deps
 dev-ruby/ruby_dep
 
-# Sam James <sam@gentoo.org> (2020-09-16)
-# Stuck on EAPI 4, only source is mirror://gentoo,
-# unmaintained, HOMEPAGE gone.
-app-admin/recursos
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
