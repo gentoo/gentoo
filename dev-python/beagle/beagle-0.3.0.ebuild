@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Command line client for Hound, the code search tool."
@@ -16,9 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
-DEPEND="${CDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${CDEPEND}
+DEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/cliff-2.11.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.18.4[${PYTHON_USEDEP}]"
