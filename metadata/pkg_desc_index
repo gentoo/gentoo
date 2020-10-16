@@ -13105,7 +13105,7 @@ media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libcue 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1 2.2.6: Library to interface with IEEE 1394 cameras following the IIDC specification
-media-libs/libdca 0.0.5-r3 0.0.7: Library for decoding DTS Coherent Acoustics streams used in DVD
+media-libs/libdca 0.0.7: Library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.3 1.0.5 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.2: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4 0.7.5: Barcode data matrix reading and writing library
@@ -13207,7 +13207,7 @@ media-libs/libquvi-scripts 0.9.20131130-r1: Embedded lua scripts for libquvi
 media-libs/libraw 0.20.0: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.3-r2: framebuffer abstraction library, written in C
-media-libs/libsamplerate 0.1.9 0.1.9-r1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
+media-libs/libsamplerate 0.1.9-r1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.12-r1 2.0.12-r2: Simple Direct Media Layer
@@ -13225,7 +13225,7 @@ media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtgvoip 2.4.4_p20200704: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
-media-libs/libtimidity 0.2.4 0.2.6: MIDI to WAVE converter library
+media-libs/libtimidity 0.2.6: MIDI to WAVE converter library
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
 media-libs/libv4l 1.10.1 1.16.6 1.20.0: Separate libraries ebuild from upstream v4l-utils package
