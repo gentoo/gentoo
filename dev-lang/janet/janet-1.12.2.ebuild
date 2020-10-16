@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic optfeature
+inherit flag-o-matic
 
 DESCRIPTION="A dynamic Lisp dialect and bytecode vm"
 HOMEPAGE="https://janet-lang.org https://github.com/janet-lang/janet/"
