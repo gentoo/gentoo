@@ -5100,7 +5100,7 @@ dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2 2.5.1: A little language that compi
 dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
-dev-lang/elixir 1.10.4 1.11.0: Elixir programming language
+dev-lang/elixir 1.10.4 1.11.0 1.11.1: Elixir programming language
 dev-lang/erlang 22.3.2 22.3.4 23.0.3 23.0.4 23.1.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
@@ -5147,7 +5147,7 @@ dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distribute
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7 1.0.9: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
-dev-lang/nim 1.2.6: compiled, garbage-collected systems programming language
+dev-lang/nim 1.2.6 1.4.0: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0 4.10.0 4.11.1: Programming language supporting functional, imperative & object-oriented styles
