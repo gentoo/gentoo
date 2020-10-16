@@ -3,6 +3,7 @@
 
 EAPI=5
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
@@ -14,13 +15,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
-IUSE=""
 
 RDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	app-arch/unzip
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	"
+	app-arch/unzip"
 
 DOCS=( HISTORY.txt )
 

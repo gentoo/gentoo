@@ -3,6 +3,7 @@
 
 EAPI=6
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit distutils-r1
@@ -19,9 +20,7 @@ KEYWORDS="amd64 arm arm64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 RDEPEND=">=app-arch/snappy-1.0.2:="
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
