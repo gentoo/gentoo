@@ -639,7 +639,6 @@ app-admin/radmind 1.15.1: Command-line tools and server to remotely administer m
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/rasdaemon 0.6.1-r1 0.6.2-r1 0.6.2-r3 0.6.2-r4 0.6.5 0.6.6: Reliability, Availability and Serviceability logging tool
 app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
-app-admin/recursos 2.0-r1: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.15.2 0.16.0 0.16.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
@@ -3530,7 +3529,7 @@ dev-db/libzdb 3.1 3.1-r1: A thread safe high level multi-database connection poo
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.68-r1 10.1.47 10.2.22-r2 10.2.32-r3 10.2.34 10.3.23-r3 10.3.25 10.4.13-r3 10.4.15 10.5.6: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.3.23-r3 10.3.25 10.4.13-r3 10.4.15 10.5.6: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.9 3.1.10 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/mongodb 3.6.13 3.6.17 4.0.19 4.2.8: A high-performance, open source, schema-free document-oriented database
@@ -7976,8 +7975,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 1.15.15 1.15.16 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 1.18.15 1.18.16 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 1.15.15 1.15.16 1.15.17 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 1.18.15 1.18.16 1.18.17 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8453,7 +8452,7 @@ dev-python/microversion-parse 0.2.1: A simple parser for OpenStack microversion 
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.1.20191224: Python bindings for UPnP client library
+dev-python/miniupnpc 2.1.20191224 2.1.20201016: Python bindings for UPnP client library
 dev-python/misaka 2.1.1: A CFFI binding for Hoedown, a markdown parsing library
 dev-python/mistune 0.8.4-r1: The fastest markdown parser in pure Python
 dev-python/mkautodoc 0.1.0: Auto documentation for MkDocs
@@ -8492,7 +8491,7 @@ dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinx
 dev-python/namespace-zope 1-r1: Namespace package declaration for zope
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manager
-dev-python/nbclient 0.5.0: A client library for executing Jupyter notebooks
+dev-python/nbclient 0.5.0 0.5.1: A client library for executing Jupyter notebooks
 dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.3 6.0.4 6.0.5 6.0.6 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7 5.0.8: Reference implementation of the Jupyter Notebook format
@@ -9213,7 +9212,7 @@ dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.19.0 3.20.0-r1 3.20.1: virtualenv-based automation of test activities
 dev-python/tqdm 4.48.2 4.49.0 4.50.1 4.50.2 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
-dev-python/traitlets 4.3.3 5.0.4: A configuration system for Python applications
+dev-python/traitlets 4.3.3 5.0.4 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 2.5.0 2.5.1: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1 20.9.0: A requests-like API built on top of twisted.web's Agent
@@ -9258,7 +9257,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.0.31-r1 20.0.32 20.0.33 20.0.34: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.0.31-r1 20.0.32 20.0.33 20.0.34 20.0.35: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
@@ -9819,7 +9818,7 @@ dev-ruby/base32 0.3.2 0.3.4: A library which provides base32 decoding and encodi
 dev-ruby/bcrypt-ruby 3.1.13 3.1.15 3.1.16: An easy way to keep your users' passwords secure
 dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
-dev-ruby/bindata 2.4.1 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
+dev-ruby/bindata 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
 dev-ruby/bindex 0.8.1: Bindings for your Ruby exceptions
 dev-ruby/binding_of_caller 0.8.0: Retrieve the binding of a method's caller
 dev-ruby/bit-struct 0.16: Library for packed binary data stored in ruby Strings
@@ -9855,7 +9854,7 @@ dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
 dev-ruby/cmdparse 3.0.6: Advanced command line parser supporting commands
 dev-ruby/coderay 1.1.2 1.1.3-r1: A Ruby library for syntax highlighting
 dev-ruby/coercible 1.0.0: Powerful, flexible and configurable coercion library
-dev-ruby/coffee-rails 4.2.2-r1 5.0.0: Coffee Script adapter for the Rails asset pipeline
+dev-ruby/coffee-rails 5.0.0: Coffee Script adapter for the Rails asset pipeline
 dev-ruby/coffee-script 2.4.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/coffee-script-source 1.12.2: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/color 1.8: Colour management with Ruby
@@ -9893,7 +9892,7 @@ dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
-dev-ruby/delayer 0.0.2 1.1.2: Delay the processing
+dev-ruby/delayer 1.1.2: Delay the processing
 dev-ruby/delayer-deferred 2.1.3 2.2.0: Ruby implementation of JSDeferred
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
@@ -9925,7 +9924,7 @@ dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/facter 3.14.12 3.14.13 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2: A fake filesystem. Use it in your tests
-dev-ruby/faker 1.9.6-r1 2.11.0 2.12.0 2.13.0 2.14.0: A library for generating fake data such as names, addresses, and phone numbers
+dev-ruby/faker 2.11.0 2.12.0 2.13.0 2.14.0: A library for generating fake data such as names, addresses, and phone numbers
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.17.3 1.0.1: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.14.0 1.0.0: Various middleware for Faraday
@@ -10054,7 +10053,6 @@ dev-ruby/mercenary 0.4.0: Lightweight and flexible library for writing command-l
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasm 1.0.4: cross-architecture assembler, disassembler, linker, and debugger
-dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.9.2 1.0.0: Retrieve the source code for a method
 dev-ruby/middleware 0.1.0: Generalized implementation of the middleware abstraction for Ruby
 dev-ruby/mime-types 2.99.2 3.3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
@@ -10127,7 +10125,6 @@ dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/parser 2.7.1.3 2.7.1.4 2.7.1.5 2.7.2.0 2.7.2.0-r1: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.4 0.8.0: Terminal strings styling with intuitive and clean API
-dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/path_expander 1.1.0: Pre-process CLI arguments expanding directories into their constituent files
 dev-ruby/pathutil 0.16.2: Like Pathname but a little less insane
 dev-ruby/patron 0.13.1-r1 0.13.3: Patron is a Ruby HTTP client library based on libcurl
@@ -10177,8 +10174,7 @@ dev-ruby/rash_alt 0.4.8: Rash alt version for Hashie's own Rash
 dev-ruby/rb-gsl 2.1.0.2: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.10.0 0.10.1: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.5: Ruby implementation of the GNU readline C library
-dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
-dev-ruby/rbnacl 4.0.2-r1 5.0.0-r1 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
+dev-ruby/rbnacl 4.0.2-r1 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbst 0.6.5: A simple Ruby wrapper for processing rST via docutils
@@ -10204,8 +10200,8 @@ dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.6.1 1.6.2: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 3.2.0 4.1.1 4.1.2: An interface between Ruby and the ImageMagick(TM) image processing library
-dev-ruby/roadie 3.5.0 3.5.1 4.0.0: Making HTML emails comfortable for the Rails rockstars
-dev-ruby/roadie-rails 1.3.0 2.1.1: Hooks Roadie into your Rails application to help with email generation
+dev-ruby/roadie 4.0.0: Making HTML emails comfortable for the Rails rockstars
+dev-ruby/roadie-rails 2.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0 3.23.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
@@ -10392,7 +10388,7 @@ dev-ruby/tty-screen 0.7.1 0.8.1: Terminal screen size detection which works on L
 dev-ruby/tty-which 0.4.1 0.4.2: Platform independent implementation of Unix which command
 dev-ruby/turbolinks 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
-dev-ruby/twitter 6.2.0 7.0.0: Ruby wrapper around the Twitter API
+dev-ruby/twitter 7.0.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 3.1.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9-r1 1.3.1 1.4.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
@@ -12409,7 +12405,7 @@ lxqt-base/lxqt-session 0.15.0: LXQt Session Manager
 lxqt-base/lxqt-sudo 0.15.0: LXQt GUI frontend for sudo
 mail-client/aerc 0.4.0 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.23: An easy to use text-based based mail and news client
+mail-client/alpine 2.23 2.24: An easy to use text-based based mail and news client
 mail-client/balsa 2.6.1: Email client for GNOME
 mail-client/bower 0.10 0.11 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.6-r1 3.17.7 9999: An email client (and news reader) based on GTK+
@@ -14887,7 +14883,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.16.7-r1 2.16.8 2.23.0-r1 2.24.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.1.20191224: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.1.20191224 2.1.20201016: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0 2.2 2.8 3.0-r1 3.0-r2 3.2-r1 3.2-r2 9999: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nativebiginteger 0.9.45 0.9.47: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0 0.31.1 0.31.2: HTTP and WebDAV client library
@@ -15098,7 +15094,7 @@ net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of 
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 3.3.8 4.0.2 4.0.3-r1: User friendly Bitcoin client
+net-misc/electrum 3.3.8 4.0.2 4.0.3-r1 4.0.4: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
@@ -15974,7 +15970,6 @@ sci-chemistry/nmrglue 0.5-r1 0.7: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
 sci-chemistry/openbabel 2.4.1 2.4.1-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
-sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
 sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using tools such as Perl, awk, etc
 sci-chemistry/pdbcns 2.0.010504: Convert atom names for amino acids/nucleic acid bases between PDB and CNS format
 sci-chemistry/pdbmat 3.89: Calculate Tirion's model from pdb structures
@@ -17817,7 +17812,7 @@ virtual/man 0-r3: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/mpi 2.0-r3 2.0-r4 2.0-r5: Virtual for Message Passing Interface (MPI) v2.0 implementation
 virtual/mta 1-r1: Virtual for Message Transfer Agents
-virtual/mysql 5.5-r2 5.6-r13: Virtual for MySQL database server
+virtual/mysql 5.6-r13: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
 virtual/opencl 3-r1: Virtual for OpenCL API
