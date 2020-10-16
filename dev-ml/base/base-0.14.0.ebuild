@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	>=dev-ml/sexplib0-0.12:=
+	>=dev-ml/sexplib0-0.14.0:=
 	dev-ml/dune-configurator:=
 "
 DEPEND="${RDEPEND}"
