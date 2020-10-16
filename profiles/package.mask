@@ -425,7 +425,6 @@ sci-chemistry/ortep3
 dev-ruby/bindata:2.4.1
 dev-ruby/coffee-rails:4.2
 dev-ruby/delayer:0
-dev-ruby/faker:0
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-11)
 # These versions are not compatible with current stable
