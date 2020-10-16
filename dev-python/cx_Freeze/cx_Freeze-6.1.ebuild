@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 inherit distutils-r1
 
 DESCRIPTION="Create standalone executables from Python scripts"
-HOMEPAGE="https://anthony-tuininga.github.io/cx_Freeze/"
+HOMEPAGE="https://cx-freeze.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PYTHON"
