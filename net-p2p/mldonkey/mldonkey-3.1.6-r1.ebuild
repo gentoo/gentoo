@@ -19,11 +19,11 @@ RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
 	guionly? (
 		>=gnome-base/librsvg-2.4.0
-		>=dev-ml/lablgtk-2.6:2[svg]
+		>=dev-ml/lablgtk-2.6:2=[svg]
 	)
 	gtk? (
 		>=gnome-base/librsvg-2.4.0
-		>=dev-ml/lablgtk-2.6:2[svg]
+		>=dev-ml/lablgtk-2.6:2=[svg]
 	)
 	gd? ( >=media-libs/gd-2.0.28[truetype] )
 	magic? ( sys-apps/file )
