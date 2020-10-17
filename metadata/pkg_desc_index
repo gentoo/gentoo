@@ -148,6 +148,7 @@ acct-group/openvpn 0: System group: openvpn
 acct-group/openvpn_exporter 0: System group: openvpn_exporter
 acct-group/oprofile 0: A group for dev-util/oprofile JIT code processing
 acct-group/ossec 0: Group for net-analyzer/ossec-hids
+acct-group/p2p 0: System group: p2p
 acct-group/pcscd 0: System group: pcscd
 acct-group/pdns 0: System group: pdns
 acct-group/pdnsd 0: System group: pdnsd
@@ -380,6 +381,7 @@ acct-user/oprofile 0: A user for dev-util/oprofile JIT code processing
 acct-user/ossec 0: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
 acct-user/ossecm 0: net-analyzer/ossec-hids (csyslogd, maild)
 acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
+acct-user/p2p 0: System user: p2p
 acct-user/pcscd 0: A user for pcsc-lite
 acct-user/pdns 0: System user: pdns
 acct-user/pdnsd 0: user for pdns daemon
@@ -15408,7 +15410,7 @@ net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta 
 net-p2p/ktorrent 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
-net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
+net-p2p/mldonkey 3.1.5-r1 3.1.6-r1 3.1.7: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
