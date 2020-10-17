@@ -1,0 +1,2 @@
+move acct-group/openldap acct-group/ldap
+move acct-user/openldap acct-user/ldap
