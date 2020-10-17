@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,10 +17,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
-	guionly? ( >=gnome-base/librsvg-2.4.0
-			>=dev-ml/lablgtk-2.6 )
-	gtk? ( >=gnome-base/librsvg-2.4.0
-			>=dev-ml/lablgtk-2.6[svg] )
+	guionly? (
+		>=gnome-base/librsvg-2.4.0
+		>=dev-ml/lablgtk-2.6:2[svg]
+	)
+	gtk? (
+		>=gnome-base/librsvg-2.4.0
+		>=dev-ml/lablgtk-2.6:2[svg]
+	)
 	gd? ( >=media-libs/gd-2.0.28[truetype] )
 	magic? ( sys-apps/file )
 	upnp? ( net-libs/miniupnpc:= net-libs/libnatpmp:= )
