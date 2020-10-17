@@ -5871,7 +5871,7 @@ dev-ml/ocamlbuild 0.10.1 0.11.0 0.14.0 0.14.0-r1: Generic build tool with built-
 dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.8 0.0.9: Generate OCaml modules from source files
-dev-ml/ocamlnet 4.1.2 4.1.4: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 4.1.2 4.1.8: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39 1.41: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
@@ -5893,7 +5893,7 @@ dev-ml/ounit2 2.2.3: Unit testing framework for OCaml
 dev-ml/parmap 1.0_rc7-r1 1.0_rc8: Library to exploit multicore architectures for OCaml programs
 dev-ml/parsexp 0.14.0: S-expression parsing library
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
-dev-ml/pcre-ocaml 7.3.3 7.4.6: Perl Compatibility Regular Expressions for O'Caml
+dev-ml/pcre-ocaml 7.2.3 7.4.6: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/ppx_assert 0.9.0 0.14.0: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
@@ -8241,7 +8241,7 @@ dev-python/fuse-python 1.0.0: Python FUSE bindings
 dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
 dev-python/future 0.18.2-r1: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 3.1.1 3.2.0: Backport of the concurrent.futures package from Python 3.2
-dev-python/futurist 1.8.1: Useful additions to futures, from the future
+dev-python/futurist 1.8.1 2.3.0: Useful additions to futures, from the future
 dev-python/fuzzywuzzy 0.18.0: Fuzzy string matching in python
 dev-python/gast 0.2.2 0.3.3 0.3.3-r1: A generic AST to represent Python2 and Python3's Abstract Syntax Tree (AST)
 dev-python/gcs-oauth2-boto-plugin 2.5-r1: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
@@ -8391,10 +8391,10 @@ dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.9: Personal shell command keeper and snippets manager
 dev-python/keyring 21.4.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.0.1 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
-dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 7.0.1 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.2.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 20.6.0: micro-framework for developing production-ready web services with Python
-dev-python/kombu 4.6.8: AMQP Messaging Framework for Python
+dev-python/kombu 4.6.8 5.0.1: AMQP Messaging Framework for Python
 dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
 dev-python/latexcodec 2.0.0: Lexer and codec to work with LaTeX code in Python
 dev-python/lazr-config 2.2.2: Create configuration schemas, and process and validate configurations.
@@ -8560,23 +8560,23 @@ dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volu
 dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
-dev-python/oslo-cache 2.3.0: Oslo Caching around dogpile.cache
+dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.0.2 4.3.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 8.0.3 8.3.2: Oslo Configuration API
 dev-python/oslo-context 2.22.1 3.1.1: Helpers to maintain useful information about a request context
-dev-python/oslo-db 8.1.0: OpenStack Common DB Code
+dev-python/oslo-db 8.1.0 8.4.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.23.1 5.0.1: Oslo i18n library
 dev-python/oslo-log 4.1.2 4.4.0: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 12.1.1: Messaging API for RPC and notifications over different messaging transports
-dev-python/oslo-middleware 4.0.2: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 3.1.1: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-messaging 12.1.1 12.5.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-middleware 4.0.2 4.1.1: Components injected into wsgi pipelines to intercept request/response flows.
+dev-python/oslo-policy 3.1.1 3.5.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 3.1.1 4.0.1: Oslo Serialization library
-dev-python/oslo-service 2.1.1: Library for running OpenStack services
+dev-python/oslo-service 2.1.1 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-upgradecheck 1.0.1: Oslo i18n library
+dev-python/oslo-upgradecheck 1.0.1 1.1.1: Oslo i18n library
 dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
@@ -8678,7 +8678,7 @@ dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
 dev-python/pushbullet-py 0.11.0-r1: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3-r1: Scientific report generator and literate programming tool
 dev-python/py 1.9.0-r1: library with cross-python path, ini-parsing, io, code, log facilities
-dev-python/py-amqp 2.5.2: Low-level AMQP client for Python (fork of amqplib)
+dev-python/py-amqp 2.5.2 2.6.1: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-cpuinfo 6.0.0 7.0.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-ubjson 0.16.1: Universal Binary JSON encoder/decoder
@@ -8697,7 +8697,7 @@ dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.5.0: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pybtex 0.22.2: BibTeX-compatible bibliography processor
-dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
+dev-python/pycadf 2.9.0-r1 3.1.1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.19.1 1.20.0: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 3.1.1: Python interface for c-ares
@@ -8813,7 +8813,7 @@ dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.5.12-r1 0.5.14: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0: Python client for rqlite
 dev-python/pyrsistent 0.16.0 0.17.3: Persistent/Functional/Immutable data structures
-dev-python/pysaml2 4.6.5-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 4.6.5-r1 6.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pyscreenshot 2.2: Python screenshot library
 dev-python/pyserial 3.4: Python Serial Port extension
@@ -17090,7 +17090,7 @@ sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
-sys-auth/keystone 17.0.0 2020.1.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 17.0.0 18.0.0 2020.1.9999 2020.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1 1.90.2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
