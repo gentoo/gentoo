@@ -145,4 +145,6 @@ src_install() {
 
 	insinto /usr/share/pixmaps
 	doins frontends/gtk/res/netsurf.xpm
+	doman docs/netsurf-fb.1
+	doman docs/netsurf-gtk.1
 }
