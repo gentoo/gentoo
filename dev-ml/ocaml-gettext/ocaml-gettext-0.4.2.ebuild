@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/v${PV}.tar.gz -> ${P
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +ocamlopt"
+IUSE="+ocamlopt"
 
 BDEPEND="dev-ml/cppo"
 RDEPEND="
@@ -21,10 +21,7 @@ RDEPEND="
 	>=dev-ml/ocaml-fileutils-0.4.0:=
 	sys-devel/gettext
 "
-DEPEND="
-	${RDEPEND}
-	doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt )
-"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	dune_src_install
