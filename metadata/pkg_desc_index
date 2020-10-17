@@ -8888,7 +8888,7 @@ dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-docs 2.7.18 3.6.11 3.6.12 3.7.8 3.7.9 3.8.5: HTML documentation for Python
 dev-python/python-dotenv 0.14.0: Manage .env files
-dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
+dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.24.0 1.25.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-email-validator 1.1.1: A robust email syntax and deliverability validation library
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
@@ -14554,7 +14554,7 @@ net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.10.0 3.11.0: A framework for managing DNS information
 net-dns/pdns 4.3.1: The PowerDNS Daemon
-net-dns/pdns-recursor 4.3.3 4.3.4 4.3.5 4.4.0_rc2: The PowerDNS Recursor
+net-dns/pdns-recursor 4.3.5 4.4.0_rc2: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
