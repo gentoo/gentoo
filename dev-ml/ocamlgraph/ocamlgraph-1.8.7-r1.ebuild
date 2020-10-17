@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib eutils
+inherit eutils findlib
 
 DESCRIPTION="O'Caml Graph library"
 HOMEPAGE="http://ocamlgraph.lri.fr/index.en.html"
@@ -50,13 +50,14 @@ src_install() {
 	fi
 
 	dodoc README.adoc CREDITS FAQ CHANGES
-	if use doc; then
-		dohtml doc/*
-	fi
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
+	if use doc; then
+		docinto html
+		dodoc doc/*
 	fi
 }
