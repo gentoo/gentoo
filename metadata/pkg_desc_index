@@ -5268,7 +5268,7 @@ dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion r
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.24.3 1.24.4 1.25.1: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.24.3 1.24.4 1.25.1-r1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.180 0.181: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 0.33 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -13094,7 +13094,7 @@ media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
-media-libs/libavif 0.8.1 9999: Library for encoding and decoding .avif files
+media-libs/libavif 0.8.1 0.8.2 9999: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.1.2 1.2.0 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
@@ -16023,7 +16023,7 @@ sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.106: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
-sci-electronics/iverilog 10.3 10.3-r1 10.3-r2 11.0 9999: A Verilog simulation and synthesis tool
+sci-electronics/iverilog 10.3-r2 11.0 9999: A Verilog simulation and synthesis tool
 sci-electronics/kicad 5.1.6 5.1.7: Electronic Schematic and PCB design tools
 sci-electronics/kicad-footprints 5.1.6 5.1.7: Electronic Schematic and PCB design tools footprint libraries
 sci-electronics/kicad-i18n 5.1.6 5.1.7: Electronic Schematic and PCB design tools GUI translations
