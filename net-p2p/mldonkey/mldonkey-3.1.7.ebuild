@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ygrek/mldonkey/releases/download/release-${PV//./-}-
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
 IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt upnp"
 
@@ -22,11 +22,11 @@ RDEPEND="dev-lang/perl
 	gd? ( media-libs/gd[truetype] )
 	gtk? (
 		gnome-base/librsvg
-		dev-ml/lablgtk[svg]
+		dev-ml/lablgtk:=
 	)
 	guionly? (
 		gnome-base/librsvg
-		dev-ml/lablgtk
+		dev-ml/lablgtk:=
 	)
 	magic? ( sys-apps/file )
 	upnp? (
@@ -35,16 +35,15 @@ RDEPEND="dev-lang/perl
 	)
 	!guionly? ( acct-user/p2p )
 "
-
+# Can't yet use newer OCaml
+# -unsafe-string usage:
+# https://github.com/ygrek/mldonkey/issues/46
 DEPEND="${RDEPEND}
-	<dev-lang/ocaml-4.10[ocamlopt?]
+	<dev-lang/ocaml-4.10:=[ocamlopt?]
 	bittorrent? (
 		|| (
-			<dev-lang/ocaml-4.06
-			(
-				>=dev-lang/ocaml-4.06
-				dev-ml/num
-			)
+			>=dev-lang/ocaml-4.06[ocamlopt?]
+			dev-ml/num
 		)
 	)"
 
