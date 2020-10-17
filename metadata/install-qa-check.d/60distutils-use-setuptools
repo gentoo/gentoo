@@ -29,7 +29,8 @@ distutils_use_setuptools_check() {
 				then
 					# entry_points == we need rdepend
 					new_expected=rdepend
-				elif grep -q -s '^setuptools' \
+				elif [[ -f ${egg}/requires.txt ]] &&
+						grep -q -s '^setuptools' \
 						<(sed -e '/^\[/,$d' "${egg}"/requires.txt)
 				then
 					# explicit *unconditional* rdepend in package metadata
