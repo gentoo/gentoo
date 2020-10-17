@@ -1,14 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils findlib
+inherit findlib
 
 MY_P=${P/_beta/test}
 DESCRIPTION="Modules for OCaml application-level Internet protocols"
 HOMEPAGE="http://projects.camlcity.org/projects/ocamlnet.html"
 SRC_URI="http://download.camlcity.org/download/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB GPL-2+"
 SLOT="0/${PV}"
@@ -19,20 +20,21 @@ RESTRICT="installsources strip"
 # the auth-dh compile flag has been disabled as well, since it depends on
 # ocaml-cryptgps, which is not available.
 
-RDEPEND=">=dev-ml/findlib-1.0
-		pcre? ( >=dev-ml/pcre-ocaml-5:= )
-		>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-		tk? ( dev-ml/labltk:= )
-		ssl? ( net-libs/gnutls:= )
-		gtk? ( >=dev-ml/lablgtk-2:= )
-		kerberos? ( virtual/krb5 )
-		zip? ( dev-ml/camlzip:= )
-		"
-DEPEND="${RDEPEND}
+BDEPEND="
+	dev-ml/cppo
 	virtual/pkgconfig
 "
-
-S=${WORKDIR}/${MY_P}
+RDEPEND="
+	>=dev-ml/findlib-1.0
+	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+	pcre? ( >=dev-ml/pcre-ocaml-5:= )
+	tk? ( dev-ml/labltk:= )
+	ssl? ( net-libs/gnutls:= )
+	gtk? ( >=dev-ml/lablgtk-2:= )
+	kerberos? ( virtual/krb5 )
+	zip? ( dev-ml/camlzip:= )
+"
+DEPEND="${RDEPEND}"
 
 ocamlnet_use_with() {
 	if use $1; then
@@ -61,7 +63,7 @@ src_configure() {
 		$(ocamlnet_use_enable tk tcl) \
 		$(ocamlnet_use_enable zip zip) \
 		$(ocamlnet_use_with httpd nethttpd) \
-		|| die "Error : econf failed!"
+		|| die "Error: econf failed!"
 }
 
 src_compile() {
@@ -69,4 +71,8 @@ src_compile() {
 	if use ocamlopt; then
 		emake -j1 opt
 	fi
+}
+
+src_install() {
+	findlib_src_install
 }
