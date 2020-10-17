@@ -14,7 +14,7 @@ SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="gtk doc static debug threads +ocamlopt test"
+IUSE="debug doc gtk +ocamlopt threads"
 
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="<dev-lang/ocaml-4.10.0:=[ocamlopt?]
@@ -24,7 +24,7 @@ RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
-RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
+RESTRICT="!ocamlopt? ( strip )"
 S="${WORKDIR}"/src
 
 PATCHES=(
@@ -38,10 +38,6 @@ src_compile() {
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
-	fi
-
-	if use static; then
-		myconf="$myconf STATIC=true"
 	fi
 
 	if use debug; then

@@ -12,7 +12,7 @@ SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="gtk doc static debug threads +ocamlopt test"
+IUSE="debug doc gtk +ocamlopt threads"
 
 # Upstream, for this version, has explicitly disabled test with marker
 # "Skipping some tests -- remove me!". Given the potentially destructive nature
@@ -42,10 +42,6 @@ src_compile() {
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
-	fi
-
-	if use static; then
-		myconf="$myconf STATIC=true"
 	fi
 
 	if use debug; then
