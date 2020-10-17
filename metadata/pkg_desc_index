@@ -148,7 +148,7 @@ acct-group/openvpn 0: System group: openvpn
 acct-group/openvpn_exporter 0: System group: openvpn_exporter
 acct-group/oprofile 0: A group for dev-util/oprofile JIT code processing
 acct-group/ossec 0: Group for net-analyzer/ossec-hids
-acct-group/p2p 0: System group: p2p
+acct-group/p2p 0: Group for mldonkey
 acct-group/pcscd 0: System group: pcscd
 acct-group/pdns 0: System group: pdns
 acct-group/pdnsd 0: System group: pdnsd
@@ -381,7 +381,7 @@ acct-user/oprofile 0: A user for dev-util/oprofile JIT code processing
 acct-user/ossec 0: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
 acct-user/ossecm 0: net-analyzer/ossec-hids (csyslogd, maild)
 acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
-acct-user/p2p 0: System user: p2p
+acct-user/p2p 0: User for mldonkey
 acct-user/pcscd 0: A user for pcsc-lite
 acct-user/pdns 0: System user: pdns
 acct-user/pdnsd 0: user for pdns daemon
