@@ -13,7 +13,7 @@ SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV/_p/v}.tar.gz -> ${P/
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="gtk static debug threads +ocamlopt test"
+IUSE="debug gtk +ocamlopt threads"
 
 # Upstream, for this version, has explicitly disabled test with marker
 # "Skipping some tests -- remove me!". Given the potentially destructive nature
@@ -43,10 +43,6 @@ src_compile() {
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
-	fi
-
-	if use static; then
-		myconf="$myconf STATIC=true"
 	fi
 
 	if use debug; then
