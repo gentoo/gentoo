@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=A lightweight system monitoring tool
+EAPI=7
+HOMEPAGE=https://www.monitorix.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=acct-user/monitorix acct-group/monitorix dev-perl/Config-General dev-perl/DBI dev-perl/HTTP-Server-Simple dev-perl/IO-Socket-SSL dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/XML-Simple net-analyzer/rrdtool[graph,perl] dev-perl/CGI
+SLOT=0
+SRC_URI=https://www.monitorix.org/monitorix-3.12.0.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=659b0c47677f25f7312999c58a21281e

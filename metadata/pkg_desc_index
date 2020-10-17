@@ -10644,7 +10644,7 @@ dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.7: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2020.2.3: A complete toolset for C and C++ development
+dev-util/clion 2020.2.4: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
 dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.3 3.18.4 3.19.0_rc1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -14488,7 +14488,7 @@ net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 3.0.20: Highly configurable free RADIUS server
+net-dialup/freeradius 3.0.20-r1 3.0.21: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7 1.1.7-r1: FreeRADIUS Client framework
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
@@ -14879,7 +14879,7 @@ net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A lib
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
-net-libs/libwebsockets 3.2.1 4.0.20 4.1.2: A flexible pure-C library for implementing network protocols
+net-libs/libwebsockets 3.2.1 4.0.20 4.1.3: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
@@ -16008,7 +16008,7 @@ sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espresso logic minimization tool
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
-sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
+sci-electronics/fritzing 0.9.2b-r2 0.9.4: Electronic Design Automation
 sci-electronics/gazebo 11.1.0-r1: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20171223-r1: Metapackage for all components for a full-featured gEDA/gaf system
@@ -18082,7 +18082,7 @@ www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
 www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver logfiles
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
-www-misc/monitorix 3.11.0: A lightweight system monitoring tool
+www-misc/monitorix 3.11.0 3.12.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator
