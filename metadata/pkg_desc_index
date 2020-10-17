@@ -5797,7 +5797,7 @@ dev-ml/core 0.9.1-r1 0.9.2: Jane Street's alternative to the standard library
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
 dev-ml/core_kernel 0.9.0 0.9.1: System-independent part of Core
 dev-ml/cppo 1.4.1 1.5.0 1.6.6: An equivalent of the C preprocessor for OCaml programs
-dev-ml/cryptokit 1.10 1.11 1.12: Cryptographic primitives library for Objective Caml
+dev-ml/cryptokit 1.10 1.11 1.12 1.16.1: Cryptographic primitives library for Objective Caml
 dev-ml/csexp 1.3.2: Parsing and printing of S-expressions in Canonical form
 dev-ml/csv 1.5 1.6 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1 0.9: Library to parse, pretty print, and evaluate CUDF documents
@@ -13871,7 +13871,7 @@ media-sound/mup 6.6: Program for printing music scores
 media-sound/murmur 1.3.1 1.3.2 1.3.3 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
-media-sound/musescore 3.5 3.5.1 9999: WYSIWYG Music Score Typesetter
+media-sound/musescore 3.5 3.5.1 3.5.2 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.3: Organizes audio files into directories based on metadata tags
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.34 0.39: Ncurses client for the Music Player Daemon (MPD)
@@ -17175,7 +17175,7 @@ sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2: A performant, transport ind
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
 sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r1 99999: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
-sys-block/partitionmanager 4.1.0: Utility for management of disks, partitions and file systems
+sys-block/partitionmanager 4.1.0 4.2.0: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
@@ -17598,7 +17598,7 @@ sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1 1.18.1-r1: Standard GNU database l
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r1 2.32-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
-sys-libs/kpmcore 4.1.0: Library for managing partitions
+sys-libs/kpmcore 4.1.0 4.2.0: Library for managing partitions
 sys-libs/ldb 2.0.12-r1 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0: Library to support AppArmor userspace utilities

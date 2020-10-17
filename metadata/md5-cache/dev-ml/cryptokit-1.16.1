@@ -1,0 +1,16 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile configure install postinst test
+DEPEND=dev-ml/zarith:= zlib? ( >=sys-libs/zlib-1.1 ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Cryptographic primitives library for Objective Caml
+EAPI=7
+HOMEPAGE=https://github.com/xavierleroy/cryptokit
+IUSE=cpu_flags_x86_aes +ocamlopt test zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-ml/zarith:= zlib? ( >=sys-libs/zlib-1.1 ) >=dev-lang/ocaml-4:=[ocamlopt?]
+REQUIRED_USE=test? ( ocamlopt )
+RESTRICT=!test? ( test )
+SLOT=0/1.16.1
+SRC_URI=https://github.com/xavierleroy/cryptokit/archive/release1161.tar.gz -> cryptokit-1.16.1.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=26c19f1d83393640eabe8d202ae38178

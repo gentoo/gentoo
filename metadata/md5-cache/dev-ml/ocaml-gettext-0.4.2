@@ -1,14 +1,15 @@
-BDEPEND=dev-ml/cppo dev-ml/dune dev-lang/ocaml
+BDEPEND=dev-ml/cppo dev-ml/dune-configurator dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=>=dev-ml/camomile-0.8.3:= >=dev-ml/ocaml-fileutils-0.4.0:= sys-devel/gettext >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=dev-ml/base:= >=dev-ml/camomile-0.8.3:= >=dev-ml/ocaml-fileutils-0.4.0:= sys-devel/gettext test? ( dev-ml/ounit ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Provides support for internationalization of OCaml program
 EAPI=7
 HOMEPAGE=https://github.com/gildor478/ocaml-gettext
-IUSE=+ocamlopt
+IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1-with-linking-exception
-RDEPEND=>=dev-ml/camomile-0.8.3:= >=dev-ml/ocaml-fileutils-0.4.0:= sys-devel/gettext >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=dev-ml/base:= >=dev-ml/camomile-0.8.3:= >=dev-ml/ocaml-fileutils-0.4.0:= sys-devel/gettext >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
 SLOT=0/0.4.2
 SRC_URI=https://github.com/gildor478/ocaml-gettext/archive/v0.4.2.tar.gz -> ocaml-gettext-0.4.2.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=1cdda9f2076f3a492852479f13894d9a
+_md5_=c20c752995e466beb28ab2268fbd67b5
