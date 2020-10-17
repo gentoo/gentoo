@@ -19,6 +19,7 @@ REQUIRED_USE="test? ( ocamlopt )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	dev-ml/dune-configurator
 	dev-ml/zarith:=
 	zlib? ( >=sys-libs/zlib-1.1 )
 "
