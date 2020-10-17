@@ -1,35 +1,55 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit versionator flag-o-matic eutils autotools toolchain-funcs user
-
-IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt"
+inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface"
-HOMEPAGE="http://mldonkey.sourceforge.net/"
-SRC_URI="https://github.com/ygrek/mldonkey/releases/download/release-$(replace_all_version_separators '-')/${P}.tar.bz2"
+HOMEPAGE="http://mldonkey.sourceforge.net/ https://github.com/ygrek/mldonkey"
+SRC_URI="https://github.com/ygrek/mldonkey/releases/download/release-${PV//./-}-2/${P}-2.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+
+IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt upnp"
+
+REQUIRED_USE="guionly? ( gtk )"
 
 RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
-	guionly? ( >=gnome-base/librsvg-2.4.0
-			>=dev-ml/lablgtk-2.6 )
-	gtk? ( >=gnome-base/librsvg-2.4.0
-			>=dev-ml/lablgtk-2.6[svg] )
-	gd? ( >=media-libs/gd-2.0.28[truetype] )
-	magic? ( sys-apps/file )"
-
+	gd? ( media-libs/gd[truetype] )
+	gtk? (
+		gnome-base/librsvg
+		dev-ml/lablgtk:=
+	)
+	guionly? (
+		gnome-base/librsvg
+		dev-ml/lablgtk:=
+	)
+	magic? ( sys-apps/file )
+	upnp? (
+		net-libs/libnatpmp
+		net-libs/miniupnpc:=
+	)
+	!guionly? ( acct-user/p2p )
+"
+# Can't yet use newer OCaml
+# -unsafe-string usage:
+# https://github.com/ygrek/mldonkey/issues/46
 DEPEND="${RDEPEND}
-	>=dev-lang/ocaml-3.10.2[ocamlopt?]"
+	<dev-lang/ocaml-4.10:=[ocamlopt?]
+	bittorrent? (
+		|| (
+			>=dev-lang/ocaml-4.06[ocamlopt?]
+			dev-ml/num
+		)
+	)"
 
 RESTRICT="!ocamlopt? ( strip )"
 
-MLUSER="p2p"
+S="${WORKDIR}/${P}-2"
 
 pkg_setup() {
 	if use gtk; then
@@ -54,30 +74,28 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cd "${S}"/config
+	cd config || die
 	eautoconf
-	cd "${S}"
-	use ocamlopt || sed -i -e "s/ocamlopt/idontwantocamlopt/g" "${S}/config/configure" || die "failed to disable ocamlopt"
+	cd .. || die
+	if ! use ocamlopt; then
+		sed -i -e "s/ocamlopt/idontwantocamlopt/g" "${S}/config/configure" || die "failed to disable ocamlopt"
+	fi
 
 	default
 }
 
 src_configure() {
-	# the dirs are not (yet) used, but it doesn't hurt to specify them anyway
+	local myconf=()
 
-	# onlygui	Disable all nets support, build only chosen GUI
-
-	if use gtk || use guionly; then
-		myconf="--enable-gui=newgui2"
+	if use gtk; then
+		myconf+=( --enable-gui=newgui2 )
 	else
-		myconf="--disable-gui"
+		myconf+=( --disable-gui )
 	fi
 
 	if use guionly; then
-		myconf="${myconf} --disable-multinet --disable-donkey"
+		myconf+=( --disable-multinet --disable-donkey )
 	fi
-
-	cd "${S}"
 
 	local my_extra_libs
 	if use gd; then
@@ -96,26 +114,28 @@ src_configure() {
 		$(use_enable gnutella gnutella2) \
 		$(use_enable gd) \
 		$(use_enable magic) \
-		${myconf}
+		$(use_enable upnp upnp-natpmp) \
+		--disable-force-upnp-natpmp \
+		${myconf[@]}
 }
 
 src_compile() {
 	export OCAMLRUNPARAM="l=256M"
-	emake
+	emake -j1 # Upstream bug #48
 
 	if ! use guionly; then
 		emake utils
-	fi;
+	fi
 }
 
 src_install() {
-	local myext=""
+	local myext i
 	use ocamlopt || myext=".byte"
 	if ! use guionly; then
 		for i in mlnet mld_hash get_range copysources subconv; do
-			newbin $i$myext $i
+			newbin "${i}${myext}" "${i}"
 		done
-		use bittorrent && newbin make_torrent$myext make_torrent
+		use bittorrent && newbin "make_torrent${myext}" make_torrent
 
 		newconfd "${FILESDIR}/mldonkey.confd-2.8" mldonkey
 		fperms 600 /etc/conf.d/mldonkey
@@ -124,35 +144,25 @@ src_install() {
 
 	if use gtk; then
 		for i in mlgui mlguistarter; do
-			newbin $i$myext $i
+			newbin "${i}${myext}" "${i}"
 		done
 		make_desktop_entry mlgui "MLDonkey GUI" mldonkey "Network;P2P"
-		newicon "${S}"/packages/rpm/mldonkey-icon-48.png ${PN}.png
+		newicon "${S}"/packages/rpm/mldonkey-icon-48.png "${PN}.png"
 	fi
 
 	if use doc ; then
-		cd "${S}"/distrib
-		dodoc ChangeLog *.txt
+		docompress -x "/usr/share/doc/${PF}/scripts" "/usr/share/doc/${PF}/html"
 
-		insinto /usr/share/doc/${PF}/scripts
-		doins kill_mldonkey mldonkey_command mldonkey_previewer make_buginfo
+		dodoc distrib/ChangeLog distrib/*.txt docs/*.txt docs/*.tex docs/*.pdf docs/developers/*.{txt,tex}
 
-		cd "${S}"/docs
-		dodoc *.txt *.tex *.pdf
-		dohtml *.html
+		docinto scripts
+		dodoc distrib/{kill_mldonkey,mldonkey_command,mldonkey_previewer,make_buginfo}
 
-		cd "${S}"/docs/developers
-		dodoc *.txt *.tex
+		docinto html
+		dodoc docs/*.html
 
-		cd "${S}"/docs/images
-		insinto /usr/share/doc/${PF}/html/images
-		doins *
-	fi
-}
-
-pkg_preinst() {
-	if ! use guionly; then
-		enewuser ${MLUSER} -1 -1 /home/p2p users
+		docinto html/images
+		dodoc docs/images/*
 	fi
 }
 
