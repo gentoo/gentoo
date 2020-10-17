@@ -374,6 +374,7 @@ acct-user/ntp 0: user for ntp daemon
 acct-user/nzbget 0: User for net-nntp/nzbget
 acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
+acct-user/openldap 0: A user for openldap
 acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
 acct-user/openvpn 0: User for net-vpn/openvpn
