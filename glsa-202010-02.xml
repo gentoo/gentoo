@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-02">
+  <title>Mozilla Firefox, Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox and
+    Mozilla Thunderbird, the worst of which could result in the arbitrary
+    execution of code.
+  </synopsis>
+  <product type="ebuild">firefox,thunderbird</product>
+  <announced>2020-10-17</announced>
+  <revised count="1">2020-10-17</revised>
+  <bug>744208</bug>
+  <bug>745432</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">81.0</unaffected>
+      <unaffected range="ge" slot="0/esr78">78.3.0</unaffected>
+      <vulnerable range="lt">81.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">81.0</unaffected>
+      <unaffected range="ge" slot="0/esr78">78.3.0</unaffected>
+      <vulnerable range="lt">81.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">78.3.1</unaffected>
+      <vulnerable range="lt">78.3.1</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">78.3.1</unaffected>
+      <vulnerable range="lt">78.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      project.
+    </p>
+    
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox and
+      Mozilla Thunderbird. Please review the CVE identifiers referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-81.0"
+    </code>
+    
+    <p>All Mozilla Firefox (bin) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-81.0"
+    </code>
+    
+    <p>All Mozilla Firefox ESR (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-78.3.0"
+    </code>
+    
+    <p>All Mozilla Firefox ESR (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-78.3.0"
+    </code>
+    
+    <p>All Mozilla Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-78.3.1"
+    </code>
+    
+    <p>All Mozilla Thunderbird (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-78.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15673">CVE-2020-15673</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15676">CVE-2020-15676</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15677">CVE-2020-15677</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15678">CVE-2020-15678</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-43/">
+      Mozilla Foundation Security Advisory 2020-43
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-44/">
+      Mozilla Foundation Security Advisory 2020-44
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-03T20:27:12Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-17T09:03:41Z">whissi</metadata>
+</glsa>
