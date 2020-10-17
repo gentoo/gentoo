@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup
-DEPEND=dev-lang/perl dev-ml/camlp4:= guionly? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2[svg] ) gtk? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2[svg] ) gd? ( >=media-libs/gd-2.0.28[truetype] ) magic? ( sys-apps/file ) upnp? ( net-libs/miniupnpc:= net-libs/libnatpmp:= ) >=dev-lang/ocaml-3.10.2[ocamlopt?] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/perl dev-ml/camlp4:= guionly? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2=[svg] ) gtk? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2=[svg] ) gd? ( >=media-libs/gd-2.0.28[truetype] ) magic? ( sys-apps/file ) upnp? ( net-libs/miniupnpc:= net-libs/libnatpmp:= ) >=dev-lang/ocaml-3.10.2[ocamlopt?] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 EAPI=6
 HOMEPAGE=http://mldonkey.sourceforge.net/
 IUSE=bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt upnp
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-lang/perl dev-ml/camlp4:= guionly? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2[svg] ) gtk? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2[svg] ) gd? ( >=media-libs/gd-2.0.28[truetype] ) magic? ( sys-apps/file ) upnp? ( net-libs/miniupnpc:= net-libs/libnatpmp:= )
+RDEPEND=dev-lang/perl dev-ml/camlp4:= guionly? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2=[svg] ) gtk? ( >=gnome-base/librsvg-2.4.0 >=dev-ml/lablgtk-2.6:2=[svg] ) gd? ( >=media-libs/gd-2.0.28[truetype] ) magic? ( sys-apps/file ) upnp? ( net-libs/miniupnpc:= net-libs/libnatpmp:= )
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=https://github.com/ygrek/mldonkey/releases/download/release-3-1-6/mldonkey-3.1.6.tar.bz2
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=e872c1ca97bd9199bf57022c066a26e4
+_md5_=2e8c67ec203f696bcd05c6a22d74c168
