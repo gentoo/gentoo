@@ -17,12 +17,4 @@ IUSE="+ocamlopt"
 # 2 of 70 tests fail
 RESTRICT="test"
 
-# see #748549 for version restriction on OCaml
-BDEPEND="
-	>=dev-lang/ocaml-4.07.0
-	>=dev-ml/cppo-1.1.0
-"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1-fix-build.patch"
-)
+BDEPEND=">=dev-ml/cppo-1.6.6"
