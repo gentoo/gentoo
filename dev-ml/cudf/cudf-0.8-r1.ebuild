@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,10 +34,10 @@ src_prepare() {
 		-e 's|make|$(MAKE)|g' \
 		Makefile || die
 	sed -i \
-		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0)|g' \
+		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0 libunwind)|g' \
 		c-lib/Makefile || die
 	sed -i \
-		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0)|g' \
+		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0 libunwind)|g' \
 		c-lib/Makefile.variants || die
 
 	tc-export CC PKG_CONFIG
