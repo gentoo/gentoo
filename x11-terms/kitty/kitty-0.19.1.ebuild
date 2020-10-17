@@ -43,11 +43,11 @@ RDEPEND="
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
 	)
-	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_MULTI_USEDEP}]' python3_6)
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_6)
 "
 
 DEPEND="${RDEPEND}
-	media-libs/mesa[X(+)]
+	media-libs/mesa[X]
 	sys-libs/ncurses
 "
 
@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.2-flags.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 	"${FILESDIR}"/${PN}-0.16.0-remove-terminfo.patch
+	"${FILESDIR}"/${PN}-0.19.1-tests.patch
 )
 
 src_prepare() {

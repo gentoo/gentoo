@@ -20,7 +20,7 @@ IUSE="debug"
 DEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}"/kitty-terminfo-setup-0.18.3.patch
+	"${FILESDIR}"/kitty-terminfo-setup-0.19.1.patch
 )
 
 # kitty-terminfo is a split package from kitty that only installs the terminfo
