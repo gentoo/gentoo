@@ -33,9 +33,4 @@ DEPEND="
 
 src_install() {
 	dune_src_install
-
-	# Hack for now until we get --mandir in dune.eclass
-	cd "${ED}/usr/man" || die
-	doman man1/* man5/*
-	rm -r "${ED}/usr/man" || die
 }
