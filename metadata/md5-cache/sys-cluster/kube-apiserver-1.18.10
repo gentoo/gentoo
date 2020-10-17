@@ -1,0 +1,15 @@
+BDEPEND==dev-lang/go-1.14* >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=acct-group/kube-apiserver acct-user/kube-apiserver
+DESCRIPTION=Kubernetes API server
+EAPI=7
+HOMEPAGE=https://kubernetes.io
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=acct-group/kube-apiserver acct-user/kube-apiserver !sys-cluster/kubernetes
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.10.tar.gz -> kubernetes-1.18.10.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	92660621959e7fab813173772987588b	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=95cd427489474ade75953a9ec73344e9

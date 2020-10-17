@@ -1,0 +1,14 @@
+BDEPEND==dev-lang/go-1.14* >=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=CLI to Easily bootstrap a secure Kubernetes cluster
+EAPI=7
+HOMEPAGE=https://kubernetes.io
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!sys-cluster/kubernetes
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.10.tar.gz -> kubernetes-1.18.10.tar.gz
+_eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	go-module	92660621959e7fab813173772987588b	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=1b160c86a80a430d8b764e766d7a986f

@@ -17265,14 +17265,14 @@ sys-cluster/ipvsadm 1.27-r1 1.28: utility to administer the IP virtual server se
 sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes clusters
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-apiserver 1.17.3 1.17.4 1.17.11 1.17.12 1.18.8 1.18.9 1.19.1 1.19.2: Kubernetes API server
-sys-cluster/kube-controller-manager 1.17.3 1.17.4 1.17.11 1.17.12 1.18.8 1.18.9 1.19.1 1.19.2: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.17.3 1.17.4 1.17.12 1.18.9 1.19.2: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.17.3 1.17.4 1.17.11 1.17.12 1.17.13 1.18.8 1.18.9 1.18.10 1.19.1 1.19.2 1.19.3: Kubernetes API server
+sys-cluster/kube-controller-manager 1.17.3 1.17.4 1.17.11 1.17.12 1.17.13 1.18.8 1.18.9 1.18.10 1.19.1 1.19.2 1.19.3: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.17.3 1.17.4 1.17.12 1.18.9 1.19.2: Kubernetes Scheduler
-sys-cluster/kubeadm 1.17.11 1.17.12 1.18.8 1.18.9 1.19.1 1.19.2: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.17.3 1.17.4 1.17.12 1.18.9 1.19.2: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.17.3 1.17.4 1.17.12 1.18.9 1.19.2: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: Kubernetes Scheduler
+sys-cluster/kubeadm 1.17.11 1.17.12 1.17.13 1.18.8 1.18.9 1.18.10 1.19.1 1.19.2 1.19.3: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/kubernetes 1.17.9 1.17.11 1.18.6 1.18.8 1.19.0 1.19.1: production-grade container orchestration
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
