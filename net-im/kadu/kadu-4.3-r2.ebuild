@@ -24,6 +24,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	>=app-arch/libarchive-2.6[lzma]
 	>=dev-libs/injeqt-1.1.0
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
