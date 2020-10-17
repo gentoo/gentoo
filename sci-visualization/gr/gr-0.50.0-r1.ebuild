@@ -12,7 +12,7 @@ SRC_URI="https://github.com/sciapp/gr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cairo ffmpeg postscript tiff truetype X"
+IUSE="cairo ffmpeg postscript tiff truetype"
 
 DEPEND="
 	dev-qt/qtgui:5
@@ -23,12 +23,13 @@ DEPEND="
 	media-libs/qhull
 	sys-libs/zlib
 	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXt
 	cairo? ( x11-libs/cairo )
 	ffmpeg? ( media-video/ffmpeg )
 	postscript? ( app-text/ghostscript-gpl )
 	tiff? ( media-libs/tiff )
 	truetype? ( media-libs/freetype )
-	X? ( x11-libs/libX11 x11-libs/libXt )
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
