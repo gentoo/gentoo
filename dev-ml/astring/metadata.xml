@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">dbuenzli/astring</remote-id>
+		<changelog>https://github.com/dbuenzli/astring/blob/master/CHANGES.md</changelog>
 	</upstream>
 </pkgmetadata>
