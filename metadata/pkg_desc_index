@@ -5856,7 +5856,7 @@ dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.0.0 1.1.0 1.1.0-r1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.5.1 0.5.2 0.6.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
-dev-ml/ocaml-gettext 0.3.7-r1 0.4.2: Provides support for internationalization of OCaml program
+dev-ml/ocaml-gettext 0.3.7-r2 0.4.2: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.2 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
