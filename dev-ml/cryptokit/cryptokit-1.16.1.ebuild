@@ -16,6 +16,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_aes +ocamlopt test zlib"
 REQUIRED_USE="test? ( ocamlopt )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-ml/zarith:=
