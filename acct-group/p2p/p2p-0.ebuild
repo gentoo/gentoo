@@ -5,4 +5,5 @@ EAPI=7
 
 inherit acct-group
 
+DESCRIPTION="Group for mldonkey"
 ACCT_GROUP_ID=378
