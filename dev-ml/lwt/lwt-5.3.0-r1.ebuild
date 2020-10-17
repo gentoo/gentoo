@@ -9,6 +9,9 @@ DESCRIPTION="Cooperative light-weight thread library for OCaml"
 SRC_URI="https://github.com/ocsigen/lwt/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="http://ocsigen.org/lwt"
 
+SLOT="0/${PV}"
+LICENSE="LGPL-2.1-with-linking-exception"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt"
 
 DEPEND="
@@ -20,16 +23,11 @@ DEPEND="
 	dev-ml/react:=
 	dev-ml/dune-configurator:=
 	dev-libs/libev"
-
 RDEPEND="${DEPEND}
 	!<www-servers/ocsigen-1.1"
-DEPEND="${DEPEND}
-	dev-ml/cppo
+BDEPEND="
+	>=dev-ml/cppo-1.6.6
 	dev-ml/findlib"
-
-SLOT="0/${PV}"
-LICENSE="LGPL-2.1-with-linking-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 # backported from https://github.com/ocsigen/lwt/pull/807
 PATCHES=(
