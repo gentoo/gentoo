@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
 
@@ -17,7 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
 	test? (
 		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
