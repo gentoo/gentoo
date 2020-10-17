@@ -5,9 +5,9 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="A user for openldap"
+DESCRIPTION="A user for ldap"
 ACCT_USER_ID=439
-ACCT_USER_GROUPS=( openldap )
+ACCT_USER_GROUPS=( ldap )
 
 acct-user_add_deps
 
