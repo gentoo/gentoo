@@ -84,6 +84,8 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	use java && java-pkg-opt-2_src_prepare
+	sed -e 's/\/lib\$/\/'$(get_libdir)'\$/' \
+		-i adm/templates/OpenCASCADEConfig.cmake.in || die
 }
 
 src_configure() {
