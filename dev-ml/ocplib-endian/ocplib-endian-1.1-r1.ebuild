@@ -15,9 +15,14 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt"
 
 # 2 of 70 tests fail
-RESTRICT=test
+RESTRICT="test"
 
-DEPEND="
+# see #748549 for version restriction on OCaml
+BDEPEND="
+	>=dev-lang/ocaml-4.07.0
 	>=dev-ml/cppo-1.1.0
 "
-RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1-fix-build.patch"
+)
