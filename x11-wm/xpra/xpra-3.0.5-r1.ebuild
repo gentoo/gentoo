@@ -74,6 +74,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2-ldconfig.patch
 )
 
+src_install() {
+	distutils-r1_src_install
+
+	mkdir -p "${ED}/usr/share/metainfo" || die
+	mv "${ED}/usr/share/appdata/"* "${ED}/usr/share/metainfo/" || die
+	rmdir "${ED}/usr/share/appdata" || die
+}
+
 pkg_postinst() {
 	enewgroup ${PN}
 	tmpfiles_process /usr/lib/tmpfiles.d/xpra.conf
