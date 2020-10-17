@@ -22,11 +22,11 @@ RDEPEND="dev-lang/perl
 	gd? ( media-libs/gd[truetype] )
 	gtk? (
 		gnome-base/librsvg
-		dev-ml/lablgtk:=
+		dev-ml/lablgtk:2=[svg]
 	)
 	guionly? (
 		gnome-base/librsvg
-		dev-ml/lablgtk:=
+		dev-ml/lablgtk:2=[svg]
 	)
 	magic? ( sys-apps/file )
 	upnp? (
