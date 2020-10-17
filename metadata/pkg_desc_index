@@ -5872,7 +5872,7 @@ dev-ml/ocamlmod 0.0.8 0.0.9: Generate OCaml modules from source files
 dev-ml/ocamlnet 4.1.2 4.1.4: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39 1.41: O'Caml literate programming tool
-dev-ml/ocplib-endian 1.0 1.1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
+dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
 dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
 dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.6.1 0.7.9 0.7.10: OCaml interface to the libcurl library
@@ -8903,7 +8903,7 @@ dev-python/python-glanceclient 2.17.1 3.2.2: A client for the OpenStack Glance A
 dev-python/python-gnupg 0.4.6: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.17.0 2.2.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 1.0.0: Python bindings for iptables
-dev-python/python-ironicclient 4.1.0 4.3.0: Python bindings for the Ironic API
+dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0 4.1.1: Client Library for OpenStack Identity
