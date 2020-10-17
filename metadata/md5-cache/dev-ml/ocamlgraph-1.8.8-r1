@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] gtk? ( dev-ml/lablgtk:2=[gnomecanva
 SLOT=0/1.8.8
 SRC_URI=http://ocamlgraph.lri.fr/download/ocamlgraph-1.8.8.tar.gz
 _eclasses_=findlib	17c71a5d96323df925f9f6db1215668a
-_md5_=193455d81f600a9e37f2a07c9e8fc179
+_md5_=cfc780a2c13d405b640c1af961973506
