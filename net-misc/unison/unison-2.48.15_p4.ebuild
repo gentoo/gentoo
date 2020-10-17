@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit desktop xdg-utils
+
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
 SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV/_p/v}.tar.gz -> ${P/_p/v}.tar.gz"
@@ -72,6 +74,10 @@ src_install() {
 	for binname in unison unison-fsmonitor; do
 		newbin ${binname} ${binname}-${SLOT}
 	done
+	if use gtk; then
+		newicon -s scalable ../icons/U.svg ${PN}-${SLOT}.svg
+		make_desktop_entry ${PN}-${SLOT} ${PN}-${SLOT} ${PN}-${SLOT}
+	fi
 # No manual.pdf or manual.html available for this version
 #	if use doc; then
 #		DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
@@ -85,4 +91,13 @@ pkg_postinst() {
 	elog "in your profile files to access exactly this version over ssh."
 	elog "Or you can use 'eselect unison' to set the version."
 	eselect unison update
+	if use gtk; then
+		xdg_icon_cache_update
+	fi
+}
+
+pkg_postrm() {
+	if use gtk; then
+		xdg_icon_cache_update
+	fi
 }
