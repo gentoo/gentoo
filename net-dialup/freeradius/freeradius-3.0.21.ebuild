@@ -15,7 +15,7 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -67,11 +67,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.18-libressl.patch
-	"${FILESDIR}"/${P}-systemd-service.patch
-	# Fix rlm_python3 build
-	# Backport from rlm_python changes to rlm_python3
-	"${FILESDIR}"/${P}-py3-fixes.patch
+	"${FILESDIR}"/${PN}-3.0.20-systemd-service.patch
 )
 
 pkg_setup() {
@@ -228,6 +224,10 @@ src_install() {
 
 	pamd_mimic_system radiusd auth account password session
 
+	# fix #711756
+	fowners -R radius:radius /etc/raddb
+	fowners -R radius:radius /var/log/radius
+
 	dodoc CREDITS
 
 	rm "${ED}/usr/sbin/rc.radiusd" || die
@@ -242,10 +242,10 @@ src_install() {
 			-e 's:^WatchdogSec=.*::g' -e 's:^NotifyAccess=all.*::g' \
 			"${S}"/debian/freeradius.service
 	fi
-	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
 	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+
 }
 
 pkg_config() {

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="A complete toolset for C and C++ development"
 HOMEPAGE="https://www.jetbrains.com/clion"
