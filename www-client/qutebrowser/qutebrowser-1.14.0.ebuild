@@ -14,21 +14,21 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="scripts test"
 
 BDEPEND="
 	app-text/asciidoc"
 RDEPEND="
-	>=dev-python/attrs-19.3.0[${PYTHON_USEDEP}]
-	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
-	>=dev-python/cssutils-1.0.2[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.11.2[${PYTHON_USEDEP}]
-	>=dev-python/markupsafe-1.1.1[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.6.1[${PYTHON_USEDEP}]
-	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.14.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
-	>=dev-python/PyQtWebEngine-5.14.0[${PYTHON_USEDEP}]
+	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/cssutils[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/markupsafe[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.7.1[${PYTHON_USEDEP}]
+	dev-python/pypeg2[${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
+	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP},libyaml]
 "
 
@@ -48,14 +48,28 @@ python_install_all() {
 	doicon -s scalable icons/${PN}.svg
 
 	if use scripts; then
-		# Install only those userscripts that have an explicit license header
+		insinto /usr/share/qutebrowser/userscripts/
+		doins misc/userscripts/README.md
 		exeinto /usr/share/qutebrowser/userscripts/
-		doexe misc/userscripts/dmenu_qutebrowser
-		doexe misc/userscripts/openfeeds
-		doexe misc/userscripts/qute-keepass
-		doexe misc/userscripts/qute-pass
-		doexe misc/userscripts/rss
-		doexe misc/userscripts/tor_identity
+		doexe misc/userscripts/cast \
+		      misc/userscripts/dmenu_qutebrowser \
+		      misc/userscripts/format_json \
+		      misc/userscripts/getbib \
+		      misc/userscripts/open_download \
+		      misc/userscripts/openfeeds \
+		      misc/userscripts/password_fill \
+		      misc/userscripts/qute-bitwarden \
+		      misc/userscripts/qutedmenu \
+		      misc/userscripts/qute-keepass \
+		      misc/userscripts/qute-lastpass \
+		      misc/userscripts/qute-pass \
+		      misc/userscripts/readability \
+		      misc/userscripts/readability-js \
+		      misc/userscripts/ripbang \
+		      misc/userscripts/rss \
+		      misc/userscripts/taskadd \
+		      misc/userscripts/tor_identity \
+		      misc/userscripts/view_in_mpv
 	fi
 
 	distutils-r1_python_install_all
