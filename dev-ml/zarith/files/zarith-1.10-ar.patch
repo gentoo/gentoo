@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -22,7 +22,7 @@ host='auto'
+ gmp='auto'
+ perf='no'
+ 
+-ar='ar'
++ar="${AR}"
+ ocaml='ocaml'
+ ocamlc='ocamlc'
+ ocamlopt='ocamlopt'
