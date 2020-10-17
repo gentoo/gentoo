@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit dune
-
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
 SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,10 +15,12 @@ SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="gtk doc static debug threads +ocamlopt test"
-RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
+IUSE="debug gtk threads +ocamlopt test"
+RESTRICT="!ocamlopt? ( strip )"
+RESTRICT+=" !test? ( test )"
 
 # ocaml version so we are sure it has ocamlopt use flag
+BDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 DEPEND="gtk? ( dev-ml/lablgtk:2= )"
 RDEPEND="
 	${DEPEND}
@@ -35,10 +35,6 @@ src_compile() {
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
-	fi
-
-	if use static; then
-		myconf="$myconf STATIC=true"
 	fi
 
 	if use debug; then
@@ -69,10 +65,13 @@ src_install() {
 	for binname in unison unison-fsmonitor; do
 		newbin ${binname} ${binname}-${SLOT}
 	done
-	if use doc; then
-		DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
-		HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
-	fi
+
+	# No docs for release candidates
+	#if use doc; then
+	#	DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
+	#	HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
+	#fi
+
 	einstalldocs
 }
 
