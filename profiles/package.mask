@@ -523,12 +523,6 @@ net-libs/nDPI
 ~virtual/perl-Time-Piece-1.340.100
 ~virtual/perl-Unicode-Normalize-1.270.0
 
-# Stephan Hartmann <sultan@gentoo.org> (2020-09-06)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-87
-
 # Mart Raudsepp <leio@gentoo.org> (2020-06-06)
 # Meson port does not handle multilib yet and has issues
 # regarding runstatedir (not using /run).
