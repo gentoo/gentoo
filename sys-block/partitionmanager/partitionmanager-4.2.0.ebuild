@@ -33,6 +33,6 @@ DEPEND="
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=sys-libs/kpmcore-4.1.0:5=
+	>=sys-libs/kpmcore-4.2.0:5=
 "
 RDEPEND="${DEPEND}"
