@@ -1,0 +1,14 @@
+BDEPEND=app-arch/xz-utils >=sys-devel/bison-2.4 sys-devel/flex virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare
+DEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux ) >=sys-kernel/linux-headers-3.16
+DESCRIPTION=kernel routing and traffic control utilities
+EAPI=7
+HOMEPAGE=https://wiki.linuxfoundation.org/networking/iproute2
+IUSE=atm berkdb caps elf +iptables ipv6 minimal selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux )
+SLOT=0
+SRC_URI=https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.9.0.tar.xz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=7adf7be7fa9dce49e0af93fcc9a89792

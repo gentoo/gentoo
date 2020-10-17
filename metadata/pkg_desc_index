@@ -16913,7 +16913,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.32.0.200820: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.6 3.1.7: IPMI Management Utilities
-sys-apps/iproute2 5.4.0 5.7.0 5.8.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 5.4.0 5.7.0 5.8.0 5.9.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.6.0-r1 1.7.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
