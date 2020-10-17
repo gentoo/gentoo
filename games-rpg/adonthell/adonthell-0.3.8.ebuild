@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="Roleplaying game engine"
 HOMEPAGE="http://adonthell.nongnu.org/"
@@ -36,6 +36,15 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS NEWBIE NEWS README )
+
+PATCHES=(
+	"${FILESDIR}/${P}-ar.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 pkg_setup() {
 	python-single-r1_pkg_setup
