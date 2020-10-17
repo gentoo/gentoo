@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	gtk? ( dev-ml/lablgtk:=[gnomecanvas,ocamlopt?] )"
+	gtk? ( dev-ml/lablgtk:2=[gnomecanvas,ocamlopt?] )"
 DEPEND="${RDEPEND}
 	doc? ( dev-tex/hevea dev-ml/ocamlweb )"
 IUSE="doc examples gtk +ocamlopt"
