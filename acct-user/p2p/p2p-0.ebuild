@@ -5,6 +5,7 @@ EAPI=7
 
 inherit acct-user
 
+DESCRIPTION="User for mldonkey"
 ACCT_USER_ID=378
 ACCT_USER_GROUPS=( p2p )
 
