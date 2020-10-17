@@ -96,6 +96,7 @@ acct-group/kube-apiserver 0: System group: kube-apiserver
 acct-group/kube-controller-manager 0: System group: kube-controller-manager
 acct-group/kube-scheduler 0: System group: kube-scheduler
 acct-group/kvm 0: System group: kvm
+acct-group/ldap 0: System group: ldap
 acct-group/libvirt 0: System group: libvirt
 acct-group/lighttpd 0: System group: lighttpd
 acct-group/lldpd 0: System group: lldpd
@@ -142,7 +143,6 @@ acct-group/nzbget 0: Group for net-nntp/nzbget
 acct-group/oidentd 0: System group: oidentd
 acct-group/openct 0: System group: openct
 acct-group/opendkim 0: Group for OpenDKIM
-acct-group/openldap 0: System group: openldap
 acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
 acct-group/openvpn 0: System group: openvpn
@@ -334,6 +334,7 @@ acct-user/knot 0: User for knot DNS server
 acct-user/kube-apiserver 0: user for kube-apiserver
 acct-user/kube-controller-manager 0: user for kube-controller-manager
 acct-user/kube-scheduler 0: user for kube-scheduler
+acct-user/ldap 0: A user for ldap
 acct-user/lighttpd 0: A user for lighttpd
 acct-user/lldpd 0: User for net-misc/lldpd
 acct-user/logstash 0: Logstash program user
@@ -374,7 +375,6 @@ acct-user/ntp 0: user for ntp daemon
 acct-user/nzbget 0: User for net-nntp/nzbget
 acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
-acct-user/openldap 0: A user for openldap
 acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
 acct-user/openvpn 0: User for net-vpn/openvpn
