@@ -5830,7 +5830,7 @@ dev-ml/lablgtk-sourceview 3.1.1: OCaml bindings to GTK-3
 dev-ml/labltk 8.06.2 8.06.7 8.06.9: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/llvm-ocaml 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
-dev-ml/lwt 3.0.0 3.1.0 5.3.0: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 3.0.0 3.1.0 5.3.0-r1: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
 dev-ml/lwt_ssl 1.0.1 1.1.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml

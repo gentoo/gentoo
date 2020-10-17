@@ -1,4 +1,4 @@
-BDEPEND=>=dev-lang/ocaml-4.07.0 >=dev-ml/cppo-1.1.0 dev-ml/dune dev-lang/ocaml
+BDEPEND=>=dev-ml/cppo-1.6.6 dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
 DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Functions to read and write int16/32/64 from strings, bytes, and bigarrays
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0/1.1
 SRC_URI=https://github.com/OCamlPro/ocplib-endian/archive/1.1.tar.gz -> ocplib-endian-1.1.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=66536b9802c04b6b4bbe61d24a1989b9
+_md5_=c5214ea1930be7740bb2d478faba5d2a

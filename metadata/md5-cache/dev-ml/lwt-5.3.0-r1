@@ -1,6 +1,6 @@
-BDEPEND=dev-ml/dune dev-lang/ocaml
+BDEPEND=>=dev-ml/cppo-1.6.6 dev-ml/findlib dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/seq:= dev-ml/result:= dev-ml/mmap:= dev-ml/ocplib-endian:= >=dev-ml/ppxlib-0.18.0:= dev-ml/react:= dev-ml/dune-configurator:= dev-libs/libev dev-ml/cppo dev-ml/findlib >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=dev-ml/seq:= dev-ml/result:= dev-ml/mmap:= dev-ml/ocplib-endian:= >=dev-ml/ppxlib-0.18.0:= dev-ml/react:= dev-ml/dune-configurator:= dev-libs/libev >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Cooperative light-weight thread library for OCaml
 EAPI=7
 HOMEPAGE=http://ocsigen.org/lwt
@@ -11,4 +11,4 @@ RDEPEND=dev-ml/seq:= dev-ml/result:= dev-ml/mmap:= dev-ml/ocplib-endian:= >=dev-
 SLOT=0/5.3.0
 SRC_URI=https://github.com/ocsigen/lwt/archive/5.3.0.tar.gz -> lwt-5.3.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=a8ee20528e19e72cf566b18ac42cf949
+_md5_=9628772955b46392994392412dc2c49f
