@@ -13,7 +13,7 @@ S="${WORKDIR}/${P^}"
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ocamlopt test"
+IUSE="+ocamlopt"
 
 # Unbound module errors
 RESTRICT="test"
