@@ -142,6 +142,7 @@ acct-group/nzbget 0: Group for net-nntp/nzbget
 acct-group/oidentd 0: System group: oidentd
 acct-group/openct 0: System group: openct
 acct-group/opendkim 0: Group for OpenDKIM
+acct-group/openldap 0: System group: openldap
 acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
 acct-group/openvpn 0: System group: openvpn
@@ -1937,7 +1938,7 @@ app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.06 19.09 20.02 20.09 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
-app-emulation/firecracker-bin 0.22.0: Secure and fast microVMs for serverless computing (static build)
+app-emulation/firecracker-bin 0.22.0 0.22.1: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.0.20 2.5.18 2.5.20: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
@@ -11941,14 +11942,14 @@ gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.3.1 9999: Grab images from a Wayland compositor.
 gui-apps/gtkgreet 0.6-r1 9999: gtk based greeter for greetd
 gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
-gui-apps/lavalauncher 1.7.1 9999: simple launcher for wayland
+gui-apps/lavalauncher 1.7.1 2.0.0 9999: Simple launcher for wayland
 gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works on Sway.
 gui-apps/nm-tray 0.4.3-r1: A simple Qt-based NetworkManager front-end
 gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it to the standard output.
 gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
 gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.5 9999: Screen locker for Wayland
-gui-apps/tuigreet 0.1.1: TUI greeter for greetd login manager
+gui-apps/tuigreet 0.1.1 0.2.0: TUI greeter for greetd login manager
 gui-apps/waybar 0.9.3-r1 0.9.4 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors
 gui-apps/wcm 0.4.0-r1 0.5.0 9999: Wayfire Config Manager
 gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositors
@@ -14541,7 +14542,7 @@ net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.8.5 2.9.6 3.0.0: High-performance authoritative-only DNS server
+net-dns/knot 2.9.7 3.0.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35 1.36: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -18832,8 +18833,8 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.34.2 3.36.2: The Gnome Terminal
 x11-terms/guake 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.17.2-r1 0.17.3 0.17.4 0.18.1 0.18.2 0.18.3 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.17.2 0.17.3 0.17.4 0.18.1 0.18.2 0.18.3 9999: Terminfo for kitty, an OpenGL-based terminal emulator
+x11-terms/kitty 0.19.1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.19.1 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.24.0 1.24.1: The MATE Terminal
@@ -18846,7 +18847,7 @@ x11-terms/roxterm 3.9.3 3.9.4: A terminal emulator designed to integrate with th
 x11-terms/rxvt-unicode 9.22-r3 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
-x11-terms/terminator 1.92-r1 1.92-r2 2.0.1: Multiple GNOME terminals in one window
+x11-terms/terminator 1.92-r2 2.0.1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.8.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2: A terminal emulator for the Xfce desktop environment
