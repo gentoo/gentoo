@@ -17,7 +17,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/ocaml-unsafe-string.patch )
 
-RDEPEND=">=dev-lang/ocaml-3.12.1:=
+# OCaml 4.10 does not support -unsafe-string by default
+# bug #666149
+RDEPEND="
+	>=dev-lang/ocaml-3.12.1:=
+	<dev-lang/ocaml-4.10.0:=
 	>=dev-ml/ocaml-fileutils-0.4.0:=
 	>=dev-ml/camomile-0.8.3:=
 	sys-devel/gettext
