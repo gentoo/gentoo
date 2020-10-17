@@ -33,6 +33,10 @@ RDEPEND="${BDEPEND}
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-AC_INIT_argument_quoting.patch"
+)
+
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	if [[ ${CHOST} == *-darwin* ]] ; then

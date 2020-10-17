@@ -1,0 +1,573 @@
+From 8a4571772a5aadc7a005eb288f66ed52b5f52eef Mon Sep 17 00:00:00 2001
+From: Zack Weinberg <zackw@panix.com>
+Date: Wed, 14 Oct 2020 18:03:21 -0400
+Subject: [PATCH 1/1] improvements to AC_INIT argument quoting
+
+---
+ doc/autoconf.texi       |  33 ++++---
+ lib/autoconf/general.m4 | 149 +++++++++++++++-----------------
+ lib/autoconf/status.m4  |  29 ++++---
+ tests/base.at           | 184 +++++++++++++++++++++++++++++++++++++---
+ 4 files changed, 279 insertions(+), 116 deletions(-)
+
+diff --git a/doc/autoconf.texi b/doc/autoconf.texi
+index 9a52fbdb..a89f1469 100644
+--- a/doc/autoconf.texi
++++ b/doc/autoconf.texi
+@@ -1876,21 +1876,24 @@ distribution tar ball names (e.g., @samp{autoconf}).  It defaults to
+ other than alphanumerics and underscores are changed to @samp{-}.  If
+ provided, @var{url} should be the home page for the package.
+ 
+-All the arguments of @code{AC_INIT} must be static, i.e., there should not
+-be any shell computation, quotes, or newlines, but they can be computed
+-by M4.  This is because the package information strings are expanded at
+-M4 time into several contexts, and must give the same text at shell time
+-whether used in single-quoted strings, double-quoted strings, quoted
+-here-documents, or unquoted here-documents.  It is permissible to use
+-@code{m4_esyscmd} or @code{m4_esyscmd_s} for computing a version string
+-that changes with every commit to a version control system (in fact,
+-Autoconf does just that, for all builds of the development tree made
+-between releases).
++Leading and trailing whitespace is stripped from all the arguments to
++@code{AC_INIT}, and interior whitespace is collapsed to a single space.
++
++The arguments to @code{AC_INIT} may be computed by M4, when
++@command{autoconf} is run.  For instance, it is fine for the
++@var{version} argument to be an invocation of @code{m4_esyscmd} that
++runs a command that determines the package's version from information
++stored in the package's version control system.  However, they may not
++be computed by the shell, when @command{configure} is run; if they
++contain any construct that would cause computation by the shell,
++Autoconf will issue an error.  This restriction is because the arguments
++to AC_INIT are written into @file{configure} several times, in different
++places, only some of which are subject to shell variable and command
++substitution.
+ 
+ The @var{tarname} argument is used to construct filenames.
+-In addition to being static, it should not contain wildcard
+-characters, white space, or anything else that could be troublesome
+-as part of a file or directory name.
++It should not contain wildcard characters, white space, or anything else
++that could be troublesome as part of a file or directory name.
+ 
+ The following M4 macros (e.g., @code{AC_PACKAGE_NAME}), output variables
+ (e.g., @code{PACKAGE_NAME}), and preprocessor symbols (e.g.,
+@@ -1947,6 +1950,10 @@ of updating @samp{$@@} and @samp{$*}.  However, we suggest that you use
+ standard macros like @code{AC_ARG_ENABLE} instead of attempting to
+ implement your own option processing.  @xref{Site Configuration}.
+ 
++If you use the @code{AC_PACKAGE} M4 macros, beware that they may contain
++characters that are significant to M4.  In almost all cases, you should
++refer to them using @code{m4_defn}.  @xref{Programming in M4sugar}.
++
+ @node Versioning
+ @section Dealing with Autoconf versions
+ @cindex Autoconf version
+diff --git a/lib/autoconf/general.m4 b/lib/autoconf/general.m4
+index eaa1d91b..5955b672 100644
+--- a/lib/autoconf/general.m4
++++ b/lib/autoconf/general.m4
+@@ -230,56 +230,47 @@ m4_define([_AC_INIT_LITERAL],
+ 
+ # _AC_INIT_PACKAGE(PACKAGE-NAME, VERSION, BUG-REPORT, [TARNAME], [URL])
+ # ---------------------------------------------------------------------
++# Set the values of AC_PACKAGE_{NAME,VERSION,STRING,BUGREPORT,TARNAME,URL}
++# from the arguments.
+ m4_define([_AC_INIT_PACKAGE],
+-[m4_pushdef([_ac_init_NAME],     m4_normalize([$1]))
+-m4_pushdef([_ac_init_VERSION],   m4_normalize([$2]))
+-m4_pushdef([_ac_init_BUGREPORT], m4_normalize([$3]))
+-m4_pushdef([_ac_init_TARNAME],   m4_normalize([$4]))
+-m4_pushdef([_ac_init_URL],       m4_normalize([$5]))
+-# NAME, VERSION, BUGREPORT, and URL should all be safe for use in shell
+-# strings of all kinds.
+-_AC_INIT_LITERAL(m4_defn([_ac_init_NAME]))
+-_AC_INIT_LITERAL(m4_defn([_ac_init_VERSION]))
+-_AC_INIT_LITERAL(m4_defn([_ac_init_BUGREPORT]))
+-_AC_INIT_LITERAL(m4_defn([_ac_init_URL]))
++[_AC_INIT_PACKAGE_N(m4_normalize([$1]), m4_normalize([$2]), m4_normalize([$3]),
++                    m4_normalize([$4]), m4_normalize([$5]))])
++
++# _AC_INIT_PACKAGE_N(PACKAGE-NAME, VERSION, BUG-REPORT, [TARNAME], [URL])
++# -----------------------------------------------------------------------
++# Subroutine of _AC_INIT_PACKAGE.
++m4_define([_AC_INIT_PACKAGE_N],
++[# PACKAGE-NAME, VERSION, BUGREPORT, and URL should all be safe for use
++# in shell strings of all kinds.
++_AC_INIT_LITERAL([$1])
++_AC_INIT_LITERAL([$2])
++_AC_INIT_LITERAL([$3])
++_AC_INIT_LITERAL([$5])
+ # TARNAME is even more constrained: it should not contain any shell
+ # metacharacters or whitespace, because it is used to construct
+ # filenames.
+-AS_LITERAL_WORD_IF(m4_defn([_ac_init_TARNAME]), [],
++AS_LITERAL_WORD_IF([$4], [],
+   [m4_warn([syntax],
+-	   [AC_INIT: unsafe as a filename: "]m4_defn([_ac_init_TARNAME])["])])
++	   [AC_INIT: unsafe as a filename: "$4"])])
+ #
+-# These do not use m4_copy because we don't want to copy the pushdef stack.
+-m4_ifndef([AC_PACKAGE_NAME],
+-	  [m4_define([AC_PACKAGE_NAME],
+-		     m4_defn([_ac_init_NAME]))])
+-m4_ifndef([AC_PACKAGE_VERSION],
+-	  [m4_define([AC_PACKAGE_VERSION],
+-		     m4_defn([_ac_init_VERSION]))])
+-m4_ifndef([AC_PACKAGE_STRING],
+-	  [m4_define([AC_PACKAGE_STRING],
+-		     m4_defn([_ac_init_NAME])[ ]m4_defn([_ac_init_VERSION]))])
+-m4_ifndef([AC_PACKAGE_BUGREPORT],
+-	  [m4_define([AC_PACKAGE_BUGREPORT], _ac_init_BUGREPORT)])
+-m4_ifndef([AC_PACKAGE_TARNAME],
+-	  [m4_define([AC_PACKAGE_TARNAME],
+-		     m4_default(m4_defn([_ac_init_TARNAME]),
+-				[m4_bpatsubst(m4_tolower(
+-				 m4_bpatsubst(m4_defn([_ac_init_NAME]),
+-					      [GNU ])),
+-				 [[^_abcdefghijklmnopqrstuvwxyz0123456789]],
+-				 [-])]))])
+-m4_ifndef([AC_PACKAGE_URL],
+-	  [m4_define([AC_PACKAGE_URL],
+-		     m4_default(m4_defn([_ac_init_URL]),
+-				[m4_if(m4_index(m4_defn([_ac_init_NAME]),
+-						[GNU ]), [0],
+-    [[https://www.gnu.org/software/]m4_defn([AC_PACKAGE_TARNAME])[/]])]))])
+-m4_popdef([_ac_init_NAME])
+-m4_popdef([_ac_init_VERSION])
+-m4_popdef([_ac_init_BUGREPORT])
+-m4_popdef([_ac_init_TARNAME])
+-m4_popdef([_ac_init_URL])
++m4_define_default([AC_PACKAGE_NAME],      [$1])
++m4_define_default([AC_PACKAGE_VERSION],   [$2])
++# The m4_strip makes AC_PACKAGE_STRING be [], not [ ], when
++# both $1 and $2 are empty.
++m4_define_default([AC_PACKAGE_STRING],    m4_strip([$1 $2]))
++m4_define_default([AC_PACKAGE_BUGREPORT], [$3])
++#
++# N.B. m4_ifnblank strips one layer of quotation from whichever of its
++# second and third argument it evaluates to.
++m4_define_default([AC_PACKAGE_TARNAME],
++  m4_ifnblank([$4], [[$4]],
++    [m4_quote(m4_bpatsubst(m4_tolower(m4_bpatsubst([$1], [^GNU ], [])),
++      [[^_abcdefghijklmnopqrstuvwxyz0123456789]], [-]))]))
++m4_define_default([AC_PACKAGE_URL],
++  m4_ifnblank([$5], [[$5]],
++    [m4_if(m4_index([$1], [GNU ]), [0],
++      [[https://www.gnu.org/software/]m4_defn([AC_PACKAGE_TARNAME])[/]],
++      [])]))
+ ])
+ 
+ 
+@@ -363,13 +354,13 @@ m4_define([_AC_INIT_NOTICE],
+ [m4_divert_text([HEADER-COMMENT],
+ [@%:@ Guess values for system-dependent variables and create Makefiles.
+ @%:@ Generated by m4_PACKAGE_STRING[]dnl
+-m4_ifset([AC_PACKAGE_STRING], [ for AC_PACKAGE_STRING]).])
+-
++m4_ifset([AC_PACKAGE_STRING], [ for m4_defn([AC_PACKAGE_STRING]).
++])dnl
+ m4_ifset([AC_PACKAGE_BUGREPORT],
+ 	 [m4_divert_text([HEADER-COMMENT],
+ 			 [@%:@
+-@%:@ Report bugs to <AC_PACKAGE_BUGREPORT>.])])
+-])
++@%:@ Report bugs to: m4_defn([AC_PACKAGE_BUGREPORT])])])
++])])
+ 
+ 
+ # _AC_INIT_COPYRIGHT
+@@ -436,18 +427,12 @@ AC_SUBST([SHELL])dnl
+ AC_SUBST([PATH_SEPARATOR])dnl
+ 
+ # Identity of this package.
+-AC_SUBST([PACKAGE_NAME],
+-	 [m4_ifdef([AC_PACKAGE_NAME],      ['AC_PACKAGE_NAME'])])dnl
+-AC_SUBST([PACKAGE_TARNAME],
+-	 [m4_ifdef([AC_PACKAGE_TARNAME],   ['AC_PACKAGE_TARNAME'])])dnl
+-AC_SUBST([PACKAGE_VERSION],
+-	 [m4_ifdef([AC_PACKAGE_VERSION],   ['AC_PACKAGE_VERSION'])])dnl
+-AC_SUBST([PACKAGE_STRING],
+-	 [m4_ifdef([AC_PACKAGE_STRING],    ['AC_PACKAGE_STRING'])])dnl
+-AC_SUBST([PACKAGE_BUGREPORT],
+-	 [m4_ifdef([AC_PACKAGE_BUGREPORT], ['AC_PACKAGE_BUGREPORT'])])dnl
+-AC_SUBST([PACKAGE_URL],
+-	 [m4_ifdef([AC_PACKAGE_URL],       ['AC_PACKAGE_URL'])])dnl
++AC_SUBST([PACKAGE_NAME],      ['m4_defn([AC_PACKAGE_NAME])'])dnl
++AC_SUBST([PACKAGE_TARNAME],   ['m4_defn([AC_PACKAGE_TARNAME])'])dnl
++AC_SUBST([PACKAGE_VERSION],   ['m4_defn([AC_PACKAGE_VERSION])'])dnl
++AC_SUBST([PACKAGE_STRING],    ['m4_defn([AC_PACKAGE_STRING])'])dnl
++AC_SUBST([PACKAGE_BUGREPORT], ['m4_defn([AC_PACKAGE_BUGREPORT])'])dnl
++AC_SUBST([PACKAGE_URL],       ['m4_defn([AC_PACKAGE_URL])'])dnl
+ 
+ m4_divert_pop([DEFAULTS])dnl
+ m4_wrap_lifo([m4_divert_text([DEFAULTS],
+@@ -1048,9 +1033,9 @@ if test "$ac_init_help" = "long"; then
+   # Omit some internal or obsolete options to make the list less imposing.
+   # This message is too long to be a string in the A/UX 3.1 sh.
+   cat <<_ACEOF
+-\`configure' configures m4_ifset([AC_PACKAGE_STRING],
+-			[AC_PACKAGE_STRING],
+-			[this package]) to adapt to many kinds of systems.
++\`configure' configures m4_default_nblank(m4_defn([AC_PACKAGE_STRING]),
++					  [this package])dnl
++ to adapt to many kinds of systems.
+ 
+ Usage: $[0] [[OPTION]]... [[VAR=VALUE]]...
+ 
+@@ -1099,9 +1084,8 @@ Fine tuning of the installation directories:
+   --infodir=DIR           info documentation [DATAROOTDIR/info]
+   --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+   --mandir=DIR            man documentation [DATAROOTDIR/man]
+-]AS_HELP_STRING([--docdir=DIR],
+-  [documentation root ]@<:@DATAROOTDIR/doc/m4_ifset([AC_PACKAGE_TARNAME],
+-    [AC_PACKAGE_TARNAME], [PACKAGE])@:>@)[
++  --docdir=DIR            documentation root @<:@DATAROOTDIR/doc/]dnl
++m4_default_quoted(m4_defn([AC_PACKAGE_TARNAME]), [PACKAGE])[@:>@
+   --htmldir=DIR           html documentation [DOCDIR]
+   --dvidir=DIR            dvi documentation [DOCDIR]
+   --pdfdir=DIR            pdf documentation [DOCDIR]
+@@ -1139,18 +1123,22 @@ fi
+ if test -n "$ac_init_help"; then
+ m4_ifset([AC_PACKAGE_STRING],
+ [  case $ac_init_help in
+-     short | recursive ) echo "Configuration of AC_PACKAGE_STRING:";;
++     short | recursive )
++       AS_ECHO(["Configuration of m4_defn([AC_PACKAGE_STRING]):"]);;
+    esac])
+   cat <<\_ACEOF
+ m4_divert_pop([HELP_ENABLE])dnl
+ m4_divert_push([HELP_END])dnl
+ 
+-Report bugs to m4_ifset([AC_PACKAGE_BUGREPORT], [<AC_PACKAGE_BUGREPORT>],
+-  [the package provider]).dnl
+-m4_ifdef([AC_PACKAGE_NAME], [m4_ifset([AC_PACKAGE_URL], [
+-AC_PACKAGE_NAME home page: <AC_PACKAGE_URL>.])dnl
+-m4_if(m4_index(m4_defn([AC_PACKAGE_NAME]), [GNU ]), [0], [
+-General help using GNU software: <https://www.gnu.org/gethelp/>.])])
++m4_ifset([AC_PACKAGE_BUGREPORT],
++[Report bugs to: m4_defn([AC_PACKAGE_BUGREPORT])
++])dnl
++m4_ifset([AC_PACKAGE_NAME], [m4_ifset([AC_PACKAGE_URL],
++[m4_defn([AC_PACKAGE_NAME]) home page: m4_defn([AC_PACKAGE_URL])
++])])dnl
++m4_if(m4_index(m4_defn([AC_PACKAGE_NAME]), [GNU ]), [0],
++[General help using GNU software: <https://www.gnu.org/gethelp/>.
++])dnl
+ _ACEOF
+ ac_status=$?
+ fi
+@@ -1189,9 +1177,9 @@ m4_define([_AC_INIT_VERSION],
+ [m4_divert_text([VERSION_BEGIN],
+ [if $ac_init_version; then
+   cat <<\_ACEOF
+-m4_ifset([AC_PACKAGE_NAME], [AC_PACKAGE_NAME ])configure[]dnl
+-m4_ifset([AC_PACKAGE_VERSION], [ AC_PACKAGE_VERSION])
+-generated by m4_PACKAGE_STRING])
++m4_ifset([AC_PACKAGE_NAME], [m4_defn([AC_PACKAGE_NAME]) ])configure[]dnl
++m4_ifset([AC_PACKAGE_VERSION], [ m4_defn([AC_PACKAGE_VERSION])])
++generated by m4_defn([m4_PACKAGE_STRING])])
+ m4_divert_text([VERSION_END],
+ [_ACEOF
+   exit
+@@ -1230,9 +1218,10 @@ cat >config.log <<_ACEOF
+ This file contains any messages produced by compilers while
+ running configure, to aid debugging if configure makes a mistake.
+ 
+-It was created by m4_ifset([AC_PACKAGE_NAME], [AC_PACKAGE_NAME ])dnl
+-$as_me[]m4_ifset([AC_PACKAGE_VERSION], [ AC_PACKAGE_VERSION]), which was
+-generated by m4_PACKAGE_STRING.  Invocation command line was
++It was created by m4_ifset([AC_PACKAGE_NAME], [m4_defn([AC_PACKAGE_NAME]) ])dnl
++$as_me[]m4_ifset([AC_PACKAGE_VERSION],
++                 [ m4_defn([AC_PACKAGE_VERSION])]), which was
++generated by m4_defn([m4_PACKAGE_STRING]).  Invocation command line was
+ 
+   $ $[0]$ac_configure_args_raw
+ 
+@@ -1446,7 +1435,7 @@ m4_define([_AS_FORCE_REEXEC_WITH_CONFIG_SHELL], [yes])
+ AS_INIT[]dnl
+ AS_PREPARE[]dnl
+ m4_divert_push([KILL])
+-m4_ifval([$2], [_AC_INIT_PACKAGE($@)])
++_AC_INIT_PACKAGE($@)
+ _AC_INIT_DEFAULTS
+ _AC_INIT_PARSE_ARGS
+ _AC_INIT_DIRCHECK
+diff --git a/lib/autoconf/status.m4 b/lib/autoconf/status.m4
+index 1389f328..aa8324f0 100644
+--- a/lib/autoconf/status.m4
++++ b/lib/autoconf/status.m4
+@@ -1343,9 +1343,11 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
+ # report actual input values of CONFIG_FILES etc. instead of their
+ # values after options handling.
+ ac_log="
+-This file was extended by m4_ifset([AC_PACKAGE_NAME], [AC_PACKAGE_NAME ])dnl
+-$as_me[]m4_ifset([AC_PACKAGE_VERSION], [ AC_PACKAGE_VERSION]), which was
+-generated by m4_PACKAGE_STRING.  Invocation command line was
++This file was extended by m4_ifset([AC_PACKAGE_NAME],
++                                   [m4_defn([AC_PACKAGE_NAME]) ])dnl
++$as_me[]m4_ifset([AC_PACKAGE_VERSION],
++                 [ m4_defn([AC_PACKAGE_VERSION])]), which was
++generated by m4_defn([m4_PACKAGE_STRING]).  Invocation command line was
+ 
+   CONFIG_FILES    = $CONFIG_FILES
+   CONFIG_HEADERS  = $CONFIG_HEADERS
+@@ -1431,12 +1433,15 @@ m4_ifdef([_AC_SEEN_CONFIG(COMMANDS)],
+ $config_commands
+ 
+ ])dnl
+-Report bugs to m4_ifset([AC_PACKAGE_BUGREPORT], [<AC_PACKAGE_BUGREPORT>],
+-  [the package provider]).dnl
+-m4_ifdef([AC_PACKAGE_NAME], [m4_ifset([AC_PACKAGE_URL], [
+-AC_PACKAGE_NAME home page: <AC_PACKAGE_URL>.])dnl
+-m4_if(m4_index(m4_defn([AC_PACKAGE_NAME]), [GNU ]), [0], [
+-General help using GNU software: <https://www.gnu.org/gethelp/>.])])"
++m4_ifset([AC_PACKAGE_BUGREPORT],
++[Report bugs to: m4_defn([AC_PACKAGE_BUGREPORT])
++]))dnl
++m4_ifset([AC_PACKAGE_NAME], [m4_ifset([AC_PACKAGE_URL],
++[m4_defn([AC_PACKAGE_NAME]) home page: m4_defn([AC_PACKAGE_URL])
++])])dnl
++m4_if(m4_index(m4_defn([AC_PACKAGE_NAME]), [GNU ]), [0],
++[General help using GNU software: <https://www.gnu.org/gethelp/>.
++])"
+ 
+ _ACEOF
+ ac_cs_config=`AS_ECHO(["$ac_configure_args"]) | sed "$ac_safe_unquote"`
+@@ -1444,9 +1449,9 @@ ac_cs_config_escaped=`AS_ECHO(["$ac_cs_config"]) | sed "s/^ //; s/'/'\\\\\\\\''/
+ cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
+ ac_cs_config='$ac_cs_config_escaped'
+ ac_cs_version="\\
+-m4_ifset([AC_PACKAGE_NAME], [AC_PACKAGE_NAME ])config.status[]dnl
+-m4_ifset([AC_PACKAGE_VERSION], [ AC_PACKAGE_VERSION])
+-configured by $[0], generated by m4_PACKAGE_STRING,
++m4_ifset([AC_PACKAGE_NAME], [m4_defn([AC_PACKAGE_NAME]) ])config.status[]dnl
++m4_ifset([AC_PACKAGE_VERSION], [ m4_defn([AC_PACKAGE_VERSION])])
++configured by $[0], generated by m4_defn([m4_PACKAGE_STRING]),
+   with options \\"\$ac_cs_config\\"
+ 
+ Copyright (C) m4_PACKAGE_YEAR Free Software Foundation, Inc.
+diff --git a/tests/base.at b/tests/base.at
+index 6a1d9742..bc8e1faa 100644
+--- a/tests/base.at
++++ b/tests/base.at
+@@ -238,36 +238,124 @@ AT_CLEANUP
+ 
+ AT_SETUP([AC_INIT with unusual version strings])
+ 
++if echo 'ab*c' | grep -F 'ab*c' >/dev/null 2>&1; then
++  FGREP="grep -F"
++else
++  FGREP=fgrep
++fi
++
++# In both of the arguments that might contain URLs, make sure we test
++# all of the unusual ASCII characters that commonly appear in URLs.
++# The RFC 3986 "unreserved" characters are ASCII letters and digits, plus
++#    - . _ ~
++# The RFC 3986 "gen-delims" and "sub-delims" are
++#    / : ? # [ ] @ ! $ & ' ( ) * + , ; =
++# The URL escape character is
++#    %
++# Characters that are still significant for Bourne shell within a
++# single-quoted string, double-quoted string, quoted here-doc, or
++# unquoted here-doc are explicitly not allowed:
++#    ' $
++# Also, we don't test unbalanced parentheses or brackets here.
++
+ AT_DATA([configure.ac],
+-[[AC_INIT([GNU String++ with  spaces (foo)],
++[[AC_INIT([GNU String++ with  spaces
++           (foo)],
+ 	  [2.48++  (2010-07-03)],
+-          [[https://example.com/?a=b&c=d#e]],
++          [https://example/~bug/cdfijknoqrvw/-._:@!()[]*+,;/?y=z#1234567890
++],
+           [string++],
+-          [[https://example.com/?f=g&h=i%2fj#42]])
++          [HTTPS://EXAMPLE/~PKG/BCDFIJNOQRUVW/-._:@!()[]*+,;/?y=z#1234567890
++])
+ AC_OUTPUT
+ ]])
+ 
+-if echo 'ab*c' | grep -F 'ab*c' >/dev/null 2>&1; then
+-  FGREP="grep -F"
+-else
+-  FGREP=fgrep
+-fi
++AT_CHECK_AUTOCONF([-Werror])
++AT_CHECK_CONFIGURE([-q])
++
++AT_CHECK_CONFIGURE([--help], [], [stdout])
++AT_CHECK([[$FGREP \
++  'https://example/~bug/cdfijknoqrvw/-._:@!()[]*+,;/?y=z#1234567890' \
++  stdout]], [], [ignore])
++AT_CHECK([[$FGREP \
++  'HTTPS://EXAMPLE/~PKG/BCDFIJNOQRUVW/-._:@!()[]*+,;/?y=z#1234567890' \
++  stdout]], [], [ignore])
++
++AT_CHECK_CONFIGURE([--version], [], [stdout])
++AT_CHECK([$FGREP 'GNU String++ with spaces (foo)' stdout], [], [ignore])
++AT_CHECK([$FGREP '2.48++ (2010-07-03)' stdout], [], [ignore])
++
++AT_CHECK([./config.status --help], [], [stdout])
++AT_CHECK([[$FGREP \
++  'https://example/~bug/cdfijknoqrvw/-._:@!()[]*+,;/?y=z#1234567890' \
++  stdout]], [], [ignore])
++AT_CHECK([[$FGREP \
++  'HTTPS://EXAMPLE/~PKG/BCDFIJNOQRUVW/-._:@!()[]*+,;/?y=z#1234567890' \
++  stdout]], [], [ignore])
++
++AT_CHECK([./config.status --version], [], [stdout])
++AT_CHECK([$FGREP 'GNU String++ with spaces (foo)' stdout], [], [ignore])
++AT_CHECK([$FGREP '2.48++ (2010-07-03)' stdout], [], [ignore])
++
++# Repeat the above test using all the unusual characters that might appear
++# in a list of email addresses in both BUG-REPORT and URL.  (URL isn't
++# supposed to contain email addresses, but there's no good reason to
++# restrict its syntax.)
++# The RFC 5822 "atext" characters are ASCII letters and digits, plus
++#    ! # $ % & ' * + - / = ? ^ _ ` { | } ~
++# The RFC 5822 "special" characters, all of which might appear somewhere
++# in an address list, are
++#    ( ) < > [ ] : ; @ \ , . "
++# As above, characters that are significant for Bourne shell within
++# strings and heredocs are explicitly not allowed:
++#    ' " ` \ $
++# Whitespace is allowed but collapsed (just like AC_INIT does itself).
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String++ with  spaces
++           (foo)],
++	  [2.48++  (2010-07-03)],
++          [bugs: fred <A=B?C^D_E@F>,
++                 G!H!I#J@K.L (wilma),
++                 M%N&O@[156.247.38.49],
++                 P*Q+R-S/T@U,
++                 {jon|chyp~}@kqtvxz.VWXYZ;],
++          [string++],
++          [contact: jem <A=B?C^D_E@bd>,
++                    F!G!H#I@fv.J (lugh),
++                    K%L&M@[156.247.38.49],
++                    N*O+P-Q/R@STU,
++                    {qik|~prys}@wxz.VWXYZ;])
++AC_OUTPUT
++]])
+ 
+ AT_CHECK_AUTOCONF([-Werror])
+ AT_CHECK_CONFIGURE([-q])
++
+ AT_CHECK_CONFIGURE([--help], [], [stdout])
+-AT_CHECK([[$FGREP 'com/?a=b&c=d#e' stdout]], [], [ignore])
+-AT_CHECK([[$FGREP 'com/?f=g&h=i%2fj#42' stdout]], [], [ignore])
++AT_CHECK([[$FGREP \
++  'bugs: fred <A=B?C^D_E@F>, G!H!I#J@K.L (wilma), M%N&O@[156.247.38.49], P*Q+R-S/T@U, {jon|chyp~}@kqtvxz.VWXYZ;' \
++  stdout]], [], [ignore])
++AT_CHECK([[$FGREP \
++  'contact: jem <A=B?C^D_E@bd>, F!G!H#I@fv.J (lugh), K%L&M@[156.247.38.49], N*O+P-Q/R@STU, {qik|~prys}@wxz.VWXYZ;' \
++  stdout]], [], [ignore])
++
+ AT_CHECK_CONFIGURE([--version], [], [stdout])
+ AT_CHECK([$FGREP 'GNU String++ with spaces (foo)' stdout], [], [ignore])
+ AT_CHECK([$FGREP '2.48++ (2010-07-03)' stdout], [], [ignore])
+ 
+ AT_CHECK([./config.status --help], [], [stdout])
+-AT_CHECK([[$FGREP 'com/?a=b&c=d#e' stdout]], [], [ignore])
++AT_CHECK([[$FGREP \
++  'bugs: fred <A=B?C^D_E@F>, G!H!I#J@K.L (wilma), M%N&O@[156.247.38.49], P*Q+R-S/T@U, {jon|chyp~}@kqtvxz.VWXYZ;' \
++  stdout]], [], [ignore])
++AT_CHECK([[$FGREP \
++  'contact: jem <A=B?C^D_E@bd>, F!G!H#I@fv.J (lugh), K%L&M@[156.247.38.49], N*O+P-Q/R@STU, {qik|~prys}@wxz.VWXYZ;' \
++  stdout]], [], [ignore])
++
+ AT_CHECK([./config.status --version], [], [stdout])
+ AT_CHECK([$FGREP 'GNU String++ with spaces (foo)' stdout], [], [ignore])
+ AT_CHECK([$FGREP '2.48++ (2010-07-03)' stdout], [], [ignore])
+ 
++# Check for invalid characters in each argument.
+ AT_DATA([configure.ac],
+ [[AC_INIT([GNU "String++"],
+ 	  [2.48], [https://example.com/], [string++])
+@@ -347,6 +435,80 @@ AC_OUTPUT
+ AT_CHECK_AUTOCONF([-Werror], [1], [ignore], [stderr])
+ AT_CHECK([grep 'AC_INIT: unsafe as a filename: ' stderr], [], [ignore])
+ 
++# Commas and unbalanced close parentheses are especially troublesome for M4.
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU, String], [2.48], [bugs@gstring.example],
++          [string], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String)], [2.48], [bugs@gstring.example],
++          [string], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2,48], [bugs@gstring.example],
++          [string], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48)], [bugs@gstring.example],
++          [string], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48], [bugs@gstring.example,
++                                 gstring-bugs@example.com],
++          [string], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48], [bugs)@gstring.example],
++          [string], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48], [bugs@gstring.example],
++          [string,], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48], [bugs@gstring.example],
++          [string)], [https://gstring.example/])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF([], [0], [ignore], [stderr])
++AT_CHECK([grep 'AC_INIT: unsafe as a filename: ' stderr], [], [ignore])
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48], [bugs@gstring.example],
++          [string], [https://gstring.example/docs,html])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
++
++
++AT_DATA([configure.ac],
++[[AC_INIT([GNU String], [2.48], [bugs@gstring.example],
++          [string], [https://gstring.example/weird)/path])
++AC_OUTPUT
++]])
++AT_CHECK_AUTOCONF
+ 
+ AT_CLEANUP
+ 
+-- 
+2.26.2
+
