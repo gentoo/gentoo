@@ -35,10 +35,10 @@ src_prepare() {
 		-e 's|make|$(MAKE)|g' \
 		Makefile || die
 	sed -i \
-		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0)|g' \
+		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0 libunwind)|g' \
 		c-lib/Makefile || die
 	sed -i \
-		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0)|g' \
+		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0 libunwind)|g' \
 		c-lib/Makefile.variants || die
 
 	tc-export CC PKG_CONFIG
