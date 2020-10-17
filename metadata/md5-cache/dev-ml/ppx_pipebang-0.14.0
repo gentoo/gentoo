@@ -5,10 +5,10 @@ DESCRIPTION=A ppx rewriter that inlines reverse application operators |> and |!
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_pipebang
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_pipebang/archive/v0.14.0.tar.gz -> ppx_pipebang-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=41e9076417db71f556426dab1322b3c8
+_md5_=972c3ca142df20ecde5d3c51ff2f9df2

@@ -5,10 +5,10 @@ DESCRIPTION=Base set of ppx rewriters
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_base
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/ppx_cold-0.14.0:= >=dev-ml/ppx_compare-0.14.0:= >=dev-ml/ppx_enumerate-0.14.0:= >=dev-ml/ppx_hash-0.14.0:= >=dev-ml/ppx_js_style-0.14.0:= >=dev-ml/ppx_sexp_conv-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_base/archive/v0.14.0.tar.gz -> ppx_base-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=c734383edf66d1ed64cbcd9619ade7f3
+_md5_=7feef78c1fa3d6ce72021dd328c78ab7

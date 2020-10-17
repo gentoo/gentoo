@@ -5,10 +5,10 @@ DESCRIPTION=Generate a list containing all values of a finite type
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_enumerate
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_enumerate/archive/v0.14.0.tar.gz -> ppx_enumerate-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=3394e3386d68f49b9669cd28c5484105
+_md5_=87bb22ed7d7cecfaa91491ee028c526a

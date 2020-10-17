@@ -5,10 +5,10 @@ DESCRIPTION=PPX rewriter that generates hash functions from type expressions and
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_hash
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_compare-0.14.0:= >=dev-ml/ppx_sexp_conv-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_hash/archive/v0.14.0.tar.gz -> ppx_hash-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=e6e21ca31380809b429ab76b3d8391b5
+_md5_=51fd2c9ef3b8b8bad97261487fe384fc
