@@ -5,13 +5,13 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="network-uri">Get Network.URI from the network-uri package</flag>
+	</use>
 	<longdescription>
 		This is the Haskell S3 library.  It provides an
-		interface to Amazon's Simple Storage Service (S3), allowing Haskell
+		interface to Amazon&#39;s Simple Storage Service (S3), allowing Haskell
 		developers to reliably store and retrieve arbitrary amounts of
 		data from anywhere on the Internet.
 	</longdescription>
-	<use>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-	</use>
 </pkgmetadata>
