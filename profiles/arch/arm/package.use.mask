@@ -225,12 +225,6 @@ media-sound/rhythmbox upnp-av
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
 
-# David Seifert <soap@gentoo.org> (2016-07-31)
-# media-gfx/graphicsmagick is not keyworded on arm, users will need
-# to enable imagemagick flag and disable graphicsmagick use flag
-# to enable conversion facilities
-media-gfx/zbar graphicsmagick
-
 # Amy Winston <amynka@gentoo.org> (2016-06-12)
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit
