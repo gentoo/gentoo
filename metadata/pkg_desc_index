@@ -8510,7 +8510,7 @@ dev-python/netaddr 0.7.19 0.8.0: Network address representation and manipulation
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
 dev-python/networkx 2.4-r1 2.5: Python tools to manipulate graphs and complex networks
-dev-python/neutron-lib 2.3.0: Neutron shared routines and utilities.
+dev-python/neutron-lib 2.3.0 2.6.1: Neutron shared routines and utilities.
 dev-python/nltk 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
@@ -8557,10 +8557,10 @@ dev-python/os-ken 0.3.1 1.2.0: OpenStack Cinder brick library for managing local
 dev-python/os-resource-classes 0.5.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 1.0.0 2.0.0: A testr wrapper to provide functionality for OpenStack projects
-dev-python/os-traits 2.3.0: os-traits is a library containing standardized trait strings.
-dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-traits 2.3.0 2.4.0: os-traits is a library containing standardized trait strings.
+dev-python/os-vif 1.15.2 2.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
-dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
+dev-python/os-xenapi 0.3.4 0.3.4-r1: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.0.2 4.3.0: library for running multi-thread, multi-process applications
@@ -8580,13 +8580,13 @@ dev-python/oslo-service 2.1.1 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.0.1 1.1.1: Oslo i18n library
 dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
-dev-python/oslo-versionedobjects 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
+dev-python/oslo-versionedobjects 2.0.2 2.3.0: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1 3.7.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1 4.4.1: Oslo test framework
 dev-python/osprofiler 2.6.0 3.4.0: OpenStack Profiler Library
 dev-python/osrf_pycommon 0.1.10-r1: Commonly needed Python modules used by Python software developed at OSRF
 dev-python/ovs 2.13.0: OVS bindings for python.
-dev-python/ovsdbapp 0.17.2 1.1.0: A library for creating OVSDB applications
+dev-python/ovsdbapp 0.17.2 1.1.0 1.5.0: A library for creating OVSDB applications
 dev-python/owslib 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 20.4-r1: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
@@ -8887,7 +8887,7 @@ dev-python/python-ctags 1.5.0: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.1.2 2.2.4: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.8.1-r2: Extensions to the standard Python datetime module
 dev-python/python-debian 0.1.36 0.1.37: Python modules to work with Debian-related data formats
-dev-python/python-designateclient 4.0.0: Python bindings to the Designate API.
+dev-python/python-designateclient 4.0.0 4.1.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-docs 2.7.18 3.6.11 3.6.12 3.7.8 3.7.9 3.8.5: HTML documentation for Python
@@ -9213,7 +9213,7 @@ dev-python/tld 0.12.2: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/toml 0.10.1-r1: Python library for handling TOML files
 dev-python/toolz 0.10.0 0.11.0 0.11.1: List processing tools and functional utilities
-dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
+dev-python/tooz 1.60.1 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.19.0 3.20.0-r1 3.20.1: virtualenv-based automation of test activities
 dev-python/tqdm 4.48.2 4.49.0 4.50.1 4.50.2 9999: Add a progress meter to your loops in a second
@@ -9337,6 +9337,7 @@ dev-python/zope-schema 6.0.0: Zope schema Architecture
 dev-python/zope-testing 4.7-r2: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
 dev-python/zstandard 0.8.1-r1 0.12.0-r1 0.14.0-r1: Zstandard Bindings for Python
+dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
 dev-qt/assistant 5.15.1: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 5.15.1: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
@@ -17249,7 +17250,7 @@ sys-cluster/ceph 12.2.12-r3 14.2.11 14.2.11-r1 15.2.4-r3 15.2.5-r1: Ceph distrib
 sys-cluster/charliecloud 0.18 0.19 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 16.1.0 16.2.0 2020.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 16.1.0 16.2.0 17.0.0 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
@@ -17291,7 +17292,7 @@ sys-cluster/mpich 3.0.4 3.3: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 16.1.0 16.2.0 2020.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 16.1.0 16.2.0 17.0.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 0.12.3 0.12.4 0.12.5: A simple and flexible workload orchestrator
 sys-cluster/nova 21.1.0 2020.1.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
