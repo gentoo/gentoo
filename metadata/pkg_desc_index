@@ -10729,6 +10729,7 @@ dev-util/envman 1.2.0 1.2.1 2.1.0 2.1.1: Environment variable manager for Bitris
 dev-util/eric 18.03 19.11-r1: A full featured Python IDE using PyQt and QScintilla
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
+dev-util/flatpak-builder 1.0.11: Tool to build flatpaks from source
 dev-util/flawfinder 2.0.11: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the make alternative Jam
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77

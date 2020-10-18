@@ -2877,6 +2877,7 @@ dev-util/diffoscope:zip - Use app-arch/unzip
 dev-util/edb-debugger:jumbo-build - Experimental jumbo (also known as unity) build capability
 dev-util/edi:clang - Provide integration with sys-devel/clang for autocompletion and inline errors
 dev-util/emilpro:system-binutils - Use the gentoo binutils instead of building against an unpatched vanilla version
+dev-util/flatpak-builder:yaml - Use libyaml for yaml support
 dev-util/geany:gtk3 - Use GTK+3 instead of GTK+2
 dev-util/geany:vte - Enable Terminal support (x11-libs/vte)
 dev-util/geany-plugins:ctags - Enable ctags plugin
