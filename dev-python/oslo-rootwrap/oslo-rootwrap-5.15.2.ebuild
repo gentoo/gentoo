@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
@@ -17,10 +19,8 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/pbr-2.1.0"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}
+DEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
+	!~dev-python/pbr-2.1.0
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
