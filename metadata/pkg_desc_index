@@ -17139,7 +17139,7 @@ sys-auth/rtkit 0.12-r1 0.13-r1: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/solo-python 0.0.26: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
-sys-auth/sssd 2.2.0-r1 2.2.2 2.2.3 2.3.1-r2: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 2.2.0-r1 2.2.2 2.2.3 2.3.1-r2 2.4.0: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
