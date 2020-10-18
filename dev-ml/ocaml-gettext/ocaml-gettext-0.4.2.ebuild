@@ -17,7 +17,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	dev-ml/cppo
+	>=dev-ml/cppo-1.6.6
 	dev-ml/dune-configurator
 "
 RDEPEND="
