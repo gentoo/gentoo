@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs eutils
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Automatic differentiation system for C/C++"
 HOMEPAGE="https://projects.coin-or.org/ADOL-C/"
@@ -11,8 +11,6 @@ HOMEPAGE="https://projects.coin-or.org/ADOL-C/"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coin-or/ADOL-C"
-	SRC_URI=""
-	KEYWORDS="~ppc"
 else
 	SRC_URI="https://github.com/coin-or/ADOL-C/archive/releases/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
@@ -33,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-no-colpack.patch
 	"${FILESDIR}"/${PN}-2.5.0-pkgconfig-no-ldflags.patch
 	"${FILESDIR}"/${PN}-2.6.2-dash.patch
+	"${FILESDIR}"/${P}-swig-python-configure.patch
 )
 
 src_prepare() {
@@ -41,18 +40,19 @@ src_prepare() {
 }
 
 src_configure() {
+	# Disabling Python for now because swig build
+	# needs work. Revisit with >=2.7.3.
+	# https://bugs.gentoo.org/730750
+	# https://github.com/coin-or/ADOL-C/issues/20
 	econf \
 		--enable-advanced-branching \
 		--enable-atrig-erf \
+		--disable-python \
 		$(use_enable mpi ampi) \
 		$(use_enable sparse) \
 		$(use_enable static-libs static) \
 		$(use_with boost) \
 		$(use_with sparse colpack "${EPREFIX}"/usr)
-}
-
-src_test() {
-	emake test
 }
 
 src_install() {
