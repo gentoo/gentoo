@@ -4,7 +4,7 @@ EAPI=7
 HOMEPAGE=https://airdcpp-web.github.io/
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND==net-p2p/airdcpp-webclient-2.6*
+RDEPEND==net-p2p/airdcpp-webclient-2.9*
 SLOT=0
-SRC_URI=https://registry.npmjs.org/airdcpp-webui/-/airdcpp-webui-2.6.1.tgz
-_md5_=fd200bd5eba867ffc7b6272eeb7487e0
+SRC_URI=https://registry.npmjs.org/airdcpp-webui/-/airdcpp-webui-2.9.0.tgz
+_md5_=6c9494df11417428198de308ea279885
