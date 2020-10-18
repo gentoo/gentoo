@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc gtk kde introspection policykit seccomp systemd"
+RESTRICT+=" test"
 
 RDEPEND="
 	acct-group/flatpak
@@ -73,6 +74,12 @@ pkg_setup() {
 	local CONFIG_CHECK="~USER_NS"
 	linux-info_pkg_setup
 	python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+	# This line fails because locales are in /usr/lib/locale/locale-archive.
+	sed -i 's:^cp -r /usr/lib/locale/C.*:#\0:' tests/make-test-runtime.sh || die
 }
 
 src_configure() {
