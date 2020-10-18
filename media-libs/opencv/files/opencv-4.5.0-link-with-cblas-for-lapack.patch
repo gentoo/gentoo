@@ -1,0 +1,18 @@
+diff --git a/cmake/OpenCVFindLAPACK.cmake b/cmake/OpenCVFindLAPACK.cmake
+index 342bebc..9ebd206 100644
+--- a/cmake/OpenCVFindLAPACK.cmake
++++ b/cmake/OpenCVFindLAPACK.cmake
+@@ -136,10 +136,12 @@ if(WITH_LAPACK)
+         ocv_lapack_check()
+       endif()
+       if(NOT HAVE_LAPACK)
+-        if(LAPACKE_INCLUDE_DIR)
++        find_package(CBLAS)
++        if(LAPACKE_INCLUDE_DIR AND CBLAS_FOUND)
+           set(LAPACK_INCLUDE_DIR  ${LAPACKE_INCLUDE_DIR})
+           set(LAPACK_CBLAS_H      "cblas.h")
+           set(LAPACK_LAPACKE_H    "lapacke.h")
++          set(LAPACK_LIBRARIES    ${LAPACK_LIBRARIES} ${CBLAS_LIBRARIES})
+           set(LAPACK_IMPL         "LAPACK/Generic")
+           ocv_lapack_check()
+         elseif(APPLE)
