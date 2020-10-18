@@ -8,7 +8,7 @@ inherit toolchain-funcs
 # Weird upstream version descisions...
 # Result tarball may be reused for future lua-compat53 package
 LUA_COMPAT_PN="lua-compat-5.3"
-LUA_COMPAT_PV="0.9"
+LUA_COMPAT_PV="0.10"
 
 DESCRIPTION="Backported Lua bit manipulation library"
 HOMEPAGE="https://github.com/keplerproject/lua-compat-5.3"
@@ -26,8 +26,6 @@ RESTRICT="!test? ( test )"
 DEPEND="dev-lang/lua:0="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}/${P}-fix-32bit-conversion.patch" )
 
 src_compile() {
 	# TODO maybe sometime there will be luarocks eclass...
