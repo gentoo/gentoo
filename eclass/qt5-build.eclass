@@ -67,12 +67,7 @@ QT5_MINOR_VERSION=$(ver_cut 2)
 readonly QT5_MINOR_VERSION
 
 case ${PV} in
-	5.9999)
-		# git dev branch
-		QT5_BUILD_TYPE="live"
-		EGIT_BRANCH="dev"
-		;;
-	5.?.9999|5.??.9999|5.???.9999)
+	5.??.9999)
 		# git stable branch
 		QT5_BUILD_TYPE="live"
 		EGIT_BRANCH=${PV%.9999}
@@ -190,7 +185,7 @@ qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_base_configure
 	fi
-	if [[ ${QT5_MINOR_VERSION} -ge 15 ]] && [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
+	if [[ ${QT5_MODULE} == qttools ]] && [[ -z ${QT5_TARGET_SUBDIRS[@]} ]]; then
 		qt5_tools_configure
 	fi
 
@@ -569,8 +564,7 @@ qt5_base_configure() {
 
 		# bug 672340
 		-no-xkbcommon
-		$([[ ${QT5_MINOR_VERSION} -lt 15 ]] && echo -no-xcb-xinput)
-		$([[ ${QT5_MINOR_VERSION} -ge 15 ]] && echo -no-bundled-xcb-xinput)
+		-no-bundled-xcb-xinput
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
@@ -614,10 +608,6 @@ qt5_base_configure() {
 
 		# disable all platform plugins by default, override in qtgui
 		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb
-
-		# disable undocumented X11-related flags, override in qtgui
-		# (not shown in ./configure -help output)
-		$([[ ${QT5_MINOR_VERSION} -lt 15 ]] && echo -no-xkb)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262

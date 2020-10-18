@@ -11,7 +11,6 @@
 		<flag name="bluetooth">Install documentation for <pkg>dev-qt/qtbluetooth</pkg></flag>
 		<flag name="charts">Install documentation for <pkg>dev-qt/qtcharts</pkg></flag>
 		<flag name="concurrent">Install documentation for <pkg>dev-qt/qtconcurrent</pkg></flag>
-		<flag name="core">Install documentation for <pkg>dev-qt/qtcore</pkg></flag>
 		<flag name="datavis">Install documentation for <pkg>dev-qt/qtdatavis3d</pkg></flag>
 		<flag name="declarative">Install documentation for <pkg>dev-qt/qtdeclarative</pkg></flag>
 		<flag name="designer">Install documentation for <pkg>dev-qt/designer</pkg></flag>
