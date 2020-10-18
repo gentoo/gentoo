@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools db-use flag-o-matic multilib-minimal preserve-libs ssl-cert toolchain-funcs user systemd
+inherit autotools db-use flag-o-matic multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd
 
 BIS_PN=rfc2307bis.schema
 BIS_PV=20140524
@@ -93,7 +93,17 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-ldap )
 "
+
+# The user/group are only used for running daemons which are
+# disabled in minimal builds, so elide the accounts too.
 # for tracking versions
+
+BDEPEND="!minimal? (
+		acct-group/ldap
+		acct-user/ldap
+)
+"
+
 OPENLDAP_VERSIONTAG=".version-tag"
 OPENLDAP_DEFAULTDIR_VERSIONTAG="/var/lib/openldap-data"
 
@@ -346,13 +356,6 @@ pkg_setup() {
 		einfo "Skipping scan for previous datadirs as requested by minimal useflag"
 	else
 		openldap_find_versiontags
-	fi
-
-	# The user/group are only used for running daemons which are
-	# disabled in minimal builds, so elide the accounts too.
-	if ! use minimal ; then
-		enewgroup ldap 439
-		enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
 	fi
 }
 
