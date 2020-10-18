@@ -5581,7 +5581,7 @@ dev-libs/msgpack 3.2.0 3.3.0: MessagePack is a binary-based efficient data inter
 dev-libs/mxml 3.1 3.2: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
 dev-libs/ncnn 20200226 20200413 20200727: A high-performance neural network inference framework
-dev-libs/nettle 3.4.1 3.5.1-r1 3.6-r2: Low-level cryptographic library
+dev-libs/nettle 3.4.1 3.5.1-r1 3.6-r2 3.6-r3: Low-level cryptographic library
 dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
