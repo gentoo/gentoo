@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -21,12 +22,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-CDEPEND=">=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}"
+DEPEND=">=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
 RDEPEND="
-	${CDEPEND}
+	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 	>=dev-python/urwid-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.0.4[${PYTHON_USEDEP}]
 	>=dev-python/GitPython-0.3.7[${PYTHON_USEDEP}]
