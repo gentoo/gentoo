@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">defusedxml</remote-id>
-    <remote-id type="bitbucket">tiran/defusedxml</remote-id>
+    <remote-id type="github">tiran/defusedxml</remote-id>
   </upstream>
 </pkgmetadata>
