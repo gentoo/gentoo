@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="tool for reading, displaying and saving data from the NanoVNA"
 HOMEPAGE="https://github.com/mihtjel/nanovna-saver"
-SRC_URI=""
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -18,16 +19,13 @@ else
 	SRC_URI="https://github.com/mihtjel/nanovna-saver/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	<dev-python/scipy-1.5[${PYTHON_USEDEP}]"
-BDEPEND=""
 
 src_prepare(){
 	sed -i "s#find_packages()#find_packages(exclude=['test'])#" setup.py
