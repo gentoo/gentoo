@@ -10754,7 +10754,7 @@ dev-util/goland 2020.1.3: Golang IDE by JetBrains
 dev-util/google-perftools 2.7-r1 2.8: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
-dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profiling output to dot graphs
+dev-util/gprof2dot 2019.11.30: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32-r1: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.32-r1 1.32-r2: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.32: Automake files from gtk-doc
