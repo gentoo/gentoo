@@ -7867,7 +7867,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.0-r2: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 3.1.7 3.1.8: Library used to interact with Git repositories
+dev-python/GitPython 3.1.8: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
@@ -7925,7 +7925,7 @@ dev-python/asgiref 3.2.10 3.3.0: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 2.4.2 2.4.2-r1: Abstract Syntax Tree for logilab packages
+dev-python/astroid 2.4.2-r1: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
@@ -8084,7 +8084,7 @@ dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 1.21.0 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
-dev-python/defusedxml 0.6.0 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
+dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.4 0.9.5: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
@@ -8155,7 +8155,7 @@ dev-python/ecdsa 0.14.1-r2 0.15-r1 0.16.0-r1: ECDSA cryptographic signature libr
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
-dev-python/elementpath 2.0.0 2.0.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 2.0.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3 3.3.4: A powerful and robust templating system for Python
@@ -8350,7 +8350,7 @@ dev-python/jaraco-envs 2.0.0: Classes for orchestrating Python (virtual) environ
 dev-python/jaraco-functools 3.0.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r1: Additional facilities to supplement Python's stdlib logging module
-dev-python/jaraco-packaging 8.1.0 8.1.0-r1: Tools to supplement packaging Python releases
+dev-python/jaraco-packaging 8.1.0-r1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
@@ -8631,7 +8631,7 @@ dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.2 7.0.0 7.2.0 8.0.0: Python Imaging Library (fork)
-dev-python/pip 20.2.2-r1 20.2.3-r1: Installs python packages -- replacement for easy_install
+dev-python/pip 20.2.2-r1 20.2.3-r1 20.2.4: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.6.2 2020.8.13: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
