@@ -1,0 +1,391 @@
+https://bugs.gentoo.org/730750
+https://github.com/coin-or/ADOL-C/commit/8b53408d08f41ddaba2dea5655d332b13fc4c78b.patch
+https://github.com/coin-or/ADOL-C/commit/06b3b665fc0253ee17f0208bd06cdc130e103741.patch
+https://github.com/coin-or/ADOL-C/commit/25a69c486829ddaa19c115afc05cb7cf3b4e2410.patch
+https://github.com/coin-or/ADOL-C/commit/e41d32ba6dab09a3e58b22f1f042e49cd5ee917f.patch
+https://github.com/coin-or/ADOL-C/commit/0787a350cc181192cfd203b0f75941bcbd9c3e3a.patch
+https://github.com/coin-or/ADOL-C/commit/0b3dd1747f90f68b17dc5f1bd3a5d898e3bc77fb.patch
+----
+From e41d32ba6dab09a3e58b22f1f042e49cd5ee917f Mon Sep 17 00:00:00 2001
+From: Andrea Walther <walthand@math55020.mathematik.hu-berlin.de>
+Date: Tue, 22 Sep 2020 10:47:27 +0200
+Subject: [PATCH] fix prefix and provide --enable-python
+
+---
+ configure.ac | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6c2c88f9..b6aaeaa7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -71,6 +71,17 @@ if test x"${adolc_medipack_support}" = xyes ; then
+ AC_DEFINE(ADOLC_MEDIPACK_SUPPORT,1,[defined if MeDiPack support is to be compiled in])
+ fi
+ 
++
++AC_MSG_CHECKING(whether to build ADOL-C with python/swig support)
++AC_ARG_ENABLE(python,
++              [AS_HELP_STRING([--enable-python],[build ADOL-C with python/swig support [default=disabled]])],
++	      [adolc_python_support=$enableval],[adolc_python_support=no])
++AC_MSG_RESULT($adolc_python_support)
++AM_CONDITIONAL(BUILD_ADOLC_python_SUPPORT,[test x${adolc_python_support} = xyes])
++if test x"${adolc_python_support}" = xyes ; then
++AC_DEFINE(ADOLC_python_SUPPORT,1,[defined if python/swig support is to be compiled in])
++fi
++
+ LT_PREREQ([2.2.6])
+ # checks for programs
+ AC_PROG_CXX
+@@ -651,6 +662,10 @@ if test x$sparse = xyes && test x$have_colpack = xno; then
+   Only sparsity patterns can be computed\033@<:@0m"
+     warn=true
+ fi
++echo \
++"  Build with python:		      ${adolc_python_support}"
++
++if test x$adolc_python_support = xyes ; then
+ if test x$sparse = xyes && test x$python_found = xyes && test x$SWIG != xno; then
+    echo \
+ "  Build with python swig module:      yes"
+@@ -660,7 +675,7 @@ else
+    if test x$sparse = xno && test x$python_found = xyes && test x$SWIG != xno; then
+      echo \
+ "(due to sparse drivers disabled)"
+-  elif test x$sparse = xyes && ( $test x$python_found = xno || test x$SWIG = xno ); then
++  elif test x$sparse = xyes && ( test x$python_found = xno || test x$SWIG = xno ); then
+      echo \
+ "(due to python/swig missing)"
+   else
+@@ -668,6 +683,8 @@ else
+ "(due to sparse drivers disabled and python/swig missing)"
+   fi
+ fi
++fi
++
+ echo
+ 
+ echo \
+From 8b53408d08f41ddaba2dea5655d332b13fc4c78b Mon Sep 17 00:00:00 2001
+From: Kshitij Kulshreshtha <kkhere.geo@gmail.com>
+Date: Tue, 31 Mar 2020 22:42:23 +0200
+Subject: [PATCH] Fix out-of-tree build for swig
+
+---
+ ADOL-C/swig/Makefile.am    |  4 +--
+ ADOL-C/swig/setup.py       | 65 +++++++++++++++++++++++++++-----------
+ ADOL-C/swig/swigprocess.py | 34 +++++++++++---------
+ Makefile.am                |  3 +-
+ configure.ac               |  6 ++++
+ 5 files changed, 75 insertions(+), 37 deletions(-)
+
+diff --git a/ADOL-C/swig/Makefile.am b/ADOL-C/swig/Makefile.am
+index 04a52cd0..b1d5569b 100644
+--- a/ADOL-C/swig/Makefile.am
++++ b/ADOL-C/swig/Makefile.am
+@@ -12,7 +12,7 @@
+ 
+ ACLOCAL_AMFLAGS = -I autoconf
+ 
+-EXTRA_DIST = swigprocess.py adolc-r.i adolc-python.i adubswigfuncs.h adolc_all_in.hpp matrixmemory.hpp pyedfclasses.hpp
++EXTRA_DIST = swigprocess.py adolc-r.i adolc-python.i adubswigfuncs.hpp adolc_all_in.hpp matrixmemory.hpp pyedfclasses.hpp
+ 
+ clean-local:
+ 	-rm -rf python R *.cpp *.cxx *.o *.h include
+@@ -20,6 +20,6 @@ clean-local:
+ if PYTHONFOUND
+ if SPARSE
+ install:
+-	CXX=${CXX} ${PYTHON} setup.py install --prefix=${prefix} --only-swig
++	CXX=${CXX} ${PYTHON} ${srcdir}/setup.py build --only-swig --lib-prefix=${prefix} @python_srcbase@ install --prefix=${prefix}
+ endif
+ endif
+diff --git a/ADOL-C/swig/setup.py b/ADOL-C/swig/setup.py
+index 7a9a25c4..5bd98c3a 100644
+--- a/ADOL-C/swig/setup.py
++++ b/ADOL-C/swig/setup.py
+@@ -11,6 +11,10 @@
+ ##############################################################################
+ 
+ from __future__ import print_function
++import sys, os
++
++sys.path = [ os.path.dirname(os.path.abspath(__file__)) ] + sys.path
++
+ from swigprocess import prepare_flat_header
+ from numpy.distutils import misc_util as np_dist
+ from distutils.core import setup, Extension
+@@ -18,7 +22,6 @@
+ from distutils.command.build_ext import build_ext
+ from distutils.command.build import build
+ from distutils.command.install import install
+-import os
+ import subprocess
+ 
+ def compile_dynlib(prefix,colpackdir,boostdir):
+@@ -88,14 +91,34 @@ def finalize_options(self):
+         prefix = self.lib_prefix
+         print('prefix = ', prefix)
+         self.include_dirs.append(os.path.join(prefix,'include'))
+-        self.library_dirs.append(os.path.join(prefix,'lib64'))
+-        self.rpath.append(os.path.join(prefix,'lib64'))
+-        prepare_flat_header()
++        import ctypes as c
++        plen = c.sizeof(c.c_void_p(0))
++        if plen == 8:
++            self.library_dirs.append(os.path.join(prefix,'lib64'))
++            self.rpath.append(os.path.join(prefix,'lib64'))
++        else:
++            self.library_dirs.append(os.path.join(prefix,'lib'))
++            self.rpath.append(os.path.join(prefix,'lib'))
++        buildobj = self.get_finalized_command('build')
++        self.src = buildobj.src
++        prepare_flat_header(self.src)
++        self.swig_opts = ['-c++', '-I' + self.src]
++        self.finalized = 1
+ 
++    def build_extension(self, ext):
++        if self.src != '.':
++            import shutil
++            sources = ext.sources
++            newSrc = []
++            for s in iter(sources):
++                shutil.copy(self.src + '/' + s, '.')
++            ext.include_dirs.append(self.src)
++        super(build_swigadolc,self).build_extension(ext)
+ 
+ class buildthis(build,object):
+     command_name = 'build'
+     user_options = build.user_options + [
++        ('src=', None, 'path of the source directory of swig module'),
+         ('lib-prefix=', None, 'prefix to install adolc library'),
+         ('colpack-dir=', None, 'directory in which colpack is installed'),
+         ('boost-dir=', None, 'directory in which boost is installed'),
+@@ -111,11 +134,26 @@ def lib_doesnot_exist(self):
+ 
+     def initialize_options(self):
+         super(buildthis,self).initialize_options()
++        self.src = None
+         self.lib_prefix = None
+         self.colpack_dir = None
+         self.boost_dir = None
+         self.only_swig = None
+ 
++    def finalize_options(self):
++        super(buildthis,self).finalize_options()
++        if self.src is None:
++            self.src = '.'
++        if self.lib_prefix is None:
++            self.lib_prefix = os.path.join(os.environ['HOME'],'adolc_base')
++        if self.colpack_dir is None:
++            self.colpack_dir = os.path.join(os.environ['HOME'],'adolc_base')
++        if self.boost_dir is None:
++            self.boost_dir = '/usr'
++        if self.only_swig is None:
++            self.only_swig = False
++        self.finalized = 1
++
+     #sub_commands = [ ('build_lib', lib_doesnot_exist),
+     #                 ('build_ext', None) ]
+     sub_commands = [ ('build_lib', None),
+@@ -137,22 +175,13 @@ def initialize_options(self):
+         super(installthis,self).initialize_options()
+ 
+     def finalize_options(self):
++        self.set_undefined_options('build',
++                                   ('lib_prefix','lib_prefix'),
++                                   ('colpack_dir', 'colpack_dir'),
++                                   ('boost_dir', 'boost_dir'),
++                                   ('only_swig', 'only_swig'))
+         super(installthis,self).finalize_options()
+-        if self.lib_prefix is None:
+-            self.lib_prefix = os.path.join(os.environ['HOME'],'adolc_base')
+-        if self.colpack_dir is None:
+-            self.colpack_dir = os.path.join(os.environ['HOME'],'adolc_base')
+-        if self.boost_dir is None:
+-            self.boost_dir = '/usr'
+-        if self.only_swig is None:
+-            self.only_swig = False
+         self.finalized = 1
+-        buildobj = self.distribution.get_command_obj('build')
+-        buildobj.set_undefined_options('install',
+-                                       ('lib_prefix','lib_prefix'),
+-                                       ('colpack_dir', 'colpack_dir'),
+-                                       ('boost_dir', 'boost_dir'),
+-                                       ('only_swig', 'only_swig'))
+         
+ incdirs = np_dist.get_numpy_include_dirs()
+ #python_ldflags = subprocess.check_output(['python-config','--ldflags'],universal_newlines=True)
+diff --git a/ADOL-C/swig/swigprocess.py b/ADOL-C/swig/swigprocess.py
+index bd5fe03d..f9de5551 100644
+--- a/ADOL-C/swig/swigprocess.py
++++ b/ADOL-C/swig/swigprocess.py
+@@ -10,6 +10,7 @@
+ ## 
+ ##############################################################################
+ 
++from __future__ import print_function
+ import re
+ import os.path
+ import sys
+@@ -191,22 +192,25 @@ def finalClean(headfile,outfiles):
+     for f in glob.glob('*.o'):
+         os.remove(f)
+ 
+-def prepare_flat_header():
+-    sys.path = [ os.getcwd() ] + sys.path
+-    p = os.getcwd() + '/../include/adolc'
+-    for (dp, dn, fn) in os.walk(p):
+-        ndp = re.sub(r'\.\./',r'',dp)
+-        for f in iter(fn):
+-            lines = readFile(dp + "/" + f)
+-            lines = comment_all_includes(lines)
+-            lines = uncomment_local_includes(lines)
+-            try:
+-                os.makedirs(ndp)
+-            except:
+-                pass
+-            writeOutput(lines, ndp + "/" + f)
++def prepare_flat_header(src_base='.'):
++    pl = [ os.getcwd() + '/../include/adolc' ]
++    print('src_base = ', src_base)
++    if src_base != '.':
++        pl = [ src_base + '/../include/adolc' ] + pl
++    for p in iter(pl):
++        for (dp, dn, fn) in os.walk(p):
++            ndp = re.sub(r'^.*\.\./',r'',dp)
++            for f in iter(fn):
++                lines = readFile(dp + "/" + f)
++                lines = comment_all_includes(lines)
++                lines = uncomment_local_includes(lines)
++                try:
++                    os.makedirs(ndp)
++                except:
++                    pass
++                writeOutput(lines, ndp + "/" + f)
+     
+-    invoke_cpp('adolc_all_in.hpp', 'adolc_all_pre.hpp')
++    invoke_cpp(src_base + '/' + 'adolc_all_in.hpp', 'adolc_all_pre.hpp')
+     lines = readFile('adolc_all_pre.hpp')
+     lines = reinstate_nonlocal_include(lines)
+     writeOutput(lines,'adolc_all.hpp')
+diff --git a/Makefile.am b/Makefile.am
+index fb66e9f3..123ac905 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,13 +24,12 @@ EXTRA_DIST           = TODO BUGS LICENSE update_versions.sh \
+                        ADOL-C/doc/tapebasic.pdf ADOL-C/doc/tapebasic.eps \
+                        ADOL-C/doc/tap_point.pdf ADOL-C/doc/tap_point.eps \
+                        MSVisualStudio/v14/adolc.sln MSVisualStudio/v14/adolc.vcxproj \
+-                       MSVisualStudio/v14/ColPack_Readme_VC++.txt \
+                        MSVisualStudio/v14/ColPack.vcxproj \
+                        MSVisualStudio/v14/sparse/config.h.in MSVisualStudio/v14/nosparse/config.h.in \
+                        MSVisualStudio/v14/x64/sparse/config.h.in MSVisualStudio/v14/x64/nosparse/config.h.in \
+                        MSVisualStudio/v14/sparse/config.h MSVisualStudio/v14/nosparse/config.h \
+                        MSVisualStudio/v14/x64/sparse/config.h MSVisualStudio/v14/x64/nosparse/config.h \
+-                       MSVisualStudio/v14/Readme_VC++.txt \
++                       MSVisualStudio/v14/README_VC++.md \
+                        MSVisualStudio/v14/installer.sh \
+                        adolc.spec.in adolc.spec \
+                        update_versions.sh
+diff --git a/configure.ac b/configure.ac
+index ddb08de1..6c2c88f9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -501,6 +501,12 @@ fi
+ AM_PATH_PYTHON([2.7],[python_found=yes],[python_found=no])
+ AC_PATH_PROG(SWIG, swig, [no])
+ AM_CONDITIONAL(PYTHONFOUND, [test x$python_found = xyes && test x$SWIG != xno])
++if test ${abs_top_srcdir} != ${abs_top_builddir} ; then
++   python_srcbase='--src=${abs_srcdir}'
++else
++   python_srcbase=''
++fi
++AC_SUBST(python_srcbase)
+ ###########################################################################
+ #                      COIN_PATCH_LIBTOOL_CYGWIN                          #
+ ###########################################################################
+
+From 25a69c486829ddaa19c115afc05cb7cf3b4e2410 Mon Sep 17 00:00:00 2001
+From: Kshitij Kulshreshtha <kkhere.geo@gmail.com>
+Date: Wed, 1 Apr 2020 02:36:12 +0200
+Subject: [PATCH] another small fix for swig, this time for in-tree check
+
+---
+ ADOL-C/swig/setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ADOL-C/swig/setup.py b/ADOL-C/swig/setup.py
+index e6023679..4ec9a7cc 100644
+--- a/ADOL-C/swig/setup.py
++++ b/ADOL-C/swig/setup.py
+@@ -105,7 +105,7 @@ def finalize_options(self):
+         self.finalized = 1
+ 
+     def build_extension(self, ext):
+-        if self.src != '.':
++        if os.path.abspath(os.path.realpath(self.src)) != os.path.abspath('.'):
+             import shutil
+             sources = ext.sources
+             newSrc = []
+From 0787a350cc181192cfd203b0f75941bcbd9c3e3a Mon Sep 17 00:00:00 2001
+From: Andrea Walther <walthand@math55020.mathematik.hu-berlin.de>
+Date: Tue, 22 Sep 2020 11:58:09 +0200
+Subject: [PATCH] small change in configure.ac for swig module
+
+---
+ configure.ac | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index b6aaeaa7..58380e55 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -509,6 +509,7 @@ if test x$tapedoc_values == xyes; then
+ AC_DEFINE(ADOLC_TAPE_DOC_VALUES,1,[ADOL-C tape_doc routine computes values])
+ fi
+ 
++if test x$adolc_python_support == xyes; then
+ AM_PATH_PYTHON([2.7],[python_found=yes],[python_found=no])
+ AC_PATH_PROG(SWIG, swig, [no])
+ AM_CONDITIONAL(PYTHONFOUND, [test x$python_found = xyes && test x$SWIG != xno])
+@@ -517,7 +518,12 @@ if test ${abs_top_srcdir} != ${abs_top_builddir} ; then
+ else
+    python_srcbase=''
+ fi
++else
++   AM_CONDITIONAL(PYTHONFOUND, [test x$adolc_python_support])
++   python_srcbase=''
++fi
+ AC_SUBST(python_srcbase)
++end
+ ###########################################################################
+ #                      COIN_PATCH_LIBTOOL_CYGWIN                          #
+ ###########################################################################
+From 0b3dd1747f90f68b17dc5f1bd3a5d898e3bc77fb Mon Sep 17 00:00:00 2001
+From: Andrea Walther <walthand@math55020.mathematik.hu-berlin.de>
+Date: Wed, 23 Sep 2020 08:54:54 +0200
+Subject: [PATCH] small fixes in configure.ac
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 58380e55..88671274 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -519,11 +519,11 @@ else
+    python_srcbase=''
+ fi
+ else
+-   AM_CONDITIONAL(PYTHONFOUND, [test x$adolc_python_support])
++   AM_CONDITIONAL(PYTHONFOUND, [test x$adolc_python_support = xyes])
+    python_srcbase=''
+ fi
+ AC_SUBST(python_srcbase)
+-end
++
+ ###########################################################################
+ #                      COIN_PATCH_LIBTOOL_CYGWIN                          #
+ ###########################################################################
