@@ -17719,7 +17719,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.5.6: System and process monitor written with EFL
+sys-process/evisum 0.5.6 0.5.7: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
@@ -18871,7 +18871,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20200824: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20200824 0_pre20201018: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
