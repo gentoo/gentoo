@@ -5736,7 +5736,7 @@ dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.9.2: Lua bindings using gobject-introspection
 dev-lua/lpeg 1.0.1 1.0.2: Parsing Expression Grammars for Lua
 dev-lua/lua-argparse 0.6.0-r1: Command line argument parser for the Lua Programming Language
-dev-lua/lua-bit32 5.3.5-r1: Backported Lua bit manipulation library
+dev-lua/lua-bit32 5.3.5-r2: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.8_p0: OpenSSL binding for Lua
 dev-lua/lua-term 0.3 0.7: Terminal functions for Lua
