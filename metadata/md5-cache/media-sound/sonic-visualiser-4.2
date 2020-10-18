@@ -5,7 +5,7 @@ DESCRIPTION=Music audio files viewer and analiser
 EAPI=7
 HOMEPAGE=https://www.sonicvisualiser.org/
 IUSE=id3tag jack mad ogg opus osc +portaudio pulseaudio test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 >=dev-libs/capnproto-0.6:= dev-libs/serd dev-libs/sord dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/alsa-lib media-libs/dssi media-libs/ladspa-sdk media-libs/liblrdf media-libs/libsamplerate media-libs/libsndfile media-libs/rubberband media-libs/speex media-libs/vamp-plugin-sdk sci-libs/fftw:3.0= id3tag? ( media-libs/libid3tag ) jack? ( virtual/jack ) mad? ( media-libs/libmad ) ogg? ( media-libs/libfishsound media-libs/liboggz ) opus? ( media-libs/opusfile ) osc? ( media-libs/liblo ) portaudio? ( >=media-libs/portaudio-19 ) pulseaudio? ( media-sound/pulseaudio )
 REQUIRED_USE=|| ( jack pulseaudio portaudio ) test? ( id3tag mad )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://code.soundsoftware.ac.uk/attachments/download/2755/sonic-visualiser-4.2.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f1440014bac7b89e680ef41e451eba39
+_md5_=cd0531a484286d34ffa3f88454ecb70c

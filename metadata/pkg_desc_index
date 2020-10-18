@@ -9338,67 +9338,67 @@ dev-python/zope-testing 4.7-r2: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
 dev-python/zstandard 0.8.1-r1 0.12.0-r1 0.14.0-r1: Zstandard Bindings for Python
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
-dev-qt/assistant 5.14.2 5.15.1: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 5.14.2 5.15.1: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
-dev-qt/linguist 5.14.2 5.15.1: Graphical tool for translating Qt applications
-dev-qt/linguist-tools 5.14.2 5.15.1: Tools for working with Qt translation data files
-dev-qt/pixeltool 5.14.2 5.15.1: Qt screen magnifier
-dev-qt/qdbus 5.14.2 5.15.1: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 5.14.2 5.15.1: Graphical tool that lets you introspect D-Bus objects and messages
-dev-qt/qdoc 5.14.2 5.15.1: Qt documentation generator
+dev-qt/assistant 5.15.1: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 5.15.1: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
+dev-qt/linguist 5.15.1: Graphical tool for translating Qt applications
+dev-qt/linguist-tools 5.15.1: Tools for working with Qt translation data files
+dev-qt/pixeltool 5.15.1: Qt screen magnifier
+dev-qt/qdbus 5.15.1: Interface to Qt applications communicating over D-Bus
+dev-qt/qdbusviewer 5.15.1: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdoc 5.15.1: Qt documentation generator
 dev-qt/qt-creator 4.12.3 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.14.2_p202003291239 5.14.2_p202003291239-r1 5.15.1_p202009071124: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt3d 5.14.2 5.15.1: 3D rendering module for the Qt5 framework
-dev-qt/qtbluetooth 5.14.2-r1 5.15.1: Bluetooth support library for the Qt5 framework
-dev-qt/qtcharts 5.14.2 5.15.1: Chart component library for the Qt5 framework
+dev-qt/qt-docs 5.15.1_p202009071124: Qt5 documentation, for use with Qt Creator and other tools
+dev-qt/qt3d 5.15.1: 3D rendering module for the Qt5 framework
+dev-qt/qtbluetooth 5.15.1: Bluetooth support library for the Qt5 framework
+dev-qt/qtcharts 5.15.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
-dev-qt/qtconcurrent 5.14.2 5.15.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.14.2 5.15.1-r1: Cross-platform application development framework
-dev-qt/qtdatavis3d 5.14.2 5.15.1: 3D data visualization library for the Qt5 framework
-dev-qt/qtdbus 5.14.2 5.15.1: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.14.2-r4 5.15.1: The QML and Quick modules for the Qt5 framework
-dev-qt/qtdiag 5.14.2 5.15.1: Tool for reporting diagnostic information about Qt and its environment
-dev-qt/qtgamepad 5.14.2 5.15.1: Qt module to support gamepad hardware
-dev-qt/qtgraphicaleffects 5.14.2 5.15.1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.14.2-r1 5.15.1-r1: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 5.14.2 5.15.1: Qt5 module for integrating online documentation into applications
-dev-qt/qtimageformats 5.14.2 5.15.1: Additional format plugins for the Qt image I/O system
-dev-qt/qtlocation 5.14.2 5.15.1: Location (places, maps, navigation) library for the Qt5 framework
+dev-qt/qtconcurrent 5.15.1: Multi-threading concurrence support library for the Qt5 framework
+dev-qt/qtcore 5.15.1-r1: Cross-platform application development framework
+dev-qt/qtdatavis3d 5.15.1: 3D data visualization library for the Qt5 framework
+dev-qt/qtdbus 5.15.1: Qt5 module for inter-process communication over the D-Bus protocol
+dev-qt/qtdeclarative 5.15.1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdiag 5.15.1: Tool for reporting diagnostic information about Qt and its environment
+dev-qt/qtgamepad 5.15.1: Qt module to support gamepad hardware
+dev-qt/qtgraphicaleffects 5.15.1: Set of QML types for adding visual effects to user interfaces
+dev-qt/qtgui 5.15.1-r1: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 5.15.1: Qt5 module for integrating online documentation into applications
+dev-qt/qtimageformats 5.15.1: Additional format plugins for the Qt image I/O system
+dev-qt/qtlocation 5.15.1: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.14.2-r1 5.15.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.14.2-r1 5.15.1: Network abstraction library for the Qt5 framework
-dev-qt/qtnetworkauth 5.14.2 5.15.1: Network authorization library for the Qt5 framework
-dev-qt/qtopengl 5.14.2-r1 5.15.1: OpenGL support library for the Qt5 framework (deprecated)
-dev-qt/qtpaths 5.14.2 5.15.1: Command line client to QStandardPaths
-dev-qt/qtplugininfo 5.14.2 5.15.1: Qt5 plugin metadata dumper
-dev-qt/qtpositioning 5.14.2 5.15.1: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.14.2 5.15.1: Printing support library for the Qt5 framework
-dev-qt/qtquickcontrols 5.14.2 5.15.1: Set of Qt Quick controls to create complete user interfaces (deprecated)
-dev-qt/qtquickcontrols2 5.14.2-r1 5.15.1: Set of next generation Qt Quick controls for the Qt5 framework
+dev-qt/qtmultimedia 5.15.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtnetwork 5.15.1: Network abstraction library for the Qt5 framework
+dev-qt/qtnetworkauth 5.15.1: Network authorization library for the Qt5 framework
+dev-qt/qtopengl 5.15.1: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtpaths 5.15.1: Command line client to QStandardPaths
+dev-qt/qtplugininfo 5.15.1: Qt5 plugin metadata dumper
+dev-qt/qtpositioning 5.15.1: Physical position determination library for the Qt5 framework
+dev-qt/qtprintsupport 5.15.1: Printing support library for the Qt5 framework
+dev-qt/qtquickcontrols 5.15.1: Set of Qt Quick controls to create complete user interfaces (deprecated)
+dev-qt/qtquickcontrols2 5.15.1: Set of next generation Qt Quick controls for the Qt5 framework
 dev-qt/qtquicktimeline 5.15.1: Qt module for keyframe-based timeline construction
-dev-qt/qtscript 5.14.2 5.15.1: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtscxml 5.14.2 5.15.1: State Chart XML (SCXML) support library for the Qt5 framework
-dev-qt/qtsensors 5.14.2 5.15.1: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialbus 5.14.2 5.15.1: Qt module to access CAN, ModBus, and other industrial serial buses and protocols
-dev-qt/qtserialport 5.14.2 5.15.1: Serial port abstraction library for the Qt5 framework
+dev-qt/qtscript 5.15.1: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtscxml 5.15.1: State Chart XML (SCXML) support library for the Qt5 framework
+dev-qt/qtsensors 5.15.1: Hardware sensor access library for the Qt5 framework
+dev-qt/qtserialbus 5.15.1: Qt module to access CAN, ModBus, and other industrial serial buses and protocols
+dev-qt/qtserialport 5.15.1: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
-dev-qt/qtspeech 5.14.2 5.15.1: Text-to-speech library for the Qt5 framework
-dev-qt/qtsql 5.14.2 5.15.1: SQL abstraction library for the Qt5 framework
+dev-qt/qtspeech 5.15.1: Text-to-speech library for the Qt5 framework
+dev-qt/qtsql 5.15.1: SQL abstraction library for the Qt5 framework
 dev-qt/qtstyleplugins 5.0.0_p20170311: Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
-dev-qt/qtsvg 5.14.2 5.15.1: SVG rendering library for the Qt5 framework
-dev-qt/qttest 5.14.2 5.15.1: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 5.14.2 5.15.1: Translation files for the Qt5 framework
-dev-qt/qtvirtualkeyboard 5.14.2 5.15.1: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.14.2 5.15.1: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.14.2 5.15.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.14.2 5.15.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtsvg 5.15.1: SVG rendering library for the Qt5 framework
+dev-qt/qttest 5.15.1: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 5.15.1: Translation files for the Qt5 framework
+dev-qt/qtvirtualkeyboard 5.15.1: Customizable input framework and virtual keyboard for Qt
+dev-qt/qtwayland 5.15.1: Wayland platform plugin for Qt
+dev-qt/qtwebchannel 5.15.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebengine 5.15.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
-dev-qt/qtwebsockets 5.14.2 5.15.1: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwebview 5.14.2 5.15.1: Module for displaying web content in a QML application using the Qt5 framework
-dev-qt/qtwidgets 5.14.2 5.15.1: Set of components for creating classic desktop-style UIs for the Qt5 framework
-dev-qt/qtx11extras 5.14.2 5.15.1: Linux/X11-specific support library for the Qt5 framework
-dev-qt/qtxml 5.14.2 5.15.1: Implementation of SAX and DOM for the Qt5 framework
-dev-qt/qtxmlpatterns 5.14.2 5.15.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
+dev-qt/qtwebsockets 5.15.1: Implementation of the WebSocket protocol for the Qt5 framework
+dev-qt/qtwebview 5.15.1: Module for displaying web content in a QML application using the Qt5 framework
+dev-qt/qtwidgets 5.15.1: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtx11extras 5.15.1: Linux/X11-specific support library for the Qt5 framework
+dev-qt/qtxml 5.15.1: Implementation of SAX and DOM for the Qt5 framework
+dev-qt/qtxmlpatterns 5.15.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ros/actionlib 1.13.2 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.13.0 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tools 1.13.2 9999: Tools for dealing with actionlib
