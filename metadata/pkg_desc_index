@@ -11861,7 +11861,7 @@ gnome-extra/gnome-shell-extension-applications-overview-tooltip 7 9: Show toolti
 gnome-extra/gnome-shell-extension-bing-wallpaper 27: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10 13: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713: Control the blur effect on gnome-shell lock screen
-gnome-extra/gnome-shell-extension-dash-to-panel 37 39: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-dash-to-panel 37 39 40: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 33-r2 41 42: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.34.2 3.36.2 3.36.3: JavaScript extensions for GNOME Shell
@@ -11884,7 +11884,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 4.4.2 4.6.5: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24-r1 1.16.0 1.18.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.34.3 3.36.1 3.36.2: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.34.3 3.36.1 3.36.2 3.36.3: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
@@ -18024,7 +18024,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 18.0.8 19.0.3 20.0.0: Personal cloud that runs on your own server
+www-apps/nextcloud 18.0.9 18.0.10 19.0.3 19.0.4 20.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control

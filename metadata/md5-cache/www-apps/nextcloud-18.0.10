@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Personal cloud that runs on your own server
+EAPI=7
+HOMEPAGE=https://nextcloud.com/
+IUSE=+curl +imagemagick mysql postgres +sqlite vhosts
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=AGPL-3
+RDEPEND=dev-lang/php[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip] imagemagick? ( dev-php/pecl-imagick ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=|| ( mysql postgres sqlite )
+SLOT=18.0.10
+SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-18.0.10.tar.bz2
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=4440baf5c6e1013a6f30620fba20abd3
