@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-haskell/shakespeare-2.0:=[profile?] >=dev-lang/ghc-6.10.4:= >=dev-haskell/cabal-1.8
+DEPEND=>=dev-haskell/shakespeare-2.0:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=Haml-like template files that are compile-time checked (deprecated)
-EAPI=5
+EAPI=7
 HOMEPAGE=https://www.yesodweb.com/book/shakespearean-templates
-IUSE=profile
+IUSE=doc hscolour profile
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=>=dev-haskell/shakespeare-2.0:=[profile?] >=dev-lang/ghc-6.10.4:=
+RDEPEND=>=dev-haskell/shakespeare-2.0:=[profile?] >=dev-lang/ghc-7.4.1:=
 SLOT=0/1.2.0
 SRC_URI=https://hackage.haskell.org/package/hamlet-1.2.0/hamlet-1.2.0.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=bbef3d175568af0b5a18f7d4b12ac319
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=6e38d8d16575d4b4def7ed0f6a3a3775

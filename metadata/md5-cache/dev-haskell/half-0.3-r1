@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.10 test? ( dev-haskell/http ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
-DESCRIPTION=Obtain minified flot code
+DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/quickcheck-2.9 >=dev-haskell/hspec-2.4 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Half-precision floating-point
 EAPI=7
-HOMEPAGE=https://github.com/ndmitchell/js-flot#readme
+HOMEPAGE=https://github.com/ekmett/half
 IUSE=doc hscolour profile test
 KEYWORDS=~amd64 ~x86
-LICENSE=MIT
+LICENSE=BSD
 RDEPEND=>=dev-lang/ghc-7.4.1:=
 RESTRICT=!test? ( test )
-SLOT=0/0.8.3
-SRC_URI=https://hackage.haskell.org/package/js-flot-0.8.3/js-flot-0.8.3.tar.gz
+SLOT=0/0.3
+SRC_URI=https://hackage.haskell.org/package/half-0.3/half-0.3.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=9bc1a03f2eb4883e2c7bd4563d00824a
+_md5_=4c1af8edbda9cd023440f68cc8620d3e
