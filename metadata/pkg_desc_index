@@ -1923,7 +1923,7 @@ app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container R
 app-emulation/crossover-bin 19.0.1-r1: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.14.1 0.15: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 3.2.1 3.3.1 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 3.3.1 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.12 19.03.13-r2: The core functions you need to create Docker images and run Docker containers
@@ -8454,7 +8454,7 @@ dev-python/memory_profiler 0.57: A module for monitoring memory usage of a pytho
 dev-python/mergedict 1.0.0: A Python 'dict' with a merge() method
 dev-python/metakernel 0.25.0-r1: Metakernel for Jupyter
 dev-python/micawber 0.5.1: A small library for extracting rich content from urls
-dev-python/microversion-parse 0.2.1: A simple parser for OpenStack microversion headers
+dev-python/microversion-parse 0.2.1 1.0.1: A simple parser for OpenStack microversion headers
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
@@ -8554,7 +8554,7 @@ dev-python/os-brick 2.8.2 3.0.1 4.0.1: OpenStack Cinder brick library for managi
 dev-python/os-client-config 1.32.0 2.1.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 0.3.1 1.2.0: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-resource-classes 0.5.0: A list of standardized resource classes for OpenStack.
+dev-python/os-resource-classes 0.5.0 1.0.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 1.0.0 2.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 2.3.0 2.4.0: os-traits is a library containing standardized trait strings.
@@ -8794,7 +8794,7 @@ dev-python/pyperclip 1.7.0: A cross-platform clipboard module for Python.
 dev-python/pyphen 0.9.5: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.3.2 1.4.0 1.4.2: Minimal PyPI server
 dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
-dev-python/pypowervm 1.1.20: Python binding for the PowerVM REST API
+dev-python/pypowervm 1.1.20 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.4.2-r1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 7 8: Cheap setup.py hack to install flit & poetry-based projects
@@ -8933,13 +8933,13 @@ dev-python/python-nbxmpp 1.0.1 1.0.2: Python library to use Jabber/XMPP networks
 dev-python/python-netlink 0.1: Pure-Python client for the Linux NetLink interface
 dev-python/python-neutronclient 6.12.1 7.1.1 7.2.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 17.0.0 17.2.1: A client for the OpenStack Nova API
-dev-python/python-octaviaclient 1.8.0: A client for the OpenStack Zun API
+dev-python/python-octaviaclient 1.8.0 2.2.0: A client for the OpenStack Zun API
 dev-python/python-openstackclient 5.2.1 5.4.0: A client for the OpenStack APIs
 dev-python/python-podman 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
-dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
+dev-python/python-saharaclient 2.2.1 3.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 1.2.0 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
@@ -8957,7 +8957,7 @@ dev-python/python-vitrageclient 4.0.1 4.1.1: A client for the OpenStack Vitrage 
 dev-python/python-xlib 0.27 0.28: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.8: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
-dev-python/python-zaqarclient 1.13.1: A client for the OpenStack Zaqar API
+dev-python/python-zaqarclient 1.13.1 2.0.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
 dev-python/python-zunclient 4.0.1 4.1.1: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.2: Python bindings for LXC
@@ -17263,7 +17263,7 @@ sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system 
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 7.7 7.8-r1 9999: GlusterFS is a powerful network/cluster filesystem
-sys-cluster/heat 14.0.0 14.1.0 2020.1.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
+sys-cluster/heat 14.0.0 14.1.0 15.0.0 2020.1.9999 2020.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.27-r1 1.28: utility to administer the IP virtual server services
@@ -17294,14 +17294,14 @@ sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured f
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.1.0 16.2.0 17.0.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 0.12.3 0.12.4 0.12.5: A simple and flexible workload orchestrator
-sys-cluster/nova 21.1.0 2020.1.9999: Cloud computing fabric controller
+sys-cluster/nova 21.1.0 22.0.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
-sys-cluster/openstack-meta 2020.1.0 2020.1.9999: A openstack meta-package for installing the various openstack pieces
+sys-cluster/openstack-meta 2020.1.0 2020.1.9999 2020.2.0 2020.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
-sys-cluster/placement 3.0.0 2020.1.9999: A HTTP service for managing, selecting, and claiming cloud resources.
+sys-cluster/placement 3.0.0 4.0.0 2020.1.9999 2020.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
 sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot

@@ -4,11 +4,11 @@ DESCRIPTION=Full sources including the Gentoo patchset for the 5.4 kernel tree
 EAPI=6
 HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches
 IUSE=experimental symlink build
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
 SLOT=5.4.72
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.4-73.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-73.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.4-73.base.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.4-73.extras.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-73.extras.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.4-73.extras.tar.xz experimental? ( https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.4-73.experimental.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-73.experimental.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.4-73.experimental.tar.xz )
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	b018f94025c867de0d2a56af55679a7a	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=48457d7404cd1ad7903dd9887e0041b0
+_md5_=c518f4ada7f0dfaa0a75e8024cb53a67
