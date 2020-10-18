@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
+# Fails to build with buildmode=pie assumptions, which
+# does not work on big-endian ppc64
+# next releases remove that assumption and mask will be lifted
+app-emulation/docker
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
 # openjfx:11 does not work on ppc64be
 dev-java/openjfx:11
