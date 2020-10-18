@@ -13,7 +13,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="+client +clipboard csc cups dbus ffmpeg jpeg +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
