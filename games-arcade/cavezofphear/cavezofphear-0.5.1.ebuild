@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ S=${WORKDIR}/${P/cavezof/}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${P}-no-common.patch
 	sed -i \
 		-e "s:get_data_dir(.):\"${GAMES_DATADIR}/${PN}/\":" \
 		src/{chk.c,main.c,gplot.c} \

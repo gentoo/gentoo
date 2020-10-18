@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/706880
+--- a/src/editor.c
++++ b/src/editor.c
+@@ -24,7 +24,7 @@
+ #include "common.h"
+ #include "proto.h"
+ 
+-char map[MAP_YSIZE][MAP_XSIZE];
++extern char map[MAP_YSIZE][MAP_XSIZE];
+ int lock;
+ int last_obj;
+ 
+--- a/src/frame.c
++++ b/src/frame.c
+@@ -26,7 +26,7 @@ void bail(char *message);
+ void sigint_handler();
+ void sigwinch_handler();
+ 
+-int need_refresh;
++extern int need_refresh;
+ 
+ void curses_start(void)
+ {
