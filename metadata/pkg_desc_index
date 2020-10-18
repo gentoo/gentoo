@@ -2757,7 +2757,7 @@ app-portage/portpeek 3.1.4 3.1.5: A helper program for maintaining the package.k
 app-portage/pram 9: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
-app-portage/repoman 2.3.23 3.0.1 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
+app-portage/repoman 2.3.23 3.0.1 3.0.2 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
 app-portage/smart-live-rebuild 1.3.6 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 9999: Arch testing tool
@@ -12624,7 +12624,7 @@ media-fonts/hack 3.003: A typeface designed for source code
 media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 1.0.2: A font based on Adobe Utopia
 media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera fonts with additional letters
-media-fonts/ibm-plex 2.0.0 3.0.0 4.0.1 4.0.2 5.1.0 5.1.3: The package of IBM's typeface
+media-fonts/ibm-plex 2.0.0 5.1.3: The package of IBM's typeface
 media-fonts/inconsolata 20140821: A sans-serif monotype font for code listings
 media-fonts/inconsolata-hellenic 1.19-r1: Hellenisation of the wonderful, monospace, open/free font Inconsolata
 media-fonts/inconsolata-lgc 1.3.0: Modified version of Inconsolata Hellenic adding the Cyrillic alphabet
@@ -13860,7 +13860,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.25 0.21.26 0.22-r1: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.26 0.22.1: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
