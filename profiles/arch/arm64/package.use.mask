@@ -144,10 +144,6 @@ media-gfx/gnome-photos upnp-av
 # not yet keyworded
 dev-java/openjdk javafx
 
-# Aaron Bauman <bman@gentoo.org> (2019-05-20)
-# doc USE ultimately pulls in dev-lang/ocaml[ocamlopt]
-media-gfx/enblend doc
-
 # Aaron Bauman <bman@gentoo.org> (2019-04-08)
 # app-text/dblatex not keyword yet
 net-firewall/nftables doc
