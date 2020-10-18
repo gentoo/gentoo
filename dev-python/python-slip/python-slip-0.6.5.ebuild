@@ -3,8 +3,9 @@
 
 EAPI=5
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_REQ_USE="xml"
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 eutils
 
