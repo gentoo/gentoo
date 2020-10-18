@@ -51,7 +51,7 @@ SRC_URI="
 IUSE="gnome java kde"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 BIN_COMMON_DEPEND="
 	app-text/hunspell:0/1.7
