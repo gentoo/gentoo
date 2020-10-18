@@ -1576,7 +1576,6 @@ dev-haskell/highlighting-kate:pcre-light - Use the pcre-light library instead of
 dev-haskell/hlint:gpl - Use GPL libraries, specifically hscolour.
 dev-haskell/hps:build-exec - Build the `hps-fractals' executable
 dev-haskell/hs3:network-uri - Get Network.URI from the network-uri package.
-dev-haskell/hslogger:buildtests - Build the executable to run unit tests.
 dev-haskell/hslogger:network-3 - Use network-3
 dev-haskell/hsopenssl:fast-bignum - Enable fast moving of bignums between OpenSSL and GMP (GHC Only)
 dev-haskell/http:conduit10 - Use version 1.0.x or below of the conduit package (for the test suite).
