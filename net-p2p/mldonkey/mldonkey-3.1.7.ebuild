@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	<dev-lang/ocaml-4.10:=[ocamlopt?]
 	bittorrent? (
 		|| (
-			>=dev-lang/ocaml-4.06[ocamlopt?]
+			<dev-lang/ocaml-4.06[ocamlopt?]
 			dev-ml/num
 		)
 	)"
