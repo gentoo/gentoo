@@ -1,0 +1,16 @@
+BDEPEND=dev-util/glib-utils sys-devel/flex sys-devel/bison virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=archive? ( app-arch/libarchive ) app-arch/xz-utils curl? ( net-misc/curl ) soup? ( net-libs/libsoup ) dev-libs/libassuan dev-libs/glib:2 dracut? ( sys-kernel/dracut ) gpg? ( app-crypt/gpgme dev-libs/libgpg-error ) grub? ( sys-boot/grub:2= ) introspection? ( dev-libs/gobject-introspection ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) ) >=sys-fs/fuse-2.9.2:0 sys-libs/zlib libmount? ( sys-apps/util-linux ) selinux? ( sys-libs/libselinux ) sodium? ( >=dev-libs/libsodium-1.0.14 ) systemd? ( sys-apps/systemd:0= ) zeroconf? ( net-dns/avahi[dbus] ) app-text/docbook-xsl-stylesheets dev-libs/libxslt doc? ( dev-util/gtk-doc )
+DESCRIPTION=Operating system and container binary deployment and upgrades
+EAPI=7
+HOMEPAGE=https://ostreedev.github.io/ostree/
+IUSE=archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount selinux sodium ssl soup systemd zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2+
+RDEPEND=archive? ( app-arch/libarchive ) app-arch/xz-utils curl? ( net-misc/curl ) soup? ( net-libs/libsoup ) dev-libs/libassuan dev-libs/glib:2 dracut? ( sys-kernel/dracut ) gpg? ( app-crypt/gpgme dev-libs/libgpg-error ) grub? ( sys-boot/grub:2= ) introspection? ( dev-libs/gobject-introspection ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) ) >=sys-fs/fuse-2.9.2:0 sys-libs/zlib libmount? ( sys-apps/util-linux ) selinux? ( sys-libs/libselinux ) sodium? ( >=dev-libs/libsodium-1.0.14 ) systemd? ( sys-apps/systemd:0= ) zeroconf? ( net-dns/avahi[dbus] )
+REQUIRED_USE=httpd? ( || ( curl soup ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/ostreedev/ostree/releases/download/v2020.7/libostree-2020.7.tar.xz -> ostree-2020.7.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=4d0716f68bb0d8a547caa681e6838bf3

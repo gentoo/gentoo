@@ -565,7 +565,7 @@ app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirro
 app-admin/github-backup-utils 2.22.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.11-r1 9999: Single process stack of various system monitors
-app-admin/glance 20.0.0 20.0.1 2020.1.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 20.0.0 20.0.1 21.0.0 2020.1.9999 2020.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-abrt 1.2.7 1.3.6: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
@@ -7888,7 +7888,7 @@ dev-python/PythonQt 3.2-r1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.9.0-r2: Abstraction layer for PyQt5/PySide
 dev-python/Rx 3.1.0: Reactive Extensions for Python
 dev-python/SaltTesting 2018.9.21: Required testing tools needed in the several Salt Stack projects
-dev-python/WSME 0.9.3: Simplify the writing of REST APIs, and extend them with additional protocols.
+dev-python/WSME 0.9.3 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
@@ -7938,7 +7938,7 @@ dev-python/authheaders 0.13.0: A library wrapping email authentication header ve
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 20.4.3 20.7.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
-dev-python/automaton 1.12.1: Friendly state machines for python.
+dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.4.4 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
@@ -7996,7 +7996,7 @@ dev-python/cangjie 1.3-r1: Python wrapper for libcangjie
 dev-python/capturer 2.4 3.0: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 1.1.5: Backend data caching and persistence daemon for Graphite
 dev-python/case 1.5.3: Python unittest Utilities
-dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
+dev-python/castellan 1.2.2 3.6.0: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
 dev-python/catkin_pkg 0.4.23 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
@@ -8067,7 +8067,7 @@ dev-python/cssutils 1.0.2-r2: A CSS Cascading Style Sheets library
 dev-python/csv23 0.3.2-r1: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
 dev-python/ctypesgen 1.0.2: Python wrapper generator for ctypes
-dev-python/cursive 0.2.2: Cursive implements OpenStack-specific validation of digital signatures.
+dev-python/cursive 0.2.2 0.2.2-r1: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.3.0-r2: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5-r1: Python package for convex optimization
 dev-python/cx_Freeze 6.1: Create standalone executables from Python scripts
@@ -8256,7 +8256,7 @@ dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.5: GitDB is a pure-Python git object database
 dev-python/gitdb2 2.0.3: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
-dev-python/glance_store 1.0.1: A library for glance
+dev-python/glance_store 1.0.1 2.3.0: A library for glance
 dev-python/glooey 0.3.1: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.17.0: Core Library for Google Client Libraries
@@ -8548,7 +8548,7 @@ dev-python/openstackdocstheme 1.18.1 2.2.5: Theme and extension support for Sphi
 dev-python/openstacksdk 0.46.0 0.50.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1 3.0.1-r1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1 4.0.2: A mutable set that remembers the order of its entries
-dev-python/os-brick 2.8.2 3.0.1: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 2.8.2 3.0.1 4.0.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.32.0 2.1.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 0.3.1 1.2.0: OpenStack Cinder brick library for managing local volume attaches
@@ -8557,7 +8557,7 @@ dev-python/os-service-types 1.7.0: A library to handle official service types fo
 dev-python/os-testr 1.0.0 2.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 2.3.0: os-traits is a library containing standardized trait strings.
 dev-python/os-vif 1.15.2: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-win 4.2.0: Windows / Hyper-V library for OpenStack projects.
+dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
@@ -8570,16 +8570,16 @@ dev-python/oslo-log 4.1.2 4.4.0: OpenStack logging config library, configuration
 dev-python/oslo-messaging 12.1.1 12.5.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 4.0.2 4.1.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 3.1.1 3.5.0: Support for RBAC policy enforcement across all OpenStack services
-dev-python/oslo-privsep 1.33.3: OpenStack library for privilege separation.
-dev-python/oslo-reports 1.29.2: generified reports for openstack
-dev-python/oslo-rootwrap 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
+dev-python/oslo-privsep 1.33.3 2.4.0: OpenStack library for privilege separation.
+dev-python/oslo-reports 1.29.2 2.2.0: generified reports for openstack
+dev-python/oslo-rootwrap 5.15.2 6.2.0: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 3.1.1 4.0.1: Oslo Serialization library
 dev-python/oslo-service 2.1.1 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.0.1 1.1.1: Oslo i18n library
 dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2: A library that provides a generic versioned and RPC-friendly object model.
-dev-python/oslo-vmware 2.32.2 3.3.1: Oslo VMware library for OpenStack projects
+dev-python/oslo-vmware 2.32.2 3.3.1 3.7.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1 4.4.1: Oslo test framework
 dev-python/osprofiler 2.6.0 3.4.0: OpenStack Profiler Library
 dev-python/osrf_pycommon 0.1.10-r1: Commonly needed Python modules used by Python software developed at OSRF
@@ -8874,7 +8874,7 @@ dev-python/python-augeas 1.1.0: Python bindings for Augeas
 dev-python/python-axolotl 0.2.3-r1: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
-dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
+dev-python/python-barbicanclient 4.8.1 5.0.1: Client library for Barbican API.
 dev-python/python-blazarclient 2.1.0 3.1.1: This is a client for the OpenStack Blazar API
 dev-python/python-bugzilla 2.5.0 3.0.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
@@ -9181,7 +9181,7 @@ dev-python/sympy 1.6.2: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
 dev-python/tappy 3.0: Test Anything Protocol (TAP) tools
-dev-python/taskflow 4.1.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
+dev-python/taskflow 4.1.0 4.5.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tblib 1.7.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r2 0.5.3-r3: A very small text templating language
 dev-python/tempora 3.0.0 4.0.0: Objects and routines pertaining to date and time
@@ -10827,7 +10827,7 @@ dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/opencl-headers 2020.03.13-r1 2020.06.16: Unified C language headers for the OpenCL API
 dev-util/oprofile 1.3.0 1.4.0: A transparent low-overhead system-wide profiler
-dev-util/ostree 2019.5 2020.6: Operating system and container binary deployment and upgrades
+dev-util/ostree 2019.5 2020.6 2020.7: Operating system and container binary deployment and upgrades
 dev-util/packer 1.4.0 1.4.5 1.5.6 1.6.1: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and RPATH of ELF executables
