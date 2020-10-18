@@ -11,7 +11,7 @@ SRC_URI="https://xwax.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="alsa jack oss cdda mp3 +fallback"
 
 REQUIRED_USE="|| ( cdda mp3 fallback )
