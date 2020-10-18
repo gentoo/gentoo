@@ -70,6 +70,7 @@ REQUIRED_USE="
 	contribovis? ( contrib )
 	contribsfm? ( contrib eigen gflags glog )
 	contribxfeatures2d? ( contrib download )
+	examples? ( contribdnn )
 	java? ( python )
 	opengl? ( qt5 )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -111,7 +112,11 @@ RDEPEND="
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
-	lapack? ( virtual/lapack )
+	lapack? (
+		virtual/cblas
+		virtual/lapack
+		virtual/lapacke
+	)
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	openexr? ( media-libs/openexr[${MULTILIB_USEDEP}] )
 	opengl? (
@@ -274,6 +279,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.1-cuda-add-relaxed-constexpr.patch
 	"${FILESDIR}"/${PN}-4.1.2-opencl-license.patch
 	"${FILESDIR}"/${PN}-4.4.0-disable-native-cpuflag-detect.patch
+	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
 )
 
 pkg_pretend() {
