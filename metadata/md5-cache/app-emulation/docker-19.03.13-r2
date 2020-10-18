@@ -5,11 +5,11 @@ DESCRIPTION=The core functions you need to create Docker images and run Docker c
 EAPI=7
 HOMEPAGE=https://www.docker.com/
 IUSE=apparmor aufs btrfs +container-init device-mapper hardened overlay seccomp selinux kernel_linux
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm arm64 ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 apparmor? ( sys-libs/libapparmor ) btrfs? ( >=sys-fs/btrfs-progs-3.16.1 ) device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) !sys-apps/systemd[-cgroup-hybrid(+)] >=net-firewall/iptables-1.4 sys-process/procps >=dev-vcs/git-1.7 >=app-arch/xz-utils-4.9 dev-libs/libltdl ~app-emulation/containerd-1.3.7[apparmor?,btrfs?,device-mapper?,seccomp?,selinux?] ~app-emulation/runc-1.0.0_rc10[apparmor?,seccomp?,selinux(-)?] ~app-emulation/docker-proxy-0.8.0_p20200617 container-init? ( >=sys-process/tini-0.18.0[static] )
 RESTRICT=installsources strip
 SLOT=0
 SRC_URI=https://github.com/docker/docker-ce/archive/v19.03.13.tar.gz -> docker-19.03.13.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=635887c93e569f3d0f8e569ac3ccfd1b
+_md5_=b62b94d87ed538237c7b68cbbee29e6a

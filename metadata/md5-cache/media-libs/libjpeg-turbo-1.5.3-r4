@@ -1,0 +1,14 @@
+BDEPEND=amd64? ( || ( dev-lang/nasm dev-lang/yasm ) ) x86? ( || ( dev-lang/nasm dev-lang/yasm ) ) amd64-fbsd? ( || ( dev-lang/nasm dev-lang/yasm ) ) x86-fbsd? ( || ( dev-lang/nasm dev-lang/yasm ) ) amd64-linux? ( || ( dev-lang/nasm dev-lang/yasm ) ) x86-linux? ( || ( dev-lang/nasm dev-lang/yasm ) ) x64-macos? ( || ( dev-lang/nasm dev-lang/yasm ) ) x64-cygwin? ( || ( dev-lang/nasm dev-lang/yasm ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=!media-libs/jpeg:0 !media-libs/jpeg:62 java? ( >=virtual/jdk-1.5 ) java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=MMX, SSE, and SSE2 SIMD accelerated JPEG library
+EAPI=7
+HOMEPAGE=https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/
+IUSE=java static-libs elibc_FreeBSD java abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=BSD IJG ZLIB
+RDEPEND=!media-libs/jpeg:0 !media-libs/jpeg:62 java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0/0.1
+SRC_URI=mirror://sourceforge/libjpeg-turbo/libjpeg-turbo-1.5.3.tar.gz mirror://gentoo/libjpeg8_8d-2.debian.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	ec7a89849c84f93e9c6db27812923888	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=ade838aab8a5c35d26f6132c50521f81
