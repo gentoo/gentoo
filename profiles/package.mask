@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-18)
+# Dead upstream, fails to build against libfprint-2, multiple longstanding bugs
+# #490234, #678232, #705496, #718642 and no maintainer. Removal in 30 days.
+sys-auth/fingerprint-gui
+
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
 # Not compatible with >=dev-libs/openssl-1.1.0, no maintainer in Gentoo,
 # no new commits to the upstream Git repository since September 2013.
