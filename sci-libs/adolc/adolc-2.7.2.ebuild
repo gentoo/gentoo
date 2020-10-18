@@ -55,6 +55,12 @@ src_configure() {
 		$(use_with sparse colpack "${EPREFIX}"/usr)
 }
 
+src_test() {
+	# 'check' target is unrelated to checking lib works
+	# ('check' is more like distcheck)
+	emake test
+}
+
 src_install() {
 	default
 	use static-libs || find "${D}" -name '*.la' -type f -delete || die
