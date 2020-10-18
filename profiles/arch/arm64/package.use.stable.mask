@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-10-18)
+# Needs dev-tex/hevea which isn't stable yet
+media-gfx/enblend doc
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.
 media-libs/libsdl2 fcitx4
@@ -63,10 +67,6 @@ sys-firmware/seabios debug
 <dev-libs/weston-9 pipewire
 <sys-apps/xdg-desktop-portal-1.7.2 screencast
 x11-wm/mutter screencast
-
-# Aaron Bauman (2019-07-29)
-# no ocamlopt stuff here...
-kde-apps/kalzium solver
 
 # Aaron Bauman (2019-07-29)
 # app-arch/rar not supported

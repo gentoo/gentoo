@@ -23,10 +23,6 @@ libtar
 ldns
 gps
 
-# Aaron Bauman <bman@gentoo.org> (2019-05-20)
-# Does not build on arm64
-ocamlopt
-
 # Mart Raudsepp <leio@gentoo.org> (2019-02-07)
 # media-sound/musepack-tools not stable yet
 musepack
