@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_6 python3_7 )
 
 inherit distutils-r1
@@ -17,12 +19,10 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 RESTRICT=""
 
-CDPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
+DPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}"
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]

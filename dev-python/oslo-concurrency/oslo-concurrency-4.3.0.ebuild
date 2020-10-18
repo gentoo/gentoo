@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -15,8 +15,6 @@ S="${WORKDIR}/oslo.concurrency-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
-RESTRICT=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
