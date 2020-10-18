@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Three dimensional inductance computation program, Whiteley Research version
+EAPI=7
+HOMEPAGE=http://www.wrcad.com/freestuff.html
+KEYWORDS=~amd64
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.wrcad.com/ftp/pub/fasthenry-3.0wr-071720.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=5b5f20fdeae7f1c4ba1c50a6cfb3d3d7

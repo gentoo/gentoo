@@ -2947,7 +2947,7 @@ app-text/libgxps 0.3.1: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.3: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.16 9999: Library parsing many pre-OSX MAC text formats
-app-text/libnumbertext 1.0.5-r1 1.0.6: Number to number name and money text conversion libraries
+app-text/libnumbertext 1.0.6: Number to number name and money text conversion libraries
 app-text/libodfgen 0.1.7 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24_p5 1.1.28: Library for handling paper characteristics
 app-text/libqxp 0.0.2: Library parsing QuarkXpress documents
@@ -2955,7 +2955,7 @@ app-text/libspectre 0.2.9: Library for rendering Postscript documents
 app-text/libstaroffice 0.0.7 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.10.3: WordPerfect Document import/export library
 app-text/libwpg 0.3.3: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.11 0.4.12: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.12: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.73-r1: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 30 30_p20190316 31 31_p20191016: Graphical PDF viewer which aims to superficially resemble less(1)
@@ -16011,7 +16011,7 @@ sci-electronics/eagle 7.3.0-r1 7.4.0-r1 7.6.0-r1 7.7.0-r1: CadSoft EAGLE schemat
 sci-electronics/electric 9.03: Complete Electronic Design Automation system for many forms of circuit design
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espresso logic minimization tool
-sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
+sci-electronics/fasthenry 3.0_p082514 3.0.20.07.17: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2 0.9.4: Electronic Design Automation
 sci-electronics/gazebo 11.1.0-r1: A 3D multiple robot simulator with dynamics
