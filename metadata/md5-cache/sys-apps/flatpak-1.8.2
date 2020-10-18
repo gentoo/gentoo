@@ -1,0 +1,15 @@
+BDEPEND=>=sys-devel/automake-1.13.4 >=sys-devel/gettext-0.18.2 virtual/pkgconfig dev-util/gdbus-codegen sys-devel/bison introspection? ( >=dev-libs/gobject-introspection-1.40 ) doc? ( >=dev-util/gtk-doc-1.20 dev-libs/libxslt ) || ( ( dev-lang/python:3.9 dev-python/pyparsing[python_targets_python3_9(-),python_single_target_python3_9(+)] ) ( dev-lang/python:3.8 dev-python/pyparsing[python_targets_python3_8(-),python_single_target_python3_8(+)] ) ( dev-lang/python:3.7 dev-python/pyparsing[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure setup
+DEPEND=acct-group/flatpak acct-user/flatpak >=app-arch/libarchive-2.8 app-arch/zstd >=app-crypt/gpgme-1.1.8 >=dev-libs/appstream-glib-0.5.10 >=dev-libs/glib-2.56:2 >=dev-libs/libxml2-2.4 dev-libs/json-glib >=dev-util/ostree-2019.5[gpg(+)] || ( dev-util/ostree[curl] dev-util/ostree[soup] ) >=gnome-base/dconf-0.26 >=net-libs/libsoup-2.4 sys-apps/bubblewrap sys-apps/dbus >=sys-fs/fuse-2.9.9:0 sys-apps/xdg-dbus-proxy x11-apps/xauth x11-libs/gdk-pixbuf:2 x11-libs/libXau policykit? ( >=sys-auth/polkit-0.98 ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd )
+DESCRIPTION=Linux application sandboxing and distribution framework
+EAPI=7
+HOMEPAGE=https://flatpak.org/
+IUSE=doc gtk kde introspection policykit seccomp systemd kernel_linux
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1+
+PDEPEND=gtk? ( sys-apps/xdg-desktop-portal-gtk ) kde? ( kde-plasma/xdg-desktop-portal-kde )
+RDEPEND=acct-group/flatpak acct-user/flatpak >=app-arch/libarchive-2.8 app-arch/zstd >=app-crypt/gpgme-1.1.8 >=dev-libs/appstream-glib-0.5.10 >=dev-libs/glib-2.56:2 >=dev-libs/libxml2-2.4 dev-libs/json-glib >=dev-util/ostree-2019.5[gpg(+)] || ( dev-util/ostree[curl] dev-util/ostree[soup] ) >=gnome-base/dconf-0.26 >=net-libs/libsoup-2.4 sys-apps/bubblewrap sys-apps/dbus >=sys-fs/fuse-2.9.9:0 sys-apps/xdg-dbus-proxy x11-apps/xauth x11-libs/gdk-pixbuf:2 x11-libs/libXau policykit? ( >=sys-auth/polkit-0.98 ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=https://github.com/flatpak/flatpak/releases/download/1.8.2/flatpak-1.8.2.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=34b019a0a03c0660e103c0e85c35c173
