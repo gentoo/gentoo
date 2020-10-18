@@ -56,7 +56,7 @@ KEYWORDS=""
 # KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
-IUSE="berkdb debug doc gdbm ithreads"
+IUSE="berkdb debug doc gdbm ithreads minimal"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
@@ -69,10 +69,12 @@ DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}"
 
 PDEPEND="
-	>=app-admin/perl-cleaner-2.5
-	>=virtual/perl-File-Temp-0.230.400-r2
-	>=virtual/perl-Data-Dumper-2.154.0
-	virtual/perl-Test-Harness
+	!minimal? (
+		>=app-admin/perl-cleaner-2.5
+		>=virtual/perl-File-Temp-0.230.400-r2
+		>=virtual/perl-Data-Dumper-2.154.0
+		virtual/perl-Test-Harness
+	)
 "
 # bug 390719, bug 523624
 # virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
