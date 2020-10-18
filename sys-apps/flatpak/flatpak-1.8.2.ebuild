@@ -18,30 +18,31 @@ IUSE="doc gtk kde introspection policykit seccomp systemd"
 RDEPEND="
 	acct-group/flatpak
 	acct-user/flatpak
-	>=app-arch/libarchive-2.8
-	app-arch/zstd
-	>=app-crypt/gpgme-1.1.8
-	>=dev-libs/appstream-glib-0.5.10
-	>=dev-libs/glib-2.56:2
-	>=dev-libs/libxml2-2.4
-	dev-libs/json-glib
-	>=dev-util/ostree-2019.5[gpg(+)]
+	>=app-arch/libarchive-2.8:=
+	app-arch/zstd:=
+	>=app-crypt/gpgme-1.1.8:=
+	>=dev-libs/appstream-glib-0.5.10:=
+	>=dev-libs/glib-2.56:2=
+	>=dev-libs/libxml2-2.4:=
+	dev-libs/json-glib:=
+	dev-libs/libassuan:=
+	>=dev-util/ostree-2019.5:=[gpg(+)]
 	|| (
 		dev-util/ostree[curl]
 		dev-util/ostree[soup]
 	)
-	>=gnome-base/dconf-0.26
-	>=net-libs/libsoup-2.4
+	>=gnome-base/dconf-0.26:=
+	>=net-libs/libsoup-2.4:=
 	sys-apps/bubblewrap
 	sys-apps/dbus
-	>=sys-fs/fuse-2.9.9:0
+	>=sys-fs/fuse-2.9.9:0=
 	sys-apps/xdg-dbus-proxy
 	x11-apps/xauth
-	x11-libs/gdk-pixbuf:2
-	x11-libs/libXau
-	policykit? ( >=sys-auth/polkit-0.98 )
-	seccomp? ( sys-libs/libseccomp )
-	systemd? ( sys-apps/systemd )
+	x11-libs/gdk-pixbuf:2=
+	x11-libs/libXau:=
+	policykit? ( >=sys-auth/polkit-0.98:= )
+	seccomp? ( sys-libs/libseccomp:= )
+	systemd? ( sys-apps/systemd:= )
 "
 
 DEPEND="${RDEPEND}"
