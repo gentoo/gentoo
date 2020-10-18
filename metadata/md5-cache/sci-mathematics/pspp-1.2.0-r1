@@ -5,7 +5,7 @@ DESCRIPTION=Program for statistical analysis of sampled data
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/pspp/pspp.html
 IUSE=cairo doc emacs examples gtk ncurses nls perl postgres test
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=dev-libs/libxml2:2 sci-libs/gsl:0= sys-devel/gettext sys-libs/ncurses:0= sys-libs/readline:0= sys-libs/zlib virtual/libiconv cairo? ( x11-libs/cairo[svg] x11-libs/pango ) emacs? ( >=app-editors/emacs-23.1:* ) gtk? ( x11-libs/gtk+:3 x11-libs/gtksourceview:3.0= x11-libs/spread-sheet-widget cairo? ( dev-util/glib-utils ) ) postgres? ( dev-db/postgresql:=[server] )
 REQUIRED_USE=test? ( cairo )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/1.2.0
 SRC_URI=mirror://gnu/pspp/pspp-1.2.0.tar.gz
 _eclasses_=elisp-common	34cc2b6f6d8914019a353fe39cff43ce	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=6f5d0885cab849c92868582df9dfbdab
+_md5_=e34f45b48deea38830fcfd9ac38f7f26
