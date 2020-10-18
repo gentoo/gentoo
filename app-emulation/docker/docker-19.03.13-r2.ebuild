@@ -14,7 +14,7 @@ else
 	DOCKER_GITCOMMIT=4484c46d9d
 	MY_PV=${PV/_/-}
 	SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
