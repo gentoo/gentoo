@@ -382,7 +382,6 @@ sci-mathematics/axiom
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
 app-backup/genbackupdata
-app-i18n/pology
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
