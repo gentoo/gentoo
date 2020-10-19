@@ -14,4 +14,8 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-DEPEND="app-arch/zstd"
+DEPEND="
+	app-arch/zstd
+	!dev-python/zstandard[${PYTHON_USEDEP}]
+"
+RDEPEND="${DEPEND}"
