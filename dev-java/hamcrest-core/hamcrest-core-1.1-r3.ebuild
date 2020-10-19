@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,10 +20,10 @@ KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-macos ~x64-solaris"
 IUSE=""
 
 RDEPEND="
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8"
 
 DEPEND="
-	>=virtual/jdk-1.6
+	virtual/jdk:1.8
 	source? ( app-arch/zip )"
 
 S="${WORKDIR}/JavaHamcrest-${MY_PN}-java-${PV}"
