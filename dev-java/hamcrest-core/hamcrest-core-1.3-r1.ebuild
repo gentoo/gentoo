@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,11 +19,11 @@ LICENSE="BSD-2"
 SLOT="${PV}"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 
-DEPEND=">=virtual/jdk-1.5
-	~dev-java/hamcrest-generator-${PV}
+DEPEND="virtual/jdk:1.8
+	~dev-java/hamcrest-generator-${PV}:1.3
 	userland_GNU? ( sys-apps/findutils )"
 
-RDEPEND=">=virtual/jre-1.5"
+RDEPEND=">=virtual/jre-1.8"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 JAVA_ANT_CLASSPATH_TAGS="${JAVA_ANT_CLASSPATH_TAGS} java java-to-jar"
