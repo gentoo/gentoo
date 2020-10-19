@@ -21,7 +21,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc mysql postgres +sqlite +swift"
+IUSE="mysql postgres +sqlite +swift"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 #note to self, wsgiref is a python builtin, no need to package it
@@ -115,12 +115,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	if [ ! -z ${EGIT_BRANCH+x} ]; then
-		use doc && "${PYTHON}" setup.py build_sphinx
-	fi
-}
-
 python_install_all() {
 	distutils-r1_python_install_all
 
@@ -137,7 +131,6 @@ python_install_all() {
 	insopts -m 0640 -o glance -g glance
 	doins -r etc/*.ini etc/*.conf etc/*.sample etc/*.json etc/meta*
 
-	use doc && local HTML_DOCS=( doc/build/html/. )
 	distutils-r1_python_install_all
 	rm -r "${ED}"/usr/etc
 }
