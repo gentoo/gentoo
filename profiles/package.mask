@@ -365,54 +365,6 @@ net-misc/gwget
 # Bug #679502, #701406, #701408, #742116.
 sys-block/rts5229
 
-# David Seifert <soap@gentoo.org> (2020-09-19)
-# EAPI 4, last release in 2008, upstream pretty much dead,
-# tons of bugs, broken since at least 2016, lots of weird
-# dead/alive/redead forks all over the internet. Use
-# sci-mathematics/fricas as spiritual successor fork.
-# Removal in 30 days.  Bug #326575, #514762, #532498,
-# #574956, #581250, #586402, #587878, #740966.
-sci-mathematics/axiom
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-19)
-# These packages (or package versions) still require Python 2.7.
-# They are either dead upstream, their Python 3 porting efforts are
-# not progressing or their maintainers are simply unresponsive.
-# Please do not remove any packages from this list unless you actually
-# port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-app-backup/genbackupdata
-app-i18n/pology
-app-text/pdf2djvu
-app-text/sgmltools-lite
-sci-libs/magma
-
-# Hans de Graaff <graaff@gentoo.org> (2020-09-19)
-# Mask insecure rack slot for removal in 30 days, bug 730786
-dev-ruby/rack:1.6
-
-# Hans de Graaff <graaff@gentoo.org> (2020-09-17)
-# Mask old unmaintained or obsolete ruby packages for removal in 30
-# days.
-# No longer maintained upstream, ruby27 issues, no deps
-dev-ruby/bluecloth
-# No longer maintained upstream, no deps
-dev-ruby/calendar_date_select
-# Obsolete, no deps
-dev-ruby/capistrano-stats
-# No longer maintained, git snapshot from 2013, no deps
-dev-ruby/expression_parser
-# No longer needed, no deps
-dev-ruby/hoe-seattlerb
-# No longer maintained upstream, ruby27 issues, no deps
-dev-ruby/inifile
-# Obsolete (merged into rails 4)
-dev-ruby/journey
-# No longer maintained, ruby27 issues, no deps
-dev-ruby/rgen
-# No longer maintained, no deps
-dev-ruby/ruby_dep
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
