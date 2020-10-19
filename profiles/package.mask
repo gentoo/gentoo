@@ -398,8 +398,6 @@ dev-ruby/rack:1.6
 dev-ruby/bluecloth
 # No longer maintained upstream, no deps
 dev-ruby/calendar_date_select
-# Obsolete, no deps
-dev-ruby/capistrano-stats
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
