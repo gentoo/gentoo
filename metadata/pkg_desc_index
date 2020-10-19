@@ -4731,7 +4731,7 @@ dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/gwt 2.8.2: Google Web Toolkit library
 dev-java/hamcrest-core 1.1-r1 1.3: Core library of matchers for building test expressions
-dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
+dev-java/hamcrest-generator 1.3-r2: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
 dev-java/hamcrest-library 1.3-r1: Core library of matchers for building test expressions
 dev-java/hawtjni-runtime 1.10 1.15: A JNI code generator based on the generator used by the Eclipse SWT project
