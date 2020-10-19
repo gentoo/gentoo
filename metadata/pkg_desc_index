@@ -10623,7 +10623,7 @@ dev-util/catalyst 3.0.14 9999: Release metatool used for creating releases based
 dev-util/catfish 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.14.6 0.15.0: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.11 3.7.12: fast compiler cache
+dev-util/ccache 3.7.11 3.7.12 4.0: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.6 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
