@@ -396,8 +396,6 @@ dev-ruby/rack:1.6
 # days.
 # No longer maintained upstream, ruby27 issues, no deps
 dev-ruby/bluecloth
-# No longer maintained upstream, no deps
-dev-ruby/calendar_date_select
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
