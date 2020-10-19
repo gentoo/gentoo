@@ -22,3 +22,4 @@ RDEPEND="
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/ocv_leak.patch" )
