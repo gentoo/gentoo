@@ -1184,7 +1184,6 @@ app-text/qpdfview:fitz - Use experimental fitz rendering, provided by app-text/m
 app-text/qpdfview:synctex - Add support for searching TeX sources
 app-text/robodoc:examples - Installs usage examples in /usr/share for Perl
 app-text/sdcv:darkterm - Improve readability of color output on terminals with dark background.
-app-text/sgmltools-lite:jadetex - Add support for processing tex files produced by the TeX backend of Jade
 app-text/sigil:plugins - Installed needed Python packages for using Sigil plugins
 app-text/sigil:system-mathjax - Use the system-wide dev-libs/mathjax instead of bundled
 app-text/stardict:advertisement - Enable stardict advertisements plugin
@@ -7358,8 +7357,6 @@ sci-libs/linbox:opencl - Enable the use of OpenCL in LinBox
 sci-libs/linux-gpib:firmware - Install firmware
 sci-libs/lis:quad - Enable quadruple precision operations
 sci-libs/lis:saamg - Build the Smoothed Aggregation Algebraic MultiGrid preconditioner
-sci-libs/magma:fermi - Compile for GPU NVIDIA Fermi family (2.x cards)
-sci-libs/magma:kepler - Compile for GPU NVIDIA Kepler family (GF 6xx cards)
 sci-libs/mathgl:hdf - Add support for the Hierarchical Data Format v.4 sci-libs/hdf
 sci-libs/mathgl:octave - Add bindings for sci-mathematics/octave
 sci-libs/matio:sparse - Extend formats for sparse matrix (not matlab)
