@@ -4959,7 +4959,7 @@ dev-java/openjdk 8.265_p01 11.0.8_p10: Open source implementation of the Java pr
 dev-java/openjdk-bin 8.265_p01 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-java/openjdk-jre-bin 8.265_p01 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 8.999 11.0.9_p0: Java OpenJFX client application platform
-dev-java/oracle-javamail 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
+dev-java/oracle-javamail 1.5.6 1.5.6-r1: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
