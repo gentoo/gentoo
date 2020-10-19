@@ -9245,7 +9245,7 @@ dev-python/uranium 4.6.1 4.7.0: A Python framework for building 3D printing rela
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
-dev-python/urllib3 1.24.2-r1 1.25.10-r1: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.24.2-r1 1.25.10-r1 1.25.11: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.0 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
@@ -15407,7 +15407,7 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6-r1 3.1.7: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.5-r2 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.2.5-r2 4.3.0 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
