@@ -404,8 +404,6 @@ dev-ruby/capistrano-stats
 dev-ruby/expression_parser
 # No longer needed, no deps
 dev-ruby/hoe-seattlerb
-# No longer maintained upstream, ruby27 issues, no deps
-dev-ruby/inifile
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
