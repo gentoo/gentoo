@@ -26,3 +26,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)
 "
+PATCHES=( "${FILESDIR}/ocv_leak.patch" )
