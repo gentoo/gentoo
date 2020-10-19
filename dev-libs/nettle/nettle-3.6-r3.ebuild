@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-3 LGPL-2.1 )"
 SLOT="0/8-6" # subslot = libnettle - libhogweed soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+asm doc +gmp static-libs test cpu_flags_x86_aes cpu_flags_arm_neon cpu_flags_x86_sha"
 RESTRICT="!test? ( test )"
 
