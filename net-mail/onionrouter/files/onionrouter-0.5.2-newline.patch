@@ -1,0 +1,30 @@
+https://github.com/ehloonion/onionrouter/pull/21
+
+From 670690f03fd700e2b06892e2231a8e078cfb41b3 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 19 Oct 2020 15:47:41 -0400
+Subject: [PATCH] Send a newline when replying to postfix
+
+Postfix requires all replies to end in a newline.
+
+Without this change, postfix logs a warning:
+`warning: read TCP map reply from localhost:23000: text longer than 4096`
+
+See http://www.postfix.org/tcp_table.5.html
+---
+ onionrouter/msockets.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/onionrouter/msockets.py b/onionrouter/msockets.py
+index 8769a2e..8c93693 100644
+--- a/onionrouter/msockets.py
++++ b/onionrouter/msockets.py
+@@ -27,7 +27,7 @@ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
+         return
+     except BaseException as err:
+         # todo log
+-        conn.sendall("500 {0}".format(err).encode())
++        conn.sendall("500 {0}\n".format(err).encode())
+ 
+ 
+ def daemonize_server(rerouter, host, port, resolver=resolve):

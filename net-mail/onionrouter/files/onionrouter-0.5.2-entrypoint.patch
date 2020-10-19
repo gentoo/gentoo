@@ -1,0 +1,25 @@
+https://github.com/ehloonion/onionrouter/pull/16
+
+From 06d5c15d61790c9444641de18b9ff23f1c104207 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 19 Oct 2020 12:46:08 -0400
+Subject: [PATCH] Change the entry point to rerouter
+
+Aligns the entry point with the changes made in commit 2e8f7be "Rename onionrouter module to rerouter"
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index baf6041..e487614 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,7 +40,7 @@
+         'onionrouter',
+     ],
+     entry_points={
+-        "console_scripts": ['onionrouter = onionrouter.onionrouter:main']
++        "console_scripts": ['onionrouter = onionrouter.rerouter:main']
+     },
+     include_package_data=True,
+     install_requires=requirements,
