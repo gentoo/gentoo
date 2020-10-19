@@ -1,5 +1,5 @@
+BDEPEND=doc? ( app-doc/doxygen media-gfx/graphviz )
 DEFINED_PHASES=compile configure install test
-DEPEND=doc? ( app-doc/doxygen media-gfx/graphviz )
 DESCRIPTION=Open codec for interactive speech and music transmission over the Internet
 EAPI=7
 HOMEPAGE=https://opus-codec.org/
@@ -9,4 +9,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=6045078ba70591de423a6a97b4cd7996
+_md5_=4c774648ff4aabf90efcb498253c1c7b

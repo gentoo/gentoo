@@ -12403,7 +12403,7 @@ mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch w
 mail-client/alpine 2.23 2.24: An easy to use text-based based mail and news client
 mail-client/balsa 2.6.1: Email client for GNOME
 mail-client/bower 0.10 0.11 0.12: Curses terminal client for the Notmuch email system
-mail-client/claws-mail 3.17.6-r1 3.17.7 9999: An email client (and news reader) based on GTK+
+mail-client/claws-mail 3.17.6-r1 3.17.7 3.17.8 9999: An email client (and news reader) based on GTK+
 mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
