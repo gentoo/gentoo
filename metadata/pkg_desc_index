@@ -6259,7 +6259,7 @@ dev-perl/DBD-Pg 3.5.3 3.7.0 3.10.0 3.14.2: PostgreSQL database driver for the DB
 dev-perl/DBD-SQLite 1.560.0 1.580.0 1.660.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.643.0: Database independent interface for Perl
-dev-perl/DBI-Shell 11.950.0-r2 11.960.0 11.970.0: Interactive command shell for the DBI
+dev-perl/DBI-Shell 11.950.0-r2 11.970.0: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.50.0-r1: create a temporary database from a DBIx::Class::Schema
 dev-perl/DBIx-Class 0.82.842: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0-r1: Automatically set and update fields
@@ -6292,7 +6292,7 @@ dev-perl/Data-Hexify 1.0.0-r1 1.0.0-r2: Perl extension for hexdumping arbitrary 
 dev-perl/Data-Hierarchy 0.340.0-r1 0.340.0-r2: Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0 0.240.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-IEEE754 0.20.0: Pack and unpack big-endian IEEE754 floats and doubles
-dev-perl/Data-ObjectDriver 0.150.0 0.190.0 0.200.0: Simple, transparent data interface, with caching
+dev-perl/Data-ObjectDriver 0.150.0 0.200.0: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1 2.30.0: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
@@ -6332,14 +6332,14 @@ dev-perl/DateTime-Format-Flexible 0.320.0: Flexibly parse strings and turn them 
 dev-perl/DateTime-Format-HTTP 0.420.0 0.420.0-r1: Date conversion routines
 dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string describing the span of a given duration
 dev-perl/DateTime-Format-ICal 0.90.0-r1: Parse and format iCal datetime and duration strings
-dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.80.0-r2 0.140.0: Parses ISO8601 formats
+dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.140.0: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.50.0 1.100.0 1.110.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0-r1: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.30.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.30.0 1.160.0 1.260.0 1.270.0 1.280.0: Localization support for DateTime
+dev-perl/DateTime-Locale 0.460.0 1.30.0 1.160.0 1.280.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0 0.390.0-r1: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 2.10.0 2.130.0 2.390.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.70.0: A date object, with as little code as possible
@@ -6399,7 +6399,7 @@ dev-perl/Dist-Zilla-Plugin-Config-Git 0.920.0-r1: Plugin configuration containin
 dev-perl/Dist-Zilla-Plugin-ContributorsFile 0.3.0: add a file listing all contributors
 dev-perl/Dist-Zilla-Plugin-CopyFilesFromBuild 0.170.880: Copy (or move) specific files after building (for SCM inclusion, etc.)
 dev-perl/Dist-Zilla-Plugin-CopyFilesFromRelease 0.7.0: Copy files from a release (for SCM inclusion, etc.)
-dev-perl/Dist-Zilla-Plugin-Git 2.46.0 2.47.0: Update your git repository after release
+dev-perl/Dist-Zilla-Plugin-Git 2.47.0: Update your git repository after release
 dev-perl/Dist-Zilla-Plugin-Git-Contributors 0.35.0: Add contributor names from git to your distribution
 dev-perl/Dist-Zilla-Plugin-GithubMeta 0.580.0: Automatically include GitHub meta information in META.yml
 dev-perl/Dist-Zilla-Plugin-LicenseFromModule 0.70.0: Extract License and Copyright from its main_module file
@@ -6471,8 +6471,8 @@ dev-perl/Event-RPC 1.100.0 1.100.0-r1: Event based transparent Client/Server RPC
 dev-perl/Exception-Base 0.250.100-r1: Error handling with exception class
 dev-perl/Exception-Class 1.430.0 1.440.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r2: Convert simple die into real exception object
-dev-perl/Exception-System 0.110.0-r1 0.110.0-r2: Exception class for system or library calls
-dev-perl/Exception-Warning 0.40.100-r1 0.40.100-r2: Convert simple warn into real exception object
+dev-perl/Exception-System 0.110.0-r2: Exception class for system or library calls
+dev-perl/Exception-Warning 0.40.100-r2: Convert simple warn into real exception object
 dev-perl/Expect 1.350.0: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1 0.310.0-r2: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.80.0: Lightweight exporting of variables
@@ -6497,7 +6497,7 @@ dev-perl/FLV-AudioExtractor 0.010.0 0.10.0-r1: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r2: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r2 0.70.0-r3: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r2: Non-blocking interface to a Festival server
-dev-perl/File-BOM 0.160.0 0.180.0: Utilities for handling Byte Order Marks
+dev-perl/File-BOM 0.180.0: Utilities for handling Byte Order Marks
 dev-perl/File-BaseDir 0.70.0 0.80.0: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1 0.450.0: uses File::Copy to recursively copy dirs
@@ -6509,7 +6509,7 @@ dev-perl/File-Flock 2014.10.0 2014.10.0-r1: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.20.0-r2: Find matches to a pattern in a series of files and related functions
 dev-perl/File-HomeDir 1.2.0 1.4.0 1.6.0: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
-dev-perl/File-LibMagic 1.150.0 1.220.0 1.220.0-r1 1.230.0: Perl wrapper for libmagic
+dev-perl/File-LibMagic 1.150.0 1.230.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1 6.40.0-r2 6.70.0: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0 0.670.0: Memory mapping made simple and safe
@@ -6522,7 +6522,7 @@ dev-perl/File-ReadBackwards 1.50.0-r1 1.50.0-r2: Read a file backwards by lines
 dev-perl/File-Remove 1.570.0 1.580.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0 0.740.0-r1 0.760.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
-dev-perl/File-SearchPath 0.70.0 0.70.0-r1: Search for a file in an environment variable path
+dev-perl/File-SearchPath 0.70.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
 dev-perl/File-ShareDir 1.104.0 1.116.0: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.110.0 0.130.0: Install shared files
@@ -6545,14 +6545,14 @@ dev-perl/FileHandle-Unget 0.162.800 0.163.400: A FileHandle which supports unget
 dev-perl/Filesys-Df 0.920.0-r2 0.920.0-r3: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0 0.140.0: Simple and dumb file system watcher
-dev-perl/Filesys-SmbClient 3.200.0-r3 3.200.0-r4: Provide Perl API for libsmbclient.so
+dev-perl/Filesys-SmbClient 3.200.0-r4: Provide Perl API for libsmbclient.so
 dev-perl/Filesys-Statvfs 0.820.0 0.820.0-r1: Perl extension for statvfs() and fstatvfs()
 dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1 0.260.0: Get stock quotes from Yahoo! Finance
-dev-perl/Font-AFM 1.200.0-r1 1.200.0-r2 1.200.0-r3: Parse Adobe Font Metric files
+dev-perl/Font-AFM 1.200.0-r1 1.200.0-r3: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.60.0 1.60.0-r1: module for compiling and altering fonts
-dev-perl/Format-Human-Bytes 0.60.0-r1 0.60.0-r2: Format a bytecount and make it human readable
+dev-perl/Format-Human-Bytes 0.60.0-r2: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1 0.500.100-r2: converting Perl structures to strings and back
 dev-perl/Frontier-RPC 0.07_beta4-r2 0.07_beta4-r3: Perform remote procedure calls using extensible markup language
 dev-perl/Fuse 0.16.1 0.16.1-r1 0.16.1-r2: Fuse module for perl
