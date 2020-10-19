@@ -406,8 +406,6 @@ dev-ruby/expression_parser
 dev-ruby/hoe-seattlerb
 # No longer maintained upstream, ruby27 issues, no deps
 dev-ruby/inifile
-# Obsolete (merged into rails 4)
-dev-ruby/journey
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
