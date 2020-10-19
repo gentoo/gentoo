@@ -402,8 +402,6 @@ dev-ruby/calendar_date_select
 dev-ruby/capistrano-stats
 # No longer maintained, git snapshot from 2013, no deps
 dev-ruby/expression_parser
-# No longer needed, no deps
-dev-ruby/hoe-seattlerb
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
