@@ -374,15 +374,6 @@ sys-block/rts5229
 # #574956, #581250, #586402, #587878, #740966.
 sci-mathematics/axiom
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-19)
-# These packages (or package versions) still require Python 2.7.
-# They are either dead upstream, their Python 3 porting efforts are
-# not progressing or their maintainers are simply unresponsive.
-# Please do not remove any packages from this list unless you actually
-# port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-app-backup/genbackupdata
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
