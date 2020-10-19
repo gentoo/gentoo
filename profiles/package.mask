@@ -387,10 +387,6 @@ app-text/pdf2djvu
 app-text/sgmltools-lite
 sci-libs/magma
 
-# Hans de Graaff <graaff@gentoo.org> (2020-09-19)
-# Mask insecure rack slot for removal in 30 days, bug 730786
-dev-ruby/rack:1.6
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
