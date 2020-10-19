@@ -4,7 +4,7 @@ DESCRIPTION=Backport of Python 3.7 contextvars module (PEP 567) for Python 3.6
 EAPI=7
 HOMEPAGE=https://github.com/MagicStack
 IUSE=test python_targets_python3_6
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=dev-python/immutables[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/MagicStack/contextvars/archive/v2.4.tar.gz -> contextvars-2.4.tar.gz
 _eclasses_=distutils-r1	409cd1220f9f980d21980293a50e2a8e	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e093eec6df631b0fe5b61ed3ec399056
+_md5_=0d72fe369636d3605049f27d8d6c139e
