@@ -33,3 +33,4 @@ DEPEND="${RDEPEND}
 		dev-ros/camera_calibration_parsers
 	)
 "
+PATCHES=( "${FILESDIR}/ocv_leak.patch" )
