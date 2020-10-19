@@ -408,8 +408,6 @@ dev-ruby/hoe-seattlerb
 dev-ruby/inifile
 # Obsolete (merged into rails 4)
 dev-ruby/journey
-# No longer maintained, ruby27 issues, no deps
-dev-ruby/rgen
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
