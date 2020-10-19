@@ -385,7 +385,6 @@ app-backup/genbackupdata
 app-i18n/pology
 app-text/pdf2djvu
 app-text/sgmltools-lite
-sci-libs/magma
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
