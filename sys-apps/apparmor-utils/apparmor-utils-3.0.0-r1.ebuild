@@ -33,6 +33,8 @@ RDEPEND="${COMMON_DEPEND}
 	dev-perl/Locale-gettext
 	dev-perl/RPC-XML
 	dev-perl/TermReadKey
+	dev-python/notify2[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	virtual/perl-Data-Dumper
 	virtual/perl-Getopt-Long"
 
