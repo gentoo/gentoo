@@ -8878,7 +8878,7 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1 5.0.1: Client library for Barbican API.
 dev-python/python-blazarclient 2.1.0 3.1.1: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 2.5.0 3.0.0: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 2.5.0 3.0.0 3.0.1: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2 7.2.0: A client for the OpenStack Cinder API
