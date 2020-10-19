@@ -410,8 +410,6 @@ dev-ruby/inifile
 dev-ruby/journey
 # No longer maintained, ruby27 issues, no deps
 dev-ruby/rgen
-# No longer maintained, no deps
-dev-ruby/ruby_dep
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
