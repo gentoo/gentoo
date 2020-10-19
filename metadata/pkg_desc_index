@@ -5583,7 +5583,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
-dev-libs/nss 3.55 3.56 3.57: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.55 3.56 3.57 3.58: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
@@ -7749,7 +7749,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10 1.10.13: Dependency Manager for PHP
+dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10 1.10.13 1.10.15: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
@@ -7838,7 +7838,7 @@ dev-php/sebastian-resource-operations 1.0.0 2.0.1: Provides a list of PHP built-
 dev-php/sebastian-type 1.1.3: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
-dev-php/semver 1.4.2 1.5.1 1.7.0: Semantic versioning utilities, constraint parsing, and checking
+dev-php/semver 1.4.2 1.5.1 1.7.0 1.7.1: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3 1.5.4: Tools for working with and validating SPDX licenses
@@ -8294,7 +8294,7 @@ dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest
 dev-python/httpbin 0.7.0-r1: HTTP Request and Response Service
 dev-python/httplib2 0.18.1-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2-r1: HTTP client mock for Python
-dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
+dev-python/httpstat 1.2.1-r1 1.3.0: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 4.18 8.2: Human friendly output for text interfaces using Python
 dev-python/humanize 2.6.0 3.0.0 3.0.1: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
@@ -15374,7 +15374,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0 21.0-r1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145: A newsreader for GNOME
-net-nntp/sabnzbd 3.0.0-r1 3.0.1 3.0.2: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 3.0.0-r1 3.0.1 3.0.2 3.1.0: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
