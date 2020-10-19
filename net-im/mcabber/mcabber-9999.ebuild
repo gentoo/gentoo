@@ -10,7 +10,7 @@ HOMEPAGE="http://mcabber.com/"
 
 if [[ "${PV}" == 9999 ]]; then
 	inherit mercurial
-	EHG_REPO_URI="https://bitbucket.org/McKael/mcabber"
+	EHG_REPO_URI="https://mcabber.com/hg/"
 	EHG_CHECKOUT_DIR="${WORKDIR}"
 	EHG_BOOTSTRAP="autogen.sh"
 	S="${WORKDIR}/${PN}"
