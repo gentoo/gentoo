@@ -16,8 +16,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="udev? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP},static-libs(-)?] )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	!udev? ( virtual/os-headers )"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 multilib_src_configure() {
 	local myeconfargs=(

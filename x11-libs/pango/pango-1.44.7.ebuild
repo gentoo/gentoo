@@ -31,10 +31,10 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 "
 DEPEND="${RDEPEND}
-	dev-util/glib-utils
 	x11-base/xorg-proto
 "
 BDEPEND="
+	dev-util/glib-utils
 	virtual/pkgconfig
 	gtk-doc? (
 		>=dev-util/gtk-doc-1.20
