@@ -20,7 +20,11 @@ DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 "
-RDEPEND="${DEPEND}"
+
+RDEPEND="
+	${DEPEND}
+	acct-group/plugdev
+"
 
 PATCHES=(
 	"${FILESDIR}/libfido2-1.5.0-cmakelists.patch"
