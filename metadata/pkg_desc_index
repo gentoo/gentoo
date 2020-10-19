@@ -6241,7 +6241,7 @@ dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Gene
 dev-perl/Crypt-Random-Seed 0.30.0: Simple method to get strong randomness
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Random-TESHA2 0.10.0: Random numbers using timer/schedule entropy
-dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1 1.150.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.260.0 0.270.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
@@ -6250,7 +6250,7 @@ dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0 0.530.0: Parse a X.509 certificate
 dev-perl/CryptX 0.64.0 0.69.0: Self-contained crypto toolkit
-dev-perl/Curses 1.360.0 1.360.0-r1: Curses interface modules for Perl
+dev-perl/Curses 1.360.0 1.360.0-r1 1.370.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)

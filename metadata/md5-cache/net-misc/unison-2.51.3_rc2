@@ -1,5 +1,5 @@
 BDEPEND=dev-lang/ocaml:=[ocamlopt?]
-DEFINED_PHASES=compile install postinst test
+DEFINED_PHASES=compile install postinst postrm test
 DEPEND=gtk? ( dev-ml/lablgtk:2= )
 DESCRIPTION=Two-way cross-platform file synchronizer
 EAPI=7
@@ -11,4 +11,5 @@ RDEPEND=gtk? ( dev-ml/lablgtk:2= ) || ( net-misc/x11-ssh-askpass net-misc/ssh-as
 RESTRICT=!ocamlopt? ( strip )
 SLOT=2.51
 SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.3_rc2.tar.gz -> unison-2.51.3_rc2.tar.gz
-_md5_=afb52d13823ed824b058bf165d4be27a
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ee5b0182127cc82bd94d41da528f3c9a
