@@ -1,0 +1,42 @@
+https://github.com/ehloonion/onionrouter/pull/20
+
+From d059ee499a0ed30239f6c4ee6ea8f144069fbb7d Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 19 Oct 2020 14:53:46 -0400
+Subject: [PATCH] Perform bytes to string and vice versa conversions
+
+Python 3 handles bytes and strings as different types
+
+Fixes https://github.com/ehloonion/onionrouter/issues/19
+---
+ onionrouter/msockets.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/onionrouter/msockets.py b/onionrouter/msockets.py
+index 8769a2e..b77d750 100644
+--- a/onionrouter/msockets.py
++++ b/onionrouter/msockets.py
+@@ -13,7 +13,7 @@ def close_socket(sock):
+ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
+     try:
+         while True:
+-            addr = conn.recv(1024).strip()
++            addr = conn.recv(1024).decode().strip()
+             if not addr:
+                 # connection ended
+                 return
+@@ -22,12 +22,12 @@ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
+             else:
+                 result = rerouter.run(addr)
+                 resolve_callback(addr, result)
+-                conn.sendall("{0}\n".format(result))
++                conn.sendall("{0}\n".format(result).encode())
+     except socket.timeout:
+         return
+     except BaseException as err:
+         # todo log
+-        conn.sendall("500 {0}".format(err))
++        conn.sendall("500 {0}".format(err).encode())
+ 
+ 
+ def daemonize_server(rerouter, host, port, resolver=resolve):
