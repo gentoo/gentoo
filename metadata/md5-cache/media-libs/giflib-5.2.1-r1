@@ -1,5 +1,4 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=doc? ( app-text/xmlto )
 DESCRIPTION=Library to handle, display and manipulate GIF images
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/giflib/
@@ -9,4 +8,4 @@ LICENSE=MIT
 SLOT=0/7
 SRC_URI=mirror://sourceforge/giflib/giflib-5.2.1.tar.gz
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b5895fdb047578bcfb92c098611ebf1c
+_md5_=ef0365df5cdd81222a0ed69f939c43a6
