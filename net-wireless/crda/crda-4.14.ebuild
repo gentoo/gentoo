@@ -28,7 +28,7 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
 
 python_check_deps() {
-	has_version --host-root "dev-python/m2crypto[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/m2crypto[${PYTHON_USEDEP}]"
 }
 
 PATCHES=(

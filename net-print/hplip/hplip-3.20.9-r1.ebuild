@@ -31,7 +31,10 @@ COMMON_DEPEND="
 		sys-apps/dbus
 		!libusb0? ( virtual/libusb:1 )
 		libusb0? ( virtual/libusb:0 )
-		scanner? ( media-gfx/sane-backends )
+		scanner? (
+			media-gfx/sane-backends
+			$(python_gen_cond_dep 'net-dns/avahi[${PYTHON_MULTI_USEDEP}]')
+		)
 		snmp? (
 			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:= )
@@ -63,7 +66,6 @@ RDEPEND="
 			scanner? (
 				>=dev-python/reportlab-3.2[${PYTHON_MULTI_USEDEP}]
 				>=dev-python/pillow-3.1.1[${PYTHON_MULTI_USEDEP}]
-				net-dns/avahi[${PYTHON_MULTI_USEDEP}]
 				X? (
 					|| (
 						kde? ( kde-misc/skanlite )
