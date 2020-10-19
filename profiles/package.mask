@@ -383,7 +383,6 @@ sci-mathematics/axiom
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
 app-backup/genbackupdata
 app-i18n/pology
-app-text/pdf2djvu
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
