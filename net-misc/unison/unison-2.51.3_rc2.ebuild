@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit desktop xdg-utils
+
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
 SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -65,6 +67,11 @@ src_install() {
 		newbin ${binname} ${binname}-${SLOT}
 	done
 
+	if use gtk; then
+		newicon -s scalable ../icons/U.svg ${PN}-${SLOT}.svg
+		make_desktop_entry Unison "${PN} (${SLOT})" "${EPREFIX}/usr/share/${PN}/${PN}-${SLOT}.svg"
+	fi
+
 	# No docs for release candidates
 	#if use doc; then
 	#	DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
@@ -78,5 +85,15 @@ pkg_postinst() {
 	elog "Unison now uses SLOTs, so you can specify servercmd=/usr/bin/unison-${SLOT}"
 	elog "in your profile files to access exactly this version over ssh."
 	elog "Or you can use 'eselect unison' to set the version."
-	eselect unison update
+	eselect unison update || die
+
+	if use gtk; then
+		xdg_icon_cache_update
+	fi
+}
+
+pkg_postrm() {
+	if use gtk; then
+		xdg_icon_cache_update
+	fi
 }
