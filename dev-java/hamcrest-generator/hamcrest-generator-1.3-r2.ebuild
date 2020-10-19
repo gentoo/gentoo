@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,11 +21,11 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 
 CDEPEND=">=dev-java/qdox-1.12-r1:1.12"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.8
 	userland_GNU? ( sys-apps/findutils )
 	${CDEPEND}"
 
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.8
 	${CDEPEND}"
 
 EANT_BUILD_TARGET="generator"
