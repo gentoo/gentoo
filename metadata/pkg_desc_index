@@ -5406,7 +5406,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
-dev-libs/libfido2 1.3.1 1.4.0 1.5.0: Provides library functionality for FIDO 2.0
+dev-libs/libfido2 1.3.1 1.4.0 1.5.0-r1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0 0.24.0 0.24.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 7.0.3 9999: Small, safe and fast formatting library
@@ -6007,7 +6007,7 @@ dev-perl/AppConfig 1.710.0-r1: Perl5 module for reading configuration files and 
 dev-perl/Archive-Any 0.94.600: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0 0.860.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Stream 0.30.0-r1: pure perl IO-friendly tar file management
-dev-perl/Archive-Tar-Wrapper 0.370.0 0.380.0: API wrapper around the 'tar' utility
+dev-perl/Archive-Tar-Wrapper 0.380.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.3: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r3: Set up array elements as aliases
@@ -6208,7 +6208,7 @@ dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0 0.110.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0 0.110.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.550.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 4.190.0 4.210.0 4.230.0 4.240.0: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 4.190.0 4.230.0 4.240.0: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
@@ -6242,7 +6242,7 @@ dev-perl/Crypt-Random-Seed 0.30.0: Simple method to get strong randomness
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Random-TESHA2 0.10.0: Random numbers using timer/schedule entropy
 dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1 1.150.0: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.260.0 0.270.0: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SMIME 0.270.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
@@ -6255,8 +6255,8 @@ dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the cur
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0-r1: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
-dev-perl/DBD-Pg 3.5.3 3.7.0 3.10.0 3.14.0 3.14.2: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.560.0 1.580.0 1.640.0 1.660.0: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-Pg 3.5.3 3.7.0 3.10.0 3.14.2: PostgreSQL database driver for the DBI module
+dev-perl/DBD-SQLite 1.560.0 1.580.0 1.660.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0-r1 4.50.0 4.50.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.643.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2 11.960.0 11.970.0: Interactive command shell for the DBI
