@@ -6001,7 +6001,7 @@ dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-FatPacker 0.10.8: pack your dependencies onto your script file
 dev-perl/App-Nopaste 1.13.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.704.400 9999: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.880.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.880.0 0.890.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.160.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0-r1: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.600: Single interface to deal with file archives
