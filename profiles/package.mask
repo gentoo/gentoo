@@ -319,11 +319,6 @@ x11-misc/ipager
 # Removal in 30 days.  Bug #735396.
 media-tv/plex-media-server
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Obsolete Python 2 packages with no revdeps.
-# Removal in 30 days.  Bug #743727.
-dev-python/pyogg
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
