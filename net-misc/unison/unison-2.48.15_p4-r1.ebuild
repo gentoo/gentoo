@@ -41,7 +41,7 @@ PATCHES=(
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
 src_compile() {
-	local myconf
+	local myconf="all"
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
@@ -77,7 +77,7 @@ src_install() {
 
 	if use gtk; then
 		newicon -s scalable ../icons/U.svg ${PN}-${SLOT}.svg
-		make_desktop_entry Unison "${PN} (${SLOT})" "${EPREFIX}/usr/share/${PN}/${PN}-${SLOT}.svg"
+		make_desktop_entry unison-${SLOT} "${PN} (${SLOT})" "${EPREFIX}/usr/share/${PN}/${PN}-${SLOT}.svg"
 	fi
 
 # No manual.pdf or manual.html available for this version
