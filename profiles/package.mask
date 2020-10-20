@@ -272,7 +272,6 @@ app-leechcraft/lc-vrooby
 app-leechcraft/lc-xproxy
 app-leechcraft/lc-xtazy
 app-leechcraft/leechcraft-meta
-app-leechcraft/liblaretz
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
