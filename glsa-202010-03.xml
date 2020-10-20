@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-03">
+  <title>libjpeg-turbo: Information disclosure</title>
+  <synopsis>An information disclosure vulnerability in libjpeg-turbo allow
+    remote attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">libjpeg-turbo</product>
+  <announced>2020-10-20</announced>
+  <revised count="1">2020-10-20</revised>
+  <bug>727010</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libjpeg-turbo" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/0.1">1.5.3-r3</unaffected>
+      <unaffected range="ge" slot="0/0.2">2.0.4-r1</unaffected>
+      <vulnerable range="lt">2.0.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libjpeg-turbo is a MMX, SSE, and SSE2 SIMD accelerated JPEG library.</p>
+  </background>
+  <description>
+    <p>It was discovered that libjpeg-turbo incorrectly handled certain PPM
+      files.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could entice a user to open a specially crafted PPM
+      file using an application linked against libjpeg-turbo, possibly allowing
+      attacker to obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libjpeg-turbo 1.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/libjpeg-turbo-1.5.3-r3:0/0.1"
+    </code>
+    
+    <p>All libjpeg-turbo 2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/libjpeg-turbo-2.0.4-r1:0/0.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13790">CVE-2020-13790</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-08T04:33:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-20T10:43:26Z">whissi</metadata>
+</glsa>
