@@ -5863,7 +5863,7 @@ dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 2.0.0: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-sqlite3 4.1.2 4.1.3 4.2.0 4.3.0: A package for ocaml that provides access to SQLite databases
-dev-ml/ocaml-ssl 0.5.3 0.5.4 0.5.5: OCaml bindings for OpenSSL
+dev-ml/ocaml-ssl 0.5.3 0.5.9: OCaml bindings for OpenSSL
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0 0.14.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1: O'Caml Graph library
@@ -5875,7 +5875,7 @@ dev-ml/ocamlweb 1.39 1.41: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
 dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
 dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
-dev-ml/ocurl 0.6.1 0.7.9 0.7.10: OCaml interface to the libcurl library
+dev-ml/ocurl 0.7.10 0.9.1: OCaml interface to the libcurl library
 dev-ml/opam 1.3.1-r1 2.0.7: A source-based package manager for OCaml
 dev-ml/opam-client 2.0.7: opam client libraries
 dev-ml/opam-core 2.0.7: Core libraries for opam
@@ -13021,7 +13021,7 @@ media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and r
 media-libs/freealut 1.1.0-r4: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
 media-libs/freeimage 3.18.0-r1 3.18.0-r2: Image library supporting many formats
-media-libs/freetype 2.10.2-r1 2.10.3 9999: A high-quality and portable font engine
+media-libs/freetype 2.10.2-r1 2.10.3 2.10.3-r1 9999: A high-quality and portable font engine
 media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
