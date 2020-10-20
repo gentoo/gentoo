@@ -42,3 +42,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
