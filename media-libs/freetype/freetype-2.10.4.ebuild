@@ -47,7 +47,6 @@ PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
-	"${FILESDIR}"/${PN}-2.10.3-CVE-2020-15999.patch # 750275
 )
 
 _egit_repo_handler() {
