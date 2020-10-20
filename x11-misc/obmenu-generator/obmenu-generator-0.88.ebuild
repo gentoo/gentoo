@@ -11,7 +11,7 @@ SRC_URI="https://github.com/trizen/obmenu-generator/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-lang/perl[gdbm]
