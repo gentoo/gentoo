@@ -69,7 +69,7 @@ src_install() {
 
 	if use gtk; then
 		newicon -s scalable ../icons/U.svg ${PN}-${SLOT}.svg
-		make_desktop_entry unison-${SLOT} "${PN} (${SLOT})" "${EPREFIX}/usr/share/${PN}/${PN}-${SLOT}.svg"
+		make_desktop_entry unison-${SLOT} "${PN} (${SLOT})" "${EPREFIX}/usr/share/icons/hicolor/scalable/apps/${PN}-${SLOT}.svg"
 	fi
 
 	# No docs for release candidates
