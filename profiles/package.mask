@@ -208,7 +208,6 @@ app-leechcraft/lc-aggregator
 app-leechcraft/lc-anhero
 app-leechcraft/lc-auscrie
 app-leechcraft/lc-azoth
-app-leechcraft/lc-bittorrent
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
