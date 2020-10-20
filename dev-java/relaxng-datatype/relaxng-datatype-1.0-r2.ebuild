@@ -18,7 +18,10 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-mac
 LICENSE="BSD"
 SLOT="0"
 
-DEPEND=">=virtual/jdk-1.7"
+DEPEND="
+	app-arch/unzip
+	>=virtual/jdk-1.7
+"
 RDEPEND=">=virtual/jre-1.7"
 
 DOCS=( README.txt )
