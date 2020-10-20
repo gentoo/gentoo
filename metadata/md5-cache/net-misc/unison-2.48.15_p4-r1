@@ -11,4 +11,4 @@ RESTRICT=test !ocamlopt? ( strip )
 SLOT=2.48
 SRC_URI=https://github.com/bcpierce00/unison/archive/v2.48.15v4.tar.gz -> unison-2.48.15v4.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=aa0485b6f942fd4dbb28a321a3630abf
+_md5_=0b2fcff13f3b04a99e2ce6cdd6965214

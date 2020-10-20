@@ -10,6 +10,6 @@ LICENSE=GPL-2
 RDEPEND=gtk? ( dev-ml/lablgtk:2= ) || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) >=app-eselect/eselect-unison-0.4
 RESTRICT=!ocamlopt? ( strip )
 SLOT=2.51
-SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.3_rc2.tar.gz -> unison-2.51.3_rc2.tar.gz
+SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.3_rc3.tar.gz -> unison-2.51.3_rc3.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ee5b0182127cc82bd94d41da528f3c9a
+_md5_=fe03de8ec8857c4a6a22a82f03ef3b55
