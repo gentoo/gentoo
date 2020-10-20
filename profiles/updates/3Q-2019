@@ -1,4 +1,3 @@
-move dev-python/CoverageTestRunner dev-python/coverage-test-runner
 move media-plugins/kipi-plugins kde-apps/kipi-plugins
 move kde-misc/yakuake kde-apps/yakuake
 move kde-apps/kjots app-text/kjots
