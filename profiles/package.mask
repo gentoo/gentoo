@@ -203,7 +203,6 @@ net-wireless/gr-specest
 # depend on deprecated dev-qt/qtwebkit (#684672).
 # Removal in 14 days.  Bug #693328.
 app-leechcraft/laretz
-app-leechcraft/lc-advancednotifications
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
