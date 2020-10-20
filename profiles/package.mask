@@ -238,7 +238,6 @@ app-leechcraft/lc-lackman
 app-leechcraft/lc-lastfmscrobble
 app-leechcraft/lc-laughty
 app-leechcraft/lc-launchy
-app-leechcraft/lc-lemon
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
