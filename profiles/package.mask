@@ -220,7 +220,6 @@ app-leechcraft/lc-deadlyrics
 app-leechcraft/lc-devmon
 app-leechcraft/lc-dolozhee
 app-leechcraft/lc-eleeminator
-app-leechcraft/lc-fenet
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
