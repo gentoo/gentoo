@@ -350,7 +350,6 @@ dev-python/ttystatus
 # Removal in 30 days.  Bug #726784.
 gnome-base/libbonoboui
 gnome-base/libgnome
-gnome-base/libgnomeui
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
