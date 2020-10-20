@@ -337,12 +337,6 @@ dev-python/ipaddress
 dev-python/pathlib
 dev-python/subprocess32
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Unmaintained NIH libraries for app-backup/genbackupdata that is masked
-# for removal.
-# Removal in 30 days.  Bug #743721.
-dev-python/cliapp
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
