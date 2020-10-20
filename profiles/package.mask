@@ -352,13 +352,6 @@ gnome-base/libbonoboui
 gnome-base/libgnome
 gnome-base/libgnomeui
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Abandoned upstream, homepage gone.  Last release in 2009.  Uses
-# deprecated gnome-base/libgnomeui.  Arch apparently has patches to keep
-# it alive, if anyone wants to.
-# Removal in 30 days.  Bug #726796.
-net-misc/gwget
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
