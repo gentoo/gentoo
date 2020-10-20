@@ -52,7 +52,7 @@ PATCH_URIS=(
 	https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}
 )
 
-SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.sources.tar.xz
+SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
 	${PATCH_URIS[@]}"
 
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
