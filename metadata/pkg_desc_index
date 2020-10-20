@@ -16347,7 +16347,7 @@ sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementatio
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
-sci-libs/tensorflow 2.1.0 2.2.0-r1 2.2.0-r2 2.3.1: Computation framework using data flow graphs for scalable machine learning
+sci-libs/tensorflow 2.1.0 2.2.0-r1 2.2.0-r2 2.3.1 2.3.1-r1: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 2.1 2.2.0-r1 2.2.0-r2 2.3.0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1 12.18.1: Scientific library collection for large scale problems
