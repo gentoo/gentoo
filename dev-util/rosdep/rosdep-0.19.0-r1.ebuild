@@ -39,14 +39,14 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/nose[${PYTHON_USEDEP}]
 	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
 
 python_test() {
-	nosetests --with-coverage --cover-package=rosdep2 --with-xunit test || die
+	env -u ROS_DISTRO nosetests --with-xunit test || die
 }
 
 pkg_postrm() {
