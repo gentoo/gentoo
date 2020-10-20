@@ -325,11 +325,6 @@ media-tv/plex-media-server
 dev-python/pyogg
 dev-python/python-fchksum
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Python 2 backports with no revdeps left.
-# Removal in 30 days.  Bug #743724.
-dev-python/backports-functools-lru-cache
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
