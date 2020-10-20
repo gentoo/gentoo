@@ -345,11 +345,6 @@ dev-python/cliapp
 dev-python/coverage-test-runner
 dev-python/ttystatus
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Obsolete GNOME libraries.  All remaining revdeps have been lastrited.
-# Removal in 30 days.  Bug #726784.
-gnome-base/libgnome
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
