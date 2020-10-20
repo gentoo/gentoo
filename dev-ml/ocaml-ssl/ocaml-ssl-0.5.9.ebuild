@@ -12,6 +12,7 @@ HOMEPAGE="https://github.com/savonet/ocaml-ssl"
 
 IUSE="doc +ocamlopt"
 
+BDEPEND="dev-ml/dune-configurator"
 DEPEND="dev-libs/openssl:0=
 	>=dev-lang/ocaml-3.10:=[ocamlopt?]"
 RDEPEND="${DEPEND}"
