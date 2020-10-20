@@ -5055,7 +5055,7 @@ dev-java/upnplib 1.0.7: UPnP port mapping library for Java based on sbbi-upnplib
 dev-java/validation-api 1.0.0 1.1.0-r1: Bean Validation (JSR-303) API
 dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7-r2: Java framework for easy creation/rendering of documents
-dev-java/velocity-dvsl 1.0: Declarative Velocity Style Language.
+dev-java/velocity-dvsl 1.0: Declarative Velocity Style Language
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
 dev-java/werken-xpath 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
