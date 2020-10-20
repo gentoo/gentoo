@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-82-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-78esr-patches-04.tar.xz"
 
 LLVM_MAX_SLOT=11
 
@@ -14,7 +14,7 @@ WANT_AUTOCONF="2.1"
 
 VIRTUALX_REQUIRED="pgo"
 
-MOZ_ESR=
+MOZ_ESR=yes
 
 MOZ_PV=${PV}
 MOZ_PV_SUFFIX=
@@ -57,9 +57,9 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-#KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
-SLOT="0/$(ver_cut 1)"
+SLOT="0/esr$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="clang cpu_flags_arm_neon dbus debug eme-free geckodriver +gmp-autoupdate
 	hardened hwaccel jack lto +openh264 pgo pulseaudio screencast selinux
@@ -74,7 +74,7 @@ BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cbindgen-0.14.3
 	>=net-libs/nodejs-10.19.0
 	virtual/pkgconfig
-	>=virtual/rust-1.43.0
+	>=virtual/rust-1.41.0
 	|| (
 		(
 			sys-devel/clang:11
@@ -112,8 +112,8 @@ BDEPEND="${PYTHON_DEPS}
 	)"
 
 CDEPEND="
-	>=dev-libs/nss-3.57
-	>=dev-libs/nspr-4.29
+	>=dev-libs/nss-3.53.1
+	>=dev-libs/nspr-4.25
 	dev-libs/atk
 	dev-libs/expat
 	>=x11-libs/cairo-1.10[X]
@@ -375,7 +375,7 @@ pkg_pretend() {
 		if use pgo || use lto || use debug ; then
 			CHECKREQS_DISK_BUILD="13G"
 		else
-			CHECKREQS_DISK_BUILD="5600M"
+			CHECKREQS_DISK_BUILD="5G"
 		fi
 
 		check-reqs_pkg_pretend
@@ -394,7 +394,7 @@ pkg_setup() {
 		if use pgo || use lto || use debug ; then
 			CHECKREQS_DISK_BUILD="13G"
 		else
-			CHECKREQS_DISK_BUILD="5600M"
+			CHECKREQS_DISK_BUILD="5G"
 		fi
 
 		check-reqs_pkg_setup
