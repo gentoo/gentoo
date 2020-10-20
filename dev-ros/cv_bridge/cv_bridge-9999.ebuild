@@ -27,4 +27,4 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	)
 "
-PATCHES=( "${FILESDIR}/boostpython.patch" )
+PATCHES=( "${FILESDIR}/boostpython.patch" "${FILESDIR}/ocv_leak.patch" )

@@ -8,7 +8,7 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Plugin for transparently sending images encoded as JPEG or PNG"
+DESCRIPTION="Plugin for transparently sending depth images using PNG compression"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
@@ -21,4 +21,9 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+	)
+"
+PATCHES=( "${FILESDIR}/ocv_leak.patch" )

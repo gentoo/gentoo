@@ -24,3 +24,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	)"
+PATCHES=( "${FILESDIR}/ocv_leak.patch" )
