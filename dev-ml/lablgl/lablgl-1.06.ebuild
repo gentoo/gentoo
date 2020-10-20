@@ -1,17 +1,17 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit multilib eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Objective CAML interface for OpenGL"
 HOMEPAGE="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgl.html"
-LICENSE="BSD"
+SRC_URI="https://github.com/garrigue/lablgl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SRC_URI="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/${P}.tar.gz"
+LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc glut +ocamlopt tk"
 
 RDEPEND="
@@ -21,14 +21,13 @@ RDEPEND="
 	x11-libs/libX11
 	virtual/opengl
 	virtual/glu
-	dev-ml/camlp4:=
 	glut? ( media-libs/freeglut )
 	tk? (
 		>=dev-lang/tcl-8.3:0=
 		>=dev-lang/tk-8.3:0=
 		dev-ml/labltk:=
 	)
-	"
+"
 DEPEND="${RDEPEND}"
 
 src_configure() {
@@ -73,7 +72,9 @@ src_install() {
 	dodir /usr/$(get_libdir)/ocaml/stublibs
 
 	# Same for lablglut's toplevel
-	dodir /usr/bin
+	if use tk ; then
+		dodir /usr/bin
+	fi
 
 	BINDIR="${ED}/usr/bin"
 	BASE="${ED}/usr/$(get_libdir)/ocaml"
@@ -82,10 +83,10 @@ src_install() {
 	dodoc README CHANGES
 
 	if use doc ; then
-		mv Togl/examples{,.togl}
+		mv Togl/examples{,.togl} || die
 		dodoc -r Togl/examples.togl
 
-		mv LablGlut/examples{,.glut}
+		mv LablGlut/examples{,.glut} || die
 		dodoc -r LablGlut/examples.glut
 	fi
 }
