@@ -312,13 +312,6 @@ games-board/pouetchess
 # Removal in 30 days.  Bug #677446.
 x11-misc/ipager
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Bundles vulnerable version of Python 2.7, also boost and other
-# libraries in undetermined versions.  Simultaneously blocks removal
-# of Python 2.7 packages.
-# Removal in 30 days.  Bug #735396.
-media-tv/plex-media-server
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
