@@ -783,69 +783,6 @@ app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperatu
 app-laptop/thinkfan:nvidia - allow thinkfan to read GPU temperature from the proprietary nVidia driver
 app-laptop/thinkfan:yaml - use YAML format for config file
 app-laptop/tp_smapi:hdaps - Install a compatible HDAPS module
-app-leechcraft/lc-azoth:acetamide - Build Acetamide, the IRC protocol support
-app-leechcraft/lc-azoth:adiumstyles - Build support for Adium styles
-app-leechcraft/lc-azoth:astrality - Build Astrality, support for protocols provided by Telepathy
-app-leechcraft/lc-azoth:autoidler - Build support for automatic status changing according to user idle time
-app-leechcraft/lc-azoth:autopaste - Build Autopaste for pasting long texts to pastebins
-app-leechcraft/lc-azoth:birthdaynotifier - Build Birthday Notifier for you to not forget about birthdays of your contacts.
-app-leechcraft/lc-azoth:chathistory - Build ChatHistory which stories chat history
-app-leechcraft/lc-azoth:depester - Build Depester which enables to ignore MUC participants
-app-leechcraft/lc-azoth:embedmedia - Build EmbedMedia for embedding flash videos and images directly into chat windows
-app-leechcraft/lc-azoth:herbicide - Build Herbicide, a basic antispam plugin
-app-leechcraft/lc-azoth:hili - Build HiLi which allows to customize highlight settings in MUCs
-app-leechcraft/lc-azoth:isterique - Build Isterique plugin for neutralizing excessive caps lock usage
-app-leechcraft/lc-azoth:juick - Build plugin for the Juick.com microblogging service
-app-leechcraft/lc-azoth:keeso - Build plugin for changing text into SoMEtHInG lIKe THiS
-app-leechcraft/lc-azoth:lastseen - Build plugin for client-side recording of the last online/available time
-app-leechcraft/lc-azoth:media - Enable media calls
-app-leechcraft/lc-azoth:metacontacts - Build plugin for metacontacts support
-app-leechcraft/lc-azoth:murm - Build Murm, the VKontakte messaging support via their native API (instead of XMPP)
-app-leechcraft/lc-azoth:nativeemoticons - Build support for native Azoth's emoticons packs
-app-leechcraft/lc-azoth:otroid - Build OTRoid, plugin for the Off-the-Record deniable encryption system
-app-leechcraft/lc-azoth:sarin - Build Sarin, Tox protocol support module. Please add mva overlay to use net-libs/tox
-app-leechcraft/lc-azoth:shx - Build shell command executor plugin
-app-leechcraft/lc-azoth:standardstyles - Build support for standard Azoth styles engine
-app-leechcraft/lc-azoth:vader - Bulid Vader, the MRIM (Mail.Ru Agent) protocol support plugin
-app-leechcraft/lc-azoth:velvetbird - Build support for protocols provided by libpurple
-app-leechcraft/lc-azoth:woodpecker - Build Woodpecker, the Twitter client plugin
-app-leechcraft/lc-azoth:xtazy - Build Xtazy for publishing currently playing tune
-app-leechcraft/lc-blasq:deathnote - Support LiveJournal FotoBilder service
-app-leechcraft/lc-blasq:rappor - Support VKontakte service
-app-leechcraft/lc-blasq:spegnersi - Support Flickr service
-app-leechcraft/lc-blasq:vangog - Support Picasa service
-app-leechcraft/lc-blogique:hestia - Allows one to keep a local blog
-app-leechcraft/lc-blogique:metida - Support for the LiveJournal blogging platform
-app-leechcraft/lc-core:qwt - Support for QML plotting item through x11-libs/qwt
-app-leechcraft/lc-gmailnotifier:notify - Pull in a plugin to show notifications from GMail Notiifer
-app-leechcraft/lc-gmailnotifier:quark - Pull in a plugin to show GMail Notifier's quark
-app-leechcraft/lc-liznoo:battery - Enables battery charge level reading support.
-app-leechcraft/lc-liznoo:poweractions - Enables support for suspending and hibernating the machine.
-app-leechcraft/lc-liznoo:powerevents - Enables support for receiving events about suspending and resuming the machine (to notify other plugins).
-app-leechcraft/lc-lmp:fradj - Build FrAdj, the equalizer effect module
-app-leechcraft/lc-lmp:graffiti - Build media tags editor plugin
-app-leechcraft/lc-lmp:mp3tunes - Build plugin for supporting the mp3tunes.com music locker service
-app-leechcraft/lc-lmp:mpris - Enable MPRIS support
-app-leechcraft/lc-lmp:potorchu - Enable the projectM-based visualization effects module for LMP
-app-leechcraft/lc-monocle:fb2 - Enable support for FictionBook format
-app-leechcraft/lc-monocle:mobi - Enable support for MOBI format
-app-leechcraft/lc-musiczombie:acoustid - Use media-libs/chromaprint for acoustic fingerprinting
-app-leechcraft/lc-netstoremanager:dropbox - Build Dropbox storage backend
-app-leechcraft/lc-netstoremanager:googledrive - Build Google Drive storage backend
-app-leechcraft/lc-poshuku:autosearch - Provide automatic search suggestions for Poshuku.
-app-leechcraft/lc-poshuku:cleanweb - Build CleanWeb for ad blocking compatible with Firefox's AdBlock+.
-app-leechcraft/lc-poshuku:dcac - Build color inverter module providing a night mode.
-app-leechcraft/lc-poshuku:fatape - Build FatApe, GreaseMonkey userscripts support layer.
-app-leechcraft/lc-poshuku:filescheme - Build FileScheme for accessing local URLs.
-app-leechcraft/lc-poshuku:foc - Build FOC for Flash-on-Click functionality.
-app-leechcraft/lc-poshuku:fua - Build FUA for faking user agents for different hosts.
-app-leechcraft/lc-poshuku:keywords - Build Keywords for adjusting search shortcuts.
-app-leechcraft/lc-poshuku:onlinebookmarks - Build OnlineBookmarks for syncing bookmarks with social bookmarking services like Read It Later.
-app-leechcraft/lc-poshuku:qrd - Build module for displaying the QR code of a web page.
-app-leechcraft/lc-poshuku:speeddial - Build SpeedDial module.
-app-leechcraft/lc-poshuku:webengine - Build WebEngine- (that is, Chromium-)based rendering backend.
-app-leechcraft/lc-secman:exposecontents - Build the GUI for viewing the stored data.
-app-leechcraft/leechcraft-meta:de - Install components that allow using LeechCraft as Desktop Environment
 app-metrics/collectd:contrib - Install user-contributed files in the doc directory
 app-metrics/collectd:filecaps - When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user
 app-metrics/collectd:java - Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin
@@ -6439,7 +6376,6 @@ net-misc/gerbera:taglib - Use media-libs/taglib for reading files' metadata
 net-misc/gnome-online-miners:flickr - Enable Flickr support
 net-misc/gsasl:gcrypt - Use dev-libs/libgcrypt for low-level crypto
 net-misc/gsasl:ntlm - Add support for Microsoft's NTLM mechanism using net-libs/libntlm
-net-misc/gwget:epiphany - Build epiphany extensions
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
 net-misc/hylafaxplus:html - Convert faxes into html email
 net-misc/hylafaxplus:jbig - JBIG Fax Compression Support

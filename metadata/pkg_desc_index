@@ -2233,77 +2233,6 @@ app-laptop/tpacpi-bat 3.0-r1 3.1 9999: Control battery thresholds of recent Thin
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-laptop/tuxedo-control-center-bin 1.0.4: Tool to control performance, energy, fan and comfort settings on TUXEDO laptops
 app-laptop/tuxedo-keyboard 2.0.5-r1: Kernel Module for Tuxedo Keyboard
-app-leechcraft/laretz 9999: The Laretz sync server
-app-leechcraft/lc-advancednotifications 9999: Flexible and customizable notifications framework for LeechCraft
-app-leechcraft/lc-aggregator 9999: Full-featured RSS/Atom feed reader for LeechCraft
-app-leechcraft/lc-anhero 9999: AnHero, crash handler for LeechCraft
-app-leechcraft/lc-auscrie 9999: Auscrie, LeechCraft auto screenshooter
-app-leechcraft/lc-azoth 9999: Azoth, the modular IM client for LeechCraft
-app-leechcraft/lc-bittorrent 9999: Full-featured BitTorrent client plugin for LeechCraft
-app-leechcraft/lc-blasq 9999: Cloud image storage services client (like Flickr or Picasa)
-app-leechcraft/lc-blogique 9999: Blogging client for LeechCraft
-app-leechcraft/lc-certmgr 9999: SSL certificates manager for LeechCraft
-app-leechcraft/lc-core 9999: Core of LeechCraft, the modular network client
-app-leechcraft/lc-cpuload 9999: CPU load graph quark
-app-leechcraft/lc-cstp 9999: CSTP, the clean & stupid HTTP implementation for LeechCraft
-app-leechcraft/lc-dbusmanager 9999: DBusManager provides some basic D-Bus interoperability for LeechCraft
-app-leechcraft/lc-deadlyrics 9999: Searches for song lyrics and displays them in LeechCraft
-app-leechcraft/lc-devmon 9999: Non-storage USB devices manager for LeechCraft
-app-leechcraft/lc-dolozhee 9999: An issue reporting client for LeechCraft's issue tracker
-app-leechcraft/lc-eleeminator 9999: Embedded LeechCraft Terminal Emulator
-app-leechcraft/lc-fenet 9999: LeechCraft WM and compositor manager
-app-leechcraft/lc-gacts 9999: Allows other LeechCraft modules to register global shortcuts
-app-leechcraft/lc-glance 9999: Glance, quick thumbnailed overview of opened tabs in LeechCraft
-app-leechcraft/lc-gmailnotifier 9999: Notifies about new mail in a GMail inbox for LeechCraft
-app-leechcraft/lc-historyholder 9999: HistoryHolder keeps track of stuff downloaded in LeechCraft
-app-leechcraft/lc-hotsensors 9999: Temperature sensors monitor plugin for LeechCraft
-app-leechcraft/lc-hotstreams 9999: Provides some cool radio streams to music players like LMP
-app-leechcraft/lc-htthare 9999: Simple HTTP server for Leechcraft
-app-leechcraft/lc-imgaste 9999: The simple image uploader data filter for LeechCraft
-app-leechcraft/lc-intermutko 9999: Allows one to fine-tune the Accept-Language HTTP header
-app-leechcraft/lc-kbswitch 9999: Provides plugin- or tab-grained keyboard layout control
-app-leechcraft/lc-kinotify 9999: Fancy visual notifications for LeechCraft
-app-leechcraft/lc-knowhow 9999: KnowHow, plugin for showing Tips of the Day in LeechCraft
-app-leechcraft/lc-krigstask 9999: The taskbar quark for LeechCraft
-app-leechcraft/lc-lackman 9999: LeechCraft Package Manager for extensions, scripts, themes etc
-app-leechcraft/lc-lastfmscrobble 9999: Last.FM scrobbler and client plugin for LeechCraft
-app-leechcraft/lc-laughty 9999: The LeechCraft notification daemon
-app-leechcraft/lc-launchy 9999: Allows launching external applications (and LeechCraft plugins) from LeechCraft
-app-leechcraft/lc-lemon 9999: Network monitor plugin for LeechCraft
-app-leechcraft/lc-lhtr 9999: LeechCraft HTML Text editoR component
-app-leechcraft/lc-liznoo 9999: UPower-based power manager for LeechCraft
-app-leechcraft/lc-lmp 9999: LeechCraft Media Player, Phonon-based audio/video player
-app-leechcraft/lc-mellonetray 9999: System tray quark for LeechCraft
-app-leechcraft/lc-monocle 9999: Monocle, the modular document viewer for LeechCraft
-app-leechcraft/lc-musiczombie 9999: MusicBrainz client plugin for LeechCraft
-app-leechcraft/lc-nacheku 9999: Monitors selected directory and clipboard for downloadable entities
-app-leechcraft/lc-netstoremanager 9999: LeechCraft plugin for supporting cloud data storages like Google Drive
-app-leechcraft/lc-networkmonitor 9999: NetworkMonitor allows monitoring HTTP requests in LeechCraft
-app-leechcraft/lc-newlife 9999: New Life imports settings from various other applications into LeechCraft
-app-leechcraft/lc-ooronee 9999: Quark handling text and images droppend onto it
-app-leechcraft/lc-otlozhu 9999: Otlozhu, a GTD-inspired ToDo manager plugin for LeechCraft
-app-leechcraft/lc-pintab 9999: Provides support for pinning tabs for LeechCraft
-app-leechcraft/lc-pogooglue 9999: Provides searching with Google to other LeechCraft plugins
-app-leechcraft/lc-popishu 9999: Popishu, the text editor with IDE features for LeechCraft
-app-leechcraft/lc-poshuku 9999: Poshuku, the full-featured web browser plugin for LeechCraft
-app-leechcraft/lc-qrosp 9999: Qrosp, scrpting support for LeechCraft via Qross
-app-leechcraft/lc-rosenthal 9999: Spellchecking support for LeechCraft
-app-leechcraft/lc-sb2 9999: Sidebar for LeechCraft supporting quarks like tab switcher, tray area and so on
-app-leechcraft/lc-scroblibre 9999: Submissions API 1.2-compliant scrobbler for services like libre.fm
-app-leechcraft/lc-secman 9999: Security and personal data manager for LeechCraft
-app-leechcraft/lc-seekthru 9999: OpenSearch support for LeechCraft
-app-leechcraft/lc-summary 9999: Summary plugin for Leechcraft
-app-leechcraft/lc-sysnotify 9999: Notifications via system libnotify daemon for LeechCraft
-app-leechcraft/lc-tabsessmanager 9999: Tabs sessions manager
-app-leechcraft/lc-tabslist 9999: Quick navigation between tabs in LeechCraft
-app-leechcraft/lc-touchstreams 9999: VKontakte music source plugin for LeechCraft
-app-leechcraft/lc-tpi 9999: Task progress indicator quark for LeechCraft
-app-leechcraft/lc-vrooby 9999: Vrooby, removable device manager for LeechCraft
-app-leechcraft/lc-xproxy 9999: Provides advanced proxy support features for LeechCraft
-app-leechcraft/lc-xtazy 9999: Fetches info about current tune and provides it to other plugins
-app-leechcraft/lcpackgen 1.3.1: Package creator for app-leechcraft/lc-lackman package manager
-app-leechcraft/leechcraft-meta 9999: Metapackage containing all ready-to-use LeechCraft plugins
-app-leechcraft/liblaretz 0.1.2 9999: Shared library to be used by the Laretz sync server and its clients
 app-metrics/alertmanager 0.18.0 0.19.0 0.21.0: Alertmanager for alerts sent by client applications such as Prometheus
 app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0 0.17.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
@@ -7948,7 +7877,6 @@ dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and la
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0-r1: Namespace for backported Python features
 dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
-dev-python/backports-functools-lru-cache 1.6.1: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-os 0.1.1: Backport of new features in Python's os module
 dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
@@ -8020,7 +7948,6 @@ dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2-r1: A library for wrapping and filling UTF-8 CJK text
 dev-python/clang-python 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cli_helpers 2.1.0 9999: Python helpers for common CLI tasks
-dev-python/cliapp 1.20180812.1: Framework for Unix-like command line programs
 dev-python/click 6.7-r2 7.1.2-r1: A Python package for creating beautiful command line interfaces
 dev-python/click-default-group 1.2.2: Extends click. Group to invoke a command without explicit subcommand name
 dev-python/click-log 0.3.2: Logging integration for Click.
@@ -8040,7 +7967,6 @@ dev-python/commonmark 0.9.1: Python parser for the CommonMark Markdown spec
 dev-python/configargparse 1.2.3: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.2.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6 5.0.6-r1: Simple config file reader and writer
-dev-python/configparser 3.5.0-r1: Backport of Python-3 built-in configparser
 dev-python/configshell-fb 1.1.28: A Python library for building configuration shells
 dev-python/confuse 1.0.0: Confuse is a configuration library for Python that uses YAML
 dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise Protocol
@@ -8054,7 +7980,6 @@ dev-python/coreschema 0.0.4: Core Schema
 dev-python/couchdb-python 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.15.0-r2: plugin core for use by pytest-cov, nose-cov and nose2-cov
 dev-python/coverage 4.5.4 5.2.1 5.3: Code coverage measurement for Python
-dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they test everything
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
@@ -8160,7 +8085,6 @@ dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3 3.3.4: A powerful and robust templating system for Python
 dev-python/entrypoint2 0.2.1: Easy to use command-line interface for python modules
 dev-python/entrypoints 0.3-r2: Discover and load entry points from installed packages
-dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 1.0 2.0.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
@@ -8234,12 +8158,10 @@ dev-python/fsspec 0.7.4 0.8.0 0.8.2: A specification that python filesystems sho
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r2: Python function signatures backport from PEP362 for Python 2.7-3.5
-dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/funcy 1.10.1 1.14: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 1.0.0: Python FUSE bindings
 dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
 dev-python/future 0.18.2-r1: Easy, clean, reliable Python 2/3 compatibility
-dev-python/futures 3.1.1 3.2.0: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 1.8.1 2.3.0: Useful additions to futures, from the future
 dev-python/fuzzywuzzy 0.18.0: Fuzzy string matching in python
 dev-python/gast 0.2.2 0.3.3 0.3.3-r1: A generic AST to represent Python2 and Python3's Abstract Syntax Tree (AST)
@@ -8301,7 +8223,7 @@ dev-python/humanize 2.6.0 3.0.1 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4 5.36.0 5.36.1 5.36.2 5.37.0 5.37.1 5.37.3: A library for property based testing
+dev-python/hypothesis 5.24.4 5.29.4 5.35.3 5.35.4 5.36.0 5.36.1 5.36.2 5.37.0 5.37.1 5.37.3 5.37.4: A library for property based testing
 dev-python/icalendar 4.0.6 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8328,7 +8250,6 @@ dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 2.0.0: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.2.0-r1: Python IP address manipulation library
-dev-python/ipaddress 1.0.23: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.3.3 5.3.4 5.3.4-r1: IPython Kernel for Jupyter
@@ -8465,7 +8386,7 @@ dev-python/mkdocs-bootswatch 1.1: Bootswatch themes for MkDocs
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 3.0.5-r2: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.20.0: A Python Object-Document-Mapper for working with MongoDB
-dev-python/mongomock 3.20.0: Library to help testing Python code that interacts with MongoDB via Pymongo
+dev-python/mongomock 3.20.0 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 5.0.0-r1 8.5.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3 1.3.16-r1: Mock library for boto
@@ -8605,7 +8526,6 @@ dev-python/pastedeploy 2.1.0 2.1.1: Load, configure, and compose WSGI applicatio
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 14.0.1 15.0.0: A module wrapper for os.path
-dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.5-r1: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.8.0: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
@@ -8774,7 +8694,6 @@ dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
-dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopencl 2020.2 2020.2.2: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
@@ -8897,7 +8816,6 @@ dev-python/python-etcd 0.4.5-r1: A python client for etcd
 dev-python/python-ethtool 0.14: Ethernet settings python bindings
 dev-python/python-evdev 1.3.0: Python library for evdev bindings
 dev-python/python-fastimport 0.9.8-r1: Library for parsing the fastimport VCS serialization format
-dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.17.1 3.2.2: A client for the OpenStack Glance API
@@ -9166,7 +9084,6 @@ dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
 dev-python/stevedore 3.2.0 3.2.2: Manage dynamic plugins for Python applications
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.46.0: Stripe python bindings
-dev-python/subprocess32 3.5.4: A backport of the subprocess module from Python 3.2/3.3 for use on 2.x
 dev-python/subunit 1.4.0: A streaming protocol for test results
 dev-python/subvertpy 0.10.1: Alternative Python bindings for Subversion
 dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
@@ -9220,7 +9137,6 @@ dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine im
 dev-python/translate-toolkit 2.5.0 2.5.1: Toolkit to convert between many translation formats
 dev-python/treq 20.4.1 20.9.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1: #1 quality TLS certs while you wait, for the discerning tester
-dev-python/ttystatus 0.36: Terminal progress bar and status output for command line
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
 dev-python/tvdb_api 2.0-r1: Python interface to thetvdb.com API
 dev-python/twine 1.15.0 3.2.0: Collection of utilities for publishing packages on PyPI
@@ -11246,7 +11162,6 @@ games-board/phalanx 22-r1: A chess engine suitable for beginner and intermediate
 games-board/pioneers 15.5: Clone of the popular board game The Settlers of Catan
 games-board/pokerth 1.1.2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r3: Protocol adapter to run UCI chess engines under xboard
-games-board/pouetchess 0.2.0-r2: 3D and open source chess game
 games-board/pychess 1.0.0 1.0.2: A chess client for GNOME
 games-board/pysolfc 2.6.4-r1: An exciting collection of more than 1000 solitaire card games
 games-board/scid 4.6.2-r1: a free chess database application
@@ -11803,13 +11718,10 @@ gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.42.2 1.44.1: Virtual filesystem implementation for GIO
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
-gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r3: Library to construct graphical interfaces at runtime
-gnome-base/libgnome 2.32.1-r1: Essential Gnome Libraries
 gnome-base/libgnome-keyring 3.12.0-r1: Compatibility library for accessing secrets
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
 gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
-gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.40.0-r1: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.21 2.48.8: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.34.3 3.36.3: Default file manager for the GNOME desktop
@@ -14031,7 +13943,6 @@ media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB 
 media-tv/mythtv 30.0_p20190808-r3 31.0-r3: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/plex-media-server 1.18.3 1.18.4-r1 1.19.1 1.19.2 1.19.5: A free media library that is intended for use with a plex client
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.2.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
@@ -15121,7 +15032,6 @@ net-misc/gsasl 1.8.0-r1 1.8.1: The GNU SASL client, server, and library
 net-misc/gsutil 4.41 4.45 4.47 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
-net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626-r1: Generic whois
 net-misc/haeredes 0.5.2: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r2: Utility to generate hashcash tokens
@@ -17173,7 +17083,6 @@ sys-block/partitionmanager 4.1.0 4.2.0: Utility for management of disks, partiti
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
-sys-block/rts5229 1.07-r7: PCIE RTS5229 card reader driver for Linux
 sys-block/rts_pstor 1.10_p20160103-r1: PCI-E RTS5209 card reader driver for Linux
 sys-block/sas2ircu 20: LSI MPT-SAS2 controller management tool
 sys-block/sas3flash 15 15-r1 16: Flash utility for LSI MPT-SAS3 controller
@@ -17782,15 +17691,6 @@ virtual/krb5 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1 3.6 3.7 3.8: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/lapacke 3.8: Virtual for LAPACK C implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
-virtual/leechcraft-browser 9999: Virtual for LeechCraft plugins providing a web browser
-virtual/leechcraft-downloader-http 9999: Virtual for LeechCraft plugins providing HTTP downloading
-virtual/leechcraft-notifier 9999: Virtual for LeechCraft plugins capable of visually notifying the user
-virtual/leechcraft-quark-sideprovider 9999: Virtual for LeechCraft plugins displaying quarks near window edges
-virtual/leechcraft-search-show 9999: Virtual for LeechCraft plugins providing UI for search plugins
-virtual/leechcraft-storage-device-manager 9999: Virtual for LeechCraft plugins for managing removable storage devices
-virtual/leechcraft-task-show 9999: Virtual for plugins that can show IDownloads and IJobHolders
-virtual/leechcraft-trayarea 9999: Virtual for LeechCraft plugins providing a tray area
-virtual/leechcraft-wysiwyg-editor 9999: Virtual for LeechCraft plugins providing WYSIWYG text editor
 virtual/libc 1-r1: Virtual for the C library
 virtual/libcrypt 1-r1 2: Virtual for libcrypt.so
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
@@ -17989,7 +17889,7 @@ www-apps/gitea 1.12.4 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.7.4 7.1.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.76.3: The world's fastest framework for building websites
-www-apps/icingaweb2 2.7.4 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
@@ -18447,7 +18347,6 @@ x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
 x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.8: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
-x11-misc/ipager 1.1.0-r1: A themable desktop pager for fluxbox and other window managers
 x11-misc/j4-dmenu-desktop 2.17-r1 2.18: A fast desktop replacement for i3-dmenu-desktop
 x11-misc/kapow 1.5.9 1.5.10: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r4: Modern note manager
