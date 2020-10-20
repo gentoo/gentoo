@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-06">
+  <title>Ark: Arbitrary code execution</title>
+  <synopsis>Ark was found to allow arbitrary file overwrite, possibly allowing
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">ark</product>
+  <announced>2020-10-20</announced>
+  <revised count="1">2020-10-20</revised>
+  <bug>743959</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="kde-apps/ark" auto="yes" arch="*">
+      <unaffected range="ge">20.04.3-r2</unaffected>
+      <vulnerable range="lt">20.04.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ark is a graphical file compression/decompression utility with support
+      for multiple formats.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Ark incorrectly handled symbolic links in tar
+      archive files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      archive using Ark, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KDE Ark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-apps/ark-20.04.3-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24654">CVE-2020-24654</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-02T23:33:15Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-20T10:45:10Z">whissi</metadata>
+</glsa>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-05">
+  <title>LibRaw: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LibRaw, the worst of
+    which may allow attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libraw</product>
+  <announced>2020-10-20</announced>
+  <revised count="1">2020-10-20</revised>
+  <bug>744190</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libraw" auto="yes" arch="*">
+      <unaffected range="ge">0.20.0</unaffected>
+      <vulnerable range="lt">0.20.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibRaw is a library for reading RAW files obtained from digital photo
+      cameras.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibRaw. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file using an application linked against LibRaw, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibRaw users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libraw-0.20.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24889">CVE-2020-24889</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24890">CVE-2020-24890</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-03T15:57:15Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-20T10:44:44Z">whissi</metadata>
+</glsa>
