@@ -81,8 +81,6 @@ www-apps/nikola websocket
 # These packages require Python 2 support in dev-python/sphinx.
 # They are generally fixable by adding py3 support and using
 # distutils_enable_sphinx to build docs.
-dev-python/backports-functools-lru-cache doc
-<=dev-python/futures-3.2.0 doc
 <=dev-python/lockfile-0.12.2-r2 doc
 <=dev-python/mysql-python-1.2.5-r3 doc
 <dev-python/pep8-1.7.1-r1 doc
@@ -529,10 +527,6 @@ sys-devel/gcc sanitize
 # Rick Farina <zerochaos@gentoo.org> (2014-08-26)
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
-
-# Maxim Koltsov <maksbotan@gentoo.org> (2014-08-05)
-# net-libs/tox is in mva overlay only ATM
-app-leechcraft/lc-azoth sarin
 
 # Pacho Ramos <pacho@gentoo.org> (2014-06-01)
 # Needs hardmasked lua-5.2

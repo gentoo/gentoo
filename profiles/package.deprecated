@@ -54,10 +54,7 @@ dev-perl/Net-SMTP-SSL
 # Bugs #640022, #713010, #726784, #728956
 gnome-base/gnome-vfs
 gnome-base/libbonobo
-gnome-base/libbonoboui
-gnome-base/libgnome
 gnome-base/libgnome-keyring
-gnome-base/libgnomeui
 gnome-base/orbit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
