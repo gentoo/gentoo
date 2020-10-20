@@ -67,8 +67,8 @@ src_configure() {
 	export INITSYSTEM=openrc
 	export INITDDIRS=
 	export INITDDIR_DEFAULT=/etc/init.d
-	export USERCOMPILE=
-	export USERLINK=
+	export USERCOMPILE=${CFLAGS}
+	export USERLINK=${LDFLAGS}
 	export USE_DNSSEC=$(usetf dnssec)
 	export USE_LABELED_IPSEC=$(usetf selinux)
 	export USE_LIBCAP_NG=$(usetf caps)
