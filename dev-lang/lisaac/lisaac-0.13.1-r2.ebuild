@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="vim-syntax emacs examples"
 
 DEPEND="vim-syntax? ( app-editors/vim )
-	emacs? ( >=app-editors/emacs-23.1 )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 
 RDEPEND="${DEPEND}"
 
