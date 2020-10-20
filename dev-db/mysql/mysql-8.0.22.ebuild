@@ -6,29 +6,38 @@ EAPI="7"
 CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit check-reqs cmake flag-o-matic linux-info \
-	multiprocessing prefix toolchain-funcs multilib-minimal
+	multiprocessing prefix toolchain-funcs
+
+MY_PV="${PV//_pre*}"
+MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-5.7.31-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-8.0.22-patches-01.tar.xz"
 
-SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
-	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz
+SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-${MY_PV}.tar.gz
+	https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-${MY_PV}.tar.gz
+	http://downloads.mysql.com/archives/MySQL-8.0/${PN}-boost-${MY_PV}.tar.gz
 	${PATCH_SET}"
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
-SLOT="5.7/18"
-IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
-	selinux +server static static-libs systemtap tcmalloc test"
+SLOT="8.0"
+IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
+	router selinux +server tcmalloc test"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="!test? ( test ) libressl? ( test )"
 
-REQUIRED_USE="?? ( tcmalloc jemalloc )"
+REQUIRED_USE="?? ( tcmalloc jemalloc )
+	cjk? ( server )
+	jemalloc? ( server )
+	numa? ( server )
+	profiling? ( server )
+	router? ( server )
+	tcmalloc? ( server )"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -36,47 +45,32 @@ S="${WORKDIR}/mysql"
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
-# MULTILIB_USEDEP only set for libraries used by the client library
 COMMON_DEPEND="
+	>=app-arch/lz4-0_p131:=
+	app-arch/zstd:=
 	sys-libs/ncurses:0=
-	client-libs? (
-		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
-		!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
-	)
-	!client-libs? (
-		dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?]
-		>=sys-libs/zlib-1.2.3:0=
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	>=sys-libs/zlib-1.2.3:0=
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
 	server? (
-		>=app-arch/lz4-0_p131:=
+		dev-libs/icu:=
+		dev-libs/libevent:=[ssl]
+		>=dev-libs/protobuf-3.8:=
+		net-libs/libtirpc:=
 		cjk? ( app-text/mecab:= )
-		experimental? (
-			dev-libs/libevent:=[ssl]
-			dev-libs/protobuf:=
-			net-libs/libtirpc:=
-		)
 		jemalloc? ( dev-libs/jemalloc:0= )
 		kernel_linux? (
 			dev-libs/libaio:0=
 			sys-process/procps:0=
 		)
 		numa? ( sys-process/numactl )
+		tcmalloc? ( dev-util/google-perftools:0= )
 	)
-	systemtap? ( >=dev-util/systemtap-1.3:0= )
-	tcmalloc? ( dev-util/google-perftools:0= )
 "
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
-	dev-libs/protobuf
 	virtual/yacc
-	server? (
-		dev-libs/libevent:=[ssl]
-		experimental? ( net-libs/rpcsvc-proto )
-	)
-	static? ( sys-libs/ncurses[static-libs] )
+	server? ( net-libs/rpcsvc-proto )
 	test? (
 		acct-group/mysql acct-user/mysql
 		dev-perl/JSON
@@ -85,14 +79,11 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	!dev-db/mysql:0
-	!dev-db/mysql:8.0
-	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
+	!dev-db/mysql:5.7
 	selinux? ( sec-policy/selinux-mysql )
-	server? (
-		!prefix? (
-			acct-group/mysql acct-user/mysql
-			dev-db/mysql-init-scripts
-		)
+	!prefix? (
+		acct-group/mysql acct-user/mysql
+		dev-db/mysql-init-scripts
 	)
 "
 # For other stuff to bring us in
@@ -114,7 +105,7 @@ mysql_init_vars() {
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
 		if use server ; then
-			CHECKREQS_DISK_BUILD="3G"
+			CHECKREQS_DISK_BUILD="2G"
 
 			if has test $FEATURES ; then
 				CHECKREQS_DISK_BUILD="9G"
@@ -127,7 +118,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
-		CHECKREQS_DISK_BUILD="3G"
+		CHECKREQS_DISK_BUILD="2G"
 
 		if has test ${FEATURES} ; then
 			CHECKREQS_DISK_BUILD="9G"
@@ -167,98 +158,31 @@ pkg_setup() {
 	fi
 }
 
-pkg_preinst() {
-	# Here we need to see if the implementation switched client libraries
-	# We check if this is a new instance of the package and a client library already exists
-	local SHOW_ABI_MESSAGE libpath
-	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}/usr/$(get_libdir)/libmysqlclient.so" ]] ; then
-		libpath=$(readlink "${EROOT}/usr/$(get_libdir)/libmysqlclient.so")
-		elog "Due to ABI changes when switching between different client libraries,"
-		elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
-		elog "Please run: revdep-rebuild --library ${libpath}"
-		ewarn "Failure to run revdep-rebuild may cause issues with other programs or libraries"
-	fi
-}
-
-pkg_postinst() {
-	# Make sure the vars are correctly initialized
-	mysql_init_vars
-
-	# Create log directory securely if it does not exist
-	[[ -d "${ROOT}${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}${MY_LOGDIR}"
-
-	if use server ; then
-		if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-			einfo
-			elog "You might want to run:"
-			elog "\"emerge --config =${CATEGORY}/${PF}\""
-			elog "if this is a new install."
-			elog
-			elog "If you are switching server implentations, you should run the"
-			elog "mysql_upgrade tool."
-			einfo
-		else
-			einfo
-			elog "If you are upgrading major versions, you should run the"
-			elog "mysql_upgrade tool."
-			einfo
-		fi
-	fi
-
-	# Note about configuration change
-	einfo
-	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
-	elog "to several files in /etc/mysql/mysql.d."
-	elog "Please backup any changes you made to /etc/mysql/my.cnf"
-	elog "and add them as a new file under /etc/mysql/mysql.d with a .cnf extension."
-	elog "You may have as many files as needed and they are read alphabetically."
-	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
-	einfo
-}
-
 src_unpack() {
 	unpack ${A}
 
-	mv -f "${WORKDIR}/${P}" "${S}" || die
+	mv -f "${WORKDIR}/${MY_P}" "${S}" || die
 }
 
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
 
-	if use jemalloc ; then
-		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt" || die
-	fi
-
-	if use tcmalloc ; then
-		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt" || die
-	fi
+	# Avoid rpm call which would trigger sandbox, #692368
+	sed -i \
+		-e 's/MY_RPM rpm/MY_RPM rpmNOTEXISTENT/' \
+		CMakeLists.txt || die
 
 	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
-	# Remove bundled libs so we cannot accidentally use them
-	# We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
-	rm -rv \
-		"${S}"/extra/protobuf \
-		"${S}"/extra/libevent \
-		"${S}"/zlib \
-		|| die
-
-	# Don't clash with dev-db/mysql-connector-c
+	# Remove man pages for client-lib tools we don't install
 	rm \
 		man/my_print_defaults.1 \
 		man/perror.1 \
 		man/zlib_decompress.1 \
 		|| die
-
-	if use libressl ; then
-		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
-			"${S}/cmake/ssl.cmake" || die
-	fi
-
-	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -271,20 +195,6 @@ src_configure() {
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
-
-	if use client-libs ; then
-		multilib-minimal_src_configure
-	else
-		multilib_src_configure
-	fi
-}
-
-multilib_src_configure() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	if ! multilib_is_native_abi && ! use client-libs ; then
-		return
-	fi
 
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
@@ -303,13 +213,12 @@ multilib_src_configure() {
 		-DINSTALL_MANDIR=share/man
 		-DINSTALL_MYSQLSHAREDIR=share/mysql
 		-DINSTALL_PLUGINDIR=$(get_libdir)/mysql/plugin
-		-DINSTALL_SCRIPTDIR=share/mysql/scripts
 		-DINSTALL_MYSQLDATADIR="${EPREFIX}/var/lib/mysql"
 		-DINSTALL_SBINDIR=sbin
 		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
-		### TODO: make this system but issues with UTF-8 prevent it
+		# Using bundled editline to get CTRL+C working
 		-DWITH_EDITLINE=bundled
 		-DWITH_ZLIB=system
 		-DWITH_SSL=system
@@ -317,84 +226,85 @@ multilib_src_configure() {
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
-		-DWITH_DEFAULT_FEATURE_SET=0
 		# The build forces this to be defined when cross-compiling. We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 		-DWITH_CURL=system
 		-DWITH_BOOST="${S}/boost"
+		-DWITH_ROUTER=$(usex router ON OFF)
 	)
+
+	if is-flagq -fno-lto ; then
+		einfo "LTO disabled via {C,CXX,F,FC}FLAGS"
+		mycmakeargs+=( -DWITH_LTO=OFF )
+	elif is-flagq -flto ; then
+		einfo "LTO forced via {C,CXX,F,FC}FLAGS"
+		myconf+=( -DWITH_LTO=ON )
+	else
+		# Disable automagic
+		myconf+=( -DWITH_LTO=OFF )
+	fi
+
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
 	fi
 
-	if ! use client-libs ; then
-		mycmakeargs+=( -DWITHOUT_CLIENTLIBS=YES )
-	fi
+	mycmakeargs+=( -DWITHOUT_CLIENTLIBS=YES )
 
-	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
-	# systemtap only works on native ABI, bug 530132
-	if multilib_is_native_abi ; then
+	mycmakeargs+=(
+		-DWITH_ICU=system
+		-DWITH_LZ4=system
+		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
+		-DWITH_RAPIDJSON=bundled
+		-DWITH_ZSTD=system
+	)
+
+	if [[ -n "${MYSQL_DEFAULT_CHARSET}" && -n "${MYSQL_DEFAULT_COLLATION}" ]] ; then
+		ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
+		ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
+		ewarn "You MUST file bugs without these variables set."
+		ewarn "Tests will probably fail!"
+
 		mycmakeargs+=(
-			-DENABLE_DTRACE=$(usex systemtap)
+			-DDEFAULT_CHARSET=${MYSQL_DEFAULT_CHARSET}
+			-DDEFAULT_COLLATION=${MYSQL_DEFAULT_COLLATION}
+		)
+	elif use latin1 ; then
+		mycmakeargs+=(
+			-DDEFAULT_CHARSET=latin1
+			-DDEFAULT_COLLATION=latin1_swedish_ci
 		)
 	else
 		mycmakeargs+=(
-			-DWITHOUT_TOOLS=1
-			-DWITH_READLINE=1
-			-DENABLE_DTRACE=0
+			-DDEFAULT_CHARSET=utf8mb4
+			-DDEFAULT_COLLATION=utf8mb4_0900_ai_ci
 		)
 	fi
 
-	if multilib_is_native_abi && use server ; then
+	if use server ; then
 		mycmakeargs+=(
-			-DWITH_LIBEVENT=system
-			-DWITH_LZ4=system
-			-DWITH_PROTOBUF=system
-			-DWITH_MECAB=$(usex cjk system OFF)
-			-DWITH_NUMA=$(usex numa ON OFF)
-			-DWITH_RAPID=$(usex experimental ON OFF)
-		)
-
-		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]] ; then
-			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
-			ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
-			ewarn "You MUST file bugs without these variables set."
-
-			mycmakeargs+=(
-				-DDEFAULT_CHARSET=${MYSQL_DEFAULT_CHARSET}
-				-DDEFAULT_COLLATION=${MYSQL_DEFAULT_COLLATION}
-			)
-		elif ! use latin1 ; then
-			mycmakeargs+=(
-				-DDEFAULT_CHARSET=utf8
-				-DDEFAULT_COLLATION=utf8_general_ci
-			)
-		else
-			mycmakeargs+=(
-				-DDEFAULT_CHARSET=latin1
-				-DDEFAULT_COLLATION=latin1_swedish_ci
-			)
-		fi
-
-		mycmakeargs+=(
-			-DEXTRA_CHARSETS=all
-			-DDISABLE_SHARED=$(usex static YES NO)
+			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
-			-DWITH_EMBEDDED_SERVER=OFF
+			-DWITH_MECAB=$(usex cjk system OFF)
+			-DWITH_LIBEVENT=system
+			-DWITH_PROTOBUF=system
+			-DWITH_NUMA=$(usex numa ON OFF)
 		)
+
+		if use jemalloc ; then
+			mycmakeargs+=( -DWITH_JEMALLOC=ON )
+		elif use tcmalloc ; then
+			mycmakeargs+=( -DWITH_TCMALLOC=ON )
+		fi
 
 		if use profiling ; then
 			# Setting to OFF doesn't work: Once set, profiling options will be added
 			# to `mysqld --help` output via sql/sys_vars.cc causing
 			# "main.mysqld--help-notwin" test to fail
 			mycmakeargs+=( -DENABLED_PROFILING=ON )
-		fi
-
-		if use static ; then
-			mycmakeargs+=( -DWITH_PIC=1 )
 		fi
 
 		# Storage engines
@@ -409,57 +319,36 @@ multilib_src_configure() {
 			-DWITH_INNODB_MEMCACHED=0
 			-DWITH_MYISAMMRG_STORAGE_ENGINE=1
 			-DWITH_MYISAM_STORAGE_ENGINE=1
-			-DWITH_PARTITION_STORAGE_ENGINE=1
 		)
-
 	else
 		mycmakeargs+=(
 			-DWITHOUT_SERVER=1
-			-DWITH_EMBEDDED_SERVER=OFF
-			-DEXTRA_CHARSETS=none
+			-DWITH_SYSTEMD=no
 		)
 	fi
 
 	cmake_src_configure
 }
 
-src_compile() {
-	if use client-libs ; then
-		multilib-minimal_src_compile
-	else
-		multilib_src_compile
-	fi
-}
-
-multilib_src_compile() {
-	cmake_src_compile
-}
-
 # Official test instructions:
 # ulimit -n 16500 && \
-# USE='latin1 perl server' \
-# FEATURES='test userpriv -usersandbox' \
+# USE='perl server' \
+# FEATURES='test userpriv' \
 # ebuild mysql-X.X.XX.ebuild \
 # digest clean package
 src_test() {
 	_disable_test() {
-		local rawtestname reason
+		local rawtestname bug reason
 		rawtestname="${1}" ; shift
+		bug="${1}" ; shift
 		reason="${@}"
-		ewarn "test '${rawtestname}' disabled: '${reason}'"
-		echo ${rawtestname} : ${reason} >> "${T}/disabled.def"
+		ewarn "test '${rawtestname}' disabled: '${reason}' (BUG#${bug})"
+		echo ${rawtestname} : BUG#${bug} ${reason} >> "${T}/disabled.def"
 	}
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
 	local retstatus_unit
 	local retstatus_tests
-
-	if ! use server ; then
-		einfo "Skipping server tests due to minimal build."
-		return 0
-	fi
-
-	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
 
 	# Run CTest (test-units)
 	cmake_src_test
@@ -494,113 +383,49 @@ src_test() {
 	pushd "${TESTDIR}" &>/dev/null || die
 
 	touch "${T}/disabled.def"
-	# These are failing in MySQL 5.7 for now and are believed to be
-	# false positives:
-	#
-	local t
 
-	for t in auth_sec.keyring_udf ; do
-			_disable_test "$t" "False positives in Gentoo"
-	done
-
-	# Unstable tests
-	# - main.xa_prepared_binlog_off: https://bugs.mysql.com/bug.php?id=83340
-	# - rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch: https://bugs.mysql.com/bug.php?id=89223
-	# - rpl.rpl_non_direct_stm_mixing_engines: MDEV-14489
-	for t in \
-		main.xa_prepared_binlog_off \
-		rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch \
-		rpl.rpl_non_direct_stm_mixing_engines \
-	; do
-		_disable_test "$t" "Unstable test"
-	done
-
-	for t in \
-		gis.geometry_class_attri_prop \
-		gis.geometry_property_function_issimple \
-		gis.gis_bugs_crashes \
-		gis.spatial_op_testingfunc_mix \
-		gis.spatial_analysis_functions_buffer \
-		gis.spatial_analysis_functions_distance \
-		gis.spatial_utility_function_distance_sphere \
-		gis.spatial_utility_function_simplify \
-		gis.spatial_analysis_functions_centroid \
-		main.with_recursive \
-	; do
-		_disable_test "$t" "Known rounding error with latest AMD processors"
-	done
+	local -a disabled_tests
+	disabled_tests+=( "auth_sec.keyring_file_data_qa;0;Won't work with user privileges" )
+	disabled_tests+=( "gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_utility_function_distance_sphere;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.geometry_property_function_issimple;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_analysis_functions_centroid;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_operators_intersection;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "main.mysql_load_data_local_dir;0;Known test failure - no upstream bug yet" )
+	disabled_tests+=( "main.subquery_bugs;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "main.with_recursive;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
+	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
+	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet" )
+	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
+	disabled_tests+=( "x.connection;0;Known failure - no upstream bug yet" )
+	disabled_tests+=( "main.mysqlpump_basic_lz4;0;Extra tool output causes false positive" )
+	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
+	disabled_tests+=( "x.message_protobuf_nested;0;False positive caused by protobuff-3.11+" )
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
 		# no need to force dep app-arch/zip for one test
-		_disable_test "innodb.partition_upgrade_create" "Requires app-arch/zip"
+		disabled_tests+=( "innodb.discarded_partition_create;0;Requires app-arch/zip" )
+		disabled_tests+=( "innodb.partition_upgrade_create;0;Requires app-arch/zip" )
 	fi
 
-	if use numa && use kernel_linux ; then
-		# bug 584880
-		if ! linux_config_exists || ! linux_chkconfig_present NUMA ; then
-			for t in sys_vars.innodb_numa_interleave_basic ; do
-				_disable_test "$t" "Test $t requires system with NUMA support"
-			done
+	local test_infos_str test_infos_arr
+	for test_infos_str in "${disabled_tests[@]}" ; do
+		IFS=';' read -r -a test_infos_arr <<< "${test_infos_str}"
+
+		if [[ ${#test_infos_arr[@]} != 3 ]] ; then
+			die "Invalid test data set, not matching format: ${test_infos_str}"
 		fi
-	fi
 
-	if ! use latin1 ; then
-		# The following tests will fail if DEFAULT_CHARSET
-		# isn't set to latin1:
-		for t in \
-			binlog.binlog_mysqlbinlog_filter \
-			binlog.binlog_xa_prepared_disconnect \
-			funcs_1.is_columns_mysql \
-			funcs_1.is_tables_mysql \
-			funcs_1.is_triggers \
-			innodb.innodb_pagesize_max_recordsize \
-			innodb.innodb-system-table-view \
-			innodb.mysqldump_max_recordsize \
-			main.mysql_client_test \
-			main.mysqld--help-notwin \
-			main.type_string \
-			main.information_schema \
-			perfschema.binlog_edge_mix \
-			perfschema.binlog_edge_stmt \
-			rpl.rpl_xa_survive_disconnect \
-			rpl.rpl_xa_survive_disconnect_lsu_off \
-			rpl.rpl_xa_survive_disconnect_table \
-		; do
-			_disable_test "$t" "Requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
-		done
-	fi
-
-	if has_version '>=dev-libs/openssl-1.1.1' ; then
-		# Tests are expecting <openssl-1.1.1 default cipher
-		for t in \
-			auth_sec.cert_verify \
-			auth_sec.mysql_ssl_connection \
-			auth_sec.openssl_cert_generation \
-			auth_sec.ssl_auto_detect \
-			auth_sec.ssl_mode \
-			auth_sec.tls \
-			binlog.binlog_grant_alter_user \
-			encryption.innodb_onlinealter_encryption \
-			main.grant_alter_user_qa \
-			main.grant_user_lock_qa \
-			main.mysql_ssl_default \
-			main.openssl_1 \
-			main.plugin_auth_sha256_tls \
-			main.ssl \
-			main.ssl_8k_key \
-			main.ssl_bug75311 \
-			main.ssl_ca \
-			main.ssl_cipher \
-			main.ssl_compress \
-			main.ssl_crl \
-			main.ssl_ecdh \
-			main.ssl_verify_identity \
-			x.connection_tls_version \
-			x.connection_openssl \
-		; do
-			_disable_test  "$t" "Requires <dev-libs/openssl-1.1.1"
-		done
-	fi
+		_disable_test "${test_infos_arr[0]}" "${test_infos_arr[1]}" "${test_infos_arr[2]}"
+	done
+	unset test_infos_str test_infos_arr
 
 	# Try to increase file limits to increase test coverage
 	if ! ulimit -n 16500 1>/dev/null 2>&1 ; then
@@ -642,32 +467,8 @@ src_test() {
 }
 
 src_install() {
-	local MULTILIB_WRAPPED_HEADERS
-	local MULTILIB_CHOST_TOOLS
-	if use client-libs ; then
-		# headers with ABI specific data
-		MULTILIB_WRAPPED_HEADERS=(
-			/usr/include/mysql/server/my_config.h
-			/usr/include/mysql/server/mysql_version.h )
-
-		# wrap the config scripts
-		MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
-		multilib-minimal_src_install
-	else
-		multilib_src_install
-		multilib_src_install_all
-	fi
-}
-
-# Intentionally override eclass function
-multilib_src_install() {
 	cmake_src_install
 
-	# Kill old libmysqclient_r symlinks if they exist. Time to fix what depends on them.
-	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
-}
-
-multilib_src_install_all() {
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
@@ -686,7 +487,7 @@ multilib_src_install_all() {
 	# testsuite. It DOES have a use to be installed, esp. when you want to do a
 	# validation of your database configuration after tuning it.
 	if ! use test ; then
-		rm -rf "${D}/${MY_SHAREDSTATEDIR}/mysql-test"
+		rm -rf "${ED}/${MY_SHAREDSTATEDIR#${EPREFIX}}/mysql-test"
 	fi
 
 	# Configuration stuff
@@ -697,34 +498,76 @@ multilib_src_install_all() {
 	eprefixify "${TMPDIR}/my.cnf"
 	doins "${TMPDIR}/my.cnf"
 	insinto "${MY_SYSCONFDIR#${EPREFIX}}/mysql.d"
-	cp "${FILESDIR}/my.cnf.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
+	cp "${FILESDIR}/my.cnf-8.0.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
 	eprefixify "${TMPDIR}/50-distro-client.cnf"
 	doins "${TMPDIR}/50-distro-client.cnf"
 
-	if use server ; then
-		mycnf_src="my.cnf.distro-server"
-		sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
-			"${FILESDIR}/${mycnf_src}" \
-			> "${TMPDIR}/my.cnf.ok" || die
+	mycnf_src="my.cnf-8.0.distro-server"
+	sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
+		"${FILESDIR}/${mycnf_src}" \
+		> "${TMPDIR}/my.cnf.ok" || die
 
-		if use prefix ; then
-			sed -i -r -e '/^user[[:space:]]*=[[:space:]]*mysql$/d' \
-				"${TMPDIR}/my.cnf.ok" || die
-		fi
-
-		if use latin1 ; then
-			sed -i \
-				-e "/character-set/s|utf8|latin1|g" \
-				"${TMPDIR}/my.cnf.ok" || die
-		fi
-
-		eprefixify "${TMPDIR}/my.cnf.ok"
-
-		newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
+	if use prefix ; then
+		sed -i -r -e '/^user[[:space:]]*=[[:space:]]*mysql$/d' \
+			"${TMPDIR}/my.cnf.ok" || die
 	fi
+
+	if use latin1 ; then
+		sed -i \
+			-e "/character-set/s|utf8mb4|latin1|g" \
+			"${TMPDIR}/my.cnf.ok" || die
+	fi
+
+	eprefixify "${TMPDIR}/my.cnf.ok"
+
+	newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
 
 	#Remove mytop if perl is not selected
 	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
+
+	if use router ; then
+		rm -rf \
+			"${ED}/usr/LICENSE.router" \
+			"${ED}/usr/README.router" \
+			"${ED}/usr/run" \
+			"${ED}/usr/var" \
+			|| die
+	fi
+
+	# Kill old libmysqclient_r symlinks if they exist. Time to fix what depends on them.
+	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
+}
+
+pkg_postinst() {
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
+
+	# Create log directory securely if it does not exist
+	# NOTE: $MY_LOGDIR contains $EPREFIX by default
+	[[ -d "${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${MY_LOGDIR}"
+
+	# Note about configuration change
+	einfo
+	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
+	elog "to several files in /etc/mysql/mysql.d."
+	elog "Please backup any changes you made to /etc/mysql/my.cnf"
+	elog "and add them as a new file under /etc/mysql/mysql.d with a .cnf extension."
+	elog "You may have as many files as needed and they are read alphabetically."
+	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
+	einfo
+
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		einfo
+		elog "You might want to run:"
+		elog "  \"emerge --config =${CATEGORY}/${PF}\""
+		elog "if this is a new install."
+		einfo
+	else
+		einfo
+		elog "Upgrade process for ${PN}-8.x has changed. Please read"
+		elog "https://dev.mysql.com/doc/refman/8.0/en/upgrade-binary-package.html"
+		einfo
+	fi
 }
 
 pkg_config() {
@@ -1028,6 +871,85 @@ pkg_config() {
 	einfo "Install db log:\t\t\t${mysql_install_log}"
 	einfo "Install server log:\t\t\t${mysqld_logfile}"
 
+	local -a config_files
+
+	local config_file="${EROOT}/etc/mysql/mysql.d/50-distro-client.cnf"
+	if [[ -f "${config_file}" ]] ; then
+		config_files+=( "${config_file}" )
+	else
+		ewarn "Client configuration '${config_file}' not found; Skipping configuration of default authentication plugin for client ..."
+	fi
+
+	config_file="${EROOT}/etc/mysql/mysql.d/50-distro-server.cnf"
+	if [[ -f "${config_file}" ]] ; then
+		config_files+=( "${config_file}" )
+	else
+		ewarn "Server configuration '${config_file}' not found; Skipping configuration of default authentication plugin for mysqld ..."
+	fi
+
+	if [[ ${#config_files[@]} -gt 0 ]] ; then
+		if [[ -z "${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" ]] ; then
+			local user_answer
+
+			echo
+			einfo "Please select default authentication plugin (enter number or plugin name):"
+			einfo "1) caching_sha2_password [MySQL 8.0 default]"
+			einfo "2) mysql_native_password [MySQL 5.7 default]"
+			einfo
+			einfo "For details see:"
+			einfo "https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password"
+			read -p "    >" user_answer
+			echo
+
+			case "${user_answer}" in
+				1|caching_sha2_password)
+					MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=caching_sha2_password
+					;;
+				2|mysql_native_password)
+					MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=mysql_native_password
+					;;
+				'')
+					die "No authentication plugin selected!"
+					;;
+				*)
+					die "Authentication plugin '${user_answer}' is unknown/unsupported!"
+					;;
+			esac
+
+			echo "Selected authentication plugin: ${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" >> "${mysql_install_log}"
+
+			unset user_answer
+		fi
+
+		local cfg_option cfg_option_tabs cfg_section
+		for config_file in "${config_files[@]}" ; do
+			cfg_option="default-authentication-plugin"
+			cfg_section="mysqld"
+			cfg_option_tabs="\t\t"
+			if [[ "${config_file}" == *client.cnf ]] ; then
+				cfg_option="default-auth"
+				cfg_section="client"
+				cfg_option_tabs="\t\t\t\t"
+			fi
+
+			if grep -qE "^(loose-)?${cfg_option}\b.*=" "${config_file}" 2>/dev/null ; then
+				einfo "Ensuring that ${cfg_option} is set to '${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}' in '${config_file}' ..."
+				sed -i \
+					-e "s/^\(loose-\)\?${cfg_option}\b.*=.*/loose-${cfg_option}${cfg_option_tabs}= ${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}/" \
+					"${config_file}" || die "Failed to change ${cfg_option} in '${config_file}'!"
+			else
+				einfo "Setting ${cfg_option} to '${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}' in '${config_file}' ..."
+				sed -i \
+					-e "/^\[${cfg_section}\]$/a loose-${cfg_option}${cfg_option_tabs}= ${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" \
+					"${config_file}" || die "Failed to add ${cfg_option} to '${config_file}'!"
+			fi
+		done
+		unset cfg_option cfg_option_tabs cfg_section
+	fi
+	unset config_files config_file
+
+	echo
+
 	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
 		local tmp_mysqld_password_source=
 
@@ -1128,7 +1050,7 @@ pkg_config() {
 	einfo "Initializing ${PN} data directory: ${cmd[@]}"
 	eval "${cmd[@]}" >>"${mysql_install_log}" 2>&1
 
-	if [[ $? -ne 0 ]] ; then
+	if [[ $? -ne 0 || ! -f "${MY_DATADIR}/mysql.ibd" ]] ; then
 		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysql_install_log}" 1>&2
 		die "Failed to initialize ${PN} data directory. Please review '${mysql_install_log}'!"
 	fi

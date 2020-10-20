@@ -9,7 +9,7 @@ inherit check-reqs cmake flag-o-matic linux-info \
 	multiprocessing prefix toolchain-funcs multilib-minimal
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-5.7.31-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/mysql/${PN}-5.7.32-patches-01.tar.xz"
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
@@ -28,7 +28,7 @@ RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
