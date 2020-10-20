@@ -5,11 +5,11 @@ DESCRIPTION=Two-way cross-platform file synchronizer
 EAPI=7
 HOMEPAGE=https://www.seas.upenn.edu/~bcpierce/unison/
 IUSE=debug gtk +ocamlopt threads
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=gtk? ( dev-ml/lablgtk:2= ) || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) >=app-eselect/eselect-unison-0.4
 RESTRICT=!ocamlopt? ( strip )
 SLOT=2.51
 SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.3_rc3.tar.gz -> unison-2.51.3_rc3.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9f713993c88553bc0c5c5d7c3937c6c7
+_md5_=89d0e8243c9c0a3471e87bb828a95fad
