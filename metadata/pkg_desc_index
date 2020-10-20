@@ -5864,7 +5864,7 @@ dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 2.0.0: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-sqlite3 4.1.2 4.1.3 4.2.0 4.3.0: A package for ocaml that provides access to SQLite databases
-dev-ml/ocaml-ssl 0.5.3 0.5.9: OCaml bindings for OpenSSL
+dev-ml/ocaml-ssl 0.5.3-r1 0.5.9: OCaml bindings for OpenSSL
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0 0.14.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1: O'Caml Graph library
@@ -9459,8 +9459,8 @@ dev-ros/collada_parser 1.12.13 9999: C++ parser for the Collada robot descriptio
 dev-ros/collada_urdf 1.12.13 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.19.1 0.19.2 0.19.3 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.19.1 0.19.2 0.19.3 9999: Combined Robot HW class tests
-dev-ros/compressed_depth_image_transport 1.14.0 9999: Plugin for transparently sending depth images using PNG compression
-dev-ros/compressed_image_transport 1.14.0 9999: Plugin for transparently sending images encoded as JPEG or PNG
+dev-ros/compressed_depth_image_transport 1.14.0-r1 9999: Plugin for transparently sending depth images using PNG compression
+dev-ros/compressed_image_transport 1.14.0-r1 9999: Plugin for transparently sending images encoded as JPEG or PNG
 dev-ros/console_bridge_vendor 1.2.2 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.5.2 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.18.2 9999: Modules that are useful across all controllers
@@ -9471,7 +9471,7 @@ dev-ros/controller_manager_tests 0.19.1 0.19.2 0.19.3 9999: Tests for the contro
 dev-ros/convex_decomposition 0.1.12 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.17.0-r1 1.17.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.7.2 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.15.0 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.15.0-r1 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.15.2 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.8 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.10.1 1.10.2 9999: Aggregates ROS diagnostics
@@ -9519,8 +9519,8 @@ dev-ros/hector_pose_estimation_core 0.3.0-r1 9999: Extended Kalman Filter (EKF) 
 dev-ros/hector_slam_launch 0.4.1 9999: Launch files for launching hector_slam with different robot scenarios
 dev-ros/hector_trajectory_server 0.4.1 9999: Keeps track of tf trajectories and makes this data accessible
 dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
-dev-ros/image_geometry 1.15.0 9999: C++ and Python libraries for interpreting images geometrically
-dev-ros/image_proc 1.15.2 9999: Single image rectification and color processing
+dev-ros/image_geometry 1.15.0-r1 9999: C++ and Python libraries for interpreting images geometrically
+dev-ros/image_proc 1.15.2-r1 9999: Single image rectification and color processing
 dev-ros/image_publisher 1.15.2 9999: Publish an image stream from single image file or avi file.
 dev-ros/image_rotate 1.15.2 9999: Rotates an image minimizing the angle between a vector and the camera frame
 dev-ros/image_transport 1.12.0 9999: Transparent support for transporting images in low-bandwidth compressed formats
