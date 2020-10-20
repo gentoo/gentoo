@@ -252,7 +252,6 @@ app-leechcraft/lc-newlife
 app-leechcraft/lc-ooronee
 app-leechcraft/lc-otlozhu
 app-leechcraft/lcpackgen
-app-leechcraft/lc-pintab
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
