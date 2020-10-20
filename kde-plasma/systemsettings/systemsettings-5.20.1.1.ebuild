@@ -46,7 +46,7 @@ DEPEND="
 	>=kde-plasma/libkworkspace-${PVCUT}:5
 "
 RDEPEND="${DEPEND}
-	!kde-misc/systemd-kcm
+	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
 
