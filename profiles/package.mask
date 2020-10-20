@@ -301,11 +301,6 @@ sci-physics/h2o-gtk
 # Removal in 30 days.  Bug #743259.
 dev-python/flask-themes
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Last release in 2006.  Requires Python 2 SCons to build.
-# Removal in 30 days.  Bug #677622.
-games-board/pouetchess
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
