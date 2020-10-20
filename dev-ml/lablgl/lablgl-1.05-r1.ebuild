@@ -5,11 +5,14 @@ EAPI="5"
 
 inherit multilib eutils toolchain-funcs
 
-IUSE="doc glut +ocamlopt tk"
-
 DESCRIPTION="Objective CAML interface for OpenGL"
 HOMEPAGE="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgl.html"
 LICENSE="BSD"
+
+SRC_URI="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/${P}.tar.gz"
+SLOT="0/${PV}"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="doc glut +ocamlopt tk"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
@@ -26,26 +29,21 @@ RDEPEND="
 		dev-ml/labltk:=
 	)
 	"
-
 DEPEND="${RDEPEND}"
-
-SRC_URI="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/${P}.tar.gz"
-SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 src_configure() {
 	# make configuration file
-	echo "BINDIR=/usr/bin" > Makefile.config
-	echo "GLLIBS = -lGL -lGLU" >> Makefile.config
+	echo "BINDIR=/usr/bin" > Makefile.config || die
+	echo "GLLIBS = -lGL -lGLU" >> Makefile.config || die
 	if use glut; then
-		echo "GLUTLIBS = -lglut" >> Makefile.config
+		echo "GLUTLIBS = -lglut" >> Makefile.config || die
 	else
-		echo "GLUTLIBS = " >> Makefile.config
+		echo "GLUTLIBS = " >> Makefile.config || die
 	fi
-	echo "XLIBS = -lXext -lXmu -lX11" >> Makefile.config
-	echo "RANLIB = $(tc-getRANLIB)" >> Makefile.config
-	echo 'COPTS = -c -O $(CFLAGS)' >> Makefile.config
-	echo 'INCLUDES = $(TKINCLUDES) $(GLINCLUDES) $(XINCLUDES)' >> Makefile.config
+	echo "XLIBS = -lXext -lXmu -lX11" >> Makefile.config || die
+	echo "RANLIB = $(tc-getRANLIB)" >> Makefile.config || die
+	echo 'COPTS = -c -O $(CFLAGS)' >> Makefile.config || die
+	echo 'INCLUDES = $(TKINCLUDES) $(GLINCLUDES) $(XINCLUDES)' >> Makefile.config || die
 }
 
 src_compile() {
@@ -77,18 +75,17 @@ src_install() {
 	# Same for lablglut's toplevel
 	dodir /usr/bin
 
-	BINDIR=${ED}/usr/bin
-	BASE=${ED}/usr/$(get_libdir)/ocaml
+	BINDIR="${ED}/usr/bin"
+	BASE="${ED}/usr/$(get_libdir)/ocaml"
 	emake BINDIR="${BINDIR}" INSTALLDIR="${BASE}/lablGL" DLLDIR="${BASE}/stublibs" install
 
 	dodoc README CHANGES
 
 	if use doc ; then
-		insinto /usr/share/doc/${PF}
 		mv Togl/examples{,.togl}
-		doins -r Togl/examples.togl
+		dodoc -r Togl/examples.togl
 
 		mv LablGlut/examples{,.glut}
-		doins -r LablGlut/examples.glut
+		dodoc -r LablGlut/examples.glut
 	fi
 }
