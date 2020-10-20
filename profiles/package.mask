@@ -226,7 +226,6 @@ app-leechcraft/lc-glance
 app-leechcraft/lc-gmailnotifier
 app-leechcraft/lc-historyholder
 app-leechcraft/lc-hotsensors
-app-leechcraft/lc-hotstreams
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
