@@ -391,12 +391,6 @@ sci-libs/linux-gpib firmware
 # MKL not available on this arch
 media-gfx/povray mkl
 
-# Benda Xu <heroxbd@gentoo.org> (2013-04-01)
-# Sam James <sam@gentoo.org> (2020-06-29)
-# net-misc/x11-ssh-askpass nor
-# net-misc/ssh-askpass-fullscreen keyworded
-net-misc/unison gtk
-
 # Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
