@@ -334,7 +334,6 @@ dev-python/enum34
 dev-python/functools32
 dev-python/futures
 dev-python/ipaddress
-dev-python/pathlib
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
