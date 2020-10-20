@@ -198,13 +198,6 @@ net-wireless/gr-rftap
 net-wireless/gr-specest
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
-# Poorly maintained suite of NIH packages.  Only live ebuilds left
-# for over a year.  This really belongs in an overlay.  Some of them
-# depend on deprecated dev-qt/qtwebkit (#684672).
-# Removal in 14 days.  Bug #693328.
-app-leechcraft/laretz
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
 # It has no chances of porting to GTK+3.  It suffers from major compiler
 # warnings.
