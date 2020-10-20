@@ -5,17 +5,20 @@ EAPI=7
 
 inherit desktop xdg-utils
 
+# Use the docs for the last 'normal' release
+DOC_P="${PN}-2.48.4"
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
 SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV/_p/v}.tar.gz -> ${P/_p/v}.tar.gz"
 # No manual.pdf or manual.html available for this version
-#	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
-#		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
+SRC_URI+=" doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${DOC_VER}/${DOC_P}-manual.pdf
+		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${DOC_VER}/${DOC_P}-manual.html )
+"
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="debug gtk +ocamlopt threads"
+IUSE="debug doc gtk +ocamlopt threads"
 
 # Upstream, for this version, has explicitly disabled test with marker
 # "Skipping some tests -- remove me!". Given the potentially destructive nature
@@ -77,14 +80,14 @@ src_install() {
 
 	if use gtk; then
 		newicon -s scalable ../icons/U.svg ${PN}-${SLOT}.svg
-		make_desktop_entry unison-${SLOT} "${PN} (${SLOT})" "${EPREFIX}/usr/share/${PN}/${PN}-${SLOT}.svg"
+		make_desktop_entry unison-${SLOT} "${PN} (${SLOT})" "${EPREFIX}/usr/share/icons/hicolor/scalable/apps/${PN}-${SLOT}.svg"
 	fi
 
-# No manual.pdf or manual.html available for this version
-#	if use doc; then
-#		DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
-#		HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
-#	fi
+	if use doc; then
+		DOCS+=( "${DISTDIR}/${DOC_P}-manual.pdf" )
+		HTML_DOCS=( "${DISTDIR}/${DOC_P}-manual.html" )
+	fi
+
 	einstalldocs
 }
 
