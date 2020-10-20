@@ -5271,7 +5271,7 @@ dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar 
 dev-libs/kqoauth 0.98-r3: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.2.0: Framework for creation and generation of reports in multiple formats
 dev-libs/kuserfeedback 1.0.0: Framework to collect user feedback for applications via telemetry and surveys
-dev-libs/leatherman 1.3.0 1.11.0 1.12.0-r1 1.12.1 1.12.1-r2: A C++ toolkit
+dev-libs/leatherman 1.3.0 1.11.0 1.12.0-r1 1.12.1 1.12.1-r2 1.12.2: A C++ toolkit
 dev-libs/level-zero 0.91.10 1.0.0: oneAPI Level Zero headers, loader and validation layer
 dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
@@ -5558,7 +5558,7 @@ dev-libs/quazip 0.9.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP packag
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
-dev-libs/re2 0.2020.08.01: An efficient, principled regular expression library
+dev-libs/re2 0.2020.08.01 0.2020.10.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
@@ -9837,7 +9837,7 @@ dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.8 1.3.9: A library to read EXIF info from JPEG and TIFF images
-dev-ruby/facter 3.14.12 3.14.13 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.14.12 3.14.13 3.14.14 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2: A fake filesystem. Use it in your tests
 dev-ruby/faker 2.11.0 2.12.0 2.13.0 2.14.0: A library for generating fake data such as names, addresses, and phone numbers
@@ -16327,7 +16327,7 @@ sci-mathematics/num-utils 0.5-r1 0.5-r2: A set of programs for dealing with numb
 sci-mathematics/octave 5.2.0: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
-sci-mathematics/pari 2.11.4: Computer-aided number theory C library and tools
+sci-mathematics/pari 2.11.4 2.13.0: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20191216: Additional dataset packages for PARI
 sci-mathematics/petsc 3.13.0 3.13.1: Portable, Extensible Toolkit for Scientific Computation
 sci-mathematics/planarity 3.0.0.5: The edge addition planarity suite of graph algorithms
