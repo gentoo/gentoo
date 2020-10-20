@@ -1006,6 +1006,7 @@ app-crypt/nwipe 0.28: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-related packages
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
@@ -10418,7 +10419,7 @@ dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean
 dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP
 dev-ruby/xpath 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
-dev-ruby/yard 0.9.20 0.9.24 0.9.25: Documentation generation tool for the Ruby programming language
+dev-ruby/yard 0.9.20 0.9.25: Documentation generation tool for the Ruby programming language
 dev-ruby/zeitwerk 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.12.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
@@ -17495,7 +17496,7 @@ sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.10: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 4.0.5: FUSE filesystem for LXC
+sys-fs/lxcfs 4.0.5 4.0.6: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0: A featureful union filesystem

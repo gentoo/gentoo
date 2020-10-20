@@ -1,15 +1,15 @@
-BDEPEND=>=dev-lang/go-1.13 nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
-DEFINED_PHASES=compile configure install postinst prepare setup test
+BDEPEND=>=dev-lang/go-1.13 nls? ( sys-devel/gettext ) verify-sig? ( app-crypt/openpgp-keys-linuxcontainers ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
 DEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp] dev-lang/tcl dev-libs/libuv dev-libs/lzo net-dns/dnsmasq[dhcp,ipv6?]
 DESCRIPTION=Fast, dense and secure container management
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd
-IUSE=apparmor +ipv6 nls kernel_linux
+IUSE=apparmor +ipv6 nls verify-sig kernel_linux verify-sig
 KEYWORDS=amd64
 LICENSE=Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0
 RDEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp] dev-lang/tcl dev-libs/libuv dev-libs/lzo net-dns/dnsmasq[dhcp,ipv6?] acct-group/lxd net-firewall/ebtables net-firewall/iptables[ipv6?] sys-apps/iproute2[ipv6?] sys-fs/fuse:0= sys-fs/lxcfs sys-fs/squashfs-tools virtual/acl
 RESTRICT=test
 SLOT=0
-SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-4.0.3.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=18467506767cbcd2ceb5647448e0f638
+SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-4.0.3.tar.gz verify-sig? ( https://linuxcontainers.org/downloads/lxd/lxd-4.0.3.tar.gz.asc )
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	verify-sig	f2f84a35f167f86e5da84a2a2f4f7d65
+_md5_=43c7a6a58b9db8f89c5c01d87e9fedfc
