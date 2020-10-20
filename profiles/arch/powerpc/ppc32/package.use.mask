@@ -28,8 +28,6 @@ gnome-base/gnome-control-center flickr
 sci-misc/boinc X
 # needs mail-client/evolution, depends on net-libs/webkit-gtk
 net-mail/lbdb evo
-# needs www-client/epiphany, depends on net-libs/webkit-gtk
-net-misc/gwget epiphany
 # needs dev-util/devhelp, depends on net-libs/webkit-gtk
 dev-util/anjuta devhelp
 
