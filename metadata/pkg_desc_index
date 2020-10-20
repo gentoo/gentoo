@@ -16830,7 +16830,7 @@ sys-apps/kmscon 8-r1 8_p20180906 8_p20180906-r1: KMS/DRM based virtual Console E
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
-sys-apps/less 551 562 563: Excellent text file viewer
+sys-apps/less 551 562 563 563-r1: Excellent text file viewer
 sys-apps/likwid 4.3.3 4.3.4: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 5.6 5.8: Misc tools bundled with kernel sources
 sys-apps/lm-sensors 3.5.0 3.5.0_p20190505 3.6.0: Hardware Monitoring user-space utilities
