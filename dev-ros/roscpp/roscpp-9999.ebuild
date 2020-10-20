@@ -27,4 +27,3 @@ RDEPEND="
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/boost173.patch" )
