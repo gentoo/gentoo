@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 SCM=""
@@ -39,14 +39,14 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/nose[${PYTHON_USEDEP}]
 	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
 
 python_test() {
-	nosetests --with-coverage --cover-package=rosdep2 --with-xunit test || die
+	env -u ROS_DISTRO nosetests --with-xunit test || die
 }
 
 pkg_postrm() {
