@@ -268,7 +268,6 @@ app-leechcraft/lc-tabsessmanager
 app-leechcraft/lc-tabslist
 app-leechcraft/lc-touchstreams
 app-leechcraft/lc-tpi
-app-leechcraft/lc-vrooby
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
