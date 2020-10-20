@@ -281,7 +281,6 @@ virtual/leechcraft-search-show
 virtual/leechcraft-storage-device-manager
 virtual/leechcraft-task-show
 virtual/leechcraft-trayarea
-virtual/leechcraft-wysiwyg-editor
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
