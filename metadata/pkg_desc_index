@@ -4480,7 +4480,7 @@ dev-haskell/yaml 0.11.5.0: Support for parsing and rendering YAML documents
 dev-haskell/yesod 1.6.1.0: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-auth 1.6.9: Authentication for Yesod
 dev-haskell/yesod-auth-hashdb 1.7.1.2: Authentication plugin for Yesod
-dev-haskell/yesod-core 1.6.17.2: Creation of type-safe, RESTful web applications
+dev-haskell/yesod-core 1.6.18.5: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-default 1.2.0: Default config and main functions for your yesod application (deprecated)
 dev-haskell/yesod-form 1.6.7: Form handling support for Yesod Web Framework
 dev-haskell/yesod-json 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
