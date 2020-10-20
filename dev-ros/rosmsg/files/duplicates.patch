@@ -1,0 +1,13 @@
+Index: rosmsg/src/rosmsg/__init__.py
+===================================================================
+--- rosmsg.orig/src/rosmsg/__init__.py
++++ rosmsg/src/rosmsg/__init__.py
+@@ -618,7 +618,7 @@ def rosmsg_cmd_show(mode, full, alias='s
+         if '/' in arg: #package specified
+             rosmsg_debug(rospack, mode, arg, options.raw)
+         else:
+-            found_msgs = list(rosmsg_search(rospack, mode, arg))
++            found_msgs = list(dict.fromkeys(rosmsg_search(rospack, mode, arg)))
+             if not found_msgs:
+                 print("Could not find msg '%s'" % arg, file=sys.stderr)
+                 return 1

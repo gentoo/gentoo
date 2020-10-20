@@ -23,3 +23,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ros/test_rosmaster[${PYTHON_SINGLE_USEDEP}] )
 "
+PATCHES=( "${FILESDIR}/duplicates.patch" )
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}/../../:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
