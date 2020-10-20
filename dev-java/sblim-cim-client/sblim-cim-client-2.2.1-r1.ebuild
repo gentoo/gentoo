@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,7 @@ IUSE=""
 RDEPEND="
 	>=virtual/jre-1.5"
 DEPEND="
+	app-arch/unzip
 	>=virtual/jdk-1.5
 	test? ( dev-java/ant-junit )"
 
