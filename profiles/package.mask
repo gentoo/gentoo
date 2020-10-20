@@ -260,7 +260,6 @@ app-leechcraft/lc-qrosp
 app-leechcraft/lc-rosenthal
 app-leechcraft/lc-sb2
 app-leechcraft/lc-scroblibre
-app-leechcraft/lc-secman
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-22)
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
