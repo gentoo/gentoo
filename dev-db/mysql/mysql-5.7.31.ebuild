@@ -54,7 +54,7 @@ COMMON_DEPEND="
 		>=app-arch/lz4-0_p131:=
 		cjk? ( app-text/mecab:= )
 		experimental? (
-			dev-libs/libevent:=
+			dev-libs/libevent:=[ssl]
 			dev-libs/protobuf:=
 			net-libs/libtirpc:=
 		)
@@ -73,7 +73,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/protobuf
 	virtual/yacc
 	server? (
-		dev-libs/libevent
+		dev-libs/libevent:=[ssl]
 		experimental? ( net-libs/rpcsvc-proto )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
