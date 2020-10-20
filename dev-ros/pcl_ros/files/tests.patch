@@ -1,0 +1,15 @@
+Increase tolerance, this fails under high loads
+
+Index: pcl_ros/samples/pcl_ros/segmentation/sample_extract_clusters.launch
+===================================================================
+--- pcl_ros.orig/samples/pcl_ros/segmentation/sample_extract_clusters.launch
++++ pcl_ros/samples/pcl_ros/segmentation/sample_extract_clusters.launch
+@@ -25,7 +25,7 @@
+     <rosparam>
+       topic: /extract_clusters/output
+       hz: 3000
+-      hzerror: 2400
++      hzerror: 2900
+       test_duration: 5.0
+     </rosparam>
+   </test>
