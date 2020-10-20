@@ -306,12 +306,6 @@ dev-python/flask-themes
 # Removal in 30 days.  Bug #677622.
 games-board/pouetchess
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Unmaintained.  Homepage gone.  Not bumped since its initial addition
-# in 2008.  Uses SCons incorrectly and fails to build.
-# Removal in 30 days.  Bug #677446.
-x11-misc/ipager
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
