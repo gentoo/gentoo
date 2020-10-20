@@ -323,7 +323,6 @@ media-tv/plex-media-server
 # Obsolete Python 2 packages with no revdeps.
 # Removal in 30 days.  Bug #743727.
 dev-python/pyogg
-dev-python/python-fchksum
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
