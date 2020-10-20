@@ -528,10 +528,6 @@ sys-devel/gcc sanitize
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
 
-# Maxim Koltsov <maksbotan@gentoo.org> (2014-08-05)
-# net-libs/tox is in mva overlay only ATM
-app-leechcraft/lc-azoth sarin
-
 # Pacho Ramos <pacho@gentoo.org> (2014-06-01)
 # Needs hardmasked lua-5.2
 >=media-plugins/grilo-plugins-0.2.12 lua
