@@ -60,6 +60,11 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# bug #747808
+	"${FILESDIR}/${PN}-9.53.3-freetype-2.10.3.patch"
+)
+
 src_prepare() {
 	if [[ -n "${MY_PATCHSET}" ]] ; then
 		# apply various patches, many borrowed from Fedora
