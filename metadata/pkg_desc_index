@@ -3486,7 +3486,7 @@ dev-db/oracle-instantclient-jdbc 12: Transition package moving to single dev-db/
 dev-db/oracle-instantclient-odbc 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 5.7.27.30-r1 8.0.19.10-r1 8.0.20.11-r2: Fully compatible, enhanced and open source drop-in replacement for MySQL
-dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1: Advanced command-line tools to perform a variety of MySQL and system tasks
+dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.1: Realtime PostgreSQL database server monitoring tool
@@ -5418,7 +5418,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.2: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.5.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
-dev-libs/librdkafka 1.4.4 1.5.0: Apache Kafka C/C++ client library
+dev-libs/librdkafka 1.4.4 1.5.0 1.5.2: Apache Kafka C/C++ client library
 dev-libs/librelp 1.6.0 1.7.0 1.8.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0 2.13.1: Generic library for reporting software bugs
@@ -17446,7 +17446,7 @@ sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system base
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
-sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0: xfs filesystem utilities
+sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4 1.1.1: Zeroes out all free space on a filesystem
