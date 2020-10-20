@@ -15315,7 +15315,7 @@ net-misc/ucarp 1.5.2-r3 1.5.2-r5: Portable userland implementation of Common Add
 net-misc/udpcast 20120424 20120424-r1 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
-net-misc/unison 2.48.4-r1 2.48.4-r2 2.48.15_p4-r1 2.51.2-r1 2.51.3_rc3: Two-way cross-platform file synchronizer
+net-misc/unison 2.48.4-r1 2.48.4-r2 2.48.15_p4-r2 2.51.2-r1 2.51.3_rc3-r1: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 3.19 4.13: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
