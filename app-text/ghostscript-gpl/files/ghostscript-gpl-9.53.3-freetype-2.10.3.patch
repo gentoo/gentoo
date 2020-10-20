@@ -1,0 +1,20 @@
+https://bugs.ghostscript.com/show_bug.cgi?id=702985
+https://bugs.gentoo.org/747808
+
+--- ghostscript-9.53.3/base/fapi_ft.c
++++ ghostscript-9.53.3/base/fapi_ft.c
+@@ -125,6 +125,14 @@
+ delete_inc_int_info(gs_fapi_server * a_server,
+                     FT_IncrementalRec * a_inc_int_info);
+ 
++#ifndef FT_CALLBACK_DEF
++#ifdef __cplusplus
++#define FT_CALLBACK_DEF( x ) extern "C" x
++#else
++#define FT_CALLBACK_DEF( x ) static x
++#endif
++#endif
++
+ FT_CALLBACK_DEF(void *)
+ FF_alloc(FT_Memory memory, long size)
+ {

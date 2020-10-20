@@ -35,7 +35,6 @@ DEPEND="
 	app-text/libpaper
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.9:2=
-	<media-libs/freetype-2.10.3
 	>=media-libs/jbig2dec-0.19:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/libpng-1.6.2:0=
@@ -60,6 +59,11 @@ RDEPEND="${DEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	# bug #747808
+	"${FILESDIR}/${PN}-9.53.3-freetype-2.10.3.patch"
+)
 
 src_prepare() {
 	if [[ -n "${MY_PATCHSET}" ]] ; then
