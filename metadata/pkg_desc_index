@@ -601,7 +601,7 @@ app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
-app-admin/mcelog 170 172 173: A tool to log and decode Machine Check Exceptions
+app-admin/mcelog 173: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
@@ -9579,9 +9579,9 @@ dev-ros/opencv_tests 1.15.0 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 1.4.2 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 1.4.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.2.1 9999: ROS-ified version of gmapping SLAM
-dev-ros/pcl_conversions 1.7.1 9999: Provides conversions from PCL data types and ROS message types
+dev-ros/pcl_conversions 1.7.1 1.7.2 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.3.0 9999: PCL (Point Cloud Library)-related ROS messages
-dev-ros/pcl_ros 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
+dev-ros/pcl_ros 1.7.2 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.13.0-r2 9999: Tools for writing and dynamically loading plugins using the ROS infrastructure
 dev-ros/pluginlib_tutorials 0.1.12 0.2.0 9999: Pluginlib tutorials
 dev-ros/poco_vendor 1.2.0 9999: CMake shim over the poco library
@@ -9619,7 +9619,7 @@ dev-ros/rosbridge_msgs 0.11.9 0.11.10 9999: Package containing message files for
 dev-ros/rosbridge_server 0.11.9 0.11.10 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.15.5 1.15.6 1.15.7 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.15.5 1.15.6 1.15.7 9999: Cleanup filesystem resources (e.g. log files)
-dev-ros/rosconsole 1.14.0 1.14.2 9999: ROS console output library
+dev-ros/rosconsole 1.14.0 1.14.2 1.14.3 9999: ROS console output library
 dev-ros/rosconsole_bridge 0.5.4 9999: Connects console_bridge-based logging to rosconsole-based logging
 dev-ros/roscpp 1.15.9 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.7.2 9999: Code for serialization
@@ -15714,7 +15714,7 @@ ros-meta/mavros 1.2.0 1.4.0 9999: Metapackage for mavros packages
 ros-meta/navigation 1.17.0 1.17.1 9999: 2D navigation stack
 ros-meta/nodelet_core 1.10.0 9999: Nodelet Core Metapackage
 ros-meta/perception 1.5.0 9999: Metapackage for ROS perception stack
-ros-meta/perception_pcl 1.7.1 9999: PCL (Point Cloud Library) ROS interface stack
+ros-meta/perception_pcl 1.7.1 1.7.2 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.12.4 1.13.0 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.4.1 0.4.2 9999: Integration of ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.5.0 9999: Metapackage which includes ROS libaries for any robot hardware
