@@ -359,12 +359,6 @@ gnome-base/libgnomeui
 # Removal in 30 days.  Bug #726796.
 net-misc/gwget
 
-# David Seifert <soap@gentoo.org> (2020-09-20)
-# EAPI 4, last release in 2012, sandbox violations and
-# full of bugs. Mainlined since 3.14, Removal in 30 days.
-# Bug #679502, #701406, #701408, #742116.
-sys-block/rts5229
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
