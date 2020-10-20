@@ -9919,7 +9919,7 @@ dev-ruby/ethon 0.12.0: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
-dev-ruby/exifr 1.3.6 1.3.7 1.3.8: A library to read EXIF info from JPEG and TIFF images
+dev-ruby/exifr 1.3.8 1.3.9: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/facter 3.14.12 3.14.13 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2: A fake filesystem. Use it in your tests
