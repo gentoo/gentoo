@@ -7977,8 +7977,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 1.15.15 1.15.16 1.15.17 1.15.18 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 1.18.15 1.18.16 1.18.17 1.18.18 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 1.15.15 1.15.16 1.15.17 1.15.18 1.16.0 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 1.18.15 1.18.16 1.18.17 1.18.18 1.19.0 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8172,7 +8172,7 @@ dev-python/executing 0.5.2 0.5.3: Get information about what a Python frame is c
 dev-python/expects 0.8.0-r1 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fakeredis 1.4.3: Fake implementation of redis API for testing purposes
+dev-python/fakeredis 1.4.3 1.4.4: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
@@ -8434,8 +8434,8 @@ dev-python/mako 1.1.3-r1: A Python templating language
 dev-python/mamba 0.11.0 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3 3.3.1: Python implementation of the markdown markup language
-dev-python/markdown2 2.3.9: Python Markdown language reimplementation
+dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3 3.3.1 3.3.2: Python implementation of the markdown markup language
+dev-python/markdown2 2.3.9 2.3.10: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
@@ -8610,7 +8610,7 @@ dev-python/pathspec 0.8.0: Utility library for gitignore style pattern matching 
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 5.4.5-r1 5.5.0-r1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 5.4.5-r1 5.5.0-r1 5.5.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/pebble 4.5.3: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
@@ -9141,7 +9141,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.1.2 5.3.0 5.4.0 6.0.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.1.2 5.3.0 5.4.0 6.0.0 7.0.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.21 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.5: The Scientific Python Development Environment
@@ -17116,7 +17116,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20201013: PAM base configuration files
+sys-auth/pambase 20201013 20201020: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
