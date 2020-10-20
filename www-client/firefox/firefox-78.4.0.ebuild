@@ -51,7 +51,7 @@ PATCH_URIS=(
 	https://dev.gentoo.org/~{axs,polynomial-c,whissi}/mozilla/patchsets/${FIREFOX_PATCHSET}
 )
 
-SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.sources.tar.xz
+SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
 	${PATCH_URIS[@]}"
 
 DESCRIPTION="Firefox Web Browser"
