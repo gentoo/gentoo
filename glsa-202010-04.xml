@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-04">
+  <title>libxml2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libxml2, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libxml2</product>
+  <announced>2020-10-20</announced>
+  <revised count="1">2020-10-20</revised>
+  <bug>710748</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/libxml2" auto="yes" arch="*">
+      <unaffected range="ge">2.9.10</unaffected>
+      <vulnerable range="lt">2.9.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxml2 is the XML (eXtended Markup Language) C parser and toolkit
+      initially developed for the Gnome project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libxml2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxml2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxml2-2.9.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20388">CVE-2019-20388</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7595">CVE-2020-7595</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-02T01:04:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-20T10:44:05Z">whissi</metadata>
+</glsa>
