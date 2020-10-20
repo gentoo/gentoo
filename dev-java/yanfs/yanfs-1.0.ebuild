@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Yet Another NFS - a Java NFS library"
 HOMEPAGE="https://java.net/projects/yanfs"
-SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/dev-java/yanfs/yanfs-1.0.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/dev-java/yanfs/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
