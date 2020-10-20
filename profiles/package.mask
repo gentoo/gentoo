@@ -343,7 +343,6 @@ dev-python/subprocess32
 # Removal in 30 days.  Bug #743721.
 dev-python/cliapp
 dev-python/coverage-test-runner
-dev-python/ttystatus
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
