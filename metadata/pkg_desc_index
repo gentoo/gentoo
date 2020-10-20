@@ -5824,7 +5824,7 @@ dev-ml/jbuilder 1.0_beta14: A composable build system for OCaml
 dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/jst-config 0.14.0: Compile-time configuration for Jane Street libraries
-dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
+dev-ml/lablgl 1.05-r1 1.06: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5 2.18.8-r1 2.18.10 3.1.1: OCaml bindings to GTK-3
 dev-ml/lablgtk-sourceview 3.1.1: OCaml bindings to GTK-3
 dev-ml/labltk 8.06.2 8.06.7 8.06.9: OCaml interface to the Tcl/Tk GUI framework
