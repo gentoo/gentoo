@@ -10,7 +10,7 @@ media-sound/jack2 ieee1394
 # glslang is not yet stable on arm
 media-libs/mesa vulkan-overlay
 
-# Sam James <sam@gentoo.org> (2020-06-28)
+# Sam James <sam@gentoo.org> (2020-10-20)
 # Deps not yet stable
 # Migrated from package.use.mask
 app-text/asciidoc test
@@ -20,6 +20,7 @@ dev-util/geany-plugins markdown
 app-arch/rpm test
 net-misc/openssh security-key
 dev-util/geany-plugins markdown
+net-misc/unison gtk
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-11-02)
 # media-video/pipewire is not stable yet
