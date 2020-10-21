@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~juippis/distfiles/linux-UFRII-drv-v${MY_PV}-uke
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 DEPEND="dev-libs/libxml2:2
