@@ -17933,7 +17933,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.3.1 78.4.0 81.0.1 81.0.1-r1 81.0.2 82.0: Firefox Web Browser
 www-client/firefox-bin 78.3.1-r1 78.4.0 81.0.1-r1 81.0.2 82.0: Firefox Web Browser
-www-client/google-chrome 86.0.4240.75: The web browser from Google
+www-client/google-chrome 86.0.4240.111: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.20: The web browser from Google
 www-client/google-chrome-unstable 88.0.4292.2: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -17977,7 +17977,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.445: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 86.0.4240.75 87.0.4280.20_beta 88.0.4292.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.111 87.0.4280.20_beta 88.0.4292.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
