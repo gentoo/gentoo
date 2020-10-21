@@ -191,7 +191,6 @@ sci-libs/shogun
 net-wireless/gr-baz
 net-wireless/gr-doa
 net-wireless/gr-foo
-net-wireless/gr-ntsc
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
