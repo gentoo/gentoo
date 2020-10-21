@@ -7906,8 +7906,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 1.15.15 1.15.16 1.15.17 1.15.18 1.16.0 9999: The AWS SDK for Python
-dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 1.18.15 1.18.16 1.18.17 1.18.18 1.19.0 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.46 1.14.59 1.14.63 1.15.0 1.15.1 1.15.2 1.15.3 1.15.4 1.15.5 1.15.6 1.15.7 1.15.8 1.15.9 1.15.10 1.15.11 1.15.12 1.15.13 1.15.14 1.15.15 1.15.16 1.15.17 1.15.18 1.16.0 1.16.1 9999: The AWS SDK for Python
+dev-python/botocore 1.17.46 1.17.59 1.17.63 1.18.0 1.18.1 1.18.2 1.18.3 1.18.4 1.18.5 1.18.6 1.18.7 1.18.8 1.18.9 1.18.10 1.18.11 1.18.12 1.18.13 1.18.14 1.18.15 1.18.16 1.18.17 1.18.18 1.19.0 1.19.1 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8138,7 +8138,6 @@ dev-python/flask-script 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 3.4.4: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.4.4: SQLAlchemy support for Flask applications
-dev-python/flask-themes 0.1.3_p20180112: Infrastructure for theming support in Flask applications
 dev-python/flask-wtf 0.14.3: Simple integration of Flask and WTForms
 dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
 dev-python/fleep 1.0.1 9999: File format determination library for Python
@@ -8244,7 +8243,7 @@ dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 5.3.0-r1: InfluxDB client
 dev-python/iniconfig 1.0.0: Brain-dead simple config-ini parsing
 dev-python/iniparse 0.4-r2 0.5: Better INI parser for Python
-dev-python/intelhex 2.2.1-r1: Python library for Intel HEX files manipulations
+dev-python/intelhex 2.2.1-r1 2.3.0: Python library for Intel HEX files manipulations
 dev-python/intervaltree 3.0.2: Editable interval tree data structure for Python 2 and 3
 dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
@@ -8913,7 +8912,7 @@ dev-python/rarfile 3.1: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/rcssmin 1.0.6: CSS minifier written in python.
 dev-python/rdflib 5.0.0: RDF library containing a triple store and parser/serializer
-dev-python/readme_renderer 26.0 27.0: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 26.0 27.0 28.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 2.1.0 2.1.1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
@@ -15469,23 +15468,15 @@ net-wireless/gnuradio 3.8.1.0-r1 3.8.1.0-r2 3.8.2.0 9999: Toolkit that provides 
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.11.5-r1 2.12.1-r1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
-net-wireless/gr-baz 9999: Gnuradio baz
-net-wireless/gr-doa 9999: Gnuradio flowgraphs and modules for Direction of Arrival analysis
-net-wireless/gr-foo 9999: Some GNU Radio blocks that bastianbl uses
 net-wireless/gr-ieee802154 0.0_p20191006 9999: IEEE 802.15.4 ZigBee Transceiver
 net-wireless/gr-iio 0.3_p20191219-r1 9999: GNU Radio IIO Blocks
 net-wireless/gr-iqbal 0.38.1 9999: gnuradio I/Q balancing
 net-wireless/gr-m2k 9999: A C++ library for interfacing with the ADALM2000
-net-wireless/gr-ntsc 9999: RTL2832U NTSC viewer
-net-wireless/gr-ntsc-rc 9999: NTSC receiver and transmitter for 5 GHz drones
 net-wireless/gr-osmosdr 0.2.0 0.2.2 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
-net-wireless/gr-ppm-wiegand 9999: GnuRadio PPM (Differential Pulse Position Modulation/Demodulation) plugin
 net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
-net-wireless/gr-rftap 9999: RFtap Module for GNU Radio
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
 net-wireless/gr-scopy 0.0_p20201005 9999: Scopy IIO blocks for GNU Radio
-net-wireless/gr-specest 9999: A module adding spectral estimation routines to GNU Radio
 net-wireless/hackrf-tools 2018.01.1-r2 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
@@ -16218,7 +16209,6 @@ sci-libs/parmetis 4.0.3-r1: Parallel (MPI) unstructured graph partitioning libra
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.11.0 1.11.1 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
-sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/plplot 5.15.0-r1: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
@@ -16380,7 +16370,6 @@ sci-physics/fastjet 3.0.6-r1: Fast implementation of several recombination jet a
 sci-physics/geant 4.10.05_p01 4.10.6_beta1-r1 4.10.6-r1 4.10.6_p1-r1 4.10.6_p2: Toolkit for simulation of passage of particles through matter
 sci-physics/geant-data 4.10.05 4.10.6_beta1-r1 4.10.6-r1 4.10.6_p1-r1: Data files for Geant4 physical processes
 sci-physics/geant-vmc 4.4.0 4.5.1_p1 9999: Virtual Monte Carlo Geant4 implementation
-sci-physics/h2o-gtk 0.1-r1: GTK+ UI for libh2o -- water & steam properties
 sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Particle Properties
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator

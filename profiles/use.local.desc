@@ -6926,9 +6926,6 @@ net-wireless/gnuradio:vocoder - enable blocks for audio voice encoders
 net-wireless/gnuradio:wavelet - enable wavelet signal processing blocks
 net-wireless/gnuradio:zeromq - enable zeromq message passing blocks
 net-wireless/gqrx:gr-audio - Use audio support from net-wireless/gnuradio
-net-wireless/gr-baz:armadillo - install MUSIC DOA estimator block
-net-wireless/gr-baz:rtlsdr - install rtlsdr source block
-net-wireless/gr-baz:uhd - install UHD aware blocks
 net-wireless/gr-osmosdr:airspy - Build with Airspy support
 net-wireless/gr-osmosdr:bladerf - Build with Nuand BladeRF support
 net-wireless/gr-osmosdr:hackrf - Build with Great Scott Gadgets HackRF support
