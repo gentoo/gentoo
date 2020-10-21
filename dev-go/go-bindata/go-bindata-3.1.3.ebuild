@@ -28,7 +28,7 @@ SRC_URI="https://github.com/go-bindata/go-bindata/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="CC-PD"
 SLOT="0/${PVR}"
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 
 src_compile() {
 	GOBIN=${S}/bin \
