@@ -189,7 +189,6 @@ sci-libs/shogun
 # QA issues (byte compiling etc). All live ebuilds.
 # Removal in 30 days
 net-wireless/gr-baz
-net-wireless/gr-doa
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
