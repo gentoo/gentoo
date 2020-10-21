@@ -14,7 +14,6 @@
   </upstream>
   <use>
     <flag name='ch-grow'>Build the internal builder ch-grow</flag>
-    <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
     <flag name='squashfs'>Use sys-fs/squashfs-tools for creating SquashFS images</flag>
     <flag name='squashfuse'>Use sys-fs/squashfuse for the SquashFS workflow</flag>
   </use>
