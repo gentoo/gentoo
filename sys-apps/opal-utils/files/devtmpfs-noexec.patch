@@ -1,0 +1,87 @@
+From 47005e8d4c9aeda5826c17c4a013cfbda1a3f2de Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Mon, 12 Oct 2020 14:29:17 -0700
+Subject: [PATCH] opal-prd: handle devtmpfs mounted with noexec
+
+On systems using recent versions of systemd /dev (devtmpfs) is mounted with
+noexec option. Such mount prevents mapping HBRT image code region as RWX
+from /dev. This commit, as suggested in github PR linked below, attempts to
+work around the situation by copying HBRT image to anon mmaped memory
+region and sets mprotect rwx on it, allowing opal-prd to sucessfully
+execute the code region.
+
+Having memory region set as RWX is not ideal for security, but fixing that
+is a separate and hard to solve problem. Original code also mmaped region
+as RWX, so this PR does not make things worse at least.
+
+Closes: https://github.com/open-power/skiboot/issues/258
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+Reviewed-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+[oliver: whitespace fix, add a comment, reflow commit message]
+Signed-off-by: Oliver O'Halloran <oohall@gmail.com>
+---
+ external/opal-prd/opal-prd.c | 36 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/external/opal-prd/opal-prd.c b/external/opal-prd/opal-prd.c
+index d74d80398d..12269e8ebb 100644
+--- a/external/opal-prd/opal-prd.c
++++ b/external/opal-prd/opal-prd.c
+@@ -973,7 +973,9 @@ static int map_hbrt_file(struct opal_prd_ctx *ctx, const char *name)
+ static int map_hbrt_physmem(struct opal_prd_ctx *ctx, const char *name)
+ {
+ 	struct prd_range *range;
++	int rc;
+ 	void *buf;
++	void *ro_buf;
+ 
+ 	range = find_range(name, 0);
+ 	if (!range) {
+@@ -981,15 +983,45 @@ static int map_hbrt_physmem(struct opal_prd_ctx *ctx, const char *name)
+ 		return -1;
+ 	}
+ 
+-	buf = mmap(NULL, range->size, PROT_READ | PROT_WRITE | PROT_EXEC,
++	ro_buf = mmap(NULL, range->size, PROT_READ,
+ 			MAP_PRIVATE, ctx->fd, range->physaddr);
+-	if (buf == MAP_FAILED) {
++	if (ro_buf == MAP_FAILED) {
+ 		pr_log(LOG_ERR, "IMAGE: mmap(range:%s, "
+ 				"phys:0x%016lx, size:0x%016lx) failed: %m",
+ 				name, range->physaddr, range->size);
+ 		return -1;
+ 	}
+ 
++	buf = mmap(NULL, range->size, PROT_READ | PROT_WRITE,
++			MAP_SHARED | MAP_ANONYMOUS, -1 , 0);
++	if (buf == MAP_FAILED) {
++		pr_log(LOG_ERR, "IMAGE: anon mmap(size:0x%016lx) failed: %m",
++				range->size);
++		return -1;
++	}
++
++	memcpy(buf, ro_buf, range->size);
++
++	rc = munmap(ro_buf, range->size);
++	if (rc < 0) {
++		pr_log(LOG_ERR, "IMAGE: munmap("
++				"phys:0x%016lx, size:0x%016lx) failed: %m",
++				range->physaddr, range->size);
++		return -1;
++	}
++
++	/*
++	 * FIXME: We shouldn't be mapping the memory as RWX, but HBRT appears to
++	 * require the ability to write into the image at runtime.
++	 */
++	rc = mprotect(buf, range->size, PROT_READ | PROT_WRITE | PROT_EXEC);
++	if (rc < 0) {
++		pr_log(LOG_ERR, "IMAGE: mprotect(phys:%p, "
++			"size:0x%016lx, rwx) failed: %m",
++			buf, range->size);
++		return -1;
++	}
++
+ 	ctx->code_addr = buf;
+ 	ctx->code_size = range->size;
+ 	return 0;
