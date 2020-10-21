@@ -33,6 +33,9 @@
     <flag name="pthread">
       Build with pthread threading model
     </flag>
+    <flag name="relapack">
+      Build the ReLAPACK extension to OpenBLAS
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">xianyi/OpenBLAS</remote-id>
