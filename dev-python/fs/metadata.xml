@@ -9,7 +9,7 @@
   <upstream>
     <remote-id type="pypi">fs</remote-id>
     <remote-id type="github">PyFilesystem/pyfilesystem2</remote-id>
-    <doc>http://docs.pyfilesystem.org/</doc>
+    <doc>https://docs.pyfilesystem.org/</doc>
     <maintainer status="unknown">
       <email>will@willmcgugan.com</email>
       <name>Will McGugan</name>
