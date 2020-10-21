@@ -194,7 +194,6 @@ net-wireless/gr-foo
 net-wireless/gr-ntsc
 net-wireless/gr-ntsc-rc
 net-wireless/gr-ppm-wiegand
-net-wireless/gr-rftap
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
