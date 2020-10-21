@@ -5,10 +5,16 @@ EAPI=7
 
 MOZ_ESR=
 
-# Convert the ebuild version to the upstream mozilla version, used by mozlinguas
-MOZ_PV="${PV/_alpha/a}"    # Handle alpha for SRC_URI
-MOZ_PV="${MOZ_PV/_beta/b}" # Handle beta for SRC_URI
-MOZ_PV="${MOZ_PV%%_rc*}"   # Handle rc for SRC_URI
+MOZ_PV=${PV}
+MOZ_PV_SUFFIX=
+if [[ ${PV} =~ (_(alpha|beta|rc).*)$ ]] ; then
+	MOZ_PV_SUFFIX=${BASH_REMATCH[1]}
+
+	# Convert the ebuild version to the upstream Mozilla version
+	MOZ_PV="${MOZ_PV/_alpha/a}" # Handle alpha for SRC_URI
+	MOZ_PV="${MOZ_PV/_beta/b}"  # Handle beta for SRC_URI
+	MOZ_PV="${MOZ_PV%%_rc*}"    # Handle rc for SRC_URI
+fi
 
 if [[ -n ${MOZ_ESR} ]] ; then
 	# ESR releases have slightly different version numbers
@@ -17,6 +23,8 @@ fi
 
 MOZ_PN="${PN%-bin}"
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
+MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
+MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
 inherit desktop pax-utils xdg
 
@@ -114,7 +122,7 @@ mozilla_set_globals() {
 		fi
 
 		SRC_URI+=" l10n_${xflag/[_@]/-}? ("
-		SRC_URI+=" ${MOZ_SRC_BASE_URI}/linux-x86_64/xpi/${lang}.xpi -> ${MOZ_P}-${lang}.xpi"
+		SRC_URI+=" ${MOZ_SRC_BASE_URI}/linux-x86_64/xpi/${lang}.xpi -> ${MOZ_P_DISTFILES}-${lang}.xpi"
 		SRC_URI+=" )"
 		IUSE+=" l10n_${xflag/[_@]/-}"
 	done
