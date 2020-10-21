@@ -33,13 +33,13 @@ MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 SRC_URI="amd64? ( ${MOZ_SRC_BASE_URI}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
 	x86? ( ${MOZ_SRC_BASE_URI}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
 
-DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="https://www.mozilla.com/firefox"
+DESCRIPTION="Thunderbird Mail Client"
+HOMEPAGE="https://www.thunderbird.net/"
 
 KEYWORDS="-* amd64 x86"
 SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+alsa +ffmpeg +gmp-autoupdate +pulseaudio selinux wayland"
+IUSE="+alsa +ffmpeg +pulseaudio selinux wayland"
 
 RESTRICT="strip"
 
@@ -85,20 +85,11 @@ RDEPEND="${CDEPEND}
 
 QA_PREBUILT="opt/${MOZ_PN}/*"
 
-# Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
-# overridden in the enviromnent (advanced hackers only)
-if [[ -z "${MOZ_GMP_PLUGIN_LIST+set}" ]] ; then
-	MOZ_GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
-fi
-
 MOZ_LANGS=(
-	ach af an ar ast az be bg bn br bs ca-valencia ca cak cs cy
-	da de dsb el en-CA en-GB en-US eo es-AR es-CL es-ES es-MX et eu
-	fa ff fi fr fy-NL ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM
-	ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my
-	nb-NO ne-NP nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru
-	si sk sl son sq sr sv-SE ta te th tl tr trs uk ur uz vi
-	xh zh-CN zh-TW
+	af ar ast be bg br ca cak cs cy	da de dsb el en-CA en-GB en-US
+	es-AR es-ES et eu fa fi fr fy-NL ga-IE gd gl he hr hsb hu hy-AM
+	id is it ja ka kab kk ko lt ms nb-NO nl nn-NO pa-IN pl pt-BR
+	pt-PT rm ro ru si sk sl sq sr sv-SE th tr uz vi zh-CN zh-TW
 )
 
 mozilla_set_globals() {
@@ -210,21 +201,11 @@ src_install() {
 	newins "${FILESDIR}"/disable-auto-update.policy.json policies.json
 
 	# Install system-wide preferences
-	local PREFS_DIR="${MOZILLA_FIVE_HOME}/browser/defaults/preferences"
+	local PREFS_DIR="${MOZILLA_FIVE_HOME}/defaults/pref"
 	insinto "${PREFS_DIR}"
-	newins "${FILESDIR}"/gentoo-default-prefs.js all-gentoo.js
+	newins "${FILESDIR}"/gentoo-default-prefs.js gentoo-prefs.js
 
-	local GENTOO_PREFS="${ED}${PREFS_DIR}/all-gentoo.js"
-
-	if ! use gmp-autoupdate ; then
-		local plugin
-		for plugin in "${MOZ_GMP_PLUGIN_LIST[@]}" ; do
-			einfo "Disabling auto-update for ${plugin} plugin ..."
-			cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to disable autoupdate for ${plugin} media plugin"
-			pref("media.${plugin}.autoupdate",   false);
-			EOF
-		done
-	fi
+	local GENTOO_PREFS="${ED}${PREFS_DIR}/gentoo-prefs.js"
 
 	# Install language packs
 	local langpacks=( $(find "${WORKDIR}/language_packs" -type f -name '*.xpi') )
@@ -233,11 +214,7 @@ src_install() {
 	fi
 
 	# Install icons
-	local icon_srcdir="${ED}/${MOZILLA_FIVE_HOME}/browser/chrome/icons/default"
-	local icon_symbolic_file="${FILESDIR}/firefox-symbolic.svg"
-
-	insinto /usr/share/icons/hicolor/symbolic/apps
-	newins "${icon_symbolic_file}" ${PN}-symbolic.svg
+	local icon_srcdir="${ED}/${MOZILLA_FIVE_HOME}/chrome/icons/default"
 
 	local icon size
 	for icon in "${icon_srcdir}"/default*.png ; do
@@ -254,7 +231,7 @@ src_install() {
 	# Install menus
 	local wrapper_wayland="${PN}-wayland.sh"
 	local wrapper_x11="${PN}-x11.sh"
-	local desktop_file="${FILESDIR}/${PN}-r2.desktop"
+	local desktop_file="${FILESDIR}/icon/${PN}-r2.desktop"
 	local display_protocols="auto X11"
 	local icon="${PN}"
 	local name="Mozilla ${MOZ_PN^} (bin)"
@@ -332,16 +309,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if ! use gmp-autoupdate ; then
-		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
-		elog "installing into new profiles:"
-		local plugin
-		for plugin in "${MOZ_GMP_PLUGIN_LIST[@]}" ; do
-			elog "\t ${plugin}"
-		done
-		elog
-	fi
-
 	if ! has_version 'gnome-base/gconf' || ! has_version 'gnome-base/orbit' \
 		|| ! has_version 'net-misc/curl'; then
 		einfo
@@ -375,7 +342,7 @@ pkg_postinst() {
 				show_doh_information=yes
 			fi
 
-			if ver_test "${replacing_version}" -lt 74.0-r2 ; then
+			if ver_test "${replacing_version}" -lt 74.0-r1 ; then
 				# Tell user only once about our Normandy default
 				show_normandy_information=yes
 			fi
