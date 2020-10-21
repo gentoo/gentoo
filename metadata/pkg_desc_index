@@ -12883,10 +12883,10 @@ media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/allegro 4.4.2-r2 4.4.3.1 5.2.5.0 5.2.6.0: Cross-platform library aimed at video game and multimedia programming
-media-libs/alsa-lib 1.2.2-r1 1.2.3.1 1.2.3.2 1.2.3.2-r1: Advanced Linux Sound Architecture Library
+media-libs/alsa-lib 1.2.2-r1 1.2.3.2-r1 1.2.4: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
-media-libs/alsa-topology-conf 1.2.2 1.2.3: ALSA topology configuration files
-media-libs/alsa-ucm-conf 1.2.2 1.2.3: ALSA ucm configuration files
+media-libs/alsa-topology-conf 1.2.2 1.2.3 1.2.4: ALSA topology configuration files
+media-libs/alsa-ucm-conf 1.2.2 1.2.3 1.2.4: ALSA ucm configuration files
 media-libs/alure 1.2-r1 1.2-r2: The OpenAL Utility Toolkit
 media-libs/ampache_browser 1.0.2 1.0.3: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
@@ -13583,7 +13583,7 @@ media-sound/abcmidi 2020.01.22 2020.06.07: Programs for processing ABC music not
 media-sound/aeolus 0.9.9: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.2.2-r1: Advanced Linux Sound Architecture tools
-media-sound/alsa-utils 1.2.2 1.2.3: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
+media-sound/alsa-utils 1.2.2 1.2.3 1.2.4: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixer-app 0.1-r1: simple alsa mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio player
@@ -17286,7 +17286,7 @@ sys-fabric/perftest 2.0: OpenIB uverbs micro-benchmarks
 sys-fabric/qperf 0.4.9: Measure RDMA and IP performance
 sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
-sys-firmware/alsa-firmware 1.0.29 1.2.1: Advanced Linux Sound Architecture firmware
+sys-firmware/alsa-firmware 1.2.1 1.2.4: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
