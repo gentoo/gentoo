@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.6:2
-	>=media-gfx/mypaint-brushes-1.3.0:=
+	>=media-gfx/mypaint-brushes-2.0.2:=
 	>=media-libs/babl-0.1.78
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
