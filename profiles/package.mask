@@ -201,14 +201,8 @@ net-wireless/gr-specest
 # sci-libs/plotmm is unmaintained.  It had its last release in 2005.
 # It has no chances of porting to GTK+3.  It suffers from major compiler
 # warnings.
-#
-# sci-physics/h2o-gtk is its only reverse dependency.  It crashes
-# on start, possibly because of problems with plotmm.  I have
-# no intention of rewriting it right now.
-#
 # Removal in 30 days.  Bug #744073.
 sci-libs/plotmm
-sci-physics/h2o-gtk
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
