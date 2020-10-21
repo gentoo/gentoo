@@ -184,12 +184,6 @@ sys-apps/lcdtest
 # Removal in 30 days.  Bug #737412.
 sci-libs/shogun
 
-# Aaron Bauman <bman@gentoo.org> (2020-09-22)
-# Fails to build with new Python or at all.
-# QA issues (byte compiling etc). All live ebuilds.
-# Removal in 30 days
-net-wireless/gr-baz
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
