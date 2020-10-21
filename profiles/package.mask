@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-10-21)
+# No releases in over 3 years, no more revdeps in tree
+# upstream mostly unresponsive to requests for proper
+# tarballs. Removed from Fedora and Ubuntu already.
+# Bug #708700, Removal in 30 days.
+dev-python/PythonQt
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-18)
 # Dead upstream, fails to build against libfprint-2, multiple longstanding bugs
 # #490234, #678232, #705496, #718642 and no maintainer. Removal in 30 days.
