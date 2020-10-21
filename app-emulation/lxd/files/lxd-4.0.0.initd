@@ -18,6 +18,9 @@ start() {
 
 	modprobe -f loop > /dev/null 2>&1
 
+	# Allow systemd containers to be used on openrc host, #750410
+	[ -d /sys/fs/cgroup/systemd ] || ( mkdir -p /sys/fs/cgroup/systemd ; mount -t cgroup -o none,name=systemd systemd /sys/fs/cgroup/systemd )
+
 	# fix permissions on /var/lib/lxd and make sure it exists
 	install -d /var/lib/lxd --group lxd --owner root --mode 0775
 	start-stop-daemon --start \
