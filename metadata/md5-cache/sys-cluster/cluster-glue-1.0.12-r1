@@ -1,13 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=!<sys-cluster/heartbeat-3.0 app-arch/bzip2 app-text/asciidoc app-text/docbook-xml-dtd:4.4 dev-libs/glib:2 dev-libs/libaio dev-libs/libltdl:= dev-libs/libxml2 ipmilan? ( sys-libs/openipmi ) libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd ) doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-arch/bzip2 app-text/asciidoc app-text/docbook-xml-dtd:4.4 dev-libs/glib:2 dev-libs/libaio dev-libs/libltdl:= dev-libs/libxml2 ipmilan? ( sys-libs/openipmi ) libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd ) doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets )
 DESCRIPTION=Library pack for Heartbeat / Pacemaker
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.linux-ha.org/wiki/Cluster_Glue
 IUSE=doc ipmilan libnet static-libs
 KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=GPL-2
-RDEPEND=!<sys-cluster/heartbeat-3.0 app-arch/bzip2 app-text/asciidoc app-text/docbook-xml-dtd:4.4 dev-libs/glib:2 dev-libs/libaio dev-libs/libltdl:= dev-libs/libxml2 ipmilan? ( sys-libs/openipmi ) libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd )
+RDEPEND=app-arch/bzip2 app-text/asciidoc app-text/docbook-xml-dtd:4.4 dev-libs/glib:2 dev-libs/libaio dev-libs/libltdl:= dev-libs/libxml2 ipmilan? ( sys-libs/openipmi ) libnet? ( net-libs/libnet:1.1 ) net-misc/curl net-misc/iputils || ( net-misc/netkit-telnetd net-misc/telnet-bsd )
 SLOT=0
 SRC_URI=http://hg.linux-ha.org/glue/archive/glue-1.0.12.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=acbfc7be49baeb171c9dce51c0dad291
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=4004073ed776ad7a314a3a596896fa82

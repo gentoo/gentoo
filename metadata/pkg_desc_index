@@ -16864,7 +16864,7 @@ sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec sys
 sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/opal-utils 6.5.2 6.6.2 6.6.3: OPAL firmware utilities
+sys-apps/opal-utils 6.5.2 6.6.2 6.6.3 6.6.3-r1: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200325 20200529: osinfo database files
@@ -17138,7 +17138,7 @@ sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 16.1.0 16.2.0 17.0.0 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
-sys-cluster/corosync 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
+sys-cluster/corosync 2.3.5 2.4.2 3.0.4: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 3.0.3 4.1.0: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
@@ -17155,6 +17155,7 @@ sys-cluster/ipvsadm 1.27-r1 1.28: utility to administer the IP virtual server se
 sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes clusters
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
+sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
 sys-cluster/kube-apiserver 1.17.3 1.17.4 1.17.11 1.17.12 1.17.13 1.18.8 1.18.9 1.18.10 1.19.1 1.19.2 1.19.3: Kubernetes API server
 sys-cluster/kube-controller-manager 1.17.3 1.17.4 1.17.11 1.17.12 1.17.13 1.18.8 1.18.9 1.18.10 1.19.1 1.19.2 1.19.3: Kubernetes Controller Manager
 sys-cluster/kube-proxy 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: Kubernetes Proxy service
@@ -17167,7 +17168,7 @@ sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/kubernetes 1.17.9 1.17.11 1.18.6 1.18.8 1.19.0 1.19.1: production-grade container orchestration
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
-sys-cluster/libqb 0.17.2 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
+sys-cluster/libqb 0.17.2 1.0.5 1.9.0 2.0.1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
 sys-cluster/maui 3.3.1-r3: Maui Cluster Scheduler
@@ -17184,7 +17185,7 @@ sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2020.1.0 2020.1.9999 2020.2.0 2020.2.9999: A openstack meta-package for installing the various openstack pieces
-sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
+sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1 2.0.4: Pacemaker CRM
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 3.0.0 4.0.0 2020.1.9999 2020.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
@@ -17192,7 +17193,7 @@ sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
 sys-cluster/rdma-core 30.0-r2 31.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
-sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
+sys-cluster/resource-agents 3.9.6 4.0.1 4.6.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
 sys-cluster/singularity 3.6.4: Application containers for Linux
 sys-cluster/slurm 20.02.4.1 20.02.5.1: A Highly Scalable Resource Manager
