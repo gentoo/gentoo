@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${P/cluster-}"
 inherit autotools eutils flag-o-matic multilib user
@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc ipmilan libnet static-libs"
 
 RDEPEND="
-	!<sys-cluster/heartbeat-3.0
 	app-arch/bzip2
 	app-text/asciidoc
 	app-text/docbook-xml-dtd:4.4
@@ -40,12 +39,12 @@ S="${WORKDIR}/Reusable-Cluster-Components-glue--${MY_P}"
 
 pkg_setup() {
 	enewgroup haclient
-	enewuser  hacluster -1 /dev/null /var/lib/heartbeat haclient
+	enewuser  hacluster -1 -1 /var/lib/heartbeat haclient
 }
 
 src_prepare() {
 	default
-	sed -e '/ -ggdb/d;/-fstack-protector-all/d' -i configure.ac || die
+	sed -e 's/\\$(/$(/g' -e '/ -ggdb/d;/-fstack-protector-all/d' -i configure.ac || die
 	sed -e "s@http://docbook.sourceforge.net/release/xsl/current@/usr/share/sgml/docbook/xsl-stylesheets/@g" \
 		-i doc/Makefile.am || die
 	eautoreconf
@@ -72,10 +71,7 @@ src_configure() {
 src_install() {
 	default
 
-	dodir /var/lib/heartbeat/cores
-	dodir /var/lib/heartbeat/lrm
-
-	keepdir /var/lib/heartbeat/cores
+	keepdir /var/lib/heartbeat/cores/{hacluster,nobody,root}
 	keepdir /var/lib/heartbeat/lrm
 
 	# init.d file
