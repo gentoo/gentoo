@@ -210,11 +210,6 @@ net-wireless/gr-specest
 sci-libs/plotmm
 sci-physics/h2o-gtk
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-22)
-# No activity since Jan 2019.  Broken with current versions of werkzeug.
-# Removal in 30 days.  Bug #743259.
-dev-python/flask-themes
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # These packages (or package versions) still require Python 2.7.
 # They are either dead upstream, their Python 3 porting efforts are
