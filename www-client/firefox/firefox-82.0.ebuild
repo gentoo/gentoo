@@ -568,6 +568,8 @@ src_configure() {
 	mozconfig_add_options_ac '' --enable-application=browser
 
 	# Set Gentoo defaults
+	export MOZILLA_OFFICIAL=1
+
 	mozconfig_add_options_ac 'Gentoo default' \
 		--allow-addon-sideload \
 		--disable-cargo-incremental \
