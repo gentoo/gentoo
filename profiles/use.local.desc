@@ -23,7 +23,6 @@ app-accessibility/simon:pim - Enable support for KDE PIM resources integration
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
-app-admin/calamares:pythonqt - Enable PythonQt-based module interface
 app-admin/clsync:apidoc - Provide doxygen generated API docs.
 app-admin/clsync:cgroups - Use cgroups to limit /dev access.
 app-admin/clsync:clsync - Build clsync binary. Most likely you want it. However it is possible to build only libclsync without clsync itself.
