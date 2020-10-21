@@ -20,7 +20,6 @@ RDEPEND=">=dev-libs/libpcre-4.5"
 DEPEND="
 	${RDEPEND}
 	dev-ml/stdio
-	dev-ml/configurator
 "
 
 src_install() {
