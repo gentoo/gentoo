@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
@@ -27,11 +27,13 @@ RDEPEND="!elibc_FreeBSD? (
 			)
 		)
 	python? ( ${PYTHON_DEPS} )
-	!!<sys-libs/talloc-2.0.5"
-DEPEND="${RDEPEND}
-	sys-devel/gettext
+	!!<sys-libs/talloc-2.0.5
+"
+DEPEND="${RDEPEND}"
+
+BDEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
-	${PYTHON_DEPS}"
+"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
@@ -62,6 +64,7 @@ multilib_src_configure() {
 		$(usex compat --enable-talloc-compat1 '')
 		$(multilib_native_usex python '' --disable-python)
 		$([[ ${CHOST} == *-solaris* ]] && echo '--disable-symbol-versions')
+		--without-gettext
 	)
 	waf-utils_src_configure "${extra_opts[@]}"
 }
