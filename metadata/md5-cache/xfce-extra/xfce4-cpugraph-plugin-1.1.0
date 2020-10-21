@@ -9,4 +9,4 @@ RDEPEND=>=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.12:= >=xfce-base/xfce4-p
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.1/xfce4-cpugraph-plugin-1.1.0.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ca4f0577b526dfcb8132dda0f2bd9114
+_md5_=2ab2fdddaa58c2d58b7608ccf06557dd
