@@ -23,9 +23,7 @@ DEPEND="
 	localstorage? ( ~dev-qt/qtsql-${PV} )
 	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2-only=] )
 "
-RDEPEND="${DEPEND}
-	!<dev-qt/qtquickcontrols-5.7:5
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
