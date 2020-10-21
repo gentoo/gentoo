@@ -225,7 +225,6 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${PN}-9999-cflags.patch
 )
 
 QA_PREBUILT="
