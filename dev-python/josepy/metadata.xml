@@ -12,6 +12,7 @@
 		JOSE protocol implementation in Python using cryptography
 		Originally developed as part of the ACME protocol implementation.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">josepy</remote-id>
 		<remote-id type="github">certbot/josepy</remote-id>
