@@ -24,7 +24,7 @@ DOCS=( "AUTHORS.txt" "CHANGES.txt" "README.md" )
 src_install() {
 	oasis_src_install
 	if use examples ; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		docinto examples
+		dodoc -r examples
 	fi
 }
