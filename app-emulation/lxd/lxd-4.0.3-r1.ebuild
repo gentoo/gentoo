@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1 linux-info optfeature systemd verify-sig
 
 DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd"
-SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz
+SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 	verify-sig? ( https://linuxcontainers.org/downloads/lxd/${P}.tar.gz.asc )"
 
 # Needs to include licenses for all bundled programs and libraries.
