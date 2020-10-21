@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,8 @@ RDEPEND=">=xfce-base/libxfce4ui-4.12:=[gtk3(+)]
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/xfce4-systemload-plugin-1.2.3-panel-4.15.patch" )
 
 src_configure() {
 	econf $(use_enable upower)
