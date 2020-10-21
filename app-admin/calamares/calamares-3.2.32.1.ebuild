@@ -4,17 +4,18 @@
 EAPI=7
 
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{6..9} )
+
 inherit ecm python-single-r1
 
 DESCRIPTION="Distribution-independent installer framework"
 HOMEPAGE="https://calamares.io"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
-KEYWORDS="~amd64"
-SLOT=5
-LICENSE="GPL-3"
-IUSE="+networkmanager pythonqt +upower"
 
+LICENSE="GPL-3"
+SLOT="5"
+KEYWORDS="~amd64"
+IUSE="+networkmanager +upower"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
@@ -45,7 +46,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sys-apps/dmidecode
 	sys-auth/polkit-qt
 	>=sys-libs/kpmcore-4.0.0:5=
-	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_SINGLE_USEDEP}] )
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-qt/qttest:5 )
@@ -62,6 +62,8 @@ RDEPEND="${COMMON_DEPEND}
 	networkmanager? ( net-misc/networkmanager )
 	upower? ( sys-power/upower )
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-3.2.32.1-remove-broken-tests.ebuild )
 
 src_prepare() {
 	ecm_src_prepare
@@ -81,7 +83,7 @@ src_configure() {
 		-DINSTALL_CONFIG=ON
 		-DWEBVIEW_FORCE_WEBKIT=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_LIBPARTED=ON
-		-DWITH_PYTHONQT=$(usex pythonqt)
+		-DWITH_PYTHONQT=OFF
 	)
 
 	ecm_src_configure
