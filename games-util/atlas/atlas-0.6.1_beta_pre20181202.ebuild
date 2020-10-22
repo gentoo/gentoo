@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 MY_PN=atlas-hgcode
-MY_PV=e183e3b3a0412b504edcb3664445b3e04fd484a2
+MY_PV=d4e5360f8273823205d9dc066547f5077ffc13e2
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Chart Program to use with Flightgear Flight Simulator"
@@ -38,17 +38,8 @@ BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${MY_P}
 
-PATCHES=(
-	"${FILESDIR}/${P}-simgear-compilation.patch"
-	"${FILESDIR}/${P}-jpeg-9.patch"
-)
-
 src_prepare() {
 	default
-
-	# -Wnarrowing failure, #612986
-	sed -i -e 's|0x|(char)0x|g' src/tiles.h || die
-
 	eautoreconf
 }
 
