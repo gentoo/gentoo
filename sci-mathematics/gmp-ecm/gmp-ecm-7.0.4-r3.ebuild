@@ -5,9 +5,11 @@ EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
+MY_PN="ecm"
+MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Elliptic Curve Method for Integer Factorization"
-HOMEPAGE="http://ecm.gforge.inria.fr/"
-SRC_URI="https://gforge.inria.fr/frs/download.php/file/36224/${P}.tar.gz"
+HOMEPAGE="https://gitlab.inria.fr/zimmerma/ecm"
+SRC_URI="https://gitlab.inria.fr/zimmerma/ecm/uploads/9cd422ec80268f8a885e499e17f98056/${MY_P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
@@ -20,7 +22,7 @@ RDEPEND="${DEPEND}"
 # Can't both be enabled.
 REQUIRED_USE="x86-macos? ( !custom-tune )"
 
-S="${WORKDIR}/ecm-${PV}"
+S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
 	use openmp && tc-check-openmp
