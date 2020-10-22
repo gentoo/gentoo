@@ -810,7 +810,7 @@ app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.6.10: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
-app-backup/duplicity 0.8.12.1612-r1 0.8.13 0.8.15 0.8.16: Secure backup system using gnupg to encrypt data
+app-backup/duplicity 0.8.15 0.8.16: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
@@ -17925,7 +17925,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 86.0.4240.75 87.0.4280.20: Open-source version of Google Chrome web browser
+www-client/chromium 86.0.4240.75 86.0.4240.111 87.0.4280.20: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
