@@ -23,11 +23,9 @@ RESTRICT="!ocamlopt? ( strip )"
 # ocaml version so we are sure it has ocamlopt use flag
 BDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 DEPEND="gtk? ( dev-ml/lablgtk:2= )"
-RDEPEND="
-	${DEPEND}
-	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen )
-	>=app-eselect/eselect-unison-0.4
-"
+RDEPEND="gtk? ( dev-ml/lablgtk:2=
+	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
+	>=app-eselect/eselect-unison-0.4"
 
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
