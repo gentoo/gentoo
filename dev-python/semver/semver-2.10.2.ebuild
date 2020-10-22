@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/python-${PN}/python-${PN}/archive/${PV}.tar.gz -> ${
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="test"
 
 S="${WORKDIR}/python-${P}"
 
