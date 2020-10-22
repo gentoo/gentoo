@@ -18,9 +18,12 @@ IUSE="cpu_flags_x86_aes +ocamlopt test zlib"
 REQUIRED_USE="test? ( ocamlopt )"
 RESTRICT="!test? ( test )"
 
+# We can't use mpir on zarith
+# (until it gains mpz_powm_sec?)
+# bug #750740
 DEPEND="
 	dev-ml/dune-configurator
-	dev-ml/zarith:=
+	dev-ml/zarith:=[-mpir]
 	zlib? ( >=sys-libs/zlib-1.1 )
 "
 RDEPEND="${DEPEND}"
