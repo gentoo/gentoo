@@ -43,6 +43,8 @@ distutils_enable_tests setup.py
 
 DOCS=( COPYING ChangeLog README.fi README.md yledl.conf.sample )
 
+PATCHES=( "${FILESDIR}"/${P}-reverse-shlex.join.patch )
+
 src_install() {
 	docompress -x "/usr/share/doc/${PF}/yledl.conf.sample"
 	distutils-r1_src_install
