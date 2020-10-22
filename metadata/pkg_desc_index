@@ -15163,7 +15163,7 @@ net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Clien
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.5 1.4.7 1.4.8 1.4.8-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
-net-misc/rsync 3.2.3 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.2.3-r1 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
 net-misc/rygel 0.38.3 0.38.4: Rygel is an open source UPnP/DLNA MediaServer
