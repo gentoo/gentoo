@@ -15,7 +15,7 @@ if [[ "${PV}" != 9999 ]] ; then
 	else
 		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
-		KEYWORDS="amd64 ~arm64 x86"
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	fi
 else
 	inherit git-r3
@@ -58,16 +58,8 @@ DEPEND="
 BDEPEND="
 	ccache? ( dev-util/ccache )
 "
-# Not a runtime dependency but still needed (see bug #667092)
-PDEPEND="
-	x11-misc/xsel
-"
 
 RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-2.5.2-ccache_switch.patch"
-)
 
 src_prepare() {
 	 use test || \
@@ -82,6 +74,7 @@ src_configure() {
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
+		-DWITH_XC_DOCS=OFF
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
