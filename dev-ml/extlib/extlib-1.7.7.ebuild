@@ -11,18 +11,17 @@ SRC_URI="https://github.com/ygrek/ocaml-extlib/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc +ocamlopt"
 
-RDEPEND="
-	dev-lang/ocaml:=[ocamlopt?]
-"
-DEPEND="${RDEPEND}
-	dev-ml/cppo"
+# See bug #704146
+BDEPEND=">=dev-ml/cppo-1.6.6"
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.7-no-git.patch
-	)
+)
 
 S="${WORKDIR}/ocaml-${P}"
 
