@@ -14,7 +14,7 @@ SRC_URI="https://github.com/garrigue/lablgtk/releases/download/${PV}/${MY_P}.tbz
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="3/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt"
 
 DEPEND="
