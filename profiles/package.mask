@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Mrozowski <reavertm@gentoo.org> (2020-10-23)
+# Crashes at startup - bug #750770, dead upstream - bug #737936
+# Removal in 30 days.
+~net-im/kadu-4.3
+
 # David Seifert <soap@gentoo.org> (2020-10-21)
 # No releases in over 3 years, no more revdeps in tree
 # upstream mostly unresponsive to requests for proper
