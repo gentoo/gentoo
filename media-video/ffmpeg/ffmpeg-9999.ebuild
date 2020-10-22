@@ -200,7 +200,7 @@ RDEPEND="
 	fdk? ( >=media-libs/fdk-aac-0.1.3:=[${MULTILIB_USEDEP}] )
 	flite? ( >=app-accessibility/flite-1.4-r4[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
-	frei0r? ( media-plugins/frei0r-plugins )
+	frei0r? ( media-plugins/frei0r-plugins[${MULTILIB_USEDEP}] )
 	fribidi? ( >=dev-libs/fribidi-0.19.6[${MULTILIB_USEDEP}] )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
@@ -392,7 +392,7 @@ multilib_src_configure() {
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
-		for i in frei0r librav1e libzmq ; do
+		for i in librav1e libzmq ; do
 			myconf+=( --disable-${i} )
 		done
 	fi
