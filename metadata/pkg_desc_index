@@ -2586,10 +2586,10 @@ app-office/kraft 0.95: Software to manage quotes and invoices in small enterpris
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.0: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.3: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.4.6.2-r2 6.4.9999 9999: A full office productivity suite
+app-office/libreoffice 6.4.6.2-r2 6.4.7.2 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.6.2-r2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.6.2-r2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.4.6.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.4.6.2 6.4.7.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -2808,7 +2808,7 @@ app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX forma
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
-app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
+app-text/ebook-tools 0.2.2-r1 0.2.2-r2: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
 app-text/enchant 1.6.1-r1 2.2.8: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
@@ -10691,7 +10691,7 @@ dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.5.2 5.6.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.5.2 5.6.0-r1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.5.2 5.6.0: PHP plugin for KDevelop
 dev-util/kdevelop-python 5.5.2 5.6.0: Python plugin for KDevelop
@@ -12256,7 +12256,7 @@ kde-plasma/kwin 5.19.5-r1 5.20.1: Flexible, composited Window Manager for window
 kde-plasma/kwrited 5.19.5 5.20.1: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.19.5 5.20.1: Plasma screen management library
 kde-plasma/libksysguard 5.19.5 5.20.1: Task management and system monitoring library
-kde-plasma/libkworkspace 5.19.5 5.20.1: Workspace library to interact with the Plasma session manager
+kde-plasma/libkworkspace 5.19.5 5.20.1.1: Workspace library to interact with the Plasma session manager
 kde-plasma/milou 5.19.5 5.20.1: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.19.5 5.20.1: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.19.5 5.20.1: Integrate Chrome/Firefox better into Plasma through browser extensions
@@ -12278,7 +12278,7 @@ kde-plasma/sddm-kcm 5.19.5 5.20.1: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.19.5 5.20.1.1: Control Center to configure KDE Plasma desktop
 kde-plasma/user-manager 5.19.5: Simple system settings module to manage the users of your system
 kde-plasma/xdg-desktop-portal-kde 5.19.5 5.20.1: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
-kde-plasma/xembed-sni-proxy 5.19.5-r1 5.20.1: Legacy xembed tray icons support for SNI-only system trays
+kde-plasma/xembed-sni-proxy 5.19.5-r1 5.20.1.1: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.99.1 0.99.2: LXDE Session default configuration files and nuoveXT2 iconset
