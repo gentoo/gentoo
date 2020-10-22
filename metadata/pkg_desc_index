@@ -16957,7 +16957,7 @@ sys-apps/usb_modeswitch 2.5.2: A tool for controlling 'flip flop' (multiple devi
 sys-apps/usbguard 0.7.6-r1 0.7.8: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
-sys-apps/usbutils 012: USB enumeration utilities
+sys-apps/usbutils 012 013: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.33.2 2.34-r3 2.35.1-r2 2.35.2 2.36 9999: Various useful Linux utilities
