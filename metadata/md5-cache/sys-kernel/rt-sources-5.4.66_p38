@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm64
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
-SLOT=5.4.44_p27
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.4.44.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-5.4 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-check -> deblob-check-5.4 ) https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.44-rt27.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.44-rt27.patch.xz
+SLOT=5.4.66_p38
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.4.66.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-5.4 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-check -> deblob-check-5.4 ) https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.66-rt38.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.66-rt38.patch.xz
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	kernel-2	b018f94025c867de0d2a56af55679a7a	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=2524629bd8b115fb50d4edeee9c7bf5c

@@ -2789,7 +2789,7 @@ app-text/dblatex 0.3.11 0.3.11-r1: Transform DocBook using TeX macros
 app-text/delta 20060803-r1: Heuristically minimizes interesting files
 app-text/dictd 1.12.1-r3 1.13.0-r1: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13 1.14: Diction and style checkers for english and german texts
-app-text/diff-pdf 0.3: A simple tool for visually comparing two PDF files
+app-text/diff-pdf 0.3 0.4.1: A simple tool for visually comparing two PDF files
 app-text/diffpdf 2.1.3-r2: Program that textually or visually compares two PDF files
 app-text/ding 1.8.1: Tk based dictionary (German-English) (incl. dictionary itself)
 app-text/discount 2.2.4 2.2.6 2.2.7: A Markdown-to HTML translator written in C
@@ -8874,7 +8874,7 @@ dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.13.1 2.0.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
 dev-python/python-zunclient 4.0.1 4.1.1: A client for the OpenStack Zun API
-dev-python/python3-lxc 3.0.2: Python bindings for LXC
+dev-python/python3-lxc 3.0.2 3.0.4: Python bindings for LXC
 dev-python/python3-openid 3.2.0: OpenID support for modern servers and consumers
 dev-python/python3-saml 1.9.0: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
@@ -15224,7 +15224,7 @@ net-misc/ucarp 1.5.2-r3 1.5.2-r5: Portable userland implementation of Common Add
 net-misc/udpcast 20120424 20120424-r1 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
-net-misc/unison 2.48.15_p4-r2 2.51.2-r1 2.51.3_rc3-r1: Two-way cross-platform file synchronizer
+net-misc/unison 2.48.15_p4-r2 2.51.2-r1 2.51.3: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 3.19 4.13: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
@@ -17466,7 +17466,7 @@ sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kerne
 sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 4.4.225_p198 4.4.231_p202 4.9.227_p146 4.9.232_p150 4.14.184_p84 4.14.192_p91 4.19.127_p54 4.19.135_p60 5.4.44_p27 5.4.54_p33 5.6.17_p10 5.6.19_p11: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.9.0 5.9.1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.240 4.9.240 4.14.202 4.19.152 5.4.72 5.8.16 5.9.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
