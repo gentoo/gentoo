@@ -175,11 +175,6 @@ them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
 
-PATCHES=(
-	"${FILESDIR}/chromium-87-ozone-deps.patch"
-	"${FILESDIR}/chromium-87-webcodecs-deps.patch"
-)
-
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -233,6 +228,8 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
+		"${FILESDIR}/chromium-87-ozone-deps.patch"
+		"${FILESDIR}/chromium-87-webcodecs-deps.patch"
 		"${FILESDIR}/chromium-87-xproto-crash.patch"
 	)
 
