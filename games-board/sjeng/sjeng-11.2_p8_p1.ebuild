@@ -13,7 +13,7 @@ DESCRIPTION="Console based chess interface"
 HOMEPAGE="http://sjeng.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/sjeng/Sjeng-Free-${MY_PV}.tar.gz
-	http://deb.debian.org/debian/pool/main/s/sjeng/sjeng_${MY_DEB_PV}.diff.gz
+	mirror://debian/pool/main/s/sjeng/sjeng_${MY_DEB_PV}.diff.gz
 "
 
 LICENSE="GPL-2"
