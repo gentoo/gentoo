@@ -12,6 +12,8 @@
 		<flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
 		<flag name="gnutls">Build the GnuTLS network stream driver (requires <pkg>net-libs/gnutls</pkg>)</flag>
+		<flag name="imhttp">Build the http input module (requires <pkg>www-servers/civetweb</pkg>)</flag>
+		<flag name="impcap">Build the pcap input module (requires <pkg>net-libs/libpcap</pkg>)</flag>
 		<flag name="kafka">Build the Apache Kafka input/output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
 		<flag name="kubernetes">Build the kubernetes modify plugin (requires <pkg>net-misc/curl</pkg>)</flag>

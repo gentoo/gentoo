@@ -201,9 +201,10 @@ media-gfx/digikam mediaplayer
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
-# dev-libs/libmaxminddb is keyworded on x86
-app-admin/rsyslog -mdblookup
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-22)
+# -imhttp: www-servers/civetweb is keyworded on x86
+# -mdblookup: dev-libs/libmaxminddb is keyworded on x86
+app-admin/rsyslog -imhttp -mdblookup
 
 # David Seifert <soap@gentoo.org> (2017-02-10)
 # Requires dev-lua/ldoc for building documentation,
