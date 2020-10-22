@@ -46,7 +46,11 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/tests.patch" )
 
 python_test() {
-	env -u ROS_DISTRO nosetests --with-xunit test || die
+	if has network-sandbox ${FEATURES}; then
+		einfo "Skipping tests due to network sandbox"
+	else
+		env -u ROS_DISTRO nosetests --with-xunit test || die
+	fi
 }
 
 pkg_postrm() {
