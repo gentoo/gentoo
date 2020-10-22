@@ -6,6 +6,7 @@
     <name>Gentoo Sysadmin Project</name>
   </maintainer>
   <use>
+    <flag name="openbmc">Enable OpenBMC D-Bus interface</flag>
     <flag name="openipmi">Use the system OpenIPMI implementation.</flag>
     <!-- <flag name='freeipmi'>Use the system FreeIPMI implementation.</flag> -->
   </use>
