@@ -26,7 +26,7 @@ SRC_URI+="
 	#http://http.debian.net/debian/pool/main/i/${PN}/${DEBIAN_PF}.tar.xz
 	# https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz
 #IUSE="freeipmi openipmi status"
-IUSE="libressl openipmi static systemd"
+IUSE="libressl openbmc openipmi static"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 LICENSE="BSD"
@@ -34,7 +34,7 @@ LICENSE="BSD"
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	systemd? ( sys-apps/systemd:0= )
+	openbmc? ( sys-apps/systemd:0= )
 	sys-libs/readline:0="
 DEPEND="${RDEPEND}
 		openipmi? ( sys-libs/openipmi )
@@ -110,7 +110,7 @@ src_configure() {
 		--enable-ipmishell \
 		--enable-intf-lan \
 		--enable-intf-usb \
-		$(use_enable systemd intf-dbus) \
+		$(use_enable openbmc intf-dbus) \
 		--enable-intf-lanplus \
 		--enable-intf-open \
 		--enable-intf-serial \
