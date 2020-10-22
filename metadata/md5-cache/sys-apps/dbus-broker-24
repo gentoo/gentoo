@@ -5,10 +5,10 @@ DESCRIPTION=Linux D-Bus Message Broker
 EAPI=7
 HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
 IUSE=audit doc +launcher selinux
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~ppc64
 LICENSE=Apache-2.0
 RDEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) launcher? ( >=dev-libs/expat-2.2 >=sys-apps/systemd-230:0= ) selinux? ( sys-libs/libselinux ) launcher? ( sys-apps/dbus )
 SLOT=0
 SRC_URI=https://github.com/bus1/dbus-broker/archive/v24/dbus-broker-24.tar.gz https://github.com/c-util/c-shquote/archive/80d4252f31c74785f0ec8c4578a26f1c16d5941e/c-shquote-80d4252f31c74785f0ec8c4578a26f1c16d5941e.tar.gz https://github.com/c-util/c-utf8/archive/9017bab6cef301229e2295bdcb19476466065788/c-utf8-9017bab6cef301229e2295bdcb19476466065788.tar.gz https://github.com/c-util/c-stdaux/archive/ffa3dcc365331e31eb0c0f73ccd258e7a29a162a/c-stdaux-ffa3dcc365331e31eb0c0f73ccd258e7a29a162a.tar.gz https://github.com/c-util/c-list/archive/ac7c831398219acd8d63038e866035a6f86f9e21/c-list-ac7c831398219acd8d63038e866035a6f86f9e21.tar.gz https://github.com/c-util/c-dvar/archive/ebcef28b0da11ec20250f2fa710130967ddd8fa9/c-dvar-ebcef28b0da11ec20250f2fa710130967ddd8fa9.tar.gz https://github.com/c-util/c-ini/archive/f8336c98a74038a1104283fde284c5b82d6aef92/c-ini-f8336c98a74038a1104283fde284c5b82d6aef92.tar.gz https://github.com/c-util/c-rbtree/archive/7624b79b26d020a796fe7c624a4f2d3340f3d66b/c-rbtree-7624b79b26d020a796fe7c624a4f2d3340f3d66b.tar.gz
 _eclasses_=meson	71d293a701d6362387e1214da368c848	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=658fea68994b82a0c643b8a5a10f7988
+_md5_=bfe3a16afb84292416757b93f1ca0e8a
