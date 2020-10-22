@@ -10,7 +10,7 @@ DESCRIPTION="OCaml bindings for OpenSSL"
 SRC_URI="https://github.com/savonet/ocaml-ssl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/savonet/ocaml-ssl"
 
-IUSE="doc +ocamlopt"
+IUSE="+ocamlopt"
 
 BDEPEND="dev-ml/dune-configurator"
 DEPEND="dev-libs/openssl:0=
@@ -25,9 +25,4 @@ src_install() {
 	dune_src_install
 
 	dodoc CHANGES README.md
-
-	if use doc; then
-		docinto html
-		dodoc -r doc/html/*
-	fi
 }
