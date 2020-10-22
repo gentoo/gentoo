@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/gdbm:0=
 SLOT=0
-SRC_URI=mirror://sourceforge/sjeng/Sjeng-Free-11.2.tar.gz http://deb.debian.org/debian/pool/main/s/sjeng/sjeng_11.2-8.1.diff.gz
+SRC_URI=mirror://sourceforge/sjeng/Sjeng-Free-11.2.tar.gz mirror://debian/pool/main/s/sjeng/sjeng_11.2-8.1.diff.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=0845b0f2a3bbc07e2bb55488b8cac85d
+_md5_=68797b26388464dff7f0659ce1e91c40
