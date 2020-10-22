@@ -582,7 +582,7 @@ app-admin/helm 2.16.1 2.16.7 2.16.9 3.2.4 3.3.4: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.44 2.45 2.46: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.5.4 2.6.0 2.6.1 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.6.1 2.6.2 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.4 3.6: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -1968,7 +1968,7 @@ app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.7.0 6.8.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 4.0.4: LinuX Containers userspace utilities
+app-emulation/lxc 4.0.4 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.3-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
@@ -14104,7 +14104,7 @@ media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline enco
 media-video/xine-ui 0.99.10 0.99.12: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20200807 20201019: Download media files from Yle Areena
+media-video/yle-dl 20200807 20201019-r1: Download media files from Yle Areena
 net-analyzer/2ping 4.4.1 4.5: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
