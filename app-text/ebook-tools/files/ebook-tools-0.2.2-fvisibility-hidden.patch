@@ -1,0 +1,22 @@
+--- a/src/libepub/epub_shared.h
++++ b/src/libepub/epub_shared.h
+@@ -8,7 +8,7 @@
+ #  define EPUB_EXPORT __declspec(dllimport)
+ # endif
+ #else
+-# define EPUB_EXPORT
++# define EPUB_EXPORT __attribute__ ((visibility ("default")))
+ #endif
+ 
+ /**
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ find_package(LibXml2 REQUIRED)
+ find_package(LibZip REQUIRED)
+ 
+ if(CMAKE_C_COMPILER_ID MATCHES GNU)
+-  set(CMAKE_C_FLAGS "-Wall -W -Wno-long-long -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wshadow -fno-common ${CMAKE_C_FLAGS}")
++  set(CMAKE_C_FLAGS "-Wall -W -Wno-long-long -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wshadow -fno-common -fvisibility=hidden ${CMAKE_C_FLAGS}")
+ endif(CMAKE_C_COMPILER_ID MATCHES GNU)
+ if(MSVC)
+   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
