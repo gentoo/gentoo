@@ -105,6 +105,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3-fix-plugins-rpath.patch"
 	"${FILESDIR}/${PN}-4.3-gcc7.patch"
 	"${FILESDIR}/${PN}-4.3-find-x11-with-newer-cmake-modules.patch"
+	"${FILESDIR}/${PN}-4.3-compilation.patch"
 )
 
 src_configure() {
