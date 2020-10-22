@@ -12,7 +12,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="6"
+PATCHSET="7"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -21,10 +21,12 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +tcmalloc vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official ozone ozone-wayland pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="
 	component-build? ( !suid )
+	headless? ( ozone )
+	ozone-wayland? ( ozone )
 "
 
 COMMON_X_DEPEND="
@@ -41,7 +43,6 @@ COMMON_X_DEPEND="
 	x11-libs/libXtst:=
 	x11-libs/libXScrnSaver:=
 	x11-libs/libxcb:=
-	vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
 "
 
 COMMON_DEPEND="
@@ -58,6 +59,7 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-2.4.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
+	system-libvpx? ( >=media-libs/libvpx-1.8.2:=[postproc] )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
 		>=media-video/ffmpeg-4.3:=
@@ -77,19 +79,25 @@ COMMON_DEPEND="
 	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
-	!headless? (
-		${COMMON_X_DEPEND}
+	ozone? (
+		!headless? (
+			${COMMON_X_DEPEND}
+			x11-libs/gtk+:3[X]
+			ozone-wayland? (
+				dev-libs/wayland:=
+				dev-libs/libffi:=
+				x11-libs/libdrm:=
+				x11-libs/gtk+:3[wayland,X]
+				x11-libs/libxkbcommon:=
+			)
+		)
+	)
+	!ozone? (
 		>=app-accessibility/at-spi2-atk-2.26:2
 		>=app-accessibility/at-spi2-core-2.26:2
 		>=dev-libs/atk-2.26
 		x11-libs/gtk+:3[X]
-		wayland? (
-			dev-libs/wayland:=
-			dev-libs/libffi:=
-			x11-libs/gtk+:3[wayland,X]
-			x11-libs/libdrm:=
-			x11-libs/libxkbcommon:=
-		)
+		${COMMON_X_DEPEND}
 	)
 "
 # For nvidia-drivers blocker, see bug #413637 .
@@ -175,11 +183,6 @@ them in Chromium, then add --password-store=basic to CHROMIUM_FLAGS
 in /etc/chromium/default.
 "
 
-PATCHES=(
-	"${FILESDIR}/chromium-87-ozone-deps.patch"
-	"${FILESDIR}/chromium-87-webcodecs-deps.patch"
-)
-
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -220,10 +223,11 @@ pkg_setup() {
 
 	chromium_suid_sandbox_check_kernel_config
 
-	# nvidia-drivers does not work correctly with Wayland due to unsupported EGLStreams
-	if use wayland && ! use headless && has_version "x11-drivers/nvidia-drivers"; then
-		ewarn "Proprietary nVidia driver does not work with Wayland. You can disable"
-		ewarn "Wayland by setting DISABLE_OZONE_PLATFORM=true in /etc/chromium/default."
+	# nvidia-drivers does not work correctly with Ozone due to unsupported EGLStreams
+	if use ozone && ! use headless && has_version "x11-drivers/nvidia-drivers"; then
+		ewarn "Proprietary nVidia driver does not work correctly with Ozone. You might be"
+		ewarn "able to work around this problem by using SwiftShader OpenGL implementation."
+		ewarn "Add --use-gl=swiftshader to CHROMIUM_FLAGS in /etc/chromium/default to force SwiftShader."
 	fi
 }
 
@@ -231,10 +235,10 @@ src_prepare() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
-	eapply "${WORKDIR}/patches"
-	if use vaapi; then
-		eapply "${FILESDIR}/chromium-86-fix-vaapi-on-intel.patch"
-	fi
+	local PATCHES=(
+		"${WORKDIR}/patches"
+		"${FILESDIR}/chromium-87-xproto-crash.patch"
+	)
 
 	default
 
@@ -312,7 +316,6 @@ src_prepare() {
 		third_party/devscripts
 		third_party/devtools-frontend
 		third_party/devtools-frontend/src/front_end/third_party/acorn
-		third_party/devtools-frontend/src/front_end/third_party/axe-core
 		third_party/devtools-frontend/src/front_end/third_party/chromium
 		third_party/devtools-frontend/src/front_end/third_party/codemirror
 		third_party/devtools-frontend/src/front_end/third_party/fabricjs
@@ -322,7 +325,6 @@ src_prepare() {
 		third_party/devtools-frontend/src/front_end/third_party/lit-html
 		third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
 		third_party/devtools-frontend/src/front_end/third_party/marked
-		third_party/devtools-frontend/src/front_end/third_party/puppeteer
 		third_party/devtools-frontend/src/front_end/third_party/wasmparser
 		third_party/devtools-frontend/src/third_party
 		third_party/dom_distiller_js
@@ -356,8 +358,6 @@ src_prepare() {
 		third_party/libsrtp
 		third_party/libsync
 		third_party/libudev
-		third_party/libvpx
-		third_party/libvpx/source/libvpx/third_party/x86inc
 		third_party/libwebm
 		third_party/libxml/chromium
 		third_party/libyuv
@@ -395,7 +395,6 @@ src_prepare() {
 		third_party/ply
 		third_party/polymer
 		third_party/private-join-and-compute
-		third_party/private_membership
 		third_party/protobuf
 		third_party/protobuf/third_party/six
 		third_party/pyjson5
@@ -404,8 +403,6 @@ src_prepare() {
 		third_party/s2cellid
 		third_party/schema_org
 		third_party/securemessage
-		third_party/shaka-player
-		third_party/shell-encryption
 		third_party/simplejson
 		third_party/skia
 		third_party/skia/include/third_party/skcms
@@ -463,10 +460,23 @@ src_prepare() {
 	if ! use system-icu; then
 		keeplibs+=( third_party/icu )
 	fi
+	if ! use system-libvpx; then
+		keeplibs+=( third_party/libvpx )
+		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
+
+		# we need to generate ppc64 stuff because upstream does not ship it yet
+		# it has to be done before unbundling.
+		if use ppc64; then
+			pushd third_party/libvpx >/dev/null || die
+			mkdir -p source/config/linux/ppc64 || die
+			./generate_gni.sh || die
+			popd >/dev/null || die
+		fi
+	fi
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
 	fi
-	if use wayland && ! use headless ; then
+	if use ozone && use ozone-wayland && ! use headless ; then
 		keeplibs+=( third_party/wayland )
 	fi
 	if [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
@@ -482,15 +492,6 @@ src_prepare() {
 	if use arm64 || use ppc64 ; then
 		keeplibs+=( third_party/swiftshader/third_party/llvm-10.0 )
 	fi
-	# we need to generate ppc64 stuff because upstream does not ship it yet
-	# it has to be done before unbundling.
-	if use ppc64; then
-		pushd third_party/libvpx >/dev/null || die
-		mkdir -p source/config/linux/ppc64 || die
-		./generate_gni.sh || die
-		popd >/dev/null || die
-	fi
-
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
 }
@@ -570,6 +571,9 @@ src_configure() {
 	if use system-icu; then
 		gn_system_libraries+=( icu )
 	fi
+	if use system-libvpx; then
+		gn_system_libraries+=( libvpx )
+	fi
 	if [[ ${CHROMIUM_FORCE_LIBCXX} != yes ]]; then
 		# unbundle only without libc++, because libc++ is not fully ABI compatible with libstdc++
 		gn_system_libraries+=( libxml )
@@ -593,7 +597,6 @@ src_configure() {
 	myconf_gn+=" use_cups=$(usex cups true false)"
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
-	myconf_gn+=" use_vaapi=$(usex vaapi true false)"
 
 	# TODO: link_pulseaudio=true for GN.
 
@@ -711,22 +714,24 @@ src_configure() {
 		myconf_gn+=" icu_use_data_file=false"
 	fi
 
-	# Enable ozone wayland and/or headless support
-	if use wayland || use headless; then
+	# Enable ozone support
+	if use ozone; then
 		myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
 		myconf_gn+=" ozone_platform_headless=true"
-		if use headless; then
-			myconf_gn+=" ozone_platform=\"headless\""
-			myconf_gn+=" use_x11=false"
-		else
-			myconf_gn+=" ozone_platform_wayland=true"
+		if ! use headless; then
 			myconf_gn+=" use_system_libdrm=true"
-			myconf_gn+=" use_system_minigbm=true"
-			myconf_gn+=" use_xkbcommon=true"
-			myconf_gn+=" ozone_platform=\"wayland\""
+			myconf_gn+=" ozone_platform_wayland=$(usex ozone-wayland true false)"
+			myconf_gn+=" ozone_platform_x11=true"
+			myconf_gn+=" ozone_platform_headless=true"
+			if use ozone-wayland; then
+				myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
+				myconf_gn+=" ozone_platform=\"wayland\""
+			else
+				myconf_gn+=" ozone_platform=\"x11\""
+			fi
+		else
+			myconf_gn+=" ozone_platform=\"headless\""
 		fi
-	else
-		myconf_gn+=" use_ozone=false"
 	fi
 
 	# Enable official builds
@@ -737,9 +742,6 @@ src_configure() {
 			tools/generate_shim_headers/generate_shim_headers.py || die
 		# Disable CFI: unsupported for GCC, requires clang+lto+lld
 		myconf_gn+=" is_cfi=false"
-		# Disable PGO, because profile data is missing in tarball
-		# (https://groups.google.com/a/chromium.org/g/chromium-packagers/c/2ID9c4j6UkY)
-		myconf_gn+=" chrome_pgo_phase=0"
 	fi
 
 	einfo "Configuring Chromium..."
@@ -806,12 +808,14 @@ src_install() {
 
 	doexe out/Release/chromedriver
 
+	ozone_auto_session () {
+		use ozone && use ozone-wayland && ! use headless && echo true || echo false
+	}
 	local sedargs=( -e
 			"s:/usr/lib/:/usr/$(get_libdir)/:g;
-			s:@@OZONE_AUTO_SESSION@@:$(usex wayland true false):g;
-			s:@@FORCE_OZONE_PLATFORM@@:$(usex headless true false):g"
+			s:@@OZONE_AUTO_SESSION@@:$(ozone_auto_session):g"
 	)
-	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r6.sh" > chromium-launcher.sh || die
+	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r5.sh" > chromium-launcher.sh || die
 	doexe chromium-launcher.sh
 
 	# It is important that we name the target "chromium-browser",
@@ -885,11 +889,4 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
-
-	if use vaapi; then
-		elog "VA-API is disabled by default at runtime. Either enable it"
-		elog "by navigating to chrome://flags/#enable-accelerated-video-decode"
-		elog "inside Chromium or add --enable-accelerated-video-decode"
-		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
-	fi
 }
