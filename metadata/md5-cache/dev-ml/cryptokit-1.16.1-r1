@@ -5,7 +5,7 @@ DESCRIPTION=Cryptographic primitives library for Objective Caml
 EAPI=7
 HOMEPAGE=https://github.com/xavierleroy/cryptokit
 IUSE=cpu_flags_x86_aes +ocamlopt test zlib
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=LGPL-2
 RDEPEND=dev-ml/dune-configurator dev-ml/zarith:=[-mpir] zlib? ( >=sys-libs/zlib-1.1 ) >=dev-lang/ocaml-4:=[ocamlopt?]
 REQUIRED_USE=test? ( ocamlopt )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/1.16.1
 SRC_URI=https://github.com/xavierleroy/cryptokit/archive/release1161.tar.gz -> cryptokit-1.16.1.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=39e4498b2526a82375c46480dff4c4e7
+_md5_=d4baadd22c9e39bf238229a3193f5ed0
