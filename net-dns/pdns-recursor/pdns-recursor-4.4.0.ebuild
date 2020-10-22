@@ -11,7 +11,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="" # ~amd64 ~arm ~x86
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug dnstap libressl luajit protobuf snmp sodium systemd"
 REQUIRED_USE="dnstap? ( protobuf )"
 
@@ -43,6 +43,9 @@ pkg_setup() {
 src_configure() {
 	econf \
 		--sysconfdir=/etc/powerdns \
+		--with-nod-cache-dir=/var/lib/powerdns \
+		--with-service-user=pdns \
+		--with-service-group=pdns \
 		--with-lua=$(usex luajit luajit lua) \
 		$(use_enable debug verbose-logging) \
 		$(use_enable systemd) \
