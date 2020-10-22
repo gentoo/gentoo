@@ -25,24 +25,22 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE_CPU_FLAGS_X86=" sse2"
-IUSE="acl examples iconv ipv6 libressl lz4 ssl static stunnel system-zlib xattr xxhash zstd"
+IUSE="acl examples iconv ipv6 libressl lz4 ssl stunnel system-zlib xattr xxhash zstd"
 IUSE+=" ${IUSE_CPU_FLAGS_X86// / cpu_flags_x86_}"
 
-LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )
-	lz4? ( app-arch/lz4[static-libs(+)] )
+RDEPEND="acl? ( virtual/acl )
+	lz4? ( app-arch/lz4 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
-	system-zlib? ( sys-libs/zlib[static-libs(+)] )
-	xattr? ( kernel_linux? ( sys-apps/attr[static-libs(+)] ) )
-	xxhash? ( dev-libs/xxhash[static-libs(+)] )
-	zstd? ( >=app-arch/zstd-1.4[static-libs(+)] )
-	>=dev-libs/popt-1.5[static-libs(+)]"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	system-zlib? ( sys-libs/zlib )
+	xattr? ( kernel_linux? ( sys-apps/attr ) )
+	xxhash? ( dev-libs/xxhash )
+	zstd? ( >=app-arch/zstd-1.4 )
+	>=dev-libs/popt-1.5
 	iconv? ( virtual/libiconv )"
-DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
+DEPEND="${RDEPEND}"
 
 if [[ "${PV}" == *9999 ]] ; then
 	BDEPEND="${PYTHON_DEPS}
@@ -66,7 +64,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use static && append-ldflags -static
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
