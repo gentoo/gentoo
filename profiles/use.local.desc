@@ -7725,6 +7725,7 @@ sys-apps/hwloc:xml - use libxml2 for XML support, instead of a custom minimalist
 sys-apps/ibm-powerpc-utils:rtas - Add support for the Run Time Abstraction Services (RTAS)
 sys-apps/iotools:make-symlinks - Generate sub-command symlinks to iotools -- note that a lot are simple like "xor"
 sys-apps/ipmicfg:uefi - Install compatible UEFI file for boot.
+sys-apps/ipmitool:openbmc - Enable OpenBMC D-Bus interface
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/iproute2:berkdb - build programs that use berkdb (just arpd)
 sys-apps/iproute2:elf - support loading eBPF programs from ELFs (e.g. LLVM's eBPF backend)
