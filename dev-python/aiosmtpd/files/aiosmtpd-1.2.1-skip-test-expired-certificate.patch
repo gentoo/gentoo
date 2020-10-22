@@ -1,0 +1,10 @@
+--- aiosmtpd-1.2.1/aiosmtpd/tests/test_smtps.py.orig	2020-10-22 07:05:51.400747564 +0200
++++ aiosmtpd-1.2.1/aiosmtpd/tests/test_smtps.py	2020-10-22 07:07:59.670748613 +0200
+@@ -50,6 +50,7 @@
+         self.addCleanup(controller.stop)
+         self.address = (controller.hostname, controller.port)
+ 
++    @unittest.skip("skipping because of required expired certificate maintenance")
+     def test_smtps(self):
+         with SMTP_SSL(*self.address, context=get_client_context()) as client:
+             code, response = client.helo('example.com')
