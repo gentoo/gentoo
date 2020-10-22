@@ -53,6 +53,13 @@ PATCHES=(
 
 distutils_enable_sphinx docs --no-autodoc
 
+src_prepare() {
+	# do not bind to a specific version
+	# https://bugs.gentoo.org/750695
+	sed -i -e 's:asgiref ~= 3.2.10:asgiref:' setup.cfg || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	# Tests have non-standard assumptions about PYTHONPATH,
 	# and don't work with ${BUILD_DIR}/lib.
