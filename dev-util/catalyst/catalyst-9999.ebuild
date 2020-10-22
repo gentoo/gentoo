@@ -15,7 +15,7 @@ fi
 PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 optfeature ${SRC_ECLASS}
+inherit distutils-r1 linux-info optfeature ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
@@ -73,6 +73,11 @@ RDEPEND="
 		)
 	)
 "
+
+pkg_setup() {
+	CONFIG_CHECK="~UTS_NS ~IPC_NS"
+	linux-info_pkg_setup
+}
 
 python_prepare_all() {
 	python_setup

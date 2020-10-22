@@ -154,9 +154,10 @@ app-laptop/pbbuttonsd macbook
 # Requires [cuda] which is masked in most of the profiles.
 media-libs/opencv contribxfeatures2d
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
-# dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
-app-admin/rsyslog mdblookup
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-22)
+# imhttp: www-servers/civetweb is only keyworded on amd64 and x86 at the moment
+# mdblookup: dev-libs/libmaxminddb is only keyworded on amd64 and x86 at the moment
+app-admin/rsyslog imhttp mdblookup
 
 # Alexis Ballier <aballier@gentoo.org> (2017-02-21)
 # spacetime is only supported on amd64 at the moment.
