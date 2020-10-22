@@ -1,0 +1,38 @@
+From 6e50c5a3abfa22eb17e26086bffbee288d07483e Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Thu, 22 Oct 2020 01:05:44 +0000
+Subject: [PATCH] [XProto] Fix crash in media::UserInputMonitorLinuxCore::DispatchXEvent
+
+The X server may send unsolicited events (from clients calling
+XSendEvent() or from new keyboard mappings).  So we must check that
+the event is the correct type before dispatching it.
+
+R=dalecurtis
+
+Change-Id: Ic3e19f7da1415c358991609c9b016bd60ead2038
+Bug: 1140927
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2490674
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Auto-Submit: Thomas Anderson <thomasanderson@chromium.org>
+Reviewed-by: Dale Curtis <dalecurtis@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#819650}
+---
+
+diff --git a/media/base/user_input_monitor_linux.cc b/media/base/user_input_monitor_linux.cc
+index 59e655f..13c373f 100644
+--- a/media/base/user_input_monitor_linux.cc
++++ b/media/base/user_input_monitor_linux.cc
+@@ -115,9 +115,10 @@
+   DCHECK(io_task_runner_->BelongsToCurrentThread());
+ 
+   auto* raw = event->As<x11::Input::RawDeviceEvent>();
+-  DCHECK(raw);
+-  DCHECK(raw->opcode == x11::Input::RawDeviceEvent::RawKeyPress ||
+-         raw->opcode == x11::Input::RawDeviceEvent::RawKeyRelease);
++  if (!raw || (raw->opcode != x11::Input::RawDeviceEvent::RawKeyPress &&
++               raw->opcode != x11::Input::RawDeviceEvent::RawKeyRelease)) {
++    return;
++  }
+ 
+   ui::EventType type = raw->opcode == x11::Input::RawDeviceEvent::RawKeyPress
+                            ? ui::ET_KEY_PRESSED
