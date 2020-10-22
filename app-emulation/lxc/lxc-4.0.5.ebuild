@@ -8,7 +8,6 @@ inherit autotools bash-completion-r1 linux-info flag-o-matic optfeature pam read
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/ https://github.com/lxc/lxc"
 SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz
-	https://github.com/lxc/lxc/archive/${P}.tar.gz
 	verify-sig? ( https://linuxcontainers.org/downloads/lxc/${P}.tar.gz.asc )"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
