@@ -15,13 +15,13 @@ SLOT="3/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt sourceview"
 
+BDEPEND="dev-ml/camlp5"
 DEPEND="
 	app-text/gtkspell:3=
 	x11-libs/gtk+:3=
 	dev-ml/cairo2:=
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
 PDEPEND="sourceview? ( dev-ml/lablgtk-sourceview:${SLOT} )"
 
 S="${WORKDIR}/${DUNE_PKG_NAME}-${PV}"
