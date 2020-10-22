@@ -110,7 +110,7 @@ src_configure() {
 		--enable-ipmishell \
 		--enable-intf-lan \
 		--enable-intf-usb \
-		$(enable_with systemd intf-dbus) \
+		$(use_enable systemd intf-dbus) \
 		--enable-intf-lanplus \
 		--enable-intf-open \
 		--enable-intf-serial \
