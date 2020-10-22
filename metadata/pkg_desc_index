@@ -18277,7 +18277,7 @@ x11-misc/bbppp 0.2.5-r1: blackbox ppp frontend/monitor
 x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
 x11-misc/bbtime 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
-x11-misc/birdtray 1.8.1 9999: A new mail system tray notification icon for Thunderbird
+x11-misc/birdtray 1.8.1 1.9.0 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1_p20170130-r1 3.2.1_p20190421-r1 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1 0.3.4-r2: An analog clock displaying the system-time
