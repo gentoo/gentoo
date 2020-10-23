@@ -22,6 +22,10 @@ RDEPEND="${DEPEND}"
 # Can't both be enabled.
 REQUIRED_USE="x86-macos? ( !custom-tune )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.4-openmp.patch
+)
+
 S="${WORKDIR}/${MY_P}"
 
 pkg_pretend() {
