@@ -1751,7 +1751,7 @@ src_compile() {
 
 src_install() {
 	newbin "${minikube_target}" minikube
-	use libvirt && dobin docker-machine-driver-kvm2
+	use libvirt && dobin out/docker-machine-driver-kvm2
 	dodoc -r site CHANGELOG.md README.md
 
 	if ! tc-is-cross-compiler; then
