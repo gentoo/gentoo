@@ -7797,7 +7797,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.0-r2: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 3.1.8: Library used to interact with Git repositories
+dev-python/GitPython 3.1.8 3.1.11: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
@@ -7908,8 +7908,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.59 1.15.1 1.15.10 1.15.18 1.16.1 1.16.2 1.16.3 9999: The AWS SDK for Python
-dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.59 1.15.1 1.15.10 1.15.18 1.16.1 1.16.2 1.16.3 1.16.4 9999: The AWS SDK for Python
+dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 1.19.4 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -7933,7 +7933,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.1 0.37.1 0.38.0: CloudFormation Linter
+dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.1 0.37.1 0.38.0 0.39.0: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8038,7 +8038,7 @@ dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
 dev-python/django-haystack 3.0: Pluggable search for Django
 dev-python/django-js-asset 1.2.2: script tag with additional attributes for django.forms.Media
 dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal and trees of model instances
-dev-python/django-otp 1.0.1: Django framework adding two-factor authentication using one-time passwords
+dev-python/django-otp 1.0.1 1.0.2: Django framework adding two-factor authentication using one-time passwords
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-picklefield 3.0.1: Pickled object field for Django.
 dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
@@ -8513,7 +8513,7 @@ dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 1.0.5 1.1.1 1.1.2: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
-dev-python/pandocfilters 1.4.2-r2: Utilities for writing pandoc filters in python
+dev-python/pandocfilters 1.4.2-r2 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.7.1: SSH2 protocol library
@@ -8655,7 +8655,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre18 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre18 2.0.0_pre22 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
