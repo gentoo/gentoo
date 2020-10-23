@@ -15113,7 +15113,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.22.10-r12 1.26.0-r1 1.26.2-r1: A set of co-operative tools that make networking simple and straightforward
-net-misc/nextcloud-client 2.6.5 3.0.0 3.0.1 3.0.2: Desktop Syncing Client for Nextcloud
+net-misc/nextcloud-client 2.6.5 3.0.2: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p15: Network Time Protocol suite/programs
@@ -15131,7 +15131,7 @@ net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1 6.2_p3-r2: Lightweight NTP server port
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5 8.4_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.13.0-r1: Production quality, multilayer virtual switch
-net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1 2.6.3.14058: Synchronize files from ownCloud Server with your computer
+net-misc/owncloud-client 2.6.3.14058: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
 net-misc/pcapfix 1.1.4: Repair and fix broken pcap files
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
