@@ -9,7 +9,7 @@ HOMEPAGE="https://lib.filezilla-project.org/"
 SRC_URI="https://download.filezilla-project.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
-SLOT="0/6" # libfilezilla .so version
+SLOT="0/10" # libfilezilla.so version
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
@@ -31,6 +31,15 @@ pkg_pretend() {
 			die "Currently active compiler does not support -std=c++14"
 		fi
 	fi
+}
+
+src_configure() {
+	if use ppc || use arm || use hppa; then
+		# bug 727652
+		append-libs -latomic
+	fi
+
+	default
 }
 
 src_install() {
