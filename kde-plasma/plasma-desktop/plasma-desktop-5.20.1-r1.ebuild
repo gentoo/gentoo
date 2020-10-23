@@ -111,6 +111,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-plasma/breeze-${PVCUT}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 	>=kde-plasma/oxygen-${PVCUT}:5
+	sys-apps/accountsservice
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	kaccounts? ( net-libs/signon-oauth2 )
