@@ -3,9 +3,8 @@
 
 EAPI=7
 
-inherit cmake xdg-utils
-
 MY_P=CopyQ-${PV}
+inherit cmake xdg-utils
 
 DESCRIPTION="Clipboard manager with advanced features"
 HOMEPAGE="https://github.com/hluk/CopyQ"
@@ -34,7 +33,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
 BDEPEND="dev-qt/linguist-tools:5"
-S="${WORKDIR}/$MY_P"
+
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	# CMakeLists.txt concatenates INSTALL_PREFIX with INSTALL_MANDIR leading to /usr/usr
