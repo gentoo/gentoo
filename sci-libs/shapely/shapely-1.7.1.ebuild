@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="Shapely"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
