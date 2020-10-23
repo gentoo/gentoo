@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Object-oriented PHP5 resolver library used to communicate with a DNS server
+EAPI=7
+HOMEPAGE=https://pear.php.net/package/Net_DNS2
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-php/PEAR-PEAR >=dev-lang/php-5.3:*[sockets] >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Net_DNS2-1.5.0.tgz
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_md5_=b9ca6aa201d5eefd644e5a8fcca3ace9

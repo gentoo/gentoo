@@ -754,7 +754,7 @@ app-arch/plzip 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.9.1_p20200625: RAR compressor/uncompressor
+app-arch/rar 5.9.1_p20200625 6.0_beta1_p20201022: RAR compressor/uncompressor
 app-arch/rpm 4.14.2.1-r1 4.16.0: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -772,7 +772,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
-app-arch/unrar 5.9.4: Uncompress rar files
+app-arch/unrar 5.9.4 6.0.1: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
@@ -7619,7 +7619,7 @@ dev-php/PEAR-Mail_Mime 1.10.2-r1 1.10.4 1.10.6 1.10.7 1.10.8 1.10.9: Create and 
 dev-php/PEAR-Mail_mimeDecode 1.5.6-r2: Provides a class to decode mime messages (split from PEAR-Mail_Mime)
 dev-php/PEAR-Math_BigInteger 1.0.3-r1: Pure-PHP arbitrary precision integer arithmetic library
 dev-php/PEAR-Net_DNS 1.0.7-r1: Resolver library used to communicate with a DNS server
-dev-php/PEAR-Net_DNS2 1.4.4: Object-oriented PHP5 resolver library used to communicate with a DNS server
+dev-php/PEAR-Net_DNS2 1.4.4 1.5.0: Object-oriented PHP5 resolver library used to communicate with a DNS server
 dev-php/PEAR-Net_DNSBL 1.3.7-r1: PHP library to query DNS blacklists
 dev-php/PEAR-Net_IDNA2 0.2.0: Punycode encoding and decoding
 dev-php/PEAR-Net_IPv4 1.3.4-r1 1.3.5: PEAR class for IP v4 calculations
@@ -7722,7 +7722,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 5.1.1 5.2.1 5.2.2 5.3.1: PHP extension for interfacing with Redis
+dev-php/pecl-redis 5.1.1 5.2.1 5.2.2 5.3.1 5.3.2: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers

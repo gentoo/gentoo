@@ -2552,7 +2552,7 @@
     <member>
       <email>gyakovlev@gentoo.org</email>
       <name>Georgy Yakovlev</name>
-      <role>ppc64 keywording, talos II packages</role>
+      <role>everything ppc64/openpower</role>
     </member>
     <member>
       <email>jer@gentoo.org</email>
@@ -3067,6 +3067,11 @@
     <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
+    </member>
+    <member>
+      <email>gyakovlev@gentoo.org</email>
+      <name>Georgy Yakovlev</name>
+      <role>ppc64 helper (musl, systemd, power9)</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
