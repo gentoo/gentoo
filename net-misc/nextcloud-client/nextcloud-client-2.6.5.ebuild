@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="doc dolphin nautilus shibboleth test"
+IUSE="doc dolphin nautilus test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	>=dev-libs/openssl-1.1.0:0=
@@ -31,8 +31,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/kio:5
 	)
-	nautilus? ( dev-python/nautilus-python )
-	shibboleth? ( dev-qt/qtwebkit:5 )"
+	nautilus? ( dev-python/nautilus-python )"
 
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
@@ -74,8 +73,8 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx=$(usex !doc)
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5=$(usex !dolphin)
-		-DNO_SHIBBOLETH=$(usex !shibboleth)
 		-DUNIT_TESTING=$(usex test)
+		-DNO_SHIBBOLETH=yes
 	)
 
 	cmake_src_configure
