@@ -23,8 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # FEATURES="-network-sandbox" to test.
 RESTRICT="test"
 
-RDEPEND="${PYTHON_DEPS}
-	media-video/ffmpeg
+RDEPEND="media-video/ffmpeg
 	net-misc/wget
 	>=dev-python/attrs-18.1.0[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.13.0[${PYTHON_USEDEP}]
@@ -32,18 +31,15 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/progress[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
-DEPEND="test? (
+BDEPEND="test? (
 		${RDEPEND}
 		media-video/ffmpeg[gnutls]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
-BDEPEND="${PYTHON_DEPS}"
 
 distutils_enable_tests setup.py
 
 DOCS=( COPYING ChangeLog README.fi README.md yledl.conf.sample )
-
-PATCHES=( "${FILESDIR}"/${P}-reverse-shlex.join.patch )
 
 src_install() {
 	docompress -x "/usr/share/doc/${PF}/yledl.conf.sample"
