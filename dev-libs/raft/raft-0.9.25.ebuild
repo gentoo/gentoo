@@ -13,7 +13,6 @@ LICENSE="LGPL-3-with-linking-exception"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/libuv"
@@ -36,6 +35,7 @@ src_configure() {
 		--disable-debug
 		--disable-example
 		--disable-sanitize
+		--disable-static
 
 		$(use_enable test fixture)
 	)
@@ -45,5 +45,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
