@@ -148,10 +148,12 @@ pkg_setup() {
 	export DISTCC_DISABLE=1
 
 	python-single-r1_pkg_setup
+
+	SHAREDMODS="$(usex snapper '' '!')vfs_snapper"
 	if use cluster ; then
-		SHAREDMODS="idmap_rid,idmap_tdb2,idmap_ad"
+		SHAREDMODS+=",idmap_rid,idmap_tdb2,idmap_ad"
 	elif use ads ; then
-		SHAREDMODS="idmap_ad"
+		SHAREDMODS+=",idmap_ad"
 	fi
 }
 
@@ -213,7 +215,6 @@ multilib_src_configure() {
 		$(multilib_native_use_with pam)
 		$(multilib_native_usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
 		$(multilib_native_use_with quota quotas)
-		$(multilib_native_usex snapper '' '--with-shared-modules=!vfs_snapper')
 		$(multilib_native_use_with syslog)
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
@@ -230,7 +231,11 @@ multilib_src_configure() {
 		--jobs 1
 	)
 
-	multilib_is_native_abi && myconf+=( --with-shared-modules=${SHAREDMODS} )
+	if multilib_is_native_abi ; then
+		myconf+=( --with-shared-modules=${SHAREDMODS} )
+	else
+		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
+	fi
 
 	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
@@ -296,7 +301,6 @@ multilib_src_install() {
 	keepdir /var/lib/samba/{bind-dns,private}
 	keepdir /var/lock/samba
 	keepdir /var/log/samba
-	keepdir /var/run/samba
 }
 
 multilib_src_test() {

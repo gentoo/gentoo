@@ -37,10 +37,6 @@ dev-libs/efl efl-one
 # The respective dependencies are masked for removal.
 net-nntp/pan gnome-keyring
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-19)
-# The respective dependencies are masked for removal.
-app-office/lyx docbook
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
 media-plugins/mythplugins mythnetvision
@@ -560,11 +556,6 @@ x11-libs/cairo gles2-only
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-05-19)
 # Fails to build, haven't had time to debug
 app-doc/doxygen sqlite
-
-# Alexis Ballier <aballier@gentoo.org> (2013-05-08)
-# On behalf of Pavel Sanda <ps@twin.jikos.cz>
-# Lyx is currently not working with subversion 1.7 and needs 1.6.
-app-office/lyx subversion
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)

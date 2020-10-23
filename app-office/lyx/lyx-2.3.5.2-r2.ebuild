@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 MY_P="${P/_}"
 inherit desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
@@ -16,9 +16,13 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/${MY_P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~x64-macos ~x86-macos"
-IUSE="aspell cups debug docbook dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf subversion svg l10n_he"
+IUSE="aspell cups debug dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 RDEPEND="${PYTHON_DEPS}
 	app-text/mythes
 	dev-libs/boost:=
@@ -34,9 +38,8 @@ RDEPEND="${PYTHON_DEPS}
 	aspell? ( app-text/aspell )
 	cups? ( net-print/cups )
 	dia? ( app-office/dia )
-	docbook? ( app-text/sgmltools-lite )
 	dot? ( media-gfx/graphviz )
-	enchant? ( app-text/enchant:0 )
+	enchant? ( app-text/enchant:2 )
 	gnumeric? ( app-office/gnumeric )
 	html? ( dev-tex/html2latex )
 	hunspell? ( app-text/hunspell )
@@ -64,13 +67,10 @@ RDEPEND="${PYTHON_DEPS}
 		dev-tex/html2latex
 		dev-tex/latex2rtf
 	)
-	subversion? ( dev-vcs/subversion )
 	svg? ( || ( gnome-base/librsvg media-gfx/inkscape ) )
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	dev-qt/qtconcurrent:5
-	nls? ( sys-devel/gettext )
 "
 
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
@@ -147,7 +147,7 @@ pkg_postinst() {
 
 	# fix for bug 91108
 	if use latex ; then
-		texhash
+		texhash || die
 	fi
 
 	# instructions for RTL support. See also bug 168331.
@@ -167,6 +167,6 @@ pkg_postrm() {
 	xdg_desktop_database_update
 
 	if use latex ; then
-		texhash
+		texhash || die
 	fi
 }
