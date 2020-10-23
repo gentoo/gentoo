@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-10-23)
+# Committed with missing patch mid-2018.  Not fixed since.
+# Removal in 30 days.  Bug #653310.
+games-arcade/ceferino
+
 # Maciej Mrozowski <reavertm@gentoo.org> (2020-10-23)
 # Crashes at startup - bug #750770, dead upstream - bug #737936
 # Removal in 30 days.
