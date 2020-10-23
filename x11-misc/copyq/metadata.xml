@@ -6,15 +6,9 @@
 		<name>Gino</name>
 	</maintainer>
 	<maintainer type="project">
-			<email>proxy-maint@gentoo.org</email>
-			<name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="webkit">
-	enables the application to use advanced HTML rendering and fetching 
-	remote images and other data
-	</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">hluk/CopyQ</remote-id>
 	</upstream>

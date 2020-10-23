@@ -1,2 +1,3 @@
 move acct-group/openldap acct-group/ldap
 move acct-user/openldap acct-user/ldap
+move x11-apps/copyq x11-misc/copyq

@@ -10,15 +10,15 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription>
-		Backport of Python 3.7’s standard library importlib.resources
-		module for Python 2.7, and 3.4 through 3.6. Users of Python
-		3.7 and beyond are encouraged to use the standard library
-		module, and in fact for these versions, importlib_resources
-		just shadows that module.
+		Backport of Python standard library importlib.resources module
+		for Python 2.7, and 3.4 through 3.8. Users of Python 3.9 and beyond
+		should use the standard library module, since for these versions,
+		importlib_resources just delegates to that module.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">python-devs/importlib_resources</remote-id>
+		<remote-id type="github">python/importlib_resources</remote-id>
 		<remote-id type="pypi">importlib_resources</remote-id>
-		<bugs-to>https://gitlab.com/python-devs/importlib_resources/issues</bugs-to>
+		<bugs-to>https://github.com/python/importlib_resources/issues</bugs-to>
+		<doc>https://importlib-resources.readthedocs.io/</doc>
 	</upstream>
 </pkgmetadata>

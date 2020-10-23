@@ -5,16 +5,14 @@ EAPI=7
 
 inherit cmake xdg-utils
 
-MY_P=CopyQ-${PV}
-
 DESCRIPTION="Clipboard manager with advanced features"
 HOMEPAGE="https://github.com/hluk/CopyQ"
-SRC_URI="https://github.com/hluk/CopyQ/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/hluk/CopyQ/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test webkit"
+IUSE="test"
 
 RESTRICT="!test? ( test )"
 
@@ -29,21 +27,20 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXtst
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
-BDEPEND="dev-qt/linguist-tools:5"
-S="${WORKDIR}/$MY_P"
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
+
+S="${WORKDIR}/CopyQ-${PV}"
 
 src_configure() {
-	# CMakeLists.txt concatenates INSTALL_PREFIX with INSTALL_MANDIR leading to /usr/usr
 	local mycmakeargs=(
 		-DPLUGIN_INSTALL_PREFIX="/usr/$(get_libdir)/${PN}/plugins"
-		-DWITH_QT5=ON
 		-DWITH_TESTS=$(usex test)
-		-DWITH_WEBKIT=$(usex webkit)
-		-DCMAKE_INSTALL_MANDIR="share/man"
+		-DWITH_WEBKIT=OFF
 	)
 	cmake_src_configure
 }
