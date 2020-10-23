@@ -22,7 +22,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="test"
+IUSE="cxx17 test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -57,6 +57,7 @@ src_configure() {
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_LOCAL_GOOGLETEST_DIR="${WORKDIR}/googletest-${GTEST_COMMIT}"
 		-DABSL_RUN_TESTS=$(usex test)
+		$(usex cxx17 -DCMAKE_CXX_STANDARD=17 '') # it has to be a useflag for some consumers
 		$(usex test -DBUILD_TESTING=ON '') #intentional usex
 	)
 	cmake_src_configure
