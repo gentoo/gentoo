@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/opengl >=games-simulation/flightgear-3.0.0
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~reavertm/atlas-hgcode-e183e3b3a0412b504edcb3664445b3e04fd484a2.zip
+SRC_URI=https://dev.gentoo.org/~reavertm/atlas-hgcode-d4e5360f8273823205d9dc066547f5077ffc13e2.zip
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=c55bfeaa2da5cb15bdfe8f156d5b7e8d
+_md5_=8f761dd23d4e0dcc8162372aaaea101c
