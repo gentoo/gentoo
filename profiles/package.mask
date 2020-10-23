@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-10-23)
+# Fails to build.  Needs a dedicated maintainer and a version bump.
+# Removal in 30 days.  Bug #635592.
+games-strategy/asc
+
+# Michał Górny <mgorny@gentoo.org> (2020-10-23)
 # Needs a dedicated maintainer.  The current version fails to build.
 # Needs a version bump.
 # Removal in 30 days.  Bug #614408.
