@@ -8981,7 +8981,7 @@ dev-python/seaborn 0.10.1: Statistical data visualization
 dev-python/secretstorage 3.1.2: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selenium 3.141.0-r1: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.8.5: Python library providing a few tools handling SemVer in Python
-dev-python/semver 2.10.2: A Python module for semantic versioning
+dev-python/semver 2.10.2 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
 dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1: Python client for Sentry
