@@ -989,7 +989,6 @@ app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
 app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/lyx:aspell - Add support for aspell spellchecking
 app-office/lyx:dia - Add support for diagrams (app-office/dia)
-app-office/lyx:docbook - Add support for docbook export
 app-office/lyx:dot - Add support for DOT import (media-gfx/graphviz)
 app-office/lyx:enchant - Add support for enchant spellchecking wrapper (both aspell and hunspell can be used by LyX).
 app-office/lyx:gnumeric - Add support for importing Gnumeric/OpenOffice/MS Excel spreadsheets into LyX.
