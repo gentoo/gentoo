@@ -3,12 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 )
-
+PYTHON_COMPAT=( python3_5 python3_6 python3_7 python3_8 )
 inherit distutils-r1
 
 DESCRIPTION="Table/data-grid framework for Django"
-HOMEPAGE="https://pypi.org/project/django-tables2/ https://github.com/bradleyayers/django-tables2/"
+HOMEPAGE="https://github.com/jieter/django-tables2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
@@ -18,5 +17,4 @@ IUSE=""
 
 RDEPEND=">=dev-python/django-1.11"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+    dev-python/setuptools[${PYTHON_USEDEP}]"

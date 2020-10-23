@@ -1,0 +1,17 @@
+# The convention in this file is to show the default setting commented out.
+# To change the setting, uncomment it then change the value.
+
+# This is the netbox error log:
+#error_log="/var/log/netbox/netbox.log"
+
+# This is the netbox output log:
+#output_log="/dev/null"
+
+# The netbox gunicorn config file location:
+#config="/etc/netbox/gunicorn_config.py"
+
+# The netbox path for gunicorn:
+#directory="/opt/netbox/netbox"
+
+# Extra options to pass to netbox:
+#gunicorn_opts=""

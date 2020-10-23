@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 name="netbox-rqworker daemon"
-description="nnetbox-rqworker daemon"
+description="netbox-rqworker daemon"
 command=/usr/bin/python3
 command_args="/opt/netbox/netbox/manage.py rqworker"
 command_user=netbox:netbox

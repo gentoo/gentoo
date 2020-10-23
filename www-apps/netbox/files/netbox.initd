@@ -1,12 +1,20 @@
 #!/sbin/openrc-run
-# Copyright 2019 Sony Interactive Entertainment Inc.
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Logging
+error_log="${error_log:-/var/log/netbox/"${RC_SVCNAME}".log}"
+output_log="${output_log:-/dev/null}"
+
 description="netbox daemon"
+
+# Variables
+config="${config:-/etc/netbox/gunicorn_config.py}"
+directory="${directory:-/opt/netbox/netbox}"
+gunicorn_opts="${gunicorn_opts:-}"
+
 command=/usr/bin/gunicorn
-command_args="-c /etc/netbox/gunicorn_config.py netbox.wsgi"
+command_args="${gunicorn_opts} --config ${config} netbox.wsgi"
 command_user=netbox:netbox
-directory=/opt/netbox/netbox
-error_log=/var/log/netbox/"${RC_SVCNAME}".log
-output_log=/var/log/netbox/"${RC_SVCNAME}".log
+
 supervisor=supervise-daemon
