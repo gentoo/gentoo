@@ -45,7 +45,8 @@ CDEPEND="
 	dev-libs/elfutils:=
 	sys-libs/zlib:=
 	dev-db/sqlite:=
-	net-libs/libmicrohttpd
+	net-libs/libmicrohttpd:=
+	net-libs/libwebsockets:=[client]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
 			net-libs/libpcap
