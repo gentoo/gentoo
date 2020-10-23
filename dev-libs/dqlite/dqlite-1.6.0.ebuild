@@ -13,7 +13,6 @@ LICENSE="LGPL-3-with-linking-exception"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
-
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
@@ -31,6 +30,7 @@ src_configure() {
 	local myeconfargs=(
 		--disable-debug
 		--disable-sanitize
+		--disable-static
 	)
 
 	econf "${myeconfargs[@]}"
@@ -38,5 +38,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
