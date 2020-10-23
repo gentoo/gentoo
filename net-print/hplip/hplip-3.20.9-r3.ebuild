@@ -33,7 +33,6 @@ COMMON_DEPEND="
 		libusb0? ( virtual/libusb:0 )
 		scanner? (
 			media-gfx/sane-backends
-			$(python_gen_cond_dep 'net-dns/avahi[${PYTHON_MULTI_USEDEP}]')
 		)
 		snmp? (
 			!libressl? ( dev-libs/openssl:0= )

@@ -84,7 +84,7 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}"/prosody.initd-r4 prosody
-	systemd_newunit "${FILESDIR}"/prosody.service-r1 prosody.service
+	systemd_newunit "${FILESDIR}"/prosody.service-r2 prosody.service
 
 	newtmpfiles "${FILESDIR}"/prosody.tmpfilesd-r1 prosody.conf
 
