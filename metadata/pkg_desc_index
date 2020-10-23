@@ -1970,7 +1970,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.4 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.3-r1: Fast, dense and secure container management
+app-emulation/lxd 4.0.3-r1 4.0.4: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 16-r1: A PC emulator that specializes in running old operating systems and software
@@ -2732,7 +2732,7 @@ app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than Sendmail
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
-app-shells/tcsh 6.20.00 6.21.00-r1: Enhanced version of the Berkeley C shell (csh)
+app-shells/tcsh 6.20.00 6.21.00-r1 6.22.02: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.49 2.50: Yash is a POSIX-compliant command line shell
@@ -5193,6 +5193,7 @@ dev-libs/distorm64 3.5.0: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7 999999: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion routines for IEEE doubles
+dev-libs/dqlite 1.6.0: Embeddable, replicated and fault tolerant SQL engine
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
@@ -5555,6 +5556,7 @@ dev-libs/qrosscore 0.3.2 9999: KDE-free version of Kross (core libraries and Qt 
 dev-libs/qtcompress 0_p20180513: A public API for QZip in an easy to use module
 dev-libs/qtkeychain 0.10.0: Qt API for storing passwords securely
 dev-libs/quazip 0.9.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/raft 0.9.25: C implementation of the Raft consensus protocol
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
