@@ -4885,7 +4885,7 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.265_p01 11.0.8_p10: Open source implementation of the Java programming language
+dev-java/openjdk 8.265_p01 8.272_p10 11.0.8_p10 11.0.9_p11: Open source implementation of the Java programming language
 dev-java/openjdk-bin 8.265_p01 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-java/openjdk-jre-bin 8.265_p01 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 8.999 11.0.9_p0: Java OpenJFX client application platform
