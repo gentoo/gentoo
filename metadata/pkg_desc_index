@@ -5334,7 +5334,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0 1.5.0-r1: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.20.2 0.21.0 0.22.0 0.23.0 0.24.0 0.24.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.20.2 0.24.1 0.25.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 6.1.2 7.0.3 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
@@ -5367,7 +5367,7 @@ dev-libs/libisoburn 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD 
 dev-libs/libisofs 1.5.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.1.0 2.1.2 2.2.0: A collection of useful BSD APIs
 dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
-dev-libs/libjcat 0.1.3 0.1.3-r1: Library and tool for reading and writing Jcat files
+dev-libs/libjcat 0.1.3 0.1.3-r1 0.1.4: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1 221 230 240-r1 241: A Library for Large Linear Classification
@@ -10867,7 +10867,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.14.5 2.16.2: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.12.1: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
@@ -14522,7 +14522,7 @@ net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.47.2.1 3.48.0 3.48.1 3.49.1 3.50.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.47.2.1 3.50.0 3.51.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
@@ -17331,7 +17331,7 @@ sys-fs/bashmount 3.2.0 4.3.2: Bash script that uses udisks to mount removable de
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7 1.14.8: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 4.19 5.4.1 5.6.1 5.7 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 4.19 5.4.1 5.7 5.9 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r3: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -18735,7 +18735,7 @@ x11-terms/terminator 1.92-r2 2.0.1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.8.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 337 351 357 360: Terminal Emulator for X Windows
+x11-terms/xterm 337 351 360 361: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.6.0-r1 0.6.1-r1: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
