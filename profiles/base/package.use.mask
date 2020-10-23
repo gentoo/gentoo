@@ -557,11 +557,6 @@ x11-libs/cairo gles2-only
 # Fails to build, haven't had time to debug
 app-doc/doxygen sqlite
 
-# Alexis Ballier <aballier@gentoo.org> (2013-05-08)
-# On behalf of Pavel Sanda <ps@twin.jikos.cz>
-# Lyx is currently not working with subversion 1.7 and needs 1.6.
-app-office/lyx subversion
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)
 gnustep-apps/cynthiune flac
