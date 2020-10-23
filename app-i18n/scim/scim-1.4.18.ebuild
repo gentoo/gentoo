@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools flag-o-matic gnome2-utils qmake-utils
+inherit autotools flag-o-matic gnome2-utils
 
 DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) development platform"
 HOMEPAGE="https://github.com/scim-im/scim"
