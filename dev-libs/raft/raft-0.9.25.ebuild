@@ -42,3 +42,8 @@ src_configure() {
 
 	econf "${myeconfargs[@]}"
 }
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete -o -name '*.a' -delete || die
+}
