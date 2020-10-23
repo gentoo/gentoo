@@ -37,10 +37,6 @@ dev-libs/efl efl-one
 # The respective dependencies are masked for removal.
 net-nntp/pan gnome-keyring
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-19)
-# The respective dependencies are masked for removal.
-app-office/lyx docbook
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
 media-plugins/mythplugins mythnetvision

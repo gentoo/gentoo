@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/${MY_P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
-IUSE="aspell cups debug docbook dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf subversion svg l10n_he"
+IUSE="aspell cups debug dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf subversion svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
@@ -38,7 +38,6 @@ RDEPEND="${PYTHON_DEPS}
 	aspell? ( app-text/aspell )
 	cups? ( net-print/cups )
 	dia? ( app-office/dia )
-	docbook? ( app-text/sgmltools-lite )
 	dot? ( media-gfx/graphviz )
 	enchant? ( app-text/enchant:2 )
 	gnumeric? ( app-office/gnumeric )
