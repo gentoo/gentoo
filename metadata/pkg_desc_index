@@ -5514,7 +5514,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
-dev-libs/nss 3.55 3.56 3.57 3.58: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.55 3.56 3.57 3.58-r1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
@@ -8236,7 +8236,7 @@ dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.7.0-r2 2.0.0: Read metadata from Python packages
-dev-python/importlib_resources 1.5.0-r2 3.0.0-r2 3.1.0: Read resources from Python packages
+dev-python/importlib_resources 1.5.0-r2 3.0.0-r2 3.1.1: Read resources from Python packages
 dev-python/imread 0.7.3: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -11584,7 +11584,7 @@ games-simulation/openttd 1.10.2 1.10.3 9999: OpenTTD is a clone of Transport Tyc
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator
 games-simulation/senken 0.3.0-r1: city simulation game
-games-simulation/simutrans 0.120.2.2: A free Transport Tycoon clone
+games-simulation/simutrans 0.122.0: A free Transport Tycoon clone
 games-simulation/singularity 1.0_alpha1-r1: Simulation of a true AI. Go from computer to computer, chased by the whole world
 games-simulation/sky-rogue 1.3: A fwooshy rogue-lite action flight simulator
 games-simulation/slime-rancher 1.4.1c_p34605: Cute game where you cultivate slimes on a distant planet
@@ -13410,7 +13410,7 @@ media-plugins/kodi-pvr-demo 3.6.1 6.0.1 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 8.0.0 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 6.0.6 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 5.1.0 9999: Kodi's Filmon client addon
-media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 7.2.0 7.2.1 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
+media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 7.2.0 7.2.1 7.2.2 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.8 6.2.4 6.3.0 6.3.1 6.3.2 6.4.0 6.4.1 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 6.0.0 6.0.1 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 5.10.18 5.10.19 7.0.5 7.1.1 9999: MythTV PVR for Kodi
@@ -14572,7 +14572,7 @@ net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-sty
 net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.12 0.13.1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
-net-im/prosody 0.11.5-r1 0.11.7-r1: Prosody is a modern XMPP communication server
+net-im/prosody 0.11.5-r1 0.11.7-r2: Prosody is a modern XMPP communication server
 net-im/prosody-modules 0_pre20201004 9999: A collection of community-maintained modules for Prosody
 net-im/psi 1.5 9999: Qt XMPP client
 net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
@@ -14582,7 +14582,7 @@ net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-desktop-bin 1.36.3-r1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.65.0.76: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.65.0.76 8.65.0.78: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
@@ -15357,7 +15357,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3: Ghostscript and cups printer drivers
-net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r3: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.19.12 3.20.6-r1 3.20.9: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP

@@ -8,5 +8,5 @@ KEYWORDS=-* ~amd64 ~x86
 LICENSE=supermicro
 RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=https://www.supermicro.com/wftp/utility/{MY_PN}/IPMICFG_1.32.0_build.200820.zip
-_md5_=7a3375fd83f895c671ecbd6b1e27fa36
+SRC_URI=https://www.supermicro.com/wftp/utility/IPMICFG/IPMICFG_1.32.0_build.200820.zip
+_md5_=bc96fa6d88e53c6fdd063dca2dcb07af

@@ -3228,6 +3228,10 @@ games-simulation/openttd:aplaymidi - Enables midi music in game, using aplaymidi
 games-simulation/openttd:dedicated - Build only the openttd server, and not the client.
 games-simulation/openttd:lzo - Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)
 games-simulation/openttd:openmedia - Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.
+games-simulation/simutrans:pak128 - Install more detailed scenario data
+games-simulation/simutrans:pak128-britain - Install British scenario data
+games-simulation/simutrans:pak128-german - Install German scenario data
+games-simulation/simutrans:pak192-comic - Install comic-like scenario data
 games-simulation/train-valley:gui - Install the GUI for configuring screen resolution and input
 games-sports/speed-dreams:xrandr - Enable support for the X xrandr extension
 games-sports/xmoto:double-precision - more precise calculations at the expense of speed
