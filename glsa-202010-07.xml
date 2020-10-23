@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-07">
+  <title>FreeType: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in FreeType might allow remote attacker(s) to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">freetype</product>
+  <announced>2020-10-23</announced>
+  <revised count="1">2020-10-23</revised>
+  <bug>750275</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freetype" auto="yes" arch="*">
+      <unaffected range="ge">2.10.3-r1</unaffected>
+      <vulnerable range="lt">2.10.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeType is a high-quality and portable font engine.</p>
+  </background>
+  <description>
+    <p>A flaw in FreeType’s handling of embedded PNG bitmaps was discovered
+      where the image height and width was not checked to be within bounds.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted font
+      file using FreeType possibly resulting in the execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeType users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/freetype-2.10.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15999">CVE-2020-15999</uri>
+    <uri link="https://savannah.nongnu.org/bugs/?59308">Upstream bug</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-20T09:45:14Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-23T03:42:18Z">sam_c</metadata>
+</glsa>
