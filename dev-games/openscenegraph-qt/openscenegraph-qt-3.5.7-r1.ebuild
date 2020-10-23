@@ -14,7 +14,7 @@ SRC_URI="https://github.com/openscenegraph/${MY_PN}/archive/${PV}.tar.gz -> ${MY
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/145" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="amd64 ~ppc64 x86"
-IUSE="examples webkit"
+IUSE="examples"
 
 RDEPEND="
 	>=dev-games/openscenegraph-3.6.3:=
@@ -22,7 +22,6 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -41,8 +40,7 @@ src_configure() {
 		-DDYNAMIC_OPENSCENEGRAPH=ON
 		-DDESIRED_QT_VERSION=5
 		-DBUILD_OSG_EXAMPLES=$(usex examples)
-		$(cmake_use_find_package webkit Qt5WebKitWidgets)
+		-DCMAKE_DISABLE_USE_FIND_PACKAGE_Qt5WebKitWidgets=ON
 	)
-
 	cmake_src_configure
 }

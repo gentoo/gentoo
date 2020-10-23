@@ -12,16 +12,15 @@ SRC_URI="https://www.molspaces.com/dl/progs/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+lzo webkit"
+IUSE="+lzo"
 
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	lzo? ( dev-libs/lzo:2 )
-	!webkit? ( dev-qt/qtwebengine:5[widgets] )
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="${DEPEND}"
 
@@ -33,11 +32,7 @@ src_prepare() {
 	sed -e "s|../AUTHORS ../COPYRIGHT ../LICENSE ../CHANGELOG||" \
 		-i src/src.pro || die
 
-	if use webkit; then
-		sed -i -e "s/qtHaveModule(webenginewidgets)/false/g" src/src.pro || die
-	else
-		sed -i -e "s/qtHaveModule(webkitwidgets)/false/g" src/src.pro || die
-	fi
+	sed -i -e "s/qtHaveModule(webkitwidgets)/false/g" src/src.pro || die
 }
 
 src_configure() {
