@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
 	"${FILESDIR}/${PN}-3.53-fix-building-on-ppc.patch"
+	"${FILESDIR}/${PN}-3.58-always-tolerate-the-first-CCS-in-TLS1.3.patch"
 )
 
 src_prepare() {

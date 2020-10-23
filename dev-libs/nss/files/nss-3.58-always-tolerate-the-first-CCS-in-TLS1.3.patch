@@ -1,0 +1,111 @@
+https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
+
+--- a/gtests/ssl_gtest/ssl_tls13compat_unittest.cc
++++ b/gtests/ssl_gtest/ssl_tls13compat_unittest.cc
+@@ -348,8 +348,8 @@
+   client_->CheckErrorCode(SSL_ERROR_HANDSHAKE_UNEXPECTED_ALERT);
+ }
+ 
+-// The server rejects a ChangeCipherSpec if the client advertises an
+-// empty session ID.
++// The server accepts a ChangeCipherSpec even if the client advertises
++// an empty session ID.
+ TEST_F(TlsConnectStreamTls13, ChangeCipherSpecAfterClientHelloEmptySid) {
+   EnsureTlsSetup();
+   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_3);
+@@ -358,9 +358,8 @@
+   client_->Handshake();  // Send ClientHello
+   client_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));  // Send CCS
+ 
+-  server_->ExpectSendAlert(kTlsAlertUnexpectedMessage);
+-  server_->Handshake();  // Consume ClientHello and CCS
+-  server_->CheckErrorCode(SSL_ERROR_RX_MALFORMED_CHANGE_CIPHER);
++  Handshake();
++  CheckConnected();
+ }
+ 
+ // The server rejects multiple ChangeCipherSpec even if the client
+@@ -381,7 +380,7 @@
+   server_->CheckErrorCode(SSL_ERROR_RX_MALFORMED_CHANGE_CIPHER);
+ }
+ 
+-// The client rejects a ChangeCipherSpec if it advertises an empty
++// The client accepts a ChangeCipherSpec even if it advertises an empty
+ // session ID.
+ TEST_F(TlsConnectStreamTls13, ChangeCipherSpecAfterServerHelloEmptySid) {
+   EnsureTlsSetup();
+@@ -398,9 +397,10 @@
+                          // send ServerHello..CertificateVerify
+   // Send CCS
+   server_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));
+-  client_->ExpectSendAlert(kTlsAlertUnexpectedMessage);
+-  client_->Handshake();  // Consume ClientHello and CCS
+-  client_->CheckErrorCode(SSL_ERROR_RX_MALFORMED_CHANGE_CIPHER);
++
++  // No alert is sent from the client. As Finished is dropped, we
++  // can't use Handshake() and CheckConnected().
++  client_->Handshake();
+ }
+ 
+ // The client rejects multiple ChangeCipherSpec in a row even if the
+--- a/lib/ssl/ssl3con.c
++++ b/lib/ssl/ssl3con.c
+@@ -6645,11 +6645,7 @@
+ 
+     /* TLS 1.3: We sent a session ID.  The server's should match. */
+     if (!IS_DTLS(ss) && (sentRealSid || sentFakeSid)) {
+-        if (sidMatch) {
+-            ss->ssl3.hs.allowCcs = PR_TRUE;
+-            return PR_TRUE;
+-        }
+-        return PR_FALSE;
++        return sidMatch;
+     }
+ 
+     /* TLS 1.3 (no SID)/DTLS 1.3: The server shouldn't send a session ID. */
+@@ -8696,7 +8692,6 @@
+                 errCode = PORT_GetError();
+                 goto alert_loser;
+             }
+-            ss->ssl3.hs.allowCcs = PR_TRUE;
+         }
+ 
+         /* TLS 1.3 requires that compression include only null. */
+@@ -13066,15 +13061,14 @@
+             ss->ssl3.hs.ws != idle_handshake &&
+             cText->buf->len == 1 &&
+             cText->buf->buf[0] == change_cipher_spec_choice) {
+-            if (ss->ssl3.hs.allowCcs) {
+-                /* Ignore the first CCS. */
+-                ss->ssl3.hs.allowCcs = PR_FALSE;
++            if (!ss->ssl3.hs.rejectCcs) {
++                /* Allow only the first CCS. */
++                ss->ssl3.hs.rejectCcs = PR_TRUE;
+                 return SECSuccess;
+-            }
+-
+-            /* Compatibility mode is not negotiated. */
+-            alert = unexpected_message;
+-            PORT_SetError(SSL_ERROR_RX_MALFORMED_CHANGE_CIPHER);
++            } else {
++                alert = unexpected_message;
++                PORT_SetError(SSL_ERROR_RX_MALFORMED_CHANGE_CIPHER);
++            }
+         }
+ 
+         if ((IS_DTLS(ss) && !dtls13_AeadLimitReached(spec)) ||
+--- a/lib/ssl/sslimpl.h
++++ b/lib/ssl/sslimpl.h
+@@ -710,10 +710,7 @@
+                                            * or received. */
+     PRBool receivedCcs;                   /* A server received ChangeCipherSpec
+                                            * before the handshake started. */
+-    PRBool allowCcs;                      /* A server allows ChangeCipherSpec
+-                                           * as the middlebox compatibility mode
+-                                           * is explicitly indicarted by
+-                                           * legacy_session_id in TLS 1.3 ClientHello. */
++    PRBool rejectCcs;                     /* Excessive ChangeCipherSpecs are rejected. */
+     PRBool clientCertRequested;           /* True if CertificateRequest received. */
+     PRBool endOfFlight;                   /* Processed a full flight (DTLS 1.3). */
+     ssl3KEADef kea_def_mutable;           /* Used to hold the writable kea_def
+
