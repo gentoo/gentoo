@@ -16,7 +16,7 @@ SRC_URI="http://luajit.org/download/${MY_P}.tar.gz"
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~arm64"
 IUSE="lua52compat static-libs"
 
 PATCHES=(
