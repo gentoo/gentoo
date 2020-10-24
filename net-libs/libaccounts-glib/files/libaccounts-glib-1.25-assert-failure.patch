@@ -1,0 +1,26 @@
+From 29bdc47abe11d3bfcec7a35ed83475eba04bfdaa Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jolla.com>
+Date: Tue, 7 Jul 2020 12:51:50 +0300
+Subject: [PATCH] Avoid assert failure on ag_provider_get_tags
+
+---
+ libaccounts-glib/ag-provider.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libaccounts-glib/ag-provider.c b/libaccounts-glib/ag-provider.c
+index 93d1541..8a79616 100644
+--- a/libaccounts-glib/ag-provider.c
++++ b/libaccounts-glib/ag-provider.c
+@@ -464,6 +464,9 @@ GList *ag_provider_get_tags (AgProvider *provider)
+ {
+     g_return_val_if_fail (provider != NULL, NULL);
+ 
++    if (G_UNLIKELY (provider->tags == NULL))
++        return NULL;
++
+     return g_hash_table_get_keys (provider->tags);
+ }
+ 
+-- 
+GitLab
+
