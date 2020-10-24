@@ -15460,7 +15460,7 @@ net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.3.9: A Bluetooth configuration tool
 net-wireless/blueman 2.1.3 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 5.54 5.55: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 5.55: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
 net-wireless/broadcom-sta 6.30.223.271-r6: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
@@ -16812,7 +16812,7 @@ sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the A
 sys-apps/inxi 3.0.33.1 3.0.34.1 3.0.36.1 3.0.38.1 3.1.06.1: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.32.0.200820: An in-band utility for configuring Supermicro IPMI devices
-sys-apps/ipmitool 1.8.18-r1 1.8.18-r2 1.8.18_p20201004-r1: Utility for controlling IPMI enabled devices.
+sys-apps/ipmitool 1.8.18-r1 1.8.18-r2 1.8.18_p20201004-r1 1.8.18_p20201004-r2: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.6 3.1.7: IPMI Management Utilities
 sys-apps/iproute2 5.4.0 5.7.0 5.8.0 5.9.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.6.0-r1 1.7.0: Distribute hardware interrupts across processors on a multiprocessor system
