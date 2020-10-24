@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm custom-tune
+
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)

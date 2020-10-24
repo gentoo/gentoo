@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-07)
 # <app-admin/salt-3000 is Python 3.6 but last Python 3.6
 # compatible dev-python/libvirt-python version was removed
