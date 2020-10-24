@@ -20,5 +20,4 @@ RDEPEND="!prefix-guest? (
 		!sys-libs/glibc
 		!sys-libs/musl
 		!sys-libs/uclibc-ng
-		!sys-libs/uclibc
 	)"
