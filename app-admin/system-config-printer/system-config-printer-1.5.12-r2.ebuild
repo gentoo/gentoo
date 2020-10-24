@@ -1,19 +1,19 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
-inherit gnome2 python-single-r1 systemd
+inherit python-single-r1 systemd xdg
 
 DESCRIPTION="Graphical user interface for CUPS administration"
 HOMEPAGE="https://github.com/OpenPrinting/system-config-printer"
 SRC_URI="https://github.com/OpenPrinting/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gnome-keyring policykit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -68,19 +68,17 @@ pkg_setup() {
 }
 
 src_configure() {
-	gnome2_src_configure \
-		--enable-nls \
-		--with-desktop-vendor=Gentoo \
-		--with-udev-rules \
+	local myeconfargs=(
+		--enable-nls
+		--with-desktop-vendor=Gentoo
+		--with-udev-rules
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
-}
-
-src_compile() {
-	gnome2_src_compile
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	gnome2_src_install
+	default
 	python_fix_shebang "${ED}"
 	python_optimize
 }
