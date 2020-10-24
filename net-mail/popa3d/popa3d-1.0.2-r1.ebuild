@@ -1,10 +1,32 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs user
+EAPI=7
 
-#
+inherit flag-o-matic toolchain-funcs
+
+DESCRIPTION="A security oriented POP3 server"
+HOMEPAGE="http://www.openwall.com/popa3d/"
+SRC_URI="
+	http://www.openwall.com/popa3d/${P}.tar.gz
+	mirror://gentoo/popa3d-0.6.3-vname-2.diff.gz
+	maildir? ( mirror://gentoo/popa3d-0.5.9-maildir-2.diff.gz )"
+
+LICENSE="Openwall"
+SLOT="0"
+KEYWORDS="amd64 ppc sparc x86"
+IUSE="pam mbox +maildir"
+REQUIRED_USE="^^ ( maildir mbox )"
+
+DEPEND="
+	acct-group/popa3d
+	acct-user/popa3d
+	pam? (
+		>=sys-libs/pam-0.72
+		>=net-mail/mailbase-0.00-r8[pam]
+	)"
+RDEPEND="${DEPEND}"
+
 # Mailbox format is determined by the 'mbox' and 'maildir'
 # system USE flags.
 #
@@ -49,46 +71,20 @@ MAX_MAILBOX_OPEN_BYTES=100000000 # Default is 2147483647
 MAX_MAILBOX_WORK_BYTES=150000000 # Default is 2147483647
 ######
 
-IUSE="pam mbox +maildir"
-
-DESCRIPTION="A security oriented POP3 server"
-HOMEPAGE="http://www.openwall.com/popa3d/"
-
-SRC_URI="http://www.openwall.com/popa3d/${P}.tar.gz
-	mirror://gentoo/popa3d-0.6.3-vname-2.diff.gz
-	maildir? ( mirror://gentoo/popa3d-0.5.9-maildir-2.diff.gz )"
-
-LICENSE="Openwall"
-SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
-
-DEPEND=">=sys-apps/sed-4
-	pam? ( >=sys-libs/pam-0.72
-	       >=net-mail/mailbase-0.00-r8[pam] )"
-RDEPEND="${DEPEND}"
-
-REQUIRED_USE="^^ ( maildir mbox )"
-
 pkg_setup() {
-	echo
-	ewarn
-	ewarn "You can customize this ebuild with environmental variables."
-	ewarn "If you don't set any I'll assume sensible defaults."
-	ewarn
-	ewarn "See inside this ebuild for details."
-	ewarn
-	echo
-
-	enewgroup popa3d
-	enewuser popa3d -1 -1 -1 popa3d
+	einfo "You can customize this ebuild with environmental variables."
+	einfo "If you don't set any I'll assume sensible defaults."
+	einfo
+	einfo "See inside this ebuild for details."
 }
 
 src_prepare() {
-	epatch "${DISTDIR}"/popa3d-0.6.3-vname-2.diff.gz
-	use maildir && epatch "${DISTDIR}"/popa3d-0.5.9-maildir-2.diff.gz
+	eapply "${WORKDIR}"/popa3d-0.6.3-vname-2.diff
+	use maildir && eapply "${WORKDIR}"/popa3d-0.5.9-maildir-2.diff
+	eapply_user
 }
 
-src_compile() {
+src_configure() {
 	sed -i \
 		-e "s:^\(#define MAX_SESSIONS\) .*$:\1 ${MAX_SESSIONS}:" \
 		-e "s:^\(#define MAX_SESSIONS_PER_SOURCE\).*$:\1 ${MAX_SESSIONS_PER_SOURCE}:" \
@@ -133,7 +129,7 @@ src_compile() {
 		einfo "Authentication method: Virtual."
 	elif use pam ; then
 		einfo "Authentication method: PAM."
-		LIBS="${LIBS} -lpam"
+		append-libs -lpam
 		sed -i \
 			-e "s:^\(#define AUTH_SHADOW\)[[:blank:]].*$:\1 0:" \
 			-e "s:^\(#define AUTH_PAM\)[[:blank:]].*$:\1 1:" \
@@ -153,7 +149,9 @@ src_compile() {
 		-e '/^CFLAGS =/d' \
 		-e '/^LDFLAGS =/d' \
 			Makefile || die "Makefile cleaning failed"
+}
 
+src_compile() {
 	emake LIBS="${LIBS} -lcrypt" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -161,8 +159,6 @@ src_compile() {
 }
 
 src_install() {
-	into /usr
-
 	dosbin popa3d
 	doman popa3d.8
 	dodoc DESIGN INSTALL CHANGES VIRTUAL CONTACT
@@ -175,6 +171,6 @@ src_install() {
 
 	if use pam ; then
 		dodir /etc/pam.d/
-		dosym /etc/pam.d/pop /etc/pam.d/popa3d
+		dosym pop /etc/pam.d/popa3d
 	fi
 }
