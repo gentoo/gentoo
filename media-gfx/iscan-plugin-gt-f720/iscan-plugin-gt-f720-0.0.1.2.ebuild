@@ -44,7 +44,7 @@ pkg_postinst() {
 	iscan-registry --add interpreter usb 0x04b8 0x0131 "${MY_LIB}/esci/libesci-interpreter-gt-f720 /usr/share/esci/esfw8b.bin" || die
 	elog
 	elog "Firmware file esfw8b.bin for Epson Perfection V300 PHOTO"
-	elog "has been installed in /usr/share/esci and registered for use."
+	elog "has been installed in ${EROOT}/usr/share/esci and registered for use."
 	elog
 }
 
