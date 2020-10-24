@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-10-24)
+# EAPI 4, broken since 2012, upstream disappeared, multiple QA issues,
+# build system is completely broken. Removal in 30 days,
+# Bug #625118, #725438, #746029.
+sci-electronics/alliance
+
+# David Seifert <soap@gentoo.org> (2020-10-24)
 # EAPI 4, multiple QA issues, performs dangerous pointer-to-int
 # casts, can trash your computer, last release over 10 years ago.
 # Removal in 30 days. Bug #124755, #713472, #726020, #740912, #742434.
