@@ -71,7 +71,7 @@ src_test() {
 src_install() {
 	_build PREFIX="${ED}/usr" install
 	if ! use static-libs; then
-		rm "${ED}/usr/$(get_libdir)/libhiredis.a" \
+		rm -f "${ED}/usr/$(get_libdir)/libhiredis.a" \
 			"${ED}/usr/$(get_libdir)/libhiredis_ssl.a" || die
 	fi
 
