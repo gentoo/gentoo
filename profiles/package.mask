@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-10-24)
+# EAPI 4, multiple QA issues, performs dangerous pointer-to-int
+# casts, can trash your computer, last release over 10 years ago.
+# Removal in 30 days. Bug #124755, #713472, #726020, #740912, #742434.
+sys-power/nvram-wakeup
+
+# David Seifert <soap@gentoo.org> (2020-10-24)
 # EAPI 4, doesn't build, outdated, ebuild has multiple QA issues.
 # Removal in 30 days. Bug #463188, #531104, #613116, #740926.
 sys-cluster/mvapich2
