@@ -8486,7 +8486,6 @@ sys-process/systemd-cron:yearly - Support /etc/cron.yearly
 sys-process/tini:args - Enable argument parsing.
 virtual/blas:eselect-ldso - Enable runtime library switching by eselect and ld.so.
 virtual/cblas:eselect-ldso - Enable runtime library switching by eselect and ld.so.
-virtual/ffmpeg:opus - Use the external opus library for encoding and decoding.
 virtual/lapack:eselect-ldso - Enable runtime library switching by eselect and ld.so.
 virtual/lapacke:eselect-ldso - Enable runtime library switching by eselect and ld.so.
 virtual/linux-sources:firmware - Install linux kernel firmware
