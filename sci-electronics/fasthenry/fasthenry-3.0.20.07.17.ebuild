@@ -22,6 +22,7 @@ S=${WORKDIR}/fasthenry-3.0wr
 
 PATCHES=(
 	"${FILESDIR}/${P}-cflags.patch"
+	"${FILESDIR}/${P}-ldflags.patch"
 )
 
 src_compile() {
