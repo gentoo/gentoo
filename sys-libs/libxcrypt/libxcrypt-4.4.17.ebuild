@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/besser82/libxcrypt"
 
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+compat split-usr +static-libs system test"
 
 DEPEND="system? (
