@@ -1,13 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.6 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.12 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=Fast base16 (hex) encoding and decoding for ByteStrings
 EAPI=7
-HOMEPAGE=https://github.com/bos/base16-bytestring
-IUSE=doc hscolour profile
+HOMEPAGE=https://github.com/haskell/base16-bytestring
+IUSE=doc hscolour profile test
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=>=dev-lang/ghc-7.4.1:=
-SLOT=0/0.1.1.6
-SRC_URI=https://hackage.haskell.org/package/base16-bytestring-0.1.1.6/base16-bytestring-0.1.1.6.tar.gz
+RESTRICT=!test? ( test )
+SLOT=0/0.1.1.7
+SRC_URI=https://hackage.haskell.org/package/base16-bytestring-0.1.1.7/base16-bytestring-0.1.1.7.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=768daa1b68f8515e8e19f25a9177b9aa
+_md5_=6db2e6b6e6e3eab02d77f584a0168cce

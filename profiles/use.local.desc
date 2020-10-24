@@ -1984,6 +1984,8 @@ dev-libs/check:subunit - Enable support for the subunit unit test protocol
 dev-libs/crypto++:asm - Support assembly hand optimized crypto functions (i.e. faster run time)
 dev-libs/cudnn:cuda10-1 - On nVidia CUDA 10.1.
 dev-libs/cudnn:cuda10-2 - On nVidia CUDA 10.2.
+dev-libs/cudnn:cuda11-0 - On nVidia CUDA 11.0.
+dev-libs/cudnn:cuda11-1 - On nVidia CUDA 11.1.
 dev-libs/cyberjack:tools - Build and install optional management tools.
 dev-libs/cyberjack:usb - Enable support for usb based chipcard reader.
 dev-libs/cyrus-sasl:authdaemond - Add Courier-IMAP authdaemond unix socket support (net-mail/courier-imap, mail-mta/courier)

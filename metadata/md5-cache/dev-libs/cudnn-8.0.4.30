@@ -1,0 +1,14 @@
+DEFINED_PHASES=install
+DEPEND=cuda11-1? ( =dev-util/nvidia-cuda-toolkit-11.1* ) cuda11-0? ( =dev-util/nvidia-cuda-toolkit-11.0* ) cuda10-2? ( =dev-util/nvidia-cuda-toolkit-10.2* ) cuda10-1? ( =dev-util/nvidia-cuda-toolkit-10.1* )
+DESCRIPTION=NVIDIA Accelerated Deep Learning on GPU library
+EAPI=7
+HOMEPAGE=https://developer.nvidia.com/cuDNN
+IUSE=cuda10-1 cuda10-2 cuda11-0 +cuda11-1
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=NVIDIA-cuDNN
+RDEPEND=cuda11-1? ( =dev-util/nvidia-cuda-toolkit-11.1* ) cuda11-0? ( =dev-util/nvidia-cuda-toolkit-11.0* ) cuda10-2? ( =dev-util/nvidia-cuda-toolkit-10.2* ) cuda10-1? ( =dev-util/nvidia-cuda-toolkit-10.1* )
+REQUIRED_USE=^^ ( cuda10-2 cuda10-1 cuda11-0 cuda11-1 )
+RESTRICT=fetch
+SLOT=0/8
+SRC_URI=cuda11-1? ( cudnn-11.1-linux-x64-v8.0.4.30.tgz ) cuda11-0? ( cudnn-11.0-linux-x64-v8.0.4.30.tgz ) cuda10-2? ( cudnn-10.2-linux-x64-v8.0.4.30.tgz ) cuda10-1? ( cudnn-10.1-linux-x64-v8.0.4.30.tgz )
+_md5_=035a0558bf7a98383755c0f03bf06fee
