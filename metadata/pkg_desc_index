@@ -16403,7 +16403,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.7 5.2.7 5.2.8 5.2.9999 5.3.9999: Command-line driven interactive plotting program
-sci-visualization/gr 0.50.0-r1: Universal framework for cross-platform visualization applications
+sci-visualization/gr 0.50.0-r2: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.55-r4 2.56: Framework for Scanning Mode Microscopy data analysis
@@ -18926,7 +18926,7 @@ x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 3.0.2-r1 3.0.5-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 3.0.2-r1 3.0.5-r2: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
