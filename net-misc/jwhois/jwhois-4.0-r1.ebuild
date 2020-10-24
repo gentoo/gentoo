@@ -1,9 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Advanced Internet Whois client capable of recursive queries"
 HOMEPAGE="https://www.gnu.org/software/jwhois/"
@@ -17,13 +15,14 @@ IUSE="idn nls"
 RDEPEND="idn? ( net-dns/libidn )"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-connect-logic.patch #208875
-}
+PATCHES=(
+	# bug 208875
+	"${FILESDIR}"/${P}-connect-logic.patch
+)
 
 src_configure() {
 	econf \
-		--localstatedir="${EPREFIX}/var/cache" \
+		--localstatedir="${EPREFIX}"/var/cache \
 		--without-cache \
 		$(use_enable nls) \
 		$(use_with idn libidn)
