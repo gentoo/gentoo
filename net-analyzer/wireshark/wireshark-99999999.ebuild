@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-utils cmake
+inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -22,6 +22,7 @@ IUSE="
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
+	acct-group/pcap
 	>=dev-libs/glib-2.32:2
 	>=net-dns/c-ares-1.5
 	dev-libs/libgcrypt:0
@@ -92,10 +93,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
-
-pkg_setup() {
-	enewgroup wireshark
-}
 
 src_configure() {
 	local mycmakeargs
@@ -238,17 +235,16 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 
 	# Add group for users allowed to sniff.
-	enewgroup wireshark
-	chgrp wireshark "${EROOT}"/usr/bin/dumpcap
+	chgrp pcap "${EROOT}"/usr/bin/dumpcap
 
 	if use dumpcap && use pcap; then
-		fcaps -o 0 -g wireshark -m 4710 -M 0710 \
+		fcaps -o 0 -g pcap -m 4710 -M 0710 \
 			cap_dac_read_search,cap_net_raw,cap_net_admin \
 			"${EROOT}"/usr/bin/dumpcap
 	fi
 
 	ewarn "NOTE: To capture traffic with wireshark as normal user you have to"
-	ewarn "add yourself to the wireshark group. This security measure ensures"
+	ewarn "add yourself to the pcap group. This security measure ensures"
 	ewarn "that only trusted users are allowed to sniff your traffic."
 }
 
