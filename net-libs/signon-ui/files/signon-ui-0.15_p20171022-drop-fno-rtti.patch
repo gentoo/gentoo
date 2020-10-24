@@ -1,0 +1,28 @@
+From 4546eeb26b79975259819795466320fa53676801 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 25 Oct 2020 00:06:03 +0200
+Subject: [PATCH] Don't use -fno-rtti
+
+---
+ common-project-config.pri | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/common-project-config.pri b/common-project-config.pri
+index 3206471..c05522f 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -4,10 +4,7 @@
+ 
+ CONFIG         += link_pkgconfig
+ 
+-# we don't like warnings...
+-QMAKE_CXXFLAGS -= -Werror -Wno-write-strings
+-# Disable RTTI
+-QMAKE_CXXFLAGS += -fno-exceptions -fno-rtti
++QMAKE_CXXFLAGS += -fno-exceptions
+ 
+ TOP_SRC_DIR     = $$PWD
+ TOP_BUILD_DIR   = $${TOP_SRC_DIR}/$(BUILD_DIR)
+-- 
+2.29.1
+
