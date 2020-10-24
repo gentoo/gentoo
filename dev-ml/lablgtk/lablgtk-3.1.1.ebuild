@@ -12,7 +12,7 @@ SRC_URI="https://github.com/garrigue/lablgtk/releases/download/${PV}/${DUNE_PKG_
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="3/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="+ocamlopt sourceview"
 
 BDEPEND="dev-ml/camlp5"
