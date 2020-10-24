@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-10-24)
+# EAPI 4, doesn't build, outdated, ebuild has multiple QA issues.
+# Removal in 30 days. Bug #463188, #531104, #613116, #740926.
+sys-cluster/mvapich2
+
+# David Seifert <soap@gentoo.org> (2020-10-24)
 # EAPI 4, fetch restricted, download link disappeared, fails to build.
 # Removal in 30 days. Bug #365713, #405277, #405437, #414793, #415699,
 # #422799, #479288, #740928.
