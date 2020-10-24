@@ -5,11 +5,11 @@ DESCRIPTION=Multi Criteria CUDF Solver
 EAPI=7
 HOMEPAGE=http://www.i3s.unice.fr/~cpjm/misc/ https://github.com/AltGr/ocaml-mccs/issues
 IUSE=+ocamlopt test
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=dev-ml/cudf:= sci-mathematics/glpk:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.1.11
 SRC_URI=https://github.com/AltGr/ocaml-mccs/archive/1.1+11.tar.gz -> mccs-1.1.11.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=4f645e4c551a4529fdf7377b9ad3d878
+_md5_=d80dad1d2dbd6e63229de34bba5d4507
