@@ -1545,7 +1545,6 @@ dev-haskell/linear:template-haskell - You can disable the use of the `template-h
 dev-haskell/lukko:ofd-locking - Enable open file descriptor locking. Available on Linux (kernel 3.15, released Jun 8, 2014).
 dev-haskell/missingh:network-3 - Use network-3
 dev-haskell/mod:semirings - Derive semiring instances
-dev-haskell/monad-control:instancest - If enabled this package will export MonadBaseControl instances for the lazy and strict ST monad. If disabled these instances are only exported when base >= 4.4. If enabled it is required that the transformer-base package exports MonadBase instances for ST. It will do this by default.
 dev-haskell/monad-logger:template-haskell - Enable Template Haskell support.
 dev-haskell/monad-par:chaselev - Use Chase-Lev Deques for higher-perf work-stealing.
 dev-haskell/nats:binary - enable binary instances

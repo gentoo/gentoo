@@ -4117,7 +4117,7 @@ dev-haskell/lukko 0.1.1.2: File locking
 dev-haskell/lvmlib 1.1: The Lazy Virtual Machine (LVM)
 dev-haskell/maccatcher 2.1.5-r1: Obtain the host MAC address on *NIX and Windows
 dev-haskell/magic 1.1: Interface to C file/magic library
-dev-haskell/markdown-unlit 0.2.0.1: Literate Haskell support for Markdown
+dev-haskell/markdown-unlit 0.5.0: Literate Haskell support for Markdown
 dev-haskell/math-functions 0.3.3.0: Special functions and Chebyshev polynomials
 dev-haskell/megaparsec 8.0.0: Monadic parser combinators
 dev-haskell/memory 0.15.0: memory and related abstraction stuff
@@ -4129,7 +4129,7 @@ dev-haskell/microlens-mtl 0.2.0.1: microlens support for Reader/Writer/State fro
 dev-haskell/microlens-th 0.4.3.4: Automatic generation of record lenses for microlens
 dev-haskell/microstache 1.0.1.1: Mustache templates for Haskell
 dev-haskell/mime 0.4.0.2: Working with MIME types
-dev-haskell/mime-mail 0.4.11: Compose MIME email messages
+dev-haskell/mime-mail 0.5.0: Compose MIME email messages
 dev-haskell/mime-types 0.1.0.9: Basic mime-type handling types and functions
 dev-haskell/minisat 0.1.2: A Haskell bundle of the Minisat SAT solver
 dev-haskell/mintty 0.1.2: A reliable way to detect the presence of a MinTTY console on Windows
@@ -4138,12 +4138,12 @@ dev-haskell/mmap 0.5.9: Memory mapped files for POSIX and Windows
 dev-haskell/mmorph 1.1.3: Monad morphisms
 dev-haskell/mockery 0.3.5: Support functions for automated testing
 dev-haskell/mod 0.1.1.0: Fast type-safe modular arithmetic
-dev-haskell/monad-control 0.3.3.0 1.0.2.3: Lift control operations, like exception catching, through monad transformers
+dev-haskell/monad-control 1.0.2.3: Lift control operations, like exception catching, through monad transformers
 dev-haskell/monad-journal 0.8.1: Pure logger typeclass and monad transformer
 dev-haskell/monad-logger 0.3.32: A class of monads which can log messages
 dev-haskell/monad-loops 0.4.3: Monadic loops
 dev-haskell/monad-par 0.3.5: A library for parallel programming based on a monad
-dev-haskell/monad-par-extras 0.3.3: Combinators and extra features for Par monads
+dev-haskell/monad-par-extras 0.3.3-r1: Combinators and extra features for Par monads
 dev-haskell/monad-unlift 0.2.0: Typeclasses for representing monad transformer unlifting
 dev-haskell/monadcatchio-mtl 0.3.1.0-r2: Monad-transformer version of the Control.Exception module
 dev-haskell/monadcatchio-transformers 0.3.1.3-r1: Monad-transformer compatible version of the Control.Exception module
@@ -4160,7 +4160,7 @@ dev-haskell/multipart 0.2.0: HTTP multipart split out of the cgi package
 dev-haskell/murmur-hash 0.1.0.9: MurmurHash2 implementation for Haskell
 dev-haskell/mustache 2.3.1: A mustache template parser library
 dev-haskell/mutable-containers 0.3.4: Abstactions and concrete implementations of mutable containers
-dev-haskell/mwc-random 0.13.4.0: Fast, high quality pseudo random number generation
+dev-haskell/mwc-random 0.14.0.0: Fast, high quality pseudo random number generation
 dev-haskell/mysql 0.1.7: A low-level MySQL client library
 dev-haskell/mysql-simple 0.4.5: A mid-level MySQL client library
 dev-haskell/nanospec 0.2.2: A lightweight implementation of a subset of Hspec's API
