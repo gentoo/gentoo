@@ -1,29 +1,32 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils mount-boot toolchain-funcs flag-o-matic
+inherit mount-boot toolchain-funcs flag-o-matic
 
 DESCRIPTION="Xbox boot loader"
 HOMEPAGE="http://www.xbox-linux.org/wiki/Cromwell"
-SRC_URI="mirror://gentoo/${P}.tar.bz2
+SRC_URI="
+	mirror://gentoo/${P}.tar.bz2
 	mirror://gentoo/${PF}-cvs-fixes.patch.lzma"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* x86"
-IUSE=""
 RESTRICT="strip"
 
 src_prepare() {
-	epatch "${WORKDIR}"/${PF}-cvs-fixes.patch
-	epatch "${FILESDIR}"/${P}-gcc-4.6.patch #363535
+	eapply "${WORKDIR}"/${PF}-cvs-fixes.patch
+	eapply "${FILESDIR}"/${P}-gcc-4.6.patch #363535
+	eapply_user
+
 	sed -i 's:-Werror:-m32:' Makefile Rules.make || die
 	sed -i '/^EXTRA_CFLAGS/s:$: -m32:' Rules.make boot_rom/Makefile || die
 	sed -i \
 		-e '/^bin.imagebld:/,$s:\<gcc\>:${CC}:' \
 		Makefile || die
+
 	append-flags -m32
 }
 
