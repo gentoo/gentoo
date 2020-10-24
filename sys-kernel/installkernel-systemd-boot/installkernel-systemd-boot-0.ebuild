@@ -10,7 +10,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 RDEPEND="|| ( sys-apps/systemd sys-boot/systemd-boot )
 	!<sys-apps/debianutils-4.9-r1[installkernel(+)]
