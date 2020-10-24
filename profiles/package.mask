@@ -32,6 +32,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-10-24)
+# Last release in 2004, next release 'Soon(tm)'.  Fails to build
+# due to horrible code hacks.
+# Removal in 30 days.  Bug #638088.
+games-rpg/twclone
+
+# Michał Górny <mgorny@gentoo.org> (2020-10-24)
+# Deprecated GNOME2 era libraries with no reverse dependencies left.
+# Removal in 30 days.  Bug #751004.
+gnome-base/libbonobo
+gnome-base/libgnome-keyring
+gnome-base/orbit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-23)
 # Depends on deprecated QtWebKit with no work towards QtWebEngine port at all.
 # Bug #688850, security bug #744199. Removal in 30 days.

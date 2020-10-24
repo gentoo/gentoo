@@ -1,0 +1,14 @@
+--- a/Lvm/Common/Byte.hs
++++ b/Lvm/Common/Byte.hs
+@@ -19,2 +19,3 @@ import System.Exit
+ import System.IO
++import qualified Data.Semigroup as S
+ 
+@@ -68,2 +69,7 @@ max32 = 2^(32::Int) -1 -- Bastiaan (Todo: check)
+ 
++instance S.Semigroup Bytes where
++   (<>) bs  Nil = bs
++   (<>) Nil cs  = cs
++   (<>) bs  cs  = Cat bs cs
++
+ instance Monoid Bytes where
