@@ -1,17 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit base
+EAPI=7
 
 DESCRIPTION="Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series"
 HOMEPAGE="http://pnm2ppa.sourceforge.net"
 SRC_URI="mirror://sourceforge/pnm2ppa/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="syslog"
 
 # en on first place so others can override it
@@ -25,8 +23,7 @@ RDEPEND="
 	net-print/cups
 	>=net-print/cups-filters-1.0.43-r1[foomatic]
 	sys-libs/glibc
-	syslog? ( virtual/logger )
-"
+	syslog? ( virtual/logger )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
@@ -65,13 +62,17 @@ src_install() {
 
 	exeinto /etc/pdq/drivers/ghostscript
 	doexe pdq/gs-pnm2ppa
+
 	exeinto /etc/pdq/interfaces
 	doexe pdq/dummy
 
 	# install docs
-	cd docs/en
+	cd docs/en || die
 	dodoc CALIBRATION*txt COLOR*txt PPA*txt RELEASE* CREDITS README sgml/*.sgml
 
-	cd "${S}"
-	dohtml -r .
+	cd "${S}" || die
+	docinto html/docs/en
+	dodoc docs/en/*.html
+	docinto html/ppa_protocol
+	dodoc ppa_protocol/*.html
 }
