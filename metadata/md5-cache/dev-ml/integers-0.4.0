@@ -5,10 +5,10 @@ DESCRIPTION=Various signed and unsigned integer types for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/ocamllabs/ocaml-integers
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.4.0
 SRC_URI=https://github.com/ocamllabs/ocaml-integers/archive/0.4.0.tar.gz -> integers-0.4.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=8cd380366d0e686920182cad40aa02a3
+_md5_=2404c076fbbc3fbf6f0cf114dbde3772
