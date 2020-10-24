@@ -27,15 +27,6 @@
 
 		&lt;https://github.com/basvandijk/bench-monad-peel-control&gt;
 	</longdescription>
-	<use>
-		<flag name="instancest">
-			If enabled this package will export
-			MonadBaseControl instances for the lazy and strict ST monad. If disabled these
-			instances are only exported when base &gt;= 4.4. If enabled it is required that
-			the transformer-base package exports MonadBase instances for ST. It will do
-			this by default.
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">basvandijk/monad-control</remote-id>
 	</upstream>
