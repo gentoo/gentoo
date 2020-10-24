@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Fast OpenStreetMap data tools:
+		* osmassignpoly
+		* osmchange - updates an .osm file using one or more .osc files
+		* osmconvert - reads and converts OSM data to the selected output file format
+		* osmfilter - filters OSM data
+		* osmgeobase
+		* osmposition
+		* osmrelpoly
+		* osmupdate - cares about updating an .osm, .o5m or .pbf file
+		* pbftoosm - converts .pbf file into .osm XML format
+	</longdescription>
+</pkgmetadata>
