@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Old-style inetd"
 HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
@@ -12,14 +12,16 @@ SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/*.patch
-}
+PATCHES=(
+	"${FILESDIR}"/003_all_netkit-base-0.17-gcc4.patch
+	"${FILESDIR}"/004_all_netkit-base-0.17-misc-fixes.patch
+	"${FILESDIR}"/005_all_netkit-base-0.17-no-rpc.patch
+)
 
 src_configure() {
 	tc-export CC
+
 	./configure || die
 	sed -i \
 		-e "/^CFLAGS=/s:=.*:=${CFLAGS} -Wall -Wbad-function-cast -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline:" \
@@ -30,7 +32,7 @@ src_configure() {
 src_install() {
 	sed -i \
 		-e 's:in\.telnetd$:in.telnetd -L /usr/sbin/telnetlogin:' \
-		etc.sample/inetd.conf
+		etc.sample/inetd.conf || die
 
 	dosbin inetd/inetd
 	doman inetd/inetd.8
@@ -38,5 +40,5 @@ src_install() {
 
 	dodoc BUGS ChangeLog README
 	docinto samples
-	dodoc etc.sample/*
+	dodoc -r etc.sample/.
 }

@@ -1,11 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils pam toolchain-funcs fcaps
+inherit pam toolchain-funcs fcaps
 
 PATCHVER="3"
+
 DESCRIPTION="Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}"
 HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
 SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz
@@ -17,29 +18,24 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="pam"
 
-RDEPEND=">=sys-libs/ncurses-5.2
+RDEPEND="
+	sys-libs/ncurses:0
 	pam? ( >=sys-auth/pambase-20080219.1 )"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/xz-utils"
 
-FILECAPS=(
-	cap_net_bind_service usr/bin/r{cp,login,sh}
-)
-
-src_unpack() {
-	default
-
-	cd "${S}"
-	rm -rf rexec
-	mv ../rexec rexec
-}
+FILECAPS=( cap_net_bind_service usr/bin/r{cp,login,sh} )
 
 src_prepare() {
-	[[ -n ${PATCHVER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
+	rm -r rexec || die
+	mv ../rexec rexec || die
+
+	[[ -n ${PATCHVER} ]] && eapply "${WORKDIR}"/patch
+	eapply_user
 
 	if tc-is-cross-compiler ; then
 		# Can't do runtime tests when cross-compiling
-		sed -i -e "s|./__conftest|: ./__conftest|" configure
+		sed -i -e "s|./__conftest|: ./__conftest|" configure || die
 	fi
 }
 
@@ -55,8 +51,9 @@ src_configure() {
 }
 
 src_install() {
-	local b exe
 	insinto /etc/xinetd.d
+
+	local b
 	for b in rcp rexec{,d} rlogin{,d} rsh{,d} ; do
 		if [[ ${b} == *d ]] ; then
 			dosbin ${b}/${b}
@@ -65,12 +62,13 @@ src_install() {
 		else
 			dobin ${b}/${b}
 			doman ${b}/${b}.1
-			if [[ ${b} != "rcp" ]]; then
+			if [[ ${b} != rcp ]]; then
 				newins "${FILESDIR}"/${b}.xinetd ${b}
 				newpamd "${FILESDIR}/${b}.pamd-pambase" ${b}
 			fi
 		fi
 	done
+
 	dodoc README ChangeLog BUGS
 	newdoc rexec/README README.rexec
 }
