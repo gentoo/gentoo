@@ -1,6 +1,19 @@
 --- a/src/libcalamares/CMakeLists.txt
 +++ b/src/libcalamares/CMakeLists.txt
-@@ -238,12 +238,6 @@
+@@ -216,12 +216,6 @@
+ )
+ 
+ calamares_add_test(
+-    libcalamaresnetworktest
+-    SOURCES
+-        network/Tests.cpp
+-)
+-
+-calamares_add_test(
+     libcalamarespartitiontest
+     SOURCES
+         partition/Tests.cpp
+@@ -238,12 +232,6 @@
  endif()
  
  calamares_add_test(
