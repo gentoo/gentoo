@@ -5281,7 +5281,7 @@ dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libarcus 4.6.1 4.7.0: This library facilitates communication between Cura and its backend
-dev-libs/libassuan 2.5.3: IPC library used by GnuPG and GPGME
+dev-libs/libassuan 2.5.3 2.5.4: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19_p5: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operations
 dev-libs/libax25 0.0.12_rc5: AX.25 library for hamradio applications
@@ -13874,7 +13874,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26-r1 1.1.26-r2 1.1.42: Spotify is a social music platform
-media-sound/strawberry 0.6.13 0.7.2 0.8.1 0.8.2 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.8.2 0.8.3 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
@@ -17953,7 +17953,7 @@ www-client/opera-developer 73.0.3820.0 73.0.3827.0 73.0.3834.0 73.0.3841.0: A fa
 www-client/otter 1.0.01 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.13.1 1.14.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
-www-client/seamonkey 2.53.2 2.53.4: Seamonkey Web Browser
+www-client/seamonkey 2.53.4: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
