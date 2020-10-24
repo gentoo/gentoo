@@ -22,8 +22,8 @@ RESTRICT=test # conflict-fight-failure (Darcs3) (PatienceDiff): [Failed]
 
 RDEPEND=">=dev-haskell/async-2.0.2:=[profile?] <dev-haskell/async-2.3:=[profile?]
 	>=dev-haskell/attoparsec-0.13.0.1:=[profile?] <dev-haskell/attoparsec-0.14:=[profile?]
-	>=dev-haskell/base16-bytestring-0.1:=[profile?] <dev-haskell/base16-bytestring-0.2:=[profile?]
-	>=dev-haskell/conduit-1.3.0:=[profile?] <dev-haskell/conduit-1.3.3:=[profile?]
+	>=dev-haskell/base16-bytestring-0.1.1.7:=[profile?] <dev-haskell/base16-bytestring-1.1:=[profile?]
+	>=dev-haskell/conduit-1.3.0:=[profile?] <dev-haskell/conduit-1.4:=[profile?]
 	>=dev-haskell/constraints-0.11:=[profile?] <dev-haskell/constraints-0.13:=[profile?]
 	>=dev-haskell/cryptonite-0.24:=[profile?] <dev-haskell/cryptonite-0.28:=[profile?]
 	>=dev-haskell/data-ordlist-0.4:=[profile?] <dev-haskell/data-ordlist-0.5:=[profile?]
@@ -42,7 +42,6 @@ RDEPEND=">=dev-haskell/async-2.0.2:=[profile?] <dev-haskell/async-2.3:=[profile?
 	>=dev-haskell/parsec-3.1.9:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
 	>=dev-haskell/regex-applicative-0.2:=[profile?] <dev-haskell/regex-applicative-0.4:=[profile?]
 	>=dev-haskell/regex-compat-tdfa-0.95.1:=[profile?] <dev-haskell/regex-compat-tdfa-0.96:=[profile?]
-	>=dev-haskell/sandi-0.4:=[profile?] <dev-haskell/sandi-0.6:=[profile?]
 	>=dev-haskell/stm-2.1:=[profile?] <dev-haskell/stm-2.6:=[profile?]
 	>=dev-haskell/tar-0.5:=[profile?] <dev-haskell/tar-0.6:=[profile?]
 	>=dev-haskell/temporary-1.2.1:=[profile?] <dev-haskell/temporary-1.4:=[profile?]
@@ -65,7 +64,6 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/leancheck-0.9 <dev-haskell/leancheck-0.10
 		>=dev-haskell/monad-control-0.3.2 <dev-haskell/monad-control-1.1
 		>=dev-haskell/quickcheck-2.13 <dev-haskell/quickcheck-2.14
-		>=dev-haskell/split-0.2.2 <dev-haskell/split-0.3
 		<dev-haskell/system-fileio-0.4
 		>=dev-haskell/system-filepath-0.4.7 <dev-haskell/system-filepath-0.5
 		>=dev-haskell/test-framework-0.8.1.1 <dev-haskell/test-framework-0.9
@@ -75,8 +73,6 @@ DEPEND="${RDEPEND}
 		dev-haskell/transformers-base )
 	curl? ( virtual/pkgconfig )
 "
-
-PATCHES=("${FILESDIR}"/${PN}-2.16.1-curl.patch)
 
 src_configure() {
 	haskell-cabal_src_configure \
