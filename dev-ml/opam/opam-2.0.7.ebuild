@@ -10,7 +10,7 @@ HOMEPAGE="http://opam.ocaml.org/"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
