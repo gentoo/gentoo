@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it sv tr zh_CN"
@@ -416,6 +416,7 @@ qemu_src_configure() {
 		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
+		--tls-priority="@QEMU,NORMAL" # bug #747928
 
 		# bug #746752: TCG interpreter has a few limitations:
 		# - it does not support FPU
@@ -452,7 +453,7 @@ qemu_src_configure() {
 			use_enable "$@"
 		fi
 	}
-	# Ennable option only for softmmu build, but not 'user' or 'tools'
+	# Enable option only for softmmu build, but not 'user' or 'tools'
 	conf_softmmu() {
 		if [[ ${buildtype} == "softmmu" ]] ; then
 			use_enable "$@"
