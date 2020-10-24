@@ -1,17 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Samba LDAP management tools"
 HOMEPAGE="https://gna.org/projects/smbldap-tools/"
 SRC_URI="http://download.gna.org/smbldap-tools/sources/${PV}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/perl-ldap
@@ -20,13 +18,10 @@ RDEPEND="
 	dev-perl/Unicode-MapUTF8
 	dev-perl/IO-Socket-SSL
 	net-nds/openldap
-	net-fs/samba
-"
+	net-fs/samba"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-smbldap-config-pod.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-smbldap-config-pod.patch )
 
 src_install() {
 	default
