@@ -2932,7 +2932,7 @@ app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.60 0.61: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.90.1 20.09.0 20.10.0 9999: PDF rendering library based on the xpdf-3.0 code base
-app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
+app-text/poppler-data 0.4.9 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/psiconv 0.8.3-r1: An interpreter for Psion 5(MX) file formats
