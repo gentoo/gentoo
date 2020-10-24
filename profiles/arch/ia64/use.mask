@@ -84,7 +84,6 @@ scim
 antlr
 lasi
 mpi
-networkmanager
 octave
 timidity
 semantic-desktop
