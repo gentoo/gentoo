@@ -107,7 +107,7 @@ net-fs/openafs-kernel
 # This forces a downgrade to the fixed, stable
 # version of Wireshark.
 # bug #744592
-=net-analyzer/wireshark-3.3.0
+~net-analyzer/wireshark-3.3.0
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-10-11)
 # Mask new version until calendar apps are sorted out:
