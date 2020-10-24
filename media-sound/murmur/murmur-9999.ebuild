@@ -29,7 +29,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+dbus +ice test zeroconf"
+IUSE="+dbus grpc +ice test zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -47,6 +47,7 @@ RDEPEND="
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	dbus? ( dev-qt/qtdbus:5 )
+	grpc? ( net-libs/grpc )
 	ice? ( dev-libs/Ice:= )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
@@ -110,7 +111,7 @@ src_configure() {
 		"-Ddbus=$(usex dbus)"
 		"-Dg15=OFF"
 		"-Dice=$(usex ice)"
-		"-Dgrpc=OFF"
+		"-Dgrpc=$(usex grpc)"
 		"-DBUILD_TESTING=$(usex test)"
 		"-Dzeroconf=$(usex zeroconf)"
 	)
