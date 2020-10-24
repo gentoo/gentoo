@@ -36,7 +36,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	ffmpeg? ( >=media-video/ffmpeg-3.2.2:0=[x264,x265] )
 	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pyopengl )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? (
+		media-sound/pulseaudio
+		media-plugins/gst-plugins-pulse:1.0
+	)
 	sound? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 		dev-python/gst-python:1.0 )
