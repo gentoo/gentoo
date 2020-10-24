@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0/${PV}"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 PATCHES=( "${FILESDIR}/ounit2.patch" )
 
 src_compile() {
