@@ -1,0 +1,121 @@
+From b74c701feb52a1d2865fe1d33c393f71ae3ac47a Mon Sep 17 00:00:00 2001
+From: Ave Ozkal <ave@ave.zone>
+Date: Thu, 19 Mar 2020 13:30:23 +0300
+Subject: [PATCH 1/3] jobviewer: Use sync methods for secret.service
+
+---
+ jobviewer.py | 28 +++++++++-------------------
+ 1 file changed, 9 insertions(+), 19 deletions(-)
+
+diff --git a/jobviewer.py b/jobviewer.py
+index b95bf6c58..ba8abd06f 100644
+--- a/jobviewer.py
++++ b/jobviewer.py
+@@ -91,36 +91,26 @@
+     class ServiceGet:
+         service = Secret.Service()
+     
+-        def on_get_service(self, source, result, unused):
+-            service = Secret.Service.get_finish(result)
+-    
+         def __init__(self):
+-            Secret.Service.get(0,
+-                               None,
+-                               self.on_get_service,
+-                               None)
++            self.service = Secret.Service.get(0,
++                                              None)
+     
+         def get_service(self):
+-            return ServiceGet.service
++            return self.service
+     
+     
+     class ItemSearch:
+         items = list()
+     
+-        def on_search_item(self, source, result, unused):
+-            items = Secret.Service.search_finish(None, result)
+-    
+         def __init__(self, service, attrs):
+-            Secret.Service.search(service,
+-                                  NETWORK_PASSWORD,
+-                                  attrs,
+-                                  Secret.SearchFlags.LOAD_SECRETS,
+-                                  None,
+-                                  self.on_search_item,
+-                                  None)
++            self.items = Secret.Service.search_sync(service,
++                                                    NETWORK_PASSWORD,
++                                                    attrs,
++                                                    Secret.SearchFlags.LOAD_SECRETS,
++                                                    None)
+     
+         def get_items(self):
+-            return ItemSearch.items
++            return self.items
+     
+     
+     class PasswordStore:
+
+From 152b617f511cd44757d2db4d730067aca8cf69a9 Mon Sep 17 00:00:00 2001
+From: Ave Ozkal <ave@ave.zone>
+Date: Thu, 19 Mar 2020 14:39:21 +0300
+Subject: [PATCH 2/3] jobviewer: properly use sync
+
+---
+ jobviewer.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/jobviewer.py b/jobviewer.py
+index ba8abd06f..761673b49 100644
+--- a/jobviewer.py
++++ b/jobviewer.py
+@@ -92,8 +92,8 @@ class ServiceGet:
+         service = Secret.Service()
+     
+         def __init__(self):
+-            self.service = Secret.Service.get(0,
+-                                              None)
++            self.service = Secret.Service.get_sync(0,
++                                                   None)
+     
+         def get_service(self):
+             return self.service
+
+From 00177768ca1464c694acde4cdbabc1a18420c176 Mon Sep 17 00:00:00 2001
+From: Ave Ozkal <ave@ave.zone>
+Date: Thu, 19 Mar 2020 14:40:55 +0300
+Subject: [PATCH 3/3] jobviewer: Properly fetch username and password
+
+---
+ jobviewer.py | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/jobviewer.py b/jobviewer.py
+index 761673b49..5376a7e88 100644
+--- a/jobviewer.py
++++ b/jobviewer.py
+@@ -1049,20 +1049,10 @@ def get_authentication (self, job, device_uri, printer_uri,
+                     if items:
+                         auth_info = ['' for x in auth_info_required]
+                         ind = auth_info_required.index ('username')
+-
+-                        for attr in items[0].attributes:
+-                            # It might be safe to assume here that the
+-                            # user element is always the second item in a
+-                            # NETWORK_PASSWORD element but lets make sure.
+-                            if attr.name == 'user':
+-                                auth_info[ind] = attr.get_string()
+-                                break
+-                        else:
+-                            debugprint ("Did not find username keyring "
+-                                        "attributes.")
++                        auth_info[ind] = items[0].get_attributes().get("user")
+ 
+                         ind = auth_info_required.index ('password')
+-                        auth_info[ind] = items[0].secret
++                        auth_info[ind] = items[0].get_secret().get().decode()
+                         break
+                 else:
+                     debugprint ("Failed to find secret in keyring.")

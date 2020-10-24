@@ -1,0 +1,22 @@
+From feed693225cc0c26464bfc0adef21da72581e811 Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Thu, 28 Nov 2019 15:45:22 +0100
+Subject: [PATCH] Catch errors from urllib too
+
+---
+ newprinter.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/newprinter.py b/newprinter.py
+index 8b9298887..6c71ec578 100644
+--- a/newprinter.py
++++ b/newprinter.py
+@@ -4183,7 +4183,7 @@ def getNPPPD(self):
+                                 tmpf.flush ()
+                                 ppd = cups.PPD(tmpf.name)
+ 
+-        except RuntimeError as e:
++        except (RuntimeError, urllib.error.HTTPError) as e:
+             debugprint ("RuntimeError: " + repr (e))
+             if self.rbtnNPFoomatic.get_active():
+                 # Foomatic database problem of some sort.

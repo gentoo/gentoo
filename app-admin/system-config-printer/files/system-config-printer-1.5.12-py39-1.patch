@@ -1,0 +1,45 @@
+From cf7a74217558b19aff7c21a724878bcc15dc4e38 Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Mon, 5 Oct 2020 09:26:40 +0200
+Subject: [PATCH] isAlive() is removed, use is_alive()
+
+---
+ asyncipp.py | 2 +-
+ timedops.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/asyncipp.py b/asyncipp.py
+index 5bc160e0f..61cd72136 100644
+--- a/asyncipp.py
++++ b/asyncipp.py
+@@ -269,7 +269,7 @@ def destroy (self):
+         for binding in self.bindings:
+             delattr (self, binding)
+ 
+-        if self.thread.isAlive ():
++        if self.thread.is_alive ():
+             debugprint ("Stopping worker thread")
+             self.thread.stop ()
+             GLib.timeout_add_seconds (1, self._reap_thread)
+diff --git a/timedops.py b/timedops.py
+index 8a8741c82..111d575f6 100644
+--- a/timedops.py
++++ b/timedops.py
+@@ -157,7 +157,7 @@ def run (self):
+             self.exception = e
+ 
+     def collect_result (self):
+-        if self.isAlive ():
++        if self.is_alive ():
+             # We've been canceled.
+             raise OperationCanceled()
+ 
+@@ -212,7 +212,7 @@ def run (self):
+         return self.thread.collect_result ()
+ 
+     def _check_thread (self):
+-        if self.thread.isAlive ():
++        if self.thread.is_alive ():
+             # Thread still running.
+             return True
+ 
