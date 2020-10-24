@@ -12,6 +12,5 @@ RDEPEND="|| (
 	sys-cluster/openmpi[cxx?,fortran?,romio?,threads?]
 	sys-cluster/mpich[cxx?,fortran?,romio?,threads?]
 	sys-cluster/mpich2[cxx?,fortran?,romio?,threads?]
-	sys-cluster/mvapich2[fortran?,romio?,threads?]
 	sys-cluster/native-mpi
 )"
