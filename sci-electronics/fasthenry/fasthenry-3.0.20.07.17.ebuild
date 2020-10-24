@@ -23,10 +23,11 @@ S=${WORKDIR}/fasthenry-3.0wr
 PATCHES=(
 	"${FILESDIR}/${P}-cflags.patch"
 	"${FILESDIR}/${P}-ldflags.patch"
+	"${FILESDIR}/${P}-ar.patch"
 )
 
 src_compile() {
-	tc-export CC
+	tc-export CC AR
 	emake all
 }
 
