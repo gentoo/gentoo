@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 user
+inherit autotools git-r3
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="
@@ -20,11 +20,19 @@ REQUIRED_USE="test? ( samba )"
 
 RDEPEND="
 	net-libs/libpcap
-	drop-root? ( sys-libs/libcap-ng )
+	drop-root? (
+		acct-group/pcap
+		acct-user/pcap
+		sys-libs/libcap-ng
+	)
 	smi? ( net-libs/libsmi )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
 		libressl? ( dev-libs/libressl:= )
+	)
+	suid? (
+		acct-group/pcap
+		acct-user/pcap
 	)
 "
 BDEPEND="
@@ -41,13 +49,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9999-libdir.patch
 )
 
-pkg_setup() {
-	if use drop-root || use suid; then
-		enewgroup tcpdump
-		enewuser tcpdump -1 -1 -1 tcpdump
-	fi
-}
-
 src_prepare() {
 	default
 
@@ -61,7 +62,7 @@ src_configure() {
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \
 		$(use_with ssl crypto "${ESYSROOT}/usr") \
-		$(usex drop-root "--with-user=tcpdump" "")
+		$(usex drop-root "--with-user=pcap" "")
 }
 
 src_test() {
@@ -80,18 +81,11 @@ src_install() {
 	dodoc CHANGES CREDITS README.md
 
 	if use suid; then
-		fowners root:tcpdump /usr/sbin/tcpdump
+		fowners root:pcap /usr/sbin/tcpdump
 		fperms 4110 /usr/sbin/tcpdump
 	fi
 }
 
-pkg_preinst() {
-	if use drop-root || use suid; then
-		enewgroup tcpdump
-		enewuser tcpdump -1 -1 -1 tcpdump
-	fi
-}
-
 pkg_postinst() {
-	use suid && elog "To let normal users run tcpdump add them into tcpdump group."
+	use suid && elog "To let normal users run tcpdump add them to the pcap group."
 }
