@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-10-24)
+# EAPI 4, abandoned upstream, fails to build, security vulnerabilities.
+# .NET is practically abandoned in Gentoo and needs a complete reboot.
+# Removal in 30 days. Bug #681194, #722256, #740986, #740988, #740990.
+dev-dotnet/gio-sharp
+dev-dotnet/ikvm-bin
+dev-dotnet/log4net
+
 # Michał Górny <mgorny@gentoo.org> (2020-10-24)
 # Last release in 2004, next release 'Soon(tm)'.  Fails to build
 # due to horrible code hacks.
