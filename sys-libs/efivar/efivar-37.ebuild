@@ -19,6 +19,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-37-ia64-relro.patch
+)
+
 src_prepare() {
 	default
 	sed -i -e 's/-Werror //' gcc.specs || die
