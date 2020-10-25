@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit autotools multilib multilib-minimal toolchain-funcs preserve-libs python-r1 linux-info systemd usr-ldscript
 
@@ -152,6 +152,7 @@ multilib_src_install() {
 				auparse_la_LIBADD="${native_build}/auparse/libauparse.la ${native_build}/lib/libaudit.la" \
 				USE_PYTHON3=true \
 				DESTDIR="${D}" install
+			python_optimize
 		}
 
 		local native_build=${BUILD_DIR}
