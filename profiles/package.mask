@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-10-25)
+# EAPI 4, fails to build for some time.
+# Removal in 30 days.
+# bug #654244, #740952, #726912, #723060
+dev-lang/j
+
 # David Seifert <soap@gentoo.org> (2020-10-24)
 # EAPI 4, broken since 2012, upstream disappeared, multiple QA issues,
 # build system is completely broken. Removal in 30 days,
