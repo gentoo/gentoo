@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
 
@@ -27,8 +28,7 @@ RDEPEND=">=dev-python/binaryornot-0.4.4[${PYTHON_USEDEP}]
 	dev-python/python-slugify[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.23.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
-	<dev-python/markupsafe-2.0.0[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	<dev-python/markupsafe-2.0.0[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? (
