@@ -7,14 +7,11 @@
 	</maintainer>
 	<longdescription>
 		Fast OpenStreetMap data tools:
-		* osmassignpoly
-		* osmchange - updates an .osm file using one or more .osc files
 		* osmconvert - reads and converts OSM data to the selected output file format
 		* osmfilter - filters OSM data
-		* osmgeobase
-		* osmposition
-		* osmrelpoly
 		* osmupdate - cares about updating an .osm, .o5m or .pbf file
-		* pbftoosm - converts .pbf file into .osm XML format
 	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">osm-c-tools/osmctools</remote-id>
+	</upstream>
 </pkgmetadata>
