@@ -416,7 +416,6 @@ qemu_src_configure() {
 		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
-		--tls-priority="@QEMU,NORMAL" # bug #747928
 
 		# bug #746752: TCG interpreter has a few limitations:
 		# - it does not support FPU
@@ -577,6 +576,10 @@ qemu_src_configure() {
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
+
+	# Plumb through equivalent of EXTRA_ECONF to allow experiments
+	# like bug #747928.
+	conf_opts+=( ${EXTRA_CONF_QEMU} )
 
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
