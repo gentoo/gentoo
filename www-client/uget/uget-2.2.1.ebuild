@@ -13,6 +13,11 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl rss"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-fno-common-713812.diff"
+)
+
 REQUIRED_USE="^^ ( gnutls openssl )"
 
 RDEPEND="
