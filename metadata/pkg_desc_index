@@ -16242,7 +16242,6 @@ sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting,
 sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shapely 1.6.4_p2-r1 1.7.0 1.7.1: Geometric objects, predicates, and operations
-sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
 sci-libs/spglib 1.14.1: Spglib is a C library for finding and handling crystal symmetries
 sci-libs/spqr 2.0.9: Multithreaded multifrontal sparse QR factorization library
