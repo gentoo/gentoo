@@ -32,10 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Piotr Karbowski <slashbeast@gentoo.org> (2020-10-25)
-# The bumped opentmpfiles after code cleanup no longer work. Masked for now.
-=sys-apps/opentmpfiles-0.3
-
 # David Seifert <soap@gentoo.org> (2020-10-24)
 # EAPI 4, broken since 2012, upstream disappeared, multiple QA issues,
 # build system is completely broken. Removal in 30 days,
