@@ -416,7 +416,6 @@ qemu_src_configure() {
 		--disable-containers # bug #732972
 		--disable-guest-agent
 		--disable-strip
-		--tls-priority="@QEMU,NORMAL" # bug #747928
 
 		# bug #746752: TCG interpreter has a few limitations:
 		# - it does not support FPU
