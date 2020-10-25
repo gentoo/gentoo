@@ -8630,7 +8630,7 @@ dev-python/pycares 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
 dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast.
-dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
+dev-python/pychroot 0.10.2 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.2.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
@@ -12927,7 +12927,7 @@ media-libs/elgato-streamdeck 0.8.1 9999: Python library to control the Elgato St
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 12.01 12.05: Read and write meta information in image, audio and video files
+media-libs/exiftool 12.05 12.08: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2 1.30: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.9.0 2.9.2 2.10.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.1: Fraunhofer AAC codec library
