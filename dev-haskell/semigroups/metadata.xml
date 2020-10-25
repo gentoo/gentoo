@@ -17,32 +17,6 @@
 		name semigroup.
 	</longdescription>
 	<use>
-		<flag name="hashable">You can disable the use of the
-		`hashable` package using USE=-hashable. Disabling this is an
-		unsupported configuration, but it may be useful for
-		accelerating builds in sandboxes for expert users. If set we
-		will not supply an instance of `Hashable`.</flag>
-		<flag name="bytestring">You can disable the use of the `bytestring`
-		package using USE=-bytestring. Disabling this is an
-		unsupported configuration, but it may be useful for
-		accelerating builds in sandboxes for expert users.</flag>
-		<flag name="containers">You can disable the use of the `containers`
-		package using USE=-containers. Disabing this is an unsupported
-		configuration, but it may be useful for accelerating builds in
-		sandboxes for expert users.</flag>
-		<flag name="deepseq">You can disable the use of the `deepseq`
-		package using `-f-deepseq`. Disabing this is an unsupported
-		configuration, but it may be useful for accelerating builds in
-		sandboxes for expert users.</flag>
-		<flag name="text">You can disable the use of the `text` package
-		using USE=-text. Disabling this is an unsupported
-		configuration, but it may be useful for accelerating builds in
-		sandboxes for expert users.</flag>
-		<flag name="unordered-containers">You can disable the use of the
-		`unordered-containers` package using
-		USE=-unordered-containers. Disabling this is an unsupported
-		configuration, but it may be useful for accelerating builds in
-		sandboxes for expert users.</flag>
 		<flag name="binary">provide instances for binary package</flag>
 		<flag name="transformers">provide instances for transformers package.</flag>
 	</use>
