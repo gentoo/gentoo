@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r1 xdg
 
 DESCRIPTION="FFmpeg-based simple video cutter & joiner with a modern PyQt5 GUI"
 HOMEPAGE="http://vidcutter.ozmartians.com https://github.com/ozmartian/vidcutter"
@@ -29,12 +29,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=dev-python/PyQt5-5.7[dbus,multimedia,${PYTHON_USEDEP}]
 	media-video/ffmpeg[X,encode]
+	dev-python/pyopengl
 	media-video/mediainfo"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-src_install() {
-	distutils-r1_src_install
-	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${P}"
-}
