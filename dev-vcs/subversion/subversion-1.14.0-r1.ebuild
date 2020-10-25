@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/${PN}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}-1.10.0_rc1-patches-1.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="Subversion GPL-2"
+LICENSE="Apache-2.0 BSD MIT BSD-2 FSFAP unicode"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
