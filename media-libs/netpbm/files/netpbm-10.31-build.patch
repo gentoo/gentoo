@@ -2,8 +2,8 @@
 - Try to fix parallel building
 - Make the libopt tool less 'helpful'
 
---- lib/Makefile
-+++ lib/Makefile
+--- a/lib/Makefile
++++ b/lib/Makefile
 @@ -249,7 +249,7 @@
  .PHONY: install.staticlib
  install.staticlib: $(PKGDIR)/link
@@ -25,8 +25,8 @@
              libnetpbm.$(NETPBMLIBSUFFIX)
  endif
  ifeq ($(NETPBMLIBTYPE),dll)
---- GNUmakefile
-+++ GNUmakefile
+--- a/GNUmakefile
++++ b/GNUmakefile
 @@ -87,6 +87,9 @@
  
  .PHONY: nonmerge
@@ -37,8 +37,8 @@
  
  OMIT_CONFIG_RULE = 1
  include $(SRCDIR)/Makefile.common
---- buildtools/libopt.c
-+++ buildtools/libopt.c
+--- a/buildtools/libopt.c
++++ b/buildtools/libopt.c
 @@ -502,7 +502,7 @@
  
      strcpy(outputLine, "");  /* initial value */
