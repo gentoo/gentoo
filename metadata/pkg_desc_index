@@ -8111,7 +8111,7 @@ dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1 1.9.1-r1: Standalone version of django.utils.feedgenerator
-dev-python/feedparser 5.2.1 6.0.1: Parse RSS and Atom feeds in Python
+dev-python/feedparser 5.2.1 6.0.1 6.0.2: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12-r1: A platform independent file lock for Python
@@ -8430,7 +8430,7 @@ dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
-dev-python/nest_asyncio 1.4.0: Patch asyncio to allow nested event loops
+dev-python/nest_asyncio 1.4.0 1.4.2: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
@@ -9137,7 +9137,7 @@ dev-python/toolz 0.10.0 0.11.1: List processing tools and functional utilities
 dev-python/tooz 1.60.1 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.19.0 3.20.0-r1 3.20.1: virtualenv-based automation of test activities
-dev-python/tqdm 4.49.0 4.50.2 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.49.0 4.50.2 4.51.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.4 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
@@ -9183,7 +9183,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18-r1: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.0.35: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.0.35 20.1.0: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
