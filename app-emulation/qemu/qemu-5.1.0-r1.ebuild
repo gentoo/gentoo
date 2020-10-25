@@ -572,6 +572,10 @@ qemu_src_configure() {
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
 
+	# Plumb through equivalent of EXTRA_ECONF to allow experiments
+	# like bug #747928.
+	conf_opts+=( ${EXTRA_CONF_QEMU} )
+
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
 	../configure "${conf_opts[@]}" || die "configure failed"
