@@ -4,6 +4,7 @@
 EAPI=7
 
 PVCUT=$(ver_cut 1-2)
+QTMIN=5.15.1
 inherit ecm kde.org
 
 DESCRIPTION="Framework to install and load packages of non binary content"
@@ -16,6 +17,7 @@ BDEPEND="
 	man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )
 "
 DEPEND="
+	>=dev-qt/qtdbus-${QTMIN}:5
 	=kde-frameworks/karchive-${PVCUT}*:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
 	=kde-frameworks/ki18n-${PVCUT}*:5
