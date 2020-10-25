@@ -2770,6 +2770,7 @@ dev-util/buildbot:docker - Add support for worker docker command steps
 dev-util/buildbot:irc - Add support for status delivery through an ircbot.
 dev-util/bustle:interactivetests - Build interactive test programs
 dev-util/bustle:threaded - Build with support for multithreaded execution.
+dev-util/cargo-audit:fix - Add support for 'fix' subcommand (experimental)
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/catalyst:iso - Pulls in the depends for building iso images
 dev-util/catalyst:system-bootloader - Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar

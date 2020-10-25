@@ -10540,6 +10540,7 @@ dev-util/buildbot-wsgi-dashboards 2.8.2 2.8.4: Buildbot plugin to integrate flas
 dev-util/buildbot-www 2.8.2 2.8.4: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
+dev-util/cargo-audit 0.12.1: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
