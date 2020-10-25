@@ -12039,7 +12039,7 @@ kde-apps/konsolekalendar 20.04.3 20.08.2: Command line interface to KDE calendar
 kde-apps/kontact 20.04.3 20.08.2: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 20.04.3 20.08.2: Library for embedding KParts in a Kontact component
 kde-apps/kopete 20.04.3 20.08.2: Multi-protocol IM client based on KDE Frameworks
-kde-apps/korganizer 20.04.3 20.08.2: Organizational assistant, providing calendars and other similar functionality
+kde-apps/korganizer 20.04.3-r1 20.08.2-r1: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpat 20.04.3 20.08.2: KDE patience game
 kde-apps/kpimtextedit 20.04.3 20.08.2: Extended text editor for PIM applications
 kde-apps/kpkpass 20.04.3 20.08.2: Library to deal with Apple Wallet pass files
@@ -12178,7 +12178,7 @@ kde-frameworks/kmediaplayer 5.74.0 5.75.0: Framework providing a common interfac
 kde-frameworks/knewstuff 5.74.0 5.75.0: Framework for downloading and sharing additional application data
 kde-frameworks/knotifications 5.74.0 5.75.0: Framework for notifying the user of an event
 kde-frameworks/knotifyconfig 5.74.0 5.75.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.74.0 5.75.0: Framework to install and load packages of non binary content
+kde-frameworks/kpackage 5.74.0-r1 5.75.0-r1: Framework to install and load packages of non binary content
 kde-frameworks/kparts 5.74.0 5.75.0: Framework providing elaborate user-interface components
 kde-frameworks/kpeople 5.74.0 5.75.0: KDE contact person abstraction library
 kde-frameworks/kplotting 5.74.0 5.75.0: Framework providing easy data-plotting functions
