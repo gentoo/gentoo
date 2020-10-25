@@ -12,12 +12,12 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Universal document viewer based on KDE Frameworks"
-HOMEPAGE="https://okular.kde.org https://kde.org/applications/office/org.kde.okular"
+HOMEPAGE="https://okular.kde.org https://apps.kde.org/en/okular"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="chm crypt djvu epub +image-backend markdown mobi +pdf plucker +postscript qml share speech +tiff"
+IUSE="chm djvu epub +image-backend markdown mobi +pdf plucker +postscript qml share speech +tiff"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -44,9 +44,9 @@ DEPEND="
 	sys-libs/zlib
 	chm? (
 		dev-libs/chmlib
+		dev-libs/libzip:=
 		>=kde-frameworks/khtml-${KFMIN}:5
 	)
-	crypt? ( >=app-crypt/qca-2.3.0:2 )
 	djvu? ( app-text/djvu )
 	epub? ( app-text/ebook-tools )
 	image-backend? (
@@ -75,11 +75,17 @@ PATCHES=(
 	"${FILESDIR}/${PN}-20.08.2-hide-mobile-app.patch" # avoid same-name entry
 )
 
+src_prepare() {
+	ecm_src_prepare
+	cmake_run_in generators cmake_comment_add_subdirectory ooo
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DOKULAR_UI=$(usex qml "both" "desktop")
 		$(cmake_use_find_package chm CHM)
-		$(cmake_use_find_package crypt Qca-qt5)
+		$(cmake_use_find_package chm KF5KHtml)
+		$(cmake_use_find_package chm LibZip)
 		$(cmake_use_find_package djvu DjVuLibre)
 		$(cmake_use_find_package epub EPub)
 		$(cmake_use_find_package image-backend KF5KExiv2)
@@ -92,7 +98,6 @@ src_configure() {
 		$(cmake_use_find_package speech Qt5TextToSpeech)
 		$(cmake_use_find_package tiff TIFF)
 	)
-
 	ecm_src_configure
 }
 

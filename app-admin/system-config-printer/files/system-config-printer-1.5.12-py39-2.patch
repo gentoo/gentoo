@@ -1,0 +1,147 @@
+From 63eccd5603e19cd35d6d44af65443665a3c63f38 Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Wed, 22 Jul 2020 13:57:13 +0200
+Subject: [PATCH] python3.9 - xml module removed elem.getchildren() method, use
+ list(elem)
+
+---
+ cupshelpers/openprinting.py   |  6 +++---
+ cupshelpers/xmldriverprefs.py | 20 ++++++++++----------
+ xml/validate.py               | 10 +++++-----
+ 3 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/cupshelpers/openprinting.py b/cupshelpers/openprinting.py
+index c616d913c..9bb4764c9 100755
+--- a/cupshelpers/openprinting.py
++++ b/cupshelpers/openprinting.py
+@@ -338,7 +338,7 @@ def parse_result (status, data, result):
+                     packages = {}
+                     container = driver.find ('packages')
+                     if container is not None:
+-                        for arch in container.getchildren ():
++                        for arch in list(container):
+                             rpms = {}
+                             for package in arch.findall ('package'):
+                                 rpm = {}
+@@ -351,7 +351,7 @@ def parse_result (status, data, result):
+ 
+                                 repositories = package.find ('repositories')
+                                 if repositories is not None:
+-                                    for pkgsys in repositories.getchildren ():
++                                    for pkgsys in list(repositories):
+                                         rpm.setdefault('repositories', {})[pkgsys.tag] = pkgsys.text
+ 
+                                 rpms[package.attrib['file']] = rpm
+@@ -363,7 +363,7 @@ def parse_result (status, data, result):
+                     ppds = []
+                     container = driver.find ('ppds')
+                     if container is not None:
+-                        for each in container.getchildren ():
++                        for each in list(container):
+                             ppds.append (each.text)
+ 
+                     if ppds:
+diff --git a/cupshelpers/xmldriverprefs.py b/cupshelpers/xmldriverprefs.py
+index 4177e1c0f..0d02950f4 100644
+--- a/cupshelpers/xmldriverprefs.py
++++ b/cupshelpers/xmldriverprefs.py
+@@ -27,7 +27,7 @@
+ 
+ def PreferredDrivers (filename):
+     preferreddrivers = xml.etree.ElementTree.XML (open (filename).read ())
+-    return preferreddrivers.getchildren()
++    return list(preferreddrivers)
+ 
+ class DeviceIDMatch:
+     """
+@@ -227,10 +227,10 @@ def load (self, drivertypes):
+         """
+ 
+         types = []
+-        for drivertype in drivertypes.getchildren ():
++        for drivertype in list(drivertypes):
+             t = DriverType (drivertype.attrib["name"])
+ 
+-            for child in drivertype.getchildren ():
++            for child in list(drivertype):
+                 if child.tag == "ppdname":
+                     t.add_ppd_name (child.attrib["match"])
+                 elif child.tag == "attribute":
+@@ -238,7 +238,7 @@ def load (self, drivertypes):
+                                      child.attrib["match"])
+                 elif child.tag == "deviceid":
+                     deviceid_match = DeviceIDMatch ()
+-                    for field in child.getchildren ():
++                    for field in list(child):
+                         if field.tag == "field":
+                             deviceid_match.add_field (field.attrib["name"],
+                                                       field.attrib["match"])
+@@ -414,29 +414,29 @@ def load (self, preferreddrivers):
+         Load the policy from an XML file.
+         """
+ 
+-        for printer in preferreddrivers.getchildren ():
++        for printer in list(preferreddrivers):
+             ptype = PrinterType ()
+-            for child in printer.getchildren ():
++            for child in list(printer):
+                 if child.tag == "make-and-model":
+                     ptype.add_make_and_model (child.attrib["match"])
+                 elif child.tag == "deviceid":
+                     deviceid_match = DeviceIDMatch ()
+-                    for field in child.getchildren ():
++                    for field in list(child):
+                         if field.tag == "field":
+                             deviceid_match.add_field (field.attrib["name"],
+                                                       field.attrib["match"])
+                     ptype.add_deviceid_match (deviceid_match)
+ 
+                 elif child.tag == "drivers":
+-                    for drivertype in child.getchildren ():
++                    for drivertype in list(child):
+                         ptype.add_drivertype_pattern (drivertype.text)
+ 
+                 elif child.tag == "avoid":
+-                    for drivertype in child.getchildren ():
++                    for drivertype in list(child):
+                         ptype.add_avoidtype_pattern (drivertype.text)
+ 
+                 elif child.tag == "blacklist":
+-                    for drivertype in child.getchildren ():
++                    for drivertype in list(child):
+                         ptype.add_blacklisted (drivertype.text)
+ 
+             self.ptypes.append (ptype)
+diff --git a/xml/validate.py b/xml/validate.py
+index 8fc201ecf..ba16766dc 100644
+--- a/xml/validate.py
++++ b/xml/validate.py
+@@ -35,23 +35,23 @@ def validate (self):
+         filename = self._filename
+         print ("Validating %s" % filename)
+         preferreddrivers = xml.etree.ElementTree.XML (open (filename).read ())
+-        (drivertypes, preferenceorder) = preferreddrivers.getchildren ()
++        (drivertypes, preferenceorder) = list(preferreddrivers)
+         validates = True
+ 
+         names = set()
+-        for drivertype in drivertypes.getchildren ():
++        for drivertype in list(drivertypes):
+             name = drivertype.get ("name")
+             names.add (name)
+ 
+-        for printer in preferenceorder.getchildren ():
++        for printer in list(preferenceorder):
+             types = []
+             drivers = printer.find ("drivers")
+             if drivers is not None:
+-                types.extend (drivers.getchildren ())
++                types.extend (list(drivers))
+ 
+             blacklist = printer.find ("blacklist")
+             if blacklist is not None:
+-                types.extend (blacklist.getchildren ())
++                types.extend (list(blacklist))
+ 
+             for drivertype in types:
+                 pattern = drivertype.text.strip ()

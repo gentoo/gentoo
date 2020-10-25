@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Universal document viewer based on KDE Frameworks"
-HOMEPAGE="https://okular.kde.org https://kde.org/applications/office/org.kde.okular"
+HOMEPAGE="https://okular.kde.org https://apps.kde.org/en/okular"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -40,10 +40,11 @@ DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
 	>=kde-frameworks/threadweaver-${KFMIN}:5
 	media-libs/freetype
-	media-libs/phonon[qt5(+)]
+	>=media-libs/phonon-4.11.0
 	sys-libs/zlib
 	chm? (
 		dev-libs/chmlib
+		dev-libs/libzip:=
 		>=kde-frameworks/khtml-${KFMIN}:5
 	)
 	crypt? ( app-crypt/qca:2[qt5(+)] )
@@ -84,6 +85,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package chm CHM)
+		$(cmake_use_find_package chm KF5KHtml)
+		$(cmake_use_find_package chm LibZip)
 		$(cmake_use_find_package crypt Qca-qt5)
 		$(cmake_use_find_package djvu DjVuLibre)
 		$(cmake_use_find_package epub EPub)
@@ -97,7 +100,6 @@ src_configure() {
 		$(cmake_use_find_package speech Qt5TextToSpeech)
 		$(cmake_use_find_package tiff TIFF)
 	)
-
 	ecm_src_configure
 }
 

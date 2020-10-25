@@ -4,18 +4,18 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 
 inherit toolchain-funcs flag-o-matic distutils-r1
 
 DESCRIPTION="A data templating language for app and tool developers "
 HOMEPAGE="https://jsonnet.org/"
 SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-IUSE="custom-optimization python"
+IUSE="custom-optimization doc examples python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 DEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
@@ -41,30 +41,35 @@ distutils_enable_tests setup.py
 src_prepare() {
 	default
 	use python && distutils-r1_src_prepare
+	sed -i "s@\(PREFIX\)/lib@\(PREFIX\)/$(get_libdir)@g" Makefile || die
 }
 
 src_configure() {
 	use custom-optimization || replace-flags '-O*' -O3
+	tc-export CC CXX
 	default
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
-		jsonnet \
-		libjsonnet.so \
-		libjsonnet++.so
-
+	emake bins libs
 	use python && distutils-r1_src_compile
 }
 
 src_test() {
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" test
+	emake test
 	use python && distutils-r1_src_test
 }
 
 src_install() {
-	dolib.so libjsonnet*.so
-	dobin jsonnet
-
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
 	use python && distutils-r1_src_install
+	if use doc; then
+		find doc -name '.gitignore' -delete || die
+		docinto html
+		dodoc -r doc/.
+	fi
+	if use examples; then
+		docinto examples
+		dodoc -r examples/.
+	fi
 }
