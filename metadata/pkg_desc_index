@@ -677,7 +677,7 @@ app-admin/syslog-ng 3.22.1 3.24.1 3.25.1 3.26.1-r1 3.28.1-r2: syslog replacement
 app-admin/syslog-summary 1.14-r5: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.2.3 12.4.0 999999: System performance tools for Linux
-app-admin/system-config-printer 1.5.12-r1: Graphical user interface for CUPS administration
+app-admin/system-config-printer 1.5.12-r1 1.5.12-r2: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
@@ -870,7 +870,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5 4.0.7: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.11.21 0.11.22: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.11.22: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
@@ -4892,8 +4892,8 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/openjdk 8.265_p01 8.272_p10 11.0.8_p10 11.0.9_p11: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.265_p01 8.272_p10 11.0.8_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.265_p01 8.272_p10 11.0.8_p10-r1: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk-bin 8.265_p01 8.272_p10 11.0.8_p10 11.0.9_p11: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.265_p01 8.272_p10 11.0.8_p10-r1 11.0.9_p11: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 8.999 11.0.9_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.6 1.5.6-r1: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
@@ -5062,7 +5062,7 @@ dev-lang/ispc 1.14.1 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/janet 1.9.1 1.12.2: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
-dev-lang/jsonnet 0.15.0 0.16.0: A data templating language for app and tool developers
+dev-lang/jsonnet 0.15.0 0.16.0 0.16.0-r1: A data templating language for app and tool developers
 dev-lang/julia 1.2.0 1.3.0 1.4.0-r1 1.4.0-r2 1.5.2: High-performance programming language for technical computing
 dev-lang/julia-bin 1.2.0 1.3.0 1.4.0 1.5.2: High-performance programming language for technical computing
 dev-lang/jwasm 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
@@ -12102,7 +12102,7 @@ kde-apps/marble 20.04.3 20.08.2: Virtual Globe and World Atlas to learn more abo
 kde-apps/mbox-importer 20.04.3 20.08.2: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 20.04.3 20.08.2: Libraries for messaging functions
 kde-apps/minuet 20.04.3 20.08.2: Music Education software by KDE
-kde-apps/okular 20.04.3 20.08.2: Universal document viewer based on KDE Frameworks
+kde-apps/okular 20.04.3-r1 20.08.2-r1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 20.04.3 20.08.2: Jigsaw puzzle game by KDE
 kde-apps/parley 20.04.3 20.08.2: A vocabulary trainer to help you memorize things
 kde-apps/picmi 20.04.3 20.08.2: Nonogram logic game by KDE
@@ -14697,7 +14697,7 @@ net-libs/kdsoap-ws-discovery-client 0.2_pre20200317: WS-Discovery client library
 net-libs/kimap2 0.3.0: Library for interacting with IMAP servers - successor of kimap
 net-libs/ldns 1.7.1-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
-net-libs/libaccounts-glib 1.25-r1: Accounts SSO (Single Sign-On) management library for GLib applications
+net-libs/libaccounts-glib 1.25-r1 1.25-r2: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
@@ -14824,7 +14824,7 @@ net-libs/rpcsvc-proto 0 1.4.2: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.9-r1 1.3.9-r2: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
-net-libs/signon-ui 0.15_p20171022: Online accounts signon UI
+net-libs/signon-ui 0.15_p20171022 0.15_p20171022-r1: Online accounts signon UI
 net-libs/signond 8.60-r2: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
