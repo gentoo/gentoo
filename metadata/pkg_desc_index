@@ -13062,7 +13062,7 @@ media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2 9999: Packaged version of iLBC codec from the WebRTC project
-media-libs/libinsane 1.0.4 1.0.7: Crossplatform access to image scanners
+media-libs/libinsane 1.0.7 1.0.8: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjpeg-turbo 1.5.3-r4 2.0.5-r2: MMX, SSE, and SSE2 SIMD accelerated JPEG library
