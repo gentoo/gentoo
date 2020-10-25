@@ -3,8 +3,8 @@ what awk generates.  force it to C/ASCII to avoid that.
 
 https://bugs.gentoo.org/601012
 
---- test/pbmtext.test
-+++ test/pbmtext.test
+--- a/test/pbmtext.test
++++ b/test/pbmtext.test
 @@ -81,12 +81,14 @@ rm ${fontRectangle_txt} ${font_pbm}
  
  # One long row

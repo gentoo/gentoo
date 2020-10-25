@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit toolchain-funcs eutils multilib
+inherit toolchain-funcs
 
 DESCRIPTION="A set of utilities for converting to/from the netpbm (and related) formats"
 HOMEPAGE="http://netpbm.sourceforge.net/"
@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc jbig jpeg png rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
 
+BDEPEND="app-arch/xz-utils
+	sys-devel/flex"
 RDEPEND="jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( >=media-libs/libpng-1.4:0 )
@@ -23,38 +25,43 @@ RDEPEND="jbig? ( media-libs/jbigkit )
 	xml? ( dev-libs/libxml2 )
 	zlib? ( sys-libs/zlib )
 	X? ( x11-libs/libX11 )"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
-	sys-devel/flex"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/netpbm-10.31-build.patch
+	"${FILESDIR}"/netpbm-10.66-test.patch #450530
+	"${FILESDIR}"/netpbm-10.70-system-libs.patch
+)
 
 netpbm_libtype() {
 	case ${CHOST} in
-	*-darwin*) echo dylib;;
-	*)         echo unixshared;;
+		*-darwin*) echo dylib;;
+		*)         echo unixshared;;
 	esac
 }
+
 netpbm_libsuffix() {
 	local suffix=$(get_libname)
-	echo ${suffix//\.}
+	echo "${suffix//\.}" || die
 }
+
 netpbm_ldshlib() {
 	case ${CHOST} in
-	*-darwin*) echo '$(LDFLAGS) -dynamiclib -install_name $(SONAME)';;
-	*)         echo '$(LDFLAGS) -shared -Wl,-soname,$(SONAME)';;
+		*-darwin*) echo '$(LDFLAGS) -dynamiclib -install_name $(SONAME)';;
+		*)         echo '$(LDFLAGS) -shared -Wl,-soname,$(SONAME)';;
 	esac
 }
+
 netpbm_config() {
 	if use $1 ; then
 		[[ $2 != "!" ]] && echo -l${2:-$1}
 	else
-		echo NONE
+		echo NONE || die
 	fi
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/netpbm-10.31-build.patch
-	epatch "${FILESDIR}"/netpbm-10.66-test.patch #450530
-	epatch "${FILESDIR}"/netpbm-10.70-system-libs.patch
+	default
 
 	# make sure we use system libs
 	sed -i '/SUPPORT_SUBDIRS/s:urt::' GNUmakefile || die
@@ -66,9 +73,11 @@ src_prepare() {
 		$(usex rle '' 'utahrle-roundtrip')
 		$(usex tiff '' 'tiff-roundtrip')
 	)
-	if [[ ${#del[@]} -gt 0 ]] ; then
+
+	if [[ "${#del[@]}" -gt 0 ]] ; then
 		sed -i -r $(printf -- ' -e /%s.test/d' "${del[@]}") test/Test-Order || die
 	fi
+
 	del=(
 		pnmtofiasco fiascotopnm # We always disable fiasco
 		$(usex jpeg '' 'jpegtopnm pnmtojpeg ppmtojpeg')
@@ -77,7 +86,8 @@ src_prepare() {
 		$(usex rle '' 'pnmtorle rletopnm')
 		$(usex tiff '' 'pamtotiff pnmtotiff pnmtotiffcmyk tifftopnm')
 	)
-	if [[ ${#del[@]} -gt 0 ]] ; then
+
+	if [[ "${#del[@]}" -gt 0 ]] ; then
 		sed -i -r $(printf -- ' -e s/\<%s\>(:.ok)?//' "${del[@]}") test/all-in-place.{ok,test} || die
 		sed -i '/^$/d' test/all-in-place.ok || die
 	fi
@@ -88,6 +98,7 @@ src_prepare() {
 		-e '/^importinc:/s|^|importinc:\nmanual_|' \
 		-e '/-Iimportinc/s|-Iimp|-I"$(BUILDDIR)"/imp|g'\
 		common.mk || die
+
 	sed -i \
 		-e '/%.c/s: importinc$::' \
 		common.mk lib/Makefile lib/util/Makefile || die
@@ -149,7 +160,7 @@ src_configure() {
 	EOF
 	# cannot chain the die with the heredoc above as bash-3
 	# has a parser bug in that setup #282902
-	[ $? -eq 0 ] || die "writing config.mk failed"
+	[[ $? -eq 0 ]] || die "writing config.mk failed"
 }
 
 src_compile() {
@@ -168,21 +179,27 @@ src_install() {
 	# without any actual dependencies, thus the -j1.
 	emake -j1 package pkgdir="${ED}"/usr
 
-	[[ $(get_libdir) != "lib" ]] && mv "${ED}"/usr/lib "${ED}"/usr/$(get_libdir)
+	if [[ $(get_libdir) != "lib" ]] ; then
+		mv "${ED}"/usr/lib "${ED}"/usr/$(get_libdir) || die
+	fi
 
 	# Remove cruft that we don't need, and move around stuff we want
 	rm "${ED}"/usr/bin/{doc.url,manweb} || die
 	rm -r "${ED}"/usr/man/web || die
 	rm -r "${ED}"/usr/link || die
 	rm "${ED}"/usr/{README,VERSION,{pkgconfig,config}_template,pkginfo} || die
+
 	dodir /usr/share
 	mv "${ED}"/usr/man "${ED}"/usr/share/ || die
 	mv "${ED}"/usr/misc "${ED}"/usr/share/netpbm || die
 
 	doman userguide/*.[0-9]
-	use doc && dohtml -r userguide
 	dodoc README
-	cd doc
+
+	cd doc || die
 	dodoc HISTORY Netpbm.programming USERDOC
-	dohtml -r .
+
+	docinto html
+	dodoc -r *.html
+	use doc && dodoc -r ../userguide/*.html
 }
