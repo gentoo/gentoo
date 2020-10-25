@@ -12405,7 +12405,7 @@ mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple m
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.6 3.5.7 3.6_pre20201003: A fast and secure drop-in replacement for sendmail
-mail-mta/protonmail-bridge-bin 1.2.8 1.3.3 1.4.4: Serves ProtonMail to IMAP/SMTP clients
+mail-mta/protonmail-bridge-bin 1.4.4 1.4.5: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
@@ -14505,7 +14505,7 @@ net-firewall/shorewall 5.2.8: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
-net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
+net-fs/btfs 2.20 2.22: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.11: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.7.2-r1 2.7.3: HTTP read-only file system for distributing software
@@ -16924,7 +16924,7 @@ sys-apps/sandbox 2.18 2.20: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10 1.11: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.9 3.0 3.1 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.7 4.8: Super-useful stream editor
-sys-apps/selinux-python 2.9 3.0 3.1 9999: SELinux core utilities
+sys-apps/selinux-python 2.9 3.0 3.1 3.1-r1 9999: SELinux core utilities
 sys-apps/semodule-utils 2.9 3.0 3.1 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
@@ -17604,7 +17604,7 @@ sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
-sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r1: Userspace utilities for storing and processing auditing records
+sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r2: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 3.14-r2: utility to checkpoint/restore a process tree
