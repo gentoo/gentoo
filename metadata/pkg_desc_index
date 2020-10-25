@@ -18025,7 +18025,7 @@ x11-apps/bdftopcf 1.1: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.9: X.Org bitmap application
 x11-apps/editres 1.0.7: a dynamic resource editor for X Toolkit applications
-x11-apps/fonttosfnt 1.1.0: X.Org fonttosfnt application
+x11-apps/fonttosfnt 1.1.0 1.2.0: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.8 1.0.8-r1: ICE authority file utility
@@ -18106,7 +18106,7 @@ x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.5: window information utility for X
 x11-apps/xwud 1.0.5: image displayer for X
-x11-base/xcb-proto 1.14-r1: X C-language Bindings protocol headers
+x11-base/xcb-proto 1.14-r1 1.14.1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8-r1 1.20.9 9999: X.Org X servers
@@ -18506,7 +18506,7 @@ x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program
 x11-misc/xkbd 0.8.16-r1 0.8.18 999999: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.30 9999: X keyboard configuration database
+x11-misc/xkeyboard-config 2.30 2.31 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50 5.65 5.66_alpha10 5.66_alpha11 5.66_alpha12: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
