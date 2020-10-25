@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile configure install postinst prerm setup unpack
-DEPEND=>=media-gfx/iscan-2.21.0 >=app-arch/rpm2targz-9.0.0.3g
+BDEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DEFINED_PHASES=compile configure install postinst prerm unpack
+DEPEND=>=media-gfx/iscan-2.21.0
 DESCRIPTION=Epson Perfection V600 scanner plugin for SANE 'epkowa' backend
-EAPI=4
+EAPI=7
 HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=AVASYS
 RDEPEND=>=media-gfx/iscan-2.21.0
 SLOT=0
 SRC_URI=amd64? ( https://dev.gentoo.org/~flameeyes/avasys/iscan-plugin-gt-x820-2.2.0-1.x86_64.rpm ) x86? ( https://dev.gentoo.org/~flameeyes/avasys/iscan-plugin-gt-x820-2.2.0-1.i386.rpm )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	760ff223c2c4299b68ea901e24c4cabd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=699ba3fb1b334d40a873ecc258a21d79
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	rpm	760ff223c2c4299b68ea901e24c4cabd	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=82b1e6a36f9b0be497af8cba58e1406f
