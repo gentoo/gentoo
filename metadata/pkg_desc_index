@@ -1984,7 +1984,7 @@ app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PH
 app-emulation/protontricks 1.4.1 1.4.2: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.1.0-r1 5.1.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.1.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -5348,7 +5348,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.8.6: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.8.6 1.8.7: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
@@ -16875,7 +16875,7 @@ sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/opal-utils 6.5.2 6.6.2 6.6.3 6.6.3-r1: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
-sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3 9999: A standalone utility to process systemd-style tmpfiles.d files
+sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200325 20200529: osinfo database files
 sys-apps/osinfo-db-tools 1.6.0-r1 1.8.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
