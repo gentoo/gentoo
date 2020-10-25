@@ -44,6 +44,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	ecm_src_prepare
+	use opengl || ecm_punt_bogus_dep Qt5 OpenGL
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package opengl OpenGL)
