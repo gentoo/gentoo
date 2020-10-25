@@ -5508,7 +5508,7 @@ dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
-dev-libs/mpc 1.2.0: A library for multiprecision complex arithmetic with exact rounding
+dev-libs/mpc 1.2.0 1.2.1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.1.0: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 3.2.0 3.3.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.1 3.2: A small XML parsing library that you can use to read XML data files or strings
