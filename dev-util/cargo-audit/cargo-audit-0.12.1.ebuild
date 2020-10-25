@@ -232,6 +232,9 @@ IUSE="fix"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
+# requires checkout of vuln db/network
+RESTRICT="test"
+
 src_configuire() {
 	local myfeatures=( $(usev fix) )
 	cargo_src_configure
