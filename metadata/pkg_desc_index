@@ -577,7 +577,7 @@ app-admin/glance 20.0.0 20.0.1 21.0.0 2020.1.9999 2020.2.9999: Services for disc
 app-admin/gnome-abrt 1.2.7 1.3.6: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
-app-admin/gopass 1.9.2 1.10.1 1.10.1-r1: a simple but powerful password manager for the terminal
+app-admin/gopass 1.9.2 1.10.1 1.10.1-r2: a simple but powerful password manager for the terminal
 app-admin/graylog 3.3.3: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
