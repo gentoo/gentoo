@@ -80,6 +80,10 @@ src_install() {
 	cmake-utils_src_install
 	use python && python_optimize
 
+	mkdir -p "${ED}"/usr/share/metainfo || die
+	mv "${ED}"/usr/share/appdata/* "${ED}"/usr/share/metainfo/ || die
+	rmdir "${ED}"/usr/share/appdata || die
+
 	local lang
 	for lang in ${LANGS} ; do
 		case ${lang} in
