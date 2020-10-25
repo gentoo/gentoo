@@ -230,6 +230,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 IUSE="fix"
 
+RDEPEND="
+	dev-libs/openssl:0=
+	dev-libs/libgit2:=
+"
+
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 # requires checkout of vuln db/network
