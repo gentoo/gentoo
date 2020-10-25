@@ -9245,7 +9245,7 @@ dev-python/zconfig 3.5.0: A configuration library supporting a hierarchical sche
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.24.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zict 0.1.4: Mutable mapping tools
-dev-python/zipp 3.1.0 3.3.1 3.3.2: Backport of pathlib-compatible object wrapper for zip files
+dev-python/zipp 3.1.0 3.3.2 3.4.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.4.0: Zope Configuration Architecture
 dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
@@ -10649,7 +10649,7 @@ dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.62.6 2.64.4 2.64.5: GDBus code and documentation generator
-dev-util/geany 1.36 9999: GTK+ based fast and lightweight IDE
+dev-util/geany 1.36 1.37 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.

@@ -1,13 +1,13 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=dev-libs/glib-2.32:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/vte:0 ) ) gtk3? ( >=x11-libs/gtk+-3.0:3 vte? ( x11-libs/vte:2.91 ) ) virtual/pkgconfig dev-util/intltool sys-devel/gettext dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=dev-libs/glib-2.32:2 gtk2? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/vte:0 ) ) !gtk2? ( >=x11-libs/gtk+-3.0:3 vte? ( x11-libs/vte:2.91 ) ) dev-util/intltool sys-devel/gettext dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=GTK+ based fast and lightweight IDE
 EAPI=7
 HOMEPAGE=https://www.geany.org
-IUSE=+gtk3 +vte
+IUSE=gtk2 +vte
 LICENSE=GPL-2+ HPND
 PROPERTIES=live
-RDEPEND=>=dev-libs/glib-2.32:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/vte:0 ) ) gtk3? ( >=x11-libs/gtk+-3.0:3 vte? ( x11-libs/vte:2.91 ) )
+RDEPEND=>=dev-libs/glib-2.32:2 gtk2? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/vte:0 ) ) !gtk2? ( >=x11-libs/gtk+-3.0:3 vte? ( x11-libs/vte:2.91 ) )
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c8117f9bfcc43f3b957b1af6fa3f0c23
+_md5_=7a1285f37ee04afc1434f3ae8466b614
