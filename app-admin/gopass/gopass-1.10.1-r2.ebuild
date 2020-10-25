@@ -292,6 +292,8 @@ RDEPEND="
 	>=app-crypt/gnupg-2
 "
 
+PATCHES=( "${FILESDIR}/${PV}-jsonapi-version.patch" )
+
 src_install() {
 	emake install DESTDIR="${ED}/usr"
 	einstalldocs
