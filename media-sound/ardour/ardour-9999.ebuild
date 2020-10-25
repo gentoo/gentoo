@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
-inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils
+inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils xdg
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://community.ardour.org/src/Ardour-${PV}.0.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -65,10 +65,16 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	jack? ( virtual/jack )
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+	jack? ( virtual/jack )"
+
+pkg_pretend() {
+	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
+		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
+}
 
 pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
@@ -78,7 +84,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	default
+	xdg_src_prepare
+
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
@@ -117,30 +125,56 @@ src_configure() {
 
 	tc-export CC CXX
 	mkdir -p "${D}"
-	waf-utils_src_configure \
-		--destdir="${D}" \
-		--configdir=/etc \
-		--optimize \
-		--with-backends=${backends} \
-		$(usex doc "--docs" '') \
-		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization") \
-		$(usex phonehome "--phone-home" "--no-phone-home") \
+	local myconf=(
+		--configdir=/etc
+		--freedesktop
+		--noconfirm
+		--optimize
+		--with-backends=${backends}
+		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$(usex doc "--docs" '')
 		$(usex nls "--nls" "--no-nls")
-#not possible right now		--use-external-libs
+		$(usex phonehome "--phone-home" "--no-phone-home")
+		# not possible right now  --use-external-libs
+	)
+
+	waf-utils_src_configure "${myconf[@]}"
 }
+
 src_compile() {
 	waf-utils_src_compile
 	use nls && waf-utils_src_compile i18n
 }
+
 src_install() {
+	local s
+
 	waf-utils_src_install
-	mv ${PN}.1 ${PN}${SLOT}.1
+
+	mv ${PN}.1 ${PN}${SLOT}.1 || die
 	doman ${PN}${SLOT}.1
-	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
-	make_desktop_entry ardour6 ardour6 ardour6 AudioVideo
+
+	for s in 16 22 32 48 256 512; do
+		dosym ../../../../ardour${SLOT}/resources/Ardour-icon_${s}px.png \
+			/usr/share/icons/hicolor/${s}x${s}/apps/ardour${SLOT}.png
+	done
+
+	sed -i \
+		-e "s/\(^Name=\).*/\1Ardour ${SLOT}/" \
+		-e 's/;AudioEditing;/;X-AudioEditing;/' \
+		build/gtk2_ardour/ardour${SLOT}.desktop || die
+	domenu build/gtk2_ardour/ardour${SLOT}.desktop
+
+	insinto /usr/share/mime/packages
+	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
+
+	insinto /usr/share/metainfo
+	doins build/gtk2_ardour/ardour${SLOT}.appdata.xml
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	elog "Please do _not_ report problems with the package to ${PN} upstream."
 	elog "If you think you've found a bug, check the upstream binary package"
 	elog "before you report anything to upstream."
