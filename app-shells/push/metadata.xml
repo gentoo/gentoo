@@ -11,6 +11,7 @@
     <description>Upstream developer, CC on bugs, do not copy ebuilds
       from his overlay</description>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <maintainer>
       <email>martin@mvath.de</email>
