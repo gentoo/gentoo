@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+    <flag name="static-libs">Enable build of static libraries</flag>
+    <flag name="debug">Enable debugging informations</flag>
+    <flag name="demos">Build and installs demo programs.</flag>
+    <flag name="doc">Build documentation (requires app-doc/doxygen)</flag>
+  </use>
+</pkgmetadata>
