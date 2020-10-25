@@ -16012,7 +16012,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/osmctools 0.4_p20200520: Fast OpenStreetMap data tools
+sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and update OSM data files
 sci-geosciences/qgis 3.10.9 3.16.0 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.14.0 1.15.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
