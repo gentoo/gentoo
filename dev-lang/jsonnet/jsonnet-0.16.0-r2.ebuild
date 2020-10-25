@@ -34,6 +34,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 PATCHES=(
 	"${FILESDIR}/jsonnet-0.14.0-makefile.patch"
 	"${FILESDIR}/jsonnet-0.12.1-dont-call-make-from-setuppy.patch"
+	"${FILESDIR}/jsonnet-0.16.0-libdir.patch"
 )
 
 distutils_enable_tests setup.py
@@ -41,7 +42,6 @@ distutils_enable_tests setup.py
 src_prepare() {
 	default
 	use python && distutils-r1_src_prepare
-	sed -i "s@\(PREFIX\)/lib@\(PREFIX\)/$(get_libdir)@g" Makefile || die
 }
 
 src_configure() {
@@ -61,7 +61,7 @@ src_test() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" LIBDIR="$(get_libdir)" install
 	use python && distutils-r1_src_install
 	if use doc; then
 		find doc -name '.gitignore' -delete || die
