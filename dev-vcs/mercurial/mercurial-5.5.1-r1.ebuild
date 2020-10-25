@@ -5,6 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic
 
