@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit autotools eutils multilib python-single-r1 udev systemd
 
@@ -56,6 +56,7 @@ CDEPEND="
 	dev-libs/protobuf:=
 	$(python_gen_cond_dep '
 		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/websockets[${PYTHON_MULTI_USEDEP}]
 	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
