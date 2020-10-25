@@ -87,7 +87,6 @@ src_configure() {
 	fi
 
 	econf "${myeconfargs[@]}"
-	[[ "${PV}" == *9999 ]] || touch proto.h-tstamp #421625
 }
 
 src_install() {
