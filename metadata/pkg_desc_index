@@ -16921,7 +16921,7 @@ sys-apps/s6-linux-utils 2.4.0.2 2.5.0.0 2.5.0.1 2.5.1.1 2.5.1.3: Set of tiny lin
 sys-apps/s6-portable-utils 2.2.1.1 2.2.1.2 2.2.1.3 2.2.2.1 2.2.3.0: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1 0.5.2.0: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 2.12 2.13 2.14 2.15 2.17 2.18 2.20: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.18 2.20: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10 1.11: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.9 3.0 3.1 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.7 4.8: Super-useful stream editor
@@ -18954,7 +18954,7 @@ xfce-extra/thunar-shares-plugin 0.3.1: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.9.5 4.15.0: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.2.8 0.2.9 0.3.0: A thumbnail service for Thunar
+xfce-extra/tumbler 0.2.9 0.3.0: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
