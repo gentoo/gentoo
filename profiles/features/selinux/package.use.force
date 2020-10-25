@@ -17,3 +17,6 @@ dev-lang/python xml
 # so stages can build with no interacton. Bug #527938
 sys-libs/libselinux static-libs
 dev-libs/libpcre static-libs
+
+# Required for semanage to run correctly.
+sys-process/audit python
