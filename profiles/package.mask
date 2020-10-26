@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-26)
+# Historical metapackage that exists in slot 5 only for transition from KDE SC4.
+# Masked for removal on 2021-08-31. Replaced by:
+# emerge --noreplace kde-plasma/plasma-meta kde-apps/kdecore-meta
+kde-apps/kdebase-meta:5
+
 # Michał Górny <mgorny@gentoo.org> (2020-10-26)
 # This packages makes little sense without sci-geosciences/mapnik.
 # It has not been updated in 11 years, so it has been useless anyway.
