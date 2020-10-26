@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/jsonnet-0.14.0-makefile.patch"
 	"${FILESDIR}/jsonnet-0.12.1-dont-call-make-from-setuppy.patch"
 	"${FILESDIR}/jsonnet-0.16.0-libdir.patch"
+	"${FILESDIR}/jsonnet-0.16.0-cp-var.patch"
 )
 
 distutils_enable_tests setup.py
@@ -61,7 +62,8 @@ src_test() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" LIBDIR="$(get_libdir)" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" \
+		CP="cp -d" LIBDIR="$(get_libdir)" install
 	use python && distutils-r1_src_install
 	if use doc; then
 		find doc -name '.gitignore' -delete || die
