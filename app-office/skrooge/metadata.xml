@@ -8,6 +8,5 @@
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
-		<flag name="webkit">Build with <pkg>dev-qt/qtwebkit</pkg> instead of <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>

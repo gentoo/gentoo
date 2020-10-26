@@ -13,7 +13,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 DESCRIPTION="Markdown viewer KParts plugin based on QTextDocument"
-HOMEPAGE="https://invent.kde.org/utilities/markdownpart"
+HOMEPAGE="https://apps.kde.org/en/markdownpart"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
