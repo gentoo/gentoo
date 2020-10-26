@@ -1,11 +1,11 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install postinst prepare unpack
-DESCRIPTION=Scripts to support compressed swap devices or ramdisks with zram
+BDEPEND=sys-devel/gettext >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=Scripts to support compressed swap devices or ramdisks with zRAM
 EAPI=7
 HOMEPAGE=https://github.com/vaeth/zram-init/
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=>=app-shells/push-2.0 !<sys-apps/openrc-0.13
+RDEPEND=>=app-shells/push-2.0 virtual/libintl || ( sys-apps/openrc sys-apps/systemd )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	98584e405e2b0264d37e8f728327fed1	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1b69dff030c5398acded8d069708b777
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	prefix	c2993e4c430c1ee24f278983d6189501	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=050846576bed4b9483f7dab46582d028
