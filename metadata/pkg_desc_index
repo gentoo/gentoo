@@ -1976,7 +1976,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.4 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.3-r1 4.0.4: Fast, dense and secure container management
+app-emulation/lxd 4.0.3-r2 4.0.4-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.0.1-r1 11.1.0: Opensourced tools for VMware guests
 app-emulation/pcem 16-r1: A PC emulator that specializes in running old operating systems and software
@@ -2892,7 +2892,7 @@ app-text/libwpg 0.3.3: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.12: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.73-r1: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 30 30_p20190316 31 31_p20191016: Graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 30 33: Graphical PDF viewer which aims to superficially resemble less(1)
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
