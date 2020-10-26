@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-26)
+# Depends on net-libs/zeromq-3 which is scheduled for removal.
+# Removal in 30 days.  Bug #741454.
+dev-perl/ZMQ-LibZMQ3
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-26)
 # Depends on net-libs/zeromq-2 which is scheduled for removal.
 # Removal in 30 days.  Bug #741454.
 dev-perl/ZMQ-LibZMQ2
