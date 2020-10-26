@@ -260,7 +260,6 @@ dev-python/singledispatch
 # from this list unless you actually port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #635934.
 dev-libs/mongo-cxx-driver
-games-action/btanks
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
