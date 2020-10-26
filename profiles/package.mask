@@ -239,7 +239,6 @@ net-voip/telepathy-haze
 # you actually port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
 games-arcade/diameter
-games-board/gnome-hearts
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
