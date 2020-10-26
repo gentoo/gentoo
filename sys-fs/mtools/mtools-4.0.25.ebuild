@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit flag-o-matic
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~sparc x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x64-solaris"
 IUSE="X elibc_glibc"
 
 RDEPEND="
@@ -24,13 +24,6 @@ RDEPEND="
 		x11-libs/libXt
 	)"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	default
-
-	# Don't throw errors on existing directories
-	sed -i -e "s:mkdir:mkdir -p:" mkinstalldirs || die
-}
 
 src_configure() {
 	# 447688
@@ -50,5 +43,5 @@ src_install() {
 	doins mtools.conf
 
 	# default is fine
-	sed -i -e '/^SAMPLE FILE$/s:^:#:' "${ED%/}"/etc/mtools/mtools.conf || die
+	sed -i -e '/^SAMPLE FILE$/s:^:#:' "${ED}"/etc/mtools/mtools.conf || die
 }
