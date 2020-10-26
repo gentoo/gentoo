@@ -16,7 +16,7 @@ if [[ $PV == *9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=1
+	UPSTREAM_VER=2
 	SECURITY_VER=
 	GENTOO_VER=
 
