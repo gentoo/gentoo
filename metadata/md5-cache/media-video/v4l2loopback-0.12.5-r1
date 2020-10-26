@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
 DEPEND=kernel_linux? ( sys-apps/kmod[tools] ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
 DESCRIPTION=v4l2 loopback device which output is it's own input
 EAPI=7
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=kernel_linux? ( sys-apps/kmod[tools] )
 SLOT=0
 SRC_URI=https://github.com/umlaeute/v4l2loopback/archive/v0.12.5.tar.gz -> v4l2loopback-0.12.5.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	63c06dfa12648f13855f5f4348af824c	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=a60878905c74e81e52ad040239a6ca56
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	63c06dfa12648f13855f5f4348af824c	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=0bafe4a44fe2882a409af52f26537f21

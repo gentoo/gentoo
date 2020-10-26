@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Tool to manage OpenRC and systemd services that need to be restarted
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~mschiff/restart-services/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-admin/lib_users || ( sys-apps/openrc sys-apps/systemd ) app-portage/portage-utils
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~mschiff/src/restart-services/restart-services-0.17.0.tgz
+_md5_=a8a50c9064e1dff5afe32ee6c064ac8a
