@@ -25,14 +25,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	>=dev-libs/libfmt-5.3.0:=
+	>=dev-libs/libfmt-6.1.2:=
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/${P}-libfmt-7.0.0.patch"
-	"${FILESDIR}/${P}-tests-fix.patch"
-)
 
 src_prepare() {
 	cmake_src_prepare

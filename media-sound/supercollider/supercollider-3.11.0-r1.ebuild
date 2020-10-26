@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake readme.gentoo-r1 xdg-utils
+inherit cmake flag-o-matic readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="An environment and a programming language for real time audio synthesis."
 HOMEPAGE="https://supercollider.github.io/"
@@ -104,6 +104,8 @@ src_configure() {
 		-DSN_MEMORY_DEBUGGING=ON
 		-DGC_SANITYCHECK=ON
 	)
+
+	append-flags $(usex debug '' -DNDEBUG)
 
 	cmake_src_configure
 }
