@@ -231,15 +231,6 @@ games-board/spider
 # Removal in 30 days.  Bug #714636.
 net-voip/telepathy-haze
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# These packages still require Python 2.7, or are dependencies of py2.7
-# packages.  They are either dead upstream, their Python 3 porting
-# efforts are not progressing or their maintainers are simply
-# unresponsive.  Please do not remove any packages from this list unless
-# you actually port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-games-arcade/diameter
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
 # matures more.
