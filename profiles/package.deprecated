@@ -28,11 +28,6 @@ dev-perl/ZMQ-LibZMQ2
 dev-perl/ZMQ-LibZMQ3
 <net-libs/zeromq-4
 
-# Joonas Niilola <juippis@gentoo.org> (2020-07-13)
-# Abandoned upstream, switch to dev-python/mysqlclient which is a maintained 
-# fork. #710024
-dev-python/mysql-python
-
 # Mart Raudsepp <leio@gentoo.org> (2020-07-04)
 # Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
 x11-libs/wxGTK:3.0

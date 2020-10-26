@@ -243,11 +243,6 @@ games-board/gnome-hearts
 net-analyzer/sguil-server
 net-analyzer/tcpflow
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# Dead Python 2-only package.  No significant revdeps left.
-# Removal in 30 days.  Bug #710024.
-dev-python/mysql-python
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
 # matures more.
