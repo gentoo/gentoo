@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Objective CAML interface for OpenGL"
-HOMEPAGE="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgl.html"
+HOMEPAGE="https://github.com/garrigue/lablgl"
 SRC_URI="https://github.com/garrigue/lablgl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -29,6 +29,8 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_configure() {
 	# make configuration file
