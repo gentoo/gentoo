@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/ocaml-4.08.0:= virtual/latex-base dev-texlive/texlive-latexext
 DESCRIPTION=O'Caml literate programming tool
 EAPI=7
 HOMEPAGE=https://www.lri.fr/~filliatr/ocamlweb/
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc x86
+KEYWORDS=~amd64 ~arm ~arm64 ppc x86
 LICENSE=LGPL-2
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=https://www.lri.fr/~filliatr/ftp/ocamlweb/ocamlweb-1.41.tar.gz
 _eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
-_md5_=78fef9a541d5aec17311c33375ff9d3d
+_md5_=e2839f66dd701ff0a031e01dc2cec787
