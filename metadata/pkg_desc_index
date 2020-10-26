@@ -12404,7 +12404,7 @@ mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple messa
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.5.6 3.5.7 3.6_pre20201003: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.6 3.5.7 3.6_pre20201025: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.4.4 1.4.5: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
@@ -14352,7 +14352,7 @@ net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.13-r1 2.0.0 2.0.1 2.0.2 2.0.2-r1 2.0.3 2.0.4: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.13-r1 2.0.1 2.0.2 2.0.2-r1 2.0.3 2.0.4 2.0.5: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 5.0.4 6.0.0 6.0.0-r100: High performance Network IDS, IPS and Network Security Monitoring engine
