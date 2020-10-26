@@ -12189,7 +12189,7 @@ kde-frameworks/kxmlrpcclient 5.74.0 5.75.0: Framework providing client-side supp
 kde-frameworks/modemmanager-qt 5.74.0 5.75.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.74.0 5.75.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.74.0 5.75.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.74.0-r1 5.75.0: Plasma framework
+kde-frameworks/plasma 5.74.0-r1 5.75.0-r1: Plasma framework
 kde-frameworks/prison 5.74.0 5.75.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.74.0 5.75.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.74.0-r1 5.75.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
