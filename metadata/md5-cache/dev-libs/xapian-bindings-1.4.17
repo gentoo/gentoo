@@ -5,11 +5,11 @@ DESCRIPTION=SWIG and JNI bindings for Xapian
 EAPI=7
 HOMEPAGE=https://www.xapian.org/
 IUSE=java lua mono perl php python ruby tcl elibc_FreeBSD java php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ruby_targets_ruby25 ruby_targets_ruby26
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/xapian-1.4.15 lua? ( dev-lang/lua:= ) perl? ( dev-lang/perl:= ) php? ( dev-lang/php:=[-threads] ) python? ( dev-python/sphinx[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_6? ( dev-lang/python:3.6[threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] ) ruby? ( ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ) tcl? ( dev-lang/tcl:= ) mono? ( dev-lang/mono ) java? ( >=virtual/jre-1.6 ) java? ( >=dev-java/java-config-2.2.0-r3 ) php? ( php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) )
 REQUIRED_USE=|| ( java lua mono perl php python ruby tcl ) python? ( || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) ) ruby? ( || ( ruby_targets_ruby25 ruby_targets_ruby26 ) ) php? ( || ( php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 ) )
 SLOT=0
 SRC_URI=https://oligarchy.co.uk/xapian/1.4.17/xapian-bindings-1.4.17.tar.xz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	ec7a89849c84f93e9c6db27812923888	libtool	f143db5a74ccd9ca28c1234deffede96	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ac07da55769a67fb2cc20d8b995ef285
+_md5_=3131e19870bcfd78c07dd9a1c0940d50
