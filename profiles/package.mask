@@ -268,7 +268,6 @@ games-strategy/glob2
 net-vpn/freelan
 sci-geosciences/mapnik
 sci-visualization/nonolith-connect
-sys-apps/lcdtest
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
