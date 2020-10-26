@@ -23,18 +23,18 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {
+	default
+
 	if ! use doc; then
 		sed -i -e '/^SUBDIRS.*=/s#doc##' Makefile.am \
 			-e 's#^doc/Makefile.##' configure.ac || die "sed failed"
 	fi
 
 	eautoreconf
-	default
 }
 
 src_configure() {
 	econf --enable-static=$(usex static-libs) $(use_enable debug) $(use_enable demos)
-	default
 }
 
 src_install() {
