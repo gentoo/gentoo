@@ -51,7 +51,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit perforce +perl +ppcsha1 tk +threads +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit perforce +perl +ppcsha1 subversion tk +threads +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -93,6 +93,11 @@ RDEPEND="${DEPEND}
 			dev-perl/HTML-Tree
 			dev-perl/MediaWiki-API
 		)
+		subversion? (
+			dev-vcs/subversion[-dso(-),perl]
+			dev-perl/libwww-perl
+			dev-perl/TermReadKey
+		)
 	)
 	perforce? ( ${PYTHON_DEPS} )
 "
@@ -126,9 +131,10 @@ REQUIRED_USE="
 	cvs? ( perl )
 	mediawiki? ( perl )
 	mediawiki-experimental? ( mediawiki )
-	webdav? ( curl )
 	pcre-jit? ( pcre )
 	perforce? ( ${PYTHON_REQUIRED_USE} )
+	subversion? ( perl )
+	webdav? ( curl )
 "
 
 RESTRICT="!test? ( test )"
@@ -142,6 +148,12 @@ PATCHES=(
 )
 
 pkg_setup() {
+	if use subversion && has_version "dev-vcs/subversion[dso]" ; then
+		ewarn "Per Gentoo bugs #223747, #238586, when subversion is built"
+		ewarn "with USE=dso, there may be weird crashes in git-svn. You"
+		ewarn "have been warned."
+	fi
+
 	if use perforce ; then
 		python-single-r1_pkg_setup
 	fi
@@ -160,6 +172,7 @@ exportmakeopts() {
 		$(usex nls '' NO_GETTEXT=YesPlease)
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 		$(usex perforce '' NO_PYTHON=YesPlease)
+		$(usex subversion '' NO_SVN_TESTS=YesPlease)
 		$(usex threads '' NO_PTHREADS=YesPlease)
 		$(usex tk '' NO_TCLTK=YesPlease)
 	)
@@ -514,6 +527,11 @@ src_install() {
 		done
 	else
 		rm -rf "${ED}"/usr/share/gitweb
+	fi
+
+	if ! use subversion ; then
+		rm -f "${ED}"/usr/libexec/git-core/git-svn \
+			"${ED}"/usr/share/man/man1/git-svn.1*
 	fi
 
 	if use xinetd ; then

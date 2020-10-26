@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/fmtlib/fmt/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/fmt-${PV}"
 fi
 
@@ -27,6 +27,7 @@ RDEPEND=""
 RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
+	filter-flags "-flto*" # https://github.com/fmtlib/fmt/issues/1955
 	local mycmakeargs=(
 		-DFMT_CMAKE_DIR="$(get_libdir)/cmake/fmt"
 		-DFMT_LIB_DIR="$(get_libdir)"

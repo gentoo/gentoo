@@ -5,8 +5,8 @@ EAPI=7
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-KFMIN=5.72.0
-QTMIN=5.14.2
+KFMIN=5.74.0
+QTMIN=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="freesound gles2-only semantic-desktop share v4l"
+IUSE="gles2-only semantic-desktop share v4l webengine"
 
 BDEPEND="
 	sys-devel/gettext
@@ -57,10 +57,10 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=media-libs/mlt-6.20.0[ffmpeg,frei0r,kdenlive,melt,qt5,sdl,xml]
-	freesound? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	semantic-desktop? ( >=kde-frameworks/kfilemetadata-${KFMIN}:5 )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	v4l? ( media-libs/libv4l )
+	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
@@ -69,12 +69,14 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test" # segfaults, bug 684132
 
+PATCHES=( "${FILESDIR}/${PN}-20.08.3-webengine.patch" ) # pending upstream
+
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package freesound Qt5WebKitWidgets)
 		$(cmake_use_find_package semantic-desktop KF5FileMetaData)
 		$(cmake_use_find_package share KF5Purpose)
 		$(cmake_use_find_package v4l LibV4L2)
+		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
 	)
 
 	ecm_src_configure
