@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-26)
+# It should be possible to build without webrtc, but it fails now
+# so force webrtc (and alsa+pulse) for now
+>=net-im/telegram-desktop-2.4.4 alsa pulseaudio webrtc
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # sys-boot/udk is being removed, and newest revision of refind does not
 # support it already.
