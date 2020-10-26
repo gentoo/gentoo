@@ -5590,7 +5590,7 @@ dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compress
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/softhsm 2.5.0 2.6.1: A software PKCS#11 implementation
 dev-libs/sord 0.16.6 9999: Library for storing RDF data in memory
-dev-libs/spdlog 1.5.0-r1 1.6.1 1.6.1-r1 1.7.0 9999: Very fast, header only, C++ logging library
+dev-libs/spdlog 1.5.0-r1 1.7.0 1.8.1 9999: Very fast, header only, C++ logging library
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6-r1: Unified runtime system for heterogeneous multicore architectures
@@ -13874,7 +13874,7 @@ media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
-media-sound/supercollider 3.11.0: An environment and a programming language for real time audio synthesis.
+media-sound/supercollider 3.11.0-r1: An environment and a programming language for real time audio synthesis.
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r2: A simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
@@ -14916,7 +14916,7 @@ net-mail/sendEmail 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r5: A serialmail is a collection of tools for passing mail across serial links
 net-mail/signify 1.14: A (semi-)random e-mail signature rotator
 net-mail/smtptools 0.2.3-r1: A collection of tools to send or receive mails with SMTP
-net-mail/swaks 20130209.0-r1 20190914.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
+net-mail/swaks 20130209.0-r1 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.18: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
@@ -16196,7 +16196,7 @@ sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid model
 sci-libs/octomap 1.9.0 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.9-r1 0.3.10: Optimized BLAS library based on GotoBLAS2
-sci-libs/opencascade 7.4.0-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.5.4 0.7.0: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.3.1-r1 1.4.0 9999: Kinematics and Dynamics Library (KDL)
@@ -18741,7 +18741,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20200824 0_pre20201018: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20201018: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
