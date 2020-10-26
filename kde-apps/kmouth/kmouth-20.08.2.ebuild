@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Text-to-speech synthesizer front end"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kmouth"
+HOMEPAGE="https://apps.kde.org/en/kmouth"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

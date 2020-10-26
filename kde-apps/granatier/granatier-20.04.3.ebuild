@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE Bomberman game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.granatier"
+HOMEPAGE="https://apps.kde.org/en/granatier"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

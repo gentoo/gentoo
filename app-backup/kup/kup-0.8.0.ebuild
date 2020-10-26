@@ -7,7 +7,7 @@ ECM_HANDBOOK="forceoptional"
 inherit ecm kde.org
 
 DESCRIPTION="Backup scheduler for the Plasma desktop"
-HOMEPAGE="https://www.linux-apps.com/p/1127689"
+HOMEPAGE="https://apps.kde.org/en/kup"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"

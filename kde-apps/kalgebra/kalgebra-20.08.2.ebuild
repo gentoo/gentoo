@@ -10,8 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="MathML-based 2D and 3D graph calculator by KDE"
-HOMEPAGE="https://kde.org/applications/education/org.kde.kalgebra
-https://edu.kde.org/kalgebra/"
+HOMEPAGE="https://apps.kde.org/en/kalgebra https://edu.kde.org/kalgebra/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

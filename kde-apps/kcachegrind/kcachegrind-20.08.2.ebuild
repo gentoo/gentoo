@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Frontend for Cachegrind by KDE"
-HOMEPAGE="https://kde.org/applications/development/org.kde.kcachegrind
+HOMEPAGE="https://apps.kde.org/en/kcachegrind
 https://kcachegrind.github.io/html/Home.html"
 
 LICENSE="GPL-2"

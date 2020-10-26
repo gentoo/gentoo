@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Scientific data analysis and visualisation based on KDE Frameworks"
-HOMEPAGE="https://labplot.kde.org/ https://kde.org/applications/education/org.kde.labplot2"
+HOMEPAGE="https://labplot.kde.org/ https://apps.kde.org/en/labplot2"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"

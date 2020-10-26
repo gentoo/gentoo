@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Battleship clone by KDE"
-HOMEPAGE="https://kde.org/applications/games/org.kde.knavalbattle
+HOMEPAGE="https://apps.kde.org/en/knavalbattle
 https://games.kde.org/game.php?game=kbattleship"
 
 LICENSE="GPL-2" # TODO: CHECK

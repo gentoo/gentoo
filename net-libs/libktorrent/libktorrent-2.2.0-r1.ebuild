@@ -11,8 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="BitTorrent library based on KDE Frameworks"
-HOMEPAGE="https://kde.org/applications/internet/org.kde.ktorrent
-https://userbase.kde.org/KTorrent"
+HOMEPAGE="https://apps.kde.org/en/ktorrent https://userbase.kde.org/KTorrent"
 SRC_URI="mirror://kde/stable/ktorrent/5.2.0/${P}.tar.xz"
 
 LICENSE="GPL-2+"

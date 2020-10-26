@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Minigolf game by KDE"
-HOMEPAGE="https://kde.org/applications/games/org.kde.kolf
+HOMEPAGE="https://apps.kde.org/en/kolf
 https://games.kde.org/game.php?game=kolf"
 
 LICENSE="GPL-2" # TODO: CHECK

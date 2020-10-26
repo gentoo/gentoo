@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Application to create libraries of QPainterPath objects with rendering hints"
-HOMEPAGE="https://kde.org/applications/graphics/org.kde.SymbolEditor
+HOMEPAGE="https://apps.kde.org/en/SymbolEditor
 https://userbase.kde.org/SymbolEditor"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then

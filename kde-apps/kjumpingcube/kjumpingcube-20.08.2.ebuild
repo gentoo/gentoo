@@ -11,7 +11,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Tactical one or two player game"
-HOMEPAGE="https://kde.org/applications/games/org.kde.kjumpingcube
+HOMEPAGE="https://apps.kde.org/en/kjumpingcube
 https://games.kde.org/game.php?game=kjumpingcube"
 
 LICENSE="GPL-2" # TODO: CHECK

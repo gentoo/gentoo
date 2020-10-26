@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Tool visualising massif data"
-HOMEPAGE="https://kde.org/applications/development/org.kde.massif-visualizer"
+HOMEPAGE="https://apps.kde.org/en/massif-visualizer"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"

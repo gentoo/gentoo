@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Little tool to execute programs after some time"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.ktimer
+HOMEPAGE="https://apps.kde.org/en/ktimer
 https://utils.kde.org/projects/ktimer/"
 
 LICENSE="GPL-2" # TODO: CHECK

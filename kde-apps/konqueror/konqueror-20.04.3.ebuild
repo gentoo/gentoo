@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit flag-o-matic ecm kde.org
 
 DESCRIPTION="Web browser and file manager based on KDE Frameworks"
-HOMEPAGE="https://kde.org/applications/internet/org.kde.konqueror"
+HOMEPAGE="https://apps.kde.org/en/konqueror"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

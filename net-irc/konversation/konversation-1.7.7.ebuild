@@ -4,17 +4,20 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-KFMIN=5.70.0
-QTMIN=5.12.3
+KFMIN=5.74.0
+QTMIN=5.15.1
 inherit ecm kde.org
 
 DESCRIPTION="User friendly IRC Client"
-HOMEPAGE="https://konversation.kde.org"
-SRC_URI="mirror://kde/stable/${PN}/${PV/_/-}/src/${P/_/-}.tar.xz"
+HOMEPAGE="https://konversation.kde.org https://apps.kde.org/en/konversation"
+
+if [[ ${KDE_BUILD_TYPE} == release ]]; then
+	SRC_URI="mirror://kde/stable/${PN}/${PV/_/-}/src/${P/_/-}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+crypt"
 
 BDEPEND="sys-devel/gettext"
@@ -51,14 +54,14 @@ DEPEND="
 	crypt? ( >=app-crypt/qca-2.3.0:2 )
 "
 RDEPEND="${DEPEND}
+	>=dev-qt/qtsvg-${QTMIN}:5
 	crypt? ( >=app-crypt/qca-2.3.0:2[ssl] )
 "
 
 PATCHES=(
 	# git master
-	"${FILESDIR}"/${PN}-1.7.5-kf5bookmarks-5.69.patch
 	"${FILESDIR}"/${PN}-1.7.5-unused-kemoticons.patch
-	"${FILESDIR}"/${P}-no-kiconthemes.patch
+	"${FILESDIR}"/${PN}-1.7.6-no-kiconthemes.patch
 )
 
 src_configure() {

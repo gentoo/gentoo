@@ -8,7 +8,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE color selector/editor"
-HOMEPAGE="https://kde.org/applications/graphics/org.kde.kcolorchooser"
+HOMEPAGE="https://apps.kde.org/en/kcolorchooser"
 
 LICENSE="MIT"
 SLOT="5"

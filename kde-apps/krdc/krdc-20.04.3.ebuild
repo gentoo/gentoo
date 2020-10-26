@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Remote desktop connection (RDP and VNC) client"
-HOMEPAGE="https://kde.org/applications/internet/org.kde.krdc"
+HOMEPAGE="https://apps.kde.org/en/krdc"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

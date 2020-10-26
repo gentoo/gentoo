@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Application to enable/disable qCDebug"
-HOMEPAGE="https://kde.org/applications/development/org.kde.kdebugsettings"
+HOMEPAGE="https://apps.kde.org/en/kdebugsettings"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

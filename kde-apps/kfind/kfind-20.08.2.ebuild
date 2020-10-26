@@ -9,7 +9,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="File finder utility based on KDE Frameworks"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kfind"
+HOMEPAGE="https://apps.kde.org/en/kfind"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

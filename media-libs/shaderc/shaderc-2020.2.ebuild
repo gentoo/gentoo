@@ -70,6 +70,7 @@ src_prepare() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DSHADERC_SKIP_TESTS="$(usex !test)"
+		-DSHADERC_ENABLE_WERROR_COMPILE="false"
 	)
 	cmake_src_configure
 }

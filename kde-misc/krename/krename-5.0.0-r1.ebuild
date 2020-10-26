@@ -9,8 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Powerful batch file renamer"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.krename
-https://userbase.kde.org/KRename"
+HOMEPAGE="https://apps.kde.org/en/krename https://userbase.kde.org/KRename"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"

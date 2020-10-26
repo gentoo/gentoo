@@ -9,11 +9,11 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Utility for management of disks, partitions and file systems"
-HOMEPAGE="https://kde.org/applications/en/partitionmanager"
+HOMEPAGE="https://apps.kde.org/en/partitionmanager"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="GPL-3"

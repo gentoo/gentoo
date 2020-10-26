@@ -8,7 +8,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="KPart for rendering Markdown content"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.kmarkdownwebviewpart"
+HOMEPAGE="https://apps.kde.org/en/kmarkdownwebviewpart"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="!webkit? ( BSD ) LGPL-2.1+"

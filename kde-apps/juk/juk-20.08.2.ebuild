@@ -10,7 +10,7 @@ QTMIN=5.14.2
 inherit ecm kde.org
 
 DESCRIPTION="Jukebox and music manager by KDE"
-HOMEPAGE="https://kde.org/applications/multimedia/org.kde.juk"
+HOMEPAGE="https://apps.kde.org/en/juk"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

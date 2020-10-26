@@ -10,8 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Small utility which bothers you at certain intervals"
-HOMEPAGE="https://kde.org/applications/utilities/org.kde.rsibreak
-https://userbase.kde.org/RSIBreak"
+HOMEPAGE="https://apps.kde.org/en/rsibreak https://userbase.kde.org/RSIBreak"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.xz"

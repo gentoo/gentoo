@@ -10,11 +10,11 @@ inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Library for managing partitions"
-HOMEPAGE="https://kde.org/applications/en/partitionmanager"
+HOMEPAGE="https://apps.kde.org/en/partitionmanager"
 
 LICENSE="GPL-3"
 SLOT="5/10"
