@@ -17395,7 +17395,7 @@ sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2 2.0.2 2.1.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
-sys-fs/mtools 4.0.18-r2 4.0.23 4.0.24: utilities to access MS-DOS disks from Unix without mounting them
+sys-fs/mtools 4.0.24 4.0.25: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.8.3-r2 0.8.4: Device mapper target autoconfig
 sys-fs/ncdu 1.14.2 1.15 1.15.1: NCurses Disk Usage
