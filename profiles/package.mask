@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-10-26)
+# This packages makes little sense without sci-geosciences/mapnik.
+# It has not been updated in 11 years, so it has been useless anyway.
+# Removal in 14 days.  Bug #559060.
+sci-geosciences/mapnik-world-boundaries
+
 # Wiliam Hubbs <williamh@gentoo.org> (2020-10-26)
 # Combining kubernetes into one package breaks upgrades, so it is split
 # into separate packages. You need to upgrade and install the following
@@ -230,45 +236,6 @@ games-board/spider
 # readily available.
 # Removal in 30 days.  Bug #714636.
 net-voip/telepathy-haze
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# These packages still require Python 2.7, or are dependencies of py2.7
-# packages.  They are either dead upstream, their Python 3 porting
-# efforts are not progressing or their maintainers are simply
-# unresponsive.  Please do not remove any packages from this list unless
-# you actually port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-games-arcade/diameter
-games-board/gnome-hearts
-net-analyzer/sguil-server
-net-analyzer/tcpflow
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# Dead Python 2-only package.  No significant revdeps left.
-# Removal in 30 days.  Bug #710024.
-dev-python/mysql-python
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# Python 2.7 backport with no revdeps left.
-# Removal in 30 days.  Bug #734636.
-dev-python/singledispatch
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# These packages either use obsolete scons-utils.eclass API that
-# does not support Python 3, or do not support Python 3 at all.
-# Their maintainers are unresponsive.  Please do not remove any packages
-# from this list unless you actually port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #635934.
-dev-libs/mongo-cxx-driver
-games-action/btanks
-games-emulation/gambatte
-games-sports/vdrift
-games-strategy/endless-sky
-games-strategy/glob2
-net-vpn/freelan
-sci-geosciences/mapnik
-sci-visualization/nonolith-connect
-sys-apps/lcdtest
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
