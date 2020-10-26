@@ -31,7 +31,7 @@ RDEPEND="
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/libXi
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X]
 "
 BDEPEND="dev-util/patchelf"
 
