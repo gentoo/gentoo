@@ -1,8 +1,32 @@
-https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
+
+# HG changeset patch
+# User Daiki Ueno <dueno@redhat.com>
+# Date 1603691171 -3600
+# Node ID b03a4fc5b902498414b02640dcb2717dfef9682f
+# Parent  6f79a76958129dc09c353c288f115fd9a51ab7d4
+Bug 1672703, always tolerate the first CCS in TLS 1.3, r=mt
+
+Summary:
+This flips the meaning of the flag for checking excessive CCS
+messages, so it only rejects multiple CCS messages while the first CCS
+message is always accepted.
+
+Reviewers: mt
+
+Reviewed By: mt
+
+Bug #: 1672703
+
+Differential Revision: https://phabricator.services.mozilla.com/D94603
 
 --- a/gtests/ssl_gtest/ssl_tls13compat_unittest.cc
 +++ b/gtests/ssl_gtest/ssl_tls13compat_unittest.cc
-@@ -348,8 +348,8 @@
+@@ -343,29 +343,28 @@ TEST_F(TlsConnectStreamTls13, ChangeCiph
+   // Client sends CCS before starting the handshake.
+   client_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));
+   client_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));
+   ConnectExpectAlert(server_, kTlsAlertUnexpectedMessage);
+   server_->CheckErrorCode(SSL_ERROR_RX_UNEXPECTED_CHANGE_CIPHER);
    client_->CheckErrorCode(SSL_ERROR_HANDSHAKE_UNEXPECTED_ALERT);
  }
  
@@ -13,7 +37,8 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
  TEST_F(TlsConnectStreamTls13, ChangeCipherSpecAfterClientHelloEmptySid) {
    EnsureTlsSetup();
    ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_3);
-@@ -358,9 +358,8 @@
+ 
+   StartConnect();
    client_->Handshake();  // Send ClientHello
    client_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));  // Send CCS
  
@@ -25,7 +50,17 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
  }
  
  // The server rejects multiple ChangeCipherSpec even if the client
-@@ -381,7 +380,7 @@
+ // indicates compatibility mode with non-empty session ID.
+ TEST_F(Tls13CompatTest, ChangeCipherSpecAfterClientHelloTwice) {
+   EnsureTlsSetup();
+   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_3);
+   EnableCompatMode();
+@@ -376,36 +375,37 @@ TEST_F(Tls13CompatTest, ChangeCipherSpec
+   client_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));
+   client_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));
+ 
+   server_->ExpectSendAlert(kTlsAlertUnexpectedMessage);
+   server_->Handshake();  // Consume ClientHello and CCS.
    server_->CheckErrorCode(SSL_ERROR_RX_MALFORMED_CHANGE_CIPHER);
  }
  
@@ -34,7 +69,16 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
  // session ID.
  TEST_F(TlsConnectStreamTls13, ChangeCipherSpecAfterServerHelloEmptySid) {
    EnsureTlsSetup();
-@@ -398,9 +397,10 @@
+   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_3);
+ 
+   // To replace Finished with a CCS below
+   auto filter = MakeTlsFilter<TlsHandshakeDropper>(server_);
+   filter->SetHandshakeTypes({kTlsHandshakeFinished});
+   filter->EnableDecryption();
+ 
+   StartConnect();
+   client_->Handshake();  // Send ClientHello
+   server_->Handshake();  // Consume ClientHello, and
                           // send ServerHello..CertificateVerify
    // Send CCS
    server_->SendDirect(DataBuffer(kCannedCcs, sizeof(kCannedCcs)));
@@ -48,9 +92,19 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
  }
  
  // The client rejects multiple ChangeCipherSpec in a row even if the
+ // client indicates compatibility mode with non-empty session ID.
+ TEST_F(Tls13CompatTest, ChangeCipherSpecAfterServerHelloTwice) {
+   EnsureTlsSetup();
+   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_3);
+   EnableCompatMode();
 --- a/lib/ssl/ssl3con.c
 +++ b/lib/ssl/ssl3con.c
-@@ -6645,11 +6645,7 @@
+@@ -6640,21 +6640,17 @@ ssl_CheckServerSessionIdCorrectness(sslS
+         if (sentFakeSid) {
+             return !sidMatch;
+         }
+         return PR_TRUE;
+     }
  
      /* TLS 1.3: We sent a session ID.  The server's should match. */
      if (!IS_DTLS(ss) && (sentRealSid || sentFakeSid)) {
@@ -63,7 +117,17 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
      }
  
      /* TLS 1.3 (no SID)/DTLS 1.3: The server shouldn't send a session ID. */
-@@ -8696,7 +8692,6 @@
+     return sidBytes->len == 0;
+ }
+ 
+ static SECStatus
+ ssl_CheckServerRandom(sslSocket *ss)
+@@ -8691,17 +8687,16 @@ ssl3_HandleClientHello(sslSocket *ss, PR
+         if (sidBytes.len > 0 && !IS_DTLS(ss)) {
+             SECITEM_FreeItem(&ss->ssl3.hs.fakeSid, PR_FALSE);
+             rv = SECITEM_CopyItem(NULL, &ss->ssl3.hs.fakeSid, &sidBytes);
+             if (rv != SECSuccess) {
+                 desc = internal_error;
                  errCode = PORT_GetError();
                  goto alert_loser;
              }
@@ -71,7 +135,17 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
          }
  
          /* TLS 1.3 requires that compression include only null. */
-@@ -13066,15 +13061,14 @@
+         if (comps.len != 1 || comps.data[0] != ssl_compression_null) {
+             goto alert_loser;
+         }
+ 
+         /* If there is a cookie, then this is a second ClientHello (TLS 1.3). */
+@@ -13061,25 +13056,24 @@ ssl3_HandleRecord(sslSocket *ss, SSL3Cip
+          * will fail if the server fails to negotiate compatibility mode in a
+          * 0-RTT session that is resumed from a session that did negotiate it.
+          * We don't care about that corner case right now. */
+         if (ss->version >= SSL_LIBRARY_VERSION_TLS_1_3 &&
+             cText->hdr[0] == ssl_ct_change_cipher_spec &&
              ss->ssl3.hs.ws != idle_handshake &&
              cText->buf->len == 1 &&
              cText->buf->buf[0] == change_cipher_spec_choice) {
@@ -94,9 +168,19 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
          }
  
          if ((IS_DTLS(ss) && !dtls13_AeadLimitReached(spec)) ||
+             (!IS_DTLS(ss) && ss->sec.isServer &&
+              ss->ssl3.hs.zeroRttIgnore == ssl_0rtt_ignore_trial)) {
+             /* Silently drop the packet unless we sent a fatal alert. */
+             if (ss->ssl3.fatalAlertSent) {
+                 return SECFailure;
 --- a/lib/ssl/sslimpl.h
 +++ b/lib/ssl/sslimpl.h
-@@ -710,10 +710,7 @@
+@@ -705,20 +705,17 @@ typedef struct SSL3HandshakeStateStr {
+     sslZeroRttIgnore zeroRttIgnore;       /* Are we ignoring 0-RTT? */
+     ssl3CipherSuite zeroRttSuite;         /* The cipher suite we used for 0-RTT. */
+     PRCList bufferedEarlyData;            /* Buffered TLS 1.3 early data
+                                            * on server.*/
+     PRBool helloRetry;                    /* True if HelloRetryRequest has been sent
                                             * or received. */
      PRBool receivedCcs;                   /* A server received ChangeCipherSpec
                                             * before the handshake started. */
@@ -108,4 +192,9 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1672703
      PRBool clientCertRequested;           /* True if CertificateRequest received. */
      PRBool endOfFlight;                   /* Processed a full flight (DTLS 1.3). */
      ssl3KEADef kea_def_mutable;           /* Used to hold the writable kea_def
+                                            * we use for TLS 1.3 */
+     PRUint16 ticketNonce;                 /* A counter we use for tickets. */
+     SECItem fakeSid;                      /* ... (server) the SID the client used. */
+ 
+     /* rttEstimate is used to guess the round trip time between server and client.
 
