@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples"
 
@@ -15,8 +15,8 @@ SRC_URI="${MY_P}-ri.zip"
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE=""
 
+BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip"
 RDEPEND=">=virtual/jre-1.4"
@@ -42,9 +42,11 @@ pkg_nofetch() {
 
 src_install() {
 	java-pkg_dojar lib/*.jar
+
 	if use doc; then
 		java-pkg_dojavadoc doc/api
 		java-pkg_dohtml -r doc/doc doc/index.html
 	fi
+
 	use examples && java-pkg_doexamples examples
 }

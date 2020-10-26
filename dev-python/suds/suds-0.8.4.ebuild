@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 
 # https://github.com/suds-community/suds/pull/40
 PATCHES=( "${FILESDIR}/${P}-fix-optimization.patch" )
