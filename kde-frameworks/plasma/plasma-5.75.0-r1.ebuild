@@ -61,6 +61,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-krunner-terribly-slow-input.patch # KDE-Bug 426746
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2-only OpenGL)
