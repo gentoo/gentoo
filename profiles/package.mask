@@ -253,14 +253,6 @@ dev-python/mysql-python
 # Removal in 30 days.  Bug #734636.
 dev-python/singledispatch
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# These packages either use obsolete scons-utils.eclass API that
-# does not support Python 3, or do not support Python 3 at all.
-# Their maintainers are unresponsive.  Please do not remove any packages
-# from this list unless you actually port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #635934.
-dev-libs/mongo-cxx-driver
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
 # matures more.
