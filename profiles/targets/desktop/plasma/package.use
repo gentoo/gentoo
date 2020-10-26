@@ -4,6 +4,9 @@
 # Required by sys-apps/fwupd, a dependency of kde-plasma/discover
 dev-libs/libjcat gpg pkcs7
 
+# Required by sys-apps/flatpak, a dependency of kde-plasma/discover
+dev-util/ostree curl
+
 # Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools
 
