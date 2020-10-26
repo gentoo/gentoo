@@ -82,6 +82,13 @@ inherit multiprocessing
 # @DESCRIPTION:
 # List of additional components needed for tests.
 
+# @ECLASS-VARIABLE: LLVM_MANPAGES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Set to 'build', include the dependency on dev-python/sphinx to build
+# the manpages.  If set to 'pregenerated', fetch and install
+# pregenerated manpages from the archive.
+
 
 # == global scope logic ==
 
@@ -117,6 +124,26 @@ llvm.org_set_globals() {
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
 	fi
+
+	case ${LLVM_MANPAGES:-__unset__} in
+		__unset__)
+			# no manpage support
+			;;
+		build)
+			IUSE+=" doc"
+			# NB: this is not always the correct dep but it does no harm
+			BDEPEND+=" dev-python/sphinx"
+			;;
+		pregenerated)
+			IUSE+=" doc"
+			SRC_URI+="
+				!doc? (
+					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
+				)"
+			;;
+		*)
+			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
+	esac
 
 	# === useful defaults for cmake-based packages ===
 
@@ -203,4 +230,24 @@ llvm.org_src_prepare() {
 # list form (;-separated).
 get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+}
+
+# @FUNCTION: llvm_are_manpages_built
+# @DESCRIPTION:
+# Return true (0) if manpages are going to be built from source,
+# false (1) if preinstalled manpages will be used.
+llvm_are_manpages_built() {
+	use doc || [[ ${LLVM_MANPAGES} == build ]]
+}
+
+# @FUNCTION: llvm_install_manpages
+# @DESCRIPTION:
+# Install pregenerated manpages if available.  No-op otherwise.
+llvm_install_manpages() {
+	# install pre-generated manpages
+	if ! llvm_are_manpages_built; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
+	fi
 }
