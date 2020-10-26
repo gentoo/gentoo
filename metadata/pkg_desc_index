@@ -2784,7 +2784,7 @@ app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+
 app-text/convmv 2.04 2.05 2.05-r1: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor
 app-text/coolreader 3.2.2.1-r2 3.2.39 3.2.45 3.2.49: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
-app-text/cpdf 2.3 2.3.1: A command line tool for manipulating PDF files
+app-text/cpdf 2.3.1: A command line tool for manipulating PDF files
 app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
 app-text/csvfix 1.6: A stream editor for manipulating CSV files
@@ -5725,7 +5725,7 @@ dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1 4.10_p1 4.11_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 7.11 7.12: A preprocessor-pretty-printer of ocaml
-dev-ml/camlpdf 2.3 2.3.1: OCaml library for reading, writing, and modifying PDF files
+dev-ml/camlpdf 2.3.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r2 1.0.2: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cinaps 0.14.0: Trivial metaprogramming tool
@@ -5899,7 +5899,7 @@ dev-ml/uutf 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 0.9.0 0.14.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.4.0: JSON parsing and pretty-printing library for OCaml
-dev-ml/zarith 1.7 1.9.1: Arithmetic and logic operations over arbitrary-precision integers
+dev-ml/zarith 1.7 1.9.1 1.10: Arithmetic and logic operations over arbitrary-precision integers
 dev-perl/Ace 1.920.0-r6: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r2: Represent a series of changes in annotate form
