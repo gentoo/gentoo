@@ -233,11 +233,6 @@ sys-auth/pam_passwdqc
 dev-dotnet/mono-addins
 media-gfx/pinta
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-09-27)
-# Obsolete package blocking unmasking of >=x11-libs/pango-1.44, dead upstream.
-# No reverse dependencies, bug #698922. Removal in 30 days.
-x11-libs/pangox-compat
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-03)
 # Package with no available HOMEPAGE, SRC_URI and multiple compilation issues.
 # Bug #741468, removal in 30 days.
