@@ -29,17 +29,18 @@ RDEPEND="
 
 DISABLE_AUTOFORMATTING=true
 DOC_CONTENTS="\
-To use zram-init, activate it in your kernel and add it to the default runlevel:
+To use zram-init, activate it in your kernel and add it to the default
+runlevel:
 	rc-update add zram-init default
 If you use systemd enable zram_swap, zram_tmp, and/or zram_var_tmp with
-systemctl. You might need to modify the following file depending on the
-number of devices that you want to create:
+systemctl. You might need to modify the following file depending on the number
+of devices that you want to create:
 	/etc/modprobe.d/zram.conf.
-If you use the \$TMPDIR as zram device with OpenRC, you should add zram-init
-to the boot runlevel:
+If you use the \$TMPDIR as zram device with OpenRC, you should add zram-init to
+the boot runlevel:
 	rc-update add zram-init boot
-Still for the same case, you should add in the OpenRC configuration file
-for the services using \$TMPDIR the following line:
+Still for the same case, you should add in the OpenRC configuration file for
+the services using \$TMPDIR the following line:
 	rc_need=\"zram-init\""
 
 src_prepare() {
@@ -64,7 +65,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	emake DESTDIR="${ED}" PREFIX="/usr" SYSCONFDIR="/etc" \
-		BINDIR="${ED}/sbin" install
+		BINDIR="${ED}/sbin" SYSTEMDDIR="${ED}/lib/systemd/system" install
 }
 
 pkg_postinst() {
