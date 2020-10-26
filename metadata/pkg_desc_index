@@ -5507,7 +5507,6 @@ dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrat
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
-dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mpc 1.2.0 1.2.1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.1.0: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 3.2.0 3.3.0: MessagePack is a binary-based efficient data interchange format
@@ -7991,7 +7990,7 @@ dev-python/coverage 4.5.4 5.2.1 5.3: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
-dev-python/cryptography 3.0-r1 3.1-r1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.0-r1 3.1-r1 3.2: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8363,7 +8362,7 @@ dev-python/mako 1.1.3-r1: A Python templating language
 dev-python/mamba 0.11.0 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3 3.3.1 3.3.2: Python implementation of the markdown markup language
+dev-python/markdown 2.6.11 3.1.1-r1 3.2.2 3.3 3.3.1 3.3.2 3.3.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.9 2.3.10: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -8411,7 +8410,6 @@ dev-python/mygpoclient 1.8: A gpodder.net client library
 dev-python/mypy 0.781 0.782: Optional static typing for Python
 dev-python/mypy_extensions 0.4.3-r1: Optional static typing for Python
 dev-python/mysql-connector-python 8.0.21 8.0.22: Python client library for MariaDB/MySQL
-dev-python/mysql-python 1.2.5-r3: Python interface to MySQL
 dev-python/mysqlclient 1.4.6-r1: Fork of MySQL-python
 dev-python/nagiosplugin 1.3.2-r1: A class library for writing nagios-compatible plugins
 dev-python/namespace-google 1-r1: Namespace package declaration for google
@@ -9013,7 +9011,6 @@ dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.13: Object-oriented, process-based discrete-event simulation language
-dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.19.22-r1 4.19.24: Python extension module generator for C and C++ libraries
 dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
@@ -10933,7 +10930,6 @@ games-action/battalion 1.4b-r1: Be a rampaging monster and destroy the city
 games-action/beathazardultra 20130308-r2: Intense music-driven arcade shooter powered by your music
 games-action/bomberclone 0.11.9: Bomberman clone with network game support
 games-action/brutal-legend 20130615-r2: Unleash the power of Heavy Metal to reign down fire from the sky
-games-action/btanks 0.9.8083: Fast 2D tank arcade game with multiplayer and split-screen modes
 games-action/bzflag 2.4.12 2.4.14 2.4.16 2.4.18 2.4.20: 3D tank combat simulator game
 games-action/chickens 0.2.4-r1: Target chickens with rockets and shotguns. Funny
 games-action/chromium-bsu 0.9.15.1-r1: Chromium B.S.U. - an arcade game
@@ -11031,7 +11027,6 @@ games-arcade/cosmosmash 1.4.7-r1: A space rock shooting video game
 games-arcade/crack-attack 1.1.14-r2: Addictive OpenGL-based block game
 games-arcade/criticalmass 1.0.2-r1: SDL/OpenGL space shoot'em up game
 games-arcade/defendguin 0.0.12-r1: A clone of the arcade game Defender, but with a Linux theme
-games-arcade/diameter 0.4.0.3-r2: Arcade game with elements of economy and adventure
 games-arcade/digger 20140423-r1: Digger Remastered
 games-arcade/dynamitejack 1.0.23-r1: A stealth game with bombs in glorious 2D
 games-arcade/emilia-pinball 0.3.1-r1: SDL OpenGL pinball game
@@ -11143,7 +11138,6 @@ games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.34.0 3.36.1: Play the classic two-player boardgame of chess
-games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.34.0 3.36.2: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.34.0 3.36.1: Clear hidden mines from a minefield
 games-board/gnubg 1.06.002-r1: GNU BackGammon
@@ -11200,7 +11194,6 @@ games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 3
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
 games-emulation/fceux 2.2.3-r2: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
-games-emulation/gambatte 0.5.0_p20131102-r2: An accuracy-focused Gameboy / Gameboy Color emulator
 games-emulation/gcube 0.4-r2: Gamecube emulator
 games-emulation/generator 0.35_p4-r1: Sega Genesis / Mega Drive emulator
 games-emulation/gens 2.15.5-r1: A Sega Genesis/CD/32X emulator
@@ -11607,7 +11600,6 @@ games-sports/torcs 1.3.6-r1: The Open Racing Car Simulator
 games-sports/trigger 0.6.1-r1: Free OpenGL rally car racing game
 games-sports/trophy 2.0.3-r1: 2D Racing Game
 games-sports/ultimatestunts 0.7.7-r1: Remake of the famous Stunts game
-games-sports/vdrift 20120722: A driving simulation made with drift racing in mind
 games-sports/xmoto 0.6.1-r1: A challenging 2D motocross platform game, where physics play an important role
 games-strategy/0ad 0.0.23_alpha 0.0.23b_alpha: A free, real-time strategy game
 games-strategy/0ad-data 0.0.23_alpha 0.0.23b_alpha: Data files for 0ad
@@ -11621,13 +11613,11 @@ games-strategy/defcon-demo 1.60-r1: Global thermonuclear war simulation with mul
 games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.5.12-r3: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
-games-strategy/endless-sky 0.9.6: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.12 2.6.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
-games-strategy/glob2 0.9.4.4-r2: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/hedgewars 1.0.0-r1: A turn-based strategy, artillery, action and comedy game
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
@@ -14332,7 +14322,6 @@ net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04 5.05 5.06: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/sguil-client 1.0.0: GUI Console for sguil Network Security Monitoring
 net-analyzer/sguil-sensor 1.0.0: Sensor part of sguil Network Security Monitoring
-net-analyzer/sguil-server 1.0.0: Daemon for Sguil Network Security Monitoring
 net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
 net-analyzer/siphon 666-r1 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
@@ -14360,7 +14349,6 @@ net-analyzer/symon 2.87 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.01 5.02: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
 net-analyzer/tcpdump 4.9.3-r2 4.9.3-r3 4.10.0_rc1-r1 9999: A Tool for network monitoring and data acquisition
-net-analyzer/tcpflow 1.5.2-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5-r1 1.3.6: Check if a desired port is reachable via TCP
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
@@ -15416,7 +15404,6 @@ net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
-net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.45 0.9.47: A privacy-centric, anonymous network
 net-vpn/i2pd 2.31.0 2.32.0 2.32.1 2.33.0: A C++ daemon for accessing the I2P anonymous network
@@ -15981,7 +15968,6 @@ sci-geosciences/josm 10966 99999: Java-based editor for the OpenStreetMap projec
 sci-geosciences/laszip 3.4.1: Library for free and lossless compression of the LAS LiDAR format
 sci-geosciences/liblas 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
-sci-geosciences/mapnik 3.0.9-r1 3.0.18: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.6.0: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
@@ -16414,7 +16400,6 @@ sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.55-r4 2.56: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
 sci-visualization/labplot 2.7.0 9999: Scientific data analysis and visualisation based on KDE Frameworks
-sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
 sci-visualization/paraview 5.8.0-r3 5.8.1: Powerful scientific data visualization application
@@ -16826,7 +16811,6 @@ sys-apps/keyutils 1.6.1 1.6.3: Linux Key Management Utilities
 sys-apps/kmod 26-r5 27-r2 9999: library and tools for managing linux kernel modules
 sys-apps/kmscon 8-r1 8_p20180906 8_p20180906-r1: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
-sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
 sys-apps/less 551 562 563 563-r1: Excellent text file viewer
 sys-apps/likwid 4.3.3 4.3.4: A performance-oriented tool suite for x86 multicore environments

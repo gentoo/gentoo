@@ -7137,8 +7137,6 @@ sci-geosciences/grass:liblas - Include support for LAS and LAZ encoded LiDAR fil
 sci-geosciences/grass:opencl - Enable OpenCL support
 sci-geosciences/gshhs:data - Add earth data with sci-geosciences/gshhs-data
 sci-geosciences/liblas:gdal - Add support for the sci-libs/gdal geospatial raster library
-sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
-sci-geosciences/mapnik:osmfonts - Enable openstreetmaps font styles
 sci-geosciences/mapserver:apache - Enable mapserver to run under apache
 sci-geosciences/mapserver:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:postgis - Enable dev-db/postgis support
