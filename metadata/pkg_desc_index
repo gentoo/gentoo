@@ -17517,7 +17517,7 @@ sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
-sys-libs/libnih 1.0.3-r3 1.0.3-r4: Light-weight 'standard library' of C functions
+sys-libs/libnih 1.0.3-r4: Light-weight 'standard library' of C functions
 sys-libs/libomp 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.6.0 1.8.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus

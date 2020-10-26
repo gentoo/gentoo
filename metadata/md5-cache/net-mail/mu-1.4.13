@@ -5,10 +5,10 @@ DESCRIPTION=Set of tools to deal with Maildirs, in particular, searching and ind
 EAPI=7
 HOMEPAGE=https://www.djcbsoftware.nl/code/mu/ https://github.com/djcb/mu
 IUSE=emacs guile mug
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2= dev-libs/gmime:3.0= >=dev-libs/xapian-1.4:= emacs? ( >=app-editors/emacs-24.4:* ) guile? ( >=dev-scheme/guile-2.2:* ) mug? ( net-libs/webkit-gtk:4= x11-libs/gtk+:3= )
 SLOT=0
 SRC_URI=https://github.com/djcb/mu/archive/1.4.13.tar.gz -> mu-1.4.13.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	elisp-common	34cc2b6f6d8914019a353fe39cff43ce	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9ff7e9bea53bf9b777322bb9d0025123
+_md5_=42f76d74e042443013a121f11cf80a59
