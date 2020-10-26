@@ -150,6 +150,7 @@ llvm.org_src_unpack() {
 	if [[ ${_LLVM_SOURCE_TYPE} == git ]]; then
 		git-r3_fetch
 		git-r3_checkout '' . '' "${components[@]}"
+		default_src_unpack
 	else
 		local archive=llvmorg-${PV/_/-}.tar.gz
 		ebegin "Unpacking from ${archive}"
@@ -157,6 +158,12 @@ llvm.org_src_unpack() {
 			-f "${DISTDIR}/${archive}" \
 			"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
 		eend ${?}
+
+		# unpack all remaining distfiles
+		local x
+		for x in ${A}; do
+			[[ ${x} != ${archive} ]] && unpack "${x}"
+		done
 	fi
 }
 
