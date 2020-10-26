@@ -215,7 +215,11 @@ src_install() {
 	rm -rv "${ED}"/usr/share/doc/perf-tip || die
 
 	if use gtk; then
-		mv "${ED}"/usr/$(get_libdir)/libperf-gtk.so \
+		local libdir
+		libdir="$(get_libdir)"
+		# on some arches it ends up in lib even on 64bit, ppc64 for instance.
+		[[ "${ED}"/usr/lib/libperf-gtk.so ]] && libdir="lib"
+		mv "${ED}"/usr/${libdir}/libperf-gtk.so \
 			"${ED}"/usr/libexec/perf-core || die
 	fi
 
