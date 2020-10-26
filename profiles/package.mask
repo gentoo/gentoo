@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-10-26)
+# This packages makes little sense without sci-geosciences/mapnik.
+# It has not been updated in 11 years, so it has been useless anyway.
+# Removal in 14 days.  Bug #559060.
+sci-geosciences/mapnik-world-boundaries
+
 # Wiliam Hubbs <williamh@gentoo.org> (2020-10-26)
 # Combining kubernetes into one package breaks upgrades, so it is split
 # into separate packages. You need to upgrade and install the following
