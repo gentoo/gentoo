@@ -15,6 +15,7 @@ SRC_URI="https://updates.signal.org/desktop/apt/pool/main/s/${MY_PN}/${MY_PN}_${
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="+sound"
 
 BDEPEND="app-admin/chrpath"
 RDEPEND="
@@ -27,10 +28,6 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/mesa[X(+)]
-	|| (
-		media-sound/pulseaudio
-		media-sound/apulse[sdk]
-	)
 	net-print/cups
 	sys-apps/dbus[X]
 	x11-libs/cairo
@@ -49,6 +46,12 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/pango
+	sound? (
+		|| (
+			media-sound/pulseaudio
+			media-sound/apulse
+		)
+	)
 "
 
 QA_PREBUILT="opt/Signal/signal-desktop
@@ -61,7 +64,7 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/libvk_swiftshader.so
 	opt/Signal/swiftshader/libGLESv2.so
 	opt/Signal/resources/app.asar.unpacked/node_modules/curve25519-n/build/Release/curve.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/electron-v8.3-linux-x64/node_sqlite3.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/electron-v8.5-linux-x64/node_sqlite3.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/node_modules/ref-napi/build/Release/binding.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/build/Release/binding.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ringrtc/build/linux/libringrtc.node
@@ -90,6 +93,11 @@ src_install() {
 	dodoc changelog
 	doins -r opt
 	insinto /usr/share
+
+	if has_version media-sound/apulse[-sdk] && !has_version media-sound/pulseaudio; then
+		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop
+	fi
+
 	doins -r usr/share/applications
 	doins -r usr/share/icons
 	fperms +x /opt/Signal/signal-desktop /opt/Signal/chrome-sandbox
