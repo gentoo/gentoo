@@ -8,5 +8,6 @@
 	<use>
 		<flag name="freesound">Enable freesound.org credentials support via <pkg>dev-qt/qtwebkit</pkg> to download files</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
+		<flag name="webengine">Enable freesound.org credentials support via <pkg>dev-qt/qtwebengine</pkg> to download files</flag>
 	</use>
 </pkgmetadata>
