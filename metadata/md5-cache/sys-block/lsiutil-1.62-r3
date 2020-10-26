@@ -1,0 +1,11 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=LSI Logic Fusion MPT Command Line Interface management tool
+EAPI=7
+HOMEPAGE=https://www.broadcom.com/
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=LSI
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=https://docs.broadcom.com/docs-and-downloads/legacy-host-bus-adapters/legacy-host-bus-adapters-common-files/LSIUtil_1-62.zip
+_md5_=aa36cf4f1a9bd3a5c2d74fba8c1c65c4

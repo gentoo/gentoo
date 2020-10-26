@@ -13093,7 +13093,7 @@ media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
-media-libs/libopenmpt 0.5.2: Library to decode tracked music files (modules)
+media-libs/libopenmpt 0.5.3: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.0.9 0.1.2 0.1.3: A decoding library for RAW image formats
 media-libs/libopenshot 0.2.2 0.2.4_pre20190609 0.2.4 0.2.5: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502 0.1.9 0.2.0: Library for audio editing and playback used by OpenShot
@@ -13784,7 +13784,7 @@ media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
-media-sound/openmpt123 0.5.2: libopenmpt-based command line player for tracked music files (modules)
+media-sound/openmpt123 0.5.3: libopenmpt-based command line player for tracked music files (modules)
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5 1.6 9999: A PulseAudio NCurses mixer
@@ -17046,7 +17046,7 @@ sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Config Utility Command Line Int
 sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
 sys-block/libzbc 5.5.1: A library and tools for working with ZBC and ZAC disks
-sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
+sys-block/lsiutil 1.62-r3: LSI Logic Fusion MPT Command Line Interface management tool
 sys-block/mbuffer 20200505 20200929: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.14-r2 8.07.14-r3: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
