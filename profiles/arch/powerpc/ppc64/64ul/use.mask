@@ -25,7 +25,6 @@ pda
 prelude
 mono
 networkmanager
-ocamlopt
 
 # not tested on ppc64
 xmms2
