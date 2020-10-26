@@ -1,0 +1,45 @@
+From e0e7840a0307deaee7a0b63f341973f8e3508873 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Thu, 8 Oct 2020 16:35:39 +0200
+Subject: [PATCH] BusyIndicator: Do not rotate when invisible
+
+It seems like the "visible" property is catching there is the wrong one
+and would still rotate while invisible.
+
+CCBUG: 426746
+
+From d578c2a1540a52ff9ccbb0658dc24b9be394bbd9 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 17 Oct 2020 13:45:15 +0200
+Subject: [PATCH] Fix BusyIndicator rotating even when invisible, again
+
+After "BusyIndicator: Do not rotate when invisible", plasmashell started
+consuming 100% CPU due to plasma-nm's icon having an invisible BusyIndicator.
+Adding the "visible" property back into the equation avoids this.
+
+Third time's the charm?
+---
+ src/declarativeimports/plasmacomponents3/BusyIndicator.qml | 3 +-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/declarativeimports/plasmacomponents3/BusyIndicator.qml b/src/declarativeimports/plasmacomponents3/BusyIndicator.qml
+index ec4ccaf13..6321d88cf 100644
+--- a/src/declarativeimports/plasmacomponents3/BusyIndicator.qml
++++ b/src/declarativeimports/plasmacomponents3/BusyIndicator.qml
+@@ -25,6 +25,7 @@
+     padding: 0
+ 
+     contentItem: Item {
++        id: baseItem
+         /* implicitWidth and implicitHeight won't work unless they come
+          * from a child of the contentItem. No idea why.
+          */
+@@ -61,7 +62,7 @@
+                 to: 360
+                 duration: 2000
+                 loops: Animation.Infinite
+-                running: visible
++                running: visible && (control.running || baseItem.opacity > 0)
+             }
+         }
+     }
