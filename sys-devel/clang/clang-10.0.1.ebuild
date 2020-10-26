@@ -10,7 +10,7 @@ inherit cmake llvm llvm.org multilib-minimal pax-utils \
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( clang clang-tools-extra )
-LLVM_MANPAGES=build
+LLVM_MANPAGES=pregenerated
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
