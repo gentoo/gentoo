@@ -11,7 +11,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
@@ -20,7 +20,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-gnuinstalldirs.patch
+	"${FILESDIR}"/${P}-llvm11-{1,2}.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
