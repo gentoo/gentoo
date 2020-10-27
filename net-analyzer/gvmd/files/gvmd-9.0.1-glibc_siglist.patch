@@ -1,0 +1,82 @@
+# Solve Gentoo Bug 740558 : Replace deprecated sys_siglist with strsignal
+--- ./src/manage.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/manage.c	2020-10-27 13:32:20.423421085 +0100
+@@ -3283,7 +3283,7 @@
+               {
+                 g_debug ("%s: Received %s signal.",
+                          __FUNCTION__,
+-                         sys_siglist[get_termination_signal()]);
++                         strsignal(get_termination_signal()));
+               }
+             if (global_current_report)
+               {
+@@ -3305,7 +3305,7 @@
+         {
+           g_debug ("%s: Received %s signal.",
+                    __FUNCTION__,
+-                   sys_siglist[get_termination_signal()]);
++                   strsignal(get_termination_signal()));
+           if (global_current_report)
+             {
+               set_report_scan_run_status (global_current_report,
+--- ./src/gvmd.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/gvmd.c	2020-10-27 13:34:47.606424207 +0100
+@@ -922,7 +922,7 @@
+   if (sigaction (signal, &action, NULL) == -1)
+     {
+       g_critical ("%s: failed to register %s handler",
+-                  __FUNCTION__, sys_siglist[signal]);
++                  __FUNCTION__, strsignal(termination_signal));
+       exit (EXIT_FAILURE);
+     }
+ }
+@@ -953,7 +953,7 @@
+   if (sigaction (signal, &action, NULL) == -1)
+     {
+       g_critical ("%s: failed to register %s handler",
+-                  __FUNCTION__, sys_siglist[signal]);
++                  __FUNCTION__, strsignal(termination_signal));
+       exit (EXIT_FAILURE);
+     }
+ }
+@@ -1258,7 +1258,7 @@
+       if (termination_signal)
+         {
+           g_debug ("Received %s signal",
+-                   sys_siglist[termination_signal]);
++                   strsignal(termination_signal));
+           cleanup ();
+           /* Raise signal again, to exit with the correct return value. */
+           setup_signal_handler (termination_signal, SIG_DFL, 0);
+@@ -1347,7 +1347,7 @@
+       if (termination_signal)
+         {
+           g_debug ("Received %s signal",
+-                   sys_siglist[termination_signal]);
++                   strsignal(termination_signal));
+           cleanup ();
+           /* Raise signal again, to exit with the correct return value. */
+           setup_signal_handler (termination_signal, SIG_DFL, 0);
+--- ./src/manage_sql.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/manage_sql.c	2020-10-27 13:36:19.071426148 +0100
+@@ -18711,7 +18711,7 @@
+ void
+ manage_cleanup_process_error (int signal)
+ {
+-  g_debug ("Received %s signal", sys_siglist[signal]);
++  g_debug ("Received %s signal", strsignal(signal));
+   if (sql_is_open ())
+     {
+       if (current_scanner_task)
+--- ./src/gmpd.c	2020-05-12 18:54:26.000000000 +0200
++++ ./src/gmpd.c	2020-10-27 13:46:29.687439101 +0100
+@@ -496,8 +496,7 @@
+         {
+           g_debug ("%s: Received %s signal.",
+                    __FUNCTION__,
+-                   sys_siglist[get_termination_signal()]);
+-
++                   strsignal(get_termination_signal()));
+           goto client_free;
+         }
+ 
