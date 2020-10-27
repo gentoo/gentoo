@@ -27,6 +27,7 @@ RDEPEND="!games-engines/zoom
 	dev-qt/qtdiag:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtgui:5
+	dev-qt/qtlocation:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtscript:5
@@ -65,7 +66,7 @@ src_prepare() {
 src_install() {
 	insinto /opt/zoom
 	exeinto /opt/zoom
-	doins -r json sip timezones translations
+	doins -r json ringtone sip timezones translations
 	doins *.pcm *.pem *.sh Embedded.properties version.txt
 	doexe zoom zoom.sh zopen ZoomLauncher
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
