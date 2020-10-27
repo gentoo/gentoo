@@ -18,7 +18,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="emoji ibus +kaccounts scim +semantic-desktop"
+IUSE="emoji ibus +kaccounts +policykit scim +semantic-desktop"
 
 BDEPEND="virtual/pkgconfig"
 COMMON_DEPEND="
@@ -111,10 +111,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-plasma/breeze-${PVCUT}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 	>=kde-plasma/oxygen-${PVCUT}:5
-	sys-apps/accountsservice
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	kaccounts? ( net-libs/signon-oauth2 )
+	policykit? ( sys-apps/accountsservice )
 "
 
 PATCHES=(
@@ -123,6 +123,8 @@ PATCHES=(
 
 src_prepare() {
 	ecm_src_prepare
+
+	use policykit || cmake_run_in kcms cmake_comment_add_subdirectory users
 
 	if ! use ibus; then
 		sed -e "s/Qt5X11Extras_FOUND AND XCB_XCB_FOUND AND XCB_KEYSYMS_FOUND/false/" \

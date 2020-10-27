@@ -5,7 +5,6 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.74.0
-PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.1
 inherit ecm kde.org
 
@@ -21,7 +20,6 @@ DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
@@ -35,3 +33,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	x11-themes/sound-theme-freedesktop
 "
+
+src_prepare() {
+	ecm_src_prepare
+	ecm_punt_bogus_dep Qt5 Widgets
+}
