@@ -10,7 +10,6 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="DAV protocol implemention with KJobs"
-HOMEPAGE="https://api.kde.org/frameworks/kdav/html/index.html"
 
 LICENSE="LGPL-2+"
 SLOT="5"
