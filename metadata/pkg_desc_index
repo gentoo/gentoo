@@ -17157,7 +17157,7 @@ sys-cluster/kubeadm 1.17.11 1.17.12 1.17.13 1.18.8 1.18.9 1.18.10 1.19.1 1.19.2 
 sys-cluster/kubectl 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: CLI to run commands against Kubernetes clusters
 sys-cluster/kubelet 1.17.3 1.17.4 1.17.12 1.17.13 1.18.9 1.18.10 1.19.2 1.19.3: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
-sys-cluster/kubernetes 1.17.9 1.17.11 1.18.6 1.18.8 1.19.0 1.19.1: production-grade container orchestration
+sys-cluster/kubernetes 1.17.9 1.18.6: production-grade container orchestration
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.5 1.9.0 2.0.1: Library providing high performance logging, tracing, ipc, and poll
