@@ -1,6 +1,4 @@
 <?php
-/* Autoloader for composer/ca-bundle and its dependencies */
-
 if (!class_exists('Fedora\\Autoloader\\Autoload', false)) {
     require_once 'Fedora/Autoloader/autoload.php';
 }
