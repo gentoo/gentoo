@@ -8,7 +8,7 @@ DESCRIPTION="Modernized DOSBox soft-fork"
 HOMEPAGE="https://dosbox-staging.github.io/"
 SRC_URI="https://github.com/dosbox-staging/dosbox-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug dynrec network opengl opus"
