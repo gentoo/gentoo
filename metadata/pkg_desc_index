@@ -5577,7 +5577,7 @@ dev-libs/rocm-device-libs 3.7.0 3.8.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.8.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.8.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 3.7.0 3.8.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/roct-thunk-interface 3.7.0 3.8.0 3.9.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.27 0.30 0.31: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.2.0 9.2.0 9.3.0: Simulation Description Format (SDF) parser
