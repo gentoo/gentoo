@@ -18421,7 +18421,7 @@ x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab wi
 x11-misc/sux 1.0-r4 1.0.1: "su" wrapper which transfers X credentials
 x11-misc/svkbd 0.2 0.2.1: Simple Virtual Keyboard
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
-x11-misc/sxhkd 0.6.1: Simple X hotkey daemon
+x11-misc/sxhkd 0.6.1 0.6.2: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tdrop 0.3.0 9999: WM-Independent Dropdown Creator
@@ -18864,7 +18864,7 @@ x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.22.01_p20200826: Amiga Workbench inspired window manager for Xorg
 x11-wm/awesome 3.5.9-r3 4.2-r3 4.3-r1 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1 0.75 0.76: A small, fast, full-featured window manager for X
-x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
+x11-wm/bspwm 0.9.9 0.9.10: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.2 9999: a dynamic window manager for X11
