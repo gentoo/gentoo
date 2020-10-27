@@ -22,7 +22,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="GPL-3-with-openssl-exception LGPL-2+ webrtc? ( BSD )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa +dbus enchant +gtk +hunspell libressl +pulseaudio +spell +webrtc +X"
+IUSE="+alsa +dbus enchant +gtk +hunspell libressl lto +pulseaudio +spell +webrtc +X"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -104,7 +104,11 @@ build_tg_owt() {
 	einfo "Building tg_owt / webrtc"
 	mkdir -v "${WORKDIR}/tg_owt_build" || die
 	pushd "${WORKDIR}/tg_owt_build" > /dev/null || die
-	cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DTG_OWT_PACKAGED_BUILD=ON ../tg_owt || die
+	cmake -G Ninja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DTG_OWT_PACKAGED_BUILD=ON \
+		$(usex lto "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON" '') \
+		../tg_owt || die
 	eninja
 	popd > /dev/null || die
 }
@@ -114,6 +118,7 @@ src_configure() {
 		-Wno-deprecated-declarations
 		-Wno-error=deprecated-declarations
 		-Wno-switch
+		-Wno-unknown-warning-option
 	)
 
 	append-cxxflags "${mycxxflags[@]}"
@@ -138,6 +143,7 @@ src_configure() {
 		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell (recommended)
 		-DDESKTOP_APP_DISABLE_WEBRTC_INTEGRATION="$(usex webrtc OFF ON)" # requires pulse AND alsa
 		-DDESKTOP_APP_USE_ENCHANT="$(usex enchant ON OFF)" # enables enchant and disables hunspell
+		$(usex lto "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON" '')
 		$(usex webrtc "-Dtg_owt_DIR=${WORKDIR}/tg_owt_build" '')
 	)
 
