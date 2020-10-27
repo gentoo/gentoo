@@ -63,7 +63,7 @@ SRC_URI="https://gitlab.com/orobardet/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 S="${WORKDIR}/${PN}-v${PV}"
 
