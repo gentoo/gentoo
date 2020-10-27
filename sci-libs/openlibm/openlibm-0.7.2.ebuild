@@ -10,7 +10,8 @@ HOMEPAGE="https://github.com/JuliaLang/openlibm"
 SRC_URI="https://github.com/JuliaMath/openlibm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain MIT ISC BSD-2 LGPL-2.1+"
-SLOT="0/${PV}.0"
+# See https://abi-laboratory.pro/index.php?view=timeline&l=openlibm
+SLOT="0/3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.7.2-make_inc.patch )
