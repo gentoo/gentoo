@@ -17551,7 +17551,7 @@ sys-libs/tevent 0.10.2: Samba tevent library
 sys-libs/timezone-data 2020a 2020b: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
-sys-libs/zlib 1.2.11-r2: Standard (de)compression library
+sys-libs/zlib 1.2.11-r2 1.2.11-r3: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0-r5 3.17-r2 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface
