@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop
+inherit autotools desktop flag-o-matic xdg
 
 DESCRIPTION="Modernized DOSBox soft-fork"
 HOMEPAGE="https://dosbox-staging.github.io/"
@@ -25,14 +25,13 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 DEPEND="${RDEPEND}"
 BDEPEND=""
 
-PATCHES=( "${FILESDIR}"/${P}-pthread.patch )
-
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
+	use debug || append-cppflags -DNDEBUG
 	econf \
 		$(use_enable alsa alsa-midi) \
 		$(use_enable debug) \
@@ -45,6 +44,6 @@ src_configure() {
 
 src_install() {
 	default
-	doicon contrib/icons/${PN}.svg
-	make_desktop_entry dosbox DOSBox-staging ${PN}
+	doicon -s scalable contrib/icons/${PN}.svg
+	domenu contrib/linux/dosbox-staging.desktop
 }
