@@ -238,12 +238,6 @@ media-gfx/pinta
 # Bug #741468, removal in 30 days.
 games-board/spider
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-27)
-# Discontinued upstream.  Not ported to Python 3, and no patches seem
-# readily available.
-# Removal in 30 days.  Bug #714636.
-net-voip/telepathy-haze
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
 # matures more.
