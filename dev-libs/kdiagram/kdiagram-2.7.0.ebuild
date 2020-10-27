@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Powerful libraries (KChart, KGantt) for creating business diagrams"
-HOMEPAGE="https://api.kde.org/extragear-api/graphics-apidocs/kdiagram/html/index.html
+HOMEPAGE="https://api.kde.org/kdiagram/index.html
 https://www.kdab.com/development-resources/qt-tools/kd-chart/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
