@@ -161,7 +161,7 @@ remove_dir_all-0.5.3
 reqwest-0.10.8
 rust-argon2-0.8.2
 rustc-demangle-0.1.18
-rustsec-0.22.1
+rustsec-0.22.2
 ryu-1.0.5
 schannel-0.1.19
 secrecy-0.6.0
