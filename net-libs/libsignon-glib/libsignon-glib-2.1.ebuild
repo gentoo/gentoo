@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
-HOMEPAGE="https://01.org/gsso/"
+HOMEPAGE="https://accounts-sso.gitlab.io/"
 SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
