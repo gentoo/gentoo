@@ -4,10 +4,10 @@ DEPEND=>=sys-apps/systemd-207
 DESCRIPTION=systemd integration files for Gentoo
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Systemd
-KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=>=sys-apps/systemd-207 !sys-fs/eudev !sys-fs/udev
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/gentoo-systemd-integration-8.tar.bz2
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7fbd5ad174a7199f2e35940b98b78a66
+_md5_=10ce4f26e2a141bd414279a86b9d5740

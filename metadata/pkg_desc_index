@@ -10611,7 +10611,7 @@ dev-util/devhelp 3.34.0 3.36.2: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 155: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 155 161: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -18218,7 +18218,6 @@ x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r3: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.42.4-r2 1.44.7: Internationalized text layout and rendering library
-x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.40.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.11.5: Qt port of Neil Hodgson's Scintilla C++ editor control
 x11-libs/qtermwidget 0.14.1 0.15.0 9999: Qt terminal emulator widget
