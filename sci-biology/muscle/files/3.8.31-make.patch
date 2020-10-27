@@ -1,7 +1,5 @@
-diff --git a/src/mk b/src/mk
-index 475d25a..d4b7e83 100755
---- a/src/mk
-+++ b/src/mk
+--- a/mk
++++ b/mk
 @@ -5,17 +5,14 @@ ObjNames='aligngivenpath.o aligngivenpathsw.o aligntwomsas.o aligntwoprofs.o aln
  rm -f *.o muscle.make.stdout.txt muscle.make.stderr.txt
  for CPPName in $CPPNames
