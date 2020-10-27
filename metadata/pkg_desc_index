@@ -15761,7 +15761,7 @@ sci-biology/pals 1.0-r1: Pairwise Aligner for Long Sequences
 sci-biology/paml 4.4c-r1: Phylogenetic Analysis by Maximum Likelihood
 sci-biology/phrap 1.080812-r2: Shotgun assembly and alignment utilities
 sci-biology/phred 071220-r1: A base caller for Sanger DNA sequencing
-sci-biology/phylip 3.69-r1 3.696-r1 3.696-r2: The PHYLogeny Inference Package
+sci-biology/phylip 3.698: The PHYLogeny Inference Package
 sci-biology/phyml 2.4.5-r3: Estimation of large phylogenies by maximum likelihood
 sci-biology/picard 1.103: Java-based command-line utilities that manipulate SAM files
 sci-biology/piler 1.0-r1: Analysis of repetitive DNA found in genome sequences
