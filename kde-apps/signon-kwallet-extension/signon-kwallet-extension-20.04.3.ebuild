@@ -7,11 +7,11 @@ KFMIN=5.70.0
 inherit ecm kde.org
 
 DESCRIPTION="KWallet extension for signond"
-HOMEPAGE="https://01.org/gsso/"
+HOMEPAGE="https://accounts-sso.gitlab.io/"
 
+LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="amd64 arm64 x86"
-LICENSE="GPL-2+"
 
 DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
