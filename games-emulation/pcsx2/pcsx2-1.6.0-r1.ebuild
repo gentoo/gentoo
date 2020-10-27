@@ -4,7 +4,7 @@
 EAPI=7
 MY_PV="${PV/_/-}"
 
-inherit cmake flag-o-matic multilib toolchain-funcs wxwidgets
+inherit cmake fcaps flag-o-matic multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
@@ -41,6 +41,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
+FILECAPS=(
+	"CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/PCSX2
+)
+
+PATCHES=(
+	"${FILESDIR}/${P}-disable-setcap.patch"
+)
+
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
 		# -mxsave flag is needed when GCC >= 8.2 is used
@@ -71,6 +79,7 @@ src_configure() {
 		-DARCH_FLAG=
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
+		-DDISABLE_SETCAP=TRUE
 		-DEXTRA_PLUGINS=FALSE
 		-DOPTIMIZATION_FLAG=
 		-DPACKAGE_MODE=TRUE
