@@ -12,7 +12,7 @@ SRC_URI="http://www.flintlib.org/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/14"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="doc ntl test"
 
 RESTRICT="!test? ( test )"
