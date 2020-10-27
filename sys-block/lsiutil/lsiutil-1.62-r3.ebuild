@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 RESTRICT="mirror bindist"
 
 BDEPEND="app-arch/unzip"
-QA_PRESTRIPPED="/opt/bin/lsiutil"
+
+QA_PREBUILT="*"
 
 S="${WORKDIR}"
 
