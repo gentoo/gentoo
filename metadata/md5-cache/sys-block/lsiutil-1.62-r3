@@ -8,4 +8,4 @@ LICENSE=LSI
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://docs.broadcom.com/docs-and-downloads/legacy-host-bus-adapters/legacy-host-bus-adapters-common-files/LSIUtil_1-62.zip
-_md5_=aa36cf4f1a9bd3a5c2d74fba8c1c65c4
+_md5_=31ffccdb80c8855e0d275fdf483575a0
