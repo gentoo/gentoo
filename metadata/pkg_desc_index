@@ -8659,7 +8659,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre18 2.0.0_pre22 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre18 2.0.0_pre22 2.0.0_pre24 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
@@ -15073,7 +15073,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1 1.0.6: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.22 1.6.6 1.6.7: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.22 1.6.6 1.6.7 1.6.8: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
@@ -15773,7 +15773,7 @@ sci-biology/primer3 2.3.7: Primer Design for PCR reactions
 sci-biology/prints 39.0-r1: A protein motif fingerprint database
 sci-biology/probcons 1.12-r1: Probabilistic Consistency-based Multiple Alignment of Amino Acid Sequences
 sci-biology/prodigal 2.6.3: Prokaryotic Dynamic Programming Genefinding Algorithm
-sci-biology/profphd 1.0.39 1.0.40: Secondary structure and solvent accessibility predictor
+sci-biology/profphd 1.0.40: Secondary structure and solvent accessibility predictor
 sci-biology/prosite 2017.02: A protein families and domains database
 sci-biology/psipred 3.4 3.5: Protein Secondary Structure Prediction
 sci-biology/pysam 0.16.0.1: Python interface for the SAM/BAM sequence alignment and mapping format
@@ -17127,7 +17127,7 @@ sys-cluster/ceph 12.2.12-r3 14.2.11 14.2.11-r1 14.2.12 15.2.4-r3 15.2.5-r1: Ceph
 sys-cluster/charliecloud 0.19 0.20 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 16.1.0 16.2.0 17.0.0 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 16.2.0 17.0.0 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 2.3.5 2.4.2 3.0.4: OSI Certified implementation of a complete cluster engine
@@ -17170,7 +17170,7 @@ sys-cluster/mpich 3.0.4 3.3: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 16.1.0 16.2.0 17.0.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
+sys-cluster/neutron 16.2.0 17.0.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 0.12.3 0.12.4 0.12.5: A simple and flexible workload orchestrator
 sys-cluster/nova 21.1.0 22.0.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
