@@ -8,6 +8,7 @@
 	<use>
 		<flag name="enchant">Enable the app-text/aspell spell-checking backend</flag>
 		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
+		<flag name="lto">Enable Link Time Optimization (LTO / IPO)</flag>
 		<flag name="webrtc">WebRTC based video call support</flag>
 	</use>
 </pkgmetadata>
