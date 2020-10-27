@@ -6,9 +6,9 @@ EAPI=7
 HOMEPAGE=https://dosbox-staging.github.io/
 IUSE=alsa debug dynrec network opengl opus
 KEYWORDS=~amd64 ~x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 RDEPEND=alsa? ( media-libs/alsa-lib ) debug? ( sys-libs/ncurses:0= ) network? ( media-libs/sdl2-net ) opengl? ( virtual/opengl ) opus? ( media-libs/opusfile ) media-libs/libpng:0= media-libs/libsdl2[joystick,opengl?,video,X] sys-libs/zlib !games-emulation/dosbox
 SLOT=0
 SRC_URI=https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.1.tar.gz -> dosbox-staging-0.75.1.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b34f0316b0f94a0620afcd33d0be410c
+_md5_=bb96c0c23121f457c2ba493f857af69b
