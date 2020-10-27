@@ -2537,7 +2537,7 @@ app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.4.1-r1 0.4.1-r2 0.4.2 0.4.3: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
-app-misc/vcontrold 0.98.5 0.98.6 0.98.8: Daemon for communication with Viessmann Vito heatings
+app-misc/vcontrold 0.98.8 0.98.10: Daemon for communication with Viessmann Vito heatings
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.10.1: Console file manager with vi(m)-like keybindings
 app-misc/vit 1.3: Perl/Curses front-end for Taskwarrior (app-misc/task)
@@ -11228,7 +11228,7 @@ games-emulation/mupen64plus-video-glide64mk2 2.5.9-r2: A fork of Mupen64 Nintend
 games-emulation/mupen64plus-video-rice 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
 games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
-games-emulation/pcsx2 1.4.0-r2 1.6.0 9999: A PlayStation 2 emulator
+games-emulation/pcsx2 1.4.0-r2 1.6.0-r1 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
 games-emulation/snes9x 1.59.2 1.60: Super Nintendo Entertainment System (SNES) emulator
@@ -15366,7 +15366,7 @@ net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 
 net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
 net-print/splix 2.0.0_p20130826 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
-net-proxy/3proxy 0.8.13: A really tiny cross-platform proxy servers set
+net-proxy/3proxy 0.8.13 0.9.0: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
@@ -15397,7 +15397,6 @@ net-proxy/tsocks 1.8_beta5-r8 1.8_beta5-r9: Transparent SOCKS v4 proxying librar
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
-net-voip/telepathy-haze 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0-r1: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r3: A link-local XMPP connection manager for Telepathy
 net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
