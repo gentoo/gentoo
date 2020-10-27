@@ -3579,6 +3579,7 @@ kde-misc/kmarkdownwebview:webkit - Use dev-qt/qtwebkit instead of dev-qt/qtweben
 kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
 kde-misc/tellico:yaz - Add support for searching Z39.50 databases
 kde-plasma/discover:firmware - Enable support for firmware upgrades using sys-apps/fwupd
+kde-plasma/discover:flatpak - Enable support for flatpak repositories using sys-apps/flatpak
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kdeplasma-addons:comic - Enable comic applet (requires deprecated kde-frameworks/kross)
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
@@ -3594,6 +3595,7 @@ kde-plasma/libksysguard:webengine - Enable display of detailed memory informatio
 kde-plasma/plasma-desktop:emoji - Build emojipicker applet using app-i18n/ibus and media-fonts/noto-emoji
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/plasma-desktop:kaccounts - Build the OpenDesktop integration plugin
+kde-plasma/plasma-desktop:policykit - Build the Users KCM using sys-apps/accountsservice and sys-auth/polkit
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-meta:browser-integration - Enable integration with Chrome/Firefox with browser extensions
 kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vaults integration

@@ -1,13 +1,14 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst prepare setup unpack
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=brotli? ( app-arch/brotli:= ) bzip2? ( >=app-arch/bzip2-1.0.2 ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] ) idn? ( net-dns/libidn:= ) lua? ( >=dev-lang/lua-5:0= ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) gnutls? ( net-libs/gnutls:= ) ) tre? ( dev-libs/tre ) X? ( x11-libs/libX11 x11-libs/libXt ) xml? ( >=dev-libs/expat-1.95.4 ) zlib? ( >=sys-libs/zlib-1.1.4 ) zstd? ( app-arch/zstd:= ) || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 )
 DESCRIPTION=Advanced and well-established text-mode web browser
 EAPI=7
 HOMEPAGE=http://elinks.or.cz/
-IUSE=bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6 libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd
+IUSE=bittorrent brotli bzip2 debug finger ftp gopher gnutls gpm guile idn ipv6 libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=brotli? ( app-arch/brotli:= ) bzip2? ( >=app-arch/bzip2-1.0.2 ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] ) idn? ( net-dns/libidn:= ) lua? ( >=dev-lang/lua-5:0= ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) gnutls? ( net-libs/gnutls:= ) ) tre? ( dev-libs/tre ) X? ( x11-libs/libX11 x11-libs/libXt ) xml? ( >=dev-libs/expat-1.95.4 ) zlib? ( >=sys-libs/zlib-1.1.4 ) zstd? ( app-arch/zstd:= )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=92ce78b1cf8534fe5bc132ab6c611b32
+SRC_URI=https://github.com/rkd77/felinks/archive/v0.13.5.tar.gz -> elinks-0.13.5.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=cf2e754baebfb3f36cdcd7a9ecfdf2dc
