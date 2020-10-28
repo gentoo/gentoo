@@ -25,7 +25,7 @@ RDEPEND="!<sys-apps/openrc-0.23
 
 src_prepare() {
 	default
-	hprefixify tmpfiles
+	hprefixify tmpfiles.sh
 }
 src_install() {
 	emake DESTDIR="${ED}" install
