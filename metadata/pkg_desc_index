@@ -7829,7 +7829,7 @@ dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0: File support for asyncio
-dev-python/aiohttp 3.6.2 3.7.0 3.7.1: http client/server for asyncio
+dev-python/aiohttp 3.6.2 3.7.0 3.7.1 3.7.2: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.3 0.5.4 0.5.5: SOCKS proxy connector for aiohttp
@@ -7913,8 +7913,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.59 1.15.1 1.15.10 1.15.18 1.16.1 1.16.2 1.16.3 1.16.4 1.16.5 9999: The AWS SDK for Python
-dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 1.19.4 1.19.5 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.59 1.15.1 1.15.10 1.15.18 1.16.1 1.16.2 1.16.3 1.16.4 1.16.5 1.16.6 9999: The AWS SDK for Python
+dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 1.19.4 1.19.5 1.19.6 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -7990,7 +7990,7 @@ dev-python/coverage 4.5.4 5.2.1 5.3: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
-dev-python/cryptography 3.0-r1 3.1-r1 3.2: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.0-r1 3.1-r1 3.2 3.2.1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8918,6 +8918,7 @@ dev-python/rarfile 3.1: Module for RAR archive reading
 dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/rcssmin 1.0.6: CSS minifier written in python.
 dev-python/rdflib 5.0.0: RDF library containing a triple store and parser/serializer
+dev-python/re-assert 1.1.0: Show where your regex match assertion failed
 dev-python/readme_renderer 26.0 27.0 28.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 2.1.0 2.1.1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
@@ -17443,8 +17444,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.9.0 5.9.1: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.64 5.4.64-r1 5.4.66 5.4.66-r1 5.4.68 5.4.68-r1 5.4.69 5.4.69-r1 5.4.70 5.4.70-r1 5.4.71 5.4.71-r1 5.4.72 5.4.72-r1 5.8.12 5.8.12-r1 5.8.13 5.8.13-r1 5.8.14 5.8.14-r1 5.8.15 5.8.15-r1 5.8.16 5.8.16-r1 5.9.0 5.9.0-r1 5.9.1 5.9.1-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.8.16 5.8.16-r1 5.9.1 5.9.1-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.9.0 5.9.1: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8 5.10_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17459,7 +17460,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the 
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.64 5.4.66 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.9.0 5.9.1: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.240 4.9.240 4.14.202 4.19.152 5.4.72 5.8.16 5.9.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
