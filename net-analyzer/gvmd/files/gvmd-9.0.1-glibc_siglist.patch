@@ -1,4 +1,18 @@
-# Solve Gentoo Bug 740558 : Replace deprecated sys_siglist with strsignal
+From ed07f5a23dd0644d0bbd3f2ddc1cec3b6ce922c6 Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Tue, 1 Sep 2020 10:03:34 +0200
+Subject: [PATCH] Replace deprecated sys_siglist with strsignal
+
+Required to work with glibc >= 2.32.
+
+https://sourceware.org/pipermail/libc-announce/2020/000029.html
+
+  The deprecated arrays sys_siglist, _sys_siglist, and sys_sigabbrev
+  are no longer available to newly linked binaries, and their declarations
+  have been removed from <string.h>. They are exported solely as
+  compatibility symbols to support old binaries. All programs should use
+  strsignal instead.
+
 --- ./src/manage.c	2020-05-12 18:54:26.000000000 +0200
 +++ ./src/manage.c	2020-10-27 13:32:20.423421085 +0100
 @@ -3283,7 +3283,7 @@
