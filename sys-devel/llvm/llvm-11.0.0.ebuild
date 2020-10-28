@@ -73,6 +73,12 @@ RDEPEND="${RDEPEND}
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
+PATCHES=(
+	# backport tensorflow finding fix (avoids broken automagic dep)
+	# https://bugs.gentoo.org/748444
+	"${FILESDIR}"/11.0.0/0001-backport-D88371-guard-find_library-tensorflow_c_api.patch
+)
+
 python_check_deps() {
 	use doc || return 0
 
