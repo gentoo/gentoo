@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://git.sr.ht/~sircmpwn/scdoc/archive/1.9.3.tar.gz -> scdoc-1.9.3.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7cfe9d430b9765315d1a95ce270705d2
+_md5_=a6a95838d1d5aa3162ab7225d33da28f
