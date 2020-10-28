@@ -218,7 +218,7 @@ src_install() {
 		local libdir
 		libdir="$(get_libdir)"
 		# on some arches it ends up in lib even on 64bit, ppc64 for instance.
-		[[ "${ED}"/usr/lib/libperf-gtk.so ]] && libdir="lib"
+		[[ -f "${ED}"/usr/lib/libperf-gtk.so ]] && libdir="lib"
 		mv "${ED}"/usr/${libdir}/libperf-gtk.so \
 			"${ED}"/usr/libexec/perf-core || die
 	fi
