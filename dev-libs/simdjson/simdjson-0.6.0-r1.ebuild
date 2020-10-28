@@ -10,11 +10,12 @@ HOMEPAGE="
 	https://simdjson.org/
 	https://github.com/simdjson/simdjson
 "
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~gyakovlev/distfiles/${P}-ppc64.patch.xz"
 
 LICENSE="Apache-2.0 Boost-1.0"
-SLOT="0/2"
-KEYWORDS="~amd64 ~x86"
+SLOT="0/4"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="test"
 
 BDEPEND="
@@ -24,6 +25,9 @@ BDEPEND="
 "
 
 RESTRICT="!test? ( test )"
+
+# applies cleanly from master, can be dropped on next release
+PATCHES=( "${WORKDIR}/${P}-ppc64.patch" )
 
 src_configure() {
 	local mycmakeargs=(
