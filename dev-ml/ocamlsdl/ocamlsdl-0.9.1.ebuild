@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit findlib eutils
+inherit findlib
 
 DESCRIPTION="OCaml SDL Bindings"
-
 HOMEPAGE="http://ocamlsdl.sourceforge.net"
 SRC_URI="mirror://sourceforge/ocamlsdl/${P}.tar.gz"
 LICENSE="LGPL-2"
@@ -25,18 +24,19 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/ocamlopt.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.1-ocamlopt.patch"
+	"${FILESDIR}/${PN}-0.9.1-fix-ocaml-4.09.0-compilation.patch"
+)
 
 src_configure() {
 	myconf=""
 	if use opengl; then
-		destdir=`ocamlfind printconf destdir`
-		lablgldir=`find ${destdir} -name "lablgl" -or -name "lablGL"`
+		destdir=$(ocamlfind printconf destdir)
+		lablgldir=$(find ${destdir} -name "lablgl" -or -name "lablGL")
 		if [ -z "${lablgldir}" ]; then
-			destdir=`ocamlc -where`
-			lablgldir=`find ${destdir} -name "lablgl" -or -name "lablGL"`
+			destdir=$(ocamlc -where)
+			lablgldir=$(find ${destdir} -name "lablgl" -or -name "lablGL")
 		fi
 
 		if [ ! -z "${lablgldir}" ]; then
@@ -47,8 +47,9 @@ src_configure() {
 	#use noimage && myconf="${myconf} --without-sdl-image"
 	#use nomixer && myconf="${myconf} --without-sdl-mixer"
 
-	econf $myconf \
-		`use_enable truetype sdl-ttf`
+	econf \
+		$myconf \
+		$(use_enable truetype sdl-ttf)
 }
 
 src_install() {
@@ -58,6 +59,7 @@ src_install() {
 	doinfo doc/*.info*
 
 	if use doc; then
-		dohtml doc/html/*
+		docinto html
+		dodoc doc/html/*
 	fi
 }
