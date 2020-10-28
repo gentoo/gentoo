@@ -5,10 +5,10 @@ DESCRIPTION=Simpler notation for fixed point literals
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_fixed_literal
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_fixed_literal/archive/v0.14.0.tar.gz -> ppx_fixed_literal-0.14.0.tar.gz
 _eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
-_md5_=89d5ca1a93eaf047bd717a6224c8e2c2
+_md5_=f5a6194ec4e5a59a6d9693d8ec38ac5c

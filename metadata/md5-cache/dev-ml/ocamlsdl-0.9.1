@@ -1,7 +1,7 @@
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=configure install
 DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt=] >=media-libs/libsdl-1.2 opengl? ( >=dev-ml/lablgl-0.98:= ) >=media-libs/sdl-mixer-1.2 >=media-libs/sdl-image-1.2 truetype? ( >=media-libs/sdl-ttf-2.0 ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=OCaml SDL Bindings
-EAPI=5
+EAPI=7
 HOMEPAGE=http://ocamlsdl.sourceforge.net
 IUSE=doc +ocamlopt opengl truetype
 KEYWORDS=~amd64 ppc x86
@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt=] >=media-libs/libsdl-1.2 opengl? ( >=dev-ml/lablgl-0.98:= ) >=media-libs/sdl-mixer-1.2 >=media-libs/sdl-image-1.2 truetype? ( >=media-libs/sdl-ttf-2.0 )
 SLOT=0/0.9.1
 SRC_URI=mirror://sourceforge/ocamlsdl/ocamlsdl-0.9.1.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	17c71a5d96323df925f9f6db1215668a	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=6b4377f10d5dfa660199599acf1b3503
+_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a
+_md5_=1a311da00e4c349e39769a3da3cd64ec

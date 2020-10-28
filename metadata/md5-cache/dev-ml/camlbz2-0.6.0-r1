@@ -4,10 +4,10 @@ DESCRIPTION=OCaml bindings for libbz (AKA, bzip2)
 EAPI=7
 HOMEPAGE=http://camlbz2.forge.ocamlcore.org/
 IUSE=doc
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=app-arch/bzip2 >=dev-lang/ocaml-3.12:=[ocamlopt]
 SLOT=0/0.6.0
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/72/camlbz2-0.6.0.tar.gz
 _eclasses_=findlib	17c71a5d96323df925f9f6db1215668a
-_md5_=f8db52688089e1e937605db9a05084dc
+_md5_=77d8981ef8618173c2fb7726df02d012

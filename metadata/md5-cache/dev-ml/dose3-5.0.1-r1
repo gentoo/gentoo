@@ -4,10 +4,10 @@ DESCRIPTION=Library to perform analysis on package repositories
 EAPI=7
 HOMEPAGE=http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose
 IUSE=+ocamlopt parmap zip bzip2 xml curl rpm4 test
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=LGPL-3
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/cudf:= >=dev-ml/extlib-1.7.0:= dev-ml/re:= parmap? ( dev-ml/parmap:= ) zip? ( dev-ml/camlzip:= ) bzip2? ( dev-ml/camlbz2:= ) >=dev-ml/ocamlgraph-1.8.6:= xml? ( dev-ml/ocaml-expat:= dev-ml/xml-light:= ) curl? ( dev-ml/ocurl:= ) rpm4? ( app-arch/rpm )
 RESTRICT=test
 SLOT=0/5.0.1
 SRC_URI=https://gforge.inria.fr/frs/download.php/file/36063/dose3-5.0.1.tar.gz
-_md5_=7a3430d1d4a21fd3eab9359dfbb2d466
+_md5_=0673432dee2bf94f2212fa6e01b5e75d
