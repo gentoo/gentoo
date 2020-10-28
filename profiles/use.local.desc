@@ -6032,7 +6032,6 @@ net-libs/libvncserver:filetransfer - Enable support for TightVNC's file transfer
 net-libs/libvncserver:gcrypt - Use dev-libs/libgcrypt as crypto backend
 net-libs/libvncserver:lzo - Enable LZO support via dev-libs/lzo instead of using internal miniLZO implementation
 net-libs/libwebsockets:access-log - Support generating Apache-compatible access logs
-net-libs/libwebsockets:cgi - Include CGI (spawn process with network-connected stdin/out/err) APIs
 net-libs/libwebsockets:client - The client part of the library and libwebsockets-test-client
 net-libs/libwebsockets:generic-sessions - With the Generic Sessions plugin
 net-libs/libwebsockets:http-proxy - Support for rewriting HTTP proxying
@@ -6045,9 +6044,7 @@ net-libs/libwebsockets:mbedtls - Use mbedTLS replacement for OpenSSL
 net-libs/libwebsockets:peer-limits - Track peers and restrict resources a single peer can allocate
 net-libs/libwebsockets:server-status - Support json + jscript server monitoring
 net-libs/libwebsockets:smtp - Provide SMTP support
-net-libs/libwebsockets:socks5 - Allow use of SOCKS5 proxy on client connections
 net-libs/libwebsockets:sqlite3 - Require SQLITE3 support
-net-libs/libwebsockets:zip - Support serving pre-zipped files
 net-libs/loudmouth:asyncns - Use net-libs/libasyncns for asynchronous name resolution.
 net-libs/loudmouth:openssl - Enable dev-libs/openssl support instead of gnutls (which is the default).
 net-libs/mbedtls:havege - Enable the HAVEGE random generator. Warning: the HAVEGE random generator is not suitable for virtualized environments
