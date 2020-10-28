@@ -45,6 +45,11 @@ BDEPEND="
 	)
 	test? ( dev-libs/cgreen )"
 
+PATCHES=(
+	# Replace deprecated glibc sys_siglist with strsignal 
+	"${FILESDIR}/${P}-glibc_siglist.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 9.0.0

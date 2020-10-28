@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop wrapper
 
-CTF_V="1.06"
-ROGUE_V="2.06"
-XATRIX_V="2.07"
+CTF_V="1.07"
+ROGUE_V="2.07"
+XATRIX_V="2.08"
 
 DESCRIPTION="Quake 2 engine focused on single player"
 HOMEPAGE="https://www.yamagi.org/quake2/"
@@ -15,17 +15,18 @@ SRC_URI="https://deponie.yamagi.org/quake2/quake2-${PV}.tar.xz
 	ctf? ( https://deponie.yamagi.org/quake2/quake2-ctf-${CTF_V}.tar.xz )
 	rogue? ( https://deponie.yamagi.org/quake2/quake2-rogue-${ROGUE_V}.tar.xz )
 	xatrix? ( https://deponie.yamagi.org/quake2/quake2-xatrix-${XATRIX_V}.tar.xz )"
+S="${WORKDIR}/quake2-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+client ctf dedicated openal +opengl rogue softrender xatrix"
 REQUIRED_USE="
 	|| ( client dedicated )
 	client? ( || ( opengl softrender ) )
 "
 
-COMMON_DEPEND="
+DEPEND="
 	client? (
 		media-libs/libsdl2[video]
 		!openal? ( media-libs/libsdl2[sound] )
@@ -35,18 +36,11 @@ COMMON_DEPEND="
 		)
 	)
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	client? ( openal? ( media-libs/openal ) )
 "
-DEPEND="${COMMON_DEPEND}"
 
-S="${WORKDIR}/quake2-${PV}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-respect-flags.patch
-	"${FILESDIR}"/${PN}-7.42-fno-common.patch
-)
-DOCS=( CHANGELOG README.md doc/. )
+DOCS=( CHANGELOG README.md doc )
 
 mymake() {
 	emake \
@@ -64,7 +58,7 @@ src_prepare() {
 
 		pushd "${WORKDIR}"/quake2-${addon}-* >/dev/null || die
 		if [[ ${addon} = ctf ]]; then
-			eapply -l -- "${FILESDIR}"/${PN}-addon-respect-flags-r2.patch
+			eapply -l -- "${FILESDIR}"/${PN}-addon-respect-flags-r4.patch
 		else
 			eapply -l -- "${FILESDIR}"/${PN}-addon-respect-flags-r3.patch
 		fi
