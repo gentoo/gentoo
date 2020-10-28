@@ -9015,7 +9015,7 @@ dev-python/sip 4.19.22-r1 4.19.24: Python extension module generator for C and C
 dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
-dev-python/slixmpp 1.4.2 1.5.2: Python 3 library for XMPP
+dev-python/slixmpp 1.4.2 1.5.2 9999: Python 3 library for XMPP
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 9999: misc common functionality and useful optimizations
@@ -17932,6 +17932,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web browser with ssl support
+www-client/microsoft-edge-dev 88.0.673.0: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
