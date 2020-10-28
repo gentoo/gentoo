@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202010-08">
+  <title>Mozilla Firefox, Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox and
+    Mozilla Thunderbird, the worst of which could result in the arbitrary
+    execution of code.
+  </synopsis>
+  <product type="ebuild">firefox,thunderbird</product>
+  <announced>2020-10-28</announced>
+  <revised count="1">2020-10-28</revised>
+  <bug>750446</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">82.0</unaffected>
+      <unaffected range="ge" slot="0/esr78">78.4.0</unaffected>
+      <vulnerable range="lt">82.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">82.0</unaffected>
+      <unaffected range="ge" slot="0/esr78">78.4.0</unaffected>
+      <vulnerable range="lt">82.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">78.4.0</unaffected>
+      <vulnerable range="lt">78.4.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">78.4.0</unaffected>
+      <vulnerable range="lt">78.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      project.
+    </p>
+    
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox and
+      Mozilla Thunderbird. Please review the CVE identifiers referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-82.0"
+    </code>
+    
+    <p>All Mozilla Firefox (bin) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-82.0"
+    </code>
+    
+    <p>All Mozilla Firefox ESR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/firefox-78.4.0:0/esr78"
+    </code>
+    
+    <p>All Mozilla Firefox ESR (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/firefox-bin-78.4.0:0/esr78"
+    </code>
+    
+    <p>All Mozilla Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-78.4.0"
+    </code>
+    
+    <p>All Mozilla Thunderbird (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-78.4.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15683">CVE-2020-15683</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15969">CVE-2020-15969</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-45/">
+      MFSA-2020-45
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-46/">
+      MFSA-2020-46
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-47/">
+      MFSA-2020-47
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-22T14:24:38Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-10-28T00:27:33Z">sam_c</metadata>
+</glsa>
