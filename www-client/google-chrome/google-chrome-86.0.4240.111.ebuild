@@ -7,7 +7,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
+inherit chromium-2 eutils pax-utils unpacker xdg-utils
 
 DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
@@ -118,16 +118,12 @@ src_install() {
 	pax-mark m "${CHROME_HOME}/chrome"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
