@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Wolfram Mathematica
+EAPI=7
+HOMEPAGE=https://www.wolfram.com/mathematica/
+IUSE=+doc
+KEYWORDS=-* ~amd64
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/freetype
+RESTRICT=strip mirror bindist fetch
+SLOT=0
+SRC_URI=Mathematica_12.1.0_LINUX.sh
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f5ad4d7e14ff9226e8064420c3c241e8
