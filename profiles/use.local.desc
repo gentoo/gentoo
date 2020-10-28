@@ -2816,6 +2816,7 @@ dev-util/geany-plugins:ctags - Enable ctags plugin
 dev-util/geany-plugins:debugger - Enable the debugger plugin which interfaces with sys-devel/gdb
 dev-util/geany-plugins:enchant - Enable spell checking using enchant
 dev-util/geany-plugins:gpg - Enable geanypg plugin which integrates GPG using app-crypt/gpgme
+dev-util/geany-plugins:gtk2 - Use GTK+2 instead of GTK+3
 dev-util/geany-plugins:gtk3 - Use GTK+3 instead of GTK+2
 dev-util/geany-plugins:gtkspell - Use gtkspell for dictionary support in GeanyVC
 dev-util/geany-plugins:markdown - Enable the markdown plugin
