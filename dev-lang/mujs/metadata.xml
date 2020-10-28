@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+		<description>Caretaker; feel free to share this pkg</description>
+	</maintainer>
 	<longdescription>
 		MuJS is a lightweight Javascript interpreter designed for embedding in
 		other software to extend them with scripting capabilities.
