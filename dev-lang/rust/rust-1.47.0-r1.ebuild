@@ -122,6 +122,7 @@ PATCHES=(
 	"${FILESDIR}"/1.47.0-libressl.patch
 	"${FILESDIR}"/1.46.0-don-t-create-prefix-at-time-of-check.patch
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
+	"${FILESDIR}"/1.47.0-llvm-tensorflow-fix.patch
 	"${FILESDIR}"/gentoo-musl-target-specs.patch
 )
 
