@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop wrapper
 
 CTF_V="1.07"
 ROGUE_V="2.07"
