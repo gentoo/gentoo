@@ -11,7 +11,6 @@ HOMEPAGE="http://www.softwareradiosystems.com"
 if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/srsLTE/srsLTE.git"
-	EGIT_BRANCH="next"
 else
 	inherit vcs-snapshot
 	KEYWORDS="~amd64 ~x86"
