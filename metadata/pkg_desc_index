@@ -17457,7 +17457,7 @@ sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot a
 sys-kernel/kergen 0.1.5: Kernel config generator
 sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022 99999999: Linux firmware files
+sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r1 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9: Linux system headers
 sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
@@ -18883,7 +18883,7 @@ x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.8.2 0.8.3 9999: A manual tiling window manager for X
 x11-wm/i3 4.14-r1 4.17.1-r1 4.18 4.18.1 4.18.2 4.18.3 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1-r2 4.17.1-r1 4.18.1 4.18.2: i3 fork with gaps and some more features
-x11-wm/icewm 1.7.0 1.8.2 1.8.3: Ice Window Manager with Themes
+x11-wm/icewm 1.7.0 1.8.3 1.9.0: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.5.0-r1 1.6.0 9999: Lumina desktop environment
