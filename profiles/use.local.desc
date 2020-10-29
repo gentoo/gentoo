@@ -2128,6 +2128,7 @@ dev-libs/libpcre2:recursion-limit - Limit match recursion to 8192; if disabled, 
 dev-libs/libpcre2:zlib - Add support for pcregrep command to search within gzip-compressed files (via sys-libs/zlib).
 dev-libs/libpeas:glade - Install the glade catalog
 dev-libs/libpeas:python - Build support for loading dev-lang/python plugins
+dev-libs/libpy:sparsehash - Include libpy wrappers for dev-cpp/sparsehash
 dev-libs/librdkafka:lz4 - Enable support for Kafka's LZ4 compression based on KIP-57 (uses app-arch/lz4)
 dev-libs/librelp:gnutls - Use GnuTLS
 dev-libs/librelp:libressl - Use LibreSSL

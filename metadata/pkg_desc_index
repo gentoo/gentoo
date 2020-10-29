@@ -924,7 +924,7 @@ app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 1.8.0 1.9.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.7 9999: An ACME Shell script
-app-crypt/acme-tiny 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
+app-crypt/acme-tiny 4.0.4 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.4e 2.4f: Encrypts data from stdin to stdout
@@ -2646,7 +2646,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.4 0.34.9 0.34.10: Search and query ebuilds
+app-portage/eix 0.34.4 0.34.9 0.34.10 0.34.11: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -4682,7 +4682,7 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.16.0: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea 3.16.0 3.17.0: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.16.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2 1.8.4-r1: FOSS Java browser plugin and Web Start implementation
@@ -5423,6 +5423,7 @@ dev-libs/libprelude 4.0.0 4.1.0 5.1.1 5.2.0: Prelude-SIEM Framework Library
 dev-libs/libpreludedb 4.0.0-r1 4.1.0-r1 5.1.0 5.2.0: Framework to easy access to the Prelude database
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.2: Library for password quality checking and generating random passwords
+dev-libs/libpy 0.2.5: Utilities for writing C++ extension modules
 dev-libs/libqtxdg 3.5.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.4.4 1.5.0 1.5.2: Apache Kafka C/C++ client library
@@ -5584,7 +5585,7 @@ dev-libs/sdformat 6.2.0 9.2.0 9.3.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.30.4 0.30.6: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02-r1: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
-dev-libs/simdjson 0.6.0: SIMD accelerated C++ JSON library
+dev-libs/simdjson 0.4.7 0.6.0-r1: SIMD accelerated C++ JSON library
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0 2.9.3.0: General-purpose libraries from skarnet.org
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
@@ -8242,7 +8243,7 @@ dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.7.0-r2 2.0.0: Read metadata from Python packages
-dev-python/importlib_resources 1.5.0-r2 3.2.0 3.2.1: Read resources from Python packages
+dev-python/importlib_resources 1.5.0-r2 3.2.0 3.3.0: Read resources from Python packages
 dev-python/imread 0.7.3: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -8336,6 +8337,7 @@ dev-python/libcloud 3.1.0: Unified Interface to the Cloud - python support libs
 dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
+dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.3: python api for tmux
 dev-python/libvirt-python 6.7.0 6.8.0 9999: libvirt Python bindings
@@ -8660,7 +8662,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre18 2.0.0_pre22 2.0.0_pre24 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0_pre18 2.0.0_pre22 2.0.0_pre24 2.0.0 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
@@ -8753,7 +8755,7 @@ dev-python/pysvg 0.2.2_p3: Python SVG document creation library
 dev-python/pysvn 1.9.11: Object-oriented python bindings for subversion
 dev-python/pytables 3.6.1: Hierarchical datasets for Python
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 4.6.11-r1 5.4.3 6.0.1 6.0.2 6.1.1: Simple powerful testing with Python
+dev-python/pytest 4.6.11-r1 5.4.3 6.0.1 6.0.2 6.1.1 6.1.2: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
@@ -12848,7 +12850,7 @@ media-gfx/sxiv 26 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.99_beta6-r1 0.99_beta6-r2: A portable, high performance parallel ray tracing system
-media-gfx/termtosvg 0.7.0 0.8.0 1.1.0: Record terminal sessions as SVG animations
+media-gfx/termtosvg 1.1.0: Record terminal sessions as SVG animations
 media-gfx/tgif 4.2.5-r2: Xlib base 2-D drawing facility under X11
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
 media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue shift adjustments
@@ -14887,7 +14889,7 @@ net-mail/mu 1.4.10 1.4.12 1.4.13: Set of tools to deal with Maildirs, in particu
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r1: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/onionrouter 0.5.2: .onion discovery via SRV DNS lookups for use with postfix
+net-mail/onionrouter 0.5.2 9999: .onion discovery via SRV DNS lookups for use with postfix
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: Simple daemon to control email relay based on successful POP or IMAP logins
@@ -17008,9 +17010,9 @@ sys-auth/pam_skey 1.1.5-r6: PAM interface for the S/Key authentication system
 sys-auth/pam_smb 2.0.0_rc6-r2: PAM module for authenticating against an SMB (such as the Win_x families) server
 sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
-sys-auth/pam_u2f 1.0.8: Library for authenticating against PAM with a Yubikey
+sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20201013 20201026: PAM base configuration files
+sys-auth/pambase 20201013 20201028.1: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
@@ -17924,8 +17926,8 @@ www-client/elinks 0.13.4-r1 0.13.5 9999: Advanced and well-established text-mode
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.4.0 82.0 82.0.1: Firefox Web Browser
-www-client/firefox-bin 78.4.0 82.0.1: Firefox Web Browser
+www-client/firefox 78.4.0 82.0 82.0.1 82.0.2: Firefox Web Browser
+www-client/firefox-bin 78.4.0 82.0.1 82.0.2: Firefox Web Browser
 www-client/google-chrome 86.0.4240.111: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.27: The web browser from Google
 www-client/google-chrome-unstable 88.0.4300.0: The web browser from Google
