@@ -14,7 +14,7 @@ TG_OWT_COMMIT="c73a4718cbff7048373a63db32068482e5fd11ef"
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
 SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${MY_P}.tar.gz
-	https://github.com/desktop-app/tg_owt/archive/c73a4718cbff7048373a63db32068482e5fd11ef.tar.gz -> tg_owt-${TG_OWT_COMMIT}.tar.gz
+	https://github.com/desktop-app/tg_owt/archive/${TG_OWT_COMMIT}.tar.gz -> tg_owt-${TG_OWT_COMMIT}.tar.gz
 "
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
