@@ -12755,7 +12755,7 @@ media-gfx/iscan-plugin-gt-f500 1.0.0.1-r1: Epson Perfection 2480/2580 PHOTO scan
 media-gfx/iscan-plugin-gt-f720 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
 media-gfx/iscan-plugin-gt-x770 2.1.2.1-r3: Epson Perfection V500 scanner plugin for SANE 'epkowa' backend
 media-gfx/iscan-plugin-gt-x820 2.2.0.1: Epson Perfection V600 scanner plugin for SANE 'epkowa' backend
-media-gfx/iscan-plugin-network-nt 1.1.2.1 1.1.3: Network scanning plugin for EPSON scanners (nonfree)
+media-gfx/iscan-plugin-network-nt 1.1.3: Network scanning plugin for EPSON scanners (nonfree)
 media-gfx/iscan-plugin-perfection-v370 1.0.0.2: Epson Perfection V370 and similar scanner plugin for SANE 'epkowa' backend
 media-gfx/jhead 3.04: Exif Jpeg camera setting parser and thumbnail remover
 media-gfx/jigl 2.0.1-r1: Jason's Image Gallery
@@ -17930,7 +17930,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.4.0 82.0 82.0.1 82.0.2: Firefox Web Browser
 www-client/firefox-bin 78.4.0 82.0.1 82.0.2: Firefox Web Browser
 www-client/google-chrome 86.0.4240.111: The web browser from Google
-www-client/google-chrome-beta 87.0.4280.27: The web browser from Google
+www-client/google-chrome-beta 87.0.4280.40: The web browser from Google
 www-client/google-chrome-unstable 88.0.4300.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -17974,7 +17974,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.445: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 86.0.4240.111 87.0.4280.27_beta 88.0.4300.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.111 87.0.4280.40_beta 88.0.4300.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
