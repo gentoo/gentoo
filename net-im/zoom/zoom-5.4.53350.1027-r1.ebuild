@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="all-rights-reserved Apache-2.0" # Apache-2.0 for icon
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="pulseaudio"
+IUSE="bundled-libjpeg-turbo pulseaudio"
 RESTRICT="mirror bindist strip"
 
 RDEPEND="!games-engines/zoom
@@ -33,7 +33,6 @@ RDEPEND="!games-engines/zoom
 	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	media-libs/libjpeg-turbo
 	media-sound/mpg123
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -45,6 +44,7 @@ RDEPEND="!games-engines/zoom
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
+	!bundled-libjpeg-turbo? ( media-libs/libjpeg-turbo )
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-libs/alsa-lib )"
 
@@ -71,7 +71,12 @@ src_install() {
 	doexe zoom zoom.sh zopen ZoomLauncher
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libquazip.so
-	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libturbojpeg.so #715106
+
+	if use bundled-libjpeg-turbo; then
+		doexe libturbojpeg.so
+	else
+		dosym {"../../usr/$(get_libdir)",/opt/zoom}/libturbojpeg.so #715106
+	fi
 
 	make_wrapper zoom ./zoom /opt/zoom
 	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
