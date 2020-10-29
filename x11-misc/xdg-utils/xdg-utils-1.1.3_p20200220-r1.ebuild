@@ -13,7 +13,7 @@ S=${WORKDIR}/xdg-utils-${EGIT_COMMIT}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="dbus doc gnome"
 REQUIRED_USE="gnome? ( dbus )"
 
