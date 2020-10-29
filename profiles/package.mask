@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2020-10-29)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-88
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-26)
 # Historical metapackage that exists in slot 5 only for transition from KDE SC4.
 # Masked for removal on 2021-08-31. Replaced by:
