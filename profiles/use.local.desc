@@ -5784,7 +5784,6 @@ net-im/teams:system-mesa - Use the system-wide media-libs/mesa instead of bundle
 net-im/telegram-desktop:enchant - Enable the app-text/aspell spell-checking backend
 net-im/telegram-desktop:hunspell - Enable the app-text/hunspell spell-checking backend
 net-im/telegram-desktop:lto - Enable Link Time Optimization (LTO / IPO)
-net-im/telegram-desktop:webrtc - WebRTC based video call support
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
 net-im/telepathy-connection-managers:icq - Enable ICQ IM protocol support.
 net-im/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
@@ -8393,6 +8392,7 @@ sys-libs/pam:berkdb - Build the pam_userdb module, that allows to authenticate u
 sys-libs/readline:utils - Install rlfe (ReadLine Front-End) helper tool -- a wrapper program for making any stdin use readline
 sys-libs/talloc:compat - Enable extra compatibility stuff
 sys-libs/timezone-data:leaps-timezone - Install the set of "right" timezones; these timezones include leap seconds when counting seconds since the epoch (while POSIX does not) as they are based on the TAI (International Atomic Time) clock
+sys-libs/timezone-data:zic-slim - Default to 'slim' file format for /usr/share/zoneinfo. Otherise 'fat' format is used. Not all programs can handle 'slim' format'.
 sys-libs/uclibc-ng:symlink-compat - Explicitly add sym links for libdl.so.0, libm.so.0, and friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier
 sys-libs/zlib:minizip - include the minizip library for quick and dirty zip extraction
 sys-power/apcupsd:modbus - Enable MODBUS support over USB
