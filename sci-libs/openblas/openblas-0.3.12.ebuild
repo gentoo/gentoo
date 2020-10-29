@@ -108,8 +108,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	# disable tests by default
+
+	# Disable tests by default
 	sed -e "/^all ::/s/tests //" -i Makefile || die
+
 	# if 64bit-index is needed, create second library
 	# with LIBPREFIX=libopenblas64
 	if use index-64bit; then
@@ -119,7 +121,7 @@ src_prepare() {
 
 src_compile() {
 	default
-	cd interface
+	cd interface || die
 	emake shared-blas-lapack
 
 	if use index-64bit; then
