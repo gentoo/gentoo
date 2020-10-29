@@ -44,7 +44,11 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	# QR code generating library for >=libreoffice-6.4
+	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
+	"${ADDONS_URI}/dtoa-20180411.tgz"
+	# not packaged in Gentoo, https://skia.org/
+	"${ADDONS_URI}/skia-m85-e684c6daef6bfb774a325a069eda1f76ca6ac26c.tar.xz"
+	# QR code generating library for >=libreoffice-6.4, bug #691740
 	"${ADDONS_URI}/QR-Code-generator-1.4.0.tar.gz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
@@ -235,7 +239,10 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	java? (
 		dev-java/ant-core
-		>=virtual/jdk-1.8
+		|| (
+			dev-java/openjdk:11
+			dev-java/openjdk-bin:11
+		)
 	)
 	test? (
 		app-crypt/gnupg
@@ -250,7 +257,11 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
-	java? ( >=virtual/jre-1.8 )
+	java? (
+		dev-java/openjdk:11
+		dev-java/openjdk-jre-bin:11
+		>=virtual/jre-1.8
+	)
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
@@ -269,8 +280,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 
 	# git master
-	"${FILESDIR}/${PN}-6.4.3.2-boost-1.73.patch" # bug 721806
-	"${FILESDIR}/${PN}-6.4.6.2-llvm-10.patch" # bug 713574
+	"${FILESDIR}/${PN}-7.0.3.1-fix-non-pdfium-build.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -396,7 +406,7 @@ src_configure() {
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
 	# --disable-pdfium: not yet packaged
-	# --without-system-qrencode: has no real build system and LO is the only user
+	# --without-system-qrcodegen: has no real build system and LO is the only user
 	local myeconfargs=(
 		--with-system-dicts
 		--with-system-epoxy
@@ -421,7 +431,7 @@ src_configure() {
 		--disable-openssl
 		--disable-pdfium
 		--disable-vlc
-		--with-build-version="${gentoo_buildid}"
+		--with-extra-buildid="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
 		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell"
@@ -487,9 +497,12 @@ src_configure() {
 			--without-junit
 			--without-system-hsqldb
 			--with-ant-home="${ANT_HOME}"
-			--with-jdk-home=$(java-config --jdk-home 2>/dev/null)
-			--with-jvm-path="${EPREFIX}/usr/lib/"
 		)
+		if has_version "dev-java/openjdk:11"; then
+			myeconfargs+=( -with-jdk-home="${EPREFIX}/usr/$(get_libdir)/openjdk-11" )
+		elif has_version "dev-java/openjdk-bin:11"; then
+			myeconfargs+=( --with-jdk-home="/opt/openjdk-bin-11" )
+		fi
 
 		use libreoffice_extensions_scripting-beanshell && \
 			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
