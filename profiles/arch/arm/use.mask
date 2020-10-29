@@ -33,10 +33,6 @@ acpi
 # net-wireless/wimax not tested
 wimax
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
-# cblas-external as virtual/cblas is also masked
-cblas-external
-
 # Raúl Porcel <armin76@gentoo.org>
 # I've been told xfs is broken on ARM
 xfs
