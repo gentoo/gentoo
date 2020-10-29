@@ -5094,7 +5094,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.33 7.2.34 7.3.21 7.3.22 7.3.23 7.4.9 7.4.10 7.4.11: The PHP language runtime engine
+dev-lang/php 7.2.33 7.2.34 7.3.21 7.3.22 7.3.23 7.3.24 7.4.9 7.4.10 7.4.11: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r4 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.8.6 3.9.0 3.10.0_alpha1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 2.4.6-r2: Python script wrapper
@@ -17450,7 +17450,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.8.16 5.8.16-r1 5.9.1 5.9.1-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.9.0 5.9.1: Full sources including the Gentoo patchset for the 5.9 kernel tree
+sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.4.241 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.9.241 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.14.203 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 4.19.153 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.4.73 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.8.17 5.9.0 5.9.1: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8 5.10_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
