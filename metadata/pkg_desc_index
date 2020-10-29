@@ -17234,7 +17234,7 @@ sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection,
 sys-devel/gcc-config 2.3.2 9999: Utility to manage compilers
 sys-devel/gdb 9.2 10.1 9999: GNU debugger
 sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
-sys-devel/gettext 0.20.1 0.20.2 0.21: GNU locale utilities
+sys-devel/gettext 0.21: GNU locale utilities
 sys-devel/gnuconfig 20190912 20200621 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/icecream 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 6.4.0 6.5.0 7.3.0 7.5.0 8.3.0 8.4.0 9.3.0-r1 9.3.0-r2 10.2.0: 64bit kernel compiler
@@ -17450,7 +17450,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.8.16 5.8.16-r1 5.9.1 5.9.1-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.4.241 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.9.241 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.14.203 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 4.19.153 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.4.73 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.8.17 5.9.0 5.9.1: Full sources including the Gentoo patchset for the 5.9 kernel tree
+sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.4.241 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.9.241 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.14.203 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 4.19.153 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.4.73 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.8.17 5.9.0 5.9.1 5.9.2: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8 5.10_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -17465,7 +17465,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.240 4.9.240 4.14.202 4.19.152 5.4.72 5.8.16 5.9.1: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.203 4.19.153 5.4.73 5.8.17 5.9.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
