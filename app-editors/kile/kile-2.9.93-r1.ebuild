@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/en/kile https://kile.sourceforge.io/"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="FDL-1.2 GPL-2"
