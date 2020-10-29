@@ -7318,6 +7318,7 @@ sci-libs/openblas:dynamic - Build dynamic architecture detection at run time (fo
 sci-libs/openblas:eselect-ldso - Enable BLAS/LAPACK runtime switching
 sci-libs/openblas:index-64bit - Compile a separate INTERFACE64 OpenBLAS
 sci-libs/openblas:pthread - Build with pthread threading model
+sci-libs/openblas:relapack - Build the ReLAPACK extension to OpenBLAS
 sci-libs/opencascade:freeimage - Enable support for image i/o via media-libs/freeimage
 sci-libs/opencascade:gles2 - Use OpenGL ES 2.0
 sci-libs/opencascade:inspector - Build the OCCT inspector tool for low-level data inspection

@@ -2572,7 +2572,7 @@ app-office/abiword-docs 3.0.2: Fully featured yet light and fast cross platform 
 app-office/auto-multiple-choice 1.3.0-r1: Create and manage multiple choice questionnaries, including automated marking
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.4.0-r1: a text-based calendar and scheduling application
-app-office/calligra 3.2.1: KDE Office Suite
+app-office/calligra 3.2.1-r1: KDE Office Suite
 app-office/calligraplan 3.2.2-r1: Project management application
 app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
@@ -14889,7 +14889,7 @@ net-mail/mu 1.4.10 1.4.12 1.4.13: Set of tools to deal with Maildirs, in particu
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r1: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/onionrouter 0.5.2 9999: .onion discovery via SRV DNS lookups for use with postfix
+net-mail/onionrouter 0.6.0 9999: .onion discovery via SRV DNS lookups for use with postfix
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: Simple daemon to control email relay based on successful POP or IMAP logins
@@ -16198,7 +16198,7 @@ sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/octomap 1.9.0 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
-sci-libs/openblas 0.3.9-r1 0.3.10: Optimized BLAS library based on GotoBLAS2
+sci-libs/openblas 0.3.9-r1 0.3.10 0.3.12: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.7.0 0.7.2: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
@@ -17448,8 +17448,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.8.16 5.8.16-r1 5.9.1 5.9.1-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.8.16 5.8.17 5.9.1 5.9.2: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.8.16 5.8.16-r1 5.8.17 5.9.1 5.9.1-r1 5.9.2: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.4.241 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.9.241 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.14.203 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 4.19.153 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.4.73 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.8.17 5.9.0 5.9.1 5.9.2: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.9_rc1 5.9_rc2 5.9_rc3 5.9_rc4 5.9_rc5 5.9_rc6 5.9_rc7 5.9_rc8 5.10_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17464,7 +17464,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the 
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.8.16 5.9.1: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.8.16 5.8.17 5.9.1 5.9.2: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.203 4.19.153 5.4.73 5.8.17 5.9.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
