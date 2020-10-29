@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2020-10-30)
+# Dead upstream (last release 2007), unmaintained, multiple issues, no reverse
+# dependencies.
+# Removal in 30 days. Bug #744019
+sys-power/ncpufreqd
+
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2020-10-30)
+# Dead upstream, no live HOMEPAGE and SRC_URI.
+# Removal in 30 days. Bug #744013
+app-text/csvfix
+
 # Stephan Hartmann <sultan@gentoo.org> (2020-10-29)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
