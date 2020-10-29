@@ -20,7 +20,7 @@ src_install() {
 	default
 
 	dodir /sbin
-	mv "${ED%/}"/{usr/sbin/isapnp,sbin/} || die
+	mv "${ED}"/{usr/sbin/isapnp,sbin/} || die
 
 	docinto txt
 	dodoc doc/{README*,*.txt} test/*.txt
