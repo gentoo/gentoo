@@ -24,6 +24,8 @@ RESTRICT="bindist mirror strip"
 CONFIG_CHECK="~SYN_COOKIES"
 S=${WORKDIR}
 
+QA_PREBUILT="/usr/libexec/utsushi/networkscan"
+
 src_unpack() {
 	default
 	rpm_unpack ./imagescan-bundle-centos-8-${ISCAN_VERSION}.x64.rpm/plugins/imagescan-plugin-networkscan-${PV}-1epson4centos8.x86_64.rpm
