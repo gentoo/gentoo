@@ -7879,7 +7879,7 @@ dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.26.0 1.27.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.26.0 1.27.0 1.28.1: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.142 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -7915,8 +7915,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.14.59 1.15.1 1.15.10 1.15.18 1.16.1 1.16.2 1.16.3 1.16.4 1.16.5 1.16.6 9999: The AWS SDK for Python
-dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 1.19.4 1.19.5 1.19.6 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.14.59 1.15.1 1.15.10 1.15.18 1.16.1 1.16.2 1.16.3 1.16.4 1.16.5 1.16.6 1.16.7 9999: The AWS SDK for Python
+dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 1.19.4 1.19.5 1.19.6 1.19.7 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8459,7 +8459,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1: Python to native compiler
 dev-python/numexpr 2.7.2: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.0 1.19.1 1.19.2: Fast array and numerical python library
+dev-python/numpy 1.19.0 1.19.1 1.19.2 1.19.3: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
