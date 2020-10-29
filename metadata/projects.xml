@@ -3391,11 +3391,6 @@
     <subproject ref="security-audit@gentoo.org"/>
     <subproject ref="security-kernel@gentoo.org"/>
     <member>
-      <email>ackle@gentoo.org</email>
-      <name>Sean Amoss</name>
-      <role>GLSA Coordinator</role>
-    </member>
-    <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
       <role>GLSA Coordinator</role>
