@@ -1,0 +1,22 @@
+--- gettext-0.20/gettext-tools/src/Makefile.in
++++ gettext-0.20/gettext-tools/src/Makefile.in
+@@ -3952,9 +3952,16 @@
+ 
+ # How to get the include files of libtextstyle.
+ textstyle.h textstyle/stdbool.h textstyle/version.h textstyle/woe32dll.h:
+-	here=`pwd`; \
+-	cd ../../libtextstyle/lib && \
+-	  $(MAKE) install-nobase_includeHEADERS install-nobase_nodist_includeHEADERS includedir="$$here"
++	cd "$(abs_top_builddir)/../libtextstyle/lib" && $(MAKE) $@
++	if test -f "$(abs_top_builddir)/../libtextstyle/lib/$@"; then \
++		file="$(abs_top_builddir)/../libtextstyle/lib/$@"; \
++	else \
++		file="$(abs_top_srcdir)/../libtextstyle/lib/$@"; \
++	fi; \
++	target_dir="$(abs_builddir)/$@"; \
++	target_dir="$${target_dir%/*}"; \
++	$(MKDIR_P) "$${target_dir}"; \
++	$(INSTALL_HEADER) "$$file" $@
+ 
+ # No need to install libgettextsrc.a, except on AIX.
+ install-exec-hook: install-exec-clean
