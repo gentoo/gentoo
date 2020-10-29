@@ -31,6 +31,7 @@ DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
+	sys-apps/util-linux[python,${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
