@@ -25,6 +25,18 @@ RDEPEND="${DEPEND}
 	!sys-apps/systemd
 "
 
+BDEPEND="
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt:0
+	>=dev-util/meson-0.46
+	>=dev-util/intltool-0.50
+	>=sys-apps/coreutils-8.16
+	sys-devel/m4
+	virtual/pkgconfig
+"
+
 S="${WORKDIR}/systemd-${PV}"
 
 src_configure() {
@@ -151,8 +163,9 @@ src_install() {
 	newinitd "${FILESDIR}"/stmpfiles-dev.initd stmpfiles-dev
 	newinitd "${FILESDIR}"/stmpfiles-setup.initd stmpfiles-setup
 
-	newconfd "${FILESDIR}"/stmpfiles-dev.confd stmpfiles-dev
-	newconfd "${FILESDIR}"/stmpfiles-setup.confd stmpfiles-setup
+	# same content, but install as different file
+	newconfd "${FILESDIR}"/stmpfiles.confd stmpfiles-dev
+	newconfd "${FILESDIR}"/stmpfiles.confd stmpfiles-setup
 }
 
 # adapted from opentmpfiles ebuild
