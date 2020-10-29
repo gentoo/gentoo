@@ -10838,7 +10838,7 @@ dev-util/umockdev 0.12.1: Mock hardware devices for creating unit tests
 dev-util/uncrustify 0.71.0 9999: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10 2.11 2.12: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
-dev-util/valgrind 3.14.0 3.15.0 3.16.0 3.16.1 9999: An open-source memory debugger for GNU/Linux
+dev-util/valgrind 3.16.1 9999: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.21: Lint tool for Vim script language
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
