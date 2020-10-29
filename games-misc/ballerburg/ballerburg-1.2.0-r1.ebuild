@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,3 +15,15 @@ KEYWORDS="~amd64"
 
 DEPEND="media-libs/libsdl"
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DDOCDIR=share/doc/${PF}
+	)
+	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	gunzip "${ED}usr/share/man/man6/ballerburg.6.gz" || die
+}

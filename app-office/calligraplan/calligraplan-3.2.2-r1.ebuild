@@ -5,12 +5,12 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-KFMIN=5.60.0
-QTMIN=5.12.3
+KFMIN=5.74.0
+QTMIN=5.15.1
 inherit ecm kde.org
 
 DESCRIPTION="Project management application"
-HOMEPAGE="https://www.calligra.org/"
+HOMEPAGE="https://calligra.org/plan/"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/calligra/${PV}/${P}.tar.xz"
@@ -42,7 +42,6 @@ DEPEND="
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
-	>=kde-frameworks/khtml-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
@@ -60,7 +59,7 @@ DEPEND="
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 	holidays? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
 	kwallet? (
-		app-crypt/qca:2[qt5(+)]
+		>=app-crypt/qca-2.3.0:2
 		>=kde-frameworks/kwallet-${KFMIN}:5
 	)
 	X? (
@@ -75,7 +74,10 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" ) # bug 741710
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.15.patch" # bug 741710
+	"${FILESDIR}/${P}-no-khtml.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
