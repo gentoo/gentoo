@@ -6,8 +6,8 @@ EAPI=7
 CHECKREQS_DISK_BUILD="4G"
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
-KFMIN=5.60.0
-QTMIN=5.12.3
+KFMIN=5.74.0
+QTMIN=5.15.1
 inherit check-reqs ecm kde.org
 
 DESCRIPTION="KDE Office Suite"
@@ -73,7 +73,7 @@ COMMON_DEPEND="
 	virtual/libiconv
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 	charts? ( dev-libs/kdiagram:5 )
-	crypt? ( app-crypt/qca:2[qt5(+)] )
+	crypt? ( >=app-crypt/qca-2.3.0:2 )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( >=dev-qt/qtdeclarative-${QTMIN}:5[widgets] )
 	gsl? ( sci-libs/gsl )
@@ -84,7 +84,6 @@ COMMON_DEPEND="
 		app-text/libwpg:*
 		>=app-text/libwps-0.4
 		dev-libs/librevenge
-		>=kde-frameworks/khtml-${KFMIN}:5
 		media-libs/libvisio
 	)
 	lcms? (
@@ -94,7 +93,7 @@ COMMON_DEPEND="
 	okular? ( kde-apps/okular:5 )
 	openexr? ( media-libs/openexr )
 	pdf? ( app-text/poppler:=[qt5] )
-	phonon? ( media-libs/phonon[qt5(+)] )
+	phonon? ( >=media-libs/phonon-4.11.0 )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
 	X? (
@@ -132,11 +131,6 @@ pkg_setup() {
 src_prepare() {
 	ecm_src_prepare
 
-	if ! use test; then
-		sed -e "/add_subdirectory( *benchmarks *)/s/^/#DONT/" \
-			-i libs/pigment/CMakeLists.txt || die
-	fi
-
 	# Unconditionally disable deprecated deps (required by QtQuick1)
 	ecm_punt_bogus_dep Qt5 Declarative
 	ecm_punt_bogus_dep Qt5 OpenGL
@@ -158,6 +152,8 @@ src_configure() {
 		-DPACKAGERS_BUILD=OFF
 		-DRELEASE_BUILD=ON
 		-DWITH_Iconv=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5CalendarCore=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5KHtml=ON
 		-DPRODUCTSET="${myproducts[*]}"
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package charts KChart)
@@ -174,7 +170,6 @@ src_configure() {
 		-DWITH_LibWpg=$(usex import-filter)
 		-DWITH_LibWps=$(usex import-filter)
 		$(cmake_use_find_package phonon Phonon4Qt5)
-		-DCMAKE_DISABLE_FIND_PACKAGE_KF5CalendarCore=ON
 		-DWITH_LCMS2=$(usex lcms)
 		-DWITH_Okular5=$(usex okular)
 		-DWITH_OpenEXR=$(usex openexr)

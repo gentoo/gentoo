@@ -31,7 +31,6 @@ RDEPEND="
 	dev-python/asgiref[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]"
-# gettext: https://code.djangoproject.com/ticket/31850
 BDEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
@@ -44,11 +43,12 @@ BDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/selenium[${PYTHON_USEDEP}]
 		dev-python/tblib[${PYTHON_USEDEP}]
-		<sys-devel/gettext-0.21
+		sys-devel/gettext
 	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-bashcomp.patch
+	"${FILESDIR}"/django-gettext-0.21.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc

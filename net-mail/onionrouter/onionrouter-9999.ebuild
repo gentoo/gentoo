@@ -39,9 +39,6 @@ BDEPEND="$(python_gen_cond_dep '
 distutils_enable_tests pytest
 
 src_prepare() {
-	# https://github.com/ehloonion/onionrouter/pull/15
-	cp "${FILESDIR}/conftest.py" "${S}" || die
-
 	distutils-r1_src_prepare
 }
 

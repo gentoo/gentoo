@@ -11,13 +11,19 @@ inherit distutils-r1 systemd
 
 DESCRIPTION=".onion discovery via SRV DNS lookups for use with postfix"
 HOMEPAGE="https://pypi.org/project/onionrouter/ https://github.com/ehloonion/onionrouter/"
-SRC_URI="https://pypi.io/packages/source/${PN::1}/${PN}/${P}.tar.gz"
+if [[ ${PV} == *9999 ]] ; then
+	SRC_URI=""
+	EGIT_REPO_URI="https://github.com/ehloonion/onionrouter.git"
+	inherit git-r3
+else
+	KEYWORDS="~amd64"
+	SRC_URI="https://pypi.io/packages/source/${PN::1}/${PN}/${P}.tar.gz"
+fi
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
 
 RDEPEND="$(python_gen_cond_dep '
 	dev-python/dnspython[${PYTHON_USEDEP}]
@@ -30,19 +36,9 @@ BDEPEND="$(python_gen_cond_dep '
 	)
 ')"
 
-PATCHES=(
-	"${FILESDIR}/${P}-entrypoint.patch"
-	"${FILESDIR}/${P}-python3.patch"
-	"${FILESDIR}/${P}-pyyaml-version.patch"
-	"${FILESDIR}/${P}-newline.patch"
-)
-
 distutils_enable_tests pytest
 
 src_prepare() {
-	# https://github.com/ehloonion/onionrouter/pull/15
-	cp "${FILESDIR}/conftest.py" "${S}" || die
-
 	distutils-r1_src_prepare
 }
 
