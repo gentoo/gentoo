@@ -2573,7 +2573,7 @@ app-office/auto-multiple-choice 1.3.0-r1: Create and manage multiple choice ques
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.4.0-r1: a text-based calendar and scheduling application
 app-office/calligra 3.2.1: KDE Office Suite
-app-office/calligraplan 3.2.2: Project management application
+app-office/calligraplan 3.2.2-r1: Project management application
 app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/glabels 3.4.1: Program for creating labels and business cards
@@ -11335,7 +11335,7 @@ games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in o
 games-kids/tuxmath 2.0.3-r1: Educational arcade game where you have to solve maths problems
 games-kids/tuxtype 1.8.3-r1: Typing tutorial with lots of eye-candy
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
-games-misc/ballerburg 1.2.0: Linux port of the classical Atari ST game Ballerburg
+games-misc/ballerburg 1.2.0-r1: Linux port of the classical Atari ST game Ballerburg
 games-misc/bsd-games 2.17-r5: collection of games from NetBSD
 games-misc/bsod 0.1-r1: This program will let you experience the authentic Microsoft Windows experience
 games-misc/c++robots 0-r1: ongoing 'King of the Hill' (KotH) tournament
@@ -14421,8 +14421,8 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
-net-dns/bind 9.16.6-r2 9.16.6-r3 9.16.7: Berkeley Internet Name Domain - Name Server
-net-dns/bind-tools 9.16.6 9.16.7: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind 9.16.6-r2 9.16.6-r3 9.16.7 9.16.8: Berkeley Internet Name Domain - Name Server
+net-dns/bind-tools 9.16.6 9.16.7 9.16.8: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.16.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
