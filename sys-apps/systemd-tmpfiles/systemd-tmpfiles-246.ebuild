@@ -168,6 +168,14 @@ src_install() {
 	newconfd "${FILESDIR}"/stmpfiles.confd stmpfiles-setup
 }
 
+src_test() {
+	# selection of relevant tests
+	# unfortunately full suite will be built to run tests, but we still
+	# install just what we need and not a bit more.
+	local tests=( test-{acl-util,tmpfiles,chase-symlinks,path} )
+	meson_src_test "${tests[@]}"
+}
+
 # adapted from opentmpfiles ebuild
 add_service() {
 	local initd=$1
