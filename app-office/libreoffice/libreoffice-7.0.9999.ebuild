@@ -278,9 +278,6 @@ PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
-
-	# git master
-	"${FILESDIR}/${PN}-7.0.3.1-fix-non-pdfium-build.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
