@@ -239,7 +239,10 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	java? (
 		dev-java/ant-core
-		>=virtual/jdk-1.8
+		|| (
+			dev-java/openjdk:11
+			dev-java/openjdk-bin:11
+		)
 	)
 	test? (
 		app-crypt/gnupg
@@ -254,7 +257,11 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
-	java? ( >=virtual/jre-1.8 )
+	java? (
+		dev-java/openjdk:11
+		dev-java/openjdk-jre-bin:11
+		>=virtual/jre-1.8
+	)
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
@@ -487,9 +494,12 @@ src_configure() {
 			--without-junit
 			--without-system-hsqldb
 			--with-ant-home="${ANT_HOME}"
-			--with-jdk-home=$(java-config --jdk-home 2>/dev/null)
-			--with-jvm-path="${EPREFIX}/usr/lib/"
 		)
+		if has_version "dev-java/openjdk:11"; then
+			myeconfargs+=( -with-jdk-home="${EPREFIX}/usr/$(get_libdir)/openjdk-11" )
+		elif has_version "dev-java/openjdk-bin:11"; then
+			myeconfargs+=( --with-jdk-home="/opt/openjdk-bin-11" )
+		fi
 
 		use libreoffice_extensions_scripting-beanshell && \
 			myeconfargs+=( --with-beanshell-jar=$(java-pkg_getjar bsh bsh.jar) )
