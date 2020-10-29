@@ -4682,7 +4682,7 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.16.0 3.17.0: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea 3.17.0: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.16.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2 1.8.4-r1: FOSS Java browser plugin and Web Start implementation
@@ -4891,9 +4891,9 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.265_p01 8.272_p10 11.0.8_p10 11.0.9_p11: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.265_p01 8.272_p10 11.0.8_p10 11.0.9_p11: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.265_p01 8.272_p10 11.0.8_p10-r1 11.0.9_p11: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk 8.272_p10 11.0.9_p11: Open source implementation of the Java programming language
+dev-java/openjdk-bin 8.272_p10 11.0.9_p11: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.272_p10 11.0.9_p11: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 8.999 11.0.9_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.6 1.5.6-r1: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
