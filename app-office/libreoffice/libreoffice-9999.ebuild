@@ -428,7 +428,7 @@ src_configure() {
 		--disable-openssl
 		--disable-pdfium
 		--disable-vlc
-		--with-build-version="${gentoo_buildid}"
+		--with-extra-buildid="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
 		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell"
