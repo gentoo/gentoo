@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python Markdown language reimplementation"
-SRC_URI="mirror://pypi/m/markdown2/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 HOMEPAGE="https://github.com/trentm/python-markdown2"
 
 LICENSE="MIT"
