@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1
+inherit flag-o-matic distutils-r1
 
 GTEST_VER="23b2a3b1cf803999fb38175f6e9e038a4495c8a5"
 
@@ -35,13 +35,18 @@ BDEPEND="${COMMON_DEPEND}
 "
 
 RESTRICT="!test? ( test )"
-REQUIRES_USE="test? ( sparsehash )"
+REQUIRED_USE="test? ( sparsehash )"
 
 PATCHES=(
 	"${FILESDIR}/libpy-0.2.5-no-werror.patch"
 	"${FILESDIR}/libpy-0.2.5-permissions.patch"
+	"${FILESDIR}/libpy-0.2.5-cflags.patch"
 )
 
 python_test() {
 	emake GTEST_ROOT="${WORKDIR}/googletest-${GTEST_VER}" test || die "Tests failed with ${EPYTHON}"
+}
+
+python_configure() {
+	replace-flags '-O*' '-O3'
 }
