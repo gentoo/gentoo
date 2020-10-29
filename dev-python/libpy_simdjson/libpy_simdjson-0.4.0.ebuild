@@ -29,5 +29,7 @@ python_prepare_all() {
 	# benchmark tests have extra dependencies
 	rm libpy_simdjson/tests/test_benchmark.py || die
 
+	sed -e 's:werror=True:werror=False:' -i setup.py || die
+
 	distutils-r1_python_prepare_all
 }
