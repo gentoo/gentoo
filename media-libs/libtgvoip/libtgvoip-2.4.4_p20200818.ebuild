@@ -14,19 +14,17 @@ SRC_URI="https://github.com/telegramdesktop/libtgvoip/archive/${EGIT_COMMIT}.tar
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa +dsp libressl pulseaudio"
+IUSE="+dsp libressl"
 
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	media-libs/opus:=
-	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )
+	media-libs/alsa-lib
+	|| ( media-sound/pulseaudio media-sound/apulse[sdk] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-REQUIRED_USE="|| ( alsa pulseaudio )"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
@@ -41,9 +39,9 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--disable-static
+		--with-alsa
+		--with-pulse
 		$(use_enable dsp)
-		$(use_with alsa)
-		$(use_with pulseaudio pulse)
 	)
 	use dsp && append-cxxflags '-DTGVOIP_USE_DESKTOP_DSP_BUNDLED'
 	econf "${myconf[@]}"

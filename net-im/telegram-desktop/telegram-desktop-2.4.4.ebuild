@@ -14,15 +14,13 @@ TG_OWT_COMMIT="c73a4718cbff7048373a63db32068482e5fd11ef"
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
 SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${MY_P}.tar.gz
-	webrtc? (
-		https://github.com/desktop-app/tg_owt/archive/c73a4718cbff7048373a63db32068482e5fd11ef.tar.gz -> tg_owt-${TG_OWT_COMMIT}.tar.gz
-	)
+	https://github.com/desktop-app/tg_owt/archive/c73a4718cbff7048373a63db32068482e5fd11ef.tar.gz -> tg_owt-${TG_OWT_COMMIT}.tar.gz
 "
 
-LICENSE="GPL-3-with-openssl-exception LGPL-2+ webrtc? ( BSD )"
+LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa +dbus enchant +gtk +hunspell libressl lto +pulseaudio +spell +webrtc +X"
+IUSE="+dbus enchant +gtk +hunspell libressl lto pulseaudio +spell +X"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -38,11 +36,13 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5[png,X(-)?]
 	media-fonts/open-sans
+	media-libs/alsa-lib
 	media-libs/fontconfig:=
-	~media-libs/libtgvoip-2.4.4_p20200818[alsa?,pulseaudio?]
-	media-libs/openal[alsa?,pulseaudio?]
+	media-libs/libjpeg-turbo:=
+	~media-libs/libtgvoip-2.4.4_p20200818
+	media-libs/openal[alsa]
 	media-libs/opus:=
-	media-video/ffmpeg:=[alsa?,opus,pulseaudio?]
+	media-video/ffmpeg:=[alsa,opus]
 	sys-libs/zlib[minizip]
 	virtual/libiconv
 	x11-libs/libxcb:=
@@ -58,8 +58,8 @@ RDEPEND="
 		x11-libs/libX11
 	)
 	hunspell? ( >=app-text/hunspell-1.7:= )
+	!pulseaudio? ( media-sound/apulse[sdk] )
 	pulseaudio? ( media-sound/pulseaudio )
-	webrtc? ( media-libs/libjpeg-turbo:= )
 "
 
 DEPEND="
@@ -72,15 +72,13 @@ DEPEND="
 BDEPEND="
 	>=dev-util/cmake-3.16
 	virtual/pkgconfig
-	webrtc? ( amd64? ( dev-lang/yasm ) )
+	amd64? ( dev-lang/yasm )
 "
 
 REQUIRED_USE="
-	|| ( alsa pulseaudio )
 	spell? (
 		^^ ( enchant hunspell )
 	)
-	webrtc? ( alsa pulseaudio )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -97,7 +95,7 @@ pkg_pretend() {
 
 src_unpack() {
 	default
-	use webrtc && mv -v "${WORKDIR}/tg_owt-${TG_OWT_COMMIT}" "${WORKDIR}/tg_owt"
+	mv -v "${WORKDIR}/tg_owt-${TG_OWT_COMMIT}" "${WORKDIR}/tg_owt" || die
 }
 
 build_tg_owt() {
@@ -124,7 +122,7 @@ src_configure() {
 	append-cxxflags "${mycxxflags[@]}"
 
 	# we have to build tg_owt now before running telegram's cmake
-	use webrtc && build_tg_owt
+	build_tg_owt
 
 	# TODO: unbundle header-only libs, ofc telegram uses git versions...
 	# it fals with tl-expected-1.0.0, so we use bundled for now to avoid git rev snapshots
@@ -141,10 +139,9 @@ src_configure() {
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
 		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell (recommended)
-		-DDESKTOP_APP_DISABLE_WEBRTC_INTEGRATION="$(usex webrtc OFF ON)" # requires pulse AND alsa
 		-DDESKTOP_APP_USE_ENCHANT="$(usex enchant ON OFF)" # enables enchant and disables hunspell
 		$(usex lto "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON" '')
-		$(usex webrtc "-Dtg_owt_DIR=${WORKDIR}/tg_owt_build" '')
+		-Dtg_owt_DIR="${WORKDIR}/tg_owt_build"
 	)
 
 	if [[ -n ${MY_TDESKTOP_API_ID} && -n ${MY_TDESKTOP_API_HASH} ]]; then
