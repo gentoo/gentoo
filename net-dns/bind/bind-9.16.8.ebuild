@@ -267,8 +267,6 @@ src_install() {
 	dotmpfiles "${FILESDIR}"/named.conf
 	exeinto /usr/libexec
 	doexe "${FILESDIR}/generate-rndc-key.sh"
-
-	tmpfiles_process
 }
 
 python_install() {
@@ -281,6 +279,8 @@ python_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process "${FILESDIR}"/named.conf
+
 	if [ ! -f '/etc/bind/rndc.key' ]; then
 		if use urandom; then
 			einfo "Using /dev/urandom for generating rndc.key"
