@@ -7993,7 +7993,7 @@ dev-python/coverage 4.5.4 5.2.1 5.3: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
-dev-python/cryptography 3.0-r1 3.1-r1 3.2 3.2.1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.2 3.2.1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.3.0 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8232,7 +8232,7 @@ dev-python/humanize 2.6.0 3.0.1 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.4 5.37.5 5.38.0 5.38.1: A library for property based testing
+dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.4 5.37.5 5.38.0 5.38.1 5.39.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
