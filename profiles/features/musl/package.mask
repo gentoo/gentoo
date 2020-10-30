@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-29)
-# part of systemd, hence does not build on musl
-sys-apps/systemd-tmpfiles
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-11)
 # musl has no support for prelinked sections, bug #717020
 sys-devel/prelink
