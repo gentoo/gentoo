@@ -16,7 +16,7 @@ HOMEPAGE="https://sourceforge.net/p/libmwaw/wiki/Home/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc static-libs tools"
+IUSE="doc tools"
 
 BDEPEND="
 	sys-devel/libtool
@@ -38,9 +38,9 @@ src_configure() {
 	# zip is hard enabled as the zlib is dep on the rdeps anyway
 	local myeconfargs=(
 		--enable-zip
+		--disable-static
 		--disable-werror
 		$(use_with doc docs)
-		$(use_enable static-libs static)
 		$(use_enable tools)
 	)
 	econf "${myeconfargs[@]}"
