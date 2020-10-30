@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/libelf !<=dev-util/bcc-0.7.0 sys-kernel/linux-headers
+DESCRIPTION=Stand-alone build of libbpf from the Linux kernel
+EAPI=7
+HOMEPAGE=https://github.com/libbpf/libbpf
+IUSE=+static-libs
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2 LGPL-2.1 BSD-2
+RDEPEND=virtual/libelf !<=dev-util/bcc-0.7.0
+SLOT=0/0.2
+SRC_URI=https://github.com/libbpf/libbpf/archive/v0.2.tar.gz -> libbpf-0.2.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=d1a00e924403de2936a50f5bc8a99191

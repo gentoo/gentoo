@@ -5292,7 +5292,7 @@ dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operation
 dev-libs/libax25 0.0.12_rc5: AX.25 library for hamradio applications
 dev-libs/libb64 1.2.1: Fast Base64 encoding/decoding routines
 dev-libs/libbase58 0.1.4 0.1.4-r1: C implementation of Bitcoin's base58 encoding
-dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 0.1.0-r1 0.1.1 9999: Stand-alone build of libbpf from the Linux kernel
+dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 0.1.0-r1 0.1.1 0.2 9999: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Library routines related to building,parsing and iterating BSON documents
@@ -8490,7 +8490,7 @@ dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4 0.3.4-r1: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 4.0.2 4.3.0: library for running multi-thread, multi-process applications
+dev-python/oslo-concurrency 4.0.2 4.3.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 8.0.3 8.3.2: Oslo Configuration API
 dev-python/oslo-context 2.22.1 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0 8.4.0: OpenStack Common DB Code
@@ -10513,7 +10513,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bats 0.4.0 0.4.0_p20170219 1.2.1: Bats-core: Bash Automated Testing System
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
 dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
-dev-util/bcc 0.11.0 0.12.0-r1 0.13.0 0.14.0 0.15.0 0.16.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
+dev-util/bcc 0.11.0 0.12.0-r1 0.13.0 0.14.0 0.15.0 0.16.0 0.16.0-r1 0.17.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
 dev-util/bear 2.4.3 2.4.4: Build EAR generates a compilation database for clang tooling
@@ -10526,7 +10526,7 @@ dev-util/bless 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
 dev-util/bnfc 2.8.1 2.8.3: A compiler front-end generator
 dev-util/boost-build 1.72.0 1.73.0 1.74.0: A system for large project software construction, simple to use and powerful
-dev-util/bpftrace 0.10.0-r1 0.11.0-r1 0.11.1 9999: High-level tracing language for eBPF
+dev-util/bpftrace 0.10.0-r1 0.11.0-r1 0.11.1 0.11.2 9999: High-level tracing language for eBPF
 dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
