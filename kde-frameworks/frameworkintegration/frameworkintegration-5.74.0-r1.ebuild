@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_QTHELP="false"
 PVCUT=$(ver_cut 1-2)
-QTMIN=5.14.2
+QTMIN=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
@@ -15,10 +15,9 @@ LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE=""
 
-# drop qtwidgets subslot operator when QT_MINIMAL >= 5.15.0
 RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5=
+	>=dev-qt/qtwidgets-${QTMIN}:5
 	=kde-frameworks/kconfig-${PVCUT}*:5
 	=kde-frameworks/kconfigwidgets-${PVCUT}*:5
 	=kde-frameworks/ki18n-${PVCUT}*:5
