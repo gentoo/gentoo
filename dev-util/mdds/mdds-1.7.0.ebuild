@@ -3,7 +3,7 @@
 
 EAPI=7
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/mdds/mdds.git"
 	inherit git-r3
 else
@@ -16,7 +16,7 @@ DESCRIPTION="Collection of multi-dimensional data structure and indexing algorit
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/${PV%.*}" # Check API version on version bumps!
+SLOT="1/1.5" # Check API version on version bumps!
 IUSE="doc openmp valgrind test"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +30,10 @@ BDEPEND="
 DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5.0-buildsystem.patch"
+	"${FILESDIR}/${P}-bashism.patch" # bug 723094
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
