@@ -76,7 +76,10 @@ RDEPEND="
 "
 
 pkg_setup() {
-	CONFIG_CHECK="~UTS_NS ~IPC_NS"
+	CONFIG_CHECK="
+		~UTS_NS ~IPC_NS
+		~SQUASHFS ~SQUASHFS_ZLIB
+	"
 	linux-info_pkg_setup
 }
 
