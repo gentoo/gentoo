@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-10-30)
+# Removed public macro definitions for TRUE and FALSE which breaks lots of
+# revdeps. See tacker bug at https://bugs.gentoo.org/751919
+=dev-libs/icu-68.1
+=dev-libs/icu-layoutex-68.1
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-30)
 # broken acl handling, possible broken chattr handling
 # needs more testing
