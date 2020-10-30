@@ -26,8 +26,15 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-# applies cleanly from master, can be dropped on next release
-PATCHES=( "${WORKDIR}/${P}-ppc64.patch" )
+PATCHES=(
+	# applies cleanly from master, can be dropped on next release
+	"${WORKDIR}/${P}-ppc64.patch"
+)
+
+src_prepare() {
+	sed -e 's:-Werror ::' -i cmake/simdjson-flags.cmake || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
