@@ -48,6 +48,7 @@ DOCS=(
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.4-tests.patch"
 	"${FILESDIR}/${PN}-3.0.5-pkgconfig-libdir.patch"
+	"${FILESDIR}/${P}-icu-68.patch" # pending upstream PR #448, bug #751928
 )
 
 pkg_setup() {
