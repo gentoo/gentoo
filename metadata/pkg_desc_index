@@ -8089,7 +8089,7 @@ dev-python/ecdsa 0.14.1-r2 0.15-r1 0.16.0-r1: ECDSA cryptographic signature libr
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
-dev-python/elementpath 2.0.3: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 2.0.3 2.0.4: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3 3.3.4: A powerful and robust templating system for Python
@@ -8232,7 +8232,7 @@ dev-python/humanize 2.6.0 3.0.1 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.4 5.37.5 5.38.0 5.38.1 5.39.0: A library for property based testing
+dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.4 5.37.5 5.38.0 5.38.1 5.39.0 5.41.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8398,7 +8398,7 @@ dev-python/mock 3.0.5-r2: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.20.0: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.20.0 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
-dev-python/more-itertools 5.0.0-r1 8.5.0: More routines for operating on iterables, beyond itertools
+dev-python/more-itertools 5.0.0-r1 8.5.0 8.6.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3 1.3.16-r1: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox3 0.24.0: Mock object framework for Python
@@ -8787,7 +8787,7 @@ dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression te
 dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.92.0: The new generation of the pytest-salt Plugin
-dev-python/pytest-services 2.1.0 2.2.0: Collection of fixtures and utility functions to run service processes for pytest
+dev-python/pytest-services 2.1.0 2.2.0 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
@@ -8795,7 +8795,7 @@ dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testm
 dev-python/pytest-timeout 1.4.2-r1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.34.0-r1 2.1.0: Distributed testing and loop-on-failing modes
-dev-python/pytest-xprocess 0.13.1-r1 0.14.0 0.15.0: Manage external processes across test runs
+dev-python/pytest-xprocess 0.13.1-r1 0.14.0 0.15.0 0.16.0: Manage external processes across test runs
 dev-python/pytest-xvfb 2.0.0: A pytest plugin to run Xvfb for tests
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
 dev-python/python-axolotl 0.2.3-r1: A python module for the axolotl protocol
@@ -13941,7 +13941,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 18.7 18.8 18.9 19.0_alpha2 19.0_alpha2_p20201030 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 18.7 18.8 18.9 19.0_alpha2_p20201030 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 30.0_p20190808-r3 31.0-r3: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
@@ -17479,7 +17479,7 @@ sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/darwin-libc-headers 1158.50.2-r4 1244.50.9-r4 1272.250.1-r4: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
-sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.6.21_p4-r2 4.7.25_p4-r2 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32 18.1.40: Oracle Berkeley DB
+sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.5.20_p2-r4 4.6.21_p4-r2 4.6.21_p4-r3 4.7.25_p4-r2 4.7.25_p4-r3 4.8.30-r3 4.8.30-r4 5.1.29-r2 5.3.28-r2 5.3.28-r4 5.3.28-r5 6.0.35-r2 6.0.35-r3 6.1.38 6.2.38 18.1.32 18.1.40: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.45.5 1.45.6: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
