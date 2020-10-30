@@ -128,6 +128,7 @@ multilib_src_configure() {
 		--disable-sql
 		--disable-sql_codegen
 		--disable-sql_compat
+		--disable-static
 		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly)
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly)
 		$(use_enable cxx)
@@ -199,6 +200,9 @@ multilib_src_install_all() {
 		mv "${ED%/}"/usr/bin/berkeley_db_svc \
 			"${ED%/}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
 	fi
+
+	# no static libraries
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
