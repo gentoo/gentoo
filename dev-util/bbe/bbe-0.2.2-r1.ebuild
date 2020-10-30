@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Sed-like editor for binary files"
 HOMEPAGE="https://sourceforge.net/projects/bbe-/"
@@ -20,4 +20,11 @@ src_prepare() {
 	sed -i -e '/^htmldir/d' doc/Makefile.am || die
 	eaclocal
 	eautoreconf
+}
+
+src_configure() {
+	# Avoid linking problems, bug #750545.
+	replace-flags -Os -O2
+
+	default
 }
