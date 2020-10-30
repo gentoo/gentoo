@@ -295,11 +295,10 @@ src_install() {
 		die "Refusing to install an empty package"
 	fi
 
-	if use savedconfig; then
-		echo "# Remove files that shall not be installed from this list." > "${S}"/${PN}.conf || die
-		find * ! -type d >> "${S}"/${PN}.conf || die
-		save_config "${S}"/${PN}.conf
-	fi
+	# create config file
+	echo "# Remove files that shall not be installed from this list." > "${S}"/${PN}.conf || die
+	find * ! -type d >> "${S}"/${PN}.conf || die
+	save_config "${S}"/${PN}.conf
 
 	popd &>/dev/null || die
 
