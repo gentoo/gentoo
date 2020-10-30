@@ -13407,12 +13407,12 @@ media-plugins/kodi-inputstream-adaptive 2.4.4 2.4.5 2.4.5-r1 2.6.0 2.6.1 9999: K
 media-plugins/kodi-inputstream-rtmp 2.0.9 2.0.9-r1 3.1.1-r1 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 1.6.0 1.6.1 1.7.0 1.7.1 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
-media-plugins/kodi-pvr-argustv 3.5.4 3.5.6 6.0.1 6.0.2 9999: Kodi's ARGUS TV client addon
-media-plugins/kodi-pvr-demo 3.6.1 6.0.1 9999: Demo PVR for Kodi
-media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 8.0.0 9999: Kodi's DVBLink client addon
+media-plugins/kodi-pvr-argustv 3.5.4 3.5.6 6.0.1 6.0.2 7.0.0 9999: Kodi's ARGUS TV client addon
+media-plugins/kodi-pvr-demo 3.6.1 6.0.1 7.0.0 9999: Demo PVR for Kodi
+media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 8.0.0 9.0.0 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 6.0.6 6.0.7 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 5.1.0 9999: Kodi's Filmon client addon
-media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 7.2.0 7.2.1 7.2.2 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
+media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 7.2.0 7.2.1 7.2.2 8.0.0 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 3.8.8 6.2.4 6.3.0 6.3.1 6.3.2 6.4.0 6.4.1 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 6.0.0 6.0.1 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 5.10.18 5.10.19 7.0.5 7.1.1 9999: MythTV PVR for Kodi
@@ -14890,7 +14890,7 @@ net-mail/mu 1.4.10 1.4.12 1.4.13: Set of tools to deal with Maildirs, in particu
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r1: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/onionrouter 0.6.0 9999: .onion discovery via SRV DNS lookups for use with postfix
+net-mail/onionrouter 0.6.1 9999: .onion discovery via SRV DNS lookups for use with postfix
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: Simple daemon to control email relay based on successful POP or IMAP logins
