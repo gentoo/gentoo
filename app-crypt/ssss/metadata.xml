@@ -10,4 +10,7 @@
 		The program suite does both: the generation of shares for a known secret,
 		and the reconstruction of a secret using user-pro‐vided shares.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">MrJoy/ssss</remote-id>
+	</upstream>
 </pkgmetadata>
