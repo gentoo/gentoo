@@ -8,7 +8,8 @@ inherit meson
 
 DESCRIPTION="Creates, deletes and cleans up volatile and temporary files and directories"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
-SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
+SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz
+	elibc_musl? ( https://dev.gentoo.org/~gyakovlev/distfiles/${P}-musl.tar.xz )"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
@@ -38,6 +39,13 @@ BDEPEND="
 "
 
 S="${WORKDIR}/systemd-${PV}"
+
+src_prepare() {
+	# musl patchset from:
+	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
+	use elibc_musl && eapply "${WORKDIR}/${P}-musl"
+	default
+}
 
 src_configure() {
 	# disable everything until configure says "enabled features: ACL, tmpfiles"
