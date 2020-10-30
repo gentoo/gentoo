@@ -38,6 +38,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# test pass, but some unrelated efi parts that
+# are impossible to skip fail to build
+RESTRICT="elibc_musl? ( test )"
+
 S="${WORKDIR}/systemd-${PV}"
 
 src_prepare() {
