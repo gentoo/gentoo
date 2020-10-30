@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 WX_GTK_VER="3.0"
-inherit eutils wxwidgets toolchain-funcs versionator
+inherit eutils flag-o-matic wxwidgets toolchain-funcs versionator
 
 DESCRIPTION="A full-featured wxWidgets version of the classic dice game Yahtzee"
 HOMEPAGE="http://openyahtzee.sourceforge.net/"
