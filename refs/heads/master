@@ -1,19 +1,13 @@
 certificate version 0.1
-pusher DF84256885283521 1604014709 +0100
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1604014709-62c5a01b8b0160b801097433fcc391ca74e81022
+pusher Sam James <sam@gentoo.org> 1604023173 +0000
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1604023173-58394a6fd3dda533b6708b093c872fd6ea7ac290
 
-3fe2b6b9220d3505f2dca97a78caa416e5bd8fcf 2ef1328d393f11a0cdba234dd7c691dd8c554594 refs/heads/master
+2ef1328d393f11a0cdba234dd7c691dd8c554594 3a0ef48bd3f99c66d530ca202b29920be9fae8e4 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQGTBAABCgB9FiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAl+bUnVfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEM3
-NkE4NDUwOTQwOThEMjhDQzhCMjZDNTYzOUFEQUUyMzI5RTI0MEUACgkQY5ra4jKe
-JA7q9QgAptJBD6B3oxvBf9OWYFJBvjB+/iiF1BiEy3RTRH9Cx/Yw4FaET2Ygkv30
-6ZiC+js5B3E8HhTjSt4mEtwQXkhIdczVo1wF+EB4YBmkRB6mbGsih/WSdFdCev9n
-46Eo9eGbIVGTU9xjUnxcqVCfvaa+OkRJRScQAAIhbF658unaNDTjBoZyPxm3IPGM
-0zCMFLJpx9Q0RB/S3jI6Cbj4gk5XWLoc2dG6PADBSznVY395JhiqVkwMVRE/KSCm
-ssjvm0ebyEzcMX3i/BgG53pfcNZLuy1woJFNAQFa2UdLdjsoqvPp3jKrRgONOASo
-R4nADKOV0s9ybV2z8D4wt7G8t6Xdww==
-=yOIy
+iIUEABYIAC0WIQSONjK3ErBA5VvN3hCxfj6E5hA8mwUCX5tzhQ8cc2FtQGdlbnRv
+by5vcmcACgkQsX4+hOYQPJtqMAEA+qniAc00Od8tVNHAsG/aj+rompbs8PnpEmB1
+QUpjeLIA/0WjFcTMnVTtf8qeAnTyQT4R5ZBcjxHLt4Swl8hpXsEI
+=ylh3
 -----END PGP SIGNATURE-----
