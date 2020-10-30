@@ -114,6 +114,13 @@ src_prepare() {
 		fi
 	fi
 
+	# whitelist of misc files
+	local misc_files=(
+		copy-firmware.sh
+		WHENCE
+		README
+	)
+
 	# whitelist of images with a free software license
 	local free_software=(
 		# keyspan_pda (GPL-2+)
@@ -238,9 +245,16 @@ src_prepare() {
 		# everything else is confirmed (or assumed) to be redistributable
 		# based on upstream acceptance policy
 		einfo "Removing non-redistributable files ..."
-		IFS=$'\n' find ! -type d -printf "%P\n" \
-			| grep -Fvx -e "${free_software[*]}" -e "${unknown_license[*]}" \
-			| xargs -d '\n' rm -v || die
+		local OLDIFS="${IFS}"
+		local IFS=$'\n'
+		set -o pipefail
+		find ! -type d -printf "%P\n" \
+			| grep -Fvx -e "${misc_files[*]}" -e "${free_software[*]}" -e "${unknown_license[*]}" \
+			| xargs -d '\n' --no-run-if-empty rm -v
+
+		[[ ${?} -ne 0 ]] && die "Failed to remove non-redistributable files"
+
+		IFS="${OLDIFS}"
 	fi
 
 	restore_config ${PN}.conf
@@ -250,6 +264,10 @@ src_install() {
 	./copy-firmware.sh -v "${ED}/lib/firmware" || die
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
+
+	# especially use !redistributable will cause some broken symlinks
+	einfo "Removing broken symlinks ..."
+	find * -xtype l -print -delete || die
 
 	if use savedconfig; then
 		if [[ -s "${S}/${PN}.conf" ]]; then
@@ -277,11 +295,10 @@ src_install() {
 		die "Refusing to install an empty package"
 	fi
 
-	if use savedconfig; then
-		echo "# Remove files that shall not be installed from this list." > "${S}"/${PN}.conf || die
-		find * ! -type d >> "${S}"/${PN}.conf || die
-		save_config "${S}"/${PN}.conf
-	fi
+	# create config file
+	echo "# Remove files that shall not be installed from this list." > "${S}"/${PN}.conf || die
+	find * ! -type d >> "${S}"/${PN}.conf || die
+	save_config "${S}"/${PN}.conf
 
 	popd &>/dev/null || die
 
