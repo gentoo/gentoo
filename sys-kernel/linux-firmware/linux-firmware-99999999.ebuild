@@ -114,6 +114,13 @@ src_prepare() {
 		fi
 	fi
 
+	# whitelist of misc files
+	local misc_files=(
+		copy-firmware.sh
+		WHENCE
+		README
+	)
+
 	# whitelist of images with a free software license
 	local free_software=(
 		# keyspan_pda (GPL-2+)
@@ -238,9 +245,16 @@ src_prepare() {
 		# everything else is confirmed (or assumed) to be redistributable
 		# based on upstream acceptance policy
 		einfo "Removing non-redistributable files ..."
-		IFS=$'\n' find ! -type d -printf "%P\n" \
-			| grep -Fvx -e "${free_software[*]}" -e "${unknown_license[*]}" \
-			| xargs -d '\n' rm -v || die
+		local OLDIFS="${IFS}"
+		local IFS=$'\n'
+		set -o pipefail
+		find ! -type d -printf "%P\n" \
+			| grep -Fvx -e "${misc_files[*]}" -e "${free_software[*]}" -e "${unknown_license[*]}" \
+			| xargs -d '\n' --no-run-if-empty rm -v
+
+		[[ ${?} -ne 0 ]] && die "Failed to remove non-redistributable files"
+
+		IFS="${OLDIFS}"
 	fi
 
 	restore_config ${PN}.conf
