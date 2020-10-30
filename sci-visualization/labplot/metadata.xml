@@ -18,5 +18,6 @@
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
 		<flag name="root">Enable support for CERN's ROOT file type</flag>
+		<flag name="serial">Enable support for RS232 serial ports using <pkg>dev-qt/qtserialport</pkg></flag>
 	</use>
 </pkgmetadata>
