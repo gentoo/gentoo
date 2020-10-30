@@ -6,7 +6,7 @@ EAPI=7
 ECM_DESIGNERPLUGIN="true"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
-QTMIN=5.14.2
+QTMIN=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org xdg-utils
 
@@ -15,14 +15,13 @@ LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="acl +handbook kerberos +kwallet X"
 
-# drop qtnetwork subslot operator when QT_MINIMAL >= 5.15.0
 RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5=[ssl]
+	>=dev-qt/qtnetwork-${QTMIN}:5[ssl]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	=kde-frameworks/kauth-${PVCUT}*:5
