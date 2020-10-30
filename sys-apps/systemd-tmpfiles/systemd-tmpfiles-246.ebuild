@@ -186,8 +186,9 @@ src_install() {
 
 src_test() {
 	# 'meson test' will compile full systemd, but we can still outsmart it
+	python_fix_shebang src/test/test-systemd-tmpfiles.py
 	"${EPYTHON}" src/test/test-systemd-tmpfiles.py \
-		"${BUILD_DIR}"/systemd-tmpfiles.standalone || die
+		"${BUILD_DIR}"/systemd-tmpfiles.standalone || die "${FUNCNAME} failed"
 }
 
 # adapted from opentmpfiles ebuild
