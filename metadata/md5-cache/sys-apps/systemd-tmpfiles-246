@@ -4,10 +4,10 @@ DEPEND=>=sys-kernel/linux-headers-3.11 sys-apps/acl:0= >=sys-apps/util-linux-2.3
 DESCRIPTION=Creates, deletes and cleans up volatile and temporary files and directories
 EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/systemd
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD-2 GPL-2 LGPL-2.1 MIT public-domain
 RDEPEND=>=sys-kernel/linux-headers-3.11 sys-apps/acl:0= >=sys-apps/util-linux-2.30:0= sys-libs/libcap:0= !sys-apps/opentmpfiles !sys-apps/systemd
 SLOT=0
 SRC_URI=https://github.com/systemd/systemd/archive/v246.tar.gz -> systemd-246.tar.gz
 _eclasses_=meson	71d293a701d6362387e1214da368c848	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=66e36e3415c368e64b92f2109c0316a8
+_md5_=77a8ff440a72ced8942ce1ec437e5cf9
