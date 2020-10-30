@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=sys-libs/zlib media-libs/libpng:0 virtual/jpeg:0 media-libs/freetype wxwidgets? ( x11-libs/wxGTK:3.0 ) !wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) !wxwidgets? ( dev-qt/linguist-tools:5 ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
+EAPI=6
+HOMEPAGE=https://github.com/buggins/coolreader/
+IUSE=wxwidgets l10n_bg l10n_cs l10n_de l10n_es l10n_hu l10n_pl l10n_ru l10n_uk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib media-libs/libpng:0 virtual/jpeg:0 media-libs/freetype wxwidgets? ( x11-libs/wxGTK:3.0 ) !wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )
+SLOT=0
+SRC_URI=https://github.com/buggins/coolreader/archive/cr3.2.50.tar.gz -> coolreader-3.2.50.tar.gz
+_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=b7be8790de64ad15d4ef8d7e50667bf1
