@@ -14981,7 +14981,7 @@ net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/croc 8.5.1: Easily and securely send things from one computer to another
+net-misc/croc 8.6.5: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.71.0 7.71.1 7.71.1-r1 7.72.0 7.72.0-r1 7.73.0: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
@@ -17922,7 +17922,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 86.0.4240.75 86.0.4240.111-r1 87.0.4280.27 88.0.4300.0: Open-source version of Google Chrome web browser
+www-client/chromium 86.0.4240.75 86.0.4240.111-r1 87.0.4280.40 88.0.4300.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6 3.34.4 3.36.3 3.36.4: GNOME webbrowser based on Webkit
