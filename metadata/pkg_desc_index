@@ -871,7 +871,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5 4.0.7: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.11.22: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.11.23: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
@@ -1047,7 +1047,7 @@ app-crypt/signify 23 24 29: OpenBSD tool to sign and verify signatures on files
 app-crypt/signing-party 2.10-r1 2.11: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
-app-crypt/ssss 0.5-r1: Shamir's Secret Sharing Scheme
+app-crypt/ssss 0.5-r1 0.5.6: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
 app-crypt/swtpm 0.5.0: Libtpms-based TPM emulator
@@ -5486,7 +5486,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.6.1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.9-r4 2.9.10-r2 2.9.10-r3: XML C parser and toolkit
+dev-libs/libxml2 2.9.10-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1 1.1.34 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C

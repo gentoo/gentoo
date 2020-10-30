@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=ftp://xmlsoft.org/libxml2/libxml2-2.9.10.tar.gz https://dev.gentoo.org/~sam/distfiles/dev-libs/libxml2/libxml2-2.9.10-r1-patchset.tar.xz test? ( http://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2002-01-16/xsts-2002-01-16.tar.gz http://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2004-01-14/xsts-2004-01-14.tar.gz http://www.w3.org/XML/Test/xmlts20080827.tar.gz )
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	prefix	c2993e4c430c1ee24f278983d6189501	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=77826e6ccd6c9e9d981df8ff6693d56f
+_md5_=8e682e6fbc0079bc867dc18632590522
