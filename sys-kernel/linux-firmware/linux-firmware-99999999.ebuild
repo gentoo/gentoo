@@ -265,6 +265,10 @@ src_install() {
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
 
+	# especially use !redistributable will cause some broken symlinks
+	einfo "Removing broken symlinks ..."
+	find * -xtype l -print -delete || die
+
 	if use savedconfig; then
 		if [[ -s "${S}/${PN}.conf" ]]; then
 			local files_to_keep="${T}/files_to_keep.lst"
