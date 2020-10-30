@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils linux-info udev
+inherit cmake-utils flag-o-matic linux-info udev
 
 DESCRIPTION="turns FL2000-based USB 3.0 to VGA adapters into low cost DACs"
 
