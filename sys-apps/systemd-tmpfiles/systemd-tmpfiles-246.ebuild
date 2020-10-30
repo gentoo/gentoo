@@ -12,7 +12,7 @@ SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${P
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND="
 	>=sys-kernel/linux-headers-${MINKV}
