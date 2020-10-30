@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,8 +16,13 @@ KEYWORDS="amd64 ppc sparc x86"
 
 DEPEND="net-irc/irssi"
 
+src_prepare() {
+	default
+	eapply "${FILESDIR}/${P}-Makefile.patch"
+}
+
 src_compile() {
-	$(tc-getCC) -o irssistats ${CFLAGS} ${LDFLAGS} irssistats.c
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
