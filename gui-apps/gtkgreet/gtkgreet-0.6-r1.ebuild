@@ -12,8 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~kennylevinsen/gtkgreet"
 else
-	MY_PV=${PV/_rc/-rc}
-	SRC_URI="https://git.sr.ht/~kennylevinsen/gtkgreet/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://git.sr.ht/~kennylevinsen/gtkgreet/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
@@ -23,8 +22,8 @@ IUSE="+layershell +man"
 
 DEPEND="
 	dev-libs/json-c:=
-	x11-libs/gtk+:3
 	layershell? ( gui-libs/gtk-layer-shell )
+	x11-libs/gtk+:3
 "
 RDEPEND="
 	${DEPEND}
@@ -34,6 +33,8 @@ BDEPEND="
 	virtual/pkgconfig
 	man? ( app-text/scdoc )
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-0.6-r1-werror.patch )
 
 src_configure() {
 	local emesonargs=(
