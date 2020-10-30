@@ -17213,10 +17213,10 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1 9999: Tools necessary to build programs
+sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1 2.35.1-r1: Tools necessary to build programs
 sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.2 3.7.3: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17471,7 +17471,7 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
@@ -17486,7 +17486,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.5 1.6.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1 1.18.1-r1: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r1 2.32-r2 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0: Library for managing partitions
