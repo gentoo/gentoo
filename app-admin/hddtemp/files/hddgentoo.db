@@ -265,3 +265,7 @@
 "WDC WD(1|2|3|4|5|6)0EZRZ-00Z5HB0"				194 C "Western Digital Blue SATA3 5400RPM 64MB"
 "ST31000528AS"							194 C "Seagate Barracuda 7200.12 1TB SATA2 7200RPM 32MB"
 "HITACHI HTS727550A9E364"					194 C "Hitachi Travelstar 7K500 500GB SATA2 7200RPM 16MB"
+"ST2000DM008-2FR102"						194 C "Seagate Barracuda 2TB SATA3 7200RPM 256MB"
+"INTEL SSDSC2KW128G8"                                           190 C "Intel SSD 545s 128GB"
+"INTEL SSDSC2KW256G8"                                           190 C "Intel SSD 545s 256GB"
+"INTEL SSDSC2KW512G8"                                           190 C "Intel SSD 545s 512GB"
