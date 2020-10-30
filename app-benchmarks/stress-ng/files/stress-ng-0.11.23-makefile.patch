@@ -1,5 +1,5 @@
---- stress-ng-0.11.17.orig/Makefile	2020-07-27 13:38:23.000000000 +0200
-+++ stress-ng-0.11.17/Makefile	2020-08-09 13:43:30.919796477 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -21,7 +21,7 @@
  # Codename "synthetic system strainer"
  #
@@ -9,7 +9,7 @@
  
  #
  # Pedantic flags
-@@ -358,12 +358,10 @@
+@@ -364,12 +364,10 @@
  .o: stress-ng.h Makefile
  
  .c.o:
@@ -24,33 +24,32 @@
  	@sync
  
  makeconfig:
-@@ -384,7 +382,7 @@
+@@ -390,8 +388,7 @@
  		sed '$$ s/.$$//' >> apparmor-data.c
  	@echo "};" >> apparmor-data.c
  	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
 -	@echo "CC $<"
-+	echo "CC $<"
- 	@$(CC) -c apparmor-data.c -o apparmor-data.o
+-	@$(CC) -c apparmor-data.c -o apparmor-data.o
++	$(CC) -c apparmor-data.c -o apparmor-data.o
  	@rm -rf apparmor-data.c apparmor-data.bin
  
-@@ -401,12 +399,12 @@
- 	@$(CC) $(CFLAGS) -E core-perf-event.c | grep "PERF_COUNT" | \
+ #
+@@ -419,12 +416,10 @@
+ 	@$(CC) $(CFLAGS) -E core-perf-event.c | $(GREP) "PERF_COUNT" | \
  	sed 's/,/ /' | sed s/'^ *//' | \
  	awk {'print "#define _SNG_" $$1 " (1)"'} > core-perf-event.h
 -	@echo CC $<
 -	@$(CC) $(CFLAGS) -c -o $@ $<
-+	echo CC $<
 +	$(CC) $(CFLAGS) -c -o $@ $<
  
  stress-vecmath.o: stress-vecmath.c
 -	@echo CC $<
 -	@$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
-+	echo CC $<
 +	$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
- 	@touch stress-ng.c
  
  $(OBJS): stress-ng.h Makefile
-@@ -459,7 +457,7 @@
+ 
+@@ -478,7 +473,7 @@
  	mkdir -p ${DESTDIR}${BINDIR}
  	cp stress-ng ${DESTDIR}${BINDIR}
  	mkdir -p ${DESTDIR}${MANDIR}

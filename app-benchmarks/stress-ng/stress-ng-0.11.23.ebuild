@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.11.17-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.11.23-makefile.patch" )
 
 src_compile() {
 	tc-export CC

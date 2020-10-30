@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/751922
+https://gitlab.gnome.org/GNOME/libxml2/-/issues/202
+
+From c1bae734f3850f6900cf54d186ca0a9102895d82 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 30 Oct 2020 10:27:23 +0100
+Subject: [PATCH] Fix build with icu-68.1
+
+icu-68.1 removed macro definitions for TRUE and FALSE
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ encoding.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/encoding.c b/encoding.c
+index ad4d8a63..ea1fa99e 100644
+--- a/encoding.c
++++ b/encoding.c
+@@ -1958,7 +1958,7 @@ xmlEncOutputChunk(xmlCharEncodingHandler *handler, unsigned char *out,
+ #ifdef LIBXML_ICU_ENABLED
+     else if (handler->uconv_out != NULL) {
+         ret = xmlUconvWrapper(handler->uconv_out, 0, out, outlen, in, inlen,
+-                              TRUE);
++                              1);
+     }
+ #endif /* LIBXML_ICU_ENABLED */
+     else {
+-- 
+2.29.2
+
