@@ -18887,7 +18887,7 @@ x11-wm/i3-gaps 4.16.1-r2 4.17.1-r1 4.18.1 4.18.2: i3 fork with gaps and some mor
 x11-wm/icewm 1.7.0 1.8.3 1.9.0: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
-x11-wm/lumina 1.5.0-r1 1.6.0 9999: Lumina desktop environment
+x11-wm/lumina 1.6.0 9999: Lumina desktop environment
 x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.24.0-r2 1.24.1 1.24.1-r1: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebars and frames
