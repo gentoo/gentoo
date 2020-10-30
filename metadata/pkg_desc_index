@@ -14636,7 +14636,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
 net-irc/telepathy-idle 0.2.0-r3: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.4.1 5.0.6 5.0.7: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1 5.0.6 5.0.7 5.0.7-r1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.9 9999: Portable and multi-interface IRC client
 net-irc/znc 1.8.1 1.8.2 9999: An advanced IRC Bouncer
 net-irc/znc-clientbuffer 1.0.48: A ZNC module which provides client specific buffers
