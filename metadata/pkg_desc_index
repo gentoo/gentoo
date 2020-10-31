@@ -3005,7 +3005,7 @@ app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pa
 app-text/unrtf 0.21.10: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vgrep 2.3.1 2.3.3 2.4.0: A pager for grep, git-grep and similar grep implementations
-app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1: HTML to ASCII converter programmed to handle incorrect html
+app-text/vilistextum 2.6.9-r1 2.8.0.20191023-r1 2.8.0.20200411: HTML to ASCII converter programmed to handle incorrect html
 app-text/wdiff 1.2.2 1.2.2-r1: Create a diff disregarding formatting
 app-text/webgen 1.7.1: A template-based static website generator
 app-text/wgetpaste 2.29-r1: Command-line interface to various pastebins
