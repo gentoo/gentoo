@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="Small, safe and fast formatting library"
 HOMEPAGE="https://github.com/fmtlib/fmt"
