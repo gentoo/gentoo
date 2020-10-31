@@ -143,7 +143,9 @@ DEPEND="
 	dev-libs/libgit2:=
 	dev-libs/oniguruma:=
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!app-text/delta
+"
 
 QA_FLAGS_IGNORED="/usr/bin/delta"
 
