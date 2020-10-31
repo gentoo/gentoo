@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="MariaDB Connector/ODBC"
 HOMEPAGE="https://downloads.mariadb.org/connector-odbc/"
