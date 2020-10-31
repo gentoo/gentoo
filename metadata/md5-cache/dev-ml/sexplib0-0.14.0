@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/sexplib0/archive/v0.14.0.tar.gz -> sexplib0-0.14.0.tar.gz
-_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
 _md5_=403131866cac59b54dd29507203fe83b

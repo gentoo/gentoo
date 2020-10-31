@@ -11,6 +11,6 @@ RDEPEND=python_single_target_python3_6? ( >=dev-python/cryptography-2.3[python_t
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 RESTRICT=mirror bindist
 SLOT=0
-SRC_URI=https://github.com/pyfa-org/Pyfa/archive/v2.28.3.tar.gz -> pyfa-2.28.3.tar.gz
+SRC_URI=https://github.com/pyfa-org/Pyfa/archive/v2.30.0.tar.gz -> pyfa-2.30.0.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	multilib	98584e405e2b0264d37e8f728327fed1	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a1d1b06f317ef08b591ff84cbcac5008

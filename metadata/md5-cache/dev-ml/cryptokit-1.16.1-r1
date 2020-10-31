@@ -12,5 +12,5 @@ REQUIRED_USE=test? ( ocamlopt )
 RESTRICT=!test? ( test )
 SLOT=0/1.16.1
 SRC_URI=https://github.com/xavierleroy/cryptokit/archive/release1161.tar.gz -> cryptokit-1.16.1.tar.gz
-_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
 _md5_=012452f759f39cf54889251e93710bf9

@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_base-0.14.0:= >=dev-ml/stdio-0.14.0:= >=dev-ml/time_now-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_module_timer/archive/v0.14.0.tar.gz -> ppx_module_timer-0.14.0.tar.gz
-_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
 _md5_=8c336a4b1bd89f93c151907754732916

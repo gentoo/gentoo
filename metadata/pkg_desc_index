@@ -2710,7 +2710,7 @@ app-shells/dash 0.5.11.1 0.5.11.2: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1 3.0.2 3.1.0 3.1.2 9999: Friendly Interactive SHell
-app-shells/fzf 0.21.0 0.21.1 0.22.0: A general-purpose command-line fuzzy finder, written in GoLang
+app-shells/fzf 0.21.0 0.21.1 0.22.0 0.24.0: A general-purpose command-line fuzzy finder, written in GoLang
 app-shells/fzy 1.0-r1 9999: Fuzzy text selector (interactive grep) for console
 app-shells/gentoo-bashcomp 20180302 20190211: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20200914 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
@@ -5343,7 +5343,7 @@ dev-libs/libffi 3.3-r2: a portable, high level programming interface to various 
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.1 1.4.0 1.5.0-r1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.24.1 0.25.0: C++ library offering some basic functionality for platform-independent programs
-dev-libs/libflatarray 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
+dev-libs/libflatarray 0.4.0_pre20201009: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 7.0.3 7.1.0 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -7922,7 +7922,7 @@ dev-python/botocore 1.17.59 1.18.1 1.18.10 1.18.18 1.19.1 1.19.2 1.19.3 1.19.4 1
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/breathe 4.14.1: Sphinx Doxygen renderer
+dev-python/breathe 4.14.1 4.22.1: Sphinx Doxygen renderer
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.7: Python bindings for Berkeley DB
@@ -11680,7 +11680,7 @@ games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.5.7 0.5.7.1 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r3 0.5.2: Compiler of NML files into GRF/NFO files
-games-util/pyfa 2.28.3 2.29.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.29.0 2.30.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/slade 3.1.12a: Modern editor for Doom-engine based games and source ports
@@ -16145,7 +16145,7 @@ sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libecpint 1.0.2: Efficient evaluation of integrals over ab initio effective core potentials
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
 sci-libs/libgenome 1.3-r1: Library for sci-biology/mauve
-sci-libs/libgeodecomp 0.5.0_pre20200420: An auto-parallelizing library to speed up computer simulations
+sci-libs/libgeodecomp 0.5.0_pre20201009: An auto-parallelizing library to speed up computer simulations
 sci-libs/libgeotiff 1.5.1-r1: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
@@ -17151,7 +17151,7 @@ sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware 
 sys-cluster/glusterfs 7.7 7.8-r1 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heat 14.0.0 14.1.0 15.0.0 2020.1.9999 2020.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
-sys-cluster/hpx 1.4.1 9999: C++ runtime system for parallel and distributed applications
+sys-cluster/hpx 1.5.1 9999: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes clusters
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project

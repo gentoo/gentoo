@@ -11,5 +11,5 @@ RDEPEND=!dev-ml/ocaml-re dev-ml/seq:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.9.0
 SRC_URI=https://github.com/ocaml/ocaml-re/archive/1.9.0.tar.gz -> ocaml-re-1.9.0.tar.gz
-_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
 _md5_=f36c7afa533d4dd69a7ae1f938ef681c

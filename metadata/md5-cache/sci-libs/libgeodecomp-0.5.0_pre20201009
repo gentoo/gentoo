@@ -1,6 +1,6 @@
 BDEPEND=doc? ( app-doc/doxygen app-text/texlive media-gfx/graphviz ) dev-util/ninja dev-util/cmake test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-libs/boost ~dev-libs/libflatarray-0.4.0_pre20200314 cuda? ( dev-util/nvidia-cuda-toolkit ) hpx? ( sys-cluster/hpx ) mpi? ( virtual/mpi ) opencl? ( virtual/opencl ) opencv? ( media-libs/opencv ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 ) silo? ( sci-libs/silo )
+DEPEND=dev-libs/boost ~dev-libs/libflatarray-0.4.0_pre20201009 cuda? ( dev-util/nvidia-cuda-toolkit ) hpx? ( sys-cluster/hpx ) mpi? ( virtual/mpi ) opencl? ( virtual/opencl ) opencv? ( media-libs/opencv ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 ) silo? ( sci-libs/silo )
 DESCRIPTION=An auto-parallelizing library to speed up computer simulations
 EAPI=7
 HOMEPAGE=http://www.libgeodecomp.org https://github.com/STEllAR-GROUP/libgeodecomp
@@ -10,6 +10,6 @@ LICENSE=Boost-1.0
 RDEPEND=dev-libs/boost
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/STEllAR-GROUP/libgeodecomp/archive/69c5573ac7b2b654d649e8902fad73b05bf33644.tar.gz -> libgeodecomp-0.5.0_pre20200420.tar.gz
+SRC_URI=https://github.com/STEllAR-GROUP/libgeodecomp/archive/6848b3a17b359e03585e56dd1f37dc7c71136114.tar.gz -> libgeodecomp-0.5.0_pre20201009.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	cuda	c2f1b334711bbbf2130f339636dc7515	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	e49dbce7ac14426e1155497476915307	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8d58ebcce8ba97d229e2f6eb9be6b792
+_md5_=82dbff118f7a82eb473e94de5be9cbac
