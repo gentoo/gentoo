@@ -132,9 +132,9 @@ DESCRIPTION="A syntax-highlighting pager for git"
 HOMEPAGE="https://github.com/dandavison/delta"
 SRC_URI="https://github.com/dandavison/delta/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"
-LICENSE="Apache-2.0 BSD-2-Clause BSL-1.0 CC0-1.0 ISC LGPL-3.0-or-later MIT Unlicense Zlib"
+S="${WORKDIR}/${P/git-/}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD-2 Boost-1.0 CC0-1.0 ISC LGPL-3+ MIT Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
