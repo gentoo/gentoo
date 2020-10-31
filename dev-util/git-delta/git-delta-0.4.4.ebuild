@@ -161,7 +161,7 @@ src_install() {
 	# No man page (yet?)
 
 	# Completions
-	dobashcomp "${S}/etc/completion/completion.bash"
+	newbashcomp "${S}/etc/completion/completion.bash" delta
 
 	insinto /usr/share/zsh/site-functions
 	newins "${S}/etc/completion/completion.zsh" _delta
