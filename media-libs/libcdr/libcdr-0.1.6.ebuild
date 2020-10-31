@@ -36,6 +36,8 @@ BDEPEND="
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}/${P}-icu-68.patch" ) # bug 751934
+
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"

@@ -387,8 +387,12 @@ net-libs/nDPI
 =mail-mta/postfix-3.6*
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
-# Depends on dev-java/eclipse-ecj:4.13 which
-# depends on >=virtual/{jdk,jre}-11 which is masked
+# dev-java/ant-eclipse-ecj:4.10 depends on masked >=virtual/{jdk,jre}-11
+# www-servers/tomcat:9 depends on masked dev-java/eclipse-ecj:4.13
+dev-java/ant-eclipse-ecj:4.13
+dev-java/eclipse-ecj:4.13
+dev-java/ant-eclipse-ecj:4.10
+dev-java/eclipse-ecj:4.10
 www-servers/tomcat:9
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
@@ -427,11 +431,6 @@ net-misc/gnome-remote-desktop
 # Depends on apache-2.2
 dev-libs/OpenSRF
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-10-16)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-dev-java/ant-eclipse-ecj:4.13
-dev-java/eclipse-ecj:4.13
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # TeXmacs is the only remaining package in tree that requires guile-1.8, which
 # is unsupported upstream. A TeXmacs port to Guile-2 has been in progress for a
@@ -451,11 +450,6 @@ app-office/texmacs
 # Robin H. Johnson <robbat2@gentoo.org> (2019-03-25)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-dev-java/ant-eclipse-ecj:4.10
-dev-java/eclipse-ecj:4.10
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # Requires >=dev-lang/lua-5.2 which is masked
