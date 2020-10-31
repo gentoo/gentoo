@@ -4268,12 +4268,12 @@ dev-haskell/recaptcha 0.1.0.4: Functions for using the reCAPTCHA service in web 
 dev-haskell/reducers 3.12.3: Semigroups, specialized containers and a general map/reduce framework
 dev-haskell/refact 0.3.0.2: Specify refactorings to perform with apply-refact
 dev-haskell/reflection 2.1.4: Reifies arbitrary terms into types that can be reflected back into terms
-dev-haskell/regex-applicative 0.3.3: Regex-based parsing with applicative interface
+dev-haskell/regex-applicative 0.3.3.1: Regex-based parsing with applicative interface
 dev-haskell/regex-applicative-text 0.1.0.1: regex-applicative on text
 dev-haskell/regex-base 0.94.0.0: Replaces/Enhances Text.Regex
 dev-haskell/regex-compat 0.95.2.0: Replaces/Enhances Text.Regex
 dev-haskell/regex-compat-tdfa 0.95.1.4: Unicode Support version of Text.Regex, using regex-tdfa
-dev-haskell/regex-pcre 0.94.4-r1 0.95.0.0: Replaces/Enhances Text.Regex
+dev-haskell/regex-pcre 0.95.0.0: Replaces/Enhances Text.Regex
 dev-haskell/regex-pcre-builtin 0.95.1.3.8.43: PCRE Backend for "Text.Regex" (regex-base)
 dev-haskell/regex-posix 0.96.0.0: Replaces/Enhances Text.Regex
 dev-haskell/regex-tdfa 1.2.2 1.3.1.0: Replaces/Enhances Text.Regex
@@ -17469,7 +17469,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.8.16 5.8.17 5.9.1 5.9.2: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.203 4.19.153 5.4.73 5.8.17 5.9.2: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.203 4.19.154 5.4.73 5.8.17 5.9.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
