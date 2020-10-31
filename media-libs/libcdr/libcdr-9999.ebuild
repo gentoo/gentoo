@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="doc static-libs test"
+IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
@@ -44,8 +44,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		$(use_with doc docs)
-		$(use_enable static-libs static)
 		$(use_enable test tests)
 	)
 	econf "${myeconfargs[@]}"
