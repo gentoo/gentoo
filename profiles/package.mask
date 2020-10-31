@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2020-10-31)
+# Redundant historical packages now being provided
+# together by sci-libs/lapack
+# Removal in 14 days. Bug #746962.
+sci-libs/blas-reference
+sci-libs/cblas-reference
+sci-libs/lapack-reference
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-10-30)
 # Removed public macro definitions for TRUE and FALSE which breaks lots of
 # revdeps. See tacker bug at https://bugs.gentoo.org/751919
