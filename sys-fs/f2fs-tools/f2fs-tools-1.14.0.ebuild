@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0/8"
-KEYWORDS="~amd64 arm arm64 ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86"
 IUSE="selinux"
 
 RDEPEND="
