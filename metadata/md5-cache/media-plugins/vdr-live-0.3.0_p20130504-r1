@@ -10,4 +10,4 @@ RDEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 
 SLOT=0
 SRC_URI=mirror://gentoo/vdr-live-0.3.0_p20130504.tar.bz2 https://dev.gentoo.org/~hd_brummy/distfiles/vdr-live-0.3.0_p20130504.tar.bz2
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	db8b7ce9d0e663594bcb4a4e72131a79	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=8f8b6c4a6b3b9af93d23ee5c6113eba4
+_md5_=174e8ad2930ae1b4dac8d7199972a213
