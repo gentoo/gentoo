@@ -1,0 +1,3 @@
+
+# Thrustmaster T-Wireless
+KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="d007", TAG+="uaccess"
