@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit fixheadtails toolchain-funcs
+inherit fixheadtails flag-o-matic toolchain-funcs
 
 DESCRIPTION="A uniform password checking interface for root applications"
 HOMEPAGE="https://cr.yp.to/checkpwd.html"
