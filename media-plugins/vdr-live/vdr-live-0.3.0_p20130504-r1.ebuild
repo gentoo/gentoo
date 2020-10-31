@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit vdr-plugin-2 ssl-cert
+inherit flag-o-matic vdr-plugin-2 ssl-cert
 
 DESCRIPTION="VDR Plugin: Web Access To Settings"
 HOMEPAGE="http://live.vdr-developer.org"
