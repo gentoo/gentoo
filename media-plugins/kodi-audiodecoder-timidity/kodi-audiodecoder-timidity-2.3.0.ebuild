@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit cmake flag-o-matic kodi-addon
 
 DESCRIPTION="Timidity decoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audiodecoder.timidity"

@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit cmake python-single-r1
+inherit cmake flag-o-matic python-single-r1
 
 DESCRIPTION="Plugins for the video editor media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"

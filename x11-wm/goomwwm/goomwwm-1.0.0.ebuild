@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs
+
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Get out of my way, Window Manager!"
 HOMEPAGE="http://aerosuidae.net/goomwwm/"

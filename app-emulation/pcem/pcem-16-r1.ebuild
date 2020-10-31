@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop wxwidgets
+inherit autotools desktop flag-o-matic wxwidgets
 
 WX_GTK_VER="3.0-gtk3"
 

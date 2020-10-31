@@ -5,7 +5,7 @@ EAPI=7
 ROS_REPO_URI="https://github.com/ros-planning/geometric_shapes"
 KEYWORDS="~amd64 ~arm"
 
-inherit ros-catkin
+inherit flag-o-matic ros-catkin
 
 DESCRIPTION="Generic definitions of geometric shapes and bodies"
 LICENSE="BSD"
