@@ -1,0 +1,35 @@
+commit 53c1576b21b53156fc30d357b40c88c7eefb50de
+Author: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date:   Thu Jan 30 22:22:58 2020 +0530
+
+    Remove encoding parameter json.loads for Python 3.9 compatibility.
+
+diff --git a/libnacl/utils.py b/libnacl/utils.py
+index 412d518..e06e078 100644
+--- a/libnacl/utils.py
++++ b/libnacl/utils.py
+@@ -1,6 +1,7 @@
+ # -*- coding: utf-8 -*-
+ 
+ import struct
++import sys
+ import time
+ 
+ # Import nacl libs
+@@ -31,7 +32,10 @@ def load_key(path_or_file, serial='json'):
+             key_data = msgpack.load(stream)
+         elif serial == 'json':
+             import json
+-            key_data = json.loads(stream.read(), encoding='UTF-8')
++            if sys.version_info[0] >= 3:
++                key_data = json.loads(stream.read())
++            else:
++                key_data = json.loads(stream.read(), encoding='UTF-8')
+     finally:
+         if stream != path_or_file:
+             stream.close()
+@@ -95,4 +99,3 @@ def time_nonce():
+     '''
+     nonce = rand_nonce()
+     return (struct.pack('=d', time.time()) + nonce)[:len(nonce)]
+-
