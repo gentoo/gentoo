@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake desktop flag-o-matic ninja-utils python-any-r1 xdg-utils
