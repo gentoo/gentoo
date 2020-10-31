@@ -33,6 +33,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-conditional-py-bindings.patch
 	# http://bazaar.launchpad.net/~indicator-applet-developers/libappindicator/trunk.12.10/revision/244
 	"${FILESDIR}"/${P}-vala-inherit.patch
+	# https://bugs.launchpad.net/archlinux/+source/libappindicator/+bug/1867996
+	"${FILESDIR}"/${P}-lp1867996-fix-g-signal-emit.patch
+	"${FILESDIR}"/${P}-lp1867996-fix-iterate-search-path.patch
 )
 
 src_prepare() {
