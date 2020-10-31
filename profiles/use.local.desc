@@ -5801,7 +5801,6 @@ net-im/toxic:notification - Enables desktop notifications with libnotify, with s
 net-im/toxic:qrcode - Enables QR code support
 net-im/toxic:sound - Enables audio calling
 net-im/toxic:video - Enables video calling
-net-im/vacuum:adiummessagestyle - Use UI styles created for Adium
 net-im/vacuum:annotations - Enable adding comments to the contacts in the roster
 net-im/vacuum:aspell - Select app-text/aspell spell checker backend
 net-im/vacuum:autostatus - Change the status in accordance with the time of inactivity
