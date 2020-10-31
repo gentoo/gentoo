@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Core libraries for simple video cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
