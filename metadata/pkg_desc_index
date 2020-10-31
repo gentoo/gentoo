@@ -17649,8 +17649,8 @@ sys-process/xjobs 20200726: Reads commands line by line and executes them in par
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
-virtual/blas 1.0 3.6 3.7 3.8: Virtual for FORTRAN 77 BLAS implementation
-virtual/cblas 1.0 3.6 3.7 3.8: Virtual for BLAS C implementation
+virtual/blas 3.8: Virtual for FORTRAN 77 BLAS implementation
+virtual/cblas 3.8: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
 virtual/commonlisp 0: Virtual for Common Lisp
@@ -17678,7 +17678,7 @@ virtual/jpeg 100: Virtual to select between libjpeg-turbo and IJG jpeg for sourc
 virtual/jpeg-compat 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
 virtual/jre 1.8.0-r3 11-r2: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0-r1: Virtual for Kerberos V implementation
-virtual/lapack 3.0 3.1 3.6 3.7 3.8: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
+virtual/lapack 3.8: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/lapacke 3.8: Virtual for LAPACK C implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
 virtual/libc 1-r1: Virtual for the C library
