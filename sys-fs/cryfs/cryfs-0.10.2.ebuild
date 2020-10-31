@@ -73,6 +73,7 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 	)
 	use custom-optimization || append-flags -O3
+	use debug || append-flags -DNDEBUG
 
 	cmake_src_configure
 }
