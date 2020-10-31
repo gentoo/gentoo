@@ -10132,15 +10132,15 @@ dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques
 dev-ruby/rrdtool-bindings 1.7.2: Ruby bindings for rrdtool
 dev-ruby/rspec 2.99.0 3.8.0 3.9.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.2.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.99.2-r2 3.8.2 3.9.1: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-expectations 2.99.2 3.8.4 3.8.6 3.9.1: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.99.2-r2 3.8.2 3.9.1 3.9.3: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-expectations 2.99.2 3.8.4 3.8.6 3.9.1 3.9.4: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 3.8.3 3.9.1 4.0.1: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
-dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0 3.9.1 3.9.2: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0 3.9.1 3.9.2 3.9.4: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.8 0.70.8-r1: RSpec support and matchers
 dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
@@ -10267,7 +10267,7 @@ dev-ruby/strptime 0.2.3 0.2.4 0.2.5: A fast strptime/strftime engine which uses 
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/sync 0.5.0: A module that provides a two-phase lock with a counter
 dev-ruby/syntax 1.2.2: Syntax highlighting for sourcecode and HTML
-dev-ruby/sys-uname 1.2.1: A Ruby interface for getting operating system information
+dev-ruby/sys-uname 1.2.1 1.2.2: A Ruby interface for getting operating system information
 dev-ruby/syslogger 1.6.5: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.4: Calculates the differences between two tree-like structures
@@ -10294,7 +10294,7 @@ dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/tomlrb 1.2.8: A racc based toml parser
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
-dev-ruby/travis 1.9.1: Travis CI Client (CLI and Ruby library)
+dev-ruby/travis 1.9.1 1.10.0: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.10 1.6.11: Treetop is a language for describing languages
 dev-ruby/trollop 2.1.3 2.9.10: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1 1.6.2.1: A TrueType font parser written in pure ruby
@@ -10346,7 +10346,7 @@ dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote proc
 dev-ruby/xpath 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20 0.9.25: Documentation generation tool for the Ruby programming language
-dev-ruby/zeitwerk 2.3.1 2.4.0: Efficient and thread-safe code loader for Ruby
+dev-ruby/zeitwerk 2.3.1 2.4.0 2.4.1: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.12.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
 dev-scheme/c-wrapper 0.6.1-r1: Foreign function interface for C and Objective-C libraries
