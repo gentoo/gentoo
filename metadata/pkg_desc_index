@@ -2772,7 +2772,7 @@ app-text/blogc 0.20.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 4.9.1-r3 4.22.0 4.23.0 5.4.2: Ebook management application
+app-text/calibre 4.22.0 4.23.0 5.4.2: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 2.0.0-r1: Tool for extracting unformatted bibliographic references
@@ -5687,7 +5687,7 @@ dev-lua/luadbi 0.5-r6 0.7.2 0.7.2-r100: A database interface library for Lua
 dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.6: libevent bindings for Lua
 dev-lua/luaexpat 1.3.0-r1 1.3.0-r2 1.3.3-r1 1.3.3-r2: LuaExpat is a SAX XML parser based on the Expat library
-dev-lua/luafilesystem 1.5.0 1.6.2 1.6.3 1.7.0.2: File System Library for the Lua Programming Language
+dev-lua/luafilesystem 1.5.0 1.6.2 1.6.3 1.7.0.2 1.8.0: File System Library for the Lua Programming Language
 dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
 dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL module in the Lua universe.
@@ -10728,7 +10728,7 @@ dev-util/lxqt-build-tools 0.7.0: LXQt Build Tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 2.0.99.1 2.0.99.2: GNU make replacement
 dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
-dev-util/mdds 1.6.0 9999: A collection of multi-dimensional data structure and indexing algorithm
+dev-util/mdds 1.6.0 1.7.0 9999: Collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.2-r1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.55.3 9999: Open source build system
@@ -14650,7 +14650,7 @@ net-irc/znc-playback 20200510: A ZNC module to control buffer playback
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
-net-libs/aqbanking 6.0.1: Generic Online Banking Interface
+net-libs/aqbanking 6.0.1 6.2.5: Generic Online Banking Interface
 net-libs/axtls 2.1.5 2.1.5-r1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
@@ -17492,7 +17492,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1 1.18.1-r1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 5.1.2: Multi-platform helper library for other libraries
+sys-libs/gwenhywfar 5.1.2 5.4.1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0: Library for managing partitions
 sys-libs/ldb 2.0.12-r1 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1: library required by reiser4progs
