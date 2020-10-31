@@ -1,0 +1,48 @@
+https://github.com/eteran/edb-debugger/pull/776
+
+From a46587a77c33256d56077a2d0709291b3ab12505 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Fri, 11 Sep 2020 07:57:39 +0100
+Subject: [PATCH] x86-generic/PlatformThread.cpp: avoid non-constant offsetof
+
+On gcc-11 edb-debugger build fails as:
+
+```
+.../x86-generic/PlatformThread.cpp:332:79: error: 'n' is not a constant expression
+  332 |         return ptrace(PTRACE_POKEUSER, tid_, offsetof(struct user, u_debugreg[n]), value);
+      |                                                                               ^
+```
+
+The change workarounds by avoiding non-constant expression:
+https://gcc.gnu.org/PR95942
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ .../unix/linux/arch/x86-generic/PlatformThread.cpp          | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- a/plugins/DebuggerCore/unix/linux/arch/x86-generic/PlatformThread.cpp
++++ b/plugins/DebuggerCore/unix/linux/arch/x86-generic/PlatformThread.cpp
+@@ -318,7 +318,8 @@ edb::address_t PlatformThread::instructionPointer() const {
+  * @return
+  */
+ unsigned long PlatformThread::getDebugRegister(std::size_t n) {
+-	return ptrace(PTRACE_PEEKUSER, tid_, offsetof(struct user, u_debugreg[n]), 0);
++	size_t drOffset = offsetof(struct user, u_debugreg[0]) + n * sizeof(user::u_debugreg[0]);
++	return ptrace(PTRACE_PEEKUSER, tid_, drOffset, 0);
+ }
+ 
+ /**
+@@ -328,7 +329,8 @@ unsigned long PlatformThread::getDebugRegister(std::size_t n) {
+  * @return
+  */
+ long PlatformThread::setDebugRegister(std::size_t n, unsigned long value) {
+-	return ptrace(PTRACE_POKEUSER, tid_, offsetof(struct user, u_debugreg[n]), value);
++	size_t drOffset = offsetof(struct user, u_debugreg[0]) + n * sizeof(user::u_debugreg[0]);
++	return ptrace(PTRACE_POKEUSER, tid_, drOffset, value);
+ }
+ 
+ /**
+-- 
+2.28.0
+

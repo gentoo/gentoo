@@ -34,7 +34,10 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=("${FILESDIR}"/${PN}-1.2.0-qt-5.15.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.0-qt-5.15.patch
+	"${FILESDIR}"/${PN}-1.2.0-gcc-11.patch
+)
 
 S=${WORKDIR}/${PN}
 
