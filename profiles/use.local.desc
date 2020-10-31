@@ -5784,6 +5784,7 @@ net-im/teams:system-mesa - Use the system-wide media-libs/mesa instead of bundle
 net-im/telegram-desktop:enchant - Enable the app-text/aspell spell-checking backend
 net-im/telegram-desktop:hunspell - Enable the app-text/hunspell spell-checking backend
 net-im/telegram-desktop:lto - Enable Link Time Optimization (LTO / IPO)
+net-im/telegram-desktop:webrtc - WebRTC based audio/video call support ( via media-libs/tg_owt )
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
 net-im/telepathy-connection-managers:icq - Enable ICQ IM protocol support.
 net-im/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
