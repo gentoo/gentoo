@@ -7,11 +7,12 @@ inherit autotools libtool multilib
 DESCRIPTION="Utilities for transcoding video and audio codecs in different containers"
 HOMEPAGE="http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge"
 SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2
+	https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-1.1.7-ffmpeg4.patch.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="cpu_flags_x86_3dnow a52 aac alsa altivec dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid"
 
 RDEPEND="
@@ -80,7 +81,7 @@ src_prepare() {
 	fi
 
 	if has_version '>=media-video/ffmpeg-4' ;  then
-		PATCHES+=( "${FILESDIR}/ffmpeg4.patch" )
+		PATCHES+=( "${WORKDIR}/transcode-1.1.7-ffmpeg4.patch" )
 	fi
 
 	default
