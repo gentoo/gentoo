@@ -658,7 +658,7 @@ app-admin/rex 1.12.1 1.12.2 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0 8.2010.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1-r2: Salt is a remote execution and configuration manager
+app-admin/salt 2019.2.5-r1 3000.2-r4 3000.3 3001.1-r2 3002: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.2.2 4.3.0 9999: Policy Analysis Tools for SELinux
@@ -7951,7 +7951,7 @@ dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4-r1: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
-dev-python/cheetah3 3.2.4: Python-powered template engine and code generator
+dev-python/cheetah3 3.2.4 3.2.6: Python-powered template engine and code generator
 dev-python/cheroot 8.4.4: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
@@ -8258,7 +8258,7 @@ dev-python/intelhex 2.2.1-r1 2.3.0: Python library for Intel HEX files manipulat
 dev-python/intervaltree 3.0.2: Editable interval tree data structure for Python 2 and 3
 dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
-dev-python/ioflo 2.0.0: Automated Reasoning Engine and Flow Based Programming Framework
+dev-python/ioflo 2.0.0 2.0.2: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.2.0-r1: Python IP address manipulation library
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
@@ -8337,7 +8337,7 @@ dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
 dev-python/libcloud 3.1.0: Unified Interface to the Cloud - python support libs
 dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
-dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
+dev-python/libnacl 1.6.1 1.7.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
@@ -8787,7 +8787,7 @@ dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
-dev-python/pytest-salt-factories 0.92.0: The new generation of the pytest-salt Plugin
+dev-python/pytest-salt-factories 0.92.0 0.94.4: The new generation of the pytest-salt Plugin
 dev-python/pytest-services 2.1.0 2.2.0 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
@@ -8880,7 +8880,7 @@ dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.0.1 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.27 0.28: A fully functional X client library for Python, written in Python
-dev-python/python-xmlsec 1.3.8: Python bindings for the XML Security Library
+dev-python/python-xmlsec 1.3.8 1.3.9: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.13.1 2.0.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
@@ -9237,7 +9237,7 @@ dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
 dev-python/yapf 0.30.0: A formatter for Python files
-dev-python/yappi 1.2.5-r1: Yet Another Python Profiler
+dev-python/yappi 1.2.5-r1 1.3.0: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 1.5.1 1.6.0 1.6.2: Yet another URL library
