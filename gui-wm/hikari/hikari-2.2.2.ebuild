@@ -37,7 +37,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${P}-pkgconfig.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.2.1-pkgconfig.patch )
 
 pkg_setup() {
 	export MAKE=bmake
@@ -47,7 +47,9 @@ pkg_setup() {
 src_compile() {
 
 	${MAKE} -j$(makeopts_jobs) VERSION="{PV}" \
-		LDFLAGS="${LDFLAGS}" \
+		CC="$(tc-getCC)" \
+		CFLAGS_EXTRA="${CFLAGS}" \
+		LDFLAGS_EXTRA="${LDFLAGS}" \
 		-DWITH_POSIX_C_SOURCE \
 		$(usex gamma -DWITH_GAMMACONTROL "") \
 		$(usex layershell -DWITH_LAYERSHELL "") \
