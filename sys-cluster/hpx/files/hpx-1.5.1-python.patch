@@ -1,4 +1,4 @@
-From 641d9766c73d2ee08aac8e1e0dd123b9d6db0c25 Mon Sep 17 00:00:00 2001
+From 0d250c5747f3a80ddda6f5bf298cead9048d1c28 Mon Sep 17 00:00:00 2001
 From: Kurt Kanzenbach <kurt@kmk-computers.de>
 Date: Tue, 17 Mar 2020 16:20:35 +0100
 Subject: [PATCH] cmake: python: Use standard python interpreter
@@ -23,7 +23,7 @@ index 81f38f89367d..a0fd7837b066 100755
  # Copyright (c) 2014 Steven R. Brandt
  #
 diff --git a/cmake/templates/hpxrun.py.in b/cmake/templates/hpxrun.py.in
-index 0e9f04a60495..7ccd2715a697 100755
+index 44a79e7cbffb..d4ab6020485e 100755
 --- a/cmake/templates/hpxrun.py.in
 +++ b/cmake/templates/hpxrun.py.in
 @@ -1,4 +1,4 @@
@@ -33,5 +33,5 @@ index 0e9f04a60495..7ccd2715a697 100755
  # Copyright (c) 2014 Thomas Heller
  #
 -- 
-2.24.1
+2.26.2
 

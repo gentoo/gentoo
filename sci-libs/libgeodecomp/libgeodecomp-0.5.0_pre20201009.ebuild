@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake cuda virtualx
 
-MY_COMMIT="69c5573ac7b2b654d649e8902fad73b05bf33644"
+MY_COMMIT="6848b3a17b359e03585e56dd1f37dc7c71136114"
 
 DESCRIPTION="An auto-parallelizing library to speed up computer simulations"
 HOMEPAGE="
@@ -26,7 +26,7 @@ BDEPEND="
 	)"
 RDEPEND="dev-libs/boost"
 DEPEND="${RDEPEND}
-	~dev-libs/libflatarray-0.4.0_pre20200314
+	~dev-libs/libflatarray-0.4.0_pre20201009
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	hpx? ( sys-cluster/hpx )
 	mpi? ( virtual/mpi )

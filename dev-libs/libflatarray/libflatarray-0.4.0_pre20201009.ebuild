@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake cuda
 
-MY_COMMIT="c5d90fb37ef52dbe56f611979fbe120fa1303284"
+MY_COMMIT="c8df37f6ac73250998b90c397458469902d6d9b9"
 
 DESCRIPTION="Struct of arrays library with object oriented interface for C++"
 HOMEPAGE="

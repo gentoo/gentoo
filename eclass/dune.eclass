@@ -50,6 +50,7 @@ dune-install() {
 		dune install \
 			--prefix="${ED%/}/usr" \
 			--libdir="${D%/}$(ocamlc -where)" \
+			--mandir="${ED%/}/usr/share/man" \
 			"${pkg}" || die
 	done
 }
