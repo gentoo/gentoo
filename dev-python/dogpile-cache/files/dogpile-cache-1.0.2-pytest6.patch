@@ -1,0 +1,20 @@
+commit 625f73ce189b43541636dc40d8d0e4cd4f9a1386
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sat Oct 31 02:23:06 2020 +0100
+
+    Support pytest 6
+    
+    See https://docs.pytest.org/en/stable/deprecations.html#node-construction-changed-to-node-from-parent
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 10afafb..0b2a1e4 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -26,6 +26,6 @@ def is_unittest(obj):
+ 
+ def pytest_pycollect_makeitem(collector, name, obj):
+     if is_unittest(obj) and not obj.__name__.startswith("_"):
+-        return UnitTestCase(name, parent=collector)
++        return UnitTestCase.from_parent(collector, name=name)
+     else:
+         return []

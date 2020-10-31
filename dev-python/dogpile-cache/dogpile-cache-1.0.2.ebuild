@@ -3,7 +3,6 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
@@ -27,5 +26,10 @@ BDEPEND="
 		dev-python/mako[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# https://github.com/sqlalchemy/dogpile.cache/pull/193
+	"${FILESDIR}/${P}-pytest6.patch"
+)
 
 distutils_enable_tests pytest
