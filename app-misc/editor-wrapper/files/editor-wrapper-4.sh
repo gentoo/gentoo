@@ -12,6 +12,10 @@ fi
 if [ -z "${@VAR@}" ]; then
     echo "$0: The @VAR@ variable must be set" >&2
     exit 1
+elif [ "${@VAR@}" = "${0##*/}" ]; then
+    # avoid infinite recursion
+    echo "$0: The @VAR@ variable shall not be identical to '${0##*/}'" >&2
+    exit 1
 fi
 
 exec ${@VAR@} "$@"
