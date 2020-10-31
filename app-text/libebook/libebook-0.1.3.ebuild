@@ -36,8 +36,6 @@ RDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-icu68.patch )
-
 src_prepare() {
 	default
 	eautoreconf
