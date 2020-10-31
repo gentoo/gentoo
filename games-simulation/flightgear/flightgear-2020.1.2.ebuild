@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake bash-completion-r1 toolchain-funcs
+inherit cmake bash-completion-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
