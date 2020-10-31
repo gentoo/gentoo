@@ -1,11 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="de es pl ru uk"
-
-inherit cmake-utils l10n
+inherit cmake l10n
 
 MY_PN="${PN}-im"
 MY_PV="${PV/_pre/.}-Alpha"
@@ -18,7 +17,7 @@ SRC_URI="https://github.com/Vacuum-IM/${MY_PN}/archive/${MY_PV}.tar.gz -> ${MY_P
 LICENSE="GPL-3"
 SLOT="0/37" # subslot = libvacuumutils soname version
 KEYWORDS="~amd64 ~x86"
-PLUGINS=( adiummessagestyle annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
+PLUGINS=( annotations autostatus avatars birthdayreminder bitsofbinary bookmarks captchaforms chatstates clientinfo commands compress console dataforms datastreamsmanager emoticons filemessagearchive filestreamsmanager filetransfer gateways inbandstreams iqauth jabbersearch messagearchiver messagecarbons multiuserchat pepmanager privacylists privatestorage recentcontacts registration remotecontrol rosteritemexchange rostersearch servermessagearchive servicediscovery sessionnegotiation shortcutmanager socksstreams urlprocessor vcard xmppuriqueries )
 SPELLCHECKER_BACKENDS="aspell +enchant hunspell"
 IUSE="${PLUGINS[@]/#/+} ${SPELLCHECKER_BACKENDS} +spell"
 
@@ -43,6 +42,9 @@ REQUIRED_USE="
 	spell? ( ^^ ( ${SPELLCHECKER_BACKENDS//+/} ) )
 "
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -53,7 +55,6 @@ DEPEND="
 	net-dns/libidn
 	sys-libs/zlib[minizip]
 	x11-libs/libXScrnSaver
-	adiummessagestyle? ( dev-qt/qtwebkit:5 )
 	filemessagearchive? ( dev-qt/qtsql:5[sqlite] )
 	messagearchiver? ( dev-qt/qtsql:5[sqlite] )
 	spell? (
@@ -71,14 +72,13 @@ DOCS=( AUTHORS CHANGELOG README TRANSLATORS )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	cmake_src_prepare
+
 	# Force usage of system libraries
 	rm -rf src/thirdparty/{hunspell,idn,minizip,qtlockedfile,zlib} || die
 
-	# Supress find thirdparty library in the system
-	sed -i -r -e "/find_library.+qxtglobalshortcut/d" \
-		CMakeLists.txt || die
-
-	cmake-utils_src_prepare
+	# Suppress find thirdparty library in the system
+	sed -i -r -e "/find_library.+qxtglobalshortcut/d" CMakeLists.txt || die
 }
 
 src_configure() {
@@ -100,5 +100,5 @@ src_configure() {
 		use "${i}" && mycmakeargs+=( -DSPELLCHECKER_BACKEND="${i}" )
 	done
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
