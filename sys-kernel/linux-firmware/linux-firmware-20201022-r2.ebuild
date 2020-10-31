@@ -32,7 +32,7 @@ SLOT="0"
 IUSE="initramfs +redistributable savedconfig unknown-license"
 REQUIRED_USE="initramfs? ( redistributable )"
 
-RESTRICT="binchecks strip
+RESTRICT="binchecks strip test
 	unknown-license? ( bindist )"
 
 BDEPEND="initramfs? ( app-arch/cpio )"
