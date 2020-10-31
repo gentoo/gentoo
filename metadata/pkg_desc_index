@@ -15314,7 +15314,7 @@ net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.4.23 0.5.1: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
-net-p2p/gtk-gnutella 1.1.15 1.2.0: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.15 1.2.0 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
