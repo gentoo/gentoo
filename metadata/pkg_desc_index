@@ -861,6 +861,7 @@ app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy syste
 app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.2.3 5.2.5: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.2: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
+app-benchmarks/hyperfine 1.11.0: A command-line benchmarking tool (runs other benchmarks)
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/interbench 0.31: A Linux interactivity benchmark
 app-benchmarks/ioping 0.9 1.0 1.1: Simple disk I/0 latency measuring tool
@@ -13133,7 +13134,7 @@ media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input 
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r2: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
-media-libs/libtgvoip 2.4.4_p20200704 2.4.4_p20200818: VoIP library for Telegram clients
+media-libs/libtgvoip 2.4.4_p20200704 2.4.4_p20200818 2.4.4_p20201030: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.6: MIDI to WAVE converter library
@@ -13243,6 +13244,7 @@ media-libs/svgalib 1.9.25-r7 1.9.25-r8: A library for running svga graphics on t
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
+media-libs/tg_owt 0_pre20201030: WebRTC build for Telegram
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
 media-libs/tiff 4.1.0: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
@@ -14587,7 +14589,7 @@ net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.25560: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 2.1.13 2.2.0-r1 2.4.4: Official desktop client for Telegram
+net-im/telegram-desktop 2.1.13 2.2.0-r1 2.4.4 2.4.5: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.3.2 2.4.0 2.4.4: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
