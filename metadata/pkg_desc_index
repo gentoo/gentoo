@@ -5307,7 +5307,7 @@ dev-libs/libcec 4.0.2-r2 4.0.4-r1 4.0.7: Library for communicating with the Puls
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
 dev-libs/libcharon 4.6.1 4.7.0: This library facilitates communication between Cura and its backend
 dev-libs/libclangformat-ide 9.0.1 10.0.0: A static clangformat library patched for IDE use
-dev-libs/libclc 0.2.0_pre20191024: OpenCL C library
+dev-libs/libclc 0.2.0_pre20191024 0.2.0_pre20201001: OpenCL C library
 dev-libs/libclsync 0.4.4-r1: Control and monitoring library for clsync
 dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
 dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulating structured configuration files
