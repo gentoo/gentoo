@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6..8} )
-PYTHON_REQ_USE="sqlite,ssl"
+PYTHON_REQ_USE="ipv6,sqlite,ssl"
 
 inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
 
