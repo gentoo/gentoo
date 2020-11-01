@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="+bwscheduler +downloadorder +infowidget +ipfilter +kross +logviewer +magnetgenerator
-+mediaplayer rss +scanfolder +search +shutdown +stats +upnp +zeroconf"
++mediaplayer rss +scanfolder +shutdown +stats +upnp +webengine +zeroconf"
 
 BDEPEND="sys-devel/gettext"
 COMMON_DEPEND="
@@ -58,10 +58,10 @@ COMMON_DEPEND="
 		>=dev-qt/qtwebengine-${QTMIN}:5
 		>=kde-frameworks/syndication-${KFMIN}:5
 	)
-	search? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 	shutdown? ( kde-plasma/libkworkspace:5 )
 	stats? ( >=kde-frameworks/kplotting-${KFMIN}:5 )
 	upnp? ( >=kde-frameworks/kcompletion-${KFMIN}:5 )
+	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 	zeroconf? ( >=kde-frameworks/kdnssd-${KFMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -99,10 +99,10 @@ src_configure() {
 		-DENABLE_MEDIAPLAYER_PLUGIN=$(usex mediaplayer)
 		$(cmake_use_find_package rss KF5Syndication)
 		-DENABLE_SCANFOLDER_PLUGIN=$(usex scanfolder)
-		-DENABLE_SEARCH_PLUGIN=$(usex search)
 		-DENABLE_SHUTDOWN_PLUGIN=$(usex shutdown)
 		-DENABLE_STATS_PLUGIN=$(usex stats)
 		-DENABLE_UPNP_PLUGIN=$(usex upnp)
+		-DENABLE_SEARCH_PLUGIN=$(usex webengine)
 		-DENABLE_ZEROCONF_PLUGIN=$(usex zeroconf)
 	)
 # add back when ported
