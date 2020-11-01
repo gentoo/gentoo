@@ -150,9 +150,13 @@ gnome-base/libgnome-keyring
 gnome-base/orbit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-23)
-# Depends on deprecated QtWebKit with no work towards QtWebEngine port at all.
+# Depends on deprecated QtWebKit, needs a new maintainer and version bump.
 # Bug #688850, security bug #744199. Removal in 30 days.
 media-video/shotcut
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-23)
+# Depends on deprecated QtWebKit with no work towards QtWebEngine port at all.
+# Bug #688850. Removal in 30 days.
 media-libs/webvfx
 
 # Michał Górny <mgorny@gentoo.org> (2020-10-23)
