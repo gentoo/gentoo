@@ -15088,7 +15088,7 @@ net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies suppo
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824 1.5.20200928: MiniSSDP Daemon
-net-misc/miniupnpd 2.1.20200510 2.2.0_rc2 2.2.0_rc3: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.1.20200510 2.2.0_rc2 2.2.0_rc3 2.2.0: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
@@ -18929,7 +18929,7 @@ xfce-base/exo 0.12.11 4.15.2: Extensions, widgets and framework library with ses
 xfce-base/garcon 0.6.4-r2 0.7.1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.3: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.15 4.15.2: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.15 1.8.16 4.15.2 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.4: Panel for the Xfce desktop environment
