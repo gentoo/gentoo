@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Tiny program like wget, to upload files/whole directories via FTP"
 HOMEPAGE="http://wput.sourceforge.net/"
@@ -12,16 +12,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="debug nls ssl"
 
+BDEPEND="nls? ( sys-devel/gettext )"
 RDEPEND="ssl? ( net-libs/gnutls )"
-
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.2-respect-destdir.patch"
 	"${FILESDIR}/${PN}-0.6-respectldflags.patch"
 	"${FILESDIR}/${PN}-fix-crash.patch"
+	"${FILESDIR}/${PN}-0.6.2-fno-common.patch"
 )
 
 DOCS=( ChangeLog INSTALL TODO )

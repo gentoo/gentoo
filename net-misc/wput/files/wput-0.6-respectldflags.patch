@@ -1,6 +1,4 @@
-Index: wput/src/Makefile.in
-===================================================================
---- wput.orig/src/Makefile.in
+--- wput/src/Makefile.in
 +++ wput/src/Makefile.in
 @@ -23,7 +23,7 @@ ftplib.o: socketlib.h ftplib.h
  ftp-ls.o: ftp.h wget.h url.h
