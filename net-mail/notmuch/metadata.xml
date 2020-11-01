@@ -2,14 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
+		<flag name="apidoc">Provide doxygen generated API docs</flag>
 		<flag name="doc">Install API documentation</flag>
 		<flag name="crypt">Support decryption and verification of PGP/MIME
 			messages and in Emacs UI - encryption; support also S/MIME
