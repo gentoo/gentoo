@@ -1,0 +1,25 @@
+https://sources.debian.org/patches/wput/0.6.2+git20130413-9/single-declaration.patch/
+https://bugs.gentoo.org/706954
+--- a/src/wput.h
++++ b/src/wput.h
+@@ -140,7 +140,9 @@
+ 
+   unsigned short int retry_interval;
+   unsigned       int speed_limit;
+-} opt;
++};
++
++extern struct global_options opt;
+ 
+ extern _fsession * fsession_queue_entry_point;
+ extern char * email_address;
+--- a/src/wput.c
++++ b/src/wput.c
+@@ -55,6 +55,7 @@
+ #include "utils.h"
+ 
+ extern char *optarg;
++struct global_options opt;
+ 
+ #ifdef WIN32
+ const static char * version = "0.6.2-w32";

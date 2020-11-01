@@ -1,5 +1,3 @@
-diff --git a/Makefile.in b/Makefile.in
-index 6756cd2..6debea8 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -16,12 +16,12 @@ win-clean:
