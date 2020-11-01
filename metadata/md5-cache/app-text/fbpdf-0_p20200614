@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install unpack
+DEPEND=>=app-text/mupdf-1.10:0= app-text/djvu:0= !media-gfx/fbida[fbcon(-)]
+DESCRIPTION=framebuffer pdf and djvu viewer
+EAPI=7
+HOMEPAGE=https://github.com/aligrudi/fbpdf
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD ISC
+RDEPEND=>=app-text/mupdf-1.10:0= app-text/djvu:0= !media-gfx/fbida[fbcon(-)]
+SLOT=0
+SRC_URI=https://github.com/aligrudi/fbpdf/archive/27c9e28e9199a2491d0ee0a885760bedb1d4547b.tar.gz -> fbpdf-0_p20200614-27c9e28e9199a2491d0ee0a885760bedb1d4547b.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_md5_=380772be568c56c72769f032492af54a
