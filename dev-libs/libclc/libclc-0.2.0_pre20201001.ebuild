@@ -45,8 +45,9 @@ src_configure() {
 	# TODO: spirv
 	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
 
+	libclc_targets=${libclc_targets[*]}
 	local mycmakeargs=(
-		-DLIBCLC_TARGETS_TO_BUILD="${libclc_targets[*]}"
+		-DLIBCLC_TARGETS_TO_BUILD="${libclc_targets// /;}"
 		-DLLVM_CONFIG="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
 	)
 	cmake_src_configure
