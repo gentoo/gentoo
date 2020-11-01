@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile configure install
 DEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXt
 DESCRIPTION=An Automated Deduction System
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.cs.unm.edu/~mccune/otter/
 KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=otter
 RDEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXt
 SLOT=0
 SRC_URI=http://www.cs.unm.edu/~mccune/otter/otter-3.3.tar.gz
-_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9500bd301338ba3527f714d10d0a83f6
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=35c0781f99f4c127174c3bf0f5ecb0bf
