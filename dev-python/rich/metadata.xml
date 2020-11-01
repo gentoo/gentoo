@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>nickaristocrates@gmail.com</email>
+    <name>Nicholas Meyer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="ipywidgets">Jupyter HTML widgets integration</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">rich</remote-id>
+    <remote-id type="github">willmcgugan/rich</remote-id>
+    <bugs-to>https://github.com/willmcgugan/rich</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+  Rich is a Python library for rich text and beautiful formatting in the terminal. The Rich API makes it easy to add color and style to terminal output. Rich can also render pretty tables, progress bars, markdown, syntax highlighted source code, tracebacks, and more — out of the box.
+  </longdescription>
+</pkgmetadata>
