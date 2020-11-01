@@ -14623,7 +14623,7 @@ net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
 net-irc/irssi 1.2.2 1.2.2-r1 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.54: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
-net-irc/konversation 1.7.5-r2 1.7.7: User friendly IRC Client
+net-irc/konversation 1.7.5-r2 1.7.7-r1: User friendly IRC Client
 net-irc/kvirc 5.2_pre20200605155236 9999: Advanced IRC Client
 net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
