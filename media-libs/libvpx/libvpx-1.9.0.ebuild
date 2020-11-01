@@ -104,7 +104,9 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	# build verbose by default and do not build examples that will not be installed
-	emake verbose=yes GEN_EXAMPLES=
+	# disable stripping of debug info, bug #752057
+	# (only works as long as upstream does not use non-gnu strip)
+	emake verbose=yes GEN_EXAMPLES= HAVE_GNU_STRIP=no
 }
 
 multilib_src_test() {
