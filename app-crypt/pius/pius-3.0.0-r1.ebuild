@@ -22,6 +22,13 @@ DEPEND=">=app-crypt/gnupg-2.0.0"
 RDEPEND="${DEPEND}
 	dev-lang/perl"
 
+PATCHES=(
+  "${FILESDIR}/${P}_fix_typos.diff"
+  "${FILESDIR}/${P}_fix_keyring_mgr_constants.diff"
+  "${FILESDIR}/${P}_fix_readme_typo.diff"
+  "${FILESDIR}/${P}_fix_pius_report.diff"
+)
+
 python_test() {
 	${EPYTHON} -m unittest discover -s test/* -v || die
 }

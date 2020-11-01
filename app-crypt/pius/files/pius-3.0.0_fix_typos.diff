@@ -1,0 +1,31 @@
+diff --git a/pius b/pius
+index 7cf09b5..cc2333b 100755
+--- a/pius
++++ b/pius
+@@ -25,7 +25,7 @@ from optparse import OptionParser
+ 
+ from libpius import mailer as pmailer
+ from libpius import signer as psigner
+-from libpius.util import PiusUtil, MyOption
++from libpius.util import PiusUtil, MyOption, check_email
+ from libpius.constants import (
+     DEFAULT_GPG_PATH,
+     DEFAULT_KEYRING,
+@@ -61,7 +61,7 @@ def check_options(parser, options, args):
+ 
+     if options.debug == True:
+         print("Setting debug")
+-        util.DEBUG_ON = True
++        PiusUtil.DEBUG_ON = True
+ 
+     if not os.path.exists(options.gpg_path):
+         parser.error("GnuPG binary not found at %s." % options.gpg_path)
+@@ -288,7 +288,7 @@ def main():
+         )
+         if ans in ("y", "Y", "yes", "YES", "Yes"):
+             ans = input("What email address should we send from? ")
+-            util.check_email(parser, "-m", ans)
++            check_email(parser, "-m", ans)
+             options.mail = ans
+             print()
+ 
