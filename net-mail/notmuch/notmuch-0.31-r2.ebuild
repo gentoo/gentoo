@@ -223,7 +223,6 @@ src_install() {
 		doman doc/_build/man/man?/*.?
 	fi
 
-
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 		domenu emacs/notmuch-emacs-mua.desktop
