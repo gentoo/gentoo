@@ -10699,7 +10699,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.235.5 2.249.1 2.249.2 2.252 2.260: Extensible continuous integration server
+dev-util/jenkins-bin 2.249.2 2.264: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -17878,7 +17878,7 @@ www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management f
 www-apps/drupal 7.73 8.8.10 8.9.6 8.9.7 9.0.6 9.0.7: PHP-based open-source platform and content management system
 www-apps/gitea 1.12.4 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 6.7.4 7.1.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 7.3.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.76.3: The world's fastest framework for building websites
 www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
