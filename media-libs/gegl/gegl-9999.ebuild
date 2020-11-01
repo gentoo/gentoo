@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 VALA_USE_DEPEND=vapigen
 
 inherit meson gnome2-utils python-any-r1 vala
