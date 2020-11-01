@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RESTRICT=test # QuickCheck finds counterxamples:
-#  test/UnixTimeSpec.hs:53:9: 
+#  test/UnixTimeSpec.hs:53:9:
 #  1) UnixTime, parseUnixTimeGMT & formatUnixTimeGMT, inverses the result (2)
 #       Falsifiable (after 1 test):
 #         UnixTime {utSeconds = 747130527, utMicroSeconds = 819438}
