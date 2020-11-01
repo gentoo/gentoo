@@ -2337,7 +2337,7 @@ app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds 
 app-misc/detachtty 9-r1 11.0.0: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
-app-misc/dfshow 0.8.2_beta: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
+app-misc/dfshow 0.8.2_beta 0.9.1_beta: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
 app-misc/digitemp 3.7.1: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
 app-misc/dtach 0.9: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1-r1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
@@ -5456,7 +5456,7 @@ dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 1.1.0 1.2.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
-dev-libs/libtpms 0.7.3: Library providing software emultion of a TPM
+dev-libs/libtpms 0.7.4: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
@@ -14584,7 +14584,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.37.2: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.37.2-r1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.65.0.76 8.65.0.78: Instant messaging client, with support for audio and video
 net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
@@ -17866,7 +17866,7 @@ www-apps/airdcpp-webui 2.8.1 2.9.0: Web interface for airdcpp-webclient
 www-apps/baikal 0.6.0 0.6.1 0.7.1: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
-www-apps/bugzilla 5.0.6: Bugzilla is the Bug-Tracking System from the Mozilla project
+www-apps/bugzilla 5.0.6-r1: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20190510: A graphical web-based front-end for visualizing RRD collected by collectd
@@ -18421,7 +18421,7 @@ x11-misc/slock 1.4: simple X display locker
 x11-misc/slop 7.5 9999: Application that queries the user for a selection for printing
 x11-misc/snixembed 0.2.2 0.3.0: Proxy StatusNotifierItems as XEmbedded systemtray-spec icons
 x11-misc/spacefm 1.0.6 9999: A multi-panel tabbed file manager
-x11-misc/splatmoji 1.1.0: Quickly look up and input emoji and/or emoticons
+x11-misc/splatmoji 1.1.1: Quickly look up and input emoji and/or emoticons
 x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1-r1: a simple X property utility
 x11-misc/sselp 0.2-r1 9999: Simple X selection printer
