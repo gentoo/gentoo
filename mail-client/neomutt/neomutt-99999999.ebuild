@@ -11,7 +11,7 @@ if [[ ${PV} =~ 99999999$ ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 TEST_FILES_COMMIT=8629adab700a75c54e8e28bf05ad092503a98f75
