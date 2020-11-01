@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="apidoc">Provide doxygen generated API docs</flag>
 		<flag name="doc">Install API documentation</flag>
 		<flag name="crypt">Support decryption and verification of PGP/MIME
 			messages and in Emacs UI - encryption; support also S/MIME
