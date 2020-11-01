@@ -5,10 +5,10 @@ DESCRIPTION=WebRTC build for Telegram
 EAPI=7
 HOMEPAGE=https://github.com/desktop-app/tg_owt
 IUSE=pulseaudio
-KEYWORDS=~amd64 ~ppc64
+KEYWORDS=amd64 ~ppc64
 LICENSE=BSD
 RDEPEND=dev-libs/openssl:= media-libs/alsa-lib media-libs/libjpeg-turbo:= media-libs/libvpx:= media-libs/openh264:= media-libs/opus media-video/ffmpeg:= !pulseaudio? ( media-sound/apulse[sdk] ) pulseaudio? ( media-sound/pulseaudio )
 SLOT=0
 SRC_URI=https://github.com/desktop-app/tg_owt/archive/1d4f7d74ff1a627db6e45682efd0e3b85738e426.tar.gz -> tg_owt-0_pre20201030.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=3df9caa0d879c7a9cb9a2c427ffc3a69
+_md5_=a6a412c799ff895abbfee8f946d26400
