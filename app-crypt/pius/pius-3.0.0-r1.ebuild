@@ -23,10 +23,10 @@ RDEPEND="${DEPEND}
 	dev-lang/perl"
 
 PATCHES=(
-  "${FILESDIR}/${P}_fix_typos.diff"
-  "${FILESDIR}/${P}_fix_keyring_mgr_constants.diff"
-  "${FILESDIR}/${P}_fix_readme_typo.diff"
-  "${FILESDIR}/${P}_fix_pius_report.diff"
+  "${FILESDIR}/${P}-Fix-typos-132.patch"
+  "${FILESDIR}/${P}-pius-keyring-mgr-Fix-constants-134.patch"
+  "${FILESDIR}/${P}-Fix-typo-in-readme-135.patch"
+  "${FILESDIR}/${P}-Minor-fixes-for-pius-report-137.patch"
 )
 
 python_test() {

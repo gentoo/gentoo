@@ -1,3 +1,12 @@
+From 5f24833c50ac6d831c03309e9bbb6b62224ac0ac Mon Sep 17 00:00:00 2001
+From: Ross Smith II <ross@smithii.com>
+Date: Mon, 9 Mar 2020 16:45:29 -0700
+Subject: [PATCH] Fix typo in readme (#135)
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/README.md b/README.md
 index 3ead858..4cb98ce 100644
 --- a/README.md
@@ -11,3 +20,6 @@ index 3ead858..4cb98ce 100644
  
  
  ## Config File
+-- 
+2.29.2
+

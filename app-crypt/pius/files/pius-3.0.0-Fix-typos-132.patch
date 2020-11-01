@@ -1,3 +1,12 @@
+From 6a92664fe0cfacffb03e6f3312c1c5fb4d785297 Mon Sep 17 00:00:00 2001
+From: Maxim Baz <github@maximbaz.com>
+Date: Sat, 5 Oct 2019 23:52:17 +0200
+Subject: [PATCH] Fix typos (#132)
+
+---
+ pius | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/pius b/pius
 index 7cf09b5..cc2333b 100755
 --- a/pius
@@ -29,3 +38,6 @@ index 7cf09b5..cc2333b 100755
              options.mail = ans
              print()
  
+-- 
+2.29.2
+
