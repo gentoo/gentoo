@@ -36,5 +36,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">urlgrabber</remote-id>
+		<remote-id type="github">rpm-software-management/urlgrabber</remote-id>
 	</upstream>
 </pkgmetadata>
