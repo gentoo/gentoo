@@ -9,7 +9,7 @@ inherit cmake-multilib linux-info llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
-LLVM_COMPONENTS=( openmp )
+LLVM_COMPONENTS=( openmp llvm/include )
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
