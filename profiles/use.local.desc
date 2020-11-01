@@ -1630,7 +1630,7 @@ dev-haskell/tls:compat - Accept SSLv2 compatible handshake.
 dev-haskell/tls:network - Use the base network library.
 dev-haskell/transformers-base:orphaninstances - Build instances for orphan datatypes.
 dev-haskell/unix-compat:old-time - build against old-time package
-dev-haskell/uuagc:with-loag - Use dev-haskell/minisat external SAT-solver to schedule all Linear Ordered AGs.
+dev-haskell/uuagc:loag - Use MiniSat as external SAT-solver to schedule all Linear Ordered AGs
 dev-haskell/vector:boundschecks - Enable bounds checking
 dev-haskell/vector:internalchecks - Enable internal consistency checks at the cost of a significant performance penalty
 dev-haskell/vector:unsafechecks - Enable bounds checking in unsafe operations at the cost of a significant performance penalty
