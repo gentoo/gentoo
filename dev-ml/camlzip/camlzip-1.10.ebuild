@@ -13,7 +13,7 @@ SRC_URI="https://github.com/xavierleroy/camlzip/archive/rel$(ver_rs 1- '').tar.g
 
 SLOT="1/${PV}"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 
 RDEPEND=">=dev-lang/ocaml-4.05:=[ocamlopt?]
 		>=sys-libs/zlib-1.1.3"
