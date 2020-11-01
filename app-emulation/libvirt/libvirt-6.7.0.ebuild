@@ -25,7 +25,7 @@ IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
 	parted pcap policykit +qemu rbd sasl selinux +udev +vepa
-	virtualbox virt-network wireshark-plugins xen zfs
+	virtualbox +virt-network wireshark-plugins xen zfs
 "
 
 REQUIRED_USE="
