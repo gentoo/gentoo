@@ -1,0 +1,22 @@
+--- a/source/parameters.c
++++ b/source/parameters.c
+@@ -26,6 +26,8 @@
+ 
+ extern char *optarg;
+ extern int optind, opterr, optopt;
++
++struct parameters* para;
+ /****************************
+ * PROTEIN DEFAULT VALUES!   *
+ ****************************/
+--- a/source/parameters.h
++++ b/source/parameters.h
+@@ -138,7 +138,7 @@
+     /*              global variable                 */
+     /*                                              */
+     /************************************************/
+-struct parameters* para;
++extern struct parameters* para;
+ 
+ 
+ 
