@@ -10,4 +10,4 @@ RDEPEND=alevt? ( !media-video/alevt media-libs/libpng:0= media-libs/zvbi[v4l] sy
 SLOT=0
 SRC_URI=https://www.linuxtv.org/hg/dvb-apps/archive/3d43b280298c.tar.bz2 -> linuxtv-dvb-apps-1.1.1.20140321.tar.bz2
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=50d89c8e48114d4860a6390b34d751aa
+_md5_=aa28777e499ba62e7467e1b9135f79c6
