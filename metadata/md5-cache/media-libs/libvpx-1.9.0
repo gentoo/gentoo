@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0/6
 SRC_URI=https://github.com/webmproject/libvpx/archive/v1.9.0.tar.gz -> libvpx-1.9.0.tar.gz test? ( https://dev.gentoo.org/~whissi/dist/libvpx/libvpx-testdata-1.9.0.tar.xz )
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=bf22dd4b6cd2110a52b4d5be373cf144
+_md5_=4c655d9732e9d9908e778eadc65ad02e
