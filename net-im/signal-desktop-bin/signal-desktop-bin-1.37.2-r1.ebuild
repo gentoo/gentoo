@@ -94,7 +94,7 @@ src_install() {
 	doins -r opt
 	insinto /usr/share
 
-	if has_version media-sound/apulse[-sdk] && !has_version media-sound/pulseaudio; then
+	if has_version media-sound/apulse[-sdk] && ! has_version media-sound/pulseaudio; then
 		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop
 	fi
 

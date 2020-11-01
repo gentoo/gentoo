@@ -110,6 +110,7 @@ pkg_postinst() {
 	optfeature "Mail Queueing" "dev-perl/TheSchwarz dev-perl/Daemon-Generic"
 	optfeature "Sniff MIME type of attachments" "dev-perl/File-MimeInfo dev-perl/IO-stringy"
 	optfeature "Memcached support" "dev-perl/Cache-Memcached"
+	optfeature "SSL Support for SMTP" "dev-perl/IO-Socket-SSL"
 
 	ewarn "If Apache is the chosen webserver, please consider turning the apache2 use flag on"
 	ewarn "Not doing so may result in unexpected runtime errors"

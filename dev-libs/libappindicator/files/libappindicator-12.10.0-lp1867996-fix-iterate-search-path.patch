@@ -1,0 +1,11 @@
+--- a/src/app-indicator.c	2020-10-31 03:31:51.966830232 -0700
++++ b/src/app-indicator.c	2020-10-31 03:36:04.252822972 -0700
+@@ -1606,7 +1606,7 @@ status_icon_changes (AppIndicator * self
+ 		gint n_elements, i;
+ 		gboolean found=FALSE;
+ 		gtk_icon_theme_get_search_path(icon_theme, &path, &n_elements);
+-		for (i=0; i< n_elements || path[i] == NULL; i++) {
++		for (i=0; i< n_elements; i++) {
+ 			if(g_strcmp0(path[i], self->priv->icon_theme_path) == 0) {
+ 				found=TRUE;
+ 				break;
