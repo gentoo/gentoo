@@ -4366,9 +4366,9 @@ dev-haskell/tasty-lua 0.2.0.1: Write tests in Lua, integrate into tasty
 dev-haskell/tasty-quickcheck 0.10.1.1: QuickCheck support for the Tasty test framework
 dev-haskell/tasty-rerun 1.1.17: Run tests by filtering the tests depending on the result of previous runs
 dev-haskell/tasty-smallcheck 0.8.1: SmallCheck support for the Tasty test framework
-dev-haskell/tasty-th 0.1.4: Automatic tasty test case discovery using TH
+dev-haskell/tasty-th 0.1.7: Automatic tasty test case discovery using TH
 dev-haskell/template-haskell-compat-v0208 0.1.4: A backwards compatibility layer for Template Haskell newer than 2.8
-dev-haskell/temporary 1.2.0.4 1.3: Portable temporary file and directory support for Windows and Unix
+dev-haskell/temporary 1.3: Portable temporary file and directory support for Windows and Unix
 dev-haskell/temporary-rc 1.2.0.3: Portable temporary file and directory support for Windows and Unix
 dev-haskell/tensor 1.1.0.1: Tensor data types
 dev-haskell/terminal-size 0.3.2.1: Get terminal window height and width
@@ -4377,7 +4377,7 @@ dev-haskell/test-framework 0.8.2.0-r2: Framework for running and organising test
 dev-haskell/test-framework-hunit 0.3.0.2-r1: HUnit support for the test-framework package
 dev-haskell/test-framework-leancheck 0.0.1: LeanCheck support for test-framework
 dev-haskell/test-framework-quickcheck2 0.3.0.5-r1: QuickCheck2 support for the test-framework package
-dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck code using Template Haskell
+dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck using Template Haskell
 dev-haskell/test-framework-th-prime 0.0.9: Template Haskell for test framework
 dev-haskell/testing-feat 1.1.0.0: Functional Enumeration of Algebraic Types
 dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing

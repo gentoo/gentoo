@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual to select between different udev daemon providers
 EAPI=7
-KEYWORDS=~alpha ~amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86
 RDEPEND=|| ( >=sys-fs/eudev-2.1.1 >=sys-fs/udev-217 >=sys-apps/systemd-217 )
 SLOT=0
-_md5_=1fdd7f9af85142e50489720a4729f553
+_md5_=8825958d7d3d99020236ceaab60f01d2
