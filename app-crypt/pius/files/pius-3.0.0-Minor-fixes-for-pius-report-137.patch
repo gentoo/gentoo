@@ -1,3 +1,15 @@
+From 19b61c3b0dc31ee60341b3ca708f8e459e44ce3f Mon Sep 17 00:00:00 2001
+From: Phil Dibowitz <phil@ipom.com>
+Date: Mon, 23 Mar 2020 08:57:09 -0700
+Subject: [PATCH] Minor fixes for pius-report (#137)
+
+Signed-off-by: Phil Dibowitz <phil@ipom.com>
+---
+ libpius/mailer.py | 2 +-
+ pius-keyring-mgr  | 4 +++-
+ pius-report       | 5 +++--
+ 3 files changed, 7 insertions(+), 4 deletions(-)
+
 diff --git a/libpius/mailer.py b/libpius/mailer.py
 index ba6b50a..f5b097f 100644
 --- a/libpius/mailer.py
@@ -61,3 +73,6 @@ index 47f57b5..744da35 100755
      gpg = subprocess.Popen(cmd, stdout=subprocess.PIPE, close_fds=True)
      gpg.wait()
  
+-- 
+2.29.2
+
