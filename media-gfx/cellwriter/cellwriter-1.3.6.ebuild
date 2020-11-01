@@ -11,7 +11,7 @@ SRC_URI="https://github.com/risujin/cellwriter/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="x11-libs/gtk+:2
