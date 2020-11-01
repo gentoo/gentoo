@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,28 +12,31 @@ SRC_URI="http://web.bii.a-star.edu.sg/~kuobin/${PN}/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="mpi_njtree static_pairalign"
+IUSE="mpi-njtree static-pairalign"
 
 DEPEND="virtual/mpi"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PV}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
 
-	if use mpi_njtree; then
+	if use mpi-njtree; then
 		sed -e "s/TREES_FLAG/#TREES_FLAG/" -i Makefile || \
 			die "Failed to configure MPI code for NJ trees"
 	fi
 
-	if use static_pairalign; then
+	if use static-pairalign; then
 		sed -e "s/DDYNAMIC_SCHEDULING/DSTATIC_SCHEDULING/" -i Makefile || \
 			die "Failed to configure static scheduling for pair alignments"
 	fi
 }
 
 src_install() {
-	dobin ${PN}
-	newdoc README.${PN} README
+	dobin clustalw-mpi
+	newdoc README.clustalw-mpi README
 }
