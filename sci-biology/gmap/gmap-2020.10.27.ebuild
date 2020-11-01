@@ -1,12 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator
-
-MY_BASE_PV="$(replace_all_version_separators '-' $(get_version_component_range 1-3))"
-MY_PV="${MY_BASE_PV}.v$(get_version_component_range 4)"
+MY_PV="$(ver_rs 1- '-')"
 
 DESCRIPTION="A Genomic Mapping and Alignment Program for mRNA and EST Sequences"
 HOMEPAGE="http://research-pub.gene.com/gmap/"
@@ -14,7 +11,7 @@ SRC_URI="http://research-pub.gene.com/gmap/src/gmap-gsnap-${MY_PV}.tar.gz"
 
 LICENSE="gmap"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86"
 
-S="${WORKDIR}/gmap-${MY_BASE_PV}"
+S="${WORKDIR}/gmap-${MY_PV}"
+PATCHES=( "${FILESDIR}"/${PN}-2020.10.27-fno-common.patch )

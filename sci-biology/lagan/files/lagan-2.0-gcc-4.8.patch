@@ -1,0 +1,25 @@
+Author: Andreas Tille <tille@debian.org>
+LastChanged: Fri, 15 Nov 2013 10:31:20 +0100
+Description: Fix some includes to build using gcc-4.8
+
+--- a/src/utils/Glue.cpp
++++ b/src/utils/Glue.cpp
+@@ -6,6 +6,7 @@
+ #include <fstream>
+ #include <iostream>
+ #include <algorithm>
++#include <string.h>
+ 
+ #define NUCLEOTIDE_MATRIX_FILE "nucmatrix.txt"
+ #define MAX_LINE_LENGTH 1024
+--- a/src/glocal/score.cpp
++++ b/src/glocal/score.cpp
+@@ -2,7 +2,7 @@
+ #include<score.h>
+ #include<leftinfluence.h>
+ #include<rightinfluence.h>
+-#include<fstream.h>
++#include<fstream>
+ 
+ extern vector<class Score*> scoreFunctions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
+ 
