@@ -1,0 +1,11 @@
+https://723420.bugs.gentoo.org/attachment.cgi?id=639692
+--- a/util/alevt/vbi.c
++++ b/util/alevt/vbi.c
+@@ -35,7 +35,6 @@
+ 
+ static u8 *rawbuf; // one common buffer for raw vbi data
+ static int rawbuf_size; // its current size
+-u_int16_t sid;
+ static char *vbi_names[]
+ 	= { "/dev/vbi", "/dev/vbi0", "/dev/video0", "/dev/dvb/adapter0/demux0",
+ 	NULL }; // default device names if none was given at the command line

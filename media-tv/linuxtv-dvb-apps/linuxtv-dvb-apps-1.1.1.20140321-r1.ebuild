@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.1.20100223-perl526.patch
 	"${FILESDIR}"/${PN}-no-ca_set_pid.patch
 	"${FILESDIR}"/${PN}-glibc-2.31.patch
+	"${FILESDIR}"/${PN}-1.1.1.20140321-gcc10.patch
 )
 
 src_prepare() {
@@ -89,5 +90,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "/usr/bin/scan has been installed as scan-dvb."
+	elog "${EPREFIX}/usr/bin/scan has been installed as scan-dvb."
 }
