@@ -3,22 +3,22 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 GNOME2_EAUTORECONF=yes
 VALA_MIN_API_VERSION="0.40"
 VALA_USE_DEPEND=vapigen
 
-inherit autotools git-r3 gnome2 python-single-r1 vala virtualx
+inherit autotools git-r3 gnome2 python-single-r1 toolchain-funcs vala virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
-SLOT="2"
+SLOT="0/3"
 KEYWORDS=""
 
-IUSE="aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
+IUSE="aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
@@ -26,44 +26,45 @@ RESTRICT="!test? ( test )"
 # media-libs/{babl,gegl} are required to be built with USE="introspection"
 # to fix the compilation checking of /usr/share/gir-1.0/{Babl-0.1gir,Gegl-0.4.gir}
 COMMON_DEPEND="
-	app-arch/bzip2
-	>=app-arch/xz-utils-5.0.0
-	>=app-text/poppler-0.69[cairo]
+	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
-	>=dev-libs/atk-2.4.0
-	>=dev-libs/glib-2.56.2:2
-	>=dev-libs/json-glib-1.2.6
-	dev-libs/libxml2
+	>=dev-libs/atk-2.34.1
+	>=dev-libs/glib-2.62.6:2
+	>=dev-libs/json-glib-1.4.4
+	dev-libs/libxml2:2
 	dev-libs/libxslt
-	>=gnome-base/librsvg-2.40.6:2
-	>=media-gfx/mypaint-brushes-1.3.0:=
-	>=media-libs/babl-0.1.80[introspection,lcms,vala]
-	>=media-libs/fontconfig-2.12.4
-	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.26:0.4[cairo,introspection,lcms,vala]
-	>=media-libs/gexiv2-0.10.6
-	>=media-libs/harfbuzz-0.9.19
-	>=media-libs/lcms-2.8:2
-	>=media-libs/libmypaint-1.3.0:=
-	>=media-libs/libpng-1.6.25:0=
-	>=media-libs/tiff-3.5.7:0
+	>=gnome-base/librsvg-2.40.21:2
+	>=media-gfx/mypaint-brushes-2.0.2:=
+	>=media-libs/babl-0.1.82[introspection,lcms,vala?]
+	>=media-libs/fontconfig-2.12.6
+	>=media-libs/freetype-2.10.2
+	>=media-libs/gegl-0.4.27:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gexiv2-0.10.10
+	>=media-libs/harfbuzz-2.6.5
+	>=media-libs/lcms-2.9:2
+	>=media-libs/libmypaint-1.6.1:=
+	>=media-libs/libpng-1.6.37:0=
+	>=media-libs/tiff-4.1.0:0
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
-	virtual/jpeg:0
-	>=x11-libs/cairo-1.14.0
-	>=x11-libs/gdk-pixbuf-2.36:2
-	>=x11-libs/gtk+-3.22.29:3
+	virtual/jpeg
+	>=x11-libs/cairo-1.16.0
+	>=x11-libs/gdk-pixbuf-2.40.0:2
+	>=x11-libs/gtk+-3.24.16:3
 	x11-libs/libXcursor
-	>=x11-libs/pango-1.42.0
+	>=x11-libs/pango-1.42.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	aqua? ( >=x11-libs/gtk-mac-integration-2.0.0 )
-	heif? ( >=media-libs/libheif-1.3.2:= )
+	heif? ( >=media-libs/libheif-1.7.0:= )
 	javascript? ( dev-libs/gjs )
-	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= )
-	lua? ( dev-lang/luajit )
+	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
+	lua? (
+		dev-lang/luajit
+		dev-lua/lgi
+	)
 	mng? ( media-libs/libmng:= )
-	openexr? ( >=media-libs/openexr-1.6.1:= )
+	openexr? ( >=media-libs/openexr-2.3.0:= )
 	postscript? ( app-text/ghostscript-gpl )
 	python? (
 		${PYTHON_DEPS}
@@ -86,22 +87,22 @@ RDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	>=dev-lang/perl-5.10.0
-	>=dev-libs/appstream-glib-0.7.7
+	>=dev-lang/perl-5.30.3
+	>=dev-libs/appstream-glib-0.7.16
 	dev-util/gdbus-codegen
 	dev-util/gtk-update-icon-cache
-	>=dev-util/intltool-0.40.1
+	>=dev-util/intltool-0.51.0
 	sys-apps/findutils
 	>=sys-devel/autoconf-2.54
 	>=sys-devel/automake-1.11
-	>=sys-devel/gettext-0.19
-	>=sys-devel/libtool-2.2
+	>=sys-devel/gettext-0.21
+	>=sys-devel/libtool-2.4.6
 	virtual/pkgconfig
 	doc? (
-		>=dev-util/gtk-doc-1.0
+		>=dev-util/gtk-doc-1.32
 		dev-util/gtk-doc-am
 	)
-	$(vala_depend)
+	vala? ( $(vala_depend) )
 "
 
 DOCS=( "AUTHORS" "HACKING" "NEWS" "README" "README.i18n" )
@@ -118,24 +119,27 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if has_version "media-gfx/mypaint-brushes:2.0" ; then
-		sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
-	fi
+	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
 
 	# Fix checking of gtk-doc.make if USE="-doc" like autogen.sh
+	# USE="doc" is currently broken for gimp-9999 due to absence of appropriate *.m4 file
 	if ! use doc ; then
 		echo "EXTRA_DIST = missing-gtk-doc" > gtk-doc.make
+		sed -i -e "/CLEANFILES/s/^/#/g" \
+		"${S}"/devel-docs/{libgimp,libgimpbase,libgimpcolor,libgimpconfig,libgimpmath,libgimpmodule,libgimpthumb,libgimpwidgets}/Makefile.am || die
 	fi
 
 	gnome2_src_prepare  # calls eautoreconf
 
-	vala_src_prepare
+	use vala && vala_src_prepare
 
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
+
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 }
 
 _adjust_sandbox() {
@@ -161,11 +165,11 @@ src_configure() {
 
 		--enable-default-binary
 
+		--disable-check-update
 		--enable-mp
 		--with-appdata-test
 		--with-bug-report-url=https://bugs.gentoo.org/
 		--with-xmc
-		--with-vala
 		--without-libbacktrace
 		--without-webkit
 		--without-xvfb-run
@@ -187,6 +191,7 @@ src_configure() {
 		$(use_with python)
 		$(use_with udev gudev)
 		$(use_with unwind libunwind)
+		$(use_with vala)
 		$(use_with webp)
 		$(use_with wmf)
 		$(use_with xpm libxpm)
