@@ -18,6 +18,10 @@ DEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}/var" \
