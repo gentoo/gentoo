@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DESCRIPTION="Tiny program like wget, to upload files/whole directories via FTP"
+DESCRIPTION="Tiny program like wget to upload files/whole directories via FTP"
 HOMEPAGE="http://wput.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
@@ -12,15 +12,14 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="debug nls ssl"
 
+BDEPEND="nls? ( sys-devel/gettext )"
 RDEPEND="ssl? ( net-libs/gnutls )"
-
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6-gentoo.diff"
 	"${FILESDIR}/${PN}-0.6-respectldflags.patch"
+	"${FILESDIR}/${PN}-0.6.2-fno-common.patch"
 )
 
 DOCS=( ChangeLog INSTALL TODO )
@@ -32,8 +31,4 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_with ssl) \
 		"${myconf}"
-}
-
-src_install() {
-	default
 }
