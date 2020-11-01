@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,11 +24,7 @@ SLOT="0"
 IUSE="git httpd make test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	git? (
-		dev-vcs/git )
-	!dev-vcs/blogc-git-receiver
-	!www-servers/blogc-runserver"
+RDEPEND="git? ( dev-vcs/git )"
 
 DEPEND="${DEPEND}
 	virtual/pkgconfig

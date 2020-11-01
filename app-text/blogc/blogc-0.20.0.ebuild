@@ -24,11 +24,7 @@ SLOT="0"
 IUSE="git httpd make test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	git? (
-		dev-vcs/git )
-	!dev-vcs/blogc-git-receiver
-	!www-servers/blogc-runserver"
+RDEPEND="git? ( dev-vcs/git )"
 
 DEPEND="${DEPEND}
 	virtual/pkgconfig
