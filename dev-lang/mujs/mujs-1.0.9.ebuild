@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ccxvii/mujs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
 # subslot matches SONAME
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="static-libs"
 
 RDEPEND="sys-libs/readline:0="
