@@ -7858,7 +7858,7 @@ dev-python/argcomplete 1.12.0-r1 1.12.1-r1: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
-dev-python/arpeggio 1.9.2: Parser interpreter based on PEG grammars
+dev-python/arpeggio 1.9.2 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.16.0 0.17.0: Better dates and times for Python
 dev-python/asgiref 3.2.10 3.3.0: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
