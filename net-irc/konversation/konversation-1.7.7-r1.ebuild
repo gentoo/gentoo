@@ -62,6 +62,7 @@ PATCHES=(
 	# git master
 	"${FILESDIR}"/${PN}-1.7.5-unused-kemoticons.patch
 	"${FILESDIR}"/${PN}-1.7.6-no-kiconthemes.patch
+	"${FILESDIR}"/${P}-no-solid.patch
 )
 
 src_configure() {
