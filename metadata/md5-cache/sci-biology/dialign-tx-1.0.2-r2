@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile configure install postinst
 DESCRIPTION=Greedy and progressive approaches for segment-based multiple sequence alignment
-EAPI=6
+EAPI=7
 HOMEPAGE=http://dialign-tx.gobics.de/
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://dialign-tx.gobics.de/DIALIGN-TX_1.0.2.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b04d9beffea802bb82f896df101ca660
+_md5_=b2a78c4cfa60eb348ae63d076ecb5fba

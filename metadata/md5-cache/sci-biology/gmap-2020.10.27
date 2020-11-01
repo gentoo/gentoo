@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=A Genomic Mapping and Alignment Program for mRNA and EST Sequences
+EAPI=7
+HOMEPAGE=http://research-pub.gene.com/gmap/
+KEYWORDS=~amd64 ~x86
+LICENSE=gmap
+SLOT=0
+SRC_URI=http://research-pub.gene.com/gmap/src/gmap-gsnap-2020-10-27.tar.gz
+_md5_=9c28013ebc925bd0d07b8a1b1f1dbc4d

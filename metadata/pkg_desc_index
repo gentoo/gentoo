@@ -15707,7 +15707,7 @@ sci-biology/bwa 0.7.17: Burrows-Wheeler Alignment Tool, a fast short genomic seq
 sci-biology/cd-hit 4.6.6: Clustering Database at High Identity with Tolerance
 sci-biology/clustal-omega 1.2.4: Scalable multiple alignment of protein sequences
 sci-biology/clustalw 1.83-r4 2.1-r1: General purpose multiple alignment program for DNA and proteins
-sci-biology/clustalw-mpi 0.13-r2: An MPI implemention of the ClustalW general purpose multiple alignment algorithm
+sci-biology/clustalw-mpi 0.13-r3: An MPI implemention of the ClustalW general purpose multiple alignment algorithm
 sci-biology/clustalx 2.1-r3: Graphical interface for the ClustalW multiple alignment program
 sci-biology/consed 29: A genome sequence finishing program
 sci-biology/cutg 160-r1: Codon usage tables calculated from GenBank
@@ -15744,14 +15744,14 @@ sci-biology/gatk 2.4: The Genome Analysis Toolkit
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
 sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
-sci-biology/gmap 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
+sci-biology/gmap 2020.10.27: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
 sci-biology/hmmer 2.3.2-r4 3.1_beta2: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.05-r1: A subset seed design tool for DNA sequence alignment
 sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
 sci-biology/iqpnni 3.3.2-r1: Important Quartet Puzzling and NNI Operation
 sci-biology/kalign 2.03-r2: Global and progressive multiple sequence alignment
 sci-biology/kallisto 0.43.1 9999: Near-optimal RNA-Seq quantification
-sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
+sci-biology/lagan 2.0-r4: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
 sci-biology/libgtextutils 0.6.1: Gordon Text utils Library
 sci-biology/mafft 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/maq 0.7.1-r2: Mapping and Assembly with Qualities, mapping NGS reads to reference genomes
@@ -15764,10 +15764,10 @@ sci-biology/mrbayes 3.1.2-r2: Bayesian Inference of Phylogeny
 sci-biology/mummer 3.23: A rapid whole genome aligner
 sci-biology/muscle 3.8.31: Multiple sequence comparison by log-expectation
 sci-biology/ncbi-tools 2.2.26-r2: Development toolkit and applications for computational biology, including BLAST
-sci-biology/newick-utils 1.6: Tools for processing phylogenetic trees
+sci-biology/newick-utils 1.6-r1: Tools for processing phylogenetic trees
 sci-biology/njplot 2.3-r2: A phylogenetic tree drawing program which supports tree rooting
 sci-biology/pals 1.0-r1: Pairwise Aligner for Long Sequences
-sci-biology/paml 4.4c-r1: Phylogenetic Analysis by Maximum Likelihood
+sci-biology/paml 4.9j: Phylogenetic Analysis by Maximum Likelihood
 sci-biology/phrap 1.080812-r2: Shotgun assembly and alignment utilities
 sci-biology/phred 071220-r1: A base caller for Sanger DNA sequencing
 sci-biology/phylip 3.698: The PHYLogeny Inference Package
@@ -15795,7 +15795,7 @@ sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used b
 sci-biology/rmblast 1.2-r1: RepeatMasker compatible version of NCBI BLAST+
 sci-biology/rnaview 20040713-r4: Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
 sci-biology/samtools 0.1.20-r4 1.10: Utilities for analysing and manipulating the SAM/BAM alignment formats
-sci-biology/seaview 4.5.4 4.6: A graphical multiple sequence alignment editor
+sci-biology/seaview 4.6-r1: A graphical multiple sequence alignment editor
 sci-biology/seqan 2.4.0 9999: C++ Sequence Analysis Library
 sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligner
 sci-biology/sim4 20030921-r2: A program to align cDNA and genomic DNA
