@@ -5,4 +5,8 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">xmlschema</remote-id>
+		<remote-id type="github">sissaschool/xmlschema</remote-id>
+	</upstream>
 </pkgmetadata>
