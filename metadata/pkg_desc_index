@@ -5432,7 +5432,7 @@ dev-libs/librdkafka 1.4.4 1.5.0 1.5.2: Apache Kafka C/C++ client library
 dev-libs/librelp 1.6.0 1.7.0 1.8.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0 2.12.0 2.13.0 2.13.1: Generic library for reporting software bugs
-dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1 3.2.2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 4.6.1 4.7.0: C++ implementation of 3mf loading with SIP python bindings
@@ -16883,7 +16883,7 @@ sys-apps/pmount 0.9.99_alpha-r5 0.9.99_alpha-r6: Policy based mounter that gives
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 3.1 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 3.0.4-r1 3.0.8 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 3.0.4-r1 3.0.8 3.0.9 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r4: PowerPC utilities and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
