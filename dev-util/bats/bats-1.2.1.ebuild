@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit optfeature
+
 MY_PN="bats-core"
 DESCRIPTION="Bats-core: Bash Automated Testing System"
 HOMEPAGE="https://github.com/bats-core/bats-core/"
@@ -30,4 +32,8 @@ src_install() {
 
 	dodoc README.md
 	doman man/${PN}.1 man/${PN}.7
+}
+
+pkg_postinst() {
+	optfeature "Parallel Execution" sys-process/parallel
 }
