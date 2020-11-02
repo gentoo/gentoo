@@ -11,7 +11,7 @@ DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo"
+IUSE="+gpg +http +omemo +notification-sound"
 
 MY_REPO_URI="https://github.com/dino/dino"
 if [[ ${PV} == "9999" ]]; then
@@ -39,6 +39,7 @@ RDEPEND="
 		dev-libs/libgcrypt:0
 		media-gfx/qrencode
 	)
+	notification-sound? ( media-libs/libcanberra:0[sound] )
 "
 DEPEND="
 	$(vala_depend)
@@ -57,7 +58,11 @@ src_configure() {
 		$(usex omemo "" "omemo")
 		$(usex http  "" "http-files")
 	)
+	local enabled_plugins=(
+		$(usex notification-sound "notification-sound" "")
+	)
 	local mycmakeargs+=(
+		"-DENABLED_PLUGINS=$(local IFS=";"; echo "${enabled_plugins[*]}")"
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
 		"-DVALA_EXECUTABLE=${VALAC}"
 	)
