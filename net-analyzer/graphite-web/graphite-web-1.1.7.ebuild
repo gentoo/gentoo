@@ -4,6 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 	# 1.1.7 supports up to 3.9, so it's a matter of deps
+DISTUTILS_USE_SETUPTOOLS=no  # export USE_SETUPTOOLS to activate
 
 inherit distutils-r1 prefix
 
