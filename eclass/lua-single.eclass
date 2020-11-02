@@ -210,7 +210,7 @@ _lua_single_set_globals() {
 	local single_flags="${flags[@]/%/(-)?}"
 	local single_usedep=${single_flags// /,}
 
-	local deps= i PYTHON_PKG_DEP
+	local deps= i LUA_PKG_DEP
 	for i in "${_LUA_SUPPORTED_IMPLS[@]}"; do
 		_lua_export "${i}" LUA_PKG_DEP
 		deps+="lua_single_target_${i}? ( ${LUA_PKG_DEP} ) "
