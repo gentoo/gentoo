@@ -1,0 +1,31 @@
+From 16be0e1571a586168855bedb6da1ddc732b0bbf4 Mon Sep 17 00:00:00 2001
+From: Brenden Matthews <brenden@brndn.io>
+Date: Thu, 22 Oct 2020 13:02:00 -0400
+Subject: [PATCH] Build fix for libmicrohttpd.
+
+---
+ src/conky.cc | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/conky.cc b/src/conky.cc
+index 79633a40..b1743466 100644
+--- a/src/conky.cc
++++ b/src/conky.cc
+@@ -322,12 +322,13 @@ struct MHD_Daemon *httpd;
+ static conky::simple_config_setting<bool> http_refresh("http_refresh", false,
+                                                        true);
+ 
+-int sendanswer(void *cls, struct MHD_Connection *connection, const char *url,
+-               const char *method, const char *version, const char *upload_data,
+-               size_t *upload_data_size, void **con_cls) {
++MHD_Result sendanswer(void *cls, struct MHD_Connection *connection,
++                      const char *url, const char *method, const char *version,
++                      const char *upload_data, unsigned long *upload_data_size,
++                      void **con_cls) {
+   struct MHD_Response *response = MHD_create_response_from_buffer(
+       webpage.length(), (void *)webpage.c_str(), MHD_RESPMEM_PERSISTENT);
+-  int ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
++  MHD_Result ret = MHD_queue_response(connection, MHD_HTTP_OK, response);
+   MHD_destroy_response(response);
+   if (cls || url || method || version || upload_data || upload_data_size ||
+       con_cls) {}  // make compiler happy
