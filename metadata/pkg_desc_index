@@ -10856,7 +10856,7 @@ dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.18 9999: Commands to manage several local SCM repositories for ROS
 dev-util/xdelta 1.1.4-r3 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
-dev-util/xfce4-dev-tools 4.14.0 4.15.0: A set of scripts and m4/autoconf macros that ease build system maintenance
+dev-util/xfce4-dev-tools 4.14.0 4.15.0 4.15.1: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622-r1: A graphical file and directories comparator and merge tool
