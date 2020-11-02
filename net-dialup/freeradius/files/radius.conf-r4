@@ -11,6 +11,8 @@ pidfile=/var/run/radiusd/radiusd.pid
 RADIUSD_USER=radius
 RADIUSD_GROUP=radius
 
+RADIUSD_LOGPATH=/var/log/radius
+
 # If you set up logging to syslog in /etc/raddb/radiusd.conf, you want
 # to uncomment the following line.
 #rc_use="logger"
