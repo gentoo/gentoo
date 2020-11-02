@@ -16,7 +16,7 @@ SRC_URI="https://github.com/ftobia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="test? ( dev-python/pytest-ordering[${PYTHON_USEDEP}] )"
 
