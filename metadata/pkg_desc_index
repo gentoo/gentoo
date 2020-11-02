@@ -14591,7 +14591,7 @@ net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.25560: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 2.1.13 2.2.0-r1 2.4.5: Official desktop client for Telegram
+net-im/telegram-desktop 2.4.5 2.4.6: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.3.2 2.4.0 2.4.4: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
@@ -17934,7 +17934,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.4.0 82.0 82.0.1 82.0.2: Firefox Web Browser
 www-client/firefox-bin 78.4.0 82.0.1 82.0.2: Firefox Web Browser
-www-client/google-chrome 86.0.4240.111: The web browser from Google
+www-client/google-chrome 86.0.4240.183: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.40: The web browser from Google
 www-client/google-chrome-unstable 88.0.4300.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -17979,7 +17979,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.445: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 86.0.4240.111 87.0.4280.40_beta 88.0.4300.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.183 87.0.4280.40_beta 88.0.4300.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
@@ -18936,7 +18936,7 @@ xfce-base/xfce4-panel 4.14.4 4.15.4: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.15.2: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.15.0: A configuration management system for Xfce
-xfce-base/xfdesktop 4.14.2-r1 4.15.0: Desktop manager for the Xfce desktop environment
+xfce-base/xfdesktop 4.14.2-r1 4.14.3 4.15.0 4.15.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.14.2 4.14.5 4.14.6 4.15.1 4.15.2 4.15.3: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
@@ -18944,7 +18944,7 @@ xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanag
 xfce-extra/thunar-media-tags-plugin 0.3.0: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.3.1: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
-xfce-extra/thunar-volman 0.9.5 4.15.0: Daemon that enforces volume-related policies
+xfce-extra/thunar-volman 0.9.5 4.15.0 4.15.1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.2.9 0.3.0: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
