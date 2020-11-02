@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
 else
 	SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ~ppc ~sparc x86"
 fi
 
 LICENSE="MIT"
