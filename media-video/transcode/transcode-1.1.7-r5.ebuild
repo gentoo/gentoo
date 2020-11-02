@@ -69,6 +69,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg24.patch
 	"${FILESDIR}"/${P}-swresample.patch #722296
 	"${FILESDIR}"/${P}-gcc10-fno-common.patch
+	"${FILESDIR}"/${P}-glibc-2.32.patch
 )
 
 src_prepare() {
