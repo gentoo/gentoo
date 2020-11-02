@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-portmon.patch
 	"${FILESDIR}"/${P}-clang.patch
 	"${FILESDIR}"/${P}-virtual-sinks.patch
+	"${FILESDIR}"/${P}-fpermissive.patch
 )
 
 DISABLE_AUTOFORMATTING="yes"

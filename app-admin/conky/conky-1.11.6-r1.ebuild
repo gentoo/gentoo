@@ -75,6 +75,10 @@ CONFIG_CHECK="~IPV6"
 
 DOCS=( README.md AUTHORS )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fpermissive.patch
+)
+
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="You can find sample configurations at ${ROOT}/usr/share/doc/${PF}.
 To customize, copy to \${XDG_CONFIG_HOME}/conky/conky.conf
