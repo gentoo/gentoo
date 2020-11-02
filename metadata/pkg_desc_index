@@ -2827,7 +2827,7 @@ app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fb2edit 0.1.0: Create and edit fb2 books
 app-text/fblog 1.4.1: Small command-line JSON Log viewer
-app-text/fbpdf 0_p20190202-r1 0_p20200614: framebuffer pdf and djvu viewer
+app-text/fbpdf 0_p20200614: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
@@ -5041,7 +5041,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.1: Elixir programming language
-dev-lang/erlang 22.3.2 22.3.4 23.0.3 23.0.4 23.1.1: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.3 23.0.4 23.1.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -5206,7 +5206,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.24.4 1.25.1-r1: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.181: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.181 0.182: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 0.33 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9 2.2.10: Stream-oriented XML parser library
@@ -10367,7 +10367,7 @@ dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligen
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.3.0-r1 0.4.0: Guile bindings of git
 dev-scheme/guile-json 4.1.0: JSON module for Guile
-dev-scheme/guile-sqlite3 0.1.2: Guile bindings of sqlite3
+dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
 dev-scheme/racket 7.0 7.1 7.2 7.3: General purpose, multi-paradigm Lisp-Scheme programming language
@@ -10617,7 +10617,7 @@ dev-util/devhelp 3.34.0 3.36.2: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 155 161: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 161: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10788,7 +10788,7 @@ dev-util/rosdep 0.19.0-r1 9999: Command-line tool for installing ROS system depe
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22-r1 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10-r2 9.2: Collection of rpm packaging related utilities
-dev-util/rr 5.3.0-r2 5.4.0: Record and Replay Framework
+dev-util/rr 5.4.0: Record and Replay Framework
 dev-util/rt-tests 1.9: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/rustup 1.22.1-r2 9999: Rust toolchain installer
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
