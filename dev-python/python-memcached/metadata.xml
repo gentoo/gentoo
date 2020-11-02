@@ -13,6 +13,7 @@
 		This is a Python based API (implemented in 100% python) for communicating with
 		the memcached distributed memory object cache daemon.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-memcached</remote-id>
 		<remote-id type="github">linsomniac/python-memcached</remote-id>
