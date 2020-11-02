@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake desktop flag-o-matic python-any-r1 xdg-utils
+inherit cmake desktop flag-o-matic ninja-utils python-any-r1 xdg-utils
 
 MY_P="tdesktop-${PV}-full"
 
@@ -13,10 +13,10 @@ DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
 SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-3-with-openssl-exception"
+LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
-IUSE="+alsa +dbus enchant +hunspell libressl pulseaudio +spell wayland +X"
+KEYWORDS="~amd64 ~ppc64"
+IUSE="+dbus enchant +gtk +hunspell libressl lto pulseaudio +spell +webrtc +X"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -26,27 +26,39 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	dev-libs/xxhash
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[jpeg,png,wayland?,X(-)?]
+	dev-qt/qtgui:5[dbus?,jpeg,png,wayland,X(-)?]
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5[png,X(-)?]
 	media-fonts/open-sans
+	media-libs/alsa-lib
 	media-libs/fontconfig:=
-	>=media-libs/libtgvoip-2.4.4_p20200525[alsa(-)?,pulseaudio(-)?]
-	media-libs/openal[alsa?,pulseaudio?]
+	~media-libs/libtgvoip-2.4.4_p20201030[pulseaudio=]
+	media-libs/openal[alsa]
 	media-libs/opus:=
-	media-video/ffmpeg:=[alsa?,opus,pulseaudio?]
+	media-video/ffmpeg:=[alsa,opus]
 	sys-libs/zlib[minizip]
 	virtual/libiconv
-	x11-libs/gtk+:3
+	x11-libs/libxcb:=
 	dbus? (
 		dev-qt/qtdbus:5
 		dev-libs/libdbusmenu-qt[qt5(+)]
 	)
 	enchant? ( app-text/enchant:= )
+	gtk? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2[jpeg,X?]
+		x11-libs/gtk+:3[X?]
+		x11-libs/libX11
+	)
 	hunspell? ( >=app-text/hunspell-1.7:= )
+	!pulseaudio? ( media-sound/apulse[sdk] )
 	pulseaudio? ( media-sound/pulseaudio )
+	webrtc? (
+		media-libs/libjpeg-turbo:=
+		~media-libs/tg_owt-0_pre20201030[pulseaudio=]
+	)
 "
 
 DEPEND="
@@ -59,14 +71,14 @@ DEPEND="
 BDEPEND="
 	>=dev-util/cmake-3.16
 	virtual/pkgconfig
+	amd64? ( dev-lang/yasm )
 "
 
 REQUIRED_USE="
-	|| ( alsa pulseaudio )
-	|| ( X wayland )
 	spell? (
 		^^ ( enchant hunspell )
 	)
+	webrtc? ( !libressl )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -81,11 +93,18 @@ pkg_pretend() {
 	fi
 }
 
+src_prepare() {
+	# conditional patching is bad, but we want vanilla telegram with webrtc.
+	use webrtc || local PATCHES=( "${FILESDIR}/no-webrtc-build.patch" )
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycxxflags=(
 		-Wno-deprecated-declarations
 		-Wno-error=deprecated-declarations
 		-Wno-switch
+		-Wno-unknown-warning-option
 	)
 
 	append-cxxflags "${mycxxflags[@]}"
@@ -93,17 +112,21 @@ src_configure() {
 	# TODO: unbundle header-only libs, ofc telegram uses git versions...
 	# it fals with tl-expected-1.0.0, so we use bundled for now to avoid git rev snapshots
 	# EXPECTED VARIANT
+	# gtk is really needed for image copy-paste due to https://bugreports.qt.io/browse/QTBUG-56595
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_rlottie=ON # it does not build with system one, prevent automagic.
+		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON # header only lib, some git version. prevents warnings.
 		-DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON
 		-DDESKTOP_APP_USE_GLIBC_WRAPS=OFF
 		-DDESKTOP_APP_USE_PACKAGED=ON
-		-DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF
-		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF
-		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
+		-DDESKTOP_APP_USE_PACKAGED_FONTS=ON
+		-DTDESKTOP_DISABLE_GTK_INTEGRATION="$(usex gtk OFF ON)"
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
 		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell (recommended)
+		-DDESKTOP_APP_DISABLE_WEBRTC_INTEGRATION="$(usex webrtc OFF ON)"
 		-DDESKTOP_APP_USE_ENCHANT="$(usex enchant ON OFF)" # enables enchant and disables hunspell
+		$(usex lto "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON" '')
 	)
 
 	if [[ -n ${MY_TDESKTOP_API_ID} && -n ${MY_TDESKTOP_API_HASH} ]]; then
@@ -136,6 +159,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
+	use gtk || einfo "enable 'gtk' useflag if you have image copy-paste problems"
 }
 
 pkg_postrm() {
