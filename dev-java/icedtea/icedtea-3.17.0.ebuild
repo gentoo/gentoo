@@ -299,6 +299,7 @@ src_configure() {
 
 	unset JAVA_HOME JDK_HOME CLASSPATH JAVAC JAVACFLAGS
 
+	# force bash for now https://bugs.gentoo.org/722292
 	CONFIG_SHELL="${EPREFIX}/bin/bash" econf ${config} \
 		--with-openjdk-src-zip="${DISTDIR}/${OPENJDK_GENTOO_TARBALL}" \
 		--with-corba-src-zip="${DISTDIR}/${CORBA_GENTOO_TARBALL}" \
