@@ -7897,7 +7897,7 @@ dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
 dev-python/basho-erlastic 2.1.1: Erlang binary term codec and port interface
 dev-python/bcrypt 3.1.7-r2 3.2.0: Modern password hashing for software and servers
 dev-python/beagle 0.3.0: Command line client for Hound, the code search tool.
-dev-python/beautifulsoup 4.9.1 4.9.3: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 4.9.3: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
