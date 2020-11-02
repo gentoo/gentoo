@@ -7,4 +7,5 @@
 	<longdescription lang="en">
 		Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization.
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>
