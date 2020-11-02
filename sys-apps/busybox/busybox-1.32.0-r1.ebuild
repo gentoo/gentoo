@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2" # GPL-2 only
@@ -70,7 +70,6 @@ busybox_config_enabled() {
 # patches go here!
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.2-bb.patch
-	"${FILESDIR}"/${PN}-1.31.1-glibc-2.31.patch
 	# "${FILESDIR}"/${P}-*.patch
 )
 
@@ -303,7 +302,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ ${ROOT} == "/" ]] ; then
+	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ -z "${ROOT}" ]] ; then
 		ewarn "setting USE=make-symlinks and emerging to / is very dangerous."
 		ewarn "it WILL overwrite lots of system programs like: ls bash awk grep (bug 60805 for full list)."
 		ewarn "If you are creating a binary only and not merging this is probably ok."
