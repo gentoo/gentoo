@@ -4,12 +4,12 @@ DESCRIPTION=Utilities for rescue and embedded systems
 EAPI=7
 HOMEPAGE=https://www.busybox.net/
 IUSE=debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd savedconfig
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=!static? ( selinux? ( sys-libs/libselinux ) ) pam? ( sys-libs/pam ) virtual/libcrypt:= mdev? ( !<sys-apps/openrc-0.13 )
 REQUIRED_USE=pam? ( !static )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://www.busybox.net/downloads/busybox-1.31.1.tar.bz2
+SRC_URI=https://www.busybox.net/downloads/busybox-1.32.0.tar.bz2
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	portability	e8f7ef3a41965b21a734550f8a94c1c6	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=cc08c6331c61d672c844894cf9a274b1
+_md5_=7b43308910ee1ad57d067313eb49c2c8

@@ -1,0 +1,14 @@
+BDEPEND=dev-util/makeheaders virtual/pkgconfig
+DEFINED_PHASES=compile configure prepare
+DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip dev-libs/libmaxminddb )
+DESCRIPTION=ncurses directconnect client
+EAPI=7
+HOMEPAGE=https://dev.yorhel.nl/ncdc
+IUSE=geoip
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=MIT
+RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip dev-libs/libmaxminddb )
+SLOT=0
+SRC_URI=https://dev.yorhel.nl/download/ncdc-1.22.1.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=a8820bda547be2002daf269325c84160

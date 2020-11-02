@@ -12402,7 +12402,7 @@ mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple messa
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.5.6 3.5.7 3.6_pre20201026: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.6 3.5.7 3.6_pre20201101: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.4.4 1.4.5: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
@@ -15321,7 +15321,7 @@ net-p2p/ktorrent 5.2.0-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1 3.1.6-r1 3.1.7: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
-net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
+net-p2p/ncdc 1.21 1.22.1 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.2.5-r2 4.3.0 9999: BitTorrent client in C++ and Qt
@@ -16702,7 +16702,7 @@ sys-apps/biosdisk 1.01: FreeDOS based BIOS updating utility for Dell machines
 sys-apps/bleachbit 4.0.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.9-r1 0.9-r2: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.4.1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
-sys-apps/busybox 1.31.1-r2 1.32.0 9999: Utilities for rescue and embedded systems
+sys-apps/busybox 1.31.1-r3 1.32.0-r1 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12a: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools

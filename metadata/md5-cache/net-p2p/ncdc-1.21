@@ -1,14 +1,14 @@
 BDEPEND=dev-util/makeheaders virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure prepare
-DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip )
+DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip dev-libs/libmaxminddb )
 DESCRIPTION=ncurses directconnect client
 EAPI=7
 HOMEPAGE=https://dev.yorhel.nl/ncdc
 IUSE=geoip
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=MIT
-RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip )
+RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip dev-libs/libmaxminddb )
 SLOT=0
 SRC_URI=https://dev.yorhel.nl/download/ncdc-1.21.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1b2d8778d18f1cc79a75b64ea6edbca1
+_md5_=db748687e32d9e3097c46dfe9af8cd93
