@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -55,5 +55,5 @@ src_configure() {
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=yes
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
