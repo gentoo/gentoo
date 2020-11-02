@@ -1,14 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 inherit distutils-r1 vcs-snapshot
 
-# Commit Date: 15th December 2019
-COMMIT="875325103234b4a3ed96a4a5167ff78c291edbff"
+COMMIT="1cabc85521e2badfc1e0d690086e286e701c2d9e"
 
 DESCRIPTION="Suite of tools for PDF files manipulation written in Python"
 HOMEPAGE="https://github.com/hellerbarde/stapler"
@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/PyPDF2[${PYTHON_USEDEP}]
-	<dev-python/more-itertools-6.0.0[${PYTHON_USEDEP}]"
+"
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+"
