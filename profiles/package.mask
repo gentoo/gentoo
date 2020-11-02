@@ -224,11 +224,6 @@ net-fs/openafs-kernel
 # Removal in 30 days
 sys-auth/pam_passwdqc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-10-09)
-# Mask older erlang releases for removal.
-# Bug #740894.
-<dev-lang/erlang-23
-
 # Azamat H. Hackimov <azamat.hackimov@gmail.com> (2020-10-06)
 # 1.3.3 is broken and failing unittests for net-im/prosody. Bug #746782.
 >=dev-lua/luaexpat-1.3.3
