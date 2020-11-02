@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="assets charts hyphenation ipython jinja server watchdog webmedia"
 REQUIRED_USE="server? ( watchdog )"
 RESTRICT="test" # needs coveralls
