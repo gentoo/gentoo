@@ -6,6 +6,6 @@
         <name>Craig Andrews</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">notspiff/screensaver.rsxs</remote-id>
+        <remote-id type="github">notspiff/screensavers.rsxs</remote-id>
     </upstream>
 </pkgmetadata>
