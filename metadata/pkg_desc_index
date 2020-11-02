@@ -8461,7 +8461,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1: Python to native compiler
 dev-python/numexpr 2.7.2: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.0 1.19.1 1.19.2 1.19.3: Fast array and numerical python library
+dev-python/numpy 1.19.0 1.19.1 1.19.2 1.19.3 1.19.4: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
