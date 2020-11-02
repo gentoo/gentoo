@@ -2910,7 +2910,7 @@ app-text/mupdf 1.16.1 1.17.0 1.18.0: A lightweight PDF viewer and toolkit writte
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
-app-text/nuspell 3.1.2 4.0.0: Spell checker library and CLI for complex natural languages
+app-text/nuspell 3.1.2 4.0.0 4.0.1: Spell checker library and CLI for complex natural languages
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
