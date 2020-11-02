@@ -13,6 +13,7 @@
     PGSpecial provides an API to execute meta-commands
     (AKA "special", or "backslash commands") on PostgreSQL.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">dbcli/pgspecial</remote-id>
   </upstream>
