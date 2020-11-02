@@ -8026,14 +8026,14 @@ dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-cover 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain text
-dev-python/dill 0.3.2: Serialize all of python (almost)
+dev-python/dill 0.3.2 0.3.3: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
 dev-python/diskcache 5.0.3: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.16 3.0.10-r1 3.1.1-r1 3.1.2-r1: High-level Python web framework
+dev-python/django 2.2.16 2.2.17 3.0.10-r1 3.0.11 3.1.1-r1 3.1.2-r1 3.1.3: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
@@ -8322,7 +8322,7 @@ dev-python/keep 2.9: Personal shell command keeper and snippets manager
 dev-python/keyring 21.4.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.0.1 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1 9.1.0: A middleware for the OpenStack Keystone API
-dev-python/kiwisolver 1.2.0 1.3.0: An efficient C++ implementation of the Cassowary constraint solving algorithm
+dev-python/kiwisolver 1.2.0 1.3.0 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 20.6.0: micro-framework for developing production-ready web services with Python
 dev-python/kombu 4.6.8 5.0.1: AMQP Messaging Framework for Python
 dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
@@ -8551,7 +8551,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.9 1.11.10: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.9 8.12.10 8.12.11: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.9 8.12.10 8.12.11 8.12.12: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
@@ -8895,7 +8895,7 @@ dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
 dev-python/pytools 2020.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.3.1-r1 0.4.0: A pure Python implementation of the trie data structure
-dev-python/pytz 2020.1-r1: World timezone definitions for Python
+dev-python/pytz 2020.1-r1 2020.4: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2-r1: USB support for Python
@@ -9232,7 +9232,7 @@ dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.3 1.3.6 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.2.3-r1 1.2.4: An XML Schema validator and decoder
+dev-python/xmlschema 1.2.3-r1 1.2.4 1.2.5: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
@@ -13718,7 +13718,7 @@ media-sound/jack-audio-connection-kit 0.125.0 0.125.0-r1: A low-latency audio se
 media-sound/jack-keyboard 2.7.2-r1: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.8_rc1-r1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0-r1: Utilities for MIDI streams and files using Jack MIDI
-media-sound/jack2 1.9.14 9999: Jackdmp jack implemention for multi-processor machine
+media-sound/jack2 1.9.14 1.9.16 9999: Jackdmp jack implemention for multi-processor machine
 media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
@@ -13835,7 +13835,7 @@ media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler en
 media-sound/qsynth 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.16 0.9.17: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.16 0.9.17 0.9.18: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.2.1 4.3.0: audio library tagger, manager, and player for GTK+
@@ -16835,7 +16835,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/lsvpd 1.7.10 1.7.11: Utility to List Device Vital Product Data (VPD)
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man-db 2.9.3 9999: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 5.07 5.08: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 5.07 5.08 5.09: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often faster than gawk) awk-interpreter
@@ -17453,8 +17453,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.8.16 5.8.17 5.9.1 5.9.2: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.4.241 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.9.241 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.14.203 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 4.19.153 4.19.154 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.4.73 5.4.74 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.8.17 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17465,11 +17465,11 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r2 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9: Linux system headers
 sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.8.16 5.8.17 5.9.1 5.9.2: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.4.74 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.203 4.19.154 5.4.73 5.8.17 5.9.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
