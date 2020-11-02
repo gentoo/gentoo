@@ -2937,7 +2937,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.60 0.61: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.90.1 20.09.0 20.10.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.90.1 20.10.0 20.11.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -12217,7 +12217,7 @@ kde-misc/kio-gdrive 1.3.0 20.08.2: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99-r1: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r3: Locate KIO slave
 kde-misc/kio-stash 1.0-r1: KIO Slave and daemon to stash discontinuous file selections
-kde-misc/kmarkdownwebview 0.5.5 0.5.6: KPart for rendering Markdown content
+kde-misc/kmarkdownwebview 0.5.6: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/krename 5.0.0-r1 5.0.1: Powerful batch file renamer
 kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with many extras
@@ -12232,7 +12232,7 @@ kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
-kde-misc/tellico 3.3.2 3.3.3: Collection manager based on KDE Frameworks
+kde-misc/tellico 3.3.3: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r2: Getting things done application by KDE
@@ -13161,7 +13161,7 @@ media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.1.10 20.2.1 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.20.0-r2 6.22.1-r1: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.22.1-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.43.0-r1 1.44.0 1.45.1: Audio metadata tag reader and writer implemented in pure Python
@@ -13625,7 +13625,7 @@ media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
 media-sound/cadence 0.9.1 9999: Collection of tools useful for audio production
-media-sound/cantata 2.4.1 2.4.2: Featureful and configurable Qt client for the music player daemon (MPD)
+media-sound/cantata 2.4.2: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
 media-sound/cdparanoia 3.10.2-r7: An advanced CDDA reader with error correction
@@ -15256,7 +15256,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
