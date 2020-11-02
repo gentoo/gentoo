@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -7,7 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -76,7 +76,7 @@
 
 case "${EAPI:-0}" in
 	0|1|2|3|4) die "EAPI<5 is not supported";;
-	5|6) : ;;
+	5|6|7) : ;;
 	*) die "unknown EAPI" ;;
 esac
 
@@ -117,9 +117,15 @@ else
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${PV}"
 fi
-DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/checkpolicy-2.0.21"
+if [[ ${EAPI:-0} == [56] ]]; then
+	DEPEND="${RDEPEND}
+		sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+else
+	DEPEND="${RDEPEND}"
+	BDEPEND="sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+fi
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
 
