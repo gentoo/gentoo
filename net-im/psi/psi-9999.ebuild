@@ -47,6 +47,7 @@ DEPEND="
 	dev-qt/qtxml:5
 	net-dns/libidn:0
 	net-libs/http-parser:=
+	net-libs/usrsctp
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
