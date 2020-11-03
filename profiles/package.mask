@@ -32,6 +32,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-11-03)
+# Dead upstream, or broken for a long time, not maintained in Gentoo.
+# Removal in 30 days. Bug #752462
+app-emulation/rex-client
+app-i18n/kde-l10n-scripts
+media-plugins/xbmc-addon-xvdr
+net-analyzer/nagios-plugins-flameeyes
+net-libs/libosmo-abis
+net-libs/libosmo-netif
+net-misc/lcr
+net-misc/srf-ip-conn-srv
+net-wireless/dump978
+net-wireless/openbsc
+net-wireless/openggsn
+net-wireless/osmobts
+net-wireless/osmocom-bb
+
 # Aisha Tammy <gentoo@aisha.cc> (2020-10-31)
 # Redundant historical packages now being provided
 # together by sci-libs/lapack
