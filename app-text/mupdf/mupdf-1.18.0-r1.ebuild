@@ -30,7 +30,7 @@ RDEPEND="
 	virtual/jpeg[static-libs?]
 	opengl? ( >=media-libs/freeglut-3.0.0:= )
 	ssl? (
-		libressl? ( >=dev-libs/libressl-3.2.0:0=[static-libs?] )
+		libressl? ( >=dev-libs/libressl-3.1.4:0=[static-libs?] )
 		!libressl? ( >=dev-libs/openssl-1.1:0=[static-libs?] )
 	)
 	X? (
