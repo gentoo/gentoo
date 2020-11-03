@@ -36,6 +36,7 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
+	dev-libs/protobuf:=
 	dev-libs/qtkeychain:=
 	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
@@ -45,8 +46,8 @@ COMMON_DEPEND="
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtserialport:5
-	dev-qt/qtsvg:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
@@ -54,6 +55,7 @@ COMMON_DEPEND="
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-6.3.1:=
+	sys-libs/zlib
 	>=x11-libs/qscintilla-2.10.3:=
 	>=x11-libs/qwt-6.1.3-r2:6=[svg]
 	3d? ( dev-qt/qt3d:5 )
