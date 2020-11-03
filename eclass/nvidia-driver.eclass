@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: nvidia-driver.eclass
 # @MAINTAINER:
-# Jeroen Roovers <jer@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Original author: Doug Goldstein <cardoe@gentoo.org>
 # @BLURB: Provide useful messages for nvidia-drivers

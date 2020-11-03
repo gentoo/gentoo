@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>jer@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>
 Nvidia provides different branches of its drivers for different batches of its
 hardware. When maintaining these ebuilds or other ebuilds depending on them,

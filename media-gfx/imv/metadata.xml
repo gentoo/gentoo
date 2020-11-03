@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type='person'><email>jer@gentoo.org</email></maintainer>
+<!-- maintainer-needed -->
 <use>
-<flag name='freeimage'>Use <pkg>media-libs/freeimage</pkg> as image library</flag>
-<flag name='heif'>Use <pkg>media-libs/libheif</pkg> as image library</flag>
-<flag name='libnsgif'>Use <pkg>media-libs/libnsgif</pkg> as image library</flag>
+<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> as image library</flag>
+<flag name="heif">Use <pkg>media-libs/libheif</pkg> as image library</flag>
+<flag name="libnsgif">Use <pkg>media-libs/libnsgif</pkg> as image library</flag>
 </use>
 <upstream>
 <remote-id type="github">eXeC64/imv</remote-id>
