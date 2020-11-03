@@ -15,7 +15,7 @@ SRC_URI="https://github.com/intel/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UoI-NCSA"
 SLOT="10"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 S="${WORKDIR}/${MY_P}"
 
