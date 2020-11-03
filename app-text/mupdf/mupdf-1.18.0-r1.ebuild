@@ -65,6 +65,7 @@ src_prepare() {
 
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
+		-e "1iCXX = $(tc-getCXX)" \
 		-e "1iLD = $(tc-getLD)" \
 		-e "1iAR = $(tc-getAR)" \
 		-e "1iverbose = yes" \
