@@ -33,6 +33,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.3-systemd.patch"
+	"${FILESDIR}/${P}-autoconf270.patch" #750728
 )
 
 pkg_setup() {
