@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit kernel-build
+inherit kernel-build verify-sig
 
 MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
@@ -13,6 +13,9 @@ CONFIG_HASH=af8da8d54d21231fd8c7b943216bb985f0a4e223
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	verify-sig? (
+		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.sign
+	)
 	amd64? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
@@ -40,13 +43,27 @@ REQUIRED_USE="
 RDEPEND="
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
-	debug? ( dev-util/dwarves )"
+	debug? ( dev-util/dwarves )
+	verify-sig? ( app-crypt/openpgp-keys-kernel )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/kernel.org.asc
 
 pkg_pretend() {
 	ewarn "Starting with 5.7.9, Distribution Kernels are switching from Arch"
 	ewarn "Linux configs to Fedora.  Please keep a backup kernel just in case."
 
 	kernel-install_pkg_pretend
+}
+
+src_unpack() {
+	if use verify-sig; then
+		einfo "Unpacking linux-${PV}.tar.xz ..."
+		verify-sig_verify_detached - "${DISTDIR}"/linux-${PV}.tar.sign \
+			< <(xz -cd "${DISTDIR}"/linux-${PV}.tar.xz | tee >(tar -x))
+		assert "Unpack failed"
+	else
+		default
+	fi
 }
 
 src_prepare() {
