@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-04">
+  <title>Fossil: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Fossil, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">fossil</product>
+  <announced>2020-11-03</announced>
+  <revised count="1">2020-11-03</revised>
+  <bug>738220</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/fossil" auto="yes" arch="*">
+      <unaffected range="ge">2.12.1</unaffected>
+      <vulnerable range="lt">2.12.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Fossil is a simple, high-reliability, distributed software configuration
+      management system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Fossil. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      repository using Fossil, possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Fossil users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/fossil-2.12.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24614">CVE-2020-24614</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-04T13:56:09Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-03T00:34:02Z">sam_c</metadata>
+</glsa>
