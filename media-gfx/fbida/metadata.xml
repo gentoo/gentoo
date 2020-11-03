@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>jer@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <use>
 <flag name="fbcon">Install the framebuffer image viewer "fbi"</flag>
 <flag name="ghostscript">Install the framebuffer ghostscript viewer "fbgs"</flag>

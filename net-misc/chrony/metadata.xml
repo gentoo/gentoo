@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>jer@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>
 Chrony is a pair of programs (chronyd and chronyc) which are used to maintain
 the accuracy of the system clock on a computer. chronyd has been specifically
