@@ -43,6 +43,7 @@ RDEPEND="
 	net-libs/webkit-gtk:4
 	net-misc/curl
 	sys-libs/e2fsprogs-libs
+	sys-libs/libcxx
 	sys-libs/zlib
 	virtual/krb5
 	virtual/jpeg:0
