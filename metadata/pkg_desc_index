@@ -5160,7 +5160,7 @@ dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL lib
 dev-libs/botan 2.15.0 2.16.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.20.0 1.20.1: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.20.1: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0 0.8.0: RPC/Serialization system with capabilities support
@@ -7965,7 +7965,7 @@ dev-python/click-log 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.4.0: Command Line Interface Formulation Framework
-dev-python/clint 0.5.1-r2 0.5.1-r3: Python Command-line Application Tools
+dev-python/clint 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.6.0: Extended pickling support for Python objects
 dev-python/cmd2 1.3.8 1.3.11: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2 0.2-r1: Distutils command to view/validate packages's rst text long_descriptions.
@@ -8233,7 +8233,7 @@ dev-python/humanize 2.6.0 3.0.1 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0: A library for property based testing
+dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8639,8 +8639,8 @@ dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 20.7.3: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20-r1: C parser and AST generator written in Python
-dev-python/pycryptodome 3.9.8-r1: A self-contained cryptographic library for Python
-dev-python/pycryptodomex 3.9.8: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.9.8-r1 3.9.9: A self-contained cryptographic library for Python
+dev-python/pycryptodomex 3.9.8 3.9.9: A self-contained cryptographic library for Python
 dev-python/pycson 0.8: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
@@ -8667,7 +8667,7 @@ dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.2.1 1.3.0: Python bindings for libgit2
+dev-python/pygit2 1.3.0: Python bindings for libgit2
 dev-python/pyglet 1.5.3 1.5.7-r1 1.5.8: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.1 2.7.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -8879,7 +8879,7 @@ dev-python/python-troveclient 2.17.0 5.1.1: A client for the OpenStack Trove API
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.0.1 4.1.1: A client for the OpenStack Vitrage API
-dev-python/python-xlib 0.27 0.28: A fully functional X client library for Python, written in Python
+dev-python/python-xlib 0.28: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.9: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.13.1 2.0.1: A client for the OpenStack Zaqar API
@@ -11565,11 +11565,11 @@ games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.16.1.02 1.16.40.02: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.40.02: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.16.1 1.16.3: The official server for the sandbox video game
+games-server/minecraft-server 1.16.3 1.16.3-r1: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
@@ -11586,7 +11586,7 @@ games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
 games-simulation/micropolis 1.0_p20180313: Free version of the well-known city building simulation
-games-simulation/openrct2 0.3.0 0.3.1 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
+games-simulation/openrct2 0.3.0 0.3.2 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
 games-simulation/openttd 1.10.2 1.10.3 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator
@@ -14598,7 +14598,7 @@ net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logg
 net-im/telepathy-mission-control 5.16.5: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/toxic 0.8.3-r1: A curses-based client for Tox
-net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
+net-im/transwhat 0.2.2_p20190426-r1: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
@@ -17351,7 +17351,7 @@ sys-fs/dislocker 0.7.1-r2 0.7.1-r3 9999: Dislocker is used to read BitLocker enc
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
-sys-fs/duperemove 0.11.1: Btrfs and xfs deduplication utility
+sys-fs/duperemove 0.11.1 0.11.2: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.5 1.45.6: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
@@ -18927,12 +18927,12 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.2 4.15.3: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.1: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.3-r1: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.3: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4: Unified widget and session management libs for Xfce
+xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.15 1.8.16 4.15.2 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.4 4.15.4: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.4 4.15.4 4.15.5: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.15.2: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.15.0: A configuration management system for Xfce
