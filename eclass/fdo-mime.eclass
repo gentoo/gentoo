@@ -1,6 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# No consumers left. Removal in 30 days.
+
 # @ECLASS: fdo-mime.eclass
 # @MAINTAINER:
 # freedesktop-bugs@gentoo.org
