@@ -22,7 +22,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/confuse
+	dev-libs/confuse:=
 	dev-libs/uthash"
 
 DEPEND="${RDEPEND}
