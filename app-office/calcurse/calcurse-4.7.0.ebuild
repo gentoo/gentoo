@@ -44,3 +44,8 @@ src_compile() {
 	python_setup
 	python_fix_shebang contrib/caldav/calcurse-caldav
 }
+
+src_install() {
+	default
+	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
+}
