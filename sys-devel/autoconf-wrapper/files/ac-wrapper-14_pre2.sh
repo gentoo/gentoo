@@ -79,7 +79,7 @@ fi
 # Start at last known unstable/stable versions to speed up lookup process.
 #
 if [ -z "${KNOWN_AUTOCONF}" ] ; then
-	KNOWN_AUTOCONF="2.70_beta2:2.5 2.69:2.5"
+	KNOWN_AUTOCONF="2.70_beta3:2.5 2.69:2.5"
 fi
 vers="${KNOWN_AUTOCONF} 9999:2.5 $(printf '2.%s:2.5 ' `seq 99 -1 59`) 2.13:2.1"
 
