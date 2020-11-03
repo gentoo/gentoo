@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
 # apache-devs@gentoo.org
-# @SUPPORTED_EAPIS: 0 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 2 3 4 5 6 7
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
 # This eclass handles depending on apache in a sane way and provides information
@@ -44,7 +44,7 @@ case ${EAPI:-0} in
 	0|2|3|4|5)
 		inherit multilib
 		;;
-	6)
+	6|7)
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
