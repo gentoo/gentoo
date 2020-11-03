@@ -5344,7 +5344,7 @@ dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to
 dev-libs/libfido2 1.3.1 1.4.0 1.5.0-r1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.20.2 0.24.1 0.25.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20201009: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 7.0.3 7.1.0 9999: Small, safe and fast formatting library
+dev-libs/libfmt 7.0.3 7.1.1 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7 0.7-r1: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
@@ -17454,7 +17454,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.4.74-r1 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.8.18-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3 5.9.3-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.237 4.4.238 4.4.239 4.4.240 4.4.241 4.9.236 4.9.237 4.9.238 4.9.239 4.9.240 4.9.241 4.14.198 4.14.199 4.14.200 4.14.201 4.14.202 4.14.203 4.19.146 4.19.147 4.19.148 4.19.149 4.19.150 4.19.151 4.19.152 4.19.153 4.19.154 5.4.66 5.4.67 5.4.68 5.4.69 5.4.70 5.4.71 5.4.72 5.4.73 5.4.74 5.8.8 5.8.9 5.8.10 5.8.11 5.8.12 5.8.13 5.8.14 5.8.15 5.8.16 5.8.17 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
