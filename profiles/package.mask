@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
+# Hackage release does not build against gcc-8:
+# https://github.com/Helium4Haskell/helium/issues/4
+# Masked for removal. Bugs: #751757, #736054
+dev-lang/helium
+dev-haskell/lvmlib
+
 # Joonas Niilola <juippis@gentoo.org> (2020-11-03)
 # Dead upstream, or broken for a long time, not maintained in Gentoo.
 # Removal in 30 days. Bug #752462
