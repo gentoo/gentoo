@@ -2130,7 +2130,7 @@ app-i18n/fcitx-sunpinyin 0.4.2 4.9999: Chinese SunPinyin input method for Fcitx
 app-i18n/fcitx-table-extra 0.3.8 4.9999: Extra Chinese table input methods for Fcitx
 app-i18n/fcitx-unikey 0.2.7 4.9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22 1.1.1_alpha23: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.22: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.22 1.5.23: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.10-r2 1.5.11-r1: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4-r2: Chinese Cangjie and Quick engines for IBus
 app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
@@ -2906,7 +2906,7 @@ app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.2: Tail with multiple windows
-app-text/mupdf 1.16.1 1.17.0 1.18.0: A lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.16.1 1.17.0 1.18.0-r1: A lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
