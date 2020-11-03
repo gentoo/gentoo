@@ -11284,7 +11284,7 @@ games-fps/freedm-data 0.12.1: Game resources for FreeDM
 games-fps/freedoom 0.12.1: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.12.1: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
-games-fps/gzdoom 4.3.3 4.4.2: A modder-friendly OpenGL source port based on the DOOM engine
+games-fps/gzdoom 4.5.0: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
@@ -13273,7 +13273,7 @@ media-libs/zimg 2.8 2.9.2 3.0.1 9999: Scaling, colorspace conversion, and dither
 media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
 media-libs/zita-resampler 1.6.2: C++ library for real-time resampling of audio signals
-media-libs/zmusic 1.1.2 1.1.4: GZDoom's music system as a standalone library
+media-libs/zmusic 1.1.4: GZDoom's music system as a standalone library
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
 media-libs/zxing-cpp 1.0.8-r1 1.1.1: C++ Multi-format 1D/2D barcode image processing library
 media-plugins/alsa-plugins 1.2.2: ALSA extra plugins
@@ -14517,7 +14517,7 @@ net-fs/openafs-kernel 1.6.22.1-r1 1.6.22.2-r1: The OpenAFS distributed file syst
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
-net-fs/samba 4.11.13-r1 4.12.7-r1 4.12.8 4.12.9 4.13.0-r1 4.13.1: Samba Suite Version 4
+net-fs/samba 4.11.13-r1 4.12.7-r1 4.12.8 4.12.9 4.13.1 4.13.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
@@ -14530,7 +14530,7 @@ net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1 8.3.2-r2: GTK frontend to proftpd
-net-ftp/lftp 4.8.4-r1 4.9.0 4.9.1 4.9.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.8.4-r1 4.9.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6 3.2.6-r1 3.2.6-r2: An extremely configurable ftp client
 net-ftp/proftpd 1.3.7a: An advanced and very configurable FTP server
