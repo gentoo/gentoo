@@ -7917,8 +7917,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 9999: The AWS SDK for Python
-dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 9999: The AWS SDK for Python
+dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8994,7 +8994,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1: Python client for Sentry
+dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1 0.19.2: Python client for Sentry
 dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -9070,7 +9070,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.21 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.5: The Scientific Python Development Environment
