@@ -513,8 +513,8 @@ app-admin/abrt 2.14.0 2.14.1 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.10.0-r2 9999: Model-driven deployment, config management, and command execution framework
-app-admin/ansible-base 2.10.2: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.10.0-r2 2.10.1 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible-base 2.10.2 2.10.3: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -10704,10 +10704,10 @@ dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.5.2 5.6.0-r1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.6.0-r1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.5.2 5.6.0: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.5.2 5.6.0: Python plugin for KDevelop
+dev-util/kdevelop-php 5.6.0: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.6.0: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.3.1: SDK for building Kubernetes APIs using CRDs
@@ -16919,7 +16919,7 @@ sys-apps/sed 4.7 4.8: Super-useful stream editor
 sys-apps/selinux-python 2.9 3.0 3.1 3.1-r1 9999: SELinux core utilities
 sys-apps/semodule-utils 2.9 3.0 3.1 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
-sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
+sys-apps/servicelog 1.1.14 1.1.15: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
@@ -17018,7 +17018,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20201013 20201028.1: PAM base configuration files
+sys-auth/pambase 20201013 20201028.1 20201103: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
@@ -17529,7 +17529,7 @@ sys-libs/libunwind 1.4.0: Portable and efficient API to determine the call-chain
 sys-libs/liburing 0.6 0.7 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
-sys-libs/libvpd 2.2.6: Library implementation for listing vpds
+sys-libs/libvpd 2.2.6 2.2.7: Library implementation for listing Vital Product Data
 sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
@@ -17680,7 +17680,7 @@ virtual/jpeg-compat 62: A virtual for the libjpeg.so.62 ABI for binary-only prog
 virtual/jre 1.8.0-r3 11-r2: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.8: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
-virtual/lapacke 3.8: Virtual for LAPACK C implementation
+virtual/lapacke 3.8-r1: Virtual for LAPACK C implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
 virtual/libc 1-r1: Virtual for the C library
 virtual/libcrypt 1-r1 2: Virtual for libcrypt.so
