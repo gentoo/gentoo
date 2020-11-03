@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-03">
+  <title>KPMCore: Root privilege escalation</title>
+  <synopsis>A vulnerability in kpmcore could result in privilege escalation.</synopsis>
+  <product type="ebuild">kpmcore</product>
+  <announced>2020-11-03</announced>
+  <revised count="1">2020-11-03</revised>
+  <bug>749822</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-libs/kpmcore" auto="yes" arch="*">
+      <unaffected range="ge">4.2.0</unaffected>
+      <vulnerable range="lt">4.2.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>KPMcore, the KDE Partition Manager core, is a library for examining and
+      modifying partitions, disk devices, and filesystems on a Linux system. It
+      provides a unified programming interface over top of (external)
+      system-manipulation tools.
+    </p>
+  </background>
+  <description>
+    <p>Improper checks on the D-Bus request received resulted in improper
+      protection for /etc/fstab.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could esclate privileges to root by exploiting this
+      vulnerability.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KPMCore users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/kpmcore-4.2.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27187">CVE-2020-27187</uri>
+    <uri link="https://mail.kde.org/pipermail/kde-announce/2020-October/000124.html">
+      Upstream advisory
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-23T04:10:26Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-03T00:33:42Z">sam_c</metadata>
+</glsa>
