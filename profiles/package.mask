@@ -32,6 +32,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-11-03)
+# Dead upstream.
+net-analyzer/nagios-plugins-flameeyes
+net-misc/lcr
+app-emulation/rex-client
+
+# Joonas Niilola <juippis@gentoo.org> (2020-11-03)
+# Broken for a long time, not maintained in Gentoo.
+net-misc/srf-ip-conn-srv
+media-plugins/xbmc-addon-xvdr
+app-i18n/kde-l10n-scripts
+net-wireless/dump978
+net-wireless/openggsn
+net-wireless/osmocom-bb
+net-wireless/openbsc
+net-wireless/osmobts
+net-libs/libosmo-netif
+net-libs/libosmo-abis
+
 # Aisha Tammy <gentoo@aisha.cc> (2020-10-31)
 # Redundant historical packages now being provided
 # together by sci-libs/lapack
