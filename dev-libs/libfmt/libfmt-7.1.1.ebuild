@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib
 
 DESCRIPTION="Small, safe and fast formatting library"
 HOMEPAGE="https://github.com/fmtlib/fmt"
@@ -27,7 +27,6 @@ RDEPEND=""
 RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
-	filter-flags "-flto*" # https://github.com/fmtlib/fmt/issues/1955
 	local mycmakeargs=(
 		-DFMT_CMAKE_DIR="$(get_libdir)/cmake/fmt"
 		-DFMT_LIB_DIR="$(get_libdir)"
