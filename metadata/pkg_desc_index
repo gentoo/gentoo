@@ -682,7 +682,7 @@ app-admin/system-config-printer 1.5.12-r1 1.5.12-r2: Graphical user interface fo
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.28 0.13.3 0.13.4: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.28 0.13.3 0.13.4 0.13.5: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -8524,7 +8524,7 @@ dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide rang
 dev-python/pandocfilters 1.4.2-r2 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
-dev-python/paramiko 2.7.1: SSH2 protocol library
+dev-python/paramiko 2.7.1 2.7.2: SSH2 protocol library
 dev-python/parsedatetime 2.6: Parse human-readable date/time strings
 dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 1.1.0: Appendable key-value storage
