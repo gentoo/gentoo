@@ -13177,7 +13177,7 @@ media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
-media-libs/openimageio 1.8.17-r2 2.2.7.0: A library for reading and writing images
+media-libs/openimageio 1.8.17-r2 2.2.7.0 2.2.8.0: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.1-r1: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
@@ -15044,7 +15044,7 @@ net-misc/httpie 2.1.0 2.2.0: Modern command line HTTP client
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 7.0.2: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 20.06.0.15 20.9.0.15: ICA Client for Citrix Presentation servers
+net-misc/icaclient 20.06.0.15 20.06.0.15-r1 20.9.0.15-r1 20.10.0.6: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
