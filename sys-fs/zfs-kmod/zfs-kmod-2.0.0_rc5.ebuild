@@ -12,13 +12,14 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
-	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
-	KEYWORDS="amd64 arm64 ppc64"
-	S="${WORKDIR}/zfs-${PV}"
-	ZFS_KERNEL_COMPAT="5.6"
+	MY_PV="${PV/_rc/-rc}"
+	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	S="${WORKDIR}/zfs-${PV%_rc?}"
+	ZFS_KERNEL_COMPAT="5.9"
 fi
 
-LICENSE="CDDL debug? ( GPL-2+ )"
+LICENSE="CDDL MIT debug? ( GPL-2+ )"
 SLOT="0"
 IUSE="custom-cflags debug +rootfs"
 
@@ -36,8 +37,6 @@ BDEPEND="
 RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
-
-PATCHES=( "${FILESDIR}/${PV}-powerpc_jmp_weak.patch" )
 
 pkg_setup() {
 	CONFIG_CHECK="
@@ -62,10 +61,6 @@ pkg_setup() {
 			DEVTMPFS
 	"
 
-	if use arm64; then
-		kernel_is -ge 5 && CONFIG_CHECK="${CONFIG_CHECK} !PREEMPT"
-	fi
-
 	kernel_is -lt 5 && CONFIG_CHECK="${CONFIG_CHECK} IOSCHED_NOOP"
 
 	if [[ ${PV} != "9999" ]]; then
@@ -77,12 +72,9 @@ pkg_setup() {
 		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
 			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
 
-		# 0.8.x requires at least 2.6.32
-		kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
-	else
-		# git master requires at least 3.10
-		kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 	fi
+
+	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
 
 	linux-mod_pkg_setup
 }
@@ -116,7 +108,7 @@ src_configure() {
 		$(use_enable debug)
 	)
 
-	CONFIG_SHELL="${EPREFIX}/bin/bash" econf "${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 src_compile() {
