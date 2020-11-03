@@ -34,7 +34,6 @@ S="${WORKDIR}/skiboot-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/flags.patch"
-	"${FILESDIR}/devtmpfs-noexec.patch"
 )
 
 python_check_deps() {
