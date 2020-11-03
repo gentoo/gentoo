@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt dell gtk-doc elogind minimal introspection +man nvme redfish synaptics systemd test thunderbolt tpm uefi"
+IUSE="agent amt dell gtk-doc elogind minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
@@ -43,7 +43,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/json-glib
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
-	>=dev-libs/libgusb-0.2.9[introspection?]
+	>=dev-libs/libgusb-0.3.5[introspection?]
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.1.13:=
 	$(python_gen_cond_dep '
@@ -55,15 +55,12 @@ CDEPEND="${PYTHON_DEPS}
 	virtual/libelf:0=
 	virtual/udev
 	dell? (
-		sys-libs/efivar
 		>=sys-libs/libsmbios-2.4.0
 	)
-	elogind? ( sys-auth/elogind )
-	!minimal? (
+	elogind? ( >=sys-auth/elogind-211 )
+	policykit? (
 		>=sys-auth/polkit-0.103
 	)
-	nvme? ( sys-libs/efivar )
-	redfish? ( sys-libs/efivar )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
@@ -72,7 +69,6 @@ CDEPEND="${PYTHON_DEPS}
 		media-libs/freetype
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
-		>=sys-libs/efivar-33
 		x11-libs/cairo
 	)
 "
@@ -90,7 +86,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.9-logind_plugin.patch"
-	"${FILESDIR}/${PN}-1.4.4-help2man_var.patch" #728484
 )
 
 pkg_setup() {
@@ -120,12 +115,12 @@ src_configure() {
 		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
 		$(meson_use introspection)
-		$(meson_use redfish plugin_redfish)
+		$(meson_use policykit polkit)
 		$(meson_use synaptics plugin_synaptics)
 		$(meson_use systemd)
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
-		$(meson_use tpm plugin_tpm)
+		$(meson_use tpm)
 		$(meson_use uefi plugin_uefi)
 		# Although our sys-apps/flashrom package now provides
 		# libflashrom.a, meson still can't find it
