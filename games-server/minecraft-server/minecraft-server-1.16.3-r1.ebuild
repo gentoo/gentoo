@@ -3,9 +3,10 @@
 
 EAPI=7
 
-EGIT_COMMIT="a412fd69db1f81db3f511c1463fd304675244077"
+EGIT_COMMIT="f02f4473dbf152c23d7d484952121db0b36698cb"
+README_GENTOO_SUFFIX="-r1"
 
-inherit readme.gentoo-r1 java-pkg-2
+inherit readme.gentoo-r1 java-pkg-2 systemd
 
 DESCRIPTION="The official server for the sandbox video game"
 HOMEPAGE="https://www.minecraft.net/"
@@ -13,7 +14,7 @@ SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P
 
 LICENSE="Mojang"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	acct-group/minecraft
@@ -30,15 +31,20 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}"
 
 src_unpack() {
-	cp "${DISTDIR}"/${A} "${WORKDIR}" || die
+	cp "${DISTDIR}/${A}" "${WORKDIR}" || die
+}
+
+src_compile() {
+	:;
 }
 
 src_install() {
 	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
 	java-pkg_dolauncher minecraft-server --jar minecraft-server.jar --java_args "\${JAVA_OPTS}"
 
-	newinitd "${FILESDIR}"/minecraft-server.initd-r3 minecraft-server
-	newconfd "${FILESDIR}"/minecraft-server.confd minecraft-server
+	newinitd "${FILESDIR}"/minecraft-server.initd-r4 minecraft-server
+	newconfd "${FILESDIR}"/minecraft-server.confd-r1 minecraft-server
+	systemd_newunit "${FILESDIR}"/minecraft-server.service minecraft-server@.service
 
 	readme.gentoo_create_doc
 }
