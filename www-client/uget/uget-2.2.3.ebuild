@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit gnome2-utils xdg-utils
+inherit xdg
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://www.ugetdm.com"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/urlget/${P}-1.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl rss"
+IUSE="aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl libressl rss"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-fno-common-713812.diff"
@@ -20,25 +20,29 @@ PATCHES=(
 
 REQUIRED_USE="^^ ( gnutls openssl )"
 
-RDEPEND="
-	>=net-misc/curl-7.19.1
-	dev-libs/libpcre
+DEPEND="
+	appindicator? ( dev-libs/libappindicator:3 )
+	aria2? ( net-misc/aria2[xmlrpc] )
 	>=dev-libs/glib-2.32:2
-	>=x11-libs/gtk+-3.4:3
+	dev-libs/libpcre
 	gnutls? (
-		net-libs/gnutls
+		net-libs/gnutls:=
 		dev-libs/libgcrypt:0
 	)
-	aria2? ( net-misc/aria2[xmlrpc] )
-	appindicator? ( dev-libs/libappindicator:3 )
 	gstreamer? ( media-libs/gstreamer:1.0 )
 	libnotify? ( x11-libs/libnotify )
-	openssl? ( dev-libs/openssl:0 )
+	>=net-misc/curl-7.19.1
+	openssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
+	>=x11-libs/gtk+-3.4:3
 	"
-DEPEND="${RDEPEND}
+
+BDEPEND="
 	dev-util/intltool
-	virtual/pkgconfig
 	sys-devel/gettext
+	virtual/pkgconfig
 	"
 
 src_configure() {
@@ -54,14 +58,4 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

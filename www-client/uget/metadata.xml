@@ -16,9 +16,9 @@
 		category.
 	</longdescription>
 	<use>
-		<flag name="aria2">Enable support for <pkg>net-misc/aria2</pkg> through xmlrpc.
-			You'll find the plugin in the app's settings.</flag>
+		<flag name="aria2">Enable support for <pkg>net-misc/aria2</pkg> through xmlrpc. You'll find the plugin in the app's settings.</flag>
 		<flag name="control-socket">Enable JSON-RPC over unix domain socket</flag>
+		<flag name="libressl">Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>net-libs/gnutls</pkg></flag>
 		<flag name="rss">Enable uGet feed messages</flag>
 	</use>
