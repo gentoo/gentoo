@@ -5696,7 +5696,7 @@ dev-lua/luasec 0.9 9999: Lua binding for OpenSSL library to provide TLS/SSL comm
 dev-lua/luasocket 3.0_rc1-r4 3.0_rc1-r5: Networking support library for the Lua language
 dev-lua/luassert 1.7.9 1.7.10 1.8.0: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0: platform independent system calls for lua
-dev-lua/lutok 0.4-r1 0.4-r2: Lightweight C++ API library for Lua
+dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
 dev-lua/luv 1.32.0.0 1.32.0.0-r100 1.32.0.0-r101: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2 0.3.2-r100: A pure Lua implementation of the MessagePack serialization format
