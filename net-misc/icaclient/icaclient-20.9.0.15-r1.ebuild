@@ -42,16 +42,22 @@ RDEPEND="
 	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:4
 	net-misc/curl
-	sys-libs/e2fsprogs-libs
+	net-misc/nx
+	sys-apps/util-linux
+	sys-libs/libcxx
+	sys-libs/libcxxabi
 	sys-libs/zlib
 	virtual/krb5
 	virtual/jpeg:0
+	virtual/libudev
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXaw
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libXinerama
