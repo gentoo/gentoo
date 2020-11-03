@@ -5568,7 +5568,7 @@ dev-libs/raft 0.9.25: C implementation of the Raft consensus protocol
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
-dev-libs/re2 0.2020.08.01 0.2020.10.01: An efficient, principled regular expression library
+dev-libs/re2 0.2020.08.01 0.2020.10.01 0.2020.11.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
@@ -17440,9 +17440,9 @@ sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.4 1.1.1: Zeroes out all free space on a filesystem
-sys-fs/zfs 0.8.4-r2 0.8.5 2.0.0_rc3 2.0.0_rc4 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.8.5 2.0.0_rc4 2.0.0_rc5 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 1.2.4-r1 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.8.4-r1 0.8.5 2.0.0_rc3 2.0.0_rc4 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.8.5 2.0.0_rc4 2.0.0_rc5 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
