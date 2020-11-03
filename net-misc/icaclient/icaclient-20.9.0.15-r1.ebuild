@@ -175,9 +175,32 @@ src_install() {
 	rm -r "${S}"/keystore/cacerts || die
 	dosym ../../../../etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
+	local util_files=(
+		configmgr
+		conncenter
+		ctx_app_bind
+		ctx_rehash
+		ctxwebhelper
+		gst_play1.0
+		gst_read1.0
+		hdxcheck.sh
+		icalicense.sh
+		libgstflatstm1.0.so
+		lurdump
+		new_store
+		nslaunch
+		pnabrowse
+		storebrowse
+		sunraymac.sh
+		webcontainer
+		what
+		xcapture
+	)
+
 	exeinto "${ICAROOT}"/util
-	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so,webcontainer,ctxwebhelper,ctx_rehash,ctx_app_bind}
-	doexe util/{lurdump,new_store,nslaunch,pnabrowse,storebrowse,sunraymac.sh,what,xcapture}
+	for bin in ${util_files[@]} ; do
+		doexe util/${bin}
+	done
 
 	# https://bugs.gentoo.org/655922
 	dosym gst_play1.0 "${ICAROOT}"/util/gst_play
