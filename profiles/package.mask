@@ -272,11 +272,6 @@ sys-auth/pam_passwdqc
 dev-dotnet/mono-addins
 media-gfx/pinta
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-03)
-# Package with no available HOMEPAGE, SRC_URI and multiple compilation issues.
-# Bug #741468, removal in 30 days.
-games-board/spider
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-25)
 # PyPy3.7 alpha.  Known to break a few packages.  Masked until it
 # matures more.
