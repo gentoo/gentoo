@@ -103,6 +103,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# As of darktable-3.2.1, AVIF support is not compatible with >=media-libs/libavif-0.8.0; see Bug #751352.
+	# GMIC support mostly works but there are several problems with the media-gfx/gmic ebuilds currently
+	# in the tree, and the package itself has got no maintainer.
 	local mycmakeargs=(
 		-DBUILD_CURVE_TOOLS=$(usex tools)
 		-DBUILD_NOISE_TOOLS=$(usex tools)
@@ -110,9 +113,11 @@ src_configure() {
 		-DCUSTOM_CFLAGS=ON
 		-DDONT_USE_INTERNAL_LUA=$(usex system-lua)
 		-DRAWSPEED_ENABLE_LTO=$(usex lto)
+		-DUSE_AVIF=no
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)
 		-DUSE_FLICKR=$(usex flickr)
+		-DUSE_GMIC=no
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
 		-DUSE_KWALLET=$(usex kwallet)
 		-DUSE_LIBSECRET=$(usex gnome-keyring)
