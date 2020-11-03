@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/libidn/${P}.tar.gz"
 LICENSE="GPL-2 GPL-3 LGPL-3 java? ( Apache-2.0 )"
 SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc emacs java mono nls static-libs"
+IUSE="doc emacs java mono nls"
 
 DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS TODO )
 COMMON_DEPEND="
@@ -44,17 +44,21 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} GJDOC=javadoc \
-	econf \
-		$(multilib_native_use_enable java) \
-		$(multilib_native_use_enable mono csharp mono) \
-		$(use_enable nls) \
-		$(use_enable static-libs static) \
-		--disable-valgrind-tests \
-		--with-lispdir="${EPREFIX}${SITELISP}/${PN}" \
-		--with-packager-bug-reports="https://bugs.gentoo.org" \
-		--with-packager-version="r${PR}" \
+	local -x GJDOC=javadoc
+
+	local args=(
+		$(multilib_native_use_enable java)
+		$(multilib_native_use_enable mono csharp mono)
+		$(use_enable nls)
+		--disable-static
+		--disable-valgrind-tests
+		--with-lispdir="${EPREFIX}${SITELISP}/${PN}"
+		--with-packager-bug-reports="https://bugs.gentoo.org"
+		--with-packager-version="r${PR}"
 		--with-packager="Gentoo"
+	)
+
+	ECONF_SOURCE=${S} econf "${args[@]}"
 }
 
 multilib_src_compile() {
