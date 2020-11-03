@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-05">
+  <title>libssh: Denial of Service</title>
+  <synopsis>A vulnerability in libssh could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">libssh</product>
+  <announced>2020-11-03</announced>
+  <revised count="1">2020-11-03</revised>
+  <bug>734624</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libssh" auto="yes" arch="*">
+      <unaffected range="ge">0.9.5</unaffected>
+      <vulnerable range="lt">0.9.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libssh is a multiplatform C library implementing the SSHv2 protocol on
+      client and server side.
+    </p>
+  </background>
+  <description>
+    <p>libssh was found to have a NULL pointer dereference in tftpserver.c if
+      the function ssh_buffer_new returns NULL.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libssh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libssh-0.9.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16135">CVE-2020-16135</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-15T18:56:19Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-03T00:34:45Z">sam_c</metadata>
+</glsa>
