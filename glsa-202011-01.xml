@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-01">
+  <title>BlueZ: Arbitrary code execution</title>
+  <synopsis>A vulnerability in BlueZ might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">bluez</product>
+  <announced>2020-11-03</announced>
+  <revised count="1">2020-11-03</revised>
+  <bug>749285</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/bluez" auto="yes" arch="*">
+      <unaffected range="ge">5.55</unaffected>
+      <vulnerable range="lt">5.55</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Set of tools to manage Bluetooth devices for Linux.</p>
+  </background>
+  <description>
+    <p>It was discovered that there was a double-free vulnerability in Bluez
+      after the service discovery which occurs after a Bluetoth Low Energy
+      (BLE) connection has been established to a device.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to connect to a malicious GATT
+      server or device, could cause the execution of arbitrary code with the
+      privileges of the user running gatttool client or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BlueZ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/bluez-5.55"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27153">CVE-2020-27153</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-20T10:51:04Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-03T00:32:28Z">sam_c</metadata>
+</glsa>
