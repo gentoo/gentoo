@@ -210,6 +210,7 @@ src_prepare() {
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync.patch"
 			"${FILESDIR}/gentoo-journald-audit.patch"
+			"${FILESDIR}/gentoo-pam.patch"
 		)
 	fi
 
