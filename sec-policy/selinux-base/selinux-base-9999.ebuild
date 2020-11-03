@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,8 +23,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-apps/policycoreutils-2.8
-	virtual/udev"
+RDEPEND=">=sys-apps/policycoreutils-2.8"
 DEPEND="${RDEPEND}
 	sys-devel/m4
 	>=sys-apps/checkpolicy-2.8"
