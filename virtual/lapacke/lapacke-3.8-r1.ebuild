@@ -9,9 +9,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~a
 IUSE="eselect-ldso"
 
 RDEPEND="
-	|| (
-		>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso?]
-		>=sci-libs/openblas-0.3.10[eselect-ldso?]
-	)
+	>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso?]
+	eselect-ldso? ( || (
+		>=sci-libs/lapack-3.8.0[lapacke,eselect-ldso]
+		>=sci-libs/openblas-0.3.10[eselect-ldso]
+	) )
 "
 DEPEND="${RDEPEND}"
