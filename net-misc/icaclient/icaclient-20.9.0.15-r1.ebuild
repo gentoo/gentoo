@@ -180,6 +180,7 @@ src_install() {
 		conncenter
 		ctx_app_bind
 		ctx_rehash
+		ctxlogd
 		ctxwebhelper
 		gst_play1.0
 		gst_read1.0
@@ -190,6 +191,7 @@ src_install() {
 		new_store
 		nslaunch
 		pnabrowse
+		setlog
 		storebrowse
 		sunraymac.sh
 		webcontainer
