@@ -96,6 +96,8 @@ pkg_pretend() {
 src_prepare() {
 	# conditional patching is bad, but we want vanilla telegram with webrtc.
 	use webrtc || local PATCHES=( "${FILESDIR}/no-webrtc-build.patch" )
+	# i asked upstream for explicit toggle, they did not listen. #752417
+	sed -i 's/DESKTOP_APP_USE_PACKAGED/DESKTOP_APP_USE_PACKAGED_FAKE/' cmake/external/rlottie/CMakeLists.txt || die
 	cmake_src_prepare
 }
 
@@ -114,7 +116,7 @@ src_configure() {
 	# EXPECTED VARIANT
 	# gtk is really needed for image copy-paste due to https://bugreports.qt.io/browse/QTBUG-56595
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_rlottie=ON # it does not build with system one, prevent automagic.
+		-DCMAKE_DISABLE_FIND_PACKAGE_rlottie=ON # it does not build with system one #752417
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON # header only lib, some git version. prevents warnings.
 		-DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON
 		-DDESKTOP_APP_USE_GLIBC_WRAPS=OFF
