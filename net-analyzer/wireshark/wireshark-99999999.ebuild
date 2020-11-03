@@ -19,6 +19,7 @@ IUSE="
 	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
 	sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd
 "
+RESTRICT="!test? ( test )"
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
