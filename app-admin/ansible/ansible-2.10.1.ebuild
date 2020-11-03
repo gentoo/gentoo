@@ -57,8 +57,6 @@ DEPEND="
 		dev-vcs/git
 	)"
 
-PATCHES=( "${FILESDIR}/ansible-2.10.0-CVE-2020-25635-6.patch" )
-
 python_compile() {
 	export ANSIBLE_SKIP_CONFLICT_CHECK=1
 	distutils-r1_python_compile
