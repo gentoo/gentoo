@@ -14452,7 +14452,7 @@ net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.9.7 3.0.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35 1.36: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 2.3.0: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 1.11: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
@@ -14682,7 +14682,7 @@ net-libs/gtk-vnc 1.0.0: VNC viewer widget for GTK
 net-libs/gupnp 1.2.3 1.2.4: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5-r10: Library to handle UPnP IGD port mapping for GUPnP
-net-libs/http-parser 2.8.1 2.9.1 2.9.2 2.9.3 2.9.4 99999: HTTP request/response parser for C
+net-libs/http-parser 2.8.1 2.9.3 2.9.4: HTTP request/response parser for C
 net-libs/iax 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 1.0.0 5.2.0 5.3.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 4.0.0 8.0.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
@@ -15254,7 +15254,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 2020.11.01.1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.01.1: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
