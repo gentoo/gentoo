@@ -14,9 +14,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
 		<flag name="gtk2">Enable support for GTK+2 instead of GTK+3</flag>
-		<flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
 		<flag name="non-free">Enable non-free components</flag>
 	</use>
 	<upstream>
