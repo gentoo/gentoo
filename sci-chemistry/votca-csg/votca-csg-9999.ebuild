@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	>=app-text/txt2tags-2.5
 	virtual/pkgconfig"
 
-DOCS=( README.md NOTICE CHANGELOG.md )
+DOCS=( README.rst NOTICE CHANGELOG.rst )
 
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
