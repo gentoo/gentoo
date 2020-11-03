@@ -64,7 +64,6 @@ CDEPEND="${PYTHON_DEPS}
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
-		app-crypt/tpm2-tss
 		media-libs/fontconfig
 		media-libs/freetype
 		sys-boot/gnu-efi
