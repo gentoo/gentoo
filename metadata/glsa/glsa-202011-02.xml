@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-02">
+  <title>OpenDMARC: Heap-based buffer overflow</title>
+  <synopsis>A heap-based buffer overflow in OpenDMARC might allow remote
+    attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">opendmarc</product>
+  <announced>2020-11-03</announced>
+  <revised count="1">2020-11-03</revised>
+  <bug>734158</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="mail-filter/opendmarc" auto="yes" arch="*">
+      <unaffected range="ge">1.3.3</unaffected>
+      <vulnerable range="lt">1.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenDMARC is an open source DMARC implementation.</p>
+  </background>
+  <description>
+    <p>It was found that OpenDMARC did not properly handle DMARC aggregate
+      reports.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending a specially crafted DMARC aggregate
+      report, could possibly cause a Denial of Service condition and depending
+      on how OpenDMARC library is used in linked application execute arbitrary
+      code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenDMARC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-filter/opendmarc-1.3.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12460">CVE-2020-12460</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-15T18:55:45Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-03T00:33:08Z">sam_c</metadata>
+</glsa>
