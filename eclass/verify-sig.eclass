@@ -103,7 +103,9 @@ verify-sig_verify_detached() {
 	# to GNUPGHOME.
 	addpredict /run/user
 
-	einfo "Verifying ${file##*/} ..."
+	local filename=${file##*/}
+	[[ ${file} == - ]] && filename='(stdin)'
+	einfo "Verifying ${filename} ..."
 	gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
 		gpg --verify "${sig}" "${file}" ||
 		die "PGP signature verification failed"
