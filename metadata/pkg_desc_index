@@ -16865,7 +16865,7 @@ sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec sys
 sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/opal-utils 6.5.2 6.6.2 6.6.3 6.6.3-r1: OPAL firmware utilities
+sys-apps/opal-utils 6.5.2 6.6.2 6.7: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200325 20200529: osinfo database files
