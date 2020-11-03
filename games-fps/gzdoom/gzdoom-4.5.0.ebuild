@@ -7,40 +7,41 @@ inherit cmake desktop xdg
 
 DESCRIPTION="A modder-friendly OpenGL source port based on the DOOM engine"
 HOMEPAGE="https://zdoom.org"
-SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz
+	non-free? ( https://github.com/nashmuhandes/WidePix/archive/92738042ca3a37f28153a09809d80a7d61090532.tar.gz -> widepix-9273804.tar.gz )"
 
-LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT
-	non-free? ( Activision ChexQuest3 DOOM-COLLECTORS-EDITION freedist )"
+LICENSE="Apache-2.0 BSD BZIP2 GPL-3 LGPL-2.1+ LGPL-3 MIT
+	non-free? ( Activision ChexQuest3 DOOM-COLLECTORS-EDITION freedist WidePix )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="alsa fluidsynth gtk gtk2 mpg123 +non-free openmp sndfile"
+IUSE="gtk gtk2 +non-free openmp"
 
 DEPEND="
+	app-arch/bzip2
 	media-libs/libsdl2[opengl]
 	media-libs/openal
+	media-libs/zmusic
 	sys-libs/zlib
 	virtual/jpeg:0
-	alsa? ( media-libs/alsa-lib )
-	fluidsynth? ( media-sound/fluidsynth:= )
 	gtk? (
 		gtk2? ( x11-libs/gtk+:2 )
 		!gtk2? ( x11-libs/gtk+:3 )
-	)
-	mpg123? ( media-sound/mpg123 )
-	sndfile? ( media-libs/libsndfile )"
+	)"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-g${PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.1-install_soundfonts.patch"
-	"${FILESDIR}/${PN}-4.2.1-Introduce-the-BUILD_NONFREE-option.patch"
+	"${FILESDIR}/${P}-Introduce-the-BUILD_NONFREE-option.patch"
 )
 
 src_prepare() {
 	rm -rf docs/licenses || die
+	rm -rf libraries/{bzip2,jpeg,zlib} || die
 	if ! use non-free ; then
-		rm -rf wadsrc_bm wadsrc_extra || die
+		rm -rf wadsrc_bm wadsrc_extra wadsrc_widescreen || die
+	else
+		mv "${WORKDIR}/WidePix-92738042ca3a37f28153a09809d80a7d61090532/filter" wadsrc_widescreen/static/ || die
 	fi
 
 	cmake_src_prepare
@@ -51,18 +52,11 @@ src_configure() {
 		-DINSTALL_DOCS_PATH="${EPREFIX}/usr/share/doc/${PF}"
 		-DINSTALL_PK3_PATH="${EPREFIX}/usr/share/doom"
 		-DINSTALL_SOUNDFONT_PATH="${EPREFIX}/usr/share/doom"
-		-DDYN_FLUIDSYNTH=OFF
 		-DDYN_OPENAL=OFF
-		-DDYN_SNDFILE=OFF
-		-DDYN_MPG123=OFF
 		-DNO_GTK="$(usex !gtk)"
 		-DNO_OPENAL=OFF
 		-DNO_OPENMP="$(usex !openmp)"
 		-DBUILD_NONFREE="$(usex non-free)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_ALSA="$(usex !alsa)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_FluidSynth="$(usex !fluidsynth)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_MPG123="$(usex !mpg123)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_SndFile="$(usex !sndfile)"
 	)
 	cmake_src_configure
 }
