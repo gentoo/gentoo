@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets keyring webengine webkit xscreensaver"
+IUSE="aspell dbus debug doc enchant extras +hunspell iconsets keyring webengine xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -31,7 +31,6 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	extras? ( >=sys-devel/qconf-2.4 )
 "
 DEPEND="
 	app-crypt/qca:2[ssl]
@@ -45,7 +44,6 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	net-dns/libidn:0
 	net-libs/http-parser:=
 	net-libs/usrsctp
 	sys-libs/zlib[minizip]
@@ -61,11 +59,9 @@ DEPEND="
 		dev-qt/qtwebengine:5[widgets]
 		net-libs/http-parser
 	)
-	webkit? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtimageformats
-	crypt? ( app-crypt/qca[gpg] )
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -74,9 +70,9 @@ pkg_setup() {
 	MY_PN=psi
 	if use extras; then
 		MY_PN=psi-plus
-		ewarn "You're about to build patched version of Psi called Psi+."
-		ewarn "It has new nice features not yet included to Psi."
-		ewarn "Take a look at homepage for more info: http://psi-plus.com/"
+		einfo "You're about to build a branded version of Psi called Psi+."
+		einfo "Psi+ patches were fully merged to Psi."
+		einfo "The only difference is the name and some artwork."
 
 		if use iconsets; then
 			ewarn
@@ -114,10 +110,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local chattype=basic
-	use webengine && chattype=webengine
-	use webkit && chattype=webkit
-
 	local mycmakeargs=(
 		-DPRODUCTION=OFF
 		-DUSE_ASPELL=$(usex aspell)
@@ -126,7 +118,7 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DINSTALL_PLUGINS_SDK=1
 		-DUSE_KEYCHAIN=$(usex keyring)
-		-DCHAT_TYPE=$chattype
+		-DCHAT_TYPE=$(usex webengine webengine basic)
 		-DUSE_XSS=$(usex xscreensaver)
 		-DPSI_PLUS=$(usex extras)
 	)
@@ -160,9 +152,4 @@ src_install() {
 		doins "translations/${PN}_${1}.qm"
 	}
 	l10n_for_each_locale_do install_locale
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	einfo "For GPG support make sure app-crypt/qca is compiled with gpg USE flag."
 }
