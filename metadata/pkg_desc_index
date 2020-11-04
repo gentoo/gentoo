@@ -8113,7 +8113,7 @@ dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
-dev-python/feedgenerator 1.9.1 1.9.1-r1: Standalone version of django.utils.feedgenerator
+dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1 6.0.1 6.0.2: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
@@ -8229,7 +8229,7 @@ dev-python/httplib2 0.18.1-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2-r1: HTTP client mock for Python
 dev-python/httpstat 1.3.0: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 8.2: Human friendly output for text interfaces using Python
-dev-python/humanize 2.6.0 3.0.1 3.1.0: Common humanization utilities
+dev-python/humanize 3.0.1 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
@@ -8357,7 +8357,7 @@ dev-python/logbook 1.5.3: A logging replacement for Python
 dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
 dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
-dev-python/loky 2.8.0-r1 2.9.0: Robust and reusable Executor for joblib
+dev-python/loky 2.9.0: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6: A Python implementation of Lunr.js
 dev-python/lxml 4.5.2-r1 4.6.1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.0.2: LZ4 Bindings for Python
@@ -8426,7 +8426,7 @@ dev-python/namespace-zope 1-r1: Namespace package declaration for zope
 dev-python/natsort 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manager
 dev-python/nbclient 0.5.1: A client library for executing Jupyter notebooks
-dev-python/nbconvert 5.6.1 5.6.1-r1 6.0.6 6.0.7: Converting Jupyter Notebooks
+dev-python/nbconvert 5.6.1 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7 5.0.8: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
@@ -8473,10 +8473,10 @@ dev-python/octave_kernel 0.32.0-r1: Jupyter kernel for octave
 dev-python/odfpy 1.3.6: Python API and tools to manipulate OpenDocument files
 dev-python/olefile 0.46 0.46-r1: Python package to parse, read and write Microsoft OLE2 files
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
-dev-python/openpyxl 3.0.3 3.0.5: Pure python reader and writer of Excel OpenXML files
+dev-python/openpyxl 3.0.5: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 2.2.5: Theme and extension support for Sphinx documentation
 dev-python/openstacksdk 0.46.0 0.50.0: A collection of libraries for building applications to work with OpenStack.
-dev-python/opt-einsum 3.0.1 3.0.1-r1: Optimized Einsum: A tensor contraction order optimizer
+dev-python/opt-einsum 3.0.1-r1: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1 4.0.2: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2 3.0.1 4.0.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.32.0 2.1.0: OpenStack Client Configuation Library
@@ -8529,7 +8529,7 @@ dev-python/paramiko 2.7.1 2.7.2: SSH2 protocol library
 dev-python/parsedatetime 2.6: Parse human-readable date/time strings
 dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 1.1.0: Appendable key-value storage
-dev-python/parver 0.3 0.3.1: Parse and manipulate version numbers
+dev-python/parver 0.3.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.2 1.7.4: Password hashing framework supporting over 20 schemes
 dev-python/paste 3.4.6 3.5.0: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 2.1.0 2.1.1: Load, configure, and compose WSGI applications and servers
@@ -8550,8 +8550,8 @@ dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the stat
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
-dev-python/pgspecial 1.11.9 1.11.10: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.9 8.12.11 8.12.12: Python port of Google's libphonenumber
+dev-python/pgspecial 1.11.10: Python implementation of PostgreSQL meta commands
+dev-python/phonenumbers 8.12.11 8.12.12: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5: Pidfile featuring stale detection and file-locking
@@ -8848,7 +8848,7 @@ dev-python/python-magic 0.4.18: Access the libmagic file type identification lib
 dev-python/python-magnumclient 2.12.0 3.2.1: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.27.0 2.3.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.7: Math extension for Python-Markdown
-dev-python/python-memcached 1.59 1.59-r1: Pure python memcached client
+dev-python/python-memcached 1.59-r1: Pure python memcached client
 dev-python/python-mimeparse 1.6.0-r3: Basic functions for handling mime-types in python
 dev-python/python-mistralclient 3.8.1 4.1.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.15.0 2.2.1: A client for the OpenStack Monasca API
@@ -9136,7 +9136,7 @@ dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC 
 dev-python/tld 0.12.2: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/toml 0.10.1-r1: Python library for handling TOML files
-dev-python/toolz 0.10.0 0.11.1: List processing tools and functional utilities
+dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 1.60.1 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.19.0 3.20.1: virtualenv-based automation of test activities
@@ -17232,7 +17232,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.13: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 6.5.0-r2 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 10.2.0-r2 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
+sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 9.3.0-r2 10.2.0-r2 10.2.0-r3 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.3.2 9999: Utility to manage compilers
 sys-devel/gdb 9.2 10.1 9999: GNU debugger
