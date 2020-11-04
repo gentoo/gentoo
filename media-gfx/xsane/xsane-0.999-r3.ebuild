@@ -24,7 +24,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
-	gimp? ( media-gfx/gimp )
+	gimp? ( media-gfx/gimp:0/2 )
 	lcms? ( media-libs/lcms:2 )
 "
 PDEPEND="ocr? ( app-text/gocr )"
