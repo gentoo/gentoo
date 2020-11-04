@@ -9805,7 +9805,7 @@ dev-ruby/crass 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.15.10: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.7.1: Sass-based Stylesheet Framework
-dev-ruby/curb 0.9.10: Ruby-language bindings for libcurl
+dev-ruby/curb 0.9.10 0.9.11: Ruby-language bindings for libcurl
 dev-ruby/curses 1.3.2: Ruby binding for curses, ncurses, and PDCurses
 dev-ruby/d3_rails 4.1.1: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
@@ -10225,7 +10225,7 @@ dev-ruby/selenium-webdriver 3.142.6 3.142.7 3.142.7-r1: This gem provides Ruby b
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
-dev-ruby/serverengine 2.2.1: A framework to implement robust multiprocess servers
+dev-ruby/serverengine 2.2.1 2.2.2: A framework to implement robust multiprocess servers
 dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/settingslogic 2.0.9: A simple configuration / settings solution that uses an ERB enabled YAML file
 dev-ruby/sexp_processor 4.12.0 4.15.0 4.15.1: Processor for s-expressions created as part of the ParseTree project
