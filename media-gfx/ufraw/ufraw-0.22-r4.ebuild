@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/tiff
 	virtual/jpeg:0=
 	fits? ( sci-libs/cfitsio:= )
-	gimp? ( >=media-gfx/gimp-2 )
+	gimp? ( media-gfx/gimp:0/2 )
 	gnome? ( >=gnome-base/gconf-2 )
 	gtk? (
 		>=media-gfx/gtkimageview-1.5
