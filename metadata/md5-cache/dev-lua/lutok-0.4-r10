@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/jmmv/lutok/releases/download/lutok-0.4/lutok-0.4.tar.gz
 _eclasses_=lua-single	9c3e306e0cce4356fa6e662d0561599c	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=aeff5895d022d5e53a10f1f5dd05b35b
+_md5_=e15fa06eb507d22bb7177d3c9e3e16db
