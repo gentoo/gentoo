@@ -20,8 +20,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
-	net-proxy/haproxy"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	python_foreach_impl python_doscript bin/hatop
