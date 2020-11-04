@@ -4,11 +4,11 @@ DESCRIPTION=Tomcat Servlet-3.0/JSP-2.2 Container
 EAPI=7
 HOMEPAGE=https://tomcat.apache.org/
 IUSE=extra-webapps websockets elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=Apache-2.0
 RDEPEND=dev-java/eclipse-ecj:4.5 ~dev-java/tomcat-servlet-api-7.0.106:3.0 virtual/jre >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 RESTRICT=test
 SLOT=7
 SRC_URI=mirror://apache/tomcat/tomcat-7/v7.0.106/src/apache-tomcat-7.0.106-src.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=7eaf9be5aa285b43d08a7e97aebc0152
+_md5_=6c72698c8175310042f5d30d9e20d337
