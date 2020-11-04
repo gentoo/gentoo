@@ -13,12 +13,12 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 	SRC_URI=""
 else
-	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
+	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A graph based image processing framework"
-HOMEPAGE="http://www.gegl.org/"
+HOMEPAGE="https://gegl.org/"
 
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
