@@ -8788,7 +8788,7 @@ dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression te
 dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
-dev-python/pytest-services 2.1.0 2.2.0 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
+dev-python/pytest-services 2.2.0 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
@@ -17016,7 +17016,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20201013 20201028.1 20201103: PAM base configuration files
+sys-auth/pambase 20201103: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
