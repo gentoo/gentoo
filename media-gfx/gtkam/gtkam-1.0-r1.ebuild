@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ RDEPEND="
 	>=media-libs/libgphoto2-2.5.0
 	>=media-libs/libexif-0.3.2
 	media-libs/libexif-gtk
-	gimp? ( >=media-gfx/gimp-2 )
+	gimp? ( media-gfx/gimp:0/2 )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
