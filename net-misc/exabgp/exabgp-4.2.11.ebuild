@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit tmpfiles systemd distutils-r1
 
@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	acct-group/exabgp
 	acct-user/exabgp
-	dev-python/ipaddr[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
@@ -31,6 +30,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/exabgp-4.2.7-paths.patch"
+	"${FILESDIR}/exabgp-4.2.10-ip-path.patch"
 )
 
 python_test() {
