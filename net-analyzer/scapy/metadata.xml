@@ -5,6 +5,10 @@
 		<email>ikelos@gentoo.org</email>
 		<name>Mike Auty</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
