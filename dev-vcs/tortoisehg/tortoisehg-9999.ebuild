@@ -11,13 +11,13 @@ inherit desktop distutils-r1 xdg-utils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SRC_URI="https://www.mercurial-scm.org/release/tortoisehg/targz/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-5.4
-		<dev-vcs/mercurial-5.6"
+	HG_DEPEND=">=dev-vcs/mercurial-5.5
+		<dev-vcs/mercurial-5.7"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 	EHG_REVISION="stable"
-	HG_DEPEND=">=dev-vcs/mercurial-5.4"
+	HG_DEPEND=">=dev-vcs/mercurial-5.5"
 fi
 
 DESCRIPTION="Set of graphical tools for Mercurial"
