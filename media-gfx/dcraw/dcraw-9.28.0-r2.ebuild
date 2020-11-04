@@ -19,7 +19,7 @@ IUSE="nls gimp jpeg lcms"
 COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
-	gimp? ( media-gfx/gimp )
+	gimp? ( media-gfx/gimp:0/2 )
 "
 DEPEND="${COMMON_DEPEND}"
 BDEPEND="
