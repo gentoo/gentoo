@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<use>
-<flag name='ipinfo'>Disable support for IP address lookups</flag>
-<flag name='jansson'>Enable JSON output support through <pkg>dev-libs/jansson</pkg></flag>
-</use>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<use>
+		<flag name='ipinfo'>Disable support for IP address lookups</flag>
+		<flag name='jansson'>Enable JSON output support through <pkg>dev-libs/jansson</pkg></flag>
+	</use>
 </pkgmetadata>
