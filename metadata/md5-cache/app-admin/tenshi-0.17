@@ -7,5 +7,5 @@ LICENSE=ISC
 RDEPEND=dev-lang/perl dev-perl/IO-BufferedSelect sys-apps/coreutils
 SLOT=0
 SRC_URI=https://github.com/inversepath/tenshi/archive/0.17.tar.gz -> tenshi-0.17.tar.gz
-_eclasses_=user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=user	7d67a631c7e23b5232db99bca019ebaf	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=0a683653962683fe9310fcfec6553b6d
