@@ -445,11 +445,6 @@
     <name>Bug Wranglers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Bug-wranglers</url>
     <description>The Gentoo Bug Wranglers Project elaborates how to proceed with bugs on the Gentoo bug tracker.</description>
-    <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>Developer</role>
-    </member>
     <member is-lead="1">
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
@@ -767,10 +762,6 @@
     <name>Debian Tools Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Debian_Tools</url>
     <description>Maintains tools used to build Debian-like distributions and related packages.</description>
-    <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-    </member>
   </project>
   <project>
     <email>desktop-misc@gentoo.org</email>
@@ -778,13 +769,14 @@
     <url>https://wiki.gentoo.org/wiki/Project:Desktop_Miscellaneous</url>
     <description>Maintains various small utilities for X11 that do not fit any other category.</description>
     <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-    </member>
-    <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
       <role>Developer</role>
+    </member>
+    <member>
+      <email>jstein@gentoo.org</email>
+      <name>Jonas Stein</name>
+      <role>helping to dissolve desktop-misc properly</role>
     </member>
   </project>
   <project>
@@ -1396,11 +1388,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:HPPA</url>
     <description>The Gentoo HPPA project is designed to bring the Gentoo GNU/Linux operating system to the HP Precision Architecture platforms. We aim to provide a usable computing environment for your various HPPA related endeavors.</description>
     <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>Member (security)</role>
-    </member>
-    <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
     </member>
@@ -1950,10 +1937,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:LiveCD</url>
     <description>Maintains packages used in the creation of LiveCDs.</description>
     <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-    </member>
-    <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
     </member>
@@ -2178,11 +2161,6 @@
     <name>Gentoo network monitoring and analysis project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Netmon</url>
     <description>Maintaining network monitoring and analysis libraries and programs</description>
-    <member is-lead="1">
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -2272,11 +2250,6 @@
     <name>The #gentoo Operators Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Ops</url>
     <description>The &lt;span style="font-family: monospace; font-size: 95%;"&gt;[irc://irc.gentoo.org/gentoo #gentoo]&lt;/span&gt; Operators project describes the tasks and policies carried out by the operators of the #gentoo channel on the Freenode network.</description>
-    <member is-lead="1">
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>Lead, Operator</role>
-    </member>
     <member>
       <email>neddyseagoon@gentoo.org</email>
       <name>Roy Bamford</name>
@@ -2553,11 +2526,6 @@
       <email>gyakovlev@gentoo.org</email>
       <name>Georgy Yakovlev</name>
       <role>everything ppc64/openpower</role>
-    </member>
-    <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>packages</role>
     </member>
     <member>
       <email>lu_zero@gentoo.org</email>
@@ -3226,11 +3194,6 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Member ( Security bugs primarily )</role>
-    </member>
-    <member>
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>Member ( Porting )</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
