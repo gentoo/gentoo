@@ -17,7 +17,7 @@ SRC_URI="https://github.com/linsomniac/python-memcached/archive/${PV}.tar.gz -> 
 
 LICENSE="OSL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="
