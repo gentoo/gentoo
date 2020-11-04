@@ -3,9 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-2 )
-
-inherit autotools desktop lua-single xdg
+inherit autotools desktop xdg
 
 DESCRIPTION="Music player for a wide range of formats designed for gapless playback"
 HOMEPAGE="http://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
@@ -37,7 +35,7 @@ RDEPEND="
 	ladspa? ( media-libs/liblrdf )
 	lame? ( media-sound/lame )
 	libsamplerate? ( media-libs/libsamplerate )
-	lua? ( ${LUA_DEPS} )
+	lua? ( dev-lang/lua:0= )
 	mac? ( media-sound/mac )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( media-libs/libmad )
@@ -51,6 +49,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-ifp.patch"
+)
 
 src_configure() {
 	econf \
