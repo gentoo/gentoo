@@ -39,7 +39,7 @@ DEPEND="
 	media-gfx/sane-backends
 	virtual/libusb:1
 	virtual/udev
-	gimp? ( media-gfx/gimp:2 )
+	gimp? ( media-gfx/gimp:0/2 )
 	X? (
 		dev-libs/glib:2
 		media-libs/libpng:=
