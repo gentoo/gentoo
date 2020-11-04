@@ -5,6 +5,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<longdescription>
 		Chrony is a pair of programs (chronyd and chronyc) which are used to maintain
 		the accuracy of the system clock on a computer. chronyd has been specifically
