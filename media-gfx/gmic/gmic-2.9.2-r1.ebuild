@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	)
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	gimp? (
-		>=media-gfx/gimp-2.8.0
+		media-gfx/gimp:0/2
 		${QT_DEPEND}
 	)
 	graphicsmagick? ( media-gfx/graphicsmagick:0= )
