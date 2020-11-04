@@ -4857,7 +4857,7 @@ dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1 0.95-r2: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
-dev-java/maven-bin 3.0.5-r1 3.1.1-r1 3.2.5-r1 3.3.9-r1 3.6.2 3.6.3: Project Management and Comprehension Tool for Java
+dev-java/maven-bin 3.0.5-r1 3.1.1-r1 3.2.5-r1 3.3.9-r1 3.6.3: Project Management and Comprehension Tool for Java
 dev-java/maven-hawtjni-plugin 1.15: Maven plugin for the HawtJNI code generator (resources only)
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
@@ -4980,7 +4980,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.24 1.2.25: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.105 7.0.106 8.5.57 8.5.58 8.5.59 9.0.37 9.0.38: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.106 8.5.57 8.5.58 8.5.59 9.0.37 9.0.38: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -13721,7 +13721,7 @@ media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/kid3 3.8.3 3.8.4: Simple tag editor based on Qt
+media-sound/kid3 3.8.4: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r3: LAME Ain't an MP3 Encoder
@@ -13828,7 +13828,7 @@ media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.6.3 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.4.1 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
@@ -18006,7 +18006,7 @@ www-servers/servefile 0.4.4_p20200211 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.105-r1 7.0.106 8.5.58 8.5.59 9.0.38: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.106 8.5.58 8.5.59 9.0.38: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
