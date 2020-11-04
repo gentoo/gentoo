@@ -15,4 +15,7 @@
 			application so the TortoiseHg tools 
 			can be used on non-Windows platforms.
 	</longdescription>
+	<upstream>
+		<remote-id type="heptapod">mercurial/tortoisehg/thg</remote-id>
+	</upstream>
 </pkgmetadata>
