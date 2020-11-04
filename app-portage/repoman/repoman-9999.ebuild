@@ -50,7 +50,7 @@ python_install() {
 }
 
 pkg_postinst() {
-	if [[ -z {REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog ""
 		elog "This release of repoman is from the new portage/repoman split"
 		elog "release code base."
