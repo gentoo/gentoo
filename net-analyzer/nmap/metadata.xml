@@ -5,6 +5,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Hüttel</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
