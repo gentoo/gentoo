@@ -15014,7 +15014,7 @@ net-misc/etherdfs 20180203-r1: An ethernet-based file system for DOS
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
 net-misc/ethflop 20191003: A network-backed floppy emulator for DOS
 net-misc/eventd 0.27.0-r1: A small daemon to act on remote or local events
-net-misc/exabgp 4.2.7-r3: The BGP swiss army knife of networking
+net-misc/exabgp 4.2.11: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
