@@ -33,9 +33,13 @@ pkg_setup() {
 
 src_configure() {
 	lua_setup
-	lua_get_CFLAGS >/dev/null
-	lua_get_LIBS >/dev/null
-	econf --enable-shared --disable-static
+	local myconf=(
+		--enable-shared
+		--disable-static
+		LUA_CFLAGS="$(lua_get_CFLAGS)"
+		LUA_LIBS="$(lua_get_LIBS)"
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {
