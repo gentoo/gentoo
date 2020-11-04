@@ -27,7 +27,7 @@ CDEPEND="
 	dev-lang/perl
 	readline? ( sys-libs/readline:0= )
 	cups? ( >=net-print/cups-1.1.14 )
-	gimp? ( <media-gfx/gimp-9999:2 x11-libs/gtk+:2 )
+	gimp? ( media-gfx/gimp:0/2 x11-libs/gtk+:2 )
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl )
 "
