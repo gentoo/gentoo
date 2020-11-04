@@ -12945,7 +12945,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.6.0-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.3.0: Graphics library for fast image creation
-media-libs/gegl 0.4.24 0.4.26 9999: A graph based image processing framework
+media-libs/gegl 0.4.24 0.4.26 0.4.26-r1 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 0.12.0-r1 0.12.1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
@@ -14834,6 +14834,7 @@ net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.11 0.2.12 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
+net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
