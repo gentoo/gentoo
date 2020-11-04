@@ -68,11 +68,9 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 REQUIRED_USE="
-	pam? ( !skey )
-	skey? ( !pam )
+	?? ( pam skey )
+	?? ( gcrypt ssl )
 "
-
-REQUIRED_USE="?? ( gcrypt ssl )"
 
 MAKEOPTS+=" SAMPLES="
 
