@@ -16,7 +16,7 @@ REQUIRED_USE="gimp? ( gtk )"
 
 DEPEND="
 	media-gfx/sane-backends
-	gimp? ( media-gfx/gimp:2 )
+	gimp? ( media-gfx/gimp:0/2 )
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:2
