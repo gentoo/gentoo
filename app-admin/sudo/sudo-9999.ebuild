@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam multilib libtool tmpfiles
+inherit pam multilib libtool systemd tmpfiles
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -49,7 +49,7 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	sssd? ( sys-auth/sssd[sudo(+)] )
+	sssd? ( sys-auth/sssd[sudo] )
 "
 RDEPEND="
 	${DEPEND}
@@ -62,13 +62,14 @@ RDEPEND="
 "
 BDEPEND="
 	sys-devel/bison
+	virtual/pkgconfig
 "
 
 S="${WORKDIR}/${MY_P}"
 
 REQUIRED_USE="
-	pam? ( !skey )
-	skey? ( !pam )
+	?? ( pam skey )
+	?? ( gcrypt ssl )
 "
 
 MAKEOPTS+=" SAMPLES="
@@ -198,6 +199,7 @@ src_install() {
 	fi
 
 	pamd_mimic system-auth sudo auth account session
+	pamd_mimic system-auth sudo-i auth account session
 
 	keepdir /var/db/sudo/lectured
 	fperms 0700 /var/db/sudo/lectured
