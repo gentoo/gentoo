@@ -7,14 +7,14 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
-inherit bash-completion-r1 distutils-r1 optfeature
+inherit bash-completion-r1 distutils-r1 optfeature verify-sig
 
-MY_PN="Django"
-MY_P="${MY_PN}-${PV}"
-
+MY_P=${P^}
 DESCRIPTION="High-level Python web framework"
 HOMEPAGE="https://www.djangoproject.com/ https://pypi.org/project/Django/"
-SRC_URI="https://www.djangoproject.com/m/releases/$(ver_cut 1-2)/${MY_P}.tar.gz"
+SRC_URI="
+	https://media.djangoproject.com/releases/$(ver_cut 1-2)/${MY_P}.tar.gz
+	verify-sig? ( https://media.djangoproject.com/pgp/${MY_P}.checksum.txt )"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
@@ -43,7 +43,9 @@ BDEPEND="
 		dev-python/selenium[${PYTHON_USEDEP}]
 		dev-python/tblib[${PYTHON_USEDEP}]
 		sys-devel/gettext
-	)"
+	)
+	verify-sig? ( app-crypt/openpgp-keys-django )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.7-bashcomp.patch
@@ -51,6 +53,19 @@ PATCHES=(
 )
 
 distutils_enable_sphinx docs --no-autodoc
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/django.asc
+
+src_unpack() {
+	if use verify-sig; then
+		cd "${DISTDIR}" || die
+		verify-sig_verify_signed_checksums \
+			"${MY_P}.checksum.txt" sha256 "${MY_P}.tar.gz"
+		cd "${WORKDIR}" || die
+	fi
+
+	default
+}
 
 python_test() {
 	# Tests have non-standard assumptions about PYTHONPATH,
