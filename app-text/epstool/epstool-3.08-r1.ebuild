@@ -6,7 +6,7 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Creates or extracts preview images in EPS files, fixes bounding boxes"
-HOMEPAGE="http://www.cs.wisc.edu/~ghost/gsview/epstool.htm"
+HOMEPAGE="http://www.ghostgum.com.au/software/epstool.htm"
 SRC_URI="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${P}.tar.gz"
 
 LICENSE="GPL-2"
