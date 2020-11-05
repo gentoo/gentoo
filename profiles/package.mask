@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Benda Xu <heroxbd@gentoo.org> (2020-11-09)
+# sci-libs/mkl-rt is now subsumed by the updated sci-libs/mkl package
+# which also provides development header files and pkgconfig files
+# Removal in 30 days. Bug #747310.
+sci-libs/mkl-rt
+
 # Matt Turner <mattst88@gentoo.org> (2020-11-08)
 # Uninstallable because of fetch restriction and dead download link.
 # Removal in 30 days.  Bug #725646.
