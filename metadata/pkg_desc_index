@@ -2934,7 +2934,7 @@ app-text/pdfminer 20191020: Python tool for extracting information from PDF docu
 app-text/pdfsandwich 0.1.7: generator of sandwich OCR pdf files
 app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
-app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 4.2.0 9999: A tool to generate a static blog, with restructured text or markdown input files
+app-text/pelican 4.2.0 4.5.1 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.60 0.61: Tools to ease the translation of documentation
