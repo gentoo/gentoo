@@ -257,7 +257,7 @@ app-editors/gvim luajit racket
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Doesn't work on most profiles. Easier to mask here and
 # unmask in particular profiles
-sys-apps/hwloc gl
+sys-apps/hwloc gl nvml
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Requires net-dns/unbound which is not keyworded by most arches
