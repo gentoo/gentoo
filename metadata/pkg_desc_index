@@ -16310,7 +16310,7 @@ sci-mathematics/lrcalc 1.2: Littlewood-Richardson Calculator
 sci-mathematics/mathematica 10.3.1-r1 12.1.0 12.1.1-r1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.38.1 5.42.1 5.42.2 5.43.2 5.44.0: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.42.1 5.42.2 5.43.2 5.44.0: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.51-r1 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and digraphs
@@ -16407,7 +16407,7 @@ sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.55-r4 2.56: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
-sci-visualization/labplot 2.7.0 2.8.0 9999: Scientific data analysis and visualisation based on KDE Frameworks
+sci-visualization/labplot 2.8.0 9999: Scientific data analysis and visualisation based on KDE Frameworks
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
 sci-visualization/paraview 5.8.0-r3 5.8.1: Powerful scientific data visualization application
@@ -17936,7 +17936,7 @@ www-client/firefox 78.4.0 82.0 82.0.1 82.0.2: Firefox Web Browser
 www-client/firefox-bin 78.4.0 82.0.1 82.0.2: Firefox Web Browser
 www-client/google-chrome 86.0.4240.183: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.47: The web browser from Google
-www-client/google-chrome-unstable 88.0.4300.0: The web browser from Google
+www-client/google-chrome-unstable 88.0.4315.5: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
@@ -17979,7 +17979,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.445: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 86.0.4240.183 87.0.4280.47_beta 88.0.4300.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.183 87.0.4280.47_beta 88.0.4315.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
