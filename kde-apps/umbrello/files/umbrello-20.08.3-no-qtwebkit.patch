@@ -1,55 +1,43 @@
-From 0500feddb6ff02cd42624b0d3018c5292481b031 Mon Sep 17 00:00:00 2001
+From eb753a7eb0f49c6ac5b349f81387ca4b4c64342b Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Mon, 12 Oct 2020 11:46:24 +0200
-Subject: [PATCH] Disable defunct WelcomePage to get rid of QtWebKit
+Subject: [PATCH] Make QtWebKit usage in WelcomePage optional, with
+ QTextBrowser fallback
+
+Thanks-to: Ralf Habacker <ralf.habacker@freenet.de> for QTextBrowser fallback code.
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- CMakeLists.txt                    | 1 -
- cmake/modules/ECMKDE4Macros.cmake | 2 +-
- umbrello/CMakeLists.txt           | 2 --
- umbrello/uml.cpp                  | 2 +-
- umbrello/umlappprivate.h          | 5 ++++-
- 5 files changed, 6 insertions(+), 6 deletions(-)
+ CMakeLists.txt                    |  7 ++++++-
+ umbrello/CMakeLists.txt           |  4 +++-
+ umbrello/umlappprivate.h          | 13 +++++++++++++
+ 3 files changed, 22 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d2d897683..ac70ffe4e 100644
+index 398415f09..7144f0990 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -89,7 +89,6 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+@@ -95,9 +95,14 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
      Test
      Widgets
      Xml
 -    WebKitWidgets
  )
  
++find_package(Qt5WebKitWidgets ${QT_MIN_VERSION})
++if(Qt5WebKitWidgets_FOUND)
++    add_definitions(-DWEBKIT_WELCOMEPAGE)
++    set(WEBKIT_WELCOMEPAGE 1)
++endif()
++
  # search packages used by KDE
-diff --git a/cmake/modules/ECMKDE4Macros.cmake b/cmake/modules/ECMKDE4Macros.cmake
-index 3de472295..28eb1c180 100644
---- a/cmake/modules/ECMKDE4Macros.cmake
-+++ b/cmake/modules/ECMKDE4Macros.cmake
-@@ -106,7 +106,7 @@ macro(find_package package)
-     #message("-- ${ARGV} --")
-     if("${package}" MATCHES "^(Qt5)")
-         #message("-- replaced by finding Qt4 --")
--        _find_package(Qt4 4.4.3 REQUIRED QtCore QtGui QtXml QtTest QtWebKit)
-+        _find_package(Qt4 4.4.3 REQUIRED QtCore QtGui QtXml QtTest)
-     elseif("${package}" MATCHES "^(KF5)$")
-         #message("-- replaced by finding KDE4 --")
-         _find_package(KDE4 REQUIRED)
+ find_package(KF5 REQUIRED COMPONENTS
+     Archive
 diff --git a/umbrello/CMakeLists.txt b/umbrello/CMakeLists.txt
-index 264b25fde..22480642d 100644
+index 264b25fde..f3286ae46 100644
 --- a/umbrello/CMakeLists.txt
 +++ b/umbrello/CMakeLists.txt
-@@ -525,7 +525,6 @@ if(NOT BUILD_KF5)
-         Qt4::QtCore
-         Qt4::QtGui
-         Qt4::QtXml
--        Qt4::QtWebKit
-         ${LIBXML2_LIBRARIES}
-         ${LIBXSLT_LIBRARIES}
-         ${KDE4_KTEXTEDITOR_LIBS}
-@@ -549,7 +548,6 @@ else()
+@@ -549,7 +551,6 @@ else()
          Qt5::Xml
          Qt5::PrintSupport
          Qt5::Svg
@@ -57,49 +45,55 @@ index 264b25fde..22480642d 100644
          KF5::Archive
          KF5::Completion
          KF5::CoreAddons
-diff --git a/umbrello/uml.cpp b/umbrello/uml.cpp
-index 1e0be0c5a..98ce70aef 100644
---- a/umbrello/uml.cpp
-+++ b/umbrello/uml.cpp
-@@ -996,7 +996,7 @@ void UMLApp::initView()
-     m_d->createObjectsWindow();
- #endif
-     m_d->createStereotypesWindow();
--    m_d->createWelcomeWindow();
-+//    m_d->createWelcomeWindow();
- 
-     m_debugDock = new QDockWidget(i18n("&Debug"), this);
-     m_debugDock->setObjectName(QLatin1String("DebugDock"));
+@@ -565,6 +566,9 @@ else()
+         ${LIBXML2_LIBRARIES}
+         codeimport
+     )
++    if(WEBKIT_WELCOMEPAGE)
++        target_link_libraries(libumbrello Qt5::WebKitWidgets)
++    endif()
+     ecm_add_app_icon(umbrello_SRCS
+         ICONS
+         ${CMAKE_CURRENT_SOURCE_DIR}/pics/global/16-apps-umbrello.png
 diff --git a/umbrello/umlappprivate.h b/umbrello/umlappprivate.h
-index a85de1f22..b9d50a5c1 100644
+index a85de1f22..a7212cc8d 100644
 --- a/umbrello/umlappprivate.h
 +++ b/umbrello/umlappprivate.h
-@@ -42,7 +42,7 @@
+@@ -42,7 +42,11 @@
  #include <QFileInfo>
  #include <QListWidget>
  #include <QObject>
--#include <QWebView>
-+// #include <QWebView>
++#ifdef WEBKIT_WELCOMEPAGE
+ #include <QWebView>
++#else
++#include <QTextBrowser>
++#endif
  
  class QWidget;
  
-@@ -151,6 +151,8 @@ public slots:
- 
-     void createWelcomeWindow()
-     {
-+        return;
-+/*
-         QString file = findWelcomeFile();
-         if (file.isEmpty())
-             return;
-@@ -171,6 +173,7 @@ public slots:
+@@ -160,6 +164,7 @@ public slots:
+         // qDebug() << html;
+         welcomeWindow = new QDockWidget(i18n("Welcome"), parent);
+         welcomeWindow->setObjectName(QLatin1String("WelcomeDock"));
++#ifdef WEBKIT_WELCOMEPAGE
+         QWebView *view = new QWebView;
+         view->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
+         view->setContextMenuPolicy(Qt::NoContextMenu);
+@@ -167,6 +172,14 @@ public slots:
+         view->setHtml(html);
+         view->show();
+         welcomeWindow->setWidget(view);
++#else
++        QTextBrowser *tb = new QTextBrowser(dynamic_cast<QWidget*>(this));
++        tb->setOpenExternalLinks(true);
++        tb->setOpenLinks(false);
++        tb->setHtml(html);
++        connect(tb, SIGNAL(anchorClicked(const QUrl)), this, SLOT(slotWelcomeWindowLinkClicked(const QUrl)));
++        welcomeWindow->setWidget(tb);
++#endif
+         parent->addDockWidget(Qt::RightDockWidgetArea, welcomeWindow);
  
          viewWelcomeWindow = parent->actionCollection()->add<KToggleAction>(QLatin1String("view_show_welcome"));
-         connect(viewWelcomeWindow, SIGNAL(triggered(bool)), welcomeWindow, SLOT(setVisible(bool)));
-+*/
-     }
- 
-     void slotWelcomeWindowLinkClicked(const QUrl &url)
 -- 
-2.28.0
+2.29.2
 
