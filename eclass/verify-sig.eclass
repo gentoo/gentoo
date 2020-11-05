@@ -111,6 +111,42 @@ verify-sig_verify_detached() {
 		die "PGP signature verification failed"
 }
 
+# @FUNCTION: verify-sig_verify_message
+# @USAGE: <file> <output-file> [<key-file>]
+# @DESCRIPTION:
+# Verify that the file ('-' for stdin) contains a valid, signed PGP
+# message and write the message into <output-file> ('-' for stdout).
+# <key-file> can either be passed directly, or it defaults
+# to VERIFY_SIG_OPENPGP_KEY_PATH.  The function dies if verification
+# fails.  Note that using output from <output-file> is important as it
+# prevents the injection of unsigned data.
+verify-sig_verify_message() {
+	local file=${1}
+	local output_file=${2}
+	local key=${3:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+
+	[[ -n ${key} ]] ||
+		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+
+	local extra_args=()
+	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
+	[[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]] && extra_args+=(
+		--keyserver "${VERIFY_SIG_OPENPGP_KEYSERVER}"
+	)
+
+	# GPG upstream knows better than to follow the spec, so we can't
+	# override this directory.  However, there is a clean fallback
+	# to GNUPGHOME.
+	addpredict /run/user
+
+	local filename=${file##*/}
+	[[ ${file} == - ]] && filename='(stdin)'
+	einfo "Verifying ${filename} ..."
+	gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
+		gpg --verify --output="${output_file}" "${sig}" "${file}" ||
+		die "PGP signature verification failed"
+}
+
 # @FUNCTION: verify-sig_src_unpack
 # @DESCRIPTION:
 # Default src_unpack override that verifies signatures for all
