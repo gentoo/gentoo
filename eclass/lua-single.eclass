@@ -31,6 +31,36 @@
 # Note that since this eclass always inherits lua-utils as well, in ebuilds
 # using the former there is no need to explicitly inherit the latter in order
 # to use helper functions such as lua_get_CFLAGS.
+#
+# @EXAMPLE:
+# @CODE
+# EAPI=7
+#
+# LUA_COMPAT=( lua5-{1..3} )
+#
+# inherit lua-single
+#
+# [...]
+#
+# REQUIRED_USE="${LUA_REQUIRED_USE}"
+# DEPEND="${LUA_DEPS}"
+# RDEPEND="${DEPEND}
+#     $(lua_get_cond_dep '
+#         dev-lua/foo[${LUA_USEDEP}]
+#     ')
+# "
+# BDEPEND="virtual/pkgconfig"
+#
+# # Only neeed if the setup phase has to do more than just call lua-single_pkg_setup
+# pkg_setup() {
+#     lua-single_pkg_setup
+#     [...]
+# }
+#
+# src_install() {
+#     emake LUA_VERSION="$(lua_get_version)" install
+# }
+# @CODE
 
 case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
@@ -122,7 +152,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # RDEPEND="${LUA_DEPS}
-#   dev-foo/mydep"
+#     dev-foo/mydep"
 # DEPEND="${RDEPEND}"
 # @CODE
 #
@@ -351,7 +381,7 @@ _lua_verify_patterns() {
 # @CODE
 # LUA_COMPAT=( lua5-{1..3} )
 # RDEPEND="$(lua_gen_cond_dep \
-#   'dev-lua/backported_core_module[${LUA_USEDEP}]' lua5-1 lua5-2 )"
+#     'dev-lua/backported_core_module[${LUA_USEDEP}]' lua5-1 lua5-2 )"
 # @CODE
 #
 # It will cause the variable to look like:
