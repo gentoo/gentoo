@@ -2146,7 +2146,7 @@ app-i18n/ibus-m17n 1.4.2 1.4.3: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-rime 1.2 1.3.0 1.4.0: Chinese Rime Input Method Engine for IBus
 app-i18n/ibus-skk 1.4.2 1.4.3: Japanese SKK engine for IBus
-app-i18n/ibus-sunpinyin 2.0.4_pre20200306162733 3.0.0_rc1-r1: Chinese SunPinyin engine for IBus
+app-i18n/ibus-sunpinyin 2.0.4_pre20200306162733: Chinese SunPinyin engine for IBus
 app-i18n/ibus-table 1.9.21-r2 1.11.0 1.12.0 1.12.1: Tables engines for IBus
 app-i18n/ibus-table-chinese 1.8.2 1.8.3: Chinese tables for IBus-Table
 app-i18n/ibus-table-extraphrase 1.3.9.20110826: Chinese extra phrases for IBus-Table
@@ -2205,7 +2205,7 @@ app-i18n/skk-jisyo 201905 202005 999999: Jisyo (dictionary) files for the SKK Ja
 app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20170305 1.3.4: SKK utilities to manage dictionaries
-app-i18n/sunpinyin 2.0.4_pre20200306162733 3.0.0_rc1: A Statistical Language Model based Chinese input method library
+app-i18n/sunpinyin 2.0.4_pre20200306162733: Statistical Language Model (SLM) based Chinese input method library
 app-i18n/sunpinyin-data 20130220 20140820: Data sets for SunPinyin
 app-i18n/tagainijisho 1.2.0_pre20200118132551_p20200701_p20200701 1.2.0_pre20200118132551_p20201001_p20201001 9999: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
@@ -2220,7 +2220,7 @@ app-i18n/unicode-cldr 33.0 35.1 37.0: Unicode Common Locale Data Repository
 app-i18n/unicode-data 12.0.0 12.1.0 13.0.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 11.0 12.0 13.0: UTS #51 Unicode Emoji
 app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
-app-i18n/xsunpinyin 2.0.4_pre20200306162733 3.0.0_rc1: A standalone XIM server for SunPinyin
+app-i18n/xsunpinyin 2.0.4_pre20200306162733: Standalone XIM server for SunPinyin
 app-i18n/xvnkb 0.2.9a-r1: Vietnamese input keyboard for X
 app-i18n/yaskkserv 1.1.1-r1: Yet Another SKK server
 app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine learning
@@ -7918,8 +7918,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 9999: The AWS SDK for Python
-dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 1.16.12 9999: The AWS SDK for Python
+dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 1.19.12 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -10390,7 +10390,7 @@ dev-tcltk/itk 3.4.1 4.0.0 4.0.1 4.1.0: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
-dev-tcltk/snack 2.2.10-r8 2.2.10-r9: The Snack Sound Toolkit (Tcl)
+dev-tcltk/snack 2.2.10-r9: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8 6.3 6.8: Multi-Column Listbox Package
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.19 1.20: Tcl Standard Library
@@ -15447,7 +15447,7 @@ net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20200908: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
-net-wireless/aircrack-ng 1.5.2 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
+net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r3 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
@@ -17453,8 +17453,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.4.74-r1 5.4.75 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.8.18-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3 5.9.3-r1 5.9.4: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.4.74-r1 5.4.75 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.8.18-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3 5.9.3-r1 5.9.4 5.9.6: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.9.236 4.9.240 4.9.241 4.14.198 4.14.202 4.14.203 4.14.204 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17469,7 +17469,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2: Linux kernel fork that includ
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.204 4.19.155 5.4.75 5.8.17 5.9.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
