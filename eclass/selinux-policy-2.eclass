@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -7,7 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -75,8 +75,8 @@
 : ${SELINUX_GIT_BRANCH:="master"};
 
 case "${EAPI:-0}" in
-	0|1|2|3|4) die "EAPI<5 is not supported";;
-	5|6) : ;;
+	0|1|2|3|4|5) die "EAPI<6 is not supported";;
+	6|7) : ;;
 	*) die "unknown EAPI" ;;
 esac
 
@@ -86,10 +86,6 @@ case ${BASEPOL} in
 			EGIT_BRANCH="${SELINUX_GIT_BRANCH}";
 			EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy";;
 esac
-
-if [[ ${EAPI:-0} == 5 ]]; then
-	inherit eutils
-fi
 
 IUSE=""
 
@@ -117,9 +113,15 @@ else
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${PV}"
 fi
-DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/checkpolicy-2.0.21"
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND="${RDEPEND}
+		sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+else
+	DEPEND="${RDEPEND}"
+	BDEPEND="sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+fi
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
 
@@ -156,25 +158,13 @@ selinux-policy-2_src_prepare() {
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
 		cd "${S}"
-		if [[ ${EAPI:-0} == 5 ]]; then
-			EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
-			EPATCH_SUFFIX="patch" \
-			EPATCH_SOURCE="${WORKDIR}" \
-			EPATCH_FORCE="yes" \
-			epatch
-		else
-			einfo "Applying SELinux policy updates ... "
-			eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
-		fi
+		einfo "Applying SELinux policy updates ... "
+		eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
 
-	# Call in epatch_user. We do this early on as we start moving
+	# Call in eapply_user. We do this early on as we start moving
 	# files left and right hereafter.
-	if [[ ${EAPI:-0} == 5 ]]; then
-		epatch_user
-	else
-		eapply_user
-	fi
+	eapply_user
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" == "declare -a"* ]] ||
@@ -189,17 +179,10 @@ selinux-policy-2_src_prepare() {
 
 	# Apply the additional patches refered to by the module ebuild.
 	# But first some magic to differentiate between bash arrays and strings
-	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]] ||
-	   [[ -n ${POLICY_PATCH} ]]; then
-		cd "${S}/refpolicy/policy/modules"
-		for POLPATCH in ${POLICY_PATCH[@]};
-		do
-			if [[ ${EAPI:-0} == 5 ]]; then
-				epatch "${POLPATCH}"
-			else
-				eapply "${POLPATCH}"
-			fi
-		done
+	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]]; then
+		[[ -n ${POLICY_PATCH[*]} ]] && eapply -d "${S}/refpolicy/policy/modules" "${POLICY_PATCH[@]}"
+	else
+		[[ -n ${POLICY_PATCH} ]] && eapply -d "${S}/refpolicy/policy/modules" ${POLICY_PATCH}
 	fi
 
 	# Collect only those files needed for this particular module
