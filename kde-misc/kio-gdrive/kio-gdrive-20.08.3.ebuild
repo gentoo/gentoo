@@ -17,7 +17,7 @@ HOMEPAGE="https://apps.kde.org/en/kio_gdrive"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+kaccounts"
 
 BDEPEND="dev-util/intltool"
