@@ -2958,7 +2958,7 @@ app-text/reed 5.4: This is a text pager (text file viewer), used to display etex
 app-text/refbase 0.9.6_p20180223: Web-based solution for managing scientific literature, references and citations
 app-text/restview 2.9.2: reStructuredText viewer
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
-app-text/rnc2rng 2.6.1 2.6.2: RELAX NG Compact to regular syntax conversion library
+app-text/rnc2rng 2.6.1 2.6.2 2.6.4: RELAX NG Compact to regular syntax conversion library
 app-text/rnv 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.43 4.99.43-r1: Automating Software Documentation
 app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
@@ -5158,7 +5158,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r2 1.73.0-r1 1.74.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.15.0 2.16.0: C++ crypto library
+dev-libs/botan 2.15.0 2.16.0 2.17.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.20.1: Blocking, shuffling and lossless compression library
@@ -17455,7 +17455,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.4.74-r1 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.8.18-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3 5.9.3-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.9.236 4.9.240 4.9.241 4.14.198 4.14.202 4.14.203 4.14.204 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3: Full sources including the Gentoo patchset for the 5.9 kernel tree
+sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.9.236 4.9.240 4.9.241 4.14.198 4.14.202 4.14.203 4.14.204 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3 5.9.4: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18069,7 +18069,7 @@ x11-apps/xinit 1.4.1: X Window System initializer
 x11-apps/xinput 1.6.3: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r2: A generic touchscreen calibration program for X.Org
 x11-apps/xisxwayland 1 9999: Tool to determine whether the X server in use is Xwayland
-x11-apps/xkbcomp 1.4.3: XKB keyboard description compiler
+x11-apps/xkbcomp 1.4.3 1.4.4: XKB keyboard description compiler
 x11-apps/xkbevd 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.5: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
