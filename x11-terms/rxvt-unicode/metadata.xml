@@ -7,6 +7,12 @@
 	</maintainer>
 	<!-- co-maintainers welcome! -->
 <use>
+<flag name="24-bit-color">Enable 24-bit color support. Note that this feature
+	is unofficial, may cause visual glitches due to the fact there is no
+	termcap/terminfo definition for rxvt-unicode-24bit yet so it is necessary
+	to use the one for 256 colours, visibly increases memory usage, and might
+	slow urxvt down dramatically when more than six fonts are in use in a terminal
+	instance.</flag>
 <flag name="256-color">Enable 256 color support</flag>
 <flag name="blink">Enable blinking text</flag>
 <flag name="fading-colors">Enable colors fading when off focus</flag>
