@@ -81,7 +81,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.15.0-disable-fatal-warnings.patch" ) # bug 695446
+PATCHES=(
+	"${FILESDIR}/${PN}-5.15.0-disable-fatal-warnings.patch" # bug 695446
+	"${FILESDIR}/${P}-icu-68.patch" # bug 751997
+)
 
 src_prepare() {
 	if use ppc64; then
