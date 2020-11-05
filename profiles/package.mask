@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-05)
+# Replaced by kde-frameworks/kdav, masked for removal in 14 days.
+kde-apps/kdav
+
 # Dirkjan Ochtman <djc@gentoo.org> (2020-11-05)
 # Incorrect DISTUTILS_USE_SETUPTOOLS value, dead upstream.
 # Removal in 30 days. Bug #748063
