@@ -355,6 +355,7 @@ dev-lua/luacrypto
 >=dev-lua/lutok-0.4-r10
 >=dev-lua/messagepack-0.3.2-r100
 >=dev-lua/toluapp-1.0.93_p20190513-r100
+>=dev-util/geany-plugins-1.37-r100
 >=games-engines/love-0.7.2-r100:0.7
 >=games-engines/love-0.8.0-r100:0.8
 >=games-engines/love-11.3-r100:0
