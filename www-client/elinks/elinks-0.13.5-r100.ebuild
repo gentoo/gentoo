@@ -6,17 +6,17 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 LUA_COMPAT=( lua5-{1,2} )
 
-inherit autotools git-r3 lua-single python-any-r1
-
-EGIT_REPO_URI="https://github.com/rkd77/felinks"
+inherit autotools lua-single python-any-r1
 
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
+SRC_URI="https://github.com/rkd77/felinks/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/felinks-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="bittorrent brotli bzip2 debug finger ftp gopher gnutls gpm guile idn ipv6
 	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -50,13 +50,8 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-parallel-make.patch
+	"${FILESDIR}"/${PN}-9999-parallel-make.patch
 )
-
-src_unpack() {
-	default
-	git-r3_src_unpack
-}
 
 src_prepare() {
 	default
