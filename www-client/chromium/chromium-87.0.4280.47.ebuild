@@ -230,7 +230,6 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-87-ozone-deps.patch"
 		"${FILESDIR}/chromium-87-webcodecs-deps.patch"
-		"${FILESDIR}/chromium-87-xproto-crash.patch"
 	)
 
 	if use vaapi; then
