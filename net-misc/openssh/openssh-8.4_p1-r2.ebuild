@@ -320,8 +320,16 @@ src_configure() {
 		$(use_with !elibc_Cygwin hardening) #659210
 	)
 
-	# stackprotect is broken on musl x86 and ppc
-	use elibc_musl && ( use x86 || use ppc ) && myconf+=( --without-stackprotect )
+	if use elibc_musl; then
+		# stackprotect is broken on musl x86 and ppc
+		if use x86 || use ppc; then
+			myconf+=( --without-stackprotect )
+		fi
+
+		# musl defines bogus values for UTMP_FILE and WTMP_FILE
+		# https://bugs.gentoo.org/753230
+		myconf+=( --disable-utmp --disable-wtmp )
+	fi
 
 	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
 	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
