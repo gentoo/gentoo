@@ -22,7 +22,7 @@ SLOT=0
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/no-more-secrets-9999-2018-10-25-respect-ldflags.patch )
+PATCHES=( "${FILESDIR}"/${P}-respect-ldflags.patch )
 
 src_compile() {
 	CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" emake

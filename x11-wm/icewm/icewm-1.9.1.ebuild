@@ -70,7 +70,7 @@ DEPEND="
 BDEPEND="
 	app-text/asciidoc
 	virtual/pkgconfig
-	nls? ( >=sys-devel/gettext-0.19.6 )
+	nls? ( >=sys-devel/gettext-0.19.8 )
 "
 
 src_prepare() {
@@ -100,6 +100,7 @@ src_configure() {
 		--with-libdir=/usr/share/icewm
 		$(use_enable bidi fribidi)
 		$(use_enable debug)
+		$(use_enable debug logevents)
 		$(use_enable gdk-pixbuf)
 		$(use_enable nls i18n)
 		$(use_enable nls)
