@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure postinst
+DEPEND=games-misc/exult-sound >=media-libs/libpng-1.6:0= media-libs/libvorbis sys-libs/zlib alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) opengl? ( virtual/opengl ) sdl2? ( media-libs/libsdl2[sound,video,X] ) !sdl2? ( media-libs/libsdl[sound,video,X] ) timidity? ( >=media-sound/timidity++-2 )
+DESCRIPTION=an Ultima 7 game engine that runs on modern operating systems
+EAPI=7
+HOMEPAGE=http://exult.sourceforge.net/
+IUSE=alsa fluidsynth opengl +sdl2 timidity tools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=games-misc/exult-sound >=media-libs/libpng-1.6:0= media-libs/libvorbis sys-libs/zlib alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) opengl? ( virtual/opengl ) sdl2? ( media-libs/libsdl2[sound,video,X] ) !sdl2? ( media-libs/libsdl[sound,video,X] ) timidity? ( >=media-sound/timidity++-2 )
+SLOT=0
+SRC_URI=https://downloads.sourceforge.net/exult/exult-all-versions/1.6/exult-1.6.tar.gz
+_md5_=dbd80d846ce0ea1829e88879d7b8acb2
