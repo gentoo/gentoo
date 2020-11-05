@@ -8888,6 +8888,7 @@ x11-terms/mlterm:utempter - Enable support for sys-libs/libutempter
 x11-terms/mlterm:wayland - Enable support for Wayland
 x11-terms/mrxvt:menubar - Enable mrxvt menubar
 x11-terms/mrxvt:utempter - REcords user logins. Useful on multi-user systems
+x11-terms/rxvt-unicode:24-bit-color - Enable 24-bit color support. Note that this feature is unofficial, may cause visual glitches due to the fact there is no termcap/terminfo definition for rxvt-unicode-24bit yet so it is necessary to use the one for 256 colours, visibly increases memory usage, and might slow urxvt down dramatically when more than six fonts are in use in a terminal instance.
 x11-terms/rxvt-unicode:256-color - Enable 256 color support
 x11-terms/rxvt-unicode:blink - Enable blinking text
 x11-terms/rxvt-unicode:fading-colors - Enable colors fading when off focus
