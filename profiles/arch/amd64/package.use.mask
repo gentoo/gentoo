@@ -279,7 +279,7 @@ app-editors/gvim -luajit -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on amd64
-sys-apps/hwloc -gl
+sys-apps/hwloc -gl -nvml
 
 # Michał Górny <mgorny@gentoo.org> (2013-07-22)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
