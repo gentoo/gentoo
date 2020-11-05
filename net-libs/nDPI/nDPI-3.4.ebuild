@@ -19,6 +19,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.4-fix-oob-in-kerberos-dissector.patch"
+	"${FILESDIR}/${PN}-3.4-configure-fail-libcap.patch"
 )
 
 src_prepare() {
@@ -26,6 +27,8 @@ src_prepare() {
 	eval $(grep '^NDPI_MINOR=' autogen.sh)
 	eval $(grep '^NDPI_PATCH=' autogen.sh)
 	NDPI_VERSION_SHORT="${NDPI_MAJOR}.${NDPI_MINOR}.${NDPI_PATCH}"
+
+	default
 
 	sed \
 		-e "s/@NDPI_MAJOR@/${NDPI_MAJOR}/g" \
@@ -40,7 +43,6 @@ src_prepare() {
 		-e "s%^libdir\s*=\s*\${prefix}/lib\s*$%libdir     = \${prefix}/$(get_libdir)%" \
 		src/lib/Makefile.in || die
 
-	default
 	eautoreconf
 
 	# Taken from autogen.sh (bug #704074):
