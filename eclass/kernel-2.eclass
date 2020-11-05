@@ -25,6 +25,13 @@
 # this is useful for things like wolk. IE:
 # EXTRAVERSION would be something like : -wolk-4.19-r1
 
+# @ECLASS-VARIABLE:  K_NODRYRUN
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# if this is set then patch --dry-run will not 
+# be run. Certain patches will fail with this parameter
+# See bug #507656
+
 # @ECLASS-VARIABLE:  K_NOSETEXTRAVERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1316,34 +1323,31 @@ unipatch() {
 			if [ -z "${PATCH_DEPTH}" ]; then PATCH_DEPTH=0; fi
 
 			####################################################################
-			# IMPORTANT: This is temporary code to support Linux git 3.15_rc1! #
+			# IMPORTANT: This code is to support kernels which cannot be	   #
+			# tested with the --dry-run parameter									   #	
 			#                                                                  #
-			# The patch contains a removal of a symlink, followed by addition  #
-			# of a file with the same name as the symlink in the same          #
-			# location; this causes the dry-run to fail, filed bug #507656.    #
+			# These patches contain a removal of a symlink, followed by        #
+			# addition of a file with the same name as the symlink in the      #
+			# same location; this causes the dry-run to fail, see bug #507656. #
 			#                                                                  #
 			# https://bugs.gentoo.org/show_bug.cgi?id=507656                   #
 			####################################################################
-			if [[ -n ${K_FROM_GIT} ]] ; then
-				if [[ ${KV_MAJOR} -gt 3 || ( ${KV_MAJOR} -eq 3 && ${KV_PATCH} -gt 15 ) &&
-					${RELEASETYPE} == -rc ]] ; then
-					ebegin "Applying ${i/*\//} (-p1)"
-					if [ $(patch -p1 --no-backup-if-mismatch -f < ${i} >> ${STDERR_T}) "$?" -le 2 ]; then
-						eend 0
-						rm ${STDERR_T} || die
-						break
-					else
-						eend 1
-						eerror "Failed to apply patch ${i/*\//}"
-						eerror "Please attach ${STDERR_T} to any bug you may post."
-						eshopts_pop
-						die "Failed to apply ${i/*\//} on patch depth 1."
-					fi
+			if [[ -n ${K_NODRYRUN} ]] ; then
+				ebegin "Applying ${i/*\//} (-p1)"
+				if [ $(patch -p1 --no-backup-if-mismatch -f < ${i} >> ${STDERR_T}) "$?" -le 2 ]; then
+					eend 0
+					rm ${STDERR_T} || die
+				else
+					eend 1
+					eerror "Failed to apply patch ${i/*\//}"
+					eerror "Please attach ${STDERR_T} to any bug you may post."
+					eshopts_pop
+					die "Failed to apply ${i/*\//} on patch depth 1."
 				fi
 			fi
 			####################################################################
 
-			while [ ${PATCH_DEPTH} -lt 5 ]; do
+			while [ ${PATCH_DEPTH} -lt 5 ] && [ -z ${K_NODRYRUN} ]; do
 				echo "Attempting Dry-run:" >> ${STDERR_T}
 				echo "cmd: patch -p${PATCH_DEPTH} --no-backup-if-mismatch --dry-run -f < ${i}" >> ${STDERR_T}
 				echo "=======================================================" >> ${STDERR_T}
