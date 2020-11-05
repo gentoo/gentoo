@@ -38,15 +38,15 @@
 # REQUIRED_USE="${LUA_REQUIRED_USE}"
 # DEPEND="${LUA_DEPS}"
 # RDEPEND="${DEPEND}
-#	dev-lua/foo[${LUA_USEDEP}]"
+#     dev-lua/foo[${LUA_USEDEP}]"
 # BDEPEND="virtual/pkgconfig"
 #
 # lua_src_install() {
-#	emake LUA_VERSION="$(lua_get_version)" install
+#     emake LUA_VERSION="$(lua_get_version)" install
 # }
 #
 # src_install() {
-#	lua_foreach_impl lua_src_install
+#     lua_foreach_impl lua_src_install
 # }
 # @CODE
 
