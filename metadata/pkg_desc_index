@@ -7872,7 +7872,7 @@ dev-python/async_generator 1.10: Making it easy to write async iterators in Pyth
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0-r1: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/attrs 20.1.0-r1 20.2.0-r1: Attributes without boilerplate
+dev-python/attrs 20.1.0-r1 20.2.0-r1 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
@@ -7918,8 +7918,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 9999: The AWS SDK for Python
-dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 9999: The AWS SDK for Python
+dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8315,7 +8315,7 @@ dev-python/jupyter_core 4.6.3 4.6.3-r1: Core common functionality of Jupyter pro
 dev-python/jupyterlab_pygments 0.1.2: Pygments theme making use of JupyterLab CSS variables
 dev-python/jwcrypto 0.8.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
-dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
+dev-python/kaitaistruct 0.8 0.9: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
@@ -8332,7 +8332,7 @@ dev-python/lazr-config 2.2.2: Create configuration schemas, and process and vali
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
 dev-python/lazy-object-proxy 1.5.0: A fast and thorough lazy object proxy
 dev-python/lcdproc 0.03_p20150508: Python OOP wrapper library for LCDproc Telnet API
-dev-python/ldap3 2.7: A strictly RFC 4511 conforming LDAP V3 pure Python client
+dev-python/ldap3 2.7 2.8.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
@@ -8985,7 +8985,7 @@ dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzb
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
 dev-python/scikit-build 0.11.1: Improved build system generator for Python C/C++/Fortran/Cython extensions
-dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3: Scientific algorithms library for Python
+dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3 1.5.4: Scientific algorithms library for Python
 dev-python/scripttest 1.3.0-r1: A very small text templating language
 dev-python/scrypt 0.8.16: Bindings for the scrypt key derivation function library
 dev-python/seaborn 0.10.1: Statistical data visualization
@@ -15384,7 +15384,7 @@ net-proxy/haproxy 1.8.26 2.0.14 2.0.14-r1 2.0.17 2.0.18 2.0.9999 2.1.4 2.1.4-r1 
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
-net-proxy/mitmproxy 5.1.1 5.2-r1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
+net-proxy/mitmproxy 5.1.1 5.2-r1 5.3.0: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
