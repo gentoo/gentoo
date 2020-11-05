@@ -63,7 +63,6 @@ DEPEND="
 	${RDEPEND}
 	$(unpacker_src_uri_depends)
 	dev-libs/glib:2
-	gnome-base/librsvg
 	x11-base/xorg-proto
 	gdk-pixbuf? ( gnome-base/librsvg:2 )
 "
