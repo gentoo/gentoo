@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Dirkjan Ochtman <djc@gentoo.org> (2020-11-05)
+# Incorrect DISTUTILS_USE_SETUPTOOLS value, dead upstream.
+# Removal in 30 days. Bug #748063
+dev-python/couchdb-python
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-05)
 # will be upgraded after new lua release
 www-apps/liquid_feedback_frontend
