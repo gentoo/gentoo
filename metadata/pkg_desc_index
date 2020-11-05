@@ -8094,7 +8094,7 @@ dev-python/elementpath 2.0.3 2.0.4: XPath 1.0/2.0 parsers and selectors for Elem
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.3 3.3.4: A powerful and robust templating system for Python
-dev-python/entrypoint2 0.2.1: Easy to use command-line interface for python modules
+dev-python/entrypoint2 0.2.1 0.2.3: Easy to use command-line interface for python modules
 dev-python/entrypoints 0.3-r2: Discover and load entry points from installed packages
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 2.0.0: Removes commented-out code from Python files
@@ -8340,7 +8340,7 @@ dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1 1.7.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
-dev-python/libsass 0.20.0: A straightforward binding of libsass for Python
+dev-python/libsass 0.20.0 0.20.1: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.3: python api for tmux
 dev-python/libvirt-python 6.7.0 6.8.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
@@ -8784,7 +8784,7 @@ dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific or
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-regressions 2.0.1: Easy to use fixtures to write regression tests
+dev-python/pytest-regressions 2.0.1 2.0.2: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
@@ -8836,7 +8836,7 @@ dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0 4.1.1: Client Library for OpenStack Identity
-dev-python/python-language-server 0.34.1 0.35.1-r1: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.34.1 0.35.1-r1 0.36.0: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
@@ -8911,7 +8911,7 @@ dev-python/pyzmq 19.0.1_p20200608 19.0.2: Lightweight and super-fast messaging l
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5: Python bindings for QScintilla
-dev-python/qtawesome 0.7.2 1.0.0: Enables iconic fonts such as Font Awesome in PyQt
+dev-python/qtawesome 0.7.2 1.0.1: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.7.6 4.7.7: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
@@ -8962,7 +8962,7 @@ dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs 
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.2: An Integer to Roman numerals converter
-dev-python/rope 0.16.0 0.17.0: Python refactoring library
+dev-python/rope 0.17.0 0.18.0: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.3 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package system
