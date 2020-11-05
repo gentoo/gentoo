@@ -1,50 +1,47 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools multilib eutils git-r3
+EAPI=7
 
 DESCRIPTION="an Ultima 7 game engine that runs on modern operating systems"
 HOMEPAGE="http://exult.sourceforge.net/"
-EGIT_REPO_URI="https://github.com/exult/exult"
+SRC_URI="https://downloads.sourceforge.net/${PN}/exult-all-versions/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="+sdl2 timidity zlib"
+KEYWORDS="~amd64 ~x86"
+IUSE="alsa fluidsynth opengl +sdl2 timidity tools"
 
 DEPEND="
-	>=media-libs/libpng-1.2.43-r2:0
 	games-misc/exult-sound
+	>=media-libs/libpng-1.6:0=
 	media-libs/libvorbis
+	sys-libs/zlib
+	alsa? ( media-libs/alsa-lib )
+	fluidsynth? ( media-sound/fluidsynth )
+	opengl? ( virtual/opengl )
 	sdl2? ( media-libs/libsdl2[sound,video,X] )
 	!sdl2? ( media-libs/libsdl[sound,video,X] )
 	timidity? ( >=media-sound/timidity++-2 )
-	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P/_/}
 DOCS=(
 	AUTHORS ChangeLog FAQ NEWS README README.1ST
 )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	econf \
-		--x-libraries="/usr/$(get_libdir)" \
-		--disable-tools \
-		--disable-opengl \
 		--enable-mods \
+		--enable-zip-support \
 		--with-desktopdir=/usr/share/applications \
 		--with-icondir=/usr/share/pixmaps \
 		--with-sdl=$(usex sdl2 sdl2 sdl12) \
+		$(use_enable alsa) \
+		$(use_enable fluidsynth) \
+		$(use_enable opengl) \
 		$(use_enable timidity timidity-midi) \
-		$(use_enable zlib zip-support)
+		$(use_enable tools)
 }
 
 pkg_postinst() {
