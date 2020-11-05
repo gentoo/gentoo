@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://github.com/simdjson/simdjson
 "
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~gyakovlev/distfiles/${P}-ppc64.patch.xz"
+	https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-0.6.0-ppc64.patch.xz"
 
 LICENSE="Apache-2.0 Boost-1.0"
 SLOT="0/4"
@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# applies cleanly from master, can be dropped on next release
-	"${WORKDIR}/${P}-ppc64.patch"
+	"${WORKDIR}/simdjson-0.6.0-ppc64.patch"
 )
 
 src_prepare() {
