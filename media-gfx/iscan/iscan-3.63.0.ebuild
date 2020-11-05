@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.62.0-tests-boost.patch
 	"${FILESDIR}"/${PN}-3.62.0-tests-tesseract.patch
 	"${FILESDIR}"/${PN}-3.62.0-tests-linkage.patch
+	"${FILESDIR}"/${PN}-3.63.0-autoconf-2.70.patch
 )
 
 src_prepare() {

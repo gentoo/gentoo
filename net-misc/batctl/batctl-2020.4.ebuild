@@ -12,7 +12,6 @@ SRC_URI="https://downloads.open-mesh.org/batman/releases/batman-adv-${PV}/${P}.t
 LICENSE="GPL-2 MIT ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="dev-libs/libnl:3"
