@@ -2386,7 +2386,7 @@ app-misc/gnote 3.36.1 3.36.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23 1.0.26 1.0.27: A simple JIRA commandline client in Go
-app-misc/golly 3.4: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 3.4 4.0: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.3: Genealogical Research and Analysis Management Programming System
@@ -13932,7 +13932,7 @@ media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122-r8: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
-media-sound/xwax 1.6-r1 1.7: Digital vinyl emulation software
+media-sound/xwax 1.7: Digital vinyl emulation software
 media-sound/yarock 1.4.0-r1: Qt-based music player
 media-sound/yoshimi 1.7.2: Software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
@@ -16791,7 +16791,7 @@ sys-apps/hw-probe 1.5-r1 1.6_beta2-r1: A tool to probe for hardware, check it's 
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20200204 20200306 20200813.1 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
-sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4 2.1.0: displays the hardware topology in convenient formats
+sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4 2.1.0 2.3.0: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 4.1-r1 4.2: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
 sys-apps/ibm-powerpc-utils 1.3.8-r1 99999: Utilities for the maintainance of the IBM and Apple PowerPC platforms
