@@ -810,7 +810,7 @@ app-backup/borgbackup 1.1.11-r2 1.1.13 1.1.14 9999: Deduplicating backup program
 app-backup/borgmatic 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.29.1 0.30.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/burp 2.2.18-r1 2.3.34: Network backup and restore client and server for Unix and Windows
+app-backup/burp 2.2.18-r1 2.3.36: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -12921,7 +12921,7 @@ media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3 2.0.3: Module/tracker based music format parser and player library
 media-libs/elgato-streamdeck 0.8.1 9999: Python library to control the Elgato Stream Deck
-media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
+media-libs/elles_icc_profiles 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 12.05 12.08: Read and write meta information in image, audio and video files
