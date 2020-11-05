@@ -29,9 +29,9 @@ rewrite rules to your
 <snip>
         RewriteEngine On
         # Redirect all non-existant urls to cgit
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteRule ^.* /cgi-bin/cgit.cgi/$0 [L,PT]
+        RewriteCond %%{REQUEST_FILENAME} !-f
+        RewriteCond %%{REQUEST_FILENAME} !-d
+        RewriteRule ^.* /cgi-bin/cgit.cgi/\$0 [L,PT]
 
         # Redirect the empty url to cgit
         RewriteRule ^$ /cgi-bin/cgit.cgi/ [L,PT]
