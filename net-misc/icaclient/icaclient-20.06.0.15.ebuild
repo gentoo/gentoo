@@ -98,7 +98,9 @@ src_install() {
 	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
 
 	exeinto "${ICAROOT}"/lib
-	rm lib/ctxjpeg_fb_8.so || die
+	if use amd64 ; then
+		rm lib/ctxjpeg_fb_8.so || die
+	fi
 	doexe lib/*.so
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
