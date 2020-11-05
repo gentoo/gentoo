@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2020-11-05)
+# sci-libs/mkl-rt is now subsumed by the updated
+# sci-libs/mkl package which also provides
+# development header files and pkgconfig files
+# Removal in 14 days. Bug #747310
+sci-libs/mkl-rt
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-05)
 # will be upgraded after new lua release
 www-apps/liquid_feedback_frontend
