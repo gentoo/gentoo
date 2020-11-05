@@ -3429,8 +3429,16 @@ kde-apps/kate:plasma - Enable Session Applet addon for KDE Plasma
 kde-apps/kate:projects - Enable Project plugin for executing queries on SQL DBs
 kde-apps/kate:snippets - Enable Snippets Tool View plugin to manage or download code snippets
 kde-apps/kate:sql - Enable SQL plugin for executing queries on SQL DBs
+kde-apps/kde-apps-meta:accessibility - Pull in kde-apps/kdeaccessibility-meta packages
+kde-apps/kde-apps-meta:admin - Pull in kde-apps/kdeadmin-meta packages
+kde-apps/kde-apps-meta:education - Pull in kde-apps/kdeedu-meta packages
+kde-apps/kde-apps-meta:games - Pull in kde-apps/kdegames-meta packages
+kde-apps/kde-apps-meta:graphics - Pull in kde-apps/kdegraphics-meta packages
+kde-apps/kde-apps-meta:multimedia - Pull in kde-apps/kdemultimedia-meta packages
+kde-apps/kde-apps-meta:network - Pull in kde-apps/kdenetwork-meta packages
 kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite
 kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
+kde-apps/kde-apps-meta:utils - Pull in kde-apps/kdeutils-meta packages
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration
 kde-apps/kdecore-meta:share - Install kde-frameworks/purpose for share file context menu actions in kde-apps/dolphin
 kde-apps/kdecore-meta:thumbnail - Install kde-apps/ffmpegthumbs and kde-apps/thumbnailers for thumbnail generation in kde-apps/dolphin
@@ -8602,7 +8610,6 @@ www-client/netsurf:gtk2 - Build GTK2 GUI
 www-client/netsurf:psl - Use public suffix list via media-libs/libnspsl
 www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/librosprite)
 www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
-www-client/otter:webengine - Use dev-qt/qtwebengine as backend instead of dev-qt/qtwebkit (experimental)
 www-client/qutebrowser:scripts - Installs userscripts from the misc/userscripts directory to /usr/share/qutebrowser/userscripts.
 www-client/seamonkey:calendar - Build Mozilla's calendar
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
