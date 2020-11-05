@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Sound data for games-engines/exult"
 HOMEPAGE="http://exult.sourceforge.net/"
-SRC_URI="https://download.sourceforge/exult/exult-data/exult_audio.zip"
+SRC_URI="https://downloads.sourceforge.net/exult/exult-data/exult_audio.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
