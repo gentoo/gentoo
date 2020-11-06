@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
-inherit cmake-utils linux-info python-single-r1 toolchain-funcs
+inherit cmake linux-info python-single-r1 toolchain-funcs
 
 DESCRIPTION="Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor"
 HOMEPAGE="http://libcec.pulse-eight.com"
@@ -43,7 +43,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Do not hardcode the python libpath #577612
 	sed -i \
@@ -68,7 +68,7 @@ src_configure() {
 		-DRPI_LIB_DIR=$( $(tc-getPKG_CONFIG) --variable=libdir bcm_host)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

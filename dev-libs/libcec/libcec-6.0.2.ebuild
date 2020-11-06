@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
@@ -19,15 +19,15 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="cubox exynos python raspberry-pi kernel-cec tools +xrandr udev"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="udev? ( virtual/udev )
-	>=dev-libs/libplatform-2.0.0
-	tools? ( sys-libs/ncurses:= )
+RDEPEND=">=dev-libs/libplatform-2.0.0
+	python? ( ${PYTHON_DEPS} )
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
+	tools? ( sys-libs/ncurses:= )
+	udev? ( virtual/udev )
 	xrandr? ( x11-libs/libXrandr )
-	python? ( ${PYTHON_DEPS} )"
+"
 DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )"
-
 BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~USB_ACM"
@@ -36,7 +36,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.7-no-override-udev.patch"
-	)
+)
 
 pkg_pretend() {
 	use udev || CONFIG_CHECK+=" ~SYSFS"
@@ -97,7 +97,7 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 
-	if use udev; then
+	if use udev ; then
 		cp "${S}/debian/pulse-eight-usb-cec.udev" \
 			"${BUILD_DIR}/65-pulse-eight-usb-cec.udev" || die
 	fi
