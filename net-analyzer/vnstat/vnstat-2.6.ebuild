@@ -10,7 +10,7 @@ SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
 IUSE="gd selinux test"
 RESTRICT="!test? ( test )"
 
