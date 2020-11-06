@@ -52,7 +52,7 @@ CDEPEND="
 	>=sys-libs/ldb-2.2.0[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	<sys-libs/ldb-2.3.0[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
-	sys-libs/liburing[${MULTILIB_USEDEP}]
+	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	>=sys-libs/talloc-2.3.1[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
