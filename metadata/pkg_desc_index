@@ -11687,6 +11687,7 @@ games-util/nml 0.4.5-r3 0.5.2: Compiler of NML files into GRF/NFO files
 games-util/pyfa 2.29.0 2.30.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
+games-util/sc-controller 0.4.8.1: User-mode driver and GTK-based GUI for Steam Controllers and others
 games-util/slade 3.1.12a: Modern editor for Doom-engine based games and source ports
 games-util/springlobby 0.266 0.267 0.269: The official lobby client for SpringRTS community games
 games-util/ucon64 2.0.0: The backup tool and wonderful emulator's Swiss Army knife program
