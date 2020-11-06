@@ -5,7 +5,7 @@ EAPI=7
 
 WX_GTK_VER="3.0"
 
-inherit autotools wxwidgets
+inherit autotools wxwidgets xdg
 
 DESCRIPTION="Analyse your audio files by showing their spectrogram"
 HOMEPAGE="http://www.spek-project.org/"
