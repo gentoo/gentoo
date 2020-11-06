@@ -15,7 +15,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/2.0.0" # liburing.so version
 
 IUSE="static-libs"
 # fsync test hangs forever
