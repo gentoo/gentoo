@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Atmel AVR Assembler"
 HOMEPAGE="https://github.com/hsoft/avra"
@@ -12,7 +14,11 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
 src_compile() {
-	emake PREFIX=/usr CFLAGS="${CFLAGS} \$(CDEFS)" LDFLAGS="${LDFLAGS}"
+	emake \
+	CC=$(tc-getCC) \
+	PREFIX=/usr \
+	CFLAGS="${CFLAGS} \$(CDEFS)" \
+	LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
