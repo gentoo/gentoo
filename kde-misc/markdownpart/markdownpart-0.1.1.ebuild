@@ -9,7 +9,7 @@ inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Markdown viewer KParts plugin based on QTextDocument"
