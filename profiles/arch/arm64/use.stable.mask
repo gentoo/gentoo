@@ -12,13 +12,11 @@ python_single_target_pypy3
 # Sam James <sam@gentoo.org> (2020-10-07)
 # app-misc/lirc not stable yet
 # dev-db/tokyocabinet not stable yet
-# sci-mathematics/octave not stable yet
 # dev-libs/libtar not stable yet
 # net-libs/ldns not stable yet
 # sci-geosciences/gpsd not stable yet
 lirc
 tokyocabinet
-octave
 libtar
 ldns
 gps
