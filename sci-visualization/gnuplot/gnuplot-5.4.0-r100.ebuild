@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1,2,3} )
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
@@ -199,7 +199,7 @@ src_install() {
 
 src_test() {
 	#GNUTERM="unknown" emake check   # spiderplot and isosurface tests fail
-	GNUTERM="dumb" emake check
+	virtx emake check
 }
 
 pkg_postinst() {
