@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2020-11-06)
+# media-gfx/gmic has no arm64 keyword yet
+media-gfx/darktable gmic
+
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
 # Available on: amd64, x86, arm{,64}.
