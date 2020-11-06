@@ -28,7 +28,7 @@ SRC_URI+="
 #IUSE="freeipmi openipmi status"
 IUSE="libressl openbmc openipmi static"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ia64 ppc ~ppc64 x86"
 LICENSE="BSD"
 
 RDEPEND="
