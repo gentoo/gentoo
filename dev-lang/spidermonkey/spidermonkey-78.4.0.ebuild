@@ -233,6 +233,10 @@ src_test() {
 		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.2.js )
 	fi
 
+	if [[ $(tc-endian) == "big" ]] ; then
+		KNOWN_TESTFAILURES+=( test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js )
+	fi
+
 	echo "" > "${T}"/known_failures.list || die
 
 	local KNOWN_TESTFAILURE
