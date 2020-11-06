@@ -35,7 +35,7 @@ LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
 	)
 	glusterfs? ( sys-cluster/glusterfs[static-libs(+)] )
 	gtk? ( dev-libs/glib:2[static-libs(+)] )
-	io-uring? ( sys-libs/liburing[static-libs(+)] )
+	io-uring? ( sys-libs/liburing:=[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
 	rdma? (
