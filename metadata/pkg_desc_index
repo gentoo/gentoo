@@ -14400,7 +14400,7 @@ net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
-net-dialup/freeradius 3.0.20-r1 3.0.21: Highly configurable free RADIUS server
+net-dialup/freeradius 3.0.20-r1 3.0.21 3.0.21-r1: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7 1.1.7-r1: FreeRADIUS Client framework
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
@@ -16246,7 +16246,7 @@ sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/suitesparse 5.4.0: Metapackage for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 5.4.0: Common configurations for all packages in suitesparse
 sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0 5.1.0 5.2.0: Suite of nonlinear solvers
-sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
+sci-libs/superlu 4.3-r1 5.2.1-r1 5.2.2: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.6.0: Fast symbolic manipulation library, written in C++
 sci-libs/symmetrica 3.0.1: C library for representation theory, combinatorics, and more
