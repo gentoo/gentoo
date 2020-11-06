@@ -37,6 +37,7 @@ RDEPEND="
 	openbmc? ( sys-apps/systemd:0= )
 	sys-libs/readline:0="
 DEPEND="${RDEPEND}
+		>=sys-devel/autoconf-2.69-r5
 		openipmi? ( sys-libs/openipmi )
 		virtual/os-headers"
 		#freeipmi? ( sys-libs/freeipmi )
