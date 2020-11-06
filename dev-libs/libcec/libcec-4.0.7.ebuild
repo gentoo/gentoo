@@ -97,9 +97,10 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 
-	use udev && \
+	if use udev ; then
 		cp "${S}/debian/pulse-eight-usb-cec.udev" \
 			"${BUILD_DIR}/65-pulse-eight-usb-cec.udev" || die
+	fi
 }
 
 src_install() {
