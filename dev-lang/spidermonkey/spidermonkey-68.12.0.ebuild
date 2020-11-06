@@ -196,6 +196,10 @@ src_test() {
 		KNOWN_TESTFAILURES+=( test262/language/types/number/S8.5_A2.2.js )
 		KNOWN_TESTFAILURES+=( test262/built-ins/Number/prototype/toPrecision/return-values.js )
 		KNOWN_TESTFAILURES+=( non262/Date/timeclip.js )
+	elif use sparc ; then
+		KNOWN_TESTFAILURES+=( non262/Array/regress-157652.js )
+		KNOWN_TESTFAILURES+=( non262/Array/regress-330812.js )
+		KNOWN_TESTFAILURES+=( non262/regress/regress-422348.js )
 	fi
 
 	if [[ $(tc-endian) == "big" ]] ; then
