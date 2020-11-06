@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-11-06)
+# Java isn't stable on arm (yet?)
+# bug #709830
+sci-mathematics/octave java
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
 # unmaintained/broken dependencies. bug #746722
