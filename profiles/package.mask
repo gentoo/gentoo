@@ -233,6 +233,8 @@ dev-lua/luacrypto
 
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
 # All these ebuilds require slotted Lua, which is still masked.
+# Ulrich Müller <ulm@gentoo.org> (2020-11-06)
+# Added sci-visualization/gnuplot.
 >=app-misc/worker-3.8.3-r100
 >=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/luadbi-0.7.2-r100
@@ -245,6 +247,7 @@ dev-lua/luacrypto
 >=mail-filter/imapfilter-2.6.16-r100
 >=net-analyzer/suricata-6.0.0-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
+>=sci-visualization/gnuplot-5.4.0-r100
 >=www-servers/lighttpd-1.4.55-r100
 >=app-admin/conky-1.11.4
 >=media-sound/aqualung-1.1-r100
