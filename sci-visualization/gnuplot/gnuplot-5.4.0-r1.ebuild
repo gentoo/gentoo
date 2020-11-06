@@ -73,6 +73,7 @@ TEXMF="${EPREFIX}/usr/share/texmf-site"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	"${FILESDIR}"/${PN}-5.4.0-pkg-config.patch
 )
 
 src_prepare() {
