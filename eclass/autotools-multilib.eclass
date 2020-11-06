@@ -8,6 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 4 5
 # @BLURB: autotools-utils wrapper for multilib builds
+# @DEPRECATED: multilib-minimal
 # @DESCRIPTION:
 # The autotools-multilib.eclass provides a glue between
 # autotools-utils.eclass(5) and multilib-minimal.eclass(5), aiming
