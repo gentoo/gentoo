@@ -93,3 +93,13 @@ src_install() {
 	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
 		"System;TerminalEmulator"
 }
+
+pkg_postinst() {
+	if use 24-bit-color; then
+		ewarn
+		ewarn "You have enabled 24-bit colour support in ${PN}, which is UNOFFICIAL and INCOMPLETE."
+		ewarn "You may or may not encounter visual glitches or stability issues. When in doubt,"
+		ewarn "rebuild =${CATEGORY}/${PF} with USE=-24-bit-color (the default setting)."
+		ewarn
+	fi
+}
