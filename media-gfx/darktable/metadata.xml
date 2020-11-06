@@ -12,6 +12,7 @@
 	<use>
 		<flag name="flickr">Add support for uploading photos to flickr</flag>
 		<flag name="geolocation">Enable geotagging support</flag>
+		<flag name="gmic">Use the G'MIC image-processing framework (<pkg>media-gfx/gmic</pkg>), e.g. to support Colour LUTs compressed using their compression scheme</flag>
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="lto">Enable link-time optimisations in the RawSpeed library</flag>
 		<flag name="opencl">Enable opencl support</flag>
