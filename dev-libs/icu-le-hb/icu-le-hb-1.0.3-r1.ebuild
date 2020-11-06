@@ -27,6 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-icu68.patch" #751931
+)
+
 src_prepare() {
 	default
 	eautoreconf
