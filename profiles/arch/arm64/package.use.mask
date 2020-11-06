@@ -256,7 +256,6 @@ sys-cluster/neutron haproxy
 dev-python/ipython notebook
 dev-python/networkx scipy
 dev-ruby/haml test
-media-libs/opencv contribdnn
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-16)
 # USE=test-full requires USE=pkcs11 that is use.masked.
