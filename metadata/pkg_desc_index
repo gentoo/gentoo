@@ -1975,7 +1975,7 @@ app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect an
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 2.1.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
-app-emulation/libvirt 6.7.0 6.8.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.7.0 6.8.0 6.9.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.4 4.0.5: LinuX Containers userspace utilities
@@ -2428,7 +2428,7 @@ app-misc/lfm 3.1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r4 5.11-r5 6.0: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1-r3 0.10.1-r4: decode and send infra-red signals of many commonly used remote controls
-app-misc/livecd-tools 2.6 9999: Gentoo LiveCD tools for autoconfiguration of hardware
+app-misc/livecd-tools 2.6 2.8 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
@@ -8343,7 +8343,7 @@ dev-python/libpillowfight 0.3.0: Small library containing various image processi
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.0 0.20.1: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.3: python api for tmux
-dev-python/libvirt-python 6.7.0 6.8.0 9999: libvirt Python bindings
+dev-python/libvirt-python 6.7.0 6.8.0 6.9.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
