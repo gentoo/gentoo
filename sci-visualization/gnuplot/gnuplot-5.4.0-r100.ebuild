@@ -80,7 +80,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use lua && lua_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
