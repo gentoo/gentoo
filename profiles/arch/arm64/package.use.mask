@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/digikam has no arm64 keyword yet
+# media-gfx/digikam has no arm64 keyword yet. Bug #753362.
 media-gfx/gmic digikam
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/gmic has no arm64 keyword yet
+# media-gfx/gmic has no arm64 keyword yet. Bug #753356.
 media-gfx/darktable gmic
 
 # Sam James <sam@gentoo.org> (2020-10-03)
