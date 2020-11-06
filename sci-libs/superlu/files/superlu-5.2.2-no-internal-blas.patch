@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 08027ce..8884585 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,13 +121,7 @@ if(BLAS_FOUND)
+   set(BLAS_LIB_EXPORT ${BLAS_LIB_STR})
+ else()
+   message("-- Did not find or specify BLAS so configure to build internal CBLAS ...")
+-  add_subdirectory(CBLAS)
+-  set(BLAS_LIB blas)
+-  if (BUILD_SHARED_LIBS)  # export to be referenced by downstream makefile
+-      set(BLAS_LIB_EXPORT ${CMAKE_INSTALL_PREFIX}/CBLAS/libblas.so)
+-  else()
+-      set(BLAS_LIB_EXPORT ${CMAKE_INSTALL_PREFIX}/CBLAS/libblas.a)
+-  endif()
++  message( FATAL_ERROR "Could not find BLAS, refusing to use internal copy" )
+ endif()
+ 
+ ######################################################################
