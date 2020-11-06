@@ -12,6 +12,7 @@
     internally.
   </longdescription>
   <use>
+    <flag name="browser">Enable browser source support via (precompiled) CEF.</flag>
     <flag name="decklink">Build the Decklink plugin.</flag>
     <flag name="fdk">Build with LibFDK AAC support.</flag>
     <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>

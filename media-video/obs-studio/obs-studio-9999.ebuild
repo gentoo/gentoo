@@ -7,24 +7,30 @@ CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{7..9} )
 
+OBS_BROWSER_COMMIT="f1a61c5a2579e5673765c31a47c2053d4b502d4b"
+CEF_DIR="cef_binary_4280_linux64"
+
 inherit cmake lua-single python-single-r1 xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/obsproject/obs-studio.git"
-	EGIT_SUBMODULES=()
+	EGIT_SUBMODULES=( "plugins/obs-browser" )
 else
 	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI+=" browser? ( https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz )"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
+SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}.tar.bz2 )"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa decklink fdk imagemagick jack lua nvenc pipewire pulseaudio python speex +ssl truetype v4l vlc wayland"
+IUSE="+alsa browser decklink fdk imagemagick jack lua nvenc pipewire pulseaudio python speex +ssl truetype v4l vlc wayland"
 REQUIRED_USE="
+	browser? ( || ( alsa pulseaudio ) )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -59,6 +65,22 @@ DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libxcb
 	alsa? ( media-libs/alsa-lib )
+	browser? (
+		app-accessibility/at-spi2-atk
+		dev-libs/atk
+		dev-libs/expat
+		dev-libs/glib
+		dev-libs/nspr
+		dev-libs/nss
+		media-libs/fontconfig
+		x11-libs/libXcursor
+		x11-libs/libXdamage
+		x11-libs/libXext
+		x11-libs/libXi
+		x11-libs/libXrender
+		x11-libs/libXScrnSaver
+		x11-libs/libXtst
+	)
 	fdk? ( media-libs/fdk-aac:= )
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
@@ -79,6 +101,15 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+QA_PREBUILT="
+	/usr/lib*/obs-plugins/chrome-sandbox
+	/usr/lib*/obs-plugins/libcef.so
+	/usr/lib*/obs-plugins/libEGL.so
+	/usr/lib*/obs-plugins/libGLESv2.so
+	/usr/lib*/obs-plugins/swiftshader/libEGL.so
+	/usr/lib*/obs-plugins/swiftshader/libGLESv2.so
+"
+
 PATCHES=( "${FILESDIR}/${PN}-26.1.2-python-3.8.patch" ) # https://github.com/obsproject/obs-studio/pull/3335
 
 pkg_setup() {
@@ -86,10 +117,22 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_unpack() {
+	default
+	if [[ ${PV} != *9999 ]]; then
+		if use browser; then
+			rm -d "${P}/plugins/obs-browser" || die
+			mv "obs-browser-${OBS_BROWSER_COMMIT}" "${P}/plugins/obs-browser" || die
+		fi
+	else
+		git-r3_src_unpack
+	fi
+}
+
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DBUILD_BROWSER=no
+		-DBUILD_BROWSER=$(usex browser)
 		-DBUILD_VST=no
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DDISABLE_ALSA=$(usex !alsa)
@@ -111,6 +154,12 @@ src_configure() {
 	if [[ ${PV} != *9999 ]]; then
 		mycmakeargs+=(
 			-DOBS_VERSION_OVERRIDE=${PV}
+		)
+	fi
+
+	if use browser; then
+		mycmakeargs+=(
+			-DCEF_ROOT_DIR="../${CEF_DIR}"
 		)
 	fi
 
