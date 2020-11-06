@@ -45,7 +45,7 @@
 # REQUIRED_USE="${LUA_REQUIRED_USE}"
 # DEPEND="${LUA_DEPS}"
 # RDEPEND="${DEPEND}
-#     $(lua_get_cond_dep '
+#     $(lua_gen_cond_dep '
 #         dev-lua/foo[${LUA_USEDEP}]
 #     ')
 # "
