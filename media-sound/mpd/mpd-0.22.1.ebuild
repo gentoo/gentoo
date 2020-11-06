@@ -38,7 +38,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/mpd
-	sys-libs/liburing
+	sys-libs/liburing:=
 	alsa? (
 		media-libs/alsa-lib
 		media-sound/alsa-utils
