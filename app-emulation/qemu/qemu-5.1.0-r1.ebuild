@@ -121,7 +121,7 @@ SOFTMMU_TOOLS_DEPEND="
 		sys-fabric/librdmacm:=[static-libs(+)]
 	)
 	iscsi? ( net-libs/libiscsi )
-	io-uring? ( sys-libs/liburing[static-libs(+)] )
+	io-uring? ( sys-libs/liburing:=[static-libs(+)] )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
