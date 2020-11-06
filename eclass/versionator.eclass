@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: versionator.eclass
@@ -11,6 +11,7 @@
 # This eclass provides functions which simplify manipulating $PV and similar
 # variables. Most functions default to working with $PV, although other
 # values can be used.
+# @DEPRECATED: ver_* functions from EAPI 7
 # @EXAMPLE:
 # Simple Example 1: $PV is 1.2.3b, we want 1_2.3b:
 #     MY_PV=$(replace_version_separator 1 '_' )
