@@ -96,6 +96,8 @@ src_prepare() {
 			-e '/${CMAKE_EXE_LINKER_FLAGS} -s/d' \
 			-i gmic-qt/CMakeLists.txt || die
 		local S="${S}/gmic-qt"
+		# Bug #753377
+		local PATCHES=()
 		cmake_src_prepare
 	fi
 }
