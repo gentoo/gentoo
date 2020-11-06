@@ -167,6 +167,8 @@ acct-group/postfix_exporter 0: System group: postfix_exporter
 acct-group/postgres 0: PostgreSQL program group
 acct-group/privoxy 0: A privoxy: privacy oriented web proxy group
 acct-group/prometheus 0: System group: prometheus
+acct-group/pulse 0: System group: pulse
+acct-group/pulse-access 0: System group: pulse-access
 acct-group/puppet 0: System group: puppet
 acct-group/puppetdb 0: System group: puppetdb
 acct-group/qemu 0: System group: qemu
@@ -406,6 +408,7 @@ acct-user/postgres 0: PostgreSQL program user
 acct-user/postmaster 0: Postmaster user
 acct-user/privoxy 0: A privoxy: privacy oriented web proxy user
 acct-user/prometheus 0: user for prometheus
+acct-user/pulse 0: User for running the PulseAudio daemon as a system-wide instance
 acct-user/puppet 0: user for puppet services
 acct-user/puppetdb 0: User for the puppetdb service
 acct-user/qemu 0: System user: qemu
@@ -13819,7 +13822,7 @@ media-sound/potamus 17: A lightweight audio player with a simple interface and a
 media-sound/pragha 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
-media-sound/pulseaudio 13.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
 media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
