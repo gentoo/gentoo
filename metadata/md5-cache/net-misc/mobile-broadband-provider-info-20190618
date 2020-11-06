@@ -9,5 +9,5 @@ LICENSE=CC-PD
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/mobile-broadband-provider-info/20190618/mobile-broadband-provider-info-20190618.tar.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	gnome.org	532d56d07b9eace4831aaa817d2b756a	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	686eaab303305a908fd57b2fd7617800	gnome.org	532d56d07b9eace4831aaa817d2b756a	versionator	d0cb835f36e8d01ee1d8b7b7df7cd6b5
 _md5_=ee02132d874bc81ba0d909a6eccae912
