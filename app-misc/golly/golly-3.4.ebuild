@@ -15,12 +15,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="tiff"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="virtual/opengl
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,tiff?]
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,tiff]
 	${PYTHON_DEPS}
 "
 
