@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-11-06)
+# waiting for lua to be slotted
+media-gfx/exact-image lua
+
 # Marek Szuba <marecki@gentoo.org> (2020-10-12)
 # Requires slotted Lua, which is still masked.
 media-gfx/darktable system-lua
