@@ -22,7 +22,7 @@ else
 fi
 
 LICENSE="BSD-2 CDDL MIT"
-SLOT="0"
+SLOT="0/4" # just libzfs soname major for now. possible candidates: libuutil, libzpool, libnvpair
 IUSE="custom-cflags debug kernel-builtin libressl minimal nls pam python +rootfs test-suite static-libs"
 
 DEPEND="
