@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86"
 fi
 
 LICENSE="GPL-2"
