@@ -7,11 +7,11 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: functions which simplify manipulation of ${PV} and similar version strings
+# @DEPRECATED: ver_* functions from EAPI 7
 # @DESCRIPTION:
 # This eclass provides functions which simplify manipulating $PV and similar
 # variables. Most functions default to working with $PV, although other
 # values can be used.
-# @DEPRECATED: ver_* functions from EAPI 7
 # @EXAMPLE:
 # Simple Example 1: $PV is 1.2.3b, we want 1_2.3b:
 #     MY_PV=$(replace_version_separator 1 '_' )
