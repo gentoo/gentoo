@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/icu-58.1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_
 SLOT=0
 SRC_URI=https://github.com/behdad/icu-le-hb/archive/1.0.3.tar.gz -> icu-le-hb-1.0.3.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=0fde8ecabb77e8f7bc5a5dd1fb872ea3
+_md5_=585abee5fbabfe83c068f4283ccb25b2
