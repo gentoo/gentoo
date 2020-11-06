@@ -83,7 +83,6 @@ RDEPEND="${COMMON_DEPEND}
 	nmbug? ( dev-vcs/git )
 "
 
-DOCS=( AUTHORS NEWS README )
 SITEFILE="50${PN}-gentoo.el"
 
 pkg_setup() {
@@ -209,8 +208,6 @@ python_install() {
 src_install() {
 	default
 
-	local DOCS=( README{,.rst} INSTALL NEWS )
-
 	if use doc; then
 		pushd doc/_build/man/man1 > /dev/null || die
 		ln notmuch.1 notmuch-setup.1 || die
@@ -241,10 +238,11 @@ src_install() {
 		doman notmuch-mutt.1
 		insinto /etc/mutt
 		doins notmuch-mutt.rc
-		DOCS+=( README-mutt )
+		dodoc README-mutt
 		popd > /dev/null || die
 	fi
 
+	local DOCS=( README{,.rst} INSTALL NEWS )
 	einstalldocs
 
 	if use python; then
