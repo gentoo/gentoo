@@ -6,6 +6,7 @@
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
 # @BLURB: user management in ebuilds
+# @DEPRECATED: acct-user/acct-group packages
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds
 # to quickly make sure users in the installed system are sane.

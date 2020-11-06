@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-metadata-xsd.patch"
+)
+
 python_test() {
 	esetup.py test
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: darcs.eclass
@@ -11,6 +11,7 @@
 # Andres Loeh   <kosmikus@gentoo.org> (darcs.eclass author)
 # Alexander Vershilov <alexander.vershilov@gmail.com> (various contributions)
 # @BLURB: This eclass provides functions for fetch and unpack darcs repositories
+# @DEPRECATED: none
 # @DESCRIPTION:
 # This eclass provides the generic darcs fetching functions.
 #

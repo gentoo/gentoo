@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: epatch.eclass
@@ -6,6 +6,7 @@
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: easy patch application functions
+# @DEPRECATED: eapply from EAPI 7
 # @DESCRIPTION:
 # An eclass providing epatch and epatch_user functions to easily apply
 # patches to ebuilds. Mostly superseded by eapply* in EAPI 6.
