@@ -1,0 +1,40 @@
+From 87034e509b366078b746a3a70e05aaf497e34585 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Fri, 6 Nov 2020 13:25:02 +0100
+Subject: [PATCH] configure.ac: move PKG_PROG_PKG_CONFIG to the beginning of
+ the file
+
+Bug #2349
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 67ad1396c..606242ea3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,6 +88,10 @@ AC_CHECK_MEMBERS([struct tm.tm_gmtoff, struct tm.__tm_gmtoff],,,[
+ #include <sys/types.h>
+ #include <time.h>])
+ 
++dnl explicit call to PKG_PROG_PKG_CONFIG because the first call to
++dnl PKG_CHECK_MODULES{,_NOFAIL} may not happen
++PKG_PROG_PKG_CONFIG
++
+ AC_ARG_WITH(libcerf,dnl
+ [  --without-libcerf       build without special functions from libcerf (default enabled)],,
+   [test -z "${with_libcerf}" && with_libcerf=yes])
+@@ -759,10 +763,6 @@ AC_ARG_ENABLE(raise-console,dnl
+   fi
+ 
+ 
+-dnl explicit call to PKG_PROG_PKG_CONFIG because the first call to
+-dnl PKG_CHECK_MODULES may not happen
+-PKG_PROG_PKG_CONFIG
+-
+ dnl  wxWidgets terminal
+ 
+ dnl wxWidgets terminal needs C++
+-- 
+2.29.2
+
