@@ -17,7 +17,7 @@ SRC_URI="
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 RDEPEND="
