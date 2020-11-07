@@ -22,7 +22,7 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-util/glslang-10.11.0.0_pre20200924[${MULTILIB_USEDEP}]
-	>=dev-util/spirv-tools-2020.5_pre20200922[${MULTILIB_USEDEP}]
+	>=dev-util/spirv-tools-2020.5_pre2021107[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
