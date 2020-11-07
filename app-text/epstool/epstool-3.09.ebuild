@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake epstool
+	emake CC="$(tc-getCC)" epstool
 }
 
 src_install() {
