@@ -157,6 +157,7 @@ src_configure() {
 			--disable-install-libiberty
 			# Disable guile for now as it requires guile-2.x #562902
 			--without-guile
+			--enable-obsolete
 			# This only disables building in the readline subdir.
 			# For gdb itself, it'll use the system version.
 			--disable-readline
