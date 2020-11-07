@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~sparc ~x86"
 
 RDEPEND="dev-python/regex[${PYTHON_USEDEP}]"
 

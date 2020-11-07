@@ -11,7 +11,7 @@ SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+ modify? ( GPL-2+ ) matrixops? ( GPL-2+ )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="cuda doc +lapack +matrixops +modify +partition"
 
 BDEPEND="virtual/pkgconfig
