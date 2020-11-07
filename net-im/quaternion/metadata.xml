@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+        <maintainer type="person">
+                <email>jan.seeger+gentoo@thenybble.de</email>
+                <name>Jan Seeger</name>
+                <description>Proxy maintainer</description>
+        </maintainer>
+        <use>
+        <flag name="end2end">
+            Enable support for end-to-end encryption.
+          </flag>
+        </use>
+</pkgmetadata>
