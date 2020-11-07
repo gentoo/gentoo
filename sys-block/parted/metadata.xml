@@ -5,6 +5,10 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Base System Project</name>
+	</maintainer>
 	<use>
 		<flag name="device-mapper">
 			Enable device-mapper support from <pkg>sys-fs/lvm2</pkg>
