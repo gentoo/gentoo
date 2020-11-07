@@ -1,9 +1,0 @@
-diff --git a/cbits/HsUnixCompat.c b/cbits/HsUnixCompat.c
-index 1f7f189..5de35f5 100644
---- a/cbits/HsUnixCompat.c
-+++ b/cbits/HsUnixCompat.c
-@@ -6,2 +6,4 @@
- 
-+#include <sys/sysmacros.h> /* TODO: glibc()-specific macro */
-+
- unsigned int unix_major(dev_t dev)

@@ -58,8 +58,7 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/test-framework-th-0.2
 		test-doctests? ( >=dev-haskell/semigroups-0.9
 					>=dev-haskell/simple-reflect-0.3.1
-					|| ( ( >=dev-haskell/doctest-0.11.4 <dev-haskell/doctest-0.12 )
-					( >=dev-haskell/doctest-0.13 <dev-haskell/doctest-0.17 ) ) ) )
+					>=dev-haskell/doctest-0.13 <dev-haskell/doctest-0.17 ) )
 "
 
 src_configure() {
