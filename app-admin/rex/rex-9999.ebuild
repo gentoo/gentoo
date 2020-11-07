@@ -62,7 +62,6 @@ RDEPEND="
 	dev-perl/IO-String
 	dev-perl/IO-Tty
 	dev-perl/JSON-MaybeXS
-	dev-perl/List-MoreUtils
 	virtual/perl-MIME-Base64
 	dev-perl/Net-OpenSSH
 	dev-perl/Net-SFTP-Foreign
