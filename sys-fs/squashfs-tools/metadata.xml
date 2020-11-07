@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>livecd@gentoo.org</email>
-<name>Gentoo LiveCD Project</name>
-</maintainer>
-<use>
-<flag name="xz">Enable support for XZ ("LZMA2") compression using <pkg>app-arch/xz-utils</pkg></flag>
-</use>
-<upstream>
-<remote-id type="sourceforge">squashfs</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="xz">
+			Enable support for XZ ("LZMA2") compression using
+			<pkg>app-arch/xz-utils</pkg>
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">squashfs</remote-id>
+	</upstream>
 </pkgmetadata>
