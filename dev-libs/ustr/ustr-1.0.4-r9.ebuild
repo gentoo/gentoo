@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs multilib-minimal
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.and.org/pub/james/ustr/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( BSD-2 MIT LGPL-2 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="static-libs ustr-import"
 
 DOCS=(ChangeLog README README-DEVELOPERS AUTHORS NEWS TODO)
@@ -21,9 +21,13 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/ustr-conf-debug.h
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-inline-check.patch"
+	"${FILESDIR}/${PN}-1.0.4-build-libs.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-inline-check.patch"
-	epatch "${FILESDIR}/${PN}-1.0.4-build-libs.patch"
+	default
 	multilib_copy_sources
 }
 
