@@ -57,7 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.2-libdir-libidn2.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-openssl.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
-	"${FILESDIR}"/${PN}-9999-libdir-readline.patch
+	"${FILESDIR}"/${PN}-4.9.1-libdir-readline.patch
 )
 
 src_prepare() {
