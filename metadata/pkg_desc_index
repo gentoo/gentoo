@@ -8696,7 +8696,7 @@ dev-python/pylint 2.5.3 2.6.0: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
-dev-python/pymediainfo 4.2.1: A wrapper around the mediainfo library
+dev-python/pymediainfo 4.2.1 4.3: A wrapper around the mediainfo library
 dev-python/pymetar 1.1-r1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pymongo 3.11.0 3.11.0-r1: Python driver for MongoDB
