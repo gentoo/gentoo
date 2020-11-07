@@ -2,23 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="https://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpdump"
-SRC_URI="https://github.com/the-tcpdump-group/${PN}/archive/${P/_}.tar.gz"
-S="${WORKDIR}/${PN}-${P/_}"
+SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+drop-root libressl +smi +ssl +samba suid test"
+IUSE="+drop-root libressl smi ssl samba suid test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="test? ( samba )"
 
-BDEPEND="
-	drop-root? ( virtual/pkgconfig )
-"
 RDEPEND="
 	net-libs/libpcap
 	drop-root? (
@@ -43,8 +39,10 @@ DEPEND="
 		dev-lang/perl
 	)
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-libdir.patch
+	"${FILESDIR}"/${PN}-4.9.3-CVE-2020-8037.patch
 )
 
 src_prepare() {
