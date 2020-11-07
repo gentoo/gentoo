@@ -100,6 +100,7 @@ src_prepare() {
 	default
 
 	strip-linguas -u bfd/po opcodes/po
+	export CC_FOR_BUILD=$(tc-getBUILD_CC)
 }
 
 gdb_branding() {
