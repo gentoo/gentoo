@@ -1,0 +1,27 @@
+From cfd9ff9408949ee58be9ba5a18b74ce4562f374a Mon Sep 17 00:00:00 2001
+From: Ethan A Merritt <merritt@u.washington.edu>
+Date: Fri, 6 Nov 2020 13:06:21 -0800
+Subject: [PATCH] make sure warning message about no mouse support is non-fatal
+
+Bug #2350
+---
+ src/set.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/set.c b/src/set.c
+index a697925bc..a6acf8fc6 100644
+--- a/src/set.c
++++ b/src/set.c
+@@ -3130,7 +3130,8 @@ set_mouse()
+     PM_update_menu_items();
+ #endif
+ #else /* USE_MOUSE */
+-    c_token++;
++    while (!END_OF_COMMAND)
++	c_token++;
+     int_warn(NO_CARET, "this copy of gnuplot has no mouse support");
+ #endif /* USE_MOUSE */
+ }
+-- 
+2.29.2
+
