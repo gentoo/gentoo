@@ -2829,7 +2829,6 @@ dev-util/gnome-builder:devhelp - Provide API docs browsing and integration via d
 dev-util/gnome-builder:git - Provide support for the Git version control system via dev-libs/libgit2-glib (such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)
 dev-util/gnome-builder:glade - Provide integration with dev-util/glade UI designer for Gtk
 dev-util/gnome-builder:sysprof - Provide an integrated profiler via dev-util/sysprof
-dev-util/gnome-builder:vala - Provide an autoindenter, autocompletion, diagnostics, and symbol resolver for Vala
 dev-util/google-perftools:debug - Build a set of libraries with debug support (so-called debugalloc). These are available by default but are not needed unless you're actually developing using tcmalloc.
 dev-util/google-perftools:largepages - Use (experimental) larger pages for tcmalloc, this increases memory usage, but should speed up the allocation/free operations.
 dev-util/google-perftools:largepages64k - Use (experimental) 64K pages for tcmalloc, this increases memory usage, but should speed up the allocation/free operations.
@@ -3320,7 +3319,6 @@ gnome-extra/evolution-data-server:weather - Enable optional weather calendar sup
 gnome-extra/filemanager-actions:caja - Install the mate-base/caja extension
 gnome-extra/filemanager-actions:nautilus - Install the gnome-base/nautilus extension
 gnome-extra/filemanager-actions:nemo - Install the gnome-extra/nemo extension
-gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutral package manager GUI PackageKit
 gnome-extra/gnome-commander:chm - Enable metadata support for Microsoft Compiled HTML Help files
 gnome-extra/gnome-commander:gsf - Add metadata support for OLE, OLE2 and ODF
 gnome-extra/gnome-commander:pdf - Add metadata support for PDF
