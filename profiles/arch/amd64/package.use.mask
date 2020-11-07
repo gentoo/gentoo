@@ -82,6 +82,7 @@ www-client/firefox -eme-free
 # dev-util/sysprof-capture is keyworded on amd64
 x11-wm/mutter -sysprof
 dev-libs/gjs -sysprof
+dev-libs/glib -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
