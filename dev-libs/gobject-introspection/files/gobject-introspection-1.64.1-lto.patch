@@ -1,0 +1,50 @@
+From cea7ef1e4a5626de1332bc34e1962befb75c2976 Mon Sep 17 00:00:00 2001
+From: Christoph Reiter <reiter.christoph@gmail.com>
+Date: Thu, 14 May 2020 09:41:43 +0200
+Subject: [PATCH] dumper: Fix missing symbols in LTO case or with overridden
+ symbol visibility settings
+
+In case a user had a combination of -fvisibility=hidden, -Wl,--as-needed, -flto, -O2
+in the CFLAGS the linker would sometimes detect that all the referenced gtype functions
+weren't actually used and throw them out with their providing libraries.
+
+Instead of hoping that the user's CFLAGS don't mess without our symbol visibility just use
+G_MODULE_EXPORT on the two symbols which reference all other gtype and gquark symbols.
+
+This fixes errors such as:
+
+Invalid GType function: 'gtk_accel_group_get_type'
+Failed to find symbol 'gtk_accel_group_get_type'
+
+during the g-ir-scanner execution.
+
+Fixes #280
+---
+ giscanner/dumper.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/giscanner/dumper.py b/giscanner/dumper.py
+index 0c10a7804..e4b6ea03a 100644
+--- a/giscanner/dumper.py
++++ b/giscanner/dumper.py
+@@ -126,7 +126,7 @@ class DumpCompiler(object):
+             if len(self._get_type_functions) > 0:
+                 for func in self._get_type_functions:
+                     f.write("extern GType " + func + "(void);\n")
+-                f.write("GType (*GI_GET_TYPE_FUNCS_[])(void) = {\n")
++                f.write("G_MODULE_EXPORT GType (*GI_GET_TYPE_FUNCS_[])(void) = {\n")
+                 first = True
+                 for func in self._get_type_functions:
+                     if first:
+@@ -138,7 +138,7 @@ class DumpCompiler(object):
+             if len(self._error_quark_functions) > 0:
+                 for func in self._error_quark_functions:
+                     f.write("extern GQuark " + func + "(void);\n")
+-                f.write("GQuark (*GI_ERROR_QUARK_FUNCS_[])(void) = {\n")
++                f.write("G_MODULE_EXPORT GQuark (*GI_ERROR_QUARK_FUNCS_[])(void) = {\n")
+                 first = True
+                 for func in self._error_quark_functions:
+                     if first:
+-- 
+GitLab
+

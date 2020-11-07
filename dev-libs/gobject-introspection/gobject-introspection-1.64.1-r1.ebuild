@@ -48,6 +48,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.64.1-lto.patch
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
