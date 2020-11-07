@@ -40,6 +40,5 @@ DEPEND="${RDEPEND}
 		dev-haskell/wai-extra
 		dev-haskell/yesod
 		>=dev-haskell/yesod-test-1.5.0.1
-		|| ( ( >=dev-haskell/yesod-auth-1.4.18 <dev-haskell/yesod-auth-1.5 )
-			( >=dev-haskell/yesod-auth-1.6.1 <dev-haskell/yesod-auth-1.7 ) ) )
+		>=dev-haskell/yesod-auth-1.6.1 <dev-haskell/yesod-auth-1.7 )
 "
