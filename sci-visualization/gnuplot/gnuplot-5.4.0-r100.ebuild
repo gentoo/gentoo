@@ -76,7 +76,8 @@ TEXMF="${EPREFIX}/usr/share/texmf-site"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
-	"${FILESDIR}"/${PN}-5.4.0-pkg-config.patch
+	"${FILESDIR}"/${P}-pkg-config.patch
+	"${FILESDIR}"/${P}-no-mouse.patch
 )
 
 pkg_setup() {
@@ -198,8 +199,7 @@ src_install() {
 }
 
 src_test() {
-	#GNUTERM="unknown" emake check   # spiderplot and isosurface tests fail
-	GNUTERM="dumb" emake check
+	emake check GNUTERM="dumb"
 }
 
 pkg_postinst() {
