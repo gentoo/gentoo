@@ -78,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
 	"${FILESDIR}"/${P}-pkg-config.patch
 	"${FILESDIR}"/${P}-no-mouse.patch
+	"${FILESDIR}"/${P}-caca.patch
 )
 
 pkg_setup() {
