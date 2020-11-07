@@ -23,7 +23,7 @@ index 6b247b4..1297c73 100644
 +	$(CC) $(LDFLAGS) -shared -o $@ $^ -Wl,-soname,libblas.so.3 -L.. -lopenblas $(EXTRALIB)
 +
 +libcblas.so.3: $(CSBLAS1OBJS) $(CSBLAS2OBJS) $(CSBLAS3OBJS) $(CDBLAS1OBJS) $(CDBLAS2OBJS) $(CDBLAS3OBJS) $(CCBLAS1OBJS) $(CCBLAS2OBJS) $(CCBLAS3OBJS) $(CZBLAS1OBJS) $(CZBLAS2OBJS) $(CZBLAS3OBJS) ../kernel/lsame.o ../kernel/scabs1.o ../kernel/dcabs1.o ../driver/others/xerbla.o
-+	$(CC) $(LDFLAGS) -shared -o $@ $^ -Wl,-soname,libblas.so.3 -L.. -lopenblas $(EXTRALIB)
++	$(CC) $(LDFLAGS) -shared -o $@ $^ -Wl,-soname,libcblas.so.3 -L.. -lopenblas $(EXTRALIB)
 +
 +# The prerequisites must match the symbols deleted in target delete-duplicate-lapack-objects
 +liblapack.so.3: $(SLAPACKOBJS) $(DLAPACKOBJS) $(CLAPACKOBJS) $(ZLAPACKOBJS) ../kernel/lsame.o ../driver/others/xerbla.o
