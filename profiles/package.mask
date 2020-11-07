@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-07)
+# sys-cluster/cluster-glue fails to install for almost a year now.
+# The remaining packages are its reverse dependencies.
+#
+# The stable version of sys-cluster/pacemaker is vulnerable.  It is also
+# using Python 2.  A newer version can not be stabilized because
+# of the above.
+#
+# Removal in 30 days.  Bug #704610.
+sys-cluster/cluster-glue
+sys-cluster/crmsh
+sys-cluster/pacemaker
+sys-cluster/resource-agents
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-05)
 # Replaced by kde-frameworks/kdav, masked for removal in 14 days.
 kde-apps/kdav
