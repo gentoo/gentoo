@@ -3759,7 +3759,7 @@ dev-haskell/basement 0.0.11: Foundation scrap box of array & string
 dev-haskell/basic-prelude 0.7.0: An enhanced core prelude; a common foundation for alternate preludes
 dev-haskell/bencode 0.6.1.1: Parser and printer for bencoded data
 dev-haskell/bifunctors 5.5.6: Haskell98 bifunctors package
-dev-haskell/binary 0.5.1.1 0.7.1.0 0.7.2.3 0.7.5.0 0.7.6.1 0.8.3.0 0.8.7.0: Binary serialisation for Haskell values using lazy ByteStrings
+dev-haskell/binary 0.8.7.0: Binary serialisation for Haskell values using lazy ByteStrings
 dev-haskell/binary-instances 1.0.0.1: Orphan instances for binary
 dev-haskell/binary-orphans 1.0.1: Orphan instances for binary
 dev-haskell/binary-tagged 0.2: Tagged binary serialisation
@@ -3987,7 +3987,7 @@ dev-haskell/harp 0.4.3.2: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.7.0: A class for types that can be converted to a hash value
 dev-haskell/hashable-time 0.2.0.2-r1: Hashable instances for Data.Time
 dev-haskell/hashtables 1.2.4.1: Mutable hash tables in the ST monad
-dev-haskell/haskeline 0.7.1.2 0.7.1.3 0.7.2.1 0.7.2.3 0.7.5.0: A command-line interface for user input, written in Haskell
+dev-haskell/haskeline 0.7.5.0: A command-line interface for user input, written in Haskell
 dev-haskell/haskell-lexer 1.0.2: A fully compliant Haskell 98 lexer
 dev-haskell/haskell-platform 2014.2.0.0-r1: The Haskell Platform
 dev-haskell/haskell-src 1.0.3.0: Support for manipulating Haskell source code
@@ -4164,7 +4164,7 @@ dev-haskell/monads-tf 0.1.0.3: Monad classes, using type families
 dev-haskell/mono-traversable 1.0.15.1: Type classes for mapping, folding, and traversing monomorphic containers
 dev-haskell/mono-traversable-instances 0.1.0.0: Extra typeclass instances for mono-traversable
 dev-haskell/mountpoints 1.0.2: list mount points
-dev-haskell/mtl 2.1.3.1 2.2.1 2.2.1-r1 2.2.2: Monad classes, using functional dependencies
+dev-haskell/mtl 2.2.2: Monad classes, using functional dependencies
 dev-haskell/mtl-compat 0.2.2: Backported Control.Monad.Except module from mtl
 dev-haskell/multipart 0.2.0: HTTP multipart split out of the cgi package
 dev-haskell/murmur-hash 0.1.0.9: MurmurHash2 implementation for Haskell
@@ -4376,7 +4376,7 @@ dev-haskell/temporary 1.3: Portable temporary file and directory support for Win
 dev-haskell/temporary-rc 1.2.0.3: Portable temporary file and directory support for Windows and Unix
 dev-haskell/tensor 1.1.0.1: Tensor data types
 dev-haskell/terminal-size 0.3.2.1: Get terminal window height and width
-dev-haskell/terminfo 0.4.0.0 0.4.0.1 0.4.0.2 0.4.1.4: Haskell bindings to the terminfo library
+dev-haskell/terminfo 0.4.1.4: Haskell bindings to the terminfo library
 dev-haskell/test-framework 0.8.2.0-r2: Framework for running and organising tests, with HUnit and QuickCheck support
 dev-haskell/test-framework-hunit 0.3.0.2-r1: HUnit support for the test-framework package
 dev-haskell/test-framework-leancheck 0.0.1: LeanCheck support for test-framework
@@ -4386,7 +4386,7 @@ dev-haskell/test-framework-th-prime 0.0.9: Template Haskell for test framework
 dev-haskell/testing-feat 1.1.0.0: Functional Enumeration of Algebraic Types
 dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing
 dev-haskell/texmath 0.12.0.3: Conversion between formats used to represent mathematics
-dev-haskell/text 0.11.3.1 1.1.1.3 1.2.2.0 1.2.2.1 1.2.3.1 1.2.4.0: An efficient packed Unicode text type
+dev-haskell/text 1.2.4.0: An efficient packed Unicode text type
 dev-haskell/text-binary 0.2.1.1: Binary instances for text types
 dev-haskell/text-conversions 0.3.0: Safe conversions between textual types
 dev-haskell/text-icu 0.7.0.1: Bindings to the ICU library
@@ -4413,7 +4413,7 @@ dev-haskell/tls 1.5.4: TLS/SSL protocol native implementation (Server and Client
 dev-haskell/tls-session-manager 0.0.4: In-memory TLS session manager
 dev-haskell/top 1.7: Constraint solving framework employed by the Helium Compiler
 dev-haskell/torrent 10000.1.1: BitTorrent file parser and generater
-dev-haskell/transformers 0.3.0.0-r1 0.4.1.0 0.4.2.0 0.4.3.0 0.5.2.0 0.5.6.2: Concrete functor and monad transformers
+dev-haskell/transformers 0.5.6.2: Concrete functor and monad transformers
 dev-haskell/transformers-base 0.4.5.2: Lift computations from the bottom of a transformer stack
 dev-haskell/transformers-compat 0.5.1.4 0.6.5: A small compatibility shim for dev-haskell/transformers
 dev-haskell/tree-diff 0.1: Diffing of (expression) trees
@@ -4427,7 +4427,7 @@ dev-haskell/unexceptionalio 0.5.1: IO without any non-error, synchronous excepti
 dev-haskell/unicode-transforms 0.3.7: Unicode normalization
 dev-haskell/uniplate 1.6.12: Help writing simple, concise and fast generic operations
 dev-haskell/uniqueid 0.1.1: Splittable Unique Identifier Supply
-dev-haskell/unix-compat 0.4.3.1 0.5.2: Portable POSIX-compatibility layer
+dev-haskell/unix-compat 0.5.2: Portable POSIX-compatibility layer
 dev-haskell/unix-time 0.4.7: Unix time parser/formatter and utilities
 dev-haskell/unixutils 1.54.1: A crude interface between Haskell and Unix-like operating systems
 dev-haskell/unliftio 0.2.12.1: The MonadUnliftIO typeclass for unlifting monads to IO (batteries included)
@@ -4438,7 +4438,7 @@ dev-haskell/uri-bytestring 0.3.2.2: Haskell URI parsing as ByteStrings
 dev-haskell/uri-bytestring-aeson 0.1.0.7: Aeson instances for URI Bytestring
 dev-haskell/url 2.1.3-r1: A library for working with URLs
 dev-haskell/utf8-light 0.4.2: Lightweight UTF8 handling
-dev-haskell/utf8-string 0.3.8 1.0.1.1: Support for reading and writing UTF8 Strings
+dev-haskell/utf8-string 1.0.1.1: Support for reading and writing UTF8 Strings
 dev-haskell/uuagc 0.9.53.1: Attribute Grammar System of Universiteit Utrecht
 dev-haskell/uuagc-cabal 1.2.0.0: Cabal plugin for UUAGC
 dev-haskell/uuid 1.3.13-r1: For creating, comparing, parsing and printing Universally Unique Identifiers
@@ -10369,7 +10369,7 @@ dev-scheme/goosh 1.3-r1: Small process-control library for Guile
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
-dev-scheme/guile-git 0.3.0-r1 0.4.0: Guile bindings of git
+dev-scheme/guile-git 0.4.0: Guile bindings of git
 dev-scheme/guile-json 4.1.0: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
@@ -17072,7 +17072,7 @@ sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network blo
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
-sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r1 99999: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 4.2.0: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
@@ -17426,7 +17426,7 @@ sys-fs/sandboxfs 0.2.0: A virtual file system for sandboxing
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.4.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
-sys-fs/squashfs-tools 4.4 9999: tools to create and extract Squashfs filesystems
+sys-fs/squashfs-tools 4.4 4.4-r1 4.4_p1: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 1.0.1 1.0.2 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
