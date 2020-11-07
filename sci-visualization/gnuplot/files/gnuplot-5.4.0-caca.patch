@@ -1,0 +1,46 @@
+From f76d96206a7251d62dbbd3879bf0ad6dfe1ec486 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Sat, 7 Nov 2020 11:25:07 -0800
+Subject: [PATCH] Allow to build --with-caca but without mouse support
+
+EAM: slightly modified fix
+Bug #2351
+---
+ term/caca.trm | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/term/caca.trm b/term/caca.trm
+index cf7c0d7c6..58606e2d8 100644
+--- a/term/caca.trm
++++ b/term/caca.trm
+@@ -1913,8 +1913,11 @@ CACA_process_events(void)
+ 	CACA_result loop = CACA_loop;
+ 	caca_event_t ev;
+ 	const int event_mask =
+-		CACA_EVENT_KEY_PRESS | CACA_EVENT_RESIZE |  CACA_EVENT_QUIT |
+-		CACA_EVENT_MOUSE_MOTION | CACA_EVENT_MOUSE_PRESS | CACA_EVENT_MOUSE_RELEASE;
++		CACA_EVENT_KEY_PRESS | CACA_EVENT_RESIZE |  CACA_EVENT_QUIT
++#ifdef USE_MOUSE
++		| CACA_EVENT_MOUSE_MOTION | CACA_EVENT_MOUSE_PRESS | CACA_EVENT_MOUSE_RELEASE
++#endif
++		;
+ 	static int mx = 0, my = 0; /* current mouse position */
+ 	static unsigned long last_event_time = 0;
+ 
+@@ -2579,11 +2582,13 @@ CACA_modify_plots(unsigned int operations, int plotno)
+ 		}
+ 	}
+ 
++#ifdef USE_MOUSE
+ 	if (changed) {
+ 		/* Replot only if something changed. */
+ 		CACA_zoom_or_replot = TRUE;
+ 		exec_event(GE_replot, 0, 0, 0, 0, 0);
+ 	}
++#endif
+ }
+ 
+ 
+-- 
+2.29.2
+
