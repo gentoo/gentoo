@@ -190,8 +190,7 @@ src_install() {
 }
 
 src_test() {
-	#GNUTERM="unknown" emake check   # spiderplot and isosurface tests fail
-	GNUTERM="dumb" emake check
+	emake check GNUTERM="dumb"
 }
 
 pkg_postinst() {
