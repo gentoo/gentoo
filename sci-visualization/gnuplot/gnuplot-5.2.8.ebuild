@@ -74,7 +74,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	eapply "${FILESDIR}"/${PN}-5.0.6-no-picins.patch
 	eapply "${FILESDIR}"/${PN}-5.2.2-regis.patch
-	eapply "${FILESDIR}"/${PN}-5.2.6-caca.patch
+	eapply "${FILESDIR}"/${PN}-5.2.8-caca.patch
 	eapply_user
 
 	if [[ -z ${PV%%*9999} ]]; then
