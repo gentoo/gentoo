@@ -61,6 +61,7 @@ sys-libs/glibc static-pie
 # dev-util/sysprof not keyworded on most arches yet
 x11-wm/mutter sysprof
 dev-libs/gjs sysprof
+dev-libs/glib sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
