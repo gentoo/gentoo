@@ -16872,8 +16872,8 @@ sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator c
 sys-apps/opal-utils 6.5.2 6.6.2 6.7: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
-sys-apps/osinfo-db 20200325 20200529: osinfo database files
-sys-apps/osinfo-db-tools 1.6.0-r1 1.8.0: Tools for managing the osinfo database
+sys-apps/osinfo-db 20200529: osinfo database files
+sys-apps/osinfo-db-tools 1.8.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.2.3 1.2.5: PaX flags maintenance daemon
 sys-apps/pciutils 3.5.6-r1 3.6.4 3.7.0: Various utilities dealing with the PCI bus
@@ -17516,7 +17516,7 @@ sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library includi
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r4: Light-weight 'standard library' of C functions
 sys-libs/libomp 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
-sys-libs/libosinfo 1.6.0 1.8.0-r1: GObject library for managing information about real and virtual OSes
+sys-libs/libosinfo 1.8.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2 2.0.2-r1: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.3 2.4.4 2.5.0 9999: high level interface to Linux seccomp filter
