@@ -50,25 +50,20 @@ ipod
 dmi
 
 # Stuff we don't want
-R
-octave
 tracker
-xindy
 lasi
-hardened
 pdfannotextractor
 prelude
 mssql
 gajim
 
 # havent tested yet
+R
 gphoto2
 afs
 mono
-lirc
 lm-sensors
 xemacs
-scanner
 sid
 mms
 mtp
@@ -78,10 +73,8 @@ darcs
 ggi
 nut
 fits
-tokyocabinet
 vaapi
 lpsol
-upnp
 devil
 gts
 anthy
