@@ -10817,7 +10817,7 @@ dev-util/smem 1.5-r1: A tool that can give numerous reports on memory usage on L
 dev-util/source-highlight 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spirv-headers 1.5.3 1.5.4 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 10.0.0 10.0.0_p20200909: Bi-directional translator between SPIR-V and LLVM IR
-dev-util/spirv-tools 2020.3 2020.5_pre20200922 9999: Provides an API and commands for processing SPIR-V modules
+dev-util/spirv-tools 2020.3 2020.5_pre20201107 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
