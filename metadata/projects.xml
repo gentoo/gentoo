@@ -1932,16 +1932,6 @@
     </member>
   </project>
   <project>
-    <email>livecd@gentoo.org</email>
-    <name>LiveCD Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LiveCD</url>
-    <description>Maintains packages used in the creation of LiveCDs.</description>
-    <member>
-      <email>mattst88@gentoo.org</email>
-      <name>Matt Turner</name>
-    </member>
-  </project>
-  <project>
     <email>lua@gentoo.org</email>
     <name>Lua Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Lua</url>
