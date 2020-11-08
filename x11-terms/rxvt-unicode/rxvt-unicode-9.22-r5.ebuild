@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools desktop
 
-COLOUR_PATCH_NAME="${PN}-9.22_24-bit-color-f45025a.patch"
+COLOUR_PATCH_NAME="${PN}-9.22_24-bit-color_cpixl-20201108.patch"
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
