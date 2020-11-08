@@ -8649,7 +8649,7 @@ dev-python/pycryptodomex 3.9.8 3.9.9: A self-contained cryptographic library for
 dev-python/pycson 0.8: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
-dev-python/pycurl 7.43.0.5 7.43.0.6: python binding for curl/libcurl
+dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1: Data parsing and validation using Python type hints
 dev-python/pydata-sphinx-theme 0.4.0: Bootstrap-based Sphinx theme from the PyData community
@@ -17234,7 +17234,7 @@ sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C language f
 sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20200801 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20200801 20201108 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
