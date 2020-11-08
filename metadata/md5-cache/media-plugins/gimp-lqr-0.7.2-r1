@@ -1,11 +1,11 @@
 DEFINED_PHASES=-
-DEPEND=>=media-gfx/gimp-2.8 media-libs/liblqr
+DEPEND=>=media-gfx/gimp-2.8:0/2 media-libs/liblqr
 DESCRIPTION=Content-aware resizing for the GIMP
 EAPI=7
 HOMEPAGE=http://liquidrescale.wikidot.com/
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=>=media-gfx/gimp-2.8 media-libs/liblqr
+RDEPEND=>=media-gfx/gimp-2.8:0/2 media-libs/liblqr
 SLOT=0
 SRC_URI=http://liquidrescale.wikidot.com/local--files/en:download-page-sources/gimp-lqr-plugin-0.7.2.tar.bz2
-_md5_=09112e2c43365be1bb2641ddd45f754c
+_md5_=f14c57ce16b15f015da318ff325ddeb2
