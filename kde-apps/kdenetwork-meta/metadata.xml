@@ -7,6 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="dropbox">Enable support for Dropbox in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-dropbox</pkg></flag>
-		<flag name="webengine">Enable Google Drive support via <pkg>kde-apps/kio-gdrive</pkg> and instant messaging integration via <pkg>kde-apps/plasma-telepathy-meta</pkg></flag>
+		<flag name="webengine">Enable Google Drive support via <pkg>kde-misc/kio-gdrive</pkg> and instant messaging integration via <pkg>kde-apps/plasma-telepathy-meta</pkg></flag>
 	</use>
 </pkgmetadata>
