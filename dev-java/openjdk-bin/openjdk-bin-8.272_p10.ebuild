@@ -52,6 +52,14 @@ QA_PREBUILT="*"
 
 S="${WORKDIR}/jdk${MY_PV}"
 
+src_unpack() {
+	default
+	# 753575
+	if use arm; then
+		mv -v "${S}"* "${S}" || die
+	fi
+}
+
 src_install() {
 	local dest="/opt/${P}"
 	local ddest="${ED%/}/${dest#/}"
