@@ -20,6 +20,7 @@ BDEPEND="
 	test? (
 		dev-db/redis
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/sentry-sdk[${PYTHON_USEDEP}]
 	)
 "
