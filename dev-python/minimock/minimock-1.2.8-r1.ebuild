@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ppc x86"
+KEYWORDS="amd64 arm ~arm64 ppc x86"
 
 DOCS=( docs/changelog.rst docs/index.rst )
 
