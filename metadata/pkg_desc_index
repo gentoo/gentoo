@@ -5494,7 +5494,7 @@ dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.6.1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.10-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML blobs
-dev-libs/libxslt 1.1.33-r1 1.1.34 1.1.34-r1: XSLT libraries and tools
+dev-libs/libxslt 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.21 4.22 4.23: platform abstraction code for tucnak package
 dev-libs/libzip 1.7.3: Library for manipulating zip archives
@@ -15503,7 +15503,7 @@ net-wireless/kismetmobiledashboard 1.5_beta1-r2 9999: Mobile UI for kismet
 net-wireless/libm2k 0.0_p20201005 9999: A C++ library for interfacing with the ADALM2000
 net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
-net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 0.0_p20200214 9999: A generic library for injecting 802.11 frames
+net-wireless/lorcon 0.0_p20200214 9999: A generic library for injecting 802.11 frames
 net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
@@ -16208,7 +16208,7 @@ sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/octomap 1.9.0 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
-sci-libs/openblas 0.3.9-r1 0.3.10 0.3.12: Optimized BLAS library based on GotoBLAS2
+sci-libs/openblas 0.3.9-r1 0.3.10 0.3.12-r1: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.7.0 0.7.2: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
