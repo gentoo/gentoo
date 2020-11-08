@@ -1,0 +1,13 @@
+diff --git a/lib_ccx/CMakeLists.txt b/lib_ccx/CMakeLists.txt
+index 172ef42..0d00660 100644
+--- a/lib_ccx/CMakeLists.txt
++++ b/lib_ccx/CMakeLists.txt
+@@ -3,7 +3,7 @@ cmake_policy (SET CMP0037 NEW)
+ if(MSVC)
+     set (CMAKE_C_FLAGS "-W3 /wd4005 /wd4996")
+ else (MSVC)
+-    set (CMAKE_C_FLAGS "-Wall -g -std=gnu99")
++    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+ endif(MSVC)
+ 
+ if(WIN32)
