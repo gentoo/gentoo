@@ -32,7 +32,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# Matt Turner <mattst88@gentoo.org> (2020-11-08)
 # Uninstallable because of fetch restriction and dead download link.
 # Removal in 30 days.  Bug #725646.
 media-fonts/mathematica-fonts
