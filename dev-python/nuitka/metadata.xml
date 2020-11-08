@@ -16,6 +16,6 @@
 	be used in the same way as pure Python objects.
 </longdescription>
 <upstream>
-	<remote-id type="github">pwman3/pwman3</remote-id>
+	<remote-id type="github">Nuitka/Nuitka</remote-id>
 </upstream>
 </pkgmetadata>
