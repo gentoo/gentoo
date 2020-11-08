@@ -8,5 +8,5 @@ LICENSE=free-noncomm
 RDEPEND=|| ( games-fps/ut2004 >=games-server/ut2004-ded-3369.3-r2 )
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://ut2004.ut-files.com/BonusPacks/cbp1.zip
-_md5_=860c952ee474c75b28cd0df7909b45d6
+SRC_URI=http://ut2004.ut-files.com/BonusPacks/cbp1.zip
+_md5_=199ae3e50c392b78e0077b5a9f12abe6
