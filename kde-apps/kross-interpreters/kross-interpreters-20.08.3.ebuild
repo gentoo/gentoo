@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_python=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
 		-DBUILD_ruby=ON
 	)
 	ecm_src_configure
