@@ -111,6 +111,15 @@ pkg_setup() {
 	check-reqs_pkg_setup
 
 	python-any-r1_pkg_setup
+
+	# Build system is using /proc/self/oom_score_adj, bug #604394
+	addpredict /proc/self/oom_score_adj
+
+	if ! mountpoint -q /dev/shm ; then
+		# If /dev/shm is not available, configure is known to fail with
+		# a traceback report referencing /usr/lib/pythonN.N/multiprocessing/synchronize.py
+		ewarn "/dev/shm is not mounted -- expect build failures!"
+	fi
 }
 
 src_prepare() {
