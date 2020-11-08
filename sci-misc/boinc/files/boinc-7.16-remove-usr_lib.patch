@@ -1,0 +1,89 @@
+--- a/m4/ax_check_glut.m4	2020-11-08 01:03:40.797864295 +0100
++++ b/m4/ax_check_glut.m4	2020-11-08 01:04:53.407868481 +0100
+@@ -41,7 +41,7 @@
+     else
+       ax_try_lib="${ax_lib}"
+     fi
+-    LIBS="-L${prefix}/lib ${ax_try_lib} ${GLUT_LIBS} ${ax_save_LIBS}"
++    LIBS="${ax_try_lib} ${GLUT_LIBS} ${ax_save_LIBS}"
+     AC_LINK_IFELSE(
+     [AC_LANG_PROGRAM([[
+ #define FREEGLUT_STATIC 1
+@@ -50,7 +50,7 @@
+ # endif
+ # include <GL/glut.h>]],
+                      [[glutMainLoop()]])],
+-    [ax_cv_check_glut_libglut="-L${prefix}/lib ${ax_try_lib}"; break])
++    [ax_cv_check_glut_libglut="${ax_try_lib}"; break])
+ 
+   done
+   LIBS=${ax_save_LIBS}
+--- a/m4/ax_check_glu.m4	2020-11-08 01:03:48.221864723 +0100
++++ b/m4/ax_check_glu.m4	2020-11-08 01:04:53.405868480 +0100
+@@ -19,7 +19,7 @@
+     else
+       ax_try_lib="${ax_lib}"
+     fi
+-    LIBS="-L${prefix}/lib ${ax_try_lib} ${GL_LIBS} ${ax_save_LIBS}"
++    LIBS="${ax_try_lib} ${GL_LIBS} ${ax_save_LIBS}"
+     #
+     # libGLU typically links with libstdc++ on POSIX platforms. However,
+     # setting the language to C++ means that test program source is named
+@@ -37,7 +37,7 @@
+ # endif
+ # include <GL/glu.h>]],
+                      [[gluBeginCurve(0)]])],
+-    [ax_cv_check_glu_libglu="-L${prefix}/lib ${ax_try_lib}"; break])
++    [ax_cv_check_glu_libglu="${ax_try_lib}"; break])
+     if test X$ax_compiler_ms = Xyes; then
+       AC_LANG_POP([C])
+     fi
+--- a/m4/ax_check_gl.m4	2020-11-08 01:03:57.178865240 +0100
++++ b/m4/ax_check_gl.m4	2020-11-08 01:04:53.401868480 +0100
+@@ -39,7 +39,7 @@
+       GL_CFLAGS="-I${x_includes} -I${prefix}/include ${GL_CFLAGS}"
+     fi
+     if test -n "$x_libraries"; then
+-      GL_LIBS="-L${x_libraries} -L${prefix}/lib -lX11 ${GL_LIBS}"
++      GL_LIBS="-L${x_libraries} -lX11 ${GL_LIBS}"
+     fi
+   fi
+ 
+@@ -58,7 +58,7 @@
+     else
+       ax_try_lib="${ax_lib}"
+     fi
+-    LIBS="-L${prefix}/lib ${ax_try_lib} ${GL_LIBS} ${ax_save_LIBS}"
++    LIBS="${ax_try_lib} ${GL_LIBS} ${ax_save_LIBS}"
+     AC_LINK_IFELSE(
+     [AC_LANG_PROGRAM([[
+ # if HAVE_WINDOWS_H && defined(_WIN32)
+@@ -66,7 +66,7 @@
+ # endif
+ # include <GL/gl.h>]],
+                      [[glBegin(0)]])],
+-    [ax_cv_check_gl_libgl="-L${prefix}/lib ${ax_try_lib}"; break])
++    [ax_cv_check_gl_libgl="${ax_try_lib}"; break])
+   done
+   LIBS=${ax_save_LIBS}
+   CPPFLAGS=${ax_save_CPPFLAGS}])
+--- a/m4/check_ssl.m4	2020-11-11 08:29:37.638655925 +0100
++++ b/m4/check_ssl.m4	2020-11-11 08:31:28.319659865 +0100
+@@ -46,7 +46,7 @@
+       SSLDIR="${ssldir}"
+       SSL_CFLAGS="-I$ssldir/include -I$ssldir/include/openssl";
+       SSL_CXXFLAGS="-I$ssldir/include -I$ssldir/include/openssl";
+-      SSL_LIBS="-L$ssldir -L$ssldir/lib -lssl -lcrypto"
++      SSL_LIBS="-lssl -lcrypto"
+       AC_CHECK_LIB([dl], [dlopen], 
+           [SSL_LIBS="${SSL_LIBS} ${sah_lib_last}"])
+       AC_CHECK_LIB([z], [gzopen], 
+@@ -58,7 +58,7 @@
+       SSLDIR="${ssldir}"
+       SSL_CFLAGS="-I$ssldir/include/"
+       SSL_CXXFLAGS="-I$ssldir/include/"
+-      SSL_LIBS="-L$ssldir -L$ssldir/lib -lssl -lcrypto"
++      SSL_LIBS="-lssl -lcrypto"
+       AC_CHECK_LIB([dl], [dlopen], 
+           [SSL_LIBS="${SSL_LIBS} ${sah_lib_last}"])
+       AC_CHECK_LIB([z], [gzopen], 
