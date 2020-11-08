@@ -26,7 +26,7 @@ fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="+alsa +dbus debug g15 jack libressl portaudio pulseaudio +rnnoise speech test zeroconf"
+IUSE="+alsa +dbus debug g15 jack libressl portaudio pulseaudio nls +rnnoise speech test zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -39,6 +39,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
+	>=media-libs/opus-1.3.1
 	>=media-libs/speex-1.2.0
 	media-libs/speexdsp
 	sys-apps/lsb-release
@@ -50,7 +51,6 @@ RDEPEND="
 	jack? ( virtual/jack )
 	!libressl? ( >=dev-libs/openssl-1.0.0b:0= )
 	libressl? ( dev-libs/libressl )
-	>=media-libs/opus-1.3.1
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	speech? ( >=app-accessibility/speech-dispatcher-0.8.0 )
@@ -72,10 +72,10 @@ src_configure() {
 		"-Dbundled-opus=OFF"
 		"-Dbundled-speex=OFF"
 		"-Doverlay=ON"
-		"-Dtranslations=OFF"
 		"-Dserver=OFF"
 		"-Dupdate=OFF"
 		"-Dalsa=$(usex alsa)"
+		"-DBUILD_TESTING=$(usex test)"
 		"-Ddbus=$(usex dbus)"
 		"-Dg15=$(usex g15)"
 		"-Djackaudio=$(usex jack)"
@@ -83,11 +83,10 @@ src_configure() {
 		"-Dpulseaudio=$(usex pulseaudio)"
 		"-Drnnoise=$(usex rnnoise)"
 		"-Dspeechd=$(usex speech)"
-		"-DBUILD_TESTING=$(usex test)"
+		"-Dtranslations=$(usex nls)"
 		"-Dzeroconf=$(usex zeroconf)"
 	)
 
-	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake_src_configure
 }
 
