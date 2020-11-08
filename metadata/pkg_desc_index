@@ -18167,7 +18167,7 @@ x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creati
 x11-libs/libSM 1.2.3-r1: X.Org Session Management library
 x11-libs/libX11 1.6.12: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
-x11-libs/libXau 1.0.9: X.Org X authorization library
+x11-libs/libXau 1.0.9 1.0.9-r1: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r2: X.Org Xaw library
 x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2d: Xaw3dXft library
@@ -18188,7 +18188,7 @@ x11-libs/libXrandr 1.5.2: X.Org Xrandr library
 x11-libs/libXrender 0.9.10-r2: X.Org Xrender library
 x11-libs/libXres 1.2.0-r1: X.Org XRes library
 x11-libs/libXt 1.2.0: X.Org X Toolkit Intrinsics library
-x11-libs/libXtst 1.2.3-r1: X.Org Xlib-based client API for the XTEST & RECORD extensions library
+x11-libs/libXtst 1.2.3-r1 1.2.3-r2: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11-r2: X.Org Xv library
 x11-libs/libXvMC 1.0.12: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
@@ -18224,7 +18224,7 @@ x11-libs/libxcb 1.14: X C-language Bindings library
 x11-libs/libxkbcommon 0.10.0-r1 1.0.1-r1: keymap handling library for toolkits and window systems
 x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
-x11-libs/libxshmfence 1.3-r1: Shared memory fences using futexes
+x11-libs/libxshmfence 1.3-r1 1.3-r2: Shared memory fences using futexes
 x11-libs/libyui 3.3.3: UI abstraction library
 x11-libs/libyui-gtk 2.44.9: UI abstraction library - GTK plugin
 x11-libs/libyui-ncurses 2.48.3: UI abstraction library - ncurses plugin
@@ -18372,7 +18372,7 @@ x11-misc/mozo 1.24.0 1.24.0-r1: Mozo menu editor for MATE
 x11-misc/mugshot 0.4.2-r1: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1 1.6.1-r1 99999: A background browser and setter for X
-x11-misc/notification-daemon 3.20.0: Notification daemon
+x11-misc/notification-daemon 3.20.0 3.20.0-r1: Notification daemon
 x11-misc/notify-osd 0.9.34-r1: Canonical's on-screen-display notification agent
 x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
