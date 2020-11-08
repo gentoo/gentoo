@@ -11,8 +11,8 @@ DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v2.10/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
-SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+SLOT="0/2"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 x86"
 
 IUSE="aalib alsa aqua debug doc gnome heif jpeg2k mng openexr postscript udev unwind vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 
@@ -27,11 +27,11 @@ COMMON_DEPEND="
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.6:2
-	>=media-gfx/mypaint-brushes-2.0.2:=
+	>=media-gfx/mypaint-brushes-1.3.0:=
 	>=media-libs/babl-0.1.78
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.26:0.4[cairo]
+	>=media-libs/gegl-0.4.24:0.4[cairo]
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/lcms-2.8:2
@@ -87,7 +87,9 @@ PATCHES=(
 )
 
 src_prepare() {
-	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
+	if has_version "media-gfx/mypaint-brushes:2.0" ; then
+		sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
+	fi
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
@@ -164,14 +166,14 @@ _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
 	local prepend=gimp-org-
 	(
-		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.0/plug-ins || die
+		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.0/plug-ins || exit 1
 		for plugin_slash in $(ls -d1 */); do
 		    plugin=${plugin_slash%/}
 		    if [[ -f ${plugin}/${plugin} ]]; then
 			# NOTE: Folder and file name need to match for Gimp to load that plug-in
 			#       so "file-svg/file-svg" becomes "${prepend}file-svg/${prepend}file-svg"
-			mv ${plugin}/{,${prepend}}${plugin} || die
-			mv {,${prepend}}${plugin} || die
+			mv ${plugin}/{,${prepend}}${plugin} || exit 1
+			mv {,${prepend}}${plugin} || exit 1
 		    fi
 		done
 	)
