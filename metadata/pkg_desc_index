@@ -6540,6 +6540,7 @@ dev-perl/Gtk2-Notify 0.50.0: A perl interface to the notification library
 dev-perl/Gtk2-SourceView2 0.100.0-r1: Perl binding for the C library gtksourceview
 dev-perl/Gtk2-Unique 0.50.0-r2: Perl binding for C libunique library
 dev-perl/Gtk3 0.34.0: Perl interface to the 3.x series of the gtk+ toolkit
+dev-perl/Gtk3-ImageView 4.0.0: Image viewer widget for Gtk3
 dev-perl/Gtk3-SimpleList 0.170.0: A simple interface to GTK+ 3's complex MVC list widget
 dev-perl/Guard 1.23.0: Safe cleanup blocks
 dev-perl/HTML-Clean 0.800.0-r2: Cleans up HTML code for web browsers, not humans
@@ -10571,7 +10572,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2.4: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
-dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.3 3.18.4 3.19.0_rc2: Cross platform Make
+dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.3 3.18.4 3.19.0_rc3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
@@ -10657,7 +10658,7 @@ dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.62.6 2.64.5 2.66.0: GDBus code and documentation generator
-dev-util/geany 1.36 1.37 9999: GTK+ based fast and lightweight IDE
+dev-util/geany 1.36 1.37 1.37.1 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2 1.37: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
@@ -11975,7 +11976,7 @@ kde-apps/kdegraphics-meta 20.04.3 20.08.3: kdegraphics - merge this to pull in a
 kde-apps/kdegraphics-mobipocket 20.04.3 20.08.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 20.04.3 20.08.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 20.04.3 20.08.3: SMB filesharing config module for systemsettings
-kde-apps/kdenetwork-meta 20.04.3 20.08.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenetwork-meta 20.04.3 20.08.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 20.04.3 20.08.3: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 20.04.3 20.08.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 20.04.3 20.08.3: Libraries for KDE PIM applications
