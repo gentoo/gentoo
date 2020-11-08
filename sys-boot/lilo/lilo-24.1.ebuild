@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -25,10 +25,14 @@ DEPEND=">=sys-devel/bin86-0.15.5"
 RDEPEND="device-mapper? ( >=sys-fs/lvm2-2.02.45 )"
 
 src_prepare() {
+	default
+
 	# this patch is needed when booting PXE and the device you're using
 	# emulates vga console via serial console.
 	# IE..  B.B.o.o.o.o.t.t.i.i.n.n.g.g....l.l.i.i.n.n.u.u.x.x and stair stepping.
-	use pxeserial && epatch "${FILESDIR}/${P}-novga.patch"
+	use pxeserial && eapply "${FILESDIR}/${P}-novga.patch"
+
+	eapply "${FILESDIR}/${PN}-24.x-fix-gcc-10.patch"
 
 	# Do not strip and have parallel make
 	# FIXME: images/Makefile does weird stuff
