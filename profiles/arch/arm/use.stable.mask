@@ -9,11 +9,6 @@
 lirc
 upnp
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-08)
-# Python 3.9 is not yet stable.
-python_targets_python3_9
-python_single_target_python3_9
-
 # Sam James <sam@gentoo.org> (2020-11-06)
 # Java is not stable on arm right now.
 # bug #709830
