@@ -99,6 +99,8 @@ src_prepare() {
 	# c.f. https://github.com/fwupd/fwupd/issues/1414
 	sed -e "/test('thunderbolt-self-test', e, env: test_env, timeout : 120)/d" \
 		-i plugins/thunderbolt/meson.build || die
+	sed '/platform-integrity/d' \
+		-i plugins/meson.build || die #753521
 	vala_src_prepare
 }
 
