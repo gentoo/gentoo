@@ -122,7 +122,7 @@ src_install() {
 	exeinto /usr/libexec/${PN}
 	newexe "${FILESDIR}"/libexec/${PN}${mksuffix}.sh ${PN}.sh
 	newconfd "${FILESDIR}"/${PN}${mksuffix}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}${mksuffix}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}${mksuffix}.init-r1 ${PN}
 	keepdir /var/lib/nftables
 
 	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
