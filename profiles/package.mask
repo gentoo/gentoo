@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# Uninstallable because of fetch restriction and dead download link.
+# Removal in 30 days.  Bug #725646.
+media-fonts/mathematica-fonts
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-07)
 # sys-cluster/cluster-glue fails to install for almost a year now.
 # The remaining packages are its reverse dependencies.
