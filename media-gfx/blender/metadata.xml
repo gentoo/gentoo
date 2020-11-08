@@ -48,9 +48,6 @@
 		<flag name="elbeem">
 			Adds surface fluid simulation to Blender using El'Beem library.
 		</flag>
-		<flag name="game-engine">
-			Adds Game Engine support to Blender.
-		</flag>
 		<flag name="headless">
 			Build without graphical support (renderfarm, server mode only).
 		</flag>
@@ -76,9 +73,6 @@
 		</flag>
 		<flag name="osl">
 			Add support for OpenShadingLanguage scripting.
-		</flag>
-		<flag name="player">
-			Build the Blender Player. THis requires the Game engine.
 		</flag>
 		<flag name="standalone">
 			Build the standalone version of Cycles.
