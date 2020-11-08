@@ -12,7 +12,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="1"
+PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -228,7 +228,7 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
-		"${FILESDIR}/chromium-87-ozone-deps.patch"
+		"${FILESDIR}/chromium-88-ozone-deps.patch"
 		"${FILESDIR}/chromium-87-webcodecs-deps.patch"
 	)
 
@@ -326,6 +326,7 @@ src_prepare() {
 		third_party/emoji-segmenter
 		third_party/flatbuffers
 		third_party/freetype
+		third_party/fusejs
 		third_party/libgifcodec
 		third_party/glslang
 		third_party/google_input_tools
@@ -356,6 +357,8 @@ src_prepare() {
 		third_party/libvpx
 		third_party/libvpx/source/libvpx/third_party/x86inc
 		third_party/libwebm
+		third_party/libx11
+		third_party/libxcb-keysyms
 		third_party/libxml/chromium
 		third_party/libyuv
 		third_party/llvm
@@ -438,6 +441,7 @@ src_prepare() {
 		third_party/widevine
 		third_party/woff2
 		third_party/wuffs
+		third_party/x11proto
 		third_party/xcbproto
 		third_party/zxcvbn-cpp
 		third_party/zlib/google
