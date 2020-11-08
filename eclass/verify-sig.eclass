@@ -111,6 +111,95 @@ verify-sig_verify_detached() {
 		die "PGP signature verification failed"
 }
 
+# @FUNCTION: verify-sig_verify_message
+# @USAGE: <file> <output-file> [<key-file>]
+# @DESCRIPTION:
+# Verify that the file ('-' for stdin) contains a valid, signed PGP
+# message and write the message into <output-file> ('-' for stdout).
+# <key-file> can either be passed directly, or it defaults
+# to VERIFY_SIG_OPENPGP_KEY_PATH.  The function dies if verification
+# fails.  Note that using output from <output-file> is important as it
+# prevents the injection of unsigned data.
+verify-sig_verify_message() {
+	local file=${1}
+	local output_file=${2}
+	local key=${3:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+
+	[[ -n ${key} ]] ||
+		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+
+	local extra_args=()
+	[[ ${VERIFY_SIG_OPENPGP_KEY_REFRESH} == yes ]] || extra_args+=( -R )
+	[[ -n ${VERIFY_SIG_OPENPGP_KEYSERVER+1} ]] && extra_args+=(
+		--keyserver "${VERIFY_SIG_OPENPGP_KEYSERVER}"
+	)
+
+	# GPG upstream knows better than to follow the spec, so we can't
+	# override this directory.  However, there is a clean fallback
+	# to GNUPGHOME.
+	addpredict /run/user
+
+	local filename=${file##*/}
+	[[ ${file} == - ]] && filename='(stdin)'
+	einfo "Verifying ${filename} ..."
+	gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
+		gpg --verify --output="${output_file}" "${file}" ||
+		die "PGP signature verification failed"
+}
+
+# @FUNCTION: verify-sig_verify_signed_checksums
+# @USAGE: <checksum-file> <algo> <files> [<key-file>]
+# @DESCRIPTION:
+# Verify the checksums for all files listed in the space-separated list
+# <files> (akin to ${A}) using a PGP-signed <checksum-file>.  <algo>
+# specified the checksum algorithm (e.g. sha256).  <key-file> can either
+# be passed directly, or it defaults to VERIFY_SIG_OPENPGP_KEY_PATH.
+#
+# The function dies if PGP verification fails, the checksum file
+# contains unsigned data, one of the files do not match checksums
+# or are missing from the checksum file.
+verify-sig_verify_signed_checksums() {
+	local checksum_file=${1}
+	local algo=${2}
+	local files=()
+	read -r -d '' -a files <<<"${3}"
+	local key=${4:-${VERIFY_SIG_OPENPGP_KEY_PATH}}
+
+	local chksum_prog chksum_len
+	case ${algo} in
+		sha256)
+			chksum_prog=sha256sum
+			chksum_len=64
+			;;
+		*)
+			die "${FUNCNAME}: unknown checksum algo ${algo}"
+			;;
+	esac
+
+	[[ -n ${key} ]] ||
+		die "${FUNCNAME}: no key passed and VERIFY_SIG_OPENPGP_KEY_PATH unset"
+
+	local checksum filename junk ret=0 count=0
+	while read -r checksum filename junk; do
+		[[ ${#checksum} -eq ${chksum_len} ]] || continue
+		[[ -z ${checksum//[0-9a-f]} ]] || continue
+		has "${filename}" "${files[@]}" || continue
+		[[ -z ${junk} ]] || continue
+
+		"${chksum_prog}" -c --strict - <<<"${checksum} ${filename}"
+		if [[ ${?} -eq 0 ]]; then
+			(( count++ ))
+		else
+			ret=1
+		fi
+	done < <(verify-sig_verify_message "${checksum_file}" - "${key}")
+
+	[[ ${ret} -eq 0 ]] ||
+		die "${FUNCNAME}: at least one file did not verify successfully"
+	[[ ${count} -eq ${#files[@]} ]] ||
+		die "${FUNCNAME}: checksums for some of the specified files were missing"
+}
+
 # @FUNCTION: verify-sig_src_unpack
 # @DESCRIPTION:
 # Default src_unpack override that verifies signatures for all
