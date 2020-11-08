@@ -83,7 +83,7 @@ src_install() {
 			die "Can't find GIMP plugin directory."
 		fi
 		dodir "${plugindir#${EPREFIX}}"
-		dosym /usr/bin/xsane "${plugindir#${EPREFIX}}"/xsane
+		dosym "${EPREFIX}/usr/bin/xsane" "${plugindir#${EPREFIX}}"/xsane
 	fi
 
 	newicon "${DISTDIR}/${PN}-256x256.png" "${PN}".png
