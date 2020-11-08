@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg-utils
+
 DESCRIPTION="Screen saver and locker (port of MATE screensaver)"
 HOMEPAGE="https://git.xfce.org/apps/xfce4-screensaver/about/"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
@@ -70,4 +72,12 @@ src_install() {
 	default
 
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
