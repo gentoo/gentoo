@@ -180,6 +180,7 @@ src_test() {
 	fi
 
 	local -a KNOWN_TESTFAILURES
+	KNOWN_TESTFAILURES+=( test262/built-ins/Atomics/wait/bigint/waiterlist-order-of-operations-is-fifo.js )
 	KNOWN_TESTFAILURES+=( test262/intl402/RelativeTimeFormat/prototype/format/en-us-numeric-auto.js )
 	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/timeZone_backward_links.js )
 	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/tz-environment-variable.js )
