@@ -704,7 +704,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4 0.103.0-r1: Clam Anti-Virus Scanner
-app-antivirus/clamtk 6.05 6.06: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.06: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -5142,7 +5142,7 @@ dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL impleme
 dev-libs/angelscript 2.34.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2 3.5.2-r1: The ANTLR3 C Runtime
 dev-libs/appstream 0.12.7 0.12.11-r1: Cross-distro effort for providing metadata for software in the Linux ecosystem
-dev-libs/appstream-glib 0.7.16 0.7.17: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.7.16 0.7.17 0.7.18: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.6.3-r4 1.6.5-r1 1.7.0-r1: Apache Portable Runtime Library
 dev-libs/apr-util 1.6.1-r6: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -5357,7 +5357,7 @@ dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor A
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.6 1.8.7: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
-dev-libs/libgdata 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 1.0.1 1.1.0-r1: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r1: Git library for GLib
@@ -11959,7 +11959,7 @@ kde-apps/kcharselect 20.04.3 20.08.3: KDE character selection utility
 kde-apps/kcolorchooser 20.04.3 20.08.3: KDE color selector/editor
 kde-apps/kcron 20.04.3 20.08.3: KDE Task Scheduler
 kde-apps/kdav 20.04.3: DAV protocol implemention with KJobs
-kde-apps/kde-apps-meta 20.04.3 20.08.2 20.08.3: Meta package for the KDE Release Service collection
+kde-apps/kde-apps-meta 20.04.3 20.08.3: Meta package for the KDE Release Service collection
 kde-apps/kde-dev-scripts 20.04.3 20.08.3: KDE Development Scripts
 kde-apps/kde-dev-utils 20.04.3 20.08.3: KDE Development Utilities
 kde-apps/kde-meta 20.04.3 20.08.3: Merge this to pull in all KDE Plasma and Applications packages
@@ -11982,7 +11982,7 @@ kde-apps/kdepim-apps-libs 20.04.3 20.08.3: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 20.04.3 20.08.3: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 20.04.3-r1 20.08.3: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdesdk-kioslaves 20.04.3 20.08.3: kioslaves from kdesdk package
-kde-apps/kdesdk-meta 20.04.3 20.08.2-r1 20.08.3: KDE SDK - merge this to pull in all kdesdk-derived packages
+kde-apps/kdesdk-meta 20.04.3 20.08.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 20.04.3 20.08.3: Thumbnail generator for PO files
 kde-apps/kdeutils-meta 20.04.3 20.08.3: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdf 20.04.3 20.08.3: KDE free disk space utility
@@ -12123,7 +12123,7 @@ kde-apps/step 20.04.3 20.08.3: Interactive physics simulator
 kde-apps/svgpart 20.04.3 20.08.3: Kpart for viewing SVGs
 kde-apps/sweeper 20.04.3 20.08.3: Privacy settings widget to clean unwanted traces on the system
 kde-apps/thumbnailers 20.04.3 20.08.3: Thumbnail generators for PDF/PS and RAW files
-kde-apps/umbrello 20.04.3 20.08.2-r1 20.08.3: KDE UML Modeller
+kde-apps/umbrello 20.04.3 20.08.3: KDE UML Modeller
 kde-apps/yakuake 20.04.3-r1 20.08.3: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 20.04.3 20.08.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.74.0 5.75.0: Framework providing access to Open Collaboration Services
