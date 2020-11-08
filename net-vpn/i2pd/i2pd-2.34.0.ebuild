@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd cmake toolchain-funcs
+inherit cmake toolchain-funcs systemd
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening libressl static +upnp"
 
 RDEPEND="
@@ -21,23 +21,22 @@ RDEPEND="
 		dev-libs/boost:=[threads]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
-		upnp? ( net-libs/miniupnpc )
+		upnp? ( net-libs/miniupnpc:= )
 	)"
 DEPEND="${RDEPEND}
 	static? (
 		dev-libs/boost:=[static-libs,threads]
+		sys-libs/zlib[static-libs]
 		!libressl? ( dev-libs/openssl:0=[static-libs] )
 		libressl? ( dev-libs/libressl:0=[static-libs] )
-		sys-libs/zlib:=[static-libs]
-		upnp? ( net-libs/miniupnpc[static-libs] )
+		upnp? ( net-libs/miniupnpc:=[static-libs] )
 	)"
 
 CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
-PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch"
-	"${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
+PATCHES=( "${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
 
 pkg_pretend() {
 	if use i2p-hardening && ! tc-is-gcc; then
