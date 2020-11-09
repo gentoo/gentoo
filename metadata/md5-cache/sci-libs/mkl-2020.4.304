@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm unpack
+DESCRIPTION=Intel Math Kernel Library
+EAPI=7
+HOMEPAGE=https://software.intel.com/en-us/intel-mkl
+IUSE=static-libs abi_x86_32 abi_x86_64
+KEYWORDS=~amd64 ~x86
+LICENSE=ISSL
+RDEPEND=app-eselect/eselect-blas app-eselect/eselect-lapack sys-libs/libomp[abi_x86_32(-)?,abi_x86_64(-)?]
+REQUIRED_USE=|| ( abi_x86_32 abi_x86_64 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16917/l_mkl_2020.4.304.tgz -> mkl-2020.4.304.tar.gz
+_eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	multilib-build	9a65133006c608964888346a412cc454	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=12b6b782b7e3ccb1af516107623f7e9b

@@ -7956,6 +7956,7 @@ dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
 dev-python/chameleon 3.8.1: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4-r1: Universal encoding detector
+dev-python/chart-studio 1.1.0: Browser-based graphing library for Python
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4 3.2.6: Python-powered template engine and code generator
@@ -8572,7 +8573,8 @@ dev-python/pipenv 2020.8.13: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1-r1: Provides an API for querying the distutils metadata written in a PKG-INFO file
-dev-python/plotly 1.9.6: Browser-based graphing library for Python
+dev-python/plotly 1.9.6 4.10.0: Browser-based graphing library for Python
+dev-python/plotly-geo 1.0.0: Browser-based graphing library for Python
 dev-python/pluggy 0.13.1-r1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 1.0.0: Support library for building plugins sytems in Python
 dev-python/plumbum 1.6.8: A library for shell script-like programs in python
@@ -16192,7 +16194,7 @@ sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/med 4.0.0-r1 4.0.0-r2: A library to store and exchange meshed data or computation results
 sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r4: A package for unstructured serial graph partitioning
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
-sci-libs/mkl 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
+sci-libs/mkl 2020.4.304: Intel Math Kernel Library
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)
 sci-libs/mpfi 1.5.3: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
@@ -17464,7 +17466,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel build
 sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.4.74-r1 5.4.75 5.4.75-r1 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.8.18-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3 5.9.3-r1 5.9.4 5.9.4-r1 5.9.6 5.9.6-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.9.236 4.9.240 4.9.241 4.14.198 4.14.202 4.14.203 4.14.204 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6: Full sources including the Gentoo patchset for the 5.9 kernel tree
-sys-kernel/git-sources 5.10_rc1 5.10_rc2: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
