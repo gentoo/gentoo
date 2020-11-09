@@ -96,6 +96,7 @@ DOCS=( README Documentation/ )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2_meson-fixes.patch
+	"${FILESDIR}"/${PN}-1.2_meson-install-manpage.patch
 )
 
 src_configure() {
