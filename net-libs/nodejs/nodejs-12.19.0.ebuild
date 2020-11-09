@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -139,15 +139,12 @@ src_configure() {
 
 src_compile() {
 	emake -C out mksnapshot
-	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
 	default
-
-	pax-mark -m "${ED}"/usr/bin/node
 
 	# set up a symlink structure that node-gyp expects..
 	dodir /usr/include/node/deps/{v8,uv}
