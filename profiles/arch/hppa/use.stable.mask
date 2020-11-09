@@ -9,11 +9,6 @@
 python_targets_python3_9
 python_single_target_python3_9
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-18)
-# Not ready for stable yet.
-python_targets_python3_8
-python_single_target_python3_8
-
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # media-libs/gstreamer is not stable for hppa
 gstreamer
