@@ -1060,7 +1060,7 @@ app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
 app-crypt/swtpm 0.5.0: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
-app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
+app-crypt/tpm-tools 1.3.9.1-r1 1.3.9.2: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.3.2 1.4.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.3.0: Tools for the TPM 2.0 TSS
@@ -8469,7 +8469,7 @@ dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
-dev-python/nuitka 0.6.9.1: Python to native compiler
+dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
 dev-python/numexpr 2.7.2: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.19.0 1.19.1 1.19.2 1.19.3 1.19.4: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
