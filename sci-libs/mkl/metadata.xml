@@ -13,8 +13,4 @@
 		capacities. The package is installed as binary and has a restrictive
 		license. Please see license terms and home page for proper use.
 	</longdescription>
-	<use>
-		<flag name="fortran95">Installs the BLAS/LAPACK FORTRAN95 static libraries</flag>
-		<flag name="int64">Installs the 64 bits integer libraries</flag>
-	</use>
 </pkgmetadata>
