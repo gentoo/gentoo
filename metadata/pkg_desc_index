@@ -813,7 +813,7 @@ app-backup/borgbackup 1.1.11-r2 1.1.13 1.1.14 9999: Deduplicating backup program
 app-backup/borgmatic 1.5.9 1.5.10: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.29.1 0.30.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/burp 2.2.18-r1 2.3.36: Network backup and restore client and server for Unix and Windows
+app-backup/burp 2.2.18-r1 2.3.36 2.3.38: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -13878,7 +13878,7 @@ media-sound/sndfile-tools 1.04-r1 9999: Small collection of programs that use li
 media-sound/sndpeek 1.41-r1: real-time audio visualization
 media-sound/solfege 3.23.4: GNU program to help practicing ear training
 media-sound/sonata 1.7_beta1_p20200212: Elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sonic-visualiser 4.0.1 4.1 4.2: Music audio files viewer and analiser
+media-sound/sonic-visualiser 4.2: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.4: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.2-r1: A simple audiofile converter application for the GNOME environment
@@ -14584,7 +14584,7 @@ net-im/mcabber 1.1.0-r1 1.1.0-r2 1.1.2 9999: A small Jabber console client with 
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1: GTK Instant Messenger client
-net-im/poezio 0.12 0.13.1 9999: Console XMPP client that looks like most famous IRC clients
+net-im/poezio 0.12 0.13.1 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5-r1 0.11.7-r2: Prosody is a modern XMPP communication server
 net-im/prosody-modules 0_pre20201004 9999: A collection of community-maintained modules for Prosody
