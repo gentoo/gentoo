@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-09)
+# Dead Python 2 package.  Replaced by dev-python/cheetah3.  The last
+# mongodb versions needing it are masked now.
+# Removal in 30 days.  Bug #753722.
+dev-python/cheetah
+
 # Alexys Jacob <ultrabug@gentoo.org> (2020-11-09)
 # Mask dev-db/mongodb versions which do not support python3 so we
 # can move forward in cleaning python2 from tree. Bug #708954.
