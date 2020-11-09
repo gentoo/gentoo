@@ -4,7 +4,7 @@
 EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit multilib-build
+inherit multilib-build rpm
 
 MAGIC=16917            # from registration center
 MY_P=${P/-/_}          # mkl_2020.4.304

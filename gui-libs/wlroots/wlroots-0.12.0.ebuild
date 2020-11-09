@@ -13,17 +13,18 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc64 x86"
+	KEYWORDS=""
 fi
 
 LICENSE="MIT"
-SLOT="0/10"
+SLOT="0/12"
 IUSE="elogind icccm systemd x11-backend X"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
 	>=dev-libs/libinput-1.9.0:0=
-	>=dev-libs/wayland-1.17.0
+	>=dev-libs/wayland-1.18.0
+	>=dev-libs/wayland-protocols-1.17.0
 	media-libs/mesa[egl,gles2,gbm]
 	virtual/libudev
 	x11-libs/libdrm
@@ -44,16 +45,14 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.17
+	>=dev-util/meson-0.54.0
 	virtual/pkgconfig
 "
-
-PATCHES=("${FILESDIR}"/${PN}-gcc-10.patch)
 
 src_configure() {
 	# xcb-util-errors is not on Gentoo Repository (and upstream seems inactive?)
 	local emesonargs=(
 		"-Dxcb-errors=disabled"
-		-Dlibcap=$(usex filecaps enabled disabled)
 		-Dxcb-icccm=$(usex icccm enabled disabled)
 		-Dxwayland=$(usex X enabled disabled)
 		-Dx11-backend=$(usex x11-backend enabled disabled)
