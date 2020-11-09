@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexys Jacob <ultrabug@gentoo.org> (2020-11-09)
+# Mask dev-db/mongodb versions which do not support python3 so we
+# can move forward in cleaning python2 from tree. Bug #708954.
+# We keep the ebuilds available since some of those versions are still
+# supported by upstream. See: https://jira.mongodb.org/browse/SERVER-52687
+<dev-db/mongodb-4.2.8
+
 # Benda Xu <heroxbd@gentoo.org> (2020-11-09)
 # dead packages with latest releases before 2013 these are superseded
 # by other scikit packages scikit-optimize, sktime Removal in 30 days
