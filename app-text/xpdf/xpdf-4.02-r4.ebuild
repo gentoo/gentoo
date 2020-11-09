@@ -28,7 +28,7 @@ KEYWORDS="amd64 x86"
 IUSE="cmyk cups +fontconfig i18n icons +libpaper metric opi png +textselect utils"
 
 BDEPEND="
-	icons? ( media-gfx/inkscape )
+	icons? ( gnome-base/librsvg )
 "
 DEPEND="
 	cups? (
@@ -88,18 +88,12 @@ src_compile() {
 	cmake_src_compile
 
 	if use icons; then
-		# in some cases inkscape tries to write font cache to the
-		# system dir, see bug 739166
-		addpredict /usr/share/inkscape/fonts
-		local inkarg="-e"
-		has_version -b '>media-gfx/inkscape-0.99' && inkarg="-o"
-
 		sizes="16 22 24 32 36 48 64 72 96 128 192 256 512"
 		cd xpdf-qt
 		mkdir $sizes
 		local i
 		for i in $sizes; do
-			inkscape xpdf-icon.svg -w $i -h $i $inkarg $i/xpdf.png
+			rsvg-convert xpdf-icon.svg -w $i -h $i -o $i/xpdf.png
 		done
 	fi
 }
