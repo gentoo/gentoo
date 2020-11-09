@@ -2,57 +2,52 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
+
+inherit bash-completion-r1 flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-SRC_URI="
-	https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz
-"
+SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector +npm pax_kernel +snapshot +ssl +system-ssl systemtap test"
-REQUIRED_USE="
-	inspector? ( icu ssl )
-	npm? ( ssl )
-	system-ssl? ( ssl )
-"
 
-RDEPEND="
-	>=app-arch/brotli-1.0.9
+IUSE="cpu_flags_x86_sse2 debug doc +icu inspector +npm +snapshot +ssl system-icu +system-ssl systemtap test"
+REQUIRED_USE="inspector? ( icu ssl )
+	npm? ( ssl )
+	system-icu? ( icu )
+	system-ssl? ( ssl )"
+
+# FIXME: test-fs-mkdir fails with "no such file or directory". Investigate.
+RESTRICT="test"
+
+RDEPEND=">=app-arch/brotli-1.0.9
 	>=dev-libs/libuv-1.40.0:=
 	>=net-dns/c-ares-1.16.1
 	>=net-libs/nghttp2-1.41.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-67:= )
-	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
-"
-BDEPEND="
-	${PYTHON_DEPS}
+	system-icu? ( >=dev-libs/icu-67:= )
+	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )"
+BDEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
 	systemtap? ( dev-util/systemtap )
-	test? ( net-misc/curl )
-	pax_kernel? ( sys-apps/elfix )
-"
-DEPEND="
-	${RDEPEND}
-"
+	test? ( net-misc/curl )"
+DEPEND="${RDEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-14.15.0-fix_ppc64_crashes.patch
 )
-RESTRICT="test"
+
 S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
-
-	( [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11 ) && \
-		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
 }
 
 src_prepare() {
@@ -90,9 +85,6 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
-
 	default
 }
 
@@ -107,7 +99,13 @@ src_configure() {
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
-	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
+	if use system-icu; then
+		myconf+=( --with-intl=system-icu )
+	elif use icu; then
+		myconf+=( --with-intl=full-icu )
+	else
+		myconf+=( --with-intl=none )
+	fi
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
@@ -145,8 +143,6 @@ src_compile() {
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
 	default
-
-	pax-mark -m "${ED}"/usr/bin/node
 
 	# set up a symlink structure that node-gyp expects..
 	dodir /usr/include/node/deps/{v8,uv}
