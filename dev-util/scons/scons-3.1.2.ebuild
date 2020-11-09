@@ -5,7 +5,7 @@ EAPI=7
 
 # False positive due to commented code in setup.py
 DISTUTILS_USE_SETUPTOOLS=manual
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
