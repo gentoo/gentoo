@@ -8448,7 +8448,7 @@ dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C libra
 dev-python/netifaces 0.10.9: Portable network interface information
 dev-python/networkx 2.5: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 2.3.0 2.6.1: Neutron shared routines and utilities.
-dev-python/nltk 3.5-r1: Natural Language Toolkit
+dev-python/nltk 3.5: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.8.0: Python version of node-semver, the semantic versioner for npm
@@ -8706,7 +8706,7 @@ dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.2.1 4.3: A wrapper around the mediainfo library
 dev-python/pymetar 1.1-r1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
-dev-python/pymongo 3.11.0 3.11.0-r1: Python driver for MongoDB
+dev-python/pymongo 3.11.0-r1: Python driver for MongoDB
 dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
@@ -8916,7 +8916,7 @@ dev-python/pywinrm 0.4.1: Windows Remote Management through Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.7.1: Python interface to xattr
 dev-python/pyxdg 0.26-r2: A Python module to deal with freedesktop.org specifications
-dev-python/pyyaml 5.3.1 5.3.1-r1: YAML parser and emitter for Python
+dev-python/pyyaml 5.3.1-r1: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.8: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 19.0.1_p20200608 19.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
@@ -8995,9 +8995,6 @@ dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzb
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
 dev-python/scikit-build 0.11.1: Improved build system generator for Python C/C++/Fortran/Cython extensions
-dev-python/scikit-image 0.13.0-r1 0.17.2: Image processing routines for SciPy
-dev-python/scikit-learn 0.22.2_p1-r1 0.23.2: Machine learning library for Python
-dev-python/scikit-optimize 0.8.1: Sequential model-based optimization library
 dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3 1.5.4: Scientific algorithms library for Python
 dev-python/scripttest 1.3.0-r1: A very small text templating language
 dev-python/scrypt 0.8.16: Bindings for the scrypt key derivation function library
@@ -9033,7 +9030,6 @@ dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral m
 dev-python/simpy 3.0.13: Object-oriented, process-based discrete-event simulation language
 dev-python/sip 4.19.22-r1 4.19.24: Python extension module generator for C and C++ libraries
 dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
-dev-python/sktime 0.4.2: scikit-learn toolbox for working with time series
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2 9999: Python 3 library for XMPP
@@ -11888,7 +11884,7 @@ gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.4.1 0.5.0 9999: library for managing wayfire configuration files
-gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-libs/wlroots 0.10.0 0.10.1 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2: Wayland compositor inspired by CWM
@@ -14819,7 +14815,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.18.4-r1 12.19.0 14.2.0 14.4.0 14.11.0 14.12.0 14.13.0-r1 14.13.1 14.14.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.18.4-r1 12.19.0 14.2.0 14.11.0 14.15.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -16245,6 +16241,8 @@ sci-libs/rtabmap 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SL
 sci-libs/rtree 0.9.4-r1: R-Tree spatial index for Python GIS
 sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
+sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
+sci-libs/scikits_learn 0.22.2_p1-r1 0.23.2: Machine learning library for Python
 sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning

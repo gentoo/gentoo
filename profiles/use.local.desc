@@ -2511,8 +2511,6 @@ dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
 dev-python/pyzmq:draft - Enable draft API support
 dev-python/rarfile:compressed - Enables the module to support compressed v3 archives by calling the app-arch/unrar.
 dev-python/rfc3986:idna - enable support for the IDNA specification (RFC 5891)
-dev-python/scikit-image:freeimage - Enable support for image i/o via media-libs/freeimage
-dev-python/scikit-image:pyamg - Enable support for algebraic solvers via dev-python/pyamg
 dev-python/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
 dev-python/shiboken2:docstrings - Expose documentation as Python docstrings (recommended)
 dev-python/shiboken2:numpy - Implicitly convert passed NumPy arrays to Qt lists
@@ -6063,6 +6061,7 @@ net-libs/nodejs:inspector - Enable V8 inspector
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
+net-libs/nodejs:system-icu - Use system dev-libs/icu instead of the bundled version
 net-libs/nodejs:system-ssl - Use system OpenSSL instead of the bundled one
 net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
 net-libs/ntirpc:gssapi - Include support for RPCSEC GSS
@@ -6168,7 +6167,6 @@ net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
 net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermail
 net-mail/vpopmail:spamassassin - Enables mail-filter/spamassassin support
 net-misc/AQtion:lro - Enable/disable Large Receive Offload. This MUST be disabled for bridging or forwarding.
-net-misc/apt-cacher-ng:fuse - Install the sys-fs/fuse based acngfs, to use a userspace filesystem for the apt cache.
 net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
 net-misc/aria2:gnutls - Use net-libs/gnutls as TLS provider (preferred). Otherwise, dev-libs/openssl will be used as TLS provider. Both apply only with USE=ssl.
 net-misc/aria2:libuv - Use dev-libs/libuv backend.
@@ -7351,6 +7349,8 @@ sci-libs/plplot:qhull - Add bindings for media-libs/qhull
 sci-libs/plplot:shapefile - Enable support for ESRI shapefiles
 sci-libs/proj:europe - Install the PROJ collection of European grids and init-files
 sci-libs/rtabmap:openni2 - Adds support for Kinect-like 3D sensors devices with dev-libs/OpenNI2.
+sci-libs/scikits_image:freeimage - Enable support for image i/o via media-libs/freeimage
+sci-libs/scikits_image:pyamg - Enable support for algebraic solvers via dev-python/pyamg
 sci-libs/scotch:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
 sci-libs/scotch:tools - Provides the graph, mesh, architecture, mapping/ordering, output handling programs (see Scotch User's Guide).
 sci-libs/silo:silex - Build silex data browser
