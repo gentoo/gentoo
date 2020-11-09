@@ -28,7 +28,6 @@ COMMON_DEPEND=">=dev-libs/glib-2.42:2
 	pdf? ( >=app-text/poppler-0.12.4[cairo] )
 	raw? ( >=media-libs/libopenraw-0.0.8:=[gtk] )"
 RDEPEND="${COMMON_DEPEND}
-	>=xfce-base/thunar-1.4
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0 )"
 DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc-am
