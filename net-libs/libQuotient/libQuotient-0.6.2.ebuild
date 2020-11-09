@@ -23,8 +23,8 @@ end2end? ( >=dev-libs/libqtolm-3.0.1 )"
 
 src_configure() {
 	local mycmakeargs=(
-		"-DQUOTIENT_INSTALL_TESTS=OFF"
-		"-DQUOTIENT_ENABLE_E2EE=$(usex end2end)"
+		"-DQuotient_INSTALL_TESTS=OFF"
+		"-DQuotient_ENABLE_E2EE=$(usex end2end)"
 		"-DUSE_INTREE_LIBQOLM=OFF"
 	)
 	cmake_src_configure
