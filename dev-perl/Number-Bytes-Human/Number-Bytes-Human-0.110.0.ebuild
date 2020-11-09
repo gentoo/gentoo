@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Convert byte count to human readable format"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
