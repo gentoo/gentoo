@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<!-- co-maintainers VERY much welcome! -->
 	<use>
 		<flag name="inspector">Enable V8 inspector</flag>
 		<flag name="npm">Enable NPM package manager</flag>
