@@ -3,34 +3,35 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
+
+MY_PV="${PV//_p/.post}"
 
 DESCRIPTION="Machine learning library for Python"
 HOMEPAGE="https://scikit-learn.org/stable/
 	https://github.com/scikit-learn/scikit-learn"
-SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${P}.tar.gz"
-
-S="${WORKDIR}/scikit-learn-${PV}"
+SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+#ffhttps://github.com/scikit-learn/scikit-learn/archive/0.22.2.post1.tar.gz
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="examples"
 
-DEPEND="
-	virtual/blas:=
-	virtual/cblas:=
-"
 RDEPEND="
-	${DEPEND}
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/joblib[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
-	dev-python/threadpoolctl[${PYTHON_USEDEP}]
+	virtual/blas:=
+	virtual/cblas:=
+"
+DEPEND="
+	virtual/blas:=
+	virtual/cblas:=
 "
 
 distutils_enable_tests pytest
@@ -65,6 +66,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 	if use examples; then
 		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
 }
