@@ -12,3 +12,4 @@ virtual/rust
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-light-3.36.5
 >=sys-auth/polkit-0.118
+>=dev-libs/gjs-1.66
