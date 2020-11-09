@@ -1,9 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit apache-module
+LUA_COMPAT=( lua5-{1..3} )
+
+inherit autotools apache-module lua-single
 
 MY_PN=modsecurity
 MY_P=${MY_PN}-${PV}
@@ -14,8 +16,10 @@ SRC_URI="https://www.modsecurity.org/tarball/${PV}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc fuzzyhash geoip jit json lua mlogc"
+
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 COMMON_DEPEND="dev-libs/apr
 	dev-libs/apr-util[openssl]
@@ -23,11 +27,11 @@ COMMON_DEPEND="dev-libs/apr
 	dev-libs/libpcre[jit?]
 	fuzzyhash? ( app-crypt/ssdeep )
 	json? ( dev-libs/yajl )
-	lua? ( dev-lang/lua:0 )
+	lua? ( ${LUA_DEPS} )
 	mlogc? ( net-misc/curl )
 	www-servers/apache[apache2_modules_unique_id]"
-DEPEND="${COMMON_DEPEND}
-	doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	geoip? ( dev-libs/geoip )
 	mlogc? ( dev-lang/perl )"
@@ -42,36 +46,48 @@ APACHE2_MOD_DEFINE="SECURITY"
 # Tests require symbols only defined within the Apache binary.
 RESTRICT=test
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.3-autoconf_lua_package_name.patch
+)
+
 need_apache2
 
+pkg_setup() {
+	_init_apache2
+	_init_apache2_late
+	lua-single_pkg_setup
+}
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
-	econf --enable-shared \
-		  --disable-static \
-		  --with-apxs="${APXS}" \
-		  --enable-request-early \
-		  --with-pic \
-		  $(use_with fuzzyhash ssdeep) \
-		  $(use_with json yajl) \
-		  $(use_enable mlogc) \
-		  $(use_with lua) \
-		  $(use_enable lua lua-cache) \
-		  $(use_enable jit pcre-jit)
+	local myconf=(
+		--disable-static
+		--enable-request-early
+		--with-apxs="${APXS}"
+		--with-pic
+		$(use_with fuzzyhash ssdeep)
+		$(use_with json yajl)
+		$(use_enable mlogc)
+		$(use_with lua)
+		$(use_enable lua lua-cache)
+		$(use_enable jit pcre-jit)
+		$(use_enable doc docs) )
+
+	econf ${myconf[@]}
 }
 
 src_compile() {
 	default
-
-	# Building the docs is broken at the moment, see e.g.
-	# https://github.com/SpiderLabs/ModSecurity/issues/1322
-	if use doc; then
-		doxygen doc/doxygen-apache.conf || die 'failed to build documentation'
-	fi
 }
 
 src_install() {
 	apache-module_src_install
 
-	dodoc CHANGES README.TXT modsecurity.conf-recommended
+	dodoc CHANGES README.md modsecurity.conf-recommended
 
 	if use doc; then
 		dodoc -r doc/apache/html
