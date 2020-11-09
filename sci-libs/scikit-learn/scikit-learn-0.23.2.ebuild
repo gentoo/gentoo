@@ -8,8 +8,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 DESCRIPTION="Machine learning library for Python"
-HOMEPAGE="https://scikit-learn.org/stable/
-	https://github.com/scikit-learn/scikit-learn"
+HOMEPAGE="https://scikit-learn.org/stable/"
 SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
