@@ -51,13 +51,6 @@ dev-python/cheetah
 <dev-db/mongodb-4.2.8
 
 # Benda Xu <heroxbd@gentoo.org> (2020-11-09)
-# dead packages with latest releases before 2013 these are superseded
-# by other scikit packages scikit-optimize, sktime Removal in 30 days
-# (Bug #749297)
-sci-libs/scikits_optimization
-sci-libs/scikits_timeseries
-
-# Benda Xu <heroxbd@gentoo.org> (2020-11-09)
 # sci-libs/mkl-rt is now subsumed by the updated sci-libs/mkl package
 # which also provides development header files and pkgconfig files
 # Removal in 30 days. Bug #747310.
