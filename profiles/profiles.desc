@@ -272,6 +272,9 @@ x86-linux		prefix/linux/x86				exp
 amd64-linux		default/linux/amd64/17.0/no-multilib/prefix/kernel-3.2+		dev
 amd64-linux		default/linux/amd64/17.0/no-multilib/prefix/kernel-2.6.32+	exp
 amd64-linux		default/linux/amd64/17.0/no-multilib/prefix/kernel-2.6.16+	exp
+amd64-linux		default/linux/amd64/17.1/no-multilib/prefix/kernel-3.2+		dev
+amd64-linux		default/linux/amd64/17.1/no-multilib/prefix/kernel-2.6.32+	exp
+amd64-linux		default/linux/amd64/17.1/no-multilib/prefix/kernel-2.6.16+	exp
 x86-linux		default/linux/x86/17.0/prefix/kernel-3.2+	exp
 x86-linux		default/linux/x86/17.0/prefix/kernel-2.6.32+	exp
 x86-linux		default/linux/x86/17.0/prefix/kernel-2.6.16+	exp
