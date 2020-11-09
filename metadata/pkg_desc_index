@@ -8824,7 +8824,7 @@ dev-python/python-designateclient 4.0.0 4.1.0: Python bindings to the Designate 
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.5 3.8.6 3.9.0: HTML documentation for Python
-dev-python/python-dotenv 0.14.0: Manage .env files
+dev-python/python-dotenv 0.14.0 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.24.0 1.25.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-email-validator 1.1.1 1.1.2: A robust email syntax and deliverability validation library
