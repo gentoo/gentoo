@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="curl ffmpeg gstreamer jpeg odf pdf raw"
 
-COMMON_DEPEND=">=dev-libs/glib-2.42:2
+DEPEND=">=dev-libs/glib-2.42:2
 	media-libs/freetype:2=
 	media-libs/libpng:0=
 	>=sys-apps/dbus-1.6
@@ -27,9 +27,10 @@ COMMON_DEPEND=">=dev-libs/glib-2.42:2
 	odf? ( >=gnome-extra/libgsf-1.14.20:= )
 	pdf? ( >=app-text/poppler-0.12.4[cairo] )
 	raw? ( >=media-libs/libopenraw-0.0.8:=[gtk] )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	gstreamer? ( media-plugins/gst-plugins-meta:1.0 )"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
+	dev-util/gdbus-codegen
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext
