@@ -16,16 +16,16 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=16
-PATCH_DEV=slyfox
+PATCH_VER=2
+PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-	KEYWORDS=""
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+	SRC_URI+=" riscv? ( https://dev.gentoo.org/~dilfridge/distfiles/backport-rv32.txz )"
 fi
 
 RELEASE_VER=${PV}
@@ -133,13 +133,13 @@ RESTRICT="!test? ( test )"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	BDEPEND+=" !headers-only? (
-		>=${CATEGORY}/binutils-2.27
+		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	BDEPEND+="
-		>=sys-devel/binutils-2.27
+		>=sys-devel/binutils-2.24
 		>=sys-devel/gcc-6
 	"
 	DEPEND+=" virtual/os-headers "
@@ -765,6 +765,7 @@ src_unpack() {
 
 	cd "${WORKDIR}" || die
 	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
+	use riscv && unpack backport-rv32.txz
 }
 
 src_prepare() {
@@ -778,6 +779,12 @@ src_prepare() {
 		elog "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
+
+		if use riscv ; then
+			elog "Adding rv32 backport patchset for glibc-2.32 (experimental)"
+			eapply "${WORKDIR}"/backport-rv32
+			einfo "Done."
+		fi
 	fi
 
 	default
@@ -861,6 +868,14 @@ glibc_do_configure() {
 		m68k*)
 			# setjmp() is not compatible with stack protection:
 			# https://sourceware.org/PR24202
+			myconf+=( --enable-stack-protector=no )
+			;;
+		powerpc-*)
+			# Currently gcc on powerpc32 generates invalid code for
+			# __builtin_return_address(0) calls. Normally programs
+			# don't do that but malloc hooks in glibc do:
+			# https://gcc.gnu.org/PR81996
+			# https://bugs.gentoo.org/629054
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
