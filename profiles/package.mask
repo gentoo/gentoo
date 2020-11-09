@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-11-09)
+# Compilation using meson currently fails on most, if not all, non-x86
+# arches (Bug #720210). For consistency, mask it everywhere for now.
+sys-apps/flashrom-1.2-r3
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-09)
 # Python 2 backport.  Last revdep masked.
 # Removal in 30 days.  Bug #753725.
