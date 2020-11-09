@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="debug nls lm-sensors selinux static"
+IUSE="debug nls lm-sensors selinux static systemd"
 
 CDEPEND="
 	nls? ( virtual/libintl )
@@ -26,7 +26,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sysstat )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-11.0.4-cron.patch
 	"${FILESDIR}"/${PN}-11.7.3-flags.patch
 )
 
@@ -50,12 +49,15 @@ src_configure() {
 	tc-export AR
 	use static && append-ldflags -static
 
+	# --enable-compress-manpg <= Yes, that is inverted.
 	sa_lib_dir=/usr/lib/sa \
 		conf_dir=/etc \
 		econf \
+			$(use_enable !systemd use-crond) \
 			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
 			$(usex debug --enable-debuginfo '') \
+			--enable-compress-manpg \
 			--enable-copy-only \
 			--enable-documentation \
 			--enable-install-cron \

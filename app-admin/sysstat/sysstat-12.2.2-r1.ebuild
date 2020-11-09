@@ -15,7 +15,7 @@ IUSE="debug nls lm-sensors selinux static"
 
 CDEPEND="
 	nls? ( virtual/libintl )
-		lm-sensors? ( sys-apps/lm-sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 "
 DEPEND="
 	${CDEPEND}
