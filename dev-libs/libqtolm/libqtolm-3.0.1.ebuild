@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake
 
-DESCRIPTION="A Qt wrapper for libolm."
+DESCRIPTION="A Qt wrapper for olm."
 HOMEPAGE="https://gitlab.com/b0/libqtolm"
 SRC_URI="https://gitlab.com/b0/libqtolm/-/archive/v${PV}/${P}.tar.bz2"
 
