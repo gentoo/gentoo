@@ -9,8 +9,7 @@ inherit distutils-r1
 MY_PV="${PV//_p/.post}"
 
 DESCRIPTION="Machine learning library for Python"
-HOMEPAGE="https://scikit-learn.org/stable/
-	https://github.com/scikit-learn/scikit-learn"
+HOMEPAGE="https://scikit-learn.org/stable/"
 SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 #ffhttps://github.com/scikit-learn/scikit-learn/archive/0.22.2.post1.tar.gz
 S="${WORKDIR}/${PN}-${MY_PV}"
