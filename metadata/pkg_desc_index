@@ -8313,7 +8313,7 @@ dev-python/jsonpatch 1.26: Apply JSON-Patches like http://tools.ietf.org/html/dr
 dev-python/jsonpickle 1.4.1-r2: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
-dev-python/jsonrpclib 0.4.1 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
+dev-python/jsonrpclib 0.4.1 0.4.2 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 3.2.0: An implementation of JSON-Schema validation for Python
 dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/junit-xml 1.9: Create JUnit XML test result documents
@@ -18999,7 +18999,7 @@ xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.10.1: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-weather-plugin 0.10.1 0.10.2: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.4.6: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
