@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
+
+inherit bash-completion-r1 flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -13,7 +15,7 @@ SRC_URI="
 "
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl +system-ssl systemtap test"
 REQUIRED_USE="
@@ -139,15 +141,12 @@ src_configure() {
 
 src_compile() {
 	emake -C out mksnapshot
-	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
 	default
-
-	pax-mark -m "${ED}"/usr/bin/node
 
 	# set up a symlink structure that node-gyp expects..
 	dodir /usr/include/node/deps/{v8,uv}

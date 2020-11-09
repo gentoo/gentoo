@@ -12,6 +12,8 @@ HOMEPAGE="https://scikit-learn.org/stable/
 	https://github.com/scikit-learn/scikit-learn"
 SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/scikit-learn-${PV}"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

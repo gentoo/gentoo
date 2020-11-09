@@ -32,19 +32,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-09)
+# Python 2 backport.  Last revdep masked.
+# Removal in 30 days.  Bug #753725.
+dev-python/typing
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-09)
+# Dead Python 2 package.  Replaced by dev-python/cheetah3.  The last
+# mongodb versions needing it are masked now.
+# Removal in 30 days.  Bug #753722.
+dev-python/cheetah
+
 # Alexys Jacob <ultrabug@gentoo.org> (2020-11-09)
 # Mask dev-db/mongodb versions which do not support python3 so we
 # can move forward in cleaning python2 from tree. Bug #708954.
 # We keep the ebuilds available since some of those versions are still
 # supported by upstream. See: https://jira.mongodb.org/browse/SERVER-52687
 <dev-db/mongodb-4.2.8
-
-# Benda Xu <heroxbd@gentoo.org> (2020-11-09)
-# dead packages with latest releases before 2013 these are superseded
-# by other scikit packages scikit-optimize, sktime Removal in 30 days
-# (Bug #749297)
-sci-libs/scikits_optimization
-sci-libs/scikits_timeseries
 
 # Benda Xu <heroxbd@gentoo.org> (2020-11-09)
 # sci-libs/mkl-rt is now subsumed by the updated sci-libs/mkl package
