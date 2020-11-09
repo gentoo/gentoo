@@ -22,8 +22,8 @@
 <use>
   <flag name="athena">Enable the MIT Athena widget set
     (<pkg>x11-libs/libXaw</pkg>)</flag>
-  <flag name="dynamic-loading">Enable loading of dynamic libraries at
-    runtime</flag>
+  <flag name="dynamic-loading">Enable loading of dynamic libraries (modules)
+    at runtime</flag>
   <flag name="games">Support shared score files for games</flag>
   <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
     font name</flag>
