@@ -43,6 +43,12 @@ src_prepare() {
 		done
 	fi
 
+	# bug #531032
+	if $(has_version sys-process/dcron); then
+		einfo dcron found, mangling crontab file
+		sed -i 's/@CRON_OWNER@ //' cron/sysstat.crond.in || die 'sed failed'
+	fi
+
 	default
 }
 

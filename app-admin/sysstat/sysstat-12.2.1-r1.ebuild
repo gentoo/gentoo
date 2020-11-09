@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug nls lm-sensors selinux static"
 
 CDEPEND="
@@ -41,6 +41,12 @@ src_prepare() {
 				rm "nls/${lingua}.po" || die
 			fi
 		done
+	fi
+
+	# bug #531032
+	if $(has_version sys-process/dcron); then
+		einfo dcron found, mangling crontab file
+		sed -i 's/@CRON_OWNER@ //' cron/sysstat.crond.in || die 'sed failed'
 	fi
 
 	default
