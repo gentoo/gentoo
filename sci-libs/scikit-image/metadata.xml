@@ -6,14 +6,13 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  This SciKit (toolkit for SciPy) includes useful image processing
-  algorithms for use with Python and NumPy. While SciPy’s ndimage
-  provides low-level manipulation, scikits.image centres around
-  algorithms and applications.
-</longdescription>
+    This SciKit (toolkit for SciPy) includes useful image processing
+    algorithms for use with Python and NumPy. While SciPy’s ndimage
+    provides low-level manipulation, scikits.image centres around
+    algorithms and applications.
+  </longdescription>
   <use>
-    <flag name="freeimage">Enable support for image i/o via
-  <pkg>media-libs/freeimage</pkg></flag>
+    <flag name="freeimage">Enable support for image i/o via<pkg>media-libs/freeimage</pkg></flag>
     <flag name="pyamg">Enable support for algebraic solvers via <pkg>dev-python/pyamg</pkg></flag>
   </use>
   <upstream>
