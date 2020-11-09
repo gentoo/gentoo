@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>deb-tools@gentoo.org</email>
-<name>Gentoo Debian Tools Project</name>
-</maintainer>
-<use>
-<flag name="fuse">Install the <pkg>sys-fs/fuse</pkg> based acngfs, to use a userspace filesystem for the apt cache.</flag>
-</use>
+<!-- maintainer-needed -->
 </pkgmetadata>
