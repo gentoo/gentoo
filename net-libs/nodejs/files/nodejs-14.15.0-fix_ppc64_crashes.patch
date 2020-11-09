@@ -1,0 +1,33 @@
+--- a/deps/v8/src/compiler/backend/instruction-selector.cc
++++ b/deps/v8/src/compiler/backend/instruction-selector.cc
+@@ -2808,7 +2808,7 @@
+   switch (call_descriptor->kind()) {
+     case CallDescriptor::kCallAddress: {
+       int misc_field = static_cast<int>(call_descriptor->ParameterCount());
+-#if defined(_AIX)
++#if ABI_USES_FUNCTION_DESCRIPTORS
+       // Highest misc_field bit is used on AIX to indicate if a CFunction call
+       // has function descriptor or not.
+       if (!call_descriptor->NoFunctionDescriptor()) {
+--- a/deps/v8/src/compiler/backend/ppc/code-generator-ppc.cc
++++ b/deps/v8/src/compiler/backend/ppc/code-generator-ppc.cc
+@@ -1039,7 +1039,7 @@
+           linkage()->GetIncomingDescriptor()->IsWasmCapiFunction();
+       int offset = (FLAG_enable_embedded_constant_pool ? 20 : 23) * kInstrSize;
+ 
+-#if defined(_AIX)
++#if ABI_USES_FUNCTION_DESCRIPTORS
+       // AIX/PPC64BE Linux uses a function descriptor
+       int kNumParametersMask = kHasFunctionDescriptorBitMask - 1;
+       num_parameters = kNumParametersMask & misc_field;
+--- a/deps/v8/src/execution/simulator.h
++++ b/deps/v8/src/execution/simulator.h
+@@ -128,7 +128,7 @@
+ #if defined(V8_TARGET_OS_WIN) && !defined(V8_OS_WIN)
+     FATAL("Generated code execution not possible during cross-compilation.");
+ #endif  // defined(V8_TARGET_OS_WIN) && !defined(V8_OS_WIN)
+-#if V8_OS_AIX
++#if ABI_USES_FUNCTION_DESCRIPTORS
+     // AIX ABI requires function descriptors (FD).  Artificially create a pseudo
+     // FD to ensure correct dispatch to generated code.  The 'volatile'
+     // declaration is required to avoid the compiler from not observing the

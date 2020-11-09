@@ -11,6 +11,7 @@
 		<flag name="npm">Enable NPM package manager</flag>
 		<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
 		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
+		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled version</flag>
 		<flag name="system-ssl">Use system OpenSSL instead of the bundled one</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
