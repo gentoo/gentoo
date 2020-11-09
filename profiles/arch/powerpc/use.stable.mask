@@ -4,11 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-08)
-# Python 3.9 is not yet stable.
-python_targets_python3_9
-python_single_target_python3_9
-
 # Matt Turner <mattst88@gentoo.org> (2018-04-25)
 # Dropped stable keywords
 octave
