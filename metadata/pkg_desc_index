@@ -6979,6 +6979,7 @@ dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0-r1: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.33.0: Facilitates the creation and modification of PDF files
+dev-perl/PDF-Builder 3.19.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.430.0: Create PDF documents in Perl
 dev-perl/PDL 2.17.0-r1: Perl Data Language for scientific computing
 dev-perl/PDL-Graphics-Gnuplot 2.11.0-r1: Gnuplot-based plotting for PDL
@@ -11883,13 +11884,13 @@ gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayl
 gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0: GtkSourceView-based text editors and IDE helper library
-gui-libs/wf-config 0.4.1 0.5.0 9999: library for managing wayfire configuration files
-gui-libs/wlroots 0.10.0 0.10.1 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-libs/wf-config 0.5.0 9999: library for managing wayfire configuration files
+gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2: Wayland compositor inspired by CWM
 gui-wm/sway 1.5 9999: i3-compatible Wayland window manager
-gui-wm/wayfire 0.4.0-r2 0.5.0 9999: compiz like 3D wayland compositor
+gui-wm/wayfire 0.5.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
