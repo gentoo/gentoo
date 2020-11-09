@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
         <maintainer type="person">
-                <email>jan.seeger+gentoo@thenybble.de</email>
+                <email>jan.seeger@thenybble.de</email>
                 <name>Jan Seeger</name>
                 <description>Proxy maintainer</description>
         </maintainer>
