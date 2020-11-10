@@ -2959,6 +2959,7 @@ dev-vcs/gitolite-gentoo:tools - Install tools to e.g. convert a Gitosis config t
 dev-vcs/kdesvn:man - Build and install man pages
 dev-vcs/mercurial:chg - Support Mercurial command server client
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
+dev-vcs/mercurial:rust - Use Rust extensions.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
 dev-vcs/subversion:extras - Install extra scripts (examples, tools, hooks)
 dev-vcs/subversion:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
