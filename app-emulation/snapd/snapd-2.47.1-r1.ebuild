@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
 IUSE="apparmor +cgroup-hybrid +forced-devmode gtk kde systemd"
-REQUIRED_USE="!forced-devmode? ( cgroup-hybrid ) systemd"
+REQUIRED_USE="!forced-devmode? ( apparmor cgroup-hybrid ) systemd"
 
 CONFIG_CHECK="~CGROUPS
 		~CGROUP_DEVICE
