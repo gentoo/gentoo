@@ -617,6 +617,8 @@ app-emulation/runv:xen - Enable support for the Xen Hypervisor
 app-emulation/ski:debug - enable extra binary emulation debugging via sys-libs/binutils-libs
 app-emulation/skopeo:btrfs - Enables dependencies for the "btrfs" graph driver.
 app-emulation/snapd:apparmor - Enable AppArmor support.
+app-emulation/snapd:cgroup-hybrid - Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).
+app-emulation/snapd:forced-devmode - Automatically disable application confinement if feature detection fails.
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
 app-emulation/vagrant:virtualbox - Use VirtualBox provider.
 app-emulation/vice:ethernet - Enable ethernet emulation
