@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/linuxquota/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ldap netlink nls rpc tcpd"
 
 RDEPEND="
@@ -28,18 +28,13 @@ RDEPEND="
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 PDEPEND="
 	rpc? ( net-nds/rpcbind )
 "
-
-PATCHES=(
-	"${FILESDIR}/${P}-glibc226.patch"
-	"${FILESDIR}/${P}-Listen-on-a-TCP-socket.patch"
-)
 
 src_prepare() {
 	default
