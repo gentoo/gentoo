@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">jteeuwen/go-bindata</remote-id>
+		<remote-id type="github">go-bindata/go-bindata</remote-id>
 	</upstream>
 </pkgmetadata>
