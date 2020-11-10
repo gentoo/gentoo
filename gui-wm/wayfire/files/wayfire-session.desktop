@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Wayfire Session
+Comment=wayfire session with proper env vars
+Exec=@EPREFIX@/usr/bin/wayfire-session $*
+TryExec=@EPREFIX@/usr/bin/wayfire-session
+Type=Application
+DesktopNames=Wayfire
