@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 # bluez-alsa does not directly link to upower but
 # is using the upower interface via dbus calls.
 RDEPEND="
-	>=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.26[${MULTILIB_USEDEP}]
 	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]
