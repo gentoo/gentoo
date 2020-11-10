@@ -10615,7 +10615,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.6.0 1.7.0-r1 1.8.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.6.0 1.7.0-r1 1.8.0 1.9.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -14400,7 +14400,7 @@ net-analyzer/wireshark 3.2.7-r1 3.4.0 99999999: A network protocol analyzer form
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31-r1 4.0.24 4.0.25 4.0.26 5.0.3 5.0.4 5.0.5 5.2.0: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31-r1 4.0.24 4.0.25 4.0.26 5.0.3 5.0.4 5.0.5 5.2.1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0_p20200913 9999: High performance PPTP, PPPoE and L2TP server
