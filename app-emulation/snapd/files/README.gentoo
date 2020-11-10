@@ -1,3 +1,12 @@
+*Security Alert*
+
+Application confinement may be automatically disabled if snapd
+fails to detect the required features. If you would like to disable
+this automatic behavior, causing snapd to panic if its confinement
+feature detection fails, then use this setting in package.use:
+
+    app-emulation/snapd -forced-devmode
+
 Use this command to enable the snapd service:
 
 	systemctl enable snapd.socket
