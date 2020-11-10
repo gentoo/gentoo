@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 CMAKE_BUILD_TYPE=Release
 
 inherit cmake linux-info python-single-r1
