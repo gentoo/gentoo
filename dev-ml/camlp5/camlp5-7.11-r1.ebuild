@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 ppc x86"
 IUSE="doc +ocamlopt"
 
-DEPEND="dev-lang/ocaml"
+DEPEND="<dev-lang/ocaml-4.11.0:=[ocamlopt?]"
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED=(
