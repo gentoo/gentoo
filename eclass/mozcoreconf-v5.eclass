@@ -124,6 +124,7 @@ mozconfig_init() {
 	declare FF=$([[ ${PN} == firefox ]] && echo true || echo false)
 	declare SM=$([[ ${PN} == seamonkey ]] && echo true || echo false)
 	declare TB=$([[ ${PN} == thunderbird ]] && echo true || echo false)
+	declare WF=$([[ ${PN} == waterfox* ]] && echo true || echo false)
 
 	####################################
 	#
@@ -136,7 +137,7 @@ mozconfig_init() {
 		*xulrunner)
 			cp xulrunner/config/mozconfig .mozconfig \
 				|| die "cp xulrunner/config/mozconfig failed" ;;
-		*firefox)
+		*firefox|waterfox*)
 			cp browser/config/mozconfig .mozconfig \
 				|| die "cp browser/config/mozconfig failed" ;;
 		seamonkey)
