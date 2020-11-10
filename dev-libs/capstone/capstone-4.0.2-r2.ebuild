@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
 
 inherit cmake distutils-r1 toolchain-funcs
 
@@ -48,6 +48,7 @@ wrap_python() {
 }
 
 src_prepare() {
+	tc-export RANLIB
 	cmake_src_prepare
 
 	wrap_python ${FUNCNAME}
