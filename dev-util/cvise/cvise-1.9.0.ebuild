@@ -54,6 +54,11 @@ pkg_setup() {
 	llvm_pkg_setup
 }
 
+src_prepare() {
+	sed -i -e 's:-n auto::' setup.cfg || die
+	cmake_src_prepare
+}
+
 src_test() {
 	cd "${BUILD_DIR}" || die
 	pytest -vv || die
