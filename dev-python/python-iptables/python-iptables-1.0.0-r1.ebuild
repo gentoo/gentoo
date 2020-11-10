@@ -18,6 +18,10 @@ RDEPEND="net-firewall/iptables"
 # tests manipulate live iptables rules, so disable them by default
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/python-iptables-1.0.0-ldconfig-fix.patch"
+)
+
 distutils_enable_sphinx doc
 distutils_enable_tests setup.py
 
