@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no ppc keyword
+dev-vcs/mercurial rust
+
 # Mark Wright <gienah@gentoo.org> (2020-10-11)
 # dev-ml/ounit2 is not keyworded
 dev-ml/cudf test
