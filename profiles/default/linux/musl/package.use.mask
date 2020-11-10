@@ -7,6 +7,9 @@ net-misc/iputils idn
 # See bug #504200
 sys-devel/gcc sanitize
 
+# Disable sanitizers for LLVM, see bug #753935
+sys-devel/clang-runtime sanitize
+
 # These cause collisions with <libintl.h>
 # even with --without-included-gettext
 sys-devel/gettext nls
