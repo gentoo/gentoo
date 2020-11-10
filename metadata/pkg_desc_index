@@ -1943,7 +1943,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.3.1 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
-app-emulation/docker 19.03.12 19.03.13-r2: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 19.03.13-r2: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.25.5 1.26.2 1.27.2 1.27.3 1.27.4: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
@@ -13261,7 +13261,7 @@ media-libs/svgalib 1.9.25-r7 1.9.25-r8: A library for running svga graphics on t
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tg_owt 0_pre20201030 0_pre20201105: WebRTC build for Telegram
+media-libs/tg_owt 0_pre20201105: WebRTC build for Telegram
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
 media-libs/tiff 4.1.0: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
@@ -14606,7 +14606,7 @@ net-im/slack 4.3.2-r2 4.4.2 4.4.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.25560: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 2.4.6 2.4.7: Official desktop client for Telegram
+net-im/telegram-desktop 2.4.7-r1 2.4.9: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.3.2 2.4.0 2.4.4 2.4.5: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
