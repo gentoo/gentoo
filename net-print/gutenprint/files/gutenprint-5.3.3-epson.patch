@@ -1,0 +1,54 @@
+From: Robert Krawitz <rlk@alum.mit.edu>
+Date: Sun, 16 Feb 2020 11:21:23 -0500
+Subject: Updates for Epson Stylus Office printers
+
+Add duplex support for the following printers:
+     Epson Stylus Office BX525WD
+     Epson Stylus Office BX535WD
+     Epson Stylus Office BX62F5WD
+     Epson Stylus Office BX635FWD
+     Epson Stylus Office TX620FWD
+
+Origin: upstream
+Closes: #951410
+---
+ src/xml/printers/escp2.xml | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/xml/printers/escp2.xml b/src/xml/printers/escp2.xml
+index 28716a4..79f5a70 100644
+--- a/src/xml/printers/escp2.xml
++++ b/src/xml/printers/escp2.xml
+@@ -189,7 +189,7 @@
+       <printer translate="name" name="Epson Stylus Office B30" driver="escp2-of-b30" manufacturer="Epson" model="85" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office B33" driver="escp2-of-b33" manufacturer="Epson" model="85" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office B40W" driver="escp2-of-b40w" manufacturer="Epson" model="92" parameters="standard_params" />
+-      <printer translate="name" name="Epson Stylus Office B42WD" driver="escp2-of-b42wd" manufacturer="Epson" model="92" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office B42WD" driver="escp2-of-b42wd" manufacturer="Epson" model="118" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office B1100" driver="escp2-of-b1100" manufacturer="Epson" model="99" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office T30" driver="escp2-of-t30" manufacturer="Epson" model="85" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office T33" driver="escp2-of-t33" manufacturer="Epson" model="85" parameters="standard_params" />
+@@ -197,17 +197,18 @@
+       <printer translate="name" name="Epson Stylus Office T1100" driver="escp2-of-t1100" manufacturer="Epson" model="99" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office T1110" driver="escp2-of-t1110" manufacturer="Epson" model="99" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office BX300F" driver="escp2-of-bx300f" manufacturer="Epson" model="94" parameters="standard_params" />
+-      <printer translate="name" name="Epson Stylus Office BX525WD" driver="escp2-of-bx525wd" manufacturer="Epson" model="92" parameters="standard_params" />
+-      <printer translate="name" name="Epson Stylus Office BX535WD" driver="escp2-of-bx535wd" manufacturer="Epson" model="92" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office BX305F" driver="escp2-of-bx305f" manufacturer="Epson" model="94" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office BX525WD" driver="escp2-of-bx525wd" manufacturer="Epson" model="118" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office BX535WD" driver="escp2-of-bx535wd" manufacturer="Epson" model="118" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office BX600FW" driver="escp2-of-bx600fw" manufacturer="Epson" model="92" parameters="standard_params" />
+-      <printer translate="name" name="Epson Stylus Office BX625FWD" driver="escp2-of-bx625fwd" manufacturer="Epson" model="92" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office BX625FWD" driver="escp2-of-bx625fwd" manufacturer="Epson" model="118" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office BX630FW" driver="escp2-of-bx630fw" manufacturer="Epson" model="92" parameters="standard_params" />
+-      <printer translate="name" name="Epson Stylus Office BX635FWD" driver="escp2-of-bx635fwd" manufacturer="Epson" model="92" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office BX635FWD" driver="escp2-of-bx635fwd" manufacturer="Epson" model="118" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office SX600FW" driver="escp2-of-sx600fw" manufacturer="Epson" model="92" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office SX620FW" driver="escp2-of-sx620fw" manufacturer="Epson" model="92" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office TX300F" driver="escp2-of-tx300f" manufacturer="Epson" model="94" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Office TX600FW" driver="escp2-of-tx600fw" manufacturer="Epson" model="92" parameters="standard_params" />
+-      <printer translate="name" name="Epson Stylus Office TX620FWD" driver="escp2-of-tx620fwd" manufacturer="Epson" model="92" parameters="standard_params" />
++      <printer translate="name" name="Epson Stylus Office TX620FWD" driver="escp2-of-tx620fwd" manufacturer="Epson" model="118" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Photo" driver="escp2-photo" manufacturer="Epson" model="9" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Photo 700" deviceid="MFG:EPSON;MDL:Stylus Photo 700;DES:EPSON Stylus Photo 700;CMD:ESCPL2,BDC;" driver="escp2-700" manufacturer="Epson" model="7" parameters="standard_params" />
+       <printer translate="name" name="Epson Stylus Photo EX" deviceid="MFG:EPSON;MDL:Stylus Photo EX;CMD:ESCPL2,BDC;" driver="escp2-ex" manufacturer="Epson" model="8" parameters="standard_params" />
