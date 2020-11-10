@@ -14889,7 +14889,8 @@ net-mail/mailbase 1.5-r1: MTA layout package
 net-mail/mailbox-count 0.0.5: Count mailboxes in a SQL database
 net-mail/mailfront 2.22: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 3.3.1-r1: Mailman -- the GNU mailing list manager
+net-mail/mailman 3.3.1-r1 3.3.2: Mailman -- the GNU mailing list manager
+net-mail/mailman-meta 3: Meta ebuild for GNU Mailman 3
 net-mail/mailmanclient 3.3.1: Python bindings for the GNU Mailman 3 REST API
 net-mail/mailshears 0.0.4: Mangle your mail garden
 net-mail/mailutils 3.8 3.9 3.10: A useful collection of mail servers, clients, and filters

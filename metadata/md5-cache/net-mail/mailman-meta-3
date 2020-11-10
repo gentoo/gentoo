@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta ebuild for GNU Mailman 3
+EAPI=7
+HOMEPAGE=https://list.org/
+KEYWORDS=~amd64
+LICENSE=metapackage
+RDEPEND=>=net-mail/mailman-3.0 net-mail/postorius net-mail/hyperkitty
+SLOT=0
+_md5_=b62dc9481c698f624fb6ed5880a78cd0
