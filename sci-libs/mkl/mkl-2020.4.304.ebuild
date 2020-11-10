@@ -33,6 +33,7 @@ RDEPEND="
 QA_PREBUILT="*"
 QA_TEXTRELS="*"
 QA_SONAME="*"
+QA_MULTILIB_PATHS="/usr/lib.*/libmkl_tbb_thread.so"
 
 # first unpack all rpms
 # find folders containing header like, static and dynamic lib files
