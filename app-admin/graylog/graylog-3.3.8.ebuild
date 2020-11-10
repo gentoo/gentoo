@@ -79,5 +79,5 @@ pkg_postinst() {
 	ewarn
 	ewarn "Graylog requires Java >= 8"
 	ewarn "Elasticsearch 5.x or 6.x (does NOT work with 7.x)"
-	ewarn "and MongoDB 3.6 or 4.0 (does NOT work with 4.2)"
+	ewarn "and MongoDB 3.6, 4.0 or 4.2"
 }

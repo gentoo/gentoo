@@ -11,7 +11,7 @@ SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
-IUSE="+jemalloc luajit tcmalloc test"
+IUSE="+jemalloc tcmalloc luajit test"
 RESTRICT="!test? ( test )"
 SLOT="0"
 
@@ -19,34 +19,31 @@ SLOT="0"
 # This should link correctly with both unslotted & slotted Lua, without
 # changes.
 COMMON_DEPEND="
-	jemalloc? ( >=dev-libs/jemalloc-5.1:= )
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
 	tcmalloc? ( dev-util/google-perftools )
-"
+	jemalloc? ( >=dev-libs/jemalloc-5.1:= )"
 
 RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/redis
-	acct-user/redis
-"
+	acct-user/redis"
 
 BDEPEND="
 	${COMMON_DEPEND}
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 # Tcl is only needed in the CHOST test env
 DEPEND="
 	${COMMON_DEPEND}
 	test? ( dev-lang/tcl:0= )"
 
-REQUIRED_USE="?? ( jemalloc tcmalloc )"
+REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.3-config.patch
 	"${FILESDIR}"/${PN}-5.0-shared.patch
-	"${FILESDIR}"/${PN}-6.0.3-sharedlua.patch
+	"${FILESDIR}"/${PN}-5.0-sharedlua.patch
 	"${FILESDIR}"/${PN}-5.0.8-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
 )
@@ -54,12 +51,13 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# unstable on jemalloc
-	> tests/unit/memefficiency.tcl || die
+	# don't call ar directly
+	sed -e '/^STLIB_MAKE_CMD/s/ar/$(AR)/g' \
+		-i deps/hiredis/Makefile || die
 
 	# Copy lua modules into build dir
-	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
-	cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
+	cp deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c src/ || die
+	cp deps/lua/src/{fpconv,strbuf}.h src/ || die
 	# Append cflag for lua_cjson
 	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
 	append-cflags "-DENABLE_CJSON_GLOBAL"
@@ -118,26 +116,16 @@ src_configure() {
 src_compile() {
 	local myconf=""
 
-	if use jemalloc; then
-		myconf+="MALLOC=jemalloc"
-	elif use tcmalloc; then
-		myconf+="MALLOC=tcmalloc"
+	if use tcmalloc; then
+		myconf="${myconf} USE_TCMALLOC=yes"
+	elif use jemalloc; then
+		myconf="${myconf} JEMALLOC_SHARED=yes"
 	else
-		myconf+="MALLOC=libc"
+		myconf="${myconf} MALLOC=yes"
 	fi
 
 	tc-export AR CC RANLIB
 	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
-}
-
-src_test() {
-	# Known to fail with FEATURES=usersandbox
-	if has usersandbox ${FEATURES}; then
-		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
-			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
-	fi
-
-	emake check
 }
 
 src_install() {

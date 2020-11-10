@@ -16,9 +16,9 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
-	UPSTREAM_VER=2
-	SECURITY_VER=28
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	UPSTREAM_VER=
+	SECURITY_VER=29
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=21
 	# xen-tools's gentoo patches version which apply to this specific ebuild

@@ -46,7 +46,7 @@ REQUIRED_USE="?? ( jemalloc tcmalloc )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.3-config.patch
 	"${FILESDIR}"/${PN}-5.0-shared.patch
-	"${FILESDIR}"/${PN}-6.0.3-sharedlua.patch
+	"${FILESDIR}"/${PN}-6.0.9-sharedlua.patch
 	"${FILESDIR}"/${PN}-5.0.8-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
 )
@@ -128,6 +128,16 @@ src_compile() {
 
 	tc-export AR CC RANLIB
 	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
+}
+
+src_test() {
+	# Known to fail with FEATURES=usersandbox
+	if has usersandbox ${FEATURES}; then
+		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
+			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	fi
+
+	emake check
 }
 
 src_install() {
