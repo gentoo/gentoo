@@ -19,7 +19,7 @@ RDEPEND="app-text/ghostscript-gpl
 	media-libs/freetype:2=
 	media-libs/libpng:0=
 	sys-libs/zlib:=
-	x11-libs/gdk-pixbuf:2[X?]
+	x11-libs/gdk-pixbuf:2
 	virtual/jpeg:0=
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2= )
