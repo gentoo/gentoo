@@ -10,13 +10,12 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 DESCRIPTION="A mail retriever with reliable Maildir and mbox delivery"
-HOMEPAGE="http://www.getmail6.org/"
+HOMEPAGE="https://www.getmail6.org/ https://github.com/getmail6/getmail6"
 SRC_URI="https://github.com/getmail6/getmail6/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ssl"
 
 S="${WORKDIR}/getmail6-${PV}"
 
