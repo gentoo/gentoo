@@ -6,8 +6,9 @@
 
 # Sam James <sam@gentoo.org> (2020-10-09)
 # Depends on dev-libs/boost[python,numpy], not fully working atm
-# bug #733830, bug #746740
+# bug #733830, bug #746740, bug #753566
 media-gfx/openvdb python numpy
+media-libs/openimageio python
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Experimental feature not yet stabilized. Use with caution.
