@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-11-10)
+# The cargo eclass doesn't allow conditional
+# dev-lang/rust BDEPEND yet (pending), so
+# masking for now to keep tree consistency
+# and to avoid dragging in Rust where not needed.
+>=dev-vcs/mercurial-5.6
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
 # and prevents users from upgrading.  Masked for the time being.
