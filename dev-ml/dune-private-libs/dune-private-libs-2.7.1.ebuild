@@ -15,16 +15,18 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	~dev-ml/dune-2.7.1
+	test? (
+		dev-ml/ppx_expect
+	)"
 DEPEND="
 	dev-ml/csexp:=
 	dev-ml/findlib:=
 "
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND}
-	test? (
-		dev-ml/ppx_expect
-		)"
-S=${WORKDIR}/dune-${PV}
+
+S="${WORKDIR}/dune-${PV}"
 
 src_prepare() {
 	default
