@@ -32,6 +32,71 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-10)
+# This old Kodi version requires vulnerable dev-python/pillow
+# and prevents users from upgrading.  Masked for the time being.
+# Bug #729672.
+<dev-python/pillow-7
+<media-tv/kodi-19
+<media-plugins/kodi-audiodecoder-timidity-2.3
+<media-plugins/kodi-audiodecoder-sidplay-2
+<media-libs/kodi-platform-19
+<media-plugins/kodi-audiodecoder-modplug-3
+<media-plugins/kodi-audiodecoder-nosefart-3
+<media-plugins/kodi-audiodecoder-vgmstream-2
+<media-plugins/kodi-audioencoder-flac-2.1
+<media-plugins/kodi-audiodecoder-stsound-2.1
+<media-plugins/kodi-audiodecoder-snesapu-2.1
+<media-plugins/kodi-audioencoder-wav-2.1
+media-plugins/kodi-game-libretro-fceumm
+media-plugins/kodi-game-libretro-nestopia
+<media-plugins/kodi-game-libretro-2
+<media-plugins/kodi-game-libretro-twentyfortyeight-1.0.0.113
+<media-plugins/kodi-game-libretro-snes9x-1.60.0.12
+media-plugins/kodi-game-libretro-dosbox
+media-plugins/kodi-game-libretro-bnes
+<media-plugins/kodi-audioencoder-vorbis-2.1
+<media-plugins/kodi-imagedecoder-heif-1.3
+<media-plugins/kodi-imagedecoder-raw-3
+<media-plugins/kodi-inputstream-rtmp-3
+<media-plugins/kodi-audioencoder-lame-2.1
+<media-plugins/kodi-pvr-demo-6
+<media-plugins/kodi-inputstream-adaptive-2.6
+<media-plugins/kodi-pvr-dvblink-7
+<media-plugins/kodi-pvr-argustv-6
+<media-plugins/kodi-pvr-filmon-5
+<media-plugins/kodi-pvr-njoy-6
+<media-plugins/kodi-pvr-dvbviewer-6
+<media-plugins/kodi-peripheral-joystick-1.6
+<media-plugins/kodi-pvr-mediaportal-tvserver-6
+<media-plugins/kodi-pvr-iptvsimple-6
+<media-plugins/kodi-pvr-pctv-5
+<media-plugins/kodi-pvr-mythtv-7
+<media-plugins/kodi-pvr-stalker-6
+<media-plugins/kodi-pvr-hts-7
+<media-plugins/kodi-pvr-nextpvr-7
+<media-plugins/kodi-screensaver-asteroids-2.4
+<media-plugins/kodi-screensaver-biogenesis-2.3
+<media-plugins/kodi-pvr-vdr-vnsi-6
+<media-plugins/kodi-pvr-wmc-5
+<media-plugins/kodi-screensaver-greynetic-2.3
+<media-plugins/kodi-screensaver-matrixtrails-2.4
+<media-plugins/kodi-screensaver-pingpong-2.2
+<media-plugins/kodi-pvr-vbox-7
+<media-plugins/kodi-screensaver-pyro-3.1
+<media-plugins/kodi-vfs-sacd-1.3
+<media-plugins/kodi-visualization-spectrum-3.2
+<media-plugins/kodi-visualization-projectm-3
+<media-plugins/kodi-visualization-fishbmc-6
+<media-plugins/kodi-vfs-rar-3.4
+<media-plugins/kodi-vfs-libarchive-1.3
+<media-plugins/kodi-vfs-sftp-1.3
+<media-plugins/kodi-visualization-goom-3.2
+<media-plugins/kodi-pvr-vuplus-6.1
+<media-plugins/kodi-visualization-starburst-2.2
+<media-plugins/kodi-visualization-waveform-4.2
+<media-plugins/kodi-visualization-shadertoy-2.1
+
 # Marek Szuba <marecki@gentoo.org> (2020-11-09)
 # Compilation using meson currently fails on most, if not all, non-x86
 # arches (Bug #720210). For consistency, mask it everywhere for now.
