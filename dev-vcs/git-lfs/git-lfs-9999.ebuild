@@ -13,7 +13,7 @@ if [[ "${PV}" = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
@@ -26,12 +26,13 @@ RDEPEND="dev-vcs/git"
 RESTRICT+=" !test? ( test )"
 
 src_compile() {
-	set -- go build \
-		-ldflags="-X ${EGO_PN}/config.GitCommit=${GIT_COMMIT}" \
-		-mod vendor -v -work -x \
-		-o git-lfs git-lfs.go
-	echo "$@"
-	"$@" || die
+	# Flags -w, -s: Omit debugging information to reduce binary size,
+	# see https://golang.org/cmd/link/.
+	local mygobuildargs=(
+		-ldflags="-X ${EGO_PN}/config.GitCommit=${GIT_COMMIT} -s -w"
+		-mod vendor -v -work -x
+	)
+	go build "${mygobuildargs[@]}" -o git-lfs git-lfs.go || die
 
 	if use doc; then
 		ronn docs/man/*.ronn || die "man building failed"
@@ -45,12 +46,11 @@ src_install() {
 }
 
 src_test() {
-	set -- go test \
-		-ldflags="-X ${EGO_PN}/config.GitCommit=${GIT_COMMIT}" \
-		-mod vendor \
-		./...
-	echo "$@"
-	"$@" || die
+	local mygotestargs=(
+		-ldflags="-X ${EGO_PN}/config.GitCommit=${GIT_COMMIT}"
+		-mod vendor
+	)
+	go test "${mygotestargs[@]}" ./... || die
 }
 
 pkg_postinst () {
