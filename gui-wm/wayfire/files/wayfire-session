@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# output to syslog and stderr
+# with PID and syslog identity 'wayfire'
+exec 1> >(logger --id=$$ --stderr --tag wayfire) 2>&1
+
+# if undefined, or empty, set to freedesktop specification defaults
+[ -z "$XDG_DATA_DIRS" ] && export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+
+# freedesktop specifications mandate that the definition
+# of XDG_SESSION_TYPE should be respected
+export XDG_SESSION_TYPE=wayland
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+export MOZ_ENABLE_WAYLAND=1
+
+exec @EPREFIX@/usr/bin/wayfire "$@"
