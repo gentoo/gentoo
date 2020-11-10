@@ -9247,7 +9247,7 @@ dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.6 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.2.3-r1 1.2.4 1.2.5 1.3.0: An XML Schema validator and decoder
+dev-python/xmlschema 1.2.3-r1 1.2.4 1.2.5 1.3.0 1.3.1: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
@@ -17429,7 +17429,7 @@ sys-fs/ncdu 1.14.2 1.15 1.15.1: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2017.3.23-r3 2017.3.23.5: Open source read-write NTFS driver that runs under FUSE
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
-sys-fs/quota 4.04-r3 4.05-r1: Linux quota tools
+sys-fs/quota 4.05-r1 4.06: Linux quota tools
 sys-fs/quotatool 1.6.2: Command-line utility for filesystem quotas
 sys-fs/rar2fs 1.28.0 1.29.0 1.29.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/reiser4progs 1.2.1 2.0.2 2.0.3: reiser4progs: mkfs, fsck, etc...
@@ -17488,7 +17488,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.241 4.9.241 4.14.204 4.19.155 5.4.75 5.8.17 5.9.6: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.242 4.9.242 4.14.205 4.19.156 5.4.76 5.8.17 5.9.7: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
@@ -17952,7 +17952,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.4.1 82.0.3: Firefox Web Browser
 www-client/firefox-bin 78.4.1 82.0.3: Firefox Web Browser
-www-client/google-chrome 86.0.4240.183: The web browser from Google
+www-client/google-chrome 86.0.4240.193: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.47: The web browser from Google
 www-client/google-chrome-unstable 88.0.4315.5: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -17997,7 +17997,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.445: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 86.0.4240.183 87.0.4280.47_beta 88.0.4315.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.193 87.0.4280.47_beta 88.0.4315.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
