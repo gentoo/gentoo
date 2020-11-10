@@ -6,22 +6,119 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
+CRATES="
+adler-0.2.3
+aho-corasick-0.7.13
+ansi_term-0.11.0
+atty-0.2.14
+autocfg-1.0.1
+bitflags-1.2.1
+byteorder-1.3.4
+cc-1.0.60
+cfg-if-0.1.10
+clap-2.33.3
+cpython-0.4.1
+crc32fast-1.2.0
+crossbeam-0.7.3
+crossbeam-channel-0.4.4
+crossbeam-deque-0.7.3
+crossbeam-epoch-0.8.2
+crossbeam-queue-0.2.3
+crossbeam-utils-0.7.2
+ctor-0.1.16
+difference-2.0.0
+either-1.6.1
+env_logger-0.7.1
+flate2-1.0.17
+fuchsia-cprng-0.1.1
+gcc-0.3.55
+getrandom-0.1.15
+glob-0.3.0
+hermit-abi-0.1.16
+hex-0.4.2
+humantime-1.3.0
+itertools-0.9.0
+jobserver-0.1.21
+lazy_static-1.4.0
+libc-0.2.77
+libz-sys-1.1.2
+log-0.4.11
+maybe-uninit-2.0.0
+memchr-2.3.3
+memmap-0.7.0
+memoffset-0.5.6
+micro-timer-0.3.1
+micro-timer-macros-0.3.1
+miniz_oxide-0.4.2
+num-traits-0.2.12
+num_cpus-1.13.0
+output_vt100-0.1.2
+pkg-config-0.3.18
+ppv-lite86-0.2.9
+pretty_assertions-0.6.1
+proc-macro2-1.0.21
+python27-sys-0.4.1
+python3-sys-0.4.1
+quick-error-1.2.3
+quote-1.0.7
+rand-0.3.23
+rand-0.4.6
+rand-0.7.3
+rand_chacha-0.2.2
+rand_core-0.3.1
+rand_core-0.4.2
+rand_core-0.5.1
+rand_distr-0.2.2
+rand_hc-0.2.0
+rand_pcg-0.2.1
+rayon-1.4.0
+rayon-core-1.8.1
+rdrand-0.4.0
+redox_syscall-0.1.57
+regex-1.3.9
+regex-syntax-0.6.18
+remove_dir_all-0.5.3
+rust-crypto-0.2.36
+rustc-serialize-0.3.24
+same-file-1.0.6
+scopeguard-1.1.0
+strsim-0.8.0
+syn-1.0.41
+tempfile-3.1.0
+termcolor-1.1.0
+textwrap-0.11.0
+thread_local-1.0.1
+time-0.1.44
+twox-hash-1.5.0
+unicode-width-0.1.8
+unicode-xid-0.2.1
+vcpkg-0.2.10
+vec_map-0.8.2
+wasi-0.10.0+wasi-snapshot-preview1
+wasi-0.9.0+wasi-snapshot-preview1
+winapi-0.3.9
+winapi-i686-pc-windows-gnu-0.4.0
+winapi-util-0.1.5
+winapi-x86_64-pc-windows-gnu-0.4.0
+zstd-0.5.3+zstd.1.4.5
+zstd-safe-2.0.5+zstd.1.4.5
+zstd-sys-1.4.17+zstd.1.4.5
+"
 
-inherit bash-completion-r1 elisp-common eutils distutils-r1 mercurial flag-o-matic cargo
+inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic cargo
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
-EHG_REPO_URI="https://www.mercurial-scm.org/repo/hg"
+SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz
+	rust? ( $(cargo_crate_uris ${CRATES}) )"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+
+	rust? ( BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 ISC MIT PSF-2 Unlicense )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+chg emacs gpg test tk rust zsh-completion"
 
-BDEPEND="
-	dev-python/docutils[${PYTHON_USEDEP}]
-	rust? ( virtual/rust )"
-
+BDEPEND="rust? ( >=virtual/rust-1.37.0 )"
 RDEPEND="
 	app-misc/ca-certificates
 	dev-python/zstandard[${PYTHON_USEDEP}]
@@ -39,10 +136,10 @@ SITEFILE="70${PN}-gentoo.el"
 RESTRICT="test"
 
 src_unpack() {
-	mercurial_src_unpack
+	default_src_unpack
 	if use rust; then
 		local S="${S}/rust/hg-cpython"
-		cargo_live_src_unpack
+		cargo_src_unpack
 	fi
 }
 
@@ -50,7 +147,6 @@ python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
-	sed -i -e '/    hgenv =/a\' -e '    hgenv.pop("PYTHONPATH", None)' setup.py || die
 	# Use absolute import for zstd
 	sed -i -e 's/from \.* import zstd/import zstd/' \
 		mercurial/utils/compression.py \
@@ -62,7 +158,7 @@ python_prepare_all() {
 src_compile() {
 	if use rust; then
 		pushd rust/hg-cpython || die
-		cargo_src_compile
+		cargo_src_compile --no-default-features --features python3
 		popd
 	fi
 	distutils-r1_src_compile
@@ -79,7 +175,6 @@ python_compile() {
 
 python_compile_all() {
 	rm -r contrib/win32 || die
-	emake doc
 	if use chg; then
 		emake -C contrib/chg
 	fi
