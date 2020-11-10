@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit cmake-utils flag-o-matic llvm python-single-r1
+inherit cmake flag-o-matic llvm python-single-r1
 
-# Sometimes the tag is clang_9, timetimes it's IWYU-0.13
+# Sometimes the tag is clang_9, sometimes it's IWYU-0.13
 UPSTREAM_PV=0.14
 
 DESCRIPTION="Find unused include directives in C/C++ programs"
@@ -36,7 +36,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	python_fix_shebang .
 }
 
@@ -50,7 +50,7 @@ src_configure() {
 		# as llvm/clang itself.
 		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
