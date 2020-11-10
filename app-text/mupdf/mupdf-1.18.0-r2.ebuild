@@ -14,6 +14,7 @@ LICENSE="AGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE="X +javascript libressl opengl ssl"
+REQUIRED_USE="opengl? ( javascript )"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
 # bug #653298), the best way to ensure that its dependencies are present is to
@@ -57,9 +58,7 @@ src_prepare() {
 
 	use hppa && append-cflags -ffunction-sections
 
-	use javascript || \
-		sed -e '/* #define FZ_ENABLE_JS/ a\#define FZ_ENABLE_JS 0' \
-			-i include/mupdf/fitz/config.h || die
+	append-cflags "-DFZ_ENABLE_JS=$(usex javascript 1 0)"
 
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
@@ -105,7 +104,7 @@ _emake() {
 		HAVE_LIBCRYPTO=$(usex ssl) \
 		HAVE_X11=$(usex X) \
 		USE_SYSTEM_LIBS=yes \
-		USE_SYSTEM_MUJS=yes \
+		USE_SYSTEM_MUJS=$(usex javascript) \
 		USE_SYSTEM_GLUT=no \
 		HAVE_OBJCOPY=no \
 		"$@"
