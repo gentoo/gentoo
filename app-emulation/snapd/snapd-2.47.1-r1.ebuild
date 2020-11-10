@@ -17,8 +17,8 @@ KEYWORDS="~amd64"
 
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
-IUSE="apparmor gtk kde systemd"
-REQUIRED_USE="systemd"
+IUSE="apparmor +cgroup-hybrid +forced-devmode gtk kde systemd"
+REQUIRED_USE="!forced-devmode? ( cgroup-hybrid ) systemd"
 
 CONFIG_CHECK="~CGROUPS
 		~CGROUP_DEVICE
@@ -40,7 +40,7 @@ RDEPEND="
 	)
 	dev-libs/glib
 	virtual/libudev
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd[cgroup-hybrid(+)?] )
 	sys-libs/libcap:=
 	sys-fs/squashfs-tools"
 
@@ -73,6 +73,12 @@ src_prepare() {
 \x20		"fedora",
 +		"gentoo",
 \x20		"manjaro",' | patch "${MY_S}/dirs/dirs.go" || die
+
+	if ! use forced-devmode; then
+		sed -e 's#return \(!apparmorFull || cgroupv2\)#//\1\n\tif !apparmorFull || cgroupv2 {\n\t\tpanic("USE=forced-devmode is disabled")\n\t}\n\treturn false#' \
+			-i "${MY_S}/sandbox/forcedevmode.go" || die
+		grep -q 'panic("USE=forced-devmode is disabled")' "${MY_S}/sandbox/forcedevmode.go" || die "failed to disable forced-devmode"
+	fi
 
 	sed -i 's:command -v git >/dev/null:false:' -i "${MY_S}/mkversion.sh" || die
 
