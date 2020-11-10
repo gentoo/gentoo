@@ -586,7 +586,7 @@ app-admin/gnome-abrt 1.3.6: A utility for viewing problems that have occurred wi
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.9.2 1.10.1 1.10.1-r2: a simple but powerful password manager for the terminal
-app-admin/graylog 3.3.3: Free and open source log management
+app-admin/graylog 3.3.8: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
@@ -2042,9 +2042,9 @@ app-emulation/winetricks 20190912 20191224 20200412 99999999: Easy way to instal
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.13.1-r4 4.13.1-r5 4.14.0-r3: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.13.1 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.13.1-r3 4.13.1-r4 4.14.0-r2: Xen tools including QEMU and xl
+app-emulation/xen 4.13.1-r5 4.13.2 4.14.0-r4: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.13.1 4.13.2 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.13.1-r4 4.13.2 4.14.0-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
@@ -3529,7 +3529,7 @@ dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6 3.1.2: A better pager for psql and mys
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
-dev-db/redis 5.0.9-r1 6.0.6 6.0.8: A persistent caching system, key-value and data structures database
+dev-db/redis 5.0.9-r1 5.0.10 6.0.9: A persistent caching system, key-value and data structures database
 dev-db/repmgr 3.0.1 3.3.2 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
@@ -12355,8 +12355,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.4.0 78.4.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.4.0 78.4.1: Thunderbird Mail Client
+mail-client/thunderbird 78.4.2: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.4.2: Thunderbird Mail Client
 mail-client/trojita 0.7-r5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -13428,7 +13428,7 @@ media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 1.6.0 1.6.1 1.7.0
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 3.5.4 3.5.6 6.0.1 6.0.2 7.0.0 9999: Kodi's ARGUS TV client addon
 media-plugins/kodi-pvr-demo 3.6.1 6.0.1 7.0.0 9999: Demo PVR for Kodi
-media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 8.0.0 9.0.0 9999: Kodi's DVBLink client addon
+media-plugins/kodi-pvr-dvblink 4.7.1 4.7.2 7.0.0 8.0.0 9.0.0 9.0.1 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 3.7.5 3.7.8 3.7.11 6.0.6 6.0.7 7.0.0 7.1.0 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 2.4.4 2.4.6 5.1.0 6.0.0 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.1 7.1.4 7.2.0 7.2.1 7.2.2 8.0.0 8.1.0 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
