@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit findlib
+inherit findlib vcs-clean
 
 DESCRIPTION="A preprocessor-pretty-printer of ocaml"
 HOMEPAGE="https://camlp5.github.io/"
@@ -12,18 +12,20 @@ S="${WORKDIR}/${PN}-rel$(ver_rs 1- '')"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ppc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc +ocamlopt"
 
-DEPEND="dev-lang/ocaml"
+DEPEND="
+	>=dev-lang/ocaml-3.10:=[ocamlopt?]
+"
 RDEPEND="${DEPEND}"
 
-QA_FLAGS_IGNORED=(
-	/usr/bin/camlp5o.opt
-	/usr/bin/camlp5r.opt
-)
+PATCHES=( "${FILESDIR}/${PN}-7.12-destdir.patch" )
 
-DOCS="CHANGES DEVEL ICHANGES README.md UPGRADING MODE"
+src_prepare() {
+	egit_clean
+	default
+}
 
 src_configure() {
 	./configure \
@@ -34,20 +36,20 @@ src_configure() {
 		-mandir /usr/share/man || die "configure failed"
 }
 
-src_compile() {
+src_compile(){
 	emake out
 	if use ocamlopt; then
-		emake  opt
-		emake  opt.opt
+		emake opt
+		emake opt.opt
 	fi
 }
 
 src_install() {
-	use doc && HTML_DOCS="doc/*"
-
-	default
-
+	emake DESTDIR="${ED}" install
 	# findlib support
 	insinto "$(ocamlfind printconf destdir)/${PN}"
 	doins etc/META
+
+	dodoc -r doc/*
+	dodoc CHANGES DEVEL ICHANGES README.md UPGRADING MODE
 }
