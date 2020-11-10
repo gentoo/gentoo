@@ -7846,7 +7846,7 @@ dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-po
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.3 0.5.4 0.5.5: SOCKS proxy connector for aiohttp
 dev-python/aiorpcX 0.18.4-r1: Generic async RPC implementation, including JSON-RPC
-dev-python/aiosmtpd 1.2: asyncio based SMTP server
+dev-python/aiosmtpd 1.2 1.2.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.4.2 1.4.3: database migrations tool, written by the author of SQLAlchemy
