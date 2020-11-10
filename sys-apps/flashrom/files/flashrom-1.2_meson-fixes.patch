@@ -8,17 +8,18 @@
  config_linux_mtd = get_option('config_linux_mtd')
  config_linux_spi = get_option('config_linux_spi')
  config_mstarddc_spi = get_option('config_mstarddc_spi')
-@@ -67,6 +68,9 @@
+@@ -67,6 +68,10 @@
  deps = []
  srcs = []
  
++config_bitbang_spi = false
 +need_libftdi = false
 +need_libpci = false
 +need_libusb = false
  need_raw_access = false
  need_serial = false
  
-@@ -81,24 +85,24 @@
+@@ -81,24 +86,24 @@
    add_project_arguments('-DHAVE_UTSNAME=1', language : 'c')
  endif
  
@@ -55,7 +56,7 @@
    config_atahpt = false
    config_atapromise = false
    config_atavia = false
-@@ -121,14 +125,17 @@
+@@ -121,14 +126,17 @@
  # set defines for configured programmers
  if config_atahpt
    srcs += 'atahpt.c'
@@ -73,7 +74,7 @@
    cargs += '-DCONFIG_ATAVIA=1'
  endif
  if config_buspirate_spi
-@@ -138,22 +145,27 @@
+@@ -138,22 +146,27 @@
  endif
  if config_ch341a_spi
    srcs += 'ch341a_spi.c'
@@ -101,7 +102,7 @@
    cargs += '-DCONFIG_DRKAISER=1'
  endif
  if config_dummy
-@@ -162,12 +174,13 @@
+@@ -162,12 +175,13 @@
  endif
  if config_ft2232_spi
    srcs += 'ft2232_spi.c'
@@ -116,7 +117,7 @@
    cargs += '-DCONFIG_GFXNVIDIA=1'
  endif
  if config_internal
-@@ -186,6 +199,7 @@
+@@ -186,6 +200,7 @@
      srcs += 'sb600spi.c'
      srcs += 'wbsio_spi.c'
    endif
@@ -124,7 +125,7 @@
    config_bitbang_spi = true
    cargs += '-DCONFIG_INTERNAL=1'
    if get_option('config_internal_dmi')
-@@ -195,6 +209,7 @@
+@@ -195,6 +210,7 @@
  endif
  if config_it8212
    srcs += 'it8212.c'
@@ -132,7 +133,7 @@
    cargs += '-DCONFIG_IT8212=1'
  endif
  if config_linux_mtd
-@@ -211,36 +226,44 @@
+@@ -211,36 +227,44 @@
  endif
  if config_nic3com
    srcs += 'nic3com.c'
@@ -177,7 +178,7 @@
    cargs += '-DCONFIG_PICKIT2_SPI=1'
  endif
  if config_pony_spi
-@@ -252,15 +275,18 @@
+@@ -252,15 +276,18 @@
  if config_rayer_spi
    srcs += 'rayer_spi.c'
    config_bitbang_spi = true
@@ -196,7 +197,7 @@
    cargs += '-DCONFIG_SATASII=1'
  endif
  if config_serprog
-@@ -270,12 +296,19 @@
+@@ -270,12 +297,19 @@
  endif
  if config_usbblaster_spi
    srcs += 'usbblaster_spi.c'
@@ -216,7 +217,7 @@
  
  # bitbanging SPI infrastructure
  if config_bitbang_spi
-@@ -296,6 +329,25 @@
+@@ -296,6 +330,25 @@
    srcs += 'serial.c'
  endif
  
