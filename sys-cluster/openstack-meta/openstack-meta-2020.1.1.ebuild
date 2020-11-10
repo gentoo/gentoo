@@ -18,7 +18,8 @@ DEPEND=""
 RDEPEND="
 	keystone? ( >=sys-auth/keystone-17.0.0
 								<sys-auth/keystone-18 )
-	swift? ( ~sys-cluster/swift-2.25.0 )
+	swift? ( >=sys-cluster/swift-2.25.0
+						<sys-cluster/swift-2.26.0 )
 	neutron? ( >=sys-cluster/neutron-16.0.0
 						<sys-cluster/neutron-17 )
 	glance? ( >=app-admin/glance-20.0.0
