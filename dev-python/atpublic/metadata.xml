@@ -8,4 +8,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">atpublic</remote-id>
+		<remote-id type="gitlab">warsaw/public</remote-id>
+	</upstream>
 </pkgmetadata>
