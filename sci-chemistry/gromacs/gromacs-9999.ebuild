@@ -12,16 +12,16 @@ DISTUTILS_SINGLE_IMPL=1
 inherit bash-completion-r1 cmake cuda distutils-r1 eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
-	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
-		https://gerrit.gromacs.org/gromacs.git
+	EGIT_REPO_URI="
+		https://gitlab.com/gromacs/gromacs.git
 		https://github.com/gromacs/gromacs.git
-		https://repo.or.cz/r/gromacs.git"
+		git://git.gromacs.org/gromacs.git"
 	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 else
 	SRC_URI="
-		http://ftp.gromacs.org/pub/${PN}/${PN}-${PV/_/-}.tar.gz
-		test? ( http://ftp.gromacs.org/pub/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
+		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
+		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 fi
 
