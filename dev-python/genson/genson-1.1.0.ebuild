@@ -5,6 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7})
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
 
 DESCRIPTION="GenSON is a powerful, user-friendly JSON Schema generator built in Python"
