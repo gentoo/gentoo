@@ -17,7 +17,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-xauth-and-home.patch
 )
 
-
 src_install() {
 	dobin ${PN}{,term}
 	dodoc TODO
