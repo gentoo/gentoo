@@ -11,7 +11,7 @@ inherit distutils-r1 optfeature
 DESCRIPTION="Download image galleries and collections from several image hosting sites"
 HOMEPAGE="https://github.com/mikf/gallery-dl"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mikf/${PN}.git"
 else
@@ -24,9 +24,7 @@ RESTRICT="test"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND="
-	>=dev-python/requests-2.11.0[${PYTHON_USEDEP}]
-"
+RDEPEND=">=dev-python/requests-2.11.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
 
