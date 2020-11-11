@@ -75,6 +75,10 @@ net-libs/pjproject g729
 # iasl is stable on ppc
 sys-firmware/seabios -debug
 
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
 # sys-cluster/hpx, sci-libs/silo not keyworded
 sci-libs/libgeodecomp hpx silo
