@@ -2125,7 +2125,7 @@ app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules 
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r2: Detect and convert encoding of text files
 app-i18n/fbterm 1.7_p20190503: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.9.6 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.6 4.2.9.7 4.2.9.8 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
 app-i18n/fcitx-chewing 0.2.3 4.9999: Chinese Chewing input method for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.6 4.9999: Internet look-up support for Chinese Pinyin input methods for Fcitx
@@ -5061,7 +5061,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.14.10 1.15.3 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.14.10 1.14.11 1.15.3 1.15.4 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -14655,7 +14655,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
 net-irc/telepathy-idle 0.2.0-r3: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.6 5.0.7 5.0.7-r1: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.9 9999: Portable and multi-interface IRC client
+net-irc/weechat 2.9 3.0 9999: Portable and multi-interface IRC client
 net-irc/znc 1.8.1 1.8.2 9999: An advanced IRC Bouncer
 net-irc/znc-clientbuffer 1.0.48: A ZNC module which provides client specific buffers
 net-irc/znc-igloo-push 20200520: A ZNC module which provides push notifications for Igloo client
