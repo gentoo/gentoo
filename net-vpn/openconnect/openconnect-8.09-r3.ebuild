@@ -24,20 +24,20 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi libproxy lz4 nls smartcard static-libs stoken test"
+IUSE="doc +gnutls gssapi libproxy lz4 nls smartcard stoken test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
 	!gnutls? (
-		>=dev-libs/openssl-1.0.1h:0=[static-libs?]
+		>=dev-libs/openssl-1.0.1h:0=
 	)
 	gnutls? (
 		app-crypt/trousers
 		app-misc/ca-certificates
 		dev-libs/nettle
-		>=net-libs/gnutls-3.6.13:0=[static-libs?]
+		>=net-libs/gnutls-3.6.13:0=
 		dev-libs/libtasn1:0=
 		app-crypt/tpm2-tss
 	)
@@ -102,7 +102,7 @@ src_configure() {
 	local myconf=(
 		--disable-dsa-tests
 		$(use_enable nls)
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_with !gnutls openssl)
 		$(use_with gnutls)
 		$(use_with libproxy)
