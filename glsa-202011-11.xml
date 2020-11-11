@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-11">
+  <title>Blueman: Local privilege escalation</title>
+  <synopsis>A privilege escalation vulnerability has been discovered in
+    Blueman.
+  </synopsis>
+  <product type="ebuild">blueman</product>
+  <announced>2020-11-11</announced>
+  <revised count="2">2020-11-11</revised>
+  <bug>751556</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-wireless/blueman" auto="yes" arch="*">
+      <unaffected range="ge">2.1.4</unaffected>
+      <vulnerable range="lt">2.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Blueman is a simple and intuitive GTK+ Bluetooth Manager.</p>
+  </background>
+  <description>
+    <p>Where Polkit is not used and the default permissions have been changed
+      on a specific rule file, control of a local DHCP daemon may be possible.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to achieve root privilege escalation.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Blueman users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/blueman-2.1.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15238">CVE-2020-15238</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-01T02:23:14Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:43:42Z">sam_c</metadata>
+</glsa>
