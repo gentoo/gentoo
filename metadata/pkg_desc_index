@@ -12744,7 +12744,7 @@ media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumb
 media-gfx/gnome-screenshot 3.36.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.20: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.20 2.5.26: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r2: A GTK-based image browser
@@ -13063,7 +13063,7 @@ media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
 media-libs/libgig 4.2.0 9999: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libglvnd 1.3.2-r2 9999: The GL Vendor-Neutral Dispatch library
-media-libs/libgphoto2 2.5.22: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.22 2.5.26: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
@@ -15038,7 +15038,7 @@ net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
-net-misc/gallery-dl 1.15.2 9999: Download image galleries and collections from several image hosting sites
+net-misc/gallery-dl 1.15.2-r1 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -16995,7 +16995,7 @@ sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and late
 sys-auth/AusweisApp2 1.20.2 9999: Official authentication app for German ID cards and residence permits
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
-sys-auth/elogind 243.7: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 243.7 243.7-r1: The systemd project's logind, extracted to a standalone package
 sys-auth/fingerprint-gui 1.09-r1: Use Fingerprint Devices with Linux
 sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verification via mobile platform
@@ -17043,6 +17043,7 @@ sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklo
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.12-r1 0.13-r1: Realtime Policy and Watchdog Daemon
+sys-auth/seatd 0.4.0 9999: Minimal seat management daemon and universal library
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/solo-python 0.0.26: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
