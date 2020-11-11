@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/753923
+
+--- a/plugins/launchtaskbar.c	2019-01-13 16:35:07.000000000 -0500
++++ b/plugins/launchtaskbar.c	2020-11-10 14:25:51.550180345 -0500
+@@ -69,5 +69,4 @@
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ #include <glib/gi18n.h>
+--- a/plugins/task-button.c	2019-02-26 16:45:49.000000000 -0500
++++ b/plugins/task-button.c	2020-11-10 14:25:44.858209009 -0500
+@@ -44,5 +44,4 @@
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ #include <glib/gi18n.h>
+--- a/src/plugin.c	2019-01-13 16:35:07.000000000 -0500
++++ b/src/plugin.c	2020-11-10 14:25:38.820234868 -0500
+@@ -30,5 +30,4 @@
+ 
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #include <gdk/gdk.h>
+ #include <string.h>
