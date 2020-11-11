@@ -1,5 +1,14 @@
 --- a/meson.build
 +++ b/meson.build
+@@ -2,7 +2,7 @@
+   version : run_command('util/getversion.sh', '-v').stdout().strip(),
+   license : 'GPL-2.0',
+   meson_version : '>=0.47.0',
+-  default_options : ['warning_level=2', 'c_std=c99'],
++  default_options : ['warning_level=2', 'c_std=gnu99'],
+ )
+ 
+ # libtool versioning
 @@ -44,6 +44,7 @@
  config_gfxnvidia = get_option('config_gfxnvidia')
  config_internal = get_option('config_internal')
