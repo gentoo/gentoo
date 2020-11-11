@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit cmake python-single-r1 xdg-utils
 
@@ -27,7 +27,11 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
 IUSE="doc man nls test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( nls )
+"
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
@@ -46,6 +50,7 @@ RDEPEND="
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
+
 DEPEND="${RDEPEND}
 	test? ( dev-util/cpputest )
 "
@@ -59,8 +64,7 @@ BDEPEND="
 
 DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.adoc"
 
-# tests need to be fixed to not use system plugins if weechat is already installed
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -135,6 +139,10 @@ src_configure() {
 		-DENABLE_XFER=$(usex xfer)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+		cmake_src_test -V
 }
 
 pkg_postinst() {
