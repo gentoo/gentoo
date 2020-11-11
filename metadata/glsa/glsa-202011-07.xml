@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-07">
+  <title>Mozilla Firefox: Remote code execution</title>
+  <synopsis>A use-after-free in Mozilla Firefox might allow remote attacker(s)
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2020-11-11</announced>
+  <revised count="1">2020-11-11</revised>
+  <bug>753773</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">82.0.3</unaffected>
+      <unaffected range="ge" slot="0/esr78">78.4.1</unaffected>
+      <vulnerable range="lt">82.0.3</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">82.0.3</unaffected>
+      <unaffected range="ge" slot="0/esr78">78.4.1</unaffected>
+      <vulnerable range="lt">78.4.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      project.
+    </p>
+  </background>
+  <description>
+    <p>Invalid assumptions when emitting the the MCallGetProperty opcode in the
+      JavaScript JIT may result in a use-after-free condition.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-82.0.3"
+    </code>
+    
+    <p>All Mozilla Firefox (bin) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/firefox-bin-78.4.1:0/esr78"
+    </code>
+    
+    <p>All Mozilla Firefox (ESR) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-82.0.3"
+    </code>
+    
+    <p>All Mozilla Firefox (ESR) bin users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/firefox-bin-78.4.1:0/esr78"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26950">CVE-2020-26950</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-49/">
+      MFSA-2020-49
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-09T20:03:19Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:36:43Z">sam_c</metadata>
+</glsa>

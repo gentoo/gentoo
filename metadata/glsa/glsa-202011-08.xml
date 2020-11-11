@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-08">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>2020-11-11</announced>
+  <revised count="1">2020-11-11</revised>
+  <bug>750692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">3.4.0</unaffected>
+      <vulnerable range="lt">3.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-3.4.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26575">CVE-2020-26575</uri>
+    <uri link="https://www.wireshark.org/security/wnpa-sec-2020-14">
+      wnpa-sec-2020-14
+    </uri>
+    <uri link="https://www.wireshark.org/security/wnpa-sec-2020-15">
+      wnpa-sec-2020-15
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-08T10:31:07Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:36:48Z">sam_c</metadata>
+</glsa>

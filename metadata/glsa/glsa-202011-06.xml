@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-06">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2020-11-11</announced>
+  <revised count="3">2020-11-11</revised>
+  <bug>744202</bug>
+  <bug>750779</bug>
+  <bug>753692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.13.2</unaffected>
+      <vulnerable range="lt">4.13.2</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.13.2</unaffected>
+      <vulnerable range="lt">4.13.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.13.1-r5"
+    </code>
+    
+    <p>All Xen Tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.13.1-r5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25595">CVE-2020-25595</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25596">CVE-2020-25596</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25597">CVE-2020-25597</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25598">CVE-2020-25598</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25599">CVE-2020-25599</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25600">CVE-2020-25600</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25601">CVE-2020-25601</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25602">CVE-2020-25602</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25603">CVE-2020-25603</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25604">CVE-2020-25604</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27670">CVE-2020-27670</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27671">CVE-2020-27671</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27672">CVE-2020-27672</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27673">CVE-2020-27673</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27674">CVE-2020-27674</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27675">CVE-2020-27675</uri>
+    <uri link="https://xenbits.xen.org/xsa/advisory-345.html">XSA-345</uri>
+    <uri link="https://xenbits.xen.org/xsa/advisory-346.html">XSA-346</uri>
+    <uri link="https://xenbits.xen.org/xsa/advisory-347.html">XSA-347</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-23T04:14:51Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:40:50Z">sam_c</metadata>
+</glsa>

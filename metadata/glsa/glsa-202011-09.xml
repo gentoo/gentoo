@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-09">
+  <title>QEMU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>2020-11-11</announced>
+  <revised count="1">2020-11-11</revised>
+  <bug>720896</bug>
+  <bug>725634</bug>
+  <bug>743649</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">5.1.0-r1</unaffected>
+      <vulnerable range="lt">5.1.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-5.1.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10717">CVE-2020-10717</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10761">CVE-2020-10761</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13253">CVE-2020-13253</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13361">CVE-2020-13361</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13362">CVE-2020-13362</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13659">CVE-2020-13659</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13754">CVE-2020-13754</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13791">CVE-2020-13791</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13800">CVE-2020-13800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14364">CVE-2020-14364</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-07T02:00:43Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:36:56Z">sam_c</metadata>
+</glsa>

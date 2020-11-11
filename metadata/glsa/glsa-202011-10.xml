@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-10">
+  <title>tmux: Buffer overflow</title>
+  <synopsis>A buffer overflow in tmux might allow remote attacker(s) to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">tmux</product>
+  <announced>2020-11-11</announced>
+  <revised count="1">2020-11-11</revised>
+  <bug>753206</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-misc/tmux" auto="yes" arch="*">
+      <unaffected range="ge">3.1c</unaffected>
+      <vulnerable range="lt">3.1c</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tmux is a terminal multiplexer.</p>
+  </background>
+  <description>
+    <p>A flaw in tmux’s handling of escape characters was discovered which
+      may allow a buffer overflow.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tmux users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-misc/tmux-3.1c"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27347">CVE-2020-27347</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-09T23:15:04Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:36:59Z">sam_c</metadata>
+</glsa>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-13">
+  <title>Salt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Salt, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">salt</product>
+  <announced>2020-11-11</announced>
+  <revised count="1">2020-11-11</revised>
+  <bug>753266</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-admin/salt" auto="yes" arch="*">
+      <unaffected range="ge">3000.5</unaffected>
+      <vulnerable range="lt">3000.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Salt is a remote execution and configuration manager.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Salt. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Salt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/salt-3000.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16846">CVE-2020-16846</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17490">CVE-2020-17490</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25592">CVE-2020-25592</uri>
+    <uri link="https://www.saltstack.com/blog/on-november-3-2020-saltstack-publicly-disclosed-three-new-cves/">
+      Upstream advisory
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-09T23:14:31Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-11T03:38:41Z">sam_c</metadata>
+</glsa>
