@@ -68,7 +68,7 @@ src_configure() {
 	local guis=()
 	use gtk && guis+=( gtk3 )
 	use qt5 && guis+=( qt5 )
-	econf "${myeconfargs[@]}" "--with-guis=${guis[@]}"
+	econf "${myeconfargs[@]}" "--with-guis=${guis[*]}"
 }
 
 src_compile() {
