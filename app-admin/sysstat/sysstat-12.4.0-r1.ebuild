@@ -24,7 +24,6 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	!dcron? ( !sys-process/dcron )
-	dcron? ( sys-process/dcron )
 	selinux? ( sec-policy/selinux-sysstat )
 "
 PATCHES=(
