@@ -26,7 +26,7 @@ fi
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS=""
-IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xml"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xkb"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
 RESTRICT="!test? ( test )"
 
@@ -46,7 +46,8 @@ DEPEND="dev-libs/glib:2
 		x11-libs/libXfixes
 		x11-libs/libXinerama
 		x11-libs/libXrender
-		xml? (
+		xkb? (
+			dev-libs/libxml2
 			x11-libs/libxkbfile
 			x11-misc/xkeyboard-config
 		)
@@ -63,11 +64,15 @@ DEPEND="dev-libs/glib:2
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:0= )
-	xml? (
+	xkb? (
 		app-text/iso-codes
-		dev-libs/libxml2
+		dev-libs/json-c:0=
 	)"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.2.9.8-xkb.patch"
+)
 
 DOCS=(AUTHORS ChangeLog THANKS)
 
@@ -79,14 +84,6 @@ src_prepare() {
 		ln -s "${DISTDIR}/fcitx-data-py_table-20121124.tar.gz" src/module/pinyin-enhance/data/py_table-20121124.tar.gz || die
 		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
 	fi
-
-	# https://github.com/fcitx/fcitx/issues/250
-	sed \
-		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
-		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
-		-e "/find_package(XkbFile REQUIRED)/a\\        find_package(XKeyboardConfig REQUIRED)\n    endif(ENABLE_X11)" \
-		-e "/^find_package(XKeyboardConfig REQUIRED)/,+1d" \
-		-i CMakeLists.txt
 
 	cmake_src_prepare
 }
@@ -102,7 +99,6 @@ src_configure() {
 		-DENABLE_GIR=$(usex introspection ON OFF)
 		-DENABLE_GTK2_IM_MODULE=$(usex gtk2 ON OFF)
 		-DENABLE_GTK3_IM_MODULE=$(usex gtk3 ON OFF)
-		-DENABLE_LIBXML2=$(usex xml ON OFF)
 		-DENABLE_LUA=$(usex lua ON OFF)
 		-DENABLE_OPENCC=$(usex opencc ON OFF)
 		-DENABLE_PANGO=$(usex pango ON OFF)
@@ -115,6 +111,7 @@ src_configure() {
 		-DENABLE_TEST=$(usex test ON OFF)
 		-DENABLE_X11=$(usex X ON OFF)
 		-DENABLE_XDGAUTOSTART=$(usex autostart ON OFF)
+		-DENABLE_XKB=$(usex xkb ON OFF)
 	)
 
 	cmake_src_configure
