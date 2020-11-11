@@ -23,7 +23,7 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )
 "
 DEPEND="${RDEPEND}
-	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3 )
+	sysprof? ( >=dev-util/sysprof-capture-3.38.1:4 )
 	test? ( sys-apps/dbus
 		>=x11-libs/gtk+-3.20:3[introspection] )
 "
