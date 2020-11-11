@@ -4,13 +4,13 @@
 EAPI=7
 
 ECM_DESIGNERPLUGIN="true"
-QTMIN=5.14.2
+QTMIN=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="nls"
 
 BDEPEND="
