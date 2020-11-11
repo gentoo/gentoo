@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils
+inherit desktop wrapper xdg
 
 MY_P="${PV//./_}"
 MY_P="${PN}_complete_story_v${MY_P%_*}_build_${MY_P##*_}"
@@ -41,7 +41,7 @@ RDEPEND="
 		media-libs/libpng-compat:1.2[abi_x86_32]
 		sys-apps/dbus[abi_x86_32]
 		sys-apps/util-linux[abi_x86_32]
-		x11-libs/gdk-pixbuf:2[abi_x86_32,X]
+		x11-libs/gdk-pixbuf:2[abi_x86_32]
 		x11-libs/gtk+:2[abi_x86_32]
 		x11-libs/libX11[abi_x86_32]
 		x11-libs/pango[abi_x86_32,X]
@@ -93,7 +93,3 @@ src_install() {
 	doicon -s 64 ${PN}.png
 	dodoc readme_changelog.txt readme/{KNOWN_LINUX_ISSUES,README}
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
