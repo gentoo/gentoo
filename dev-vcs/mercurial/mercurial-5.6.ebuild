@@ -6,6 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
+CARGO_OPTIONAL=1
+
 CRATES="
 adler-0.2.3
 aho-corasick-0.7.13
@@ -105,7 +107,7 @@ zstd-safe-2.0.5+zstd.1.4.5
 zstd-sys-1.4.17+zstd.1.4.5
 "
 
-inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic cargo
+inherit bash-completion-r1 cargo elisp-common eutils distutils-r1 flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
