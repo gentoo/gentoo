@@ -17,19 +17,20 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=1
-	SECURITY_VER=28
+	UPSTREAM_VER=0
+	SECURITY_VER=29
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=22
+	GENTOO_VER=21
 	# xen-tools's gentoo patches version which apply to this specific ebuild
-	GENTOO_GPV=0
+	GENTOO_GPV=1
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER="1.13.0"
-	EDK2_COMMIT="20d2e5a125e34fc8501026613a71549b2a1a3e54"
-	EDK2_OPENSSL_VERSION="1_1_1b"
+	SEABIOS_VER="1.12.1"
+	EDK2_COMMIT="06dc822d045c2bb42e497487935485302486e151"
+	EDK2_OPENSSL_VERSION="1_1_1g"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
+	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
 	IPXE_COMMIT="1dd56dbd11082fb622c2ed21cfaced4f47d798a6"
 
 	[[ -n ${UPSTREAM_VER} ]] && \
@@ -50,6 +51,7 @@ else
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
 		https://github.com/openssl/openssl/archive/OpenSSL_${EDK2_OPENSSL_VERSION}.tar.gz
 		https://github.com/ucb-bar/berkeley-softfloat-3/archive/${EDK2_SOFTFLOAT_COMMIT}.tar.gz -> berkeley-softfloat-${EDK2_SOFTFLOAT_COMMIT}.tar.gz
+		https://github.com/google/brotli/archive/${EDK2_BROTLI_COMMIT}.tar.gz -> brotli-${EDK2_BROTLI_COMMIT}.tar.gz
 		${OVMF_PATCHSET_URI} )
 	${UPSTREAM_PATCHSET_URI}
 	${SECURITY_PATCHSET_URI}
@@ -263,8 +265,12 @@ src_prepare() {
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
 		rm -r tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
 		rm -r tools/firmware/ovmf-dir-remote/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 || die
+		rm -r tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli || die
+		rm -r tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli || die
 		mv ../openssl-OpenSSL_${EDK2_OPENSSL_VERSION} tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
 		mv ../berkeley-softfloat-3-${EDK2_SOFTFLOAT_COMMIT} tools/firmware/ovmf-dir-remote/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 || die
+		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli || die
+		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli || die
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
 	fi
 
@@ -276,11 +282,6 @@ src_prepare() {
 		cp "${WORKDIR}/patches-gentoo/xen-tools-4.13.0-ipxe-gcc10.patch" tools/firmware/etherboot/patches/ipxe-gcc10.patch || die
 		echo ipxe-gcc10.patch >> tools/firmware/etherboot/patches/series || die
 	fi
-
-	# gcc 10
-	# libxlu_pci.c:32:18: error: 'func' may be used uninitialized in this function
-	sed -e '/CFLAGS/s/Werror/Wno-error/g' \
-		-i tools/libxl/Makefile || die
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 

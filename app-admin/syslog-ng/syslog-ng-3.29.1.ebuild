@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit autotools python-single-r1 systemd
 
 MY_PV_MM=$(ver_cut 1-2)
@@ -13,11 +13,10 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="amqp caps dbi geoip geoip2 http ipv6 json kafka libressl mongodb pacct python redis smtp snmp spoof-source systemd tcpd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="amqp caps dbi geoip2 http ipv6 json kafka libressl mongodb pacct python redis smtp snmp test spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-# unit tests require https://github.com/Snaipe/Criterion with additional deps
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
@@ -27,7 +26,6 @@ RDEPEND="
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
-	geoip? ( >=dev-libs/geoip-1.5.0 )
 	geoip2? ( dev-libs/libmaxminddb:= )
 	http? ( net-misc/curl )
 	json? ( >=dev-libs/json-c-0.9:= )
@@ -36,13 +34,14 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	redis? ( >=dev-libs/hiredis-0.11.0:= )
 	smtp? ( net-libs/libesmtp )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:0= )
 	spoof-source? ( net-libs/libnet:1.1= )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-libs/criterion )"
 BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig"
@@ -50,6 +49,9 @@ BDEPEND="
 DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunOS,doc}
 	contrib/syslog2ng "${T}/syslog-ng.conf.gentoo.hardened"
 	"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.28.1-net-snmp.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -113,7 +115,6 @@ src_configure() {
 		$(usex amqp --with-librabbitmq-client=system --without-librabbitmq-client)
 		$(use_enable caps linux-caps)
 		$(use_enable dbi sql)
-		$(use_enable geoip)
 		$(use_enable geoip2)
 		$(use_enable http)
 		$(use_enable ipv6)
@@ -125,7 +126,7 @@ src_configure() {
 		$(use_enable python)
 		$(use_enable redis)
 		$(use_enable smtp)
-		$(use_enable snmp snmp-dest)
+		$(use_enable snmp afsnmp)
 		$(use_enable spoof-source)
 		$(use_enable systemd)
 		$(use_enable tcpd tcp-wrapper)
