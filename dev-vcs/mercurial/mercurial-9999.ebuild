@@ -21,7 +21,7 @@ IUSE="+chg emacs gpg test tk rust zsh-completion"
 
 BDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
-	rust? ( virtual/rust )"
+	rust? ( ${RUST_DEPEND} )"
 
 RDEPEND="
 	app-misc/ca-certificates
