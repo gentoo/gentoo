@@ -62,6 +62,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.0-cflags.patch
 	"${FILESDIR}"/${PN}-1.9.0-dont_compress_manpages.patch
+	"${FILESDIR}"/${P}-icu68.patch
 )
 
 src_configure() {
