@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 optfeature virtualx xdg
 
-COMMIT="47752e0d240d9f2686c2a69d813ac5112bda1ad3"
+COMMIT="3e3893b0ee381098418d7b28997f6b861c53eff1"
 
 DESCRIPTION="A program for drawing beautiful mathematically-based images known as fractals"
 HOMEPAGE="https://fract4d.github.io/gnofract4d/"
@@ -20,17 +20,18 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	media-libs/libpng:0=
-	virtual/jpeg
-	test? (
-		media-video/ffmpeg[vpx,zlib]
-	)"
+	virtual/jpeg"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3[introspection]"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	test? (
+		media-video/ffmpeg[vpx,zlib]
+	)"
 
 distutils_enable_tests pytest
 
@@ -40,6 +41,8 @@ src_prepare() {
 	sed -i -e "s:share/doc/gnofract4d/:share/doc/${PF}/:" setup.py || die
 	# test_regress.py does not provide pytest with any tests and inspecting it requires dev-python/pillow
 	rm test_regress.py || die
+	# tests hanging with virtx
+	rm fract4dgui/tests/test_{director,gtkfractal}.py || die
 
 	distutils-r1_src_prepare
 }
