@@ -26,7 +26,7 @@ fi
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS=""
-IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xkb"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango +table test +xkb"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
 RESTRICT="!test? ( test )"
 
@@ -106,7 +106,6 @@ src_configure() {
 		-DENABLE_QT_GUI=OFF
 		-DENABLE_QT_IM_MODULE=OFF
 		-DENABLE_SNOOPER=$(if use gtk2 || use gtk3; then echo ON; else echo OFF; fi)
-		-DENABLE_STATIC=$(usex static-libs ON OFF)
 		-DENABLE_TABLE=$(usex table ON OFF)
 		-DENABLE_TEST=$(usex test ON OFF)
 		-DENABLE_X11=$(usex X ON OFF)
