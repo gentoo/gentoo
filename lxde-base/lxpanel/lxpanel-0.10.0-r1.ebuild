@@ -27,7 +27,7 @@ RDEPEND="dev-libs/keybinder:0=
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf[X]
+	x11-libs/gdk-pixbuf
 	x11-libs/libX11
 	lxde-base/lxmenu-data
 	lxde-base/menu-cache
