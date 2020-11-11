@@ -46,7 +46,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) )
+	ruby? ( || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
