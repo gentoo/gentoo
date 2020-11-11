@@ -26,7 +26,7 @@ fi
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 x86"
-IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xml"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xkb"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
 RESTRICT="!test? ( test )"
 
@@ -46,7 +46,7 @@ DEPEND="dev-libs/glib:2
 		x11-libs/libXfixes
 		x11-libs/libXinerama
 		x11-libs/libXrender
-		xml? (
+		xkb? (
 			x11-libs/libxkbfile
 			x11-misc/xkeyboard-config
 		)
@@ -63,7 +63,7 @@ DEPEND="dev-libs/glib:2
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:0= )
-	xml? (
+	xkb? (
 		app-text/iso-codes
 		dev-libs/libxml2
 	)"
@@ -102,7 +102,7 @@ src_configure() {
 		-DENABLE_GIR=$(usex introspection ON OFF)
 		-DENABLE_GTK2_IM_MODULE=$(usex gtk2 ON OFF)
 		-DENABLE_GTK3_IM_MODULE=$(usex gtk3 ON OFF)
-		-DENABLE_LIBXML2=$(usex xml ON OFF)
+		-DENABLE_LIBXML2=$(usex xkb ON OFF)
 		-DENABLE_LUA=$(usex lua ON OFF)
 		-DENABLE_OPENCC=$(usex opencc ON OFF)
 		-DENABLE_PANGO=$(usex pango ON OFF)

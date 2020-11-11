@@ -23,10 +23,9 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
 
-# LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT qt4? ( BSD )"
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango +table test +xkb"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
 RESTRICT="!test? ( test )"
@@ -72,7 +71,6 @@ DEPEND="dev-libs/glib:2
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.9.8-enchant.patch"
 	"${FILESDIR}/${PN}-4.2.9.8-xkb.patch"
 )
 
