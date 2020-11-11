@@ -71,6 +71,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	>=kde-plasma/kwin-${PVCUT}:5
 	>=kde-plasma/libksysguard-${PVCUT}:5
+	>=kde-plasma/libkworkspace-${PVCUT}:5
 	>=kde-plasma/plasma-workspace-${PVCUT}:5
 	>=media-libs/phonon-4.11.0
 	x11-libs/libX11
