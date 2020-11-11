@@ -103,7 +103,7 @@ dev-util/patchutils test
 dev-util/pkgconf test
 dev-util/strace unwind
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
-dev-vcs/mercurial tk zsh-completion
+dev-vcs/mercurial tk rust zsh-completion
 media-libs/freetype harfbuzz png
 media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
