@@ -17483,7 +17483,7 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r2 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9: Linux system headers
 sys-kernel/mips-sources 4.4.230 4.9.230 4.14.188 4.18.20 4.19.133 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -17944,7 +17944,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 86.0.4240.183 86.0.4240.193 87.0.4280.47 88.0.4315.5: Open-source version of Google Chrome web browser
+www-client/chromium 86.0.4240.193 87.0.4280.47 88.0.4315.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
