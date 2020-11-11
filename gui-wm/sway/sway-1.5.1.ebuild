@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag systemd tray wallpapers X zsh-completion"
+IUSE="elogind fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag seatd systemd tray wallpapers X zsh-completion"
 REQUIRED_USE="?? ( elogind systemd )
 	tray? ( || ( elogind systemd ) )"
 
@@ -44,11 +44,11 @@ DEPEND="
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]"
+	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,seatd=,systemd=,X=]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.12.0:=[elogind=,systemd=,X=]
-		<gui-libs/wlroots-0.13.0:=[elogind=,systemd=,X=]
+		>=gui-libs/wlroots-0.12.0:=[elogind=,seatd=,systemd=,X=]
+		<gui-libs/wlroots-0.13.0:=[elogind=,seatd=,systemd=,X=]
 	"
 fi
 RDEPEND="
@@ -99,14 +99,14 @@ src_configure() {
 }
 
 pkg_preinst() {
-	if ! use systemd && ! use elogind; then
+	if ! use systemd && ! use elogind && ! use seatd; then
 		fowners root:0 /usr/bin/sway
 		fperms 4511 /usr/bin/sway
 	fi
 }
 
 pkg_postinst() {
-	if ! use systemd && ! use elogind; then
+	if ! use systemd && ! use elogind && ! use seatd; then
 		elog ""
 		elog "If you use ConsoleKit2, remember to launch sway using:"
 		elog "exec ck-launch-session sway"
