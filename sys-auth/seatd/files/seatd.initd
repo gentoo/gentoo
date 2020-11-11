@@ -1,0 +1,4 @@
+#!/sbin/openrc-run
+supervisor=supervise-daemon
+command="seatd"
+command_args="-g video"
