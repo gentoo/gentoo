@@ -158,7 +158,8 @@ src_configure() {
 		)
 	fi
 
-	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
+	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON ) ||
+		mycmakeargs+=( -DWITH_QGIS_PROCESS=OFF ) # FIXME upstream issue #39973
 
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
