@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-fno-common.patch
 	"${FILESDIR}"/${PN}-7.0-images.patch
 	"${FILESDIR}"/${PN}-7.0-python3-shebangs.patch
+	"${FILESDIR}"/${PN}-7.0-remove-gdk-pixbuf-xlib.h.patch
 )
 
 src_prepare() {
