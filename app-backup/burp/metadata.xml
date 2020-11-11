@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Burp is a network backup and restore program. It uses librsync in order
 		to save network traffic and to save on the amount of space that is used
