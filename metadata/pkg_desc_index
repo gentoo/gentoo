@@ -7815,7 +7815,7 @@ dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1 1.4.3: Restart a CLI process without lo
 dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.8.0-r2: Collection of tools for internationalizing Python applications
+dev-python/Babel 2.8.0-r2 2.8.1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/GitPython 3.1.8 3.1.11: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
