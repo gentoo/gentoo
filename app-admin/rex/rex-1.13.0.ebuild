@@ -23,13 +23,14 @@ inherit bash-completion-r1 perl-module ${VCS_ECLASS}
 DESCRIPTION="(R)?ex, the friendly automation framework"
 
 SLOT="0"
-IUSE="test"
+IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
 DZIL_DEPENDS="
 	dev-perl/Dist-Zilla
 	dev-perl/Dist-Zilla-Plugin-CheckExtraTests
 	dev-perl/Dist-Zilla-Plugin-ContributorsFile
+	dev-perl/Dist-Zilla-Plugin-Git
 	dev-perl/Dist-Zilla-Plugin-Git-Contributors
 	dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome
 	dev-perl/Dist-Zilla-Plugin-Meta-Contributors
@@ -41,14 +42,18 @@ DZIL_DEPENDS="
 	dev-perl/Software-License
 "
 RDEPEND="
+	!minimal? (
+		dev-perl/DBI
+		dev-perl/Expect
+		dev-perl/IPC-Shareable
+		dev-perl/XML-LibXML
+	)
 	virtual/perl-Carp
 	virtual/perl-Data-Dumper
 	dev-perl/Data-Validate-IP
-	dev-perl/DBI
 	dev-perl/Devel-Caller
 	dev-perl/Digest-HMAC
 	virtual/perl-Digest-MD5
-	dev-perl/Expect
 	virtual/perl-Exporter
 	virtual/perl-File-Spec
 	dev-perl/HTTP-Message
@@ -56,7 +61,6 @@ RDEPEND="
 	virtual/perl-IO
 	dev-perl/IO-String
 	dev-perl/IO-Tty
-	dev-perl/IPC-Shareable
 	dev-perl/JSON-MaybeXS
 	dev-perl/List-MoreUtils
 	virtual/perl-MIME-Base64
@@ -73,7 +77,6 @@ RDEPEND="
 	virtual/perl-Text-Tabs+Wrap
 	virtual/perl-Time-HiRes
 	dev-perl/URI
-	dev-perl/XML-LibXML
 	dev-perl/XML-Simple
 	dev-perl/libwww-perl
 	dev-perl/YAML
@@ -82,12 +85,15 @@ RDEPEND="
 
 BDEPEND="
 	${RDEPEND}
+	>=virtual/perl-CPAN-Meta-Requirements-2.120.620
 	>=virtual/perl-ExtUtils-MakeMaker-7.110.100
 	>=dev-perl/File-ShareDir-Install-0.60.0
+	virtual/perl-Module-Metadata
 	test? (
 		virtual/perl-File-Temp
 		dev-perl/Test-Deep
-		>=dev-perl/Test-UseAllModules-0.150.0
+		dev-perl/Test-Output
+		dev-perl/Test-UseAllModules
 		virtual/perl-autodie
 	)
 "
@@ -115,12 +121,14 @@ dzil_src_prep() {
 	# so that the final [d]elete deletes the next line too. Can be expanded for each
 	# line, ie: {N;N;N;d} deletes 3 lines after the match as well as the match.
 	sed -e '/^\[Test::Kwalitee\]/d' \
-		-e '/^\[Test::Perl::Critic\]/d' \
 		-e '/^\[PodSyntaxTests\]/d' \
+		-e '/^Perl::Critic::Freenode =/d' \
+		-e '/^Perl::Critic::TooMuchCode =/d' \
 		-e '/^Test::Kwalitee =/d' \
 		-e '/^Test::PerlTidy =/d' \
 		-e '/^Test::Pod =/d' \
 		-e '/^\[Test::CPAN::Changes\]/{N;d}' \
+		-e '/^\[OptionalFeature/,/^$/d' \
 		-e '/^\[Test::MinimumVersion\]/{N;d}' \
 		-i dist.ini || die "Can't patch dist.ini"
 }

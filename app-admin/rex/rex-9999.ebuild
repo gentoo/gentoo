@@ -62,7 +62,6 @@ RDEPEND="
 	dev-perl/IO-String
 	dev-perl/IO-Tty
 	dev-perl/JSON-MaybeXS
-	dev-perl/List-MoreUtils
 	virtual/perl-MIME-Base64
 	dev-perl/Net-OpenSSH
 	dev-perl/Net-SFTP-Foreign
@@ -121,8 +120,9 @@ dzil_src_prep() {
 	# so that the final [d]elete deletes the next line too. Can be expanded for each
 	# line, ie: {N;N;N;d} deletes 3 lines after the match as well as the match.
 	sed -e '/^\[Test::Kwalitee\]/d' \
-		-e '/^\[Test::Perl::Critic\]/d' \
 		-e '/^\[PodSyntaxTests\]/d' \
+		-e '/^Perl::Critic::Freenode =/d' \
+		-e '/^Perl::Critic::TooMuchCode =/d' \
 		-e '/^Test::Kwalitee =/d' \
 		-e '/^Test::PerlTidy =/d' \
 		-e '/^Test::Pod =/d' \
