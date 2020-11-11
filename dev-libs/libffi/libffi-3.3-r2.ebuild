@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3-power7-memcpy-2.patch
 	"${FILESDIR}"/${PN}-3.3-ppc-int128.patch
 	"${FILESDIR}"/${PN}-3.3-ppc-vector-offset.patch
+	"${FILESDIR}"/${PN}-3.3-compiler-vendor-quote.patch
 )
 
 S=${WORKDIR}/${MY_P}
