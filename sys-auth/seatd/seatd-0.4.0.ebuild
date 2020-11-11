@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 
 	EGIT_REPO_URI="https://git.sr.ht/~kennylevinsen/seatd"
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SRC_URI="https://git.sr.ht/~kennylevinsen/seatd/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 LICENSE="MIT"
