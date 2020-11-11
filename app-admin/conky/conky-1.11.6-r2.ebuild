@@ -20,12 +20,6 @@ IUSE="apcupsd bundled-toluapp cmus curl doc hddtemp ical iconv imlib iostats
 	vim-syntax weather-metar webserver wifi X xinerama xmms2"
 
 COMMON_DEPEND="
-	X? (
-		x11-libs/libX11
-		x11-libs/libXdamage
-		x11-libs/libXfixes
-		x11-libs/libXext
-	)
 	cmus? ( media-sound/cmus )
 	curl? ( net-misc/curl )
 	ical? ( dev-libs/libical:= )
@@ -45,6 +39,12 @@ COMMON_DEPEND="
 	wifi? ( net-wireless/wireless-tools )
 	weather-metar? ( net-misc/curl )
 	webserver? ( net-libs/libmicrohttpd )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXdamage
+		x11-libs/libXfixes
+		x11-libs/libXext
+	)
 	xinerama? ( x11-libs/libXinerama )
 	xmms2? ( media-sound/xmms2 )
 	${LUA_DEPS}
@@ -64,11 +64,11 @@ DEPEND="
 
 REQUIRED_USE="
 	imlib? ( X )
-	nvidia? ( X )
-	truetype? ( X )
 	lua-cairo? ( X  bundled-toluapp )
 	lua-imlib? ( X  bundled-toluapp )
 	lua-rsvg? ( X  bundled-toluapp )
+	nvidia? ( X )
+	truetype? ( X )
 	xinerama? ( X )
 "
 
@@ -110,29 +110,29 @@ src_configure() {
 
 	if use X; then
 		mycmakeargs=(
-			-DBUILD_ARGB=ON
-			-DBUILD_X11=ON
-			-DBUILD_XDAMAGE=ON
-			-DBUILD_XDBE=ON
-			-DBUILD_XSHAPE=ON
-			-DOWN_WINDOW=ON
+			-DBUILD_ARGB=yes
+			-DBUILD_X11=yes
+			-DBUILD_XDAMAGE=yes
+			-DBUILD_XDBE=yes
+			-DBUILD_XSHAPE=yes
+			-DOWN_WINDOW=yes
 		)
 	else
 		mycmakeargs=(
-			-DBUILD_X11=OFF
+			-DBUILD_X11=no
 		)
 	fi
 
 	mycmakeargs+=(
 		-DBUILD_APCUPSD=$(usex apcupsd)
-		-DBUILD_AUDACIOUS=OFF
-		-DBUILD_BUILTIN_CONFIG=ON
+		-DBUILD_AUDACIOUS=no
+		-DBUILD_BUILTIN_CONFIG=yes
 		-DBUILD_CMUS=$(usex cmus)
 		-DBUILD_CURL=$(usex curl)
 		-DBUILD_DOCS=$(usex doc)
 		-DBUILD_HDDTEMP=$(usex hddtemp)
 		-DBUILD_HTTP=$(usex webserver)
-		-DBUILD_I18N=ON
+		-DBUILD_I18N=yes
 		-DBUILD_IBM=$(usex thinkpad)
 		-DBUILD_ICAL=$(usex ical)
 		-DBUILD_ICONV=$(usex iconv)
@@ -150,7 +150,7 @@ src_configure() {
 		-DBUILD_MYSQL=$(usex mysql)
 		-DBUILD_NCURSES=$(usex ncurses)
 		-DBUILD_NVIDIA=$(usex nvidia)
-		-DBUILD_OLD_CONFIG=ON
+		-DBUILD_OLD_CONFIG=yes
 		-DBUILD_PORT_MONITORS=$(usex portmon)
 		-DBUILD_PULSEAUDIO=$(usex pulseaudio)
 		-DBUILD_RSS=$(usex rss)
@@ -160,8 +160,8 @@ src_configure() {
 		-DBUILD_XINERAMA=$(usex xinerama)
 		-DBUILD_XMMS2=$(usex xmms2)
 		-DDOC_PATH=/usr/share/doc/${PF}
-		-DMAINTAINER_MODE=OFF
-		-DRELEASE=ON
+		-DMAINTAINER_MODE=no
+		-DRELEASE=yes
 	)
 
 	cmake_src_configure
