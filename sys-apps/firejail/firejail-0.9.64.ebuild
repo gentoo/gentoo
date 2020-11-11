@@ -24,12 +24,12 @@ SLOT="0"
 IUSE="X apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +overlayfs +private-home +suid test +userns +whitelist"
 RESTRICT="!test? ( test )"
 
-RDEPEND="apparmor? ( sys-libs/libapparmor )
+RDEPEND="!sys-apps/firejail-lts
+	apparmor? ( sys-libs/libapparmor )
 	contrib? ( ${PYTHON_DEPS} )
 	dbusproxy? ( sys-apps/xdg-dbus-proxy )"
 
 DEPEND="${RDEPEND}
-	!sys-apps/firejail-lts
 	sys-libs/libseccomp
 	test? ( dev-tcltk/expect )"
 
