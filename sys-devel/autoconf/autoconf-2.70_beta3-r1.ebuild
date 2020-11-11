@@ -33,6 +33,11 @@ RDEPEND="${BDEPEND}
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build-aux_no_transform_name.patch" #753023
+	"${FILESDIR}/${P}-build-aux_avoid_autoreconf.patch"
+)
+
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	if [[ ${CHOST} == *-darwin* ]] ; then

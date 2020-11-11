@@ -1,0 +1,55 @@
+From 0f7e5a5477f97b8a105d563bc7590ebefaff854d Mon Sep 17 00:00:00 2001
+From: Zack Weinberg <zackw@panix.com>
+Date: Thu, 5 Nov 2020 10:19:26 -0500
+Subject: Do not apply --program-transform-name to build-aux scripts.
+
+autoreconf expects to find $(pkgdatadir)/build-aux/config.sub etc
+under those names, not names modified by --program-transform-name.
+Placing them in $(pkgdatadir) is sufficient to keep parallel
+installations of autoconf separate: anyone doing that would need
+to adjust @PACKAGE@ anyway.
+
+* lib/local.mk: Use a _DATA rule, not a _SCRIPTS rule, to install
+  config.guess, config.sub, and install-sh.
+  (install-data-hook-make-aux-scripts-executable): New hook rule.
+---
+ lib/local.mk | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/lib/local.mk b/lib/local.mk
+index d4ecf3cb..e380403f 100644
+--- a/lib/local.mk
++++ b/lib/local.mk
+@@ -201,8 +201,27 @@ lib/autotest/autotest.m4f: $(autotest_m4f_dependencies)
+ ## Install auxiliary scripts.  ##
+ ## --------------------------- ##
+ 
+-buildauxdir = $(pkgdatadir)/build-aux
+-dist_buildaux_SCRIPTS = \
++# These are declared as _DATA so that they are not subject to
++# --program-transform-name; $(pkgdatadir) is sufficient to keep
++# multiple installations separate, and autoreconf looks for them by
++# their unadorned names.  However, autoreconf copies the executable
++# bit when it copies these files into a source tree, and _DATA items
++# are installed as not-executable, so we have to make them executable
++# in a hook rule.
++
++AUXSCRIPTS = \
+   build-aux/config.guess \
+   build-aux/config.sub \
+   build-aux/install-sh
++
++buildauxdir = $(pkgdatadir)/build-aux
++dist_buildaux_DATA = \
++  $(AUXSCRIPTS)
++
++install-data-hook: install-data-hook-make-aux-scripts-executable
++install-data-hook-make-aux-scripts-executable:
++	for s in $(AUXSCRIPTS); do \
++	  chmod +x "$(DESTDIR)$(pkgdatadir)/$$s"; \
++	done
++
++.PHONY: install-data-hook install-data-hook-make-aux-scripts-executable
+-- 
+cgit v1.2.1
+
