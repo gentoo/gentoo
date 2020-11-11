@@ -16,7 +16,7 @@ IUSE="alsa"
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gdk-pixbuf:2[X]
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	alsa? ( media-libs/alsa-lib )
