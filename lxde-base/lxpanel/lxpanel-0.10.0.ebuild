@@ -41,6 +41,10 @@ DOC_CONTENTS="If you have problems with broken icons shown in the main panel,
 you will have to configure panel settings via its menu.
 This will not be an issue with first time installations."
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-remove-gdk-pixbuf-xlib.patch
+)
+
 src_prepare() {
 	default
 
