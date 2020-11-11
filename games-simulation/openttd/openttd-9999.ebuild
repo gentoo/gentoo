@@ -41,7 +41,7 @@ RDEPEND="!dedicated? (
 	lzo? ( dev-libs/lzo:2 )
 	iconv? ( virtual/libiconv )
 	png? (
-		media-libs/libpng:0
+		media-libs/libpng:0=
 		sys-libs/zlib:=
 	)
 	zlib? ( sys-libs/zlib:= )"
@@ -104,7 +104,8 @@ src_configure() {
 
 	# configure is a hand-written bash-script, so econf will not work.
 	# It's all built as C++, upstream uses CFLAGS internally.
-	CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="" ./configure ${myopts[@]} || die
+	CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="" \
+	./configure ${myopts[@]} || die
 }
 
 src_compile() {
@@ -118,10 +119,6 @@ src_install() {
 		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps} || die
 	fi
 	rm -f "${ED}"/usr/share/doc/${PF}/COPYING || die
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
 }
 
 pkg_postinst() {
@@ -176,8 +173,4 @@ pkg_postinst() {
 			elog
 		fi
 	fi
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
