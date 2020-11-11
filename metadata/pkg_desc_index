@@ -10668,7 +10668,7 @@ dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.62.6 2.64.5 2.66.0: GDBus code and documentation generator
 dev-util/geany 1.36 1.37 1.37.1 9999: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.36-r2 1.37: A collection of different plugins for Geany
+dev-util/geany-plugins 1.36-r2 1.37 1.37-r100: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/git-delta 0.4.4: A syntax-highlighting pager for git
@@ -12738,7 +12738,7 @@ media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.20-r3 2.10.22-r1 2.99.2 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.2-r1: GREYC's Magic Image Converter
-media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20200821: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
