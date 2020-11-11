@@ -184,6 +184,7 @@ app-admin/syslog-ng:pacct - Enable support for reading Process Accounting files 
 app-admin/syslog-ng:redis - Enable support for Redis destinations
 app-admin/syslog-ng:smtp - Enable support for SMTP destinations
 app-admin/syslog-ng:spoof-source - Enable support for spoofed source addresses
+app-admin/sysstat:dcron - Adjust cronjobs to work properly under sys-process/dcron
 app-admin/testdisk:ewf - Include ewf library
 app-admin/testdisk:ntfs - Include the ability to read NTFS filesystems
 app-admin/testdisk:reiserfs - Include reiserfs reading ability
@@ -7644,6 +7645,7 @@ sys-apps/ethtool:netlink - Enable netlink interface via net-libs/libmnl
 sys-apps/firejail:apparmor - Enable support for custom AppArmor profiles
 sys-apps/firejail:chroot - Enable chrooting to custom directory
 sys-apps/firejail:contrib - Install contrib scripts
+sys-apps/firejail:dbusproxy - Enable DBus proxying to filter access in supporting profiles
 sys-apps/firejail:file-transfer - Enable file transfers between sandboxes and the host system
 sys-apps/firejail:globalcfg - Enable global config file
 sys-apps/firejail:network - Enable networking features
