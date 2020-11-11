@@ -49,6 +49,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
 # for your package and call at least cargo_gen_config manually before using
 # other src_ functions of this eclass.
+# note that cargo_gen_config is automatically called by cargo_src_unpack.
 
 # @VARIABLE: myfeatures
 # @DEFAULT_UNSET
