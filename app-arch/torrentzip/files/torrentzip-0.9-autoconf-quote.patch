@@ -1,0 +1,8 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT([TorrentZip], [0.0], [StatMan, shindakun, Ultrasubmarine, r3nh03k <http://trrntzip.sf.net>], [trrntzip])
++AC_INIT([TorrentZip], [0.9], [[StatMan, shindakun, Ultrasubmarine, r3nh03k <http://trrntzip.sf.net>]], [trrntzip])
+ 
+ AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
