@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
-
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Mailman -- the GNU mailing list manager"
@@ -16,7 +16,6 @@ SLOT="3"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/aiosmtpd-1.1[${PYTHON_USEDEP}]
 	dev-python/alembic[${PYTHON_USEDEP}]
