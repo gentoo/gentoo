@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop flag-o-matic qmake-utils xdg-utils
+
+inherit desktop flag-o-matic qmake-utils xdg-utils toolchain-funcs
 
 DESCRIPTION="UNetbootin installs Linux/BSD distributions to a partition or USB drive"
 HOMEPAGE="https://github.com/unetbootin/unetbootin"
-SRC_URI="
-	https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~jer/${PN}-675-qt5.patch.xz
-"
+SRC_URI="https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 UNBI_LINGUAS="
@@ -27,27 +25,20 @@ done
 
 S=${WORKDIR}/${P}/src/${PN}
 
-COMMON_DEPEND="
+BDEPEND="dev-qt/linguist-tools:5"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 "
-BDEPEND="
-	${COMMON_DEPEND}
-	dev-qt/linguist-tools:5
-"
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	app-arch/p7zip
 	sys-boot/syslinux
 	sys-fs/mtools
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-675-desktop.patch
-	"${WORKDIR}"/${PN}-675-qt5.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-675-desktop.patch )
 
 src_prepare() {
 	default
@@ -68,17 +59,19 @@ src_prepare() {
 			rm ${PN}_${lingua}.ts || die
 		fi
 	done
+
+	sed -i -e '/^RESOURCES/d' unetbootin.pro || die
+
 	append-cflags -DNOSTATIC
 	append-cxxflags -DNOSTATIC
 }
 
 src_configure() {
-	sed -i -e '/^RESOURCES/d' unetbootin.pro || die
+	export QMAKE_CXX="$(tc-getCXX)"
 
-	UNBN_QTPATH="$(qt5_get_bindir)/"
-	"${UNBN_QTPATH}"lrelease ${PN}.pro || die
+	"$(qt5_get_bindir)/"lrelease ${PN}.pro || die
 
-	eqmake5 ${PN}.pro || die
+	eqmake5
 }
 
 src_install() {
