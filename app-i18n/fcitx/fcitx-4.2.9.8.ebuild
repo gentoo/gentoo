@@ -72,6 +72,7 @@ DEPEND="dev-libs/glib:2
 RDEPEND="${DEPEND}"
 
 PATCHES=(
+	"${FILESDIR}/${PN}-4.2.9.8-enchant.patch"
 	"${FILESDIR}/${PN}-4.2.9.8-xkb.patch"
 )
 
