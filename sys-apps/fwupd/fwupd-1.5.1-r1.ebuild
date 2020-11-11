@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-IUSE="agent amt dell gtk-doc elogind minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
+IUSE="agent amt dell gtk-doc elogind flashrom minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
@@ -58,6 +58,7 @@ CDEPEND="${PYTHON_DEPS}
 		>=sys-libs/libsmbios-2.4.0
 	)
 	elogind? ( >=sys-auth/elogind-211 )
+	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	policykit? (
 		>=sys-auth/polkit-0.103
 	)
@@ -112,6 +113,7 @@ src_configure() {
 		$(meson_use amt plugin_amt)
 		$(meson_use dell plugin_dell)
 		$(meson_use elogind)
+		$(meson_use flashrom plugin_flashrom)
 		$(meson_use gtk-doc gtkdoc)
 		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
@@ -123,9 +125,6 @@ src_configure() {
 		$(meson_use thunderbolt plugin_thunderbolt)
 		$(meson_use tpm)
 		$(meson_use uefi plugin_uefi)
-		# Although our sys-apps/flashrom package now provides
-		# libflashrom.a, meson still can't find it
-		-Dplugin_flashrom="false"
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
 		-Dconsolekit="false"

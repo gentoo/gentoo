@@ -9,6 +9,7 @@
     <flag name="agent">Enable update notification agent</flag>
     <flag name="amt">Build and install Intel AMT plugin</flag>
     <flag name="dell">Enable Dell-specific support.</flag>
+    <flag name="flashrom">Enable flashrom plugin via <pkg>sys-apps/flashrom</pkg></flag>
     <flag name="gpg">Enable GPG support.</flag>
     <flag name="man">Build and install man pages</flag>
     <flag name="nvme">Build and install NVMe plugin</flag>
