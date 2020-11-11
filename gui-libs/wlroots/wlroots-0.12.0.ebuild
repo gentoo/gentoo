@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/12"
-IUSE="elogind icccm systemd x11-backend X"
+IUSE="elogind icccm seatd systemd x11-backend X"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -32,6 +32,7 @@ DEPEND="
 	x11-libs/pixman
 	elogind? ( >=sys-auth/elogind-237 )
 	icccm? ( x11-libs/xcb-util-wm )
+	seatd? ( sys-auth/seatd:= )
 	systemd? ( >=sys-apps/systemd-237 )
 	x11-backend? ( x11-libs/libxcb:0= )
 	X? (
@@ -58,6 +59,7 @@ src_configure() {
 		-Dx11-backend=$(usex x11-backend enabled disabled)
 		"-Dexamples=false"
 		"-Dwerror=false"
+		-Dlibseat=$(usex seatd enabled disabled)
 	)
 	if use systemd; then
 		emesonargs+=("-Dlogind=enabled" "-Dlogind-provider=systemd")
