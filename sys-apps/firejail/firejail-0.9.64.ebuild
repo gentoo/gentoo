@@ -21,7 +21,7 @@ HOMEPAGE="https://firejail.wordpress.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +overlayfs +private-home +suid test +userns +whitelist x11"
+IUSE="X apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +overlayfs +private-home +suid test +userns +whitelist"
 RESTRICT="!test? ( test )"
 
 RDEPEND="apparmor? ( sys-libs/libapparmor )
@@ -64,7 +64,7 @@ src_configure() {
 		$(use_enable suid) \
 		$(use_enable userns) \
 		$(use_enable whitelist) \
-		$(use_enable x11)
+		$(use_enable X x11)
 }
 
 src_compile() {
