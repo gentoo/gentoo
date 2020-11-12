@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/lash not keyworded, bug #736725
+media-sound/fluidsynth lash
+
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
 # virtual/rust has no alpha keyword
 dev-vcs/mercurial rust
