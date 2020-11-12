@@ -39,7 +39,8 @@ pkg_preinst() {
 		/usr/$(get_libdir)/libisl$(get_libname 14) \
 		/usr/$(get_libdir)/libisl$(get_libname 15) \
 		/usr/$(get_libdir)/libisl$(get_libname 19) \
-		/usr/$(get_libdir)/libisl$(get_libname 21)
+		/usr/$(get_libdir)/libisl$(get_libname 21) \
+		/usr/$(get_libdir)/libisl$(get_libname 22)
 }
 
 pkg_postinst() {
@@ -47,5 +48,6 @@ pkg_postinst() {
 		/usr/$(get_libdir)/libisl$(get_libname 14) \
 		/usr/$(get_libdir)/libisl$(get_libname 15) \
 		/usr/$(get_libdir)/libisl$(get_libname 19) \
-		/usr/$(get_libdir)/libisl$(get_libname 21)
+		/usr/$(get_libdir)/libisl$(get_libname 21) \
+		/usr/$(get_libdir)/libisl$(get_libname 22)
 }
