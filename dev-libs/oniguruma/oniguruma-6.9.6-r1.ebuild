@@ -31,6 +31,10 @@ fi
 DOCS=(AUTHORS HISTORY README{,_japanese} doc/{API,CALLOUTS.API,CALLOUTS.BUILTIN,FAQ,RE}{,.ja} doc/{SYNTAX.md,UNICODE_PROPERTIES})
 
 src_prepare() {
+	# https://github.com/kkos/oniguruma/issues/223
+	# https://github.com/kkos/oniguruma/commit/d177786282a618c76cdf2e993e3d0d9a684e9666
+	sed -e "/^AM_LDFLAGS[[:space:]]*=/s:-L\$(prefix)/lib:-L\$(libdir):" -i {sample,test}/Makefile.{am,in} || die
+
 	default
 
 	if [[ "${PV}" == "9999" ]]; then
