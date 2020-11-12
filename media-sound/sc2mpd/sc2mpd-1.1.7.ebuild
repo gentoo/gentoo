@@ -20,8 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	dev-libs/expat
 	media-libs/alsa-lib
 	media-libs/libsamplerate
+	media-libs/libmpdclient
 	<=net-libs/libmicrohttpd-0.9.70
 "
 RDEPEND="${DEPEND}"
