@@ -2185,7 +2185,7 @@ dev-libs/nss:utils - Install utilities included with the library
 dev-libs/ocl-icd:khronos-headers - Install Khronos OpenCL headers.
 dev-libs/onigmo:combination-explosion-check - enable combination explosion check
 dev-libs/onigmo:crnl-as-line-terminator - enable CR+NL as line terminator
-dev-libs/oniguruma:crnl-as-line-terminator - enable CR+NL as line terminator
+dev-libs/oniguruma:crnl-as-line-terminator - Enable CR+NL as line terminator
 dev-libs/opencryptoki:tpm - Enable support for Trusted Platform Module (TPM) using app-crypt/trousers
 dev-libs/openct:debug - Add debug output to the driver library for pcsc-lite.
 dev-libs/openct:pcsc-lite - Build a driver library for sys-apps/pcsc-lite, providing PC/SC API access to devices supported by OpenCT.
@@ -4961,7 +4961,6 @@ media-video/handbrake:numa - Adds support for x265's NUMA capabilities.
 media-video/handbrake:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-video/handbrake:x265 - Support for encoding h265 using media-libs/x265.
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
-media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
 media-video/libva-utils:drm - Enables VA/DRM API support.
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
 media-video/mjpg-streamer:input-control - Plugin giving ability to control camera movement (only specific cameras)
