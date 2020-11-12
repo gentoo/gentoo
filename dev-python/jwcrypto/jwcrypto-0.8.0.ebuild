@@ -14,7 +14,7 @@ SRC_URI="https://github.com/latchset/jwcrypto/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND=">=dev-python/cryptography-2.3[${PYTHON_USEDEP}]"
 
