@@ -1,36 +1,33 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit eutils linux-info
+EAPI=7
+inherit autotools linux-info
 
 DESCRIPTION="A FUSE-based user-space file system with on-access anti-virus file scanning"
-HOMEPAGE="http://clamfs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/burghardt/clamfs"
+SRC_URI="https://github.com/burghardt/clamfs/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND=">=dev-libs/boost-1.33
-	sys-fs/fuse:0
-	dev-cpp/commoncpp2
+	dev-libs/poco
 	dev-libs/rlog
-	dev-libs/poco"
+	sys-fs/fuse:3"
 RDEPEND="${DEPEND}
 	app-antivirus/clamav"
 
 CONFIG_CHECK="~FUSE_FS"
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-gentoo.patch"
-	eapply -p0 "${FILESDIR}/${P}-gcc45.patch"
-	eapply_user
+	default
+	eautoreconf
 }
 
 src_install() {
-	emake install DESTDIR="${D}"
+	default
 
 	insinto /etc/clamfs
 	doins doc/clamfs.xml
