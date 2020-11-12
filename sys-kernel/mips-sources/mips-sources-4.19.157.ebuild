@@ -32,7 +32,7 @@ BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="https://www.kernel.org/ https://www.linux-mips.org/ https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
