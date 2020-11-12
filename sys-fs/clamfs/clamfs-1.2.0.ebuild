@@ -22,6 +22,8 @@ RDEPEND="${DEPEND}
 CONFIG_CHECK="~FUSE_FS"
 
 src_prepare() {
+	# Do not use Werror ( #754180 )
+	sed -i 's/\-Werror//g' configure.ac || die "Sed failed"
 	default
 	eautoreconf
 }
