@@ -101,6 +101,7 @@ RDEPEND="
 		>=dev-python/astor-0.7.1[${PYTHON_USEDEP}]
 		dev-python/astunparse[${PYTHON_USEDEP}]
 		dev-python/dill[${PYTHON_USEDEP}]
+		dev-python/flatbuffers[${PYTHON_USEDEP}]
 		>=dev-python/gast-0.3.3[${PYTHON_USEDEP}]
 		dev-python/h5py[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
