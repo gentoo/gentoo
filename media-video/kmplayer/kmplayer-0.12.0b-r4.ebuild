@@ -9,8 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
-HOMEPAGE="https://kmplayer.kde.org
-https://apps.kde.org/en/kmplayer"
+HOMEPAGE="https://kmplayer.kde.org https://apps.kde.org/en/kmplayer"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
@@ -19,11 +18,9 @@ fi
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
 SLOT="5"
-IUSE="cairo npp"
+IUSE="cairo"
 
-BDEPEND="
-	sys-devel/gettext
-"
+BDEPEND="sys-devel/gettext"
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -45,16 +42,10 @@ DEPEND="
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	media-libs/phonon[qt5(+)]
+	>=media-libs/phonon-4.11.0
 	x11-libs/libX11
 	x11-libs/libxcb
 	cairo? ( x11-libs/cairo[X,xcb(+)] )
-	npp? (
-		dev-libs/dbus-glib
-		dev-libs/glib:2
-		www-plugins/adobe-flash:*
-		>=x11-libs/gtk+-2.10.14:2
-	)
 "
 RDEPEND="${DEPEND}
 	media-video/mplayer
@@ -74,32 +65,14 @@ src_prepare() {
 	# Prerequisite for ${P}-desktop.patch:
 	mv src/kmplayer.desktop src/org.kde.kmplayer.desktop || die
 	ecm_src_prepare
-
-	if use npp; then
-		sed -i src/kmplayer_part.desktop \
-			-e ":^MimeType: s:=:=application/x-shockwave-flash;:" || die
-	fi
 }
 
 src_configure() {
 	# 0.12: expat build broken, check in later releases
 	local mycmakeargs=(
 		-DKMPLAYER_BUILT_WITH_EXPAT=OFF
+		-DKMPLAYER_BUILT_WITH_NPP=OFF
 		-DKMPLAYER_BUILT_WITH_CAIRO=$(usex cairo)
-		-DKMPLAYER_BUILT_WITH_NPP=$(usex npp)
 	)
-
 	ecm_src_configure
-}
-
-src_install() {
-	ecm_src_install
-
-	if use npp; then
-		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
-			--group "application/x-shockwave-flash" --key player npp
-		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
-			--group "application/x-shockwave-flash" \
-			--key plugin /usr/lib/nsbrowser/plugins/libflashplayer.so
-	fi
 }

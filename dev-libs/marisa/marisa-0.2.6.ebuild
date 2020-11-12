@@ -24,7 +24,7 @@ fi
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -38,10 +38,6 @@ RDEPEND="${DEPEND}"
 if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/marisa-trie-${PV}"
 fi
-
-PATCHES=(
-	"${FILESDIR}/${P}-cpu_features_check.patch"
-)
 
 src_prepare() {
 	default
@@ -59,16 +55,30 @@ src_prepare() {
 src_configure() {
 	local -x CPPFLAGS="${CPPFLAGS} ${CXXFLAGS}"
 
+	cpu_instructions_option() {
+		local option="${1}"
+		local macros="${2}"
+		local result="--enable-${option}"
+		local macro
+		for macro in ${macros}; do
+			if ! $(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P -dM - < /dev/null 2> /dev/null | grep -Eq "^#define ${macro}([[:space:]]|$)"; then
+				result="--disable-${option}"
+			fi
+		done
+		echo "${result}"
+	}
+
 	local options=(
-		# Preprocessor macros dependent on CPPFLAGS are checked.
-		--enable-sse2
-		--enable-sse3
-		--enable-ssse3
-		--enable-sse4.1
-		--enable-sse4.2
-		--enable-sse4
-		--enable-sse4a
-		--enable-popcnt
+		$(cpu_instructions_option sse2 __SSE2__)
+		$(cpu_instructions_option sse3 __SSE3__)
+		$(cpu_instructions_option ssse3 __SSSE3__)
+		$(cpu_instructions_option sse4.1 __SSE4_1__)
+		$(cpu_instructions_option sse4.2 __SSE4_2__)
+		$(cpu_instructions_option sse4 __POPCNT__ __SSE4_2__)
+		$(cpu_instructions_option sse4a __SSE4A__)
+		$(cpu_instructions_option popcnt __POPCNT__)
+		$(cpu_instructions_option bmi __BMI__)
+		$(cpu_instructions_option bmi2 __BMI2__)
 		$(use_enable static-libs static)
 	)
 
@@ -94,7 +104,7 @@ src_compile() {
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -delete || die
 
 	(
 		docinto html
