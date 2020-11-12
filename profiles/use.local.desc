@@ -3950,7 +3950,6 @@ media-gfx/darktable:opencl - Enable opencl support
 media-gfx/darktable:system-lua - Use dev-lang/lua instead of the bundled liblua
 media-gfx/darktable:tools - Install tools for generating base curves and noise profiles
 media-gfx/digikam:addressbook - Enable akonadi contact integration
-media-gfx/digikam:dnn - Build neural network faces engine module
 media-gfx/digikam:heif - Enable support for ISO/IEC 23008-12:2017 HEIF files using media-libs/x265
 media-gfx/digikam:imagemagick - Enable support for additional image formats such as XCF, FITS, HEIC etc.
 media-gfx/digikam:lensfun - Enable support for media-libs/lensfun
@@ -3958,8 +3957,6 @@ media-gfx/digikam:marble - Enable support for geolocation using kde-apps/marble
 media-gfx/digikam:mediaplayer - Enable support for media player using media-libs/qtav
 media-gfx/digikam:panorama - Build the panorama plugin which requires media-gfx/hugin
 media-gfx/digikam:semantic-desktop - Enable kde-frameworks/kfilemetadata support
-media-gfx/digikam:vkontakte - Build net-libs/libkvkontakte plugin for vkontakte.ru
-media-gfx/digikam:webkit - Build with dev-qt/qtwebkit instead of dev-qt/qtwebengine
 media-gfx/eog-plugins:map - Enable world map display using media-libs/libchamplain
 media-gfx/eog-plugins:picasa - Enable uploading to Google's Picasa Web Albums
 media-gfx/eom:imagemagick - Use media-gfx/imagemagick as an external backend for the thumbnailer
