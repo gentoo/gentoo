@@ -61,7 +61,7 @@ RDEPEND="
 		x11-libs/libXScrnSaver
 		wayland? ( x11-libs/libxkbcommon[X] )
 	)
-	avif? ( ~media-libs/libavif-0.8.1 )
+	avif? ( media-libs/libavif )
 	connman? ( net-misc/connman )
 	drm? (
 		dev-libs/libinput
