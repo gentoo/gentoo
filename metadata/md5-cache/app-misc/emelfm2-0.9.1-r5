@@ -4,7 +4,7 @@ DESCRIPTION=A file manager that implements the popular two-pane design
 EAPI=7
 HOMEPAGE=https://github.com/tom2tom/emelfm2
 IUSE=acl ansi gimp +gtk3 kernel_linux nls policykit spell udisks
-KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-3 LGPL-3
 RDEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp:0/2 ) gtk3? ( x11-libs/gtk+:3 ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) udisks? ( sys-fs/udisks:2 )
 REQUIRED_USE=spell? ( !gtk3 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://emelfm2.net/rel/emelfm2-0.9.1.tar.bz2
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b3115648a2bf0d30215f36d583918ec8
+_md5_=f7ecd8957a75dc800a9f63eb068cb365
