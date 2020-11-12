@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<!--
-  This is the example metadata file.
-  The root element of this file is <pkgmetadata>. Within this element a
-  number of subelements are allowed, the most common being maintainer.
-
-  For a full description look at:
-  https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/
-
-  Before committing, please remove the comments from this file. They are
-  not relevant for general metadata.xml files.
--->
 <pkgmetadata>
   <maintainer type="person">
     <email>stasibear@gentoo.org</email>
@@ -24,13 +13,8 @@
   </longdescription>
   <use>
     <flag name="client">control point code (client)</flag>
-    <flag name="device">device specific code (implies -webserver if disabled)</flag>
-    <flag name="gena">GENA part</flag>
     <flag name="optssdp">optional SSDP headers support</flag>
     <flag name="reuseaddr">bind the miniserver socket with reuseaddr</flag>
-    <flag name="soap">SOAP part</flag>
-    <flag name="ssdp">SSDP part</flag>
     <flag name="tools">helper APIs in upnptools.h</flag>
-    <flag name="webserver">integrated web server</flag>
   </use>
 </pkgmetadata>
