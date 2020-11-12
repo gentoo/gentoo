@@ -7930,8 +7930,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 1.16.12 1.16.13 1.16.14 1.16.15 9999: The AWS SDK for Python
-dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 1.19.12 1.19.13 1.19.14 1.19.15 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 1.16.12 1.16.13 1.16.14 1.16.15 1.16.16 9999: The AWS SDK for Python
+dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 1.19.12 1.19.13 1.19.14 1.19.15 1.19.16 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.19 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -7982,7 +7982,7 @@ dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
 dev-python/cliff 3.4.0 3.5.0: Command Line Interface Formulation Framework
 dev-python/clint 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.6.0: Extended pickling support for Python objects
-dev-python/cmd2 1.3.8 1.3.11: Extra features for standard library's cmd module
+dev-python/cmd2 1.3.8 1.3.11 1.4.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2 0.2-r1: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3-r1 0.4.4: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8387,7 +8387,7 @@ dev-python/markdown2 2.3.9 2.3.10: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 3.2.2-r2 3.3.0-r1 3.3.2: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 3.2.2-r2 3.3.0-r1 3.3.2 3.3.3: Pure python plotting library with matlab like syntax
 dev-python/matterhook 0.2: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1 0.6.1-r2: flake8 plugin: McCabe complexity checker
 dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repositories, issues and commits
@@ -8448,7 +8448,7 @@ dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
-dev-python/nest_asyncio 1.4.0 1.4.2: Patch asyncio to allow nested event loops
+dev-python/nest_asyncio 1.4.0 1.4.2 1.4.3: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
@@ -8639,7 +8639,7 @@ dev-python/pyasn1 0.4.8-r1: ASN.1 library for Python
 dev-python/pyasn1-modules 0.2.8-r1: pyasn1 modules
 dev-python/pyatspi 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
-dev-python/pybind11 2.5.0 2.6.0: AST-based Python refactoring library
+dev-python/pybind11 2.5.0 2.6.0 2.6.1: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pybtex 0.22.2: BibTeX-compatible bibliography processor
 dev-python/pycadf 2.9.0-r1 3.1.1: python implementation of DMTF Cloud Audit (CADF) data model
@@ -8966,7 +8966,7 @@ dev-python/requests-unixsocket 0.2.0: Use requests to talk HTTP via a UNIX domai
 dev-python/requests_download 0.1.2: A convenient function to download to a file using requests
 dev-python/requests_pkcs12 1.7: Adds PKCS#12 support to the Python requests library in a clean way
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
-dev-python/responses 0.12.0: Utility for mocking out the Python Requests library
+dev-python/responses 0.12.0 0.12.1: Utility for mocking out the Python Requests library
 dev-python/restructuredtext-lint 1.3.0: Checks PyPI validity of reStructuredText
 dev-python/resumable-urlretrieve 0.1.5: Small library to fetch files over HTTP and resuming their download
 dev-python/retry-decorator 1.1.1: Decorator for retrying when exceptions occur
@@ -14857,8 +14857,8 @@ net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.12.4 4.12.5 5.0.2: Extended ROOT remote file server
-net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
+net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 2.2.0 3.2.5 4.3.2 4.3.3: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
@@ -15466,7 +15466,7 @@ net-vpn/tor 0.4.3.6 0.4.4.5 0.4.5.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20200908: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20200908 1.0.20201112: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
