@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare
+DESCRIPTION=A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
+EAPI=7
+HOMEPAGE=https://framagit.org/medoc92/npupnp
+IUSE=client debug device gena ipv6 optssdp reuseaddr soap ssdp tools webserver
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-libs/expat net-libs/libmicrohttpd net-misc/curl
+SLOT=0
+SRC_URI=https://www.lesbonscomptes.com/upmpdcli/downloads/libnpupnp-4.0.13.tar.gz
+_md5_=ddc125a4281ce29805100ae0de0aab10
