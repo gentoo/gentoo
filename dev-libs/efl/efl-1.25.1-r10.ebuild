@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} luajit )
 
-inherit lua meson xdg-utils
+inherit lua-single meson xdg-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 HOMEPAGE="https://www.enlightenment.org"
