@@ -125,11 +125,6 @@ app-admin/syslog-ng kafka mongodb
 # net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
 net-vpn/tor test
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-27)
-# dev-qt/qtwebengine is not ported to powerpc
-net-irc/quassel urlpreview
-www-client/otter webengine
-
 # Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone not keyworded
 app-emulation/qemu capstone
