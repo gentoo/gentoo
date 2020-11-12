@@ -10,10 +10,6 @@
 media-gfx/openvdb python numpy
 media-libs/openimageio python
 
-# Joonas Niilola <juippis@gentoo.org> (2020-10-08)
-# Experimental feature not yet stabilized. Use with caution.
-dev-libs/efl avif
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-20)
 # Always build python-exec with all the targets.
 dev-lang/python-exec -python_targets_python3_9
