@@ -10,14 +10,10 @@ CHROMIUM_LANGS="
 "
 inherit chromium-2 multilib unpacker toolchain-funcs xdg
 
-#VIVALDI_BRANCH="snapshot"
-
-VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
-VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
-VIVALDI_HOME="opt/${VIVALDI_BIN}"
+VIVALDI_HOME="opt/${PN}"
 DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
-VIVALDI_BASE_URI="https://downloads.${PN}.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
+VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${PN}_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
 	arm64? ( ${VIVALDI_BASE_URI}arm64.deb -> ${P}-arm64.deb )
@@ -27,7 +23,7 @@ SRC_URI="
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64 ~arm ~arm64 x86"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~x86"
 RESTRICT="bindist mirror"
 
 DEPEND="
@@ -69,22 +65,17 @@ src_unpack() {
 }
 
 src_prepare() {
-	iconv -c -t UTF-8 usr/share/applications/${VIVALDI_PN}.desktop > "${T}"/${VIVALDI_PN}.desktop || die
-	mv "${T}"/${VIVALDI_PN}.desktop usr/share/applications/${VIVALDI_PN}.desktop || die
+	iconv -c -t UTF-8 usr/share/applications/${PN}.desktop > "${T}"/${PN}.desktop || die
+	mv "${T}"/${PN}.desktop usr/share/applications/${PN}.desktop || die
 
-	sed -i \
-		-e "s|${VIVALDI_BIN}|${PN}|g" \
-		usr/share/applications/${VIVALDI_PN}.desktop \
-		usr/share/xfce4/helpers/${VIVALDI_BIN}.desktop || die
-
-	mv usr/share/doc/${VIVALDI_PN} usr/share/doc/${PF} || die
+	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
 	gunzip usr/share/doc/${PF}/changelog.gz || die
 
 	rm \
 		_gpgbuilder \
-		etc/cron.daily/${VIVALDI_BIN} \
+		etc/cron.daily/${PN} \
 		|| die
 	rmdir \
 		etc/cron.daily/ \
@@ -111,5 +102,5 @@ src_install() {
 	mv * "${D}" || die
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
-	fperms 4711 /${VIVALDI_HOME}/${PN}-sandbox
+	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
 }
