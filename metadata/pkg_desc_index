@@ -964,7 +964,7 @@ app-crypt/dehydrated 0.6.5: a client for signing certificates with an ACME-serve
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.4.27 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.4.27 5.0.8 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.5-r1: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0 1.0.1: Save environment variables in a secret vault
@@ -1977,7 +1977,7 @@ app-emulation/gxemul 0.6.0-r1 0.6.2: A Machine Emulator, Mainly emulates MIPS, b
 app-emulation/hercules 3.10 3.12 3.13: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
 app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
-app-emulation/kompose 1.16.0 1.19.0: Tool to move from docker-compose to Kubernetes
+app-emulation/kompose 1.16.0 1.19.0 1.22.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
@@ -16956,7 +16956,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 246-r2 246.6 247_rc1 9999: System and service manager for Linux
+sys-apps/systemd 246-r2 246.6 247_rc2 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-tmpfiles 246: Creates, deletes and cleans up volatile and temporary files and directories
 sys-apps/sysvinit 2.93 2.96 2.97: /sbin/init - parent of all processes
@@ -17269,7 +17269,7 @@ sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 3.7.0-r1 3.8.0: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
