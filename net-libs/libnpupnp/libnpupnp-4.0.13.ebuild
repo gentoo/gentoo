@@ -10,7 +10,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="client debug device gena ipv6 optssdp reuseaddr soap ssdp tools webserver"
+IUSE="client optssdp reuseaddr tools"
 
 RDEPEND="
 	dev-libs/expat
@@ -25,15 +25,15 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable client) \
-		$(use_enable debug) \
-		$(use_enable device) \
-		$(use_enable gena) \
-		$(use_enable ipv6) \
+		--enable-client \
+		--enable-debug \
+		--enable-device \
+		--enable-gena \
+		--enable-ipv6 \
 		$(use_enable optssdp) \
 		$(use_enable reuseaddr) \
-		$(use_enable soap) \
-		$(use_enable ssdp) \
+		--enable-soap \
+		--enable-ssdp \
 		$(use_enable tools) \
-		$(use_enable webserver)
+		--enable-webserver
 }
