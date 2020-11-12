@@ -61,8 +61,8 @@ SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
 DESCRIPTION="Linux-Mips GIT sources for MIPS-based machines, dated ${GITDATE}"
 SRC_URI="${KERNEL_URI}
-	 mirror://gentoo/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
-	 mirror://gentoo/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+	 https://dev.gentoo.org/~kumba/distfiles/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
+	 https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
 UNIPATCH_STRICTORDER="yes"
 UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
