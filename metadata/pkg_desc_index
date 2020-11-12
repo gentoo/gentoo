@@ -770,7 +770,7 @@ app-arch/plzip 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.9.1_p20200625 6.0_beta1_p20201022: RAR compressor/uncompressor
+app-arch/rar 5.9.1_p20200625 6.0_beta1_p20201022 6.0_beta2_p20201112: RAR compressor/uncompressor
 app-arch/rpm 4.14.2.1-r1 4.16.0: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -788,7 +788,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
-app-arch/unrar 5.9.4 6.0.1: Uncompress rar files
+app-arch/unrar 5.9.4 6.0.1 6.0.2: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
@@ -17948,7 +17948,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 86.0.4240.193 86.0.4240.198 87.0.4280.47 88.0.4315.5: Open-source version of Google Chrome web browser
+www-client/chromium 86.0.4240.198 87.0.4280.47 88.0.4315.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
