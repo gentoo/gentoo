@@ -12,4 +12,8 @@
 	<upstream>
 		<remote-id type="github">corosync/corosync</remote-id>
 	</upstream>
+	<use>
+		<flag name="augeas">Enable augeas support</flag>
+		<flag name="watchdog">Enable watchdog support</flag>
+	</use>
 </pkgmetadata>

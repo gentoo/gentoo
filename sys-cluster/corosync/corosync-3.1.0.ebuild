@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit linux-info autotools
 
 DESCRIPTION="OSI Certified implementation of a complete cluster engine"
 HOMEPAGE="http://www.corosync.org/"
@@ -12,23 +12,40 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="doc systemd xml dbus"
+IUSE="augeas dbus doc snmp systemd watchdog xml"
 
-# TODO: support those new configure flags
-# --enable-augeas : Install the augeas lens for corosync.conf
-# --enable-snmp : SNMP protocol support
-# --enable-watchdog : Watchdog support
 RDEPEND="dev-libs/nss
 	>=sys-cluster/libqb-2.0.0:=
 	sys-cluster/kronosnet:=
+	augeas? ( app-admin/augeas )
 	dbus? ( sys-apps/dbus )
+	snmp? ( net-analyzer/net-snmp )
 	systemd? ( sys-apps/systemd:= )
+	watchdog? ( sys-kernel/linux-headers )
 	"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( sys-apps/groff )"
 
 DOCS=( README.recovery AUTHORS )
+
+pkg_setup() {
+	if use watchdog; then
+		# verify that CONFIG_WATCHDOG is enabled in the kernel or
+		# warn otherwise
+		linux-info_pkg_setup
+		elog "Checking for suitable kernel configuration options..."
+		if linux_config_exists; then
+			if ! linux_chkconfig_present WATCHDOG; then
+				ewarn "CONFIG_WATCHDOG: is not set when it should be."
+				elog "Please check to make sure these options are set correctly."
+			fi
+		else
+				ewarn "Could not check, if CONFIG_WATCHDOG is enabled in your kernel."
+				elog "Please check to make sure these options are set correctly."
+		fi
+	fi
+}
 
 src_prepare() {
 	default
@@ -48,8 +65,11 @@ src_configure() {
 	econf_opts=(
 		--disable-static \
 		--localstatedir=/var \
+		$(use_enable augeas) \
 		$(use_enable dbus) \
+		$(use_enable snmp) \
 		$(use_enable systemd) \
+		$(use_enable watchdog) \
 		$(use_enable xml xmlconf)
 	)
 	use doc && econf_opts+=( --enable-doc )
@@ -66,4 +86,12 @@ src_install() {
 	keepdir /var/lib/corosync /var/log/cluster
 
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	if [[ ${REPLACING_VERSIONS} ]]; then
+		elog "Default token timeout was changed from 1 seconds to 3 seconds."
+		elog "If you need to keep the old timeout, add 'token: 1000' to the"
+		elog "totem {} section of your corosync.conf"
+	fi
 }
