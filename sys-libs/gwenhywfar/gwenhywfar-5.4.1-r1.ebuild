@@ -12,7 +12,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/344/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/79" # correspond with libgwenhywfar.so version
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="debug doc gtk libressl qt5 test"
 
 BDEPEND="
