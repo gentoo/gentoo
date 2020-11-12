@@ -142,7 +142,12 @@ src_configure() {
 }
 
 src_test() {
+	if $(locale -a | grep -iq "en_US\.utf.*8"); then
 		cmake_src_test -V
+	else
+		eerror "en_US.UTF-8 locale is required to run ${PN}'s ${FUNCNAME}"
+		die "required locale missing"
+	fi
 }
 
 pkg_postinst() {
