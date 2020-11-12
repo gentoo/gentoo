@@ -5999,14 +5999,9 @@ net-libs/libnids:glib - Use dev-libs/glib for multiprocessing support
 net-libs/libnids:libnet - Include code requiring net-libs/libnet
 net-libs/libnma:pkcs11 - Enable PKCS#11 support in certificate chooser via app-crypt/gcr
 net-libs/libnpupnp:client - control point code (client)
-net-libs/libnpupnp:device - device specific code (implies -webserver if disabled)
-net-libs/libnpupnp:gena - GENA part
 net-libs/libnpupnp:optssdp - optional SSDP headers support
 net-libs/libnpupnp:reuseaddr - bind the miniserver socket with reuseaddr
-net-libs/libnpupnp:soap - SOAP part
-net-libs/libnpupnp:ssdp - SSDP part
 net-libs/libnpupnp:tools - helper APIs in upnptools.h
-net-libs/libnpupnp:webserver - integrated web server
 net-libs/liboauth:bindist - Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL.
 net-libs/liboauth:curl - If enabled, net-misc/curl is used thorugh the libcurl library; if it's not, the curl command is used instead. Some features are only available when using the library, but using it as library requires matching SSL implementations.
 net-libs/liboauth:nss - Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead.
