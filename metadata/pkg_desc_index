@@ -13864,7 +13864,7 @@ media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them 
 media-sound/rosegarden 20.06: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
-media-sound/sc2mpd 1.1.5: Implements the SongCast protocol for use by upmpdcli and mpd
+media-sound/sc2mpd 1.1.5 1.1.7: Implements the SongCast protocol for use by upmpdcli and mpd
 media-sound/schismtracker 20180810-r1: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.3-r1: Loop based MIDI sequencer with focus on live performances
