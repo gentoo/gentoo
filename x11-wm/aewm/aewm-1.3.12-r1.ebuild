@@ -10,7 +10,7 @@ SRC_URI="https://www.red-bean.com/decklin/aewm/${P}.tar.bz2"
 
 LICENSE="MIT 9wm"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	dev-libs/glib:2
