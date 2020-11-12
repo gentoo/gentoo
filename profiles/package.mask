@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org>
+# Adobe will stop distributing Flash Player after 2020-12-31.
+# Bug #754192
+www-plugins/adobe-flash
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
 # and prevents users from upgrading.  Masked for the time being.
