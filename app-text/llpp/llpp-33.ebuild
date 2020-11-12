@@ -11,7 +11,7 @@ SRC_URI="https://github.com/moosotc/llpp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=app-text/mupdf-1.17.0:0=
