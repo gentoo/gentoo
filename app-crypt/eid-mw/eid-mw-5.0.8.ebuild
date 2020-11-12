@@ -3,14 +3,15 @@
 
 EAPI=7
 
-inherit autotools desktop gnome2-utils xdg-utils git-r3
+inherit autotools desktop gnome2-utils xdg-utils
 
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 HOMEPAGE="https://eid.belgium.be"
-EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
+SRC_URI="https://codeload.github.com/fedict/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+dialogs +gtk +p11v220 p11-kit"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9
@@ -31,6 +32,11 @@ REQUIRED_USE="dialogs? ( gtk )"
 
 src_prepare() {
 	default
+
+	# Buggy internal versioning when autoreconf a tarball release.
+	# Weird numbering is required otherwise we get a seg fault in
+	# about-eid-mw program.
+	echo "${PV}-v${PV}" > .version
 
 	# xpi module : we don't want it anymore
 	sed -i -e '/SUBDIRS/ s:plugins_tools/xpi ::' Makefile.am || die
