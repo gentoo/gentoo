@@ -8019,6 +8019,8 @@ sys-cluster/cinder:tgt - Enable tgt storage backend support
 sys-cluster/cinder:volume - Installs the initscripts for the cinder volume service
 sys-cluster/cluster-glue:ipmilan - Install the ipmilan plugin (requires sys-libs/openipmi)
 sys-cluster/cluster-glue:libnet - Force use of net-libs/libnet
+sys-cluster/corosync:augeas - Enable augeas support
+sys-cluster/corosync:watchdog - Enable watchdog support
 sys-cluster/drbd-utils:heartbeat - Enable Heartbeat integration
 sys-cluster/drbd-utils:pacemaker - Enable Pacemaker integration
 sys-cluster/drbd-utils:xen - Enable Xen integration
