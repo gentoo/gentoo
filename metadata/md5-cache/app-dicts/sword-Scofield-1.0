@@ -3,10 +3,10 @@ DEFINED_PHASES=install
 DESCRIPTION=Scofield Reference Notes, 1917 Edition
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Scofield
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~ppc x86
 LICENSE=public-domain
 RDEPEND=>=app-text/sword-1.5.1a
 SLOT=0
 SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Scofield.zip -> Scofield-1.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=cbe15457283dd5831509a171b6504106
+_md5_=56566c9cb5088b3865b2de8c530fb5b2
