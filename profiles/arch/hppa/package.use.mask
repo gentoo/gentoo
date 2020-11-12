@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/lash not keyworded, bug #736725
+media-sound/fluidsynth lash
+
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
 # virtual/rust has no hppa keyword
 dev-vcs/mercurial rust
