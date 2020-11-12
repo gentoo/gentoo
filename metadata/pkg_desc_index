@@ -1970,7 +1970,7 @@ app-emulation/fuse-utils 1.4.3: Utils for the Free Unix Spectrum Emulator by Phi
 app-emulation/gallium-nine-standalone 0.7 9999: A standalone version of the WINE parts of Gallium Nine
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
 app-emulation/genymotion-bin 3.1.2: Complete set of tools that provide a virtual environment for Android
-app-emulation/glean 1.10.3 1.17.0: Simple program to write static config from config-drive
+app-emulation/glean 1.17.0: Simple program to write static config from config-drive
 app-emulation/go-secbench 0.1.0 0.1.0-r1: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1 0.6.2: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
@@ -8835,7 +8835,7 @@ dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scroll
 dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.5 3.8.6 3.9.0: HTML documentation for Python
 dev-python/python-dotenv 0.14.0 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
-dev-python/python-efl 1.24.0 1.25.0: Python bindings for Enlightenment Foundation Libraries
+dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-email-validator 1.1.1 1.1.2: A robust email syntax and deliverability validation library
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
