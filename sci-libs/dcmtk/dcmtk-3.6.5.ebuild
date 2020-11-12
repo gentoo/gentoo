@@ -10,7 +10,7 @@ HOMEPAGE="https://dicom.offis.de/dcmtk.php.en"
 SRC_URI="https://dicom.offis.de/download/dcmtk/release/${P}.tar.gz"
 
 LICENSE="OFFIS"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 x86"
 SLOT="0"
 IUSE="doc png ssl tcpd tiff +threads xml zlib"
 
