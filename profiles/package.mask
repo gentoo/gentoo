@@ -32,8 +32,9 @@
 
 #--- END OF EXAMPLES ---
 
-# Jonas Stein <jstein@gentoo.org>
+# Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
+# Masked for removal after 2020-12-31
 # Bug #754192
 www-plugins/adobe-flash
 
