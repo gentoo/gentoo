@@ -64,6 +64,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXmu
 	x11-libs/libXt
+	all-modules? ( dev-libs/pegtl )
 	boost? ( dev-libs/boost:=[mpi?] )
 	examples? (
 		dev-qt/qtcore:5
