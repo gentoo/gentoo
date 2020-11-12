@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare setup
+DEPEND=>=dev-libs/boost-1.33 dev-libs/poco dev-libs/rlog sys-fs/fuse:3
+DESCRIPTION=A FUSE-based user-space file system with on-access anti-virus file scanning
+EAPI=7
+HOMEPAGE=https://github.com/burghardt/clamfs
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.33 dev-libs/poco dev-libs/rlog sys-fs/fuse:3 app-antivirus/clamav
+SLOT=0
+SRC_URI=https://github.com/burghardt/clamfs/releases/download/clamfs-1.2.0/clamfs-1.2.0.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=86f684decb50d3d2d069d40a62d7a006
