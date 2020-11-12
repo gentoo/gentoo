@@ -236,6 +236,7 @@ acct-group/ultimaker 0: Group for ultimaker
 acct-group/unbound 0: unbound program group
 acct-group/unifi 0: A group for the UniFi controller
 acct-group/unrealircd 0: System group: unrealircd
+acct-group/upmpdcli 0: Group for upmpdcli
 acct-group/uptimed 0: System group: uptimed
 acct-group/usb 0: System group: usb
 acct-group/utmp 0: System group: utmp
@@ -476,6 +477,7 @@ acct-user/ultimaker 0: User for ultimaker
 acct-user/unbound 0: unbound program user
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
+acct-user/upmpdcli 0: User for upmpdcli
 acct-user/uptimed 0: user for uptime daemon
 acct-user/usbmux 0: User for the usbmuxd daemon
 acct-user/varnish 0: user for varnish
