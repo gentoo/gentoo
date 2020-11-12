@@ -978,7 +978,7 @@ app-crypt/gnupg-pkcs11-scd 0.9.2: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12-r1: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.13.0 1.13.0-r1 1.13.1 1.14.0: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.13.0 1.14.0 1.15.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: Reads a passphrase and prints a hash
 app-crypt/hashcat 5.1.0 6.0.0-r1 9999: World's fastest and most advanced password recovery utility
@@ -17464,9 +17464,9 @@ sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.1.1: Zeroes out all free space on a filesystem
-sys-fs/zfs 0.8.5 2.0.0_rc5-r1 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.8.5 2.0.0_rc5-r1 2.0.0_rc6 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 1.2.4-r1 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.8.5 2.0.0_rc5 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.8.5 2.0.0_rc5 2.0.0_rc6 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
 sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
@@ -17957,7 +17957,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.4.1 82.0.3: Firefox Web Browser
 www-client/firefox-bin 78.4.1 82.0.3: Firefox Web Browser
 www-client/google-chrome 86.0.4240.198: The web browser from Google
-www-client/google-chrome-beta 87.0.4280.47: The web browser from Google
+www-client/google-chrome-beta 87.0.4280.60: The web browser from Google
 www-client/google-chrome-unstable 88.0.4315.5: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -17968,7 +17968,7 @@ www-client/microsoft-edge-dev 88.0.692.0: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r3: a free, open source web browser
-www-client/opera 71.0.3770.271 72.0.3815.320: A fast and secure web browser
+www-client/opera 72.0.3815.320: A fast and secure web browser
 www-client/opera-beta 72.0.3815.49 72.0.3815.86 72.0.3815.133: A fast and secure web browser
 www-client/opera-developer 73.0.3820.0 73.0.3827.0 73.0.3834.0 73.0.3841.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -18001,7 +18001,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.453: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 86.0.4240.198 87.0.4280.47_beta 88.0.4315.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 86.0.4240.198 87.0.4280.60_beta 88.0.4315.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
