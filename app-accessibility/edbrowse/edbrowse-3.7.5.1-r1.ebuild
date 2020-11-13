@@ -18,7 +18,7 @@ RDEPEND="
 	>=net-misc/curl-7.36.0
 	>=dev-libs/libpcre-7.8
 	>=sys-libs/readline-6.0
-	dev-lang/duktape
+	dev-lang/duktape:=
 	odbc? ( dev-db/unixODBC )"
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
