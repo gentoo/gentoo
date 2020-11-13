@@ -21,16 +21,30 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# Tests require dev-ruby/sdoc, which is currently ~arch-only and fairly limited
-# in the number of supported keywords.
-RESTRICT="test"
+COMMON_DEPEND="dev-lang/duktape"
+DEPEND+="${COMMON_DEPEND}"
+RDEPEND+="${COMMON_DEPEND}"
 
-# Upstream uses bundled single-source distributable Duktape.
-#RDEPEND+="dev-lang/duktape"
+ruby_add_bdepend "
+	dev-ruby/pkg-config
+	dev-ruby/rake-compiler
+	dev-ruby/sdoc
+"
 
-ruby_add_bdepend "dev-ruby/rake-compiler"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.0.0_duktape-2.5.0-tests.patch
+	"${FILESDIR}"/${PN}-2.3.0.0_use-system-duktape.patch
+)
 
 RUBY_S=${MY_P}
+
+all_ruby_prepare() {
+	rm ext/duktape/duktape.{c,h} ext/duktape/duk_config.h || die "Failed to remove bundled duktape"
+}
+
+each_ruby_configure() {
+	${RUBY} -C ext/duktape extconf.rb || die "extconf.rb failed"
+}
 
 each_ruby_compile() {
 	${RUBY} -S rake compile

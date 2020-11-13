@@ -7,14 +7,12 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 MY_PV="${PV//_p/.post}"
-MY_PN="${PN//s_/-}"
 
 DESCRIPTION="Machine learning library for Python"
-HOMEPAGE="https://scikit-learn.org/stable/
-	https://github.com/scikit-learn/scikit-learn"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://scikit-learn.org/stable/"
+SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 #ffhttps://github.com/scikit-learn/scikit-learn/archive/0.22.2.post1.tar.gz
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"

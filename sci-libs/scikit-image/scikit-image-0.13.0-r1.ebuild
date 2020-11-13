@@ -7,12 +7,9 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 optfeature virtualx
 
-MYPN="${PN/scikits_/scikit-}"
-MYP="${MYPN}-${PV}"
-
 DESCRIPTION="Image processing routines for SciPy"
 HOMEPAGE="https://scikit-image.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${MYPN}/${MYP}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -34,8 +31,6 @@ DEPEND="${RDEPEND}
 	>=dev-python/cython-0.23[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MYP}"
 
 DOCS=( CONTRIBUTORS.txt DEPENDS.txt RELEASE.txt TASKS.txt TODO.txt )
 
