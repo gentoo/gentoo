@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/linux-pam/linux-pam"
 
 COMMIT_HASH="e42e178c71c11bb25740a5177eed110ee17b8af2"
 SRC_URI="https://github.com/linux-pam/linux-pam/archive/${COMMIT_HASH}.tar.gz#/${PN}-${COMMIT_HASH}.tar.gz
-	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${PN}-1.4.0_p20200809-doc.tar.xz"
+	https://github.com/Zlogene/pam-docs/archive/${PN}-doc-20201113.tar.gz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
@@ -110,8 +110,10 @@ multilib_src_install_all() {
 		d /run/sepermit 0755 root root
 	_EOF_
 
-	for i in "${WORKDIR}"/${PN}-1.4.0_p20200809-doc/*; do
-		doman ${i}
+	local page
+
+	for page in "${WORKDIR}"/${PN}-docs-${PN}-doc-20201113/*; do
+		doman ${page}
 	done
 }
 
