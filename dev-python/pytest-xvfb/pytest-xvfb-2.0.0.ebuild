@@ -24,6 +24,10 @@ DEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	distutils_install_for_testing
-	pytest -vv || die "Tests failed with ${EPYTHON}"
+	local -x PYTHONPATH="${BUILD_DIR}/install/lib"
+	esetup.py install \
+		--root="${BUILD_DIR}/install" \
+		--install-lib=lib
+
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
