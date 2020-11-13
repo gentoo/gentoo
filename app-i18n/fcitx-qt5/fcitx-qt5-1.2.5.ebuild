@@ -41,4 +41,8 @@ RDEPEND=">=app-i18n/fcitx-4.2.9:4
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5"
 
+PATCHES=(
+	"${FILESDIR}/${P}-QFcitxPlatformInputContext_recursion.patch"
+)
+
 DOCS=()
