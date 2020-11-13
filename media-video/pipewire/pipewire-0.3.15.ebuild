@@ -82,7 +82,6 @@ src_configure() {
 	local emesonargs=(
 		-Dexamples=true # contains required pipewire-media-session
 		-Dman=true
-		-Dspa=true
 		-Dspa-plugins=true
 		--buildtype=$(usex debug debugoptimized plain)
 		# alsa plugin and jack/pulseaudio emulation
