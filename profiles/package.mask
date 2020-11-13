@@ -347,6 +347,7 @@ dev-lua/luacrypto
 >=app-misc/worker-3.8.3-r100
 =dev-libs/efl-1.25.1-r10
 >=dev-lua/lua-zlib-1.2-r100
+>=dev-lua/luaevent-0.4.6-r100
 >=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/luadbi-0.7.2-r100
 >=dev-lua/lutok-0.4-r10
