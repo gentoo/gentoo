@@ -1,0 +1,272 @@
+--- autoconf-2.69d/Makefile.in
++++ autoconf-2.69d/Makefile.in
+@@ -221,10 +221,10 @@
+ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
+ 	$(ACLOCAL_M4)
+ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
+-	$(am__configure_deps) $(dist_buildaux_SCRIPTS) \
+-	$(srcdir)/doc/version.texi $(srcdir)/doc/stamp-vti \
+-	$(dist_lisp_LISP) $(dist_autoconflib_DATA) \
+-	$(dist_autotestlib_DATA) $(dist_m4sugarlib_DATA) \
++	$(am__configure_deps) $(srcdir)/doc/version.texi \
++	$(srcdir)/doc/stamp-vti $(dist_lisp_LISP) \
++	$(dist_autoconflib_DATA) $(dist_autotestlib_DATA) \
++	$(dist_buildaux_DATA) $(dist_m4sugarlib_DATA) \
+ 	$(dist_perllib_DATA) $(am__DIST_COMMON)
+ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
+  configure.lineno config.status.lineno
+@@ -258,15 +258,15 @@
+     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+          $(am__cd) "$$dir" && rm -f $$files; }; \
+   }
+-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(buildauxdir)" \
+-	"$(DESTDIR)$(infodir)" "$(DESTDIR)$(lispdir)" \
+-	"$(DESTDIR)$(man1dir)" "$(DESTDIR)$(autoconflibdir)" \
+-	"$(DESTDIR)$(autotestlibdir)" "$(DESTDIR)$(m4sugarlibdir)" \
++am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(infodir)" \
++	"$(DESTDIR)$(lispdir)" "$(DESTDIR)$(man1dir)" \
++	"$(DESTDIR)$(autoconflibdir)" "$(DESTDIR)$(autotestlibdir)" \
++	"$(DESTDIR)$(buildauxdir)" "$(DESTDIR)$(m4sugarlibdir)" \
+ 	"$(DESTDIR)$(perllibdir)" "$(DESTDIR)$(autoconflibdir)" \
+ 	"$(DESTDIR)$(autoscanlibdir)" "$(DESTDIR)$(autotestlibdir)" \
+ 	"$(DESTDIR)$(m4sugarlibdir)" "$(DESTDIR)$(pkgdatadir)" \
+ 	"$(DESTDIR)$(pkgdatadir)"
+-SCRIPTS = $(bin_SCRIPTS) $(dist_buildaux_SCRIPTS) $(noinst_SCRIPTS)
++SCRIPTS = $(bin_SCRIPTS) $(noinst_SCRIPTS)
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+ am__v_P_0 = false
+@@ -341,10 +341,11 @@
+ NROFF = nroff
+ MANS = $(dist_man_MANS)
+ DATA = $(dist_autoconflib_DATA) $(dist_autotestlib_DATA) \
+-	$(dist_m4sugarlib_DATA) $(dist_perllib_DATA) \
+-	$(nodist_autoconflib_DATA) $(nodist_autoscanlib_DATA) \
+-	$(nodist_autotestlib_DATA) $(nodist_m4sugarlib_DATA) \
+-	$(nodist_pkgdata_DATA) $(pkgdata_DATA)
++	$(dist_buildaux_DATA) $(dist_m4sugarlib_DATA) \
++	$(dist_perllib_DATA) $(nodist_autoconflib_DATA) \
++	$(nodist_autoscanlib_DATA) $(nodist_autotestlib_DATA) \
++	$(nodist_m4sugarlib_DATA) $(nodist_pkgdata_DATA) \
++	$(pkgdata_DATA)
+ am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
+ # Read a list of newline-separated strings from the standard input,
+ # and print each of them once, without duplicates.  Input order is
+@@ -754,12 +755,23 @@
+   lib/autotest/specific.m4
+ 
+ nodist_autotestlib_DATA = lib/autotest/autotest.m4f
+-buildauxdir = $(pkgdatadir)/build-aux
+-dist_buildaux_SCRIPTS = \
++
++# These are declared as _DATA so that they are not subject to
++# --program-transform-name; $(pkgdatadir) is sufficient to keep
++# multiple installations separate, and autoreconf looks for them by
++# their unadorned names.  However, autoreconf copies the executable
++# bit when it copies these files into a source tree, and _DATA items
++# are installed as not-executable, so we have to make them executable
++# in a hook rule.
++AUXSCRIPTS = \
+   build-aux/config.guess \
+   build-aux/config.sub \
+   build-aux/install-sh
+ 
++buildauxdir = $(pkgdatadir)/build-aux
++dist_buildaux_DATA = \
++  $(AUXSCRIPTS)
++
+ dist_man_MANS = \
+   man/autoconf.1 \
+   man/autoheader.1 \
+@@ -994,56 +1006,6 @@
+ 	    else echo "$$f does not support $$opt" 1>&2; bad=1; fi; \
+ 	  done; \
+ 	done; rm -f c$${pid}_.???; exit $$bad
+-install-dist_buildauxSCRIPTS: $(dist_buildaux_SCRIPTS)
+-	@$(NORMAL_INSTALL)
+-	@list='$(dist_buildaux_SCRIPTS)'; test -n "$(buildauxdir)" || list=; \
+-	if test -n "$$list"; then \
+-	  echo " $(MKDIR_P) '$(DESTDIR)$(buildauxdir)'"; \
+-	  $(MKDIR_P) "$(DESTDIR)$(buildauxdir)" || exit 1; \
+-	fi; \
+-	for p in $$list; do \
+-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+-	  if test -f "$$d$$p"; then echo "$$d$$p"; echo "$$p"; else :; fi; \
+-	done | \
+-	sed -e 'p;s,.*/,,;n' \
+-	    -e 'h;s|.*|.|' \
+-	    -e 'p;x;s,.*/,,;$(transform)' | sed 'N;N;N;s,\n, ,g' | \
+-	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1; } \
+-	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
+-	    if ($$2 == $$4) { files[d] = files[d] " " $$1; \
+-	      if (++n[d] == $(am__install_max)) { \
+-		print "f", d, files[d]; n[d] = 0; files[d] = "" } } \
+-	    else { print "f", d "/" $$4, $$1 } } \
+-	  END { for (d in files) print "f", d, files[d] }' | \
+-	while read type dir files; do \
+-	     if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
+-	     test -z "$$files" || { \
+-	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(buildauxdir)$$dir'"; \
+-	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(buildauxdir)$$dir" || exit $$?; \
+-	     } \
+-	; done
+-
+-uninstall-dist_buildauxSCRIPTS:
+-	@$(NORMAL_UNINSTALL)
+-	@list='$(dist_buildaux_SCRIPTS)'; test -n "$(buildauxdir)" || exit 0; \
+-	files=`for p in $$list; do echo "$$p"; done | \
+-	       sed -e 's,.*/,,;$(transform)'`; \
+-	dir='$(DESTDIR)$(buildauxdir)'; $(am__uninstall_files_from_dir)
+-
+-installcheck-dist_buildauxSCRIPTS: $(dist_buildaux_SCRIPTS)
+-	bad=0; pid=$$$$; list="$(dist_buildaux_SCRIPTS)"; for p in $$list; do \
+-	  case ' $(AM_INSTALLCHECK_STD_OPTIONS_EXEMPT) ' in \
+-	   *" $$p "* | *" $(srcdir)/$$p "*) continue;; \
+-	  esac; \
+-	  f=`echo "$$p" | sed 's,^.*/,,;$(transform)'`; \
+-	  for opt in --help --version; do \
+-	    if "$(DESTDIR)$(buildauxdir)/$$f" $$opt >c$${pid}_.out \
+-	         2>c$${pid}_.err </dev/null \
+-		 && test -n "`cat c$${pid}_.out`" \
+-		 && test -z "`cat c$${pid}_.err`"; then :; \
+-	    else echo "$$f does not support $$opt" 1>&2; bad=1; fi; \
+-	  done; \
+-	done; rm -f c$${pid}_.???; exit $$bad
+ doc/$(am__dirstamp):
+ 	@$(MKDIR_P) doc
+ 	@: > doc/$(am__dirstamp)
+@@ -1385,6 +1347,27 @@
+ 	@list='$(dist_autotestlib_DATA)'; test -n "$(autotestlibdir)" || list=; \
+ 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+ 	dir='$(DESTDIR)$(autotestlibdir)'; $(am__uninstall_files_from_dir)
++install-dist_buildauxDATA: $(dist_buildaux_DATA)
++	@$(NORMAL_INSTALL)
++	@list='$(dist_buildaux_DATA)'; test -n "$(buildauxdir)" || list=; \
++	if test -n "$$list"; then \
++	  echo " $(MKDIR_P) '$(DESTDIR)$(buildauxdir)'"; \
++	  $(MKDIR_P) "$(DESTDIR)$(buildauxdir)" || exit 1; \
++	fi; \
++	for p in $$list; do \
++	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
++	  echo "$$d$$p"; \
++	done | $(am__base_list) | \
++	while read files; do \
++	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(buildauxdir)'"; \
++	  $(INSTALL_DATA) $$files "$(DESTDIR)$(buildauxdir)" || exit $$?; \
++	done
++
++uninstall-dist_buildauxDATA:
++	@$(NORMAL_UNINSTALL)
++	@list='$(dist_buildaux_DATA)'; test -n "$(buildauxdir)" || list=; \
++	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
++	dir='$(DESTDIR)$(buildauxdir)'; $(am__uninstall_files_from_dir)
+ install-dist_m4sugarlibDATA: $(dist_m4sugarlib_DATA)
+ 	@$(NORMAL_INSTALL)
+ 	@list='$(dist_m4sugarlib_DATA)'; test -n "$(m4sugarlibdir)" || list=; \
+@@ -1794,7 +1777,7 @@
+ all-am: Makefile $(INFO_DEPS) $(SCRIPTS) $(LISP) $(ELCFILES) $(MANS) \
+ 		$(DATA)
+ installdirs:
+-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(buildauxdir)" "$(DESTDIR)$(infodir)" "$(DESTDIR)$(lispdir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(autoconflibdir)" "$(DESTDIR)$(autotestlibdir)" "$(DESTDIR)$(m4sugarlibdir)" "$(DESTDIR)$(perllibdir)" "$(DESTDIR)$(autoconflibdir)" "$(DESTDIR)$(autoscanlibdir)" "$(DESTDIR)$(autotestlibdir)" "$(DESTDIR)$(m4sugarlibdir)" "$(DESTDIR)$(pkgdatadir)" "$(DESTDIR)$(pkgdatadir)"; do \
++	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(infodir)" "$(DESTDIR)$(lispdir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(autoconflibdir)" "$(DESTDIR)$(autotestlibdir)" "$(DESTDIR)$(buildauxdir)" "$(DESTDIR)$(m4sugarlibdir)" "$(DESTDIR)$(perllibdir)" "$(DESTDIR)$(autoconflibdir)" "$(DESTDIR)$(autoscanlibdir)" "$(DESTDIR)$(autotestlibdir)" "$(DESTDIR)$(m4sugarlibdir)" "$(DESTDIR)$(pkgdatadir)" "$(DESTDIR)$(pkgdatadir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+ 	done
+ install: $(BUILT_SOURCES)
+@@ -1858,13 +1841,14 @@
+ info-am: $(INFO_DEPS)
+ 
+ install-data-am: install-dist_autoconflibDATA \
+-	install-dist_autotestlibDATA install-dist_buildauxSCRIPTS \
++	install-dist_autotestlibDATA install-dist_buildauxDATA \
+ 	install-dist_lispLISP install-dist_m4sugarlibDATA \
+ 	install-dist_perllibDATA install-info-am install-man \
+ 	install-nodist_autoconflibDATA install-nodist_autoscanlibDATA \
+ 	install-nodist_autotestlibDATA install-nodist_m4sugarlibDATA \
+ 	install-nodist_pkgdataDATA install-pkgdataDATA
+-
++	@$(NORMAL_INSTALL)
++	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
+ install-dvi: install-dvi-am
+ 
+ install-dvi-am: $(DVIS)
+@@ -1980,8 +1964,7 @@
+ 	while read files; do \
+ 	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(psdir)'"; \
+ 	  $(INSTALL_DATA) $$files "$(DESTDIR)$(psdir)" || exit $$?; done
+-installcheck-am: installcheck-binSCRIPTS \
+-	installcheck-dist_buildauxSCRIPTS installcheck-local
++installcheck-am: installcheck-binSCRIPTS installcheck-local
+ 
+ maintainer-clean: maintainer-clean-am
+ 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
+@@ -2003,7 +1986,7 @@
+ ps-am: $(PSS)
+ 
+ uninstall-am: uninstall-binSCRIPTS uninstall-dist_autoconflibDATA \
+-	uninstall-dist_autotestlibDATA uninstall-dist_buildauxSCRIPTS \
++	uninstall-dist_autotestlibDATA uninstall-dist_buildauxDATA \
+ 	uninstall-dist_lispLISP uninstall-dist_m4sugarlibDATA \
+ 	uninstall-dist_perllibDATA uninstall-dvi-am uninstall-html-am \
+ 	uninstall-info-am uninstall-man \
+@@ -2015,7 +1998,8 @@
+ 
+ uninstall-man: uninstall-man1
+ 
+-.MAKE: all check check-am install install-am install-strip
++.MAKE: all check check-am install install-am install-data-am \
++	install-strip
+ 
+ .PHONY: CTAGS GTAGS TAGS all all-am am--refresh check check-am \
+ 	check-local clean clean-aminfo clean-cscope clean-generic \
+@@ -2026,24 +2010,24 @@
+ 	distclean-tags distcleancheck distdir distuninstallcheck dvi \
+ 	dvi-am html html-am info info-am install install-am \
+ 	install-binSCRIPTS install-data install-data-am \
+-	install-dist_autoconflibDATA install-dist_autotestlibDATA \
+-	install-dist_buildauxSCRIPTS install-dist_lispLISP \
+-	install-dist_m4sugarlibDATA install-dist_perllibDATA \
+-	install-dvi install-dvi-am install-exec install-exec-am \
+-	install-html install-html-am install-info install-info-am \
+-	install-man install-man1 install-nodist_autoconflibDATA \
+-	install-nodist_autoscanlibDATA install-nodist_autotestlibDATA \
+-	install-nodist_m4sugarlibDATA install-nodist_pkgdataDATA \
+-	install-pdf install-pdf-am install-pkgdataDATA install-ps \
+-	install-ps-am install-strip installcheck installcheck-am \
+-	installcheck-binSCRIPTS installcheck-dist_buildauxSCRIPTS \
++	install-data-hook install-dist_autoconflibDATA \
++	install-dist_autotestlibDATA install-dist_buildauxDATA \
++	install-dist_lispLISP install-dist_m4sugarlibDATA \
++	install-dist_perllibDATA install-dvi install-dvi-am \
++	install-exec install-exec-am install-html install-html-am \
++	install-info install-info-am install-man install-man1 \
++	install-nodist_autoconflibDATA install-nodist_autoscanlibDATA \
++	install-nodist_autotestlibDATA install-nodist_m4sugarlibDATA \
++	install-nodist_pkgdataDATA install-pdf install-pdf-am \
++	install-pkgdataDATA install-ps install-ps-am install-strip \
++	installcheck installcheck-am installcheck-binSCRIPTS \
+ 	installcheck-local installdirs maintainer-clean \
+ 	maintainer-clean-aminfo maintainer-clean-generic \
+ 	maintainer-clean-vti mostlyclean mostlyclean-aminfo \
+ 	mostlyclean-generic mostlyclean-vti pdf pdf-am ps ps-am tags \
+ 	tags-am uninstall uninstall-am uninstall-binSCRIPTS \
+ 	uninstall-dist_autoconflibDATA uninstall-dist_autotestlibDATA \
+-	uninstall-dist_buildauxSCRIPTS uninstall-dist_lispLISP \
++	uninstall-dist_buildauxDATA uninstall-dist_lispLISP \
+ 	uninstall-dist_m4sugarlibDATA uninstall-dist_perllibDATA \
+ 	uninstall-dvi-am uninstall-html-am uninstall-info-am \
+ 	uninstall-man uninstall-man1 uninstall-nodist_autoconflibDATA \
+@@ -2200,6 +2184,14 @@
+ 
+ lib/autotest/autotest.m4f: $(autotest_m4f_dependencies)
+ 
++install-data-hook: install-data-hook-make-aux-scripts-executable
++install-data-hook-make-aux-scripts-executable:
++	for s in $(AUXSCRIPTS); do \
++	  chmod +x "$(DESTDIR)$(pkgdatadir)/$$s"; \
++	done
++
++.PHONY: install-data-hook install-data-hook-make-aux-scripts-executable
++
+ man/autoconf.1:   $(common_dep) man/autoconf.w   man/autoconf.x   $(binsrcdir)/autoconf.as
+ man/autoheader.1: $(common_dep) man/autoheader.w man/autoheader.x $(binsrcdir)/autoheader.in
+ man/autom4te.1:   $(common_dep) man/autom4te.w   man/autom4te.x   $(binsrcdir)/autom4te.in

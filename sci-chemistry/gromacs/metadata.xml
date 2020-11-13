@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<stabilize-allarches/>
 	<maintainer type="person">
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
@@ -19,7 +20,6 @@
 		<flag name="opencl">Enable opencl non-bonded kernels</flag>
 		<flag name="single-precision">Single precision version of gromacs (default)</flag>
 		<flag name="tng">Enable new trajectory format - tng</flag>
-		<!-- acceleration optimization flags -->
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for fft, blas, lapack routines</flag>
 		<flag name="offensive">Enable gromacs partly offensive quotes</flag>
 	</use>

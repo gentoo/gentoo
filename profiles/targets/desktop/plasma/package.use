@@ -34,5 +34,8 @@ media-libs/mesa egl wayland
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r kdenlive melt
 
+# Required by media-gfx/digikam
+media-libs/opencv contrib contribdnn
+
 # Required by dev-qt/qtwebengine:5
 sys-libs/zlib minizip

@@ -11,7 +11,7 @@ SRC_URI="https://busybox.net/~vda/unscd/nscd-${PV}.c -> nscd-${PV}-r1.c"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND="sys-libs/glibc[nscd(+)]"

@@ -94,10 +94,10 @@ src_configure() {
 	local myconf=(
 		--enable-logevents
 		--enable-xrandr
-		--with-cfgdir=/etc/icewm
-		--with-docdir=/usr/share/doc/${PF}/html
+		--with-cfgdir="${EPREFIX}"/etc/icewm
+		--with-docdir="${EPREFIX}"/usr/share/doc/${PF}/html
 		--with-icesound="${icesound}"
-		--with-libdir=/usr/share/icewm
+		--with-libdir="${EPREFIX}"/usr/share/icewm
 		$(use_enable bidi fribidi)
 		$(use_enable debug)
 		$(use_enable debug logevents)

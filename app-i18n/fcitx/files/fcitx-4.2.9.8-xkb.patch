@@ -1,0 +1,32 @@
+https://github.com/fcitx/fcitx/issues/250
+
+--- /CMakeLists.txt
++++ /CMakeLists.txt
+@@ -96,12 +96,15 @@
+   endif()
+ endif()
+ if (ENABLE_XKB)
+-    # Parse xkb xml file
+-    find_package(LibXml2 REQUIRED)
+     find_package(IsoCodes REQUIRED)
+-    find_package(XkbFile REQUIRED)
+     # Parse isocodes json
+     pkg_check_modules(JsonC "json-c" IMPORTED_TARGET REQUIRED)
++    if(ENABLE_X11)
++        # Parse xkb xml file
++        find_package(LibXml2 REQUIRED)
++        find_package(XkbFile REQUIRED)
++        find_package(XKeyboardConfig REQUIRED)
++    endif(ENABLE_X11)
+ endif (ENABLE_XKB)
+ if(ENABLE_PRESAGE)
+   find_package(Presage)
+@@ -121,8 +124,6 @@
+     message(FATAL_ERROR "Xkb is needed")
+ endif (NOT X11_Xkb_FOUND)
+ 
+-find_package(XKeyboardConfig REQUIRED)
+-
+ endif()
+ 
+ if (ENABLE_TEST)

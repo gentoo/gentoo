@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ponty/entrypoint2/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="test? (
 	dev-python/easyprocess[${PYTHON_USEDEP}]

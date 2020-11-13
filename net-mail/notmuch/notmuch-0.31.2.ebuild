@@ -18,7 +18,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y. Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 x86"
 REQUIRED_USE="
 	apidoc? ( doc )
 	nmbug? ( python )

@@ -1,14 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # CMAKE_IN_SOURCE_BUILD="1"
-inherit cmake-utils eapi7-ver
+inherit cmake-utils
 
 DESCRIPTION="Qt blogging client"
 HOMEPAGE="http://qtm.blogistan.co.uk"
-SRC_URI="https://bitbucket.org/IndigoJo/${PN}-$(ver_cut 1-2)/downloads/${P}.tar.bz2"
+# FIXME find suitable SRC_URI
+SRC_URI="https://bitbucket-archive.softwareheritage.org/static/3c/3c8ca320-701e-47dc-b0ec-28870df5715b/attachments/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
