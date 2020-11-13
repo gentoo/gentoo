@@ -26,7 +26,7 @@ src_prepare() {
 
 	rm -r lib/{expat,intl,neon} || die "rm failed"
 	sed \
-		-e "/NE_REQUIRE_VERSIONS/s:29:& 30:" \
+		-e "/NE_REQUIRE_VERSIONS/s:29:& 30 31:" \
 		-e "/AM_GNU_GETTEXT/s:no-libtool:external:" \
 		-e "/AC_CONFIG_FILES/s: lib/neon/Makefile lib/intl/Makefile::" \
 		-i configure.ac || die "sed configure.ac failed"
