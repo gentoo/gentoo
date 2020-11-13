@@ -11404,7 +11404,7 @@ games-misc/typespeed 0.6.5-r1: Test your typing speed, and get your fingers CPS
 games-misc/usolitaire 0.2.1: solitaire in your terminal
 games-misc/wtf 20200518: Translates acronyms for you
 games-misc/wumpus 1.4-r1: Classic Hunt the Wumpus Adventure Game
-games-misc/xcowsay 1.5 1.5.1: Displays a cute cow and message on your desktop
+games-misc/xcowsay 1.5.1: Displays a cute cow and message on your desktop
 games-misc/xcruiser 0.30-r1: Fly about 3D-formed file system
 games-misc/xpenguins 2.2-r2: Cute little penguins invading your desktop
 games-mud/circlemud 3.1: a multi-user dungeon game system server
@@ -18361,7 +18361,7 @@ x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
 x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.8: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
-x11-misc/j4-dmenu-desktop 2.17-r1 2.18: A fast desktop replacement for i3-dmenu-desktop
+x11-misc/j4-dmenu-desktop 2.18: A fast desktop replacement for i3-dmenu-desktop
 x11-misc/kapow 1.5.9 1.5.10: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r4: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
