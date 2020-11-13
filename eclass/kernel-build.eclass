@@ -197,6 +197,38 @@ kernel-build_pkg_postinst() {
 	savedconfig_pkg_postinst
 }
 
+# @FUNCTION: kernel-build_merge_configs
+# @USAGE: [distro.config...]
+# @DESCRIPTION:
+# Merge the config files specified as arguments (if any) into
+# the '.config' file in the current directory, then merge
+# any user-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
+# The '.config' file must exist already and contain the base
+# configuration.
+kernel-build_merge_configs() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ -f .config ]] || die "${FUNCNAME}: .config does not exist"
+	has .config "${@}" &&
+		die "${FUNCNAME}: do not specify .config as parameter"
+
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local user_configs=( "${BROOT}"/etc/kernel/config.d/*.config )
+	shopt -u nullglob
+
+	if [[ ${#user_configs[@]} -gt 0 ]]; then
+		elog "User config files are being applied:"
+		local x
+		for x in "${user_configs[@]}"; do
+			elog "- ${x}"
+		done
+	fi
+
+	./scripts/kconfig/merge_config.sh -m -r \
+		.config "${@}" "${user_configs[@]}" || die
+}
+
 _KERNEL_BUILD_ECLASS=1
 fi
 
