@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
+
 # Matt Turner <mattst88@gentoo.org> (2020-07-01)
 # Unlikely.
 vulkan

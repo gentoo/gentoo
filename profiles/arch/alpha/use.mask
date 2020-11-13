@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
 webkit
