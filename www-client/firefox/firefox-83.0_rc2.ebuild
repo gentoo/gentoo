@@ -71,7 +71,7 @@ REQUIRED_USE="screencast? ( wayland )"
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-util/cbindgen-0.14.3
+	>=dev-util/cbindgen-0.15.0
 	>=net-libs/nodejs-10.19.0
 	virtual/pkgconfig
 	>=virtual/rust-1.43.0
@@ -112,7 +112,7 @@ BDEPEND="${PYTHON_DEPS}
 	)"
 
 CDEPEND="
-	>=dev-libs/nss-3.57
+	>=dev-libs/nss-3.58
 	>=dev-libs/nspr-4.29
 	dev-libs/atk
 	dev-libs/expat
