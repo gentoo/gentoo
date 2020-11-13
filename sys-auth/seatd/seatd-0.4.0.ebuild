@@ -30,6 +30,7 @@ BDEPEND=">=app-text/scdoc-1.9.7"
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=enabled
+		-Dwerror=false
 	)
 
 	if use elogind || use systemd; then
