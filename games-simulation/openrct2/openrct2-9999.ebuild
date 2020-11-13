@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	)
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0= )
-	scripting? ( dev-lang/duktape )
+	scripting? ( dev-lang/duktape:= )
 	truetype? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
