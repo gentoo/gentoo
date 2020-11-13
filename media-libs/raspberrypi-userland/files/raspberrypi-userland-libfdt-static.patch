@@ -1,0 +1,22 @@
+From 55999626af756874012f0163718152a77b14ff51 Mon Sep 17 00:00:00 2001
+From: crabbed halo ablution
+ <17379795+crabbedhaloablution@users.noreply.github.com>
+Date: Sun, 8 Nov 2020 13:49:09 +0100
+Subject: [PATCH] Make explicit that libfdt should be built static
+
+---
+ opensrc/helpers/libfdt/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/opensrc/helpers/libfdt/CMakeLists.txt b/opensrc/helpers/libfdt/CMakeLists.txt
+index f57c61cb..fad86d32 100755
+--- a/opensrc/helpers/libfdt/CMakeLists.txt
++++ b/opensrc/helpers/libfdt/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ include_directories(.)
+ 
+-add_library(fdt
++add_library(fdt STATIC
+             fdt.c 
+             fdt_empty_tree.c
+             fdt_ro.c

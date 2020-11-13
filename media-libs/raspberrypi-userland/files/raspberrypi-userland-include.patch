@@ -1,0 +1,19 @@
+diff -NrU5 1/makefiles/cmake/vmcs.cmake 2/makefiles/cmake/vmcs.cmake
+--- 1/makefiles/cmake/vmcs.cmake	2020-11-06 14:21:49.103179336 +0100
++++ 2/makefiles/cmake/vmcs.cmake	2020-11-06 17:00:57.410230948 +0100
+@@ -72,10 +72,14 @@
+ install(DIRECTORY ${vmcs_root}/interface/vctypes   DESTINATION ${VMCS_INSTALL_PREFIX}/include/interface FILES_MATCHING PATTERN "*.h")
+ install(DIRECTORY ${vmcs_root}/vcinclude           DESTINATION ${VMCS_INSTALL_PREFIX}/include           FILES_MATCHING PATTERN "*.h")
+ install(DIRECTORY ${vmcs_root}/interface/peer      DESTINATION ${VMCS_INSTALL_PREFIX}/include/interface FILES_MATCHING PATTERN "*.h")
+ install(DIRECTORY ${vmcs_root}/interface/vmcs_host DESTINATION ${VMCS_INSTALL_PREFIX}/include/interface FILES_MATCHING PATTERN "*.h" PATTERN "${vmcs_root}/interface/vmcs_host/khronos" EXCLUDE)
+ 
+-install(DIRECTORY ${vmcs_root}/interface/khronos/include       DESTINATION ${VMCS_INSTALL_PREFIX}     FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY ${vmcs_root}/interface/khronos/include       DESTINATION ${VMCS_INSTALL_PREFIX}     FILES_MATCHING PATTERN "*.h"
++	PATTERN EGL EXCLUDE
++	PATTERN GLES EXCLUDE
++	PATTERN GLES2 EXCLUDE
++	PATTERN KHR EXCLUDE )
+ install(DIRECTORY ${vmcs_root}/interface/vmcs_host/khronos/IL  DESTINATION ${VMCS_INSTALL_PREFIX}/include     FILES_MATCHING PATTERN "*.h")
+ 
+ install(DIRECTORY ${vmcs_root}/host_applications/linux/libs/bcm_host/include     DESTINATION ${VMCS_INSTALL_PREFIX}       FILES_MATCHING PATTERN "*.h")
+ 
