@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Strong's Greek Bible Dictionary"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=StrongsGreek"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
