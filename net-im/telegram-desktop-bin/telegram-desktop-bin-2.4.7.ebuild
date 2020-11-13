@@ -10,12 +10,11 @@ HOMEPAGE="https://desktop.telegram.org"
 SRC_URI="
 	https://github.com/telegramdesktop/tdesktop/archive/v${PV}.tar.gz -> tdesktop-${PV}.tar.gz
 	amd64? ( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz )
-	x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.${PV}.tar.xz )
 "
 
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="usr/lib/${PN}/Telegram"
 
