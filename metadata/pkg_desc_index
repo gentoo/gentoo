@@ -10599,7 +10599,7 @@ dev-util/cppcheck 1.86 1.87 1.88 9999: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
-dev-util/cpputest 3.8 4.0: Unit testing and mocking framework for C/C++
+dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
 dev-util/cproto 4.7o 4.7q: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
@@ -13072,7 +13072,7 @@ media-libs/libgpod 0.8.3-r3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libhdhomerun 20150826 20190621 20200521: SiliconDust HDHomeRun Utilties
-media-libs/libheif 1.7.0-r1 1.7.0-r2 1.9.1 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+media-libs/libheif 1.9.1 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
@@ -17405,7 +17405,7 @@ sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6_p14: HFS FS Access utils
-sys-fs/inotify-tools 3.20.1 3.20.2.2: a set of command-line programs providing a simple interface to inotify
+sys-fs/inotify-tools 3.20.1 3.20.2.2 3.20.11.0: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15-r1: IBM's Journaling Filesystem (JFS) Utilities
@@ -17870,7 +17870,7 @@ www-apache/mod_maxminddb 1.2.0: MaxMind DB Apache Module
 www-apache/mod_musicindex 1.4.1-r1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_perl 2.0.11: An embedded Perl interpreter for Apache2
-www-apache/mod_qos 11.61 11.65: A QOS module for the apache webserver
+www-apache/mod_qos 11.61 11.65 11.66: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_security 2.9.3 2.9.3-r100: Application firewall and intrusion detection for Apache
 www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a MySQL database
