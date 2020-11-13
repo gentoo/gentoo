@@ -8743,10 +8743,10 @@ dev-python/pyproject2setuppy 8: Cheap setup.py hack to install flit & poetry-bas
 dev-python/pypugjs 5.9.5: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.1-r3 7.3.2 7.3.3_rc1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.1 7.3.2 7.3.3_rc1: PyPy executable (build from source)
-dev-python/pypy-exe-bin 7.3.1_p1 7.3.2: PyPy executable (pre-built version)
+dev-python/pypy-exe-bin 7.3.1_p1 7.3.2 7.3.3_rc1: PyPy executable (pre-built version)
 dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37 7.3.3_rc1: A fast, compliant alternative implementation of the Python (3.6) language
 dev-python/pypy3-exe 7.3.1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1: PyPy3 executable (build from source)
-dev-python/pypy3-exe-bin 7.3.1_p1 7.3.2-r1 7.3.2_p37-r1: PyPy3 executable (pre-built version)
+dev-python/pypy3-exe-bin 7.3.1_p1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
