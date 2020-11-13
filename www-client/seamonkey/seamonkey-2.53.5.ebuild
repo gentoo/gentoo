@@ -4,7 +4,7 @@
 EAPI=6
 WANT_AUTOCONF="2.1"
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
@@ -35,7 +35,7 @@ MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
 inherit autotools check-reqs flag-o-matic mozcoreconf-v6 mozextension mozlinguas-v2 nsplugins pax-utils toolchain-funcs xdg-utils
 
-PATCH="${PN}-2.53.5_beta1-patches-01"
+PATCH="${PN}-2.53.5_beta1-patches-02"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
@@ -43,9 +43,10 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
+SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,sqlite,libvpx} )
 IUSE="+calendar +chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack minimal
-neon pulseaudio +roaming selinux startup-notification system-harfbuzz system-icu
-system-jpeg system-libevent system-sqlite system-libvpx test wifi"
+neon pulseaudio +roaming selinux startup-notification ${SYSTEM_IUSE[@]} test
+wifi"
 RESTRICT="!test? ( test )"
 
 SRC_URI+="
@@ -56,7 +57,24 @@ SRC_URI+="
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
+# Convert to BDEPEND once the ebuild goes EAPI-7
 DEPEND="
+	app-arch/unzip
+	app-arch/zip
+	dev-lang/perl
+	sys-apps/findutils
+	>=sys-devel/binutils-2.16.1
+	virtual/pkgconfig
+	>=virtual/rust-1.34.0
+	amd64? (
+		${ASM_DEPEND}
+	)
+	x86? (
+		${ASM_DEPEND}
+	)
+"
+
+CDEPEND="
 	>=app-text/hunspell-1.5.4:=
 	dev-libs/atk
 	>=dev-libs/glib-2.26:2
@@ -95,6 +113,10 @@ DEPEND="
 		>=media-sound/apulse-0.1.9
 	) )
 	startup-notification? ( >=x11-libs/startup-notification-0.8 )
+	system-av1? (
+		>=media-libs/dav1d-0.3.0:=
+		>=media-libs/libaom-1.0.0:=
+	)
 	system-harfbuzz? (
 		>=media-gfx/graphite2-1.3.9-r1
 		>=media-libs/harfbuzz-1.3.3:0=
@@ -113,31 +135,17 @@ DEPEND="
 	)
 "
 RDEPEND="
-	${DEPEND}
+	${CDEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
-# Convert to BDEPEND once the ebuild goes EAPI-7
-DEPEND+="
-	app-arch/unzip
-	app-arch/zip
-	dev-lang/perl
-	sys-apps/findutils
-	>=sys-devel/binutils-2.16.1
-	virtual/pkgconfig
-	>=virtual/rust-1.34.0
-	amd64? (
-		${ASM_DEPEND}
-		virtual/opengl
-	)
-	x86? (
-		${ASM_DEPEND}
-		virtual/opengl
-	)
+DEPEND+="${CDEPEND}
+	amd64? ( virtual/opengl )
+	x86? ( virtual/opengl )
 "
 
 # allow GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
-if [[ -z $GMP_PLUGIN_LIST ]] ; then
+if [[ -z ${GMP_PLUGIN_LIST} ]] ; then
 	GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
 fi
 
@@ -176,6 +184,7 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}"/seamonkey
 
+	rm "${WORKDIR}"/firefox/4000_sysctl.patch || die
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
 	eapply "${WORKDIR}"/firefox
@@ -293,14 +302,14 @@ src_configure() {
 	fi
 
 	# These are enabled by default in all mozilla applications
-	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX}"/usr
-	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX}"/usr
-	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX}"/usr/include --x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX%/}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX%/}"/usr
+	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX%/}"/usr/include --x-libraries="${SYSROOT}${EPREFIX%/}"/usr/$(get_libdir)
 	if use system-libevent ; then
-		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
+		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX%/}"/usr
 	fi
-	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
-	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate '' --prefix="${EPREFIX%/}"/usr
+	mozconfig_annotate '' --libdir="${EPREFIX%/}"/usr/$(get_libdir)
 	mozconfig_annotate 'Gentoo default' --enable-system-hunspell
 	mozconfig_annotate '' --disable-crashreporter
 	mozconfig_annotate 'Gentoo default' --with-system-png
@@ -340,6 +349,7 @@ src_configure() {
 	mozconfig_use_with system-libvpx
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-harfbuzz system-graphite2
+	mozconfig_use_with system-av1
 
 	# Modifications to better support ARM, bug 553364
 	if use neon ; then
@@ -424,7 +434,7 @@ src_compile() {
 
 src_install() {
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
-	DICTPATH="\"${EPREFIX}/usr/share/myspell\""
+	DICTPATH="\"${EPREFIX%/}/usr/share/myspell\""
 
 	local emid
 	cd "${BUILD_OBJ_DIR}" || die
