@@ -42,7 +42,6 @@ DEPEND=">=app-i18n/fcitx-4.2.9:4
 	kde-frameworks/ki18n:5
 	kde-frameworks/kio:5
 	kde-frameworks/kitemviews:5
-	kde-frameworks/knewstuff:5
 	kde-frameworks/kwidgetsaddons:5
 	virtual/libintl
 	x11-libs/libX11
