@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 
-inherit desktop eutils python-single-r1 xdg-utils
+inherit desktop edos2unix python-single-r1 xdg
 
 DESCRIPTION="Python Fitting Assistant - a ship fitting application for EVE Online"
 HOMEPAGE="https://github.com/pyfa-org/Pyfa"
@@ -76,7 +76,7 @@ src_install() {
 	insinto /usr/share/${PN}
 
 	einfo "Creating database ..."
-	python ./db_update.py || die
+	${EPYTHON} ./db_update.py || die
 	doins eve.db
 
 	einfo "Compressing images ..."
@@ -89,12 +89,4 @@ src_install() {
 	doicon -s 32 imgs/gui/pyfa.png
 	newicon -s 64 imgs/gui/pyfa64.png pyfa.png
 	domenu "${FILESDIR}/${PN}.desktop"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
