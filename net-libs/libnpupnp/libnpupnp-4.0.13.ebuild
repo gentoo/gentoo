@@ -10,8 +10,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="client optssdp reuseaddr tools"
-
 RDEPEND="
 	dev-libs/expat
 	net-libs/libmicrohttpd
@@ -30,10 +28,10 @@ src_configure() {
 		--enable-device \
 		--enable-gena \
 		--enable-ipv6 \
-		$(use_enable optssdp) \
-		$(use_enable reuseaddr) \
+		--enable-optssdp \
+		--enable-reuseaddr \
 		--enable-soap \
 		--enable-ssdp \
-		$(use_enable tools) \
+		--enable-tools \
 		--enable-webserver
 }
