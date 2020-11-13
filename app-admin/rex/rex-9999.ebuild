@@ -133,7 +133,7 @@ dzil_src_prep() {
 }
 dzil_env_setup() {
 	# NextRelease noise :(
-	mkdir -p ~/.dzil/
+	mkdir -p ~/.dzil/ || die "mkdir -p ~/.dzil/ failed"
 	local user="$(whoami)"
 	local host="$(hostname)"
 	printf '[%%User]\nname = %s\nemail = %s' "${user}" "${user}@${host}" >> ~/.dzil/config.ini
