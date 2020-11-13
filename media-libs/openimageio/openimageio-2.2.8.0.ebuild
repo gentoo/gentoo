@@ -21,7 +21,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="doc ffmpeg field3d gif jpeg2k opencv opengl openvdb ptex python qt5 raw +truetype ${CPU_FEATURES[@]%:*}"
+IUSE="dicom doc ffmpeg field3d gif jpeg2k opencv opengl openvdb ptex python qt5 raw +truetype ${CPU_FEATURES[@]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # test data in separate repo
@@ -50,9 +50,9 @@ RDEPEND="
 	media-libs/opencolorio:=
 	>=media-libs/openexr-2.2.0-r2:=
 	media-libs/tiff:0=
-	sci-libs/dcmtk
 	sys-libs/zlib:=
 	virtual/jpeg:0
+	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
 	field3d? ( media-libs/Field3D:= )
 	gif? ( media-libs/giflib:0= )
@@ -115,6 +115,7 @@ src_configure() {
 		-DBUILD_DOCS=$(usex doc)
 		-DINSTALL_DOCS=$(usex doc)
 		-DSTOP_ON_WARNING=OFF
+		-DUSE_DCMTK=$(usex dicom)
 		-DUSE_EXTERNAL_PUGIXML=ON
 		-DUSE_JPEGTURBO=ON
 		-DUSE_NUKE=OFF # not in Gentoo
