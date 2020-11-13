@@ -15,7 +15,7 @@ else
 	#libraspberrypi-bin-dbgsym_2+git20201022~151804+e432bc3-1_arm64.deb
 	#"e432bc3" is the git commit to plug in below.
 	GIT_COMMIT="e432bc3"
-	SRC_URI="https://github.com/raspberrypi/userland/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/raspberrypi/userland/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~arm ~arm64"
 	S="${WORKDIR}/raspberrypi-userland-${GIT_COMMIT}"
 fi
