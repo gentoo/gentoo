@@ -21,7 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND+="dev-lang/duktape"
+# Upstream uses bundled single-source distributable Duktape.
+#RDEPEND+="dev-lang/duktape"
 
 ruby_add_bdepend "
 	dev-ruby/rake-compiler
