@@ -25,7 +25,8 @@ KEYWORDS="~amd64"
 # in the number of supported keywords.
 RESTRICT="test"
 
-RDEPEND+="dev-lang/duktape"
+# Upstream uses bundled single-source distributable Duktape.
+#RDEPEND+="dev-lang/duktape"
 
 ruby_add_bdepend "dev-ruby/rake-compiler"
 
