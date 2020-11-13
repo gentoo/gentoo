@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DESCRIPTION=general logout scripts for wayland compositors
+EAPI=7
+HOMEPAGE=https://github.com/soreau/wayland-logout
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=sys-process/lsof
+SLOT=0
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=e6dcb8ffa05f2a739250cf98d8204bae
