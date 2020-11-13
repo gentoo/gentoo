@@ -962,7 +962,7 @@ app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/debian-archive-keyring 2018.1 2019.1 2019.1-r1: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.6.5: a client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
-app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7: Small RSA key management package, based on OpenSSL
+app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7 3.0.8: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
 app-crypt/eid-mw 4.4.27 5.0.8 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.5-r1: Entropy Key userspace daemon
@@ -8744,8 +8744,8 @@ dev-python/pypugjs 5.9.5: Pug (Jade) syntax adapter for Django, Jinja2 and Mako 
 dev-python/pypy 7.3.1-r3 7.3.2 7.3.3_rc1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.1 7.3.2 7.3.3_rc1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.1_p1 7.3.2 7.3.3_rc1: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37 7.3.3_rc1: A fast, compliant alternative implementation of the Python (3.6) language
-dev-python/pypy3-exe 7.3.1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1: PyPy3 executable (build from source)
+dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37 7.3.3_rc1 7.3.3_rc1_p37: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3-exe 7.3.1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1 7.3.3_rc1_p37: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.1_p1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
@@ -13785,7 +13785,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.26 0.22.1-r1 0.22.2-r1: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.26 0.22.1-r1 0.22.2-r1 0.22.3: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -17006,7 +17006,7 @@ sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verificati
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 17.0.0 18.0.0 2020.1.9999 2020.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1 1.90.2: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1 1.90.2 1.90.3: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
