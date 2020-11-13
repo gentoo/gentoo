@@ -9,8 +9,8 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.0.16"
-MY_PV_RPL="0.0.17"
+MY_PV_OBJ="1.0.18"
+MY_PV_RPL="0.0.19"
 MY_PV_TS="0.1.2c"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="dedicated libressl +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	)
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0= )
-	scripting? ( dev-lang/duktape )
+	scripting? ( dev-lang/duktape:= )
 	truetype? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
@@ -58,6 +58,7 @@ RDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
+	dev-cpp/nlohmann_json
 	test? ( dev-cpp/gtest )
 "
 

@@ -38,7 +38,7 @@ RDEPEND="
 		x11-libs/gtk+:2 )
 	javascript? (
 		>=dev-libs/nsgenbind-0.7
-		duktape? ( dev-lang/duktape )
+		duktape? ( dev-lang/duktape:= )
 		!duktape? ( dev-lang/spidermonkey:0= )
 	)
 	jpeg? ( >=virtual/jpeg-0-r2:0 )
