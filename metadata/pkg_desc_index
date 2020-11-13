@@ -495,7 +495,7 @@ app-accessibility/at-spi2-atk 2.34.2 2.38.0: Gtk module for bridging AT-SPI to A
 app-accessibility/at-spi2-core 2.34.0 2.36.0 2.38.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 6.1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21-r1: Input assistive technology intended for switch and pointer users
-app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client that is 100% text based
+app-accessibility/edbrowse 3.7.5.1-r1: Combination editor, browser, and mail client that is 100% text based
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
@@ -5050,7 +5050,7 @@ dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2 2.5.1: A little language that compiles into javascript
 dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
-dev-lang/duktape 2.4.0 2.5.0-r1: Embeddable Javascript engine
+dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.1 1.11.2: Elixir programming language
 dev-lang/erlang 23.0.3 23.0.4 23.1.1 23.1.2: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
@@ -5168,7 +5168,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r2 1.73.0-r1 1.74.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.15.0 2.16.0 2.17.1: C++ crypto library
+dev-libs/botan 2.15.0 2.16.0 2.17.2: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.20.1: Blocking, shuffling and lossless compression library
@@ -11603,7 +11603,7 @@ games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
 games-simulation/micropolis 1.0_p20180313: Free version of the well-known city building simulation
-games-simulation/openrct2 0.3.0 0.3.2 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
+games-simulation/openrct2 0.3.0-r1 0.3.2-r1 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
 games-simulation/openttd 1.10.3 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator
@@ -15047,7 +15047,7 @@ net-misc/gallery-dl 1.15.2-r1 9999: Download image galleries and collections fro
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.6.1 9999: UPnP Media Server
+net-misc/gerbera 1.6.1-r1 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
@@ -17969,7 +17969,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web b
 www-client/microsoft-edge-dev 88.0.692.0: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
-www-client/netsurf 3.10-r3: a free, open source web browser
+www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 72.0.3815.320: A fast and secure web browser
 www-client/opera-beta 72.0.3815.49 72.0.3815.86 72.0.3815.133: A fast and secure web browser
 www-client/opera-developer 73.0.3820.0 73.0.3827.0 73.0.3834.0 73.0.3841.0: A fast and secure web browser
