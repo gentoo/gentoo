@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils multilib-minimal preserve-libs toolchain-funcs
+inherit multilib-minimal preserve-libs toolchain-funcs
 
 DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
 HOMEPAGE="http://isl.gforge.inria.fr/"
