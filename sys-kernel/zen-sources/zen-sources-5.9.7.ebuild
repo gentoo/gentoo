@@ -44,7 +44,6 @@ src_prepare() {
 	eapply $"${FILESDIR}/CVE-2020-8694.patch"
 }
 
-
 pkg_postrm() {
 	kernel-2_pkg_postrm
 }
