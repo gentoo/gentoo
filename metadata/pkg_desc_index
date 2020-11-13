@@ -587,7 +587,7 @@ app-admin/glance 20.0.0 20.0.1 21.0.0 2020.1.9999 2020.2.9999: Services for disc
 app-admin/gnome-abrt 1.3.6: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
-app-admin/gopass 1.9.2 1.10.1 1.10.1-r2: a simple but powerful password manager for the terminal
+app-admin/gopass 1.10.1-r2: a simple but powerful password manager for the terminal
 app-admin/graylog 3.3.8: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
@@ -5587,7 +5587,7 @@ dev-libs/rinutils 0.4.0 0.6.0: Set of C headers containing macros and static fun
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.8.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.7.0 3.8.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.8.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.8.0 9999: Radeon Open Compute Runtime
@@ -17033,7 +17033,6 @@ sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during 
 sys-auth/pam_mount 2.16 2.16-r1 2.16-r2: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.3.1: PAM module for authenticating against PKCS#11 tokens
-sys-auth/pam_passwdqc 1.3.0: Stub ebuild to help migrate to newer package name
 sys-auth/pam_require 0.7-r1: Allows you to require a special group or user to access a service
 sys-auth/pam_skey 1.1.5-r6: PAM interface for the S/Key authentication system
 sys-auth/pam_smb 2.0.0_rc6-r2: PAM module for authenticating against an SMB (such as the Win_x families) server
@@ -17497,7 +17496,7 @@ sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.9.8: Linux kernel built from vanilla u
 sys-kernel/vanilla-sources 4.4.243 4.9.243 4.14.206 4.19.157 5.4.77 5.8.17 5.9.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
-sys-kernel/zen-sources 5.4.15 5.8.10: The Zen Kernel Live Sources
+sys-kernel/zen-sources 5.9.7: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
