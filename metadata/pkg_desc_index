@@ -8741,11 +8741,11 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.4.2-r1 2.6.1_p1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 8: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pypy 7.3.1-r3 7.3.2: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-exe 7.3.1 7.3.2: PyPy executable (build from source)
+dev-python/pypy 7.3.1-r3 7.3.2 7.3.3_rc1: A fast, compliant alternative implementation of the Python language
+dev-python/pypy-exe 7.3.1 7.3.2 7.3.3_rc1: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.1_p1 7.3.2: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37: A fast, compliant alternative implementation of the Python (3.7) language
-dev-python/pypy3-exe 7.3.1 7.3.2-r1 7.3.2_p37-r1: PyPy3 executable (build from source)
+dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37 7.3.3_rc1: A fast, compliant alternative implementation of the Python (3.6) language
+dev-python/pypy3-exe 7.3.1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.1_p1 7.3.2-r1 7.3.2_p37-r1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
@@ -8820,7 +8820,7 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1 5.0.1: Client library for Barbican API.
 dev-python/python-blazarclient 2.1.0 3.1.1: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 2.5.0 3.0.0 3.0.1: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 2.5.0 3.0.0 3.0.1 3.0.2: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2 7.2.0: A client for the OpenStack Cinder API
@@ -9086,7 +9086,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.21 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.5: The Scientific Python Development Environment
@@ -9188,7 +9188,7 @@ dev-python/uranium 4.6.1 4.7.0: A Python framework for building 3D printing rela
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
-dev-python/urllib3 1.24.2-r1 1.25.10-r1 1.25.11 1.26.0 1.26.1: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.24.2-r1 1.25.10-r1 1.25.11 1.26.0 1.26.1 1.26.2: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
@@ -13718,7 +13718,7 @@ media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.5: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
 media-sound/guayadeque 0.4.6 9999: Music management program designed for all music enthusiasts
-media-sound/guitarix 0.39.0 0.40.0 0.41.0 9999: Virtual guitar amplifier for Linux
+media-sound/guitarix 0.41.0 9999: Virtual guitar amplifier for Linux
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r2: Opensource software organ
