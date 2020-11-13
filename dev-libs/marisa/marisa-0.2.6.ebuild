@@ -6,7 +6,7 @@ PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_USE_SETUPTOOLS="no"
 
-inherit autotools distutils-r1
+inherit autotools distutils-r1 toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
