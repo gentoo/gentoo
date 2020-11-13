@@ -22,10 +22,10 @@ REQUIRED_USE="daemon? ( filecaps )"
 # https://marlam.de/msmtp/news/openssl-discouraged/
 DEPEND="
 	gnome-keyring? ( app-crypt/libsecret )
+	idn? ( net-dns/libidn2:= )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
 	ssl? ( net-libs/gnutls[idn?] )
-	!ssl? ( idn? ( net-dns/libidn2:= ) )
 "
 
 RDEPEND="${DEPEND}
