@@ -13,10 +13,6 @@
 		<email>kentnl@gentoo.org</email>
 		<name>Kent Fredric</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">RexOps/Rex</remote-id>
 		<remote-id type="cpan">Rex</remote-id>
