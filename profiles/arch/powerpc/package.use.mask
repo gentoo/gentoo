@@ -70,10 +70,6 @@ app-admin/syslog-ng test
 # iasl is stable on ppc
 sys-firmware/seabios -debug
 
-# Eugene Bright <eugene@bright.gdn> (2019-09-09)
-# Missing keyword on dev-embedded/libjaylink
-sys-apps/flashrom jlink-spi
-
 # Conrad Kostecki <conikost@gentoo.org> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
 app-misc/lcdproc freetype lcd_devices_glcd png
