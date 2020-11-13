@@ -9086,7 +9086,7 @@ dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search resu
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.21 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.5: The Scientific Python Development Environment
@@ -17476,8 +17476,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.4.76 5.4.77 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6 5.9.7 5.9.8: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.73 5.4.73-r1 5.4.74 5.4.74-r1 5.4.75 5.4.75-r1 5.4.76 5.4.76-r1 5.4.77 5.4.77-r1 5.8.16 5.8.16-r1 5.8.17 5.8.17-r1 5.8.18 5.8.18-r1 5.9.1 5.9.1-r1 5.9.2 5.9.2-r1 5.9.3 5.9.3-r1 5.9.4 5.9.4-r1 5.9.6 5.9.6-r1 5.9.7 5.9.7-r1 5.9.8 5.9.8-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.9.8: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.4.242 4.4.243 4.9.236 4.9.240 4.9.241 4.9.242 4.9.243 4.14.198 4.14.202 4.14.203 4.14.204 4.14.205 4.14.206 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 4.19.156 4.19.157 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.4.76 5.4.77 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6 5.9.7 5.9.8: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17492,7 +17492,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4: Linux kernel fork that
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.231_p202 4.4.236_p207 4.9.232_p150 4.9.236_p154 4.14.192_p91 4.14.198_p96 4.19.135_p60 4.19.142_p63 5.4.54_p33 5.4.66_p38 5.6.19_p11 5.6.19_p12: Full Linux 5.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.73 5.4.74 5.4.75 5.4.76 5.4.77 5.8.16 5.8.17 5.8.18 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6 5.9.7 5.9.8: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.9.8: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.243 4.9.243 4.14.206 4.19.157 5.4.77 5.8.17 5.9.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
