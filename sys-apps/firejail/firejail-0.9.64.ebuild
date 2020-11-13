@@ -48,6 +48,11 @@ src_prepare() {
 	if use contrib; then
 		python_fix_shebang -f contrib/*.py
 	fi
+
+	# some tests were missing from this release's tarball
+	if use test; then
+		sed -i -r -e 's/^(test:.*) test-private-lib (.*)/\1 \2/; s/^(test:.*) test-fnetfilter (.*)/\1 \2/' Makefile.in || die
+	fi
 }
 
 src_configure() {
