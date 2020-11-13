@@ -186,3 +186,18 @@ src_install()
 		install_name_tool -id "${libmac64}" "${D}${libmac64}"
 	fi
 }
+
+pkg_postinst() {
+	[[ -z ${REPLACING_VERSIONS} ]] && return
+	has_version "<sys-apps/portage-3.0.9" && return
+
+	einfo "After ${CATEGORY}/${PN} is updated it is recommended to rebuild"
+	einfo "all packages compiled with previous versions of ${CATEGORY}/${PN}"
+	einfo "due to the static linking nature of go."
+	einfo "If this is not done, the packages compiled with the older"
+	einfo "version of the compiler will not be updated until they are"
+	einfo "updated individually, which could mean they will have"
+	einfo "vulnerabilities."
+	einfo "Run 'emerge @go-rebuild' to rebuild all 'go' packages"
+	einfo "See https://bugs.gentoo.org/752153 for more info"
+}
