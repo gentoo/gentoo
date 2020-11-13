@@ -11,7 +11,7 @@ SRC_URI="https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 UNBI_LINGUAS="
 	am ar ast be bg bn ca cs da de el eo es et eu fa fi fo fr gl he hr hu id it
