@@ -24,6 +24,12 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND=">=sys-devel/llvm-roc-${PV}:="
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	sed -e "s:amdgcn/bitcode:lib/amdgcn/bitcode:" -i "${S}/cmake/OCL.cmake" || die
+	sed -e "s:amdgcn/bitcode:lib/amdgcn/bitcode:" -i "${S}/cmake/Packages.cmake" || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/llvm"
