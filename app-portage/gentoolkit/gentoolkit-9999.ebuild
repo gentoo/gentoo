@@ -67,7 +67,6 @@ pkg_postinst() {
 		elog "    app-admin/eclean-kernel"
 		elog "    app-portage/diffmask"
 		elog "    app-portage/flaggie"
-		elog "    app-portage/install-mask"
 		elog "    app-portage/portpeek"
 		elog "    app-portage/smart-live-rebuild"
 	fi
