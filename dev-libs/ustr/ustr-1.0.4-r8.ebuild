@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.and.org/pub/james/ustr/${PV}/${P}.tar.bz2"
 LICENSE="|| ( BSD-2 MIT LGPL-2 )"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
-IUSE="static-libs ustr-import"
+IUSE="ustr-import"
 
 DOCS=(ChangeLog README README-DEVELOPERS AUTHORS NEWS TODO)
 
@@ -29,7 +29,7 @@ src_prepare() {
 
 _emake() {
 	emake \
-		USE_STATIC=$(usex static-libs) \
+		USE_STATIC="no" \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
