@@ -184,6 +184,7 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}"/seamonkey
 
+	rm "${WORKDIR}"/firefox/4000_sysctl.patch || die
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
 	eapply "${WORKDIR}"/firefox
