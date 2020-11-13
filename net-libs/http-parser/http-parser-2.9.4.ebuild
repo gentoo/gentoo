@@ -10,7 +10,7 @@ SRC_URI="https://github.com/nodejs/http-parser/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0/2.9.0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x64-macos ~x64-solaris"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-non-x86-test.patch
