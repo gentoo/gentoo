@@ -13,10 +13,6 @@ SRC_URI+="
 		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
 			-> ${MY_P}.amd64.xpak
 	)
-	arm64? (
-		https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
-			-> ${MY_P}.arm64.xpak
-	)
 	x86? (
 		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
 			-> ${MY_P}.x86.xpak
@@ -24,7 +20,7 @@ SRC_URI+="
 S=${WORKDIR}
 
 LICENSE="GPL-2"
-KEYWORDS="~arm64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}
