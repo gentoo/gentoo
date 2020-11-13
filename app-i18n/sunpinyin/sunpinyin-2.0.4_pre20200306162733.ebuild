@@ -31,7 +31,8 @@ IUSE=""
 
 BDEPEND="dev-lang/perl
 	virtual/pkgconfig"
-DEPEND="dev-db/sqlite:3"
+DEPEND="dev-db/sqlite:3
+	virtual/libiconv"
 RDEPEND="${DEPEND}"
 
 if [[ "${PV}" == *_pre* ]]; then
