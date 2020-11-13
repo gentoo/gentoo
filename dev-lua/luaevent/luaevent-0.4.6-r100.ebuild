@@ -14,12 +14,13 @@ SRC_URI="https://github.com/harningt/luaevent/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="dev-libs/libevent:0="
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
+RDEPEND="
+	${LUA_DEPS}
+	dev-libs/libevent:0=
 "
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
