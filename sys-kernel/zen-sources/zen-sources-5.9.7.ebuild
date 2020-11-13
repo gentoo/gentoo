@@ -37,6 +37,14 @@ pkg_setup() {
 	kernel-2_pkg_setup
 }
 
+src_prepare() {
+	default
+
+	kernel-2_src_prepare
+	eapply $"${FILESDIR}/CVE-2020-8694.patch"
+}
+
+
 pkg_postrm() {
 	kernel-2_pkg_postrm
 }
