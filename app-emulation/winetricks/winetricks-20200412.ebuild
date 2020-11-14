@@ -29,6 +29,9 @@ SLOT="0"
 IUSE="gtk kde rar test"
 RESTRICT="!test? ( test )"
 
+# dev-util/shellcheck is not available for x86
+RESTRICT+=" x86? ( test )"
+
 BDEPEND="
 	test? (
 		dev-python/bashate
