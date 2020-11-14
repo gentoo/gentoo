@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit desktop xdg-utils
+inherit desktop xdg
 
 DESCRIPTION="Manage your collections of movies, games, books, music and more"
 HOMEPAGE="http://www.gcstar.org/"
@@ -64,16 +64,4 @@ src_install() {
 	doins share/applications/gcstar.xml
 
 	dodoc CHANGELOG README README.fr
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mime_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mime_database_update
-	xdg_icon_cache_update
 }
