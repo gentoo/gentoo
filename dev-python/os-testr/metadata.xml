@@ -5,6 +5,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">os-testr</remote-id>
 		<remote-id type="github">openstack/os-testr</remote-id>
