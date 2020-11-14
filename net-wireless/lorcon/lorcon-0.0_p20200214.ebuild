@@ -50,7 +50,7 @@ src_prepare() {
 }
 
 src_configure() {
-	default_src_configure
+	econf --disable-static
 }
 
 src_compile() {
@@ -68,5 +68,5 @@ src_install() {
 		cd pylorcon2 || die
 		distutils-r1_src_install
 	fi
-	find "${D}" -xtype f -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
