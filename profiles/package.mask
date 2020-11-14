@@ -701,14 +701,9 @@ app-admin/amazon-ec2-init
 # Masked slotted lua for testing
 # William Hubbs <williamh@gentoo.org> (2016-08-07)
 # Taking this mask since Mabi is retired
-# Rafael Martins <rafaelmartins@gentoo.org> (2016-12-04)
-# Adding Lua 5.3 to mask
+# consolidating all slotted lua masks
 app-eselect/eselect-lua
-=dev-lang/lua-5.1.5-r103
-=dev-lang/lua-5.1.5-r104
-=dev-lang/lua-5.1.5-r105
-=dev-lang/lua-5.2.4-r2
-=dev-lang/lua-5.3.5-r2
+>=dev-lang/lua-5.1.5-r100
 
 # Samuli Suominen <ssuominen@gentoo.org> (2012-03-06)
 # Masked for testing since this is known to break nearly
