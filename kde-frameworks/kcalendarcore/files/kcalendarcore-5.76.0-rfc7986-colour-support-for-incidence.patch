@@ -1,0 +1,141 @@
+From b567a3af18a19009a1e0fc637bdd004ce4ca857f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 8 Nov 2020 18:07:09 +0100
+Subject: [PATCH] Revert Revert "Add COLOR property serialization from
+ RFC7986."
+
+The raised minimum dependency is no problem for us.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/icalformat_p.cpp | 10 ++++++++++
+ src/incidence.cpp    | 21 +++++++++++++++++++++
+ src/incidence.h      | 16 ++++++++++++++++
+ src/incidencebase.h  |  3 ++-
+ 4 files changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/src/icalformat_p.cpp b/src/icalformat_p.cpp
+index 51ebda04a..aa7b526d9 100644
+--- a/src/icalformat_p.cpp
++++ b/src/icalformat_p.cpp
+@@ -530,6 +530,12 @@ void ICalFormatImpl::writeIncidence(icalcomponent *parent,
+         icalcomponent_add_property(parent, icalproperty_new_class(secClass));
+     }
+ 
++    // color
++    if (!incidence->color().isEmpty()) {
++        icalcomponent_add_property(
++            parent, icalproperty_new_color(incidence->color().toUtf8().constData()));
++    }
++
+     // geo
+     if (incidence->hasGeo()) {
+         icalgeotype geo;
+@@ -1881,6 +1887,10 @@ void ICalFormatImpl::readIncidence(icalcomponent *parent, const Incidence::Ptr &
+             incidence->addAttachment(readAttachment(p));
+             break;
+ 
++        case ICAL_COLOR_PROPERTY:
++            incidence->setColor(QString::fromUtf8(icalproperty_get_color(p)));
++            break;
++
+         default:
+             // TODO: do something about unknown properties?
+             break;
+diff --git a/src/incidence.cpp b/src/incidence.cpp
+index db0d3255b..ab13048d5 100644
+--- a/src/incidence.cpp
++++ b/src/incidence.cpp
+@@ -73,6 +73,7 @@ public:
+         , mPriority(p.mPriority)
+         , mStatus(p.mStatus)
+         , mSecrecy(p.mSecrecy)
++        , mColor(p.mColor)
+         , mDescriptionIsRich(p.mDescriptionIsRich)
+         , mSummaryIsRich(p.mSummaryIsRich)
+         , mLocationIsRich(p.mLocationIsRich)
+@@ -150,6 +151,7 @@ public:
+     int mPriority;                      // priority: 1 = highest, 2 = less, etc.
+     Status mStatus;                     // status
+     Secrecy mSecrecy;                   // secrecy
++    QString mColor;                     // background color
+     bool mDescriptionIsRich = false;            // description string is richtext.
+     bool mSummaryIsRich = false;                // summary string is richtext.
+     bool mLocationIsRich = false;               // location string is richtext.
+@@ -284,6 +286,7 @@ bool Incidence::equals(const IncidenceBase &incidence) const
+         && secrecy() == i2->secrecy()
+         && priority() == i2->priority()
+         && stringCompare(location(), i2->location())
++        && stringCompare(color(), i2->color())
+         && stringCompare(schedulingID(), i2->schedulingID())
+         && recurrenceId() == i2->recurrenceId()
+         && thisAndFuture() == i2->thisAndFuture();
+@@ -542,6 +545,24 @@ QString Incidence::relatedTo(RelType relType) const
+     return d->mRelatedToUid.value(relType);
+ }
+ 
++void Incidence::setColor(const QString &colorName)
++{
++    if (mReadOnly) {
++        return;
++    }
++    if (!stringCompare(d->mColor, colorName)) {
++        update();
++        d->mColor = colorName;
++        setFieldDirty(FieldColor);
++        updated();
++    }
++}
++
++QString Incidence::color() const
++{
++    return d->mColor;
++}
++
+ // %%%%%%%%%%%%  Recurrence-related methods %%%%%%%%%%%%%%%%%%%%
+ 
+ Recurrence *Incidence::recurrence() const
+diff --git a/src/incidence.h b/src/incidence.h
+index 622ddb6f5..5ea625042 100644
+--- a/src/incidence.h
++++ b/src/incidence.h
+@@ -397,6 +397,22 @@ public:
+     */
+     Q_REQUIRED_RESULT QString relatedTo(RelType relType = RelTypeParent) const;
+ 
++    /**
++      Set the incidence color, as added in RFC7986.
++
++      @param colorName a named color as defined in CSS3 color name, see
++       https://www.w3.org/TR/css-color-3/#svg-color.
++      @since: 5.76
++     */
++    void setColor(const QString &colorName);
++
++    /**
++      Returns the color, if any is defined, for this incidence.
++
++      @since: 5.76
++     */
++    Q_REQUIRED_RESULT QString color() const;
++
+ // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ // %%%%%  Convenience wrappers for property handling
+ // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+diff --git a/src/incidencebase.h b/src/incidencebase.h
+index 2dcac9a34..c079c0df2 100644
+--- a/src/incidencebase.h
++++ b/src/incidencebase.h
+@@ -185,7 +185,8 @@ public:
+         FieldComment,         ///> Field representing the COMMENT component.
+         FieldUid,             ///> Field representing the UID component.
+         FieldUnknown,         ///> Something changed. Always set when you use the assignment operator.
+-        FieldUrl              ///> Field representing the URL component.
++        FieldUrl,             ///> Field representing the URL component.
++        FieldColor            ///> Field representing the COLOR component.
+     };
+ 
+     /**
+-- 
+2.29.2
+
