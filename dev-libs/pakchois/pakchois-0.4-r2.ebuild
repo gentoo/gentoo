@@ -16,5 +16,11 @@ IUSE="nls"
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		$(use_enable nls)
+		$(use_enable nls) \
+		--disable-static
+}
+
+multilib_src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
