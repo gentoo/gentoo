@@ -29,5 +29,12 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with gtk gtk3)
+	econf \
+		$(use_with gtk gtk3) \
+		--disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
