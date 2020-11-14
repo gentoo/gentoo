@@ -10,3 +10,12 @@ SRC_URI="http://xmailserver.org/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/1"
 KEYWORDS="amd64 arm arm64 ppc64 x86"
+
+src_configure() {
+	econf --disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}
