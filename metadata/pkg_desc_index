@@ -59,6 +59,7 @@ acct-group/fhem 0: A group for the FHEM perl server for house automation
 acct-group/fingerprint 0: System group: fingerprint
 acct-group/flatpak 0: System group: flatpak
 acct-group/flows 0: gid for net-analyzer/flow-tools
+acct-group/freenet 0: Group for net-p2p/freenet
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/fvwm-crystal 0: System group: fvwm-crystal
 acct-group/gamemode 0: Group for the system-wide games-util/gamemode resource group
@@ -313,6 +314,7 @@ acct-user/fetchmail 0: User for net-mail/fetchmail
 acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/flatpak 0: System user: flatpak
 acct-user/flows 0: uid for net-analyzer/flow-tools
+acct-user/freenet 0: User for net-p2p/freenet
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/geneweb 0: user id for geneweb daemon
 acct-user/gerbera 0: Gerbera UPnP Media Server user
@@ -14782,7 +14784,7 @@ net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libosmocore 0.8.0 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
-net-libs/libpcap 1.9.1 1.9.1-r3 1.10.0_pre 9999: A system-independent library for user-level network packet capture
+net-libs/libpcap 1.9.1-r3 1.10.0_pre 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8 0.8-r1: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
@@ -15334,7 +15336,7 @@ net-p2p/deluge 2.0.3-r4 2.0.3-r5 2.0.3-r6 2.0.3-r7 2.0.3-r8 9999: BitTorrent cli
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.10 2.2.10-r100 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
-net-p2p/freenet 0.7.5_p1484 0.7.5_p1486: An encrypted network without censorship
+net-p2p/freenet 0.7.5_p1484 0.7.5_p1486 0.7.5_p1488: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.4.23 0.5.1: Main implementation of IPFS
