@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,5 +36,11 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--without-valgrind
+		--without-valgrind \
+		--disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils ltprune multilib
+inherit multilib
 
 MY_P=${P/.0/}
 
@@ -36,7 +36,10 @@ PATCHES=(
 )
 
 src_configure() {
-	econf $(use_enable debug) --with-x
+	econf \
+		$(use_enable debug) \
+		--with-x \
+		--disable-static
 }
 
 src_install() {
@@ -46,12 +49,12 @@ src_install() {
 
 	emake -j1 DESTDIR="${D}" install
 
-	prune_libtool_files
-
 	dodoc AUTHORS README TODO
 
 	keepdir /usr/$(get_libdir)/lineakd/plugins
 
 	insinto /etc/lineak
 	doins lineakd.conf.example lineakd.conf.kde.example
+
+	find "${ED}" -name '*.la' -delete || die
 }

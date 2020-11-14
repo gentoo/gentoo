@@ -1,0 +1,28 @@
+From d06ffbc7d2e213e3d3743b1959ac774340bfe1d7 Mon Sep 17 00:00:00 2001
+From: Jakov Smolic <jakov.smolic@sartura.hr>
+Date: Sun, 20 Sep 2020 22:10:37 +0200
+Subject: [PATCH] src: CMakeLists: disable static libs
+
+Signed-off-by: Jakov Smolic <jakov.smolic@sartura.hr>
+---
+ src/CMakeLists.txt | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 121cdb4..837e959 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,9 +1,6 @@
+ include_directories(${libreplaygain_SOURCE_DIR}/include)
+ 
+-add_library(replaygain-static STATIC gain_analysis)
+-set_target_properties(replaygain-static PROPERTIES OUTPUT_NAME replaygain CLEAN_DIRECT_OUTPUT 1)
+-
+ add_library(replaygain-shared SHARED gain_analysis)
+ set_target_properties(replaygain-shared PROPERTIES OUTPUT_NAME replaygain CLEAN_DIRECT_OUTPUT 1 VERSION 1.0.0 SOVERSION 1)
+ 
+-install(TARGETS replaygain-static replaygain-shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
++install(TARGETS replaygain-shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
+-- 
+2.26.2
+

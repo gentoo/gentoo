@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,6 +29,11 @@ src_configure() {
 	econf \
 		$(use_with berkdb db) \
 		$(use_enable nls) \
-		$(use_with readline)
+		$(use_with readline) \
+		--disable-static
+}
+
+src_install() {
 	default
+	find "${ED}" -name '*.la' -delete || die
 }

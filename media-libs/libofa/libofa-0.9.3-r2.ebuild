@@ -34,10 +34,11 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
 		ac_cv_lib_expat_XML_ExpatVersion=yes \
-		ac_cv_lib_curl_curl_global_init=yes
+		ac_cv_lib_curl_curl_global_init=yes \
+		--disable-static
 }
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

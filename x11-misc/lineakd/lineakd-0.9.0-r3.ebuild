@@ -36,7 +36,10 @@ PATCHES=(
 )
 
 src_configure() {
-	econf $(use_enable debug) --with-x
+	econf \
+		$(use_enable debug) \
+		--with-x \
+		--disable-static
 }
 
 src_install() {

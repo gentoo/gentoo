@@ -17,7 +17,7 @@ SRC_URI="http://libguestfs.org/download/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ocaml readline +perl python test static-libs ruby"
+IUSE="ocaml readline +perl python test ruby"
 
 RDEPEND="
 	virtual/libiconv
@@ -82,6 +82,7 @@ src_configure() {
 		--disable-ruby
 		$(use_enable python)
 		--disable-rpath
+		--disable-static
 		)
 
 	econf ${myeconfargs[@]}
@@ -105,4 +106,6 @@ src_install() {
 	if use perl; then
 		perl_delete_localpod
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

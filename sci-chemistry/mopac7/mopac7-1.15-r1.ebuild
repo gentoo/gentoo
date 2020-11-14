@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux"
-IUSE="gmxmopac7 static-libs"
+IUSE="gmxmopac7"
 
 DEPEND="dev-libs/libf2c"
 RDEPEND="${DEPEND}"
@@ -36,6 +36,10 @@ src_prepare() {
 	append-fflags -std=legacy -fno-automatic
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	emake
 	if use gmxmopac7; then
@@ -46,7 +50,6 @@ src_compile() {
 		cp -f "${DISTDIR}"/gmxmop.f "${DISTDIR}"/dcart.f . || die
 		sed "s:GENTOOVERSION:${PV}:g" -i Makefile
 		emake FC=$(tc-getFC)
-		use static-libs && emake static
 	fi
 }
 
@@ -60,6 +63,7 @@ src_install() {
 	if use gmxmopac7; then
 		cd "${S}"/fortran/libgmxmopac7
 		dolib.so libgmxmopac7.so*
-		use static-libs && dolib.a libgmxmopac7.a
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

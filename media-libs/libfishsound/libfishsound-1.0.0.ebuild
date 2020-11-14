@@ -33,7 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
+	local myconf="--disable-static"
 	use flac || myconf="${myconf} --disable-flac"
 	use speex || myconf="${myconf} --disable-speex"
 
@@ -44,4 +44,5 @@ src_install() {
 	emake DESTDIR="${D}" \
 		docdir="${D}/usr/share/doc/${PF}" install
 	dodoc AUTHORS ChangeLog README
+	find "${ED}" -name '*.la' -delete || die
 }

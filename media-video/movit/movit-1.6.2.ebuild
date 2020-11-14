@@ -27,10 +27,19 @@ RDEPEND="media-libs/mesa[X(+)]
 	"
 DEPEND="${RDEPEND}"
 
+src_configure() {
+	econf --disable-static
+}
+
 src_compile() {
 	GTEST_DIR="${WORKDIR}/gtest-1.7.0" emake
 }
 
 src_test() {
 	GTEST_DIR="${WORKDIR}/gtest-1.7.0" emake check
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

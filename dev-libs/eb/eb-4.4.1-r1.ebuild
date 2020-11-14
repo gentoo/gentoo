@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="EB is a C library and utilities for accessing CD-ROM books"
 HOMEPAGE="http://www.sra.co.jp/people/m-kasahr/eb/"
@@ -14,12 +14,9 @@ IUSE="ipv6 nls threads"
 
 RDEPEND="
 	sys-libs/zlib
-	nls? ( virtual/libintl )
-"
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS ChangeLog{,.0,.1,.2} NEWS README )
 
@@ -28,5 +25,11 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable nls) \
 		$(use_enable threads pthread) \
-		--with-pkgdocdir=/usr/share/doc/${PF}/html
+		--with-pkgdocdir="${EPREFIX}"/usr/share/doc/${PF}/html \
+		--disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
