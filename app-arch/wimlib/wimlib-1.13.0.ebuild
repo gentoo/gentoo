@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,6 +55,7 @@ src_configure() {
 		$(use_enable cpu_flags_x86_ssse3 ssse3-sha1)
 		$(use_with openssl libcrypto)
 		$(use_enable threads multithreaded-compression)
+		--disable-static
 	)
 	has test ${FEATURES} && myeconfargs+=( --enable-test-support )
 	ac_cv_prog_NASM="$(usex yasm yasm nasm)" \
@@ -64,4 +65,9 @@ src_configure() {
 src_compile() {
 	emake
 	pax-mark m "${S}"/.libs/wimlib-imagex
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
