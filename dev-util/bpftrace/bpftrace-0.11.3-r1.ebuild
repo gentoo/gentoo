@@ -25,7 +25,7 @@ IUSE="test"
 
 COMMON_DEPEND="
 	dev-util/systemtap
-	<dev-libs/libbpf-0.2:=
+	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
 	<=sys-devel/llvm-12:=[llvm_targets_BPF(+)]
 	<=sys-devel/clang-12:=
