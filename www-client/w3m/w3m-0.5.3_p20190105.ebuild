@@ -26,7 +26,15 @@ RDEPEND="dev-libs/boehm-gc:=
 		x11-libs/libXdmcp
 		x11-libs/libXext
 	)
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf[X?] )
+	gdk-pixbuf? (
+		x11-libs/gdk-pixbuf
+		X? (
+			|| (
+				x11-libs/gdk-pixbuf-xlib
+				<x11-libs/gdk-pixbuf-2.42[X]
+			)
+		)
+	)
 	!gdk-pixbuf? (
 		imlib? ( media-libs/imlib2[X?] )
 	)
