@@ -27,6 +27,13 @@ RDEPEND="
 	>=dev-python/requests-2.15.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.11[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
+"
+
+distutils_enable_tests unittest
 
 PATCHES=(
 	"${FILESDIR}/cfn-python-lint-0.30.1-tests.patch"

@@ -25,10 +25,14 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	# docker, seriously?
-	sed -e 's:test_cpu_count_cfs_limit:_&:' \
-		-i tests/test_loky_module.py || die
+python_test() {
+	local args=(
+		# docker, seriously?
+		--deselect 'tests/test_loky_module.py::test_cpu_count_cfs_limit'
+		# one test that uses a lot of memory, also broken on 32-bit
+		# platforms
+		--skip-high-memory
+	)
 
-	distutils-r1_src_prepare
+	pytest -vv "${args[@]}" || die "Tests failed on ${EPYTHON}"
 }
