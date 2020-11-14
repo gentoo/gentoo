@@ -130,6 +130,12 @@ dzil_src_prep() {
 		-e '/^\[OptionalFeature/,/^$/d' \
 		-e '/^\[Test::MinimumVersion\]/{N;d}' \
 		-i dist.ini || die "Can't patch dist.ini"
+
+	# Removals/additons have to be tracked by git or dzil build fails
+	# Spurious warning during src_prepare
+	git rm -f xt/author/critic-progressive.t || die "Can't rm author/critic-progressive.t"
+	# Spurious warning during src_prepare
+	git rm -f xt/author/perltidy.t || die "Can't rm author/perltidy.t"
 }
 dzil_env_setup() {
 	# NextRelease noise :(
@@ -146,7 +152,7 @@ dzil_to_distdir() {
 
 	cd "${dzil_root}" || die "Can't enter git workdir '${dzil_root}'";
 
-	dzil_src_prep
+	S="${dzil_root}" dzil_src_prep
 	dzil_env_setup
 
 	dzil_version="$(dzil version)" || die "Error invoking 'dzil version'"
