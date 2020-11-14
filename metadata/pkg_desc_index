@@ -1057,7 +1057,7 @@ app-crypt/seahorse 3.34.1 3.36.2: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
-app-crypt/signify 23 24 29: OpenBSD tool to sign and verify signatures on files
+app-crypt/signify 23 24 29 30: Cryptographically sign and verify files
 app-crypt/signing-party 2.10-r1 2.11: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
@@ -2315,7 +2315,7 @@ app-misc/brewtarget 2.3.1-r1: Application to create and manage beer recipes
 app-misc/btail 0.3-r1: Bayesian logfile filter
 app-misc/byobu 5.130-r1: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20200601.3.53: Common CA Certificates PEM files
+app-misc/ca-certificates 20200601.3.53 20200601.3.59: Common CA Certificates PEM files
 app-misc/cadubi 1.3: An application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 3.5 3.6 3.7.2: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -5263,7 +5263,7 @@ dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
 dev-libs/icu 67.1 68.1: International Components for Unicode
 dev-libs/icu-layoutex 67.1 68.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3-r1: ICU Layout Engine API on top of HarfBuzz shaping library
-dev-libs/igraph 0.7.1-r2 0.8.2: Creating and manipulating undirected and directed graphs
+dev-libs/igraph 0.7.1-r2 0.8.2 0.8.3: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1 0-r2: iLBC is a speech codec suitable for robust voice communication over IP
 dev-libs/inih 51: inih (INI not invented here) simple .INI file parser
@@ -17204,7 +17204,7 @@ sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
 sys-cluster/maui 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/minikube 1.10.1 1.11.0 1.13.1 1.14.0 1.14.1: Single Node Kubernetes Cluster
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
-sys-cluster/mpich 3.0.4 3.3: A high performance and portable MPI implementation
+sys-cluster/mpich 3.0.4 3.3-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
@@ -18313,6 +18313,8 @@ x11-misc/cairo-clock 0.3.4-r1 0.3.4-r2: An analog clock displaying the system-ti
 x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
+x11-misc/clipmenu 6.0.1 6.1.0: Clipboard management using dmenu
+x11-misc/clipnotify 1.0.2: Notify on new X clipboard events
 x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/copyq 3.13.0: Clipboard manager with advanced features
