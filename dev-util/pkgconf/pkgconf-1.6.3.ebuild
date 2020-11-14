@@ -54,7 +54,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local ECONF_SOURCE="${S}"
-	econf
+	econf --disable-static
 }
 
 multilib_src_test() {
