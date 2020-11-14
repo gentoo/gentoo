@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit autotools
 
@@ -12,20 +12,16 @@ SRC_URI="http://download.rsyslog.com/liblogging/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0/0"
 KEYWORDS="amd64 arm ~arm64 hppa x86"
-IUSE="rfc3195 static-libs +stdlog systemd"
+IUSE="rfc3195 +stdlog systemd"
 
 RDEPEND="systemd? ( sys-apps/systemd )"
-
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( ChangeLog )
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
@@ -34,6 +30,7 @@ src_configure() {
 		$(use_enable rfc3195)
 		$(use_enable stdlog)
 		$(use_enable systemd journal)
+		--disable-static
 	)
 
 	econf "${myeconfargs[@]}"
@@ -41,6 +38,5 @@ src_configure() {
 
 src_install() {
 	default
-
-	find "${ED}"usr/lib* -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
