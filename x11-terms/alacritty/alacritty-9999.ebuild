@@ -8,7 +8,7 @@ CRATES="
 
 MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
@@ -112,5 +112,5 @@ src_install() {
 
 src_test() {
 	cd alacritty || die
-	cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_test
 }
