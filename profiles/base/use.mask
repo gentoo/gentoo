@@ -1,6 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# This file is only for generic masks. For arch-specific masks (i.e.
+# mask everywhere, unmask on arch/*) use arch/base.
+
+# Marek Szuba <marecki@gentoo.org> (2020-11-14)
+# To allow Lua revdeps compatible with lua-5.4 to safely include it
+# in LUA_COMPAT even though we haven't got dev-lang/lua:5.4 in the tree
+# yet (see https://bugs.gentoo.org/754318 for the status of that).
+lua_single_target_lua5-4
+lua_targets_lua5-4
+
 # Alexis Ballier <aballier@gentoo.org> (2020-10-13)
 # Nothing depends on those ROS messages. dev-ros/geneus
 # is half broken in our setup where it looks for packages
@@ -11,9 +21,6 @@ ros_messages_eus
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # app-office/openoffice-bin is being removed.
 office_implementation_openoffice
-
-# This file is only for generic masks. For arch-specific masks (i.e.
-# mask everywhere, unmask on arch/*) use arch/base.
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
