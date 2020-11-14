@@ -19,7 +19,9 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# This package's tests are extremely fragile and tend to break or hang
+# when it doesn't like metadata of packages installed on the system.
+RESTRICT="test"
 
 # pypiserver is called as external executable
 # openpyxl installs invalid metadata that breaks distlib
