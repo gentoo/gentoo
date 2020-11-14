@@ -3,7 +3,7 @@
 
 # @ECLASS: nvidia-driver.eclass
 # @MAINTAINER:
-# No maintainer <maintainer-needed@gentoo.org>
+# David Seifert <soap@gentoo.org>
 # @AUTHOR:
 # Original author: Doug Goldstein <cardoe@gentoo.org>
 # @BLURB: Provide useful messages for nvidia-drivers
