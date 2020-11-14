@@ -16,18 +16,15 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="BSD LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE=""
 
 DEPEND="
 	>=media-libs/libcuefile-${PV}[${MULTILIB_USEDEP}]
-	>=media-libs/libreplaygain-${PV}[${MULTILIB_USEDEP}]
-"
+	>=media-libs/libreplaygain-${PV}[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}
 	!media-libs/libmpcdec
-	!media-libs/libmpcdecsv7
-"
+	!media-libs/libmpcdecsv7"
 
 PATCHES=(
-	"${FILESDIR}/${P}-gentoo.patch"
-	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
