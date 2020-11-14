@@ -34,6 +34,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DLLD_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/lld"
 		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/llvm"
 		-DClang_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/clang"
 	)
