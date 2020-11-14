@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="A puzzle game where the player has to arrange balls in triplets"
 HOMEPAGE="https://sourceforge.net/projects/zaz/"
