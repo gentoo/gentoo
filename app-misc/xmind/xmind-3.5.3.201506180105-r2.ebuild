@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit desktop eutils multilib gnome2-utils
+inherit desktop eutils multilib optfeature xdg
 
 MY_PN="${PN}-portable"
 MY_P="${MY_PN}-${PV}"
@@ -15,7 +15,6 @@ SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 DEPEND="app-arch/unzip"
 RDEPEND="
@@ -75,15 +74,7 @@ src_install() {
 	make_desktop_entry ${PN} "XMind" ${PN} "Office" "MimeType=application/x-xmind;"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
-	elog "For audio notes support, install media-sound/lame"
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
+	optfeature "audio notes support" media-sound/lame
 }
