@@ -5686,7 +5686,7 @@ dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.9.2: Lua bindings using gobject-introspection
 dev-lua/lpeg 1.0.1 1.0.2: Parsing Expression Grammars for Lua
 dev-lua/lua-argparse 0.6.0-r1: Command line argument parser for the Lua Programming Language
-dev-lua/lua-bit32 5.3.5-r2: Backported Lua bit manipulation library
+dev-lua/lua-bit32 5.3.5-r2 5.3.5-r100: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.8_p0: OpenSSL binding for Lua
 dev-lua/lua-term 0.3 0.7: Terminal functions for Lua
@@ -17481,7 +17481,7 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.9.8: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.4.242 4.4.243 4.9.236 4.9.240 4.9.241 4.9.242 4.9.243 4.14.198 4.14.202 4.14.203 4.14.204 4.14.205 4.14.206 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 4.19.156 4.19.157 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.4.76 5.4.77 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6 5.9.7 5.9.8: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3: The very latest -git version of the Linux kernel
