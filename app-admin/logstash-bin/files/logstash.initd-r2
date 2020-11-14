@@ -21,6 +21,7 @@ command="${LS_INSTALL_DIR}/bin/logstash"
 command_args="--path.data ${LS_DATA_DIR} --path.logs ${LS_LOG_DIR} --path.settings ${LS_SETTINGS_DIR} ${LS_OPTS}"
 command_background="true"
 pidfile="/run/${RC_SVCNAME}.pid"
+retry="30"
 
 start_stop_daemon_args="--user ${LS_USER}:${LS_GROUP} \
 	--chdir ${LS_HOME}
