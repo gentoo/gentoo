@@ -65,7 +65,7 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/Net-OpenSSH
 	dev-perl/Net-SFTP-Foreign
-	virtual/perl-Scalar-List-Utils
+	>=virtual/perl-Scalar-List-Utils-1.450.0
 	dev-perl/Parallel-ForkManager
 	dev-perl/Sort-Naturally
 	dev-perl/String-Escape
@@ -89,6 +89,9 @@ BDEPEND="
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	virtual/perl-Module-Metadata
 	test? (
+		!minimal? (
+			dev-perl/File-LibMagic
+		)
 		virtual/perl-File-Temp
 		dev-perl/Test-Deep
 		dev-perl/Test-Output
