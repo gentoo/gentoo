@@ -1,9 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Split files into smaller pieces and combine them back together"
 HOMEPAGE="http://gtk-splitter.sourceforge.net"
@@ -14,18 +12,16 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="crypt"
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
+	x11-libs/gtk+:2
 	virtual/libintl:0
 	crypt? ( >=app-crypt/mhash-0.8:0 )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig:*"
+PATCHES=( "${FILESDIR}"/${P}-r1-desktop-QA-fixes.patch )
 
-src_prepare() {
-	epatch "${FILESDIR}/"${P}-r1-desktop-QA-fixes.patch
-}
-
-src_compile() {
+src_configure() {
 	default
 
 	if ! use crypt ; then
@@ -35,5 +31,5 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir="/usr/share/doc/${PF}" install
+	emake DESTDIR="${D}" docdir="${EPREFIX}/usr/share/doc/${PF}" install
 }
