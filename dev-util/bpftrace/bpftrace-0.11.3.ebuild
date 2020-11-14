@@ -30,7 +30,6 @@ COMMON_DEPEND="
 	<=sys-devel/llvm-12:=[llvm_targets_BPF(+)]
 	<=sys-devel/clang-12:=
 	>=dev-util/bcc-0.13.0:=
-	<dev-util/bcc-0.17.0:=
 	virtual/libelf
 "
 DEPEND="${COMMON_DEPEND}
