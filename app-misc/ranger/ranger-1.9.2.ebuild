@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1
+inherit distutils-r1 xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
@@ -32,6 +32,8 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "Ranger has many optional dependencies to support enhanced file previews."
 		elog "See the README or homepage for more details."
