@@ -11,6 +11,7 @@
 	<longdescription lang="en">
 		collective.checkdocs adds new distutils commands checkdocs and showdocs to validate restructured text in long_description field of Python eggs. This package aims to make Python egg help page publishing and editing easier.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">collective.checkdocs</remote-id>
 		<remote-id type="github">collective/collective.checkdocs</remote-id>
