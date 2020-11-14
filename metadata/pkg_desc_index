@@ -5587,11 +5587,11 @@ dev-libs/redland-bindings 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.4.0 0.6.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocclr 3.8.0: Radeon Open Compute Common Language Runtime
+dev-libs/rocclr 3.8.0 3.9.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocm-comgr 3.9.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-runtime 3.8.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocm-opencl-runtime 3.8.0 3.9.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.8.0 3.9.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 3.7.0 3.8.0 3.9.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
@@ -9258,7 +9258,7 @@ dev-python/yapf 0.30.0: A formatter for Python files
 dev-python/yappi 1.2.5-r1 1.3.0: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 1.6.0 1.6.2: Yet another URL library
+dev-python/yarl 1.6.0 1.6.2 1.6.3: Yet another URL library
 dev-python/yaswfp 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
 dev-python/zc-lockfile 2.0: Basic inter-process locks
@@ -10802,7 +10802,7 @@ dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliab
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/rocm-cmake 3.8.0 3.9.0 9999: Radeon Open Compute CMake Modules
-dev-util/rocminfo 3.7.0 3.8.0 9999: ROCm Application for Reporting System Info
+dev-util/rocminfo 3.7.0 3.8.0 3.9.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.19.0-r1 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22-r1 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
@@ -17096,7 +17096,7 @@ sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network blo
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
-sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r2: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.3-r2: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 4.2.0: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
