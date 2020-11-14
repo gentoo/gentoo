@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop
+inherit desktop xdg
 
 DESCRIPTION="Pseudo PostScript editor"
 HOMEPAGE="https://flpsed.org/flpsed.html"
