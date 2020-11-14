@@ -35,7 +35,8 @@ src_configure() {
 	econf \
 		--with-distro=gentoo \
 		--with-pamdir="$(usex pam $(getpam_mod_dir) none)" \
-		--with-init-script=systemd
+		--with-init-script=systemd \
+		--disable-static
 }
 
 src_install() {
@@ -46,4 +47,6 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newinitd "${FILESDIR}"/cgproxy.initd-r1 cgproxy
+
+	find "${ED}" -name '*.la' -delete || die
 }
