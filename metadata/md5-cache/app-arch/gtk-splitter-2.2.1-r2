@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=x11-libs/gtk+:2 virtual/libintl:0 crypt? ( >=app-crypt/mhash-0.8:0 )
+DESCRIPTION=Split files into smaller pieces and combine them back together
+EAPI=7
+HOMEPAGE=http://gtk-splitter.sourceforge.net
+IUSE=crypt
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 virtual/libintl:0 crypt? ( >=app-crypt/mhash-0.8:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/gtk-splitter/gtk-splitter-2.2.1.tar.gz
+_md5_=00fa5e4c09d97aaa868b1ea64a80f9b4

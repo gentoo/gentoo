@@ -736,7 +736,7 @@ app-arch/file-roller 3.32.4 3.36.3: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.4: Automatic archives creating and extracting library
-app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
+app-arch/gtk-splitter 2.2.1-r2: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.7 1.8: A tool to unpack installers created by Inno Setup
@@ -5707,7 +5707,7 @@ dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL 
 dev-lua/luaposix 35.0: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1: A deployment and management system for Lua modules
 dev-lua/luasec 0.9 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
-dev-lua/luasocket 3.0_rc1-r4 3.0_rc1-r5: Networking support library for the Lua language
+dev-lua/luasocket 3.0_rc1-r5: Networking support library for the Lua language
 dev-lua/luassert 1.7.9 1.7.10 1.8.0: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
@@ -13658,7 +13658,7 @@ media-sound/chuck 1.4.0.1: Strongly-timed, concurrent, and on-the-fly audio prog
 media-sound/clementine 1.4.0_rc1 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.8.0 9999: Ncurses based music player with plugin support for many formats
-media-sound/cmusfm 0.2.5 0.3.1 0.3.3: Last.fm scrobbler for cmus music player
+media-sound/cmusfm 0.3.3: Last.fm scrobbler for cmus music player
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 2.0.1: GUI audio tagger based on Qt and taglib
 media-sound/csound 6.15.0 9999: Sound design and signal processing system for composition and performance
@@ -13821,7 +13821,7 @@ media-sound/pamix 1.5 1.6 9999: A PulseAudio NCurses mixer
 media-sound/paprefs 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.6.0-r2 0.7.0 0.7.1: PulseAudio system tray
 media-sound/patchage 1.0.2: Modular patch bay for JACK-based audio and MIDI systems
-media-sound/pavucontrol 3.0 4.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
+media-sound/pavucontrol 4.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavucontrol-qt 0.15.0: Qt GUI Pulseaudio Mixer
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
@@ -13867,7 +13867,7 @@ media-sound/retrovol 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rhythmbox 3.4.4: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
-media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
+media-sound/ripperx 2.7.3: GTK program to rip CD audio tracks to Ogg, MP3 or FLAC
 media-sound/rosegarden 20.06: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
