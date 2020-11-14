@@ -1,0 +1,12 @@
+diff -rupN a/src/backend/commands/collationcmds.c b/src/backend/commands/collationcmds.c
+--- a/src/backend/commands/collationcmds.c	2020-11-07 08:03:24.122756440 +0300
++++ b/src/backend/commands/collationcmds.c	2020-11-07 08:04:18.168901199 +0300
+@@ -464,7 +464,7 @@ get_icu_language_tag(const char *localen
+ 	UErrorCode	status;
+ 
+ 	status = U_ZERO_ERROR;
+-	uloc_toLanguageTag(localename, buf, sizeof(buf), TRUE, &status);
++	uloc_toLanguageTag(localename, buf, sizeof(buf), true, &status);
+ 	if (U_FAILURE(status))
+ 		ereport(ERROR,
+ 				(errmsg("could not convert locale name \"%s\" to language tag: %s",
