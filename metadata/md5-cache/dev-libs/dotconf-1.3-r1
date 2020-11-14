@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile postinst
+DEFINED_PHASES=compile configure postinst
 DEPEND=>=sys-devel/autoconf-2.58
 DESCRIPTION=dot.conf configuration file parser
 EAPI=6
@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://gentoo/dotconf-1.3.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e16ad66cd788819559521cae94872e8c
+_md5_=3ef409e47c0fabbdde5d817481e4afb1

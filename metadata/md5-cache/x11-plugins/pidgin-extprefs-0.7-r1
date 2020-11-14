@@ -1,11 +1,12 @@
-DEFINED_PHASES=-
-DEPEND=virtual/pkgconfig net-im/pidgin[gtk]
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=net-im/pidgin[gtk]
 DESCRIPTION=Extra preferences that are desired but are not worthy for Pidgin
-EAPI=6
+EAPI=7
 HOMEPAGE=http://gaim-extprefs.sourceforge.net
 KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=net-im/pidgin[gtk]
 SLOT=0
 SRC_URI=mirror://sourceforge/gaim-extprefs/pidgin-extprefs-0.7.tar.gz
-_md5_=639003f1de05dd9a48f2a70509db9b64
+_md5_=9d24151f89f122456bf28ae4c6c9f11d

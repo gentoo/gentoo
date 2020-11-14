@@ -10,4 +10,4 @@ RDEPEND=virtual/libusb:1 virtual/libusb:0 ftdi? ( dev-embedded/libftdi:= ) ncurs
 SLOT=0
 SRC_URI=doc? ( mirror://nongnu/avrdude/avrdude-doc-6.3.tar.gz mirror://nongnu/avrdude/avrdude-doc-6.3.pdf )
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=376af261a23990d0355c967d009dc171
+_md5_=fca682fa0ac9452ba708ab37dd494665

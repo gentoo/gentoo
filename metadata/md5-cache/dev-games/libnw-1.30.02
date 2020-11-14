@@ -1,7 +1,7 @@
-DEFINED_PHASES=install prepare
-DEPEND=sys-devel/bison sys-devel/flex
+BDEPEND=sys-devel/bison sys-devel/flex
+DEFINED_PHASES=configure install prepare
 DESCRIPTION=Tools and libraries for NWN file manipulation
-EAPI=5
+EAPI=7
 HOMEPAGE=http://openknights.sourceforge.net/
 KEYWORDS=amd64 x86
 LICENSE=openknights
@@ -9,4 +9,4 @@ RDEPEND=!sci-biology/newick-utils
 SLOT=0
 SRC_URI=mirror://sourceforge/openknights/libnw-1.30.02.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=2badb3f23b99442081e0c04bfb294c17
+_md5_=e50ca3acc94e7bd5e9f58a07948ac4b1

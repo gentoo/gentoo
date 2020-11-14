@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure prepare unpack
+DEFINED_PHASES=configure install prepare unpack
 DEPEND=dev-libs/openssl:0= sys-apps/keyutils:= app-text/asciidoc app-text/docbook-xsl-stylesheets dev-libs/libxslt >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Supporting tools for IMA and EVM
 EAPI=6
@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=dev-libs/openssl:0= sys-apps/keyutils:=
 SLOT=0
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=830a633f120a0a3285977cc97b6ff475
+_md5_=56c5e1ffb398b0c3d4d087dcd67482ad
