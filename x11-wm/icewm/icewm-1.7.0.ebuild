@@ -51,7 +51,13 @@ RDEPEND="
 	)
 	bidi? ( dev-libs/fribidi )
 	gdk-pixbuf? (
-		x11-libs/gdk-pixbuf:2[X]
+		|| (
+			(
+				x11-libs/gdk-pixbuf-xlib
+				>=x11-libs/gdk-pixbuf-2.42.0:2
+			)
+			<x11-libs/gdk-pixbuf-2.42.0:2[X]
+		)
 	)
 	!gdk-pixbuf? (
 		media-libs/libpng:0=
