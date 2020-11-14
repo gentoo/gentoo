@@ -81,7 +81,7 @@ RDEPEND="
 	dev-perl/YAML
 	virtual/perl-version
 "
-
+# NB: would add test? !minimal? Test-mysqld, but I can't get that to work
 BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-CPAN-Meta-Requirements-2.120.620
@@ -196,6 +196,13 @@ src_prepare() {
 		dzil_to_distdir "${EGIT_CHECKOUT_DIR}" "${S}"
 	fi
 	cd "${S}" || die "Can't enter build dir"
+
+	# If you DIY installed Test::mysqld, but didn't patch
+	# it to handle the fact on Gentoo, mysql_install_db is NOT in PATH
+	# tests fail. So this test is patched out if mysql_install_db is not in PATH
+	if perl_has_module "Test::mysqld" && ! type -P mysql_install_db >/dev/null; then
+		perl_rm_files "t/db.t"
+	fi
 	perl-module_src_prepare
 }
 
