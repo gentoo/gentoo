@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="LIBrary of Assorted Spiffy Things"
 HOMEPAGE="http://www.eterm.org/download/"
@@ -22,22 +22,19 @@ RDEPEND="
 	media-libs/freetype
 	imlib? ( media-libs/imlib2 )
 	pcre? ( dev-libs/libpcre )"
-
 DEPEND="${RDEPEND}"
 
-DOCS=( README DESIGN ChangeLog )
-
-src_prepare() {
-	default
-	local myregexp="posix"
-	use pcre && myregexp="pcre"
+src_configure() {
 	econf \
 		$(use_with imlib) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
-		--with-regexp="${myregexp}"
+		--with-regexp=$(usex pcre pcre posix) \
+		--disable-static
 }
 
 src_install() {
 	default
-	emake DESTDIR="${D}" install
+	dodoc DESIGN
+
+	find "${ED}" -name '*.la' -delete || die
 }
