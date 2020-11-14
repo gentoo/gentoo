@@ -26,10 +26,13 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-strict \
+		--disable-static \
 		$(use_enable debug)
 }
 
 src_install() {
 	default
 	dodoc -r docs/html/*.html docs/index.html README ChangeLog CREDITS INSTALL
+
+	find "${ED}" -name '*.la' -delete || die
 }
