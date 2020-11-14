@@ -18,5 +18,10 @@ PATCHES=(
 )
 
 src_configure() {
-	econf --enable-threads
+	econf --enable-threads --disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
