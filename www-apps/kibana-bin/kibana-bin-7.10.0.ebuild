@@ -22,28 +22,35 @@ IUSE="x-pack"
 RDEPEND="
 	acct-group/kibana
 	acct-user/kibana
-	>=net-libs/nodejs-10.15.2
+	>=net-libs/nodejs-10.21.0
 	x-pack? (
 		dev-libs/expat
 		dev-libs/nss
 	)"
+
+# Do not complain about CFLAGS etc since we don't use them
+QA_FLAGS_IGNORED='.*'
 
 S="${WORKDIR}/${MY_P}-linux-x86_64"
 
 src_prepare() {
 	default
 
-	# remove empty unused directory
-	rmdir data || die
+	# remove unused directory
+	rm -r data || die
 
 	# remove bundled nodejs
 	rm -r node || die
+	sed -i 's@\(^NODE="\).*@\1/usr/bin/node"@g' \
+		bin/kibana || die
 
-	# move optimize/plugins to /var/lib/kibana
-	rm -r optimize plugins || die
+	# move plugins to /var/lib/kibana
+	rm -r plugins || die
 
 	# handle node.js version with RDEPEND
-	sed -i /node_version_validator/d src/setup_node_env/index.js || die
+	sed -i /node_version_validator/d \
+		src/setup_node_env/index.js \
+		src/setup_node_env/no_transpilation.js || die
 }
 
 src_install() {
@@ -64,19 +71,13 @@ src_install() {
 	fperms -R +x /opt/${MY_PN}/bin
 
 	diropts -m 0750 -o ${MY_PN} -g ${MY_PN}
-	keepdir /var/lib/${MY_PN}/optimize
 	keepdir /var/lib/${MY_PN}/plugins
 	keepdir /var/log/${MY_PN}
 
-	dosym ../../var/lib/kibana/optimize /opt/kibana/optimize # Bug 667214
 	dosym ../../var/lib/kibana/plugins /opt/kibana/plugins
 }
 
 pkg_postinst() {
-	ewarn "Kibana optimize/plugins directories were moved to /var/lib/kibana."
-	ewarn "In case of startup failures (FATAL Error: Cannot find module...),"
-	ewarn "please remove the optimize directory content:"
-	ewarn "rm -r /var/lib/kibana/optimize/*"
 	elog "This version of Kibana is compatible with Elasticsearch $(ver_cut 1-2) and"
 	elog "Node.js 10. Some plugins may fail with other versions of Node.js (Bug #656008)."
 	elog

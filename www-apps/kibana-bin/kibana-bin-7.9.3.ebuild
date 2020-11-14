@@ -28,6 +28,9 @@ RDEPEND="
 		dev-libs/nss
 	)"
 
+# Do not complain about CFLAGS etc since we don't use them
+QA_FLAGS_IGNORED='.*'
+
 S="${WORKDIR}/${MY_P}-linux-x86_64"
 
 src_prepare() {

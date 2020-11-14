@@ -10,8 +10,8 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.tar.gz )
-	!x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}.tar.gz )"
+SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}-linux-x86_64.tar.gz )
+	!x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}-linux-x86_64.tar.gz )"
 
 # source: LICENSE.txt and NOTICE.txt
 LICENSE="Apache-2.0 MIT x-pack? ( Elastic )"
@@ -24,9 +24,25 @@ QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
 
 RDEPEND="acct-group/logstash
 	acct-user/logstash
-	virtual/jre:1.8"
+	virtual/jre"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	default
+
+	rm vendor/jruby/lib/jni/aarch64-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/arm-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/i386-SunOS/libjffi-1.2.so \
+		vendor/jruby/lib/jni/mips64el-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/ppc64-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/ppc64le-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/sparcv9-Linux/libjffi-1.2.so \
+		vendor/jruby/lib/jni/sparcv9-SunOS/libjffi-1.2.so \
+		vendor/jruby/lib/jni/x86_64-DragonFlyBSD/libjffi-1.2.so \
+		vendor/jruby/lib/jni/x86_64-FreeBSD/libjffi-1.2.so \
+		vendor/jruby/lib/jni/x86_64-SunOS/libjffi-1.2.so || die
+}
 
 src_install() {
 	keepdir /etc/"${MY_PN}"/{conf.d,patterns,plugins}

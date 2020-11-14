@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
@@ -44,10 +44,10 @@ src_install() {
 	exeinto /usr/share/${PN}/bin
 	doexe "${FILESDIR}/elasticsearch-systemd-pre-exec"
 
-	chmod +x "${ED}"/usr/share/${PN}/bin/* || die
+	fperms -R +x /usr/share/${PN}/bin
 
 	if use x-pack; then
-		chmod +x "${ED}"/usr/share/${PN}/modules/x-pack-ml/platform/linux-x86_64/bin/* || die
+		fperms -R +x /usr/share/${PN}/modules/x-pack-ml/platform/linux-x86_64/bin
 	fi
 
 	keepdir /var/{lib,log}/${PN}
@@ -62,11 +62,14 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.init.7" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
-	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" ${PN}.conf
 	systemd_newunit "${FILESDIR}"/${PN}.service.3 ${PN}.service
+
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles.d ${PN}.conf
 }
 
 pkg_postinst() {
+	tmpfiles_process /usr/lib/tmpfiles.d/${PN}.conf
+
 	elog
 	elog "You may create multiple instances of ${PN} by"
 	elog "symlinking the init script:"
