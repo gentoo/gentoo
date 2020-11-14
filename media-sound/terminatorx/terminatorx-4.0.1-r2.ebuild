@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,8 @@ PATCHES=(
 	# Fails to build with USE="X vorbis -alsa -debug -mad -pulseaudio
 	# -sox", bug #604288
 	"${FILESDIR}"/${P}-gtkcombotext.patch
+	# 740502
+	"${FILESDIR}"/${P}-desktop-QA.patch
 )
 
 src_configure() {
