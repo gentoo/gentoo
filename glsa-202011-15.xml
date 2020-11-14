@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-15">
+  <title>libmaxminddb: Denial of service</title>
+  <synopsis>A vulnerability in libmaxminddb could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">libmaxminddb</product>
+  <announced>2020-11-14</announced>
+  <revised count="1">2020-11-14</revised>
+  <bug>753275</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libmaxminddb" auto="yes" arch="*">
+      <unaffected range="ge">1.4.3</unaffected>
+      <vulnerable range="lt">1.4.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The libmaxminddb library provides a C library for reading MaxMind DB
+      files, including the GeoIP2 databases from MaxMind.
+    </p>
+  </background>
+  <description>
+    <p>libmaxminddb used uninitialised memory when reading from a corrupt
+      database file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to use a specially crafted
+      database with libmaxminddb, possibly resulting in a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libmaxminddb users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libmaxminddb-1.4.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28241">CVE-2020-28241</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-12T15:42:40Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-14T18:14:48Z">sam_c</metadata>
+</glsa>
