@@ -2530,7 +2530,7 @@ app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a tim
 app-misc/timew 1.4.2: Tracks your time from the command line, and generates reports
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmate 2.3.1 2.4.0: Instant terminal sharing
-app-misc/tmux 3.1b 3.1c 9999: Terminal multiplexer
+app-misc/tmux 3.1c 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
@@ -7917,7 +7917,7 @@ dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/billiard 3.6.0.0: Python multiprocessing fork
 dev-python/binaryornot 0.4.4-r1: Ultra-lightweight pure Python package to guess whether a file is binary or text
-dev-python/bitarray 0.8.3: efficient arrays of booleans -- C extension
+dev-python/bitarray 0.8.3 1.6.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 20.8_beta1: The uncompromising Python code formatter
 dev-python/bleach 3.2.1: an easy whitelist-based HTML-sanitizing tool
