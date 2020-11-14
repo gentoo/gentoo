@@ -8255,7 +8255,7 @@ dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains su
 dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
 dev-python/ijson 3.1.1: Iterative JSON parser with a Pythonic interface
 dev-python/imageio 2.6.1: Python library for reading and writing image data
-dev-python/imagesize 1.1.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
+dev-python/imagesize 1.1.0 1.2.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
