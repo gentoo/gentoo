@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -30,6 +30,16 @@
  AC_DEFINE_UNQUOTED(GQRADIO_SKINDIR, "$prefix/share/gqradio/skins", [Location of skins])
  AC_DEFINE_UNQUOTED(GQRADIO_HELPDIR, "$prefix/share/doc/gqradio-$VERSION", [Location of documentation files])
