@@ -16,16 +16,20 @@ SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 SLOT="0"
 LICENSE="mpich2"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+cxx doc fortran mpi-threads romio threads"
+IUSE="+cxx doc fortran mpi-threads +romio threads"
+REQUIRED_USE="mpi-threads? ( threads )"
 
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-2.0.2[${MULTILIB_USEDEP}]
-	romio? ( net-fs/nfs-utils )"
+	sys-libs/libunwind[${MULTILIB_USEDEP}]
+	romio? ( net-fs/nfs-utils )
+"
 
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
-	sys-devel/libtool"
+	sys-devel/libtool
+"
 
 RDEPEND="${COMMON_DEPEND}
 	!sys-cluster/mpich2
