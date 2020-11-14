@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,7 +40,7 @@ src_configure() {
 	export ac_cv_lib_ftdi_ftdi_usb_get_strings=$(usex ftdi)
 	export ac_cv_lib_ncurses_tputs=$(usex ncurses)
 	export ac_cv_lib_readline_readline=$(usex readline)
-	default
+	econf --disable-static
 }
 
 src_compile() {
@@ -57,4 +57,6 @@ src_install() {
 		newdoc "${DISTDIR}/${PN}-doc-${PV}.pdf" avrdude.pdf
 		dodoc -r "${WORKDIR}/avrdude-html/"
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
