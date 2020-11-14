@@ -12,7 +12,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/37744/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="
 	blas cuda doc examples fftw fortran gcc-plugin mpi opencl opengl
