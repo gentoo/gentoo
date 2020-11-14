@@ -13,11 +13,13 @@ else
 	#Go to https://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-userland/
 	#Example:
 	#libraspberrypi-bin-dbgsym_2+git20201022~151804+e432bc3-1_arm64.deb
-	#"e432bc3" is the git commit to plug in below.
-	GIT_COMMIT="e432bc3"
+	#"e432bc3" is the first 7 hex digits of the commit hash.
+	#Now go to https://github.com/raspberrypi/userland/commits/master and find the
+	#full hash
+	GIT_COMMIT="e432bc3400401064e2d8affa5d1454aac2cf4a00"
 	SRC_URI="https://github.com/raspberrypi/userland/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~arm ~arm64"
-	S="${WORKDIR}/raspberrypi-userland-${GIT_COMMIT}"
+	S="${WORKDIR}/userland-${GIT_COMMIT}"
 fi
 
 DESCRIPTION="Raspberry Pi userspace tools and libraries"
@@ -53,6 +55,10 @@ src_prepare() {
 	sed -i \
 		-e 's:DESTINATION ${VMCS_INSTALL_PREFIX}/src:DESTINATION ${VMCS_INSTALL_PREFIX}/'"share/doc/${PF}:" \
 		"${S}/makefiles/cmake/vmcs.cmake" || die "Failed sedding makefiles/cmake/vmcs.cmake"
+	sed -i \
+		-e 's:^install(TARGETS EGL GLESv2:install(TARGETS:' \
+		-e 's:^install(TARGETS EGL_static GLESv2_static:install(TARGETS:' \
+		"${S}/interface/khronos/CMakeLists.txt" || die "Failed sedding interface/khronos/CMakeLists.txt"
 }
 
 src_install() {
