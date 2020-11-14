@@ -3,8 +3,7 @@
 
 EAPI=7
 
-AUTOTOOLS_IN_SOURCE_BUILD=yes
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -18,14 +17,14 @@ SRC_URI="http://www.hepforge.org/archive/lhapdf/${MY_PF}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-
-IUSE="doc examples python static-libs"
+IUSE="doc examples python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/boost:0=
 	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? (
 		app-doc/doxygen
 		dev-texlive/texlive-bibtexextra
@@ -33,13 +32,15 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontutils
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
-	)
-"
+	)"
 
 S="${WORKDIR}/${MY_PF}"
 
 src_configure() {
-	econf $(use_enable python)
+	econf \
+		--disable-static \
+		$(use_enable python)
+
 	if use python; then
 		cd "${S}/wrappers/python" && distutils-r1_src_prepare
 	fi
@@ -47,6 +48,7 @@ src_configure() {
 
 src_compile() {
 	emake all $(use doc && echo doxy)
+
 	if use python; then
 	   cd "${S}/wrappers/python" && distutils-r1_src_compile
 	fi
@@ -64,8 +66,9 @@ src_install() {
 		doins examples/*.cc
 	fi
 	if use python; then
-	   cd "${S}/wrappers/python" && distutils-r1_src_install
+		cd "${S}/wrappers/python" && distutils-r1_src_install
 	fi
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
