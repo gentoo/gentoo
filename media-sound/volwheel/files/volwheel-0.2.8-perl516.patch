@@ -1,7 +1,7 @@
 http://code.google.com/p/olwtools/issues/detail?id=8
 
---- install.pl
-+++ install.pl
+--- a/install.pl
++++ b/install.pl
 @@ -2,7 +2,6 @@
  
  use strict;
