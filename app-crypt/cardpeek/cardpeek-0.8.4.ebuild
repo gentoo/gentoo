@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-2 )
 
-inherit lua-single
+inherit lua-single xdg
 
 DESCRIPTION="Tool to read the contents of smartcards"
 HOMEPAGE="http://pannetrat.com/Cardpeek"
