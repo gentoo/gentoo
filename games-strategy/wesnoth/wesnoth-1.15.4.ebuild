@@ -76,9 +76,6 @@ src_configure() {
 		append-flags -fno-stack-protector
 	fi
 
-	# Work around eclass
-	append-flags -UNDEBUG
-
 	if use dedicated || use server ; then
 		mycmakeargs=(
 			-DENABLE_CAMPAIGN_SERVER="ON"
