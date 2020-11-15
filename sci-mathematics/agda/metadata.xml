@@ -18,6 +18,5 @@
 <use>
   <flag name="cpphs">Use cpphs instead of cpp.</flag>
   <flag name="stdlib">Install the standard library.</flag>
-  <flag name="uhc">Add support for the uhc backend.</flag>
 </use>
 </pkgmetadata>
