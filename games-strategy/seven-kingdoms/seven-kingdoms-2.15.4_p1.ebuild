@@ -6,11 +6,12 @@ EAPI=7
 inherit desktop toolchain-funcs
 
 MY_PN="7kaa"
-MY_P="${MY_PN}-${PV}"
+MY_PV="$(ver_rs 3- '')"
+MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Seven Kingdoms: Ancient Adversaries"
 HOMEPAGE="https://7kfans.com/"
-SRC_URI="https://github.com/the3dfxdude/${MY_PN}/releases/download/v${PV}/${MY_P}.tar.xz
+SRC_URI="https://github.com/the3dfxdude/${MY_PN}/releases/download/v${MY_PV}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~pinkbyte/distfiles/${MY_PN}.png"
 
 LICENSE="GPL-2"
@@ -22,8 +23,6 @@ DEPEND="net-libs/enet:1.3=
 	media-libs/openal
 	net-misc/curl"
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-fortify.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
