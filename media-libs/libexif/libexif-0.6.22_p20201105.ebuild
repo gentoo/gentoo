@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal
+inherit autotools multilib-minimal
 
 COMMIT="9266d14b5ca4e29b970fa03272318e5f99386e06"
 DESCRIPTION="Library for parsing, editing, and saving EXIF data"
@@ -32,13 +32,11 @@ src_prepare() {
 	default
 	sed -i -e '/FLAGS=/s:-g::' configure.ac || die #390249
 	# Previously elibtoolize for BSD
-	elibtoolize
-
-	multilib_copy_sources
+	eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} econf \
+	ECONF_SOURCE="${S}" econf \
 		$(use_enable doc docs) \
 		$(use_enable nls) \
 		$(use_enable static-libs static) \
