@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/bs2b/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
-IUSE=""
 
 RDEPEND=">=media-libs/libsndfile-1.0.25-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
@@ -22,3 +21,12 @@ BDEPEND="virtual/pkgconfig"
 ECONF_SOURCE="${S}"
 
 PATCHES=( "${FILESDIR}/${PV}-format-security.patch" )
+
+multilib_src_configure() {
+	econf --disable-static
+}
+
+multilib_src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}
