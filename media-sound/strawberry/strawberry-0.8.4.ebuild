@@ -80,8 +80,8 @@ DOCS=( Changelog README.md )
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	cmake_src_prepare
 	rm -r 3rdparty/taglib || die
+	cmake_src_prepare
 }
 
 src_configure() {
