@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,12 @@ src_prepare() {
 	eapply_user
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 	DOCS="doc/${PN}.txt doc/${PN}.pdf" einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }
