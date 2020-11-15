@@ -46,6 +46,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/wesnoth-1.14.14-ar.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 
