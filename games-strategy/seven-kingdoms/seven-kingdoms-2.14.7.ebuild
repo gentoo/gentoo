@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 MY_PN="7kaa"
 MY_P="${MY_PN}-${PV}"
@@ -27,6 +27,10 @@ S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
 	unpack ${MY_P}.tar.xz
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
