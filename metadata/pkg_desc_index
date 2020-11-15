@@ -86,6 +86,7 @@ acct-group/influxdb 0: System group: influxdb
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
+acct-group/ipsec 0: ipsec (strongswan) program group
 acct-group/jabber 0: A group for various jabber services
 acct-group/kafka 0: System group: kafka
 acct-group/kapacitor 0: System group: kapacitor
@@ -336,6 +337,7 @@ acct-user/influxdb 0: User for influxdb
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0: user for net-analyzer/ippl
+acct-user/ipsec 0: ipsec (strongswan) program user
 acct-user/jabber 0: A user for various jabber services
 acct-user/kafka 0: User for kafka
 acct-user/kapacitor 0: User for kapacitor
@@ -11661,7 +11663,7 @@ games-strategy/s25rttr 0.9.0_pre20200723: Open source remake of The Settlers II:
 games-strategy/satellite-reign 1.13.06: Real-time, class-based strategy game set in a cyberpunk city
 games-strategy/scorched3d 44-r2: Multi-player tank battle in 3D (OpenGL)
 games-strategy/settlers-2-gold-data 0: Data files for The Settlers II: Gold Edition
-games-strategy/seven-kingdoms 2.14.7 2.15.2: Seven Kingdoms: Ancient Adversaries
+games-strategy/seven-kingdoms 2.14.7 2.15.4_p1: Seven Kingdoms: Ancient Adversaries
 games-strategy/spaz 1.605-r1: Space Pirates and Zombies
 games-strategy/tornado 1.4-r2: Clone of a C64 game - destroy the opponent's house
 games-strategy/triplea 1.8.0.9-r1: An open source clone of the popular Axis and Allies boardgame
@@ -15464,7 +15466,7 @@ net-vpn/openfortivpn 1.13.2 1.13.3: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
-net-vpn/strongswan 5.8.4 5.9.0: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.3.6 0.4.4.5 0.4.5.1_alpha: Anonymizing overlay network for TCP
