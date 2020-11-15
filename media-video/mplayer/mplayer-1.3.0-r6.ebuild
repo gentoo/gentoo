@@ -39,6 +39,7 @@ else
 	RELEASE_URI="mirror://gentoo/${P}.tar.xz"
 fi
 SRC_URI="${RELEASE_URI}
+	https://dev.gentoo.org/~juippis/distfiles/tmp/mplayer-1.3-ffmpeg4.patch
 	!truetype? ( ${FONT_URI} )"
 
 DESCRIPTION="Media Player for Linux"
@@ -235,7 +236,7 @@ src_prepare() {
 	else
 		eapply "${FILESDIR}"/${PN}-1.3.0-freetype_pkgconfig.patch #655240
 		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
-		has_version '>media-video/ffmpeg-3.5' && eapply "${FILESDIR}"/${PN}-1.3-ffmpeg4.patch "${FILESDIR}"/${PN}-1.3-ffmpeg4+mencoder.patch
+		has_version '>media-video/ffmpeg-3.5' && eapply "${DISTDIR}"/${PN}-1.3-ffmpeg4.patch "${FILESDIR}"/${PN}-1.3-ffmpeg4+mencoder.patch
 	fi
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
