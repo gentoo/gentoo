@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 MY_PN="7kaa"
 MY_P="${MY_PN}-${PV}"
@@ -29,6 +29,10 @@ S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
 	unpack ${MY_P}.tar.xz
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
