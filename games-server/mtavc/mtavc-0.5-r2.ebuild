@@ -41,6 +41,6 @@ src_install() {
 	doins ${files}
 	dodoc README CHANGELOG
 	for f in ${files} ; do
-		dosym /etc/${PN}/${f} "${dir}"/${f}
+		dosym ../../etc/${PN}/${f} "${dir}"/${f}
 	done
 }

@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-15)
+# Fails to build.  Lots of bugs filed.  Not touched by maintainer
+# since 2018.
+# Removal in 30 days.  Bug #721990.
+media-video/cinelerra
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
 # Not compatible with ghc-8.8 or above: #754285
 # No revdeps. Masked for removal.
