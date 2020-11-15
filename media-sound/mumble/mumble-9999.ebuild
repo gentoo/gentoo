@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -65,6 +65,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+        # required because of xdg.eclass also providing src_prepare
+        cmake_src_prepare
+}
+
 src_configure() {
 
 	local mycmakeargs=(
@@ -104,8 +109,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 	echo
 	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
 	elog "Run 'mumble-overlay <program>' to start the OpenGL overlay (after starting mumble)."
@@ -113,6 +117,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
