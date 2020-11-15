@@ -6,6 +6,8 @@ GST_ORG_MODULE=gst-plugins-bad
 
 inherit gstreamer
 
+SRC_URI+=" https://dev.gentoo.org/~juippis/distfiles/tmp/gst-plugins-lv2-1.16.2-r1-gcc10.patch"
+
 DESCRIPTION="Lv2 elements for Gstreamer"
 KEYWORDS="amd64 x86"
 IUSE=""
@@ -17,5 +19,5 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/patch-1.16.2-gcc10.patch"
+	"${DISTDIR}/gst-plugins-lv2-1.16.2-r1-gcc10.patch"
 )
