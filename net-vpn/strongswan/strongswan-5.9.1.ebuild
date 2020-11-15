@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-inherit linux-info systemd user
+inherit linux-info systemd
 
 DESCRIPTION="IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE"
 HOMEPAGE="https://www.strongswan.org/"
@@ -10,11 +10,11 @@ SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
-STRONGSWAN_PLUGINS_OPT="aesni blowfish ccm chapoly ctr forecast gcm ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist"
+STRONGSWAN_PLUGINS_OPT="aesni blowfish bypass-lan ccm chapoly ctr forecast gcm ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist"
 for mod in $STRONGSWAN_PLUGINS_STD; do
 	IUSE="${IUSE} +strongswan_plugins_${mod}"
 done
@@ -23,7 +23,10 @@ for mod in $STRONGSWAN_PLUGINS_OPT; do
 	IUSE="${IUSE} strongswan_plugins_${mod}"
 done
 
-COMMON_DEPEND="!net-misc/openswan
+COMMON_DEPEND="non-root? (
+		acct-user/ipsec
+		acct-group/ipsec
+	)
 	gmp? ( >=dev-libs/gmp-4.1.5:= )
 	gcrypt? ( dev-libs/libgcrypt:0 )
 	caps? ( sys-libs/libcap )
@@ -36,9 +39,11 @@ COMMON_DEPEND="!net-misc/openswan
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
 	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns )"
+
 DEPEND="${COMMON_DEPEND}
 	virtual/linux-sources
 	sys-kernel/linux-headers"
+
 RDEPEND="${COMMON_DEPEND}
 	virtual/logger
 	sys-apps/iproute2
@@ -89,11 +94,6 @@ pkg_setup() {
 			ewarn "If you need it, please use kernel >= 2.6.34."
 			ewarn
 		fi
-	fi
-
-	if use non-root; then
-		enewgroup ${UGID}
-		enewuser ${UGID} -1 -1 -1 ${UGID}
 	fi
 }
 
@@ -300,9 +300,9 @@ pkg_postinst() {
 	elog
 	elog "Make sure you have _all_ required kernel modules available including"
 	elog "the appropriate cryptographic algorithms. A list is available at:"
-	elog "  http://wiki.strongswan.org/projects/strongswan/wiki/KernelModules"
+	elog "  https://wiki.strongswan.org/projects/strongswan/wiki/KernelModules"
 	elog
 	elog "The up-to-date manual is available online at:"
-	elog "  http://wiki.strongswan.org/"
+	elog "  https://wiki.strongswan.org/"
 	elog
 }

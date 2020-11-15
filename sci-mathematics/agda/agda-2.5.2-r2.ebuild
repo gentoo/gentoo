@@ -28,7 +28,7 @@ SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cpphs debug uhc +stdlib emacs"
+IUSE="+cpphs debug +stdlib emacs"
 
 RESTRICT=test # Unrecognized option: --test (did you mean any of --help --js --css ?)
 
@@ -57,10 +57,6 @@ RDEPEND=">=dev-haskell/boxes-0.1.3:=[profile?] <dev-haskell/boxes-0.2:=[profile?
 	>=dev-lang/ghc-7.10.1:=
 	>=dev-haskell/hashtables-1.0.1.8:=[profile?] <dev-haskell/hashtables-1.3:=[profile?]
 	>=dev-haskell/mtl-2.1.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
-	uhc? ( >=dev-haskell/shuffle-0.1.3.3:=[profile?]
-		>=dev-haskell/uhc-light-1.1.9.2:=[profile?] <dev-haskell/uhc-light-1.2:=[profile?]
-		>=dev-haskell/uhc-util-0.1.6.7:=[profile?] <dev-haskell/uhc-util-0.1.7:=[profile?]
-		>=dev-haskell/uulib-0.9.20:=[profile?] )
 "
 RDEPEND+="
 		emacs? ( >=app-editors/emacs-23.1:*
@@ -92,8 +88,7 @@ src_prepare() {
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag cpphs cpphs) \
-		$(cabal_flag debug debug) \
-		$(cabal_flag uhc uhc)
+		$(cabal_flag debug debug)
 }
 
 src_compile() {
