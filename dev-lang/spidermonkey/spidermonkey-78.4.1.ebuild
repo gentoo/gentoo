@@ -93,9 +93,9 @@ python_check_deps() {
 
 pkg_pretend() {
 	if use test ; then
-		CHECKREQS_DISK_BUILD="6400M"
+		CHECKREQS_DISK_BUILD="7600M"
 	else
-		CHECKREQS_DISK_BUILD="5600M"
+		CHECKREQS_DISK_BUILD="6400M"
 	fi
 
 	check-reqs_pkg_pretend
@@ -103,9 +103,9 @@ pkg_pretend() {
 
 pkg_setup() {
 	if use test ; then
-		CHECKREQS_DISK_BUILD="6400M"
+		CHECKREQS_DISK_BUILD="7600M"
 	else
-		CHECKREQS_DISK_BUILD="5600M"
+		CHECKREQS_DISK_BUILD="6400M"
 	fi
 
 	check-reqs_pkg_setup
