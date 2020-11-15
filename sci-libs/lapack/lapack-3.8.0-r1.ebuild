@@ -20,7 +20,6 @@ RDEPEND="
 	>=app-eselect/eselect-lapack-0.2 )
 	!app-eselect/eselect-cblas
 	!sci-libs/blas-reference
-	!sci-libs/cblas-reference
 	!sci-libs/lapacke-reference
 	virtual/fortran
 	doc? ( app-doc/blas-docs )"
