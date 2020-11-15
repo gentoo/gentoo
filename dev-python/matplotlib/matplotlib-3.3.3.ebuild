@@ -24,7 +24,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="cairo doc excel examples gtk3 latex qt5 tk wxwidgets"
+IUSE="cairo doc excel examples gtk3 latex qt5 tk webagg wxwidgets"
 
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
@@ -44,7 +44,6 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=media-libs/qhull-2013
-	>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 	cairo? (
 		dev-python/cairocffi[${PYTHON_USEDEP}]
 	)
@@ -66,6 +65,9 @@ RDEPEND="
 	)
 	qt5? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+	)
+	webagg? (
+		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
 		$(python_gen_cond_dep '
@@ -95,6 +97,7 @@ BDEPEND="
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo?,${PYTHON_USEDEP}]
+		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
 	)
 "
