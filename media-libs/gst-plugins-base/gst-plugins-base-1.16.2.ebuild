@@ -138,7 +138,7 @@ multilib_src_configure() {
 		--disable-wgl
 	)
 
-	gstreamer_multilib_src_configure \
+	CONFIG_SHELL=${BASH} gstreamer_multilib_src_configure \
 		$(use_enable alsa) \
 		$(multilib_native_use_enable introspection) \
 		$(use_enable ivorbis) \
