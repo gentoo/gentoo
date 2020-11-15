@@ -16,7 +16,8 @@ MYTHTV_BRANCH="fixes/${P%.*}"
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org"
-SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/MythTV/mythtv/archive/${BACKPORTS}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/mythtv-30.0_p20190808-cast_constants_to_short.patch"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
@@ -143,7 +144,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-respect_LDFLAGS.patch"
-	"${FILESDIR}/${P}-cast_constants_to_short.patch"
+	"${DISTDIR}/${P}-cast_constants_to_short.patch"
 	"${FILESDIR}/${P}-Fix_Dereferencing_type-punned_pointer.patch"
 	"${FILESDIR}/${P}-Fix_unitialized_variables.patch"
 	"${FILESDIR}/${PN}-29.1-Fix_create_webbrowser_window.patch"
