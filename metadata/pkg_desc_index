@@ -11287,7 +11287,7 @@ games-engines/solarus 1.3.1-r1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.4.1: A realtime strategy game engine
 games-engines/xzip 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
-games-fps/alienarena 20130827-r1: Fast-paced multiplayer deathmatch game
+games-fps/alienarena 7.66: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214-r1: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723-r1: You control a psychic bodyguard, and try to protect the VIP
 games-fps/chocolate-doom 3.0.1: A Doom source port that is minimalist and historically accurate
@@ -11404,7 +11404,7 @@ games-misc/robotfindskitten 2.7182818.701-r1: Help robot find kitten
 games-misc/sdljoytest 11102003: SDL app to test joysticks and game controllers
 games-misc/sex 1.0-r2: Spouts silly mad-lib-style porn-like text
 games-misc/sound-of-sorting 0.6.6_pre20151107-r1: Visualization and Audibilization of Sorting Algorithms
-games-misc/typespeed 0.6.5-r1: Test your typing speed, and get your fingers CPS
+games-misc/typespeed 0.6.5-r2: Test your typing speed, and get your fingers CPS
 games-misc/usolitaire 0.2.1: solitaire in your terminal
 games-misc/wtf 20200518: Translates acronyms for you
 games-misc/wumpus 1.4-r1: Classic Hunt the Wumpus Adventure Game
@@ -11418,7 +11418,7 @@ games-mud/gnome-mud 0.11.2-r2 9999: GNOME MUD client
 games-mud/kildclient 3.0.1-r1: Powerful MUD client with a built-in PERL interpreter
 games-mud/mudix 4.3-r2: A small, stable MUD client for the console
 games-mud/powwow 1.2.16-r1: PowWow Console MUD Client
-games-mud/tf 50_beta8-r2: A small, flexible, screen-oriented MUD client (aka TinyFugue)
+games-mud/tf 5.0_beta8_p8: A small, flexible, screen-oriented MUD client (aka TinyFugue)
 games-mud/tintin 2.01.8: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
 games-mud/tkmoo 0.3.32-r1: MOO Client written in Tcl/Tk
 games-mud/trebuchet 1.075-r1: A crossplatform TCL/TK based MUD client
@@ -11491,7 +11491,7 @@ games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
 games-puzzle/quadrapassel 3.36.05: Fit falling blocks together
-games-puzzle/rezerwar 0.4.2-r1: Puzzle game like the known tetromino and the average pipe games
+games-puzzle/rezerwar 0.4.2-r2: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
 games-puzzle/seatris 0.0.14: A color ncurses tetris clone
@@ -11673,7 +11673,7 @@ games-strategy/wargus 2.4.1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
-games-strategy/wesnoth 1.14.13 1.14.14 1.15.4: Battle for Wesnoth - A fantasy turn-based strategy game
+games-strategy/wesnoth 1.14.14 1.15.4: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20-r1 9999: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/acc 1.57: ACS script compiler for use with ZDoom and Hexen
@@ -17482,7 +17482,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.236 4.4.240 4.4.241 4.4.242 4.4.243 4.9.236 4.9.240 4.9.241 4.9.242 4.9.243 4.14.198 4.14.202 4.14.203 4.14.204 4.14.205 4.14.206 4.19.146 4.19.149 4.19.152 4.19.153 4.19.154 4.19.155 4.19.156 4.19.157 5.4.66 5.4.72 5.4.73 5.4.74 5.4.75 5.4.76 5.4.77 5.8.18 5.9.0 5.9.1 5.9.2 5.9.3 5.9.4 5.9.6 5.9.7 5.9.8: Full sources including the Gentoo patchset for the 5.9 kernel tree
+sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.9.240 4.9.241 4.9.242 4.9.243 4.14.202 4.14.203 4.14.204 4.14.205 4.14.206 4.19.152 4.19.153 4.19.154 4.19.155 4.19.156 4.19.157 5.4.72 5.4.76 5.4.77 5.8.18 5.9.6 5.9.7 5.9.8: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
