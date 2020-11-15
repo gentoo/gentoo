@@ -76,14 +76,14 @@ src_install() {
 	# link xsane so it is seen as a plugin in gimp
 	if use gimp; then
 		local plugindir
-		local gimptool=$(ls "${EPREFIX}"/usr/bin/gimptool* | head -n1)
-		if [ -n "${gimptool}" ]; then
-			plugindir="$(${gimptool} --gimpplugindir)/plug-ins"
+		local gimptool=( "${EPREFIX}"/usr/bin/gimptool* )
+		if [[ ${#gimptool[@]} -gt 0 ]]; then
+			plugindir="$("${gimptool[0]}" --gimpplugindir)/plug-ins"
 		else
 			die "Can't find GIMP plugin directory."
 		fi
-		dodir "${plugindir#${EPREFIX}}"
-		dosym "${EPREFIX}/usr/bin/xsane" "${plugindir#${EPREFIX}}"/xsane
+		mkdir -p "${D}${plugindir}" || die
+		ln -s ../../../../bin/xsane "${D}${plugindir}"/xsane || die
 	fi
 
 	newicon "${DISTDIR}/${PN}-256x256.png" "${PN}".png
