@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-2.5-gentoo.patch"
+	"${FILESDIR}/${P}-vlan_dev_priv.patch"
 )
 
 pkg_setup() {
