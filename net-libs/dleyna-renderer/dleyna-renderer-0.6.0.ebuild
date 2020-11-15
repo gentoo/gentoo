@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A library to manipulate DLNA renderers"
+DESCRIPTION="A library to discover and manipulate DLNA renderers"
 HOMEPAGE="https://01.org/dleyna/"
 SRC_URI="https://01.org/sites/default/files/downloads/dleyna/${P}.tar_2.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~juippis/distfiles/tmp/dleyna-renderer-0.6.0-gupnp-1.2.patch"
