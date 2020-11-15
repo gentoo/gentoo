@@ -15,9 +15,10 @@ fi
 DESCRIPTION="Intelligent phonetic (Zhuyin/Bopomofo) input method library"
 HOMEPAGE="http://chewing.im/ https://github.com/chewing/libchewing"
 if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+	SRC_URI="https://dev.gentoo.org/~juippis/distfiles/tmp/libchewing-0.5.1-autoconf-archive-2019.01.06.patch"
 else
-	SRC_URI="https://github.com/chewing/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/chewing/${PN}/releases/download/v${PV}/${P}.tar.bz2
+	https://dev.gentoo.org/~juippis/distfiles/tmp/libchewing-0.5.1-autoconf-archive-2019.01.06.patch"
 fi
 
 LICENSE="LGPL-2.1"
@@ -33,7 +34,7 @@ DEPEND="${RDEPEND}
 	test? ( sys-libs/ncurses[unicode] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.5.1-autoconf-archive-2019.01.06.patch"
+	"${DISTDIR}/${PN}-0.5.1-autoconf-archive-2019.01.06.patch"
 )
 
 src_prepare() {
