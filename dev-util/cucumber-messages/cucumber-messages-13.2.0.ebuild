@@ -7,6 +7,8 @@ USE_RUBY="ruby25 ruby26 ruby27"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
+RUBY_FAKEGEM_EXTRAINSTALL="VERSION"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Protocol Buffer messages for Cucumber's inter-process communication"
