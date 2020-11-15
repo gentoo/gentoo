@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -29,6 +29,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DSTLINK_UDEV_RULES_DIR="$(get_udevdir)"/rules.d
 		-DSTLINK_MODPROBED_DIR="${EPREFIX}/etc/modprobe.d"
+		-DSTLINK_STATIC_LIB=OFF
 		-DLIB_INSTALL_DIR:PATH="$(get_libdir)"
 	)
 
