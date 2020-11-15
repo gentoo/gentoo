@@ -20,28 +20,31 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="udev"
 
-DEPEND="
+RDEPEND="
 	dev-libs/hidapi:=
-	dev-qt/qtcore:5=
-	dev-qt/qtgui:5=
-	dev-qt/qtwidgets:5=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	virtual/libusb:1
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/nlohmann_json
+"
 BDEPEND="
 	virtual/pkgconfig
 "
 
 src_prepare() {
 	default
-	rm -rf dependencies/{hidapi,libusb}* || die
+	rm -r dependencies/{hidapi,libusb,json}* || die
 	if [[ ${PV} != *9999* ]]; then
 		eapply "${FILESDIR}/OpenRGB-0.2-build-system.patch"
 	fi
 }
 
 src_configure() {
-	eqmake5
+	eqmake5 INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann"
 }
 
 src_install() {
