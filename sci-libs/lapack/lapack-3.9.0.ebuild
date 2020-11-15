@@ -21,10 +21,6 @@ RDEPEND="
 	eselect-ldso? ( >=app-eselect/eselect-blas-0.2
 	>=app-eselect/eselect-lapack-0.2 )
 	!app-eselect/eselect-cblas
-	!sci-libs/blas-reference
-	!sci-libs/cblas-reference
-	!sci-libs/lapack-reference
-	!sci-libs/lapacke-reference
 	virtual/fortran
 	doc? ( app-doc/blas-docs )"
 DEPEND="${RDEPEND}
