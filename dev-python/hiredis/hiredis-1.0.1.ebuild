@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
-DEPEND=">=dev-libs/hiredis-0.14:="
+DEPEND="dev-libs/hiredis:0/0.14"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
