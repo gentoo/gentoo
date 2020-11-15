@@ -43,6 +43,7 @@ pkg_setup() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		--disable-doxygen \
 		--disable-html-docs \
 		--with-apr-util="${SYSROOT}${EPREFIX}/usr" \
@@ -59,5 +60,5 @@ src_install() {
 	docompress -x /usr/share/doc/${PF}/examples
 
 	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
