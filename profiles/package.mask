@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-05)
+# Does not compile against ghc-8.8: #754675, #611988
+# Masked for removal
+dev-haskell/shuffle
+dev-haskell/uhc-light
+dev-haskell/uhc-util
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-15)
 # Fails to build.  Lots of bugs filed.  Not touched by maintainer
 # since 2018.
