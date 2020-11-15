@@ -22,7 +22,7 @@ DEPEND=">=dev-libs/boost-1.73:=[nls]
 	>=sys-devel/gcc-4.8:*"
 
 PATCHES=( "${FILESDIR}"/portage-sandbox-test-fix.patch )
-PATCHES+=( "${FILESDIR}/${PV}"-shared_nowide.patch )
+PATCHES+=( "${FILESDIR}"/1.12.2-shared_nowide.patch )
 
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
