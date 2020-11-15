@@ -1,4 +1,4 @@
-DEFINED_PHASES=-
+DEFINED_PHASES=configure install
 DEPEND=>=dev-libs/libpo6-0.8 >=dev-libs/libe-0.11
 DESCRIPTION=A messaging abstraction on top of TCP sockets used in HyperDex
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=>=dev-libs/libpo6-0.8 >=dev-libs/libe-0.11
 SLOT=0
 SRC_URI=http://hyperdex.org/src/busybee-0.7.0.tar.gz
-_md5_=c0793725a387f4c80cbdb6e238084034
+_md5_=59880fe2413738e3322151f8aa7d2d82
