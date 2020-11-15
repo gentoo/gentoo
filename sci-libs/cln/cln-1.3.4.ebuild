@@ -36,7 +36,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --disable-static
+	local myeconfargs=( --disable-static )
+	autotools-utils_src_configure
 }
 
 src_compile() {
