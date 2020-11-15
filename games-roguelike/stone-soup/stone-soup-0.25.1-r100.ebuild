@@ -31,6 +31,8 @@ IUSE="debug ncurses sound test +tiles"
 # see https://crawl.develz.org/mantis/view.php?id=6121
 RESTRICT="test"
 
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
 RDEPEND="
 	${LUA_DEPS}
 	dev-db/sqlite:3
@@ -69,6 +71,7 @@ PATCHES=(
 )
 
 pkg_setup() {
+	lua-single_pkg_setup
 
 	if use !ncurses && use !tiles ; then
 		ewarn "Neither ncurses nor tiles frontend"
