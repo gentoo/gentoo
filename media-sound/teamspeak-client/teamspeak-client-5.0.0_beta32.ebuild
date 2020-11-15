@@ -51,6 +51,8 @@ QA_PREBUILT="
 	opt/teamspeak5-client/chrome-sandbox
 	opt/teamspeak5-client/hotkey_helper
 	opt/teamspeak5-client/libcef.so
+	opt/teamspeak5-client/libtschat_client_lib.so
+	opt/teamspeak5-client/libtschat_client_lib_export.so
 	opt/teamspeak5-client/patcher
 	opt/teamspeak5-client/TeamSpeak
 	opt/teamspeak5-client/soundbackends/libalsa_linux_amd64.so
@@ -59,7 +61,7 @@ QA_PREBUILT="
 
 src_install() {
 	exeinto /opt/teamspeak5-client
-	doexe chrome-sandbox hotkey_helper patcher TeamSpeak libcef.so
+	doexe chrome-sandbox hotkey_helper patcher TeamSpeak libcef.so libtschat_client_lib.so libtschat_client_lib_export.so
 
 	insinto /opt/teamspeak5-client
 	doins *.bin *.dat *.pak
