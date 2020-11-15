@@ -101,10 +101,10 @@ src_install() {
 	if use amd64 ; then
 		# The 32bit overlay library gets automatically built and installed on x86_64 platforms.
 		# Install it into the correct 32bit lib dir.
-		libdir_64="/usr/$(get_libdir)/mumble"
-		libdir_32="/usr/$(get_abi_var LIBDIR x86)/mumble"
-		mkdir -p $D/$libdir_32 || die
-		mv $D/$libdir_64/libmumbleoverlay.x86.so* $D/$libdir_32/ || die
+		local libdir_64="/usr/$(get_libdir)/mumble"
+		local libdir_32="/usr/$(get_abi_var LIBDIR x86)/mumble"
+		mkdir -p ${D}/{$libdir_32} || die
+		mv ${D}/${libdir_64}/libmumbleoverlay.x86.so* ${D}/${libdir_32}/ || die
 	fi
 }
 
