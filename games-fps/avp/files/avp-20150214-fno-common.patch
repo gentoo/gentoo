@@ -1,0 +1,22 @@
+--- a/src/avp/win95/d3d_render.cpp
++++ b/src/avp/win95/d3d_render.cpp
+@@ -2990,7 +2990,7 @@
+ //#define WATER_POLY_SCALE 256
+ int MeshXScale;
+ int MeshZScale;
+-int WaterFallBase;
++extern int WaterFallBase;
+ void PostLandscapeRendering(void)
+ {
+ 	extern int NumOnScreenBlocks;
+--- a/src/opengl.c
++++ b/src/opengl.c
+@@ -2796,7 +2796,7 @@
+ 
+ int MeshXScale;
+ int MeshZScale;
+-int WaterFallBase;
++extern int WaterFallBase;
+ 
+ int WaterXOrigin;
+ int WaterZOrigin;
