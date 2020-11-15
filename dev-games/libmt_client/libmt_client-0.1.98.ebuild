@@ -23,7 +23,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf -disable-static
+	econf --disable-static
 }
 
 src_install() {
