@@ -13055,7 +13055,7 @@ media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standa
 media-libs/libemf 1.0.13: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.5.4 9999: Library for handling OpenGL function pointer management
-media-libs/libexif 0.6.22: Library for parsing, editing, and saving EXIF data
+media-libs/libexif 0.6.22 0.6.22_p20201105: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.9-r1: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
