@@ -68,26 +68,39 @@ BDEPEND="
 src_configure() {
 
 	local mycmakeargs=(
+		"-Dalsa=$(usex alsa)"
+		"-DBUILD_TESTING=$(usex test)"
 		"-Dbundled-celt=ON"
 		"-Dbundled-opus=OFF"
 		"-Dbundled-speex=OFF"
-		"-Doverlay=ON"
-		"-Dserver=OFF"
-		"-Dupdate=OFF"
-		"-Dalsa=$(usex alsa)"
-		"-DBUILD_TESTING=$(usex test)"
 		"-Ddbus=$(usex dbus)"
 		"-Dg15=$(usex g15)"
 		"-Djackaudio=$(usex jack)"
+		"-Doverlay=ON"
 		"-Dportaudio=$(usex portaudio)"
 		"-Dpulseaudio=$(usex pulseaudio)"
 		"-Drnnoise=$(usex rnnoise)"
+		"-Dserver=OFF"
 		"-Dspeechd=$(usex speech)"
 		"-Dtranslations=$(usex nls)"
+		"-Dupdate=OFF"
 		"-Dzeroconf=$(usex zeroconf)"
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use amd64 ; then
+		# The 32bit overlay library gets automatically built and installed on x86_64 platforms.
+		# Install it into the correct 32bit lib dir.
+		libdir_64="/usr/$(get_libdir)/mumble"
+		libdir_32="/usr/$(get_abi_var LIBDIR x86)/mumble"
+		mkdir -p $D/$libdir_32 || die
+		mv $D/$libdir_64/libmumbleoverlay.x86.so* $D/$libdir_32/ || die
+	fi
 }
 
 pkg_postinst() {
@@ -95,7 +108,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	echo
 	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
-	elog "Run mumble-overlay to start the OpenGL overlay (after starting mumble)."
+	elog "Run 'mumble-overlay <program>' to start the OpenGL overlay (after starting mumble)."
 	echo
 }
 
