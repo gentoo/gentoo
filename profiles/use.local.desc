@@ -6171,6 +6171,7 @@ net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
 net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermail
 net-mail/vpopmail:spamassassin - Enables mail-filter/spamassassin support
 net-misc/AQtion:lro - Enable/disable Large Receive Offload. This MUST be disabled for bridging or forwarding.
+net-misc/apt-cacher-ng:fuse - Install the sys-fs/fuse based acngfs, to use a userspace filesystem for the apt cache.
 net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
 net-misc/aria2:gnutls - Use net-libs/gnutls as TLS provider (preferred). Otherwise, dev-libs/openssl will be used as TLS provider. Both apply only with USE=ssl.
 net-misc/aria2:libuv - Use dev-libs/libuv backend.
