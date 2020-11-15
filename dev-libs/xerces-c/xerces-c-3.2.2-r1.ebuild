@@ -13,7 +13,8 @@ if [[ ${PV} == *9999 ]] ; then
 	ESVN_REPO_URI="https://svn.apache.org/repos/asf/xerces/c/trunk"
 	inherit subversion
 else
-	SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.gz"
+	SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/xerces-c-3.2.2-fix-XERCESC-2161.patch"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
@@ -32,7 +33,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( CREDITS KEYS NOTICE README )
 PATCHES=(
-	"${FILESDIR}/${P}-fix-XERCESC-2161.patch"
+	"${DISTDIR}/${P}-fix-XERCESC-2161.patch"
 	"${FILESDIR}/${P}-fix-XERCESC-2163.patch"
 )
 
