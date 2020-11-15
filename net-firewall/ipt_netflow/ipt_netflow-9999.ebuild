@@ -92,7 +92,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" all
+	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" LD="$(tc-getLD)" OBJDUMP="$(tc-getOBJDUMP)" all
 }
 
 src_install() {
