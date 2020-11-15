@@ -1,35 +1,44 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-MY_P="${P/_beta/b}"
+inherit autotools
+
+MY_PV="${PV/_beta/b}"
+MY_PV="${MY_PV/_p*/}"
+MY_PV="$(ver_rs 1 '' "${MY_PV}")"
+# 5.0_beta8_p8 -> 5.0beta8-8
+MY_DEB_PV="$(ver_cut 1-2)$(ver_cut 3-4)-$(ver_cut 6)"
 
 DESCRIPTION="A small, flexible, screen-oriented MUD client (aka TinyFugue)"
 HOMEPAGE="http://tinyfugue.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/tinyfugue/${MY_P}.tar.gz
+	mirror://sourceforge/tinyfugue/tf-${MY_PV}.tar.gz
+	mirror://debian/pool/main/t/tf5/tf5_${MY_DEB_PV}.debian.tar.xz
 	http://homepage.mac.com/mikeride/abelinc/scripts/allrootpatch.txt -> tf-allrootpatch.txt
 	http://homepage.mac.com/mikeride/abelinc/scripts/allsrcpatch.txt -> tf-allsrcpatch.txt
-	doc? ( mirror://sourceforge/tinyfugue/${MY_P}-help.tar.gz )"
+	doc? ( mirror://sourceforge/tinyfugue/tf-${MY_PV}-help.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+atcp debug doc +gmcp ipv6 +option102 ssl"
+IUSE="+atcp doc +gmcp ipv6 +option102 ssl"
 
 RDEPEND="
+	dev-libs/libpcre
+	sys-libs/ncurses:=
 	ssl? ( dev-libs/openssl:0= )
-	dev-libs/libpcre"
-DEPEND=${RDEPEND}
+"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/tf-${MY_PV}"
 
 PATCHES=(
+	"${WORKDIR}"/debian/patches
 	"${DISTDIR}"/tf-allrootpatch.txt
 	"${DISTDIR}"/tf-allsrcpatch.txt
-	"${FILESDIR}"/${P}-pcre.patch
-	"${FILESDIR}"/${P}-stdarg.patch
+	"${FILESDIR}"/tf-50_beta8-pcre.patch
 )
 
 src_configure() {
@@ -38,9 +47,9 @@ src_configure() {
 		$(use_enable gmcp) \
 		$(use_enable option102) \
 		$(use_enable ssl) \
-		$(use_enable debug core) \
 		$(use_enable ipv6 inet6) \
-		--enable-manpage
+		--enable-manpage \
+		--enable-termcap=tinfo
 }
 
 src_install() {

@@ -1,7 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools
 
 DESCRIPTION="Test your typing speed, and get your fingers CPS"
@@ -15,28 +16,29 @@ IUSE="nls"
 
 RDEPEND="
 	sys-libs/ncurses:0=
-	nls? ( virtual/libintl )
-"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-use-extern.patch
+	"${FILESDIR}"/${P}-link-tinfo.patch
+)
 
 src_prepare() {
 	default
-	sed -i \
-		-e 's/testsuite//' \
-		-e 's/doc//' \
-		Makefile.am || die
-	sed -i -e '/^CC =/d' src/Makefile.am || die
-	eapply "${FILESDIR}"/${P}-musl.patch
-	rm -rf m4 #417265
+	sed -i -e '/^CC =/d' \
+		src/Makefile.am \
+		testsuite/Makefile.am || die
+	rm -r m4 || die #bug 417265
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--localedir=/usr/share/locale \
-		$(use_enable nls)
+	econf $(use_enable nls)
 }
 
 src_install() {

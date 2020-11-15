@@ -46,6 +46,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/wesnoth-1.14.14-ar.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -71,9 +75,6 @@ src_configure() {
 		filter-flags -fstack-protector
 		append-flags -fno-stack-protector
 	fi
-
-	# Work around eclass
-	append-flags -UNDEBUG
 
 	if use dedicated || use server ; then
 		mycmakeargs=(
