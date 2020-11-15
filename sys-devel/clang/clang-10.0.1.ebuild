@@ -9,6 +9,7 @@ inherit cmake llvm llvm.org multilib-minimal pax-utils \
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
+SRC_URI+=" https://dev.gentoo.org/~juippis/distfiles/tmp/10.0.1-0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch"
 LLVM_COMPONENTS=( clang clang-tools-extra )
 LLVM_MANPAGES=pregenerated
 LLVM_TEST_COMPONENTS=(
@@ -70,7 +71,7 @@ PDEPEND="
 
 PATCHES=(
 	# fix simultaneous linking to .a and dylib
-	"${FILESDIR}"/10.0.1/0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
+	"${DISTDIR}"/10.0.1-0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
 	"${FILESDIR}"/10.0.1/0004-clang-Avoid-linking-c-index-test-to-duplicate-librar.patch
 )
 

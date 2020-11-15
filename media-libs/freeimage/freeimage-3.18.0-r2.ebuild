@@ -12,7 +12,8 @@ MY_P=${MY_PN}${MY_PV}
 DESCRIPTION="Image library supporting many formats"
 HOMEPAGE="https://freeimage.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
-	mirror://sourceforge/${PN}/${MY_P}.pdf"
+	mirror://sourceforge/${PN}/${MY_P}.pdf
+	https://dev.gentoo.org/~juippis/distfiles/tmp/freeimage-3.18.0-unbundling.patch"
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"
 SLOT="0"
@@ -43,7 +44,7 @@ S=${WORKDIR}/${MY_PN}
 
 DOCS=( "${DISTDIR}"/${MY_P}.pdf README.linux Whatsnew.txt )
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.18.0-unbundling.patch
+	"${DISTDIR}"/${PN}-3.18.0-unbundling.patch
 	"${FILESDIR}"/${PN}-3.18.0-remove-jpeg-transform.patch
 	"${FILESDIR}"/${PN}-3.18.0-rename-jpeg_read_icc_profile.patch
 	"${FILESDIR}"/${PN}-3.18.0-disable-plugin-G3.patch

@@ -7,7 +7,8 @@ inherit flag-o-matic autotools linux-info pam systemd
 
 DESCRIPTION="A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation"
 HOMEPAGE="http://ipsec-tools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+	https://dev.gentoo.org/~juippis/distfiles/tmp/ipsec-tools-add-openssl-1.1.x-support.patch"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -188,7 +189,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-include-vendoridh.patch"
 	eapply "${FILESDIR}"/${PN}-0.8.0-sysctl.patch #425770
 	eapply "${FILESDIR}"/${PN}-CVE-2015-4047.patch
-	eapply "${FILESDIR}"/${PN}-add-openssl-1.1.x-support.patch
+	eapply "${DISTDIR}"/${PN}-add-openssl-1.1.x-support.patch
 	eapply "${FILESDIR}"/${PN}-CVE-2016-10396.patch
 	AT_M4DIR="${S}" eautoreconf
 

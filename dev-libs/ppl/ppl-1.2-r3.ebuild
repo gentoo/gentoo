@@ -7,7 +7,8 @@ inherit autotools
 
 DESCRIPTION="The Parma Polyhedra Library for numerical analysis of complex systems"
 HOMEPAGE="http://bugseng.com/products/ppl"
-SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.xz"
+SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/ppl-1.2-r3-disable-boeing-tests.patch"
 
 LICENSE="GPL-3"
 SLOT="0/4.14" # SONAMEs
@@ -25,7 +26,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/disable-mipproblem2.patch"
 	"${FILESDIR}/disable-containsintegerpoint1.patch"
-	"${FILESDIR}/disable-boeing-tests.patch"
+	"${DISTDIR}/ppl-1.2-r3-disable-boeing-tests.patch"
 	"${FILESDIR}/fix-clang-build.patch"
 )
 

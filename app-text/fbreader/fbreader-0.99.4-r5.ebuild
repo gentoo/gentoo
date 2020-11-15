@@ -7,7 +7,8 @@ inherit flag-o-matic qmake-utils
 
 DESCRIPTION="E-Book Reader. Supports many e-book formats"
 HOMEPAGE="https://www.fbreader.org/"
-SRC_URI="https://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz"
+SRC_URI="https://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/fbreader-0.99.4-combined.patch"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,7 +34,7 @@ BDEPEND="
 "
 
 # bugs #452636, #515698, #516794, #437262, #592588
-PATCHES=( "${FILESDIR}"/${P}-combined.patch )
+PATCHES=( "${DISTDIR}"/${P}-combined.patch )
 
 src_prepare() {
 	default
