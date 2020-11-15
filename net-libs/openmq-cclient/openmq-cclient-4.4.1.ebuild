@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -73,6 +73,12 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
-	emake install DESTDIR="${D}"
+	default
+	dodoc -r "${WORKDIR}"/mq/src/doc/en/.
+	find "${ED}" -name '*.la' -delete || die
 }
