@@ -40,6 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		$(use_enable systemd systemd-journal) \
 		$(use_enable debug)
 }
@@ -59,4 +60,6 @@ src_install() {
 
 	use doc && HTML_DOCS=("docs/html/.")
 	einstalldocs
+
+	find "${ED}" -name '*.la' -delete || die
 }
