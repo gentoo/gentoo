@@ -8,6 +8,7 @@ inherit gnome2 multibuild python-r1
 
 DESCRIPTION="A collection of documentation utilities for the Gnome project"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeDocUtils"
+SRC_URI+=" https://dev.gentoo.org/~juippis/distfiles/tmp/gnome-doc-utils-0.20.10-python3.patch"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -36,7 +37,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Stop build from relying on installed package
 	eapply "${FILESDIR}"/${P}-fix-out-of-tree-build.patch
-	eapply "${FILESDIR}"/${P}-python3.patch
+	eapply "${DISTDIR}"/${P}-python3.patch
 
 	gnome2_src_prepare
 
