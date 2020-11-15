@@ -763,12 +763,6 @@
     </member>
   </project>
   <project>
-    <email>deb-tools@gentoo.org</email>
-    <name>Debian Tools Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Debian_Tools</url>
-    <description>Maintains tools used to build Debian-like distributions and related packages.</description>
-  </project>
-  <project>
     <email>desktop-misc@gentoo.org</email>
     <name>Desktop Miscellaneous Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Desktop_Miscellaneous</url>
