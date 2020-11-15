@@ -12,16 +12,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-DEPEND="dev-libs/hiredis:0/0.14"
+DEPEND=""
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-system-libs.patch
-	"${FILESDIR}"/${P}-api-0.14.patch
-)
 
 python_test() {
 	cd test
