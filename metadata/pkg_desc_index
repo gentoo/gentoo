@@ -5696,7 +5696,7 @@ dev-lua/lua_cliargs 2.5_p5 3.0_p1 3.0_p2: A command-line argument parser.
 dev-lua/luacheck 0.20.0 0.23.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
-dev-lua/luadbi 0.5-r6 0.7.2 0.7.2-r100: A database interface library for Lua
+dev-lua/luadbi 0.7.2 0.7.2-r100: A database interface library for Lua
 dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.6 0.4.6-r100: Binding of libevent for Lua
 dev-lua/luaexpat 1.3.0-r1 1.3.0-r2 1.3.3-r1 1.3.3-r2: LuaExpat is a SAX XML parser based on the Expat library
@@ -16812,7 +16812,7 @@ sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
-sys-apps/hw-probe 1.5-r1 1.6_beta2-r1: A tool to probe for hardware, check it's operability and find drivers
+sys-apps/hw-probe 1.6_beta2-r1: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20200204 20200306 20200813.1 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
