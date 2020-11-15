@@ -14,6 +14,7 @@ MY_P="${PN}-${MY_PV}"
 SRC_URI="
 	${MY_P}.src.tar
 	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.9.3-gentoo-patches.tar.xz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/vmd-1.9.4-gentoo-plugins.patch
 "
 
 SLOT="0"
@@ -85,7 +86,7 @@ src_prepare() {
 
 	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/32121.html
 	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/32116.html
-	eapply "${FILESDIR}"/${PN}-1.9.4-gentoo-plugins.patch
+	eapply "${DISTDIR}"/${PN}-1.9.4-gentoo-plugins.patch
 
 	use cuda && cuda_sanitize
 
