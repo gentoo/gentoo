@@ -22,7 +22,12 @@ DEPEND="test? ( dev-cpp/gtest )
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {
+	default
 	eautoreconf
+}
+
+src_configure() {
+	econf --disable-static
 }
 
 src_compile() {
@@ -42,4 +47,6 @@ src_install() {
 			doman ${page}
 		done
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
