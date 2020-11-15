@@ -14671,7 +14671,7 @@ net-irc/znc-playback 20200510: A ZNC module to control buffer playback
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
-net-libs/aqbanking 6.0.1 6.2.5: Generic Online Banking Interface
+net-libs/aqbanking 6.2.5: Generic Online Banking Interface
 net-libs/axtls 2.1.5 2.1.5-r1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
@@ -17520,7 +17520,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2 1.14.1 1.17 1.18 1.18.1 1.18.1-r1: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 2.32-r3 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 5.1.2 5.4.1-r1: Multi-platform helper library for other libraries
+sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0: Library for managing partitions
 sys-libs/ldb 2.0.12-r1 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1: library required by reiser4progs
