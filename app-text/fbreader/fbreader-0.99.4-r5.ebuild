@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils
+inherit flag-o-matic qmake-utils xdg
 
 DESCRIPTION="E-Book Reader. Supports many e-book formats"
 HOMEPAGE="https://www.fbreader.org/"
