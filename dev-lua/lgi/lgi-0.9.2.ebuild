@@ -21,7 +21,7 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND=">=dev-lang/lua-5.1:=
 		dev-libs/gobject-introspection
 		dev-libs/glib
-		virtual/libffi:0="
+		dev-libs/libffi:0="
 DEPEND="${RDEPEND}
 		test? (
 			x11-libs/cairo[glib]
