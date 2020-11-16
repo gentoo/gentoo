@@ -34,6 +34,8 @@ sci-misc/boinc X
 net-mail/lbdb evo
 # needs dev-util/devhelp, depends on net-libs/webkit-gtk
 dev-util/anjuta devhelp
+# app-text/libgepub depends on webkit-gtk
+xfce-extra/tumbler epub
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on ppc
