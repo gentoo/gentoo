@@ -34,7 +34,7 @@ LIB_DEPEND="
 	>=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8:=[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
-	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
+	ftdi? ( dev-embedded/libftdi:1[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	python? (
 		${PYTHON_DEPS}
