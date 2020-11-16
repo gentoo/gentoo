@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 MY_PN=Nexuiz
 MY_P=${PN}-${PV//./}
