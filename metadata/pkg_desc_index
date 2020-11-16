@@ -12732,7 +12732,7 @@ media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi a
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
 media-gfx/flameshot 0.6.0: Powerful yet simple to use screenshot software
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20200314: postscript font editor and converter
+media-gfx/fontforge 20200314 20201107: postscript font editor and converter
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
 media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
