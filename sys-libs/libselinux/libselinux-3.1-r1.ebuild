@@ -40,8 +40,8 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 		ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
 	)
 	elibc_musl? ( sys-libs/fts-standalone )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	python? ( >=dev-lang/swig-2.0.9 )
 	ruby? ( >=dev-lang/swig-2.0.9 )"
 
