@@ -3139,6 +3139,7 @@ games-fps/eduke32:sc-55 - Install the Duke Nukem 3D Roland SC-55 music files.
 games-fps/eduke32:sdk - Install the SDK files.
 games-fps/eduke32:server - Enable support for multiplayer.
 games-fps/eduke32:tools - Install the support tools for mapster32.
+games-fps/eduke32:voidsw - Enable support for Shadow Warrior (Classic) through VoidSW.
 games-fps/eduke32:voxels - Install the Duke Nukem 3D Voxels Pack.
 games-fps/eduke32:vpx - Enable support for media-libs/libvpx.
 games-fps/eduke32:xmp - Enable support for media-libs/exempi.
