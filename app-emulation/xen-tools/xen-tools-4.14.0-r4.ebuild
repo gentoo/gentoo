@@ -93,7 +93,10 @@ COMMON_DEPEND="
 "
 
 DEPEND="${COMMON_DEPEND}
+	app-misc/pax-utils
+	dev-lang/perl
 	>=sys-kernel/linux-headers-4.11
+	x11-libs/pixman
 	$(python_gen_cond_dep '
 		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
 		pam? ( dev-python/pypam[${PYTHON_MULTI_USEDEP}] )
@@ -113,8 +116,6 @@ DEPEND="${COMMON_DEPEND}
 		system-seabios? ( sys-firmware/seabios )
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
-	dev-lang/perl
-	app-misc/pax-utils
 	doc? (
 		app-text/ghostscript-gpl
 		app-text/pandoc
@@ -127,7 +128,6 @@ DEPEND="${COMMON_DEPEND}
 	hvm? ( x11-base/xorg-proto )
 	qemu? (
 		app-arch/snappy:=
-		x11-libs/pixman
 		sdl? (
 			media-libs/libsdl[X]
 			media-libs/libsdl2[X]
