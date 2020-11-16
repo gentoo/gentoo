@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="ipsec (strongswan) program group"
 
-ACCT_GROUP_ID=391
+ACCT_GROUP_ID=199
