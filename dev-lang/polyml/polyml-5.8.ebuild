@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="X? ( x11-libs/motif:0 )
 		gmp? ( >=dev-libs/gmp-5 )
 		elibc_glibc? ( threads? ( >=sys-libs/glibc-2.13 ) )
-		virtual/libffi"
+		dev-libs/libffi:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

@@ -35,7 +35,7 @@ CDEPEND="!dev-scheme/sigscheme
 	eb? ( dev-libs/eb )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	expat? ( dev-libs/expat )
-	libffi? ( virtual/libffi )
+	libffi? ( dev-libs/libffi:= )
 	gtk? ( x11-libs/gtk+:3 )
 	gtk2? ( x11-libs/gtk+:2 )
 	libedit? ( dev-libs/libedit )
