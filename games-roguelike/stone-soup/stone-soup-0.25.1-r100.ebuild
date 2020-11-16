@@ -6,9 +6,10 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-1 )
+LUA_COMPAT=( lua5-{1..3} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 VIRTUALX_REQUIRED="manual"
-inherit desktop eutils lua-single xdg-utils toolchain-funcs
+inherit desktop distutils-r1 eutils lua-single xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
@@ -31,8 +32,6 @@ IUSE="debug ncurses sound test +tiles"
 # see https://crawl.develz.org/mantis/view.php?id=6121
 RESTRICT="test"
 
-REQUIRED_USE="${LUA_REQUIRED_USE}"
-
 RDEPEND="
 	${LUA_DEPS}
 	dev-db/sqlite:3
@@ -54,11 +53,9 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	dev-python/pyyaml
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	sys-devel/flex
 	tiles? (
-		app-arch/advancecomp
-		media-gfx/pngcrush
 		sys-libs/ncurses:0
 	)
 	virtual/pkgconfig
@@ -73,7 +70,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	lua-single_pkg_setup
 
 	if use !ncurses && use !tiles ; then
 		ewarn "Neither ncurses nor tiles frontend"
