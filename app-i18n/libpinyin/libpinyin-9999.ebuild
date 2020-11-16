@@ -1,4 +1,4 @@
-# Copyright 2012-2019 Gentoo Authors
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/libpinyin/libpinyin"
 fi
 
-LIBPINYIN_MODEL_VERSION="17"
+LIBPINYIN_MODEL_VERSION="19"
 
 DESCRIPTION="Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao"
 HOMEPAGE="https://github.com/libpinyin/libpinyin https://sourceforge.net/projects/libpinyin/"
@@ -57,5 +57,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -name "*.la" -delete || die
 }
