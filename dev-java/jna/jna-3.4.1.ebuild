@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ IUSE="+awt +nio-buffers"
 REQUIRED_USE="test? ( awt nio-buffers )"
 
 CDEPEND="
-	virtual/libffi"
+	dev-libs/libffi"
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.6"
 DEPEND="${CDEPEND}
