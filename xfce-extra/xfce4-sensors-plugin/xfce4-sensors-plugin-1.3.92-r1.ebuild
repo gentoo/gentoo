@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2-utils
 
@@ -29,8 +29,9 @@ RDEPEND=">=x11-libs/gtk+-3.20:3=
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	lm-sensors? ( >=sys-apps/lm-sensors-3.1.0:= )
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )"
+DEPEND=${RDEPEND}
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig"
 
@@ -59,9 +60,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
