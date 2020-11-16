@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-stdlib.patch
 	"${FILESDIR}"/${P}-ffmpeg3.patch
 	"${FILESDIR}"/${P}-ffmpeg3-1.patch
+	"${FILESDIR}"/${P}-AR.patch
 )
 
 src_prepare() {
