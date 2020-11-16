@@ -10,8 +10,8 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<doc lang="en">http://crawl.develz.org/wordpress/documentation</doc>
-		<bugs-to>https://crawl.develz.org/mantis/main_page.php</bugs-to>
+		<doc lang="en">https://crawl.develz.org</doc>
+		<bugs-to>https://crawl.develz.org/mantis</bugs-to>
 		<remote-id type="sourceforge">crawl-ref</remote-id>
 	</upstream>
 	<use>
