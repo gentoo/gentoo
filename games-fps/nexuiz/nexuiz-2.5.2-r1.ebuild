@@ -76,7 +76,7 @@ src_prepare() {
 
 	sed -i \
 		-e '1i DP_LINK_TO_LIBJPEG=1' \
-		-e "s:ifdef DP_.*:DP_FS_BASEDIR=/usr/share/${PN}\n&:" \
+		-e "s:ifdef DP_.*:DP_FS_BASEDIR=${EPREFIX}/usr/share/${PN}\n&:" \
 		makefile || die
 
 	if ! use alsa ; then
