@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2020-11-16)
+# Depends on app-text/libgepub which is not yet keyworded on this 
+# arch. #754762
+xfce-extra/tumbler epub
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
 # dev-util/kdevelop-php is not keyworded, bug #751337
 >=kde-apps/umbrello-20.08.3 php
