@@ -66,7 +66,8 @@ IUSE="clang cpu_flags_arm_neon dbus debug eme-free geckodriver +gmp-autoupdate
 	+system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp wayland wifi"
 
-REQUIRED_USE="screencast? ( wayland )"
+REQUIRED_USE="debug? ( !system-av1 )
+	screencast? ( wayland )"
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
