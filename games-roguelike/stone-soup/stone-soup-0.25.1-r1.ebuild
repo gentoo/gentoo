@@ -5,10 +5,8 @@
 # - attempt +test, linked bug claims to be fixed
 
 EAPI=7
-
-LUA_COMPAT=( lua5-1 )
 VIRTUALX_REQUIRED="manual"
-inherit desktop eutils lua-single xdg-utils toolchain-funcs
+inherit desktop eutils xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
@@ -31,11 +29,9 @@ IUSE="debug ncurses sound test +tiles"
 # see https://crawl.develz.org/mantis/view.php?id=6121
 RESTRICT="test"
 
-REQUIRED_USE="${LUA_REQUIRED_USE}"
-
 RDEPEND="
-	${LUA_DEPS}
 	dev-db/sqlite:3
+	=dev-lang/lua-5.1*:0=
 	sys-libs/zlib
 	!ncurses? ( !tiles? ( sys-libs/ncurses:0 ) )
 	ncurses? ( sys-libs/ncurses:0 )
@@ -73,7 +69,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	lua-single_pkg_setup
 
 	if use !ncurses && use !tiles ; then
 		ewarn "Neither ncurses nor tiles frontend"
