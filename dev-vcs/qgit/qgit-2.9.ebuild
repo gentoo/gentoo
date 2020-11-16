@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake xdg
 
 DESCRIPTION="Qt GUI for git repositories"
 HOMEPAGE="https://github.com/tibirna/qgit"

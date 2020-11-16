@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="156963ddc"
+EGIT_COMMIT="93f62bbad"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
@@ -31,7 +31,7 @@ SRC_URI="
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="cdinstall demo fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp"
+IUSE="cdinstall demo fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools voidsw vorbis voxels vpx xmp"
 REQUIRED_USE="
 	cdinstall? ( !demo )
 	demo? ( !cdinstall )
@@ -162,13 +162,13 @@ src_compile() {
 
 	emake "${myemakeopts[@]}"
 
-	if use tools; then
-		emake utils "${myemakeopts[@]}"
-	fi
+	use tools && emake utils "${myemakeopts[@]}"
+	use voidsw && emake sw "${myemakeopts[@]}"
 }
 
 src_install() {
 	dobin eduke32 mapster32 "${FILESDIR}"/eduke32-bin
+	use voidsw && dobin voidsw "${FILESDIR}"/voidsw-bin
 
 	if use tools; then
 		local tools=(
@@ -209,6 +209,7 @@ src_install() {
 
 	make_desktop_entry eduke32-bin EDuke32 eduke32 Game
 	make_desktop_entry mapster32 Mapster32 eduke32 Game
+	use voidsw && make_desktop_entry voidsw-bin VoidSW voidsw Game
 
 	local DOCS=( package/sdk/samples/*.txt source/build/doc/*.txt )
 	use hrp && DOCS+=( "${WORKDIR}"/hrp_readme.txt "${WORKDIR}"/hrp_todo.txt )
