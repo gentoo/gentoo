@@ -33,10 +33,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
 	>=sys-libs/libselinux-${SELNX_VER}[${MULTILIB_USEDEP}]
 	>=sys-process/audit-2.2.2[${MULTILIB_USEDEP}]
-	>=dev-libs/ustr-1.0.4-r2[${MULTILIB_USEDEP}]
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
-	>=dev-lang/swig-2.0.4-r1
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-lang/swig-2.0.4-r1
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig"
