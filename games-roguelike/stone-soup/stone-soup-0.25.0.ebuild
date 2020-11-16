@@ -12,7 +12,7 @@ inherit desktop distutils-r1 eutils xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
-HOMEPAGE="http://crawl.develz.org/wordpress/"
+HOMEPAGE="https://crawl.develz.org"
 SRC_URI="
 	https://crawl.develz.org/release/$(ver_cut 1-2)/${PN/-/_}-${PV}.tar.xz
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
