@@ -40,6 +40,8 @@ PATCHES=( "${FILESDIR}/${PN}-libdir.patch" )
 PATCHES+=( "${FILESDIR}/${PN}-include.patch" )
 #See https://github.com/raspberrypi/userland/pull/655
 PATCHES+=( "${FILESDIR}/${PN}-libfdt-static.patch" )
+#See https://github.com/raspberrypi/userland/pull/659
+PATCHES+=( "${FILESDIR}/${PN}-pkgconf-arm64.patch" )
 
 pkg_setup() {
 	append-ldflags $(no-as-needed)
