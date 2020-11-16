@@ -68,6 +68,8 @@ gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
 gnome-base/gnome-control-center flickr
 gnome-base/gvfs google
+# app-text/libgepub depends on webkit-gtk.
+xfce-extra/tumbler epub
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=libtesseract, app-text/tesseract is not keyworded
