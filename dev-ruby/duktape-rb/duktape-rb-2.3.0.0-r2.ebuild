@@ -19,7 +19,7 @@ SRC_URI="https://github.com/judofyr/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 
 COMMON_DEPEND="dev-lang/duktape"
 DEPEND+="${COMMON_DEPEND}"
