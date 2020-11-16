@@ -25,18 +25,38 @@ RESTRICT="!test? ( test )"
 DEPEND="${LUA_DEPS}"
 RDEPEND="${DEPEND}"
 
-src_compile() {
-	compiler="$(tc-getCC) ${CFLAGS} -fPIC ${LDFLAGS} -DLUA_COMPAT_BITLIB -Ic-api -c lbitlib.c -o lbitlib.o"
-	einfo "${compiler}"
-	eval "${compiler}" || die
+lua_src_compile() {
+	local compiler=(
+		"$(tc-getCC)"
+		"${CFLAGS}"
+		"-fPIC"
+		"${LDFLAGS}"
+		"-DLUA_COMPAT_BITLIB"
+		"-Ic-api"
+		"$(lua_get_CFLAGS)"
+		"-c lbitlib.c"
+		"-o lbitlib-${ELUA}.o"
+	)
+	einfo "${compiler[@]}"
+	${compiler[@]} || die
 
-	linker="$(tc-getCC) -shared ${LDFLAGS} -o bit32.so lbitlib.o"
-	einfo "${linker}"
-	eval "${linker}" || die
+	local linker=(
+		"$(tc-getCC)"
+		"-shared"
+		"${LDFLAGS}"
+		"-o bit32-${ELUA}.so"
+		"lbitlib-${ELUA}.o"
+	)
+	einfo "${linker[@]}"
+	${linker[@]} || die
+}
+
+src_compile() {
+	lua_foreach_impl lua_src_compile
 }
 
 lua_src_test() {
-	LUA_CPATH="./?.so" "${ELUA}" "tests/test-bit32.lua" || die
+	LUA_CPATH="./bit32-${ELUA}.so" "${ELUA}" "tests/test-bit32.lua" || die
 }
 
 src_test() {
@@ -45,7 +65,7 @@ src_test() {
 
 lua_src_install() {
 	exeinto "$(lua_get_cmod_dir)"
-	doexe bit32.so
+	newexe "bit32-${ELUA}.so" "bit32.so"
 }
 
 src_install() {

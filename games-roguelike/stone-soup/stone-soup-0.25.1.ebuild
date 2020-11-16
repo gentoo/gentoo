@@ -5,8 +5,10 @@
 # - attempt +test, linked bug claims to be fixed
 
 EAPI=7
+
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 VIRTUALX_REQUIRED="manual"
-inherit desktop eutils xdg-utils toolchain-funcs
+inherit desktop distutils-r1 eutils xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
@@ -50,7 +52,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	dev-python/pyyaml
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	sys-devel/flex
 	tiles? (
 		sys-libs/ncurses:0
