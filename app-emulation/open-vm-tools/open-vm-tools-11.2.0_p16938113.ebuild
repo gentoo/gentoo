@@ -1,4 +1,4 @@
-# Copyright 2007-2019 Gentoo Authors
+# Copyright 2007-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit autotools linux-info pam systemd toolchain-funcs
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
-MY_P="${P}-14773994"
-SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/${MY_P}.tar.gz"
+MY_P="${PN}-${PV/_p/-}"
+SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV%_p*}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -69,7 +69,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
 	"${FILESDIR}/10.1.0-Werror.patch"
-	"${FILESDIR}/11.0.1-udev-complaints.patch"
 )
 
 pkg_setup() {
@@ -77,6 +76,7 @@ pkg_setup() {
 	use X && CONFIG_CHECK+=" ~DRM_VMWGFX"
 	kernel_is -lt 3 9 || CONFIG_CHECK+=" ~VMWARE_VMCI ~VMWARE_VMCI_VSOCKETS"
 	kernel_is -lt 3 || CONFIG_CHECK+=" ~FUSE_FS"
+	kernel_is -lt 5 5 || CONFIG_CHECK+=" ~X86_IOPL_IOPERM"
 	linux-info_pkg_setup
 }
 
