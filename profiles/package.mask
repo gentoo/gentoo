@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-17)
+# Both packages provide backports that are only meaningful to Python 2
+# and have no reverse dependencies.
+# Removal in 30 days.  Bug #754984.
+dev-python/backports-csv
+dev-python/backports-os
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
 # Depends on deprecated QtWebKit, needs dedicated maintainer and version bump
 # to 20.11 with new dependency dev-python/PyQtChart.
