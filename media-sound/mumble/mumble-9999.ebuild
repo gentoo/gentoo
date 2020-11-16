@@ -73,23 +73,23 @@ src_prepare() {
 src_configure() {
 
 	local mycmakeargs=(
-		"-Dalsa=$(usex alsa)"
-		"-DBUILD_TESTING=$(usex test)"
-		"-Dbundled-celt=ON"
-		"-Dbundled-opus=OFF"
-		"-Dbundled-speex=OFF"
-		"-Ddbus=$(usex dbus)"
-		"-Dg15=$(usex g15)"
-		"-Djackaudio=$(usex jack)"
-		"-Doverlay=ON"
-		"-Dportaudio=$(usex portaudio)"
-		"-Dpulseaudio=$(usex pulseaudio)"
-		"-Drnnoise=$(usex rnnoise)"
-		"-Dserver=OFF"
-		"-Dspeechd=$(usex speech)"
-		"-Dtranslations=$(usex nls)"
-		"-Dupdate=OFF"
-		"-Dzeroconf=$(usex zeroconf)"
+		-Dalsa="$(usex alsa)"
+		-DBUILD_TESTING="$(usex test)"
+		-Dbundled-celt="ON"
+		-Dbundled-opus="OFF"
+		-Dbundled-speex="OFF"
+		-Ddbus="$(usex dbus)"
+		-Dg15="$(usex g15)"
+		-Djackaudio="$(usex jack)"
+		-Doverlay="ON"
+		-Dportaudio="$(usex portaudio)"
+		-Dpulseaudio="$(usex pulseaudio)"
+		-Drnnoise="$(usex rnnoise)"
+		-Dserver="OFF"
+		-Dspeechd="$(usex speech)"
+		-Dtranslations="$(usex nls)"
+		-Dupdate="OFF"
+		-Dzeroconf="$(usex zeroconf)"
 	)
 
 	cmake_src_configure
@@ -103,8 +103,9 @@ src_install() {
 		# Install it into the correct 32bit lib dir.
 		local libdir_64="/usr/$(get_libdir)/mumble"
 		local libdir_32="/usr/$(get_abi_var LIBDIR x86)/mumble"
-		mkdir -p ${D}/{$libdir_32} || die
-		mv ${D}/${libdir_64}/libmumbleoverlay.x86.so* ${D}/${libdir_32}/ || die
+		dodir ${libdir_32}
+		mv "${ED}"/${libdir_64}/libmumbleoverlay.x86.so* \
+			"${ED}"/${libdir_32}/ || die
 	fi
 }
 
@@ -114,8 +115,4 @@ pkg_postinst() {
 	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
 	elog "Run 'mumble-overlay <program>' to start the OpenGL overlay (after starting mumble)."
 	echo
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
