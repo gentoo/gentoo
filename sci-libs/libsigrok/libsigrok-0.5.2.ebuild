@@ -72,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-swig-4.patch"
 	# https://sigrok.org/bugzilla/show_bug.cgi?id=1526
 	"${FILESDIR}/${P}-ruby-swig-docs.patch" # bug 705074
+	"${FILESDIR}/${P}-check-0.15.patch"
 )
 
 pkg_setup() {
