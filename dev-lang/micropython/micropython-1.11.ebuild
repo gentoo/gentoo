@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	virtual/libffi
+	dev-libs/libffi
 	virtual/pkgconfig"
 
 PATCHES=(
