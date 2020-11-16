@@ -105,14 +105,14 @@ src_configure() {
 		use ${1} || echo "no-${1}"
 	}
 	local mycmakeargs=(
-		"-Doverlay=OFF"
-		"-Dserver=ON"
+		"-DBUILD_TESTING=$(usex test)"
 		"-Dclient=OFF"
 		"-Ddbus=$(usex dbus)"
 		"-Dg15=OFF"
-		"-Dice=$(usex ice)"
 		"-Dgrpc=$(usex grpc)"
-		"-DBUILD_TESTING=$(usex test)"
+		"-Dice=$(usex ice)"
+		"-Doverlay=OFF"
+		"-Dserver=ON"
 		"-Dzeroconf=$(usex zeroconf)"
 	)
 
