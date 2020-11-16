@@ -8029,7 +8029,7 @@ dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.15 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/cytoolz 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 2.28.0 2.30.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 2.30.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19: Easily create mock objects on D-Bus for software testing
@@ -8339,7 +8339,7 @@ dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use 
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.9 2.10: Personal shell command keeper and snippets manager
 dev-python/keyring 21.4.0 21.5.0: Provides access to the system keyring service
-dev-python/keystoneauth 4.0.1 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.2.0 1.3.0 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 20.6.0: micro-framework for developing production-ready web services with Python
@@ -8514,7 +8514,7 @@ dev-python/oslo-concurrency 4.0.2 4.3.1: library for running multi-thread, multi
 dev-python/oslo-config 8.0.3 8.3.2: Oslo Configuration API
 dev-python/oslo-context 2.22.1 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0 8.4.0: OpenStack Common DB Code
-dev-python/oslo-i18n 3.23.1 5.0.1: Oslo i18n library
+dev-python/oslo-i18n 5.0.1: Oslo i18n library
 dev-python/oslo-log 4.1.2 4.4.0: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 12.1.1 12.5.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 4.0.2 4.1.1: Components injected into wsgi pipelines to intercept request/response flows.
@@ -8529,7 +8529,7 @@ dev-python/oslo-upgradecheck 1.0.1 1.1.1: Oslo i18n library
 dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2 2.3.0: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1 3.7.0: Oslo VMware library for OpenStack projects
-dev-python/oslotest 3.7.1 4.4.1: Oslo test framework
+dev-python/oslotest 4.4.1: Oslo test framework
 dev-python/osprofiler 2.6.0 3.4.0: OpenStack Profiler Library
 dev-python/osrf_pycommon 0.1.10-r1: Commonly needed Python modules used by Python software developed at OSRF
 dev-python/ovs 2.13.0: OVS bindings for python.
@@ -8758,7 +8758,7 @@ dev-python/pyquery 1.4.1-r1: A jQuery-like library for python
 dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
-dev-python/pyroute2 0.5.12-r1 0.5.14: A pure Python netlink and Linux network configuration library.
+dev-python/pyroute2 0.5.14: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0: Python client for rqlite
 dev-python/pyrsistent 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 4.6.5-r1 6.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
@@ -8824,7 +8824,7 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1 5.0.1: Client library for Barbican API.
 dev-python/python-blazarclient 2.1.0 3.1.1: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 2.5.0 3.0.0 3.0.1 3.0.2: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 3.0.0 3.0.1 3.0.2: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 4.2.2 7.2.0: A client for the OpenStack Cinder API
@@ -8953,7 +8953,7 @@ dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
-dev-python/reno 2.11.3 3.2.0: Release notes manager, storing release notes in a git repo and building docs
+dev-python/reno 3.2.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.48: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
@@ -8994,10 +8994,10 @@ dev-python/rq 1.5.2 1.6.1: simple, lightweight library for creating and processi
 dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.0.0 2.1.1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
-dev-python/rtslib-fb 2.1.73 2.1.74: A Python object API for managing the Linux LIO kernel target
+dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-yaml 0.16.12-r1: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
-dev-python/ryu 4.26-r1 4.34: Component-based Software-defined Networking Framework
+dev-python/ryu 4.34: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.4.2: Pythonic file interface to S3
 dev-python/s3transfer 0.3.3: An Amazon S3 Transfer Manager
 dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
@@ -9092,7 +9092,7 @@ dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp doc
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
-dev-python/spur 0.3.21 0.3.22: Run commands locally or over SSH using the same interface
+dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.1.5: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.9.4: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
@@ -9101,7 +9101,7 @@ dev-python/spyder-notebook 0.3.0: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.4.2: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20200721: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.11 1.3.17 1.3.20: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.17 1.3.20: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -9249,7 +9249,7 @@ dev-python/xarray 0.12.1 0.16.0 0.16.1: N-D labeled arrays and datasets in Pytho
 dev-python/xcffib 0.10.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdoctest 0.11.0: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
-dev-python/xlsxwriter 1.3.6 1.3.7: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.2.3-r1 1.2.4 1.2.5 1.3.0 1.3.1: An XML Schema validator and decoder
@@ -15034,7 +15034,7 @@ net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of 
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 3.3.8 4.0.2 4.0.3-r1 4.0.4: User friendly Bitcoin client
+net-misc/electrum 4.0.2 4.0.3-r1 4.0.4: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
