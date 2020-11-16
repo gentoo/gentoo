@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
+# Depends on deprecated QtWebKit, upstream did not make a release in 10 years
+# (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
+app-text/goldendict
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-11-05)
 # Does not compile against ghc-8.8: #754675, #611988
 # Masked for removal
