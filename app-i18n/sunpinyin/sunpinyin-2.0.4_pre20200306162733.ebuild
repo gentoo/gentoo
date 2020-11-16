@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
 
 inherit python-any-r1 scons-utils toolchain-funcs
 
@@ -31,7 +31,8 @@ IUSE=""
 
 BDEPEND="dev-lang/perl
 	virtual/pkgconfig"
-DEPEND="dev-db/sqlite:3"
+DEPEND="dev-db/sqlite:3
+	virtual/libiconv"
 RDEPEND="${DEPEND}"
 
 if [[ "${PV}" == *_pre* ]]; then
