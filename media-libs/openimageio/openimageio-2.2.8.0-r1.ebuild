@@ -3,8 +3,9 @@
 
 EAPI=7
 
+FONT_PN=OpenImageIO
 PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake python-single-r1
+inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
 HOMEPAGE="https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO"
@@ -112,6 +113,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DVERBOSE=ON
 		-DOIIO_BUILD_TESTS=OFF
+		-DINSTALL_FONTS=OFF
 		-DBUILD_DOCS=$(usex doc)
 		-DINSTALL_DOCS=$(usex doc)
 		-DSTOP_ON_WARNING=OFF
@@ -135,4 +137,19 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	# can't use font_src_install
+	# it does directory hierarchy recreation
+	FONT_S=(
+		"${S}/src/fonts/Droid_Sans"
+		"${S}/src/fonts/Droid_Sans_Mono"
+		"${S}/src/fonts/Droid_Serif"
+	)
+	insinto ${FONTDIR}
+	for dir in "${FONT_S[@]}"; do
+		doins "${dir}"/*.ttf
+	done
 }
