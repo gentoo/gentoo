@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/20200314-big-endian.patch
 	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
 	"${FILESDIR}"/20200314-MacServiceReadFDs.patch
+	"${FILESDIR}"/${P}-freetype-2.10.3.patch
 )
 
 pkg_setup() {
