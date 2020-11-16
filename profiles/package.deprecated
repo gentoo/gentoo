@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Jesus P Rey <gentoo@chuso.net> (2020-09-26)
-# Only one provider left; media-video/ffmpeg should be used instead
-# Bug #744787
-virtual/ffmpeg
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-08)
 # Dead implementations, please migrate to >=zeromq-4
 dev-perl/ZMQ-LibZMQ2

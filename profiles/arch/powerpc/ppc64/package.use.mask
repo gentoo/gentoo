@@ -157,11 +157,6 @@ x11-misc/rss-glx quesoglc
 # and stupid 64bit toolchain.
 net-libs/libproxy webkit
 
-# Brent Baude <ranger@gentoo.org> (2008-06-11)
-# Masking out passwdqc from older pambase since pam_passwdqc is not keyworded
-# new versions require sys-auth/passwdqc which is keyworded
-<=sys-auth/pambase-20200304 passwdqc
-
 # Joseph Jezak <josejx@gentoo.org> (2010-02-12)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)
 net-im/pidgin gstreamer
