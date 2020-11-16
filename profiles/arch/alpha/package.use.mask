@@ -39,6 +39,8 @@ app-office/planner eds
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
 gnome-base/gvfs google
+# needs app-text/libgepub which depends on webkit-gtk
+xfce-extra/tumbler epub
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
