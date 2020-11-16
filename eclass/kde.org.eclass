@@ -220,7 +220,10 @@ kde.org_pkg_nofetch() {
 	case ${CATEGORY} in
 		kde-frameworks) sched_uri+="/Frameworks" ;;
 		kde-plasma) sched_uri+="/Plasma_5" ;;
-		kde-apps) sched_uri+="/release_service/$(ver_cut 1-2)_Release_Schedule" ;;
+		*)
+			[[ ${KDE_RELEASE_SERVICE} = true ]] &&
+				sched_uri+="/release_service/$(ver_cut 1-2)_Release_Schedule"
+			;;
 	esac
 
 	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "
