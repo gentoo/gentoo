@@ -24,10 +24,6 @@ media-gfx/darktable system-lua
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# Removed in 1.1.34-r1, mask in older to unblock libxml2 cleanup.
-<dev-libs/libxslt-1.1.34-r1 python
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # The respective dependencies are masked for removal.
 ~dev-db/percona-server-5.7.27.30 test
 sci-geosciences/viking mapnik
@@ -79,7 +75,6 @@ www-apps/nikola websocket
 # distutils_enable_sphinx to build docs.
 <=dev-python/lockfile-0.12.2-r2 doc
 <dev-python/pep8-1.7.1-r1 doc
-<dev-python/psycopg-2.8.4 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # Requires Python 2 support in xapian-bindings which in turn require
@@ -95,11 +90,6 @@ dev-python/autobahn xbr
 # media-video/pipewire:0/0.3 is only available for certain architectures
 www-client/firefox screencast
 
-# Mart Raudsepp <leio@gentoo.org> (2020-06-28)
-# media-video/pipewire:0/0.3 is ongoing work, 0.2 on mutter-3.34
-# is not worth trying to get to work.
-<x11-wm/mutter-3.36 screencast
-
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-28)
 # Mostly intended for development and not for general use.
 >=www-client/chromium-84 headless
@@ -113,10 +103,6 @@ media-gfx/inkscape jemalloc
 # not recommended for general use. Build is also often
 # broken.
 www-client/chromium component-build
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-04)
-# Broken error[E0478]: lifetime bound not satisfied
-=dev-lang/rust-1.44.1 miri
 
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
@@ -166,10 +152,6 @@ dev-python/pyzmq doc
 # Michał Górny <mgorny@gentoo.org> (2020-02-04)
 # Unsatisfiable dep due to missing impls.
 dev-python/zeep tornado
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-29)
-# Require Python 2 support in numpydoc.
-<=dev-python/pywavelets-0.5.2-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
