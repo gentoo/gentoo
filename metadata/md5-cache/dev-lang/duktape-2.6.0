@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0/2.6.0
 SRC_URI=https://duktape.org/duktape-2.6.0.tar.xz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=2a40032ffb6dff1bd1ebc83b14845c04
+_md5_=5c884a651390ef5b89e5dc3acab7b4a8
