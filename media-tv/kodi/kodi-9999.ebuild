@@ -9,7 +9,7 @@ LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
 FFMPEG_VERSION="4.3.1"
 CODENAME="Matrix"
-FFMPEG_KODI_VERSION="Alpha1-2"
+FFMPEG_KODI_VERSION="Beta1"
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
