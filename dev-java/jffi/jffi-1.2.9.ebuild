@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ LICENSE="|| ( Apache-2.0 LGPL-3 )"
 SLOT="1.2"
 KEYWORDS="amd64 ~arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 
-CDEPEND="virtual/libffi:0"
+CDEPEND="dev-libs/libffi:0="
 
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.6"
