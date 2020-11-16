@@ -5087,7 +5087,7 @@ dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.6: Lazarus IDE is a feature rich visual pro
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
-dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r103 5.1.5-r104 5.1.5-r105 5.2.4-r2 5.3.5-r2 5.3.6: A powerful light-weight programming language designed for extending applications
+dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r103 5.1.5-r104 5.1.5-r105 5.2.4-r2 5.3.5-r2 5.3.6 5.4.1: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r2 2.1.0_beta3-r1: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
@@ -8611,7 +8611,7 @@ dev-python/process-tests 2.1.1: Tools for testing processes
 dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3: Text progressbar library for python
-dev-python/prometheus_client 0.8.0: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.8.0 0.9.0: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 2.0.10-r1 3.0.7: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
