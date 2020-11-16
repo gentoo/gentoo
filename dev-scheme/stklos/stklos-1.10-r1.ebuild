@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="threads"
-DEPEND="dev-libs/gmp:= dev-libs/libpcre virtual/libffi dev-libs/boehm-gc[threads?]"
+DEPEND="dev-libs/gmp:= dev-libs/libpcre dev-libs/libffi dev-libs/boehm-gc[threads?]"
 RDEPEND="${DEPEND}"
 
 #parallel build failure reported upstream
