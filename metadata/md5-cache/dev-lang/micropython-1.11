@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare test
-DEPEND=virtual/libffi virtual/pkgconfig
+DEPEND=dev-libs/libffi virtual/pkgconfig
 DESCRIPTION=Python implementation for microcontrollers
 EAPI=6
 HOMEPAGE=https://github.com/micropython/micropython
@@ -10,4 +10,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/micropython/micropython/releases/download/v1.11/micropython-1.11.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=952e2c74e274e6566321a5862ef88307
+_md5_=1e733fb7508f19283e98b4185907f20a

@@ -1,14 +1,14 @@
-BDEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= virtual/libffi clang? ( >=sys-devel/clang-3.1 ) dev-lang/perl >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= dev-libs/libffi clang? ( >=sys-devel/clang-3.1 ) dev-lang/perl >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure prepare unpack
-DEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= virtual/libffi
+DEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= dev-libs/libffi
 DESCRIPTION=A 6model-based VM for NQP and Rakudo Perl 6
 EAPI=7
 HOMEPAGE=http://moarvm.org
 IUSE=asan clang debug doc static-libs optimize ubsan
 LICENSE=Artistic-2
 PROPERTIES=live
-RDEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= virtual/libffi
+RDEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-lang/lua:= dev-libs/libffi
 RESTRICT=test
 SLOT=0
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=a3347b860ed21607d364a35e2927dedb
+_md5_=a95629fb9abd532a7aeda617823ecf28
