@@ -13,6 +13,7 @@
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
 		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
