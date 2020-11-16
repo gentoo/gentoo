@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
+# Depends on deprecated QtWebKit, upstream has no capacities to port away.
+# Bugs #508160, #654968 and #687840. Qt-based alternative: net-news/rssguard
+# Removal in 30 days.
+net-news/quiterss
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
 # Depends on deprecated QtWebKit, upstream did not make a release in 10 years
 # (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
 app-text/goldendict
