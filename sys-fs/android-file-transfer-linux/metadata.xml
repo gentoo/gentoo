@@ -10,5 +10,6 @@
   </upstream>
   <use>
     <flag name="fuse">Add FUSE mount helper</flag>
+    <flag name="zune">Enable support for Microsoft Zune</flag>
   </use>
 </pkgmetadata>
