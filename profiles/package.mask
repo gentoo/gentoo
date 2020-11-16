@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
+# Depends on deprecated QtWebKit, needs dedicated maintainer and version bump
+# to 20.11 with new dependency dev-python/PyQtChart.
+# Bugs #607130, #701318 and #709862. Removal in 30 days.
+dev-util/eric
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
 # Depends on deprecated QtWebKit, upstream has no capacities to port away.
 # Bugs #508160, #654968 and #687840. Qt-based alternative: net-news/rssguard
 # Removal in 30 days.
