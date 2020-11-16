@@ -5127,7 +5127,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.4.1: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.4.1 78.5.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.1 8.3.8 8.3.9: versatile implementation of the Prolog programming language
@@ -17959,8 +17959,8 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.4.1 82.0.3 83.0_rc2: Firefox Web Browser
-www-client/firefox-bin 78.4.1 82.0.3: Firefox Web Browser
+www-client/firefox 78.4.1 78.5.0 82.0.3 83.0: Firefox Web Browser
+www-client/firefox-bin 78.4.1 78.5.0 82.0.3 83.0: Firefox Web Browser
 www-client/google-chrome 86.0.4240.198: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.60: The web browser from Google
 www-client/google-chrome-unstable 88.0.4315.5: The web browser from Google
