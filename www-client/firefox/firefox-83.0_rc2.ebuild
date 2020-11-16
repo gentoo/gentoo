@@ -373,9 +373,9 @@ pkg_pretend() {
 
 		# Ensure we have enough disk space to compile
 		if use pgo || use lto || use debug ; then
-			CHECKREQS_DISK_BUILD="13G"
+			CHECKREQS_DISK_BUILD="10G"
 		else
-			CHECKREQS_DISK_BUILD="5600M"
+			CHECKREQS_DISK_BUILD="6400M"
 		fi
 
 		check-reqs_pkg_pretend
@@ -392,9 +392,9 @@ pkg_setup() {
 
 		# Ensure we have enough disk space to compile
 		if use pgo || use lto || use debug ; then
-			CHECKREQS_DISK_BUILD="13G"
+			CHECKREQS_DISK_BUILD="10G"
 		else
-			CHECKREQS_DISK_BUILD="5600M"
+			CHECKREQS_DISK_BUILD="6400M"
 		fi
 
 		check-reqs_pkg_setup
