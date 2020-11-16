@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils
+inherit autotools desktop
 
 DESCRIPTION="A flexible command-line scientific calculator"
 HOMEPAGE="http://w-calc.sourceforge.net/"
@@ -19,6 +19,13 @@ RDEPEND="
 	dev-libs/mpfr:0=
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-AR.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_with readline)
