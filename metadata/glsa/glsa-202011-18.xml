@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202011-18">
+  <title>Apache Ant: Insecure temporary file</title>
+  <synopsis>Apache Ant uses various insecure temporary files possibly allowing
+    local code execution. 
+  </synopsis>
+  <product type="ebuild">ant</product>
+  <announced>2020-11-16</announced>
+  <revised count="1">2020-11-16</revised>
+  <bug>745768</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-java/ant" auto="yes" arch="*">
+      <unaffected range="ge">1.10.9</unaffected>
+      <vulnerable range="lt">1.10.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ant is a Java-based build tool similar to ‘make’ that uses XML
+      configuration files.
+    </p>
+  </background>
+  <description>
+    <p>A previous fix for a security vulnerability involving insecure temporary
+      files has been found to be incomplete.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could perform symlink attacks to overwrite arbitrary
+      files with the privileges of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Ant users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/ant-1.10.9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11979">CVE-2020-11979</uri>
+    <uri link="https://security.gentoo.org/glsa/202007-34">GLSA-202007-34</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-15T12:30:53Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-11-16T02:44:41Z">sam_c</metadata>
+</glsa>
