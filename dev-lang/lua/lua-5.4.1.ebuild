@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils autotools multilib multilib-minimal portability toolchain-funcs
+inherit autotools multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
@@ -21,9 +21,9 @@ COMMON_DEPEND="
 	app-eselect/eselect-lua
 	readline? ( sys-libs/readline:0= )
 	!dev-lang/lua:0"
-DEPEND="${COMMON_DEPEND}
-	sys-devel/libtool"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
+BDEPEND="sys-devel/libtool"
 
 RESTRICT="!test? ( test )"
 
