@@ -1,0 +1,58 @@
+From: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+Date: Thu, 8 Oct 2020 10:00:07 +0200
+Subject: [PATCH] Remove unnecessary use of python 2 compat type
+
+Since python 2 compat has been removed and sqlparse 0.4 also doesn't
+ship with the compat module anymore, there is no reason to use the
+text_type alias for str/unicode.
+---
+diff --git a/changelog.md b/changelog.md
+index a4fea35..288deb0 100644
+--- a/changelog.md
++++ b/changelog.md
+@@ -1,3 +1,7 @@
++Bug Fixes:
++----------
++* Fixed compatibility with sqlparse 0.4 (Thanks: [mtorromeo]).
++
+ 1.22.2
+ ======
+ 
+@@ -768,3 +772,4 @@ Bug Fixes:
+ [François Pietka]: https://github.com/fpietka
+ [Frederic Aoustin]: https://github.com/fraoustin
+ [Georgy Frolov]: https://github.com/pasenor
++[mtorromeo]: https://github.com/mtorromeo
+diff --git a/mycli/AUTHORS b/mycli/AUTHORS
+index b3636d9..34d2d10 100644
+--- a/mycli/AUTHORS
++++ b/mycli/AUTHORS
+@@ -72,6 +72,7 @@ Contributors:
+   * Jakub Boukal
+   * Takeshi D. Itoh
+   * laixintao
++  * Massimiliano Torromeo
+ 
+ Creator:
+ --------
+diff --git a/mycli/packages/completion_engine.py b/mycli/packages/completion_engine.py
+index 2b19c32..3cff2cc 100644
+--- a/mycli/packages/completion_engine.py
++++ b/mycli/packages/completion_engine.py
+@@ -2,7 +2,6 @@ import os
+ import sys
+ import sqlparse
+ from sqlparse.sql import Comparison, Identifier, Where
+-from sqlparse.compat import text_type
+ from .parseutils import last_word, extract_tables, find_prev_keyword
+ from .special import parse_special_command
+ 
+@@ -55,7 +54,7 @@ def suggest_type(full_text, text_before_cursor):
+         stmt_start, stmt_end = 0, 0
+ 
+         for statement in parsed:
+-            stmt_len = len(text_type(statement))
++            stmt_len = len(str(statement))
+             stmt_start, stmt_end = stmt_end, stmt_end + stmt_len
+ 
+             if stmt_end >= current_pos:

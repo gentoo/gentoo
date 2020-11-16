@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 940d5e2..d2f9aaf 100755
+--- a/setup.py
++++ b/setup.py
+@@ -21,7 +21,7 @@ install_requirements = [
+     'Pygments >= 1.6',
+     'prompt_toolkit>=3.0.0,<4.0.0',
+     'PyMySQL >= 0.9.2',
+-    'sqlparse>=0.3.0,<0.4.0',
++    'sqlparse>=0.3.0,<0.5.0',
+     'configobj >= 5.0.5',
+     'cryptography >= 1.0.0',
+     'cli_helpers[styles] > 1.1.0',
