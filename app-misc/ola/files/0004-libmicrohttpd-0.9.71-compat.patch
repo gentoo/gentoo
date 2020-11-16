@@ -1,0 +1,117 @@
+diff --git a/common/http/HTTPServer.cpp b/common/http/HTTPServer.cpp
+index 455e52bdd..c91ac769f 100644
+--- a/common/http/HTTPServer.cpp
++++ b/common/http/HTTPServer.cpp
+@@ -88,8 +88,8 @@ const char HTTPServer::CONTENT_TYPE_OCT[] = "application/octet-stream";
+  * @param key the header name
+  * @param value the header value
+  */
+-static int AddHeaders(void *cls, OLA_UNUSED enum MHD_ValueKind kind,
+-                      const char *key, const char *value) {
++static MHD_RESULT AddHeaders(void *cls, OLA_UNUSED enum MHD_ValueKind kind,
++                             const char *key, const char *value) {
+   HTTPRequest *request = static_cast<HTTPRequest*>(cls);
+   string key_string = key;
+   string value_string = value;
+@@ -110,11 +110,12 @@ static int AddHeaders(void *cls, OLA_UNUSED enum MHD_ValueKind kind,
+  * @param off the offset of the data
+  * @param size the number of bytes available
+  */
+-int IteratePost(void *request_cls, OLA_UNUSED enum MHD_ValueKind kind,
+-                const char *key, OLA_UNUSED const char *filename,
+-                OLA_UNUSED const char *content_type,
+-                OLA_UNUSED const char *transfer_encoding, const char *data,
+-                OLA_UNUSED uint64_t off, OLA_UNUSED size_t size) {
++MHD_RESULT IteratePost(void *request_cls, OLA_UNUSED enum MHD_ValueKind kind,
++                       const char *key, OLA_UNUSED const char *filename,
++                       OLA_UNUSED const char *content_type,
++                       OLA_UNUSED const char *transfer_encoding,
++                       const char *data,
++                       OLA_UNUSED uint64_t off, OLA_UNUSED size_t size) {
+   // libmicrohttpd has a bug where the size isn't set correctly.
+   HTTPRequest *request = static_cast<HTTPRequest*>(request_cls);
+   string value(data);
+@@ -129,22 +130,23 @@ int IteratePost(void *request_cls, OLA_UNUSED enum MHD_ValueKind kind,
+  * This sets up HTTPRequest & HTTPResponse objects and then calls
+  * DispatchRequest.
+  */
+-static int HandleRequest(void *http_server_ptr,
+-                         struct MHD_Connection *connection,
+-                         const char *url,
+-                         const char *method,
+-                         const char *version,
+-                         const char *upload_data,
+-                         size_t *upload_data_size,
+-                         void **ptr) {
++static MHD_RESULT HandleRequest(void *http_server_ptr,
++                                struct MHD_Connection *connection,
++                                const char *url,
++                                const char *method,
++                                const char *version,
++                                const char *upload_data,
++                                size_t *upload_data_size,
++                                void **ptr) {
+   HTTPServer *http_server = static_cast<HTTPServer*>(http_server_ptr);
+   HTTPRequest *request;
+ 
+   // on the first call ptr is null
+   if (*ptr == NULL) {
+     request = new HTTPRequest(url, method, version, connection);
+-    if (!request)
++    if (!request) {
+       return MHD_NO;
++    }
+ 
+     if (!request->Init()) {
+       delete request;
+@@ -156,14 +158,16 @@ static int HandleRequest(void *http_server_ptr,
+ 
+   request = static_cast<HTTPRequest*>(*ptr);
+ 
+-  if (request->InFlight())
++  if (request->InFlight()) {
+     // don't dispatch more than once
+     return MHD_YES;
++  }
+ 
+   if (request->Method() == MHD_HTTP_METHOD_GET) {
+     HTTPResponse *response = new HTTPResponse(connection);
+     request->SetInFlight();
+-    return http_server->DispatchRequest(request, response);
++    return static_cast<MHD_RESULT>(
++      http_server->DispatchRequest(request, response));
+ 
+   } else if (request->Method() == MHD_HTTP_METHOD_POST) {
+     if (*upload_data_size != 0) {
+@@ -173,7 +177,8 @@ static int HandleRequest(void *http_server_ptr,
+     }
+     request->SetInFlight();
+     HTTPResponse *response = new HTTPResponse(connection);
+-    return http_server->DispatchRequest(request, response);
++    return static_cast<MHD_RESULT>(
++      http_server->DispatchRequest(request, response));
+   }
+   return MHD_NO;
+ }
+diff --git a/include/ola/http/HTTPServer.h b/include/ola/http/HTTPServer.h
+index 0ec37e3a5..560d30ca2 100644
+--- a/include/ola/http/HTTPServer.h
++++ b/include/ola/http/HTTPServer.h
+@@ -45,6 +45,17 @@
+ #include <string>
+ #include <vector>
+ 
++// Beginning with v0.9.71, libmicrohttpd changed the return type of most
++// functions from int to enum MHD_Result
++// https://git.gnunet.org/gnunet.git/tree/src/include/gnunet_mhd_compat.h
++// proposes to define a constant for the return type so it works well
++// with all versions of libmicrohttpd
++#if MHD_VERSION >= 0x00097002
++#define MHD_RESULT enum MHD_Result
++#else
++#define MHD_RESULT int
++#endif
++
+ namespace ola {
+ namespace http {
+ 

@@ -56,6 +56,7 @@ if [[ "${PV}" != "9999" ]]; then
 		"${FILESDIR}/0001-Eliminate_protobuf_AddDescriptors_call.patch"
 		"${FILESDIR}/0002-Protobuf-3.11-compatibility.patch"
 		"${FILESDIR}/0003-ncurses-6-compatibility.patch"
+		"${FILESDIR}/0004-libmicrohttpd-0.9.71-compat.patch"
 	)
 fi
 
