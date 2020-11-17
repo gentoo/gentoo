@@ -243,6 +243,7 @@ get_distribution_components() {
 			llvm-ar
 			llvm-as
 			llvm-bcanalyzer
+			llvm-bitcode-strip
 			llvm-c-test
 			llvm-cat
 			llvm-cfi-verify
@@ -264,6 +265,7 @@ get_distribution_components() {
 			llvm-ifs
 			llvm-install-name-tool
 			llvm-jitlink
+			llvm-jitlink-executor
 			llvm-lib
 			llvm-libtool-darwin
 			llvm-link
@@ -299,6 +301,7 @@ get_distribution_components() {
 			opt
 			sancov
 			sanstats
+			split-file
 			verify-uselistorder
 			yaml2obj
 
