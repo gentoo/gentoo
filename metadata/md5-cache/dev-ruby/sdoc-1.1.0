@@ -5,7 +5,7 @@ DESCRIPTION=rdoc generator html with javascript search index
 EAPI=7
 HOMEPAGE=https://rubygems.org/gems/sdoc
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 doc test test
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=~amd64 ~arm ppc ~x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby25? ( >=dev-ruby/rdoc-5.0[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/rdoc-5.0[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( >=dev-ruby/rdoc-5.0[ruby_targets_ruby27(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( virtual/rubygems[ruby_targets_ruby27(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://rubygems.org/gems/sdoc-1.1.0.gem
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	98584e405e2b0264d37e8f728327fed1	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=264d7c61889f983d27b093519f107adc
+_md5_=1a352dc44061d67a4e36bd94f4b2e0a0
