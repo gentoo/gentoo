@@ -105,15 +105,15 @@ src_configure() {
 		use ${1} || echo "no-${1}"
 	}
 	local mycmakeargs=(
-		"-DBUILD_TESTING=$(usex test)"
-		"-Dclient=OFF"
-		"-Ddbus=$(usex dbus)"
-		"-Dg15=OFF"
-		"-Dgrpc=$(usex grpc)"
-		"-Dice=$(usex ice)"
-		"-Doverlay=OFF"
-		"-Dserver=ON"
-		"-Dzeroconf=$(usex zeroconf)"
+		-DBUILD_TESTING="$(usex test)"
+		-Dclient="OFF"
+		-Ddbus="$(usex dbus)"
+		-Dg15="OFF"
+		-Dgrpc="$(usex grpc)"
+		-Dice="$(usex ice)"
+		-Doverlay="OFF"
+		-Dserver="ON"
+		-Dzeroconf="$(usex zeroconf)"
 	)
 
 	cmake_src_configure
