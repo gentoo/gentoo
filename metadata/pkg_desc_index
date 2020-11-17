@@ -8953,7 +8953,7 @@ dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
-dev-python/reno 3.2.0: Release notes manager, storing release notes in a git repo and building docs
+dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.48: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
