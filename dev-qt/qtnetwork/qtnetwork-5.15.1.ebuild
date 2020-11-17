@@ -22,7 +22,7 @@ DEPEND="
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
 	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1.1:0/1.1=[bindist=] )
+		!libressl? ( >=dev-libs/openssl-1.1.1:=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
 	)
 "
