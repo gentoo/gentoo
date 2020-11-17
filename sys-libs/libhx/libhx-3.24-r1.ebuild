@@ -10,7 +10,7 @@ HOMEPAGE="http://libhx.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/libHX-${PV}.tar.xz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/28"
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
