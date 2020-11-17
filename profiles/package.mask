@@ -32,6 +32,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
+# Depends on deprecated QtWebKit, needs dedicated maintainer and version bump
+# to 20.11 with new dependency dev-python/PyQtChart.
+# Bugs #607130, #701318 and #709862. Removal in 30 days.
+dev-util/eric
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
+# Depends on deprecated QtWebKit, upstream has no capacities to port away.
+# Bugs #508160, #654968 and #687840. Qt-based alternative: net-news/rssguard
+# Removal in 30 days.
+net-news/quiterss
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
+# Depends on deprecated QtWebKit, upstream did not make a release in 10 years
+# (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
+app-text/goldendict
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-11-05)
 # Does not compile against ghc-8.8: #754675, #611988
 # Masked for removal

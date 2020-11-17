@@ -22,10 +22,6 @@
 dev-cpp/eigen test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
-# Requires not yet stable dependencies
-sys-libs/gwenhywfar sensors serialport webkit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
 # dev-qt/qtwebkit:5 is not stable.
 dev-qt/designer webkit
 

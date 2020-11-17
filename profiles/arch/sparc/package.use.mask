@@ -85,7 +85,6 @@ net-im/pidgin gstreamer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # dev-qt/designer is not keyworded on sparc
-sys-libs/gwenhywfar designer
 x11-libs/qwt designer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
