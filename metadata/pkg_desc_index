@@ -7960,7 +7960,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.1 0.37.1 0.38.0 0.39.0: CloudFormation Linter
+dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.1 0.37.1 0.38.0 0.39.0 0.41.0: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8279,7 +8279,7 @@ dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 2.0.0 2.0.2: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.2.0-r1: Python IP address manipulation library
-dev-python/ipdb 0.10.3: IPython-enabled pdb
+dev-python/ipdb 0.10.3-r1: IPython-enabled pdb
 dev-python/ipy 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.3.4 5.3.4-r1: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0 6.3.0-r1: Interactive Parallel Computing with IPython
