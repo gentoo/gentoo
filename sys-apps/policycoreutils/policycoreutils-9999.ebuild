@@ -46,7 +46,6 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	sys-devel/gettext
 	dev-python/ipy[${PYTHON_USEDEP}]
 	dbus? (
 		sys-apps/dbus
@@ -55,6 +54,10 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}"
+
+# Avoid dependency loop in the cross-compile case, bug #755173
+# (Still exists in native)
+BDEPEND="sys-devel/gettext"
 
 ### libcgroup -> seunshare
 ### dbus -> restorecond

@@ -56,6 +56,7 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 
 # Avoid dependency loop in the cross-compile case, bug #755173
+# (Still exists in native)
 BDEPEND="sys-devel/gettext"
 
 ### libcgroup -> seunshare
