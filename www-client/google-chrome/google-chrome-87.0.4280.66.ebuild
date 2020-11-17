@@ -32,6 +32,7 @@ RESTRICT="bindist mirror strip"
 DEPEND=""
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
+	app-accessibility/at-spi2-core:2
 	app-arch/bzip2
 	app-misc/ca-certificates
 	dev-libs/atk
@@ -39,15 +40,18 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
+	dev-libs/wayland
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/mesa[gbm]
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/libcap
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3[X]
+	x11-libs/libdrm
 	>=x11-libs/libX11-1.5.0
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
@@ -60,6 +64,7 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/libxcb
+	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-misc/xdg-utils
 	selinux? ( sec-policy/selinux-chromium )
