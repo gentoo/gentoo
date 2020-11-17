@@ -3,17 +3,21 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/allinurl/${PN}.git"
+inherit autotools
 
-inherit autotools git-r3
+if [[ ${PV} = *9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/allinurl/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://tar.goaccess.io/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+fi
 
 DESCRIPTION="A real-time web log analyzer and interactive viewer that runs in a terminal"
 HOMEPAGE="https://goaccess.io"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug geoip geoipv2 getline libressl ssl unicode"
 REQUIRED_USE="geoipv2? ( geoip )"
 
