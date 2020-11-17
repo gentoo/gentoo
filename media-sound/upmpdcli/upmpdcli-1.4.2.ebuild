@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="thirdparty"
 DEPEND="
 	dev-libs/jsoncpp
 	media-libs/libmpdclient
-	net-libs/libmicrohttpd
+	<=net-libs/libmicrohttpd-0.9.70
 	>=net-libs/libupnpp-0.17.0
 "
 RDEPEND="
