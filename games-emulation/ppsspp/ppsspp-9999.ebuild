@@ -13,7 +13,7 @@ EGIT_SUBMODULES=( '*' )
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="headless +qt5 sdl +system-ffmpeg"
+IUSE="discord-presence headless +qt5 sdl +system-ffmpeg"
 REQUIRED_USE="!qt5? ( sdl )"
 
 RDEPEND="
@@ -35,6 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_unpack() {
+	use discord-presence || EGIT_SUBMODULES+=( '-ext/discord-rpc' )
 	use system-ffmpeg && EGIT_SUBMODULES+=( '-ffmpeg' )
 	git-r3_src_unpack
 }
@@ -55,6 +56,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DHEADLESS=$(usex headless)
 		-DUSING_QT_UI=$(usex qt5)
+		-DUSE_DISCORD=$(usex discord-presence)
 		$(cmake-utils_use_find_package sdl SDL2)
 		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
 	)
