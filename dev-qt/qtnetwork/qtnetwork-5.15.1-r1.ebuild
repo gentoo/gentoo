@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 QT5_MODULE="qtbase"
 inherit qt5-build
 
@@ -22,7 +23,7 @@ DEPEND="
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
 	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[bindist=] )
+		!libressl? ( >=dev-libs/openssl-1.1.1:0=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
 	)
 "
