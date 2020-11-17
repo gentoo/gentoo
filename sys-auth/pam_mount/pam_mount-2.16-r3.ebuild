@@ -14,7 +14,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="crypt libressl ssl selinux"
 
 COMMON_DEPEND=">=sys-libs/pam-0.99
-	>=sys-libs/libhx-3.12.1
+	>=sys-libs/libhx-3.12.1:=
 	>=dev-libs/libxml2-2.6
 	crypt? ( >=sys-fs/cryptsetup-1.1.0:= )
 	ssl? (
