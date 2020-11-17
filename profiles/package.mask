@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-17)
+# A drive-by package with one release in 2015, no revdeps and no tests.
+# The same purpose is served e.g. by dev-python/parameterized.
+# Removal in 30 days.  Bug #755122.
+dev-python/parametrized
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-17)
 # Old dependencies of dev-python/GitPython.  The current versions (3)
 # have been renamed back to dev-python/{gitdb,smmap}.
 # Removal in 30 days.  Bug #755080.
