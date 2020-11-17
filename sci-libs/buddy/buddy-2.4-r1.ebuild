@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit fortran-2
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="buddy"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc examples static-libs"
+IUSE="doc examples"
 
 DOCS=( doc/tech.txt )
 PATCHES=(
@@ -21,16 +21,21 @@ PATCHES=(
 )
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
 	default
-
-	use doc && docinto ps && dodoc doc/*.ps
+	find "${ED}" -name '*.la' -delete || die
 
 	if use examples; then
-		insinto /usr/share/${PN}/
-		doins -r examples
+		find examples/ -name 'Makefile*' -delete || die
+
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+	if use doc; then
+		docinto ps
+		dodoc doc/*.ps
 	fi
 }
