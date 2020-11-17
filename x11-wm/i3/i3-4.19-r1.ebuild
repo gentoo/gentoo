@@ -83,7 +83,7 @@ src_configure() {
 }
 
 src_install() {
-	default
+	meson_src_install
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}"/i3wm
