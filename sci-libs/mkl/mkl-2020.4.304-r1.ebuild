@@ -4,7 +4,7 @@
 EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit multilib-build rpm
+inherit multilib-build rpm toolchain-funcs
 
 MAGIC=16917            # from registration center
 MY_P=${P/-/_}          # mkl_2020.4.304
@@ -135,6 +135,43 @@ src_unpack() {
 	fi
 }
 
+provider-link-c() {
+	PROVIDER_NAME=mkl
+	local libname lname
+	libname=$1
+	shift 1
+	# remove trailing .so.* and starting lib
+	lname=${libname%%.*}
+	lname=${lname##lib}
+	cat <<-EOF > "${T}"/gentoo_${lname}.c || die
+	const char *__gentoo_${lname}_provider(void){
+		return "${PROVIDER_NAME}";
+	}
+	EOF
+
+	rm -f "${T}"/${libname} || die
+
+	tc-export CC
+	emake -f - <<EOF
+${T}/${libname}:
+	\$(CC) -shared -fPIC \$(CFLAGS) -o "${T}"/${libname} "${T}"/gentoo_${lname}.c -Wl,--soname,${libname} ${@} \$(LDFLAGS)
+EOF
+}
+
+provider-install-lib() {
+	PROVIDER_NAME=mkl
+	local libname=$1 lname dir
+	# remove trailing .so.* and starting lib
+	lname=${libname%%.*}
+	lname=${lname##lib}
+	dir="/usr/$(get_libdir)/${lname}/${PROVIDER_NAME}"
+	[[ $# -eq 2 ]] && dir="${2}"
+	insinto ${dir}
+	insopts -m755
+	doins "${T}"/${libname}
+	dosym ${libname} ${dir}/lib${lname}.so
+}
+
 multilib_src_install() {
 	cd "${S}"/rpm
 	elog "current variant - ${MULTIBUILD_VARIANT}"
@@ -157,16 +194,15 @@ multilib_src_install() {
 		done
 	done
 
-	dodir /usr/$(get_libdir)/blas/mkl
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/blas/mkl/libblas.so
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/blas/mkl/libblas.so.3
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/blas/mkl/libcblas.so
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/blas/mkl/libcblas.so.3
-	dodir /usr/$(get_libdir)/lapack/mkl
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/lapack/mkl/liblapack.so
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/lapack/mkl/liblapack.so.3
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/lapack/mkl/liblapacke.so
-	dosym ../../libmkl_rt.so usr/$(get_libdir)/lapack/mkl/liblapacke.so.3
+	provider-link-c libblas.so.3 "-L${ED}/usr/$(get_libdir)/ -lmkl_rt"
+	provider-link-c libcblas.so.3 "-L${ED}/usr/$(get_libdir)/ -lmkl_rt"
+	provider-link-c liblapack.so.3 "-L${ED}/usr/$(get_libdir)/ -lmkl_rt"
+	provider-link-c liblapacke.so.3 "-L${ED}/usr/$(get_libdir)/ -lmkl_rt"
+
+	provider-install-lib libblas.so.3
+	provider-install-lib libcblas.so.3 /usr/$(get_libdir)/blas/mkl
+	provider-install-lib liblapack.so.3
+	provider-install-lib liblapacke.so.3 /usr/$(get_libdir)/lapack/mkl
 
 	# for some reason pkgconfig files are only for amd64
 	[[ ${MULTIBUILD_VARIANT} =~ 'amd64' ]] || return
