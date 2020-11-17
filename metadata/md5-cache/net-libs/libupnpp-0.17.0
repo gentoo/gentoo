@@ -1,11 +1,11 @@
 DEFINED_PHASES=-
-DEPEND=dev-libs/expat net-libs/libupnp:0 net-misc/curl
+DEPEND=dev-libs/expat <=net-libs/libupnp-1.7.0 net-misc/curl
 DESCRIPTION=The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 EAPI=7
 HOMEPAGE=https://www.lesbonscomptes.com/upmpdcli
 KEYWORDS=amd64
 LICENSE=GPL-2
-RDEPEND=dev-libs/expat net-libs/libupnp:0 net-misc/curl
+RDEPEND=dev-libs/expat <=net-libs/libupnp-1.7.0 net-misc/curl
 SLOT=0
 SRC_URI=https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-0.17.0.tar.gz
-_md5_=d46fd3630b2dd6abe734bce32aac2563
+_md5_=188ed03ae29fae777a24c6170ba9b3c3
