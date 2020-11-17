@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/coloredlogs[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	>=dev-python/spyder-4.0.0[${PYTHON_USEDEP}]
-	dev-python/terminado[${PYTHON_USEDEP}]
+	>=dev-python/spyder-4.1.0[${PYTHON_USEDEP}]
+	>=dev-python/terminado-0.9.1[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "

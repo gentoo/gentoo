@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/traitlets[${PYTHON_USEDEP}]
 "
 
-DEPEND="test? (
+BDEPEND="test? (
 	dev-python/flaky[${PYTHON_USEDEP}]
 	dev-python/pytest-mock[${PYTHON_USEDEP}]
 	dev-python/pytest-qt[${PYTHON_USEDEP}]

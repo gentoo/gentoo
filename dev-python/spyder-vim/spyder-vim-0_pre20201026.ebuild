@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 virtualx
 
-COMMIT="c6f6ad75d1298d4cdadab69d57b2b4e2d235d8f3"
+COMMIT="4d0bf821abb193bfd158e2489970e1873a9f1138"
 
 DESCRIPTION="Plugin for Spyder to enable Vim keybindings"
 HOMEPAGE="https://github.com/spyder-ide/spyder-vim"

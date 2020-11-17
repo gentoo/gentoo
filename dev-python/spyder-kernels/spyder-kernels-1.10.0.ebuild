@@ -23,7 +23,7 @@ RDEPEND="dev-python/cloudpickle[${PYTHON_USEDEP}]
 	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]
 "
 
-DEPEND="test? (
+BDEPEND="test? (
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/flaky[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -39,7 +39,6 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# assert False
 	sed -i -e 's:test_dask_multiprocessing:_&:' \
-		-e 's:test_turtle_launch:_&:' \
 				spyder_kernels/console/tests/test_console_kernel.py || die
 
 	distutils-r1_python_prepare_all

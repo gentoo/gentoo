@@ -4,8 +4,9 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit eutils xdg distutils-r1
+inherit optfeature xdg distutils-r1
 
 # Commit of documentation to fetch
 DOCS_PV="7fbdabcbc37fe696e4ad5604cdbf4023dfbe8b6c"
@@ -24,7 +25,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Extra indented deps are expansion of python-language-server[all] dep
+# White space separated deps are expansion of python-language-server[all] dep
 # As the pyls ebuild does not add flags for optional runtime dependencies
 # we have to manually specify these desp instead of just depending on the [all]
 # flag. The indentation allows us to distinguish them from spyders direct deps.
@@ -32,12 +33,12 @@ RDEPEND="
 	>=dev-python/atomicwrites-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/cloudpickle-0.5.0[${PYTHON_USEDEP}]
-	>=dev-util/cookiecutter-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/diff-match-patch-20181111[${PYTHON_USEDEP}]
-	dev-python/intervaltree[${PYTHON_USEDEP}]
+	>=dev-python/intervaltree-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/ipython-4.0[${PYTHON_USEDEP}]
-	~dev-python/jedi-0.17.1[${PYTHON_USEDEP}]
-	dev-python/keyring[${PYTHON_USEDEP}]
+	~dev-python/jedi-0.17.2[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
+	>=dev-python/keyring-17.0.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
 	>=dev-python/numpydoc-0.6.0[${PYTHON_USEDEP}]
 	~dev-python/parso-0.7.0[${PYTHON_USEDEP}]
@@ -46,7 +47,7 @@ RDEPEND="
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pylint-1.0[${PYTHON_USEDEP}]
-	>=dev-python/python-language-server-0.34.0[${PYTHON_USEDEP}]
+	>=dev-python/python-language-server-0.36.1[${PYTHON_USEDEP}]
 
 	dev-python/autopep8[${PYTHON_USEDEP}]
 	>=dev-python/flake8-3.8.0[${PYTHON_USEDEP}]
@@ -62,16 +63,19 @@ RDEPEND="
 	dev-python/yapf[${PYTHON_USEDEP}]
 
 	<dev-python/python-language-server-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pyls-black-0.4.6[${PYTHON_USEDEP}]
+	>=dev-python/pyls-spyder-0.1.1[${PYTHON_USEDEP}]
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17.0.0[${PYTHON_USEDEP}]
 	>=dev-python/qdarkstyle-2.8[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-0.5.7[${PYTHON_USEDEP}]
-	>=dev-python/qtconsole-4.6.0[${PYTHON_USEDEP}]
+	>=dev-python/qtconsole-4.7.7[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},svg,webengine]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
-	>=dev-python/spyder-kernels-1.9.4[${PYTHON_USEDEP}]
-	<dev-python/spyder-kernels-1.10.0[${PYTHON_USEDEP}]
-	dev-python/watchdog[${PYTHON_USEDEP}]
+	>=dev-python/spyder-kernels-1.10.0[${PYTHON_USEDEP}]
+	<dev-python/spyder-kernels-1.11.0[${PYTHON_USEDEP}]
+	>=dev-python/three-merge-0.1.1[${PYTHON_USEDEP}]
+	>=dev-python/watchdog-0.10.3[${PYTHON_USEDEP}]
 "
 
 BDEPEND="test? (
@@ -99,7 +103,6 @@ BDEPEND="test? (
 # This fails because access is denied to this command during build
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.2-build.patch"
-	"${FILESDIR}/${PN}-4.1.2-py3-only.patch"
 	"${FILESDIR}/${PN}-4.1.5-doc-theme-renamed.patch"
 )
 
@@ -112,7 +115,6 @@ DOCS=(
 	"NOTICE.txt"
 	"README.md"
 	"RELEASE.md"
-	"TROUBLESHOOTING.md"
 )
 
 S="${WORKDIR}/${PN}-${MYPV}"
@@ -126,6 +128,8 @@ python_prepare_all() {
 
 	# these deps are packaged separately: dev-python/spyder-kernels, dev-python/python-language-server
 	rm external-deps/* -r || die
+	# runs against things packaged in external-deps dir
+	rm conftest.py || die
 
 	# do not depend on pyqt5<13
 	sed -i -e '/pyqt5/d' \
@@ -136,41 +140,50 @@ python_prepare_all() {
 	sed -i -e 's:test_dependencies_for_spyder_setup_install_requires_in_sync:_&:' \
 		spyder/tests/test_dependencies_in_sync.py || die
 
-	# some tests still depend on QtPy[webkit] which is removed
-	# spyder itself works fine without webkit
-	rm spyder/widgets/tests/test_browser.py || die
-	rm spyder/plugins/onlinehelp/tests/test_pydocgui.py || die
-	rm spyder/plugins/ipythonconsole/tests/test_ipythonconsole.py || die
-	rm spyder/plugins/ipythonconsole/tests/test_ipython_config_dialog.py || die
-	rm spyder/plugins/help/tests/test_widgets.py || die
-	rm spyder/plugins/help/tests/test_plugin.py  || die
-	rm spyder/app/tests/test_mainwindow.py || die
+	# can't check for update, need network
+	rm spyder/workers/tests/test_update.py || die
 
 	# skip online test
 	rm spyder/widgets/github/tests/test_github_backend.py || die
+
+	# KeyError: 'conda: base', need conda??
+	sed -i -e 's:test_status_bar_conda_interpreter_status:_&:' \
+		spyder/widgets/tests/test_status.py || die
+
+	# assert 2 == 1
+	sed -i -e 's:test_pylint_max_history_conf:_&:' \
+		spyder/plugins/pylint/tests/test_pylint.py || die
+
+	# https://bugs.gentoo.org/747211
+	sed -i -e 's:test_loaded_and_closed_signals:_&:' \
+		spyder/plugins/projects/tests/test_plugin.py || die
 
 	# AssertionError: assert '' == 'This is some test text!'
 	sed -i -e 's:test_tab_copies_find_to_replace:_&:' \
 		spyder/plugins/editor/widgets/tests/test_editor.py || die
 
-	# RuntimeError: Unsafe load() call disabled by Gentoo. See bug #659348
-	sed -i -e 's:test_dependencies_for_binder_in_sync:_&:' \
-		spyder/tests/test_dependencies_in_sync.py || die
-
-	# Fatal Python error: Segmentation fault
-	# sometimes it works, sometimes it segfaults
-	sed -i -e 's:test_copy_path:_&:' \
-		-e 's:test_copy_file:_&:' \
-		-e 's:test_save_file:_&:' \
-		-e 's:test_delete_file:_&:' \
-		spyder/plugins/explorer/widgets/tests/test_explorer.py || die
+	# hangs till forever
+	sed -i -e 's:test_help_opens_when_show_tutorial_full:_&:' \
+		spyder/app/tests/test_mainwindow.py || die
 
 	# Assertion error, can't connect/remember inside ebuild environment
 	rm spyder/plugins/ipythonconsole/widgets/tests/test_kernelconnect.py || die
 
-	# AssertionError: assert 47 in [43, 44, 45, 46]
-	sed -i -e 's:test_objectexplorer_collection_types:_&:' \
-		spyder/plugins/variableexplorer/widgets/objectexplorer/tests/test_objectexplorer.py  || die
+	# AssertionError: waitUntil timed out in 20000 miliseconds
+	sed -i -e 's:test_pdb_multiline:_&:' \
+		spyder/plugins/ipythonconsole/tests/test_ipythonconsole.py || die
+
+	# AssertionError: assert 'if True:\n    0\n    ' == 'if True:\n    0'
+	sed -i -e 's:test_undo_return:_&:' \
+		spyder/plugins/editor/widgets/tests/test_codeeditor.py || die
+
+	# assert False is True
+	sed -i -e 's:test_range_indicator_visible_on_hover_only:_&:' \
+		spyder/plugins/editor/panels/tests/test_scrollflag.py || die
+
+	# AssertionError: waitUntil timed out in 10000 miliseconds
+	sed -i -e 's:test_get_hints:_&:' \
+		spyder/plugins/editor/widgets/tests/test_hints_and_calltips.py || die
 
 	distutils-r1_python_prepare_all
 }
