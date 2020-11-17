@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -28,5 +28,5 @@ DEPEND="${RDEPEND}
 	)"
 
 python_test() {
-	py.test -v tests || die "tests failed with ${EPYTHON}"
+	pytest -vv tests || die "tests failed with ${EPYTHON}"
 }
