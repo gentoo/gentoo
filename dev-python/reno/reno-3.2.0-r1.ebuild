@@ -22,6 +22,8 @@ RDEPEND="
 	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP}]
 	>=dev-python/dulwich-0.15.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
+	>=dev-python/docutils-0.11[${PYTHON_USEDEP}]
+	>=dev-python/sphinx-2.1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
