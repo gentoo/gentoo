@@ -7,13 +7,13 @@ inherit desktop eutils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
-SRC_URI="amd64? ( https://zoom.us/client/${PV}/${PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz )
-	x86? ( https://zoom.us/client/${PV}/${PN}_i686.tar.xz -> ${P}_i686.tar.xz )"
+SRC_URI="amd64? ( https://zoom.us/client/${PV}/${PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz )"
+#	"x86? ( https://zoom.us/client/${PV}/${PN}_i686.tar.xz -> ${P}_i686.tar.xz )"
 S="${WORKDIR}/${PN}"
 
 LICENSE="all-rights-reserved Apache-2.0" # Apache-2.0 for icon
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="bundled-libjpeg-turbo pulseaudio"
 RESTRICT="mirror bindist strip"
 
@@ -67,7 +67,7 @@ src_install() {
 	insinto /opt/zoom
 	exeinto /opt/zoom
 	doins -r json ringtone sip timezones translations
-	doins *.pcm *.pem *.sh Embedded.properties version.txt
+	doins *.pcm *.sh Embedded.properties version.txt
 	doexe zoom zoom.sh zopen ZoomLauncher
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym {"../../usr/$(get_libdir)",/opt/zoom}/libquazip.so

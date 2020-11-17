@@ -27,5 +27,5 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	cmake_src_install
-	dobin "${S}_build/https_dns_proxy"
+	dobin "${WORKDIR}/${P}_build/https_dns_proxy"
 }
