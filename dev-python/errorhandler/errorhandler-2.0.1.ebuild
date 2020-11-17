@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -12,32 +12,12 @@ HOMEPAGE="https://pypi.org/project/errorhandler/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
-
 LICENSE="MIT"
 SLOT="0"
 
 RDEPEND=""
 DEPEND="
-	dev-python/pkginfo[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	dev-python/pkginfo[${PYTHON_USEDEP}]"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.1-no-intersphinx.patch
-)
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_test() {
-	nosetests -v || die "Tests fail with ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
-}
+distutils_enable_sphinx docs
+distutils_enable_tests nose
