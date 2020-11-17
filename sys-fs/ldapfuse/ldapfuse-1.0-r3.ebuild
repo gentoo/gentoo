@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	net-nds/openldap
 	sys-fs/fuse:0
-	>=sys-libs/libhx-3.12"
+	>=sys-libs/libhx-3.12:="
 
 DEPEND="
 	${RDEPEND}
