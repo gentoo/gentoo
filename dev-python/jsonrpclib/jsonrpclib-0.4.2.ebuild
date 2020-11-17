@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -19,13 +19,7 @@ HOMEPAGE="https://github.com/tcalmant/jsonrpclib"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/simplejson[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( ${RDEPEND} )"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
