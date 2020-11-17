@@ -10,10 +10,6 @@
 # waiting for lua to be slotted
 media-gfx/exact-image lua
 
-# Jason A. Donenfeld <zx2c4@gentoo.org> (2020-10-27)
-# Java 11 is not yet in the tree.
->=app-office/libreoffice-7 java
-
 # Marek Szuba <marecki@gentoo.org> (2020-10-12)
 # Requires slotted Lua, which is still masked.
 media-gfx/darktable system-lua
