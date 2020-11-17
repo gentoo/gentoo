@@ -19021,4 +19021,4 @@ xfce-extra/xfce4-weather-plugin 0.10.1 0.10.2: A weather plug-in for the Xfce de
 xfce-extra/xfce4-whiskermenu-plugin 2.4.6: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
-xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
+xfce-extra/xfdashboard 0.7.5 0.7.90: Maybe a GNOME shell like dashboard for the Xfce desktop environment
