@@ -14710,7 +14710,7 @@ net-libs/gtk-vnc 1.0.0: VNC viewer widget for GTK
 net-libs/gupnp 1.2.4: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5-r10: Library to handle UPnP IGD port mapping for GUPnP
-net-libs/http-parser 2.8.1 2.9.3 2.9.4: HTTP request/response parser for C
+net-libs/http-parser 2.8.1 2.9.3-r1 2.9.4-r1: HTTP request/response parser for C
 net-libs/iax 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 1.0.0 5.2.0 5.3.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 4.0.0 8.0.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
@@ -15568,7 +15568,7 @@ net-wireless/suwidgets 0.1.0: graphical library containing all SigDigger's custo
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 6.0.28 6.0.33 6.0.34 6.0.36 6.1.23 6.1.25: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 6.0.28 6.0.34 6.1.25 6.1.26: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
