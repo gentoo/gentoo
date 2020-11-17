@@ -51,4 +51,6 @@ python_install_all() {
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
 	keepdir /etc/exabgp
+
+	doman doc/man/*.?
 }
