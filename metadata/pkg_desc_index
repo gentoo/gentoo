@@ -8091,7 +8091,7 @@ dev-python/dockerpty 0.4.1-r1: Python library to use the pseudo-tty of a docker 
 dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.16-r1: Python Documentation Utilities
-dev-python/docutils-glep 1.2 9999: Gentoo GLEP support for docutils
+dev-python/docutils-glep 1.2: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 1.0.2 1.1.0: A locking API for expiring values while a single thread generates a new value.
 dev-python/doit 0.33.1: Automation tool
 dev-python/doit-py 0.5.0: doit tasks for python stuff
