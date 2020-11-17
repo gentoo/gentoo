@@ -33,6 +33,18 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-17)
+# Old dependencies of dev-python/GitPython.  The current versions (3)
+# have been renamed back to dev-python/{gitdb,smmap}.
+# Removal in 30 days.  Bug #755080.
+dev-python/gitdb2
+dev-python/smmap2
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-17)
+# Old backport package with no revdeps.
+# Removal in 30 days.  Bug #755074.
+dev-python/funcsigs
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-17)
 # Fail to build with gcc-10.  No recent activity upstream.  Seems that
 # Exherbo is dead and buried.
 # Removal in 30 days.  Bug #708528.
