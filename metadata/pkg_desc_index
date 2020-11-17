@@ -702,7 +702,7 @@ app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from s
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 1.4.2-r1 1.4.3 1.4.5 1.5.0 1.5.2: A tool for managing secrets
+app-admin/vault 1.4.2-r1 1.4.3 1.4.5 1.4.7 1.5.0 1.5.2 1.5.5: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
@@ -17534,7 +17534,7 @@ sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: New implemen
 sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
-sys-libs/libhx 3.22-r1 3.24: Platform independent library providing basic system functions
+sys-libs/libhx 3.24: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
@@ -18006,7 +18006,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.453: Adobe Flash Player
-www-plugins/browserpass 3.0.6-r2 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
+www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 86.0.4240.198 87.0.4280.63_beta 88.0.4315.5_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
