@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="A PAM module that can mount volumes for a user session"
 HOMEPAGE="http://pam-mount.sourceforge.net"
@@ -9,15 +9,18 @@ SRC_URI="mirror://sourceforge/pam-mount/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
-IUSE="crypt ssl selinux"
+IUSE="crypt libressl ssl selinux"
 
 COMMON_DEPEND=">=sys-libs/pam-0.99
-	>=sys-libs/libhx-3.12.1
+	>=sys-libs/libhx-3.12.1:=
 	>=dev-libs/libxml2-2.6
 	crypt? ( >=sys-fs/cryptsetup-1.1.0:= )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
@@ -25,7 +28,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/util-linux-2.20"
 
 PATCHES=(
-		"${FILESDIR}"/pam_mount-2.16-crypto-Add-support-for-LUKS2.patch
+	"${FILESDIR}"/pam_mount-2.16-crypto-Add-support-for-LUKS2.patch
+	"${FILESDIR}"/pam_mount-2.16-remove-obsolete-openssl-api.patch
 )
 
 src_configure() {
@@ -39,4 +43,8 @@ src_install() {
 	default
 	use selinux || rm -r "${D}"/etc/selinux
 	dodoc doc/*.txt
+
+	# Remove unused nonstandard run-dir, current version uses
+	# FHS-compatible /run, but has leftover mkdir from old version
+	rm -r "${D}/var/lib"
 }

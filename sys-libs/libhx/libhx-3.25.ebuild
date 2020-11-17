@@ -6,12 +6,12 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Platform independent library providing basic system functions"
-HOMEPAGE="http://libhx.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/libHX-${PV}.tar.xz"
+HOMEPAGE="https://inai.de/projects/libhx/"
+SRC_URI="https://inai.de/files/${PN}/libHX-${PV}.tar.xz"
 
 LICENSE="GPL-3"
-SLOT="0"
-KEYWORDS="amd64 ppc x86"
+SLOT="0/32" # soname version
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc"
 
 DEPEND="app-arch/xz-utils"

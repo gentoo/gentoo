@@ -4,20 +4,19 @@
 EAPI=7
 
 DESCRIPTION="A collection of tools and scripts"
-HOMEPAGE="http://inai.de/projects/hxtools/"
-SRC_URI="http://jftp.inai.de/${PN}/${P}.tar.xz"
+HOMEPAGE="https://inai.de/projects/hxtools/"
+SRC_URI="https://inai.de/files/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 RDEPEND="
 	>=sys-apps/pciutils-3
 	>=sys-apps/util-linux-2.19
-	>=sys-libs/libhx-3.12.1
+	>=sys-libs/libhx-3.12.1:=
 	dev-lang/perl
-	sys-libs/libcap
+	sys-libs/libcap:=
 	x11-libs/libxcb:0=
 "
 DEPEND="${RDEPEND}"
