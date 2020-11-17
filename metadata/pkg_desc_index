@@ -10707,7 +10707,7 @@ dev-util/hfstospell 0.5.2: HFST spell checker library and command line tool
 dev-util/howdoi 1.2.1 2.0.5 2.0.6 2.0.7: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
-dev-util/hxtools 20180301 20190428: A collection of tools and scripts
+dev-util/hxtools 20201116: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
 dev-util/idea-community 2020.2.1.202.6948.69 2020.2.2.202.7319.50 2020.2.3.202.7660.26: A complete toolset for web, mobile and enterprise development
@@ -17038,7 +17038,7 @@ sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functiona
 sys-auth/pam_krb5 4.9: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
-sys-auth/pam_mount 2.16 2.16-r1 2.16-r2: A PAM module that can mount volumes for a user session
+sys-auth/pam_mount 2.16-r3: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.3.1: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_require 0.7-r1: Allows you to require a special group or user to access a service
@@ -17418,7 +17418,7 @@ sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI
 sys-fs/jdiskreport-bin 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15-r1: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5-r1: A FUSE and libmtp based filesystem for accessing MTP devices
-sys-fs/ldapfuse 1.0-r2: A virtual filesystem for FUSE which allows navigation of an LDAP tree
+sys-fs/ldapfuse 1.0-r3: A virtual filesystem for FUSE which allows navigation of an LDAP tree
 sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
 sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 105-r2: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
@@ -17537,7 +17537,7 @@ sys-libs/libcxx 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: New implemen
 sys-libs/libcxxabi 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low level support for a standard C++ library
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
-sys-libs/libhx 3.24: Platform independent library providing basic system functions
+sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
