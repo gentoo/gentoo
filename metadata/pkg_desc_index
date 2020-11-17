@@ -15993,7 +15993,7 @@ sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes convert
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
-sci-geosciences/gpxsee 7.29 7.30 7.31 7.33 7.35: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 7.29 7.35 7.36: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.8.3: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
@@ -16966,7 +16966,7 @@ sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 246-r2 246.6 247_rc2 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-tmpfiles 246: Creates, deletes and cleans up volatile and temporary files and directories
-sys-apps/sysvinit 2.93 2.96 2.97: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.93 2.96 2.97 2.98: /sbin/init - parent of all processes
 sys-apps/tas 1.6.0.200601: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.6-r1 6.7: The GNU info program and utilities
