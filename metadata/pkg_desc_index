@@ -8044,7 +8044,7 @@ dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-cover 2.3.0: Automatically find diff lines that need test coverage
-dev-python/diff-match-patch 20181111: Diff, match and patch algorithms for plain text
+dev-python/diff-match-patch 20181111 20200713: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.2 0.3.3: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
 dev-python/diskcache 5.0.3 5.1.0: Disk and file backed cache
@@ -8667,7 +8667,7 @@ dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1: Data parsing and validation using Python type hints
-dev-python/pydata-sphinx-theme 0.4.0: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pydata-sphinx-theme 0.4.0 0.4.1: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
@@ -8710,6 +8710,8 @@ dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 2.6.0: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
+dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
+dev-python/pyls-spyder 0.1.1: Spyder extensions for the python language server
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.2.1 4.3: A wrapper around the mediainfo library
@@ -8856,7 +8858,7 @@ dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.3.4 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0 4.1.1: Client Library for OpenStack Identity
-dev-python/python-language-server 0.34.1 0.35.1-r1 0.36.0: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.34.1 0.35.1-r1 0.36.1: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.2.0 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
@@ -9093,14 +9095,14 @@ dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
-dev-python/spyder 4.1.5: The Scientific Python Development Environment
-dev-python/spyder-kernels 1.9.4: Kernels used by spyder on its ipython console
+dev-python/spyder 4.2.0: The Scientific Python Development Environment
+dev-python/spyder-kernels 1.10.0: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
-dev-python/spyder-notebook 0.3.0: Jupyter notebook integration with Spyder
-dev-python/spyder-terminal 0.4.2: Run system terminals inside Spyder
+dev-python/spyder-notebook 0.3.1: Jupyter notebook integration with Spyder
+dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
-dev-python/spyder-vim 0_pre20200721: Plugin for Spyder to enable Vim keybindings
+dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
 dev-python/sqlalchemy 1.3.17 1.3.20: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
@@ -9147,6 +9149,7 @@ dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
+dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
 dev-python/tikzplotlib 0.9.4: Convert matplotlib figures into TikZ/PGFPlots
@@ -13968,7 +13971,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 18.7 18.8 18.9 19.0_alpha3_p20201109 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 18.7 18.8 18.9 19.0_alpha3_p20201109 19.0_beta1 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 30.0_p20190808-r3 31.0-r3: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
