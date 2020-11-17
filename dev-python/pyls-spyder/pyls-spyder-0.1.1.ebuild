@@ -17,5 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/python-language-server[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/mock )"
 
 distutils_enable_tests pytest
