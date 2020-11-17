@@ -17850,7 +17850,7 @@ virtual/w3m 0: Virtual for the w3m web browser
 virtual/wine 0-r7: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29-r1: A terminal anywhere
-www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
+www-apache/libapreq2 2.13-r1 2.15: A library for manipulating client request data via the Apache API
 www-apache/mod_auth_kerb 5.4-r2: An Apache authentication module using Kerberos
 www-apache/mod_auth_radius 1.5.8: Radius authentication for Apache
 www-apache/mod_auth_tkt 2.1.0-r1: Apache module for cookie based authentication
