@@ -11,7 +11,7 @@ SRC_URI="https://duktape.org/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE=""
 
 DEPEND=""
