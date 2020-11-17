@@ -1016,7 +1016,7 @@ app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison opt
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
 app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signatures
-app-crypt/mit-krb5 1.18.2-r1 1.18.2-r2: MIT Kerberos V
+app-crypt/mit-krb5 1.18.2-r2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r2 0.41 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
@@ -17637,7 +17637,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.5.6 0.5.7: System and process monitor written with EFL
+sys-process/evisum 0.5.7: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
