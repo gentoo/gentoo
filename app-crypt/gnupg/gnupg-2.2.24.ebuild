@@ -58,6 +58,8 @@ src_prepare() {
 
 	# Made optional because it's a non-official patch
 	if use scd_shared_access ; then
+		# Patch taken from
+		# https://github.com/GPGTools/MacGPG2/tree/dev/patches/gnupg
 		eapply "${DISTDIR}/${PN}-2.2.16-scdaemon_shared-access.patch"
 	fi
 
