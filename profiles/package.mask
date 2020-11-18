@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2020-11-17)
+# Unit tests fail. No revdeps.
+# Removal in 30 days.  Bug #723674.
+dev-python/diff-cover
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-17)
 # Discontinued upstream.  No revdeps.  Use dev-python/toml instead.
 # Removal in 30 days.  Bug #755125.
