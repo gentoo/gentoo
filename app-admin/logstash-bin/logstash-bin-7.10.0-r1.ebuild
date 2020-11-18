@@ -31,17 +31,16 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 
-	rm vendor/jruby/lib/jni/aarch64-Linux/libjffi-1.2.so \
-		vendor/jruby/lib/jni/arm-Linux/libjffi-1.2.so \
-		vendor/jruby/lib/jni/i386-SunOS/libjffi-1.2.so \
-		vendor/jruby/lib/jni/mips64el-Linux/libjffi-1.2.so \
-		vendor/jruby/lib/jni/ppc64-Linux/libjffi-1.2.so \
-		vendor/jruby/lib/jni/ppc64le-Linux/libjffi-1.2.so \
-		vendor/jruby/lib/jni/sparcv9-Linux/libjffi-1.2.so \
-		vendor/jruby/lib/jni/sparcv9-SunOS/libjffi-1.2.so \
-		vendor/jruby/lib/jni/x86_64-DragonFlyBSD/libjffi-1.2.so \
-		vendor/jruby/lib/jni/x86_64-FreeBSD/libjffi-1.2.so \
-		vendor/jruby/lib/jni/x86_64-SunOS/libjffi-1.2.so || die
+	local d
+	for d in aarch64-Linux arm-Linux Darwin i386-Linux i386-SunOS \
+		i386-Windows mips64el-Linux ppc64-AIX ppc64le-Linux ppc64-Linux \
+		ppc-AIX sparcv9-Linux sparcv9-SunOS x86_64-DragonFlyBSD \
+		x86_64-FreeBSD x86_64-OpenBSD x86_64-SunOS x86_64-Windows; do
+			rm -r vendor/jruby/lib/jni/$d || die
+	done
+
+	# remove bundled java
+	rm -r jdk || die
 }
 
 src_install() {
