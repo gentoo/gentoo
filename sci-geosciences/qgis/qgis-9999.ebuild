@@ -105,10 +105,10 @@ RESTRICT="test"
 
 PATCHES=(
 	# git master
-	"${FILESDIR}/${P}-cmake-lib-suffix.patch"
+	"${FILESDIR}/${PN}-3.16.0-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
-	"${FILESDIR}/${PN}-3.4.7-default-qmldir.patch"
+	"${FILESDIR}/${PN}-9999-featuresummary.patch"
+	"${FILESDIR}/${PN}-9999-default-qmldir.patch"
 )
 
 pkg_setup() {
