@@ -888,7 +888,7 @@ app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POS
 app-benchmarks/stress-ng 0.11.24: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.19 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
-app-benchmarks/wrk 4.1.0-r2: A HTTP benchmarking tool
+app-benchmarks/wrk 4.1.0-r2 4.1.0-r100: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0-r1: A shell script for burning optical media
 app-cdr/bchunk 1.2.2: Convert CD images from bin/cue to iso+wav/cdr
