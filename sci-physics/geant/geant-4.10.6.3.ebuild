@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_P=${PN}$(ver_cut 1-2).$(printf %02d $(ver_cut 3))
 
@@ -12,12 +12,11 @@ case ${PV} in
 	MY_P+=.b$(printf %02d $(ver_cut 5))
 	DOCS="ReleaseNotes/Beta$(ver_cut 1-3)-*.txt"
 	;;
-*_p*)
-	MY_P+=.p$(printf %02d $(ver_cut 5))
-	DOCS="ReleaseNotes/Patch$(ver_cut 1-3)-*.txt"
-	HTML_DOCS="ReleaseNotes/ReleaseNotes$(ver_cut 1-3).html"
-	;;
 *)
+	if [[ $(ver_cut 4) -gt 0 ]]; then
+		MY_P+=.p$(printf %02d $(ver_cut 4))
+		DOCS="ReleaseNotes/Patch$(ver_cut 1-3)-*.txt"
+	fi
 	HTML_DOCS="ReleaseNotes/ReleaseNotes$(ver_cut 1-3).html"
 	;;
 esac
@@ -39,7 +38,7 @@ RDEPEND="
 	>=sci-physics/clhep-2.4.1.3:2=[threads?]
 	data? ( ~sci-physics/geant-data-${PV} )
 	dawn? ( media-gfx/dawn )
-	doc? ( ~app-doc/geant-docs-$(ver_cut 1-3) )
+	doc? ( =app-doc/geant-docs-$(ver_cut 1-3)* )
 	gdml? ( dev-libs/xerces-c )
 	hdf5? ( sci-libs/hdf5[threads?] )
 	inventor? ( media-libs/SoXt )
@@ -57,8 +56,6 @@ RDEPEND="
 		x11-libs/libXmu
 	)"
 
-PATCHES=( "${FILESDIR}"/geant-4.10.6-datadir.patch )
-
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
@@ -66,10 +63,13 @@ src_configure() {
 		-DCMAKE_INSTALL_DATADIR="${EPREFIX}/usr/share/geant4"
 		-DGEANT4_BUILD_CXXSTD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
 		-DGEANT4_BUILD_MULTITHREADED=$(usex threads)
+		-DGEANT4_BUILD_STORE_TRAJECTORY=OFF
 		-DGEANT4_BUILD_TLS_MODEL=$(usex threads global-dynamic initial-exec)
+		-DGEANT4_BUILD_VERBOSE_CODE=OFF
 		-DGEANT4_INSTALL_DATA=OFF
 		-DGEANT4_INSTALL_DATADIR="${EPREFIX}/usr/share/geant4/data"
 		-DGEANT4_INSTALL_EXAMPLES=$(usex examples)
+		-DGEANT4_INSTALL_PACKAGE_CACHE=OFF
 		-DGEANT4_USE_FREETYPE=$(usex freetype)
 		-DGEANT4_USE_G3TOG4=$(usex geant3)
 		-DGEANT4_USE_GDML=$(usex gdml)
@@ -94,14 +94,14 @@ src_configure() {
 			-DINVENTOR_SOXT_INCLUDE_DIR="$(coin-config --includedir)"
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	# adjust clhep linking flags for system clhep
 	# binmake.gmk is only useful for legacy build systems
 	sed -i -e 's/-lG4clhep/-lCLHEP/' config/binmake.gmk || die
-	cmake-utils_src_install
+	cmake_src_install
 	rm "${ED}"/usr/bin/*.{sh,csh} || die "failed to remove obsolete shell scripts"
 
 	einstalldocs

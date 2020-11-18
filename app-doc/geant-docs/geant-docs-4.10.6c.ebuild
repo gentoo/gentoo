@@ -3,9 +3,7 @@
 
 EAPI=7
 
-# Note: documentation patch releases are not the same as Geant4 patch releases
-
-MY_PV=V$(ver_cut 2-3)-$(ver_cut 5).0
+MY_PV=V$(ver_cut 2-3)
 
 DESCRIPTION="User documentation for Geant4 physics simulation toolkit"
 HOMEPAGE="https://geant4.web.cern.ch/support/user_documentation"
@@ -29,7 +27,7 @@ SRC_URI="
 
 LICENSE="geant4"
 SLOT="4"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 S="${DISTDIR}"
