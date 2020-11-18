@@ -49,13 +49,14 @@ RDEPEND="${DEPEND}
 
 RESTRICT="test"
 
-pkg_preinst() {
-	gnome2_schemas_savelist
-}
-
 src_install() {
 	meson_src_install
 	python_optimize
+}
+
+pkg_preinst() {
+	gnome2_schemas_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
