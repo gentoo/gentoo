@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-yaml-cpp-0.6.patch"
 	"${FILESDIR}/${PN}-1.1.0-remove-Werror.patch"
 	"${FILESDIR}/${PN}-1.1.1-yaml-cpp-boost-check.patch"
+	"${FILESDIR}/${P}-fix-self-assign-clang.patch"
 )
 
 pkg_setup() {
