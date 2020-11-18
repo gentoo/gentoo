@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86 ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
 IUSE="caps doc libressl lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 
 DEPEND="
@@ -50,6 +50,7 @@ src_configure() {
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	econf \
 		--localstatedir="${EPREFIX}/var" \
+		--disable-all-bugs-are-fatal \
 		--enable-system-torrc \
 		--disable-android \
 		--disable-html-manual \
