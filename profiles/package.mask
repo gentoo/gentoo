@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-18)
+# Depends on deprecated QtWebKit, dead upstream.
+# Alternatives: kde-apps/okular[chm], app-text/xchm
+# Removal in 30 days.
+app-text/kchmviewer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-18)
 # Depends on deprecated QtWebKit, no maintainer.
 # Bugs #712200 and 725388. Removal in 30 days.
 sci-misc/mendeleydesktop
