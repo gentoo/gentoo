@@ -15393,7 +15393,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3-r1 5.3.3-r2: Ghostscript and cups printer drivers
-net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r3: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r3 3.20.9-r4: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.19.12 3.20.6-r1 3.20.9: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
@@ -17397,7 +17397,7 @@ sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 parti
 sys-fs/f2fs-tools 1.14.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4 1.1.0: Resize FAT partitions using libparted
-sys-fs/fatsort 1.6.2.605 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
+sys-fs/fatsort 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
 sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3 3.10.0: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.9.1 3.9.2 3.9.3: Common files for multiple slots of sys-fs/fuse
