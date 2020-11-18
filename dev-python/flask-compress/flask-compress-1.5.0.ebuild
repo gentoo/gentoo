@@ -13,11 +13,11 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Compress responses in your Flask app with gzip"
 HOMEPAGE="https://pypi.org/project/Flask-Compress"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 RDEPEND="
 	app-arch/brotli[python,${PYTHON_USEDEP}]
@@ -25,12 +25,4 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
-DEPEND="
-	${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MY_P}"
-
-python_test() {
-	pytest
-}
+distutils_enable_tests pytest
