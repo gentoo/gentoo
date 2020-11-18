@@ -26,6 +26,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/clhep-fix-testThreaded.patch )
+
 S="${WORKDIR}/${PV}/CLHEP"
 
 src_prepare() {
