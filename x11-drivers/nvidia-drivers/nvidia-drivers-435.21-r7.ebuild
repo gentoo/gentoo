@@ -40,7 +40,7 @@ COMMON="
 			x11-libs/gtk+:3
 		)
 		x11-libs/cairo
-		x11-libs/gdk-pixbuf[X]
+		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
 		x11-libs/libX11
 		x11-libs/libXext
@@ -50,11 +50,10 @@ COMMON="
 		x11-libs/pango[X]
 	)
 	X? (
-		>=x11-libs/libvdpau-1.0[${MULTILIB_USEDEP}]
-		app-misc/pax-utils
 		libglvnd? (
 			media-libs/libglvnd[X,${MULTILIB_USEDEP}]
 		)
+		app-misc/pax-utils
 	)
 "
 DEPEND="
@@ -70,16 +69,13 @@ RDEPEND="
 		<x11-base/xorg-server-1.20.99:=
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libvdpau-1.0[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 	)
-	kernel_linux? ( net-libs/libtirpc )
 "
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
-PATCHES=(
-	"${FILESDIR}"/${PN}-440.26-locale.patch
-)
-NV_KV_MAX_PLUS="5.10"
+NV_KV_MAX_PLUS="5.4"
 CONFIG_CHECK="
 	!DEBUG_MUTEXES
 	~!I2C_NVIDIA_GPU
@@ -158,11 +154,14 @@ src_prepare() {
 	done
 
 	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-fno-common.patch "${WORKDIR}" || die
 		cp "${FILESDIR}"/nvidia-settings-linker.patch "${WORKDIR}" || die
 		sed -i \
 			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-fno-common.patch \
 			"${WORKDIR}"/nvidia-settings-linker.patch \
 			|| die
+		eapply "${WORKDIR}"/nvidia-settings-fno-common.patch
 		eapply "${WORKDIR}"/nvidia-settings-linker.patch
 	fi
 
@@ -312,12 +311,6 @@ src_install() {
 		doins ${NV_X11}/10_nvidia_wayland.json
 	fi
 
-	insinto /etc/vulkan/icd.d
-	doins nvidia_icd.json
-
-	insinto /etc/vulkan/implicit_layer.d
-	doins nvidia_layers.json
-
 	# OpenCL ICD for NVIDIA
 	if use kernel_linux; then
 		insinto /etc/OpenCL/vendors
@@ -329,6 +322,9 @@ src_install() {
 
 	if use X; then
 		doexe ${NV_OBJ}/nvidia-xconfig
+
+		insinto /etc/vulkan/icd.d
+		doins nvidia_icd.json
 	fi
 
 	if use kernel_linux; then
@@ -425,8 +421,6 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	dodoc supported-gpus.json
-
 	docinto html
 	dodoc -r ${NV_DOC}/html/*
 }
@@ -457,6 +451,7 @@ src_install-libs() {
 			"libnvidia-compiler.so.${NV_SOVER}"
 			"libnvidia-eglcore.so.${NV_SOVER}"
 			"libnvidia-encode.so.${NV_SOVER}"
+			"libnvidia-fatbinaryloader.so.${NV_SOVER}"
 			"libnvidia-fbc.so.${NV_SOVER}"
 			"libnvidia-glcore.so.${NV_SOVER}"
 			"libnvidia-glsi.so.${NV_SOVER}"
@@ -481,7 +476,7 @@ src_install-libs() {
 		if use wayland && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
-				"libnvidia-egl-wayland.so.1.1.5"
+				"libnvidia-egl-wayland.so.1.1.3"
 			)
 		fi
 
@@ -502,7 +497,6 @@ src_install-libs() {
 		then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-cbl.so.${NV_SOVER}"
-				"libnvidia-ngx.so.${NV_SOVER}"
 				"libnvidia-rtcore.so.${NV_SOVER}"
 				"libnvoptix.so.${NV_SOVER}"
 			)
