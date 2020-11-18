@@ -15023,7 +15023,7 @@ net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
-net-misc/dhcp 4.4.1 4.4.2 4.4.2-r2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.4.1 4.4.2 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 8.1.9 9.3.1 9.3.2 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.7-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
@@ -17934,7 +17934,7 @@ www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible stat
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 18.0.9 18.0.10 19.0.3 19.0.4 20.0.0 20.0.1: Personal cloud that runs on your own server
-www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1: A static website and blog generator
+www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.1: An open-source PHP-based bulletin board package
@@ -17972,7 +17972,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web browser with ssl support
-www-client/microsoft-edge-dev 88.0.692.0: The web browser from Microsoft
+www-client/microsoft-edge-dev 88.0.702.0: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
