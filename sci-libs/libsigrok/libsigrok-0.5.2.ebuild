@@ -34,7 +34,7 @@ LIB_DEPEND="
 	>=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8:=[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
-	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
+	ftdi? ( dev-embedded/libftdi:1[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	python? (
 		${PYTHON_DEPS}
@@ -72,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-swig-4.patch"
 	# https://sigrok.org/bugzilla/show_bug.cgi?id=1526
 	"${FILESDIR}/${P}-ruby-swig-docs.patch" # bug 705074
+	"${FILESDIR}/${P}-check-0.15.patch"
 )
 
 pkg_setup() {

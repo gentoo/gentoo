@@ -146,7 +146,3 @@ net-misc/connman openconnect
 # Julian Ospald <hasufell@gentoo.org> (2013-11-23)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
-
-# Maciej Mrozowski <reavertm@gentoo.org> (2010-06-26)
-# Needs media-libs/simage keyworded, bug 325623
-media-libs/coin simage

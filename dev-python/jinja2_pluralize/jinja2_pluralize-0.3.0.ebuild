@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -18,7 +18,6 @@ IUSE=""
 
 RDEPEND="dev-python/inflect[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]"
 
 python_test() {

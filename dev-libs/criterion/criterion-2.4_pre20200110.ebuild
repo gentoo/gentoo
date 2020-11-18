@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/nanomsg:=
 	dev-libs/libgit2:=
-	virtual/libffi:="
+	dev-libs/libffi:="
 DEPEND="${RDEPEND}
 	dev-libs/boxfort
 	test? (

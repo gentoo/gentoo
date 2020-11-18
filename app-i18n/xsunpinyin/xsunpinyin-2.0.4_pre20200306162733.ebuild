@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
 
 inherit python-any-r1 scons-utils toolchain-funcs
 
@@ -57,6 +57,9 @@ src_prepare() {
 
 	# https://github.com/sunpinyin/sunpinyin/issues/110
 	sed -e "s/^\( *\)('CXX', 'CXX'),/&\n\1('AR', 'AR'),\n\1('RANLIB', 'RANLIB'),/" -i wrapper/xim/SConstruct || die
+
+	# https://github.com/sunpinyin/sunpinyin/issues/114
+	sed -e "/^#include <iconv\.h>$/d" -i wrapper/xim/xim.c || die
 }
 
 src_configure() {

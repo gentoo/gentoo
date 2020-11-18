@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode +libatomic X"
 
 CDEPEND="dev-libs/gmp:0
-		virtual/libffi
+		dev-libs/libffi
 		libatomic? ( dev-libs/libatomic_ops )
 		>=dev-libs/boehm-gc-7.1[threads?]
 		>=dev-lisp/asdf-2.33-r3:="

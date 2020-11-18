@@ -171,7 +171,6 @@ dev-libs/ossp-uuid php
 dev-games/openscenegraph fox
 dev-libs/hidapi fox
 sci-mathematics/gsl-shell fox
-sys-libs/gwenhywfar fox
 
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.
