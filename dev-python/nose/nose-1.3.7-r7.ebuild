@@ -28,7 +28,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
+		!hppa? ( dev-python/coverage[${PYTHON_USEDEP}] )
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
 		' 'python3*')

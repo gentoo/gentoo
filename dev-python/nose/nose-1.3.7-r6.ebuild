@@ -30,7 +30,7 @@ RDEPEND="
 	coverage? ( ${COV_DEP} )"
 DEPEND="${RDEPEND}
 	test? (
-		${COV_DEP}
+		!hppa? ( ${COV_DEP} )
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
 		' python3_{6,7,8})
