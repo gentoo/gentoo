@@ -7,6 +7,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 flag-o-matic multiprocessing optfeature virtualx
 
@@ -17,7 +18,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -41,7 +42,6 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/s3fs[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-python/cython-0.29.21[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.20-r1[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
 		app-text/pandoc
@@ -167,7 +167,6 @@ pkg_postinst() {
 	optfeature "accelerating certain numerical operations, using multiple cores as well as smart chunking and caching to achieve large speedups" ">=dev-python/numexpr-2.1"
 	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup:4 dev-python/html5lib dev-python/lxml
 	optfeature "for msgpack compression using blosc" dev-python/blosc
-	optfeature "necessary for Amazon S3 access" dev-python/s3fs
 	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-1.6.1" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt

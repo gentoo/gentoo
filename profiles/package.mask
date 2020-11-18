@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-18)
+# Upstream has switched to aiobotocore.  It's a huge hack that requires
+# a very specific botocore version, currently 3 months old.  Given that
+# boto* makes releases daily and various revdeps require newer boto3 /
+# botocore versions, this makes aiobotocore unmaintainable.
+# As a result, we'd be stuck with the old version forever.
+#
+# See also:
+# https://github.com/aio-libs/aiobotocore/issues/829
+# https://github.com/dask/s3fs/issues/357
+#
+# Removal in 30 days.  Bug #755266.
+dev-python/s3fs
+
 # Zac Medico <zmedico@gentoo.org> (2020-11-17)
 # Unit tests fail. No revdeps.
 # Removal in 30 days.  Bug #723674.

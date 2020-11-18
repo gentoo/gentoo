@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 VIRTUALX_REQUIRED="manual"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 flag-o-matic multiprocessing optfeature virtualx
+inherit distutils-r1 flag-o-matic optfeature virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="https://pandas.pydata.org/"
@@ -18,7 +18,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -42,7 +42,6 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/s3fs[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
@@ -60,11 +59,12 @@ OPTIONAL_DEPEND="
 	)
 "
 COMMON_DEPEND="
-	>dev-python/numpy-1.15.4[${PYTHON_USEDEP}]
+	>dev-python/numpy-1.13.1[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.20-r1[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
@@ -93,13 +93,10 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/pymysql[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
-		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 		x11-misc/xclip
 		x11-misc/xsel
 	)
@@ -119,9 +116,6 @@ python_prepare_all() {
 	# requires package installed
 	sed -e 's:test_register_entrypoint:_&:' \
 		-i pandas/tests/plotting/test_backend.py || die
-
-	sed -e '/extra_compile_args =/s:"-Werror"::' \
-		-i setup.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -145,7 +139,6 @@ python_test() {
 	pushd  "${BUILD_DIR}"/lib > /dev/null || die
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
 	PYTHONPATH=. pytest pandas -v --skip-slow --skip-network \
-		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" \
 		-m "not single" || die "Tests failed with ${EPYTHON}"
 	find . '(' -name .pytest_cache -o -name .hypothesis ')' \
 		-exec rm -r {} + || die
@@ -168,7 +161,6 @@ pkg_postinst() {
 	optfeature "accelerating certain numerical operations, using multiple cores as well as smart chunking and caching to achieve large speedups" ">=dev-python/numexpr-2.1"
 	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup:4 dev-python/html5lib dev-python/lxml
 	optfeature "for msgpack compression using blosc" dev-python/blosc
-	optfeature "necessary for Amazon S3 access" dev-python/s3fs
 	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-1.6.1" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
