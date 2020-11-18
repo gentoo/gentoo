@@ -2277,7 +2277,7 @@ app-metrics/node_exporter 0.18.1 1.0.1: Prometheus exporter for machine metrics
 app-metrics/openvpn_exporter 0.2.1 0.3.0: Prometheus Exporter for OpenVPN
 app-metrics/postfix_exporter 0.1.2 0.1.2-r1: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
-app-metrics/process-exporter 0.4.0 0.4.0-r1 0.7.1: Process exporter for prometheus
+app-metrics/process-exporter 0.4.0 0.4.0-r1 0.7.1 0.7.5: Process exporter for prometheus
 app-metrics/prom2json 0.1.0_p20170523 1.3.0: A tool to scrape a Prometheus client and dump the result as JSON
 app-metrics/prometheus 2.13.1 2.19.1 2.21.0: Prometheus monitoring system and time series database
 app-metrics/prometheus-bin 2.15.2: prometheus monitoring system and time series database
