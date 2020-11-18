@@ -2664,7 +2664,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.4 0.34.9 0.34.10 0.34.11: Search and query ebuilds
+app-portage/eix 0.34.9 0.34.10 0.34.11: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -8503,7 +8503,7 @@ dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension
 dev-python/os-ken 0.3.1 1.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-resource-classes 0.5.0 1.0.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
-dev-python/os-testr 1.0.0 2.0.0: A testr wrapper to provide functionality for OpenStack projects
+dev-python/os-testr 2.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 2.3.0 2.4.0: os-traits is a library containing standardized trait strings.
 dev-python/os-vif 1.15.2 2.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
@@ -8511,8 +8511,8 @@ dev-python/os-xenapi 0.3.4 0.3.4-r1: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.0.2 4.3.1: library for running multi-thread, multi-process applications
-dev-python/oslo-config 8.0.3 8.3.2: Oslo Configuration API
-dev-python/oslo-context 2.22.1 3.1.1: Helpers to maintain useful information about a request context
+dev-python/oslo-config 8.3.2: Oslo Configuration API
+dev-python/oslo-context 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0 8.4.0: OpenStack Common DB Code
 dev-python/oslo-i18n 5.0.1: Oslo i18n library
 dev-python/oslo-log 4.1.2 4.4.0: OpenStack logging config library, configuration for all openstack projects.
@@ -8526,7 +8526,7 @@ dev-python/oslo-serialization 3.1.1 4.0.1: Oslo Serialization library
 dev-python/oslo-service 2.1.1 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.0.1 1.1.1: Oslo i18n library
-dev-python/oslo-utils 4.1.2 4.6.0: Oslo Utility library
+dev-python/oslo-utils 4.6.0: Oslo Utility library
 dev-python/oslo-versionedobjects 2.0.2 2.3.0: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2 3.3.1 3.7.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 4.4.1: Oslo test framework
@@ -8807,7 +8807,7 @@ dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-regressions 2.0.1 2.0.2: Easy to use fixtures to write regression tests
-dev-python/pytest-rerunfailures 8.0 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
+dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
 dev-python/pytest-services 2.2.0 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
@@ -8859,7 +8859,7 @@ dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOS
 dev-python/python-jsonrpc-server 0.3.4 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.0.0 4.1.1: Client Library for OpenStack Identity
 dev-python/python-language-server 0.34.1 0.35.1-r1 0.36.1: An implementation of the Language Server Protocol for Python
-dev-python/python-ldap 3.2.0 3.3.1 9999: Various LDAP-related Python modules
+dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
 dev-python/python-libevdev 0.8: Python wrappers for the libevdev library
@@ -9138,7 +9138,7 @@ dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3 0.9.1: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
-dev-python/testfixtures 6.14.2 6.15.0: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 6.15.0: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testpath 0.4.4-r1: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
@@ -12375,7 +12375,7 @@ mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1: sendmail milter for amavi
 mail-filter/amavisd-new 2.12.0-r5: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r3: Bayesian spam filter designed with fast algorithms, and tuned for speed
-mail-filter/courier-pythonfilter 3.0.2 3.0.2-r1: Python filtering architecture for the Courier MTA
+mail-filter/courier-pythonfilter 3.0.2-r1: Python filtering architecture for the Courier MTA
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
 mail-filter/dcc 1.3.154 1.3.158: Distributed Checksum Clearinghouse
 mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
@@ -15037,7 +15037,7 @@ net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of 
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 4.0.2 4.0.3-r1 4.0.4: User friendly Bitcoin client
+net-misc/electrum 4.0.4: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
@@ -18031,7 +18031,7 @@ www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4: Robust, small and high perf
 www-servers/nginx-unit 1.17.0 1.18.0 1.20.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
-www-servers/pshs 0.3.4 0.3.5 0.4.1: Pretty small HTTP server -- a command-line tool to share files
+www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share files
 www-servers/puma 3.12.5-r1 4.3.4-r1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4_p20200211 0.5.1: Serve a single file via HTTP
@@ -18986,7 +18986,7 @@ xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce 
 xfce-extra/xfce4-cpufreq-plugin 1.2.1 1.2.2: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.1.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.0: A panel plug-in with date, time and embedded calender
-xfce-extra/xfce4-dict 0.8.3 0.8.4: A dict.org querying application and panel plug-in for the Xfce desktop
+xfce-extra/xfce4-dict 0.8.4: A dict.org querying application and panel plug-in for the Xfce desktop
 xfce-extra/xfce4-diskperf-plugin 2.6.2: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0-r4: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1-r2: Panel plug-in that displays information about earthquakes at regular intervals

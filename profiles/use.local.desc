@@ -8672,7 +8672,6 @@ www-servers/nginx-unit:php7-2 - Support for PHP 7.2
 www-servers/nginx-unit:php7-3 - Support for PHP 7.3
 www-servers/nginx-unit:php7-4 - Support for PHP 7.4
 www-servers/pshs:magic - Enable automatic detection of Content-Type using libmagic (sys-apps/file)
-www-servers/pshs:netlink - Use libnetlink (sys-apps/iproute2) to get network interface addresses
 www-servers/pshs:qrcode - Enable generating QRCodes for server URL
 www-servers/resin:admin - Enable Resin admin webapp
 www-servers/sniproxy:dns - Enable DNS resolver via net-libs/udns
