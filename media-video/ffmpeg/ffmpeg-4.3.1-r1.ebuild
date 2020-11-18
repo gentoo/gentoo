@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -98,7 +98,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
 	kvazaar:libkvazaar libaom
 	openh264:libopenh264 rav1e:librav1e snappy:libsnappy theora:libtheora twolame:libtwolame
-	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
+	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
 IUSE="
@@ -192,6 +192,7 @@ RDEPEND="
 			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 		)
 		twolame? ( >=media-sound/twolame-0.3.13-r1[${MULTILIB_USEDEP}] )
+		wavpack? ( >=media-sound/wavpack-4.60.1-r1[${MULTILIB_USEDEP}] )
 		webp? ( >=media-libs/libwebp-0.3.0:=[${MULTILIB_USEDEP}] )
 		x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )
 		x265? ( >=media-libs/x265-1.6:=[${MULTILIB_USEDEP}] )
@@ -200,7 +201,7 @@ RDEPEND="
 	fdk? ( >=media-libs/fdk-aac-0.1.3:=[${MULTILIB_USEDEP}] )
 	flite? ( >=app-accessibility/flite-1.4-r4[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
-	frei0r? ( media-plugins/frei0r-plugins[${MULTILIB_USEDEP}] )
+	frei0r? ( media-plugins/frei0r-plugins )
 	fribidi? ( >=dev-libs/fribidi-0.19.6[${MULTILIB_USEDEP}] )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
@@ -325,6 +326,8 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}"/${PN}-4.3-fix-build-without-SSSE3.patch
+	"${FILESDIR}"/${PN}-4.3-altivec-novsx-yuv2rgb.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -392,7 +395,7 @@ multilib_src_configure() {
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
-		for i in librav1e libzmq ; do
+		for i in frei0r librav1e libzmq ; do
 			myconf+=( --disable-${i} )
 		done
 	fi
