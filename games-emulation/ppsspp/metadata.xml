@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
+		<flag name="discord-presence">Enables Discord Rich Presence, show the current game on Discord</flag>
 		<flag name="headless">Build headless version of the PPSSPP</flag>
 		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
 	</use>
