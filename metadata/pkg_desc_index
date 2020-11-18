@@ -7863,7 +7863,7 @@ dev-python/ament_package 0.9.2: Parser for the manifest files in the ament build
 dev-python/amodem 1.15.1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.5: ANSI cursor movement and graphics in Python
-dev-python/ansi2html 1.5.2-r2: Convert text with ANSI color codes to HTML
+dev-python/ansi2html 1.5.2-r2 1.6.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0 2.1.1: A client for the OpenStack Aodh API
