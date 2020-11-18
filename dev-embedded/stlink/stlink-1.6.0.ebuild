@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils udev
+inherit udev xdg cmake
 
 DESCRIPTION="stm32 discovery line linux programmer"
 HOMEPAGE="https://github.com/texane/stlink"
@@ -17,13 +17,12 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
 
 RDEPEND="virtual/libusb:1
 	>=dev-libs/glib-2.32.0:2
 	x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
@@ -33,5 +32,5 @@ src_configure() {
 		-DLIB_INSTALL_DIR:PATH="$(get_libdir)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
