@@ -9184,7 +9184,7 @@ dev-python/typing 3.7.4.3: Type Hints for Python
 dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.7.0 2.7.1: A portable, lightweight MessagePack serializer and deserializer
-dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
+dev-python/ubelt 0.9.1: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 4.0.1: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
@@ -9250,7 +9250,7 @@ dev-python/wxpython 4.0.7: A blending of the wxWindows C++ class library with Py
 dev-python/xapp 2.0.1: Python bindings for x11-libs/xapps
 dev-python/xarray 0.12.1 0.16.0 0.16.1: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.10.1: A drop in replacement for xpyb, an XCB python binding
-dev-python/xdoctest 0.11.0: A rewrite of Python's builtin doctest module but without all the weirdness
+dev-python/xdoctest 0.15.0: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlutils 2.0.0-r1: provides a collection of utilities for working with Excel files
