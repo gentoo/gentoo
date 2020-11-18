@@ -40,7 +40,7 @@ case ${PV} in
 esac
 
 LICENSE="GPL-3"
-SLOT="0/8.1"  # subslot matches SONAME major
+SLOT="0/8"  # subslot matches SONAME major
 [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs +unicode utils"
