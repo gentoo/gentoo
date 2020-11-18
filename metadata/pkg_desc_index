@@ -5739,7 +5739,7 @@ dev-ml/cairo-ocaml 1.2.0 1.2.0-r1: Ocaml bindings for the cairo vector graphics 
 dev-ml/cairo2 0.6.1: Binding to Cairo, a 2D Vector Graphics Library
 dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/camlbz2 0.6.0 0.6.0-r1: OCaml bindings for libbz (AKA, bzip2)
-dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
+dev-ml/camldbm 1.0 1.2: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1 4.10_p1 4.11_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 7.11-r1 7.12 7.13: A preprocessor-pretty-printer of ocaml
