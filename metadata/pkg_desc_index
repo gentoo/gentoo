@@ -8150,7 +8150,7 @@ dev-python/flask-api 2.0: Browsable web APIs for Flask
 dev-python/flask-assets 0.12: Flask webassets integration
 dev-python/flask-babel 2.0.0: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.4: Adds i18n/l10n support to Flask applications
-dev-python/flask-compress 1.5.0: Compress responses in your Flask app with gzip
+dev-python/flask-compress 1.5.0 1.8.0: Compress responses in your Flask app with gzip
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3-r1: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Gravatar service easy
