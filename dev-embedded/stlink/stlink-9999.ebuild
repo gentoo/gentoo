@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit cmake-utils udev
+inherit udev xdg cmake
 
 DESCRIPTION="stm32 discovery line linux programmer"
 HOMEPAGE="https://github.com/texane/stlink"
@@ -11,19 +11,18 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/texane/stlink.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/texane/stlink/archive/${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/texane/stlink/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
 
 RDEPEND="virtual/libusb:1
 	>=dev-libs/glib-2.32.0:2
 	x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
@@ -33,5 +32,5 @@ src_configure() {
 		-DLIB_INSTALL_DIR:PATH="$(get_libdir)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
