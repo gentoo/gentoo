@@ -12998,7 +12998,7 @@ media-libs/gstreamer 1.14.5 1.16.2: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and more
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
-media-libs/hamlib 3.3 4.0_rc2: Ham radio backend rig control libraries
+media-libs/hamlib 3.3 3.3-r1 4.0_rc2: Ham radio backend rig control libraries
 media-libs/harfbuzz 2.6.5 2.6.7 2.6.8 2.7.1 2.7.2 9999: An OpenType text shaping engine
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
@@ -15477,7 +15477,7 @@ net-vpn/tor 0.4.4.5 0.4.4.6 0.4.5.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20200908 1.0.20201112: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20201112: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
