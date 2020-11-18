@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
 DESCRIPTION="A rewrite of Python's builtin doctest module but without all the weirdness"
-HOMEPAGE="https://github.com/Erotemic/ubelt"
+HOMEPAGE="https://github.com/Erotemic/xdoctest"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
