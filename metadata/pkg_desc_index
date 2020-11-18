@@ -8368,7 +8368,7 @@ dev-python/lit 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: A stand-alone
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 0.92 1.0.0: Python bindings for the Lightning Database
+dev-python/lmdb 1.0.0: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
@@ -8494,13 +8494,13 @@ dev-python/olefile 0.46 0.46-r1: Python package to parse, read and write Microso
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
 dev-python/openpyxl 3.0.5: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 2.2.5: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.46.0 0.50.0: A collection of libraries for building applications to work with OpenStack.
+dev-python/openstacksdk 0.50.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.0.1-r1 3.3.0: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1 4.0.2: A mutable set that remembers the order of its entries
 dev-python/os-brick 2.8.2 3.0.1 4.0.1: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-client-config 1.32.0 2.1.0: OpenStack Client Configuation Library
+dev-python/os-client-config 2.1.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
-dev-python/os-ken 0.3.1 1.2.0: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-ken 1.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-resource-classes 0.5.0 1.0.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 2.0.0: A testr wrapper to provide functionality for OpenStack projects
@@ -8508,21 +8508,21 @@ dev-python/os-traits 2.3.0 2.4.0: os-traits is a library containing standardized
 dev-python/os-vif 1.15.2 2.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4 0.3.4-r1: XenAPI library for OpenStack projects
-dev-python/osc-lib 2.0.0 2.2.1: A package of common support modules for writing OSC plugins.
+dev-python/osc-lib 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 4.0.2 4.3.1: library for running multi-thread, multi-process applications
+dev-python/oslo-concurrency 4.3.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 8.3.2: Oslo Configuration API
 dev-python/oslo-context 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0 8.4.0: OpenStack Common DB Code
 dev-python/oslo-i18n 5.0.1: Oslo i18n library
-dev-python/oslo-log 4.1.2 4.4.0: OpenStack logging config library, configuration for all openstack projects.
+dev-python/oslo-log 4.4.0: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 12.1.1 12.5.1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 4.0.2 4.1.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 3.1.1 3.5.0: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.33.3 2.4.0: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.29.2 2.2.0: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2 6.2.0: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 3.1.1 4.0.1: Oslo Serialization library
+dev-python/oslo-serialization 4.0.1: Oslo Serialization library
 dev-python/oslo-service 2.1.1 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.0.1 1.1.1: Oslo i18n library
@@ -8605,7 +8605,7 @@ dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.2: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9-r1: A library for stubbing in Python
 dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
-dev-python/prettytable 0.7.2-r1: Easily displaying tabular data in a visually appealing ASCII table format
+dev-python/prettytable 0.7.2-r1 2.0.0: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.1.1: Tools for testing processes
 dev-python/progress 1.5: Easy to use progress bars
@@ -8829,7 +8829,7 @@ dev-python/python-blazarclient 2.1.0 3.1.1: This is a client for the OpenStack B
 dev-python/python-bugzilla 3.0.0 3.0.1 3.0.2: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.6.2-r2 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 4.2.2 7.2.0: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 7.2.0: A client for the OpenStack Cinder API
 dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.5.0: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.2.4: Library to implement a well-behaved Unix daemon process
@@ -8850,7 +8850,7 @@ dev-python/python-evdev 1.3.0: Python library for evdev bindings
 dev-python/python-fastimport 0.9.8-r1: Library for parsing the fastimport VCS serialization format
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
-dev-python/python-glanceclient 2.17.1 3.2.2: A client for the OpenStack Glance API
+dev-python/python-glanceclient 3.2.2: A client for the OpenStack Glance API
 dev-python/python-gnupg 0.4.6: A Python wrapper for GnuPG
 dev-python/python-heatclient 1.17.0 2.2.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 1.0.0-r1: Python bindings for iptables
@@ -16416,7 +16416,7 @@ sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data 
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10 8.2.26: Lund Monte Carlo high-energy physics event generator
 sci-physics/qmeq 1.0-r1 1.0_p202004: Quantum master equation package for Quantum dot transport calculations
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
-sci-physics/root 6.18.04-r3 6.20.06 6.20.08 6.22.00 6.22.02-r1 9999: C++ data analysis framework and interpreter from CERN
+sci-physics/root 6.20.08 6.22.04 9999: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
@@ -18962,15 +18962,15 @@ xfce-base/exo 0.12.11 4.15.2 4.15.3: Extensions, widgets and framework library w
 xfce-base/garcon 0.6.4-r2 0.7.1 0.7.2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.15 1.8.16 4.15.2 4.15.3: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.16 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.4 4.15.5: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.0 4.15.1: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.15.2 4.15.3: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.14.4 4.15.0 4.15.1: A configuration management system for Xfce
-xfce-base/xfdesktop 4.14.2-r1 4.14.3 4.15.0 4.15.1: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.14.2 4.14.5 4.14.6 4.15.1 4.15.2 4.15.3: Window manager for the Xfce desktop environment
+xfce-base/xfdesktop 4.14.3 4.15.1: Desktop manager for the Xfce desktop environment
+xfce-base/xfwm4 4.14.6 4.15.3: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
