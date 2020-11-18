@@ -22,6 +22,7 @@ sys-devel/gcc-config cc-wrappers
 #    https://wiki.gentoo.org/wiki/Project:Toolchain/use_native_symlinks
 sys-devel/binutils-config native-symlinks
 sys-devel/gcc-config      native-symlinks
+sys-devel/gcc-config      cc-wrappers
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Require user configs unless we supply our own .config.
