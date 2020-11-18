@@ -1,0 +1,41 @@
+From 34c16312f285d21dd6cac096f4aeecb98b02785c Mon Sep 17 00:00:00 2001
+From: Martin Gysel <me@bearsh.org>
+Date: Thu, 10 Dec 2020 20:27:38 +0100
+Subject: [PATCH 2/2] add configure option for libsystemd provider
+
+---
+ meson.build       | 2 +-
+ meson_options.txt | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index db624bc..ad90c2b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -84,7 +84,7 @@ gmodule_dep = dependency('gmodule-2.0', version: '>=' + glib_min_version)
+ libfprint_dep = dependency('libfprint-2', version: '>=' + libfprint_min_version)
+ polkit_gobject_dep = dependency('polkit-gobject-1', version: '>= 0.91')
+ dbus_dep = dependency('dbus-1', required: false)
+-libsystemd_dep = dependency('libsystemd', required: get_option('pam'))
++libsystemd_dep = dependency(get_option('libsystemd'), required: get_option('pam'))
+ pam_dep = cc.find_library('pam',
+     required: get_option('pam'),
+     has_headers: 'security/pam_modules.h',
+diff --git a/meson_options.txt b/meson_options.txt
+index fa03f70..a366cb8 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -6,6 +6,10 @@ option('man',
+     description: 'Generate the man files',
+     type: 'boolean',
+     value: true)
++option('libsystemd',
++    description: 'Libsystemd provider (libsystemd or libelogind)',
++    type: 'string',
++    value: 'libsystemd')
+ option('systemd',
+     description: 'Install system service files',
+     type: 'boolean',
+-- 
+2.29.2
+
