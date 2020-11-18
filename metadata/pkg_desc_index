@@ -10723,7 +10723,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.249.2 2.249.3 2.264: Extensible continuous integration server
+dev-util/jenkins-bin 2.249.2 2.249.3 2.264 2.267: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -13445,7 +13445,7 @@ media-plugins/kodi-pvr-hts 4.4.12 4.4.13 4.4.14 4.4.16 4.4.17 4.4.18 4.4.20 7.1.
 media-plugins/kodi-pvr-iptvsimple 3.8.8 6.2.4 6.3.0 6.3.1 6.3.2 6.4.0 6.4.1 7.0.0 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 3.5.16 3.5.17 6.0.0 6.0.1 8.0.0 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 5.10.15 5.10.16 5.10.18 5.10.19 7.0.5 7.1.1 9999: MythTV PVR for Kodi
-media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 3.3.20 3.3.21 7.0.0 7.0.2 7.1.0 7.1.1 8.0.0 9999: Kodi's NextPVR client addon
+media-plugins/kodi-pvr-nextpvr 3.3.17 3.3.18 3.3.19 3.3.20 3.3.21 7.0.0 7.0.2 7.1.0 7.1.1 8.0.0 8.0.1 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 3.4.2 6.0.0 7.0.0 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 2.4.5 2.4.7 5.0.0 6.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 3.4.8 3.4.9 3.4.10 6.0.0 6.0.1 6.0.2 7.0.0 9999: Kodi's Stalker client addon
@@ -17907,7 +17907,7 @@ www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management f
 www-apps/drupal 7.73 8.8.10 8.9.6 8.9.7 9.0.6 9.0.7: PHP-based open-source platform and content management system
 www-apps/gitea 1.12.4 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 7.3.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 7.3.1 7.3.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
 www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
