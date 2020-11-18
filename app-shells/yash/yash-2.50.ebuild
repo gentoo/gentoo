@@ -27,6 +27,7 @@ src_configure() {
 
 	sh ./configure \
 		--prefix="${EPREFIX}"/usr \
+		--exec-prefix="${EPREFIX}" \
 		$(use_enable nls) \
 		CC=$(tc-getCC) \
 		LINGUAS="$(l10n_get_locales | sed "s/en/en@quot en@boldquot/")" \
