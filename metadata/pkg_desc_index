@@ -10149,7 +10149,7 @@ dev-ruby/rmagick 3.2.0 4.1.1 4.1.2: An interface between Ruby and the ImageMagic
 dev-ruby/roadie 4.0.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 2.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0 3.23.0 3.24.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
+dev-ruby/rouge 3.19.0 3.20.0 3.21.0 3.22.0 3.23.0 3.24.0 3.25.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
 dev-ruby/rqrcode_core 0.1.0 0.1.2: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
@@ -10197,7 +10197,7 @@ dev-ruby/ruby-gtksourceview4 3.4.3: Ruby GtkSourceView4 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
 dev-ruby/ruby-ldap 0.9.20: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-libsecret 3.4.3: Ruby libsecret bindings
-dev-ruby/ruby-macho 2.2.0 2.3.0: A library for viewing and manipulating Mach-O files in Ruby
+dev-ruby/ruby-macho 2.2.0 2.3.0 2.5.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.16.2 0.16.3: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
