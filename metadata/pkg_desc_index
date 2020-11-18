@@ -10909,7 +10909,7 @@ dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
-dev-vcs/git-lfs 2.11.0 9999: Command line extension and specification for managing large files with git
+dev-vcs/git-lfs 2.11.0 2.12.1 9999: Command line extension and specification for managing large files with git
 dev-vcs/git-mailz 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog files
@@ -12748,7 +12748,7 @@ media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and an
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.20-r3 2.10.22-r1 2.99.2 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gmic 2.9.2-r1: GREYC's Magic Image Converter
+media-gfx/gmic 2.9.2-r1 2.9.3: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
@@ -13135,7 +13135,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 7.19.3: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 2.43.0 2.72.0 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 2.43.0 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
@@ -15345,7 +15345,7 @@ net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1484 0.7.5_p1486 0.7.5_p1488: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
-net-p2p/go-ipfs 0.4.23 0.5.1: Main implementation of IPFS
+net-p2p/go-ipfs 0.7.0: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.15 1.2.0 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
