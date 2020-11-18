@@ -2716,7 +2716,7 @@ app-portage/tatt 0.7-r1 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 18 19: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18 5.1_rc2: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18 5.1_rc3: The standard GNU Bourne again shell
 app-shells/bash-completion 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -5056,7 +5056,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.2: Elixir programming language
-dev-lang/erlang 23.0.3 23.0.4 23.1.1 23.1.2: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.3 23.0.4 23.1.1 23.1.2 23.1.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -7934,8 +7934,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 1.16.12 1.16.13 1.16.14 1.16.15 1.16.16 1.16.17 1.16.18 1.16.19 9999: The AWS SDK for Python
-dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 1.19.12 1.19.13 1.19.14 1.19.15 1.19.16 1.19.17 1.19.18 1.19.19 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.1 1.15.10 1.15.18 1.16.9 1.16.10 1.16.11 1.16.12 1.16.13 1.16.14 1.16.15 1.16.16 1.16.17 1.16.18 1.16.19 1.16.20 9999: The AWS SDK for Python
+dev-python/botocore 1.18.1 1.18.10 1.18.18 1.19.8 1.19.9 1.19.10 1.19.11 1.19.12 1.19.13 1.19.14 1.19.15 1.19.16 1.19.17 1.19.18 1.19.19 1.19.20 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -9123,7 +9123,7 @@ dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure 
 dev-python/svg-path 4.0.2: SVG path objects and parser
 dev-python/svgwrite 1.4: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
-dev-python/sybil 1.4.0: Automated testing for the examples in your documentation
+dev-python/sybil 1.4.0 2.0.0: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
 dev-python/sympy 1.6.2: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7: Pretty-print tabular data
@@ -14710,7 +14710,7 @@ net-libs/gtk-vnc 1.0.0: VNC viewer widget for GTK
 net-libs/gupnp 1.2.4: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5-r10: Library to handle UPnP IGD port mapping for GUPnP
-net-libs/http-parser 2.8.1 2.9.3-r1 2.9.4-r1: HTTP request/response parser for C
+net-libs/http-parser 2.9.4-r1: HTTP request/response parser for C
 net-libs/iax 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-msgs 1.0.0 5.2.0 5.3.0: Protobuf messages and functions for robot applications
 net-libs/ignition-transport 4.0.0 8.0.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
@@ -15288,7 +15288,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -16851,7 +16851,7 @@ sys-apps/kmod 26-r5 27-r2 9999: library and tools for managing linux kernel modu
 sys-apps/kmscon 8-r1 8_p20180906 8_p20180906-r1: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
-sys-apps/less 551 562 563 563-r1: Excellent text file viewer
+sys-apps/less 563-r1: Excellent text file viewer
 sys-apps/likwid 4.3.3 4.3.4: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 5.6 5.8: Misc tools bundled with kernel sources
 sys-apps/lm-sensors 3.5.0 3.5.0_p20190505 3.6.0: Hardware Monitoring user-space utilities
@@ -17580,7 +17580,7 @@ sys-libs/pam_wrapper 1.1.3: A tool to test PAM applications and PAM modules
 sys-libs/pinktrace 0.9.3: ptrace() easy wrapper library
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/queue-standalone 0.1-r1: Install <sys/queue.h> from glibc.
-sys-libs/readline 6.3_p8-r3 7.0_p5-r1 8.0_p4 8.1_rc2: Another cute console display library
+sys-libs/readline 6.3_p8-r3 7.0_p5-r1 8.0_p4 8.1_rc3: Another cute console display library
 sys-libs/rpmatch-standalone 1.0: Standalone rpmatch library for use with musl
 sys-libs/slang 2.3.2: Multi-platform library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
@@ -18921,7 +18921,7 @@ x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.8.2 0.8.3 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1-r2 4.18.2 4.18.3: i3 fork with gaps and some more features
-x11-wm/icewm 1.7.0 1.8.3 1.9.1 1.9.2: Ice Window Manager with Themes
+x11-wm/icewm 1.8.3 1.9.1 1.9.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.6.0 9999: Lumina desktop environment
