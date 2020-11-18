@@ -2608,7 +2608,7 @@ app-office/kexi 3.2.0-r1: Visual database applications creator
 app-office/kmymoney 5.1.0: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.95: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
-app-office/ledger 3.2.0: Double-entry accounting system with a command-line reporting interface
+app-office/ledger 3.2.0 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.3 8.0.4: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.6.2-r2 6.4.7.2 7.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.6.2-r2: A full office productivity suite. Binary package
@@ -8539,7 +8539,7 @@ dev-python/packaging 20.4-r1: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 1.0.5 1.1.2 1.1.4: Powerful data structures for data analysis and statistics
+dev-python/pandas 1.0.5-r1 1.1.2-r1 1.1.4-r1: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.2-r2 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
