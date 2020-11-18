@@ -9017,7 +9017,7 @@ dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
 dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1 0.19.2 0.19.3: Python client for Sentry
-dev-python/serpent 1.30: A simple serialization library based on ast.literal_eval
+dev-python/serpent 1.30 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1: Allow customization of the process title
@@ -18135,7 +18135,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.8-r1 1.20.9 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.132-r4 390.138-r4 435.21-r6 440.100-r2 450.80.02 455.28 455.38: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.132-r5 390.138-r5 435.21-r7 440.100-r3 450.80.02-r1 455.28-r1 455.38-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
