@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="High Energy Physics C++ library"
 HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
@@ -31,7 +31,7 @@ PATCHES=( "${FILESDIR}"/clhep-fix-testThreaded.patch )
 S="${WORKDIR}/${PV}/CLHEP"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# respect flags
 	sed -i -e 's:-O::g' cmake/Modules/ClhepVariables.cmake || die
@@ -53,5 +53,5 @@ src_configure() {
 		-DCLHEP_BUILD_DOCS=$(usex doc)
 		-DCLHEP_SINGLE_THREAD=$(usex threads no yes)
 	)
-	DESTDIR="${ED}" cmake-utils_src_configure
+	DESTDIR="${ED}" cmake_src_configure
 }
