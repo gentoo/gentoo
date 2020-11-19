@@ -3,20 +3,27 @@
 
 # This version is just for the ABI .5 library
 
-EAPI="5"
+EAPI=7
 
-inherit eutils toolchain-funcs multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs usr-ldscript
 
-MY_PV=${PV:0:3}
-MY_P=ncurses-${MY_PV}
-DESCRIPTION="console display library"
+MY_PV="${PV:0:3}"
+MY_P="${PN/-compat}-${MY_PV}"
+MY_PN="${PN/-compat}"
+
+DESCRIPTION="console display library (ABI version 5)"
 HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
+
+if [[ "${PV}" == *_p* ]] ; then
+	SRC_URI+=" ftp://ftp.invisible-island.net/ncurses/${PV/_p*}/${MY_PN}-${PV/_p/-}-patch.sh.bz2
+		https://invisible-mirror.net/archives/ncurses/${PV/_p*}/${MY_PN}-${PV/_p/-}-patch.sh.bz2"
+fi
 
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="5/5"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="gpm tinfo unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
@@ -25,20 +32,22 @@ RDEPEND="${DEPEND}
 	!<sys-libs/ncurses-6:0
 	!sys-libs/ncurses:5"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/ncurses-5.8-gfbsd.patch
-	"${FILESDIR}"/ncurses-5.7-nongnu.patch
-	"${FILESDIR}"/ncurses-5.9-rxvt-unicode-9.15.patch #192083 #383871
-	"${FILESDIR}"/ncurses-5.9-fix-clang-build.patch #417763
-	"${FILESDIR}"/ncurses-5.9-pkg-config.patch
-	"${FILESDIR}"/ncurses-5.9-no-I-usr-include.patch #522586
-	"${FILESDIR}"/ncurses-5.9-gcc-5.patch #545114
+	"${FILESDIR}/ncurses-5.7-nongnu.patch"
+	"${FILESDIR}/ncurses-6.0-rxvt-unicode-9.15.patch" #192083 #383871
+	"${FILESDIR}/ncurses-6.0-pkg-config.patch"
+	"${FILESDIR}/ncurses-5.9-gcc-5.patch" #545114
+	"${FILESDIR}/ncurses-6.0-ticlib.patch" #557360
+	"${FILESDIR}/ncurses-6.0-cppflags-cross.patch" #601426
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	if [[ "${PV}" == *_p* ]] ; then
+		eapply "${WORKDIR}/${MY_PN}-${PV/_p/-}-patch.sh"
+	fi
+	default
 }
 
 src_configure() {
@@ -60,14 +69,26 @@ src_configure() {
 	# This comes up when cross-compiling, doing multilib builds, upgrading,
 	# or installing for the first time.  Build a local copy of tic whenever
 	# the host version isn't available. #249363 #557598
-	if ! ROOT=/ has_version "~sys-libs/${P}" ; then
+	if ! ROOT=/ has_version -b "~sys-libs/${P}:0" ; then
+		local lbuildflags="-static"
+
+		# some toolchains don't quite support static linking
+		local dbuildflags="-Wl,-rpath,${WORKDIR}/lib"
+		case ${CHOST} in
+			*-darwin*)  dbuildflags=     ;;
+			*-aix*)     dbuildflags=     ;;
+		esac
+		echo "int main() {}" | \
+			$(tc-getCC) -o x -x c - ${lbuildflags} -pipe >& /dev/null \
+			|| lbuildflags="${dbuildflags}"
+
 		# We can't re-use the multilib BUILD_DIR because we run outside of it.
 		BUILD_DIR="${WORKDIR}" \
 		CHOST=${CBUILD} \
 		CFLAGS=${BUILD_CFLAGS} \
 		CXXFLAGS=${BUILD_CXXFLAGS} \
 		CPPFLAGS=${BUILD_CPPFLAGS} \
-		LDFLAGS="${BUILD_LDFLAGS} -static" \
+		LDFLAGS="${BUILD_LDFLAGS} ${lbuildflags}" \
 		do_configure cross --without-shared --with-normal
 	fi
 	multilib-minimal_src_configure
@@ -84,13 +105,15 @@ do_configure() {
 	local target=$1
 	shift
 
-	mkdir "${BUILD_DIR}/${target}"
+	mkdir "${BUILD_DIR}/${target}" || die
 	cd "${BUILD_DIR}/${target}" || die
 
 	local conf=(
 		# We need the basic terminfo files in /etc, bug #37026.  We will
 		# add '--with-terminfo-dirs' and then populate /etc/terminfo in
 		# src_install() ...
+		##--with-rel-version=5.9 ??
+		--with-abi-version=5
 		--with-terminfo-dirs="${EPREFIX}/etc/terminfo:${EPREFIX}/usr/share/terminfo"
 
 		# Now the rest of the various standard flags.
@@ -151,14 +174,14 @@ do_configure() {
 
 	# Force bash until upstream rebuilds the configure script with a newer
 	# version of autotools. #545532
-	CONFIG_SHELL=/bin/bash \
-	ECONF_SOURCE=${S} \
+	CONFIG_SHELL="${EPREFIX}"/bin/bash \
+	ECONF_SOURCE="${S}" \
 	econf "${conf[@]}" "$@"
 }
 
 src_compile() {
 	# See comments in src_configure.
-	if ! ROOT=/ has_version "~sys-libs/${P}" ; then
+	if ! ROOT=/ has_version -b "~sys-libs/${P}:0" ; then
 		BUILD_DIR="${WORKDIR}" \
 		do_compile cross -C progs tic
 	fi
@@ -185,6 +208,11 @@ do_compile() {
 	# in parallel.  This is not really a perf hit since the source
 	# generation is quite small.
 	emake -j1 sources
+	# For some reason, sources depends on pc-files which depends on
+	# compiled libraries which depends on sources which ...
+	# Manually delete the pc-files file so the install step will
+	# create the .pc files we want.
+	rm -f misc/pc-files || die
 	emake "$@"
 }
 
