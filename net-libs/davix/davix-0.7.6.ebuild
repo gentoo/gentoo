@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="High-performance file management over WebDAV/HTTP"
 HOMEPAGE="https://dmc.web.cern.ch/projects/davix"
@@ -35,7 +35,7 @@ RDEPEND="${CDEPEND}"
 REQUIRED_USE="test? ( tools )"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	for x in doc test; do
 		if ! use $x; then
@@ -58,18 +58,18 @@ src_configure() {
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"
 		-DBUILD_TESTING=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
-		cmake-utils_src_compile doc
+		cmake_src_compile doc
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if ! use tools; then
 		rm -rf "${ED}/usr/share/man/man1"
