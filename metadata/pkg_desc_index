@@ -14689,7 +14689,7 @@ net-libs/cppzmq 0_pre150606 4.6.0: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 2.2.0-r2 3.0.2-r1 4.2.0: High-level C Binding for ZeroMQ
 net-libs/daq 2.0.6-r1 2.0.7: Data Acquisition library, for packet I/O
-net-libs/davix 0.7.5 0.7.6: High-performance file management over WebDAV/HTTP
+net-libs/davix 0.7.6: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.6.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.6.0: A library to discover and manipulate DLNA renderers
