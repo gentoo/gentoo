@@ -34,6 +34,10 @@ BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep '>=x11-base/xcb-proto-1.14[${PYTHON_USEDEP}]')
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-don-t-use-deprecated-fail_unless-check-API.patch
+)
+
 python_check_deps() {
 	has_version -b ">=x11-base/xcb-proto-1.14[${PYTHON_USEDEP}]"
 }
