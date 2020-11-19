@@ -526,7 +526,7 @@ multilib_src_install_all() {
 }
 
 multilib_src_test() {
-	meson test -v -C "${BUILD_DIR}" -t 100 || die "tests failed"
+	meson_src_test -t 100
 }
 
 # $1 - VIDEO_CARDS flag (check skipped for "--")
