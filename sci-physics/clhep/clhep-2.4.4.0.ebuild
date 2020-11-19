@@ -26,7 +26,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/clhep-fix-testThreaded.patch )
+PATCHES=(
+	"${FILESDIR}"/clhep-fix-testThreaded.patch
+	"${FILESDIR}"/clhep-modulemap.patch
+)
 
 S="${WORKDIR}/${PV}/CLHEP"
 
