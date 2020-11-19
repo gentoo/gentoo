@@ -8512,7 +8512,7 @@ dev-python/os-xenapi 0.3.4 0.3.4-r1: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.3.0 2.6.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.3.1: library for running multi-thread, multi-process applications
-dev-python/oslo-config 8.3.2: Oslo Configuration API
+dev-python/oslo-config 8.3.2 8.3.3: Oslo Configuration API
 dev-python/oslo-context 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.1.0 8.4.0: OpenStack Common DB Code
 dev-python/oslo-i18n 5.0.1: Oslo i18n library
@@ -17211,7 +17211,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.2.0 17.0.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
-sys-cluster/nomad 0.12.3 0.12.4 0.12.5: A simple and flexible workload orchestrator
+sys-cluster/nomad 0.12.3 0.12.4 0.12.5 0.12.8: A simple and flexible workload orchestrator
 sys-cluster/nova 21.1.0 21.1.1 22.0.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
