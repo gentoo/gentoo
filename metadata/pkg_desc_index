@@ -1016,7 +1016,7 @@ app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison opt
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
 app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signatures
-app-crypt/mit-krb5 1.18.2-r1 1.18.2-r2: MIT Kerberos V
+app-crypt/mit-krb5 1.18.2-r2 1.18.3: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r2 0.41 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
@@ -8040,7 +8040,7 @@ dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that 
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.5: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.5 0.9.6: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
