@@ -12,7 +12,5 @@ SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND=">=sci-electronics/kicad-5.1.0"
