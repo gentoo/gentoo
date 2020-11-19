@@ -28,7 +28,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.1.1
-	>=dev-libs/wayland-protocols-1.15
+	>=dev-libs/wayland-protocols-1.18
 "
 
 # All failing, I guess we need a virtual wayland server
