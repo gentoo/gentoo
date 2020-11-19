@@ -9,4 +9,4 @@ RDEPEND=>=sys-apps/gentoo-functions-0.10
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/gcc-config-2.3.2.tar.xz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=e5eeeaf0ad9555139a9ebe6bf361df8a
+_md5_=7f752f5a5e9b4c99b5dcbdcb2e28383a
