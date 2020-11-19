@@ -10591,7 +10591,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2.4: A complete toolset for C and C++ development
 dev-util/cloc 1.84: Count Lines of Code
-dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.4 3.18.5 3.19.0_rc3: Cross platform Make
+dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.4 3.18.5 3.19.0: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
@@ -10779,7 +10779,7 @@ dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
-dev-util/perf 5.4.20 5.7-r1 5.8: Userland tools for Linux Performance Counters
+dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.7.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags

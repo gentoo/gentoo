@@ -2885,6 +2885,7 @@ dev-util/ostree:soup - Use libsoup for networking
 dev-util/perf:clang - Enable builtin clang and LLVM support
 dev-util/perf:demangle - Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils.
 dev-util/perf:doc - Build documentation and man pages. With this USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems.
+dev-util/perf:libpfm - Enable dev-libs/libpfm support
 dev-util/perf:numa - Enable NUMA support
 dev-util/perf:perl - Add support for Perl as a scripting language for perf tools.
 dev-util/perf:systemtap - Add support to define SDT event in perf tools.
