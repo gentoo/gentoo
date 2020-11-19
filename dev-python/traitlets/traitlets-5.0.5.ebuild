@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	"
 
-distutils_enable_sphinx docs \
-	dev-python/ipython_genutils
+distutils_enable_sphinx docs/source \
+	dev-python/ipython_genutils \
+	dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
