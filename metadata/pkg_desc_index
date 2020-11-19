@@ -2926,7 +2926,7 @@ app-text/mupdf 1.17.0 1.18.0-r2: A lightweight PDF viewer and toolkit written in
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
-app-text/nuspell 3.1.2 4.0.0 4.0.1: Spell checker library and CLI for complex natural languages
+app-text/nuspell 3.1.2 4.0.0 4.0.1 4.1.0: Spell checker library and CLI for complex natural languages
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
@@ -3404,7 +3404,7 @@ dev-cpp/asio 1.10.8 1.17.0 1.18.0: Asynchronous Network Library
 dev-cpp/atkmm 2.28.0: C++ interface for the ATK library
 dev-cpp/benchmark 1.5.1 1.5.2: A microbenchmark support library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.12.2 1.9999 2.5.0 2.7.0 2.9.1 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.12.2 1.9999 2.5.0 2.13.3 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
