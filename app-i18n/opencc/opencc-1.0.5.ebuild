@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -41,7 +41,7 @@ PATCHES=(
 DOCS=(AUTHORS NEWS.md README.md)
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e "s:\${DIR_SHARE_OPENCC}/doc:share/doc/${PF}:" -i doc/CMakeLists.txt || die
 }
@@ -53,5 +53,5 @@ src_configure() {
 		-DENABLE_GTEST=$(usex test ON OFF)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
