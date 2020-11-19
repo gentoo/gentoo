@@ -17568,7 +17568,7 @@ sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 9999: Light, fast and simple C library focus
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.2-r1: console display library
-sys-libs/ncurses-compat 5.9 6.1_p20190609: console display library (ABI version 5)
+sys-libs/ncurses-compat 6.1_p20190609 6.2: console display library (ABI version 5)
 sys-libs/netbsd-csu 9.0_beta: crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain
 sys-libs/newlib 3.3.0 3.3.0-r1 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
