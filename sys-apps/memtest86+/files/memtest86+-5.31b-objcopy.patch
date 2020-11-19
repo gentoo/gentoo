@@ -1,0 +1,21 @@
+Allow 'objcopy' override with user's OBJCOPY.
+
+--- a/Makefile
++++ b/Makefile
+@@ -8,6 +8,7 @@
+ # Path for the floppy disk device
+ #
+ FDISK=/dev/fd0
++OBJCOPY=objcopy
+ 
+ CFLAGS= -Wall -Werror -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin \
+  -ffreestanding -fPIC $(SMP_FL) -fno-stack-protector
+@@ -36,7 +37,7 @@
+ 	$(LD) -shared -Bsymbolic -T memtest_shared.lds -o $@ $(OBJS)
+ 
+ memtest_shared.bin: memtest_shared
+-	objcopy -O binary $< memtest_shared.bin
++	$(OBJCOPY) -O binary $< memtest_shared.bin
+ 
+ memtest: memtest_shared.bin memtest.lds
+ 	$(LD) -s -T memtest.lds -b binary memtest_shared.bin -o $@
