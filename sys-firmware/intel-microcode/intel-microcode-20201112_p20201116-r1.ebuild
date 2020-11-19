@@ -44,6 +44,9 @@ MICROCODE_BLACKLIST_DEFAULT+=" -s !0x000406e3,0xc0,eq:0x00dc"
 # https://bugs.gentoo.org/722768
 MICROCODE_BLACKLIST_DEFAULT+=" -s !0x000406e3,0xc0,eq:0x00da"
 
+# https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/commit/49bb67f32a2e3e631ba1a9a73da1c52e1cac7fd9
+MICROCODE_BLACKLIST_DEFAULT+=" -s !0x000806c1,0x80,eq:0x0068"
+
 # In case we want to set some defaults ...
 MICROCODE_SIGNATURES_DEFAULT=""
 
@@ -122,7 +125,7 @@ src_install() {
 		"${MICROCODE_SRC[@]}" \
 		|| die "iucode_tool ${opts[@]} ${MICROCODE_SRC[@]}"
 
-	dodoc releasenote
+	dodoc releasenote.md
 }
 
 pkg_preinst() {
