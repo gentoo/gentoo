@@ -16,7 +16,6 @@ IUSE="occ +oce"
 
 REQUIRED_USE="|| ( occ oce )"
 
-DEPEND=""
 RDEPEND=">=sci-electronics/kicad-5.1.0[occ=,oce=]"
 
 CHECKREQS_DISK_BUILD="11G"
