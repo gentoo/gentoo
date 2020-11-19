@@ -16,11 +16,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aspell crypt dbus debug doc enchant +hunspell webengine webkit whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant +hunspell webengine whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
-	webengine? ( !webkit )
 "
 
 BDEPEND="
@@ -50,7 +49,6 @@ DEPEND="
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
 	)
-	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 "
@@ -72,11 +70,11 @@ src_configure() {
 		$(use_enable hunspell)
 		$(use_enable xscreensaver xss)
 		$(use_enable whiteboarding)
+		$(use_enable webengine webkit)
+		$(use_with webengine webkit qtwebengine)
 	)
 
 	use debug && CONF+=("--debug")
-	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
-	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
 
 	# This may generate warnings if passed option already matches with default.
 	# Just ignore them. It's how qconf-based configure works and will be fixed in

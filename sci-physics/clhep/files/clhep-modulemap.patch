@@ -1,0 +1,24 @@
+From ade5d82b54d2c72660b6b2c478323ac741ea7c01 Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Thu, 19 Nov 2020 09:55:12 +0100
+Subject: [PATCH] Install modulemap along with other header files
+
+---
+ cmake/Modules/ClhepCopyHeaders.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Modules/ClhepCopyHeaders.cmake b/cmake/Modules/ClhepCopyHeaders.cmake
+index bd38b8a2..c6483c3a 100644
+--- a/cmake/Modules/ClhepCopyHeaders.cmake
++++ b/cmake/Modules/ClhepCopyHeaders.cmake
+@@ -49,6 +49,6 @@ macro (clhep_copy_headers )
+   # handle the module.modulemap file
+   CONFIGURE_FILE( ${CLHEP_SOURCE_DIR}/module.modulemap ${CLHEP_BINARY_DIR}/module.modulemap COPYONLY )
+   INSTALL (FILES ${CLHEP_BINARY_DIR}/module.modulemap
+-           DESTINATION include )
++           DESTINATION include/CLHEP )
+   
+ endmacro (clhep_copy_headers)
+-- 
+2.29.2
+
