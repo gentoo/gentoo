@@ -18964,7 +18964,7 @@ xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4 4.15.5: Unified widget and session 
 xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
-xfce-base/xfce4-meta 4.14-r2 4.16_pre1: The Xfce Desktop Environment (meta package)
+xfce-base/xfce4-meta 4.14-r2 4.16_pre1 4.16_pre2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.4 4.15.5: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.0 4.15.1: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.15.2 4.15.3: Configuration system for the Xfce desktop environment
