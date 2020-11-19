@@ -34,7 +34,6 @@ if [[ "${PV}" != "9999" ]]; then
 fi
 
 PATCHES=(
-	"${FILESDIR}/${PN}-test.patch"
 	"${FILESDIR}/${PN}-stop-copy.patch"
 )
 
