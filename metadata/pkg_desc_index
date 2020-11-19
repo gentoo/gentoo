@@ -8678,7 +8678,7 @@ dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyelftools 0.26: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 3.1.0: Python bindings for the Enchant spellchecking system
-dev-python/pyfakefs 4.1.0 4.2.0 4.2.1: a fake file system that mocks the Python file system modules
+dev-python/pyfakefs 4.1.0 4.2.0 4.2.1 4.3.0: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
 dev-python/pyflakes 2.2.0: Passive checker for Python programs
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
@@ -9017,7 +9017,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1 0.19.2 0.19.3: Python client for Sentry
+dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1 0.19.2 0.19.3 0.19.4: Python client for Sentry
 dev-python/serpent 1.30 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -11590,7 +11590,7 @@ games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.16.40.02: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.40.02 1.16.100.04: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
@@ -16796,7 +16796,7 @@ sys-apps/fwupd 1.3.10 1.3.11 1.4.6 1.5.1-r1: Aims to make updating firmware on L
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
-sys-apps/gentoo-functions 0.13 9999: base functions required by all Gentoo systems
+sys-apps/gentoo-functions 0.13 0.14 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.36.3: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
@@ -18960,7 +18960,7 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.2 4.15.3: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.1 0.7.2: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4: Unified widget and session management libs for Xfce
+xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4 4.15.5: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
