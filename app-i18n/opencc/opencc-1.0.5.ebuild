@@ -20,7 +20,12 @@ else
 	SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-LICENSE="Apache-2.0"
+# OpenCC: Apache-2.0
+# deps/darts-clone: BSD-2
+# deps/gtest-1.7.0: BSD
+# deps/rapidjson-0.11: MIT
+# deps/tclap-1.2.1: MIT
+LICENSE="Apache-2.0 BSD-2 MIT test? ( BSD )"
 SLOT="0/2"
 KEYWORDS="amd64 arm64 hppa ppc ppc64 sparc x86"
 IUSE="doc test"
