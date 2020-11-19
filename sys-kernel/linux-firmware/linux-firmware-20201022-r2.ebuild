@@ -276,12 +276,19 @@ src_install() {
 			[[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
 
 			einfo "Applying USE=savedconfig; Removing all files not listed in config ..."
-			set -o pipefail
 			find ! -type d -printf "%P\n" \
 				| grep -Fvx -f "${files_to_keep}" \
 				| xargs -d '\n' --no-run-if-empty rm -v
 
-			[[ ${?} -ne 0 ]] && die "Failed to remove files not listed in config"
+			if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+				die "Find failed to print installed files"
+			elif [[ ${PIPESTATUS[1]} -eq 2 ]]; then
+				# grep returns exit status 1 if no lines were selected
+				# which is the case when we want to keep all files
+				die "Grep failed to select files to keep"
+			elif [[ ${PIPESTATUS[2]} -ne 0 ]]; then
+				die "Failed to remove files not listed in config"
+			fi
 		fi
 	fi
 
