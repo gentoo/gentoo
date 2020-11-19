@@ -7975,7 +7975,6 @@ sys-cluster/ceph:grafana - Install grafana dashboards
 sys-cluster/ceph:kafka - Rados Gateway's pubsub support for Kafka push endpoint
 sys-cluster/ceph:lttng - Add support for LTTng
 sys-cluster/ceph:mgr - Build the ceph-mgr daemon
-sys-cluster/ceph:nss - Use dev-libs/nss for cryptography
 sys-cluster/ceph:numa - Use sys-process/numactl for numa support in rocksdb
 sys-cluster/ceph:openssl - Use dev-libs/openssl
 sys-cluster/ceph:pmdk - Enable PMDK libraries
