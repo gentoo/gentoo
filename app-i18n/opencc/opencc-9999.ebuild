@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+PYTHON_COMPAT=(python{3_7,3_8,3_9})
 
-inherit cmake
+inherit cmake python-any-r1
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -25,7 +26,8 @@ KEYWORDS=""
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="${PYTHON_DEPS}
+	doc? ( app-doc/doxygen )"
 DEPEND=""
 RDEPEND=""
 
