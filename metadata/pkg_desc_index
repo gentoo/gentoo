@@ -7877,7 +7877,7 @@ dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing libr
 dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.9.2 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0: Better dates and times for Python
-dev-python/asgiref 3.3.0: ASGI utilities (successor to WSGI)
+dev-python/asgiref 3.3.0 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
@@ -7898,7 +7898,7 @@ dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.27.0 1.28.1 1.29.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.27.0 1.28.1 1.29.0 1.30.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.142 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -7934,8 +7934,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 9999: The AWS SDK for Python
-dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 9999: The AWS SDK for Python
+dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20: Syntax highlighting and autocompletion for the Python interpreter
@@ -8252,7 +8252,7 @@ dev-python/humanize 3.0.1 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1 5.41.2: A library for property based testing
+dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1 5.41.2 5.41.3: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8311,7 +8311,7 @@ dev-python/jinja 2.11.2-r1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
-dev-python/joblib 0.14.1 0.15.1 0.16.0 0.17.0: Tools to provide lightweight pipelining in Python
+dev-python/joblib 0.17.0: Tools to provide lightweight pipelining in Python
 dev-python/josepy 1.4.0: JOSE protocol implementation in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
@@ -15036,7 +15036,7 @@ net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of 
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 4.0.4: User friendly Bitcoin client
+net-misc/electrum 4.0.4 4.0.5: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
@@ -15287,7 +15287,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18 2020.11.19: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17482,8 +17482,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.9.8 5.9.8-r1 5.9.9: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.9.8 5.9.8-r1 5.9.9: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.14.202 4.14.205 4.14.206 4.14.207 4.19.152 4.19.156 4.19.157 4.19.158 5.4.72 5.4.76 5.4.77 5.4.78 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17498,7 +17498,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4: Linux kernel fork that
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.9.8: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.9.8 5.9.9: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.243 4.9.243 4.14.206 4.19.157 5.4.77 5.8.17 5.9.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
@@ -17961,8 +17961,8 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.4.1 78.5.0 82.0.3 83.0: Firefox Web Browser
-www-client/firefox-bin 78.4.1 78.5.0 82.0.3 83.0: Firefox Web Browser
+www-client/firefox 78.5.0 83.0: Firefox Web Browser
+www-client/firefox-bin 78.5.0 83.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.66: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.66: The web browser from Google
 www-client/google-chrome-unstable 88.0.4315.5: The web browser from Google
