@@ -36,6 +36,16 @@ IUSE="audit clang crypt debug +demangle +doc gtk java libpfm lzma numa perl pyth
 # TODO babeltrace
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+	doc? (
+		app-text/asciidoc
+		app-text/sgml-common
+		app-text/xmlto
+		sys-process/time
+	)"
+
 RDEPEND="audit? ( sys-process/audit )
 	crypt? ( dev-libs/openssl:0= )
 	clang? (
@@ -55,18 +65,12 @@ RDEPEND="audit? ( sys-process/audit )
 	unwind? ( sys-libs/libunwind )
 	zlib? ( sys-libs/zlib )
 	dev-libs/elfutils"
+
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-4.19
 	${LINUX_PATCH+dev-util/patchutils}
-	sys-devel/bison
-	sys-devel/flex
 	java? ( virtual/jdk )
-	doc? (
-		app-text/asciidoc
-		app-text/sgml-common
-		app-text/xmlto
-		sys-process/time
-	)"
+"
 
 S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/perf"
@@ -112,6 +116,36 @@ src_unpack() {
 		[[ ${a} == ${LINUX_PATCH} ]] && continue
 		unpack ${a}
 	done
+}
+
+src_prepare() {
+	default
+	if [[ -n ${LINUX_PATCH} ]] ; then
+		pushd "${S_K}" >/dev/null || die
+		eapply "${WORKDIR}"/${P}.patch
+		popd || die
+	fi
+
+	# Drop some upstream too-developer-oriented flags and fix the
+	# Makefile in general
+	sed -i \
+		-e "s:\$(sysconfdir_SQ)/bash_completion.d:$(get_bashcompdir):" \
+		"${S}"/Makefile.perf || die
+	# A few places still use -Werror w/out $(WERROR) protection.
+	sed -i -e 's:-Werror::' \
+		"${S}"/Makefile.perf "${S_K}"/tools/lib/bpf/Makefile || die
+
+	# Avoid the call to make kernelversion
+	sed -i -e '/PERF-VERSION-GEN/d' Makefile.perf || die
+	echo "#define PERF_VERSION \"${PV}\"" > PERF-VERSION-FILE
+
+	# The code likes to compile local assembly files which lack ELF markings.
+	find -name '*.S' -exec sed -i '$a.section .note.GNU-stack,"",%progbits' {} +
+
+	# Fix shebang to use python from prefix
+	if [[ -n "${EPREFIX}" ]]; then
+		hprefixify ${S_K}/scripts/bpf_helpers_doc.py
+	fi
 }
 
 puse() { usex $1 "" no; }
@@ -165,36 +199,6 @@ perf_make() {
 		WERROR=0 \
 		LIBDIR="/usr/libexec/perf-core" \
 		"$@"
-}
-
-src_prepare() {
-	default
-	if [[ -n ${LINUX_PATCH} ]] ; then
-		pushd "${S_K}" >/dev/null || die
-		eapply "${WORKDIR}"/${P}.patch
-		popd || die
-	fi
-
-	# Drop some upstream too-developer-oriented flags and fix the
-	# Makefile in general
-	sed -i \
-		-e "s:\$(sysconfdir_SQ)/bash_completion.d:$(get_bashcompdir):" \
-		"${S}"/Makefile.perf || die
-	# A few places still use -Werror w/out $(WERROR) protection.
-	sed -i -e 's:-Werror::' \
-		"${S}"/Makefile.perf "${S_K}"/tools/lib/bpf/Makefile || die
-
-	# Avoid the call to make kernelversion
-	sed -i -e '/PERF-VERSION-GEN/d' Makefile.perf || die
-	echo "#define PERF_VERSION \"5.9.9\"" > PERF-VERSION-FILE
-
-	# The code likes to compile local assembly files which lack ELF markings.
-	find -name '*.S' -exec sed -i '$a.section .note.GNU-stack,"",%progbits' {} +
-
-	# Fix shebang to use python from prefix
-	if [[ -n "${EPREFIX}" ]]; then
-		hprefixify ${S_K}/scripts/bpf_helpers_doc.py
-	fi
 }
 
 src_compile() {
