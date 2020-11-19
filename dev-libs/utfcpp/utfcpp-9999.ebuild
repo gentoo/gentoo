@@ -1,9 +1,9 @@
-# Copyright 2015-2019 Gentoo Authors
+# Copyright 2015-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -34,7 +34,7 @@ src_prepare() {
 	sed -e "/add_subdirectory(extern\/gtest)/d" -i CMakeLists.txt || die
 	sed -e "s/gtest_main/gtest &/" -i tests/CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -43,5 +43,5 @@ src_configure() {
 		-DUTF8_TESTS=$(usex test ON OFF)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
