@@ -786,7 +786,7 @@ app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
 app-arch/tar 1.32 1.32.90: Use this to make tarballs :)
 app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
-app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
+app-arch/torrentzip 0.9 0.9-r1: Create identical zip archives over multiple systems
 app-arch/unace 2.5-r5: ACE unarchiver
 app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
@@ -1624,7 +1624,7 @@ app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.8b 4.0 4.1 4.2: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
-app-doc/kicad-doc 5.1.6 5.1.7: Electronic Schematic and PCB design tools manuals
+app-doc/kicad-doc 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1-r1: The Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
@@ -15954,13 +15954,13 @@ sci-electronics/gtkwave 3.3.106: A wave viewer for LXT, LXT2, VZT, GHW and stand
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 10.3-r2 11.0 9999: A Verilog simulation and synthesis tool
-sci-electronics/kicad 5.1.6 5.1.7: Electronic Schematic and PCB design tools
-sci-electronics/kicad-footprints 5.1.6 5.1.7: Electronic Schematic and PCB design tools footprint libraries
-sci-electronics/kicad-i18n 5.1.6 5.1.7: Electronic Schematic and PCB design tools GUI translations
-sci-electronics/kicad-meta 5.1.6 5.1.7: Electronic Schematic and PCB design tools (meta package)
-sci-electronics/kicad-packages3d 5.1.6 5.1.7: Electronic Schematic and PCB design tools 3D package libraries
-sci-electronics/kicad-symbols 5.1.6 5.1.7: Electronic Schematic and PCB design tools symbol libraries
-sci-electronics/kicad-templates 5.1.6 5.1.7: Electronic Schematic and PCB design tools project templates
+sci-electronics/kicad 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools
+sci-electronics/kicad-footprints 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools footprint libraries
+sci-electronics/kicad-i18n 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools GUI translations
+sci-electronics/kicad-meta 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools (meta package)
+sci-electronics/kicad-packages3d 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools 3D package libraries
+sci-electronics/kicad-symbols 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools symbol libraries
+sci-electronics/kicad-templates 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools project templates
 sci-electronics/klayout 0.26.5 0.26.8 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/ktechlab 0.50.0: IDE for microcontrollers and electronics
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
@@ -17427,7 +17427,7 @@ sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.10: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 4.0.5 4.0.6: FUSE filesystem for LXC
+sys-fs/lxcfs 4.0.6: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0: A featureful union filesystem
