@@ -12,8 +12,12 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="debug glade introspection libgtop startup-notification vala"
-REQUIRED_USE="vala? ( introspection )"
+IUSE="debug glade introspection libgtop opengl startup-notification vala"
+
+REQUIRED_USE="
+	opengl? ( libgtop )
+	vala? ( introspection )
+"
 
 RDEPEND=">=dev-libs/glib-2.42:2
 	>=x11-libs/gtk+-3.22:3[introspection?]
@@ -25,6 +29,7 @@ RDEPEND=">=dev-libs/glib-2.42:2
 	glade? ( dev-util/glade:3.10 )
 	introspection? ( dev-libs/gobject-introspection:= )
 	libgtop? ( gnome-base/libgtop )
+	opengl? ( media-libs/libepoxy )
 	startup-notification? ( x11-libs/startup-notification )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl
@@ -42,6 +47,7 @@ src_configure() {
 	local myconf=(
 		$(use_enable introspection)
 		$(use_enable libgtop glibtop)
+		$(use_enable opengl epoxy)
 		$(use_enable startup-notification)
 		$(use_enable vala)
 		$(use_enable glade gladeui2)
