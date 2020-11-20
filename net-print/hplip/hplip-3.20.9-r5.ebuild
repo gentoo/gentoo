@@ -209,9 +209,11 @@ src_configure() {
 			minimal_build="${minimal_build} --disable-scan-build"
 		fi
 		if use qt5 ; then
+			minimal_build="${minimal_build} --enable-qt5"
 			minimal_build="${minimal_build} --enable-gui-build"
 		else
 			minimal_build="${minimal_build} --disable-gui-build"
+			minimal_build="${minimal_build} --disable-qt5"
 		fi
 	fi
 
