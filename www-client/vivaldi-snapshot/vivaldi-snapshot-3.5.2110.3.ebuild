@@ -32,6 +32,7 @@ SRC_URI="
 LICENSE="Vivaldi"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~x86"
+IUSE="proprietary-codecs widevine"
 RESTRICT="bindist mirror"
 
 DEPEND="
@@ -64,6 +65,8 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango[X]
+	proprietary-codecs? ( media-video/ffmpeg:0/56.58.58[chromium(-)] )
+	widevine? ( www-plugins/chrome-binary-plugins )
 "
 QA_PREBUILT="*"
 S=${WORKDIR}
@@ -98,6 +101,9 @@ src_prepare() {
 			usr/share/icons/hicolor/${d}x${d}/apps/${PN}.png || die
 	done
 
+	# Remove scripts that will most likely break things.
+	rm ${VIVALDI_HOME}/update-{ffmpeg,widevine} || die
+
 	pushd "${VIVALDI_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
 	popd > /dev/null || die
@@ -111,4 +117,16 @@ src_install() {
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
 	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
+
+	if use proprietary-codecs; then
+		dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so \
+			  /${VIVALDI_HOME}/lib/libffmpeg.so
+	fi
+
+	if use widevine; then
+		dosym ../../usr/$(get_libdir)/chromium-browser/WidevineCdm \
+			  /${VIVALDI_HOME}/WidevineCdm
+	else
+		rm "${ED}"/${VIVALDI_HOME}/WidevineCdm || die
+	fi
 }
