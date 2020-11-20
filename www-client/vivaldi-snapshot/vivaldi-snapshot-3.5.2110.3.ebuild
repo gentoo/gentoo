@@ -76,7 +76,7 @@ CHROMIUM_LANGS="
 	zh-CN
 	zh-TW
 "
-inherit chromium-2 multilib unpacker toolchain-funcs xdg
+inherit chromium-2 desktop multilib unpacker toolchain-funcs xdg
 
 VIVALDI_PN="${PN/%vivaldi/vivaldi-stable}"
 VIVALDI_HOME="opt/${PN}"
@@ -164,14 +164,6 @@ src_prepare() {
 		etc/ \
 		|| die
 
-	local c d
-	for d in 16 22 24 32 48 64 128 256; do
-		mkdir -p usr/share/icons/hicolor/${d}x${d}/apps || die
-		cp \
-			${VIVALDI_HOME}/product_logo_${d}.png \
-			usr/share/icons/hicolor/${d}x${d}/apps/${PN}.png || die
-	done
-
 	# Remove scripts that will most likely break things.
 	rm ${VIVALDI_HOME}/update-{ffmpeg,widevine} || die
 
@@ -188,6 +180,13 @@ src_install() {
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
 	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
+
+	local logo size
+	for logo in "${ED}"/${VIVALDI_HOME}/product_logo_*.png; do
+		size=${logo##*_}
+		size=${size%.*}
+		newicon -s "${size}" "${logo}" ${PN}.png
+	done
 
 	if use proprietary-codecs; then
 		dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so \
