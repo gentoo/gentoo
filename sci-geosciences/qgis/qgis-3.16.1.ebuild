@@ -107,8 +107,8 @@ PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-3.16.0-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${PN}-3.16.1-featuresummary.patch"
-	"${FILESDIR}/${PN}-3.16.1-default-qmldir.patch"
+	"${FILESDIR}/${P}-featuresummary.patch"
+	"${FILESDIR}/${P}-default-qmldir.patch"
 )
 
 pkg_setup() {
@@ -158,7 +158,8 @@ src_configure() {
 		)
 	fi
 
-	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
+	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON ) ||
+		mycmakeargs+=( -DWITH_QGIS_PROCESS=OFF ) # FIXME upstream issue #39973
 
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
