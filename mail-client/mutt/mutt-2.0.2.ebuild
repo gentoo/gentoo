@@ -97,9 +97,6 @@ src_prepare() {
 		sed -i \
 			-e '/ReachingUs = N_(/aThis release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n\\' \
 			main.c || die "Failed to add bug instructions"
-
-		# https://gitlab.com/muttmua/mutt/-/issues/294
-		sed -i -e 's/u_int32_t/uint32_t/g' mutt_random.c || die
 	fi
 
 	local upatches=
