@@ -14454,7 +14454,7 @@ net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the La
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.16.6-r2 9.16.6-r3 9.16.7 9.16.8: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.16.6 9.16.7 9.16.8: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
-net-dns/c-ares 1.16.1: C library that resolves names asynchronously
+net-dns/c-ares 1.16.1 1.17.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
@@ -15393,7 +15393,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3-r1 5.3.3-r2: Ghostscript and cups printer drivers
-net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r3 3.20.9-r4: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r3 3.20.9-r5: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.19.12 3.20.6-r1 3.20.9: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
