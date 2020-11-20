@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_REQ_USE="sqlite"
 
@@ -17,19 +17,23 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# Test requires the IBM TPM simulator that's not in portage
+IUSE="fapi"
+
+# python-pkcs11 is required but not in Portage. python-pkcs11 in turn requires
+# aenum which is ALSO not in portage. Futhermore, aenum has a dead homepage.
 RESTRICT="test"
 
 RDEPEND="app-crypt/p11-kit
 	app-crypt/tpm2-abrmd
-	app-crypt/tpm2-tools
-	app-crypt/tpm2-tss
+	app-crypt/tpm2-tools[fapi?]
+	!fapi? ( app-crypt/tpm2-tss )
+	fapi? ( >=app-crypt/tpm2-tss-3.0.1[fapi] )
 	dev-db/sqlite:3
-	dev-libs/openssl
+	dev-libs/openssl:=
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]"
+	dev-python/pyyaml[${PYTHON_USEDEP}] "
 
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/autoconf-archive
@@ -45,9 +49,8 @@ src_prepare() {
 }
 
 src_configure() {
-# we need the default version of src_configure, not the one exported
-# by distutils-r1
-	default
+	econf \
+		$(use_enable fapi)
 }
 
 src_compile() {
