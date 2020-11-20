@@ -9,6 +9,7 @@ RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+RUBY_FAKEGEM_EXTRAINSTALL=locales
 
 inherit ruby-fakegem
 
