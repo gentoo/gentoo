@@ -11,4 +11,4 @@ RDEPEND=acct-group/dhcp acct-user/dhcp client? ( kernel_linux? ( ipv6? ( sys-app
 SLOT=0
 SRC_URI=ftp://ftp.isc.org/isc/dhcp/dhcp-4.4.2.tar.gz ftp://ftp.isc.org/isc/dhcp/4.4.2/dhcp-4.4.2.tar.gz
 _eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=48c6670458a6668a76e97bf0a498c449
+_md5_=d9a4177e54021ccf46439bfe432b5b8f
