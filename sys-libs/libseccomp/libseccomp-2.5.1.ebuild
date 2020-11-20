@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 multilib-minimal
+inherit distutils-r1 multilib-minimal
 
 DESCRIPTION="high level interface to Linux seccomp filter"
 HOMEPAGE="https://github.com/seccomp/libseccomp"
@@ -16,9 +16,8 @@ if [[ ${PV} == *9999 ]] ; then
 	PRERELEASE="2.6.0"
 	inherit autotools git-r3
 else
-	#SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz"
-	SRC_URI="https://github.com/seccomp/libseccomp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa -mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
@@ -46,8 +45,8 @@ src_prepare() {
 	default
 	if [[ "${PV}" == *9999 ]] ; then
 		sed -i -e "s/0.0.0/${PRERELEASE}/" configure.ac
+		eautoreconf
 	fi
-	eautoreconf
 }
 
 multilib_src_configure() {
