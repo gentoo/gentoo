@@ -48,8 +48,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/automake-1.16.2-py3-compile.patch
+	"${FILESDIR}"/automake-1.16.2-fix-instmany-python.sh-test.patch
+	"${FILESDIR}"/automake-1.16.2-fix-py-compile-basedir.sh-test.patch
 )
-# All patches have been submitted upstream.
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
