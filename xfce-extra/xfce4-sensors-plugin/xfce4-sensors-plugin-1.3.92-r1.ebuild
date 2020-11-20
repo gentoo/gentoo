@@ -37,6 +37,10 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS NOTES README TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-10.patch
+)
+
 src_configure() {
 	local myconf=(
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
