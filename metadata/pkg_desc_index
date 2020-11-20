@@ -4503,7 +4503,7 @@ dev-haskell/yaml 0.11.5.0: Support for parsing and rendering YAML documents
 dev-haskell/yesod 1.6.1.0: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-auth 1.6.9: Authentication for Yesod
 dev-haskell/yesod-auth-hashdb 1.7.1.2: Authentication plugin for Yesod
-dev-haskell/yesod-core 1.6.18.5: Creation of type-safe, RESTful web applications
+dev-haskell/yesod-core 1.6.18.7: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-default 1.2.0: Default config and main functions for your yesod application (deprecated)
 dev-haskell/yesod-form 1.6.7: Form handling support for Yesod Web Framework
 dev-haskell/yesod-json 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
@@ -8715,7 +8715,7 @@ dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.1.1: Spyder extensions for the python language server
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
-dev-python/pymediainfo 4.2.1 4.3: A wrapper around the mediainfo library
+dev-python/pymediainfo 4.3 5.0.2: A wrapper around the mediainfo library
 dev-python/pymetar 1.1-r1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pymongo 3.11.0-r1 3.11.1: Python driver for MongoDB
@@ -17484,7 +17484,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.9.8 5.9.8-r1 5.9.9: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.9.8 5.9.8-r1 5.9.9: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.14.202 4.14.205 4.14.206 4.14.207 4.19.152 4.19.156 4.19.157 4.19.158 5.4.72 5.4.76 5.4.77 5.4.78 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
