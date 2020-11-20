@@ -282,6 +282,8 @@ media-libs/freeimage tiff
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
 # and this kind of reverse engineering work likely violates many agreements, so we mask the flag.
 www-client/chromium widevine
+www-client/vivaldi widevine
+www-client/vivaldi-snapshot widevine
 
 # Markus Meier <maekke@gentoo.org> (2015-01-17)
 # Unkeyworded deps, bug #536226
