@@ -13029,7 +13029,7 @@ media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image m
 media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
-media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
+media-libs/libass 0.14.0 0.15.0: Library for SSA/ASS subtitles rendering
 media-libs/libavif 0.8.1 0.8.3 9999: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.1.2 1.2.0 9999: Blu-ray playback libraries
