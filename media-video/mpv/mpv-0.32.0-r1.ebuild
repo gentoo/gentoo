@@ -82,7 +82,7 @@ COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	libass? (
-		>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz]
+		>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz(+)]
 		virtual/ttf-fonts
 	)
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
