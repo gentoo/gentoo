@@ -60,6 +60,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON # broken, re-enable w/ ECM_QTHELP
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5WebKitWidgets=ON
 		-DBUILD_APIDOC=OFF
 		-DBUILD_KF5=ON
 		-DBUILD_PHP_IMPORT=$(usex php)
