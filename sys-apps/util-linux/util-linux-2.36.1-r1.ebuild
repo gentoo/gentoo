@@ -75,6 +75,10 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-libmount_dont_use_symfollow.patch" #755878
+)
+
 src_prepare() {
 	default
 
