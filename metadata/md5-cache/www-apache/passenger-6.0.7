@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=ruby_targets_ruby25? ( dev-ruby/rake[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( dev-ruby/rake[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( dev-ruby/rake[ruby_targets_ruby27(-)] ) test? ( ruby_targets_ruby25? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby25(-)] >=dev-ruby/rake-0.8.1[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby26(-)] >=dev-ruby/rake-0.8.1[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby27(-)] >=dev-ruby/rake-0.8.1[ruby_targets_ruby27(-)] ) ) >=dev-libs/libuv-1.8.0 net-misc/curl[ssl] apache2? ( www-servers/apache[apache2_modules_unixd(+)] ) apache2? ( =www-servers/apache-2* ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
+DESCRIPTION=Passenger makes deployment of Ruby on Rails applications a breeze
+EAPI=6
+HOMEPAGE=https://www.phusionpassenger.com/
+IUSE=apache2 debug test apache2 ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=ruby_targets_ruby25? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby25(-)] >=dev-ruby/rake-0.8.1[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby26(-)] >=dev-ruby/rake-0.8.1[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby27(-)] >=dev-ruby/rake-0.8.1[ruby_targets_ruby27(-)] ) >=dev-libs/libuv-1.8.0 net-misc/curl[ssl] apache2? ( www-servers/apache[apache2_modules_unixd(+)] ) apache2? ( =www-servers/apache-2* ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
+REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://s3.amazonaws.com/phusion-passenger/releases/passenger-6.0.7.tar.gz
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	94458fe4e9466f4803360408e60e11fd	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	98584e405e2b0264d37e8f728327fed1	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	9991225e034c8185d67fbc7a8816559f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=ee3d2dadafa67fbd1c19688c7bb08c02
