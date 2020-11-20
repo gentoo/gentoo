@@ -152,6 +152,9 @@ src_prepare() {
 
 	gunzip usr/share/doc/${PF}/changelog.gz || die
 
+	# The appdata directory is deprecated.
+	mv usr/share/{appdata,metainfo}/ || die
+
 	rm \
 		_gpgbuilder \
 		etc/cron.daily/${PN} \
@@ -181,7 +184,6 @@ src_prepare() {
 }
 
 src_install() {
-	rm -r usr/share/appdata || die
 	mv * "${D}" || die
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
 
