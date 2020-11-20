@@ -39,8 +39,8 @@ python_prepare_all() {
 }
 
 python_test() {
-	testr init
-	testr run || die "tests failed under ${EPYTHON}"
+	stestr init
+	stestr run || die "tests failed under ${EPYTHON}"
 	flake8 tests && einfo "run of tests folder by flake8 passed"
 	flake8 bin/swift && einfo "run of ./bin/swift by flake8 passed"
 }
