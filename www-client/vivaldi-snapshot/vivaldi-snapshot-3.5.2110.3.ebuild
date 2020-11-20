@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 CHROMIUM_LANGS="
 	af
 	am
@@ -76,7 +77,8 @@ CHROMIUM_LANGS="
 	zh-CN
 	zh-TW
 "
-inherit chromium-2 desktop multilib unpacker toolchain-funcs xdg
+
+inherit chromium-2 desktop unpacker xdg
 
 VIVALDI_PN="${PN/%vivaldi/vivaldi-stable}"
 VIVALDI_HOME="opt/${PN}"
@@ -103,9 +105,6 @@ KEYWORDS="-* ~amd64 ~arm ~arm64 ~x86"
 IUSE="proprietary-codecs widevine"
 RESTRICT="bindist mirror"
 
-DEPEND="
-	virtual/libiconv
-"
 RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
@@ -136,33 +135,27 @@ RDEPEND="
 	proprietary-codecs? ( media-video/ffmpeg:0/56.58.58[chromium(-)] )
 	widevine? ( www-plugins/chrome-binary-plugins )
 "
+
 QA_PREBUILT="*"
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_unpack() {
 	unpack_deb ${A}
 }
 
 src_prepare() {
-	iconv -c -t UTF-8 usr/share/applications/${VIVALDI_PN}.desktop > "${T}"/${VIVALDI_PN}.desktop || die
-	mv "${T}"/${VIVALDI_PN}.desktop usr/share/applications/${VIVALDI_PN}.desktop || die
+	# Rename docs directory to our needs.
+	mv usr/share/doc/{${VIVALDI_PN},${PF}}/ || die
 
-	mv usr/share/doc/${VIVALDI_PN} usr/share/doc/${PF} || die
-	chmod 0755 usr/share/doc/${PF} || die
-
+	# Decompress the docs.
 	gunzip usr/share/doc/${PF}/changelog.gz || die
 
 	# The appdata directory is deprecated.
 	mv usr/share/{appdata,metainfo}/ || die
 
-	rm \
-		_gpgbuilder \
-		etc/cron.daily/${PN} \
-		|| die
-	rmdir \
-		etc/cron.daily/ \
-		etc/ \
-		|| die
+	# Remove cron job for updating from Debian repos.
+	rm etc/cron.daily/${PN} ${VIVALDI_HOME}/cron/${PN} || die
+	rmdir etc/{cron.daily/,} ${VIVALDI_HOME}/cron/ || die
 
 	# Remove scripts that will most likely break things.
 	rm ${VIVALDI_HOME}/update-{ffmpeg,widevine} || die
@@ -176,9 +169,8 @@ src_prepare() {
 }
 
 src_install() {
-	mv * "${D}" || die
+	mv */ "${D}" || die
 	dosym /${VIVALDI_HOME}/${PN} /usr/bin/${PN}
-
 	fperms 4711 /${VIVALDI_HOME}/vivaldi-sandbox
 
 	local logo size
