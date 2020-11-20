@@ -7651,10 +7651,8 @@ sys-apps/firejail:globalcfg - Enable global config file
 sys-apps/firejail:network - Enable networking features
 sys-apps/firejail:overlayfs - Enable overlayfs
 sys-apps/firejail:private-home - Enable private home feature
-sys-apps/firejail:seccomp - Enable system call filtering
 sys-apps/firejail:userns - Enable attaching a new user namespace to a sandbox (--noroot option)
 sys-apps/firejail:whitelist - Enable whitelist
-sys-apps/firejail:x11 - Enable X11 sandboxing
 sys-apps/firejail-lts:apparmor - Enable support for custom AppArmor profiles
 sys-apps/firejail-lts:globalcfg - Enable global config file
 sys-apps/firejail-lts:network - Enable networking features

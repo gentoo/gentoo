@@ -1071,8 +1071,8 @@ app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCryp
 app-crypt/tpm-emulator 0.7.5-r2: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1 1.3.9.2: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
-app-crypt/tpm2-pkcs11 1.3.2 1.4.0: A PKCS#11 interface for TPM2 hardware
-app-crypt/tpm2-tools 4.3.0: Tools for the TPM 2.0 TSS
+app-crypt/tpm2-pkcs11 1.5.0: A PKCS#11 interface for TPM2 hardware
+app-crypt/tpm2-tools 4.3.0 5.0: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.1 2.4.3 3.0.1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
@@ -16785,7 +16785,7 @@ sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1: Alternative to find that provides sensible defaults for 80% of the use cases
 sys-apps/file 5.37-r1 5.38-r1 5.39-r3 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0: GNU utilities for finding files
-sys-apps/firejail 0.9.62 0.9.62-r1 0.9.64 0.9.64-r1 9999: Security sandbox for any type of processes
+sys-apps/firejail 0.9.64 0.9.64-r1 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 1.2-r1 1.2-r2 1.2-r3 9999: Utility for reading, writing, erasing and verifying flash ROM chips
