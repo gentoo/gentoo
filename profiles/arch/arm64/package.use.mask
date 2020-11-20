@@ -250,6 +250,8 @@ net-fs/samba dmapi
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
 www-client/chromium widevine
+www-client/vivaldi widevine
+www-client/vivaldi-snapshot widevine
 
 # Matthew Thode <prometheanfire@gentoo.org> (2018-02-23)
 # net-proxy/haproxy isn't keyworded for arm64
