@@ -741,7 +741,7 @@ app-arch/gnome-autoar 0.2.4: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r2: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
-app-arch/innoextract 1.7 1.8 1.9: A tool to unpack installers created by Inno Setup
+app-arch/innoextract 1.9: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.5_p20181227-r1: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i_p20201004: Utility for creating and opening lzh archives
@@ -10586,7 +10586,7 @@ dev-util/checkbashisms 2.19.7 2.20.1 2.20.2 2.20.3 2.20.4: Perl script to check 
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/chroot-wrapper 0.9.3: Wrapper for chroot to set up some bind mounts, namespaces, and control groups
 dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
-dev-util/clazy 1.7 1.7-r1: Compiler plugin which allows clang to understand Qt semantics
+dev-util/clazy 1.7-r1: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 3.0.20.11.20 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2.4: A complete toolset for C and C++ development
@@ -12779,7 +12779,7 @@ media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 1.0-r1 1.0.1 9999: SVG based generic vector-drawing program
-media-gfx/iscan 2.30.4.2-r1 3.62.0 3.63.0: EPSON Image Scan v3 for Linux
+media-gfx/iscan 2.30.4.2-r1 3.63.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
 media-gfx/iscan-plugin-gt-f500 1.0.0.1-r1: Epson Perfection 2480/2580 PHOTO scanner plugin for SANE 'epkowa' backend
@@ -12825,7 +12825,7 @@ media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/opencsg 1.4.2-r1: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 2.3.0: OpenEXR Viewers
 media-gfx/openmesh 7.1: A generic data structure to represent and manipulate polygonal meshes
-media-gfx/openscad 2019.05-r2 2019.05-r3 9999: The Programmers Solid 3D CAD Modeller
+media-gfx/openscad 2019.05-r3 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.3.0-r1 1.4.0: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 4.0.2-r4 5.2.0-r2 6.2.1-r1 7.0.0-r1 7.1.0-r1: Library for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
@@ -12999,7 +12999,7 @@ media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and m
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.3 3.3-r1 4.0_rc2: Ham radio backend rig control libraries
-media-libs/harfbuzz 2.6.5 2.6.7 2.6.8 2.7.1 2.7.2 9999: An OpenType text shaping engine
+media-libs/harfbuzz 2.6.7 2.7.2 9999: An OpenType text shaping engine
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files
@@ -16039,7 +16039,7 @@ sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn pl
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and update OSM data files
-sci-geosciences/qgis 3.16.0-r1 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.16.0-r1 3.16.1 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.14.0 1.15.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
@@ -16993,7 +16993,7 @@ sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set
 sys-apps/usbutils 012 013: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.33.2 2.34-r3 2.35.2 2.36 2.36.1 9999: Various useful Linux utilities
+sys-apps/util-linux 2.33.2 2.34-r3 2.35.2 2.36 2.36.1-r1 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
