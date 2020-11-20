@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
+# dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
+dev-qt/qtwebkit
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-08)
 # Dead implementations, please migrate to >=zeromq-4
 dev-perl/ZMQ-LibZMQ2
