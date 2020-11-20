@@ -220,6 +220,7 @@ src_configure() {
 	use gbm && platform+=( gbm )
 	use wayland && platform+=( wayland )
 	use X && platform+=( x11 )
+	local core_platform_name="${platform[@]}"
 	local mycmakeargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
@@ -263,7 +264,7 @@ src_configure() {
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DAPP_RENDER_SYSTEM="$(usex opengl gl gles)"
-		-DCORE_PLATFORM_NAME="${platform[@]}"
+		-DCORE_PLATFORM_NAME="${core_platform_name}"
 	)
 
 	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
