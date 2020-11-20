@@ -9,4 +9,4 @@ SRC_URI="https://github.com/firehol/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc ~x86"
