@@ -61,10 +61,10 @@ src_install() {
 	doins -r opt/*
 	fperms 0750 /opt/puppetlabs/puppet/cache
 	# init
-	newinitd "${FILESDIR}/puppet.initd" puppet
+	newinitd "${FILESDIR}/puppet.initd2" puppet
 	systemd_dounit lib/systemd/system/puppet.service
 	systemd_dounit lib/systemd/system/pxp-agent.service
-	systemd_newtmpfilesd "${FILESDIR}/puppet-agent.conf.tmpfilesd" puppet-agent.conf
+	systemd_newtmpfilesd usr/lib/tmpfiles.d/puppet-agent.conf puppet-agent.conf
 	# symlinks
 	chmod 0755 -R "${D}/opt/puppetlabs/puppet/bin/"
 	chmod 0755 "${D}//opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper"
