@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools distutils-r1
 
@@ -15,7 +15,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="fuse gnutls libressl seccomp test"
-
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -26,7 +25,7 @@ COMMON_DEPEND="
 	gnutls? (
 		dev-libs/libtasn1:=
 		>=net-libs/gnutls-3.1.0[tools]
-		)
+	)
 	!libressl? (
 		dev-libs/openssl:0=
 		dev-libs/libtpms[-libressl]
@@ -61,7 +60,6 @@ src_prepare() {
 	use test || eapply "${FILESDIR}/${PN}-0.5.0-disable-test-dependencies.patch"
 	default
 	eautoreconf
-	eautomake
 }
 
 src_configure() {
@@ -75,7 +73,7 @@ src_configure() {
 }
 
 src_compile() {
-# We want the default src_compile, not the version distutils-r1 exports
+	# We want the default src_compile, not the version distutils-r1 exports
 	default
 }
 
@@ -89,6 +87,6 @@ src_install() {
 }
 
 src_test() {
-# We want the default src_test, not the version distutils-r1 exports
+	# We want the default src_test, not the version distutils-r1 exports
 	default
 }
