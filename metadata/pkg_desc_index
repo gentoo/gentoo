@@ -18115,7 +18115,7 @@ x11-apps/xmessage 1.0.5-r1: display a message or query in a window (X-based /bin
 x11-apps/xmodmap 1.0.10: utility for modifying keymaps and pointer button mappings in X
 x11-apps/xmore 1.0.3: plain text display program for the X Window System
 x11-apps/xpr 1.0.5: X.Org xpr application
-x11-apps/xprop 1.2.4: property displayer for X
+x11-apps/xprop 1.2.4 1.2.5: property displayer for X
 x11-apps/xrandr 1.5.1: primitive command line interface to RandR extension
 x11-apps/xrdb 1.2.0: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
