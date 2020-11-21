@@ -13932,7 +13932,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
-media-sound/upmpdcli 1.4.0 1.4.2 1.4.14: UPnP Media Renderer front-end for MPD, the Music Player Daemon
+media-sound/upmpdcli 1.4.0 1.4.2 1.4.14 1.5.0: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi like key bindings
@@ -14778,7 +14778,7 @@ net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivit
 net-libs/libnids 1.24-r6 1.24-r7: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnma 1.8.24 1.8.28 1.8.30: NetworkManager GUI library
-net-libs/libnpupnp 4.0.13: A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
+net-libs/libnpupnp 4.0.13 4.0.14: A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 net-libs/libnsl 0-r1 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
@@ -14814,7 +14814,7 @@ net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ f
 net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
-net-libs/libupnpp 0.17.0 0.19.4: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
+net-libs/libupnpp 0.17.0 0.19.4 0.20.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 3.2.1 4.0.20 4.1.4: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
@@ -17956,7 +17956,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 86.0.4240.198 87.0.4280.66 88.0.4315.5: Open-source version of Google Chrome web browser
+www-client/chromium 86.0.4240.198 87.0.4280.66 88.0.4324.11: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
