@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hydrapolic@gmail.com</email>
-		<name>Tomáš Mózes</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>gentoo@manwe.pl</email>
 		<name>Michał Zając</name>
 	</maintainer>
