@@ -1,0 +1,128 @@
+--- a/dialog.c
++++ b/dialog.c
+@@ -581,7 +581,7 @@
+ /******************************************************************
+  draws all options for the actual page.
+ ******************************************************************/
+-inline void optwin_draw_options(int x, int y)
++void optwin_draw_options(int x, int y)
+ {
+ #define LEN_NAME  111
+     int i = -1, pos = 0, max = 0;
+--- a/include/main.h
++++ b/include/main.h
+@@ -118,7 +118,7 @@
+ }
+ _bmaptype_table;
+ 
+-_bmaptype_table bmaptype_table[BMAPTABLE];
++extern _bmaptype_table bmaptype_table[BMAPTABLE];
+ 
+ extern int              bmaptype_table_size;
+ 
+@@ -306,7 +306,7 @@
+     double killhour;
+ } _statometer;
+ 
+-struct statometer statometer;
++extern struct statometer statometer;
+ 
+ extern time_t sleeptime;
+ 
+--- a/include/map.h
++++ b/include/map.h
+@@ -70,7 +70,7 @@
+ }
+ _mapdata;
+ 
+-struct MapCell
++typedef struct MapCell
+ {
+     short   faces[MAXFACES];
+     short   pos[MAXFACES];
+@@ -85,7 +85,7 @@
+ }
+ MapCell;
+ 
+-struct Map
++typedef struct Map
+ {
+     struct MapCell  cells[MAP_MAX_SIZE][MAP_MAX_SIZE];
+ }
+--- a/include/menu.h
++++ b/include/menu.h
+@@ -41,15 +41,15 @@
+ #define MENU_ALL (MENU_NO & MENU_KEYBIND & MENU_SPELL & MENU_STATUS & MENU_OPTION & MENU_NPC & MENU_BOOK & MENU_QUEST)
+ 
+ #define MENU_SOUND_VOL 40
+-struct _skill_list      skill_list[SKILL_LIST_MAX];
++extern struct _skill_list      skill_list[SKILL_LIST_MAX];
+ extern _dialog_list_set skill_list_set;
+ 
+-struct _spell_list      spell_list[SPELL_LIST_MAX]; /* skill list entries */
++extern struct _spell_list      spell_list[SPELL_LIST_MAX]; /* skill list entries */
+ extern _dialog_list_set spell_list_set;
+ 
+ extern _dialog_list_set option_list_set;
+ 
+-struct _bindkey_list    bindkey_list[BINDKEY_LIST_MAX];
++extern struct _bindkey_list    bindkey_list[BINDKEY_LIST_MAX];
+ extern _dialog_list_set bindkey_list_set;
+ 
+ extern _dialog_list_set create_list_set;
+--- a/include/wrapper.h
++++ b/include/wrapper.h
+@@ -118,7 +118,7 @@
+ extern int      parse_metaserver_data(char *info);
+ 
+ #if defined( __WIN_32)  || defined(__LINUX)
+-	FILE *msglog;
++	extern FILE *msglog;
+ #endif
+ 
+ #if defined(HAVE_STRNICMP)
+--- a/main.c
++++ b/main.c
+@@ -24,6 +24,10 @@
+ #include <include.h>
+ #include <signal.h>
+ 
++_bmaptype_table bmaptype_table[BMAPTABLE];
++
++struct statometer statometer;
++
+ Account             account; /* account data of this player, received from the server */
+ 
+ _server_char       *first_server_char   = NULL; /* list of possible chars/race with setup when we want create a char */
+@@ -33,7 +37,7 @@
+ SDL_Surface        *ScreenSurfaceMap; /* THE map surface (backbuffer)*/
+ SDL_Surface        *zoomed = NULL;
+ struct sockaddr_in  insock; /* Server's attributes */
+-ClientSocket        csocket;
++extern ClientSocket        csocket;
+ int                 SocketStatusErrorNr;        /* if an socket error, this is it */
+ 
+ _login_step          LoginInputStep;
+--- a/menu.c
++++ b/menu.c
+@@ -29,6 +29,7 @@
+ 
+ struct _spell_list      spell_list[SPELL_LIST_MAX]; /* skill list entries */
+ struct _skill_list      skill_list[SKILL_LIST_MAX]; /* skill list entries */
++struct _bindkey_list    bindkey_list[BINDKEY_LIST_MAX];
+ 
+ struct _dialog_list_set spell_list_set;
+ struct _dialog_list_set skill_list_set;
+--- a/wrapper.c
++++ b/wrapper.c
+@@ -22,6 +22,10 @@
+ */
+ #include <include.h>
+ 
++#if defined( __WIN_32)  || defined(__LINUX)
++    FILE *msglog;
++#endif
++
+ /* This is because PHYSFS_isInit() was introduced in 2.0.0 and some linux
+  * distros are still stuck in 1.x.x. So in time we can dump this global and
+  * use PHYSFS_isInit(). But for now, it's a simple query we can reproduce
