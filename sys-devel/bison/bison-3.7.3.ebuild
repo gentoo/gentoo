@@ -10,7 +10,6 @@ PATCH_TAR="${PN}-3.7.3-patches-01.tar.xz"
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-	mirror://gentoo/${PATCH_TAR}
 	https://dev.gentoo.org/~whissi/dist/bison/${PATCH_TAR}
 	https://dev.gentoo.org/~polynomial-c/dist/bison/${PATCH_TAR}"
 
