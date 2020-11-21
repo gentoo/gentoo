@@ -11692,7 +11692,7 @@ games-util/dzip 2.9-r3: compressor/uncompressor for demo recordings from id's Qu
 games-util/etswitch 0.1.14-r1: *nix minimizer for a few games
 games-util/eureka 1.27b: Graphical map editor for games using the DOOM engine
 games-util/fteqcc 2501: QC compiler
-games-util/game-device-udev-rules 20201025: udev rules for various game hardware devices
+games-util/game-device-udev-rules 20201121: udev rules for various game hardware devices
 games-util/gamemode 1.6 9999: Optimise Linux system performance on demand
 games-util/gamepick 0.35-r1: Launch opengl games with custom graphic settings
 games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the DOOM game engine
@@ -15321,7 +15321,7 @@ net-nntp/brag 1.4.3: Brag collects and assembles multipart binary attachments fr
 net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0 21.0-r1: A command-line based binary newsgrabber supporting .nzb files
-net-nntp/pan 0.145: A newsreader for GNOME
+net-nntp/pan 0.145 0.146: A newsreader for GNOME
 net-nntp/sabnzbd 3.0.0-r1 3.0.1 3.0.2 3.1.0 3.1.1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
@@ -18961,7 +18961,7 @@ x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4: X Persistent Remote Apps (xpra) and Partiti
 xfce-base/exo 0.12.11 4.15.2 4.15.3: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.1 0.7.2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4 4.15.5: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4 4.15.5: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre1 4.16_pre2: The Xfce Desktop Environment (meta package)
