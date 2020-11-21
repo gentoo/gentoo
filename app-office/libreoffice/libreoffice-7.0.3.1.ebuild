@@ -286,14 +286,16 @@ else
 fi
 
 PATCHES=(
-	# backport from 7.0 branch
-	"${FILESDIR}/${PN}-7.0.3.1-fix-disable-pdfium-build.patch"
-
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
+	"${FILESDIR}/${PN}-7.0.3.1-qt5detect.patch"
+
+	# 7.0 branch
+	"${FILESDIR}/${P}-fix-disable-pdfium-build.patch"
+	"${FILESDIR}/${PN}-6.4.7.2-icu-68-1.patch" # bug 752021
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -440,11 +442,7 @@ src_configure() {
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
-	if use kde; then
-		export QT_SELECT=5 # bug 639620 needs proper fix though
-		export QT5DIR="$(qt5_get_bindir)/../"
-		export MOC5="$(qt5_get_bindir)/moc"
-	fi
+	use kde && export QT5DIR="$(qt5_get_bindir)/.."
 
 	local gentoo_buildid="Gentoo official package"
 	if [[ -n ${LOCOREGIT_VERSION} ]]; then

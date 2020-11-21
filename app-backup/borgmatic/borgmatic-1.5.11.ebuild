@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 # Fails due to problems with dev-python/flexmock-0.10.4; see Bug #740128
 RESTRICT="test"
@@ -28,12 +28,12 @@ RDEPEND="app-backup/borgbackup
 		dev-python/requests[${PYTHON_USEDEP}]
 		<dev-python/ruamel-yaml-0.17.0[${PYTHON_USEDEP}]
 	')"
-BDEPEND="
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/flexmock[${PYTHON_USEDEP}]
-		')
-	)"
+#BDEPEND="
+#	test? (
+#		$(python_gen_cond_dep '
+#			dev-python/flexmock[${PYTHON_USEDEP}]
+#		')
+#	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.1-systemd_service_bin_path.patch
@@ -50,7 +50,7 @@ src_prepare() {
 	# 'borgmatic' executable - which by the time we execute src_test will
 	# not have been created yet. distutils_install_for_testing would likely
 	# take care of this - but between the aforementioned behaviour inconsistency
-	# and the fact the only test run from this file as of version 1.5.1 is the
+	# and the fact the only test run from this file as of version 1.5.11 is the
 	# parsing of contents of 'borgmatic --version', just skip it for now.
 	rm -f "${S}"/tests/integration/commands/test_borgmatic.py
 }
