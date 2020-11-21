@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A server browser for many FPS games (frontend for qstat)"
 HOMEPAGE="http://xqf.github.io/en/"
@@ -13,26 +14,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="bzip2 geoip nls"
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
+	x11-libs/gdk-pixbuf-xlib
+	x11-libs/gtk+:2
 	>=games-util/qstat-2.11
 	nls? ( virtual/libintl )
 	geoip? ( dev-libs/geoip )
 	bzip2? ( app-arch/bzip2 )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-S=${WORKDIR}/${PN}-${P}
+S="${WORKDIR}/${PN}-${P}"
 
-# bug #288853
+PATCHES=(
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-zlib-1.2.5.1-compile-fix.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-underlink.patch \
-		"${FILESDIR}"/${P}-zlib-1.2.5.1-compile-fix.patch
-	sed -i \
-		-e '/Icon/s/.png//' \
-		xqf.desktop.in || die
-
+	default
 	mv configure.{in,ac} || die
 	eautoreconf
 }
