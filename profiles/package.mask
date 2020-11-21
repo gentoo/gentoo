@@ -503,6 +503,7 @@ dev-lua/luacrypto
 >=games-engines/love-11.3-r100:0
 >=mail-filter/imapfilter-2.6.16-r100
 >=net-analyzer/suricata-6.0.0-r100
+>=net-im/swift-4.0.2-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-visualization/gnuplot-5.4.0-r100
 >=www-apache/mod_security-2.9.3-r100
