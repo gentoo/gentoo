@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig test? ( net-libs/gnutls[tools(+)] net-libs/socket_wrapper net-vpn/openconnect sys-libs/nss_wrapper sys-libs/uid_wrapper ) virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libnl:3= dev-libs/libev:0= >=dev-libs/nettle-2.7:0= dev-libs/pcl:0= dev-libs/protobuf-c:0= >=net-libs/gnutls-3.3.0:0= net-libs/http-parser:0= sys-libs/readline:0= sys-libs/talloc:0= geoip? ( dev-libs/geoip:0= ) kerberos? ( virtual/krb5 ) lz4? ( app-arch/lz4:0= ) otp? ( sys-auth/oath-toolkit:0= ) pam? ( sys-libs/pam:0= ) radius? ( net-dialup/freeradius-client:0= ) seccomp? ( sys-libs/libseccomp:0= ) systemd? ( sys-apps/systemd:0= ) tcpd? ( sys-apps/tcp-wrappers:0= )
+DESCRIPTION=Openconnect SSL VPN server
+EAPI=7
+HOMEPAGE=https://ocserv.gitlab.io/www/index.html
+IUSE=geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libnl:3= dev-libs/libev:0= >=dev-libs/nettle-2.7:0= dev-libs/pcl:0= dev-libs/protobuf-c:0= >=net-libs/gnutls-3.3.0:0= net-libs/http-parser:0= sys-libs/readline:0= sys-libs/talloc:0= geoip? ( dev-libs/geoip:0= ) kerberos? ( virtual/krb5 ) lz4? ( app-arch/lz4:0= ) otp? ( sys-auth/oath-toolkit:0= ) pam? ( sys-libs/pam:0= ) radius? ( net-dialup/freeradius-client:0= ) seccomp? ( sys-libs/libseccomp:0= ) systemd? ( sys-apps/systemd:0= ) tcpd? ( sys-apps/tcp-wrappers:0= )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=ftp://ftp.infradead.org/pub/ocserv/ocserv-1.1.1.tar.xz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=452a39f399f3b9223b9d67879a7b1f59
