@@ -403,8 +403,8 @@ src_configure() {
 		NM=gcc-nm
 		RANLIB=gcc-ranlib
 	fi
-	export LO_CLANG_CC=${CC}
-	export LO_CLANG_CXX=${CXX}
+	export CLANG_CC=${CC}
+	export CLANG_CXX=${CXX}
 
 	if [[ -n "${have_switched_compiler}" ]] ; then
 		# Because we switched active compiler we have to ensure
