@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} pypy3)
-PATCHES=( "${FILESDIR}"/${P}-pytest-runner.patch )
+PYTHON_COMPAT=( python3_{6..9} pypy3)
 
 inherit distutils-r1
 
@@ -15,17 +14,15 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}
-	dev-python/pytest-flakes[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
+
+PATCHES=( "${FILESDIR}"/${P}-pytest-runner.patch )
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	find . -name '__pycache__' -prune -exec rm -rf {} \; || die "Cleaning __pycache__ failed"
 	find . -name '*.pyc' -exec rm -f {} \; || die "Cleaning *.pyc failed"
+	sed -i -e '/--cov/d' -e '/--pep8/d' -e '/--flakes/d' pytest.ini || die
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	pytest -v || die
 }
