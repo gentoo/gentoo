@@ -13,7 +13,7 @@ HOMEPAGE="http://www.freeciv.org/"
 
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 	SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2+"
