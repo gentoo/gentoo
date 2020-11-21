@@ -3531,7 +3531,7 @@ dev-db/phppgadmin 7.12.1: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17 8.4.1: R language extension for postgresql database
 dev-db/postgis 2.5.3-r1 2.5.4 2.5.5 3.0.0-r1 3.0.1 3.0.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.5.24 9.6.20 10.15 11.10 12.5 13.1 9999: PostgreSQL RDBMS
-dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6 3.1.2: A better pager for psql and mysql
+dev-db/pspg 3.1.2 3.1.5: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
@@ -8263,7 +8263,7 @@ dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.1.0 1.2.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
-dev-python/immutables 0.11 0.14: A high-performance immutable mapping type for Python
+dev-python/immutables 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.7.0-r2 2.0.0: Read metadata from Python packages
 dev-python/importlib_resources 1.5.0-r2 3.3.0: Read resources from Python packages
 dev-python/imread 0.7.3: Read Image Files
@@ -8746,7 +8746,7 @@ dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.20 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.6.1_p1: Python interface to the PROJ library
-dev-python/pyproject2setuppy 8: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 8 9: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.1-r3 7.3.2 7.3.3_rc1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.1 7.3.2 7.3.3_rc1: PyPy executable (build from source)
@@ -14831,7 +14831,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.19.1 14.15.0 14.15.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.19.1 14.15.0 14.15.1 15.2.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
