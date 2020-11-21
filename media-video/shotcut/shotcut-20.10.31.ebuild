@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils xdg
+inherit qmake-utils xdg
 
 DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/ https://github.com/mltframework/shotcut/"
@@ -25,12 +25,10 @@ COMMON_DEPEND="
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsql:5
-	dev-qt/qtwebkit:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-6.18.0[ffmpeg,frei0r,jack,qt5,sdl,xml]
-	media-libs/webvfx
+	>=media-libs/mlt-6.22.1[ffmpeg,frei0r,jack,melt(+),qt5,sdl,xml]
 	media-video/ffmpeg
 "
 DEPEND="${COMMON_DEPEND}
@@ -45,17 +43,14 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	default
-
-	sed -i -e '/QT.*private/d' \
-		src/src.pro || die
+	sed -i -e '/QT.*private/d' src/src.pro || die
 }
 
 src_configure() {
-	append-cxxflags -Wno-deprecated-declarations
-
 	eqmake5 \
 		PREFIX="${EPREFIX}/usr" \
-		SHOTCUT_VERSION="${PV}"
+		SHOTCUT_VERSION="${PV}" \
+		DEFINES+=SHOTCUT_NOUPGRADE
 }
 
 src_install() {

@@ -184,15 +184,15 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	clang? (
 		|| (
-			(	sys-devel/clang:10
-				sys-devel/llvm:10
-				=sys-devel/lld-10*	)
-			(	sys-devel/clang:11
-				sys-devel/llvm:11
-				=sys-devel/lld-11*	)
 			(	sys-devel/clang:12
 				sys-devel/llvm:12
 				=sys-devel/lld-12*	)
+			(	sys-devel/clang:11
+				sys-devel/llvm:11
+				=sys-devel/lld-11*	)
+			(	sys-devel/clang:10
+				sys-devel/llvm:10
+				=sys-devel/lld-10*	)
 		)
 	)
 	coinmp? ( sci-libs/coinor-mp )
@@ -389,41 +389,35 @@ src_configure() {
 	local google_default_client_secret="vgKG0NNv7GoDpbtoFNLxCUXu"
 
 	# Show flags set at the beginning
-	einfo "Current CFLAGS:    ${CFLAGS}"
-	einfo "Current LDFLAGS:   ${LDFLAGS}"
+	einfo "Preset CFLAGS:    ${CFLAGS}"
+	einfo "Preset LDFLAGS:   ${LDFLAGS}"
 
-	local have_switched_compiler=
-	if use clang && ! tc-is-clang ; then
+	if use clang ; then
 		# Force clang
 		einfo "Enforcing the use of clang due to USE=clang ..."
-		have_switched_compiler=yes
 		AR=llvm-ar
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
 		NM=llvm-nm
 		RANLIB=llvm-ranlib
-	elif ! use clang && ! tc-is-gcc ; then
+		LDFLAGS+=" -fuse-ld=lld"
+		strip-unsupported-flags
+	else
 		# Force gcc
-		have_switched_compiler=yes
 		einfo "Enforcing the use of gcc due to USE=-clang ..."
 		AR=gcc-ar
 		CC=${CHOST}-gcc
 		CXX=${CHOST}-g++
 		NM=gcc-nm
 		RANLIB=gcc-ranlib
+		strip-unsupported-flags
 	fi
 	export LO_CLANG_CC=${CC}
 	export LO_CLANG_CXX=${CXX}
 
-	if [[ -n "${have_switched_compiler}" ]] ; then
-		# Because we switched active compiler we have to ensure
-		# that no unsupported flags are set
-		strip-unsupported-flags
-	fi
-
-	# Show flags set at the beginning
-	einfo "   Used CFLAGS:    ${CFLAGS}"
-	einfo "   Used LDFLAGS:   ${LDFLAGS}"
+	# Show flags set at the end
+	einfo "  Used CFLAGS:    ${CFLAGS}"
+	einfo "  Used LDFLAGS:   ${LDFLAGS}"
 
 	# Ensure we use correct toolchain
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
