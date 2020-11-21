@@ -13291,7 +13291,6 @@ media-libs/vulkan-layers 1.2.141 1.2.154 9999: Vulkan Validation Layers
 media-libs/vulkan-loader 1.2.141-r1 1.2.154 9999: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.6.1-r1 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
-media-libs/webvfx 1.2.0: Video effects library based on web technologies
 media-libs/woff2 1.0.2-r1 1.0.2-r2: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
@@ -14094,7 +14093,7 @@ media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210-r3 2.4_p20190330 9999: RTMP client, librtmp library intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
-media-video/shotcut 20.07.11: A free, open source, cross-platform video editor
+media-video/shotcut 20.10.31: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.4.2 9999: A Simple Screen Recorder
 media-video/smplayer 20.4.2 20.6.0: Great Qt GUI front-end for mplayer/mpv
