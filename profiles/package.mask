@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-21)
+# Dead upstream, depends on deprecated kde-frameworks/kmediaplayer
+# Masked for removal in 30 days.
+media-video/kmplayer
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-19)
 # These packages are maintained by the Python project, or have
 # no maintainer.  They have not been ported to Python 3.8 yet.
