@@ -1,3 +1,7 @@
+* drop hardcoded -O2 flag from CFLAGS
+* fix hardcoded `make` and hardcoded -j4 flags
+* respect CFLAGS when linking
+
 --- hdparm-9.60/Makefile
 +++ hdparm-9.60/Makefile
 @@ -13,7 +13,7 @@
