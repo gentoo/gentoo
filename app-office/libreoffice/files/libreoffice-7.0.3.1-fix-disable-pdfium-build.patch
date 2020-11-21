@@ -1,0 +1,82 @@
+From b9e5d5347e5dece693fe56b88570abc07a30a8ba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Thu, 29 Oct 2020 15:45:01 +0000
+Subject: [PATCH] fix --disable-pdfium build
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: I580972220bc39abe16288fa62c717e4ab25833d9
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/105015
+Tested-by: Jenkins
+Tested-by: René Engelhard <rene@debian.org>
+Reviewed-by: René Engelhard <rene@debian.org>
+Reviewed-by: Noel Grandin <noel.grandin@collabora.co.uk>
+---
+ vcl/source/filter/ipdf/pdfread.cxx       |  2 +-
+ xmlsecurity/source/pdfio/pdfdocument.cxx | 11 +++++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/vcl/source/filter/ipdf/pdfread.cxx b/vcl/source/filter/ipdf/pdfread.cxx
+index 3066c4deba4a..bf11578089e0 100644
+--- a/vcl/source/filter/ipdf/pdfread.cxx
++++ b/vcl/source/filter/ipdf/pdfread.cxx
+@@ -218,7 +218,7 @@ size_t RenderPDFBitmaps(const void* pBuffer, int nSize, std::vector<Bitmap>& rBi
+     (void)rBitmaps;
+     (void)nFirstPage;
+     (void)nPages;
+-    (void)fResolutionDPI;
++    (void)pSizeHint;
+     return 0;
+ #endif // HAVE_FEATURE_PDFIUM
+ }
+diff --git a/xmlsecurity/source/pdfio/pdfdocument.cxx b/xmlsecurity/source/pdfio/pdfdocument.cxx
+index c132d02cc2b0..b229206391f2 100644
+--- a/xmlsecurity/source/pdfio/pdfdocument.cxx
++++ b/xmlsecurity/source/pdfio/pdfdocument.cxx
+@@ -138,10 +138,10 @@ bool IsCompleteSignature(SvStream& rStream, vcl::filter::PDFDocument& rDocument,
+     return std::find(rAllEOFs.begin(), rAllEOFs.end(), nFileEnd) != rAllEOFs.end();
+ }
+ 
++#if HAVE_FEATURE_PDFIUM
+ /// Collects the checksum of each page of one version of the PDF.
+ void AnalyizeSignatureStream(SvMemoryStream& rStream, std::vector<BitmapChecksum>& rPageChecksums)
+ {
+-#if HAVE_FEATURE_PDFIUM
+     auto pPdfium = vcl::pdf::PDFiumLibrary::get();
+     vcl::pdf::PDFiumDocument aPdfDocument(
+         FPDF_LoadMemDocument(rStream.GetData(), rStream.GetSize(), /*password=*/nullptr));
+@@ -158,10 +158,8 @@ void AnalyizeSignatureStream(SvMemoryStream& rStream, std::vector<BitmapChecksum
+         BitmapChecksum nPageChecksum = pPdfPage->getChecksum();
+         rPageChecksums.push_back(nPageChecksum);
+     }
+-#else
+-    (void)rStream;
+-#endif
+ }
++#endif
+ 
+ /**
+  * Checks if incremental updates after singing performed valid modifications only.
+@@ -175,6 +173,7 @@ bool IsValidSignature(SvStream& rStream, vcl::filter::PDFObjectElement* pSignatu
+         return false;
+     }
+ 
++#if HAVE_FEATURE_PDFIUM
+     SvMemoryStream aSignatureStream;
+     sal_uInt64 nPos = rStream.Tell();
+     rStream.Seek(0);
+@@ -196,6 +195,10 @@ bool IsValidSignature(SvStream& rStream, vcl::filter::PDFObjectElement* pSignatu
+     // Fail if any page looks different after signing and at the end. Annotations/commenting doesn't
+     // count, though.
+     return aSignedPages == aAllPages;
++#else
++    (void)rStream;
++    return true;
++#endif
+ }
+ }
+ 
+-- 
+2.26.2
+
