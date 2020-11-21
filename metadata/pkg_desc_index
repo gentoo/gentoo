@@ -13445,7 +13445,7 @@ media-plugins/kodi-pvr-filmon 5.1.0 6.0.0 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 7.1.4 7.2.0 7.2.1 7.2.2 8.0.0 8.1.0 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 6.3.1 6.3.2 6.4.0 6.4.1 7.0.0 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 6.0.1 8.0.0 9999: Kodi's MediaPortal TVServer client addon
-media-plugins/kodi-pvr-mythtv 7.1.1 9999: MythTV PVR for Kodi
+media-plugins/kodi-pvr-mythtv 7.1.1 7.2.0 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 7.0.0 7.0.2 7.1.0 7.1.1 8.0.0 8.0.1 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 6.0.0 7.0.0 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 5.0.0 6.0.0 9999: Kodi's PCTV client addon
