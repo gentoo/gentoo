@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-blank-flags.patch
 	"${FILESDIR}"/${P}-DESTDIR.patch
 	"${FILESDIR}"/${P}-FHS.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
