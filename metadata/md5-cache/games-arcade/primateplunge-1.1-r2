@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare
-DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer
 DESCRIPTION=Help poor Monkey navigate his way down through treacherous areas
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.aelius.com/primateplunge/
 KEYWORDS=~amd64 ~x86
 LICENSE=Primate-Plunge
@@ -10,4 +11,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://www.aelius.com/primateplunge/primateplunge-1.1.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=040a6c3b2de5ffed2cfa1dc53efd7a90
+_md5_=5e5cd2bfeccf062696c73b3fc8cc0757
