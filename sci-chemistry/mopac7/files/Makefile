@@ -16,8 +16,3 @@ clean:
 libgmxmopac7: $(objects)
 	$(FC) -shared $(LDFLAGS) -Wl,-soname,libgmxmopac7.so.$(MAJOR) -o $@.so.$(VERSION) $^ $(LIBS)
 	ln -sf $@.so.$(VERSION) libgmxmopac7.so
-
-static: $(objects)
-	ar rcv libgmxmopac7.a *.o
-	ranlib libgmxmopac7.a
-
