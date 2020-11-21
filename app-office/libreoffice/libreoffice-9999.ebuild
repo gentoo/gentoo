@@ -183,9 +183,17 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		net-wireless/bluez
 	)
 	clang? (
-		sys-devel/clang
-		sys-devel/llvm
-		sys-devel/lld
+		|| (
+			(	sys-devel/clang:10
+				sys-devel/llvm:10
+				=sys-devel/lld-10*	)
+			(	sys-devel/clang:11
+				sys-devel/llvm:11
+				=sys-devel/lld-11*	)
+			(	sys-devel/clang:12
+				sys-devel/llvm:12
+				=sys-devel/lld-12*	)
+		)
 	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
