@@ -183,9 +183,17 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		net-wireless/bluez
 	)
 	clang? (
-		sys-devel/clang
-		sys-devel/llvm
-		sys-devel/lld
+		|| (
+			(	sys-devel/clang:10
+				sys-devel/llvm:10
+				=sys-devel/lld-10*	)
+			(	sys-devel/clang:11
+				sys-devel/llvm:11
+				=sys-devel/lld-11*	)
+			(	sys-devel/clang:12
+				sys-devel/llvm:12
+				=sys-devel/lld-12*	)
+		)
 	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
@@ -403,8 +411,8 @@ src_configure() {
 		NM=gcc-nm
 		RANLIB=gcc-ranlib
 	fi
-	export LO_CLANG_CC=${CC}
-	export LO_CLANG_CXX=${CXX}
+	export CLANG_CC=${CC}
+	export CLANG_CXX=${CXX}
 
 	if [[ -n "${have_switched_compiler}" ]] ; then
 		# Because we switched active compiler we have to ensure
