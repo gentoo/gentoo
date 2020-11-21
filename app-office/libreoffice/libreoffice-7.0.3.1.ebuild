@@ -286,6 +286,9 @@ else
 fi
 
 PATCHES=(
+	# backport from 7.0 branch
+	"${FILESDIR}/${PN}-7.0.3.1-fix-disable-pdfium-build.patch"
+
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
