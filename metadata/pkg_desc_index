@@ -16215,7 +16215,7 @@ sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r4: A package for unstructured serial gra
 sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 2020.4.304: Intel Math Kernel Library
 sci-libs/mkl-rt 2019.4.243: Intel Math Kernel Library (Runtime)
-sci-libs/mpfi 1.5.3: Multiple precision interval arithmetic library based on MPFR
+sci-libs/mpfi 1.5.3 1.5.4: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 5.1.2-r1 5.3.3: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
