@@ -41,6 +41,11 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/jack
 "
 
+src_prepare() {
+	default
+	sed -i -e '/QT.*private/d' src/src.pro || die
+}
+
 src_configure() {
 	eqmake5 \
 		PREFIX="${EPREFIX}/usr" \
