@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -18,13 +18,14 @@ DEPEND="X? ( x11-libs/libXpm )"
 RDEPEND=${DEPEND}
 
 PATCHES=(
-		"${FILESDIR}"/${P}-docs.patch
-		"${FILESDIR}"/${P}-home-overflow.patch
-		"${FILESDIR}"/${P}-segv.patch
-		"${FILESDIR}"/${P}-gentoo-paths.patch
-		"${FILESDIR}"/${P}-ovflfix.patch
-		"${FILESDIR}"/${P}-CC.patch
-		"${FILESDIR}"/${P}-underflow-check.patch #136222
+	"${FILESDIR}"/${P}-docs.patch
+	"${FILESDIR}"/${P}-home-overflow.patch
+	"${FILESDIR}"/${P}-segv.patch
+	"${FILESDIR}"/${P}-gentoo-paths.patch
+	"${FILESDIR}"/${P}-ovflfix.patch
+	"${FILESDIR}"/${P}-CC.patch
+	"${FILESDIR}"/${P}-underflow-check.patch #136222
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
