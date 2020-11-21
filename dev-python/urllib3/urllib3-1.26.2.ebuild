@@ -41,10 +41,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	dev-python/alabaster \
-	dev-python/mock
-
 python_prepare_all() {
 	# https://github.com/urllib3/urllib3/issues/1756
 	sed -e 's:10.255.255.1:240.0.0.0:' \
