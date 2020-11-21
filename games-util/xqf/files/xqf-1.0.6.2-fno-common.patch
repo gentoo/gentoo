@@ -1,0 +1,21 @@
+--- a/src/filter.c
++++ b/src/filter.c
+@@ -88,6 +88,8 @@
+ const char* filter_quick_get(void);
+ void filter_quick_unset (void);
+ 
++unsigned int current_server_filter;
++
+ /* /QUICK FILTER */
+ 
+ struct filter filters[FILTERS_TOTAL] = {
+--- a/src/filter.h
++++ b/src/filter.h
+@@ -89,7 +89,6 @@
+ 
+ extern GArray* server_filters;
+ 
+-unsigned int current_server_filter;
+ extern unsigned int current_server_filter;
+ 
+ 
