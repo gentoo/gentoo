@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ppc"
 
-COMMON_DEPEND="dev-lang/duktape"
+COMMON_DEPEND="dev-lang/duktape:="
 DEPEND+="${COMMON_DEPEND}"
 RDEPEND+="${COMMON_DEPEND}"
 
