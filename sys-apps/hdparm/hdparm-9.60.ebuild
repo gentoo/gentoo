@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs flag-o-matic
 
@@ -11,11 +11,11 @@ SRC_URI="mirror://sourceforge/hdparm/${P}.tar.gz"
 
 LICENSE="BSD GPL-2" # GPL-2 only
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.51-build.patch
+	"${FILESDIR}"/${PN}-9.60-build.patch
 )
 
 src_prepare() {
