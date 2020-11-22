@@ -886,7 +886,7 @@ app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5 4.0.7: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
 app-benchmarks/stress-ng 0.11.24: Stress test for a computer system with various selectable ways
-app-benchmarks/sysbench 1.0.15-r1 1.0.20: A scriptable multi-threaded benchmark tool based on LuaJIT
+app-benchmarks/sysbench 1.0.15-r1 1.0.20 1.0.20-r100: A scriptable multi-threaded benchmark tool based on LuaJIT
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r2 4.1.0-r100: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
