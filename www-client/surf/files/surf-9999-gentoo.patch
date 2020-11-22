@@ -1,5 +1,5 @@
 diff --git a/config.mk b/config.mk
-index 5e68e38..fa45b55 100644
+index f1910bf..55d7066 100644
 --- a/config.mk
 +++ b/config.mk
 @@ -4,18 +4,18 @@ VERSION = 2.0
@@ -19,13 +19,12 @@ index 5e68e38..fa45b55 100644
  
 -GTKINC = `pkg-config --cflags gtk+-3.0 gcr-3 webkit2gtk-4.0`
 -GTKLIB = `pkg-config --libs gtk+-3.0 gcr-3 webkit2gtk-4.0`
--WEBEXTINC = `pkg-config --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0`
--WEBEXTLIBS = `pkg-config --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0`
+-WEBEXTINC = `pkg-config --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0 gio-2.0`
+-WEBEXTLIBS = `pkg-config --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0 gio-2.0`
 +GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-3.0 gcr-3 webkit2gtk-4.0)
 +GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-3.0 gcr-3 webkit2gtk-4.0)
-+WEBEXTINC = $(shell $(PKG_CONFIG) --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
-+WEBEXTLIBS = $(shell $(PKG_CONFIG) --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
++WEBEXTINC = $(shell $(PKG_CONFIG) --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0 gio-2.0)
++WEBEXTLIBS = $(shell $(PKG_CONFIG) --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0 gio-2.0)
  
  # includes and libs
  INCS = $(X11INC) $(GTKINC)
-
