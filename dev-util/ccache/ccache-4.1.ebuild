@@ -35,38 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 	"${FILESDIR}"/${PN}-4.1-avoid-run-user.patch
-	"${FILESDIR}"/${PN}-4.1-atomic.patch
 )
-
-# ccache does not do it automatically. TODO: fix upstream
-need_latomic() {
-	# test if -latomic is needed and helps. -latomic is needed
-	# at least on ppc32. Use bit of inodeCache.cpp test.
-	cat >"${T}"/a-test.cc <<-EOF
-	#include <atomic>
-	#include <cstdint>
-	std::atomic<std::int64_t> a;
-	int main() { return a.load() == 0; }
-	EOF
-
-	local cxx_cmd=(
-		$(tc-getCXX)
-		$CXXFLAGS
-		$LDFLAGS
-		"${T}"/a-test.cc
-		-o "${T}"/a-test
-	)
-
-	einfo "${cxx_cmd[@]}"
-	"${cxx_cmd[@]}" && return 1
-
-	einfo "Trying to add -latomic"
-	einfo "${cxx_cmd[@]}"
-	cxx_cmd+=(-latomic)
-	"${cxx_cmd[@]}" && return 0
-
-	return 1
-}
 
 src_prepare() {
 	cmake_src_prepare
@@ -79,15 +48,7 @@ src_prepare() {
 	tc-export CC OBJDUMP
 }
 
-src_configure() {
-	local mycmakeargs=(
-		-DLINK_WITH_ATOMIC=$(need_latomic && echo YES || echo NO)
-	)
-	cmake_src_configure
-}
-
 src_install() {
-	# TODO: install manpage: https://github.com/ccache/ccache/issues/684
 	cmake_src_install
 
 	dobin ccache-config
