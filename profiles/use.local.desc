@@ -8050,16 +8050,11 @@ sys-cluster/lustre:dlc - Enable Dynamic LNET Configuration
 sys-cluster/lustre:server - Enable kernels server modules
 sys-cluster/lustre:tests - Enable installation of tests
 sys-cluster/lustre:utils - Enable lustre utils
-sys-cluster/maui:pbs - Enable pbs integration
-sys-cluster/maui:slurm - Enable slurm integration
 sys-cluster/minikube:libvirt - Build plugin for kvm
 sys-cluster/mpich:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/mpich:romio - Build the ROMIO MPI-IO component
 sys-cluster/mpich2:mpi-threads - Enable MPI_THREAD_MULTIPLE
 sys-cluster/mpich2:romio - Enable romio, a high-performance portable MPI-IO implementation
-sys-cluster/mvapich2:large-cluster - Automatically generated description for large-cluster
-sys-cluster/mvapich2:medium-cluster - Automatically generated description for medium-cluster
-sys-cluster/mvapich2:romio - Automatically generated description for romio
 sys-cluster/neutron:compute-only - Only install things needed on compute hosts
 sys-cluster/neutron:dhcp - Installs the initscripts for the neutron dhcp service
 sys-cluster/neutron:haproxy - haproxy backend support
