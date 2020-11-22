@@ -8900,7 +8900,7 @@ dev-python/python-troveclient 2.17.0 5.1.1: A client for the OpenStack Trove API
 dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
-dev-python/python-xlib 0.28: A fully functional X client library for Python, written in Python
+dev-python/python-xlib 0.28 0.29: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.9: Python bindings for the XML Security Library
 dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-zaqarclient 1.13.1 2.0.1: A client for the OpenStack Zaqar API
