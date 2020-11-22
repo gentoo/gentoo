@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,7 +34,7 @@ RDEPEND="
 	postgres? ( dev-db/postgresql:* )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist:5
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
