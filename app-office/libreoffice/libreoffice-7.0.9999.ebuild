@@ -634,6 +634,11 @@ EOF
 			dosym ../../../../${loprogdir}/__pycache__/${pyc} $(python_get_sitedir)/__pycache__/${pyc}
 		done < <(find "${D}"${lodir}/program -type f -name ${py/.py/*.pyc} -print0)
 	done
+
+	# bug 709450
+	mkdir -p "${ED}"/usr/share/metainfo || die
+	mv "${ED}"/usr/share/appdata/* "${ED}"/usr/share/metainfo/ || die
+	rmdir "${ED}"/usr/share/appdata || die
 }
 
 pkg_postinst() {
