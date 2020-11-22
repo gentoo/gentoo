@@ -405,11 +405,6 @@ sci-libs/linux-gpib php
 # Globally mask pie use flag. Selectively unmask on specific profiles.
 sys-devel/gcc pie
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2017-03-02)
-# Known build issue with system libvpx:
-# https://bugs.gentoo.org/show_bug.cgi?id=611394
->=www-client/chromium-58.0.3026.3 system-libvpx
-
 # Mike Gilbert <floppym@gentoo.org> (2017-02-16)
 # Multiple test failures.
 sys-boot/grub:2 test
