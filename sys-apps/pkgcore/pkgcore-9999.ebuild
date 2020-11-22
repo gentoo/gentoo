@@ -41,7 +41,7 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( AUTHORS NEWS.rst )
+	local DOCS=( NEWS.rst )
 	[[ ${PV} == *9999 ]] || doman man/*
 	distutils-r1_python_install_all
 }
