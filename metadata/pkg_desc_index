@@ -17252,7 +17252,7 @@ sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C language f
 sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20200801 20201108 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20200801 20201108 20201122 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
@@ -17930,7 +17930,7 @@ www-apps/nextcloud 18.0.9 18.0.10 18.0.11 19.0.3 19.0.4 19.0.5 20.0.0 20.0.1 20.
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
-www-apps/phpBB 3.3.1: An open-source PHP-based bulletin board package
+www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
 www-apps/postfixadmin 3.2.3 3.2.4: Web Based Management tool for Postfix style virtual domains and users
@@ -18184,7 +18184,7 @@ x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.3-r1: X.Org Session Management library
-x11-libs/libX11 1.6.12: X.Org X11 library
+x11-libs/libX11 1.6.12 1.7.0: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9 1.0.9-r1: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r2: X.Org Xaw library
@@ -18240,7 +18240,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit
 x11-libs/libxcb 1.14: X C-language Bindings library
-x11-libs/libxkbcommon 0.10.0-r1 1.0.1-r1: keymap handling library for toolkits and window systems
+x11-libs/libxkbcommon 0.10.0-r1 1.0.1-r1 1.0.2: keymap handling library for toolkits and window systems
 x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.3-r1 1.3-r2: Shared memory fences using futexes
@@ -18311,6 +18311,7 @@ x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolu
 x11-misc/clipmenu 6.0.1 6.1.0 6.2.0: Clipboard management using dmenu
 x11-misc/clipnotify 1.0.2: Notify on new X clipboard events
 x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
+x11-misc/compose-tables 1.7.0: X.Org Compose Key tables from libX11
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/copyq 3.13.0: Clipboard manager with advanced features
 x11-misc/dclock 2.2.2_p9 2.2.2_p12: Digital clock for the X window system
