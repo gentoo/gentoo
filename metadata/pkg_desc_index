@@ -14511,7 +14511,7 @@ net-firewall/firewalld 0.7.1-r3 0.7.3-r1: A firewall daemon with D-BUS interface
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
-net-firewall/ipset 6.29-r1 6.38-r1 7.5-r1 7.6-r1 7.7: IPset tool for iptables, successor to ippool
+net-firewall/ipset 6.29-r1 6.38-r1 7.5-r1 7.6-r1 7.7 7.9: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.4-r1 2.5.1-r1 9999: Netflow iptables module
 net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.4-r2 1.8.5 1.8.6: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104 1.2_p20121104-r1: Iptables policy testing and validation tool
