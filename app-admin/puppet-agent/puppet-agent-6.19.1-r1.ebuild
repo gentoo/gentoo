@@ -10,7 +10,7 @@ SRC_URI="http://apt.puppetlabs.com/pool/focal/puppet/${PN:0:1}/${PN}/${PN}_${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="puppetdb selinux"
 RESTRICT="strip"
 
