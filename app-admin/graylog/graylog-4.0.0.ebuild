@@ -3,15 +3,13 @@
 
 EAPI=7
 
-MY_PV="4.0.0-rc.2"
-
 DESCRIPTION="Free and open source log management"
 HOMEPAGE="https://www.graylog.org"
-SRC_URI="https://downloads.graylog.org/releases/graylog/graylog-${MY_PV}.tgz -> ${P}.tar.gz"
+SRC_URI="https://downloads.graylog.org/releases/graylog/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-#KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 RESTRICT="strip"
 
 RDEPEND="!app-admin/graylog2
@@ -20,14 +18,12 @@ RDEPEND="!app-admin/graylog2
 	>=virtual/jdk-1.8:*"
 
 DOCS=(
-	COPYING README.markdown UPGRADING.rst
+	README.markdown UPGRADING.rst
 )
 
 GRAYLOG_DATA_DIR="/var/lib/graylog"
 GRAYLOG_INSTALL_DIR="/usr/share/graylog"
 QA_PREBUILT="${GRAYLOG_INSTALL_DIR}/lib/sigar/libsigar*"
-
-S="${WORKDIR}/graylog-${MY_PV}"
 
 src_prepare() {
 	default
