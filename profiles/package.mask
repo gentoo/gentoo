@@ -485,6 +485,7 @@ dev-lua/luacrypto
 # All these ebuilds require slotted Lua, which is still masked.
 # Ulrich Müller <ulm@gentoo.org> (2020-11-06)
 # Added sci-visualization/gnuplot.
+>=app-benchmarks/sysbench-1.0.20-r100
 >=app-benchmarks/wrk-4.1.0-r100
 >=app-misc/worker-3.8.3-r100
 =dev-libs/efl-1.25.1-r10
