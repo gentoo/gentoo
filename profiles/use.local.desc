@@ -283,7 +283,10 @@ app-benchmarks/filebench:auto-completion - Enable command-line autocompletion us
 app-benchmarks/httperf:idleconn - Build with the idleconn program
 app-benchmarks/ioping:netdata - Add support for netdata
 app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
-app-benchmarks/sysbench:aio - Enable libaio support
+app-benchmarks/sysbench:aio - Add support for AIO.
+app-benchmarks/sysbench:attachsql - Add support for AttachSQL.
+app-benchmarks/sysbench:drizzle - Add support for Drizzles.
+app-benchmarks/sysbench:largefile - Add support for large files.
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
 app-cdr/brasero:nautilus - Build the gnome-base/nautilus extension
 app-cdr/brasero:packagekit - Enable support for the distro-neutral package manager GUI PackageKit
