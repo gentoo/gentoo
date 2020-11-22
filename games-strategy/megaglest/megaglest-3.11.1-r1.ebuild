@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2010-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # google-breakpad
@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="manual"
 inherit eutils flag-o-matic cmake-utils virtualx wxwidgets gnome2-utils games
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
-HOMEPAGE="http://www.megaglest.org/"
+HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
 SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/megaglest-source-${PV}.tar.xz"
 
 LICENSE="GPL-3 BitstreamVera"
@@ -71,7 +71,8 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${P}-static-build.patch \
 		"${FILESDIR}"/${P}-cmake.patch \
-		"${FILESDIR}"/${P}-miniupnpc.patch
+		"${FILESDIR}"/${P}-miniupnpc.patch \
+		"${FILESDIR}"/${P}-miniupnpc-api-version-16.patch
 }
 
 src_configure() {
