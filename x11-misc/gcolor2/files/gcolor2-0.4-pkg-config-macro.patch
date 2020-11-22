@@ -1,5 +1,5 @@
---- configure.ac.old	2008-01-08 09:36:24.000000000 +0100
-+++ configure.ac	2008-01-08 09:37:06.000000000 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -26,6 +26,7 @@
  AC_DISABLE_STATIC
  AC_PROG_LIBTOOL
