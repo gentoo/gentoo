@@ -8255,7 +8255,7 @@ dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1 5.41.2 5.41.3: A
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
-dev-python/ifaddr 0.1.6: Enumerate IP addresses on the local network adapters
+dev-python/ifaddr 0.1.6 0.1.7: Enumerate IP addresses on the local network adapters
 dev-python/ijson 3.1.1: Iterative JSON parser with a Pythonic interface
 dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.1.0 1.2.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
@@ -10712,7 +10712,7 @@ dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scrip
 dev-util/idea-community 2020.2.1.202.6948.69 2020.2.2.202.7319.50 2020.2.3.202.7660.26: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0 2.5.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 10.0: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 10.0 11.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.4111 1.0.4944: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 4.4.0.117-r3: Intel's implementation of the OpenCL standard
