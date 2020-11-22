@@ -405,7 +405,6 @@ src_configure() {
 		NM=llvm-nm
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
-		strip-unsupported-flags
 	else
 		# Force gcc
 		einfo "Enforcing the use of gcc due to USE=-clang ..."
@@ -414,8 +413,16 @@ src_configure() {
 		CXX=${CHOST}-g++
 		NM=gcc-nm
 		RANLIB=gcc-ranlib
-		strip-unsupported-flags
 	fi
+
+	if use custom-cflags ; then
+		elog "USE=custom-cflags has been selected. You are on your own to make sure that"
+		elog "the build succeeds. Good luck!"
+		strip-unsupported-flags
+	else
+		strip-flags
+	fi
+
 	export CLANG_CC=${CC}
 	export CLANG_CXX=${CXX}
 
