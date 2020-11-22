@@ -13,7 +13,6 @@
 		<flag name="fluidsynth">compile with support for fluidsynth</flag>
 	</use>
 	<upstream>
-		<remote-id type="launchpad">stratagus</remote-id>
-		<remote-id type="sourceforge">stratagus</remote-id>
+		<remote-id type="github">Wargus/stratagus</remote-id>
 	</upstream>
 </pkgmetadata>
