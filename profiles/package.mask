@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-11-22)
+# Abandoned upstream, unbuildable, unkeyworded in ::gentoo. 
+# Removal in 14 days. Bug #https://bugs.gentoo.org/752456
+app-accessibility/simon
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-21)
 # Dead upstream, depends on deprecated kde-frameworks/kmediaplayer
 # Masked for removal in 30 days.
