@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{6,7,8})
+PYTHON_COMPAT=(python3_{6,7,8,9})
 
 inherit flag-o-matic python-single-r1 toolchain-funcs
 
@@ -14,7 +14,7 @@ SRC_URI="https://unit.nginx.org/download/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 MY_USE="perl python ruby"
 MY_USE_PHP="php7-2 php7-3 php7-4"
 IUSE="${MY_USE} ${MY_USE_PHP} ssl"
@@ -26,7 +26,10 @@ DEPEND="perl? ( dev-lang/perl:= )
 	php7-3? ( dev-lang/php:7.3[embed] )
 	php7-4? ( dev-lang/php:7.4[embed] )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby:* )
+	ruby? (
+		dev-lang/ruby:*
+		dev-ruby/rubygems:*
+	)
 	ssl? ( dev-libs/openssl:0 )"
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"

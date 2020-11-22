@@ -13,17 +13,18 @@ inherit distutils-r1 optfeature
 DESCRIPTION="A Python library for creating LaTeX files and snippets"
 HOMEPAGE="https://github.com/JelteF/PyLaTeX"
 SRC_URI="https://github.com/JelteF/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 RDEPEND="
 	dev-python/ordered-set[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 BDEPEND+="
 	test? (
@@ -33,8 +34,6 @@ BDEPEND+="
 		app-text/texlive
 		dev-texlive/texlive-latexextra
 	)"
-
-S="${WORKDIR}/${MY_P}"
 
 python_install_all() {
 	if use examples ; then
