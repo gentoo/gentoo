@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN=xdot.py
 EGIT_REPO_URI="https://github.com/jrfonseca/${MY_PN}"
@@ -28,7 +29,6 @@ SLOT="0"
 DEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	media-gfx/graphviz
 "
 RDEPEND="${DEPEND}"
