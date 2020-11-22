@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-11-22)
+# Upstream abandoned since 2012, tons of QA issues and
+# build bugs, esoteric NIH build system. Bug #293567, #670954,
+# #697444, #699320, #708058, #746230, Removal in 30 days.
+games-emulation/fakenes
+
 # Joonas Niilola <juippis@gentoo.org> (2020-11-22)
 # Abandoned upstream, unbuildable, unkeyworded in ::gentoo. 
 # Removal in 14 days. Bug #https://bugs.gentoo.org/752456
