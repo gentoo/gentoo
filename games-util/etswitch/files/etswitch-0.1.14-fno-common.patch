@@ -1,0 +1,22 @@
+--- a/src/read_wid.c
++++ b/src/read_wid.c
+@@ -62,6 +62,8 @@
+ #include <errno.h>
+ extern int errno;
+ 
++wid_info_struct *wid;
++
+ /*
+ will try and read the wid file and malloc the game struct 
+ if wid file is missing it will read the internal one
+--- a/src/read_wid.h
++++ b/src/read_wid.h
+@@ -38,7 +38,7 @@
+     char *first_struct;
+ } wid_info_struct;
+ 
+-wid_info_struct *wid;				/* global wid array */
++extern wid_info_struct *wid;				/* global wid array */
+ 
+ 
+ 
