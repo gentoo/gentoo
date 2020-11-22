@@ -1,0 +1,57 @@
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
+@@ -28,7 +28,7 @@
+ datarootdir = @datarootdir@
+ datadir = @datadir@
+ libdir = @libdir@
+-localedir = $(libdir)/locale
++localedir = @localedir@
+ gnulocaledir = $(datadir)/locale
+ gettextsrcdir = $(datadir)/glib-2.0/gettext/po
+ subdir = po
+@@ -129,7 +129,6 @@
+ 	for cat in $$catalogs; do \
+ 	  cat=`basename $$cat`; \
+ 	  case "$$cat" in \
+-	    *.gmo) destdir=$(gnulocaledir);; \
+ 	    *)     destdir=$(localedir);; \
+ 	  esac; \
+ 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
+@@ -183,8 +182,6 @@
+ 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
+ 	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
+ 	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
+-	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
+-	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
+ 	done
+ 	if test "$(PACKAGE)" = "glib"; then \
+ 	  rm -f $(DESTDIR)$(gettextsrcdir)/Makefile.in.in; \
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -206,7 +206,7 @@
+ AM_CFLAGS = -Wall #-fprofile-arcs -ftest-coverage -pg
+ INCLUDES = \
+ 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
+-	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
++	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
+ 	@PACKAGE_CFLAGS@ @GST_CFLAGS@
+ 
+ bygfoot_SOURCES = \
+@@ -289,7 +289,7 @@
+ 	xml_team.c file.h free.h main.h misc.h option.h player.h team.h variables.h xml_team.h \
+ 	youth_academy.c free.h maths.h name.h option.h player.h team.h user.h youth_academy.h 
+ 
+-bygfoot_LDADD = @PACKAGE_LIBS@ @GST_LIBS@ $(INTLLIBS) 
++bygfoot_LDADD = @PACKAGE_LIBS@ @GST_LIBS@ $(INTLLIBS) -lm
+ all: all-am
+ 
+ .SUFFIXES:
+@@ -348,7 +348,7 @@
+ 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+ bygfoot$(EXEEXT): $(bygfoot_OBJECTS) $(bygfoot_DEPENDENCIES) 
+ 	@rm -f bygfoot$(EXEEXT)
+-	$(LINK) $(bygfoot_OBJECTS) $(bygfoot_LDADD) $(LIBS)
++	$(LINK) $(bygfoot_OBJECTS) $(bygfoot_LDADD) $(LIBS) -lm
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)
