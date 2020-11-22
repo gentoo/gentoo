@@ -3529,7 +3529,7 @@ dev-db/pgxnclient 1.3-r2: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.6 5.0.3: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 7.12.1: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17 8.4.1: R language extension for postgresql database
-dev-db/postgis 2.5.3-r1 2.5.4 2.5.5 3.0.0-r1 3.0.1 3.0.2 3.0.3 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.5.3-r1 2.5.4 2.5.5 3.0.0-r1 3.0.1 3.0.2 3.0.3 3.1.0_alpha3 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.5.24 9.6.20 10.15 11.10 12.5 13.1 9999: PostgreSQL RDBMS
 dev-db/pspg 3.1.2 3.1.5: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
@@ -8707,7 +8707,7 @@ dev-python/pykka 2.0.2: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1-r1: Code audit tool for python
 dev-python/pylast 4.0.0: Python interface to last.fm and other api-compatible websites
-dev-python/pylatex 1.3.3 1.4.0: A Python library for creating LaTeX files and snippets
+dev-python/pylatex 1.4.0 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylibacl 0.5.3 0.5.4_p20191217: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 2.6.0: Python code static checker
@@ -9732,7 +9732,7 @@ dev-ruby/activemodel 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Toolkit for buildi
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
 dev-ruby/activerecord 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activestorage 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Attach cloud and local files in Rails applications
-dev-ruby/activesupport 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Utility Classes and Extension to the Standard Library
+dev-ruby/activesupport 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4 6.0.3.4-r1: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 1.0.1: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
@@ -18028,7 +18028,7 @@ www-servers/lighttpd 1.4.55-r1 1.4.55-r100: Lightweight high-performance web ser
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.17.0 1.18.0 1.20.0: Dynamic web and application server
+www-servers/nginx-unit 1.20.0 1.21.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share files
@@ -18315,7 +18315,7 @@ x11-misc/cairo-clock 0.3.4-r1 0.3.4-r2: An analog clock displaying the system-ti
 x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
-x11-misc/clipmenu 6.0.1 6.1.0: Clipboard management using dmenu
+x11-misc/clipmenu 6.0.1 6.1.0 6.2.0: Clipboard management using dmenu
 x11-misc/clipnotify 1.0.2: Notify on new X clipboard events
 x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
