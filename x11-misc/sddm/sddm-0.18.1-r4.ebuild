@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
-inherit cmake l10n systemd user
+inherit cmake l10n systemd
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -24,7 +24,7 @@ BDEPEND="
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig
 "
-RDEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtcore-5.9.4:5
 	>=dev-qt/qtdbus-5.9.4:5
 	>=dev-qt/qtdeclarative-5.9.4:5
@@ -37,8 +37,11 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:= )
 	!systemd? ( sys-power/upower )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-qt/qttest-5.9.4:5 )
+"
+RDEPEND="${COMMON_DEPEND}
+	acct-user/sddm
 "
 
 PATCHES=(
@@ -100,9 +103,6 @@ pkg_postinst() {
 	elog "Starting with 0.18.0, SDDM no longer installs /etc/sddm.conf"
 	elog "Use it to override specific options. SDDM defaults are now"
 	elog "found in: /usr/share/sddm/sddm.conf.d/00default.conf"
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN},video
 
 	systemd_reenable sddm.service
 }
