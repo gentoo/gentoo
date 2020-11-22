@@ -29,7 +29,8 @@ IP_NF_SET_MAX=${IP_NF_SET_MAX:-256}
 BUILD_TARGETS="modules"
 MODULE_NAMES_ARG="kernel/net/netfilter/ipset/:${S}/kernel/net/netfilter/ipset"
 MODULE_NAMES="xt_set(kernel/net/netfilter/ipset/:${S}/kernel/net/netfilter/)"
-for i in ip_set{,_bitmap_{ip{,mac},port},_hash_{ip{,port{,ip,net}},net{,port{,net},iface,net}},_list_set}; do
+MODULE_NAMES+=" em_ipset(kernel/net/sched/:${S}/kernel/net/sched/)"
+for i in ip_set{,_bitmap_{ip{,mac},port},_hash_{ip{,mac,mark,port{,ip,net}},mac,net{,port{,net},iface,net}},_list_set}; do
 	MODULE_NAMES+=" ${i}(${MODULE_NAMES_ARG})"
 done
 
