@@ -26,7 +26,10 @@ DEPEND="perl? ( dev-lang/perl:= )
 	php7-3? ( dev-lang/php:7.3[embed] )
 	php7-4? ( dev-lang/php:7.4[embed] )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
+	ruby? (
+		dev-lang/ruby:*
+		dev-ruby/rubygems:*
+	)
 	ssl? ( dev-libs/openssl:0 )"
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
