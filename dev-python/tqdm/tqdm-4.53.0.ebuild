@@ -23,6 +23,10 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="examples"
 
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]"
+
 distutils_enable_tests pytest
 
 python_test() {
