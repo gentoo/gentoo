@@ -93,6 +93,11 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply ae8b18f868c9bd039643f89f28f9d92ce8966c3c for bug 755950
+	sed -e 's:^\(from portage.util._xattr import\) \(xattr\)$:\1 XATTRS_WORKS, \2:' \
+		-e 's:xattr\.XATTRS_WORKS:XATTRS_WORKS:' \
+		-i lib/portage/util/_compare_files.py || die
+
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
