@@ -14,6 +14,12 @@ elif [[ ${CATEGORY}/${PN} == dev-qt/qtcore && ${EBUILD_PHASE} == configure ]]; t
 elif [[ ${CATEGORY}/${PN} == dev-lang/ocaml && ${EBUILD_PHASE} == configure ]]; then
     einfo "Removing dup3 and pipe2 definitions..."
     sed -e '/hasgot dup3/,/^fi/d;/hasgot pipe2/,/^fi/d' -i "${S}"/configure || die
+elif [[ ${CATEGORY}/${PN} == sys-apps/util-linux && ${EBUILD_PHASE} == configure ]]; then
+    einfo "Removing CLOEXEC related functions..."
+    sed -r -e 's/inotify_init1\(.*\)/inotify_init\(\)/' \
+	-e '/open\(/s/\| *O_CLOEXEC//' \
+	-e 's/epoll_create1\(EPOLL_CLOEXEC/epoll_create\(1/' \
+	-i "${S}"/libmount/src/monitor.c
 fi
 
 # Local Variables:
