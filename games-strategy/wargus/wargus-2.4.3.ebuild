@@ -52,6 +52,17 @@ pkg_postinst() {
 	elog "it automatically on the first run.  Only the DOS version is supported"
 	elog "at the moment."
 
+	if ! has_version media-video/ffmpeg ||
+		! has_version media-sound/cdparanoia
+	then
+		elog
+		elog "If you did not convert the game data yet, you may want to install"
+		elog "the following optional dependencies:"
+		elog
+		elog "media-video/ffmpeg -- to convert game videos"
+		elog "media-sound/cdparanoia -- to rip game music from the CD"
+	fi
+
 	xdg_icon_cache_update
 }
 
