@@ -1,0 +1,27 @@
+From 501a9e3feeb2e56889c0ff98ab6d0ab20348ccd6 Mon Sep 17 00:00:00 2001
+From: Kentaro Hayashi <kenhys@gmail.com>
+Date: Sat, 1 Aug 2020 22:25:37 +0900
+Subject: [PATCH] Fix multiple definition of `prefs` compile error with GCC-10
+
+This commit fixes the following error:
+
+  libtool: link: gcc -pthread -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gtk-3.0 -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/harfbuzz -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -g -O2 -fdebug-prefix-map=/workspace/galculator-2.1.4=. -fstack-protector-strong -Wformat -Werror=format-security -Wall -Wl,-z -Wl,relro -o galculator galculator-main.o galculator-math_functions.o galculator-display.o galculator-general_functions.o galculator-calc_basic.o galculator-config_file.o galculator-callbacks.o galculator-ui.o galculator-flex_parser.o -Wl,--export-dynamic  -Wl,--as-needed -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0 -lm -lquadmath -pthread
+/usr/bin/ld: galculator-config_file.o:./src/config_file.c:42: multiple definition of `prefs'; galculator-main.o:./src/main.c:52: first defined here
+  collect2: error: ld returned 1 exit status
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index 10d0868..d22fea0 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -49,7 +49,7 @@
+ 
+ #define MASK_NUMLOCK GDK_MOD2_MASK
+ 
+-s_preferences		prefs;
++extern s_preferences		prefs;
+ s_current_status 	current_status = {0, 0, 0, 0, FALSE, FALSE, TRUE};
+ s_array				memory;
+ s_constant 			*constant;
