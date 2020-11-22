@@ -467,6 +467,7 @@ dev-lua/luacrypto
 >=dev-lua/lua-bit32-5.3.5-r100
 >=dev-lua/lua-zlib-1.2-r100
 >=dev-lua/luaevent-0.4.6-r100
+>=dev-lua/luasocket-3.0_rc1_p20200328-r100
 >=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/luadbi-0.7.2-r100
 >=dev-lua/lutok-0.4-r10
