@@ -1,13 +1,13 @@
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -41,6 +41,7 @@
- 	    $(GEOIP_LIB) \
- 	    $(PACKAGE_LIBS) \
- 	    $(GDK_PIXBUF_LIBS) \
-+	    -lX11 \
- 	    -lz -ldl
+--- a/configure.in
++++ b/configure.in
+@@ -23,6 +23,7 @@
+ AC_ISC_POSIX
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
++AM_PROG_AR
  
- xqf_LDFLAGS = -Wl,-rpath,$(pkglibdir) -Wl,--export-dynamic -Wl,--version-script=$(top_srcdir)/src/xqf.map
+ dnl Checks for header files.
+ AC_HEADER_STDC
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
 @@ -21,6 +21,7 @@
@@ -18,3 +18,13 @@
  #src/server.c
  #src/skin.c
  #src/skin_pcx.c
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -41,6 +41,7 @@
+ 	    $(GEOIP_LIB) \
+ 	    $(PACKAGE_LIBS) \
+ 	    $(GDK_PIXBUF_LIBS) \
++	    -lX11 \
+ 	    -lz -ldl
+ 
+ xqf_LDFLAGS = -Wl,-rpath,$(pkglibdir) -Wl,--export-dynamic -Wl,--version-script=$(top_srcdir)/src/xqf.map
