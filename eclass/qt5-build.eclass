@@ -327,6 +327,16 @@ qt5-build_pkg_postrm() {
 
 ######  Public helpers  ######
 
+# @FUNCTION: qt5_symlink_binary_to_path
+# @USAGE: <target binary name> [suffix]
+# @DESCRIPTION:
+# Symlink a given binary from QT5_BINDIR to QT5_PREFIX/bin, with optional suffix
+qt5_symlink_binary_to_path() {
+	[[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+
+	dosym -r "${QT5_BINDIR}"/${1} /usr/bin/${1}${2}
+}
+
 # @FUNCTION: qt_use
 # @USAGE: <flag> [feature] [enableval]
 # @DESCRIPTION:
