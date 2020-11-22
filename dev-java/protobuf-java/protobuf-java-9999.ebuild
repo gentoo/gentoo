@@ -22,7 +22,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/24"
+SLOT="0/25"
 KEYWORDS=""
 IUSE=""
 
