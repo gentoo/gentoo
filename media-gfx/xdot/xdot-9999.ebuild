@@ -32,11 +32,3 @@ DEPEND="
 	media-gfx/graphviz
 "
 RDEPEND="${DEPEND}"
-
-src_prepare() {
-	eapply_user
-
-	# Don't require graphviz python(2) supprt, which xdot doesn't use. This allows xdot to support python3.
-	# For more info, see https://bugs.gentoo.org/643126
-	sed -i "/install_requires=\['graphviz'\],/d" setup.py || die
-}
