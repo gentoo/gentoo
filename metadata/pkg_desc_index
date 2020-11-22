@@ -5708,7 +5708,7 @@ dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL 
 dev-lua/luaposix 35.0: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1: A deployment and management system for Lua modules
 dev-lua/luasec 0.9 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
-dev-lua/luasocket 3.0_rc1-r5: Networking support library for the Lua language
+dev-lua/luasocket 3.0_rc1-r5 3.0_rc1_p20200328 3.0_rc1_p20200328-r100: Networking support library for the Lua language
 dev-lua/luassert 1.7.9 1.7.10 1.8.0: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
