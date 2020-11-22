@@ -8298,7 +8298,7 @@ dev-python/jaraco-envs 2.0.0: Classes for orchestrating Python (virtual) environ
 dev-python/jaraco-functools 3.0.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r1: Additional facilities to supplement Python's stdlib logging module
-dev-python/jaraco-packaging 8.1.0-r1: Tools to supplement packaging Python releases
+dev-python/jaraco-packaging 8.1.0-r1 8.1.1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
@@ -12772,7 +12772,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.35 7.0.10.35 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.35 6.9.11.41 7.0.10.35 7.0.10.41 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -14775,7 +14775,7 @@ net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivit
 net-libs/libnids 1.24-r6 1.24-r7: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnma 1.8.24 1.8.28 1.8.30: NetworkManager GUI library
-net-libs/libnpupnp 4.0.13 4.0.14: A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
+net-libs/libnpupnp 4.0.13 4.0.14 4.0.14-r1: A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 net-libs/libnsl 0-r1 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
@@ -14811,7 +14811,7 @@ net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ f
 net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
-net-libs/libupnpp 0.17.0 0.19.4 0.20.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
+net-libs/libupnpp 0.17.0 0.19.4 0.20.0 0.20.0-r1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 3.2.1 4.0.20 4.1.4: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
