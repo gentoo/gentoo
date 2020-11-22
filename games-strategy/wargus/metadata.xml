@@ -10,7 +10,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="launchpad">wargus</remote-id>
-		<remote-id type="sourceforge">wargus</remote-id>
+		<remote-id type="github">Wargus/wargus</remote-id>
 	</upstream>
 </pkgmetadata>
