@@ -19,7 +19,7 @@ DEPEND="
 	x11-base/xorg-proto
 	>=x11-libs/libxcb-1.11.1
 	x11-libs/xtrans"
-RDEPEND="!!<x11-libs/libX11-1.7.0"
+RDEPEND="!<x11-libs/libX11-1.7.0"
 
 XORG_CONFIGURE_OPTIONS=(
 	--without-xmlto
