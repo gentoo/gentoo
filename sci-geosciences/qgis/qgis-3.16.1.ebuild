@@ -109,6 +109,7 @@ PATCHES=(
 	# TODO upstream
 	"${FILESDIR}/${P}-featuresummary.patch"
 	"${FILESDIR}/${P}-default-qmldir.patch"
+	"${FILESDIR}/${P}-find-qt5linguisttools.patch"
 )
 
 pkg_setup() {
