@@ -120,6 +120,7 @@ RDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-11.1-disable-flat-volumes.patch # bug 627894
+	"${FILESDIR}"/${PN}-13.99.3-avoid_bashisms.patch
 )
 
 pkg_pretend() {

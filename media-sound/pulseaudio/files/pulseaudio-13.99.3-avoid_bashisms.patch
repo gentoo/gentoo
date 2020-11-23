@@ -1,0 +1,20 @@
+--- pulseaudio-13.99.3/configure.ac
++++ pulseaudio-13.99.3/configure.ac
+@@ -1481,7 +1481,7 @@
+ 
+ AC_ARG_ENABLE([stream-restore-clear-old-devices],
+     AS_HELP_STRING([--enable-stream-restore-clear-old-devices], [Forget per-stream routing settings that have been set before version 14.0. Recommended when using GNOME. See https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/issues/832]))
+-if test "x$enable_stream_restore_clear_old_devices" == "xyes" ; then
++if test "x$enable_stream_restore_clear_old_devices" = "xyes" ; then
+     AC_DEFINE(STREAM_RESTORE_CLEAR_OLD_DEVICES, [1], [module-stream-restore: Clear old devices])
+ fi
+ 
+@@ -1661,7 +1661,7 @@
+ AS_IF([test "x$HAVE_GCOV" = "x1"], ENABLE_GCOV=yes, ENABLE_GCOV=no)
+ AS_IF([test "x$HAVE_LIBCHECK" = "x1"], ENABLE_TESTS=yes, ENABLE_TESTS=no)
+ AS_IF([test "x$enable_legacy_database_entry_format" != "xno"], ENABLE_LEGACY_DATABASE_ENTRY_FORMAT=yes, ENABLE_LEGACY_DATABASE_ENTRY_FORMAT=no)
+-AS_IF([test "x$enable_stream_restore_clear_old_devices" == "xyes"], ENABLE_STREAM_RESTORE_CLEAR_OLD_DEVICES=yes, ENABLE_STREAM_RESTORE_CLEAR_OLD_DEVICES=no)
++AS_IF([test "x$enable_stream_restore_clear_old_devices" = "xyes"], ENABLE_STREAM_RESTORE_CLEAR_OLD_DEVICES=yes, ENABLE_STREAM_RESTORE_CLEAR_OLD_DEVICES=no)
+ 
+ echo "
+  ---{ $PACKAGE_NAME $VERSION }---
