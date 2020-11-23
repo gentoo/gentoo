@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# James Le Cuirot <sam@gentoo.org> (2020-11-23)
+# Cinnamon is not stable on any architecture.
+x11-themes/arc-theme cinnamon
+
 # Sam James <sam@gentoo.org> (2020-10-09)
 # Depends on dev-libs/boost[python,numpy], not fully working atm
 # bug #733830, bug #746740, bug #753566
