@@ -3,17 +3,15 @@
 
 EAPI=7
 
-inherit cmake git-r3
-
-EGIT_REPO_URI="https://github.com/openstreetmap/${PN}.git"
+inherit cmake
 
 DESCRIPTION="Converts OSM planet.osm data to a PostgreSQL/PostGIS database"
 HOMEPAGE="https://osm2pgsql.org/"
-SRC_URI=""
+SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+lua luajit"
 
 COMMON_DEPEND="
