@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc +fapi gcrypt +openssl static-libs test"
 
 RESTRICT="!test? ( test )"
@@ -33,8 +33,8 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-Dont-run-systemd-sysusers-in-Makefile.patch"
-	"${FILESDIR}/${P}-configure.ac-wrap-PKG_CHECK_MODULES-in-braces.patch"
+	"${FILESDIR}/${PN}-2.4.1-configure.ac-wrap-PKG_CHECK_MODULES-in-braces.patch"
+	"${FILESDIR}/${PN}-2.4.2-Dont-run-systemd-sysusers-in-Makefile.patch"
 )
 
 pkg_setup() {

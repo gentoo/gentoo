@@ -32,7 +32,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-Dont-run-systemd-sysusers-in-Makefile.patch"
-	"${FILESDIR}/${P}-Fix-underquoting-in-configure-ac.patch"
+	"${FILESDIR}/${PN}-3.0.1-Fix-underquoting-in-configure-ac.patch"
 )
 
 pkg_setup() {

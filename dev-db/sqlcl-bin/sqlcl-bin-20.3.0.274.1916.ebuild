@@ -6,8 +6,10 @@ EAPI=7
 MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
 
+inherit java-pkg-2
+
 DESCRIPTION="Oracle SQLcl is the new SQL*Plus"
-HOMEPAGE="https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
+HOMEPAGE="https://www.oracle.com/database/technologies/appdev/sqlcl.html"
 SRC_URI="${MY_P}.zip"
 RESTRICT="bindist fetch mirror"
 
@@ -18,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="app-arch/unzip"
 RDEPEND="dev-db/oracle-instantclient
 	dev-java/java-config:2
-	virtual/jre:1.8"
+	>=virtual/jre-1.8"
 
 S="${WORKDIR}"
 
@@ -35,17 +37,10 @@ pkg_nofetch() {
 	einfo "which must be placed in DISTDIR directory."
 }
 
-src_prepare() {
-	default
-	find ./ \( -iname "*.bat" -or -iname "*.exe" \) -delete || die "remove files failed"
-}
-
 src_install() {
-	exeinto "/opt/${MY_PN}/bin/"
-	newexe "${MY_PN}"/bin/sql sqlcl
+	java-pkg_dojar sqlcl/lib/*.jar sqlcl/lib/ext/*.jar
 
-	insinto "/opt/${MY_PN}/lib/"
-	doins -r "${MY_PN}"/lib/.
-
-	dosym "../${MY_PN}/bin/sqlcl" /opt/bin/sqlcl
+	java-pkg_dolauncher "${MY_PN}" \
+		--main oracle.dbtools.raptor.scriptrunner.cmdline.SqlCli \
+		--java_args '-client -Xss30M'
 }
