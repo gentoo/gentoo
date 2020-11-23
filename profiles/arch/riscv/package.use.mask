@@ -122,6 +122,7 @@ sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
+sys-devel/llvm doc
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
