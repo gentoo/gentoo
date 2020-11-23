@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 multilib-minimal
+inherit bash-completion-r1 multilib-minimal toolchain-funcs
 
 DESCRIPTION="D-Bus bindings for glib"
 HOMEPAGE="https://dbus.freedesktop.org/"
