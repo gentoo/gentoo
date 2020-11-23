@@ -1,0 +1,27 @@
+From db2fee6c199a34507e5742b2360d594a5bf67b18 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 23 Nov 2020 22:04:50 +0100
+Subject: [PATCH] Fix Qt5LinguistTools detection/lrelease binary location
+
+Correctly find the Qt5 module that provides the path to Qt5-based lrelease.
+Available since >= Qt-5.3.1 which is well below the current minimum for QGIS.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ i18n/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/i18n/CMakeLists.txt b/i18n/CMakeLists.txt
+index a836e5cae5..7d7f79da89 100644
+--- a/i18n/CMakeLists.txt
++++ b/i18n/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-find_program(QT_LRELEASE_EXECUTABLE NAMES lrelease-qt5 lrelease)
++find_package(Qt5LinguistTools REQUIRED)
++set(QT_LRELEASE_EXECUTABLE Qt5::lrelease)
+ 
+ macro(ADD_TRANSLATION_FILES _sources )
+     foreach (_current_FILE ${ARGN})
+-- 
+2.29.2
+
