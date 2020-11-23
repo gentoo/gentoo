@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,13 +6,13 @@ inherit eutils unpacker cdrom games
 
 DESCRIPTION="Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter"
 HOMEPAGE="http://www.unrealtournament2003.com/"
-SRC_URI="http://download.factoryunreal.com/mirror/UT2003CrashFix.zip"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/UT2003CrashFix.zip" # MIT licensed (bug #754360)
 
-LICENSE="ut2003"
+LICENSE="ut2003 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="strip"
+RESTRICT="bindist strip"
 
 RDEPEND=""
 DEPEND="app-arch/unzip
