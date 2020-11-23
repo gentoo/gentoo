@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake xdg-utils
 
-DESCRIPTION="Qt-based multitab terminal emulator"
+DESCRIPTION="Qt Image Viewer"
 HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
@@ -19,24 +19,34 @@ fi
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.8.0"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	>=dev-util/lxqt-build-tools-0.8.0
+	virtual/pkgconfig
+"
 DEPEND="
+	dev-libs/glib:2
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	media-libs/libexif
+	>=x11-libs/libfm-qt-0.16.0:=
 	x11-libs/libX11
-	~x11-libs/qtermwidget-${PV}
+	x11-libs/libXfixes
 "
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
+	xdg_desktop_database_update
 }

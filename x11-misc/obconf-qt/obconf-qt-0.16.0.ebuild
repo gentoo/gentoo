@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake xdg-utils
 
-DESCRIPTION="Qt-based multitab terminal emulator"
+DESCRIPTION="Qt GUI Openbox Configuration Tool"
 HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
@@ -19,24 +19,31 @@ fi
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.8.0"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	>=dev-util/lxqt-build-tools-0.8.0
+	sys-apps/sed
+	virtual/pkgconfig
+"
 DEPEND="
+	dev-libs/glib:2
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	x11-libs/libX11
-	~x11-libs/qtermwidget-${PV}
+	x11-wm/openbox:3
 "
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
 
 pkg_postinst() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }

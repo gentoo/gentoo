@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake
 
-DESCRIPTION="Qt-based multitab terminal emulator"
+DESCRIPTION="Common base library for the LXQt desktop environment"
 HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
@@ -16,27 +16,34 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-2 GPL-2+"
-SLOT="0"
+LICENSE="LGPL-2.1+ BSD"
+SLOT="0/$(ver_cut 1-2)"
+IUSE="+backlight"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.8.0"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	>=dev-util/lxqt-build-tools-0.8.0
+"
 DEPEND="
+	>=dev-libs/libqtxdg-3.5.0
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
+	kde-frameworks/kwindowsystem:5[X]
 	x11-libs/libX11
-	~x11-libs/qtermwidget-${PV}
+	x11-libs/libXScrnSaver
+	backlight? ( sys-auth/polkit-qt )
 "
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
 
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_BACKLIGHT_LINUX_BACKEND=$(usex backlight)
+	)
+	cmake_src_configure
 }

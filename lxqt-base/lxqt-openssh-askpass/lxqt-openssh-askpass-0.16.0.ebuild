@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake
 
-DESCRIPTION="Qt-based multitab terminal emulator"
+DESCRIPTION="LXQt OpenSSH user password prompt tool"
 HOMEPAGE="https://lxqt.github.io/"
 
 if [[ ${PV} = *9999* ]]; then
@@ -16,27 +16,27 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-2 GPL-2+"
+LICENSE="LGPL-2.1 LGPL-2.1+"
 SLOT="0"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.8.0"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	>=dev-util/lxqt-build-tools-0.8.0
+"
 DEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	x11-libs/libX11
-	~x11-libs/qtermwidget-${PV}
+	=lxqt-base/liblxqt-$(ver_cut 1-2)*
 "
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
 
-pkg_postinst() {
-	xdg_icon_cache_update
-}
+src_install() {
+	cmake_src_install
+	doman man/*.1
 
-pkg_postrm() {
-	xdg_icon_cache_update
+	newenvd - 99${PN} <<- _EOF_
+		SSH_ASKPASS='${EPREFIX}/usr/bin/lxqt-openssh-askpass'
+	_EOF_
 }
