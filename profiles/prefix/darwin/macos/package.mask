@@ -3,6 +3,7 @@
 
 # Fabian Groffen <grobian@gentoo.org> (2020-11-23)
 # no symbols from libopenbsd-compat
+=net-misc/openssh-8.3_p1-r5
 =net-misc/openssh-8.4_p1-r2
 
 # Fabian Groffen <grobian@gentoo.org> (2020-11-23)
