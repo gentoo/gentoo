@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig test? ( lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) )
+DEFINED_PHASES=compile install prepare test
+DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DESCRIPTION=File System Library for the Lua programming language
+EAPI=7
+HOMEPAGE=https://keplerproject.github.io/luafilesystem/
+IUSE=test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/keplerproject/luafilesystem/archive/v1_8_0.tar.gz -> luafilesystem-1.8.0.tar.gz
+_eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	b2c915190b051f55a23b9354b9849847	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=c0785313ac0d9ecafa178cbe671ea683
