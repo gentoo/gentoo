@@ -1,0 +1,11 @@
+--- a/src/purple-libnotify+-common.h
++++ b/src/purple-libnotify+-common.h
+@@ -27,7 +27,7 @@
+ 
+ extern PurplePlugin *notify_plus;
+ 
+-struct
++extern struct
+ {
+ 	gboolean modify_notification;
+ 	gboolean use_svg;
