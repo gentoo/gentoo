@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit cmake
+inherit xdg cmake
 
-GIT_COMMIT=54b2e307af763ce87bc8c88e80785d8114bf38dd
+GIT_COMMIT="54b2e307af763ce87bc8c88e80785d8114bf38dd"
 
 DESCRIPTION="System information and benchmark tool for Linux systems"
 HOMEPAGE="https://github.com/lpereira/hardinfo"
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND="dev-libs/json-glib
-	dev-libs/glib:2
+RDEPEND="dev-libs/glib:2
+	dev-libs/json-glib
 	net-libs/libsoup
 	sys-libs/zlib
 	x11-libs/cairo
