@@ -46,7 +46,7 @@ RDEPEND="
 	>=media-libs/glew-2.0.0:0=
 	media-libs/harfbuzz:=
 	media-libs/lib3mf
-	sci-mathematics/cgal:=
+	<sci-mathematics/cgal-5:=
 	>=x11-libs/qscintilla-2.10.3:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
