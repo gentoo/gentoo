@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools bash-completion-r1
 
 DESCRIPTION="OpenSSL Engine for TPM2 devices"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tools"
