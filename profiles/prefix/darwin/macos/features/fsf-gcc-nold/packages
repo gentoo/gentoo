@@ -9,3 +9,4 @@
 -*sys-devel/binutils-apple
 -*sys-devel/clang
 -*sys-devel/gcc-apple
+-*sys-libs/csu
