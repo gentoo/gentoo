@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,12 +47,21 @@ pkg_preinst() {
 	fi
 }
 
+src_prepare() {
+	default
+	cp "${FILESDIR}"/${PN}-1.20201022-config.txt "${WORKDIR}" || die
+	if use arm64; then
+		# Force selection of the 64-bit kernel8.img to match our userland
+		echo "arm_64bit=1" >> "${WORKDIR}"/${PN}-1.20201022-config.txt || die
+	fi
+}
+
 src_install() {
 	insinto /boot
 	cd boot || die
 	doins bootcode.bin fixup*.dat start*elf
-	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
-	newins "${FILESDIR}"/${PN}-0_p20130711-cmdline.txt cmdline.txt
+	newins "${WORKDIR}"/${PN}-1.20201022-config.txt config.txt
+	newins "${FILESDIR}"/${PN}-1.20201022-cmdline.txt cmdline.txt
 	newenvd "${FILESDIR}"/${PN}-0_p20130711-envd 90${PN}
 	readme.gentoo_create_doc
 }

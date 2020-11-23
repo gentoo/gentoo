@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,19 @@ HOMEPAGE="https://github.com/raspberrypi/firmware"
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
 
+# Temporary safety measure to prevent ending up with a pair of
+# sys-kernel/raspberrypi-image and sys-boot/raspberrypi-firmware
+# none of which installed device tree files.
+# Remove when the mentioned version and all older ones are deleted.
+RDEPEND="!<=sys-kernel/raspberrypi-image-4.19.57_p20190709"
+
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
 	EGIT_CLONE_TYPE="shallow"
 else
 	SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="-* ~arm"
+	KEYWORDS="-* ~arm ~arm64"
 	S="${WORKDIR}/firmware-${PV}"
 fi
 
@@ -41,14 +47,21 @@ pkg_preinst() {
 	fi
 }
 
+src_prepare() {
+	default
+	cp "${FILESDIR}"/${PN}-1.20201022-config.txt "${WORKDIR}" || die
+	if use arm64; then
+		# Force selection of the 64-bit kernel8.img to match our userland
+		echo "arm_64bit=1" >> "${WORKDIR}"/${PN}-1.20201022-config.txt || die
+	fi
+}
+
 src_install() {
 	insinto /boot
 	cd boot || die
 	doins bootcode.bin fixup*.dat start*elf
-	doins *.dtb
-	doins -r overlays
-	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
-	newins "${FILESDIR}"/${PN}-0_p20130711-cmdline.txt cmdline.txt
+	newins "${WORKDIR}"/${PN}-1.20201022-config.txt config.txt
+	newins "${FILESDIR}"/${PN}-1.20201022-cmdline.txt cmdline.txt
 	newenvd "${FILESDIR}"/${PN}-0_p20130711-envd 90${PN}
 	readme.gentoo_create_doc
 }
