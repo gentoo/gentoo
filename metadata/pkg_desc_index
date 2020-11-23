@@ -18007,7 +18007,7 @@ www-plugins/chrome-binary-plugins 87.0.4280.66_beta 87.0.4280.66 88.0.4324.11_al
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
-www-plugins/pdfjs 1.9.426 2.1.266 2.4.456: A PDF reader in JavaScript
+www-plugins/pdfjs 2.4.456 2.5.207: A PDF reader in JavaScript
 www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.4.46 2.4.46-r1: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
