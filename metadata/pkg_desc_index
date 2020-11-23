@@ -18769,7 +18769,7 @@ x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material 
 x11-themes/adwaita-icon-theme 3.32.0 3.36.1: GNOME default icon theme
 x11-themes/adwaita-qt 1.1.1 1.1.4: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
-x11-themes/arc-theme 20190330 20200819 20201013: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+x11-themes/arc-theme 20201013: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/chameleon-xcursors 0.5-r1: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
