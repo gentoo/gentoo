@@ -415,12 +415,6 @@ dev-perl/ZMQ-LibZMQ3
 # Removal in 30 days.  Bug #741454.
 dev-perl/ZMQ-LibZMQ2
 
-# Sam James <sam@gentoo.org> (2020-10-25)
-# EAPI 4, fails to build for some time.
-# Removal in 30 days.
-# bug #654244, #740952, #726912, #723060
-dev-lang/j
-
 # Michał Górny <mgorny@gentoo.org> (2020-10-24)
 # Last release in 2004, next release 'Soon(tm)'.  Fails to build
 # due to horrible code hacks.
