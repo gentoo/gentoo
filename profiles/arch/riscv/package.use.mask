@@ -77,6 +77,7 @@ dev-libs/icu doc
 dev-libs/iniparser doc
 dev-libs/libgcrypt doc
 dev-libs/libnl python
+dev-libs/libinput doc
 dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
@@ -122,6 +123,7 @@ sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
+sys-devel/llvm doc
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
