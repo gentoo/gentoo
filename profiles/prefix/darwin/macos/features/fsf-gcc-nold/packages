@@ -5,7 +5,7 @@
 # missing blocks support in GCC)
 *sys-devel/gcc
 *sys-devel/gcc-config
--*sys-devel/clang
-*sys-devel/gcc-apple
--*sys-devel/binutils-apple
 *sys-devel/native-cctools
+-*sys-devel/binutils-apple
+-*sys-devel/clang
+-*sys-devel/gcc-apple
