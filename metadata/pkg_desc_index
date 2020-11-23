@@ -3513,7 +3513,7 @@ dev-db/percona-server 5.7.27.30-r1 8.0.19.10-r1 8.0.20.11-r2 8.0.21.12: Fully co
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
-dev-db/pg_activity 1.6.1: Realtime PostgreSQL database server monitoring tool
+dev-db/pg_activity 1.6.1 1.6.2: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0 4.0.0: 'top' for PostgreSQL
 dev-db/pgadmin4 4.17-r1 4.25 4.26 4.28: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
@@ -12740,7 +12740,7 @@ media-gfx/fotoxx 15.05: Program for improving image files made with a digital ca
 media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/freewrl 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/frogr 1.3 1.5: flickr applications for GNOME
-media-gfx/geeqie 1.5.1 9999: A lightweight GTK image viewer forked from GQview
+media-gfx/geeqie 1.5.1 1.5.1-r1 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
@@ -17481,7 +17481,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel build
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.9.8 5.9.8-r1 5.9.9 5.9.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.4.245 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.9.245 4.14.202 4.14.205 4.14.206 4.14.207 4.14.208 4.19.152 4.19.156 4.19.157 4.19.158 4.19.159 5.4.72 5.4.76 5.4.77 5.4.78 5.4.79 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9 5.9.10: Full sources including the Gentoo patchset for the 5.9 kernel tree
-sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
@@ -17495,7 +17495,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.9.8 5.9.9 5.9.10: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.244 4.9.244 4.14.207 4.19.158 5.4.78 5.8.18 5.9.9: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.245 4.9.245 4.14.208 4.19.159 5.4.79 5.9.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.9.7: The Zen Kernel Live Sources
