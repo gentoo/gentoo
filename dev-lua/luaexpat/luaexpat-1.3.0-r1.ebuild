@@ -11,7 +11,7 @@ SRC_URI="http://matthewwild.co.uk/projects/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/lua-5.1.5-r2:0[deprecated,${MULTILIB_USEDEP}]
