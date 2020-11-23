@@ -13,8 +13,8 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
+KEYWORDS="~amd64 ~x86"
+IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telemetry telepathy vnc webkit zeroconf"
 
 DEPEND="
 	dev-libs/glib:2
@@ -27,8 +27,8 @@ DEPEND="
 	x11-libs/libxkbfile
 	appindicator? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129
-		<net-misc/freerdp-3
+	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129[X]
+		<net-misc/freerdp-3[X]
 		cups? ( net-print/cups:= ) )
 	gnome-keyring? ( app-crypt/libsecret )
 	kwallet? ( kde-frameworks/kwallet )
@@ -40,7 +40,7 @@ DEPEND="
 	telepathy? ( net-libs/telepathy-glib )
 	vnc? ( net-libs/libvncserver[jpeg] )
 	webkit? ( net-libs/webkit-gtk:4 )
-	zeroconf? ( || ( >=net-dns/avahi-0.8-r2[dbus,gtk] <net-dns/avahi-0.8-r2[dbus,gtk3] ) )
+	zeroconf? ( >=net-dns/avahi-0.8-r2[dbus,gtk] )
 "
 BDEPEND="
 	dev-util/intltool
@@ -58,9 +58,8 @@ DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-with-examples.patch
+	xdg_environment_reset
 	cmake_src_prepare
-	xdg_src_prepare
 }
 
 src_configure() {
@@ -81,6 +80,7 @@ src_configure() {
 		-DWITH_LIBVNCSERVER=$(usex vnc)
 		-DWITH_WWW=$(usex webkit)
 		-DWITH_AVAHI=$(usex zeroconf)
+		-DWITH_NEWS=$(usex telemetry)
 		-DWITH_ICON_CACHE=OFF
 		-DWITH_UPDATE_DESKTOP_DB=OFF
 	)
