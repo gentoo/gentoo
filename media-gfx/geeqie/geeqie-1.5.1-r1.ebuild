@@ -4,18 +4,16 @@
 EAPI=7
 LUA_COMPAT=( lua5-{1..3} )
 
-inherit autotools git-r3 lua-single xdg
+inherit autotools lua-single xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
-SRC_URI=""
-# Using github mirror, as geeqie.org does not have a valid SSL certificate
-EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
+SRC_URI="http://www.geeqie.org/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="debug doc exif ffmpegthumbnailer gpu-accel +gtk3 jpeg lcms lirc lua map nls pdf tiff xmp"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="debug doc exif ffmpegthumbnailer gpu-accel gtk3 jpeg lcms lirc lua map nls pdf tiff xmp"
 
 RDEPEND="
 	virtual/libintl
@@ -43,6 +41,8 @@ BDEPEND="
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
+
+PATCHES=( "${FILESDIR}"/${P}-no_common.patch )
 
 src_prepare() {
 	default
