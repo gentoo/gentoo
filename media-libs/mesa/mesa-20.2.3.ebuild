@@ -74,7 +74,6 @@ REQUIRED_USE="
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.100"
 RDEPEND="
-	!app-eselect/eselect-mesa
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
@@ -143,9 +142,10 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 10.
 # 3. Specify LLVM_MAX_SLOT, e.g. 9.
-LLVM_MAX_SLOT="10"
+LLVM_MAX_SLOT="11"
 LLVM_DEPSTR="
 	|| (
+		sys-devel/llvm:11[${MULTILIB_USEDEP}]
 		sys-devel/llvm:10[${MULTILIB_USEDEP}]
 		sys-devel/llvm:9[${MULTILIB_USEDEP}]
 	)
@@ -524,7 +524,7 @@ multilib_src_install_all() {
 }
 
 multilib_src_test() {
-	meson test -v -C "${BUILD_DIR}" -t 100 || die "tests failed"
+	meson_src_test -t 100
 }
 
 # $1 - VIDEO_CARDS flag (check skipped for "--")
