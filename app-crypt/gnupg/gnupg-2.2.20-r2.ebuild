@@ -116,11 +116,11 @@ src_configure() {
 		--enable-gpgsm \
 		--enable-large-secmem \
 		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
-		GPG_ERROR_CONFIG="${EROOT}/usr/bin/${CHOST}-gpg-error-config" \
-		KSBA_CONFIG="${EROOT}/usr/bin/ksba-config" \
-		LIBASSUAN_CONFIG="${EROOT}/usr/bin/libassuan-config" \
-		LIBGCRYPT_CONFIG="${EROOT}/usr/bin/${CHOST}-libgcrypt-config" \
-		NPTH_CONFIG="${EROOT}/usr/bin/npth-config" \
+		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config" \
+		KSBA_CONFIG="${ESYSROOT}/usr/bin/ksba-config" \
+		LIBASSUAN_CONFIG="${ESYSROOT}/usr/bin/libassuan-config" \
+		LIBGCRYPT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-libgcrypt-config" \
+		NPTH_CONFIG="${ESYSROOT}/usr/bin/npth-config" \
 		$("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g')
 }
 
