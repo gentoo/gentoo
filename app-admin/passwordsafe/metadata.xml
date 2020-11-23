@@ -10,11 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="minimal">Avoid collision with <pkg>app-misc/pwsafe</pkg></flag>
 		<flag name="qr">Enable QR code password display</flag>
 		<flag name="yubikey">Enable support for Yubikey</flag>
 		<flag name="xml">Enable XML import support</flag>
-		<flag name="xvkbd">Install <pkg>x11-misc/xvkbd</pkg> on-screen keyboard</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pwsafe/pwsafe</remote-id>
