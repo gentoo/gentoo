@@ -594,7 +594,7 @@ app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the s
 app-admin/gopass 1.10.1-r2: a simple but powerful password manager for the terminal
 app-admin/graylog 3.3.8 4.0.0: Free and open source log management
 app-admin/gtkdiskfree 2.0.1-r1 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
-app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
+app-admin/hardinfo 0.5.2_pre20130823 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.19.1 1.20.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r29: A simple utility to read the temperature of SMART capable hard drives
@@ -638,7 +638,7 @@ app-admin/op-cli-bin 1.7.0: command line interface for the 1password password ma
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
 app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/pass-otp 1.2.0: A pass extension for managing one-time-password (OTP) tokens.
-app-admin/passwordsafe 1.08_beta 1.11.0: Password manager with wxGTK based frontend
+app-admin/passwordsafe 1.12.0: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.27 2.28 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
@@ -1074,8 +1074,8 @@ app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.5.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.3.0 5.0: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.4.1 2.4.3 3.0.1: TCG Trusted Platform Module 2.0 Software Stack
-app-crypt/tpm2-tss-engine 1.1.0_rc1: OpenSSL Engine for TPM2 devices
+app-crypt/tpm2-tss 2.4.3 2.4.4 3.0.2: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p2 1.24_p4 1.24_p7: Disk encryption with strong security based on TrueCrypt
@@ -3543,7 +3543,7 @@ dev-db/slony1 2.2.6 2.2.7: A replication system for the PostgreSQL Database Mana
 dev-db/spatialite 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
-dev-db/sqlcl-bin 20.2.0.174.1557: Oracle SQLcl is the new SQL*Plus
+dev-db/sqlcl-bin 20.3.0.274.1916: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.32.3-r1 3.33.0: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
@@ -3677,7 +3677,7 @@ dev-games/ode 0.11.1 0.12 0.14-r1: Open Dynamics Engine SDK
 dev-games/ogre 1.9.0-r1 1.9.0-r2 1.12.9 2.1: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
 dev-games/openscenegraph 3.6.4 3.6.5-r1: Open source high performance 3D graphics toolkit
-dev-games/openscenegraph-openmw 3.4_p20200425: OpenMW-specific fork of OpenSceneGraph
+dev-games/openscenegraph-openmw 3.4_p20200425 3.4_p20200425-r100: OpenMW-specific fork of OpenSceneGraph
 dev-games/openscenegraph-qt 3.5.7-r1: Qt support for OpenSceneGraph
 dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 3.0.2 9999: Abstraction layer for filesystem and archive access
@@ -14570,7 +14570,7 @@ net-ftp/uftpd 2.13: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/bitlbee 3.6-r1 9999: irc to IM gateway that support multiple IM protocols
-net-im/bitlbee-facebook 1.2.0 9999: Facebook protocol plugin for BitlBee
+net-im/bitlbee-facebook 1.2.0 1.2.1 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.7.0: Free/Open Source micro-blogging client by KDE
@@ -15049,7 +15049,7 @@ net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
-net-misc/gallery-dl 1.15.2-r1 9999: Download image galleries and collections from several image hosting sites
+net-misc/gallery-dl 1.15.2-r1 1.15.3 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -18429,7 +18429,7 @@ x11-misc/rendercheck 1.5-r1: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.5.4: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.5.4-r1 1.6.0 99999: A window switcher, run dialog and dmenu replacement
-x11-misc/rofi-calc 1.5 1.6 9999: Do live calculations in rofi!
+x11-misc/rofi-calc 1.5 1.6 2.0.0 9999: Do live calculations in rofi!
 x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.8 2.0.8.1 2.0.9: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
@@ -18758,7 +18758,7 @@ x11-terms/roxterm 3.9.3 3.9.4: A terminal emulator designed to integrate with th
 x11-terms/rxvt-unicode 9.22-r3 9.22-r5 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
-x11-terms/terminator 1.92-r2 2.0.1: Multiple GNOME terminals in one window
+x11-terms/terminator 2.0.1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.8.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2: A terminal emulator for the Xfce desktop environment
