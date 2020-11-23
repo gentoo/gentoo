@@ -523,7 +523,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	eselect rust update --if-unset
+	eselect rust update
 
 	elog "Rust installs a helper script for calling GDB and LLDB,"
 	elog "for your convenience it is installed under /usr/bin/rust-{gdb,lldb}-${PV}."
