@@ -26,8 +26,9 @@ RDEPEND="
 	!luajit? ( >=dev-lang/lua-5.1:0 )
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
-	!dev-lua/luaossl
 	!dev-lua/luacrypto
+	!dev-lua/luaossl
+	!dev-lua/luasec
 "
 BDEPEND="virtual/pkgconfig"
 DEPEND="${RDEPEND}"
