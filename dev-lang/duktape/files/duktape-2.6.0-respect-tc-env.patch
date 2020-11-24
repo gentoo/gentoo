@@ -1,8 +1,8 @@
-diff --git a/Makefile b/Makefile
+diff --git a/Makefile.sharedlibrary b/Makefile.sharedlibrary
 index 156ea96..a0997b1 100644
---- a/Makefile
-+++ b/Makefile
-@@ -52,7 +52,7 @@ INSTALL_PREFIX = /var/tmp/portage/dev-lang/duktape-2.6.0/image/usr
+--- a/Makefile.sharedlibrary
++++ b/Makefile.sharedlibrary
+@@ -52,7 +52,7 @@ INSTALL_PREFIX = /usr/local
  DUKTAPE_SRCDIR = ./src
  #DUKTAPE_SRCDIR = ./src-noline
  
@@ -29,5 +29,5 @@ index 156ea96..a0997b1 100644
  
  CCOPTS = -I./examples/cmdline
  duk:
--	$(CC) $(CCOPTS) -I$(INSTALL_PREFIX)/include -L$(INSTALL_PREFIX)/lib64 -Wall -Wextra -Os -o $@ ./examples/cmdline/duk_cmdline.c -lduktape -lm
-+	$(CC) $(CCOPTS) -I$(INSTALL_PREFIX)/include -L$(INSTALL_PREFIX)/lib64 ${CFLAGS} -o $@ ./examples/cmdline/duk_cmdline.c -lduktape -lm
+-	$(CC) $(CCOPTS) -I$(INSTALL_PREFIX)/include -L$(INSTALL_PREFIX)/lib -Wall -Wextra -Os -o $@ ./examples/cmdline/duk_cmdline.c -lduktape -lm
++	$(CC) $(CCOPTS) -I$(INSTALL_PREFIX)/include -L$(INSTALL_PREFIX)/lib ${CFLAGS} -o $@ ./examples/cmdline/duk_cmdline.c -lduktape -lm
