@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=net-libs/gnutls:0= sys-libs/zlib virtual/jpeg:0= test? ( sys-apps/diffutils media-libs/tiff app-text/ghostscript-gpl[tiff] )
+DEPEND=net-libs/gnutls:0= sys-libs/zlib virtual/jpeg:0= test? ( sys-apps/diffutils media-libs/tiff app-text/ghostscript-gpl[tiff(+)] )
 DESCRIPTION=Command-line tool for structural, content-preserving transformation of PDF files
 EAPI=7
 HOMEPAGE=http://qpdf.sourceforge.net/
@@ -10,4 +10,4 @@ RDEPEND=net-libs/gnutls:0= sys-libs/zlib virtual/jpeg:0=
 RESTRICT=!test? ( test )
 SLOT=0/26
 SRC_URI=mirror://sourceforge/qpdf/qpdf-9.1.1.tar.gz
-_md5_=0ec00cdfbcdb233f9a1b5616e0364127
+_md5_=52a0eb53f1db01539c8e269ae775a801

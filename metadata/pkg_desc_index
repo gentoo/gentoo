@@ -2964,7 +2964,7 @@ app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pytextile 3.0.3 4.0.1: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 9.0.2 9.1.1-r1 10.0.1-r1: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 9.0.2-r1 9.1.1-r2 10.0.1-r2 10.0.4: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18 0.4.18_p1: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1 3.7.6-r1: Convert files between various character sets
@@ -4530,7 +4530,7 @@ dev-java/ant-commons-logging 1.10.9: Apache Ant's optional tasks depending on co
 dev-java/ant-commons-net 1.10.9: Apache Ant's optional tasks depending on commons-net
 dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
-dev-java/ant-eclipse-ecj 4.4.2 4.5.1 4.10-r1 4.13: Ant Compiler Adapter for Eclipse Java Compiler
+dev-java/ant-eclipse-ecj 4.4.2 4.5.1 4.10-r1 4.13 4.15: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.10.9: Apache Ant's optional tasks depending on sun-jai-bin
 dev-java/ant-javamail 1.10.9: Apache Ant's optional tasks depending on gnu-jaf-1
@@ -4630,7 +4630,7 @@ dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dyna
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
-dev-java/eclipse-ecj 4.4.2-r1 4.5.1 4.10 4.13-r2: Eclipse Compiler for Java
+dev-java/eclipse-ecj 4.4.2-r1 4.5.1 4.10 4.13-r2 4.15: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713 20180510: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
 dev-java/edtftpj 2.4.0: FTP client library written in Java
@@ -4992,7 +4992,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.24 1.2.25: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.106 8.5.59 9.0.38: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.106 8.5.59 8.5.60 9.0.38 9.0.40: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -18031,7 +18031,7 @@ www-servers/servefile 0.4.4_p20200211 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.106 8.5.59 9.0.38-r1: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.106 8.5.59 8.5.60 9.0.38-r1 9.0.40: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
