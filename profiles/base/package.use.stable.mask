@@ -14,10 +14,6 @@ x11-themes/arc-theme cinnamon
 media-gfx/openvdb python numpy
 media-libs/openimageio python
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# Always build python-exec with all the targets.
-dev-lang/python-exec -python_targets_python3_9
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
 # openjfx:8 will never be stabilized
 dev-java/openjdk:8 javafx
