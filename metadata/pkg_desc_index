@@ -536,7 +536,7 @@ app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration f
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
-app-admin/bitwarden-desktop-bin 1.22.2: Bitwarden password manager desktop client
+app-admin/bitwarden-desktop-bin 1.22.2 1.23.0: Bitwarden password manager desktop client
 app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
@@ -14390,7 +14390,7 @@ net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5 6.6.7_p6: A Tool for analyzing networ
 net-analyzer/tcptraceroute 1.5_beta7-r2 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2: The plugin-driven server agent for collecting & reporting metrics.
-net-analyzer/testssl 3.0.2: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 3.0.2 3.0.4: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1 1.2.5-r2: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
