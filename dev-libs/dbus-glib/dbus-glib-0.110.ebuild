@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 multilib-minimal toolchain-funcs
+inherit autotools bash-completion-r1 multilib-minimal toolchain-funcs
 
 DESCRIPTION="D-Bus bindings for glib"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -31,9 +31,16 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
 
+PATCHES=( "${FILESDIR}"/${P}-config-glib-genmarshal.conf )
+
 set_TBD() {
 	# out of sources build dir for make check
 	export TBD="${BUILD_DIR}-tests"
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 multilib_src_configure() {
