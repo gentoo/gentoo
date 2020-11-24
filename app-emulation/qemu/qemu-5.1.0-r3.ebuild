@@ -227,6 +227,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
 	"${FILESDIR}"/${PN}-5.1.0-pixman-for-vhost-user-gpu.patch
 	"${FILESDIR}"/${PN}-5.1.0-usb-oob-CVE-2020-14364.patch #743649
+	"${FILESDIR}"/${PN}-5.1.0-usb-host-workaround-libusb-bug.patch #753305
 )
 
 QA_PREBUILT="
