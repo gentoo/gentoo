@@ -5,7 +5,7 @@ DESCRIPTION=A gem to ease i18n
 EAPI=7
 HOMEPAGE=https://github.com/puppetlabs/gettext-setup-gem
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 doc test test
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=dev-vcs/git ruby_targets_ruby25? ( >=dev-ruby/fast_gettext-1.1.0:0[ruby_targets_ruby25(-)] >=dev-ruby/ruby-gettext-3.0.2[ruby_targets_ruby25(-)] dev-ruby/locale[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/fast_gettext-1.1.0:0[ruby_targets_ruby26(-)] >=dev-ruby/ruby-gettext-3.0.2[ruby_targets_ruby26(-)] dev-ruby/locale[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( >=dev-ruby/fast_gettext-1.1.0:0[ruby_targets_ruby27(-)] >=dev-ruby/ruby-gettext-3.0.2[ruby_targets_ruby27(-)] dev-ruby/locale[ruby_targets_ruby27(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( virtual/rubygems[ruby_targets_ruby27(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/puppetlabs/gettext-setup-gem/archive/0.34.tar.gz -> gettext-setup-0.34.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	98584e405e2b0264d37e8f728327fed1	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	927b40774937983813d360c726615e54	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=6e832878577aa7cfb6eddf34e1864cc7
+_md5_=8ce299a06ee1767491c7674f95331cfe

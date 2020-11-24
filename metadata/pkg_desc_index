@@ -3444,7 +3444,7 @@ dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
 dev-cpp/prometheus-cpp 0.9.0 0.10.0: Prometheus Client Library for Modern C++
 dev-cpp/pstreams 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
-dev-cpp/range-v3 0.10.0-r1: Range library for C++14/17/20, basis for C++20's std::ranges
+dev-cpp/range-v3 0.10.0-r1 0.11.0: Range library for C++14/17/20, basis for C++20's std::ranges
 dev-cpp/robin-map 0.6.3 9999: C++ fast hash map and hash set using robin hood hashing
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
 dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
