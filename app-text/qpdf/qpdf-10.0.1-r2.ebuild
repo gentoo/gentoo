@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/qpdf/${P}.tar.gz"
 LICENSE="|| ( Apache-2.0 Artistic-2 )"
 
 # subslot = libqpdf soname version
-SLOT="0/26"
+SLOT="0/28"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~m68k-mint ~sparc-solaris"
-IUSE="doc examples static-libs test"
+IUSE="doc examples libressl ssl static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -21,12 +21,16 @@ RDEPEND="
 	net-libs/gnutls:0=
 	sys-libs/zlib
 	virtual/jpeg:0=
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 DEPEND="${RDEPEND}
 	test? (
 		sys-apps/diffutils
 		media-libs/tiff
-		app-text/ghostscript-gpl[tiff]
+		app-text/ghostscript-gpl[tiff(+)]
 	)
 "
 
@@ -38,10 +42,11 @@ src_configure() {
 		--enable-crypto-gnutls
 		--enable-crypto-native
 		--with-default-crypto=gnutls
+		$(use_enable ssl crypto-openssl)
 		$(use_enable static-libs static)
 		$(use_enable test test-compare-images)
 	)
-	CONFIG_SHELL=/bin/bash econf "${myeconfargs[@]}"
+	CONFIG_SHELL="/bin/bash" econf "${myeconfargs[@]}"
 }
 
 src_install() {
