@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-11-24)
+# No releases since 2008, deprecated upstream in favour of dev-lua/ldoc,
+# unmaintained, no revdeps. Removal in 30 days (Bug #756343).
+dev-lua/luadoc
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
 # Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
 # Feel free to manually unmask when not using XFS.
