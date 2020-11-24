@@ -8,10 +8,11 @@ inherit cmake
 DESCRIPTION="C++ libraries for building network-based applications"
 HOMEPAGE="https://pocoproject.org/"
 SRC_URI="https://github.com/pocoproject/${PN}/archive/${P}-release.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${P}-release"
+
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-
 IUSE="7z cppparser +crypto +data examples +file2pagecompiler iodbc +json libressl mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc sqlite +ssl test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -28,9 +29,7 @@ REQUIRED_USE="
 	test? ( data? ( sqlite ) json util xml )
 "
 
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=dev-libs/libpcre-8.42
 	mysql? ( !mariadb? ( dev-db/mysql-connector-c:0= )
@@ -46,8 +45,6 @@ RDEPEND="
 	zip? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN}-${P}-release"
 
 PATCHES=( "${FILESDIR}/${PN}-1.10.1-iodbc-incdir.patch" )
 
@@ -130,9 +127,10 @@ src_install() {
 			docinto examples/${sd%/samples}
 			dodoc -r ${sd}
 		done
+
 		find "${D}/usr/share/doc/${PF}/examples" \
 			-iname "*.sln" -or -iname "*.vcproj" -or \
 			-iname "*.vmsbuild" -or -iname "*.properties" \
-			| xargs rm
+			| xargs rm -v || die
 	fi
 }
