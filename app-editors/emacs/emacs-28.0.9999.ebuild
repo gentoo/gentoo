@@ -43,7 +43,8 @@ LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
-RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
+RDEPEND="acct-group/mail
+	app-emacs/emacs-common-gentoo[games?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -297,7 +298,7 @@ src_configure() {
 #}
 
 src_install() {
-	emake DESTDIR="${D}" NO_BIN_LINK=t install
+	emake DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
@@ -307,6 +308,10 @@ src_install() {
 	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
+
+	# movemail must be setgid mail
+	fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
