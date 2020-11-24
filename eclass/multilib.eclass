@@ -3,7 +3,6 @@
 
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
-# amd64@gentoo.org
 # toolchain@gentoo.org
 # @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @DESCRIPTION:
