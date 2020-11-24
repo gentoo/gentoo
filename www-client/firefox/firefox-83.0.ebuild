@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-83-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-83-patches-03.tar.xz"
 
 LLVM_MAX_SLOT=11
 
