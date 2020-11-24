@@ -521,9 +521,10 @@ multilib_src_configure() {
 		$(use_with vaapi va)
 	)
 
-	local PKG_CONFIG
+	local PKG_CONFIG AR RANLIB
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
-	tc-export PKG_CONFIG
+	# set AR and RANLIB to make QA scripts happy; #483342
+	tc-export PKG_CONFIG AR RANLIB
 
 	if use amd64; then
 		if [[ ${ABI} == amd64 ]]; then
