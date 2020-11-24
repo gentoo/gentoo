@@ -15,21 +15,28 @@ KEYWORDS="~amd64 ~ppc64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/0.11.0-no-werror.patch" )
+
 src_prepare() {
-	sed -i -e '/Werror/d' -e '/Wextra/d' -e '/Wall/d' cmake/ranges_flags.cmake || die
-	sed -i -e "s@lib/cmake@"$(get_libdir)"/cmake@g" CMakeLists.txt || die
+	# header-only libraries go to arch-independent dirs
+	sed -i -e 's@lib/cmake@share/cmake@g' CMakeLists.txt || die
 	rm include/module.modulemap || die # https://bugs.gentoo.org/755740
 	cmake_src_prepare
 }
 
 src_configure() {
 	mycmakeargs=(
-		-DRANGE_V3_EXAMPLES=OFF
-		-DRANGE_V3_HEADER_CHECKS=OFF
-		-DRANGE_V3_PERF=OFF
-		-DRANGE_V3_TESTS=$(usex test)
 		-DRANGES_BUILD_CALENDAR_EXAMPLE=OFF
 		-DRANGES_NATIVE=OFF
+		-DRANGES_DEBUG_INFO=OFF
+		-DRANGES_NATIVE=OFF
+		-DRANGES_ENABLE_WERROR=OFF
+		-DRANGES_VERBOSE_BUILD=ON
+		-DRANGE_V3_EXAMPLES=OFF
+		-DRANGE_V3_PERF=OFF
+		-DRANGE_V3_DOCS=OFF
+		-DRANGE_V3_HEADER_CHECKS="$(usex test ON OFF)"
+		-DRANGE_V3_TESTS=$(usex test ON OFF)
 		#TODO: clang support + -DRANGES_MODULES=yes
 	)
 	cmake_src_configure
