@@ -17,6 +17,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="!media-plugins/mediastreamer-bcg729"
 
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_STATIC=no
+	)
+	cmake_src_configure
+}
+
 src_install() {
 	cmake_src_install
 	find "${ED}" -name '*.la' -delete || die
