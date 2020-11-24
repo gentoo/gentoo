@@ -18,7 +18,7 @@ S="${WORKDIR}/${LUA_COMPAT_PN}-${LUA_COMPAT_PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
