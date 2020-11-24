@@ -43,8 +43,7 @@ LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
-RDEPEND="acct-group/mail
-	app-emacs/emacs-common-gentoo[games?,gui(-)?]
+RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -58,7 +57,7 @@ RDEPEND="acct-group/mail
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	mailutils? ( net-mail/mailutils[clients] )
-	!mailutils? ( net-libs/liblockfile )
+	!mailutils? ( acct-group/mail net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
@@ -311,7 +310,7 @@ src_install() {
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
 	# movemail must be setgid mail
-	if [[ -f ${ED}/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail ]]; then
+	if ! use mailutils; then
 		fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 		fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 	fi
