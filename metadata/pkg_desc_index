@@ -5558,7 +5558,7 @@ dev-libs/pegtl 2.8.3: Header-only library for creating parsers according to Pars
 dev-libs/pigpio 76 77 78: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.1.1: Plasma Specific Protocols for Wayland
-dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
+dev-libs/poco 1.9.0-r2 1.10.1: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2 1.18: Parse Options - Command line parser
 dev-libs/ppl 1.2-r3: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
