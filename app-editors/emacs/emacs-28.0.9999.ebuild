@@ -310,8 +310,10 @@ src_install() {
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
 	# movemail must be setgid mail
-	fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
-	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	if [[ -f ${ED}/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail ]]; then
+		fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+		fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	fi
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
