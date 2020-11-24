@@ -3687,7 +3687,7 @@ dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/recastnavigation 1.5.1_p20200511: Navigation mesh construction toolset for games
 dev-games/simgear 2020.1.2 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.4.2: A general purpose tile map editor
+dev-games/tiled 1.4.2 1.4.3: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/coveraggregator 0_pre20170216-r1: Cover profile aggregator for golang
@@ -17519,7 +17519,7 @@ sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0: Library for managing partitions
 sys-libs/ldb 2.0.12-r1 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
-sys-libs/libaal 1.0.7-r1: library required by reiser4progs
+sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.24 9999: A library for manipulating block devices

@@ -1,0 +1,12 @@
+BDEPEND=virtual/os-headers
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=library required by reiser4progs
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/reiser4/
+IUSE=static-libs split-usr
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 -sparc ~x86
+LICENSE=GPL-2
+SLOT=0/7
+SRC_URI=mirror://sourceforge/reiser4/libaal-1.0.7.tar.gz
+_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
+_md5_=9bd9dda080568ac098b40b5c6bc7d34d
