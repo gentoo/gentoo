@@ -12,7 +12,7 @@ LICENSE="BSD"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples hdf5 prman test zlib"
+IUSE="hdf5 test zlib"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="hdf5? ( zlib )"
@@ -39,21 +39,13 @@ src_configure() {
 		-DALEMBIC_LIB_USES_TR1=OFF
 		-DUSE_ARNOLD=OFF
 		-DUSE_BINARIES=ON
-		-DUSE_EXAMPLES=$(usex examples)
+		-DUSE_EXAMPLES=OFF
 		-DUSE_HDF5=$(usex hdf5)
 		-DUSE_MAYA=OFF
-		-DUSE_PRMAN=$(usex prman)
+		-DUSE_PRMAN=OFF
 		-DUSE_PYALEMBIC=OFF
 		-DUSE_TESTS=$(usex test)
 	)
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	if use prman; then
-		einfo "If you're looking for an ebuild for renderman, you may want to"
-		einfo "try the waebbl overlay: 'eselect repository enable waebbl'"
-		einfo "followed by 'emerge renderman'"
-	fi
 }
