@@ -498,6 +498,7 @@ dev-lua/luacrypto
 >=app-admin/conky-1.11.4
 >=app-benchmarks/sysbench-1.0.20-r100
 >=app-benchmarks/wrk-4.1.0-r100
+>=app-crypt/ekeyd-1.1.5-r100
 >=app-misc/worker-3.8.3-r100
 =dev-games/openscenegraph-openmw-3.4_p20200425-r100
 =dev-libs/efl-1.25.1-r10
