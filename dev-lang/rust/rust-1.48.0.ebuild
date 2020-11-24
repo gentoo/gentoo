@@ -516,7 +516,13 @@ src_install() {
 		# so /usr/bin/rustc should point to /usr/lib/rust/<ver>/bin/rustc-<ver>
 		# need to fix eselect-rust to remove this hack.
 		local ver_i="${i}-${PV}"
-		ln -v "${ED}/usr/lib/${PN}/${PV}/bin/${i}" "${ED}/usr/lib/${PN}/${PV}/bin/${ver_i}" || die
+		if [[ -f "${ED}/usr/lib/${PN}/${PV}/bin/${i}" ]]; then
+			einfo "Installing ${i} symlink"
+			ln -v "${ED}/usr/lib/${PN}/${PV}/bin/${i}" "${ED}/usr/lib/${PN}/${PV}/bin/${ver_i}" || die
+		else
+			ewarn "${i} symlink requested, but source file not found"
+			ewarn "please report this"
+		fi
 		dosym "../lib/${PN}/${PV}/bin/${ver_i}" "/usr/bin/${ver_i}"
 	done
 
