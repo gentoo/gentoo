@@ -5688,7 +5688,7 @@ dev-lua/lpeg 1.0.1 1.0.2: Parsing Expression Grammars for Lua
 dev-lua/lua-argparse 0.6.0-r1: Command line argument parser for the Lua Programming Language
 dev-lua/lua-bit32 5.3.5-r2 5.3.5-r101: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
-dev-lua/lua-openssl 0.7.8_p0: OpenSSL binding for Lua
+dev-lua/lua-openssl 0.7.8_p0-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3 0.7: Terminal functions for Lua
 dev-lua/lua-utf8 0.1.1: UTF-8 support for Lua
 dev-lua/lua-zlib 1.2 1.2-r100: Simple streaming interface to zlib for Lua
@@ -12362,7 +12362,7 @@ mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuri
 mail-client/neomutt 20200626 20200626-r1 20200821 20200925 20201120 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
-mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
+mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 78.5.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 78.5.0: Thunderbird Mail Client
@@ -17494,7 +17494,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.9.8 5.9.9 5.9.10: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.245 4.9.243 4.9.245 4.14.206 4.14.208 4.19.157 4.19.159 5.4.77 5.4.79 5.9.8 5.9.10: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.246 4.9.245 4.14.209 4.19.160 5.4.80 5.9.11: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.9.10: The Zen Kernel Live Sources
