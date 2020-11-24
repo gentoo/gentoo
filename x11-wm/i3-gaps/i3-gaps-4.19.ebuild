@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools out-of-source
+inherit meson optfeature
 
 DESCRIPTION="i3 fork with gaps and some more features"
 HOMEPAGE="https://github.com/Airblader/i3"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-libs/glib:2
+COMMON_DEPEND="dev-libs/glib:2
 	dev-libs/libev
 	dev-libs/libpcre
 	dev-libs/yajl
@@ -30,7 +30,7 @@ CDEPEND="dev-libs/glib:2
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
 "
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-perl/ExtUtils-PkgConfig
 		dev-perl/IPC-Run
@@ -38,17 +38,17 @@ DEPEND="${CDEPEND}
 		dev-perl/Inline-C
 		dev-perl/X11-XCB
 		dev-perl/XS-Object-Magic
+		x11-apps/xhost
 		x11-base/xorg-server[xephyr,xvfb]
 		x11-misc/xvfb-run
 	)
 "
-BDEPEND="
-	app-text/asciidoc
+BDEPEND="app-text/asciidoc
 	app-text/xmlto
 	dev-lang/perl
 	virtual/pkgconfig
 "
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS
@@ -60,29 +60,22 @@ S="${WORKDIR}/i3-${PV}"
 DOCS=( RELEASE-NOTES-$(ver_cut 1-3) )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-$(ver_cut 1-2)-musl.patch"
-	"${FILESDIR}/${PN}-4.18.2-drop-branch-test.patch"
+	"${FILESDIR}/${PN}-4.18-musl.patch"
+	"${FILESDIR}/${PN}-4.19-fix-docdir.patch"
 )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
-my_src_configure() {
-	# disable sanitizer: otherwise injects -O0 -g
-	local myeconfargs=(
-		$(use_enable doc docs)
-		--enable-debug=no
-		--enable-mans
-		--disable-sanitizers
+src_configure() {
+	local emesonargs=(
+		-Ddocdir="/usr/share/doc/${PF}"
+		-Ddocs=$(usex doc true false)
+		-Dmans=true
 	)
-	econf "${myeconfargs[@]}"
+
+	meson_src_configure
 }
 
-my_src_install_all() {
-	doman "${BUILD_DIR}"/man/*.1
-	einstalldocs
+src_install() {
+	meson_src_install
 
 	exeinto /etc/X11/Sessions
 	newexe - i3wm <<- EOF
@@ -92,10 +85,7 @@ my_src_install_all() {
 }
 
 pkg_postinst() {
-	einfo "There are several packages that you may find useful with ${PN} and"
-	einfo "their usage is suggested by the upstream maintainers, namely:"
-	einfo "  x11-misc/dmenu"
-	einfo "  x11-misc/i3lock"
-	einfo "  x11-misc/i3status"
-	einfo "Please refer to their description for additional info."
+	optfeature "Application launcher" x11-misc/dmenu
+	optfeature "Simple screen locker" x11-misc/i3lock
+	optfeature "Status bar generator" x11-misc/i3status
 }
