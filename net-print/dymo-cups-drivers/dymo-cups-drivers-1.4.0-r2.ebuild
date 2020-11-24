@@ -12,20 +12,21 @@ S="${WORKDIR}/${P}.5"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="test usb_modeswitch"
+IUSE="test usb-modeswitch"
 RESTRICT="!test? ( test )"
 
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="net-print/cups"
+RDEPEND=">=net-print/cups-2.3.0"
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
-	usb_modeswitch? ( sys-apps/usb_modeswitch )"
+	usb-modeswitch? ( sys-apps/usb_modeswitch )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0-cxxflags.patch
 	"${FILESDIR}"/port_to_newer_cups_headers.patch
 	"${FILESDIR}"/dymo-cups-drivers-1.4.0.5-flexible-tests.patch
+	"${FILESDIR}"/cups-2.3.0-headers.patch
 )
 
 DOCS=( AUTHORS README ChangeLog docs/SAMPLES )
@@ -38,9 +39,7 @@ src_prepare() {
 
 src_install() {
 	default
-
-	insinto /usr/share/doc/${PF}
-	doins docs/*.{txt,rtf,ps,png}
+	dodoc docs/*.{txt,rtf,ps,png}
 }
 
 src_test() {

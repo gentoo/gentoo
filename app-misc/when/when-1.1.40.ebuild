@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Minimalistic personal calendar program"
 HOMEPAGE="http://www.lightandmatter.com/when/when.html"
@@ -9,7 +9,7 @@ SRC_URI="http://www.lightandmatter.com/when/when.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"
@@ -17,6 +17,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/when_dist"
 
 DOCS=( README )
+
+RESTRICT="test"
 
 src_prepare() {
 	default
