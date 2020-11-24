@@ -35,6 +35,7 @@ latex
 libedit
 libressl
 lua
+motif
 qt5
 ruby
 slang
