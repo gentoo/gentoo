@@ -41,7 +41,6 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		net-misc/socat
 		dev-tcltk/expect
-		${PYTHON_DEPS}
 	)
 "
 
@@ -58,6 +57,7 @@ PATCHES=(
 
 src_prepare() {
 	use test || eapply "${FILESDIR}/${PN}-0.5.0-disable-test-dependencies.patch"
+	python_setup
 	default
 	eautoreconf
 }

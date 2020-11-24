@@ -30,11 +30,11 @@ PATCHES=(
 
 src_configure() {
 	tc-export AR CC LD
-	export PROFILE="x86$(usex amd64 '_64' '')"
+	$(usex x86 'export PROFILE=x86' '')
 
 	local myeconfargs=(
 		"--disable-static"
 	)
 
-	GZIP="" $(usex x86 'PROFILE=x86' '') econf ${myeconfargs[@]}
+	GZIP="" econf ${myeconfargs[@]}
 }

@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit multilib linux-info toolchain-funcs udev systemd
+LUA_COMPAT=( lua5-1 )
+
+inherit multilib linux-info lua-single toolchain-funcs udev systemd
 
 DESCRIPTION="Entropy Key userspace daemon"
 HOMEPAGE="http://www.entropykey.co.uk/"
@@ -13,12 +15,16 @@ LICENSE="MIT GPL-2" # GPL-2 (only) for init script
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="kernel_linux munin minimal usb"
-REQUIRED_USE="minimal? ( !munin )"
 
-EKEYD_RDEPEND="dev-lang/lua:0"
+REQUIRED_USE="${LUA_REQUIRED_USE}
+	minimal? ( !munin )"
+
+EKEYD_RDEPEND="${LUA_DEPS}"
 EKEYD_DEPEND="${EKEYD_RDEPEND}"
 EKEYD_RDEPEND="${EKEYD_RDEPEND}
-	dev-lua/luasocket
+	$(lua_gen_cond_dep '
+		dev-lua/luasocket[${LUA_USEDEP}]
+	')
 	kernel_linux? ( virtual/udev )
 	munin? ( net-analyzer/munin )"
 
@@ -32,6 +38,7 @@ pkg_setup() {
 	if ! use minimal && use kernel_linux && ! use usb && linux_config_exists; then
 		check_extra_config
 	fi
+	lua-single_pkg_setup
 }
 
 PATCHES=(
@@ -41,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-udev-rule.patch
 	"${FILESDIR}"/${P}-remove-werror.patch
 	"${FILESDIR}"/${P}-misc.patch
+	"${FILESDIR}"/${P}-makefile-lua-libs.patch
 )
 
 src_compile() {
@@ -62,11 +70,10 @@ src_compile() {
 			;;
 	esac
 
-	# We don't slot LUA so we don't really need to have the variables
-	# set at all.
 	emake -C host \
 		CC="$(tc-getCC)" \
-		LUA_V= LUA_INC= \
+		LUA_V=${ELUA#lua} \
+		LUA_INC="-I$(lua_get_include_dir)" \
 		OSNAME=${osname} \
 		OPT="${CFLAGS}" \
 		BUILD_ULUSBD=no \
