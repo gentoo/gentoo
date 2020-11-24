@@ -110,7 +110,7 @@ dev-vcs/mercurial tk rust zsh-completion
 media-libs/freetype harfbuzz png
 media-libs/harfbuzz doc
 sys-libs/libomp hwloc
-media-libs/mesa lm-sensors unwind
+media-libs/mesa lm-sensors unwind -X
 media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
 net-libs/gnutls doc test-full
