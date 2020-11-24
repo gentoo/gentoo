@@ -5073,7 +5073,6 @@ dev-lang/icon 9.5.1-r1 9.5.1-r2 9.5.20h: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/ispc 1.14.1 9999: Intel SPMD Program Compiler
-dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/janet 1.9.1 1.12.2: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
 dev-lang/jsonnet 0.15.0 0.16.0 0.16.0-r2: A data templating language for app and tool developers
@@ -13232,7 +13231,7 @@ media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Rendere
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20160424 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
-media-libs/raspberrypi-userland-bin 1.20170303 1.20190709: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland-bin 1.20190709 1.20201022: Raspberry Pi userspace tools and libraries
 media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
