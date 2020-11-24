@@ -25,7 +25,7 @@ DEPEND="${CDEPEND}
 	test? (
 		sys-apps/diffutils
 		media-libs/tiff
-		app-text/ghostscript-gpl[tiff]
+		app-text/ghostscript-gpl[tiff(+)]
 	)
 "
 # Only need perl for the installed tools.

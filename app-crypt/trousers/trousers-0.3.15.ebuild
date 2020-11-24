@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.13-nouseradd.patch"
 	"${FILESDIR}/${PN}-0.3.14-Makefile.am-Mark-tddl.a-nodist.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 DOCS="AUTHORS ChangeLog NICETOHAVES README TODO"
