@@ -695,12 +695,10 @@ net-libs/nDPI
 =mail-mta/postfix-3.6*
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
-# dev-java/ant-eclipse-ecj:4.10 depends on masked >=virtual/{jdk,jre}-11
-# www-servers/tomcat:9 depends on masked dev-java/eclipse-ecj:4.13
-dev-java/ant-eclipse-ecj:4.13
-dev-java/eclipse-ecj:4.13
-dev-java/ant-eclipse-ecj:4.10
-dev-java/eclipse-ecj:4.10
+# >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
+# www-servers/tomcat:9 depends on masked dev-java/eclipse-ecj
+>=dev-java/ant-eclipse-ecj-4.10
+>=dev-java/eclipse-ecj-4.10
 www-servers/tomcat:9
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)
