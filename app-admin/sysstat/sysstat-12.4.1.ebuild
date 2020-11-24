@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="dcron debug nls lm-sensors selinux static systemd"
 
 CDEPEND="
@@ -53,7 +53,6 @@ src_configure() {
 	tc-export AR
 	use static && append-ldflags -static
 
-	# --enable-compress-manpg <= Yes, that is inverted.
 	sa_lib_dir=/usr/lib/sa \
 		conf_dir=/etc \
 		econf \
@@ -61,7 +60,7 @@ src_configure() {
 			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
 			$(usex debug --enable-debuginfo '') \
-			--enable-compress-manpg \
+			--disable-compress-manpg \
 			--enable-copy-only \
 			--enable-documentation \
 			--enable-install-cron \
