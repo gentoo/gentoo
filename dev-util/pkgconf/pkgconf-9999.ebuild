@@ -30,11 +30,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	pkg-config? (
-		!dev-util/pkgconfig
-		!dev-util/pkg-config-lite
-		!dev-util/pkgconfig-openbsd[pkg-config]
-	)
+	pkg-config? ( !dev-util/pkgconfig )
 "
 
 MULTILIB_CHOST_TOOLS=(
