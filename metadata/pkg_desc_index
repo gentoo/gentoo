@@ -11516,7 +11516,7 @@ games-puzzle/wmpuzzle 0.5.2-r1: a 4x4 puzzle on a 64x64 mini window
 games-puzzle/world-of-goo-demo 1.41-r3: A puzzle game with a strong emphasis on physics (demo version)
 games-puzzle/world-of-goo-gog 1.51.29337: A puzzle game with a strong emphasis on physics (GOG edition)
 games-puzzle/world-of-goo-hb 1.53: A puzzle game with a strong emphasis on physics (Humble Bundle edition)
-games-puzzle/xblockout 1.1.6-r1: X Window block dropping game in 3 Dimension
+games-puzzle/xblockout 1.1.6-r2: X Window block dropping game in 3 Dimension
 games-puzzle/xbomb 2.2b: Minesweeper clone with hexagonal, rectangular and triangular grid
 games-puzzle/xlogical 1.0.7: SDL logical clone
 games-puzzle/xpired 1.22-r1: A Sokoban-styled puzzle game with lots more action
