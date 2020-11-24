@@ -63,10 +63,11 @@ app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
-app-doc/doxygen doc dot
+app-doc/doxygen clang doc dot
 app-editors/emacs alsa json lcms mailutils
 app-misc/pax-utils python
 app-text/asciidoc test
+app-text/ghostscript-gpl cups
 app-text/po4a test
 app-text/xmlto text
 dev-lang/python tk
@@ -106,6 +107,8 @@ dev-util/strace unwind
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 dev-vcs/mercurial tk rust zsh-completion
 media-libs/freetype harfbuzz png
+media-libs/harfbuzz doc
+sys-libs/libomp hwloc
 media-libs/mesa lm-sensors unwind
 media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
