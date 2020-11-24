@@ -12,7 +12,8 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">importlib-metadata</remote-id>
-		<remote-id type="gitlab">python-devs/importlib_metadata</remote-id>
-		<bugs-to>https://gitlab.com/python-devs/importlib_metadata/issues</bugs-to>
+		<remote-id type="github">python/importlib_metadata</remote-id>
+		<bugs-to>https://github.com/python/importlib_metadata/issues</bugs-to>
+		<doc>https://importlib-metadata.readthedocs.io/</doc>
 	</upstream>
 </pkgmetadata>
