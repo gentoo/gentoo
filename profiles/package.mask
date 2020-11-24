@@ -466,11 +466,6 @@ kde-apps/kdebase-meta:5
 # Removal in 14 days.  Bug #559060.
 sci-geosciences/mapnik-world-boundaries
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-10-26)
-# Depends on net-libs/zeromq-2 which is scheduled for removal.
-# Removal in 30 days.  Bug #741454.
-dev-perl/ZMQ-LibZMQ2
-
 # Michał Górny <mgorny@gentoo.org> (2020-10-24)
 # Last release in 2004, next release 'Soon(tm)'.  Fails to build
 # due to horrible code hacks.
