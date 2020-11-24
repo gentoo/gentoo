@@ -2,57 +2,55 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
-
 	inherit git-r3
+	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
 else
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
+S="${WORKDIR}/${P/_/-}"
+
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="
-	+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps +refclock
-	+rtc samba +seccomp +sechash selinux
-"
-REQUIRED_USE="
-	sechash? ( nettle )
-"
-RESTRICT=test
-CDEPEND="
-	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
-	libedit? ( dev-libs/libedit )
-	nettle? ( dev-libs/nettle:= )
-	seccomp? ( sys-libs/libseccomp )
-"
-DEPEND="
-	${CDEPEND}
-	html? ( dev-ruby/asciidoctor )
-	pps? ( net-misc/pps-tools )
-"
-RDEPEND="
-	${CDEPEND}
-	selinux? ( sec-policy/selinux-chronyd )
-"
-BDEPEND="
-	nettle? ( virtual/pkgconfig )
-"
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
-	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
-)
-S="${WORKDIR}/${P/_/-}"
+IUSE="+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps +refclock +rtc samba +seccomp +sechash selinux"
+REQUIRED_USE="sechash? ( nettle )"
+RESTRICT="test"
+
+BDEPEND="nettle? ( virtual/pkgconfig )"
 
 if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" virtual/w3m"
 fi
+
+DEPEND="
+	caps? (
+		acct-group/ntp
+		acct-user/ntp
+		sys-libs/libcap
+	)
+	libedit? ( dev-libs/libedit )
+	nettle? ( dev-libs/nettle:= )
+	seccomp? ( sys-libs/libseccomp )
+	html? ( dev-ruby/asciidoctor )
+	pps? ( net-misc/pps-tools )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-chronyd )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
+	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
+)
 
 src_prepare() {
 	default
