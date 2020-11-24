@@ -55,6 +55,10 @@
 =sys-kernel/vanilla-sources-4.14.207
 =sys-kernel/vanilla-sources-4.9.245
 =sys-kernel/vanilla-sources-4.9.244
+=sys-kernel/vanilla-kernel-5.9.10
+=sys-kernel/vanilla-kernel-5.9.9
+=sys-kernel/vanilla-kernel-5.4.79
+=sys-kernel/vanilla-kernel-5.4.78
 =sys-kernel/gentoo-kernel-5.9.10
 =sys-kernel/gentoo-kernel-5.9.9
 =sys-kernel/gentoo-kernel-5.4.79
