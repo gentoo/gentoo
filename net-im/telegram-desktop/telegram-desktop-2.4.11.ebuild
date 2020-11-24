@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+dbus enchant +gtk +hunspell libressl lto pulseaudio +spell +webrtc +X"
+IUSE="+dbus enchant +gtk +hunspell libressl lto pulseaudio +spell wayland +webrtc +X"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -26,7 +26,7 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	dev-libs/xxhash
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[dbus?,jpeg,png,wayland,X(-)?]
+	dev-qt/qtgui:5[dbus?,jpeg,png,wayland?,X(-)?]
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -57,7 +57,7 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	webrtc? (
 		media-libs/libjpeg-turbo:=
-		~media-libs/tg_owt-0_pre20201105[pulseaudio=]
+		~media-libs/tg_owt-0_pre20201112[pulseaudio=]
 	)
 "
 
@@ -128,6 +128,7 @@ src_configure() {
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
 		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell (recommended)
+		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION="$(usex wayland OFF ON)"
 		-DDESKTOP_APP_DISABLE_WEBRTC_INTEGRATION="$(usex webrtc OFF ON)"
 		-DDESKTOP_APP_USE_ENCHANT="$(usex enchant ON OFF)" # enables enchant and disables hunspell
 		$(usex lto "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON" '')

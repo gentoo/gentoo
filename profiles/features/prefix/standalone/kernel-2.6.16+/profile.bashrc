@@ -3,6 +3,10 @@
 if [[ ${CATEGORY}/${PN} == dev-util/cmake && ${EBUILD_PHASE} == configure ]]; then
     einfo "Removing utimensat outputs..."
     sed -e '/UTIMENSAT=/d' -i "${S}"/Source/kwsys/CMakeLists.txt || die
+elif [[ ${CATEGORY}/${PN} == dev-libs/libuv && ${EBUILD_PHASE} == prepare ]]; then
+    einfo "Removing CLOEXEC related functions..."
+    sed -e 's/defined(__FreeBSD__) || defined(__linux__)/0/' \
+        -i "${S}"/src/unix/process.c || die
 elif [[ ${CATEGORY}/${PN} == dev-qt/qtcore && ${EBUILD_PHASE} == configure ]]; then
     einfo "Removing pipe2 definitions..."
     sed -e '/define.*HAVE_PIPE2/d' -i "${S}"/src/3rdparty/forkfd/forkfd.c || die
@@ -19,7 +23,7 @@ elif [[ ${CATEGORY}/${PN} == sys-apps/util-linux && ${EBUILD_PHASE} == configure
     sed -r -e 's/inotify_init1\(.*\)/inotify_init\(\)/' \
 	-e '/open\(/s/\| *O_CLOEXEC//' \
 	-e 's/epoll_create1\(EPOLL_CLOEXEC/epoll_create\(1/' \
-	-i "${S}"/libmount/src/monitor.c
+	-i "${S}"/libmount/src/monitor.c || die
 fi
 
 # Local Variables:
