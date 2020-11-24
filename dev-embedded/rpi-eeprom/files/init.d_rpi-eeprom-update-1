@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Set configuration in /etc/conf.d/rpi-eeprom-update
+
+description="Raspberry Pi 4 bootloader and VL805 USB controller updater"
+command="/usr/sbin/rpi-eeprom-update"
+command_args="-a"
+
+depend() {
+	need localmount
+}
+
+stop() {
+        # Nothing to stop
+        return 0;
+}
