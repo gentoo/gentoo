@@ -652,6 +652,7 @@ app-emulation/wine-staging:gcrypt - Add support for the Diffie-Hellman key excha
 app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-staging:gssapi - Use GSSAPI (Kerberos SSP support)
 app-emulation/wine-staging:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
+app-emulation/wine-staging:mingw - Build PE files using a MinGW cross compiler
 app-emulation/wine-staging:mono - Add support for .NET using Wine's Mono add-on
 app-emulation/wine-staging:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
 app-emulation/wine-staging:opencl - Enable OpenCL support
@@ -677,6 +678,7 @@ app-emulation/wine-vanilla:faudio - Pull in app-emulation/faudio to provide XAud
 app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-vanilla:gssapi - Use GSSAPI (Kerberos SSP support)
 app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
+app-emulation/wine-vanilla:mingw - Build PE files using a MinGW cross compiler
 app-emulation/wine-vanilla:mono - Add support for .NET using Wine's Mono add-on
 app-emulation/wine-vanilla:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
 app-emulation/wine-vanilla:opencl - Enable OpenCL support
