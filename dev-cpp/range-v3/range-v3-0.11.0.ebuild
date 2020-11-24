@@ -15,7 +15,10 @@ KEYWORDS="~amd64 ~ppc64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}/0.11.0-no-werror.patch" )
+PATCHES=(
+	"${FILESDIR}/0.11.0-no-werror.patch"
+	"${FILESDIR}/0.11.0-gcc10.patch"
+)
 
 src_prepare() {
 	# header-only libraries go to arch-independent dirs
