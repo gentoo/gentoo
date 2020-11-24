@@ -12171,7 +12171,7 @@ kde-frameworks/kdav 5.74.0 5.76.0: DAV protocol implemention with KJobs
 kde-frameworks/kdbusaddons 5.74.0 5.76.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.74.0-r2 5.76.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.74.0 5.76.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.74.0 5.76.0: Framework easing the development transition from KDELibs 4 to KF 5
+kde-frameworks/kdelibs4support 5.74.0 5.76.0-r1: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.74.0 5.76.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
 kde-frameworks/kdesu 5.74.0 5.76.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.74.0 5.76.0: Framework providing KDE integration of QtWebKit
@@ -15548,7 +15548,7 @@ net-wireless/rtl_433 20.02_p20200922 9999: Decode OOK modulated signals
 net-wireless/rtl_power_fftw 0.0_p20180528 9999: power spectrum for RTLSDR dongles
 net-wireless/sdrplay 2.13.1-r1: SDRplay API/HW driver for all RSPs
 net-wireless/sigdigger 0.1.0: The free digital signal analyzer
-net-wireless/sigutils 0.1.0: signal processing library for blind signal analysis and automatic demodulation
+net-wireless/sigutils 0.1.0-r1: signal processing library for blind signal analysis and automatic demodulation
 net-wireless/soapy_power 1.6.1-r1 9999: Obtain power spectrum from SoapySDR devices
 net-wireless/soapybladerf 0.4.1 9999: Soapy SDR plugin for the Blade RF
 net-wireless/soapyhackrf 0.3.3-r1 9999: SoapySDR HackRF module
