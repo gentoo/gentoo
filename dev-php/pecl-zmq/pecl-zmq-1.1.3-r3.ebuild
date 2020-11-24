@@ -24,3 +24,5 @@ IUSE=""
 BDEPEND="virtual/pkgconfig"
 DEPEND="net-libs/zeromq"
 RDEPEND="net-libs/zeromq:="
+
+PATCHES=( "${FILESDIR}"/${PN}-1.1.3-php7-3-compatibility.patch )
