@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}.5"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="test usb_modeswitch"
+IUSE="test usb-modeswitch"
 RESTRICT="!test? ( test )"
 
 KEYWORDS="~amd64 ~x86"
@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=">=net-print/cups-2.3.0"
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
-	usb_modeswitch? ( sys-apps/usb_modeswitch )"
+	usb-modeswitch? ( sys-apps/usb_modeswitch )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0-cxxflags.patch
