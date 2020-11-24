@@ -32,6 +32,42 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
+# Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
+# Feel free to manually unmask when not using XFS.
+=sys-kernel/gentoo-sources-5.9.10
+=sys-kernel/gentoo-sources-5.9.9
+=sys-kernel/gentoo-sources-5.4.79
+=sys-kernel/gentoo-sources-5.4.78
+=sys-kernel/gentoo-sources-4.19.159
+=sys-kernel/gentoo-sources-4.19.158
+=sys-kernel/gentoo-sources-4.14.208
+=sys-kernel/gentoo-sources-4.14.207
+=sys-kernel/gentoo-sources-4.9.245
+=sys-kernel/gentoo-sources-4.9.244
+=sys-kernel/vanilla-sources-5.9.10
+=sys-kernel/vanilla-sources-5.9.9
+=sys-kernel/vanilla-sources-5.4.79
+=sys-kernel/vanilla-sources-5.4.78
+=sys-kernel/vanilla-sources-4.19.159
+=sys-kernel/vanilla-sources-4.19.158
+=sys-kernel/vanilla-sources-4.14.208
+=sys-kernel/vanilla-sources-4.14.207
+=sys-kernel/vanilla-sources-4.9.245
+=sys-kernel/vanilla-sources-4.9.244
+=sys-kernel/gentoo-kernel-5.9.10
+=sys-kernel/gentoo-kernel-5.9.9
+=sys-kernel/gentoo-kernel-5.4.79
+=sys-kernel/gentoo-kernel-5.4.78
+=sys-kernel/gentoo-kernel-bin-5.9.10-r1
+=sys-kernel/gentoo-kernel-bin-5.9.10
+=sys-kernel/gentoo-kernel-bin-5.9.9-r1
+=sys-kernel/gentoo-kernel-bin-5.9.9
+=sys-kernel/gentoo-kernel-bin-5.4.79-r1
+=sys-kernel/gentoo-kernel-bin-5.4.79
+=sys-kernel/gentoo-kernel-bin-5.4.78-r1
+=sys-kernel/gentoo-kernel-bin-5.4.78
+
 # Fabian Groffen <grobian@gentoo.org> (2020-11-23)
 # No longer used, not really functional either, noone should be using
 # this, removal in 30 days.
