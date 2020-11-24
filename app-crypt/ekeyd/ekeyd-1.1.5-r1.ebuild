@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib linux-info toolchain-funcs udev systemd
+inherit multilib linux-info toolchain-funcs udev systemd
 
 DESCRIPTION="Entropy Key userspace daemon"
 HOMEPAGE="http://www.entropykey.co.uk/"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="kernel_linux munin minimal usb"
 REQUIRED_USE="minimal? ( !munin )"
 
-EKEYD_RDEPEND="dev-lang/lua"
+EKEYD_RDEPEND="dev-lang/lua:0"
 EKEYD_DEPEND="${EKEYD_RDEPEND}"
 EKEYD_RDEPEND="${EKEYD_RDEPEND}
 	dev-lua/luasocket
@@ -23,7 +23,6 @@ EKEYD_RDEPEND="${EKEYD_RDEPEND}
 	munin? ( net-analyzer/munin )"
 
 RDEPEND="!minimal? ( ${EKEYD_RDEPEND} )
-	!app-crypt/ekey-egd-linux
 	virtual/service-manager"
 DEPEND="!minimal? ( ${EKEYD_DEPEND} )"
 
@@ -35,14 +34,14 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-const_char_usage.patch";
-	epatch "${FILESDIR}/${P}-enoent.patch";
-	epatch "${FILESDIR}/${P}-path-fixes.patch";
-	epatch "${FILESDIR}/${P}-udev-rule.patch";
-	epatch "${FILESDIR}/${P}-remove-werror.patch";
-	epatch "${FILESDIR}/${P}-misc.patch";
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-const_char_usage.patch
+	"${FILESDIR}"/${P}-enoent.patch
+	"${FILESDIR}"/${P}-path-fixes.patch
+	"${FILESDIR}"/${P}-udev-rule.patch
+	"${FILESDIR}"/${P}-remove-werror.patch
+	"${FILESDIR}"/${P}-misc.patch
+)
 
 src_compile() {
 	local osname
