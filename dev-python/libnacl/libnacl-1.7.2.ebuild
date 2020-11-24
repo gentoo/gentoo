@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=(python3_{6..9})
 inherit distutils-r1
 
@@ -15,10 +16,6 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-libs/libsodium"
 BDEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/libnacl-1.7.1-py39.patch"
-)
 
 python_test() {
 	"${EPYTHON}" -m unittest discover -v -p 'test_*.py' tests/ || die "Tests failed with ${EPYTHON}"
