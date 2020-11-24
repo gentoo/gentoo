@@ -157,25 +157,23 @@ inherit cargo
 
 DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 HOMEPAGE="https://github.com/sharkdp/bat"
-SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	$(cargo_crate_uris ${CRATES})"
+SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 CC0-1.0 ISC LGPL-3+ MIT Apache-2.0 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>=dev-libs/libgit2-0.99:=
 	dev-libs/oniguruma:=
 	sys-libs/zlib:=
 "
-
 # >app-backup/bacula-9.2[qt5] has file collisions, #686118
 RDEPEND="${DEPEND}
 	!>app-backup/bacula-9.2[qt5]
 "
-
-BDEPEND="virtual/pkgconfig"
 
 DOCS=( README.md doc/alternatives.md )
 
