@@ -27,7 +27,9 @@ RESTRICT="test"
 BDEPEND="nettle? ( virtual/pkgconfig )"
 
 if [[ ${PV} == "9999" ]]; then
+	# Needed for doc generation in 9999
 	BDEPEND+=" virtual/w3m"
+	REQUIRED_USE+=" html"
 fi
 
 DEPEND="
