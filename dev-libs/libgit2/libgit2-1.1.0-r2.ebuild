@@ -12,16 +12,17 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S=${WORKDIR}/${P/_/-}
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/1.0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~ppc-macos"
+SLOT="0/1.1"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~ppc-macos"
 IUSE="examples gssapi libressl +ssh test +threads trace"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/libpcre:=
+	net-libs/http-parser:=
+	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	sys-libs/zlib
-	net-libs/http-parser:=
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )
 "
