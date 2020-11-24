@@ -3,20 +3,19 @@
 
 EAPI=7
 
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="encoder and decoder of the ITU G729 Annex A/B speech codec"
 HOMEPAGE="https://github.com/BelledonneCommunications/bcg729"
-EGIT_REPO_URI="https://github.com/BelledonneCommunications/bcg729"
+SRC_URI="https://github.com/BelledonneCommunications/bcg729/archive/${PV/_/-}.tar.gz \
+		-> ${P}.tar.gz"
 S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-3"
 SLOT="0"
-RDEPEND="!media-plugins/mediastreamer-bcg729"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.3.0_beta-cmake-build.patch
-)
+RDEPEND="!media-plugins/mediastreamer-bcg729"
 
 src_install() {
 	cmake_src_install
