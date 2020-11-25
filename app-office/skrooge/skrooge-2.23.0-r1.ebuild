@@ -5,8 +5,8 @@ EAPI=7
 
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
-KFMIN=5.60.0
-QTMIN=5.12.3
+KFMIN=5.74.0
+QTMIN=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
@@ -20,16 +20,14 @@ fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="activities designer kde ofx"
-
-REQUIRED_USE="test? ( designer )"
+IUSE="activities kde ofx"
 
 BDEPEND="
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
 COMMON_DEPEND="
-	app-crypt/qca:2[qt5(+)]
+	>=app-crypt/qca-2.3.0:2
 	dev-db/sqlcipher
 	dev-libs/grantlee:5
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -71,23 +69,19 @@ DEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	designer? (
-		>=dev-qt/designer-${QTMIN}:5
-		>=kde-frameworks/kdesignerplugin-${KFMIN}:5
-	)
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 "
 
-# hangs + installs files
+# hangs + installs files (also requires KF5DesignerPlugin)
 RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
 		-DSKG_WEBENGINE=ON
+		-DSKG_DESIGNER=OFF
 		$(cmake_use_find_package activities KF5Activities)
-		-DSKG_DESIGNER=$(usex designer)
 		$(cmake_use_find_package kde KF5Runner)
 		$(cmake_use_find_package ofx LibOfx)
 		-DSKG_BUILD_TEST=$(usex test)
