@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils desktop python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit cmake desktop python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 MAIN_PV=$(ver_cut 0-1)
 MAJOR_PV=$(ver_cut 1-2)
@@ -122,7 +122,7 @@ src_prepare() {
 	# Bug #661812
 	mkdir -p Plugins/StreamLinesRepresentation/doc || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# lib64 fixes
 	sed -i \
@@ -223,11 +223,11 @@ src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 		# remove wrapper binaries and put the actual executable in place
 		for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
