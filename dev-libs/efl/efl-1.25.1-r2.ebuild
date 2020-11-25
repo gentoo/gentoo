@@ -11,17 +11,17 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
-IUSE="+X bmp connman cpu_flags_arm_neon dds debug doc drm +eet elogind examples
-	fbcon +fontconfig fribidi gif gles2-only gnutls glib +gstreamer harfbuzz
-	hyphen ibus ico libressl lua +luajit jpeg2k json nls mono opengl +pdf
-	physics pmaps postscript psd pulseaudio raw scim sdl +sound +ssl +svg
-	+system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf xim
-	xpm xpresent zeroconf"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
+IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug doc drm +eet efl-one elogind examples fbcon
+	+fontconfig fribidi gif gles2-only gnutls glib +gstreamer harfbuzz hyphen ibus ico libressl
+	lua +luajit jpeg2k json nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim
+	sdl +sound +ssl +svg +system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf
+	xim xpm xpresent zeroconf"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
 	?? ( gles2-only opengl )
+	?? ( fbcon tslib )
 	^^ ( lua luajit )
 	ssl
 	drm? ( gles2-only )
@@ -61,6 +61,7 @@ RDEPEND="
 		x11-libs/libXScrnSaver
 		wayland? ( x11-libs/libxkbcommon[X] )
 	)
+	avif? ( media-libs/libavif )
 	connman? ( net-misc/connman )
 	drm? (
 		dev-libs/libinput
@@ -130,12 +131,18 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	nls? ( sys-devel/gettext )"
 
+pkg_setup() {
+	# Deprecated, provided for backward-compatibility. Everything is moved to libefreet.so.
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libefreet_trash.so.1.25.1
+		/usr/$(get_libdir)/libefreet_mime.so.1.25.1"
+}
+
 src_prepare() {
 	default
 
 	# Remove automagic unwind configure option, #743154
 	if ! use unwind; then
-		sed -i "/config_h.set('HAVE_UNWIND/,/eina_deps += unwind/d" src/lib/eina/meson.build ||
+		sed -i "/config_h.set('HAVE_UNWIND/,/eina_ext_deps += unwind/d" src/lib/eina/meson.build ||
 			die "Failed to remove libunwind dep"
 	fi
 }
@@ -165,7 +172,6 @@ src_configure() {
 		$(meson_use X x11)
 		$(meson_use debug debug-threads)
 		$(meson_use drm)
-		$(meson_use elogind)
 		$(meson_use examples build-examples)
 		$(meson_use fbcon fb)
 		$(meson_use fontconfig)
@@ -180,7 +186,6 @@ src_configure() {
 		$(meson_use pulseaudio)
 		$(meson_use sdl)
 		$(meson_use sound audio)
-		$(meson_use systemd)
 		$(meson_use tslib)
 		$(meson_use v4l v4l2)
 		$(meson_use vnc vnc-server)
@@ -190,6 +195,12 @@ src_configure() {
 
 		$(meson_use !system-lz4 embedded-lz4)
 	)
+
+	if use elogind || use systemd; then
+		emesonargs+=( -D systemd=true )
+	else
+		emesonargs+=( -D systemd=false )
+	fi
 
 	if use opengl; then
 		emesonargs+=( -D opengl=full )
@@ -212,6 +223,7 @@ src_configure() {
 	fi
 
 	local disabledEvasLoaders=""
+	! use avif && disabledEvasLoaders="avif,"
 	! use bmp && disabledEvasLoaders+="bmp,wbmp,"
 	! use dds && disabledEvasLoaders+="dds,"
 	! use eet && disabledEvasLoaders+="eet,"
@@ -242,7 +254,7 @@ src_configure() {
 	emesonargs+=( -D ecore-imf-loaders-disabler="${disabledImfLoaders}" )
 
 	local bindingsList="cxx,"
-	use luajit && bindingsList+="luajit,"
+	use luajit && bindingsList+="lua,"
 	use mono && bindingsList+="mono,"
 	[[ ! -z "$bindingsList" ]] && bindingsList=${bindingsList::-1}
 	emesonargs+=( -D bindings="${bindingsList}" )
