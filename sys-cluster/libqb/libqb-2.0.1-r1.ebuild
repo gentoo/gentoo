@@ -41,6 +41,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-static \
+		--with-socket-dir=/run \
 		$(use_enable systemd systemd-journal) \
 		$(use_enable debug)
 }
