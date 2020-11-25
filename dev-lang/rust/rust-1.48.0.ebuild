@@ -58,7 +58,7 @@ LLVM_DEPEND="
 "
 LLVM_MAX_SLOT=11
 
-# to bootstrap we need at least exactly previos version, or same.
+# to bootstrap we need at least exactly previous version, or same.
 # most of the time previous versions fail to bootstrap with newer
 # for example 1.47.x, requires at least 1.46.x, 1.47.x is ok,
 # but it fails to bootstrap with 1.48.x
