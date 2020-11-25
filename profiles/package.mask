@@ -466,19 +466,6 @@ kde-apps/kdebase-meta:5
 # Removal in 14 days.  Bug #559060.
 sci-geosciences/mapnik-world-boundaries
 
-# Wiliam Hubbs <williamh@gentoo.org> (2020-10-26)
-# Combining kubernetes into one package breaks upgrades, so it is split
-# into separate packages. You need to upgrade and install the following
-# packages based on the needs of your cluster:
-#
-# sys-cluster/kubeadm, sys-cluster/kube-apiserver
-# sys-cluster/kube-controller-manager, sys-cluster/kubectl
-# sys-cluster/kubelet, sys-cluster/kube-proxy
-# sys-cluster/kube-scheduler
-#
-# This package is being removed in 30 days. bug #741572
-sys-cluster/kubernetes
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-26)
 # Depends on net-libs/zeromq-3 which is scheduled for removal.
 # Removal in 30 days.  Bug #741454.
