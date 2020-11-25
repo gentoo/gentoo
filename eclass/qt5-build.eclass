@@ -112,10 +112,9 @@ BDEPEND="
 if [[ ${PN} != qttest ]]; then
 	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 fi
-RDEPEND="
-	dev-qt/qtchooser
-"
-
+if ver_test ${PV} -lt 5.15.2; then
+	RDEPEND+=" dev-qt/qtchooser"
+fi
 
 ######  Phase functions  ######
 

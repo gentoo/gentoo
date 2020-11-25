@@ -156,10 +156,6 @@ sys-libs/glibc systemtap
 app-forensics/sleuthkit java
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=redis that is masked in this profile.
-mail-filter/pyzor test
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=systemd that is masked in this profile.
 net-wireless/bluez user-session
 
