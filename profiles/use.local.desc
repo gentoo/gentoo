@@ -8033,13 +8033,6 @@ sys-cluster/keepalived:regex - compile with support for regex in health checks
 sys-cluster/kronosnet:lzo2 - Add support for lzo2 compression
 sys-cluster/kronosnet:nss - Add support for tls via nss
 sys-cluster/kronosnet:openssl - Add support for tls via openssl
-sys-cluster/kubernetes:kube-apiserver - Kubernetes API server
-sys-cluster/kubernetes:kube-controller-manager - Kubernetes controller manager
-sys-cluster/kubernetes:kube-proxy - Kubernetes proxy service
-sys-cluster/kubernetes:kube-scheduler - Kubernetes scheduler
-sys-cluster/kubernetes:kubeadm - CLI to bootstrap a secure Kubernetes cluster
-sys-cluster/kubernetes:kubectl - CLI to run commands against Kubernetes clusters
-sys-cluster/kubernetes:kubelet - Kubernetes node agent
 sys-cluster/legion:gasnet - Enable GASNet lib support
 sys-cluster/legion:hwloc - Enable HWLoc lib support
 sys-cluster/lustre:client - Enable kernel client modules
