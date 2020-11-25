@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shlomif/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 src_configure() {
 	local mycmakeargs=(
