@@ -66,8 +66,9 @@ src_configure() {
 
 src_install() {
 	default
-	newconfd "${FILESDIR}"/${PN}-confd ${PN}
-	newinitd "${FILESDIR}"/${PN}-initd ${PN}
-	keepdir /var/{lib,run}/${PN} /var/log
-	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+	newconfd "${FILESDIR}"/${PN}-confd-r1 ${PN}
+	newinitd "${FILESDIR}"/${PN}-initd-r1 ${PN}
+	keepdir /var/lib/${PN} /var/log
+	rm -rf "${ED}"/var/run || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
