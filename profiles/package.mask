@@ -33,6 +33,14 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
+# KF5 PortingAids (from kdelibs4) without any remaining revdeps. Bug #755956
+# Masked for removal in 30 days.
+kde-frameworks/kdewebkit
+kde-frameworks/kjsembed
+kde-frameworks/kmediaplayer
+kde-frameworks/kxmlrpcclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
 # Ddepends on deprecated dev-qt/qtwebkit and kde-frameworks/kdewebkit.
 # Barely maintained upstream and on the brink of being archived for good.
 # Patch for Qt5WebEngine exists but needs runtime testing, bug #756685
