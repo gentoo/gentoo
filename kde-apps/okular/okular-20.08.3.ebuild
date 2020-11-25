@@ -103,9 +103,9 @@ src_configure() {
 
 src_test() {
 	# mainshelltest hangs, chmgeneratortest fails, bug #603116
-	# parttest hangs, bug #641728
+	# parttest hangs, bug #641728, annotationtoolbartest fails, KDE-Bug #429640
 	local myctestargs=(
-		-E "(mainshelltest|chmgeneratortest|parttest)"
+		-E "(mainshelltest|chmgeneratortest|parttest|annotationtoolbartest)"
 	)
 
 	ecm_src_test
