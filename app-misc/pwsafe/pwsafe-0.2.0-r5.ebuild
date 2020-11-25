@@ -9,7 +9,7 @@ SRC_URI="https://web.archive.org/web/20171006105548if_/http://nsd.dyndns.org/pws
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="X libressl readline"
 
