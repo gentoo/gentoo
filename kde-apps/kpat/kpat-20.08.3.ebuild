@@ -9,6 +9,7 @@ KDE_SELINUX_MODULE="games"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.74.0
 QTMIN=5.15.1
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE patience game"
