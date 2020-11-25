@@ -100,8 +100,8 @@ DEPEND="
 # we need to block older versions due to layout changes.
 RDEPEND="${DEPEND}
 	app-eselect/eselect-rust
-	!<dev-lang/rust-1.47.0-r1
-	!<dev-lang/rust-bin-1.47.0-r1
+	!<dev-lang/rust-1.46.0
+	!<dev-lang/rust-bin-1.46.0
 "
 
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
@@ -135,7 +135,7 @@ PATCHES=(
 	"${FILESDIR}"/1.46.0-don-t-create-prefix-at-time-of-check.patch
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.47.0-llvm-tensorflow-fix.patch
-	"${FILESDIR}"/1.48.0-gentoo-musl-target-specs.patch
+	"${FILESDIR}"/gentoo-musl-target-specs.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
@@ -232,7 +232,7 @@ src_configure() {
 		if use system-llvm; then
 			# un-hardcode rust-lld linker for this target
 			# https://bugs.gentoo.org/715348
-			sed -i '/linker:/ s/rust-lld/wasm-ld/' compiler/rustc_target/src/spec/wasm32_base.rs || die
+			sed -i '/linker:/ s/rust-lld/wasm-ld/' src/librustc_target/spec/wasm32_base.rs || die
 		fi
 	fi
 	rust_targets="${rust_targets#,}"
