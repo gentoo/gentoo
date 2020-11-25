@@ -14979,7 +14979,7 @@ net-misc/asterisk-opus 13.0.1.3.0 16.0.1.3.0: OPUS codec and supporting files fo
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4g: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.7 9999: Automatic open port forwarder using UPnP
-net-misc/axel 2.17.8 2.17.9: Light Unix download accelerator
+net-misc/axel 2.17.8 2.17.9 2.17.10: Light Unix download accelerator
 net-misc/babeld 1.8.2 1.9.1: a loop-free distance-vector routing protocol
 net-misc/balance 3.57: TCP Load Balancing Port Forwarder
 net-misc/batctl 2020.4: BATMAN advanced control and management tool
