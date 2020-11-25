@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-11-25)
+# Temporary mask to fix tree breakage
+# Dependency x11-libs/pangox-compat does not exist
+=net-misc/anydesk-6.0.1
+
 # Marek Szuba <marecki@gentoo.org> (2020-11-24)
 # No releases since 2008, deprecated upstream in favour of dev-lua/ldoc,
 # unmaintained, no revdeps. Removal in 30 days (Bug #756343).
