@@ -5,6 +5,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">openstack/os-vif</remote-id>
 		<remote-id type="pypi">os-vif</remote-id>
