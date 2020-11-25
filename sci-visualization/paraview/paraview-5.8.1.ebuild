@@ -109,8 +109,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8.0-w-vtk-8.2.0-qt-5.15.patch # bug 729348
 )
 
-CMAKE_MAKEFILE_GENERATOR="emake" #579474
-
 pkg_setup() {
 	[[ ${MERGE_TYPE} != "binary" ]] && use openmp && tc-check-openmp
 	use python && python-single-r1_pkg_setup
