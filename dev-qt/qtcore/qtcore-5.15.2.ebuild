@@ -26,6 +26,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!<dev-qt/qtcore-4.8.7-r4:4
+	dev-qt/qtchooser
 "
 
 QT5_TARGET_SUBDIRS=(

@@ -23,7 +23,9 @@ DEPEND="
 	~dev-qt/qtxml-${PV}
 	declarative? ( ~dev-qt/qtdeclarative-${PV}[widgets] )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 src_prepare() {
 	qt_use_disable_mod declarative quickwidgets \

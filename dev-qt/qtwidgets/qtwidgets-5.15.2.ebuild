@@ -25,7 +25,9 @@ DEPEND="
 		x11-libs/pango
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/tools/uic

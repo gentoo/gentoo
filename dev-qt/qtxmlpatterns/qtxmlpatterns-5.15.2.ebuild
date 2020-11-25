@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit qt5-build
 
 DESCRIPTION="XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework"
@@ -17,7 +18,9 @@ DEPEND="
 	~dev-qt/qtnetwork-${PV}
 	qml? ( ~dev-qt/qtdeclarative-${PV} )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 src_prepare() {
 	qt_use_disable_mod qml qml \

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-any-r1 qt5-build
 
@@ -23,7 +24,9 @@ DEPEND="
 	localstorage? ( ~dev-qt/qtsql-${PV} )
 	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2-only=] )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
