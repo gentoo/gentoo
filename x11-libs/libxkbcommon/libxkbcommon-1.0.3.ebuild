@@ -26,6 +26,7 @@ BDEPEND="
 RDEPEND="
 	X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP},xkb] )
 	dev-libs/libxml2[${MULTILIB_USEDEP}]
+	x11-misc/compose-tables
 "
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
