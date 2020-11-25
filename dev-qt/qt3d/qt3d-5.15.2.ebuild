@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit qt5-build
 
 DESCRIPTION="3D rendering module for the Qt5 framework"
@@ -13,7 +14,7 @@ fi
 # TODO: tools
 IUSE="gamepad gles2-only qml vulkan"
 
-RDEPEND="
+COMMON_DEPEND="
 	~dev-qt/qtconcurrent-${PV}
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtgui-${PV}:5=[vulkan=]
@@ -22,8 +23,11 @@ RDEPEND="
 	gamepad? ( ~dev-qt/qtgamepad-${PV} )
 	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2-only=] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	vulkan? ( dev-util/vulkan-headers )
+"
+RDEPEND="${COMMON_DEPEND}
+	dev-qt/qtchooser
 "
 
 src_prepare() {

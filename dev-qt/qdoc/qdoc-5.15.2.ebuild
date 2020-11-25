@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 QT5_MODULE="qttools"
 inherit qt5-build
 
@@ -18,7 +19,9 @@ DEPEND="
 	sys-devel/clang:=
 	qml? ( ~dev-qt/qtdeclarative-${PV} )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 src_prepare() {
 	qt_use_disable_mod qml qmldevtools-private \

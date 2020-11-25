@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 QT5_MODULE="qttools"
 inherit qt5-build
 
@@ -20,7 +21,9 @@ DEPEND="
 	~dev-qt/qtsql-${PV}[sqlite]
 	~dev-qt/qtwidgets-${PV}
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/assistant/help

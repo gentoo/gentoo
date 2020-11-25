@@ -17,7 +17,9 @@ DEPEND="
 	~dev-qt/qtcore-${PV}:5=
 	>=sys-apps/dbus-1.4.20
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/dbus

@@ -26,7 +26,7 @@ REQUIRED_USE="
 	X? ( gles2-only? ( egl ) )
 "
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-libs/glib:2
 	~dev-qt/qtcore-${PV}:5=
 	dev-util/gtk-update-icon-cache
@@ -66,9 +66,12 @@ RDEPEND="
 		x11-libs/xcb-util-wm
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	evdev? ( sys-kernel/linux-headers )
 	udev? ( sys-kernel/linux-headers )
+"
+RDEPEND="${COMMON_DEPEND}
+	dev-qt/qtchooser
 "
 PDEPEND="
 	ibus? ( app-i18n/ibus )

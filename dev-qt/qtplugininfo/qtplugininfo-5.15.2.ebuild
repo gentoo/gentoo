@@ -16,4 +16,6 @@ IUSE=""
 DEPEND="
 	~dev-qt/qtcore-${PV}
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
