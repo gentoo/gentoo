@@ -132,10 +132,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use qt5; then
-		export QT_SELECT=qt5
-	fi
-
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_LIBDIR="${PVLIBDIR}"
 		-UBUILD_SHARED_LIBS
