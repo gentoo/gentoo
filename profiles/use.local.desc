@@ -5859,6 +5859,7 @@ net-im/vacuum:urlprocessor - Allows other plugins to load data from custom types
 net-im/vacuum:vcard - Enable obtaining peer's personal contact information
 net-im/vacuum:xmppuriqueries - Allow other plugins to handle XMPP URI queries
 net-im/zoom:bundled-libjpeg-turbo - Use bundled libturbojpeg instead of media-libs/libjpeg-turbo
+net-im/zoom:bundled-qt - Use bundled Qt and icu instead of system-wide libs
 net-irc/anope:ldap - Build LDAP modules for e.g. opertypes
 net-irc/anope:sql - Build modules which require SQL
 net-irc/anope:ssl - Provide SSL services using OpenSSL
