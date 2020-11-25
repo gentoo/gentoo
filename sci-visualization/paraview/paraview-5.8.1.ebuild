@@ -118,7 +118,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-
 	# Bug #661812
 	mkdir -p Plugins/StreamLinesRepresentation/doc || die
 
@@ -229,27 +228,27 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-		# remove wrapper binaries and put the actual executable in place
-		for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
-			if [ -f "${ED}"/usr/lib/"$i" ]; then
-				mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
-			fi
-		done
+	# remove wrapper binaries and put the actual executable in place
+	for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
+		if [ -f "${ED}"/usr/lib/"$i" ]; then
+			mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
+		fi
+	done
 
-		# set up the environment
-		echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
-		doenvd "${T}"/40${PN}
+	# set up the environment
+	echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
+	doenvd "${T}"/40${PN}
 
-		newicon "${S}"/Clients/ParaView/pvIcon-96x96.png paraview.png
-		make_desktop_entry paraview "Paraview" paraview
+	newicon "${S}"/Clients/ParaView/pvIcon-96x96.png paraview.png
+	make_desktop_entry paraview "Paraview" paraview
 
-		use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
-	}
+	use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
+}
 
-	pkg_postinst() {
-		xdg_icon_cache_update
-	}
+pkg_postinst() {
+	xdg_icon_cache_update
+}
 
-	pkg_postrm() {
-		xdg_icon_cache_update
-	}
+pkg_postrm() {
+	xdg_icon_cache_update
+}
