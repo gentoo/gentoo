@@ -58,9 +58,9 @@ fnv-1.0.7
 fuchsia-cprng-0.1.1
 generic-array-0.12.3
 getrandom-0.1.15
-git2-0.13.11
+git2-0.13.12
 glob-0.3.0
-globset-0.4.5
+globset-0.4.6
 hashbrown-0.9.1
 hermit-abi-0.1.16
 idna-0.2.0
@@ -69,8 +69,8 @@ itoa-0.4.6
 jobserver-0.1.21
 lazycell-1.3.0
 lazy_static-1.4.0
-libc-0.2.80
-libgit2-sys-0.12.13+1.0.1
+libc-0.2.78
+libgit2-sys-0.12.14+1.1.0
 libz-sys-1.1.2
 line-wrap-0.1.1
 linked-hash-map-0.5.3
@@ -117,7 +117,7 @@ semver-parser-0.10.0
 serde-1.0.117
 serde_derive-1.0.117
 serde_json-1.0.58
-serde_yaml-0.8.13
+serde_yaml-0.8.14
 sha-1-0.8.2
 shell-words-1.0.0
 std_prelude-0.2.12
