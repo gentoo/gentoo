@@ -20,12 +20,21 @@ HOMEPAGE="https://github.com/aarond10/https_dns_proxy"
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="dev-libs/libev
+RDEPEND="
+	dev-libs/libev
 	net-dns/c-ares
 	net-misc/curl[http2,ssl]"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_GTest=ON
+		-DCLANG_TIDY_EXE=OFF
+	)
+	cmake_src_configure
+}
 
 src_install() {
 	cmake_src_install
-	dobin "${WORKDIR}/${P}_build/https_dns_proxy"
+	dobin "${BUILD_DIR}"/https_dns_proxy
 }
