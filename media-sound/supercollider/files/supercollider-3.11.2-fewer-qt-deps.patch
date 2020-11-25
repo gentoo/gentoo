@@ -1,0 +1,129 @@
+From 063f9a48300b0c1d0132f6e0448ca724ad9e7474 Mon Sep 17 00:00:00 2001
+From: Hector Martin <marcan@marcan.st>
+Date: Mon, 1 Jun 2020 18:43:08 +0900
+Subject: [PATCH] Remove spurious Qt dependencies
+
+---
+ QtCollider/CMakeLists.txt     | 10 +++-------
+ QtCollider/widgets/QcCanvas.h |  2 --
+ README_LINUX.md               |  6 +++---
+ README_RASPBERRY_PI.md        |  2 +-
+ editors/sc-ide/CMakeLists.txt | 13 +++----------
+ 5 files changed, 10 insertions(+), 23 deletions(-)
+
+diff --git a/QtCollider/CMakeLists.txt b/QtCollider/CMakeLists.txt
+index de38afb90..6b9437b9c 100644
+--- a/QtCollider/CMakeLists.txt
++++ b/QtCollider/CMakeLists.txt
+@@ -7,19 +7,15 @@ option(SC_USE_QTWEBENGINE "Build with Qt WebEngine." ON)
+ set(
+   QT_COMPONENTS
+   Core
+-  Widgets
++  Gui
+   Network
+   PrintSupport
+-  OpenGL
+-  Quick
+-  Qml
+-  Sql
+   Svg
++  Widgets
+ )
+ 
+ set (QT_COLLIDER_LIBS
+-  Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::PrintSupport
+-  Qt5::Quick Qt5::Qml Qt5::Sql Qt5::OpenGL Qt5::Svg
++  Qt5::Core Qt5::Gui Qt5::Network Qt5::PrintSupport Qt5::Svg Qt5::Widgets
+   ${MATH_LIBRARY})
+ 
+ if(SC_USE_QTWEBENGINE)
+diff --git a/QtCollider/widgets/QcCanvas.h b/QtCollider/widgets/QcCanvas.h
+index 3acb00fc2..ff230b813 100644
+--- a/QtCollider/widgets/QcCanvas.h
++++ b/QtCollider/widgets/QcCanvas.h
+@@ -28,9 +28,7 @@
+ #include <QBasicTimer>
+ #include <QTime>
+ #include <QPalette>
+-#include <QGLWidget>
+ 
+-// using QcCanvasBase = QGLWidget;
+ using QcCanvasBase = QWidget;
+ 
+ class QcCanvas : public QcCanvasBase {
+diff --git a/README_LINUX.md b/README_LINUX.md
+index 0e9577637..7b728a9ba 100644
+--- a/README_LINUX.md
++++ b/README_LINUX.md
+@@ -78,7 +78,7 @@ Depending on your Debian flavor and version, your distribution's PPA may be stuc
+ 
+ If this displays version 5.7 or later, installing Qt is easy:
+ 
+-    sudo apt-get install qt5-default qt5-qmake qttools5-dev qttools5-dev-tools qtdeclarative5-dev qtwebengine5-dev libqt5svg5-dev libqt5websockets5-dev
++    sudo apt-get install qt5-default qt5-qmake qttools5-dev qttools5-dev-tools qtwebengine5-dev libqt5svg5-dev libqt5websockets5-dev
+ 
+ If you are on Ubuntu 14.04 (Trusty) or 16.04 (Xenial), check the next section. Otherwise, you will have to use the official Qt installer. Sorry.
+ 
+@@ -90,13 +90,13 @@ On Xenial:
+ 
+     sudo apt-add-repository ppa:beineri/opt-qt-5.11.0-xenial
+     sudo apt-get update
+-    sudo apt-get install qt511base qt511location qt511declarative qt511tools qt511webchannel qt511xmlpatterns qt511svg qt511webengine qt511websockets
++    sudo apt-get install qt511base qt511location qt511tools qt511webchannel qt511xmlpatterns qt511svg qt511webengine qt511websockets
+ 
+ On Trusty, only Qt 5.10 and below are available:
+ 
+     sudo apt-add-repository ppa:beineri/opt-qt-5.10.1-trusty
+     sudo apt-get update
+-    sudo apt-get install qt510base qt510location qt510declarative qt510tools qt510webchannel qt510xmlpatterns qt510svg qt510webengine qt510websockets
++    sudo apt-get install qt510base qt510location qt510tools qt510webchannel qt510xmlpatterns qt510svg qt510webengine qt510websockets
+ 
+ [Stephan Binner's Launchpad PPAs]: https://launchpad.net/~beineri
+ 
+diff --git a/README_RASPBERRY_PI.md b/README_RASPBERRY_PI.md
+index 0e89e26fc..7835fd25d 100644
+--- a/README_RASPBERRY_PI.md
++++ b/README_RASPBERRY_PI.md
+@@ -42,7 +42,7 @@ Install required libraries:
+     # For GUI builds:
+     sudo apt-get install libjack-jackd2-dev libsndfile1-dev libasound2-dev libavahi-client-dev \
+         libreadline-dev libfftw3-dev libxt-dev libudev-dev libncurses5-dev cmake git qttools5-dev qttools5-dev-tools \
+-        qtdeclarative5-dev libqt5svg5-dev qjackctl
++        qtbase5-dev libqt5svg5-dev qjackctl
+     # For GUI-less builds:
+     sudo apt-get install libsamplerate0-dev libsndfile1-dev libasound2-dev libavahi-client-dev \
+         libreadline-dev libfftw3-dev libudev-dev libncurses5-dev cmake git
+diff --git a/editors/sc-ide/CMakeLists.txt b/editors/sc-ide/CMakeLists.txt
+index 2ff4de774..5f9c1e64b 100644
+--- a/editors/sc-ide/CMakeLists.txt
++++ b/editors/sc-ide/CMakeLists.txt
+@@ -6,22 +6,15 @@ set(QT_IDE_COMPONENTS
+     Concurrent
+     Core
+     LinguistTools
+-    # OpenGL
+-    PrintSupport
+-    Qml
+-    Quick
+-    Sql
++    Network
+     Widgets
+ )
+ 
+ set(QT_IDE_LIBRARIES
+     Qt5::Concurrent
+     Qt5::Core
+-    # Qt5::OpenGL
+-    Qt5::PrintSupport
+-    Qt5::Qml
+-    Qt5::Quick
+-    Qt5::Sql
++    Qt5::Network
++    Qt5::Widgets
+ )
+ 
+ if(SC_USE_QTWEBENGINE)
+-- 
+2.26.2
+
