@@ -3,19 +3,18 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic git-r3
+inherit cmake git-r3
 
 EGIT_REPO_URI="https://github.com/openstreetmap/${PN}.git"
 
 DESCRIPTION="Converts OSM planet.osm data to a PostgreSQL/PostGIS database"
-HOMEPAGE="https://wiki.openstreetmap.org/wiki/Osm2pgsql
-	https://github.com/openstreetmap/osm2pgsql"
+HOMEPAGE="https://osm2pgsql.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+lua"
+IUSE="+lua luajit"
 
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -24,6 +23,7 @@ COMMON_DEPEND="
 	sci-libs/proj:=
 	sys-libs/zlib
 	lua? ( dev-lang/lua:= )
+	luajit? ( dev-lang/luajit:= )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
@@ -36,9 +36,9 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 src_configure() {
-	append-cppflags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1
 	local mycmakeargs=(
 		-DWITH_LUA=$(usex lua)
+		-DWITH_LUAJIT=$(usex luajit)
 		-DBUILD_TESTS=OFF
 	)
 	cmake_src_configure

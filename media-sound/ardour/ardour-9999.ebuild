@@ -24,13 +24,13 @@ SLOT="6"
 IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
-	>=dev-cpp/glibmm-2.32.0
-	>=dev-cpp/gtkmm-2.16:2.4
-	>=dev-cpp/libgnomecanvasmm-2.26:2.6
+	dev-cpp/glibmm
+	dev-cpp/gtkmm:2.4
+	dev-cpp/libgnomecanvasmm:2.6
 	dev-libs/boost:=
-	>=dev-libs/glib-2.10.1:2
+	dev-libs/glib:2
 	dev-libs/libsigc++:2
-	>=dev-libs/libxml2-2.6:2
+	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
@@ -39,29 +39,29 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/libart_lgpl
 	media-libs/liblo
-	>=media-libs/liblrdf-0.4.0-r20
-	>=media-libs/libsamplerate-0.1
-	>=media-libs/libsndfile-1.0.18
-	>=media-libs/libsoundtouch-1.6.0
+	media-libs/liblrdf
+	media-libs/libsamplerate
+	media-libs/libsndfile
+	media-libs/libsoundtouch
 	media-libs/raptor:2
-	>=media-libs/rubberband-1.6.0
-	>=media-libs/taglib-1.7
+	media-libs/rubberband
+	media-libs/taglib
 	media-libs/vamp-plugin-sdk
 	net-misc/curl
 	sys-libs/readline:0=
 	sci-libs/fftw:3.0[threads]
 	virtual/libusb:1
 	x11-libs/cairo
-	>=x11-libs/gtk+-2.8.1:2
+	x11-libs/gtk+:2
 	x11-libs/pango
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	>=media-libs/suil-0.6.10
-	>=media-libs/lv2-1.4.0"
-#	!bundled-libs? ( media-sound/fluidsynth ) at leat libltc is missing to be able to unbundle...
+	media-libs/suil
+	media-libs/lv2"
+#	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}

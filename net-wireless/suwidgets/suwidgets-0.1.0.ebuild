@@ -23,6 +23,14 @@ BDEPEND=""
 
 S="${WORKDIR}/SuWidgets-${PV}"
 
+src_prepare() {
+	sed -i '/^#include <QPainter>/i #include <QPainterPath>' Waveform.cpp Waterfall.cpp	\
+		Transition.cpp SymView.cpp QVerticalLabel.cpp LCD.cpp Histogram.cpp \
+		Constellation.cpp ColorChooserButton.cpp
+
+	default
+}
+
 src_configure() {
 	eqmake5 SuWidgetsLib.pro
 }

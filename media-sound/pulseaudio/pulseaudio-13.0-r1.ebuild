@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd udev multilib-minimal
+inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd toolchain-funcs udev multilib-minimal
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -197,10 +197,11 @@ multilib_src_configure() {
 	)
 
 	if use elogind && multilib_is_native_abi; then
+		local PKGCONFIG="$(tc-getPKG_CONFIG)"
 		myconf+=(
 			--enable-systemd-login
-			SYSTEMDLOGIN_CFLAGS=`pkg-config --cflags "libelogind" 2>/dev/null`
-			SYSTEMDLOGIN_LIBS=`pkg-config --libs "libelogind" 2>/dev/null`
+			SYSTEMDLOGIN_CFLAGS="$(${PKGCONFIG} --cflags "libelogind" 2>/dev/null)"
+			SYSTEMDLOGIN_LIBS="$(${PKGCONFIG} --libs "libelogind" 2>/dev/null)"
 		)
 	fi
 

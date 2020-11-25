@@ -29,7 +29,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 	examples? ( eet svg )
 	gles2-only? ( || ( wayland X ) )
 	pulseaudio? ( sound )
-	wayland? ( gles2-only !opengl || ( elogind systemd ) )
+	wayland? ( gles2-only !opengl )
 	xim? ( X )
 	xpresent? ( X )"
 

@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # The 'libck.so' has a name collision.
 # See #616762 for more information.
@@ -30,11 +30,11 @@ PATCHES=(
 
 src_configure() {
 	tc-export AR CC LD
-	export PROFILE="x86$(usex amd64 '_64' '')"
+	$(usex x86 'export PROFILE=x86' '')
 
 	local myeconfargs=(
 		"--disable-static"
 	)
 
-	GZIP="" $(usex x86 'PROFILE=x86' '') econf ${myeconfargs[@]}
+	GZIP="" econf ${myeconfargs[@]}
 }

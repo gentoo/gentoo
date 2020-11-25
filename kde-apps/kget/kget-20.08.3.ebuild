@@ -7,6 +7,7 @@ ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
 KFMIN=5.74.0
 QTMIN=5.15.1
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Advanced download manager by KDE"
@@ -14,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/en/kget"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="bittorrent gpg kde mms sqlite"
 
 RDEPEND="

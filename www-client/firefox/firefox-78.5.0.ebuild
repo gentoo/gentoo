@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-78esr-patches-06.tar.xz"
+FIREFOX_PATCHSET="firefox-78esr-patches-07.tar.xz"
 
 LLVM_MAX_SLOT=11
 
@@ -864,7 +864,7 @@ src_install() {
 	# xpcshell is getting called during install
 	pax-mark m \
 		"${BUILD_DIR}"/dist/bin/xpcshell \
-		"${BUILD_DIR}"/dist/bin/firefox \
+		"${BUILD_DIR}"/dist/bin/${PN} \
 		"${BUILD_DIR}"/dist/bin/plugin-container
 
 	DESTDIR="${D}" ./mach install || die

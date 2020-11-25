@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit latex-package
+inherit eapi8-dosym latex-package
 
 DESCRIPTION="Collection of blackletter fonts for LaTeX"
 HOMEPAGE="http://www.gaehrken.de/fraktur/"
@@ -37,11 +37,11 @@ src_prepare() {
 }
 
 src_install() {
-	insinto ${TEXMF}/tex/latex
+	insinto "${TEXMF}"/tex/latex
 	doins -r tex/latex/fraktur
-	insinto ${TEXMF}/fonts
+	insinto "${TEXMF}"/fonts
 	doins -r fonts/{tfm,vf,type1,enc}
-	insinto ${TEXMF}/fonts/map/dvips/fraktur
+	insinto "${TEXMF}"/fonts/map/dvips/fraktur
 	doins fonts/map/dvips/*.map
 
 	local m
@@ -54,5 +54,5 @@ src_install() {
 	dodoc -r doc/fonts/fraktur/*
 
 	# symlink for texdoc
-	dosym ../../../doc/${PF} ${TEXMF}/doc/fonts/fraktur
+	dosym8 -r /usr/share/doc/${PF} "${TEXMF}"/doc/fonts/fraktur
 }

@@ -21,8 +21,8 @@ src_prepare() {
 
 	# remove stupid CFLAG hardcodes
 	sed -i \
-		-e "/GENERIC_CFLAGS/s:-O3::" \
-		-e "/^CFLAGS=/s:\"\":\"${CFLAGS}\":" \
+		-e "/GENERIC_CFLAGS/s@-O3@@" \
+		-e "/^CFLAGS=/s@\"\"@\"${CFLAGS}\"@" \
 		configure || die
 	printf '#!/bin/sh\n:\n' > run-ldconfig || die
 }

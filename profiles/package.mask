@@ -32,6 +32,87 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
+# KF5 PortingAids (from kdelibs4) without any remaining revdeps. Bug #755956
+# Masked for removal in 30 days.
+kde-frameworks/kdewebkit
+kde-frameworks/kjsembed
+kde-frameworks/kmediaplayer
+kde-frameworks/kxmlrpcclient
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
+# Ddepends on deprecated dev-qt/qtwebkit and kde-frameworks/kdewebkit.
+# Barely maintained upstream and on the brink of being archived for good.
+# Patch for Qt5WebEngine exists but needs runtime testing, bug #756685
+# Masked for removal in 30 days.
+net-libs/libkvkontakte
+
+# Martin Dummer <martin.dummer@gmx.net> (2020-11-25)
+# Does not compile with kernels >=5.5, no upstream development
+# since years, for most hardware the in-kernel module
+# rtsx_pci_sdmmc should be preferred over this driver.
+# Open bugs #712484 #717184 #741909.
+# Removal in 30 days. (bug #756370)
+sys-block/rts_pstor
+
+# Sam James <sam@gentoo.org> (2020-11-25)
+# Temporary mask to fix tree breakage
+# Dependency x11-libs/pangox-compat does not exist
+=net-misc/anydesk-6.0.1
+
+# Marek Szuba <marecki@gentoo.org> (2020-11-24)
+# No releases since 2008, deprecated upstream in favour of dev-lua/ldoc,
+# unmaintained, no revdeps. Removal in 30 days (Bug #756343).
+dev-lua/luadoc
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
+# Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
+# Feel free to manually unmask when not using XFS.
+=sys-kernel/gentoo-sources-5.9.10
+=sys-kernel/gentoo-sources-5.9.9
+=sys-kernel/gentoo-sources-5.4.79
+=sys-kernel/gentoo-sources-5.4.78
+=sys-kernel/gentoo-sources-4.19.159
+=sys-kernel/gentoo-sources-4.19.158
+=sys-kernel/gentoo-sources-4.14.208
+=sys-kernel/gentoo-sources-4.14.207
+=sys-kernel/gentoo-sources-4.9.245
+=sys-kernel/gentoo-sources-4.9.244
+=sys-kernel/pf-sources-5.9_p5
+=sys-kernel/vanilla-sources-5.9.10
+=sys-kernel/vanilla-sources-5.9.9
+=sys-kernel/vanilla-sources-5.4.79
+=sys-kernel/vanilla-sources-5.4.78
+=sys-kernel/vanilla-sources-4.19.159
+=sys-kernel/vanilla-sources-4.19.158
+=sys-kernel/vanilla-sources-4.14.208
+=sys-kernel/vanilla-sources-4.14.207
+=sys-kernel/vanilla-sources-4.9.245
+=sys-kernel/vanilla-sources-4.9.244
+=sys-kernel/vanilla-kernel-5.9.10
+=sys-kernel/vanilla-kernel-5.9.9
+=sys-kernel/vanilla-kernel-5.4.79
+=sys-kernel/vanilla-kernel-5.4.78
+=sys-kernel/gentoo-kernel-5.9.10
+=sys-kernel/gentoo-kernel-5.9.9
+=sys-kernel/gentoo-kernel-5.4.79
+=sys-kernel/gentoo-kernel-5.4.78
+=sys-kernel/gentoo-kernel-bin-5.9.10-r1
+=sys-kernel/gentoo-kernel-bin-5.9.10
+=sys-kernel/gentoo-kernel-bin-5.9.9-r1
+=sys-kernel/gentoo-kernel-bin-5.9.9
+=sys-kernel/gentoo-kernel-bin-5.4.79-r1
+=sys-kernel/gentoo-kernel-bin-5.4.79
+=sys-kernel/gentoo-kernel-bin-5.4.78-r1
+=sys-kernel/gentoo-kernel-bin-5.4.78
+
+# Fabian Groffen <grobian@gentoo.org> (2020-11-23)
+# No longer used, not really functional either, noone should be using
+# this, removal in 30 days.
+sys-kernel/xnu-headers
+sys-libs/darwin-libc-headers
+dev-libs/libmissing
+
 # David Seifert <soap@gentoo.org> (2020-11-22)
 # Upstream abandoned since 2012, tons of QA issues and
 # build bugs, esoteric NIH build system. Bug #293567, #670954,
@@ -385,19 +466,6 @@ kde-apps/kdebase-meta:5
 # Removal in 14 days.  Bug #559060.
 sci-geosciences/mapnik-world-boundaries
 
-# Wiliam Hubbs <williamh@gentoo.org> (2020-10-26)
-# Combining kubernetes into one package breaks upgrades, so it is split
-# into separate packages. You need to upgrade and install the following
-# packages based on the needs of your cluster:
-#
-# sys-cluster/kubeadm, sys-cluster/kube-apiserver
-# sys-cluster/kube-controller-manager, sys-cluster/kubectl
-# sys-cluster/kubelet, sys-cluster/kube-proxy
-# sys-cluster/kube-scheduler
-#
-# This package is being removed in 30 days. bug #741572
-sys-cluster/kubernetes
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-26)
 # Depends on net-libs/zeromq-3 which is scheduled for removal.
 # Removal in 30 days.  Bug #741454.
@@ -407,12 +475,6 @@ dev-perl/ZMQ-LibZMQ3
 # Depends on net-libs/zeromq-2 which is scheduled for removal.
 # Removal in 30 days.  Bug #741454.
 dev-perl/ZMQ-LibZMQ2
-
-# Sam James <sam@gentoo.org> (2020-10-25)
-# EAPI 4, fails to build for some time.
-# Removal in 30 days.
-# bug #654244, #740952, #726912, #723060
-dev-lang/j
 
 # Michał Górny <mgorny@gentoo.org> (2020-10-24)
 # Last release in 2004, next release 'Soon(tm)'.  Fails to build
@@ -431,12 +493,6 @@ gnome-base/orbit
 # Fails to build.  Needs a dedicated maintainer and a version bump.
 # Removal in 30 days.  Bug #635592.
 games-strategy/asc
-
-# Michał Górny <mgorny@gentoo.org> (2020-10-23)
-# Needs a dedicated maintainer.  The current version fails to build.
-# Needs a version bump.
-# Removal in 30 days.  Bug #614408.
-games-strategy/megaglest
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2020-10-23)
 # Crashes at startup - bug #750770, dead upstream - bug #737936
@@ -460,17 +516,24 @@ dev-lua/luacrypto
 # All these ebuilds require slotted Lua, which is still masked.
 # Ulrich Müller <ulm@gentoo.org> (2020-11-06)
 # Added sci-visualization/gnuplot.
+>=app-admin/conky-1.11.4
 >=app-benchmarks/sysbench-1.0.20-r100
 >=app-benchmarks/wrk-4.1.0-r100
+>=app-crypt/ekeyd-1.1.5-r100
 >=app-misc/worker-3.8.3-r100
+=dev-games/openscenegraph-openmw-3.4_p20200425-r100
 =dev-libs/efl-1.25.1-r10
 >=dev-lua/lua-bit32-5.3.5-r100
 >=dev-lua/lua-zlib-1.2-r100
->=dev-lua/luaevent-0.4.6-r100
->=dev-lua/luasocket-3.0_rc1_p20200328-r100
->=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/luadbi-0.7.2-r100
+>=dev-lua/luaevent-0.4.6-r100
+=dev-lua/luaexpat-1.3.0-r100
+=dev-lua/luaexpat-1.3.3-r100
+>=dev-lua/luafilesystem-1.8.0-r100
+>=dev-lua/luasec-0.9-r100
+>=dev-lua/luasocket-3.0_rc1_p20200328-r100
 >=dev-lua/lutok-0.4-r10
+>=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/messagepack-0.3.2-r100
 >=dev-lua/toluapp-1.0.93_p20190513-r100
 >=dev-util/geany-plugins-1.37-r100
@@ -478,7 +541,10 @@ dev-lua/luacrypto
 >=games-engines/love-0.7.2-r100:0.7
 >=games-engines/love-0.8.0-r100:0.8
 >=games-engines/love-11.3-r100:0
+>=games-roguelike/stone-soup-0.25.1-r100
 >=mail-filter/imapfilter-2.6.16-r100
+>=media-gfx/geeqie-1.5.1-r1
+>=media-sound/aqualung-1.1-r100
 >=net-analyzer/suricata-6.0.0-r100
 >=net-im/swift-4.0.2-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
@@ -486,9 +552,6 @@ dev-lua/luacrypto
 >=www-apache/mod_security-2.9.3-r100
 >=www-client/elinks-0.13.5-r100
 >=www-servers/lighttpd-1.4.55-r100
->=app-admin/conky-1.11.4
->=media-sound/aqualung-1.1-r100
->=games-roguelike/stone-soup-0.25.1-r100
 
 # Andrew Savchenko <bircoph@gentoo.org> (2020-10-11)
 # Mask old openafs version and corresponding openafs-kernel with
@@ -532,7 +595,6 @@ net-fs/openafs-kernel
 # Please do not remove any packages from this list unless you actually
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-dev-vcs/gitstats
 games-strategy/0ad
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
@@ -654,12 +716,10 @@ net-libs/nDPI
 =mail-mta/postfix-3.6*
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
-# dev-java/ant-eclipse-ecj:4.10 depends on masked >=virtual/{jdk,jre}-11
-# www-servers/tomcat:9 depends on masked dev-java/eclipse-ecj:4.13
-dev-java/ant-eclipse-ecj:4.13
-dev-java/eclipse-ecj:4.13
-dev-java/ant-eclipse-ecj:4.10
-dev-java/eclipse-ecj:4.10
+# >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
+# www-servers/tomcat:9 depends on masked dev-java/eclipse-ecj
+>=dev-java/ant-eclipse-ecj-4.10
+>=dev-java/eclipse-ecj-4.10
 www-servers/tomcat:9
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-16)

@@ -16,7 +16,7 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/en/okular"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="chm djvu epub +image-backend markdown mobi +pdf +plucker +postscript qml share speech +tiff"
 
 DEPEND="
@@ -103,9 +103,9 @@ src_configure() {
 
 src_test() {
 	# mainshelltest hangs, chmgeneratortest fails, bug #603116
-	# parttest hangs, bug #641728
+	# parttest hangs, bug #641728, annotationtoolbartest fails, KDE-Bug #429640
 	local myctestargs=(
-		-E "(mainshelltest|chmgeneratortest|parttest)"
+		-E "(mainshelltest|chmgeneratortest|parttest|annotationtoolbartest)"
 	)
 
 	ecm_src_test

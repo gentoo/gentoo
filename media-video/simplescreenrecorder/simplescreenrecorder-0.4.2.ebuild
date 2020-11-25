@@ -40,9 +40,10 @@ RDEPEND="
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 pkg_pretend() {
 	if [[ "${ABI}" == amd64 ]]; then

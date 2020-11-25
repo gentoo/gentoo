@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE="netgear readynas zeroconf"
+IUSE="elibc_musl netgear readynas zeroconf"
 
 RDEPEND="dev-db/sqlite:3
 	media-libs/flac:=
@@ -24,6 +24,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/libvorbis:=
 	media-video/ffmpeg:0=
 	virtual/jpeg:0=
+	elibc_musl? ( sys-libs/queue-standalone )
 	zeroconf? ( net-dns/avahi:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -32,6 +33,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 
 PATCHES=(
 	"${WORKDIR}"/minidlna-gentoo-artwork.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {

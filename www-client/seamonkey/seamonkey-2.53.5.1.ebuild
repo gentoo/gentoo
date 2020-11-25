@@ -51,6 +51,7 @@ RESTRICT="!test? ( test )"
 
 SRC_URI+="
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/mozilla/${PN}-2.53.5.1-rust148-packed_simd.patch
 	system-libvpx? ( https://dev.gentoo.org/~polynomial-c/mozilla/${PN}-2.53.3-system_libvpx-1.8.patch.xz )
 "
 
@@ -187,6 +188,7 @@ src_prepare() {
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
 	eapply "${WORKDIR}"/firefox
+	eapply "${DISTDIR}"/${PN}-2.53.5.1-rust148-packed_simd.patch
 	popd &>/dev/null || die
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889

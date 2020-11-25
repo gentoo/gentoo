@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 HOMEPAGE="https://www.sdaoden.eu/code.html"
-DESCRIPTION="Enhanced mailx-compatible mail client based on Hierloom mailx (nail)"
+DESCRIPTION="Enhanced mailx-compatible mail client based on Heirloom mailx (nail)"
 LICENSE="BSD BSD-4 ISC RSA"
 
 SRC_URI="https://ftp.sdaoden.eu/${P}.tar.xz"

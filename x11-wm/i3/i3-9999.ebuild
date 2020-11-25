@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson virtualx
+inherit meson optfeature virtualx
 if [[ "${PV}" = *9999 ]]; then
 	inherit git-r3
 fi
@@ -22,7 +22,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="doc test"
 
-CDEPEND="dev-libs/libev
+COMMON_DEPEND="dev-libs/libev
 	dev-libs/libpcre
 	dev-libs/yajl
 	x11-libs/libxcb[xkb]
@@ -36,7 +36,7 @@ CDEPEND="dev-libs/libev
 	x11-misc/xkeyboard-config
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/pango[X]"
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-perl/AnyEvent
 		dev-perl/X11-XCB
@@ -54,7 +54,7 @@ DEPEND="${CDEPEND}
 		app-text/xmlto
 		dev-lang/perl
 	)"
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
@@ -75,6 +75,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		-Ddocdir="/usr/share/doc/${PF}"
 		$(meson_use doc docs)
 		$(meson_use doc mans)
 	)
@@ -94,13 +95,10 @@ src_test() {
 }
 
 pkg_postinst() {
-	# Only show the elog information on a new install
-	if [[ ! ${REPLACING_VERSIONS} ]]; then
-		elog "There are several packages that you may find useful with ${PN} and"
-		elog "their usage is suggested by the upstream maintainers, namely:"
-		elog "  x11-misc/dmenu"
-		elog "  x11-misc/i3status"
-		elog "  x11-misc/i3lock"
-		elog "Please refer to their description for additional info."
-	fi
+	elog "There are several packages that you may find useful with i3 and"
+	elog "their usage is suggested by the upstream maintainers."
+	elog "Uninstalled optional dependencies:"
+	optfeature "Application launcher" x11-misc/dmenu
+	optfeature "Simple screen locker" x11-misc/i3lock
+	optfeature "Status bar generator" x11-misc/i3status
 }
