@@ -32,6 +32,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 
 PATCHES=(
 	"${WORKDIR}"/minidlna-gentoo-artwork.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
