@@ -3,7 +3,6 @@
 
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
-# amd64@gentoo.org
 # toolchain@gentoo.org
 # @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @DESCRIPTION:
@@ -498,6 +497,7 @@ multilib_toolchain_setup() {
 		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
+		PKG_CONFIG_SYSTEM_INCLUDE_PATH
 		PKG_CONFIG_SYSTEM_LIBRARY_PATH
 	)
 
@@ -547,7 +547,8 @@ multilib_toolchain_setup() {
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
-		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/usr/$(get_libdir)
+		export PKG_CONFIG_SYSTEM_INCLUDE_PATH=${EPREFIX}/usr/include
+		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)
 	fi
 }
 
