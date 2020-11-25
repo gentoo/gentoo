@@ -6,15 +6,15 @@ EAPI=7
 inherit autotools flag-o-matic systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-SRC_URI="https://github.com/OpenVPN/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz -> ${P}-r1.tar.gz"
 HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
-IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls +openssl
-	pam pkcs11 +plugins selinux systemd test userland_BSD"
+IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls openssl pam"
+IUSE+=" pkcs11 +plugins selinux +ssl systemd test userland_BSD"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -111,6 +111,9 @@ src_install() {
 		docinto /usr/share/doc/${PF}/examples
 		dodoc -r sample contrib
 	fi
+
+	# https://bugs.gentoo.org/755680#c3
+	doman doc/openvpn.8
 }
 
 pkg_postinst() {
