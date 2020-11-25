@@ -23,8 +23,8 @@ media-gfx/darktable system-lua
 # error: unresolved link to `crate::os::unix::ffi::OsStrExt`
 #
 # USE=miri seems to be not working on 1.48.0
-=dev-lang/rust-1.47.0-r1 doc
-=dev-lang/rust-1.48.0 doc miri
+~dev-lang/rust-1.47.0 doc
+~dev-lang/rust-1.48.0 doc miri
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
