@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Martin Dummer <martin.dummer@gmx.net> (2020-11-25)
+# Does not compile with kernels >=5.5, no upstream development
+# since years, for most hardware the in-kernel module
+# rtsx_pci_sdmmc should be preferred over this driver.
+# Open bugs #712484 #717184 #741909.
+# Removal in 30 days. (bug #756370)
+sys-block/rts_pstor
+
 # Sam James <sam@gentoo.org> (2020-11-25)
 # Temporary mask to fix tree breakage
 # Dependency x11-libs/pangox-compat does not exist
