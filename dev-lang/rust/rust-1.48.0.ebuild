@@ -58,7 +58,19 @@ LLVM_DEPEND="
 "
 LLVM_MAX_SLOT=11
 
-BOOTSTRAP_DEPEND="|| ( >=dev-lang/rust-1.$(($(ver_cut 2) - 1)) >=dev-lang/rust-bin-1.$(($(ver_cut 2) - 1)) )"
+# to bootstrap we need at least exactly previos version, or same.
+# most of the time previous versions fail to bootstrap with newer
+# for example 1.47.x, requires at least 1.46.x, 1.47.x is ok,
+# but it fails to bootstrap with 1.48.x
+# https://github.com/rust-lang/rust/blob/${PV}/src/stage0.txt
+BOOTSTRAP_DEPEND="||
+	(
+		=dev-lang/rust-$(ver_cut 1).$(($(ver_cut 2) - 1))*
+		=dev-lang/rust-bin-$(ver_cut 1).$(($(ver_cut 2) - 1))*
+		=dev-lang/rust-$(ver_cut 1).$(ver_cut 2)*
+		=dev-lang/rust-bin-$(ver_cut 1).$(ver_cut 2)*
+	)
+"
 
 BDEPEND="${PYTHON_DEPS}
 	app-eselect/eselect-rust
@@ -74,7 +86,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 DEPEND="
-	>=dev-libs/libgit2-1.1.0:=
+	>=app-arch/xz-utils-5.2
 	net-misc/curl:=[http2,ssl]
 	sys-libs/zlib:=
 	!libressl? ( dev-libs/openssl:0= )
@@ -85,7 +97,7 @@ DEPEND="
 	)
 "
 
-# we need to block versions older than 1.47.0 due to layout changes.
+# we need to block older versions due to layout changes.
 RDEPEND="${DEPEND}
 	app-eselect/eselect-rust
 	!<dev-lang/rust-1.47.0-r1
@@ -129,23 +141,28 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}-src"
 
 toml_usex() {
-	usex "$1" true false
+	usex "${1}" true false
 }
 
 boostrap_rust_version_check() {
 	# never call from pkg_pretend. eselect-rust may be not installed yet.
 	[[ ${MERGE_TYPE} == binary ]] && return
 	local rustc_wanted="$(ver_cut 1).$(($(ver_cut 2) - 1))"
+	local rustc_toonew="$(ver_cut 1).$(($(ver_cut 2) + 1))"
 	local rustc_version=( $(eselect --brief rust show 2>/dev/null) )
 	rustc_version=${rustc_version[0]#rust-bin-}
 	rustc_version=${rustc_version#rust-}
 
-	[[ -z "${rustc_version}" ]] && die "Failed to determine rustc version!"
+	[[ -z "${rustc_version}" ]] && die "Failed to determine rust version, check 'eselect rust' output"
 
 	if ver_test "${rustc_version}" -lt "${rustc_wanted}" ; then
 		eerror "Rust >=${rustc_wanted} is required"
-		eerror "please run \'eselect rust\' and set correct rust version"
-		die
+		eerror "please run 'eselect rust' and set correct rust version"
+		die "selected rust version is too old"
+	elif ver_test "${rustc_version}" -ge "${rustc_toonew}" ; then
+		eerror "Rust <${rustc_toonew} is required"
+		eerror "please run 'eselect rust' and set correct rust version"
+		die "selected rust version is too new"
 	else
 		einfo "Using rust ${rustc_version} to build"
 	fi
@@ -177,6 +194,8 @@ pkg_pretend() {
 pkg_setup() {
 	pre_build_checks
 	python-any-r1_pkg_setup
+
+	export LIBGIT2_NO_PKG_CONFIG=1 #749381
 
 	use system-bootstrap && boostrap_rust_version_check
 
