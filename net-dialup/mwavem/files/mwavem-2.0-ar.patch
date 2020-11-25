@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -12,6 +12,7 @@ dnl Find programs for building and installation.
+ AC_PROG_CC
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL
++AM_PROG_AR
+ 
+ dnl Check for libraries
+ AC_CHECK_LIB(pthread, main)
