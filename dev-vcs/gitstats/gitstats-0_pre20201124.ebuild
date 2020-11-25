@@ -1,26 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit python-r1
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/hoxu/${PN}.git"
-else
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${P}.tar.xz"
-fi
-
 DESCRIPTION="Statistics generator for git"
 HOMEPAGE="http://gitstats.sourceforge.net/"
+SRC_URI="https://github.com/gktrk/gitstats/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="|| ( GPL-2 GPL-3 ) MIT"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -29,6 +22,8 @@ RDEPEND="
 	dev-vcs/git"
 DEPEND="
 	${PYTHON_DEPS}
+"
+BDEPEND="
 	dev-lang/perl:*
 "
 
@@ -46,8 +41,8 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${ED}"usr VERSION="${PV}" install
+	emake PREFIX="${ED}"/usr VERSION="${PV}" install
 	doman doc/${PN}.1
 	einstalldocs
-	python_replicate_script "${ED}"usr/bin/${PN}
+	python_replicate_script "${ED}"/usr/bin/${PN}
 }
