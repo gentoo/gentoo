@@ -31,7 +31,11 @@ RDEPEND=">=dev-libs/efl-1.24.1[eet,fontconfig,X]
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
 	wayland? (
-		>=dev-libs/efl-1.22.0[drm,wayland]
+		|| (
+			dev-libs/efl[systemd]
+			dev-libs/efl[elogind]
+		)
+		dev-libs/efl[drm,wayland]
 		dev-libs/wayland
 		x11-libs/libxkbcommon
 		x11-libs/pixman
