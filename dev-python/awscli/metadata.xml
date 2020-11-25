@@ -9,6 +9,7 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">awscli</remote-id>
 	</upstream>
