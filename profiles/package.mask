@@ -63,6 +63,7 @@ dev-lua/luadoc
 =sys-kernel/gentoo-sources-4.14.207
 =sys-kernel/gentoo-sources-4.9.245
 =sys-kernel/gentoo-sources-4.9.244
+=sys-kernel/pf-sources-5.9_p5
 =sys-kernel/vanilla-sources-5.9.10
 =sys-kernel/vanilla-sources-5.9.9
 =sys-kernel/vanilla-sources-5.4.79
