@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-11-25)
+# dev-db/redis has no stable keywords on hppa.
+app-admin/syslog-ng redis
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
 # sys-apps/systemd has no stable keywords on hppa.
 sys-apps/ipmitool openbmc
