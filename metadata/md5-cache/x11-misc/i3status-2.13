@@ -5,10 +5,10 @@ DESCRIPTION=generates a status bar for dzen2, xmobar or similar
 EAPI=7
 HOMEPAGE=https://i3wm.org/i3status/
 IUSE=+filecaps
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm x86
 LICENSE=BSD
 RDEPEND=>=dev-libs/yajl-2.0.2 dev-libs/confuse:= dev-libs/libnl:3 media-libs/alsa-lib || ( media-sound/pulseaudio media-sound/apulse[sdk] ) filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://i3wm.org/i3status/i3status-2.13.tar.bz2
 _eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b
-_md5_=efaa9dd4e201901a0bfed5404c3b27b8
+_md5_=cc510c38b1e9acdfed7c2e5d263bcf44
