@@ -499,7 +499,10 @@ src_test() {
 	#
 	local t
 
-	for t in auth_sec.keyring_udf ; do
+	for t in \
+		auth_sec.keyring_udf \
+		innodb.import_compress_encrypt \
+	; do
 			_disable_test "$t" "False positives in Gentoo"
 	done
 
