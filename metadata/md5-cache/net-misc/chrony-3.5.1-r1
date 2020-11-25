@@ -12,5 +12,5 @@ REQUIRED_USE=?? ( libedit readline ) sechash? ( nettle )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://download.tuxfamily.org/chrony/chrony-3.5.1.tar.gz
-_eclasses_=multilib	98584e405e2b0264d37e8f728327fed1	systemd	69be00334d73f9f50261554b94be0879	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	69be00334d73f9f50261554b94be0879	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=5a57936f3cc457d692e678183b87115b

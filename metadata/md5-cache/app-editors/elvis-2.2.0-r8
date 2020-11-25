@@ -9,5 +9,5 @@ LICENSE=Artistic
 RDEPEND=sys-libs/ncurses:0= app-eselect/eselect-vi X? ( >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 )
 SLOT=0
 SRC_URI=ftp://ftp.cs.pdx.edu/pub/elvis/elvis-2.2_0.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	98584e405e2b0264d37e8f728327fed1	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=4d2a66fa45e097a2586df2cf3ee55a83
