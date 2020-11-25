@@ -2768,7 +2768,7 @@ app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1 1.2.1-r1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1 1.2_p6: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.16 2.17: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.17: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
