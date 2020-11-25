@@ -1991,7 +1991,7 @@ app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.7.0 6.8.0-r1 6.9.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 4.0.4 4.0.5: LinuX Containers userspace utilities
+app-emulation/lxc 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.3-r2 4.0.4-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
@@ -5216,7 +5216,7 @@ dev-libs/dqlite 1.6.0: Embeddable, replicated and fault tolerant SQL engine
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.24.4 1.25.1-r1 1.25.1-r10: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.25.1-r2 1.25.1-r10: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.181 0.182: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.28 0.31 0.32 0.33 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
@@ -7842,7 +7842,7 @@ dev-python/PythonQt 3.2-r1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.9.0-r2: Abstraction layer for PyQt5/PySide
 dev-python/Rx 3.1.0: Reactive Extensions for Python
 dev-python/SaltTesting 2018.9.21: Required testing tools needed in the several Salt Stack projects
-dev-python/WSME 0.9.3 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
+dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
@@ -7856,7 +7856,7 @@ dev-python/aiorpcX 0.18.4-r1: Generic async RPC implementation, including JSON-R
 dev-python/aiosmtpd 1.2 1.2.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.4.2 1.4.3: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.4.3: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
@@ -8885,7 +8885,7 @@ dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
 dev-python/python-saharaclient 2.2.1 3.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
-dev-python/python-senlinclient 1.2.0 2.1.1: A client for the OpenStack Senlin API
+dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
@@ -18907,7 +18907,7 @@ x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window 
 x11-wm/dwm 6.2 9999: a dynamic window manager for X11
 x11-wm/e16 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
-x11-wm/enlightenment 0.24.1 0.24.2: Enlightenment window manager
+x11-wm/enlightenment 0.24.2-r1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
