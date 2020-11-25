@@ -107,6 +107,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
 	"${FILESDIR}"/${PN}-5.8.0-w-vtk-8.2.0-qt-5.15.patch # bug 729348
+	"${FILESDIR}"/${P}-find-xmlpatterns.patch # bug 755977, downstream patch
 )
 
 pkg_setup() {
@@ -217,6 +218,7 @@ src_configure() {
 			-DOPENGL_gl_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGL.so
 			-DOPENGL_glu_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGLU.so
 			-DQT_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
+			-Dqt_xmlpatterns_executable="$(qt5_get_bindir)/xmlpatterns"
 		)
 	fi
 
