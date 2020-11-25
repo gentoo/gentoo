@@ -22,7 +22,9 @@ else
 fi
 
 LICENSE="BSD-2 CDDL MIT"
-SLOT="0/4" # just libzfs soname major for now. possible candidates: libuutil, libzpool, libnvpair
+# just libzfs soname major for now.
+# possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
+SLOT="0/4"
 IUSE="custom-cflags debug kernel-builtin libressl minimal nls pam python +rootfs test-suite static-libs"
 
 DEPEND="
@@ -165,7 +167,7 @@ src_compile() {
 src_install() {
 	default
 
-	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
+	gen_usr_ldscript -a nvpair uutil zfsbootenv zfs zfs_core zpool
 
 	use pam && { rm -rv "${ED}/unwanted_files" || die ; }
 
