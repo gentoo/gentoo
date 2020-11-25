@@ -35,3 +35,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-runtime-18.07.80:5
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-contactfetchjobtest-w-qt-5.15.patch" # bug 754159
+)
