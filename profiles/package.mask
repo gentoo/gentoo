@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
+# Ddepends on deprecated dev-qt/qtwebkit and kde-frameworks/kdewebkit.
+# Barely maintained upstream and on the brink of being archived for good.
+# Patch for Qt5WebEngine exists but needs runtime testing, bug #756685
+# Masked for removal in 30 days.
+net-libs/libkvkontakte
+
 # Martin Dummer <martin.dummer@gmx.net> (2020-11-25)
 # Does not compile with kernels >=5.5, no upstream development
 # since years, for most hardware the in-kernel module
