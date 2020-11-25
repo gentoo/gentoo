@@ -185,8 +185,8 @@ src_install() {
 	popd &>/dev/null || die
 
 	pax-mark m \
-		"${ED}${MOZILLA_FIVE_HOME}"/firefox \
-		"${ED}${MOZILLA_FIVE_HOME}"/firefox-bin \
+		"${ED}${MOZILLA_FIVE_HOME}"/${MOZ_PN} \
+		"${ED}${MOZILLA_FIVE_HOME}"/${MOZ_PN}-bin \
 		"${ED}${MOZILLA_FIVE_HOME}"/plugin-container
 
 	# Patch alsa support
