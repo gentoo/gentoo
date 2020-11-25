@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit desktop eutils systemd xdg-utils
+inherit desktop optfeature systemd xdg-utils
 
 DESCRIPTION="Feature rich multi-platform remote desktop application"
 HOMEPAGE="https://anydesk.com"
@@ -48,8 +48,8 @@ RDEPEND="
 	x11-libs/libXt
 	x11-libs/libXtst
 	x11-libs/pango
-	x11-libs/pangox-compat
 "
+BDEPEND="dev-util/patchelf"
 
 RESTRICT="bindist mirror"
 
@@ -58,15 +58,17 @@ QA_PREBUILT="opt/${PN}/*"
 src_install() {
 	local dst="/opt/${PN}"
 
-	dodir ${dst}
 	exeinto ${dst}
 	doexe ${PN}
 
-	dodir /opt/bin
-	dosym ${dst}/${PN} /opt/bin/${PN}
+	# bug 706344
+	patchelf --remove-needed libpangox-1.0.so.0 "${ED}${dst}/${PN}" || die
 
-	newinitd "${FILESDIR}"/anydesk.init anydesk
-	systemd_newunit "${FILESDIR}"/anydesk-4.0.1.service anydesk.service
+	dodir /opt/bin
+	dosym "${dst}/${PN}" "/opt/bin/${PN}"
+
+	newinitd "${FILESDIR}/anydesk.init" anydesk
+	systemd_newunit "${FILESDIR}/anydesk-4.0.1.service" anydesk.service
 
 	insinto /usr/share/polkit-1/actions
 	doins polkit-1/com.philandro.anydesk.policy
@@ -74,9 +76,9 @@ src_install() {
 	insinto /usr/share
 	doins -r icons
 
-	domenu "${FILESDIR}"/anydesk.desktop
+	domenu "${FILESDIR}/anydesk.desktop"
 
-	keepdir /etc/${PN}
+	keepdir "/etc/${PN}"
 
 	dodoc copyright README
 }
