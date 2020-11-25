@@ -13,7 +13,7 @@ HOMEPAGE="https://konversation.kde.org https://apps.kde.org/en/konversation"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV/_/-}/src/${P/_/-}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
