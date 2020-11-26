@@ -19,6 +19,8 @@ RESTRICT="mirror bindist strip"
 RDEPEND="!games-engines/zoom
 	dev-libs/glib:2
 	dev-libs/quazip
+	media-libs/fontconfig
+	media-libs/freetype
 	media-sound/mpg123
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -27,6 +29,8 @@ RDEPEND="!games-engines/zoom
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libxkbcommon
+	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
@@ -85,16 +89,19 @@ src_install() {
 		doexe libicu*.so.56 libQt5*.so.5
 		doins qt.conf
 
-		local dirs="Qt* audio generic iconengines imageformats platform* \
-			wayland* xcbglintegrations"
+		local dirs="Qt* generic iconengines imageformats \
+			platforminputcontexts platforms wayland* xcbglintegrations"
 		doins -r ${dirs}
 		find ${dirs} -type f '(' -name '*.so' -o -name '*.so.*' ')' \
 			-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
 
 		(	# Remove libs and plugins with unresolved soname dependencies
 			cd "${ED}"/opt/zoom || die
-			rm -r Qt/labs/location QtQml/RemoteObjects QtQuick/Scene{2D,3D} \
-				platforms/libqeglfs.so || die
+			rm -r Qt/labs/calendar Qt/labs/location QtQml/RemoteObjects \
+				QtQuick/Controls.2 QtQuick/LocalStorage QtQuick/Particles.2 \
+				QtQuick/Shapes QtQuick/Templates.2 QtQuick/XmlListModel \
+				QtQuick/Scene2D QtQuick/Scene3D \
+				platforms/libqeglfs.so platforms/libqlinuxfb.so || die
 			use wayland || rm -r libQt5Wayland*.so* QtWayland wayland* \
 				platforms/libqwayland*.so || die
 		)
