@@ -1,0 +1,66 @@
+--- a/config.c
++++ b/config.c
+@@ -22,6 +22,14 @@
+ #include <syslog.h>
+ #include "config.h"
+ 
++int debug;
++int config_process_number;
++int check_interval;
++int foreground;
++char *config_file;
++struct config_process_type *config_process;
++struct config_process_type config_process_type;
++
+ int
+ read_config (void)
+ {
+--- a/config.h
++++ b/config.h
+@@ -34,12 +34,12 @@
+ #define DEFAULT_CONFIG "/etc/restartd.conf"
+ #define VERSION "0.2.1"
+ 
+-int debug;			// Debug
+-int config_process_number;
+-int check_interval;
+-int foreground;
+-struct config_process_type *config_process;
+-char *config_file;
++extern int debug;			// Debug
++extern int config_process_number;
++extern int check_interval;
++extern int foreground;
++extern struct config_process_type *config_process;
++extern char *config_file;
+ 
+ typedef struct config_process_type
+ {
+@@ -51,7 +51,9 @@ typedef struct config_process_type
+   char processes[256];
+   char status[32];
+ 
+-} config_process_type;
++};
++
++extern struct config_process_type config_process_type;
+ 
+ int read_config ( /* char *config_file */ );
+ 
+--- a/main.c
++++ b/main.c
+@@ -35,6 +35,14 @@
+ 
+ #include "config.h"
+ 
++extern int debug;
++extern int config_process_number;
++extern int check_interval;
++extern int foreground;
++extern char *config_file;
++extern struct config_process_type *config_process;
++extern struct config_process_type config_process_type;
++
+ // SIGTERM & SIGHUP handler
+ void
+ got_signal (int sig)
