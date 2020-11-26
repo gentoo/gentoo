@@ -668,7 +668,7 @@ app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
 app-admin/rex 1.13.0 1.13.1 9999: (R)?ex, the friendly automation framework
-app-admin/rsyslog 8.2004.0 8.2006.0 8.2008.0 8.2010.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.2008.0 8.2010.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2019.2.7 3000.5 3001.3 3002.1 3002.2: Salt is a remote execution and configuration manager
@@ -5441,7 +5441,7 @@ dev-libs/libpy 0.2.5-r1: Utilities for writing C++ extension modules
 dev-libs/libqtxdg 3.5.0 3.6.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.4.4 1.5.0 1.5.2: Apache Kafka C/C++ client library
-dev-libs/librelp 1.6.0 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
+dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.13.1: Generic library for reporting software bugs
 dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1 3.2.2: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -7545,8 +7545,6 @@ dev-perl/YAML-PP 0.18.0 0.18.0-r1: YAML 1.2 processor in perl
 dev-perl/YAML-Syck 1.300.0 1.310.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0 1.730.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
-dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
-dev-perl/ZMQ-LibZMQ3 1.190.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.40.0: Lets your class/object say it works like something else
 dev-perl/autobox 3.0.1-r1: Call methods on native types
@@ -7761,7 +7759,7 @@ dev-php/pecl-uuid 1.1.0 1.2.0: A wrapper around libuuid
 dev-php/pecl-xdiff 2.0.1-r2: PHP extension for generating diff files
 dev-php/pecl-yaml 2.0.4 2.1.0: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.3: This extension implements a Z39.50 client for PHP using the YAZ toolkit
-dev-php/pecl-zmq 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
+dev-php/pecl-zmq 1.1.3-r3 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
 dev-php/phar-io-version 2.0.1: Library for handling version information and constraints
 dev-php/phar-utils 1.0.0 1.0.1 1.1.0 1.1.1: PHAR file format utilities, for when PHP phars you up
@@ -12943,7 +12941,7 @@ media-libs/cogl 1.22.8: A library for using 3D graphics hardware to draw pretty 
 media-libs/coin 4.0.0: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
 media-libs/ctl 1.5.2-r1: AMPAS' Color Transformation Language
-media-libs/dav1d 0.5.2 0.7.0 0.7.1 0.8.0 9999: dav1d is an AV1 Decoder :)
+media-libs/dav1d 0.7.1 0.8.0 9999: dav1d is an AV1 Decoder :)
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3 2.0.3: Module/tracker based music format parser and player library
@@ -14686,7 +14684,7 @@ net-libs/courier-authlib 0.69.0-r1 0.70.0 0.71.0: Courier authentication library
 net-libs/courier-unicode 2.1 2.1-r1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre150606 4.6.0: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
-net-libs/czmq 2.2.0-r2 3.0.2-r1 4.2.0: High-level C Binding for ZeroMQ
+net-libs/czmq 4.2.0: High-level C Binding for ZeroMQ
 net-libs/daq 2.0.6-r1 2.0.7: Data Acquisition library, for packet I/O
 net-libs/davix 0.7.6: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna libraries
@@ -14868,7 +14866,7 @@ net-libs/webkit-gtk 2.28.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
-net-libs/zeromq 2.2.0 3.2.5 4.3.2 4.3.3: A brokerless kernel
+net-libs/zeromq 4.3.3: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
