@@ -25,7 +25,13 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	gnome-base/gnome-menus[introspection]
-	x11-libs/gdk-pixbuf[X,introspection]
+	|| (
+		(
+			x11-libs/gdk-pixbuf-xlib
+			>=x11-libs/gdk-pixbuf-2.42.0:2[introspection]
+		)
+		<x11-libs/gdk-pixbuf-2.42.0:2[X,introspection]
+	)
 	x11-libs/gtk+:3[X,introspection]
 	x11-libs/gtksourceview:3.0[introspection]
 	x11-themes/hicolor-icon-theme
