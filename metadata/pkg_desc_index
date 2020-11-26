@@ -15287,7 +15287,7 @@ net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
 net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18 2020.11.19 2020.11.21.1 2020.11.24: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.7.4-r1 9999: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
@@ -18386,7 +18386,7 @@ x11-misc/macopix 1.7.4-r1 1.7.4-r2 3.4.0: MaCoPiX (Mascot Constructive Pilot for
 x11-misc/makedepend 1.0.6: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.24.0 1.24.1: MATE Notification daemon
-x11-misc/menulibre 2.1.3 2.2.0 2.2.1-r1: Advanced freedesktop.org compliant menu editor
+x11-misc/menulibre 2.2.1-r2: Advanced freedesktop.org compliant menu editor
 x11-misc/menumaker 0.99.11 0.99.12: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
@@ -18933,7 +18933,7 @@ x11-wm/page 1.9.8 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
 x11-wm/qtile 0.15.1 0.16.1: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
-x11-wm/sawfish 1.12.0-r1 1.12.90: Extensible window manager using a Lisp-based scripting language
+x11-wm/sawfish 1.12.90-r1: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
 x11-wm/spectrwm 3.1.0 3.4.1: Small dynamic tiling window manager for X11
