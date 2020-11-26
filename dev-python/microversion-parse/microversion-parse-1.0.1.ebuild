@@ -13,7 +13,7 @@ S="${WORKDIR}/microversion_parse-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	>=dev-python/pbr-5.0[${PYTHON_USEDEP}]
