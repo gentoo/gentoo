@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ppc ~sparc x86"
-IUSE=""
 
 # The Makefile links with -lssl.
 RDEPEND="
@@ -20,7 +19,10 @@ RDEPEND="
 	dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/respect-cc-cflags-ldflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cc-cflags-ldflags.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)"
