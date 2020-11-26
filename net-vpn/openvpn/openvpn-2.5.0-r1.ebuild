@@ -46,9 +46,12 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-openvpn )
 "
 
-CONFIG_CHECK="~TUN"
+PATCHES=(
+	"${FILESDIR}/openvpn-2.5.0-auth-pam-missing-header.patch"
+)
 
 pkg_setup() {
+	local CONFIG_CHECK="~TUN"
 	linux-info_pkg_setup
 }
 
