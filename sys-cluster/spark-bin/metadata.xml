@@ -13,4 +13,8 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <use>
+    <flag name="scala211">Install Spark JARs pre-built with Scala 2.11.</flag>
+    <flag name="scala212">Install Spark JARs pre-built with Scala 2.12.</flag>
+  </use>
 </pkgmetadata>
