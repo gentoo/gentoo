@@ -29,7 +29,7 @@ RDEPEND="!games-engines/zoom
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X]
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
@@ -99,8 +99,8 @@ src_install() {
 			cd "${ED}"/opt/zoom || die
 			rm -r Qt/labs/calendar Qt/labs/location QtQml/RemoteObjects \
 				QtQuick/Controls.2 QtQuick/LocalStorage QtQuick/Particles.2 \
-				QtQuick/Shapes QtQuick/Templates.2 QtQuick/XmlListModel \
-				QtQuick/Scene2D QtQuick/Scene3D \
+				QtQuick/Scene2D QtQuick/Scene3D QtQuick/Shapes \
+				QtQuick/Templates.2 QtQuick/XmlListModel \
 				platforms/libqeglfs.so platforms/libqlinuxfb.so || die
 			use wayland || rm -r libQt5Wayland*.so* QtWayland wayland* \
 				platforms/libqwayland*.so || die
