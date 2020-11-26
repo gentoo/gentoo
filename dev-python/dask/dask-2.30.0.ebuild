@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1 multiprocessing
+inherit distutils-r1
 
 DESCRIPTION="Task scheduling and blocked algorithms for parallel processing"
 HOMEPAGE="https://dask.org/"
@@ -29,7 +29,6 @@ BDEPEND="
 	test? (
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/numexpr[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 	)
 "
