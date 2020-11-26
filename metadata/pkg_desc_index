@@ -5444,7 +5444,7 @@ dev-libs/librdkafka 1.4.4 1.5.0 1.5.2: Apache Kafka C/C++ client library
 dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.13.1: Generic library for reporting software bugs
-dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1 3.2.2: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1 3.3.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 4.6.1 4.7.0: C++ implementation of 3mf loading with SIP python bindings
@@ -15470,7 +15470,7 @@ net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - pyth
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 0.98 0.98_p0: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.4.5 0.4.4.6 0.4.5.1_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.4.6 0.4.5.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
