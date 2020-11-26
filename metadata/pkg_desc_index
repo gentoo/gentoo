@@ -1074,7 +1074,7 @@ app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.5.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.3.0 5.0: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
-app-crypt/tpm2-tss 2.4.3 2.4.4 3.0.2: TCG Trusted Platform Module 2.0 Software Stack
+app-crypt/tpm2-tss 2.4.3 2.4.5 3.0.3: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
@@ -8032,7 +8032,7 @@ dev-python/dask 2.30.0: Task scheduling and blocked algorithms for parallel proc
 dev-python/dataclasses 0.7: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19: Easily create mock objects on D-Bus for software testing
-dev-python/dbutils 1.3: Database connections for multi-threaded environments
+dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
@@ -17993,7 +17993,7 @@ www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
 www-misc/log-toolkit 0.9.6-r1: set of tools to manipulate and maintain webserver logfiles
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
-www-misc/monitorix 3.11.0 3.12.0: A lightweight system monitoring tool
+www-misc/monitorix 3.12.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator

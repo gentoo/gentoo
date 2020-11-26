@@ -1,16 +1,16 @@
 BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=acct-group/tss acct-user/tss fapi? ( dev-libs/json-c net-misc/curl ) gcrypt? ( dev-libs/libgcrypt:0= ) openssl? ( dev-libs/openssl:0= ) test? ( dev-util/cmocka )
+DEPEND=acct-group/tss acct-user/tss fapi? ( dev-libs/json-c net-misc/curl ) mbedtls? ( net-libs/mbedtls:= ) openssl? ( dev-libs/openssl:= ) test? ( dev-util/cmocka )
 DESCRIPTION=TCG Trusted Platform Module 2.0 Software Stack
 EAPI=7
 HOMEPAGE=https://github.com/tpm2-software/tpm2-tss
-IUSE=doc +fapi gcrypt +openssl static-libs test kernel_linux
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+IUSE=doc +fapi +openssl mbedtls static-libs test kernel_linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=BSD-2
-RDEPEND=acct-group/tss acct-user/tss fapi? ( dev-libs/json-c net-misc/curl ) gcrypt? ( dev-libs/libgcrypt:0= ) openssl? ( dev-libs/openssl:0= ) virtual/tmpfiles
-REQUIRED_USE=^^ ( gcrypt openssl ) fapi? ( openssl !gcrypt )
+RDEPEND=acct-group/tss acct-user/tss fapi? ( dev-libs/json-c net-misc/curl ) mbedtls? ( net-libs/mbedtls:= ) openssl? ( dev-libs/openssl:= ) virtual/tmpfiles
+REQUIRED_USE=^^ ( mbedtls openssl ) fapi? ( openssl !mbedtls )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/tpm2-software/tpm2-tss/releases/download/2.4.4/tpm2-tss-2.4.4.tar.gz
+SRC_URI=https://github.com/tpm2-software/tpm2-tss/releases/download/3.0.3/tpm2-tss-3.0.3.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=0d343a26f4d8f02533431c06dbb4c4e3
+_md5_=c806bc9aa9756cd0530c66f63031ffe9
