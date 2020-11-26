@@ -262,6 +262,8 @@ src_compile() {
 }
 
 src_install() {
+	# Give it an existing bogus ivy home #756766
+	local -x IVY_HOME="${T}"
 	local f
 
 	if use java; then
