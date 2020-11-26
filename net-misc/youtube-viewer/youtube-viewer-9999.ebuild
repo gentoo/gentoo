@@ -17,11 +17,6 @@ IUSE="gtk gtk2"
 
 REQUIRED_USE="gtk2? ( gtk )"
 
-GTK_COMMON_DEPS="
-	dev-perl/File-ShareDir
-	virtual/freedesktop-icon-theme
-	x11-libs/gdk-pixbuf:2[X,jpeg]
-"
 RDEPEND="
 	dev-perl/Data-Dump
 	dev-perl/JSON
@@ -46,7 +41,7 @@ RDEPEND="
 		)
 		dev-perl/File-ShareDir
 		virtual/freedesktop-icon-theme
-		x11-libs/gdk-pixbuf:2[X,jpeg]
+		x11-libs/gdk-pixbuf:2[jpeg]
 	)
 	|| ( >=media-video/ffmpeg-4.1.3[openssl,-libressl] >=media-video/ffmpeg-4.1.3[-openssl,libressl] >=media-video/ffmpeg-4.1.3[gnutls] )
 	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"

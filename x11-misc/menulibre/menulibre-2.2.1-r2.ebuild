@@ -1,16 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit distutils-r1 eutils gnome2-utils versionator
+inherit desktop distutils-r1 xdg-utils
 
 DESCRIPTION="Advanced freedesktop.org compliant menu editor"
 HOMEPAGE="https://bluesabre.org/projects/menulibre/"
-SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,7 +25,13 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	gnome-base/gnome-menus[introspection]
-	x11-libs/gdk-pixbuf[X,introspection]
+	|| (
+		(
+			x11-libs/gdk-pixbuf-xlib
+			>=x11-libs/gdk-pixbuf-2.42.0:2[introspection]
+		)
+		<x11-libs/gdk-pixbuf-2.42.0:2[X,introspection]
+	)
 	x11-libs/gtk+:3[X,introspection]
 	x11-libs/gtksourceview:3.0[introspection]
 	x11-themes/hicolor-icon-theme
@@ -54,16 +60,14 @@ python_prepare_all() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
+	python_optimize
+	rm -r "${ED}"/usr/share/doc/${PN} || die
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
