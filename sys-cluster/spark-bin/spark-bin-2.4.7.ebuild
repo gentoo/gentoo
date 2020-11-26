@@ -30,13 +30,22 @@ src_install() {
 	dodir usr/lib/spark-${SLOT}
 	into usr/lib/spark-${SLOT}
 
-	dobin bin/beeline \
-		bin/find-spark-home \
-		bin/pyspark \
-		bin/spark-class \
-		bin/spark-shell \
-		bin/spark-sql \
+	local SPARK_SCRIPTS=(
+		bin/beeline
+		bin/pyspark
+		bin/spark-class
+		bin/spark-shell
+		bin/spark-sql
 		bin/spark-submit
+	)
+
+	local s
+	for s in "${SPARK_SCRIPTS[@]}"; do
+		ebegin "Setting SPARK_HOME to /usr/lib/spark-${SLOT} in $(basename ${s}) script ..."
+		sed -i -e "2iSPARK_HOME=/usr/lib/spark-${SLOT}" "${s}"
+		eend $?
+		dobin "${s}"
+	done
 
 	insinto usr/lib/spark-${SLOT}/bin
 	doins bin/load-spark-env.sh
