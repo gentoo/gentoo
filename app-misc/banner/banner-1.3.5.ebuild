@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-S="${WORKDIR}/${P}-${PN^^}_V${PV}"
+S="${WORKDIR}/${PN}-${PN^^}_V${PV}"
 
 RDEPEND="!games-misc/bsd-games"
 PATCHES=(
