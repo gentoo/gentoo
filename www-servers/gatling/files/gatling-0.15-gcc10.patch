@@ -1,0 +1,38 @@
+From b815fc02179e8f25a6bea2bc1ee7306ffea37258 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 26 Nov 2020 16:05:26 +0100
+Subject: [PATCH] Fix build with -fno-common or GCC 10
+
+---
+ dirfd.c | 1 +
+ dirfd.h | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/dirfd.c b/dirfd.c
+index 6a0217e..792bd29 100644
+--- a/dirfd.c
++++ b/dirfd.c
+@@ -34,6 +34,7 @@ struct hashtable dc;
+ 
+ #ifdef __linux__
+ int rootwd;
++int ifd;
+ #endif
+ 
+ /* initialize a hashtable as empty */
+diff --git a/dirfd.h b/dirfd.h
+index cdfc4a3..a76c5d8 100644
+--- a/dirfd.h
++++ b/dirfd.h
+@@ -21,7 +21,7 @@
+  * given dir, and it will return the fd or -1 on error. */
+ 
+ #ifdef __linux__
+-int ifd;	/* inotify fd */
++extern int ifd;	/* inotify fd */
+ #endif
+ 
+ struct dircacheentry {
+-- 
+2.27.0
+
