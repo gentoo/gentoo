@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEPEND=>=virtual/jdk-1.8 >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Lightning-fast unified analytics engine
+EAPI=7
+HOMEPAGE=https://spark.apache.org
+IUSE=+scala211 scala212 elibc_FreeBSD
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3
+REQUIRED_USE=^^ ( scala211 scala212 )
+SLOT=2
+SRC_URI=!scala212? ( scala211? ( mirror://apache/spark/spark-2.4.3/spark-2.4.3-bin-without-hadoop.tgz -> spark-bin-2.4.3-nohadoop-scala211.tgz ) ) !scala211? ( scala212? ( mirror://apache/spark/spark-2.4.3/spark-2.4.3-bin-without-hadoop-scala-2.12.tgz -> spark-bin-2.4.3-nohadoop-scala212.tgz ) )
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888
+_md5_=cbf0af17920e45cbc07ca27246b37b08

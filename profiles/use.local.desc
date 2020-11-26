@@ -8097,6 +8097,8 @@ sys-cluster/slurm:ofed - Add Infiniband support via ofed
 sys-cluster/slurm:slurmdbd - Install SQL server for slurmdbd
 sys-cluster/slurm:torque - Enable perl scripts that emulates pbs (qstat, qsub etc.)
 sys-cluster/slurm:ucx - Enable Unified Communication X library support
+sys-cluster/spark-bin:scala211 - Install Spark JARs pre-built with Scala 2.11.
+sys-cluster/spark-bin:scala212 - Install Spark JARs pre-built with Scala 2.12.
 sys-cluster/swift:account - adds swift account support
 sys-cluster/swift:container - adds swift container support
 sys-cluster/swift:memcached - adds memcached support
