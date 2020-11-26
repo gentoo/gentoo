@@ -38,6 +38,7 @@ RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/beautifulsoup-4.6.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/markdown2-2.3.5[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/numpy-1.19.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/packaging-16.8[${PYTHON_MULTI_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/requests-2.0.0[${PYTHON_MULTI_USEDEP}]
