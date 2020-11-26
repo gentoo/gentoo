@@ -51,6 +51,7 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/iwl3160-ucode
 			!sys-firmware/iwl7260-ucode
 			!sys-firmware/iwl3160-7260-bt-ucode
+			!sys-firmware/raspberrypi-wifi-ucode
 		)
 		unknown-license? (
 			!sys-firmware/alsa-firmware[alsa_cards_korg1212]
