@@ -10,4 +10,4 @@ RDEPEND=>=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3
 SLOT=3
 SRC_URI=mirror://apache/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz -> spark-bin-3.0.1.tgz
 _eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888
-_md5_=2cf548bbc0b61c090fb1502d1fb07c9e
+_md5_=4332a0c9a68fe9feaf8cfb4fc8384173
