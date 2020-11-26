@@ -19,7 +19,13 @@ RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 	>=dev-libs/librep-0.92.1
 	>=x11-libs/rep-gtk-0.90.7
-	x11-libs/gdk-pixbuf:2[X]
+	|| (
+		(
+			x11-libs/gdk-pixbuf-xlib
+			>=x11-libs/gdk-pixbuf-2.42.0:2
+		)
+		<x11-libs/gdk-pixbuf-2.42.0:2[X]
+	)
 	>=x11-libs/gtk+-2.24.0:2
 	x11-libs/libXtst
 	kde? ( kde-frameworks/kdelibs4support )
