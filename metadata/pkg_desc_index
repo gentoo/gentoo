@@ -5642,7 +5642,7 @@ dev-libs/vala-common 0.48.6 0.48.9 0.48.11 0.50.1: Build infrastructure for pack
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/vc-intrinsics 0_p20200904: LLVM intrinsics representing SIMD semantics of a program targeting GPU
 dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (vvfst format)
-dev-libs/volume_key 0.3.11 0.3.12-r1: Library for manipulating and storing storage volume encryption keys
+dev-libs/volume_key 0.3.11 0.3.12-r1 0.3.12-r2: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.18.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
@@ -8132,7 +8132,7 @@ dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
-dev-python/feedparser 5.2.1 6.0.1 6.0.2: Parse RSS and Atom feeds in Python
+dev-python/feedparser 5.2.1 6.0.2: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12-r1: A platform independent file lock for Python
@@ -8385,7 +8385,7 @@ dev-python/mako 1.1.3-r1: A Python templating language
 dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.11 3.3.1 3.3.3: Python implementation of the markdown markup language
+dev-python/markdown 2.6.11 3.3.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.9 2.3.10: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -8559,7 +8559,7 @@ dev-python/pathspec 0.8.0: Utility library for gitignore style pattern matching 
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 5.4.5-r1 5.5.0-r1 5.5.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.4: PDF file reader/writer library
 dev-python/pebble 4.5.3: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
@@ -8578,7 +8578,7 @@ dev-python/pika 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 7.0.0 7.2.0 8.0.1: Python Imaging Library (fork)
-dev-python/pip 20.2.2-r1 20.2.3-r1 20.2.4: Installs python packages -- replacement for easy_install
+dev-python/pip 20.2.4: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.8.13 2020.11.4: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
@@ -8688,7 +8688,7 @@ dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementa
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.3.0 1.4.0: Python bindings for libgit2
 dev-python/pyglet 1.5.7-r1 1.5.10 1.5.11: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.7.1 2.7.2: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.7.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
@@ -8916,7 +8916,7 @@ dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdar
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
 dev-python/pytools 2020.4 9999: Collection of tools missing from the Python standard library
-dev-python/pytrie 0.3.1-r1 0.4.0: A pure Python implementation of the trie data structure
+dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.1-r1 2020.4: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
@@ -8946,7 +8946,7 @@ dev-python/ratelimit 1.4.1: An API rate limit decorator for Python
 dev-python/rcssmin 1.0.6: CSS minifier written in python.
 dev-python/rdflib 5.0.0: RDF library containing a triple store and parser/serializer
 dev-python/re-assert 1.1.0: Show where your regex match assertion failed
-dev-python/readme_renderer 27.0 28.0: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 28.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 2.1.1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
@@ -9163,7 +9163,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 1.60.1 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.20.1 3.20.1-r1: virtualenv-based automation of test activities
-dev-python/tqdm 4.49.0 4.51.0 4.52.0 4.53.0 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.51.0 4.53.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
@@ -9183,7 +9183,7 @@ dev-python/typed-ast 1.4.1: Python typed-ast backported
 dev-python/typing 3.7.4.3: Type Hints for Python
 dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
-dev-python/u-msgpack 2.7.0 2.7.1: A portable, lightweight MessagePack serializer and deserializer
+dev-python/u-msgpack 2.7.1: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.9.1: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 4.0.1: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
@@ -9195,7 +9195,7 @@ dev-python/uranium 4.6.1 4.7.0: A Python framework for building 3D printing rela
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
-dev-python/urllib3 1.24.2-r1 1.25.10-r1 1.25.11 1.26.0 1.26.1 1.26.2: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.24.2-r1 1.25.11 1.26.0 1.26.1 1.26.2: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
@@ -9209,7 +9209,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.18-r1 0.19: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.0.35 20.1.0 20.2.0 20.2.1: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.1.0 20.2.1: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
@@ -9271,7 +9271,7 @@ dev-python/zconfig 3.5.0: A configuration library supporting a hierarchical sche
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.24.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zict 0.1.4: Mutable mapping tools
-dev-python/zipp 3.1.0 3.4.0: Backport of pathlib-compatible object wrapper for zip files
+dev-python/zipp 3.4.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.4.0: Zope Configuration Architecture
 dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
@@ -10575,7 +10575,7 @@ dev-util/catalyst 3.0.14 9999: Release metatool used for creating releases based
 dev-util/catfish 1.4.13 4.15.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.8-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.15.0: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.12 4.0 4.1: fast compiler cache
+dev-util/ccache 3.7.12 4.1: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20190823.6 0.20201025 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
