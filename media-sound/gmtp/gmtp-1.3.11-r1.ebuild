@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/libvorbis
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}"
-BDPEND="
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
