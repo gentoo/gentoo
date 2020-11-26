@@ -1,12 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-AT_M4DIR="m4"
-AUTOTOOLS_AUTORECONF=1
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="User level application for IBM Mwave modem"
 HOMEPAGE="http://oss.software.ibm.com/acpmodem/"
@@ -16,37 +13,44 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DOCS=( AUTHORS ChangeLog FAQ NEWS README README.devfs THANKS )
-
 PATCHES=(
-	"${FILESDIR}/${P}-gentoo.patch"
-	"${FILESDIR}/${P}-glibc-2.10.patch"
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-glibc-2.10.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-ar.patch
 )
 
-src_install() {
-	autotools-utils_src_install
+HTML_DOCS=( doc/mwave.html )
 
-	dosbin "${FILESDIR}/mwave-dev-handler"
+src_prepare() {
+	default
+	rm README.freebsd || die
+	mv configure.{in,ac} || die
+	AT_M4DIR=m4 eautoreconf
+}
+
+src_install() {
+	default
+
+	dosbin "${FILESDIR}"/mwave-dev-handler
 
 	insinto /etc/devfs.d
-	newins "${FILESDIR}/mwave.devfs" mwave
+	newins "${FILESDIR}"/mwave.devfs mwave
 
 	insinto /etc/modprobe.d
-	newins "${FILESDIR}/mwave.modules" mwave.conf
+	newins "${FILESDIR}"/mwave.modules mwave.conf
 
-	docinto doc
 	dodoc doc/mwave.sgml doc/mwave.txt
-	dohtml doc/mwave.html
 }
 
 pkg_postinst() {
-	if [ -e "${ROOT}/dev/.devfsd" ]; then
+	if [[ -e "${EROOT}"/dev/.devfsd ]]; then
 		# device node is created by devfs
 		ebegin "Restarting devfsd to reread devfs rules"
 			killall -HUP devfsd
 		eend $?
 	else
 		elog "Create device node if needed, using command like this:"
-		elog "# mknod --mode=0660 \"${ROOT}/dev/modems/mwave\" c 10 219"
+		elog "# mknod --mode=0660 \"${EROOT}/dev/modems/mwave\" c 10 219"
 	fi
 }
