@@ -14,10 +14,10 @@ SRC_URI="
 	x86? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_x86-${MY_PV}.run )
 "
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="teamspeak3 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="3"
-IUSE="+alsa pulseaudio"
+IUSE="+alsa pulseaudio system-libcxx"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
 BDEPEND=">=dev-util/patchelf-0.10"
@@ -39,11 +39,11 @@ RDEPEND="
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	net-libs/libsrtp:0
-	sys-libs/libcxx[libcxxabi]
 	sys-libs/zlib:0/1
 	virtual/udev
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
+	system-libcxx? ( sys-libs/libcxx[libcxxabi] )
 "
 
 RESTRICT="bindist mirror"
@@ -51,6 +51,8 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}"
 
 QA_PREBUILT="
+	opt/teamspeak3-client/libc++.so.1
+	opt/teamspeak3-client/libc++abi.so.1
 	opt/teamspeak3-client/error_report
 	opt/teamspeak3-client/package_inst
 	opt/teamspeak3-client/soundbackends/libalsa_linux_*.so
@@ -86,6 +88,7 @@ src_install() {
 	exeinto /opt/teamspeak3-client
 	doexe error_report package_inst ts3client update
 	newexe "${FILESDIR}"/ts3client-bin-r2 ts3client-bin
+	! use system-libcxx && doexe libc++{,abi}.so.1
 
 	exeinto /opt/teamspeak3-client/soundbackends
 	doexe soundbackends/*.so
