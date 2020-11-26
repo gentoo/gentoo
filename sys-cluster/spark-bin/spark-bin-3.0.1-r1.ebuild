@@ -30,8 +30,11 @@ src_install() {
 	dodir usr/lib/spark-${SLOT}
 	into usr/lib/spark-${SLOT}
 
+	mv bin/load-spark-env.sh bin/load-spark-env || die
+
 	local SPARK_SCRIPTS=(
 		bin/beeline
+		bin/load-spark-env
 		bin/pyspark
 		bin/spark-class
 		bin/spark-shell
@@ -46,9 +49,6 @@ src_install() {
 		eend $?
 		dobin "${s}"
 	done
-
-	insinto usr/lib/spark-${SLOT}/bin
-	doins bin/load-spark-env.sh
 
 	insinto usr/lib/spark-${SLOT}
 	doins -r conf
