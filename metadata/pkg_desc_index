@@ -11895,11 +11895,11 @@ gui-libs/amtk 5.0.2: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/greetd 0.6.1: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
-gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
+gui-libs/libwpe 1.4.0.1 1.8.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.5.0 0.6.0 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
-gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
+gui-libs/wpebackend-fdo 1.4.0 1.8.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2: Wayland compositor inspired by CWM
 gui-wm/sway 1.5 1.5.1 9999: i3-compatible Wayland window manager
@@ -14862,7 +14862,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.28.4: Open source web browser engine
+net-libs/webkit-gtk 2.28.4 2.30.3: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
@@ -16355,7 +16355,7 @@ sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combi
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/psmt2-frontend 0.2: Library to parse and type-check an extension of the SMT-LIB 2 standard
-sci-mathematics/pspp 1.2.0-r1: Program for statistical analysis of sampled data
+sci-mathematics/pspp 1.2.0-r1 1.4.1: Program for statistical analysis of sampled data
 sci-mathematics/relational 2.5-r2: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.2: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
@@ -18260,7 +18260,7 @@ x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate 
 x11-libs/rep-gtk 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/scw 0.4.7-r2: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
-x11-libs/spread-sheet-widget 0.3-r1: GNU Spread Sheet Widget
+x11-libs/spread-sheet-widget 0.3-r1 0.6: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.21: Touchscreen Access Library
 x11-libs/vte 0.28.2-r209 0.60.3: Library providing a virtual terminal emulator widget
@@ -18357,7 +18357,7 @@ x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wall
 x11-misc/hsetroot 1.0.2 1.0.2_p5 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10-r1 2.11.1-r1 2.12-r1 2.12-r2: Simple screen locker
-x11-misc/i3status 2.12 2.13: generates a status bar for dzen2, xmobar or similar
+x11-misc/i3status 2.13: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
 x11-misc/iconbox 0.2: App for placing icons in a menu which auto-hides
