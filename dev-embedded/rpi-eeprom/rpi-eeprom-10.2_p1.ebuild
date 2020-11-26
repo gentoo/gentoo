@@ -13,23 +13,21 @@ MY_P="${PN}-$(ver_cut 1-2)"
 MY_BASE_URL="https://archive.raspberrypi.org/debian/pool/main/r/${PN}/${PN}_$(ver_cut 1-2)"
 SRC_URI="${MY_BASE_URL}-$(ver_cut 4).debian.tar.xz
 	${MY_BASE_URL}.orig.tar.gz"
+S="${WORKDIR}"
+
 SLOT="0"
 LICENSE="BSD rpi-eeprom"
 KEYWORDS="~arm ~arm64"
-IUSE=""
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="sys-apps/help2man
-	${PYTHON_DEPS}"
-RDEPEND="sys-apps/flashrom
-	${PYTHON_DEPS}
+BDEPEND="sys-apps/help2man"
+DEPEND="${PYTHON_DEPS}"
+RDEPEND="${PYTHON_DEPS}
+	sys-apps/flashrom
 	|| (
 		>=media-libs/raspberrypi-userland-0_pre20201022
 		>=media-libs/raspberrypi-userland-bin-1.20201022
 	)"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
@@ -72,14 +70,14 @@ src_install() {
 
 	newconfd rpi-eeprom-update-default rpi-eeprom-update
 
-	popd 1>/dev/null
+	popd 1>/dev/null || die
 
 	pushd debian 1>/dev/null || die "Cannot change into directory debian"
 
 	systemd_newunit rpi-eeprom.rpi-eeprom-update.service rpi-eeprom-update.service
 	newdoc changelog changelog.Debian
 
-	popd 1>/dev/null
+	popd 1>/dev/null || die
 
 	newinitd "${FILESDIR}/init.d_rpi-eeprom-update-1" "rpi-eeprom-update"
 }
