@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after localmount
+	need device-mapper
+}
+
+stop() {
+	# Try to remove any dm-crypt mappings
+	if [ -x /usr/bin/veracrypt ]; then
+		ebegin "Removing veracrypt mappings"
+		! /usr/bin/veracrypt -l > /dev/null 2>&1  || /usr/bin/veracrypt -d
+		eend $?
+	fi
+}
