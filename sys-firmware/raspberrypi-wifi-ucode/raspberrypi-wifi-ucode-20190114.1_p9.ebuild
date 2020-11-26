@@ -8,17 +8,15 @@ HOMEPAGE="https://github.com/RPi-Distro/firmware-nonfree
 	https://archive.raspberrypi.org/debian/pool/main/f/firmware-nonfree"
 MY_PN=firmware-nonfree
 SRC_URI="https://archive.raspberrypi.org/debian/pool/main/f/${MY_PN}/${MY_PN}_$(ver_cut 1)-$(ver_cut 2)+rpt$(ver_cut 4).debian.tar.xz"
+S="${WORKDIR}"
 
 LICENSE="Broadcom"
 SLOT="0"
 KEYWORDS="~arm ~arm64"
 
 RDEPEND="!sys-kernel/linux-firmware[-savedconfig]"
-DEPEND=""
 
-S="${WORKDIR}"
-
-pkg_setup() {
+pkg_pretend() {
 	local -a BADFILES=()
 	local txt file
 	# /lib/firmware/brcm/brcmfmac434{30,36,55,56}-sdio.*.txt
@@ -39,10 +37,11 @@ pkg_setup() {
 	# * /lib/firmware/brcm/brcmfmac43455-sdio.txt
 	# * /lib/firmware/brcm/brcmfmac43456-sdio.txt
 	# So no overlap is assured.
-	for txt in /lib/firmware/brcm/brcmfmac434{30,36,55,56}-sdio.*.txt; do
+	for txt in "${EPREFIX}"/lib/firmware/brcm/brcmfmac434{30,36,55,56}-sdio.*.txt; do
 		[[ -e "${txt}" ]] && BADFILES+=( "${txt}" )
 	done
-	if (( "${#BADFILES[@]}" >= 1)); then
+
+	if [[ "${#BADFILES[@]}" -gt 1 ]]; then
 		eerror "The following files should be excluded from the savedconfig of"
 		eerror "linux-firmware and linux-firmware should be re-emerged. Even"
 		eerror "though they do not collide with files from ${PN},"
