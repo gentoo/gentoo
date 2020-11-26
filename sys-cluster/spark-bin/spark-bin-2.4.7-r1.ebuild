@@ -8,8 +8,8 @@ inherit java-pkg-2
 DESCRIPTION="Lightning-fast unified analytics engine"
 HOMEPAGE="https://spark.apache.org"
 SRC_URI="
-	!scala212? ( scala211? ( mirror://apache/spark/spark-${PV}/spark-${PV}-bin-without-hadoop.tgz -> ${P}-scala211.tgz ) )
-	!scala211? ( scala212? ( mirror://apache/spark/spark-${PV}/spark-${PV}-bin-without-hadoop-scala-2.12.tgz -> ${P}-scala212.tgz ) )
+	!scala212? ( scala211? ( mirror://apache/spark/spark-${PV}/spark-${PV}-bin-without-hadoop.tgz -> ${P}-nohadoop-scala211.tgz ) )
+	!scala211? ( scala212? ( mirror://apache/spark/spark-${PV}/spark-${PV}-bin-without-hadoop-scala-2.12.tgz -> ${P}-nohadoop-scala212.tgz ) )
 "
 
 REQUIRED_USE="^^ ( scala211 scala212 )"
