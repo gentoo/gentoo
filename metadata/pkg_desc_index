@@ -17335,6 +17335,7 @@ sys-firmware/iwl7260-ucode 0.16.242414: Firmware for Intel (R) Dual Band Wireles
 sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and 4165
 sys-firmware/midisport-firmware 1.2-r1: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 340.32-r1: Kernel and mesa firmware for nouveau (video accel and pgraph)
+sys-firmware/raspberrypi-wifi-ucode 20190114.1_p9: Most up-to-date uCode for the Broadcom wifi chips on Raspberry Pi SBCs
 sys-firmware/seabios 1.10.2 1.11.0 1.11.0-r1 1.12.0: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.6 0.1.7 0.1.7-r1 9999: Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
@@ -17486,7 +17487,7 @@ sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot a
 sys-kernel/kergen 0.1.5: Kernel config generator
 sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r2 99999999: Linux firmware files
+sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9: Linux system headers
 sys-kernel/mips-sources 4.14.206 4.19.157 5.4.77: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4 5.9_p5: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches

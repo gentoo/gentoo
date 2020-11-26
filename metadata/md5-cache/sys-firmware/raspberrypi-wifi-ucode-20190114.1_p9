@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare pretend
+DESCRIPTION=Most up-to-date uCode for the Broadcom wifi chips on Raspberry Pi SBCs
+EAPI=7
+HOMEPAGE=https://github.com/RPi-Distro/firmware-nonfree https://archive.raspberrypi.org/debian/pool/main/f/firmware-nonfree
+KEYWORDS=~arm ~arm64
+LICENSE=Broadcom
+RDEPEND=!sys-kernel/linux-firmware[-savedconfig]
+SLOT=0
+SRC_URI=https://archive.raspberrypi.org/debian/pool/main/f/firmware-nonfree/firmware-nonfree_20190114-1+rpt9.debian.tar.xz
+_md5_=d1a1690efa3fe5263e538c39590fe932
