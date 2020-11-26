@@ -13930,7 +13930,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
-media-sound/upmpdcli 1.4.0 1.4.2 1.4.14 1.5.0 1.5.0-r1: UPnP Media Renderer front-end for MPD, the Music Player Daemon
+media-sound/upmpdcli 1.4.0 1.4.2 1.4.14 1.5.0 1.5.0-r1 1.5.2: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi like key bindings
