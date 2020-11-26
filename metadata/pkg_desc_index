@@ -5054,7 +5054,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.2: Elixir programming language
-dev-lang/erlang 23.0.4 23.1.1 23.1.2 23.1.3 23.1.4: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.1.1 23.1.4: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -7899,7 +7899,7 @@ dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.27.0 1.28.1 1.29.0 1.30.0 1.30.1 1.31.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.142 1.18.160: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0-r1: Namespace for backported Python features
@@ -7959,7 +7959,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.30.1 0.35.1 0.36.1 0.37.1 0.38.0 0.39.0 0.41.0 0.42.0: CloudFormation Linter
+dev-python/cfn-python-lint 0.39.0 0.41.0 0.42.0: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8094,7 +8094,7 @@ dev-python/docutils-glep 1.2: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 1.0.2 1.1.0 1.1.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/doit 0.33.1: Automation tool
 dev-python/doit-py 0.5.0: doit tasks for python stuff
-dev-python/dominate 2.5.2 2.6.0: Library for creating and manipulating HTML documents using an elegant DOM API
+dev-python/dominate 2.6.0: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.1: Expects matchers for Doublex test doubles assertions
 dev-python/drf-yasg 1.17.1: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
@@ -8126,7 +8126,7 @@ dev-python/executing 0.5.3: Get information about what a Python frame is current
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fakeredis 1.4.3 1.4.4 1.4.5: Fake implementation of redis API for testing purposes
+dev-python/fakeredis 1.4.4 1.4.5: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
@@ -8247,7 +8247,7 @@ dev-python/httplib2 0.18.1-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.9.6 1.0.2-r1 1.0.3: HTTP client mock for Python
 dev-python/httpstat 1.3.0: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 8.2: Human friendly output for text interfaces using Python
-dev-python/humanize 3.0.1 3.1.0: Common humanization utilities
+dev-python/humanize 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
@@ -8401,7 +8401,7 @@ dev-python/memory_profiler 0.57: A module for monitoring memory usage of a pytho
 dev-python/mergedict 1.0.0: A Python 'dict' with a merge() method
 dev-python/metakernel 0.25.0-r1: Metakernel for Jupyter
 dev-python/micawber 0.5.1: A small library for extracting rich content from urls
-dev-python/microversion-parse 0.2.1 1.0.1: A simple parser for OpenStack microversion headers
+dev-python/microversion-parse 1.0.1: A simple parser for OpenStack microversion headers
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
@@ -8415,7 +8415,7 @@ dev-python/mkdocs-bootswatch 1.1: Bootswatch themes for MkDocs
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 3.0.5-r2: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.20.0 0.21.0: A Python Object-Document-Mapper for working with MongoDB
-dev-python/mongomock 3.20.0 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
+dev-python/mongomock 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 5.0.0-r1 8.5.0 8.6.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3 1.3.16-r1: Mock library for boto
@@ -8779,7 +8779,7 @@ dev-python/pysvn 1.9.11: Object-oriented python bindings for subversion
 dev-python/pytables 3.6.1: Hierarchical datasets for Python
 dev-python/pytaglib 1.4.6: Python wrapper for taglib library
 dev-python/pyte 0.8.0-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 4.6.11-r1 5.4.3 6.0.1 6.0.2 6.1.1 6.1.2: Simple powerful testing with Python
+dev-python/pytest 4.6.11-r1 5.4.3 6.1.1 6.1.2: Simple powerful testing with Python
 dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
@@ -9016,7 +9016,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.16.3 0.17.8 0.18.0 0.19.1 0.19.2 0.19.3 0.19.4: Python client for Sentry
+dev-python/sentry-sdk 0.19.1 0.19.4: Python client for Sentry
 dev-python/serpent 1.30 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -10390,7 +10390,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.4.0: Guile bindings of git
-dev-scheme/guile-json 4.1.0 4.4.0: JSON module for Guile
+dev-scheme/guile-json 4.4.0: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -10713,7 +10713,7 @@ dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scrip
 dev-util/idea-community 2020.2.2.202.7319.50 2020.2.3.202.7660.26 2020.2.4.202.8194.7: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0 2.2.0 2.5.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 10.0 11.0: Find unused include directives in C/C++ programs
+dev-util/include-what-you-use 11.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.4111 1.0.4944: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 4.4.0.117-r3: Intel's implementation of the OpenCL standard
@@ -17259,7 +17259,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.13: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 9.3.0-r2 10.2.0-r2 10.2.0-r3 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
+sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 9.3.0-r1 9.3.0-r2 10.2.0-r3 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.3.2-r1 9999: Utility to manage compilers
 sys-devel/gdb 9.2 10.1 9999: GNU debugger
