@@ -3,3 +3,4 @@
 
 # this is the only version known to compile on macOS Big Sur
 =app-shells/bash-5.1_rc3 **
+=sys-libs/readline-8.1_rc3 **
