@@ -14,7 +14,7 @@ S="${WORKDIR}/oslo.policy-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="
 	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
