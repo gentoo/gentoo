@@ -131,7 +131,11 @@ src_prepare() {
 		mkdir -vp source/config/linux/ppc64 || die
 		mkdir -p source/libvpx/test || die
 		touch source/libvpx/test/test.mk || die
+		# generate_gni.sh runs git at the end of process, prevent it.
+		git() {	: ; }
+		export -f git
 		./generate_gni.sh || die
+		unset git
 		popd >/dev/null || die
 	fi
 }
