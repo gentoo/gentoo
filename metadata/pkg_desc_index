@@ -15910,7 +15910,7 @@ sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between mole
 sci-chemistry/procheck 3.5.4-r3: Checks the stereochemical quality of a protein structure
 sci-chemistry/propka 3.2.0: pKa-value prediction of ionizable groups in protein and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 2.3.0-r3: A Python-extensible molecular graphics system
+sci-chemistry/pymol 2.4.0: A Python-extensible molecular graphics system
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.6: Generation high quality raster images of proteins or other molecules
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
