@@ -18,7 +18,7 @@ IUSE+=" pam pkcs11 +plugins selinux systemd test userland_BSD"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	^^ ( openssl libressl mbedtls )
+	^^ ( openssl mbedtls )
 	pkcs11? ( !mbedtls )
 	!plugins? ( !pam !down-root )
 	inotify? ( plugins )
@@ -28,11 +28,13 @@ CDEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
 	)
-	libressl? ( dev-libs/libressl:0= )
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
 	mbedtls? ( net-libs/mbedtls:= )
-	openssl? ( >=dev-libs/openssl-0.9.8:0= )
+	openssl? (
+		!libressl? ( >=dev-libs/openssl-0.9.8:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )
