@@ -14,7 +14,7 @@ SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_P}-$(ver_cut 7).debian.tar.gz
 "
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 RDEPEND="
 	net-libs/libpcap
