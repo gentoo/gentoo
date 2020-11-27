@@ -14156,7 +14156,7 @@ net-analyzer/barnyard2 1.9-r2 1.13: Parser for Snort unified/unified2 files
 net-analyzer/bigeye 0.3-r3 0.3-r4: network utility dump and simple honeypot utility
 net-analyzer/bing 1.1.3-r2: A point-to-point bandwidth measurement tool
 net-analyzer/bmon 4.0 999: interface bandwidth monitor
-net-analyzer/braa 0.82 0.82-r1: Quick and dirty mass SNMP scanner
+net-analyzer/braa 0.82-r1: Quick and dirty mass SNMP scanner
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1 0.6.2: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
@@ -14184,7 +14184,7 @@ net-analyzer/driftnet 0.1.6_p20090401-r1 1.3.0: Watches network traffic and disp
 net-analyzer/echoping 6.0.2_p434-r2 6.0.2_p434-r3 6.0.2_p434-r4: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.19: A graphical network monitor for Unix modeled after etherman
-net-analyzer/ethloop 10-r3 10-r4: Local simulator for testing Linux QoS disciplines
+net-analyzer/ethloop 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3.1 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.11.1-r2 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1 5.0-r2: A tool for determining a firewall's rule set
@@ -14210,17 +14210,17 @@ net-analyzer/gvmd 8.0.1 9.0.1: Greenbone vulnerability manager, previously named
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
-net-analyzer/hunt 1.5-r1 1.5-r3 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
+net-analyzer/hunt 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 9.0 9.0-r1 9.1 9999999: Parallelized network login hacker
-net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
+net-analyzer/ibmonitor 1.4-r1: Interactive bandwidth monitor
 net-analyzer/icinga2 2.11.6 2.12.0 2.12.1 2.12.2 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4-r4 9999999: display bandwidth usage on an interface
-net-analyzer/ike-scan 1.9-r2 1.9.4 99999: A utility for finding, fingerprinting and testing IKE VPN servers
+net-analyzer/ike-scan 1.9.4 99999: A utility for finding, fingerprinting and testing IKE VPN servers
 net-analyzer/ipaudit 1.0_beta2-r1: IPAudit monitors network activity on a network by host, protocol and port
-net-analyzer/ipband 0.8.1-r1 0.8.1-r2: A pcap based IP traffic and bandwidth monitor
+net-analyzer/ipband 0.8.1-r2: A pcap based IP traffic and bandwidth monitor
 net-analyzer/ipcad 3.7.3: IP Cisco Accounting Daemon
 net-analyzer/ipgen 9999: Generate list of IP addresses from a network specification
 net-analyzer/ipguard 1.04-r1: Tool designed to protect LAN IP adress space by ARP spoofing
@@ -14275,11 +14275,11 @@ net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitor
 net-analyzer/nagircbot 0.0.33: An irc bot that alerts you to nagios changes
 net-analyzer/nagstamon 3.4.1-r1: systray monitor for displaying realtime status of several monitoring systems
 net-analyzer/nagtrap 0.1.3-r1: Integrated snmptt visualization addon for the Nagios monitoring system
-net-analyzer/nast 0.2.0-r1 0.2.0-r2: NAST - Network Analyzer Sniffer Tool
+net-analyzer/nast 0.2.0-r2: NAST - Network Analyzer Sniffer Tool
 net-analyzer/nbtscan 1.5.1-r3 1.6: NBTscan is a program for scanning IP networks for NetBIOS name information
 net-analyzer/nbwmon 0.5.2: ncurses bandwidth monitor
 net-analyzer/ndoutils 2.1.3-r2: Nagios addon to store Nagios data in a MySQL database
-net-analyzer/ndsad 1.33-r1 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
+net-analyzer/ndsad 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert sources
 net-analyzer/nessus-agent-bin 8.1.0: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.12.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 99999999: Software for generating and retrieving SNMP data
@@ -14329,7 +14329,7 @@ net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
 net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r2 1.7.4 1.7.4_p1 1.7.5 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
-net-analyzer/portmon 2.0 2.0-r1: Portmon is a network service monitoring daemon
+net-analyzer/portmon 2.0-r1: Portmon is a network service monitoring daemon
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/prelude-correlator 4.0.0 4.1.1 5.1.0 5.2.0: Real time correlator of events received by Prelude Manager
 net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0 5.2.0: The prelude log analyzer
@@ -14339,7 +14339,7 @@ net-analyzer/pypacker 4.8 4.9: Fast and simple packet creation and parsing libra
 net-analyzer/python-gvm 1.1.0 1.2.0 1.5.0 1.6.0: Greenbone Vulnerability Management Python Library
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
-net-analyzer/rain 1.2.9_beta1 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
+net-analyzer/rain 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
 net-analyzer/rrdcollect 0.2.10: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.7.2 1.7.2-r1: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
@@ -14355,7 +14355,7 @@ net-analyzer/sflowtool 3.34 3.41 5.02 5.04 5.05 5.06: sflowtool is a utility for
 net-analyzer/sguil-client 1.0.0: GUI Console for sguil Network Security Monitoring
 net-analyzer/sguil-sensor 1.0.0: Sensor part of sguil Network Security Monitoring
 net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
-net-analyzer/siphon 666-r1 666-r2: A portable passive network mapping suite
+net-analyzer/siphon 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
 net-analyzer/smokeping 2.6.9-r1 2.7.2 2.7.3: A powerful latency measurement tool
 net-analyzer/snallygaster 0.0.6 0.0.8 0.0.9: Finds file leaks and other security problems on HTTP servers
@@ -14384,7 +14384,7 @@ net-analyzer/tcpdump 4.9.3-r4 4.10.0_rc1-r1 9999: A Tool for network monitoring 
 net-analyzer/tcping 1.3.5-r1 1.3.6: Check if a desired port is reachable via TCP
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
-net-analyzer/tcpslice 1.2a_p3-r1 1.2a_p3_p4: Extract and concatenate portions of pcap files
+net-analyzer/tcpslice 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5 6.6.7_p6: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
@@ -14409,7 +14409,7 @@ net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.4.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
-net-analyzer/xprobe 0.3 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
+net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2 9999: A framework for layer 2 attacks
 net-analyzer/zabbix 3.0.31-r1 4.0.25 4.0.26 5.0.4 5.0.5 5.2.1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
