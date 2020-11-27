@@ -101,7 +101,6 @@ src_configure() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
 
 	pushd "${MY_S}/cmd" >/dev/null || die
 	econf --libdir="${EPREFIX}/usr/lib" \
