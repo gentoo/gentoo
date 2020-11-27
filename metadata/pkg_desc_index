@@ -571,7 +571,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.5 4.6: Run arbitrary commands when files change
 app-admin/eselect 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.20.2: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.21.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -3513,7 +3513,7 @@ dev-db/percona-server 5.7.27.30-r1 8.0.19.10-r1 8.0.20.11-r2 8.0.21.12: Fully co
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
-dev-db/pg_activity 1.6.1 1.6.2: Realtime PostgreSQL database server monitoring tool
+dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0 4.0.0: 'top' for PostgreSQL
 dev-db/pgadmin4 4.17-r1 4.25 4.26 4.28: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
