@@ -53,9 +53,7 @@ REQUIRED_USE="
 "
 
 # ia64 kernel crashes when gdb testsuite is running
-# hppa kernel crashes when gdb testsuite is running
 RESTRICT="
-	hppa? ( test )
 	ia64? ( test )
 
 	!test? ( test )

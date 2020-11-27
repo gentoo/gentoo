@@ -74,6 +74,11 @@ src_prepare() {
 		rm src/$(basename ${file} .c).{c,h} || die
 	done
 
+	# don't try to use system certificate store on macOS, it is
+	# confusingly ignoring our ca-certificates and more importantly
+	# fails to compile in certain configurations
+	sed -i -e 's/__APPLE__/__NO_APPLE__/' lib/system/certs.c || die
+
 	# Use sane .so versioning on FreeBSD.
 	elibtoolize
 }
