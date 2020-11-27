@@ -3,11 +3,11 @@
 
 EAPI=7
 
-SWORD_MINIMUM_VERSION="1.5.1a"
+SWORD_MINIMUM_VERSION="1.8.0"
 
 inherit sword-module
 
-DESCRIPTION="Hungarian Karoli"
+DESCRIPTION="The Karoli Bible revised version 1908"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=HunKar"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
