@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> as backend</flag>
+		<flag name="webkit">Use <pkg>dev-qt/qtwebkit</pkg> as backend</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">OtterBrowser/otter-browser</remote-id>
 	</upstream>
