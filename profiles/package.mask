@@ -148,8 +148,6 @@ dev-python/nose-cover3
 dev-python/nose-parameterized
 dev-python/nose-show-skipped
 dev-python/pew
-dev-python/pika
-dev-python/pmw
 dev-python/ptpython
 dev-python/pure-sasl
 dev-python/pyfltk
