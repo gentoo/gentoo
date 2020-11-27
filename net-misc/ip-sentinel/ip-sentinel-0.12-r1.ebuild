@@ -9,7 +9,7 @@ HOMEPAGE="https://www.nongnu.org/ip-sentinel/"
 LICENSE="GPL-2"
 SRC_URI="https://savannah.nongnu.org/download/ip-sentinel/${P}.tar.bz2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 PATCHES=(
