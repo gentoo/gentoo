@@ -10549,7 +10549,7 @@ dev-util/bless 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
 dev-util/bnfc 2.8.1 2.8.3: A compiler front-end generator
 dev-util/boost-build 1.72.0 1.74.0: A system for large project software construction, simple to use and powerful
-dev-util/bpftrace 0.11.3-r1 9999: High-level tracing language for eBPF
+dev-util/bpftrace 0.11.4 9999: High-level tracing language for eBPF
 dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
@@ -12746,7 +12746,7 @@ media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and an
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.20-r3 2.10.22-r1 2.99.2 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gmic 2.9.2-r1 2.9.3: GREYC's Magic Image Converter
+media-gfx/gmic 2.9.2-r1 2.9.4: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
@@ -17220,7 +17220,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/rdma-core 30.0-r2 31.0 32.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1 4.6.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
-sys-cluster/singularity 3.6.4: Application containers for Linux
+sys-cluster/singularity 3.6.4 3.7.0: Application containers for Linux
 sys-cluster/slurm 20.02.4.1 20.02.5.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.3 2.4.7-r1 3.0.1-r2: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.1 2.26.0 2020.1.9999 2020.2.9999: A highly available, distributed, and eventually consistent object/blob store
