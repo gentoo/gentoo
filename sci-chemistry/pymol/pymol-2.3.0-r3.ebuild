@@ -25,6 +25,7 @@ DEPEND="
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pmw[${PYTHON_USEDEP}]
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/glm
