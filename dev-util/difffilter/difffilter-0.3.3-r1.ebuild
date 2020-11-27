@@ -11,14 +11,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux"
 
-RDEPEND="
-	>=dev-libs/liblist-2.3.1
+RDEPEND=">=dev-libs/liblist-2.3.1
 	dev-libs/libstrl
-	dev-libs/tre
-"
-DEPEND="
-	${RDEPEND}
-"
+	dev-libs/tre"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_install() {
 	default
