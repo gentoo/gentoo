@@ -114,6 +114,8 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+CMAKE_BUILD_TYPE="Release"
+
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
