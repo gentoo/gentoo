@@ -20,6 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +highlight libressl +lua +luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/cgit

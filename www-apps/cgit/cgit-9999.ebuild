@@ -17,7 +17,8 @@ EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight libressl +lua +luajit"
+IUSE="doc +highlight libressl +lua +luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/cgit
