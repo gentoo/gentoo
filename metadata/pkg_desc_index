@@ -24,6 +24,7 @@ acct-group/cadvisor 0: System group: cadvisor
 acct-group/carbon 0: System group: carbon
 acct-group/cdrom 0: System group: cdrom
 acct-group/ceph 0: System group: ceph
+acct-group/cgit 0: System group: cgit
 acct-group/chronograf 0: System group: chronograf
 acct-group/cinder 0: System group: cinder
 acct-group/clair 0: System group: clair
@@ -281,6 +282,7 @@ acct-user/burp 0: User for the app-backup/burp server
 acct-user/cadvisor 0: User for cadvisor
 acct-user/carbon 0: User for graphite/carbon suite
 acct-user/ceph 0: User for ceph
+acct-user/cgit 0: a fast web-interface for git repositories
 acct-user/chronograf 0: User for chronograf
 acct-user/cinder 0: user for the openstack cinder service
 acct-user/clair 0: User for clair
@@ -10639,7 +10641,7 @@ dev-util/devhelp 3.36.2: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 161: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 161 162: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -17891,7 +17893,7 @@ www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for pr
 www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
 www-apps/bugzilla 5.0.6-r1: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
-www-apps/cgit 1.2.1 1.2.3 9999: a fast web-interface for git repositories
+www-apps/cgit 1.2.1 1.2.3 1.2.3-r1 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20190510: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/chromedriver-bin 87.0.4280.20: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
