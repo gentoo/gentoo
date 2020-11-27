@@ -2722,7 +2722,7 @@ app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.2: Foreign function interface for bash
-app-shells/dash 0.5.11.1 0.5.11.2: Debian Almquist Shell
+app-shells/dash 0.5.11.2: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1 3.0.2 3.1.0 3.1.2 9999: Friendly Interactive SHell
@@ -10723,7 +10723,7 @@ dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files f
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
 dev-util/jenkins-bin 2.249.2 2.249.3 2.264 2.267: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
-dev-util/kbuild 0.1.9998.3149 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
+dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
 dev-util/kdevelop 5.6.0-r1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
