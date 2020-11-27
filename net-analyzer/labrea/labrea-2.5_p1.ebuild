@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P/_p*}-stable-${PV/*_p}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="
 	net-libs/libpcap
