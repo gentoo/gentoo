@@ -118,9 +118,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-define-data-end.patch"
-)
+CMAKE_BUILD_TYPE="Release"
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
