@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/liblist-2.3.1 dev-libs/libstrl dev-libs/tre
 SLOT=0
 SRC_URI=http://mirror.ohnopub.net/mirror/difffilter/difffilter-0.3.3.tar.bz2
-_md5_=40019a7a6d6bb847e478ee110d0ac01f
+_md5_=4fdf7b367a7f4952622d8b3ecc1a453d
