@@ -15,10 +15,14 @@ KEYWORDS="~amd64 ~x86"
 FS_USE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 IUSE="${FS_USE} custom-cflags doc"
 
-DEPEND=">=sys-boot/gnu-efi-3.0.2"
+DEPEND="sys-boot/gnu-efi"
 
-DOCS=(README.txt)
-PATCHES=("${FILESDIR}/makefile.patch")
+PATCHES=(
+	"${FILESDIR}/makefile.patch"
+	"${FILESDIR}/${P}-gcc10.patch" # Bug 723244
+)
+
+DOCS=( README.txt )
 
 pkg_pretend() {
 	if use custom-cflags; then
@@ -78,7 +82,7 @@ src_compile() {
 		FILESYSTEMS_GNUEFI="${fs_names[@]}"
 	)
 	if use custom-cflags; then
-		make_flags=(CFLAGS="${CFLAGS}" "${make_flags[@]}")
+		make_flags=(CFLAGS="${CFLAGS} -fno-tree-loop-distribute-patterns" "${make_flags[@]}")
 	fi
 
 	emake "${make_flags[@]}" all_gnuefi
