@@ -15,7 +15,7 @@ SRC_URI="https://dev.mysql.com/get/Downloads/Connector-ODBC/${MAJOR}/${MY_P}.tar
 
 LICENSE="GPL-2"
 SLOT="${MAJOR}"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 # Broken when built dynamically against libmysqlclient.so
