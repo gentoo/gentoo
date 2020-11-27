@@ -7,6 +7,5 @@
 </maintainer>
 <use>
 	<flag name="berkdb">enable compatibility layer for UNIX-like dbm and ndbm interfaces</flag>
-	<flag name="exporter">enable gdbmexport binary for exporting data from gdbm-1.8 databases into gdbm-1.9</flag>
 </use>
 </pkgmetadata>
