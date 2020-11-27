@@ -7,7 +7,7 @@ DESCRIPTION="Interactive bandwidth monitor"
 HOMEPAGE="http://ibmonitor.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 
