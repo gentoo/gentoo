@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/elem/${PN}-src-${PV}-Linux.tgz"
 LICENSE="GPL-2"
 KEYWORDS="amd64 sparc x86"
 SLOT="0"
-IUSE=""
 
 DEPEND="x11-libs/xforms"
 RDEPEND="${DEPEND}"
@@ -20,6 +19,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-build-system.patch
 	"${FILESDIR}"/${P}-missing-stdlib.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_configure() {
