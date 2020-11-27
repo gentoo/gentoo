@@ -3,10 +3,10 @@ DEPEND=>=net-libs/libpcap-0.4
 DESCRIPTION=A pcap based IP traffic and bandwidth monitor
 EAPI=7
 HOMEPAGE=http://ipband.sourceforge.net/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=net-libs/libpcap-0.4
 SLOT=0
 SRC_URI=mirror://sourceforge/ipband/ipband-0.8.1.tgz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=82fd1e96012c5253e66b77d807e92570
+_md5_=dd79a17dade05bef36d51235fe78486f
