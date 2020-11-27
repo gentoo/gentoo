@@ -8,7 +8,7 @@ DESCRIPTION="GTK frontend to proftpd"
 HOMEPAGE="https://mange.dynalias.org/linux/gproftpd"
 SRC_URI="http://mange.dynup.net/linux/gproftpd/${P}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 SLOT="0"
 
 RDEPEND="
