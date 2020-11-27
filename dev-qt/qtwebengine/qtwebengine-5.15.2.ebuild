@@ -9,7 +9,7 @@ inherit multiprocessing python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 # patchset based on https://github.com/chromium-ppc64le releases
-SRC_URI+=" ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-5.15.0-ppc64.tar.xz )"
+SRC_URI+=" ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-5.15.2-ppc64.tar.xz )"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -87,10 +87,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	if use ppc64; then
-		eapply "${WORKDIR}/${PN}-ppc64"
-	fi
-
 	# QTBUG-88657 - jumbo-build is broken
 	#if ! use jumbo-build; then
 		sed -i -e 's|use_jumbo_build=true|use_jumbo_build=false|' \
@@ -126,6 +122,18 @@ src_prepare() {
 	qt_use_disable_mod widgets widgets src/src.pro
 
 	qt5-build_src_prepare
+
+	# we need to generate ppc64 stuff because upstream does not ship it yet
+	if use ppc64; then
+		einfo "Patching for ppc64le and generating build files"
+		eapply "${WORKDIR}/${PN}-ppc64"
+		pushd src/3rdparty/chromium/third_party/libvpx > /dev/null || die
+		mkdir -vp source/config/linux/ppc64 || die
+		mkdir -p source/libvpx/test || die
+		touch source/libvpx/test/test.mk || die
+		./generate_gni.sh || die
+		popd >/dev/null || die
+	fi
 }
 
 src_configure() {
