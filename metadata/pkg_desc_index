@@ -819,7 +819,7 @@ app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5 9.6.6: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.9 19.2.8: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.11-r2 1.1.13 1.1.14 9999: Deduplicating backup program with compression and authenticated encryption
-app-backup/borgmatic 1.5.10 1.5.11: Automatically create, prune and verify backups with borgbackup
+app-backup/borgmatic 1.5.10 1.5.12: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.29.1 0.30.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.2.18-r1 2.3.36: Network backup and restore client and server for Unix and Windows
@@ -831,7 +831,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.6.10: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.15 0.8.16 0.8.17: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.9.2 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
+app-backup/duply 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
@@ -2777,7 +2777,7 @@ app-text/asciidoc 9.0.2: A plain text human readable/writable document format
 app-text/aspell 0.60.8: A spell checker replacement for ispell
 app-text/atril 1.24.0-r1 1.24.0-r2: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
-app-text/barcode 0.98-r1 0.99: barcode generator
+app-text/barcode 0.99: barcode generator
 app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.17: BibTeX bibliography prettyprinter and syntax checker
 app-text/bibletime 2.11.2 3.0: Qt Bible-study application using the SWORD library
@@ -2938,7 +2938,7 @@ app-text/paperwork 1.3.1: a personal document manager for scanned documents (and
 app-text/paperwork-backend 1.3.1 1.3.1-r1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1 1.53.0: a paragraph reformatter, vaguely similar to fmt, but better
-app-text/pastebinit 1.5-r1 1.5.1: A software that lets you send anything you want directly to a pastebin
+app-text/pastebinit 1.5.1: A software that lets you send anything you want directly to a pastebin
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
 app-text/pdfarranger 1.3.1 1.5.3-r1 1.6.2: Merge or split pdfs; rearrange, rotate, crop pages.
@@ -3015,7 +3015,7 @@ app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.6.0 1.7.0 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
 app-text/txt2tags 3.3 3.7: Generate marked up documents (HTML, etc.)from a plain text file with markup
-app-text/u2ps 0.8.4 1.1 1.2: A text to PostScript converter like a2ps, but supports UTF-8
+app-text/u2ps 1.1 1.2: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
 app-text/unrtf 0.21.10: Converts RTF files to various formats
@@ -15080,7 +15080,7 @@ net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, o
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
 net-misc/igmpproxy 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
-net-misc/ip-sentinel 0.12 0.12-r1: Prevent unauthorized usage of IP addresses
+net-misc/ip-sentinel 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.41 0.42_p2: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.8.1 3.9 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipmiview 2.17.0.200505: A GUI application that allows to manage multiple target systems through BMC
@@ -15110,7 +15110,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1 1.0.6 1.0.7: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.22 1.6.6 1.6.7 1.6.8 1.6.9: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.22 1.6.7 1.6.8 1.6.9: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
@@ -15285,7 +15285,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18 2020.11.19 2020.11.21.1 2020.11.24: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18 2020.11.19 2020.11.21.1 2020.11.24 2020.11.26: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17980,7 +17980,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.4.2066.86_p1 3.4.2066.106_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.5.2115.4 3.5.2115.21: A browser for our friends
+www-client/vivaldi-snapshot 3.5.2115.4 3.5.2115.31: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
