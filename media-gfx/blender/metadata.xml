@@ -42,9 +42,6 @@
 		<flag name="dds">
 			Adds DDS textures support to Blender.
 		</flag>
-		<flag name="doc">
-			Build C and Python API documentation directly from the source code.
-		</flag>
 		<flag name="elbeem">
 			Adds surface fluid simulation to Blender using El'Beem library.
 		</flag>
@@ -85,9 +82,6 @@
 		</flag>
 		<flag name="tbb">
 			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
-		</flag>
-		<flag name="test">
-			Build the provided unit tests.
 		</flag>
 		<flag name="valgrind">
 			Add support for memory debugging using
