@@ -11,7 +11,11 @@ SRC_URI="https://github.com/OtterBrowser/${PN}-browser/archive/v${PV/_p/-dev}.ta
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="spell"
+IUSE="spell webengine +webkit"
+
+REQUIRED_USE="
+	|| ( webengine webkit )
+"
 
 DEPEND="
 	dev-qt/qtconcurrent:5
@@ -28,7 +32,8 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxmlpatterns:5
 	spell? ( kde-frameworks/sonnet )
-	>=dev-qt/qtwebengine-5.9:5[widgets]
+	webengine? ( >=dev-qt/qtwebengine-5.9:5[widgets] )
+	webkit? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="
 	${DEPEND}
@@ -62,8 +67,8 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		-DENABLE_QTWEBENGINE=true
-		-DENABLE_QTWEBKIT=false
+		-DENABLE_QTWEBENGINE=$(usex webengine true false)
+		-DENABLE_QTWEBKIT=$(usex webkit true false)
 	)
 
 	cmake_src_configure
