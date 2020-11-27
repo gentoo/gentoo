@@ -5,31 +5,33 @@ EAPI=7
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit git-r3 toolchain-funcs webapp
+inherit toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
+GIT_V="2.25.1"
+
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
-SRC_URI=""
-EGIT_REPO_URI="https://git.zx2c4.com/cgit"
+SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
+	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc +highlight libressl +lua +luajit"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="doc +highlight libressl +lua +luajit test"
 
 RDEPEND="
 	acct-group/cgit
 	acct-user/cgit
 	dev-vcs/git
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
 	lua? (
 		luajit? ( dev-lang/luajit )
 		!luajit? ( dev-lang/lua:0 )
 	)
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-libs/zlib
 	virtual/httpd-cgi
 "
@@ -44,6 +46,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	rmdir git || die
+	mv "${WORKDIR}"/git-"${GIT_V}" git || die
+
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf
