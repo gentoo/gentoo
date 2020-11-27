@@ -12359,7 +12359,7 @@ mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is us
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 2.0.2: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
-mail-client/neomutt 20200626 20200626-r1 20200821 20200925 20201120 99999999: A small but very powerful text-based mail client
+mail-client/neomutt 20200626 20200626-r1 20200821 20200925 20201120 20201127 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
@@ -14465,7 +14465,7 @@ net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r1 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.2.3: Tools to ease the validation of DNSSEC related technologies
-net-dns/dnstop 20140915 20140915-r2: Displays various tables of DNS traffic on your network
+net-dns/dnstop 20140915-r2: Displays various tables of DNS traffic on your network
 net-dns/dnsviz 0.8.2 0.8.2-r1: Tool suite for analysis and visualization of DNS and DNSSEC
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
@@ -14550,7 +14550,7 @@ net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subv
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
 net-ftp/filezilla 3.47.2.1 3.50.0 3.51.0: FTP client with lots of useful features and an intuitive interface
-net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
+net-ftp/frox 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
@@ -14729,7 +14729,7 @@ net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseban
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcork 0.15.0-r1: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
-net-libs/libcrafter 0.3 0.3_p20171019 1.0 9999: A high level C++ network packet sniffing and crafting library
+net-libs/libcrafter 1.0 9999: A high level C++ network packet sniffing and crafting library
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.3-r2 0.4.0-r1 0.4.1-r1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
@@ -14746,7 +14746,7 @@ net-libs/libhtp 0.5.35: security-aware parser for the HTTP protocol and the rela
 net-libs/libhubbub 0.3.6 0.3.6-r2 0.3.7: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
-net-libs/libircclient 1.8 1.10: Small but powerful library implementing the client-server IRC protocol
+net-libs/libircclient 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.2.0-r1: BitTorrent library based on KDE Frameworks
@@ -14805,7 +14805,7 @@ net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0-r1 2.2.0 2.3.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.5 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.9.0_p20200614 9999: Library implementing the SSH2 protocol
-net-libs/libtelnet 0.21 0.23 9999: Simple RFC-complient TELNET implementation as a C library
+net-libs/libtelnet 0.23 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.5 1.2.6: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
@@ -17241,7 +17241,7 @@ sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake 
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1 9999: Tools necessary to build programs
-sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
+sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1 11.3.1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1 2.35.1-r1: Tools necessary to build programs
 sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.3 3.7.4: A general-purpose (yacc-compatible) parser generator
