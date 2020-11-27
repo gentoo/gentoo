@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libressl ssl diet"
 REQUIRED_USE="ssl? ( !diet )"
 
-DEPEND=">=dev-libs/libowfat-0.25[diet=]
+DEPEND=">=dev-libs/libowfat-0.32-r2[diet=]
 	diet? ( dev-libs/dietlibc )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
