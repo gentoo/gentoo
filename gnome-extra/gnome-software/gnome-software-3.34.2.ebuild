@@ -17,7 +17,7 @@ RESTRICT="test" # writes to and deletes files in /var/tmp/self-test/
 RDEPEND="
 	>=dev-libs/appstream-glib-0.7.14:0
 	>=x11-libs/gdk-pixbuf-2.32.0:2
-	>=dev-libs/libxmlb-0.1.7
+	>=dev-libs/libxmlb-0.1.7:=
 	net-libs/gnome-online-accounts:=
 	>=x11-libs/gtk+-3.22.4:3
 	>=dev-libs/glib-2.56:2
