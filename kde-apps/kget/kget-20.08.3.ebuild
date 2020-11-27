@@ -68,3 +68,13 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+src_test() {
+	# bug 756817: schedulertest fails, see also upstream commit 45735cfa
+	# filedeletertest hangs.
+	local myctestargs=(
+		-E "(schedulertest|filedeletertest)"
+	)
+
+	ecm_src_test
+}
