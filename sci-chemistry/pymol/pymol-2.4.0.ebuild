@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 desktop optfeature flag-o-matic xdg-utils
 
