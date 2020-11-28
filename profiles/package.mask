@@ -508,6 +508,7 @@ dev-lua/luacrypto
 =dev-libs/efl-1.25.1-r10
 >=dev-lua/busted-2.0.0-r100
 >=dev-lua/dkjson-2.5-r100
+>=dev-lua/ldoc-1.4.6-r100
 >=dev-lua/lpeg-1.0.2-r100
 >=dev-lua/lua-bit32-5.3.5-r100
 >=dev-lua/lua-zlib-1.2-r100
