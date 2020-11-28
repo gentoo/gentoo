@@ -23,7 +23,7 @@ RESTRICT="test"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+headless qt5 sdl +system-ffmpeg"
+IUSE="qt5 sdl +system-ffmpeg"
 REQUIRED_USE="!qt5? ( sdl )"
 
 RDEPEND="
@@ -81,7 +81,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package sdl SDL2)
-		-DHEADLESS=$(usex headless)
+		-DHEADLESS=true
 		-DUSE_SYSTEM_FFMPEG=$(usex system-ffmpeg)
 		-DUSE_SYSTEM_LIBZIP=ON
 		-DUSE_SYSTEM_SNAPPY=ON
@@ -99,7 +99,7 @@ src_install() {
 		doicon -s "${i}" icons/hicolor/"${i}x${i}"/apps/"${PN}.png"
 	done
 
-	use headless && dobin "${BUILD_DIR}/PPSSPPHeadless"
+	dobin "${BUILD_DIR}/PPSSPPHeadless"
 	dobin "${BUILD_DIR}/PPSSPP$(usex qt5 Qt SDL)"
 	make_desktop_entry "PPSSPP$(usex qt5 Qt SDL)" "PPSSPP ($(usex qt5 Qt SDL))" "${PN}" "Game"
 }
