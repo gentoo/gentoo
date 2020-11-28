@@ -4495,7 +4495,7 @@ dev-haskell/x509 1.7.5: X509 reader and writer
 dev-haskell/x509-store 1.6.7: X.509 collection accessing and storing methods
 dev-haskell/x509-system 1.6.6: Handle per-operating-system X.509 accessors and storage
 dev-haskell/x509-validation 1.6.11: X.509 Certificate and CRL validation
-dev-haskell/xhtml 3000.2.1-r1 3000.2.2.1: An XHTML combinator library
+dev-haskell/xhtml 3000.2.2.1: An XHTML combinator library
 dev-haskell/xml 1.3.14: A simple XML library
 dev-haskell/xml-conduit 1.9.0.0: Pure-Haskell utilities for dealing with XML with the conduit package
 dev-haskell/xml-hamlet 0.5.0.1: Hamlet-style quasiquoter for XML content
@@ -10645,7 +10645,7 @@ dev-util/devhelp 3.36.2: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 161 162: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 162: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -11274,7 +11274,7 @@ games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r8 1.51-r9: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
-games-engines/dMagnetic 0.27: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
+games-engines/dMagnetic 0.28: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.1 1.0.3 1.1.0 9999: Diablo engine for modern operating systems
 games-engines/exult 1.6: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
@@ -17257,7 +17257,7 @@ sys-devel/clang 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: C language f
 sys-devel/clang-common 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20200801 20201108 20201122 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20200801 20201122 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
@@ -18556,7 +18556,7 @@ x11-misc/xsettingsd 1.0.0: Provides settings to X11 applications via the XSETTIN
 x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r2 3.0.7: let it snow on your desktop and windows
 x11-misc/xsr 1.0.0: X Steps Recorder
-x11-misc/xsri 2.1.0-r3 2.1.0_p17_p12: The xsri wallpaper setter from RedHat
+x11-misc/xsri 2.1.0_p17_p12: The xsri wallpaper setter from RedHat
 x11-misc/xss-lock 0.3.0_p20140302-r1: Use external locker as X screen saver
 x11-misc/xssstate 1.1: A simple tool to retrieve the X screensaver state
 x11-misc/xstroke 0.6-r1: Gesture/Handwriting recognition engine for X
