@@ -1,8 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit user
+EAPI=7
 
 DESCRIPTION="A forwarding, non-caching, compressing web proxy server"
 HOMEPAGE="http://ziproxy.sourceforge.net/"
@@ -14,6 +13,8 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="sasl xinetd"
 
 RDEPEND="
+	acct-group/ziproxy
+	acct-user/ziproxy
 	media-libs/giflib:0=
 	media-libs/libpng:0=
 	virtual/jpeg:0
@@ -23,12 +24,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-giflib5.patch )
-
-pkg_setup() {
-	enewgroup ziproxy
-	enewuser ziproxy -1 -1 -1 ziproxy
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-giflib5.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
@@ -58,7 +57,7 @@ src_install() {
 	default
 
 	dodir /usr/sbin
-	mv -vf "${D}"usr/{,s}bin/ziproxy || die
+	mv -vf "${ED}"/usr/{,s}bin/ziproxy || die
 
 	dobin src/tools/ziproxy_genhtml_stats.sh
 
