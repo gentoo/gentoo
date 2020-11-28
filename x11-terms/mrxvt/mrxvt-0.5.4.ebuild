@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-001-fix-segfault-when-wd-empty.patch
 	eapply "${FILESDIR}"/${P}-libpng14.patch
+	eapply "${FILESDIR}"/${P}-fno-common.patch
 	eapply_user
 
 	eautoreconf
