@@ -14,3 +14,4 @@ virtual/rust
 >=sys-auth/polkit-0.118
 >=dev-libs/gjs-1.66
 >=gnome-base/gnome-shell-3.38
+>=x11-themes/adwaita-icon-theme-3.36
