@@ -55,7 +55,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" PREFIX="${EPREFIX}/usr" INSTALL_BIN=install install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" INSTALL_BIN=install install
 
 	# sys-process is more advanced than parallel from moreutils, rename it
 	if use doc; then
