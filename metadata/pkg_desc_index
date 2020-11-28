@@ -15027,7 +15027,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 8.1.9 9.3.2 9.3.3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 8.1.9 9.3.3 9.3.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.7-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -17403,7 +17403,7 @@ sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3 3.10.0: An interface for filesystems impl
 sys-fs/fuse-common 3.9.1 3.9.2 3.9.3: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
-sys-fs/fuse-overlayfs 1.1.2 1.2.0: FUSE implementation for overlayfs
+sys-fs/fuse-overlayfs 1.1.2 1.2.0 1.3.0: FUSE implementation for overlayfs
 sys-fs/fuse-zip 0.7.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuseiso 20070708-r3: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
@@ -18020,7 +18020,7 @@ www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0 2.2.1: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/civetweb 1.11 1.12: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
-www-servers/gatling 0.15: High performance web server
+www-servers/gatling 0.15 0.16: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55-r1 1.4.55-r100: Lightweight high-performance web server
