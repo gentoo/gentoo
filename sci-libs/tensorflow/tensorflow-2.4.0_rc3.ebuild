@@ -118,7 +118,7 @@ RDEPEND="
 		>=net-libs/google-cloud-cpp-0.10.0
 		>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.1.2[${PYTHON_USEDEP}]
-		>=sci-visualization/tensorboard-2.3.0[${PYTHON_USEDEP}]
+		>=sci-visualization/tensorboard-2.4.0[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	python? (
