@@ -12,8 +12,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="net-im/pidgin
-	dev-libs/json-glib"
+RDEPEND="dev-libs/json-glib
+	net-im/pidgin"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/skype4pidgin-${PV}/skypeweb"
