@@ -1,15 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools user
+inherit autotools
 
-if [[ ${PV} == 9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/dlundquist/sniproxy.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/dlundquist/sniproxy/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -24,18 +23,18 @@ IUSE="+dns +largefile rfc3339 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-group/sniproxy
+	acct-user/sniproxy
 	dev-libs/libev
 	>=dev-libs/libpcre-3
-	dns? ( net-libs/udns )
-"
+	dns? ( net-libs/udns )"
+DEPEND="${RDEPEND}
+	test? ( net-misc/curl )"
 BDEPEND="
-	${RDEPEND}
 	sys-devel/gettext
-	virtual/pkgconfig
-"
-DEPEND="
-	test? ( net-misc/curl )
-"
+	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
@@ -55,6 +54,10 @@ src_configure() {
 	econf "${my_conf[@]}"
 }
 
+src_test() {
+	emake -j1 check
+}
+
 src_install() {
 	default
 
@@ -71,13 +74,4 @@ src_install() {
 	dodoc ARCHITECTURE.md AUTHORS README.md
 	doman man/sniproxy.8
 	doman man/sniproxy.conf.5
-}
-
-src_test() {
-	emake -j1 check
-}
-
-pkg_postinst() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /var/lib/sniproxy "${PN}"
 }
