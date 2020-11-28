@@ -294,12 +294,6 @@ net-vpn/strongswan strongswan_plugins_unbound
 app-i18n/anthy canna-2ch
 app-i18n/scim-anthy kasumi
 
-# Gilles Dartiguelongue <eva@gentoo.org> (2014-12-23)
-# New dependencies for wayland support in Gnome 3.14
-# See bug #533420.
-media-libs/clutter egl wayland
-media-libs/clutter-gtk wayland
-
 # Markus Meier <maekke@gentoo.org> (2014-11-29)
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
