@@ -378,7 +378,7 @@ distutils_enable_sphinx() {
 }
 
 # @FUNCTION: distutils_enable_tests
-# @USAGE: <test-runner>
+# @USAGE: [--install] <test-runner>
 # @DESCRIPTION:
 # Set up IUSE, RESTRICT, BDEPEND and python_test() for running tests
 # with the specified test runner.  Also copies the current value
@@ -389,6 +389,10 @@ distutils_enable_sphinx() {
 # - setup.py: setup.py test (no deps included)
 # - unittest: for built-in Python unittest module
 #
+# Additionally, if --install is passed as the first parameter,
+# 'distutils_install_for_testing --via-root' is called before running
+# the test suite.
+#
 # This function is meant as a helper for common use cases, and it only
 # takes care of basic setup.  You still need to list additional test
 # dependencies manually.  If you have uncommon use case, you should
@@ -398,33 +402,71 @@ distutils_enable_sphinx() {
 # declared.  Take care not to overwrite the variables set by it.
 distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
-	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
+	local do_install=
+	case ${1} in
+		--install)
+			do_install=1
+			shift
+			;;
+	esac
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 	local test_pkg
 	case ${1} in
 		nose)
 			test_pkg=">=dev-python/nose-1.3.7-r4"
-			python_test() {
-				nosetests -v || die "Tests fail with ${EPYTHON}"
-			}
+			if [[ ${do_install} ]]; then
+				python_test() {
+					distutils_install_for_testing --via-root
+					nosetests -v || die "Tests fail with ${EPYTHON}"
+				}
+			else
+				python_test() {
+					nosetests -v || die "Tests fail with ${EPYTHON}"
+				}
+			fi
 			;;
 		pytest)
 			test_pkg=">=dev-python/pytest-4.5.0"
-			python_test() {
-				pytest -vv || die "Tests fail with ${EPYTHON}"
-			}
+			if [[ ${do_install} ]]; then
+				python_test() {
+					distutils_install_for_testing --via-root
+					pytest -vv || die "Tests fail with ${EPYTHON}"
+				}
+			else
+				python_test() {
+					pytest -vv || die "Tests fail with ${EPYTHON}"
+				}
+			fi
 			;;
 		setup.py)
-			python_test() {
-				nonfatal esetup.py test --verbose ||
-					die "Tests fail with ${EPYTHON}"
-			}
+			if [[ ${do_install} ]]; then
+				python_test() {
+					distutils_install_for_testing --via-root
+					nonfatal esetup.py test --verbose ||
+						die "Tests fail with ${EPYTHON}"
+				}
+			else
+				python_test() {
+					nonfatal esetup.py test --verbose ||
+						die "Tests fail with ${EPYTHON}"
+				}
+			fi
 			;;
 		unittest)
-			python_test() {
-				"${EPYTHON}" -m unittest discover -v ||
-					die "Tests fail with ${EPYTHON}"
-			}
+			if [[ ${do_install} ]]; then
+				python_test() {
+					distutils_install_for_testing --via-root
+					"${EPYTHON}" -m unittest discover -v ||
+						die "Tests fail with ${EPYTHON}"
+				}
+			else
+				python_test() {
+					"${EPYTHON}" -m unittest discover -v ||
+						die "Tests fail with ${EPYTHON}"
+				}
+			fi
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
