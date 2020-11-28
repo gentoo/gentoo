@@ -1,0 +1,12 @@
+diff -ruN a/common/unicode/platform.h b/common/unicode/platform.h
+--- a/common/unicode/platform.h	2020-10-28 23:21:12.000000000 +0200
++++ b/common/unicode/platform.h	2020-11-28 20:48:53.223629867 +0200
+@@ -649,7 +649,7 @@
+     /* Use the predefined value. */
+ #elif U_PLATFORM_IS_LINUX_BASED || U_PLATFORM_IS_DARWIN_BASED || \
+         U_PLATFORM == U_PF_EMSCRIPTEN
+-#   define U_CHARSET_IS_UTF8 1
++#   define U_CHARSET_IS_UTF8 0
+ #else
+ #   define U_CHARSET_IS_UTF8 0
+ #endif
