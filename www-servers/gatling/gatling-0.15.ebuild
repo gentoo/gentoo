@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.13-compile.patch"
+	"${FILESDIR}/${P}-ar.patch"
 	"${FILESDIR}/${P}-gcc10.patch"
 )
 
