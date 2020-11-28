@@ -22,6 +22,11 @@ RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 "
 
+# Only needed by this specific release, already fixed upstream
+PATCHES=(
+	"${FILESDIR}"/${PN}-2020.11.26-fix_spreakershowie_test_url.patch
+)
+
 distutils_enable_tests nose
 
 src_prepare() {
