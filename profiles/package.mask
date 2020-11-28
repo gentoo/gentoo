@@ -527,6 +527,7 @@ dev-lua/luacrypto
 >=dev-lua/luv-1.32.0.0-r100
 >=dev-lua/mediator_lua-1.1.2_p0-r100
 >=dev-lua/messagepack-0.3.2-r100
+>=dev-lua/mpack-1.0.4-r100
 >=dev-lua/penlight-1.9.2-r100
 >=dev-lua/say-1.3_p1-r100
 >=dev-lua/toluapp-1.0.93_p20190513-r100
