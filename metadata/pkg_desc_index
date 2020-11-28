@@ -5082,7 +5082,7 @@ dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for 
 dev-lang/ispc 1.14.1 9999: Intel SPMD Program Compiler
 dev-lang/janet 1.9.1 1.12.2: A dynamic Lisp dialect and bytecode vm
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
-dev-lang/jsonnet 0.15.0 0.16.0 0.16.0-r2 0.17.0: A data templating language for app and tool developers
+dev-lang/jsonnet 0.15.0 0.16.0 0.16.0-r2 0.17.0-r1: A data templating language for app and tool developers
 dev-lang/julia 1.2.0 1.3.0 1.4.0-r1 1.4.0-r2 1.5.2: High-performance programming language for technical computing
 dev-lang/julia-bin 1.2.0 1.3.0 1.4.0 1.5.2: High-performance programming language for technical computing
 dev-lang/jwasm 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
@@ -7835,9 +7835,9 @@ dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different
 dev-python/PyGithub 1.53: Python library to access the Github API v3
 dev-python/PyICU 2.5: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.14.2-r1 5.15.0-r1 5.15.1: Python bindings for the Qt framework
-dev-python/PyQt5-sip 4.19.22-r1 4.19.23-r1 4.19.24: Private sip module for PyQt5
-dev-python/PyQtWebEngine 5.14.0 5.15.1_pre2006110847 5.15.1: Python bindings for QtWebEngine
+dev-python/PyQt5 5.15.1: Python bindings for the Qt framework
+dev-python/PyQt5-sip 4.19.24: Private sip module for PyQt5
+dev-python/PyQtWebEngine 5.15.1: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1-r1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
@@ -8842,7 +8842,7 @@ dev-python/python-debian 0.1.37: Python modules to work with Debian-related data
 dev-python/python-designateclient 4.1.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
-dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.5 3.8.6 3.9.0: HTML documentation for Python
+dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.6 3.9.0: HTML documentation for Python
 dev-python/python-dotenv 0.14.0 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libraries
@@ -9044,7 +9044,7 @@ dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.13: Object-oriented, process-based discrete-event simulation language
-dev-python/sip 4.19.22-r1 4.19.24: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.24: Python extension module generator for C and C++ libraries
 dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
@@ -13260,7 +13260,7 @@ media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
 media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/shaderc 2018.0 2019.0-r1 2020.1 2020.2 2020.4_pre20201106: Collection of tools, libraries and tests for shader compilation
+media-libs/shaderc 2020.2 2020.4_pre20201106: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.8.0: Image and video texturing library
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
