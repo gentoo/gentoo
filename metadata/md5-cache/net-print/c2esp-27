@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/jbigkit-2.0-r1:= >=net-print/cups-1.6 sys-libs/zlib:=
 SLOT=0
 SRC_URI=mirror://sourceforge/cupsdriverkodak/files/c2esp-27.tar.gz
-_md5_=539037b3c07557d7cfbdd2999b2ebe04
+_md5_=8145e23d378cd3f56c84babf2ca38c95

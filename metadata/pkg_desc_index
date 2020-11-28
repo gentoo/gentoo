@@ -199,6 +199,7 @@ acct-group/smmsp 0: System group: smmsp
 acct-group/smtpd 0: daemon group for smtpd
 acct-group/smtpq 0: queue group for smtpd
 acct-group/snapserver 0: Server group for media-sound/snapcast
+acct-group/sniproxy 0: System group: sniproxy
 acct-group/sobexsrv 0: A group for sobexsrv: a secure OBEX server
 acct-group/sogo 0: Group for gnustep-apps/sogo
 acct-group/spamd 0: Group for the SpamAssassin daemon
@@ -258,6 +259,7 @@ acct-group/x2goprint 0: Group for net-misc/x2goserver
 acct-group/x2gouser 0: Group for net-misc/x2goserver
 acct-group/xpra 0: group for x11-wm/xpra
 acct-group/xrootd 0: Group for the XRootD server
+acct-group/ziproxy 0: System group: ziproxy
 acct-group/znc 0: Group for net-irc/znc
 acct-user/abrt 0: A user for the automatic bug detection and reporting tool
 acct-user/airdcppd 0: User for net-p2p/airdcpp-webclient
@@ -449,6 +451,7 @@ acct-user/smtpd 0: daemon user for smtpd
 acct-user/smtpq 0: queue user for smtpd
 acct-user/snapclient 0: Client user for media-sound/snapcast
 acct-user/snapserver 0: Server user for media-sound/snapcast
+acct-user/sniproxy 0: System user: sniproxy
 acct-user/sobexsrv 0: A user for sobexsrv: a secure OBEX server
 acct-user/sogo 0: User for gnustep-apps/sogo
 acct-user/spamd 0: User for the SpamAssassin daemon
@@ -497,6 +500,7 @@ acct-user/wesnoth 0: user for games-strategy/wesnoth
 acct-user/x2goprint 0: User for net-misc/x2goserver
 acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
+acct-user/ziproxy 0: System user: ziproxy
 acct-user/znc 0: User for net-irc/znc
 app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2 2.38.0: Gtk module for bridging AT-SPI to Atk
@@ -5685,13 +5689,13 @@ dev-lisp/roswell 20.01.14.104 20.04.14.105 20.05.14.106: A lisp installer and la
 dev-lisp/sbcl 1.3.11 1.4.9 1.5.6 1.5.7 1.5.8 2.0.0 2.0.1 2.0.3 2.0.4 2.0.5 2.0.7 2.0.8 2.0.9 2.0.10: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
-dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
+dev-lua/LuaBitOp 1.0.2-r2 1.0.2-r100: Bit Operations Library for the Lua Programming Language
 dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1 2.0.0 2.0.0-r101: Elegant Lua unit testing
 dev-lua/dkjson 2.5 2.5-r100: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/ldoc 1.4.6 1.4.6-r100: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.9.2: Lua bindings using gobject-introspection
-dev-lua/lpeg 1.0.1 1.0.2 1.0.2-r100: Parsing Expression Grammars for Lua
+dev-lua/lpeg 1.0.1 1.0.2 1.0.2-r100 1.0.2-r101: Parsing Expression Grammars for Lua
 dev-lua/lua-argparse 0.6.0-r1: Command line argument parser for the Lua Programming Language
 dev-lua/lua-bit32 5.3.5-r2 5.3.5-r101: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
@@ -5708,7 +5712,7 @@ dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.6 0.4.6-r100: Binding of libevent for Lua
 dev-lua/luaexpat 1.3.0-r2 1.3.0-r100 1.3.3-r2 1.3.3-r100: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.8.0-r1 1.8.0-r100: File System Library for the Lua programming language
-dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
+dev-lua/luajson 1.3.3 1.3.4: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
 dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL module in the Lua universe.
 dev-lua/luaposix 35.0: Bindings for POSIX APIs
@@ -15267,7 +15271,7 @@ net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to clien
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
 net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
-net-misc/usbip 3.19 4.13: Userspace utilities for a general USB device sharing system over IP networks
+net-misc/usbip 4.13-r1: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
@@ -15439,7 +15443,7 @@ net-proxy/torsocks 2.2.0 2.3.0: Use most socks-friendly applications with Tor
 net-proxy/trojan 1.16.0-r1 9999: An unidentifiable mechanism that helps you bypass GFW
 net-proxy/tsocks 1.8_beta5-r8 1.8_beta5-r9: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
-net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
+net-proxy/ziproxy 3.3.1-r2: A forwarding, non-caching, compressing web proxy server
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-rakia 0.8.0-r1: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r3: A link-local XMPP connection manager for Telepathy
@@ -15985,7 +15989,7 @@ sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.7.2 0.7.6: HF propagation prediction tool
 sci-electronics/xcircuit 3.9.73: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 3.5.1 4.1.1: A GTK+ graphical interactive version of nec2c
-sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
+sci-electronics/xoscope 2.0 2.2: Soundcard Oscilloscope for X
 sci-geosciences/GeographicLib 1.50.1: C++ classes for performing conversions between geographic coordinates
 sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
 sci-geosciences/congen 1.6.2-r1: Calculate speeds, equilibrium arguments, node factors of tidal constituents
@@ -18034,7 +18038,7 @@ www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share
 www-servers/puma 3.12.5-r1 4.3.4-r1 5.0.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4_p20200211 0.5.1: Serve a single file via HTTP
-www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
+www-servers/sniproxy 0.5.0 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.106 7.0.107 8.5.59 8.5.60 9.0.38-r1 9.0.40: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container

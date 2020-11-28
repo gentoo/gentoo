@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=acct-group/ziproxy acct-user/ziproxy media-libs/giflib:0= media-libs/libpng:0= virtual/jpeg:0 sys-libs/zlib sasl? ( dev-libs/cyrus-sasl ) xinetd? ( virtual/inetd )
+DESCRIPTION=A forwarding, non-caching, compressing web proxy server
+EAPI=7
+HOMEPAGE=http://ziproxy.sourceforge.net/
+IUSE=sasl xinetd
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=acct-group/ziproxy acct-user/ziproxy media-libs/giflib:0= media-libs/libpng:0= virtual/jpeg:0 sys-libs/zlib sasl? ( dev-libs/cyrus-sasl ) xinetd? ( virtual/inetd )
+SLOT=0
+SRC_URI=mirror://sourceforge/ziproxy/ziproxy-3.3.1.tar.xz
+_md5_=4201d0f13e4fb9a5cee0447078e28611
