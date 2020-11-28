@@ -492,7 +492,7 @@ esetup.py() {
 }
 
 # @FUNCTION: distutils_install_for_testing
-# @USAGE: [<args>...]
+# @USAGE: [--via-root|--via-home] [<args>...]
 # @DESCRIPTION:
 # Install the package into a temporary location for running tests.
 # Update PYTHONPATH appropriately and set TEST_DIR to the test
@@ -503,11 +503,19 @@ esetup.py() {
 # namespaces (and therefore proper install needs to be done to enforce
 # PYTHONPATH) or tests rely on the results of install command.
 # For most of the packages, tests built in BUILD_DIR are good enough.
+#
+# The function supports two install modes.  The current default is
+# the legacy --via-home mode.  However, it has problems with newer
+# versions of setuptools (50.3.0+).  The --via-root mode generally
+# works for these packages, and it will probably become the default
+# in the future, once we test all affected packages.  Please note
+# that proper testing sometimes requires unmerging the package first.
 distutils_install_for_testing() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	# A few notes:
-	# 1) because of namespaces, we can't use 'install --root',
+	# 1) because of namespaces, we can't use 'install --root'
+	#    (NB: this is probably no longer true with py3),
 	# 2) 'install --home' is terribly broken on pypy, so we need
 	#    to override --install-lib and --install-scripts,
 	# 3) non-root 'install' complains about PYTHONPATH and missing dirs,
@@ -522,14 +530,39 @@ distutils_install_for_testing() {
 	PATH=${bindir}:${PATH}
 	PYTHONPATH=${libdir}:${PYTHONPATH}
 
-	local add_args=(
-		install
-			--home="${TEST_DIR}"
-			--install-lib="${libdir}"
-			--install-scripts="${bindir}"
-	)
+	local install_method=home
+	case ${1} in
+		--via-home)
+			install_method=home
+			shift
+			;;
+		--via-root)
+			install_method=root
+			shift
+			;;
+	esac
 
-	mkdir -p "${libdir}" || die
+	local -a add_args
+	case ${install_method} in
+		home)
+			add_args=(
+				install
+					--home="${TEST_DIR}"
+					--install-lib="${libdir}"
+					--install-scripts="${bindir}"
+			)
+			mkdir -p "${libdir}" || die
+			;;
+		root)
+			add_args=(
+				install
+					--root="${TEST_DIR}"
+					--install-lib=lib
+					--install-scripts=scripts
+			)
+			;;
+	esac
+
 	esetup.py "${add_args[@]}" "${@}"
 }
 
