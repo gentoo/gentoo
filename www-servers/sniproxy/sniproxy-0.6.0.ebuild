@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools user
+inherit autotools
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/dlundquist/sniproxy.git"
@@ -24,18 +24,21 @@ IUSE="+dns +largefile rfc3339 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-group/sniproxy
+	acct-user/sniproxy
 	dev-libs/libev
 	>=dev-libs/libpcre-3
 	dns? ( net-libs/udns )
 "
 BDEPEND="
-	${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-DEPEND="
+DEPEND="${RDEPEND}
 	test? ( net-misc/curl )
 "
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
@@ -75,9 +78,4 @@ src_install() {
 
 src_test() {
 	emake -j1 check
-}
-
-pkg_postinst() {
-	enewgroup "${PN}"
-	enewuser "${PN}" -1 -1 /var/lib/sniproxy "${PN}"
 }
