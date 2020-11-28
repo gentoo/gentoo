@@ -48,7 +48,7 @@ lockfile.o:	lockfile.c
 			-c lockfile.c
 
 xlockfile.o:	lockfile.c
-		$(CC) $(CFLAGS) -c lockfile.c -o xlockfile.o
+		$(CC) $(CFLAGS) -DLOCKPROG=\"$(bindir)/dotlockfile\" -c lockfile.c -o xlockfile.o
 
 install_static:	static install_common
 		install -m 644 liblockfile.a $(ROOT)$(libdir)
