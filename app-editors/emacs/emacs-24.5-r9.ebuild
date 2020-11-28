@@ -298,7 +298,7 @@ src_install() {
 
 	dodoc README BUGS
 
-	if use aqua; then
+	if use gui && use aqua; then
 		dodir /Applications/Gentoo
 		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
 		mv nextstep/Emacs.app \
@@ -312,14 +312,16 @@ src_install() {
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."
-	use gui && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
-		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
-		machine would satisfy basic Emacs requirements under X11.
-		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
-		for how to enable anti-aliased fonts."
-	use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
-		\"${EPREFIX}/Applications/Gentoo\". You may want to copy or symlink
-		it into /Applications by yourself."
+	if use gui; then
+		DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+			Installing media-fonts/font-adobe-{75,100}dpi on the X server's
+			machine would satisfy basic Emacs requirements under X11.
+			See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
+			for how to enable anti-aliased fonts."
+		use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
+			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
+			symlink it into /Applications by yourself."
+	fi
 	readme.gentoo_create_doc
 }
 
