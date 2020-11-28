@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>williamh@gentoo.org</email>
-		<name>William Hubbs</name>
+		<email>nemunaire@nemunai.re</email>
+		<name>Pierre-Olivier Mercier</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>conikost@gentoo.org</email>
-		<name>Conrad Kostecki</name>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 </pkgmetadata>

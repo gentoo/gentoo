@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils
+
+inherit autotools
 
 DESCRIPTION="Multi-tabbed rxvt clone with XFT, transparent background and CJK support"
 HOMEPAGE="http://materm.sourceforge.net/"
@@ -15,31 +16,37 @@ KEYWORDS="~alpha amd64 ~arm64 ~mips ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 L10N_IUSE="l10n_el l10n_ja l10n_ko l10n_th l10n_zh-CN l10n_zh-TW"
 IUSE="debug png jpeg session truetype menubar utempter xpm ${L10N_IUSE}"
 
-RDEPEND="png? ( media-libs/libpng )
-	utempter? ( sys-libs/libutempter )
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXrender
+	x11-libs/libXt
 	jpeg? ( virtual/jpeg )
-	truetype? ( x11-libs/libXft
+	png? ( media-libs/libpng:= )
+	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
-		elibc_uclibc? ( dev-libs/libiconv ) )
-	x11-libs/libX11
-	x11-libs/libXt
-	xpm? ( x11-libs/libXpm )
-	x11-libs/libXrender"
-
-DEPEND="${RDEPEND}
+		x11-libs/libXft
+		elibc_uclibc? ( dev-libs/libiconv )
+	)
+	utempter? ( sys-libs/libutempter )
+	xpm? ( x11-libs/libXpm )"
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto"
 
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-001-fix-segfault-when-wd-empty.patch
-	eapply "${FILESDIR}"/${P}-libpng14.patch
-	eapply_user
+PATCHES=(
+	"${FILESDIR}"/${P}-001-fix-segfault-when-wd-empty.patch
+	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
+src_prepare() {
+	default
 	eautoreconf
 
 	if use elibc_uclibc && use truetype; then
 		# It is stated in the README "Multichar support under XFT requires GNU iconv"
-		sed -i -e 's/LIBS = @LIBS@/LIBS = @LIBS@ -liconv/' "${S}/src/Makefile.in"
+		sed -i -e 's/LIBS = @LIBS@/LIBS = @LIBS@ -liconv/' src/Makefile.in || die
 	fi
 }
 
@@ -102,7 +109,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -z $RXVT_TERM ]]; then
+	if [[ -z ${RXVT_TERM} ]]; then
 		einfo
 		einfo "If you experience problems with curses programs, then this is"
 		einfo "most likely because of incorrectly set termcap / terminfo"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/lua-5.1.5-r2:*[${MULTILIB_USEDEP}]"
+RDEPEND=">=dev-lang/lua-5.1.5-r2:0[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
