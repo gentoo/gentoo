@@ -51,7 +51,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	emake CFLAGS="${CFLAGS}" DOCBOOKXSL=/usr/share/sgml/docbook/xsl-stylesheets PREFIX="${EPREFIX}/usr"
+	emake CFLAGS="${CFLAGS}" DOCBOOKXSL="${EPREFIX}"/usr/share/sgml/docbook/xsl-stylesheets PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
