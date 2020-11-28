@@ -118,6 +118,7 @@ acct-group/mgraph 0: Group for net-mail/mailgraph
 acct-group/milter-regex 0: Group for mail-filter/milter-regex
 acct-group/minecraft 0: A group for the Minecraft server
 acct-group/minetest 0: A group for the Minetest server
+acct-group/minidlna 0: System group: minidlna
 acct-group/mongodb 0: MongoDB program group
 acct-group/mongodb_exporter 0: System group: mongodb_exporter
 acct-group/monitorix 0: Monitorix system tool group
@@ -363,6 +364,7 @@ acct-user/mgraph 0: User for net-mail/mailgraph
 acct-user/milter-regex 0: User for mail-filter/milter-regex
 acct-user/minecraft 0: A user for the Minecraft server
 acct-user/minetest 0 1: A user for the Minetest server
+acct-user/minidlna 0: System user: minidlna
 acct-user/mongodb 0: MongoDB program user
 acct-user/mongodb_exporter 0: user for mongodb_exporter
 acct-user/monitorix 0: Monitorix system tool user
@@ -15117,7 +15119,7 @@ net-misc/memcached 1.5.22 1.6.7 1.6.8 1.6.9: High-performance, distributed memor
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
-net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
+net-misc/minidlna 1.2.1-r1 1.3.0: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824 1.5.20200928: MiniSSDP Daemon
 net-misc/miniupnpd 2.1.20200510 2.2.0_rc2 2.2.0_rc3 2.2.0: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
@@ -15288,7 +15290,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 2020.11.01.1 2020.11.12 2020.11.18 2020.11.19 2020.11.21.1 2020.11.24 2020.11.26: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.26 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
