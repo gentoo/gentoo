@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-tinfo.patch
 	"${FILESDIR}"/${PN}-xkb.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 DOCS=( AUTHORS NEWS README RELNOTE doc )
 
