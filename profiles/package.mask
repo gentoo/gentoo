@@ -499,6 +499,8 @@ dev-lua/luacrypto
 # All these ebuilds require slotted Lua, which is still masked.
 # Ulrich Müller <ulm@gentoo.org> (2020-11-06)
 # Added sci-visualization/gnuplot.
+# Robin H. Johnson <robbat2@gentoo.org> (2020-11-28)
+# Added dev-lua/lpeg
 >=app-admin/conky-1.11.4
 >=app-benchmarks/sysbench-1.0.20-r100
 >=app-benchmarks/wrk-4.1.0-r100
@@ -548,6 +550,7 @@ dev-lua/luacrypto
 >=www-apache/mod_security-2.9.3-r100
 >=www-client/elinks-0.13.5-r100
 >=www-servers/lighttpd-1.4.55-r100
+>=dev-lua/lpeg-1.0.2-r100
 
 # Andrew Savchenko <bircoph@gentoo.org> (2020-10-11)
 # Mask old openafs version and corresponding openafs-kernel with
