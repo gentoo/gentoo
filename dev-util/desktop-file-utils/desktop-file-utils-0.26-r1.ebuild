@@ -13,12 +13,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="emacs"
 
-RDEPEND=">=dev-libs/glib-2.12:2
-	emacs? ( >=app-editors/emacs-23.1:* )"
+RDEPEND=">=dev-libs/glib-2.12:2"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
 SITEFILE="50${PN}-gentoo.el"
