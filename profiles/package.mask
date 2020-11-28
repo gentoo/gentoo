@@ -190,11 +190,6 @@ app-text/kchmviewer
 # Bugs #712200 and 725388. Removal in 30 days.
 sci-misc/mendeleydesktop
 
-# Joonas Niilola <juippis@gentoo.org> (2020-11-18)
-# Doesn't compile, no maintainer, our package is multiple versions
-# behind from upstream. Removal in ~30 days. Bug: #739212
-games-emulation/ppsspp
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-18)
 # Upstream has switched to aiobotocore.  It's a huge hack that requires
 # a very specific botocore version, currently 3 months old.  Given that
