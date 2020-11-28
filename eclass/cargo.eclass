@@ -347,7 +347,7 @@ cargo_src_compile() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
-	tc-export AR CC CXX
+	tc-export AR CC CXX PKG_CONFIG
 
 	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
