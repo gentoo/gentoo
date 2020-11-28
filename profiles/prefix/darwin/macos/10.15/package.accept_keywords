@@ -1,0 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# this is the only version known to compile on macOS Catalina
+=app-shells/bash-5.1_rc3 **
+=sys-libs/readline-8.1_rc3 **
