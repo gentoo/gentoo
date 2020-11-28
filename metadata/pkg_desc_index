@@ -3486,7 +3486,7 @@ dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0-r1: The libdbi-drivers project maintains drivers for libdbi
 dev-db/libiodbc 3.52.12: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
-dev-db/libzdb 3.1 3.1-r1: A thread safe high level multi-database connection pool library
+dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
@@ -5742,16 +5742,16 @@ dev-ml/bos 0.1.6: Basic OS interaction for OCaml
 dev-ml/cairo-ocaml 1.2.0 1.2.0-r1: Ocaml bindings for the cairo vector graphics library
 dev-ml/cairo2 0.6.1: Binding to Cairo, a 2D Vector Graphics Library
 dev-ml/calendar 2.04: An Ocaml library to handle dates and time
-dev-ml/camlbz2 0.6.0 0.6.0-r1: OCaml bindings for libbz (AKA, bzip2)
+dev-ml/camlbz2 0.6.0-r1: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0 1.2: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
-dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1 4.10_p1 4.11_p1: System for writing extensible parsers for programming languages
+dev-ml/camlp4 4.08_p1 4.10_p1 4.11_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 7.11-r1 7.12 7.13: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.3.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r2 1.0.2: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cinaps 0.14.0: Trivial metaprogramming tool
-dev-ml/cmdliner 1.0.0 1.0.1 1.0.2 1.0.4: Declarative definition of command line interfaces for OCaml
+dev-ml/cmdliner 1.0.4: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.9.1-r1 0.9.2: Jane Street's alternative to the standard library
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
@@ -5760,10 +5760,10 @@ dev-ml/cppo 1.4.1 1.5.0 1.6.6: An equivalent of the C preprocessor for OCaml pro
 dev-ml/cryptokit 1.10 1.11 1.16.1-r1: Cryptographic primitives library for Objective Caml
 dev-ml/csexp 1.3.2: Parsing and printing of S-expressions in Canonical form
 dev-ml/csv 1.5 1.6 1.7: A pure OCaml library to read and write CSV files
-dev-ml/cudf 0.8-r1 0.9: Library to parse, pretty print, and evaluate CUDF documents
+dev-ml/cudf 0.9: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dns 1.0.0: A pure OCaml implementation of the DNS protocol
-dev-ml/dose3 5.0.1 5.0.1-r1: Library to perform analysis on package repositories
+dev-ml/dose3 5.0.1-r1: Library to perform analysis on package repositories
 dev-ml/dune 2.1.0 2.7.1: A composable build system for OCaml
 dev-ml/dune-configurator 2.7.1: A composable build system for OCaml
 dev-ml/dune-private-libs 2.7.1: A composable build system for OCaml
@@ -5772,7 +5772,7 @@ dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
 dev-ml/extlib 1.7.1 1.7.2 1.7.6 1.7.7: Standard library extensions for O'Caml
 dev-ml/facile 1.1.3: OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0 0.14.0: Folding over record fields
-dev-ml/findlib 1.7.1 1.7.2 1.7.3 1.8.1 1.8.1-r1: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.8.1 1.8.1-r1: OCaml tool to find/use non-standard packages
 dev-ml/fmt 0.8.4: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -5796,7 +5796,7 @@ dev-ml/lwt_ssl 1.0.1 1.1.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.5: Error-recovering streaming HTML5 and XML parsers
 dev-ml/mccs 1.1.11: Multi Criteria CUDF Solver
-dev-ml/menhir 20170712 20171013 20181006 20190924: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20181006 20190924: LR(1) parser generator for the OCaml language
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mmap 1.0.2 1.1.0: File mapping
 dev-ml/mtime 1.1.0: OCaml module to access monotonic wall-clock time
@@ -10523,7 +10523,7 @@ dev-util/abi-dumper 1.1 1.2: Dump ABI of an ELF object containing DWARF debug in
 dev-util/abootimg 20150323: Manipulate Android boot images.
 dev-util/ald 0.1.7-r2: Assembly Language Debugger
 dev-util/amtterm 1.6: A nice tool to manage amt-enabled machines
-dev-util/android-ndk 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
+dev-util/android-ndk 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 4.0.1.0.193.6626763 4.1.0.19.201.6858069: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
@@ -10781,7 +10781,7 @@ dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
-dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
+dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.7.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
@@ -10805,7 +10805,7 @@ dev-util/ragel 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles 
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
 dev-util/re2c 2.0.3: tool for generating C-based recognizers from regular expressions
-dev-util/rebar 2.6.4 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
@@ -18901,7 +18901,7 @@ x11-themes/zukini 20120817: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, me
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
 x11-wm/2bwm 0.3 9999: A fast, floating window manager
-x11-wm/aewm 1.3.12 1.3.12-r1: A minimalistic X11 window manager
+x11-wm/aewm 1.3.12-r1: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.22.01_p20200826: Amiga Workbench inspired window manager for Xorg
 x11-wm/awesome 3.5.9-r3 4.2-r3 4.3-r1 9999: A dynamic floating and tiling window manager
@@ -18915,8 +18915,8 @@ x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.24.2-r1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
-x11-wm/fvwm 2.6.5-r3 2.6.8-r2 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
-x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
+x11-wm/fvwm 2.6.8-r2 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
+x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.8.2 0.8.3 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.18.2 4.19: i3 fork with gaps and some more features
