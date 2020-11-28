@@ -31,6 +31,7 @@ distutils_enable_sphinx doc/source
 
 PATCHES=(
 	"${FILESDIR}"/cffi-0.14.0-g-line.patch
+	"${FILESDIR}"/cffi-1.14.0-darwin-no-brew.patch
 )
 
 src_configure() {
