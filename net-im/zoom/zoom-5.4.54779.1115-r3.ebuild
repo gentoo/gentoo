@@ -107,7 +107,7 @@ src_install() {
 		)
 	fi
 
-	make_wrapper zoom /opt/zoom{/zoom,,}
+	make_wrapper zoom /opt/zoom{/zoom,} $(usex bundled-qt /opt/zoom "")
 	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
 		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
 	# The tarball doesn't contain an icon, so take a generic camera icon

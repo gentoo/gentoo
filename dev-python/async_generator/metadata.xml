@@ -7,6 +7,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">python-trio/async_generator</remote-id>
 		<remote-id type="pypi">async_generator</remote-id>
