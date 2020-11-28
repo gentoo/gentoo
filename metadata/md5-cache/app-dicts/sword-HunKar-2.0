@@ -1,12 +1,12 @@
 BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DESCRIPTION=Hungarian Karoli
+DESCRIPTION=The Karoli Bible revised version 1908
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=HunKar
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=app-text/sword
+RDEPEND=>=app-text/sword-1.8.0
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/HunKar.zip -> HunKar-1.7.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/HunKar.zip -> HunKar-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=0d4cdaeb110c55dfba4d48541587f737
+_md5_=3f96a3afd835314de95551d5a92e63f7
