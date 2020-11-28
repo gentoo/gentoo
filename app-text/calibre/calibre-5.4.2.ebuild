@@ -124,6 +124,7 @@ src_prepare() {
 	eapply \
 		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
 		"${FILESDIR}/${PN}-disable_plugins.patch" \
+		"${FILESDIR}/${PN}-4.22.0-icu68.patch" \
 		"${WORKDIR}/${PN}-5.4.2-SIP-v4.patch"
 
 	eapply_user
