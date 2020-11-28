@@ -54,8 +54,7 @@ PATCHES=(
 	# prefix
 	"${FILESDIR}"/${PN}-3.16.0_rc4-darwin-bundle.patch
 	"${FILESDIR}"/${PN}-3.14.0_rc3-prefix-dirs.patch
-	# Next patch requires new work from prefix people
-	#"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
+	"${FILESDIR}"/${PN}-3.19.1-darwin-gcc.patch
 
 	# handle gentoo packaging in find modules
 	"${FILESDIR}"/${PN}-3.17.0_rc1-FindBLAS.patch
@@ -134,6 +133,10 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/__APPLE__/__DISABLED_APPLE__/' \
 			Source/cmGlobalXCodeGenerator.cxx || die
+		# disable isysroot usage with GCC, we've properly instructed
+		# where things are via GCC configuration and ldwrapper
+		sed -i -e '/cmake_gnu_set_sysroot_flag/d' \
+			Modules/Platform/Apple-GNU-C{,XX}.cmake || die
 	fi
 
 	# Add gcc libs to the default link paths
