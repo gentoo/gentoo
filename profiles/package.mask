@@ -510,6 +510,7 @@ dev-lua/luacrypto
 >=dev-lua/luafilesystem-1.8.0-r100
 >=dev-lua/luasec-0.9-r100
 >=dev-lua/luasocket-3.0_rc1_p20200328-r100
+>=dev-lua/luassert-1.8.0-r100
 >=dev-lua/luasystem-0.2.1_p0-r100
 >=dev-lua/lutok-0.4-r10
 >=dev-lua/luv-1.32.0.0-r100
