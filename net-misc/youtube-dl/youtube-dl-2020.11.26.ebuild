@@ -34,7 +34,6 @@ python_test() {
 }
 
 python_install_all() {
-	dodoc README.txt
 	doman ${PN}.1
 
 	newbashcomp ${PN}.bash-completion ${PN}
