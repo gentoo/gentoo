@@ -8,6 +8,7 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">isort</remote-id>
 		<remote-id type="github">PyCQA/isort</remote-id>
