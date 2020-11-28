@@ -85,6 +85,11 @@ multilib_src_configure() {
 
 	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DREQUIRE_SIMD=OFF ) #420239
 
+	# mostly for Prefix, ensure that we use our yasm if installed and
+	# not pick up host-provided nasm
+	has_version dev-lang/yasm && ! has_version dev-lang/nasm && \
+		mycmakeargs+=( -DCMAKE_ASM_NASM_COMPILER=$(type -P yasm) )
+
 	if use ppc ; then
 		# Workaround recommended by upstream:
 		# https://bugs.gentoo.org/715406#c9
