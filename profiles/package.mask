@@ -519,6 +519,7 @@ dev-lua/luacrypto
 >=dev-lua/lua_cliargs-3.0_p2-r100
 >=dev-lua/lua-term-0.7-r100
 >=dev-lua/luafilesystem-1.8.0-r100
+>=dev-lua/luajson-1.3.4
 >=dev-lua/luasec-0.9-r100
 >=dev-lua/luasocket-3.0_rc1_p20200328-r100
 >=dev-lua/luassert-1.8.0-r100
