@@ -5,7 +5,11 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
 		This module adds support for accepting CLI
 		arguments easily using multiple notations and argument types.
 
