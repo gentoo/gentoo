@@ -38,10 +38,4 @@ BDEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${P}-pytest6.patch" )
 
 distutils_enable_sphinx docs/source dev-python/sphinx-prompt dev-python/sphinx_rtd_theme
-distutils_enable_tests pytest
-
-python_test() {
-	# Otherwise some tests fail if the package isn't installed
-	distutils_install_for_testing
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests --install pytest
