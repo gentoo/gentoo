@@ -2760,9 +2760,6 @@ dev-tex/abntex:lyx - Install with app-office/lyx layout
 dev-tex/biblatex:biber - Install the unicode compatible backend processor
 dev-tex/pythontex:highlighting - Syntax highlighting using dev-python/pygments
 dev-texlive/texlive-basic:luajittex - Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.
-dev-util/android-ndk:legacy-toolchains - Install legacy toolchains
-dev-util/android-ndk:target-32 - Support for 32-bit targets
-dev-util/android-ndk:target-64 - Support for 64-bit targets
 dev-util/android-studio:custom-jdk - Install and use Android Studio's custom JRE.
 dev-util/anjuta:devhelp - Enable devhelp integration
 dev-util/anjuta:glade - Build glade plugin for anjuta
@@ -8945,7 +8942,6 @@ x11-wm/enlightenment:xwayland - Enable XWayland application support
 x11-wm/fluxbox:slit - Enables the Fluxbox slit (or dock)
 x11-wm/fluxbox:systray - Enables the system tray in the Fluxbox toolbar
 x11-wm/fluxbox:toolbar - Enables the Fluxbox toolbar
-x11-wm/fvwm:gtk2-perl - Enable GTK2 Perl bindings
 x11-wm/fvwm:lock - Enable screen locking
 x11-wm/fvwm:netpbm - Enable NetPBM support (used by FvwmScript-ScreenDump)
 x11-wm/fvwm:rplay - Enable rplay support

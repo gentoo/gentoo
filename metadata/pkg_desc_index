@@ -8254,7 +8254,7 @@ dev-python/humanize 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1 5.41.2 5.41.3: A library for property based testing
+dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1 5.41.2 5.41.3 5.41.4: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8537,7 +8537,7 @@ dev-python/osrf_pycommon 0.1.10-r1: Commonly needed Python modules used by Pytho
 dev-python/ovs 2.13.0: OVS bindings for python.
 dev-python/ovsdbapp 0.17.2 1.5.0: A library for creating OVSDB applications
 dev-python/owslib 0.20.0: Library for client programming with Open Geospatial Consortium web service
-dev-python/packaging 20.4-r1 20.5: Core utilities for Python packages
+dev-python/packaging 20.4-r1 20.5 20.7: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
@@ -12367,7 +12367,7 @@ mail-client/mutt 2.0.2: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20200626 20200626-r1 20200821 20200925 20201120 20201127 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.4.8: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.4.8 1.4.9: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 78.5.0: Thunderbird Mail Client
