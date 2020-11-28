@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-11-28)
+# Last release in 2002, multiple open bugs, no maintainer, no revdeps.
+# Bug #709512, #713300, #729518, Removal in 30 days.
+app-text/cook
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
 # KF5 PortingAids (from kdelibs4) without any remaining revdeps. Bug #755956
 # Masked for removal in 30 days.
