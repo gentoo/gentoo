@@ -10,3 +10,6 @@ sys-devel/binutils-apple
 
 # packages which link to framework and therefore fail (blocks)
 dev-util/pkgconfig
+
+# cmake-3.19.1 works for us
+->=dev-util/cmake-3.14
