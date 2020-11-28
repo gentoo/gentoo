@@ -23,7 +23,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd
 # librsvg is needed for gtk-encode-symbolic-svg to be able to read the source SVG via its pixbuf loader and at runtime for rendering scalable icons shipped by the theme
 RDEPEND="
 	>=x11-themes/hicolor-icon-theme-0.10
-	gnome-base/librsvg:2
+	>=gnome-base/librsvg-2.48:2
 "
 DEPEND="${RDEPEND}
 	x11-libs/gtk+:3
