@@ -19,7 +19,7 @@ IUSE="libressl"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
-	>=dev-lua/luasocket-3.0_rc1_p20200328-r100
+	>=dev-lua/luasocket-3.0_rc1_p20200328-r100[${LUA_USEDEP}]
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 	${LUA_DEPS}

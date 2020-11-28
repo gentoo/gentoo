@@ -4,12 +4,14 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} luajit )
+MY_PV="${PV/_p/-}"
 
 inherit lua toolchain-funcs
 
-DESCRIPTION="Assertion library for Lua"
-HOMEPAGE="http://olivinelabs.com/busted/"
-SRC_URI="https://github.com/Olivine-Labs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Mediator pattern implementation for pub-sub management "
+HOMEPAGE="http://olivinelabs.com/mediator_lua/"
+SRC_URI="https://github.com/Olivine-Labs/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,22 +20,14 @@ IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	>=dev-lua/say-1.3_p1-r100
-	${LUA_DEPS}
-"
-
+RDEPEND="${LUA_DEPS}"
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		>=dev-lua/busted-2.0.0-r100
+		>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "
-
-DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${PN}-1.8.0-disable-highlightcolor-test.patch" )
 
 lua_src_test() {
 	busted --lua=${ELUA} || die
@@ -44,12 +38,12 @@ src_test() {
 }
 
 lua_src_install() {
-	insinto $(lua_get_lmod_dir)/luassert
-	doins -r src/.
-
-	einstalldocs
+	insinto $(lua_get_lmod_dir)
+	doins src/mediator.lua
 }
 
 src_install() {
 	lua_foreach_impl lua_src_install
+
+	einstalldocs
 }
