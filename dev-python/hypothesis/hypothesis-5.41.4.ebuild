@@ -48,11 +48,7 @@ python_prepare() {
 }
 
 python_test() {
-	local -x PYTHONPATH="${BUILD_DIR}/install/lib"
-	esetup.py install \
-		--root="${BUILD_DIR}/install" \
-		--install-lib=lib
-
+	distutils_install_for_testing --via-root
 	pytest -vv tests/cover tests/pytest tests/quality \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
 		die "Tests fail with ${EPYTHON}"
