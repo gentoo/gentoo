@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~x64-macos"
 IUSE="test"
 # This package's tests are extremely fragile and tend to break or hang
 # when it doesn't like metadata of packages installed on the system.
