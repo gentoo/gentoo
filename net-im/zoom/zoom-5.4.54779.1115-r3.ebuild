@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eapi8-dosym readme.gentoo-r1 xdg-utils
+inherit desktop eapi8-dosym readme.gentoo-r1 wrapper xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
@@ -107,7 +107,7 @@ src_install() {
 		)
 	fi
 
-	dosym8 -r /opt/zoom/ZoomLauncher /usr/bin/zoom
+	make_wrapper zoom /opt/zoom{/zoom,,}
 	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
 		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
 	# The tarball doesn't contain an icon, so take a generic camera icon
