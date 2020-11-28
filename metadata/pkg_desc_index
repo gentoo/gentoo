@@ -15317,7 +15317,7 @@ net-news/quiterss 0.19.4 9999: Qt-based RSS/Atom feed reader
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8 2.1 2.1_p20200310: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
-net-news/snownews 1.5.12-r1 1.5.13 1.6.10: Command-line RSS feed reader
+net-news/snownews 1.6.10: Command-line RSS feed reader
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
 net-nntp/brag 1.4.3: Brag collects and assembles multipart binary attachments from newsgroups
 net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
@@ -15325,7 +15325,7 @@ net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0 21.0 21.0-r1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.145 0.146: A newsreader for GNOME
 net-nntp/sabnzbd 3.0.0-r1 3.0.1 3.0.2 3.1.0 3.1.1: Binary newsgrabber with web-interface
-net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
+net-nntp/slrn 1.0.3: A s-lang based newsreader
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.8.1 2.9.0: Cross-platform Direct Connect client
@@ -15375,7 +15375,7 @@ net-p2p/xmr-stak 2.7.0 2.7.1 2.8.0 2.8.2 2.8.3 2.9.0 2.10.0 2.10.1 2.10.2 2.10.3
 net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4 6: Brother laser printer driver
-net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
+net-print/c2esp 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80: IJ Printer Driver
@@ -15400,7 +15400,7 @@ net-print/hplip-plugin 3.19.12 3.20.6-r1 3.20.9: Proprietary plugins and firmwar
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4-r1: PPD description files for (some) Kyocera Mita Printers
-net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
+net-print/libgnomecups 0.2.3-r5: GNOME cups library
 net-print/libinklevel 0.9.2: A library to get the ink level of your printer
 net-print/lm1100 1.0.2a-r1: The Tim Engler's Lexmark 1100 driver
 net-print/mtink 1.0.16-r2: mtink is a status monitor and inkjet cartridge changer for some Epson printers
@@ -15419,7 +15419,7 @@ net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
 net-proxy/mitmproxy 5.1.1 5.2-r1 5.3.0: An interactive, SSL-capable, man-in-the-middle HTTP proxy
-net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
+net-proxy/nutcracker 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
@@ -15478,7 +15478,7 @@ net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN imp
 net-vpn/tor 0.4.4.6 0.4.5.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
-net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
+net-vpn/vtun 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20201112: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
@@ -17433,7 +17433,7 @@ sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2 2.0.2 2.1.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
-sys-fs/mtools 4.0.24 4.0.25: utilities to access MS-DOS disks from Unix without mounting them
+sys-fs/mtools 4.0.24 4.0.25 4.0.26: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.8.3-r2 0.8.4 0.8.5: Device mapper target autoconfig
 sys-fs/ncdu 1.14.2 1.15 1.15.1: NCurses Disk Usage
