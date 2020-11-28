@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install
+DESCRIPTION=A command-line argument parsing module for Lua
+EAPI=7
+HOMEPAGE=https://github.com/amireh/lua_cliargs
+IUSE=examples lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+SLOT=0
+SRC_URI=https://github.com/amireh/lua_cliargs/archive/v3.0-2.tar.gz -> lua_cliargs-3.0_p2.tar.gz
+_eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=1ce471aae03bd67a8d49b39c2cc10b0e

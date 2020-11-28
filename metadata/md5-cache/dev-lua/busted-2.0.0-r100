@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig test? ( >=dev-lua/busted-2.0.0-r100 >=dev-lua/lua_cliargs-3.0_p2-r100 >=dev-lua/luafilesystem-1.8.0-r100 >=dev-lua/luasystem-0.2.1_p0-r100 >=dev-lua/dkjson-2.5-r100 >=dev-lua/say-1.3_p1-r100 >=dev-lua/luassert-1.8.0-r100 >=dev-lua/lua-term-0.7-r100 >=dev-lua/penlight-1.7.0-r100 >=dev-lua/mediator_lua-1.1.2_p0-r100 lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) )
+DEFINED_PHASES=install test
+DEPEND=>=dev-lua/lua_cliargs-3.0_p2-r100 >=dev-lua/luafilesystem-1.8.0-r100 >=dev-lua/luasystem-0.2.1_p0-r100 >=dev-lua/dkjson-2.5-r100 >=dev-lua/say-1.3_p1-r100 >=dev-lua/luassert-1.8.0-r100 >=dev-lua/lua-term-0.7-r100 >=dev-lua/penlight-1.7.0-r100 >=dev-lua/mediator_lua-1.1.2_p0-r100 lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DESCRIPTION=Elegant Lua unit testing
+EAPI=7
+HOMEPAGE=http://olivinelabs.com/busted/
+IUSE=test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lua/lua_cliargs-3.0_p2-r100 >=dev-lua/luafilesystem-1.8.0-r100 >=dev-lua/luasystem-0.2.1_p0-r100 >=dev-lua/dkjson-2.5-r100 >=dev-lua/say-1.3_p1-r100 >=dev-lua/luassert-1.8.0-r100 >=dev-lua/lua-term-0.7-r100 >=dev-lua/penlight-1.7.0-r100 >=dev-lua/mediator_lua-1.1.2_p0-r100 lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/Olivine-Labs/busted/archive/v2.0.0.tar.gz -> busted-2.0.0.tar.gz
+_eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=7c57cceb96a2ae67938b06c09ef285e8
