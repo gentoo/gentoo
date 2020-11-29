@@ -32,6 +32,18 @@ index 62d05de310..4e918492d9 100644
      }
  end:
      if (search != NULL) usearch_close(search);
+diff --git a/src/calibre/utils/matcher.c b/src/calibre/utils/matcher.c
+index f38a7082ce..8e57947867 100644
+--- a/src/calibre/utils/matcher.c
++++ b/src/calibre/utils/matcher.c
+@@ -15,7 +15,6 @@
+ #define inline
+ #endif
+ 
+-typedef unsigned char bool;
+ #define TRUE 1
+ #define FALSE 0
+ #define MAX(x, y) ((x > y) ? x : y)
 -- 
 2.29.2
 
