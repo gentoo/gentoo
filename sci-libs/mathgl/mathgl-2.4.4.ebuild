@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 WX_GTK_VER=3.0
 
-inherit cmake-utils eutils wxwidgets multilib flag-o-matic
+inherit cmake wxwidgets multilib flag-o-matic
 
 DESCRIPTION="Math Graphics Library"
 HOMEPAGE="http://mathgl.sourceforge.net/"
@@ -44,9 +44,8 @@ RDEPEND="
 	)
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 	zlib? ( sys-libs/zlib )"
-
-DEPEND="${RDEPEND}
-	doc? ( app-text/texi2html virtual/texi2dvi )
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-text/texi2html virtual/texi2dvi )
 	octave? ( dev-lang/swig )"
 
 REQUIRED_USE="
@@ -54,10 +53,6 @@ REQUIRED_USE="
 	openmp? ( !threads )
 	png? ( zlib )
 	pdf? ( png )"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-mutex.patch
-)
 
 pkg_setup() {
 	use mpi && export CC=mpicc CXX=mpicxx
@@ -87,7 +82,7 @@ src_prepare() {
 	sed -i -e 's/update-desktop-database/true/' udav/CMakeLists.txt || die
 
 	use wxwidgets && need-wxwidgets unicode
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -124,11 +119,11 @@ src_configure() {
 		-Denable-wx=$(usex wxwidgets)
 		-Denable-zlib=$(usex zlib)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc README* *.txt AUTHORS
 	if ! use static-libs; then
 		rm "${ED}"/usr/$(get_libdir)/*.a || die

@@ -3,9 +3,10 @@
 
 EAPI=7
 
+LUA_COMPAT=( lua5-{1..3} )
 WX_GTK_VER=3.0
 
-inherit wxwidgets xdg
+inherit lua-single wxwidgets xdg
 
 DESCRIPTION="General-purpose nonlinear curve fitting and data analysis"
 HOMEPAGE="https://fityk.nieto.pl/"
@@ -16,8 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="gnuplot nlopt readline wxwidgets"
 
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
 DEPEND="
-	>=dev-lang/lua-5.1:0
+	${LUA_DEPS}
 	dev-libs/boost:=
 	>=sci-libs/xylib-1
 	nlopt? ( sci-libs/nlopt )
