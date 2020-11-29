@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig doc? ( dev-python/sphinx ) test? ( >=dev-lua/busted-2.0.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/lua-argparse-0.6.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/lua-utf8-0.1.3-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/luafilesystem-1.8.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] )
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lua/lua-argparse-0.6.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/lua-utf8-0.1.3-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/luafilesystem-1.8.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?]
+DESCRIPTION=A tool for linting and static analysis of Lua code
+EAPI=7
+HOMEPAGE=https://github.com/mpeterv/luacheck
+IUSE=doc test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lua/lua-argparse-0.6.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/lua-utf8-0.1.3-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] >=dev-lua/luafilesystem-1.8.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?]
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/mpeterv/luacheck/archive/0.23.0.tar.gz -> luacheck-0.23.0.tar.gz
+_eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=6c5557996026c9601ec0235e5935cea8
