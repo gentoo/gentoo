@@ -1,0 +1,44 @@
+From 68d3eee36c48a2f44ccfd3f9e5a36311b829104b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=96mer=20Fad=C4=B1l=20USTA?= <omerusta@gmail.com>
+Date: Thu, 17 Sep 2020 22:12:57 +0300
+Subject: [PATCH] Portaway from Obsolete methods of QPrinter
+
+setOrientation -> setPageOrientation
+QPrinter::Landscape -> QPageLayout::Landscape
+---
+ komparepart/kompare_part.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/komparepart/kompare_part.cpp b/komparepart/kompare_part.cpp
+index 42d3120..88346d6 100644
+--- a/komparepart/kompare_part.cpp
++++ b/komparepart/kompare_part.cpp
+@@ -26,6 +26,7 @@
+ #include <QMenu>
+ #include <QPainter>
+ #include <QPrinter>
++#include <QPageLayout>
+ #include <QPrintDialog>
+ #include <QPrintPreviewDialog>
+ #include <QTemporaryDir>
+@@ -610,7 +611,7 @@ void KomparePart::saveDiff()
+ void KomparePart::slotFilePrint()
+ {
+     QPrinter printer;
+-    printer.setOrientation(QPrinter::Landscape);
++    printer.setPageOrientation(QPageLayout::Landscape);
+     QPrintDialog* dlg = new QPrintDialog(&printer, nullptr);
+ 
+     if (dlg->exec() == QDialog::Accepted)
+@@ -625,7 +626,7 @@ void KomparePart::slotFilePrint()
+ void KomparePart::slotFilePrintPreview()
+ {
+     QPrinter printer;
+-    printer.setOrientation(QPrinter::Landscape);
++    printer.setPageOrientation(QPageLayout::Landscape);
+     QPrintPreviewDialog dlg(&printer);
+ 
+     connect(&dlg, &QPrintPreviewDialog::paintRequested, this, &KomparePart::slotPaintRequested);
+-- 
+GitLab
+
