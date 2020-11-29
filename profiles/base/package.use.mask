@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-29)
+# libclangformat-ide is masked for removal.
+dev-qt/qt-creator clang
+
 # Joonas Niilola <juippis@gentoo.org> (2020-11-26)
 # Still too experimental. efl's upstream can't keep up with libavif's.
 # Bug: 756733
