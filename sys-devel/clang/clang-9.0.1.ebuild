@@ -45,7 +45,7 @@ RDEPEND="
 	${PYTHON_DEPS}"
 for x in "${ALL_LLVM_TARGETS[@]}"; do
 	RDEPEND+="
-		~sys-devel/llvm-${PV}:${SLOT}[${x}]"
+		${x}? ( ~sys-devel/llvm-${PV}:${SLOT}[${x}] )"
 done
 unset x
 
