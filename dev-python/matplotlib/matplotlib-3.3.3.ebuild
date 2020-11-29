@@ -201,6 +201,7 @@ python_configure() {
 		agg = True
 		gtk = False
 		gtkagg = False
+		macosx = False
 		pyside = False
 		pysideagg = False
 		qt4 = False
