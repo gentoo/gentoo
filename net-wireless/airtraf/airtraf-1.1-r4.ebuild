@@ -9,7 +9,7 @@ LICENSE="GPL-2"
 HOMEPAGE="http://www.elixar.com/"
 SRC_URI="http://www.elixar.com/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 
 RDEPEND="
 	net-libs/libpcap
