@@ -13,7 +13,7 @@ SRC_URI="http://downloads.pannetrat.com/install/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="libressl"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
