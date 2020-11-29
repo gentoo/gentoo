@@ -5,7 +5,6 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} luajit )
 MY_PV="0.07"
-MY_PV_SO="1.0.1"
 
 inherit lua toolchain-funcs
 
@@ -28,11 +27,12 @@ src_prepare() {
 
 	# Respect users CFLAGS
 	sed -e 's/-O3//g' -i Makefile
+
+	lua_copy_sources
 }
 
 lua_src_compile() {
-	# Clean project to compile it for every lua slot
-	emake clean
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -41,8 +41,7 @@ lua_src_compile() {
 
 	emake "${myemakeargs[@]}" all
 
-	# Copy module to match the choosen LUA implementation
-	cp "core.so.${MY_PV_SO}" "core-${ELUA}.so.${MY_PV_SO}" || die
+	popd
 }
 
 src_compile() {
@@ -50,8 +49,7 @@ src_compile() {
 }
 
 lua_src_install() {
-	# Use correct module for the choosen LUA implementation
-	cp "core-${ELUA}.so.${MY_PV_SO}" "core.so.${MY_PV_SO}" || die
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		LUA_LIBDIR="${ED}/$(lua_get_cmod_dir)/term"
@@ -59,6 +57,8 @@ lua_src_install() {
 	)
 
 	emake "${myemakeargs[@]}" install
+
+	popd
 }
 
 src_install() {

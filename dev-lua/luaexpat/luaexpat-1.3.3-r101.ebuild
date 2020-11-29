@@ -9,8 +9,8 @@ LUA_REQ_USE="${MULTILIB_USEDEP}"
 inherit lua multilib-minimal toolchain-funcs
 
 DESCRIPTION="LuaExpat is a SAX XML parser based on the Expat library"
-HOMEPAGE="https://matthewwild.co.uk/projects/luaexpat/"
-SRC_URI="https://matthewwild.co.uk/projects/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/tomasguisasola/luaexpat"
+SRC_URI="https://github.com/tomasguisasola/luaexpat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -26,29 +26,33 @@ BDEPEND="virtual/pkgconfig"
 
 HTML_DOCS=( "doc/us/." )
 
+PATCHES=(
+	"${FILESDIR}/${P}_makefile.patch"
+	"${FILESDIR}/${P}_getcurrentbytecount.patch"
+	"${FILESDIR}/${P}_restore_functionality.patch"
+)
+
 src_prepare() {
 	default
 
 	# Respect users CFLAGS
-	# Add '-DLUA_32BITS' for fixing compilation with lua5.3
-	sed -e 's/-O2/-DLUA_32BITS/g' -i Makefile || die
+	sed -e 's/-O2//g' -i makefile || die
 
-	multilib_copy_sources
+	lua_copy_sources
+	lua_foreach_impl multilib_copy_sources
 }
 
 lua_multilib_src_compile() {
-	# Clean project, to compile it for every lua slot
-	emake clean
+	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
 
 	local myemakeargs=(
-		"CC=$(tc-getCC)"
-		"LUA_INC=$(lua_get_CFLAGS)"
+		"CC=$(tc-getCC) ${CFLAGS}"
+		"LUA_INC=$(lua_get_include_dir)"
 	)
 
 	emake "${myemakeargs[@]}"
 
-	# Copy module to match the choosen LUA implementation
-	cp "src/lxp.so" "src/lxp-${ELUA}.so" || die
+	popd
 }
 
 multilib_src_compile() {
@@ -56,17 +60,17 @@ multilib_src_compile() {
 }
 
 lua_multilib_src_install() {
-	# Use correct module for the choosen LUA implementation
-	cp "src/lxp-${ELUA}.so" "src/lxp.so" || die
+	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
 
 	local myemakeargs=(
-		"DESTDIR=${ED}"
-		"LUA_CDIR=$(lua_get_cmod_dir)"
-		"LUA_INC=$(lua_get_include_dir)"
-		"LUA_LDIR=$(lua_get_lmod_dir)"
+		"LUA_DIR=${ED}/$(lua_get_lmod_dir)"
+		"LUA_INC=${ED}/$(lua_get_include_dir)"
+		"LUA_LIBDIR=${ED}/$(lua_get_cmod_dir)"
 	)
 
 	emake "${myemakeargs[@]}" install
+
+	popd
 }
 
 multilib_src_install() {

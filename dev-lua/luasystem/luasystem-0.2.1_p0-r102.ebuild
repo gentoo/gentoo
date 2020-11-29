@@ -31,6 +31,12 @@ BDEPEND="
 
 PATCHES=( "${FILESDIR}"/${P}-fix-makefile.patch )
 
+src_prepare() {
+	default
+
+	lua_copy_sources
+}
+
 lua_src_test() {
 	busted --lua=${ELUA} || die
 }
@@ -40,8 +46,7 @@ src_test() {
 }
 
 lua_src_compile() {
-	# Clean project, to compile it for every lua slot
-	emake clean
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -53,8 +58,7 @@ lua_src_compile() {
 
 	emake "${myemakeargs[@]}" linux
 
-	# Copy module to match the choosen LUA implementation
-	cp "src/core.so" "src/core-${ELUA}.so" || die
+	popd
 }
 
 src_compile() {
@@ -62,8 +66,7 @@ src_compile() {
 }
 
 lua_src_install () {
-	# Use correct module for the choosen LUA implementation
-	cp "src/core-${ELUA}.so" "src/core.so" || die
+	pushd "${BUILD_DIR}" || die
 
 	local emakeargs=(
 		"INSTALL_TOP_CDIR=${ED}/$(lua_get_cmod_dir)"
@@ -75,6 +78,8 @@ lua_src_install () {
 
 	insinto $(lua_get_lmod_dir)/system
 	doins system/init.lua
+
+	popd
 }
 
 src_install() {

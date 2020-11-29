@@ -31,6 +31,7 @@ BDEPEND="
 HTML_DOCS=( "doc/us/." )
 
 lua_src_prepare() {
+	pushd "${BUILD_DIR}" || die
 	cat > "config-${ELUA}" <<-EOF
 		CC=$(tc-getCC)
 		DESTDIR=${ED}
@@ -38,22 +39,20 @@ lua_src_prepare() {
 		LIB_OPTION=${LDFLAGS} -shared
 		LUA_LIBDIR=$(lua_get_cmod_dir)
 	EOF
+	popd
 }
 
 src_prepare() {
 	default
 
+	lua_copy_sources
 	lua_foreach_impl lua_src_prepare
 }
 
 lua_src_compile() {
-	# Clean project to compile it for every lua slot
-	emake clean
-
+	pushd "${BUILD_DIR}" || die
 	emake CONFIG="config-${ELUA}"
-
-	# Copy module to match the choosen LUA implementation
-	cp "src/lfs.so" "src/lfs-${ELUA}.so" || die
+	popd
 }
 
 src_compile() {
@@ -61,7 +60,9 @@ src_compile() {
 }
 
 lua_src_test() {
-	LUA_CPATH="src/lfs-${ELUA}.so" ${ELUA} tests/test.lua || die
+	pushd "${BUILD_DIR}" || die
+	LUA_CPATH="${BUILD_DIR}/src/?.so" ${ELUA} tests/test.lua || die
+	popd
 }
 
 src_test() {
@@ -69,10 +70,9 @@ src_test() {
 }
 
 lua_src_install() {
-	# Use correct module for the choosen LUA implementation
-	cp "src/lfs-${ELUA}.so" "src/lfs.so" || die
-
+	pushd "${BUILD_DIR}" || die
 	emake CONFIG="config-${ELUA}" install
+	popd
 }
 
 src_install() {

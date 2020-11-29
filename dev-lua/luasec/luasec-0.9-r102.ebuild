@@ -27,19 +27,27 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+lua_src_prepare() {
+	pushd "${BUILD_DIR}" || die
+
+	${ELUA} src/options.lua -g /usr/include/openssl/ssl.h > src/options.c || die
+
+	popd
+}
+
 src_prepare() {
 	default
 
 	# Respect users CFLAGS
 	sed -e 's/-O2//g' -i src/Makefile || die
+
+	lua_copy_sources
+
+	lua_foreach_impl lua_src_prepare
 }
 
 lua_src_compile() {
-	# Clean project, to compile it for every lua slot
-	emake clean
-
-	# Generate SSL options
-	${ELUA} src/options.lua -g /usr/include/openssl/ssl.h > src/options.c || die
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -52,8 +60,7 @@ lua_src_compile() {
 
 	emake "${myemakeargs[@]}" linux
 
-	# Copy module to match the choosen LUA implementation
-	cp "src/ssl.so" "src/ssl-${ELUA}.so" || die
+	popd
 }
 
 src_compile() {
@@ -61,8 +68,7 @@ src_compile() {
 }
 
 lua_src_install() {
-	# Use correct module for the choosen LUA implementation
-	cp "src/ssl-${ELUA}.so" "src/ssl.so" || die
+	pushd "${BUILD_DIR}" || die
 
 	local emakeargs=(
 		"DESTDIR=${ED}"
@@ -71,6 +77,8 @@ lua_src_install() {
 	)
 
 	emake "${emakeargs[@]}" install
+
+	popd
 }
 
 src_install() {

@@ -6,8 +6,9 @@ EAPI=7
 EGIT_COMMIT="5b18e475f38fcf28429b1cc4b17baee3b9793a62"
 LUA_COMPAT=( lua5-{1..3} )
 LUA_REQ_USE="${MULTILIB_USEDEP}"
+MY_P="${PN}-${EGIT_COMMIT}"
 
-inherit flag-o-matic lua multilib multilib-minimal toolchain-funcs
+inherit flag-o-matic lua multilib-minimal toolchain-funcs
 
 DESCRIPTION="Networking support library for the Lua language"
 HOMEPAGE="
@@ -15,7 +16,7 @@ HOMEPAGE="
 	https://github.com/diegonehab/luasocket
 "
 SRC_URI="https://github.com/diegonehab/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -38,12 +39,12 @@ src_prepare() {
 	# Workaround for 32-bit systems
 	append-cflags -fno-stack-protector
 
-	multilib_copy_sources
+	lua_copy_sources
+	lua_foreach_impl multilib_copy_sources
 }
 
 lua_multilib_src_compile() {
-	# Clean project, to compile it for every lua slot
-	emake clean
+	pushd "${WORKDIR}/${MY_P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -58,6 +59,8 @@ lua_multilib_src_compile() {
 	)
 
 	emake "${myemakeargs[@]}" all
+
+	popd
 }
 
 multilib_src_compile() {
@@ -65,6 +68,8 @@ multilib_src_compile() {
 }
 
 lua_multilib_src_install() {
+	pushd "${WORKDIR}/${MY_P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+
 	local myemakeargs=(
 		"CDIR=$(lua_get_cmod_dir)"
 		"DESTDIR=${ED}"
@@ -79,6 +84,8 @@ lua_multilib_src_install() {
 
 	insinto "$(lua_get_include_dir)"/luasocket
 	doins src/*.h
+
+	popd
 }
 
 multilib_src_install() {

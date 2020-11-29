@@ -27,12 +27,12 @@ HTML_DOCS=( "doc/." )
 src_prepare() {
 	default
 
-	multilib_copy_sources
+	lua_copy_sources
+	lua_foreach_impl multilib_copy_sources
 }
 
 lua_multilib_src_compile() {
-	# Clean project, to compile it for every lua slot
-	emake clean
+	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -42,8 +42,7 @@ lua_multilib_src_compile() {
 
 	emake "${myemakeargs[@]}" all
 
-	# Copy module to match the choosen LUA implementation
-	cp "bit.so" "${S}/bit-${ELUA}.so" || die
+	popd
 }
 
 multilib_src_compile() {
@@ -51,6 +50,8 @@ multilib_src_compile() {
 }
 
 lua_multilib_src_test() {
+	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+
 	local mytests=(
 		"bitbench.lua"
 		"bittest.lua"
@@ -59,8 +60,10 @@ lua_multilib_src_test() {
 	)
 
 	for mytest in ${mytests[@]}; do
-		LUA_CPATH="${S}/bit-${ELUA}.so" ${ELUA} ${mytest}
+		LUA_CPATH="./?.so" ${ELUA} ${mytest}
 	done
+
+	popd
 }
 
 multilib_src_test() {
@@ -68,11 +71,12 @@ multilib_src_test() {
 }
 
 lua_multilib_src_install() {
-	# Use correct module for the choosen LUA implementation
-	cp "${S}/bit-${ELUA}.so" "bit.so" || die
+	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
 
 	exeinto $(lua_get_cmod_dir)
 	doexe bit.so
+
+	popd
 }
 
 multilib_src_install() {
