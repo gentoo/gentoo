@@ -92,7 +92,7 @@ src_prepare() {
 	if is_release ; then
 		rm -rf lib/{readline,termcap}/* || die
 		touch lib/{readline,termcap}/Makefile.in || die # for config.status
-		sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
+		sed -ri -e 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in || die
 	fi
 
 	# Prefixify hardcoded path names. No-op for non-prefix.
@@ -247,7 +247,7 @@ pkg_preinst() {
 		# rewrite the symlink to ensure that its mtime changes. having /bin/sh
 		# missing even temporarily causes a fatal error with paludis.
 		local target=$(readlink "${EROOT}"/bin/sh)
-		local tmp=$(emktemp "${EROOT}"/bin)
+		local tmp="${T}"/sh
 		ln -sf "${target}" "${tmp}"
 		mv -f "${tmp}" "${EROOT}"/bin/sh
 	fi

@@ -71,7 +71,7 @@ src_prepare() {
 	# Clean out local libs so we know we use system ones
 	rm -rf lib/{readline,termcap}/* || die
 	touch lib/{readline,termcap}/Makefile.in || die # for config.status
-	sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
+	sed -ri -e 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in || die
 
 	default
 
