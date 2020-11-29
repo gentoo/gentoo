@@ -49,6 +49,7 @@ BDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-make.patch
+	"${FILESDIR}"/${PN}-2.2.1-pkg-config.patch
 )
 
 src_configure() {
