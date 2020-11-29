@@ -30,7 +30,7 @@ RDEPEND="
 	!sys-devel/llvm[ocaml(-)]"
 for x in "${ALL_LLVM_TARGETS[@]}"; do
 	RDEPEND+="
-		~sys-devel/llvm-${PV}[${x}]"
+		${x}? ( ~sys-devel/llvm-${PV}[${x}] )"
 done
 unset x
 
