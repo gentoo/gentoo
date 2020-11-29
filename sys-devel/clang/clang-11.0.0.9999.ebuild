@@ -9,14 +9,6 @@ inherit cmake llvm llvm.org multilib-minimal pax-utils \
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( clang clang-tools-extra )
-LLVM_MANPAGES=build
-LLVM_TEST_COMPONENTS=(
-	llvm/lib/Testing/Support
-	llvm/utils/{lit,llvm-lit,unittest}
-	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
-)
-llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
@@ -58,6 +50,15 @@ PDEPEND="
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )
 	default-lld? ( sys-devel/lld )"
+
+LLVM_COMPONENTS=( clang clang-tools-extra )
+LLVM_MANPAGES=build
+LLVM_TEST_COMPONENTS=(
+	llvm/lib/Testing/Support
+	llvm/utils/{lit,llvm-lit,unittest}
+	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
+)
+llvm.org_set_globals
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
