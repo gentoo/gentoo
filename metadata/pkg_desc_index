@@ -9907,7 +9907,7 @@ dev-ruby/font-awesome-rails 4.7.0.5: Font-awesome for the asset pipeline
 dev-ruby/forgery 0.8.1: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.5.0 2.5.0-r1: Instafailing RSpec progress bar formatter
-dev-ruby/gettext-setup 0.30 0.34-r2: A gem to ease i18n
+dev-ruby/gettext-setup 0.34-r2: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.1: FastGettext / Rails integration
 dev-ruby/gh 0.18.0: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
