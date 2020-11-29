@@ -1,0 +1,14 @@
+Taken from: https://github.com/dbmail/dbmail/pull/64
+Author: Chris Mayo <aklhfex@gmail.com>
+
+--- a/src/dm_tls.c
++++ b/src/dm_tls.c
+@@ -31,7 +31,7 @@
+ #define THIS_MODULE "tls"
+ 
+ 
+-SSL_CTX *tls_context;
++extern SSL_CTX *tls_context;
+ 
+ /* Create the initial SSL context structure */
+ SSL_CTX *tls_init(void) {
