@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 WX_GTK_VER="3.0-gtk3"
+
 inherit autotools desktop git-r3 wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
@@ -11,18 +13,13 @@ EGIT_REPO_URI="https://github.com/rzvncj/xCHM/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="nls"
 
-RDEPEND="
-	>=dev-libs/chmlib-0.36
+RDEPEND=">=dev-libs/chmlib-0.36
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	nls? ( virtual/libintl )
-"
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
