@@ -55,7 +55,8 @@ src_configure() {
 src_compile() {
 	emake \
 		PREFIX="${EPREFIX}/usr" \
-		${PN}
+		USE_LUAJIT=$(usex luajit 1 0) \
+		${PN} ${PN}.so
 
 	use doc && emake doc
 }
@@ -66,7 +67,9 @@ src_test() {
 		mv tests/async/${failing_test}.lua{,.disabled} || die
 	done
 
-	emake run-tests
+	emake \
+		USE_LUAJIT=$(usex luajit 1 0) \
+		run-tests
 }
 
 src_install() {
