@@ -9,10 +9,6 @@ inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
-# libcxx is needed uncondtionally for the headers
-LLVM_COMPONENTS=( libcxx{abi,} )
-LLVM_TEST_COMPONENTS=( llvm/cmake )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -32,7 +28,13 @@ DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6"
 BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+	)"
+
+# libcxx is needed uncondtionally for the headers
+LLVM_COMPONENTS=( libcxx{abi,} )
+LLVM_TEST_COMPONENTS=( llvm/cmake )
+llvm.org_set_globals
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
