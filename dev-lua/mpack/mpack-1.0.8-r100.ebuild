@@ -4,9 +4,10 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} luajit )
-MY_PN="lib${PN}-lua"
 
 inherit lua toolchain-funcs
+
+MY_PN="lib${PN}-lua"
 
 DESCRIPTION="Lua bindings for libmpack"
 HOMEPAGE="https://github.com/libmpack/libmpack/"
@@ -27,7 +28,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]
+		dev-lua/busted[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "
