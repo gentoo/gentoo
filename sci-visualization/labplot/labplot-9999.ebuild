@@ -69,6 +69,8 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_MQTT=OFF # not packaged
+		-DENABLE_READSTAT=OFF # not packaged
 		-DENABLE_CANTOR=$(usex cantor)
 		-DENABLE_FFTW=$(usex fftw)
 		-DENABLE_FITS=$(usex fits)
@@ -79,7 +81,6 @@ src_configure() {
 		-DENABLE_QTSERIALPORT=$(usex serial)
 		$(cmake_use_find_package telemetry KUserFeedback)
 		-DENABLE_TESTS=$(usex test)
-		-DENABLE_MQTT=OFF
 	)
 
 	ecm_src_configure
