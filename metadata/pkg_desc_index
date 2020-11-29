@@ -8347,7 +8347,7 @@ dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.9 2.10: Personal shell command keeper and snippets manager
 dev-python/keyring 21.4.0 21.5.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
-dev-python/keystonemiddleware 7.0.1 9.1.0: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.0 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 20.6.0: micro-framework for developing production-ready web services with Python
 dev-python/kombu 4.6.8 5.0.1: AMQP Messaging Framework for Python
@@ -8749,7 +8749,7 @@ dev-python/pyperclip 1.7.0: A cross-platform clipboard module for Python.
 dev-python/pyphen 0.9.5 0.10.0: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.4.2: Minimal PyPI server
 dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
-dev-python/pypowervm 1.1.20 1.1.24: Python binding for the PowerVM REST API
+dev-python/pypowervm 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.6.1_p1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 8 9: Cheap setup.py hack to install flit & poetry-based projects
@@ -17278,7 +17278,7 @@ sys-devel/icecream 1.0.0-r2: Distributed compiling of C(++) code across several 
 sys-devel/kgcc64 6.4.0 6.5.0 7.3.0 7.5.0 8.3.0 8.4.0 9.3.0-r1 9.3.0-r2 10.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 9.0.1 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: The LLVM linker (link editor)
-sys-devel/llvm 9.0.1 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
+sys-devel/llvm 9.0.1 10.0.0 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 9.0.1 10.0.1 11.0.0 11.0.0.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
 sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
