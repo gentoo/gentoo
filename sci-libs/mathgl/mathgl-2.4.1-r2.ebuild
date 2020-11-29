@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz mirror://sourceforge/${PN}/STIX_
 LICENSE="LGPL-3"
 SLOT="0/7.5.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc fltk gif glut gsl hdf hdf5 jpeg lua mpi octave opengl openmp pdf
+IUSE="doc fltk gif glut gsl hdf hdf5 jpeg mpi octave opengl openmp pdf
 	png qt5 static-libs threads wxwidgets zlib"
 
 LANGS="ru"
@@ -32,7 +32,6 @@ RDEPEND="
 	hdf? ( sci-libs/hdf )
 	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
-	lua? ( >=dev-lang/lua-5.1:0 )
 	octave? ( >=sci-mathematics/octave-3.4.0 )
 	openmp? ( sys-cluster/openmpi )
 	pdf? ( media-libs/libharu )
@@ -110,7 +109,6 @@ src_configure() {
 		-Denable-hdf4=$(usex hdf)
 		-Denable-hdf5=$(usex hdf5)
 		-Denable-jpeg=$(usex jpeg)
-		-Denable-lua=$(usex lua)
 		-Denable-mpi=$(usex mpi)
 		-Denable-octave=$(usex octave)
 		-Denable-opengl=$(usex opengl)
