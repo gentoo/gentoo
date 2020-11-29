@@ -12349,7 +12349,7 @@ lxqt-base/lxqt-notificationd 0.15.0 0.16.0: LXQt notification daemon and library
 lxqt-base/lxqt-openssh-askpass 0.15.0 0.16.0: LXQt OpenSSH user password prompt tool
 lxqt-base/lxqt-panel 0.15.1 0.16.1: LXQt desktop panel and plugins
 lxqt-base/lxqt-policykit 0.15.0 0.16.0: LXQt PolKit authentication agent
-lxqt-base/lxqt-powermanagement 0.15.0 0.16.0: LXQt daemon for power management and auto-suspend
+lxqt-base/lxqt-powermanagement 0.15.0 0.16.0-r1: LXQt daemon for power management and auto-suspend
 lxqt-base/lxqt-qtplugin 0.15.1 0.16.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.15.0 0.16.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.15.0 0.16.0: LXQt Session Manager
