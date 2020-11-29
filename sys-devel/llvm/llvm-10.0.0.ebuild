@@ -3,17 +3,22 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
-inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
-	toolchain-funcs
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit cmake-utils llvm.org multilib-minimal multiprocessing \
+	pax-utils python-any-r1 toolchain-funcs
 
+MANPAGE_P=llvm-10.0.0-manpages
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
+SRC_URI="
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${MANPAGE_P}.tar.bz2 )"
+LLVM_COMPONENTS=( llvm )
+llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
 # Keep in sync with CMakeLists.txt
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
@@ -26,7 +31,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="$(ver_cut 1)"
-KEYWORDS=""
+KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
@@ -51,7 +56,6 @@ DEPEND="${RDEPEND}
 	gold? ( sys-libs/binutils-libs )"
 BDEPEND="
 	dev-lang/perl
-	>=dev-util/cmake-3.16
 	sys-devel/gnuconfig
 	kernel_Darwin? (
 		<sys-libs/libcxx-$(ver_cut 1-3).9999
@@ -70,9 +74,8 @@ RDEPEND="${RDEPEND}
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
-LLVM_COMPONENTS=( llvm )
-LLVM_MANPAGES=build
-llvm.org_set_globals
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	use doc || return 0
@@ -81,95 +84,13 @@ python_check_deps() {
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
-check_live_ebuild() {
-	local prod_targets=(
-		$(sed -n -e '/set(LLVM_ALL_TARGETS/,/)/p' CMakeLists.txt \
-			| tail -n +2 | head -n -1)
-	)
-	local all_targets=(
-		lib/Target/*/
-	)
-	all_targets=( "${all_targets[@]#lib/Target/}" )
-	all_targets=( "${all_targets[@]%/}" )
+src_unpack() {
+	llvm.org_src_unpack
 
-	local exp_targets=() i
-	for i in "${all_targets[@]}"; do
-		has "${i}" "${prod_targets[@]}" || exp_targets+=( "${i}" )
-	done
-	# reorder
-	all_targets=( "${prod_targets[@]}" "${exp_targets[@]}" )
-
-	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
-		eqawarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
-		eqawarn "Expected: ${exp_targets[*]}"
-		eqawarn
-	fi
-
-	if [[ ${all_targets[*]} != ${ALL_LLVM_TARGETS[*]#llvm_targets_} ]]; then
-		eqawarn "ALL_LLVM_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
-		eqawarn "Expected: ${all_targets[*]}"
-	fi
-}
-
-check_distribution_components() {
-	if [[ ${CMAKE_MAKEFILE_GENERATOR} == ninja ]]; then
-		local all_targets=() my_targets=() l
-		cd "${BUILD_DIR}" || die
-
-		while read -r l; do
-			if [[ ${l} == install-*-stripped:* ]]; then
-				l=${l#install-}
-				l=${l%%-stripped*}
-
-				case ${l} in
-					# shared libs
-					LLVM|LLVMgold)
-						;;
-					# TableGen lib + deps
-					LLVMDemangle|LLVMSupport|LLVMTableGen)
-						;;
-					# static libs
-					LLVM*)
-						continue
-						;;
-					# meta-targets
-					distribution|llvm-libraries)
-						continue
-						;;
-					# used only w/ USE=doc
-					docs-llvm-html)
-						use doc || continue
-						;;
-				esac
-
-				all_targets+=( "${l}" )
-			fi
-		done < <(ninja -t targets all)
-
-		while read -r l; do
-			my_targets+=( "${l}" )
-		done < <(get_distribution_components $"\n")
-
-		local add=() remove=()
-		for l in "${all_targets[@]}"; do
-			if ! has "${l}" "${my_targets[@]}"; then
-				add+=( "${l}" )
-			fi
-		done
-		for l in "${my_targets[@]}"; do
-			if ! has "${l}" "${all_targets[@]}"; then
-				remove+=( "${l}" )
-			fi
-		done
-
-		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
-			eqawarn "get_distribution_components() is outdated!"
-			eqawarn "   Add: ${add[*]}"
-			eqawarn "Remove: ${remove[*]}"
-		fi
-		cd - >/dev/null || die
+	if ! use doc; then
+		ebegin "Unpacking ${MANPAGE_P}.tar.bz2"
+		tar -xf "${DISTDIR}/${MANPAGE_P}.tar.bz2" || die
+		eend ${?}
 	fi
 }
 
@@ -184,10 +105,8 @@ src_prepare() {
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
-	# Verify that the live ebuild is up-to-date
-	check_live_ebuild
-
-	llvm.org_src_prepare
+	# User patches + QA
+	cmake-utils_src_prepare
 }
 
 # Is LLVM being linked against libc++?
@@ -261,7 +180,6 @@ get_distribution_components() {
 			llvm-elfabi
 			llvm-exegesis
 			llvm-extract
-			llvm-gsymutil
 			llvm-ifs
 			llvm-install-name-tool
 			llvm-jitlink
@@ -272,7 +190,6 @@ get_distribution_components() {
 			llvm-lto2
 			llvm-mc
 			llvm-mca
-			llvm-ml
 			llvm-modextract
 			llvm-mt
 			llvm-nm
@@ -306,15 +223,10 @@ get_distribution_components() {
 			opt-viewer
 		)
 
-		if llvm_are_manpages_built; then
-			out+=(
-				# manpages
-				docs-dsymutil-man
-				docs-llvm-dwarfdump-man
-				docs-llvm-man
-			)
-		fi
 		use doc && out+=(
+			docs-dsymutil-man
+			docs-llvm-dwarfdump-man
+			docs-llvm-man
 			docs-llvm-html
 		)
 
@@ -369,8 +281,6 @@ multilib_src_configure() {
 		# used only for llvm-objdump tool
 		-DHAVE_LIBXAR=$(multilib_native_usex xar 1 0)
 
-		-DPython3_EXECUTABLE="${PYTHON}"
-
 		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
 		-DOCAMLFIND=NO
 	)
@@ -393,26 +303,21 @@ multilib_src_configure() {
 #	fi
 
 	use test && mycmakeargs+=(
-		-DLLVM_LIT_ARGS="$(get_lit_flags)"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	if multilib_is_native_abi; then
-		local build_docs=OFF
-		if llvm_are_manpages_built; then
-			build_docs=ON
-			mycmakeargs+=(
-				-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
-				-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
-				-DSPHINX_WARNINGS_AS_ERRORS=OFF
-			)
-		fi
-
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=${build_docs}
+			-DLLVM_BUILD_DOCS=$(usex doc)
 			-DLLVM_ENABLE_OCAMLDOC=OFF
-			-DLLVM_ENABLE_SPHINX=${build_docs}
+			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_UTILS=ON
+		)
+		use doc && mycmakeargs+=(
+			-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
+			-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
 		use gold && mycmakeargs+=(
 			-DLLVM_BINUTILS_INCDIR="${EPREFIX}"/usr/include
@@ -445,13 +350,11 @@ multilib_src_configure() {
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
-	cmake_src_configure
-
-	multilib_is_native_abi && check_distribution_components
+	cmake-utils_src_configure
 }
 
 multilib_src_compile() {
-	cmake_build distribution
+	cmake-utils_src_compile
 
 	pax-mark m "${BUILD_DIR}"/bin/llvm-rtdyld
 	pax-mark m "${BUILD_DIR}"/bin/lli
@@ -467,7 +370,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake_build check
+	cmake-utils_src_make check
 }
 
 src_install() {
@@ -487,7 +390,7 @@ src_install() {
 }
 
 multilib_src_install() {
-	DESTDIR=${D} cmake_build install-distribution
+	DESTDIR=${D} cmake-utils_src_make install-distribution
 
 	# move headers to /usr/include for wrapping
 	rm -rf "${ED}"/usr/include || die
@@ -506,8 +409,14 @@ multilib_src_install_all() {
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 	_EOF_
 
+	# install pre-generated manpages
+	if ! use doc; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/${MANPAGE_P}/llvm"/*.1
+	fi
+
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
-	llvm_install_manpages
 }
 
 pkg_postinst() {

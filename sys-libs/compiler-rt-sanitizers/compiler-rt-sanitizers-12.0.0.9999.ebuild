@@ -8,9 +8,6 @@ inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( compiler-rt )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
@@ -32,8 +29,13 @@ BDEPEND="
 		!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
-		sys-libs/compiler-rt:${SLOT} )
+		sys-libs/compiler-rt:${SLOT}
+	)
 	${PYTHON_DEPS}"
+
+LLVM_COMPONENTS=( compiler-rt )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+llvm.org_set_globals
 
 python_check_deps() {
 	use test || return 0
