@@ -22,6 +22,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[network,${PYTHON_USEDEP}]
 		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
 		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
 	')
@@ -73,6 +74,7 @@ python_compile_all() {
 }
 
 python_test() {
+	GIT_CONFIG_NOSYSTEM=true \
 	PYTHONPATH="${S}:${S}/build/lib:${PYTHONPATH}" LC_ALL="en_US.utf8" \
 	virtx nosetests --verbose --with-id --with-doctest \
 		--exclude=sphinxtogithub
