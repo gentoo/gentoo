@@ -8,9 +8,6 @@ inherit cmake llvm llvm.org python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( lld )
-LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -20,10 +17,15 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}"
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		>=dev-util/cmake-3.16
 		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 	)"
+
+LLVM_COMPONENTS=( lld )
+LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
+llvm.org_set_globals
 
 python_check_deps() {
 	has_version -b "dev-python/lit[${PYTHON_USEDEP}]"
