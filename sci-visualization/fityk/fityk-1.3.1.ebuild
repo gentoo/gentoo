@@ -8,7 +8,7 @@ WX_GTK_VER=3.0
 inherit wxwidgets xdg
 
 DESCRIPTION="General-purpose nonlinear curve fitting and data analysis"
-HOMEPAGE="http://fityk.nieto.pl/"
+HOMEPAGE="https://fityk.nieto.pl/"
 SRC_URI="https://github.com/wojdyr/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
