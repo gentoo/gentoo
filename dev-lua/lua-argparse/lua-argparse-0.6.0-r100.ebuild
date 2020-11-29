@@ -2,32 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+
+LUA_COMPAT=( lua5-{1..3} luajit )
+
+inherit lua toolchain-funcs
 
 DESCRIPTION="Command line argument parser for the Lua Programming Language"
 HOMEPAGE="https://github.com/mpeterv/argparse"
-SRC_URI="https://github.com/mpeterv/argparse/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mpeterv/${PN/lua-/}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN//lua-/}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="doc luajit test"
+IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	>=dev-lang/lua-5.1:=
-	luajit? ( dev-lang/luajit:2 )"
+RDEPEND="${LUA_DEPS}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 	test? (
+		>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]
 		${RDEPEND}
-		dev-lua/busted
-	)"
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN//lua-/}-${PV}"
+	)
+"
 
 src_compile() {
 	if use doc; then
@@ -36,18 +37,24 @@ src_compile() {
 	fi
 }
 
+lua_src_test() {
+	busted  --exclude-tags="unsafe" --lua=${ELUA} || die
+}
+
 src_test() {
-	busted -o gtest --exclude-tags="unsafe" || die
+	lua_foreach_impl lua_src_test
+}
+
+lua_src_install() {
+	insinto "$(lua_get_lmod_dir)"
+	doins src/argparse.lua
 }
 
 src_install() {
-	use doc && local -a HTML_DOCS=( html/. )
-	local -a DOCS=( README.md CHANGELOG.md )
+	default
+
+	use doc && local -a HTML_DOCS=( "html/." )
 	einstalldocs
 
-	local instdir
-	instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
-
-	insinto "${instdir#${EPREFIX}}"
-	doins src/argparse.lua
+	lua_foreach_impl lua_src_install
 }

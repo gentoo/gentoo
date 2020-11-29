@@ -15,9 +15,9 @@ IUSE="doc luajit test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-lua/lua-argparse[luajit=]
+	dev-lua/lua-argparse[luajit(-)=]
 	dev-lua/luafilesystem[luajit(-)=]
-	dev-lua/lua-utf8[luajit=]
+	dev-lua/lua-utf8[luajit(-)=]
 	!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:2 )"
 BDEPEND="
@@ -28,6 +28,8 @@ BDEPEND="
 		dev-lua/busted
 	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-0.23.0-disable-measuring-performance-test.patch" )
 
 src_compile() {
 	if use doc; then
