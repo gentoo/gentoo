@@ -24,7 +24,6 @@ ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 # MSVCSetupApi.h: MIT
 # sorttable.js: MIT
@@ -39,10 +38,16 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
+	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${MULTILIB_USEDEP}]
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
+for x in "${ALL_LLVM_TARGETS[@]}"; do
+	RDEPEND+="
+		~sys-devel/llvm-${PV}:${SLOT}[${x}]"
+done
+unset x
+
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? ( dev-python/sphinx )
@@ -199,7 +204,7 @@ get_distribution_components() {
 			modularize
 			pp-trace
 		)
-		
+
 		if llvm_are_manpages_built; then
 			out+=(
 				# manpages
