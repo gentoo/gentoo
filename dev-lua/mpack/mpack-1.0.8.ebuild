@@ -3,9 +3,9 @@
 
 EAPI=7
 
-MY_PN="lib${PN}-lua"
-
 inherit toolchain-funcs
+
+MY_PN="lib${PN}-lua"
 
 DESCRIPTION="Lua bindings for libmpack"
 HOMEPAGE="https://github.com/libmpack/libmpack/"
