@@ -33,8 +33,6 @@ src_configure() {
 src_install() {
 	default
 
-	dodoc AUTHORS README ChangeLog
-
 	domenu "${FILESDIR}"/xchm.desktop
 	insinto /usr/share/mime/packages
 	doins "${FILESDIR}"/xchm.xml
