@@ -40,9 +40,8 @@ RDEPEND="
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 pkg_pretend() {
 	if [[ "${ABI}" == amd64 ]]; then

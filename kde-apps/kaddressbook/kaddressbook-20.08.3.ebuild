@@ -59,6 +59,8 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kdepim-runtime-${PVCUT}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.15.2.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package telemetry KUserFeedback)

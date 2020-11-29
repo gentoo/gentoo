@@ -8,6 +8,8 @@ inherit cmake
 DESCRIPTION="LXQt daemon for power management and auto-suspend"
 HOMEPAGE="https://lxqt.github.io/"
 
+LXQTPV="$(ver_cut 1-2)*"
+
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
@@ -34,7 +36,8 @@ DEPEND="
 	dev-qt/qtx11extras:5
 	kde-frameworks/kidletime:5
 	kde-frameworks/solid:5
-	=lxqt-base/liblxqt-$(ver_cut 1-2)*
+	=lxqt-base/liblxqt-${LXQTPV}
+	=lxqt-base/lxqt-globalkeys-${LXQTPV}
 	sys-power/upower
 "
 RDEPEND="${DEPEND}
