@@ -81,7 +81,7 @@ src_prepare() {
 	if [[ ${PV} != *_rc* ]] ; then
 		rm -rf lib/{readline,termcap}/* || die
 		touch lib/{readline,termcap}/Makefile.in || die # for config.status
-		sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
+		sed -ri -e 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in || die
 	fi
 
 	# Avoid regenerating docs after patches #407985
