@@ -6,6 +6,6 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">libmpack/libmpack-lua</remote-id>
+		<remote-id type="github">libmpack/libmpack</remote-id>
 	</upstream>
 </pkgmetadata>
