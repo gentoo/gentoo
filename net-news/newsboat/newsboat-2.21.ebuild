@@ -94,7 +94,7 @@ SRC_URI="
 	$(cargo_crate_uris ${CRATES})
 "
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSL-1.1 MIT Unlicense ZLIB"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="libressl"
