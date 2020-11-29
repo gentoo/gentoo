@@ -8,9 +8,6 @@ inherit cmake llvm llvm.org python-single-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( lldb )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -40,8 +37,13 @@ BDEPEND="
 		$(python_gen_cond_dep "
 			~dev-python/lit-${PV}[\${PYTHON_MULTI_USEDEP}]
 		")
-		sys-devel/lld )
+		sys-devel/lld
+	)
 	${PYTHON_DEPS}"
+
+LLVM_COMPONENTS=( lldb )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+llvm.org_set_globals
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
