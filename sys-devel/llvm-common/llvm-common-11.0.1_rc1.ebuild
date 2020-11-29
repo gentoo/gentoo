@@ -3,22 +3,25 @@
 
 EAPI=7
 
-inherit bash-completion-r1 llvm.org
+inherit llvm.org
 
-DESCRIPTION="Common files shared between multiple slots of clang"
+DESCRIPTION="Common files shared between multiple slots of LLVM"
 HOMEPAGE="https://llvm.org/"
-S=${WORKDIR}/clang/utils
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-PDEPEND="sys-devel/clang:*"
+RDEPEND="!sys-devel/llvm:0"
 
-LLVM_COMPONENTS=( clang/utils/bash-autocomplete.sh )
+LLVM_COMPONENTS=( llvm/utils/vim )
 llvm.org_set_globals
 
 src_install() {
-	newbashcomp bash-autocomplete.sh clang
+	insinto /usr/share/vim/vimfiles
+	doins -r */
+	# some users may find it useful
+	newdoc README README.vim
+	dodoc vimrc
 }

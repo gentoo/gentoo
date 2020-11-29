@@ -8,8 +8,6 @@ inherit cmake llvm llvm.org python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( llvm )
-llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
@@ -20,7 +18,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS=""
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
@@ -43,6 +41,9 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	test? ( dev-ml/ounit )
 	${PYTHON_DEPS}"
+
+LLVM_COMPONENTS=( llvm )
+llvm.org_set_globals
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
