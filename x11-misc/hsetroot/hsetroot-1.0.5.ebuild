@@ -45,5 +45,5 @@ src_compile() {
 
 src_install() {
 	dobin ${PN} hsr-outputs
-	dodoc README.md
+	einstalldocs
 }
