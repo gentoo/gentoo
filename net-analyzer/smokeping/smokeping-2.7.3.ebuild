@@ -10,7 +10,7 @@ SRC_URI="https://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="apache2 curl dig echoping ipv6 radius"
 
