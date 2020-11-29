@@ -10,8 +10,6 @@ inherit distutils-r1 llvm.org
 
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( llvm/utils/lit )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
@@ -24,6 +22,9 @@ BDEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"
+
+LLVM_COMPONENTS=( llvm/utils/lit )
+llvm.org_set_globals
 
 # TODO: move the manpage generation here (from sys-devel/llvm)
 
