@@ -9,9 +9,6 @@ inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( llvm )
-LLVM_MANPAGES=build
-llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
 ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY VE )
@@ -72,6 +69,10 @@ RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
+
+LLVM_COMPONENTS=( llvm )
+LLVM_MANPAGES=build
+llvm.org_set_globals
 
 python_check_deps() {
 	use doc || return 0
