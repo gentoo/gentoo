@@ -43,7 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" ) # bug #624480, in git master
 
 pkg_pretend() {
 	if [[ "${ABI}" == amd64 ]]; then
