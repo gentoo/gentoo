@@ -32,7 +32,10 @@ REQUIRED_USE="
 
 BDEPEND="
 	dev-util/gperf
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${BDEPEND}"
 RDEPEND="${DEPEND}"
