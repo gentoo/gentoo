@@ -4,10 +4,10 @@ DEPEND=>=dev-lang/lua-5.1:= dev-lua/luafilesystem
 DESCRIPTION=Lua utility libraries loosely based on the Python standard libraries
 EAPI=7
 HOMEPAGE=https://github.com/Tieske/Penlight,
-KEYWORDS=~amd64 arm arm64 ppc ~ppc64 x86
+KEYWORDS=~amd64 arm arm64 ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:= dev-lua/luafilesystem
 SLOT=0
 SRC_URI=https://github.com/Tieske/Penlight/archive/1.7.0.tar.gz -> penlight-1.7.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4c0216f85e0e4b824f0d68d6655e97de
+_md5_=7c2b06ac34eaba6b9ea5b5a904c107b5
