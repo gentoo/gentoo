@@ -13,13 +13,12 @@ if [[ ${PV} == *9999 ]]; then
 else
 	COMMIT_ID="4c221a05d949a3767a2671de139c6014909daf6b"
 	SRC_URI="https://github.com/Rudde/${PN}/archive/${COMMIT_ID}.tar.gz -> ${PN}-${COMMIT_ID}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
 IUSE="threads +ssl libressl debug"
 
 RDEPEND="
