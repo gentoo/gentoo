@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-11-29)
+# An awful hack-package that was dumped on others, and not touched
+# by the person adding it since.  Depends on obsolete LLVM versions
+# and needs a version bump.
+# Removal in 30 days.  Bug #734732.
+dev-libs/libclangformat-ide
+
 # David Seifert <soap@gentoo.org> (2020-11-28)
 # Last release in 2002, multiple open bugs, no maintainer, no revdeps.
 # Bug #709512, #713300, #729518, Removal in 30 days.
