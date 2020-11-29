@@ -19,4 +19,8 @@ RDEPEND="
 	>=dev-python/cppy-1.1.0[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.1-darwin-build.patch"
+)
+
 distutils_enable_tests pytest
