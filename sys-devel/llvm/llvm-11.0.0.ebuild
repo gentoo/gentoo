@@ -38,12 +38,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 	exegesis? ( dev-libs/libpfm:= )
-	gold? (
-		|| (
-			>=sys-devel/binutils-2.31.1-r4:*[plugins]
-			<sys-devel/binutils-2.31.1-r4:*[cxx]
-		)
-	)
+	gold? ( >=sys-devel/binutils-2.31.1-r4:*[plugins] )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=dev-libs/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
