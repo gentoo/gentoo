@@ -9,8 +9,6 @@ inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
-LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -35,6 +33,9 @@ BDEPEND="
 	)"
 
 DOCS=( CREDITS.TXT )
+
+LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
+llvm.org_set_globals
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
