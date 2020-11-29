@@ -15,7 +15,6 @@ llvm.org_set_globals
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
@@ -27,8 +26,14 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
 	dev-ml/ocaml-ctypes:=
-	~sys-devel/llvm-${PV}:=[${LLVM_TARGET_USEDEPS// /,},debug?]
+	~sys-devel/llvm-${PV}:=[debug?]
 	!sys-devel/llvm[ocaml(-)]"
+for x in "${ALL_LLVM_TARGETS[@]}"; do
+	RDEPEND+="
+		~sys-devel/llvm-${PV}[${x}]"
+done
+unset x
+
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
