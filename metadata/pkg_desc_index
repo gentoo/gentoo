@@ -36,6 +36,7 @@ acct-group/consul_exporter 0: System group: consul_exporter
 acct-group/croc 0: Group for net-misc/croc
 acct-group/cvmfs 0: Group for the CernVM-FS network file system
 acct-group/davfs2 0: System group: davfs2
+acct-group/dbmail 0: System group: dbmail
 acct-group/ddclient 0: A group for the dynamic DNS client
 acct-group/deluge 0: System group: deluge
 acct-group/dhcp 0: System group: dhcp
@@ -300,6 +301,7 @@ acct-user/cvmfs 0: User for the CernVM-FS network file system
 acct-user/cyrus 0-r1: user for cyrus-imapd daemon
 acct-user/darkstat 0: uid for net-analyzer/darkstat
 acct-user/davfs2 0: System user: davfs2
+acct-user/dbmail 0: System user: dbmail
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
 acct-user/dhcp 0: user for dhcp daemon
@@ -550,7 +552,7 @@ app-admin/bitwarden-desktop-bin 1.22.2 1.23.0: Bitwarden password manager deskto
 app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
-app-admin/cdist 5.1.3 6.0.0 6.5.4 6.5.6: A usable configuration management system
+app-admin/cdist 6.9.2: A usable configuration management system
 app-admin/cgmanager 0.41 0.42: Control Group manager daemon
 app-admin/checksec 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2 2.2.3 2.4.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
@@ -14901,7 +14903,7 @@ net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication 
 net-mail/courier-imap 4.18.2 5.0.7 5.0.8 5.0.10: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
-net-mail/dbmail 3.2.3-r1 3.2.3-r2: Fast and scalable sql based email services
+net-mail/dbmail 3.2.3-r1 3.2.3-r3: Fast and scalable sql based email services
 net-mail/django-mailman3 1.3.4: Django-based interfaces interacting with Mailman 3
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.36.4 2.3.7.2 2.3.10.1 2.3.11.3 2.3.11.3-r1 2.3.11.3-r2: An IMAP and POP3 server written with security primarily in mind
@@ -15276,7 +15278,7 @@ net-misc/tigervnc 1.9.0-r1 1.11.0-r2: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
-net-misc/ucarp 1.5.2-r3 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
+net-misc/ucarp 1.5.2-r3 1.5.2-r6: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
