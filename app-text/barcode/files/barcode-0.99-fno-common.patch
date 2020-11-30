@@ -1,0 +1,25 @@
+Taken from: https://sources.debian.org/patches/barcode/0.99-4/0006-Fix-FTBFS-with-gcc-10.patch/
+Author: https://sources.debian.org/patches/barcode/0.99-4/0006-Fix-FTBFS-with-gcc-10.patch/
+--- a/barcode.h
++++ b/barcode.h
+@@ -123,6 +123,6 @@ extern int Barcode_Version(char *versionname);
+ }
+ #endif
+ 
+-int streaming;
++extern int streaming;
+ 
+ #endif /* _BARCODE_H_ */
+diff --git a/library.c b/library.c
+index 30946ff..5390a2b 100644
+--- a/library.c
++++ b/library.c
+@@ -30,6 +30,8 @@
+ #endif
+ #include <errno.h>
+ 
++int streaming;
++
+ /*
+  * This function allocates a barcode structure and strdup()s the
+  * text string. It returns NULL in case of error
