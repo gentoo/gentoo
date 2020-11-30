@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Simple screen locker"
 HOMEPAGE="https://i3wm.org/i3lock/"
-SRC_URI="https://i3wm.org/i3lock/${P}.tar.bz2"
+SRC_URI="https://i3wm.org/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
