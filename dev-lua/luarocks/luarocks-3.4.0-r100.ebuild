@@ -8,8 +8,8 @@ LUA_COMPAT=( lua5-{1..3} luajit )
 inherit lua-single
 
 DESCRIPTION="A package manager for the Lua programming language"
-HOMEPAGE="http://www.luarocks.org"
-SRC_URI="http://luarocks.org/releases/${P}.tar.gz"
+HOMEPAGE="https://luarocks.org"
+SRC_URI="https://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -30,15 +30,15 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		$(lua_gen_cond_dep '>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]')
-		$(lua_gen_cond_dep '>=dev-lua/busted-htest-1.0.0-r100[${LUA_USEDEP}]')
+		$(lua_gen_cond_dep 'dev-lua/busted[${LUA_USEDEP}]')
+		$(lua_gen_cond_dep 'dev-lua/busted-htest[${LUA_USEDEP}]')
 		${RDEPEND}
 	)
 "
 
 src_configure() {
 	local myeconfargs=(
-		"--prefix=${EPRIFIX}/usr"
+		"--prefix=${EPREFIX}/usr"
 		"--rocks-tree=$(lua_get_lmod_dir)"
 		"--with-lua-include=$(lua_get_include_dir)"
 		"--with-lua-interpreter=${ELUA}"
@@ -58,4 +58,21 @@ src_install() {
 	default
 
 	{ find "${D}" -type f -exec sed -i -e "s:${D}::g" {} \;; } || die
+}
+
+pkg_postinst() {
+	local lua_abi_ver
+	if use lua_single_target_luajit; then
+		lua_abi_ver="5.1"
+	else
+		lua_abi_ver=${ELUA#lua}
+	fi
+	elog
+	elog "To manage rocks for a Lua version other than the current ${CATEGORY}/${PN} default (${lua_abi_ver})"
+	elog "you can use the command-line option --lua-version, e.g."
+	elog
+	elog "    luarocks --lua-version 5.3 install luasocket"
+	elog
+	elog "(use 5.1 for luajit). Note that the relevant Lua version must already be present in the system."
+	elog
 }

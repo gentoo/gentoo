@@ -24,9 +24,9 @@ src_configure() {
 	# econf doesn't work b/c it passes variables the custom configure can't
 	# handle
 	./configure \
-			--prefix="${EPRIFIX}/usr" \
-			--with-lua-lib="${EPRIFIX}/usr/$(get_libdir)" \
-			--rocks-tree="${EPRIFIX}/usr/$(get_libdir)/lua/luarocks" \
+			--prefix="${EPREFIX}/usr" \
+			--with-lua-lib="${EPREFIX}/usr/$(get_libdir)" \
+			--rocks-tree="${EPREFIX}/usr/$(get_libdir)/lua/luarocks" \
 			|| die "configure failed"
 }
 

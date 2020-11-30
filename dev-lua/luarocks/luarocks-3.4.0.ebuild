@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A package manager for the Lua programming language"
-HOMEPAGE="http://www.luarocks.org"
-SRC_URI="http://luarocks.org/releases/${P}.tar.gz"
+HOMEPAGE="https://luarocks.org"
+SRC_URI="https://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -39,7 +39,7 @@ BDEPEND="
 
 src_configure() {
 	local myeconfargs=(
-		"--prefix=${EPRIFIX}/usr"
+		"--prefix=${EPREFIX}/usr"
 		"--rocks-tree=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
 		"--with-lua-include=$($(tc-getPKG_CONFIG) --variable $(usex luajit 'includedir' 'INSTALL_INC') $(usex luajit 'luajit' 'lua'))"
 		"--with-lua-interpreter=$(usex luajit 'luajit' 'lua')"
