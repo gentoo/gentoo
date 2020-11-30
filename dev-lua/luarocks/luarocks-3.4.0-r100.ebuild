@@ -30,8 +30,8 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		$(lua_gen_cond_dep '>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]')
-		$(lua_gen_cond_dep '>=dev-lua/busted-htest-1.0.0-r100[${LUA_USEDEP}]')
+		$(lua_gen_cond_dep 'dev-lua/busted[${LUA_USEDEP}]')
+		$(lua_gen_cond_dep 'dev-lua/busted-htest[${LUA_USEDEP}]')
 		${RDEPEND}
 	)
 "
