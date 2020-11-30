@@ -4,29 +4,25 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} luajit )
+MY_PV="${PV/_p/-}"
 
 inherit lua
 
-DESCRIPTION="Pretty output handler for Busted"
-HOMEPAGE="https://github.com/hishamhm/busted-htest"
-SRC_URI="https://github.com/hishamhm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="A simple and complete ini parser for Lua"
+HOMEPAGE="https://github.com/bartbes/inifile/"
+SRC_URI="https://github.com/bartbes/inifile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="
-	dev-lua/busted[${LUA_USEDEP}]
-	${LUA_DEPS}
-"
-
+RDEPEND="${LUA_DEPS}"
 BDEPEND="virtual/pkgconfig"
 
 lua_src_install() {
 	insinto $(lua_get_lmod_dir)
-	doins src/busted/outputHandlers/htest.lua
-
-	einstalldocs
+	doins inifile.lua
 }
 
 src_install() {

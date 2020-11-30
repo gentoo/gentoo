@@ -18,9 +18,9 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lua/lua-argparse-0.6.0-r100[${LUA_USEDEP}]
-	>=dev-lua/lua-utf8-0.1.3-r100[${LUA_USEDEP}]
-	>=dev-lua/luafilesystem-1.8.0-r100[${LUA_USEDEP}]
+	dev-lua/lua-argparse[${LUA_USEDEP}]
+	dev-lua/lua-utf8[${LUA_USEDEP}]
+	dev-lua/luafilesystem[${LUA_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"

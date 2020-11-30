@@ -19,14 +19,14 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lua/say-1.3_p1-r100[${LUA_USEDEP}]
+	dev-lua/say[${LUA_USEDEP}]
 	${LUA_DEPS}
 "
 
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]
+		dev-lua/busted[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "
