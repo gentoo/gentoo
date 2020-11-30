@@ -5,4 +5,5 @@
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
