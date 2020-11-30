@@ -19,15 +19,15 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lua/lua_cliargs-3.0_p2-r100[${LUA_USEDEP}]
-	>=dev-lua/luafilesystem-1.8.0-r100[${LUA_USEDEP}]
-	>=dev-lua/luasystem-0.2.1_p0-r100[${LUA_USEDEP}]
-	>=dev-lua/dkjson-2.5-r100[${LUA_USEDEP}]
-	>=dev-lua/say-1.3_p1-r100[${LUA_USEDEP}]
-	>=dev-lua/luassert-1.8.0-r100[${LUA_USEDEP}]
-	>=dev-lua/lua-term-0.7-r100[${LUA_USEDEP}]
-	>=dev-lua/penlight-1.7.0-r100[${LUA_USEDEP}]
-	>=dev-lua/mediator_lua-1.1.2_p0-r100[${LUA_USEDEP}]
+	dev-lua/lua_cliargs[${LUA_USEDEP}]
+	dev-lua/luafilesystem[${LUA_USEDEP}]
+	dev-lua/luasystem[${LUA_USEDEP}]
+	dev-lua/dkjson[${LUA_USEDEP}]
+	dev-lua/say[${LUA_USEDEP}]
+	dev-lua/luassert[${LUA_USEDEP}]
+	dev-lua/lua-term[${LUA_USEDEP}]
+	dev-lua/penlight[${LUA_USEDEP}]
+	dev-lua/mediator_lua[${LUA_USEDEP}]
 	${LUA_DEPS}
 "
 
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		>=dev-lua/busted-2.0.0-r100
+		dev-lua/busted
 		${RDEPEND}
 	)
 "
