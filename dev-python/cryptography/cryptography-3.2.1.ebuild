@@ -46,6 +46,20 @@ RDEPEND+=${DEPEND}
 
 DOCS=( AUTHORS.rst CONTRIBUTING.rst README.rst )
 
+src_prepare() {
+	default
+
+	# work around availability macros not supported in GCC (yet)
+	if [[ ${CHOST} == *-darwin ]] ; then
+		local darwinok=0
+		if [[ ${CHOST##*-darwin} -ge 16 ]] ; then
+			darwinok=1
+		fi
+		sed -i -e 's/__builtin_available(macOS 10\.12, \*)/'"${darwinok}"'/' \
+			src/_cffi_src/openssl/src/osrandom_engine.c
+	fi
+}
+
 python_test() {
 	local -x PYTHONPATH=${PYTHONPATH}:${WORKDIR}/${VEC_P}
 	pytest -vv -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
