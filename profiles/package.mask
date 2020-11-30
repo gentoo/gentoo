@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-11-30)
+# EAPI=5. Multiple open bugs #603866 #713620
+# Dead upstream. Removal in 30 days.
+net-analyzer/dosdetector
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-29)
 # An awful hack-package that was dumped on others, and not touched
 # by the person adding it since.  Depends on obsolete LLVM versions
