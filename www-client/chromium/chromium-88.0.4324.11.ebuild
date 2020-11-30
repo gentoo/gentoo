@@ -121,6 +121,7 @@ BDEPEND="
 	js-type-check? ( virtual/jre )
 "
 
+# These are intended for ebuild maintainer use to force clang if GCC is broken.
 : ${CHROMIUM_FORCE_CLANG=no}
 : ${CHROMIUM_FORCE_LIBCXX=no}
 
