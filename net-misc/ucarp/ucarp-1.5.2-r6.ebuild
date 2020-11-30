@@ -1,23 +1,28 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 DESCRIPTION="Portable userland implementation of Common Address Redundancy Protocol (CARP)"
-HOMEPAGE="http://www.ucarp.org"
+HOMEPAGE="https://ucarp.wordpress.com"
 SRC_URI="ftp://ftp.ucarp.org/pub/ucarp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="nls"
+IUSE="debug nls"
 
 RDEPEND="net-libs/libpcap"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_configure() {
-	econf $(use_enable nls)
+	econf \
+		--disable-static \
+		$(use_with debug) \
+		$(use_enable nls)
 }
 
 src_install() {
@@ -33,6 +38,8 @@ src_install() {
 
 	newinitd "${FILESDIR}"/ucarp.initd-r2 ucarp
 	newconfd "${FILESDIR}"/ucarp.confd ucarp
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
