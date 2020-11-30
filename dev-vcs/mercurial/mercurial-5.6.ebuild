@@ -149,6 +149,7 @@ python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
+	sed -i -e 's/__APPLE__/__NO_APPLE__/g' mercurial/cext/osutil.c || die
 	# Use absolute import for zstd
 	sed -i -e 's/from \.* import zstd/import zstd/' \
 		mercurial/utils/compression.py \
