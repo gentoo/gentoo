@@ -9,12 +9,9 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>lucianposton@pm.me</email>
-		<name>Lucian Poston</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<longdescription>
+		ProtonMail bridge has been Open Source since April 2020. Note that this package
+		is CLI-only for now, as we have run into some problems with Qt5 vendoring
+		(see https://github.com/ProtonMail/proton-bridge/issues/16).
+	</longdescription>
 </pkgmetadata>

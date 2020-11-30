@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+
+# Marek Szuba <marecki@gentoo.org> (2020-11-30)
+# Vendored therecipe/qt violates network sandbox + uses external binary
+# Qt libraries; see https://github.com/ProtonMail/proton-bridge/issues/16
+# The qt module itself apparently can be made to build against system Qt5
+# but making it do so while vendored is a non-trivial task.
+mail-mta/protonmail-bridge gui
+
 # Michał Górny <mgorny@gentoo.org> (2020-11-29)
 # libclangformat-ide is masked for removal.
 dev-qt/qt-creator clang
