@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 DEPEND="${LUA_DEPS}"
 
 RDEPEND="
-	>=dev-lua/luafilesystem-1.8.0-r100
+	dev-lua/luafilesystem[${LUA_USEDEP}]
 	${DEPEND}
 "
 
