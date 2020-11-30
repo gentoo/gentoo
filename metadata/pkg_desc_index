@@ -65,6 +65,7 @@ acct-group/ftp 0: File Transfer Protocol server user
 acct-group/fvwm-crystal 0: System group: fvwm-crystal
 acct-group/gamemode 0: Group for the system-wide games-util/gamemode resource group
 acct-group/gamestat 0: Group for shared high-score and game state files
+acct-group/gatling 0: System group: gatling
 acct-group/geneweb 0: Group for geneweb daemon
 acct-group/gerbera 0: Gerbera UPnP Media Server group
 acct-group/git 0: System group: git
@@ -322,6 +323,7 @@ acct-user/flatpak 0: System user: flatpak
 acct-user/flows 0: uid for net-analyzer/flow-tools
 acct-user/freenet 0: User for net-p2p/freenet
 acct-user/ftp 0: File Transfer Protocol server user
+acct-user/gatling 0: System user: gatling
 acct-user/geneweb 0: user id for geneweb daemon
 acct-user/gerbera 0: Gerbera UPnP Media Server user
 acct-user/git 0: Git repository hosting user
@@ -18033,7 +18035,7 @@ www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0 2.2.1: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/civetweb 1.11 1.12: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
-www-servers/gatling 0.15 0.16: High performance web server
+www-servers/gatling 0.15 0.16 0.16-r1: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55-r1 1.4.55-r100: Lightweight high-performance web server
