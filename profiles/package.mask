@@ -518,6 +518,7 @@ dev-lua/luacrypto
 >=app-crypt/cardpeek-0.8.4
 >=app-crypt/ekeyd-1.1.5-r100
 >=app-misc/worker-3.8.3-r100
+>=dev-games/cegui-0.8.7-r100
 =dev-games/openscenegraph-openmw-3.4_p20200425-r100
 =dev-libs/efl-1.25.1-r10
 >=dev-lua/busted-2.0.0-r100
@@ -566,6 +567,8 @@ dev-lua/luacrypto
 >=games-puzzle/fish-fillets-1.0.1-r100
 >=games-roguelike/crossfire-client-1.71.0-r100
 >=games-roguelike/stone-soup-0.25.1-r100
+>=games-rpg/kqlives-0.99-r100
+>=games-rpg/sumwars-0.5.8-r100
 >=mail-filter/imapfilter-2.6.16-r100
 >=media-gfx/geeqie-1.5.1-r1
 >=media-sound/aqualung-1.1-r100
