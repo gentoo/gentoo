@@ -10728,7 +10728,7 @@ dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters ba
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
 dev-util/idea-community 2020.2.2.202.7319.50 2020.2.3.202.7660.26 2020.2.4.202.8194.7: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 2.2.0 2.5.0: CMake modules to be used by the Ignition projects.
-dev-util/imediff2 1.1.2-r5 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
+dev-util/imediff2 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 11.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
 dev-util/intel-graphics-compiler 1.0.4111 1.0.4944: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
@@ -16445,7 +16445,7 @@ sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
-sci-visualization/gnuplot 5.2.8 5.4.0-r2 5.4.0-r100 5.5.9999: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.2.8 5.4.0-r2 5.4.0-r100 5.5.9999 5.5.9999-r1: Command-line driven interactive plotting program
 sci-visualization/gr 0.50.0-r2: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
