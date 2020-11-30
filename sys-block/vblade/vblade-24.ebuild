@@ -17,6 +17,8 @@ RDEPEND="sys-apps/util-linux"
 
 S="${WORKDIR}/${PN}-${P}"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 src_prepare() {
 	default
 
