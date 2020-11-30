@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A package manager for the Lua programming language"
-HOMEPAGE="http://www.luarocks.org"
-SRC_URI="http://luarocks.org/releases/${P}.tar.gz"
+HOMEPAGE="https://luarocks.org"
+SRC_URI="https://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
