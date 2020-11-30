@@ -19,8 +19,8 @@ IUSE="nls"
 RDEPEND=">=dev-libs/chmlib-0.36
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_configure() {
 	econf $(use_enable nls)
