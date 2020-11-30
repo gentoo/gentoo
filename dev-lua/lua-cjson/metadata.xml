@@ -5,7 +5,11 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
 			OpenResty fork of mpx/lua-cjson, includes a few bugfixes and improvements,
 			especially to facilitate the encoding of empty tables as JSON Arrays.
 	</longdescription>
