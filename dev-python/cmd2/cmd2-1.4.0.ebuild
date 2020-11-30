@@ -41,8 +41,3 @@ src_test() {
 	local -x COLUMNS=80
 	virtx distutils-r1_src_test
 }
-
-python_test() {
-	distutils_install_for_testing
-	pytest -vv || die "Tests failed with ${EPYTHON}"
-}
