@@ -16,8 +16,10 @@ IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}
+	app-arch/zstd:0=
 	dev-util/shadowman
-	sys-apps/gentoo-functions"
+	sys-apps/gentoo-functions
+"
 # clang-specific tests use dev-libs/elfutils to compare objects for equality.
 # Let's pull in the dependency unconditionally.
 DEPEND+="
