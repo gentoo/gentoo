@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+		ProtonMail bridge has been Open Source since April 2020. Note that this package
+		is CLI-only for now, as we have run into some problems with Qt5 vendoring
+		(see https://github.com/ProtonMail/proton-bridge/issues/16).
+	</longdescription>
+</pkgmetadata>
