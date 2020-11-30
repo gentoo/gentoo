@@ -18,7 +18,7 @@ S="${WORKDIR}/yaml-${MY_PV}"
 PHP_EXT_S="${S}"
 USE_PHP="php7-0 php7-1 php7-2 php7-3 php7-4"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DESCRIPTION="YAML 1.1 (YAML Ain't Markup Language) serialization for PHP"
 LICENSE="MIT"
