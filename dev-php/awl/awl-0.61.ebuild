@@ -23,7 +23,7 @@ src_compile() {
 }
 
 src_test() {
-	phpunit tests/ || die "test suite failed"
+	phpunit --do-not-cache-result tests/ || die "test suite failed"
 }
 
 src_install() {
