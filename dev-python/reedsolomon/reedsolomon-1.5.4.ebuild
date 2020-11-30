@@ -16,6 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
+
 python_test() {
 	${EPYTHON} tests/test_creedsolo.py || die "creedsolo test failed with ${EPYTHON}"
 	${EPYTHON} tests/test_reedsolo.py || die "reedsolo test failed with ${EPYTHON}"
