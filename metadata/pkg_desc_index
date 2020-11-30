@@ -18371,7 +18371,7 @@ x11-misc/gxmessage 2.20.4 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
-x11-misc/i3lock 2.10-r1 2.11.1-r1 2.12-r1 2.12-r2: Simple screen locker
+x11-misc/i3lock 2.10-r1 2.13: Simple screen locker
 x11-misc/i3status 2.13: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
