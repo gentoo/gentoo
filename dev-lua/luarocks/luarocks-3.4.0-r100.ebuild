@@ -8,8 +8,8 @@ LUA_COMPAT=( lua5-{1..3} luajit )
 inherit lua-single
 
 DESCRIPTION="A package manager for the Lua programming language"
-HOMEPAGE="http://www.luarocks.org"
-SRC_URI="http://luarocks.org/releases/${P}.tar.gz"
+HOMEPAGE="https://luarocks.org"
+SRC_URI="https://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
