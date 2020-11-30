@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
 inherit python-single-r1
@@ -13,21 +13,22 @@ SRC_URI="https://archive.xfce.org/src/bindings/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="${PYTHON_DEPS}
-	>=x11-libs/gtk+-3.20:3
 	>=dev-libs/glib-2.30:2
+	>=x11-libs/gtk+-3.20:3
+	>=xfce-base/thunar-1.7.0
 	$(python_gen_cond_dep '
 		>=dev-python/pygobject-3.20:3[${PYTHON_MULTI_USEDEP}]
-	')
-	>=xfce-base/thunar-1.7.0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	')"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py38.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_install() {
