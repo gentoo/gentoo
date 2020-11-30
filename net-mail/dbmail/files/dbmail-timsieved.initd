@@ -8,7 +8,7 @@
 PROGRAM=dbmail-timsieved
 
 BIN_DIR=/usr/sbin
-PID_DIR=/var/run/dbmail
+PID_DIR=/run/dbmail
 PID=pid
 
 # Where is the dbmail.conf file located?
