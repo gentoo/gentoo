@@ -5102,7 +5102,7 @@ dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2 20.06: Additional librarie
 dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
-dev-lang/moarvm 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 9999: A 6model-based VM for NQP and Rakudo Perl 6
+dev-lang/moarvm 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 9999: A 6model-based VM for NQP and Rakudo Perl 6
 dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distributed applications
@@ -5110,7 +5110,7 @@ dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7 1.0.9: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.4.0: compiled, garbage-collected systems programming language
-dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
+dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0 4.10.0 4.11.1: Programming language supporting functional, imperative & object-oriented styles
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
@@ -5123,7 +5123,7 @@ dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r4 3.6.11-r2 3.6.12 3.7.8-r2 3.7.9 3.8.4-r1 3.8.5 3.8.6 3.9.0 3.10.0_alpha1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 2.4.6-r2: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 9999: A compiler for the Perl 6 programming language
+dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2 2.7.2: An object-oriented scripting language
 dev-lang/rust 1.46.0 1.47.0-r2 1.48.0: Systems programming language from Mozilla
@@ -10814,7 +10814,7 @@ dev-util/quilt 0.66 9999: quilt patch manager
 dev-util/radare2 4.5.1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
-dev-util/rbtools 1.0.2 1.0.3: Command line tools for use with Review Board
+dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
 dev-util/re2c 2.0.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects that follows OTP principles
