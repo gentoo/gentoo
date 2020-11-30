@@ -3671,7 +3671,7 @@ dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4-r1: set of free cards sets
-dev-games/cegui 0.8.7-r1: Crazy Eddie's GUI System
+dev-games/cegui 0.8.7-r1 0.8.7-r100: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
 dev-games/freecell-solver 6.2.0: C library for automatically solving Freecell and some other solitaire variants
@@ -11593,7 +11593,7 @@ games-rpg/grimrock 20150707: Legend of Grimrock: The ultimate dungeon crawling R
 games-rpg/gwiz 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/hatoful-boyfriend 0-r1: Japanese visual novel and dating simulator where birds rule the Earth
 games-rpg/hatoful-boyfriend-holiday-star 20151218: Holiday-themed sequel to the Japanese visual novel and dating sim about birds
-games-rpg/kqlives 0.99-r2: A console-style role playing game
+games-rpg/kqlives 0.99-r2 0.99-r100: A console-style role playing game
 games-rpg/lure 1.1-r1: Lure of the Temptress
 games-rpg/manaplus 1.9.3.23-r1 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/openglad 0.98-r1: An SDL clone of Gladiator, a classic RPG game
@@ -11601,7 +11601,7 @@ games-rpg/pcgen 6.04.01-r1: D&D character generator
 games-rpg/queen 1-r1: Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
 games-rpg/sakura-spirit 0: Adult-themed visual novel and dating simulator set in Japan
 games-rpg/soltys 1.0-r2: Classic adventure game
-games-rpg/sumwars 0.5.8-r1: a multi-player, 3D action role-playing game
+games-rpg/sumwars 0.5.8-r1 0.5.8-r100: a multi-player, 3D action role-playing game
 games-rpg/the-royal-trap 1.2: Visual novel where you help a prince choose his royal bride
 games-rpg/to-the-moon 0: Two doctors traversing the memories of a dying man to fulfill his last wish
 games-rpg/twclone 0.14-r1: Clone of BBS Door game Trade Wars 2002
