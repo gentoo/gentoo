@@ -98,6 +98,12 @@ multilib_src_configure() {
 		&& myconf+=( --without-included-gettext ) \
 		|| myconf+=( --disable-nls )
 
+	if [[ ${CHOST} == *-darwin* ]] && use nls ; then
+		# fix underlinking in opcodes
+		sed -i -e 's/@SHARED_LDFLAGS@/@SHARED_LDFLAGS@ -lintl/' \
+			"${S}"/opcodes/Makefile.in || die
+	fi
+
 	ECONF_SOURCE=${S} \
 	econf "${myconf[@]}"
 

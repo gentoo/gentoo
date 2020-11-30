@@ -136,7 +136,7 @@ src_prepare() {
 		# disable isysroot usage with GCC, we've properly instructed
 		# where things are via GCC configuration and ldwrapper
 		sed -i -e '/cmake_gnu_set_sysroot_flag/d' \
-			Modules/Platform/Apple-GNU-C{,XX}.cmake || die
+			Modules/Platform/Apple-GNU-*.cmake || die
 	fi
 
 	# Add gcc libs to the default link paths
