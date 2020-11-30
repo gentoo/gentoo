@@ -39,7 +39,7 @@ BDEPEND="
 
 src_configure() {
 	local myeconfargs=(
-		"--prefix=${EPRIFIX}/usr"
+		"--prefix=${EPREFIX}/usr"
 		"--rocks-tree=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
 		"--with-lua-include=$($(tc-getPKG_CONFIG) --variable $(usex luajit 'includedir' 'INSTALL_INC') $(usex luajit 'luajit' 'lua'))"
 		"--with-lua-interpreter=$(usex luajit 'luajit' 'lua')"

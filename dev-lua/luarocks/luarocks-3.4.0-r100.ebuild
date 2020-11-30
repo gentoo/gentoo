@@ -38,7 +38,7 @@ BDEPEND="
 
 src_configure() {
 	local myeconfargs=(
-		"--prefix=${EPRIFIX}/usr"
+		"--prefix=${EPREFIX}/usr"
 		"--rocks-tree=$(lua_get_lmod_dir)"
 		"--with-lua-include=$(lua_get_include_dir)"
 		"--with-lua-interpreter=${ELUA}"
