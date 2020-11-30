@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare setup
+DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) >=media-libs/libsdl-1.2[sound,video] >=media-libs/sdl-mixer-1.2.5[vorbis] >=media-libs/sdl-image-1.2.2[png] media-libs/smpeg x11-libs/libX11 media-libs/sdl-ttf dev-libs/fribidi
+DESCRIPTION=Underwater puzzle game - find a safe way out
+EAPI=7
+HOMEPAGE=http://fillets.sourceforge.net/
+IUSE=+lua_single_target_lua5-1
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) >=media-libs/libsdl-1.2[sound,video] >=media-libs/sdl-mixer-1.2.5[vorbis] >=media-libs/sdl-image-1.2.2[png] media-libs/smpeg x11-libs/libX11 media-libs/sdl-ttf dev-libs/fribidi
+REQUIRED_USE=^^ ( lua_single_target_lua5-1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/fillets/fillets-ng-1.0.1.tar.gz mirror://sourceforge/fillets/fillets-ng-data-1.0.0.tar.gz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=9e053991489d68e6582005c1d37ce6de

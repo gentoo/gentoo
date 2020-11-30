@@ -5308,7 +5308,7 @@ dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Googl
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
-dev-libs/libarcus 4.6.1 4.7.0: This library facilitates communication between Cura and its backend
+dev-libs/libarcus 4.7.0 4.8.0: This library facilitates communication between Cura and its backend
 dev-libs/libassuan 2.5.3 2.5.4: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19_p5: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operations
@@ -5327,7 +5327,7 @@ dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and 
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.4-r1 4.0.7 6.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
-dev-libs/libcharon 4.6.1 4.7.0: This library facilitates communication between Cura and its backend
+dev-libs/libcharon 4.7.0 4.8.0: This library facilitates communication between Cura and its backend
 dev-libs/libclangformat-ide 9.0.1 10.0.0: A static clangformat library patched for IDE use
 dev-libs/libclc 0.2.0_pre20191024 0.2.0_pre20201001: OpenCL C library
 dev-libs/libclsync 0.4.4-r1: Control and monitoring library for clsync
@@ -5424,6 +5424,7 @@ dev-libs/libmowgli 1.0.0-r1 2.1.3 2.1.3-r2 9999: Useful set of performance and u
 dev-libs/libmpack 1.0.5: Simple implementation of msgpack in C
 dev-libs/libmspack 0.9.1_alpha-r1 0.10.1_alpha 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.3.0: library to smooth charset/localization issues
+dev-libs/libnest2d 0.4: Library and framework for the 2D bin packaging problem
 dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 1.1.9999 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r2 0.2.1-r1 0.2.2-r1: C library for framebuffer abstraction
@@ -5458,7 +5459,7 @@ dev-libs/libreport 2.13.1: Generic library for reporting software bugs
 dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.2.0 3.2.1 3.3.0: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
-dev-libs/libsavitar 4.6.1 4.7.0: C++ implementation of 3mf loading with SIP python bindings
+dev-libs/libsavitar 4.7.0 4.8.0: C++ implementation of 3mf loading with SIP python bindings
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928 0.1_pre20190401: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
@@ -5622,7 +5623,7 @@ dev-libs/spdlog 1.5.0-r1 1.7.0 1.8.1 9999: Very fast, header only, C++ logging l
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6-r1: Unified runtime system for heterogeneous multicore architectures
-dev-libs/stb 20200205: single-file public domain (or MIT licensed) libraries for C/C++
+dev-libs/stb 20200205 20200713: single-file public domain (or MIT licensed) libraries for C/C++
 dev-libs/stfl 0.24-r2 0.24-r3: A library which implements a curses-based widget set for text terminals
 dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvectors
 dev-libs/template-glib 3.34.0: Templating library for GLib
@@ -8737,6 +8738,7 @@ dev-python/pympler 0.6: Memory profiling for Python applications
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
 dev-python/pymysql 0.10.1: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
@@ -9207,7 +9209,7 @@ dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv modul
 dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
-dev-python/uranium 4.6.1 4.7.0: A Python framework for building 3D printing related applications
+dev-python/uranium 4.7.0 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
@@ -11302,7 +11304,7 @@ games-engines/renpy 6.99.12.4-r4 7.3.5: Visual novel engine written in python
 games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 2.1.2 2.2.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 2.1.0 2.2.0: utilities for the SCUMM game engine
-games-engines/solarus 1.3.1-r1: An open-source Zelda-like 2D game engine
+games-engines/solarus 1.3.1-r1 1.3.1-r100: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.4.1 2.4.3: A realtime strategy game engine
 games-engines/xzip 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
@@ -11462,7 +11464,7 @@ games-puzzle/cuyo 2.1.1-r1: highly addictive and remotely related to tetris
 games-puzzle/einstein 2.1.1: A puzzle game inspired by Albert Einstein
 games-puzzle/enigma 1.21-r3: Puzzle game similar to Oxyd
 games-puzzle/fbg 0.9-r2: A Tetris clone written in OpenGL
-games-puzzle/fish-fillets 1.0.1-r1: Underwater puzzle game - find a safe way out
+games-puzzle/fish-fillets 1.0.1-r1 1.0.1-r100: Underwater puzzle game - find a safe way out
 games-puzzle/five-or-more 3.32.2: Remove colored balls from the board by forming lines
 games-puzzle/flobopuyo 0.20-r2: Clone of the famous PuyoPuyo game
 games-puzzle/freesweep 1.0.1: Console Minesweeper
@@ -12719,8 +12721,8 @@ media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimet
 media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMagick
 media-gfx/cropgui 0.4.1 0.5: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/cura 4.6.1-r1 4.7.0 4.7.0-r1: A 3D model slicing application for 3D printing
-media-gfx/curaengine 4.6.1 4.7.0: A 3D model slicing engine for 3D printing
+media-gfx/cura 4.7.0-r1 4.8.0: A 3D model slicing application for 3D printing
+media-gfx/curaengine 4.7.0 4.8.0: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 3.0.2 3.2.1 3.2.1-r1 3.2.1-r2 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r2: Command-line decoder for raw digital photos
@@ -12745,7 +12747,7 @@ media-gfx/exiv2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12 2.13-r1 2.14-r2 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
-media-gfx/fdm-materials 4.6.1-r1 4.7.0: FDM materials for media-gfx/cura
+media-gfx/fdm-materials 4.7.0 4.8.0: FDM materials for media-gfx/cura
 media-gfx/feh 3.3 3.4 3.4.1 3.5: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
@@ -16278,7 +16280,7 @@ sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
-sci-libs/shapely 1.6.4_p2-r1 1.7.0 1.7.1: Geometric objects, predicates, and operations
+sci-libs/shapely 1.7.1: Geometric objects, predicates, and operations
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
 sci-libs/sktime 0.4.2: scikit-learn toolbox for working with time series
 sci-libs/spglib 1.14.1: Spglib is a C library for finding and handling crystal symmetries
