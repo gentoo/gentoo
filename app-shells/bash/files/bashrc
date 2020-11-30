@@ -38,7 +38,7 @@ shopt -s histappend
 
 # Change the window title of X terminals 
 case ${TERM} in
-	[aEkx]term*|rxvt*|gnome*|konsole*|interix)
+	[aEkx]term*|rxvt*|gnome*|konsole*|interix|tmux*)
 		PS1='\[\033]0;\u@\h:\w\007\]'
 		;;
 	screen*)
@@ -80,7 +80,7 @@ else
 	# Some systems (e.g. BSD & embedded) don't typically come with
 	# dircolors so we need to hardcode some terminals in here.
 	case ${TERM} in
-	[aEkx]term*|rxvt*|gnome*|konsole*|screen|cons25|*color) use_color=true;;
+	[aEkx]term*|rxvt*|gnome*|konsole*|screen|tmux|cons25|*color) use_color=true;;
 	esac
 fi
 
