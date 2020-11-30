@@ -22,8 +22,8 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed \
-		-e "s:DESTINATION cmake:DESTINATION share/cmake/${MY_PN}:g" \
 		-e "s:DESTINATION lib:DESTINATION $(get_libdir):g" \
+		-e "s:DESTINATION cmake:DESTINATION $(get_libdir)/cmake/${PN/-/}:g" \
 		-i CMakeLists.txt || die
 	cmake_src_prepare
 	default
