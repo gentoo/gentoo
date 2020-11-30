@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils desktop gnome2-utils
+inherit cmake-utils desktop gnome2-utils virtualx
 
 DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple computers"
 HOMEPAGE="https://symless.com/synergy https://github.com/symless/synergy-core"
@@ -15,8 +15,8 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="libressl qt5"
-RESTRICT="test"
+IUSE="libressl qt5 test"
+RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${PN}-core-${PV}-stable
 
@@ -53,19 +53,41 @@ DOCS=( ChangeLog doc/synergy.conf.example{,-advanced,-basic} )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-pthread.patch
-	"${FILESDIR}"/${P}-internal-gmock-gtest.patch
-	"${FILESDIR}"/${P}-gtest.patch
 	"${FILESDIR}"/${P}-cmake-version.patch
 	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${FILESDIR}"/${P}-test.patch
 )
 
+src_prepare() {
+	# requires Internet, and relies on old site anyway
+	rm src/test/integtests/arch/ArchInternetTests.cpp || die
+	# broken on Xvfb
+	rm src/test/integtests/platform/XWindowsScreenTests.cpp || die
+
+	cmake-utils_src_prepare
+}
+
 src_configure() {
+	# otherwise unit tests segfault
+	local -x CFLAGS="${CFLAGS} -O0"
+	local -x CXXFLAGS="${CXXFLAGS} -O0"
+
 	local mycmakeargs=(
 		-DSYNERGY_BUILD_LEGACY_GUI=$(usex qt5)
 		-DSYNERGY_BUILD_LEGACY_INSTALLER=OFF
+		-DBUILD_TESTS=$(usex test)
 	)
 
 	cmake-utils_src_configure
+}
+
+my_test() {
+	"${BUILD_DIR}"/bin/unittests &&
+	"${BUILD_DIR}"/bin/integtests
+}
+
+src_test() {
+	virtx my_test
 }
 
 src_install() {
