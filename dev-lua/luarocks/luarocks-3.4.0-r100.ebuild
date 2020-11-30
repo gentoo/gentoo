@@ -59,3 +59,20 @@ src_install() {
 
 	{ find "${D}" -type f -exec sed -i -e "s:${D}::g" {} \;; } || die
 }
+
+pkg_postinst() {
+	local lua_abi_ver
+	if use lua_single_target_luajit; then
+		lua_abi_ver="5.1"
+	else
+		lua_abi_ver=${ELUA#lua}
+	fi
+	elog
+	elog "To manage rocks for a Lua version other than the current ${CATEGORY}/${PN} default (${lua_abi_ver})"
+	elog "you can use the command-line option --lua-version, e.g."
+	elog
+	elog "    luarocks --lua-version 5.3 install luasocket"
+	elog
+	elog "(use 5.1 for luajit). Note that the relevant Lua version must already be present in the system."
+	elog
+}
