@@ -57,6 +57,7 @@ src_configure() {
 		$(use_enable python)
 		$(use_enable static-libs static)
 	)
+	CONFIG_SHELL="/bin/bash" \
 	econf "${myeconfargs[@]}"
 }
 
