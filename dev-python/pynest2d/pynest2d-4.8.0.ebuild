@@ -17,7 +17,9 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-RDEPEND="
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
 	dev-libs/libnest2d
 	$(python_gen_cond_dep 'dev-python/sip[${PYTHON_MULTI_USEDEP}]')
 	"
