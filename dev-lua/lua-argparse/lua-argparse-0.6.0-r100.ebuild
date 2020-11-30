@@ -25,7 +25,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 	test? (
-		>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]
+		dev-lua/busted[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "
