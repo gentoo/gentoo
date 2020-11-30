@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare
-DEPEND=>=dev-lua/luasocket-3.0_rc1_p20200328-r100[lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) lua_targets_lua5-1? ( dev-lang/lua:5.1[deprecated] ) lua_targets_lua5-2? ( dev-lang/lua:5.2[deprecated] ) lua_targets_lua5-3? ( dev-lang/lua:5.3[deprecated] )
+DEPEND=dev-lua/luasocket[lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) lua_targets_lua5-1? ( dev-lang/lua:5.1[deprecated] ) lua_targets_lua5-2? ( dev-lang/lua:5.2[deprecated] ) lua_targets_lua5-3? ( dev-lang/lua:5.3[deprecated] )
 DESCRIPTION=Lua binding for OpenSSL library to provide TLS/SSL communication
 EAPI=7
 HOMEPAGE=https://github.com/brunoos/luasec
 IUSE=libressl lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
-RDEPEND=>=dev-lua/luasocket-3.0_rc1_p20200328-r100[lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) lua_targets_lua5-1? ( dev-lang/lua:5.1[deprecated] ) lua_targets_lua5-2? ( dev-lang/lua:5.2[deprecated] ) lua_targets_lua5-3? ( dev-lang/lua:5.3[deprecated] )
+RDEPEND=dev-lua/luasocket[lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) lua_targets_lua5-1? ( dev-lang/lua:5.1[deprecated] ) lua_targets_lua5-2? ( dev-lang/lua:5.2[deprecated] ) lua_targets_lua5-3? ( dev-lang/lua:5.3[deprecated] )
 REQUIRED_USE=|| ( lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
 SLOT=0
 SRC_URI=https://github.com/brunoos/luasec/archive/v0.9.tar.gz -> luasec-0.9.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=d28afe18827c463567ce3b87d0ef0f1e
+_md5_=55fe846c6f399fdfb5a50e4cf02de72f

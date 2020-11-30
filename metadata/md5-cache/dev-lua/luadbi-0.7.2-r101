@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig test? ( >=dev-lua/busted-2.0.0-r100[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] dev-lua/luarocks )
+BDEPEND=virtual/pkgconfig test? ( dev-lua/busted[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?] dev-lua/luarocks )
 DEFINED_PHASES=compile install prepare test
 DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite )
 DESCRIPTION=A database interface library for Lua
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/mwild1/luadbi/archive/v0.7.2.tar.gz -> luadbi-0.7.2.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=9f164667e90ed6fcc07913db415290f1
+_md5_=c6b3c37d866a1f29feadbc244a40d911
