@@ -1,0 +1,29 @@
+--- a/src/utimer.h
++++ b/src/utimer.h
+@@ -66,9 +66,9 @@
+ #define TIMER_PRINT_RATE_MSEC  79
+ #define TIMER_CHECK_RATE_MSEC  500
+ 
+-GMainLoop         *loop;
+-gboolean          paused;
+-struct termios    savedttystate;
+-Config            ut_config;
++extern GMainLoop         *loop;
++extern gboolean          paused;
++extern struct termios    savedttystate;
++extern Config            ut_config;
+ 
+ #endif /* UTIMER_H */
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -36,6 +36,10 @@
+ #include "utils.h"
+ #include "utimer.h"
+ 
++GMainLoop         *loop;
++gboolean          paused;
++struct termios    savedttystate;
++Config            ut_config;
+ 
+ gulong ul_add (gulong a, gulong b)
+ {
