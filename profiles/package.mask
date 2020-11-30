@@ -561,6 +561,8 @@ dev-lua/luacrypto
 >=games-engines/love-0.7.2-r100:0.7
 >=games-engines/love-0.8.0-r100:0.8
 >=games-engines/love-11.3-r100:0
+>=games-engines/solarus-1.3.1-r100
+>=games-puzzle/fish-fillets-1.0.1-r100
 >=games-roguelike/stone-soup-0.25.1-r100
 >=mail-filter/imapfilter-2.6.16-r100
 >=media-gfx/geeqie-1.5.1-r1
