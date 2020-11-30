@@ -30,7 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.93_p20190513-fix-multilib.patch
 	"${FILESDIR}"/${PN}-1.0.93_p20190513-lua-version.patch
 )
-CMAKE_REMOVE_MODULES_LIST="dist.cmake lua.cmake FindLua.cmake"
+CMAKE_REMOVE_MODULES_LIST="dist lua FindLua"
 
 src_configure() {
 	local mycmakeargs=(
