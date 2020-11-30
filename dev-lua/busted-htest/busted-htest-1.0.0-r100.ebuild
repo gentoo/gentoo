@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
-	>=dev-lua/busted-2.0.0-r100[${LUA_USEDEP}]
+	dev-lua/busted[${LUA_USEDEP}]
 	${LUA_DEPS}
 "
 
