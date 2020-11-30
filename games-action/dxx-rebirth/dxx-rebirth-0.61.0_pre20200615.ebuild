@@ -1,11 +1,5 @@
-# Copyright 2017-2020 DXX Rebirth project contributors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# This file is part of the DXX-Rebirth project.
-#
-# It is copyright by its individual contributors, as recorded in the
-# project's Git history.  See COPYING.txt at the top level for license
-# terms and a link to the Git history.
 
 EAPI=7
 PYTHON_COMPAT=( python3_7 )
