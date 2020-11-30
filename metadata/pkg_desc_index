@@ -689,7 +689,7 @@ app-admin/sshguard 2.4.0 2.4.1 99999: protects hosts from brute force attacks ag
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.9.3_p1 1.9.4_rc2 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.9.3_p1 1.9.4 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.2.0 4.2.1: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -17299,7 +17299,7 @@ sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian
 sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
-sys-devel/rust-std 1.46.0 1.47.0: Rust standard library, standalone (for crossdev)
+sys-devel/rust-std 1.46.0 1.47.0 1.48.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.1 0.6.2 9999: C semantic parser
