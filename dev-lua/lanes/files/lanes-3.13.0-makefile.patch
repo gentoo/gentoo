@@ -1,0 +1,93 @@
+--- lanes-3.13.0.old/Makefile	2018-11-30 13:28:50.000000000 +0100
++++ lanes-3.13.0/Makefile	2020-11-30 21:28:36.769384766 +0100
+@@ -33,7 +33,7 @@
+ 
+ # Autodetect LUA
+ #
+-LUA=$(word 1,$(shell which lua5.1$(_LUAEXT)) $(shell which lua51$(_LUAEXT)) lua$(_LUAEXT))
++LUA ?= $(word 1,$(shell which lua5.1$(_LUAEXT)) $(shell which lua51$(_LUAEXT)) lua$(_LUAEXT))
+ 
+ _TARGET_SO=$(_TARGET_DIR)/core.$(_SO)
+ 
+--- lanes-3.13.0.old/src/Makefile	2018-11-30 13:28:50.000000000 +0100
++++ lanes-3.13.0/src/Makefile	2020-11-30 21:40:06.399382894 +0100
+@@ -15,7 +15,7 @@
+ #
+ LIBFLAG=-shared
+ 
+-OPT_FLAGS=-O2
++OPT_FLAGS ?=
+     # -O0 -g
+ 
+ _SO=so
+@@ -38,50 +38,8 @@
+     LUA_LIBS:="$(LUA_DEV)/lua5.1.dll" -lgcc
+     LIBFLAG=-shared -Wl,-Map,lanes.map
+   else
+-    # Autodetect LUA_FLAGS and/or LUA_LIBS
+-    #
+-    ifneq "$(shell which pkg-config)" ""
+-      ifeq "$(shell pkg-config --exists luajit && echo 1)" "1"
+-        LUA_FLAGS:=$(shell pkg-config --cflags luajit)
+-        LUA_LIBS:=$(shell pkg-config --libs luajit)
+-          #
+-          # Debian: -I/usr/include/luajit-2.0
+-          #         -lluajit-5.1
+-      else
+-        ifeq "$(shell pkg-config --exists lua5.1 && echo 1)" "1"
+-          LUA_FLAGS:=$(shell pkg-config --cflags lua5.1)
+-          LUA_LIBS:=$(shell pkg-config --libs lua5.1)
+-            #
+-            # Ubuntu: -I/usr/include/lua5.1 
+-            #         -llua5.1
+-        else
+-          ifeq "$(shell pkg-config --exists lua && echo 1)" "1"
+-            LUA_FLAGS:=$(shell pkg-config --cflags lua)
+-            LUA_LIBS:=$(shell pkg-config --libs lua)
+-              #
+-              # OS X fink with pkg-config:
+-              #      -I/sw/include 
+-              #      -L/sw/lib -llua -lm
+-          else
+-            $(warning *** 'pkg-config' existed but did not know of 'lua[5.1]' - Good luck!)
+-            LUA_FLAGS:=
+-            LUA_LIBS:=-llua
+-          endif
+-        endif
+-      endif
+-    else
+-      # No 'pkg-config'; try defaults
+-      #
+-      ifeq "$(shell uname -s)" "Darwin"
+-        $(warning *** Assuming 'fink' at default path)
+-        LUA_FLAGS:=-I/sw/include
+-        LUA_LIBS:=-L/sw/lib -llua
+-      else
+-        $(warning *** Assuming an arbitrary Lua installation; try installing 'pkg-config')
+-        LUA_FLAGS:=
+-        LUA_LIBS:=-llua
+-      endif
+-    endif
++    LUA_FLAGS ?= $(shell pkg-config --cflags lua)
++    LUA_LIBS ?= $(shell pkg-config --libs lua)
+   endif
+ 
+   ifeq "$(shell uname -s)" "Darwin"
+@@ -92,7 +50,7 @@
+     LIBFLAG = -bundle -undefined dynamic_lookup
+   endif
+   
+-  CFLAGS=-Wall -Werror $(OPT_FLAGS) $(LUA_FLAGS)
++  CFLAGS=-Wall $(OPT_FLAGS) $(LUA_FLAGS)
+   LIBS=$(LUA_LIBS)
+ endif
+ 
+@@ -125,7 +83,7 @@
+ #
+ $(MODULE_DIR)/core.$(_SO): $(OBJ)
+ 	mkdir -p $(MODULE_DIR)
+-	$(CC) $(LIBFLAG) $^ $(LIBS) $(LUA_LIBS) -o $@
++	$(CC) $(LDFLAGS) $(LIBFLAG) $^ $(LIBS) $(LUA_LIBS) -o $@
+ 
+ clean:
+ 	-rm -rf $(MODULE)/core.$(_SO) *.o *.map
