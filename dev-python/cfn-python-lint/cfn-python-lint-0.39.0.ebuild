@@ -33,7 +33,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests --install unittest
 
 PATCHES=(
 	"${FILESDIR}/cfn-python-lint-0.30.1-tests.patch"
@@ -46,10 +46,4 @@ src_prepare() {
 	sed -e 's:test_update_docs:_&:' \
 		-i test/unit/module/maintenance/test_update_documentation.py || die
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	distutils_install_for_testing
-	"${EPYTHON}" -m unittest discover -v ||
-		die "tests fail with ${EPYTHON}"
 }
