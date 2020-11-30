@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Simple screen locker"
@@ -13,22 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
-	>=x11-libs/libxkbcommon-0.5.0[X]
 	dev-libs/libev
 	sys-libs/pam
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libxcb[xkb]
+	x11-libs/libxkbcommon[X]
 	x11-libs/xcb-util
-	x11-libs/xcb-util-xrm
-"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-DOCS=( CHANGELOG README.md )
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.12-fno-common.patch
-)
+	x11-libs/xcb-util-xrm"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
