@@ -6,10 +6,6 @@
 =net-misc/openssh-8.3_p1-r5
 =net-misc/openssh-8.4_p1-r2
 
-# Fabian Groffen <grobian@gentoo.org> (2020-11-23)
-# doesn't link, some unresolved symbol from gnulib
-=sys-devel/gettext-0.21
-
 # Fabian Groffen <grobian@gentoo.org> (2020-06-09)
 # fails to compile, needs fixing
 =sys-apps/gentoo-functions-0.13
