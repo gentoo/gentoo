@@ -1,0 +1,29 @@
+From 22056e975ebc0ff9e02c8ba2ffc61f65f272a567 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 1 Dec 2020 15:49:19 +0100
+Subject: [PATCH] Fix version to be 0.8
+
+---
+ configure | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/configure b/configure
+index 98040a1..e39be6b 100755
+--- a/configure
++++ b/configure
+@@ -40,11 +40,7 @@ DBG=yes
+ X11=yes
+ HOTPLUG=yes
+ XINPUT=yes
+-VER=`git describe --tags 2>/dev/null`
+-
+-if [ -z "$VER" ]; then
+-	VER=`git rev-parse --short HEAD`
+-fi
++VER=0.8
+ 
+ echo "configuring spacenavd - $VER"
+ 
+-- 
+2.27.0
+
