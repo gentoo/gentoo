@@ -16,9 +16,13 @@ IUSE="curl doc fftw +glpk gnuplot gui hdf5 java libressl opengl
 	ssl static-libs sundials X zlib"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
+# Although it is listed in INSTALL.OCTAVE as a build tool, Octave runs
+# "makeinfo" from sys-apps/texinfo at runtime to convert its texinfo
+# documentation to text (see scripts/help/help.m).
 RDEPEND="
 	app-arch/bzip2
 	app-text/ghostscript-gpl
+	sys-apps/texinfo
 	dev-libs/libpcre:3=
 	sys-libs/ncurses:0=
 	sys-libs/zlib
@@ -74,7 +78,6 @@ RDEPEND="
 	X? ( x11-libs/libX11:0= )"
 DEPEND="${RDEPEND}
 	dev-util/gperf
-	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (
 		dev-texlive/texlive-fontsrecommended
