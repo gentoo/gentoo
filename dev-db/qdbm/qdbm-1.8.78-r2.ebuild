@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-perl.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 	"${FILESDIR}"/${PN}-runpath.patch
+	"${FILESDIR}"/${PN}-1.8.78-darwin.patch
 )
 HTML_DOCS=( doc/. )
 
@@ -99,10 +100,10 @@ src_prepare() {
 		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
 		-e 's/make\( \|$\)/$(MAKE)\1/g' \
 		-e '/^debug/,/^$/s/LDFLAGS="[^"]*" //' \
-		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in
-	find -name "*~" -delete
+		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in || die
+	find -name "*~" -delete || die
 
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	eautoreconf
 	qdbm_foreach_api
 }
@@ -111,9 +112,9 @@ each_ruby_prepare() {
 	sed -i \
 		-e "s|ruby |${RUBY} |" \
 		-e "s|\.\./\.\.|${WORKDIR}/all/${P}|" \
-		{Makefile,configure}.in {curia,depot,villa}/extconf.rb
+		{Makefile,configure}.in {curia,depot,villa}/extconf.rb || die
 
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -133,8 +134,12 @@ each_ruby_configure() {
 }
 
 src_compile() {
-	default
-	qdbm_foreach_api
+	if [[ ${CHOST} == *darwin* ]] ; then
+		emake mac
+	else
+		default
+		qdbm_foreach_api
+	fi
 }
 
 each_ruby_compile() {
@@ -142,8 +147,12 @@ each_ruby_compile() {
 }
 
 src_test() {
-	default
-	qdbm_foreach_api
+	if [[ ${CHOST} == *darwin* ]] ; then
+		emake check-mac
+	else
+		default
+		qdbm_foreach_api
+	fi
 }
 
 each_ruby_test() {
@@ -151,23 +160,28 @@ each_ruby_test() {
 }
 
 src_install() {
-	default
+	if [[ ${CHOST} == *darwin* ]] ; then
+		emake install-mac
+	else
+		default
+	fi
+
 	qdbm_foreach_api
 	use static-libs || find "${ED}" -name '*.a' -delete || die
 
-	rm -rf "${ED}"/usr/share/${PN}
+	rm -rf "${ED}"/usr/share/${PN} || die
 
 	if use java; then
 		java-pkg_dojar "${ED}"/usr/$(get_libdir)/*.jar
-		rm -f "${ED}"/usr/$(get_libdir)/*.jar
+		rm -f "${ED}"/usr/$(get_libdir)/*.jar || die
 	fi
 	if use perl; then
 		perl_delete_module_manpages
 		perl_fix_packlist
 	fi
 
-	rm -f "${ED}"/usr/bin/*test
-	rm -f "${ED}"/usr/share/man/man1/*test.1*
+	rm -f "${ED}"/usr/bin/*test || die
+	rm -f "${ED}"/usr/share/man/man1/*test.1* || die
 }
 
 each_ruby_install() {
