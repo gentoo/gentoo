@@ -34,5 +34,5 @@ pkg_setup() {
 
 src_install() {
 	xorg-3_src_install
-	rm -Rf "${D}/usr/share/X11/locale"
+	rm -Rf "${ED}/usr/share/X11/locale"
 }
