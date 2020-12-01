@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
 	"${FILESDIR}/${PN}-3.53-fix-building-on-ppc.patch"
+	"${FILESDIR}/${PN}-3.59-dont-hold-slot-lock-when-taking-session-lock.patch"
 )
 
 src_prepare() {
