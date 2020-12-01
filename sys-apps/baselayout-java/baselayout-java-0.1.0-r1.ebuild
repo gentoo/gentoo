@@ -28,7 +28,7 @@ src_install() {
 	exeinto /etc/ca-certificates/update.d
 	newexe - java-cacerts <<-_EOF_
 		#!/bin/sh
-		exec trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose server-auth "${EROOT}"/etc/ssl/certs/java/cacerts
+		exec trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose server-auth "${EPREFIX}/etc/ssl/certs/java/cacerts"
 	_EOF_
 }
 
@@ -44,6 +44,6 @@ pkg_postinst() {
 	# so jdk ebuilds can create symlink to in into security directory
 	if [[ ! -f "${EROOT}"/etc/ssl/certs/java/cacerts ]]; then
 		einfo "Generating java cacerts file from system ca-certificates"
-		"${EROOT}"/etc/ca-certificates/update.d/java-cacerts || die
+		trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose server-auth "${EROOT}/etc/ssl/certs/java/cacerts" || die
 	fi
 }
