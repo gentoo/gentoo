@@ -37,6 +37,15 @@ BDEPEND="
 	)
 "
 
+src_prepare() {
+	default
+
+	# If 'dev-lang/lua' is a new, fresh installation, no 'LUA_LIBDIR' exists,
+	# as no compiled modules are installed on a new, fresh installation,
+	# so this check must be disabled, otherwise 'configure' will fail.
+	sed -e '/LUA_LIBDIR is not a valid directory/d' -i configure || die
+}
+
 src_configure() {
 	local myeconfargs=(
 		"--prefix=${EPREFIX}/usr"
