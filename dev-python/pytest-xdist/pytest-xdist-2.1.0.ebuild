@@ -32,6 +32,10 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	distutils_install_for_testing
-	pytest -vv testing || die "Tests failed under ${EPYTHON}"
+	distutils_install_for_testing --via-root
+	# Skip a broken test
+	# https://github.com/pytest-dev/pytest-xdist/issues/601
+	pytest -vv testing --deselect \
+		testing/acceptance_test.py::TestWarnings::test_warning_captured_deprecated_in_pytest_6 \
+		|| die "Tests failed under ${EPYTHON}"
 }
