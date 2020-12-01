@@ -499,11 +499,6 @@ gnome-base/libbonobo
 gnome-base/libgnome-keyring
 gnome-base/orbit
 
-# Michał Górny <mgorny@gentoo.org> (2020-10-23)
-# Fails to build.  Needs a dedicated maintainer and a version bump.
-# Removal in 30 days.  Bug #635592.
-games-strategy/asc
-
 # David Seifert <soap@gentoo.org> (2020-10-21)
 # No releases in over 3 years, no more revdeps in tree
 # upstream mostly unresponsive to requests for proper
