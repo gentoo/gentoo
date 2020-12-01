@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/boost:=[threads(+)]
-	media-libs/libsdl[sound,video]
+	media-libs/libsdl[opengl,sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-ttf
