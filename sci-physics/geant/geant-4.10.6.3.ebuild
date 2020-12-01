@@ -31,7 +31,12 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+c++11 c++14 c++17 +data dawn doc examples freetype gdml geant3 hdf5
 	inventor motif opengl qt5 raytracerx static-libs threads vrml"
 
-REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+REQUIRED_USE="
+	^^ ( c++11 c++14 c++17 )
+	inventor? ( opengl )
+	motif? ( opengl )
+	qt5? ( opengl )
+"
 
 RDEPEND="
 	dev-libs/expat
