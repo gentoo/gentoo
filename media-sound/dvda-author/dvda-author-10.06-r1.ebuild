@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 DESCRIPTION="Author a DVD-Audio DVD"
 HOMEPAGE="http://dvd-audio.sourceforge.net"
@@ -12,12 +12,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND=">=media-sound/sox-14.1[png]
-	>=media-libs/flac-1.2.1[ogg]"
-DEPEND="${RDEPEND}
-	>=sys-devel/libtool-2"
+RDEPEND="media-sound/sox[png]
+	media-libs/flac[ogg]"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/libtool"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
+	default
+
 	# Fix parallel make
 	sed -i -e 's:^\(\tcd ${MAYBE_CDRTOOLS}\):@HAVE_CDRTOOLS_BUILD_TRUE@\1:' \
 		Makefile.in || die "sed failed"
@@ -33,19 +37,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--with-config=/etc \
+		--with-config="${EPREFIX}/etc" \
 		$(use_with debug debug full)
-}
-
-src_compile() {
-	# make[1]: warning: jobserver unavailable: using -j1.
-	#                   Add '+' to parent make rule.
-	emake -j1
-}
-
-src_install() {
-	newbin src/dvda ${PN}
-	insinto /etc
-	doins ${PN}.conf
-	dodoc AUTHORS BUGS ChangeLog EXAMPLES HOWTO.conf LIMITATIONS NEWS TODO
 }
