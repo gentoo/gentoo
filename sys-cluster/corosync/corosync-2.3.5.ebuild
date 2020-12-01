@@ -26,7 +26,7 @@ RDEPEND="!sys-cluster/heartbeat
 		sys-fabric/librdmacm:*
 	)
 	dev-libs/nss
-	>=sys-cluster/libqb-0.14.4"
+	<=sys-cluster/libqb-0.17.2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( sys-apps/groff )"
