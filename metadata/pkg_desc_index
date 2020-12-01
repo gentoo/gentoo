@@ -2055,8 +2055,8 @@ app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 5.18 5.20 5.21 5.22 5.22-r1 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0.3 5.0.1 5.0.2 5.0.3 5.19 5.20 5.21 5.22 5.22-r1 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 5.18 5.20 5.21 5.22-r2 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0.3 5.0.1 5.0.2 5.0.3 5.19 5.20 5.21 5.22-r2 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20200412 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -2530,7 +2530,7 @@ app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
 app-misc/socnetv 2.2: Qt Social Network Visualizer
 app-misc/solaar 1.0.1-r1 1.0.2 1.0.3_rc1 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/sonypid 1.9: tool to use the Sony Vaios jog-dial as a mouse-wheel
-app-misc/spacenavd 0.7.1: The spacenavd daemon provides free alternative to the 3dxserv daemon
+app-misc/spacenavd 0.7.1 0.8: The spacenavd daemon provides free alternative to the 3dxserv daemon
 app-misc/sphinx 2.2.11 2.2.11-r1 2.2.11-r2: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/spire 0.8.1 0.10.0 0.11.1: the spiffe runtime environment
 app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
