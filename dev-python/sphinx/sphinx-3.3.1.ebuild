@@ -63,7 +63,7 @@ BDEPEND="
 S="${WORKDIR}/${P^}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.3.1-doc-link.patch"
+	"${FILESDIR}/${PN}-3.2.1-doc-link.patch"
 )
 
 python_prepare_all() {
