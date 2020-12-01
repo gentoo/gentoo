@@ -14,7 +14,7 @@ fi
 inherit meson xdg
 
 DESCRIPTION="GUI display configurator for wlroots compositors"
-HOMEPAGE="https://cyclopsian.github.io/wdisplays"
+HOMEPAGE="https://cyclopsian.github.io/wdisplays https://github.com/cyclopsian/wdisplays"
 
 RDEPEND="
 	x11-libs/gtk+:3=[wayland]

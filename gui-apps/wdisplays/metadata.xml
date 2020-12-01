@@ -9,4 +9,8 @@
         <name>Proxy Maintainers</name>
         <email>proxy-maint@gentoo.org</email>
     </maintainer>
+    <upstream>
+        <bugs-to>https://github.com/cyclopsian/wdisplays/issues</bugs-to>
+        <remote-id type="github">cyclopian/wdisplays</remote-id>
+    </upstream>
 </pkgmetadata>
