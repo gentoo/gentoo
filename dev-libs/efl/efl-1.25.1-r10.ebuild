@@ -177,7 +177,7 @@ src_configure() {
 		$(meson_use gstreamer)
 		$(meson_use harfbuzz)
 		$(meson_use hyphen)
-		$(meson_use lua_targets_luajit elua)
+		$(meson_use lua_single_target_luajit elua)
 		$(meson_use nls)
 		$(meson_use physics)
 		$(meson_use pulseaudio)
