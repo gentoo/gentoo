@@ -35,6 +35,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	>=kde-plasma/libkworkspace-${PVCUT}:5
 	x11-libs/libX11
 	x11-libs/libXtst
 "
@@ -47,3 +48,5 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kded-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-5.20.4-unused-dep.patch )

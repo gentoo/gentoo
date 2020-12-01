@@ -32,7 +32,6 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
-	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-plasma/kdecoration-${PVCUT}:5
 	x11-libs/gtk+:2
 	x11-libs/gtk+:3

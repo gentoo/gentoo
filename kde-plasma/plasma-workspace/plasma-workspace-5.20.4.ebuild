@@ -72,6 +72,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/plasma-${KFMIN}:5
 	>=kde-frameworks/prison-${KFMIN}:5[qml]
 	>=kde-frameworks/solid-${KFMIN}:5
+	>=kde-plasma/breeze-${PVCUT}:5
 	>=kde-plasma/kscreenlocker-${PVCUT}:5
 	>=kde-plasma/kwin-${PVCUT}:5
 	>=kde-plasma/libkscreen-${PVCUT}:5
