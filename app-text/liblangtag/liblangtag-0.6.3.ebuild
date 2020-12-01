@@ -16,6 +16,7 @@ IUSE="debug doc introspection static-libs test"
 
 BDEPEND="
 	sys-devel/gettext
+	sys-devel/libtool
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-libs/gobject-introspection-common )
 "
