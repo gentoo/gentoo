@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-glibc-2.30.patch"
 	"${FILESDIR}/${P}-gzip.patch"
 	"${FILESDIR}/${P}-static-libs.patch"
+	"${FILESDIR}/${P}-tests.patch"
 )
 
 src_configure() {
