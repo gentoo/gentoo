@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 MY_PV="$(ver_rs 1- '')"
@@ -15,18 +16,17 @@ SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/08/${SOURCES_NAME}-05.tar.gz"
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-libs/libxml2-2.6:2
 	>=gnome-base/libglade-2.4:2.0
 	>=net-print/cups-1.1.17
-	>=x11-libs/gtk+-2.4:2
-"
+	>=x11-libs/gtk+-2.4:2"
 DEPEND="${DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-4.10}"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 pkg_setup() {
 	# Don't raise a fuss over pre-built binaries
@@ -39,11 +39,9 @@ pkg_setup() {
 		/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0
 		/usr/$(get_abi_LIBDIR x86)/libcaiowrap.so.1.0.0
 		/usr/$(get_abi_LIBDIR x86)/libcanon_slim.so.1.0.0
-		/usr/$(get_libdir)/libcanonc3pl.so.1.0.0
-	"
+		/usr/$(get_libdir)/libcanonc3pl.so.1.0.0"
 	QA_SONAME="
-		/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0
-	"
+		/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0"
 }
 
 src_unpack() {
