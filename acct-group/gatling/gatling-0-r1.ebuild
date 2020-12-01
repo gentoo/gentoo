@@ -5,4 +5,4 @@ EAPI=7
 
 inherit acct-group
 
-ACCT_GROUP_ID=500  # matches acct-user/gatling
+ACCT_GROUP_ID=364  # matches acct-user/gatling

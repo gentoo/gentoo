@@ -531,6 +531,7 @@ dev-lua/luacrypto
 >=dev-lua/lpeg-1.0.2-r100
 >=dev-lua/lua-argparse-0.6.0-r100
 >=dev-lua/lua-bit32-5.3.5-r100
+>=dev-lua/lua-cjson-2.1.0.8-r100
 >=dev-lua/lua-term-0.7-r100
 >=dev-lua/lua-utf8-0.1.3-r100
 >=dev-lua/lua-zlib-1.2-r100

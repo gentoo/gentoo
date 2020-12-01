@@ -62,6 +62,10 @@ BDEPEND="
 
 S="${WORKDIR}/${P^}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.2.1-doc-link.patch"
+)
+
 python_prepare_all() {
 	# remove tests that fail due to network-sandbox
 	rm tests/test_build_linkcheck.py || die "Failed to remove web tests"
