@@ -24,7 +24,7 @@ LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 IUSE="examples"
 
-RDEPEND="<sys-devel/clang-11:=[llvm_targets_AMDGPU(+)]"
+RDEPEND="<sys-devel/clang-11:="
 DEPEND="
 	${RDEPEND}
 	${PYTHON_DEPS}
@@ -41,7 +41,7 @@ PATCHES=(
 )
 
 llvm_check_deps() {
-	has_version -d "sys-devel/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]"
+	has_version -d "sys-devel/clang:${LLVM_SLOT}"
 }
 
 src_prepare() {
