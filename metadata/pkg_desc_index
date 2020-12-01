@@ -16978,7 +16978,7 @@ sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
 sys-apps/smartmontools 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.5.0.20200722: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r4: Supermicro Update Manager (SUM) kernel module
-sys-apps/smcipmitool 2.24.0.201007: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
+sys-apps/smcipmitool 2.24.0.201007-r1: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
 sys-apps/sparc-utils 1.9-r6: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
 sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including ctimes)
