@@ -7,7 +7,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
 	inherit git-r3
 else
-	MY_PV="2.69d"
+	MY_PV="2.69e"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.xz -> ${P}.tar.xz
 		https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz -> ${P}.tar.xz"
@@ -32,11 +32,6 @@ RDEPEND="${BDEPEND}
 	~sys-devel/autoconf-wrapper-14_pre2"
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-build-aux_no_transform_name.patch" #753023
-	"${FILESDIR}/${P}-build-aux_avoid_autoreconf.patch"
-)
 
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
