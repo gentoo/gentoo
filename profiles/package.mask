@@ -569,6 +569,7 @@ dev-lua/luacrypto
 >=games-roguelike/stone-soup-0.25.1-r100
 >=games-rpg/kqlives-0.99-r100
 >=games-rpg/sumwars-0.5.8-r100
+>=games-simulation/corsix-th-0.64-r100
 >=mail-filter/imapfilter-2.6.16-r100
 >=media-gfx/geeqie-1.5.1-r1
 >=media-sound/aqualung-1.1-r100
