@@ -1037,7 +1037,7 @@ app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4: A command line tool for interacting 
 app-crypt/nitrokey-app 1.4-r1 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.28: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
-app-crypt/openpgp-keys-django 20201105: OpenPGP keys used to sign Django releases
+app-crypt/openpgp-keys-django 20201105 20201201: OpenPGP keys used to sign Django releases
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openpgp-keys-kernel 20201103: OpenPGP keys used to sign Linux kernel releases
@@ -7897,7 +7897,7 @@ dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python p
 dev-python/arpeggio 1.9.2 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0: Better dates and times for Python
 dev-python/asgiref 3.3.0 3.3.1: ASGI utilities (successor to WSGI)
-dev-python/asn1crypto 0.24.0: Python ASN.1 library with a focus on performance and a pythonic API
+dev-python/asn1crypto 0.24.0 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astroid 2.4.2-r1: Abstract Syntax Tree for logilab packages
@@ -7953,13 +7953,14 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 9999: The AWS SDK for Python
-dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 1.16.26 9999: The AWS SDK for Python
+dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 1.19.26 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/braintree 4.4.0: Braintree Python Library
 dev-python/breathe 4.14.1 4.22.1: Sphinx Doxygen renderer
+dev-python/brotlicffi 0.8.0: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.7: Python bindings for Berkeley DB
@@ -8071,7 +8072,7 @@ dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Fram
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.16 2.2.17 3.0.10-r1 3.0.11 3.1.1-r1 3.1.2-r1 3.1.3: High-level Python web framework
+dev-python/django 2.2.16 2.2.17 3.0.10-r1 3.0.11 3.1.1-r1 3.1.2-r1 3.1.3 3.1.4: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
@@ -8386,7 +8387,7 @@ dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.34.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 1.0.0: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1: File-based locks for Python
@@ -8595,7 +8596,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 2.2.5 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 1.18.0: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 1.18.0 2.2.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 7.0.0 7.2.0 8.0.1: Python Imaging Library (fork)
 dev-python/pip 20.2.4: Installs python packages -- replacement for easy_install
@@ -8805,7 +8806,7 @@ dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
-dev-python/pytest-cov 2.8.1: py.test plugin for coverage reporting
+dev-python/pytest-cov 2.8.1 2.10.1: py.test plugin for coverage reporting
 dev-python/pytest-datadir 1.3.1: Pytest plugin for manipulating test data directories and files
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
 dev-python/pytest-django 4.1.0: A Django plugin for py.test
@@ -8924,7 +8925,7 @@ dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.28 0.29: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.9: Python bindings for the XML Security Library
-dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
+dev-python/python-xmp-toolkit 2.0.1 2.0.1-r1: Library for working with XMP metadata
 dev-python/python-zaqarclient 2.0.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
 dev-python/python-zunclient 4.1.1: A client for the OpenStack Zun API
@@ -9135,7 +9136,7 @@ dev-python/stapler 1.0.0_p20200531: Suite of tools for PDF files manipulation wr
 dev-python/statsd 3.3.0: A simple statsd client
 dev-python/statsmodels 0.11.1 0.12.0 0.12.1 9999: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
-dev-python/stevedore 3.2.2: Manage dynamic plugins for Python applications
+dev-python/stevedore 3.2.2 3.3.0: Manage dynamic plugins for Python applications
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.46.0: Stripe python bindings
 dev-python/subunit 1.4.0: A streaming protocol for test results
@@ -15432,7 +15433,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.26 1.8.27 2.0.14 2.0.14-r1 2.0.17 2.0.18 2.0.19 2.0.9999 2.1.4 2.1.4-r1 2.1.8 2.1.9 2.1.10 2.1.9999 2.2.0 2.2.3 2.2.4 2.2.5 2.2.9999 2.3.2 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.26 1.8.27 2.0.14 2.0.14-r1 2.0.17 2.0.18 2.0.19 2.0.9999 2.1.4 2.1.4-r1 2.1.8 2.1.9 2.1.10 2.1.9999 2.2.0 2.2.3 2.2.4 2.2.5 2.2.6 2.2.9999 2.3.2 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
