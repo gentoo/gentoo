@@ -190,10 +190,6 @@ src_install() {
 		etc/slurmdbd.conf.example
 	exeinto /etc/slurm
 	keepdir /etc/slurm/layouts.d
-	insinto /etc/slurm/layouts.d
-	newins etc/layouts.d.power.conf.example power.conf.example
-	newins etc/layouts.d.power_cpufreq.conf.example power_cpufreq.conf.example
-	newins etc/layouts.d.unit.conf.example unit.conf.example
 	# install init.d files
 	newinitd "$(prefixify_ro "${FILESDIR}/slurmd.initd")" slurmd
 	newinitd "$(prefixify_ro "${FILESDIR}/slurmctld.initd")" slurmctld
