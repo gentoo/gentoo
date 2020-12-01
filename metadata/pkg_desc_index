@@ -9994,7 +9994,7 @@ dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libusb 0.6.4: binding that gives Ruby programmers access to arbitrary USB devices
 dev-ruby/liquid 4.0.3: Template engine for Ruby
 dev-ruby/liquid-c 4.0.0: Liquid performance extension in C
-dev-ruby/listen 1.3.1-r4 3.2.1 3.3.0 3.3.1 3.3.2: Listens to file modifications and notifies you about the changes
+dev-ruby/listen 1.3.1-r4 3.2.1 3.3.0 3.3.1 3.3.2 3.3.3: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.3: A pure ruby library which provides basic APIs for localization
@@ -10073,7 +10073,7 @@ dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation 
 dev-ruby/nio4r 2.5.2 2.5.3 2.5.4: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4 1.10.10: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
-dev-ruby/nokogumbo 2.0.2 2.0.3: A Nokogiri interface to the Gumbo HTML5 parser
+dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
@@ -10221,7 +10221,7 @@ dev-ruby/ruby-ldap 0.9.20: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-libsecret 3.4.3: Ruby libsecret bindings
 dev-ruby/ruby-macho 2.2.0 2.3.0 2.5.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.16.2 0.16.3: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.16.2 0.16.3 0.17.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.13.1 0.14.0: An oEmbed consumer library written in Ruby.
