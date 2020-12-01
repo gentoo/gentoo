@@ -18,11 +18,21 @@ SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
 
 	arm? ( ${BASE_URI/@arch@/armhf} )"
 
+#https://download-cdn.resilio.com/2.7.2.1370/Debian/resilio-sync_2.7.2.1370-1_amd64.deb
+
+# https://download-cdn.resilio.com/2.7.1.1370/Debian/resilio-sync_2.7.1.1370-1_arm64.deb
+# https://download-cdn.resilio.com/2.7.2.1370/Debian/resilio-sync_2.7.2.1370-1_i386.deb
+
+# https://download-cdn.resilio.com/2.7.1.1370/Debian/resilio-sync_2.7.1.1370-1_armel.deb  
+### not sure if gentoo even has armel or how to bother... but hear for notes. 
+
+# https://download-cdn.resilio.com/2.7.1.1370/Debian/resilio-sync_2.7.1.1370-1_armhf.deb 
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="bindist mirror"
+#RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
 
