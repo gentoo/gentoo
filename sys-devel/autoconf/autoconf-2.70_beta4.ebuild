@@ -29,7 +29,7 @@ BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${BDEPEND}
 	!~sys-devel/${P}:2.5
-	~sys-devel/autoconf-wrapper-14_pre2"
+	~sys-devel/autoconf-wrapper-14_pre3"
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 

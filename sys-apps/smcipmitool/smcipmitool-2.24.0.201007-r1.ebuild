@@ -47,7 +47,7 @@ src_compile() {
 
 src_install() {
 	java-pkg_dojar *.jar
-	java-pkg_doso libjcurses.so *64.so
+	java-pkg_doso *64.so
 
 	local pre=$(prefixify_ro "${FILESDIR}"/launcher-pre.bash)
 	java-pkg_dolauncher smcipmitool-ikvm --jar iKVM.jar -pre "${pre}"
