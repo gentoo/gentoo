@@ -7,6 +7,6 @@ inherit acct-user
 
 ACCT_USER_GROUPS=( gatling )
 ACCT_USER_HOME=/var/www/localhost
-ACCT_USER_ID=500  # matches acct-group/gatling
+ACCT_USER_ID=364  # matches acct-group/gatling
 
 acct-user_add_deps
