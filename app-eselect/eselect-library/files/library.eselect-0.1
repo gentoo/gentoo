@@ -1,0 +1,333 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+inherit config multilib package-manager skel tests
+
+MODULE="LIBRARY"
+IFACE="library"
+DESCRIPTION="Manage installed alternatives of libraries"
+MAINTAINER="gentoo@aisha.cc"
+VERSION="20201129"
+
+### helper utility to find all available library implementations
+find_targets_in() {
+	[[ $# -eq 2 ]] || die -q "need <libname> <libdir>"
+	local cand
+	for cand in ${EROOT}/etc/env.d/eselect-library/$1/$2/*; do
+		[[ "${cand}" == */config ]] && continue
+		[[ -r "${cand}" ]] && basename "${cand}"
+	done
+}
+
+### helper utility to validate a library directory
+# checks that at least one of the libraries in directory
+# matches for our libname
+validate_libdir() {
+	[[ $# -eq 2 ]] || die -q "need <libname> <libdir>"
+	[[ -d $2 ]] || return 2  # dir doesn't exist
+	local lib
+	for lib in ${2}/*; do
+		[[ -r ${lib} ]] || continue
+		[[ $(basename ${lib}) =~ lib${1}.so.* ]] && return 0
+	done
+	return 1
+}
+
+### managed action
+describe_managed() {
+	printf "show libraries currently managed with eselect library\n"
+}
+
+do_managed() {
+	write_list_start "Managed libraries:"
+	local libs
+	libs=( "${EROOT}"/etc/env.d/eselect-library/* )
+	write_numbered_list -m "(none found)" "${libs[@]##*/}"
+}
+
+### show action
+describe_show() {
+	printf "print the current active <libname> implementation\n"
+}
+
+describe_show_parameters() {
+	printf "<libname>\n"
+}
+
+describe_show_options() {
+	printf "libname: library for which to show the current implementation\n"
+}
+
+do_show() {
+	[[ $# -eq 0 ]] && die -q "need <libname> [libdir1] [libdir2] ..."
+	# do_show libname -- show both lib64 and lib32 selection
+	# do_show libname libxx -- show libxx selection
+	local libname=${1}
+	shift 1
+	local libdir cur libdirs=( $(list_libdirs) )
+	# if manually specified libdirs
+	if [[ $# -ge 1 ]]; then
+		for libdir in $@; do
+			has $libdir ${libdirs[@]} || die -q "invalid libdir '$libdir'!"
+		done
+		libdirs=( $@ )
+	fi
+
+	for libdir in ${libdirs[@]}; do
+		[[ ! -d ${EROOT}/usr/$libdir ]] && continue
+		[[ ! -r ${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config ]] && continue
+		cur=$(load_config ${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config CURRENT)
+		printf '%s: %s' "${libdir}" "$cur"
+	done
+}
+
+### list action
+describe_list() {
+	printf "print all installed and available implementations for <libname>\n"
+}
+
+describe_list_parameters() {
+	printf "<libname>\n"
+}
+
+describe_list_options() {
+	printf "libname: library for which to show the available implementations\n"
+}
+
+do_list() {
+	[[ $# -eq 0 ]] && die -q "need <libname> [libdir1] [libdir2] ..."
+	local libname=${1}
+	shift 1
+	local i cur targets
+	local libdir libdirs=( $(list_libdirs) )
+	# if manually specified libdirs
+	if [[ $# -ge 1 ]]; then
+		for libdir in $@; do
+			has $libdir ${libdirs[@]} || die -q "invalid libdir '$libdir'!"
+		done
+		libdirs=( $@ )
+	fi
+	for libdir in ${libdirs[@]}; do
+		[[ ! -d ${EROOT}/usr/$libdir ]] || [[ -L ${EROOT}/usr/$libdir ]] && continue
+		targets=( $(find_targets_in $libname $libdir) )
+		cur=$(load_config ${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config CURRENT)
+
+		write_list_start "Available ${libname} library ($libdir) candidates:"
+		for (( i = 0; i < ${#targets[@]}; i++ )); do
+			[[ ${targets[i]} = $cur ]] \
+			&& targets[i]=$(highlight_marker "${targets[i]}")
+		done
+		write_numbered_list -m "(none found)" "${targets[@]}"
+	done
+}
+
+### validate action
+describe_validate() {
+	printf "validate <libname> library candidates and remove invalid ones\n"
+}
+
+describe_validate_parameters() {
+	printf "<libname>\n"
+}
+
+describe_validate_options() {
+	printf "libname: library for which to validate implementations (eg. blas, lapack64)\n"
+}
+
+do_validate() {
+	[[ $# -eq 1 ]] || die -q "need <libname>"
+	local libname=$1
+	shift
+	local i ldpath targets target candidate
+	local libdir libdirs=( $(list_libdirs) )
+	for libdir in ${libdirs[@]}; do
+		[[ ! -d ${EROOT}/usr/$libdir ]] || [[ -L ${EROOT}/usr/$libdir ]] && continue
+		targets=( $(find_targets_in ${libname} $libdir) )
+		for target in ${targets[@]}; do
+			candidate=${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/${target}
+			ldpath=$(load_config $candidate LDPATH)
+			if ! validate_libdir ${libname} $ldpath; then
+				printf "Removing invalid %s library candidate (%s) ...\n" "${libname}" "${candidate}"
+				rm -v $candidate
+			fi
+		done
+	done
+}
+
+### priority action
+describe_priority() {
+	printf "Get/Set the loading priority of the library path (defaults to 999)\n"
+}
+
+describe_priority_parameters() {
+	printf "<libname> [<libdir>] [<priority>]\n"
+}
+
+describe_priority_options() {
+	printf "libname: library for which to manipulate path priority\n"
+	printf "libdir: lib64 or lib32 (defaults to native one)\n"
+	printf "priority: Set (Get if not defined) path priority of library, smaller values have higher priority\n"
+}
+
+do_priority() {
+	local libdirs=( $(list_libdirs) )
+	local libname targets libdir ldconf libpath priority
+
+	# check argument existence
+	[[ $# -eq 1 ]] || [[ $# -eq 2 ]] || [[ $# -eq 3 ]] ||\
+		die -q "need <libname> [<libdir>] [<priority>]"
+	# read argumenets
+	libname=$1
+	if [[ $# -eq 2 ]]; then
+		local re='^[0-9]+$'
+		if [[ $2 =~ $re ]]; then
+			priority=$2
+			libdir=$(get_libdir)
+			if [[ $priority -le 0 ]]; then
+				die -q "priority needs to be positive"
+			fi
+		else
+			priority=0
+			libdir=$2
+		fi
+	else
+		priority=0
+		libdir=$(get_libdir)
+	fi
+	if [[ $# -eq 3 ]]; then libdir="$2"; priority="$3"; fi
+	# validate arguments
+	has "$libdir" "${libdirs[@]}" || die -q "Invalid libdir ($libdir) !"
+	if [[ $priority -eq 0 ]]; then
+		priority=$(load_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" PRIORITY)
+		printf 'Current priority: %s\n' "${priority}"
+		return
+	else
+		# store the configuration to env.d
+		local old_priority
+		old_priority=$(load_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" PRIORITY)
+		store_config ${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config PRIORITY "${priority}"
+		# delete old file
+		current_provider=$(load_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" CURRENT)
+		if [[ ! -z ${current_provider} ]]; then
+			mv "${EROOT}/etc/ld.so.conf.d/${old_priority}-library-${libname}-${libdir}.conf" \
+			   "${EROOT}/etc/ld.so.conf.d/${priority}-library-${libname}-${libdir}.conf"
+			# refresh cache. env-update will call ldconfig (see
+			# portage::env_update.py) so we don't need to call it explicitly.
+			env-update
+		fi
+	fi
+}
+
+### set action
+describe_set() {
+	printf "Activate one of the installed library implementations\n"
+}
+
+describe_set_parameters() {
+	printf "<libname> [<libdir>] <implementation>\n"
+}
+
+describe_set_options() {
+	printf "libname: library for which to do selection (eg. blas/lapack/blas64)\n"
+	printf "libdir: lib64 or lib32 (defaults to native one)\n"
+	printf "implementation : implementation name or number (from 'list' action)\n"
+}
+
+do_set() {
+	local libdirs=( $(list_libdirs) )
+	local libname targets libdir ldconf libpath impl
+
+	# check argument existence
+	[[ $# -eq 2 ]] || [[ $# -eq 3 ]] ||\
+		die -q "Please specify <libname> [<libdir>] <impl> to activate!"
+	# read argumenets
+	libname=$1
+	if [[ $# -eq 3 ]]; then libdir="$2"; else libdir="$(get_libdir)"; fi
+	if [[ $# -eq 3 ]]; then impl="$3"; else impl="$2"; fi
+	# validate arguments
+	has "$libdir" "${libdirs[@]}" || die -q "Invalid libdir ($libdir) !"
+	targets=( $(find_targets_in $libname $libdir) )
+	if ! has "$impl" "${targets[@]}"; then
+		if [[ ${impl} -gt 0 ]] && [[ ${impl} -le ${#targets[@]} ]]; then
+			impl=${targets[(${impl} - 1)]}
+		else
+			die -q "Invalid impl ($impl) !"
+		fi
+	fi
+	# store the configuration to env.d
+	store_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" CURRENT "${impl}"
+	priority=$(load_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" PRIORITY)
+	if [[ -z "${priority}" ]]; then
+		priority=999
+		store_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" PRIORITY "${priority}"
+	fi
+	# generate ld.so.conf file
+	ldconf="${EROOT}/etc/ld.so.conf.d/${priority}-library-${libname}-${libdir}.conf"
+	libpath=$(load_config ${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/${impl} LDPATH)
+	truncate -s0 $ldconf
+	printf "# Auto-generated by eselect::library. DON'T EDIT.\n" >> $ldconf
+	printf '%s\n' "$libpath" >> $ldconf
+
+	# refresh cache. env-update will call ldconfig (see
+	# portage::env_update.py) so we don't need to call it explicitly.
+	env-update
+}
+
+### unset action
+describe_unset() {
+	printf "Disable any selected library implementation\n"
+}
+
+describe_unset_parameters() {
+	printf "<libname> [<libdir>]\n"
+}
+
+describe_unset_options() {
+	printf "libname: library for which to do selection (eg. blas/lapack/blas64)\n"
+	printf "libdir: lib64 or lib32 (defaults to native one)\n"
+}
+
+do_unset() {
+	local libdirs=( $(list_libdirs) )
+	local libname libdir
+	# check argument existence
+	[[ $# -eq 1 ]] || [[ $# -eq 2 ]] ||\
+		die -q "Please specify <libname> [<libdir>] to deactivate!"
+	# read argumenets
+	libname=$1
+	if [[ $# -eq 2 ]]; then libdir="$2"; else libdir="$(get_libdir)"; fi
+	# validate arguments
+	has "$libdir" "${libdirs[@]}" || die -q "Invalid libdir ($libdir) !"
+	priority=$(load_config "${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config" PRIORITY)
+	# remove ld.so.conf file
+	rm -f "${EROOT}/etc/ld.so.conf.d/${priority}-library-${libname}-${libdir}.conf"
+	# store the configuration to env.d
+	store_config ${EROOT}/etc/env.d/eselect-library/${libname}/${libdir}/config CURRENT ""
+	# refresh cache. env-update will call ldconfig (see
+	# portage::env_update.py) so we don't need to call it explicitly.
+	env_update
+}
+
+### add action
+describe_add() {
+	printf "Add a provider for the <libname> library\n"
+}
+
+describe_add_parameters() {
+	printf "<libname> <libdir> <dir> <provider>\n"
+}
+
+describe_add_options() {
+	printf "libname: library for which we are eselecting alternatives (eg. blis, blas)\n"
+	printf "libdir: library directory where <libname> implementation is installed (lib, lib64, etc.)\n"
+	printf "dir: directory containing lib<libname>.so[.x[.y[.z]]]\n"
+	printf "provider: name of the <libname> provider\n"
+}
+
+do_add() {
+	[[ $# -eq 4 ]] \
+		|| die -q "Please specify <libname> <libdir> <dir> <provider> to activate!"
+	validate_libdir $1 $3 || die -q "invalid library provider!"
+	store_config ${EROOT}/etc/env.d/eselect-library/$1/$2/$4 LDPATH $3
+}
