@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2020-12-05)
+# add masked BLAS/LAPACK packages
+# for testing the chainloading mechanism
+=sci-libs/blis-0.7.0
+=sci-libs/lapack-3.9.0-r1
+=sci-libs/mkl-2020.4.304-r1
+=sci-libs/openblas-0.3.12-r2
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-03)
 # Explicit namespace support was necessary for Python 2 only.  Empty
 # directories work best for Python 3.
