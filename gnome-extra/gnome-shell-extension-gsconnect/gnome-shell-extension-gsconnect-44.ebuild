@@ -10,14 +10,14 @@ SRC_URI="https://github.com/andyholmes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nautilus"
 
 COMMON_DEPEND="dev-libs/glib:2"
 RDEPEND="${COMMON_DEPEND}
 	app-eselect/eselect-gnome-shell-extensions
 	>=dev-libs/gjs-1.48
-	=gnome-base/gnome-shell-3.36*
+	=gnome-base/gnome-shell-3.38*
 	gnome-base/gvfs
 	gnome-extra/evolution-data-server
 	|| ( media-libs/libcanberra media-libs/gsound )

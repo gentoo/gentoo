@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit gnome2-utils
 
 # Workaround until https://bugzilla.gnome.org/show_bug.cgi?id=663725 is fixed
 DESCRIPTION="Show tooltip with full name and description"
@@ -11,32 +12,38 @@ SRC_URI="https://github.com/RaphaelRochet/applications-overview-tooltip/archive/
 # https://github.com/RaphaelRochet/applications-overview-tooltip/issues/7
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# glib for glib-compile-schemas at build time, needed at runtime anyways
-COMMON_DEPEND="
-	dev-libs/glib:2
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
-	>=gnome-base/gnome-shell-3.20
+	>=gnome-base/gnome-shell-3.38
 "
-DEPEND="${COMMON_DEPEND}"
+DEPEND=""
 BDEPEND=""
 
 S="${WORKDIR}/${P/gnome-shell-extension-}"
 
 src_install() {
 	einstalldocs
-	rm -f README.md || die
+	insinto /usr/share/glib-2.0/schemas
+	doins schemas/*.xml
+	rm -rf README.md schemas || die
 	insinto /usr/share/gnome-shell/extensions/applications-overview-tooltip@RaphaelRochet
 	doins -r *
-	glib-compile-schemas "${ED}"/usr/share/gnome-shell/extensions/applications-overview-tooltip@RaphaelRochet/schemas || die
+}
+
+pkg_preinst() {
+	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
+	gnome2_schemas_update
 	ebegin "Updating list of installed extensions"
 	eselect gnome-shell-extensions update
 	eend $?
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
 }
