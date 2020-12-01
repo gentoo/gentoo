@@ -28,13 +28,8 @@ PATCHES=(
 )
 
 python_test() {
-	distutils_install_for_testing
-	PYTHONPATH="${BUILD_DIR}/lib" \
-		"${PYTHON:-python}" cbor/tests/test_cbor.py    || die "Testsuite failed under ${EPYTHON}"
-	PYTHONPATH="${BUILD_DIR}/lib" \
-		"${PYTHON:-python}" cbor/tests/test_objects.py || die "Testsuite failed under ${EPYTHON}"
-	PYTHONPATH="${BUILD_DIR}/lib" \
-		"${PYTHON:-python}" cbor/tests/test_usage.py   || die "Testsuite failed under ${EPYTHON}"
-	PYTHONPATH="${BUILD_DIR}/lib" \
-		"${PYTHON:-python}" cbor/tests/test_vectors.py || die "Testsuite failed under ${EPYTHON}"
+	"${EPYTHON}" cbor/tests/test_cbor.py    || die "Testsuite failed under ${EPYTHON}"
+	"${EPYTHON}" cbor/tests/test_objects.py || die "Testsuite failed under ${EPYTHON}"
+	"${EPYTHON}" cbor/tests/test_usage.py   || die "Testsuite failed under ${EPYTHON}"
+	"${EPYTHON}" cbor/tests/test_vectors.py || die "Testsuite failed under ${EPYTHON}"
 }

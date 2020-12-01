@@ -74,6 +74,10 @@ REQUIRED_USE="
 
 MAKEOPTS+=" SAMPLES="
 
+PATCHES=(
+	"${FILESDIR}/${P}-without-sendmail_build_fix.patch" #757819
+)
+
 src_prepare() {
 	default
 	elibtoolize

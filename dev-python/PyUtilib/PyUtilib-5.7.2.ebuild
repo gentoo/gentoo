@@ -36,7 +36,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	distutils_install_for_testing
+	distutils_install_for_testing --via-root
 
 	local -x PYTHONPATH="${PWD}:${TEST_DIR}/lib" \
 		COLUMNS=80

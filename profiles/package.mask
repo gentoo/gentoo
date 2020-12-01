@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-12-01)
+# Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
+# Use other kernel source / binary packages instead,
+# https://packages.gentoo.org/categories/sys-kernel
+# Removal in ~30 days.
+# Bugs: #716490 (aufs), #739782 (-ck), #757843 (-xbox)
+sys-kernel/aufs-sources
+sys-kernel/ck-sources
+sys-kernel/xbox-sources
+
 # Aaron Bauman <bman@gentoo.org> (2020-11-30)
 # EAPI=5. Multiple open bugs #603866 #713620
 # Dead upstream. Removal in 30 days.
