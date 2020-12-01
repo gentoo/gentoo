@@ -448,6 +448,9 @@ src_configure() {
 
 	export LDCONFIG=/bin/true
 	use custom-cflags || strip-flags
+	if use mingw; then
+		export CROSSCFLAGS="${CFLAGS}"
+	fi
 
 	multilib-minimal_src_configure
 }

@@ -35,7 +35,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap mingw +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks +unwind v4l vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -261,6 +261,34 @@ pkg_pretend() {
 			die
 		fi
 	fi
+
+	if use mingw && use abi_x86_32 && ! has_version "cross-i686-w64-mingw32/gcc"; then
+		eerror
+		eerror "USE=\"mingw\" is currently experimental, and requires the"
+		eerror "'cross-i686-w64-mingw32' compiler and its runtime for 32-bit builds."
+		eerror
+		eerror "These can be installed by using 'sys-devel/crossdev':"
+		eerror
+		eerror "crossdev --target i686-w64-mingw32"
+		eerror
+		eerror "For more information on setting up MinGW, see: https://wiki.gentoo.org/wiki/Mingw"
+		eerror
+		die "MinGW build was enabled, but no compiler to support it was found."
+	fi
+
+	if use mingw && use abi_x86_64 && ! has_version "cross-x86_64-w64-mingw32/gcc"; then
+		eerror
+		eerror "USE=\"mingw\" is currently experimental, and requires the"
+		eerror "'cross-x86_64-w64-mingw32' compiler and its runtime for 64-bit builds."
+		eerror
+		eerror "These can be installed by using 'sys-devel/crossdev':"
+		eerror
+		eerror "crossdev --target x86_64-w64-mingw32"
+		eerror
+		eerror "For more information on setting up MinGW, see: https://wiki.gentoo.org/wiki/Mingw"
+		eerror
+		die "MinGW build was enabled, but no compiler to support it was found."
+	fi
 }
 
 pkg_setup() {
@@ -354,6 +382,9 @@ src_configure() {
 
 	export LDCONFIG=/bin/true
 	use custom-cflags || strip-flags
+	if use mingw; then
+		export CROSSCFLAGS="${CFLAGS}"
+	fi
 
 	multilib-minimal_src_configure
 }
@@ -388,7 +419,8 @@ multilib_src_configure() {
 		$(use_with jpeg)
 		$(use_with kerberos krb5)
 		$(use_with ldap)
-		--without-mingw # linux LDFLAGS leak in mingw32: bug #685172
+		# TODO: Will bug 685172 still need special handling?
+		$(use_with mingw)
 		$(use_enable mono mscoree)
 		$(use_with mp3 mpg123)
 		$(use_with netapi)
