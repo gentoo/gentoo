@@ -545,6 +545,7 @@ RDEPEND="
 	)
 	l10n_vi? (
 		app-dicts/sword-FVDPVietAnh
+		app-dicts/sword-VieRobinson
 		app-dicts/sword-VieStrongsGreek
 		app-dicts/sword-Viet
 		app-dicts/sword-VietLCCMN
