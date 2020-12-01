@@ -36,6 +36,7 @@
 # Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
 # Use other kernel source / binary packages instead,
 # https://packages.gentoo.org/categories/sys-kernel
+# Removal in ~30 days.
 # Bugs: #716490 (aufs), #739782 (-ck), #757843 (-xbox)
 sys-kernel/aufs-sources
 sys-kernel/ck-sources
