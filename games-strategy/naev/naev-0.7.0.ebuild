@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit xdg-utils
 
 DESCRIPTION="A 2D space trading and combat game, in a similar vein to Escape Velocity"
 HOMEPAGE="https://naev.org/ https://github.com/naev/naev"
-SRC_URI="https://github.com/naev/naev/releases/download/${P}/${P}.tar.bz2
-	https://github.com/naev/naev/releases/download/${P}/${P}-ndata.zip"
+SRC_URI="https://github.com/naev/naev/releases/download/v${PV}/${P}.tar.bz2
+	https://github.com/naev/naev/releases/download/v${PV}/${P}-ndata.zip"
 
 LICENSE="GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
@@ -30,6 +31,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+# This is so that only the source tarball is unpacked - the data file
+# is supposed to be installed *zipped*. This is why we do not need unzip
+# in BDEPEND in spite of what repoman/pkgcheck might say.
 src_unpack() {
 	unpack ${P}.tar.bz2
 }
