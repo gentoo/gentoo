@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst postrm setup unpack
+DEPEND=lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) media-libs/libsdl2[X,sound,video] dev-libs/libzip dev-libs/libxml2 >=media-libs/freetype-2:2 >=media-libs/libvorbis-1.2.1 >=media-libs/libpng-1.2:0= virtual/glu virtual/opengl mixer? ( media-libs/sdl2-mixer ) openal? ( media-libs/openal )
+DESCRIPTION=A 2D space trading and combat game, in a similar vein to Escape Velocity
+EAPI=7
+HOMEPAGE=https://naev.org/ https://github.com/naev/naev
+IUSE=debug +mixer +openal lua_single_target_luajit lua_single_target_lua5-1
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0
+RDEPEND=lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) media-libs/libsdl2[X,sound,video] dev-libs/libzip dev-libs/libxml2 >=media-libs/freetype-2:2 >=media-libs/libvorbis-1.2.1 >=media-libs/libpng-1.2:0= virtual/glu virtual/opengl mixer? ( media-libs/sdl2-mixer ) openal? ( media-libs/openal )
+REQUIRED_USE=^^ ( lua_single_target_luajit lua_single_target_lua5-1 )
+SLOT=0
+SRC_URI=https://github.com/naev/naev/releases/download/v0.7.0/naev-0.7.0.tar.bz2 https://github.com/naev/naev/releases/download/v0.7.0/naev-0.7.0-ndata.zip
+_eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=d017e5dadc8e8bbf08bd7051432a79dc

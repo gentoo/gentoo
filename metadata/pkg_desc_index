@@ -8943,7 +8943,7 @@ dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.1-r1 2020.4: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
-dev-python/pyusb 1.0.2-r1: USB support for Python
+dev-python/pyusb 1.0.2-r1 1.1.0: USB support for Python
 dev-python/pyvirtualdisplay 1.3.2: Python wrapper for Xvfb, Xephyr and Xvnc
 dev-python/pywavelets 1.1.1: Discrete Wavelet Transforms in Python
 dev-python/pywinrm 0.4.1: Windows Remote Management through Python
@@ -11682,7 +11682,7 @@ games-strategy/majesty-demo 1.0.0-r1: Control your own kingdom in this simulatio
 games-strategy/maxr 0.2.9: Mechanized Assault and Exploration Reloaded
 games-strategy/megaglest 3.11.1-r1: Cross-platform 3D realtime strategy game
 games-strategy/megaglest-data 3.11.1: Data files for the cross-platform 3D realtime strategy game MegaGlest
-games-strategy/naev 0.6.1-r1: A 2D space trading and combat game, in a similar vein to Escape Velocity
+games-strategy/naev 0.6.1-r1 0.7.0 0.7.0-r100: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
 games-strategy/openra 20190314: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
 games-strategy/s25rttr 0.9.0_pre20200723: Open source remake of The Settlers II: Gold Edition (needs original data files)
