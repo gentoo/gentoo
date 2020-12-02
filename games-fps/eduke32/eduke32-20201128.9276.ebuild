@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="93f62bbad"
+EGIT_COMMIT="42c62c58f"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"

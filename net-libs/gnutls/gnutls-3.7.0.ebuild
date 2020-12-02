@@ -5,8 +5,8 @@ EAPI=7
 
 inherit libtool multilib-minimal
 
-DESCRIPTION="A TLS 1.2 and SSL 3.0 implementation for the GNU project"
-HOMEPAGE="http://www.gnutls.org/"
+DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"
+HOMEPAGE="https://www.gnutls.org/"
 SRC_URI="mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3 LGPL-2.1+"
