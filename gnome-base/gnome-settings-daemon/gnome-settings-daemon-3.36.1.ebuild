@@ -13,6 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+colord +cups debug elogind input_devices_wacom modemmanager networkmanager smartcard systemd test +udev wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	^^ ( elogind systemd )
 	input_devices_wacom? ( udev )
