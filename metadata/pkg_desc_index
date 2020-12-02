@@ -15426,7 +15426,7 @@ net-print/mtink 1.0.16-r2: mtink is a status monitor and inkjet cartridge change
 net-print/npadmin 0.8.7-r1: Network printer command-line adminstration tool
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
 net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
-net-print/splix 2.0.0_p20130826 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
+net-print/splix 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-proxy/3proxy 0.8.13 0.9.0: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
