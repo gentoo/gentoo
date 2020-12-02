@@ -39,7 +39,6 @@ RDEPEND="
 	sys-libs/zlib:=[minizip]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	dev-lang/lua:0
 "
 BDEPEND="
 	sys-devel/gettext
