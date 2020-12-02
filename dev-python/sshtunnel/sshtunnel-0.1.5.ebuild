@@ -23,4 +23,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/tox[${PYTHON_USEDEP}] )
 "
 
+RESTRICT="test"
+
 distutils_enable_tests setup.py
