@@ -129,14 +129,20 @@ cmake_src_test() {
 src_prepare() {
 	cmake_src_prepare
 
-	# disable Xcode hooks, bug #652134
 	if [[ ${CHOST} == *-darwin* ]] ; then
+		# disable Xcode hooks, bug #652134
 		sed -i -e 's/__APPLE__/__DISABLED_APPLE__/' \
 			Source/cmGlobalXCodeGenerator.cxx || die
 		# disable isysroot usage with GCC, we've properly instructed
 		# where things are via GCC configuration and ldwrapper
 		sed -i -e '/cmake_gnu_set_sysroot_flag/d' \
 			Modules/Platform/Apple-GNU-*.cmake || die
+		# don't set a POSIX standard, system headers don't like that, #757426
+		sed -i -e 's/^#if !defined(_WIN32) && !defined(__sun)/& \&\& !defined(__APPLE__)/' \
+			Source/cmLoadCommandCommand.cxx \
+			Source/cmStandardLexer.h \
+			Source/cmSystemTools.cxx \
+			Source/cmTimestamp.cxx
 	fi
 
 	# Add gcc libs to the default link paths
