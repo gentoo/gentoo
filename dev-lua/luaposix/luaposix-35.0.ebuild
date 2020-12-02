@@ -12,9 +12,9 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="dev-lang/lua:0=
+DEPEND="dev-lang/lua:0="
+RDEPEND="${DEPEND}
 	dev-lua/lua-bit32"
-DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
