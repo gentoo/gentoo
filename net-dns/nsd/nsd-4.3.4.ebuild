@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit autotools systemd
 
 # version voodoo needed only for non-release tarballs: 4.0.0_rc1 => 4.0.0rc1
 MY_PV="${PV/_beta/b}"
@@ -47,6 +47,13 @@ PATCHES=(
 	# Fix the paths in the munin plugin to match our install
 	"${FILESDIR}"/nsd_munin_.patch
 )
+
+src_prepare() {
+	default
+	# Required to get correct pkg-config macros with USE="systemd"
+	# see bugs #663618 and #758050
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
