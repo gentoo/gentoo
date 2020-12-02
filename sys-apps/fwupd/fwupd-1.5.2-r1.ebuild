@@ -52,6 +52,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
 	')
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
+	net-misc/curl
 	virtual/libelf:0=
 	virtual/udev
 	dell? (
@@ -69,6 +70,7 @@ CDEPEND="${PYTHON_DEPS}
 		media-libs/freetype
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
+		sys-libs/efivar
 		x11-libs/cairo
 	)
 "
