@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_REQ_USE="tk"
 
@@ -44,6 +44,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-gentoo.patch" #591904
 	"${FILESDIR}/${PN}-locales.patch"
+	"${FILESDIR}/${P}-python38.patch"
 )
 
 python_prepare_all() {
