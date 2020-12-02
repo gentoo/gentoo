@@ -5804,9 +5804,9 @@ dev-ml/lablgtk-sourceview 3.1.1: OCaml bindings to GTK-3
 dev-ml/labltk 8.06.2 8.06.7 8.06.9: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/llvm-ocaml 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
-dev-ml/lwt 3.0.0 3.1.0 5.3.0-r1: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 5.3.0-r1: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
-dev-ml/lwt_ssl 1.0.1 1.1.1: GLib integration for Lwt
+dev-ml/lwt_ssl 1.1.1: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.5: Error-recovering streaming HTML5 and XML parsers
 dev-ml/mccs 1.1.11: Multi Criteria CUDF Solver
@@ -5815,7 +5815,7 @@ dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mmap 1.0.2 1.1.0: File mapping
 dev-ml/mtime 1.1.0: OCaml module to access monotonic wall-clock time
 dev-ml/num 1.3 1.3-r1: Library for arbitrary-precision integer and rational arithmetic
-dev-ml/oasis 0.4.8 0.4.10: Tool to integrate a configure, build and install system in OCaml project
+dev-ml/oasis 0.4.10: Tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1-r1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.2.0: Library for radix-64 representation (de)coding
@@ -5823,26 +5823,26 @@ dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-compiler-libs 0.9.0 0.12.3: Repackage the OCaml compiler libs so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.15.4: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-cstruct 3.1.1: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.11.2 0.11.3 0.12.1 0.13.0 0.17.1: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.11.2 0.17.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: Use type-conv to dump OCaml data structure using OCaml data notation
-dev-ml/ocaml-dispatch 0.3.0 0.4.0: Path-based dispatching for client- and server-side applications
+dev-ml/ocaml-dispatch 0.4.0: Path-based dispatching for client- and server-side applications
 dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
-dev-ml/ocaml-expat 1.0.0 1.1.0 1.1.0-r1: OCaml bindings for expat
+dev-ml/ocaml-expat 1.1.0-r1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
-dev-ml/ocaml-fileutils 0.5.1 0.5.2 0.6.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
+dev-ml/ocaml-fileutils 0.6.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.7-r2 0.4.2: Provides support for internationalization of OCaml program
-dev-ml/ocaml-hashcons 1.2 1.3: OCaml hash-consing library
+dev-ml/ocaml-hashcons 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
 dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 2.0.0: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
-dev-ml/ocaml-sqlite3 4.1.2 4.1.3 4.2.0 4.3.0: A package for ocaml that provides access to SQLite databases
+dev-ml/ocaml-sqlite3 4.3.0: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.5.3-r1 0.5.9: OCaml bindings for OpenSSL
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0 0.14.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
-dev-ml/ocamlmod 0.0.8 0.0.9: Generate OCaml modules from source files
+dev-ml/ocamlmod 0.0.9: Generate OCaml modules from source files
 dev-ml/ocamlnet 4.1.2 4.1.8: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39 1.41: O'Caml literate programming tool
@@ -5900,7 +5900,7 @@ dev-ml/ppx_sexp_message 0.9.0 0.14.0: A ppx rewriter for easy construction of s-
 dev-ml/ppx_sexp_value 0.9.0 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
 dev-ml/ppx_string 0.14.1: Ppx extension for string interpolation
-dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0 5.3.4.08.0 6.2: Tools for authors of ppx rewriters
+dev-ml/ppx_tools 6.2: Tools for authors of ppx rewriters
 dev-ml/ppx_tools_versioned 5.0.1: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
@@ -5909,7 +5909,7 @@ dev-ml/ppx_typerep_conv 0.9.0 0.14.1: Generation of runtime types from type decl
 dev-ml/ppx_variants_conv 0.9.0 0.14.1: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/ppxfind 1.4: ocamlfind ppx tool
 dev-ml/ppxlib 0.18.0: Base library and tools for ppx rewriters
-dev-ml/qcheck 0.6 0.7: QuickCheck inspired property-based testing for OCaml
+dev-ml/qcheck 0.7: QuickCheck inspired property-based testing for OCaml
 dev-ml/re 1.9.0: Regular expression library for OCaml
 dev-ml/re2 0.9.0 0.9.1: OCaml bindings for RE2
 dev-ml/react 1.2.1 1.2.1-r1: OCaml module for functional reactive programming
@@ -7725,7 +7725,7 @@ dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla o
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
 dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10 1.10.13 1.10.15: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
-dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
+dev-php/doctrine 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 0.2.1 1.0.0 1.0.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
@@ -17514,7 +17514,7 @@ sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from th
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9: Linux system headers
 sys-kernel/mips-sources 4.14.206 4.19.157 5.4.77: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4 5.9_p5: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4 5.9_p5 5.9_p6: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 5.4.72_p20201022 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
