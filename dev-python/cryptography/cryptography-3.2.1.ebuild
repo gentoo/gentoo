@@ -50,13 +50,13 @@ src_prepare() {
 	default
 
 	# work around availability macros not supported in GCC (yet)
-	if [[ ${CHOST} == *-darwin ]] ; then
+	if [[ ${CHOST} == *-darwin* ]] ; then
 		local darwinok=0
 		if [[ ${CHOST##*-darwin} -ge 16 ]] ; then
 			darwinok=1
 		fi
 		sed -i -e 's/__builtin_available(macOS 10\.12, \*)/'"${darwinok}"'/' \
-			src/_cffi_src/openssl/src/osrandom_engine.c
+			src/_cffi_src/openssl/src/osrandom_engine.c || die
 	fi
 }
 
