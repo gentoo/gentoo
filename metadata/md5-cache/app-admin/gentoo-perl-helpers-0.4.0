@@ -2,9 +2,9 @@ DEFINED_PHASES=compile install prepare
 DESCRIPTION=Introspection and Upgrade Assistance tools for Gentoo Perl
 EAPI=6
 HOMEPAGE=https://github.com/gentoo-perl/gentoo-perl-helpers
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 x86
 LICENSE=GPL-2+
 RDEPEND=>=app-portage/portage-utils-0.80_pre20190620
 SLOT=0
 SRC_URI=https://github.com/gentoo-perl/gentoo-perl-helpers/releases/download/0.4.0/gentoo-perl-helpers-0.4.0.tar.xz mirror://gentoo/gentoo-perl-helpers-0.4.0.tar.xz https://dev.gentoo.org/~kentnl/distfiles/gentoo-perl-helpers-0.4.0.tar.xz
-_md5_=b86f9a5a6dfd08d3651ec6105541fffc
+_md5_=f8f8c88f123819d5b581e28e751784f2
