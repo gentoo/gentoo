@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 inherit distutils-r1
 
 DESCRIPTION="A library that provides a generic versioned and RPC-friendly  object model."
-HOMEPAGE="http://docs.openstack.org/developer/oslo.versionedobjects"
+HOMEPAGE="https://docs.openstack.org/developer/oslo.versionedobjects"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.versionedobjects/oslo.versionedobjects-${PV}.tar.gz"
 S="${WORKDIR}/oslo.versionedobjects-${PV}"
 
