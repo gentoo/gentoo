@@ -15,7 +15,7 @@ SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${P
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
-IUSE="test"
+IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -23,6 +23,7 @@ DEPEND="
 	>=sys-apps/util-linux-2.30:0=
 	>=sys-kernel/linux-headers-${MINKV}
 	sys-libs/libcap:0=
+	selinux? ( sys-libs/libselinux:0= )
 "
 RDEPEND="${DEPEND}
 	!sys-apps/opentmpfiles
@@ -117,7 +118,6 @@ src_configure() {
 		resolve
 		rfkill
 		seccomp
-		selinux
 		smack
 		sysusers
 		timedated
@@ -147,6 +147,7 @@ src_configure() {
 		-Dstatic-libsystemd=true
 		-Dsysvinit-path=''
 		${systemd_disable_options[@]}
+		$(meson_use selinux)
 	)
 	meson_src_configure
 }
