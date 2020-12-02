@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,8 +31,8 @@
+    CXXFLAGS="-Wall -O0 -g -D_DEBUG -fcommon"
+    AC_MSG_RESULT([yes])
+ else
+-   CFLAGS="-O3 -fcommon"
+-   CXXFLAGS="-O3 -fcommon"
++   CFLAGS?="-O3 -fcommon"
++   CXXFLAGS?="-O3 -fcommon"
+    AC_MSG_RESULT([no])
+ fi
+ 
