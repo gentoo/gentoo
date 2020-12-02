@@ -4,9 +4,9 @@
 EAPI=6
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20201201"
+GENTOO_PATCHSTAMP="20201202"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.46-r2"
+GENTOO_PATCHNAME="gentoo-apache-2.4.46-r3"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
