@@ -15425,7 +15425,7 @@ net-print/lm1100 1.0.2a-r1: The Tim Engler's Lexmark 1100 driver
 net-print/mtink 1.0.16-r2: mtink is a status monitor and inkjet cartridge changer for some Epson printers
 net-print/npadmin 0.8.7-r1: Network printer command-line adminstration tool
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
-net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
+net-print/poster 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
 net-print/splix 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-proxy/3proxy 0.8.13 0.9.0: A really tiny cross-platform proxy servers set
@@ -15502,7 +15502,7 @@ net-vpn/wireguard-modules 1.0.20201112: Simple yet fast and modern VPN that util
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
-net-wireless/airtraf 1.1-r3 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
+net-wireless/airtraf 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
 net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF hardware from Nuand
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
@@ -17504,7 +17504,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.4.245 4.4.246 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.9.245 4.9.246 4.14.202 4.14.205 4.14.206 4.14.207 4.14.208 4.14.209 4.19.152 4.19.156 4.19.157 4.19.158 4.19.159 4.19.160 5.4.72 5.4.76 5.4.77 5.4.78 5.4.79 5.4.80-r1 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9 5.9.10 5.9.11: Full sources including the Gentoo patchset for the 5.9 kernel tree
+sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.4.245 4.4.246 4.4.247 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.9.245 4.9.246 4.9.247 4.14.202 4.14.205 4.14.206 4.14.207 4.14.208 4.14.209 4.14.210 4.19.152 4.19.156 4.19.157 4.19.158 4.19.159 4.19.160 4.19.161 5.4.72 5.4.76 5.4.77 5.4.78 5.4.79 5.4.80-r1 5.4.81 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
