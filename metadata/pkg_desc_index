@@ -5722,7 +5722,7 @@ dev-lua/luaevent 0.4.6 0.4.6-r100: Binding of libevent for Lua
 dev-lua/luaexpat 1.3.0-r2 1.3.0-r101 1.3.3-r2 1.3.3-r101: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.8.0-r1 1.8.0-r101: File System Library for the Lua programming language
 dev-lua/luajson 1.3.3 1.3.4: JSON Parser/Constructor for Lua
-dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
+dev-lua/lualdap 1.2.5 1.2.5-r100: A lua binding for the OpenLDAP client libraries
 dev-lua/luaossl 20150727 20180708 20181207 20190731: Most comprehensive OpenSSL module in the Lua universe.
 dev-lua/luaposix 35.0: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1 3.4.0 3.4.0-r100: A package manager for the Lua programming language
@@ -14508,7 +14508,7 @@ net-dns/maradns 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 1.11: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.2.4 4.3.2 4.3.3: An authoritative only, high performance, open source name server
+net-dns/nsd 4.2.4 4.3.3 4.3.4: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.10.0 3.11.0: A framework for managing DNS information
