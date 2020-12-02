@@ -2009,7 +2009,7 @@ app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.3-r2 4.0.4-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113: Opensourced tools for VMware guests
-app-emulation/pcem 16-r1: A PC emulator that specializes in running old operating systems and software
+app-emulation/pcem 16-r1 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/protontricks 1.4.1 1.4.2: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
@@ -11324,7 +11324,7 @@ games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
 games-fps/doomsday 2.1.1-r1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
-games-fps/eduke32 20200907.9257: An open source engine port of the classic PC first person shooter Duke Nukem 3D
+games-fps/eduke32 20201128.9276: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
@@ -14722,7 +14722,7 @@ net-libs/glib-networking 2.62.4 2.64.3 2.66.0: Network-related giomodules for gl
 net-libs/gloox 1.0.22 1.0.24: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.36.0: GNOME framework for accessing online accounts
-net-libs/gnutls 3.6.15 3.7.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.6.15 3.7.0: A secure communications library implementing the SSL, TLS and DTLS protocols
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
 net-libs/grpc 1.28.1-r1 1.32.0: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
@@ -17027,7 +17027,7 @@ sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement fo
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.4 1.22.5 1.22.10: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and later kernels
-sys-auth/AusweisApp2 1.20.2 9999: Official authentication app for German ID cards and residence permits
+sys-auth/AusweisApp2 1.20.2 1.22.0 9999: Official authentication app for German ID cards and residence permits
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
 sys-auth/elogind 243.7 243.7-r1: The systemd project's logind, extracted to a standalone package
@@ -17983,7 +17983,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.5.0 83.0: Firefox Web Browser
 www-client/firefox-bin 78.5.0 83.0: Firefox Web Browser
-www-client/google-chrome 87.0.4280.66: The web browser from Google
+www-client/google-chrome 87.0.4280.88: The web browser from Google
 www-client/google-chrome-beta 87.0.4280.66: The web browser from Google
 www-client/google-chrome-unstable 88.0.4324.27: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -18028,7 +18028,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.453: Adobe Flash Player
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 87.0.4280.66_beta 87.0.4280.66 88.0.4324.27_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 87.0.4280.66_beta 87.0.4280.88 88.0.4324.27_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
