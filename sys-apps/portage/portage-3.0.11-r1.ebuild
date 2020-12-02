@@ -82,7 +82,12 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
+	https://github.com/gentoo/portage/commit/07a604537e746814613dc171a5c09072ef0266af.patch -> portage-3.0.11-bug-754903-pdepend.patch"
+
+PATCHES=(
+	"${DISTDIR}/portage-3.0.11-bug-754903-pdepend.patch"
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
