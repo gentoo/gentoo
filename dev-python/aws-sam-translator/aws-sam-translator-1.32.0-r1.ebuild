@@ -19,6 +19,7 @@ RDEPEND="
 	>=dev-python/boto3-1.5[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6[${PYTHON_USEDEP}]
 	>=dev-python/six-1.11[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
