@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -24,7 +24,8 @@ RDEPEND="app-text/opensp
 	dev-perl/Text-WrapI18N
 	dev-perl/Unicode-LineBreak
 	dev-perl/YAML-Tiny
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/perl-Pod-Parser"
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
