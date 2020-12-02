@@ -3003,7 +3003,7 @@ app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.8.1-r1: Library for Bible reading software
-app-text/sword-modules 2.1: All the unlocked modules for app-text/sword, grouped by language
+app-text/sword-modules 2.2: All the unlocked modules for app-text/sword, grouped by language
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
@@ -8333,7 +8333,7 @@ dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
 dev-python/joblib 0.17.0: Tools to provide lightweight pipelining in Python
-dev-python/josepy 1.4.0: JOSE protocol implementation in Python
+dev-python/josepy 1.4.0 1.5.0: JOSE protocol implementation in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
@@ -11684,8 +11684,8 @@ games-strategy/megaglest 3.11.1-r1: Cross-platform 3D realtime strategy game
 games-strategy/megaglest-data 3.11.1: Data files for the cross-platform 3D realtime strategy game MegaGlest
 games-strategy/naev 0.6.1-r1 0.7.0 0.7.0-r100: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
-games-strategy/openra 20190314: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
-games-strategy/s25rttr 0.9.0_pre20200723: Open source remake of The Settlers II: Gold Edition (needs original data files)
+games-strategy/openra 20190314 20190314-r100: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
+games-strategy/s25rttr 0.9.0_pre20200723 0.9.0_pre20200723-r100: Open source remake of The Settlers II: Gold Edition (needs original data files)
 games-strategy/satellite-reign 1.13.06: Real-time, class-based strategy game set in a cyberpunk city
 games-strategy/scorched3d 44-r2: Multi-player tank battle in 3D (OpenGL)
 games-strategy/settlers-2-gold-data 0: Data files for The Settlers II: Gold Edition
