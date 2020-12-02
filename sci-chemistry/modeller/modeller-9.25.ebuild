@@ -107,7 +107,7 @@ pkg_postinst() {
 	fi
 
 	if grep -q license ${INPATH}/modlib/modeller/config.py; then
-		einfo "A license key file is already present in ${IN_PATH}/modlib/modeller/config.py"
+		einfo "A license key file is already present in ${INPATH}/modlib/modeller/config.py"
 	else
 		ewarn "Obtain a license Key from"
 		ewarn "http://salilab.org/modeller/registration.html"
