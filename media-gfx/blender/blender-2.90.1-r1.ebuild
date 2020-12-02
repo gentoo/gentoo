@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff openimageio )
+	cycles? ( openexr tbb tiff openimageio )
 	elbeem? ( tbb )
 	opencl? ( cycles )
 	openvdb? (
