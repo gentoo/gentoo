@@ -13,7 +13,7 @@ SRC_URI="https://www.github.com/${PN}/${PN}/releases/download/${PVR}/${P}.tar.gz
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc perl python tcl"
 
 RESTRICT="test"
