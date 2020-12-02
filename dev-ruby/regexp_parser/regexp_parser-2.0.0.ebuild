@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/ammar/regexp_parser"
 SRC_URI="https://github.com/ammar/regexp_parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="1"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 IUSE=""
 
