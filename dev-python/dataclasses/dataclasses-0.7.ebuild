@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# this is a backport. do not add extra impls
 PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
