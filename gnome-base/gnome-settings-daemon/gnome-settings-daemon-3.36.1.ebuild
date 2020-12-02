@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit gnome.org gnome2-utils python-any-r1 meson udev virtualx xdg
 
@@ -13,6 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+colord +cups debug elogind input_devices_wacom modemmanager networkmanager smartcard systemd test +udev wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	^^ ( elogind systemd )
 	input_devices_wacom? ( udev )
