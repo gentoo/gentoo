@@ -4,11 +4,11 @@ DESCRIPTION=Gnome Partition Editor
 EAPI=6
 HOMEPAGE=https://gparted.org/
 IUSE=btrfs cryptsetup dmraid f2fs fat hfs jfs kde mdadm ntfs policykit reiserfs reiser4 udf wayland xfs test
-KEYWORDS=amd64 ~arm ppc ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
 LICENSE=GPL-2+ FDL-1.2+
 RDEPEND=!policykit? ( kde? ( >=kde-plasma/kde-cli-tools-5.8.6-r1[kdesu] ) ) policykit? ( >=sys-auth/polkit-0.102 ) >=dev-cpp/glibmm-2.56.1:2 >=dev-cpp/gtkmm-3.24:3.0 >=dev-libs/glib-2.58.3-r1:2 >=sys-block/parted-3.2:= >=dev-libs/libsigc++-2.10.1:2 >=sys-apps/util-linux-2.33.2 >=sys-fs/e2fsprogs-1.44.5 btrfs? ( sys-fs/btrfs-progs ) cryptsetup? ( sys-fs/cryptsetup ) dmraid? ( >=sys-fs/lvm2-2.02.116 sys-fs/dmraid sys-fs/multipath-tools ) f2fs? ( sys-fs/f2fs-tools ) fat? ( sys-fs/dosfstools sys-fs/mtools ) hfs? ( sys-fs/diskdev_cmds virtual/udev sys-fs/hfsutils ) jfs? ( sys-fs/jfsutils ) mdadm? ( sys-fs/mdadm ) ntfs? ( >=sys-fs/ntfs3g-2016.2.22-r2[ntfsprogs] ) reiserfs? ( sys-fs/reiserfsprogs ) reiser4? ( sys-fs/reiser4progs ) udf? ( sys-fs/udftools ) wayland? ( x11-apps/xhost ) xfs? ( sys-fs/xfsprogs sys-fs/xfsdump )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/gparted/gparted-1.1.0.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	5e9aaae6eb511a4c4d9964fe8259110d	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1e00d2834cc3623c81ddece4db3d9346
+_md5_=bb0c35c05f8543ee2eb06e235b53acb8
