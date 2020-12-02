@@ -2307,9 +2307,6 @@ dev-ml/lablgtk:sourceview - Enable GtkSourceView support
 dev-ml/logs:cli - Enables the Logs_cli library that provides command line support for controlling Logs.
 dev-ml/logs:fmt - Enables the Logs_fmt reporter.
 dev-ml/logs:lwt - Enables the Logs_lwt library that provides Lwt logging functions.
-dev-ml/lwt:camlp4 - Enable camlp4 syntax extension
-dev-ml/lwt:libev - Enable the dev-libs/libev-based backend.
-dev-ml/lwt:ppx - Enables the ppx syntax extension
 dev-ml/ocaml-cohttp:async - Enables support for the dev-ml/async asynchronous execution library.
 dev-ml/ocaml-cohttp:lwt - Enables support for the dev-ml/lwt cooperative light-weight thread library.
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
