@@ -23,15 +23,17 @@ IUSE=""
 
 RDEPEND="sys-libs/gdbm:0="
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/quilt"
 
 S="${WORKDIR}/Sjeng-Free-${MY_PV}"
+
+PATCHES=(
+	"${WORKDIR}/sjeng_${MY_DEB_PV}.diff"
+	"${S}/debian/patches"
+)
 
 src_prepare() {
 	default
 
-	eapply "${WORKDIR}/sjeng_${MY_DEB_PV}.diff"
-	QUILT_PATCHES="debian/patches" QUILT_SERIES="debian/patches/series" quilt push -a || die
 	hprefixify book.c rcfile.c
 
 	# Files generated with ancient autotools, regenerate to respect CC.
