@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
+
 inherit distutils-r1
 
 DESCRIPTION="Collection of cache libraries in the same API interface. Extracted from werkzeug"
