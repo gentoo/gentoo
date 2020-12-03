@@ -4,7 +4,7 @@
 EAPI=7
 LUA_COMPAT=( lua5-2 lua5-3 )
 
-inherit lua-single git-r3 eutils
+inherit lua-single git-r3 optfeature
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
