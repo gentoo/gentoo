@@ -11612,7 +11612,7 @@ games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.16.40.02 1.16.100.04: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.40.02 1.16.101.01: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
@@ -18044,7 +18044,7 @@ www-servers/servefile 0.4.4_p20200211 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.106 7.0.107 8.5.59 8.5.60 9.0.38-r1 9.0.40: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
+www-servers/tomcat 7.0.106 7.0.107 8.5.59 8.5.60 9.0.40: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 4.5.3 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
