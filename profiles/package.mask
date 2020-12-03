@@ -893,14 +893,6 @@ app-admin/amazon-ec2-init
 # compression'.
 >=dev-util/xdelta-3.1.0
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2016-04-03)
-# Can exhaust all available memory depending on task
-# but is made available for experts who heed this warning
-# as newer versions produce different output. Contact
-# the proxied maintainer Matthew Brewer <tomboy64@sina.cn>
-# for questions.
-<=media-gfx/slic3r-1.1.9999
-
 # Robin H. Johnson <robbat2@gentoo.org> (2014-08-04)
 # Masked for testing, presently fails upstream testsuite:
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
