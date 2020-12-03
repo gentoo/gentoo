@@ -116,6 +116,7 @@ media-libs/mesa lm-sensors unwind
 media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
 media-libs/fontconfig doc
+net-irc/irssi socks5
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-libs/libpcap rdma
