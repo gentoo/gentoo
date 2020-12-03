@@ -1,14 +1,14 @@
 DEFINED_PHASES=install test
-DEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) virtual/pkgconfig test? ( dev-lua/busted )
+DEPEND=!luajit? ( >=dev-lang/lua-5.1:0= ) luajit? ( dev-lang/luajit:2 ) virtual/pkgconfig test? ( dev-lua/busted )
 DESCRIPTION=Lua String Hashing/Indexing Library
 EAPI=6
 HOMEPAGE=http://olivinelabs.com/busted/
 IUSE=luajit test
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=MIT
-RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
+RDEPEND=!luajit? ( >=dev-lang/lua-5.1:0= ) luajit? ( dev-lang/luajit:2 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/say/archive/v1.3-1.tar.gz -> say-1.3_p1.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=92bc52d2114f49b8e946aa24bc9d4d48
+_md5_=ef9fb660579b0f4c38ac25b4f1dfdd62
