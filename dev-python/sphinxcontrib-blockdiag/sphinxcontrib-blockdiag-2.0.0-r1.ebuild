@@ -28,9 +28,6 @@ BDEPEND="
 
 distutils_enable_tests nose
 
-RDEPEND+="
-	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]"
-
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
 	# Those tests are known-broken upstream
