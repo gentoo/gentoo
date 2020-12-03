@@ -6,7 +6,7 @@ EAPI=7
 MY_PTV=0.4
 LUA_COMPAT=( lua5-2 lua5-3 )
 
-inherit lua-single eutils
+inherit lua-single optfeature
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
