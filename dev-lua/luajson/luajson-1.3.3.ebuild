@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="test"
 
-RDEPEND="|| ( >=dev-lang/lua-5.1 dev-lang/luajit:2 )
+RDEPEND="|| ( >=dev-lang/lua-5.1:0 dev-lang/luajit:2 )
 	dev-lua/lpeg"
 DEPEND="test? ( dev-lua/luafilesystem )"
 
