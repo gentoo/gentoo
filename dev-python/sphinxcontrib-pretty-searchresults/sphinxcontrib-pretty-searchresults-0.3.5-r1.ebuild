@@ -29,7 +29,6 @@ BDEPEND="
 "
 DEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
-	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
