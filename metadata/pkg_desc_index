@@ -548,7 +548,7 @@ app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration f
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
-app-admin/bitwarden-desktop-bin 1.22.2 1.23.0: Bitwarden password manager desktop client
+app-admin/bitwarden-desktop-bin 1.22.2 1.23.0 1.23.1: Bitwarden password manager desktop client
 app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
@@ -7839,7 +7839,7 @@ dev-php/zetacomponents-Base 1.9.1: Base package for any Zeta component
 dev-php/zetacomponents-ConsoleTools 1.7.2: A set of classes to do different actions with the console
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.8.0-r2 2.8.1: Collection of tools for internationalizing Python applications
+dev-python/Babel 2.8.0-r2 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/GitPython 3.1.11: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
@@ -7925,6 +7925,7 @@ dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
 dev-python/backports-os 0.1.1: Backport of new features in Python's os module
 dev-python/backports-tempfile 1.0: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1: Backport of new features in Python's weakref module
+dev-python/backports-zoneinfo 0.2.1: Backport of the standard library zoneinfo module
 dev-python/bandit 1.6.2-r1: A security linter from OpenStack Security
 dev-python/bareos 19.2.8: python bindings for bareos network backup suite
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
