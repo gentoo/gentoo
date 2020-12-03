@@ -9,6 +9,7 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="gitlab">latex-rubber/rubber</remote-id>
 	</upstream>
