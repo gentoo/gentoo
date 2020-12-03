@@ -150,7 +150,10 @@ BDEPEND="virtual/pkgconfig"
 
 PHP_MV="$(ver_cut 1)"
 
-PATCHES=( "${FILESDIR}/php-iodbc-header-location.patch" )
+PATCHES=(
+	"${FILESDIR}"/php-iodbc-header-location.patch
+	"${FILESDIR}"/${P}-issue80368.patch
+)
 
 php_install_ini() {
 	local phpsapi="${1}"
