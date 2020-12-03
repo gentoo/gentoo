@@ -10490,7 +10490,7 @@ dev-tex/pgf 3.1.4b-r2 3.1.5b: The TeX Portable Graphic Format
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pythontex 0.17: Fast Access to Python from within LaTeX
 dev-tex/rail 1.2_p1-r1: Offers syntax/railroad diagrams
-dev-tex/rubber 1.5.1: A LaTeX wrapper for automatically building documents
+dev-tex/rubber 1.5.1 1.6.0_alpha1: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
@@ -17992,7 +17992,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.4.2066.86_p1 3.4.2066.106_p1: A browser for our friends
-www-client/vivaldi-snapshot 3.5.2115.4 3.5.2115.31: A browser for our friends
+www-client/vivaldi-snapshot 3.5.2115.31 3.5.2115.54: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
