@@ -20,7 +20,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd6
 
 RDEPEND="
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
-	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-serializinghtml[${PYTHON_USEDEP}]"
 # avoid circular dependency with sphinx
 PDEPEND="
