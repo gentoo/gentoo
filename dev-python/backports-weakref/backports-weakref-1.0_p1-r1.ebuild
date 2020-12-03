@@ -12,17 +12,14 @@ MY_P=${MY_PN}-${PV/_p/.post}
 DESCRIPTION="Backport of new features in Python's weakref module"
 HOMEPAGE="https://github.com/PiDelport/backports.weakref https://pypi.org/project/backports.weakref/"
 SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2.3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
-RDEPEND="dev-python/backports[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
 # Tests require backports.test.support
 RESTRICT="test"
-S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	sed -e "s|'setuptools_scm'||" \
@@ -36,7 +33,7 @@ python_test() {
 }
 
 python_install() {
-	# avoid a collision with dev-python/backports
+	# avoid collisions due to namespace
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
 	distutils-r1_python_install --skip-build
 }
