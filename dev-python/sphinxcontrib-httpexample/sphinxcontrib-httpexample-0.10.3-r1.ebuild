@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/astunparse[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
-	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-httpdomain[${PYTHON_USEDEP}]
 "
