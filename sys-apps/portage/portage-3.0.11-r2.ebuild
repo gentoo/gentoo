@@ -83,10 +83,12 @@ prefix_src_archives() {
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
 	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
-	https://github.com/gentoo/portage/commit/07a604537e746814613dc171a5c09072ef0266af.patch -> portage-3.0.11-bug-754903-pdepend.patch"
+	https://github.com/gentoo/portage/commit/07a604537e746814613dc171a5c09072ef0266af.patch -> portage-3.0.11-bug-754903-pdepend.patch
+	https://github.com/gentoo/portage/commit/ff270ae58eca457a1e2bbf9507d8438123082ca0.patch -> portage-3.0.11-bug-757741-AttributeError.patch"
 
 PATCHES=(
 	"${DISTDIR}/portage-3.0.11-bug-754903-pdepend.patch"
+	"${DISTDIR}/portage-3.0.11-bug-757741-AttributeError.patch"
 )
 
 pkg_pretend() {
