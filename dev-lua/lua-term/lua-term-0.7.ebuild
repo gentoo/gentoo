@@ -20,7 +20,7 @@ KEYWORDS="~amd64 arm arm64 ppc ppc64 x86"
 IUSE=""
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND=">=dev-lang/lua-5.1:="
+RDEPEND=">=dev-lang/lua-5.1:0="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
