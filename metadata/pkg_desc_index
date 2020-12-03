@@ -8355,7 +8355,7 @@ dev-python/kaitaistruct 0.8 0.9: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
-dev-python/keep 2.9 2.10: Personal shell command keeper and snippets manager
+dev-python/keep 2.10: Personal shell command keeper and snippets manager
 dev-python/keyring 21.4.0 21.5.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
