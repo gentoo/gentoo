@@ -93,6 +93,9 @@ src_prepare() {
 	# Fix python tests when building out of tree #565576
 	eapply "${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
 
+	# bug #745162
+	eapply "${FILESDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
 		sed -i -e '/PYTHON_LIBS/s/ldflags/libs/' configure.ac || die
