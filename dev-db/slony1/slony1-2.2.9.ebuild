@@ -11,11 +11,11 @@ inherit postgres-multi
 IUSE="doc perl"
 
 DESCRIPTION="A replication system for the PostgreSQL Database Management System"
-HOMEPAGE="http://slony.info/"
+HOMEPAGE="https://slony.info/"
 
 MAJ_PV=$(ver_cut 1-2)
-SRC_URI="https://www.slony.info/downloads/${MAJ_PV}/source/${P}.tar.bz2
-	doc? ( https://www.slony.info/downloads/${MAJ_PV}/source/${P}-docs.tar.bz2 )
+SRC_URI="https://slony.info/downloads/${MAJ_PV}/source/${P}.tar.bz2
+	doc? ( https://slony.info/downloads/${MAJ_PV}/source/${P}-docs.tar.bz2 )
 "
 
 LICENSE="BSD GPL-2"
