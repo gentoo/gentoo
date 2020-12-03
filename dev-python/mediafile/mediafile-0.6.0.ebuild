@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit distutils-r1
 
 DESCRIPTION="Read and write audio files' tags in Python"
@@ -26,6 +27,10 @@ DEPEND="
 	>=media-libs/mutagen-1.33.0[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-wavpacktest-fix.patch"
+)
 
 python_compile_all() {
 	if use doc; then

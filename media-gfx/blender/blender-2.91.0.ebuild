@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 \
 	toolchain-funcs xdg-utils
@@ -42,11 +42,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
+	dev-libs/gmp
+	dev-libs/pugixml
 	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
+	media-gfx/potrace
+	media-libs/fontconfig:=
 	media-libs/freetype:=
 	media-libs/glew:*
 	media-libs/libpng:=
@@ -60,6 +64,7 @@ RDEPEND="${PYTHON_DEPS}
 	collada? ( >=media-libs/opencollada-1.6.68 )
 	color-management? ( media-libs/opencolorio )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
+	cycles? ( media-libs/freeglut )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0= )
 	!headless? (

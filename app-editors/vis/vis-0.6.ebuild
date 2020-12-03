@@ -4,6 +4,9 @@
 EAPI=7
 
 MY_PTV=0.4
+LUA_COMPAT=( lua5-2 lua5-3 )
+
+inherit lua-single optfeature
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
@@ -12,14 +15,13 @@ SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+ncurses selinux test tre"
+IUSE="+ncurses +lua selinux test tre"
 RESTRICT="!test? ( test )"
 
 # - Known to also work with NetBSD curses
-# - ::lua package done for using >=dev-lang/lua-5.2
-# which is needed for syntax highlighting and settings but masked in ::gentoo
 DEPEND="dev-libs/libtermkey
 	ncurses? ( sys-libs/ncurses:0= )
+	lua? ( ${LUA_DEPS} )
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
@@ -44,6 +46,7 @@ src_configure() {
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		$(use_enable lua) \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
 		$(use_enable tre) || die
@@ -60,4 +63,5 @@ pkg_postrm() {
 
 pkg_postinst() {
 	update_symlinks
+	optfeature "syntax highlighting support" dev-lua/lpeg
 }

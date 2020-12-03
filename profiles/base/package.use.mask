@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2020-12-03)
+# Doc building seem to be very random without any predictability, 
+# bug #734104
+media-gfx/blender doc
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-30)
 # Vendored therecipe/qt violates network sandbox + uses external binary
@@ -30,6 +34,10 @@ kde-apps/kipi-plugins vkontakte
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-06)
 # waiting for lua to be slotted
 media-gfx/exact-image lua
+
+# Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2020-11-03)
+# Requires >=dev-lang/lua-5.2, which is still masked.
+app-editors/vis lua
 
 # Marek Szuba <marecki@gentoo.org> (2020-10-12)
 # Requires slotted Lua, which is still masked.
