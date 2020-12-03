@@ -2108,7 +2108,7 @@ app-eselect/eselect-vi 1.2: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
-app-forensics/afflib 3.7.18: Library that implements the AFF image standard
+app-forensics/afflib 3.7.18 3.7.19: Library that implements the AFF image standard
 app-forensics/afl 2.56b 2.57b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
@@ -16975,7 +16975,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 246-r2 246.6 247_rc2 9999: System and service manager for Linux
+sys-apps/systemd 246-r2 246.6 247_rc2 247.1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-tmpfiles 246: Creates, deletes and cleans up volatile and temporary files and directories
 sys-apps/sysvinit 2.93 2.96 2.97 2.98: /sbin/init - parent of all processes
@@ -18021,7 +18021,7 @@ www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 2.4.456 2.5.207: A PDF reader in JavaScript
 www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.4.46 2.4.46-r1 2.4.46-r3: The Apache Web Server
+www-servers/apache 2.4.46 2.4.46-r1 2.4.46-r4: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0 2.2.1: Fast, cross-platform HTTP/2 web server with automatic HTTPS
@@ -18624,7 +18624,7 @@ x11-plugins/gkwebmon 0.2-r2: A web monitor plugin for GKrellM2
 x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for pidgin
 x11-plugins/hexchat-javascript 0.3.1 0.3.2: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5-r2: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
-x11-plugins/lurch 0.6.8: OMEMO encryption for libpurple (XEP-0384)
+x11-plugins/lurch 0.6.8 0.6.8-r1: OMEMO encryption for libpurple (XEP-0384)
 x11-plugins/pidgin-birthday-reminder 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
 x11-plugins/pidgin-encryption 3.1-r1: Pidgin IM Encryption PlugIn
