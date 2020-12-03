@@ -17,7 +17,7 @@ RESTRICT="test" # Requires same version to be installed or busted will fail.
 
 RDEPEND="
 	>=dev-lua/say-1.3_p1[luajit(-)=]
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 	luajit? ( dev-lang/luajit:2 )
 "
 

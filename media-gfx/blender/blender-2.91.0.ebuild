@@ -308,6 +308,15 @@ pkg_postinst() {
 	ewarn "If you are concerned about security, file a bug upstream:"
 	ewarn "  https://developer.blender.org/"
 	ewarn
+
+	if use python_single_target_python3_8; then
+		elog "You've enabled python-3.8 support for blender, which is still experimental."
+		elog "If you experience breakages with e.g. plugins, please switch to"
+		elog "python_single_target_python3_7 instead."
+		elog "Bug: https://bugs.gentoo.org/737388"
+		elog
+	fi
+
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update

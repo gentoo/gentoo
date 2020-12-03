@@ -24,6 +24,10 @@ DEPEND="dev-libs/libtermkey
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	sed -i 's|STRIP?=.*|STRIP=true|' Makefile || die
 	sed -i 's|${DOCPREFIX}/vis|${DOCPREFIX}|' Makefile || die
