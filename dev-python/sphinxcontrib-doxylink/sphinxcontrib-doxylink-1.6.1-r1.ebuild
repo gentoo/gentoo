@@ -16,11 +16,9 @@ KEYWORDS="amd64 ~arm arm64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/sphinx-1.0[${PYTHON_USEDEP}]
-	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 python_install_all() {
 	distutils-r1_python_install_all
