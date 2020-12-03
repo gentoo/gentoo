@@ -5,15 +5,15 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} luajit )
 
-inherit cmake desktop git-r3 lua-single pax-utils
+inherit cmake desktop lua-single pax-utils
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
-EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
+SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="dbus doc gnome test"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
@@ -74,7 +74,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DCOMPRESS_MANPAGES=OFF
-		-DWITH_DBUS=$(usex dbus ON OFF)
+		-DWITH_DBUS=$(usex dbus)
 		-DGENERATE_DOC=$(usex doc)
 		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 		-DLUA_INCLUDE_DIR="$(lua_get_include_dir)"
