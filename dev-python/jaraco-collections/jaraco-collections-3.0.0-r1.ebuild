@@ -20,7 +20,6 @@ RESTRICT="!test? ( test )"
 # TODO: remove six when the following PR is merged:
 # https://github.com/jaraco/jaraco.collections/pull/5
 RDEPEND="
-	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]
 	dev-python/jaraco-text[${PYTHON_USEDEP}]
 	>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
