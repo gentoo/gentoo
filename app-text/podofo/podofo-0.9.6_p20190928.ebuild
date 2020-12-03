@@ -15,7 +15,7 @@ IUSE="+boost idn libressl debug test +tools"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tools )"
 
-RDEPEND="dev-lang/lua:=
+RDEPEND="dev-lang/lua:0=
 	idn? ( net-dns/libidn:= )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
