@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -16,23 +16,30 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
-	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
+	>=dev-python/six-1.4[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
+	test? (
+		${RDEPEND}
+		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_sphinx docs '>=dev-python/rst-linker-1.9'
-distutils_enable_tests pytest
 
 python_test() {
+	# Skip one test which requires network access
 	# Override pytest options to skip flake8
-	pytest -vv --override-ini="addopts=--doctest-modules" \
+	PYTHONPATH=. pytest -vv -k "not test_revived_distribution" \
+		--override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
