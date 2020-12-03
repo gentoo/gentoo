@@ -32,5 +32,10 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -i -e "/import pip/s/^/#/" -e "/pip.__version__/,+3 s/^/#/" setup.py || die
+
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	py.test -vv || die
 }
