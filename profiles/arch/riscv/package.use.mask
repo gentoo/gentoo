@@ -123,6 +123,7 @@ net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage apidoc
 sys-apps/rng-tools nistbeacon pkcs11
+sys-apps/systemd policykit
 sys-auth/pambase gnome-keyring pam_krb5 pam_ssh  mktemp
 sys-block/thin-provisioning-tools test
 sys-devel/automake test
