@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:=
+	>=dev-lang/lua-5.1:0=
 	>=dev-lua/lua_cliargs-3.0
 	>=dev-lua/luafilesystem-1.5.0
 	>=dev-lua/luasystem-0.2.0
