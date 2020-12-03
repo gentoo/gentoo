@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 BDEPEND="test? ( dev-python/zope-testing[${PYTHON_USEDEP}] )"
-RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
+RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/zope-exceptions[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
