@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A tiny LRU cache implementation and decorator"
 HOMEPAGE="http://www.repoze.org"
-SRC_URI="https://github.com/repoze/repoze.lru/archive/${PV}.tar.gz -> ${PN}-${PVR}.tar.gz"
+SRC_URI="https://github.com/repoze/repoze.lru/archive/${PV}.tar.gz -> ${P}-r1.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="repoze"
