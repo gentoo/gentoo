@@ -17849,7 +17849,7 @@ virtual/ssh 0: Virtual for SSH client and server
 virtual/szip 2.1: Virtual for szip compression drop-in replacements
 virtual/tex-base 0: Virtual for basic TeX binaries (tex, kpathsea)
 virtual/texi2dvi 0-r2: Virtual for texi2dvi (and texi2pdf)
-virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
+virtual/tmpfiles 0-r1: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 217-r2: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
