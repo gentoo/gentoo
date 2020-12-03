@@ -85,7 +85,7 @@ COMMON_DEPEND="
 	)
 	virtual/acl
 	sys-libs/libcap
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	>=app-shells/bash-completion-2.0
 	>=dev-libs/yajl-2.0.4
 	gtk? (
