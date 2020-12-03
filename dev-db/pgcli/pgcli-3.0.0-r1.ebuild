@@ -16,26 +16,23 @@ SLOT="0"
 KEYWORDS="~amd64 x86"
 
 RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/cli_helpers[${PYTHON_USEDEP}]
+	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/humanize[${PYTHON_USEDEP}]
+	dev-python/pgspecial[${PYTHON_USEDEP}]
 	>=dev-python/prompt_toolkit-3.0.0[${PYTHON_USEDEP}]
-	<dev-python/prompt_toolkit-4.0.0[${PYTHON_USEDEP}]
-	>=dev-python/psycopg-2.8.0[${PYTHON_USEDEP}]
-	>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
-	<dev-python/sqlparse-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/cli_helpers-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/click-4.1[${PYTHON_USEDEP}]
-	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
-	>=dev-python/humanize-0.5.1[${PYTHON_USEDEP}]
-	>=dev-python/pgspecial-1.11.8[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
-	>=dev-python/setproctitle-1.1.9[${PYTHON_USEDEP}]
-"
+	dev-python/psycopg[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
+	dev-python/setproctitle[${PYTHON_USEDEP}]
+	dev-python/sqlparse[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-
 BDEPEND="
 	test? (
 		dev-db/postgresql
 		dev-python/mock[${PYTHON_USEDEP}]
-	)
-"
+	)"
+
+PATCHES=( "${FILESDIR}"/${P}-sqlparse.patch )
 
 distutils_enable_tests pytest
