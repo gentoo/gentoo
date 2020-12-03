@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit cron python-any-r1 toolchain-funcs
 
@@ -65,26 +65,36 @@ src_install() {
 
 pkg_config() {
 	cd "${EROOT}"/var/lib/supervise/bcron || die
-	[[ -e run ]] && ( cp run bcron-sched.run.`date +%Y%m%d%H%M%S` || die )
+	if [[ -e run ]] ; then
+		cp run bcron-sched.run.`date +%Y%m%d%H%M%S` || die
+	fi
 	cp bcron-sched.run run || die
 	chmod u+x run || die
 
 	cd "${EROOT}"/var/lib/supervise/bcron/log || die
-	[[ -e run ]] && ( cp run bcron-sched-log.run.`date +%Y%m%d%H%M%S` || die )
+	if [[ -e run ]] ; then
+		cp run bcron-sched-log.run.`date +%Y%m%d%H%M%S` || die
+	fi
 	cp bcron-sched-log.run run || die
 	chmod u+x run || die
 
 	cd "${EROOT}"/var/lib/supervise/bcron-spool || die
-	[[ -e run ]] && ( cp run bcron-spool.run.`date +%Y%m%d%H%M%S` || die )
+	if [[ -e run ]] ; then
+		 cp run bcron-spool.run.`date +%Y%m%d%H%M%S` || die
+	fi
 	cp bcron-spool.run run || die
 	chmod u+x run || die
 
 	cd "${EROOT}"/var/lib/supervise/bcron-update || die
-	[[ -e run ]] && ( cp run bcron-update.run.`date +%Y%m%d%H%M%S` || die )
+	if [[ -e run ]] ; then
+		cp run bcron-update.run.`date +%Y%m%d%H%M%S` || die
+	fi
 	cp bcron-update.run run || die
 	chmod u+x run || die
 
-	[[ ! -e "${EROOT}"/var/spool/cron/trigger ]] && ( mkfifo "${EROOT}"/var/spool/cron/trigger || die )
+	if [[ ! -e "${EROOT}"/var/spool/cron/trigger ]] ; then
+		mkfifo "${EROOT}"/var/spool/cron/trigger || die
+	fi
 	chown cron:cron "${EROOT}"/var/spool/cron/trigger || die
 	chmod go-rwx "${EROOT}"/var/spool/cron/trigger || die
 }
