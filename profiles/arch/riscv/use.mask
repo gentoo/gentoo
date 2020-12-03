@@ -20,7 +20,6 @@ valgrind
 
 # Not tested yet
 bluetooth
-dbus
 elogind
 emacs
 fontconfig
@@ -43,7 +42,6 @@ ruby
 slang
 sound
 systemtap
-X
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.
