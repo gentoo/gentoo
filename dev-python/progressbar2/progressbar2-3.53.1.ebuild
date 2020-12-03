@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 CDEPEND="!dev-python/progressbar[${PYTHON_USEDEP}]
 	dev-python/python-utils[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}"
-BDEPEND="${CDEPEND}"
+BDEPEND="${CDEPEND}
+	test? ( dev-python/freezegun[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
