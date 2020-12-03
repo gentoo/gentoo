@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+LUA_COMPAT=( lua5-{1..4} luajit )
+
+inherit lua toolchain-funcs
 
 DESCRIPTION="Bindings for POSIX APIs"
 HOMEPAGE="https://luaposix.github.io/luaposix/ https://github.com/luaposix/luaposix"
@@ -12,32 +14,57 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-DEPEND="dev-lang/lua:0="
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
+# Requires specl, which is not in the tree yet
+RESTRICT="test"
+
+DEPEND="${LUA_DEPS}"
 RDEPEND="${DEPEND}
-	dev-lua/lua-bit32"
+	lua_targets_lua5-1? ( dev-lua/lua-bit32[lua_targets_lua5-1(-)] )
+	lua_targets_luajit? ( dev-lua/lua-bit32[lua_targets_luajit(-)] )"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
+
 	# Temporary fix for respect LDFLAGS (#739050)
 	# Fixed in luke 0.2.1
 	sed -i -e "s:c_module,libdirs:c_module,'\$LDFLAGS',libdirs:g" \
 		build-aux/luke || die
+
+	lua_copy_sources
+}
+
+lua_src_compile() {
+	pushd "${BUILD_DIR}" || die
+
+	./build-aux/luke package="${PN}" version="${PV}" \
+		PREFIX="${ED}/usr" \
+		INST_LIBDIR="${ED}/$(lua_get_cmod_dir)" \
+		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
+		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die
+
+	popd
 }
 
 src_compile() {
-	./build-aux/luke package="${PN}" version="${PV}" \
+	lua_foreach_impl lua_src_compile
+}
+
+lua_src_install() {
+	pushd "${BUILD_DIR}" || die
+
+	./build-aux/luke install \
 		PREFIX="${ED}/usr" \
-		INST_LIBDIR="${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)" \
-		INST_LUADIR="${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)" \
-		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die
+		INST_LIBDIR="${ED}/$(lua_get_cmod_dir)" \
+		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
+		|| die
+
+	popd
 }
 
 src_install() {
-	./build-aux/luke install \
-		PREFIX="${ED}/usr" \
-		INST_LIBDIR="${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)" \
-		INST_LUADIR="${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)" \
-		|| die
+	lua_foreach_impl lua_src_install
 	dodoc -r doc NEWS.md README.md
 }
