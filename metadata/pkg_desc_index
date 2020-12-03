@@ -639,7 +639,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.0.20 4.2.3 4.2.6 4.2.8 4.2.10 100.2.0: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.0.20 4.2.3 4.2.6 4.2.8 4.2.10 4.2.11 100.2.0 100.2.1: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3 5.26.0 5.27.0 5.27.1: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
@@ -2060,7 +2060,7 @@ app-emulation/winetricks 20200412 99999999: Easy way to install DLLs needed to w
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.13.2-r1 4.13.2-r2 4.14.0-r6: The Xen virtual machine monitor
+app-emulation/xen 4.13.2-r2 4.14.0-r6: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.13.2 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.13.2-r1 4.14.0-r4: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
@@ -3501,7 +3501,7 @@ dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.2.35 10.2.36 10.3.23-r3 10.3.25 10.3.26 10.3.27 10.4.13-r3 10.4.15 10.4.16 10.4.17 10.5.6 10.5.7 10.5.8: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.11 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
-dev-db/mongodb 3.6.13 3.6.17 4.0.19 4.0.20 4.2.8 4.2.10 4.4.1: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.6.13 3.6.17 4.0.19 4.0.20 4.2.8 4.2.10 4.2.11 4.4.1 4.4.2: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.20.1 1.21.1-r1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
@@ -15893,7 +15893,7 @@ sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed informati
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.4 2020.9999 2021_beta2 2021.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.4 2020.9999 2021_beta3 2021.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.1 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
@@ -18446,7 +18446,7 @@ x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.8 2.0.8.1 2.0.9: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.101 2.0.0 2.0.1 2.1.0: Qt GUI Screenshot Utility
-x11-misc/sct 0.4 0.5: Set color temperature of the screen
+x11-misc/sct 0.5 0.5-r1: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.18.1-r3: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
