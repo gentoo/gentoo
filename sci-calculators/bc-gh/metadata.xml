@@ -12,7 +12,7 @@
 	<upstream>
 		<maintainer>
 			<name>Gavin D. Howard</name>
-			<email>yzena.tech@gmail.com</email>
+			<email>gavin@yzena.com</email>
 		</maintainer>
 		<bugs-to>https://github.com/gavinhoward/bc</bugs-to>
 		<doc>https://github.com/gavinhoward/bc/tree/master/manuals</doc>
