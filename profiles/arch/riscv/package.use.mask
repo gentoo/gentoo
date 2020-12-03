@@ -110,6 +110,7 @@ dev-vcs/mercurial tk rust zsh-completion
 media-libs/freetype harfbuzz png
 media-libs/harfbuzz doc
 sys-libs/libomp hwloc
+sys-libs/libcxx libcxxabi libunwind static-libs
 sys-libs/libcxxabi libunwind
 media-gfx/graphviz devil svg pdf
 media-libs/mesa lm-sensors unwind
