@@ -38,6 +38,7 @@ lua
 motif
 opencl
 qt5
+rsh
 ruby
 slang
 sound
