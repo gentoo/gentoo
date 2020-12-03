@@ -13,8 +13,8 @@ if [[ ${PV} == "9999" ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
 	EGIT_REPO_URI="https://gitlab.com/latex-rubber/${PN}.git"
 else
 	UPSTREAM_PV=$(ver_rs 3 -)
-	S="${WORKDIR}/${PN}-${UPSTREAM_PV}"
 	SRC_URI="https://gitlab.com/latex-rubber/${PN}/-/archive/${UPSTREAM_PV}/${PN}-${UPSTREAM_PV}.tar.bz2"
+	S="${WORKDIR}/${PN}-${UPSTREAM_PV}"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
@@ -23,7 +23,6 @@ HOMEPAGE="https://gitlab.com/latex-rubber/rubber"
 
 LICENSE="GPL-3+"
 SLOT="0"
-
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -37,30 +36,20 @@ BDEPEND="
 	${RDEPEND}
 	virtual/texi2dvi
 	test? (
+		app-text/ghostscript-gpl
 		app-text/texlive-core
+		dev-tex/biber
+		dev-tex/biblatex
+		dev-tex/glossaries
+		dev-tex/latex-beamer
+		$(python_gen_cond_dep 'dev-tex/pythontex[${PYTHON_USEDEP}]')
 		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-pstricks
 		media-gfx/asymptote
-		dev-tex/pythontex
 	)
 "
-src_install() {
-	insinto /usr/share/zsh/site-functions
-	newins misc/zsh-completion _rubber
 
-	distutils-r1_src_install
-}
-
-python_install() {
-	local my_install_args=(
-		--mandir="${EPREFIX}/usr/share/man"
-		--infodir="${EPREFIX}/usr/share/info"
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-	)
-
-	distutils-r1_python_install "${my_install_args[@]}"
-}
-
-src_test() {
+python_test() {
 	cd tests || die
 
 	# Disable the broken 'combine' test as it uses the 'combine' as a
@@ -93,5 +82,22 @@ src_test() {
 	# ERROR:mpost:I can't read MetaPost's log file, this is wrong.
 	touch metapost-input/disable || die
 
-	./run.sh * || die
+	./run.sh * || die "Tests failed with ${EPYTHON}"
+}
+
+python_install() {
+	local my_install_args=(
+		--mandir="${EPREFIX}/usr/share/man"
+		--infodir="${EPREFIX}/usr/share/info"
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+	)
+
+	distutils-r1_python_install "${my_install_args[@]}"
+}
+
+src_install() {
+	insinto /usr/share/zsh/site-functions
+	newins misc/zsh-completion _rubber
+
+	distutils-r1_src_install
 }
