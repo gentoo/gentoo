@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-lang/lua-5.1:="
+DEPEND=">=dev-lang/lua-5.1:0="
 
 RDEPEND="
 	dev-lua/luafilesystem
