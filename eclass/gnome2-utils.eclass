@@ -16,8 +16,9 @@
 
 [[ ${EAPI} == 5 ]] && inherit multilib
 # eutils.eclass: emktemp
+# toolchain-funs.eclass: tc-is-cross-compiler
 # xdg-utils.eclass: xdg_environment_reset, xdg_icon_cache_update
-inherit eutils xdg-utils
+inherit eutils toolchain-funcs xdg-utils
 
 case ${EAPI} in
 	5|6|7) ;;
@@ -123,13 +124,21 @@ gnome2_gconf_savelist() {
 gnome2_gconf_install() {
 	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
-	if [[ ! -x "${updater}" ]]; then
-		debug-print "${updater} is not executable"
+	if [[ -z "${GNOME2_ECLASS_SCHEMAS}" ]]; then
+		debug-print "No GNOME 2 GConf schemas found"
 		return
 	fi
 
-	if [[ -z "${GNOME2_ECLASS_SCHEMAS}" ]]; then
-		debug-print "No GNOME 2 GConf schemas found"
+	if tc-is-cross-compiler ; then
+		ewarn "Updating of GNOME 2 GConf schemas skipped due to cross-compilation."
+		ewarn "You might want to run gconftool-2 manually on the target for"
+		ewarn "your final image and re-run it when packages installing"
+		ewarn "GNOME 2 GConf schemas get upgraded or added to the image."
+		return
+	fi
+
+	if [[ ! -x "${updater}" ]]; then
+		debug-print "${updater} is not executable"
 		return
 	fi
 
@@ -163,13 +172,20 @@ gnome2_gconf_install() {
 gnome2_gconf_uninstall() {
 	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
-	if [[ ! -x "${updater}" ]]; then
-		debug-print "${updater} is not executable"
+	if [[ -z "${GNOME2_ECLASS_SCHEMAS}" ]]; then
+		debug-print "No GNOME 2 GConf schemas found"
 		return
 	fi
 
-	if [[ -z "${GNOME2_ECLASS_SCHEMAS}" ]]; then
-		debug-print "No GNOME 2 GConf schemas found"
+	if tc-is-cross-compiler ; then
+		ewarn "Removal of GNOME 2 GConf schemas skipped due to cross-compilation."
+		ewarn "You might want to run gconftool-2 manually on the target for"
+		ewarn "your final image to uninstall this package's schemas."
+		return
+	fi
+
+	if [[ ! -x "${updater}" ]]; then
+		debug-print "${updater} is not executable"
 		return
 	fi
 
@@ -264,13 +280,21 @@ gnome2_scrollkeeper_savelist() {
 gnome2_scrollkeeper_update() {
 	local updater="${EROOT%/}${SCROLLKEEPER_UPDATE_BIN}"
 
-	if [[ ! -x "${updater}" ]] ; then
-		debug-print "${updater} is not executable"
+	if [[ -z "${GNOME2_ECLASS_SCROLLS}" ]]; then
+		debug-print "No scroll cache to update"
 		return
 	fi
 
-	if [[ -z "${GNOME2_ECLASS_SCROLLS}" ]]; then
-		debug-print "No scroll cache to update"
+	if tc-is-cross-compiler ; then
+		ewarn "Updating of scrollkeeper database skipped due to cross-compilation."
+		ewarn "You might want to run scrollkeeper-update manually on the target"
+		ewarn "for your final image and re-run it when packages installing"
+		ewarn "scrollkeeper OMF files get upgraded or added to the image."
+		return
+	fi
+
+	if [[ ! -x "${updater}" ]] ; then
+		debug-print "${updater} is not executable"
 		return
 	fi
 
@@ -297,6 +321,14 @@ gnome2_schemas_savelist() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_schemas_update() {
 	local updater="${EROOT%/}${GLIB_COMPILE_SCHEMAS}"
+
+	if tc-is-cross-compiler ; then
+		ewarn "Updating of GSettings schemas skipped due to cross-compilation."
+		ewarn "You might want to run glib-compile-schemas manually on the target"
+		ewarn "for your final image and re-run it when packages installing"
+		ewarn "GSettings schemas get upgraded or added to the image."
+		return
+	fi
 
 	if [[ ! -x ${updater} ]]; then
 		debug-print "${updater} is not executable"
@@ -325,18 +357,23 @@ gnome2_gdk_pixbuf_savelist() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_gdk_pixbuf_update() {
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
+	[[ -x ${updater} ]] || updater="${EROOT%/}/usr/bin/gdk-pixbuf-query-loaders"
 
-	if [[ ! -x ${updater} ]]; then
-		updater="${EROOT%/}/usr/bin/gdk-pixbuf-query-loaders"
+	if [[ -z ${GNOME2_ECLASS_GDK_PIXBUF_LOADERS} ]]; then
+		debug-print "gdk-pixbuf loader cache does not need an update"
+		return
+	fi
+
+	if tc-is-cross-compiler ; then
+		ewarn "Updating of gdk-pixbuf loader cache skipped due to cross-compilation."
+		ewarn "You might want to run gdk-pixbuf-query-loaders manually on the target"
+		ewarn "for your final image and re-run it when packages installing"
+		ewarn "gdk-pixbuf loaders get upgraded or added to the image."
+		return
 	fi
 
 	if [[ ! -x ${updater} ]]; then
 		debug-print "${updater} is not executable"
-		return
-	fi
-
-	if [[ -z ${GNOME2_ECLASS_GDK_PIXBUF_LOADERS} ]]; then
-		debug-print "gdk-pixbuf loader cache does not need an update"
 		return
 	fi
 
@@ -354,7 +391,12 @@ gnome2_gdk_pixbuf_update() {
 # Updates gtk2 immodules/gdk-pixbuf loaders listing.
 gnome2_query_immodules_gtk2() {
 	local updater=${EPREFIX}/usr/bin/${CHOST}-gtk-query-immodules-2.0
-	[[ ! -x ${updater} ]] && updater=${EPREFIX}/usr/bin/gtk-query-immodules-2.0
+	[[ -x ${updater} ]] || updater=${EPREFIX}/usr/bin/gtk-query-immodules-2.0
+
+	if [[ ! -x ${updater} ]]; then
+		debug-print "${updater} is not executable"
+		return
+	fi
 
 	ebegin "Updating gtk2 input method module cache"
 	GTK_IM_MODULE_FILE="${EROOT%/}/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache" \
@@ -367,7 +409,12 @@ gnome2_query_immodules_gtk2() {
 # Updates gtk3 immodules/gdk-pixbuf loaders listing.
 gnome2_query_immodules_gtk3() {
 	local updater=${EPREFIX}/usr/bin/${CHOST}-gtk-query-immodules-3.0
-	[[ ! -x ${updater} ]] && updater=${EPREFIX}/usr/bin/gtk-query-immodules-3.0
+	[[ -x ${updater} ]] || updater=${EPREFIX}/usr/bin/gtk-query-immodules-3.0
+
+	if [[ ! -x ${updater} ]]; then
+		debug-print "${updater} is not executable"
+		return
+	fi
 
 	ebegin "Updating gtk3 input method module cache"
 	GTK_IM_MODULE_FILE="${EROOT%/}/usr/$(get_libdir)/gtk-3.0/3.0.0/immodules.cache" \
@@ -381,9 +428,14 @@ gnome2_query_immodules_gtk3() {
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_giomodule_cache_update() {
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gio-querymodules"
+	[[ -x ${updater} ]] || updater="${EROOT%/}/usr/bin/gio-querymodules"
 
-	if [[ ! -x ${updater} ]]; then
-		updater="${EROOT%/}/usr/bin/gio-querymodules"
+	if tc-is-cross-compiler ; then
+		ewarn "Updating of GIO modules cache skipped due to cross-compilation."
+		ewarn "You might want to run gio-querymodules manually on the target for"
+		ewarn "your final image for performance reasons and re-run it when packages"
+		ewarn "installing GIO modules get upgraded or added to the image."
+		return
 	fi
 
 	if [[ ! -x ${updater} ]]; then
