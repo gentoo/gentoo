@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+luajit"
 
 RDEPEND="luajit? ( dev-lang/luajit:2 )
-	!luajit? ( dev-lang/lua:= )"
+	!luajit? ( dev-lang/lua:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
