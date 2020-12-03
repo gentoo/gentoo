@@ -16,7 +16,7 @@ IUSE="doc luajit test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:=
+	>=dev-lang/lua-5.1:0=
 	luajit? ( dev-lang/luajit:2 )"
 BDEPEND="
 	virtual/pkgconfig
