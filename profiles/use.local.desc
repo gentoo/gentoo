@@ -3918,7 +3918,6 @@ media-gfx/blender:color-management - Enable color management via media-libs/open
 media-gfx/blender:cuda - Build cycles renderer with nVidia CUDA support.
 media-gfx/blender:cycles - Build cycles renderer (requires media-libs/openimageio and dev-libs/boost).
 media-gfx/blender:dds - Adds DDS textures support to Blender.
-media-gfx/blender:doc - Build C and Python API documentation directly from the source code.
 media-gfx/blender:elbeem - Adds surface fluid simulation to Blender using El'Beem library.
 media-gfx/blender:headless - Build without graphical support (renderfarm, server mode only).
 media-gfx/blender:llvm - Enable features depending on llvm.
@@ -3933,7 +3932,6 @@ media-gfx/blender:standalone - Build the standalone version of Cycles.
 media-gfx/blender:system-numpy - Use the system numpy implementation rather than a local copy.
 media-gfx/blender:system-python - Use the system python implementation rather than a local copy.
 media-gfx/blender:tbb - Use threading building blocks library from dev-cpp/tbb.
-media-gfx/blender:test - Build the provided unit tests.
 media-gfx/blender:valgrind - Add support for memory debugging using dev-util/valgrind
 media-gfx/chafa:tools - Build command-line tools
 media-gfx/cura:usb - Access 3D printers via USB
