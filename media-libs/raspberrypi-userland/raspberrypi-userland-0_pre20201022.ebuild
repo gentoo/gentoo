@@ -17,7 +17,7 @@ else
 	# * Go to https://github.com/raspberrypi/userland/commits/master and find the full hash
 	GIT_COMMIT="e432bc3400401064e2d8affa5d1454aac2cf4a00"
 	SRC_URI="https://github.com/raspberrypi/userland/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~arm ~arm64"
+	KEYWORDS="arm ~arm64"
 	S="${WORKDIR}/userland-${GIT_COMMIT}"
 fi
 
