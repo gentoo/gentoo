@@ -14,10 +14,11 @@ IUSE="nls xinerama"
 
 RDEPEND="x11-libs/gtk+:2
 	media-libs/imlib2[X]
-	x11-libs/libXext
-	x11-libs/libXpm
 	x11-libs/libX11
+	x11-libs/libXext
 	x11-libs/libXft
+	x11-libs/libXmu
+	x11-libs/libXpm
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
