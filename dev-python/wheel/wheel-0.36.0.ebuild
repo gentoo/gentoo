@@ -33,6 +33,6 @@ python_test() {
 		return
 	fi
 
-	distutils_install_for_testing
+	distutils_install_for_testing --via-root
 	pytest -vv || die "Tests failed with ${EPYTHON}"
 }
