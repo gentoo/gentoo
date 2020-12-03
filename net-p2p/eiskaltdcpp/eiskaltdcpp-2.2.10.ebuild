@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,7 +50,7 @@ RDEPEND="
 	)
 	daemon? ( xmlrpc? ( dev-libs/xmlrpc-c[abyss,cxx] ) )
 	idn? ( net-dns/libidn )
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	pcre? ( dev-libs/libpcre )
 	qt5? (
 		dev-qt/qtconcurrent:5

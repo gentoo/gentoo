@@ -17,7 +17,7 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:=
+	>=dev-lang/lua-5.1:0=
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite )

@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="=dev-lang/lua-5.1*:=[deprecated]"
+RDEPEND="=dev-lang/lua-5.1*:0=[deprecated]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${COMMIT_ID}"

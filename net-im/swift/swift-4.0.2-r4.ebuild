@@ -47,7 +47,7 @@ RDEPEND="
 	gconf? ( gnome-base/gconf:2 )
 	icu? ( dev-libs/icu:= )
 	idn? ( net-dns/libidn:= )
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	spell? ( app-text/hunspell:= )
 "
 

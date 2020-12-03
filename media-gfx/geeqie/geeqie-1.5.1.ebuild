@@ -24,7 +24,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	lirc? ( app-misc/lirc )
-	lua? ( >=dev-lang/lua-5.1:= )
+	lua? ( >=dev-lang/lua-5.1:0= )
 	map? ( media-libs/libchamplain:0.12 )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	tiff? ( media-libs/tiff:0 )

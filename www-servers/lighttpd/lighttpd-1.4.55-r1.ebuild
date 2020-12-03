@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	geoip?	( dev-libs/geoip )
 	ldap?   ( >=net-nds/openldap-2.1.26 )
 	libev?  ( >=dev-libs/libev-4.01 )
-	lua?    ( >=dev-lang/lua-5.1:= )
+	lua?    ( >=dev-lang/lua-5.1:0= )
 	memcached? ( dev-libs/libmemcached )
 	mysql?  ( dev-db/mysql-connector-c:= )
 	pcre?   ( >=dev-libs/libpcre-3.1 )
