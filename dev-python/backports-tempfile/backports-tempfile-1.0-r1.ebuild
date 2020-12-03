@@ -17,7 +17,7 @@ LICENSE="PSF-2.3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
-RDEPEND="dev-python/backports[${PYTHON_USEDEP}]
+RDEPEND="
 	dev-python/backports-weakref[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -37,7 +37,7 @@ python_test() {
 }
 
 python_install() {
-	# avoid a collision with dev-python/backports
+	# avoid collisions due to namespaces
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
 	distutils-r1_python_install --skip-build
 }
