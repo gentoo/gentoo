@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~x64-macos"
 
-RDEPEND="dev-python/namespace-jaraco[${PYTHON_USEDEP}]
+RDEPEND="
 	dev-python/path-py[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' 'python3_[67]')"
 # toml is required by setuptools_scm
