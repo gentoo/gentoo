@@ -23,6 +23,7 @@ RDEPEND="
 	acct-group/kibana
 	acct-user/kibana
 	>=net-libs/nodejs-10.15.2
+	<net-libs/nodejs-14
 	x-pack? (
 		dev-libs/expat
 		dev-libs/nss
