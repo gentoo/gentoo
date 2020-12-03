@@ -19,9 +19,11 @@ RDEPEND="app-text/qpdf:0=
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	>=dev-python/setuptools-50[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.35[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-4.1[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? ( >=dev-python/attrs-20.2.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-5[${PYTHON_USEDEP}]
