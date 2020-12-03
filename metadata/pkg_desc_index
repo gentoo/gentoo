@@ -8446,7 +8446,7 @@ dev-python/mpi4py 3.0.3: Message Passing Interface for Python
 dev-python/mpmath 1.1.0: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.6.2 1.0.0: MessagePack (de)serializer for Python
 dev-python/mss 6.0.0: An ultra fast cross-platform multiple screenshots module in python using ctypes
-dev-python/multidict 5.0.0: multidict implementation
+dev-python/multidict 5.0.0 5.1.0: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mygpoclient 1.8: A gpodder.net client library
