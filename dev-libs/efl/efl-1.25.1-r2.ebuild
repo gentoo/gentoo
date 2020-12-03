@@ -89,7 +89,7 @@ RDEPEND="
 	ibus? ( app-i18n/ibus )
 	jpeg2k? ( media-libs/openjpeg:= )
 	json? ( >=media-libs/rlottie-0.0.1_pre20200424:= )
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	luajit? ( dev-lang/luajit:* )
 	mono? ( dev-lang/mono )
 	opengl? ( virtual/opengl )
