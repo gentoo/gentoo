@@ -24,6 +24,9 @@ RDEPEND="
 	${DEPEND}
 "
 
+# tests are enabled only with USE=tcl
+RESTRICT="!tcl? ( test )"
+
 # use tk requires tcl - bug #150437
 REQUIRED_USE="tk? ( tcl )"
 PATCHES=(
