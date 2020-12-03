@@ -1,13 +1,13 @@
-BDEPEND=>=dev-lang/lua-5.1:= virtual/pkgconfig
+BDEPEND=>=dev-lang/lua-5.1:0= virtual/pkgconfig
 DEFINED_PHASES=install
-DEPEND=>=dev-lang/lua-5.1:=
+DEPEND=>=dev-lang/lua-5.1:0=
 DESCRIPTION=Library that exports Nginx metrics to Prometheus
 EAPI=7
 HOMEPAGE=https://github.com/knyar/nginx-lua-prometheus
 KEYWORDS=~amd64
 LICENSE=MIT
-RDEPEND=>=dev-lang/lua-5.1:= www-servers/nginx[nginx_modules_http_lua]
+RDEPEND=>=dev-lang/lua-5.1:0= www-servers/nginx[nginx_modules_http_lua]
 SLOT=0
 SRC_URI=https://github.com/knyar/nginx-lua-prometheus/archive/0.1-20170610.tar.gz -> nginx-lua-prometheus-0.1_pre20170610.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=554b49a8911474e680da8968a4276e04
+_md5_=9d291c0e4d49018fec4c6503c9889f03
