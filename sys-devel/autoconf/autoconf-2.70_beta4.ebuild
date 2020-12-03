@@ -28,8 +28,9 @@ IUSE="emacs"
 BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${BDEPEND}
-	!~sys-devel/${P}:2.5
-	~sys-devel/autoconf-wrapper-14_pre3"
+	~sys-devel/autoconf-wrapper-14_pre3
+	sys-devel/gnuconfig
+	!~sys-devel/${P}:2.5"
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
@@ -47,4 +48,13 @@ src_prepare() {
 	# Restore timestamp to avoid makeinfo call
 	# We already have an up to date autoconf.info page at this point.
 	touch -r doc/{old_,}autoconf.texi || die
+}
+
+src_install() {
+	default
+
+	local f
+	for f in config.guess config.sub; do
+		ln -fs ../../gnuconfig/${f} "${ED}"/usr/share/autoconf-*/build-aux/${f} || die
+	done
 }
