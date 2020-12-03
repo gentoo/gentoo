@@ -111,7 +111,7 @@ media-libs/freetype harfbuzz png
 media-libs/harfbuzz doc
 sys-libs/libomp hwloc
 sys-libs/libcxxabi libunwind
-media-gfx/graphviz svg pdf
+media-gfx/graphviz devil svg pdf
 media-libs/mesa lm-sensors unwind
 media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
@@ -136,4 +136,5 @@ sys-devel/llvm doc
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
+x11-base/xorg-server  unwind
 x11-libs/libvdpau doc
