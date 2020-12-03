@@ -21,7 +21,6 @@ RESTRICT="!test? ( test )"
 # TODO: remove six
 # https://github.com/jaraco/jaraco.itertools/pull/6
 RDEPEND="
-	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/inflect[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
