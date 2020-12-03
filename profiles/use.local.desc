@@ -5248,7 +5248,6 @@ net-analyzer/nagios-plugins:nagios-game - Install games-util/qstat required for 
 net-analyzer/nagios-plugins:nagios-ping - Install net-analyzer/fping required for fancy ping monitoring. Disabling the flag does not remove any plugin file.
 net-analyzer/nagios-plugins:snmp - Install dev-perl/Net-SNMP required for monitoring SNMP values. Disabling the flag does not remove any plugin file.
 net-analyzer/nagios-plugins:ssh - Install net-misc/openssh required for monitoring SSH servers. Disabling the flag does not remove any plugin file.
-net-analyzer/nagios-plugins-flameeyes:smart - Install sys-apps/smartmontools required for S.M.A.R.T. disk monitoring. Disabling the flag removes the plugin file. This plugin also requires the sudo flag to be enable.
 net-analyzer/nagios-plugins-linux-madrisan:curl - Build check_docker which requires net-misc/curl
 net-analyzer/nagios-plugins-linux-madrisan:varlink - Build check_podman which requires dev-libs/libvarlink
 net-analyzer/net-snmp:elf - Enable the use of elf utils to check uptime on some systems
@@ -6405,13 +6404,6 @@ net-misc/kafkacat:json - Enable json support
 net-misc/kea:openssl - Use dev-libs/openssl instead of Botan
 net-misc/kea:samples - Install sample configuration files
 net-misc/knock:server - Installs the knockd server daemon.
-net-misc/lcr:asterisk - net-misc/asterisk channel driver
-net-misc/lcr:gsm-bs - net-wireless/openbsc driver
-net-misc/lcr:gsm-ms - net-wireless/osmobb driver
-net-misc/lcr:gsmhr - Support for GSM HR codec using reference code (very slow)
-net-misc/lcr:misdn - net-misc/misdn driver
-net-misc/lcr:sip - SIP support
-net-misc/lcr:ss5 - CCITT No. 5 support
 net-misc/libteam:zmq - Build witch net-libs/zeromq support
 net-misc/lldpd:cdp - Enable Cisco Discovery Protocol
 net-misc/lldpd:dot1 - Enable Dot1 extension (VLAN stuff)
@@ -6960,8 +6952,6 @@ net-wireless/kismet:rtlsdr - Enable rtlsdr based kismet capture sources
 net-wireless/kismet:suid - Install a setuid root helper binary with limited functionality; this allows running kismet as a normal user, significantly reducing security risks
 net-wireless/kismet:ubertooth - Enable capture source for ubertooth to sniff bluetooth low energy
 net-wireless/neard:tools - build and install extra helper utilities
-net-wireless/openbsc:gprs - Support GPRS via OpenGGSN
-net-wireless/osmocom-bb:transmit - Enable transmission capabilities.
 net-wireless/rtl-sdr:zerocopy - may cause a bus error on some ARM systems
 net-wireless/rtl_433:rtlsdr - Build with Realtek RTL2832U (rtlsdr) support
 net-wireless/rtl_433:soapysdr - Build with SoapySDR support

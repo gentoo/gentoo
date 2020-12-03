@@ -2020,7 +2020,6 @@ app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
 app-emulation/reg 0.16.1: Docker registry v2 command line client
-app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/runc 1.0.0_rc10-r1: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
@@ -2191,7 +2190,6 @@ app-i18n/kakasi 2.3.4-r2 2.3.6: Converts Japanese text between kanji, kana, and 
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcc 1.0: A Kanji code converter
 app-i18n/kcm-fcitx 0.5.5 0.5.6 4.5.9999: KDE configuration module for Fcitx
-app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kinput2 3.1-r2: A Japanese input server which supports the XIM protocol
 app-i18n/libcangjie 1.3: Library implementing the Cangjie input method
 app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input method library
@@ -13602,7 +13600,6 @@ media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specifie
 media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xineliboutput 2.1.0-r1 2.1.0-r2 2.2.0-r1 2.2.0-r2 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
-media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
 media-plugins/xsynth-dssi 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
 media-radio/KochMorse 3.4.0-r1: Morse-code tutor using the Koch method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
@@ -14296,7 +14293,6 @@ net-analyzer/nagios-icinga-openvpn 0.0.1-r1: A Nagios plugin to check whether an
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.8 4.0.10: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.3.1-r1: Official plugins for Nagios
-net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-linux-madrisan 26-r1 27: Additional and alternative Nagios plugins for Linux
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
 net-analyzer/nagircbot 0.0.33: An irc bot that alerts you to nagios changes
@@ -14806,9 +14802,7 @@ net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
-net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
-net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libosmocore 0.8.0 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.9.1-r3 1.10.0_pre 9999: A system-independent library for user-level network packet capture
@@ -15126,7 +15120,6 @@ net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 ipta
 net-misc/l7-protocols 2009.05.28-r1: Protocol definitions of l7-filter kernel modules
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
 net-misc/lanmap 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
-net-misc/lcr 9999: Linux Call Router
 net-misc/libteam 1.31 9999: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 2.0-r1: The Linux Precision Time Protocol (PTP) implementation
@@ -15256,7 +15249,6 @@ net-misc/socket-burst-dampener 1.2.1: A daemon that spawns one command per conne
 net-misc/spice-gtk 0.37-r2 0.38 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
-net-misc/srf-ip-conn-srv 9999: SharkRF IP Connector Protocol server
 net-misc/ssh-askpass-fullscreen 1.2: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.06: Tool for noninteractively performing password authentication with ssh
@@ -15520,7 +15512,6 @@ net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smar
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
-net-wireless/dump978 9999: simple Mode S decoder for soapysdr supported devices
 net-wireless/gnome-bluetooth 3.34.1 3.34.3: Bluetooth graphical utilities integrated with GNOME
 net-wireless/gnuradio 3.8.1.0-r1 3.8.1.0-r2 3.8.2.0 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
@@ -15558,11 +15549,7 @@ net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
 net-wireless/nanovna-saver 0.3.7-r1 9999: tool for reading, displaying and saving data from the NanoVNA
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
-net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
-net-wireless/openggsn 9999: Gateway GPRS Support Node
 net-wireless/osmo-fl2k 0.1.1 9999: turns FL2000-based USB 3.0 to VGA adapters into low cost DACs
-net-wireless/osmobts 9999: Osmocom BTS-Side code (Abis, scheduling)
-net-wireless/osmocom-bb 9999: OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware
 net-wireless/portapack-firmware 20190405: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR + PortaPack H1 addon
 net-wireless/qradiolink 9999: Multimode SDR experimentation GUI for GNUradio
