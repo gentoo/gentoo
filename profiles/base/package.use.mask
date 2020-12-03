@@ -6,6 +6,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-04)
+# Mask the experimental targets in release ebuilds.
+<dev-ml/llvm-ocaml-11 llvm_targets_AVR
+<sys-devel/clang-11 llvm_targets_AVR
+<sys-devel/llvm-11 llvm_targets_AVR
+<dev-ml/llvm-ocaml-12 llvm_targets_ARC llvm_targets_CSKY llvm_targets_VE
+<sys-devel/clang-12 llvm_targets_ARC llvm_targets_CSKY llvm_targets_VE
+<sys-devel/llvm-12 llvm_targets_ARC llvm_targets_CSKY llvm_targets_VE
+
 # Joonas Niilola <juippis@gentoo.org> (2020-12-03)
 # Doc building seem to be very random without any predictability, 
 # bug #734104
