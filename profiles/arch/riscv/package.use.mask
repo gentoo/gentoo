@@ -115,6 +115,7 @@ media-gfx/graphviz svg pdf
 media-libs/mesa lm-sensors unwind
 media-libs/tiff jbig jpeg test webp
 net-fs/nfs-utils nfsv41
+media-libs/fontconfig doc
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-libs/libpcap rdma
@@ -134,3 +135,4 @@ sys-devel/llvm doc
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
+x11-libs/libvdpau doc
