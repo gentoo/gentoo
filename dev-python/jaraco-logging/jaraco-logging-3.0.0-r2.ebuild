@@ -21,7 +21,6 @@ RESTRICT="!test? ( test )"
 # TODO: remove six
 # https://github.com/jaraco/jaraco.logging/pull/1
 RDEPEND="
-	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tempora[${PYTHON_USEDEP}]
 "
