@@ -2768,7 +2768,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.20.00 6.21.00-r1 6.22.02: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.28 3.30: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.49 2.50: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.8 9999: UNIX Shell similar to the Korn shell
@@ -8744,7 +8744,7 @@ dev-python/pymysql 0.10.1: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
-dev-python/pynvim 0.4.1: Python client for Neovim
+dev-python/pynvim 0.4.1 0.4.2: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyopencl 2020.2 2020.2.2: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
