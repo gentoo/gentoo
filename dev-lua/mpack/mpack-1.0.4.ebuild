@@ -17,7 +17,7 @@ IUSE="luajit test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 	luajit? ( dev-lang/luajit:2= )"
 
 DEPEND="
