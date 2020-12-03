@@ -9,7 +9,7 @@ HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
 SRC_URI="https://github.com/deiv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm64 ~ppc -sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc -sparc x86"
 SLOT="0"
 IUSE="debug gtk suid test"
 
