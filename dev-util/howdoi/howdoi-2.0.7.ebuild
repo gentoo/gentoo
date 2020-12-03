@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS="manual"
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python{3_7,3_8} )
 inherit distutils-r1
 
 DESCRIPTION="A code search tool"
