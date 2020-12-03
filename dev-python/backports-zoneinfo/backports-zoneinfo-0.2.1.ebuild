@@ -38,6 +38,21 @@ BDEPEND="
 # pytest-subtests
 distutils_enable_tests unittest
 
+python_test() {
+	if [[ ${EPYTHON} == pypy3 ]]; then
+		# pypy3.6 does not support dataclasses, and the backport
+		# does not work with pypy
+		local pypy3_version=$(best_version -b 'dev-python/pypy3')
+		if [[ ${pypy3_version} != *_p37* ]]; then
+			einfo "Skipping tests on pypy3.6 due to missing deps"
+			return
+		fi
+	fi
+
+	"${EPYTHON}" -m unittest discover -v ||
+		die "Tests failed with ${EPYTHON}"
+}
+
 python_install() {
 	# avoid file collisions
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
