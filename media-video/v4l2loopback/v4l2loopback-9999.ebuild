@@ -18,7 +18,7 @@ case ${PV} in
 	;;
 esac
 
-DESCRIPTION="v4l2 loopback device which output is it's own input"
+DESCRIPTION="v4l2 loopback device whose output is its own input"
 HOMEPAGE="https://github.com/umlaeute/v4l2loopback"
 
 LICENSE="GPL-2"
