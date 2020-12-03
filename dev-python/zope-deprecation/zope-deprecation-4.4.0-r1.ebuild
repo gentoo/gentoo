@@ -19,8 +19,6 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]"
-
 S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests setup.py
