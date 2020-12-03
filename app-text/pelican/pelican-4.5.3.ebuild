@@ -6,15 +6,15 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="A tool to generate a static blog, with restructured text or markdown input files"
 HOMEPAGE="https://blog.getpelican.com/ https://pypi.org/project/pelican/"
-EGIT_REPO_URI="https://github.com/getpelican/pelican.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}"
+SRC_URI="https://github.com/getpelican/pelican/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples markdown"
 
 RESTRICT="test"
@@ -30,6 +30,7 @@ RDEPEND=">=dev-python/feedgenerator-1.9[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	markdown? ( dev-python/markdown[${PYTHON_USEDEP}] )"
 DEPEND="test? ( dev-python/markdown[${PYTHON_USEDEP}] )"
+
 DOCS=( README.rst )
 
 distutils_enable_tests nose
