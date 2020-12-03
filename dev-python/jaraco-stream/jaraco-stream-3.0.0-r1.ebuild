@@ -18,11 +18,9 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]"
 BDEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 	)
