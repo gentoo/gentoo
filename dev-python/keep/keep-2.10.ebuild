@@ -3,8 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7..9} )
+
 DISTUTILS_USE_SETUPTOOLS="rdepend"
+
 inherit distutils-r1
 
 DESCRIPTION="Personal shell command keeper and snippets manager"
