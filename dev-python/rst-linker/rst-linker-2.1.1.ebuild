@@ -23,6 +23,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		dev-python/path-py[${PYTHON_USEDEP}]
 	)
