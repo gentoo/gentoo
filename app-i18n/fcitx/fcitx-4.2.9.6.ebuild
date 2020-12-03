@@ -60,7 +60,7 @@ DEPEND="dev-libs/glib:2
 	enchant? ( app-text/enchant:0= )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:0= )
 	xkb? (
