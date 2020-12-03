@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/libmpack
 	luajit? ( dev-lang/luajit:2= )
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
