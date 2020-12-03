@@ -50,7 +50,7 @@ RDEPEND="
 	)
 	jpeg? ( virtual/jpeg:0 )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
-	lua? ( >=dev-lang/lua-5.1.5:* )
+	lua? ( >=dev-lang/lua-5.1.5:0= )
 	openexr? (
 		media-libs/ilmbase:=
 		media-libs/openexr:=
