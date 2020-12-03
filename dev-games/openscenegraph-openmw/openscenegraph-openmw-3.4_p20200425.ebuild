@@ -53,7 +53,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( virtual/jpeg:0 )
-	lua? ( >=dev-lang/lua-5.1.5:* )
+	lua? ( >=dev-lang/lua-5.1.5:0= )
 	openexr? (
 		media-libs/ilmbase:=
 		media-libs/openexr:=
