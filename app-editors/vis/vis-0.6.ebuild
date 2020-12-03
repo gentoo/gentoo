@@ -27,6 +27,10 @@ DEPEND="dev-libs/libtermkey
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	if use test; then
 		rm -r test || die
