@@ -43,7 +43,7 @@ RDEPEND="${PYTHON_DEPS}
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/libmaxminddb )
 	logrotate?  ( app-admin/logrotate )
-	lua?        ( dev-lang/lua:* )
+	lua?        ( dev-lang/lua:0= )
 	luajit?     ( dev-lang/luajit:* )
 	lz4?        ( app-arch/lz4 )
 	nflog?      ( net-libs/libnetfilter_log )
