@@ -1,15 +1,15 @@
-BDEPEND=virtual/pkgconfig doc? ( dev-python/sphinx ) test? ( dev-lua/lua-argparse[luajit(-)=] dev-lua/luafilesystem[luajit(-)=] dev-lua/lua-utf8[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) dev-lua/busted )
+BDEPEND=virtual/pkgconfig doc? ( dev-python/sphinx ) test? ( dev-lua/lua-argparse[luajit(-)=] dev-lua/luafilesystem[luajit(-)=] dev-lua/lua-utf8[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:0= ) luajit? ( dev-lang/luajit:2 ) dev-lua/busted )
 DEFINED_PHASES=compile install test
-DEPEND=dev-lua/lua-argparse[luajit(-)=] dev-lua/luafilesystem[luajit(-)=] dev-lua/lua-utf8[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
+DEPEND=dev-lua/lua-argparse[luajit(-)=] dev-lua/luafilesystem[luajit(-)=] dev-lua/lua-utf8[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:0= ) luajit? ( dev-lang/luajit:2 )
 DESCRIPTION=A tool for linting and static analysis of Lua code
 EAPI=7
 HOMEPAGE=https://github.com/mpeterv/luacheck
 IUSE=doc luajit test
 KEYWORDS=~amd64 arm ppc64
 LICENSE=MIT
-RDEPEND=dev-lua/lua-argparse[luajit(-)=] dev-lua/luafilesystem[luajit(-)=] dev-lua/lua-utf8[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
+RDEPEND=dev-lua/lua-argparse[luajit(-)=] dev-lua/luafilesystem[luajit(-)=] dev-lua/lua-utf8[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:0= ) luajit? ( dev-lang/luajit:2 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/mpeterv/luacheck/archive/0.23.0.tar.gz -> luacheck-0.23.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1141d252e38d42b70c991c45515ac0f1
+_md5_=7f0a8d59a5469b7837de036484af0575

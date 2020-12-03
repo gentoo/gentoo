@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install test
-DEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:= )
+DEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:0= )
 DESCRIPTION=A UTF-8 support module for Lua and LuaJIT
 EAPI=7
 HOMEPAGE=https://github.com/starwing/luautf8
 IUSE=luajit test
 KEYWORDS=~amd64 arm arm64 ppc ppc64 x86
 LICENSE=MIT
-RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:= )
+RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:0= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/starwing/luautf8/archive/0.1.3.tar.gz -> lua-utf8-0.1.3.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=1f7b2e9f41b4b385f8b28def31d721a6
+_md5_=3d2293e066794720e4428c9734d6de87
