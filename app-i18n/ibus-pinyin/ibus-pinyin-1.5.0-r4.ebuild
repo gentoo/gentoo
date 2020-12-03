@@ -24,7 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 	')
 	boost? ( dev-libs/boost )
-	lua? ( =dev-lang/lua-5.1*:= )
+	lua? ( =dev-lang/lua-5.1*:0= )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-util/intltool

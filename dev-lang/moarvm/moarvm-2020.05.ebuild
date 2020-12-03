@@ -27,7 +27,7 @@ IUSE="asan clang debug doc +jit static-libs ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
 		>=dev-libs/libuv-1.26
-		dev-lang/lua:=
+		dev-lang/lua:0=
 		dev-libs/libffi"
 DEPEND="${RDEPEND}
 	clang? ( >=sys-devel/clang-3.1 )
