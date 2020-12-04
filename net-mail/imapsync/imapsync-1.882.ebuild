@@ -9,7 +9,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ppc x86"
 # ppc dropped pending keywording of:
 # dev-perl/App-cpanminus
 # dev-perl/Data-Uniqid
