@@ -22,6 +22,7 @@ RDEPEND="
 	)
 	>=sys-auth/polkit-0.114
 	unwind? ( sys-libs/libunwind:= )
+	>=dev-util/sysprof-common-${PV}
 	>=dev-util/sysprof-capture-${PV}:${API_VERSION}
 "
 DEPEND="${RDEPEND}"
@@ -43,7 +44,7 @@ src_prepare() {
 	# These are installed by dev-util/sysprof-capture
 	sed -i -e '/install/d' src/libsysprof-capture/meson.build || die
 	sed -i -e 's/pkgconfig\.generate/subdir_done()\npkgconfig\.generate/' src/libsysprof-capture/meson.build || die
-	# We want to ship org.gnome.Sysprof3.Profiler.xml in sysprof-capture for the benefit of x11-wm/mutter
+	# We want to ship org.gnome.Sysprof3.Profiler.xml in sysprof-common for the benefit of x11-wm/mutter
 	sed -i -e "s|if get_option('libsysprof')|if false|g" src/meson.build || die
 }
 
