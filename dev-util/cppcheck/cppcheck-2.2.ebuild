@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
-inherit distutils-r1 toolchain-funcs cmake-utils
+inherit distutils-r1 toolchain-funcs cmake
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="https://github.com/danmar/cppcheck"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -43,11 +43,11 @@ src_configure() {
 		-DFILESDIR="usr/share/${PN}/"
 		-ENABLE_OSS_FUZZ=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use htmlreport ; then
 		pushd htmlreport || die
