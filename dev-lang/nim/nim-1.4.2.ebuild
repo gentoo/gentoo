@@ -12,7 +12,7 @@ SRC_URI="https://nim-lang.org/download/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="doc +readline test"
+IUSE="+readline test"
 
 RESTRICT=test # need to sort out depends and numerous failures
 
@@ -56,11 +56,6 @@ src_compile() {
 	_run ./bin/nim --parallelBuild:$(makeopts_jobs) c koch
 	_run ./koch boot --parallelBuild:$(makeopts_jobs) -d:release $(nim_use_enable readline useGnuReadline)
 	PATH="./bin:$PATH" _run ./koch tools --parallelBuild:$(makeopts_jobs)
-
-	if use doc; then
-		# TODO: '--parallelBuild:' does ont seem to work
-		PATH="./bin:$PATH" _run ./koch doc --parallelBuild:$(makeopts_jobs)
-	fi
 }
 
 src_test() {
@@ -81,6 +76,5 @@ src_install() {
 		doexe "${bin_exe}"
 	done
 
-	use doc && dodoc doc/html/*.html
 	newbashcomp tools/nim.bash-completion ${PN}
 }
