@@ -8748,6 +8748,7 @@ x11-misc/e16-keyedit:gtk2 - Build with x11-libs/gtk+:2 instead of x11-libs/gtk+:
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/gpaste:applet - Enable gpaste-applet
 x11-misc/gpaste:gnome - Enable proper gnome support and enable gnome shell extension.
+x11-misc/grsync:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 x11-misc/gtkdialog:glade - Enable support for gnome-base/libglade
 x11-misc/gtkdialog:gtk2 - Build with GTK+2 instead of GTK+3
 x11-misc/gtkdialog:vte - Enable support for x11-libs/vte
