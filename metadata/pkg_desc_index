@@ -10872,8 +10872,9 @@ dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/sysdig 0.27.0 0.27.1: A system exploration and troubleshooting tool
 dev-util/sysdig-kmod 0.27.0 0.27.1: Kernel module for dev-util/sysdig
-dev-util/sysprof 3.36.0: System-wide Linux Profiler
-dev-util/sysprof-capture 3.36.0 3.38.1: Static library for sysprof capture data generation
+dev-util/sysprof 3.36.0-r1 3.38.1: System-wide Linux Profiler
+dev-util/sysprof-capture 3.36.0-r1 3.38.1: Static library for sysprof capture data generation
+dev-util/sysprof-common 3.38.1: Static library for sysprof capture data generation
 dev-util/systemtap 4.0-r1: A linux trace/probe tool
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
 dev-util/tkdiff 4.2: Graphical front end to the diff program
@@ -18938,7 +18939,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.4.3 4.6.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.36.7 3.38.1: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.36.7-r1 3.38.1-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
