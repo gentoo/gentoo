@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	!!net-firewall/gshield
-	nftables? ( net-firewall/nftables )
+	nftables? ( net-firewall/nftables[python,json] )
 	iptables? (
 		net-firewall/iptables[ipv6]
 		net-firewall/ebtables
@@ -36,6 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 			dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
 		)
 	')"
+
 DEPEND="${RDEPEND}
 	dev-libs/glib:2
 	>=dev-util/intltool-0.35
@@ -88,7 +89,6 @@ src_install() {
 	python_optimize
 
 	# Get rid of junk
-	rm -rf "${D}/etc/rc.d/" || die
 	rm -rf "${D}/etc/sysconfig/" || die
 
 	# For non-gui installs we need to remove GUI bits
