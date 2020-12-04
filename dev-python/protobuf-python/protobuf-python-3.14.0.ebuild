@@ -3,7 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
-DISTUTILS_USE_SETUPTOOLS="rdepend"
+DISTUTILS_USE_SETUPTOOLS="bdepend"
 
 inherit distutils-r1
 
@@ -23,12 +23,13 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/24"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+SLOT="0/25"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}
+	dev-python/namespace-google[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
@@ -48,17 +49,10 @@ python_prepare_all() {
 	popd > /dev/null || die
 
 	distutils-r1_python_prepare_all
-
-	sed -e "/^[[:space:]]*setup_requires = \['wheel'\],$/d" -i setup.py || die
 }
 
 python_configure_all() {
 	mydistutilsargs=(--cpp_implementation)
-}
-
-python_compile() {
-	python_is_python3 || local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
 }
 
 python_test() {

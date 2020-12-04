@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
+PYTHON_COMPAT=(python3_{6..9})
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit distutils-r1
@@ -24,11 +24,12 @@ fi
 
 LICENSE="BSD"
 SLOT="0/23"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}
+	dev-python/namespace-google[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
