@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="debug opengl"
 
 RDEPEND=">=x11-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
