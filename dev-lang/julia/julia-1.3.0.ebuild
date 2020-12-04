@@ -38,6 +38,7 @@ RDEPEND+="
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
 	>=net-libs/mbedtls-2.2
+	net-libs/libssh2
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
