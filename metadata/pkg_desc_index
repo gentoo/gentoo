@@ -1626,7 +1626,7 @@ app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implemen
 app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libraries
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
-app-doc/cppman 0.4.8-r2 0.4.9: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
+app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.15-r1: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
@@ -5720,7 +5720,7 @@ dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.6 0.4.6-r100: Binding of libevent for Lua
 dev-lua/luaexpat 1.3.0-r2 1.3.0-r101 1.3.3-r2 1.3.3-r101: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.8.0-r1 1.8.0-r101: File System Library for the Lua programming language
-dev-lua/luajson 1.3.3 1.3.4: JSON Parser/Constructor for Lua
+dev-lua/luajson 1.3.3-r1 1.3.4 1.3.4-r100: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.5 1.2.5-r100: A lua binding for the OpenLDAP client libraries
 dev-lua/luaossl 20200709 20200709-r100: Most comprehensive OpenSSL module in the Lua universe
 dev-lua/luaposix 35.0 35.0-r100: Bindings for POSIX APIs
@@ -5736,7 +5736,7 @@ dev-lua/messagepack 0.3.2 0.3.2-r100: A pure Lua implementation of the MessagePa
 dev-lua/mpack 1.0.4 1.0.8-r1 1.0.8-r100: Lua bindings for libmpack
 dev-lua/penlight 1.3.2 1.5.4 1.7.0 1.9.2 1.9.2-r101: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1 1.3_p1-r1 1.3_p1-r101: Lua String Hashing/Indexing Library
-dev-lua/toluapp 1.0.93_p20190513-r1 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
+dev-lua/toluapp 1.0.93_p20190513-r1 1.0.93_p20190513-r2 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 0.8.2: A lightweight and colourful test framework
 dev-ml/astring 0.8.3 0.8.5: Alternative String module for OCaml
 dev-ml/async 0.9.0: Jane Street Capital's asynchronous execution library
@@ -8576,7 +8576,7 @@ dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of de
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 15.0.0: A module wrapper for os.path
 dev-python/pathlib2 2.3.5-r1: Fork of pathlib aiming to support the full stdlib Python API
-dev-python/pathspec 0.8.0: Utility library for gitignore style pattern matching of file paths.
+dev-python/pathspec 0.8.0 0.8.1: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
