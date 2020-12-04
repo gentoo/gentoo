@@ -19,7 +19,7 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-RDEPEND="
+RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/zope-testrunner[${PYTHON_USEDEP}] )"
 
