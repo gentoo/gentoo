@@ -62,6 +62,7 @@ acct-group/fingerprint 0: System group: fingerprint
 acct-group/flatpak 0: System group: flatpak
 acct-group/flows 0: gid for net-analyzer/flow-tools
 acct-group/freenet 0: Group for net-p2p/freenet
+acct-group/frr 0: System group: frr
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/fvwm-crystal 0: System group: fvwm-crystal
 acct-group/gamemode 0: Group for the system-wide games-util/gamemode resource group
@@ -324,6 +325,7 @@ acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/flatpak 0: System user: flatpak
 acct-user/flows 0: uid for net-analyzer/flow-tools
 acct-user/freenet 0: User for net-p2p/freenet
+acct-user/frr 0: System user: frr
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/gatling 0-r1: System user: gatling
 acct-user/geneweb 0: user id for geneweb daemon
@@ -14834,6 +14836,7 @@ net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP
 net-libs/libupnpp 0.17.0 0.19.4 0.20.0 0.20.0-r1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 3.2.1 4.0.20 4.1.4: A flexible pure-C library for implementing network protocols
+net-libs/libyang 1.0.184: YANG data modeling language library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
@@ -14863,6 +14866,7 @@ net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/rpcsvc-proto 0 1.4.2: rpcsvc protocol definitions from glibc
+net-libs/rtrlib 0.7.0: An open-source C implementation of the RPKI/Router Protocol client
 net-libs/serf 1.3.9-r1 1.3.9-r2: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24 0.25: OAuth2 plugin for Signon daemon
@@ -15068,6 +15072,7 @@ net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
+net-misc/frr 7.5: The FRRouting Protocol Suite
 net-misc/gallery-dl 1.15.2-r1 1.15.3 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases

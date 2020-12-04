@@ -6081,6 +6081,7 @@ net-libs/pjproject:vpx - Include VP8 and VP9 codec support in the build
 net-libs/pjproject:webrtc - Enable WebRTC support
 net-libs/qxmpp:vpx - Enable VP8 codec support via media-libs/libvpx
 net-libs/rabbitmq-c:tools - Builds cli tools to interact with brokers
+net-libs/rtrlib:ssh - Enable SSH support
 net-libs/shairplay:alac - Add support for Apple Lossless Audio Codec files
 net-libs/shairplay:playfair - Add support for handling fairplay handshake (used in for example screen mirroring)
 net-libs/shairplay:tools - Build and install a binary shairplay in /usr/bin
@@ -6370,6 +6371,12 @@ net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/libtorrent
 net-misc/felix:bird - Use BIRD, e.g. for route reflection
 net-misc/freerdp:openh264 - Enable H.264 support using media-libs/openh264
 net-misc/freerdp:server - Build server binaries
+net-misc/frr:fpm - Enable Forwarding Plane Manager support
+net-misc/frr:grpc - Enable gRPC plugin
+net-misc/frr:nhrp - Build Next Hop Resolution Protocol daemon
+net-misc/frr:ospfapi - Build OSPFAPI support
+net-misc/frr:pam - Add support for PAM (via sys-libs/pam) to the Virtual Terminal Interface Shell (vtysh);
+net-misc/frr:rpki - Enable RPKI
 net-misc/gerbera:curl - Support HTTP media sources (e.g. internet radio)
 net-misc/gerbera:exiv2 - Use media-gfx/exiv2 to extract EXIF information
 net-misc/gerbera:ffmpegthumbnailer - Enable video thumbnail support with media-video/ffmpegthumbnailer
