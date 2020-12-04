@@ -276,7 +276,9 @@ src_install() {
 	# Note: Do not install symlinks for 'vi', 'ex', or 'view', as these are
 	#       managed by eselect-vi
 	dobin src/vim
-	dosym vim /usr/bin/vimdiff
+	if ! use minimal ; then
+		dosym vim /usr/bin/vimdiff
+	fi
 	dosym vim /usr/bin/rvim
 	dosym vim /usr/bin/rview
 	if use vim-pager ; then
