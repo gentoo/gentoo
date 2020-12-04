@@ -533,7 +533,7 @@ gnome-base/orbit
 =dev-lua/luaexpat-1.3.3-r101
 >=dev-lua/luafilesystem-1.8.0-r100
 >=dev-lua/lualdap-1.2.5-r100
->=dev-lua/luajson-1.3.4
+>=dev-lua/luajson-1.3.4-r100
 >=dev-lua/luaossl-20200709-r100
 >=dev-lua/luaposix-35.0-r100
 >=dev-lua/luarocks-3.4.0-r100

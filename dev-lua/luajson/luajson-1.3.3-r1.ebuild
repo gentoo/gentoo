@@ -23,6 +23,6 @@ RESTRICT="test"
 src_compile() { :; }
 
 src_install() {
-	emake PREFIX=/usr DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
 	dodoc README docs/ReleaseNotes-${PV}.txt docs/LuaJSON.txt
 }
