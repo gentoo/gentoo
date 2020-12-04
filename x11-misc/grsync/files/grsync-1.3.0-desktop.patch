@@ -1,0 +1,24 @@
+diff -Naur grsync-1.3.0.orig/configure.in grsync-1.3.0/configure.in
+--- grsync-1.3.0.orig/configure.in	2020-05-28 10:16:05.000000000 +0200
++++ grsync-1.3.0/configure.in	2020-12-04 09:30:40.082105813 +0100
+@@ -30,7 +30,7 @@
+ 		GTK_API_VERSION="2.0"
+ fi
+ pkg_modules="gtk+-$GTK_API_VERSION >= 2.16.0"
+-OTHER_DESKTOP_ENTRIES="Icon=grsync.png"
++OTHER_DESKTOP_ENTRIES="Icon=grsync"
+ MIMEINFO_XMLNS="xmlns='http://www.freedesktop.org/standards/shared-mime-info'"
+ MIME_OSSOCAT=""
+ 
+diff -Naur grsync-1.3.0.orig/grsync.desktop.in grsync-1.3.0/grsync.desktop.in
+--- grsync-1.3.0.orig/grsync.desktop.in	2015-09-11 13:21:28.000000000 +0200
++++ grsync-1.3.0/grsync.desktop.in	2020-12-04 09:30:50.473110946 +0100
+@@ -4,7 +4,7 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/x-grsync-session;
+-Categories=Application;System;
++Categories=System;
+ GenericName=Synchronize files with rsync
+ GenericName[fr]=Interface GTK pour rsync
+ GenericName[it]=Sincronizza file con rsync
