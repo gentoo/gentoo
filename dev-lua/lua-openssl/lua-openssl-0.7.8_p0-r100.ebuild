@@ -63,6 +63,7 @@ lua_src_compile() {
 		"LUA_CFLAGS=${CFLAGS} $(lua_get_CFLAGS)"
 		"LUA_LIBS=${LDFLAGS}"
 		"LUA_VERSION=$(ver_cut 1-2 $(lua_get_version))"
+		"TARGET_SYS=${CTARGET:-${CHOST}}"
 	)
 
 	emake "${myemakeargs[@]}"
@@ -79,6 +80,8 @@ lua_src_test() {
 
 	local myemakeargs=(
 		"LUA=${ELUA}"
+		"LUA_VERSION=$(ver_cut 1-2 $(lua_get_version))"
+		"TARGET_SYS=${CTARGET:-${CHOST}}"
 	)
 
 	emake "${myemakeargs[@]}" test
@@ -95,6 +98,8 @@ lua_src_install() {
 
 	local myemakeargs=(
 		"LUA_LIBDIR=${ED}/$(lua_get_cmod_dir)"
+		"LUA_VERSION=$(ver_cut 1-2 $(lua_get_version))"
+		"TARGET_SYS=${CTARGET:-${CHOST}}"
 	)
 
 	emake "${myemakeargs[@]}" install
