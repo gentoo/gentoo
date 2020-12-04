@@ -58,6 +58,7 @@ src_compile() {
 		"LUA_CFLAGS=${CFLAGS} -I$($(tc-getPKG_CONFIG) --variable includedir $(usex luajit 'luajit' 'lua'))"
 		"LUA_LIBS=${LDFLAGS}"
 		"LUA_VERSION=$($(tc-getPKG_CONFIG) --variable $(usex luajit 'abiver' 'V') $(usex luajit 'luajit' 'lua'))"
+		"TARGET_SYS=${CTARGET:-${CHOST}}"
 	)
 
 	emake "${myemakeargs[@]}"
@@ -66,6 +67,8 @@ src_compile() {
 src_test() {
 	local myemakeargs=(
 		"LUA=$(usex luajit 'luajit' 'lua')"
+		"LUA_VERSION=$($(tc-getPKG_CONFIG) --variable $(usex luajit 'abiver' 'V') $(usex luajit 'luajit' 'lua'))"
+		"TARGET_SYS=${CTARGET:-${CHOST}}"
 	)
 
 	emake "${myemakeargs[@]}" test
@@ -74,6 +77,8 @@ src_test() {
 src_install() {
 	local myemakeargs=(
 		"LUA_LIBDIR=${ED}/$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD $(usex luajit 'luajit' 'lua'))"
+		"LUA_VERSION=$($(tc-getPKG_CONFIG) --variable $(usex luajit 'abiver' 'V') $(usex luajit 'luajit' 'lua'))"
+		"TARGET_SYS=${CTARGET:-${CHOST}}"
 	)
 
 	emake "${myemakeargs[@]}" install
