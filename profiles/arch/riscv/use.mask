@@ -22,7 +22,6 @@ valgrind
 bluetooth
 elogind
 emacs
-fontconfig
 fuse
 gtk
 gtk2
