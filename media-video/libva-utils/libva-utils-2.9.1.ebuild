@@ -13,7 +13,7 @@ DESCRIPTION="Collection of utilities and tests for VA-API"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
 if [[ ${PV} != *9999* ]] ; then
 	SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
