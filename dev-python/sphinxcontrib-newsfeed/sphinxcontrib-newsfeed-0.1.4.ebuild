@@ -16,7 +16,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-li
 IUSE="examples"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]
+	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]"
 
 python_install_all() {
 	distutils-r1_python_install_all
