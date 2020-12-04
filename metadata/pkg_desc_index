@@ -5112,7 +5112,7 @@ dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distribute
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.6 1.0.7 1.0.9: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
-dev-lang/nim 1.4.0: compiled, garbage-collected systems programming language
+dev-lang/nim 1.4.0 1.4.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0 4.10.0 4.11.1: Programming language supporting functional, imperative & object-oriented styles
@@ -17223,7 +17223,7 @@ sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2020.1.1 2020.1.9999 2020.2.0 2020.2.9999: A openstack meta-package for installing the various openstack pieces
-sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1 1.1.24_rc1 2.0.4 2.0.5_rc3: Pacemaker CRM
+sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1 1.1.24 2.0.4 2.0.5: Pacemaker CRM
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 3.0.0 4.0.0 2020.1.9999 2020.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
