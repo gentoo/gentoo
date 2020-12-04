@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
+	dev-python/namespace-google[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/googleapis-common-protos[${PYTHON_USEDEP}]
 	>=dev-python/google-auth-1.14.0[${PYTHON_USEDEP}]
