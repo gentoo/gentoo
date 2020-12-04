@@ -45,6 +45,8 @@ src_configure() {
 	# Override default CC=gcc.
 	echo "gcc.exe            = \"$(tc-getCC)\"" >> config/nim.cfg || die
 	echo "gcc.linkerexe      = \"$(tc-getCC)\"" >> config/nim.cfg || die
+	echo "gcc.cpp.exe        = \"$(tc-getCXX)\"" >> config/nim.cfg || die
+	echo "gcc.cpp.linkerexe  = \"$(tc-getCXX)\"" >> config/nim.cfg || die
 }
 
 src_compile() {
