@@ -37,12 +37,7 @@
 # directories work best for Python 3.
 # Removal in 14 days.
 dev-python/backports
-dev-python/namespace-google
 dev-python/namespace-jaraco
-dev-python/namespace-paste
-dev-python/namespace-repoze
-dev-python/namespace-sphinxcontrib
-dev-python/namespace-zope
 
 # Aaron Bauman <bman@gentoo.org> (2020-12-02)
 # Deprecated. Functionality is native to dev-python/pytest now
