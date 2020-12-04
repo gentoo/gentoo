@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit autotools eutils multilib user python-single-r1 udev
+inherit autotools eutils multilib python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -21,11 +21,13 @@ else
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
 	#but sometimes we want a git commit
-	#COMMIT="ea3f9ffe84b86cfc5e01ce3fec5476d51d161b98"
+	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
 	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
 
-	KEYWORDS="amd64 arm ~arm64 ~ppc x86"
+	#Desired (minimum) keywords
+	#KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
@@ -38,12 +40,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
+	acct-user/kismet
+	acct-group/kismet
 	networkmanager? ( net-misc/networkmanager:= )
 	dev-libs/glib:=
 	dev-libs/elfutils:=
 	sys-libs/zlib:=
 	dev-db/sqlite:=
-	net-libs/libmicrohttpd
+	net-libs/libmicrohttpd:=
+	net-libs/libwebsockets:=[client]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
 			net-libs/libpcap
@@ -53,6 +58,7 @@ CDEPEND="
 	dev-libs/protobuf:=
 	$(python_gen_cond_dep '
 		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/websockets[${PYTHON_MULTI_USEDEP}]
 	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
@@ -83,9 +89,14 @@ src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet_logging.conf || die
 
+	#this was added to quiet macosx builds but it makes gcc builds noisier
+	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
+
+	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
+
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
-		-e 's|@mangrp@|root|g' Makefile.in
+		-e 's|@mangrp@|root|g' Makefile.in || die
 
 	eapply_user
 
@@ -121,11 +132,11 @@ src_install() {
 	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
 	newconfd "${FILESDIR}"/${PN}.confd-r2 kismet
+	systemd_dounit packaging/systemd/kismet.service
 }
 
 pkg_preinst() {
 	if use suid; then
-		enewgroup kismet
 		fowners root:kismet /usr/bin/kismet_cap_linux_bluetooth
 		fowners root:kismet /usr/bin/kismet_cap_linux_wifi
 		fowners root:kismet /usr/bin/kismet_cap_pcapfile
