@@ -36,6 +36,10 @@ BDEPEND="
 # The doc can only be built from a git repository
 distutils_enable_tests pytest
 
+RDEPEND+="
+	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
+"
+
 python_install_all() {
 	distutils-r1_python_install_all
 	find "${ED}" -name '*.pth' -delete || die

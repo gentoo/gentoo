@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -32,10 +32,17 @@ BDEPEND="
 # The doc can only be built from a git repository
 distutils_enable_tests pytest
 
+# We don't want distutils_enable_tests to add the namespace
+# package to BDEPEND under "test?". Therefore we add it to RDEPEND
+# after running distutils_enable_tests.
+RDEPEND+="
+	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
+"
+
 python_prepare_all() {
 	# Needs to be run from a git repository
 	sed -i 's/test_contributors/_&/' \
-		tests/test_filter.py || die
+		sphinxcontrib/spelling/tests/test_filter.py || die
 	distutils-r1_python_prepare_all
 }
 
