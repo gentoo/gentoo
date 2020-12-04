@@ -51,6 +51,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-7.5-ipctl-forwarding.patch"
 )
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 # FRR tarballs have weird format.
 S="${WORKDIR}/frr-${P}"
 

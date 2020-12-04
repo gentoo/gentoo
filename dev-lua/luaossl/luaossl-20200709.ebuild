@@ -19,7 +19,6 @@ IUSE="examples luajit"
 
 RDEPEND="
 	dev-libs/openssl:0[-bindist]
-	!dev-lua/luacrypto
 	!dev-lua/lua-openssl
 	!dev-lua/luasec
 	luajit? ( dev-lang/luajit:2 )
