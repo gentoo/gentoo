@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6..8} )
+
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-single-r1
