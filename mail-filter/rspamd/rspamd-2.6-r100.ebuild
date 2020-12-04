@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit cmake pax-utils systemd tmpfiles
+LUA_COMPAT=( lua5-{1..2} luajit )
+
+inherit cmake lua-single pax-utils systemd tmpfiles
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rspamd/rspamd.git"
@@ -19,7 +21,10 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain u
 SLOT="0"
 IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit libressl pcre2"
 
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
 RDEPEND="
+	${LUA_DEPS}
 	acct-group/rspamd
 	acct-user/rspamd
 	app-arch/zstd
@@ -37,12 +42,8 @@ RDEPEND="
 	)
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc )
-	jit? (
-		dev-lang/luajit:2
-	)
-	!jit? (
-		dev-lang/lua:*
-		dev-lua/LuaBitOp
+	!lua_single_target_luajit? (
+		$(lua_gen_cond_dep 'dev-lua/LuaBitOp[${LUA_USEDEP}]')
 	)
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
@@ -79,7 +80,7 @@ src_configure() {
 		-DENABLE_BLAS=$(usex blas ON OFF)
 		-DENABLE_HYPERSCAN=$(usex cpu_flags_x86_ssse3 ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
-		-DENABLE_LUAJIT=$(usex jit ON OFF)
+		-DENABLE_LUAJIT=$(usex lua_single_target_luajit ON OFF)
 		-DENABLE_PCRE2=$(usex pcre2 ON OFF)
 	)
 	cmake_src_configure
@@ -99,7 +100,7 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
 
 	# Remove mprotect for JIT support
-	if use jit; then
+	if use lua_single_target_luajit; then
 		pax-mark m "${ED}"/usr/bin/rspamd-* "${ED}"/usr/bin/rspamadm-*
 	fi
 
