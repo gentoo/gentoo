@@ -29,7 +29,6 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!dev-lua/luacrypto
 	!dev-lua/luaossl
 	!dev-lua/luasec
 	libressl? ( dev-libs/libressl:0= )

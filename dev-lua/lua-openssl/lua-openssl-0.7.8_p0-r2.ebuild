@@ -27,7 +27,6 @@ IUSE="libressl luajit test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!dev-lua/luacrypto
 	!dev-lua/luaossl
 	!dev-lua/luasec
 	luajit? ( dev-lang/luajit:2 )
