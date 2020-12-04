@@ -99,6 +99,10 @@ src_prepare() {
 
 	strip-linguas -u bfd/po opcodes/po
 	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+
+	# avoid using ancient termcap from host on Prefix systems
+	sed -i -e 's/termcap tinfow/tinfow/g' \
+		gdb/configure{.ac,} || die
 }
 
 gdb_branding() {
@@ -141,10 +145,11 @@ src_configure() {
 		# gdbserver only works for native targets (CHOST==CTARGET).
 		# it also doesn't support all targets, so rather than duplicate
 		# the target list (which changes between versions), use the
-		# "auto" value when things are turned on.
-		is_cross \
-			&& myconf+=( --disable-gdbserver ) \
-			|| myconf+=( $(use_enable server gdbserver auto) )
+		# "auto" value when things are turned on, which is triggered
+		# whenever no --enable or --disable is given
+		if is_cross || use !server ; then
+			myconf+=( --disable-gdbserver )
+		fi
 	fi
 
 	if ! ( use server && ! use client ) ; then
