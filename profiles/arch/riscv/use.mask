@@ -5,7 +5,7 @@
 -riscv
 
 # Unmask systemd
-
+-systemd
 # Our Python has a lot of trouble with the two-level libdir.
 python_targets_python2_7
 python_targets_python3_6
