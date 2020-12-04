@@ -79,7 +79,10 @@ RDEPEND="${DEPEND}
 "
 DEPEND="${DEPEND}
 	x11-base/xorg-proto
-	sysprof? ( >=dev-util/sysprof-capture-3.35.2:3 )
+	sysprof? (
+		>=dev-util/sysprof-common-3.35.2
+		>=dev-util/sysprof-capture-3.35.2:3
+	)
 "
 # wayland bdepend for wayland-scanner, xorg-server for cvt utility
 BDEPEND="
