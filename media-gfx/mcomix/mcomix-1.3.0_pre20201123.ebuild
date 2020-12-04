@@ -4,15 +4,18 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
-inherit desktop git-r3 python-r1 xdg
+inherit desktop python-r1 xdg
+
+# Hash used for this version
+GIT_PV="cdcb27533dc7ee2ebf7b0a8ab5ba10e61c0b8ff8"
 
 DESCRIPTION="GTK image viewer for comic book archives"
 HOMEPAGE="https://github.com/multiSnow/mcomix3"
-EGIT_REPO_URI="https://github.com/multiSnow/mcomix3"
+SRC_URI="https://github.com/multiSnow/mcomix3/archive/${GIT_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
@@ -24,6 +27,8 @@ RDEPEND="${DEPEND}
 BDEPEND="sys-devel/gettext"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
+
+S=${WORKDIR}/mcomix3-${GIT_PV}
 
 src_prepare() {
 	default
