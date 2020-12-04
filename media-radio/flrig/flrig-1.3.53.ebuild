@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/fldigi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 DOCS=(AUTHORS ChangeLog README)
@@ -21,9 +21,3 @@ RDEPEND="x11-libs/libX11
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
-
-src_prepare() {
-	eapply_user
-	eapply -p0 "${FILESDIR}"/fix-bashism.patch
-	eautoreconf
-}
