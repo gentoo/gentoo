@@ -20,7 +20,6 @@ valgrind
 
 # Not tested yet
 bluetooth
-dbus
 elogind
 emacs
 fontconfig
