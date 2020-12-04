@@ -8229,15 +8229,15 @@ dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 1.0.1 2.3.0: A library for glance
 dev-python/glooey 0.3.4: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
-dev-python/google-api-core 1.17.0-r1: Core Library for Google Client Libraries
+dev-python/google-api-core 1.17.0: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.20.1-r1: Google Authentication Library
+dev-python/google-auth 1.20.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0-r1: Python based U2F host library
-dev-python/googleapis-common-protos 1.51.0-r1: python classes generated from the common protos in the googleapis repository
+dev-python/googleapis-common-protos 1.51.0: python classes generated from the common protos in the googleapis repository
 dev-python/graph-tool 2.35 9999: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphviz 0.14.2 0.15: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.17: Lightweight in-process concurrent programming
@@ -8570,8 +8570,8 @@ dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error re
 dev-python/partd 1.1.0: Appendable key-value storage
 dev-python/parver 0.3.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.4: Password hashing framework supporting over 20 schemes
-dev-python/paste 3.5.0-r1: Tools for using a Web Server Gateway Interface stack
-dev-python/pastedeploy 2.1.1-r1: Load, configure, and compose WSGI applications and servers
+dev-python/paste 3.5.0: Tools for using a Web Server Gateway Interface stack
+dev-python/pastedeploy 2.1.1: Load, configure, and compose WSGI applications and servers
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 15.0.0: A module wrapper for os.path
@@ -8633,7 +8633,7 @@ dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
 dev-python/prometheus_client 0.8.0 0.9.0: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 2.0.10-r1 3.0.7: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.12.2-r2 3.12.4-r2 3.13.0-r2 3.14.0-r1 9999: Google's Protocol Buffers - Python bindings
+dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.7.0-r1 5.7.2-r1 5.7.3: Retrieve information on running processes and system utilization
@@ -8981,8 +8981,8 @@ dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace r
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.48: Tools for generating printable PDF documents from any data source
-dev-python/repoze-lru 0.7-r2: A tiny LRU cache implementation and decorator
-dev-python/repoze-sphinx-autointerface 0.8-r1: Sphinx extension: auto-generates API docs from Zope interfaces
+dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
+dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0: HTTP library for human beings
 dev-python/requests-cache 0.5.2: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1 1.2.0: HTTPS CredSSP authentication with the requests library
@@ -9100,24 +9100,24 @@ dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sp
 dev-python/sphinx_celery 2.0.0-r1: Celery Sphinx Theme and Utilities
 dev-python/sphinx_rtd_theme 0.2.4 0.4.3-r1: ReadTheDocs.org theme for Sphinx
 dev-python/sphinx_selective_exclude 1.0.3: Sphinx selective rendition extensions
-dev-python/sphinxcontrib-applehelp 1.0.2-r1: Sphinx extension which outputs Apple help book
-dev-python/sphinxcontrib-asyncio 0.2.0-r3: sphinx extension to support coroutines in markup
-dev-python/sphinxcontrib-blockdiag 2.0.0-r1: A sphinx extension for embedding block diagrams using blockdiag
-dev-python/sphinxcontrib-devhelp 1.0.2-r1: Sphinx extension which outputs Devhelp documents
-dev-python/sphinxcontrib-doxylink 1.6.1-r1: Extension to link to external Doxygen API documentation
+dev-python/sphinxcontrib-applehelp 1.0.2: Sphinx extension which outputs Apple help book
+dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
+dev-python/sphinxcontrib-blockdiag 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
+dev-python/sphinxcontrib-devhelp 1.0.2: Sphinx extension which outputs Devhelp documents
+dev-python/sphinxcontrib-doxylink 1.6.1: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-github-alt 1.1-r2: Link to GitHub issues, pull requests, commits and users from Sphinx docs
-dev-python/sphinxcontrib-htmlhelp 1.0.3-r1: Sphinx extension which outputs HTML help book
-dev-python/sphinxcontrib-httpdomain 1.7.0-r1: Extension providing a Sphinx domain for describing RESTful HTTP APIs
-dev-python/sphinxcontrib-httpexample 0.10.3-r1: Adds example directive for sphinx-contrib httpdomain
-dev-python/sphinxcontrib-issuetracker 0.11-r1 0.11-r3: Extension to sphinx to create links to issue trackers
-dev-python/sphinxcontrib-jsmath 1.0.1-r2: Sphinx extension which renders display math in HTML via JavaScript
-dev-python/sphinxcontrib-newsfeed 0.1.4-r1: News Feed extension for Sphinx
-dev-python/sphinxcontrib-pretty-searchresults 0.3.5-r1: Decently styled search results for sphinx-doc projects
-dev-python/sphinxcontrib-programoutput 0.16-r1: Extension to sphinx to include program output
-dev-python/sphinxcontrib-qthelp 1.0.3-r1: Sphinx extension which outputs QtHelp documents
-dev-python/sphinxcontrib-serializinghtml 1.1.4-r1: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.3.0-r1 5.4.0-r1 7.0.0-r1 7.0.1-r1 7.1.0-r1: Sphinx spelling extension
-dev-python/sphinxcontrib-websupport 1.2.4-r1: Sphinx websupport extension
+dev-python/sphinxcontrib-htmlhelp 1.0.3: Sphinx extension which outputs HTML help book
+dev-python/sphinxcontrib-httpdomain 1.7.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
+dev-python/sphinxcontrib-httpexample 0.10.3: Adds example directive for sphinx-contrib httpdomain
+dev-python/sphinxcontrib-issuetracker 0.11-r1 0.11-r2: Extension to sphinx to create links to issue trackers
+dev-python/sphinxcontrib-jsmath 1.0.1-r1: Sphinx extension which renders display math in HTML via JavaScript
+dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
+dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search results for sphinx-doc projects
+dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
+dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
+dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
+dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
+dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.2.0: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.10.0: Kernels used by spyder on its ipython console
@@ -9296,16 +9296,16 @@ dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
 dev-python/zeroconf 0.24.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zict 0.1.4: Mutable mapping tools
 dev-python/zipp 3.4.0: Backport of pathlib-compatible object wrapper for zip files
-dev-python/zope-component 4.4.1-r1: Zope Component Architecture
+dev-python/zope-component 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.4.0: Zope Configuration Architecture
-dev-python/zope-deprecation 4.4.0-r1: Zope Deprecation Infrastructure
-dev-python/zope-event 4.5.0-r2: Event publishing / dispatch, used by Zope Component Architecture
-dev-python/zope-exceptions 4.4-r1: General purpose exceptions for Zope packages
+dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
+dev-python/zope-event 4.5.0-r1: Event publishing / dispatch, used by Zope Component Architecture
+dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
-dev-python/zope-interface 5.1.2-r1 5.2.0-r1: Interfaces for Python
+dev-python/zope-interface 5.1.2 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
-dev-python/zope-testing 4.7-r3: Zope testing helpers
-dev-python/zope-testrunner 5.2-r1: Zope testrunner script
+dev-python/zope-testing 4.7-r2: Zope testing helpers
+dev-python/zope-testrunner 5.2: Zope testrunner script
 dev-python/zstandard 0.8.1-r1 0.14.0-r1: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
