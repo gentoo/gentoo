@@ -40,7 +40,7 @@ src_configure() {
 		-DHAVE_RULES="$(usex pcre)"
 		-DBUILD_GUI="$(usex qt5)"
 		-DUSE_Z3="$(usex z3)"
-		-DFILESDIR="${EROOT}/usr/share/${PN}/"
+		-DFILESDIR="usr/share/${PN}/"
 		-ENABLE_OSS_FUZZ=OFF
 	)
 	cmake-utils_src_configure
@@ -59,7 +59,7 @@ src_compile() {
 src_install() {
 	# it's not autotools-based, so "${ED}" here, not "${D}", bug 531760
 	emake install DESTDIR="${ED}" \
-		FILESDIR="${EROOT}/usr/share/${PN}/"
+		FILESDIR="usr/share/${PN}/"
 
 	insinto "/usr/share/${PN}/cfg"
 	doins cfg/*.cfg
