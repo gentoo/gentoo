@@ -2001,7 +2001,7 @@ app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect an
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 2.1.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
-app-emulation/libvirt 6.7.0 6.8.0-r1 6.9.0-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.7.0 6.8.0-r1 6.9.0-r1 6.10.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.5: LinuX Containers userspace utilities
@@ -8380,7 +8380,7 @@ dev-python/libpillowfight 0.3.0: Small library containing various image processi
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.0 0.20.1: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.3 0.8.5: python api for tmux
-dev-python/libvirt-python 6.7.0 6.8.0 6.9.0 9999: libvirt Python bindings
+dev-python/libvirt-python 6.7.0 6.8.0 6.9.0 6.10.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
@@ -9879,7 +9879,7 @@ dev-ruby/domain_name 0.5.20180417 0.5.20190701: Domain Name manipulation library
 dev-ruby/dotenv 2.7.6: Loads environment variables from .env into ENV
 dev-ruby/duktape-rb 2.3.0.0-r2: Ruby bindings to the Duktape JavaScript interpeter
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
-dev-ruby/ecma-re-validator 0.2.0 0.2.1: Validate a regular expression string against what ECMA-262 can actually do
+dev-ruby/ecma-re-validator 0.2.0 0.2.1 0.3.0: Validate a regular expression string against what ECMA-262 can actually do
 dev-ruby/ed25519 1.2.4: Library for the Ed25519 public-key signature system
 dev-ruby/elasticsearch 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch module
 dev-ruby/elasticsearch-api 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch-api module
@@ -10612,7 +10612,7 @@ dev-util/clazy 1.7-r1 1.8: Compiler plugin which allows clang to understand Qt s
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 3.0.20.11.20 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2.4: A complete toolset for C and C++ development
-dev-util/cloc 1.84: Count Lines of Code
+dev-util/cloc 1.84 1.86: Count Lines of Code
 dev-util/cmake 3.13.5 3.16.5 3.17.4-r1 3.18.4 3.18.5 3.19.0 3.19.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -10625,7 +10625,7 @@ dev-util/conan 1.28.0 1.28.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0 1.3 9999: Create C parsers for libconfig and command-line
 dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects from cookiecutters (project templates)
-dev-util/cppcheck 1.86 1.87 1.88 9999: Static analyzer of C/C++ code
+dev-util/cppcheck 1.88 2.2: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
@@ -14528,7 +14528,7 @@ net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
 net-firewall/ebtables 2.0.11-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6-r2: iptables firewall generator
-net-firewall/firewalld 0.7.1-r3 0.7.3-r1: A firewall daemon with D-BUS interface providing a dynamic firewall
+net-firewall/firewalld 0.7.1-r3 0.7.3-r1 0.9.1: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
