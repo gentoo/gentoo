@@ -30,5 +30,3 @@ DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 "
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
