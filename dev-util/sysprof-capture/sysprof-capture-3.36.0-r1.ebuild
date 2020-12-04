@@ -23,12 +23,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default
-	# We want to ship org.gnome.Sysprof3.Profiler.xml here for the benefit of x11-wm/mutter
-	sed -i -e "s|if get_option('libsysprof')|if true|g" src/meson.build || die
-}
-
 src_configure() {
 	local emesonargs=(
 		-Denable_gtk=false
