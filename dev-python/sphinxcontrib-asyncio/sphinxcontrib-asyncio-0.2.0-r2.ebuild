@@ -19,7 +19,8 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
-RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]
+	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]"
 
 python_compile_all() {
 	use doc && emake -C docs html
