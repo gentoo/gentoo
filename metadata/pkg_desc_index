@@ -5715,7 +5715,6 @@ dev-lua/lua-zlib 1.2 1.2-r100: Simple streaming interface to zlib for Lua
 dev-lua/lua_cliargs 2.5_p5 3.0_p1 3.0_p2 3.0_p2-r100: A command-line argument parsing module for Lua
 dev-lua/luacheck 0.20.0-r1 0.23.0-r1 0.23.0-r100: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8 0.14.0 0.14.0-r100: A simple coverage analyzer for Lua scripts
-dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
 dev-lua/luadbi 0.7.2 0.7.2-r101: A database interface library for Lua
 dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.6 0.4.6-r100: Binding of libevent for Lua
@@ -11922,11 +11921,11 @@ gui-libs/amtk 5.0.2: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/greetd 0.6.1: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
-gui-libs/libwpe 1.4.0.1 1.8.0: Platform-agnostic interfaces for WPE WebKit
+gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wf-config 0.5.0 0.6.0 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
-gui-libs/wpebackend-fdo 1.4.0 1.8.0: WPE backend designed for Linux desktop systems
+gui-libs/wpebackend-fdo 1.8.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2: Wayland compositor inspired by CWM
 gui-wm/sway 1.5 1.5.1 9999: i3-compatible Wayland window manager
@@ -14886,7 +14885,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.28.4 2.30.3: Open source web browser engine
+net-libs/webkit-gtk 2.30.3: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
