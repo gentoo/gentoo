@@ -16,6 +16,11 @@ IUSE="perl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	|| (
+		dev-libs/apr-util[openssl]
+		dev-libs/apr-util[libressl]
+		dev-libs/apr-util[nss]
+	)
 	perl? (
 		>=dev-perl/ExtUtils-XSBuilder-0.23
 		virtual/perl-version
