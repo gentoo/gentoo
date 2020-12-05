@@ -81,7 +81,7 @@ COMMON_DEPEND="
 		>=kde-frameworks/kbookmarks-${KFMIN}:5
 	)
 	mediaplayer? (
-		media-libs/qtav[opengl]
+		media-libs/qtav[opengl(+)]
 		media-video/ffmpeg:=
 	)
 	opengl? (
