@@ -22,9 +22,9 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
-	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
-	parted pcap policykit +qemu rbd sasl selinux +udev +vepa
+	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
+	iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
+	parted pcap policykit +qemu rbd sasl selinux +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
 "
 
@@ -33,9 +33,7 @@ REQUIRED_USE="
 	libvirtd? ( || ( lxc openvz qemu virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
-	policykit? ( dbus )
 	qemu? ( libvirtd )
-	vepa? ( macvtap )
 	virt-network? ( libvirtd )
 	virtualbox? ( libvirtd )
 	xen? ( libvirtd )"
@@ -67,6 +65,7 @@ RDEPEND="
 	net-libs/libtirpc
 	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
+	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-devel/gettext
 	sys-libs/ncurses:0=
@@ -74,7 +73,6 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
-	dbus? ( sys-apps/dbus )
 	dtrace? ( dev-util/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( sys-fs/fuse:0= )
@@ -171,9 +169,6 @@ pkg_setup() {
 	kernel_is lt 4 7 && use lxc && CONFIG_CHECK+="
 		~DEVPTS_MULTIPLE_INSTANCES"
 
-	use macvtap && CONFIG_CHECK+="
-		~MACVTAP"
-
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_MARK_T
 		~BRIDGE_NF_EBTABLES
@@ -230,7 +225,6 @@ src_configure() {
 		$(meson_use apparmor apparmor_profiles)
 		$(meson_feature audit)
 		$(meson_feature caps capng)
-		$(meson_feature dbus)
 		$(meson_feature dtrace)
 		$(meson_feature firewalld)
 		$(meson_feature fuse)
@@ -243,7 +237,6 @@ src_configure() {
 		$(meson_feature lvm storage_lvm)
 		$(meson_feature lvm storage_mpath)
 		$(meson_feature lxc driver_lxc)
-		$(meson_feature macvtap)
 		$(meson_feature nls)
 		$(meson_feature numa numactl)
 		$(meson_feature numa numad)
@@ -257,14 +250,12 @@ src_configure() {
 		$(meson_feature sasl)
 		$(meson_feature selinux)
 		$(meson_feature udev)
-		$(meson_feature vepa virtualport)
 		$(meson_feature virt-network driver_network)
 		$(meson_feature virtualbox driver_vbox)
 		$(meson_feature wireshark-plugins wireshark_dissector)
 		$(meson_feature xen driver_libxl)
 		$(meson_feature zfs storage_zfs)
 
-		-Dhal=disabled
 		-Dnetcf=disabled
 		-Dsanlock=disabled
 
@@ -284,13 +275,6 @@ src_configure() {
 }
 
 src_test() {
-	# remove problematic tests, bug #591416, bug #591418
-	sed -i -e 's#commandtest$(EXEEXT) # #' \
-		-e 's#virfirewalltest$(EXEEXT) # #' \
-		-e 's#nwfilterebiptablestest$(EXEEXT) # #' \
-		-e 's#nwfilterxml2firewalltest$(EXEEXT)$##' \
-		tests/Makefile
-
 	export VIR_TEST_DEBUG=1
 	meson_src_test
 }
