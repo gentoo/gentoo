@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-05)
+# Relies on gtkdoc-mktmpl which was removed from gtk-doc-1.26
+# Bug #740690
+x11-libs/colord-gtk doc
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-04)
 # Mask the experimental targets in release ebuilds.
 <dev-ml/llvm-ocaml-11 llvm_targets_AVR
