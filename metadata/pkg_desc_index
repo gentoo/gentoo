@@ -9070,7 +9070,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2 9999: Python 3 library for XMPP
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.8.8 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.8.8 0.8.9 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1-r1: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
@@ -10803,7 +10803,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7 0.7.9 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -13767,7 +13767,7 @@ media-sound/jack-audio-connection-kit 0.125.0-r1: A low-latency audio server
 media-sound/jack-keyboard 2.7.2-r1: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.8_rc1-r1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0-r1: Utilities for MIDI streams and files using Jack MIDI
-media-sound/jack2 1.9.14 1.9.16 9999: Jackdmp jack implemention for multi-processor machine
+media-sound/jack2 1.9.16 9999: Jackdmp jack implemention for multi-processor machine
 media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
@@ -16923,7 +16923,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middlewa
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.13-r1 9999: a framework for package management
+sys-apps/pkgcore 0.10.13-r1 0.10.14 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
@@ -18489,7 +18489,7 @@ x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/unclutter-xfixes 1.5 1.5-r1: A rewrite of unclutter using the x11-xfixes extension
 x11-misc/urxvt-font-size 1.3 9999: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.3-r1: Perl extensions for rxvt-unicode
-x11-misc/urxvt-tabbedex 20.09: An extended version of rxvt-unicode's tabbed perl extension
+x11-misc/urxvt-tabbedex 20.09 20.49: An extended version of rxvt-unicode's tabbed perl extension
 x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode terminal emulator
 x11-misc/util-macros 1.19.2-r2: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.3 1.4 99999: Displays info about your card's VDPAU support
