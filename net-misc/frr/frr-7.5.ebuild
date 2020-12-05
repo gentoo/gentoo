@@ -14,9 +14,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="doc fpm grpc ipv6 kernel_linux nhrp ospfapi pam rpki snmp systemd"
+IUSE="doc fpm grpc ipv6 kernel_linux nhrp ospfapi pam rpki snmp systemd test"
 
 COMMON_DEPEND="
+	${PYTHON_DEPS}
 	acct-user/frr
 	dev-libs/json-c:0=
 	>=net-libs/libyang-1.0.184
@@ -30,19 +31,18 @@ COMMON_DEPEND="
 "
 
 BDEPEND="
-	${COMMON_DEPEND}
 	doc? ( dev-python/sphinx )
 	sys-devel/flex
 	virtual/yacc
 "
 
 DEPEND="
-	${PYTHON_DEPS}
 	${COMMON_DEPEND}
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
 "
 
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
 	!!net-misc/quagga
 "
@@ -52,6 +52,8 @@ PATCHES=(
 )
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 # FRR tarballs have weird format.
 S="${WORKDIR}/frr-${P}"
@@ -142,4 +144,7 @@ src_install() {
 	# Install init scripts
 	systemd_dounit tools/frr.service
 	newinitd "${FILESDIR}/frr-openrc-v1" frr
+
+	# Conflict files, installed by net-libs/libsmi, bug #758383
+	rm "${D}/usr/share/yang/ietf-interfaces.yang" || die
 }
