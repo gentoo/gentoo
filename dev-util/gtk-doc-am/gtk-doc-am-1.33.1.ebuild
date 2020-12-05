@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="gtk-doc"
 inherit gnome.org
 
 DESCRIPTION="Automake files from gtk-doc"
-HOMEPAGE="https://www.gtk.org/gtk-doc/"
+HOMEPAGE="https://wiki.gnome.org/DocumentationProject/GtkDoc"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
