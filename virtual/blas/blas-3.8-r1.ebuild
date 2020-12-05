@@ -9,10 +9,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd
 IUSE="eselect-ldso"
 
 RDEPEND="
-	>=sci-libs/lapack-3.8[eselect-ldso?]
+	>=sci-libs/lapack-3.8[eselect-ldso(+)?]
 	eselect-ldso? ( || (
-		>=sci-libs/lapack-3.8[eselect-ldso]
-		sci-libs/openblas[eselect-ldso]
-		sci-libs/blis[eselect-ldso] ) )
+		>=sci-libs/lapack-3.8[eselect-ldso(+)]
+		sci-libs/openblas[eselect-ldso(+)]
+		sci-libs/blis[eselect-ldso(+)] ) )
 "
 DEPEND="${RDEPEND}"
