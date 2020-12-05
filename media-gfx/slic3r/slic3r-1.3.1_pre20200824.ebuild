@@ -3,16 +3,15 @@
 
 EAPI=7
 
-inherit eutils git-r3 perl-module
+inherit desktop eutils perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/Slic3r/Slic3r.git"
+SRC_URI="https://github.com/alexrj/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
 RESTRICT="!test? ( test )"
 
@@ -66,18 +65,14 @@ DEPEND="${RDEPEND}
 	test? (	virtual/perl-Test-Harness
 		virtual/perl-Test-Simple )"
 
-S="${WORKDIR}/slic3r-${PV}"
+S="${WORKDIR}/Slic3r-92abbc42dfdd5385c1f9c3a450e2f3da835f8b8d"
 PERL_S="${S}/xs"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.1_pre20200824-boost-1.73.patch"
+	"${FILESDIR}/${P}-boost-1.73.patch"
 	"${FILESDIR}/${PN}-1.3.0-no-locallib.patch"
 	"${FILESDIR}/${PN}-1.3.0-use-system-clipper.patch"
 )
-
-src_unpack() {
-	git-r3_src_unpack
-}
 
 src_prepare() {
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
@@ -102,13 +97,13 @@ src_install() {
 	insinto "${VENDOR_LIB}"
 	doins -r lib/Slic3r.pm lib/Slic3r
 
-	insinto "${VENDOR_LIB}/Slic3r"
+	insinto "${VENDOR_LIB}"/Slic3r
 	doins -r var
 
-	exeinto "${VENDOR_LIB}/Slic3r"
+	exeinto "${VENDOR_LIB}"/Slic3r
 	doexe slic3r.pl
 
-	dosym "${VENDOR_LIB}/Slic3r/slic3r.pl" "${EPREFIX}/usr/bin/slic3r.pl"
+	dosym "${VENDOR_LIB}/Slic3r/slic3r.pl" /usr/bin/slic3r.pl
 
 	make_desktop_entry "slic3r.pl --gui %F" \
 		Slic3r \
