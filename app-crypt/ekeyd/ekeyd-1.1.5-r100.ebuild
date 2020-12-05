@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-1 )
 
-inherit multilib linux-info lua-single toolchain-funcs udev systemd
+inherit linux-info lua-single systemd toolchain-funcs udev
 
 DESCRIPTION="Entropy Key userspace daemon"
 HOMEPAGE="http://www.entropykey.co.uk/"
