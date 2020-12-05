@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake python-utils-r1 toolchain-funcs
+inherit cmake cuda python-utils-r1 toolchain-funcs
 
 MY_PV="$(ver_rs "1-3" '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
@@ -44,8 +44,6 @@ S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
-	"${FILESDIR}/${PN}-3.3.0-add-CUDA9-compatibility.patch"
-	"${FILESDIR}/${PN}-3.4.3-add-CUDA11-compatibility.patch"
 	"${FILESDIR}/${PN}-3.4.0-0001-documentation-CMakeLists.txt-force-python2.patch"
 	"${FILESDIR}/${P}-install-tutorials-into-bin.patch"
 )
@@ -58,6 +56,12 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	eapply_user
+	cmake_src_prepare
+	use cuda && cuda_add_sandbox
 }
 
 src_configure() {
@@ -78,6 +82,34 @@ src_configure() {
 		-DNO_TESTS=$(usex !test)
 		-DNO_TUTORIALS=$(usex !tutorials)
 	)
+
+	if use cuda; then
+		if [[ *$(gcc-version)* != $(cuda-config -s) ]]; then
+			ewarn "Opensubdiv is being built with Nvidia CUDA support."
+			ewarn "Your default compiler version $(gcc-version) is not supported by the currently installed CUDA."
+			ewarn ""
+			ewarn "Your CUDA version supports $(cuda_gccdir)/$(tc-getCC)"
+			ewarn ""
+			ewarn "If the build fails try changing the compiler version using gcc-config"
+			ewarn "or overriding PATH, CC and CXX for this package using package.env"
+		fi
+
+		if [[ -z "${OSD_CUDA_COMPUTE_CAPABILITIES}" ]]; then
+			ewarn "Opensubdiv is being built with CUDA 2.0 support, which was deprecated in"
+			ewarn "nvidia-cuda-utils-9. This may also not be optimal for your GPU."
+			ewarn ""
+			ewarn "To select the optimal CUDA support for your GPU,"
+			ewarn "set OSD_CUDA_COMPUTE_CAPABILITIES in your make.conf and re-emerge opensubdiv"
+			ewarn "For example, to use CUDA capability 3.5, add OSD_CUDA_COMPUTE_CAPABILITIES=sm_35"
+			ewarn "or to use JIT compilation, add OSD_CUDA_COMPUTE_CAPABILITIES=compute_35"
+			ewarn ""
+			ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
+			ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
+			mycmakeargs+=( -DOSD_CUDA_NVCC_FLAGS="--gpu-architecture;compute_20" )
+		else
+			mycmakeargs+=( -DOSD_CUDA_NVCC_FLAGS="--gpu-architecture;${OSD_CUDA_COMPUTE_CAPABILITIES}" )
+		fi
+	fi
 
 	# fails with building cuda kernels when using multiple jobs
 	export MAKEOPTS="-j1"
