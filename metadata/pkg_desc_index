@@ -1634,7 +1634,7 @@ app-doc/doxygen 1.8.17 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200704 20200913 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
-app-doc/geant-docs 4.10.6 4.10.6c: User documentation for Geant4 physics simulation toolkit
+app-doc/geant-docs 4.10.6 4.10.6c 4.10.7: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 4.2: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
@@ -16415,8 +16415,8 @@ sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools fo
 sci-physics/clhep 2.4.1.3-r2 2.4.4.0: High Energy Physics C++ library
 sci-physics/espresso 4.0_pre20170228 4.0.0-r2 4.1.3 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/fastjet 3.0.6-r1: Fast implementation of several recombination jet algorithms
-sci-physics/geant 4.10.6-r1 4.10.6_p1-r1 4.10.6_p2 4.10.6.3: Toolkit for simulation of passage of particles through matter
-sci-physics/geant-data 4.10.6-r1 4.10.6_p1-r1 4.10.6.3: Data files for Geant4 physical processes
+sci-physics/geant 4.10.6-r1 4.10.6_p1-r1 4.10.6_p2 4.10.6.3 4.10.7: Toolkit for simulation of passage of particles through matter
+sci-physics/geant-data 4.10.6-r1 4.10.6_p1-r1 4.10.6.3 4.10.7: Data files for Geant4 physical processes
 sci-physics/geant-vmc 4.4.0 4.5.1_p1 9999: Virtual Monte Carlo Geant4 implementation
 sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Particle Properties
