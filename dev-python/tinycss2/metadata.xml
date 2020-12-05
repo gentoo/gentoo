@@ -9,6 +9,7 @@
     <email>titanofold@gentoo.org</email>
     <name>Aaron W. Swenson</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">tinycss2</remote-id>
     <remote-id type="github">Kozea/tinycss2</remote-id>
