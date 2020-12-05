@@ -3,7 +3,8 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..2} )
+LUA_COMPAT=( lua5-{1..3} )
+LUA_REQ_USE="deprecated"
 
 inherit lua-single systemd tmpfiles toolchain-funcs
 
