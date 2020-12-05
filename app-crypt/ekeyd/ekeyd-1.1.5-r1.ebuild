@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib linux-info toolchain-funcs udev systemd
+inherit linux-info systemd toolchain-funcs udev
 
 DESCRIPTION="Entropy Key userspace daemon"
 HOMEPAGE="http://www.entropykey.co.uk/"
