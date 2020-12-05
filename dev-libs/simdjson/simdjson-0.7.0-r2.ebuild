@@ -23,7 +23,7 @@ BDEPEND="
 	sys-apps/grep
 "
 DEPEND="
-	tools? ( dev-libs/cxxopts )
+	tools? ( dev-libs/cxxopts:= )
 "
 
 REQUIRED_USE="test? ( tools )"
