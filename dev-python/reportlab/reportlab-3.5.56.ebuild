@@ -17,20 +17,20 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	media-libs/freetype
-	media-libs/libart_lgpl:=
+	media-libs/libart_lgpl
 	sys-libs/zlib:="
 RDEPEND="
 	${DEPEND}
 	dev-python/pillow[tiff,truetype,jpeg(+),${PYTHON_USEDEP}]"
 BDEPEND="
-	test? ( ${RDEPEND} )
-	app-arch/unzip"
+	app-arch/unzip
+	test? ( ${RDEPEND} )"
 
 distutils_enable_sphinx docs/source
 
