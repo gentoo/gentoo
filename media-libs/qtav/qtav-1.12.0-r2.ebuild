@@ -15,17 +15,16 @@ https://dev.gentoo.org/~johu/distfiles/${P}-capi.h-${CAPI_HASH}.xz"
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="amd64"
-IUSE="gui opengl portaudio pulseaudio vaapi"
-REQUIRED_USE="gui? ( opengl )"
+IUSE="gui portaudio pulseaudio vaapi"
 
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
-	gui? ( dev-qt/qtsql:5 )
 	media-video/ffmpeg:=
-	opengl? ( dev-qt/qtopengl:5 )
+	gui? ( dev-qt/qtsql:5 )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 "
@@ -50,8 +49,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=OFF
 		-DBUILD_EXAMPLES=OFF
+		-DBUILD_QT5OPENGL=ON # bug 740172
 		-DBUILD_PLAYERS=$(usex gui)
-		-DBUILD_QT5OPENGL=$(usex opengl)
 		-DHAVE_PORTAUDIO=$(usex portaudio)
 		-DHAVE_PULSE=$(usex pulseaudio)
 		-DHAVE_VAAPI=$(usex vaapi)
