@@ -5610,7 +5610,7 @@ dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 9999: Radeon Open Compute Device 
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-runtime 3.8.0 3.9.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.8.0 3.9.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 3.7.0 3.8.0 3.9.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/roct-thunk-interface 3.7.0 3.8.0 3.9.0 3.10.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.31: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 9.2.0 9.3.0: Simulation Description Format (SDF) parser
@@ -17496,7 +17496,7 @@ sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs genera
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.4.245 4.4.246 4.4.247 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.9.245 4.9.246 4.9.247 4.14.202 4.14.205 4.14.206 4.14.207 4.14.208 4.14.209 4.14.210 4.19.152 4.19.156 4.19.157 4.19.158 4.19.159 4.19.160 4.19.161 5.4.72 5.4.76 5.4.77 5.4.78 5.4.79 5.4.80-r1 5.4.81 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
