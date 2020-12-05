@@ -17,6 +17,7 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	net-wireless/sigutils
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
