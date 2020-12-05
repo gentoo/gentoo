@@ -42,7 +42,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/hunspell-1.7:=
 	>=app-text/podofo-0.9.6_pre20171027:=
 	>=app-text/poppler-0.26.5[qt5]
-	>=dev-libs/chmlib-0.40:=
 	dev-libs/glib:2=
 	dev-libs/hyphen:=
 	>=dev-libs/icu-57.1:=
@@ -67,6 +66,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/netifaces-0.10.5[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pillow-3.2.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/psutil-4.3.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pychm-0.8.6[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/PyQt5-5.12[gui,svg,widgets,network,printsupport,${PYTHON_MULTI_USEDEP}]
@@ -216,7 +216,6 @@ src_install() {
 		--staging-root="${ED}/usr" \
 		--staging-libdir="${ED}/usr/${libdir}" || die
 
-	rm "${ED}/usr/share/applications/defaults.list" || die
 	find "${ED}"/usr/share -type d -empty -delete
 
 	cd "${ED}"/usr/share/calibre/fonts/liberation || die
