@@ -572,7 +572,7 @@ app-admin/cpulimit 2.4: Limits the CPU usage of a process
 app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hosts using the consul lock feature
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during postinstall on Cygwin
-app-admin/diamond 4.0.515.20170311 4.0.515.20200620: Python daemon that collects and publishes system metrics
+app-admin/diamond 4.0.515.20170311-r1 4.0.515.20200620-r1: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0 6.6.1: Run commands as super user or another user, alternative to sudo from OpenBSD
@@ -11816,7 +11816,7 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33 34: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-bing-wallpaper 27: Changes your wallpaper daily to the bing.com background image
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16: Allow to connect bluetooth paired devices from gnome control panel
+gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16-r1: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20200901: Control the blur effect on gnome-shell lock screen
 gnome-extra/gnome-shell-extension-dash-to-panel 39 40: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1: A GNOME Shell extension for providing desktop icons
