@@ -38,6 +38,10 @@ src_compile() {
 	emake "${myemakeargs[@]}" lib-bin
 }
 
+src_test() {
+	emake XLDFLAGS="-shared" test
+}
+
 src_install() {
 	local myemakeargs=(
 		"PREFIX=/usr"
