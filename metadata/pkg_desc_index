@@ -10830,7 +10830,7 @@ dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects 
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rocm-cmake 3.8.0 3.9.0 9999: Radeon Open Compute CMake Modules
+dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocminfo 3.7.0 3.8.0 3.9.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.19.0-r1 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
