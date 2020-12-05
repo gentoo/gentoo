@@ -16,6 +16,9 @@ stop() {
 	ebegin "Stopping ${SVCNAME}"
 	#start-stop-daemon --stop -R 80 --pidfile /run/${SVCNAME}.pid
 	# diamond doesn't kill its children, so work around that for now
-	pstree -Tp `cat /run/${SVCNAME}.pid` | grep -o '([0-9]\+)' | tr '()' ' ' | xargs kill
+	pid=$(< /run/${SVCNAME}.pid)
+	if [ -n ${pid} ] && [ ${pid} -gt 1 ] ; then
+		pstree -Tp ${pid} | grep -o '([0-9]\+)' | tr '()' ' ' | xargs kill
+	fi
 	eend $?
 }
