@@ -15,15 +15,23 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0 Boost-1.0"
 SLOT="0/4"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="test"
+IUSE="test tools"
 
 BDEPEND="
 	sys-apps/file
 	sys-apps/findutils
 	sys-apps/grep
 "
+DEPEND="
+	tools? ( dev-libs/cxxopts )
+"
 
+REQUIRED_USE="test? ( tools )"
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}/simdjson-0.7.0-dont-bundle-cssopts.patch"
+)
 
 src_prepare() {
 	sed -e 's:-Werror ::' -i cmake/simdjson-flags.cmake || die
@@ -32,7 +40,9 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(usex test '' '-DSIMDJSON_JUST_LIBRARY=ON')
+		$(usex tools '' '-DSIMDJSON_JUST_LIBRARY=ON')
+		-DSIMDJSON_GOOGLE_BENCHMARKS=OFF
+		-DSIMDJSON_COMPETITION=OFF
 	)
 
 	cmake_src_configure
