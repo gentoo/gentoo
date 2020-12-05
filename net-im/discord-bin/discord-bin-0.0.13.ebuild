@@ -54,13 +54,15 @@ S="${WORKDIR}"
 QA_PREBUILT="
 	opt/discord/${MY_BIN}
 	opt/discord/chrome-sandbox
+	opt/discord/libffmpeg.so
+	opt/discord/libvk_swiftshader.so
+	opt/discord/libvulkan.so
 	opt/discord/libEGL.so
 	opt/discord/libGLESv2.so
+	opt/discord/libVkICD_mock_icd.so
 	opt/discord/swiftshader/libEGL.so
 	opt/discord/swiftshader/libGLESv2.so
 	opt/discord/swiftshader/libvk_swiftshader.so
-	opt/discord/libVkICD_mock_icd.so
-	opt/discord/libffmpeg.so
 "
 
 CONFIG_CHECK="~USER_NS"
