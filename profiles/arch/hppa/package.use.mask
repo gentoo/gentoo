@@ -4,7 +4,7 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Matt Turner (2020-12-05)
+# Matt Turner <mattst88@gentoo.org> (2020-12-05)
 # dev-python/parameterized is not keyworded
 dev-util/gtk-doc test
 
