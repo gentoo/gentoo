@@ -1,0 +1,15 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-09-26 09:45:31.533270806 +1000
++++ b/CMakeLists.txt	2020-09-26 09:46:38.419257996 +1000
+@@ -578,8 +578,10 @@
+                 set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_11 )
+             elseif (CUDA_VERSION_MAJOR LESS 9)
+                 set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_20 )
+-            else()
++            elseif (CUDA_VERSION_MAJOR LESS 11)
+                 set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_30 )
++            else()
++                set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_35 )
+             endif()
+         endif()
+     endif()
