@@ -2504,7 +2504,7 @@ app-misc/ranger 1.9.2 1.9.3 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/rbutil 1.4.1: Rockbox open source firmware manager for music players
 app-misc/realpath 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.25.19: A personal full text search package
+app-misc/recoll 1.25.19 1.27.12: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.02.00 03.03.00 03.03.01: Ridiculously functional reminder program
