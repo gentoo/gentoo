@@ -30,6 +30,7 @@ src_install() {
 	rm -rf README.md LICENSE Makefile schemas || die
 	insinto /usr/share/gnome-shell/extensions/bluetooth-quick-connect@bjarosze.gmail.com
 	doins -r *
+	dosym ../../../../../usr/share/glib-2.0/schemas /usr/share/gnome-shell/extensions/bluetooth-quick-connect@bjarosze.gmail.com/schemas
 }
 
 pkg_preinst() {
