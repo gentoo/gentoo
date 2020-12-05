@@ -26,6 +26,7 @@ RDEPEND="
 # Note: ${PYTHON_USEDEP} needs to go verbatim
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.14[${MULTILIB_USEDEP}]
+	elibc_Darwin? ( dev-libs/libpthread-stubs )
 	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
 	doc? ( app-doc/doxygen[dot] )
 	dev-libs/libxslt
