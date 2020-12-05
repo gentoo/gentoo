@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner (2020-12-05)
+# dev-python/parameterized is not keyworded
+dev-util/gtk-doc test
+
 # Kent Fredric <kentnl@gentoo.org> (2020-10-19)
 # lapack and friends don't make much sense on m68k
 # and aren't keyworded

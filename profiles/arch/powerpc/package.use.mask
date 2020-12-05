@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner (2020-12-05)
+# dev-python/parameterized is not keyworded
+dev-util/gtk-doc test
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-11-05)
 # makes no sense on power
 sys-apps/fwupd amt dell uefi
