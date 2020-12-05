@@ -190,7 +190,7 @@ src_test() {
 
 pkg_postinst() {
 	if has_version "app-editor/emacs"; then
-		if ! has_version "app-emacs/emacs-mode"; then
+		if ! has_version "app-emacs/lua-mode"; then
 			einfo "Install app-emacs/lua-mode for lua support for emacs"
 		fi
 	fi
