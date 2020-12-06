@@ -15,9 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="nls"
 
 # File collision w/ headers of the deprecated cpufrequtils
-RDEPEND="sys-apps/pciutils
-	!<sys-apps/linux-misc-apps-3.6-r2
-	!sys-power/cpufrequtils"
+RDEPEND="sys-apps/pciutils"
 DEPEND="${RDEPEND}
 	virtual/os-headers
 	nls? ( sys-devel/gettext )"
@@ -38,6 +36,7 @@ src_configure() {
 	export localedir="${EPREFIX}/usr/share/locale"
 	export docdir="${EPREFIX}/usr/share/doc/${PF}"
 	export confdir="${EPREFIX}/etc"
+	export bash_completion_dir="${EPREFIX}/usr/share/bash-completion/completions"
 	export V=1
 	export NLS=$(usex nls true false)
 }
