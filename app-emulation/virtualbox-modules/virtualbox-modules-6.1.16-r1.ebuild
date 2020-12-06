@@ -14,7 +14,7 @@ HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="~amd64"
 IUSE="pax_kernel"
