@@ -572,6 +572,7 @@ gnome-base/orbit
 >=games-util/slade-3.1.12a-r100
 >=mail-filter/imapfilter-2.6.16-r100
 >=media-gfx/geeqie-1.5.1-r1
+>=media-libs/libquvi-scripts-0.9.20131130-r100
 >=media-sound/aqualung-1.1-r100
 >=net-analyzer/suricata-6.0.0-r100
 >=net-im/prosody-0.11.7-r100
