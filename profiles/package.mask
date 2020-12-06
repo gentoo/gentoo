@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-12-06)
+# Various meson port issues.
+# Bug #758770, #758773, #758722, #758731, #758734
+=dev-util/gtk-doc-am-1.33.1
+=dev-util/gtk-doc-1.33.1
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-03)
 # Explicit namespace support was necessary for Python 2 only.  Empty
 # directories work best for Python 3.
