@@ -164,11 +164,6 @@ dev-libs/libmissing
 # #697444, #699320, #708058, #746230, Removal in 30 days.
 games-emulation/fakenes
 
-# Joonas Niilola <juippis@gentoo.org> (2020-11-22)
-# Abandoned upstream, unbuildable, unkeyworded in ::gentoo. 
-# Removal in 14 days. Bug #https://bugs.gentoo.org/752456
-app-accessibility/simon
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-21)
 # Dead upstream, depends on deprecated kde-frameworks/kmediaplayer
 # Masked for removal in 30 days.
