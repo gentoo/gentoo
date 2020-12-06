@@ -29,10 +29,5 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests pytest
+distutils_enable_tests --install pytest
 distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
-
-python_test() {
-	distutils_install_for_testing
-	pytest -vv || die "Tests failed with ${EPYTHON}"
-}
