@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib multilib-minimal portability toolchain-funcs versionator
+inherit multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
@@ -12,34 +12,31 @@ SRC_URI="http://www.lua.org/ftp/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="5.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+deprecated emacs readline static"
+IUSE="+deprecated readline static"
 
 RDEPEND="readline? ( >=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}] )
 	app-eselect/eselect-lua
 	!dev-lang/lua:0"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
-PDEPEND="emacs? ( app-emacs/lua-mode )"
-
-SAN_SLOT="${SLOT//.}"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/lua${SLOT}/luaconf.h
 )
 
-src_prepare() {
-	local PATCH_PV=$(get_version_component_range 1-2)
+PATCHES=(
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-make-r2.patch"
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-module_paths.patch"
+)
 
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make-r2.patch
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-module_paths.patch
+src_prepare() {
+	default
 
 	# use glibtool on Darwin (versus Apple libtool)
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e '/LIBTOOL = /s:libtool:glibtool:' \
 			Makefile src/Makefile || die
 	fi
-
-	#EPATCH_SOURCE="${FILESDIR}/${PV}" EPATCH_SUFFIX="upstream.patch" epatch
 
 	# correct lua versioning
 	sed -i -e 's/\(LIB_VERSION = \)6:1:1/\16:5:1/' src/Makefile
@@ -48,12 +45,12 @@ src_prepare() {
 
 	if ! use deprecated ; then
 		# patches from 5.1.4 still apply
-		epatch "${FILESDIR}"/${PN}-5.1.4-deprecated.patch
-		epatch "${FILESDIR}"/${PN}-5.1.4-test.patch
+		eapply "${FILESDIR}"/${PN}-5.1.4-deprecated.patch
+		eapply "${FILESDIR}"/${PN}-5.1.4-test.patch
 	fi
 
 	if ! use readline ; then
-		epatch "${FILESDIR}"/${PN}-${PATCH_PV}-readline.patch
+		eapply "${FILESDIR}"/${PN}-$(ver_cut 1-2)-readline.patch
 	fi
 
 	# Using dynamic linked lua is not recommended for performance
@@ -63,7 +60,7 @@ src_prepare() {
 	# compiler (built statically) nor the lua libraries (both shared and static
 	# are installed)
 	if use static ; then
-		epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make_static-r1.patch
+		sed -i -e 's:\(-export-dynamic\):-static \1:' src/Makefile || die
 	fi
 
 	# A slotted Lua uses different directories for headers & names for
@@ -104,7 +101,7 @@ multilib_src_compile() {
 			RPATH="${EPREFIX}/usr/$(get_libdir)/" \
 			LUA_LIBS="${mylibs}" \
 			LIB_LIBS="${liblibs}" \
-			V=$(get_version_component_range 1-2) \
+			V=$(ver_cut 1-2) \
 			gentoo_all
 
 	mv lua_test ../test/lua.static
@@ -119,8 +116,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc HISTORY README
-	dohtml doc/*.html doc/*.png doc/*.css doc/*.gif
+	DOCS="HISTORY README"
+	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
+	einstalldocs
 
 	doicon etc/lua.ico
 
@@ -142,4 +140,12 @@ multilib_src_test() {
 	for test in ${negative}; do
 		test/lua.static test/${test}.lua && die "test $test failed"
 	done
+}
+
+pkg_postinst() {
+	if has_version "app-editor/emacs"; then
+		if ! has_version "app-emacs/lua-mode"; then
+			einfo "Install app-emacs/lua-mode for lua support for emacs"
+		fi
+	fi
 }
