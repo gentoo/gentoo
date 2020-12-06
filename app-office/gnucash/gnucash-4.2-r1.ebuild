@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit cmake gnome2-utils python-single-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A personal finance manager"
-HOMEPAGE="http://www.gnucash.org/"
+HOMEPAGE="https://www.gnucash.org/"
 SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 SLOT="0"
