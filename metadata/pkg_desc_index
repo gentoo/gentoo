@@ -10723,7 +10723,7 @@ dev-util/gprof2dot 2019.11.30: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32-r1: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.32-r1 1.32-r2 1.33.1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.32 1.33.1: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.24.20 3.24.21: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.24.20 3.24.21 3.24.24: GTK update icon cache
 dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
@@ -12799,7 +12799,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.41-r1 6.9.11.44 7.0.10.41-r1 7.0.10.44 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.44 6.9.11.46 7.0.10.44 7.0.10.46 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -18190,7 +18190,7 @@ x11-libs/gl2ps 1.3.9 1.4.0 1.4.2: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.47 0.10.48: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4-r1: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 2.24.32-r1 3.24.20 3.24.22: Gimp ToolKit +
+x11-libs/gtk+ 2.24.32-r1 3.24.20 3.24.22 3.24.24: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.4: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data

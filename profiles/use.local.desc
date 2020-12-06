@@ -8709,6 +8709,7 @@ x11-libs/gdk-pixbuf:X - Build and install the legacy gdk_pixbuf_xlib-2.0 library
 x11-libs/gtk+:broadway - Enable the GDK Broadway backend.
 x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
 x11-libs/gtk+:colord - Use x11-misc/colord for color management in printing
+x11-libs/gtk+:sysprof - Enable profiling data capture support using dev-util/sysprof-capture
 x11-libs/gtkdatabox:glade - Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget
 x11-libs/gtkmathview:mathml - Install additional fonts for proper mathml support.
 x11-libs/gtkmathview:t1lib - Enable media-libs/t1lib support
