@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit autotools
 
 DESCRIPTION="Library for parsing video download links"
 HOMEPAGE="http://quvi.sourceforge.net/"
@@ -32,6 +33,11 @@ BDEPEND="
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-0.9.1-headers-reinstall.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
