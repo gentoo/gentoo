@@ -15,9 +15,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
+	media-libs/libpng:0
+	media-libs/libwebp:0
+	media-libs/tiff:0
+	"
 
-DEPEND="
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "

@@ -70,7 +70,8 @@ pkg_nofetch() {
 	elog "${VMD_DOWNLOAD}"
 	elog "after agreeing to the license and get"
 	elog "https://dev.gentoo.org/~jlec/distfiles/${PN}-1.9.3-gentoo-patches.tar.xz"
-	elog "Place both into your DISTDIR directory"
+	elog "https://dev.gentoo.org/~juippis/distfiles/tmp/vmd-1.9.4-gentoo-plugins.patch"
+	elog "Place them into your DISTDIR directory"
 	elog
 	elog "Due to an upstream bug (https://bugs.gentoo.org/640440) sources"
 	elog "file may get downloaded as a compressed tarball or not. In that case"
