@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	>=net-libs/libhtp-0.5.35
+	>=net-libs/libhtp-0.5.36
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng

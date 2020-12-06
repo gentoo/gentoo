@@ -579,7 +579,7 @@ gnome-base/orbit
 >=mail-filter/imapfilter-2.6.16-r100
 >=media-gfx/geeqie-1.5.1-r1
 >=media-sound/aqualung-1.1-r100
->=net-analyzer/suricata-6.0.0-r100
+>=net-analyzer/suricata-6.0.1-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
