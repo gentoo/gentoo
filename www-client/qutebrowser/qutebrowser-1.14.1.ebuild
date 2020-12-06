@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8} )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit desktop distutils-r1 optfeature xdg-utils
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/cssutils[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.6.1[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.7.2[${PYTHON_USEDEP}]
 	dev-python/pypeg2[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
 	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
@@ -48,14 +48,28 @@ python_install_all() {
 	doicon -s scalable icons/${PN}.svg
 
 	if use scripts; then
-		# Install only those userscripts that have an explicit license header
+		insinto /usr/share/qutebrowser/userscripts/
+		doins misc/userscripts/README.md
 		exeinto /usr/share/qutebrowser/userscripts/
-		doexe misc/userscripts/dmenu_qutebrowser
-		doexe misc/userscripts/openfeeds
-		doexe misc/userscripts/qute-keepass
-		doexe misc/userscripts/qute-pass
-		doexe misc/userscripts/rss
-		doexe misc/userscripts/tor_identity
+		doexe misc/userscripts/cast \
+		      misc/userscripts/dmenu_qutebrowser \
+		      misc/userscripts/format_json \
+		      misc/userscripts/getbib \
+		      misc/userscripts/open_download \
+		      misc/userscripts/openfeeds \
+		      misc/userscripts/password_fill \
+		      misc/userscripts/qute-bitwarden \
+		      misc/userscripts/qutedmenu \
+		      misc/userscripts/qute-keepass \
+		      misc/userscripts/qute-lastpass \
+		      misc/userscripts/qute-pass \
+		      misc/userscripts/readability \
+		      misc/userscripts/readability-js \
+		      misc/userscripts/ripbang \
+		      misc/userscripts/rss \
+		      misc/userscripts/taskadd \
+		      misc/userscripts/tor_identity \
+		      misc/userscripts/view_in_mpv
 	fi
 
 	distutils-r1_python_install_all
