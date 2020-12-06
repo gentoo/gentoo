@@ -8599,7 +8599,7 @@ dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0 2.2.0-r1: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 7.0.0 7.2.0 8.0.1: Python Imaging Library (fork)
-dev-python/pip 20.2.4: Installs python packages -- replacement for easy_install
+dev-python/pip 20.2.4 20.3.1: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.8.13 2020.11.4: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
