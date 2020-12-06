@@ -38,6 +38,7 @@ src_configure() {
 	export localedir="${EPREFIX}/usr/share/locale"
 	export docdir="${EPREFIX}/usr/share/doc/${PF}"
 	export confdir="${EPREFIX}/etc"
+	export bash_completion_dir="${EPREFIX}/usr/share/bash-completion/completions"
 	export V=1
 	export NLS=$(usex nls true false)
 }
