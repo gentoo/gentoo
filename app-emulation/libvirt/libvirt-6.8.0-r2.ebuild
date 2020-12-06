@@ -129,6 +129,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-doc-path.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-6.8.0-fix-libvirt-lxc-dbus.patch
+	"${FILESDIR}"/${PN}-6.8.0-meson-properly-handle-libpcap-if-it-s-explicitly-dis.patch
 )
 
 pkg_setup() {
