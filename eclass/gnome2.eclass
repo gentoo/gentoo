@@ -4,7 +4,7 @@
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
@@ -17,13 +17,14 @@
 GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 
 [[ ${GNOME2_EAUTORECONF} == 'yes' ]] && inherit autotools
-inherit eutils libtool ltprune gnome.org gnome2-utils xdg
+[[ ${EAPI} == [56] ]] && inherit eutils ltprune
+inherit libtool gnome.org gnome2-utils xdg
 
 case ${EAPI:-0} in
 	5)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	6)
+	6|7)
 		EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
@@ -70,8 +71,8 @@ fi
 
 # @ECLASS-VARIABLE: GNOME2_LA_PUNT
 # @DESCRIPTION:
-# It relies on prune_libtool_files (from ltprune.eclass)
-# for this. Available values for GNOME2_LA_PUNT:
+# In EAPIs 5 and 6, it relies on prune_libtool_files (from ltprune.eclass) for
+# this. Later EAPIs use find ... -delete. Available values for GNOME2_LA_PUNT:
 # - "no": will not clean any .la files
 # - "yes": will run prune_libtool_files --modules
 # - If it is not set, it will run prune_libtool_files
@@ -85,7 +86,7 @@ gnome2_src_unpack() {
 		unpack ${A}
 		cd "${S}"
 	else
-		die "gnome2_src_unpack is banned from eapi6"
+		die "gnome2_src_unpack is banned since eapi6"
 	fi
 }
 
@@ -264,11 +265,17 @@ gnome2_src_install() {
 	rm -fr "${ED}/usr/share/applications/mimeinfo.cache"
 
 	# Delete all .la files
-	case "${GNOME2_LA_PUNT}" in
-		yes)    prune_libtool_files --modules;;
-		no)     ;;
-		*)      prune_libtool_files;;
-	esac
+	if has ${EAPI} 5 6; then
+		case "${GNOME2_LA_PUNT}" in
+			yes)    prune_libtool_files --modules;;
+			no)     ;;
+			*)      prune_libtool_files;;
+		esac
+	else
+		if [[ ${GNOME2_LA_PUNT} != 'no' ]]; then
+			find "${ED}" -name '*.la' -delete || die
+		fi
+	fi
 }
 
 # @FUNCTION: gnome2_pkg_preinst
