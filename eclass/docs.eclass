@@ -283,7 +283,7 @@ doxygen_compile() {
 	mkdir -p "${DOCS_OUTDIR}" || die
 
 	pushd "${DOCS_DIR}" || die
-	(cat "${doxyfile}" ; echo "HTML_OUTPUT=${DOCS_OUTDIR}") | doxygen "${DOCS_EXTRA_ARGS}" - || die "${FUNCNAME}: doxygen failed"
+	(cat "${DOCS_CONFIG_NAME}" ; echo "HTML_OUTPUT=${DOCS_OUTDIR}") | doxygen - "${DOCS_EXTRA_ARGS}" || die "${FUNCNAME}: doxygen failed"
 	popd || die
 }
 
