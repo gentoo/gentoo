@@ -5213,7 +5213,7 @@ dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID libra
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptographic schemes
 dev-libs/cudnn 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32 7.6.5.32-r2 8.0.4.30: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
-dev-libs/cxxopts 2.2.1: Lightweight C++ command line option parser
+dev-libs/cxxopts 2.2.1-r1: Lightweight C++ command line option parser
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p14-r2: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.27-r3 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
@@ -5618,7 +5618,7 @@ dev-libs/sdformat 9.2.0 9.3.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.30.6: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02-r1: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
-dev-libs/simdjson 0.4.7 0.6.1 0.7.0-r1: SIMD accelerated C++ JSON library
+dev-libs/simdjson 0.4.7 0.6.1 0.7.0-r2: SIMD accelerated C++ JSON library
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0 2.9.3.0: General-purpose libraries from skarnet.org
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
@@ -7980,7 +7980,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
-dev-python/cffi 1.14.0-r3: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.39.0 0.41.0 0.42.0 0.43.0: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8162,7 +8162,7 @@ dev-python/filetype 1.0.7: Small, dependency-free, fast Python package to infer 
 dev-python/findimports 1.5.2: Python module import analysis tool
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 3.0.0-r1: Fixtures, reusable state for writing clean tests and more
-dev-python/flake8 3.8.1 3.8.3-r1: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/flake8 3.8.1 3.8.3-r1 3.8.4: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.2: Polyfill package for Flake8 plugins
 dev-python/flaky 3.7.0-r1: Plugin for nose or py.test that automatically reruns flaky tests
@@ -8435,7 +8435,7 @@ dev-python/mkdocs 1.1 1.1.2: Project documentation with Markdown
 dev-python/mkdocs-bootstrap 1.1 1.1-r1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 1.1 1.1-r1: Bootswatch themes for MkDocs
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
-dev-python/mock 3.0.5-r2: Rolling backport of unittest.mock for all Pythons
+dev-python/mock 3.0.5-r2 4.0.2: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.20.0 0.21.0: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
@@ -8463,7 +8463,7 @@ dev-python/namespace-paste 1-r1: Namespace package declaration for paste
 dev-python/namespace-repoze 1: Namespace package declaration for repoze
 dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinxcontrib
 dev-python/namespace-zope 1-r1: Namespace package declaration for zope
-dev-python/natsort 7.0.1: Natural sorting for Python
+dev-python/natsort 7.0.1 7.1.0: Natural sorting for Python
 dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manager
 dev-python/nbclient 0.5.1: A client library for executing Jupyter notebooks
 dev-python/nbconvert 5.6.1 6.0.7: Converting Jupyter Notebooks
@@ -8981,7 +8981,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.48: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.48 3.5.56: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0: HTTP library for human beings
@@ -9307,7 +9307,7 @@ dev-python/zope-interface 5.1.2 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
 dev-python/zope-testing 4.7-r2: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
-dev-python/zstandard 0.8.1-r1 0.14.0-r1: Zstandard Bindings for Python
+dev-python/zstandard 0.8.1-r1 0.14.0-r1 0.14.1: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
 dev-qt/assistant 5.15.1 5.15.2: Tool for viewing on-line documentation in Qt help file format
@@ -12733,7 +12733,7 @@ media-gfx/curaengine 4.7.0 4.8.0: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 3.0.2 3.2.1 3.2.1-r1 3.2.1-r2 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r2: Command-line decoder for raw digital photos
-media-gfx/digikam 7.1.0: Digital photo management application
+media-gfx/digikam 7.1.0-r1: Digital photo management application
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20200901: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -13253,7 +13253,7 @@ media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
 media-libs/qhull 2015.2: Geometry library
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
-media-libs/qtav 1.12.0-r2: Multimedia playback framework based on Qt + FFmpeg
+media-libs/qtav 1.12.0-r3: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quarter 1.1.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
