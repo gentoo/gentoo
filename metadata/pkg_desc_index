@@ -528,7 +528,6 @@ app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenatio
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.36.5: Extensible screen reader that provides access to the desktop
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
-app-accessibility/simon 9999: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speech-dispatcher 0.8.7-r3 0.9.1: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4 2.5.0: Speech tools for Festival Text to Speech engine
