@@ -5381,7 +5381,7 @@ dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.6 1.8.7: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
-dev-libs/libgee 0.6.8 0.20.3: GObject-based interfaces and classes for commonly used data structures
+dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 1.0.1-r1 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.6.1: Library for code common to Gnome games
