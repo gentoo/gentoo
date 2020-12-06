@@ -141,3 +141,11 @@ multilib_src_test() {
 		test/lua.static test/${test}.lua && die "test $test failed"
 	done
 }
+
+pkg_postinst() {
+	if has_version "app-editor/emacs"; then
+		if ! has_version "app-emacs/lua-mode"; then
+			einfo "Install app-emacs/lua-mode for lua support for emacs"
+		fi
+	fi
+}
