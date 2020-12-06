@@ -41,7 +41,7 @@ fi
 
 # @ECLASS-VARIABLE: KDE_ORG_CATEGORIES
 # @INTERNAL
-# @DESCRIPTION
+# @DESCRIPTION:
 # Map of ${CATEGORY}=<upstream category> key-value pairs.
 declare -A KDE_ORG_CATEGORIES=(
 	[app-accessibility]=accessibility
