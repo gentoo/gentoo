@@ -14765,7 +14765,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1 1.8.1: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
-net-libs/libhtp 0.5.35: security-aware parser for the HTTP protocol and the related bits and pieces
+net-libs/libhtp 0.5.35 0.5.36: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.6 0.3.6-r2 0.3.7: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
