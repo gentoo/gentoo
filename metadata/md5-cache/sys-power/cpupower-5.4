@@ -1,14 +1,14 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile configure install
-DEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequtils virtual/os-headers nls? ( sys-devel/gettext )
+DEPEND=sys-apps/pciutils virtual/os-headers nls? ( sys-devel/gettext )
 DESCRIPTION=Shows and sets processor power related values
 EAPI=7
 HOMEPAGE=https://www.kernel.org/
 IUSE=nls
 KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
-RDEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequtils
+RDEPEND=sys-apps/pciutils
 SLOT=0/0
 SRC_URI=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=61705bb961fd4208b787ddb47a2c3919
+_md5_=3e678cf1da30e04d642e964c02e195d4

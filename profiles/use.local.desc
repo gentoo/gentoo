@@ -7588,8 +7588,6 @@ sci-visualization/paraview:nvcontrol - Add NVCONTROL support for OpenGL options
 sci-visualization/paraview:offscreen - Offscreen rendering through OSMesa
 sci-visualization/paraview:plugins - Build and install additional plugins
 sci-visualization/paraview:webengine - Add support for dev-qt/qtwebengine
-sec-policy/selinux-base:open_perms - Enable the open permissions for file object classes (SELinux policy capability).
-sec-policy/selinux-base:peer_perms - Enable the labeled networking peer permissions (SELinux policy capability).
 sec-policy/selinux-base:ubac - Enable User Based Access Control (UBAC) in the SELinux policy
 sec-policy/selinux-base:unconfined - Enable support for the unconfined SELinux module
 sec-policy/selinux-base:unknown-perms - Default allow unknown classes in kernels newer than the policy (SELinux policy capability).
