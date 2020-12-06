@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mart Raudsepp <leio@gentoo.org> (2020-12-06)
+# Depends on temporarily masked dev-util/gtk-doc-1.33 or fails to build
+# with older due to missing minimum dep. Bug #754372, #758770.
+=dev-libs/glib-2.66.2 gtk-doc
+=dev-libs/glib-2.66.3 gtk-doc
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-05)
 # Relies on gtkdoc-mktmpl which was removed from gtk-doc-1.26
 # Bug #740690
