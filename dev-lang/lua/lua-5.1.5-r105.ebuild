@@ -119,9 +119,6 @@ multilib_src_install_all() {
 	DOCS="HISTORY README"
 	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
 	einstalldocs
-
-	doicon etc/lua.ico
-
 	newman doc/lua.1 lua${SLOT}.1
 	newman doc/luac.1 luac${SLOT}.1
 }
