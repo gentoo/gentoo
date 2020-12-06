@@ -8,7 +8,7 @@ DESCRIPTION="A Debug Malloc Library"
 HOMEPAGE="https://dmalloc.com"
 EGIT_REPO_URI="https://github.com/j256/dmalloc"
 
-LICENSE="CC-BY-SA-3.0"
+LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
 IUSE="static-libs threads"
