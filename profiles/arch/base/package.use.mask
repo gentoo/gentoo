@@ -62,6 +62,7 @@ sys-libs/glibc static-pie
 x11-wm/mutter sysprof
 dev-libs/gjs sysprof
 dev-libs/glib sysprof
+x11-libs/gtk+ sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
