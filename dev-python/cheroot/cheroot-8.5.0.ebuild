@@ -8,7 +8,9 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Cheroot is the high-performance, pure-Python HTTP server used by CherryPy."
-HOMEPAGE="https://cherrypy.org/ https://pypi.org/project/Cheroot/ https://github.com/cherrypy/cheroot"
+HOMEPAGE="https://cherrypy.org/
+	https://pypi.org/project/cheroot/
+	https://github.com/cherrypy/cheroot/"
 SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"
 
 LICENSE="BSD"
