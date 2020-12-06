@@ -4,7 +4,7 @@
 # @ECLASS: gnome2-utils.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Auxiliary functions commonly used by Gnome packages.
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most Gnome
@@ -14,13 +14,13 @@
 #  * GConf schemas management
 #  * scrollkeeper (old Gnome help system) management
 
-[[ ${EAPI:-0} == [012345] ]] && inherit multilib
+[[ ${EAPI} == 5 ]] && inherit multilib
 # eutils.eclass: emktemp
 # xdg-utils.eclass: xdg_environment_reset, xdg_icon_cache_update
 inherit eutils xdg-utils
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6|7) ;;
+case ${EAPI} in
+	5|6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -95,7 +95,7 @@ gnome2_environment_reset() {
 	# Ensure we don't rely on dconf/gconf while building, bug #511946
 	export GSETTINGS_BACKEND="memory"
 
-	if has ${EAPI:-0} 6 7; then
+	if has ${EAPI} 6 7; then
 		# Try to cover the packages honoring this variable, bug #508124
 		export GST_INSPECT="$(type -P true)"
 
@@ -110,7 +110,6 @@ gnome2_environment_reset() {
 # in the GNOME2_ECLASS_SCHEMAS environment variable.
 # This function should be called from pkg_preinst.
 gnome2_gconf_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCHEMAS=$(find 'etc/gconf/schemas/' -name '*.schemas' 2> /dev/null)
 	popd > /dev/null || die
@@ -122,7 +121,6 @@ gnome2_gconf_savelist() {
 # using gconftool-2.
 # This function should be called from pkg_postinst.
 gnome2_gconf_install() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
 	if [[ ! -x "${updater}" ]]; then
@@ -163,7 +161,6 @@ gnome2_gconf_install() {
 # Removes schema files previously installed by the current ebuild from Gconf's
 # database.
 gnome2_gconf_uninstall() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
 	if [[ ! -x "${updater}" ]]; then
@@ -255,7 +252,6 @@ gnome2_omf_fix() {
 # in the GNOME2_ECLASS_SCROLLS environment variable.
 # This function should be called from pkg_preinst.
 gnome2_scrollkeeper_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCROLLS=$(find 'usr/share/omf' -type f -name "*.omf" 2> /dev/null)
 	popd > /dev/null || die
@@ -266,7 +262,6 @@ gnome2_scrollkeeper_savelist() {
 # Updates the global scrollkeeper database.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_scrollkeeper_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local updater="${EROOT%/}${SCROLLKEEPER_UPDATE_BIN}"
 
 	if [[ ! -x "${updater}" ]] ; then
@@ -291,7 +286,6 @@ gnome2_scrollkeeper_update() {
 # implementations that call gnome2_schemas_update conditionally.
 # This function should be called from pkg_preinst.
 gnome2_schemas_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GLIB_SCHEMAS=$(find 'usr/share/glib-2.0/schemas' -name '*.gschema.xml' 2>/dev/null)
 	popd > /dev/null || die
@@ -302,7 +296,6 @@ gnome2_schemas_savelist() {
 # Updates GSettings schemas.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_schemas_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local updater="${EROOT%/}${GLIB_COMPILE_SCHEMAS}"
 
 	if [[ ! -x ${updater} ]]; then
@@ -321,7 +314,6 @@ gnome2_schemas_update() {
 # GNOME2_ECLASS_GDK_PIXBUF_LOADERS variable.
 # This function should be called from pkg_preinst.
 gnome2_gdk_pixbuf_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GDK_PIXBUF_LOADERS=$(find usr/lib*/gdk-pixbuf-2.0 -type f 2>/dev/null)
 	popd > /dev/null || die
@@ -332,7 +324,6 @@ gnome2_gdk_pixbuf_savelist() {
 # Updates gdk-pixbuf loader cache if GNOME2_ECLASS_GDK_PIXBUF_LOADERS has some.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_gdk_pixbuf_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
 
 	if [[ ! -x ${updater} ]]; then
@@ -389,7 +380,6 @@ gnome2_query_immodules_gtk3() {
 # Updates glib's gio modules cache.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_giomodule_cache_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gio-querymodules"
 
 	if [[ ! -x ${updater} ]]; then
@@ -446,8 +436,8 @@ gnome2_disable_deprecation_warning() {
 	done
 }
 
-case ${EAPI:-0} in
-0|1|2|3|4|5|6)
+case ${EAPI} in
+5|6)
 
 # @FUNCTION: gnome2_icon_savelist
 # @DESCRIPTION:
@@ -457,7 +447,6 @@ case ${EAPI:-0} in
 # gnome2_icon_cache_update conditionally.
 # This function should be called from pkg_preinst.
 gnome2_icon_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
 	popd > /dev/null || die
