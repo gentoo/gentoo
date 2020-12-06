@@ -1,0 +1,146 @@
+--- a/xs/src/boost/nowide/cstdlib.hpp
++++ b/xs/src/boost/nowide/cstdlib.hpp
+@@ -8,7 +8,7 @@
+ #ifndef BOOST_NOWIDE_CSTDLIB_HPP_INCLUDED
+ #define BOOST_NOWIDE_CSTDLIB_HPP_INCLUDED
+
+-#include <boost/nowide/cenv.hpp>
++#include <boost/nowide/cstdlib.hpp>
+ #include <boost/nowide/system.hpp>
+
+ #endif
+--- a/xs/src/admesh/stl.h
++++ b/xs/src/admesh/stl.h
+@@ -26,11 +26,6 @@
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <stddef.h>
+-#include <boost/detail/endian.hpp>
+-
+-#ifndef BOOST_LITTLE_ENDIAN
+-#error "admesh works correctly on little endian machines only!"
+-#endif
+
+ #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+     #include "windows.h"
+
+--- a/xs/src/libslic3r/PrintObject.cpp
++++ b/xs/src/libslic3r/PrintObject.cpp
+@@ -2,11 +2,14 @@
+ #include "BoundingBox.hpp"
+ #include "ClipperUtils.hpp"
+ #include "Geometry.hpp"
++#include <boost/bind/bind.hpp>
+ #include <algorithm>
+ #include <vector>
+
+ namespace Slic3r {
+
++using boost::placeholders::_1;
++
+ PrintObject::PrintObject(Print* print, ModelObject* model_object, const BoundingBoxf3 &modobj_bbox)
+ :   layer_height_spline(model_object->layer_height_spline),
+     typed_slices(false),
+--- a/xs/src/libslic3r/GCodeSender.hpp
++++ b/xs/src/libslic3r/GCodeSender.hpp
+@@ -7,13 +7,17 @@
+ #include <string>
+ #include <vector>
+ #include <boost/asio.hpp>
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
++#include <boost/core/noncopyable.hpp>
+ #include <boost/thread.hpp>
+
+ namespace Slic3r {
+
+ namespace asio = boost::asio;
+
++using boost::placeholders::_1;
++using boost::placeholders::_2;
++
+ class GCodeSender : private boost::noncopyable {
+     public:
+     GCodeSender();
+--- a/xs/src/libslic3r/TriangleMesh.cpp
++++ b/xs/src/libslic3r/TriangleMesh.cpp
+@@ -14,6 +14,7 @@
+ #include <stdexcept>
+ #include <boost/config.hpp>
+ #include <boost/nowide/convert.hpp>
++#include <boost/bind/bind.hpp>
+
+ #ifdef SLIC3R_DEBUG
+ #include "SVG.hpp"
+@@ -21,6 +22,8 @@
+
+ namespace Slic3r {
+
++using boost::placeholders::_1;
++
+ TriangleMesh::TriangleMesh()
+     : repaired(false)
+ {
+--- a/xs/src/libslic3r/Config.cpp
++++ b/xs/src/libslic3r/Config.cpp
+@@ -14,6 +14,7 @@
+ #include <boost/foreach.hpp>
+ #include <boost/lexical_cast.hpp>
+ #include <boost/nowide/cenv.hpp>
++#include <boost/nowide/cstdlib.hpp>
+ #include <boost/nowide/fstream.hpp>
+ #include <boost/property_tree/ini_parser.hpp>
+ #include <boost/property_tree/ptree.hpp>
+--- a/xs/src/libslic3r/SLAPrint.cpp
++++ b/xs/src/libslic3r/SLAPrint.cpp
+@@ -7,9 +7,12 @@
+ #include <iostream>
+ #include <complex>
+ #include <cstdio>
++#include <boost/bind/bind.hpp>
+
+ namespace Slic3r {
+
++using boost::placeholders::_1;
++
+ void
+ SLAPrint::slice()
+ {
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -22,7 +22,7 @@
+ set(Boost_USE_STATIC_LIBS ON)
+ set(Boost_USE_STATIC_RUNTIME ON)
+ set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+-find_package(Boost COMPONENTS system thread filesystem)
++find_package(Boost MODULE REQUIRED)
+
+ set(LIBDIR ${CMAKE_CURRENT_SOURCE_DIR}/../xs/src/)
+
+--- a/xs/src/libslic3r/GCodeTimeEstimator.cpp
++++ b/xs/src/libslic3r/GCodeTimeEstimator.cpp
+@@ -1,9 +1,12 @@
+ #include "GCodeTimeEstimator.hpp"
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
+ #include <cmath>
+
+ namespace Slic3r {
+
++using boost::placeholders::_1;
++using boost::placeholders::_2;
++
+ void
+ GCodeTimeEstimator::parse(const std::string &gcode)
+ {
+--- a/xs/Build.PL
++++ b/xs/Build.PL
+@@ -142,7 +142,7 @@
+ }
+ # In order to generate the -l switches we need to know how Boost libraries are named
+ my $have_boost = 0;
+-my @boost_libraries = qw(system thread filesystem);  # we need these
++my @boost_libraries = qw(system thread filesystem nowide);  # we need these
+ # check without explicit lib path (works on Linux)
+ if (! $mswin) {
+     $have_boost = 1

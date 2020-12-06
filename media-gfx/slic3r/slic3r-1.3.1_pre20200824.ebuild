@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils flag-o-matic perl-module
+inherit desktop eutils perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"
@@ -53,6 +53,7 @@ RDEPEND="!=dev-lang/perl-5.16*
 		x11-libs/libXmu
 	)"
 DEPEND="${RDEPEND}
+	dev-libs/clipper
 	dev-perl/Devel-CheckLib
 	>=dev-perl/ExtUtils-CppGuess-0.70.0
 	>=dev-perl/ExtUtils-Typemaps-Default-1.50.0
@@ -64,38 +65,32 @@ DEPEND="${RDEPEND}
 	test? (	virtual/perl-Test-Harness
 		virtual/perl-Test-Simple )"
 
-S="${WORKDIR}/Slic3r-${PV}/xs"
+S="${WORKDIR}/Slic3r-92abbc42dfdd5385c1f9c3a450e2f3da835f8b8d"
+PERL_S="${S}/xs"
 
-pkg_pretend() {
-	einfo "Checking for -std=c++11 support in compiler"
-	test-flags-CXX -std=c++11 > /dev/null || die
-}
+PATCHES=(
+	"${FILESDIR}/${P}-boost-1.73.patch"
+	"${FILESDIR}/${PN}-1.3.0-no-locallib.patch"
+	"${FILESDIR}/${PN}-1.3.0-use-system-clipper.patch"
+)
 
 src_prepare() {
-	pushd "${WORKDIR}/Slic3r-${PV}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
-	eapply "${FILESDIR}"/${P}-no-locallib.patch
-	eapply "${FILESDIR}"/${P}-boost.patch
-	eapply_user
-	popd || die
-	# drop std=c++11 to compiler defaults...
-	sed \
-		-e '/c++11/d' \
-		-i Build.PL || die
+	perl-module_src_prepare
 }
 
 src_configure() {
+	cd "${PERL_S}" || die
 	SLIC3R_NO_AUTO=1 perl-module_src_configure
 }
 
 src_test() {
+	cd "${PERL_S}" || die
 	perl-module_src_test
-	pushd .. || die
-	prove -Ixs/blib/arch -Ixs/blib/lib/ t/ || die "Tests failed"
-	popd || die
 }
 
 src_install() {
+	cd "${PERL_S}" || die
 	perl-module_src_install
 
 	pushd .. || die
@@ -108,9 +103,9 @@ src_install() {
 	exeinto "${VENDOR_LIB}"/Slic3r
 	doexe slic3r.pl
 
-	dosym "${VENDOR_LIB}"/Slic3r/slic3r.pl /usr/bin/slic3r.pl
+	dosym "${VENDOR_LIB}/Slic3r/slic3r.pl" /usr/bin/slic3r.pl
 
-	make_desktop_entry slic3r.pl \
+	make_desktop_entry "slic3r.pl --gui %F" \
 		Slic3r \
 		"${VENDOR_LIB}/Slic3r/var/Slic3r_128px.png" \
 		"Graphics;3DGraphics;Engineering;Development"

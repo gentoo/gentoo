@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils git-r3 perl-module
 
@@ -54,6 +54,7 @@ RDEPEND="!=dev-lang/perl-5.16*
 		x11-libs/libXmu
 	)"
 DEPEND="${RDEPEND}
+	dev-libs/clipper
 	dev-perl/Devel-CheckLib
 	>=dev-perl/ExtUtils-CppGuess-0.70.0
 	>=dev-perl/ExtUtils-Typemaps-Default-1.50.0
@@ -65,46 +66,49 @@ DEPEND="${RDEPEND}
 	test? (	virtual/perl-Test-Harness
 		virtual/perl-Test-Simple )"
 
-S="${WORKDIR}/slic3r-${PV}/xs"
+S="${WORKDIR}/slic3r-${PV}"
+PERL_S="${S}/xs"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.1_pre20200824-boost-1.73.patch"
+	"${FILESDIR}/${PN}-1.3.0-no-locallib.patch"
+	"${FILESDIR}/${PN}-1.3.0-use-system-clipper.patch"
+)
 
 src_unpack() {
 	git-r3_src_unpack
 }
 
 src_prepare() {
-	pushd "${WORKDIR}/slic3r-${PV}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
-	eapply "${FILESDIR}"/${P}-no-locallib.patch
-	eapply "${FILESDIR}"/${P}-boost-173.patch
-	eapply_user
-	popd || die
+	perl-module_src_prepare
 }
 
 src_configure() {
+	cd "${PERL_S}" || die
 	SLIC3R_NO_AUTO=1 perl-module_src_configure
 }
 
 src_test() {
+	cd "${PERL_S}" || die
 	perl-module_src_test
-	pushd .. || die
-	prove -Ixs/blib/arch -Ixs/blib/lib/ t/ || die "Tests failed"
-	popd || die
 }
 
 src_install() {
+	cd "${PERL_S}" || die
 	perl-module_src_install
 
 	pushd .. || die
 	insinto "${VENDOR_LIB}"
 	doins -r lib/Slic3r.pm lib/Slic3r
 
-	insinto "${VENDOR_LIB}"/Slic3r
+	insinto "${VENDOR_LIB}/Slic3r"
 	doins -r var
 
-	exeinto "${VENDOR_LIB}"/Slic3r
+	exeinto "${VENDOR_LIB}/Slic3r"
 	doexe slic3r.pl
 
-	dosym "${VENDOR_LIB}"/Slic3r/slic3r.pl /usr/bin/slic3r.pl
+	dosym "${VENDOR_LIB}/Slic3r/slic3r.pl" "${EPREFIX}/usr/bin/slic3r.pl"
 
 	make_desktop_entry "slic3r.pl --gui %F" \
 		Slic3r \
