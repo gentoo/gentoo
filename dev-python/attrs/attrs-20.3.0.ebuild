@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Attributes without boilerplate"
 HOMEPAGE="
 	https://github.com/python-attrs/attrs
-	https://attrs.readthedocs.org/
+	https://attrs.readthedocs.io/
 	https://pypi.org/project/attrs/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
