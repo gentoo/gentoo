@@ -24,13 +24,13 @@ HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpack -> ${MY_P}.tar.gz"
 
 LICENSE="PUEL"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="bindist mirror strip"
 
-RDEPEND="=app-emulation/virtualbox-${DEP_PV}*"
+RDEPEND="~app-emulation/virtualbox-${DEP_PV}"
 
 S="${WORKDIR}"
 
