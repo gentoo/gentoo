@@ -10,6 +10,7 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <use>
+        <flag name="discord">Enable interfacing with a locally running Discord desktop client</flag>
         <flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
     </use>
     <upstream>
