@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils autotools multilib multilib-minimal portability toolchain-funcs versionator
+inherit autotools multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="5.2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+deprecated emacs readline static test test-complete"
+IUSE="+deprecated readline static test test-complete"
 RESTRICT="!test? ( test )"
 
 RDEPEND="readline? ( sys-libs/readline:0= )
@@ -25,25 +25,23 @@ RDEPEND="readline? ( sys-libs/readline:0= )
 	!dev-lang/lua:0"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
-PDEPEND="emacs? ( app-emacs/lua-mode )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/lua${SLOT}/luaconf.h
 )
 
-src_prepare() {
-	local PATCH_PV=$(get_version_component_range 1-2)
+PATCHES=(
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-make-r1.patch"
+)
 
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make-r1.patch
+src_prepare() {
+	default
 
 	# use glibtool on Darwin (versus Apple libtool)
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e '/LIBTOOL = /s:/libtool:/glibtool:' \
 			Makefile src/Makefile || die
 	fi
-
-	[ -d "${FILESDIR}/${PV}" ] && \
-		EPATCH_SOURCE="${FILESDIR}/${PV}" EPATCH_SUFFIX="upstream.patch" epatch
 
 	# correct lua versioning
 	sed -i -e 's/\(LIB_VERSION = \)6:1:1/\10:0:0/' src/Makefile || die
@@ -108,7 +106,7 @@ multilib_src_compile() {
 			RPATH="${EPREFIX}/usr/$(get_libdir)/" \
 			LUA_LIBS="${mylibs}" \
 			LIB_LIBS="${liblibs}" \
-			V=$(get_version_component_range 1-2) \
+			V=$(ver_cut 1-2) \
 			gentoo_all
 }
 
@@ -129,7 +127,7 @@ multilib_src_install() {
 	# We want packages to find our things...
 	# A slotted Lua uses different directories for headers & names for
 	# libraries, and pkgconfig should reflect that.
-	local PATCH_PV=$(get_version_component_range 1-2)
+	local PATCH_PV=$(ver_cut 1-2)
 	cp "${FILESDIR}/lua.pc" "${WORKDIR}" || die
 	sed -r -i \
 		-e "/^INSTALL_INC=/s,(/include)$,\1/lua${SLOT}," \
@@ -152,9 +150,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc README
-	dohtml doc/*.html doc/*.png doc/*.css doc/*.gif
-
+	DOCS="README"
+	HTML_DOCS="doc/*.html doc/*.png doc/*.css doc/*.gif"
+	einstalldocs
 	newman doc/lua.1 lua${SLOT}.1
 	newman doc/luac.1 luac${SLOT}.1
 }
@@ -190,5 +188,13 @@ src_test() {
 	if [ -e "${TEST_MARKER}" ]; then
 		cat "${TEST_MARKER}"
 		die "Tests failed"
+	fi
+}
+
+pkg_postinst() {
+	if has_version "app-editor/emacs"; then
+		if ! has_version "app-emacs/lua-mode"; then
+			einfo "Install app-emacs/lua-mode for lua support for emacs"
+		fi
 	fi
 }
