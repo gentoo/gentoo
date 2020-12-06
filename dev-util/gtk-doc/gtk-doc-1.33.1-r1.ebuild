@@ -80,7 +80,10 @@ src_compile() {
 src_install() {
 	meson_src_install
 
-	python_fix_shebang "${ED}"/usr/bin/gtkdoc-depscan
+	# The meson build system configures the shebangs to the temporary python
+	# used during the build. We need to fix it.
+	sed -i -e 's:^#!.*:#!/usr/bin/env python3:' "${ED}"/usr/bin/* || die
+	python_fix_shebang "${ED}"/usr/bin/*
 
 	if use emacs; then
 		elisp-install ${PN} tools/gtk-doc.el*
