@@ -32,6 +32,7 @@ DEPEND="
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1
 	dev-libs/msgpack:0=
+	dev-libs/tree-sitter
 	dev-lua/lpeg[luajit=]
 	dev-lua/luv[luajit=]
 	dev-lua/mpack[luajit=]
