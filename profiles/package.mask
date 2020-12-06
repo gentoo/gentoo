@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-12-06)
+# Not keyworded, unmaintained, unbuildable for a long time, EAPI-5.
+# Removal in ~30 days. List sorted by their bug numbers.
+# Bugs: #752432, #752435, #752438, #752441, #752444, #752453.
+media-plugins/kodi-screensaver-crystalmorph
+media-plugins/kodi-visualization-nastyfft
+media-plugins/kodi-screensaver-rsxs
+net-wireless/qradiolink
+net-libs/liba53
+app-emulation/qt-virt-manager
+
 # Mart Raudsepp <leio@gentoo.org> (2020-12-06)
 # Various meson port issues.
 # Bug #758770, #758773, #758722, #758731, #758734
@@ -163,11 +174,6 @@ dev-libs/libmissing
 # build bugs, esoteric NIH build system. Bug #293567, #670954,
 # #697444, #699320, #708058, #746230, Removal in 30 days.
 games-emulation/fakenes
-
-# Joonas Niilola <juippis@gentoo.org> (2020-11-22)
-# Abandoned upstream, unbuildable, unkeyworded in ::gentoo. 
-# Removal in 14 days. Bug #https://bugs.gentoo.org/752456
-app-accessibility/simon
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-21)
 # Dead upstream, depends on deprecated kde-frameworks/kmediaplayer
