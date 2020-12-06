@@ -17,12 +17,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 
-distutils_enable_tests pytest
-
-python_test() {
-	distutils_install_for_testing
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
+distutils_enable_tests --install pytest
 
 python_install_all() {
 	distutils-r1_python_install
