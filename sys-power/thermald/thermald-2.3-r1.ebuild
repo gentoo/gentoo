@@ -38,6 +38,7 @@ my_src_configure() {
 	append-cxxflags -std=c++14
 
 	ECONF_SOURCE="${S}" econf \
+		--disable-werror \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 }
 
