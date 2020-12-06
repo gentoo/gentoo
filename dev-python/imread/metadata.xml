@@ -10,7 +10,7 @@
 		Mahotas-imread is a simple module with a small number of functions.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">cgohlke/tifffile</remote-id>
-		<remote-id type="pypi">tifffile</remote-id>
+		<remote-id type="github">luispedro/imread</remote-id>
+		<remote-id type="pypi">imread</remote-id>
 	</upstream>
 </pkgmetadata>
