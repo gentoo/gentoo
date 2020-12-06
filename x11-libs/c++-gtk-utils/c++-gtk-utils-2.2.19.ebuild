@@ -8,28 +8,24 @@ HOMEPAGE="http://cxx-gtk-utils.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN/++/xx}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+gtk nls static-libs"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="+gtk nls"
 
 RDEPEND="
-	>=dev-libs/glib-2.26
-	gtk? ( x11-libs/gtk+:3 )
-"
-DEPEND="
-	${RDEPEND}
+	dev-libs/glib:2
+	gtk? ( x11-libs/gtk+:3 )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-"
-
-DOCS=( ChangeLog )
+	nls? ( sys-devel/gettext )"
 
 src_configure() {
 	econf \
+		--disable-static \
+		--without-guile \
 		$(use_enable nls) \
-		$(use_with gtk) \
-		$(use_enable static-libs static) \
-		--without-guile
+		$(use_with gtk)
 }
 
 src_install() {
