@@ -12,14 +12,14 @@ DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm ~ppc x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 else
 	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
@@ -51,6 +51,7 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${PN}-2.3.0-hpack-VAR_ARRAY.patch" )
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
@@ -93,9 +94,6 @@ src_compile() {
 	args+=( $(haproxy_use device-atlas DEVICEATLAS) )
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
-
-	# For now, until the strict-aliasing breakage will be fixed
-	append-cflags -fno-strict-aliasing
 
 	# Bug #668002
 	if use ppc || use arm || use hppa; then
