@@ -5,21 +5,18 @@ EAPI=7
 
 inherit linux-mod systemd toolchain-funcs
 
-MY_PN="VirtualBox"
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
-MY_P="${MY_PN}-${MY_PV}"
-[[ "${PV}" == *a ]] && DIR_PV="$(ver_cut 1-3)"
-
+MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.1.12-patches-01.tar.xz"
+SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.24-patches-01.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 # automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
@@ -54,7 +51,7 @@ PDEPEND="
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 
-S="${WORKDIR}/${MY_PN}-${DIR_PV:-${PV}}"
+S="${WORKDIR}/${MY_P}"
 VBOX_MOD_SRC_DIR="${S}/out/linux.${ARCH}/release/bin/additions/src"
 
 pkg_setup() {
