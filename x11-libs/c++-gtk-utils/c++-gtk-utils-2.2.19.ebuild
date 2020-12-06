@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit virtualx
+
 DESCRIPTION="A number of classes and functions for programming GTK+ programs using C++"
 HOMEPAGE="http://cxx-gtk-utils.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN/++/xx}/${P}.tar.gz"
@@ -26,6 +28,10 @@ src_configure() {
 		--without-guile \
 		$(use_enable nls) \
 		$(use_with gtk)
+}
+
+src_test() {
+	virtx default
 }
 
 src_install() {
