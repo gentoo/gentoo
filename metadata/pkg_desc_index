@@ -10930,7 +10930,7 @@ dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former c
 dev-vcs/fossil 2.12.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
-dev-vcs/git-cola 3.5-r1: The highly caffeinated git GUI
+dev-vcs/git-cola 3.5-r1 3.8: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
@@ -16341,7 +16341,7 @@ sci-mathematics/geogebra-bin 5.0.604.0-r2: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 29.8.6-r1 30.3.6: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 30.3.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.8 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
