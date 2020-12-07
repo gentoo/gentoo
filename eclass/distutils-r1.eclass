@@ -1193,34 +1193,66 @@ distutils-r1_src_install() {
 
 # -- distutils.eclass functions --
 
+# @FUNCTION: distutils_get_intermediate_installation_image
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_get_intermediate_installation_image() {
 	die "${FUNCNAME}() is invalid for distutils-r1"
 }
 
+# @FUNCTION: distutils_src_unpack
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_src_unpack() {
 	die "${FUNCNAME}() is invalid for distutils-r1, and you don't want it in EAPI ${EAPI} anyway"
 }
 
+# @FUNCTION: distutils_src_prepare
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_src_prepare() {
 	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
 }
 
+# @FUNCTION: distutils_src_compile
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_src_compile() {
 	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
 }
 
+# @FUNCTION: distutils_src_test
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_src_test() {
 	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
 }
 
+# @FUNCTION: distutils_src_install
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_src_install() {
 	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
 }
 
+# @FUNCTION: distutils_pkg_postinst
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_pkg_postinst() {
 	die "${FUNCNAME}() is invalid for distutils-r1, and pkg_postinst is unnecessary"
 }
 
+# @FUNCTION: distutils_pkg_postrm
+# @INTERNAL
+# @DESCRIPTION:
+# Die and warn when function from previous distutils is called
 distutils_pkg_postrm() {
 	die "${FUNCNAME}() is invalid for distutils-r1, and pkg_postrm is unnecessary"
 }
