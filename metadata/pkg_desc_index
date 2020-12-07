@@ -13054,7 +13054,7 @@ media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image m
 media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
-media-libs/libass 0.14.0 0.15.0: Library for SSA/ASS subtitles rendering
+media-libs/libass 0.15.0: Library for SSA/ASS subtitles rendering
 media-libs/libavif 0.8.1 0.8.3 0.8.4 9999: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.1.2 1.2.0 9999: Blu-ray playback libraries
@@ -16296,7 +16296,7 @@ sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementatio
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2-r1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
-sci-libs/tensorflow 2.3.1-r1 2.4.0_rc3: Computation framework using data flow graphs for scalable machine learning
+sci-libs/tensorflow 2.3.1-r1 2.4.0_rc3 2.4.0_rc4: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 2.3.0 2.4.0_rc0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 12.14.1 12.18.1 13.0.0: Scientific library collection for large scale problems
