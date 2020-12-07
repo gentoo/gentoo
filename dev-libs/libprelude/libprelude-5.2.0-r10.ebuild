@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}"
 BDEPEND=">=dev-lang/swig-4.0.0
 	dev-util/gtk-doc-am
 	sys-devel/flex
-	lua? ( dev-lang/lua:* )
+	lua? ( ${LUA_DEPS} )
 	perl? ( dev-lang/perl:= virtual/perl-ExtUtils-MakeMaker )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
