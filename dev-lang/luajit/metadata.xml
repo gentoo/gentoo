@@ -5,6 +5,10 @@
     <email>rafaelmartins@gentoo.org</email>
     <name>Rafael G. Martins</name>
   </maintainer>
+  <maintainer type="person">
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+  </maintainer>
   <use>
     <flag name="lua52compat">
       Enable some upwards-compatible features
