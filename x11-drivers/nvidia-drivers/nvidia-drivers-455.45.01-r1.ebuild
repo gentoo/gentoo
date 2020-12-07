@@ -78,6 +78,7 @@ QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
 PATCHES=(
 	"${FILESDIR}"/${PN}-440.26-locale.patch
+	"${FILESDIR}"/${PN}-455.45.01-reduce-kmalloc-limit.patch
 )
 NV_KV_MAX_PLUS="5.10"
 CONFIG_CHECK="
