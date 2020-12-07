@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_SINGLE_IMPL=true
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 readme.gentoo-r1 virtualx xdg-utils
 
 DESCRIPTION="The highly caffeinated git GUI"
@@ -13,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RESTRICT="!test? ( test )"
@@ -26,7 +27,8 @@ RDEPEND="
 		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
 		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
 	')
-	dev-vcs/git"
+	dev-vcs/git
+"
 BDEPEND="sys-devel/gettext
 	$(python_gen_cond_dep "
 		doc? ( dev-python/sphinx[\${PYTHON_MULTI_USEDEP}] )
@@ -34,8 +36,10 @@ BDEPEND="sys-devel/gettext
 			${VIRTUALX_DEPEND}
 			dev-python/mock[\${PYTHON_MULTI_USEDEP}]
 			dev-python/nose[\${PYTHON_MULTI_USEDEP}]
+			dev-python/pytest[\${PYTHON_MULTI_USEDEP}]
 		)
-	")"
+	")
+"
 
 python_prepare_all() {
 	# make sure that tests also use the system provided QtPy
@@ -58,7 +62,7 @@ python_prepare_all() {
 }
 
 python_configure_all() {
-	mydistutilsargs=( --no-vendor-libs )
+	mydistutilsargs=( --no-vendor-libs --no-private-libs )
 }
 
 python_compile_all() {
@@ -92,8 +96,8 @@ python_install_all() {
 		prefix="${EPREFIX}/usr" \
 		install
 
-	python_fix_shebang "${ED}/usr/share/git-cola/bin/git-xbase" "${ED}"/usr/bin/git-cola
-	python_optimize "${ED}/usr/share/git-cola/lib/cola"
+	# remove empty bin folder
+	rm -R "${ED}"/usr/share/git-cola/bin
 
 	use doc || HTML_DOCS=( "${FILESDIR}"/index.html )
 
