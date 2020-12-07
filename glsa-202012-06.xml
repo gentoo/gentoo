@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-06">
+  <title>Linux-PAM: Authentication bypass</title>
+  <synopsis>A vulnerability has been found in Linux-PAM, allowing attackers to
+    bypass the authentication process.
+  </synopsis>
+  <product type="ebuild">pam</product>
+  <announced>2020-12-07</announced>
+  <revised count="1">2020-12-07</revised>
+  <bug>756361</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/pam" auto="yes" arch="*">
+      <unaffected range="ge">1.5.1</unaffected>
+      <vulnerable range="lt">1.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Linux-PAM (Pluggable Authentication Modules) is an architecture allowing
+      the separation of the development of privilege granting software from the
+      development of secure and appropriate authentication schemes.
+    </p>
+  </background>
+  <description>
+    <p>A flaw was found in Linux-Pam in the way it handle empty passwords for
+      non-existing users.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, who only needs to know a non-existing username, could
+      bypass security restrictions and authenticate as root user.
+    </p>
+  </impact>
+  <workaround>
+    <p>Ensure that root account is protected by a non-empty password.</p>
+  </workaround>
+  <resolution>
+    <p>All Linux-PAM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/pam-1.5.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27780">CVE-2020-27780</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-26T02:08:08Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-12-07T00:19:35Z">whissi</metadata>
+</glsa>
