@@ -8559,7 +8559,7 @@ dev-python/packaging 20.4-r1 20.5 20.7: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 1.1.2-r1 1.1.4-r1: Powerful data structures for data analysis and statistics
+dev-python/pandas 1.1.2-r1 1.1.4-r1 1.1.5: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
@@ -9045,7 +9045,7 @@ dev-python/serpent 1.30 1.30.2: A simple serialization library based on ast.lite
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r3 50.3.0: Collection of extensions to Distutils
+dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
