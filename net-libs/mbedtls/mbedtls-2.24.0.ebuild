@@ -53,6 +53,7 @@ multilib_src_configure() {
 		-DUSE_SHARED_MBEDTLS_LIBRARY=ON
 		-DINSTALL_MBEDTLS_HEADERS=ON
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DMBEDTLS_FATAL_WARNINGS=OFF # Don't use -Werror, #744946
 	)
 
 	cmake_src_configure
