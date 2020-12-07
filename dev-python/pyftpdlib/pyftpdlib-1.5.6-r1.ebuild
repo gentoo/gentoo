@@ -60,6 +60,10 @@ python_test() {
 		# https://github.com/giampaolo/pyftpdlib/issues/513
 		# https://bugs.gentoo.org/702578
 		pyftpdlib/test/test_servers.py::TestFtpAuthentication::test_auth_failed
+		# https://github.com/giampaolo/pyftpdlib/issues/543
+		# https://bugs.gentoo.org/758686
+		pyftpdlib/test/test_functional.py::ThreadedFTPTests::test_idle_timeout
+		pyftpdlib/test/test_functional.py::ThreadedFTPTests::test_stou_max_tries
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
 	TZ=UTC+1 pytest -vv ${skipped_tests[@]/#/--deselect } \
