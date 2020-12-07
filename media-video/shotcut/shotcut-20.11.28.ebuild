@@ -24,6 +24,7 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtquickcontrols2:5
 	dev-qt/qtsql:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
