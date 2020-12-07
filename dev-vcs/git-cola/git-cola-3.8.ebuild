@@ -97,7 +97,7 @@ python_install_all() {
 		install
 
 	# remove empty bin folder
-	rm -Rf "${ED}"/usr/share/git-cola/bin
+	rm -R "${ED}"/usr/share/git-cola/bin
 
 	use doc || HTML_DOCS=( "${FILESDIR}"/index.html )
 
