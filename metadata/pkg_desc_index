@@ -2685,7 +2685,7 @@ app-portage/emerge-delta-webrsync 3.7.6: emerge-webrsync using patches to minimi
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r3 9999: Replacement for 'emerge --search' with search-index
 app-portage/euses 2.5.9 2.6.0: look up USE flag descriptions fast
-app-portage/fetchcommandwrapper 0.8.1-r1 0.8.2 0.8.3 0.8.4: Wrapper integrating aria2 into portage's FETCHCOMMAND
+app-portage/fetchcommandwrapper 0.8.4-r1: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1-r1 9999: A smart CLI mangler for package.* files
 app-portage/fquery 0.2.3 0.2.3-r1: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.9-r1 0.17.0 9999: Autogenerate and install ebuilds for CPAN modules
