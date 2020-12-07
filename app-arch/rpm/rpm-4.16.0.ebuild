@@ -3,9 +3,10 @@
 
 EAPI=7
 
+LUA_COMPAT=( lua5-2 )
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit autotools flag-o-matic perl-module python-single-r1
+inherit autotools flag-o-matic lua-single perl-module python-single-r1
 
 DESCRIPTION="Red Hat Package Management Utils"
 HOMEPAGE="https://rpm.org
@@ -20,7 +21,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 RESTRICT="test"
 
 IUSE="acl caps doc dbus lua nls python selinux test +zstd"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive
@@ -36,7 +38,7 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( dev-lang/lua:5.2 )
+	lua? ( ${LUA_DEPS} )
 	acl? ( virtual/acl )
 	caps? ( >=sys-libs/libcap-2.0 )
 	zstd? ( app-arch/zstd )
@@ -52,6 +54,7 @@ RDEPEND="${CDEPEND}
 "
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
