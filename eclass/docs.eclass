@@ -19,7 +19,7 @@
 # to the location of the compiled documentation
 #
 # The aim of this eclass is to make it easy to add additional
-# doc builders. To do this, add a <DOCS_BUILDER>-setup and
+# doc builders. To do this, add a <DOCS_BUILDER>-deps and
 # <DOCS_BUILDER>-build function for your doc builder.
 # For python based doc builders you can use the
 # python_append_deps function to append [${PYTHON_USEDEP}]
@@ -77,10 +77,6 @@ esac
 # Sets whether to use sphinx.ext.autodoc/mkautodoc
 # Defaults to 1 (True) for sphinx, and 0 (False) for mkdocs
 
-# @ECLASS-VARIABLE: DOCS_EXTRA_ARGS
-# @DESCRIPTION:
-# Extra arguments to parse to the DOCS_BUILDER
-
 # @ECLASS-VARIABLE: DOCS_OUTDIR
 # @DESCRIPTION:
 # Sets where the compiled files will be put.
@@ -90,7 +86,7 @@ esac
 #
 # HTML_DOCS=( "${yourdocs}" "${DOCS_OUTDIR}/." )
 #
-# Defaults to ${DOCS_DIR}/_build/html
+# Defaults to ${S}/_build/html
 
 # @ECLASS-VARIABLE: DOCS_CONFIG_NAME
 # @DESCRIPTION:
@@ -122,21 +118,6 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-# @FUNCTION: python_check_deps
-# @DESCRIPTION:
-# Check if the dependencies are valid
-python_check_deps() {
-	debug-print-function ${FUNCNAME}
-	use doc || return 0
-
-	local dep
-	for dep in ${CHECK_DEPS[@]}; do
-		has_version "${dep}[${PYTHON_USEDEP}]" || return 1
-	done
-}
-# Save this before we start manipulating it
-CHECK_DEPS=${DOCS_DEPEND}
-
 # @FUNCTION: python_append_dep
 # @DESCRIPTION:
 # Appends [\${PYTHON_USEDEP}] to all dependencies
@@ -145,10 +126,10 @@ CHECK_DEPS=${DOCS_DEPEND}
 python_append_deps() {
 	debug-print-function ${FUNCNAME}
 
-	local temp=()
+	local temp
 	local dep
 	for dep in ${DOCS_DEPEND[@]}; do
-		temp+=(" ${dep}[\${PYTHON_USEDEP}]")
+		temp+=" ${dep}[\${PYTHON_USEDEP}]"
 	done
 	DOCS_DEPEND=${temp}
 }
@@ -165,7 +146,8 @@ sphinx_deps() {
 		if [[ -n "${DOCS_DEPEND}" ]]; then
 			die "${FUNCNAME}: do not set DOCS_AUTODOC to 0 if external plugins are used"
 		else
-			DOCS_DEPEND="dev-python/sphinx"
+			DOCS_DEPEND="$(python_gen_any_dep "
+			dev-python/sphinx[\${PYTHON_USEDEP}]")"
 		fi
 	elif [[ ${DOCS_AUTODOC} == 1 ]]; then
 		DOCS_DEPEND="$(python_gen_any_dep "
@@ -203,7 +185,7 @@ sphinx_compile() {
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		"${DOCS_DIR}"/conf.py || die
 	# not all packages include the Makefile in pypi tarball
-	sphinx-build "${DOCS_EXTRA_ARGS}" -b html -d "${DOCS_DIR}"/_build/doctrees "${DOCS_DIR}" \
+	sphinx-build -b html -d "${DOCS_OUTDIR}"/_build/doctrees "${DOCS_DIR}" \
 	"${DOCS_OUTDIR}" || die "${FUNCNAME}: sphinx-build failed"
 }
 
@@ -244,7 +226,7 @@ mkdocs_compile() {
 		die "${FUNCNAME}: ${mkdocsyml} not found, DOCS_DIR=${DOCS_DIR} wrong"
 
 	pushd "${DOCS_DIR}" || die
-	mkdocs build "${DOCS_EXTRA_ARGS}" -d "${DOCS_OUTDIR}" || die "${FUNCNAME}: mkdocs build failed"
+	mkdocs build -d "${DOCS_OUTDIR}" || die "${FUNCNAME}: mkdocs build failed"
 	popd || die
 
 	# remove generated .gz variants
@@ -283,7 +265,7 @@ doxygen_compile() {
 	mkdir -p "${DOCS_OUTDIR}" || die
 
 	pushd "${DOCS_DIR}" || die
-	(cat "${DOCS_CONFIG_NAME}" ; echo "HTML_OUTPUT=${DOCS_OUTDIR}") | doxygen - "${DOCS_EXTRA_ARGS}" || die "${FUNCNAME}: doxygen failed"
+	(cat "${DOCS_CONFIG_NAME}" ; echo "HTML_OUTPUT=${DOCS_OUTDIR}") | doxygen - || die "${FUNCNAME}: doxygen failed"
 	popd || die
 }
 
@@ -305,7 +287,7 @@ docs_compile() {
 	: ${DOCS_DIR:="${S}"}
 
 	# Where to put the compiled files?
-	: ${DOCS_OUTDIR:="${DOCS_DIR}/_build/html"}
+	: ${DOCS_OUTDIR:="${S}/_build/html"}
 
 	${DOCS_BUILDER}_compile
 
