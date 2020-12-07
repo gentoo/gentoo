@@ -21,6 +21,11 @@ DOCS=(
 	CHANGELOG.md
 )
 
+src_prepare() {
+	sed -r -e 's:-Werror[[:space:]]*::' -i CMakeLists.txt || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local -a mycmakeopts=(
 		-DCXXOPTS_BUILD_EXAMPLES=OFF
