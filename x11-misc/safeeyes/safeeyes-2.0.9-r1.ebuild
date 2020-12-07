@@ -1,10 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
-inherit gnome2-utils xdg distutils-r1
+PYTHON_COMPAT=( python3_{6..9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
+inherit xdg distutils-r1
 
 DESCRIPTION="Linux alternative to EyeLeo"
 HOMEPAGE="https://github.com/slgobinath/SafeEyes"
@@ -35,16 +37,12 @@ DOCS=(
 	README.md
 )
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
