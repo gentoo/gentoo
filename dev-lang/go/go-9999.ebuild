@@ -178,6 +178,10 @@ src_install()
 	done
 	einstalldocs
 
+	# install the @golang-rebuild set for Portage
+	insinto /usr/share/portage/config/sets
+	newins "${FILESDIR}"/go-sets.conf go.conf
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fix install_name for test object (binutils_test) on Darwin, it
 		# is never used in real circumstances
@@ -189,8 +193,6 @@ src_install()
 
 pkg_postinst() {
 	[[ -z ${REPLACING_VERSIONS} ]] && return
-	has_version "<sys-apps/portage-3.0.9" && return
-
 	einfo "After ${CATEGORY}/${PN} is updated it is recommended to rebuild"
 	einfo "all packages compiled with previous versions of ${CATEGORY}/${PN}"
 	einfo "due to the static linking nature of go."
