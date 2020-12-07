@@ -787,7 +787,7 @@ app-arch/plzip 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 5.9.1_p20200625 6.0_beta1_p20201022 6.0_beta2_p20201112: RAR compressor/uncompressor
+app-arch/rar 5.9.1_p20200625 6.0_beta1_p20201022 6.0_beta2_p20201112 6.0.0_p20201201: RAR compressor/uncompressor
 app-arch/rpm 4.14.2.1-r1 4.16.0: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -805,7 +805,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
-app-arch/unrar 5.9.4 6.0.1 6.0.2: Uncompress rar files
+app-arch/unrar 5.9.4 6.0.1 6.0.2 6.0.3: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
@@ -18032,7 +18032,7 @@ www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0 2.2.1: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/civetweb 1.11 1.12: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
-www-servers/gatling 0.15 0.16 0.16-r1: High performance web server
+www-servers/gatling 0.16-r1: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55-r1 1.4.55-r100: Lightweight high-performance web server
@@ -18366,7 +18366,7 @@ x11-misc/gpaste 3.20.3 3.36.3: Clipboard management system
 x11-misc/grabc 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
 x11-misc/grsync 1.2.6 1.2.8 1.3.0: A gtk frontend to rsync
-x11-misc/grub2-theme-preview 1.4.2 1.5.1 2.1.0: Preview a GRUB 2.x theme using KVM/QEMU
+x11-misc/grub2-theme-preview 2.1.0: Preview a GRUB 2.x theme using KVM/QEMU
 x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog, just like xexec
 x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
