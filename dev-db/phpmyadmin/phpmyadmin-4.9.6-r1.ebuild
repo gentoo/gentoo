@@ -14,11 +14,12 @@ HOMEPAGE="https://www.phpmyadmin.net/"
 SRC_URI="https://files.phpmyadmin.net/${MY_PN}/${MY_PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="setup"
 
 RDEPEND="
-	>=dev-lang/php-7.1[ctype,filter,json(+),session,unicode]
+	dev-lang/php[ctype,filter,json(+),session,unicode]
 	|| (
 		dev-lang/php[mysqli]
 		dev-lang/php[mysql]
