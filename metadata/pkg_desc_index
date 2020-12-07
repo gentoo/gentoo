@@ -13257,7 +13257,7 @@ media-libs/quarter 1.1.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
-media-libs/raspberrypi-userland 0_pre20160424 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20190709 1.20201022: Raspberry Pi userspace tools and libraries
 media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
@@ -14548,7 +14548,7 @@ net-firewall/rtsp-conntrack 3.7-r2 4.18-r1: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r3: iptables firewall generator (fork of firehol)
 net-firewall/shorewall 5.2.8: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
-net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9: iptables extensions not yet accepted in the main kernel
+net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9 3.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
 net-fs/btfs 2.20 2.22: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.11: Tools for Managing Linux CIFS Client Filesystems
