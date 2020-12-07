@@ -25,7 +25,9 @@ DOCS=( ChangeLog README )
 
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
-PATCHES=()
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.3-tinfo.patch" #690840
+)
 
 pkg_setup() {
 	if ! has_version sys-process/lsof; then
