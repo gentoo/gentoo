@@ -67,7 +67,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use test tests)
 		$(meson_use doc yelp_manual)
-		-Dautotools_support=false
 	)
 	meson_src_configure
 }
@@ -84,6 +83,10 @@ src_install() {
 	# used during the build. We need to fix it.
 	sed -i -e 's:^#!.*:#!/usr/bin/env python3:' "${ED}"/usr/bin/* || die
 	python_fix_shebang "${ED}"/usr/bin/*
+
+	# Don't install this file, it's in gtk-doc-am now
+	rm "${ED}"/usr/share/aclocal/gtk-doc.m4 || die "failed to remove gtk-doc.m4"
+	rmdir "${ED}"/usr/share/aclocal || die
 
 	if use emacs; then
 		elisp-install ${PN} tools/gtk-doc.el*
