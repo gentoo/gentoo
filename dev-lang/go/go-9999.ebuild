@@ -154,37 +154,37 @@ src_test()
 
 src_install()
 {
-	local bin_path f x
-
-	dodir /usr/lib/go
-
 	# There is a known issue which requires the source tree to be installed [1].
 	# Once this is fixed, we can consider using the doc use flag to control
 	# installing the doc and src directories.
+	# The use of cp is deliberate in order to retain permissions
 	# [1] https://golang.org/issue/2775
-	#
-	# deliberately use cp to retain permissions
+	dodir /usr/lib/go
 	cp -R api bin doc lib pkg misc src test "${ED}"/usr/lib/go
+	einstalldocs
+
 	# testdata directories are not needed on the installed system
 	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
+
+	local bin_path
 	if go_cross_compile; then
 		bin_path="bin/$(go_tuple)"
 	else
 		bin_path=bin
 	fi
+	local f x
 	for x in ${bin_path}/*; do
 		f=${x##*/}
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
-	einstalldocs
 
 	# install the @golang-rebuild set for Portage
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/go-sets.conf go.conf
 
+	# fix install_name for test object (binutils_test) on Darwin, it
+	# is never used in real circumstances
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		# fix install_name for test object (binutils_test) on Darwin, it
-		# is never used in real circumstances
 		local libmac64="${EPREFIX}"/usr/lib/go/src/cmd/vendor/github.com/
 		      libmac64+=google/pprof/internal/binutils/testdata/lib_mac_64
 		install_name_tool -id "${libmac64}" "${D}${libmac64}"
