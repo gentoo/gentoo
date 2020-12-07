@@ -33,6 +33,14 @@ PATCHES=(
 	"${FILESDIR}"/cffi-1.14.0-darwin-no-brew.patch
 )
 
+src_prepare() {
+	if [[ ${CHOST} == *darwin* ]] ; then
+		# Don't obsessively try to find libffi
+		sed -i -e "s/.*\-iwithsysroot\/usr\/include\/ffi.*/\tpass/" setup.py || die
+	fi
+	distutils-r1_src_prepare
+}
+
 src_configure() {
 	tc-export PKG_CONFIG
 }
