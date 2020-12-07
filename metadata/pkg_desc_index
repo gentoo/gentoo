@@ -9059,7 +9059,7 @@ dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian 
 dev-python/simpleeval 0.9.10: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.17.2-r1: Simple, fast, extensible JSON encoder/decoder for Python
-dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as possible
+dev-python/simplekml 1.3.5: enables you to generate KML with as little effort as possible
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.13: Object-oriented, process-based discrete-event simulation language
