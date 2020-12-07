@@ -103,6 +103,7 @@ src_prepare() {
 	touch -r . doc/* || die
 
 	eapply -p0 "${PATCHES[@]}"
+	eapply "${FILESDIR}/${PN}-5.1-parallel_make.patch"
 	eapply_user
 }
 
