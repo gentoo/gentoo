@@ -79,6 +79,7 @@ RDEPEND="${DEPEND}
 		dev-perl/Error
 		dev-perl/MailTools
 		dev-perl/Authen-SASL
+		>=virtual/perl-libnet-3.110.0-r4[ssl]
 		cgi? (
 			dev-perl/CGI
 			highlight? ( app-text/highlight )
