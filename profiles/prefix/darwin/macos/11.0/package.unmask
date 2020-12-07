@@ -5,5 +5,5 @@
 # Unmask only working versions for Big Sur
 # They're currently masked in main tree
 # for testing.
-->=sys-libs/readline-8.1
-->=app-shells/bash-5.1
+>=sys-libs/readline-8.1
+>=app-shells/bash-5.1
