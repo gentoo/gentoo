@@ -7906,7 +7906,7 @@ dev-python/async_generator 1.10: Making it easy to write async iterators in Pyth
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0-r1: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/attrs 20.1.0-r1 20.2.0-r1 20.3.0: Attributes without boilerplate
+dev-python/attrs 20.2.0-r1 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
@@ -8272,7 +8272,7 @@ dev-python/humanize 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.35.4 5.36.2 5.37.5 5.41.0 5.41.1 5.41.2 5.41.3 5.41.4 5.41.5: A library for property based testing
+dev-python/hypothesis 5.24.4 5.41.1 5.41.3 5.41.4 5.41.5: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8833,7 +8833,7 @@ dev-python/pytest-regressions 2.0.1 2.0.2: Easy to use fixtures to write regress
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
-dev-python/pytest-services 2.2.0 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
+dev-python/pytest-services 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
