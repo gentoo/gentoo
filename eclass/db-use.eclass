@@ -1,8 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# This is a common location for functions that aid the use of sys-libs/db
-#
-# Bugs: maintainer-needed@gentoo.org
+
+# @ECLASS: db-use.eclass
+# @MAINTAINER:
+# maintainer-needed@gentoo.org
+# @AUTHOR:
+# Paul de Vrieze <pauldv@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @BLURB: functions that aid the use of sys-libs/db
+# @DESCRIPTION:
+# functions that aid in the use of sys-libs/db
 
 # multilib is used for get_libname in all EAPI
 case "${EAPI:-0}" in
@@ -10,7 +17,10 @@ case "${EAPI:-0}" in
 	*) inherit multilib ;;
 esac
 
-#Convert a version to a db slot
+# @FUNCTION: db_ver_to_slot
+# @USAGE: <version>
+# @DESCRIPTION:
+# Convert a version to a db slot
 db_ver_to_slot() {
 	if [ $# -ne 1 ]; then
 		eerror "Function db_ver_to_slot needs one argument" >&2
@@ -28,7 +38,10 @@ db_ver_to_slot() {
 	echo -n "$1"
 }
 
-#Find the version that correspond to the given atom
+# @FUNCTION: db_findver
+# @USAGE: <atom>
+# @DESCRIPTION:
+# Find the version that corresponds to the given atom
 db_findver() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -ne 1 ]; then
@@ -52,6 +65,9 @@ db_findver() {
 	fi
 }
 
+# @FUNCTION: db_includedir
+# @USAGE: <version>
+# @DESCRIPTION:
 # Get the include dir for berkeley db.
 # This function has two modes. Without any arguments it will give the best
 # version available. With arguments that form the versions of db packages
@@ -71,7 +87,7 @@ db_includedir() {
 			return 1
 		fi
 	else
-		#arguments given
+		# arguments given
 		for x in $@
 		do
 			if VER=$(db_findver "=sys-libs/db-${x}*") &&
@@ -85,7 +101,9 @@ db_includedir() {
 	fi
 }
 
-
+# @FUNCTION: db_libname
+# @USAGE: <version>
+# @DESCRIPTION:
 # Get the library name for berkeley db. Something like "db-4.2" will be the
 # outcome. This function has two modes. Without any arguments it will give
 # the best version available. With arguments that form the versions of db
@@ -103,7 +121,7 @@ db_libname() {
 			return 1
 		fi
 	else
-		#arguments given
+		# arguments given
 		for x in $@
 		do
 			if VER=$(db_findver "=sys-libs/db-${x}*"); then
