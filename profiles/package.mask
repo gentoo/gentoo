@@ -449,13 +449,6 @@ dev-python/couchdb-python
 www-apps/liquid_feedback_frontend
 www-apps/webmcp
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
-# Hackage release does not build against gcc-8:
-# https://github.com/Helium4Haskell/helium/issues/4
-# Masked for removal. Bugs: #751757, #736054
-dev-lang/helium
-dev-haskell/lvmlib
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-10-30)
 # Removed public macro definitions for TRUE and FALSE which breaks lots of
 # revdeps. See tacker bug at https://bugs.gentoo.org/751919
