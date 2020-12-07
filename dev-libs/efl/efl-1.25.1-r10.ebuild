@@ -146,7 +146,7 @@ src_prepare() {
 	fi
 
 	# Fixup Doxyfile
-	pushd "${DOCS_DIR}"
+	pushd "${DOCS_DIR}" || die
 	cp Doxyfile.in Doxyfile || die
 	sed -i \
 		-e "s/@PACKAGE_VERSION@/${PV}/g" \
@@ -154,7 +154,7 @@ src_prepare() {
 		-e "s/@top_srcdir@/../g" \
 		-e "s/@srcdir@/./g" \
 		Doxyfile || die
-	popd
+	popd || die
 }
 
 src_configure() {
