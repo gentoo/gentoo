@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit meson systemd
 
 DESCRIPTION="Minimal seat management daemon and universal library"
 HOMEPAGE="https://sr.ht/~kennylevinsen/seatd"
@@ -44,4 +44,5 @@ src_configure() {
 src_install() {
 	meson_src_install
 	newinitd "${FILESDIR}/seatd.initd" seatd
+	systemd_dounit contrib/systemd/seatd.service
 }
