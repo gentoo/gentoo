@@ -21,7 +21,7 @@ case ${PV}  in
 	case ${PV} in
 	*_beta*|*_rc*) ;;
 	*)
-		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+		KEYWORDS="-* amd64 arm arm64 ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 		;;
 	esac
 esac
@@ -30,12 +30,13 @@ DESCRIPTION="A concurrent garbage collected and typesafe programming language"
 HOMEPAGE="https://golang.org"
 
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="$(ver_cut 1-2)/${PV}"
 
 BDEPEND="|| (
 		dev-lang/go
 		dev-lang/go-bootstrap )"
-RDEPEND="!<dev-go/go-tools-0_pre20150902"
+RDEPEND="!<dev-go/go-tools-0_pre20150902
+	!dev-lang/go:1.15"
 
 # Do not complain about CFLAGS, etc, since Go doesn't use them.
 QA_FLAGS_IGNORED='.*'
