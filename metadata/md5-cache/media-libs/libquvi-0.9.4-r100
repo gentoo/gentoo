@@ -1,0 +1,15 @@
+BDEPEND=app-arch/xz-utils virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare setup
+DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1[deprecated] ) >=dev-libs/glib-2.34.3:2 >=dev-libs/libgcrypt-1.5.3:0= >=media-libs/libquvi-scripts-0.9.20130903[lua_single_target_lua5-1(-)?] !<media-libs/quvi-0.4.0 >=net-libs/libproxy-0.4.11-r1 >=net-misc/curl-7.36.0 nls? ( >=virtual/libintl-0-r1 )
+DESCRIPTION=Library for parsing video download links
+EAPI=7
+HOMEPAGE=http://quvi.sourceforge.net/
+IUSE=examples nls static-libs +lua_single_target_lua5-1
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=AGPL-3
+RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1[deprecated] ) >=dev-libs/glib-2.34.3:2 >=dev-libs/libgcrypt-1.5.3:0= >=media-libs/libquvi-scripts-0.9.20130903[lua_single_target_lua5-1(-)?] !<media-libs/quvi-0.4.0 >=net-libs/libproxy-0.4.11-r1 >=net-misc/curl-7.36.0 nls? ( >=virtual/libintl-0-r1 )
+REQUIRED_USE=^^ ( lua_single_target_lua5-1 )
+SLOT=0/8
+SRC_URI=mirror://sourceforge/quvi/0.9/libquvi-0.9.4.tar.xz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=ebfb26e37a4c48b1662793c82c1b24c1
