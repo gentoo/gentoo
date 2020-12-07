@@ -663,6 +663,8 @@ dev-lang/vala:0.50
 # Indefinitely masking until we have a solution
 # for this.
 # bug #719084
+# Furthermore, ntopng ebuilds depending directly on dev-lang/lua{,jit}
+# must be migrated to lua eclasses before unmasking (bug #752777).
 net-analyzer/ntopng
 net-analyzer/pmacct
 net-libs/nDPI
