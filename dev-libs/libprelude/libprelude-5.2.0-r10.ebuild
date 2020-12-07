@@ -44,6 +44,7 @@ BDEPEND=">=dev-lang/swig-4.0.0
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0-fix-python-bindings.patch"
 	"${FILESDIR}/${PN}-5.1.0-fix_gtkdoc_1.32.patch"
+	"${FILESDIR}/${PN}-5.2.0-luabindings_liblua.patch"
 )
 
 src_prepare() {
