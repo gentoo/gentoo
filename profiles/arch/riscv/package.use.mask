@@ -1,6 +1,10 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-12-07)
+# No riscv keyword in deps
+sys-process/htop hwloc lm-sensors
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-05)
 # dev-python/parameterized is not keyworded
 dev-util/gtk-doc test
