@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-05">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">chromium,google-chrome</product>
+  <announced>2020-12-07</announced>
+  <revised count="1">2020-12-07</revised>
+  <bug>755227</bug>
+  <bug>758368</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">87.0.4280.88</unaffected>
+      <vulnerable range="lt">87.0.4280.88</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">87.0.4280.88</unaffected>
+      <vulnerable range="lt">87.0.4280.88</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-87.0.4280.88"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-87.0.4280.88"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16014">CVE-2020-16014</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16015">CVE-2020-16015</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16018">CVE-2020-16018</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16019">CVE-2020-16019</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16020">CVE-2020-16020</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16021">CVE-2020-16021</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16022">CVE-2020-16022</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16023">CVE-2020-16023</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16024">CVE-2020-16024</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16025">CVE-2020-16025</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16026">CVE-2020-16026</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16027">CVE-2020-16027</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16028">CVE-2020-16028</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16029">CVE-2020-16029</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16030">CVE-2020-16030</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16031">CVE-2020-16031</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16032">CVE-2020-16032</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16033">CVE-2020-16033</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16034">CVE-2020-16034</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16036">CVE-2020-16036</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16037">CVE-2020-16037</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16038">CVE-2020-16038</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16039">CVE-2020-16039</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16040">CVE-2020-16040</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16041">CVE-2020-16041</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16042">CVE-2020-16042</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-22T03:12:48Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-12-07T00:19:23Z">whissi</metadata>
+</glsa>
