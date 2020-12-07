@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-01">
+  <title>X.Org X Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.org X Server, the
+    worst of which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">xorg x server</product>
+  <announced>2020-12-07</announced>
+  <revised count="1">2020-12-07</revised>
+  <bug>734976</bug>
+  <bug>757882</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.20.10</unaffected>
+      <vulnerable range="lt">1.20.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.org X Server. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>A local attacker could escalate privileges.</p>
+  </workaround>
+  <resolution>
+    <p>All X.org X Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=11-base/xorg-server-1.20.10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14345">CVE-2020-14345</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14346">CVE-2020-14346</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14347">CVE-2020-14347</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14360">CVE-2020-14360</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14361">CVE-2020-14361</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14362">CVE-2020-14362</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25712">CVE-2020-25712</uri>
+    <uri link="https://lists.x.org/archives/xorg-announce/2020-July/003051.html">
+      Upstream advisory (2020-07-31)
+    </uri>
+    <uri link="https://lists.x.org/archives/xorg-announce/2020-August/003058.html">
+      Upstream advisory (2020-08-25)
+    </uri>
+    <uri link="https://lists.x.org/archives/xorg-announce/2020-December/003066.html">
+      Upstream advisory (2020-12-01)
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-08-25T22:22:49Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-12-07T00:18:30Z">sam_c</metadata>
+</glsa>
