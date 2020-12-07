@@ -567,6 +567,7 @@ gnome-base/orbit
 >=media-libs/libquvi-scripts-0.9.20131130-r100
 >=media-sound/aqualung-1.1-r100
 >=media-video/vlc-3.0.11.1-r100
+>=net-analyzer/rrdtool-1.7.2-r100
 >=net-analyzer/suricata-6.0.1-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
