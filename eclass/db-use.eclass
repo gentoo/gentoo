@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Paul de Vrieze <pauldv@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: functions that aid the use of sys-libs/db
 # @DESCRIPTION:
 # functions that aid in the use of sys-libs/db
