@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+LUA_COMPAT=(lua{5-1,5-2,5-3,5-4})
 
-inherit cmake gnome2-utils xdg-utils
+inherit cmake gnome2-utils lua-single xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -28,7 +29,9 @@ LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango +table test +xkb"
-REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
+REQUIRED_USE="cairo? ( X )
+	lua? ( ${LUA_REQUIRED_USE} )
+	pango? ( cairo )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="dev-util/glib-utils
@@ -62,7 +65,7 @@ DEPEND="dev-libs/glib:2
 	enchant? ( app-text/enchant:= )
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	lua? ( dev-lang/lua:0= )
+	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:0= )
 	xkb? (
@@ -77,6 +80,12 @@ PATCHES=(
 )
 
 DOCS=(AUTHORS ChangeLog THANKS)
+
+pkg_setup() {
+	if use lua; then
+		lua-single_pkg_setup
+	fi
+}
 
 src_prepare() {
 	if [[ "${PV}" =~ (^|\.)9999$ ]]; then
@@ -114,6 +123,11 @@ src_configure() {
 		-DENABLE_XDGAUTOSTART=$(usex autostart ON OFF)
 		-DENABLE_XKB=$(usex xkb ON OFF)
 	)
+	if use lua; then
+		mycmakeargs+=(
+			-DLUA_MODULE_NAME=lua
+		)
+	fi
 
 	cmake_src_configure
 }
