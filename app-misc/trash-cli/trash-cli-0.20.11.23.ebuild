@@ -15,12 +15,11 @@ SRC_URI="https://github.com/andreafrancia/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests nose
