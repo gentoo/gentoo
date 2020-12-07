@@ -3,7 +3,10 @@
 
 EAPI=7
 
-inherit meson xdg-utils
+DOCS_BUILDER="doxygen"
+DOCS_DIR="${S}/doc"
+
+inherit docs meson xdg-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 HOMEPAGE="https://www.enlightenment.org"
@@ -12,7 +15,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
-IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug doc drm +eet efl-one elogind examples fbcon
+IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug drm +eet efl-one elogind examples fbcon
 	+fontconfig fribidi gif gles2-only gnutls glib +gstreamer harfbuzz hyphen ibus ico libressl
 	lua +luajit jpeg2k json nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim
 	sdl +sound +ssl +svg +system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf
@@ -128,7 +131,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	doc? ( app-doc/doxygen )
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
@@ -145,6 +147,17 @@ src_prepare() {
 		sed -i "/config_h.set('HAVE_UNWIND/,/eina_ext_deps += unwind/d" src/lib/eina/meson.build ||
 			die "Failed to remove libunwind dep"
 	fi
+
+	# Fixup Doxyfile
+	pushd "${DOCS_DIR}" || die
+	cp Doxyfile.in Doxyfile || die
+	sed -i \
+		-e "s/@PACKAGE_VERSION@/${PV}/g" \
+		-e "s/@top_builddir@/../g" \
+		-e "s/@top_srcdir@/../g" \
+		-e "s/@srcdir@/./g" \
+		Doxyfile || die
+	popd || die
 }
 
 src_configure() {
@@ -276,16 +289,11 @@ src_configure() {
 }
 
 src_compile() {
+	docs_compile
 	meson_src_compile
-
-	if use doc; then
-		cd doc/ || die "Failed to switch into doc/ dir."
-		doxygen . || die "Doxygen failed to run."
-	fi
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( "${S}"/doc/html/. )
 	meson_src_install
 
 	if use examples; then
