@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-02">
+  <title>SeaMonkey: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in SeaMonkey, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">seamonkey</product>
+  <announced>2020-12-07</announced>
+  <revised count="1">2020-12-07</revised>
+  <bug>718738</bug>
+  <bug>718746</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/seamonkey" auto="yes" arch="*">
+      <unaffected range="ge">2.53.5</unaffected>
+      <vulnerable range="lt">2.53.5.1</vulnerable>
+    </package>
+    <package name="www-client/seamonkey-bin" auto="yes" arch="*">
+      <vulnerable range="le">2.49.1_rc2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The SeaMonkey project is a community effort to deliver
+      production-quality releases of code derived from the application formerly
+      known as “Mozilla Application Suite”.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SeaMonkey. Please
+      review referenced release notes for more details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced release notes for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SeaMonkey users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/seamonkey-2.53.5.1"
+    </code>
+    
+    <p>Gentoo has discontinued support for the SeaMonkey binary package. We
+      recommend that users unmerge the SeaMonkey binary package:
+    </p>
+    
+    <p># emerge --unmerge “www-client/seamonkey-bin”</p>
+    
+    <p>NOTE: The Gentoo developer(s) maintaining the SeaMonkey binary package
+      have discontinued support at this time. It may be possible that a new
+      Gentoo developer will update it at a later date. The alternative is using
+      the standard SeaMonkey package.
+    </p>
+  </resolution>
+  <references>
+    <uri link="https://www.seamonkey-project.org/releases/seamonkey2.53.2/">
+      SeaMonkey 2.53.2 Release Notes
+    </uri>
+    <uri link="https://www.seamonkey-project.org/releases/seamonkey2.53.3/">
+      SeaMonkey 2.53.3 Release Notes
+    </uri>
+    <uri link="https://www.seamonkey-project.org/releases/seamonkey2.53.4/">
+      SeaMonkey 2.53.4 Release Notes
+    </uri>
+    <uri link="https://www.seamonkey-project.org/releases/seamonkey2.53.5/">
+      SeaMonkey 2.53.5 Release Notes
+    </uri>
+    <uri link="https://www.seamonkey-project.org/releases/seamonkey2.53.5.1/">
+      SeaMonkey 2.53.5.1 Release Notes
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-06-13T16:26:44Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-12-07T00:18:47Z">sam_c</metadata>
+</glsa>
