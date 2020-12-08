@@ -10,6 +10,6 @@ LICENSE=GPL-2+
 RDEPEND=app-text/opensp dev-libs/libxslt dev-perl/Locale-gettext dev-perl/SGMLSpm dev-perl/TermReadKey dev-perl/Text-WrapI18N dev-perl/Unicode-LineBreak dev-perl/YAML-Tiny sys-devel/gettext virtual/perl-Pod-Parser dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/mquinson/po4a/releases/download/v0.60/po4a-0.60.tar.gz
+SRC_URI=https://github.com/mquinson/po4a/releases/download/v0.62/po4a-0.62.tar.gz
 _eclasses_=l10n	8cdd85e169b835d518bc2fd59f780d8e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=b8b98f23b76b32e00f4102e2fab3d539
+_md5_=f4cd4fed03ab10d213e40d5ea6a7c43b

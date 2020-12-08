@@ -2963,7 +2963,7 @@ app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG gramm
 app-text/pelican 4.2.0 4.5.1 4.5.3 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
-app-text/po4a 0.57 0.60 0.61: Tools to ease the translation of documentation
+app-text/po4a 0.57 0.61 0.62: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 20.11.0 20.12.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
