@@ -20,7 +20,7 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/libev-4.23:=
+	>=dev-libs/libev-4.31:=
 	dev-libs/libuv:=
 	>=net-dns/c-ares-1.12:=
 	>=dev-python/greenlet-0.4.17
