@@ -1,8 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
+EAPI=7
 
 inherit gnome2 multilib-minimal
 
@@ -19,7 +18,8 @@ RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
 "
@@ -50,6 +50,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	DOCS="AUTHORS ChangeLog HACKING NEWS README TODO"
+	DOCS=( AUTHORS ChangeLog HACKING NEWS README TODO )
 	einstalldocs
 }
