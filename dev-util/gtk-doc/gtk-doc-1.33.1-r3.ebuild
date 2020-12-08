@@ -81,8 +81,8 @@ src_install() {
 
 	# The meson build system configures the shebangs to the temporary python
 	# used during the build. We need to fix it.
-	sed -i -e 's:^#!.*:#!/usr/bin/env python3:' "${ED}"/usr/bin/* || die
-	python_fix_shebang "${ED}"/usr/bin/*
+	sed -i -e 's:^#!.*python3:#!/usr/bin/env python3:' "${ED}"/usr/bin/* || die
+	python_fix_shebang "${ED}"/usr/bin
 
 	# Don't install this file, it's in gtk-doc-am now
 	rm "${ED}"/usr/share/aclocal/gtk-doc.m4 || die "failed to remove gtk-doc.m4"
