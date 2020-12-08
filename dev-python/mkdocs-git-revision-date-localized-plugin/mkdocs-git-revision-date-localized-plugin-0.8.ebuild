@@ -34,11 +34,11 @@ distutils_enable_tests --install pytest
 python_prepare_all() {
 	# mkdocs-git-revision-date-localized-plugin's tests need git repo
 	if use test; then
-		git init
+		git init || die
 		git config --global user.email "you@example.com" || die
 		git config --global user.name "Your Name" || die
-		git add .
-		git commit -m 'init'
+		git add . || die
+		git commit -m 'init' || die
 	fi
 
 	distutils-r1_python_prepare_all
