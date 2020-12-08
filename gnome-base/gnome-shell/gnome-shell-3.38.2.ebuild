@@ -42,7 +42,7 @@ DEPEND="
 		net-libs/libnma[introspection]
 		>=app-crypt/libsecret-0.18
 		dev-libs/dbus-glib )
-	systemd? ( >=sys-apps/systemd-31
+	systemd? ( >=sys-apps/systemd-242
 		>=gnome-base/gnome-desktop-3.34.2:3=[systemd] )
 	elogind? ( >=sys-auth/elogind-237 )
 	app-arch/gnome-autoar
