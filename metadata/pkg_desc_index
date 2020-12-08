@@ -10759,10 +10759,10 @@ dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.6.0-r1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.6.0-r1 5.6.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.6.0: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.6.0: Python plugin for KDevelop
+dev-util/kdevelop-php 5.6.0 5.6.1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.6.0 5.6.1: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.3.1: SDK for building Kubernetes APIs using CRDs
