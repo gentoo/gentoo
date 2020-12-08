@@ -45,7 +45,7 @@ RDEPEND="${DEPEND}
 	>=virtual/jdk-1.7:*
 	dev-java/jansi-native
 	dev-libs/libdbusmenu
-	=dev-util/lldb-9*"
+	=dev-util/lldb-10*"
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
@@ -81,7 +81,7 @@ src_prepare() {
 		done
 	fi
 
-	patchelf --replace-needed liblldb.so liblldb.so.9 "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die "Unable to patch LLDBFrontend for lldb"
+	patchelf --replace-needed liblldb.so liblldb.so.10 "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die "Unable to patch LLDBFrontend for lldb"
 	if use arm64; then
 		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/aarch64/libpty.so || die "Unable to patch libpty for libc"
 	else
