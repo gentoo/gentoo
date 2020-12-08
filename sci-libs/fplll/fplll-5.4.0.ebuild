@@ -12,7 +12,7 @@ SLOT="0/7"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs qd"
 
-BDEPEND=""
+BDEPEND="qd? ( virtual/pkgconfig )"
 DEPEND="dev-libs/gmp:0
 	dev-libs/mpfr:0
 	qd? ( sci-libs/qd )"
