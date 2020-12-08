@@ -31,8 +31,9 @@ RDEPEND="
 	>=dev-python/bracex-2.0[${PYTHON_USEDEP}]
 "
 
-DEPEND="test? (
+BDEPEND="test? (
 	dev-python/mock[${PYTHON_USEDEP}]
+	dev-vcs/git
 )"
 
 distutils_enable_tests pytest
