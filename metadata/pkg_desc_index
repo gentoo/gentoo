@@ -2623,8 +2623,8 @@ app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.0 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.4: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.6.2-r2 6.4.7.2 7.0.3.1 7.0.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 6.4.6.2-r2 6.4.7.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.4.6.2-r2 6.4.7.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 6.4.6.2-r2 6.4.7.2 6.4.7.2_p1: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.4.6.2-r2 6.4.7.2 6.4.7.2_p1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.6.2 6.4.7.2 7.0.3.1: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2: WYSIWYM frontend for LaTeX, DocBook, etc.
@@ -5063,7 +5063,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.2: Elixir programming language
-dev-lang/erlang 23.0.4 23.1.1 23.1.4: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.1.1 23.1.4 23.1.5: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -10740,7 +10740,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20201116: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2020.2.4.202.8194.7 2020.3.0.203.5981.155: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2020.3.0.203.5981.155-r1: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 2.2.0 2.5.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 11.0: Find unused include directives in C/C++ programs
@@ -17517,7 +17517,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.247 4.9.247 4.14.210 4.19.161 5.4.81 5.9.12: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.247 4.9.247 4.14.211 4.19.162 5.4.82 5.9.13: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.9.11: The Zen Kernel Live Sources
