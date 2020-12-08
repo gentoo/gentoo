@@ -9,7 +9,7 @@ MY_PN="xdebug"
 MY_PV="${PV/_/}"
 MY_PV="${MY_PV/rc/RC}"
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Xdebug client for the Common Debugger Protocol (DBGP)"
 HOMEPAGE="https://xdebug.org/"
@@ -32,6 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC LD
 	econf $(use_with libedit)
 }
 
