@@ -1,10 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
+# media-libs/liblastfm fails to build with tests Bug #758896
+media-sound/clementine lastfm
+
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-01)
 # hfs xfs fail build and/or tests on arm64 
-# See bugs #757924 and #747181 respctively
-sys-block/gparted hfs xfs
+# See bug #747181 
+sys-block/gparted xfs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
 # dev-util/kdevelop-php is not keyworded, bug #751337

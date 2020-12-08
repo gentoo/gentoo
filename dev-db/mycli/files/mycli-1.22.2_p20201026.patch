@@ -1,0 +1,470 @@
+diff --git a/.travis.yml b/.travis.yml
+index 0afb5cc..182dea7 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -12,7 +12,7 @@ matrix:
+ 
+ install:
+   - pip install -r requirements-dev.txt
+-  - pip install -e .
++  - pip install --no-cache-dir -e .
+   - sudo rm -f /etc/mysql/conf.d/performance-schema.cnf
+   - sudo service mysql restart
+ 
+diff --git a/README.md b/README.md
+index efe804d..d5a0687 100644
+--- a/README.md
++++ b/README.md
+@@ -96,6 +96,7 @@ $ sudo apt-get install mycli # Only on debian or ubuntu
+       --local-infile BOOLEAN        Enable/disable LOAD DATA LOCAL INFILE.
+       --login-path TEXT             Read this path from the login file.
+       -e, --execute TEXT            Execute command and quit.
++      --init-command TEXT           SQL statement to execute after connecting.
+       --help                        Show this message and exit.
+ 
+ Features
+diff --git a/changelog.md b/changelog.md
+index a4fea35..508c801 100644
+--- a/changelog.md
++++ b/changelog.md
+@@ -1,9 +1,22 @@
++TBD
++===
++
++Features:
++---------
++
++* Add an option `--init-command` to execute SQL after connecting (Thanks: [KITAGAWA Yasutaka]).
++
++Bug Fixes:
++----------
++* Fixed compatibility with sqlparse 0.4 (Thanks: [mtorromeo]).
++
+ 1.22.2
+ ======
+ 
+ Bug Fixes:
+ ----------
+-*  Make the `pwd` module optional. 
++
++*  Make the `pwd` module optional.
+ 
+ 1.22.1
+ ======
+@@ -18,6 +31,11 @@ Features:
+ * Add an option `--list-ssh-config` to list ssh configurations.
+ * Add an option `--ssh-config-path` to choose ssh configuration path.
+ 
++Bug Fixes:
++----------
++
++* Fix specifying empty password with `--password=''` when config file has a password set (Thanks: [Zach DeCook]).
++
+ 
+ 1.21.1
+ ======
+@@ -28,6 +46,7 @@ Bug Fixes:
+ 
+ * Fix broken auto-completion for favorite queries (Thanks: [Amjith]).
+ * Fix undefined variable exception when running with --no-warn (Thanks: [Georgy Frolov])
++* Support setting color for null value (Thanks: [laixintao])
+ 
+ 1.21.0
+ ======
+@@ -768,3 +787,6 @@ Bug Fixes:
+ [François Pietka]: https://github.com/fpietka
+ [Frederic Aoustin]: https://github.com/fraoustin
+ [Georgy Frolov]: https://github.com/pasenor
++[Zach DeCook]: https://zachdecook.com
++[laixintao]: https://github.com/laixintao
++[mtorromeo]: https://github.com/mtorromeo
+diff --git a/mycli/AUTHORS b/mycli/AUTHORS
+index b3636d9..a1204b0 100644
+--- a/mycli/AUTHORS
++++ b/mycli/AUTHORS
+@@ -72,6 +72,10 @@ Contributors:
+   * Jakub Boukal
+   * Takeshi D. Itoh
+   * laixintao
++  * Zach DeCook
++  * kevinhwang91
++  * KITAGAWA Yasutaka
++  * Massimiliano Torromeo
+ 
+ Creator:
+ --------
+diff --git a/mycli/clistyle.py b/mycli/clistyle.py
+index c94f793..293f0f4 100644
+--- a/mycli/clistyle.py
++++ b/mycli/clistyle.py
+@@ -34,6 +34,7 @@ TOKEN_TO_PROMPT_STYLE = {
+     Token.Output.Header: 'output.header',
+     Token.Output.OddRow: 'output.odd-row',
+     Token.Output.EvenRow: 'output.even-row',
++    Token.Output.Null: 'output.null',
+     Token.Prompt: 'prompt',
+     Token.Continuation: 'continuation',
+ }
+diff --git a/mycli/main.py b/mycli/main.py
+index 03797a0..dffd724 100755
+--- a/mycli/main.py
++++ b/mycli/main.py
+@@ -98,7 +98,7 @@ class MyCli(object):
+         xdg_config_home = "~/.config"
+     system_config_files = [
+         '/etc/myclirc',
+-        os.path.join(xdg_config_home, "mycli", "myclirc")
++        os.path.join(os.path.expanduser(xdg_config_home), "mycli", "myclirc")
+     ]
+ 
+     default_config_file = os.path.join(PACKAGE_ROOT, 'myclirc')
+@@ -152,7 +152,7 @@ class MyCli(object):
+                                 c['main'].as_bool('auto_vertical_output')
+ 
+         # Write user config if system config wasn't the last config loaded.
+-        if c.filename not in self.system_config_files:
++        if c.filename not in self.system_config_files and not os.path.exists(myclirc):
+             write_default_config(self.default_config_file, myclirc)
+ 
+         # audit log
+@@ -363,7 +363,7 @@ class MyCli(object):
+     def connect(self, database='', user='', passwd='', host='', port='',
+                 socket='', charset='', local_infile='', ssl='',
+                 ssh_user='', ssh_host='', ssh_port='',
+-                ssh_password='', ssh_key_filename=''):
++                ssh_password='', ssh_key_filename='', init_command=''):
+ 
+         cnf = {'database': None,
+                'user': None,
+@@ -396,7 +396,7 @@ class MyCli(object):
+         port = port or cnf['port']
+         ssl = ssl or {}
+ 
+-        passwd = passwd or cnf['password']
++        passwd = passwd if isinstance(passwd, str) else cnf['password']
+         charset = charset or cnf['default-character-set'] or 'utf8'
+ 
+         # Favor whichever local_infile option is set.
+@@ -420,7 +420,7 @@ class MyCli(object):
+                 self.sqlexecute = SQLExecute(
+                     database, user, passwd, host, port, socket, charset,
+                     local_infile, ssl, ssh_user, ssh_host, ssh_port,
+-                    ssh_password, ssh_key_filename
++                    ssh_password, ssh_key_filename, init_command
+                 )
+             except OperationalError as e:
+                 if ('Access denied for user' in e.args[1]):
+@@ -429,7 +429,7 @@ class MyCli(object):
+                     self.sqlexecute = SQLExecute(
+                         database, user, new_passwd, host, port, socket,
+                         charset, local_infile, ssl, ssh_user, ssh_host,
+-                        ssh_port, ssh_password, ssh_key_filename
++                        ssh_port, ssh_password, ssh_key_filename, init_command
+                     )
+                 else:
+                     raise e
+@@ -1051,6 +1051,8 @@ class MyCli(object):
+               help='Read this path from the login file.')
+ @click.option('-e', '--execute',  type=str,
+               help='Execute command and quit.')
++@click.option('--init-command', type=str,
++              help='SQL statement to execute after connecting.')
+ @click.argument('database', default='', nargs=1)
+ def cli(database, user, host, port, socket, password, dbname,
+         version, verbose, prompt, logfile, defaults_group_suffix,
+@@ -1058,7 +1060,8 @@ def cli(database, user, host, port, socket, password, dbname,
+         ssl_ca, ssl_capath, ssl_cert, ssl_key, ssl_cipher,
+         ssl_verify_server_cert, table, csv, warn, execute, myclirc, dsn,
+         list_dsn, ssh_user, ssh_host, ssh_port, ssh_password,
+-        ssh_key_filename, list_ssh_config, ssh_config_path, ssh_config_host):
++        ssh_key_filename, list_ssh_config, ssh_config_path, ssh_config_host,
++        init_command):
+     """A MySQL terminal client with auto-completion and syntax highlighting.
+ 
+     \b
+@@ -1182,7 +1185,8 @@ def cli(database, user, host, port, socket, password, dbname,
+         ssh_host=ssh_host,
+         ssh_port=ssh_port,
+         ssh_password=ssh_password,
+-        ssh_key_filename=ssh_key_filename
++        ssh_key_filename=ssh_key_filename,
++        init_command=init_command
+     )
+ 
+     mycli.logger.debug('Launch Params: \n'
+diff --git a/mycli/myclirc b/mycli/myclirc
+index 534b201..ba3ea1e 100644
+--- a/mycli/myclirc
++++ b/mycli/myclirc
+@@ -111,6 +111,7 @@ bottom-toolbar.transaction.failed = 'bg:#222222 #ff005f bold'
+ output.header = "#00ff5f bold"
+ output.odd-row = ""
+ output.even-row = ""
++output.null = "#808080"
+ 
+ # Favorite queries.
+ [favorite_queries]
+diff --git a/mycli/packages/completion_engine.py b/mycli/packages/completion_engine.py
+index 2b19c32..3cff2cc 100644
+--- a/mycli/packages/completion_engine.py
++++ b/mycli/packages/completion_engine.py
+@@ -2,7 +2,6 @@ import os
+ import sys
+ import sqlparse
+ from sqlparse.sql import Comparison, Identifier, Where
+-from sqlparse.compat import text_type
+ from .parseutils import last_word, extract_tables, find_prev_keyword
+ from .special import parse_special_command
+ 
+@@ -55,7 +54,7 @@ def suggest_type(full_text, text_before_cursor):
+         stmt_start, stmt_end = 0, 0
+ 
+         for statement in parsed:
+-            stmt_len = len(text_type(statement))
++            stmt_len = len(str(statement))
+             stmt_start, stmt_end = stmt_end, stmt_end + stmt_len
+ 
+             if stmt_end >= current_pos:
+diff --git a/mycli/sqlexecute.py b/mycli/sqlexecute.py
+index c68af0f..7534982 100644
+--- a/mycli/sqlexecute.py
++++ b/mycli/sqlexecute.py
+@@ -42,7 +42,7 @@ class SQLExecute(object):
+ 
+     def __init__(self, database, user, password, host, port, socket, charset,
+                  local_infile, ssl, ssh_user, ssh_host, ssh_port, ssh_password,
+-                 ssh_key_filename):
++                 ssh_key_filename, init_command=None):
+         self.dbname = database
+         self.user = user
+         self.password = password
+@@ -59,12 +59,13 @@ class SQLExecute(object):
+         self.ssh_port = ssh_port
+         self.ssh_password = ssh_password
+         self.ssh_key_filename = ssh_key_filename
++        self.init_command = init_command
+         self.connect()
+ 
+     def connect(self, database=None, user=None, password=None, host=None,
+                 port=None, socket=None, charset=None, local_infile=None,
+                 ssl=None, ssh_host=None, ssh_port=None, ssh_user=None,
+-                ssh_password=None, ssh_key_filename=None):
++                ssh_password=None, ssh_key_filename=None, init_command=None):
+         db = (database or self.dbname)
+         user = (user or self.user)
+         password = (password or self.password)
+@@ -79,6 +80,7 @@ class SQLExecute(object):
+         ssh_port = (ssh_port or self.ssh_port)
+         ssh_password = (ssh_password or self.ssh_password)
+         ssh_key_filename = (ssh_key_filename or self.ssh_key_filename)
++        init_command = (init_command or self.init_command)
+         _logger.debug(
+             'Connection DB Params: \n'
+             '\tdatabase: %r'
+@@ -93,9 +95,11 @@ class SQLExecute(object):
+             '\tssh_host: %r'
+             '\tssh_port: %r'
+             '\tssh_password: %r'
+-            '\tssh_key_filename: %r',
++            '\tssh_key_filename: %r'
++            '\tinit_command: %r',
+             db, user, host, port, socket, charset, local_infile, ssl,
+-            ssh_user, ssh_host, ssh_port, ssh_password, ssh_key_filename
++            ssh_user, ssh_host, ssh_port, ssh_password, ssh_key_filename,
++            init_command
+         )
+         conv = conversions.copy()
+         conv.update({
+@@ -110,12 +114,16 @@ class SQLExecute(object):
+         if ssh_host:
+             defer_connect = True
+ 
++        client_flag = pymysql.constants.CLIENT.INTERACTIVE
++        if init_command and len(list(special.split_queries(init_command))) > 1:
++            client_flag |= pymysql.constants.CLIENT.MULTI_STATEMENTS
++
+         conn = pymysql.connect(
+             database=db, user=user, password=password, host=host, port=port,
+             unix_socket=socket, use_unicode=True, charset=charset,
+-            autocommit=True, client_flag=pymysql.constants.CLIENT.INTERACTIVE,
++            autocommit=True, client_flag=client_flag,
+             local_infile=local_infile, conv=conv, ssl=ssl, program_name="mycli",
+-            defer_connect=defer_connect
++            defer_connect=defer_connect, init_command=init_command
+         )
+ 
+         if ssh_host:
+@@ -146,6 +154,7 @@ class SQLExecute(object):
+         self.socket = socket
+         self.charset = charset
+         self.ssl = ssl
++        self.init_command = init_command
+         # retrieve connection id
+         self.reset_connection_id()
+ 
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index 8e206a5..7a38ed5 100644
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -3,8 +3,8 @@ pytest!=3.3.0
+ pytest-cov==2.4.0
+ tox
+ twine==1.12.1
+-behave
+-pexpect
++behave>=1.2.4
++pexpect==3.3
+ coverage==5.0.4
+ codecov==2.0.9
+ autopep8==1.3.3
+diff --git a/setup.py b/setup.py
+index 156cd1a..fbab22e 100755
+--- a/setup.py
++++ b/setup.py
+@@ -24,7 +24,7 @@ install_requirements = [
+     'sqlparse>=0.3.0,<0.4.0',
+     'configobj >= 5.0.5',
+     'cryptography >= 1.0.0',
+-    'cli_helpers[styles] > 1.1.0',
++    'cli_helpers[styles] >= 2.0.1',
+ ]
+ 
+ 
+@@ -65,7 +65,7 @@ class test(TestCommand):
+     def initialize_options(self):
+         TestCommand.initialize_options(self)
+         self.pytest_args = ''
+-        self.behave_args = ''
++        self.behave_args = '--no-capture'
+ 
+     def run_tests(self):
+         unit_test_errno = subprocess.call(
+diff --git a/test/features/environment.py b/test/features/environment.py
+index 1a49dbe..cb35140 100644
+--- a/test/features/environment.py
++++ b/test/features/environment.py
+@@ -16,7 +16,7 @@ def before_all(context):
+     os.environ['LINES'] = "100"
+     os.environ['COLUMNS'] = "100"
+     os.environ['EDITOR'] = 'ex'
+-    os.environ['LC_ALL'] = 'en_US.utf8'
++    os.environ['LC_ALL'] = 'en_US.UTF-8'
+     os.environ['PROMPT_TOOLKIT_NO_CPR'] = '1'
+ 
+     test_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+@@ -118,11 +118,12 @@ def after_scenario(context, _):
+             host = context.conf['host']
+             dbname = context.currentdb
+             context.cli.expect_exact(
+-                '{0}@{1}:{2}> '.format(
++                '{0}@{1}:{2}>'.format(
+                     user, host, dbname
+                 ),
+                 timeout=5
+             )
++        context.cli.sendcontrol('c')
+         context.cli.sendcontrol('d')
+         context.cli.expect_exact(pexpect.EOF, timeout=5)
+ 
+diff --git a/test/features/steps/crud_database.py b/test/features/steps/crud_database.py
+index a0bfa53..be6dec0 100644
+--- a/test/features/steps/crud_database.py
++++ b/test/features/steps/crud_database.py
+@@ -64,15 +64,13 @@ def step_see_prompt(context):
+     user = context.conf['user']
+     host = context.conf['host']
+     dbname = context.currentdb
+-    wrappers.expect_exact(context, '{0}@{1}:{2}> '.format(
+-        user, host, dbname), timeout=5)
+-    context.atprompt = True
++    wrappers.wait_prompt(context, '{0}@{1}:{2}> '.format(user, host, dbname))
+ 
+ 
+ @then('we see help output')
+ def step_see_help(context):
+     for expected_line in context.fixture_data['help_commands.txt']:
+-        wrappers.expect_exact(context, expected_line + '\r\n', timeout=1)
++        wrappers.expect_exact(context, expected_line, timeout=1)
+ 
+ 
+ @then('we see database created')
+@@ -96,10 +94,7 @@ def step_see_db_dropped_no_default(context):
+     context.currentdb = None
+ 
+     wrappers.expect_exact(context, 'Query OK, 0 rows affected', timeout=2)
+-    wrappers.expect_exact(context, '{0}@{1}:{2}> '.format(
+-        user, host, database), timeout=5)
+-
+-    context.atprompt = True
++    wrappers.wait_prompt(context, '{0}@{1}:{2}>'.format(user, host, database))
+ 
+ 
+ @then('we see database connected')
+diff --git a/test/features/steps/wrappers.py b/test/features/steps/wrappers.py
+index 565ca59..de833dd 100644
+--- a/test/features/steps/wrappers.py
++++ b/test/features/steps/wrappers.py
+@@ -88,7 +88,7 @@ def wait_prompt(context, prompt=None):
+         user = context.conf['user']
+         host = context.conf['host']
+         dbname = context.currentdb
+-        prompt = '{0}@{1}:{2}> '.format(
++        prompt = '{0}@{1}:{2}>'.format(
+             user, host, dbname),
+     expect_exact(context, prompt, timeout=5)
+     context.atprompt = True
+diff --git a/test/test_main.py b/test/test_main.py
+index 3f92bd1..707c359 100644
+--- a/test/test_main.py
++++ b/test/test_main.py
+@@ -492,3 +492,37 @@ def test_ssh_config(monkeypatch):
+             MockMyCli.connect_args["ssh_host"] == "arg_host" and \
+             MockMyCli.connect_args["ssh_port"] == 3 and \
+             MockMyCli.connect_args["ssh_key_filename"] == "/path/to/key"
++
++
++@dbtest
++def test_init_command_arg(executor):
++    init_command = "set sql_select_limit=1000"
++    sql = 'show variables like "sql_select_limit";'
++    runner = CliRunner()
++    result = runner.invoke(
++        cli, args=CLI_ARGS + ["--init-command", init_command], input=sql
++    )
++
++    expected = "sql_select_limit\t1000\n"
++    assert result.exit_code == 0
++    assert expected in result.output
++
++
++@dbtest
++def test_init_command_multiple_arg(executor):
++    init_command = 'set sql_select_limit=2000; set max_join_size=20000'
++    sql = (
++        'show variables like "sql_select_limit";\n'
++        'show variables like "max_join_size"'
++    )
++    runner = CliRunner()
++    result = runner.invoke(
++        cli, args=CLI_ARGS + ['--init-command', init_command], input=sql
++    )
++
++    expected_sql_select_limit = 'sql_select_limit\t2000\n'
++    expected_max_join_size = 'max_join_size\t20000\n'
++
++    assert result.exit_code == 0
++    assert expected_sql_select_limit in result.output
++    assert expected_max_join_size in result.output
+diff --git a/test/test_tabular_output.py b/test/test_tabular_output.py
+index 7d7d000..c20c7de 100644
+--- a/test/test_tabular_output.py
++++ b/test/test_tabular_output.py
+@@ -16,7 +16,7 @@ from pymysql.constants import FIELD_TYPE
+ @pytest.fixture
+ def mycli():
+     cli = MyCli()
+-    cli.connect(None, USER, PASSWORD, HOST, PORT, None)
++    cli.connect(None, USER, PASSWORD, HOST, PORT, None, init_command=None)
+     return cli
+ 
+ 

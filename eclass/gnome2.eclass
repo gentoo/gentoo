@@ -4,7 +4,7 @@
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 4 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
@@ -17,24 +17,18 @@
 GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 
 [[ ${GNOME2_EAUTORECONF} == 'yes' ]] && inherit autotools
-inherit eutils libtool ltprune gnome.org gnome2-utils xdg
+[[ ${EAPI} == [56] ]] && inherit eutils ltprune
+inherit libtool gnome.org gnome2-utils xdg
 
-case "${EAPI:-0}" in
-	4|5)
+case ${EAPI:-0} in
+	5)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
-	6)
+	6|7)
 		EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
-
-# @ECLASS-VARIABLE: DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# String containing documents passed to dodoc command for eapi4.
-# In eapi5 we rely on einstalldocs (from eutils.eclass) and for newer EAPIs we
-# follow PMS spec.
 
 # @ECLASS-VARIABLE: ELTCONF
 # @DEFAULT_UNSET
@@ -48,7 +42,7 @@ ELTCONF=${ELTCONF:-""}
 # Extra configure opts passed to econf.
 # Deprecated, pass extra arguments to gnome2_src_configure.
 # Banned in eapi6 and newer.
-if has ${EAPI:-0} 4 5; then
+if has ${EAPI} 5; then
 	G2CONF=${G2CONF:-""}
 fi
 
@@ -64,7 +58,7 @@ fi
 #
 # Banned since eapi6 as upstream is moving away from this obsolete macro in favor
 # of autoconf-archive macros, that do not expose this issue (bug #270919)
-if has ${EAPI:-0} 4 5; then
+if has ${EAPI} 5; then
 	if [[ ${GCONF_DEBUG} != "no" ]]; then
 		IUSE="debug"
 	fi
@@ -77,27 +71,22 @@ fi
 
 # @ECLASS-VARIABLE: GNOME2_LA_PUNT
 # @DESCRIPTION:
-# For eapi4 it sets if we should delete ALL or none of the .la files
-# For eapi5 and newer it relies on prune_libtool_files (from eutils.eclass)
-# for this. Available values for GNOME2_LA_PUNT:
+# In EAPIs 5 and 6, it relies on prune_libtool_files (from ltprune.eclass) for
+# this. Later EAPIs use find ... -delete. Available values for GNOME2_LA_PUNT:
 # - "no": will not clean any .la files
 # - "yes": will run prune_libtool_files --modules
 # - If it is not set, it will run prune_libtool_files
-if has ${EAPI:-0} 4; then
-	GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-"no"}
-else
-	GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-""}
-fi
+GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-""}
 
 # @FUNCTION: gnome2_src_unpack
 # @DESCRIPTION:
 # Stub function for old EAPI.
 gnome2_src_unpack() {
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		unpack ${A}
 		cd "${S}"
 	else
-		die "gnome2_src_unpack is banned from eapi6"
+		die "gnome2_src_unpack is banned since eapi6"
 	fi
 }
 
@@ -115,7 +104,7 @@ gnome2_src_prepare() {
 	# We stop to run it from eapi6 as scrollkeeper helpers from
 	# rarian are not running anything and, then, access violations
 	# shouldn't occur.
-	has ${EAPI:-0} 4 5 && gnome2_omf_fix
+	has ${EAPI} 5 && gnome2_omf_fix
 
 	# Disable all deprecation warnings
 	gnome2_disable_deprecation_warning
@@ -135,7 +124,7 @@ gnome2_src_prepare() {
 gnome2_src_configure() {
 	# Deprecated for a long time now and banned since eapi6, see Gnome team policies
 	if [[ -n ${G2CONF} ]] ; then
-		if has ${EAPI:-0} 4 5; then
+		if has ${EAPI} 5; then
 			eqawarn "G2CONF set, please review documentation at https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#G2CONF_and_src_configure"
 		else
 			die "G2CONF set, please review documentation at https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#G2CONF_and_src_configure"
@@ -144,7 +133,7 @@ gnome2_src_configure() {
 
 	local g2conf=()
 
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		if [[ ${GCONF_DEBUG} != 'no' ]] ; then
 			if use debug ; then
 				g2conf+=( --enable-debug=yes )
@@ -156,19 +145,14 @@ gnome2_src_configure() {
 		fi
 	fi
 
-	# Starting with EAPI=5, we consider packages installing gtk-doc to be
-	# handled by adding DEPEND="dev-util/gtk-doc-am" which provides tools to
-	# relink URLs in documentation to already installed documentation.
-	# This decision also greatly helps with constantly broken doc generation.
+	# We consider packages installing gtk-doc to be handled by adding
+	# DEPEND="dev-util/gtk-doc-am" which provides tools to relink URLs in
+	# documentation to already installed documentation.  This decision also
+	# greatly helps with constantly broken doc generation.
 	# Remember to drop 'doc' USE flag from your package if it was only used to
 	# rebuild docs.
-	# Preserve old behavior for older EAPI.
 	if grep -q "enable-gtk-doc" "${ECONF_SOURCE:-.}"/configure ; then
-		if has ${EAPI:-0} 4 && in_iuse doc ; then
-			g2conf+=( $(use_enable doc gtk-doc) )
-		else
-			g2conf+=( --disable-gtk-doc )
-		fi
+		g2conf+=( --disable-gtk-doc )
 	fi
 
 	# Pass --disable-maintainer-mode when needed
@@ -180,13 +164,6 @@ gnome2_src_configure() {
 	# Pass --disable-scrollkeeper when possible
 	if grep -q "disable-scrollkeeper" "${ECONF_SOURCE:-.}"/configure; then
 		g2conf+=( --disable-scrollkeeper )
-	fi
-
-	# Pass --disable-silent-rules when possible (not needed since eapi5), bug #429308
-	if has ${EAPI:-0} 4; then
-		if grep -q "disable-silent-rules" "${ECONF_SOURCE:-.}"/configure; then
-			g2conf+=( --disable-silent-rules )
-		fi
 	fi
 
 	# Pass --disable-schemas-install when possible
@@ -210,20 +187,20 @@ gnome2_src_configure() {
 	fi
 
 	# Pass --docdir with proper directory, bug #482646 (not needed since eapi6)
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		if grep -q "^ *--docdir=" "${ECONF_SOURCE:-.}"/configure; then
 			g2conf+=( --docdir="${EPREFIX}"/usr/share/doc/${PF} )
 		fi
 	fi
 
 	# Avoid sandbox violations caused by gnome-vfs (bug #128289 and #345659)
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		addwrite "$(unset HOME; echo ~)/.gnome2"
 	else
 		addpredict "$(unset HOME; echo ~)/.gnome2"
 	fi
 
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		econf ${g2conf[@]} ${G2CONF} "$@"
 	else
 		econf ${g2conf[@]} "$@"
@@ -234,7 +211,7 @@ gnome2_src_configure() {
 # @DESCRIPTION:
 # Only default src_compile for now
 gnome2_src_compile() {
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		emake
 	else
 		default
@@ -255,7 +232,7 @@ gnome2_src_install() {
 	#
 	# if this is not present, scrollkeeper-update may segfault and
 	# create bogus directories in /var/lib/
-	if has ${EAPI:-0} 4 5; then
+	if has ${EAPI} 5; then
 		dodir "${sk_tmp_dir}" || die "dodir failed"
 		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install || die "install failed"
 	else
@@ -267,12 +244,7 @@ gnome2_src_install() {
 	# Handle documentation as 'default' for eapi5, bug #373131
 	# Since eapi6 this is handled by default on its own plus MAINTAINERS and HACKING
 	# files that are really common in gnome packages (bug #573390)
-	if has ${EAPI:-0} 4; then
-		# Manual document installation
-		if [[ -n "${DOCS}" ]]; then
-			dodoc ${DOCS} || die "dodoc failed"
-		fi
-	elif has ${EAPI:-0} 5; then
+	if has ${EAPI} 5; then
 		einstalldocs
 	else
 		local d
@@ -293,20 +265,16 @@ gnome2_src_install() {
 	rm -fr "${ED}/usr/share/applications/mimeinfo.cache"
 
 	# Delete all .la files
-	if has ${EAPI:-0} 4; then
-		if [[ "${GNOME2_LA_PUNT}" != "no" ]]; then
-			ebegin "Removing .la files"
-			if ! in_iuse static-libs || ! use static-libs ; then
-				find "${D}" -name '*.la' -exec rm -f {} + || die "la file removal failed"
-			fi
-			eend
-		fi
-	else
+	if has ${EAPI} 5 6; then
 		case "${GNOME2_LA_PUNT}" in
 			yes)    prune_libtool_files --modules;;
 			no)     ;;
 			*)      prune_libtool_files;;
 		esac
+	else
+		if [[ ${GNOME2_LA_PUNT} != 'no' ]]; then
+			find "${ED}" -name '*.la' -delete || die
+		fi
 	fi
 }
 

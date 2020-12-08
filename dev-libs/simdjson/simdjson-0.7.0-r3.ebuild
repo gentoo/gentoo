@@ -39,11 +39,19 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=(
-		$(usex tools '' '-DSIMDJSON_JUST_LIBRARY=ON')
-		-DSIMDJSON_GOOGLE_BENCHMARKS=OFF
-		-DSIMDJSON_COMPETITION=OFF
-	)
+	local -a mycmakeargs
+
+	if use tools; then
+		mycmakeargs+=(
+			-DSIMDJSON_JUST_LIBRARY=OFF
+			-DSIMDJSON_GOOGLE_BENCHMARKS=OFF
+			-DSIMDJSON_COMPETITION=OFF
+		)
+	else
+		mycmakeargs+=(
+			-DSIMDJSON_JUST_LIBRARY=ON
+		)
+	fi
 
 	cmake_src_configure
 }

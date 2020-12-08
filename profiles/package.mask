@@ -313,23 +313,11 @@ net-news/quiterss
 # (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
 app-text/goldendict
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-05)
-# Does not compile against ghc-8.8: #754675, #611988
-# Masked for removal
-dev-haskell/shuffle
-dev-haskell/uhc-light
-dev-haskell/uhc-util
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-15)
 # Fails to build.  Lots of bugs filed.  Not touched by maintainer
 # since 2018.
 # Removal in 30 days.  Bug #721990.
 media-video/cinelerra
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
-# Not compatible with ghc-8.8 or above: #754285
-# No revdeps. Masked for removal.
-dev-haskell/ghc-syb-utils
 
 # Aisha Tammy <gentoo@aisha.cc> (2020-11-13)
 # dead packages with latest releases before 2013
@@ -448,19 +436,6 @@ dev-python/couchdb-python
 # will be upgraded after new lua release
 www-apps/liquid_feedback_frontend
 www-apps/webmcp
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
-# Hackage release does not build against gcc-8:
-# https://github.com/Helium4Haskell/helium/issues/4
-# Masked for removal. Bugs: #751757, #736054
-dev-lang/helium
-dev-haskell/lvmlib
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-10-30)
-# Removed public macro definitions for TRUE and FALSE which breaks lots of
-# revdeps. See tacker bug at https://bugs.gentoo.org/751919
-=dev-libs/icu-68.1
-=dev-libs/icu-layoutex-68.1
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-30)
 # broken acl handling, possible broken chattr handling
@@ -591,6 +566,8 @@ gnome-base/orbit
 >=media-libs/libquvi-0.9.4-r100
 >=media-libs/libquvi-scripts-0.9.20131130-r100
 >=media-sound/aqualung-1.1-r100
+>=media-video/vlc-3.0.11.1-r100
+>=net-analyzer/rrdtool-1.7.2-r100
 >=net-analyzer/suricata-6.0.1-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
@@ -686,6 +663,8 @@ dev-lang/vala:0.50
 # Indefinitely masking until we have a solution
 # for this.
 # bug #719084
+# Furthermore, ntopng ebuilds depending directly on dev-lang/lua{,jit}
+# must be migrated to lua eclasses before unmasking (bug #752777).
 net-analyzer/ntopng
 net-analyzer/pmacct
 net-libs/nDPI
@@ -810,10 +789,6 @@ app-office/texmacs
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
 # matching genkernel work?
 >=sys-fs/lvm2-2.03
-
-# Robin H. Johnson <robbat2@gentoo.org> (2019-03-25)
-# Requires >=dev-lang/lua-5.3 which is masked
-sys-apps/likwid
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-11-25)
 # Masked per security vulnerability CVE-2018-14345, bug #661510

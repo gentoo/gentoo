@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-12-07)
+# Waiting for unmasking of slotted Lua.
+>=app-i18n/fcitx-4.2.9.8:4 lua
+>=app-i18n/ibus-libpinyin-1.11.92 lua
+app-i18n/ibus-pinyin lua
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-05)
 # Relies on gtkdoc-mktmpl which was removed from gtk-doc-1.26
 # Bug #740690
