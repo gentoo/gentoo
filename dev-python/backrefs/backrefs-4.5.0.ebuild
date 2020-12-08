@@ -27,7 +27,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+BDEPEND="test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/regex[${PYTHON_USEDEP}]
+		dev-vcs/git
+	)"
 
 distutils_enable_tests pytest
 
