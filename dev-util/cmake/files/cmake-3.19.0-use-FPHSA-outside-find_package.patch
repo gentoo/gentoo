@@ -1,0 +1,26 @@
+diff -Naur a/Modules/FindPackageHandleStandardArgs.cmake b/Modules/FindPackageHandleStandardArgs.cmake
+--- a/Modules/FindPackageHandleStandardArgs.cmake	2020-12-08 13:08:44.157214517 +1100
++++ b/Modules/FindPackageHandleStandardArgs.cmake	2020-12-08 13:11:02.368043125 +1100
+@@ -275,8 +275,10 @@
+     unset (${FPCV_RESULT_MESSAGE_VARIABLE} PARENT_SCOPE)
+   endif()
+ 
+-  if (CMAKE_FIND_PACKAGE_NAME)
+-    set (package ${CMAKE_FIND_PACKAGE_NAME})
++  if (_CMAKE_FPHSA_PACKAGE_NAME)
++    set (package ${_CMAKE_FPHSA_PACKAGE_NAME})
++  elseif (CMAKE_FIND_PACKAGE_NAME)
++    set (package "${CMAKE_FIND_PACKAGE_NAME}")
+   else()
+     message (FATAL_ERROR "find_package_check_version(): Cannot be used outside a 'Find Module'")
+   endif()
+@@ -436,6 +438,9 @@
+       "will be used.")
+   endif()
+ 
++  # to propogate package name to FIND_PACKAGE_CHECK_VERSION
++  set(_CMAKE_FPHSA_PACKAGE_NAME "${_NAME}")
++
+   # now that we collected all arguments, process them
+ 
+   if("x${FPHSA_FAIL_MESSAGE}" STREQUAL "xDEFAULT_MSG")

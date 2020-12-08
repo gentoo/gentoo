@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.18.0-filter_distcc_warning.patch # bug 691544
 
 	# upstream fixes (can usually be removed with a version bump)
+	"${FILESDIR}"/${PN}-3.19.0-use-FPHSA-outside-find_package.patch # bug 21505
 )
 
 cmake_src_bootstrap() {
