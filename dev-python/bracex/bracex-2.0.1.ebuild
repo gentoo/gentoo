@@ -27,6 +27,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="test? ( dev-vcs/git )"
+
 distutils_enable_tests pytest
 
 python_prepare_all() {
