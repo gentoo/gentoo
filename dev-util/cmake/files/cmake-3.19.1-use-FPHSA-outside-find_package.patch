@@ -1,0 +1,40 @@
+From 14ecf9c2f6edfae4033d9311f79d79d0d07fc1cf Mon Sep 17 00:00:00 2001
+From: Marc Chevrier <marc.chevrier@gmail.com>
+Date: Wed, 25 Nov 2020 16:36:12 +0100
+Subject: [PATCH] FPHSA: ensure it can be used outside 'find_package'
+
+Fixes: #21505
+---
+ Modules/FindPackageHandleStandardArgs.cmake | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/Modules/FindPackageHandleStandardArgs.cmake b/Modules/FindPackageHandleStandardArgs.cmake
+index 7af017136d..7e172779e4 100644
+--- a/Modules/FindPackageHandleStandardArgs.cmake
++++ b/Modules/FindPackageHandleStandardArgs.cmake
+@@ -275,8 +275,10 @@ function(FIND_PACKAGE_CHECK_VERSION version result)
+     unset (${FPCV_RESULT_MESSAGE_VARIABLE} PARENT_SCOPE)
+   endif()
+ 
+-  if (CMAKE_FIND_PACKAGE_NAME)
+-    set (package ${CMAKE_FIND_PACKAGE_NAME})
++  if (_CMAKE_FPHSA_PACKAGE_NAME)
++    set (package "${_CMAKE_FPHSA_PACKAGE_NAME}")
++  elseif (CMAKE_FIND_PACKAGE_NAME)
++    set (package "${CMAKE_FIND_PACKAGE_NAME}")
+   else()
+     message (FATAL_ERROR "find_package_check_version(): Cannot be used outside a 'Find Module'")
+   endif()
+@@ -436,6 +438,9 @@ function(FIND_PACKAGE_HANDLE_STANDARD_ARGS _NAME _FIRST_ARG)
+       "will be used.")
+   endif()
+ 
++  # to propagate package name to FIND_PACKAGE_CHECK_VERSION
++  set(_CMAKE_FPHSA_PACKAGE_NAME "${_NAME}")
++
+   # now that we collected all arguments, process them
+ 
+   if("x${FPHSA_FAIL_MESSAGE}" STREQUAL "xDEFAULT_MSG")
+-- 
+GitLab
+
