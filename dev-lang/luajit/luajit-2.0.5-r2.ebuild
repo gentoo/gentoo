@@ -13,9 +13,9 @@ if [[ -n $(ver_cut 4) ]]; then
 fi
 
 DESCRIPTION="Just-In-Time Compiler for the Lua programming language"
-HOMEPAGE="http://luajit.org/"
-SRC_URI="http://luajit.org/download/${MY_P}.tar.gz
-	${HOTFIX:+http://luajit.org/download/${HOTFIX}}"
+HOMEPAGE="https://luajit.org/"
+SRC_URI="https://luajit.org/download/${MY_P}.tar.gz
+	${HOTFIX:+https://luajit.org/download/${HOTFIX}}"
 
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
@@ -50,7 +50,7 @@ _emake() {
 		TARGET_AR="$(tc-getAR) rcus" \
 		BUILDMODE="$(usex static-libs mixed dynamic)" \
 		TARGET_STRIP="true" \
-		INSTALL_LIB="${ED%/}/usr/$(get_libdir)" \
+		INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 		"$@"
 }
 
@@ -61,7 +61,7 @@ src_compile() {
 src_install() {
 	_emake install
 
-	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"
+	pax-mark m "${ED}/usr/bin/luajit-${MY_PV}"
 
 	HTML_DOCS="doc/." einstalldocs
 }

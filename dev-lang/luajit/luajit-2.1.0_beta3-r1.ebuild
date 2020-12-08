@@ -5,13 +5,13 @@ EAPI=7
 
 inherit pax-utils toolchain-funcs
 
-MY_PV="$(ver_cut 1-4)"
+MY_PV="$(ver_cut 1-5)"
 MY_PV="${MY_PV/_beta/-beta}"
 MY_P="LuaJIT-${MY_PV}"
 
 DESCRIPTION="Just-In-Time Compiler for the Lua programming language"
-HOMEPAGE="http://luajit.org/"
-SRC_URI="http://luajit.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://luajit.org/"
+SRC_URI="https://luajit.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 # this should probably be pkgmoved to 2.0 for sake of consistency.
@@ -39,7 +39,7 @@ _emake() {
 		TARGET_AR="$(tc-getAR) rcus" \
 		BUILDMODE="$(usex static-libs mixed dynamic)" \
 		TARGET_STRIP="true" \
-		INSTALL_LIB="${ED%/}/usr/$(get_libdir)" \
+		INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 		"$@"
 }
 
@@ -50,7 +50,7 @@ src_compile() {
 src_install() {
 	_emake install
 
-	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"
+	pax-mark m "${ED}/usr/bin/luajit-${MY_PV}"
 
 	HTML_DOCS="doc/." einstalldocs
 }
