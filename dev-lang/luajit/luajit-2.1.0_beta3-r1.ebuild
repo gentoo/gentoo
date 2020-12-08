@@ -39,7 +39,7 @@ _emake() {
 		TARGET_AR="$(tc-getAR) rcus" \
 		BUILDMODE="$(usex static-libs mixed dynamic)" \
 		TARGET_STRIP="true" \
-		INSTALL_LIB="${ED%/}/usr/$(get_libdir)" \
+		INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 		"$@"
 }
 
@@ -50,7 +50,7 @@ src_compile() {
 src_install() {
 	_emake install
 
-	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"
+	pax-mark m "${ED}/usr/bin/luajit-${MY_PV}"
 
 	HTML_DOCS="doc/." einstalldocs
 }
