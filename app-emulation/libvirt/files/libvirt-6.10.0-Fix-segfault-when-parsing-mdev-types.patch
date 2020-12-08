@@ -1,0 +1,61 @@
+From 4c4d0e2da07b5a035b26a0ff13ec27070f7c7b1a Mon Sep 17 00:00:00 2001
+Message-Id: <4c4d0e2da07b5a035b26a0ff13ec27070f7c7b1a.1607416232.git.mprivozn@redhat.com>
+From: Jonathon Jongsma <jjongsma@redhat.com>
+Date: Wed, 2 Dec 2020 11:52:39 -0600
+Subject: [PATCH] conf: Fix segfault when parsing mdev types
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit f1b0890 introduced a potential crash due to incorrect operator
+precedence when accessing an element from a pointer to an array.
+
+Backtrace below:
+
+  #0  virNodeDeviceGetMdevTypesCaps (sysfspath=0x7fff801661e0 "/sys/devices/pci0000:00/0000:00:02.0", mdev_types=0x7fff801c9b40, nmdev_types=0x7fff801c9b48) at ../src/conf/node_device_conf.c:2676
+  #1  0x00007ffff7caf53d in virNodeDeviceGetPCIDynamicCaps (sysfsPath=0x7fff801661e0 "/sys/devices/pci0000:00/0000:00:02.0", pci_dev=0x7fff801c9ac8) at ../src/conf/node_device_conf.c:2705
+  #2  0x00007ffff7cae38f in virNodeDeviceUpdateCaps (def=0x7fff80168a10) at ../src/conf/node_device_conf.c:2342
+  #3  0x00007ffff7cb11c0 in virNodeDeviceObjMatch (obj=0x7fff84002e50, flags=0) at ../src/conf/virnodedeviceobj.c:850
+  #4  0x00007ffff7cb153d in virNodeDeviceObjListExportCallback (payload=0x7fff84002e50, name=0x7fff801cbc20 "pci_0000_00_02_0", opaque=0x7fffe2ffc6a0) at ../src/conf/virnodedeviceobj.c:909
+  #5  0x00007ffff7b69146 in virHashForEach (table=0x7fff9814b700 = {...}, iter=0x7ffff7cb149e <virNodeDeviceObjListExportCallback>, opaque=0x7fffe2ffc6a0) at ../src/util/virhash.c:394
+  #6  0x00007ffff7cb1694 in virNodeDeviceObjListExport (conn=0x7fff98013170, devs=0x7fff98154430, devices=0x7fffe2ffc798, filter=0x7ffff7cf47a1 <virConnectListAllNodeDevicesCheckACL>, flags=0)
+          at ../src/conf/virnodedeviceobj.c:943
+  #7  0x00007fffe00694b2 in nodeConnectListAllNodeDevices (conn=0x7fff98013170, devices=0x7fffe2ffc798, flags=0) at ../src/node_device/node_device_driver.c:228
+  #8  0x00007ffff7e703aa in virConnectListAllNodeDevices (conn=0x7fff98013170, devices=0x7fffe2ffc798, flags=0) at ../src/libvirt-nodedev.c:130
+  #9  0x000055555557f796 in remoteDispatchConnectListAllNodeDevices (server=0x555555627080, client=0x5555556bf050, msg=0x5555556c0000, rerr=0x7fffe2ffc8a0, args=0x7fffd4008470, ret=0x7fffd40084e0)
+          at src/remote/remote_daemon_dispatch_stubs.h:1613
+  #10 0x000055555557f6f9 in remoteDispatchConnectListAllNodeDevicesHelper (server=0x555555627080, client=0x5555556bf050, msg=0x5555556c0000, rerr=0x7fffe2ffc8a0, args=0x7fffd4008470, ret=0x7fffd40084e0)
+          at src/remote/remote_daemon_dispatch_stubs.h:1591
+  #11 0x00007ffff7ce9542 in virNetServerProgramDispatchCall (prog=0x555555690c10, server=0x555555627080, client=0x5555556bf050, msg=0x5555556c0000) at ../src/rpc/virnetserverprogram.c:428
+  #12 0x00007ffff7ce90bd in virNetServerProgramDispatch (prog=0x555555690c10, server=0x555555627080, client=0x5555556bf050, msg=0x5555556c0000) at ../src/rpc/virnetserverprogram.c:302
+  #13 0x00007ffff7cf042b in virNetServerProcessMsg (srv=0x555555627080, client=0x5555556bf050, prog=0x555555690c10, msg=0x5555556c0000) at ../src/rpc/virnetserver.c:137
+  #14 0x00007ffff7cf04eb in virNetServerHandleJob (jobOpaque=0x5555556b66b0, opaque=0x555555627080) at ../src/rpc/virnetserver.c:154
+  #15 0x00007ffff7bd912f in virThreadPoolWorker (opaque=0x55555562bc70) at ../src/util/virthreadpool.c:163
+  #16 0x00007ffff7bd8645 in virThreadHelper (data=0x55555562bc90) at ../src/util/virthread.c:233
+  #17 0x00007ffff6d90432 in start_thread () at /lib64/libpthread.so.0
+  #18 0x00007ffff75c5913 in clone () at /lib64/libc.so.6
+
+Signed-off-by: Jonathon Jongsma <jjongsma@redhat.com>
+Reviewed-by: Ján Tomko <jtomko@redhat.com>
+Signed-off-by: Ján Tomko <jtomko@redhat.com>
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/conf/node_device_conf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/conf/node_device_conf.c b/src/conf/node_device_conf.c
+index 4e2837c1cd..cac4243b50 100644
+--- a/src/conf/node_device_conf.c
++++ b/src/conf/node_device_conf.c
+@@ -2673,7 +2673,7 @@ virNodeDeviceGetMdevTypesCaps(const char *sysfspath,
+ 
+     /* this could be a refresh, so clear out the old data */
+     for (i = 0; i < *nmdev_types; i++)
+-       virMediatedDeviceTypeFree(*mdev_types[i]);
++       virMediatedDeviceTypeFree((*mdev_types)[i]);
+     VIR_FREE(*mdev_types);
+     *nmdev_types = 0;
+ 
+-- 
+2.26.2
+
