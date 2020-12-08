@@ -17,7 +17,7 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit libressl +rdoc rubytests socks5 +ssl static-libs systemtap tk xemacs"
 
 RDEPEND="
@@ -76,6 +76,23 @@ src_prepare() {
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
 
+	if use prefix ; then
+		# Fix hardcoded SHELL var in mkmf library
+		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
+
+		if [[ ${CHOST} == *darwin* ]] ; then
+			# avoid symlink loop on Darwin (?!)
+			sed -i \
+				-e '/LIBRUBY_ALIASES=/s/lib$(RUBY_INSTALL_NAME).$(SOEXT)//' \
+				configure.ac || die
+
+			# make ar/libtool hack for Darwin work
+			sed -i \
+				-e "s/ac_cv_prog_ac_ct_AR='libtool/ac_cv_prog_AR='${CHOST}-libtool/" \
+				configure.ac || die
+		fi
+	fi
+
 	eapply_user
 
 	eautoreconf
@@ -126,6 +143,7 @@ src_configure() {
 	INSTALL="${EPREFIX}/usr/bin/install -c" LIBPATHENV="" econf \
 		--program-suffix=${MY_SUFFIX} \
 		--with-soname=ruby${MY_SUFFIX} \
+		--with-readline-dir="${EPREFIX}"/usr \
 		--enable-shared \
 		--enable-pthread \
 		--disable-rpath \
@@ -182,6 +200,12 @@ src_install() {
 	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
 
 	LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
+
+	if [[ ${CHOST} == *darwin* ]] ; then
+		DYLD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
+		export DYLD_LIBRARY_PATH
+	fi
+
 	RUBYLIB="${S}:${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
 	for d in $(find "${S}/ext" -type d) ; do
 		RUBYLIB="${RUBYLIB}:$d"
