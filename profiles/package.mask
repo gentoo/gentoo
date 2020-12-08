@@ -427,11 +427,6 @@ dev-python/cheetah
 # Removal in 30 days. Bug #747310.
 sci-libs/mkl-rt
 
-# Matt Turner <mattst88@gentoo.org> (2020-11-08)
-# Uninstallable because of fetch restriction and dead download link.
-# Removal in 30 days.  Bug #725646.
-media-fonts/mathematica-fonts
-
 # Dirkjan Ochtman <djc@gentoo.org> (2020-11-05)
 # Incorrect DISTUTILS_USE_SETUPTOOLS value, dead upstream.
 # Removal in 30 days. Bug #748063
