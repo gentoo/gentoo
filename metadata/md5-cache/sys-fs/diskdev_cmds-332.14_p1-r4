@@ -4,10 +4,10 @@ DESCRIPTION=HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 EAPI=7
 HOMEPAGE=http://opendarwin.org
 IUSE=libressl
-KEYWORDS=amd64 ~arm ppc ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
 LICENSE=APSL-2
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
 SLOT=0
 SRC_URI=http://darwinsource.opendarwin.org/tarballs/apsl/diskdev_cmds-332.14.tar.gz mirror://gentoo/diskdev_cmds-332.14_p1.patch.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=65929f6a23bb55f6bb37ab86f0b698a9
+_md5_=e99506babae6c6bcb6dea443c780eb8e
