@@ -2002,7 +2002,7 @@ app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect an
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 2.1.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
-app-emulation/libvirt 6.7.0 6.8.0-r2 6.9.0-r1 6.10.0-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.7.0 6.8.0-r2 6.9.0-r1 6.10.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.5: LinuX Containers userspace utilities
@@ -14394,7 +14394,7 @@ net-analyzer/sngrep 1.4.6-r3 1.4.7: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.5: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
 net-analyzer/snmptt 1.4.2: SNMP Trap Translator
-net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1 2.9.16: The de facto standard for intrusion detection/prevention
+net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1 2.9.16 2.9.16-r100: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 1.0.0: flow-based network traffic analyser capable of Cisco NetFlow data export
