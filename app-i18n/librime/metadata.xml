@@ -10,7 +10,10 @@
     <name>Cjk</name>
   </maintainer>
   <use>
+    <flag name="lua">Extending RIME with Lua scripts</flag>
     <flag name="debug">Enable debugging (including logging of input of RIME input methods)</flag>
+    <flag name="octagram">Enable the octagram gramma plugin for librime</flag>
+    <flag name="charcode">Enable the charcode plugin for librime</flag>
   </use>
   <upstream>
     <maintainer>
