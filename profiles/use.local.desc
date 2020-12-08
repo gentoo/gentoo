@@ -7684,10 +7684,8 @@ sys-apps/fwupd:agent - Enable update notification agent
 sys-apps/fwupd:amt - Build and install Intel AMT plugin
 sys-apps/fwupd:dell - Enable Dell-specific support.
 sys-apps/fwupd:flashrom - Enable flashrom plugin via sys-apps/flashrom
-sys-apps/fwupd:gpg - Enable GPG support.
 sys-apps/fwupd:man - Build and install man pages
 sys-apps/fwupd:nvme - Build and install NVMe plugin
-sys-apps/fwupd:pkcs7 - Enable PKCS7 verification support via net-libs/gnutls
 sys-apps/fwupd:redfish - Install redfish plugin
 sys-apps/fwupd:synaptics - Install synaptics plugin
 sys-apps/fwupd:thunderbolt - Install Thunderbolt plugin
