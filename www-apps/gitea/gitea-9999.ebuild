@@ -39,6 +39,9 @@ FILECAPS=(
 	cap_net_bind_service+ep usr/bin/gitea
 )
 
+RESTRICT="test"
+QA_PRESTRIPPED="usr/bin/gitea"
+
 src_prepare() {
 	default
 
@@ -113,4 +116,10 @@ src_install() {
 		keepdir /var/lib/gitea /var/lib/gitea/custom /var/lib/gitea/data
 		keepdir /var/log/gitea
 	fi
+}
+
+pkg_postinst() {
+	fcaps_pkg_postinst
+	go-module_pkg_postinst
+	tmpfiles_process gitea.conf
 }
