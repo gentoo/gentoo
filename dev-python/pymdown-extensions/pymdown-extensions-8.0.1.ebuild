@@ -29,8 +29,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-python/markdown-3.2[${PYTHON_USEDEP}]"
 
-DEPEND="test? (
+BDEPEND="test? (
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-vcs/git
 )"
 
 distutils_enable_tests pytest
