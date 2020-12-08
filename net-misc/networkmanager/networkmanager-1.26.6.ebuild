@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd readme.gentoo-r1 vala virtualx udev multilib-minimal
+inherit bash-completion-r1 flag-o-matic gnome2 linux-info multilib python-any-r1 systemd readme.gentoo-r1 vala virtualx udev multilib-minimal
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -166,6 +166,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	use json && append-cflags -fcommon # https://bugs.gentoo.org/738614
 	local myconf=(
 		--disable-more-warnings
 		--disable-static
