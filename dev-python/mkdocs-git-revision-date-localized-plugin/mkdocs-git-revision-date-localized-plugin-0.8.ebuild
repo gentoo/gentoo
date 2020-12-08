@@ -23,9 +23,10 @@ RDEPEND="
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.0[${PYTHON_USEDEP}]
 "
-DEPEND="test? (
+BDEPEND="test? (
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/mkdocs-material[${PYTHON_USEDEP}]
+	dev-vcs/git
 )"
 
 distutils_enable_tests --install pytest
