@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop
+inherit autotools desktop systemd
 
 COLOUR_PATCH_NAME="${PN}-9.22_24-bit-color_cpixl-20201108.patch"
 
@@ -89,6 +89,8 @@ src_compile() {
 
 src_install() {
 	default
+
+	systemd_douserunit "${FILESDIR}"/urxvtd.service
 
 	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
 		"System;TerminalEmulator"
