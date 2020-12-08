@@ -23,6 +23,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]"
 
+src_prepare() {
+	sed -i -e '/  pytest.*/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	# Upstream supports running tests only in their dream pristine
 	# environment.  pytest doesn't work at all if mock is already
@@ -39,6 +44,9 @@ python_test() {
 		sed -i -e 's:def test_copy:def _test_copy:' \
 			mock/tests/testmock.py || die
 	fi
+
+	# Avoid pytest dependency
+	sed -i -e '/import pytest/d' mock/tests/testhelpers.py || die
 
 	"${EPYTHON}" -m unittest discover -v || die "Tests failed with ${EPYTHON}"
 }
