@@ -209,6 +209,7 @@ multilib_src_configure() {
 		enable-camellia \
 		enable-ec \
 		$(use_ssl !bindist ec2m) \
+		$(use_ssl !bindist sm2) \
 		enable-srp \
 		$(use elibc_musl && echo "no-async") \
 		${ec_nistp_64_gcc_128} \
