@@ -9,12 +9,12 @@ inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
-SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt tpm uefi"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+IUSE="agent amt dell gtk-doc elogind flashrom minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
@@ -43,7 +43,8 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/json-glib
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
-	>=dev-libs/libgusb-0.2.9[introspection?]
+	>=dev-libs/libgusb-0.3.5[introspection?]
+	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.1.13:=
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
@@ -51,32 +52,25 @@ CDEPEND="${PYTHON_DEPS}
 		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
 	')
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
+	net-misc/curl
 	virtual/libelf:0=
 	virtual/udev
 	dell? (
-		sys-libs/efivar
 		>=sys-libs/libsmbios-2.4.0
 	)
-	elogind? ( sys-auth/elogind )
-	gpg? (
-		app-crypt/gpgme
-		dev-libs/libgpg-error
-	)
-	!minimal? (
+	elogind? ( >=sys-auth/elogind-211 )
+	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
+	policykit? (
 		>=sys-auth/polkit-0.103
 	)
-	nvme? ( sys-libs/efivar )
-	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
-	redfish? ( sys-libs/efivar )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
-		app-crypt/tpm2-tss
 		media-libs/fontconfig
 		media-libs/freetype
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
-		>=sys-libs/efivar-33
+		sys-libs/efivar
 		x11-libs/cairo
 	)
 "
@@ -94,7 +88,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.9-logind_plugin.patch"
-	"${FILESDIR}/${PN}-1.4.4-help2man_var.patch" #728484
 )
 
 pkg_setup() {
@@ -109,6 +102,8 @@ src_prepare() {
 	# c.f. https://github.com/fwupd/fwupd/issues/1414
 	sed -e "/test('thunderbolt-self-test', e, env: test_env, timeout : 120)/d" \
 		-i plugins/thunderbolt/meson.build || die
+	sed '/platform-integrity/d' \
+		-i plugins/meson.build || die #753521
 	vala_src_prepare
 }
 
@@ -120,26 +115,23 @@ src_configure() {
 		$(meson_use amt plugin_amt)
 		$(meson_use dell plugin_dell)
 		$(meson_use elogind)
-		$(meson_use gpg)
+		$(meson_use flashrom plugin_flashrom)
 		$(meson_use gtk-doc gtkdoc)
-		$(meson_use introspection)
 		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
-		$(meson_use pkcs7)
-		$(meson_use redfish plugin_redfish)
+		$(meson_use introspection)
+		$(meson_use policykit polkit)
 		$(meson_use synaptics plugin_synaptics)
 		$(meson_use systemd)
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
-		$(meson_use tpm plugin_tpm)
+		$(meson_use tpm)
 		$(meson_use uefi plugin_uefi)
-		# Requires libflashrom which our sys-apps/flashrom
-		# package does not provide
-		-Dplugin_flashrom="false"
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
 		-Dconsolekit="false"
 	)
+	use ppc64 && emesonargs+=( -Dplugin_msr="false" )
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
 }
