@@ -5336,7 +5336,7 @@ dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.8.0-r2 0.9.0-r1 0.9.1-r1: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r3: Simple library for creating daemon processes in C
-dev-libs/libdazzle 3.36.0: Experimental new features for GTK+ and GLib
+dev-libs/libdazzle 3.36.0 3.38.0: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
@@ -17143,7 +17143,7 @@ sys-block/thin-provisioning-tools 0.7.0 0.7.6 0.8.5 0.9.0 9999: A suite of tools
 sys-block/tw_cli 10.2.2.1 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 24: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5-r1: Query VIA IDE controllers for various information
-sys-block/whdd 2.2 3.0 9999: Diagnostic and recovery tool for block devices
+sys-block/whdd 2.2 3.0 3.0.1 9999: Diagnostic and recovery tool for block devices
 sys-block/zram-init 8.1 8.1-r1 10.5 9999: Scripts to support compressed swap devices or ramdisks with zRAM
 sys-boot/aboot 1.0_pre20040408-r3: Alpha Linux boot loader for SRM
 sys-boot/arcload 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems
