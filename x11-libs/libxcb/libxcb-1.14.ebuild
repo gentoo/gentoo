@@ -22,17 +22,18 @@ SLOT="0/1.12"
 
 RDEPEND="
 	>=x11-libs/libXau-1.0.7-r1[${MULTILIB_USEDEP}]
-	>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]"
-# Note: ${PYTHON_USEDEP} needs to go verbatim
+	>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	>=x11-base/xcb-proto-1.14[${MULTILIB_USEDEP}]
 	elibc_Darwin? ( dev-libs/libpthread-stubs )
 	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
-	doc? ( app-doc/doxygen[dot] )
-	dev-libs/libxslt
 "
+# Note: ${PYTHON_USEDEP} needs to go verbatim
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep '>=x11-base/xcb-proto-1.14[${PYTHON_USEDEP}]')
+	doc? ( app-doc/doxygen[dot] )
+	test? ( dev-libs/libxslt )
 "
 
 PATCHES=(
