@@ -21,4 +21,7 @@
   <upstream>
     <remote-id type="github">fplll/fplll</remote-id>
   </upstream>
+  <use>
+    <flag name="qd">Use <pkg>sci-libs/qd</pkg> for quad-double datatype</flag>
+  </use>
 </pkgmetadata>
