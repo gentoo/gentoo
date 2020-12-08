@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ppc x86"
 IUSE="imagemagick mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
-RDEPEND=">=dev-lang/php-7.3.19[ctype,fileinfo,iconv,json,postgres?,session,ssl,unicode,xml,xmlreader]
+RDEPEND=">=dev-lang/php-7.3.19[ctype,fileinfo,iconv,json(+),postgres?,session,ssl,unicode,xml,xmlreader]
 	imagemagick? ( virtual/imagemagick-tools )
 	!imagemagick? ( dev-lang/php[gd] )
 	mysql? ( dev-lang/php[mysql,mysqli] )
