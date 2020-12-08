@@ -5,7 +5,7 @@ EAPI=7
 
 inherit pax-utils toolchain-funcs
 
-MY_PV="$(ver_cut 1-4)"
+MY_PV="$(ver_cut 1-5)"
 MY_PV="${MY_PV/_beta/-beta}"
 MY_P="LuaJIT-${MY_PV}"
 
