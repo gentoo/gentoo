@@ -14,8 +14,7 @@ SLOT="4"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.61.3:2
-	!=dev-util/sysprof-3.34.1-r0"
+RDEPEND="!=dev-util/sysprof-3.34.1-r0"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gdbus-codegen
@@ -32,6 +31,9 @@ multilib_src_configure() {
 		# -Ddebugdir
 		-Dhelp=false
 		-Dlibunwind=false
+		-Denable_tools=false
+		-Denable_tests=false
+		-Denable_examples=false
 	)
 	meson_src_configure
 }
