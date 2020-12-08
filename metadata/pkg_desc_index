@@ -14610,7 +14610,7 @@ net-im/dino 0.1.0 0.2.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/discord-bin 0.0.13: All-in-one voice and text chat for gamers
 net-im/ejabberd 20.04 20.07: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
-net-im/element-desktop-bin 1.7.14: A glossy Matrix collaboration client for desktop (binary package)
+net-im/element-desktop-bin 1.7.15: A glossy Matrix collaboration client for desktop (binary package)
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
