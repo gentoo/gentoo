@@ -14,7 +14,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="app-office/libreoffice[odk]
+DEPEND="|| (
+		app-office/libreoffice[odk]
+		>=app-office/libreoffice-bin-6.4.7.2_p1
+	)
 	dev-libs/voikko-fi"
 RDEPEND="${DEPEND}
 	dev-libs/libvoikko"
