@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit meson xdg-utils
+inherit bash-completion-r1 xdg-utils meson
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
 HOMEPAGE="https://github.com/acrisci/playerctl"
@@ -12,23 +12,24 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc introspection"
+RESTRICT="test" # Requires dbus-next python package that's not in the tree
 
 RDEPEND="
 	dev-libs/glib:2
 	introspection? ( dev-libs/gobject-introspection:= )
 "
-# Override the meson dependency in MESON_DEPEND of meson.eclass
-# The eclass depends on '>=dev-util/meson-0.40.0' as of writing this
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? ( dev-util/gtk-doc )
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
-	>=dev-util/meson-0.46.0
-	doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig
 "
 
 src_configure() {
 	local emesonargs=(
+		-Ddatadir=share
+		-Dbindir=bin
 		$(meson_use doc gtk-doc)
 		$(meson_use introspection)
 	)
@@ -39,7 +40,13 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+	rm "${ED}"/usr/$(get_libdir)/libplayerctl.a || die
+
 	docinto examples
 	dodoc -r "${S}"/examples/.
 	docompress -x "/usr/share/doc/${PF}/examples"
+
+	newbashcomp data/playerctl.bash "${PN}"
+	insinto /usr/share/zsh/site-functions
+	newins data/playerctl.zsh _playerctl
 }
