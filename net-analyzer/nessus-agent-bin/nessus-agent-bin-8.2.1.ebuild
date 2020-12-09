@@ -19,8 +19,9 @@ RESTRICT="mirror fetch strip"
 
 QA_PREBUILT="opt/nessus_agent/bin/nasl
 	opt/nessus_agent/bin/nessus-mkrand
-	opt/nessus_agent/lib/nessus/libjemalloc.so.${PV}
+	opt/nessus_agent/lib/nessus/libjemalloc.so.*
 	opt/nessus_agent/lib/nessus/libnessus-glibc-fix.so
+	opt/nessus_agent/lib/nessus/iconv/*.so
 	opt/nessus_agent/sbin/nessus-check-signature
 	opt/nessus_agent/sbin/nessus-service
 	opt/nessus_agent/sbin/nessuscli
