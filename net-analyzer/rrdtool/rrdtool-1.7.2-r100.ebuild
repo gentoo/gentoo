@@ -236,7 +236,7 @@ src_install() {
 
 	dodoc CHANGES CONTRIBUTORS NEWS THREADS TODO
 
-	find "${ED}"usr -name '*.la' -exec rm -f {} +
+	find "${ED}"/usr -name '*.la' -exec rm -f {} +
 
 	keepdir /var/lib/rrdcached/journal/
 	keepdir /var/lib/rrdcached/db/

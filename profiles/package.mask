@@ -495,6 +495,7 @@ gnome-base/orbit
 >=app-crypt/cardpeek-0.8.4
 >=app-crypt/ekeyd-1.1.5-r100
 =app-editors/scite-4.4.4-r10
+>=app-emulation/libguestfs-1.38.6-r100
 >=app-misc/worker-3.8.3-r100
 >=dev-games/cegui-0.8.7-r100
 =dev-games/openscenegraph-openmw-3.4_p20200425-r100
