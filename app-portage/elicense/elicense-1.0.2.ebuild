@@ -1,8 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 if [[ ${PV} == "9999" ]]; then
@@ -18,7 +20,6 @@ HOMEPAGE="https://github.com/Whissi/elicense"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND=">=sys-apps/portage-2.3.62[${PYTHON_USEDEP}]"
 
