@@ -505,6 +505,7 @@ gnome-base/orbit
 >=dev-games/cegui-0.8.7-r100
 =dev-games/openscenegraph-openmw-3.4_p20200425-r100
 =dev-libs/efl-1.25.1-r10
+>=dev-libs/libpeas-1.26.0-r100
 =dev-libs/libprelude-5.2.0-r10
 >=dev-libs/libucl-0.8.1-r100
 >=dev-lua/busted-2.0.0-r100
