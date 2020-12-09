@@ -3001,7 +3001,7 @@ app-text/simple-fb2-reader 1.1.3: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
-app-text/sword 1.8.1-r1: Library for Bible reading software
+app-text/sword 1.8.1-r1 1.9.0: Library for Bible reading software
 app-text/sword-modules 2.2: All the unlocked modules for app-text/sword, grouped by language
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
