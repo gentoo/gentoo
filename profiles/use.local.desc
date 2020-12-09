@@ -7234,6 +7234,7 @@ sci-libs/fftw:quad - Build quadruple precision lib
 sci-libs/fftw:zbus - Adds support for ZBus cycle-counter of mips
 sci-libs/flann:cuda - Enable support for nVidia CUDA
 sci-libs/flann:octave - Add bindings for sci-mathematics/octave
+sci-libs/fplll:qd - Use sci-libs/qd for quad-double datatype
 sci-libs/gdal:armadillo - Use sci-libs/armadillo for faster TPS transform computation
 sci-libs/gdal:aux-xml - Enable Portable Auxilliary Metadata generation
 sci-libs/gdal:fits - Enable support for NASA's sci-libs/cfitsio library
