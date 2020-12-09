@@ -56,6 +56,7 @@ DEPEND="
 	>=media-libs/libcanberra-0.26
 	sys-apps/dbus
 	media-libs/mesa[X(+),egl]
+	sysprof? ( >=dev-util/sysprof-capture-3.35.2:3 )
 	wayland? (
 		>=dev-libs/wayland-protocols-1.19
 		>=dev-libs/wayland-1.13.0
@@ -79,10 +80,7 @@ RDEPEND="${DEPEND}
 "
 DEPEND="${DEPEND}
 	x11-base/xorg-proto
-	sysprof? (
-		>=dev-util/sysprof-common-3.35.2
-		>=dev-util/sysprof-capture-3.35.2:3
-	)
+	sysprof? ( >=dev-util/sysprof-common-3.35.2 )
 "
 # wayland bdepend for wayland-scanner, xorg-server for cvt utility
 BDEPEND="
