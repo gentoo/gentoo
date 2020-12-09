@@ -11,12 +11,12 @@ DESCRIPTION="ZABBIX is software for monitoring of your applications, network and
 HOMEPAGE="https://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
-SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/4.0/${P}.tar.gz"
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
-IUSE="+agent java curl frontend ipv6 ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
+KEYWORDS="amd64 x86"
+IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
 	server? ( ^^ ( mysql oracle postgres odbc ) )
@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
 	ssl? ( dev-libs/openssl:=[-bindist] )
+	xmpp? ( dev-libs/iksemel )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -149,7 +150,8 @@ src_configure() {
 		$(use_with snmp net-snmp) \
 		$(use_with sqlite sqlite3) \
 		$(use_with ssh ssh2) \
-		$(use_with ssl openssl)
+		$(use_with ssl openssl) \
+		$(use_with xmpp jabber)
 }
 
 src_compile() {
@@ -251,7 +253,7 @@ src_install() {
 
 	if use frontend; then
 		webapp_src_preinst
-		cp -R ui/* "${D}/${MY_HTDOCSDIR}"
+		cp -R frontends/php/* "${D}/${MY_HTDOCSDIR}"
 		webapp_configfile \
 			"${MY_HTDOCSDIR}"/include/db.inc.php \
 			"${MY_HTDOCSDIR}"/include/config.inc.php
@@ -295,7 +297,8 @@ pkg_postinst() {
 			ewarn "custom alert scripts."
 			ewarn
 			ewarn "A real homedir might be needed for configfiles"
-			ewarn "for custom alert scripts."
+			ewarn "for custom alert scripts (e.g. ~/.sendxmpprc when"
+			ewarn "using sendxmpp for Jabber alerts)."
 			ewarn
 			ewarn "To change the homedir use:"
 			ewarn "  usermod -d /var/lib/zabbix/home zabbix"
