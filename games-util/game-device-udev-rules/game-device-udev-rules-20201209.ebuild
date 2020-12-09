@@ -9,7 +9,7 @@ inherit udev
 # also has its own rules and more may be added later so we version it
 # independently.
 
-STEAM_COMMIT="442b412ae2c1e20d6aa09f04f0245f9281788a71"
+STEAM_COMMIT="3f9f151f8bb3caed0bee9e68d421562166605fd9"
 MY_P="steam-devices-${STEAM_COMMIT}"
 
 DESCRIPTION="udev rules for various game hardware devices"

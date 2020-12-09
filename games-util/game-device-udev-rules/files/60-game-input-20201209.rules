@@ -1,0 +1,6 @@
+
+# Thrustmaster T-Wireless
+KERNEL=="hidraw*", ATTRS{idVendor}=="044f", ATTRS{idProduct}=="d007", TAG+="uaccess"
+
+# Google Stadia Controller
+KERNEL=="hidraw*", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="9400", TAG+="uaccess"
