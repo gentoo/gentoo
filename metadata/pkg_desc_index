@@ -1091,7 +1091,7 @@ app-crypt/tpm2-tss 2.4.3 2.4.5 3.0.3: TCG Trusted Platform Module 2.0 Software S
 app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
-app-crypt/veracrypt 1.24_p7: Disk encryption with strong security based on TrueCrypt
+app-crypt/veracrypt 1.24_p7 1.24_p8: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 3.1.0-r1 3.1.1-r1: Python library and command line tool for configuring a YubiKey
@@ -13864,7 +13864,7 @@ media-sound/picard 2.4.2 9999: Cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.5.0: Pandora.com client for the GNOME desktop
-media-sound/playerctl 2.0.1 2.0.2 2.2.1: A CLI utility to control media players over MPRIS
+media-sound/playerctl 2.0.2 2.2.1 2.3.1: A CLI utility to control media players over MPRIS
 media-sound/pms 0.42_p20170508 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
 media-sound/pnmixer 0.7.2 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
