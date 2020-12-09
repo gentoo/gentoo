@@ -357,17 +357,18 @@ eautoconf() {
 		eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
 	fi
 
-	# Install config.guess and config.sub which are required by many macros in Autoconf >=2.70.
+	# Install config.guess and config.sub which are required by many macros
+	# in Autoconf >=2.70.
+	local gnuconfig
 	case ${EAPI:-0} in
 		0|1|2|3|4|5|6)
-			cp "${EPREFIX}/usr/share/gnuconfig/config.guess" . || die
-			cp "${EPREFIX}/usr/share/gnuconfig/config.sub" . || die
-			;;
+			gnuconfig="${EPREFIX}/usr/share/gnuconfig"
+		;;
 		*)
-			cp "${BROOT}/usr/share/gnuconfig/config.guess" . || die
-			cp "${BROOT}/usr/share/gnuconfig/config.sub" . || die
-			;;
+			gnuconfig="${BROOT}/usr/share/gnuconfig"
+		;;
 	esac
+	cp "${gnuconfig}"/config.{guess,sub} . || die
 
 	autotools_run_tool --at-m4flags autoconf "$@"
 }
