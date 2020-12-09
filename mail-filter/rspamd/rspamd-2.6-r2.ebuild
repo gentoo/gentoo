@@ -41,7 +41,7 @@ RDEPEND="
 		dev-lang/luajit:2
 	)
 	!jit? (
-		dev-lang/lua:*
+		dev-lang/lua:0=
 		dev-lua/LuaBitOp
 	)
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
