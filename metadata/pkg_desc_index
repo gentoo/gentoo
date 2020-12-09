@@ -15385,7 +15385,7 @@ net-p2p/qbittorrent 4.2.5-r2 4.3.0.1 4.3.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.7.1 1.10.0 1.11.1: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.7.1 1.10.0 1.11.1 1.12.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r2: A torrent file parser
 net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
@@ -17501,8 +17501,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 048-r1 049-r3 050 050-r1 050-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.4.82 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.4.82 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1 5.9.13: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.241 4.4.242 4.4.243 4.4.244 4.4.245 4.4.246 4.4.247 4.9.240 4.9.241 4.9.242 4.9.243 4.9.244 4.9.245 4.9.246 4.9.247 4.14.202 4.14.205 4.14.206 4.14.207 4.14.208 4.14.209 4.14.210 4.14.211 4.19.152 4.19.156 4.19.157 4.19.158 4.19.159 4.19.160 4.19.161 4.19.162 5.4.72 5.4.76 5.4.77 5.4.78 5.4.79 5.4.80-r1 5.4.81 5.4.82 5.8.18 5.9.6 5.9.7 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13: Full sources including the Gentoo patchset for the 5.9 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17517,7 +17517,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4 5.9_p5 5.9_p6: Linux ke
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 5.4.72_p20201022 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.247 4.9.247 4.14.211 4.19.162 5.4.82 5.9.13: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
