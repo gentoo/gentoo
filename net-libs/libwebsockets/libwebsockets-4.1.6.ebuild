@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic
+inherit cmake
 
 DESCRIPTION="A flexible pure-C library for implementing network protocols"
 HOMEPAGE="https://libwebsockets.org/"
 SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/16" # libwebsockets.so.16
-KEYWORDS="amd64 arm arm64 x86"
+SLOT="0/17" # libwebsockets.so.17
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
 	+lejp libev libevent libressl libuv mbedtls peer-limits server-status smtp socks5
 	sqlite3 ssl static-libs threads zip"
@@ -44,16 +44,13 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-lang/perl"
-
-PATCHES=(
-	"${FILESDIR}/libwebsockets-3.2.0-check_chown_result.patch"
-)
+BDEPEND="dev-lang/perl
+	virtual/pkgconfig"
 
 src_configure() {
-	append-cflags -Wno-error
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
+		-DDISABLE_WERROR=ON
 		-DLWS_HAVE_LIBCAP=$(usex caps)
 		-DLWS_IPV6=$(usex ipv6)
 		-DLWS_ROLE_DBUS=$(usex dbus)
@@ -82,8 +79,6 @@ src_configure() {
 		-DLWS_WITH_ZIP_FOPS=$(usex zip)
 		-DLWS_WITHOUT_TESTAPPS=ON
 	)
-
-	use dbus && mycmakeargs+=( -DLWS_DBUS_INCLUDE2="/usr/$(get_libdir)/dbus-1.0/include" )
 
 	cmake_src_configure
 }
