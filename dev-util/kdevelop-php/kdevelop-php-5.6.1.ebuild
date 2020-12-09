@@ -17,7 +17,6 @@ DESCRIPTION="PHP plugin for KDevelop"
 HOMEPAGE="https://www.kdevelop.org/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="${SRC_URI/src\//}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
