@@ -16,7 +16,6 @@ DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and mu
 HOMEPAGE="https://kdevelop.org/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="${SRC_URI/src\//}"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
