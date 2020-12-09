@@ -24,7 +24,7 @@ IUSE="emacs"
 BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${BDEPEND}
-	~sys-devel/autoconf-wrapper-14_pre3
+	>=sys-devel/autoconf-wrapper-14
 	sys-devel/gnuconfig
 	!~sys-devel/${P}:2.5"
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
