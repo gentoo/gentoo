@@ -42,7 +42,7 @@ DEPEND="
 	net-libs/libnsl
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? (
-		dev-lang/lua:=
+		dev-lang/lua:0=
 		dev-lua/LuaBitOp
 	)
 	tui? (
