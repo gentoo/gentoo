@@ -92,7 +92,9 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	dev-python/sphinx
+	doc? (
+		dev-python/sphinx
+	)
 	$(python_gen_cond_dep '
 		test? (
 			dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
@@ -143,14 +145,13 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	esetup.py build_sphinx -b man --build-dir=docs/build
 	use doc && esetup.py build_sphinx -b html --build-dir=docs/build
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
 
-	doman docs/build/man/*
+	doman man/*
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	einstalldocs
 
