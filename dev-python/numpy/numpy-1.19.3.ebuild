@@ -46,7 +46,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.17.4-no-hardcode-blasv2.patch
+	"${FILESDIR}"/${PN}-1.17.4-no-hardcode-blasv3.patch
 )
 
 distutils_enable_tests pytest
