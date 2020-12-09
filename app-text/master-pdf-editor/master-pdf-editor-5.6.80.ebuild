@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 RESTRICT="mirror"
 
 RDEPEND="
+	dev-libs/nss
 	>=dev-qt/qtcore-5.9.8:5
 	>=dev-qt/qtgui-5.9.8:5
 	>=dev-qt/qtnetwork-5.9.8:5
