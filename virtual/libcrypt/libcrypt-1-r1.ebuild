@@ -12,8 +12,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 IUSE="+static-libs"
 
 RDEPEND="
-	elibc_glibc? ( sys-libs/glibc[crypt(+),static-libs(+)?] )
-	elibc_musl? ( sys-libs/musl )
-	elibc_uclibc? ( sys-libs/uclibc-ng )
+	!prefix-guest? (
+		elibc_glibc? ( sys-libs/glibc[crypt(+),static-libs(+)?] )
+		elibc_musl? ( sys-libs/musl )
+		elibc_uclibc? ( sys-libs/uclibc-ng )
+	)
 	elibc_Cygwin? ( sys-libs/cygwin-crypt )
 "
