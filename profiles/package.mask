@@ -592,6 +592,7 @@ gnome-base/orbit
 >=www-servers/lighttpd-1.4.55-r100
 >=x11-misc/devilspie2-0.43-r100
 >=x11-wm/awesome-4.3-r100
+>=mail-filter/opendkim-2.10.3-r25
 
 # Azamat H. Hackimov <azamat.hackimov@gmail.com> (2020-10-06)
 # 1.3.3 is broken and failing unittests for net-im/prosody. Bug #746782.
