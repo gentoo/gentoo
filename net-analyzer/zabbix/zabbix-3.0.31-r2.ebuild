@@ -11,11 +11,11 @@ DESCRIPTION="ZABBIX is software for monitoring of your applications, network and
 HOMEPAGE="https://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
-SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/4.0/${P}.tar.gz"
+SRC_URI="https://cdn.zabbix.com/stable/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
@@ -91,8 +91,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
+	"${FILESDIR}/${PN}-3.0.30-mysql8.patch"
+	"${FILESDIR}/${P}-fix-cve-2020-15803.patch"
 )
 
 S=${WORKDIR}/${MY_P}
