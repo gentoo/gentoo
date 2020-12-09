@@ -11081,7 +11081,7 @@ games-arcade/briquolo 0.5.7: Breakout with 3D representation based on OpenGL
 games-arcade/bumprace 1.5.3: simple arcade racing game
 games-arcade/burgerspace 1.9.2: Clone of the 1982 BurgerTime video game by Data East
 games-arcade/cavezofphear 0.5.1: A boulder dash / digger-like game for console using ncurses
-games-arcade/cdogs-sdl 0.4-r1: A port of the old DOS arcade game C-Dogs
+games-arcade/cdogs-sdl 0.10.1: Classic overhead run-and-gun game
 games-arcade/ceferino 0.97.8-r2: Super-Pang clone (destroy bouncing balloons with your grapnel)
 games-arcade/circuslinux 1.0.3-r1: clone of the Atari 2600 game "Circus Atari"
 games-arcade/cob 0.9-r1: Cruising on Broadway: a painting-type game
@@ -11110,7 +11110,7 @@ games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
 games-arcade/holotz-castle 1.3.14-r1: 2D platform game
 games-arcade/insaneodyssey 000311-r1: Help West Muldune escape from a futuristic mental hospital
 games-arcade/jardinains 2.0-r1: Arkanoid with Gnomes
-games-arcade/jazz2 0.6.4: Open source reimplementation of Jazz Jackrabbit 2
+games-arcade/jazz2 0.6.5: Open source reimplementation of Jazz Jackrabbit 2
 games-arcade/jazz2-data 0-r20200327: Jazz Jackrabbit 2 data files imported for games-arcade/jazz2
 games-arcade/jumpnbump 1.50-r2: A funny multiplayer game about cute little fluffy bunnies
 games-arcade/jvgs 0.5-r1 0.5-r100: An open-source platform game with a sketched and minimalistic look
@@ -11683,6 +11683,7 @@ games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/hedgewars 1.0.0-r1 1.0.0-r100: A turn-based strategy, artillery, action and comedy game
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
+games-strategy/julius 1.4.1: Feature-faithful open source re-implementation of Caesar III
 games-strategy/knights-demo 1.32-r2: Anglo-Saxon medieval army battles and resource management
 games-strategy/lgeneral 1.4.3: A Panzer General clone written in SDL
 games-strategy/liquidwar 5.6.5: Unique multiplayer wargame
@@ -12440,7 +12441,7 @@ mail-filter/procmail 3.22-r14: Mail delivery agent/filter
 mail-filter/pyzor 1.0.0-r1 1.0.0_p20200523: A distributed, collaborative spam detection and filtering network
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
-mail-filter/rspamd 2.5-r1 2.6-r2 9999: Rapid spam filtering system
+mail-filter/rspamd 2.5-r1 2.6-r2 2.6-r100 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
