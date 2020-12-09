@@ -20,6 +20,8 @@ IUSE=""
 RESTRICT=test # QuickCheck occasionally finds counterexamples
 # and fails to build: Duplicate instance declarations: instance NFData Ordering
 
+PATCHES=("${FILESDIR}"/${PN}-0.7.0.1-icu.patch)
+
 RDEPEND=">=dev-haskell/text-0.9.1.0:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 	dev-libs/icu:=
