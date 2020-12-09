@@ -47,7 +47,8 @@ src_install() {
 	default
 
 	local f
-	for f in config.guess config.sub; do
-		ln -fs ../../gnuconfig/${f} "${ED}"/usr/share/autoconf-*/build-aux/${f} || die
+	for f in config.{guess,sub} ; do
+		ln -fs ../../gnuconfig/${f} \
+			"${ED}"/usr/share/autoconf-*/build-aux/${f} || die
 	done
 }
