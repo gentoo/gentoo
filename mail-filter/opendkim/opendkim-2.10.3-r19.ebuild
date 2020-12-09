@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-openssl-1.1.1.patch.r2"
 	"${FILESDIR}/${P}-lua-pkgconfig.patch"
 	"${FILESDIR}/${P}-define-P-macro-in-libvbr.patch"
+	"${FILESDIR}/${P}-fix-libmilter-search.patch"
 )
 
 src_prepare() {
@@ -98,6 +99,7 @@ src_configure() {
 		$(use_with memcached libmemcached) \
 		"${myconf[@]}" \
 		--enable-filter \
+		--with-milter \
 		--enable-atps \
 		--enable-identity_header \
 		--enable-rate_limit \
