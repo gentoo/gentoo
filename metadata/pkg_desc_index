@@ -2626,7 +2626,7 @@ app-office/libreoffice 6.4.6.2-r2 6.4.7.2 7.0.3.1 7.0.9999 9999: A full office p
 app-office/libreoffice-bin 6.4.6.2-r2 6.4.7.2 6.4.7.2_p1: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.6.2-r2 6.4.7.2 6.4.7.2_p1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.6.2 6.4.7.2 7.0.3.1: Translations for the Libreoffice suite
-app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
+app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
