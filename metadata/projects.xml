@@ -1263,10 +1263,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Genkernel</url>
     <description>The Genkernel project handles the maintenance and development of [https://packages.gentoo.org/packages/sys-kernel/genkernel sys-kernel/genkernel].</description>
     <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
-    </member>
-    <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Merge man</role>
@@ -2036,10 +2032,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Mozilla</url>
     <description>Mozilla and related applications</description>
     <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
-    </member>
-    <member>
       <email>juippis@gentoo.org</email>
       <name>Joonas Niilola</name>
     </member>
@@ -2065,11 +2057,6 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
       <role>Member</role>
     </member>
     <member is-lead="1">
@@ -2132,10 +2119,6 @@
     <name>Netifrc Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Netifrc</url>
     <description>This project is for the development and maintenance of the netifrc network configuration scripts</description>
-    <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
-    </member>
     <member is-lead="1">
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
@@ -2317,11 +2300,6 @@
     <name>Perl Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Perl</url>
     <description>We maintain everything perlish in Gentoo.</description>
-    <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
@@ -3225,11 +3203,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Samba</url>
     <description>This project maintains packages related to Samba suit.</description>
     <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
-      <role>multilib</role>
-    </member>
-    <member>
       <email>bkohler@gentoo.org</email>
       <name>Ben Kohler</name>
       <role>Member</role>
@@ -4017,11 +3990,6 @@
     <name>eudev</name>
     <url>https://wiki.gentoo.org/wiki/Project:Eudev</url>
     <description>eudev is a device manager for the Linux kernel</description>
-    <member>
-      <email>axs@gentoo.org</email>
-      <name>Ian Stakenvicius</name>
-      <role>Member (*)</role>
-    </member>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
