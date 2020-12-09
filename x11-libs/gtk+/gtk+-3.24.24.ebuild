@@ -44,6 +44,7 @@ COMMON_DEPEND="
 	colord? ( >=x11-misc/colord-0.1.9:0=[${MULTILIB_USEDEP}] )
 	cups? ( >=net-print/cups-2.0[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
+	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3 )
 	wayland? (
 		>=dev-libs/wayland-1.14.91[${MULTILIB_USEDEP}]
 		>=dev-libs/wayland-protocols-1.17
@@ -76,7 +77,6 @@ DEPEND="${COMMON_DEPEND}
 		app-text/docbook-xml-dtd:4.3 )
 	>=sys-devel/gettext-0.19.7[${MULTILIB_USEDEP}]
 	virtual/pkgconfig
-	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3 )
 	X? ( x11-base/xorg-proto )
 	test? (
 		media-fonts/font-misc-misc
