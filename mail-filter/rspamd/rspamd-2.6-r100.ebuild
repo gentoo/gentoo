@@ -58,7 +58,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/rspamd-2.6-cmake-lua-version.patch"
 	"${FILESDIR}/rspamd-2.6-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-9999-unbundle-zstd.patch"
+	"${FILESDIR}/rspamd-2.6-unbundle-zstd.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
 )
 
