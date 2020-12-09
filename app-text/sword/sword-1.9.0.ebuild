@@ -1,0 +1,41 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+inherit cmake
+
+DESCRIPTION="Library for Bible reading software"
+HOMEPAGE="https://www.crosswire.org/sword/"
+SRC_URI="https://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos"
+IUSE="clucene curl debug doc icu static-libs"
+
+RDEPEND="sys-libs/zlib
+	curl? ( net-misc/curl )
+	icu? ( dev-libs/icu:= )
+	clucene? ( dev-cpp/clucene )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+DOCS=( AUTHORS CODINGSTYLE ChangeLog README )
+
+src_configure() {
+	use doc && DOCS+=( examples/ samples/ )
+
+	local mycmakeargs=(
+		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"
+		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DWITH_CLUCENE=$(usex clucene)
+		-DWITH_CURL=$(usex curl)
+		-DWITH_ICU=$(usex icu)
+		-DWITH_ZLIB=1
+	)
+	# Upstream default is to build both the shared and the static library
+	use static-libs || mycmakeargs+=( -DLIBSWORD_LIBRARY_TYPE="Shared" )
+
+	cmake_src_configure
+}
