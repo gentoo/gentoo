@@ -12644,7 +12644,7 @@ media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/noto 20190524 20200308 20200521: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20190416: Google's CJK font family
-media-fonts/noto-emoji 20200311 20200317 20200317-r1: Google Noto Emoji fonts
+media-fonts/noto-emoji 20200317-r1 20200916: Google Noto Emoji fonts
 media-fonts/nunito 1.0-r1: A Sans Serif font with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/office-code-pro 1.004: Customized version of Source Code Pro
@@ -13270,7 +13270,7 @@ media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.9.0: An audio time-stretching and pitch-shifting library and utility program
-media-libs/sbc 1.4: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
+media-libs/sbc 1.4 1.5: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdl-gfx 2.0.26 2.0.26-r1: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
 media-libs/sdl-mixer 1.2.12-r4: Simple Direct Media Layer Mixer Library
