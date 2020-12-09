@@ -85,7 +85,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/os-headers
-	kernel_linux? ( >=sys-kernel/linux-headers-5.1 )
+	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-5.1 ) )
 	static? ( ${LIB_DEPEND} )
 "
 RDEPEND="${RDEPEND}

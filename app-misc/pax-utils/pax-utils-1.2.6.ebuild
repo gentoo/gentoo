@@ -29,7 +29,7 @@ RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 # >=linux-headers-4.11 to pick linux headers with statx, bug #737094
 DEPEND="
 	${RDEPEND}
-	kernel_linux? ( >=sys-kernel/linux-headers-4.11 )
+	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-4.11 ) )
 "
 BDEPEND="
 	caps? ( virtual/pkgconfig )
