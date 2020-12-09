@@ -575,6 +575,7 @@ gnome-base/orbit
 >=media-libs/libquvi-0.9.4-r100
 >=media-libs/libquvi-scripts-0.9.20131130-r100
 >=media-sound/aqualung-1.1-r100
+>=media-video/aegisub-3.2.2_p20160518-r100
 >=media-video/vlc-3.0.11.1-r100
 >=net-analyzer/rrdtool-1.7.2-r100
 >=net-analyzer/snort-2.9.16-r100
