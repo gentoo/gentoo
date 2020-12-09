@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake xdg
 
 DESCRIPTION="Feature-faithful open source re-implementation of Caesar III"
 HOMEPAGE="https://github.com/bvschaik/julius"
@@ -20,6 +20,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	cmake_src_prepare
+	xdg_src_prepare
+}
+
 src_install() {
 	insinto /etc/profile.d
 	doins "${FILESDIR}"/90julius.sh
@@ -29,6 +34,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	ewarn "Julius requires you to download the original Caesar 3 resources."
 	ewarn
 	ewarn "You need to obtain these files from a vendor of the proprietary software."
