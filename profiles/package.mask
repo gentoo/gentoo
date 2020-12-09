@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
+# Masked until most broken packages have been fixed (bug #732648)
+>=sys-devel/autoconf-2.70
+>=sys-devel/autoconf-wrapper-14
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-12-08)
 # Fails to validate certificates which have multiple trusted
 # paths.
