@@ -7,7 +7,8 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
 	inherit git-r3
 else
-	MY_PV="2.69e"
+	# For _beta handling replace with real version number
+	MY_PV="${PV}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.xz -> ${P}.tar.xz
 		https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz -> ${P}.tar.xz"
@@ -28,8 +29,9 @@ IUSE="emacs"
 BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${BDEPEND}
-	!~sys-devel/${P}:2.5
-	~sys-devel/autoconf-wrapper-14_pre3"
+	>=sys-devel/autoconf-wrapper-14
+	sys-devel/gnuconfig
+	!~sys-devel/${P}:2.5"
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
@@ -47,4 +49,14 @@ src_prepare() {
 	# Restore timestamp to avoid makeinfo call
 	# We already have an up to date autoconf.info page at this point.
 	touch -r doc/{old_,}autoconf.texi || die
+}
+
+src_install() {
+	default
+
+	local f
+	for f in config.{guess,sub} ; do
+		ln -fs ../../gnuconfig/${f} \
+			"${ED}"/usr/share/autoconf-*/build-aux/${f} || die
+	done
 }
