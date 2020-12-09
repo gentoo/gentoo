@@ -16090,7 +16090,7 @@ sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF 
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
 sci-libs/ccolamd 2.9.6: Constrained Column approximate minimum degree ordering algorithm
 sci-libs/cdd+ 077a: Another implementation of the double description method
-sci-libs/cddlib 094j: C library implementing the Double Description Method
+sci-libs/cddlib 094j 094m: C library implementing the Double Description Method
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
 sci-libs/ceres-solver 1.14.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.360 3.410: C and Fortran library for manipulating FITS files
@@ -16151,7 +16151,7 @@ sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
 sci-libs/gdal 3.0.4-r1: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.8.1: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.8.1 3.9.0: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r3: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/ginkgo 1.1.1-r1 9999: Numerical linear algebra software package
@@ -16266,7 +16266,7 @@ sci-libs/plplot 5.15.0-r1 5.15.0-r100: Multi-language scientific plotting librar
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
-sci-libs/proj 7.0.1: PROJ coordinate transformation software
+sci-libs/proj 7.0.1 7.1.1: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pyshp 2.1.0 2.1.2: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17 2.3.22: Quad-double and double-double float arithmetics
