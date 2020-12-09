@@ -13,7 +13,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 # Needs to include licenses for all bundled programs and libraries.
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="apparmor ipv6 nls verify-sig"
 
 DEPEND="app-arch/xz-utils
