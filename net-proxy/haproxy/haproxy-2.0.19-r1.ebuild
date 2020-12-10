@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
@@ -51,7 +51,6 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-2.3.0-hpack-VAR_ARRAY.patch" )
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
@@ -94,6 +93,9 @@ src_compile() {
 	args+=( $(haproxy_use device-atlas DEVICEATLAS) )
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
+
+	# For now, until the strict-aliasing breakage will be fixed
+	append-cflags -fno-strict-aliasing
 
 	# Bug #668002
 	if use ppc || use arm || use hppa; then

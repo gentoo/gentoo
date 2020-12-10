@@ -4,7 +4,7 @@
 EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit user toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
@@ -45,7 +45,9 @@ DEPEND="
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/haproxy
+	acct-user/haproxy"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -63,9 +65,6 @@ haproxy_use() {
 }
 
 pkg_setup() {
-	enewgroup haproxy
-	enewuser haproxy -1 -1 -1 haproxy
-
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup
@@ -98,12 +97,17 @@ src_compile() {
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
+	# Bug #668002
+	if use ppc || use arm || use hppa; then
+		TARGET_LDFLAGS=-latomic
+	fi
+
 	if use prometheus-exporter; then
 		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
 	fi
 
 	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
-	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" ${args[@]}
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
