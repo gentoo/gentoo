@@ -484,11 +484,6 @@ sci-geosciences/mapnik-world-boundaries
 # Removal in 30 days.  Bug #638088.
 games-rpg/twclone
 
-# Michał Górny <mgorny@gentoo.org> (2020-10-24)
-# Deprecated GNOME2 era libraries with no reverse dependencies left.
-# Removal in 30 days.  Bug #751004.
-gnome-base/libgnome-keyring
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
 # Ulrich Müller <ulm@gentoo.org> (2020-11-06)
