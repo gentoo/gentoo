@@ -472,12 +472,6 @@ kde-apps/kde-meta:5
 # emerge --noreplace kde-plasma/plasma-meta kde-apps/kdecore-meta
 kde-apps/kdebase-meta:5
 
-# Michał Górny <mgorny@gentoo.org> (2020-10-26)
-# This packages makes little sense without sci-geosciences/mapnik.
-# It has not been updated in 11 years, so it has been useless anyway.
-# Removal in 14 days.  Bug #559060.
-sci-geosciences/mapnik-world-boundaries
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
 # Ulrich Müller <ulm@gentoo.org> (2020-11-06)
