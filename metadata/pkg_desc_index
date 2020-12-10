@@ -17951,7 +17951,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 18.0.9 18.0.10 18.0.11 19.0.3 19.0.4 19.0.5 20.0.0 20.0.1 20.0.2: Personal cloud that runs on your own server
+www-apps/nextcloud 18.0.10 18.0.11 18.0.12 19.0.4 19.0.5 19.0.6 20.0.1 20.0.2 20.0.3: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
