@@ -43,6 +43,7 @@ REQUIRED_USE="
 	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
 	gles1?  ( egl )
 	gles2?  ( egl )
+	osmesa? ( gallium )
 	vulkan? ( dri3
 			  video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
@@ -316,6 +317,10 @@ pkg_pretend() {
 	if ! use llvm; then
 		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain llvm"
 	fi
+
+	if use osmesa && ! use llvm; then
+		ewarn "OSMesa will be slow without enabling USE=llvm"
+	fi
 }
 
 python_check_deps() {
@@ -346,6 +351,8 @@ multilib_src_configure() {
 	local emesonargs=()
 
 	if use classic; then
+		dri_driver_enable !gallium swrast
+
 		# Intel code
 		dri_driver_enable video_cards_i915 i915
 		dri_driver_enable video_cards_i965 i965
@@ -437,6 +444,7 @@ multilib_src_configure() {
 			gallium_enable -- kmsro
 		fi
 
+		gallium_enable -- swrast
 		gallium_enable video_cards_lima lima
 		gallium_enable video_cards_panfrost panfrost
 		gallium_enable video_cards_v3d v3d
@@ -481,14 +489,6 @@ multilib_src_configure() {
 		vulkan_enable video_cards_v3d broadcom
 	fi
 
-	if use gallium; then
-		gallium_enable -- swrast
-		emesonargs+=( -Dosmesa=$(usex osmesa gallium none) )
-	else
-		dri_driver_enable -- swrast
-		emesonargs+=( -Dosmesa=$(usex osmesa classic none) )
-	fi
-
 	driver_list() {
 		local drivers="$(sort -u <<< "${1// /$'\n'}")"
 		echo "${drivers//$'\n'/,}"
@@ -503,6 +503,7 @@ multilib_src_configure() {
 		$(meson_feature gbm)
 		$(meson_feature gles1)
 		$(meson_feature gles2)
+		$(meson_use osmesa)
 		$(meson_use selinux)
 		$(meson_feature zstd)
 		-Dvalgrind=$(usex valgrind auto false)
