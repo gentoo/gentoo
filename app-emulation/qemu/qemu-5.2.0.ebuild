@@ -6,8 +6,6 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE="ncurses,readline"
 
-PLOCALES="bg de_DE fr_FR hu it sv tr zh_CN"
-
 FIRMWARE_ABI_VERSION="4.0.0-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1 \
@@ -232,10 +230,13 @@ QA_PREBUILT="
 	usr/share/qemu/openbios-ppc
 	usr/share/qemu/openbios-sparc64
 	usr/share/qemu/openbios-sparc32
+	usr/share/qemu/opensbi-riscv64-generic-fw_dynamic.elf
+	usr/share/qemu/opensbi-riscv32-generic-fw_dynamic.elf
 	usr/share/qemu/palcode-clipper
 	usr/share/qemu/s390-ccw.img
 	usr/share/qemu/s390-netboot.img
-	usr/share/qemu/u-boot.e500"
+	usr/share/qemu/u-boot.e500
+"
 
 QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-x86_64
@@ -258,7 +259,8 @@ QA_WX_LOAD="usr/bin/qemu-i386
 	usr/bin/qemu-armeb
 	usr/bin/qemu-sparc32plus
 	usr/bin/qemu-s390x
-	usr/bin/qemu-unicore32"
+	usr/bin/qemu-unicore32
+"
 
 DOC_CONTENTS="If you don't have kvm compiled into the kernel, make sure you have the
 kernel module loaded before running kvm. The easiest way to ensure that the
@@ -348,29 +350,6 @@ check_targets() {
 	popd >/dev/null
 }
 
-handle_locales() {
-	# Make sure locale list is kept up-to-date.
-	local detected sorted
-	detected=$(echo $(cd po && printf '%s\n' *.po | grep -v messages.po | sed 's:.po$::' | sort -u))
-	sorted=$(echo $(printf '%s\n' ${PLOCALES} | sort -u))
-	if [[ ${sorted} != "${detected}" ]] ; then
-		eerror "The ebuild needs to be kept in sync."
-		eerror "PLOCALES: ${sorted}"
-		eerror " po/*.po: ${detected}"
-		die "sync PLOCALES"
-	fi
-
-	# Deal with selective install of locales.
-	if use nls ; then
-		# Delete locales the user does not want. #577814
-		rm_loc() { rm po/$1.po || die; }
-		l10n_for_each_disabled_locale_do rm_loc
-	else
-		# Cheap hack to disable gettext .mo generation.
-		rm -f po/*.po
-	fi
-}
-
 src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
@@ -383,9 +362,6 @@ src_prepare() {
 
 	# Verbose builds
 	MAKEOPTS+=" V=1"
-
-	# Run after we've applied all patches.
-	handle_locales
 
 	# Remove bundled copy of libfdt
 	rm -r dtc || die
@@ -439,6 +415,7 @@ qemu_src_configure() {
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
 		$(use_enable doc docs)
+		$(use_enable nls gettext)
 		$(use_enable plugins)
 		$(use_enable xattr attr)
 	)
