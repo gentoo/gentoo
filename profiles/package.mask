@@ -414,34 +414,12 @@ media-plugins/kodi-game-libretro-bnes
 <media-plugins/kodi-visualization-waveform-4.2
 <media-plugins/kodi-visualization-shadertoy-2.1
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-09)
-# Python 2 backport.  Last revdep masked.
-# Removal in 30 days.  Bug #753725.
-dev-python/typing
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-09)
-# Dead Python 2 package.  Replaced by dev-python/cheetah3.  The last
-# mongodb versions needing it are masked now.
-# Removal in 30 days.  Bug #753722.
-dev-python/cheetah
-
 # Alexys Jacob <ultrabug@gentoo.org> (2020-11-09)
 # Mask dev-db/mongodb versions which do not support python3 so we
 # can move forward in cleaning python2 from tree. Bug #708954.
 # We keep the ebuilds available since some of those versions are still
 # supported by upstream. See: https://jira.mongodb.org/browse/SERVER-52687
 <dev-db/mongodb-4.2.8
-
-# Benda Xu <heroxbd@gentoo.org> (2020-11-09)
-# sci-libs/mkl-rt is now subsumed by the updated sci-libs/mkl package
-# which also provides development header files and pkgconfig files
-# Removal in 30 days. Bug #747310.
-sci-libs/mkl-rt
-
-# Dirkjan Ochtman <djc@gentoo.org> (2020-11-05)
-# Incorrect DISTUTILS_USE_SETUPTOOLS value, dead upstream.
-# Removal in 30 days. Bug #748063
-dev-python/couchdb-python
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-05)
 # will be upgraded after new lua release
@@ -471,25 +449,6 @@ kde-apps/kde-meta:5
 # Masked for removal on 2021-08-31. Replaced by:
 # emerge --noreplace kde-plasma/plasma-meta kde-apps/kdecore-meta
 kde-apps/kdebase-meta:5
-
-# Michał Górny <mgorny@gentoo.org> (2020-10-26)
-# This packages makes little sense without sci-geosciences/mapnik.
-# It has not been updated in 11 years, so it has been useless anyway.
-# Removal in 14 days.  Bug #559060.
-sci-geosciences/mapnik-world-boundaries
-
-# Michał Górny <mgorny@gentoo.org> (2020-10-24)
-# Last release in 2004, next release 'Soon(tm)'.  Fails to build
-# due to horrible code hacks.
-# Removal in 30 days.  Bug #638088.
-games-rpg/twclone
-
-# Michał Górny <mgorny@gentoo.org> (2020-10-24)
-# Deprecated GNOME2 era libraries with no reverse dependencies left.
-# Removal in 30 days.  Bug #751004.
-gnome-base/libbonobo
-gnome-base/libgnome-keyring
-gnome-base/orbit
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
