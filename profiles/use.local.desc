@@ -3315,7 +3315,6 @@ gnome-base/librsvg:tools - Build svg viewer tool
 gnome-base/nautilus:gstreamer - Enable the Audio/Video file properties page
 gnome-base/nautilus:previewer - Use gnome-extra/sushi to preview files from the file mananger
 gnome-base/nautilus:sendto - Enable the nautilus-sendto extension to send files to various locations/devices
-gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
 gnome-extra/cinnamon-control-center:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
 gnome-extra/cinnamon-session:elogind - Rely on sys-auth/elogind as runtime logind provider
 gnome-extra/eiciel:nautilus - Build gnome-base/nautilus extension
@@ -7291,7 +7290,6 @@ sci-libs/lis:saamg - Build the Smoothed Aggregation Algebraic MultiGrid precondi
 sci-libs/mathgl:hdf - Add support for the Hierarchical Data Format v.4 sci-libs/hdf
 sci-libs/mathgl:octave - Add bindings for sci-mathematics/octave
 sci-libs/matio:sparse - Extend formats for sparse matrix (not matlab)
-sci-libs/mkl-rt:eselect-ldso - Enable runtime library switching by eselect and ld.so.
 sci-libs/mpir:cpudetection - Enables runtime cpudetection (useful for bindist, compatability on other CPUs)
 sci-libs/mumps:metis - Enable matrix ordering with METIS (sci-libs/metis, sci-libs/parmetis)
 sci-libs/mumps:scotch - Enable matrix ordering with sci-libs/scotch
