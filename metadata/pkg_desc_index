@@ -16156,7 +16156,7 @@ sci-libs/h5hut 1.99.13: High-Performance I/O Library for Particle-based Simulati
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.11 4.2.13 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.10.5 1.10.5-r1: General purpose library and file format for storing scientific data
-sci-libs/htslib 1.9 1.10.2: C library for high-throughput sequencing data formats
+sci-libs/htslib 1.10.2: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.14.0 2.18.0 2.18.2: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
