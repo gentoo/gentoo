@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-Add-BUILD_EDITOR-option.patch"
+	"${FILESDIR}/${P}-Remove-Winline-and-Werror-definitions.patch"
 )
 
 src_prepare() {
