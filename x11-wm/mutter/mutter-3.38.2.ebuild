@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 LICENSE="GPL-2+"
 SLOT="0/7" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
-IUSE="elogind input_devices_wacom +introspection screencast +sysprof systemd test udev wayland"
+IUSE="elogind input_devices_wacom +introspection screencast sysprof systemd test udev wayland"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) udev )
