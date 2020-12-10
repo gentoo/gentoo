@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-12-10)
+# Disable systemtap for now to be consistent
+# with ::prefix pre-merge.
+# Not yet tested so we may be able to drop this later.
+dev-lang/ruby systemtap
+
 # Fabian Groffen <grobian@gentoo.org> (2020-06-07)
 # installing kernels has no business in Prefix
 sys-apps/debianutils installkernel
