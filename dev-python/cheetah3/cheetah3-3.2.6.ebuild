@@ -11,7 +11,7 @@ HOMEPAGE="http://www.cheetahtemplate.org/ https://pypi.org/project/Cheetah3/"
 SRC_URI="https://github.com/CheetahTemplate3/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 SLOT="0"
 
 RDEPEND="
