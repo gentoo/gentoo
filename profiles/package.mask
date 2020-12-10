@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-12-10)
+# Masked for testing. Builtd failures around locales
+# and safe-stack detection
+>=app-emulation/qemu-5.2.0
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-10)
 # Stuck on LLVM 9.  Superseded by dev-util/cvise that features better
 # parallelization and more acive development.
