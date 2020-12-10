@@ -9,7 +9,7 @@ DESCRIPTION="A general-purpose command-line fuzzy finder, written in GoLang"
 HOMEPAGE="https://github.com/junegunn/fzf"
 
 # For fancy versioning only. Bump on the next release!
-MY_GIT_REV=0d5f862
+MY_GIT_REV=00a3610
 
 EGO_SUM=(
 	"github.com/gdamore/encoding v1.0.0"
