@@ -487,7 +487,6 @@ games-rpg/twclone
 # Michał Górny <mgorny@gentoo.org> (2020-10-24)
 # Deprecated GNOME2 era libraries with no reverse dependencies left.
 # Removal in 30 days.  Bug #751004.
-gnome-base/libbonobo
 gnome-base/libgnome-keyring
 gnome-base/orbit
 
