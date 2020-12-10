@@ -13,7 +13,7 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*[curl,json,simplexml]"
+RDEPEND="dev-lang/php:*[curl,json(+),simplexml]"
 DEPEND="test? ( ${RDEPEND} <dev-php/phpunit-6 )"
 
 src_install() {
