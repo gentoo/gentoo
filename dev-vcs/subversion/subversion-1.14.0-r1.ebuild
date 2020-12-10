@@ -29,8 +29,8 @@ COMMON_DEPEND="
 	app-arch/bzip2
 	app-arch/lz4
 	>=dev-db/sqlite-3.7.12
-	>=dev-libs/apr-1.3:1
-	>=dev-libs/apr-util-1.3:1
+	>=dev-libs/apr-1.5:1
+	>=dev-libs/apr-util-1.5:1
 	dev-libs/expat
 	dev-libs/libutf8proc:=
 	>=net-libs/serf-1.3.4
