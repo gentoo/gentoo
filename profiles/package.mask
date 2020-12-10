@@ -414,11 +414,6 @@ media-plugins/kodi-game-libretro-bnes
 <media-plugins/kodi-visualization-waveform-4.2
 <media-plugins/kodi-visualization-shadertoy-2.1
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-09)
-# Python 2 backport.  Last revdep masked.
-# Removal in 30 days.  Bug #753725.
-dev-python/typing
-
 # Alexys Jacob <ultrabug@gentoo.org> (2020-11-09)
 # Mask dev-db/mongodb versions which do not support python3 so we
 # can move forward in cleaning python2 from tree. Bug #708954.
