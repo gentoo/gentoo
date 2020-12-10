@@ -32,6 +32,7 @@ src_install() {
 
 	local SPARK_SCRIPTS=(
 		bin/beeline
+		bin/find-spark-home
 		bin/load-spark-env.sh
 		bin/pyspark
 		bin/spark-class
