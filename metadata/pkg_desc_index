@@ -7810,7 +7810,7 @@ dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3 1.5.4: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
-dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16 4.4.19: Event-driven asynchronous & concurrent & coroutine networking engine
+dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16 4.4.19 4.5.9: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/swoole-async 4.4.12 4.4.16: An extension of Swoole, including the async callback style API
 dev-php/symfony-config 2.8.20: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1 2.8.43 2.8.48 2.8.50 2.8.52: Subtree split of the Symfony Console Component
@@ -7829,7 +7829,7 @@ dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output
 dev-php/xdebug 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8 3.0.1: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1 1.4.3: Restart a CLI process without loading the xdebug extension
-dev-php/xhprof 0.9.10 2.1.4: A Hierarchical Profiler for PHP
+dev-php/xhprof 2.1.4 2.2.3: A Hierarchical Profiler for PHP
 dev-php/zetacomponents-Base 1.9.1: Base package for any Zeta component
 dev-php/zetacomponents-ConsoleTools 1.7.2: A set of classes to do different actions with the console
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
