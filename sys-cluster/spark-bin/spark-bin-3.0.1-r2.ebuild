@@ -42,9 +42,6 @@ src_install() {
 
 	local s
 	for s in "${SPARK_SCRIPTS[@]}"; do
-		ebegin "Setting SPARK_HOME to /usr/lib/spark-${SLOT} in $(basename ${s}) script ..."
-		sed -i -e "2iSPARK_HOME=/usr/lib/spark-${SLOT}" "${s}"
-		eend $?
 		dobin "${s}"
 	done
 
