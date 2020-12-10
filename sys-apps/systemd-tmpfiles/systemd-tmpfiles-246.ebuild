@@ -199,7 +199,7 @@ add_service() {
 
 	elog "Auto-adding '${initd}' service to your ${runlevel} runlevel"
 	mkdir -p "${EROOT}/etc/runlevels/${runlevel}"
-	ln -snf "${EROOT}/etc/init.d/${initd}" "${EROOT}/etc/runlevels/${runlevel}/${initd}"
+	ln -snf "${EPREFIX}/etc/init.d/${initd}" "${EROOT}/etc/runlevels/${runlevel}/${initd}"
 }
 
 pkg_postinst() {
