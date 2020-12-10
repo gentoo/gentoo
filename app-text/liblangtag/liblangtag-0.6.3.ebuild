@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 # Upstream expect liblangtag to be installed when one runs tests...
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-for-gtk-doc-1.32.patch"
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
