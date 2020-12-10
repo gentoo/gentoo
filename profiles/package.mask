@@ -478,12 +478,6 @@ kde-apps/kdebase-meta:5
 # Removal in 14 days.  Bug #559060.
 sci-geosciences/mapnik-world-boundaries
 
-# Michał Górny <mgorny@gentoo.org> (2020-10-24)
-# Last release in 2004, next release 'Soon(tm)'.  Fails to build
-# due to horrible code hacks.
-# Removal in 30 days.  Bug #638088.
-games-rpg/twclone
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # Marek Szuba <marecki@gentoo.org> (2020-10-13)
 # Ulrich Müller <ulm@gentoo.org> (2020-11-06)
