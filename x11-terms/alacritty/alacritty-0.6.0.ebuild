@@ -368,3 +368,13 @@ src_test() {
 	cd alacritty || die
 	cargo_src_test
 }
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		einfo "Configuration files for x11-terms/alacritty"
+		einfo "in \$HOME may need to be updated after a version change"
+		einfo ""
+		einfo "An up-to-date sample configuration file can be found at"
+		einfo "/usr/share/doc/${P}/alacritty.yml.bz2"
+	fi
+}
