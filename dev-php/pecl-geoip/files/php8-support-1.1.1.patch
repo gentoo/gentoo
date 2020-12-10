@@ -1,0 +1,93 @@
+--- a/geoip.c	2020/10/30 12:04:28	351081
++++ b/geoip.c	2020/10/30 12:51:07	351082
+@@ -34,41 +34,72 @@
+ #include "ext/standard/info.h"
+ #include "php_geoip.h"
+ 
+-
++/* For PHP 8 */
++#ifndef TSRMLS_CC
++#define TSRMLS_CC
++#endif
+ 
+ ZEND_DECLARE_MODULE_GLOBALS(geoip)
+ 
++ZEND_BEGIN_ARG_INFO_EX(arginfo_geoip_void, 0, 0, 0)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_geoip_database_opt, 0, 0, 0)
++	ZEND_ARG_INFO(0, database)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_geoip_database, 0, 0, 1)
++	ZEND_ARG_INFO(0, database)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_geoip_host, 0, 0, 1)
++	ZEND_ARG_INFO(0, host)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_geoip_region, 0, 0, 2)
++	ZEND_ARG_INFO(0, country_code)
++	ZEND_ARG_INFO(0, region_code)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_geoip_directory, 0, 0, 1)
++	ZEND_ARG_INFO(0, directory)
++ZEND_END_ARG_INFO()
++
+ static int le_geoip;
+ 
+ /* {{{ */
+ zend_function_entry geoip_functions[] = {
+-	PHP_FE(geoip_database_info,   NULL)   
++	PHP_FE(geoip_database_info,           arginfo_geoip_database_opt)   
+ #define GEOIPDEF(php_func, c_func, db_type) \
+-	PHP_FE(php_func,	NULL)
++	PHP_FE(php_func,	                  arginfo_geoip_host)
+ #include "geoip.def"
+ #undef GEOIPDEF
+-	PHP_FE(geoip_continent_code_by_name,   NULL)
+-	PHP_FE(geoip_org_by_name,   NULL)
+-	PHP_FE(geoip_record_by_name,   NULL)
+-	PHP_FE(geoip_id_by_name,   NULL)
+-	PHP_FE(geoip_region_by_name,   NULL)
+-	PHP_FE(geoip_isp_by_name,   NULL)
+-	PHP_FE(geoip_db_avail,	NULL)
+-	PHP_FE(geoip_db_get_all_info,	NULL)
+-	PHP_FE(geoip_db_filename,	NULL)
++	PHP_FE(geoip_continent_code_by_name,   arginfo_geoip_host)
++	PHP_FE(geoip_org_by_name,              arginfo_geoip_host)
++	PHP_FE(geoip_record_by_name,           arginfo_geoip_host)
++	PHP_FE(geoip_id_by_name,               arginfo_geoip_host)
++	PHP_FE(geoip_region_by_name,           arginfo_geoip_host)
++	PHP_FE(geoip_isp_by_name,              arginfo_geoip_host)
++	PHP_FE(geoip_db_avail,	               arginfo_geoip_database)
++	PHP_FE(geoip_db_get_all_info,	       arginfo_geoip_void)
++	PHP_FE(geoip_db_filename,	           arginfo_geoip_database)
+ #if LIBGEOIP_VERSION >= 1004001
+-	PHP_FE(geoip_region_name_by_code,	NULL)
+-	PHP_FE(geoip_time_zone_by_country_and_region,	NULL)
++	PHP_FE(geoip_region_name_by_code,      arginfo_geoip_region)
++	PHP_FE(geoip_time_zone_by_country_and_region,	arginfo_geoip_region)
+ #endif
+ #ifdef HAVE_CUSTOM_DIRECTORY
+-    PHP_FE(geoip_setup_custom_directory,	NULL)
++    PHP_FE(geoip_setup_custom_directory,   arginfo_geoip_directory)
+ #endif
+-	PHP_FE(geoip_asnum_by_name,   NULL)
+-	PHP_FE(geoip_domain_by_name,   NULL)
++	PHP_FE(geoip_asnum_by_name,            arginfo_geoip_host)
++	PHP_FE(geoip_domain_by_name,           arginfo_geoip_host)
+ #if LIBGEOIP_VERSION >= 1004008
+-	PHP_FE(geoip_netspeedcell_by_name, NULL)
++	PHP_FE(geoip_netspeedcell_by_name,     arginfo_geoip_host)
+ #endif
++#ifdef PHP_FE_END
++	PHP_FE_END
++#else
+ 	{NULL, NULL, NULL}
++#endif
+ };
+ /* }}} */
+ 
