@@ -5,7 +5,7 @@
 # Fails to compile without nls during link with undefined symbol for
 # _gl_get_setlocale_null_lock, related, but causing other issues:
 # https://gitweb.gentoo.org/repo/proj/prefix.git/commit/?id=24276d89d7c30abb460e786497fe7d50605bcdf7
-~sys-devel/gettext-0.21* nls
+~sys-devel/gettext-0.21 nls
 
 # Fabian Groffen <grobian@gentoo.org> (2020-06-08)
 # Do NOT enable tinfo, it breaks ANYTHING existing, and it also breaks
