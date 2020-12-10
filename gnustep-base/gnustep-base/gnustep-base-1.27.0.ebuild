@@ -28,7 +28,10 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.26.0-no_compress_man.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26.0-no_compress_man.patch
+	"${FILESDIR}"/${P}-icu68.patch
+)
 
 src_configure() {
 	egnustep_env
