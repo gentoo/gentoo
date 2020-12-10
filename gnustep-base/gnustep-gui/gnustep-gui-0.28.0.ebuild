@@ -27,6 +27,8 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	speech? ( app-accessibility/flite )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-icu68.patch )
+
 src_prepare() {
 	gnustep-base_src_prepare
 
