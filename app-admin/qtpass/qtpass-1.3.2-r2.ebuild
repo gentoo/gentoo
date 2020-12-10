@@ -5,9 +5,9 @@ EAPI=7
 
 inherit desktop qmake-utils virtualx
 
-DESCRIPTION="multi-platform GUI for pass, the standard unix password manager"
-HOMEPAGE="https://qtpass.org/"
-SRC_URI="https://github.com/IJHack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Multi-platform GUI for pass, the standard unix password manager"
+HOMEPAGE="https://qtpass.org https://github.com/IJHack/qtpass"
+SRC_URI="https://github.com/IJHack/qtpass/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -16,10 +16,7 @@ IUSE="test"
 
 RDEPEND="|| ( app-admin/pass app-admin/gopass )
 	dev-qt/qtcore:5
-	|| (
-		dev-qt/qtgui:5[X(-)]
-		dev-qt/qtgui:5[xcb(-)]
-	)
+	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	net-misc/x11-ssh-askpass"
@@ -60,6 +57,6 @@ src_install() {
 	doman qtpass.1
 	domenu qtpass.desktop
 	newicon artwork/icon.png qtpass-icon.png
-	insinto /usr/share/appdata
+	insinto /usr/share/metainfo
 	doins qtpass.appdata.xml
 }

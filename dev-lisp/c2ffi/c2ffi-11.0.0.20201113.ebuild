@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake llvm
 
-MY_COMMIT="a2d1f667b707fb413fc8ab2413446f15cb23de51"
+MY_COMMIT="07cda9bd315859d98bb4db83462952bb1bf5ea23"
 
 DESCRIPTION="Clang-based FFI wrapper generator for Common Lisp"
 HOMEPAGE="https://github.com/rpav/c2ffi"
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="sys-devel/clang:10=
-	sys-devel/llvm:10=
+DEPEND="sys-devel/clang:11=
+	sys-devel/llvm:11=
 "
 RDEPEND="${DEPEND}"
 
