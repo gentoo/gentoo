@@ -46,11 +46,9 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	dev-libs/libutf8proc:=
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1.2
 	dev-libs/msgpack:0=
-	dev-libs/tree-sitter:=
 	net-libs/libnsl
 	tui? (
 		dev-libs/libtermkey
