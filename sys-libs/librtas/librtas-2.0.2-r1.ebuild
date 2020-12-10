@@ -23,6 +23,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install docdir=/usr/share/doc/${PF}
+	emake DESTDIR="${D}" install docdir="${EPREFIX}"/usr/share/doc/${PF}
 	find "${D}" -name '*.la' -delete || die
 }
