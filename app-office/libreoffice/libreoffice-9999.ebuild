@@ -414,7 +414,6 @@ src_configure() {
 	if use custom-cflags ; then
 		elog "USE=custom-cflags has been selected. You are on your own to make sure that"
 		elog "the build succeeds. Good luck!"
-		strip-unsupported-flags
 	else
 		strip-flags
 	fi
