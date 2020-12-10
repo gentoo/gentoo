@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/pugixml
 	media-libs/openexr:=
-	media-libs/openimageio:=
+	<media-libs/openimageio-2.2:=
 	<sys-devel/clang-10:=
 	sys-libs/zlib:=
 	partio? ( media-libs/partio )
