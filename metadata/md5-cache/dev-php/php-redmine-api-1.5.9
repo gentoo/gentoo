@@ -1,13 +1,13 @@
 DEFINED_PHASES=install postinst test
-DEPEND=test? ( dev-lang/php:*[curl,json,simplexml] <dev-php/phpunit-6 )
+DEPEND=test? ( dev-lang/php:*[curl,json(+),simplexml] <dev-php/phpunit-6 )
 DESCRIPTION=A simple, object-oriented, PHP Redmine API client
 EAPI=6
 HOMEPAGE=https://github.com/kbsali/php-redmine-api
 IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=MIT
-RDEPEND=dev-lang/php:*[curl,json,simplexml]
+RDEPEND=dev-lang/php:*[curl,json(+),simplexml]
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/kbsali/php-redmine-api/archive/v1.5.9.tar.gz -> php-redmine-api-1.5.9.tar.gz
-_md5_=d5f54276b565e90de5ad67c1cc225dfe
+_md5_=1b30c0ef8f0777a92864284affdbf2c6

@@ -7982,7 +7982,7 @@ dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
 dev-python/chameleon 3.8.1: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
-dev-python/chardet 3.0.4-r1: Universal encoding detector
+dev-python/chardet 3.0.4-r1 4.0.0: Universal encoding detector
 dev-python/chart-studio 1.1.0: Browser-based graphing library for Python
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.4 3.2.6: Python-powered template engine and code generator
@@ -17995,7 +17995,7 @@ www-client/seamonkey 2.53.5.1: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.4.2066.106_p1 3.5.2115.73: A browser for our friends
+www-client/vivaldi 3.5.2115.73: A browser for our friends
 www-client/vivaldi-snapshot 3.5.2115.71 3.5.2130.3: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
