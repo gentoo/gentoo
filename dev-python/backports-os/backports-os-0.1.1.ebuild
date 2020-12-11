@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Backport of new features in Python's os module"
-HOMEPAGE="https://github.com/pjdelport/backports.os"
-SRC_URI="https://github.com/pjdelport/backports.os/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/PiDelport/backports.os"
+SRC_URI="https://github.com/PiDelport/backports.os/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="PYTHON"
 SLOT="0"
