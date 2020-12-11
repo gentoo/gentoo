@@ -11,8 +11,8 @@ ES_VERSION="7.3.2"
 inherit distutils-r1
 
 DESCRIPTION="Tending time-series indices in Elasticsearch"
-HOMEPAGE="https://github.com/elasticsearch/curator"
-SRC_URI="https://github.com/elasticsearch/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+HOMEPAGE="https://github.com/elastic/curator"
+SRC_URI="https://github.com/elastic/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}-linux-x86_64.tar.gz )"
 
 LICENSE="Apache-2.0"
