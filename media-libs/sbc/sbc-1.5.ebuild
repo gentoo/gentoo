@@ -20,6 +20,8 @@ RESTRICT="test"
 RDEPEND=""
 DEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-ifdef-builtin.patch" )
+
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
