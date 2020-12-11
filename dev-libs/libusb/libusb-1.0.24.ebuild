@@ -62,7 +62,5 @@ multilib_src_install_all() {
 	if use examples; then
 		docinto examples
 		dodoc examples/*.{c,h}
-		docinto examples/getopt
-		dodoc examples/getopt/*.{c,h}
 	fi
 }
