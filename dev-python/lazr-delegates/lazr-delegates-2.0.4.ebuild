@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN=${PN/-/.}
 
 DESCRIPTION="Easily write objects that delegate behavior"
-HOMEPAGE="https://code.launchpad.net/lazr.deletages"
+HOMEPAGE="https://code.launchpad.net/lazr.delegates"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 

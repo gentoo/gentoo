@@ -7,8 +7,10 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Simple framework for creating REST APIs"
-HOMEPAGE="https://flask-restful.readthedocs.io/en/latest/ https://github.com/twilio/flask-restful/"
-SRC_URI="https://github.com/twilio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://flask-restful.readthedocs.io/en/latest/
+	https://github.com/flask-restful/flask-restful/"
+SRC_URI="https://github.com/flask-restful/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

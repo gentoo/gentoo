@@ -8,8 +8,8 @@ PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Python Command-line Application Tools"
-HOMEPAGE="https://github.com/kennethreitz/clint"
-SRC_URI="https://github.com/kennethreitz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/kennethreitz-archive/clint"
+SRC_URI="https://github.com/kennethreitz-archive/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
