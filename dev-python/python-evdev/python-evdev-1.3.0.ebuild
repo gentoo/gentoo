@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Python library for evdev bindings"
-HOMEPAGE="https://python-evdev.readthedocs.org/"
+HOMEPAGE="https://python-evdev.readthedocs.io/"
 SRC_URI="https://github.com/gvalkov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
