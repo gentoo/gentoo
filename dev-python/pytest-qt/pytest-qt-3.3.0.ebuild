@@ -8,7 +8,9 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="pytest plugin for PyQt4 or PyQt5 applications"
-HOMEPAGE="https://pypi.org/project/pytest-qt https://github.com/pytest-dev/pytest-qt"
+HOMEPAGE="
+	https://pypi.org/project/pytest-qt/
+	https://github.com/pytest-dev/pytest-qt/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
