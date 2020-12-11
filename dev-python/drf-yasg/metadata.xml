@@ -10,4 +10,7 @@
 			Enable swagger spec validation using swagger-spec-validator
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="pypi">drf-yasg</remote-id>
+	</upstream>
 </pkgmetadata>

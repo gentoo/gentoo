@@ -10,4 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">trustme</remote-id>
+	</upstream>
 </pkgmetadata>

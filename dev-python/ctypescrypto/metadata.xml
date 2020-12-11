@@ -10,5 +10,8 @@
 	</maintainer>
 	<use>
 		<flag name="gost">Build with support for GOST Message Authentication Code</flag>
-	</use>	
+	</use>
+	<upstream>
+		<remote-id type="pypi">ctypescrypto</remote-id>
+	</upstream>
 </pkgmetadata>

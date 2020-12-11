@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">fuse</remote-id>
+		<remote-id type="pypi">fuse-python</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">duecredit/duecredit</remote-id>
+		<remote-id type="pypi">duecredit</remote-id>
 	</upstream>
 </pkgmetadata>

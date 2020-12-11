@@ -8,5 +8,6 @@
 	<upstream>
 		<bugs-to>https://github.com/reorx/httpstat/issues</bugs-to>
 		<remote-id type="github">reorx/httpstat</remote-id>
+		<remote-id type="pypi">httpstat</remote-id>
 	</upstream>
 </pkgmetadata>

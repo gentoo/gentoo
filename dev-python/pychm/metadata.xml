@@ -18,5 +18,6 @@ Chmパッケージは、C言語ライブラリChmのAPI実装とそれに幾つ�
 </longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gnochm</remote-id>
+		<remote-id type="pypi">pychm</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -10,4 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pytest-regressions</remote-id>
+	</upstream>
 </pkgmetadata>

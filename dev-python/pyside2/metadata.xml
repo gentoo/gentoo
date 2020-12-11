@@ -37,4 +37,7 @@
 		<flag name="xml">Build QtXml module</flag>
 		<flag name="xmlpatterns">Build QtXmlPatterns module</flag>
 	</use>
+	<upstream>
+		<remote-id type="pypi">PySide2</remote-id>
+	</upstream>
 </pkgmetadata>

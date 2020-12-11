@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">beetbox/confuse</remote-id>
+		<remote-id type="pypi">confuse</remote-id>
 	</upstream>
 </pkgmetadata>

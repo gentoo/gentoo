@@ -9,4 +9,7 @@
 		<email>chr@chymera.eu</email>
 		<name>Horea Christian</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">graph-tool</remote-id>
+	</upstream>
 </pkgmetadata>

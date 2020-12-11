@@ -16,5 +16,6 @@
 	<upstream>
 		<bugs-to>https://github.com/tgalal/python-axolotl-curve25519/issues</bugs-to>
 		<remote-id type="github">tgalal/python-axolotl-curve25519</remote-id>
+		<remote-id type="pypi">python-axolotl-curve25519</remote-id>
 	</upstream>
 </pkgmetadata>

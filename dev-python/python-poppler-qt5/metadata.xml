@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">frescobaldi/python-poppler-qt5</remote-id>
+		<remote-id type="pypi">python-poppler-qt5</remote-id>
 	</upstream>
 </pkgmetadata>
