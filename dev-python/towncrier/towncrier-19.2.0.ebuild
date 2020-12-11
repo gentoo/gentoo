@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Building newsfiles for your project"
-HOMEPAGE="https://github.com/hawkowl/towncrier"
-SRC_URI="https://github.com/hawkowl/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/twisted/towncrier"
+SRC_URI="https://github.com/twisted/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
