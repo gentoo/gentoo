@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=1
 SRC_URI=https://github.com/libusb/libusb/releases/download/v1.0.24/libusb-1.0.24.tar.bz2
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
-_md5_=fa333b79b7b3ceb5d8c3c8f80da6a6ae
+_md5_=06e61d87983e9355848bfb72b20acfde
