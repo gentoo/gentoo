@@ -10,5 +10,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">bandit</remote-id>
+		<remote-id type="github">PyCQA/bandit</remote-id>
 	</upstream>
 </pkgmetadata>

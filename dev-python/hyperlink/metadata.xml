@@ -11,7 +11,8 @@
 			<email>mahmoud@hatnote.com</email>
 			<name>Mahmoud Hashemi</name>
 		</maintainer>
-		<remote-id type="pypi">hyperframe</remote-id>
+		<remote-id type="pypi">hyperlink</remote-id>
+		<remote-id type="github">python-hyper/hyperlink</remote-id>
 	</upstream>
 	<longdescription>
 		The humble, but powerful, URL runs everything around us.

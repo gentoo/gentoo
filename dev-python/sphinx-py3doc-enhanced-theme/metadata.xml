@@ -11,7 +11,7 @@
 			<email>contact@ionelmc.ro</email>
 			<name>Ionel Cristian Mărieș</name>
 		</maintainer>
-		<remote-id type="pypi">sphinx-py3doc-enhanced-theme</remote-id>
 		<remote-id type="github">ionelmc/sphinx-py3doc-enhanced-theme</remote-id>
+		<remote-id type="pypi">sphinx_py3doc_enhanced_theme</remote-id>
 	</upstream>
 </pkgmetadata>

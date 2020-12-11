@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-extensions</remote-id>
+		<remote-id type="github">django-extensions/django-extensions</remote-id>
 	</upstream>
 </pkgmetadata>

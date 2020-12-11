@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">Flask-Paranoid</remote-id>
+		<remote-id type="github">miguelgrinberg/flask-paranoid</remote-id>
 	</upstream>
 </pkgmetadata>

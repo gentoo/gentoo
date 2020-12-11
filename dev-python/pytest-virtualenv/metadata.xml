@@ -11,7 +11,7 @@
 			<name>Edward Easton</name>
 		</maintainer>
 		<remote-id type="pypi">pytest-virtualenv</remote-id>
-		<remote-id type="github">manahl/pytest-plugins</remote-id>
+		<remote-id type="github">man-group/pytest-plugins</remote-id>
 	</upstream>
 	<longdescription>
 		Create a Python virtual environment in your test that cleans up on

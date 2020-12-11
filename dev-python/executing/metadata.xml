@@ -4,4 +4,8 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">executing</remote-id>
+		<remote-id type="github">alexmojaki/executing</remote-id>
+	</upstream>
 </pkgmetadata>

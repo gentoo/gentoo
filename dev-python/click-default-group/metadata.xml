@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">click-default-group</remote-id>
+		<remote-id type="github">click-contrib/click-default-group</remote-id>
 	</upstream>
 </pkgmetadata>

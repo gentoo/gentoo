@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">docutils</remote-id>
+		<remote-id type="pypi">docutils</remote-id>
 	</upstream>
 </pkgmetadata>

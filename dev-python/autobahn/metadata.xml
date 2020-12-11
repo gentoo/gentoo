@@ -11,6 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">autobahn</remote-id>
-		<remote-id type="github">crossbar/autobahn</remote-id>
+		<remote-id type="github">crossbario/autobahn-python</remote-id>
 	</upstream>
 </pkgmetadata>
