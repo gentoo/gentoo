@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2020-12-11)
+# last update upstream in 2017, does not build.
+# OpenMP is a better alternative.
+# Bug #717692, #741594
+# Removal in 30 days.
+sci-libs/xkaapi
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-10)
 # Synergy 2.0 was a beta branch, and it should have never been marked
 # stable.  It never reached feature parity with 1.x, and upstream
