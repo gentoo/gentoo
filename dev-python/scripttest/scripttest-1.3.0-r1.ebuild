@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A very small text templating language"
-HOMEPAGE="https://pypi.org/project/ScriptTest/
+HOMEPAGE="https://pypi.org/project/scripttest/
 	https://github.com/pypa/scripttest"
 # pypi tarball lacks tests
 SRC_URI="https://github.com/pypa/scripttest/archive/${PV}.tar.gz -> ${P}.tar.gz"
