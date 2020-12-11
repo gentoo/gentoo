@@ -15,6 +15,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">tomasbasham/ratelimit"</remote-id>
+		<remote-id type="github">tomasbasham/ratelimit</remote-id>
+		<remote-id type="pypi">ratelimit</remote-id>
 	</upstream>
 </pkgmetadata>
