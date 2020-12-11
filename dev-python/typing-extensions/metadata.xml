@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">typing</remote-id>
+		<remote-id type="pypi">typing-extensions</remote-id>
+		<remote-id type="github">python/typing</remote-id>
 	</upstream>
 </pkgmetadata>

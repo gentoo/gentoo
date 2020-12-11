@@ -9,7 +9,9 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Alternative Python bindings for Subversion"
-HOMEPAGE="https://jelmer.uk/code/subvertpy/ https://pypi.org/project/subvertpy"
+HOMEPAGE="
+	https://jelmer.uk/code/subvertpy/
+	https://pypi.org/project/subvertpy/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"

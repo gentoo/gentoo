@@ -11,7 +11,9 @@ inherit distutils-r1
 BROTLI_BUNDLED_COMMIT="46c1a881b41bb638c76247558aa04b1591af3aa7"
 
 DESCRIPTION="Python binding to the Brotli library"
-HOMEPAGE="https://github.com/python-hyper/brotlipy/ https://pypi.python.org/pypi/brotlipy"
+HOMEPAGE="
+	https://github.com/python-hyper/brotlicffi/
+	https://pypi.org/project/brotlicffi/"
 SRC_URI="
 	https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
