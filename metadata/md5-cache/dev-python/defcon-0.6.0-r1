@@ -2,7 +2,7 @@ BDEPEND=test? ( dev-python/fs[python_targets_python3_6(-)?,python_targets_python
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=A set of UFO based objects for use in font editing applications
 EAPI=7
-HOMEPAGE=https://github.com/typesupply/defcon
+HOMEPAGE=https://github.com/robotools/defcon
 IUSE=test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
 KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=MIT
@@ -10,6 +10,6 @@ RDEPEND=>=dev-python/fonttools-3.31.0[python_targets_python3_6(-)?,python_target
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/typesupply/defcon/archive/0.6.0.tar.gz -> defcon-0.6.0.tar.gz
+SRC_URI=https://github.com/robotools/defcon/archive/0.6.0.tar.gz -> defcon-0.6.0.tar.gz
 _eclasses_=distutils-r1	6492ae184ebb9d8124e5e0b23db93433	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=3742c4ea8593e424bdff3f16a4ff19fe
+_md5_=3859cd0dd7517cde4c283d362a228c9d

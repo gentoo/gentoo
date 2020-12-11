@@ -5,7 +5,7 @@
     <email>3dprint@gentoo.org</email>
     <name>3D Print</name>
     <url>https://wiki.gentoo.org/wiki/Project:3dprint</url>
-    <description>Packages for 3d printing.</description>
+    <description>The 3D Print Project handles all 3d print related activities in Gentoo.</description>
     <member is-lead="1">
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
