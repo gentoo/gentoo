@@ -21,7 +21,7 @@ src_configure() {
 	local pyimpls=() i EPYTHON
 	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
 		if use "python_targets_${i}"; then
-			python_export "${i}" EPYTHON
+			_python_export "${i}" EPYTHON
 			pyimpls+=( "${EPYTHON}" )
 		fi
 	done
