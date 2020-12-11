@@ -11,5 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">Robpol86/terminaltables</remote-id>
+		<remote-id type="pypi">terminaltables</remote-id>
 	</upstream>
 </pkgmetadata>
