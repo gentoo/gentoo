@@ -19,15 +19,9 @@ RESTRICT="!test? ( test )"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
 CP_DEPEND="
-	dev-java/bcprov:1.50
-	dev-java/jrobin:0
-	dev-java/slf4j-api:0
-	dev-java/tomcat-jstl-impl:0
-	dev-java/tomcat-jstl-spec:0
-	dev-java/java-service-wrapper:0
 	dev-java/commons-logging:0
-	dev-java/slf4j-simple:0
-	java-virtuals/servlet-api:3.1
+	dev-java/java-service-wrapper:0
+	dev-java/tomcat-servlet-api:4.0
 "
 
 DEPEND="${CP_DEPEND}
@@ -134,7 +128,7 @@ src_install() {
 	cd "${S}/pkg-temp" || die
 
 	# we remove system installed jar and install the others
-	rm lib/{jrobin,wrapper,jbigi,commons-logging,javax.servlet}.jar || \
+	rm lib/{commons-logging,javax.servlet,wrapper}.jar || \
 		die "unable to remove locally built jar already found in system"
 	java-pkg_dojar lib/*.jar
 
@@ -162,49 +156,4 @@ src_install() {
 	# setup user
 	keepdir /var/lib/i2p
 	fowners i2p:i2p /var/lib/i2p
-}
-
-pkg_postinst() {
-	local old_i2pdir="${EPREFIX}/var/lib/i2p/.i2p" new_i2pdir="${EPREFIX}/var/lib/i2p"
-
-	[ -e "${old_i2pdir}" ] || return
-
-	elog "User is now delegated to acct-user, ${new_i2pdir} is split"
-	elog "into subdirs. It will now try to split ${old_i2pdir} accordingly."
-
-	migrate() {
-		local dest="${1}"
-		shift
-
-		local ret=true
-		for src
-		do
-			[ -e "${src}" ] || continue
-			mv "${src}" "${dest}" || ret=false
-		done
-
-		$ret
-	}
-
-	ebegin "Migrating"
-	local ret=0
-	chown -R i2p:i2p "${EPREFIX}/var/lib/i2p" || ret=1
-	migrate "${new_i2pdir}/app" "${old_i2pdir}/i2psnark" || ret=1
-	migrate "${new_i2pdir}/config" \
-		"${old_i2pdir}/"{docs,eepsite,hosts.txt,prngseed.rnd,*.config*} ||
-		ret=1
-	migrate "${new_i2pdir}/router" \
-		"${old_i2pdir}/"{addressbook,eventlog.txt,hostsdb.blockfile,keyBackup,netDb,peerProfiles,router.*,rrd} ||
-		ret=1
-	migrate "${EPREFIX}/var/log/i2p" "${old_i2pdir}/"{logs/*,wrapper.log*} ||
-		ret=1
-	rm -fr "${old_i2pdir}/"{hostsdb.blockfile.*.corrupt,logs}
-	rmdir "${old_i2pdir}" || ret=1
-
-	if ! eend $ret
-	then
-		ewarn "There was some file remaining in ${old_i2pdir}."
-		ewarn "Please check it there is something of value there."
-		ewarn "remove it when migration is done."
-	fi
 }
