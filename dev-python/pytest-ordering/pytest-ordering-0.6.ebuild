@@ -9,8 +9,8 @@ inherit distutils-r1
 
 DESCRIPTION="pytest plugin to run your tests in a specific order"
 HOMEPAGE="
-	https://github.com/ftobia/pytest-ordering
-	https://pypi.org/project/pytest-ordering
+	https://github.com/ftobia/pytest-ordering/
+	https://pypi.org/project/pytest-ordering/
 "
 SRC_URI="https://github.com/ftobia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
