@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses"
-HOMEPAGE="https://github.com/ottoyiu/django-cors-headers"
+HOMEPAGE="https://github.com/adamchainz/django-cors-headers"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
