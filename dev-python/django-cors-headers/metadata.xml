@@ -5,4 +5,8 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">adamchainz/django-cors-headers</remote-id>
+		<remote-id type="pypi">django-cors-headers</remote-id>
+	</upstream>
 </pkgmetadata>
