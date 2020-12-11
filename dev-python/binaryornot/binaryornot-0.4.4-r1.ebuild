@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Ultra-lightweight pure Python package to guess whether a file is binary or text"
-HOMEPAGE="https://github.com/audreyr/binaryornot"
+HOMEPAGE="https://github.com/audreyfeldroy/binaryornot"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
