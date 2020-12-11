@@ -8,7 +8,9 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Capture C-level stdout/stderr in Python"
-HOMEPAGE="https://github.com/minrk/wurlitzer https://pypi.org/project/wurlitzer"
+HOMEPAGE="
+	https://github.com/minrk/wurlitzer/
+	https://pypi.org/project/wurlitzer/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
