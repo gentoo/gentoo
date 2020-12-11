@@ -11,7 +11,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">https://github.com/ftobia/pytest-ordering</remote-id>
+		<remote-id type="github">ftobia/pytest-ordering</remote-id>
 		<remote-id type="pypi">pytest-ordering</remote-id>
 	</upstream>
 </pkgmetadata>
