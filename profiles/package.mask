@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-12-11)
+# Last MIT release in 2007, declared EOL by Intel in 2017.
+# Build and test failures, abandoned parallelism paradigm,
+# no revdeps. If you're really still using this, switch to
+# OpenMP. Bug #572130, #643590, Removal in 30 days.
+dev-lang/cilk
+
+# Aisha Tammy <gentoo@aisha.cc> (2020-12-11)
+# last update upstream in 2017, does not build.
+# OpenMP is a better alternative.
+# Bug #717692, #741594
+# Removal in 30 days.
+sci-libs/xkaapi
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-10)
 # Synergy 2.0 was a beta branch, and it should have never been marked
 # stable.  It never reached feature parity with 1.x, and upstream
