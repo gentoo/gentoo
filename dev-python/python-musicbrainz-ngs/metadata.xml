@@ -16,6 +16,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">alastair/python-musicbrainz-ngs</remote-id>
+		<remote-id type="github">alastair/python-musicbrainzngs</remote-id>
+		<remote-id type="pypi">musicbrainzngs</remote-id>
 	</upstream>
 </pkgmetadata>
