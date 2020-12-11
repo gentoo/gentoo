@@ -4,4 +4,8 @@
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>
 </maintainer>
+	<use>
+		<flag name="cgi">build man.cgi web plugin for viewing man pages</flag>  
+		<flag name="system-man">set as the default man provider</flag>
+	</use>
 </pkgmetadata>
