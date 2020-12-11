@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Raspberry Pi Sense HAT python library"
-HOMEPAGE="https://github.com/RPi-Distro/python-sense-hat"
-SRC_URI="https://github.com/RPi-Distro/python-sense-hat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/astro-pi/python-sense-hat"
+SRC_URI="https://github.com/astro-pi/python-sense-hat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
