@@ -60,11 +60,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
-	"${FILESDIR}/${P}-lambda-capture-this.patch"
-)
-
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
