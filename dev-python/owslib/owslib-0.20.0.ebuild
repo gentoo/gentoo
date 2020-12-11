@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Library for client programming with Open Geospatial Consortium web service"
-HOMEPAGE="https://geopython.github.io/OWSLib"
+HOMEPAGE="https://geopython.github.io/OWSLib/"
 SRC_URI="https://github.com/geopython/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}/OWSLib-${PV}"
