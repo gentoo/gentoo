@@ -1,0 +1,12 @@
+diff --git a/test/integration/test_b2_command_line.py b/test/integration/test_b2_command_line.py
+index 02b36ab..bd790ec 100644
+--- a/test/integration/test_b2_command_line.py
++++ b/test/integration/test_b2_command_line.py
+@@ -870,6 +870,7 @@ def main():
+ 
+ 
+ # TODO: rewrite to multiple tests
++@pytest.mark.skip(reason="Cannot do this in portage")
+ def test_integration():
+     application_key_id = os.environ.get('B2_TEST_APPLICATION_KEY_ID')
+     if application_key_id is None:

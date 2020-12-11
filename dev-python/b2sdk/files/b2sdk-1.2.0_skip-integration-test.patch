@@ -1,0 +1,12 @@
+diff --git a/test/integration/test_raw_api.py b/test/integration/test_raw_api.py
+index e6cd288..ec89604 100644
+--- a/test/integration/test_raw_api.py
++++ b/test/integration/test_raw_api.py
+@@ -15,6 +15,7 @@ from b2sdk import raw_api
+ 
+ 
+ # TODO: move the test_raw_api test logic here
++@pytest.mark.skip(reason="Cannot do this in portage")
+ def test_raw_api():
+     application_key_id = os.environ.get('B2_TEST_APPLICATION_KEY_ID')
+     if application_key_id is None:

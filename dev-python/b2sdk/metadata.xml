@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ezzieyguywuf@gmail.com</email>
+		<name>Wolfgang E. Sanyer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		This package contains a client library and a few handy utilities for
+		easy access to all of the capabilities of B2 Cloud Storage.
+
+		B2 command-line tool is an example of how it can be used to provide
+		command-line access to the B2 service, but there are many possible
+		applications (including FUSE filesystems, storage backend drivers for
+		backup applications etc).
+	</longdescription>
+</pkgmetadata>

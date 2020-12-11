@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ezzieyguywuf@gmail.com</email>
+		<name>Wolfgang E. Sanyer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		At the intersection of the Registry and Factory patterns lies the
+		ClassRegistry. This package contains the python modules necessary to use
+		this dessign pattern
+	</longdescription>
+</pkgmetadata>
