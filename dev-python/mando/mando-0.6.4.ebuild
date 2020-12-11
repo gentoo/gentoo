@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Create Python CLI apps with little to no effort at all!"
-HOMEPAGE="https://mando.readthedocs.org/ https://github.com/rubik/mando"
+HOMEPAGE="https://mando.readthedocs.io/ https://github.com/rubik/mando/"
 SRC_URI="https://github.com/rubik/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
