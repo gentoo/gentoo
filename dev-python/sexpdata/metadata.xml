@@ -6,6 +6,7 @@
 		<name>Gentoo Layman team</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">tkf/sexpdata</remote-id>
+		<remote-id type="github">jd-boyd/sexpdata</remote-id>
+		<remote-id type="pypi">sexpdata</remote-id>
 	</upstream>
 </pkgmetadata>
