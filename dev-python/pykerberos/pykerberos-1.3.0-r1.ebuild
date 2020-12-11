@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=PyKerberos-${PV}
 DESCRIPTION="A high-level Python wrapper for Kerberos/GSSAPI operations"
 HOMEPAGE="
-	https://trac.calendarserver.org/wiki/PyKerberos
+	https://www.calendarserver.org/PyKerberos.html
 	https://github.com/apple/ccs-pykerberos/
 	https://pypi.org/project/kerberos/"
 SRC_URI="
