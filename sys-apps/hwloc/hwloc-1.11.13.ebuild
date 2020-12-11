@@ -57,6 +57,7 @@ multilib_src_configure() {
 	fi
 
 	ECONF_SOURCE=${S} econf \
+		--disable-opencl \
 		$(use_enable static-libs static) \
 		$(use_enable cairo) \
 		$(multilib_native_use_enable cuda) \
