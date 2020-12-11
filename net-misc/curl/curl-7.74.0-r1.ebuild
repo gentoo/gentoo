@@ -222,7 +222,6 @@ multilib_src_configure() {
 		$(use_enable progress-meter) \
 		--enable-proxy \
 		--disable-sspi \
-		--disable-socketpair \
 		$(use_enable static-libs static) \
 		$(use_enable threads threaded-resolver) \
 		$(use_enable threads pthreads) \
