@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">sphinxcontrib-applehelp</remote-id>
+		<remote-id type="github">sphinx-doc/sphinxcontrib-applehelp</remote-id>
 	</upstream>
 </pkgmetadata>

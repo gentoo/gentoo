@@ -10,4 +10,8 @@
 		changing of Ethernet card settings, such as speed, port, auto-negotiation, and
 		PCI locations.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">ethtool</remote-id>
+		<remote-id type="github">fedora-python/python-ethtool</remote-id>
+	</upstream>
 </pkgmetadata>

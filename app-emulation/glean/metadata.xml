@@ -14,6 +14,5 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">glean</remote-id>
-		<remote-id type="github">openstack-dev/glean</remote-id>
 	</upstream>
 </pkgmetadata>

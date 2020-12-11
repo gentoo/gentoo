@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">Legrandin/pycryptodome</remote-id>
+		<remote-id type="pypi">pycryptodomex</remote-id>
 	</upstream>
 </pkgmetadata>

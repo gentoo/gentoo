@@ -7,6 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Arpeggio</remote-id>
-		<remote-id type="github">igordejanovic/Arpeggio</remote-id>
+		<remote-id type="github">textX/Arpeggio</remote-id>
 	</upstream>
 </pkgmetadata>

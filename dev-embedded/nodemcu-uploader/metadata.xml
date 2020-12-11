@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">nodemcu-uploader</remote-id>
+		<remote-id type="github">kmpm/nodemcu-uploader</remote-id>
 	</upstream>
 </pkgmetadata>

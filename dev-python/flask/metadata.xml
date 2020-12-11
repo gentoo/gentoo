@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Flask</remote-id>
-		<remote-id type="github">mitsuhiko/flask</remote-id>
+		<remote-id type="github">pallets/flask</remote-id>
 	</upstream>
 </pkgmetadata>

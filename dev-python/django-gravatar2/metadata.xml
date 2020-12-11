@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-gravatar2</remote-id>
+		<remote-id type="github">twaddington/django-gravatar</remote-id>
 	</upstream>
 </pkgmetadata>

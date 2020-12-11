@@ -195,7 +195,6 @@ multilib_src_configure() {
 		$(use_enable imap) \
 		$(use_enable ldap) \
 		$(use_enable ldap ldaps) \
-		--disable-mqtt \
 		--disable-ntlm-wb \
 		$(use_enable pop3) \
 		--enable-rt  \
@@ -211,7 +210,6 @@ multilib_src_configure() {
 		--enable-dateparse \
 		--enable-dnsshuffle \
 		--enable-doh \
-		--disable-get-easy-options \
 		--enable-hidden-symbols \
 		--enable-http-auth \
 		$(use_enable ipv6) \

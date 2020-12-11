@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-subtesthack</remote-id>
+		<remote-id type="github">untitaker/pytest-subtesthack</remote-id>
 	</upstream>
 </pkgmetadata>
