@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} pypy3)
 inherit distutils-r1
 
 DESCRIPTION="Collection of small Python functions & classes"
-HOMEPAGE="https://pypi.org/project/python-utils/"
+HOMEPAGE="https://pypi.org/project/pytest-flakes/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
