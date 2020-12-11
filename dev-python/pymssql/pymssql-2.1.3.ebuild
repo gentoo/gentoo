@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Simple MSSQL python extension module"
-HOMEPAGE="http://www.pymssql.org/ https://pypi.python.org/pypi/pymssql"
+HOMEPAGE="https://www.pymssql.org/ https://pypi.org/project/pymssql/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
