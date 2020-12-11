@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="console colouring for python"
 HOMEPAGE="http://gfxmonk.net/dist/0install/python-termstyle.xml"
-SRC_URI="https://github.com/gfxmonk/${PN#*-}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/timbertson/${PN#*-}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/termstyle-${PV}"
 
 LICENSE="BSD"
