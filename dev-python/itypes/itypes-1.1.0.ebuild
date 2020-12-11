@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="basic immutable container types for python"
-HOMEPAGE="https://github.com/tomchristie/itypes"
+HOMEPAGE="https://github.com/PavanTatikonda/itypes"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
