@@ -1109,6 +1109,8 @@ app-text/libstaroffice:tools - Build conversion tools
 app-text/libstaroffice:zlib - Enable support for compressed data
 app-text/libwpd:tools - Build file conversion tools
 app-text/libwps:tools - Build file conversion tools
+app-text/mandoc:cgi - build man.cgi web plugin for viewing man pages
+app-text/mandoc:system-man - set as the default man provider
 app-text/mathtex:png - Generate png images by default instead of gif
 app-text/msort:heap - Use heap instead of alloca()
 app-text/msort:icu - Use dev-libs/icu instead of dev-libs/libutf8proc.
