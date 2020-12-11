@@ -8,8 +8,8 @@ PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Verbose logging for Python's logging module"
-HOMEPAGE="https://pypi.org/project/verboselogs
-	https://github.com/xolox/python-verboselogs"
+HOMEPAGE="https://pypi.org/project/verboselogs/
+	https://github.com/xolox/python-verboselogs/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
