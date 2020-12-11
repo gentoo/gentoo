@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Lexer and codec to work with LaTeX code in Python"
-HOMEPAGE="https://github.com/mcmtroffaes/latexcodec/ https://pypi.org/project/pybtex/"
+HOMEPAGE="https://github.com/mcmtroffaes/latexcodec/ https://pypi.org/project/latexcodec/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
