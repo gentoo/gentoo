@@ -11,7 +11,7 @@ MY_PN="Flask-Compress"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Compress responses in your Flask app with gzip"
-HOMEPAGE="https://pypi.org/project/Flask-Compress"
+HOMEPAGE="https://pypi.org/project/Flask-Compress/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
