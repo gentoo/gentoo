@@ -12,5 +12,6 @@
 	<upstream>
 		<bugs-to>https://github.com/stv0g/pyspectrum2/issues</bugs-to>
 		<remote-id type="github">stv0g/pyspectrum2</remote-id>
+		<remote-id type="pypi">pyspectrum2</remote-id>
 	</upstream>
 </pkgmetadata>

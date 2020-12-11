@@ -5,4 +5,7 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">re-assert</remote-id>
+	</upstream>
 </pkgmetadata>

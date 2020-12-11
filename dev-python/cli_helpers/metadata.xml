@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">dbcli/cli_helpers</remote-id>
+		<remote-id type="pypi">cli-helpers</remote-id>
 	</upstream>
 </pkgmetadata>

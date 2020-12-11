@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">xmikos/simplesoapy</remote-id>
+		<remote-id type="pypi">SimpleSoapy</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,4 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">empy</remote-id>
+	</upstream>
 </pkgmetadata>

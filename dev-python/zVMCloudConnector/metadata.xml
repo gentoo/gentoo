@@ -11,4 +11,7 @@
 	<longdescription lang="en">
 		z/VM cloud connector is a development sdk for manage z/VM. It provides a set of APIs to operate z/VM including guest, image, network, volume etc.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">zVMCloudConnector</remote-id>
+	</upstream>
 </pkgmetadata>

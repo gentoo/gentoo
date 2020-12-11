@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">davidjamesca/ctypesgen</remote-id>
+		<remote-id type="pypi">ctypesgen</remote-id>
 	</upstream>
 </pkgmetadata>

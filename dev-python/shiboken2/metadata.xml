@@ -10,4 +10,7 @@
 		<flag name="numpy">Implicitly convert passed NumPy arrays to Qt lists</flag>
 		<flag name="vulkan">Generate "QSurface::VulkanSurface" bindings</flag>
 	</use>
+	<upstream>
+		<remote-id type="pypi">shiboken2</remote-id>
+	</upstream>
 </pkgmetadata>

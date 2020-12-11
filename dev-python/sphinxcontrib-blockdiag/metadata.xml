@@ -10,5 +10,6 @@
 			<name>Takeshi KOMIYA</name>
 		</maintainer>
 		<remote-id type="github">blockdiag/sphinxcontrib-blockdiag</remote-id>
+		<remote-id type="pypi">sphinxcontrib-blockdiag</remote-id>
 	</upstream>
 </pkgmetadata>
