@@ -12,7 +12,7 @@ MY_PN="notofonttools"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Noto fonts support tools and scripts plus web site generation"
-HOMEPAGE="https://github.com/googlei18n/nototools"
+HOMEPAGE="https://github.com/googlefonts/nototools"
 #SRC_URI="https://github.com/googlefonts/nototools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
