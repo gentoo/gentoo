@@ -253,11 +253,6 @@ sys-apps/hwdata-gentoo
 sys-apps/hwsetup
 sys-libs/libkudzu
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-11-19)
-# Breaks consumers like gnome-base/gnome-keyring and net-fs/cifs-utils
-# See https://bugs.gentoo.org/755596
-=sys-libs/libcap-ng-0.8.1
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-18)
 # Depends on deprecated QtWebKit, dead upstream.
 # Alternatives: kde-apps/okular[chm], app-text/xchm
