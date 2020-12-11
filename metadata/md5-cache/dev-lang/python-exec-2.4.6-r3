@@ -9,4 +9,4 @@ RDEPEND=!<=dev-lang/python-2.7.18-r3:2.7
 SLOT=2
 SRC_URI=https://github.com/mgorny/python-exec/releases/download/v2.4.6/python-exec-2.4.6.tar.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=6ab8016f90754398f5dea001bf9b3638
+_md5_=49a06385d1adfebc778bc9761d2ac40e
