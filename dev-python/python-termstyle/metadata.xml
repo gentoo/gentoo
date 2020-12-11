@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<upstream>
-		<remote-id type="github">gfxmonk/termstyle</remote-id>
+		<remote-id type="github">timbertson/termstyle</remote-id>
+		<remote-id type="pypi">python-termstyle</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,7 +11,8 @@
 		to the International Space Station.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/RPi-Distro/python-sense-hat/issues</bugs-to>
-		<remote-id type="github">RPi-Distro/python-sense-hat</remote-id>
+		<bugs-to>https://github.com/astro-pi/python-sense-hat/issues</bugs-to>
+		<remote-id type="github">astro-pi/python-sense-hat</remote-id>
+		<remote-id type="pypi">sense-hat</remote-id>
 	</upstream>
 </pkgmetadata>

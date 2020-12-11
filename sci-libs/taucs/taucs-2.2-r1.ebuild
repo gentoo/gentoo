@@ -12,7 +12,7 @@ SRC_URI="http://www.tau.ac.il/~stoledo/${PN}/${PV}/${PN}.tgz -> ${P}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="cilk doc"
+IUSE="doc"
 RESTRICT="test"
 
 RDEPEND="
@@ -21,16 +21,13 @@ RDEPEND="
 	|| (
 		sci-libs/metis
 		sci-libs/parmetis
-	)
-	cilk? ( dev-lang/cilk )"
+	)"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"
 
 PATCHES=(
-	# test with cilk has memory leaks
-	"${FILESDIR}"/${P}-no-test-cilk.patch
 	# bug 725588
 	"${FILESDIR}"/${P}-respect-ar.patch
 )
@@ -52,11 +49,6 @@ src_configure() {
 
 	echo "LIBMETIS=$($(tc-getPKG_CONFIG) --libs metis)" >> config/linux_shared.mk || die
 	# no cat <<EOF because -o has a trailing space
-	if use cilk; then
-		echo "CILKC=cilkc" >> config/linux_shared.mk || die
-		echo "CILKFLAGS=-O2 -I${EPREFIX}/usr/include/cilk -fPIC" >> config/linux_shared.mk || die
-		echo "CILKOUTFLG=-o " >> config/linux_shared.mk || die
-	fi
 	sed -e 's/ -fPIC//g' config/linux_shared.mk || die
 }
 
