@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Python client for the Prometheus monitoring system"
-HOMEPAGE="https://pypi.org/project/prometheus_client/
-	https://github.com/prometheus/client_python"
+HOMEPAGE="https://pypi.org/project/prometheus-client/
+	https://github.com/prometheus/client_python/"
 SRC_URI="https://github.com/prometheus/client_python/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/client_python-${PV}"
 
