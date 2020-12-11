@@ -5,4 +5,8 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">robotools/defcon</remote-id>
+		<remote-id type="pypi">defcon</remote-id>
+	</upstream>
 </pkgmetadata>

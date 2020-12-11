@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="A set of UFO based objects for use in font editing applications"
-HOMEPAGE="https://github.com/typesupply/defcon"
-SRC_URI="https://github.com/typesupply/defcon/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/robotools/defcon"
+SRC_URI="https://github.com/robotools/defcon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
