@@ -11,6 +11,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">Flask-Gravatar</remote-id>
+		<remote-id type="pypi">Flask-Compress</remote-id>
 	</upstream>
 </pkgmetadata>

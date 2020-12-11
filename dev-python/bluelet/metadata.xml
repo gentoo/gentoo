@@ -16,5 +16,6 @@ In this way, it is similar to the Greenlet green-threads library and its associa
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sampsyo/bluelet</remote-id>
+		<remote-id type="pypi">bluelet</remote-id>
 	</upstream>
 </pkgmetadata>

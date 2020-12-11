@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">Flask-Security</remote-id>
+		<remote-id type="pypi">Flask-Security-Too</remote-id>
+		<remote-id type="github">Flask-Middleware/flask-security</remote-id>
 	</upstream>
 </pkgmetadata>

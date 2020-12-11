@@ -10,5 +10,6 @@
 		<remote-id type="github">RazerM/parver</remote-id>
 		<doc>https://parver.readthedocs.io/en/latest/</doc>
 		<bugs-to>https://github.com/RazerM/parver/issues</bugs-to>
+		<remote-id type="pypi">parver</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">PyOpenGL-accelerate</remote-id>
 		<remote-id type="sourceforge">pyopengl</remote-id>
+		<remote-id type="github">mcfletch/pyopengl</remote-id>
 	</upstream>
 </pkgmetadata>

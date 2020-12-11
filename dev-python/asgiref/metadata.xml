@@ -6,4 +6,8 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">asgiref</remote-id>
+		<remote-id type="github">django/asgiref</remote-id>
+	</upstream>
 </pkgmetadata>

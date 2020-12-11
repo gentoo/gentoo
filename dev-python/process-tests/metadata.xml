@@ -6,4 +6,8 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">process-tests</remote-id>
+		<remote-id type="github">ionelmc/python-process-tests</remote-id>
+	</upstream>
 </pkgmetadata>

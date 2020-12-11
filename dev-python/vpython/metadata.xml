@@ -13,4 +13,7 @@
 		If the code is launched outside a notebook (e.g. from the command line),
 		a browser window will open displaying the scene.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">vpython</remote-id>
+	</upstream>
 </pkgmetadata>

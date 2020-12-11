@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sphinxcontrib-serializinghtml</remote-id>
+		<remote-id type="github">sphinx-doc/sphinxcontrib-serializinghtml</remote-id>
 	</upstream>
 </pkgmetadata>

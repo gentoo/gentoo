@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">scrypt</remote-id>
-		<remote-id type="bitbucket">mhallin/py-scrypt</remote-id>
+		<remote-id type="github">holgern/py-scrypt</remote-id>
 	</upstream>
 </pkgmetadata>

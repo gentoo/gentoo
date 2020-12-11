@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Flask-HTMLmin</remote-id>
+		<remote-id type="github">hamidfzm/Flask-HTMLmin</remote-id>
 	</upstream>
 </pkgmetadata>

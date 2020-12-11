@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">fusepy/fusepy</remote-id>
+		<remote-id type="pypi">fusepy</remote-id>
 	</upstream>
 </pkgmetadata>
