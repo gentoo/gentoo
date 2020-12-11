@@ -10,7 +10,6 @@
  </maintainer>
   <use>
     <flag name="debug">Enable debugging informations</flag>
-    <flag name="demos">Build and installs demo programs.</flag>
     <flag name="doc">Build documentation (requires app-doc/doxygen)</flag>
     <flag name="static-libs">Enable build of static libraries</flag>
   </use>

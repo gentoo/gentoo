@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/ccrtp/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/2"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug demos doc static-libs"
+IUSE="debug doc static-libs"
 
 RDEPEND="
 	>=dev-libs/libgcrypt-1.2.3
@@ -34,20 +34,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-static=$(usex static-libs) $(use_enable debug) $(use_enable demos)
+	econf --disable-demos --enable-static=$(usex static-libs) $(use_enable debug)
 }
 
 src_install() {
 	default
 
 	find "${ED}" -name '*.la' -type f -delete || die
-
-	if use demos; then
-		dodir "/usr/share/${PN}"
-		dodir "/usr/share/${PN}/.libs"
-		find "${S}/demo" -exec test -x {} \; -exec cp {} "${D}/usr/share/${PN}" \;
-		find "${S}/demo/.libs" -exec test -x {} \; -exec cp {} "${D}/usr/share/${PN}/.libs" \;
-	fi
 
 	use doc && dodoc -r doc/html/
 }
