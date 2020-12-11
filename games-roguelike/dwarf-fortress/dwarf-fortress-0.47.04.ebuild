@@ -31,8 +31,8 @@ RDEPEND="media-libs/glew:0
 DEPEND="${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses-compat:5[unicode]
-	virtual/pkgconfig"
+	sys-libs/ncurses-compat:5[unicode]"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_PN}_linux
 
@@ -41,7 +41,7 @@ QA_PREBUILT="${gamesdir#/}/libs/Dwarf_Fortress"
 RESTRICT="strip"
 
 src_prepare() {
-	rm -f libs/*.so* || die
+	rm libs/*.so* || die
 	sed -i -e '1i#include <cmath>' g_src/ttf_manager.cpp || die
 
 	eapply "${FILESDIR}/${P}-segfault-fix-729002.patch"
