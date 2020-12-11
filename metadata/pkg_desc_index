@@ -5135,7 +5135,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.4.1 78.5.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.2.1 8.3.8 8.3.9: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.2.1 8.2.2 8.3.8 8.3.9 8.3.10: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
@@ -11734,7 +11734,7 @@ games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.5.7.1 0.5.8 0.5.8.1 9999: An open source gaming platform for GNU/Linux
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.5.3: Compiler of NML files into GRF/NFO files
-games-util/pyfa 2.31.0 2.32.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.32.0 2.33.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/sc-controller 0.4.8.1 0.4.8.2: User-mode driver and GTK-based GUI for Steam Controllers and others
@@ -17965,7 +17965,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 87.0.4280.88 88.0.4324.27 89.0.4343.0: Open-source version of Google Chrome web browser
+www-client/chromium 87.0.4280.88 88.0.4324.41 89.0.4343.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
@@ -17975,7 +17975,7 @@ www-client/firefox 78.5.0 83.0 84.0_rc1: Firefox Web Browser
 www-client/firefox-bin 78.5.0 83.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.88: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.41: The web browser from Google
-www-client/google-chrome-unstable 89.0.4343.0: The web browser from Google
+www-client/google-chrome-unstable 89.0.4350.4: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
@@ -18018,7 +18018,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.453: Adobe Flash Player
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 87.0.4280.88 88.0.4324.41_beta 89.0.4343.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 87.0.4280.88 88.0.4324.41_beta 89.0.4350.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
