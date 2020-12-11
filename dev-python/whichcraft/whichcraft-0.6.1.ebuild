@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Cross-platform cross-python shutil.which functionality"
-HOMEPAGE="https://github.com/pydanny/whichcraft"
-SRC_URI="https://github.com/pydanny/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/cookiecutter/whichcraft"
+SRC_URI="https://github.com/cookiecutter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
