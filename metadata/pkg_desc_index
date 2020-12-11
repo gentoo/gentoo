@@ -2926,7 +2926,7 @@ app-text/llpp 30 33: Graphical PDF viewer which aims to superficially resemble l
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
-app-text/mandoc 1.14.4 1.14.5 1.14.5-r1: Suite of tools compiling mdoc and man
+app-text/mandoc 1.14.5 1.14.5-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
 app-text/master-pdf-editor 5.3.22 5.4.38-r1 5.6.80: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
