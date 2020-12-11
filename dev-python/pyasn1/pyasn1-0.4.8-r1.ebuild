@@ -8,7 +8,9 @@ PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="ASN.1 library for Python"
-HOMEPAGE="http://snmplabs.com/pyasn1/"
+HOMEPAGE="
+	https://pypi.org/project/pyasn1/
+	https://github.com/etingof/pyasn1/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
