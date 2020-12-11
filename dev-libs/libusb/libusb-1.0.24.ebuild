@@ -60,9 +60,9 @@ multilib_src_install_all() {
 	dodoc AUTHORS ChangeLog NEWS PORTING README TODO
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*.{c,h}
-		insinto /usr/share/doc/${PF}/examples/getopt
-		doins examples/getopt/*.{c,h}
+		docinto examples
+		dodoc examples/*.{c,h}
+		docinto examples/getopt
+		dodoc examples/getopt/*.{c,h}
 	fi
 }
