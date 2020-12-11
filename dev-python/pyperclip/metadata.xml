@@ -9,4 +9,7 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pyperclip</remote-id>
+	</upstream>
 </pkgmetadata>

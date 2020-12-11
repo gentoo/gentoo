@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">beetbox/mediafile</remote-id>
+		<remote-id type="pypi">mediafile</remote-id>
 	</upstream>
 </pkgmetadata>

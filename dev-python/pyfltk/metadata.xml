@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pyfltk</remote-id>
+		<remote-id type="pypi">pyFltk</remote-id>
 	</upstream>
 </pkgmetadata>

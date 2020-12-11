@@ -23,4 +23,7 @@
 		library it is instantly available as a Python API without the need for
 		intermediate Python glue.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">PyGObject</remote-id>
+	</upstream>
 </pkgmetadata>

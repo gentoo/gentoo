@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="launchpad">pygpgme</remote-id>
+		<remote-id type="pypi">pygpgme</remote-id>
 	</upstream>
 </pkgmetadata>

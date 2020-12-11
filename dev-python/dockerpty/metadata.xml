@@ -4,5 +4,6 @@
 	<!--maintainer-needed-->
 	<upstream>
 		<remote-id type="github">d11wtq/dockerpty</remote-id>
+		<remote-id type="pypi">dockerpty</remote-id>
 	</upstream>
 </pkgmetadata>

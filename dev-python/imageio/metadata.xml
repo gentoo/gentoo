@@ -17,5 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">imageio/imageio</remote-id>
+		<remote-id type="pypi">imageio</remote-id>
 	</upstream>
 </pkgmetadata>

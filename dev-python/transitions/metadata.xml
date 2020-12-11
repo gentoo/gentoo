@@ -15,5 +15,6 @@
 	<upstream>
 		<bugs-to>https://github.com/pytransitions/transitions/issues</bugs-to>
 		<remote-id type="github">pytransitions/transitions</remote-id>
+		<remote-id type="pypi">transitions</remote-id>
 	</upstream>
 </pkgmetadata>

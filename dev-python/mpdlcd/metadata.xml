@@ -15,5 +15,6 @@
 	<upstream>
 		<bugs-to>https://github.com/rbarrois/mpdlcd/issues</bugs-to>
 		<remote-id type="github">rbarrois/mpdlcd</remote-id>
+		<remote-id type="pypi">mpdlcd</remote-id>
 	</upstream>
 </pkgmetadata>

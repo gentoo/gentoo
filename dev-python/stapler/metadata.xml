@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">hellerbarde/stapler</remote-id>
+		<remote-id type="pypi">stapler</remote-id>
 	</upstream>
 </pkgmetadata>

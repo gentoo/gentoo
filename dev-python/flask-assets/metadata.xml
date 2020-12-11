@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">miracle2k/flask-assets</remote-id>
+		<remote-id type="pypi">Flask-Assets</remote-id>
 	</upstream>
 </pkgmetadata>

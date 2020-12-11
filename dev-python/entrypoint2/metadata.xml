@@ -10,4 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">entrypoint2</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -10,4 +10,7 @@
 		Python bindings for gpc, the General Polygon Clipping Library by
 		Alan Murta and some extensions written in C and pure Python.
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">Polygon</remote-id>
+	</upstream>
 </pkgmetadata>

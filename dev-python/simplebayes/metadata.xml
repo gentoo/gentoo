@@ -13,5 +13,6 @@ This work is heavily inspired by the python "redisbayes" module found here:
 	</longdescription>
 	<upstream>
 		<remote-id type="github">hickeroar/simplebayes</remote-id>
+		<remote-id type="pypi">simplebayes</remote-id>
 	</upstream>
 </pkgmetadata>

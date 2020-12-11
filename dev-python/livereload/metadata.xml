@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">lepture/python-livereload</remote-id>
+		<remote-id type="pypi">livereload</remote-id>
 	</upstream>
 </pkgmetadata>

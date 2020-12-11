@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">abseil/abseil-py</remote-id>
+		<remote-id type="pypi">absl-py</remote-id>
 	</upstream>
 </pkgmetadata>

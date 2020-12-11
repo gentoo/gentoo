@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">wxWidgets/Phoenix</remote-id>
+		<remote-id type="pypi">wxPython</remote-id>
 	</upstream>
 </pkgmetadata>
