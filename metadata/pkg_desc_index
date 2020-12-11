@@ -1664,7 +1664,7 @@ app-doc/zsh-lovers 0.9.0 0.9.1: Tips, tricks and examples for the Z shell
 app-editors/aee 2.2.21: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/beaver 0.4.1-r1: Beaver is an Early AdVanced EditoR
-app-editors/bluefish 2.2.10: A GTK HTML editor for the experienced web designer or programmer
+app-editors/bluefish 2.2.10 2.2.12: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.4.1: Display-oriented editor for binary files, based on the vi texteditor
 app-editors/curses-hexedit 0.9.7 0.9.7-r1: full screen curses hex editor (with insert/delete support)
 app-editors/dav 0.8.5-r2: A minimal console text editor
@@ -5491,7 +5491,7 @@ dev-libs/libunibreak 4.0 4.1 4.2: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
-dev-libs/libusb 1.0.19-r1 1.0.21-r1 1.0.22 1.0.23-r1: Userspace access to USB devices
+dev-libs/libusb 1.0.23-r1 1.0.24: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0 2.5.0: A clean C Library for processing UTF-8 Unicode data
@@ -8266,7 +8266,7 @@ dev-python/humanize 3.1.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.41.1 5.41.3 5.41.4 5.41.5 5.43.0 5.43.1 5.43.2: A library for property based testing
+dev-python/hypothesis 5.24.4 5.41.1 5.41.3 5.41.4 5.41.5 5.43.0 5.43.1 5.43.2 5.43.3: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -9083,7 +9083,7 @@ dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Pytho
 dev-python/socketpool 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 2.2.2-r1 2.3.0: Python library to sort collections and containers
-dev-python/soupsieve 2.0.1: A modern CSS selector implementation for BeautifulSoup
+dev-python/soupsieve 2.0.1 2.1.0: A modern CSS selector implementation for BeautifulSoup
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
@@ -10661,7 +10661,7 @@ dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session f
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 13.1 13.2 13.2.1: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.123: Debian/Ubuntu bootstrap scripts
-dev-util/debugedit 4.16.0: Stand-alone debugedit from RPM
+dev-util/debugedit 4.16.0 4.16.1: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24 0.26-r1: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.36.2: An API documentation browser for GNOME
@@ -12594,7 +12594,7 @@ media-fonts/iosevka 1.14.1: Slender typeface for code, from code
 media-fonts/ipaex 002.01: Japanese IPA extended TrueType fonts
 media-fonts/ipamonafont 1.0.8: Hacked version of IPA fonts, which is suitable for browsing 2ch
 media-fonts/ja-ipafonts 003.02-r1 003.03: TrueType fonts developed by Japanese Information-technology Promotion Agency
-media-fonts/jetbrains-mono 2.001: A free and open-source typeface for developers
+media-fonts/jetbrains-mono 2.001 2.210: A free and open-source typeface for developers
 media-fonts/jisx0213-fonts 20040425-r2: Japanese fixed fonts that cover JIS0213 charset
 media-fonts/jomolhari 0.003c: Bhutanese style dbu-can font for Tibetan/Dzongkha text named after Mt Jomolhari
 media-fonts/jsmath 1.0: Raster fonts for jsmath
@@ -13236,7 +13236,7 @@ media-libs/openjpeg 1.5.2-r1 2.3.1-r1: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
 media-libs/opusfile 0.11 0.12: A high-level decoding and seeking API for .opus files
-media-libs/osl 1.10.10 1.10.13 1.11.9.0: Advanced shading language for production GI renderers
+media-libs/osl 1.10.13 1.11.9.0: Advanced shading language for production GI renderers
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829 1.5.4 1.10.1 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
@@ -14843,7 +14843,7 @@ net-libs/mbedtls 2.16.8 2.24.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.1.20201016 2.2.0: UPnP client library and a simple UPnP client
 net-libs/nDPI 3.0-r1 3.0-r2 3.2-r1 3.2-r2 3.4 9999: Open Source Deep Packet Inspection Software Toolkit
-net-libs/nativebiginteger 0.9.45 0.9.47: jbigi library used by net-vpn/i2p
+net-libs/nativebiginteger 0.9.47 0.9.48: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0 0.31.1 0.31.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
@@ -15464,7 +15464,7 @@ net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/httptunnel 3.3-r2 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
-net-vpn/i2p 0.9.45 0.9.47: A privacy-centric, anonymous network
+net-vpn/i2p 0.9.47 0.9.48: A privacy-centric, anonymous network
 net-vpn/i2pd 2.32.0 2.32.1 2.33.0 2.34.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r6: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
@@ -17066,7 +17066,7 @@ sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklo
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.12-r1 0.13-r1: Realtime Policy and Watchdog Daemon
-sys-auth/seatd 0.4.0 9999: Minimal seat management daemon and universal library
+sys-auth/seatd 0.4.0-r1 9999: Minimal seat management daemon and universal library
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/solo-python 0.0.26: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
