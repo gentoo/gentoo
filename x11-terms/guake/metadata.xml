@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="github">Guake/guake</remote-id>
+    <remote-id type="pypi">guake</remote-id>
   </upstream>
   <use>
     <flag name='utempter'>Include utmp management support
