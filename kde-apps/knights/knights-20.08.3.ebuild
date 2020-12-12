@@ -50,3 +50,10 @@ RDEPEND="${DEPEND}
 		games-board/sjeng
 	)
 "
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package speech Qt5TextToSpeech)
+	)
+	ecm_src_configure
+}
