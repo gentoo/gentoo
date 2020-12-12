@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit ruby-ng prefix
 
@@ -26,26 +26,19 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/json
 		dev-ruby/minitest:5
-		dev-ruby/rake
 		dev-ruby/rdoc
 	)"
 
 all_ruby_prepare() {
 
 	mkdir -p lib/rubygems/defaults || die
-	cp "${FILESDIR}/gentoo-defaults-4.rb" lib/rubygems/defaults/operating_system.rb || die
+	cp "${FILESDIR}/gentoo-defaults-3.rb" lib/rubygems/defaults/operating_system.rb || die
 
 	eprefixify lib/rubygems/defaults/operating_system.rb
 
 	# Disable broken tests when changing default values:
 	sed -i -e '/test_default_path/,/^  end/ s:^:#:' test/rubygems/test_gem.rb || die
-	# Avoid test that won't work as json is also installed as plain ruby code
-	sed -i -e '/test_realworld_default_gem/askip "gentoo"' test/rubygems/test_require.rb || die
-
-	# Update manifest after changing files to avoid a test failure
-	if use test; then
-		rake update_manifest || die
-	fi
+	sed -i -e '/test_env_shebang_flag/askip' test/rubygems/test_gem_commands_setup_command.rb || die
 }
 
 each_ruby_compile() {
@@ -98,6 +91,6 @@ pkg_postinst() {
 
 	ewarn
 	ewarn "To switch between available Ruby profiles, execute as root:"
-	ewarn "\teselect ruby set ruby(25|26|...)"
+	ewarn "\teselect ruby set ruby(23|24|...)"
 	ewarn
 }

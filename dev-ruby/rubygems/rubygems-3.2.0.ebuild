@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 inherit ruby-ng prefix
 
@@ -20,22 +20,32 @@ RESTRICT="!test? ( test )"
 
 PDEPEND="server? ( =dev-ruby/builder-3* )"
 
+ruby_add_depend "virtual/ruby-ssl"
+
 ruby_add_bdepend "
 	test? (
 		dev-ruby/json
 		dev-ruby/minitest:5
+		dev-ruby/rake
 		dev-ruby/rdoc
 	)"
 
 all_ruby_prepare() {
 
 	mkdir -p lib/rubygems/defaults || die
-	cp "${FILESDIR}/gentoo-defaults-3.rb" lib/rubygems/defaults/operating_system.rb || die
+	cp "${FILESDIR}/gentoo-defaults-4.rb" lib/rubygems/defaults/operating_system.rb || die
 
 	eprefixify lib/rubygems/defaults/operating_system.rb
 
 	# Disable broken tests when changing default values:
 	sed -i -e '/test_default_path/,/^  end/ s:^:#:' test/rubygems/test_gem.rb || die
+	# Avoid test that won't work as json is also installed as plain ruby code
+	sed -i -e '/test_realworld_\(\|upgraded_\)default_gem/askip "gentoo"' test/rubygems/test_require.rb || die
+
+	# Update manifest after changing files to avoid a test failure
+	if use test; then
+		rake update_manifest || die
+	fi
 }
 
 each_ruby_compile() {
@@ -82,12 +92,12 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -n $(readlink "${ROOT}"usr/bin/gem) ]] ; then
+	if [[ ! -n $(readlink "${ROOT}"/usr/bin/gem) ]] ; then
 		eselect ruby set $(eselect --brief --colour=no ruby show | head -n1)
 	fi
 
 	ewarn
 	ewarn "To switch between available Ruby profiles, execute as root:"
-	ewarn "\teselect ruby set ruby(23|24|...)"
+	ewarn "\teselect ruby set ruby(25|26|...)"
 	ewarn
 }
