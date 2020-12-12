@@ -29,6 +29,7 @@ RDEPEND="
 		>=dev-python/arrow-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/b2sdk-1.2.0[${PYTHON_USEDEP}]
 		<dev-python/b2sdk-1.3.0[${PYTHON_USEDEP}]
+		~dev-python/phx-class-registry-3.0.5[${PYTHON_USEDEP}]
 	')
 "
 
