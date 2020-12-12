@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
+DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 MY_PN=${PN/-/_}
@@ -15,7 +16,5 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
 S="${WORKDIR}/${MY_P}"
