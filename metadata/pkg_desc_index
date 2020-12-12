@@ -13956,7 +13956,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
-media-sound/upmpdcli 1.4.0 1.4.2 1.4.14 1.5.0 1.5.0-r1 1.5.2: UPnP Media Renderer front-end for MPD, the Music Player Daemon
+media-sound/upmpdcli 1.4.0 1.4.2 1.4.14 1.5.0 1.5.0-r1 1.5.2 1.5.5: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi like key bindings
@@ -14833,7 +14833,7 @@ net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ f
 net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
-net-libs/libupnpp 0.17.0 0.19.4 0.20.0 0.20.0-r1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
+net-libs/libupnpp 0.17.0 0.19.4 0.20.0 0.20.0-r1 0.20.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 4.1.4 4.1.6: A flexible pure-C library for implementing network protocols
 net-libs/libyang 1.0.184: YANG data modeling language library
