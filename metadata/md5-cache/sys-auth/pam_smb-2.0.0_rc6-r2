@@ -1,12 +1,12 @@
-DEFINED_PHASES=configure install postinst prepare
+DEFINED_PHASES=compile configure install postinst prepare
 DEPEND=>=sys-libs/pam-0.75
 DESCRIPTION=PAM module for authenticating against an SMB (such as the Win_x families) server
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.csn.ul.ie/~airlied/pam_smb/
 KEYWORDS=~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/pam-0.75
 SLOT=0
 SRC_URI=mirror://samba/pam_smb/v2/pam_smb-2.0.0-rc6.tar.gz http://www.csn.ul.ie/~airlied/pam_smb/v2/pam_smb-2.0.0-rc6.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	226d8d2ff588bdfd7d188512dbdb189d	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=fb3c7b6cd32aa28d55abdc4efaf13957
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	226d8d2ff588bdfd7d188512dbdb189d	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=6d328e3fd21adadb5feea35412212f77
