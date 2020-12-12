@@ -5,11 +5,11 @@ DESCRIPTION=Suite of nonlinear solvers
 EAPI=7
 HOMEPAGE=https://computation.llnl.gov/projects/sundials
 IUSE=cxx doc examples fortran hypre lapack mpi openmp sparse static-libs superlumt threads
-KEYWORDS=amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=lapack? ( virtual/lapack ) mpi? ( virtual/mpi sci-libs/hypre:= ) sparse? ( sci-libs/klu ) superlumt? ( sci-libs/superlu_mt:= ) fortran? ( virtual/fortran )
 REQUIRED_USE=hypre? ( mpi )
 SLOT=0/5
 SRC_URI=https://computation.llnl.gov/projects/sundials/download/sundials-5.2.0.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f2a02fd9e6bf518d99efaa70b12bfde8
+_md5_=9f50df852ffd5525ada5ac3ba7b1f084
