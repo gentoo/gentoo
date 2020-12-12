@@ -10,16 +10,11 @@ SRC_URI="http://download.osgeo.org/geos/${PN}-${PV}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris"
-IUSE="doc ruby static-libs"
+IUSE="doc static-libs"
 
 BDEPEND="
 	doc? ( app-doc/doxygen )
-	ruby? ( dev-lang/swig:0 )
 "
-RDEPEND="
-	ruby? ( dev-lang/ruby:* )
-"
-DEPEND="${RDEPEND}"
 
 RESTRICT="test"
 
@@ -30,8 +25,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-python
-		$(use_enable ruby)
 		$(use_enable static-libs static)
 	)
 	use arm && myeconfargs+=( --disable-inline ) # bug 709368
