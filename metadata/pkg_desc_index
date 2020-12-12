@@ -8145,7 +8145,7 @@ dev-python/fakeredis 1.4.4 1.4.5: Fake implementation of redis API for testing p
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.15: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
-dev-python/fcl 0.0.12: Python bindings for the Flexible Collision Library
+dev-python/fcl 0.0.12-r1: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1 5.2.1-r1 6.0.2: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
@@ -16768,7 +16768,7 @@ sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
 sys-apps/dbus 1.12.18 1.12.20: A message bus system, a simple way for applications to talk to each other
-sys-apps/dbus-broker 23 24 9999: Linux D-Bus Message Broker
+sys-apps/dbus-broker 24 25 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1-r1 1.5 1.6 1.7: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.11.1 4.11.2: A selection of tools from Debian
