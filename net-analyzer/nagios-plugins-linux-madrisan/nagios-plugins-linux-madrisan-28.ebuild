@@ -11,6 +11,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Additional and alternative Nagios plugins for Linux"
 HOMEPAGE="https://github.com/madrisan/nagios-plugins-linux"
 SRC_URI="https://github.com/madrisan/${MY_PN}/releases/download/v${PV}/${MY_P}.tar.xz -> ${P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -22,8 +23,6 @@ DEPEND="
 	varlink? ( dev-libs/libvarlink:= )
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
