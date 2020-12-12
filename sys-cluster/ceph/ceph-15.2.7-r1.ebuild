@@ -43,13 +43,14 @@ DEPEND="
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
+	dev-cpp/gflags:=
 	dev-libs/crypto++:=
 	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
-	dev-libs/rocksdb:=
 	dev-libs/libaio:=
 	dev-libs/libfmt:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
+	dev-libs/rocksdb:=
 	dev-libs/xmlsec:=[!openssl?,!libressl?]
 	dev-cpp/yaml-cpp:=
 	dev-libs/nss:=
