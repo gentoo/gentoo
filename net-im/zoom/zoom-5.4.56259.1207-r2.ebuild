@@ -64,8 +64,9 @@ src_prepare() {
 	default
 
 	# The tarball doesn't contain an icon, so extract it from the binary
-	bbe -s -b '/<svg width="32"/:/<\x2fsvg>\n/' -e 'J 1;D' zoom >zoom.svg \
-		&& [[ -s zoom.svg ]] || die "Extraction of icon failed"
+	bbe -s -b '/<svg width="32"/:/<\x2fsvg>\n/' -e 'J 1;D' zoom \
+		>zoom-videocam.svg && [[ -s zoom-videocam.svg ]] \
+		|| die "Extraction of icon failed"
 
 	if ! use pulseaudio; then
 		# For some strange reason, zoom cannot use any ALSA sound devices if
@@ -113,10 +114,10 @@ src_install() {
 	fi
 
 	make_wrapper zoom /opt/zoom{/zoom,} $(usex bundled-qt /opt/zoom "")
-	make_desktop_entry "zoom %U" Zoom zoom "" \
+	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
 		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
-	doicon zoom.svg
-	doicon -s scalable zoom.svg
+	doicon zoom-videocam.svg
+	doicon -s scalable zoom-videocam.svg
 	readme.gentoo_create_doc
 }
 
