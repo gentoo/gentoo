@@ -6285,11 +6285,11 @@ dev-perl/Date-Leapyear 1.720.0-r1 1.720.0-r2: Simple Perl module that tracks Gre
 dev-perl/Date-Manip 6.600.0 6.820.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1 6.100.0-r2: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1 3.30.0-r2: A simple date object
-dev-perl/DateTime 1.200.0 1.280.0 1.440.0 1.520.0: A date and time object
+dev-perl/DateTime 1.440.0 1.520.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0 0.102.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.190.0: DateTime::Set extension for create basic recurrence sets
-dev-perl/DateTime-Format-Builder 0.810.0-r1 0.820.0 0.830.0: Create DateTime parser classes and objects
+dev-perl/DateTime-Format-Builder 0.810.0-r1 0.830.0: Create DateTime parser classes and objects
 dev-perl/DateTime-Format-DateParse 0.50.0-r1 0.50.0-r2: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-Flexible 0.320.0: Flexibly parse strings and turn them into DateTime objects
 dev-perl/DateTime-Format-HTTP 0.420.0 0.420.0-r1: Date conversion routines
@@ -6297,14 +6297,14 @@ dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string de
 dev-perl/DateTime-Format-ICal 0.90.0-r1: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1 0.140.0: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.403.0: Convert between DateTime and RFC2822/822 formats
-dev-perl/DateTime-Format-Natural 1.50.0 1.100.0 1.110.0: Parse informal natural language date/time strings
+dev-perl/DateTime-Format-Natural 1.50.0 1.110.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0-r1: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.700.0 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.740.0 1.770.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.30.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.30.0 1.160.0 1.280.0: Localization support for DateTime
+dev-perl/DateTime-Locale 1.160.0 1.280.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.390.0 0.390.0-r1: Datetime sets and set math
-dev-perl/DateTime-TimeZone 1.930.0 2.10.0 2.130.0 2.390.0: Time zone object base class and factory
+dev-perl/DateTime-TimeZone 2.130.0 2.390.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.70.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0-r1: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.310.0-r1: Client side code for perl debugger
@@ -6315,7 +6315,7 @@ dev-perl/Devel-CallChecker 0.8.0 0.8.0-r1: Custom OP checking attached to subrou
 dev-perl/Devel-Caller 2.60.0 2.60.0-r2: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.70.0: Check the compiler's availability
-dev-perl/Devel-CheckLib 1.110.0 1.130.0 1.140.0: check that a library is available
+dev-perl/Devel-CheckLib 1.130.0 1.140.0: check that a library is available
 dev-perl/Devel-CheckOS 1.830.0: require that we are running on a particular OS
 dev-perl/Devel-Cover 1.360.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0 1.120.0-r1: Find memory cycles in objects
@@ -6329,7 +6329,7 @@ dev-perl/Devel-Leak 0.30.0 0.30.0-r1: Utility for looking for perl objects that 
 dev-perl/Devel-LexAlias 0.50.0 0.50.0-r1: Alias lexical variables
 dev-perl/Devel-NYTProf 6.60.0 6.60.0-r1: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0 0.5.0: Introspect overloaded operators
-dev-perl/Devel-PatchPerl 1.520.0 1.920.0 2.0.0: Patch perl source a la Devel::PPPort's buildperl.pl
+dev-perl/Devel-PatchPerl 1.920.0 2.0.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.28: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r2: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces
@@ -6340,7 +6340,7 @@ dev-perl/Devel-StackTrace-AsHTML 0.150.0: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.180.0 2.180.0-r1: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r2 1.40.0-r3: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1 0.20.0-r2: Create bubble-babble fingerprints
-dev-perl/Digest-CRC 0.210.0 0.220.0_p2 0.220.0_p2-r1: Generic CRC function
+dev-perl/Digest-CRC 0.220.0_p2 0.220.0_p2-r1: Generic CRC function
 dev-perl/Digest-GOST 0.60.0-r1 0.60.0-r2: Perl interface to the GOST R 34.11-94 digest algorithm
 dev-perl/Digest-HMAC 1.30.0-r1 1.30.0-r2: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
@@ -9744,21 +9744,21 @@ dev-ros/xmlrpcpp 1.15.8 1.15.9 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.6 2.0.7: A Ruby client for the letsencrypt's ACME protocol.
-dev-ruby/actioncable 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Integrated WebSockets for Rails
-dev-ruby/actionmailbox 6.0.3.2 6.0.3.3 6.0.3.4: Framework for designing email-service layers
-dev-ruby/actionmailer 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Framework for designing email-service layers
-dev-ruby/actionpack 5.2.4.3-r1 5.2.4.4 6.0.3.2-r1 6.0.3.3 6.0.3.4: Eases web-request routing, handling, and response
+dev-ruby/actioncable 5.2.4.3 5.2.4.4 6.0.3.4: Integrated WebSockets for Rails
+dev-ruby/actionmailbox 6.0.3.4: Framework for designing email-service layers
+dev-ruby/actionmailer 5.2.4.3 5.2.4.4 6.0.3.4: Framework for designing email-service layers
+dev-ruby/actionpack 5.2.4.3-r1 5.2.4.4 6.0.3.4: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.1: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actiontext 6.0.3.2 6.0.3.3 6.0.3.4: Edit and display rich text in Rails applications
-dev-ruby/actionview 5.2.4.3 5.2.4.3-r1 5.2.4.4 6.0.3.2 6.0.3.2-r1 6.0.3.3 6.0.3.4: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activejob 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Job framework with pluggable queues
+dev-ruby/actiontext 6.0.3.4: Edit and display rich text in Rails applications
+dev-ruby/actionview 5.2.4.3 5.2.4.3-r1 5.2.4.4 6.0.3.4: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activejob 5.2.4.3 5.2.4.4 6.0.3.4: Job framework with pluggable queues
 dev-ruby/activeldap 5.2.4 6.0.2 6.0.3 6.0.4: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
-dev-ruby/activemodel 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activemodel 5.2.4.3 5.2.4.4 6.0.3.4: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
-dev-ruby/activerecord 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
-dev-ruby/activestorage 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Attach cloud and local files in Rails applications
-dev-ruby/activesupport 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4 6.0.3.4-r1: Utility Classes and Extension to the Standard Library
+dev-ruby/activerecord 5.2.4.3 5.2.4.4 6.0.3.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+dev-ruby/activestorage 5.2.4.3 5.2.4.4 6.0.3.4: Attach cloud and local files in Rails applications
+dev-ruby/activesupport 5.2.4.3 5.2.4.4 6.0.3.4 6.0.3.4-r1: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 1.0.1: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
@@ -10135,10 +10135,10 @@ dev-ruby/rack-protection 2.0.8.1 2.1.0: This gem protects against typical web at
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
-dev-ruby/rails 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: ruby on rails is a web-application and persistance framework
+dev-ruby/rails 5.2.4.3 5.2.4.4 6.0.3.4: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-dom-testing 2.0.3 2.0.3-r1: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.2.0 1.3.0 1.3.0-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 5.2.4.3 5.2.4.4 6.0.3.2 6.0.3.3 6.0.3.4: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 5.2.4.3 5.2.4.4 6.0.3.4: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.1.0 1.1.1: Provide a standard and simplified way to build and package Ruby extensions
