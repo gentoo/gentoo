@@ -6010,9 +6010,9 @@ dev-perl/B-Utils 0.270.0-r2: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
 dev-perl/BSD-Resource 1.291.100-r2: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.12.2: BSON serialization and deserialization (EOL)
-dev-perl/BZ-Client 4.400.200 4.400.300: A client for the Bugzilla web services API.
+dev-perl/BZ-Client 4.400.300: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
-dev-perl/BerkeleyDB 0.550.0 0.630.0-r2 0.640.0: This module provides Berkeley DB interface for Perl
+dev-perl/BerkeleyDB 0.550.0 0.640.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
@@ -6036,7 +6036,7 @@ dev-perl/CDB_File 1.20.0-r1: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r2: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r2: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.470.0 4.500.0 4.510.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.470.0 4.510.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0-r1: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Application 4.610.0: Framework for building reusable web-applications
 dev-perl/CGI-Application-Dispatch 3.120.0-r2: Dispatch requests to CGI::Application based objects
@@ -6058,7 +6058,7 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 5.202.4.280 5.202.8.200 5.202.9.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 5.202.4.280 5.202.9.200: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.15: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
@@ -6141,7 +6141,7 @@ dev-perl/Conf-Libconfig 0.100.0-r1: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1 1.200.0-r2: use Apache format config files
 dev-perl/Config-Auto 0.440.0-r1: Magical config file parser
-dev-perl/Config-AutoConf 0.315.0 0.318.0 0.319.0: A module to implement some of AutoConf macros in pure perl
+dev-perl/Config-AutoConf 0.315.0 0.319.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.630.0: Config file parser module
 dev-perl/Config-Grammar 1.120.0 1.130.0: A grammar-based, user-friendly config parser
@@ -6171,7 +6171,7 @@ dev-perl/Convert-UUlib 1.710.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0 0.110.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0 0.110.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Coro 6.550.0: The only real threads in perl
-dev-perl/Cpanel-JSON-XS 4.190.0 4.230.0 4.240.0: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 4.190.0 4.240.0: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1 2.140.0-r2: Perl Blowfish encryption module
 dev-perl/Crypt-CAST5_PP 1.40.0-r1 1.40.0-r2: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1 2.330.0-r2: Encrypt Data with Cipher Block Chaining Mode
@@ -6204,7 +6204,7 @@ dev-perl/Crypt-Random 1.520.0: Cryptographically Secure, True Random Number Gene
 dev-perl/Crypt-Random-Seed 0.30.0: Simple method to get strong randomness
 dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Random-TESHA2 0.10.0: Random numbers using timer/schedule entropy
-dev-perl/Crypt-Rijndael 1.140.0 1.140.0-r1 1.150.0: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-Rijndael 1.140.0 1.150.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.270.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
@@ -6213,7 +6213,7 @@ dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0 0.530.0: Parse a X.509 certificate
 dev-perl/CryptX 0.64.0 0.69.0: Self-contained crypto toolkit
-dev-perl/Curses 1.360.0 1.360.0-r1 1.370.0: Curses interface modules for Perl
+dev-perl/Curses 1.360.0 1.370.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2 0.960.900-r3: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2 1.997.0-r3: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
@@ -9812,7 +9812,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.7.1 4.8.2 4.9.2 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4 2.2.0: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
