@@ -17,7 +17,7 @@ fi
 DESCRIPTION="pkgcore-based QA utility for ebuild repos"
 HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
-LICENSE="BSD"
+LICENSE="BSD MIT"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -35,6 +35,7 @@ RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
+	dev-python/tree-sitter[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
