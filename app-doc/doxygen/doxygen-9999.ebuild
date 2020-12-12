@@ -27,7 +27,7 @@ RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
 	virtual/libiconv
-	clang? ( >=sys-devel/clang-4.0.0:= )
+	clang? ( >=sys-devel/clang-10:= )
 	dot? (
 		media-gfx/graphviz
 		media-libs/freetype
