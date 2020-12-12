@@ -5,7 +5,7 @@ EAPI=7
 
 # This should have been dealt with versionator in the direction
 # 0.94x -> 094x - now we are screwed.
-MY_PV="0.94j"
+MY_PV="0.94m"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="C library implementing the Double Description Method"
 HOMEPAGE="https://www.inf.ethz.ch/personal/fukudak/cdd_home/"
