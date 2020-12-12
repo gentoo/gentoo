@@ -27,6 +27,8 @@ RDEPEND="
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${P}-fix-compiling-on-lld.patch )
+
 distutils_enable_tests unittest
 
 python_test() {
