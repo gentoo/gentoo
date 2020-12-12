@@ -3451,6 +3451,7 @@ kde-apps/kdecore-meta:webengine - Enable www-client/falkon which depends on dev-
 kde-apps/kdeedu-meta:webengine - Enable kde-apps/kalzium and kde-apps/parley, requiring dev-qt/qtwebengine
 kde-apps/kdegraphics-mobipocket:thumbnail - Enables thumbnail generation
 kde-apps/kdemultimedia-meta:cdrom - Include packages for optical discs
+kde-apps/kdenetwork-meta:bittorrent - Pull in net-p2p/ktorrent for BitTorrent protocol support
 kde-apps/kdenetwork-meta:dropbox - Enable support for Dropbox in kde-apps/dolphin via kde-apps/dolphin-plugins-dropbox
 kde-apps/kdenetwork-meta:webengine - Enable Google Drive support via kde-misc/kio-gdrive and instant messaging integration via kde-apps/plasma-telepathy-meta
 kde-apps/kdenlive:share - Enable support for a share menu using kde-frameworks/purpose
@@ -3528,6 +3529,7 @@ kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
 kde-apps/marble:geolocation - Enable position information via dev-qt/qtpositioning
+kde-apps/marble:pbf - Enable OpenStreetMap PBF file support via dev-libs/protobuf
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
 kde-apps/marble:webengine - Use dev-qt/qtwebengine for embedded web browser
@@ -6697,10 +6699,10 @@ net-p2p/ktorrent:magnetgenerator - Generates magnet URI's
 net-p2p/ktorrent:mediaplayer - Phonon-based media player
 net-p2p/ktorrent:rss - Syndication plugin for KTorrent, supporting RSS and Atom feeds
 net-p2p/ktorrent:scanfolder - Scan folders for torrent files and load them
-net-p2p/ktorrent:search - Search for torrents
 net-p2p/ktorrent:shutdown - Shutdown when done
 net-p2p/ktorrent:stats - Shows statistics about torrents in several graphs
 net-p2p/ktorrent:upnp - Forward ports using UPnP
+net-p2p/ktorrent:webengine - Embedded search for torrents using dev-qt/qtwebengine
 net-p2p/ktorrent:zeroconf - Discover peers on the local network using the Zeroconf protocol
 net-p2p/litecoind:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/litecoind:wallet - Enable wallet support
