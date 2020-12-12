@@ -17,7 +17,7 @@ LICENSE="BSD"
 
 KEYWORDS="~amd64"
 SLOT="0"
-IUSE="examples"
+IUSE=""
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -27,16 +27,9 @@ RDEPEND="
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${P}-fix-compiling-on-lld.patch )
+
 distutils_enable_tests unittest
-
-python_install_all() {
-	if use examples; then
-		docompress -x "/usr/share/doc/${PF}/examples"
-		dodoc -r example
-	fi
-
-	distutils-r1_python_install_all
-}
 
 python_test() {
 	"${EPYTHON}" test/test_fcl.py -v || die "tests failed with ${EPYTHON}"

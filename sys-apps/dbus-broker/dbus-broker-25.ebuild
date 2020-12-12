@@ -9,16 +9,16 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/bus1/dbus-broker.git"
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64" # ~ppc64
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}/${P}.tar.gz"
 	declare -Ag SUBPROJECTS=(
-		[c-dvar]=9e1a5b4363aaece7169df2b2852944a1434b2df5
-		[c-ini]=43f379396a320940d0661c15780f618f84d29348
-		[c-list]=b1cd4dbf967d73b24dfe6cc56aaf3fdd668692e3
-		[c-rbtree]=fa97402c3faa18c2ddd8325eb66e2bd58a224477
-		[c-shquote]=1d171fe52c23944c3c0be1f2603595f2488a9ff8
-		[c-stdaux]=d6ecce8afbb7703e1469cc5e7a59a8bd32e2d4a4
-		[c-utf8]=1f7e2ff1164bd2161cb480532b2b34cb2074bde1
+		[c-dvar]=70f0f21e86a34577e674e202d5d09ef167102f02
+		[c-ini]=867f06a12a702c6869924575503877caa0adde75
+		[c-list]=ac7c831398219acd8d63038e866035a6f86f9e21
+		[c-rbtree]=a3b1f80548d1c736208c55e9251c49ada649dd62
+		[c-shquote]=95e4713a0de475688a5727a5d776dccbc69d3d28
+		[c-stdaux]=346623b40eb8137cae7568a69ee42253ff098ff7
+		[c-utf8]=af5bf7f330078d285e5f58584abd6de01c4cfd7d
 	)
 	for sp in "${!SUBPROJECTS[@]}"; do
 		commit=${SUBPROJECTS[${sp}]}
