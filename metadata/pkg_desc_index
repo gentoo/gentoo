@@ -10686,7 +10686,7 @@ dev-util/drone-cli 0.8.6 1.1.4 1.2.1: Command-line interface for Drone
 dev-util/dropwatch 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.17 1.17-r1 1.18 1.19: pahole (Poke-a-Hole) and other DWARF2 utilities
-dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
+dev-util/dwdiff 2.1.1 2.1.2 2.1.3: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
 dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
@@ -11568,7 +11568,7 @@ games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with r
 games-roguelike/nethack 3.6.6: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
-games-roguelike/stone-soup 0.25.0 0.25.1 0.25.1-r1 0.25.1-r100: Role-playing roguelike game of exploration and treasure-hunting in dungeons
+games-roguelike/stone-soup 0.25.1-r1 0.25.1-r100: Role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.6.1a 4.7.2: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b-r1: Gothic science fantasy roguelike game
