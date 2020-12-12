@@ -39,6 +39,7 @@ src_compile() {
 
 src_configure() {
 	export ac_cv_header_sys_acl_h=$(usex acl)
+	use acl || export ac_cv_search_acl_get_fd=no
 
 	use debug && append-cppflags "-DLIBFAKEROOT_DEBUGGING"
 	econf \
