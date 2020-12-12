@@ -14,6 +14,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+# This package is unmaintained and keeps being broken periodically.
+RESTRICT=test
 
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
@@ -21,6 +23,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.2-skip-apiwarn-pytest31.patch
 	"${FILESDIR}"/${PN}-1.8.0-pytest-4.patch
+	# https://bugs.gentoo.org/759547
+	"${FILESDIR}"/${P}-cve-2020-29651.patch
 )
 
 distutils_enable_sphinx doc
