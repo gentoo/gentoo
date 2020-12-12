@@ -41,7 +41,7 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	+slirp
 	smartcard snappy spice ssh static static-user systemtap test udev usb
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
-	xfs +xkb zstd"
+	xfs zstd"
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
@@ -93,7 +93,6 @@ ALL_DEPEND="
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
 	dev-libs/libxml2[static-libs(+)]
-	xkb? ( x11-libs/libxkbcommon[static-libs(+)] )
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -486,7 +485,8 @@ qemu_src_configure() {
 		$(conf_notuser xen)
 		$(conf_notuser xen xen-pci-passthrough)
 		$(conf_notuser xfs xfsctl)
-		$(conf_notuser xkb xkbcommon)
+		# use prebuilt keymaps, bug #759604
+		--disable-xkbcommon
 		$(conf_notuser zstd)
 	)
 
