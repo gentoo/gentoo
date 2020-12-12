@@ -66,6 +66,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
+	"${FILESDIR}"/fixed-font-path.patch
 	"${FILESDIR}"/gitless-1.patch
 	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
