@@ -33,7 +33,7 @@ multilib_src_compile() {
 	emake
 
 	if multilib_is_native_abi; then
-		use doc && emake -C doc docs
+		use doc && emake -C doc
 	fi
 }
 
@@ -50,7 +50,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		gen_usr_ldscript -a usb-1.0
 
-		use doc && dodoc -r doc/html
+		use doc && dodoc -r doc/api-1.0
 	fi
 }
 
