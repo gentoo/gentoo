@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-dep.patch" )
+
 src_configure() {
 	# demos not working
 	local mycmakeargs=(
