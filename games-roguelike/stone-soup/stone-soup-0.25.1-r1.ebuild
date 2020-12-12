@@ -8,7 +8,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 VIRTUALX_REQUIRED="manual"
-inherit desktop distutils-r1 eutils xdg-utils toolchain-funcs
+inherit desktop python-any-r1 eutils xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
@@ -42,8 +42,8 @@ RDEPEND="
 		media-libs/freetype:2
 		media-libs/libpng:0
 		sound? (
-			   media-libs/libsdl2[X,opengl,sound,video]
-			   media-libs/sdl2-mixer
+			media-libs/libsdl2[X,opengl,sound,video]
+			media-libs/sdl2-mixer
 		)
 		!sound? ( media-libs/libsdl2[X,opengl,video] )
 		media-libs/sdl2-image[png]
@@ -53,7 +53,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-lang/perl
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	sys-devel/flex
 	tiles? (
 		app-arch/advancecomp
@@ -67,11 +68,18 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
+	"${FILESDIR}"/fixed-font-path.patch
 	"${FILESDIR}"/gitless-1.patch
 	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
 
+python_check_deps() {
+	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
+
+	python-any-r1_pkg_setup
 
 	if use !ncurses && use !tiles ; then
 		ewarn "Neither ncurses nor tiles frontend"
@@ -82,6 +90,11 @@ pkg_setup() {
 	if use sound && use !tiles ; then
 		ewarn "Sound support is only available with tiles."
 	fi
+}
+
+src_prepare() {
+	default
+	python_fix_shebang "${S}/util/species-gen.py"
 }
 
 src_compile() {
