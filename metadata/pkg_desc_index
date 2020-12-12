@@ -15464,6 +15464,7 @@ net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
+net-vpn/frp 0.34.3: A reverse proxy that exposes a local server behind a NAT or firewall to the internet
 net-vpn/httptunnel 3.3-r2 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.47 0.9.48: A privacy-centric, anonymous network
 net-vpn/i2pd 2.32.0 2.32.1 2.33.0 2.34.0: A C++ daemon for accessing the I2P anonymous network
