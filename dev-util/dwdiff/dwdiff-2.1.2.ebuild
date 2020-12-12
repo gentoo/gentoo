@@ -25,7 +25,7 @@ DEPEND="
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-
+	"${FILESDIR}/C99-fix.patch"
 )
 
 src_prepare() {
