@@ -8555,7 +8555,7 @@ dev-python/osrf_pycommon 0.1.10-r1: Commonly needed Python modules used by Pytho
 dev-python/ovs 2.13.0: OVS bindings for python.
 dev-python/ovsdbapp 0.17.2 1.5.0: A library for creating OVSDB applications
 dev-python/owslib 0.20.0: Library for client programming with Open Geospatial Consortium web service
-dev-python/packaging 20.4-r1 20.5 20.7: Core utilities for Python packages
+dev-python/packaging 20.4-r1 20.5 20.7 20.8: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
@@ -8646,7 +8646,7 @@ dev-python/pudb 2019.2: A full-screen, console-based Python debugger
 dev-python/pure-sasl 0.6.1: High-level SASL client written in pure Python
 dev-python/pushbullet-py 0.12.0: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3-r1: Scientific report generator and literate programming tool
-dev-python/py 1.9.0-r1: library with cross-python path, ini-parsing, io, code, log facilities
+dev-python/py 1.9.0-r2: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 2.6.1: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-cpuinfo 6.0.0 7.0.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.4: Github-Flavored Markdown for Python-Markdown
@@ -15308,7 +15308,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.09.20 2020.11.26 2020.11.29 2020.12.02 2020.12.05 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.09.20 2020.11.26 2020.11.29 2020.12.02 2020.12.05 2020.12.12 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
