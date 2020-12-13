@@ -34,7 +34,9 @@ DEPEND="
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}/${P}-werror.patch" )
+PATCHES=(
+	"${FILESDIR}/subunit-1.4.0-werror.patch"
+)
 
 src_prepare() {
 	sed -i -e 's/os.chdir(os.path.dirname(__file__))//' setup.py || die
@@ -47,8 +49,8 @@ src_prepare() {
 		python/subunit/tests/test_subunit_tags.py || die
 
 	distutils-r1_src_prepare
-	multilib_copy_sources
 	eautoreconf
+	multilib_copy_sources
 }
 
 multilib_src_configure() {
