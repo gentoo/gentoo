@@ -2015,7 +2015,7 @@ app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PH
 app-emulation/protontricks 1.4.1 1.4.2: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.1.0-r2 5.1.0-r3 5.2.0 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.1.0-r2 5.1.0-r3 5.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
