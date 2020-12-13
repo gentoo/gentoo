@@ -1,7 +1,7 @@
 # https://bugs.gentoo.org/744313
-diff -NrU5 subunit-1.4.0.orig/configure.ac subunit-1.4.0/configure.ac
---- subunit-1.4.0.orig/configure.ac	2020-12-13 22:03:01.225671695 +0100
-+++ subunit-1.4.0/configure.ac	2020-12-13 22:03:26.899752669 +0100
+
+--- a/configure.ac
++++ b/configure.ac
 @@ -4,11 +4,11 @@
  m4_define([SUBUNIT_VERSION],
  m4_defn([SUBUNIT_MAJOR_VERSION]).m4_defn([SUBUNIT_MINOR_VERSION]).m4_defn([SUBUNIT_MICRO_VERSION]))
