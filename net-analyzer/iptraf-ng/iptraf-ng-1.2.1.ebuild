@@ -10,7 +10,7 @@ SRC_URI="https://github.com/iptraf-ng/iptraf-ng/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="doc"
 
 RDEPEND="
