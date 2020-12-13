@@ -16,7 +16,7 @@ LICENSE="CC-BY-2.0 GPL-2+ GPL-3 MIT"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-lang/php[json]
+	dev-lang/php[json(+)]
 	net-analyzer/rrdtool[graph]
 	virtual/httpd-php
 "
