@@ -80,6 +80,7 @@ src_compile() {
 	"${EPYTHON}" setup.py \
 		--verbose $(usex debug --debug "") \
 		--libdir-name $(get_libdir) \
+		--update-check-interval=0 \
 		linux-package || die "Failed to compile kitty."
 }
 
