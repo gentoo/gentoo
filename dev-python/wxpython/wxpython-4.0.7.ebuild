@@ -18,7 +18,9 @@ LICENSE="wxWinLL-3"
 SLOT="4.0"
 KEYWORDS="~alpha amd64 arm arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="test webkit"
-RESTRICT="!test? ( test )"
+# Tests broken: #726812, #722716
+RESTRICT="test"
+#RESTRICT="!test? ( test )"
 
 # wxPython doesn't seem to be able to optionally disable features. webkit is
 # optionally patched out because it's so huge, but other elements are not,
