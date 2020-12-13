@@ -2771,7 +2771,7 @@ app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell usin
 app-shells/tcsh 6.20.00 6.21.00-r1 6.22.02: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.28 3.30: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
-app-shells/yash 2.49 2.50: Yash is a POSIX-compliant command line shell
+app-shells/yash 2.50 2.51: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.8 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.31.0 0.32.0 9999: Additional completion definitions for Zsh
 app-shells/zsh-syntax-highlighting 0.7.0_beta1 0.7.1: Fish shell like syntax highlighting for zsh
