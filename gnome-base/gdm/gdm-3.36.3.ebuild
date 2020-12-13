@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 
-inherit eutils gnome2 pam readme.gentoo-r1 systemd udev user
+inherit eutils gnome2 pam readme.gentoo-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="GNOME Display Manager for managing graphical display servers and user logins"
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM"
@@ -187,10 +187,11 @@ src_configure() {
 	)
 
 	if use elogind; then
+		local pkgconfig="$(tc-getPKG_CONFIG)"
 		myconf+=(
 			--with-initial-vt=7 # TODO: Revisit together with startDM.sh and other xinit talks; also ignores plymouth possibility
-			SYSTEMD_CFLAGS=`pkg-config --cflags "libelogind" 2>/dev/null`
-			SYSTEMD_LIBS=`pkg-config --libs "libelogind" 2>/dev/null`
+			SYSTEMD_CFLAGS="$(${pkgconfig} --cflags "libelogind")"
+			SYSTEMD_LIBS="$(${pkgconfig} --libs "libelogind")"
 		)
 	fi
 
