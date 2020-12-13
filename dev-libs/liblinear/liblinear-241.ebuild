@@ -26,6 +26,12 @@ src_prepare() {
 		-e '/^CFLAGS/d;/^CXXFLAGS/d' \
 		-e 's|$${SHARED_LIB_FLAG}|& $(LDFLAGS)|g' \
 		Makefile || die
+
+	# fix install_name on Darwin
+	sed -i \
+		-e '/install_name/s:liblinear.so.$(SHVER):'"${EPREFIX}"'/usr/lib/liblinear.$(SHVER).dylib:' \
+		-e '/LDFLAGS/s:liblinear.so.$(SHVER):liblinear'"$(get_libname '$(SHVER)')"':' \
+		Makefile || die
 }
 
 src_compile() {
@@ -40,8 +46,8 @@ src_compile() {
 }
 
 src_install() {
-	dolib.so ${PN}.so.4
-	dosym ${PN}.so.4 /usr/$(get_libdir)/${PN}.so
+	dolib.so ${PN}$(get_libname 4)
+	dosym ${PN}$(get_libname 4) /usr/$(get_libdir)/${PN}$(get_libname)
 
 	newbin predict ${PN}-predict
 	newbin train ${PN}-train
