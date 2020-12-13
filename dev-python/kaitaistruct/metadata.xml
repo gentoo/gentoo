@@ -17,7 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">kaitai-io/kaitai_struct_python_runtime</remote-id>
-		<remote-id type="pypi">mitmproxy</remote-id>
+		<remote-id type="pypi">kaitaistruct</remote-id>
 	</upstream>
 </pkgmetadata>
-
