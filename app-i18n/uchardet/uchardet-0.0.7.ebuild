@@ -17,7 +17,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/uchardet/"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="cpu_flags_x86_sse2 static-libs test"
 RESTRICT="!test? ( test )"
 
