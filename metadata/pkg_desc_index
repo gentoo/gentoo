@@ -16199,6 +16199,7 @@ sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1: C++ bindings for libh2o
 sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
+sci-libs/libigl 2.2.0: A simple C++ geometry processing library
 sci-libs/libint 1.1.6 2.6.0 2.6.0-r2: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
@@ -17544,7 +17545,7 @@ sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.24 9999: A library for manipulating block devices
-sys-libs/libcap 2.43 2.44 2.45: POSIX 1003.1e capabilities
+sys-libs/libcap 2.43 2.45 2.46: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.11 0.8 0.8.2: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
