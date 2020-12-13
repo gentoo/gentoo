@@ -69,6 +69,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_riscv64? ( fdt )
 	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
+	vhost-user-fs? ( caps seccomp )
 	virtfs? ( caps xattr )
 	vte? ( gtk )
 	plugins? ( !static !static-user )
@@ -439,6 +440,14 @@ qemu_src_configure() {
 			echo "--disable-${2:-$1}"
 		fi
 	}
+	# Enable option only for tools build, but not 'user' or 'softmmu'
+	conf_tools() {
+		if [[ ${buildtype} == "tools" ]] ; then
+			use_enable "$@"
+		else
+			echo "--disable-${2:-$1}"
+		fi
+	}
 	conf_opts+=(
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
@@ -480,6 +489,7 @@ qemu_src_configure() {
 		$(conf_notuser vde)
 		$(conf_notuser vhost-net)
 		$(conf_notuser vhost-user-fs)
+		$(conf_tools vhost-user-fs virtiofsd)
 		$(conf_notuser virgl virglrenderer)
 		$(conf_notuser virtfs)
 		$(conf_notuser vnc)
