@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eapi7-ver gnome2
+inherit eapi7-ver gnome2 toolchain-funcs
 
 DESCRIPTION="The GNOME Flashback Panel"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-panel/"
@@ -61,9 +61,10 @@ src_configure() {
 	fi
 
 	if use elogind; then
+		local pkgconfig="$(tc-getPKG_CONFIG)"
 		myconf+=(
-			MENU_CFLAGS=`pkg-config --cflags gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind 2>/dev/null`
-			MENU_LIBS=`pkg-config --libs gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind 2>/dev/null`
+			MENU_CFLAGS="$(${pkgconfig} --cflags gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
+			MENU_LIBS="$(${pkgconfig} --libs gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
 		)
 	fi
 
