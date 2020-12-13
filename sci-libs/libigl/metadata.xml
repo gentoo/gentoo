@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D Printer Project</name>
+	</maintainer>
+	<longdescription>
+		ibigl is a simple C++ geometry processing library with a wide functionality including construction of sparse
+		discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and
+		diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for
+		OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">libigl/libigl</remote-id>
+	</upstream>
+</pkgmetadata>
