@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-12-13)
+# This new version of libcap-ng seems to (still)
+# break consumers.
+# bug #759550 (and dependent bugs)
+=sys-libs/libcap-ng-0.8.2
+
 # Hans de Graaff <graaff@gentoo.org> (2020-12-12)
 # Security issue with insecure use of /tmp, bug 743214
 # This slot masked for removal in 30 days, use slot 2 instead.
