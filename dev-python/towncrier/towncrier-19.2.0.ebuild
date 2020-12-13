@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Building newsfiles for your project"
@@ -32,7 +32,7 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 python_test() {
-	distutils_install_for_testing
+	distutils_install_for_testing --via-root
 
 	trial towncrier || die "tests failed with ${EPYTHON}"
 }
