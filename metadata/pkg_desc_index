@@ -4383,7 +4383,7 @@ dev-haskell/tasty 1.2.3: Modern and extensible testing framework
 dev-haskell/tasty-ant-xml 1.1.6: Render tasty output to XML for Jenkins
 dev-haskell/tasty-expected-failure 0.11.1.2: Mark tasty tests as failure expected
 dev-haskell/tasty-golden 2.3.1.1: Golden tests support for tasty
-dev-haskell/tasty-hedgehog 1.0.0.2 1.0.0.2-r1: Integration for tasty and hedgehog
+dev-haskell/tasty-hedgehog 1.0.0.2-r1: Integration for tasty and hedgehog
 dev-haskell/tasty-hunit 0.10.0.2: HUnit support for the Tasty test framework
 dev-haskell/tasty-kat 0.0.3: Known Answer Tests (KAT) framework for tasty
 dev-haskell/tasty-lua 0.2.0.1: Write tests in Lua, integrate into tasty
@@ -9152,7 +9152,7 @@ dev-python/svgwrite 1.4: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 1.4.0 2.0.0 2.0.1: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
-dev-python/sympy 1.6.2 1.7_rc1 1.7: Computer Algebra System in pure Python
+dev-python/sympy 1.6.2 1.7: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
 dev-python/tappy 3.0: Test Anything Protocol (TAP) tools
