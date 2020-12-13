@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.44-build-system-fixes.patch
+	"${FILESDIR}"/${PN}-2.45-build-system-fixes.patch
 	"${FILESDIR}"/${PN}-2.38-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
@@ -69,10 +69,9 @@ multilib_src_install() {
 	run_emake DESTDIR="${D}" install
 
 	gen_usr_ldscript -a cap
+	gen_usr_ldscript -a psx
 	if ! use static-libs ; then
-		# Don't remove libpsx.a!
-		# See https://bugs.gentoo.org/703912
-		rm "${ED}"/usr/$(get_libdir)/libcap.a || die
+		rm "${ED}"/usr/$(get_libdir)/lib{cap,psx}.a || die
 	fi
 
 	if [[ -d "${ED}"/usr/$(get_libdir)/security ]] ; then
