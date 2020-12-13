@@ -12,7 +12,7 @@ SRC_URI="https://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos"
-IUSE="clucene curl debug doc icu static-libs"
+IUSE="clucene curl debug doc icu"
 
 RDEPEND="sys-libs/zlib
 	curl? ( net-misc/curl )
@@ -26,16 +26,17 @@ DOCS=( AUTHORS CODINGSTYLE ChangeLog README )
 src_configure() {
 	use doc && DOCS+=( examples/ samples/ )
 
+	# Upstream default is to build both the shared and the static library,
+	# make sure we only build the shared one.
 	local mycmakeargs=(
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DLIBSWORD_LIBRARY_TYPE="Shared"
 		-DWITH_CLUCENE=$(usex clucene)
 		-DWITH_CURL=$(usex curl)
 		-DWITH_ICU=$(usex icu)
 		-DWITH_ZLIB=1
 	)
-	# Upstream default is to build both the shared and the static library
-	use static-libs || mycmakeargs+=( -DLIBSWORD_LIBRARY_TYPE="Shared" )
 
 	cmake_src_configure
 }
