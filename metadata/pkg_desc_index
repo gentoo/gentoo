@@ -17480,7 +17480,7 @@ sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.1.0 2.1.1 2.2.0: An automatic disk mounting service using udisks
 sys-fs/udisks 2.9.0 2.9.1: Daemon providing interfaces to work with storage devices
-sys-fs/unionfs-fuse 1.0 2.0 2.1 9999: Self-syncing tree-merging file system based on FUSE
+sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
