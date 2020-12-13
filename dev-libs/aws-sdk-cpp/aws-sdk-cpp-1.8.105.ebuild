@@ -17,12 +17,13 @@ KEYWORDS="~amd64 ~x86"
 
 MODULES=(
 	access-management apigateway appconfig backup batch budgets chime cloud-desktop cloud-dev cloud-media
-	cloud-mobile cloudformation cloudfront cloudhsm cloudsearch cloudwatch cognito config dlm ebs ec2 ecr ecs eks
-	elasticache elasticbeanstalk elastic-inference elasticloadbalancing elasticmapreduce email es events forecast
-	frauddetector fsx globalaccelerator iot kendra kinesis kms lambda lex license-manager lightsail machinelearning
-	macie managedblockchain marketplace networkmanager opsworks organizations other outposts personalize polly qldb
-	queues rds rekognition resource-groups route53 s3 sagemaker secretsmanager securityhub serverlessrepo shield sns
-	sqs textract transcribe translate waf
+	cloud-mobile cloudformation cloudfront cloudhsm cloudsearch cloudwatch cognito config dlm ebs ec2 ecr ecs
+	eks elasticache elasticbeanstalk elastic-inference elasticloadbalancing elasticmapreduce email es events
+	forecast frauddetector fsx globalaccelerator iot kendra kinesis kms lambda lex license-manager lightsail
+	lookoutvision machinelearning macie managedblockchain marketplace mwaa networkmanager opsworks
+	organizations other outposts personalize polly qldb queues rds rekognition resource-groups route53 s3
+	sagemaker secretsmanager securityhub serverlessrepo shield sns sqs textract timestream transcribe
+	translate waf
 )
 
 IUSE="+http libressl pulseaudio +rtti +ssl static-libs test unity-build ${MODULES[*]}"
@@ -36,9 +37,9 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	>=dev-libs/aws-c-common-0.4.26:=[static-libs=]
-	>=dev-libs/aws-c-event-stream-0.1.6:=[static-libs=]
-	>=dev-libs/aws-checksums-0.1.9:=[static-libs=]
+	>=dev-libs/aws-c-common-0.4.62:=[static-libs=]
+	>=dev-libs/aws-c-event-stream-0.2.5:=[static-libs=]
+	>=dev-libs/aws-checksums-0.1.10:=[static-libs=]
 	sys-libs/zlib
 "
 RDEPEND="
@@ -72,7 +73,7 @@ src_configure() {
 		if use ${module}; then
 			if [ "${module}" = "access-management" ] ; then
 				mybuildtargets+=";${module};accessanalyzer;acm;acm-pca;dataexchange;iam"
-				mybuildtargets+=";identity-management;identitystore;ram;sso;sso-oidc;sts"
+				mybuildtargets+=";identity-management;identitystore;ram;sso;sso-admin;sso-oidc;sts"
 			elif [ "${module}" = "apigateway" ] ; then
 				mybuildtargets+=";${module};apigatewaymanagementapi;apigatewayv2"
 			elif [ "${module}" = "budgets" ] ; then
@@ -100,8 +101,8 @@ src_configure() {
 			elif [ "${module}" = "cloudsearch" ] ; then
 				mybuildtargets+=";${module};cloudsearchdomain"
 			elif [ "${module}" = "cloudwatch" ] ; then
-				mybuildtargets+=";application-insights;appmesh;cloudtrail;compute-optimizer;guardduty"
-				mybuildtargets+=";health;inspector;logs;monitoring;synthetics"
+				mybuildtargets+=";application-insights;appmesh;auditmanager;cloudtrail;compute-optimizer"
+				mybuildtargets+=";detective;devops-guru;guardduty;health;inspector;logs;monitoring;synthetics"
 			elif [ "${module}" = "cognito" ] ; then
 				mybuildtargets+=";cognito-identity;cognito-idp;cognito-sync"
 			elif [ "${module}" = "dynamodb" ] ; then
@@ -109,6 +110,10 @@ src_configure() {
 			elif [ "${module}" = "ec2" ] ; then
 				mybuildtargets+=";${module};autoscaling;autoscaling-plans;application-autoscaling"
 				mybuildtargets+=";ec2-instance-connect;elasticfilesystem;imagebuilder;savingsplans"
+			elif [ "${module}" = "ecr" ] ; then
+				mybuildtargets+=";${module};ecr-public"
+			elif [ "${module}" = "eks" ] ; then
+				mybuildtargets+=";${module};emr-containers"
 			elif [ "${module}" = "elasticloadbalancing" ] ; then
 				mybuildtargets+=";${module};elasticloadbalancingv2"
 			elif [ "${module}" = "email" ] ; then
@@ -132,16 +137,20 @@ src_configure() {
 			elif [ "${module}" = "marketplace" ] ; then
 				mybuildtargets+=";marketplacecommerceanalytics;marketplace-catalog"
 				mybuildtargets+=";marketplace-entitlement;meteringmarketplace;pricing"
+				mybuildtargets+=";servicecatalog-appregistry"
 			elif [ "${module}" = "opsworks" ] ; then
 				mybuildtargets+=";${module};opsworkscm"
 			elif [ "${module}" = "other" ] ; then
 				mybuildtargets+=";AWSMigrationHub;alexaforbusiness;appflow;braket;clouddirectory"
-				mybuildtargets+=";comprehend;comprehendmedical;connect;datapipeline;datasync"
+				mybuildtargets+=";comprehend;comprehendmedical;connect;connect-contact-lens"
+				mybuildtargets+=";connectparticipant;customer-profiles;datapipeline;databrew;datasync"
 				mybuildtargets+=";directconnect;discovery;dms;docdb;ds;dynamodb;gamelift;glue"
-				mybuildtargets+=";groundstation;importexport;kafka;lakeformation"
+				mybuildtargets+=";groundstation;healthlake;importexport;kafka;lakeformation"
 				mybuildtargets+=";migrationhub-config;mq;mturk-requester;neptune;quicksight;redshift"
 				mybuildtargets+=";robomaker;sdb;schemas;service-quotas;servicecatalog;servicediscovery"
 				mybuildtargets+=";signer;sms;snowball;ssm;states;storagegateway;support;swf"
+			elif [ "${module}" = "outposts" ] ; then
+				mybuildtargets+=";${module};s3outposts"
 			elif [ "${module}" = "personalize" ] ; then
 				mybuildtargets+=";${module};personalize-events;personalize-runtime"
 			elif [ "${module}" = "polly" ] ; then
@@ -157,11 +166,14 @@ src_configure() {
 			elif [ "${module}" = "s3" ] ; then
 				mybuildtargets+=";${module};athena;awstransfer;glacier;s3-encryption;s3control;transfer"
 			elif [ "${module}" = "sagemaker" ] ; then
-				mybuildtargets+=";${module};sagemaker-a2i-runtime;sagemaker-runtime"
+				mybuildtargets+=";${module};sagemaker-a2i-runtime;sagemaker-edge"
+				mybuildtargets+=";sagemaker-featurestore-runtime;sagemaker-runtime"
+			elif [ "${module}" = "timestream" ] ; then
+				mybuildtargets+=";timestream-query;timestream-write"
 			elif [ "${module}" = "transcribe" ] ; then
 				mybuildtargets+=";${module};transcribestreaming"
 			elif [ "${module}" = "waf" ] ; then
-				mybuildtargets+=";${module};fms;waf-regional;wafv2"
+				mybuildtargets+=";${module};fms;network-firewall;waf-regional;wafv2"
 			else
 				mybuildtargets+=";${module}"
 			fi
