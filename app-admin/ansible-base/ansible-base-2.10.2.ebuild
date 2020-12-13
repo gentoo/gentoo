@@ -14,8 +14,9 @@ SRC_URI="https://releases.ansible.com/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x64-macos"
-IUSE="doc test"
+IUSE="test"
 RESTRICT="test"
+# doc removed due to https://github.com/ansible/ansible/issues/71395
 
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
@@ -36,11 +37,6 @@ DEPEND="
 	!<app-admin/ansible-2.10
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx-notfound-page[${PYTHON_USEDEP}]
-		>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
-	)
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
@@ -57,21 +53,11 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
-python_compile_all() {
-	if use doc; then
-		cd docs/docsite || die
-		export CPUS=4
-		emake -f Makefile.sphinx html
-	fi
-}
-
 python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/docsite/_build/html/. )
 	distutils-r1_python_install_all
-
 	dodoc -r examples
 }
