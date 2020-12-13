@@ -25,11 +25,11 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 
-	# Fix 
+	# Fix
 	# QA Notice: The following files contain writable and executable sections (...)
 	sed \
-		 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
-		 -i "${S}"/pq-crypto/sike_r2/fp_x64_asm.S || die "sed failed"
+		-e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
+		-i "${S}"/pq-crypto/sike_r2/fp_x64_asm.S || die "sed failed"
 
 	cmake_src_prepare
 }
