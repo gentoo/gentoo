@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-12-13)
+# Requires unkeyworded, fetch-restricted deps
+net-proxy/haproxy device-atlas
+
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-07)
 # media-libs/liblastfm fails to build with tests Bug #758896
 media-sound/clementine lastfm
