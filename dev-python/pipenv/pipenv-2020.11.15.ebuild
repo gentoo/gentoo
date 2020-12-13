@@ -21,18 +21,19 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-python/certifi[${PYTHON_USEDEP}]
-	>=dev-python/pip-18.0[${PYTHON_USEDEP}]
-	dev-python/virtualenv[${PYTHON_USEDEP}]
-	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]
+	dev-python/pip[${PYTHON_USEDEP}]
+	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
+	dev-python/virtualenv-clone[${PYTHON_USEDEP}]
 	"
 
 BDEPEND="
+	${RDEPEND}
 	test? (
-		${RDEPEND}
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		<dev-python/pytest-5[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
 
@@ -41,8 +42,8 @@ src_prepare() {
 	# this should be removed when upstream removes support for Python2
 	rm -vR "${S}/${PN}/patched/yaml2/" || die
 	# disable running of unittests in parallel with xdist
-	sed -i 's/addopts = -ra -n auto/;&/g' setup.cfg
-	sed -i 's/plugins = xdist/;&/g' setup.cfg
+	sed -i 's/addopts = -ra -n auto/;&/g' setup.cfg || die
+	sed -i 's/plugins = xdist/;&/g' setup.cfg || die
 	distutils-r1_src_prepare
 }
 

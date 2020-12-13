@@ -11,20 +11,22 @@ inherit distutils-r1
 DESCRIPTION="BibTeX-compatible bibliography processor"
 HOMEPAGE="https://pybtex.org https://pypi.org/project/pybtex/"
 SRC_URI="https://files.pythonhosted.org/packages/source/p/${PN}/${P}.tar.gz"
-PATCHES=( "${FILESDIR}/${P}-fix-test-installation.patch" )
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/latexcodec[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]"
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]"
 
 BDEPEND="test?  (
-			dev-python/nose[${PYTHON_USEDEP}]
-		)"
+		dev-python/nose[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
+
+PATCHES=( "${FILESDIR}/${PN}-0.22.2-fix-test-installation.patch" )
