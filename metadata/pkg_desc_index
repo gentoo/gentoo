@@ -5135,7 +5135,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.4.1 78.5.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.2.1 8.2.2 8.3.8 8.3.9 8.3.10: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.2.1 8.2.2 8.3.8 8.3.9 8.3.10 8.3.11: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1: Tool Command Language
