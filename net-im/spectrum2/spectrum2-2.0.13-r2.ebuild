@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake systemd
+inherit cmake systemd tmpfiles
 
 DESCRIPTION="An open source instant messaging transport"
 HOMEPAGE="https://www.spectrum.im"
@@ -104,7 +104,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/spectrum2.initd spectrum2
 	systemd_newunit "${FILESDIR}"/spectrum2.service spectrum2.service
-	systemd_newtmpfilesd "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
+	newtmpfiles "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
 
 	einstalldocs
 }
