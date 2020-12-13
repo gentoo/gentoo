@@ -170,13 +170,13 @@ SOFTMMU_TOOLS_DEPEND="
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
 		~sys-firmware/edk2-ovmf-201905[binary]
-		~sys-firmware/ipxe-1.0.0_p20190728[binary]
+		~sys-firmware/ipxe-1.0.0_p20190728[binary,qemu]
 		~sys-firmware/seabios-1.12.0[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/edk2-ovmf
-		sys-firmware/ipxe
+		sys-firmware/ipxe[qemu]
 		>=sys-firmware/seabios-1.10.2[seavgabios]
 		sys-firmware/sgabios
 	)"
