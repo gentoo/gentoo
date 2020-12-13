@@ -17,8 +17,10 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	|| ( <dev-util/cmake-3.19.0
-	     >dev-util/cmake-3.19.1 )
+	|| (
+		>dev-util/cmake-3.19.1
+		<dev-util/cmake-3.19.0
+	)
 "
 
 PATCHES=(
