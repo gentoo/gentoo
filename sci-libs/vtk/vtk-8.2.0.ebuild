@@ -130,6 +130,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch # bug 721048
 	"${FILESDIR}"/${P}-py38.patch
 	"${FILESDIR}"/${P}-freetype-2.10.3-provide-FT_CALLBACK_DEF.patch # bug #751088
+	"${FILESDIR}"/${P}-pugixml.patch
 )
 
 RESTRICT="test"
