@@ -5281,7 +5281,7 @@ dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters wi
 dev-libs/intel-neo 20.16.16582 20.37.17906: Intel Graphics Compute Runtime for L0 and OpenCL, for Broadwell and beyond
 dev-libs/isl 0.22.1 0.23-r1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
-dev-libs/jansson 2.12 2.13.1: C library for encoding, decoding and manipulating JSON data
+dev-libs/jansson 2.12 2.13.1 2.13.1-r1: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.14-r3 0.15 9999: A JSON implementation in C
@@ -8600,7 +8600,7 @@ dev-python/pikepdf 1.18.0 2.2.0-r1: Python library to work with pdf files based 
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 7.0.0 7.2.0 8.0.1: Python Imaging Library (fork)
 dev-python/pip 20.2.4 20.3.1: Installs python packages -- replacement for easy_install
-dev-python/pipenv 2020.8.13 2020.11.4: Python Development Workflow for Humans
+dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1-r1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -8665,7 +8665,7 @@ dev-python/pyatspi 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.5.0 2.6.0 2.6.1: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
-dev-python/pybtex 0.22.2: BibTeX-compatible bibliography processor
+dev-python/pybtex 0.23.0: BibTeX-compatible bibliography processor
 dev-python/pycadf 2.9.0-r1 3.1.1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.20.0: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
@@ -15073,7 +15073,7 @@ net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/frr 7.5: The FRRouting Protocol Suite
-net-misc/gallery-dl 1.15.2-r1 1.15.3 9999: Download image galleries and collections from several image hosting sites
+net-misc/gallery-dl 1.15.2-r1 1.15.3 1.16.0 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -18427,7 +18427,7 @@ x11-misc/pcmanfm-qt 0.15.1 0.16.0: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 8 8.1 8.2 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
-x11-misc/polybar 3.4.3: A fast and easy-to-use tool for creating status bars
+x11-misc/polybar 3.4.3 3.5.1: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.31: py3status is an extensible i3status wrapper written in python
