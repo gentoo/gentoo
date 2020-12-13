@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="A GPL'd perl server for house automation"
 HOMEPAGE="https://www.fhem.de/"
@@ -92,7 +92,7 @@ src_install() {
 	newinitd "${FILESDIR}"/fhem.initd fhem
 
 	systemd_dounit "${FILESDIR}"/fhem.service
-	systemd_newtmpfilesd "${FILESDIR}"/fhem.tmpfiles fhem.conf
+	newtmpfiles "${FILESDIR}"/fhem.tmpfiles fhem.conf
 
 	newman docs/fhem.man fhem.pl.1
 
