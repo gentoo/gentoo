@@ -31,6 +31,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-werror
 		$(use_enable static-libs static)
 		$(use_enable utils)
 	)
