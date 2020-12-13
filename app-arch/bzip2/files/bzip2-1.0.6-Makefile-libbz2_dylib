@@ -1,0 +1,42 @@
+
+# This Makefile builds a shared version of the library, 
+# libbz2.1.0.6.dylib, with install_name libbz2.1.dylib on Darwin
+#
+# Makefile created and used by Gentoo
+
+# ------------------------------------------------------------------
+# This file is part of bzip2/libbzip2, a program and library for
+# lossless, block-sorting data compression.
+#
+# bzip2/libbzip2 version 1.0.6 of 6 September 2010
+# Copyright (C) 1996-2010 Julian Seward <jseward@bzip.org>
+#
+# Please read the WARNING, DISCLAIMER and PATENTS sections in the 
+# README file.
+#
+# This program is released under the terms of the license contained
+# in the file LICENSE.
+# ------------------------------------------------------------------
+
+
+SHELL=/bin/sh
+CC=gcc
+BIGFILES=-D_FILE_OFFSET_BITS=64
+CFLAGS+=-fpic -fPIC -Wall -Winline $(BIGFILES) $(CPPFLAGS)
+PREFIX=/usr
+LIBDIR=lib
+SOLDFLAGS=-dynamiclib -install_name $(PREFIX)/$(LIBDIR)/libbz2.1.dylib -compatibility_version 1.0.0 -current_version 1.0.6
+
+OBJS= blocksort.o  \
+      huffman.o    \
+      crctable.o   \
+      randtable.o  \
+      compress.o   \
+      decompress.o \
+      bzlib.o
+
+all: $(OBJS)
+	$(CC) $(LDFLAGS) $(SOLDFLAGS) -o libbz2.1.0.6.dylib $(OBJS)
+
+clean: 
+	rm -f $(OBJS) bzip2.o libbz2.1.0.6.dylib libbz2.1.0.dylib bzip2-shared
