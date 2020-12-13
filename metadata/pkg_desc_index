@@ -17914,7 +17914,7 @@ www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
 www-apps/bugzilla 5.0.6-r1: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 1.2.3-r1 9999: a fast web-interface for git repositories
-www-apps/cgp 1_p20190510: A graphical web-based front-end for visualizing RRD collected by collectd
+www-apps/cgp 1_p20190510-r1: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/chromedriver-bin 87.0.4280.20: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
