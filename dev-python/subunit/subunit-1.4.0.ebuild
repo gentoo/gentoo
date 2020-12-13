@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
-inherit distutils-r1 multilib-minimal
+inherit distutils-r1 multilib-minimal autotools
 
 DESCRIPTION="A streaming protocol for test results"
 HOMEPAGE="https://launchpad.net/subunit https://pypi.org/project/python-subunit/"
@@ -34,6 +34,10 @@ DEPEND="
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/subunit-1.4.0-werror.patch"
+)
+
 src_prepare() {
 	sed -i -e 's/os.chdir(os.path.dirname(__file__))//' setup.py || die
 
@@ -45,6 +49,7 @@ src_prepare() {
 		python/subunit/tests/test_subunit_tags.py || die
 
 	distutils-r1_src_prepare
+	eautoreconf
 	multilib_copy_sources
 }
 

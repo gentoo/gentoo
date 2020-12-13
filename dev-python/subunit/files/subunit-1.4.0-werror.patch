@@ -1,0 +1,34 @@
+# https://bugs.gentoo.org/744313
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,11 +4,11 @@
+ m4_define([SUBUNIT_VERSION],
+ m4_defn([SUBUNIT_MAJOR_VERSION]).m4_defn([SUBUNIT_MINOR_VERSION]).m4_defn([SUBUNIT_MICRO_VERSION]))
+ AC_PREREQ([2.59])
+ AC_INIT([subunit], [SUBUNIT_VERSION], [subunit-dev@lists.launchpad.net])
+ AC_CONFIG_SRCDIR([c/lib/child.c])
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
+ AC_CONFIG_MACRO_DIR([m4])
+ [SUBUNIT_MAJOR_VERSION]=SUBUNIT_MAJOR_VERSION
+ [SUBUNIT_MINOR_VERSION]=SUBUNIT_MINOR_VERSION
+ [SUBUNIT_MICRO_VERSION]=SUBUNIT_MICRO_VERSION
+ [SUBUNIT_VERSION]=SUBUNIT_VERSION
+@@ -26,14 +26,14 @@
+ AC_PROG_LIBTOOL
+ AM_PATH_PYTHON
+ 
+ AS_IF([test "$GCC" = "yes"],
+       [
+-  SUBUNIT_CFLAGS="-Wall -Werror -Wextra -Wstrict-prototypes "
++  SUBUNIT_CFLAGS="-Wall -Wextra -Wstrict-prototypes "
+   SUBUNIT_CFLAGS="$SUBUNIT_CFLAGS -Wmissing-prototypes -Wwrite-strings "
+   SUBUNIT_CFLAGS="$SUBUNIT_CFLAGS -Wno-variadic-macros "
+-  SUBUNIT_CXXFLAGS="-Wall -Werror -Wextra -Wwrite-strings -Wno-variadic-macros"
++  SUBUNIT_CXXFLAGS="-Wall -Wextra -Wwrite-strings -Wno-variadic-macros"
+       ])
+ 
+ AM_CFLAGS="$SUBUNIT_CFLAGS -I\$(top_srcdir)/c/include"
+ AM_CXXFLAGS="$SUBUNIT_CXXFLAGS -I\$(top_srcdir)/c/include"
+ AC_SUBST(AM_CFLAGS)
