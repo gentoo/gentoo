@@ -1,7 +1,8 @@
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-libs/pam doc? ( www-client/lynx ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=doc? ( www-client/lynx ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/pam
 DESCRIPTION=pam module to allow password-storing in $HOME/dotfiles
-EAPI=5
+EAPI=7
 HOMEPAGE=http://0pointer.de/lennart/projects/pam_dotfile/ https://github.com/gentoo/pam_dotfile/
 IUSE=doc
 KEYWORDS=amd64 ppc x86
@@ -9,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=sys-libs/pam
 SLOT=0
 SRC_URI=http://0pointer.de/lennart/projects/pam_dotfile/pam_dotfile-0.7.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	autotools-utils	961893b8004e6cf64fbef1cea6ed8bd2	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	686eaab303305a908fd57b2fd7617800	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	226d8d2ff588bdfd7d188512dbdb189d	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=7ffdb8c68f96a1bf73071f821015f7e8
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	226d8d2ff588bdfd7d188512dbdb189d	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=3ef88697327775b9a0c5540148a280f0
