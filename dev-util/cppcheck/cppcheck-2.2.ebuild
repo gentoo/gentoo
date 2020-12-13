@@ -20,6 +20,7 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qthelp
 		dev-qt/qtprintsupport:5
 	)
 "
