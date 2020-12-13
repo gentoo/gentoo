@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake
 
-DESCRIPTION="AWS SDK for C module, handles IO and TLS work for application protocols."
+DESCRIPTION="AWS SDK for C module, handles IO and TLS work for application protocols"
 HOMEPAGE="https://github.com/awslabs/aws-c-io"
 SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -17,8 +17,10 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	|| ( <dev-util/cmake-3.19.0
-	     >dev-util/cmake-3.19.1 )
+	|| (
+		>dev-util/cmake-3.19.1
+		<dev-util/cmake-3.19.0
+	)
 "
 
 DEPEND="
