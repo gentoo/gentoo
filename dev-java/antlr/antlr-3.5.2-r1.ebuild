@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit eutils java-pkg-2 java-pkg-simple
 
@@ -18,21 +18,26 @@ RESTRICT="!test? ( test )"
 CDEPEND="dev-java/stringtemplate:4"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.8
 	test? ( dev-java/junit:4 )"
 
 S="${WORKDIR}/${PN}3-${PV}"
 JAVA_GENTOO_CLASSPATH_EXTRA="${S}/${PN}-runtime.jar"
 JAVA_GENTOO_CLASSPATH="stringtemplate-4"
+PATCHES=(
+	"${FILESDIR}/${PV}-test-fixes.patch"
+)
 
 src_unpack() {
 	unpack ${P}.tar.gz
 }
 
-java_prepare() {
+src_prepare() {
+	default
+
 	java-pkg_clean
 
 	# This requires StringTemplate v3 and is only needed for
@@ -42,7 +47,6 @@ java_prepare() {
 
 	# Some tests have to be removed as a result.
 	rm -v tool/src/test/java/org/antlr/test/Test{RewriteTemplates,Templates}.java || die
-	epatch "${FILESDIR}/${PV}-test-fixes.patch"
 
 	# Some tests fail under Java 8 in ways that probably aren't limited
 	# to the tests. This is bad but upstream is never going to update
