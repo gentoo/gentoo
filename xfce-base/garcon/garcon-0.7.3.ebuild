@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg-utils
+
 DESCRIPTION="Xfce's freedesktop.org specification compatible menu implementation library"
 HOMEPAGE="https://docs.xfce.org/xfce/exo/start"
 SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
@@ -38,4 +40,12 @@ src_install() {
 	default
 
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
