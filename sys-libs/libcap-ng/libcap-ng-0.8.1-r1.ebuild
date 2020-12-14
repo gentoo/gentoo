@@ -9,7 +9,11 @@ inherit autotools flag-o-matic python-r1
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"
-SRC_URI="https://people.redhat.com/sgrubb/${PN}/${P}.tar.gz"
+# Fedora 0.8.1 https://src.fedoraproject.org/rpms/libcap-ng/c/49e3114cf75fabe9919300e42f7b151eee9e37d1?branch=master
+# Fedora 0.8.2 https://src.fedoraproject.org/rpms/libcap-ng/c/a5b0f536df1132d8e7afa4c0ce07b630e7970cad?branch=master
+SRC_URI="https://people.redhat.com/sgrubb/${PN}/${P}.tar.gz
+		https://src.fedoraproject.org/rpms/libcap-ng/raw/49e3114cf75fabe9919300e42f7b151eee9e37d1/f/libcap-ng-0.8.2-apply.patch
+		https://src.fedoraproject.org/rpms/libcap-ng/raw/a5b0f536df1132d8e7afa4c0ce07b630e7970cad/f/libcap-ng-0.8.2-apply-disable.patch"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -21,6 +25,11 @@ RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
 BDEPEND="python? ( >=dev-lang/swig-2 )"
+
+PATCHES=(
+	"${DISTDIR}"/libcap-ng-0.8.2-apply.patch
+	"${DISTDIR}"/libcap-ng-0.8.2-apply-disable.patch
+)
 
 src_prepare() {
 	default
