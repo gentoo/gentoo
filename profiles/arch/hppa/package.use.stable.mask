@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
+# noone actually tests it on real hardware anymore
+x11-base/xorg-server xorg
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
 # not all needed sphinx modules are stable on hppa.
 dev-python/aiohttp doc
