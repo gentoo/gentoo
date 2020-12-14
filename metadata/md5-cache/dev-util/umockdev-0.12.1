@@ -4,11 +4,11 @@ DESCRIPTION=Mock hardware devices for creating unit tests
 EAPI=6
 HOMEPAGE=https://github.com/martinpitt/umockdev/
 IUSE=+introspection static-libs test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=amd64 ~ppc64 x86
+KEYWORDS=amd64 ~arm64 ~ppc64 x86
 LICENSE=LGPL-2.1+
 RDEPEND=virtual/libudev:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=dev-libs/glib-2.32:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/martinpitt/umockdev/releases/download/0.12.1/umockdev-0.12.1.tar.xz
 _eclasses_=multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=dd4f1c180d52fb111793c8cfd1d53704
+_md5_=781ee2f04c7fd641221cf9992e4dbee4
