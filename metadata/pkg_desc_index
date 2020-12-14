@@ -2491,6 +2491,7 @@ app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
 app-misc/pfm 2.12.3-r1: A terminal-based file manager written in Perl
 app-misc/physlock 11-r1 13 13-r1: Lightweight Linux console locking tool
 app-misc/pip 1.2-r3: Wrapper around programs that don't support stdin/stdout
+app-misc/piper 0.5.1: GTK configuration application for libratbag
 app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/prog-express 3.8.8: A modern and intuitive control software for the Batronix USB programming devices
@@ -5452,7 +5453,7 @@ dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing 
 dev-libs/libpwquality 1.4.2 1.4.4: Library for password quality checking and generating random passwords
 dev-libs/libpy 0.2.5-r1: Utilities for writing C++ extension modules
 dev-libs/libqtxdg 3.5.0 3.6.0: Qt Implementation of XDG Standards
-dev-libs/libratbag 0.9: Library to configure gaming mice
+dev-libs/libratbag 0.15: Library to configure gaming mice
 dev-libs/librdkafka 1.4.4 1.5.0 1.5.2: Apache Kafka C/C++ client library
 dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
@@ -14079,7 +14080,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
-media-video/makemkv 1.15.3: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.15.4: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 20.03 20.08 20.09: MediaInfo supplies technical and tag information about media files
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
@@ -14525,7 +14526,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1 2.3.3.0: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.10.1-r1 1.11.0 1.12.0 1.12.0-r1 1.13.0: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.10.1-r1 1.11.0 1.12.0 1.12.0-r1 1.13.0 1.13.0-r1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.8: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0 2.1.1: Arno's iptables firewall script
