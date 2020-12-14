@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info pam systemd toolchain-funcs
+inherit autotools linux-info pam systemd
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
