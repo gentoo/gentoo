@@ -50,7 +50,6 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-path.patch
-	"${FILESDIR}"/${PV}-configure-CXXFLAGS-quoting.patch
 )
 
 src_configure() {
