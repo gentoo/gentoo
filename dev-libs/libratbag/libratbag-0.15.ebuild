@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit meson python-single-r1 udev
+inherit meson python-single-r1 systemd udev
 
 DESCRIPTION="Library to configure gaming mice"
 HOMEPAGE="https://github.com/libratbag/libratbag"
@@ -37,6 +37,7 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
+	acct-group/plugdev
 	dev-libs/gobject-introspection
 	dev-libs/libevdev
 	virtual/libudev
@@ -63,10 +64,12 @@ src_configure() {
 	python_setup
 
 	local emesonargs=(
-		$(meson_use systemd)
-		-Dlogind-provider=$(usex elogind elogind systemd)
 		$(meson_use doc documentation)
+		$(meson_use systemd)
 		$(meson_use test tests)
+		-Ddbus-group="plugdev"
+		-Dlogind-provider=$(usex elogind elogind systemd)
+		-Dsystemd-unit-dir="$(systemd_get_systemunitdir)"
 		-Dudev-dir="${EPREFIX}$(get_udevdir)"
 	)
 
@@ -76,4 +79,12 @@ src_configure() {
 src_install() {
 	meson_src_install
 	python_fix_shebang "${ED}"/usr/bin/
+	newinitd "${FILESDIR}"/ratbagd.init ratbagd
+}
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		elog 'You need to be in "plugdev" group in order to access the'
+		elog 'ratbagd dbus interface'
+	fi
 }
