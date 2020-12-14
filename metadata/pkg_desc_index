@@ -7909,7 +7909,7 @@ dev-python/attrs 20.2.0-r1 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
-dev-python/autobahn 20.4.3 20.7.1 20.12.1: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 20.4.3 20.7.1 20.12.1 20.12.2: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -7953,8 +7953,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 1.16.26 1.16.28 1.16.29 1.16.30 9999: The AWS SDK for Python
-dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 1.19.26 1.19.28 1.19.29 1.19.30 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 1.16.26 1.16.28 1.16.29 1.16.30 1.16.36 9999: The AWS SDK for Python
+dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 1.19.26 1.19.28 1.19.29 1.19.30 1.19.36 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.18-r1 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8330,7 +8330,7 @@ dev-python/jinja 2.11.2-r1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
-dev-python/joblib 0.17.0: Tools to provide lightweight pipelining in Python
+dev-python/joblib 0.17.0 1.0.0: Tools to provide lightweight pipelining in Python
 dev-python/josepy 1.4.0 1.5.0: JOSE protocol implementation in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
@@ -16818,7 +16818,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.13 0.14 9999: base functions required by all Gentoo systems
-sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
+sys-apps/gentoo-systemd-integration 7 8 9 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.36.3: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.4 1.0.5: GPT partition table manipulator for Linux
@@ -17549,7 +17549,7 @@ sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace u
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.24 9999: A library for manipulating block devices
 sys-libs/libcap 2.43 2.45 2.46: POSIX 1003.1e capabilities
-sys-libs/libcap-ng 0.7.11 0.8 0.8.2: POSIX 1003.1e capabilities
+sys-libs/libcap-ng 0.7.11 0.8 0.8.1-r1 0.8.2-r1: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: Low level support for a standard C++ library

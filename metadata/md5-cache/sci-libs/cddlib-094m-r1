@@ -9,4 +9,4 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/gmp:0=
 SLOT=0
 SRC_URI=https://github.com/cddlib/cddlib/releases/download/0.94m/cddlib-0.94m.tar.gz
-_md5_=1307a856ff434573290aaf1abde218d1
+_md5_=54c8cf2b1536738ab747d64710fc1e0f
