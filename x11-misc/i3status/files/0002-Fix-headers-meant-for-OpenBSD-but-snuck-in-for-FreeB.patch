@@ -1,0 +1,33 @@
+From 70b954b122c1dae1d21593d6a5239d38fde1fd55 Mon Sep 17 00:00:00 2001
+From: Jasper Lievisse Adriaanse <jasper@humppa.nl>
+Date: Mon, 8 Jul 2019 20:14:59 +0200
+Subject: [PATCH 2/7] Fix headers meant for OpenBSD, but snuck in for FreeBSD
+
+---
+ src/print_battery_info.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/print_battery_info.c b/src/print_battery_info.c
+index e2a790c..1768bc5 100644
+--- a/src/print_battery_info.c
++++ b/src/print_battery_info.c
+@@ -20,8 +20,6 @@
+ #include <dev/acpica/acpiio.h>
+ #include <sys/sysctl.h>
+ #include <sys/types.h>
+-#include <sys/sysctl.h>
+-#include <sys/sensors.h>
+ #endif
+ 
+ #if defined(__DragonFly__)
+@@ -33,6 +31,7 @@
+ #include <sys/fcntl.h>
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
++#include <sys/sysctl.h>
+ #include <sys/sensors.h>
+ #endif
+ 
+-- 
+2.26.2
+
