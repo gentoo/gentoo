@@ -22,8 +22,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove_Werror.patch
+)
+
 src_prepare() {
-	default
+	cmake_src_prepare
 
 	# Fix
 	# QA Notice: The following files contain writable and executable sections (...)
@@ -31,7 +35,14 @@ src_prepare() {
 		-e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
 		-i "${S}"/pq-crypto/sike_r2/fp_x64_asm.S || die "sed failed"
 
-	cmake_src_prepare
+	# Fix shared library building, needed for USE="test"
+	# See: https://github.com/awslabs/s2n/issues/2401
+	if use test; then
+		sed -i -e 's, -fvisibility=hidden,,' "${S}"/CMakeLists.txt || die "sed failed"
+		# Remove s2n_self_talk_nonblocking_test, it is broken.
+		# See: https://github.com/awslabs/s2n/issues/2051#issuecomment-744543724
+		rm "${S}"/tests/unit/s2n_self_talk_nonblocking_test.c
+	fi
 }
 
 src_configure() {

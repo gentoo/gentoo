@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt	2020-12-14 17:24:27.577239622 +0100
++++ b/CMakeLists.txt	2020-12-14 17:24:50.036240917 +0100
+@@ -193,7 +193,7 @@
+ 
+ set(CMAKE_C_FLAGS_DEBUGOPT "")
+ 
+-target_compile_options(${PROJECT_NAME} PRIVATE -pedantic -std=gnu99 -Wall -Werror -Wimplicit -Wunused -Wcomment -Wchar-subscripts
++target_compile_options(${PROJECT_NAME} PRIVATE -pedantic -std=gnu99 -Wall -Wimplicit -Wunused -Wcomment -Wchar-subscripts
+         -Wuninitialized -Wshadow -Wcast-qual -Wcast-align -Wwrite-strings -Wno-deprecated-declarations -Wno-unknown-pragmas -Wformat-security
+         -Wno-missing-braces -fvisibility=hidden -DS2N_EXPORTS)
+ 
+--- a/s2n.mk	2020-12-14 17:24:35.546240082 +0100
++++ b/s2n.mk	2020-12-14 17:25:05.604241814 +0100
+@@ -42,7 +42,7 @@
+ 	DEFAULT_CFLAGS = -std=c99 -Wcast-qual
+ endif
+ 
+-DEFAULT_CFLAGS += -pedantic -Wall -Werror -Wimplicit -Wunused -Wcomment -Wchar-subscripts -Wuninitialized \
++DEFAULT_CFLAGS += -pedantic -Wall -Wimplicit -Wunused -Wcomment -Wchar-subscripts -Wuninitialized \
+                  -Wshadow  -Wcast-align -Wwrite-strings -fPIC -Wno-missing-braces\
+                  -D_POSIX_C_SOURCE=200809L -O2 -I$(LIBCRYPTO_ROOT)/include/ \
+                  -I$(S2N_ROOT)/api/ -I$(S2N_ROOT) -Wno-deprecated-declarations -Wno-unknown-pragmas -Wformat-security \
