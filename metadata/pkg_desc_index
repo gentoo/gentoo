@@ -2790,7 +2790,7 @@ app-text/aspell 0.60.8: A spell checker replacement for ispell
 app-text/atril 1.24.0-r1 1.24.0-r2: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.99: barcode generator
-app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
+app-text/bdf2psf 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.17: BibTeX bibliography prettyprinter and syntax checker
 app-text/bibletime 2.11.2 3.0: Qt Bible-study application using the SWORD library
 app-text/bibutils 6.7: Interconverts between various bibliography formats using common XML intermediate
@@ -14258,7 +14258,7 @@ net-analyzer/ipguard 1.04-r1: Tool designed to protect LAN IP adress space by AR
 net-analyzer/iplog 2.2.3-r2: iplog is a TCP/IP traffic logger
 net-analyzer/ippl 1.4.14-r6: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85 1.86 1.86-r1: Simple TCP/IP Dump summarizer/analyzer
-net-analyzer/iptraf-ng 1.1.4-r1 1.2.0-r1 1.2.1 9999: A console-based network monitoring utility
+net-analyzer/iptraf-ng 1.2.1 9999: A console-based network monitoring utility
 net-analyzer/iptstate 2.2.6: IP Tables State displays states being kept by iptables in a top-like format
 net-analyzer/ipv6toolkit 2.1_p20190919 2.1_p20200412 99999999: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
 net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
@@ -14271,7 +14271,7 @@ net-analyzer/labrea 2.5_p1: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 10.0.0_pre20200729 9999: Check websites for broken links
-net-analyzer/macchanger 1.7.0 1.7.0-r1 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
+net-analyzer/macchanger 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3-r1: MBrowse is a graphical MIB browser
 net-analyzer/mdns-scan 0.5: a tool for scanning for mDNS/DNS-SD published services
@@ -15300,7 +15300,7 @@ net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r2: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.9: Virtual Router Redundancy Protocol Daemon
-net-misc/wakeonlan 0.41-r2 0.41-r3: Client for Wake-On-LAN
+net-misc/wakeonlan 0.41-r3: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
