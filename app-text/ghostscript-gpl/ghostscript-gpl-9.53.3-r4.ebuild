@@ -61,8 +61,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	# bug #747808
-	"${FILESDIR}/${PN}-9.53.3-freetype-2.10.3.patch"
+	"${FILESDIR}/${PN}-9.53.3-freetype-2.10.3.patch" # bug #747808
+	"${FILESDIR}/${P}-fix-ps2epsi.patch"
 )
 
 src_prepare() {
@@ -184,9 +184,6 @@ src_install() {
 
 	# install the CMaps from poppler-data properly, bug #409361
 	dosym ../../../poppler/cMaps "/usr/share/ghostscript/${PV}/Resource/CMap"
-
-	# ps2epsi requires ps2epsi.ps in same directory, bug #749399
-	dosym "../share/ghostscript/${PV}/lib/ps2epsi.ps" /usr/bin/ps2epsi.ps
 
 	if ! use static-libs; then
 		find "${ED}" -name '*.la' -delete || die
