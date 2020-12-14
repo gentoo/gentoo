@@ -5616,7 +5616,7 @@ dev-libs/sdformat 9.2.0 9.3.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.30.6: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02-r1: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
-dev-libs/simdjson 0.4.7 0.6.1 0.7.0-r3: SIMD accelerated C++ JSON library
+dev-libs/simdjson 0.4.7 0.6.1 0.7.1: SIMD accelerated C++ JSON library
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0 2.9.3.0: General-purpose libraries from skarnet.org
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
@@ -7891,7 +7891,7 @@ dev-python/apsw 3.32.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.12.0-r1 1.12.1-r1 1.12.2: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
-dev-python/argparse-manpage 1.4: Automatically build man-pages for your Python project
+dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.9.2 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0: Better dates and times for Python
 dev-python/asgiref 3.3.0 3.3.1: ASGI utilities (successor to WSGI)
@@ -10693,7 +10693,7 @@ dev-util/dropwatch 1.4_p20150706: A utility to interface to the kernel to monito
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.17 1.17-r1 1.18 1.19: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2 2.1.3: diff-like program operating at word level instead of line level
-dev-util/edb-debugger 1.2.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
+dev-util/edb-debugger 1.2.0 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
 dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -17510,7 +17510,7 @@ sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from de
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
 sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
-sys-kernel/linux-docs 4.19.114 5.4.39: Developer documentation generated from the Linux kernel
+sys-kernel/linux-docs 4.19.114 5.4.39 5.10.0: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9 5.10: Linux system headers
 sys-kernel/mips-sources 4.14.206 4.19.157 5.4.77: Kernel.org sources for MIPS-based machines
