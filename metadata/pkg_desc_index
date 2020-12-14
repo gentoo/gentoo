@@ -5695,7 +5695,7 @@ dev-lisp/roswell 20.01.14.104 20.04.14.105 20.05.14.106: A lisp installer and la
 dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
-dev-lua/LuaBitOp 1.0.2-r2 1.0.2-r101: Bit Operations Library for the Lua Programming Language
+dev-lua/LuaBitOp 1.0.2-r2 1.0.2-r102: Bit Operations Library for the Lua Programming Language
 dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1 2.0.0 2.0.0-r101: Elegant Lua unit testing
 dev-lua/busted-htest 1.0.0 1.0.0-r100: Pretty output handler for Busted
 dev-lua/dkjson 2.5 2.5-r100: David Kolf's JSON module for Lua
@@ -5717,7 +5717,7 @@ dev-lua/luacov 0.8 0.14.0 0.14.0-r100: A simple coverage analyzer for Lua script
 dev-lua/luadbi 0.7.2 0.7.2-r101: A database interface library for Lua
 dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.6 0.4.6-r100: Binding of libevent for Lua
-dev-lua/luaexpat 1.3.0-r2 1.3.0-r101 1.3.3-r2 1.3.3-r101: LuaExpat is a SAX XML parser based on the Expat library
+dev-lua/luaexpat 1.3.0-r2 1.3.0-r102 1.3.3-r2 1.3.3-r102: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.8.0-r1 1.8.0-r101: File System Library for the Lua programming language
 dev-lua/luajson 1.3.3-r1 1.3.4 1.3.4-r100: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.5 1.2.5-r100: A lua binding for the OpenLDAP client libraries
@@ -5725,7 +5725,7 @@ dev-lua/luaossl 20200709 20200709-r100: Most comprehensive OpenSSL module in the
 dev-lua/luaposix 35.0 35.0-r100: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1 3.4.0 3.4.0-r100: A package manager for the Lua programming language
 dev-lua/luasec 0.9 0.9-r102 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
-dev-lua/luasocket 3.0_rc1-r5 3.0_rc1_p20200328 3.0_rc1_p20200328-r101: Networking support library for the Lua language
+dev-lua/luasocket 3.0_rc1-r5 3.0_rc1_p20200328-r1 3.0_rc1_p20200328-r102: Networking support library for the Lua language
 dev-lua/luassert 1.7.9 1.7.10 1.8.0 1.8.0-r101: Assertion library for Lua
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0 0.2.1_p0-r102: Platform independent system calls for Lua
 dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
