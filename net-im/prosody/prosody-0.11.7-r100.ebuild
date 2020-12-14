@@ -3,8 +3,8 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
-LUA_REQ_USE="deprecated"
+LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_REQ_USE="deprecated(+)"
 
 inherit lua-single systemd tmpfiles toolchain-funcs
 
@@ -69,6 +69,7 @@ src_configure() {
 		--idn-library="$(usex idn 'idn' 'icu')"
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		--linker="$(tc-getCC)"
+		--lua-version="$(usex lua_single_target_luajit '5.1' $(ver_cut 1-2 $(lua_get_version)))"
 		--lua-version="$(ver_cut 1-2 $(lua_get_version))"
 		--no-example-certs
 		--ostype="linux"
