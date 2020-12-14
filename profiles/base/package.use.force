@@ -6,6 +6,7 @@
 # runtime bugs (bug #758446) which are not worth it.
 # Building Firefox/Thunderbird with GCC is no longer supported
 # in Gentoo until further notice.
+dev-lang/spidermonkey clang
 mail-client/thunderbird clang
 www-client/firefox clang
 
