@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tamasmeszaros/libnest2d/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="examples static-libs test"
 RESTRICT="!test? ( test )"
