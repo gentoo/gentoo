@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
@@ -12,26 +12,27 @@ HOMEPAGE="http://www.fftw.org/"
 
 MY_P=${PN}-${PV/_p/-pl}
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="http://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-2+"
 SLOT="3.0/3"
-IUSE="cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
+IUSE="cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi openmp quad test threads zbus"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	quad? ( sys-devel/gcc[fortran] )
 	test? ( dev-lang/perl )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 HTML_DOCS=( doc/html/. )
 
 pkg_pretend() {
@@ -60,13 +61,7 @@ src_prepare() {
 	default
 
 	# fix info file for category directory
-	if [[ ${PV} = *9999 ]]; then
-		sed -i -e
-			's/Texinfo documentation system/Libraries/' \
-			doc/fftw3."info" || die "failed to fix info file"
-
-		eautoreconf
-	fi
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
@@ -82,13 +77,15 @@ multilib_src_configure() {
 
 	local myconf=(
 		--enable-shared
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_enable "cpu_flags_x86_fma$(usex cpu_flags_x86_fma3 3 4)" fma)
 		$(use_enable fortran)
 		$(use_enable zbus mips-zbus-timer)
 		$(use_enable threads)
 		$(use_enable openmp)
 	)
+	[[ ${PV} == *9999 ]] && myconf+=( --enable-maintainer-mode )
+
 	case "${MULTIBUILD_ID}" in
 		single-*)
 			# altivec, sse, single-paired only work for single
@@ -99,7 +96,7 @@ multilib_src_configure() {
 				$(use_enable cpu_flags_x86_avx2 avx2)
 				$(use_enable cpu_flags_x86_sse sse)
 				$(use_enable cpu_flags_x86_sse2 sse2)
-				$(use_enable neon)
+				$(use_enable cpu_flags_arm_neon neon)
 				$(use_enable mpi)
 			)
 			;;
@@ -166,11 +163,11 @@ src_install() {
 		docinto faq
 		dodoc -r doc/FAQ/fftw-faq.html/.
 	else
-		rm -r "${ED%/}"/usr/share/doc/${PF}/html || die
+		rm -r "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
 	local x
-	for x in "${ED%/}"/usr/lib*/pkgconfig/*.pc; do
+	for x in "${ED}"/usr/lib*/pkgconfig/*.pc; do
 		local u
 		for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
 			sed -e "s|-lfftw3[flq]\?|&_${u} &|" "$x" > "${x%.pc}_${u}.pc" || die
@@ -178,5 +175,5 @@ src_install() {
 	done
 
 	# fftw uses pkg-config to record its private dependencies
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
