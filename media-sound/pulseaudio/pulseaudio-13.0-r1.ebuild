@@ -200,8 +200,8 @@ multilib_src_configure() {
 		local PKGCONFIG="$(tc-getPKG_CONFIG)"
 		myconf+=(
 			--enable-systemd-login
-			SYSTEMDLOGIN_CFLAGS="$(${PKGCONFIG} --cflags "libelogind" 2>/dev/null)"
-			SYSTEMDLOGIN_LIBS="$(${PKGCONFIG} --libs "libelogind" 2>/dev/null)"
+			SYSTEMDLOGIN_CFLAGS="$(${PKGCONFIG} --cflags "libelogind")"
+			SYSTEMDLOGIN_LIBS="$(${PKGCONFIG} --libs "libelogind")"
 		)
 	fi
 

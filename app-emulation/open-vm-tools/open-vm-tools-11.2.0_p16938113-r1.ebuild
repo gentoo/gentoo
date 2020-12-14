@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info pam systemd toolchain-funcs
+inherit autotools linux-info pam systemd
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
@@ -39,7 +39,7 @@ RDEPEND="
 		x11-libs/libXtst
 		x11-libs/libSM
 		x11-libs/libXcomposite
-		x11-libs/gdk-pixbuf:2
+		x11-libs/gdk-pixbuf-xlib
 		x11-libs/gtk+:3
 		gtkmm? (
 			dev-cpp/gtkmm:3.0
