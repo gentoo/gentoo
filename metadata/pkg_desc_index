@@ -8945,7 +8945,7 @@ dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mo
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
-dev-python/pytools 2020.4 2020.4.3 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2020.4 2020.4.3 2020.4.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.4: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
@@ -9054,7 +9054,7 @@ dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenS
 dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
 dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
-dev-python/setuptools_scm 4.1.2-r1 5.0.0: Manage versions by scm tags via setuptools
+dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
 dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
@@ -9264,7 +9264,7 @@ dev-python/websockets 8.1: Library for building WebSocket servers and clients in
 dev-python/websockify 0.9.0 0.9.0-r1: WebSockets support for any application/server
 dev-python/webtest 2.0.35: Helper to test WSGI applications
 dev-python/werkzeug 1.0.1-r1: Collection of various utilities for WSGI applications
-dev-python/wheel 0.35.1-r1 0.36.0 0.36.1: A built-package format for Python
+dev-python/wheel 0.35.1-r1 0.36.0 0.36.1 0.36.2: A built-package format for Python
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
 dev-python/whisper 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.7.4-r1: Fast, pure-Python full text indexing, search and spell checking library
