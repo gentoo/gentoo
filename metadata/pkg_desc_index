@@ -951,7 +951,7 @@ app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 1.9.0 1.10.1 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
-app-crypt/acme-sh 2.8.7 9999: An ACME Shell script
+app-crypt/acme-sh 2.8.8 9999: An ACME Shell script
 app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
@@ -3425,7 +3425,7 @@ dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-re
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 2.4.0-r1 2.6.0: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.4: A simple but powerful template language for C++
-dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8-r1: C++ template library for linear algebra
+dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8-r1 3.3.9: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.1-r1 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.64.2: C++ interface for glib2
@@ -16145,7 +16145,7 @@ sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for
 sci-libs/fcl 0.5.0 0.6.1 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fflas-ffpack 2.4.3: Library for dense linear algebra over word-size finite fields
-sci-libs/fftw 2.1.5-r9 3.3.8-r1 9999: Fast C library for the Discrete Fourier Transform
+sci-libs/fftw 2.1.5-r9 3.3.8-r1 3.3.9 9999: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.9.1-r3 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4 5.3.2 5.3.3 5.4.0: Implementations of the floating-point LLL reduction algorithm
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
