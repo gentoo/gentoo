@@ -53,6 +53,10 @@ DEPEND="
 
 DOCS=( ChangeLog doc/synergy.conf.example{,-advanced,-basic} )
 
+PATCHES=(
+	"${FILESDIR}"/synergy-1.12.0-dnssd-dep.patch
+)
+
 src_prepare() {
 	# broken on Xvfb
 	rm src/test/integtests/platform/XWindowsScreenTests.cpp || die
