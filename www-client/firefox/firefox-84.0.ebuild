@@ -57,7 +57,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-#KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -323,22 +323,6 @@ mozconfig_add_options_ac() {
 	local option
 	for option in ${@} ; do
 		echo "ac_add_options ${option} # ${reason}" >>${MOZCONFIG}
-	done
-}
-
-mozconfig_add_options_mk() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${#} -lt 2 ]] ; then
-		die "${FUNCNAME} requires at least two arguments"
-	fi
-
-	local reason=${1}
-	shift
-
-	local option
-	for option in ${@} ; do
-		echo "mk_add_options ${option} # ${reason}" >>${MOZCONFIG}
 	done
 }
 
@@ -806,10 +790,10 @@ src_configure() {
 
 	# Portage sets XARGS environment variable to "xargs -r" by default which
 	# breaks build system's check_prog() function which doesn't support arguments
-	unset XARGS
+	mozconfig_add_options_ac 'Gentoo default' "XARGS=${EPREFIX}/usr/bin/xargs"
 
 	# Set build dir
-	mozconfig_add_options_mk 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
+	mozconfig_add_options_ac 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
 
 	# Show flags we will use
 	einfo "Build CFLAGS:    ${CFLAGS}"
@@ -851,10 +835,6 @@ src_compile() {
 		gnome2_environment_reset
 
 		addpredict /root
-
-		# During PGO, build system will re-run configure.
-		# See comment in src_configure for details.
-		unset XARGS
 	fi
 
 	local -x GDK_BACKEND=x11
