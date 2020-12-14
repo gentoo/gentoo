@@ -17485,7 +17485,7 @@ sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUS
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
-sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0: xfs filesystem utilities
+sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0 5.10.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.1.1: Zeroes out all free space on a filesystem
