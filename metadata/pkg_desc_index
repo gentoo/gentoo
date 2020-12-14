@@ -8057,7 +8057,7 @@ dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that 
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.5 0.9.7 0.9.8: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.7 0.9.8: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -17517,7 +17517,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.4.83 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.83 5.9.14: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.83 5.9.14 5.10.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
@@ -18938,7 +18938,7 @@ x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.8.2 0.8.3 0.9.0 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.18.2 4.19: i3 fork with gaps and some more features
-x11-wm/icewm 1.8.3 1.9.1 1.9.2: Ice Window Manager with Themes
+x11-wm/icewm 1.8.3 1.9.2 2.0.0: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.6.0 9999: Lumina desktop environment
