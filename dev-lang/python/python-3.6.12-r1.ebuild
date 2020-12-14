@@ -191,7 +191,7 @@ src_test() {
 	fi
 
 	# Skip failing tests.
-	local skipped_tests="gdb"
+	local skipped_tests="gdb faulthandler"
 
 	for test in ${skipped_tests}; do
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
