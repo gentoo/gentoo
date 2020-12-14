@@ -25,6 +25,7 @@ BDEPEND="
 
 DEPEND="
 	>=dev-libs/aws-c-common-0.4.62:=[static-libs=]
+	>=dev-libs/aws-c-io-0.7.0:=[static-libs=]
 	>=dev-libs/aws-checksums-0.1.10:=[static-libs=]
 "
 
