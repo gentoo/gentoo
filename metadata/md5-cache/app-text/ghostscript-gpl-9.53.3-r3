@@ -11,4 +11,4 @@ RDEPEND=app-text/libpaper media-libs/fontconfig >=media-libs/freetype-2.4.9:2= >
 SLOT=0
 SRC_URI=https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.xz https://dev.gentoo.org/~whissi/dist/ghostscript-gpl/ghostscript-gpl-9.53-patchset-01.tar.xz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=bf8a8dc80bd4acaed2656c7d92d7fa85
+_md5_=b7bee84f74be719242f1efb7e63b2d34
