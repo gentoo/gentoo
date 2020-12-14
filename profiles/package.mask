@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2020-12-14)
+# Dead. Last release in 2014. Only works with vulnerable dovecot version.
+# Recent Outlook versions should have this functionality built in.  Switch to a
+# better mail client if you are still using this package. Removal in 30 days.
+# Bug #756217
+mail-filter/dovecot_deleted_to_trash
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-13)
 # Dead.  Last commit in 2014.  Does not work with modern versions
 # of Sphinx.  No revdeps.  Alternative: dev-python/sphinx-issues.
