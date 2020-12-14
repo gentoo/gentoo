@@ -29,6 +29,10 @@ MODULESD_VBOXDRV_ENABLED="yes"
 MODULESD_VBOXNETADP_ENABLED="no"
 MODULESD_VBOXNETFLT_ENABLED="no"
 
+PATCHES=(
+	"${FILESDIR}/${P}-linux-5.10-r0drv-memobj-fix-r0.patch" #751328
+)
+
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
