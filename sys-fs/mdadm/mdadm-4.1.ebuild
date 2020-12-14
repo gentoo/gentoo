@@ -30,16 +30,22 @@ PATCHES=(
 
 mdadm_emake() {
 	# We should probably make corosync & libdlm into USE flags. #573782
-	emake \
-		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
-		CC="$(tc-getCC)" \
-		CWFLAGS="-Wall" \
-		CXFLAGS="${CFLAGS}" \
-		UDEVDIR="$(get_udevdir)" \
-		SYSTEMD_DIR="$(systemd_get_systemunitdir)" \
-		COROSYNC="-DNO_COROSYNC" \
-		DLM="-DNO_DLM" \
+	local args=(
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		CC="$(tc-getCC)"
+		CWFLAGS="-Wall"
+		CXFLAGS="${CFLAGS}"
+		UDEVDIR="$(get_udevdir)"
+		SYSTEMD_DIR="$(systemd_get_systemunitdir)"
+		COROSYNC="-DNO_COROSYNC"
+		DLM="-DNO_DLM"
+
+		# https://bugs.gentoo.org/732276
+		STRIP=
+
 		"$@"
+	)
+	emake "${args[@]}"
 }
 
 src_compile() {
