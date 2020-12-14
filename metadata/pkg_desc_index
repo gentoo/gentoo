@@ -2009,7 +2009,7 @@ app-emulation/lxc 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.3-r2 4.0.4-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
-app-emulation/open-vm-tools 11.2.0_p16938113: Opensourced tools for VMware guests
+app-emulation/open-vm-tools 11.2.0_p16938113-r1: Opensourced tools for VMware guests
 app-emulation/pcem 16-r1 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/protontricks 1.4.1 1.4.2: app-emulation/winetricks wrapper for Proton (Steam Play) games
@@ -10876,7 +10876,7 @@ dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS bin
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
-dev-util/strace 5.4 5.8 5.9 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 5.4 5.8 5.9 5.10 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
