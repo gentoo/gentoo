@@ -107,7 +107,7 @@ src_prepare() {
 
 	# search path fix
 	# put LDFLAGS after BINDIR, bug #383447
-	sed -e "s:\$\(gsdatadir\)/lib:@datarootdir@/ghostscript/${PVM}/$(get_libdir):" \
+	sed -e "s:\$\(gsdatadir\)/lib:@datarootdir@/ghostscript/${PV}/$(get_libdir):" \
 		-e "s:exdir=.*:exdir=@datarootdir@/doc/${PF}/examples:" \
 		-e "s:docdir=.*:docdir=@datarootdir@/doc/${PF}/html:" \
 		-e "s:GS_DOCDIR=.*:GS_DOCDIR=@datarootdir@/doc/${PF}/html:" \
@@ -183,7 +183,10 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	# install the CMaps from poppler-data properly, bug #409361
-	dosym ../../../poppler/cMaps "/usr/share/ghostscript/${PVM}/Resource/CMap"
+	dosym ../../../poppler/cMaps "/usr/share/ghostscript/${PV}/Resource/CMap"
+
+	# ps2epsi requires ps2epsi.ps in same directory, bug #749399
+	dosym "../share/ghostscript/${PV}/lib/ps2epsi.ps" /usr/bin/ps2epsi.ps
 
 	if ! use static-libs; then
 		find "${ED}" -name '*.la' -delete || die
