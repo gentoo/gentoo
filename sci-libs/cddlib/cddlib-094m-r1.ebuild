@@ -3,9 +3,10 @@
 
 EAPI=7
 
-# This should have been dealt with versionator in the direction
-# 0.94x -> 094x - now we are screwed.
-MY_PV="0.94m"
+# This can't work forever; but for now, it's better than hard-coding the
+# correct version string.
+MY_PV="${PV:0:1}.${PV:1}"
+
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="C library implementing the Double Description Method"
 HOMEPAGE="https://www.inf.ethz.ch/personal/fukudak/cdd_home/"
