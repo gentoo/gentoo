@@ -19,6 +19,10 @@ DEPEND="${RDEPEND}
 	!udev? ( virtual/os-headers )"
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-multi_device_config_parsing.patch" #759814
+)
+
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
