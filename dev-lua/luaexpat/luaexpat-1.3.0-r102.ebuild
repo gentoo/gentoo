@@ -3,10 +3,9 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
-LUA_REQ_USE="${MULTILIB_USEDEP}"
+LUA_COMPAT=( lua5-{1..3} luajit )
 
-inherit lua multilib-minimal toolchain-funcs
+inherit lua toolchain-funcs
 
 DESCRIPTION="LuaExpat is a SAX XML parser based on the Expat library"
 HOMEPAGE="https://matthewwild.co.uk/projects/luaexpat/"
@@ -18,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
-	dev-libs/expat[${MULTILIB_USEDEP}]
+	dev-libs/expat
 	${LUA_DEPS}
 "
 DEPEND="${RDEPEND}"
@@ -34,11 +33,10 @@ src_prepare() {
 	sed -e 's/-O2/-DLUA_32BITS/g' -i Makefile || die
 
 	lua_copy_sources
-	lua_foreach_impl multilib_copy_sources
 }
 
-lua_multilib_src_compile() {
-	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+lua_src_compile() {
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -50,12 +48,12 @@ lua_multilib_src_compile() {
 	popd
 }
 
-multilib_src_compile() {
-	lua_foreach_impl lua_multilib_src_compile
+src_compile() {
+	lua_foreach_impl lua_src_compile
 }
 
-lua_multilib_src_install() {
-	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+lua_src_install() {
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		"DESTDIR=${ED}"
@@ -69,10 +67,8 @@ lua_multilib_src_install() {
 	popd
 }
 
-multilib_src_install() {
-	lua_foreach_impl lua_multilib_src_install
-}
+src_install() {
+	lua_foreach_impl lua_src_install
 
-multilib_src_install_all() {
 	einstalldocs
 }

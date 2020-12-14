@@ -4,11 +4,8 @@
 EAPI=7
 
 EGIT_COMMIT="5b18e475f38fcf28429b1cc4b17baee3b9793a62"
-LUA_COMPAT=( lua5-{1..3} )
-LUA_REQ_USE="${MULTILIB_USEDEP}"
-MY_P="${PN}-${EGIT_COMMIT}"
 
-inherit flag-o-matic lua multilib-minimal toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Networking support library for the Lua language"
 HOMEPAGE="
@@ -16,15 +13,18 @@ HOMEPAGE="
 	https://github.com/diegonehab/luasocket
 "
 SRC_URI="https://github.com/diegonehab/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
-REQUIRED_USE="${LUA_REQUIRED_USE}"
+IUSE="luajit"
 RESTRICT="test"
 
-RDEPEND="${LUA_DEPS}"
+RDEPEND="
+	luajit? ( dev-lang/luajit:2 )
+	!luajit? ( dev-lang/lua:0 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -38,60 +38,35 @@ src_prepare() {
 
 	# Workaround for 32-bit systems
 	append-cflags -fno-stack-protector
-
-	lua_copy_sources
-	lua_foreach_impl multilib_copy_sources
 }
 
-lua_multilib_src_compile() {
-	pushd "${WORKDIR}/${MY_P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
-
+src_compile() {
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
 		"LD=$(tc-getCC)"
 		"LDFLAGS_linux=-O -fpic -shared -o"
-		"LUAINC_linux=$(lua_get_include_dir)"
-		"LUAV=${ELUA}"
-		"MIME_V=1.0.3-${ELUA}"
+		"LUAINC_linux=$($(tc-getPKG_CONFIG) --variable includedir $(usex luajit 'luajit' 'lua'))"
+		"LUAV=5.1"
 		"MYCFLAGS=${CFLAGS}"
 		"MYLDFLAGS=${LDFLAGS}"
-		"SOCKET_V=3.0-rc1-${ELUA}"
 	)
 
 	emake "${myemakeargs[@]}" all
-
-	popd
 }
 
-multilib_src_compile() {
-	lua_foreach_impl lua_multilib_src_compile
-}
-
-lua_multilib_src_install() {
-	pushd "${WORKDIR}/${MY_P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
-
+src_install() {
 	local myemakeargs=(
-		"CDIR=$(lua_get_cmod_dir)"
+		"CDIR=$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD $(usex luajit 'luajit' 'lua'))"
 		"DESTDIR=${ED}"
-		"LDIR=$(lua_get_lmod_dir)"
+		"LDIR=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
 		"LUAPREFIX_linux="
-		"MIME_V=1.0.3-${ELUA}"
-		"SOCKET_V=3.0-rc1-${ELUA}"
 	)
 
 	emake "${myemakeargs[@]}" install
 	emake "${myemakeargs[@]}" install-unix
 
-	insinto "$(lua_get_include_dir)"/luasocket
+	insinto "$($(tc-getPKG_CONFIG) --variable includedir $(usex luajit 'luajit' 'lua'))/luasocket"
 	doins src/*.h
 
-	popd
-}
-
-multilib_src_install() {
-	lua_foreach_impl lua_multilib_src_install
-}
-
-multilib_src_install_all() {
 	einstalldocs
 }

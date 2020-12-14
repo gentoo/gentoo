@@ -3,8 +3,8 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
-LUA_REQ_USE="deprecated"
+LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_REQ_USE="deprecated(+)"
 
 inherit lua toolchain-funcs
 

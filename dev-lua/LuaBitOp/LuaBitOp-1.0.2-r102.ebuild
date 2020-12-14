@@ -3,9 +3,9 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..2} )
+LUA_COMPAT=( lua5-{1..2} luajit )
 
-inherit lua multilib-minimal toolchain-funcs
+inherit lua toolchain-funcs
 
 DESCRIPTION="Bit Operations Library for the Lua Programming Language"
 HOMEPAGE="http://bitop.luajit.org"
@@ -28,11 +28,10 @@ src_prepare() {
 	default
 
 	lua_copy_sources
-	lua_foreach_impl multilib_copy_sources
 }
 
-lua_multilib_src_compile() {
-	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+lua_src_compile() {
+	pushd "${BUILD_DIR}" || die
 
 	local myemakeargs=(
 		"CC=$(tc-getCC)"
@@ -45,12 +44,12 @@ lua_multilib_src_compile() {
 	popd
 }
 
-multilib_src_compile() {
-	lua_foreach_impl lua_multilib_src_compile
+src_compile() {
+	lua_foreach_impl lua_src_compile
 }
 
-lua_multilib_src_test() {
-	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+lua_src_test() {
+	pushd "${BUILD_DIR}" || die
 
 	local mytests=(
 		"bitbench.lua"
@@ -66,12 +65,12 @@ lua_multilib_src_test() {
 	popd
 }
 
-multilib_src_test() {
-	multilib_is_native_abi && lua_foreach_impl lua_multilib_src_test
+src_test() {
+	lua_foreach_impl lua_src_test
 }
 
-lua_multilib_src_install() {
-	pushd "${WORKDIR}/${P}-${ELUA/./-}-${MULTILIB_ABI_FLAG}.${ABI}" || die
+lua_src_install() {
+	pushd "${BUILD_DIR}" || die
 
 	exeinto $(lua_get_cmod_dir)
 	doexe bit.so
@@ -79,10 +78,8 @@ lua_multilib_src_install() {
 	popd
 }
 
-multilib_src_install() {
-	lua_foreach_impl lua_multilib_src_install
-}
+src_install() {
+	lua_foreach_impl lua_src_install
 
-multilib_src_install_all() {
 	einstalldocs
 }
