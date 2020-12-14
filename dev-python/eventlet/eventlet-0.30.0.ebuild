@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Highly concurrent networking library"
@@ -27,8 +27,8 @@ DEPEND="doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )
 		dev-python/nose[${PYTHON_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/eventlet-0.25.1-tests.patch"
-	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}/${PN}-0.25.1-tests.patch"
+	"${FILESDIR}/${PN}-0.30.0-tests-socket.patch"
 )
 
 distutils_enable_sphinx doc
@@ -51,6 +51,7 @@ python_prepare_all() {
 
 python_test() {
 	unset PYTHONPATH
+	export TMPDIR="${T}"
 	nosetests -v || die
 }
 
