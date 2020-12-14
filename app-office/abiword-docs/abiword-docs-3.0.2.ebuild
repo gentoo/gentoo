@@ -10,7 +10,7 @@ SRC_URI="http://www.abisource.com/downloads/abiword/${PV}/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 RDEPEND=">=app-office/abiword-${PV}"
