@@ -136,6 +136,7 @@ pkg_postinst() {
 		ewarn "QA notice about insecure RPATHs in the libturbojpeg.so library"
 		ewarn "bundled with the upstream package. Please report this problem"
 		ewarn "directly to Zoom upstream. Do *not* file a Gentoo bug for it."
+		ewarn "See https://bugs.gentoo.org/715106 for further details."
 	fi
 }
 
