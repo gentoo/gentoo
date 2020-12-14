@@ -31,4 +31,6 @@ RDEPEND="
 	${DEPEND}
 "
 
-distutils_enable_tests pytest
+python_test() {
+	"${EPYTHON}" ./run_tests.py || die "Tests failed with ${EPYTHON}"
+}
