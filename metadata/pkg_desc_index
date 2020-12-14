@@ -5093,7 +5093,7 @@ dev-lang/lfe 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
 dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r105 5.2.4-r2 5.3.6-r1 5.4.1-r1: A powerful light-weight programming language designed for extending applications
-dev-lang/luajit 2.0.5-r2 2.1.0_beta3-r1: Just-In-Time Compiler for the Lua programming language
+dev-lang/luajit 2.0.5-r3 2.1.0_beta3-r2: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2 20.06: Additional libraries and tools that are not part of the Mercury standard library
