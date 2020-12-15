@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop java-pkg-2 xdg-utils
 
 MY_PN="Moneydance"
-MY_PV="$(ver_cut 1-2)_$(ver_cut 3)"
+MY_PV="$(ver_cut 1)_$(ver_cut 2)"
 
 DESCRIPTION="A cross-platform personal finance application"
 HOMEPAGE="https://moneydance.com/"
