@@ -2992,7 +2992,7 @@ app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for te
 app-text/rpl 1.6.7: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r1 1.0.3-r2: An XSLT Parser in C++
-app-text/scdoc 1.9.3-r1 1.10.0 1.10.1 1.11.0 9999: Standalone tool for generating man pages with a simple syntax
+app-text/scdoc 1.11.0 1.11.1 9999: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
@@ -12513,7 +12513,7 @@ media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
 media-fonts/bitstream-cyberbit 2.0-r2: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.111 0.201: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
-media-fonts/cascadia-code 1909.16 1910.04 2004.30: A monospaced font developed for Windows Terminal
+media-fonts/cascadia-code 2009.22: A monospaced font developed for Windows Terminal
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
 media-fonts/cm-unicode 0.7.0-r1: Computer Modern Unicode fonts
@@ -14439,7 +14439,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.4.0 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.4.0 3.4.1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
@@ -16151,7 +16151,7 @@ sci-libs/fplll 4.0.4 5.3.2 5.3.3 5.4.0: Implementations of the floating-point LL
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 3.0.4-r1 3.2.0: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 3.0.4-r1 3.2.0-r1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.8.1 3.9.0: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r3: Reference implementation of the Dirfile, format for time-ordered binary data
@@ -17924,7 +17924,7 @@ www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.74 8.8.11 8.9.9 9.0.8: PHP-based open-source platform and content management system
-www-apps/gitea 1.12.6 9999: A painless self-hosted Git service
+www-apps/gitea 1.13.0 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 7.3.1 7.3.3 7.3.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
@@ -18434,7 +18434,7 @@ x11-misc/pcmanfm-qt 0.15.1 0.16.0: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 8 8.1 8.2 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
-x11-misc/polybar 3.4.3 3.5.1: A fast and easy-to-use tool for creating status bars
+x11-misc/polybar 3.4.3 3.5.2: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.31: py3status is an extensible i3status wrapper written in python
@@ -18452,7 +18452,7 @@ x11-misc/redshift 1.12-r3: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5-r1: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.5.4: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 1.5.4-r1 1.6.0 99999: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 1.5.4-r1 1.6.0 1.6.1 99999: A window switcher, run dialog and dmenu replacement
 x11-misc/rofi-calc 1.5 1.6 2.0.0 9999: Do live calculations in rofi!
 x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.9-r1: Linux alternative to EyeLeo
