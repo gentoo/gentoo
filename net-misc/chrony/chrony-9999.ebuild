@@ -69,10 +69,6 @@ src_prepare() {
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
 
-	sed -i \
-		-e 's|RELOADDNS||g' \
-		configure || die
-
 	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf || die
 }
 
