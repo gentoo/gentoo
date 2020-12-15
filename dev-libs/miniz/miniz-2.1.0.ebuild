@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake
 
-DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
+DESCRIPTION="A lossless, high performance data compression library"
 HOMEPAGE="https://github.com/richgel999/miniz"
 SRC_URI="https://github.com/richgel999/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
