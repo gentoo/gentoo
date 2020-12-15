@@ -73,7 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/050-busybox-module-fix.patch
 	"${FILESDIR}"/050-systemd-remove-obsolete-syslog-parameter.patch
 	"${FILESDIR}"/050-lvm-fix-removal-of-pvscan-from-udev-rules.patch
-	"${FILESDIR}"/050-gentoo-ldconfig-paths.patch
+	"${FILESDIR}"/gentoo-ldconfig-paths.patch
 )
 
 src_configure() {
