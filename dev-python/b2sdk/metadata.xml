@@ -10,12 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		This package contains a client library and a few handy utilities for
-		easy access to all of the capabilities of B2 Cloud Storage.
+		The command-line tool that gives easy access to all of the capabilities
+		of B2 Cloud Storage.
 
-		B2 command-line tool is an example of how it can be used to provide
-		command-line access to the B2 service, but there are many possible
-		applications (including FUSE filesystems, storage backend drivers for
-		backup applications etc).
+		This program provides command-line access to the B2 service.
 	</longdescription>
 </pkgmetadata>

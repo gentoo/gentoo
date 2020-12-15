@@ -13,11 +13,9 @@ SRC_URI="https://github.com/Backblaze/b2-sdk-python/releases/download/v${PV}/${P
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 PATCHES=(
-	"${FILESDIR}/${P}_skip-integration-test.patch"
-	"${FILESDIR}/${P}_skip-license-header-test.patch"
+	"${FILESDIR}/${PN}-1.2.0-skip-integration-test.patch"
 )
 
 RDEPEND="
@@ -33,7 +31,6 @@ distutils_enable_tests pytest
 
 BDEPEND+=" test? (
 	$(python_gen_cond_dep '
-		>=dev-python/pytest-6.1.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.3.1[${PYTHON_USEDEP}]
 	')
 )"
