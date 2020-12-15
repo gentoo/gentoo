@@ -1,4 +1,5 @@
 https://github.com/zeux/pugixml/pull/389.patch
+https://bugs.gentoo.org/758611
 From 4feab60bb7ecced7cea18c570ca9a39a08246a57 Mon Sep 17 00:00:00 2001
 From: Ben Boeckel <ben.boeckel@kitware.com>
 Date: Thu, 10 Dec 2020 07:52:35 -0500
