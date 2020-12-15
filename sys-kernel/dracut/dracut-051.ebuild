@@ -64,10 +64,7 @@ DOCS=( AUTHORS HACKING NEWS README.md README.generic README.kernel README.module
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
-	"${FILESDIR}"/050-Makefile-merge-main-version-and-git-version-earlier.patch
-	"${FILESDIR}"/050-dracut.sh-don-t-call-fsfreeze-on-subvol-of-root-file.patch
-	"${FILESDIR}"/050-Makefile-fix-VERSION-again.patch
-	"${FILESDIR}"/050-gentoo-ldconfig-paths.patch
+	"${FILESDIR}"/gentoo-ldconfig-paths.patch
 )
 
 src_configure() {

@@ -13,8 +13,4 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<use>
-		<flag name="debug">Module installing additional tools like strace, file
-			editor, ssh and more</flag>
-	</use>
 </pkgmetadata>
