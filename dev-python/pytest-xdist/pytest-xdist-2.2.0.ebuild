@@ -29,4 +29,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-services-conflict.patch
+)
+
 distutils_enable_tests --install pytest
