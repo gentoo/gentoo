@@ -326,6 +326,22 @@ mozconfig_add_options_ac() {
 	done
 }
 
+mozconfig_add_options_mk() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${#} -lt 2 ]] ; then
+		die "${FUNCNAME} requires at least two arguments"
+	fi
+
+	local reason=${1}
+	shift
+
+	local option
+	for option in ${@} ; do
+		echo "mk_add_options ${option} # ${reason}" >>${MOZCONFIG}
+	done
+}
+
 mozconfig_use_enable() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -793,7 +809,7 @@ src_configure() {
 	mozconfig_add_options_ac 'Gentoo default' "XARGS=${EPREFIX}/usr/bin/xargs"
 
 	# Set build dir
-	mozconfig_add_options_ac 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
+	mozconfig_add_options_mk 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
 
 	# Show flags we will use
 	einfo "Build CFLAGS:    ${CFLAGS}"
