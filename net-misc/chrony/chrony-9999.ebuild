@@ -20,7 +20,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon html ipv6 libedit +nettle nss +ntp +phc +nts pps +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html ipv6 libedit +nettle nss +ntp +phc +nts pps +refclock +rtc samba +seccomp +sechash selinux"
 REQUIRED_USE="
 	sechash? ( || ( nettle nss  ) )
 	nettle? ( !nss )
@@ -97,6 +97,7 @@ src_configure() {
 		$(use_enable seccomp scfilter)
 		$(usex caps '' --disable-linuxcaps)
 		$(usex cmdmon '' --disable-cmdmon)
+		$(usex debug '--enable-debug' '')
 		$(usex ipv6 '' --disable-ipv6)
 		$(usex libedit '' --without-editline)
 		$(usex nettle '' --without-nettle)
