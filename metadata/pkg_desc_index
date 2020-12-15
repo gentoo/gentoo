@@ -651,7 +651,7 @@ app-admin/op-cli-bin 1.7.0: command line interface for the 1password password ma
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
 app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/pass-otp 1.2.0: A pass extension for managing one-time-password (OTP) tokens.
-app-admin/passwordsafe 1.12.0: Password manager with wxGTK based frontend
+app-admin/passwordsafe 1.12.0-r1: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.27 2.28 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
@@ -1732,7 +1732,7 @@ app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhance
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: Vim, an improved vi-style text editor
 app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: vim and gvim shared files
-app-editors/vis 0.5 0.6 9999: modern, legacy free, simple yet efficient vim-like editor
+app-editors/vis 0.5 0.7 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
 app-editors/xemacs 21.4.24-r2 21.5.34-r4 21.5.34-r5: highly customizable open source text editor and application development system
@@ -2007,7 +2007,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.3-r2 4.0.4-r1: Fast, dense and secure container management
+app-emulation/lxd 4.0.4-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1: Opensourced tools for VMware guests
 app-emulation/pcem 16-r1 17: A PC emulator that specializes in running old operating systems and software
@@ -10939,7 +10939,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.14.5 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.12.1: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.2 2.30.0_rc0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-cola 3.5-r1 3.8: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
@@ -14089,7 +14089,7 @@ media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
 media-video/mkvtoolnix 37.0.0 47.0.0 48.0.0 49.0.0 50.0.0 51.0.0 9999: Tools to create, alter, and inspect Matroska files
-media-video/motion 4.3.1: A software motion detector
+media-video/motion 4.3.1 4.3.2: A software motion detector
 media-video/motiontrack 0.1.3-r2: A set of tools that detect motion between two images
 media-video/movit 1.6.2: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r5: Tools for MPEG video
@@ -17951,7 +17951,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 18.0.10 18.0.11 18.0.12 19.0.4 19.0.5 19.0.6 20.0.1 20.0.2 20.0.3: Personal cloud that runs on your own server
+www-apps/nextcloud 18.0.10 18.0.11 18.0.12 19.0.4 19.0.5 19.0.6 20.0.2 20.0.3 20.0.4: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
