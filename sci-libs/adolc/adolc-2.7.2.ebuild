@@ -8,7 +8,7 @@ inherit autotools toolchain-funcs
 DESCRIPTION="Automatic differentiation system for C/C++"
 HOMEPAGE="https://projects.coin-or.org/ADOL-C/"
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coin-or/ADOL-C"
 else
@@ -19,7 +19,7 @@ fi
 
 LICENSE="|| ( EPL-1.0 GPL-2 )"
 SLOT="0/2"
-IUSE="+boost mpi sparse static-libs"
+IUSE="+boost mpi sparse"
 
 RDEPEND="
 	boost? ( dev-libs/boost:0= )
@@ -45,12 +45,12 @@ src_configure() {
 	# https://bugs.gentoo.org/730750
 	# https://github.com/coin-or/ADOL-C/issues/20
 	econf \
+		--disable-python \
+		--disable-static \
 		--enable-advanced-branching \
 		--enable-atrig-erf \
-		--disable-python \
 		$(use_enable mpi ampi) \
 		$(use_enable sparse) \
-		$(use_enable static-libs static) \
 		$(use_with boost) \
 		$(use_with sparse colpack "${EPREFIX}"/usr)
 }
@@ -63,5 +63,5 @@ src_test() {
 
 src_install() {
 	default
-	use static-libs || find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
