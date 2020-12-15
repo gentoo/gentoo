@@ -570,6 +570,7 @@ kde-apps/kdebase-meta:5
 >=games-engines/love-0.8.0-r100:0.8
 >=games-engines/love-11.3-r100:0
 >=games-engines/solarus-1.3.1-r100
+>=games-engines/stratagus-2.4.3-r100
 >=games-puzzle/fish-fillets-1.0.1-r100
 >=games-roguelike/crossfire-client-1.71.0-r100
 >=games-roguelike/stone-soup-0.25.1-r100
@@ -607,6 +608,7 @@ kde-apps/kdebase-meta:5
 >=www-servers/lighttpd-1.4.55-r100
 >=x11-misc/devilspie2-0.43-r100
 >=x11-wm/awesome-4.3-r100
+>=x11-wm/notion-3_p2015061300-r100
 >=mail-filter/opendkim-2.10.3-r25
 
 # Azamat H. Hackimov <azamat.hackimov@gmail.com> (2020-10-06)
