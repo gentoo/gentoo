@@ -94,6 +94,10 @@ src_prepare() {
 		# Set module revision number
 		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
 	fi
+
+	# undo https://github.com/openzfs/zfs/commit/acfc4944d0d6db114db9f2bb5401251c5bd767b6
+	# we use release tarballs with no gitignore files already
+	sed -i 's:rm "$KERNEL_DIR/include/zfs/.gitignore"::' copy-builtin || die
 }
 
 src_configure() {
