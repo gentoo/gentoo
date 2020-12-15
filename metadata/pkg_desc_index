@@ -17519,7 +17519,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.4.83 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.83 5.9.14 5.10.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.83 5.9.14 5.10.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
@@ -18382,7 +18382,7 @@ x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wall
 x11-misc/hsetroot 1.0.2 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10-r1 2.13: Simple screen locker
-x11-misc/i3status 2.13: generates a status bar for dzen2, xmobar or similar
+x11-misc/i3status 2.13 2.13-r1: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
 x11-misc/iconbox 0.2: App for placing icons in a menu which auto-hides
