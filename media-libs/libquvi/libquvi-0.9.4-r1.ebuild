@@ -21,7 +21,7 @@ RDEPEND="!<media-libs/quvi-0.4.0
 	>=media-libs/libquvi-scripts-0.9.20130903[${MULTILIB_USEDEP}]
 	>=net-libs/libproxy-0.4.11-r1[${MULTILIB_USEDEP}]
 	>=net-misc/curl-7.36.0[${MULTILIB_USEDEP}]
-	>=dev-lang/lua-5.1.5-r3[deprecated,${MULTILIB_USEDEP}]
+	>=dev-lang/lua-5.1.5-r3:0=[deprecated,${MULTILIB_USEDEP}]
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils

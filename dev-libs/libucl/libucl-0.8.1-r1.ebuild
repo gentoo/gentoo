@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="lua +regex sign urls +utils static-libs"
 
 DEPEND="!!dev-libs/ucl
-	lua? ( >=dev-lang/lua-5.1:= )
+	lua? ( >=dev-lang/lua-5.1:0= )
 	urls? ( net-misc/curl )
 	sign? ( dev-libs/openssl:0 )
 "

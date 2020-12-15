@@ -19,7 +19,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 "
 
 BDEPEND="virtual/pkgconfig"

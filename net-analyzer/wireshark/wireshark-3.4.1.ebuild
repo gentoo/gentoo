@@ -36,7 +36,7 @@ CDEPEND="
 	ilbc? ( media-libs/libilbc )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2 )
-	lua? ( >=dev-lang/lua-5.1:* )
+	lua? ( >=dev-lang/lua-5.1:0= )
 	lz4? ( app-arch/lz4 )
 	maxminddb? ( dev-libs/libmaxminddb )
 	minizip? ( sys-libs/zlib[minizip] )

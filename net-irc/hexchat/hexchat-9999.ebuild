@@ -36,7 +36,7 @@ RDEPEND="
 	libcanberra? ( media-libs/libcanberra )
 	libproxy? ( net-libs/libproxy )
 	libnotify? ( x11-libs/libnotify )
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )

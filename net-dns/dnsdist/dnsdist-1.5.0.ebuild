@@ -28,7 +28,7 @@ RDEPEND="acct-group/dnsdist
 	doh? ( www-servers/h2o:=[libh2o] )
 	lmdb? ( dev-db/lmdb:= )
 	luajit? ( dev-lang/luajit:= )
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 	regex? ( dev-libs/re2:= )
 	remote-logging? ( >=dev-libs/protobuf-3:= )
 	snmp? ( net-analyzer/net-snmp:= )
