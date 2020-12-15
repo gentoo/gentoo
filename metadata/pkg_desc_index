@@ -727,7 +727,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4 0.103.0-r1: Clam Anti-Virus Scanner
 app-antivirus/clamtk 6.06: A graphical front-end for ClamAV
-app-antivirus/fangfrisch 1.2.0-r1: Update and verify unofficial Clam Anti-Virus signatures
+app-antivirus/fangfrisch 1.2.0-r1 1.3.0: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
@@ -5583,7 +5583,7 @@ dev-libs/protobuf-c 1.3.2 1.3.3: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.8_p20200406: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pthreads4w 3.0.0: POSIX Threads for Windows
-dev-libs/pugixml 1.10 1.11.1-r1 9999: Light-weight, simple, and fast XML parser for C++ with XPath support
+dev-libs/pugixml 1.10 1.11.2 9999: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/qcustomplot 2.0.1: Qt C++ widget for plotting and data visualization
 dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
@@ -15288,7 +15288,7 @@ net-misc/ucarp 1.5.2-r3 1.5.2-r6: Portable userland implementation of Common Add
 net-misc/udpcast 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
-net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024: Two-way cross-platform file synchronizer
+net-misc/unison 2.48.15_p4-r2 2.51.3_p20201127: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 4.13-r1: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
@@ -17359,7 +17359,7 @@ sys-firmware/iwl7260-ucode 0.16.242414: Firmware for Intel (R) Dual Band Wireles
 sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and 4165
 sys-firmware/midisport-firmware 1.2-r1: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 340.32-r1: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/raspberrypi-wifi-ucode 20190114.1_p9: Most up-to-date uCode for the Broadcom wifi chips on Raspberry Pi SBCs
+sys-firmware/raspberrypi-wifi-ucode 20190114.1_p9 20190114.1_p10: Most up-to-date uCode for the Broadcom wifi chips on Raspberry Pi SBCs
 sys-firmware/seabios 1.10.2 1.11.0 1.11.0-r1 1.12.0: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.6 0.1.7 0.1.7-r1 9999: Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
