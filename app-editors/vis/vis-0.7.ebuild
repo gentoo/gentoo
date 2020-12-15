@@ -3,8 +3,8 @@
 
 EAPI=7
 
-MY_PTV=0.4
-LUA_COMPAT=( lua5-2 lua5-3 )
+MY_PTV=0.5
+LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
 
 inherit lua-single optfeature
 
@@ -38,6 +38,9 @@ src_prepare() {
 
 		# https://bugs.gentoo.org/722014 https://github.com/martanne/vis-test/pull/22
 		sed -i 's;./ccan-config > config.h;./ccan-config "${CC}" ${CFLAGS} > config.h;' test/core/Makefile || die
+
+		# https://github.com/martanne/vis-test/issues/27 a Werror clone
+		sed -i 's;|| strstr(output, "warning");;' test/core/ccan-config.c || die
 	fi
 
 	sed -i 's|STRIP?=.*|STRIP=true|' Makefile || die

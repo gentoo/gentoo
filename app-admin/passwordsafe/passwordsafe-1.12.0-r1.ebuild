@@ -84,7 +84,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r xml
 
-	newicon install/graphics/pwsafe.png ${PN}.png
+	doicon install/graphics/pwsafe.png
 	newmenu install/desktop/pwsafe.desktop ${PN}.desktop
 }
 

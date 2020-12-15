@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-LUA_COMPAT=( lua5-2 lua5-3 )
+LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
 
 inherit lua-single git-r3 optfeature
 
