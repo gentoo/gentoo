@@ -10,5 +10,5 @@ RDEPEND=!<dev-libs/hyphen-2.8.8-r1
 REQUIRED_USE=|| ( l10n_en l10n_en-AU l10n_en-CA l10n_en-GB l10n_en-US l10n_en-ZA )
 SLOT=0
 SRC_URI=https://extensions.libreoffice.org/extensions/english-dictionaries/2019-01.01/@@download/file/dict-en-20190101.oxt
-_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_eclasses_=myspell-r2	46f97ac2fc02b4b21256564d1baf8acf
 _md5_=f8fb37a1ca83e4e3e7b0a2a375adbfcb

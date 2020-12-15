@@ -9,5 +9,5 @@ LICENSE=public-domain
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/xfonts/lfpfonts-fix-src-0.83.tar.bz2
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	font-ebdftopcf	e23db122fd578442f37e3e79267eedd8
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	font-ebdftopcf	d0bee18f810ff88c236f6cc09737fb2a
 _md5_=53aeea740160166cfc3ca21129e763f9

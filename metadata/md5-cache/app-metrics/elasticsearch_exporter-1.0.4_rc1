@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 BSD MIT
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/justwatchcom/elasticsearch_exporter/archive/v1.0.4rc1.tar.gz -> elasticsearch_exporter-1.0.4_rc1.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	4a615ccf588f8bc48d956500949af39e	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=3fd2841488a79c79f96d7b81615aa706

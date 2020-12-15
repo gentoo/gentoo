@@ -8,5 +8,5 @@ LICENSE=MIT ISC BSD-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/stripe/stripe-mock/archive/v0.88.0.tar.gz -> stripe-mock-0.88.0.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	4a615ccf588f8bc48d956500949af39e
 _md5_=aabb01d5a7996933232e6ba56f4f5c28

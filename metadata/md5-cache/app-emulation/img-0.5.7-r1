@@ -11,5 +11,5 @@ RDEPEND=seccomp? ( sys-libs/libseccomp ) app-emulation/runc
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/genuinetools/img/archive/v0.5.7.tar.gz -> img-0.5.7.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	4a615ccf588f8bc48d956500949af39e
 _md5_=4d3e61b94901dedea16364cdd70ab522
