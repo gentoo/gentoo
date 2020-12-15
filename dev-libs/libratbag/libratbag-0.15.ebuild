@@ -27,6 +27,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
+		dev-libs/check
 		dev-libs/gobject-introspection
 		dev-util/valgrind
 		$(python_gen_cond_dep '
