@@ -503,7 +503,8 @@ kde-apps/kdebase-meta:5
 # Robin H. Johnson <robbat2@gentoo.org> (2020-11-28)
 # Conrad Kostecki <conikost@gentoo.org> (2020-12-05)
 # ...and others who have not added their names here
-# All these ebuilds require slotted Lua, which is still masked.
+# All these ebuilds require slotted Lua, which conflicts with slot 0.
+# Therefore, these will be unmasked en masse.
 >=app-admin/conky-1.11.4
 >=app-admin/lsyncd-2.2.3
 >=app-benchmarks/sysbench-1.0.20-r100
@@ -913,19 +914,6 @@ app-admin/amazon-ec2-init
 # Mikle Kolyada <zlogene@gentoo.org> (2014-06-27)
 # Masked for proper testing. (Major updates in the code).
 ~dev-perl/PortageXS-0.2.12
-
-# Matti Bickel <mabi@gentoo.org> (2014-04-22)
-# Masked slotted lua for testing
-# William Hubbs <williamh@gentoo.org> (2016-08-07)
-# Taking this mask since Mabi is retired
-# consolidating all slotted lua masks
-app-eselect/eselect-lua
->=dev-lang/lua-5.1.5-r100
-
-# Samuli Suominen <ssuominen@gentoo.org> (2012-03-06)
-# Masked for testing since this is known to break nearly
-# every reverse dependency wrt bug 407091
->=dev-lang/lua-5.2.0
 
 # Mike Gilbert <floppym@gentoo.org> (2014-03-04)
 # Dev channel releases are only for people who are developers or want more
