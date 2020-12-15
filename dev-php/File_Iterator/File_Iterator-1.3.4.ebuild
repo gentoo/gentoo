@@ -11,7 +11,7 @@ inherit php-pear-r2
 DESCRIPTION="FilterIterator implementation that filters files based on a list of suffixes"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE=""
 HOMEPAGE="https://github.com/sebastianbergmann/php-file-iterator
 	https://phpunit.de"
