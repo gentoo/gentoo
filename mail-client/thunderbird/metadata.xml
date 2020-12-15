@@ -8,6 +8,7 @@
 <use>
 	<flag name="clang">Use Clang compiler instead of GCC</flag>
 	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
 	<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker when using GCC
 		or LDD linker when using Clang</flag>
 	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H.264 support
