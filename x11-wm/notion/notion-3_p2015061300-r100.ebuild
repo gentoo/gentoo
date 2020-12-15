@@ -5,15 +5,15 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} )
 
-inherit git-r3 lua-single toolchain-funcs readme.gentoo-r1
+inherit lua-single toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="https://notionwm.net/"
-EGIT_REPO_URI="https://github.com/raboof/${PN}.git"
+SRC_URI="https://github.com/raboof/${PN}/archive/${PV/_p/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="nls xinerama +xrandr"
 
 RDEPEND="${LUA_DEPS}
@@ -34,6 +34,12 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 # needs slingshot,... not in tree
 RESTRICT=test
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3_p2015061300-pkg-config.patch
+)
+
+S=${WORKDIR}/${P/_p/-}
 
 src_prepare() {
 	default
@@ -58,7 +64,7 @@ src_configure() {
 		echo "RANLIB=$(tc-getRANLIB)"
 		echo "LUA_MANUAL=1"
 		echo "LUA=${LUA}"
-		echo "LUAC=luac"
+		echo "LUAC=/usr/bin/luac5.1"
 		echo "LUA_LIBS=$(lua_get_LIBS)"
 		echo "LUA_INCLUDES=$(lua_get_CFLAGS)"
 		use nls || echo "DEFINES+=-DCF_NO_LOCALE -DCF_NO_GETTEXT"
