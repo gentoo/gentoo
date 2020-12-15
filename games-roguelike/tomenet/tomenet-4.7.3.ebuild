@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils gnome2-utils toolchain-funcs
+EAPI=7
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="A MMORPG based on the works of J.R.R. Tolkien"
 HOMEPAGE="https://www.tomenet.eu"
@@ -11,10 +11,11 @@ SRC_URI="https://www.tomenet.eu/downloads/${P}.tar.bz2"
 LICENSE="Moria"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dedicated server +sound X"
+IUSE="+client server +sound X"
+REQUIRED_USE="|| ( client server )"
 
 RDEPEND="sys-libs/ncurses:0
-	!dedicated? (
+	client? (
 		X? (
 			x11-libs/libX11
 		)
@@ -24,8 +25,8 @@ RDEPEND="sys-libs/ncurses:0
 		)
 	)"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	!dedicated? ( sound? ( app-arch/p7zip[wxwidgets] ) )"
+	client? ( sound? ( app-arch/p7zip[wxwidgets] ) )"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${P}/src
 
@@ -35,15 +36,17 @@ PATCHES=(
 
 src_prepare() {
 	default
-	use server || use dedicated || { rm -r ../lib/{config,data,save} || die ;}
+	if ! use server; then
+		rm -r ../lib/{config,data,save} || die
+	fi
 
 	sed \
-		-e "s#@LIBDIR@#/usr/share/${PN}#" \
+		-e "s#@LIBDIR@#${EPREFIX}/usr/share/${PN}#" \
 		"${FILESDIR}"/${PN}-wrapper > "${T}"/${PN} || die
 
-	if use server || use dedicated ; then
+	if use server; then
 		sed \
-			-e "s#@LIBDIR@#/usr/share/${PN}#" \
+			-e "s#@LIBDIR@#${EPREFIX}/usr/share/${PN}#" \
 			"${FILESDIR}"/${PN}-server-wrapper > "${T}"/${PN}.server || die
 	fi
 
@@ -51,10 +54,13 @@ src_prepare() {
 }
 
 src_compile() {
-	local mytargets="$(usex dedicated "accedit tomenet.server" "$(usex server "all" "tomenet")")"
+	local mytargets="$(usex client "tomenet" "") $(usex server "accedit tomenet.server" "")"
 	emake \
-		$(usex dedicated "" "$(usex X "USE_X=1" "")") \
-		$(usex dedicated "" "$(usex sound "USE_SDL=1" "")") \
+		$(usex client "$(usex X "USE_X=1" "")" "") \
+		$(usex client "$(usex sound "USE_SDL=1" "")" "") \
+		CC="$(tc-getCC)" \
+		CPP="$(tc-getCPP)" \
+		GENTOO_CPPFLAGS="${CPPFLAGS}" \
 		-f makefile \
 		${mytargets[@]}
 }
@@ -62,7 +68,7 @@ src_compile() {
 src_install() {
 	dodoc ../TomeNET-Guide.txt
 
-	if ! use dedicated ; then
+	if use client ; then
 		newbin ${PN} ${PN}.bin
 		dobin "${T}"/${PN}
 
@@ -70,7 +76,7 @@ src_install() {
 		make_desktop_entry ${PN} ${PN} ${PN}4
 	fi
 
-	if use server || use dedicated ; then
+	if use server ; then
 		newbin tomenet.server tomenet.server.bin
 		dobin "${T}"/${PN}.server accedit
 	fi
@@ -80,20 +86,12 @@ src_install() {
 	doins ../.tomenetrc
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_postinst
 
 	if use sound; then
 		elog "You can get soundpacks from here:"
-		elog '  https://tomenet.net/downloads.php'
+		elog '  https://tomenet.eu/downloads.php'
 		elog "They must be placed inside ~/.tomenet directory."
 	fi
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

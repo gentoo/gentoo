@@ -6,7 +6,8 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="server">Compile server support</flag>
+		<flag name="client">Compile client</flag>
+		<flag name="server">Compile server</flag>
 	</use>
 	<longdescription lang="en">
 		TomeNET is a multiplayer fantasy dungeon exploration game based on

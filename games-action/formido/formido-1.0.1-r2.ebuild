@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop toolchain-funcs
 
@@ -13,7 +13,6 @@ SRC_URI="http://noe.falzon.free.fr/prog/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT=0
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image
@@ -30,12 +29,16 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "s:g++:$(tc-getCXX):" \
-		-e "/^FLAGS=/s:$: ${CXXFLAGS}:" \
-		-e "/^LINKFLAGS=/s:=.*:=${LDFLAGS}:" \
-		-e "s:\${DATDIR}:/usr/share/${PN}/data:" \
-		-e "s:\${DEFCONFIGDIR}:/usr/share/${PN}:" \
+		-e '/^FLAGS=/s:$: $(CXXFLAGS):' \
 		Makefile || die
+}
+
+src_compile() {
+	emake CC="$(tc-getCXX)" \
+		CXXFLAGS="${CXXFLAGS}" \
+		LINKFLAGS="${LDFLAGS}" \
+		DATDIR="${EPREFIX}/usr/share/formido/data" \
+		DEFCONFIGDIR="${EPREFIX}/usr/share/formido"
 }
 
 src_install() {
