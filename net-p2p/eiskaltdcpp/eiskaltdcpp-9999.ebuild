@@ -1,11 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+LUA_COMPAT=( lua5-1 )
 
 PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake-utils gnome2-utils l10n xdg-utils
+inherit cmake l10n lua-single xdg-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
@@ -22,6 +24,7 @@ REQUIRED_USE="
 	javascript? ( qt5 )
 	libcanberra? ( gtk )
 	libnotify? ( gtk )
+	lua? ( ${LUA_REQUIRED_USE} )
 	spell? ( qt5 )
 	sqlite? ( qt5 )
 "
@@ -60,7 +63,7 @@ RDEPEND="
 		libnotify? ( x11-libs/libnotify )
 	)
 	idn? ( net-dns/libidn )
-	lua? ( dev-lang/lua:= )
+	lua? ( ${LUA_DEPS} )
 	pcre? ( dev-libs/libpcre )
 	qt5? (
 		dev-qt/qtconcurrent:5
@@ -88,8 +91,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog.txt )
 
+CMAKE_REMOVE_MODULES_LIST="FindLua"
+
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	l10n_find_plocales_changes 'eiskaltdcpp-qt/translations' '' '.ts'
 }
 
@@ -99,9 +104,9 @@ src_configure() {
 		-Dlinguas="$(l10n_get_locales)"
 		-DLOCAL_MINIUPNP=OFF
 		-DUSE_GTK=OFF
+		-DUSE_LIBGNOME2=OFF
 		-DUSE_QT=OFF
 		-DUSE_QT_QML=OFF
-		-DUSE_LIBGNOME2=OFF
 		-DNO_UI_DAEMON=$(usex daemon)
 		-DDBUS_NOTIFY=$(usex dbus)
 		-DWITH_DHT=$(usex dht)
@@ -111,8 +116,6 @@ src_configure() {
 		-DUSE_JS=$(usex javascript)
 		-DUSE_LIBCANBERRA=$(usex libcanberra)
 		-DUSE_LIBNOTIFY=$(usex libnotify)
-		-DLUA_SCRIPT=$(usex lua)
-		-DWITH_LUASCRIPTS=$(usex lua)
 		-DWITH_DEV_FILES=$(usex !minimal)
 		-DPERL_REGEX=$(usex pcre)
 		-DUSE_QT5=$(usex qt5)
@@ -132,6 +135,13 @@ src_configure() {
 			-DXMLRPC_DAEMON=$(usex xmlrpc)
 		)
 	fi
+	if use lua; then
+		mycmakeargs+=(
+			-DLUA_SCRIPT=ON
+			-DWITH_LUASCRIPTS=ON
+			-DLUA_VERSION=$(ver_cut 1-2 $(lua_get_version))
+		)
+	fi
 	if use qt5 || use gtk; then
 		mycmakeargs+=(
 			-DWITH_EMOTICONS=ON
@@ -143,19 +153,15 @@ src_configure() {
 			-DWITH_SOUNDS=OFF
 		)
 	fi
-	cmake-utils_src_configure
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
+	cmake_src_configure
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
