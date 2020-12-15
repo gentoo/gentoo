@@ -15,6 +15,11 @@ www-client/firefox clang
 # support it already.
 sys-boot/refind gnuefi
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-12-06)
+# Doesn't build without X. Not removing IUSE from ebuild yet in hope that
+# https://github.com/TomenetGame/tomenet/issues/14 will be fixed.
+>=games-roguelike/tomenet-4.7.3 X
+
 # Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
 # Ensure tools flag is enabled for @system set
 sys-apps/kmod tools
