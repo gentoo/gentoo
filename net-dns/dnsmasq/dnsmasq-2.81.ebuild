@@ -32,7 +32,7 @@ COMMON_DEPEND="
 		!libidn2? ( net-dns/libidn:0= )
 		libidn2? ( >=net-dns/libidn2-2.0:= )
 	)
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	conntrack? ( net-libs/libnetfilter_conntrack:= )
 	nls? ( sys-devel/gettext )
 "

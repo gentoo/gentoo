@@ -26,7 +26,7 @@ need_httpd_cgi
 
 RDEPEND="
 	${DEPEND}
-	>=dev-lang/php-5.4.0[filter,gd,iconv,json,ldap?,pdo,postgres?,session,sqlite?,ssl?,unicode,xml]
+	>=dev-lang/php-5.4.0[filter,gd,iconv,json(+),ldap?,pdo,postgres?,session,sqlite?,ssl?,unicode,xml]
 	virtual/httpd-php
 	change-password? (
 		dev-lang/php[sockets]

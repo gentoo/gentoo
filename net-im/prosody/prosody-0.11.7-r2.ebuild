@@ -15,17 +15,15 @@ KEYWORDS="~amd64 arm arm64 x86"
 IUSE="+libevent libressl luajit mysql postgres +sqlite +ssl test +zlib"
 RESTRICT="!test? ( test )"
 
+# dev-lang/lua:0 is 5.1 so lua-bit32 is required
 COMMON_DEPEND="
-	|| (
-		>=dev-lang/lua-5.2:*
-		dev-lua/lua-bit32
-	)
+	dev-lua/lua-bit32
 	net-dns/libidn
 	net-im/jabber-base
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( dev-lang/lua:0 )
+	!luajit? ( dev-lang/lua:0= )
 "
 
 DEPEND="

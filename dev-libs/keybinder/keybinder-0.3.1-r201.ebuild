@@ -17,7 +17,7 @@ RDEPEND=">=x11-libs/gtk+-2.20:2
 	x11-libs/libXext
 	x11-libs/libXrender
 	introspection? ( dev-libs/gobject-introspection )
-	lua? ( >=dev-lang/lua-5.1 )"
+	lua? ( >=dev-lang/lua-5.1:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

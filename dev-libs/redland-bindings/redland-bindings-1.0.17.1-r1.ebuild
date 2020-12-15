@@ -29,7 +29,7 @@ BDEPEND="sys-apps/sed
 	virtual/pkgconfig"
 
 RDEPEND=">=dev-libs/redland-1.0.14
-	lua? ( >=dev-lang/lua-5.1:= )
+	lua? ( >=dev-lang/lua-5.1:0= )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( dev-lang/ruby:* dev-ruby/log4r )

@@ -30,7 +30,7 @@ REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )
 	ruby? ( || ( $(ruby_get_use_targets) ) )"
 
 COMMONDEPEND=">=dev-libs/xapian-1.4.15
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	perl? ( dev-lang/perl:= )
 	php? ( dev-lang/php:=[-threads] )
 	python? (

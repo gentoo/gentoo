@@ -111,7 +111,7 @@ CDEPEND="
 	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
 	go? ( sys-devel/gcc:=[go] )
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
