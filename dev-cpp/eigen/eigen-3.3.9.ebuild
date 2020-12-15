@@ -53,8 +53,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.7-gentoo-cmake.patch
 	"${FILESDIR}"/${PN}-3.3.9-max-macro.patch
-	# disable the cholmod tests, they always fail
-	"${FILESDIR}"/${PN}-3.3.9-disable-cholmod_support.patch
 )
 
 src_prepare() {
@@ -79,6 +77,8 @@ src_configure() {
 	use test && mycmakeargs+=(
 		# the OpenGL testsuite is extremely brittle, bug #712808
 		-DEIGEN_TEST_NO_OPENGL=ON
+		# the cholmod tests are broken and always fail
+		-DCMAKE_DISABLE_FIND_PACKAGE_Cholmod=ON
 		-DEIGEN_TEST_CXX11=ON
 		-DEIGEN_TEST_NOQT=ON
 		-DEIGEN_TEST_ALTIVEC=$(usex cpu_flags_ppc_altivec)
