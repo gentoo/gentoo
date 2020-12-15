@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+drun test +windowmode"
 RESTRICT="!test? ( test )"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	dev-libs/glib:2
 	gnome-base/librsvg:2
@@ -33,10 +34,10 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 	test? ( >=dev-libs/check-0.11 )
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.12-Werror.patch
 	"${FILESDIR}"/${PN}-1.5.0-gtk-settings-test.patch
