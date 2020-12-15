@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ezzieyguywuf@gmail.com</email>
+		<name>Wolfgang E. Sanyer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A double-entry bookkeeping computer language that lets you define
+		financial transaction records in a text file, read them in memory,
+		generate a variety of reports from them, and provides a web interface.
+	</longdescription>
+</pkgmetadata>

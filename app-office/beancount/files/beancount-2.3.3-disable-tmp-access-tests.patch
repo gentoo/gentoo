@@ -1,0 +1,20 @@
+diff --git a/beancount/projects/will_test.py b/beancount/projects/will_test.py
+index 0a8e92b8..12d4c50a 100644
+--- a/beancount/projects/will_test.py
++++ b/beancount/projects/will_test.py
+@@ -3,6 +3,7 @@ __license__ = "GNU GPLv2"
+ 
+ import logging
+ import unittest
++import pytest
+ 
+ from beancount import loader
+ from beancount.core import getters
+@@ -95,6 +96,7 @@ class TestWillFunctions(test_utils.TestCase):
+ class TestWillReport(test_utils.TestCase):
+ 
+     @loader.load_doc()
++    @pytest.mark.skip(reason="Cannot access /tmp during portage installation")
+     def test_create_report(self, entries, _, options_map):
+         """
+           option "title" "Report Creation Test"

@@ -1,0 +1,73 @@
+diff --git a/beancount/scripts/bake_test.py b/beancount/scripts/bake_test.py
+index 67dbefc0..a95488c1 100644
+--- a/beancount/scripts/bake_test.py
++++ b/beancount/scripts/bake_test.py
+@@ -6,6 +6,7 @@ import textwrap
+ from os import path
+ from unittest import mock
+ import unittest
++import pytest
+ 
+ import lxml.html
+ 
+@@ -188,6 +189,7 @@ class TestScriptBake(test_utils.TestCase):
+                 test_utils.run_with_args(bake.main, self.get_args() + [filename, output])
+ 
+     @test_utils.docfile
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_bake_directory(self, filename):
+         """
+         2013-01-01 open Expenses:Restaurant
+@@ -210,6 +212,7 @@ class TestScriptBake(test_utils.TestCase):
+ class TestScriptArchive(TestScriptBake):
+ 
+     @test_utils.docfile
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_bake_archive__known(self, filename):
+         """
+         2013-01-01 open Expenses:Restaurant
+diff --git a/beancount/web/web_test.py b/beancount/web/web_test.py
+index dd7059fc..1aab3e44 100644
+--- a/beancount/web/web_test.py
++++ b/beancount/web/web_test.py
+@@ -4,6 +4,7 @@ __license__ = "GNU GPLv2"
+ import unittest
+ import urllib.parse
+ from os import path
++import pytest
+ 
+ from beancount.utils import test_utils
+ from beancount.parser import version
+@@ -48,26 +49,32 @@ class TestWeb(unittest.TestCase):
+                           self.ignore_regexp)
+ 
+     @test_utils.docfile
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_scrape_empty_file(self, filename):
+         """
+         ;; A file with no entries in it.
+         """
+         self.scrape(filename)
+ 
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_scrape_basic(self):
+         self.scrape('simple/basic.beancount')
+ 
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_scrape_basic_view(self):
+         self.scrape('simple/basic.beancount', extra_args=['--view', 'year/2013'])
+ 
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_scrape_in_incognito(self):
+         self.scrape('simple/basic.beancount', extra_args=['--incognito'])
+ 
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def test_scrape_starterkit(self):
+         self.scrape('simple/starter.beancount')
+ 
+     # Note: Great idea, but sorry, too slow (approx. 50s on MBA). We need to
+     # find some way to enable this on demand.
++    @pytest.mark.skip(reason="network unreachable during portage installation")
+     def __test_scrape_example(self):
+         self.scrape('example.beancount')
+ 
