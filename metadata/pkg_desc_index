@@ -5533,7 +5533,7 @@ dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ progr
 dev-libs/marisa 0.2.5 0.2.6 9999: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.7.0 2.7.4 2.7.7: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
-dev-libs/miniz 2.1.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
+dev-libs/miniz 2.1.0: A lossless, high performance data compression library
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
@@ -12884,6 +12884,7 @@ media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
+media-gfx/prusaslicer 2.2.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1 3.75: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qimgv 0.9.1: A cross-platform image viewer with webm support, written in qt5
