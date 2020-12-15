@@ -87,6 +87,10 @@ src_configure() {
 
 	tc-export CC PKG_CONFIG
 
+	# Update from time to time with output from "date +%s"
+	# on a system that is time-synced.
+	export SOURCE_DATE_EPOCH=1607976314
+
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)
