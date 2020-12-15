@@ -20,8 +20,13 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps +refclock +rtc samba +seccomp +sechash selinux"
-REQUIRED_USE="sechash? ( nettle )"
+IUSE="+caps +cmdmon html ipv6 libedit +nettle nss +ntp +phc pps +refclock +rtc samba +seccomp +sechash selinux"
+REQUIRED_USE="
+	sechash? ( || ( nettle nss  ) )
+	nettle? ( !nss )
+	!sechash? ( !nss )
+	!sechash? ( !nts? ( !nettle ) )
+	"
 RESTRICT="test"
 
 BDEPEND="nettle? ( virtual/pkgconfig )"
@@ -40,6 +45,7 @@ DEPEND="
 	)
 	libedit? ( dev-libs/libedit )
 	nettle? ( dev-libs/nettle:= )
+	nss? ( dev-libs/nss:= )
 	seccomp? ( sys-libs/libseccomp )
 	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
@@ -84,8 +90,6 @@ src_configure() {
 
 	tc-export CC PKG_CONFIG
 
-	# Note: ncurses and nss switches are mentioned in the configure script but
-	# do nothing
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)
@@ -94,6 +98,7 @@ src_configure() {
 		$(usex ipv6 '' --disable-ipv6)
 		$(usex libedit '' --without-editline)
 		$(usex nettle '' --without-nettle)
+		$(usex nss '' --without-nss)
 		$(usex ntp '' --disable-ntp)
 		$(usex phc '' --disable-phc)
 		$(usex pps '' --disable-pps)
@@ -109,7 +114,6 @@ src_configure() {
 		--sysconfdir="${EPREFIX}/etc/chrony"
 		--with-hwclockfile="${EPREFIX}/etc/adjtime"
 		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
-		--without-nss
 		--without-tomcrypt
 	)
 
