@@ -11016,7 +11016,7 @@ games-action/descent3-demo 1.4.0a-r1: Indoor/outdoor 3D combat with evil robotic
 games-action/dxx-rebirth 0.61.0_pre20200615 9999: Descent Rebirth - enhanced Descent 1 & 2 engine
 games-action/extreme-tuxracer 0.7.4 0.7.5: High speed arctic racing game based on Tux Racer
 games-action/fakk2 1.02-r1: 3D third-person action shooter based on the Heavy Metal comics/movies
-games-action/formido 1.0.1-r1: A shooting game in the spirit of Phobia games
+games-action/formido 1.0.1-r2: A shooting game in the spirit of Phobia games
 games-action/garden 1.0.9-r2: Multiplatform vertical shoot-em-up with non-traditional elements
 games-action/geki2-KXL 2.0.3-r3: 2D length scroll shooting game
 games-action/geki3-KXL 1.0.3-r3: 2D length scroll shooting game
@@ -11576,7 +11576,7 @@ games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
 games-roguelike/stone-soup 0.25.1-r1 0.25.1-r100: Role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
-games-roguelike/tomenet 4.6.1a 4.7.2: A MMORPG based on the works of J.R.R. Tolkien
+games-roguelike/tomenet 4.7.3: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b-r1: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/adonthell 0.3.8: Roleplaying game engine
@@ -13909,6 +13909,7 @@ media-sound/saydate 0.3.0: A Linux shell program that talks the date and system 
 media-sound/sc2mpd 1.1.5 1.1.7: Implements the SongCast protocol for use by upmpdcli and mpd
 media-sound/schismtracker 20180810-r1: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
+media-sound/scream 3.6 9999: Plays sound received from network or from a QEMU Windows VM
 media-sound/seq24 0.9.3-r1: Loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
 media-sound/sexypsf 0.4.8: Open-source PSF1 (Playstation music) file player
