@@ -18843,7 +18843,7 @@ x11-themes/goddard-backgrounds 13.0.0.3-r1: Fedora 13 official background artwor
 x11-themes/golden-xcursors 0.8-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/greybird 3.20.1-r2 3.22.9 3.22.10 3.22.11 3.22.12 9999: The default theme from Xubuntu
 x11-themes/gtk-chtheme 0.3.1-r3: GTK-2.0 Theme Switcher
-x11-themes/gtk-engines 2.20.2-r2: GTK+2 standard engines and themes
+x11-themes/gtk-engines 2.20.2-r2 2.20.2-r100: GTK+2 standard engines and themes
 x11-themes/gtk-engines-adwaita 3.28: Adwaita GTK+2 theme engine
 x11-themes/gtk-engines-aurora 1.5.1: Aurora GTK+ 2.x Theme Engine
 x11-themes/gtk-engines-candido 0.9.1: Candido GTK+ 2.x Theme Engine
