@@ -146,11 +146,14 @@ src_prepare() {
 
 	local x
 	# missing: VPIC freerange libproj4 mrmpi sqlite utf8 verdict xmdf2 xmdf3
-	for x in expat freetype hdf5 jpeg jsoncpp libharu libxml2 lz4 netcdf png tiff zlib; do
+	for x in expat freetype hdf5 jpeg jsoncpp libharu libxml2 lz4 netcdf pugixml png tiff zlib; do
 		ebegin "Dropping bundled ${x}"
 		rm -r ThirdParty/${x}/vtk${x} || die
 		eend $?
 	done
+
+	sed -i -e '/add_subdirectory(vtkpugixml)/d' ThirdParty/pugixml/CMakeLists.txt || die
+	sed -i -e '/vtk_target_export(vtkpugixml)/d' ThirdParty/pugixml/CMakeLists.txt || die
 
 	if use doc; then
 		einfo "Removing .md5 files from documents."
@@ -184,6 +187,7 @@ src_configure() {
 		-DVTK_USE_SYSTEM_LibXml2=ON
 		-DVTK_USE_SYSTEM_NETCDF=ON
 		-DVTK_USE_SYSTEM_OGGTHEORA=ON
+		-DVTK_USE_SYSTEM_PUGIXML=ON
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
 		-DVTK_USE_SYSTEM_TWISTED=ON
