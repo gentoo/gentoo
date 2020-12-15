@@ -15,7 +15,7 @@ IUSE="curl sniffer"
 
 RDEPEND="
 	>=net-libs/libcrafter-0.3_p20171019
-	dev-lang/lua:*
+	dev-lang/lua:0=
 	dev-libs/json-c
 	net-libs/libpcap
 	curl? ( net-misc/curl )

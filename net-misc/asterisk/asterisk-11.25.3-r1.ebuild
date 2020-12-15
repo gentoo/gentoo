@@ -58,7 +58,7 @@ CDEPEND="acct-user/asterisk
 	xmpp? ( dev-libs/iksemel )
 	ldap? ( net-nds/openldap )
 	libedit? ( dev-libs/libedit )
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	mysql? ( virtual/mysql )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )

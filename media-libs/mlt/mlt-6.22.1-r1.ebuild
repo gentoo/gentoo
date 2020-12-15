@@ -48,7 +48,7 @@ DEPEND="
 		virtual/jack
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
-	lua? ( >=dev-lang/lua-5.1.4-r4:= )
+	lua? ( >=dev-lang/lua-5.1.4-r4:0= )
 	opencv? ( >=media-libs/opencv-3.2.0:= )
 	opengl? ( media-video/movit )
 	python? ( ${PYTHON_DEPS} )

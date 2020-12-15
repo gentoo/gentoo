@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug dnstap libressl luajit protobuf snmp sodium systemd"
 REQUIRED_USE="dnstap? ( protobuf )"
 
-DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
+DEPEND="!luajit? ( >=dev-lang/lua-5.1:0= )
 	luajit? ( dev-lang/luajit:= )
 	protobuf? (
 		dev-libs/protobuf

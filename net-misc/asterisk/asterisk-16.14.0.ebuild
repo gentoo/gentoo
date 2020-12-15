@@ -60,7 +60,7 @@ DEPEND="acct-user/asterisk
 	iconv? ( virtual/libiconv )
 	ilbc? ( media-libs/libilbc )
 	ldap? ( net-nds/openldap )
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )

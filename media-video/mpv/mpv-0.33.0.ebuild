@@ -84,7 +84,7 @@ COMMON_DEPEND="
 	virtual/ttf-fonts
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
 	lua? (
-		!luajit? ( <dev-lang/lua-5.3:= )
+		!luajit? ( <dev-lang/lua-5.3:0= )
 		luajit? ( dev-lang/luajit:2 )
 	)
 	openal? ( >=media-libs/openal-1.13 )

@@ -27,7 +27,7 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:=
-	!luajit? ( dev-lang/lua:= )
+	!luajit? ( dev-lang/lua:0= )
 	luajit? ( dev-lang/luajit:= )
 	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c:= )

@@ -49,7 +49,7 @@ IUSE="httpd cgi-lua cgi-php static static-libs doc"
 DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="
 	httpd? (
-		cgi-lua? ( dev-lang/lua )
+		cgi-lua? ( dev-lang/lua:0= )
 		cgi-php? ( dev-lang/php[cgi] )
 	)"
 

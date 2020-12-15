@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 SLOT=0
 IUSE=""
 
-RDEPEND="dev-lang/lua:=
+RDEPEND="dev-lang/lua:0=
 	dev-db/postgresql:="
 DEPEND="${RDEPEND}"
 

@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	sci-libs/proj:=
 	sys-libs/zlib
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost

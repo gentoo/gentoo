@@ -21,7 +21,7 @@ IUSE="lua perl python ruby"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="net-libs/gnutls:=
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}"
 BDEPEND=">=dev-lang/swig-4.0.0
 	dev-util/gtk-doc-am
 	sys-devel/flex
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	perl? ( dev-lang/perl:= virtual/perl-ExtUtils-MakeMaker )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
