@@ -18,3 +18,7 @@ HOMEPAGE="https://pugixml.org/ https://github.com/zeux/pugixml/"
 
 LICENSE="MIT"
 SLOT="0"
+
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-config.patch"
+)
