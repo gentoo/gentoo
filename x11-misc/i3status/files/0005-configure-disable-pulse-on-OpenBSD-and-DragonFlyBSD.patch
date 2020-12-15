@@ -1,0 +1,56 @@
+From 54e798e3a6dcf5747c3e943b376ae441ee0534a4 Mon Sep 17 00:00:00 2001
+From: Michael Stapelberg <michael@stapelberg.de>
+Date: Fri, 12 Jul 2019 14:45:34 +0200
+Subject: [PATCH 5/7] configure: disable pulse on OpenBSD and DragonFlyBSD
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This matches the conditional compilation in the code and is more correct than
+distinguishing linux vs. non-linux (which breaks on Debian’s kFreeBSD and hurd
+variants).
+
+Thanks to sdk for providing an OpenBSD 6.5 environment for verification. This
+has not been tested on DragonFlyBSD.
+
+related to #352
+---
+ configure.ac | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 95009ac..a6c31d7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -80,19 +80,25 @@ AC_CANONICAL_HOST
+ PKG_CHECK_MODULES([CONFUSE], [libconfuse])
+ PKG_CHECK_MODULES([YAJL], [yajl])
+ 
+-pulse=false
++pulse=true
+ case $host_os in
+ 	linux*)
+ 	PKG_CHECK_MODULES([NLGENL], [libnl-genl-3.0])
+ 	PKG_CHECK_MODULES([ALSA], [alsa])
+-	PKG_CHECK_MODULES([PULSE], [libpulse])
+-	pulse=true
++	;;
++	openbsd*)
++	pulse=false
++	;;
++	dragonfly*)
++	pulse=false
+ 	;;
+ 	netbsd*)
+ 	AC_SEARCH_LIBS([prop_string_create], [prop])
+ 	;;
+ esac
+ AM_CONDITIONAL([PULSE], [test x$pulse = xtrue])
++AS_IF([test x"$pulse" = x"true"],
++      [PKG_CHECK_MODULES([PULSE], [libpulse])])
+ 
+ dnl TODO: check for libbsd for GNU/kFreeBSD
+ 
+-- 
+2.26.2
+
