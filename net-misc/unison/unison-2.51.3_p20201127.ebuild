@@ -5,14 +5,14 @@ EAPI=7
 
 inherit desktop xdg-utils
 
-MY_COMMIT="73f1bfa2476f907e2d781948ce9e764230bf8b27"
+MY_COMMIT="4713e608d2f9c998ba4412fee53b94dc9bef98b9"
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
 SRC_URI="https://github.com/bcpierce00/unison/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="debug doc gtk +ocamlopt threads"
 RESTRICT="!ocamlopt? ( strip )" # https://bugs.gentoo.org/685776#c0
 
@@ -39,12 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
-	# build unison-manual.pdf but not .html
-	if use doc; then
-		local myconf="all docs HEVEA=false"
-	else
-		local myconf="all"
-	fi
+	local myconf="all"
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
@@ -64,6 +59,11 @@ src_compile() {
 
 	# Discard cflags as it will try to pass them to ocamlc...
 	emake $myconf CFLAGS=""
+
+	if use doc; then
+		myconf="$myconf docs HEVEA=false"
+		emake $myconf CFLAGS=""
+	fi
 }
 
 src_test() {
