@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rss2email/rss2email/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="<dev-python/feedparser-6[${PYTHON_USEDEP}]
