@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">keep</remote-id>
 		<remote-id type="github">orkohunter/keep</remote-id>
