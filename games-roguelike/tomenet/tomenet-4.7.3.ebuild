@@ -87,7 +87,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_postinst
+	xdg_pkg_postinst
 
 	if use sound; then
 		elog "You can get soundpacks from here:"
