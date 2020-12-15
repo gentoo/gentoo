@@ -20,12 +20,13 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon html ipv6 libedit +nettle nss +ntp +phc pps +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon html ipv6 libedit +nettle nss +ntp +phc +nts pps +refclock +rtc samba +seccomp +sechash selinux"
 REQUIRED_USE="
 	sechash? ( || ( nettle nss  ) )
 	nettle? ( !nss )
 	!sechash? ( !nss )
 	!sechash? ( !nts? ( !nettle ) )
+	nts? ( nettle )
 	"
 RESTRICT="test"
 
@@ -43,6 +44,7 @@ DEPEND="
 		acct-user/ntp
 		sys-libs/libcap
 	)
+	nts? ( net-libs/gnutls:= )
 	libedit? ( dev-libs/libedit )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss:= )
@@ -100,6 +102,8 @@ src_configure() {
 		$(usex nettle '' --without-nettle)
 		$(usex nss '' --without-nss)
 		$(usex ntp '' --disable-ntp)
+		$(usex nts '' --disable-nts)
+		$(usex nts '' --without-gnutls)
 		$(usex phc '' --disable-phc)
 		$(usex pps '' --disable-pps)
 		$(usex refclock '' --disable-refclock)
