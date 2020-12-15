@@ -4474,9 +4474,9 @@ dev-haskell/vector-space 0.16: Vector & affine spaces, linear maps, and derivati
 dev-haskell/vector-th-unbox 0.2.1.7: Deriver for Data.Vector.Unboxed using Template Haskell
 dev-haskell/void 0.7.3: A Haskell 98 logically uninhabited data type
 dev-haskell/wai 3.2.2.1: Web Application Interface
-dev-haskell/wai-app-static 3.1.7.2: WAI application for static serving
+dev-haskell/wai-app-static 3.1.7.2-r1: WAI application for static serving
 dev-haskell/wai-conduit 3.0.0.4: conduit wrappers for WAI
-dev-haskell/wai-extra 3.0.31: Provides some basic WAI handlers and middleware
+dev-haskell/wai-extra 3.1.4.1: Provides some basic WAI handlers and middleware
 dev-haskell/wai-logger 2.3.6: A logging system for WAI
 dev-haskell/wai-test 3.0.0: Unit test framework (built on HUnit) for WAI applications. (deprecated)
 dev-haskell/warp 3.3.13: A fast, light-weight web server for WAI applications
@@ -4511,7 +4511,7 @@ dev-haskell/yaml 0.11.5.0: Support for parsing and rendering YAML documents
 dev-haskell/yesod 1.6.1.0: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-auth 1.6.9: Authentication for Yesod
 dev-haskell/yesod-auth-hashdb 1.7.1.2: Authentication plugin for Yesod
-dev-haskell/yesod-core 1.6.18.7: Creation of type-safe, RESTful web applications
+dev-haskell/yesod-core 1.6.18.8: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-default 1.2.0: Default config and main functions for your yesod application (deprecated)
 dev-haskell/yesod-form 1.6.7: Form handling support for Yesod Web Framework
 dev-haskell/yesod-json 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
