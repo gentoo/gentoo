@@ -9,18 +9,29 @@
 # This eclass contains a suite of functions to help developers sanely
 # and safely manage toolchain flags in their builds.
 
+# @ECLASS-VARIABLE: _FLAG_O_MATIC_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ -z ${_FLAG_O_MATIC_ECLASS} ]]; then
 _FLAG_O_MATIC_ECLASS=1
 
 inherit eutils toolchain-funcs multilib
 
+# @FUNCTION: all-flag-vars
+# @DESCRIPTION:
 # Return all the flag variables that our high level funcs operate on.
+
 all-flag-vars() {
 	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
+# @FUNCTION: setup-allowed-flags
+# @DESCRIPTION:
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
 # Note: shell globs and character lists are allowed
+
 setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[12sg]' -mcpu -march -mtune
@@ -87,8 +98,12 @@ setup-allowed-flags() {
 	)
 }
 
+# @FUNCTION: _filter-hardened
+# @INTERNAL
+# @DESCRIPTION:
 # inverted filters for hardened compiler.  This is trying to unpick
 # the hardened compiler defaults.
+
 _filter-hardened() {
 	local f
 	for f in "$@" ; do
@@ -121,9 +136,13 @@ _filter-hardened() {
 	done
 }
 
+# @FUNCTION: _filter-var
+# @INTERNAL
+# @DESCRIPTION:
 # Remove occurrences of strings from variable given in $1
 # Strings removed are matched as globs, so for example
 # '-O*' would remove -O1, -O2 etc.
+
 _filter-var() {
 	local f x var=$1 new=()
 	shift
@@ -142,6 +161,7 @@ _filter-var() {
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Remove particular <flags> from {C,CPP,CXX,CCAS,F,FC,LD}FLAGS.  Accepts shell globs.
+
 filter-flags() {
 	_filter-hardened "$@"
 	local v
@@ -154,6 +174,7 @@ filter-flags() {
 # @FUNCTION: filter-lfs-flags
 # @DESCRIPTION:
 # Remove flags that enable Large File Support.
+
 filter-lfs-flags() {
 	[[ $# -ne 0 ]] && die "filter-lfs-flags takes no arguments"
 	# http://www.gnu.org/s/libc/manual/html_node/Feature-Test-Macros.html
@@ -167,6 +188,7 @@ filter-lfs-flags() {
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Remove particular <flags> from LDFLAGS.  Accepts shell globs.
+
 filter-ldflags() {
 	_filter-var LDFLAGS "$@"
 	return 0
@@ -313,6 +335,11 @@ replace-cpu-flags() {
 	return 0
 }
 
+# @FUNCTION: _is_flagq
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 _is_flagq() {
 	local x var="$1[*]"
 	for x in ${!var} ; do
@@ -438,6 +465,10 @@ strip-flags() {
 	return 0
 }
 
+# @FUNCTION: test-flag-PROG
+# @DESCRIPTION:
+# Please document me
+
 test-flag-PROG() {
 	local comp=$1
 	local lang=$2
@@ -557,7 +588,12 @@ test-flag-FC() { test-flag-PROG "FC" f95 "$@"; }
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
+
 test-flag-CCLD() { test-flag-PROG "CC" c+ld "$@"; }
+
+# @FUNCTION: test-flags-PROG
+# @DESCRIPTION:
+# Please document me
 
 test-flags-PROG() {
 	local comp=$1
