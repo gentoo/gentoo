@@ -23,7 +23,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~x86"
 IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +tcmalloc vaapi wayland widevine"
-RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 REQUIRED_USE="
 	component-build? ( !suid )
 "
