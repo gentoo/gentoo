@@ -23,6 +23,11 @@ if [[ ${__AUTOTOOLS_AUTO_DEPEND+set} == "set" ]] ; then
 	fi
 fi
 
+# @ECLASS-VARIABLE: _AUTOTOOLS_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document
+
 if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
 _AUTOTOOLS_ECLASS=1
 
@@ -99,6 +104,11 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 	export WANT_AUTOCONF
 fi
 
+# @ECLASS-VARIABLE: _libtool_atom
+# @INTERNAL
+# @DESCRIPTION:
+# Set libtool ${P}
+
 _libtool_atom=">=sys-devel/libtool-2.4"
 if [[ -n ${WANT_LIBTOOL} ]] ; then
 	case ${WANT_LIBTOOL} in
@@ -108,6 +118,10 @@ if [[ -n ${WANT_LIBTOOL} ]] ; then
 	esac
 	export WANT_LIBTOOL
 fi
+
+# @ECLASS-VARIABLE: AUTOTOOLS_DEPEND
+# @DESCRIPTION:
+# Set DEPEND
 
 AUTOTOOLS_DEPEND="${_automake_atom}
 	${_autoconf_atom}
@@ -119,6 +133,7 @@ RDEPEND=""
 # Set to 'no' to disable automatically adding to DEPEND.  This lets
 # ebuilds form conditional depends by using ${AUTOTOOLS_DEPEND} in
 # their own DEPEND string.
+
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI:-0} in
@@ -126,6 +141,12 @@ if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
 	esac
 fi
+
+# @ECLASS-VARIABLE: __AUTOTOOLS_AUTO_DEPEND
+# @INTERNAL
+# @DESCRIPTION:
+# Set internal variable
+
 __AUTOTOOLS_AUTO_DEPEND=${AUTOTOOLS_AUTO_DEPEND} # See top of eclass
 
 unset _automake_atom _autoconf_atom
@@ -266,14 +287,68 @@ _at_uses_pkg() {
 		egrep -q "${args[@]}" configure.??
 	fi
 }
+
+# @FUNCTION: _at_uses_autoheader
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_autoheader()  { _at_uses_pkg A{C,M}_CONFIG_HEADER{S,}; }
+
+# @FUNCTION: _at_uses_automake
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_automake()    { _at_uses_pkg AM_INIT_AUTOMAKE; }
+
+# @FUNCTION: _at_uses_gettext
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_gettext()     { _at_uses_pkg AM_GNU_GETTEXT_{,REQUIRE_}VERSION; }
+
+# @FUNCTION: _at_uses_glibgettext
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_glibgettext() { _at_uses_pkg AM_GLIB_GNU_GETTEXT; }
+
+# @FUNCTION: _at_uses_intltool
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_intltool()    { _at_uses_pkg {AC,IT}_PROG_INTLTOOL; }
+
+# @FUNCTION: _at_uses_gtkdoc
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_gtkdoc()      { _at_uses_pkg GTK_DOC_CHECK; }
+
+# @FUNCTION: _at_uses_gnomedoc
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_gnomedoc()    { _at_uses_pkg GNOME_DOC_INIT; }
+
+# @FUNCTION: _at_uses_libtool
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_libtool()     { _at_uses_pkg A{C,M}_PROG_LIBTOOL LT_INIT; }
+
+# @FUNCTION: _at_uses_libltdl
+# @INTERNAL
+# @DESCRIPTION:
+# Call another function
+
 _at_uses_libltdl()     { _at_uses_pkg LT_CONFIG_LTDL_DIR; }
 
 # @FUNCTION: eaclocal_amflags
@@ -292,10 +367,10 @@ eaclocal_amflags() {
 		autotools_env_setup
 		aclocal_opts=$(sed -n \
 			"/^ACLOCAL_AMFLAGS[[:space:]]*=/{ \
-			  # match the first line
-			  s:[^=]*=::p; \
-			  # then gobble up all escaped lines
-			  : nextline /\\\\$/{ n; p; b nextline; } \
+			# match the first line
+			s:[^=]*=::p; \
+			# then gobble up all escaped lines
+			: nextline /\\\\$/{ n; p; b nextline; } \
 			}" ${amflags_file})
 		eval aclocal_opts=\""${aclocal_opts}"\"
 		break
@@ -551,10 +626,11 @@ autotools_run_tool() {
 	fi
 }
 
-# Internal function to check for support
-
+# @ECLASS-VARIABLE: ALL_AUTOTOOLS_MACROS
+# @DESCRIPTION:
 # Keep a list of all the macros we might use so that we only
 # have to run the trace code once.  Order doesn't matter.
+
 ALL_AUTOTOOLS_MACROS=(
 	A{C,M}_PROG_LIBTOOL LT_INIT LT_CONFIG_LTDL_DIR
 	A{C,M}_CONFIG_HEADER{S,}
@@ -567,6 +643,11 @@ ALL_AUTOTOOLS_MACROS=(
 	GTK_DOC_CHECK
 	GNOME_DOC_INIT
 )
+
+# @FUNCTION: autotools_check_macro
+# @DESCRIPTION:
+# Check the macros
+
 autotools_check_macro() {
 	[[ -f configure.ac || -f configure.in ]] || return 0
 
@@ -592,6 +673,7 @@ autotools_check_macro() {
 # @INTERNAL
 # @DESCRIPTION:
 # Look for a macro and extract its value.
+
 autotools_check_macro_val() {
 	local macro scan_out
 
@@ -606,6 +688,11 @@ autotools_check_macro_val() {
 
 	return 0
 }
+
+# @FUNCTION: _autotools_m4dir_include
+# @INTERNAL
+# @DESCRIPTION:
+# m4dir include stuff
 
 _autotools_m4dir_include() {
 	local x include_opts flag
@@ -628,7 +715,17 @@ _autotools_m4dir_include() {
 
 	echo ${include_opts}
 }
+
+# @FUNCTION: autotools_m4dir_include
+# @DESCRIPTION:
+# Call another function
+
 autotools_m4dir_include()    { _autotools_m4dir_include ${AT_M4DIR} ; }
+
+# @FUNCTION: autotools_m4sysdir_include
+# @DESCRIPTION:
+# m4sysdir include stuff
+
 autotools_m4sysdir_include() {
 	# First try to use the paths the system integrator has set up.
 	local paths=( $(eval echo ${AT_SYS_M4DIR}) )

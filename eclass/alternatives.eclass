@@ -74,14 +74,17 @@ alternatives_auto_makesym() {
 	alternatives_makesym ${SYMLINK} ${ALT}
 }
 
+# @FUNCTION: alternatives_makesym
+# @USAGE: alternatives_makesym <resulting symlink> [alternative targets..]
+# @DESCRIPTION:
+# make sure it is in the prefix, allow it already to be in the prefix
+
 alternatives_makesym() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	local ALTERNATIVES=""
 	local SYMLINK=""
 	local alt pref
 
-	# usage: alternatives_makesym <resulting symlink> [alternative targets..]
-	# make sure it is in the prefix, allow it already to be in the prefix
 	SYMLINK=${EPREFIX}/${1#${EPREFIX}}
 	# this trick removes the trailing / from ${ROOT}
 	pref=${ROOT%/}
@@ -126,6 +129,7 @@ alternatives_makesym() {
 # @FUNCTION: alernatives-pkg_postinst
 # @DESCRIPTION:
 # The alternatives pkg_postinst, this function will be exported
+
 alternatives_pkg_postinst() {
 	if [ -n "${ALTERNATIVES}" -a -n "${SOURCE}" ]; then
 		alternatives_makesym ${SOURCE} ${ALTERNATIVES}
@@ -135,6 +139,7 @@ alternatives_pkg_postinst() {
 # @FUNCTION: alternatives_pkg_postrm
 # @DESCRIPTION:
 # The alternatives pkg_postrm, this function will be exported
+
 alternatives_pkg_postrm() {
 	if [ -n "${ALTERNATIVES}" -a -n "${SOURCE}" ]; then
 		alternatives_makesym ${SOURCE} ${ALTERNATIVES}
