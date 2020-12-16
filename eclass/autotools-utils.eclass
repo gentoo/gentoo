@@ -113,6 +113,11 @@ esac
 # Note that dependencies are added for autoconf, automake and libtool only.
 # If your package needs one of the external tools listed above, you need to add
 # appropriate packages to DEPEND yourself.
+
+# @VARIABLE: AUTOTOOLS_AUTO_DEPEND
+# @DESCRIPTION:
+# Please document me
+
 [[ ${AUTOTOOLS_AUTORECONF} ]] || : ${AUTOTOOLS_AUTO_DEPEND:=no}
 
 # eutils for eqawarn, path_exists
@@ -192,6 +197,12 @@ EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 # cases only.
 
 # Determine using IN or OUT source build
+
+# @FUNCTION: _check_build_dir
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 _check_build_dir() {
 	: ${ECONF_SOURCE:=${S}}
 	# Respect both the old variable and the new one, depending
