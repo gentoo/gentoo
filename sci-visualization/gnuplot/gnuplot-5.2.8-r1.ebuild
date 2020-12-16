@@ -48,7 +48,7 @@ RDEPEND="
 	libcerf? ( sci-libs/libcerf )
 	svga? ( media-libs/svgalib )
 	wxwidgets? (
-		x11-libs/wxGTK:3.0[X]
+		x11-libs/wxGTK:3.0-gtk3[X]
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/gtk+:2 )
@@ -119,7 +119,7 @@ src_configure() {
 	fi
 
 	if use wxwidgets; then
-		WX_GTK_VER="3.0"
+		WX_GTK_VER="3.0-gtk3"
 		setup-wxwidgets
 	fi
 
