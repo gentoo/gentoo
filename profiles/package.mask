@@ -351,7 +351,6 @@ sys-libs/pinktrace
 # and have no reverse dependencies.
 # Removal in 30 days.  Bug #754984.
 dev-python/backports-csv
-dev-python/backports-os
 
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
