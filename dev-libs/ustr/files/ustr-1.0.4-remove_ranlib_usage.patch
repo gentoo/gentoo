@@ -1,0 +1,25 @@
+--- a/Makefile	2020-12-16 07:53:58.661636172 +0100
++++ b/Makefile	2020-12-16 07:54:27.142637814 +0100
+@@ -30,7 +30,6 @@
+ 
+ CC = cc
+ AR = ar
+-RANLIB = ranlib
+ LDCONFIG = /sbin/ldconfig
+ 
+ CFLAGS  = -O2 -g
+@@ -474,12 +473,10 @@
+ 
+ libustr.a: $(LIB_STATIC_OPT)
+ 		$(HIDE)echo Linking A OPT lib: $@
+-		$(HIDE)$(AR) ru $@ $^
+-		$(HIDE)$(RANLIB) $@
++		$(HIDE)$(AR) rsu $@ $^
+ libustr-debug.a: $(LIB_STATIC_DBG)
+ 		$(HIDE)echo Linking A DBG lib: $@
+-		$(HIDE)$(AR) ru $@ $^
+-		$(HIDE)$(RANLIB) $@
++		$(HIDE)$(AR) rsu $@ $^
+ 
+ ustr-conf.h: ustr-conf.h.in autoconf_64b autoconf_vsnprintf
+ 		$(HIDE)echo Creating $@
