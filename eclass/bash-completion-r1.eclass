@@ -61,10 +61,11 @@ _bash-completion-r1_get_bashcompdir() {
 	_bash-completion-r1_get_bashdir completionsdir /usr/share/bash-completion/completions
 }
 
-# @FUNCTION: _bash-completion-r1_get_helpersdir
+# @FUNCTION: _bash-completion-r1_get_bashhelpersdir
 # @INTERNAL
 # @DESCRIPTION:
 # Get unprefixed bash-completion helpers directory.
+
 _bash-completion-r1_get_bashhelpersdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
