@@ -118,11 +118,12 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-# @FUNCTION: python_append_dep
+# @FUNCTION: python_append_deps
 # @DESCRIPTION:
 # Appends [\${PYTHON_USEDEP}] to all dependencies
 # for python based DOCS_BUILDERs such as mkdocs or
 # sphinx.
+
 python_append_deps() {
 	debug-print-function ${FUNCNAME}
 
@@ -331,6 +332,11 @@ fi
 if [[ ${_DISTUTILS_R1} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
 	python_compile_all() { docs_compile; }
 fi
+
+# @ECLASS-VARIABLE: _DOCS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document
 
 _DOCS=1
 fi
