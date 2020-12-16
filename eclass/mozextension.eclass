@@ -23,6 +23,8 @@ inherit eutils
 DEPEND="app-arch/unzip"
 
 # @FUNCTION: mozversion_extension_location
+# @DESCRIPTION:
+# Get ${PN} from extension location
 
 mozversion_extension_location() {
 	case ${PN} in
@@ -37,6 +39,8 @@ mozversion_extension_location() {
 }
 
 # @FUNCTION: xpi_unpack
+# @DESCRIPTION:
+# Unpack XPI files
 
 xpi_unpack() {
 	local xpi xpiname srcdir
@@ -68,6 +72,8 @@ xpi_unpack() {
 }
 
 # @FUNCTION: xpi_install
+# @DESCRIPTION:
+# Install XPI files
 
 xpi_install() {
 	local emid
@@ -99,6 +105,8 @@ xpi_install() {
 }
 
 # @FUNCTION: xpi_copy
+# @DESCRIPTION:
+# Copy XPI files
 
 xpi_copy() {
 	local emid
