@@ -15,6 +15,7 @@
 		<flag name="nightly">Enable nightly (UNSTABLE) features</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc</flag>
 		<flag name="rls">Install rls, Rust Language Server (used with IDEs supporting RLS protocol)</flag>
+		<flag name="rust-lld">Enable building of the rust-lld linker (not compatible with system-llvm)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="system-bootstrap">Bootstrap using installed rust compiler</flag>
 		<flag name="system-llvm">Use the system LLVM install</flag>
