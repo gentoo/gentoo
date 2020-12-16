@@ -13,8 +13,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=sys-block/parted-2.3
-	>=sys-libs/ncurses-5.7-r7:="
+RDEPEND="
+	sys-block/parted
+	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
