@@ -331,7 +331,6 @@ dev-python/parametrized
 # Old dependencies of dev-python/GitPython.  The current versions (3)
 # have been renamed back to dev-python/{gitdb,smmap}.
 # Removal in 30 days.  Bug #755080.
-dev-python/gitdb2
 dev-python/smmap2
 
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
