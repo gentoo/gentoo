@@ -346,12 +346,6 @@ dev-python/funcsigs
 sys-apps/sydbox
 sys-libs/pinktrace
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Both packages provide backports that are only meaningful to Python 2
-# and have no reverse dependencies.
-# Removal in 30 days.  Bug #754984.
-dev-python/backports-csv
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
