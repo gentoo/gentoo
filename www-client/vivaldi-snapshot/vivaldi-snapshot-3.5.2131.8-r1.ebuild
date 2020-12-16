@@ -196,4 +196,7 @@ src_install() {
 	else
 		rm "${ED}"/${VIVALDI_HOME}/WidevineCdm || die
 	fi
+
+	[[ ${PN} = vivaldi-snapshot ]] &&
+		dosym ${PN} /${VIVALDI_HOME}/vivaldi
 }
