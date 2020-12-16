@@ -6,6 +6,11 @@
 # base-system@gentoo.org
 # @BLURB: support for desktop files, menus, and icons
 
+# @VARIABLE: _DESKTOP_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# If null set to 1
+
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
 
