@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/p1_mysql/archive/1.0.16.tar.gz -> p1_mysql-1.0.16.tar.gz
-_eclasses_=rebar	43c151aeda0dc4bf44b59e949df136aa
+_eclasses_=rebar	5f4fd2d2772838f777bede01885f2338
 _md5_=b1e29176c12dd065f49272ae3b5a74ec
