@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="gtk-doc +nls +networkmanager"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-accessibility/at-spi2-atk:2
