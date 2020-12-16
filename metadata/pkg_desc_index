@@ -5381,7 +5381,7 @@ dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binarie
 dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 1.0.1-r1 1.1.0-r2: A linkable library for Git
-dev-libs/libgit2-glib 0.99.0.1-r1: Git library for GLib
+dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
 dev-libs/libgnome-games-support 1.6.1: Library for code common to Gnome games
 dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.38 1.39: Contains error handling functions used by GnuPG software
@@ -10919,7 +10919,7 @@ dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.18 9999: Commands to manage several local SCM repositories for ROS
 dev-util/xdelta 1.1.4-r3 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
-dev-util/xfce4-dev-tools 4.14.0 4.15.0 4.15.1: A set of scripts and m4/autoconf macros that ease build system maintenance
+dev-util/xfce4-dev-tools 4.14.0 4.15.1: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622-r1: A graphical file and directories comparator and merge tool
@@ -18979,16 +18979,16 @@ x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
-xfce-base/exo 0.12.11 4.15.2 4.15.3: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.6.4-r2 0.7.1 0.7.2 0.7.3: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.3-r1 4.15.4 4.15.5 4.15.6 4.15.7: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.14.0 4.15.3 4.15.4 4.15.5 4.15.6: A basic utility library for the Xfce desktop environment
+xfce-base/exo 0.12.11 4.15.3: Extensions, widgets and framework library with session support for Xfce
+xfce-base/garcon 0.6.4-r2 0.7.3: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/libxfce4ui 4.14.1 4.15.7: Unified widget and session management libs for Xfce
+xfce-base/libxfce4util 4.14.0 4.15.6: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3: File manager for the Xfce desktop environment
-xfce-base/xfce4-appfinder 4.14.0 4.15.1 4.15.2: A tool to find and launch installed applications for the Xfce desktop
-xfce-base/xfce4-meta 4.14-r2 4.16_pre1 4.16_pre2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.4 4.15.4 4.15.5 4.15.6: Panel for the Xfce desktop environment
-xfce-base/xfce4-session 4.14.2 4.15.0 4.15.1: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.14.3 4.15.2 4.15.3: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-appfinder 4.14.0 4.15.2: A tool to find and launch installed applications for the Xfce desktop
+xfce-base/xfce4-meta 4.14-r2 4.16_pre2: The Xfce Desktop Environment (meta package)
+xfce-base/xfce4-panel 4.14.4 4.15.6: Panel for the Xfce desktop environment
+xfce-base/xfce4-session 4.14.2 4.15.1: A session manager for the Xfce desktop environment
+xfce-base/xfce4-settings 4.14.3 4.15.3: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.14.4 4.15.0 4.15.1: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.3 4.15.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.14.6 4.15.3: Window manager for the Xfce desktop environment
@@ -18998,9 +18998,9 @@ xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanag
 xfce-extra/thunar-media-tags-plugin 0.3.0: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.3.1: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
-xfce-extra/thunar-volman 0.9.5 4.15.0 4.15.1: Daemon that enforces volume-related policies
+xfce-extra/thunar-volman 0.9.5 4.15.1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.2.9 0.3.0-r1 0.3.1: A thumbnail service for Thunar
+xfce-extra/tumbler 0.2.9 0.3.1: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
@@ -19025,7 +19025,7 @@ xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.6.2: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel layouts
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
-xfce-extra/xfce4-power-manager 1.6.6-r1 1.7.0-r1 1.7.1: Power manager for the Xfce desktop environment
+xfce-extra/xfce4-power-manager 1.6.6-r1 1.7.1: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.3: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-screensaver 0.1.10 0.1.11: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
