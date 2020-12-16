@@ -23,17 +23,25 @@ BDEPEND="dev-libs/libconfig"
 RDEPEND="net-libs/tox
 	net-misc/curl
 	sys-libs/ncurses:*
-	audio-notify? ( media-libs/freealut
-			media-libs/openal )
+	audio-notify? (
+		media-libs/freealut
+		media-libs/openal
+	)
 	notification? ( x11-libs/libnotify )
 	debug? ( llvm? ( sys-devel/llvm:* ) )
 	python? ( ${PYTHON_DEPS} )
-	qrcode? ( media-gfx/qrencode
-		png? ( media-libs/libpng ) )
-	sound? ( media-libs/openal
-		net-libs/tox[av] )
-	X? ( x11-base/xorg-proto
-		x11-libs/libX11 )"
+	qrcode? (
+		media-gfx/qrencode
+		png? ( media-libs/libpng )
+	)
+	sound? (
+		media-libs/openal
+		net-libs/tox[av]
+	)
+	X? (
+		x11-base/xorg-proto
+		x11-libs/libX11
+	)"
 
 DEPEND="${RDEPEND}"
 
