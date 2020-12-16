@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://rubygems.org/gems/cri-2.15.10.gem
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	d4dbb4c6c526fcb43401ce82bd01c953	ruby-utils	927b40774937983813d360c726615e54	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	d4dbb4c6c526fcb43401ce82bd01c953	ruby-utils	927b40774937983813d360c726615e54	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=59a8acc51518c5b466c25cd9f334a888

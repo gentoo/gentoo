@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=freedist
 SLOT=0
 SRC_URI=http://en.true-audio.com/ftp/aucdtect-0.8-2.i586.rpm -> aucdtect-0.8.2.rpm
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	686eaab303305a908fd57b2fd7617800	eutils	69bd92aa099f708425db9f1f01d61213	l10n	8cdd85e169b835d518bc2fd59f780d8e	rpm	760ff223c2c4299b68ea901e24c4cabd	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	d780995dc525ff7e6a2c4c043ffec242	eutils	69bd92aa099f708425db9f1f01d61213	l10n	8cdd85e169b835d518bc2fd59f780d8e	rpm	760ff223c2c4299b68ea901e24c4cabd	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=def29790d2f489b9e9ecbb8200bebce8

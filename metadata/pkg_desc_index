@@ -2866,7 +2866,6 @@ app-text/foliate 2.4.2-r1 2.5.0: gtk ebook reader built with gjs
 app-text/ghostscript-gpl 9.52-r1 9.53.3-r4: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
-app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
 app-text/grip 4.5.2-r1: Preview GitHub Markdown files like Readme locally before committing them
 app-text/groonga 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.1.1: Groonga plugin that provides MySQL compatible normalizers
@@ -7923,8 +7922,6 @@ dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0-r1: Namespace for backported Python features
-dev-python/backports-csv 1.0.7: Backport of Python 3's 'csv' module
-dev-python/backports-os 0.1.1: Backport of new features in Python's os module
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1-r1: Backport of new features in Python's weakref module
 dev-python/backports-zoneinfo 0.2.1: Backport of the standard library zoneinfo module
@@ -7955,8 +7952,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 1.16.26 1.16.28 1.16.29 1.16.30 1.16.36 1.16.37 9999: The AWS SDK for Python
-dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 1.19.26 1.19.28 1.19.29 1.19.30 1.19.36 1.19.37 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 1.16.26 1.16.28 1.16.29 1.16.30 1.16.36 1.16.37 1.16.38 9999: The AWS SDK for Python
+dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 1.19.26 1.19.28 1.19.29 1.19.30 1.19.36 1.19.37 1.19.38 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8064,7 +8061,6 @@ dev-python/denonavr 0.9.7 0.9.8: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
-dev-python/diff-cover 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20181111 20200713: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.3: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
@@ -8150,7 +8146,7 @@ dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the s
 dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fakeredis 1.4.4 1.4.5: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
-dev-python/fasteners 0.15: Python package that provides useful locks
+dev-python/fasteners 0.15 0.16: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12-r1: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
@@ -8207,7 +8203,6 @@ dev-python/fs 2.4.11: Filesystem abstraction layer
 dev-python/fsspec 0.8.2 0.8.5: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
-dev-python/funcsigs 1.0.2-r2: Python function signatures backport from PEP362 for Python 2.7-3.5
 dev-python/funcy 1.10.1 1.14: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 1.0.0: Python FUSE bindings
 dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
@@ -8225,7 +8220,6 @@ dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi serv
 dev-python/geventhttpclient 1.4.4-r1 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.5: GitDB is a pure-Python git object database
-dev-python/gitdb2 2.0.3: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4: An object-oriented GUI library for pyglet
@@ -8442,7 +8436,7 @@ dev-python/mkdocs-redirects 1.0.1: Plugin for Mkdocs page redirects
 dev-python/mkdocs_pymdownx_material_extras 1.0.7 1.1.3: Custom alterations based on Mkdocs-Material
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 3.0.5-r2 4.0.3: Rolling backport of unittest.mock for all Pythons
-dev-python/mongoengine 0.20.0 0.21.0 0.22.0: A Python Object-Document-Mapper for working with MongoDB
+dev-python/mongoengine 0.20.0 0.21.0 0.22.0 0.22.1: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 8.5.0 8.6.0: More routines for operating on iterables, beyond itertools
@@ -8570,7 +8564,6 @@ dev-python/pandas 1.1.2-r1 1.1.4-r1 1.1.5: Powerful data structures for data ana
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4: Parameterized testing with any Python test framework
-dev-python/parametrized 0.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.7.2: SSH2 protocol library
 dev-python/parsedatetime 2.6: Parse human-readable date/time strings
 dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.0: a python parser that supports error recovery and round-trip parsing
@@ -8947,7 +8940,6 @@ dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pythonz-bd 1.11.4: Manage python installations in your system, berdario's shallow fork
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytoml 0.1.20: A TOML-0.4.0 parser/writer for Python
 dev-python/pytools 2020.4 2020.4.3 2020.4.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.4: World timezone definitions for Python
@@ -8993,7 +8985,7 @@ dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git 
 dev-python/reportlab 3.5.48 3.5.56: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
-dev-python/requests 2.24.0-r1 2.25.0: HTTP library for human beings
+dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
 dev-python/requests-cache 0.5.2: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1 1.2.0: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
@@ -9079,7 +9071,6 @@ dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2 9999: Python 3 library for XMPP
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
-dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 0.8.9 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1-r1: Python library for the snappy compression library from Google
@@ -10702,7 +10693,6 @@ dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C progra
 dev-util/elfkickers 3.1a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/envman 1.2.0 1.2.1 2.1.0 2.1.1: Environment variable manager for Bitrise CLI
-dev-util/eric 18.03 19.11-r1: A full featured Python IDE using PyQt and QScintilla
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
 dev-util/flatpak-builder 1.0.11: Tool to build flatpaks from source
@@ -12723,7 +12713,7 @@ media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.91: create an APNG from multiple PNG files
 media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
-media-gfx/argyllcms 2.1.2 2.1.2-r1: Open source, ICC compatible color management system
+media-gfx/argyllcms 2.1.2-r1: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.65 2.67 2.68: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
@@ -15341,7 +15331,6 @@ net-news/canto-curses 0.9.9: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.7-r1 1.12.9: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.20.1 2.21: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.19.4 9999: Qt-based RSS/Atom feed reader
 net-news/rssguard 3.5.9-r1 3.8.3: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8 2.1 2.1_p20200310: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
@@ -16986,7 +16975,6 @@ sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
 sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including ctimes)
 sys-apps/superdiag 1.3.0.20200109: Provides the capability to determine the health of Supermicro servers components
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
-sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 246-r2 246.6 247_rc2 247.1 9999: System and service manager for Linux
@@ -17598,7 +17586,6 @@ sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's ob
 sys-libs/openipmi 2.0.29: Library interface to IPMI
 sys-libs/pam 1.5.1: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pam_wrapper 1.1.3: A tool to test PAM applications and PAM modules
-sys-libs/pinktrace 0.9.3: ptrace() easy wrapper library
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/queue-standalone 0.1-r1: Install <sys/queue.h> from glibc.
 sys-libs/readline 6.3_p8-r3 7.0_p5-r1 8.0_p4 8.1: Another cute console display library
@@ -18981,7 +18968,7 @@ x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.3: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.3: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.14.1 4.15.7: Unified widget and session management libs for Xfce
+xfce-base/libxfce4ui 4.14.1 4.15.7 4.15.8: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.6: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.2: A tool to find and launch installed applications for the Xfce desktop

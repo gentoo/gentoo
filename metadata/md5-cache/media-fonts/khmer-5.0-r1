@@ -9,5 +9,5 @@ KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/khmer/All_KhmerOS_5.0.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	e052246186f22bd6a37797238374613b
 _md5_=a6feabe281168e7d61f26705a81387d3

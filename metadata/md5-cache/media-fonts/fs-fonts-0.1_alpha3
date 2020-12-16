@@ -9,5 +9,5 @@ LICENSE=public-domain
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/x-tt/7862/fs-fonts-0.1test3.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	e052246186f22bd6a37797238374613b
 _md5_=c3ca116f1e078fca686a8e971429b195

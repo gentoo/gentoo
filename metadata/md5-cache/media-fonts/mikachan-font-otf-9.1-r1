@@ -9,5 +9,5 @@ LICENSE=free-noncomm
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://gentoo/mikachan-font-otf-9.1.tar.bz2 https://dev.gentoo.org/~flameeyes/dist/mikachan-font-otf-9.1.tar.bz2
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	e052246186f22bd6a37797238374613b
 _md5_=6b6c89c03a7d2bc28476f391f6b39a50

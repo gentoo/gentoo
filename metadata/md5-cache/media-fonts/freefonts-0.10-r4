@@ -9,5 +9,5 @@ LICENSE=freedist free-noncomm all-rights-reserved
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=mirror://gimp/fonts/freefonts-0.10.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	e052246186f22bd6a37797238374613b
 _md5_=13ffb97375611f5ec8a51b6cdb3a6c42

@@ -11,5 +11,5 @@ RDEPEND=dev-libs/nss dev-python/dbus-python dev-python/pygobject:3 libnotify? ( 
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.1.26.501.gbe11e53b-15_amd64.deb
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	8f9bfcc33705104f56748d9dedb3177a	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=168357014aaef8826a67789ad7f7bcc1

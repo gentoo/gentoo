@@ -10,5 +10,5 @@ RDEPEND=!dev-libs/liblinebreak
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/adah1972/libunibreak/releases/download/libunibreak_4_0/libunibreak-4.0.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=88c9b70a737b509bf16d3796dc72ffdd

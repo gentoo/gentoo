@@ -9,5 +9,5 @@ LICENSE=free-noncomm
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/mikachan/5513/mikachanfont-8.9.tar.bz2 mirror://sourceforge.jp/mikachan/5514/mikachanfontP-8.9.tar.bz2 mirror://sourceforge.jp/mikachan/5515/mikachanfontPB-8.9.tar.bz2 mirror://sourceforge.jp/mikachan/5516/mikachanfontPS-8.9.tar.bz2
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	e052246186f22bd6a37797238374613b
 _md5_=daafff3e584f54c8a0239830c5b5cd15

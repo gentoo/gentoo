@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://github.com/nathco/Office-Code-Pro/archive/1.004.tar.gz -> office-code-pro-1.004.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	e052246186f22bd6a37797238374613b
 _md5_=87fec68b6c00b8b1965ebfaa6f2c5fac

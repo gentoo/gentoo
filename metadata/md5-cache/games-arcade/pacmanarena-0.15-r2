@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound] media-libs/sdl-mixer[vorbis] media-libs/sdl-net virtual/glu virtual/opengl
 SLOT=0
 SRC_URI=mirror://sourceforge/pacmanarena/pacman-arena-0.15.tar.bz2 mirror://sourceforge/pacmanarena/pacman-data-0.0.zip
-_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	desktop	8f9bfcc33705104f56748d9dedb3177a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=0f195781debb9cc89740eb80cad4c6c8
