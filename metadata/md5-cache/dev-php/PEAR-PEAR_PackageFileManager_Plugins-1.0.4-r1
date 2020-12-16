@@ -7,5 +7,5 @@ LICENSE=BSD-2
 RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 >=dev-php/PEAR-XML_Serializer-0.19.0 >=dev-lang/php-5.3:*[xml,simplexml] >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/PEAR_PackageFileManager_Plugins-1.0.4.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=71317eba4096a569fd3ce878bd6351a1

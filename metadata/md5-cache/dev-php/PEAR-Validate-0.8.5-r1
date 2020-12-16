@@ -10,5 +10,5 @@ RDEPEND=!minimal? ( dev-php/PEAR-Date ) >=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Validate-0.8.5.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=f515c9efb84507ccc5de69de6576f793

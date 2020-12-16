@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-MDB2-2.5.0_beta3 dev-lang/php:*[postgres(-)] >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/MDB2_Driver_pgsql-1.5.0b4.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=2f7d85ca811368dff25174170521af11

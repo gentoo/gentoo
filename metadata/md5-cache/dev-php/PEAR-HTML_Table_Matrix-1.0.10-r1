@@ -7,5 +7,5 @@ LICENSE=PHP-3
 RDEPEND=>=dev-php/PEAR-HTML_Table-1.5-r1 >=dev-php/PEAR-Numbers_Words-0.13.1-r1 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_Table_Matrix-1.0.10.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=85634530e10bd38e247dc888b847197c

@@ -7,5 +7,5 @@ LICENSE=PHP-3
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_Javascript-1.1.2.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=ab920670587e7f56a25abfbb9b7048fe

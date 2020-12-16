@@ -10,5 +10,5 @@ RDEPEND=|| ( ( dev-php/pecl-mcrypt >=dev-lang/php-7.2:*[hash(+)] ) <dev-lang/php
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_CHAP-1.5.0.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=efbbe8edfda6f3009bc420d3de084e43

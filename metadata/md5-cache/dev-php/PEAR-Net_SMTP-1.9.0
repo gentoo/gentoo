@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RDEPEND=dev-lang/php:* dev-php/PEAR-Net_Socket dev-php/PEAR-PEAR sasl? ( dev-php/PEAR-Auth_SASL ) >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Net_SMTP-1.9.0.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=f8dfbab7498e64efee05d10158cd08f5

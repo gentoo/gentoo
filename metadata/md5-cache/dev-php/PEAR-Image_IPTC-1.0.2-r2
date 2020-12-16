@@ -7,5 +7,5 @@ LICENSE=PHP-2.02
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Image_IPTC-1.0.2.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=06aff1e4b2ce377258bdfe6b17e5b8e9

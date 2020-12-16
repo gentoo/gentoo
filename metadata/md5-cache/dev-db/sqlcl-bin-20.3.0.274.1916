@@ -11,5 +11,5 @@ RDEPEND=dev-db/oracle-instantclient dev-java/java-config:2 >=virtual/jre-1.8 >=d
 RESTRICT=bindist fetch mirror
 SLOT=0
 SRC_URI=sqlcl-20.3.0.274.1916.zip
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	ec7a89849c84f93e9c6db27812923888
+_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	45ae8c4aaec3924d533052387ad652dc
 _md5_=e3df8711f472e7c552ebb46c501c670b

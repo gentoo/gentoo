@@ -11933,11 +11933,12 @@ gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayl
 gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0: GtkSourceView-based text editors and IDE helper library
+gui-libs/wayfire-plugins-extra 0.6.0 9999: extra plugins for wayfire
 gui-libs/wf-config 0.5.0 0.6.0 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.8.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
-gui-wm/hikari 2.2.2: Wayland compositor inspired by CWM
+gui-wm/hikari 2.2.2-r1: Wayland compositor inspired by CWM
 gui-wm/sway 1.5 1.5.1 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.5.0 0.6.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)

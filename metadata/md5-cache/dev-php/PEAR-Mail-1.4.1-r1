@@ -10,5 +10,5 @@ RDEPEND=>=dev-php/PEAR-Net_SMTP-1.4.1 >=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Mail-1.4.1.tgz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
 _md5_=de430e679b5ea9408b73e2d2fcfb6498
