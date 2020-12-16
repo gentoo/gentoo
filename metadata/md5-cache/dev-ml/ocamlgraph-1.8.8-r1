@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] gtk? ( dev-ml/lablgtk:2=[gnomecanvas,ocamlopt?] )
 SLOT=0/1.8.8
 SRC_URI=http://ocamlgraph.lri.fr/download/ocamlgraph-1.8.8.tar.gz
-_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a
+_eclasses_=findlib	2d5f502be83d6fc5f8372442a59856b6
 _md5_=89212dbc4175f069aef3d47ff820414a

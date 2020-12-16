@@ -10,5 +10,5 @@ RDEPEND=libvirt? ( >=app-emulation/libvirt-1.2.2 ) xen? ( app-emulation/xen )
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/hyperhq/runv/archive/v0.7.0.tar.gz -> runv-0.7.0.tar.gz
-_eclasses_=autotools	f491ec40ca051c35e20da7b670e8c14f	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	4a615ccf588f8bc48d956500949af39e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	4a615ccf588f8bc48d956500949af39e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=41fcc31cef6bcb9d3232401e35b775f7

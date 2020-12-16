@@ -9,5 +9,5 @@ RDEPEND=media-libs/gd[png] media-libs/libpng:0=
 RESTRICT=test
 SLOT=0
 SRC_URI=https://mulcyber.toulouse.inra.fr/frs/download.php/1359/eugene-4.1d.tar.gz
-_eclasses_=autotools	f491ec40ca051c35e20da7b670e8c14f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=683d1e7f9daeda6cd20b92117330ea81

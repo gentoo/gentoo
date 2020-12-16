@@ -10,5 +10,5 @@ RDEPEND=dev-libs/expat >=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.1.0
 SRC_URI=https://github.com/whitequark/ocaml-expat/archive/v1.1.0.tar.gz -> ocaml-expat-1.1.0.tar.gz
-_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a
+_eclasses_=findlib	2d5f502be83d6fc5f8372442a59856b6
 _md5_=4daa72be9bb6f1eee66c927a3344b4c6
