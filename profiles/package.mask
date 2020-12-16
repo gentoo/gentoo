@@ -387,7 +387,6 @@ media-video/cinelerra
 # scikit-optimize, sktime
 # Removal in 30 days (Bug #749297)
 sci-libs/scikits_optimization
-sci-libs/scikits_timeseries
 
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
