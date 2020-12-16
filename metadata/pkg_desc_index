@@ -1050,7 +1050,7 @@ app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packag
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.23.19-r1 0.23.20-r1 0.23.21: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.22: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pdfcrack 0.19: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 113: Tools for manipulating signed PE-COFF binaries
@@ -17996,7 +17996,7 @@ www-client/microsoft-edge-dev 88.0.705.15 89.0.723.0 89.0.731.0: The web browser
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
-www-client/opera 72.0.3815.320: A fast and secure web browser
+www-client/opera 73.0.3856.284: A fast and secure web browser
 www-client/opera-beta 72.0.3815.49 72.0.3815.86 72.0.3815.133: A fast and secure web browser
 www-client/opera-developer 73.0.3820.0 73.0.3827.0 73.0.3834.0 73.0.3841.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
