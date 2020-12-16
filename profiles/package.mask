@@ -316,11 +316,6 @@ dev-python/s3fs
 # Removal in 30 days.  Bug #723674.
 dev-python/diff-cover
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Discontinued upstream.  No revdeps.  Use dev-python/toml instead.
-# Removal in 30 days.  Bug #755125.
-dev-python/pytoml
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
