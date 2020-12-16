@@ -16,6 +16,10 @@
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
 [[ ${FINDLIB_USE} ]] && DEPEND="${FINDLIB_USE}? ( ${DEPEND} )"
 
+# @FUNCTION: check_ocamlfind
+# @DESCRIPTION:
+# Please document me
+
 check_ocamlfind() {
 	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ]
 	then
