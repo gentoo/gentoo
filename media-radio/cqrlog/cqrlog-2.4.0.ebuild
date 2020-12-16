@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="CQRLOG is an advanced ham radio logger based on MySQL database."
+DESCRIPTION="CQRLOG is an advanced ham radio logger based on MySQL database"
 HOMEPAGE="https://www.cqrlog.com/"
 SRC_URI="https://github.com/ok2cqr/cqrlog/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
@@ -13,25 +13,22 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=dev-lang/lazarus-1.8.0
-		>=dev-lang/fpc-3.0.2"
+	>=dev-lang/fpc-3.0.2"
 
 RDEPEND="${DEPEND}
-		virtual/mysql[server]
-		dev-libs/atk
-		dev-libs/glib
-		x11-libs/cairo
-		x11-libs/gdk-pixbuf
-		x11-libs/gtk+
-		x11-libs/libX11
-		x11-libs/pango"
-
-LazarusDir=/usr/share/lazarus/
+	virtual/mysql[server]
+	dev-libs/atk
+	dev-libs/glib
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+
+	x11-libs/libX11
+	x11-libs/pango"
 
 PATCHES=(
-		"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${PV}-makefile.patch"
 )
 
 pkg_postist() {
-	elog "This package optionally supports media-libs/hamlib"
-	elog "for monitoring radio settings."
+	optfeature "This package optionally supports media-libs/hamlib for monitoring radio settings" media-libs/hamlib
 }
