@@ -321,12 +321,6 @@ dev-python/diff-cover
 # Removal in 30 days.  Bug #755125.
 dev-python/pytoml
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# A drive-by package with one release in 2015, no revdeps and no tests.
-# The same purpose is served e.g. by dev-python/parameterized.
-# Removal in 30 days.  Bug #755122.
-dev-python/parametrized
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
