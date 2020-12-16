@@ -4,7 +4,7 @@
 # @ECLASS: toolchain.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @MAINTAINER:
+# @AUTHOR:
 # Toolchain Ninjas <toolchain@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Basic toolchain stuff
