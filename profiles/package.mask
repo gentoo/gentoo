@@ -334,11 +334,6 @@ dev-python/parametrized
 dev-python/gitdb2
 dev-python/smmap2
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Old backport package with no revdeps.
-# Removal in 30 days.  Bug #755074.
-dev-python/funcsigs
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
