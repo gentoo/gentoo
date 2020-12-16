@@ -21,6 +21,7 @@ BDEPEND="
 	test? ( ${RDEPEND}
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.8[${PYTHON_USEDEP}]
+		media-gfx/graphviz[gts,pdf]
 	)
 "
 
