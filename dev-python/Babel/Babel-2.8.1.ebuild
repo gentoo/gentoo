@@ -27,6 +27,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/Babel-2.8.0-py39.patch
+	"${FILESDIR}"/Babel-2.9.0-pypy3.patch
 )
 
 src_test() {
