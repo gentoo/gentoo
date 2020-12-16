@@ -54,8 +54,8 @@ get_erl_libs() {
 # @INTERNAL
 # @USAGE: <project_name>
 # @RETURN: full path with EPREFIX to a Erlang package/project on success,
-# code 1 when dependency is not found and code 2 if multiple versions of
-# dependency are found.
+# @RETURN: code 1 when dependency is not found and code 2 if multiple versions of
+# @RETURN: dependency are found.
 # @DESCRIPTION:
 # Find a Erlang package/project by name in Erlang lib directory. Project
 # directory is usually suffixed with version. It is matched to '<project_name>'
