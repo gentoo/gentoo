@@ -25,7 +25,7 @@ RDEPEND="${LUA_DEPS}
 	>=dev-libs/libxdg-basedir-1
 	$(lua_gen_cond_dep 'dev-lua/lgi[${LUA_USEDEP}]')
 	x11-libs/cairo[X,xcb(+)]
-	x11-libs/gdk-pixbuf:2
+	x11-libs/gdk-pixbuf:2[introspection]
 	>=x11-libs/libxcb-1.6[xkb]
 	>=x11-libs/pango-1.19.3[introspection]
 	>=x11-libs/startup-notification-0.10_p20110426
