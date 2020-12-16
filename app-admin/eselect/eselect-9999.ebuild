@@ -10,7 +10,7 @@ inherit autotools git-r3 bash-completion-r1
 DESCRIPTION="Gentoo's multi-purpose configuration and management tool"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
 
-LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-3.0 )"
+LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-4.0 )"
 SLOT="0"
 IUSE="doc emacs vim-syntax"
 
