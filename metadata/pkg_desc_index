@@ -7894,7 +7894,7 @@ dev-python/argcomplete 1.12.0-r1 1.12.1-r1 1.12.2: Bash tab completion for argpa
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
-dev-python/arpeggio 1.9.2 1.10.0: Parser interpreter based on PEG grammars
+dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0: Better dates and times for Python
 dev-python/asgiref 3.3.0 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
@@ -7911,7 +7911,7 @@ dev-python/attrs 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
-dev-python/autobahn 20.4.3 20.7.1 20.12.1 20.12.2: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 20.7.1 20.12.2: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -7970,7 +7970,7 @@ dev-python/bsddb3 6.2.7: Python bindings for Berkeley DB
 dev-python/cached-property 1.5.2: A cached-property for decorating methods in classes
 dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
 dev-python/cachetools 4.1.1: Extensible memoizing collections and decorators
-dev-python/cairocffi 1.1.0 1.2.0: CFFI-based drop-in replacement for Pycairo
+dev-python/cairocffi 1.2.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.3-r1: Python wrapper for libcangjie
 dev-python/capturer 3.0: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 1.1.5: Backend data caching and persistence daemon for Graphite
@@ -8756,7 +8756,7 @@ dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1 0.4.2: Python client for Neovim
 dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
-dev-python/pyopencl 2020.2 2020.2.2 2020.3.1: Python wrapper for OpenCL
+dev-python/pyopencl 2020.2.2 2020.3.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0-r1 20.0.0-r1 20.0.1: Python interface to the OpenSSL library
@@ -8769,7 +8769,7 @@ dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XA
 dev-python/pypcap 1.2.3: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.2-r1: An intrinsic PEG Parser-Interpreter for Python
 dev-python/pyperclip 1.7.0: A cross-platform clipboard module for Python.
-dev-python/pyphen 0.9.5 0.10.0: Python module for hyphenation using hunspell dictionaries
+dev-python/pyphen 0.10.0: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.4.2: Minimal PyPI server
 dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.24: Python binding for the PowerVM REST API
@@ -17521,7 +17521,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p2020090
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.4.83 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.83 5.9.14 5.10.1: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.84 5.9.15 5.10.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
