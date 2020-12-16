@@ -5,6 +5,8 @@
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
 # @BLURB: Install extensions for use in mozilla products.
+# @DESCRIPTION:
+# Install extensions for use in mozilla products
 
 if [[ ! ${_MOZEXTENSION} ]]; then
 
