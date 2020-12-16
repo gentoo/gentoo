@@ -9,6 +9,7 @@
 		<email>python@gentoo.org</email>
 		<name>Gentoo Python Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-dotenv</remote-id>
 	</upstream>
