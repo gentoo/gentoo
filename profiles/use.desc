@@ -245,7 +245,7 @@ pie - Build programs as Position Independent Executables (a security hardening t
 plasma - Build optional KDE plasma addons
 plotutils - Add support for plotutils (library for 2-D vector graphics)
 png - Add support for libpng (PNG images)
-policykit - Enable PolicyKit authentication support
+policykit - Enable PolicyKit (polkit) authentication support
 portaudio - Add support for the crossplatform portaudio audio API
 posix - Add support for POSIX-compatible functions
 postgres - Add support for the postgresql database
