@@ -8,7 +8,8 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_compile src_install src_test
 # @ECLASS: postgres-multi.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
-# @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
+# @AUTHOR:
+# Aaron W. Swenson <titanofold@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass to build PostgreSQL-related packages against multiple slots
 # @DESCRIPTION:
