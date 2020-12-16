@@ -4,9 +4,8 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-PYTHON_COMPAT=( python2_7 )
 
-inherit cmake cuda python-utils-r1 toolchain-funcs
+inherit cmake cuda toolchain-funcs
 
 MY_PV="$(ver_rs "1-3" '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
@@ -18,7 +17,14 @@ SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuda doc examples opencl openmp ptex tbb test tutorials"
+IUSE="cuda examples opencl openmp ptex tbb test tutorials"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
+	"${FILESDIR}/${P}-install-tutorials-into-bin.patch"
+)
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -33,22 +39,7 @@ DEPEND="
 	${RDEPEND}
 	tbb? ( dev-cpp/tbb )
 "
-BDEPEND="
-	doc? (
-		app-doc/doxygen
-		dev-python/docutils
-	)
-"
-
 S="${WORKDIR}/OpenSubdiv-${MY_PV}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
-	"${FILESDIR}/${PN}-3.4.0-0001-documentation-CMakeLists.txt-force-python2.patch"
-	"${FILESDIR}/${P}-install-tutorials-into-bin.patch"
-)
-
-RESTRICT="!test? ( test )"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -59,7 +50,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
 	cmake_src_prepare
 	use cuda && cuda_add_sandbox
 }
@@ -71,7 +61,7 @@ src_configure() {
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DNO_CLEW=ON
 		-DNO_CUDA=$(usex !cuda)
-		-DNO_DOC=$(usex !doc)
+		-DNO_DOC=ON
 		-DNO_EXAMPLES=$(usex !examples)
 		-DNO_GLTESTS=ON
 		-DNO_OMP=$(usex !openmp)
@@ -111,7 +101,11 @@ src_configure() {
 		fi
 	fi
 
-	# fails with building cuda kernels when using multiple jobs
-	export MAKEOPTS="-j1"
 	cmake_src_configure
+}
+
+src_compile() {
+	# fails with building cuda kernels when using multiple jobs
+	cmake_src_compile -j1
+
 }
