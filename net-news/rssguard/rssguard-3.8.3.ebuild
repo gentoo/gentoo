@@ -55,5 +55,5 @@ src_configure() {
 }
 
 src_install() {
-	emake install INSTALL_ROOT="${D}"
+	emake -j1 install INSTALL_ROOT="${D}"
 }
