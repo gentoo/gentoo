@@ -7962,7 +7962,7 @@ dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.0.1: Bash style brace expansion for Python
 dev-python/braintree 4.4.0: Braintree Python Library
-dev-python/breathe 4.22.1 4.25.0: Sphinx Doxygen renderer
+dev-python/breathe 4.22.1 4.25.0 4.25.1: Sphinx Doxygen renderer
 dev-python/brotlicffi 0.8.0: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
@@ -8198,7 +8198,7 @@ dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
 dev-python/flufl-lock 5.0.1: NFS-safe file locking with timeouts for POSIX systems.
-dev-python/fonttools 4.1.0 4.18.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 4.1.0 4.18.1 4.18.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.0.0-r1: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -8522,9 +8522,9 @@ dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
 dev-python/openpyxl 3.0.5: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 2.2.5: Theme and extension support for Sphinx documentation
 dev-python/openstacksdk 0.50.0: A collection of libraries for building applications to work with OpenStack.
-dev-python/opt-einsum 3.0.1-r1 3.3.0: Optimized Einsum: A tensor contraction order optimizer
+dev-python/opt-einsum 3.3.0: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.1 4.0.2: A mutable set that remembers the order of its entries
-dev-python/os-brick 2.8.2 3.0.1 4.0.1: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 4.0.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 2.1.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 1.2.0: OpenStack Cinder brick library for managing local volume attaches
@@ -8550,7 +8550,7 @@ dev-python/oslo-privsep 1.33.3 2.4.0: OpenStack library for privilege separation
 dev-python/oslo-reports 2.2.0: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2 6.2.0: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 4.0.1: Oslo Serialization library
-dev-python/oslo-service 2.1.1 2.4.0: Library for running OpenStack services
+dev-python/oslo-service 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.1.1: Oslo i18n library
 dev-python/oslo-utils 4.6.0: Oslo Utility library
@@ -8597,7 +8597,7 @@ dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.10: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.11 8.12.12 8.12.13 8.12.14: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.13 8.12.14 8.12.15: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.2.5 3.0.4: Pidfile featuring stale detection and file-locking
@@ -8924,7 +8924,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.1.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.1.0 1.1.2: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
@@ -9018,7 +9018,7 @@ dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs 
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.2 3.3: An Integer to Roman numerals converter
-dev-python/rope 0.17.0 0.18.0: Python refactoring library
+dev-python/rope 0.18.0: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.3 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package system
@@ -9173,7 +9173,7 @@ dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3 0.9.1: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
-dev-python/testfixtures 6.15.0 6.16.0: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 6.15.0 6.16.0 6.17.0: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testpath 0.4.4-r1: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
@@ -9189,7 +9189,7 @@ dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
 dev-python/tikzplotlib 0.9.4: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
-dev-python/tinycss2 1.0.2 1.1.0: A complete yet simple CSS parser for Python
+dev-python/tinycss2 1.1.0: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
 dev-python/tld 0.12.2 0.12.3: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
@@ -10670,7 +10670,7 @@ dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session f
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 13.1 13.2 13.2.1: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.123: Debian/Ubuntu bootstrap scripts
-dev-util/debugedit 4.16.0 4.16.1: Stand-alone debugedit from RPM
+dev-util/debugedit 4.16.0 4.16.1 4.16.1.2: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24 0.26-r1: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.36.2: An API documentation browser for GNOME
