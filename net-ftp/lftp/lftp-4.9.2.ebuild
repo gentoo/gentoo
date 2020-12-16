@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
 	"${FILESDIR}"/${PN}-4.9.1-libdir-readline.patch
 	"${FILESDIR}"/${PN}-4.9.2-libressl.patch
+	"${FILESDIR}"/${PN}-4.9.2-ac-270.patch
 )
 
 src_prepare() {
