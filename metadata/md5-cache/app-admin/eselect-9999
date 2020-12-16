@@ -1,13 +1,14 @@
+BDEPEND=doc? ( dev-python/docutils ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=sys-apps/sed || ( sys-apps/coreutils app-misc/realpath ) doc? ( dev-python/docutils ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=sys-apps/sed || ( sys-apps/coreutils app-misc/realpath )
 DESCRIPTION=Gentoo's multi-purpose configuration and management tool
-EAPI=6
+EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Eselect
 IUSE=doc emacs vim-syntax
-LICENSE=GPL-2+ || ( GPL-2+ CC-BY-SA-3.0 )
+LICENSE=GPL-2+ || ( GPL-2+ CC-BY-SA-4.0 )
 PDEPEND=emacs? ( app-emacs/eselect-mode ) vim-syntax? ( app-vim/eselect-syntax )
 PROPERTIES=live
 RDEPEND=sys-apps/sed || ( sys-apps/coreutils app-misc/realpath ) sys-apps/file sys-libs/ncurses:0
 SLOT=0
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=63dddc0f46ff760ad52a56ac29d372a1
+_md5_=1bcfefe8af8b4ee71bfcb71bf28aa31c
