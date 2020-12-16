@@ -31,6 +31,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/fsspec-0.8.2-test-cleanup.patch
+)
+
 src_test() {
 	git config --global user.email "you@example.com" || die
 	git config --global user.name "Your Name" || die
