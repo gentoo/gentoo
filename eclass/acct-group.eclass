@@ -31,6 +31,11 @@
 # - RDEPEND if it is needed at install time (e.g. you 'fowners' files
 #   in pkg_preinst) or run time.
 
+# @VARIABLE: _ACCT_GROUP_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# If null set to 1
+
 if [[ -z ${_ACCT_GROUP_ECLASS} ]]; then
 _ACCT_GROUP_ECLASS=1
 
