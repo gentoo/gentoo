@@ -339,12 +339,6 @@ dev-python/smmap2
 # Removal in 30 days.  Bug #755074.
 dev-python/funcsigs
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Fail to build with gcc-10.  No recent activity upstream.  Seems that
-# Exherbo is dead and buried.
-# Removal in 30 days.  Bug #708528.
-sys-libs/pinktrace
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
