@@ -311,65 +311,6 @@ sci-misc/mendeleydesktop
 # Removal in 30 days.  Bug #755266.
 dev-python/s3fs
 
-# Zac Medico <zmedico@gentoo.org> (2020-11-17)
-# Unit tests fail. No revdeps.
-# Removal in 30 days.  Bug #723674.
-dev-python/diff-cover
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Discontinued upstream.  No revdeps.  Use dev-python/toml instead.
-# Removal in 30 days.  Bug #755125.
-dev-python/pytoml
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# A drive-by package with one release in 2015, no revdeps and no tests.
-# The same purpose is served e.g. by dev-python/parameterized.
-# Removal in 30 days.  Bug #755122.
-dev-python/parametrized
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Old dependencies of dev-python/GitPython.  The current versions (3)
-# have been renamed back to dev-python/{gitdb,smmap}.
-# Removal in 30 days.  Bug #755080.
-dev-python/gitdb2
-dev-python/smmap2
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Old backport package with no revdeps.
-# Removal in 30 days.  Bug #755074.
-dev-python/funcsigs
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Fail to build with gcc-10.  No recent activity upstream.  Seems that
-# Exherbo is dead and buried.
-# Removal in 30 days.  Bug #708528.
-sys-apps/sydbox
-sys-libs/pinktrace
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Both packages provide backports that are only meaningful to Python 2
-# and have no reverse dependencies.
-# Removal in 30 days.  Bug #754984.
-dev-python/backports-csv
-dev-python/backports-os
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
-# Depends on deprecated QtWebKit, needs dedicated maintainer and version bump
-# to 20.11 with new dependency dev-python/PyQtChart.
-# Bugs #607130, #701318 and #709862. Removal in 30 days.
-dev-util/eric
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
-# Depends on deprecated QtWebKit, upstream has no capacities to port away.
-# Bugs #508160, #654968 and #687840. Qt-based alternative: net-news/rssguard
-# Removal in 30 days.
-net-news/quiterss
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
-# Depends on deprecated QtWebKit, upstream did not make a release in 10 years
-# (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
-app-text/goldendict
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31

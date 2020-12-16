@@ -38,6 +38,11 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
+# @VARIABLE: _CHECK_REQS_ECLASS_
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY

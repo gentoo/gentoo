@@ -43,6 +43,11 @@ chromium_suid_sandbox_check_kernel_config() {
 # @DESCRIPTION:
 # List of language packs available for this package.
 
+# @FUNCTION: _chromium_set_l10n_IUSE
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 _chromium_set_l10n_IUSE() {
 	[[ ${EAPI:-0} == 0 ]] && die "EAPI=${EAPI} is not supported"
 
@@ -99,6 +104,10 @@ chromium_remove_language_paks() {
 		fi
 	done
 }
+
+# @FUNCTION: chromium_pkg_die
+# @DESCRIPTION:
+# Various reasons to die
 
 chromium_pkg_die() {
 	if [[ "${EBUILD_PHASE}" != "compile" ]]; then

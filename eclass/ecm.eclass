@@ -20,6 +20,11 @@
 # This eclass's phase functions are not intended to be mixed and matched, so if
 # any phase functions are overridden the version here should also be called.
 
+# @VARIABLE: _ECM_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 

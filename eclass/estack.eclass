@@ -8,6 +8,11 @@
 # @DESCRIPTION:
 # Support for storing values on stack-like variables.
 
+# @VARIABLE: _ESTACK_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ -z ${_ESTACK_ECLASS} ]]; then
 
 # @FUNCTION: estack_push
