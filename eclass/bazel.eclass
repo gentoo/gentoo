@@ -24,6 +24,11 @@ case "${EAPI:-0}" in
 		;;
 esac
 
+# @VARIABLE: _BAZEL_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ ! ${_BAZEL_ECLASS} ]]; then
 
 inherit multiprocessing toolchain-funcs
