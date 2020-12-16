@@ -165,6 +165,11 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
+	if use proprietary-codecs; then
+		rm ${VIVALDI_HOME}/lib/libffmpeg.so || die
+		rmdir ${VIVALDI_HOME}/lib || die
+	fi
+
 	eapply_user
 }
 
@@ -181,8 +186,8 @@ src_install() {
 	done
 
 	if use proprietary-codecs; then
-		dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so \
-			  /${VIVALDI_HOME}/lib/libffmpeg.so
+		dosym ../../usr/$(get_libdir)/chromium/libffmpeg.so \
+			  /${VIVALDI_HOME}/libffmpeg.so.$(ver_cut 1-2)
 	fi
 
 	if use widevine; then
