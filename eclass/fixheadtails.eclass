@@ -8,6 +8,11 @@
 # Original author John Mylchreest <johnm@gentoo.org>
 # @BLURB: functions to replace obsolete head/tail with POSIX compliant ones
 
+# @FUNCTION: _do_sed_fix
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 _do_sed_fix() {
 	einfo " - fixed $1"
 	sed -i \
