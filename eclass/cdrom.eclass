@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
@@ -13,6 +13,11 @@
 # should not be used for binary packages.  Most packages using this
 # eclass will require RESTRICT="bindist" but the point still stands.
 # The functions are generally called in src_unpack.
+
+# @VARIABLE: _CDROM_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# If null set to 1
 
 if [[ -z ${_CDROM_ECLASS} ]]; then
 _CDROM_ECLASS=1
