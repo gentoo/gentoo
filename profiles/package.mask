@@ -353,12 +353,6 @@ sys-libs/pinktrace
 dev-python/backports-csv
 dev-python/backports-os
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
-# Depends on deprecated QtWebKit, needs dedicated maintainer and version bump
-# to 20.11 with new dependency dev-python/PyQtChart.
-# Bugs #607130, #701318 and #709862. Removal in 30 days.
-dev-util/eric
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
