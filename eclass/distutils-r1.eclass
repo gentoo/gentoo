@@ -95,6 +95,11 @@ esac
 # It needs to be set before the inherit line.
 : ${DISTUTILS_USE_SETUPTOOLS:=bdepend}
 
+# @VARIABLE: _DISTUTILS_R1
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [456] ]] && inherit eutils
