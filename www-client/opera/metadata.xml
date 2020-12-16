@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription>
+	<!-- maintainer-needed -->
+	<longdescription>
 Opera is a graphical Web browser available on several platforms. The desktop
 version runs on GNU/Linux and FreeBSD. Versions for Macintosh and
 Windows are also available.
-</longdescription>
+	</longdescription>
+	<use>
+		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
+	</use>
 </pkgmetadata>
