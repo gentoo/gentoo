@@ -36,6 +36,11 @@ esac
 
 EXPORT_FUNCTIONS pkg_setup
 
+# @VARIABLE: _FORTRAN_2_CLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
+
 if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
 # @ECLASS-VARIABLE: FORTRAN_NEED_OPENMP
@@ -281,6 +286,11 @@ fortran-2_pkg_setup() {
 		_fortran-2_pkg_setup
 	fi
 }
+
+# @VARIABLE: _FORTRAN_2_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# Please document me
 
 _FORTRAN_2_ECLASS=1
 fi
