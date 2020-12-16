@@ -9,10 +9,18 @@
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: common functions and variables for cargo builds
 
+# @VARIABLE: _CARGO_ECLASS
+# @INTERNAL
+# @DESCRIPTION:
+# If null set to 1
+
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
+# @VARIABLE: RUST_DEPEND
+# @DESCRIPTION:
 # we need this for 'cargo vendor' subcommand and net.offline config knob
+
 RUST_DEPEND=">=virtual/rust-1.37.0"
 
 case "${EAPI:-0}" in
@@ -35,7 +43,16 @@ fi
 
 IUSE="${IUSE} debug"
 
+# @VARIABLE: ECARGO_HOME
+# @DESCRIPTION:
+# Adjust the working directory
+
 ECARGO_HOME="${WORKDIR}/cargo_home"
+
+# @VARIABLE: ECARGO_VENDOR
+# @DESCRIPTION:
+# Vendorize the working directory
+
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
 # @ECLASS-VARIABLE: CARGO_OPTIONAL
