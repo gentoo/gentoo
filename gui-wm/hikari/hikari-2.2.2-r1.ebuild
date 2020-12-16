@@ -45,7 +45,6 @@ pkg_setup() {
 }
 
 src_compile() {
-
 	${MAKE} -j$(makeopts_jobs) VERSION="{PV}" \
 		CC="$(tc-getCC)" \
 		CFLAGS_EXTRA="${CFLAGS}" \
@@ -54,13 +53,14 @@ src_compile() {
 		$(usex gamma -DWITH_GAMMACONTROL "") \
 		$(usex layershell -DWITH_LAYERSHELL "") \
 		$(usex screencopy -DWITH_SCREENCOPY "") \
-		$(usex suid -DWITH_SUID "") \
 		$(usex virtual-io -DWITH_VIRTUAL_INPUT "") \
 		$(usex X -DWITH_XWAYLAND "") \
 		all || die
 }
 
 src_install() {
-	${MAKE} DESTDIR="${D}" PREFIX=/usr ETC_PREFIX=/ install || die
+	${MAKE} DESTDIR="${D}" PREFIX=/usr ETC_PREFIX=/ \
+	$(usex suid "" -DWITHOUT_SUID) \
+	install || die
 	doman share/man/man1/hikari.1
 }

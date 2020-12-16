@@ -1,6 +1,11 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-#
+
+# @ECLASS: vim-doc.eclass
+# @MAINTAINER:
+# Vim project <vim@gentoo.org>
+# @BLURB: Work with Vim documentation
+# @DESCRIPTION:
 # This eclass is used by vim.eclass and vim-plugin.eclass to update
 # the documentation tags.  This is necessary since vim doesn't look in
 # /usr/share/vim/vimfiles/doc for documentation; it only uses the
