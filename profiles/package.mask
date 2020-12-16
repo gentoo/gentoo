@@ -311,11 +311,6 @@ sci-misc/mendeleydesktop
 # Removal in 30 days.  Bug #755266.
 dev-python/s3fs
 
-# Zac Medico <zmedico@gentoo.org> (2020-11-17)
-# Unit tests fail. No revdeps.
-# Removal in 30 days.  Bug #723674.
-dev-python/diff-cover
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
