@@ -12,7 +12,7 @@ CSS_TEST_COMMIT_ID=c5749e51dda3868b3e8062e65a36584c2fec8059
 
 DESCRIPTION="A complete yet simple CSS parser for Python"
 HOMEPAGE="https://github.com/Kozea/tinycss2/
-	https://pypi.python.org/pypi/tinycss2/"
+	https://pypi.org/project/tinycss2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="
 	https://github.com/Kozea/tinycss2/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
