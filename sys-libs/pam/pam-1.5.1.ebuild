@@ -16,7 +16,7 @@ SRC_URI="https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="audit berkdb debug nis +pie selinux"
+IUSE="audit berkdb debug nis selinux"
 
 BDEPEND="
 	dev-libs/libxslt
@@ -65,6 +65,7 @@ multilib_src_configure() {
 		--includedir="${EPREFIX}"/usr/include/security
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--exec-prefix="${EPREFIX}"
+		--enable-pie
 		--enable-unix
 		--disable-prelude
 		--disable-doc
@@ -75,7 +76,6 @@ multilib_src_configure() {
 		$(use_enable berkdb db)
 		$(use_enable debug)
 		$(use_enable nis)
-		$(use_enable pie)
 		$(use_enable selinux)
 		--enable-isadir='.' #464016
 		)
