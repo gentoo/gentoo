@@ -99,11 +99,6 @@ dev-util/creduce
 # paths.
 =net-libs/gnutls-3.7.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-12-07)
-# Masked for testing
->=app-shells/bash-5.1
->=sys-libs/readline-8.1
-
 # Joonas Niilola <juippis@gentoo.org> (2020-12-06)
 # Not keyworded, unmaintained, unbuildable for a long time, EAPI-5.
 # Removal in ~30 days. List sorted by their bug numbers.
