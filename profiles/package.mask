@@ -327,12 +327,6 @@ dev-python/pytoml
 # Removal in 30 days.  Bug #755122.
 dev-python/parametrized
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-17)
-# Old dependencies of dev-python/GitPython.  The current versions (3)
-# have been renamed back to dev-python/{gitdb,smmap}.
-# Removal in 30 days.  Bug #755080.
-dev-python/smmap2
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
