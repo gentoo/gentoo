@@ -365,11 +365,6 @@ dev-util/eric
 # Removal in 30 days.
 net-news/quiterss
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-17)
-# Depends on deprecated QtWebKit, upstream did not make a release in 10 years
-# (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
-app-text/goldendict
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
