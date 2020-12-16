@@ -599,7 +599,8 @@ kde-apps/kdebase-meta:5
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-astronomy/celestia-1.7.0_pre20200316-r100
 >=sci-libs/plplot-5.15.0-r100
->=sci-visualization/gnuplot-5.4.0-r100
+=sci-visualization/gnuplot-5.4.0-r100
+=sci-visualization/gnuplot-5.4.1-r1
 >=sci-visualization/fityk-1.3.1-r100
 >=sys-apps/likwid-4.3.4
 >=www-apache/mod_security-2.9.3-r100
