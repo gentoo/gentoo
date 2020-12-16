@@ -169,21 +169,50 @@ boostrap_rust_version_check() {
 }
 
 pre_build_checks() {
-	local M=6144
-	M=$(( $(usex clippy 128 0) + ${M} ))
-	M=$(( $(usex miri 128 0) + ${M} ))
+	# minimal useflags with system-llvm and system-bootstrap
+	local M=7680
+
+	# approximate component sizes
+	M=$(( $(usex clippy 256 0) + ${M} ))
+	M=$(( $(usex miri 256 0) + ${M} ))
 	M=$(( $(usex rls 512 0) + ${M} ))
-	M=$(( $(usex rustfmt 256 0) + ${M} ))
-	M=$(( $(usex system-llvm 0 2048) + ${M} ))
-	M=$(( $(usex wasm 256 0) + ${M} ))
+	M=$(( $(usex rustfmt 512 0) + ${M} ))
+	M=$(( $(usex wasm 512 0) + ${M} ))
+
+	# multiply by 1.5 if debug enabled
 	M=$(( $(usex debug 15 10) * ${M} / 10 ))
+
+	# multiply by 1.5 if target-cpu in rustflags
+	case "${RUSTFLAGS}" in
+		*target-cpu=*)
+			M=$(( 15 * ${M} / 10 ))
+			;;
+	esac
+
+	# count all enabled llvm targets
+	if ! use system-llvm; then
+		# base requirement is about 2G and 0.5 per llvm target
+		M=$(( 2048 + ${M} ))
+		local llvm_target
+		for llvm_target in ${ALL_LLVM_TARGETS}; do
+			use "${llvm_target}" && M=$(( 512 + ${M} ))
+		done
+	fi
+
+	# multiply by 1.5 if debugging *flags found
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		M=$(( 15 * ${M} / 10 ))
 	fi
 	eshopts_pop
-	M=$(( $(usex system-bootstrap 0 1024) + ${M} ))
-	M=$(( $(usex doc 256 0) + ${M} ))
+
+	# account for bootstrap compiler
+	# on ppc64 we unpack both BE and LE archive, so double that.
+	M=$(( $(usex system-bootstrap 0 $(usex ppc64 2048 1024) ) + ${M} ))
+
+	# docs appended last as those usually don't depend on flags
+	M=$(( $(usex doc 512 0) + ${M} ))
+
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
 }
 
