@@ -272,6 +272,8 @@ elisp-check-emacs-version() {
 	fi
 }
 
+# @FUNCTION: elisp-need-emacs
+# @DESCRIPTION:
 # Test if the eselected Emacs version is at least the major version
 # of GNU Emacs specified as argument.
 # Return 0 if true, 1 if false, 2 if trouble.
