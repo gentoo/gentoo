@@ -3,6 +3,11 @@
 
 EAPI=7
 inherit go-module systemd tmpfiles
+# This is obtained using ./version/version.sh in the upstream repo and
+# substituting ${PV} appropriately.
+VERSION_SHORT="${PV}"
+VERSION_LONG="${PV}-te480f8ddf"
+VERSION_GIT_HASH="e480f8ddf6f7334fda1b3d0dd1b500f2f01f961b"
 
 DESCRIPTION="Tailscale vpn client"
 HOMEPAGE="https://tailscale.com"
@@ -219,15 +224,18 @@ KEYWORDS="~amd64"
 
 RDEPEND="net-firewall/iptables"
 
+# This translates the build command from upstream's build_dist.sh to an
+# ebuild equivalent.
+build_dist() {
+	go build -tags xversion -ldflags "
+		-X tailscale.com/version.Long=${VERSION_LONG}
+		-X tailscale.com/version.Short=${VERSION_SHORT}
+		-X tailscale.com/version.GitCommit=${VERSION_GIT_HASH}" "$@"
+}
+
 src_compile() {
-	go build -tags xversion \
-		-ldflags "-X tailscale.com/version.Long=${PV}
-			-X tailscale.com/version.Short=${PV}" \
-				./cmd/tailscale || die
-	go build -tags xversion \
-		-ldflags "-X tailscale.com/version.Long=${PV}
-			-X tailscale.com/version.Short=${PV}" \
-				./cmd/tailscaled || die
+	build_dist ./cmd/tailscale || die
+	build_dist ./cmd/tailscaled || die
 }
 
 src_install() {
