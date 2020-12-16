@@ -277,11 +277,6 @@ src_install() {
 			"${ED}"/etc/mpd.conf || die "sed failed"
 	fi
 
-	if use doc; then
-		doman doc/mpd.1
-		doman doc/mpd.conf.5
-	fi
-
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
 	keepdir /var/lib/mpd/playlists
