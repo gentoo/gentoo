@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 MY_P=${P/_rc2/~rc2}
 
 inherit autotools python-single-r1
