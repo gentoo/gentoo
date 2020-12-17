@@ -1,15 +1,14 @@
-BDEPEND=dev-util/ninja dev-util/cmake
+BDEPEND=|| ( >dev-util/cmake-3.19.1 <dev-util/cmake-3.19.0 ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=!libressl? ( dev-libs/openssl:0=[static-libs=] ) libressl? ( dev-libs/libressl:0=[static-libs=] )
-DESCRIPTION=simple, small, fast and secure C99 implementation of the TLS/SSL protocols
+DEPEND=>=dev-libs/aws-c-common-0.4.62:=[static-libs=] >=dev-libs/aws-c-io-0.7.0:=[static-libs=] >=dev-libs/aws-checksums-0.1.10:=[static-libs=]
+DESCRIPTION=C99 implementation of the vnd.amazon.eventstream content-type
 EAPI=7
-HOMEPAGE=https://github.com/awslabs/s2n
-IUSE=libressl static-libs test
+HOMEPAGE=https://github.com/awslabs/aws-c-event-stream
+IUSE=static-libs test
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=!libressl? ( dev-libs/openssl:0=[static-libs=] ) libressl? ( dev-libs/libressl:0=[static-libs=] )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/awslabs/s2n/archive/v0.10.21.tar.gz -> s2n-0.10.21.tar.gz
+SRC_URI=https://github.com/awslabs/aws-c-event-stream/archive/v0.2.5.tar.gz -> aws-c-event-stream-0.2.5.tar.gz
 _eclasses_=cmake	6b7438831d544f2fe59a3d4ab4103f52	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=bad47f6385d8b36501619f50f8960547
+_md5_=b5f937aa36fa06ad26e5eb6b44aeff69
