@@ -6,7 +6,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">nest_asyncio</remote-id>
+    <remote-id type="pypi">nest-asyncio</remote-id>
     <remote-id type="github">erdewit/nest_asyncio</remote-id>
   </upstream>
 </pkgmetadata>
