@@ -7813,7 +7813,7 @@ dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-h
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
 dev-php/semver 1.4.2 1.5.1 1.7.0 1.7.1: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.7: A PHP testing framework
-dev-php/smarty 3.1.33: A template engine for PHP
+dev-php/smarty 3.1.33 3.1.36: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3 1.5.4: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/swoole 4.2.13 4.4.12 4.4.14 4.4.15 4.4.16 4.4.19 4.5.9: Event-driven asynchronous & concurrent & coroutine networking engine
