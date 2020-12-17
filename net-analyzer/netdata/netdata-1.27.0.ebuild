@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -35,6 +35,7 @@ RDEPEND="
 		net-analyzer/openbsd-netcat
 		net-analyzer/netcat
 	)
+	net-libs/libwebsockets
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
@@ -64,12 +65,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]')
-		mysql? (
-			|| (
-				$(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]')
-				$(python_gen_cond_dep 'dev-python/mysql-python[${PYTHON_MULTI_USEDEP}]')
-			)
-		)
+		mysql? ( $(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]') )
 		postgres? ( $(python_gen_cond_dep 'dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}]') )
 		tor? ( $(python_gen_cond_dep 'net-libs/stem[${PYTHON_MULTI_USEDEP}]') )
 	)
@@ -106,6 +102,7 @@ src_configure() {
 		$(use_enable nfacct plugin-nfacct) \
 		$(use_enable ipmi plugin-freeipmi) \
 		$(use_enable kinesis backend-kinesis) \
+		$(use_enable lto lto) \
 		$(use_enable mongodb backend-mongodb) \
 		$(use_enable prometheus backend-prometheus-remote-write) \
 		$(use_enable xen plugin-xenstat) \

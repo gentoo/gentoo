@@ -35,6 +35,7 @@ RDEPEND="
 		net-analyzer/openbsd-netcat
 		net-analyzer/netcat
 	)
+	net-libs/libwebsockets
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
@@ -64,12 +65,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]')
-		mysql? (
-			|| (
-				$(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]')
-				$(python_gen_cond_dep 'dev-python/mysql-python[${PYTHON_MULTI_USEDEP}]')
-			)
-		)
+		mysql? ( $(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]') )
 		postgres? ( $(python_gen_cond_dep 'dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}]') )
 		tor? ( $(python_gen_cond_dep 'net-libs/stem[${PYTHON_MULTI_USEDEP}]') )
 	)
