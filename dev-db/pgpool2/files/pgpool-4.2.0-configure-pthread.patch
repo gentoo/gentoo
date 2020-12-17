@@ -1,0 +1,14 @@
+diff -Naruw pgpool-II-4.2.0.orig/configure.ac pgpool-II-4.2.0/configure.ac
+--- pgpool-II-4.2.0.orig/configure.ac	2020-11-25 20:25:42.000000000 -0500
++++ pgpool-II-4.2.0/configure.ac	2020-12-16 06:40:11.150611861 -0500
+@@ -4,6 +4,10 @@
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_CC_C99()
++AX_PTHREAD
++LIBS="$PTHREAD_LIBS $LIBS"
++CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
++CC="$PTHREAD_CC"
+ 
+ # Error out if the compiler does not support C99, as the codebase
+ # relies on that.
