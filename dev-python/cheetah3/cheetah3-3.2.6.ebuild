@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 DESCRIPTION="Python-powered template engine and code generator"
-HOMEPAGE="http://www.cheetahtemplate.org/ https://pypi.org/project/Cheetah3/"
+HOMEPAGE="https://cheetahtemplate.org/ https://pypi.org/project/Cheetah3/"
 SRC_URI="https://github.com/CheetahTemplate3/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
