@@ -292,11 +292,6 @@ sys-libs/libkudzu
 # Removal in 30 days.
 app-text/kchmviewer
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-18)
-# Depends on deprecated QtWebKit, no maintainer.
-# Bugs #712200 and 725388. Removal in 30 days.
-sci-misc/mendeleydesktop
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-18)
 # Upstream has switched to aiobotocore.  It's a huge hack that requires
 # a very specific botocore version, currently 3 months old.  Given that
