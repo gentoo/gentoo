@@ -2729,7 +2729,7 @@ app-portage/smart-live-rebuild 1.3.6 9999: Check live packages for updates and e
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
-app-portage/unsymlink-lib 18 19: Convert your system to SYMLINK_LIB=no
+app-portage/unsymlink-lib 19: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18 5.1: The standard GNU Bourne again shell
 app-shells/bash-completion 2.11 9999: Programmable Completion for bash
@@ -4637,7 +4637,7 @@ dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and p
 dev-java/cssparser 0.9.25 0.9.26: API for parsing CSS 2 in Java
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
-dev-java/dnsjava 2.1.6 2.1.7 2.1.8: An implementation of DNS in Java
+dev-java/dnsjava 2.1.8: An implementation of DNS in Java
 dev-java/dom4j 1.6.1-r7: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
@@ -5250,7 +5250,7 @@ dev-libs/fribidi 1.0.9: A free implementation of the unicode bidirectional algor
 dev-libs/fstrm 0.3.0 0.6.0: Frame Streams implementation in C
 dev-libs/gdl 3.34.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
-dev-libs/gf-complete 0.0.0 2.0.0 2.0.0-r1: A Comprehensive Open Source Library for Galois Field Arithmetic
+dev-libs/gf-complete 2.0.0-r1: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 0.3.5 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.64.4 1.66.1: Javascript bindings for GNOME
@@ -7954,8 +7954,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.15.18 1.16.9 1.16.16 1.16.20 1.16.21 1.16.22 1.16.23 1.16.24 1.16.25 1.16.26 1.16.28 1.16.29 1.16.30 1.16.36 1.16.37 1.16.38 9999: The AWS SDK for Python
-dev-python/botocore 1.18.18 1.19.9 1.19.16 1.19.20 1.19.21 1.19.22 1.19.23 1.19.24 1.19.25 1.19.26 1.19.28 1.19.29 1.19.30 1.19.36 1.19.37 1.19.38 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.16 1.16.23 1.16.30 1.16.36 1.16.37 1.16.38 9999: The AWS SDK for Python
+dev-python/botocore 1.19.16 1.19.23 1.19.30 1.19.36 1.19.37 1.19.38 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -7991,7 +7991,7 @@ dev-python/characteristic 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4-r1 4.0.0: Universal encoding detector
 dev-python/chart-studio 1.1.0: Browser-based graphing library for Python
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
-dev-python/cheetah3 3.2.4 3.2.6: Python-powered template engine and code generator
+dev-python/cheetah3 3.2.6: Python-powered template engine and code generator
 dev-python/cheroot 8.4.5 8.4.8 8.5.0: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
@@ -8036,7 +8036,7 @@ dev-python/croniter 0.3.30: Python module to provide iteration for datetime obje
 dev-python/cryptography 3.2 3.2.1 3.3.1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssselect2 0.3.0 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
+dev-python/cssselect2 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.2-r2: A CSS Cascading Style Sheets library
 dev-python/csv23 0.3.2-r1: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
@@ -8071,7 +8071,7 @@ dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Fram
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.16 2.2.17 3.0.10-r1 3.0.11 3.1.1-r1 3.1.2-r1 3.1.3 3.1.4: High-level Python web framework
+dev-python/django 2.2.16 2.2.17 3.0.10-r1 3.0.11 3.1.3 3.1.4: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
 dev-python/django-auth-ldap 2.1.0: Django LDAP authentication backend
@@ -8236,10 +8236,10 @@ dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0-r1: Python based U2F host library
 dev-python/googleapis-common-protos 1.51.0 1.52.0: python classes generated from the common protos in the googleapis repository
 dev-python/graph-tool 2.35 9999: An efficient python module for manipulation and statistical analysis of graphs
-dev-python/graphviz 0.14.2 0.15: Simple Python interface for Graphviz
+dev-python/graphviz 0.15: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.17: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
-dev-python/grpcio 1.28.1 1.32.0-r1: High-performance RPC framework (python libraries)
+dev-python/grpcio 1.32.0-r1: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read and write it
@@ -8249,7 +8249,7 @@ dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
-dev-python/hcloud-python 1.9.0 1.10.0: Official Hetzner Cloud python library
+dev-python/hcloud-python 1.10.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.7.1: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hiredis 1.0.1 1.0.1-r1 1.1.0: Python extension that wraps hiredis
@@ -8367,7 +8367,7 @@ dev-python/lazr-config 2.2.2: Create configuration schemas, and process and vali
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
 dev-python/lazy-object-proxy 1.5.0: A fast and thorough lazy object proxy
 dev-python/lcdproc 0.03_p20150508: Python OOP wrapper library for LCDproc Telnet API
-dev-python/ldap3 2.7 2.8.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
+dev-python/ldap3 2.8.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
@@ -8475,7 +8475,7 @@ dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
-dev-python/nest_asyncio 1.4.2 1.4.3: Patch asyncio to allow nested event loops
+dev-python/nest_asyncio 1.4.3: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
@@ -8496,7 +8496,7 @@ dev-python/nose2 0.9.1-r1 0.9.2: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 6.1.3 6.1.4 6.1.5: Jupyter Interactive Notebook
+dev-python/notebook 6.1.3 6.1.5: Jupyter Interactive Notebook
 dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207 0.2.13: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
@@ -8595,7 +8595,7 @@ dev-python/pgspecial 1.11.10: Python implementation of PostgreSQL meta commands
 dev-python/phonenumbers 8.12.13 8.12.14 8.12.15: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
-dev-python/pid 2.2.5 3.0.4: Pidfile featuring stale detection and file-locking
+dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0 2.2.0-r1: Python library to work with pdf files based on qpdf
@@ -8633,7 +8633,7 @@ dev-python/process-tests 2.1.1: Tools for testing processes
 dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
-dev-python/prometheus_client 0.8.0 0.9.0: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.9.0: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 2.0.10-r1 3.0.7: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
@@ -8854,7 +8854,7 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1 5.0.1: Client library for Barbican API.
 dev-python/python-blazarclient 3.1.1: This is a client for the OpenStack Blazar API
-dev-python/python-bugzilla 3.0.1 3.0.2: A python module for interacting with Bugzilla over XMLRPC
+dev-python/python-bugzilla 3.0.2: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 7.2.0: A client for the OpenStack Cinder API
@@ -12940,7 +12940,7 @@ media-gfx/zgv 5.9: A svgalib console image viewer
 media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/SoQt 1.6.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/SoXt 1.4.0: GUI binding for using Coin/Open Inventor with Xt/Motif
-media-libs/a52dec 0.7.4-r6 0.7.4-r7 0.7.4-r8: library for decoding ATSC A/52 streams used in DVD
+media-libs/a52dec 0.7.4-r8: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/allegro 4.4.2-r2 4.4.3.1 5.2.5.0 5.2.6.0: Cross-platform library aimed at video game and multimedia programming
@@ -13507,7 +13507,7 @@ media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualiza
 media-plugins/live 2020.03.06 2020.05.15: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.2.4: LV2 port of the MDA plugins by Paul Kellett
-media-plugins/mythplugins 31.0: Official MythTV plugins
+media-plugins/mythplugins 31.0-r1: Official MythTV plugins
 media-plugins/qmmp-plugin-pack 1.4.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
@@ -14000,7 +14000,7 @@ media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
 media-tv/kodi 19.0_beta1-r1 19.0_beta2 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
-media-tv/mythtv 31.0-r4: Open Source DVR and media center hub
+media-tv/mythtv 31.0-r5: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
@@ -14009,7 +14009,7 @@ media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r3 0.0.1_p20170225-r4 0.0.1_p20170225-r5: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1 1.16.6 1.20.0: Separate utilities ebuild from upstream v4l-utils package
-media-tv/w_scan 20141122 20170107: Scan DVB-C/DVB-T/DVB-S channels
+media-tv/w_scan 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
 media-video/aegisub 3.2.2_p20160518-r2 3.2.2_p20160518-r3 3.2.2_p20160518-r4 3.2.2_p20160518-r100 9999: Advanced subtitle editor
@@ -17985,7 +17985,7 @@ www-client/microsoft-edge-dev 88.0.705.15 89.0.723.0 89.0.731.0: The web browser
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
-www-client/opera 73.0.3856.284: A fast and secure web browser
+www-client/opera 73.0.3856.284-r1: A fast and secure web browser
 www-client/opera-beta 72.0.3815.49 72.0.3815.86 72.0.3815.133: A fast and secure web browser
 www-client/opera-developer 74.0.3904.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
