@@ -1,28 +1,27 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit ecm
 
 DESCRIPTION="Graphical Portage frontend based on KDE Frameworks"
 HOMEPAGE="https://sourceforge.net/projects/kuroo/"
-SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-COMMON_DEPEND="
+DEPEND="
 	dev-db/sqlite:3
-	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	kde-frameworks/kauth:5
 	kde-frameworks/kconfig:5
 	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
-	kde-frameworks/kdelibs4support:5
 	kde-frameworks/ki18n:5
 	kde-frameworks/kio:5
 	kde-frameworks/kitemviews:5
@@ -32,16 +31,11 @@ COMMON_DEPEND="
 	kde-frameworks/kxmlgui:5
 	kde-frameworks/threadweaver:5
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	app-portage/gentoolkit
 	kde-apps/kompare:5
 	kde-plasma/kde-cli-tools:5[kdesu]
 "
-DEPEND="${COMMON_DEPEND}
-	kde-frameworks/extra-cmake-modules:5
-"
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 pkg_postinst() {
 	if ! has_version app-admin/logrotate ; then
@@ -49,11 +43,5 @@ pkg_postinst() {
 		elog "portage's summary.log size reasonable to view in the history page."
 	fi
 
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	ecm_pkg_postinst
 }
