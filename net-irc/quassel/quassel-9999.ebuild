@@ -20,7 +20,7 @@ HOMEPAGE="https://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server
-snorenotify +ssl syslog urlpreview X"
+snorenotify syslog urlpreview X"
 
 SERVER_DEPEND="
 	acct-group/quassel
@@ -60,7 +60,7 @@ GUI_DEPEND="
 
 DEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtnetwork:5[ssl?]
+	dev-qt/qtnetwork:5[ssl]
 	sys-libs/zlib
 	monolithic? (
 		${SERVER_DEPEND}
@@ -118,7 +118,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	if use server ; then
+	if use server; then
 		# needs PAX marking wrt bug#346255
 		pax-mark m "${ED}/usr/bin/quasselcore"
 
@@ -134,7 +134,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use monolithic && use ssl ; then
+	if use monolithic; then
 		elog "Information on how to enable SSL support for client/core connections"
 		elog "is available at http://bugs.quassel-irc.org/projects/quassel-irc/wiki/Client-Core_SSL_support."
 	fi
@@ -157,7 +157,7 @@ pkg_postrm() {
 }
 
 pkg_config() {
-	if use server && use ssl; then
+	if use server; then
 		# generate the pem file only when it does not already exist
 		QUASSEL_DIR=/var/lib/${PN}
 		if [ ! -f "${QUASSEL_DIR}/quasselCert.pem" ]; then
