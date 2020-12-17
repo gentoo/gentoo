@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jack Todaro <solpeth@posteo.org> (2020-12-17)
+# Old and redundant package. Has not been kept
+# up to date and no longer works. Masked for removal.
+sci-mathematics/agda-lib-ffi
+
 # Eray Aslan <eras@gentoo.org> (2020-12-14)
 # Dead. Last release in 2014. Only works with vulnerable dovecot version.
 # Recent Outlook versions should have this functionality built in.  Switch to a
