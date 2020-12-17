@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,8} )
 DISTUTILS_SINGLE_IMPL=true
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 readme.gentoo-r1 virtualx xdg-utils
 
 DESCRIPTION="The highly caffeinated git GUI"
@@ -36,6 +37,8 @@ BDEPEND="sys-devel/gettext
 			dev-python/nose[\${PYTHON_MULTI_USEDEP}]
 		)
 	")"
+
+PATCHES=( "${FILESDIR}/${P}-py3.8-line-buffering.patch" )
 
 python_prepare_all() {
 	# make sure that tests also use the system provided QtPy
@@ -94,6 +97,9 @@ python_install_all() {
 
 	python_fix_shebang "${ED}/usr/share/git-cola/bin/git-xbase" "${ED}"/usr/bin/git-cola
 	python_optimize "${ED}/usr/share/git-cola/lib/cola"
+
+	# fix appdata installation
+	mv "${D}"/usr/share/appdata "${D}"/usr/share/metainfo || die "moving appdata failed"
 
 	use doc || HTML_DOCS=( "${FILESDIR}"/index.html )
 

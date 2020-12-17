@@ -20,6 +20,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 	)"
 
