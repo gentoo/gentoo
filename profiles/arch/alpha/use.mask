@@ -197,3 +197,7 @@ redis
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp
+
+# Peter Alfredsen <crabbedhaloablution@icloud.com> (2020-12-17)
+# sys-cluster/glusterfs is not keyworded here
+glusterfs

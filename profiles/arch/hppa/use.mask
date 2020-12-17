@@ -300,3 +300,7 @@ djbfft
 # media-sound/beep-media-player and remove if
 bmp
 3dfx
+
+# Peter Alfredsen <crabbedhaloablution@icloud.com> (2020-12-17)
+# sys-cluster/glusterfs is not keyworded here
+glusterfs

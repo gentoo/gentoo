@@ -253,3 +253,7 @@ seccomp
 # Ben de Groot <yngwin@gentoo.org> (2015-02-01)
 # please remove when keyworded
 qt5
+
+# Peter Alfredsen <crabbedhaloablution@icloud.com> (2020-12-17)
+# sys-cluster/glusterfs is not keyworded here
+glusterfs
