@@ -36,6 +36,8 @@ DEPEND="${PYTHON_DEPS}
 "
 PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}/${PN}-${PV}-Fix-pkgconfig.patch" )
+
 multilib_src_configure() {
 	# Integrated clang assembler doesn't work with x86 - Bug #698164
 	if tc-is-clang && [[ ${ABI} == x86 ]]; then
