@@ -7918,7 +7918,7 @@ dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.27.0 1.28.1 1.29.0 1.30.0 1.30.1 1.31.0 1.32.0-r1: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.29.0 1.30.1 1.31.0 1.32.0-r1: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages

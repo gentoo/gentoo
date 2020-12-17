@@ -5,10 +5,10 @@ DESCRIPTION=Command-line driven interactive plotting program
 EAPI=7
 HOMEPAGE=http://www.gnuplot.info/
 IUSE=aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline regis svga wxwidgets X
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=gnuplot
 RDEPEND=cairo? ( x11-libs/cairo x11-libs/pango ) gd? ( >=media-libs/gd-2.0.35-r3:2=[png] ) ggi? ( media-libs/libggi ) latex? ( virtual/latex-base lua? ( dev-tex/pgf >=dev-texlive/texlive-latexrecommended-2008-r2 ) ) libcaca? ( media-libs/libcaca ) lua? ( dev-lang/lua:0 ) qt5? ( dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtnetwork:5= dev-qt/qtprintsupport:5= dev-qt/qtsvg:5= dev-qt/qtwidgets:5= ) readline? ( sys-libs/readline:0= ) libcerf? ( sci-libs/libcerf ) svga? ( media-libs/svgalib ) wxwidgets? ( x11-libs/wxGTK:3.0-gtk3[X] x11-libs/cairo x11-libs/pango x11-libs/gtk+:2 ) X? ( x11-libs/libXaw )
 SLOT=0
 SRC_URI=mirror://sourceforge/gnuplot/gnuplot-5.2.8.tar.gz
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312
-_md5_=67ac8cfd658794f874edacb47987b396
+_md5_=a8c3ccc8b86528d73aa873d07a7f96d4

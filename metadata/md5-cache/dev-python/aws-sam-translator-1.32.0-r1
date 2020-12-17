@@ -2,7 +2,7 @@ BDEPEND=test? ( dev-python/mock[python_targets_python3_6(-)?,python_targets_pyth
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=A library that transform SAM templates into AWS CloudFormation templates
 EAPI=7
-HOMEPAGE=https://github.com/awslabs/serverless-application-model https://pypi.org/project/aws-sam-translator/
+HOMEPAGE=https://github.com/aws/serverless-application-model https://pypi.org/project/aws-sam-translator/
 IUSE=test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
@@ -10,6 +10,6 @@ RDEPEND=>=dev-python/boto3-1.5[python_targets_python3_6(-)?,python_targets_pytho
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/awslabs/serverless-application-model/archive/v1.32.0.tar.gz -> aws-sam-translator-1.32.0.tar.gz
+SRC_URI=https://github.com/aws/serverless-application-model/archive/v1.32.0.tar.gz -> aws-sam-translator-1.32.0.tar.gz
 _eclasses_=distutils-r1	6a128a9211d714bf9dfb5c0c9e72558e	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=3cad31f50245818a886769693eadebd6
+_md5_=1b3e338c49caa1d078fcffdaa6af95b9
