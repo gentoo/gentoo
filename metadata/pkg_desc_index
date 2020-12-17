@@ -4519,7 +4519,7 @@ dev-haskell/yesod-default 1.2.0: Default config and main functions for your yeso
 dev-haskell/yesod-form 1.6.7: Form handling support for Yesod Web Framework
 dev-haskell/yesod-json 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
 dev-haskell/yesod-persistent 1.6.0.4: Some helpers for using Persistent from Yesod
-dev-haskell/yesod-static 1.6.0.1: Static file serving subsite for Yesod Web Framework
+dev-haskell/yesod-static 1.6.1.0: Static file serving subsite for Yesod Web Framework
 dev-haskell/yesod-test 1.6.12: integration testing for WAI/Yesod Applications
 dev-haskell/zip-archive 0.4.1: Library for creating and modifying zip archives
 dev-haskell/zlib 0.5.4.2 0.6.2.2: Compression and decompression in the gzip and zlib formats
@@ -12085,7 +12085,7 @@ kde-apps/kolourpaint 20.08.3 20.12.0: Paint Program by KDE
 kde-apps/kompare 20.08.3 20.12.0: A program to view the differences between files
 kde-apps/konqueror 20.08.3 20.12.0: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 20.08.3 20.12.0: Galactic Strategy KDE Game
-kde-apps/konsole 20.08.3 20.12.0: KDE's terminal emulator
+kde-apps/konsole 20.08.3 20.12.0 20.12.0-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 20.08.3 20.12.0: Command line interface to KDE calendars
 kde-apps/kontact 20.08.3 20.12.0: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 20.08.3 20.12.0: Library for embedding KParts in a Kontact component
