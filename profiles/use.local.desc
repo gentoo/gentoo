@@ -8581,6 +8581,8 @@ www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/li
 www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
 www-client/opera:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
 www-client/opera:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
+www-client/opera-developer:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
+www-client/opera-developer:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/qutebrowser:scripts - Installs userscripts from the misc/userscripts directory to /usr/share/qutebrowser/userscripts.
 www-client/seamonkey:calendar - Build Mozilla's calendar
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
