@@ -17,7 +17,7 @@ IUSE="gnutls gnome-keyring +gstreamer +rar +ssl +zip"
 DEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:2.4
-	dev-libs/libconfig[cxx]
+	dev-libs/libconfig:=[cxx]
 	dev-libs/libxml2:2
 	dev-libs/libsigc++:2
 	net-misc/curl
