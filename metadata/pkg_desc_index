@@ -3517,7 +3517,7 @@ dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22: MySQL database
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance MySQL tuning script
-dev-db/mytop 1.6-r4 1.9.1: mytop - a top clone for mysql
+dev-db/mytop 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 0.3 9999: Oracle copy tool
 dev-db/opendbx 1.4.5-r1 1.4.6-r2 1.4.6-r3 1.5.0-r2: OpenDBX - A database abstraction layer
 dev-db/oracle-instantclient 18.3.0.0-r2 18.5.0.0 19.3.0.0-r1 19.5.0.0 19.6.0.0 19.6.0.0-r1: Oracle 18c Instant Client with SDK
@@ -3530,7 +3530,7 @@ dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
-dev-db/pg_top 3.7.0 4.0.0 4.0.0-r1: 'top' for PostgreSQL
+dev-db/pg_top 4.0.0 4.0.0-r1: 'top' for PostgreSQL
 dev-db/pgadmin4 4.17-r1 4.25 4.26 4.28: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 11.0 11.3 11.4: pgBadger is a PostgreSQL log analyzer.
@@ -5754,7 +5754,7 @@ dev-ml/bin-prot 0.9.0 0.9.1 0.9.2: Binary protocol generator
 dev-ml/bin_prot 0.14.0: Binary protocol generator
 dev-ml/biniou 1.2.0: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bos 0.1.6: Basic OS interaction for OCaml
-dev-ml/cairo-ocaml 1.2.0 1.2.0-r1: Ocaml bindings for the cairo vector graphics library
+dev-ml/cairo-ocaml 1.2.0-r1: Ocaml bindings for the cairo vector graphics library
 dev-ml/cairo2 0.6.1: Binding to Cairo, a 2D Vector Graphics Library
 dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/camlbz2 0.6.0-r1: OCaml bindings for libbz (AKA, bzip2)
@@ -5784,10 +5784,10 @@ dev-ml/dune-configurator 2.7.1: A composable build system for OCaml
 dev-ml/dune-private-libs 2.7.1: A composable build system for OCaml
 dev-ml/easy-format 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
-dev-ml/extlib 1.7.1 1.7.6 1.7.7: Standard library extensions for O'Caml
+dev-ml/extlib 1.7.7: Standard library extensions for O'Caml
 dev-ml/facile 1.1.3: OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0 0.14.0: Folding over record fields
-dev-ml/findlib 1.8.1 1.8.1-r1: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.8.1-r1: OCaml tool to find/use non-standard packages
 dev-ml/fmt 0.8.4: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -10921,7 +10921,7 @@ dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/bfg 1.13.0: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
-dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
+dev-vcs/cssc 1.4.1: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r12: Concurrent Versions System - source code revision control tools
 dev-vcs/cvs-fast-export 1.55: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
@@ -12393,8 +12393,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.8 1.4.9: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.5.1 78.6.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.5.1 78.6.0: Thunderbird Mail Client
+mail-client/thunderbird 78.6.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.6.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -14541,7 +14541,7 @@ net-firewall/ipt_netflow 2.5.1-r1 9999: Netflow iptables module
 net-firewall/iptables 1.6.1-r3 1.6.2-r2 1.8.4-r2 1.8.5 1.8.6: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104-r1: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99-r1: IPTables firewall setup script
-net-firewall/nfacct 1.0.1 1.0.2: Command line tool to create/retrieve/delete accounting objects in NetFilter
+net-firewall/nfacct 1.0.2: Command line tool to create/retrieve/delete accounting objects in NetFilter
 net-firewall/nftables 0.9.6 0.9.6-r1 0.9.7-r1 9999: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nftlb 0.6: nftables load balancer
 net-firewall/nufw 2.2.22-r3: An enterprise grade authenticating firewall based on netfilter
@@ -15414,7 +15414,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3-r1 5.3.3-r2: Ghostscript and cups printer drivers
-net-print/hplip 3.19.12-r1 3.20.6-r1 3.20.6-r3 3.20.9-r3 3.20.9-r5 3.20.11: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.20.9-r3 3.20.11: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.19.12 3.20.6-r1 3.20.9 3.20.11: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
@@ -17971,8 +17971,8 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.6.0 83.0 84.0: Firefox Web Browser
-www-client/firefox-bin 78.5.0 78.6.0 83.0 84.0: Firefox Web Browser
+www-client/firefox 78.6.0 84.0: Firefox Web Browser
+www-client/firefox-bin 78.6.0 84.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.88: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.50: The web browser from Google
 www-client/google-chrome-unstable 89.0.4350.4: The web browser from Google
@@ -18012,7 +18012,7 @@ www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator
 www-misc/urlwatch 2.17 2.18-r1 2.21: A tool for monitoring webpages for updates
-www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10 3.6.10-r1: WWW Admin for the Video Disk Recorder
+www-misc/vdradmin-am 3.6.10-r1: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
@@ -18673,12 +18673,12 @@ x11-plugins/wmapm 3.1-r2: WindowMaker DockApp: Battery/Power status monitor for 
 x11-plugins/wmapmload 0.3.4-r1: dockapp that monitors your apm battery status
 x11-plugins/wmappl 0.71-r1: Simple application launcher for the Window Maker dock
 x11-plugins/wmbatteries 0.1.3-r1: Dock app for monitoring the current battery status and CPU temperature
-x11-plugins/wmbattery 2.50 2.51 2.54: A dockable app to report APM, ACPI, or SPIC battery status
+x11-plugins/wmbattery 2.54: A dockable app to report APM, ACPI, or SPIC battery status
 x11-plugins/wmbiff 0.4.28 0.4.35 0.4.36: WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes
 x11-plugins/wmbinclock 0.5-r1: a nifty little binary clock dockapp
 x11-plugins/wmbio 1.02: A Window Maker applet that shows your biorhythm
-x11-plugins/wmblob 1.0.3 1.0.4: a fancy but useless dockapp with moving blobs
-x11-plugins/wmbutton 0.7.0 0.7.1: a dockapp application that displays nine configurable buttons
+x11-plugins/wmblob 1.0.4: a fancy but useless dockapp with moving blobs
+x11-plugins/wmbutton 0.7.1: a dockapp application that displays nine configurable buttons
 x11-plugins/wmcalc 0.6-r1 0.7: A WindowMaker DockApp calculator
 x11-plugins/wmcalendar 0.5.2-r2: a calendar dockapp
 x11-plugins/wmcdplay 1.1-r1: CD player applet for WindowMaker
@@ -18708,11 +18708,11 @@ x11-plugins/wmifinfo 0.10-r1: a dockapp for monitoring network interfaces
 x11-plugins/wmifs 1.8: Network monitoring dockapp
 x11-plugins/wminet 3.0.0-r2: dockapp for monitoring internet connections to and from your computer
 x11-plugins/wmitime 0.5-r1: Overglorified clock dockapp w/time, date, and internet time
-x11-plugins/wmix 3.2 3.4 3.5: Dockapp mixer for OSS or ALSA
+x11-plugins/wmix 3.5: Dockapp mixer for OSS or ALSA
 x11-plugins/wmlife 1.0.1-r1: dockapp running Conway's Game of Life (and program launcher)
 x11-plugins/wmload 0.9.7-r1: yet another dock application showing a system load gauge
 x11-plugins/wmlongrun 0.3.1: A dockapp to monitor LongRun on a Transmeta Crusoe processor
-x11-plugins/wmmaiload 2.2.1-r1 2.3.0-r1: dockapp that monitors one or more mailboxes
+x11-plugins/wmmaiload 2.3.0-r1: dockapp that monitors one or more mailboxes
 x11-plugins/wmmand 1.3.2-r1: a dockable mandelbrot browser
 x11-plugins/wmmemload 0.1.8-r1: dockapp that displays memory and swap space usage
 x11-plugins/wmmenu 1.3-r2: a popup menu of icons like in AfterStep, as a dockapp
