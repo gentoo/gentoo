@@ -8957,7 +8957,7 @@ dev-python/pyzbar 0.1.8: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 19.0.2 20.0.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.11.5: Python bindings for QScintilla
+dev-python/qscintilla-python 2.11.5 2.11.6: Python bindings for QScintilla
 dev-python/qtawesome 1.0.1 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.7.6 4.7.7 5.0.0 5.0.1: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
@@ -16341,7 +16341,7 @@ sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 30.3.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.8 1.7.11: C++ library and tools for symbolic calculations
-sci-mathematics/glpk 4.65: GNU Linear Programming Kit
+sci-mathematics/glpk 4.65 5.0: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 7.0.4-r2 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gp2c 0.0.11.2-r1 0.0.11.3: A GP to C translator
@@ -18267,7 +18267,7 @@ x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r3: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.42.4-r2 1.44.7: Internationalized text layout and rendering library
 x11-libs/pixman 0.40.0 9999: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.11.5: Qt port of Neil Hodgson's Scintilla C++ editor control
+x11-libs/qscintilla 2.11.5 2.11.6: Qt port of Neil Hodgson's Scintilla C++ editor control
 x11-libs/qtermwidget 0.14.1 0.15.0 0.16.1 9999: Qt terminal emulator widget
 x11-libs/qwt 6.1.4 6.1.5: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
