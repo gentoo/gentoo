@@ -16,7 +16,7 @@ HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/waylan
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
-	KEYWORDS="x86"
+	KEYWORDS="amd64 x86"
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm x86"
