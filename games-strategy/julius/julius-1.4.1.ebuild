@@ -11,7 +11,7 @@ SRC_URI="https://github.com/bvschaik/julius/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	media-libs/libpng:0=
