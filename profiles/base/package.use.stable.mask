@@ -111,10 +111,6 @@ kde-plasma/powerdevil brightness-control
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-21)
-# Depends on lots of unstable dependencies
-dev-python/s3fs test
-
 # Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone hasn't been stabilized yet
 app-emulation/qemu capstone
