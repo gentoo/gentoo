@@ -3845,7 +3845,7 @@ dev-haskell/cmark-gfm 0.2.1: Fast, accurate GitHub Flavored Markdown parser and 
 dev-haskell/cmdargs 0.10.20: Command line argument processing
 dev-haskell/code-page 0.1.3: Windows code page library for Haskell
 dev-haskell/colour 2.3.5: A model for human colour/color perception
-dev-haskell/comonad 5.0.6: Haskell 98 compatible comonads
+dev-haskell/comonad 5.0.7: Haskell package providing comonads
 dev-haskell/comonad-transformers 4.0: This package has been merged into comonad 4.0
 dev-haskell/comonads-fd 4.0: This package has been merged into comonad 4.0
 dev-haskell/concurrent-extra 0.7.0.12: Extra concurrency primitives
@@ -3862,7 +3862,7 @@ dev-haskell/contravariant-extras 0.3.5.2: Extras for the "contravariant" package
 dev-haskell/control-monad-loop 0.1: Simple monad transformer for imperative-style loops
 dev-haskell/convertible 1.1.1.0: Typeclasses and instances for converting between types
 dev-haskell/cookie 0.4.4: HTTP cookie parsing and rendering
-dev-haskell/cpphs 1.20.8: A liberalised re-implementation of cpp, the C pre-processor
+dev-haskell/cpphs 1.20.8 1.20.9.1: A liberalised re-implementation of cpp, the C pre-processor
 dev-haskell/cprng-aes 0.6.1: Crypto Pseudo Random Number Generator using AES in counter mode
 dev-haskell/cpu 0.1.2: Cpu information and properties helpers
 dev-haskell/criterion 1.5.6.2: Robust, reliable performance measurement and analysis
@@ -4096,6 +4096,7 @@ dev-haskell/idiii 0.1.3.3: ID3v2 (tagging standard for MP3 files) library
 dev-haskell/idna 0.3.0: Implements IDNA (RFC 3490)
 dev-haskell/ieee754 0.7.8: Utilities for dealing with IEEE floating point numbers
 dev-haskell/ifelse 0.85-r1: Anaphoric and miscellaneous useful control-flow
+dev-haskell/indexed-traversable 0.1: FunctorWithIndex, FoldableWithIndex, TraversableWithIndex
 dev-haskell/infer-license 0.2.0: Infer software license from a given license file
 dev-haskell/inspection-testing 0.4.2.4: GHC plugin to do inspection testing
 dev-haskell/integer-logarithms 1.0.3: Integer logarithms
@@ -4437,7 +4438,7 @@ dev-haskell/top 1.7: Constraint solving framework employed by the Helium Compile
 dev-haskell/torrent 10000.1.1: BitTorrent file parser and generater
 dev-haskell/transformers 0.5.6.2: Concrete functor and monad transformers
 dev-haskell/transformers-base 0.4.5.2: Lift computations from the bottom of a transformer stack
-dev-haskell/transformers-compat 0.5.1.4 0.6.5: A small compatibility shim for dev-haskell/transformers
+dev-haskell/transformers-compat 0.6.6: A small compatibility shim for the transformers library
 dev-haskell/tree-diff 0.1: Diffing of (expression) trees
 dev-haskell/trifecta 2.1: A modern parser combinator library with convenient diagnostics
 dev-haskell/type-equality 1: Type equality, coercion/cast and other operations
@@ -4456,6 +4457,7 @@ dev-haskell/unordered-containers 0.2.12.0: Efficient hashing-based container typ
 dev-haskell/uri 0.1.6.4: Library for working with URIs
 dev-haskell/uri-bytestring 0.3.3.0: Haskell URI parsing as ByteStrings
 dev-haskell/uri-bytestring-aeson 0.1.0.7: Aeson instances for URI Bytestring
+dev-haskell/uri-encode 1.5.0.5: Unicode aware uri-encoding
 dev-haskell/url 2.1.3-r1: A library for working with URLs
 dev-haskell/utf8-light 0.4.2: Lightweight UTF8 handling
 dev-haskell/utf8-string 1.0.1.1: Support for reading and writing UTF8 Strings
@@ -4518,7 +4520,7 @@ dev-haskell/yesod-form 1.6.7: Form handling support for Yesod Web Framework
 dev-haskell/yesod-json 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
 dev-haskell/yesod-persistent 1.6.0.4: Some helpers for using Persistent from Yesod
 dev-haskell/yesod-static 1.6.0.1: Static file serving subsite for Yesod Web Framework
-dev-haskell/yesod-test 1.6.10: integration testing for WAI/Yesod Applications
+dev-haskell/yesod-test 1.6.12: integration testing for WAI/Yesod Applications
 dev-haskell/zip-archive 0.4.1: Library for creating and modifying zip archives
 dev-haskell/zlib 0.5.4.2 0.6.2.2: Compression and decompression in the gzip and zlib formats
 dev-haskell/zlib-bindings 0.1.1.5: Low-level bindings to the zlib package. (deprecated)
@@ -12706,7 +12708,7 @@ media-fonts/x11fonts-jmk 3.0-r3 3.0-r4: This package contains character-cell fon
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
-media-gfx/ahoviewer 1.6.5-r1: A GTK2 image viewer, manga reader, and booru browser
+media-gfx/ahoviewer 1.6.5-r2: A GTK2 image viewer, manga reader, and booru browser
 media-gfx/album 4.13-r2 4.15-r1: HTML photo album generator
 media-gfx/alembic 1.7.12 1.7.16: Open framework for storing and sharing scene data
 media-gfx/apng2gif 1.8: create a GIF from an APNG
@@ -16311,9 +16313,9 @@ sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Gr
 sci-libs/xkaapi 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.6: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
-sci-mathematics/agda 2.5.2-r2: A dependently typed functional programming language and proof assistant
+sci-mathematics/agda 2.6.1.2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
-sci-mathematics/agda-stdlib 2.5.2.0.13: Agda standard library
+sci-mathematics/agda-stdlib 2.6.1.2.1.4: Agda standard library
 sci-mathematics/alt-ergo 1.30 2.3.0: Automatic theorem prover
 sci-mathematics/arb 2.17.0 2.18.1: C library for arbitrary-precision interval arithmetic
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry

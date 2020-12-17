@@ -1479,7 +1479,7 @@ dev-haskell/chimera:representable - Define Representable instance from adjunctio
 dev-haskell/cmark:system-cmark - use app-text/cmark instead of bundled copy
 dev-haskell/cmdargs:quotation - Build quote module
 dev-haskell/cmdargs:testprog - Build the test program
-dev-haskell/comonad:test-doctests - Run the doctests test suite
+dev-haskell/comonad:indexed-traversable - You can disable the use of the `indexed-traversable` package using `-f-indexed-traversable`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users. If disabled we will not supply instances of `FunctorWithIndex`
 dev-haskell/contravariant:semigroups - You can disable the use of the `semigroups` package using `-f-semigroups`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/contravariant:statevar - You can disable the use of the `StateVar` package using `-f-StateVar`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
 dev-haskell/contravariant:tagged - You can disable the use of the `tagged` package on older versons of GHC using `-f-tagged`. Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
@@ -1632,6 +1632,8 @@ dev-haskell/tls:compat - Accept SSLv2 compatible handshake.
 dev-haskell/tls:network - Use the base network library.
 dev-haskell/transformers-base:orphaninstances - Build instances for orphan datatypes.
 dev-haskell/unix-compat:old-time - build against old-time package
+dev-haskell/uri-encode:network-uri - Get Network.URI from the network-uri package.
+dev-haskell/uri-encode:tools - Build executables.
 dev-haskell/uuagc:loag - Use MiniSat as external SAT-solver to schedule all Linear Ordered AGs
 dev-haskell/vector:boundschecks - Enable bounds checking
 dev-haskell/vector:internalchecks - Enable internal consistency checks at the cost of a significant performance penalty
@@ -7410,8 +7412,9 @@ sci-libs/vtk:xdmf2 - Support for xdmf2 formatted data
 sci-libs/xkaapi:blas - Kaapi BLAS tasks for PLASMA
 sci-libs/xkaapi:gpu - Build library for gpu threading
 sci-mathematics/agda:cpphs - Use cpphs instead of cpp.
+sci-mathematics/agda:debug - Enable debugging features that may slow Agda down.
+sci-mathematics/agda:enable-cluster-counting - Enable the --count-clusters flag. (If enable-cluster-counting is False, then the --count-clusters flag triggers an error message.)
 sci-mathematics/agda:stdlib - Install the standard library.
-sci-mathematics/agda-stdlib:ffi - Install agda-lib-ffi for compilation using the MAlonzo backend
 sci-mathematics/bertini:optimization - Accept upstream's choices for -O option.
 sci-mathematics/cgal:mpfi - Enable support for multiple recision interval arithmetic via sci-libs/mpfi
 sci-mathematics/cgal:ntl - Enable support for dev-libs/ntl
