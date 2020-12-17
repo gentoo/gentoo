@@ -286,12 +286,6 @@ sys-apps/hwdata-gentoo
 sys-apps/hwsetup
 sys-libs/libkudzu
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-18)
-# Depends on deprecated QtWebKit, dead upstream.
-# Alternatives: kde-apps/okular[chm], app-text/xchm
-# Removal in 30 days.
-app-text/kchmviewer
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-18)
 # Upstream has switched to aiobotocore.  It's a huge hack that requires
 # a very specific botocore version, currently 3 months old.  Given that
