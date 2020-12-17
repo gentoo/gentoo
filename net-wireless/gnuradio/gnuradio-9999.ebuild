@@ -16,7 +16,6 @@ if [[ ${PV} =~ "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
 	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
