@@ -12,7 +12,8 @@ DESCRIPTION="Collection manager based on KDE Frameworks"
 HOMEPAGE="https://tellico-project.org/"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	SRC_URI="https://tellico-project.org/files/${P}.tar.xz"
+	SRC_URI="https://tellico-project.org/files/${P}.tar.xz
+		https://dev.gentoo.org/~asturm/distfiles/${P}-no-khtml.patch.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -30,6 +31,7 @@ RDEPEND="
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	kde-frameworks/karchive:5
@@ -40,7 +42,6 @@ RDEPEND="
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/kcrash:5
 	kde-frameworks/kguiaddons:5
-	kde-frameworks/khtml:5
 	kde-frameworks/kiconthemes:5
 	kde-frameworks/kitemmodels:5
 	kde-frameworks/ki18n:5
@@ -70,6 +71,8 @@ DEPEND="${RDEPEND}"
 
 # tests need network access
 RESTRICT+=" test"
+
+PATCHES=( "${WORKDIR}/${P}-no-khtml.patch" )
 
 src_configure() {
 	local mycmakeargs=(

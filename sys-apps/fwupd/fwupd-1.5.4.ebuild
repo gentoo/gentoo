@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="agent amt dell gtk-doc elogind flashrom minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
@@ -55,14 +55,10 @@ CDEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	virtual/libelf:0=
 	virtual/udev
-	dell? (
-		>=sys-libs/libsmbios-2.4.0
-	)
+	dell? ( >=sys-libs/libsmbios-2.4.0 )
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
-	policykit? (
-		>=sys-auth/polkit-0.103
-	)
+	policykit? ( >=sys-auth/polkit-0.103 )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
@@ -92,7 +88,7 @@ PATCHES=(
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-	if use nvme; then
+	if use nvme ; then
 		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
 	fi
 }
