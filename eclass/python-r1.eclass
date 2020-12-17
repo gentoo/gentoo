@@ -547,16 +547,16 @@ python_gen_impl_dep() {
 # @CODE
 # || (
 #	(
-#		dev-lang/python:2.7
-#		dev-python/foo[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
-#		|| ( dev-python/bar[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
-#			dev-python/baz[python_targets_python2_7(-)?,python_single_target_python2_7(+)?] )
+#		dev-lang/python:3.7
+#		dev-python/foo[python_targets_python3_7(-),-python_single_target_python3_7(-)]
+#		|| ( dev-python/bar[python_targets_python3_7(-),-python_single_target_python3_7(-)]
+#			dev-python/baz[python_targets_python3_7(-),-python_single_target_python3_7(-)] )
 #	)
 #	(
-#		dev-lang/python:3.3
-#		dev-python/foo[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
-#		|| ( dev-python/bar[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
-#			dev-python/baz[python_targets_python3_3(-)?,python_single_target_python3_3(+)?] )
+#		dev-lang/python:3.8
+#		dev-python/foo[python_targets_python3_8(-),-python_single_target_python3_8(-)]
+#		|| ( dev-python/bar[python_targets_python3_8(-),-python_single_target_python3_8(-)]
+#			dev-python/baz[python_targets_python3_8(-),-python_single_target_python3_8(-)] )
 #	)
 # )
 # @CODE
@@ -571,7 +571,7 @@ python_gen_any_dep() {
 	_python_verify_patterns "${@}"
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
-			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
+			local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
 			_python_export "${i}" PYTHON_PKG_DEP
 
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
@@ -779,7 +779,7 @@ python_setup() {
 			# first check if the interpreter is installed
 			python_is_installed "${impl}" || continue
 			# then run python_check_deps
-			local PYTHON_USEDEP="python_targets_${impl}(-),python_single_target_${impl}(+)"
+			local PYTHON_USEDEP="python_targets_${impl}(-),-python_single_target_${impl}(-)"
 			python_check_deps || continue
 		fi
 
