@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake python-single-r1 virtualx xdg-utils desktop
+inherit cmake python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -16,7 +16,6 @@ if [[ ${PV} =~ "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
 	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -192,18 +191,18 @@ src_install() {
 	rm -f "${ED}"/usr/libexec/${PN}/grc_setup_freedesktop || die
 
 	# Install icons, menu items and mime-types for GRC
-	if use grc ; then
-		local fd_path="${S}/grc/scripts/freedesktop"
-		insinto /usr/share/mime/packages
-		doins "${fd_path}/${PN}-grc.xml"
+	#if use grc ; then
+	#	local fd_path="${S}/grc/scripts/freedesktop"
+	#	insinto /usr/share/mime/packages
+	#	doins "${fd_path}/${PN}-grc.xml"
 
-		domenu "${fd_path}/"*.desktop
-		doicon "${fd_path}/"*.png
-	fi
+	#	domenu "${fd_path}/"*.desktop
+	#	doicon "${fd_path}/"*.png
+	#fi
 
 	python_fix_shebang "${ED}"
 	# Remove incorrectly byte-compiled Python files and replace
-	find "${ED}"/usr/lib -name "*.py[co]" -exec rm {} \; || die
+	find "${ED}"/usr/lib* -name "*.py[co]" -exec rm {} \; || die
 	python_optimize
 }
 
