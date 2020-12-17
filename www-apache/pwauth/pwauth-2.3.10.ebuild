@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit base flag-o-matic pam toolchain-funcs
+inherit flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="A Unix Web Authenticator"
 HOMEPAGE="https://github.com/phokz/pwauth/tree/master/pwauth"
