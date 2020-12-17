@@ -8138,7 +8138,7 @@ dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/eventlet 0.26.1 0.30.0: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
-dev-python/exdown 0.7.0: Extract code blocks from markdown
+dev-python/exdown 0.7.1: Extract code blocks from markdown
 dev-python/execnet 1.7.1-r1: Rapid multi-Python deployment
 dev-python/executing 0.5.3: Get information about what a Python frame is currently doing
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
@@ -8447,7 +8447,7 @@ dev-python/mpdlcd 0.5.2: A small tool to display the MPD status on a LCDproc ser
 dev-python/mpi4py 3.0.3: Message Passing Interface for Python
 dev-python/mpmath 1.1.0: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.6.2 1.0.0 1.0.1: MessagePack (de)serializer for Python
-dev-python/mss 6.0.0: An ultra fast cross-platform multiple screenshots module in python using ctypes
+dev-python/mss 6.0.0 6.1.0: An ultra fast cross-platform multiple screenshots module in python using ctypes
 dev-python/multidict 5.0.0 5.1.0: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
@@ -8731,7 +8731,7 @@ dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 2.6.0: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
-dev-python/pyls-spyder 0.1.1: Spyder extensions for the python language server
+dev-python/pyls-spyder 0.1.1 0.3.0: Spyder extensions for the python language server
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdown-extensions 8.0.1: Extensions for Python Markdown.
 dev-python/pymdown-lexers 0_pre20180905: Additional lexers for use in Pygments
@@ -8832,7 +8832,7 @@ dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific or
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-regressions 2.0.1 2.0.2: Easy to use fixtures to write regression tests
+dev-python/pytest-regressions 2.0.2 2.1.1: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
@@ -8882,9 +8882,9 @@ dev-python/python-heatclient 2.2.1: OpenStack Orchestration API Client Library
 dev-python/python-iptables 1.0.0-r1: Python bindings for iptables
 dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
-dev-python/python-jsonrpc-server 0.3.4 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
+dev-python/python-jsonrpc-server 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.1.1: Client Library for OpenStack Identity
-dev-python/python-language-server 0.34.1 0.35.1-r1 0.36.1: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.35.1-r1 0.36.1 0.36.2: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
@@ -8958,7 +8958,7 @@ dev-python/pyzmq 19.0.2 20.0.0: Lightweight and super-fast messaging library bui
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5: Python bindings for QScintilla
-dev-python/qtawesome 1.0.1: Enables iconic fonts such as Font Awesome in PyQt
+dev-python/qtawesome 1.0.1 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.7.6 4.7.7 5.0.0 5.0.1: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
@@ -9094,7 +9094,7 @@ dev-python/sphinx-issues 1.2.0: A Sphinx extension for linking to your project's
 dev-python/sphinx-jinja 0.3.0: A sphinx extension to include jinja based templates into a sphinx doc
 dev-python/sphinx-multiversion 0.2.4: Add support for multiple versions to sphinx
 dev-python/sphinx-notfound-page 0.5: Create a custom 404 page with absolute URLs hardcoded.
-dev-python/sphinx-panels 0.4.1: A sphinx extension for creating panels in a grid layout
+dev-python/sphinx-panels 0.4.1 0.5.2: A sphinx extension for creating panels in a grid layout
 dev-python/sphinx-prompt 1.3.0: Sphinx directive to add unselectable prompt
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
@@ -9178,7 +9178,7 @@ dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs 
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
-dev-python/tikzplotlib 0.9.4: Convert matplotlib figures into TikZ/PGFPlots
+dev-python/tikzplotlib 0.9.6: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 1.1.0: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
@@ -17492,9 +17492,9 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.4.82 5.4.83 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.4.82 5.4.82-r1 5.4.83 5.4.83-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1 5.9.13 5.9.13-r1 5.9.14 5.9.14-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.240 4.4.246 4.4.247 4.4.248 4.9.240 4.9.246 4.9.247 4.9.248 4.14.202 4.14.209 4.14.211 4.14.212 4.19.152 4.19.160 4.19.162 4.19.163 5.4.72 5.4.80-r1 5.4.82 5.4.83 5.9.12 5.9.13 5.9.14 5.10.0 5.10.1: Full sources including the Gentoo patchset for the 5.10 kernel tree
+sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.4.82 5.4.83 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14 5.10.1: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.4.82 5.4.82-r1 5.4.83 5.4.83-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1 5.9.13 5.9.13-r1 5.9.14 5.9.14-r1 5.10.1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-sources 4.4.240 4.4.246 4.4.247 4.4.248 4.9.240 4.9.246 4.9.247 4.9.248 4.14.202 4.14.209 4.14.211 4.14.212 4.19.152 4.19.160 4.19.162 4.19.163 5.4.72 5.4.80-r1 5.4.82 5.4.83 5.4.84 5.9.12 5.9.13 5.9.14 5.9.15 5.10.0 5.10.1: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -17508,7 +17508,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4 5.9_p5 5.9_p6 5.9_p7 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 5.4.72_p20201022 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.4.83 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.4.83 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14 5.10.1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.84 5.9.15 5.10.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
