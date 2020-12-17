@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="elibc_glibc python"
 
 RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
-	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.3.1[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${RDEPEND}
