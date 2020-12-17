@@ -152,6 +152,28 @@ fi
 # python_targets_python2_7(-)?,python_targets_python3_4(-)?
 # @CODE
 
+# @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# An eclass-generated USE-dependency string for the currently tested
+# implementation. It is set locally for python_check_deps() call.
+#
+# The generated USE-flag list is compatible with packages using
+# python-single-r1 eclass. For python-r1 dependencies,
+# use PYTHON_USEDEP.
+#
+# Example use:
+# @CODE
+# python_check_deps() {
+# 	has_version "dev-python/bar[${PYTHON_SINGLE_USEDEP}]"
+# }
+# @CODE
+#
+# Example value:
+# @CODE
+# python_single_target_python3_7(-)
+# @CODE
+
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -507,9 +529,10 @@ python_gen_impl_dep() {
 # Generate an any-of dependency that enforces a version match between
 # the Python interpreter and Python packages. <dependency-block> needs
 # to list one or more dependencies with verbatim '${PYTHON_USEDEP}'
-# references (quoted!) that will get expanded inside the function.
-# Optionally, patterns may be specified to restrict the dependency
-# to a subset of Python implementations supported by the ebuild.
+# or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
+# expanded inside the function. Optionally, patterns may be specified
+# to restrict the dependency to a subset of Python implementations
+# supported by the ebuild.
 #
 # The patterns can be either fnmatch-style patterns (matched via bash
 # == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
@@ -524,12 +547,12 @@ python_gen_impl_dep() {
 # Example use:
 # @CODE
 # DEPEND="$(python_gen_any_dep '
-#	dev-python/foo[${PYTHON_USEDEP}]
+#	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
 #	|| ( dev-python/bar[${PYTHON_USEDEP}]
 #		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
 #
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_USEDEP}]" \
+#	has_version "dev-python/foo[${PYTHON_SINGLE_USEDEP}]" \
 #		&& { has_version "dev-python/bar[${PYTHON_USEDEP}]" \
 #			|| has_version "dev-python/baz[${PYTHON_USEDEP}]"; }
 # }
@@ -548,13 +571,13 @@ python_gen_impl_dep() {
 # || (
 #	(
 #		dev-lang/python:3.7
-#		dev-python/foo[python_targets_python3_7(-),-python_single_target_python3_7(-)]
+#		dev-python/foo[python_single_target_python3_7(-)]
 #		|| ( dev-python/bar[python_targets_python3_7(-),-python_single_target_python3_7(-)]
 #			dev-python/baz[python_targets_python3_7(-),-python_single_target_python3_7(-)] )
 #	)
 #	(
 #		dev-lang/python:3.8
-#		dev-python/foo[python_targets_python3_8(-),-python_single_target_python3_8(-)]
+#		dev-python/foo[python_single_target_python3_8(-)]
 #		|| ( dev-python/bar[python_targets_python3_8(-),-python_single_target_python3_8(-)]
 #			dev-python/baz[python_targets_python3_8(-),-python_single_target_python3_8(-)] )
 #	)
@@ -572,9 +595,11 @@ python_gen_any_dep() {
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
 			local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
+			local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
 			_python_export "${i}" PYTHON_PKG_DEP
 
 			local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+			i_depstr=${i_depstr//\$\{PYTHON_SINGLE_USEDEP\}/${PYTHON_SINGLE_USEDEP}}
 			# note: need to strip '=' slot operator for || deps
 			out="( ${PYTHON_PKG_DEP/:0=/:0} ${i_depstr} ) ${out}"
 		fi
@@ -780,6 +805,7 @@ python_setup() {
 			python_is_installed "${impl}" || continue
 			# then run python_check_deps
 			local PYTHON_USEDEP="python_targets_${impl}(-),-python_single_target_${impl}(-)"
+			local PYTHON_SINGLE_USEDEP="python_single_target_${impl}(-)"
 			python_check_deps || continue
 		fi
 
