@@ -5,7 +5,7 @@ DESCRIPTION=The Cyrus IMAP Server
 EAPI=7
 HOMEPAGE=https://www.cyrusimap.org/
 IUSE=afs backup calalarm caps clamav http kerberos ldap lmdb mysql nntp pam perl postgres replication +server sieve snmp sqlite ssl static-libs tcpd test xapian ssl
-KEYWORDS=~amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD-with-attribution GPL-2
 RDEPEND=sys-libs/zlib:0= dev-libs/libpcre:3 >=dev-libs/cyrus-sasl-2.1.13:2 dev-libs/jansson dev-libs/icu:0= sys-libs/e2fsprogs-libs afs? ( net-fs/openafs ) calalarm? ( dev-libs/libical:0= ) caps? ( sys-libs/libcap ) clamav? ( app-antivirus/clamav ) http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2 ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb:0= ) mysql? ( dev-db/mysql-connector-c:0= ) nntp? ( !net-nntp/leafnode ) pam? ( sys-libs/pam >=net-mail/mailbase-1 ) perl? ( dev-lang/perl:= ) postgres? ( dev-db/postgresql:* ) snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= ) ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] ) sqlite? ( dev-db/sqlite:3 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp:0=[tcpd=] ) ) xapian? ( >=dev-libs/xapian-1.4.0:0= ) acct-group/mail acct-user/cyrus !mail-mta/courier !net-mail/bincimap !net-mail/courier-imap !net-mail/uw-imap !app-arch/dump
 REQUIRED_USE=afs? ( kerberos ) backup? ( sqlite ) calalarm? ( http ) http? ( sqlite )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cyrusimap/cyrus-imapd/releases/download/cyrus-imapd-3.0.14/cyrus-imapd-3.0.14.tar.gz
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	226d8d2ff588bdfd7d188512dbdb189d	ssl-cert	6ba9452db3e1108ce9b4a017a005fd79	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=906141475697f86ff30724446e3ce5fd
+_md5_=e99b5e0171697e7a065c512d056bb1e5

@@ -15521,7 +15521,7 @@ net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/gnome-bluetooth 3.34.1 3.34.3: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.8.1.0-r1 3.8.1.0-r2 3.8.2.0 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.8.2.0 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.14.3 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
@@ -16948,7 +16948,7 @@ sys-apps/restorecond 2.9 3.0 3.1 9999: Daemon to watch for creation and set defa
 sys-apps/ripgrep 12.1.1: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 6.10-r1: Daemon to use hardware random number generators
-sys-apps/roccat-tools 5.7.0 5.9.0: Utility for advanced configuration of Roccat devices
+sys-apps/roccat-tools 5.7.0 5.9.0 5.9.0-r100: Utility for advanced configuration of Roccat devices
 sys-apps/rtl-entropy 0.1.2_p20180118-r1: An entropy generator using SDR peripherals, including rtl-sdr and BladeRF
 sys-apps/s390-tools 2.9.0 2.12.0: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.6.1.1 2.7.0.0 2.7.1.1 2.7.2.1 2.8.0.1 2.9.0.1 2.9.2.0: skarnet.org's small and secure supervision software suite

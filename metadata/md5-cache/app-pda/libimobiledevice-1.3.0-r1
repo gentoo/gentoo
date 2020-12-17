@@ -5,11 +5,11 @@ DESCRIPTION=Support library to communicate with Apple iPhone/iPod Touch devices
 EAPI=7
 HOMEPAGE=https://www.libimobiledevice.org/
 IUSE=doc gnutls libressl python static-libs python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 ~x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=app-pda/libplist-2.2.0:= >=app-pda/libusbmuxd-2.0.2:= gnutls? ( dev-libs/libgcrypt:0 >=dev-libs/libtasn1-1.1 >=net-libs/gnutls-2.2.0 ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] app-pda/libplist[python(-),python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] )
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 ) )
 SLOT=0/1.0-6
 SRC_URI=https://github.com/libimobiledevice/libimobiledevice/releases/download/1.3.0/libimobiledevice-1.3.0.tar.bz2
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	8d03325e7e3cf3e1465d9c32031e2517	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=223b04f2e02192efd0e6fc2fe233d99c
+_md5_=624b86a1aff6e8b1ef951227e858a5c5
