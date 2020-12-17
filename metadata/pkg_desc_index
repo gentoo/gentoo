@@ -17974,7 +17974,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.6.0 83.0 84.0: Firefox Web Browser
 www-client/firefox-bin 78.5.0 78.6.0 83.0 84.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.88: The web browser from Google
-www-client/google-chrome-beta 88.0.4324.41: The web browser from Google
+www-client/google-chrome-beta 88.0.4324.50: The web browser from Google
 www-client/google-chrome-unstable 89.0.4350.4: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18018,7 +18018,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.453: Adobe Flash Player
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 87.0.4280.88 88.0.4324.41_beta 89.0.4350.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 87.0.4280.88 88.0.4324.50_beta 89.0.4350.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
