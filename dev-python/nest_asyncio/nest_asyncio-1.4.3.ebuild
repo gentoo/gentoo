@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Patch asyncio to allow nested event loops"
-HOMEPAGE="https://github.com/erdewit/nest_asyncio"
+HOMEPAGE="https://github.com/erdewit/nest_asyncio/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

@@ -6,7 +6,7 @@ EAPI=7
 # Grab only the major version number.
 MAJOR_PV=${PV%%.*}
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
 #BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
@@ -22,8 +22,8 @@ LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-MYTHPLUGINS="mytharchive +mythbrowser mythgame \
-mythmusic mythnetvision +mythnews +mythweather mythzmserver mythzoneminder"
+MYTHPLUGINS="mytharchive mythbrowser mythgame \
+mythmusic mythnetvision mythnews mythweather mythzmserver mythzoneminder"
 IUSE="${MYTHPLUGINS} alsa cdda cdr exif fftw +hls ieee1394 libass +opengl raw +theora +vorbis +xml xvid"
 
 # Mythnetvision temporarily disabled by upstream - should be fixed soon.
@@ -98,7 +98,7 @@ RDEPEND="
 	mythnetvision? (
 		${PYTHON_DEPS}
 		dev-python/lxml
-		dev-python/oauth
+		dev-python/oauth2
 		dev-python/pycurl
 		dev-python/urllib3
 		=media-tv/mythtv-${MAJOR_PV}*[python]
@@ -128,9 +128,8 @@ DOC_CONTENTS="
 Mythgallery code moved to mythtv and is no longer a plugin in version 31.0.
 As of 3/23/2020, MythNetVision is disabled, work in progress.
 
-Common plugins are installed by default. Disable unneeded plugins individually with USE flags:
--mythbrowser -mythmusic -mythnetvision -mythnews -mythweather
-Additional plugins may be installed with USE flags mytharchive mythgame mythzmserver mythzoneminder
+No plugins are installed by default. Enable plugins individually with USE flags:
+mytharchive mythbrowser mythgame mythmusic mythnetvision mythnews mythweather mythzmserver mythzoneminder
 "
 
 src_configure() {
