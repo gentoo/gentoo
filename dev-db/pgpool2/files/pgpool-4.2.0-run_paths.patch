@@ -1,6 +1,6 @@
-diff -Naruw pgpool-II-4.2.0.orig/src/include/parser/pg_config_manual.h pgpool-II-4.2.0/src/include/parser/pg_config_manual.h
---- pgpool-II-4.2.0.orig/src/include/parser/pg_config_manual.h	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/include/parser/pg_config_manual.h	2020-12-16 21:39:27.178596628 -0500
+diff -Naruw a/src/include/parser/pg_config_manual.h b/src/include/parser/pg_config_manual.h
+--- a/src/include/parser/pg_config_manual.h
++++ b/src/include/parser/pg_config_manual.h
 @@ -228,7 +228,7 @@
   * support them yet.
   */
@@ -10,9 +10,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/include/parser/pg_config_manual.h pgpool-II
  #else
  #define DEFAULT_PGSOCKET_DIR ""
  #endif
-diff -Naruw pgpool-II-4.2.0.orig/src/include/pcp/pcp_stream.h pgpool-II-4.2.0/src/include/pcp/pcp_stream.h
---- pgpool-II-4.2.0.orig/src/include/pcp/pcp_stream.h	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/include/pcp/pcp_stream.h	2020-12-16 21:40:46.051752707 -0500
+diff -Naruw a/src/include/pcp/pcp_stream.h b/src/include/pcp/pcp_stream.h
+--- a/src/include/pcp/pcp_stream.h
++++ b/src/include/pcp/pcp_stream.h
 @@ -49,6 +49,6 @@
  extern int	pcp_write(PCP_CONNECTION * pc, void *buf, int len);
  extern int	pcp_flush(PCP_CONNECTION * pc);
@@ -21,9 +21,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/include/pcp/pcp_stream.h pgpool-II-4.2.0/sr
 +#define UNIX_DOMAIN_PATH "/run/pgpool"
  
  #endif							/* PCP_STREAM_H */
-diff -Naruw pgpool-II-4.2.0.orig/src/include/pool.h pgpool-II-4.2.0/src/include/pool.h
---- pgpool-II-4.2.0.orig/src/include/pool.h	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/include/pool.h	2020-12-16 21:42:50.054807364 -0500
+diff -Naruw a/src/include/pool.h b/src/include/pool.h
+--- a/src/include/pool.h
++++ b/src/include/pool.h
 @@ -69,16 +69,16 @@
  #define HBA_CONF_FILE_NAME "pool_hba.conf"
  
@@ -45,9 +45,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/include/pool.h pgpool-II-4.2.0/src/include/
  
  /* status file name */
  #define STATUS_FILE_NAME "pgpool_status"
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample pgpool-II-4.2.0/src/sample/pgpool.conf.sample
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample	2020-12-16 21:57:56.776102951 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample b/src/sample/pgpool.conf.sample
+--- a/src/sample/pgpool.conf.sample
++++ b/src/sample/pgpool.conf.sample
 @@ -39,10 +39,8 @@
  port = 9999
                                     # Port number
@@ -100,9 +100,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample pgpool-II-4.2.0/s
                                      # (change requires restart)
  
  
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-logical pgpool-II-4.2.0/src/sample/pgpool.conf.sample-logical
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-logical	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample-logical	2020-12-16 21:57:56.776102951 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample-logical b/src/sample/pgpool.conf.sample-logical
+--- a/src/sample/pgpool.conf.sample-logical
++++ b/src/sample/pgpool.conf.sample-logical
 @@ -38,10 +38,8 @@
  port = 9999
                                     # Port number
@@ -155,9 +155,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-logical pgpool-II
                                      # (change requires restart)
  
  
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-raw pgpool-II-4.2.0/src/sample/pgpool.conf.sample-raw
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-raw	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample-raw	2020-12-16 21:57:56.776102951 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample-raw b/src/sample/pgpool.conf.sample-raw
+--- a/src/sample/pgpool.conf.sample-raw
++++ b/src/sample/pgpool.conf.sample-raw
 @@ -39,10 +39,8 @@
  port = 9999
                                     # Port number
@@ -210,9 +210,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-raw pgpool-II-4.2
                                      # (change requires restart)
  
  # - Virtual IP control Setting -
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-replication pgpool-II-4.2.0/src/sample/pgpool.conf.sample-replication
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-replication	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample-replication	2020-12-16 21:57:56.776102951 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample-replication b/src/sample/pgpool.conf.sample-replication
+--- a/src/sample/pgpool.conf.sample-replication
++++ b/src/sample/pgpool.conf.sample-replication
 @@ -39,10 +39,8 @@
  port = 9999
                                     # Port number
@@ -265,9 +265,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-replication pgpoo
                                      # (change requires restart)
  
  
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-slony pgpool-II-4.2.0/src/sample/pgpool.conf.sample-slony
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-slony	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample-slony	2020-12-16 21:57:56.776102951 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample-slony b/src/sample/pgpool.conf.sample-slony
+--- a/src/sample/pgpool.conf.sample-slony
++++ b/src/sample/pgpool.conf.sample-slony
 @@ -39,10 +39,8 @@
  port = 9999
                                     # Port number
@@ -320,9 +320,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-slony pgpool-II-4
                                      # (change requires restart)
  
  # - Virtual IP control Setting -
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-snapshot pgpool-II-4.2.0/src/sample/pgpool.conf.sample-snapshot
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-snapshot	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample-snapshot	2020-12-16 21:57:56.779436277 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample-snapshot b/src/sample/pgpool.conf.sample-snapshot
+--- a/src/sample/pgpool.conf.sample-snapshot
++++ b/src/sample/pgpool.conf.sample-snapshot
 @@ -39,10 +39,8 @@
  port = 9999
                                     # Port number
@@ -375,9 +375,9 @@ diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-snapshot pgpool-I
                                      # (change requires restart)
  
  
-diff -Naruw pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-stream pgpool-II-4.2.0/src/sample/pgpool.conf.sample-stream
---- pgpool-II-4.2.0.orig/src/sample/pgpool.conf.sample-stream	2020-11-25 20:25:31.000000000 -0500
-+++ pgpool-II-4.2.0/src/sample/pgpool.conf.sample-stream	2020-12-16 21:57:56.779436277 -0500
+diff -Naruw a/src/sample/pgpool.conf.sample-stream b/src/sample/pgpool.conf.sample-stream
+--- a/src/sample/pgpool.conf.sample-stream
++++ b/src/sample/pgpool.conf.sample-stream
 @@ -39,10 +39,8 @@
  port = 9999
                                     # Port number

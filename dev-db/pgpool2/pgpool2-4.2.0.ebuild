@@ -15,7 +15,7 @@ SRC_URI="https://www.pgpool.net/download.php?f=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="doc libressl memcached pam ssl static-libs"
 
@@ -57,7 +57,7 @@ src_prepare() {
 src_configure() {
 	postgres-multi_foreach econf \
 		--disable-rpath \
-		--sysconfdir="${EROOT%/}/etc/${PN}" \
+		--sysconfdir="${EROOT}/etc/${PN}" \
 		--with-pgsql-includedir='/usr/include/postgresql-@PG_SLOT@' \
 		--with-pgsql-libdir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/$(get_libdir)" \
 		$(use_enable static-libs static) \
@@ -91,7 +91,7 @@ src_install() {
 
 	# mv some files that get installed to /usr/share/pgpool-II so that
 	# they all wind up in the same place
-	mv "${ED%/}/usr/share/${PN/2/-II}" "${ED%/}/usr/share/${PN}" || die
+	mv "${ED}/usr/share/${PN/2/-II}" "${ED}/usr/share/${PN}" || die
 
 	# One more thing: Evil la files!
 	find "${ED}" -name '*.la' -exec rm -f {} +
