@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="test? (
 	dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -29,10 +29,14 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests pytest
+distutils_enable_tests --install pytest
 distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
 
-python_test() {
-	distutils_install_for_testing
-	pytest -vv || die "Tests failed with ${EPYTHON}"
+python_prepare_all() {
+	# Does not work with the panda's version in ::gentoo
+	sed -i -e 's:test_non_numeric_data:_&:' \
+		-e 's:test_non_pandas_dataframe:_&:' \
+		tests/test_dataframe_regression.py || die
+
+distutils-r1_python_prepare_all
 }

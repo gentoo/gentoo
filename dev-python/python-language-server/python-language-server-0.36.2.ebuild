@@ -6,7 +6,6 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-
 inherit distutils-r1 optfeature
 
 DESCRIPTION="An implementation of the Language Server Protocol for Python"
@@ -15,42 +14,43 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
-BDEPEND="dev-python/versioneer[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/versioneer[${PYTHON_USEDEP}]
+	test? (
+		dev-python/autopep8[${PYTHON_USEDEP}]
+		dev-python/flaky[${PYTHON_USEDEP}]
+		>=dev-python/flake8-3.8.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+		>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
+		<dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		>=dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
+		<dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
+		>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pyflakes-2.2.0[${PYTHON_USEDEP}]
+		<dev-python/pyflakes-2.3.0[${PYTHON_USEDEP}]
+		>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
+		dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
+		>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
+		dev-python/yapf[${PYTHON_USEDEP}]
+)"
 
 RDEPEND="
-	>=dev-python/jedi-0.17.0[${PYTHON_USEDEP}]
+	>=dev-python/jedi-0.17.2[${PYTHON_USEDEP}]
 	<dev-python/jedi-0.18.0[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
-	>=dev-python/python-jsonrpc-server-0.3.2[${PYTHON_USEDEP}]
-	~dev-python/ujson-1.35[${PYTHON_USEDEP}]
+	>=dev-python/python-jsonrpc-server-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/ujson-3[${PYTHON_USEDEP}]
 "
-
-DEPEND="test? (
-	dev-python/autopep8[${PYTHON_USEDEP}]
-	>=dev-python/flake8-3.8.0[${PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
-	<dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/pandas[${PYTHON_USEDEP}]
-	>=dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
-	<dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
-	>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
-	dev-python/pyflakes[${PYTHON_USEDEP}]
-	dev-python/pylint[${PYTHON_USEDEP}]
-	dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
-	>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
-	dev-python/yapf[${PYTHON_USEDEP}]
-)"
 
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# remove pytest-cov dependencie
-	sed -i -e '16,18d' setup.cfg || die
+	# remove pytest-cov dep
+	sed -i -e '0,/addopts/I!d' setup.cfg || die
 
 	distutils-r1_python_prepare_all
 }
