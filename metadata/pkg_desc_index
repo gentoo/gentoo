@@ -10364,7 +10364,7 @@ dev-ruby/twitter 7.0.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 3.1.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9-r1 1.3.1 1.4.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 1.2.5 1.2.7 1.2.8 2.0.2 2.0.3: Daylight-savings aware timezone library
+dev-ruby/tzinfo 1.2.5 1.2.7 1.2.8 2.0.2 2.0.3 2.0.4: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
@@ -17969,7 +17969,7 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.5.0 78.6.0 83.0 84.0: Firefox Web Browser
+www-client/firefox 78.6.0 83.0 84.0: Firefox Web Browser
 www-client/firefox-bin 78.5.0 78.6.0 83.0 84.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.88: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.41: The web browser from Google
