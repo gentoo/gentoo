@@ -12,13 +12,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="|| (
-				(
-					x11-libs/gdk-pixbuf:2[X]
-					>=x11-libs/gdk-pixbuf-2.42.0:2
-				)
-				<x11-libs/gdk-pixbuf-2.42.0:2[X]
-			)
+RDEPEND="x11-libs/gdk-pixbuf-xlib
+	>=x11-libs/gdk-pixbuf-2.42.0:2
 	>=x11-libs/libdockapp-0.7:="
 DEPEND="${RDEPEND}"
 
