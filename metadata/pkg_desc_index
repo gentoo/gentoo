@@ -2358,7 +2358,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.22 1.24: A program (and preload library) to fake system date
 app-misc/dateutils 0.4.6 0.4.7 9999: command line date and time utilities
-app-misc/datovka 4.15.0 4.15.1: GUI to access the Czech data box e-government system
+app-misc/datovka 4.15.3: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20190826_p20200613: DDCControl monitor database
@@ -3620,7 +3620,7 @@ dev-embedded/pk2cmd 1.20: An application for working with the Microchip PicKit2 
 dev-embedded/platformio 5.0.1: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
-dev-embedded/rpi-eeprom 10.2_p1 10.3_p1: Updater for Raspberry Pi 4 bootloader and the VL805 USB controller
+dev-embedded/rpi-eeprom 10.2_p1 10.3_p1 11.0_p1: Updater for Raspberry Pi 4 bootloader and the VL805 USB controller
 dev-embedded/sdcc 3.8.0-r1 4.0.0 9999: Small device C compiler (for various microprocessors)
 dev-embedded/smdk-dltool 0.20-r4: Tool to communicate with Samsung SMDK boards
 dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM load files
@@ -14993,7 +14993,7 @@ net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 5.5.6-r1 6.0.0-r1 6.0.1: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.5_p1-r1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
-net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.34.0-r2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
 net-misc/asterisk 11.25.3-r1 13.34.0 13.35.0 13.36.0 13.37.0 16.12.0-r1 16.13.0 16.14.0: Asterisk: A Modular Open Source PBX System
@@ -16935,7 +16935,7 @@ sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13 0.15: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 5.1.0-r2: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
-sys-apps/qcontrol 0.4.2-r1: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
+sys-apps/qcontrol 0.4.2-r1 0.4.2-r100: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
 sys-apps/qdirstat 1.7: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
 sys-apps/razercfg 0.39-r2 0.42: Utility for advanced configuration of Razer mice
@@ -17986,8 +17986,8 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 73.0.3856.284-r1: A fast and secure web browser
-www-client/opera-beta 72.0.3815.49 72.0.3815.86 72.0.3815.133: A fast and secure web browser
-www-client/opera-developer 74.0.3904.0: A fast and secure web browser
+www-client/opera-beta 73.0.3856.283: A fast and secure web browser
+www-client/opera-developer 74.0.3904.0-r1: A fast and secure web browser
 www-client/otter 1.0.01-r1 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.0 1.14.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
