@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="github">warner/python-versioneer</remote-id>
+    <remote-id type="github">python-versioneer/python-versioneer</remote-id>
     <remote-id type="pypi">versioneer</remote-id>
   </upstream>
 </pkgmetadata>
