@@ -13,7 +13,7 @@ SRC_URI="http://www.dnsjava.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 RESTRICT="test"
 
 RDEPEND=">=virtual/jre-1.6"
