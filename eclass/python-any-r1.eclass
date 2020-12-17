@@ -131,20 +131,19 @@ EXPORT_FUNCTIONS pkg_setup
 # An eclass-generated USE-dependency string for the currently tested
 # implementation. It is set locally for python_check_deps() call.
 #
-# The generate USE-flag list is compatible with packages using python-r1,
-# python-single-r1 and python-distutils-ng eclasses. It must not be used
-# on packages using python.eclass.
+# The generate USE-flag list is compatible with packages using python-r1
+# eclass. It must not be used on packages using other eclasses.
 #
 # Example use:
 # @CODE
 # python_check_deps() {
-#	has_version "dev-python/foo[${PYTHON_USEDEP}]"
+# 	has_version "dev-python/foo[${PYTHON_USEDEP}]"
 # }
 # @CODE
 #
 # Example value:
 # @CODE
-# python_targets_python2_7(-)?,python_single_target_python2_7(+)?
+# python_targets_python3_7(-),-python_single_target_python3_7(-)
 # @CODE
 
 _python_any_set_globals() {
@@ -213,16 +212,16 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # @CODE
 # || (
 #	(
-#		dev-lang/python:2.7
-#		dev-python/foo[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
-#		|| ( dev-python/bar[python_targets_python2_7(-)?,python_single_target_python2_7(+)?]
-#			dev-python/baz[python_targets_python2_7(-)?,python_single_target_python2_7(+)?] )
+#		dev-lang/python:3.7
+#		dev-python/foo[python_targets_python3_7(-),-python_single_target_python3_7(-)]
+#		|| ( dev-python/bar[python_targets_python3_7(-),-python_single_target_python3_7(-)]
+#			dev-python/baz[python_targets_python3_7(-),-python_single_target_python3_7(-)] )
 #	)
 #	(
-#		dev-lang/python:3.3
-#		dev-python/foo[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
-#		|| ( dev-python/bar[python_targets_python3_3(-)?,python_single_target_python3_3(+)?]
-#			dev-python/baz[python_targets_python3_3(-)?,python_single_target_python3_3(+)?] )
+#		dev-lang/python:3.8
+#		dev-python/foo[python_targets_python3_8(-),-python_single_target_python3_8(-)]
+#		|| ( dev-python/bar[python_targets_python3_8(-),-python_single_target_python3_8(-)]
+#			dev-python/baz[python_targets_python3_8(-),-python_single_target_python3_8(-)] )
 #	)
 # )
 # @CODE
@@ -234,7 +233,7 @@ python_gen_any_dep() {
 
 	local i PYTHON_PKG_DEP out=
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
+		local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
 		_python_export "${i}" PYTHON_PKG_DEP
 
 		local i_depstr=${depstr//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
@@ -268,7 +267,7 @@ _python_EPYTHON_supported() {
 	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
 		if python_is_installed "${i}"; then
 			if declare -f python_check_deps >/dev/null; then
-				local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
+				local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
 				python_check_deps
 				return ${?}
 			fi
