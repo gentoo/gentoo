@@ -19,24 +19,34 @@ depend() {
 }
 
 start_pre() {
-	if [ ! -f "${config_file}" ] ; then
-		eerror "Please create a ${config_file} config file."
-		return 1
-	fi
-
 	if ${DHCP4:-false} ; then
+		if [ ! -f "${dhcp4_config}" ] ; then
+			eerror "Please create a ${dhcp4_config} config file."
+			return 1
+		fi
+
 		if ! ${dhcp4_command} -t ${dhcp4_config} 1>/dev/null 2>/dev/null ; then
 			eerror "Error in config file ${dhcp4_config}"
 			return 1
 		fi
 	fi
 	if ${DHCP6:-false} ; then
+		if [ ! -f "${dhcp6_config}" ] ; then
+			eerror "Please create a ${dhcp6_file} config file."
+			return 1
+		fi
+
 		if ! ${dhcp6_command} -t ${dhcp6_config} 1>/dev/null 2>/dev/null ; then
 			eerror "Error in config file ${dhcp6_config}"
 			return 1
 		fi
 	fi
 	if ${DDNS:-false} ; then
+		if [ ! -f "${ddns_config}" ] ; then
+			eerror "Please create a ${ddns_config} config file."
+			return 1
+		fi
+
 		if ! ${ddns_command} -t ${ddns_config} 1>/dev/null 2>/dev/null ; then
 			eerror "Error in config file ${ddns_config}"
 			return 1
