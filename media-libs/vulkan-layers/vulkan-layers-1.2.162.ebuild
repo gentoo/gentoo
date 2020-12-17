@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}"/${MY_PN}-${PV}
 fi
 
@@ -27,8 +27,8 @@ IUSE="wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
 DEPEND="${PYTHON_DEPS}
-	>=dev-util/glslang-10.11.0.0_pre20200924:=[${MULTILIB_USEDEP}]
-	>=dev-util/spirv-tools-2020.5_pre20201107:=[${MULTILIB_USEDEP}]
+	>=dev-util/glslang-10.11.0.0_pre20201216:=[${MULTILIB_USEDEP}]
+	>=dev-util/spirv-tools-2020.6:=[${MULTILIB_USEDEP}]
 	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
