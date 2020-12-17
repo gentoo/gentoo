@@ -34,13 +34,8 @@ COMMON_DEPEND="
 	x11-libs/libXxf86vm
 	caps? ( sys-libs/libcap )
 	gdk-pixbuf? (
-		|| (
-			(
-				x11-libs/gdk-pixbuf-xlib
-				>=x11-libs/gdk-pixbuf-2.42.0:2
-			)
-			<x11-libs/gdk-pixbuf-2.42.0:2[X]
-		)
+		x11-libs/gdk-pixbuf-xlib
+		>=x11-libs/gdk-pixbuf-2.42.0:2
 	)
 	gtk? ( x11-libs/gtk+:2 )
 	jpeg? ( virtual/jpeg:0 )
