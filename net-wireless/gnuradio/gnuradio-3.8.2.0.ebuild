@@ -119,6 +119,7 @@ PATCHES=(
 	"${FILESDIR}/gnuradio-3.8.2.0-lamda-gr-uhd.patch"
 	"${FILESDIR}/gnuradio-3.8.2.0-lamda-most-components.patch"
 	"${FILESDIR}/gnuradio-3.8.2.0-lamda-set-msg-handlers.patch"
+	"${FILESDIR}/gnuradio-3.8.2.0-3967.patch"
 )
 
 src_prepare() {
