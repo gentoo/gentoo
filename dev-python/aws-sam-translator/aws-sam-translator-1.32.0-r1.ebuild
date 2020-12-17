@@ -7,8 +7,9 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
 DESCRIPTION="A library that transform SAM templates into AWS CloudFormation templates"
-HOMEPAGE="https://github.com/awslabs/serverless-application-model https://pypi.org/project/aws-sam-translator/"
-SRC_URI="https://github.com/awslabs/serverless-application-model/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/aws/serverless-application-model
+	https://pypi.org/project/aws-sam-translator/"
+SRC_URI="https://github.com/aws/serverless-application-model/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/serverless-application-model-${PV}"
 
 LICENSE="Apache-2.0"
