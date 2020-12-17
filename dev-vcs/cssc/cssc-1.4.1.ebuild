@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${CSSC_P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/cssc/"
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 IUSE="test valgrind"
 RESTRICT="!test? ( test )"
