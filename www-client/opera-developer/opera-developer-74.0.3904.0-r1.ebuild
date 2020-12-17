@@ -93,12 +93,12 @@ src_install() {
 	# move to /opt, bug #573052
 	mkdir -p "${OPERA_HOME%${PN}}"
 	mv "usr/lib/x86_64-linux-gnu/${PN}" "${OPERA_HOME%${PN}}" || die
-	rm -rf "usr/lib" || die
+	rm -r "usr/lib" || die
 
 	# disable auto update
 	rm "${OPERA_HOME}/${PN%-*}_autoupdate"{,.licenses,.version} || die
 
-	rm -rf "usr/share/lintian" || die
+	rm -r "usr/share/lintian" || die
 
 	# fix docs
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
@@ -115,19 +115,20 @@ src_install() {
 	popd > /dev/null || die
 
 	# setup opera symlink
-	rm -f "usr/bin/${PN}" || die
+	rm "usr/bin/${PN}" || die
 	dosym "../../${OPERA_HOME}/${PN}" "/usr/bin/${PN}"
 
 	# install proprietary codecs
-	rm -f "resources/ffmpeg_preload_config.json" || die
+	rm "${OPERA_HOME}/resources/ffmpeg_preload_config.json" || die
 	if use proprietary-codecs; then
 		mv lib_extra "${OPERA_HOME}"
 	fi
 
 	# symlink widevine
-	rm -f "resources/widevine_config.json" || die
+	rm "${OPERA_HOME}/resources/widevine_config.json" || die
 	if use widevine; then
-		dosym "../../usr/$(get_libdir)/chromium-browser/WidevineCdm" "${OPERA_HOME}/WidevineCdm"
+		echo "[\"${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm\"]" > \
+			"${OPERA_HOME}/resources/widevine_config.json" || die
 	fi
 
 	# pax mark opera, bug #562038
