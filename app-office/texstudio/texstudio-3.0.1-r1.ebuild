@@ -3,13 +3,15 @@
 
 EAPI=7
 
-inherit prefix qmake-utils xdg-utils desktop
+inherit desktop prefix qmake-utils xdg
 
-MY_PV="3.0.0alpha6"
-
+# NOTE: Drop -r1 from SRC_URI on bump!
+# #740220
+MY_PV="${PV/_/}"
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
-SRC_URI="https://github.com/texstudio-org/texstudio/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/texstudio-org/texstudio/archive/${MY_PV}.tar.gz -> ${P}-r1.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -45,8 +47,6 @@ DEPEND="${COMMON_DEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}-${MY_PV}
-
 src_prepare() {
 	default
 
@@ -72,14 +72,4 @@ src_install() {
 		newicon -s ${i} utilities/${PN}${i}.png ${PN}.png
 	done
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
