@@ -19,7 +19,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=("${FILESDIR}"/${PN}-1.18.1-gcc-10.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.18.1-gcc-10.patch
+	"${FILESDIR}"/${PN}-1.18.1-gettext.patch #696838
+)
 
 src_prepare() {
 	default
