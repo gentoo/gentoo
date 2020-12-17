@@ -3,19 +3,19 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
-
 POSTGRES_COMPAT=( 9.{5..6} {10..13} )
 
-inherit autotools git-r3 postgres-multi
+inherit autotools postgres-multi
+
+MY_P="${PN/2/-II}-${PV}"
 
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="https://www.pgpool.net/"
-SRC_URI=""
+SRC_URI="https://www.pgpool.net/download.php?f=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="doc libressl memcached pam ssl static-libs"
 
@@ -32,12 +32,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	virtual/pkgconfig
-	doc? (
-		 app-text/openjade
-		 dev-libs/libxml2
-		 dev-libs/libxslt
-	 )
 "
+
+S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
 	postgres_new_user pgpool
@@ -75,7 +72,6 @@ src_compile() {
 	# of that directory built, too.
 	postgres-multi_foreach emake
 	postgres-multi_foreach emake -C src/sql
-	use doc && postgres-multi_forbest emake DESTDIR="${D}" -C doc
 }
 
 src_install() {
@@ -90,7 +86,8 @@ src_install() {
 
 	# Documentation!
 	dodoc NEWS TODO
-	use doc && postgres-multi_forbest emake DESTDIR="${D}" -C doc install
+	doman doc/src/sgml/man{1,8}/*
+	use doc && dodoc -r doc/src/sgml/html
 
 	# mv some files that get installed to /usr/share/pgpool-II so that
 	# they all wind up in the same place
