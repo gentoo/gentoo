@@ -40,7 +40,7 @@ multilib_src_configure() {
 		append-cflags -Wa,--divide
 	fi
 	local myeconfargs=(
-		CC_FOR_BUILD=$(tc-getBUILD_CC)
+		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		--enable-noexecstack
 		--disable-static
 		$(use_enable o-flag-munging O-flag-munging)
