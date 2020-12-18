@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,10 +15,10 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="
+	app-cdr/cdrtools
 	app-cdr/dvd+rw-tools
 	dev-lang/tcl:0
 	dev-lang/tk:0
-	virtual/cdrtools
 "
 
 S=${WORKDIR}/tkdvd
