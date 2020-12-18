@@ -5074,7 +5074,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 3.0.4: Free Pascal Compiler
 dev-lang/gdl 1.0.0_rc3: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
-dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1: The Glasgow Haskell Compiler
+dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1 8.10.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.14.12 1.14.13-r1 1.15.5 1.15.6-r1 9999: A concurrent garbage collected and typesafe programming language
@@ -8707,7 +8707,7 @@ dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 9999: Python bindings for SDL multi
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.3.0 1.4.0: Python bindings for libgit2
-dev-python/pyglet 1.5.7-r1 1.5.10 1.5.11: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.5.7-r1 1.5.10 1.5.11 1.5.13: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.2 2.7.3: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
@@ -9118,7 +9118,7 @@ dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.2.0: The Scientific Python Development Environment
-dev-python/spyder-kernels 1.10.0: Kernels used by spyder on its ipython console
+dev-python/spyder-kernels 1.10.0 1.10.1: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
 dev-python/spyder-notebook 0.3.1: Jupyter notebook integration with Spyder
@@ -17959,7 +17959,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 87.0.4280.88 88.0.4324.41 89.0.4350.4: Open-source version of Google Chrome web browser
+www-client/chromium 87.0.4280.88 88.0.4324.50 89.0.4350.4: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
