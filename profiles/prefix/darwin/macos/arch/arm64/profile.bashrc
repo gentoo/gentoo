@@ -3,7 +3,7 @@
 
 pre_src_configure() {
 	# catch when multiple pkgs are in one ebuild
-	cd "${WORKDIR}"
+	pushd "${WORKDIR}" > /dev/null
 
 	# macOS Big Sur (11.x, darwin20) supports Apple Silicon (arm64),
 	# which config.sub currently doesn't understand about.  It is,
@@ -18,4 +18,6 @@ pre_src_configure() {
 		find . -name "config.sub" | \
 			xargs sed -i -e 's/ aarch64 / aarch64 | arm64 /'
 	fi
+
+	popd > /dev/null
 }
