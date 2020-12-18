@@ -29,7 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	net-libs/libiio:=
 	dev-libs/gmp
-	sci-libs/volk
+	sci-libs/volk:=
 	net-libs/libad9361-iio:="
 
 DEPEND="${RDEPEND}
