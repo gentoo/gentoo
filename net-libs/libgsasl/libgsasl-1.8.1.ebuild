@@ -25,7 +25,8 @@ RDEPEND="${DEPEND}
 	!net-misc/gsasl"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.8.1-gss-extra.patch"
+	"${FILESDIR}"/${PN}-1.8.1-gss-extra.patch
+	"${FILESDIR}"/${PN}-1.8.1-ac-270.patch
 )
 
 src_prepare() {
