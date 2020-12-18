@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-18)
+# Abandoned in 2008.  No reverse dependencies left.
+# Removal in 30 days.  Bug #652192.
+dev-libs/ustr
+
 # Jack Todaro <solpeth@posteo.org> (2020-12-17)
 # Old and redundant package. Has not been kept
 # up to date and no longer works. Masked for removal.
@@ -114,18 +119,6 @@ media-plugins/kodi-screensaver-rsxs
 net-wireless/qradiolink
 net-libs/liba53
 app-emulation/qt-virt-manager
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-03)
-# Explicit namespace support was necessary for Python 2 only.  Empty
-# directories work best for Python 3.
-# Removal in 14 days.
-dev-python/backports
-dev-python/namespace-jaraco
-
-# Aaron Bauman <bman@gentoo.org> (2020-12-02)
-# Deprecated. Functionality is native to dev-python/pytest now
-# Removal in 14 days
-dev-python/pytest-catchlog
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-01)
 # Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
