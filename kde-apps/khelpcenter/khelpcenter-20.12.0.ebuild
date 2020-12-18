@@ -16,10 +16,9 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
-BDEPEND="virtual/pkgconfig"
 DEPEND="
 	dev-libs/grantlee:5
-	dev-libs/gumbo
+	dev-libs/libxml2
 	dev-libs/xapian:=
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
