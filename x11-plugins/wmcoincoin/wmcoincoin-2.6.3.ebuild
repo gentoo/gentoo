@@ -9,7 +9,7 @@ SRC_URI="http://hules.free.fr/${PN}/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 IUSE="nls xinerama"
 
 RDEPEND="x11-libs/gtk+:2
