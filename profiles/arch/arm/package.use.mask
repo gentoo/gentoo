@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
+# net-wireless/libxtrx et all needs testing
+net-wireless/gr-osmosdr xtrx
+
+# Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # dev-python/thrift not keyworded
 net-wireless/gnuradio ctrlport
 
