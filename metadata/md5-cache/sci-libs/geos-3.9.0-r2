@@ -1,5 +1,5 @@
 BDEPEND=doc? ( app-doc/doxygen )
-DEFINED_PHASES=compile configure install prepare
+DEFINED_PHASES=compile configure install
 DESCRIPTION=Geometry engine library for Geographic Information Systems
 EAPI=7
 HOMEPAGE=https://trac.osgeo.org/geos/
@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-
 LICENSE=LGPL-2.1
 RESTRICT=test
 SLOT=0
-SRC_URI=http://download.osgeo.org/geos/geos-3.9.0.tar.bz2
-_md5_=0b8e60c40b3a57299ba066d88b604a42
+SRC_URI=https://download.osgeo.org/geos/geos-3.9.0.tar.bz2 -> geos-3.9.0-r1.tar.bz2
+_md5_=d09fa4f11eaad0c805e19b6c1ae66655
