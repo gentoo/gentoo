@@ -9,7 +9,7 @@ HOMEPAGE="https://trac.osgeo.org/geos/"
 # Arrow can be removed at next version bump. Upstream mistakenly
 # released rc1 as 3.9.0. So, we need(ed) a new Manifest entry to get the
 # real 3.9.0
-SRC_URI="http://download.osgeo.org/geos/${PN}-${PV}.tar.bz2 -> ${PN}-${PV}-r1.tar.bz2"
+SRC_URI="https://download.osgeo.org/geos/${PN}-${PV}.tar.bz2 -> ${PN}-${PV}-r1.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
