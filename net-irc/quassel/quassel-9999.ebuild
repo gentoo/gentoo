@@ -58,7 +58,7 @@ GUI_DEPEND="
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
 "
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
 	sys-libs/zlib
@@ -71,7 +71,10 @@ DEPEND="
 		X? ( ${GUI_DEPEND} )
 	)
 "
-RDEPEND="${DEPEND}"
+
+DEPEND="${RDEPEND}
+	dev-libs/boost
+"
 BDEPEND="
 	dev-qt/linguist-tools:5
 	kde-frameworks/extra-cmake-modules
