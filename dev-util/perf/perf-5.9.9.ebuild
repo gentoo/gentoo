@@ -31,7 +31,7 @@ SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit clang crypt debug +demangle +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib"
 # TODO babeltrace
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
