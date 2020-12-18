@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="IEEE 802.15.4 ZigBee Transceiver"
 HOMEPAGE="https://github.com/bastibl/gr-ieee802-15-4"
@@ -28,7 +28,7 @@ RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
 	')
 	dev-libs/gmp
-	sci-libs/volk
+	sci-libs/volk:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-lang/swig:0"
@@ -41,7 +41,7 @@ src_prepare() {
 	sed -i '/${CPPUNIT_INCLUDE_DIRS}/d' CMakeLists.txt
 	sed -i '/${CPPUNIT_LIBRARY_DIRS}/d' CMakeLists.txt
 	sed -i '/GR_PKG_DOC_DIR/d' CMakeLists.txt
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -49,10 +49,10 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DGR_PKG_DOC_DIR="/usr/share/doc/${P}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize "${ED}/$(python_get_sitedir)"
 }

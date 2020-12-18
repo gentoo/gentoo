@@ -21,7 +21,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="+audio +alsa +analog +digital channels doc dtv examples fec +filter grc jack modtool oss performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet zeromq"
+IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc jack modtool oss performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet zeromq"
 
 #RESTRICT="!test? ( test )"
 #Tests are known broken right now
@@ -51,8 +51,9 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	sci-libs/fftw:3.0=
 	sci-libs/mpir
-	sci-libs/volk
+	sci-libs/volk:=
 	alsa? ( media-libs/alsa-lib:= )
+	ctrlport? ( $(python_gen_cond_dep 'dev-python/thrift[${PYTHON_USEDEP}]') )
 	fec? (
 		sci-libs/gsl
 		dev-python/scipy
@@ -100,7 +101,7 @@ RDEPEND="${PYTHON_DEPS}
 #That's right, it can't build if gnuradio 3.7 is installed
 #Both due to build failure, and then file collision due to bundled volk
 DEPEND="${RDEPEND}
-	!<net-wireless/gnuradio-3.8
+	!!<net-wireless/gnuradio-3.8
 	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
 	virtual/pkgconfig
@@ -144,6 +145,7 @@ src_configure() {
 		-DENABLE_GR_AUDIO=ON
 		-DENABLE_GR_ANALOG="$(usex analog)"
 		-DENABLE_GR_CHANNELS="$(usex channels)"
+		-DENABLE_GR_CTRLPORT="$(usex ctrlport)"
 		-DENABLE_GR_DIGITAL="$(usex digital)"
 		-DENABLE_DOXYGEN="$(usex doc)"
 		-DENABLE_GR_DTV="$(usex dtv)"
