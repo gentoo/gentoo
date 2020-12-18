@@ -20,6 +20,7 @@ arm-linux
 arm64-linux
 ppc64-linux
 x86-linux
+arm64-macos
 ppc-macos
 x86-macos
 x64-macos
@@ -31,4 +32,3 @@ x86-solaris
 x64-winnt
 x86-winnt
 x64-cygwin
-x86-cygwin
