@@ -32,7 +32,7 @@ DEPEND="${PYTHON_DEPS}
 		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
 	')
 	dev-libs/gmp
-	sci-libs/volk
+	sci-libs/volk:=
 	=net-wireless/gnuradio-3.8*:=[${PYTHON_SINGLE_USEDEP}]
 "
 RDEPEND="${DEPEND}
