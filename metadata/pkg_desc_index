@@ -2020,7 +2020,7 @@ app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
 app-emulation/qemu 5.1.0-r2 5.1.0-r3 5.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
-app-emulation/qemu-riscv64-bin 3.1.0-r4 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
+app-emulation/qemu-riscv64-bin 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
 app-emulation/reg 0.16.1: Docker registry v2 command line client
 app-emulation/runc 1.0.0_rc10-r1: runc container cli tools
@@ -2414,7 +2414,7 @@ app-misc/gnote 3.36.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23 1.0.26 1.0.27: A simple JIRA commandline client in Go
-app-misc/golly 3.4 4.0: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 4.0: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.3: Genealogical Research and Analysis Management Programming System
@@ -2463,7 +2463,7 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
-app-misc/mc 4.8.24 4.8.25 4.8.25-r1 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.25 4.8.25-r1 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 24: Repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
@@ -10665,7 +10665,7 @@ dev-util/devhelp 3.36.2: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 162 163: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 163: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10683,7 +10683,7 @@ dev-util/dropwatch 1.4_p20150706: A utility to interface to the kernel to monito
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.17 1.17-r1 1.18 1.19: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2 2.1.3: diff-like program operating at word level instead of line level
-dev-util/edb-debugger 1.2.0 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
+dev-util/edb-debugger 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
 dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -10925,7 +10925,7 @@ dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS re
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.14.5 2.16.3: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.12.1: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.2 2.30.0_rc0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
@@ -16891,7 +16891,7 @@ sys-apps/mlxup-bin 4.13.0: Mellanox Update and Query Utility
 sys-apps/moreutils 0.63 0.64: a collection of tools that nobody thought to write when Unix was young
 sys-apps/most 5.0.0a-r1 5.1.0: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.2 1.4.4 1.4.5.1: GTK+ based UDisks2 frontend
-sys-apps/mouseemu 0.12 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
+sys-apps/mouseemu 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
 sys-apps/msr-tools 1.3: Utilities allowing the read and write of CPU model-specific registers (MSR)
 sys-apps/mtree 1.0.4: Directory hierarchy mapping tool from FreeBSD
 sys-apps/nawk 20121220-r3 20180827: Brian Kernighan's pattern scanning and processing language
@@ -16904,7 +16904,7 @@ sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec sys
 sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/opal-utils 6.5.2 6.6.2 6.7: OPAL firmware utilities
+sys-apps/opal-utils 6.6.2 6.7: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200529 20201015: osinfo database files
@@ -16958,7 +16958,7 @@ sys-apps/sed 4.7 4.8: Super-useful stream editor
 sys-apps/selinux-python 3.1-r1 9999: SELinux core utilities
 sys-apps/semodule-utils 3.1 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
-sys-apps/servicelog 1.1.14 1.1.15: Provides utilities for logging service-related events
+sys-apps/servicelog 1.1.15: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
@@ -17134,7 +17134,7 @@ sys-block/whdd 2.2 3.0 3.0.1 9999: Diagnostic and recovery tool for block device
 sys-block/zram-init 8.1 8.1-r1 10.5 9999: Scripts to support compressed swap devices or ramdisks with zRAM
 sys-boot/aboot 1.0_pre20040408-r3: Alpha Linux boot loader for SRM
 sys-boot/arcload 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems
-sys-boot/bootcreator 1.1 1.2: Simple generator for Forth based BootMenu scripts for Pegasos machines
+sys-boot/bootcreator 1.2: Simple generator for Forth based BootMenu scripts for Pegasos machines
 sys-boot/colo 1.22: CObalt LOader - Modern bootloader for Cobalt MIPS machines
 sys-boot/cromwell 2.40-r3: Xbox boot loader
 sys-boot/cromwell-bin 2.40-r1: Xbox boot loader precompiled binaries from xbox-linux.org
@@ -17152,14 +17152,14 @@ sys-boot/mokutil 0.3.0_p20170404: The utility to manipulate machines owner keys 
 sys-boot/netboot 0.10.2-r2: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
 sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
-sys-boot/palo 2.12-r1 2.13 2.14 9999: PALO : PArisc Linux Loader
+sys-boot/palo 2.12-r1 2.14 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.3: Plymouth plugin for OpenRC
 sys-boot/raspberrypi-firmware 1.20190925 1.20201022 1.20201201 9999: Raspberry Pi (all versions) bootloader and GPU firmware
 sys-boot/refind 0.11.4 0.12.0-r1: The UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
-sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829 1.4.14_p20200602: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
+sys-boot/silo 1.4.14_p20170829 1.4.14_p20200602: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 6.04_pre1 6.04_pre1-r2: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
@@ -17296,7 +17296,7 @@ sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error r
 sys-devel/rust-std 1.46.0 1.47.0 1.48.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.28 0.5.31: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
-sys-devel/sparse 0.6.1 0.6.2 9999: C semantic parser
+sys-devel/sparse 0.6.2 9999: C semantic parser
 sys-devel/ucpp 1.3.4 1.3.5: Library for preprocessing C compliant to ISO-C99
 sys-fabric/dapl 2.0.40: OpenIB - Direct Access Provider Library
 sys-fabric/ibacm 1.0.8: IB CM pre-connection service application
@@ -17418,7 +17418,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6_p14: HFS FS Access utils
 sys-fs/inotify-tools 3.20.1 3.20.2.2 3.20.11.0: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.18.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15-r1: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5-r1: A FUSE and libmtp based filesystem for accessing MTP devices
@@ -17564,7 +17564,7 @@ sys-libs/libunwind 1.4.0 1.5.0: Portable and efficient API to determine the call
 sys-libs/liburing 0.6 0.7-r1 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
-sys-libs/libvpd 2.2.6 2.2.8: Library implementation for listing Vital Product Data
+sys-libs/libvpd 2.2.8: Library implementation for listing Vital Product Data
 sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1.9999 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
@@ -17592,7 +17592,7 @@ sys-libs/talloc 2.3.1: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: A simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
-sys-libs/timezone-data 2020a 2020d: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2020d: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2 1.2.11-r3: Standard (de)compression library
@@ -18034,7 +18034,7 @@ www-servers/nginx-unit 1.20.0 1.21.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.12.5-r1 4.3.4-r1 5.0.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.12.5-r1 4.3.4-r1 4.3.7 5.0.4 5.1.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
