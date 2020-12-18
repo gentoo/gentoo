@@ -16,7 +16,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~x64-cygwin ~x86-cygwin"
+KEYWORDS="~x64-cygwin"
 IUSE=""
 
 DEPEND=""
