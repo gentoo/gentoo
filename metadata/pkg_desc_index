@@ -2181,7 +2181,7 @@ app-i18n/ibus-table-chinese 1.8.2 1.8.3: Chinese tables for IBus-Table
 app-i18n/ibus-table-extraphrase 1.3.9.20110826: Chinese extra phrases for IBus-Table
 app-i18n/ibus-table-latin 1.2.0.20100305: Latin tables for IBus-Table
 app-i18n/ibus-table-others 1.3.9 1.3.11: Various tables for IBus-Table
-app-i18n/ibus-typing-booster 2.9.7 2.10.1: Completion input method for IBus
+app-i18n/ibus-typing-booster 2.10.1 2.10.2: Completion input method for IBus
 app-i18n/ibus-unikey 0.6.1-r2: Vietnamese UniKey engine for IBus
 app-i18n/im-canna 0.3.2.2 0.3.2.2-r1: Japanese Canna input method module for GTK+2
 app-i18n/im-chooser 1.7.0: Desktop Input Method configuration tool
@@ -12191,7 +12191,7 @@ kde-frameworks/kconfigwidgets 5.74.0 5.77.0: Framework providing an assortment o
 kde-frameworks/kcontacts 5.74.0 5.77.0: Address book API based on KDE Frameworks
 kde-frameworks/kcoreaddons 5.74.0 5.77.0: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.74.0 5.77.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdav 5.74.0 5.77.0: DAV protocol implemention with KJobs
+kde-frameworks/kdav 5.74.0 5.77.0-r1: DAV protocol implemention with KJobs
 kde-frameworks/kdbusaddons 5.74.0 5.77.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.74.0-r2 5.77.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.74.0 5.77.0: Central daemon of KDE workspaces
@@ -12267,7 +12267,7 @@ kde-misc/kio-locate 0.5.3-r3: Locate KIO slave
 kde-misc/kio-stash 1.0-r1: KIO Slave and daemon to stash discontinuous file selections
 kde-misc/kmarkdownwebview 0.5.6: KPart for rendering Markdown content
 kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
-kde-misc/krename 5.0.1: Powerful batch file renamer
+kde-misc/krename 5.0.1 5.0.1-r1: Powerful batch file renamer
 kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 5.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
@@ -12876,7 +12876,7 @@ media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/prusaslicer 2.2.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
-media-gfx/pstoedit 3.70-r1 3.75: Translate PostScript and PDF graphics into other vector formats
+media-gfx/pstoedit 3.75: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qimgv 0.9.1: A cross-platform image viewer with webm support, written in qt5
 media-gfx/qiv 2.3.2-r1: Quick Image Viewer
 media-gfx/qrencode 4.1.1: C library for encoding data in a QR Code symbol
