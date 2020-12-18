@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-18)
+# app-text/ots is masked for removal.  Bug #648964.
+app-office/abiword ots
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-12-07)
 # Waiting for unmasking of slotted Lua.
 >=app-i18n/fcitx-4.2.9.8:4 lua
