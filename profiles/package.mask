@@ -125,7 +125,6 @@ app-emulation/qt-virt-manager
 # directories work best for Python 3.
 # Removal in 14 days.
 dev-python/backports
-dev-python/namespace-jaraco
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-01)
 # Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
