@@ -28,7 +28,7 @@ IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaud
 
 RDEPEND="
 	dev-libs/hidapi:0=
-	dev-libs/libfmt:0=
+	>=dev-libs/libfmt-7.1:0=
 	dev-libs/lzo:2=
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
