@@ -53,7 +53,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cunit )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.2.0-arflags.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-arflags.patch"
+	"${FILESDIR}/${P}-avoid-calling-ar-directly.patch"
+)
 
 src_prepare() {
 	default
