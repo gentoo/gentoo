@@ -19,9 +19,8 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="airspy bladerf hackrf iqbalance python rtlsdr sdrplay soapy uhd"
+IUSE="airspy bladerf hackrf iqbalance python rtlsdr sdrplay soapy uhd xtrx"
 
-#xtrx? ( net-wireless/libxtrx )
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
@@ -34,13 +33,17 @@ RDEPEND="${PYTHON_DEPS}
 	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr:= )
 	uhd? ( net-wireless/uhd:=[${PYTHON_SINGLE_USEDEP}] )
+	xtrx? ( net-wireless/libxtrx )
 	"
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-use_xtrx_open_string.patch"
+)
+
 src_configure() {
-	#-DENABLE_XTRX="$(usex xtrx ON OFF)"
 	local mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DPYTHON_EXECUTABLE="${PYTHON}"
@@ -56,7 +59,7 @@ src_configure() {
 		-DENABLE_NONFREE="$(usex sdrplay ON OFF)"
 		-DENABLE_SOAPY="$(usex soapy ON OFF)"
 		-DENABLE_UHD="$(usex uhd ON OFF)"
-		-DENABLE_XTRX=OFF
+		-DENABLE_XTRX="$(usex xtrx ON OFF)"
 	)
 
 	cmake_src_configure
