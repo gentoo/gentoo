@@ -51,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	sci-libs/fftw:3.0=
 	sci-libs/mpir
-	sci-libs/volk
+	sci-libs/volk:=
 	alsa? ( media-libs/alsa-lib:= )
 	ctrlport? ( $(python_gen_cond_dep 'dev-python/thrift[${PYTHON_USEDEP}]') )
 	fec? (
