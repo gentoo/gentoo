@@ -30,12 +30,12 @@ RDEPEND="
 	sys-apps/portage
 	server? (
 		app-arch/tar[xattr]
+		app-cdr/cdrtools
 		app-crypt/md5deep
 		dev-libs/libcgroup
 		dev-vcs/git
 		net-misc/rsync
 		sys-fs/squashfs-tools
-		virtual/cdrtools
 		|| (
 			sys-kernel/genkernel
 			sys-kernel/genkernel-next
