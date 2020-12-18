@@ -41,6 +41,5 @@ x86-solaris	testing
 x64-winnt	testing
 x86-winnt	testing
 x64-cygwin	testing
-x86-cygwin	testing
 
 # vim: set ts=8 noet ft=conf:
