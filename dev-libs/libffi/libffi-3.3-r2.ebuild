@@ -39,6 +39,15 @@ S=${WORKDIR}/${MY_P}
 
 ECONF_SOURCE=${S}
 
+src_prepare() {
+	default
+	if [[ ${CHOST} == arm64-*-darwin* ]] ; then
+		# ensure we use aarch64 asm, not x86 on arm64
+		sed -i -e 's/aarch64\*-\*-\*/arm64*-*-*|&/' \
+			configure configure.host || die
+	fi
+}
+
 multilib_src_configure() {
 	use userland_BSD && export HOST="${CHOST}"
 	# --includedir= path maintains a few properties:
