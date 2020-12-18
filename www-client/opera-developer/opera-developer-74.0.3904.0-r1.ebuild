@@ -11,7 +11,7 @@ inherit chromium-2 multilib pax-utils unpacker xdg
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
-LICENSE="OPERA-2014"
+LICENSE="OPERA-2018"
 SLOT="0"
 
 SRC_URI_BASE=(
@@ -38,6 +38,7 @@ SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 	)"
 
 IUSE="+proprietary-codecs suid widevine"
+RESTRICT="bindist mirror"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
