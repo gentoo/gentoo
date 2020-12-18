@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.3-libressl.patch
+	"${FILESDIR}"/${PN}-3.5.0-darwin-strnlen.patch  # drop on next release
 )
 
 src_prepare() {
