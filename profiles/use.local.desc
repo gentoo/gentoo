@@ -2801,7 +2801,7 @@ dev-util/diffoscope:gpg - Use app-crypt/gnupg
 dev-util/diffoscope:haskell - Use dev-lang/ghc
 dev-util/diffoscope:hdf5 - Use sci-libs/hdf5
 dev-util/diffoscope:hex - Use app-editors/vim-core
-dev-util/diffoscope:iso - Use virtual/cdrtools
+dev-util/diffoscope:iso - Use app-cdr/cdrtools
 dev-util/diffoscope:llvm - Use sys-devel/llvm
 dev-util/diffoscope:opendocument - Use app-text/odt2txt
 dev-util/diffoscope:pascal - Use dev-lang/fpc

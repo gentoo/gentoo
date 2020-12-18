@@ -17685,7 +17685,6 @@ virtual/awk 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 3.8: Virtual for FORTRAN 77 BLAS implementation
 virtual/cblas 3.8: Virtual for BLAS C implementation
-virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
 virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
