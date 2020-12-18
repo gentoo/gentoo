@@ -43,7 +43,7 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	hdf5? ( sci-libs/hdf5 )
 	hex? ( app-editors/vim-core )
 	imagemagick? ( media-gfx/imagemagick )
-	iso? ( virtual/cdrtools )
+	iso? ( app-cdr/cdrtools )
 	java? ( virtual/jdk )
 	llvm? ( sys-devel/llvm )
 	mono? ( dev-lang/mono )
