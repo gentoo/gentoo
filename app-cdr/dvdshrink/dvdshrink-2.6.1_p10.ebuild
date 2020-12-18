@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,14 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk"
 
-RDEPEND=">=media-video/transcode-1.0.2-r2[dvd]
+RDEPEND="
+	app-cdr/cdrtools
+	>=app-cdr/dvd+rw-tools-6.1
+	>=app-text/gocr-0.40
+	>=media-video/dvdauthor-0.6.11
 	>=media-video/mjpegtools-1.8.0-r1
 	>=media-video/subtitleripper-0.3.4-r1
-	>=media-video/dvdauthor-0.6.11
-	>=app-cdr/dvd+rw-tools-6.1
+	>=media-video/transcode-1.0.2-r2[dvd]
 	gtk? ( >=dev-perl/Gtk2-1.104 )
-	>=app-text/gocr-0.40
-	virtual/cdrtools"
+"
 DEPEND=""
 
 S=${WORKDIR}/${PN}
