@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2020-12-18)
+# Serious data corruption bug when using F2FS,
+# see https://bugzilla.kernel.org/show_bug.cgi?id=210765
+# Feel free to manually unmask when not using F2FS.
+=sys-kernel/gentoo-sources-5.10.0
+=sys-kernel/gentoo-sources-5.10.1
+=sys-kernel/vanilla-sources-5.10.1
+=sys-kernel/vanilla-sources-5.10.0
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-18)
 # Unmaintained.  Last bumped in 2008.  Last upstream (beta) in 2014.
 # The current Gentoo version fails to install.
