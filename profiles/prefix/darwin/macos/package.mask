@@ -5,13 +5,3 @@
 # no symbols from libopenbsd-compat
 =net-misc/openssh-8.3_p1-r5
 =net-misc/openssh-8.4_p1-r2
-
-# Fabian Groffen <grobian@gentoo.org> (2020-06-09)
-# fails to compile, needs fixing
-=sys-apps/gentoo-functions-0.13
-
-# Fabian Groffen <grobian@gentoo.org> (2019-03-22)
-# Newer versions break because they insist on sysroot usage lacking
-# -lSystem as looked for by clang/llvm.  If your system got this
-# package, you have to emerge -C cmake and re-emerge it.
->=dev-util/cmake-3.14
