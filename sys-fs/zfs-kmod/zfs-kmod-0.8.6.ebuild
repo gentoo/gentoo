@@ -37,6 +37,9 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+# https://github.com/openzfs/zfs/pull/11371
+PATCHES=( "${FILESDIR}/${PV}-copy-builtin.patch" )
+
 pkg_setup() {
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
@@ -94,10 +97,6 @@ src_prepare() {
 		# Set module revision number
 		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
 	fi
-
-	# undo https://github.com/openzfs/zfs/commit/acfc4944d0d6db114db9f2bb5401251c5bd767b6
-	# we use release tarballs with no gitignore files already
-	sed -i 's:rm "$KERNEL_DIR/include/zfs/.gitignore"::' copy-builtin || die
 }
 
 src_configure() {
