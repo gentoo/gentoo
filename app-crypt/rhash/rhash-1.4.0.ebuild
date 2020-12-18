@@ -32,6 +32,13 @@ S="${WORKDIR}/RHash-${PV}"
 
 src_prepare() {
 	default
+
+	if [[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] ; then
+		# we lack posix_memalign
+		sed -i -e '/if _POSIX_VERSION/s/if .*$/if 0/' \
+			librhash/util.h || die
+	fi
+
 	multilib_copy_sources
 }
 
