@@ -66,9 +66,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	app-cdr/cdrdao
+	app-cdr/cdrtools
 	dev-libs/libburn
 	media-sound/cdparanoia
-	virtual/cdrtools
 	dvd? (
 		>=app-cdr/dvd+rw-tools-7
 		encode? ( media-video/transcode[dvd] )
