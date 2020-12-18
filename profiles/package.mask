@@ -33,6 +33,23 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-18)
+# Unmaintained.  Last bumped in 2008.  Last upstream (beta) in 2014.
+# The current Gentoo version fails to install.
+# Removal in 30 days.  Bug #701044.
+net-mail/vacation
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-18)
+# Unmaintained.  Homepage gone.  Last bumped in 2008.  Carries multiple
+# patches.  Fails to build again.
+# Removal in 30 days.  Bug #675364.
+net-ftp/tlswrap
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-18)
+# Upstream gone.  Last bumped in 2007.  Fails to build, again.
+# Removal in 30 days.  Bug #648964.
+app-text/ots
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-18)
 # Unmaintained.  The current Gentoo version fails to build, it needs
 # a version bump.
 # Removal in 30 days.  Bug #669452.
