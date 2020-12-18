@@ -14,10 +14,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-INPUT_PLUGINS="input-testpicture input-control input-file input-uvc input-http input-ptp2"
+INPUT_PLUGINS="input-testpicture input-control input-file input-uvc input-http input-ptp2 input-raspicam"
 OUTPUT_PLUGINS="output-file output-udp output-http output-autofocus output-rtsp output-viewer output-zmqserver"
 IUSE_PLUGINS="${INPUT_PLUGINS} ${OUTPUT_PLUGINS}"
-IUSE="input-testpicture input-control +input-file input-uvc input-http input-ptp2
+IUSE="input-testpicture input-control +input-file input-uvc input-http input-ptp2 input-raspicam
 	output-file	output-udp +output-http output-autofocus output-rtsp output-viewer output-zmqserver
 	www http-management wxp-compat"
 REQUIRED_USE="|| ( ${INPUT_PLUGINS} )
@@ -26,6 +26,9 @@ REQUIRED_USE="|| ( ${INPUT_PLUGINS} )
 RDEPEND="virtual/jpeg
 	input-uvc? ( media-libs/libv4l acct-group/video )
 	input-ptp2? ( media-libs/libgphoto2 )
+	input-raspicam? (
+		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin )
+	)
 	output-zmqserver? (
 		dev-libs/protobuf-c
 		net-libs/zeromq
