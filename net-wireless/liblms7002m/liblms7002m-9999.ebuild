@@ -6,9 +6,9 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit cmake python-single-r1
 
-DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
-HOMEPAGE="https://www.gnuradio.org/"
-LICENSE="GPL-3"
+DESCRIPTION="Compact LMS7002M library suitable for resource-limited MCUs"
+HOMEPAGE="https://github.com/xtrx-sdr/liblms7002m"
+LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
 if [[ ${PV} =~ "9999" ]]; then
