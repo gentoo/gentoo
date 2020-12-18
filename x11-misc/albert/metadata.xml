@@ -4,6 +4,10 @@
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@retornaz.com</email>
+		<name>Quentin Retornaz</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">albertlauncher/albert</remote-id>
 	</upstream>
