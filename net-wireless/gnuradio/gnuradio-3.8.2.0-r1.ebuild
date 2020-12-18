@@ -101,7 +101,7 @@ RDEPEND="${PYTHON_DEPS}
 #That's right, it can't build if gnuradio 3.7 is installed
 #Both due to build failure, and then file collision due to bundled volk
 DEPEND="${RDEPEND}
-	!<net-wireless/gnuradio-3.8
+	!!<net-wireless/gnuradio-3.8
 	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
 	virtual/pkgconfig
