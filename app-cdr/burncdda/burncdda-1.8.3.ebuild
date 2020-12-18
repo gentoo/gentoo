@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,10 +14,10 @@ IUSE="flac mp3 vorbis"
 
 RDEPEND="
 	app-cdr/cdrdao
+	app-cdr/cdrtools
 	dev-util/dialog
 	media-sound/normalize
 	media-sound/sox
-	virtual/cdrtools
 	flac? ( media-libs/flac )
 	mp3? (
 		media-sound/mpg123
