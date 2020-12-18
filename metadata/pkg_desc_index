@@ -15077,7 +15077,7 @@ net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
 net-misc/gerbera 1.6.1-r1 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
-net-misc/gnome-remote-desktop 0.1.7 0.1.8: Remote desktop daemon for GNOME using pipewire
+net-misc/gnome-remote-desktop 0.1.7 0.1.8 0.1.9: Remote desktop daemon for GNOME using pipewire
 net-misc/gns3-gui 2.2.11: Graphical Network Simulator
 net-misc/gns3-server 2.2.11: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
