@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.102.2-fix-curl-detection.patch" #709616
 	"${FILESDIR}/${PN}-0.103.0-system-tomsfastmath.patch" # 649394
 	"${FILESDIR}/${PN}-0.103.0-upstream-openrc.patch"
+	"${FILESDIR}/${PN}-0.103.0-freshclam-db-test-fix.patch"
 )
 
 src_prepare() {
