@@ -39,7 +39,7 @@ RDEPEND="
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	x86? ( >=sys-boot/syslinux-3.72 )
 	ccache? ( dev-util/ccache )
-	iso? ( virtual/cdrtools )
+	iso? ( app-cdr/cdrtools )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
 "
 PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
