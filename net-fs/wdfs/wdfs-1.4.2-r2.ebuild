@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="WebDAV filesystem with special features for accessing subversion repositories"
 HOMEPAGE="http://noedler.de/projekte/wdfs/"
@@ -19,6 +17,6 @@ RDEPEND=">=net-libs/neon-0.24.7
 	dev-libs/glib:2"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-Waddress.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-fix-Waddress.patch"
+)
