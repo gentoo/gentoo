@@ -44,7 +44,7 @@ RDEPEND="
 	sys-fs/squashfs-tools-ng
 
 	iso? (
-		virtual/cdrtools
+		app-cdr/cdrtools
 
 		amd64? (
 			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
