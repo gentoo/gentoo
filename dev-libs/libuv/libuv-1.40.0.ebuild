@@ -25,6 +25,22 @@ src_prepare() {
 	echo "m4_define([UV_EXTRA_AUTOMAKE_FLAGS], [serial-tests])" \
 		> m4/libuv-extra-automake-flags.m4 || die
 
+	if [[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] ; then
+		sed -i -e '/!defined(__DragonFly__)/i!defined(__APPLE__) && \\' \
+			src/unix/udp.c || die
+		sed -i -e '/err = pthread_setname_np/cerr = 0;' \
+			src/unix/darwin-proctitle.c || die
+		sed -i -e '/int uv_if_indextoname/i\
+		static size_t strnlen(char *x, size_t len) {\
+			char *r = memchr(x, '"'"'\\n'"'"', len);\
+			if (r == NULL)\
+				return len;\
+			else\
+				return r - x;\
+		}' \
+			src/unix/getaddrinfo.c || die
+	fi
+
 	# upstream fails to ship a configure script
 	eautoreconf
 }
