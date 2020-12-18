@@ -28,7 +28,7 @@ RDEPEND="=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
 	')
 	dev-libs/gmp
-	sci-libs/volk
+	sci-libs/volk:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-lang/swig:0"
