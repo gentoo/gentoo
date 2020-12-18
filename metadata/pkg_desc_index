@@ -10731,7 +10731,7 @@ dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hermes 2.8: Lua based testing manager
 dev-util/hfstospell 0.5.2: HFST spell checker library and command line tool
-dev-util/howdoi 2.0.7: A code search tool
+dev-util/howdoi 2.0.7 2.0.8: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20201116: A collection of tools and scripts
