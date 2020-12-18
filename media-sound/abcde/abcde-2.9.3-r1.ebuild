@@ -31,7 +31,7 @@ RDEPEND="
 		)
 	)
 	aiff? ( media-video/ffmpeg )
-	cdr? ( virtual/cdrtools )
+	cdr? ( app-cdr/cdrtools )
 	flac? ( media-libs/flac )
 	id3tag? (
 		dev-python/eyeD3:0.7
