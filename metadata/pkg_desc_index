@@ -8713,7 +8713,7 @@ dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
-dev-python/pygresql 5.2 5.2.1: A Python interface for the PostgreSQL database
+dev-python/pygresql 5.2 5.2.1 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyilmbase 2.5.2-r1: IlmBase Python bindings
