@@ -7,6 +7,10 @@ sys-libs/compiler-rt-sanitizers -asan -lsan
 sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
 sys-libs/compiler-rt-sanitizers -profile -xray
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2020-12-18)
+# Depends on media-video/rav1e which needs Rust
+>=media-libs/libheif-1.10.0 rav1e
+
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # net-wireless/libxtrx et all needs testing
 net-wireless/gr-osmosdr xtrx
