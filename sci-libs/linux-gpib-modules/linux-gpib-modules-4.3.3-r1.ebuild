@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info linux-mod toolchain-funcs
 
@@ -19,7 +19,7 @@ RDEPEND="${COMMONDEPEND}
 	acct-group/gpib
 	!<sci-libs/linux-gpib-4.2.0_rc1
 "
-DEPEND="${COMMONDEPEND}
+BDEPEND="${COMMONDEPEND}
 	virtual/pkgconfig"
 
 S=${WORKDIR}/linux-gpib-kernel-${PV}
