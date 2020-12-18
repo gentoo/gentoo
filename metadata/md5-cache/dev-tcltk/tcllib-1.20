@@ -5,11 +5,11 @@ DESCRIPTION=Tcl Standard Library
 EAPI=7
 HOMEPAGE=http://www.tcl.tk/software/tcllib/
 IUSE=examples test
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/tcllib/tcllib/1.20/tcllib-1.20.tar.xz
 _eclasses_=virtualx	7e60d3b10c791ab996f717bc1f30072f
-_md5_=2ce495644aaba8a214722261e005c172
+_md5_=e65e4fe9ee4da2b134ee2e6cebd0c9d4
