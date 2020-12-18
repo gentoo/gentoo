@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-18)
+# Abandoned in 2008.  No reverse dependencies left.
+# Removal in 30 days.  Bug #652192.
+dev-libs/ustr
+
 # Jack Todaro <solpeth@posteo.org> (2020-12-17)
 # Old and redundant package. Has not been kept
 # up to date and no longer works. Masked for removal.
