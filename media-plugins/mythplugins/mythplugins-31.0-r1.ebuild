@@ -73,7 +73,7 @@ RDEPEND="
 		media-video/dvdauthor
 		media-video/mjpegtools[png]
 		media-video/transcode
-		virtual/cdrtools
+		app-cdr/cdrtools
 	)
 	mythbrowser? ( dev-qt/qtwebkit:5 )
 	mythgame? (
@@ -92,7 +92,7 @@ RDEPEND="
 		cdda? (
 			media-sound/cdparanoia
 			dev-libs/libcdio:=
-			cdr? ( virtual/cdrtools )
+			cdr? ( app-cdr/cdrtools )
 		)
 	)
 	mythnetvision? (

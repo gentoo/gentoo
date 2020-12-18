@@ -25,8 +25,8 @@ SOURCE_DEPEND="app-arch/xz-utils
 	dev-lang/perl
 	sys-libs/zlib
 	iso? (
+		app-cdr/cdrtools
 		sys-boot/syslinux
-		virtual/cdrtools
 	)"
 DEPEND="
 	!binary? (

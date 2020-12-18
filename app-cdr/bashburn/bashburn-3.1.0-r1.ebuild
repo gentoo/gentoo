@@ -16,6 +16,7 @@ KEYWORDS="amd64 ppc ~ppc64 sparc x86"
 
 BDEPEND="app-shells/bash"
 RDEPEND="
+	app-cdr/cdrtools
 	app-shells/bash
 	app-cdr/cdrdao
 	app-cdr/dvd+rw-tools
@@ -25,7 +26,6 @@ RDEPEND="
 	|| ( media-sound/mpg123 media-sound/mpg321 )
 	media-sound/normalize
 	media-sound/vorbis-tools
-	virtual/cdrtools
 	virtual/eject
 "
 

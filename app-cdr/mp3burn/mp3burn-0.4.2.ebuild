@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,10 +15,10 @@ IUSE=""
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
+	app-cdr/cdrtools
 	media-sound/mpg123
 	media-libs/flac
 	media-sound/vorbis-tools
-	virtual/cdrtools
 	dev-perl/MP3-Info
 	dev-perl/Ogg-Vorbis-Header
 	dev-perl/String-ShellQuote

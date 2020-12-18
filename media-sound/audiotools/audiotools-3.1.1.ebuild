@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 		media-libs/faad2
 		media-libs/faac
 	)
-	cdr? ( virtual/cdrtools )
+	cdr? ( app-cdr/cdrtools )
 	cue? ( app-cdr/cdrdao )
 	flac? ( media-libs/flac )
 	gui? (

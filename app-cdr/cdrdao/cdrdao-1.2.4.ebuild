@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="encode mad vorbis"
 
 COMMON_DEPEND="
-	virtual/cdrtools
+	app-cdr/cdrtools
 	encode? ( >=media-sound/lame-3.99 )
 	mad? (
 		media-libs/libmad

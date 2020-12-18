@@ -15,11 +15,11 @@ LICENSE="GPL-2+"
 SLOT="0"
 
 RDEPEND="
+	app-cdr/cdrtools
 	app-cdr/dvd+rw-tools
 	dev-libs/libburn
 	dev-libs/libcdio:=[-minimal]
 	sys-libs/ncurses:0=[unicode]
-	virtual/cdrtools
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
