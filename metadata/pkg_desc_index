@@ -7922,7 +7922,6 @@ dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
-dev-python/backports 1.0-r1: Namespace for backported Python features
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1-r1: Backport of new features in Python's weakref module
 dev-python/backports-zoneinfo 0.2.1: Backport of the standard library zoneinfo module
@@ -8459,7 +8458,6 @@ dev-python/mysql-connector-python 8.0.22: Python client library for MariaDB/MySQ
 dev-python/mysqlclient 1.4.6-r1: Fork of MySQL-python
 dev-python/nagiosplugin 1.3.2-r1: A class library for writing nagios-compatible plugins
 dev-python/namespace-google 1-r1: Namespace package declaration for google
-dev-python/namespace-jaraco 2-r2: Namespace package declaration for jaraco
 dev-python/namespace-paste 1-r1: Namespace package declaration for paste
 dev-python/namespace-repoze 1: Namespace package declaration for repoze
 dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinxcontrib
@@ -8810,7 +8808,6 @@ dev-python/pytest 4.6.11-r1 5.4.3 6.1.2 6.2.0 6.2.1: Simple powerful testing wit
 dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
-dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.8.1 2.10.1: py.test plugin for coverage reporting
 dev-python/pytest-datadir 1.3.1: Pytest plugin for manipulating test data directories and files
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
@@ -17972,7 +17969,7 @@ www-client/firefox 78.6.0 84.0: Firefox Web Browser
 www-client/firefox-bin 78.6.0 84.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.88: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.50: The web browser from Google
-www-client/google-chrome-unstable 89.0.4350.4: The web browser from Google
+www-client/google-chrome-unstable 89.0.4356.6: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.20.2 2.20.2-r1 2.21: A fast and lightweight web browser running in both graphics and text mode
@@ -18015,7 +18012,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/adobe-flash 32.0.0.453: Adobe Flash Player
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 87.0.4280.88 88.0.4324.50_beta 89.0.4350.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 87.0.4280.88 88.0.4324.50_beta 89.0.4356.6_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
