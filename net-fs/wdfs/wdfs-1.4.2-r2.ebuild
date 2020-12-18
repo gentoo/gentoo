@@ -15,8 +15,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=net-libs/neon-0.24.7
-	 >=sys-fs/fuse-2.5
-	 dev-libs/glib:2"
+	>=sys-fs/fuse-2.5:0
+	dev-libs/glib:2"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
