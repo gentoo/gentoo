@@ -551,7 +551,7 @@ app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration f
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
-app-admin/bitwarden-desktop-bin 1.22.2 1.23.0 1.23.1: Bitwarden password manager desktop client
+app-admin/bitwarden-desktop-bin 1.23.1: Bitwarden password manager desktop client
 app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
@@ -10731,7 +10731,7 @@ dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hermes 2.8: Lua based testing manager
 dev-util/hfstospell 0.5.2: HFST spell checker library and command line tool
-dev-util/howdoi 1.2.1 2.0.5 2.0.6 2.0.7: A code search tool
+dev-util/howdoi 2.0.7: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20201116: A collection of tools and scripts
