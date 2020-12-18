@@ -127,11 +127,6 @@ app-emulation/qt-virt-manager
 dev-python/backports
 dev-python/namespace-jaraco
 
-# Aaron Bauman <bman@gentoo.org> (2020-12-02)
-# Deprecated. Functionality is native to dev-python/pytest now
-# Removal in 14 days
-dev-python/pytest-catchlog
-
 # Joonas Niilola <juippis@gentoo.org> (2020-12-01)
 # Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
 # Use other kernel source / binary packages instead,
