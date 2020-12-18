@@ -5,7 +5,7 @@ EAPI=7
 
 inherit gnome.org meson xdg vala virtualx
 
-DESCRIPTION="Library with GTK widgets for mobile phones"
+DESCRIPTION="Building blocks for modern adaptive GNOME apps"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libhandy/"
 
 LICENSE="LGPL-2.1+"
@@ -24,13 +24,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=sys-devel/gettext-0.19.8
 	dev-libs/libxml2:2
 	dev-util/glib-utils
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	vala? ( $(vala_depend) )
 	gtk-doc? ( dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.3 )
+	vala? ( $(vala_depend) )
 "
 
 src_prepare() {
@@ -41,7 +41,6 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Dprofiling=false # -pg passing
-		-Dstatic=false
 		$(meson_feature introspection)
 		$(meson_use vala vapi)
 		$(meson_use gtk-doc gtk_doc)
