@@ -120,12 +120,6 @@ net-wireless/qradiolink
 net-libs/liba53
 app-emulation/qt-virt-manager
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-03)
-# Explicit namespace support was necessary for Python 2 only.  Empty
-# directories work best for Python 3.
-# Removal in 14 days.
-dev-python/backports
-
 # Joonas Niilola <juippis@gentoo.org> (2020-12-01)
 # Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
 # Use other kernel source / binary packages instead,
