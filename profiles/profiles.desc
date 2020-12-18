@@ -316,13 +316,9 @@ x64-macos		prefix/darwin/macos/10.15/x64			exp
 x64-macos		prefix/darwin/macos/10.15/x64/gcc		exp
 x64-macos		prefix/darwin/macos/11.0/x64			exp
 x64-macos		prefix/darwin/macos/11.0/x64/gcc		exp
+arm64-macos		prefix/darwin/macos/11.0/arm64			exp
 
 # Solaris Profiles
-sparc-solaris		prefix/sunos/solaris/5.9/sparc			exp
-sparc-solaris		prefix/sunos/solaris/5.10/sparc			exp
-sparc64-solaris		prefix/sunos/solaris/5.10/sparc64		exp
-x86-solaris		prefix/sunos/solaris/5.10/x86			exp
-x64-solaris		prefix/sunos/solaris/5.10/x64			exp
 sparc-solaris		prefix/sunos/solaris/5.11/sparc			exp
 sparc64-solaris		prefix/sunos/solaris/5.11/sparc64		exp
 x86-solaris		prefix/sunos/solaris/5.11/x86			exp
@@ -340,7 +336,6 @@ x86-winnt		prefix/windows/winnt/x86			exp
 x64-winnt		prefix/windows/winnt/x64			exp
 
 # Cygwin Profiles
-x86-cygwin		prefix/windows/cygwin/x86			exp
 x64-cygwin		prefix/windows/cygwin/x64			exp
 
 # FreeMiNT
