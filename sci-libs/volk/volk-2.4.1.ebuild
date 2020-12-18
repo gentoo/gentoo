@@ -11,10 +11,10 @@ inherit cmake python-single-r1
 
 DESCRIPTION="vector optimized library of kernels"
 HOMEPAGE="http://libvolk.org"
-SRC_URI="https://github.com/gnuradio/volk/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gnuradio/volk/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="orc test"
 
