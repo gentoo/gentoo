@@ -17,7 +17,8 @@ Updated by Lars Wendler (cmake-3.9.0_rc2)
 Updated by Benda Xu (cmake-3.13.4)
 Updated by Lars Wendler (cmake-3.14.0_rc1)
 Updated by Lars Wendler (cmake-3.14.0_rc2)
-Updated by Lars Wendler (cmake-3.14.0_rc3
+Updated by Lars Wendler (cmake-3.14.0_rc3)
+Updated by Jacob Floyd (cmake-3.19.2)
 ---
  Modules/Platform/Darwin.cmake    | 12 +++++++----
  Modules/Platform/UnixPaths.cmake | 35 ++++++++++++++++++++++++--------
@@ -39,16 +40,17 @@ index 5590433a3b..b04383e51d 100644
  endif()
  
  # Older OS X linkers do not report their framework search path
-@@ -140,6 +140,8 @@ endif()
+@@ -140,6 +140,9 @@ endif()
  
  # set up the default search directories for frameworks
  set(CMAKE_SYSTEM_FRAMEWORK_PATH
++  @GENTOO_PORTAGE_EPREFIX@MacOSX.sdk/System/Library/Frameworks
 +  @GENTOO_PORTAGE_EPREFIX@Frameworks
 +  @GENTOO_PORTAGE_EPREFIX@usr/lib
    ~/Library/Frameworks
    )
  if(_CMAKE_OSX_SYSROOT_PATH)
-@@ -186,13 +188,15 @@ if(CMAKE_OSX_SYSROOT)
+@@ -186,13 +189,15 @@ if(CMAKE_OSX_SYSROOT)
    endif()
  endif()
  

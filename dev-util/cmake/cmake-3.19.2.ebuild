@@ -137,6 +137,9 @@ src_prepare() {
 		# where things are via GCC configuration and ldwrapper
 		sed -i -e '/cmake_gnu_set_sysroot_flag/d' \
 			Modules/Platform/Apple-GNU-*.cmake || die
+		# disable isysroot usage with clang as well
+		sed -i -e '/_SYSROOT_FLAG/d' \
+			Modules/Platform/Apple-Clang.cmake || die
 		# don't set a POSIX standard, system headers don't like that, #757426
 		sed -i -e 's/^#if !defined(_WIN32) && !defined(__sun)/& \&\& !defined(__APPLE__)/' \
 			Source/cmLoadCommandCommand.cxx \
