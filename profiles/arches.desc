@@ -30,6 +30,7 @@ arm-linux	testing
 arm64-linux	testing
 ppc64-linux	testing
 x86-linux	testing
+arm64-macos	testing
 ppc-macos	testing
 x86-macos	testing
 x64-macos	testing
@@ -41,6 +42,5 @@ x86-solaris	testing
 x64-winnt	testing
 x86-winnt	testing
 x64-cygwin	testing
-x86-cygwin	testing
 
 # vim: set ts=8 noet ft=conf:

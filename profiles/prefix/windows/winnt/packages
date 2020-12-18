@@ -3,7 +3,7 @@
 
 # those are packages not available/required on winnt, since
 # winnt can be a child EPREFIX only, which tears it's DEPENDS
-# from a parent (e.g. x86-cygwin) prefix.
+# from a parent (e.g. x64-cygwin) prefix.
 
 -*sys-apps/grep
 -*app-arch/gzip
