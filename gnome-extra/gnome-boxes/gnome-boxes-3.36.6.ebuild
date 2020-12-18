@@ -42,19 +42,19 @@ DEPEND="
 " # gobject-introspection needed for libovf subproject (and gtk-frdp subproject with USE=rdp)
 # These are called via exec():
 # sys-fs/mtools mcopy for unattended file copying for files that libarchive doesn't support
-# virtual/cdrtools mkisofs is needed for unattended installer secondary disk image creation
+# app-cdr/cdrtools mkisofs is needed for unattended installer secondary disk image creation
 # app-emulation/libguestfs virt-sysprep is used for VM cloing, if not there, it logs debug and doesn't function
 # sys-apps/policycoreutils restorecon is used for checking selinux context
 # app-emulation/libvirt virsh used for various checks (and we need the library anyways)
 # sys-auth/polkit used for making all libvirt system disks readable via "pkexec chmod a+r" that aren't already readable to the user (libvirt system importer)
 # app-emulation/qemu qemu-img used to convert image to QCOW2 format during copy
 RDEPEND="${DEPEND}
+	app-cdr/cdrtools
 	>=app-misc/tracker-miners-2[iso]
 	app-emulation/spice[smartcard]
 	>=app-emulation/libvirt-0.9.3[libvirtd,qemu]
 	>=app-emulation/qemu-1.3.1[spice,smartcard,usbredir]
 	sys-fs/mtools
-	virtual/cdrtools
 	sys-auth/polkit
 "
 # gtk-frdp generates gir and needs gtk+ introspection for it
