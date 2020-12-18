@@ -14634,7 +14634,7 @@ net-im/skypeforlinux 8.66.0.74 8.67.0.87: Instant messaging client, with support
 net-im/slack 4.4.2 4.4.3 4.11.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4 4.0.2-r100: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/teams 1.3.00.25560: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
+net-im/teams 1.3.00.25560 1.3.00.30857: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.4.7-r1 2.4.11: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.4.4 2.4.5 2.4.7: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
@@ -15516,16 +15516,16 @@ net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
 net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/gnome-bluetooth 3.34.1 3.34.3: Bluetooth graphical utilities integrated with GNOME
-net-wireless/gnuradio 3.8.2.0 9999: Toolkit that provides signal processing blocks to implement software radios
+net-wireless/gnuradio 3.8.2.0-r1 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
-net-wireless/gqrx 2.14.3 9999: Software defined radio receiver powered by GNU Radio and Qt
+net-wireless/gqrx 2.14.3-r1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
-net-wireless/gr-ieee802154 0.0_p20191006 9999: IEEE 802.15.4 ZigBee Transceiver
-net-wireless/gr-iio 0.3_p20191219-r1 9999: GNU Radio IIO Blocks
+net-wireless/gr-ieee802154 0.0_p20191006-r1 9999: IEEE 802.15.4 ZigBee Transceiver
+net-wireless/gr-iio 0.3_p20191219-r2 9999: GNU Radio IIO Blocks
 net-wireless/gr-iqbal 0.38.1 9999: gnuradio I/Q balancing
 net-wireless/gr-m2k 9999: A C++ library for interfacing with the ADALM2000
-net-wireless/gr-osmosdr 0.2.0 0.2.2 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
-net-wireless/gr-paint 0.0_p20200517 9999: Paints monochrome images into the waterfall of a receiver
+net-wireless/gr-osmosdr 0.2.0 0.2.3 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
+net-wireless/gr-paint 0.0_p20200517-r1 9999: Paints monochrome images into the waterfall of a receiver
 net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
 net-wireless/gr-scopy 0.0_p20201005 9999: Scopy IIO blocks for GNU Radio
@@ -15543,7 +15543,12 @@ net-wireless/kismet 2020.09.4 2020.12.2 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
 net-wireless/kismetmobiledashboard 1.5_beta1-r2 9999: Mobile UI for kismet
+net-wireless/liblms7002m 0.0_p20200518 9999: Compact LMS7002M library suitable for resource-limited MCUs
 net-wireless/libm2k 0.0_p20201005 9999: A C++ library for interfacing with the ADALM2000
+net-wireless/libusb3380 0.0_p20190125 9999: USB3380 abstraction layer for libusb
+net-wireless/libxtrx 0.0_p20201202 9999: High-level XTRX API library
+net-wireless/libxtrxdsp 0.0_p20200830 9999: DSP specific function for SDR in general and XTRX in specific
+net-wireless/libxtrxll 0.0_p20201202 9999: Low-level XTRX hardware abstraction library
 net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20200214 9999: A generic library for injecting 802.11 frames
@@ -16298,7 +16303,7 @@ sci-libs/trilinos 12.14.1 12.18.1 13.0.0: Scientific library collection for larg
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
-sci-libs/volk 2.3.0-r2: vector optimized library of kernels
+sci-libs/volk 2.4.1: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 1.6.3 9999: Votca tools library
 sci-libs/vtk 8.2.0 8.2.0-r1: The Visualization Toolkit
