@@ -205,7 +205,7 @@ multilib_src_install_all() {
 pkg_postinst() {
 	# We don't want to do the xmlcatalog during stage1, as xmlcatalog will not
 	# be in / and stage1 builds to ROOT=/tmp/stage1root. This fixes bug #208887.
-	if [[ "${ROOT}" != "/" ]]; then
+	if [[ -n ${ROOT} ]]; then
 		elog "Skipping XML catalog creation for stage building (bug #208887)."
 	else
 		# need an XML catalog, so no-one writes to a non-existent one
