@@ -13,7 +13,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+BDEPEND="
+	${RDEPEND}
+	test? (
+		dev-python/whatever[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)"
+
+python_test() {
+	distutils_install_for_testing --via-root
+	pytest || die "Tests fail with ${EPYTHON}"
+}
