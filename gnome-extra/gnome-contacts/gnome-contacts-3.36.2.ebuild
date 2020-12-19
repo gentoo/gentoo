@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+VALA_MIN_API_VERSION="0.40"
 VALA_MAX_API_VERSION="0.48"
 
 inherit gnome.org gnome2-utils meson vala xdg
@@ -47,6 +48,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-telepathy.patch
+)
 
 src_prepare() {
 	xdg_src_prepare
