@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-db/sqlite:3 >=dev-lang/lua-5:0 dev-lua/toluapp media-libs/libpng:0 x11-libs/libX11 media-libs/libsdl2[sound,opengl,video] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-image[png] sys-libs/zlib bzip2? ( app-arch/bzip2 ) mng? ( media-libs/libmng ) vorbis? ( media-libs/libogg media-libs/libvorbis theora? ( media-libs/libtheora ) )
+DESCRIPTION=A realtime strategy game engine
+EAPI=7
+HOMEPAGE=https://wargus.github.io/stratagus.html https://github.com/Wargus/stratagus
+IUSE=bzip2 debug doc mng theora vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 >=dev-lang/lua-5:0 dev-lua/toluapp media-libs/libpng:0 x11-libs/libX11 media-libs/libsdl2[sound,opengl,video] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-image[png] sys-libs/zlib bzip2? ( app-arch/bzip2 ) mng? ( media-libs/libmng ) vorbis? ( media-libs/libogg media-libs/libvorbis theora? ( media-libs/libtheora ) )
+REQUIRED_USE=theora? ( vorbis )
+SLOT=0/3
+SRC_URI=https://github.com/Wargus/stratagus/archive/v3.0.0.tar.gz -> stratagus-3.0.0.tar.gz
+_eclasses_=cmake	6b7438831d544f2fe59a3d4ab4103f52	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f7531c979564d2d6a84fa4fb2dbc7202
