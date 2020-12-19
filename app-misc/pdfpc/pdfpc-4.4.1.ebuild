@@ -4,7 +4,7 @@
 EAPI=7
 
 VALA_MIN_API_VERSION="0.34"
-VALA_MAX_API_VERSION="0.48" # append versions in sed line if increased
+VALA_MAX_API_VERSION="0.50" # append versions in sed line if increased
 
 inherit cmake vala
 
@@ -12,6 +12,8 @@ DESCRIPTION="Presenter console with multi-monitor support for PDF files"
 HOMEPAGE="https://pdfpc.github.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+# Note: Relicensing to GPL-3+ for >pdfpc-4.4.1, see
+#       https://github.com/pdfpc/pdfpc/commit/2a2c9b71467db801a3a0c6e5aabc8794004216bb
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -27,6 +29,8 @@ RDEPEND="
 	gstreamer? (
 		media-libs/gstreamer:1.0=
 		media-libs/gst-plugins-base:1.0=
+		media-plugins/gst-plugins-gtk:1.0=
+		media-plugins/gst-plugins-cairo:1.0=
 	)
 "
 DEPEND="${RDEPEND}"
@@ -35,7 +39,7 @@ BDEPEND="$(vala_depend)"
 src_prepare() {
 	cmake_src_prepare
 
-	sed -i -e "s/valac/valac valac-0.48 valac-0.46 valac-0.44 valac-0.40 valac-0.36/" cmake/vala/FindVala.cmake || die
+	sed -i -e "s/valac/valac valac-0.50 valac-0.48 valac-0.46 valac-0.44 valac-0.40 valac-0.36/" cmake/vala/FindVala.cmake || die
 	vala_src_prepare
 }
 
