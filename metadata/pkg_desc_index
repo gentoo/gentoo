@@ -8790,7 +8790,7 @@ dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pyscreenshot 2.2: Python screenshot library
 dev-python/pyserial 3.4 3.5: Python Serial Port extension
 dev-python/pyside2 5.15.1: Python bindings for the Qt framework
-dev-python/pysimdjson 3.1.1: Python bindings for simdjson
+dev-python/pysimdjson 3.1.1-r1: Python bindings for simdjson
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
