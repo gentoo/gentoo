@@ -96,6 +96,11 @@ src_install() {
 	newbashcomp "${T}"/shell_completions/fd.bash fd
 	insinto /usr/share/fish/vendor_completions.d
 	doins "${T}"/shell_completions/fd.fish
+
+	# zsh completion is in contrib
+	insinto /usr/share/zsh/site-functions
+	doins contrib/completion/_fd
+
 	dodoc README.md
 	doman doc/*.1
 }
