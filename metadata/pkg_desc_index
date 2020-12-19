@@ -11801,7 +11801,7 @@ gnome-extra/gnome-characters 3.34.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.36.2: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.36.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.3: A graphical, full featured, twin-panel file manager
-gnome-extra/gnome-contacts 3.36.2: GNOME contact management application
+gnome-extra/gnome-contacts 3.36.2 3.38.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
