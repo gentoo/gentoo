@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="2"
+PATCHSET="3"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -22,9 +22,10 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +tcmalloc vaapi wayland widevine"
+IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-icu +tcmalloc vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
+	screencast? ( wayland )
 "
 
 COMMON_X_DEPEND="
@@ -86,6 +87,7 @@ COMMON_DEPEND="
 		wayland? (
 			dev-libs/wayland:=
 			dev-libs/libffi:=
+			screencast? ( media-video/pipewire:0/0.3 )
 			x11-libs/gtk+:3[wayland,X]
 			x11-libs/libdrm:=
 			x11-libs/libxkbcommon:=
@@ -598,6 +600,7 @@ src_configure() {
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
 	myconf_gn+=" use_vaapi=$(usex vaapi true false)"
+	myconf_gn+=" rtc_use_pipewire=$(usex screencast true false) rtc_pipewire_version=\"0.3\""
 
 	# TODO: link_pulseaudio=true for GN.
 
@@ -741,8 +744,7 @@ src_configure() {
 			tools/generate_shim_headers/generate_shim_headers.py || die
 		# Disable CFI: unsupported for GCC, requires clang+lto+lld
 		myconf_gn+=" is_cfi=false"
-		# Disable PGO, because profile data is missing in tarball
-		# (https://groups.google.com/a/chromium.org/g/chromium-packagers/c/2ID9c4j6UkY)
+		# Disable PGO, because profile data is only compatible with >=clang-11
 		myconf_gn+=" chrome_pgo_phase=0"
 	fi
 
@@ -894,6 +896,12 @@ pkg_postinst() {
 		elog "VA-API is disabled by default at runtime. Either enable it"
 		elog "by navigating to chrome://flags/#enable-accelerated-video-decode"
 		elog "inside Chromium or add --enable-accelerated-video-decode"
+		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+	fi
+	if use screencast; then
+		elog "Screencast is disabled by default at runtime. Either enable it"
+		elog "by navigating to chrome://flags/#enable-webrtc-pipewire-capturer"
+		elog "inside Chromium or add --enable-webrtc-pipewire-capturer"
 		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
 	fi
 }
