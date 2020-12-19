@@ -11917,7 +11917,7 @@ gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/greetd 0.6.1: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
-gui-libs/libhandy 0.0.13: Library with GTK widgets for mobile phones
+gui-libs/libhandy 0.0.13 1.0.2: Building blocks for modern adaptive GNOME apps
 gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wayfire-plugins-extra 0.6.0 9999: extra plugins for wayfire
