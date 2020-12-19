@@ -9875,7 +9875,7 @@ dev-ruby/did_you_mean 1.2.1 1.3.1 1.4.0: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.3 1.4 1.4.1 1.4.4: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/diva 1.0.2 1.0.2-r1: Implementation of expression for handling things.
 dev-ruby/dnsruby 1.61.2 1.61.3: A pure Ruby DNS client library
-dev-ruby/docile 1.3.2: Turns any Ruby object into a DSL
+dev-ruby/docile 1.3.2 1.3.3: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.20180417 0.5.20190701: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.7.6: Loads environment variables from .env into ENV
 dev-ruby/duktape-rb 2.3.0.0-r2: Ruby bindings to the Duktape JavaScript interpeter
@@ -15294,6 +15294,7 @@ net-misc/vncrec 0.2-r2: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r3: Client for Wake-On-LAN
+net-misc/websocat 1.6.0: Command-line client for WebSockets, like netcat, with socat-like functions
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
