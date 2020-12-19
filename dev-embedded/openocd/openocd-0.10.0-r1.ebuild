@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-5" #549946
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+)
+
 src_prepare() {
 	default
 
