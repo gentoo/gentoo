@@ -13874,7 +13874,7 @@ media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.2 4.8.3 9999: Limiter, compressor, r
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.6.3 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.6.3 0.9.0 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
@@ -16796,7 +16796,7 @@ sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requ
 sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
-sys-apps/fd 8.1.1: Alternative to find that provides sensible defaults for 80% of the use cases
+sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
 sys-apps/file 5.37-r1 5.38-r1 5.39-r3 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64 0.9.64-r1 9999: Security sandbox for any type of processes
