@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,8 +37,8 @@ pkg_setup() {
 src_prepare() {
 	# gentoo libdir
 	sed -e 's|/lib|/'$(get_libdir)'|' \
-            -e '/DESTINATION/s|lib|'$(get_libdir)'|g' \
-            -i src/CMakeLists.txt || die
+		-e '/DESTINATION/s|lib|'$(get_libdir)'|g' \
+		-i src/CMakeLists.txt || die
 	# dont hard code link
 	sed -e '/link_directories/d' \
 		-i src/tools/CMakeLists.txt src/cgnstools/*/CMakeLists.txt || die
@@ -48,7 +48,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCGNS_BUILD_SHARED=ON
-		-DCGNS_USED_SHARED=ON
+		-DCGNS_USE_SHARED=ON
 		-DCGNS_BUILD_CGNSTOOLS="$(usex tools)"
 		-DCGNS_ENABLE_FORTRAN="$(usex fortran)"
 		-DCGNS_ENABLE_HDF5="$(usex hdf5)"
@@ -71,7 +71,7 @@ src_install() {
 	cmake-utils_src_install
 	dodoc README.md release_docs/Release.txt
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/libcgns.a
-	use doc && dodoc *pdf release_docs/*.pdf
+	use doc && dodoc release_docs/*.pdf
 	insinto /usr/share/doc/${PF}
 	use examples && doins -r src/examples
 }
