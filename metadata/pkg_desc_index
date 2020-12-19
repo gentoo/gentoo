@@ -173,6 +173,7 @@ acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
 acct-group/postfix_exporter 0: System group: postfix_exporter
 acct-group/postgres 0: PostgreSQL program group
+acct-group/postgrey 0: Group for the postgrey mail daemon
 acct-group/privoxy 0: A privoxy: privacy oriented web proxy group
 acct-group/prometheus 0: System group: prometheus
 acct-group/pulse 0: System group: pulse
@@ -425,6 +426,7 @@ acct-user/popa3d 0: User for net-mail/popa3d
 acct-user/postfix 0: user for postfix daemon
 acct-user/postfix_exporter 0: user for postfix_exporter
 acct-user/postgres 0: PostgreSQL program user
+acct-user/postgrey 0: User for the postgrey mail daemon
 acct-user/postmaster 0: Postmaster user
 acct-user/privoxy 0: A privoxy: privacy oriented web proxy user
 acct-user/prometheus 0: user for prometheus
@@ -12426,7 +12428,7 @@ mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
 mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
 mail-filter/postfwd 1.35-r3 2.00-r1 2.02: Versatile Postfix policy server with a flexible ruleset based configuration
-mail-filter/postgrey 1.36-r1 1.37: Postgrey is a Postfix policy server implementing greylisting
+mail-filter/postgrey 1.36-r1 1.37 1.37_p20190625: Postgrey is a Postfix policy server implementing greylisting
 mail-filter/postsrsd 1.6: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
 mail-filter/pyzor 1.0.0-r1 1.0.0_p20200523: A distributed, collaborative spam detection and filtering network
