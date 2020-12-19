@@ -2488,7 +2488,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.6: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.6 1.2.7: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
@@ -8377,7 +8377,7 @@ dev-python/libnacl 1.6.1 1.7.2: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.1: A straightforward binding of libsass for Python
-dev-python/libtmux 0.8.3 0.8.5: python api for tmux
+dev-python/libtmux 0.8.5: python api for tmux
 dev-python/libvirt-python 6.7.0 6.8.0 6.9.0 6.10.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
@@ -8533,7 +8533,7 @@ dev-python/os-xenapi 0.3.4-r1: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.2.1: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 2.6.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.3.1: library for running multi-thread, multi-process applications
-dev-python/oslo-config 8.3.2 8.3.3: Oslo Configuration API
+dev-python/oslo-config 8.3.3: Oslo Configuration API
 dev-python/oslo-context 3.1.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 8.4.0: OpenStack Common DB Code
 dev-python/oslo-i18n 5.0.1: Oslo i18n library
@@ -11929,7 +11929,7 @@ gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated module
 gui-libs/wpebackend-fdo 1.8.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2-r1: Wayland compositor inspired by CWM
-gui-wm/sway 1.5 1.5.1 9999: i3-compatible Wayland window manager
+gui-wm/sway 1.5 1.5.1 1.5.1-r1 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.5.0 0.6.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
@@ -18013,7 +18013,7 @@ www-misc/monitorix 3.12.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator
-www-misc/urlwatch 2.17 2.18-r1 2.21: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.17 2.18-r1 2.21 2.22: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.10-r1: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
