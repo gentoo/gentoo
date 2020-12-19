@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils pam
+inherit pam
 
 DESCRIPTION="pam module to authenticate users via PostgreSQL"
 HOMEPAGE="https://sourceforge.net/projects/pam-pgsql/"
@@ -17,18 +17,17 @@ fi
 RDEPEND="sys-libs/pam
 	>=dev-db/postgresql-8.0:=
 	>=dev-libs/libgcrypt-1.2.0:0="
+
 DEPEND="${RDEPEND}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 src_configure() {
 	econf \
 		--sysconfdir=/etc/security \
-		--libdir=/$(get_libdir) \
-		--docdir=/usr/share/doc/${PF}
+		--libdir=/$(get_libdir)
 }
 
 src_compile() {
@@ -37,7 +36,8 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" pammoddir="$(getpam_mod_dir)" install
-	find "${ED}" -name '*.la' -delete
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
