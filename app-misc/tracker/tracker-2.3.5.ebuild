@@ -4,7 +4,6 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 VALA_MIN_API_VERSION="0.40"
-VALA_MAX_API_VERSION="0.48"
 
 inherit bash-completion-r1 gnome.org gnome2-utils linux-info meson python-any-r1 systemd vala xdg
 
@@ -15,7 +14,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/2.0"
 IUSE="gtk-doc +miners networkmanager stemmer"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 #RESTRICT="!test? ( test )"
 
 PV_SERIES=$(ver_cut 1-2)
