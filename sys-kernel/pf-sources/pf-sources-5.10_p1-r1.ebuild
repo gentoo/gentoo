@@ -9,12 +9,8 @@ ETYPE="sources"
 # No 'experimental' USE flag provided, but we still want to use genpatches
 K_EXP_GENPATCHES_NOUSE="1"
 
-# Just get basic genpatches, -pf patch set already includes vanilla-linux
-# updates
-K_GENPATCHES_VER="1"
-
-# -pf already sets EXTRAVERSION to kernel Makefile
-K_NOSETEXTRAVERSION="1"
+# Just get basic genpatches, -pf patch set already includes vanilla-linux updates
+K_GENPATCHES_VER="3"
 
 # Not supported by the Gentoo security team
 K_SECURITY_UNSUPPORTED="1"
@@ -36,7 +32,7 @@ SRC_URI="${KERNEL_URI}
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-S="${WORKDIR}/linux-${PVR}-pf"
+S="${WORKDIR}/linux-${PV}-pf-${PR}"
 
 PATCHES=( "${DISTDIR}/${P}.patch" )
 
@@ -55,8 +51,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
 	kernel-2_src_prepare
+
+	# Keep consistency when upgrading throughout 5.10 series.
+	sed -e 's/_p1-pf-r1/-pf-r1/g' \
+		-e 's/SUBLEVEL = 1/SUBLEVEL = 0/g' \
+		-i Makefile || die
 }
 
 pkg_postinst() {
