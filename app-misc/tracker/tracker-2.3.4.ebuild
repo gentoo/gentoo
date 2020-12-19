@@ -4,6 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 VALA_MIN_API_VERSION="0.40"
+VALA_MAX_API_VERSION="0.48"
 
 inherit bash-completion-r1 gnome.org gnome2-utils linux-info meson python-any-r1 systemd vala xdg
 
