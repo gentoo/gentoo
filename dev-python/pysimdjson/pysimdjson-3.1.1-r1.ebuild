@@ -18,6 +18,6 @@ RDEPEND="
 	dev-libs/simdjson
 "
 BDEPEND="
-	dev-python/pybind11[${PYTHON_USEDEP}]
+	>=dev-python/pybind11-2.6.1[${PYTHON_USEDEP}]
 "
 distutils_enable_tests pytest
