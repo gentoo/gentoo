@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake llvm llvm.org multilib-minimal pax-utils \
-	python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -77,6 +77,10 @@ llvm.org_set_globals
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
+PATCHES=(
+	"${FILESDIR}"/9999/prefix-dirs.patch
+)
+
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
@@ -88,6 +92,11 @@ src_prepare() {
 	BUILD_DIR=${WORKDIR}/x/y/clang
 
 	llvm.org_src_prepare
+
+	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
+	eprefixify \
+		lib/Frontend/InitHeaderSearch.cpp \
+		lib/Driver/ToolChains/Darwin.cpp || die
 }
 
 check_distribution_components() {
