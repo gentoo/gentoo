@@ -79,6 +79,10 @@ src_prepare() {
 	mkdir -p include/mach-o || die
 	# never present because it's private
 	cp ../../${DYLD}/include/mach-o/dyld_priv.h include/mach-o || die
+	# TARGET_OS_BRIDGE is undefined in TargetConditionals.h of newer MacOSX.sdk.
+	# We don't target BridgeOS. Disable it to avoid errors when clang adds:
+	# -Werror,-Wundef-prefix=TARGET_OS_
+	sed -i -e 's/#if TARGET_OS_BRIDGE/#if 0/' include/mach-o/dyld_priv.h
 
 	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
