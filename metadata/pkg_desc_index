@@ -14884,7 +14884,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.30.3: Open source web browser engine
+net-libs/webkit-gtk 2.30.3 2.30.4: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
@@ -15117,7 +15117,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or c
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.5.1 2.6.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.8.1-r1 9999: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.8.1-r1 1.8.2 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knock 0.7-r1: Simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
