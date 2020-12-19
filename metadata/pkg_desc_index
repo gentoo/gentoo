@@ -14817,7 +14817,7 @@ net-libs/librsync 2.3.1: Remote delta-compression library
 net-libs/libsearpc 3.2.0-r1: A simple C language RPC framework
 net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
-net-libs/libslirp 4.3.1 4.3.1-r1 4.4.0: A general purpose TCP-IP emulator used by virtual machine hypervisors to provide virtual networking services.
+net-libs/libslirp 4.3.1-r1 4.4.0: A general purpose TCP-IP emulator used by virtual machine hypervisors to provide virtual networking services.
 net-libs/libsmi 0.4.8-r1 0.5.0-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.70.0: HTTP client/server library for GNOME
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
