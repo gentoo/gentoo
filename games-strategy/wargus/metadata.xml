@@ -9,6 +9,10 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="bne">Support extracting data from the Battle.net
+			Edition</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Wargus/wargus</remote-id>
 	</upstream>

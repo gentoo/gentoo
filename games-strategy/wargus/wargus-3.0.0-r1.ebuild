@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Wargus/wargus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+bne"
 
 RDEPEND="
 	=games-engines/stratagus-${PV}*[theora]
@@ -21,6 +21,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	x11-libs/gtk+:2
 	x11-libs/libX11
+	bne? ( app-arch/stormlib:= )
 	!games-strategy/wargus-data"
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -42,6 +43,7 @@ src_configure() {
 		-DSTRATAGUS="${EPREFIX}/usr/bin/stratagus"
 		-DSHAREDIR="${EPREFIX}/usr/share/stratagus/wargus"
 		-DICONDIR=/usr/share/icons/hicolor/64x64/apps
+		-DWITH_STORMLIB=$(usex bne)
 	)
 	cmake_src_configure
 }
@@ -49,8 +51,7 @@ src_configure() {
 pkg_postinst() {
 	elog "Wargus requires the data from the original game to run.  The game"
 	elog "will ask you for the location of the game data and extract/convert"
-	elog "it automatically on the first run.  Only the DOS version is supported"
-	elog "at the moment."
+	elog "it automatically on the first run."
 
 	if ! has_version media-video/ffmpeg ||
 		! has_version media-sound/cdparanoia
