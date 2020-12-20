@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..2} luajit )
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit lua-single python-any-r1 scons-utils toolchain-funcs xdg-utils
+inherit lua-single python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="An elegant, secure, adaptable and intuitive XMPP Client"
 HOMEPAGE="https://www.swift.im/"
@@ -17,12 +17,10 @@ SRC_URI="
 LICENSE="BSD BSD-1 CC-BY-3.0 GPL-3 OFL-1.1"
 SLOT="4/0"
 KEYWORDS="~amd64"
-IUSE="+client expat gconf +icu +idn lua spell test zeroconf"
+IUSE="expat +icu +idn lua test zeroconf"
 REQUIRED_USE="
 	|| ( icu idn )
-	gconf? ( client )
 	lua? ( ${LUA_REQUIRED_USE} )
-	spell? ( client )
 "
 
 RDEPEND="
@@ -32,31 +30,16 @@ RDEPEND="
 	net-libs/libnatpmp
 	net-libs/miniupnpc:=
 	sys-libs/zlib
-	client? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtwebkit:5
-		dev-qt/qtx11extras:5
-		net-dns/avahi
-	)
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2 )
-	gconf? ( gnome-base/gconf:2 )
 	icu? ( dev-libs/icu:= )
 	idn? ( net-dns/libidn:= )
 	lua? ( ${LUA_DEPS} )
-	spell? ( app-text/hunspell:= )
 "
 
 DEPEND="
 	${RDEPEND}
 	>=dev-util/scons-3.0.1-r3
-	client? ( dev-qt/linguist-tools:5 )
 	test? ( net-dns/avahi )
 "
 
@@ -97,12 +80,9 @@ src_prepare() {
 	ln -s "${EPREFIX}"/usr/include/qt5 "${T}"/qt/include || die
 
 	# Remove parts of Swift, which a user don't want to compile
-	if ! use client; then rm -fr Swift Slimber || die; fi
+	rm -fr Swift Slimber || die
 	if ! use lua; then rm -fr Sluift || die; fi
-	if ! use zeroconf; then
-		rm -fr Limber || die
-		if use client; then rm -fr Slimber || die; fi
-	fi
+	if ! use zeroconf; then rm -fr Limber || die; fi
 
 	# Remove '3rdParty', as the system libs should be used
 	# `CppUnit`, `GoogleTest` and `HippoMocks` are needed for tests
@@ -149,7 +129,7 @@ src_configure() {
 		distcc="no"
 		experimental="no"
 		experimental_ft="yes"
-		hunspell_enable="$(usex spell)"
+		hunspell_enable="no"
 		icu="$(usex icu)"
 		install_git_hooks="no"
 		libidn_bundled_enable="false"
@@ -163,14 +143,14 @@ src_configure() {
 		max_jobs="no"
 		optimize="no"
 		qt="${T}/qt"
-		qt5="$(usex client)"
+		qt5="no"
 		swiften_dll="true"
 		swift_mobile="no"
 		target="native"
 		test="none"
-		try_avahi="$(usex client)"
+		try_avahi="no"
 		try_expat="$(usex expat)"
-		try_gconf="$(usex gconf)"
+		try_gconf="no"
 		try_libidn="$(usex idn)"
 		try_libxml="$(usex !expat)"
 		tls_backend="openssl"
@@ -184,10 +164,8 @@ src_configure() {
 src_compile() {
 	local myesconsinstall=(
 		Swiften
-		$(usex client Swift '')
 		$(usex lua Sluift '')
 		$(usex zeroconf Limber '')
-		$(usex zeroconf "$(usex client Slimber '')" '')
 	)
 
 	escons "${MYSCONS[@]}" "${myesconsinstall[@]}"
@@ -205,7 +183,6 @@ src_install() {
 	local myesconsinstall=(
 		SWIFTEN_INSTALLDIR="${ED}/usr"
 		SWIFTEN_LIBDIR="${ED}/usr/$(get_libdir)"
-		$(usex client "SWIFT_INSTALLDIR=${ED}/usr" '')
 		$(usex lua "SLUIFT_DIR=${ED}/usr" '')
 		$(usex lua "SLUIFT_INSTALLDIR=${ED}/usr" '')
 		"${ED}"
@@ -214,16 +191,6 @@ src_install() {
 	escons "${MYSCONS[@]}" "${myesconsinstall[@]}"
 
 	use zeroconf && dobin Limber/limber
-	use zeroconf && use client && newbin Slimber/CLI/slimber slimber-cli
-	use zeroconf && use client && newbin Slimber/Qt/slimber slimber-qt
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	use client && xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	use client && xdg_icon_cache_update
 }
