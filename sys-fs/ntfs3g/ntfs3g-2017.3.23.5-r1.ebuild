@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit linux-info udev toolchain-funcs libtool
+inherit linux-info toolchain-funcs
 
 MY_P="ntfs-3g_ntfsprogs-${PV%.*}AR.${PV##*.}"
 
