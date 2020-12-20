@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
+LUA_COMPAT=( lua5-{1..2} )
 
 inherit autotools lua-single toolchain-funcs eutils
 
@@ -39,7 +39,7 @@ DEPEND="
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999_20201220-autoconf_lua_version.patch
+	"${FILESDIR}"/${PN}-2.2-autoconf_lua_version.patch
 )
 
 DOCS=( AUTHORS NEWS README )
