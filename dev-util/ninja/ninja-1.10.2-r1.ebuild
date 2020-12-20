@@ -67,7 +67,7 @@ src_compile() {
 	unset CFLAGS
 
 	# enable LFS, bug #760848
-	CXXFLAGS+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+	export CXXFLAGS+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 	BUILD_CXXFLAGS+=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
