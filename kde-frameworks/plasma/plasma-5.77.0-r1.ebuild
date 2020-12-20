@@ -10,6 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Plasma framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-fix-broken-background.patch.xz"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -60,6 +61,8 @@ DEPEND="${RDEPEND}
 "
 
 RESTRICT+=" test"
+
+PATCHES=( "${WORKDIR}/${P}-fix-broken-background.patch" ) # KDE-bug 430390
 
 src_configure() {
 	local mycmakeargs=(

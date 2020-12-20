@@ -38,3 +38,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${PVCUT}:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-add-dptr-to-cache.patch" ) # KDE-bug 429442
