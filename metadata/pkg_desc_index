@@ -8029,7 +8029,7 @@ dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/rendere
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
 dev-python/coreschema 0.0.4: Core Schema
 dev-python/cov-core 1.15.0-r2: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 4.5.4 5.3: Code coverage measurement for Python
+dev-python/coverage 4.5.4 5.3 5.3.1: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30: Python module to provide iteration for datetime object
