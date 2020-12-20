@@ -2,11 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>lists@xunil.at</email>
-		<name>Stefan Weichinger</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 </pkgmetadata>
