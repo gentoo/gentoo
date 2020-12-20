@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -356,6 +356,8 @@ _unpacker() {
 	*.lz)
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		comp="${UNPACKER_LZIP} -dc" ;;
+	*.zst)
+		comp="zstd -dfc" ;;
 	esac
 
 	# then figure out if there are any archiving aspects
@@ -459,6 +461,8 @@ unpacker_src_uri_depends() {
 			d="app-arch/unzip" ;;
 		*.lz)
 			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
+		*.zst)
+			d="app-arch/zstd" ;;
 		esac
 		deps+=" ${d}"
 	done
