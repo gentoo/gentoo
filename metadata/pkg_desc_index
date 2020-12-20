@@ -16739,7 +16739,7 @@ sys-apps/apparmor 2.13.4 3.0.0 3.0.1: Userspace utils and init scripts for the A
 sys-apps/apparmor-utils 2.13.4-r1 3.0.0-r1 3.0.1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.4: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
-sys-apps/attr 2.4.48-r3 2.4.48-r4 9999: Extended attributes tools
+sys-apps/attr 2.4.48-r4 2.4.48-r5 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.34.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
@@ -17261,7 +17261,7 @@ sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake 
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1 9999: Tools necessary to build programs
-sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
+sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1 8.2.1-r100 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1 2.35.1-r1: Tools necessary to build programs
 sys-devel/bison 3.1 3.6.4 3.7.1-r1 3.7.3 3.7.4: A general-purpose (yacc-compatible) parser generator

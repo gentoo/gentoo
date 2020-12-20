@@ -1,5 +1,5 @@
 BDEPEND=nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install prepare setup test unpack
+DEFINED_PHASES=compile configure install prepare test unpack
 DESCRIPTION=Extended attributes tools
 EAPI=7
 HOMEPAGE=https://savannah.nongnu.org/projects/attr
@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 PROPERTIES=live
 SLOT=0
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	b2c915190b051f55a23b9354b9849847	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=6c68800ddeef26afacc7a1e7a866b588
+_md5_=533a58f2fd38c82929288e86d53c88af
