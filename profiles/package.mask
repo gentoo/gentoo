@@ -527,6 +527,7 @@ kde-apps/kdebase-meta:5
 >=net-analyzer/suricata-6.0.1-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
+>=net-misc/asterisk-16.14.0-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-astronomy/celestia-1.7.0_pre20200316-r100
 >=sci-libs/libsc-2.2-r100
