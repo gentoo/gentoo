@@ -10790,7 +10790,7 @@ dev-util/mingw64-runtime 7.0.0-r1 8.0.0: Free Win64 runtime and import library d
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netsurf-buildsystem 1.8-r1 1.9: Build system used for netsurf and its libs
-dev-util/ninja 1.10.0 1.10.1 1.10.2 9999: A small build system similar to make
+dev-util/ninja 1.10.0 1.10.1 1.10.2 1.10.2-r1 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243 10.2.89: NVIDIA CUDA Software Development Kit
@@ -14996,7 +14996,7 @@ net-misc/apt-cacher-ng 3.5_p1-r1 9999999: Yet another caching HTTP proxy for Deb
 net-misc/aria2 1.34.0-r2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.25.3-r1 13.34.0 13.35.0 13.36.0 13.37.0 16.12.0-r1 16.13.0 16.14.0: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3-r1 13.34.0 13.35.0 13.36.0 13.37.0 16.12.0-r1 16.13.0 16.14.0 16.14.0-r100: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
