@@ -64,6 +64,7 @@ DOCS=( AUTHORS HACKING NEWS README.md README.generic README.kernel README.module
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/051-dracut.sh-move-ldconfig.patch
 	"${FILESDIR}"/gentoo-ldconfig-paths.patch
 )
 

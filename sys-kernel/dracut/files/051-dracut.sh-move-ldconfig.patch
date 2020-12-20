@@ -1,0 +1,60 @@
+From 48258fae9fa58046d7d1a246ea3d821530180643 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Fri, 18 Dec 2020 00:01:32 +0300
+Subject: [PATCH] dracut.sh: Move ldconfig after library workaround
+
+This fixes boot failures when libgcc_s.so.1 is in a non-standard
+directory.
+
+Bug: https://bugs.gentoo.org/760249
+Fixes: de3cb0e3214c (dracut.sh: Move the library workaround after squash)
+---
+ dracut.sh | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index 0f4648397..c6c361acc 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1724,20 +1724,6 @@ for ((i=0; i < ${#include_src[@]}; i++)); do
+     fi
+ done
+ 
+-if [[ $kernel_only != yes ]]; then
+-    # make sure that library links are correct and up to date
+-    for f in $dracutsysrootdir/etc/ld.so.conf $dracutsysrootdir/etc/ld.so.conf.d/*; do
+-        [[ -f $f ]] && inst_simple "${f#$dracutsysrootdir}"
+-    done
+-    if ! $DRACUT_LDCONFIG -r "$initdir" -f /etc/ld.so.conf; then
+-        if [[ $EUID = 0 ]]; then
+-            derror "ldconfig exited ungracefully"
+-        else
+-            derror "ldconfig might need uid=0 (root) for chroot()"
+-        fi
+-    fi
+-fi
+-
+ if [[ $do_hardlink = yes ]] && command -v hardlink >/dev/null; then
+     dinfo "*** Hardlinking files ***"
+     hardlink "$initdir" 2>&1
+@@ -1920,6 +1906,20 @@ if [[ $kernel_only != yes ]]; then
+     fi
+ fi
+ 
++if [[ $kernel_only != yes ]]; then
++    # make sure that library links are correct and up to date
++    for f in $dracutsysrootdir/etc/ld.so.conf $dracutsysrootdir/etc/ld.so.conf.d/*; do
++        [[ -f $f ]] && inst_simple "${f#$dracutsysrootdir}"
++    done
++    if ! $DRACUT_LDCONFIG -r "$initdir" -f /etc/ld.so.conf; then
++        if [[ $EUID = 0 ]]; then
++            derror "ldconfig exited ungracefully"
++        else
++            derror "ldconfig might need uid=0 (root) for chroot()"
++        fi
++    fi
++fi
++
+ if [[ $do_strip = yes ]] && ! [[ $DRACUT_FIPS_MODE ]]; then
+     dinfo "*** Stripping files ***"
+     find "$initdir" -type f \
