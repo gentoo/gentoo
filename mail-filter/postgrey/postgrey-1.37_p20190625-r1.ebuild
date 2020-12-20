@@ -20,6 +20,7 @@ DEPEND="
 	acct-user/postgrey
 "
 RDEPEND="
+	${DEPEND}
 	>=dev-lang/perl-5.6.0
 	dev-perl/Net-Server
 	dev-perl/IO-Multiplex
