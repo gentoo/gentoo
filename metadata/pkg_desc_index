@@ -5110,7 +5110,7 @@ dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compi
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
-dev-lang/mujs 1.0.6 1.0.7 1.0.9: An embeddable Javascript interpreter in C.
+dev-lang/mujs 1.0.9: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.4.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
@@ -5184,7 +5184,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.72.0-r2 1.74.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.15.0 2.16.0 2.17.2: C++ crypto library
+dev-libs/botan 2.16.0 2.17.2: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.20.1: Blocking, shuffling and lossless compression library
@@ -5406,7 +5406,7 @@ dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.3 0.1.3-r1 0.1.4: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0 1.5.0: X.509 and CMS (PKCS#7) library
-dev-libs/liblinear 210-r1 221 230 240-r1 241: A Library for Large Linear Classification
+dev-libs/liblinear 241: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
@@ -5484,7 +5484,7 @@ dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
-dev-libs/libtommath 1.1.0 1.2.0: Optimized and portable routines for integer theoretic applications
+dev-libs/libtommath 1.2.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtpms 0.7.4: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
@@ -8975,7 +8975,7 @@ dev-python/readme_renderer 28.0: a library for rendering "readme" descriptions f
 dev-python/readthedocs-sphinx-ext 2.1.1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
-dev-python/redis-py 3.3.11 3.5.3: Python client for Redis key-value store
+dev-python/redis-py 3.5.3: Python client for Redis key-value store
 dev-python/rednose 0.4.3: coloured output for nosetests
 dev-python/reedsolomon 1.5.4: Pure-Python Reed Solomon encoder/decoder
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
@@ -9150,7 +9150,7 @@ dev-python/svgwrite 1.4: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 1.4.0 2.0.0 2.0.1: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
-dev-python/sympy 1.6.2 1.7 1.7.1: Computer Algebra System in pure Python
+dev-python/sympy 1.6.2 1.7.1: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
 dev-python/tappy 3.0: Test Anything Protocol (TAP) tools
@@ -14275,7 +14275,7 @@ net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for I
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
-net-analyzer/mtr 0.87 0.93-r2 0.94 9999: My TraceRoute, an Excellent network diagnostic tool
+net-analyzer/mtr 0.94 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.1.8 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/multipath-tcp-tools 2018_p12_p21 999999: Analysis tools for Multipath Transmission Control Protocol (MPTCP)
 net-analyzer/munin 2.0.59 2.0.64 2.0.65: Munin Server Monitoring Tool
@@ -14374,7 +14374,7 @@ net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1.2: network scanner that gathers info on SSH protocols and versions
-net-analyzer/scapy 2.4.3 2.4.4 9999: A Python interactive packet manipulation program for mastering the network
+net-analyzer/scapy 2.4.4 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 5.06: sflowtool is a utility for collecting and processing sFlow data
@@ -14650,7 +14650,7 @@ net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-im/zoom 5.4.53391.1108 5.4.54779.1115-r3 5.4.56259.1207 5.4.56259.1207-r2: Video conferencing and web conferencing service
-net-irc/anope 2.0.7 2.0.9: Anope IRC Services
+net-irc/anope 2.0.9: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
@@ -15025,7 +15025,7 @@ net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with 
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
-net-misc/chrony 3.5.1-r1 4.0 9999: NTP client and server programs
+net-misc/chrony 4.0 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.05.09 2020.11.01: Qt GUI for Connman with system tray icon
@@ -15537,7 +15537,7 @@ net-wireless/hackrf-tools 2018.01.1-r2 9999: tools for communicating with HackRF
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.9-r1 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.3 9999: Tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 5.4 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
@@ -16895,7 +16895,7 @@ sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
 sys-apps/miscfiles 1.5-r3: Miscellaneous files
 sys-apps/mlocate 0.26-r2 0.26-r3: Merging locate is an utility to index and quickly search for files
 sys-apps/mlxup-bin 4.13.0: Mellanox Update and Query Utility
-sys-apps/moreutils 0.63 0.64: a collection of tools that nobody thought to write when Unix was young
+sys-apps/moreutils 0.64: a collection of tools that nobody thought to write when Unix was young
 sys-apps/most 5.0.0a-r1 5.1.0: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.2 1.4.4 1.4.5.1: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
@@ -17162,7 +17162,7 @@ sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.12-r1 2.14 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.3: Plymouth plugin for OpenRC
-sys-boot/raspberrypi-firmware 1.20190925 1.20201022 1.20201201 9999: Raspberry Pi (all versions) bootloader and GPU firmware
+sys-boot/raspberrypi-firmware 1.20201022 1.20201201 9999: Raspberry Pi (all versions) bootloader and GPU firmware
 sys-boot/refind 0.11.4 0.12.0-r1: The UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
@@ -17664,7 +17664,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 2.0.14 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20200922 20201022 20201122: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20201022 20201122: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
