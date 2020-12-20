@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="libtommath">Uses <pkg>dev-libs/libtommath</pkg> for mathematical operations</flag>
+		<flag name="tomsfastmath">Uses <pkg>dev-libs/tomsfastmath</pkg> for mathematical operations</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libtom/libtomcrypt</remote-id>
+	</upstream>
+</pkgmetadata>
