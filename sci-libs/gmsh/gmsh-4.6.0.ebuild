@@ -15,7 +15,7 @@ LICENSE="GPL-3 free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 ## cgns is not compiling ATM, maybe fix cgns lib first
-IUSE="blas cgns examples jpeg lua med metis mpi netgen opencascade petsc png python X zlib"
+IUSE="blas cgns examples jpeg med metis mpi netgen opencascade petsc png python X zlib"
 
 REQUIRED_USE="med? ( mpi )"
 
@@ -25,7 +25,6 @@ RDEPEND="
 	blas? ( virtual/blas virtual/lapack sci-libs/fftw:3.0 )
 	cgns? ( sci-libs/cgnslib )
 	jpeg? ( virtual/jpeg:0 )
-	lua? ( dev-lang/lua:0 )
 	med? ( sci-libs/med[mpi] )
 	opencascade? ( sci-libs/opencascade:* )
 	png? ( media-libs/libpng:0 )
