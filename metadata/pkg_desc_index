@@ -2700,7 +2700,7 @@ app-portage/g-sorcery 0.2.1-r1: framework for ebuild generators
 app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
 app-portage/gemato 15.2 16.1 16.2 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
-app-portage/gentoolkit 0.4.6 0.4.7 0.4.8 0.5.0-r2 9999: Collection of administration scripts for Gentoo
+app-portage/gentoolkit 0.5.0-r2 9999: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.1 0.3.2 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
@@ -17494,7 +17494,7 @@ sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encryp
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.37 5.4.48: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
-sys-kernel/dracut 050-r2 051 9999: Generic initramfs generation tool
+sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.4.82 5.4.83 5.4.84 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14 5.9.15 5.10.1 5.10.1-r1: Linux kernel built with Gentoo patches
