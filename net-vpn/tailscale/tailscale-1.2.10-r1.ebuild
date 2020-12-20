@@ -220,7 +220,7 @@ SRC_URI="https://github.com/tailscale/tailscale/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="net-firewall/iptables"
 
