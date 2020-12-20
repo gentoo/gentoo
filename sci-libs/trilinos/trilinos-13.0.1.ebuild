@@ -101,7 +101,6 @@ src_configure() {
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
-		-DZoltan2_ENABLE_Experimental=ON
 		-DTPL_ENABLE_BinUtils=ON
 		-DTPL_ENABLE_BLAS=ON
 		-DTPL_ENABLE_LAPACK=ON
