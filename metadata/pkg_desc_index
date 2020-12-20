@@ -14660,7 +14660,7 @@ net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
 net-irc/eggdrop 1.8.3 1.8.4 1.8.4-r1: An IRC bot extensible with C or TCL
 net-irc/emech 3.0.99_p3: UNIX compatible IRC bot programmed in the C language
 net-irc/epic5 2.0.1: Epic5 IRC Client
-net-irc/hexchat 2.14.3 9999: Graphical IRC client based on XChat
+net-irc/hexchat 2.14.3 2.14.3-r100 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.29 3.4.0-r1 3.8.1: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irccloud-desktop-bin 0.15.0: IRCCloud Desktop Client
@@ -16305,7 +16305,7 @@ sci-libs/taucs 2.2-r1: C library of sparse linear solvers
 sci-libs/tensorflow 2.3.1-r1 2.4.0_rc3 2.4.0_rc4: Computation framework using data flow graphs for scalable machine learning
 sci-libs/tensorflow-estimator 2.3.0 2.4.0_rc0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
-sci-libs/trilinos 12.14.1 12.18.1 13.0.0: Scientific library collection for large scale problems
+sci-libs/trilinos 13.0.0 13.0.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
