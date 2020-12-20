@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ IUSE="debug examples mpi openmp romio static-libs threads"
 REQUIRED_USE="romio? ( mpi )"
 
 RDEPEND="
-	dev-lang/lua:*
+	dev-lang/lua:0=
 	sys-apps/util-linux
 	virtual/blas
 	virtual/lapack
