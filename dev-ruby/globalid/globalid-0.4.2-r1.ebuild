@@ -16,7 +16,7 @@ SRC_URI="https://github.com/rails/globalid/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/bundler >=dev-ruby/activemodel-4.2.0 >=dev-ruby/railties-4.2.0 )"
