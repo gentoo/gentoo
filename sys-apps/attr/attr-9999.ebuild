@@ -23,11 +23,6 @@ IUSE="debug nls static-libs"
 
 BDEPEND="nls? ( sys-devel/gettext )"
 
-pkg_setup() {
-	# Remove -flto* from flags as this breaks binaries (bug #644048)
-	filter-flags -flto*
-}
-
 src_prepare() {
 	default
 
@@ -40,13 +35,16 @@ src_prepare() {
 	fi
 }
 
-multilib_src_configure() {
-	unset PLATFORM #184564
-	export OPTIMIZER=${CFLAGS}
-	export DEBUG=-DNDEBUG
-
+src_configure() {
+	# Remove -flto* from flags as this breaks binaries (bug #644048)
+	filter-flags -flto*
+	append-ldflags "-Wl,--no-gc-sections" #700116
 	tc-ld-disable-gold #644048
+	append-lfs-flags #760857
+	multilib-minimal_src_configure
+}
 
+multilib_src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-shared
