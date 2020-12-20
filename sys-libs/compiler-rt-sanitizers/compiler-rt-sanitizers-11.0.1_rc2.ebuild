@@ -48,6 +48,10 @@ LLVM_COMPONENTS=( compiler-rt )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
 llvm.org_set_globals
 
+PATCHES=(
+	"${FILESDIR}/9999/compiler-rt-prefix-paths.patch"
+)
+
 python_check_deps() {
 	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -149,8 +153,15 @@ src_configure() {
 
 	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
 		mycmakeargs+=(
-			# disable use of SDK for the system itself
-			-DDARWIN_macosx_CACHED_SYSROOT=/
+			# setting -isysroot is disabled with compiler-rt-prefix-paths.patch
+			# this allows adding arm64 support using SDK in EPREFIX
+			-DDARWIN_macosx_CACHED_SYSROOT="${EPREFIX}/MacOSX.sdk"
+			# Set version based on the SDK in EPREFIX
+			# This disables i386 for SDK >= 10.15
+			# Will error if has_use tsan and SDK < 10.12
+			-DDARWIN_macosx_OVERRIDE_SDK_VERSION="$(realpath ${EPREFIX}/MacOSX.sdk | sed -e 's/.*MacOSX\(.*\)\.sdk/\1/')"
+			# Use our libtool instead of looking it up with xcrun
+			-DCMAKE_LIBTOOL="${EPREFIX}/usr/bin/${CHOST}-libtool"
 		)
 	fi
 
