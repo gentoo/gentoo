@@ -3527,7 +3527,7 @@ dev-db/oracle-instantclient-basic 12: Transition package moving to single dev-db
 dev-db/oracle-instantclient-jdbc 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.7.27.30-r1 8.0.19.10-r1 8.0.20.11-r2 8.0.21.12: Fully compatible, enhanced and open source drop-in replacement for MySQL
+dev-db/percona-server 8.0.21.12 8.0.22.13: Fully compatible, enhanced and open source drop-in replacement for MySQL
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
@@ -5713,7 +5713,7 @@ dev-lua/lpeg 1.0.1 1.0.2 1.0.2-r101: Parsing Expression Grammars for Lua
 dev-lua/lua-argparse 0.6.0-r1 0.6.0-r100: Command line argument parser for the Lua Programming Language
 dev-lua/lua-bit32 5.3.5-r2 5.3.5-r101: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7 2.1.0.8 2.1.0.8-r100: A fast JSON encoding/parsing module for Lua
-dev-lua/lua-openssl 0.7.8_p0-r2 0.7.8_p0-r100: OpenSSL binding for Lua
+dev-lua/lua-openssl 0.7.8_p0-r3 0.7.8_p0-r101: OpenSSL binding for Lua
 dev-lua/lua-term 0.3 0.7 0.7-r101: Terminal operations for Lua
 dev-lua/lua-utf8 0.1.3 0.1.3-r100: A UTF-8 support module for Lua and LuaJIT
 dev-lua/lua-zlib 1.2 1.2-r100: Simple streaming interface to zlib for Lua
@@ -14435,7 +14435,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.4.0 3.4.1 3.4.2 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.4.0 3.4.1 3.4.2 3.4.2-r100 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks

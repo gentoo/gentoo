@@ -1313,8 +1313,6 @@ dev-db/oracle-instantclient:sdk - Header files and an example makefile for devel
 dev-db/oracle-instantclient:sqlplus - The SQL*Plus command line tool for SQL and PL/SQL queries
 dev-db/oracle-instantclient:tools - Data Pump, SQL*Loader and Workload Replay Client
 dev-db/percona-server:cjk - Add CJK support for InnoDB fulltext search using app-text/mecab
-dev-db/percona-server:client-libs - Build the libmysqlclient libraries
-dev-db/percona-server:experimental - Build experimental features aka "rapid" plugins
 dev-db/percona-server:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/percona-server:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
 dev-db/percona-server:numa - Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)
@@ -1322,10 +1320,8 @@ dev-db/percona-server:profiling - Add support for statement profiling (requires 
 dev-db/percona-server:rocksdb - Add support for RocksDB; a key/value, LSM database optimized for flash storage
 dev-db/percona-server:router - Build the MySQL router program
 dev-db/percona-server:server - Build the server program
-dev-db/percona-server:systemtap - Build support for profiling and tracing using dev-util/systemtap
 dev-db/percona-server:tokudb - Add support for TokuDB storage engine
 dev-db/percona-server:tokudb-backup-plugin - Builds the TokuDB backup plugin
-dev-db/percona-server:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
 dev-db/pgbouncer:c-ares - Use c-ares as the DNS backend instead of evdns (libevent).
 dev-db/pgbouncer:udns - Use udns as the DNS backend instead of evdns (libevent). Supports IPv4 only.
 dev-db/pgpool2:memcached - Use memcached for query caching.
