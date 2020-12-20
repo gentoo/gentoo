@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2020-12-20)
+# we need to establish this darwin-xcode version can really be our
+# linker once we figure out TAPI support
+=sys-devel/binutils-apple-8.2.1-r100
+
 # Fabian Groffen <grobian@gentoo.org> (2020-11-23)
 # no symbols from libopenbsd-compat
 =net-misc/openssh-8.3_p1-r5
