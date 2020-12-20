@@ -24,6 +24,11 @@ IUSE="debug nls static-libs"
 BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-perl-5.26.patch"
+		"${FILESDIR}/${P}-switch-back-to-syscall.patch"
+	)
+
 	default
 
 	if [[ ${PV} == 9999 ]] ; then
