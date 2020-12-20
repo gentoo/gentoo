@@ -766,7 +766,7 @@ app-arch/libarchive 3.4.3 3.5.0: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lxqt-archiver 0.2.0 0.3.0: Qt GUI File Archiver
-app-arch/lz4 1.9.2 1.9.3: Extremely Fast Compression algorithm
+app-arch/lz4 1.9.3: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.21: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.21: Lziprecover is a data recovery tool and decompressor for lzip compressed files
@@ -2489,7 +2489,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.6 1.2.7: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.6 1.2.7 1.2.8: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
@@ -2682,7 +2682,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.9 0.34.10 0.34.11: Search and query ebuilds
+app-portage/eix 0.34.11: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r3 0.7.9: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -5383,7 +5383,7 @@ dev-libs/libgcrypt 1.8.6 1.8.7: General purpose crypto library based on the code
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 1.0.1-r1 1.1.0-r2: A linkable library for Git
+dev-libs/libgit2 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
 dev-libs/libgnome-games-support 1.6.1: Library for code common to Gnome games
 dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
@@ -8254,7 +8254,7 @@ dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.10.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.7.1: Helping users and developers to get information about the environment
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
-dev-python/hiredis 1.0.1 1.0.1-r1 1.1.0: Python extension that wraps hiredis
+dev-python/hiredis 1.1.0: Python extension that wraps hiredis
 dev-python/hpack 3.0.0 4.0.0: Pure-Python HPACK header compression
 dev-python/html2text 2020.1.16-r1: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
@@ -8425,7 +8425,7 @@ dev-python/microversion-parse 1.0.1: A simple parser for OpenStack microversion 
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.1.20201016 2.2.0: Python bindings for UPnP client library
+dev-python/miniupnpc 2.2.0: Python bindings for UPnP client library
 dev-python/misaka 2.1.1: A CFFI binding for Hoedown, a markdown parsing library
 dev-python/mistune 0.8.4-r1: The fastest markdown parser in pure Python
 dev-python/mkautodoc 0.1.0: Auto documentation for MkDocs
@@ -8700,7 +8700,7 @@ dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyelftools 0.26: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 3.1.0 3.2.0: Python bindings for the Enchant spellchecking system
-dev-python/pyfakefs 4.2.1 4.3.0 4.3.1 4.3.2: a fake file system that mocks the Python file system modules
+dev-python/pyfakefs 4.3.2 4.3.3: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
 dev-python/pyflakes 2.2.0: Passive checker for Python programs
 dev-python/pyfltk 1.3.3: Python interface to Fltk library
@@ -8710,7 +8710,7 @@ dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.3.0 1.4.0: Python bindings for libgit2
+dev-python/pygit2 1.4.0: Python bindings for libgit2
 dev-python/pyglet 1.5.7-r1 1.5.10 1.5.11 1.5.13: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.2 2.7.3: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -8886,7 +8886,7 @@ dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.1.1: Client Library for OpenStack Identity
-dev-python/python-language-server 0.35.1-r1 0.36.1 0.36.2: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.36.1 0.36.2: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
@@ -9086,7 +9086,7 @@ dev-python/soupsieve 2.0.1 2.1.0: A modern CSS selector implementation for Beaut
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.2.1 3.3.1: Python documentation generator
+dev-python/sphinx 2.4.4 3.2.1 3.3.1 3.4.0: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9215,7 +9215,7 @@ dev-python/ubelt 0.9.1: A stdlib like feel, and extra batteries. Hashing, Cachin
 dev-python/ujson 1.35-r1 4.0.1: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
-dev-python/unidecode 0.04.21 1.1.1: Module providing ASCII transliterations of Unicode text
+dev-python/unidecode 1.1.1 1.1.2: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
 dev-python/uranium 4.7.0 4.8.0: A Python framework for building 3D printing related applications
@@ -10656,7 +10656,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.6.0 1.7.0-r1 1.8.0 1.9.0 2.0.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.9.0 2.0.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -14700,7 +14700,7 @@ net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for fr
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 6.2.5: Generic Online Banking Interface
-net-libs/axtls 2.1.5 2.1.5-r1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 2.1.5 2.1.5-r1 2.1.5-r100: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 2.1.0: A multicast protocol to support Bible software shared co-navigation
@@ -14844,7 +14844,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.16.8 2.24.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.1.20201016 2.2.0: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.2.0: UPnP client library and a simple UPnP client
 net-libs/nDPI 3.0-r1 3.0-r2 3.2-r1 3.2-r2 3.4 9999: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nativebiginteger 0.9.47 0.9.48: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0 0.31.1 0.31.2: HTTP and WebDAV client library
@@ -17395,7 +17395,7 @@ sys-fs/dislocker 0.7.1-r2 0.7.1-r3 9999: Dislocker is used to read BitLocker enc
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
-sys-fs/duperemove 0.11.1 0.11.2: Btrfs and xfs deduplication utility
+sys-fs/duperemove 0.11.2: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.5 1.45.6: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
@@ -17466,7 +17466,7 @@ sys-fs/sandboxfs 0.2.0: A virtual file system for sandboxing
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.4.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
-sys-fs/squashfs-tools 4.4 4.4-r1 4.4_p1: tools to create and extract Squashfs filesystems
+sys-fs/squashfs-tools 4.4_p1: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 1.0.3 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
@@ -19007,7 +19007,7 @@ xfce-extra/xfce4-genmon-plugin 4.0.2: Cyclically spawned executable output on th
 xfce-extra/xfce4-hdaps 1.0.0: Show the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-indicator-plugin 2.3.4: A panel plugin that uses indicator-applet to show new messages
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r4: A panel plug-in to show state of Caps, Num and Scroll Lock keys
-xfce-extra/xfce4-mailwatch-plugin 1.2.0-r6 1.3.0: An mail notification panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-mailwatch-plugin 1.3.0: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.2: A network load plug-in for the Xfce panel
@@ -19017,7 +19017,7 @@ xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel 
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.6-r1 1.7.1: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.3: A panel plug-in for PulseAudio volume control
-xfce-extra/xfce4-screensaver 0.1.10 0.1.11: Screen saver and locker (port of MATE screensaver)
+xfce-extra/xfce4-screensaver 0.1.11: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
@@ -19030,7 +19030,7 @@ xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.10.1 0.10.2: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-weather-plugin 0.10.2: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.4.6: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
