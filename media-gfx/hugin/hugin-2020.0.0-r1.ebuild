@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1 wxwidgets cmake-utils eapi7-ver xdg
+inherit python-single-r1 wxwidgets cmake xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -39,7 +39,7 @@ CDEPEND="
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
-	x11-libs/wxGTK:3.0=[X,opengl]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	lapack? ( virtual/blas virtual/lapack )
 	python? ( ${PYTHON_DEPS} )
 	sift? ( media-gfx/autopano-sift-C )"
@@ -68,7 +68,7 @@ src_prepare() {
 		-e "/COMMAND.*GZIP/d" \
 		-e "s/\.gz//g" \
 		"${S}"/doc/CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -76,11 +76,11 @@ src_configure() {
 		-DBUILD_HSI=$(usex python)
 		-DENABLE_LAPACK=$(usex lapack)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use python && python_optimize
 
 	local lang
