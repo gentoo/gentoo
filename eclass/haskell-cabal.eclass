@@ -109,15 +109,6 @@ done
 
 if [[ -n "${CABAL_USE_HADDOCK}" ]]; then
 	IUSE="${IUSE} doc"
-	# don't require depend on itself to build docs.
-	# ebuild bootstraps docs from just built binary
-	#
-	# starting from ghc-7.10.2 we install haddock bundled with
-	# ghc to keep links to base and ghc library, otherwise
-	# newer haddock versions change index format and can't
-	# read index files for packages coming with ghc.
-	[[ ${CATEGORY}/${PN} = "dev-haskell/haddock" ]] || \
-		DEPEND="${DEPEND} doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) )"
 fi
 
 if [[ -n "${CABAL_USE_HSCOLOUR}" ]]; then
