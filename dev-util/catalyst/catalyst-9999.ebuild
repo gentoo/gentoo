@@ -41,7 +41,7 @@ RDEPEND="
 	app-arch/tar[xattr]
 	dev-vcs/git
 	sys-fs/dosfstools
-	sys-fs/squashfs-tools-ng
+	sys-fs/squashfs-tools-ng[tools]
 
 	iso? (
 		app-cdr/cdrtools
