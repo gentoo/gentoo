@@ -27,7 +27,7 @@ else
 
 	#Desired (minimum) keywords
 	#KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
