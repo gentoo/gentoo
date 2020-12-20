@@ -17,7 +17,7 @@ RESTRICT="strip"
 CDEPEND="!app-admin/puppet
 	!dev-ruby/hiera
 	!dev-ruby/facter
-	!app-emulation/virt-what
+	app-emulation/virt-what
 	acct-user/puppet
 	acct-group/puppet"
 
@@ -70,6 +70,5 @@ src_install() {
 	dosym ../../opt/puppetlabs/bin/facter /usr/bin/facter
 	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
-	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
 	dosym ../../../../usr/lib64/xcrypt/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
 }
