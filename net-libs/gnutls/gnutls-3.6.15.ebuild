@@ -54,7 +54,7 @@ DOCS=(
 
 HTML_DOCS=()
 
-#PATCHES=( "${FILESDIR}"/${PN}-3.6.15-skip-dtls-seccomp-tests.patch )
+PATCHES=( "${FILESDIR}"/${PN}-3.6.15-skip-dtls-seccomp-tests.patch )
 
 pkg_setup() {
 	# bug#520818
