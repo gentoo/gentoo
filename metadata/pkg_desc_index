@@ -609,7 +609,7 @@ app-admin/gnome-abrt 1.3.6: A utility for viewing problems that have occurred wi
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.10.1-r2: a simple but powerful password manager for the terminal
-app-admin/graylog 3.3.8 4.0.1: Free and open source log management
+app-admin/graylog 3.3.8 3.3.9 4.0.1: Free and open source log management
 app-admin/gtkdiskfree 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
@@ -1021,7 +1021,7 @@ app-crypt/keybase 4.4.2 4.5.0 4.7.0 4.7.2 5.1.1 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98.1-r2 0.98.1-r3: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
-app-crypt/libmd 1.0.0 1.0.0-r1 1.0.1 99999: Message Digest functions from BSD systems
+app-crypt/libmd 1.0.1 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.20.2 0.20.3 0.20.4: GObject library for accessing the freedesktop.org Secret Service API
@@ -2066,9 +2066,9 @@ app-emulation/winetricks 20200412 99999999: Easy way to install DLLs needed to w
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.13.2-r2 4.14.0-r6: The Xen virtual machine monitor
+app-emulation/xen 4.13.2-r2 4.13.2-r3 4.14.0-r7: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.13.2 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.13.2-r1 4.14.0-r4: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.13.2-r1 4.13.2-r2 4.14.0-r5: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
@@ -2670,9 +2670,9 @@ app-pda/ideviceinstaller 1.1.0: A tool to interact with the installation_proxy o
 app-pda/ifuse 1.1.3-r1: Mount Apple iPhone/iPod Touch file systems for backup purposes
 app-pda/iripdb 0.1.3b: Allows generating the DB files necessary for the iRiver iHP-1xx
 app-pda/jpilot 1.8.2-r1: Desktop Organizer Software for the Palm Pilot
-app-pda/libimobiledevice 1.2.0-r1 1.2.1_pre20200220 1.3.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
-app-pda/libplist 2.1.0 2.2.0-r1 2.2.0-r2: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libusbmuxd 1.0.10-r1 2.0.1 2.0.2-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
+app-pda/libimobiledevice 1.3.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
+app-pda/libplist 2.2.0-r2: Support library to deal with Apple Property Lists (Binary & XML)
+app-pda/libusbmuxd 2.0.2-r1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/pilot-link 0.12.5-r3: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.1.1_pre20200121 1.1.1: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
@@ -3068,7 +3068,7 @@ app-text/yelp-tools 3.32.2: Collection of tools for building and converting docu
 app-text/yodl 4.02.01 4.02.02-r1: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
-app-text/zathura-djvu 0.2.8 0.2.9 9999: DjVu plug-in for zathura
+app-text/zathura-djvu 0.2.9 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
 app-text/zathura-pdf-mupdf 0.3.5 0.3.6 9999: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.9 0.3.0 9999: PDF plug-in for zathura
@@ -10481,7 +10481,7 @@ dev-tex/dvi2gr 0.4-r1: DVI to Grace translator
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103-r1: Collection of blackletter fonts for LaTeX
 dev-tex/glossaries 4.41 4.46: Create glossaries and lists of acronyms
-dev-tex/hevea 2.29 2.30 2.31: HeVeA is a quite complete and fast LaTeX to HTML translator
+dev-tex/hevea 2.31: HeVeA is a quite complete and fast LaTeX to HTML translator
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425-r1: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
@@ -12431,7 +12431,7 @@ mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
 mail-filter/postfwd 1.35-r3 2.00-r1 2.02: Versatile Postfix policy server with a flexible ruleset based configuration
 mail-filter/postgrey 1.36-r1 1.37 1.37_p20190625-r1: Postgrey is a Postfix policy server implementing greylisting
-mail-filter/postsrsd 1.6: Postfix Sender Rewriting Scheme daemon
+mail-filter/postsrsd 1.6 1.10: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
 mail-filter/pyzor 1.0.0-r1 1.0.0_p20200523: A distributed, collaborative spam detection and filtering network
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
@@ -12897,7 +12897,7 @@ media-gfx/sane-backends 1.0.30-r2: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r5 1.0.14-r6: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.16-r1: Interactive post-processing tool for scanned pages
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
-media-gfx/scrot 0.8_p13-r1 1.2 1.3-r1 1.4 9999: Screen capture utility using imlib2 library
+media-gfx/scrot 1.4 9999: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.30.10 0.30.11: Open source photo manager for GNOME
 media-gfx/simple-scan 3.36.4 3.36.7: Simple document scanning utility
@@ -14784,7 +14784,7 @@ net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
 net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70 0.9.71: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
-net-libs/libmrss 0.19.2 0.19.2-r1: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
+net-libs/libmrss 0.19.2-r1: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
@@ -14804,7 +14804,7 @@ net-libs/libnma 1.8.24 1.8.28 1.8.30: NetworkManager GUI library
 net-libs/libnpupnp 4.0.13 4.0.14 4.0.14-r1: A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 net-libs/libnsl 0-r1 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
-net-libs/libnxml 0.18.3 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
+net-libs/libnxml 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
