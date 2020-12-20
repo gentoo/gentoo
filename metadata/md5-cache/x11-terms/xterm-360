@@ -11,4 +11,4 @@ RDEPEND=kernel_linux? ( sys-libs/libutempter ) kernel_FreeBSD? ( sys-libs/libute
 SLOT=0
 SRC_URI=ftp://ftp.invisible-island.net/xterm/xterm-360.tgz
 _eclasses_=desktop	8f9bfcc33705104f56748d9dedb3177a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=f17a59d09a5200860cd970268e13bddc
+_md5_=24f0e0f7255dd3fa0e341f0b4a396394
