@@ -15297,7 +15297,7 @@ net-misc/vncrec 0.2-r2: VNC session recorder and player
 net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC servers
 net-misc/vrrpd 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r3: Client for Wake-On-LAN
-net-misc/websocat 1.6.0: Command-line client for WebSockets, like netcat, with socat-like functions
+net-misc/websocat 1.6.0 1.6.0-r1: Command-line client for WebSockets, like netcat, with socat-like functions
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
@@ -16836,11 +16836,9 @@ sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hw-probe 1.6_beta2-r1: A tool to probe for hardware, check it's operability and find drivers
-sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwids 20200204 20200306 20200813.1 20201207 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.13 2.3.0: displays the hardware topology in convenient formats
-sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 4.1-r1 4.2: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
 sys-apps/ibm-powerpc-utils 1.3.8-r1 99999: Utilities for the maintainance of the IBM and Apple PowerPC platforms
 sys-apps/idle3-tools 0.9.3_pre20120123-r1: Set, get or disable the value of the idle3 timer found on WD HDDs
@@ -17553,7 +17551,6 @@ sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
 sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
-sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r4: Light-weight 'standard library' of C functions
 sys-libs/libomp 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.8.0-r1: GObject library for managing information about real and virtual OSes
