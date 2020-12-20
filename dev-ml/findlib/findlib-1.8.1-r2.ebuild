@@ -3,19 +3,16 @@
 
 EAPI=7
 
-inherit multilib
-
 DESCRIPTION="OCaml tool to find/use non-standard packages"
 HOMEPAGE="http://projects.camlcity.org/projects/findlib.html"
 SRC_URI="http://download.camlcity.org/download/${P}.tar.gz"
-IUSE="doc +ocamlopt tk"
 
 LICENSE="MIT"
-
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="doc +ocamlopt tk"
 
-DEPEND=">=dev-lang/ocaml-4.08.1-r1:=[ocamlopt?]
+DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"
 RDEPEND="${DEPEND}"
 
