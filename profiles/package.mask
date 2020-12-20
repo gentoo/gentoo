@@ -319,13 +319,6 @@ dev-python/vcversioner
 dev-python/xlutils
 dev-python/zict
 
-# Matt Turner <mattst88@gentoo.org> (2020-11-19)
-# Ancient packages long since deprecated in the age of udev.
-# Removal in 30 days. Bug #755617
-sys-apps/hwdata-gentoo
-sys-apps/hwsetup
-sys-libs/libkudzu
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
