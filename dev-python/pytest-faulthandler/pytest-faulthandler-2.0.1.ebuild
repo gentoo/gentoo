@@ -13,7 +13,7 @@ SRC_URI="https://github.com/pytest-dev/pytest-faulthandler/archive/${PV}.tar.gz 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	>=dev-python/pytest-5.0[${PYTHON_USEDEP}]
