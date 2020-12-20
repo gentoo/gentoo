@@ -12224,7 +12224,7 @@ kde-frameworks/kjobwidgets 5.74.0 5.77.0: Framework providing assorted widgets f
 kde-frameworks/kjs 5.74.0 5.77.0: ECMAScipt compatible parser and engine
 kde-frameworks/kjsembed 5.74.0 5.76.0: Framework binding JavaScript objects to QObjects
 kde-frameworks/kmediaplayer 5.74.0 5.76.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.74.0 5.77.0: Framework for downloading and sharing additional application data
+kde-frameworks/knewstuff 5.74.0 5.77.0-r1: Framework for downloading and sharing additional application data
 kde-frameworks/knotifications 5.74.0 5.77.0: Framework for notifying the user of an event
 kde-frameworks/knotifyconfig 5.74.0 5.77.0: Framework for configuring desktop notifications
 kde-frameworks/kpackage 5.74.0-r1 5.77.0: Framework to install and load packages of non binary content
@@ -12248,7 +12248,7 @@ kde-frameworks/kxmlrpcclient 5.74.0 5.76.0: Framework providing client-side supp
 kde-frameworks/modemmanager-qt 5.74.0 5.77.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.74.0 5.77.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.74.0 5.77.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.74.0-r1 5.77.0: Plasma framework
+kde-frameworks/plasma 5.74.0-r1 5.77.0-r1: Plasma framework
 kde-frameworks/prison 5.74.0 5.77.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.74.0 5.77.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.74.0-r2 5.77.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
