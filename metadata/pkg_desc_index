@@ -3030,7 +3030,7 @@ app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK forma
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.6.0 1.7.0 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
-app-text/txt2tags 3.3 3.7: Generate marked up documents (HTML, etc.)from a plain text file with markup
+app-text/txt2tags 3.7: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 1.1 1.2: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 6.1-r1 9999: Post-processor for scanned and photocopied book pages
@@ -3444,7 +3444,7 @@ dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libjson-rpc-cpp 1.3.0: JSON-RPC (1.0 & 2.0) framework for C++
-dev-cpp/libmcpp 2.7.2-r2 2.7.2-r3: A portable C++ preprocessor
+dev-cpp/libmcpp 2.7.2-r3: A portable C++ preprocessor
 dev-cpp/libodb 2.5.0_beta19: Common ODB runtime library
 dev-cpp/libodb-sqlite 2.5.0_beta19: Common ODB runtime library
 dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
@@ -5658,7 +5658,7 @@ dev-libs/uriparser 0.9.1 0.9.3 0.9.4: Uriparser is a strictly RFC 3986 compliant
 dev-libs/userspace-rcu 0.9.1 0.9.2 0.10.1 0.10.2 0.11.1 0.12.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r8 1.0.4-r9: Low-overhead managed string library for C
 dev-libs/utfcpp 3.1 3.1.1 3.1.2 9999: UTF-8 C++ library
-dev-libs/uthash 2.0.2 2.1.0: An easy-to-use hash implementation for C programmers
+dev-libs/uthash 2.1.0: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
@@ -13322,7 +13322,7 @@ media-libs/woff2 1.0.2-r1 1.0.2-r2: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
 media-libs/x265 3.4 9999: Library for encoding video streams into the H.265/HEVC format
-media-libs/xine-lib 1.2.9-r2 1.2.10 1.2.11 1.2.9999: Core libraries for Xine movie player
+media-libs/xine-lib 1.2.10 1.2.11 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.5 1.3.5-r1 1.3.7: High performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.8 2.9.2 3.0.1 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
@@ -13883,7 +13883,7 @@ media-sound/qjackctl 0.6.3 0.9.0 9999: Qt GUI to control the JACK Audio Connecti
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsampler 0.5.6 0.6.3 9999: Graphical frontend to the LinuxSampler engine
+media-sound/qsampler 0.6.3 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.3 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
@@ -14161,7 +14161,7 @@ media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/webcamoid 8.1.0-r1 8.7.1: A full featured webcam capture application
 media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline encoder for X264/AVC streams
-media-video/xine-ui 0.99.10 0.99.12: Xine movie player
+media-video/xine-ui 0.99.12: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 media-video/yle-dl 20201022: Download media files from Yle Areena
@@ -14921,7 +14921,7 @@ net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regula
 net-mail/hyperkitty 1.3.3: A web interface to access GNU Mailman v3 archives
 net-mail/imapsync 1.882: Tool for incremental and recursive IMAP transfers between mailboxes
 net-mail/isync 1.3.1 1.3.3 9999: MailDir mailbox synchronizer
-net-mail/lbdb 0.41 0.47: Little Brother database
+net-mail/lbdb 0.47: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/list-remote-forwards 0.0.1-r2: List all remote forwards for mail accounts stored in a database
 net-mail/mailbase 1.5-r1: MTA layout package
