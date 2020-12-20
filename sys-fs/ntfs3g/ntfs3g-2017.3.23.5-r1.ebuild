@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit linux-info udev toolchain-funcs libtool
+inherit linux-info toolchain-funcs
 
 MY_P="ntfs-3g_ntfsprogs-${PV%.*}AR.${PV##*.}"
 
@@ -74,4 +74,6 @@ src_install() {
 	use suid && fperms u+s /usr/bin/ntfs-3g
 	dosym mount.ntfs-3g /sbin/mount.ntfs
 	find "${D}" -name '*.la' -type f -delete || die
+	# https://bugs.gentoo.org/760780
+	keepdir "/usr/$(get_libdir)/ntfs-3g"
 }
