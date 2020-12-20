@@ -27,6 +27,6 @@ src_prepare() {
 }
 
 python_test() {
-	cd test
+	cd test || die
 	"${EPYTHON}" -m unittest reader.ReaderTest || die "tests failed"
 }
