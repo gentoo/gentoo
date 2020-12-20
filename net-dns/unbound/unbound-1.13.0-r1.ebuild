@@ -37,7 +37,7 @@ CDEPEND="acct-group/unbound
 	ecdsa? (
 		!libressl? ( dev-libs/openssl:0[-bindist] )
 	)
-	http2? ( net-libs/nghttp2 )
+	http2? ( net-libs/nghttp2[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	redis? ( dev-libs/hiredis:= )"
 
