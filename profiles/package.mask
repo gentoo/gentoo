@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
+# Needs a port to haskell-src-exts compatible with ghc-8.8.
+# https://github.com/ndmitchell/derive/pull/37
+dev-haskell/derive
+app-forensics/quickfuzz
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-19)
 # Made redundant by compiler-rt's crt implementation.  No revdeps left.
 # Removal in 30 days.  Bug #760711.
