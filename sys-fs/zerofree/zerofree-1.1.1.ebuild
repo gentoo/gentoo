@@ -10,7 +10,7 @@ SRC_URI="http://frippery.org/uml/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips x86"
 IUSE=""
 
 DEPEND="sys-libs/e2fsprogs-libs"
