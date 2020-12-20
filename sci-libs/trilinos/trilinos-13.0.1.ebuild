@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="http://trilinos.sandia.gov/"
 MY_PV="${PV//\./-}"
 PATCHSET="r0"
 SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-${PATCHSET}.tar.xz"
+	https://dev.gentoo.org/~tamiko/distfiles/${PN}-13.0.0-patches-${PATCHSET}.tar.xz"
 
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
@@ -96,11 +96,11 @@ src_configure() {
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES=ON
 		-DTrilinos_ENABLE_PyTrilinos=OFF
+		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
 		-DTrilinos_ENABLE_SEACASExodus="$(usex netcdf)"
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
-		-DZoltan2_ENABLE_Experimental=ON
 		-DTPL_ENABLE_BinUtils=ON
 		-DTPL_ENABLE_BLAS=ON
 		-DTPL_ENABLE_LAPACK=ON
@@ -195,9 +195,17 @@ src_install() {
 
 	# Clean up the mess:
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
+	mv "${ED}/usr/$(get_libdir)"/trilinos/cmake/* "${ED}/usr/$(get_libdir)"/cmake || die "mv failed"
+	rmdir "${ED}/usr/$(get_libdir)/trilinos/cmake" || die "rmdir failed"
 	if [ -f "${ED}"/lib/exodus.py ]; then
 		mv "${ED}"/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 	fi
+	if [[ $(get_libdir) != lib ]]; then
+		mv "${ED}"/usr/lib/pkgconfig "${ED}/usr/$(get_libdir)"
+	fi
+
+	mv "${ED}"/include/* "${ED}"/usr/include || die "mv failed"
+	rmdir "${ED}"/include
 
 	#
 	# register $(get_libdir)/trilinos in LDPATH so that the dynamic linker
