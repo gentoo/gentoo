@@ -14638,7 +14638,7 @@ net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.
 net-im/skypeforlinux 8.67.0.87 8.67.0.96: Instant messaging client, with support for audio and video
 net-im/slack 4.4.2 4.4.3 4.11.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
-net-im/swift 4.0.2-r4 4.0.2-r100: An elegant, secure, adaptable and intuitive XMPP Client
+net-im/swift 4.0.2-r4 4.0.2-r101: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.25560 1.3.00.30857: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.4.7-r1 2.4.11: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.4.4 2.4.5 2.4.7: Official desktop client for Telegram (binary package)
