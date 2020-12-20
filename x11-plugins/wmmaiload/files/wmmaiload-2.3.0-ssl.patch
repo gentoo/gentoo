@@ -1,0 +1,24 @@
+diff -Naur wmmaiload-2.3.0.orig/wmmaiload/Init.make wmmaiload-2.3.0/wmmaiload/Init.make
+--- wmmaiload-2.3.0.orig/wmmaiload/Init.make	2005-08-28 21:14:57.000000000 +0200
++++ wmmaiload-2.3.0/wmmaiload/Init.make	2020-12-20 22:10:24.487996211 +0100
+@@ -45,7 +45,7 @@
+ # SPECIFIC INFORMATIONS :
+ #
+ 
+-LIB_SSL = $(shell grep -q '^OPTIONS.*HAVE_SSL' ../Config.make && echo '-lssl')
++LIB_SSL = $(shell grep -q '^OPTIONS.*HAVE_SSL' ../Config.make && echo '-lssl -lcrypto')
+ LIB_THREADS = $(shell grep -q '^OPTIONS.*HAVE_THREADS' ../Config.make && echo '-lpthread')
+ 
+ CROSS_COMPILE =
+diff -Naur wmmaiload-2.3.0.orig/wmmaiload/ssl.c wmmaiload-2.3.0/wmmaiload/ssl.c
+--- wmmaiload-2.3.0.orig/wmmaiload/ssl.c	2005-07-30 15:52:55.000000000 +0200
++++ wmmaiload-2.3.0/wmmaiload/ssl.c	2020-12-20 22:10:30.327001632 +0100
+@@ -39,7 +39,7 @@
+ 
+         OpenSSL_add_all_algorithms();
+ 
+-        method = SSLv2_client_method();
++        method = SSLv23_client_method();
+         ctx = SSL_CTX_new(method);
+         return ctx;
+ }
