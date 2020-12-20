@@ -44,10 +44,6 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	unset PLATFORM #184564
-	export OPTIMIZER=${CFLAGS}
-	export DEBUG=-DNDEBUG
-
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-shared
