@@ -67,43 +67,6 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	# remove tests that fail due to network-sandbox
-	rm tests/test_build_linkcheck.py || die "Failed to remove web tests"
-	sed -i -e 's:test_latex_images:_&:' tests/test_build_latex.py || die
-
-	# fail under pypy3 (some because of missing typed-ast)
-	# revisit when pypy3 becomes pypy3.8
-	sed -i -e '/def test_partialfunction/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		-e '/def test_autodoc_typed_instance_variables/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		-e '/def test_autodoc_inherited_members_None/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		-e '/def test_cython/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		-e '/def test_automethod_for_builtin/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		tests/test_ext_autodoc.py || die
-	sed -i -e '/import pytest/aimport sys' \
-		-e '/def test_builtin_function/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		-e '/def test_methoddescriptor/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		-e '/def test_wrapped_function/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		tests/test_ext_autodoc_autofunction.py || die
-	sed -i -e '/import pytest/aimport sys' \
-		-e '/def test_autodoc_typehints_signature/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		tests/test_ext_autodoc_configs.py || die
-	sed -i -e '/import pytest/aimport sys' \
-		-e '/def test_autosummary_generate_content_for_module/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		tests/test_ext_autosummary.py || die
-	sed -i -e '/def test_annotated_assignment_py36/i\
-@pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
-		tests/test_pycode_parser.py || die
-
 	# disable internet access
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		doc/conf.py || die
@@ -133,5 +96,33 @@ python_compile_all() {
 python_test() {
 	mkdir -p "${BUILD_DIR}/sphinx_tempdir" || die
 	local -x SPHINX_TEST_TEMPDIR="${BUILD_DIR}/sphinx_tempdir"
-	pytest -vv || die "Tests fail with ${EPYTHON}"
+
+	local deselect=(
+		# these tests require Internet access
+		tests/test_build_latex.py::test_latex_images
+		tests/test_build_linkcheck.py::test_defaults
+		tests/test_build_linkcheck.py::test_defaults_json
+		tests/test_build_linkcheck.py::test_anchors_ignored
+	)
+	[[ ${EPYTHON} == pypy3 ]] && deselect+=(
+		tests/test_build_latex.py::test_latex_images
+		tests/test_ext_autodoc.py::test_autodoc_inherited_members_None
+		tests/test_ext_autodoc.py::test_automethod_for_builtin
+		tests/test_ext_autodoc.py::test_partialfunction
+		tests/test_ext_autodoc.py::test_autodoc_typed_instance_variables
+		tests/test_ext_autodoc.py::test_autodoc_typed_inherited_instance_variables
+		tests/test_ext_autodoc.py::test_cython
+		tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_subclass_of_generic_type
+		tests/test_ext_autodoc_autodata.py::test_autodata_type_comment
+		tests/test_ext_autodoc_autofunction.py::test_builtin_function
+		tests/test_ext_autodoc_autofunction.py::test_methoddescriptor
+		tests/test_ext_autodoc_configs.py::test_autodoc_typehints_signature
+		tests/test_ext_autodoc_configs.py::test_autodoc_type_aliases
+		tests/test_ext_autosummary.py::test_autosummary_generate_content_for_module
+		tests/test_ext_autosummary.py::test_autosummary_generate_content_for_module_skipped
+		tests/test_pycode_parser.py::test_annotated_assignment_py36
+	)
+
+	pytest -vv ${deselect[@]/#/--deselect } ||
+		die "Tests fail with ${EPYTHON}"
 }
