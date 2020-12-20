@@ -5,10 +5,10 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake-utils flag-o-matic linux-info \
-	multiprocessing prefix toolchain-funcs check-reqs
+inherit check-reqs cmake flag-o-matic linux-info \
+	multiprocessing prefix toolchain-funcs
 
-MY_BOOST_VERSION="1.70.0"
+MY_BOOST_VERSION="1.73.0"
 MY_PV=$(ver_rs 3 '-')
 MY_PV="${MY_PV//_pre*}"
 MY_PN="Percona-Server"
@@ -17,7 +17,7 @@ MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/${MY_MAJOR_PV}/"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.19.10-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.22.13-patches-01.tar.xz"
 
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
 	https://dl.bintray.com/boostorg/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2
@@ -28,7 +28,7 @@ HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server https:/
 DESCRIPTION="Fully compatible, enhanced and open source drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="8.0"
-IUSE="cjk cracklib debug jemalloc latin1 libressl numa pam +perl profiling
+IUSE="cjk cracklib debug jemalloc latin1 ldap libressl numa pam +perl profiling
 	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -52,17 +52,22 @@ S="${WORKDIR}/mysql"
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
+	app-arch/zstd:=
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
 	server? (
 		dev-libs/icu:=
-		dev-libs/libevent:=
+		dev-libs/libevent:=[ssl,threads]
 		>=dev-libs/protobuf-3.8:=
 		net-libs/libtirpc:=
 		net-misc/curl:=
 		cjk? ( app-text/mecab:= )
+		ldap? (
+			dev-libs/cyrus-sasl
+			net-nds/openldap
+		)
 		jemalloc? ( dev-libs/jemalloc:0= )
 		kernel_linux? (
 			dev-libs/libaio:0=
@@ -96,8 +101,6 @@ RDEPEND="${COMMON_DEPEND}
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
-CHECKREQS_DISK_BUILD="9G"
-
 mysql_init_vars() {
 	: ${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
 	: ${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
@@ -111,46 +114,59 @@ mysql_init_vars() {
 }
 
 pkg_pretend() {
-	[[ ${MERGE_TYPE} == binary ]] && return
-	use server && check-reqs_pkg_pretend
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		if use server ; then
+			CHECKREQS_DISK_BUILD="3G"
+
+			if has test $FEATURES ; then
+				CHECKREQS_DISK_BUILD="9G"
+			fi
+
+			check-reqs_pkg_pretend
+		fi
+	fi
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} == binary ]] && return
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		CHECKREQS_DISK_BUILD="3G"
 
-	if has test ${FEATURES} ; then
-		# Bug #213475 - MySQL _will_ object strenuously if your machine is named
-		# localhost. Also causes weird failures.
-		[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
+		if has test ${FEATURES} ; then
+			CHECKREQS_DISK_BUILD="9G"
 
-		if ! has userpriv ${FEATURES} ; then
-			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
+			# Bug #213475 - MySQL _will_ object strenuously if your machine is named
+			# localhost. Also causes weird failures.
+			[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
+
+			if ! has userpriv ${FEATURES} ; then
+				die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
+			fi
+
+			local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
+			[[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] \
+				&& die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
+
+			if use latin1 ; then
+				# Upstream only supports tests with default charset
+				die "Testing with USE=latin1 is not supported."
+			fi
 		fi
 
-		local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
-		[[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] \
-			&& die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
+		if use kernel_linux ; then
+			if use numa ; then
+				linux-info_get_any_version
 
-		if use latin1 ; then
-			# Upstream only supports tests with default charset
-			die "Testing with USE=latin1 is not supported."
+				local CONFIG_CHECK="~NUMA"
+
+				local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
+				WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+
+				check_extra_config
+			fi
 		fi
+
+		use server && check-reqs_pkg_setup
 	fi
-
-	if use kernel_linux ; then
-		if use numa ; then
-			linux-info_get_any_version
-
-			local CONFIG_CHECK="~NUMA"
-
-			local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
-			WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
-
-			check_extra_config
-		fi
-	fi
-
-	use server && check-reqs_pkg_setup
 }
 
 src_unpack() {
@@ -161,8 +177,6 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
-
-	eapply_user
 
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \
@@ -189,7 +203,7 @@ src_prepare() {
 		man/zlib_decompress.1 \
 		|| die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -231,7 +245,6 @@ src_configure() {
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
-		-DWITH_DEFAULT_FEATURE_SET=0
 		# The build forces this to be defined when cross-compiling. We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
@@ -265,6 +278,7 @@ src_configure() {
 		-DWITH_LZ4=system
 		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
 		-DWITH_RAPIDJSON=bundled
+		-DWITH_ZSTD=system
 	)
 
 	if [[ -n "${MYSQL_DEFAULT_CHARSET}" && -n "${MYSQL_DEFAULT_COLLATION}" ]] ; then
@@ -291,6 +305,7 @@ src_configure() {
 
 	if use server ; then
 		mycmakeargs+=(
+			-DWITH_AUTHENTICATION_LDAP=$(usex ldap system OFF)
 			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
 			-DWITH_MECAB=$(usex cjk system OFF)
@@ -329,7 +344,7 @@ src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 # Official test instructions:
@@ -353,7 +368,7 @@ src_test() {
 	local retstatus_tests
 
 	# Run CTest (test-units)
-	cmake-utils_src_test
+	cmake_src_test
 	retstatus_unit=$?
 
 	# Ensure that parallel runs don't die
@@ -398,10 +413,15 @@ src_test() {
 	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
+	disabled_tests+=( "group_replication.gr_ssl_options2;0;Sporadic failing test" )
 	disabled_tests+=( "innodb.percona_changed_page_bmp_flush;6807;False positive on Gentoo (PS)" )
 	disabled_tests+=( "innodb.percona_changed_page_bmp_log_resize;0;Sporadic failing test" )
+	disabled_tests+=( "innodb.percona_log_encrypt_failure;0;Requires proper keyring setup" )
+	disabled_tests+=( "innodb.percona_log_encrypt_change_mk;6039;False positive on Gentoo (PS)" )
+	disabled_tests+=( "innodb.percona_log_encrypt_change_rk;6805;False positive on Gentoo (PS)" )
 	disabled_tests+=( "innodb.upgrade_orphan;0;Sporadic failing test" )
 	disabled_tests+=( "main.myisam-blob;0;Sporadic failing test" )
+	disabled_tests+=( "main.mysql_load_data_local_dir;7416;Known test failure" )
 	disabled_tests+=( "main.mysqlpump_basic_lz4;6042;Extra tool output causes false positive" )
 	disabled_tests+=( "main.ssl_bug75311;5996;Known test failure" )
 	disabled_tests+=( "main.ssl_san;6808;False positive on IPv6-enabled hosts" )
@@ -411,15 +431,17 @@ src_test() {
 	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
 	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Know failure - no upstream bug yet" )
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware" )
+	disabled_tests+=( "sys_vars.innodb_sys_tablespace_encrypt_basic;7415;Known test failure" )
 	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
 	disabled_tests+=( "x.message_protobuf_nested;6803;False positive caused by protobuff-3.11+" )
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
 		# no need to force dep app-arch/zip for one test
+		disabled_tests+=( "innodb.discarded_partition_create;0;Requires app-arch/zip" )
 		disabled_tests+=( "innodb.partition_upgrade_create;0;Requires app-arch/zip" )
 	fi
 
-	local test_ds
+	local test_infos_str test_infos_arr
 	for test_infos_str in "${disabled_tests[@]}" ; do
 		IFS=';' read -r -a test_infos_arr <<< "${test_infos_str}"
 
@@ -429,7 +451,7 @@ src_test() {
 
 		_disable_test "${test_infos_arr[0]}" "${test_infos_arr[1]}" "${test_infos_arr[2]}"
 	done
-	unset test_ds test_infos_str test_infos_arr
+	unset test_infos_str test_infos_arr
 
 	if [[ -z "${MTR_VAULT_TOKEN}" ]] ; then
 		local impossible_test
@@ -451,6 +473,7 @@ src_test() {
 			keyring_vault.table_encrypt_5_directory \
 			keyring_vault.table_encrypt_kill \
 			keyring_vault.temp_table_encrypt_keyring_vault \
+			main.persisted_variables \
 		; do
 			_disable_test "${impossible_test}" "0" "MTR_VAULT_TOKEN is not set"
 		done
@@ -496,7 +519,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
@@ -721,6 +744,7 @@ pkg_config() {
 	fi
 
 	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
+	MYSQL_TMPDIR=${MYSQL_TMPDIR%/}
 	# These are dir+prefix
 	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
