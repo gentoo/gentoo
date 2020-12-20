@@ -40,6 +40,10 @@ src_configure() {
 		# if your headers strictly adhere to POSIX, you'll need this too
 		[[ ${CHOST##*solaris2.} -le 10 ]] && append-cppflags -DNAME_MAX=255
 	fi
+	if [[ ${CHOST} == powerpc-*-darwin* ]] ; then
+		sed -i -e 's/= stpncpy(s, \([^,]\+\), \([0-9]\+\))/+= snprintf(s, \2, "%s", \1)/' \
+			src/jobs.c || die
+	fi
 	append-cppflags -DJOBS=$(usex libedit 1 0)
 	use static && append-ldflags -static
 	# Do not pass --enable-glob due to #443552.
