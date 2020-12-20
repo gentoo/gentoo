@@ -21,7 +21,9 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	app-arch/bzip2:=
+	dev-libs/libtomcrypt:=[libtommath]
 	sys-libs/zlib:="
+DEPEND=${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/stormlib-9.23-gnuinstalldirs.patch
@@ -32,7 +34,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		# interactive test app
 		-DSTORM_BUILD_TESTS=OFF
-		# -DWITH_LIBTOMCRYPT=ON when we have tomcrypt packaged
+		-DWITH_LIBTOMCRYPT=ON
 	)
 
 	cmake_src_configure
