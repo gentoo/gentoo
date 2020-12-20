@@ -1,13 +1,14 @@
-DEFINED_PHASES=configure install prepare pretend unpack
-DEPEND=dev-lang/lua:* sys-apps/util-linux virtual/blas virtual/lapack mpi? ( virtual/mpi[romio?] ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare pretend setup unpack
+DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) sys-apps/util-linux virtual/blas virtual/lapack mpi? ( virtual/mpi[romio?] ) virtual/pkgconfig
 DESCRIPTION=Support for parallel scientific applications
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.p4est.org/
-IUSE=debug examples mpi openmp romio static-libs threads
+IUSE=debug examples mpi openmp romio static-libs threads lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3
 LICENSE=LGPL-2.1+
 PROPERTIES=live
-RDEPEND=dev-lang/lua:* sys-apps/util-linux virtual/blas virtual/lapack mpi? ( virtual/mpi[romio?] )
-REQUIRED_USE=romio? ( mpi )
+RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) sys-apps/util-linux virtual/blas virtual/lapack mpi? ( virtual/mpi[romio?] )
+REQUIRED_USE=^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 ) romio? ( mpi )
 SLOT=0
-_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	desktop	8f9bfcc33705104f56748d9dedb3177a	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	0a83d4ccf28a70ddf61e7073c96e515a	estack	d780995dc525ff7e6a2c4c043ffec242	eutils	69bd92aa099f708425db9f1f01d61213	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=4372458b9a4dfd4521520d595f8559f1
+_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=0970064e9ad49f75cfe961eda3a63c06
