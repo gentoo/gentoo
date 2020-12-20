@@ -798,6 +798,7 @@ app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1 4.15.2-r2: Tools to deal with shar archives
 app-arch/snappy 1.1.8: A high-speed compression/decompression library by Google
 app-arch/stenc 1.0.7 1.0.8: SCSI Tape Encryption Manager enables AES support for LTO drives.
+app-arch/stormlib 9.23: Library to read and write MPQ archives (Diablo, StarCraft)
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
 app-arch/tar 1.32 1.32.90: Use this to make tarballs :)
@@ -817,7 +818,7 @@ app-arch/upx 3.96: Ultimate Packer for eXecutables (free version using UCL compr
 app-arch/upx-bin 3.96: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
 app-arch/wimlib 1.12.0 1.13.0: The open source Windows Imaging (WIM) library
-app-arch/xar 1.8-r2 1.8-r3: An easily extensible archive format
+app-arch/xar 1.8-r2 1.8-r3 1.8-r4: An easily extensible archive format
 app-arch/xarchiver 0.5.4.15: A GTK+ archive manager that can be used with Thunar
 app-arch/xdms 1.3.2-r1: xDMS - Amiga DMS disk image decompressor
 app-arch/xz-utils 5.2.5 9999: utils for managing LZMA compressed files
@@ -2733,7 +2734,7 @@ app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 19: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18 5.1: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18 5.1 5.1_p4: The standard GNU Bourne again shell
 app-shells/bash-completion 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -11315,7 +11316,7 @@ games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interp
 games-engines/scummvm 2.1.2 2.2.0 9999: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 2.1.0 2.2.0: utilities for the SCUMM game engine
 games-engines/solarus 1.3.1-r1 1.3.1-r100: An open-source Zelda-like 2D game engine
-games-engines/stratagus 2.4.1 2.4.3 2.4.3-r100 3.0.0: A realtime strategy game engine
+games-engines/stratagus 2.4.1 2.4.3 2.4.3-r100 3.0.0-r1: A realtime strategy game engine
 games-engines/xzip 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
 games-fps/alienarena 7.66: Fast-paced multiplayer deathmatch game
@@ -11700,7 +11701,7 @@ games-strategy/triplea 1.8.0.9-r1: An open source clone of the popular Axis and 
 games-strategy/ufoai 2.5.0_p20180603-r1: UFO: Alien Invasion - X-COM inspired strategy game
 games-strategy/uqm 0.7.0.1: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/war1gus 2.4.3 3.0.0: Warcraft: Orcs & Humans for the Stratagus game engine
-games-strategy/wargus 2.4.1 2.4.3 3.0.0: Warcraft II for the Stratagus game engine
+games-strategy/wargus 2.4.1 2.4.3 3.0.0-r1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
