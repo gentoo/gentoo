@@ -74,4 +74,6 @@ src_install() {
 	use suid && fperms u+s /usr/bin/ntfs-3g
 	dosym mount.ntfs-3g /sbin/mount.ntfs
 	find "${D}" -name '*.la' -type f -delete || die
+	# https://bugs.gentoo.org/760780
+	keepdir "/usr/$(get_libdir)/ntfs-3g"
 }
