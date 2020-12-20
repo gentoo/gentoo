@@ -8207,7 +8207,7 @@ dev-python/fs 2.4.11: Filesystem abstraction layer
 dev-python/fsspec 0.8.2 0.8.5: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
-dev-python/funcy 1.10.1 1.14: A collection of fancy functional tools focused on practicality
+dev-python/funcy 1.10.1 1.14 1.14-r1: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 1.0.0: Python FUSE bindings
 dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
 dev-python/future 0.18.2-r1: Easy, clean, reliable Python 2/3 compatibility
