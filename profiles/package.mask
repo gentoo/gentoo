@@ -529,6 +529,8 @@ kde-apps/kdebase-meta:5
 >=net-im/swift-4.0.2-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-astronomy/celestia-1.7.0_pre20200316-r100
+>=sci-libs/libsc-2.2-r100
+>=sci-libs/p4est-2.2-r100
 >=sci-libs/plplot-5.15.0-r100
 =sci-visualization/gnuplot-5.4.0-r100
 =sci-visualization/gnuplot-5.4.1-r1
