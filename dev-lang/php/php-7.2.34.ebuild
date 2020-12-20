@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic systemd autotools
+inherit flag-o-matic systemd autotools toolchain-funcs
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
@@ -238,6 +238,10 @@ src_prepare() {
 src_configure() {
 	addpredict /usr/share/snmp/mibs/.index #nowarn
 	addpredict /var/lib/net-snmp/mib_indexes #nowarn
+
+	# Fix building against >=ICU-68, https://bugs.php.net/80310
+	append-cflags -DU_DEFINE_FALSE_AND_TRUE=1
+	append-cxxflags -DU_DEFINE_FALSE_AND_TRUE=1
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
