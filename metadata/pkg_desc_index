@@ -17453,7 +17453,7 @@ sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.8.3-r2 0.8.4 0.8.5: Device mapper target autoconfig
 sys-fs/ncdu 1.14.2 1.15 1.15.1: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2017.3.23-r3 2017.3.23.5: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2017.3.23-r3 2017.3.23.5-r1: Open source read-write NTFS driver that runs under FUSE
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/quota 4.05-r1 4.06: Linux quota tools
 sys-fs/quotatool 1.6.2: Command-line utility for filesystem quotas
@@ -17498,7 +17498,7 @@ sys-kernel/dracut 050-r2 051 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.4.82 5.4.83 5.4.84 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14 5.9.15 5.10.1 5.10.1-r1: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.4.82 5.4.82-r1 5.4.83 5.4.83-r1 5.4.84 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1 5.9.13 5.9.13-r1 5.9.14 5.9.14-r1 5.9.15 5.10.1 5.10.1-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.4.82 5.4.82-r1 5.4.83 5.4.83-r1 5.4.84 5.4.84-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1 5.9.13 5.9.13-r1 5.9.14 5.9.14-r1 5.9.15 5.10.1 5.10.1-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.246 4.4.247 4.4.248 4.9.240 4.9.246 4.9.247 4.9.248 4.14.202 4.14.209 4.14.211 4.14.212 4.19.152 4.19.160 4.19.162 4.19.163 5.4.72 5.4.80-r1 5.4.82 5.4.83 5.4.84 5.9.12 5.9.13 5.9.14 5.9.15 5.10.0 5.10.1 5.10.1-r1: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils

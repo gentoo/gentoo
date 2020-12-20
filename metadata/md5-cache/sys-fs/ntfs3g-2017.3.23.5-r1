@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig virtual/pkgconfig >=app-portage/elt-patches-20170815
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=configure install setup
 DEPEND=sys-apps/util-linux:0= ntfsdecrypt? ( >=dev-libs/libgcrypt-1.2.2:0 >=net-libs/gnutls-1.4.4 ) sys-apps/attr
 DESCRIPTION=Open source read-write NTFS driver that runs under FUSE
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/util-linux:0= ntfsdecrypt? ( >=dev-libs/libgcrypt-1.2.2:0 >=net-libs/gnutls-1.4.4 )
 SLOT=0/885
 SRC_URI=https://jp-andre.pagesperso-orange.fr/ntfs-3g_ntfsprogs-2017.3.23AR.5.tgz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=51ba764c1913250673ad0414133ea2f6
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=29334ce512cf6ee78af4ab00df219605
