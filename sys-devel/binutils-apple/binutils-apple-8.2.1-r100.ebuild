@@ -67,12 +67,7 @@ src_install() {
 	# want them
 	mv "${ED}${BINPATH%/*}/bin" "${ED}${BINPATH}" || die
 
-	dodir "${LIBPATH}"
-	local as
-	for as in "${ED}${BINPATH}"/*/as ; do
-		as=${as%/as}
-		mv "${as}" "${ED}${LIBPATH}"/ || die
-	done
+	keepdir "${LIBPATH}"
 
 	cd "${S}"
 	insinto /etc/env.d/binutils
