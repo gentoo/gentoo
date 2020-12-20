@@ -5,8 +5,6 @@
 # able to compile binutils-apple
 sys-devel/binutils-apple
 -sys-devel/native-cctools
-# and unmask FSF GCC itself of course
--sys-devel/gcc
 
 # packages which link to framework and therefore fail (blocks)
 dev-util/pkgconfig
