@@ -2156,6 +2156,8 @@ dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libtasn1:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
+dev-libs/libtomcrypt:libtommath - Uses dev-libs/libtommath for mathematical operations
+dev-libs/libtomcrypt:tomsfastmath - Uses dev-libs/tomsfastmath for mathematical operations
 dev-libs/libucl:regex - Enable regex support
 dev-libs/libucl:sign - Enable signatures check
 dev-libs/libucl:urls - Enable URLs fetch

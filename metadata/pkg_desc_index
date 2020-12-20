@@ -798,7 +798,7 @@ app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1 4.15.2-r2: Tools to deal with shar archives
 app-arch/snappy 1.1.8: A high-speed compression/decompression library by Google
 app-arch/stenc 1.0.7 1.0.8: SCSI Tape Encryption Manager enables AES support for LTO drives.
-app-arch/stormlib 9.23: Library to read and write MPQ archives (Diablo, StarCraft)
+app-arch/stormlib 9.23-r1: Library to read and write MPQ archives (Diablo, StarCraft)
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
 app-arch/tar 1.32 1.32.90: Use this to make tarballs :)
@@ -5484,6 +5484,7 @@ dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
+dev-libs/libtomcrypt 1.18.2: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 1.2.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
@@ -5639,7 +5640,7 @@ dev-libs/template-glib 3.34.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r3 2.6.2-r4: Simple and small C++ XML parser
 dev-libs/tinyxml2 7.1.0 8.0.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r3: Modular, multithreaded web application server extensible with C++
-dev-libs/tomsfastmath 0.13.1: Fast public domain large integer arithmetic library
+dev-libs/tomsfastmath 0.13.1 0.13.1-r1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r2: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tree-sitter 0.17.3 9999: Tree-sitter is a parser generator tool and an incremental parsing library.
