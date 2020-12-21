@@ -451,12 +451,14 @@ kde-apps/kdebase-meta:5
 >=app-editors/gvim-8.2.0814-r100
 >=app-editors/neovim-0.4.4-r100
 =app-editors/scite-4.4.4-r10
+>=app-editors/texworks-0.6.5-r100
 >=app-editors/vim-8.2.0814-r100
 >=app-emulation/libguestfs-1.38.6-r100
 >=app-metrics/nginx-lua-prometheus-0.1_pre20170610-r100
 >=app-misc/worker-3.8.3-r100
 >=dev-db/redis-6.0.9-r100
 >=dev-games/cegui-0.8.7-r100
+>=dev-games/openscenegraph-3.6.5-r100
 =dev-games/openscenegraph-openmw-3.4_p20200425-r100
 =dev-libs/efl-1.25.1-r10
 >=dev-libs/libpeas-1.26.0-r100
