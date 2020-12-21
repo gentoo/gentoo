@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="xml"
 
 inherit python-r1 toolchain-funcs
@@ -14,7 +14,6 @@ SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 SEMNG_VER="${PV}"
 
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -37,7 +36,6 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+)]
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	dev-python/ipy[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 

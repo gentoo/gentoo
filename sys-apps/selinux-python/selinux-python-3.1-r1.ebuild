@@ -14,7 +14,6 @@ SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 SEMNG_VER="${PV}"
 
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -37,7 +36,6 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+)]
 	>=sys-libs/libsepol-${SEPOL_VER}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	dev-python/ipy[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 
