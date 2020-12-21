@@ -33,6 +33,7 @@ src_configure() {
 	fi
 
 	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/xtools-${PV}
+	DATAPATH=/usr/share/binutils-data/${CTARGET}/xtools-${PV}
 	if [[ ${CHOST} != ${CTARGET} ]] ; then
 		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/xtools-${PV}
 	else
@@ -68,6 +69,10 @@ src_install() {
 	mv "${ED}${BINPATH%/*}/bin" "${ED}${BINPATH}" || die
 
 	keepdir "${LIBPATH}"
+
+	doman ld64/doc/man/man*/* cctools/man/*.[135]
+	dodir "${DATAPATH}"
+	mv "${ED}"/usr/share/man "${ED}/${DATAPATH}/" || die
 
 	cd "${S}"
 	insinto /etc/env.d/binutils
