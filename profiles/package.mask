@@ -495,6 +495,7 @@ kde-apps/kdebase-meta:5
 >=dev-lua/toluapp-1.0.93_p20190513-r100
 >=dev-util/geany-plugins-1.37-r100
 >=dev-util/hermes-2.8
+>=dev-util/sysdig-0.27.1-r100
 =games-action/minetest-5.3.0-r100
 >=games-arcade/jvgs-0.5-r100
 >=games-emulation/fceux-2.2.3-r100
