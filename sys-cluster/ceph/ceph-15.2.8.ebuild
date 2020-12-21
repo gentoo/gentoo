@@ -94,7 +94,7 @@ DEPEND="
 		openssl? ( dev-libs/openssl:= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,${PYTHON_USEDEP}] )
+	system-boost? ( >=dev-libs/boost-1.72[threads,context,python,${PYTHON_USEDEP}] )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zfs? ( sys-fs/zfs:= )
