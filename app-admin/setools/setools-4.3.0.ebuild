@@ -30,9 +30,8 @@ RDEPEND="${PYTHON_DEPS}
 	X? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
-
-DEPEND="${RDEPEND}
-	>=dev-python/cython-0.27
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-python/cython-0.27
 	test? (
 		sys-apps/checkpolicy
 	)"
