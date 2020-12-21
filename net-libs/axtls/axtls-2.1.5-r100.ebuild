@@ -105,7 +105,8 @@ use_flag_config() {
 			sed -i -e 's:^CONFIG_HTTP_STATIC_BUILD:# CONFIG_HTTP_STATIC_BUILD:' \
 				config/.config || die
 		fi
-		if ! use cgi-php && ! use cgi-lua; then			sed -i -e 's:^CONFIG_HTTP_HAS_CGI:# CONFIG_HTTP_HAS_CGI:' \
+		if ! use cgi-php && ! use cgi-lua; then
+			sed -i -e 's:^CONFIG_HTTP_HAS_CGI:# CONFIG_HTTP_HAS_CGI:' \
 				config/.config || die
 		fi
 		if ! use cgi-php; then

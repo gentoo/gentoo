@@ -510,8 +510,8 @@ src_install() {
 	)
 
 	# bug #689562, #689160
-	rm -v "${D}/usr/lib/${PN}/${PV}/etc/bash_completion.d/cargo" || die
-	rmdir -v "${D}/usr/lib/${PN}/${PV}"/etc{/bash_completion.d,} || die
+	rm -v "${ED}/usr/lib/${PN}/${PV}/etc/bash_completion.d/cargo" || die
+	rmdir -v "${ED}/usr/lib/${PN}/${PV}"/etc{/bash_completion.d,} || die
 	dobashcomp build/tmp/dist/cargo-image/etc/bash_completion.d/cargo
 
 	local symlinks=(
