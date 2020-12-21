@@ -13,8 +13,8 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
-# FIXME: libfuzzer does not enable all its necessary dependencies
-REQUIRED_USE="libfuzzer? ( || ( sanitize xray ) )"
+REQUIRED_USE="
+	|| ( libfuzzer profile sanitize xray )"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 CLANG_SLOT=${SLOT%%.*}
