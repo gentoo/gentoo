@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan
+sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
+sys-libs/compiler-rt-sanitizers -gwp-asan
+sys-libs/compiler-rt-sanitizers -profile
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-28)
 # dev-qt/linguist-tools-5.15.0 and 5.15.1 OOM with bad_alloc.
 # https://bugs.gentoo.org/751418
