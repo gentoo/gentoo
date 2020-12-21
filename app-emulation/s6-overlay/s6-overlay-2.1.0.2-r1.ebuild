@@ -54,4 +54,8 @@ src_install() {
 	fperms 0755 /etc/s6/services/.s6-svscan/finish
 	fperms 0755 /etc/s6/services/s6-fdholderd/run
 	fperms 0755 /etc/s6/services/s6-svscan-log/run
+
+	# create a stub for the s6-overlay-preinit setuid program, since
+	# it's really not needed when permissions are already correct
+	dosym true /bin/s6-overlay-preinit
 }
