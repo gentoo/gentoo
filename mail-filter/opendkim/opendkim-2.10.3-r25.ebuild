@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-1 lua5-2} )
+LUA_COMPAT=( lua5-1 lua5-2 )
 
 inherit autotools db-use eutils systemd tmpfiles lua-single
 
