@@ -10,7 +10,7 @@ HOMEPAGE="https://zoom.us/"
 SRC_URI="https://zoom.us/client/${PV}/${PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz"
 S="${WORKDIR}/${PN}"
 
-LICENSE="all-rights-reserved Apache-2.0" # Apache-2.0 for icon
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="bundled-libjpeg-turbo +bundled-qt pulseaudio wayland"
@@ -56,12 +56,18 @@ RDEPEND="!games-engines/zoom
 		wayland? ( dev-qt/qtwayland )
 	)"
 
-BDEPEND="!pulseaudio? ( dev-util/bbe )"
+BDEPEND="dev-util/bbe"
 
 QA_PREBUILT="opt/zoom/*"
 
 src_prepare() {
 	default
+
+	# The tarball doesn't contain an icon, so extract it from the binary
+	bbe -s -b '/<svg width="32"/:/<\x2fsvg>\n/' -e 'J 1;D' zoom \
+		>zoom-videocam.svg && [[ -s zoom-videocam.svg ]] \
+		|| die "Extraction of icon failed"
+
 	if ! use pulseaudio; then
 		# For some strange reason, zoom cannot use any ALSA sound devices if
 		# it finds libpulse. This causes breakage if media-sound/apulse[sdk]
@@ -76,7 +82,7 @@ src_install() {
 	exeinto /opt/zoom
 	doins -r json ringtone sip timezones translations
 	doins *.pcm *.sh Embedded.properties version.txt
-	doexe zoom zoom.sh zopen ZoomLauncher
+	doexe zoom zopen ZoomLauncher
 	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libquazip.so
 
@@ -110,11 +116,8 @@ src_install() {
 	make_wrapper zoom /opt/zoom{/zoom,} $(usex bundled-qt /opt/zoom "")
 	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
 		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
-	# The tarball doesn't contain an icon, so take a generic camera icon
-	# from https://github.com/google/material-design-icons, modified to be
-	# white on a blue background
-	doicon -s scalable "${FILESDIR}"/zoom-videocam.svg
-	doicon -s 24 "${FILESDIR}"/zoom-videocam.xpm
+	doicon zoom-videocam.svg
+	doicon -s scalable zoom-videocam.svg
 	readme.gentoo_create_doc
 }
 
@@ -133,6 +136,7 @@ pkg_postinst() {
 		ewarn "QA notice about insecure RPATHs in the libturbojpeg.so library"
 		ewarn "bundled with the upstream package. Please report this problem"
 		ewarn "directly to Zoom upstream. Do *not* file a Gentoo bug for it."
+		ewarn "See https://bugs.gentoo.org/715106 for further details."
 	fi
 }
 

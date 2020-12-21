@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2020-12-21)
+# Vulnerable. upgrade to >= 2.3.11.3. Masked until
+# mail-filter/dovecot_deleted_to_trash is treecleaned
+# to prevent breaking the tree (bug #756217)
+=net-mail/dovecot-2.2.36.4
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-20)
 # Requires old dev-python/unidecode.  Last commit in 2017.  No revdeps.
 # Suggested replacement: dev-python/python-slugify.
