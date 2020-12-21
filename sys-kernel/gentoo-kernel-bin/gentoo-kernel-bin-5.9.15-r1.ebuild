@@ -9,18 +9,14 @@ MY_P=${P/-bin/}-1
 DESCRIPTION="Pre-built Linux kernel with genpatches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+="
-	amd64? (
-		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
-			-> ${MY_P}.amd64.xpak
-	)
-	x86? (
-		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
-			-> ${MY_P}.x86.xpak
+	arm64? (
+		https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
+			-> ${MY_P}.arm64.xpak
 	)"
 S=${WORKDIR}
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~arm64"
 
 RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}
@@ -30,7 +26,7 @@ RDEPEND="
 QA_PREBUILT='*'
 
 pkg_pretend() {
-	ewarn "Starting with 5.4.52, Distribution Kernels are switching from Arch"
+	ewarn "Starting with 5.7.9, Distribution Kernels are switching from Arch"
 	ewarn "Linux configs to Fedora.  Please keep a backup kernel just in case."
 
 	kernel-install_pkg_pretend
