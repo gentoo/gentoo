@@ -7,4 +7,4 @@ LICENSE=ISC
 RDEPEND=sys-apps/s6 sys-apps/s6-portable-utils
 SLOT=0
 SRC_URI=https://github.com/just-containers/s6-overlay/archive/v2.1.0.2.tar.gz -> s6-overlay-2.1.0.2.tar.gz
-_md5_=e25eceffa4a06b7518b2d243d7585e8e
+_md5_=faba55a3ede9fe152d43ff3af8a532fa
