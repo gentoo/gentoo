@@ -24,6 +24,16 @@ BDEPEND=""
 
 S="${WORKDIR}/darwin-xtools-gentoo-${PVR}"
 
+src_prepare() {
+	cmake_src_prepare
+
+	# make prunetrie a static archive, because the dynamic libs aren't
+	# installed, for there really are no consumers
+	# fixed for next release
+	sed -i -e '/add_library/s/prunetrie/& STATIC/' \
+		ld64/src/CMakeLists.txt || die
+}
+
 src_configure() {
 	CTARGET=${CTARGET:-${CHOST}}
 	if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -53,6 +63,7 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX=${EPREFIX}${BINPATH%/*}  # cmake insists on /bin
 		-DCCTOOLS_LD_CLASSIC=NO  # fails to link, and is useless anyway
 		-DXTOOLS_LTO_SUPPORT=NO
+		-DXTOOLS_HAS_LIBPRUNETRIE=YES
 		-DXTOOLS_TAPI_SUPPORT=$(use tapi && echo ON || echo OFF)
 		-DXTOOLS_HOST_IS_64B=$(is-host-64bit)
 		-DXTOOLS_BUGURL="https://bugs.gentoo.org/"
