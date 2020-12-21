@@ -1,0 +1,22 @@
+From 0e42cc3999b4e3833b5f3f41857b8c1e3c9143f3 Mon Sep 17 00:00:00 2001
+From: Pablo Galindo <pablogsal@gmail.com>
+Date: Mon, 21 Dec 2020 02:02:34 +0000
+Subject: [PATCH] Decrement the refcount of _PyLong_One in the correct branch
+
+---
+ lib/zoneinfo_module.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/zoneinfo_module.c b/lib/zoneinfo_module.c
+index e0c72d3..07ef603 100644
+--- a/lib/zoneinfo_module.c
++++ b/lib/zoneinfo_module.c
+@@ -616,7 +616,7 @@ zoneinfo_fromutc(PyObject *obj_self, PyObject *dt)
+             Py_DECREF(args);
+             Py_DECREF(kwargs);
+             Py_DECREF(replace);
+-#ifndef ATLEAST_37
++#ifdef ATLEAST_37
+             Py_DECREF(one);
+ #endif
+ 

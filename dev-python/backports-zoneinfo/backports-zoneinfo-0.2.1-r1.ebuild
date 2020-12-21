@@ -38,6 +38,12 @@ BDEPEND="
 # pytest-subtests
 distutils_enable_tests unittest
 
+PATCHES=(
+	# fix segv in py3.8.7rc1+
+	# https://github.com/pganssle/zoneinfo/pull/97
+	"${FILESDIR}"/${P}-py38.patch
+)
+
 python_test() {
 	if [[ ${EPYTHON} == pypy3 ]]; then
 		# pypy3.6 does not support dataclasses, and the backport
