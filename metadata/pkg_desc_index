@@ -5607,14 +5607,14 @@ dev-libs/redland-bindings 1.0.17.1-r1: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.6.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocclr 3.8.0 3.9.0 3.10.0: Radeon Open Compute Common Language Runtime
+dev-libs/rocclr 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocksdb 6.14.5 6.14.6: Embeddable, persistent key-value store for fast storage
-dev-libs/rocm-comgr 3.9.0 3.10.0: Radeon Open Compute Code Object Manager
-dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 3.10.0 9999: Radeon Open Compute Device Libraries
+dev-libs/rocm-comgr 3.9.0 3.10.0 4.0.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 3.10.0 4.0.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-runtime 3.8.0 3.9.0 3.10.0: Radeon Open Compute OpenCL Compatible Runtime
-dev-libs/rocr-runtime 3.8.0 3.9.0 3.10.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 3.7.0 3.8.0 3.9.0 3.10.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/rocm-opencl-runtime 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocr-runtime 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute Runtime
+dev-libs/roct-thunk-interface 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/s2n 0.10.21-r1: simple, small, fast and secure C99 implementation of the TLS/SSL protocols
 dev-libs/satyr 0.31: Satyr is a collection of low-level algorithms for program failure processing
@@ -10835,8 +10835,8 @@ dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects 
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 9999: Radeon Open Compute CMake Modules
-dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 9999: ROCm Application for Reporting System Info
+dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute CMake Modules
+dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 9999: ROCm Application for Reporting System Info
 dev-util/rosdep 0.19.0-r1 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22-r1 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
@@ -17289,7 +17289,7 @@ sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
