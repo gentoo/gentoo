@@ -33,10 +33,6 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-20)
-# Causes segfaults, pending investigation.  Bug #760917.
-=dev-lang/python-3.8.7_rc1
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-20)
 # Requires old dev-python/unidecode.  Last commit in 2017.  No revdeps.
 # Suggested replacement: dev-python/python-slugify.
 # Removal in 30 days.  Bug #714718.
@@ -286,11 +282,6 @@ dev-libs/libmissing
 # build bugs, esoteric NIH build system. Bug #293567, #670954,
 # #697444, #699320, #708058, #746230, Removal in 30 days.
 games-emulation/fakenes
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-21)
-# Dead upstream, depends on deprecated kde-frameworks/kmediaplayer
-# Masked for removal in 30 days.
-media-video/kmplayer
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-19)
 # These packages are maintained by the Python project, or have
