@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Rick Farina <zerochaos@gentoo.org> (2020-12-21)
+# This use flag enables code which appears to be broken
+net-wireless/gr-osmosdr xtrx
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-18)
 # app-text/ots is masked for removal.  Bug #648964.
 app-office/abiword ots
