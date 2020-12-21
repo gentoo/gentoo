@@ -442,8 +442,10 @@ kde-apps/kdebase-meta:5
 >=app-benchmarks/wrk-4.1.0-r100
 >=app-crypt/cardpeek-0.8.4
 >=app-crypt/ekeyd-1.1.5-r100
+>=app-editors/gvim-8.2.0814-r100
 >=app-editors/neovim-0.4.4-r100
 =app-editors/scite-4.4.4-r10
+>=app-editors/vim-8.2.0814-r100
 >=app-emulation/libguestfs-1.38.6-r100
 >=app-misc/worker-3.8.3-r100
 >=dev-games/cegui-0.8.7-r100
