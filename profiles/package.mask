@@ -451,6 +451,7 @@ kde-apps/kdebase-meta:5
 >=app-editors/gvim-8.2.0814-r100
 >=app-editors/neovim-0.4.4-r100
 =app-editors/scite-4.4.4-r10
+>=app-editors/texworks-0.6.5-r100
 >=app-editors/vim-8.2.0814-r100
 >=app-emulation/libguestfs-1.38.6-r100
 >=app-metrics/nginx-lua-prometheus-0.1_pre20170610-r100
