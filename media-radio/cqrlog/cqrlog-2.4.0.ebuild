@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="CQRLOG is an advanced ham radio logger based on MySQL database"
-HOMEPAGE="https://www.cqrlog.com/"
+HOMEPAGE="https://www.cqrlog.com/ https://github.com/ok2cqr/cqrlog"
 SRC_URI="https://github.com/ok2cqr/cqrlog/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 
@@ -30,5 +30,5 @@ PATCHES=(
 )
 
 pkg_postist() {
-	optfeature "This package optionally supports media-libs/hamlib for monitoring radio settings" media-libs/hamlib
+	optfeature "monitoring radio settings" media-libs/hamlib
 }
