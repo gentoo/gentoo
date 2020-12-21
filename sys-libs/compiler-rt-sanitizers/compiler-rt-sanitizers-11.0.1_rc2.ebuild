@@ -87,6 +87,10 @@ src_prepare() {
 		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
 	fi
 
+	# broken with new glibc
+	sed -i -e '/EXPECT_EQ.*ThreadDescriptorSize/d' \
+		lib/sanitizer_common/tests/sanitizer_linux_test.cpp || die
+
 	llvm.org_src_prepare
 }
 
