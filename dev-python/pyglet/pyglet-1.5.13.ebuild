@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="Cross-platform windowing and multimedia library for Python"
-HOMEPAGE="http://www.pyglet.org/"
+HOMEPAGE="http://pyglet.org/"
 SRC_URI="https://github.com/pyglet/pyglet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

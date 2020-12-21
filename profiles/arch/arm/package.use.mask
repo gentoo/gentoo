@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan
+sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
+sys-libs/compiler-rt-sanitizers -profile -xray
+
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # net-wireless/libxtrx et all needs testing
 net-wireless/gr-osmosdr xtrx

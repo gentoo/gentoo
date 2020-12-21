@@ -12,9 +12,20 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
-IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
-# FIXME: libfuzzer does not enable all its necessary dependencies
-REQUIRED_USE="libfuzzer? ( || ( sanitize xray ) )"
+IUSE="+clang test elibc_glibc"
+# base targets
+IUSE+=" +libfuzzer +profile +xray"
+# sanitizer targets, keep in sync with config-ix.cmake
+# NB: ubsan, scudo deliberately match two entries
+SANITIZER_FLAGS=(
+	asan dfsan lsan msan hwasan tsan ubsan safestack cfi scudo
+	shadowcallstack gwp-asan
+)
+IUSE+=" ${SANITIZER_FLAGS[@]/#/+}"
+REQUIRED_USE="
+	|| ( ${SANITIZER_FLAGS[*]} libfuzzer profile xray )
+	gwp-asan? ( scudo )
+	ubsan? ( cfi )"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 CLANG_SLOT=${SLOT%%.*}
@@ -62,6 +73,24 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e 's:-Werror::' lib/tsan/go/buildgo.sh || die
 
+	local flag
+	for flag in "${SANITIZER_FLAGS[@]}"; do
+		if ! use "${flag}"; then
+			local cmake_flag=${flag/-/_}
+			sed -i -e "/COMPILER_RT_HAS_${cmake_flag^^}/s:TRUE:FALSE:" \
+				cmake/config-ix.cmake || die
+		fi
+	done
+
+	if use asan && ! use profile; then
+		# TODO: fix these tests to be skipped upstream
+		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
+	fi
+
+	# broken with new glibc
+	sed -i -e '/EXPECT_EQ.*ThreadDescriptorSize/d' \
+		lib/sanitizer_common/tests/sanitizer_linux_test.cpp || die
+
 	llvm.org_src_prepare
 }
 
@@ -75,6 +104,14 @@ src_configure() {
 		strip-unsupported-flags
 	fi
 
+	local flag want_sanitizer=OFF
+	for flag in "${SANITIZER_FLAGS[@]}"; do
+		if use "${flag}"; then
+			want_sanitizer=ON
+			break
+		fi
+	done
+
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
 		# use a build dir structure consistent with install
@@ -87,7 +124,7 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_CRT=OFF
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)
 		-DCOMPILER_RT_BUILD_PROFILE=$(usex profile)
-		-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+		-DCOMPILER_RT_BUILD_SANITIZERS="${want_sanitizer}"
 		-DCOMPILER_RT_BUILD_XRAY=$(usex xray)
 
 		-DPython3_EXECUTABLE="${PYTHON}"

@@ -22,7 +22,7 @@ RDEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -35,7 +35,8 @@ BDEPEND="
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
 		$(python_gen_cond_dep "
-			~dev-python/lit-${PV}[\${PYTHON_MULTI_USEDEP}]
+			~dev-python/lit-${PV}[\${PYTHON_USEDEP}]
+			dev-python/psutil[\${PYTHON_USEDEP}]
 		")
 		sys-devel/lld
 	)
@@ -76,9 +77,6 @@ src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=$(usex test)
-		# compilers for lit tests
-		-DLLDB_TEST_COMPILER="$(type -P clang)"
-
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"

@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Mask all sanitizers by default, unmask on arches supporting them.
+sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
+sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
+sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
+sys-libs/compiler-rt-sanitizers libfuzzer profile xray
+
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
 # ppc64. bug #750974.
