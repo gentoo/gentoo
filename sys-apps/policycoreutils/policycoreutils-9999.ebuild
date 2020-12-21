@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="xml"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
@@ -15,7 +15,7 @@ SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
-IUSE="audit dbus pam split-usr"
+IUSE="audit pam split-usr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -41,16 +41,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
-	>=sys-libs/libcap-1.10-r10:=
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+),${PYTHON_USEDEP}]
-	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
+	sys-libs/libcap-ng:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	dev-python/ipy[${PYTHON_USEDEP}]
-	dbus? (
-		sys-apps/dbus
-		dev-libs/dbus-glib:=
-	)
 	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}"
@@ -58,9 +52,6 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
 # Avoid dependency loop in the cross-compile case, bug #755173
 # (Still exists in native)
 BDEPEND="sys-devel/gettext"
-
-### libcgroup -> seunshare
-### dbus -> restorecond
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
@@ -110,7 +101,6 @@ src_compile() {
 			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
-			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)"
@@ -129,7 +119,6 @@ src_install() {
 			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
-			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \
