@@ -12609,7 +12609,7 @@ media-fonts/konfont 0.1: Fontset for KON2
 media-fonts/koruri 20161105: Japanese TrueType font based on M+ outline fonts and Open Sans
 media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
-media-fonts/liberation-fonts 2.1.0: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
+media-fonts/liberation-fonts 2.1.0 2.1.2: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 media-fonts/libertine 5.3.0.20120702-r2 5.3.0.20120702-r3: Fonts from the Linux Libertine Open Fonts Project
 media-fonts/lklug 0.6-r1: Sinhala font
 media-fonts/lohit-assamese 2.91.5: The Lohit Assamese font
