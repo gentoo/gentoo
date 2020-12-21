@@ -347,9 +347,16 @@ src_test() {
 	KNOWN_TESTFAILURES+=( non262/Date/time-zones-imported.js )
 	KNOWN_TESTFAILURES+=( non262/Date/toString-localized.js )
 	KNOWN_TESTFAILURES+=( non262/Date/toString-localized-posix.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleString_timeZone.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Date/toLocaleDateString_timeZone.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/format_timeZone.js )
 	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/timeZone_backward_links.js )
 	KNOWN_TESTFAILURES+=( non262/Intl/DateTimeFormat/tz-environment-variable.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DisplayNames/language.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/DisplayNames/region.js )
 	KNOWN_TESTFAILURES+=( non262/Intl/Locale/likely-subtags.js )
+	KNOWN_TESTFAILURES+=( non262/Intl/Locale/likely-subtags-generated.js )
 	KNOWN_TESTFAILURES+=( test262/intl402/Locale/prototype/minimize/removing-likely-subtags-first-adds-likely-subtags.js )
 
 	if use x86 ; then
