@@ -7928,7 +7928,7 @@ dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and la
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1-r1: Backport of new features in Python's weakref module
-dev-python/backports-zoneinfo 0.2.1: Backport of the standard library zoneinfo module
+dev-python/backports-zoneinfo 0.2.1-r1: Backport of the standard library zoneinfo module
 dev-python/backrefs 4.5.0: Wrapper around re or regex that adds additional back references
 dev-python/bandit 1.6.2-r1: A security linter from OpenStack Security
 dev-python/bareos 19.2.8: python bindings for bareos network backup suite
@@ -8061,7 +8061,7 @@ dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that 
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.7 0.9.8: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.7 0.9.8 0.9.9: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -8425,7 +8425,7 @@ dev-python/microversion-parse 1.0.1: A simple parser for OpenStack microversion 
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.2.0: Python bindings for UPnP client library
+dev-python/miniupnpc 2.2.0 2.2.1: Python bindings for UPnP client library
 dev-python/misaka 2.1.1: A CFFI binding for Hoedown, a markdown parsing library
 dev-python/mistune 0.8.4-r1: The fastest markdown parser in pure Python
 dev-python/mkautodoc 0.1.0: Auto documentation for MkDocs
@@ -14071,7 +14071,6 @@ media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for t
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
-media-video/kmplayer 0.12.0b-r4: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libva-utils 2.4.0 2.8.0 2.9.1 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
@@ -14844,7 +14843,7 @@ net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for soft
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.16.8 2.24.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.2.0: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.2.0 2.2.1: UPnP client library and a simple UPnP client
 net-libs/nDPI 3.0-r1 3.0-r2 3.2-r1 3.2-r2 3.4 9999: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nativebiginteger 0.9.47 0.9.48: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0 0.31.1 0.31.2: HTTP and WebDAV client library
@@ -15142,7 +15141,7 @@ net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies suppo
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.3.0: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824 1.5.20200928: MiniSSDP Daemon
-net-misc/miniupnpd 2.1.20200510 2.2.0_rc2 2.2.0_rc3 2.2.0: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.2.0 2.2.1: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
