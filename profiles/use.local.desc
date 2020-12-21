@@ -8315,10 +8315,22 @@ sys-kernel/xnu-headers:man - Install the manpages
 sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/compiler-rt:clang - Force building using installed clang (rather than the default CC/CXX).
+sys-libs/compiler-rt-sanitizers:asan - Build Address Sanitizer runtime.
+sys-libs/compiler-rt-sanitizers:cfi - Build Control Flow Integrity runtime.
 sys-libs/compiler-rt-sanitizers:clang - Force building using installed clang (rather than the default CC/CXX).
+sys-libs/compiler-rt-sanitizers:dfsan - Build Data Flow Sanitizer runtime.
+sys-libs/compiler-rt-sanitizers:gwp-asan - Build GWP-ASAN runtime.
+sys-libs/compiler-rt-sanitizers:hwasan - Build Hardware ASAN runtime.
 sys-libs/compiler-rt-sanitizers:libfuzzer - Build fuzzing runtime.
+sys-libs/compiler-rt-sanitizers:lsan - Build Leak Sanitizer runtime.
+sys-libs/compiler-rt-sanitizers:msan - Build Memory Sanitizer runtime.
 sys-libs/compiler-rt-sanitizers:profile - Build profiling runtime.
+sys-libs/compiler-rt-sanitizers:safestack - Build SafeStack runtime.
 sys-libs/compiler-rt-sanitizers:sanitize - Build sanitizer runtimes.
+sys-libs/compiler-rt-sanitizers:scudo - Build Scudo Hardened Allocator.
+sys-libs/compiler-rt-sanitizers:shadowcallstack - Build ShadowCallStack.
+sys-libs/compiler-rt-sanitizers:tsan - Build Thread Sanitizer runtime.
+sys-libs/compiler-rt-sanitizers:ubsan - Build Undefined Behavior Sanitizer runtime.
 sys-libs/compiler-rt-sanitizers:xray - Build XRay runtime.
 sys-libs/darwin-libc-headers:man - Install the manpages
 sys-libs/freeipmi:nagios - Install a nagios plugin to check sensors' status.

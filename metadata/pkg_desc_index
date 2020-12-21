@@ -2878,7 +2878,7 @@ app-text/gtkspell 2.0.16-r1 3.0.10: Spell checking widget for GTK
 app-text/gtranslator 3.36.0: GNOME Translation Editor
 app-text/gv 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.57 3.57-r1: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
+app-text/highlight 3.57-r1: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.7 7.8: A number of simple utilities for manipulating HTML and XML files
@@ -7900,7 +7900,7 @@ dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing libr
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0: Better dates and times for Python
-dev-python/asgiref 3.3.0 3.3.1: ASGI utilities (successor to WSGI)
+dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 0.24.0 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
@@ -7921,7 +7921,7 @@ dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.29.0 1.30.1 1.31.0 1.32.0-r1 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.30.1 1.31.0 1.32.0-r1 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -7956,8 +7956,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.16 1.16.23 1.16.30 1.16.36 1.16.37 1.16.38 1.16.39 1.16.40 9999: The AWS SDK for Python
-dev-python/botocore 1.19.16 1.19.23 1.19.30 1.19.36 1.19.37 1.19.38 1.19.39 1.19.40 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 9999: The AWS SDK for Python
+dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -7984,7 +7984,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.39.0 0.41.0 0.42.0 0.43.0 0.44.0 0.44.1: CloudFormation Linter
+dev-python/cfn-python-lint 0.41.0 0.42.0 0.43.0 0.44.0 0.44.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8179,7 +8179,7 @@ dev-python/flask-htmlmin 2.0.2: Minimize your flask rendered html
 dev-python/flask-login 0.5.0: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.5.2: SQLAlchemy database migrations for Flask applications using Alembic
-dev-python/flask-mongoengine 0.9.5 1.0.0: Flask support for MongoDB and with WTF model forms
+dev-python/flask-mongoengine 1.0.0: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.6-r2: Easily create navigation for Flask applications.
 dev-python/flask-paginate 0.7.0: Pagination support for flask
 dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for Flask
@@ -8271,7 +8271,7 @@ dev-python/humanize 3.1.0 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.41.1 5.41.3 5.41.4 5.41.5 5.43.0 5.43.1 5.43.2 5.43.3: A library for property based testing
+dev-python/hypothesis 5.24.4 5.41.3 5.41.5 5.43.3: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8440,7 +8440,7 @@ dev-python/mkdocs-redirects 1.0.1: Plugin for Mkdocs page redirects
 dev-python/mkdocs_pymdownx_material_extras 1.0.7 1.1.3: Custom alterations based on Mkdocs-Material
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 3.0.5-r2 4.0.3: Rolling backport of unittest.mock for all Pythons
-dev-python/mongoengine 0.20.0 0.21.0 0.22.0 0.22.1: A Python Object-Document-Mapper for working with MongoDB
+dev-python/mongoengine 0.21.0 0.22.0 0.22.1: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 8.5.0 8.6.0: More routines for operating on iterables, beyond itertools
@@ -8711,7 +8711,7 @@ dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 9999: Python bindings for SDL multi
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0: Python bindings for libgit2
-dev-python/pyglet 1.5.7-r1 1.5.10 1.5.11 1.5.13: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.5.10 1.5.11 1.5.13: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.2 2.7.3: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
@@ -9044,7 +9044,7 @@ dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
 dev-python/sentry-sdk 0.19.1 0.19.4 0.19.5: Python client for Sentry
-dev-python/serpent 1.30 1.30.2: A simple serialization library based on ast.literal_eval
+dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
@@ -9190,7 +9190,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.20.1 3.20.1-r1: virtualenv-based automation of test activities
-dev-python/tqdm 4.51.0 4.53.0 4.54.0 4.54.1 9999: Add a progress meter to your loops in a second
+dev-python/tqdm 4.53.0 4.54.0 4.54.1 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
@@ -10384,7 +10384,7 @@ dev-ruby/warden 1.2.9: General Rack Authentication Framework
 dev-ruby/web-console 3.7.0 4.0.1 4.0.4: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 3.7.6 3.8.1 3.8.2 3.8.3: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
-dev-ruby/websocket 1.2.8: Universal Ruby library to handle WebSocket protocol
+dev-ruby/websocket 1.2.8 1.2.9: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.4 0.1.5: Generic extension manager for WebSocket connections
 dev-ruby/whole_history_rating 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
@@ -10468,8 +10468,8 @@ dev-tcltk/tls 1.7.16 1.7.22: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r3: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development environment
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
-dev-tex/biber 2.12 2.14: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.12 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biber 2.14: A BibTeX replacement for users of biblatex
+dev-tex/biblatex 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
@@ -14583,7 +14583,7 @@ net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r2: GTK frontend to proftpd
 net-ftp/lftp 4.9.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
-net-ftp/ncftp 3.2.6 3.2.6-r1 3.2.6-r2: An extremely configurable ftp client
+net-ftp/ncftp 3.2.6-r2: An extremely configurable ftp client
 net-ftp/proftpd 1.3.7a: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
@@ -15135,7 +15135,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1 1.0.6 1.0.7: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.22 1.6.7 1.6.8 1.6.9: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.22 1.6.8 1.6.9: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
@@ -17178,7 +17178,7 @@ sys-boot/yaboot 1.3.17-r4: PPC Bootloader
 sys-boot/yaboot-static 1.3.17-r2: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
-sys-cluster/ceph 14.2.11-r1 14.2.13 14.2.15 15.2.7-r1: Ceph distributed filesystem
+sys-cluster/ceph 14.2.11-r1 14.2.13 14.2.15 14.2.16 15.2.8: Ceph distributed filesystem
 sys-cluster/charliecloud 0.20 0.21 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
@@ -17203,14 +17203,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes API server
-sys-cluster/kube-controller-manager 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes API server
+sys-cluster/kube-controller-manager 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Scheduler
-sys-cluster/kubeadm 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.17.14 1.18.10 1.18.12 1.18.14 1.19.3 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Scheduler
+sys-cluster/kubeadm 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.17.14 1.18.12 1.18.14 1.19.4 1.19.6 1.20.0 1.20.1: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
@@ -17496,8 +17496,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.72 5.4.77 5.4.77-r1 5.4.78 5.4.79 5.4.80 5.4.80-r1 5.4.81 5.4.82 5.4.83 5.4.84 5.9.8 5.9.8-r1 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14 5.9.15 5.10.1 5.10.1-r1: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.72 5.4.72-r1 5.4.77 5.4.77-r1 5.4.78 5.4.78-r1 5.4.79 5.4.79-r1 5.4.80 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.81 5.4.81-r1 5.4.82 5.4.82-r1 5.4.83 5.4.83-r1 5.4.84 5.4.84-r1 5.9.8 5.9.8-r1 5.9.9 5.9.9-r1 5.9.10 5.9.10-r1 5.9.11 5.9.11-r1 5.9.12 5.9.12-r1 5.9.13 5.9.13-r1 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.10.1 5.10.1-r1 5.10.1-r2: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.83 5.4.83-r1 5.4.84 5.4.84-r1 5.4.85 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.9.16 5.10.1 5.10.1-r1 5.10.1-r2 5.10.2: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.246 4.4.247 4.4.248 4.9.240 4.9.246 4.9.247 4.9.248 4.14.202 4.14.209 4.14.211 4.14.212 4.19.152 4.19.160 4.19.162 4.19.163 5.4.72 5.4.80-r1 5.4.82 5.4.83 5.4.84 5.4.85 5.9.12 5.9.13 5.9.14 5.9.15 5.9.16 5.10.0 5.10.1 5.10.1-r1 5.10.2: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17512,7 +17512,7 @@ sys-kernel/pf-sources 5.7_p7 5.8_p7 5.9_p1 5.9_p2 5.9_p4 5.9_p5 5.9_p6 5.9_p7 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 5.4.72_p20201022 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.72 5.4.77 5.4.78 5.4.79 5.4.80 5.4.81 5.4.82 5.4.83 5.4.84 5.9.8 5.9.9 5.9.10 5.9.11 5.9.12 5.9.13 5.9.14 5.9.15 5.10.1: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.84 5.9.15 5.10.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
@@ -17640,6 +17640,7 @@ sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r2: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
+sys-process/bpytop 1.0.51: Linux/OSX/FreeBSD resource monitor
 sys-process/criu 3.14-r2 3.15: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
