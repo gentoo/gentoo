@@ -1,15 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Upstream does not test with GCC and it turned out that building
-# Firefox/Thunderbird with GCC will cause certain hard to debug
-# runtime bugs (bug #758446) which are not worth it.
-# Building Firefox/Thunderbird with GCC is no longer supported
-# in Gentoo until further notice.
-dev-lang/spidermonkey clang
-mail-client/thunderbird clang
-www-client/firefox clang
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # sys-boot/udk is being removed, and newest revision of refind does not
 # support it already.
