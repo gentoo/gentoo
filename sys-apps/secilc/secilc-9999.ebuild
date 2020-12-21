@@ -24,15 +24,10 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
-DEPEND="
-	app-text/xmlto
-	>=sys-libs/libsepol-${SEPOL_VER}
-	"
-RDEPEND="
-	>=sys-libs/libsepol-${SEPOL_VER}
-	"
+DEPEND=">=sys-libs/libsepol-${SEPOL_VER}"
+RDEPEND="${DEPEND}"
+BDEPEND="app-text/xmlto"
 
 # tests are not meant to be run outside of the
 # full SELinux userland repo
