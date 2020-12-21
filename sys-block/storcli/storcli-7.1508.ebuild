@@ -6,15 +6,15 @@ EAPI="7"
 inherit pax-utils toolchain-funcs
 
 # Upstream is still using strange version numbers
-MY_PV="007.1410.0000.0000"
+MY_PV="007.1508.0000.0000"
 
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
-SRC_URI="https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI.zip -> ${P}.zip"
+SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI-PUL.zip -> ${P}.zip"
 
 LICENSE="Avago LSI BSD"
-SLOT="0/7.14"
-KEYWORDS="-* amd64"
+SLOT="0/7.15"
+KEYWORDS="-* ~amd64"
 IUSE=""
 
 RDEPEND=""
