@@ -463,6 +463,7 @@ kde-apps/kdebase-meta:5
 =dev-libs/libprelude-5.2.0-r10
 >=dev-libs/libucl-0.8.1-r100
 >=dev-libs/redland-bindings-1.0.17.1-r100
+>=dev-libs/xapian-bindings-1.4.17-r100
 >=dev-lua/busted-2.0.0-r100
 >=dev-lua/busted-htest-1.0.0-r100
 >=dev-lua/dkjson-2.5-r100
