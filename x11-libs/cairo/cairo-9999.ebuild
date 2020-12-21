@@ -35,7 +35,7 @@ RDEPEND="
 	>=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}]
 	sys-libs/binutils-libs:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	>=x11-libs/pixman-0.32.4[${MULTILIB_USEDEP}]
+	>=x11-libs/pixman-0.36.0[${MULTILIB_USEDEP}]
 	gles2-only? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	opengl? ( >=media-libs/mesa-9.1.6[egl,X(+),${MULTILIB_USEDEP}] )
