@@ -1,12 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED="fortran"
 FORTRAN_STANDARD="90 2003"
 
-inherit cmake-utils fortran-2
+# fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR="emake"
+
+inherit cmake fortran-2
 
 DESCRIPTION="CFD General Notation System standard library"
 HOMEPAGE="http://www.cgns.org/"
@@ -42,7 +45,7 @@ src_prepare() {
 	# dont hard code link
 	sed -e '/link_directories/d' \
 		-i src/tools/CMakeLists.txt src/cgnstools/*/CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -58,20 +61,20 @@ src_configure() {
 		-DHDF5_NEED_SZIP="$(usex szip)"
 		-DHDF5_NEED_ZLIB="$(usex szip)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	# hack to allow parallel building by first producing fortran module
 	use fortran && cd "${BUILD_DIR}"/src && emake cgns_f.o
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc README.md release_docs/Release.txt
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/libcgns.a
 	use doc && dodoc release_docs/*.pdf
-	insinto /usr/share/doc/${PF}
-	use examples && doins -r src/examples
+	docompress -x /usr/share/doc/${PF}/examples
+	use examples && dodoc -r src/examples
 }
