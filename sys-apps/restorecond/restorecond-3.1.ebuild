@@ -26,11 +26,9 @@ HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libsepol-${PV}:=
-	>=sys-libs/libselinux-${PV}:=
-	dev-libs/dbus-glib
-	dev-libs/libpcre:=
-	>=sys-libs/libcap-1.10-r10:="
+DEPEND="dev-libs/glib:2
+	>=sys-libs/libsepol-${PV}:=
+	>=sys-libs/libselinux-${PV}:="
 
 RDEPEND="${DEPEND}"
 
