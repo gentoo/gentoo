@@ -78,7 +78,7 @@ src_install() {
 		einfo "Creating ${base_bin} launcher in /usr/bin"
 		cat << EOF > "${base_bin}" || die
 #!/usr/bin/env bash
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # ${PF} launcher: ${base_bin}
 exec /${smw_bindir}/${base_bin} /${smw_datadir}
