@@ -18,6 +18,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">JelteF/PyLaTeX</remote-id>
-		<remote-id type="pypi">pylatex</remote-id>
+		<remote-id type="pypi">PyLaTeX</remote-id>
 	</upstream>
 </pkgmetadata>
