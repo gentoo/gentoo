@@ -4411,7 +4411,7 @@ dev-haskell/test-framework-th-prime 0.0.9: Template Haskell for test framework
 dev-haskell/testing-feat 1.1.0.0: Functional Enumeration of Algebraic Types
 dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing
 dev-haskell/texmath 0.12.0.3: Conversion between formats used to represent mathematics
-dev-haskell/text 1.2.4.0: An efficient packed Unicode text type
+dev-haskell/text 1.2.4.0-r1: An efficient packed Unicode text type
 dev-haskell/text-binary 0.2.1.1: Binary instances for text types
 dev-haskell/text-conversions 0.3.0: Safe conversions between textual types
 dev-haskell/text-icu 0.7.0.1: Bindings to the ICU library
@@ -5124,7 +5124,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.34 7.3.25 7.4.13 8.0.0: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r4 2.7.18-r5 3.6.11-r2 3.6.12 3.6.12-r1 3.7.8-r2 3.7.9 3.7.9-r1 3.8.4-r1 3.8.5 3.8.6 3.8.6-r1 3.8.7_rc1 3.9.0 3.9.0-r1 3.9.1 3.10.0_alpha1 3.10.0_alpha3: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r4 2.7.18-r5 3.6.11-r2 3.6.12 3.6.12-r1 3.7.8-r2 3.7.9 3.7.9-r1 3.8.4-r1 3.8.5 3.8.6 3.8.6-r1 3.8.7_rc1 3.8.7 3.9.0 3.9.0-r1 3.9.1 3.10.0_alpha1 3.10.0_alpha3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 9999: A compiler for the Perl 6 programming language
@@ -7877,7 +7877,7 @@ dev-python/aiohttp 3.6.2-r1 3.7.1-r1 3.7.2-r1 3.7.3: http client/server for asyn
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.18.4-r1: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.18.4-r1 0.18.5: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
@@ -7956,8 +7956,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 9999: The AWS SDK for Python
-dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 9999: The AWS SDK for Python
+dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8690,7 +8690,7 @@ dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1: Data parsing and validation using Python type hints
-dev-python/pydata-sphinx-theme 0.4.0 0.4.1: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pydata-sphinx-theme 0.4.1: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
@@ -9048,7 +9048,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0: Collection of extensions to Distutils
+dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0 51.1.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -15311,7 +15311,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.12.14 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.12.14 2020.12.22 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -16960,7 +16960,7 @@ sys-apps/s6-linux-utils 2.4.0.2 2.5.0.0 2.5.0.1 2.5.1.1 2.5.1.3: Set of tiny lin
 sys-apps/s6-portable-utils 2.2.1.1 2.2.1.2 2.2.1.3 2.2.2.1 2.2.3.0: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1 0.5.2.0: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 2.18 2.20: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.20: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10 1.11: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 3.1 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.7 4.8: Super-useful stream editor
