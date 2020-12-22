@@ -10,6 +10,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 	PyLaTeX is a Python library for creating and compiling LaTeX 
 	files or snippets. The goal of this library is being an easy, 
