@@ -907,11 +907,6 @@
       <role>member</role>
     </member>
     <member>
-      <email>rafaelmartins@gentoo.org</email>
-      <name>Rafael Martins</name>
-      <role>member</role>
-    </member>
-    <member>
       <email>tomjbe@gentoo.org</email>
       <name>Thomas Beierlein</name>
       <role>member</role>
@@ -2383,11 +2378,6 @@
       <role>Administrator</role>
     </member>
     <member>
-      <email>desultory@gentoo.org</email>
-      <name>Desultory</name>
-      <role>Administrator</role>
-    </member>
-    <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
       <role>Infra Liaison</role>
@@ -3421,10 +3411,6 @@
       <name>Patrick McLean</name>
     </member>
     <member>
-      <email>dev-zero@gentoo.org</email>
-      <name>Tiziano Müller</name>
-    </member>
-    <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
     </member>
@@ -3730,10 +3716,6 @@
     <member>
       <email>cardoe@gentoo.org</email>
       <name>Doug Goldstein</name>
-    </member>
-    <member>
-      <email>dev-zero@gentoo.org</email>
-      <name>Tiziano Müller</name>
     </member>
     <member>
       <email>dlan@gentoo.org</email>
