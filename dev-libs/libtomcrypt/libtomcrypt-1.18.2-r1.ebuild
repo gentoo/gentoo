@@ -36,9 +36,18 @@ mymake() {
 	local extra_libs=()
 
 	# Build support as appropriate for consumers (MPI)
-	use gmp && enabled_features+=( -DGMP_DESC=1 )
-	use libtommath && enabled_features+=( -DLTM_DESC=1 )
-	use tomsfastmath && enabled_features+=( -DTFM_DESC=1 )
+	if use gmp; then
+		enabled_features+=( -DGMP_DESC=1 )
+		extra_libs+=( -lgmp )
+	fi
+	if use libtommath; then
+		enabled_features+=( -DLTM_DESC=1 )
+		extra_libs+=( -ltommath )
+	fi
+	if use tomsfastmath; then
+		enabled_features+=( -DTFM_DESC=1 )
+		extra_libs+=( -ltfm )
+	fi
 
 	# For the test and example binaries, we have to choose
 	# which MPI we want to use.
@@ -46,27 +55,14 @@ mymake() {
 	# gmp > libtommath > tomsfastmath > none
 	if use gmp ; then
 		enabled_features+=( -DUSE_GMP=1 )
-		extra_libs=( -lgmp )
 	elif use libtommath ; then
 		enabled_features+=( -DUSE_LTM=1 )
-		extra_libs=( -ltommath )
 	elif use tomsfastmath ; then
 		enabled_features+=( -DUSE_TFM=1 )
-		extra_libs=( -ltfm )
-	fi
-
-	# If none of the above are being used,
-	# the tests don't need to link against any extra
-	# libraries.
-
-	# We only need to do this strange logic for tests
-	# anyway because we're choosing what to build a binary with.
-	if [[ ${TEST} != 1 ]] ; then
-		extra_libs=()
 	fi
 
 	# IGNORE_SPEED=1 is needed to respect CFLAGS
-	EXTRALIBS="${extra_libs}" emake \
+	EXTRALIBS="${extra_libs[*]}" emake \
 		CFLAGS="${CFLAGS} ${enabled_features[*]}" \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
@@ -88,7 +84,7 @@ src_test() {
 	# 1) https://github.com/libtom/libtomcrypt/commit/a65cfb8dbe4
 	# 2) https://github.com/libtom/libtomcrypt/commit/fdc6cd20137
 	# is made, we can run tests for each provider.
-	TEST=1 mymake test
+	mymake test
 	./test || die "Running tests failed"
 }
 
