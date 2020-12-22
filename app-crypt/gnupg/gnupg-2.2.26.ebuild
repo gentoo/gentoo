@@ -104,12 +104,6 @@ src_configure() {
 		append-cppflags -I"${EPREFIX}/usr/include/libusb-1.0"
 	fi
 
-	if use elibc_SunOS || use elibc_AIX; then
-		myconf+=( --disable-symcryptrun )
-	else
-		myconf+=( --enable-symcryptrun )
-	fi
-
 	#bug 663142
 	if use user-socket; then
 		myconf+=( --enable-run-gnupg-user-socket )
