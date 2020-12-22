@@ -551,6 +551,7 @@ kde-apps/kdebase-meta:5
 >=media-sound/aqualung-1.1-r100
 >=media-sound/csound-6.15.0-r100
 >=media-video/aegisub-3.2.2_p20160518-r100
+>=media-video/mpv-0.33.0-r100
 >=media-video/obs-studio-25.0.8-r100
 >=media-video/vlc-3.0.11.1-r100
 >=net-analyzer/rrdtool-1.7.2-r100
