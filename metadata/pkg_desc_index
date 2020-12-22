@@ -688,7 +688,7 @@ app-admin/rex 1.13.0 1.13.1 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2019.2.7 2019.2.8 3000.5 3000.6 3001.4-r1 3002.2-r1: Salt is a remote execution and configuration manager
+app-admin/salt 2019.2.7 2019.2.8 3000.5 3000.6 3001.4-r1 3002.2-r2: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
@@ -14442,7 +14442,7 @@ net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
 net-analyzer/zabbix 3.0.31-r2 4.0.26-r1 4.0.27-r1 5.0.5-r1 5.0.6-r1 5.2.1-r1 5.2.2-r1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.12.0_p20200913 9999: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.12.0_p20200913 1.12.0_p20200913-r100 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.51.0-r1: A serial terminal, like minicom, written in Qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
@@ -17498,7 +17498,7 @@ sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.83 5.4.83-r1 5.4.84 5.4.84-r1 5.4.85 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.9.16 5.10.1 5.10.1-r1 5.10.1-r2 5.10.2: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.83 5.4.83-r1 5.4.84 5.4.85 5.4.85-r1 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.9.16 5.9.16-r1 5.10.1 5.10.1-r1 5.10.1-r2 5.10.2 5.10.2-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.240 4.4.246 4.4.247 4.4.248 4.9.240 4.9.246 4.9.247 4.9.248 4.14.202 4.14.209 4.14.211 4.14.212 4.19.152 4.19.160 4.19.162 4.19.163 5.4.72 5.4.80-r1 5.4.82 5.4.83 5.4.84 5.4.85 5.9.12 5.9.13 5.9.14 5.9.15 5.9.16 5.10.0 5.10.1 5.10.1-r1 5.10.2: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
