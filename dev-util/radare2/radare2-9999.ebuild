@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1 eutils toolchain-funcs
 
 DESCRIPTION="unix-like reverse engineering framework and commandline tools"
 HOMEPAGE="http://www.radare.org"
@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	# Ideally these should be set by ./configure
+	tc-export CC AR LD OBJCOPY RANLIB
+	export HOST_CC=${CC}
+
 	econf \
 		--without-libuv \
 		--with-syscapstone \
@@ -53,4 +57,8 @@ src_install() {
 			rm -rfv "$d" || die "failed to delete '$d'"
 		fi
 	done
+
+	# These are not really docs. radare assumes
+	# uncompressed files: bug #761250
+	docompress -x /usr/share/doc/${PF}/fortunes.{creepy,fun,nsfw,tips}
 }
