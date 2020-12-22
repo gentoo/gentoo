@@ -10,7 +10,7 @@ inherit pam python-any-r1 readme.gentoo-r1
 DESCRIPTION="PAM base configuration files"
 HOMEPAGE="https://github.com/gentoo/pambase"
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gentoo/pambase.git"
 else
