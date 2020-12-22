@@ -562,6 +562,7 @@ kde-apps/kdebase-meta:5
 >=net-dns/dnsdist-1.5.1-r100
 >=net-dns/dnsmasq-2.82-r100
 >=net-dns/pdns-4.4.0-r100
+>=net-dns/pdns-recursor-4.4.2-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
 >=net-irc/hexchat-2.14.3-r100
