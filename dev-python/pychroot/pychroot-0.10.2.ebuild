@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND=">=dev-python/snakeoil-0.8.4[${PYTHON_USEDEP}]"
+	RDEPEND="<dev-python/snakeoil-0.8.9[${PYTHON_USEDEP}]"
 fi
 
 DEPEND="${RDEPEND}"
