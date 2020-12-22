@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="+deprecated readline static test test-complete"
 
 COMMON_DEPEND="
-	app-eselect/eselect-lua
+	>=app-eselect/eselect-lua-3
 	readline? ( sys-libs/readline:0= )
 	!dev-lang/lua:0"
 DEPEND="${COMMON_DEPEND}"
@@ -189,6 +189,8 @@ src_test() {
 }
 
 pkg_postinst() {
+	eselect lua set --if-unset "${PN}${SLOT}"
+
 	if has_version "app-editor/emacs"; then
 		if ! has_version "app-emacs/lua-mode"; then
 			einfo "Install app-emacs/lua-mode for lua support for emacs"
