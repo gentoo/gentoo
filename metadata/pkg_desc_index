@@ -7886,7 +7886,7 @@ dev-python/ament_package 0.9.2: Parser for the manifest files in the ament build
 dev-python/amodem 1.15.1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.5: ANSI cursor movement and graphics in Python
-dev-python/ansi2html 1.5.2-r2 1.6.0: Convert text with ANSI color codes to HTML
+dev-python/ansi2html 1.6.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0 2.1.1: A client for the OpenStack Aodh API
@@ -17063,7 +17063,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20201103: PAM base configuration files
+sys-auth/pambase 9999 20201103: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
@@ -17506,7 +17506,7 @@ sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot a
 sys-kernel/kergen 0.1.5: Kernel config generator
 sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39 5.10.0: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 99999999: Linux firmware files
+sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 20201218 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.5 5.6 5.7 5.8 5.9 5.10: Linux system headers
 sys-kernel/mips-sources 4.14.206 4.19.157 5.4.77: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.9_p7 5.10_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
