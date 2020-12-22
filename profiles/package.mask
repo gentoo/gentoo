@@ -507,6 +507,7 @@ kde-apps/kdebase-meta:5
 >=dev-lua/penlight-1.9.2-r100
 >=dev-lua/say-1.3_p1-r100
 >=dev-lua/toluapp-1.0.93_p20190513-r100
+>=dev-util/bcc-0.17.0-r100
 >=dev-util/geany-plugins-1.37-r100
 >=dev-util/hermes-2.8
 >=dev-util/sysdig-0.27.1-r100
