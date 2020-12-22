@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pycryptodomex[${PYTHON_USEDEP}]
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		dev-python/pygobject[${PYTHON_USEDEP}]
 		dev-libs/libpwquality[python,${PYTHON_USEDEP}]
 	')
@@ -32,6 +32,12 @@ RDEPEND="${PYTHON_DEPS}
 "
 
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	find -name '*.py' -exec \
+		sed -i -e 's:Cryptodome:Crypto:' meson.build {} + || die
+	xdg_src_prepare
+}
 
 src_install() {
 	meson_src_install
