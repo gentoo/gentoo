@@ -42,25 +42,19 @@ PATCHES=(
 
 src_prepare() {
 	gnome2_src_prepare
+	# pkgconfig wrapper set up by lua-single.eclass is not multilib-compatible
+	# at present so point Autoconf directly to the correct implementation.
+	# We patch configure rather than configure.ac because running 'eautoreconf'
+	# results for some reason in corrupted test Makefiles.
+	sed -i -e "s|\"lua\"|\"${ELUA}\"|g" configure || die
 }
 
 multilib_src_configure() {
 	local confopts=(
 		--enable-animation
+		$(use_enable lua)
+		$(use_with lua system-lua)
 	)
-	# TODO: fix system-lua detection so that it works for non-native ABIs,
-	# native builds rely on the pkgconfig wrapper set up by lua-single.eclass
-	# but that wrapper is not multilib-compatible.
-	if multilib_is_native_abi; then
-		confopts+=(
-			$(use_enable lua)
-			$(use_with lua system-lua)
-		)
-	else
-		confopts+=(
-			--disable-lua
-		)
-	fi
 	ECONF_SOURCE=${S} gnome2_src_configure "${confopts[@]}"
 }
 
