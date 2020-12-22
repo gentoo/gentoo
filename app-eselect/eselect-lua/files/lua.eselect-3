@@ -18,7 +18,7 @@ remove_symlinks() {
 	for f in $HEADER_FILES ; do
 		rm -f "${EROOT}"/usr/include/${f}
 	done
-	rm -f "${EROOT}"/usr/share/man/man1/{lua,luac}.1{,.gz,.bz2,.lzma} &>/dev/null
+	rm -f "${EROOT}"/usr/share/man/man1/lua{,c}.1{,.*} &>/dev/null
 }
 
 _dup() {
@@ -26,9 +26,12 @@ _dup() {
 }
 
 set_symlinks() {
-	local ver=$1
-	ln -s lua${ver} $(_dup "${EROOT}"/usr/bin/lua)
-	ln -s luac${ver} $(_dup "${EROOT}"/usr/bin/luac)
+	local ver=${1#lua}
+	local bin_prefix="${EROOT}/usr/bin"
+	ln -s lua${ver} $(_dup "${bin_prefix}"/lua)
+	if [[ -f "${bin_prefix}"/luac${ver} ]]; then
+		ln -s luac${ver} $(_dup "${bin_prefix}"/luac)
+	fi
 	for dir in $(get_libdirs) ; do
 		if has 'jit*' ${ver}; then
 			type -p lua${ver} &>/dev/null || die -q "It's something wrong with your lua${ver} installation: it's binary leads to broken symlink"
@@ -41,7 +44,7 @@ set_symlinks() {
 		fi
 		ln -s lua${ver}.pc $(_dup "${EROOT}/${dir}"/pkgconfig/lua.pc)
 	done
-	for manpage in "${EROOT}"/usr/share/man/man1/lua*${ver}.1* ; do
+	for manpage in "${EROOT}"/usr/share/man/man1/lua{,c}${ver}.1.* ; do
 		test -f ${manpage} &&
 		ln -s $(basename "${manpage}") $(_dup "${manpage//${ver}}")
 	done
@@ -72,14 +75,14 @@ get_libdirs() {
 
 find_targets() {
 	local dirs
-	local prefix="${EROOT}/usr/bin/lua"
-	for f in ${prefix}{5,jit-2}.* ; do
+	local prefix="${EROOT}/usr/bin/"
+	for f in ${prefix}lua{5,jit-2}.* ; do
 		[[ -f "${f}" ]] && dirs="${dirs} ${f##$prefix}"
 	done
 	echo $dirs
 }
 
-resolv_target() {
+resolve_target() {
 	local targets=( $(find_targets) )
 	if is_number $1; then
 		[[ $1 -le ${#targets[@]} && $1 -gt 0 ]] && echo "${targets[ $(( $1 - 1 )) ]}"
@@ -89,7 +92,7 @@ resolv_target() {
 }
 
 get_active_version() {
-	readlink -e "${EROOT}"/usr/bin/lua | sed -ne "s:.*/usr/bin/lua\([\w.-]*\):\1:p"
+	readlink -e "${EROOT}"/usr/bin/lua | sed -ne "s:.*/usr/bin/\([\w.-]*\):\1:p"
 }
 
 ## Actual actions
@@ -101,16 +104,23 @@ describe_set() {
 }
 
 describe_set_parameters() {
-	echo '<target>'
+	echo '[--if-unset] <target>'
 }
 
 describe_set_options() {
-	echo 'target:	Target name or number (from "list" action)'
+	echo '--if-unset:  Do not replace currently selected implementation'
+	echo 'target:      Target name or number (from "list" action)'
 }
 
-
 do_set() {
-	local target=$(resolv_target $1)
+	if [ "${1}" == "--if-unset" ]; then
+		if [[ -n "$(get_active_version)" ]]; then
+			return
+		fi
+		shift
+	fi
+
+	local target=$(resolve_target $1)
 	if [[ -z "${target}" ]]; then
 	  die -q "You need to specify a version"
 	fi
@@ -143,30 +153,4 @@ describe_show() {
 
 do_show() {
 	get_active_version
-}
-
-## update action
-
-describe_update() {
-	echo 'Automatically update the lua version'
-}
-
-describe_update_options() {
-	echo 'ifunset : Do not override existing implementation'
-}
-
-do_update() {
-	[[ -n ${1} && ! ( ${1} == ifunset || ${1} == '--if-unset' ) ]] && \
-		die -q 'Usage error'
-
-	[[ ( ${1} == ifunset || ${1} == '--if-unset' ) && -n $(get_active_version) ]] && \
-		return
-
-	remove_symlinks
-	
-	local targets=( $(find_targets) )
-	if [[ -n ${#targets[@]} ]] ; then
-		local target=${targets[${#targets[@]} - 1]}
-		set_symlinks $target || echo 'Nothing to update'
-	fi
 }
