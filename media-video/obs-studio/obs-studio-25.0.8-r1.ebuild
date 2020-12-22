@@ -4,7 +4,8 @@
 EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+# Does not work with 3.8+ https://bugs.gentoo.org/754006
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit cmake-utils python-single-r1 xdg-utils
 
