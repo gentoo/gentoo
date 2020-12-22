@@ -12,12 +12,18 @@ K_EXP_GENPATCHES_NOUSE="1"
 # Just get basic genpatches, -pf patch set already includes vanilla-linux updates
 K_GENPATCHES_VER="3"
 
+# -pf already sets EXTRAVERSION to kernel Makefile
+K_NOSETEXTRAVERSION="1"
+
 # Not supported by the Gentoo security team
 K_SECURITY_UNSUPPORTED="1"
 
 # We want the very basic patches from gentoo-sources, experimental patch is
 # already included in pf-sources
 K_WANT_GENPATCHES="base extras"
+
+# This is already patched via -pf patch set.
+UNIPATCH_EXCLUDE="1001_linux-5.10.1.patch"
 
 inherit kernel-2 optfeature
 detect_version
@@ -32,7 +38,7 @@ SRC_URI="${KERNEL_URI}
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-S="${WORKDIR}/linux-${PV}-pf-${PR}"
+S="${WORKDIR}/linux-${PVR}-pf"
 
 PATCHES=( "${DISTDIR}/${P}.patch" )
 
@@ -51,12 +57,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	kernel-2_src_prepare
-
-	# Keep consistency when upgrading throughout 5.10 series.
-	sed -e 's/_p1-pf-r1/-pf-r1/g' \
-		-e 's/SUBLEVEL = 1/SUBLEVEL = 0/g' \
-		-i Makefile || die
+	# kernel-2_src_prepare doesn't apply PATCHES().
+	default
 }
 
 pkg_postinst() {
