@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit cmake lua unpacker
+inherit cmake lua-single unpacker
 
 # e.g. MY_PV = a.b.c-d
 MY_PV="$(ver_rs 3 -)"
@@ -46,11 +46,16 @@ src_prepare() {
 	cmake_src_prepare
 }
 
-lua_src_configure() {
+# This could in theory be multi-impl (and we have an ebuild in git history,
+# 1.32.0.0-r101, which implements it) - the only revdep currently in the tree,
+# app-editors/neovim, actually links against luv instead of trying to load it
+# as a module. We could probably implement some sort of a hack for this
+# - but given how messy it would be, don't bother unless someone actually requests
+# luv multi-impl support.
+src_configure() {
 	lua_compat_dir="${WORKDIR}/lua-compat-5.3-${LUA_COMPAT_PV}"
 
 	local mycmakeargs=(
-		-DINSTALL_LIB_DIR="$(lua_get_cmod_dir)"
 		-DBUILD_MODULE=OFF
 		-DLUA_BUILD_TYPE=System
 		-DLUA_COMPAT53_DIR="${lua_compat_dir}"
@@ -70,44 +75,8 @@ lua_src_configure() {
 	cmake_src_configure
 }
 
-lua_src_test() {
-	# We need to copy the implementation-specific library back so that the tests see it
-	rm -f ./luv.so
+src_test() {
+	# We need to copy the library back so that the tests see it
 	ln -s "${BUILD_DIR}/libluv.so" "./luv.so" || die "Failed to symlink library for tests"
 	${ELUA} "tests/run.lua" || die "Tests failed"
-}
-
-lua_src_install() {
-	cmake_src_install
-	mkdir -p "${ED}"/usr/$(get_libdir)/pkgconfig && \
-	mv "${ED}$(lua_get_cmod_dir)"/pkgconfig/libluv.pc \
-		"${ED}"/usr/$(get_libdir)/pkgconfig/libluv-${ELUA}.pc || \
-	die "Failed make pkgconfig file for ${ELUA} implementation-specific"
-	rmdir "${ED}$(lua_get_cmod_dir)"/pkgconfig || die
-}
-
-src_configure() {
-	lua_foreach_impl lua_src_configure
-}
-
-src_compile() {
-	lua_foreach_impl cmake_src_compile
-}
-
-src_test() {
-	lua_foreach_impl lua_src_test
-}
-
-src_install() {
-	lua_foreach_impl lua_src_install
-}
-
-pkg_postinst() {
-	ewarn "Please note that in order to properly support multiple Lua implementations,"
-	ewarn "this ebuild of ${PN} installs its library files into implementation-specific"
-	ewarn "module directories, as well as multiple .pc files named after implementations"
-	ewarn "(e.g. 'libluv-lua5.3.pc'). Since upstream by default only supports a single"
-	ewarn "Lua implementation at a time and thus only provides a single, unversioned"
-	ewarn ".pc file, projects depending on ${PN} might require changes in order to"
-	ewarn "support the multi-implementation approach."
 }
