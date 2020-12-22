@@ -5484,7 +5484,7 @@ dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
-dev-libs/libtomcrypt 1.18.2: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
+dev-libs/libtomcrypt 1.18.2-r1: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 1.2.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
