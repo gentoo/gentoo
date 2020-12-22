@@ -509,6 +509,7 @@ src_prepare() {
 src_configure() {
 	# Show flags set at the beginning
 	einfo "Current CFLAGS:    ${CFLAGS}"
+	einfo "Current CXXFLAGS:  ${CXXFLAGS}"
 	einfo "Current LDFLAGS:   ${LDFLAGS}"
 	einfo "Current RUSTFLAGS: ${RUSTFLAGS}"
 
@@ -754,6 +755,11 @@ src_configure() {
 		if [[ -n ${disable_elf_hack} ]] ; then
 			mozconfig_add_options_ac 'elf-hack is broken when using Clang' --disable-elf-hack
 		fi
+	elif tc-is-gcc ; then
+		if ver_test $(gcc-fullversion) -ge 10 ; then
+			einfo "Forcing -fno-tree-loop-vectorize to workaround GCC bug, see bug 758446 ..."
+			append-cxxflags -fno-tree-loop-vectorize
+		fi
 	fi
 
 	# Additional ARCH support
@@ -799,6 +805,7 @@ src_configure() {
 
 	# Show flags we will use
 	einfo "Build CFLAGS:    ${CFLAGS}"
+	einfo "Build CXXFLAGS:  ${CXXFLAGS}"
 	einfo "Build LDFLAGS:   ${LDFLAGS}"
 	einfo "Build RUSTFLAGS: ${RUSTFLAGS}"
 
