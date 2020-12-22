@@ -550,6 +550,7 @@ kde-apps/kdebase-meta:5
 >=net-analyzer/suricata-6.0.1-r100
 >=net-analyzer/tracebox-0.4.4-r100
 >=net-analyzer/wireshark-3.4.2-r100
+>=net-dialup/accel-ppp-1.12.0_p20200913-r100
 >=net-dns/dnsmasq-2.82-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
