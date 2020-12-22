@@ -9,7 +9,7 @@ inherit distutils-r1 optfeature
 
 MY_PN="PyJWT"
 DESCRIPTION="JSON Web Token implementation in Python"
-HOMEPAGE="https://github.com/progrium/pyjwt https://pypi.org/project/PyJWT/"
+HOMEPAGE="https://github.com/jpadilla/pyjwt/ https://pypi.org/project/PyJWT/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}"/${MY_PN}-${PV}
 
