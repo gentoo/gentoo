@@ -38,9 +38,9 @@ BDEPEND="${LUA_DEPS}
 # TODO: add tests, dev-lua/busted has now got luajit support.
 # bug #584694
 DEPEND="${LUA_DEPS}
+	dev-lua/luv[${LUA_SINGLE_USEDEP}]
 	$(lua_gen_cond_dep '
 		dev-lua/lpeg[${LUA_USEDEP}]
-		dev-lua/luv[${LUA_USEDEP}]
 		dev-lua/mpack[${LUA_USEDEP}]
 	')
 	$(lua_gen_cond_dep '
@@ -64,7 +64,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.4-cmake_lua_version.patch
-	"${FILESDIR}"/${PN}-0.4.4-cmake_multiimpl_luv.patch
 )
 
 src_prepare() {
