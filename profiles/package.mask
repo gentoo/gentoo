@@ -457,6 +457,7 @@ kde-apps/kdebase-meta:5
 >=app-metrics/nginx-lua-prometheus-0.1_pre20170610-r100
 >=app-misc/worker-3.8.3-r100
 >=app-text/highlight-3.57-r100
+>=app-text/podofo-0.9.6_p20190928-r100
 >=dev-db/redis-6.0.9-r100
 >=dev-games/cegui-0.8.7-r100
 >=dev-games/openscenegraph-3.6.5-r100
