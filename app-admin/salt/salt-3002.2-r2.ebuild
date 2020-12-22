@@ -33,7 +33,6 @@ RDEPEND="
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pycryptodome-3.9.8[${PYTHON_USEDEP}]
-	dev-python/pycryptodomex[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
