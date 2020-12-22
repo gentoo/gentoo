@@ -107,9 +107,8 @@ PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-3.16.0-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${P}-featuresummary.patch"
-	"${FILESDIR}/${P}-default-qmldir.patch"
-	"${FILESDIR}/${P}-find-qt5linguisttools.patch"
+	"${FILESDIR}/${PN}-3.16.1-featuresummary.patch"
+	"${FILESDIR}/${PN}-3.16.1-default-qmldir.patch"
 )
 
 pkg_setup() {

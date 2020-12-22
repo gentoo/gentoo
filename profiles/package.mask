@@ -551,6 +551,7 @@ kde-apps/kdebase-meta:5
 >=media-sound/aqualung-1.1-r100
 >=media-sound/csound-6.15.0-r100
 >=media-video/aegisub-3.2.2_p20160518-r100
+>=media-video/mpv-0.33.0-r100
 >=media-video/obs-studio-25.0.8-r100
 >=media-video/vlc-3.0.11.1-r100
 >=net-analyzer/rrdtool-1.7.2-r100
@@ -561,6 +562,8 @@ kde-apps/kdebase-meta:5
 >=net-dialup/accel-ppp-1.12.0_p20200913-r100
 >=net-dns/dnsdist-1.5.1-r100
 >=net-dns/dnsmasq-2.82-r100
+>=net-dns/pdns-4.4.0-r100
+>=net-dns/pdns-recursor-4.4.2-r100
 >=net-im/prosody-0.11.7-r100
 >=net-im/swift-4.0.2-r100
 >=net-irc/hexchat-2.14.3-r100
