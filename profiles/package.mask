@@ -539,6 +539,7 @@ kde-apps/kdebase-meta:5
 >=media-gfx/geeqie-1.5.1-r1
 >=media-libs/libquvi-0.9.4-r100
 >=media-libs/libquvi-scripts-0.9.20131130-r100
+>=media-libs/mlt-6.22.1-r100
 >=media-sound/aqualung-1.1-r100
 >=media-video/aegisub-3.2.2_p20160518-r100
 >=media-video/vlc-3.0.11.1-r100

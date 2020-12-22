@@ -1,0 +1,11 @@
+--- a/src/swig/lua/build
++++ b/src/swig/lua/build
+@@ -8,7 +8,7 @@
+ 	exit 0
+ fi
+ 
+-path=`which lua 2> /dev/null`
++path=`/bin/true`
+ 
+ if [ $? = 0 ]
+ then
