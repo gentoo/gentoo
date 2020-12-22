@@ -4,7 +4,7 @@
 EAPI=7
 
 ECM_TEST="true"
-KFMIN=5.74.0
+KFMIN=5.75.0
 QTMIN=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/kdepim/libkgapi/html/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="nls"
 
 BDEPEND="
@@ -24,18 +24,10 @@ DEPEND="
 	dev-libs/cyrus-sasl:2
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/kcalendarcore-${KFMIN}:5
 	>=kde-frameworks/kcontacts-${KFMIN}:5
-	>=kde-frameworks/kio-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwallet-${KFMIN}:5
 "
-RDEPEND="${DEPEND}
-	!<kde-apps/kdepim-runtime-18.07.80:5
-"
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix-contactfetchjobtest-w-qt-5.15.patch" # bug 754159
-)
+RDEPEND="${DEPEND}"
