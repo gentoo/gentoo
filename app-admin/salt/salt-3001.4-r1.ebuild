@@ -28,12 +28,11 @@ IUSE="cheetah cherrypy ldap libcloud libvirt genshi gnupg keyring mako
 
 RDEPEND="
 	sys-apps/pciutils
-	>=dev-python/distro-1.5[${PYTHON_USEDEP}]
+	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pycryptodome-3.9.8[${PYTHON_USEDEP}]
-	dev-python/pycryptodomex[${PYTHON_USEDEP}]
+	>=dev-python/pycryptodome-3.9.7[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
@@ -85,8 +84,10 @@ BDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
-		>=dev-python/pytest-salt-factories-0.93.0[${PYTHON_USEDEP}]
+		>=dev-python/pytest-salt-2020.1.27[${PYTHON_USEDEP}]
+		dev-python/pytest-salt-factories[${PYTHON_USEDEP}]
 		dev-python/pytest-tempdir[${PYTHON_USEDEP}]
+		>=dev-python/SaltTesting-2016.5.11[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-20.0.20[${PYTHON_USEDEP}]
 		!x86? ( >=dev-python/boto3-1.3.15[${PYTHON_USEDEP}] )
 	)"
@@ -99,8 +100,7 @@ RESTRICT="!test? ( test ) x86? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/salt-2019.2.0-skip-tests-that-oom-machine.patch"
-	"${FILESDIR}/salt-3002-dont-realpath-on-tmpdir.patch"
-	"${FILESDIR}/salt-3002-tests.patch"
+	"${FILESDIR}/salt-3001.1-tests.patch"
 )
 
 python_prepare_all() {
@@ -114,7 +114,9 @@ python_prepare_all() {
 	rm tests/unit/{states,modules}/test_zcbuildout.py || die
 
 	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
-	find . -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d' -i || die
+	find "${S}" -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d ; /pycryptodomex/ d' -i || die
+	# pycryptodome rather than pycryptodomex
+	find "${S}" -name '*.py' -print0 | xargs -0 -- sed -i -e 's:Cryptodome:Crypto:g' -- || die
 
 	distutils-r1_python_prepare_all
 }
