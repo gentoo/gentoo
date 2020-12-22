@@ -5735,7 +5735,7 @@ dev-lua/luasocket 3.0_rc1-r5 3.0_rc1_p20200328-r1 3.0_rc1_p20200328-r102: Networ
 dev-lua/luassert 1.7.9 1.7.10 1.8.0 1.8.0-r101: Assertion library for Lua
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0 0.2.1_p0-r102: Platform independent system calls for Lua
 dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
-dev-lua/luv 1.32.0.0 1.32.0.0-r101: Bare libuv bindings for lua
+dev-lua/luv 1.32.0.0 1.32.0.0-r102: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0 1.1.2_p0-r101: Mediator pattern implementation for pub-sub management
 dev-lua/messagepack 0.5.2_p20201025 0.5.2_p20201025-r100: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.4 1.0.8-r1 1.0.8-r100: Lua bindings for libmpack
@@ -17973,7 +17973,7 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.6.0 84.0: Firefox Web Browser
+www-client/firefox 78.6.0 84.0 84.0.1: Firefox Web Browser
 www-client/firefox-bin 78.6.0 84.0: Firefox Web Browser
 www-client/google-chrome 87.0.4280.88: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.50: The web browser from Google
