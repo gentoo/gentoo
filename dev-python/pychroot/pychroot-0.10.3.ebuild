@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND="<dev-python/snakeoil-0.8.9[${PYTHON_USEDEP}]"
+	RDEPEND=">=dev-python/snakeoil-0.8.9[${PYTHON_USEDEP}]"
 fi
 
 DEPEND="${RDEPEND}"
