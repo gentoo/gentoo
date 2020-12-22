@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig qt5? ( dev-qt/linguist-tools:5 )
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) dev-libs/boost
+DESCRIPTION=Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
+EAPI=7
+HOMEPAGE=http://www.andre-simon.de/
+IUSE=examples qt5 lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-3
+RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 )
+SLOT=0
+SRC_URI=http://www.andre-simon.de/zip/highlight-3.57.tar.bz2
+_eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=932f1c941f94b7855c95a0045a9e1c85
