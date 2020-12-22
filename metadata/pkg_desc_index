@@ -2968,7 +2968,7 @@ app-text/pelican 4.2.0 4.5.1 4.5.3 9999: A tool to generate a static blog, with 
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.61 0.61-r1 0.62: Tools to ease the translation of documentation
-app-text/podofo 0.9.6_p20190928: PoDoFo is a C++ library to work with the PDF file format
+app-text/podofo 0.9.6_p20190928 0.9.6_p20190928-r100: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 20.11.0 20.12.1 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
@@ -5188,7 +5188,7 @@ dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL lib
 dev-libs/botan 2.16.0 2.17.2 2.17.3: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.20.1: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.20.1 1.21.0: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.7.0 0.8.0: RPC/Serialization system with capabilities support
