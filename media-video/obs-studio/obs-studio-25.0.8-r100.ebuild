@@ -77,6 +77,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-25.0.8-gcc-10-build.patch" )
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
