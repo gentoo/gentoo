@@ -42,10 +42,6 @@ wimax
 # I've been told xfs is broken on ARM
 xfs
 
-# Raúl Porcel <armin76@gentoo.org>
-# Fails to build/work
-openexr
-
 # No hardware to test by the team
 ios
 ipod
