@@ -24,7 +24,7 @@ IUSE=""
 # break cyclic dependencies, test suite requires porting to >=QC-2.11
 RESTRICT=test
 
-RDEPEND=">=dev-lang/ghc-8.8.1:="
+RDEPEND=">=dev-lang/ghc-8.8.1:= <dev-lang/ghc-8.10:="
 
 DEPEND="${RDEPEND}
 "
