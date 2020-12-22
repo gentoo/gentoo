@@ -7,7 +7,7 @@ inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
-IUSE="X +adobe-cff bindist brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality png static-libs utils"
+IUSE="X +adobe-cff bindist brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality +png static-libs utils"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.xz

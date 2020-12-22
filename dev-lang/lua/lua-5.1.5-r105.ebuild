@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="+deprecated readline static"
 
 RDEPEND="readline? ( >=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}] )
-	app-eselect/eselect-lua
+	>=app-eselect/eselect-lua-3
 	!dev-lang/lua:0"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
@@ -140,6 +140,8 @@ multilib_src_test() {
 }
 
 pkg_postinst() {
+	eselect lua set --if-unset "${PN}${SLOT}"
+
 	if has_version "app-editor/emacs"; then
 		if ! has_version "app-emacs/lua-mode"; then
 			einfo "Install app-emacs/lua-mode for lua support for emacs"
