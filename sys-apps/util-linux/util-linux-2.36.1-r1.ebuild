@@ -77,6 +77,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-libmount_dont_use_symfollow.patch" #755878
+	"${FILESDIR}/${P}-riscv32.patch"
 )
 
 src_prepare() {
