@@ -32,3 +32,7 @@ DEPEND="${RDEPEND}
 	)"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-msgpack-1.patch
+)
