@@ -1,0 +1,34 @@
+Fix --disable-static.
+
+Bug: https://bugzilla.libsdl.org/show_bug.cgi?id=1431
+
+--- SDL2-2.0.14/configure.ac
++++ SDL2-2.0.14/configure.ac
+@@ -3863,7 +3863,7 @@
+         if test -f /lib/w32api/libuuid.a; then
+             LIBUUID=/lib/w32api/libuuid.a
+         else
+-            LIBUUID=-luuid
++            LIBUUID=-Wl,-luuid
+         fi
+         EXTRA_LDFLAGS="$EXTRA_LDFLAGS -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lsetupapi -lversion $LIBUUID -static-libgcc"
+         # The Windows platform requires special setup
+--- SDL2-2.0.14/Makefile.in
++++ SDL2-2.0.14/Makefile.in
+@@ -151,13 +151,13 @@
+ .PHONY: all update-revision install install-bin install-hdrs install-lib install-data uninstall uninstall-bin uninstall-hdrs uninstall-lib uninstall-data clean distclean dist $(OBJECTS:.lo=.d)
+ 
+ $(objects)/$(TARGET): $(GEN_HEADERS) $(GEN_OBJECTS) $(OBJECTS) $(VERSION_OBJECTS)
+-	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) -o $@ $(OBJECTS) $(GEN_OBJECTS) $(VERSION_OBJECTS) $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS)
++	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS)
+ 
+ $(objects)/$(SDLMAIN_TARGET): $(SDLMAIN_OBJECTS)
+-	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) -static -o $@ $(SDLMAIN_OBJECTS) -rpath $(libdir)
++	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS) -all-static
+ 
+ $(objects)/$(SDLTEST_TARGET): $(SDLTEST_OBJECTS)
+-	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) -static -o $@ $(SDLTEST_OBJECTS) -rpath $(libdir)
++	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS) -all-static
+ 
+ install: all install-bin install-hdrs install-lib install-data
+ install-bin:
