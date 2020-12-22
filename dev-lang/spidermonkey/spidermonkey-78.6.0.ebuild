@@ -64,7 +64,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc64 ~s390 x86"
 
 SLOT="78"
 LICENSE="MPL-2.0"
-IUSE="+clang cpu_flags_arm_neon debug +jit lto test"
+IUSE="clang cpu_flags_arm_neon debug +jit lto test"
 
 RESTRICT="!test? ( test )"
 
