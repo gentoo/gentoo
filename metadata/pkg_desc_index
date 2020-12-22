@@ -995,7 +995,7 @@ app-crypt/gcr 3.36.0: Libraries for cryptographic UIs and accessing PKCS#11 modu
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
-app-crypt/gnupg 2.2.20-r2 2.2.24 2.2.25: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 2.2.20-r2 2.2.25 2.2.26: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.9.2: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -5387,7 +5387,7 @@ dev-libs/libgit2 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
 dev-libs/libgnome-games-support 1.6.1: Library for code common to Gnome games
 dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
-dev-libs/libgpg-error 1.38 1.39: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.38 1.39 1.41: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1 234: GObject bindings for libudev
@@ -16883,7 +16883,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/lsvpd 1.7.10 1.7.11: Utility to List Device Vital Product Data (VPD)
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man-db 2.9.3 9999: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 5.07 5.08 5.09: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 5.09 5.10: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a 2017a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often faster than gawk) awk-interpreter
@@ -17656,7 +17656,7 @@ sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with exte
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
 sys-process/gnome-usage 3.32.0: A nice way to view information about use of system resources.
-sys-process/htop 2.2.0 3.0.1 3.0.2 3.0.3: interactive process viewer
+sys-process/htop 3.0.2 3.0.3 3.0.4: interactive process viewer
 sys-process/incron 0.5.12_p20191114: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
