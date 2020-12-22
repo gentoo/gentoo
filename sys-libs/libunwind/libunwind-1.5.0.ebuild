@@ -13,7 +13,7 @@ SRC_URI="mirror://nongnu/libunwind/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/8" # libunwind.so.8
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ~ppc64 -sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="debug debug-frame doc libatomic lzma +static-libs zlib"
 
 RESTRICT="test" # some tests are broken (toolchain version dependent, rely on external binaries)
