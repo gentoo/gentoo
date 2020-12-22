@@ -462,6 +462,7 @@ kde-apps/kdebase-meta:5
 >=app-editors/texworks-0.6.5-r100
 >=app-editors/vim-8.2.0814-r100
 >=app-emulation/libguestfs-1.38.6-r100
+>=app-metrics/collectd-5.12.0-r100
 >=app-metrics/nginx-lua-prometheus-0.1_pre20170610-r100
 >=app-misc/worker-3.8.3-r100
 >=app-text/highlight-3.57-r100
