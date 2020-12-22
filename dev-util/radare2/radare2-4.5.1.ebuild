@@ -30,6 +30,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=("${FILESDIR}"/${PN}-4.5.1-docdir.patch)
+
 src_configure() {
 	# Ideally these should be set by ./configure
 	tc-export CC AR LD OBJCOPY RANLIB
@@ -57,4 +59,8 @@ src_install() {
 			rm -rfv "$d" || die "failed to delete '$d'"
 		fi
 	done
+
+	# These are not really docs. radare assumes
+	# uncompressed files: bug #761250
+	docompress -x /usr/share/doc/${PF}/fortunes.{creepy,fun,nsfw,tips}
 }
