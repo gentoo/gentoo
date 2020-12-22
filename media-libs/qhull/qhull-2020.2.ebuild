@@ -20,8 +20,8 @@ src_prepare() {
 	if ! use doc ; then
 		sed -i \
 			-e '/^install(DIRECTORY html/d' \
-		 	-e '/^[[:blank:]]*index.htm/d' \
-		 	CMakeLists.txt || die
+			-e '/^[[:blank:]]*index.htm/d' \
+			CMakeLists.txt || die
 	fi
 
 	cmake_src_prepare
