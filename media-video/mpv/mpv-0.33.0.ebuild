@@ -101,6 +101,7 @@ COMMON_DEPEND="
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=dev-libs/wayland-protocols-1.14
+		x11-libs/libX11
 		>=x11-libs/libxkbcommon-0.3.0
 	)
 	X? (
