@@ -5569,7 +5569,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.20.0 0.21.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2u 1.1.0l 1.1.1g 1.1.1h 1.1.1i: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2u 1.1.1i: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
@@ -14095,7 +14095,7 @@ media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
 media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
 media-video/mplayer 1.3.0-r6 1.4-r1 9999: Media Player for Linux
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
-media-video/mpv 0.32.0-r2 0.33.0 9999: Media player based on MPlayer and mplayer2
+media-video/mpv 0.32.0-r2 0.33.0 0.33.0-r100 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.8.6-r5 0.8.6-r6: Mark commercial breaks in VDR recordings
 media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14 8.2.16: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
@@ -14479,7 +14479,7 @@ net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the La
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.16.6-r2 9.16.6-r3 9.16.7 9.16.8: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.16.6 9.16.7 9.16.8: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
-net-dns/c-ares 1.16.1 1.17.1: C library that resolves names asynchronously
+net-dns/c-ares 1.17.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
@@ -14514,8 +14514,8 @@ net-dns/nsd 4.3.4: An authoritative only, high performance, open source name ser
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.10.0 3.11.0: A framework for managing DNS information
-net-dns/pdns 4.3.1 4.4.0: The PowerDNS Daemon
-net-dns/pdns-recursor 4.3.5 4.4.0 4.4.1 4.4.2: The PowerDNS Recursor
+net-dns/pdns 4.3.1 4.4.0 4.4.0-r100: The PowerDNS Daemon
+net-dns/pdns-recursor 4.3.5 4.4.0 4.4.1 4.4.2 4.4.2-r100: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
@@ -15040,7 +15040,7 @@ net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for c
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/croc 8.6.6: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0-r1: lightweight file synchronizer utility
-net-misc/curl 7.71.0 7.71.1 7.71.1-r1 7.72.0 7.72.0-r1 7.73.0 7.74.0-r2: A Client that groks URLs
+net-misc/curl 7.74.0-r2: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
@@ -16061,7 +16061,7 @@ sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn pl
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.96.0 1.3.0 1.4.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and update OSM data files
-sci-geosciences/qgis 3.16.0-r1 3.16.1 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.16.0-r1 3.16.2 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.14.0 1.15.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
