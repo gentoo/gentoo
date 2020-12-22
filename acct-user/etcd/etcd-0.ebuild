@@ -7,6 +7,7 @@ inherit acct-user
 
 DESCRIPTION="User for etcd"
 ACCT_USER_HOME=/var/lib/etcd
+ACCT_USER_HOME_PERMS=700
 ACCT_USER_ID=426
 ACCT_USER_GROUPS=( etcd )
 
