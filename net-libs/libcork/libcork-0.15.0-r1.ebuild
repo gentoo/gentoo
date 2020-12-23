@@ -29,6 +29,7 @@ src_prepare() {
 	fi
 	sed -i -e "/DESTINATION/s/\${PROJECT_NAME}/\${PROJECT_NAME}-${PVR}/g" \
 		docs/old/CMakeLists.txt || die
+	sed -i -e "s/-Werror/-Wextra/" CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
