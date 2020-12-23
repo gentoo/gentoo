@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-20">
+  <title>Mozilla Firefox, Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox and
+    Mozilla Thunderbird, the worst of which could result in the arbitrary
+    execution of code.
+  </synopsis>
+  <product type="ebuild">firefox,thunderbird</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>759097</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/esr78">78.6.0</unaffected>
+      <unaffected range="ge">84.0</unaffected>
+      <vulnerable range="lt">84.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/esr78">78.6.0</unaffected>
+      <unaffected range="ge">84.0</unaffected>
+      <vulnerable range="lt">84.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">78.6.0</unaffected>
+      <vulnerable range="lt">78.6.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">78.6.0</unaffected>
+      <vulnerable range="lt">78.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      project.
+    </p>
+    
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox and
+      Mozilla Thunderbird. Please review the CVE identifiers referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-84.0"
+    </code>
+    
+    <p>All Mozilla Firefox (bin) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-84.0"
+    </code>
+    
+    <p>All Mozilla Firefox ESR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/firefox-78.6.0:0/esr78"
+    </code>
+    
+    <p>All Mozilla Firefox ESR (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/firefox-bin-78.6.0:0/esr78"
+    </code>
+    
+    <p>All Mozilla Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-78.6.0"
+    </code>
+    
+    <p>All Mozilla Thunderbird (bin) users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-78.6.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16042">CVE-2020-16042</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26971">CVE-2020-26971</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26973">CVE-2020-26973</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26974">CVE-2020-26974</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26978">CVE-2020-26978</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35111">CVE-2020-35111</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35113">CVE-2020-35113</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-55/">
+      MFSA-2020-55
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-56/">
+      MFSA-2020-56
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T22:07:43Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:56:47Z">whissi</metadata>
+</glsa>
