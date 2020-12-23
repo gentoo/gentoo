@@ -525,7 +525,6 @@ kde-apps/kdebase-meta:5
 >=sci-libs/libsc-2.2-r100
 >=sci-libs/p4est-2.2-r100
 >=sci-libs/plplot-5.15.0-r100
-=sci-visualization/gnuplot-5.4.0-r100
 =sci-visualization/gnuplot-5.4.1-r1
 >=sci-visualization/fityk-1.3.1-r100
 >=sys-apps/likwid-4.3.4
