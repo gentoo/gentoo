@@ -81,6 +81,8 @@ clang
 
 # Jeroen Roovers <jer@gentoo.org> (2014-11-07)
 # dev-lang/luajit has not been ported to HPPA
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
 

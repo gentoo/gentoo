@@ -60,6 +60,14 @@ src_prepare() {
 
 	default
 
+	# Fix version if necessary
+	local versionfile="include/version.h"
+	if ! grep -Fq "${PV}" ${versionfile} ; then
+		elog "Fixing version string"
+		sed "s@\"[[:digit:]\.]\+\"@\"${PV}\"@" \
+			-i ${versionfile} || die
+	fi
+
 	# echo -n is not POSIX compliant
 	sed 's@echo -n@printf@' -i configure || die
 

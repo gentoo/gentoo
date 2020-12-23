@@ -40,6 +40,8 @@ acpi
 
 # Tobias Klausmann <klausman@gentoo.org> (2017-03-03)
 # There is no luajit support on alpha. Bugs #554376, #608322.
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
 
