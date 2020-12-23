@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Wrapper to run app with NVIDIA"
+DESCRIPTION="Run programs on the discrete nVidia video card"
 HOMEPAGE="https://github.com/archlinux/svntogit-packages/tree/packages/nvidia-prime/trunk https://archlinux.org/packages/extra/any/nvidia-prime/"
 SRC_URI="https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/nvidia-prime/trunk/prime-run -> ${P}"
 
