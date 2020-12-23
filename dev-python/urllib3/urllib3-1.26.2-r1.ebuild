@@ -41,6 +41,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test_proxy_rejection-test-hang.patch"
+)
+
 python_prepare_all() {
 	# https://github.com/urllib3/urllib3/issues/1756
 	sed -e 's:10.255.255.1:240.0.0.0:' \
