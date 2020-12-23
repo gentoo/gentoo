@@ -27,6 +27,7 @@ COMMON_DEPEND="
 	>=dev-libs/atk-2.10.0[introspection?,${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
+	virtual/libintl[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[introspection?,${MULTILIB_USEDEP}]
@@ -49,7 +50,6 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	>=sys-devel/gettext-0.18.3[${MULTILIB_USEDEP}]
 	!aqua? ( x11-base/xorg-proto )
 	test? (
 		media-fonts/font-cursor-misc
@@ -83,6 +83,7 @@ BDEPEND="
 	dev-libs/libxslt
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
+	>=sys-devel/gettext-0.18.3
 	virtual/pkgconfig
 	examples? ( x11-libs/gdk-pixbuf )
 "
