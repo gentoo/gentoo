@@ -47,10 +47,6 @@ net-mail/dovecot vpopmail
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
-# luajit not available on this arch.
-dev-libs/efl luajit
-
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
 media-libs/devil nvtt
@@ -212,11 +208,6 @@ media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
 >=x11-libs/wxGTK-3 -sdl
-
-# Roy Bamford <neddyseagoon@gentoo.org> (2019-02-24)
-# kde-apps/cantor lua means luajit which needs luajit-2.1.0_beta3 for arm64
-# It builds OK but is not yet in ::gentoo. bug #678404
-kde-apps/cantor lua
 
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
 # sci-electronics/ngspice not yet keyworded, bug #665416
