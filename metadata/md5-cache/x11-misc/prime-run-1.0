@@ -1,9 +1,9 @@
 DEFINED_PHASES=install
-DESCRIPTION=Wrapper to run app with NVIDIA
+DESCRIPTION=Run programs on the discrete nVidia video card
 EAPI=7
 HOMEPAGE=https://github.com/archlinux/svntogit-packages/tree/packages/nvidia-prime/trunk https://archlinux.org/packages/extra/any/nvidia-prime/
 KEYWORDS=amd64
 LICENSE=GPL-1
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/nvidia-prime/trunk/prime-run -> prime-run-1.0
-_md5_=b8e2a0786f7ee15df5036fc72eee6889
+_md5_=07c3167b8ec2206210c6f2cff90cdabb
