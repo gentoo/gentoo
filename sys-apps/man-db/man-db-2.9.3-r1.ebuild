@@ -47,7 +47,8 @@ RDEPEND="
 PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
-	"${FILESDIR}"/man-db-2.9.3-sandbox-env-tests.patch
+	"${FILESDIR}"/${PN}-2.9.3-sandbox-env-tests.patch
+	"${FILESDIR}"/man-db-2.9.3-clock_gettime64.patch
 )
 
 pkg_setup() {
