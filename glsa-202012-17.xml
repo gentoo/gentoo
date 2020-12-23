@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-17">
+  <title>D-Bus: Denial of service</title>
+  <synopsis>A local Denial of Service vulnerability was discovered in D-Bus.</synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>755392</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.12.20</unaffected>
+      <vulnerable range="lt">1.12.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system which processes can use to talk to each
+      other.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that D-Bus did not properly handle the situation when
+      two usernames have the same numeric UID.
+    </p>
+  </description>
+  <impact type="low">
+    <p>An attacker could possibly cause a Denial of Service condition or
+      trigger other undefined behavior, possibly including incorrect
+      authorization decisions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.12.20"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://lists.freedesktop.org/archives/ftp-release/2020-July/000758.html">
+      dbus 1.12.20 security update announcement
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-23T00:47:59Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:54:00Z">whissi</metadata>
+</glsa>
