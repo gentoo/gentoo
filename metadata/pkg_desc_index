@@ -8128,7 +8128,7 @@ dev-python/easyprocess 0.3: Easy to use Python subprocess interface
 dev-python/ebuildtester 0.1.16 0.1.16-r1: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
-dev-python/elasticsearch-curator 5.8.1-r1: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-curator 5.8.1-r2: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
 dev-python/elementpath 2.0.4 2.0.5: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
@@ -14523,7 +14523,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1 2.3.3.0: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.10.1-r1 1.11.0 1.12.0 1.12.0-r1 1.13.0 1.13.0-r1: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.13.0 1.13.0-r1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.8: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0 2.1.1: Arno's iptables firewall script
