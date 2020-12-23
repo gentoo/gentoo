@@ -10678,7 +10678,7 @@ dev-util/geany-plugins 1.36-r2 1.37 1.37-r100: A collection of different plugins
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/git-delta 0.4.4: A syntax-highlighting pager for git
-dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 0.11.0 1.0.0 9999: GitHub CLI
+dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 0.11.0 1.0.0 1.4.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.36.0: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.62.6 2.64.5 2.66.2 2.66.3 2.66.4: Build utilities for GLib using projects
@@ -18393,6 +18393,7 @@ x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting 
 x11-misc/picom 8 8.1 8.2 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.3 3.5.2: A fast and easy-to-use tool for creating status bars
+x11-misc/prime-run 1.0: Wrapper to run app with NVIDIA
 x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.31: py3status is an extensible i3status wrapper written in python
