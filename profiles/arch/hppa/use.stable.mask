@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/libnatspec is not stable on hppa
+natspec
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-vcs/subversion not stable for hppa
 subversion
 
