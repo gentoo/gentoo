@@ -43,13 +43,6 @@ cpu_flags_arm_neon
 appindicator
 ayatana
 
-# Mart Raudsepp <leio@gentoo.org> (2019-01-07)
-# Does not work on arm64 until dev-lang/luajit-2.1
-# https://github.com/LuaJIT/LuaJIT/issues/26
-lua_single_target_luajit
-lua_targets_luajit
-luajit
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
 opencl
