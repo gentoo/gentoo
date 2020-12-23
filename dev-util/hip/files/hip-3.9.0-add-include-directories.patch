@@ -1,0 +1,13 @@
+--- a/rocclr/CMakeLists.txt	2020-08-23 11:45:13.148817894 +0200
++++ b/rocclr/CMakeLists.txt	2020-08-23 11:50:12.409816752 +0200
+@@ -139,6 +139,10 @@
+   target_compile_definitions(hip64
+     PRIVATE
+       $<TARGET_PROPERTY:amdrocclr_static,INTERFACE_COMPILE_DEFINITIONS>)
++
++  include_directories(/usr/include/rocclr)
++  include_directories(/usr/include/rocclr/elf)
++  include_directories(/usr/include/rocclr/compiler/lib/include/)
+ endif()
+ 
+  # Enable profiling API
