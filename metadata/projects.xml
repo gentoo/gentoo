@@ -11,7 +11,7 @@
       <name>Alexey Shvetsov</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>expeditioneer@gentoo.org</email>
       <name>Dennis Lamm</name>
       <role>Member</role>
