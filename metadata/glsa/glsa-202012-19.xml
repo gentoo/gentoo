@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-19">
+  <title>PowerDNS Recursor: Denial of service</title>
+  <synopsis>A vulnerability in PowerDNS Recursor could lead to a Denial of
+    Service condition.
+  </synopsis>
+  <product type="ebuild">pdns-recursor</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>746923</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdns-recursor" auto="yes" arch="*">
+      <unaffected range="ge">4.3.5</unaffected>
+      <vulnerable range="lt">4.3.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PowerDNS Recursor is a high-end, high-performance resolving name server.</p>
+  </background>
+  <description>
+    <p>It was discovered that it was possible to update the DNSSEC validation
+      state to a bogus state for a cached record via DNS ANY query.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could send specially crafted DNS queries to deny
+      DNSSEC validation.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PowerDNS Recursor users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/pdns-recursor-4.3.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25829">CVE-2020-25829</uri>
+    <uri link="https://docs.powerdns.com/recursor/security-advisories/powerdns-advisory-2020-07.html">
+      PowerDNS Security Advisory 2020-07
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-23T17:00:31Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:54:43Z">whissi</metadata>
+</glsa>

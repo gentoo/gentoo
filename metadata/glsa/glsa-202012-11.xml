@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-11">
+  <title>c-ares: Denial of service</title>
+  <synopsis>A Denial of Service vulnerability was discovered in c-ares.</synopsis>
+  <product type="ebuild">c-ares</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>754939</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-dns/c-ares" auto="yes" arch="*">
+      <unaffected range="ge">1.17.1</unaffected>
+      <vulnerable range="lt">1.17.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>c-ares is an asynchronous resolver library.</p>
+  </background>
+  <description>
+    <p>It was discovered that c-ares incorrectly handled certain DNS requests.</p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker, able to trigger a DNS request for a host of their
+      choice by an application linked against c-ares, could possibly cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All c-ares users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/c-ares-1.17.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8277">CVE-2020-8277</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T22:25:15Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:49:06Z">whissi</metadata>
+</glsa>

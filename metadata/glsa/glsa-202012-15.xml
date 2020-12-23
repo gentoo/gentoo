@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-15">
+  <title>GDK-PixBuf: Denial of service</title>
+  <synopsis>A vulnerability in GDK-PixBuf library could lead to a Denial of
+    Service condition.
+  </synopsis>
+  <product type="ebuild">gdk-pixbuf</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>759094</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">2.42.2</unaffected>
+      <vulnerable range="lt">2.42.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GDK-PixBuf is an image loading library for GTK+.</p>
+  </background>
+  <description>
+    <p>It was discovered that the GDK-PixBuf library did not properly handle
+      certain GIF images.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could entice a user to open a specially crafted GIF
+      image in an application linked against GDK-PixBuf library, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GDK-PixBuf library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/gdk-pixbuf-2.42.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-29385">CVE-2020-29385</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T23:01:46Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:53:21Z">whissi</metadata>
+</glsa>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-10">
+  <title>WebkitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">webkit-gtk</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>755947</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.30.3</unaffected>
+      <vulnerable range="lt">2.30.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by enticing a user to visit maliciously crafted web
+      content, may be able to execute arbitrary code or cause memory
+      corruption.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.30.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13543">CVE-2020-13543</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-13584">CVE-2020-13584</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9948">CVE-2020-9948</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9951">CVE-2020-9951</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9952">CVE-2020-9952</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9983">CVE-2020-9983</uri>
+    <uri link="https://webkitgtk.org/security/WSA-2020-0008.html">WSA-2020-0008</uri>
+    <uri link="https://webkitgtk.org/security/WSA-2020-0009.html">WSA-2020-0009</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T22:19:16Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:48:49Z">whissi</metadata>
+</glsa>

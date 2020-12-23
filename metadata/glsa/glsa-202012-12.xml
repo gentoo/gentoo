@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-12">
+  <title>libass: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability has been found in libass that could allow a remote
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libass</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>746413</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libass" auto="yes" arch="*">
+      <unaffected range="ge">0.15.0</unaffected>
+      <vulnerable range="lt">0.15.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libass is a portable subtitle renderer for the ASS/SSA (Advanced
+      Substation Alpha/Substation Alpha) subtitle format.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that libass did not properly handle Advanced
+      Substation Alpha/Substation Alpha subtitle format files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process an a specially crafted
+      subtitle format file using an application linked against libass, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libass users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libass-0.15.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26682">CVE-2020-26682</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T22:35:27Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:52:17Z">whissi</metadata>
+</glsa>

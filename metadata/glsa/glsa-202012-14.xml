@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-14">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which could result in information disclosure or data loss.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>737990</bug>
+  <bug>759259</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.74.0</unaffected>
+      <vulnerable range="lt">7.74.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A command line tool and library for transferring data with URLs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.74.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8231">CVE-2020-8231</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8284">CVE-2020-8284</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8285">CVE-2020-8285</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8286">CVE-2020-8286</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T22:55:43Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:52:57Z">whissi</metadata>
+</glsa>

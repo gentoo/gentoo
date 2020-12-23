@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-16">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PHP, the worst of which
+    could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>711140</bug>
+  <bug>745993</bug>
+  <bug>756775</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge" slot="7.2">7.2.34-r1</unaffected>
+      <unaffected range="ge" slot="7.3">7.3.25</unaffected>
+      <unaffected range="ge" slot="7.4">7.4.13</unaffected>
+      <vulnerable range="lt">8.0.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is an open source general-purpose scripting language that is
+      especially suited for web development.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers and change log referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>An attacker could cause a Denial of Service condition or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP 7.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.2.34-r1:7.2"
+    </code>
+    
+    <p>All PHP 7.3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.3.25:7.3"
+    </code>
+    
+    <p>All PHP 7.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/php-7.4.13:7.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7069">CVE-2020-7069</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-7070">CVE-2020-7070</uri>
+    <uri link="https://www.php.net/ChangeLog-7.php#7.4.13">PHP 7.4.13 Change
+      Log
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T23:21:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:53:43Z">whissi</metadata>
+</glsa>

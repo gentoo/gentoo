@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-13">
+  <title>OpenSSL: Denial of service</title>
+  <synopsis>A vulnerability in OpenSSL might allow remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>759079</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1i</unaffected>
+      <vulnerable range="lt">1.1.1i</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1/v1.1/v1.2/v1.3) as well
+      as a general purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>A null pointer dereference flaw was found in OpenSSL.</p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker, able to control the arguments of the GENERAL_NAME_cmp
+      function in an application linked against OpenSSL, could possibly cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.1.1i"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1971">CVE-2020-1971</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-22T22:47:12Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:52:34Z">whissi</metadata>
+</glsa>
