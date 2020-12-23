@@ -5138,7 +5138,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.4.1 78.5.0 78.6.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.1 8.2.2 8.3.10 8.3.11: versatile implementation of the Prolog programming language
