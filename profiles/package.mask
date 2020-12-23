@@ -284,50 +284,6 @@ dev-lua/luadoc
 =sys-kernel/gentoo-kernel-bin-5.4.78-r1
 =sys-kernel/gentoo-kernel-bin-5.4.78
 
-# David Seifert <soap@gentoo.org> (2020-11-22)
-# Upstream abandoned since 2012, tons of QA issues and
-# build bugs, esoteric NIH build system. Bug #293567, #670954,
-# #697444, #699320, #708058, #746230, Removal in 30 days.
-games-emulation/fakenes
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-19)
-# These packages are maintained by the Python project, or have
-# no maintainer.  They have not been ported to Python 3.8 yet.
-# The ebuilds either lack tests entirely, or the tests fail
-# (or are broken).  They have no reverse dependencies, except for other
-# packages from the list.
-# Removal in 30 days.  Bug #755623.
-dev-python/HeapDict
-dev-python/billiard
-dev-python/celery
-dev-python/ctypesgen
-dev-python/cytoolz
-dev-python/docker-pycreds
-dev-python/dugong
-dev-python/hgdistver
-dev-python/nose-cover3
-dev-python/nose-parameterized
-dev-python/nose-show-skipped
-dev-python/pew
-dev-python/ptpython
-dev-python/pure-sasl
-dev-python/pyfltk
-dev-python/pympler
-dev-python/python-ethtool
-dev-python/python-prctl
-dev-python/python-termstyle
-dev-python/pythonz-bd
-dev-python/pywinrm
-dev-python/rednose
-dev-python/resumable-urlretrieve
-dev-python/shutilwhich
-dev-python/sortedcollections
-dev-python/sphinxcontrib-pretty-searchresults
-dev-python/subvertpy
-dev-python/vcversioner
-dev-python/xlutils
-dev-python/zict
-
 # Jonas Stein <jstein@gentoo.org> (2020-11-12)
 # Adobe will stop distributing Flash Player after 2020-12-31.
 # Masked for removal after 2020-12-31
