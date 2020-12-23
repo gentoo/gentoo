@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# virtual/opengl not stable for hppa
+opengl
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # x11-libs/fltk is not stable for hppa
 fltk
 
