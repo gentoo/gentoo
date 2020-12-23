@@ -18,14 +18,18 @@ SRC_URI="https://github.com/${PN%-core-py}/${PN}/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="PYTHON BSD-4"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="cli test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="!<app-vim/editorconfig-vim-0.3.3-r1"
+RDEPEND="!<app-vim/editorconfig-vim-0.3.3-r1
+	cli? ( !app-text/editorconfig-core-c[cli] )"
 
 src_prepare() {
 	if use test; then
 		mv "${WORKDIR}"/${PN%-core-py}-core-test-${TESTVER}/* "${S}"/tests || die
+	fi
+	if ! use cli; then
+		sed -i -e '/editorconfig\.__main__/d' setup.py || die
 	fi
 
 	cmake_src_prepare
