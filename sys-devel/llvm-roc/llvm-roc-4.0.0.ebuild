@@ -33,6 +33,27 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 src_prepare() {
 	cd "${WORKDIR}/llvm-project-rocm-${PV}" || die
 	eapply "${FILESDIR}/${PN}-3.0.0-add_libraries.patch"
+
+	if [[ -n ${EPREFIX} ]]; then
+		pushd "${S}"/../clang >/dev/null || die
+		sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" CMakeLists.txt
+		eend $?
+
+		ebegin "Use ${EPREFIX} as default sysroot"
+		cd lib/Driver/ToolChains >/dev/null || die
+		ebegin "Use dynamic linker from ${EPREFIX}"
+		sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX%/}/\"@" Linux.cpp
+		eend $?
+
+		ebegin "Remove --sysroot call on ld for native toolchain"
+		sed -i -e "$(grep -n -B1 sysroot= Gnu.cpp | sed -ne '{1s/-.*//;1p}'),+1 d" Gnu.cpp
+		eend $?
+		popd >/dev/null || die
+	fi
+
+	sed -e 's:/opt/rocm:/usr/lib/hip:' \
+		-i "${S}"/../clang/lib/Driver/ToolChains/AMDGPU.cpp
+
 	eapply_user
 	cmake_src_prepare
 }
