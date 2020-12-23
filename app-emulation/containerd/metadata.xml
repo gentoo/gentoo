@@ -9,10 +9,6 @@
 		and live migration of containers.
 	</longdescription>
 	<maintainer type="person">
-		<email>admwiggin@gmail.com</email>
-		<name>Tianon</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
