@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-db/postgresql is not stable on hppa
+postgres
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-db/{mysql,mariadb}-connector-c is not stable on hppa
 mysql
 
