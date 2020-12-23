@@ -297,7 +297,6 @@ games-emulation/fakenes
 # (or are broken).  They have no reverse dependencies, except for other
 # packages from the list.
 # Removal in 30 days.  Bug #755623.
-dev-python/sphinxcontrib-pretty-searchresults
 dev-python/subvertpy
 dev-python/vcversioner
 dev-python/xlutils
