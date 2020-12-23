@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -14,27 +14,23 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<dev-python/matplotlib-3.3.0[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.13.3[${PYTHON_USEDEP}]
-	>=dev-python/pandas-0.22.0[${PYTHON_USEDEP}]
-	dev-python/patsy[${PYTHON_USEDEP}]
+	dev-python/matplotlib[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
-	>=dev-python/scipy-1.0.1[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
+
+distutils_enable_tests pytest
 
 python_test() {
 	cat > matplotlibrc <<- EOF || die
 	backend : Agg
 	EOF
-	pytest -vv || die
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
