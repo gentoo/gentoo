@@ -3,12 +3,14 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
+
+RUBY_FAKEGEM_GEMSPEC="ffi.gemspec"
 
 inherit multilib ruby-fakegem toolchain-funcs
 
@@ -22,14 +24,16 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND+=" dev-libs/libffi:0="
-DEPEND+=" dev-libs/libffi"
+RDEPEND+=" virtual/libffi:0="
+DEPEND+=" virtual/libffi"
 
 ruby_add_bdepend "dev-ruby/rake"
 
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
 		-e '/Gem::Tasks/,/end/ s:^:#:' Rakefile || die
+
+	sed -i -e '/require/c\require "./lib/ffi/version"' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Fix Makefile for tests
 	sed -i -e '/CCACHE :=/ s:^:#:' \
