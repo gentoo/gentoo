@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server and X libraries are not stable for hppa
+X
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-14)
 # dev-lang/php is not stable for hppa
 php
