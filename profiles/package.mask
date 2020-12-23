@@ -519,7 +519,8 @@ kde-apps/kdebase-meta:5
 >=net-irc/hexchat-2.14.3-r100
 >=net-irc/weechat-3.0-r100
 >=net-libs/axtls-2.1.5-r100
-=net-misc/asterisk-16.14.0-r100
+=net-misc/asterisk-13.38.1-r1
+=net-misc/asterisk-16.15.1-r1
 >=net-mail/dovecot-2.3.11.3-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-astronomy/celestia-1.7.0_pre20200316-r100
