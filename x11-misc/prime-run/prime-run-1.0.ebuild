@@ -10,7 +10,7 @@ SRC_URI="https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/
 # https://github.com/archlinux/svntogit-packages/blob/packages/nvidia-prime/trunk/PKGBUILD
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
