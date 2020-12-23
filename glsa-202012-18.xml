@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-18">
+  <title>PowerDNS: information disclosure</title>
+  <synopsis>An information disclosure vulnerability in PowerDNS allow remote
+    attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">pdns</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>744160</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/pdns" auto="yes" arch="*">
+      <unaffected range="ge">4.3.1</unaffected>
+      <vulnerable range="lt">4.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The PowerDNS nameserver is an authoritative-only nameserver which uses a
+      flexible backend architecture.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that PowerDNS did not properly handle certain unknown
+      records.
+    </p>
+  </description>
+  <impact type="low">
+    <p>An authorized attacker with the ability to insert crafted records into a
+      zone might be able to leak the content of uninitialized memory. Crafted
+      records cannot be inserted via AXFR.
+    </p>
+  </impact>
+  <workaround>
+    <p>Do not take zone data from untrusted users.</p>
+  </workaround>
+  <resolution>
+    <p>All PowerDNS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/pdns-4.3.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17482">CVE-2020-17482</uri>
+    <uri link="https://docs.powerdns.com/authoritative/security-advisories/powerdns-advisory-2020-05.html">
+      PowerDNS Security Advisory 2020-05
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-23T16:32:50Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:54:22Z">whissi</metadata>
+</glsa>
