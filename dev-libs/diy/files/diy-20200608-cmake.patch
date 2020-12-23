@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 59c1101..e2cd539 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -252,8 +252,8 @@ install(TARGETS ${diy_targets} EXPORT ${diy_export_name} DESTINATION ${diy_insta
+ 
+ export(EXPORT ${diy_export_name} NAMESPACE DIY:: FILE "${PROJECT_BINARY_DIR}/diy-targets.cmake")
+ if (CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR) # Only generate these files when diy is the main project
+-    install(EXPORT ${diy_export_name} NAMESPACE DIY:: DESTINATION "." FILE diy-targets.cmake)
+-    install(FILES "${PROJECT_BINARY_DIR}/diy-config.cmake" DESTINATION ".")
++    install(EXPORT ${diy_export_name} NAMESPACE DIY:: DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/diy/" FILE diy-targets.cmake)
++    install(FILES "${PROJECT_BINARY_DIR}/diy-config.cmake" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/diy/")
+ endif()
+ 
+ message(STATUS "<<< Gentoo configuration >>>
+diff --git a/include/diy/mpi/io.hpp b/include/diy/mpi/io.hpp
+index 650184c..64cf58d 100644
+--- a/include/diy/mpi/io.hpp
++++ b/include/diy/mpi/io.hpp
+@@ -4,7 +4,7 @@
+ #include "config.hpp"
+ #include "communicator.hpp"
+ 
+-#include <vtkmdiy/types.hpp>
++#include <diy/types.hpp>
+ 
+ #include <vector>
+ #include <string>
