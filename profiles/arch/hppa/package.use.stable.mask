@@ -17,6 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server not stable.
+# Mask USE=test for packages using virtualx.eclass.
+dev-lang/tk test
+dev-python/cmd2 test
+dev-python/fonttools test
+dev-python/pillow test
+dev-python/pygobject test
+dev-python/pyperclip test
+dev-python/twisted test
+dev-tcltk/bwidget test
+dev-tcltk/snack test
+dev-tcltk/tcllib test
+dev-util/cmake test
+sys-apps/dbus test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
 # noone actually tests it on real hardware anymore
 x11-base/xorg-server xorg
