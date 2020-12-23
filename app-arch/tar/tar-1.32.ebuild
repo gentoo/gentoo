@@ -33,6 +33,9 @@ src_prepare() {
 			scripts/{backup,dump-remind,restore}.in \
 			|| die "sed non-GNU"
 	fi
+
+	[[ ${CHOST} == *darwin20* ]] && \
+		eapply "${FILESDIR}"/${PN}-1.32-check-sys-ioctl-header-configure.patch
 }
 
 src_configure() {

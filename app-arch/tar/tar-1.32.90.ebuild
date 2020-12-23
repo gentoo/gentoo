@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
 BDEPEND="nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.32-check-sys-ioctl-header-configure.patch
+)
+
 src_prepare() {
 	default
 
