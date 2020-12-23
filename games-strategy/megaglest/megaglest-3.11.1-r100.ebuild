@@ -4,9 +4,17 @@
 # google-breakpad
 # TODO: fribidi, libvorbis static
 
-EAPI=5
+EAPI=7
+
+# src_install() currently requires this
+CMAKE_MAKEFILE_GENERATOR="emake"
+
+LUA_COMPAT=( lua5-{1..2} )
+
+# Only needed by certain features
 VIRTUALX_REQUIRED="manual"
-inherit eutils flag-o-matic cmake-utils virtualx wxwidgets gnome2-utils games
+
+inherit cmake desktop flag-o-matic lua-single virtualx wxwidgets xdg-utils
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
@@ -17,11 +25,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static +streflop +tools +unicode wxuniversal +model-viewer videos"
 
-# Newer versions of megaglest-data install directly into /usr
-RDEPEND="
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
+# Older versions of megaglest-data install into /usr/games
+RDEPEND="${LUA_DEPS}
 	~games-strategy/${PN}-data-${PV}
-	<games-strategy/${PN}-data-3.11.1-r1
-	>=dev-lang/lua-5.1:0
+	>=games-strategy/${PN}-data-3.11.1-r1
 	dev-libs/libxml2
 	media-libs/fontconfig
 	media-libs/freetype
@@ -49,10 +58,6 @@ RDEPEND="
 		)
 	videos? ( media-video/vlc )"
 DEPEND="${RDEPEND}
-	sys-apps/help2man
-	virtual/pkgconfig
-	editor? ( ${VIRTUALX_DEPEND} )
-	model-viewer? ( ${VIRTUALX_DEPEND} )
 	static? (
 		dev-libs/icu[static-libs]
 		dev-libs/xerces-c[icu,static-libs]
@@ -64,17 +69,26 @@ DEPEND="${RDEPEND}
 		net-misc/curl[static-libs]
 		virtual/jpeg:0[static-libs]
 	)"
+BDEPEND="sys-apps/help2man
+	virtual/pkgconfig
+	editor? ( ${VIRTUALX_DEPEND} )
+	model-viewer? ( ${VIRTUALX_DEPEND} )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-static-build.patch
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-cmake-lua.patch
+	"${FILESDIR}"/${P}-miniupnpc.patch
+	"${FILESDIR}"/${P}-miniupnpc-api-version-16.patch
+)
 
 src_prepare() {
+	cmake_src_prepare
+
 	if use editor || use model-viewer ; then
 		WX_GTK_VER="3.0"
-		need-wxwidgets unicode
+		setup-wxwidgets
 	fi
-
-	epatch "${FILESDIR}"/${P}-static-build.patch \
-		"${FILESDIR}"/${P}-cmake.patch \
-		"${FILESDIR}"/${P}-miniupnpc.patch \
-		"${FILESDIR}"/${P}-miniupnpc-api-version-16.patch
 }
 
 src_configure() {
@@ -89,46 +103,39 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		$(cmake-utils_use_enable fribidi FRIBIDI)
-		$(cmake-utils_use_build editor MEGAGLEST_MAP_EDITOR)
-		$(cmake-utils_use_build tools MEGAGLEST_MODEL_IMPORT_EXPORT_TOOLS)
-		$(cmake-utils_use_build model-viewer MEGAGLEST_MODEL_VIEWER)
-		$(cmake-utils_use_with videos VLC)
+		-DBUILD_MEGAGLEST_MAP_EDITOR=$(usex editor)
+		-DBUILD_MEGAGLEST_MODEL_IMPORT_EXPORT_TOOLS=$(usex tools)
+		-DBUILD_MEGAGLEST_MODEL_VIEWER=$(usex model-viewer)
+		-DENABLE_FRIBIDI=$(usex fribidi)
+		-DFORCE_LUA_VERSION="$(lua_get_version)"
 		-DMAX_SSE_LEVEL_DESIRED="${SSE}"
-		-DMEGAGLEST_BIN_INSTALL_PATH="${GAMES_BINDIR}"
-		-DMEGAGLEST_DATA_INSTALL_PATH="${GAMES_DATADIR}/${PN}"
-		# icons are used at runtime, wrong default location share/pixmaps
-		-DMEGAGLEST_ICON_INSTALL_PATH="${GAMES_DATADIR}/${PN}"
 		-DUSE_FTGL=ON
-		$(cmake-utils_use_want static STATIC_LIBS)
-		$(cmake-utils_use_want streflop STREFLOP)
-		-DWANT_SVN_STAMP=off
-		$(cmake-utils_use static wxWidgets_USE_STATIC)
-		$(cmake-utils_use unicode wxWidgets_USE_UNICODE)
-		$(cmake-utils_use wxuniversal wxWidgets_USE_UNIVERSAL)
+		-DWANT_STATIC_LIBS=$(usex static)
+		-DWANT_STREFLOP=$(usex streflop)
+		-DWITH_VLC=$(usex videos)
+		-DwxWidgets_USE_STATIC=$(usex static)
+		-DwxWidgets_USE_UNICODE=$(usex unicode)
+		-DwxWidgets_USE_UNIVERSAL=$(usex wxuniversal)
 
 		$(usex debug "-DBUILD_MEGAGLEST_UPNP_DEBUG=ON -DwxWidgets_USE_DEBUG=ON" "")
 	)
 
-	# support CMAKE_BUILD_TYPE=Gentoo
-	append-cppflags '-DCUSTOM_DATA_INSTALL_PATH=\\\"'${GAMES_DATADIR}/${PN}/'\\\"'
-
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	if use editor || use model-viewer; then
 		# work around parallel make issues - bug #561380
 		MAKEOPTS="-j1 ${MAKEOPTS}" \
-			VIRTUALX_COMMAND="cmake-utils_src_compile" virtualmake
+			virtx cmake_src_compile
 	else
-		cmake-utils_src_compile
+		cmake_src_compile
 	fi
 }
 
 src_install() {
 	# rebuilds some targets randomly without fast option
-	emake -C "${CMAKE_BUILD_DIR}" DESTDIR="${D}" "$@" install/fast
+	emake -C "${BUILD_DIR}" DESTDIR="${D}" "$@" install/fast
 
 	dodoc docs/{AUTHORS.source_code,CHANGELOG,README}.txt
 	doicon -s 48 ${PN}.png
@@ -137,13 +144,6 @@ src_install() {
 		make_desktop_entry ${PN}_editor "MegaGlest Map Editor"
 	use model-viewer &&
 		make_desktop_entry ${PN}_g3dviewer "MegaGlest Model Viewer"
-
-	prepgamesdirs
-}
-
-pkg_preinst() {
-	games_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
@@ -158,10 +158,9 @@ pkg_postinst() {
 	elog 'Some graphics cards may require setting Max Lights to 1.'
 	einfo
 
-	games_pkg_postinst
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

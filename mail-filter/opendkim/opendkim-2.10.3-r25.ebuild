@@ -3,7 +3,10 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-1 lua5-2 )
+# Supports lua5-2 as well but in order for that to work the lua-pkgconfig
+# patch has to be updated not to prefer "lua5.1" over "lua" while looking
+# for Lua pkgconfig modules.
+LUA_COMPAT=( lua5-1 )
 
 inherit autotools db-use eutils systemd tmpfiles lua-single
 
