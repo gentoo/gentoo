@@ -39,6 +39,8 @@ mongodb
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-11-19)
 # There is no luajit support on sparc. Bug #554376
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
 
