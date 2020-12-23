@@ -23,7 +23,7 @@ RDEPEND="dev-haskell/mtl:=[profile?]
 	>=dev-haskell/syb-0.4.2:=[profile?] <dev-haskell/syb-0.8:=[profile?]
 	dev-haskell/text:=[profile?]
 	dev-haskell/xml:=[profile?]
-	>=dev-lang/ghc-7.10.1:=
+	>=dev-lang/ghc-8.8.1:=
 	executable? ( dev-haskell/aeson:=[profile?]
 			network-uri? ( >=dev-haskell/network-uri-2.6:=[profile?] )
 			!network-uri? ( <dev-haskell/network-2.6:=[profile?] ) )
