@@ -18,7 +18,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">python/importlib_resources</remote-id>
-		<remote-id type="pypi">importlib_resources</remote-id>
+		<remote-id type="pypi">importlib-resources</remote-id>
 		<bugs-to>https://github.com/python/importlib_resources/issues</bugs-to>
 		<doc>https://importlib-resources.readthedocs.io/</doc>
 	</upstream>
