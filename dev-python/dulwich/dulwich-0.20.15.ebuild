@@ -9,7 +9,9 @@ DISTUTILS_USE_SETUPTOOLS=rdepend  # tests use setuptools, setup uses if found
 inherit distutils-r1
 
 DESCRIPTION="Pure-Python implementation of the Git file formats and protocols"
-HOMEPAGE="https://github.com/jelmer/dulwich/ https://pypi.org/project/dulwich/"
+HOMEPAGE="
+	https://github.com/dulwich/dulwich/
+	https://pypi.org/project/dulwich/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
