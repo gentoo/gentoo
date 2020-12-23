@@ -11,7 +11,7 @@ SRC_URI="http://txt2regex.sourceforge.net/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="nls cjk"
 
 DEPEND="nls? ( sys-devel/gettext )"

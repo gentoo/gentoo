@@ -18,7 +18,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2 BSD"
-KEYWORDS="amd64 hppa sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="

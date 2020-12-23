@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Manage newsrc files"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ppc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/Set-IntSpan-1.70.0"

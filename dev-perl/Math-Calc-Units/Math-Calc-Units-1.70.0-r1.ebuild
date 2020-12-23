@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Human-readable unit-aware calculator"
 
 SLOT="0"
-KEYWORDS="amd64 hppa sparc x86"
+KEYWORDS="amd64 ~hppa sparc x86"
 IUSE=""
 
 DEPEND="virtual/perl-Time-Local"

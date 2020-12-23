@@ -6,7 +6,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="X graphics demo"
-KEYWORDS="amd64 arm hppa ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw

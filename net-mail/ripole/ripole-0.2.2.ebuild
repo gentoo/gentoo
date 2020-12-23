@@ -11,7 +11,7 @@ SRC_URI="http://www.pldaniels.com/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.0-ldflags.patch

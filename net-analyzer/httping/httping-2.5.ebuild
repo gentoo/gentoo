@@ -10,7 +10,7 @@ SRC_URI="http://www.vanheusden.com/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 hppa ~mips ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~mips ~ppc ppc64 ~sparc x86"
 IUSE="debug fftw libressl l10n_nl ncurses ssl +tfo"
 
 RDEPEND="

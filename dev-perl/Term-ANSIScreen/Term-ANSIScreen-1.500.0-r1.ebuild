@@ -11,7 +11,7 @@ DESCRIPTION="Terminal control using ANSI escape sequences"
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE=""
 
 SRC_TEST="do"
