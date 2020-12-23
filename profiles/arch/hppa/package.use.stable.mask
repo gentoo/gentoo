@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# app-crypt/heimdal is not stable on hppa
+net-nds/openldap smbkrb5passwd
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-python/subunit is not stable on hppa
 dev-libs/check subunit
 
