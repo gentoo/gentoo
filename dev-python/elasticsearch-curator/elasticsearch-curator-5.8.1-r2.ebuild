@@ -33,7 +33,7 @@ RDEPEND="
 	>=dev-python/certifi-2019.9.11[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.24.2[${PYTHON_USEDEP}]
-	<dev-python/urllib3-1.25[${PYTHON_USEDEP}]
+	<dev-python/urllib3-1.26[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.9.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
