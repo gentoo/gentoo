@@ -16,8 +16,6 @@ else
 	KEYWORDS="~amd64 ~x86"
 	MY_PV=${PV//./_}
 	SRC_URI="https://github.com/srsLTE/srsLTE/archive/release_${MY_PV}.tar.gz -> ${P}.tar.gz"
-	#https://github.com/srsLTE/srsLTE/issues/537
-	RESTRICT=test
 fi
 
 LICENSE="GPL-3"
@@ -53,4 +51,8 @@ src_configure() {
 		-DENABLE_HARDSIM="$(usex simcard)"
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	cmake_src_test -j1
 }
