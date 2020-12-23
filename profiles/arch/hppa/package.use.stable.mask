@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-python/subunit is not stable on hppa
+dev-libs/check subunit
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-libs/xapian is not stable on hppa
 app-doc/doxygen doxysearch
 
