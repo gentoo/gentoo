@@ -284,13 +284,6 @@ dev-lua/luadoc
 =sys-kernel/gentoo-kernel-bin-5.4.78-r1
 =sys-kernel/gentoo-kernel-bin-5.4.78
 
-# Fabian Groffen <grobian@gentoo.org> (2020-11-23)
-# No longer used, not really functional either, noone should be using
-# this, removal in 30 days.
-sys-kernel/xnu-headers
-sys-libs/darwin-libc-headers
-dev-libs/libmissing
-
 # David Seifert <soap@gentoo.org> (2020-11-22)
 # Upstream abandoned since 2012, tons of QA issues and
 # build bugs, esoteric NIH build system. Bug #293567, #670954,
