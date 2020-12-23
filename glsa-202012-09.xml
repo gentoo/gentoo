@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-09">
+  <title>Cherokee: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Cherokee, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">cherokee</product>
+  <announced>2020-12-23</announced>
+  <revised count="1">2020-12-23</revised>
+  <bug>715204</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/cherokee" auto="yes" arch="*">
+      <vulnerable range="le">1.2.104-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cherokee is an extra-light web server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Cherokee. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Cherokee. We recommend that users
+      unmerge package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "www-servers/cherokee"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2006-1681">CVE-2006-1681</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20798">CVE-2019-20798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20799">CVE-2019-20799</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20800">CVE-2019-20800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-12845">CVE-2020-12845</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-23T16:51:00Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-23T19:47:34Z">whissi</metadata>
+</glsa>
