@@ -5,17 +5,15 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit cmake git-r3 lua-single
-
-EGIT_REPO_URI="https://github.com/openstreetmap/${PN}.git"
+inherit cmake lua-single
 
 DESCRIPTION="Converts OSM planet.osm data to a PostgreSQL/PostGIS database"
 HOMEPAGE="https://osm2pgsql.org/"
-SRC_URI=""
+SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+lua"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 

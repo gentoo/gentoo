@@ -522,6 +522,7 @@ kde-apps/kdebase-meta:5
 >=net-mail/dovecot-2.3.11.3-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-astronomy/celestia-1.7.0_pre20200316-r100
+>=sci-geosciences/osm2pgsql-1.4.0-r100
 >=sci-libs/libsc-2.2-r100
 >=sci-libs/p4est-2.2-r100
 >=sci-libs/plplot-5.15.0-r100
