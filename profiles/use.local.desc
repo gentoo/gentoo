@@ -8309,7 +8309,6 @@ sys-kernel/mips-sources:ip28 - Enables additional support for SGI Indigo2 Impact
 sys-kernel/mips-sources:ip30 - Enables support for SGI Octane (IP30, 'Speedracer')
 sys-kernel/rt-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/vanilla-kernel:initramfs - Build initramfs along with the kernel.
-sys-kernel/xnu-headers:man - Install the manpages
 sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/compiler-rt:clang - Force building using installed clang (rather than the default CC/CXX).
@@ -8330,7 +8329,6 @@ sys-libs/compiler-rt-sanitizers:shadowcallstack - Build ShadowCallStack.
 sys-libs/compiler-rt-sanitizers:tsan - Build Thread Sanitizer runtime.
 sys-libs/compiler-rt-sanitizers:ubsan - Build Undefined Behavior Sanitizer runtime.
 sys-libs/compiler-rt-sanitizers:xray - Build XRay runtime.
-sys-libs/darwin-libc-headers:man - Install the manpages
 sys-libs/freeipmi:nagios - Install a nagios plugin to check sensors' status.
 sys-libs/gdbm:berkdb - enable compatibility layer for UNIX-like dbm and ndbm interfaces
 sys-libs/glibc:cet - Enable Intel Control-flow Enforcement Technology (needs binutils 2.29 and gcc 8)
