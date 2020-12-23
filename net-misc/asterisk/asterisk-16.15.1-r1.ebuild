@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
+LUA_COMPAT=( lua5-{1..4} )
 
 inherit autotools linux-info lua-single systemd
 
@@ -30,7 +30,8 @@ REQUIRED_USE="gtalk? ( xmpp )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-historic-no-var-run-install.patch"
-	"${FILESDIR}/${PN}-16.14.0-autoconf-lua-version.patch"
+	"${FILESDIR}/${PN}-13.38.1-r1-autoconf-lua-version.patch"
+	"${FILESDIR}/${PN}-13.38.1-r1-func_lock-fix-races.patch"
 )
 
 DEPEND="acct-user/asterisk
@@ -123,7 +124,7 @@ src_configure() {
 	local vmst
 
 	econf \
-		LUA_IMPL="${ELUA}" \
+		LUA_VERSION="${ELUA#lua}" \
 		--libdir="/usr/$(get_libdir)" \
 		--localstatedir="/var" \
 		--with-crypto \
@@ -134,6 +135,7 @@ src_configure() {
 		--without-jansson-bundled \
 		--without-pjproject-bundled \
 		$(use_with caps cap) \
+		$(use_with lua lua) \
 		$(use_with http gmime) \
 		$(use_with newt) \
 		$(use_with pjproject) \
