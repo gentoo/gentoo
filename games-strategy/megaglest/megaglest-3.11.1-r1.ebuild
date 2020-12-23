@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static +streflop +tools +unicode wxuniversal +model-viewer videos"
 
+# Newer versions of megaglest-data install directly into /usr
 RDEPEND="
 	~games-strategy/${PN}-data-${PV}
+	<games-strategy/${PN}-data-3.11.1-r1
 	>=dev-lang/lua-5.1:0
 	dev-libs/libxml2
 	media-libs/fontconfig
