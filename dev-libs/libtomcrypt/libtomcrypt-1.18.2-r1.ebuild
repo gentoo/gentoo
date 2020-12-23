@@ -17,7 +17,7 @@ LICENSE="|| ( WTFPL-2 public-domain )"
 # Helpful site:
 # https://abi-laboratory.pro/index.php?view=timeline&l=libtomcrypt
 SLOT="0/1"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~sparc ~x86"
 IUSE="+gmp +libtommath tomsfastmath"
 
 BDEPEND="virtual/pkgconfig"
