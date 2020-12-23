@@ -6,18 +6,20 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..2} luajit )
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit git-r3 lua-single toolchain-funcs webapp
+inherit lua-single toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
+GIT_V="2.25.1"
+
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
-SRC_URI=""
-EGIT_REPO_URI="https://git.zx2c4.com/cgit"
+SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
+	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +highlight libressl +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -45,6 +47,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	rmdir git || die
+	mv "${WORKDIR}"/git-"${GIT_V}" git || die
+
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf
