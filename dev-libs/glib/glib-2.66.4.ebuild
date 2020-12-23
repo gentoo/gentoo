@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-IUSE="dbus debug elibc_glibc fam gtk-doc kernel_linux +mime selinux static-libs sysprof systemtap test utils xattr"
+IUSE="dbus debug +doc elibc_glibc fam gtk-doc kernel_linux +mime selinux static-libs sysprof systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
@@ -46,8 +46,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # libxml2 used for optional tests that get automatically skipped
 BDEPEND="
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 	>=sys-devel/gettext-0.19.8
 	gtk-doc? ( >=dev-util/gtk-doc-1.33
 		app-text/docbook-xml-dtd:4.2
@@ -166,7 +168,7 @@ multilib_src_configure() {
 		$(meson_use xattr)
 		-Dlibmount=enabled # only used if host_system == 'linux'
 		-Dinternal_pcre=false
-		-Dman=true
+		-Dman=$(multilib_native_usex doc true false)
 		$(meson_use systemtap dtrace)
 		$(meson_use systemtap)
 		$(meson_feature sysprof)
@@ -204,18 +206,20 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	use doc && einstalldocs
 
 	# These are installed by dev-util/glib-utils
 	# TODO: With patching we might be able to get rid of the python-any deps and removals, and test depend on glib-utils instead; revisit now with meson
 	rm "${ED}/usr/bin/glib-genmarshal" || die
-	rm "${ED}/usr/share/man/man1/glib-genmarshal.1" || die
 	rm "${ED}/usr/bin/glib-mkenums" || die
-	rm "${ED}/usr/share/man/man1/glib-mkenums.1" || die
 	rm "${ED}/usr/bin/gtester-report" || die
-	rm "${ED}/usr/share/man/man1/gtester-report.1" || die
-	# gdbus-codegen manpage installed by dev-util/gdbus-codegen
-	rm "${ED}/usr/share/man/man1/gdbus-codegen.1" || die
+	if use doc; then
+		rm "${ED}/usr/share/man/man1/glib-genmarshal.1" || die
+		rm "${ED}/usr/share/man/man1/glib-mkenums.1" || die
+		rm "${ED}/usr/share/man/man1/gtester-report.1" || die
+		# gdbus-codegen manpage installed by dev-util/gdbus-codegen
+		rm "${ED}/usr/share/man/man1/gdbus-codegen.1" || die
+	fi
 }
 
 pkg_preinst() {
