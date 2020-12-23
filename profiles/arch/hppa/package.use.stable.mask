@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/xapian is not stable on hppa
+app-doc/doxygen doxysearch
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # x11-base/xorg-server not stable.
 # Mask USE=test for packages using virtualx.eclass.
 dev-lang/tk test
