@@ -7,5 +7,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=app-misc/tmux-2.2 app-shells/bash-completion
 SLOT=0
-_eclasses_=bash-completion-r1	20058ccf29bb27d8da5ebf2fd48c60c2	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=bash-completion-r1	19ed4dd14584478ab819f2d4d88623c9	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=73621ef711bf68408774e732c74660d4

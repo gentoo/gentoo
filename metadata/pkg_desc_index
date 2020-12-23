@@ -4755,7 +4755,7 @@ dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimit
 dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p20170719: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
-dev-java/javatoolkit 0.6.3 0.6.5: Collection of Gentoo-specific tools for Java
+dev-java/javatoolkit 0.6.5: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2 1-r3: Dependency injection for Java (JSR-330)
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jaxen 1.1.4-r1 1.1.6 1.1.6-r1: A Java XPath Engine
@@ -16419,7 +16419,7 @@ sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
-sci-visualization/gnuplot 5.2.8 5.2.8-r1 5.4.0-r2 5.4.0-r100 5.4.1 5.4.1-r1 5.5.9999 5.5.9999-r1: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.2.8-r1 5.4.1 5.4.1-r1 5.5.9999 5.5.9999-r1: Command-line driven interactive plotting program
 sci-visualization/gr 0.50.0-r2: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming

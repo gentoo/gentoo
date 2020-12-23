@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/mrdudz/vbindiff/releases/download/3.0_beta5/vbindiff-3.0_beta5.tar.gz
-_md5_=577371e5e530653441cb1cdf1bdba273
+_md5_=6f5ad5a957365984dc312b5eee049fff

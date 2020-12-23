@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=exif? ( media-libs/libexif ) gif? ( media-libs/giflib:0= ) media-libs/imlib2[X,gif?,jpeg?,png?] x11-libs/libX11 x11-libs/libXft
 SLOT=0
 SRC_URI=https://github.com/muennich/sxiv/archive/v26.tar.gz -> sxiv-26.tar.gz
-_eclasses_=desktop	8f9bfcc33705104f56748d9dedb3177a	multilib	d410501a125f99ffb560b0c523cd3d1e	portability	1142b2ccb57f0bb5ae58b806089e08f0	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	8f9bfcc33705104f56748d9dedb3177a	multilib	d410501a125f99ffb560b0c523cd3d1e	portability	ef17692c89618f4fb47984b1186bb484	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1a311e64b3549ac1fb9bcac11a394b7a

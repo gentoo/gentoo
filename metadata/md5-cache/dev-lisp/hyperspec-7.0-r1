@@ -6,4 +6,4 @@ KEYWORDS=amd64 ppc sparc x86
 LICENSE=HyperSpec
 SLOT=0
 SRC_URI=ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz
-_md5_=f4f20f406ffe930cf0ff0955e4e17743
+_md5_=edc2a3656882097914ab34a4b3bd11df

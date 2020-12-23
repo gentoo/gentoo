@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=app-admin/sysstat media-sound/playerctl sys-apps/lm-sensors sys-power/acpi || ( x11-wm/i3 x11-wm/i3-gaps )
 SLOT=0
 SRC_URI=https://github.com/vivien/i3blocks/archive/1.4.tar.gz -> i3blocks-1.4.tar.gz
-_md5_=599a32490ebf924c9a9a68bbd79cf864
+_md5_=0bbb93a07278640e5ca325d20424bd80

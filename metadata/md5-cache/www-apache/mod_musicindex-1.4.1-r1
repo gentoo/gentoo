@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=mp3? ( media-libs/libmad media-libs/libid3tag ) mp4? ( media-libs/libmp4v2:0 ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis ) archive? ( app-arch/libarchive ) mysql? ( dev-db/mysql-connector-c:0= ) sys-devel/libtool =www-servers/apache-2*
 SLOT=0
 SRC_URI=http://hacks.slashdirt.org/musicindex/mod_musicindex-1.4.1.tar.gz http://validator.w3.org/feed/images/valid-rss.png -> mod_musicindex-1.4.1_valid-rss.png http://jigsaw.w3.org/css-validator/images/vcss -> mod_musicindex-1.4.1_vcss http://www.w3.org/Icons/valid-xhtml11 -> mod_musicindex-1.4.1_valid-xhtml11
-_eclasses_=apache-module	ed1310f166e54de484f5d4b39d0279c9	depend.apache	69ed723e2331f996dc7510598673359e
+_eclasses_=apache-module	63b336ffe0f03a3e367b03ffb19216c5	depend.apache	69ed723e2331f996dc7510598673359e
 _md5_=864f354419fb73357bf186a707456e88

@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl dev-perl/libintl-perl unicode? ( dev-perl/Text-Unidecode d
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://nongnu/texi2html/texi2html-5.0.tar.bz2
-_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=38e2810aa92fd3787a3205faa6d14cca

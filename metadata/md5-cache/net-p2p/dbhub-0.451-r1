@@ -10,4 +10,4 @@ RDEPEND=perl? ( dev-lang/perl ) switch-user? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=mirror://sourceforge/dbhub/dbhub-0.451.tbz2
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=82c620b3ed65ae8f11675f7f1c19ef1f
+_md5_=ebf1b8b1eba891c14dfda89c9e845089

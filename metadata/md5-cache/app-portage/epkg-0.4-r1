@@ -7,4 +7,4 @@ LICENSE=BSD-2
 RDEPEND=app-portage/eix app-portage/gentoolkit sys-apps/portage
 SLOT=0
 SRC_URI=https://github.com/jdhore/epkg/archive/epkg-0.4.tar.gz
-_md5_=74d8cba2ce74db10809b3c1a600b5efa
+_md5_=b36a25e0b4dc4afc0146842ab5513e90

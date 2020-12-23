@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=mirror://sourceforge/wiliki/WiLiKi-0.6.1.tgz
-_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
 _md5_=0e11ab1e6a54533f88979487dc32c942

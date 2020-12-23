@@ -9,5 +9,5 @@ LICENSE=GPL-1
 RDEPEND=net-nds/openldap ssl? ( dev-libs/openssl ) =www-servers/apache-2*[ldap] =www-servers/apache-2*
 SLOT=0
 SRC_URI=https://horde.net/~jwm/software/mod_ldap_userdir/mod_ldap_userdir-1.1.19.tar.gz
-_eclasses_=apache-module	ed1310f166e54de484f5d4b39d0279c9	depend.apache	69ed723e2331f996dc7510598673359e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=apache-module	63b336ffe0f03a3e367b03ffb19216c5	depend.apache	69ed723e2331f996dc7510598673359e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=15f068a2fe98e26904a377cbd166424f

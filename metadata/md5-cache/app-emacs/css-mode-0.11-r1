@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://gentoo/css-mode-0.11.tar.bz2
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	b9df8d576b8e3d10e3da1c292b027912	epatch	0a83d4ccf28a70ddf61e7073c96e515a	estack	d780995dc525ff7e6a2c4c043ffec242
-_md5_=7120a4e02f62562a51d09b8b75a83933
+_md5_=89ff486baed97ce235dabc3f7c9f34a4

@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=https://github.com/hollow/mod_fastcgi_handler/archive/v0.6.tar.gz -> mod_fastcgi_handler-0.6.tar.gz
-_eclasses_=apache-module	ed1310f166e54de484f5d4b39d0279c9	depend.apache	69ed723e2331f996dc7510598673359e
+_eclasses_=apache-module	63b336ffe0f03a3e367b03ffb19216c5	depend.apache	69ed723e2331f996dc7510598673359e
 _md5_=a9b19878351b2322a7255b1b62bec90a

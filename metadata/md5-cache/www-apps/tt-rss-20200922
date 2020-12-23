@@ -10,5 +10,5 @@ RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( acct-user/ttrssd acct-group/
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=20200922
 SRC_URI=https://dev.gentoo.org/~chewi/distfiles/tt-rss-20200922.tar.gz
-_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501	webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c	webapp	1d03df021d958f89f4cc78e289d0b116
 _md5_=8a361b5f98de5e8ba29e3cf8ddb9c156

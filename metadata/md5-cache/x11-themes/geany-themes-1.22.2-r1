@@ -7,4 +7,4 @@ LICENSE=GPL-3 LGPL-2.1 BSD-2 MIT
 RDEPEND=>=dev-util/geany-1.22
 SLOT=0
 SRC_URI=https://github.com/downloads/codebrainz/geany-themes/geany-themes-1.22.2.tar.bz2
-_md5_=923fd399ce639cc024dc477e3124592d
+_md5_=63f8ea0872c5cf04aa8d586262eb9d70

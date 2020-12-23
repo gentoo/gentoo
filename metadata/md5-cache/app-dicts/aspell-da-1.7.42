@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.50
 SLOT=0
 SRC_URI=https://da.speling.org/filer/new_aspell-da-1.7.42.tar.bz2
-_eclasses_=aspell-dict-r1	d19077296881c1c5a7fa4c2d7820a475
+_eclasses_=aspell-dict-r1	dc4e51fece9b7d4ca6b696c1f2e8ae87
 _md5_=c41d92fdf758e238f25aa34366677523

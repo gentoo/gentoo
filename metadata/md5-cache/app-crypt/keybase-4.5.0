@@ -9,5 +9,5 @@ RDEPEND=app-crypt/gnupg
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/keybase/client/archive/v4.5.0.tar.gz -> keybase-4.5.0.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	69be00334d73f9f50261554b94be0879	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=cb2e2ec2fe16f240f8ac814fc5b40a80

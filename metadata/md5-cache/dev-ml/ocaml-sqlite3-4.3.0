@@ -9,4 +9,4 @@ RDEPEND=>=dev-db/sqlite-3.3.3 >=dev-lang/ocaml-4:=
 SLOT=0/4.3.0
 SRC_URI=https://github.com/mmottl/sqlite3-ocaml/releases/download/4.3.0/sqlite3-4.3.0.tbz
 _eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
-_md5_=44715ecd1904679f92c6006b7c107848
+_md5_=ab617eb38110b8907005cbc4d5983ca4

@@ -8,5 +8,5 @@ LICENSE=myspell-en_CA-KevinAtkinson public-domain Princeton Ispell
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/en/aspell6-en-2018.04.16-0.tar.bz2
-_eclasses_=aspell-dict-r1	d19077296881c1c5a7fa4c2d7820a475	estack	d780995dc525ff7e6a2c4c043ffec242	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=aspell-dict-r1	dc4e51fece9b7d4ca6b696c1f2e8ae87	estack	d780995dc525ff7e6a2c4c043ffec242	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=16378f1c753e25441c5aa8e423e06346

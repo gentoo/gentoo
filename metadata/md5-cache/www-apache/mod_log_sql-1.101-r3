@@ -9,5 +9,5 @@ LICENSE=Artistic
 RDEPEND=dev-db/mysql-connector-c:0= dbi? ( dev-db/libdbi ) ssl? ( dev-libs/openssl:0= ) =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=http://www.outoforder.cc/downloads/mod_log_sql/mod_log_sql-1.101.tar.bz2
-_eclasses_=apache-module	ed1310f166e54de484f5d4b39d0279c9	depend.apache	69ed723e2331f996dc7510598673359e
+_eclasses_=apache-module	63b336ffe0f03a3e367b03ffb19216c5	depend.apache	69ed723e2331f996dc7510598673359e
 _md5_=552744328c9c679fbb6b3f956ff61074

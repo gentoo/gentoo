@@ -10,4 +10,4 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( net-libs/gnutls )
 SLOT=0
 SRC_URI=mirror://sourceforge/wput/wput-0.6.1.tgz
-_md5_=9da548d3cdb1097e07acf155f66e9ac5
+_md5_=5ae9b39852aa3dca358d80b00eee08ea

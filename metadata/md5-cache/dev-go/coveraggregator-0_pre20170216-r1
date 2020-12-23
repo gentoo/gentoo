@@ -8,5 +8,5 @@ LICENSE=WTFPL-2 BSD
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/chouquette/coveraggregator/archive/af12d4d73479a1b49a16bbed8e5c182999dd62be.tar.gz -> coveraggregator-0_pre20170216.tar.gz https://github.com/golang/tools/archive/a911d9008d1f732040244007778232b02ebb2b84.tar.gz -> github.com-golang-tools-a911d9008d1f732040244007778232b02ebb2b84.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	4a615ccf588f8bc48d956500949af39e
+_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	00959bf58ac3a3f8faff481ad9c9cb5c
 _md5_=bd543c7d60c87b751879aece6c2fbaf3

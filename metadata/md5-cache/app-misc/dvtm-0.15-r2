@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=sys-libs/ncurses:0=[unicode] !>=sys-libs/ncurses-6.1
 SLOT=0
 SRC_URI=https://www.brain-dump.org/projects/dvtm/dvtm-0.15.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	portability	1142b2ccb57f0bb5ae58b806089e08f0	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	portability	ef17692c89618f4fb47984b1186bb484	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=9c1a1ca773f56e575304dccf7975c8f7

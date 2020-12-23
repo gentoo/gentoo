@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-lang/perl dev-perl/JSON dev-perl/PerlIO-gzip png? ( dev-perl/GD[png] )
 SLOT=0
 SRC_URI=mirror://sourceforge/ltp/lcov-1.14.tar.gz mirror://debian/pool/main/l/lcov/lcov_1.14-2.debian.tar.xz
-_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=4dc36a1981a335b9da6e1576430d0f54

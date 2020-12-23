@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=3.8-r1
 SRC_URI=https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz -> rutorrent-3.8.tar.gz
-_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
 _md5_=aedbdca363febe9f4a87b952a8d423ad

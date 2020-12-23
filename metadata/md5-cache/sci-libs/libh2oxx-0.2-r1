@@ -9,4 +9,4 @@ LICENSE=BSD
 RDEPEND=>=sci-libs/libh2o-0.2:0=
 SLOT=0
 SRC_URI=https://github.com/mgorny/libh2oxx/releases/download/libh2oxx-0.2/libh2oxx-0.2.tar.bz2
-_md5_=219995a66890a10903ebc661d1af0eb9
+_md5_=865515d128739a090b8720db3091bb8a

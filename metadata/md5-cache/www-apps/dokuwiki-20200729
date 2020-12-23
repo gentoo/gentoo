@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) >=app-admin/webapp-config-1.50.15
 SLOT=20200729
 SRC_URI=https://download.dokuwiki.org/src/dokuwiki/dokuwiki-2020-07-29.tgz
-_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
 _md5_=fedfb684a9e466431d3e597667df3dfa

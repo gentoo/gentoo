@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=sys-libs/ncurses-5.2-r2:0= nls? ( virtual/libintl ) readline? ( >=sys-libs/readline-8.1:0= )
 SLOT=0
 SRC_URI=mirror://gnu/bash/bash-5.1.tar.gz ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/bash51-001 ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/bash51-002 ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/bash51-003 ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/bash51-004 mirror://gnu/bash/bash-5.1-patches/bash51-001 mirror://gnu/bash/bash-5.1-patches/bash51-002 mirror://gnu/bash/bash-5.1-patches/bash51-003 mirror://gnu/bash/bash-5.1-patches/bash51-004
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=8c55a4ff06d2cb92598f5a95a56e34a0

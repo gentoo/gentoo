@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-lang/perl png? ( dev-perl/GD[png] )
 SLOT=0
 SRC_URI=mirror://sourceforge/ltp/lcov-1.13.tar.gz
-_eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=6cd7c2b837527c26c6dee103409c5a34

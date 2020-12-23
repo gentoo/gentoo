@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=dev-lang/php-7.2[mysqli?,mssql?,postgres?,imap?,ldap?,odbc?,ctype,curl,iconv,json,session,simplexml,xml,zip,gd,intl,soap,ssl,tokenizer,xmlrpc] virtual/httpd-php virtual/cron >=app-admin/webapp-config-1.50.15
 SLOT=3.10
 SRC_URI=https://download.moodle.org/stable310/moodle-3.10.tgz
-_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
 _md5_=7b06e3705765f57dd329a0030d598269
