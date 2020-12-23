@@ -62,6 +62,8 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kio-extras-${PVCUT}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-crashfix.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt5=ON

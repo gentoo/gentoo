@@ -519,7 +519,8 @@ kde-apps/kdebase-meta:5
 >=net-irc/hexchat-2.14.3-r100
 >=net-irc/weechat-3.0-r100
 >=net-libs/axtls-2.1.5-r100
->=net-misc/asterisk-16.14.0-r100
+=net-misc/asterisk-13.38.1-r1
+=net-misc/asterisk-16.15.1-r1
 >=net-mail/dovecot-2.3.11.3-r100
 >=net-p2p/eiskaltdcpp-2.2.10-r100
 >=sci-astronomy/celestia-1.7.0_pre20200316-r100
@@ -630,13 +631,6 @@ dev-lang/vala:0.50
 net-analyzer/ntopng
 net-analyzer/pmacct
 net-libs/nDPI
-
-# Jaco Kroon <jaco@uls.co.za> (2020-07-20)
-# Asterisk 11 is EOL. All users should migrate to asterisk 13.
-# Removal unspecified, will remain for the foreseeable future. If you need
-# help migrating, contact jkroon in #gentoo-voip on freenode.
-=net-misc/asterisk-11*
-=net-misc/asterisk-g729-11*
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
 # In preparation; do not use yet.
