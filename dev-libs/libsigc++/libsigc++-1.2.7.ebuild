@@ -13,7 +13,7 @@ HOMEPAGE="https://libsigcplusplus.github.io/libsigcplusplus/
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="1.2"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="sys-devel/m4"
