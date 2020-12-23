@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sam James <sam@gentoo.org> (2020-12-23)
+# dev-lang/luajit is not yet stable
+lua_single_target_luajit
+lua_targets_luajit
+luajit
+
 # Sam James <sam@gentoo.org> (2020-10-08)
 # Not enough packages stable w/ PyPy3 support
 python_targets_pypy3
