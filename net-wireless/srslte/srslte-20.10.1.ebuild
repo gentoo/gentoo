@@ -16,9 +16,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 	MY_PV=${PV//./_}
 	SRC_URI="https://github.com/srsLTE/srsLTE/archive/release_${MY_PV}.tar.gz -> ${P}.tar.gz"
-	#https://github.com/srsLTE/srsLTE/issues/537
-	RESTRICT=test
 fi
+#https://github.com/srsLTE/srsLTE/issues/537
+RESTRICT="test"
 
 LICENSE="GPL-3"
 SLOT="0"
