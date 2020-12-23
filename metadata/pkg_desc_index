@@ -15553,7 +15553,7 @@ net-wireless/soapysdr 0.7.2 9999: vendor and platform neutral SDR support librar
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.4.1 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
-net-wireless/srslte 19.09-r2 20.04.2 9999: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/srslte 20.10.1 9999: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/suscan 0.1.0-r1: a realtime DSP processing library
 net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's custom widgets
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
