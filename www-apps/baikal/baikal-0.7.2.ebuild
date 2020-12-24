@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit webapp
 
@@ -15,7 +15,7 @@ IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
 DEPEND="app-arch/unzip"
-RDEPEND=">=dev-lang/php-6[ctype,filter,json,pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
+RDEPEND=">=dev-lang/php-6[ctype,filter,json(+),pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
@@ -32,7 +32,7 @@ src_install() {
 	doins -r html/* html/.htaccess Core vendor
 
 	einfo "Setting up container for configuration"
-	insinto /etc/${PN}
+	dodir /etc/${PN}
 
 	einfo "Fixing symlinks"
 	local link target
@@ -42,9 +42,10 @@ src_install() {
 		rm "${link}" && ln -s "${target}" "${link}"
 	done
 	dosym /etc/${PN} "${MY_HTDOCSDIR}"/Specific
+	dosym /etc/${PN} "${MY_HTDOCSDIR}"/config
 	dosym . "${MY_HTDOCSDIR}"/html
 
-	webapp_postinst_txt en "${FILESDIR}/postinstall-en.txt"
+	webapp_postinst_txt en "${FILESDIR}/postinstall-v0.7-en.txt"
 	webapp_src_install
 
 	if has_version www-servers/apache ; then
