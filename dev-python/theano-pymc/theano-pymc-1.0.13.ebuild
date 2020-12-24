@@ -4,12 +4,13 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1 optfeature
 
-DESCRIPTION="Python library for operating with mathematical expressions involving multi-dimensional arrays"
+DESCRIPTION="Library for operating on mathematical expressions with multi-dimensional arrays"
 HOMEPAGE="https://github.com/pymc-devs/Theano-PyMC"
 SRC_URI="https://github.com/pymc-devs/Theano-PyMC/archive/rel-${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/Theano-PyMC-rel-${PV}
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,10 +22,7 @@ RDEPEND="
 	dev-python/scipy[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}"/Theano-PyMC-rel-${PV}
-
-distutils_enable_sphinx doc \
-	'dev-python/sphinx_rtd_theme'
+distutils_enable_sphinx doc 'dev-python/sphinx_rtd_theme'
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -36,7 +34,7 @@ python_prepare_all() {
 
 python_test() {
 	distutils_install_for_testing
-	pytest -vv || die
+	pytest -vv || die "Tests failed with ${EPYTHON}"
 }
 
 pkg_postinst() {
