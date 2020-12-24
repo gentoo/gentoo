@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-22">
+  <title>HAProxy: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in HAProxy might allow an attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">haproxy</product>
+  <announced>2020-12-24</announced>
+  <revised count="1">2020-12-24</revised>
+  <bug>715944</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-proxy/haproxy" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/2.0">2.0.13</unaffected>
+      <unaffected range="ge">2.1.4</unaffected>
+      <vulnerable range="lt">2.1.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>HAProxy is a TCP/HTTP reverse proxy for high availability environments.</p>
+  </background>
+  <description>
+    <p>It was discovered that HAProxy incorrectly handled certain HTTP/2
+      headers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending a specially crafted HTTP/2 request, could
+      possibly execute arbitrary code with the privileges of the process, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable HTTP/2 support.</p>
+  </workaround>
+  <resolution>
+    <p>All HAProxy 2.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/haproxy-2.0.13:0/2.0"
+    </code>
+    
+    <p>All other HAProxy users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-proxy/haproxy-2.1.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-11100">CVE-2020-11100</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-05-20T16:01:15Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2020-12-24T14:09:42Z">sam_c</metadata>
+</glsa>

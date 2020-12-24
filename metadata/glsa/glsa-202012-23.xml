@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202012-23">
+  <title>Apache Tomcat: Information disclosure</title>
+  <synopsis>A vulnerability has been discovered in Apache Tomcat that allows
+    for the disclosure of sensitive information.
+  </synopsis>
+  <product type="ebuild">tomcat</product>
+  <announced>2020-12-24</announced>
+  <revised count="1">2020-12-24</revised>
+  <bug>758338</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/tomcat" auto="yes" arch="*">
+      <unaffected range="ge" slot="8.5">8.5.60</unaffected>
+      <unaffected range="ge" slot="9">9.0.40</unaffected>
+      <vulnerable range="lt" slot="8.5">8.5.60</vulnerable>
+      <vulnerable range="lt" slot="9">9.0.40</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache Tomcat is a Servlet-3.0/JSP-2.2 Container.</p>
+  </background>
+  <description>
+    <p>It was discovered that Apache Tomcat could re-use an HTTP request header
+      value from the previous stream received on an HTTP/2 connection for the
+      request associated with the subsequent stream.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker, by sending well-timed HTTP/2 requests, could possibly
+      obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disable HTTP/2 support.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache Tomcat 8.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-8.5.60:8.5"
+    </code>
+    
+    <p>All Apache Tomcat 9.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/tomcat-9.0.40:9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17527">CVE-2020-17527</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-12-23T01:20:53Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-12-24T14:11:02Z">whissi</metadata>
+</glsa>
