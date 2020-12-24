@@ -71,10 +71,6 @@ media-gfx/exact-image lua
 # Requires >=dev-lang/lua-5.2, which is still masked.
 app-editors/vis lua
 
-# Marek Szuba <marecki@gentoo.org> (2020-10-12)
-# Requires slotted Lua, which is still masked.
-media-gfx/darktable system-lua
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
 # USE=doc broken on 1.47.0
 # error: unresolved link to `crate::os::unix::ffi::OsStrExt`
