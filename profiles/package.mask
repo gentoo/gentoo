@@ -215,14 +215,6 @@ dev-libs/libclangformat-ide
 # Bug #709512, #713300, #729518, Removal in 30 days.
 app-text/cook
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
-# KF5 PortingAids (from kdelibs4) without any remaining revdeps. Bug #755956
-# Masked for removal in 30 days.
-kde-frameworks/kdewebkit
-kde-frameworks/kjsembed
-kde-frameworks/kmediaplayer
-kde-frameworks/kxmlrpcclient
-
 # Martin Dummer <martin.dummer@gmx.net> (2020-11-25)
 # Does not compile with kernels >=5.5, no upstream development
 # since years, for most hardware the in-kernel module
