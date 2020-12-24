@@ -20,7 +20,6 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
 
 distutils_enable_sphinx doc 'dev-python/sphinx_rtd_theme'
 distutils_enable_tests pytest
