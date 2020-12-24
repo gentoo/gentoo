@@ -59,7 +59,10 @@ dev-lang/php -exif -truetype
 # Enable luajit for OSC and youtube-dl support by default.
 # Override default +sdl from desktop profile and disable sdl outputs.
 # These outputs are for systems without a proper audio/video support.
-media-video/mpv lua luajit -sdl LUA_SINGLE_TARGET: -* luajit
+media-video/mpv lua luajit -sdl
+media-video/mpv -lua_single_target_lua5-1 -lua_single_target_lua5-2
+media-video/mpv -lua_single_target_lua5-3 -lua_single_target_lua5-4
+media-video/mpv lua_single_target_luajit
 
 # Mike Gilbert <floppym@gentoo.org> (2017-01-04)
 # Needed by x11-misc/xdg-utils.
