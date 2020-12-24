@@ -8872,7 +8872,7 @@ dev-python/python-language-server 0.36.1 0.36.2: An implementation of the Langua
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
-dev-python/python-libevdev 0.8: Python wrappers for the libevdev library
+dev-python/python-libevdev 0.8 0.9: Python wrappers for the libevdev library
 dev-python/python-linux-procfs 0.6.1: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
@@ -14540,7 +14540,7 @@ net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/samba 4.11.13-r1 4.12.7-r2 4.12.8-r1 4.12.9-r1 4.12.10-r1 4.13.1-r1 4.13.2-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
-net-fs/sshfs 3.7.0: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r2: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
