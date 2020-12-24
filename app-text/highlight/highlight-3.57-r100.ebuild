@@ -34,6 +34,10 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.57-qt_libs_lua.patch
+)
+
 myhlopts=(
 	"CXX=$(tc-getCXX)"
 	"AR=$(tc-getAR)"
@@ -60,8 +64,6 @@ src_prepare() {
 		-e "/^LUA_.*pkg-config/s,\<lua\>,${ELUA},g" \
 		"${S}"/extras/tcl/makefile \
 		"${S}"/extras/swig/makefile \
-		"${S}"/makefile \
-		"${S}"/src/makefile \
 		|| die "Failed to set Lua implementation"
 
 	# We set it via eqmake5, otherwise it forces clang...
