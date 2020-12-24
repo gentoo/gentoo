@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as runtime logind provider</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">linuxmint/cinnamon-session</remote-id>
 	</upstream>
