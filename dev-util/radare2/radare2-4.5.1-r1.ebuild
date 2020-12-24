@@ -34,6 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=("${FILESDIR}"/${PN}-4.5.1-docdir.patch)
+
 src_configure() {
 	# Ideally these should be set by ./configure
 	tc-export CC AR LD OBJCOPY RANLIB
