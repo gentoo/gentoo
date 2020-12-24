@@ -1,0 +1,51 @@
+From 6dcab8d2e001bb4b91314693affa65e9c1a9adbd Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 22 Dec 2020 19:36:28 -0500
+Subject: [PATCH 1/2] configure.ac: drop lua5.1 pkg-config check.
+
+The official upstream name for the lua pkg-config file is "lua.pc", so
+preferring the name "lua5.1.pc" to the official one can lead to
+problems when both are installed. Specifically, if lua-5.2 is
+installed and its pkg-config file is called "lua.pc", then ./configure
+will still detect (and use!) lua-5.1 if it happens to be installed
+with just the right name.
+
+This was honestly left in only for superstitious reasons, and now it's
+actually causing problems on Gentoo systems that have more than one
+version of Lua installed. So, time to go.
+
+Closes: https://github.com/trusteddomainproject/OpenDKIM/issues/111
+---
+ configure.ac | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 828fe53f..d3d688ec 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1517,20 +1517,10 @@ lua_found="no"
+ 
+ if test \(  x"$luapath" = x"auto" -o x"$luapath" = x"yes" \) -a x"$PKG_CONFIG" != x""
+ then
+-  PKG_CHECK_MODULES([LIBLUA], [lua5.1], [
++  PKG_CHECK_MODULES([LIBLUA], [lua], [
+       LIBLUA_INCDIRS="$LIBLUA_CFLAGS"
+       lua_found="yes"
+-    ],
+-    [
+-      AC_MSG_WARN([pkg-config for lua5.1 not found, trying lua...])
+-      PKG_CHECK_MODULES([LIBLUA], [lua], [
+-          LIBLUA_INCDIRS="$LIBLUA_CFLAGS"
+-          lua_found="yes"
+-        ],
+-	[AC_MSG_WARN([pkg-config for lua not found, trying manual search...])]
+-      )
+-    ]
+-  )
++    ])
+ fi
+ 
+ if test \( x"$luapath" = x"yes" -o x"$luapath" = x"auto" \) -a x"$lua_found" = x"no"
+-- 
+2.26.2
+

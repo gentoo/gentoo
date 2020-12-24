@@ -3,10 +3,7 @@
 
 EAPI=7
 
-# Supports lua5-2 as well but in order for that to work the lua-pkgconfig
-# patch has to be updated not to prefer "lua5.1" over "lua" while looking
-# for Lua pkgconfig modules.
-LUA_COMPAT=( lua5-1 )
+LUA_COMPAT=( lua5-1 lua5-2 )
 
 inherit autotools db-use eutils systemd tmpfiles lua-single
 
@@ -58,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-openrc.patch"
 	"${FILESDIR}/${P}-openssl-1.1.1.patch.r2"
 	"${FILESDIR}/${P}-lua-pkgconfig.patch"
+	"${FILESDIR}/${P}-lua-pkgconfig-pt2.patch"
 	"${FILESDIR}/${P}-define-P-macro-in-libvbr.patch"
 	"${FILESDIR}/${P}-fix-libmilter-search.patch"
 )
