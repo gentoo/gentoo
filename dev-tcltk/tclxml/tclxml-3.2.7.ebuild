@@ -28,6 +28,7 @@ RESTRICT="test"
 
 PATCHES=(
 		"${FILESDIR}"/${PN}-3.2-fix-implicit-declarations.patch
+		"${FILESDIR}"/${P}-bool.patch
 )
 
 src_configure() {
