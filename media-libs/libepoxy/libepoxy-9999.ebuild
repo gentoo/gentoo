@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='xml(+)'
-inherit meson multilib-minimal python-any-r1
+inherit meson multilib-minimal python-any-r1 virtualx
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
@@ -46,7 +46,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	meson_src_test
+	virtx meson_src_test
 }
 
 multilib_src_install() {
