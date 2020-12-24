@@ -12,6 +12,14 @@ HEADER_FILES="lauxlib.h luaconf.h lua.h lua.hpp lualib.h"
 remove_symlinks() {
 	rm -f "${EROOT}"/usr/bin/{lua,luac} &>/dev/null 
 	rm -f "${EROOT}"/usr/share/man/man1/lua{,c}.1{,.*} &>/dev/null
+	# Possible leftovers from earlier versions
+	for dir in $(get_libdirs) ; do
+		rm -f "${EROOT}"${dir}/liblua.so &>/dev/null && \
+		rm -f "${EROOT}"${dir}/pkgconfig/lua.pc &>/dev/null
+	done
+	for f in $HEADER_FILES ; do
+		rm -f "${EROOT}"/usr/include/${f}
+	done
 }
 
 _dup() {
@@ -31,6 +39,17 @@ set_symlinks() {
 	done
 }
 
+get_libdirs() {
+	local dir libdirs
+	for dir in $(list_libdirs); do
+		[[ -L ${EROOT}/usr/${dir} ]] && continue
+		ls "${EROOT}"/usr/${dir}/liblua*.* > /dev/null 2>&1 || continue
+ 
+		libdirs+=' '/usr/${dir}
+	done
+	echo ${libdirs:-/usr/lib}
+}
+
 find_targets() {
 	local dirs
 	local prefix="${EROOT}/usr/bin/"
@@ -45,7 +64,7 @@ resolve_target() {
 	if is_number $1; then
 		[[ $1 -le ${#targets[@]} && $1 -gt 0 ]] && echo "${targets[ $(( $1 - 1 )) ]}"
 	elif has $1 ${targets[@]}; then
-	  echo $1
+		echo $1
 	fi
 }
 
@@ -80,7 +99,7 @@ do_set() {
 
 	local target=$(resolve_target $1)
 	if [[ -z "${target}" ]]; then
-	  die -q "You need to specify a version"
+		die -q "You need to specify a version"
 	fi
 	remove_symlinks
 	set_symlinks $target
