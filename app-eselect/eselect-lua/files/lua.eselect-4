@@ -11,13 +11,6 @@ HEADER_FILES="lauxlib.h luaconf.h lua.h lua.hpp lualib.h"
 
 remove_symlinks() {
 	rm -f "${EROOT}"/usr/bin/{lua,luac} &>/dev/null 
-	for dir in $(get_libdirs) ; do
-		rm -f "${EROOT}"${dir}/liblua.so &>/dev/null && \
-		rm -f "${EROOT}"${dir}/pkgconfig/lua.pc &>/dev/null
-	done
-	for f in $HEADER_FILES ; do
-		rm -f "${EROOT}"/usr/include/${f}
-	done
 	rm -f "${EROOT}"/usr/share/man/man1/lua{,c}.1{,.*} &>/dev/null
 }
 
@@ -32,45 +25,10 @@ set_symlinks() {
 	if [[ -f "${bin_prefix}"/luac${ver} ]]; then
 		ln -s luac${ver} $(_dup "${bin_prefix}"/luac)
 	fi
-	for dir in $(get_libdirs) ; do
-		if has 'jit*' ${ver}; then
-			type -p lua${ver} &>/dev/null || die -q "It's something wrong with your lua${ver} installation: it's binary leads to broken symlink"
-			local abi=$(lua${ver} -e 'print(_VERSION:match("%d.%d"))')
-			local libname=libluajit-${abi}.so.${ver##jit-}
-			test -f "${EROOT}/${dir}/${libname}" || die -q "Can't find libluajit for lua${ver} (lua abi: ${abi})"
-			ln -s ${libname} $(_dup "${EROOT}/${dir}"/liblua.so)
-		else
-			ln -s liblua${ver}.so $(_dup "${EROOT}/${dir}"/liblua.so)
-		fi
-		ln -s lua${ver}.pc $(_dup "${EROOT}/${dir}"/pkgconfig/lua.pc)
-	done
 	for manpage in "${EROOT}"/usr/share/man/man1/lua{,c}${ver}.1.* ; do
 		test -f ${manpage} &&
 		ln -s $(basename "${manpage}") $(_dup "${manpage//${ver}}")
 	done
-	for header in $HEADER_FILES ; do
-		local hdr;
-		if has 'jit*' ${ver}; then
-			type -p lua${ver} &>/dev/null || die -q "lua${ver} binary is missing (or leads to broken symlink)"
-			local jit_v=$(lua${ver} -e 'print(jit.version:match("%d.%d"))')
-			hdr=luajit-${jit_v}/${header};
-		else
-			hdr=lua${ver}/${header};
-		fi
-		test -f "${EROOT}/usr/include/${hdr}" || die -q "Missing header: ${header}"
-		ln -s "${hdr}" $(_dup "${EROOT}"/usr/include/${header})
-	done
-}
-
-get_libdirs() {
-	local dir libdirs
-	for dir in $(list_libdirs); do
-		[[ -L ${EROOT}/usr/${dir} ]] && continue
-		ls "${EROOT}"/usr/${dir}/liblua*.* > /dev/null 2>&1 || continue
-
-		libdirs+=' '/usr/${dir}
-	done
-	echo ${libdirs:-/usr/lib}
 }
 
 find_targets() {
