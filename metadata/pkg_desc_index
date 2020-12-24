@@ -9746,7 +9746,7 @@ dev-ruby/archive-tar-minitar 0.8: Provides POSIX tarchive management from Ruby p
 dev-ruby/arel 9.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.11.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.3 1.1.0: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
-dev-ruby/asciidoctor 2.0.10 2.0.11: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor 2.0.10 2.0.11 2.0.12: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciidoctor-diagram 1.5.19 2.0.2 2.0.3 2.0.5: A set of Asciidoctor extensions that enable you to add diagrams
 dev-ruby/asciimath 1.0.4 1.0.9 2.0.0 2.0.1: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.4.0 2.4.1: A library for working with abstract syntax trees
