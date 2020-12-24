@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 python3_9 )
 
 inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
@@ -29,6 +29,7 @@ PATCHES=( "${FILESDIR}"/${PN}-1.3.8-static-lib.patch
 	"${FILESDIR}"/${PN}-1.3.8-openssl.patch
 	"${FILESDIR}"/${PN}-1.3.9-python3.patch
 	"${FILESDIR}"/${PN}-1.3.9-python3_byte.patch
+	"${FILESDIR}"/${PN}-1.3.9-python3-check.patch
 	"${FILESDIR}"/${PN}-1.3.9-libressl.patch )
 
 src_prepare() {
