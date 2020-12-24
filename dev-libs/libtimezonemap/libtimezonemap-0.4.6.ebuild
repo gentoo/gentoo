@@ -7,8 +7,7 @@ inherit autotools xdg
 
 DESCRIPTION="GTK+3 timezone map widget"
 HOMEPAGE="https://launchpad.net/timezonemap"
-SRC_URI="mirror://ubuntu/pool/main/libt/${PN}/${PN}_${PV}.tar.gz"
-RESTRICT="mirror"
+SRC_URI="mirror://debian/pool/main/libt/${PN}/${PN}_${PV}.orig.tar.gz -> ${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
