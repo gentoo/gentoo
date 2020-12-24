@@ -29,6 +29,7 @@ PATCHES=( "${FILESDIR}"/${PN}-1.3.8-static-lib.patch
 	"${FILESDIR}"/${PN}-1.3.8-openssl.patch
 	"${FILESDIR}"/${PN}-1.3.9-python3.patch
 	"${FILESDIR}"/${PN}-1.3.9-python3_byte.patch
+	"${FILESDIR}"/${PN}-1.3.9-python3-check.patch
 	"${FILESDIR}"/${PN}-1.3.9-libressl.patch )
 
 src_prepare() {
