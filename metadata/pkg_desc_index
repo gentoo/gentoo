@@ -10795,7 +10795,7 @@ dev-util/qbs 1.12.2 1.14.1 1.15.0 1.16.0: Modern build tool for software project
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.5.1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.5.1 4.5.1-r1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
