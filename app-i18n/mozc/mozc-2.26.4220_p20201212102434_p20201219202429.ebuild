@@ -12,17 +12,17 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/mozc"
 	EGIT_SUBMODULES=(src/third_party/japanese_usage_dictionary)
 else
-	MOZC_GIT_REVISION=""
+	MOZC_GIT_REVISION="9ba59b64d53365c1fe93c1c245b4ec3e35bdadf0"
 	MOZC_DATE="${PV#*_p}"
 	MOZC_DATE="${MOZC_DATE%%_p*}"
 
-	FCITX_MOZC_GIT_REVISION=""
+	FCITX_MOZC_GIT_REVISION="1ea089debc31ff216473369ad71c08318384ee06"
 	FCITX_MOZC_DATE="${PV#*_p}"
 	FCITX_MOZC_DATE="${FCITX_MOZC_DATE#*_p}"
 	FCITX_MOZC_DATE="${FCITX_MOZC_DATE%%_p*}"
 
-	JAPANESE_USAGE_DICTIONARY_GIT_REVISION=""
-	JAPANESE_USAGE_DICTIONARY_DATE=""
+	JAPANESE_USAGE_DICTIONARY_GIT_REVISION="a4a66772e33746b91e99caceecced9a28507e925"
+	JAPANESE_USAGE_DICTIONARY_DATE="20180701040110"
 fi
 
 DESCRIPTION="Mozc - Japanese input method editor"
@@ -41,7 +41,7 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="debug emacs fcitx4 +gui ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
