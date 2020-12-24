@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2020-12-24)
+# Required by qt5
+media-gfx/gmic fftw
+
 # Lars Wendler <polynomial-c@gentoo.org> (2020-08-06)
 # USE="qt5" and USE="libnotify" are mutually exclusive in this package
 # Disable libnotify here to have a better user experience
