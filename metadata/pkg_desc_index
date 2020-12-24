@@ -7948,13 +7948,13 @@ dev-python/blessed 1.17.11 1.17.12: Library for making terminal apps using color
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r2: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 2.0.1: Generate block-diagram image from text
-dev-python/blosc 1.9.2: High performance compressor optimized for binary data
+dev-python/blosc 1.9.2 1.10.0: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 9999: The AWS SDK for Python
-dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 9999: The AWS SDK for Python
+dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8238,7 +8238,7 @@ dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.16.2: A Python Interface to GStreamer
-dev-python/guessit 3.1.1: Python library for guessing information from video filenames
+dev-python/guessit 3.1.1 3.2.0: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
@@ -8274,7 +8274,7 @@ dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.7.0-r2 2.0.0 3.1.0 3.1.1 3.2.0 3.3.0: Read metadata from Python packages
-dev-python/importlib_resources 1.5.0-r2 3.3.0 3.3.1: Read resources from Python packages
+dev-python/importlib_resources 1.5.0-r2 3.3.0 3.3.1 4.0.0: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -8485,7 +8485,7 @@ dev-python/nose2 0.9.1-r1 0.9.2: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 6.1.3 6.1.5: Jupyter Interactive Notebook
+dev-python/notebook 6.1.3 6.1.5 6.1.6: Jupyter Interactive Notebook
 dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0_pre20200207 0.2.13: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
@@ -8953,7 +8953,7 @@ dev-python/rdflib 5.0.0: RDF library containing a triple store and parser/serial
 dev-python/re-assert 1.1.0: Show where your regex match assertion failed
 dev-python/readme_renderer 28.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 2.1.1: Code specific for Read the Docs and Sphinx
-dev-python/rebulk 2.0.1: Python library that performs advanced searches in strings
+dev-python/rebulk 2.0.1 3.0.0: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.5.3: Python client for Redis key-value store
 dev-python/reedsolomon 1.5.4: Pure-Python Reed Solomon encoder/decoder
