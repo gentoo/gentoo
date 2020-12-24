@@ -36,7 +36,7 @@ RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )
-	theano? ( dev-python/theano[${PYTHON_USEDEP}] )
+	theano? ( || ( dev-python/theano-pymc[${PYTHON_USEDEP}] dev-python/theano[${PYTHON_USEDEP}] ) )
 "
 
 src_test() {
