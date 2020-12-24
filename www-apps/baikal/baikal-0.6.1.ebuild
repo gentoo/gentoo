@@ -15,7 +15,7 @@ IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
 DEPEND="app-arch/unzip"
-RDEPEND=">=dev-lang/php-6[ctype,filter,json,pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
+RDEPEND=">=dev-lang/php-6[ctype,filter,json(+),pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
 	virtual/httpd-php"
