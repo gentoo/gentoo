@@ -34,6 +34,13 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+src_prepare() {
+	# Fix hardcoded docdir for fortunes
+	sed -i -e "/^#define R2_FORTUNES/s/radare2/$PF/" \
+		libr/include/r_userconf.h.acr
+	default
+}
+
 src_configure() {
 	# Ideally these should be set by ./configure
 	tc-export CC AR LD OBJCOPY RANLIB

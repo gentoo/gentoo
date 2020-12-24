@@ -34,7 +34,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=("${FILESDIR}"/${PN}-4.5.1-docdir.patch)
+src_prepare() {
+	# Fix hardcoded docdir for fortunes
+	sed -i -e "/^#define R2_FORTUNES/s/radare2/$PF/" \
+		libr/include/r_userconf.h.acr
+	default
+}
 
 src_configure() {
 	# Ideally these should be set by ./configure
