@@ -118,10 +118,6 @@ vlc
 # app-i18n/ibus is not tested
 ibus
 
-# Jeroen Roovers <jer@gentoo.org> (2012-03-08)
-# The crash reporting facility in www-client/firefox does not compile
-crashreporter
-
 # Jeroen Roovers <jer@gentoo.org> (2012-01-04)
 # dvb is untested on HPPA
 dvb

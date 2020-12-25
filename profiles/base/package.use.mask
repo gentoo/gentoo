@@ -34,9 +34,12 @@ x11-libs/colord-gtk doc
 <dev-ml/llvm-ocaml-11 llvm_targets_AVR
 <sys-devel/clang-11 llvm_targets_AVR
 <sys-devel/llvm-11 llvm_targets_AVR
-<dev-ml/llvm-ocaml-12 llvm_targets_ARC llvm_targets_CSKY llvm_targets_VE
-<sys-devel/clang-12 llvm_targets_ARC llvm_targets_CSKY llvm_targets_VE
-<sys-devel/llvm-12 llvm_targets_ARC llvm_targets_CSKY llvm_targets_VE
+<dev-ml/llvm-ocaml-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
+<sys-devel/clang-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
+<sys-devel/llvm-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
+<dev-ml/llvm-ocaml-12.0.0.9999 llvm_targets_CSKY
+<sys-devel/clang-12.0.0.9999 llvm_targets_CSKY
+<sys-devel/llvm-12.0.0.9999 llvm_targets_CSKY
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-03)
 # Doc building seem to be very random without any predictability, 
@@ -85,7 +88,6 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-26)
 # The respective dependencies are masked for removal.
-~dev-db/percona-server-5.7.27.30 test
 sci-geosciences/viking mapnik
 
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
@@ -113,17 +115,12 @@ app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
-<media-tv/mythtv-31 python
 net-libs/zeromq pgm
 sci-geosciences/qgis grass
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # CMake checks will only allow on amd64 & x86
 dev-db/mariadb columnstore
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-01)
-# dev-python/distributed is going to be last rited.
-dev-python/joblib doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-30)
 # Forces downgrade of dev-python/ws4py and its revdeps.
@@ -407,7 +404,6 @@ virtual/mysql embedded
 # Mask client-libs USE to force users to install alternative standard pacakges
 dev-db/mariadb client-libs
 dev-db/mysql client-libs
-dev-db/percona-server client-libs
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
 # This feature is not ready yet pre-2.29-r4, see bug 146882 comment 26
