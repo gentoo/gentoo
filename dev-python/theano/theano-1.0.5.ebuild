@@ -18,6 +18,9 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+# Tests sometimes hang. dev-python/theano-pymc is better. #738416
+# This package is on the way out anyway for that fork.
+RESTRICT="test"
 
 BDEPEND="test? ( dev-python/parameterized[${PYTHON_USEDEP}] )"
 RDEPEND="
