@@ -45,10 +45,6 @@ net-misc/whois xcrypt
 # Unsupported on ppc/ppc64
 www-client/chromium widevine
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
-# Lots of deps for little gain
-dev-python/joblib doc
-
 # Matthias Maier <tamiko@gentoo.org> (2020-03-13)
 # requires media-libs/sdl2-image, which is not yet keyworded
 app-emulation/qemu sdl-image
@@ -225,11 +221,8 @@ gnome-extra/sushi office
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-24, 2015-04-01)
 # test dependencies need keywording
-dev-haskell/binary test
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-haskell/text test
-dev-haskell/vector test
 dev-util/bnfc test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-17)
