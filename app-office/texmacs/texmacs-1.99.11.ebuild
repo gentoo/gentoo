@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils xdg-utils qmake-utils
+inherit cmake-utils xdg-utils
 
 MY_P=${P/tex/TeX}-src
 
