@@ -1,11 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-
 inherit python-any-r1 qmake-utils waf-utils
 
 DESCRIPTION="Simple but fully featured LV2 host for Jack"
@@ -35,15 +34,14 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS NEWS README.md )
 
-PATCHES=(
-	"${FILESDIR}/${P}-qt-5.7.0.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-qt-5.7.0.patch" )
 
 src_configure() {
 	use qt5 && export PATH="$(qt5_get_bindir):${PATH}"
