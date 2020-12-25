@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtwidgets:5 dev-qt/qtxml:5 x11-terms/rxvt-unicode[xft] media-gfx/imagemagick x11-libs/libXft media-libs/fontconfig
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtwidgets:5 dev-qt/qtxml:5 x11-terms/rxvt-unicode[xft] media-gfx/imagemagick media-libs/fontconfig x11-libs/libXft
 DESCRIPTION=GUI configuration tool for the rxvt-unicode terminal emulator
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/daedreth/URXVTConfig
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
@@ -9,4 +9,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtsingleappl
 SLOT=0
 SRC_URI=https://github.com/daedreth/URXVTConfig/archive/1.0.tar.gz -> urxvtconfig-1.0.tar.gz
 _eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7902feb00f2404fff1ec537e67de45cc
+_md5_=4c5442b5ba0cefd3194f0ab7b311e9b5
