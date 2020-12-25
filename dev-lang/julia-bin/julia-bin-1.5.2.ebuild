@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}"
 RESTRICT="strip"
 
 QA_PREBUILT="*"
+QA_SONAME="*"
 
 S="${WORKDIR}/${MY_P}"
 
