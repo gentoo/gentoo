@@ -306,12 +306,6 @@ media-video/ffmpeg gme ssh
 # Missing keywords
 net-misc/networkmanager teamd
 
-# Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23)
-# test dependencies need keywording
-dev-haskell/binary test
-dev-haskell/text test
-dev-haskell/vector test
-
 # Christoph Junghans <junghans@gentoo.org> (2014-07-21)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf

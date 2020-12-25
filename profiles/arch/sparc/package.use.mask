@@ -357,11 +357,8 @@ media-libs/clutter-gtk wayland
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23, 2015-04-01)
 # test dependencies need keywording
-dev-haskell/binary test
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-haskell/text test
-dev-haskell/vector test
 
 # Pacho Ramos <pacho@gentoo.org> (2014-10-03)
 # Missing keywords, bug #524352
@@ -440,7 +437,7 @@ media-libs/phonon gstreamer vlc
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 systemtap tcmalloc jemalloc
 >=dev-db/mariadb-5.5 systemtap tcmalloc jemalloc
->=dev-db/percona-server-5.5 systemtap tcmalloc jemalloc
+>=dev-db/percona-server-5.5 tcmalloc jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit
