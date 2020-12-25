@@ -57,11 +57,6 @@ sci-libs/indilib websocket
 # instead if you can.
 dev-perl/DBD-mysql mariadb
 
-# Michał Górny <mgorny@gentoo.org> (2019-07-31)
-# Freshly added test dependency for a test-restricted package.  Mask
-# the flag to avoid stabilizing it for the time being.
-dev-python/aiohttp-socks test
-
 # Kent Fredric <kentnl@gentoo.org> (2019-07-30)
 # These features require dev-perl/GD, which currently can't be
 # considered stable due to serious defects upstream. Bug #661634
@@ -77,12 +72,6 @@ media-video/vdrsync dvdr
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
 # sci-libs/dcmtk is not stable
 media-libs/openimageio dicom
-
-# Bernd Waibel <waebbl@gmail.com> (2019-05-22)
-# Marked experimental, needs build and runtime testing. Due to non-
-# available licenses for arnold and maya I can not test these addons.
-# Build and functional tests and reports on issues are appreciated!
-media-gfx/alembic arnold maya
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-05-10)
 # needs llvm slots which are not stable #678908

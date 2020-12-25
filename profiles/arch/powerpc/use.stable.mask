@@ -15,7 +15,6 @@ colord
 devhelp
 dia
 eds
-epiphany
 evo
 gnome-online-accounts
 gnome-shell
