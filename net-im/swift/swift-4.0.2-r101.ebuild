@@ -60,8 +60,8 @@ PATCHES=(
 )
 
 pkg_setup() {
+	lua-single_pkg_setup
 	python-any-r1_pkg_setup
-	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -137,6 +137,9 @@ src_configure() {
 		libnatpmp_force_bundled="false"
 		link="$(tc-getCXX)"
 		linkflags="${LDFLAGS}"
+		$(usex lua "lua_includedir=$(lua_get_include_dir)" '')
+		$(usex lua "lua_libdir=${EPREFIX}/usr/$(get_libdir)" '')
+		$(usex lua "lua_libname=$(basename -s '.so' $(lua_get_shared_lib))" '')
 		lua_includedir="$(lua_get_include_dir)"
 		lua_libdir="${EPREFIX}/usr/$(get_libdir)"
 		lua_libname="$(basename -s '.so' $(lua_get_shared_lib))"
