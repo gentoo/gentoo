@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit lua-single meson mono-env python-single-r1 xdg
 
@@ -61,6 +61,10 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-python38.patch" #758758
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
