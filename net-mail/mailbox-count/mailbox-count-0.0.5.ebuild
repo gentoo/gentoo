@@ -24,10 +24,7 @@ RDEPEND="
 	>=dev-haskell/missingh-1.2
 	>=dev-haskell/tasty-0.8
 	>=dev-haskell/tasty-hunit-0.8
-	|| ( >=dev-lang/ghc-8.0
-		 ( >=dev-lang/ghc-7.10.1
-		   <dev-lang/ghc-8.0
-		   <dev-haskell/semigroups-0.18.2 ) )
+	>=dev-lang/ghc-8.0
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.16.0
