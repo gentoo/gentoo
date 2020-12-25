@@ -25,6 +25,8 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.98-libressl-compatibility.patch"
 
+	"${FILESDIR}/${PN}-0.100-respect-AR.patch"
+
 	# Upstream patches (can usually be removed with next version bump)
 	"${FILESDIR}"/${P}-no_Werror.patch
 )
