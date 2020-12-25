@@ -75,6 +75,7 @@ lua_src_install() {
 	local myemakeargs=(
 		DESTDIR="${ED}"
 		LUA_CDIR="$(lua_get_cmod_dir)"
+		LUA_INC="$(lua_get_CFLAGS)"
 		LUA_LDIR="$(lua_get_lmod_dir)"
 	)
 
