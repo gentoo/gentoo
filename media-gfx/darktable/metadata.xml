@@ -10,6 +10,7 @@
 		<name>Markus Meier</name>
 	</maintainer>
 	<use>
+		<flag name="avif">Support importing and exporting AVIF images</flag>
 		<flag name="flickr">Add support for uploading photos to flickr</flag>
 		<flag name="geolocation">Enable geotagging support</flag>
 		<flag name="gmic">Use the G'MIC image-processing framework (<pkg>media-gfx/gmic</pkg>), e.g. to support Colour LUTs compressed using their compression scheme</flag>
