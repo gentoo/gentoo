@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure install
-DEPEND=dev-lang/tcl:0= dev-libs/openssl:0= tk? ( dev-lang/tk:0= )
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-lang/tcl:0= dev-libs/openssl:0= tk? ( dev-lang/tk:0= ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=TLS OpenSSL extension to Tcl
 EAPI=6
 HOMEPAGE=http://tls.sourceforge.net/
@@ -10,5 +10,5 @@ RDEPEND=dev-lang/tcl:0= dev-libs/openssl:0= tk? ( dev-lang/tk:0= )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://core.tcl.tk/tcltls/uv/tcltls-1.7.22.tar.gz
-_eclasses_=desktop	8f9bfcc33705104f56748d9dedb3177a	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	0a83d4ccf28a70ddf61e7073c96e515a	estack	d780995dc525ff7e6a2c4c043ffec242	eutils	69bd92aa099f708425db9f1f01d61213	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=3786e657bc5bc4cf7ab0830c1a03f11d
+_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=94fc8558df94ea259657c1d6e981a548
