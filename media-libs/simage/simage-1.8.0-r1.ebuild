@@ -7,7 +7,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="Image and video texturing library"
 HOMEPAGE="https://github.com/coin3d/simage/"
-SRC_URI="https://github.com/coin3d/simage/archive/${P}.tar.gz"
+SRC_URI="https://github.com/coin3d/simage/releases/download/${P}/${P}-src.tar.gz"
 
 LICENSE="BSD-1"
 KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
@@ -36,7 +36,7 @@ DEPEND="
 	test? ( media-libs/libsndfile )
 "
 
-S="${WORKDIR}/${PN}-${P}"
+S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.1-cmake-automagic-deps.patch"
@@ -63,13 +63,13 @@ src_configure() {
 		-DSIMAGE_GIF_SUPPORT=$(usex gif)
 		-DSIMAGE_JASPER_SUPPORT=OFF
 		-DSIMAGE_JPEG_SUPPORT=$(usex jpeg)
-		-DSIMAGE_LIBSNDFILE_SUPPORT=$(usex sndfile)
 		-DSIMAGE_MPEG2ENC_SUPPORT=ON
 		-DSIMAGE_OGGVORBIS_SUPPORT=$(usex vorbis)
 		-DSIMAGE_PIC_SUPPORT=ON
 		-DSIMAGE_PNG_SUPPORT=$(usex png)
 		-DSIMAGE_QIMAGE_SUPPORT=$(usex qt5)
 		-DSIMAGE_QUICKTIME_SUPPORT=OFF # OS X only
+		-DSIMAGE_SNDFILE_SUPPORT=$(usex sndfile)
 		-DSIMAGE_TIFF_SUPPORT=$(usex tiff)
 		-DSIMAGE_USE_QT5=ON
 		-DSIMAGE_RGB_SUPPORT=ON
