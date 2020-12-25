@@ -22,7 +22,7 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit estack toolchain-funcs
+inherit toolchain-funcs
 
 # @FUNCTION: _qmake-utils_banned_func
 # @INTERNAL
@@ -109,38 +109,11 @@ qt5_get_plugindir() {
 }
 
 # @FUNCTION: qmake-utils_find_pro_file
-# @RETURN: zero or one qmake .pro file names
 # @INTERNAL
 # @DESCRIPTION:
-# Outputs a project file name that can be passed to eqmake.
-#   0 *.pro files found --> outputs null string;
-#   1 *.pro file found --> outputs its name;
-#   2 or more *.pro files found --> if "${PN}.pro" or
-#       "$(basename ${S}).pro" are there, outputs one of them.
+# Banned.
 qmake-utils_find_pro_file() {
-	local dir_name=$(basename "${S}")
-
-	# set nullglob to avoid expanding *.pro to the literal
-	# string "*.pro" when there are no matching files
-	eshopts_push -s nullglob
-	local pro_files=(*.pro)
-	eshopts_pop
-
-	case ${#pro_files[@]} in
-	0)
-		: ;;
-	1)
-		echo "${pro_files}"
-		;;
-	*)
-		for pro_file in "${pro_files[@]}"; do
-			if [[ ${pro_file%.pro} == ${dir_name} || ${pro_file%.pro} == ${PN} ]]; then
-				echo "${pro_file}"
-				break
-			fi
-		done
-		;;
-	esac
+	_qmake-utils_banned_func
 }
 
 # @FUNCTION: eqmake4
