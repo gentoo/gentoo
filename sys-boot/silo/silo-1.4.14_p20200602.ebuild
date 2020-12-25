@@ -42,7 +42,7 @@ _emake() {
 		STRIP="$(tc-getSTRIP)" \
 		NM="$(tc-getNM)" \
 		LD="$(tc-getLD) -m elf32_sparc" \
-		TILO_ONLY=$(usex tilo-only yes no)
+		TILO_ONLY=$(usex tilo-only yes no) \
 		\
 		"$@"
 }
@@ -50,7 +50,7 @@ _emake() {
 src_compile() {
 	filter-flags "-fstack-protector"
 
-	_emake $(usex tilo-only '-C tilo' '')
+	_emake
 }
 
 src_install() {
