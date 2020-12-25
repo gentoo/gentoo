@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit autotools
 
 MY_P="tcl${P}"
 
@@ -25,6 +25,13 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
