@@ -8,31 +8,35 @@ inherit cmake xdg
 DESCRIPTION="GPS mapping utility"
 HOMEPAGE="https://github.com/Maproom/qmapshack/wiki"
 SRC_URI="https://github.com/Maproom/${PN}/archive/V_${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
-RDEPEND="dev-qt/qtwebengine:5[widgets]
-	dev-qt/qtdeclarative:5[widgets]
-	dev-qt/qtprintsupport:5
-	dev-qt/qtdbus:5
-	dev-qt/qttest:5
-	dev-qt/designer:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsql:5
-	dev-qt/qthelp:5
+
+RDEPEND="
 	dev-libs/quazip
+	dev-qt/designer:5
+	dev-qt/qtdbus:5
+	dev-qt/qtdeclarative:5[widgets]
+	dev-qt/qthelp:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsql:5
+	dev-qt/qttest:5
+	dev-qt/qtwebengine:5[widgets]
 	>=sci-geosciences/routino-3.1.1
+	sci-libs/alglib
 	sci-libs/gdal
 	>=sci-libs/proj-6.0.0:=
-	sci-libs/alglib"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}"/${PN}-V_${PV}
 
 src_prepare() {
-	eapply "${S}"/FindPROJ4.patch
+	eapply FindPROJ4.patch
 	cmake_src_prepare
 	xdg_environment_reset
 }
