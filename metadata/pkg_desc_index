@@ -5129,7 +5129,7 @@ dev-lang/python-exec 2.4.6-r2 2.4.6-r3: Python script wrapper
 dev-lang/qu-prolog 10.4 10.5 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
-dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6 2.6.6-r1 2.6.6-r2 2.7.1 2.7.1-r1 2.7.1-r2 2.7.2: An object-oriented scripting language
+dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.7.2: An object-oriented scripting language
 dev-lang/rust 1.46.0 1.47.0-r2 1.48.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
@@ -14898,7 +14898,7 @@ net-mail/mailman 3.3.1-r1 3.3.2: Mailman -- the GNU mailing list manager
 net-mail/mailman-meta 3: Meta ebuild for GNU Mailman 3
 net-mail/mailmanclient 3.3.1: Python bindings for the GNU Mailman 3 REST API
 net-mail/mailshears 0.0.4: Mangle your mail garden
-net-mail/mailutils 3.8 3.9 3.10: A useful collection of mail servers, clients, and filters
+net-mail/mailutils 3.8 3.9 3.10 3.11: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.24: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r2: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
