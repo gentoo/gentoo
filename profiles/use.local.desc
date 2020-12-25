@@ -3555,7 +3555,6 @@ kde-frameworks/kcompletion:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
-kde-frameworks/kdewebkit:designer - Build plugins for dev-qt/designer
 kde-frameworks/kfilemetadata:epub - Enable support for reading EPUB ebook metadata
 kde-frameworks/kfilemetadata:office - Enable support for reading ODF and OOXML metadata
 kde-frameworks/kiconthemes:designer - Build plugins for dev-qt/designer

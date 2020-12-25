@@ -12173,7 +12173,6 @@ kde-frameworks/kded 5.74.0 5.77.0: Central daemon of KDE workspaces
 kde-frameworks/kdelibs4support 5.74.0 5.77.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.74.0 5.77.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
 kde-frameworks/kdesu 5.74.0 5.77.0: Framework to handle super user actions
-kde-frameworks/kdewebkit 5.74.0 5.76.0: Framework providing KDE integration of QtWebKit
 kde-frameworks/kdnssd 5.74.0 5.77.0: Framework for network service discovery using Zeroconf
 kde-frameworks/kdoctools 5.74.0 5.77.0: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.74.0 5.77.0: Framework for converting text emoticons to graphical representations
@@ -12194,8 +12193,6 @@ kde-frameworks/kitemmodels 5.74.0 5.77.0: Framework providing data models to hel
 kde-frameworks/kitemviews 5.74.0-r1 5.77.0: Framework providing additional widgets for item models
 kde-frameworks/kjobwidgets 5.74.0 5.77.0: Framework providing assorted widgets for showing the progress of jobs
 kde-frameworks/kjs 5.74.0 5.77.0: ECMAScipt compatible parser and engine
-kde-frameworks/kjsembed 5.74.0 5.76.0: Framework binding JavaScript objects to QObjects
-kde-frameworks/kmediaplayer 5.74.0 5.76.0: Framework providing a common interface for KParts that can play media files
 kde-frameworks/knewstuff 5.74.0 5.77.0-r1: Framework for downloading and sharing additional application data
 kde-frameworks/knotifications 5.74.0 5.77.0: Framework for notifying the user of an event
 kde-frameworks/knotifyconfig 5.74.0 5.77.0: Framework for configuring desktop notifications
@@ -12216,7 +12213,6 @@ kde-frameworks/kwayland 5.74.0 5.77.0: Qt-style client and server library wrappe
 kde-frameworks/kwidgetsaddons 5.74.0-r1 5.77.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.74.0 5.77.0: Framework providing access to properties and features of the window manager
 kde-frameworks/kxmlgui 5.74.0-r2 5.77.0: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/kxmlrpcclient 5.74.0 5.76.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.74.0 5.77.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.74.0 5.77.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.74.0 5.77.0: Oxygen SVG icon theme
@@ -14077,7 +14073,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.2.7 0.3.10 0.3.13 0.3.15 0.3.17 0.3.18: Multimedia processing graphs
+media-video/pipewire 0.2.7 0.3.10 0.3.18: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
@@ -14745,7 +14741,6 @@ net-libs/libircclient 1.10: Small but powerful library implementing the client-s
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.2.0-r1 20.12.0: BitTorrent library based on KDE Frameworks
-net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
