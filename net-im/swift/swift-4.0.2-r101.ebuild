@@ -140,9 +140,6 @@ src_configure() {
 		$(usex lua "lua_includedir=$(lua_get_include_dir)" '')
 		$(usex lua "lua_libdir=${EPREFIX}/usr/$(get_libdir)" '')
 		$(usex lua "lua_libname=$(basename -s '.so' $(lua_get_shared_lib))" '')
-		lua_includedir="$(lua_get_include_dir)"
-		lua_libdir="${EPREFIX}/usr/$(get_libdir)"
-		lua_libname="$(basename -s '.so' $(lua_get_shared_lib))"
 		max_jobs="no"
 		optimize="no"
 		qt="${T}/qt"
