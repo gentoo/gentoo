@@ -180,17 +180,17 @@ src_compile() {
 	# Julia accesses /proc/self/mem on Linux
 	addpredict /proc/self/mem
 
-	emake julia-release \
+	emake \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)"
 	pax-mark m "$(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')"
-	emake
 }
 
 src_install() {
 	emake install \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" \
+		BUNDLE_DEBUG_LIBS=0
 
 	if ! use system-llvm ; then
 		cp "${S}/usr/lib/libLLVM"-?jl.so "${ED}/usr/$(get_libdir)/julia/" || die
@@ -204,7 +204,7 @@ src_install() {
 	rmdir "${ED}"/usr/share/doc/julia || die
 
 	# The appdata directory is deprecated.
-	mv usr/share/{appdata,metainfo}/ || die
+	mv "${ED}"/usr/share/{appdata,metainfo}/ || die
 }
 
 pkg_postinst() {
