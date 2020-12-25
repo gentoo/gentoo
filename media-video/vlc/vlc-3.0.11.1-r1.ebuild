@@ -3,8 +3,6 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..2} )
-
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
@@ -23,7 +21,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
 fi
-inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
+inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -49,7 +47,6 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	lua? ( ${LUA_REQUIRED_USE} )
 	skins? ( qt5 truetype X xml )
 	ssl? ( gcrypt )
 	vaapi? ( ffmpeg X )
@@ -58,7 +55,6 @@ REQUIRED_USE="
 BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	lua? ( ${LUA_DEPS} )
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/yasm )
 "
@@ -137,7 +133,7 @@ RDEPEND="
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
 	live? ( media-plugins/live:= )
-	lua? ( ${LUA_DEPS} )
+	lua? ( >=dev-lang/lua-5.1:0= )
 	mad? ( media-libs/libmad )
 	matroska? (
 		>=dev-libs/libebml-1.3.6:=
@@ -184,7 +180,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( net-libs/srt )
+	srt? ( >=net-libs/srt-1.4.2 )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2
@@ -232,18 +228,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.8-qt-5.15.patch # TODO: upstream
-	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.11.1-srt-1.4.2.patch # bug 758062
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
-
-pkg_setup() {
-	if use lua; then
-		lua-single_pkg_setup
-	fi
-}
 
 src_prepare() {
 	xdg_src_prepare # bug 608256
