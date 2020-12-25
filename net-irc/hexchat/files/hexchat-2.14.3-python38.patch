@@ -1,0 +1,28 @@
+From 5deb69591992d4fede9090b60d3dc847612a4d60 Mon Sep 17 00:00:00 2001
+From: Patrick Griffis <tingping@tingping.se>
+Date: Wed, 11 Mar 2020 11:07:56 -0700
+Subject: [PATCH] build: Better support building against python 3.8+
+
+Closes #2441
+---
+ plugins/python/meson.build | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/python/meson.build b/plugins/python/meson.build
+index 2ad5128e5..eb762134a 100644
+--- a/plugins/python/meson.build
++++ b/plugins/python/meson.build
+@@ -1,6 +1,12 @@
+ python_opt = get_option('with-python')
+ if python_opt.startswith('python3')
+-  python_dep = dependency(python_opt, version: '>= 3.3')
++  # Python 3.8 introduced a new -embed variant
++  if not python_opt.endswith('-embed')
++    python_dep = dependency(python_opt + '-embed', version: '>= 3.3', required: false)
++  endif
++  if not python_dep.found()
++    python_dep = dependency(python_opt, version: '>= 3.3')
++  endif
+ else
+   python_dep = dependency(python_opt, version: '>= 2.7')
+ endif
