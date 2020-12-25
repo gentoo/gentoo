@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_COMMIT=41efdba45afa770db99bc7484a8ad340ccc597d2
-inherit desktop toolchain-funcs qmake-utils xdg-utils
+inherit desktop toolchain-funcs xdg-utils
 
 DESCRIPTION="A multi-system game emulator formerly known as bsnes"
 HOMEPAGE="https://byuu.org/emulation/higan/ https://gitlab.com/higan/higan"
