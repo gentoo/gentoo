@@ -67,6 +67,8 @@ src_compile() {
 		CXX="$(tc-getCXX) -c" \
 		LD="$(tc-getLD)" \
 		LDOUT="${LDFLAGS} -o" \
+		SHLIB_LD="$(tc-getCC) -shared" \
+		SHLIB_LDXX="$(tc-getCXX) -shared" \
 		${CONFIG_PLUGIN}
 }
 
