@@ -70,7 +70,6 @@ src_configure() {
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		--linker="$(tc-getCC)"
 		--lua-version="$(usex lua_single_target_luajit '5.1' $(ver_cut 1-2 $(lua_get_version)))"
-		--lua-version="$(ver_cut 1-2 $(lua_get_version))"
 		--no-example-certs
 		--ostype="linux"
 		--prefix="${EPREFIX}/usr"
