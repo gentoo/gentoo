@@ -1,0 +1,13 @@
+--- a/configure.ac	2020-12-25 11:05:31.312433864 +0100
++++ b/configure.ac	2020-12-25 11:05:42.692248123 +0100
+@@ -247,10 +247,8 @@
+ 
+ dnl Enable a stable ABI
+ DC_SETUP_STABLE_API([${srcdir}/tcltls.vers], tcltls.syms)
+-if test "$tcltls_debug" = 'true'; then
+ 	WEAKENSYMS=':'
+ 	REMOVESYMS=':'
+-fi
+ 
+ dnl Produce output
+ AC_OUTPUT(Makefile pkgIndex.tcl tcltls.syms)
