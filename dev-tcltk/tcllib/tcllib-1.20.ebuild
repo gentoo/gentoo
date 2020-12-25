@@ -30,6 +30,11 @@ HTML_DOCS=( idoc/www )
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
+src_prepare() {
+	default
+	rm modules/httpd/httpd.test || die
+}
+
 src_test() {
 	USER= virtx emake test_batch
 }
