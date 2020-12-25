@@ -198,6 +198,9 @@ src_install() {
 	rmdir "${ED}"/usr/etc || die
 	mv "${ED}"/usr/share/doc/julia/html "${ED}"/usr/share/doc/"${PF}" || die
 	rmdir "${ED}"/usr/share/doc/julia || die
+
+	# The appdata directory is deprecated.
+	mv usr/share/{appdata,metainfo}/ || die
 }
 
 pkg_postinst() {
