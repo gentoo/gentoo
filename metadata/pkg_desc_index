@@ -7948,7 +7948,7 @@ dev-python/blessed 1.17.11 1.17.12: Library for making terminal apps using color
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r2: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 2.0.1: Generate block-diagram image from text
-dev-python/blosc 1.9.2 1.10.0: High performance compressor optimized for binary data
+dev-python/blosc 1.9.2 1.10.0 1.10.1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
@@ -8230,7 +8230,7 @@ dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0-r1: Python based U2F host library
 dev-python/googleapis-common-protos 1.51.0 1.52.0: python classes generated from the common protos in the googleapis repository
 dev-python/graph-tool 2.35 9999: An efficient python module for manipulation and statistical analysis of graphs
-dev-python/graphviz 0.15: Simple Python interface for Graphviz
+dev-python/graphviz 0.15 0.16: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.17: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
 dev-python/grpcio 1.32.0-r1: High-performance RPC framework (python libraries)
@@ -8262,7 +8262,7 @@ dev-python/humanize 3.1.0 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.41.3 5.41.5 5.43.3: A library for property based testing
+dev-python/hypothesis 5.24.4 5.41.3 5.41.5 5.43.3 5.43.4: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8274,7 +8274,7 @@ dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 1.7.0-r2 2.0.0 3.1.0 3.1.1 3.2.0 3.3.0: Read metadata from Python packages
-dev-python/importlib_resources 1.5.0-r2 3.3.0 3.3.1 4.0.0: Read resources from Python packages
+dev-python/importlib_resources 1.5.0-r2 3.3.0 3.3.1 4.0.0 4.1.0: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -8295,7 +8295,7 @@ dev-python/ipykernel 5.3.4 5.3.4-r1 5.4.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0 6.3.0-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 7.16.1 7.19.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
-dev-python/ipywidgets 7.5.1 7.5.1-r1: IPython HTML widgets for Jupyter
+dev-python/ipywidgets 7.5.1 7.5.1-r1 7.6.0: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
 dev-python/iso8601 0.1.12-r1: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
@@ -8691,7 +8691,7 @@ dev-python/pyflakes 2.2.0: Passive checker for Python programs
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0: Python bindings for libgit2
@@ -8923,7 +8923,7 @@ dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mo
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2020.4 2020.4.3 2020.4.4 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
-dev-python/pytz 2020.4: World timezone definitions for Python
+dev-python/pytz 2020.4 2020.5: World timezone definitions for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2-r1 1.1.0: USB support for Python
@@ -9060,7 +9060,7 @@ dev-python/soupsieve 2.0.1 2.1.0: A modern CSS selector implementation for Beaut
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.2.1 3.3.1 3.4.0: Python documentation generator
+dev-python/sphinx 2.4.4 3.2.1 3.3.1 3.4.0 3.4.1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9173,7 +9173,7 @@ dev-python/treq 20.9.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
 dev-python/tvdb_api 2.0-r1: Python interface to thetvdb.com API
-dev-python/twine 3.2.0: Collection of utilities for publishing packages on PyPI
+dev-python/twine 3.2.0 3.3.0: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 19.10.0 20.3.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
@@ -9255,7 +9255,7 @@ dev-python/xdoctest 0.15.0: A rewrite of Python's builtin doctest module but wit
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.2.5 1.3.1 1.4.0: An XML Schema validator and decoder
+dev-python/xmlschema 1.2.5 1.3.1 1.4.0 1.4.1: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
