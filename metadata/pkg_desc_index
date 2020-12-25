@@ -11085,7 +11085,7 @@ games-arcade/jazz2-data 0-r20200327: Jazz Jackrabbit 2 data files imported for g
 games-arcade/jumpnbump 1.50-r2: A funny multiplayer game about cute little fluffy bunnies
 games-arcade/jvgs 0.5-r1 0.5-r100: An open-source platform game with a sketched and minimalistic look
 games-arcade/kajaani-kombat 0.7-r1: A rampart-like game set in space
-games-arcade/kobodeluxe 0.5.1-r1: An SDL port of xkobo, a addictive space shoot-em-up
+games-arcade/kobodeluxe 0.5.1-r2: An SDL port of xkobo, a addictive space shoot-em-up
 games-arcade/komi 1.04-r1: Komi the Space Frog - simple SDL game of collection
 games-arcade/late 0.1.0-r1: A game, similar to Barrack by Ambrosia Software
 games-arcade/lbreakout 010315-r1: Breakout clone written with the SDL library
