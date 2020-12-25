@@ -38,7 +38,10 @@ BDEPEND="
 	test? ( dev-libs/unittest++ )
 "
 
-PATCHES=( ${FILESDIR}/${PN}-0.2.5-gcc10.patch )
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+	"${FILESDIR}/${P}-no-hwaccel-testfix.patch"
+)
 
 check_compiler() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then

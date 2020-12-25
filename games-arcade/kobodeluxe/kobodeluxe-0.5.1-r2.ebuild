@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit desktop
 
 MY_P="KoboDeluxe-${PV/_/}"
@@ -22,17 +22,20 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc29.patch
+	"${FILESDIR}"/${P}-glibc2.10.patch
+	"${FILESDIR}"/${P}-clang.patch
+)
+
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd "${S}" || die
 	unpack ./icons.tar.gz
 }
 
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-glibc29.patch \
-		"${FILESDIR}"/${P}-glibc2.10.patch
 	# Fix paths
 	sed -i \
 		-e 's:\$(datadir)/kobo-deluxe:$(datadir)/kobodeluxe:' \
