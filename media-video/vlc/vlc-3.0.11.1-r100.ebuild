@@ -239,6 +239,12 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	if use lua; then
+		lua-single_pkg_setup
+	fi
+}
+
 src_prepare() {
 	xdg_src_prepare # bug 608256
 
