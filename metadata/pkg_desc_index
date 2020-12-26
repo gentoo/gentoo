@@ -12423,7 +12423,7 @@ mail-mta/msmtp 1.8.7-r1 1.8.12 1.8.13 1.8.14: An SMTP client and SMTP plugin for
 mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
-mail-mta/opensmtpd 6.7.1_p1: Lightweight but featured SMTP daemon from OpenBSD
+mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.6 3.5.7 3.5.8 3.6_pre20201212: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
