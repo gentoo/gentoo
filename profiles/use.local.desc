@@ -3784,7 +3784,6 @@ mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DN
 mail-filter/opendmarc:reports - Install the reports binaries: expire, import, reports, params
 mail-filter/opendmarc:spf - Use the mail-filter/libspf2 for Sender Policy Framework checking
 mail-filter/postfwd:tools - Install additional tools for testing postfwd
-mail-filter/postgrey:targrey - Enables the targrey patch
 mail-filter/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
 mail-filter/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
 mail-filter/pyzor:mysql - Enables the MySQL back-end database engine for pyzord through dev-python/mysqlclient.
