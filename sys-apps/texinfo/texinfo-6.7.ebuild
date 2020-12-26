@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls +standalone static"
 
 RDEPEND="
@@ -36,7 +36,6 @@ src_prepare() {
 	default
 
 	if use prefix ; then
-		eapply -p0 "${FILESDIR}"/${PN}-4.13-mint.patch
 		sed -i -e '1c\#!/usr/bin/env sh' util/texi2dvi util/texi2pdf || die
 		touch doc/{texi2dvi,texi2pdf,pdftexi2dvi}.1
 	fi
