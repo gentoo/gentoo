@@ -51,7 +51,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads minimal"
@@ -141,8 +141,6 @@ pkg_setup() {
 		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
 		*-solaris*)   osname="solaris" ;;
-		*-interix*)   osname="interix" ;;
-		*-aix*)       osname="aix" ;;
 		*-cygwin*)    osname="cygwin" ;;
 		*)            osname="linux" ;;
 	esac
@@ -343,6 +341,10 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fix install_name (soname) not to reference $D
 		sed -i -e '/install_name `pwd/s/`pwd`/\\$(shrpdir)/' Makefile.SH || die
+
+		# Upstreamed, but not in this version.
+		# Need to recognise macOS 11 / 10.16. #757249
+		eapply "${FILESDIR}/${PN}-5.30.3-darwin-macos11.patch"
 	fi
 
 	default
