@@ -1,0 +1,15 @@
+Title: Most stable hppa keywords removed
+Author: Matt Turner <mattst88@gentoo.org>
+Posted: 2020-12-26
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Keyword: hppa
+
+The Gentoo/HPPA team no longer thinks that the time invested in
+package stabilization is warranted for the small number of users on
+HPPA. As a result, we will drop most "hppa" keywords to "~hppa" on
+2020-12-31. Around 850 packages will retain their stable keywords.
+
+Users need not make any changes to their systems—other than perhaps
+adding some entries to their package.accept_keywords file. The
+Gentoo/HPPA team has no plans to remove support for the architecture.
