@@ -42,7 +42,7 @@ esac
 LICENSE="GPL-3"
 SLOT="0/8"  # subslot matches SONAME major
 [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs +unicode utils"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[static-libs?,unicode?,${MULTILIB_USEDEP}]"
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch #385091
 	"${FILESDIR}"/${PN}-7.0-headers.patch
 	"${FILESDIR}"/${PN}-8.0-headers.patch
+	"${FILESDIR}"/${PN}-8.0-darwin-shlib-versioning.patch
 )
 
 # Needed because we don't want the patches being unpacked
@@ -168,9 +169,17 @@ multilib_src_install_all() {
 pkg_preinst() {
 	# bug #29865
 	# Reappeared in #595324 with paludis so keeping this for now...
-	preserve_old_lib /$(get_libdir)/lib{history,readline}.so.{4,5,6,7}
+	preserve_old_lib \
+		/$(get_libdir)/lib{history,readline}$(get_libname 4) \
+		/$(get_libdir)/lib{history,readline}$(get_libname 5) \
+		/$(get_libdir)/lib{history,readline}$(get_libname 6) \
+		/$(get_libdir)/lib{history,readline}$(get_libname 7)
 }
 
 pkg_postinst() {
-	preserve_old_lib_notify /$(get_libdir)/lib{history,readline}.so.{4,5,6,7}
+	preserve_old_lib_notify \
+		/$(get_libdir)/lib{history,readline}$(get_libname 4) \
+		/$(get_libdir)/lib{history,readline}$(get_libname 5) \
+		/$(get_libdir)/lib{history,readline}$(get_libname 6) \
+		/$(get_libdir)/lib{history,readline}$(get_libname 7)
 }
