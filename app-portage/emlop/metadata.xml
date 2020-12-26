@@ -9,7 +9,6 @@
    <email>proxy-maint@gentoo.org</email>
    <name>Proxy Maintainers</name>
 </maintainer>
-<longdescription>A fast, accurate, ergonomic emerge.log parser</longdescription>
 <use>
    <flag name="fish-completion">
       Enable fish completion support.
