@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
+# Depends on deprecated dev-qt/qtwebkit, no maintainer, bug #688852.
+# Masked for removal in 30 days.
+media-video/smtube
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
 # Depends on deprecated dev-qt/qtwebkit, no maintainer, bug #709880.
 # Alternatives: dev-python/weasyprint, xhtml2pdf (not packaged, bug #699356)
 # Masked for removal in 30 days.
