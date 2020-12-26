@@ -9,15 +9,14 @@ GNOME2_EAUTORECONF=yes
 VALA_MIN_API_VERSION="0.40"
 VALA_USE_DEPEND=vapigen
 
-inherit autotools git-r3 gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
+inherit autotools gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-SRC_URI=""
+SRC_URI="mirror://gimp/v2.99/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/3"
-KEYWORDS=""
+#KEYWORDS="~amd64"
 
 IUSE="aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
@@ -37,10 +36,10 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.84[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.78[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.28:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.26:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.10.10
 	>=media-libs/harfbuzz-2.6.5
 	>=media-libs/lcms-2.9:2
@@ -54,7 +53,7 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.40.0:2
 	>=x11-libs/gtk+-3.24.16:3
 	x11-libs/libXcursor
-	>=x11-libs/pango-1.44.7
+	>=x11-libs/pango-1.42.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	aqua? ( >=x11-libs/gtk-mac-integration-2.0.0 )
@@ -116,6 +115,7 @@ DOCS=( "AUTHORS" "HACKING" "NEWS" "README" "README.i18n" )
 # Bugs 685210 (and duplicate 691070)
 PATCHES=(
 	"${FILESDIR}/${PN}-2.10_fix_test-appdata.patch"
+	"${FILESDIR}/${P}_fix_autoconf-2.70.patch"
 )
 
 pkg_setup() {
@@ -127,18 +127,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	sed -i -e 's/\[gegl_micro_version\], \[27\]/\[gegl_micro_version\], \[26\]/' configure.ac || die
+
 	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
-
-	# Fix checking of gtk-doc.make if USE="-doc" like autogen.sh
-	# USE="doc" is currently broken for gimp-9999 due to absence of appropriate *.m4 file
-	if ! use doc ; then
-		echo "EXTRA_DIST = missing-gtk-doc" > gtk-doc.make
-		sed -i -e "/CLEANFILES/s/^/#/g" \
-		"${S}"/devel-docs/{libgimp,libgimpbase,libgimpcolor,libgimpconfig,libgimpmath,libgimpmodule,libgimpthumb,libgimpwidgets}/Makefile.am || die
-	fi
 
 	gnome2_src_prepare  # calls eautoreconf
 
