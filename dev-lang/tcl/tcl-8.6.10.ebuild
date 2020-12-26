@@ -116,7 +116,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		dosym tclsh${v1} /usr/bin/tclsh
-		dodoc "${SPARENT}"/{ChangeLog*,README,changes}
+		dodoc "${SPARENT}"/{ChangeLog*,README.md,changes}
 	fi
 }
 
