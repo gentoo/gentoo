@@ -51,7 +51,7 @@ src_prepare() {
 	case ${CHOST} in
 	*-cygwin*)
 		# do not use _wopen, is a mingw symbol only
-		sed -i -e '/define WIDECHAR/d' "${S}"/gzguts.h
+		sed -i -e '/define WIDECHAR/d' "${S}"/gzguts.h || die
 		# zlib1.dll is the mingw name, need cygz.dll
 		# cygz.dll is loaded by toolchain, put into subdir
 		sed -i -e 's|zlib1.dll|win32/cygz.dll|' win32/Makefile.gcc || die
