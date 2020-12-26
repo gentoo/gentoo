@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
 RESTRICT="!test? ( test )"
 
@@ -79,7 +79,7 @@ src_configure() {
 		local dbuildflags="-Wl,-rpath,${WORKDIR}/lib"
 		case ${CHOST} in
 			*-darwin*)  dbuildflags=     ;;
-			*-aix*)     dbuildflags=     ;;
+			*-solaris*) dbuildflags="-Wl,-R,${WORKDIR}/lib" ;;
 		esac
 		echo "int main() {}" | \
 			$(tc-getCC) -o x -x c - ${lbuildflags} -pipe >& /dev/null \
@@ -195,8 +195,17 @@ do_configure() {
 src_compile() {
 	# See comments in src_configure.
 	if ! has_version -b "~sys-libs/${P}:0" ; then
-		BUILD_DIR="${WORKDIR}" \
-		do_compile cross -C progs tic
+		# We could possibly merge these two branches but opting to be
+		# conservative when merging some of the Prefix changes.
+
+		if [[ ${CHOST} == *-cygwin* ]] && ! multilib_is_native_abi ; then
+			# We make 'tic$(x)' here, for Cygwin having x=".exe".
+			BUILD_DIR="${WORKDIR}" \
+				 do_compile cross -C progs all PROGS='tic$(x)'
+		else
+			BUILD_DIR="${WORKDIR}" \
+				 do_compile cross -C progs tic
+		fi
 	fi
 
 	multilib-minimal_src_compile
