@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=app-arch/gzip || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) virtual/awk pcf? ( x11-apps/bdftopcf ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=A clean fixed font for the console and X11
+EAPI=7
+HOMEPAGE=http://terminus-font.sourceforge.net/
+IUSE=a-like-o +center-tilde distinct-l otf +pcf +pcf-unicode-only +psf quote ru-dv +ru-g ru-i ru-k X
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=OFL-1.1 GPL-2
+REQUIRED_USE=X? ( pcf )
+SLOT=0
+SRC_URI=mirror://sourceforge/terminus-font/terminus-font-4.49/terminus-font-4.49.tar.gz
+_eclasses_=font	e052246186f22bd6a37797238374613b	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=99d7e7ca3931dc86e8e7b982d245ed8f

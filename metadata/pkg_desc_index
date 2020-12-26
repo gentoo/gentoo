@@ -5069,7 +5069,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.2: Elixir programming language
-dev-lang/erlang 23.0.4 23.1.1 23.1.4 23.1.5 23.2: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.1.1 23.1.4 23.1.5 23.2 23.2.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -10797,7 +10797,7 @@ dev-util/qbs 1.12.2 1.14.1 1.15.0 1.16.0: Modern build tool for software project
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.5.1 4.5.1-r1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.5.1 4.5.1-r1 5.0.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2 7.0.0.12: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
@@ -12649,7 +12649,7 @@ media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface 
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.48-r2: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.48-r2 4.49: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.005 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
@@ -15277,7 +15277,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.12.14 2020.12.22 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.12.14 2020.12.22 2020.12.26 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17461,7 +17461,7 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2 5.10.3: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.83 5.4.83-r1 5.4.84 5.4.85 5.4.85-r1 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.9.16 5.9.16-r1 5.10.1 5.10.1-r1 5.10.1-r2 5.10.2 5.10.2-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.9.246 4.9.247 4.9.248 4.14.209 4.14.211 4.14.212 4.19.160 4.19.162 4.19.163 5.4.80-r1 5.4.82 5.4.83 5.4.84 5.4.85 5.9.12 5.9.13 5.9.14 5.9.15 5.9.16 5.10.0 5.10.1 5.10.1-r1 5.10.2 5.10.3: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
@@ -17477,7 +17477,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p2: Linux kernel fork that includes the pf-ker
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 5.4.72_p20201022 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2 5.10.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.248 4.9.248 4.14.212 4.19.163 5.4.85 5.9.15 5.10.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
