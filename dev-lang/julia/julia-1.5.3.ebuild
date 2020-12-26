@@ -52,8 +52,8 @@ RDEPEND+="
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
-	>=net-libs/mbedtls-2.2
 	net-libs/libssh2
+	>=net-libs/mbedtls-2.2
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
@@ -65,6 +65,7 @@ RDEPEND+="
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
+	sci-mathematics/z3
 	>=sys-libs/libunwind-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
