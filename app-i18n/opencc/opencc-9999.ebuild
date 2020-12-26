@@ -20,13 +20,7 @@ else
 	SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-# OpenCC: Apache-2.0
-# deps/darts-clone: BSD-2
-# deps/gtest-1.11.0: BSD
-# deps/marisa-0.2.5: || ( BSD-2 LGPL-2.1+ )
-# deps/rapidjson-1.1.0: MIT
-# deps/tclap-1.2.2: MIT
-LICENSE="Apache-2.0 BSD-2 MIT || ( BSD-2 LGPL-2.1+ ) test? ( BSD )"
+LICENSE="Apache-2.0"
 SLOT="0/1.1"
 KEYWORDS=""
 IUSE="doc test"
@@ -34,8 +28,15 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )"
-DEPEND=""
-RDEPEND=""
+DEPEND="dev-cpp/tclap
+	dev-libs/darts
+	dev-libs/marisa:0=
+	dev-libs/rapidjson
+	test? (
+		dev-cpp/benchmark
+		dev-cpp/gtest
+	)"
+RDEPEND="dev-libs/marisa:0="
 
 if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/OpenCC-ver.${PV}"
@@ -43,21 +44,32 @@ fi
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-parallel_build.patch"
+	"${FILESDIR}/${PN}-1.1.2-system_libraries.patch"
 )
 
 DOCS=(AUTHORS NEWS.md README.md)
 
 src_prepare() {
+	rm -r deps || die
+
 	cmake_src_prepare
 
 	sed -e "s:\${DIR_SHARE_OPENCC}/doc:share/doc/${PF}:" -i doc/CMakeLists.txt || die
 }
 
 src_configure() {
+	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/rapidjson"
+
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
-		-DBUILD_SHARED_LIBS=ON
+		-DENABLE_BENCHMARK=$(usex test ON OFF)
 		-DENABLE_GTEST=$(usex test ON OFF)
+		-DUSE_SYSTEM_DARTS=ON
+		-DUSE_SYSTEM_GOOGLE_BENCHMARK=ON
+		-DUSE_SYSTEM_GTEST=ON
+		-DUSE_SYSTEM_MARISA=ON
+		-DUSE_SYSTEM_RAPIDJSON=ON
+		-DUSE_SYSTEM_TCLAP=ON
 	)
 
 	cmake_src_configure
