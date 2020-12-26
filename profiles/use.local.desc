@@ -3940,6 +3940,7 @@ media-gfx/blender:valgrind - Add support for memory debugging using dev-util/val
 media-gfx/chafa:tools - Build command-line tools
 media-gfx/cura:usb - Access 3D printers via USB
 media-gfx/curaengine:arcus - Build with support for communication library between internal components for Ultimaker software
+media-gfx/darktable:avif - Support importing and exporting AVIF images
 media-gfx/darktable:flickr - Add support for uploading photos to flickr
 media-gfx/darktable:geolocation - Enable geotagging support
 media-gfx/darktable:gmic - Use the G'MIC image-processing framework (media-gfx/gmic), e.g. to support Colour LUTs compressed using their compression scheme
