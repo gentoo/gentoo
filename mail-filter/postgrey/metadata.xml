@@ -8,9 +8,6 @@
 	<longdescription>
 		Postgrey is a Postfix policy server implementing greylisting developed by David Schweikert at the ISG.EE.
 	</longdescription>
-	<use>
-		<flag name="targrey">Enables the targrey patch</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">schweikert/postgrey</remote-id>
 	</upstream>
