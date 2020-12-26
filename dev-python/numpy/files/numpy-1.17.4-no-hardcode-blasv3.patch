@@ -1,8 +1,8 @@
 diff --git a/numpy/distutils/system_info.py b/numpy/distutils/system_info.py
-index ba2b1f46c..09db18e69 100644
+index 3a6a7b2..320e2bf 100644
 --- a/numpy/distutils/system_info.py
 +++ b/numpy/distutils/system_info.py
-@@ -374,28 +374,7 @@ def get_info(name, notfound_action=0):
+@@ -405,29 +405,7 @@ def get_info(name, notfound_action=0):
        1 - display warning message
        2 - raise error
      """
@@ -28,11 +28,12 @@ index ba2b1f46c..09db18e69 100644
 -          'blis': blis_info,                  # use blas_opt instead
 -          'lapack_mkl': lapack_mkl_info,      # use lapack_opt instead
 -          'blas_mkl': blas_mkl_info,          # use blas_opt instead
-+    cl = {'flame': flame_info,          # use lapack_opt instead
-           'accelerate': accelerate_info,      # use blas_opt instead
-           'x11': x11_info,
-           'fft_opt': fft_opt_info,
-@@ -796,10 +775,7 @@ class system_info(object):
+-          'accelerate': accelerate_info,      # use blas_opt instead
++    cl = {'accelerate': accelerate_info,      # use blas_opt instead
+           'openblas64_': openblas64__info,
+           'openblas64__lapack': openblas64__lapack_info,
+           'openblas_ilp64': openblas_ilp64_info,
+@@ -852,10 +830,7 @@ class system_info:
          return [b for b in [a.strip() for a in libs.split(',')] if b]
  
      def get_libraries(self, key='libraries'):
@@ -44,4 +45,3 @@ index ba2b1f46c..09db18e69 100644
  
      def library_extensions(self):
          c = customized_ccompiler()
- 
