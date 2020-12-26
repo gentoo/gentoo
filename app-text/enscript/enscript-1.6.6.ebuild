@@ -9,7 +9,7 @@ DESCRIPTION="Powerful text-to-postscript converter"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/enscript/enscript.html"
 
-KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 SLOT="0"
 LICENSE="GPL-3"
 IUSE="nls ruby"
@@ -24,6 +24,7 @@ RDEPEND="nls? ( virtual/libintl )"
 src_prepare() {
 	epatch "${FILESDIR}"/enscript-1.6.4-ebuild.st.patch
 	epatch "${FILESDIR}"/enscript-1.6.5.2-php.st.patch
+	epatch "${FILESDIR}"/enscript-1.6.4-fsf-gcc-darwin.patch
 	use ruby && epatch "${FILESDIR}"/enscript-1.6.2-ruby.patch
 	sed -i src/tests/passthrough.test -e 's|tail +2|tail -n +2|g' || die
 	default
