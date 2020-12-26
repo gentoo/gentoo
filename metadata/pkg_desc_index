@@ -8105,7 +8105,7 @@ dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.16-r1: Python Documentation Utilities
 dev-python/docutils-glep 1.2: Gentoo GLEP support for docutils
-dev-python/dogpile-cache 1.1.0 1.1.1: A locking API for expiring values while a single thread generates a new value.
+dev-python/dogpile-cache 1.1.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/doit 0.33.1: Automation tool
 dev-python/doit-py 0.5.0: doit tasks for python stuff
 dev-python/dominate 2.6.0: Library for creating and manipulating HTML documents using an elegant DOM API
@@ -12930,7 +12930,7 @@ media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio app
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/chromaprint 1.4.3 1.5.0: Library implementing a custom algorithm for extracting audio fingerprints
-media-libs/cimg 2.9.0 2.9.1: C++ template image processing toolkit
+media-libs/cimg 2.9.3: C++ template image processing toolkit
 media-libs/clutter 1.26.4: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27-r1: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
