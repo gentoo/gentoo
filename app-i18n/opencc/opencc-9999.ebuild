@@ -42,7 +42,7 @@ if [[ "${PV}" != "9999" ]]; then
 fi
 
 PATCHES=(
-	"${FILESDIR}/${PN}-stop-copy.patch"
+	"${FILESDIR}/${PN}-1.1.0-parallel_build.patch"
 )
 
 DOCS=(AUTHORS NEWS.md README.md)
