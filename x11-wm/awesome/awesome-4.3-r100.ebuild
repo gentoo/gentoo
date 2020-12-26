@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0-convert-path.patch"  # bug #408025
 	"${FILESDIR}/${PN}-xsession.patch"          # bug #408025
 	"${FILESDIR}/${PN}-4.0-cflag-cleanup.patch" # bug #509658
+	"${FILESDIR}/${PN}-4.3-fno-common.patch"    # bug #707262
 )
 
 src_configure() {
