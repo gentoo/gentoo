@@ -52,4 +52,7 @@ src_install() {
 			dodoc -r PARPACK/EXAMPLES/MPI
 		fi
 	fi
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
