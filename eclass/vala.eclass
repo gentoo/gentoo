@@ -102,7 +102,7 @@ vala_best_api_version() {
 	u=$(_vala_use_depend)
 
 	for v in $(vala_api_versions); do
-		has_version "dev-lang/vala:${v}${u}" && echo "${v}" && return
+		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${v}${u}" && echo "${v}" && return
 	done
 }
 
@@ -136,7 +136,7 @@ vala_src_prepare() {
 	fi
 
 	if [[ ${version} ]]; then
-		has_version "dev-lang/vala:${version}" || die "No installed vala:${version}"
+		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${version}" || die "No installed vala:${version}"
 	else
 		version=$(vala_best_api_version)
 		[[ ${version} ]] || die "No installed vala in $(vala_depend)"
