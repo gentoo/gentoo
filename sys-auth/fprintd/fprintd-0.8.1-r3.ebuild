@@ -12,17 +12,19 @@ SRC_URI="https://cgit.freedesktop.org/libfprint/${PN}/snapshot/${MY_PV}.tar.bz2 
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc pam static-libs"
 
 RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
-	sys-auth/libfprint
+	sys-auth/libfprint:0
 	sys-auth/polkit
 	pam? ( sys-libs/pam )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-libs/dbus-glib
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	dev-util/intltool
@@ -33,6 +35,8 @@ S=${WORKDIR}/${MY_PV}
 
 src_prepare() {
 	default
+
+	sed -i 's#@localstatedir@/lib/fprint#@localstatedir@/fprint#g' data/fprintd.service.in || die "sed failed"
 	eautoreconf
 }
 
@@ -50,15 +54,15 @@ src_install() {
 
 	keepdir /var/lib/fprint
 
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	dodoc AUTHORS NEWS README{,.transifex} TODO
 	newdoc pam/README README.pam_fprintd
 	if use doc ; then
-		insinto /usr/share/doc/${PF}/html
-		doins doc/{fprintd-docs,version}.xml
-		insinto /usr/share/doc/${PF}/html/dbus
-		doins doc/dbus/net.reactivated.Fprint.{Device,Manager}.ref.xml
+		docinto html
+		dodoc doc/{fprintd-docs,version}.xml
+		docinto html/dbus
+		dodoc doc/dbus/net.reactivated.Fprint.{Device,Manager}.ref.xml
 	fi
 }
 
