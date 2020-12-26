@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 # gtk-doc files are not available as prebuilt in the tarball
 IUSE="doc +introspection ios kernel_FreeBSD kernel_linux selinux"
 
-COMMON_DEPS="
+DEPEND="
 	>=dev-libs/glib-2.38:2
 	sys-apps/dbus:=
 	introspection? ( dev-libs/gobject-introspection:= )
@@ -34,15 +34,15 @@ COMMON_DEPS="
 		)
 "
 RDEPEND="
-	${COMMON_DEPS}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-devicekit )
 "
-DEPEND="${COMMON_DEPS}
-	doc? ( dev-util/gtk-doc )
-	dev-libs/libxslt
+BDEPEND="
 	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
 "
 
 QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
