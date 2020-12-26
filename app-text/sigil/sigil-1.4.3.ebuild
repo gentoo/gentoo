@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="tk"
 
 inherit cmake python-single-r1 xdg-utils
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+plugins system-mathjax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -36,7 +36,7 @@ RDEPEND="
 	plugins? ( $(python_gen_cond_dep \
 		'dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/cssselect[${PYTHON_USEDEP}]
-		dev-python/cssutils[${PYTHON_USEDEP}]
+		dev-python/dulwich[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]') )
@@ -52,8 +52,6 @@ BDEPEND="
 S="${WORKDIR}/Sigil-${PV}"
 
 DOCS=( ChangeLog.txt README.md )
-
-PATCHES=( "${FILESDIR}/${P}-qt5.15-fix.patch" )
 
 src_configure() {
 	local mycmakeargs=(
