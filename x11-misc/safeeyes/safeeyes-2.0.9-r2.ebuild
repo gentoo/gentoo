@@ -22,7 +22,7 @@ DEPEND="${CDEPEND}
 	>=dev-python/setuptools-38.6.0[${PYTHON_USEDEP}]
 	"
 RDEPEND="${CDEPEND}
-	dev-libs/libappindicator:3
+	dev-libs/libappindicator:3[introspection]
 	dev-python/Babel[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
@@ -30,6 +30,8 @@ RDEPEND="${CDEPEND}
 	dev-python/python-xlib[${PYTHON_USEDEP}]
 	media-sound/alsa-utils
 	x11-apps/xprop
+	x11-libs/gtk+:3[introspection]
+	x11-libs/libnotify[introspection]
 	x11-misc/xprintidle
 	"
 
