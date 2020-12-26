@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 libtool multilib-minimal toolchain-funcs usr-ldscript
+inherit distutils-r1 libtool multilib-minimal usr-ldscript
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
@@ -88,15 +88,15 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -name "*.la" -delete || die
-	rm -r "${ED%/}"/usr/share/cracklib || die
+	find "${ED}" -type f -name "*.la" -delete || die
+	rm -r "${ED}"/usr/share/cracklib || die
 
 	insinto /usr/share/dict
 	doins dicts/cracklib-small
 }
 
 pkg_postinst() {
-	if [[ ${ROOT} == "/" ]] ; then
+	if [[ -z ${ROOT} ]] ; then
 		ebegin "Regenerating cracklib dictionary"
 		create-cracklib-dict "${EPREFIX}"/usr/share/dict/* > /dev/null
 		eend $?
