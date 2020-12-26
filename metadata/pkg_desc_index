@@ -17462,7 +17462,7 @@ sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2 5.10.3: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.83 5.4.83-r1 5.4.84 5.4.85 5.4.85-r1 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.9.16 5.9.16-r1 5.10.1 5.10.1-r1 5.10.1-r2 5.10.2 5.10.2-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.80-r1 5.4.80-r2 5.4.80-r3 5.4.83 5.4.83-r1 5.4.84 5.4.85 5.4.85-r1 5.9.14 5.9.14-r1 5.9.15 5.9.15-r1 5.9.16 5.9.16-r1 5.10.1 5.10.1-r1 5.10.1-r2 5.10.2 5.10.2-r1 5.10.3: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.9.246 4.9.247 4.9.248 4.14.209 4.14.211 4.14.212 4.19.160 4.19.162 4.19.163 5.4.80-r1 5.4.82 5.4.83 5.4.84 5.4.85 5.9.12 5.9.13 5.9.14 5.9.15 5.9.16 5.10.0 5.10.1 5.10.1-r1 5.10.2 5.10.3: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.10_rc1 5.10_rc2 5.10_rc3 5.10_rc4 5.10_rc5 5.10_rc6 5.10_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -18467,7 +18467,7 @@ x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing information about the windows below
 x11-misc/wmctrl 1.07-r2: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmname 0.1-r1: utility to set the name of your window manager
-x11-misc/x11vnc 0.9.16-r2 0.9.16-r3 0.9.16-r4: VNC server for real X displays
+x11-misc/x11vnc 0.9.16-r4: VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.6: Very fast real-time fractal zoomer
