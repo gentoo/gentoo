@@ -35,8 +35,8 @@ PATCHES=(
 src_prepare() {
 	default
 
-	local p
 	if use elibc_Cygwin ; then
+		local p
 		for p in "${CYGWINPATCHES[@]}" ; do
 			# Strip out the "... -> " from the array
 			eapply -p2 "${DISTDIR}/${p#*> }"
