@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Marek Szuba <marecki@gentoo.org> (2020-12-26)
+# User manual is only available for releases
+=media-gfx/darktable-9999 doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
 # Depends on masked media-libs/qt-gstreamer and kde-apps/ktp-call-ui
 kde-apps/artikulate gstreamer
