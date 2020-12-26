@@ -126,7 +126,7 @@ DEPEND="${RDEPEND}
 		dev-python/setuptools
 	)"
 PDEPEND="python? (
-		>=sci-libs/tensorflow-estimator-2.4.0_rc0[${PYTHON_USEDEP}]
+		>=sci-libs/tensorflow-estimator-2.4.0[${PYTHON_USEDEP}]
 	)"
 BDEPEND="
 	app-arch/unzip
