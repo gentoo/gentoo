@@ -3,7 +3,7 @@
 
 EAPI=7
 inherit go-module systemd
-GIT_COMMIT=ec7bf9de21bfe3623ff04b009f26aaf488bae2b1
+GIT_COMMIT=52ec2e19f1d6e383b30a495b9bcdece315adac17
 
 DESCRIPTION="A simple and flexible workload orchestrator "
 HOMEPAGE="https://nomadproject.io"
@@ -22,10 +22,10 @@ src_compile() {
 	go_tags="codegen_generated $(usex nvidia '' 'nonvidia')"
 	CGO_ENABLED=1 \
 		go build \
-		-trimpath \
 		-ldflags "${go_ldflags}" \
 		-mod=vendor \
 		-tags "${go_tags}" \
+		-trimpath \
 		-o bin/${PN} || die "compile failed"
 }
 
