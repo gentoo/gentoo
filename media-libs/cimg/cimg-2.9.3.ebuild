@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
-S=${WORKDIR}/CImg-v.${PV}
+S="${WORKDIR}/CImg-v.${PV}"
 
 src_install() {
 	doheader CImg.h
@@ -21,6 +21,6 @@ src_install() {
 	use doc && dodoc -r html
 	if use examples; then
 		dodoc -r examples
-		docompress -x /usr/share/doc/${PF}/examples
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 }
