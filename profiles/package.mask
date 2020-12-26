@@ -33,6 +33,17 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
+# Dead upstream, only two revdeps.
+# Masked for removal in 30 days.
+media-libs/qt-gstreamer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
+# Dead upstream, depends on dead media-libs/qt-gstreamer.
+# If anyone is actually using this productively, *do tell*.
+# Masked for removal in 30 days.
+kde-apps/ktp-call-ui
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
 # Depends on deprecated dev-qt/qtwebkit, abandoned upstream.
 # Alternatives: Plenty. media-sound/cantata, media-sound/clementine,
 # media-sound/elisa, media-sound/strawberry, media-sound/yarock, ...
