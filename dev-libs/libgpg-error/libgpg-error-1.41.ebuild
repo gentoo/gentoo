@@ -11,7 +11,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp nls"
 
 RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
@@ -32,11 +32,26 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	if use prefix ; then
+		# don't hardcode /usr/xpg4/bin/sh as shell on Solaris
+		sed -i -e 's/solaris\*/disabled/' configure.ac || die
+	fi
+
 	# only necessary for as long as we run eautoreconf, configure.ac
 	# uses ./autogen.sh to generate PACKAGE_VERSION, but autogen.sh is
 	# not a pure /bin/sh script, so it fails on some hosts
 	hprefixify -w 1 autogen.sh
 	eautoreconf
+
+	if use prefix ; then
+		# upstream seems not interested in trying to understand (#584330)
+		# https://lists.gnupg.org/pipermail/gnupg-devel/2017-March/032671.html
+		# again reported as https://dev.gnupg.org/T4474
+		einfo "Forcing -no-undefined libtool flag ..."
+		sed -i -e 's/\$(no_undefined)/-no-undefined/' src/Makefile.in
+		eend $? || die
+	fi
 }
 
 multilib_src_configure() {
