@@ -211,11 +211,9 @@ dev-util/buildbot doc
 sci-physics/root cudnn
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
-# Sam James <sam@gentoo.org> (2020-07-17)
 # Encrypted Media Extensions (eme-free) can't be disabled everywhere
 mail-client/thunderbird eme-free
 www-client/firefox eme-free
-mail-client/thunderbird eme-free
 
 # Rick Farina <zerochaos@gentoo.org> (2020-02-26)
 # dev-python/pyzmq USE=doc deps are not met with python2_7
