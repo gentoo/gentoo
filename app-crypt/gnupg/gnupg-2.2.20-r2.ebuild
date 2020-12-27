@@ -74,7 +74,7 @@ src_configure() {
 		append-cppflags -I"${EPREFIX}/usr/include/libusb-1.0"
 	fi
 
-	if use elibc_SunOS || use elibc_AIX; then
+	if use elibc_SunOS; then
 		myconf+=( --disable-symcryptrun )
 	else
 		myconf+=( --enable-symcryptrun )
