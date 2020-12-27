@@ -18,7 +18,7 @@ SRC_URI="https://github.com/polybar/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 KEYWORDS="~amd64 ~x86"
 LICENSE="MIT"
 SLOT="0"
-IUSE="alsa curl i3wm ipc mpd network pulseaudio"
+IUSE="alsa curl doc i3wm ipc mpd network pulseaudio"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
@@ -31,6 +31,7 @@ DEPEND="
 	x11-libs/xcb-util-xrm
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )
+	doc? ( dev-python/sphinx )
 	i3wm? (
 		dev-libs/jsoncpp:=
 		|| ( x11-wm/i3 x11-wm/i3-gaps )
@@ -56,6 +57,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_ALSA="$(usex alsa)"
 		-DENABLE_CURL="$(usex curl)"
+		-DBUILD_DOC="$(usex doc)"
 		-DENABLE_I3="$(usex i3wm)"
 		-DBUILD_IPC_MSG="$(usex ipc)"
 		-DENABLE_MPD="$(usex mpd)"
