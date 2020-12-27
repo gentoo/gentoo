@@ -9,26 +9,22 @@ SRC_URI="https://rybczak.net/ncmpcpp/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 ~sparc x86"
-IUSE="clock curl outputs taglib visualizer"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+IUSE="clock outputs taglib visualizer"
 
 RDEPEND="
 	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
-	dev-libs/boost:=[icu]
-	dev-libs/boost:=[nls,threads]
+	dev-libs/boost:=[icu,nls,threads]
 	dev-libs/icu:=
+	net-misc/curl
 	sys-libs/ncurses:=[unicode]
 	sys-libs/readline:*
-	curl? ( net-misc/curl )
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.8.2-gcc10.patch
-)
 
 src_prepare() {
 	default
@@ -42,10 +38,8 @@ src_configure() {
 		$(use_enable clock) \
 		$(use_enable outputs) \
 		$(use_enable visualizer) \
-		$(use_with curl) \
 		$(use_with taglib) \
-		$(use_with visualizer fftw) \
-		--enable-unicode
+		$(use_with visualizer fftw)
 }
 
 src_install() {
