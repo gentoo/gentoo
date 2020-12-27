@@ -18,14 +18,15 @@ LICENSE="CMake"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc emacs ncurses qt5 test"
+# system-jsoncpp is only meant to be disabled during prefix bootstrap
+IUSE="doc emacs ncurses qt5 +system-jsoncpp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-arch/libarchive-3.3.3:=
 	app-crypt/rhash
 	>=dev-libs/expat-2.0.1
-	>=dev-libs/jsoncpp-1.9.2-r2:0=
+	system-jsoncpp? ( >=dev-libs/jsoncpp-1.9.2-r2:0= )
 	>=dev-libs/libuv-1.10.0:=
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
@@ -166,6 +167,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_USE_SYSTEM_LIBRARIES=ON
+		-DCMAKE_USE_SYSTEM_LIBRARY_JSONCPP=$(usex system-jsoncpp)
 		-DCMAKE_DOC_DIR=/share/doc/${PF}
 		-DCMAKE_MAN_DIR=/share/man
 		-DCMAKE_DATA_DIR=/share/${PN}

@@ -165,3 +165,11 @@ dev-lang/python wide-unicode
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode
+
+# Jacob Floyd <cognifloyd@gmail.com> (2020-12-27)
+# For prefix bootstrapping, sys-libs/jsoncpp cannot be
+# installed before dev-util/cmake in stage2 and early stage3
+# because jsoncpp requires meson which is not available yet.
+# Re-add the system-jsoncpp useflag, but only for prefix use.
+# Force it on for all other profiles.
+dev-util/cmake system-jsoncpp

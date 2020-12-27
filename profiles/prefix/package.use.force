@@ -1,0 +1,9 @@
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Jacob Floyd <cognifloyd@gmail.com> (2020-12-27)
+# For prefix bootstrapping, sys-libs/jsoncpp cannot be
+# installed before dev-util/cmake in stage2 and early stage3
+# because jsoncpp requires meson which is not available yet.
+# Re-add the system-jsoncpp useflag, but only for prefix use.
+dev-util/cmake -system-jsoncpp
