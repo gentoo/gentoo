@@ -50,7 +50,7 @@ DEPEND="
 "
 
 if [[ ${PV} == "99999999" ]] ; then
-	DEPEND+="
+	BDEPEND+="
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-ns-stylesheets
