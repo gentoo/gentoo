@@ -7918,7 +7918,7 @@ dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.30.1 1.31.0 1.32.0-r1 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.31.0 1.32.0-r1 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -7979,7 +7979,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.41.0 0.42.0 0.43.0 0.44.0 0.44.1: CloudFormation Linter
+dev-python/cfn-python-lint 0.42.0 0.43.0 0.44.0 0.44.1: CloudFormation Linter
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -7989,7 +7989,7 @@ dev-python/chardet 3.0.4-r1 4.0.0: Universal encoding detector
 dev-python/chart-studio 1.1.0: Browser-based graphing library for Python
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.6: Python-powered template engine and code generator
-dev-python/cheroot 8.4.5 8.4.8 8.5.0: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 8.4.8 8.5.0: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
@@ -8099,7 +8099,7 @@ dev-python/dkimpy 1.0.5: DKIM and ARC email signing and verification library
 dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in a standardized/agnostic way
 dev-python/dnspython 1.16.0-r1 2.0.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 4.3.1 4.4.0: Python client for Docker
+dev-python/docker-py 4.4.0: Python client for Docker
 dev-python/dockerpty 0.4.1-r1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r3: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
@@ -8294,7 +8294,7 @@ dev-python/ipykernel 5.3.4 5.3.4-r1 5.4.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0 6.3.0-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 7.16.1 7.19.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
-dev-python/ipywidgets 7.5.1 7.5.1-r1 7.6.0 7.6.1: IPython HTML widgets for Jupyter
+dev-python/ipywidgets 7.5.1 7.5.1-r1 7.6.0 7.6.1 7.6.2: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
 dev-python/iso8601 0.1.12-r1: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
@@ -8327,7 +8327,7 @@ dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0: Merge a series of JSON documents
-dev-python/jsonpatch 1.26 1.27 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.27 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 1.4.1-r2 1.4.2: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
@@ -15278,7 +15278,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.12.14 2020.12.22 2020.12.26 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.12.22 2020.12.26 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
