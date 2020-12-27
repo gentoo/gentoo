@@ -18,9 +18,10 @@ HOMEPAGE="http://urjtag.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 # TODO: Figure out if anyone wants the Python bindings
-IUSE="ftdi readline usb"
+IUSE="ftdi ftd2xx readline usb"
 
-DEPEND="ftdi? ( dev-embedded/libftdi:1 )
+DEPEND="ftdi? ( dev-embedded/libftdi:1= )
+	ftd2xx? ( dev-embedded/libftd2xx )
 	readline? ( sys-libs/readline:= )
 	usb? ( virtual/libusb:1 )"
 RDEPEND="${DEPEND}
@@ -37,13 +38,14 @@ src_prepare() {
 }
 
 src_configure() {
-	use readline || export vl_cv_lib_readline=no
-
 	econf \
 		--disable-werror \
 		--disable-python \
+		--disable-static \
+		$(use_with readline) \
 		$(use_with ftdi libftdi) \
-		$(use_with usb libusb)
+		$(use_with ftd2xx) \
+		$(use_with usb libusb 1.0)
 }
 
 src_install() {
