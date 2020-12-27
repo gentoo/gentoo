@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/1"
+SLOT="0/1-${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 DOCS=(CHANGELOG.md README.md)
 
 src_prepare() {
+	eapply "${FILESDIR}/${PN}-1.6.0-plugins.patch"
+
 	# Use headers of dev-libs/darts, dev-libs/utfcpp and x11-base/xorg-proto.
 	sed -e "/\${PROJECT_SOURCE_DIR}\/thirdparty/d" -i CMakeLists.txt || die
 	rm -r thirdparty || die
@@ -63,6 +65,8 @@ src_configure() {
 		-DBOOST_USE_CXX11=ON
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Gflags=ON
+		-DENABLE_EXTERNAL_PLUGINS=ON
+		-DINSTALL_PRIVATE_HEADERS=ON
 	)
 
 	cmake_src_configure
