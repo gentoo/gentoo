@@ -13,14 +13,17 @@ SLOT="0"
 IUSE="json test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-util/shunit2 app-misc/jq )"
-
+DEPEND="test? ( app-misc/jq dev-util/shunit2 )"
 RDEPEND="
 	app-shells/bash
 	json? ( app-misc/jq )
 	x11-misc/rofi
 	x11-misc/xdotool
 	x11-misc/xsel"
+
+src_test() {
+	./test/unit_tests || die
+}
 
 src_install() {
 	dobin splatmoji
@@ -30,8 +33,4 @@ src_install() {
 	doins -r data
 	insinto /usr/lib/splatmoji
 	doins lib/functions
-}
-
-src_test() {
-	./test/unit_tests
 }
