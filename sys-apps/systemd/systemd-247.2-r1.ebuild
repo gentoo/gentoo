@@ -102,6 +102,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/systemd-journal-remote
 	acct-user/systemd-coredump
 	acct-user/systemd-network
+	acct-user/systemd-oom
 	acct-user/systemd-resolve
 	acct-user/systemd-timesync
 	>=sys-apps/baselayout-2.2
