@@ -1,9 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# AIX uses the native (non-source available) linker
-*sys-devel/native-cctools
-# because AIX ar isn't able to unpack .deb files, we need deb2targz
-*app-arch/deb2targz
-# need some dll helpers on AIX
-*sys-apps/aix-miscutils
