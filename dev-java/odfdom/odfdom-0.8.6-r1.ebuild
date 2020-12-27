@@ -12,7 +12,7 @@ HOMEPAGE="http://odftoolkit.org/projects/odfdom"
 SRC_URI="http://odftoolkit.org/projects/odfdom/downloads/download/current-version%252F${P}-sources.zip -> ${P}-sources.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~x86-linux ~sparc-solaris ~x86-solaris"
 
 CDEPEND="dev-java/xerces:2
 	dev-java/xml-commons-external:1.4"
