@@ -220,23 +220,6 @@ exportmakeopts() {
 			extlibs+=( -lpcre )
 		fi
 	fi
-# Disabled until ~m68k-mint can be keyworded again
-#	if [[ ${CHOST} == *-mint* ]] ; then
-#		myopts+=(
-#			NO_MMAP=YesPlease
-#			NO_IPV6=YesPlease
-#			NO_STRLCPY=YesPlease
-#			NO_MEMMEM=YesPlease
-#			NO_MKDTEMP=YesPlease
-#			NO_MKSTEMPS=YesPlease
-#		)
-#	fi
-	if [[ ${CHOST} == ia64-*-hpux* ]]; then
-		myopts+=( NO_NSEC=YesPlease )
-	fi
-	if [[ ${CHOST} == *-*-aix* ]]; then
-		myopts+=( NO_FNMATCH_CASEFOLD=YesPlease )
-	fi
 	if [[ ${CHOST} == *-solaris* ]]; then
 		myopts+=(
 			NEEDS_LIBICONV=YesPlease
