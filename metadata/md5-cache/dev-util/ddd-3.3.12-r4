@@ -4,11 +4,11 @@ DESCRIPTION=Graphical front-end for command-line debuggers
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/ddd
 IUSE=readline
-KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3 LGPL-3 FDL-1.1
 RDEPEND=sys-devel/gdb sys-libs/ncurses:* x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXpm x11-libs/libXt >=x11-libs/motif-2.3:0 ppc? ( dev-libs/elfutils ) ppc64? ( dev-libs/elfutils ) readline? ( sys-libs/readline:* ) x11-apps/xfontsel
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/ddd/ddd-3.3.12.tar.gz
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	desktop	8f9bfcc33705104f56748d9dedb3177a	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	0a83d4ccf28a70ddf61e7073c96e515a	estack	d780995dc525ff7e6a2c4c043ffec242	eutils	69bd92aa099f708425db9f1f01d61213	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=891f45f84dd0195bc873321cf7abe3d5
+_md5_=54b637acb1842ecf8123c11925dc34bc
