@@ -29,6 +29,15 @@
 #                  only used for packages that use libghc internally and _must_
 #                  not pull upper versions
 #   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
+#   rebuild-after-doc-workaround -- enable doctest test failue workaround.
+#                  Symptom: when `./setup haddock` is run in a `build-type: Custom`
+#                  package it might cause cause the test-suite to fail with
+#                  errors like:
+#                  > <command line>: cannot satisfy -package-id singletons-2.7-3Z7pnljD8tU1NrslJodXmr
+#                  Workaround re-reginsters the package to avoid the failure
+#                  (and rebuilds changes).
+#                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
+#                  is fixed.
 
 inherit eutils ghc-package multilib toolchain-funcs
 
@@ -99,6 +108,7 @@ for feature in ${CABAL_FEATURES}; do
 		nocabaldep) CABAL_FROM_GHC=yes;;
 		ghcdeps)    CABAL_GHC_CONSTRAINT=yes;;
 		test-suite) CABAL_TEST_SUITE=yes;;
+		rebuild-after-doc-workaround) CABAL_REBUILD_AFTER_DOC_WORKAROUND=yes;;
 
 		# does nothing, removed 2016-09-04
 		bin)        ;;
@@ -553,6 +563,12 @@ cabal_src_compile() {
 				# just haddock
 				cabal-haddock
 			fi
+		fi
+		if [[ -n "${CABAL_REBUILD_AFTER_DOC_WORKAROUND}" ]]; then
+			ewarn "rebuild-after-doc-workaround is enabled. This is a"
+			ewarn "temporary worakround to deal with https://github.com/haskell/cabal/issues/7213"
+			ewarn "until the upstream issue can be resolved."
+			cabal-build
 		fi
 	else
 		if [[ -n "${CABAL_USE_HSCOLOUR}" ]] && use hscolour; then
