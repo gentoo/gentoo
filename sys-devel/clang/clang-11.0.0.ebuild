@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake llvm llvm.org multilib-minimal pax-utils \
-	python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -30,7 +30,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux"
+KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux ~x64-macos"
 IUSE="debug default-compiler-rt default-libcxx default-lld
 	doc +static-analyzer test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -75,6 +75,10 @@ PDEPEND="
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
+PATCHES=(
+	"${FILESDIR}"/9999/prefix-dirs.patch
+)
+
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
 	python-single-r1_pkg_setup
@@ -88,6 +92,11 @@ src_prepare() {
 	llvm.org_src_prepare
 
 	mv ../clang-tools-extra tools/extra || die
+
+	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
+	eprefixify \
+		lib/Frontend/InitHeaderSearch.cpp \
+		lib/Driver/ToolChains/Darwin.cpp || die
 }
 
 check_distribution_components() {

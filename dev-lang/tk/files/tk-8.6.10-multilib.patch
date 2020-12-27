@@ -1,0 +1,11 @@
+--- a/unix/configure.in	2020-12-26 11:26:32.952828258 +0100
++++ b/unix/configure.in	2020-12-26 11:26:45.027642732 +0100
+@@ -663,7 +663,7 @@
+     TCL_STUB_FLAGS="-DUSE_TCL_STUBS"
+ fi
+ 
+-test -z "$TK_LIBRARY" && TK_LIBRARY='$(prefix)/lib/tk$(VERSION)'
++test -z "$TK_LIBRARY" && TK_LIBRARY='$(libdir)/tk$(VERSION)'
+ PRIVATE_INCLUDE_DIR='$(includedir)'
+ HTML_DIR='$(DISTDIR)/html'
+ TK_PKG_DIR='tk$(VERSION)'
