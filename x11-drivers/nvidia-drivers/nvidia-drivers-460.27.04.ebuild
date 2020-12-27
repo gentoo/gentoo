@@ -79,7 +79,7 @@ S=${WORKDIR}/
 PATCHES=(
 	"${FILESDIR}"/${PN}-440.26-locale.patch
 )
-NV_KV_MAX_PLUS="5.10"
+NV_KV_MAX_PLUS="5.11"
 CONFIG_CHECK="
 	!DEBUG_MUTEXES
 	~!I2C_NVIDIA_GPU
@@ -425,7 +425,7 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	dodoc supported-gpus.json
+	dodoc -r supported-gpus
 
 	docinto html
 	dodoc -r ${NV_DOC}/html/*

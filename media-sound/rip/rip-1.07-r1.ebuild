@@ -18,6 +18,10 @@ RDEPEND="media-sound/cdparanoia
 	>=dev-perl/MP3-Info-0.91
 	|| ( media-sound/vorbis-tools media-sound/lame media-libs/flac media-sound/bladeenc )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-change-to-gnudb-org.patch"
+)
+
 src_install() {
 	dobin rip
 	einstalldocs
