@@ -25,7 +25,7 @@ src_prepare() {
 		sed -i -e 's: tests::g' Makefile* || die
 	fi
 
-	elibtoolize  # for FreeMiNT
+	elibtoolize
 	eautoreconf
 }
 
