@@ -8,7 +8,7 @@ HOMEPAGE="https://framagit.org/medoc92/npupnp"
 SRC_URI="https://www.lesbonscomptes.com/upmpdcli/downloads/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/expat
