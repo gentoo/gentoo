@@ -21,7 +21,7 @@ else
 fi
 
 SLOT="0"
-IUSE="+asm jack mp3 pulseaudio theora vorbis vpx x264"
+IUSE="+asm jack mp3 pulseaudio theora v4l vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -37,6 +37,7 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXinerama
 	virtual/glu[${MULTILIB_USEDEP}]
+	v4l? ( media-libs/libv4l )
 	jack? ( virtual/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 "
@@ -75,10 +76,12 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DENABLE_JACK_METADATA="$(multilib_native_usex jack)"
 		-DENABLE_X86_ASM="$(usex asm)"
 		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
 		-DWITH_JACK="$(multilib_native_usex jack)"
 		-DWITH_GLINJECT="true"
+		-DWITH_V4L2="$(usex v4l)"
 	)
 
 	if multilib_is_native_abi ; then
