@@ -19,7 +19,7 @@ HOMEPAGE="https://www.intra2net.com/en/developer/libftdi/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="cxx doc examples python"
+IUSE="cxx doc examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
@@ -60,6 +60,7 @@ src_configure() {
 		-DPYTHON_BINDINGS=$(usex python)
 		-DCMAKE_SKIP_BUILD_RPATH=ON
 	)
+
 	cmake_src_configure
 }
 
@@ -79,4 +80,6 @@ src_install() {
 		docinto examples
 		dodoc examples/*.c
 	fi
+
+	use static-libs || rm "${ED}"/usr/$(get_libdir)/${PN}.a || die
 }
