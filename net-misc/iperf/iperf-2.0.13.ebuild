@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}2/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="2"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="ipv6 threads debug"
 
 DOCS="INSTALL README"
