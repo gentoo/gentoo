@@ -19,7 +19,15 @@ LICENSE="ZLIB"
 SLOT="0/3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples fortran hdf5 legacy mpi static-libs szip test tools"
-RESTRICT="!test? ( test )"
+RESTRICT="
+	fortran? ( test )
+	!test? ( test )
+"
+
+REQUIRED_USE="
+	mpi? ( hdf5 )
+	szip? ( hdf5 )
+"
 
 RDEPEND="hdf5? ( sci-libs/hdf5:=[mpi=,szip=] )
 	tools? (
@@ -57,10 +65,16 @@ src_configure() {
 		-DCGNS_ENABLE_HDF5="$(usex hdf5)"
 		-DCGNS_ENABLE_LEGACY="$(usex legacy)"
 		-DCGNS_ENABLE_TESTS="$(usex test)"
-		-DHDF5_NEED_MPI="$(usex mpi)"
-		-DHDF5_NEED_SZIP="$(usex szip)"
-		-DHDF5_NEED_ZLIB="$(usex szip)"
 	)
+
+	if use hdf5; then
+		mycmakeargs+=(
+			-DHDF5_NEED_MPI="$(usex mpi)"
+			-DHDF5_NEED_SZIP="$(usex szip)"
+			-DHDF5_NEED_ZLIB="$(usex szip)"
+		)
+	fi
+
 	cmake_src_configure
 }
 
