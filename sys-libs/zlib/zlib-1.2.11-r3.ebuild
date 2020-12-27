@@ -75,7 +75,7 @@ multilib_src_configure() {
 	*)
 		local uname=$("${EPREFIX}"/usr/share/gnuconfig/config.sub "${CHOST}" | cut -d- -f3) #347167
 		local myconf=(
-			$(tc-is-static-only && echo "--static" || echo "--shared")
+			--shared
 			--prefix="${EPREFIX}/usr"
 			--libdir="${EPREFIX}/usr/$(get_libdir)"
 			${uname:+--uname=${uname}}
