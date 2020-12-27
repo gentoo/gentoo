@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-12-27)
+# dev-embedded/libftd2xx unavailable here
+dev-embedded/urjtag ftd2xx
+
 # Matthias Maier <tamiko@gentoo.org> (2020-12-03)
 # Requires sci-mathematics/z3.
 dev-util/cppcheck z3
