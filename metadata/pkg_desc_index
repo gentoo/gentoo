@@ -10919,7 +10919,7 @@ dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog f
 dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-sh 1.3-r1: A customized bash environment suitable for git work
-dev-vcs/git-tools 2017.10 2019.11: Assorted git-related scripts
+dev-vcs/git-tools 2019.11 2020.09: Assorted git-related scripts
 dev-vcs/gitg 3.32.1-r1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.3: A script that commits files from a directory to Github Pages
 dev-vcs/gitolite 2.3.1-r1 3.6.11: Highly flexible server for git directory version tracker
