@@ -29,6 +29,10 @@ CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
 S="${WORKDIR}/${P/_}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-sort_column_header_highlight.patch"
+)
+
 pkg_setup() {
 	if ! has_version sys-process/lsof; then
 		ewarn "To use lsof features in htop (what processes are accessing"
