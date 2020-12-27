@@ -25,8 +25,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README )
-# The second patch is a fix for https://bugs.gentoo.org/723242
-PATCHES=( "${FILESDIR}"/${PN}-0.8.4-disable-tests.patch "${FILESDIR}"/639332-tinfow.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.4-disable-tests.patch
+	# bug 723242
+	"${FILESDIR}"/${PN}-0.9.0-bug639332-tinfow.patch
+)
 
 src_prepare() {
 	default
