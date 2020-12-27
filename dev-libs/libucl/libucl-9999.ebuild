@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
-	lua_setup
+	use lua && lua_setup
 
 	local myeconfargs=(
 		"$(use_enable lua)"
@@ -50,6 +50,8 @@ src_configure() {
 		"$(use_enable sign signatures)"
 		"$(use_enable urls)"
 		"$(use_enable utils)"
+	)
+	use lua && myeconfargs+=(
 		LUA_INCLUDE="$(lua_get_CFLAGS)"
 		LIB_LIBS="$(lua_get_LIBS)"
 	)
