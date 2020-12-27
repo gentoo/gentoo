@@ -324,21 +324,11 @@ sparc64-solaris		prefix/sunos/solaris/5.11/sparc64		exp
 x86-solaris		prefix/sunos/solaris/5.11/x86			exp
 x64-solaris		prefix/sunos/solaris/5.11/x64			exp
 
-# AIX Profiles
-ppc-aix			prefix/aix/5.2.0.0/ppc				exp
-ppc-aix			prefix/aix/5.3.0.0/ppc				exp
-ppc-aix			prefix/aix/6.1.0.0/ppc				exp
-ppc-aix			prefix/aix/7.1.0.0/ppc				exp
-ppc-aix			prefix/aix/7.2.0.0/ppc				exp
-
 # Windows Profiles
 x86-winnt		prefix/windows/winnt/x86			exp
 x64-winnt		prefix/windows/winnt/x64			exp
 
 # Cygwin Profiles
 x64-cygwin		prefix/windows/cygwin/x64			exp
-
-# FreeMiNT
-m68k-mint		prefix/mint/m68k				exp
 
 # vim: set ts=8 noet ft=conf:
