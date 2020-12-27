@@ -8137,7 +8137,7 @@ dev-python/eventlet 0.26.1 0.30.0: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/exdown 0.7.1: Extract code blocks from markdown
 dev-python/execnet 1.7.1-r1: Rapid multi-Python deployment
-dev-python/executing 0.5.3: Get information about what a Python frame is currently doing
+dev-python/executing 0.5.3 0.5.4: Get information about what a Python frame is currently doing
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.8.11-r1 0.9.5: Module for manipulating ID3 (v1 + v2) tags in Python
@@ -8212,7 +8212,7 @@ dev-python/genshi 0.7.3-r1: Python toolkit for stream-based generation of output
 dev-python/genson 1.1.0: GenSON is a powerful, user-friendly JSON Schema generator built in Python
 dev-python/genty 1.3.2-r1: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
-dev-python/gevent 20.9.0 20.12.0: Coroutine-based network library
+dev-python/gevent 20.9.0 20.12.0 20.12.1: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.4.4-r1 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
@@ -8312,7 +8312,7 @@ dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Compleme
 dev-python/jaraco-logging 3.0.0-r2: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 8.1.0-r2 8.1.1-r1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0-r1: Routines for handling streaming data
-dev-python/jaraco-text 3.2.0-r1: Text utilities used by other projects by developer jaraco
+dev-python/jaraco-text 3.2.0-r1 3.4.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.17.1-r1 0.17.2-r1 0.18.0: Autocompletion library for Python
 dev-python/jeepney 0.4.3 0.6.0: Low-level, pure Python DBus protocol wrapper
@@ -8466,7 +8466,7 @@ dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.0.7 5.0.8: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
-dev-python/ndg-httpsclient 0.4.0 0.4.2-r1 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
+dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
 dev-python/nest_asyncio 1.4.3: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
@@ -8574,7 +8574,7 @@ dev-python/patsy 0.5.1: Python module to describe statistical models and design 
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.4: PDF file reader/writer library
-dev-python/pebble 4.5.3: Threading and multiprocessing eye-candy
+dev-python/pebble 4.5.3 4.6.0: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
 dev-python/peewee 3.13.2: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
@@ -8663,12 +8663,12 @@ dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control li
 dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast
 dev-python/pychroot 0.10.3 9999: a python library and cli tool that simplify chroot handling
-dev-python/pyclipper 1.2.0: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
+dev-python/pyclipper 1.2.0 1.2.1: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 20.7.3: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20-r1: C parser and AST generator written in Python
-dev-python/pycryptodome 3.9.8-r1 3.9.9 3.9.9-r1: A self-contained cryptographic library for Python
+dev-python/pycryptodome 3.9.9 3.9.9-r1: A self-contained cryptographic library for Python
 dev-python/pycryptodomex 3.9.8 3.9.9: A self-contained cryptographic library for Python
 dev-python/pycson 0.8: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
@@ -8941,7 +8941,7 @@ dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5 2.11.6: Python bindings for QScintilla
 dev-python/qtawesome 1.0.1 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 4.7.6 4.7.7 5.0.0 5.0.1: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 4.7.6 5.0.1: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
 dev-python/quex 0.71.0-r1: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -8963,7 +8963,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.48 3.5.56: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.48 3.5.56 3.5.57: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
@@ -14076,7 +14076,7 @@ media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and 
 media-video/openshot 2.4.4-r1 2.5.0 2.5.1 2.5.1_p20201203: Award-winning free and open-source video editor
 media-video/orion 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
-media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
+media-video/parole 1.0.5 4.15.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/pipewire 0.2.7 0.3.10 0.3.18: Multimedia processing graphs
