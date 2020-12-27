@@ -22,7 +22,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/1.1"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -44,7 +44,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-parallel_build.patch"
-	"${FILESDIR}/${PN}-1.1.2-system_libraries.patch"
+	"${FILESDIR}/${PN}-1.1.1-system_libraries.patch"
 )
 
 DOCS=(AUTHORS NEWS.md README.md)
