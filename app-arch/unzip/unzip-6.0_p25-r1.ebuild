@@ -65,9 +65,6 @@ src_configure() {
 		*bsd* | *dragonfly*) TARGET="bsd" ;;
 		*-darwin*)           TARGET="macosx" ;;
 		*-solaris*)          TARGET="generic" ;;
-		*-aix*)              TARGET="gcc"; append-cppflags "-DNO_LCHMOD"; append-ldflags "-Wl,-blibpath:${EPREFIX}/usr/$(get_libdir)" ;;
-		*-hpux*)             TARGET="gcc"; append-ldflags "-Wl,+b,${EPREFIX}/usr/$(get_libdir)" ;;
-		*-mint*)             TARGET="generic" ;;
 		*-cygwin*)           TARGET="generic" ;;
 		*) die "Unknown target; please update the ebuild to handle ${CHOST}	" ;;
 	esac
