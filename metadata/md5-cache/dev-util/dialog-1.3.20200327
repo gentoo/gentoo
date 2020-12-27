@@ -4,9 +4,9 @@ DESCRIPTION=tool to display dialog boxes from a shell
 EAPI=7
 HOMEPAGE=https://invisible-island.net/dialog/
 IUSE=examples minimal nls static-libs unicode
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2-r5:=[unicode?]
 SLOT=0/15
 SRC_URI=https://dev.gentoo.org/~jer/dialog-1.3-20200327.tar.gz
-_md5_=b696cb305727f756d3fa9c7e27dedbed
+_md5_=bc44a6c0f79f6c6ce21c2b1539026cc8
