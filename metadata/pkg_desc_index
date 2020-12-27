@@ -8995,7 +8995,7 @@ dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package s
 dev-python/routes 2.5.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.7-r1: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
-dev-python/rpyc 4.1.4 4.1.5: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rpyc 4.1.4 4.1.5 5.0.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.6.1 1.7.0: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 4.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.1.1: Sphinx plugin to add links and timestamps to the changelog
