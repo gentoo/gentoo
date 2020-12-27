@@ -1,12 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=ftdi? ( dev-embedded/libftdi:= ) ftd2xx? ( dev-embedded/libftd2xx ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:1 ) >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=ftdi? ( dev-embedded/libftdi:1 ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:1 )
 DESCRIPTION=Tool for communicating over JTAG with flash chips, CPUs, and many more
-EAPI=5
+EAPI=7
 HOMEPAGE=http://urjtag.sourceforge.net/
-IUSE=ftd2xx ftdi readline static-libs usb
+IUSE=ftdi readline usb
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=ftdi? ( dev-embedded/libftdi:= ) ftd2xx? ( dev-embedded/libftd2xx ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:1 ) !dev-embedded/jtag
+RDEPEND=ftdi? ( dev-embedded/libftdi:1 ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:1 ) !dev-embedded/jtag
 SLOT=0
-_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	desktop	8f9bfcc33705104f56748d9dedb3177a	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	0a83d4ccf28a70ddf61e7073c96e515a	estack	d780995dc525ff7e6a2c4c043ffec242	eutils	69bd92aa099f708425db9f1f01d61213	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=bafc20b910e810ad1185a328f18695c6
+_eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=05244e6898e0ec57bb4e557051bb8ccc

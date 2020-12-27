@@ -2866,7 +2866,7 @@ dev-util/nvidia-cuda-toolkit:debugger - Install the CUDA debugger
 dev-util/nvidia-cuda-toolkit:eclipse - Install Eclipse plugins
 dev-util/nvidia-cuda-toolkit:nsight - Install profiling and optimizing tools (nsight-compute, nsight-systems)
 dev-util/nvidia-cuda-toolkit:profiler - Install the NVIDIA CUDA profiler (nvprof) and the related libraries
-dev-util/nvidia-cuda-toolkit:sanitizer - Install compute-sanitiazer tool
+dev-util/nvidia-cuda-toolkit:sanitizer - Install compute-sanitizer tool
 dev-util/nvidia-cuda-toolkit:vis-profiler - Install the NVIDIA CUDA visual profiler (nvvp)
 dev-util/oprofile:apidoc - Provide doxygen generated API docs.
 dev-util/ostree:archive - Use libarchive
