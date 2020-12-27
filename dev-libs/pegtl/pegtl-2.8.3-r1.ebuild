@@ -17,3 +17,16 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/PEGTL-${PV}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-gcc-10.patch" # bug 733678
+)
+
+src_configure() {
+	local mycmakeargs=(
+		-DPEGTL_INSTALL_CMAKE_DIR="$(get_libdir)/cmake/${PN}"
+		-DPEGTL_INSTALL_DOC_DIR="share/doc/${PF}"
+	)
+	cmake_src_configure
+}
