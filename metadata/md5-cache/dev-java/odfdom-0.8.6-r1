@@ -5,11 +5,11 @@ DESCRIPTION=The ODFDOM reference implementation, written in Java
 EAPI=7
 HOMEPAGE=http://odftoolkit.org/projects/odfdom
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=~amd64 ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.5 dev-java/xerces:2 dev-java/xml-commons-external:1.4 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=http://odftoolkit.org/projects/odfdom/downloads/download/current-version%252Fodfdom-0.8.6-sources.zip -> odfdom-0.8.6-sources.zip
 _eclasses_=java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	45ae8c4aaec3924d533052387ad652dc	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=07644c4bfe73d5e7f92826403d88e5ff
+_md5_=dcba39eb0158ce4e7334898a388ca24f
