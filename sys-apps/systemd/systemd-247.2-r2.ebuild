@@ -102,6 +102,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/systemd-journal-remote
 	acct-user/systemd-coredump
 	acct-user/systemd-network
+	acct-user/systemd-oom
 	acct-user/systemd-resolve
 	acct-user/systemd-timesync
 	>=sys-apps/baselayout-2.2
@@ -369,6 +370,9 @@ multilib_src_install_all() {
 	if ! use resolvconf && ! use sysv-utils; then
 		rmdir "${ED}${rootprefix}"/sbin || die
 	fi
+
+	# https://bugs.gentoo.org/761763
+	rm -r "${ED}"/usr/lib/sysusers.d || die
 
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}

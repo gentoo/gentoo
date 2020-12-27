@@ -5,11 +5,11 @@ EAPI=7
 inherit autotools multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
-HOMEPAGE="http://www.lua.org/"
+HOMEPAGE="https://www.lua.org/"
 TEST_PV="5.4.2"
 TEST_P="${PN}-${TEST_PV}-tests"
 SRC_URI="
-	http://www.lua.org/ftp/${P}.tar.gz
+	https://www.lua.org/ftp/${P}.tar.gz
 	test? ( https://www.lua.org/tests/${TEST_P}.tar.gz )"
 
 LICENSE="MIT"
