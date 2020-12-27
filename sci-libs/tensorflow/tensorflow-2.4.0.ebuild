@@ -84,13 +84,7 @@ RDEPEND="
 	>=sys-apps/hwloc-2
 	cuda? (
 		|| (
-		        ( =dev-util/nvidia-cuda-toolkit-11.1*[profiler] =dev-libs/cudnn-8* )
-		        ( =dev-util/nvidia-cuda-toolkit-11.0*[profiler] =dev-libs/cudnn-8* )
-		        ( =dev-util/nvidia-cuda-toolkit-10.2*[profiler] >=dev-libs/cudnn-7.6 )
-		        ( =dev-util/nvidia-cuda-toolkit-10.1*[profiler] >=dev-libs/cudnn-7.5 )
-		        ( =dev-util/nvidia-cuda-toolkit-10.0*[profiler] =dev-libs/cudnn-7.4* )
-		        ( =dev-util/nvidia-cuda-toolkit-9.2*[profiler] =dev-libs/cudnn-7.1* )
-		        ( =dev-util/nvidia-cuda-toolkit-9.1*[profiler] =dev-libs/cudnn-7.0* )
+			( =dev-util/nvidia-cuda-toolkit-11.1*[profiler] =dev-libs/cudnn-8* )
 		)
 	)
 	mpi? ( virtual/mpi )
