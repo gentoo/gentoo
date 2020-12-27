@@ -4,5 +4,5 @@ EAPI=7
 KEYWORDS=~amd64 ~x86
 RDEPEND=acct-group/freenet
 SLOT=0
-_eclasses_=acct-user	0d24c8dbb9e192bb2307b3086e8abb6d	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=acct-user	7d59baeb06020c2fd9e5d9dbd95ba71b	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=ada619ce9fb5b2a108d317f31a7fada7

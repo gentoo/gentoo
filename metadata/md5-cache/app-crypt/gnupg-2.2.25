@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/libassuan-2.5.0 >=dev-libs/libgcrypt-1.8.0 >=dev-libs/libgpg-
 SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-2.2.25.tar.bz2 scd-shared-access? ( https://raw.githubusercontent.com/GPGTools/MacGPG2/5ca182f54b7b6cd635d1c0a4713953834489fdd9/patches/gnupg/scdaemon_shared-access.patch -> gnupg-2.2.16-scdaemon_shared-access.patch )
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=3abad68a7a329562ea8906ce739a782d
+_md5_=9d93a20f463ccd01a0fd5600cd4e4387
