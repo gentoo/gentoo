@@ -8,9 +8,11 @@ inherit desktop toolchain-funcs xdg
 DESCRIPTION="Drawing program designed for young children"
 HOMEPAGE="http://www.tuxpaint.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
+
 RDEPEND="
 	app-text/libpaper
 	dev-libs/fribidi
@@ -23,13 +25,13 @@ RDEPEND="
 	media-libs/sdl-pango
 	media-libs/sdl-ttf
 	x11-libs/cairo
-	"
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gperf
 	media-gfx/imagemagick[png]
 	sys-devel/gettext
-	"
+"
 
 src_prepare() {
 	xdg_src_prepare
