@@ -81,7 +81,7 @@ multilib_src_configure() {
 		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
 		-DWITH_JACK="$(multilib_native_usex jack)"
 		-DWITH_GLINJECT="true"
-		-DWITH_V4L2="$(usex v4l)"
+		-DWITH_V4L2="$(multilib_native_usex v4l)"
 	)
 
 	if multilib_is_native_abi ; then
