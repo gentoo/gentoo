@@ -5575,7 +5575,7 @@ dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
-dev-libs/pegtl 2.8.3: Header-only library for creating parsers according to Parsing Expression Grammar
+dev-libs/pegtl 2.8.3-r1: Header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 76 77 78: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.1.1: Plasma Specific Protocols for Wayland
