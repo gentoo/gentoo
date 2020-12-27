@@ -234,6 +234,9 @@ multilib_src_install_all() {
 	# let the init script create the /var/run/dbus directory
 	rm -rf "${ED}"/var/run
 
+	# https://bugs.gentoo.org/761763
+	rm -rf "${ED}"/usr/lib/sysusers.d
+
 	dodoc AUTHORS ChangeLog NEWS README doc/TODO
 	readme.gentoo_create_doc
 
