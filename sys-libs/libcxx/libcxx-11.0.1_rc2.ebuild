@@ -63,10 +63,6 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
 
 	llvm.org_src_prepare
-
-	# eprefixify static path references to libc++abi for symbol re-export to
-	# avoid linking against it twice in both /usr/lib and ${EPREFIX}/usr/lib
-	sed -i -e "s^/usr/lib/libc++abi.dylib^${EPREFIX}&^g" lib/CMakeLists.txt || die
 }
 
 test_compiler() {
