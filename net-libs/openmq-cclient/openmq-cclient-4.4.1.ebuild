@@ -13,7 +13,7 @@ MY_BUILDV="b7"
 
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 if [[ $(x=( $(get_all_version_components) ); echo ${x[3]}) == '.' ]]; then
