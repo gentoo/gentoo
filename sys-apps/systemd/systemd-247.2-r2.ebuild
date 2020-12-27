@@ -371,6 +371,9 @@ multilib_src_install_all() {
 		rmdir "${ED}${rootprefix}"/sbin || die
 	fi
 
+	# https://bugs.gentoo.org/761763
+	rm -r "${ED}"/usr/lib/sysusers.d || die
+
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
 	keepdir /etc/kernel/install.d
