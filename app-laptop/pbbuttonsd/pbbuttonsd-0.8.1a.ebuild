@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handles power management and special keys on laptops"
 HOMEPAGE="http://pbbuttons.berlios.de"
@@ -74,15 +74,18 @@ src_compile() {
 	# Thanks to Stefan Bruda for this workaround
 	# Using -j1 fixes a parallel build issue with the docs
 	if use doc; then
-		emake -j1
+		emake -j1 AR="$(tc-getAR)"
 	else
-		emake
+		emake AR="$(tc-getAR)"
 	fi
 }
 
 src_install() {
 	dodir /etc/power
-	use ibam && dodir /var/lib/ibam
+	if use ibam; then
+		dodir /var/lib/ibam
+		keepdir /var/lib/ibam
+	fi
 
 	default
 
@@ -93,8 +96,9 @@ src_install() {
 	use doc && dodoc -r doc/
 
 	dodir /etc/power/resume.d
+	keepdir /etc/power/resume.d
 	dodir /etc/power/suspend.d
-	dodir /etc/power/scripts.d
+	keepdir /etc/power/suspend.d
 	exeinto /etc/power/scripts.d
 	doexe "${FILESDIR}"/wireless
 	ln -s "${D}"/etc/power/scripts.d/wireless "${D}"/etc/power/resume.d/wireless
