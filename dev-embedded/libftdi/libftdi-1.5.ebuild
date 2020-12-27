@@ -39,7 +39,7 @@ RDEPEND="virtual/libusb:1
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/libftdi-1.5-cmake-git.patch"
+	"${FILESDIR}/${P}-tests-no-cxx.patch"
 )
 
 pkg_setup() {
