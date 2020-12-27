@@ -42,7 +42,7 @@ src_prepare() {
 	if [[ ${PV} == *9999* ]]; then
 		eautoreconf
 	else
-		elibtoolize # Required for FreeMiNT wrt #333429
+		elibtoolize
 	fi
 }
 
