@@ -72,10 +72,10 @@ src_install() {
 
 	if use doc ; then
 		# Clean up crap man pages. #356369
-		rm -vf "${CMAKE_BUILD_DIR}"/doc/man/man3/_* || die
+		rm -vf "${BUILD_DIR}"/doc/man/man3/_* || die
 
-		doman "${CMAKE_BUILD_DIR}"/doc/man/man3/*
-		dodoc -r "${CMAKE_BUILD_DIR}"/doc/html
+		doman "${BUILD_DIR}"/doc/man/man3/*
+		dodoc -r "${BUILD_DIR}"/doc/html
 	fi
 
 	if use examples ; then
