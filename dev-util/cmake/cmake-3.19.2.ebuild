@@ -78,6 +78,14 @@ cmake_src_bootstrap() {
 		-e '/"${cmake_bootstrap_dir}\/cmake"/s/^/#DONOTRUN /' \
 		bootstrap || die "sed failed"
 
+	# For Darwin prefix, system cmake does not have our prefix paths.
+	# So, ensure system frameworks are found during cmake bootstrap.
+	if [[ ${CHOST} == *-darwin* && -d "${EPREFIX}"/MacOSX.sdk ]] ; then
+		local sdk_frameworks="${EPREFIX}"/MacOSX.sdk/System/Library/Frameworks
+		append-cflags $(test-flags-CC "-F${sdk_frameworks}")
+		append-cxxflags $(test-flags-CXX "-F${sdk_frameworks}")
+	fi
+
 	# execinfo.h on Solaris isn't quite what it is on Darwin
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i -e 's/execinfo\.h/blablabla.h/' \
