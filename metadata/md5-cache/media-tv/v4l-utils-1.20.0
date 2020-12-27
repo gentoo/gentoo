@@ -1,5 +1,5 @@
 BDEPEND=sys-devel/gettext virtual/pkgconfig bpf? ( sys-devel/clang:*[llvm_targets_BPF] ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
-DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEFINED_PHASES=configure install postinst postrm preinst prepare pretend
 DEPEND=>=media-libs/libv4l-1.20.0[dvb?,jpeg] >=virtual/jpeg-0-r2:0= bpf? ( virtual/libelf:= ) udev? ( virtual/libudev ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 opengl? ( dev-qt/qtopengl:5[-gles2(-)] virtual/opengl ) media-libs/alsa-lib ) !media-tv/v4l2-ctl !<media-tv/ivtv-utils-1.4.0-r2 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Separate utilities ebuild from upstream v4l-utils package
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=>=media-libs/libv4l-1.20.0[dvb?,jpeg] >=virtual/jpeg-0-r2:0= bpf? ( virt
 SLOT=0
 SRC_URI=https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.20.0.tar.bz2
 _eclasses_=autotools	b8cf7d8850baf5b731738e6d4f00937a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	69bd92aa099f708425db9f1f01d61213	flag-o-matic	fb54c9a3302f35aeae1c84f363e776f7	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=80831ad7a870fa415952f3b2f1d4ec11
+_md5_=ae02f620185794dd9bf2664b284d10c9
