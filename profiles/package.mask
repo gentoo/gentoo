@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2020-12-28)
+# Masked for testing
+>=dev-lang/tk-8.6.10
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
 # Dead upstream, only two revdeps.
 # Masked for removal in 30 days.
