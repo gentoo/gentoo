@@ -3028,7 +3028,7 @@ app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.8.0: Lists directories recursively, and produces an indented listing of files
 app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
-app-text/txt2man 1.6.0 1.7.0 1.7.1: Scripts to convert regular ASCII text to man pages
+app-text/txt2man 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
 app-text/txt2tags 3.7: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/u2ps 1.1 1.2: A text to PostScript converter like a2ps, but supports UTF-8
@@ -5292,7 +5292,7 @@ dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness 
 dev-libs/jansson 2.12 2.13.1 2.13.1-r1: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
-dev-libs/json-c 0.14-r3 0.15 9999: A JSON implementation in C
+dev-libs/json-c 0.15 9999: A JSON implementation in C
 dev-libs/json-glib 1.4.4 1.6.0: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.9.3 1.9.4: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.34.0: JSON-RPC library for GLib
