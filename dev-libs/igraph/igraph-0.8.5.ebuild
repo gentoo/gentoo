@@ -7,36 +7,41 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Creating and manipulating undirected and directed graphs"
 HOMEPAGE="http://www.igraph.org/"
-SRC_URI="http://www.igraph.org/nightly/get/c/${P}.tar.gz"
+SRC_URI="https://github.com/igraph/igraph/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug gmp"
+IUSE="debug"
 
 RDEPEND="
+	dev-libs/gmp:0=
 	dev-libs/libxml2
-	>=sci-libs/arpack-3
+	sci-libs/arpack
+	sci-libs/cxsparse
+	sci-mathematics/glpk:=
 	virtual/blas
-	virtual/lapack
-	>=sci-libs/cxsparse-3
-	sci-mathematics/glpk
-	gmp? ( dev-libs/gmp:0 )"
+	virtual/lapack"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-unbundle.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.8.2-unbundle.patch )
 
 src_prepare() {
 	default
+	rm -r src/lapack optional/glpk src/cs || die
 	eautoreconf
 }
 
 src_configure() {
+	# even with --with-external-f2c
+	# we don't need f2c as none of
+	#    arpack lapack blas
+	# are internal
 	tc-export PKG_CONFIG
 	econf \
-		$(use_enable gmp) \
 		$(use_enable debug) \
+		--enable-gmp \
 		--disable-static \
 		--disable-tls \
 		--with-external-arpack \
@@ -50,5 +55,5 @@ src_install() {
 	default
 
 	# no static archives
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

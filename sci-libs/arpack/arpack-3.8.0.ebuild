@@ -5,20 +5,18 @@ EAPI=7
 
 inherit autotools fortran-2 toolchain-funcs
 
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/opencollab/arpack-ng"
-else
-	SRC_URI="https://github.com/opencollab/${PN}-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-	S="${WORKDIR}/${PN}-ng-${PV}"
-fi
-
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
+SRC_URI="
+	https://github.com/opencollab/${PN}-ng/archive/${PV}.tar.gz -> ${P}.tar.gz
+	doc? (
+		http://www.caam.rice.edu/software/ARPACK/SRC/ug.ps.gz
+		http://www.caam.rice.edu/software/ARPACK/DOCS/tutorial.ps.gz )"
+
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples mpi"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="doc examples mpi"
 
 RDEPEND="
 	virtual/blas
@@ -26,6 +24,8 @@ RDEPEND="
 	mpi? ( virtual/mpi[fortran] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+S="${WORKDIR}/${PN}-ng-${PV}"
 
 src_prepare() {
 	default
@@ -45,6 +45,7 @@ src_install() {
 
 	dodoc DOCUMENTS/*.doc
 	newdoc DOCUMENTS/README README.doc
+	use doc && dodoc "${WORKDIR}"/*.ps
 	if use examples; then
 		dodoc -r EXAMPLES
 		if use mpi; then
