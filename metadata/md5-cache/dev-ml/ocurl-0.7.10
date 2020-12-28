@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=net-misc/curl-7.9.8 dev-ml/lwt:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt]
 SLOT=0/0.7.10
 SRC_URI=https://github.com/ygrek/ocurl/archive/0.7.10.tar.gz -> ocurl-0.7.10.tar.gz
-_eclasses_=findlib	2d5f502be83d6fc5f8372442a59856b6
+_eclasses_=findlib	df74899b0837d14d75b7e6bb42422b14
 _md5_=0f784370de25524671b548c589b3ec9f

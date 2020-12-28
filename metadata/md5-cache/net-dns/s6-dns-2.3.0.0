@@ -9,5 +9,5 @@ LICENSE=ISC
 RDEPEND=!static? ( >=dev-libs/skalibs-2.6.3.0:= )
 SLOT=0/2.3
 SRC_URI=https://www.skarnet.org/software/s6-dns/s6-dns-2.3.0.0.tar.gz
-_eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=3145cfc2ae14ae189f6b5f70d5fca701

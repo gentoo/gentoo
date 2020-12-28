@@ -9,5 +9,5 @@ LICENSE=fping
 RDEPEND=filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://fping.org/dist/fping-5.0.tar.gz
-_eclasses_=fcaps	1e1121450b09cb38037babb4aba88d0f
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b
 _md5_=177179db29796798168d8d5ce0d261f5

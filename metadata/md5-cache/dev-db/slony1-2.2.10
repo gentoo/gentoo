@@ -10,5 +10,5 @@ RDEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13=[server,threads] ) p
 RESTRICT=test
 SLOT=0
 SRC_URI=https://slony.info/downloads/2.2/source/slony1-2.2.10.tar.bz2 doc? ( https://slony.info/downloads/2.2/source/slony1-2.2.10-docs.tar.bz2 )
-_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	postgres	2a85ebea21ca1da22ccc419fe84a8788	postgres-multi	563baf0dc59ded7d888047ea17689f21	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=4832f71145d2976ce7489699367e6351

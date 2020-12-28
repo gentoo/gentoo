@@ -10,5 +10,5 @@ RDEPEND=!minimal? ( >=dev-php/PEAR-MDB2-2.4.1 >=dev-php/PEAR-DB-1.7.11 ) >=dev-p
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTTP_Session2-0.7.3.tgz
-_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
+_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
 _md5_=e2b63bc62bc4f129cb0dd783a67ce086

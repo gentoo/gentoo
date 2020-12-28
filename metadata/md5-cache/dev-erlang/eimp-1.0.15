@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/erlang-17.1 >=dev-erlang/p1_utils-1.0.19 media-libs/gd[png,jpeg,webp] dev-lang/erlang:=
 SLOT=0
 SRC_URI=https://github.com/processone/eimp/archive/1.0.15.tar.gz -> eimp-1.0.15.tar.gz
-_eclasses_=rebar	5f4fd2d2772838f777bede01885f2338
+_eclasses_=rebar	43c151aeda0dc4bf44b59e949df136aa
 _md5_=f7e3d246405692cd4827907c7d660828

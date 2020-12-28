@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-MDB2-2.5.0_beta3 dev-lang/php:*[oci8-instant-client(-)] >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/MDB2_Driver_oci8-1.5.0b4.tgz
-_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
+_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
 _md5_=2ba88e34c073981a3bd029a4378a68c9

@@ -10,5 +10,5 @@ RDEPEND=dev-lang/php:*[curl?,fileinfo?,ssl?,zlib?] >=dev-php/PEAR-Net_URL2-2.2.0
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTTP_Request2-2.3.0.tgz
-_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
+_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
 _md5_=38fe82bf3556cd88f023abe771bf095d

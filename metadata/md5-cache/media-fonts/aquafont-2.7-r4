@@ -10,5 +10,5 @@ LICENSE=aquafont
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://www.geocities.jp/teardrops_in_aquablue/fnt/aqua2_7.zip
-_eclasses_=font	e052246186f22bd6a37797238374613b
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=3f3590742030d91b9a11ab9f2f9396e7

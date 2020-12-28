@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Auth_SASL-1.1.0.tgz
-_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
+_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
 _md5_=8eb0363131770b82f3b48c0073e8d692

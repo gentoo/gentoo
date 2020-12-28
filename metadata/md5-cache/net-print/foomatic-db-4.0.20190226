@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=net-print/foomatic-db-engine !net-print/foo2zjs[hp2600n]
 SLOT=0
 SRC_URI=http://www.openprinting.org/download/foomatic/foomatic-db-4.0-20190226.tar.xz
-_eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=f3e3dacc7229e5f930142cbb25d9da44

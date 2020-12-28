@@ -8,5 +8,5 @@ LICENSE=public-domain RSA
 RDEPEND=acct-group/cmd5checkpw
 SLOT=0
 SRC_URI=https://www.fehcom.de/qmail/auth/cmd5checkpw-030_tgz.bin -> cmd5checkpw-0.30.tar.gz
-_eclasses_=fixheadtails	9517614a212fd80fc05263109665403c
+_eclasses_=fixheadtails	662e80584ee2337b981d7188078e7c74
 _md5_=c5894359dd096d4f566dd665c59d3fcb

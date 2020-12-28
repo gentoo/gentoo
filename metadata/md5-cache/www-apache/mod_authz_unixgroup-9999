@@ -7,5 +7,5 @@ LICENSE=Apache-1.1
 PROPERTIES=live
 RDEPEND==www-servers/apache-2.4*
 SLOT=0
-_eclasses_=apache-module	63b336ffe0f03a3e367b03ffb19216c5	depend.apache	69ed723e2331f996dc7510598673359e	git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=bde13880107a0121cb91006bcdb2b01c

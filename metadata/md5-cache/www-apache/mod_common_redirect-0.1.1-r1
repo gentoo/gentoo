@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=https://nodeload.github.com/hollow/mod_common_redirect/tarball/v0.1.1 -> mod_common_redirect-0.1.1.tar.gz
-_eclasses_=apache-module	63b336ffe0f03a3e367b03ffb19216c5	depend.apache	69ed723e2331f996dc7510598673359e
+_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd
 _md5_=5f8b388dbf51dbc63fc0d1ca27599f97

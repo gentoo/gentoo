@@ -7,5 +7,5 @@ KEYWORDS=~alpha amd64 ppc ppc64 x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://code.call-cc.org/releases/4.13.0/chicken-4.13.0.tar.gz
-_eclasses_=estack	d780995dc525ff7e6a2c4c043ffec242	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=586d30a5e0d2d6871d7a1419528a9f39

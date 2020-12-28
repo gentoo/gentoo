@@ -11,5 +11,5 @@ RDEPEND=games-strategy/s25rttr
 RESTRICT=bindist !cdinstall? ( fetch )
 SLOT=0
 SRC_URI=!cdinstall? ( setup_the_settlers_2_gold_1.5.1_(30319).exe )
-_eclasses_=cdrom	c3a14bb54eef4e8dc8b133b20262b766	estack	d780995dc525ff7e6a2c4c043ffec242	portability	ef17692c89618f4fb47984b1186bb484
+_eclasses_=cdrom	1e000a2eadc6d6760765285e5a32e642	estack	055c42df72f76a4f45ec92b35e83cd56	portability	b2e405b5a3f051d58b50c9ffc6b883cf
 _md5_=b45b77dfb4e47ea737939c798a642ced

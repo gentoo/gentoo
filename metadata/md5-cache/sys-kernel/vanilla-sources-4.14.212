@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=4.14.212
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.212.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	d780995dc525ff7e6a2c4c043ffec242	kernel-2	1543bf4cdf0b10a5bf32d15ac7b8aa48	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	kernel-2	1543bf4cdf0b10a5bf32d15ac7b8aa48	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=71a3056d94dc6959a5c71a4dea2cc615

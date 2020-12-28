@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=http://srpski.org/aspell/aspell6-sr-0.02.tar.bz2
-_eclasses_=aspell-dict-r1	dc4e51fece9b7d4ca6b696c1f2e8ae87
+_eclasses_=aspell-dict-r1	79e37698c4f52cac5e606d8692fda04f
 _md5_=580f87221930ebe91a55b26e30226e18

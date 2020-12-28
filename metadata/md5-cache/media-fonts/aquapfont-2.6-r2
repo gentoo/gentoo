@@ -10,5 +10,5 @@ LICENSE=aquafont
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://aquablue.milkcafe.to/tears/font/aquap2_6.zip
-_eclasses_=font	e052246186f22bd6a37797238374613b
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=7ccce0b6075197920ddda7d33c446258

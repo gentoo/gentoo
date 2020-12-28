@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/php-5.2.0:* >=dev-php/PEAR-HTML_Common2-2.1.0 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_QuickForm2-2.1.0.tgz
-_eclasses_=php-pear-r2	84e45e11646f0a96ac976805e9251fa7
+_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
 _md5_=2d9e97eb9d99eeab612197aa17cf95e4

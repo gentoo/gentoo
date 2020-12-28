@@ -1,526 +1,526 @@
-acct-group/abrt 0: A group for the automatic bug detection and reporting tool
-acct-group/adm 0: System group: adm
-acct-group/airdcppd 0: Group for net-p2p/airdcpp-webclient
-acct-group/amavis 0: Group for mail-filter/amavisd-new
-acct-group/amule 0: Group for net-p2p/amule
-acct-group/anope 0: Group for Anope IRC services
-acct-group/apache 0: System group: apache
+acct-group/abrt 0-r1: A group for the automatic bug detection and reporting tool
+acct-group/adm 0-r1: System group: adm
+acct-group/airdcppd 0-r1: Group for net-p2p/airdcpp-webclient
+acct-group/amavis 0-r1: Group for mail-filter/amavisd-new
+acct-group/amule 0-r1: Group for net-p2p/amule
+acct-group/anope 0-r1: Group for Anope IRC services
+acct-group/apache 0-r1: System group: apache
 acct-group/argus 0: gid for net-analyzer/argus
-acct-group/asterisk 0: Group for asterisk
-acct-group/atheme-services 0: Group for Atheme IRC services
-acct-group/audio 0: System group: audio
-acct-group/automx2 0: Group for net-mail/automx2
-acct-group/avahi 0: group for avahi
-acct-group/avahi-autoipd 0: group for avahi-autoipd
-acct-group/bacula 0: A group for the bacula backup system
-acct-group/bareos 0: Group for the bareos network backup suite
-acct-group/bedrock 0: A group for the Minecraft Bedrock server
-acct-group/bind_exporter 0: System group: bind_exporter
-acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin services
-acct-group/bitlbee 0: System group: bitlbee
-acct-group/buildbot 0: Buildbot program group
-acct-group/burp 0: Group for the app-backup/burp server
-acct-group/cadvisor 0: System group: cadvisor
-acct-group/carbon 0: System group: carbon
-acct-group/cdrom 0: System group: cdrom
-acct-group/ceph 0: System group: ceph
+acct-group/asterisk 0-r1: Group for asterisk
+acct-group/atheme-services 0-r1: Group for Atheme IRC services
+acct-group/audio 0-r1: System group: audio
+acct-group/automx2 0-r1: Group for net-mail/automx2
+acct-group/avahi 0-r1: group for avahi
+acct-group/avahi-autoipd 0-r1: group for avahi-autoipd
+acct-group/bacula 0-r1: A group for the bacula backup system
+acct-group/bareos 0-r1: Group for the bareos network backup suite
+acct-group/bedrock 0-r1: A group for the Minecraft Bedrock server
+acct-group/bind_exporter 0-r1: System group: bind_exporter
+acct-group/bitcoin 0-r1: A group for users with access to system-wide Bitcoin services
+acct-group/bitlbee 0-r1: System group: bitlbee
+acct-group/buildbot 0-r1: Buildbot program group
+acct-group/burp 0-r1: Group for the app-backup/burp server
+acct-group/cadvisor 0-r1: System group: cadvisor
+acct-group/carbon 0-r1: System group: carbon
+acct-group/cdrom 0-r1: System group: cdrom
+acct-group/ceph 0-r1: System group: ceph
 acct-group/cgit 0: System group: cgit
-acct-group/chronograf 0: System group: chronograf
-acct-group/cinder 0: System group: cinder
-acct-group/clair 0: System group: clair
-acct-group/clamav 0: System group: clamav
-acct-group/cmd5checkpw 0: System group: cmd5checkpw
-acct-group/consul 0: System group: consul
-acct-group/consul-template 0: System group: consul-template
+acct-group/chronograf 0-r1: System group: chronograf
+acct-group/cinder 0-r1: System group: cinder
+acct-group/clair 0-r1: System group: clair
+acct-group/clamav 0-r1: System group: clamav
+acct-group/cmd5checkpw 0-r1: System group: cmd5checkpw
+acct-group/consul 0-r1: System group: consul
+acct-group/consul-template 0-r1: System group: consul-template
 acct-group/consul_exporter 0: System group: consul_exporter
 acct-group/croc 0: Group for net-misc/croc
-acct-group/cvmfs 0: Group for the CernVM-FS network file system
-acct-group/davfs2 0: System group: davfs2
+acct-group/cvmfs 0-r1: Group for the CernVM-FS network file system
+acct-group/davfs2 0-r1: System group: davfs2
 acct-group/dbmail 0: System group: dbmail
-acct-group/ddclient 0: A group for the dynamic DNS client
+acct-group/ddclient 0-r1: A group for the dynamic DNS client
 acct-group/dehydrated 0: dehydrated program group
-acct-group/deluge 0: System group: deluge
-acct-group/dhcp 0: System group: dhcp
-acct-group/dhcpcd 0: System group: dhcpcd
-acct-group/dialout 0: System group: dialout
+acct-group/deluge 0-r1: System group: deluge
+acct-group/dhcp 0-r1: System group: dhcp
+acct-group/dhcpcd 0-r1: System group: dhcpcd
+acct-group/dialout 0-r1: System group: dialout
 acct-group/dictd 0: gid for app-text/dictd
-acct-group/disk 0: System group: disk
-acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
-acct-group/dnsdist 0: A group for net-dns/dnsdist
-acct-group/dnsmasq 0: System group: dnsmasq
-acct-group/dnsmasq_exporter 0: System group: dnsmasq_exporter
-acct-group/docker 0: System group: docker
-acct-group/docker_auth 0: System group: docker_auth
-acct-group/dovecot 0: System group: dovecot
-acct-group/dovenull 0: System group: dovenull
-acct-group/elasticsearch 0: Elasticsearch program group
-acct-group/epmd 0: Group for Erlang Portmapper Daemon
-acct-group/etcd 0: System group: etcd
-acct-group/exabgp 0: System group: exabgp
-acct-group/fetchmail 0: Group for net-mail/fetchmail
-acct-group/fhem 0: A group for the FHEM perl server for house automation
-acct-group/fingerprint 0: System group: fingerprint
+acct-group/disk 0-r1: System group: disk
+acct-group/dnscrypt-proxy 0-r1: Group for net-dns/dnscrypt-proxy
+acct-group/dnsdist 0-r1: A group for net-dns/dnsdist
+acct-group/dnsmasq 0-r1: System group: dnsmasq
+acct-group/dnsmasq_exporter 0-r1: System group: dnsmasq_exporter
+acct-group/docker 0-r1: System group: docker
+acct-group/docker_auth 0-r1: System group: docker_auth
+acct-group/dovecot 0-r1: System group: dovecot
+acct-group/dovenull 0-r1: System group: dovenull
+acct-group/elasticsearch 0-r1: Elasticsearch program group
+acct-group/epmd 0-r1: Group for Erlang Portmapper Daemon
+acct-group/etcd 0-r1: System group: etcd
+acct-group/exabgp 0-r1: System group: exabgp
+acct-group/fetchmail 0-r1: Group for net-mail/fetchmail
+acct-group/fhem 0-r1: A group for the FHEM perl server for house automation
+acct-group/fingerprint 0-r1: System group: fingerprint
 acct-group/flatpak 0: System group: flatpak
 acct-group/flows 0: gid for net-analyzer/flow-tools
 acct-group/freenet 0: Group for net-p2p/freenet
 acct-group/frr 0: System group: frr
-acct-group/ftp 0: File Transfer Protocol server user
-acct-group/fvwm-crystal 0: System group: fvwm-crystal
+acct-group/ftp 0-r1: File Transfer Protocol server user
+acct-group/fvwm-crystal 0-r1: System group: fvwm-crystal
 acct-group/gamemode 0: Group for the system-wide games-util/gamemode resource group
-acct-group/gamestat 0: Group for shared high-score and game state files
+acct-group/gamestat 0-r1: Group for shared high-score and game state files
 acct-group/gatling 0-r1: System group: gatling
-acct-group/geneweb 0: Group for geneweb daemon
-acct-group/gerbera 0: Gerbera UPnP Media Server group
-acct-group/git 0: System group: git
-acct-group/gkrellmd 0: System group: gkrellmd
-acct-group/glance 0: System group: glance
-acct-group/gluster 0: System group: gluster
-acct-group/gpib 0: System group: gpib
-acct-group/grafana 0: grafana program group
-acct-group/graylog 0: Graylog program group
-acct-group/greetd 0: Group for gui-libs/greetd
-acct-group/gvm 0: Greenbone vulnerability management program group
-acct-group/haproxy 0: System group: haproxy
-acct-group/heat 0: System group: heat
-acct-group/i2p 0: Group for system-wide net-vpn/i2p
-acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
-acct-group/icinga 0: System group: icinga
-acct-group/icingacmd 0: System group: icingacmd
-acct-group/icingaweb2 0: System group: icingaweb2
-acct-group/influxdb 0: System group: influxdb
-acct-group/input 0: System group: input
-acct-group/inspircd 0: System group: inspircd
-acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
+acct-group/geneweb 0-r1: Group for geneweb daemon
+acct-group/gerbera 0-r1: Gerbera UPnP Media Server group
+acct-group/git 0-r1: System group: git
+acct-group/gkrellmd 0-r1: System group: gkrellmd
+acct-group/glance 0-r1: System group: glance
+acct-group/gluster 0-r1: System group: gluster
+acct-group/gpib 0-r1: System group: gpib
+acct-group/grafana 0-r1: grafana program group
+acct-group/graylog 0-r1: Graylog program group
+acct-group/greetd 0-r1: Group for gui-libs/greetd
+acct-group/gvm 0-r1: Greenbone vulnerability management program group
+acct-group/haproxy 0-r1: System group: haproxy
+acct-group/heat 0-r1: System group: heat
+acct-group/i2p 0-r1: Group for system-wide net-vpn/i2p
+acct-group/i2pd 0-r1: Group for the system-wide net-vpn/i2pd server
+acct-group/icinga 0-r1: System group: icinga
+acct-group/icingacmd 0-r1: System group: icingacmd
+acct-group/icingaweb2 0-r1: System group: icingaweb2
+acct-group/influxdb 0-r1: System group: influxdb
+acct-group/input 0-r1: System group: input
+acct-group/inspircd 0-r1: System group: inspircd
+acct-group/ipfs 0-r1: Group for the system-wide net-p2p/go-ipfs-bin server
 acct-group/ipsec 0: ipsec (strongswan) program group
 acct-group/jabber 0: A group for various jabber services
-acct-group/kafka 0: System group: kafka
-acct-group/kapacitor 0: System group: kapacitor
-acct-group/keystone 0: System group: keystone
-acct-group/kibana 0: Kibana program group
-acct-group/kismet 0: net-wireless/kismet
-acct-group/kmem 0: System group: kmem
-acct-group/knot 0: System group: knot
-acct-group/kube-apiserver 0: System group: kube-apiserver
-acct-group/kube-controller-manager 0: System group: kube-controller-manager
-acct-group/kube-scheduler 0: System group: kube-scheduler
-acct-group/kvm 0: System group: kvm
+acct-group/kafka 0-r1: System group: kafka
+acct-group/kapacitor 0-r1: System group: kapacitor
+acct-group/keystone 0-r1: System group: keystone
+acct-group/kibana 0-r1: Kibana program group
+acct-group/kismet 0-r1: net-wireless/kismet
+acct-group/kmem 0-r1: System group: kmem
+acct-group/knot 0-r1: System group: knot
+acct-group/kube-apiserver 0-r1: System group: kube-apiserver
+acct-group/kube-controller-manager 0-r1: System group: kube-controller-manager
+acct-group/kube-scheduler 0-r1: System group: kube-scheduler
+acct-group/kvm 0-r1: System group: kvm
 acct-group/ldap 0: System group: ldap
-acct-group/libvirt 0: System group: libvirt
-acct-group/lighttpd 0: System group: lighttpd
-acct-group/lldpd 0: System group: lldpd
-acct-group/locate 0: System group: locate
-acct-group/logstash 0: Logstash program group
-acct-group/lp 0: System group: lp
-acct-group/lpadmin 0: System group: lpadmin
-acct-group/lxd 0: Group for app-emulation/lxd
-acct-group/mail 0: Mail program group
-acct-group/man 0: System group: man
-acct-group/maradns 0: System group: maradns
-acct-group/memcached 0: System group: memcached
-acct-group/messagebus 0: System group: messagebus
+acct-group/libvirt 0-r1: System group: libvirt
+acct-group/lighttpd 0-r1: System group: lighttpd
+acct-group/lldpd 0-r1: System group: lldpd
+acct-group/locate 0-r1: System group: locate
+acct-group/logstash 0-r1: Logstash program group
+acct-group/lp 0-r1: System group: lp
+acct-group/lpadmin 0-r1: System group: lpadmin
+acct-group/lxd 0-r1: Group for app-emulation/lxd
+acct-group/mail 0-r1: Mail program group
+acct-group/man 0-r1: System group: man
+acct-group/maradns 0-r1: System group: maradns
+acct-group/memcached 0-r1: System group: memcached
+acct-group/messagebus 0-r1: System group: messagebus
 acct-group/mgraph 0: Group for net-mail/mailgraph
-acct-group/milter-regex 0: Group for mail-filter/milter-regex
-acct-group/minecraft 0: A group for the Minecraft server
-acct-group/minetest 0: A group for the Minetest server
+acct-group/milter-regex 0-r1: Group for mail-filter/milter-regex
+acct-group/minecraft 0-r1: A group for the Minecraft server
+acct-group/minetest 0-r1: A group for the Minetest server
 acct-group/minidlna 0: System group: minidlna
-acct-group/mongodb 0: MongoDB program group
+acct-group/mongodb 0-r1: MongoDB program group
 acct-group/mongodb_exporter 0: System group: mongodb_exporter
-acct-group/monitorix 0: Monitorix system tool group
-acct-group/monkeysphere 0: monkeysphere program group
-acct-group/mosquitto 0: A group for the mosquitto MQTT broker
-acct-group/motion 0: System group: motion
-acct-group/msmtpd 0: System group: msmtpd
-acct-group/munin 0: System group: munin
-acct-group/murmur 0: System group: murmur
-acct-group/mysql 0: MySQL program group
-acct-group/mysqld_exporter 0: System group: mysqld_exporter
-acct-group/mythtv 0: Mythtv mythbackend server/deamon group
-acct-group/nagios 0: System group: nagios
-acct-group/named 0: System group: named
-acct-group/netbox 0: System group: netbox
-acct-group/netdata 0: System group: netdata
-acct-group/netdev 0: group for netdev (avahi)
-acct-group/neutron 0: System group: neutron
-acct-group/nginx-vts-exporter 0: System group: nginx-vts-exporter
-acct-group/ngircd 0: Group for ngircd (IRC daemon)
+acct-group/monitorix 0-r1: Monitorix system tool group
+acct-group/monkeysphere 0-r1: monkeysphere program group
+acct-group/mosquitto 0-r1: A group for the mosquitto MQTT broker
+acct-group/motion 0-r1: System group: motion
+acct-group/msmtpd 0-r1: System group: msmtpd
+acct-group/munin 0-r1: System group: munin
+acct-group/murmur 0-r1: System group: murmur
+acct-group/mysql 0-r1: MySQL program group
+acct-group/mysqld_exporter 0-r1: System group: mysqld_exporter
+acct-group/mythtv 0-r1: Mythtv mythbackend server/deamon group
+acct-group/nagios 0-r1: System group: nagios
+acct-group/named 0-r1: System group: named
+acct-group/netbox 0-r1: System group: netbox
+acct-group/netdata 0-r1: System group: netdata
+acct-group/netdev 0-r1: group for netdev (avahi)
+acct-group/neutron 0-r1: System group: neutron
+acct-group/nginx-vts-exporter 0-r1: System group: nginx-vts-exporter
+acct-group/ngircd 0-r1: Group for ngircd (IRC daemon)
 acct-group/nobody 0: System group: nobody
-acct-group/node_exporter 0: System group: node_exporter
-acct-group/nofiles 0: System group: nofiles
-acct-group/nova 0: System group: nova
-acct-group/nsd 0: System group: nsd
-acct-group/nslcd 0: System group: nslcd
-acct-group/ntp 0: System group: ntp
+acct-group/node_exporter 0-r1: System group: node_exporter
+acct-group/nofiles 0-r1: System group: nofiles
+acct-group/nova 0-r1: System group: nova
+acct-group/nsd 0-r1: System group: nsd
+acct-group/nslcd 0-r1: System group: nslcd
+acct-group/ntp 0-r1: System group: ntp
 acct-group/nzbget 0: Group for net-nntp/nzbget
-acct-group/oidentd 0: System group: oidentd
-acct-group/openct 0: System group: openct
-acct-group/opendkim 0: Group for OpenDKIM
-acct-group/openntpd 0: System group: openntpd
-acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
-acct-group/openvpn 0: System group: openvpn
-acct-group/openvpn_exporter 0: System group: openvpn_exporter
-acct-group/oprofile 0: A group for dev-util/oprofile JIT code processing
-acct-group/ossec 0: Group for net-analyzer/ossec-hids
+acct-group/oidentd 0-r1: System group: oidentd
+acct-group/openct 0-r1: System group: openct
+acct-group/opendkim 0-r1: Group for OpenDKIM
+acct-group/openntpd 0-r1: System group: openntpd
+acct-group/openrct2 0-r1: A group for the OpenRCT2 dedicated server
+acct-group/openvpn 0-r1: System group: openvpn
+acct-group/openvpn_exporter 0-r1: System group: openvpn_exporter
+acct-group/oprofile 0-r1: A group for dev-util/oprofile JIT code processing
+acct-group/ossec 0-r1: Group for net-analyzer/ossec-hids
 acct-group/p2p 0: Group for mldonkey
 acct-group/pcap 0: Group for capturing network traffic
-acct-group/pcscd 0: System group: pcscd
-acct-group/pdns 0: System group: pdns
-acct-group/pdnsd 0: System group: pdnsd
-acct-group/placement 0: System group: placement
-acct-group/plex 0: Plex Media Server group
-acct-group/plugdev 0: Group controlling access to removable media
-acct-group/polkitd 0: System group: polkitd
+acct-group/pcscd 0-r1: System group: pcscd
+acct-group/pdns 0-r1: System group: pdns
+acct-group/pdnsd 0-r1: System group: pdnsd
+acct-group/placement 0-r1: System group: placement
+acct-group/plex 0-r1: Plex Media Server group
+acct-group/plugdev 0-r1: Group controlling access to removable media
+acct-group/polkitd 0-r1: System group: polkitd
 acct-group/popa3d 0: Group for net-mail/popa3d
 acct-group/portage 0: System group: portage
-acct-group/postdrop 0: System group: postdrop
-acct-group/postfix 0: System group: postfix
-acct-group/postfix_exporter 0: System group: postfix_exporter
-acct-group/postgres 0: PostgreSQL program group
+acct-group/postdrop 0-r1: System group: postdrop
+acct-group/postfix 0-r1: System group: postfix
+acct-group/postfix_exporter 0-r1: System group: postfix_exporter
+acct-group/postgres 0-r1: PostgreSQL program group
 acct-group/postgrey 0: Group for the postgrey mail daemon
-acct-group/privoxy 0: A privoxy: privacy oriented web proxy group
-acct-group/prometheus 0: System group: prometheus
+acct-group/privoxy 0-r1: A privoxy: privacy oriented web proxy group
+acct-group/prometheus 0-r1: System group: prometheus
 acct-group/pulse 0: System group: pulse
 acct-group/pulse-access 0: System group: pulse-access
-acct-group/puppet 0: System group: puppet
-acct-group/puppetdb 0: System group: puppetdb
-acct-group/qemu 0: System group: qemu
-acct-group/qmail 0: System group: qmail
-acct-group/quagga 0: System group: quagga
-acct-group/quassel 0: System group: quassel
-acct-group/radius 0: FreeRadius program group
-acct-group/rbldns 0: System group: rbldns
-acct-group/redis 0: Redis program group
-acct-group/redmine 0: System group: redmine
-acct-group/render 0: System group: render
+acct-group/puppet 0-r1: System group: puppet
+acct-group/puppetdb 0-r1: System group: puppetdb
+acct-group/qemu 0-r1: System group: qemu
+acct-group/qmail 0-r1: System group: qmail
+acct-group/quagga 0-r1: System group: quagga
+acct-group/quassel 0-r1: System group: quassel
+acct-group/radius 0-r1: FreeRadius program group
+acct-group/rbldns 0-r1: System group: rbldns
+acct-group/redis 0-r1: Redis program group
+acct-group/redmine 0-r1: System group: redmine
+acct-group/render 0-r1: System group: render
 acct-group/root 0: System group: root
-acct-group/rspamd 0: Group for rspamd - Rapid spam filtering system
-acct-group/rstudio-server 0: group for sci-mathematics/rstudio
-acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
-acct-group/sabnzbd 0: SABnzbd program group
+acct-group/rspamd 0-r1: Group for rspamd - Rapid spam filtering system
+acct-group/rstudio-server 0-r1: group for sci-mathematics/rstudio
+acct-group/rtkit 0-r1: Group for the Realtime Policy and Watchdog Daemon
+acct-group/sabnzbd 0-r1: SABnzbd program group
 acct-group/sancp 0: gid for net-analyzer/sancp
-acct-group/sanlock 0: shared storage lock manager
-acct-group/scponly 0: group for scponly
-acct-group/shellinaboxd 0: shellinabox group
-acct-group/simplevirt 0: System group: simplevirt
+acct-group/sanlock 0-r1: shared storage lock manager
+acct-group/scponly 0-r1: group for scponly
+acct-group/shellinaboxd 0-r1: shellinabox group
+acct-group/simplevirt 0-r1: System group: simplevirt
 acct-group/sks 0: Group for SKS OpenPGP keyserver
-acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
-acct-group/smmsp 0: System group: smmsp
-acct-group/smtpd 0: daemon group for smtpd
-acct-group/smtpq 0: queue group for smtpd
+acct-group/slurm 0-r1: A group for the slurm - Highly Scalable Resource Manager
+acct-group/smmsp 0-r1: System group: smmsp
+acct-group/smtpd 0-r1: daemon group for smtpd
+acct-group/smtpq 0-r1: queue group for smtpd
 acct-group/snapserver 0: Server group for media-sound/snapcast
 acct-group/sniproxy 0: System group: sniproxy
 acct-group/sobexsrv 0: A group for sobexsrv: a secure OBEX server
-acct-group/sogo 0: Group for gnustep-apps/sogo
-acct-group/spamd 0: Group for the SpamAssassin daemon
-acct-group/spectrum 0: A group for the Spectrum messaging transport
-acct-group/spire 0: System group: spire
-acct-group/sqlgrey 0: Group for SQLGrey
-acct-group/squid 0: System group: squid
-acct-group/sshd 0: System group: sshd
-acct-group/stdiscosrv 0: Group for the Syncthing discovery server
-acct-group/steamcmd 0: A group for the SteamCMD server
-acct-group/strelaysrv 0: Group for the Syncthing relay server
-acct-group/stubby 0: Stubby program group (from net-dns/getdns)
-acct-group/stunnel 0: group for stunnel
-acct-group/supervisor 0: Group to grant access to app-admin/supervisor's management
-acct-group/suricata 0: Group for Suricata IDS
-acct-group/svnusers 0: System group: svnusers
-acct-group/swift 0: System group: swift
-acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
-acct-group/systemd-coredump 0: System group: systemd-coredump
-acct-group/systemd-journal 0: System group: systemd-journal
-acct-group/systemd-journal-remote 0: System group: systemd-journal-remote
-acct-group/systemd-network 0: System group: systemd-network
+acct-group/sogo 0-r1: Group for gnustep-apps/sogo
+acct-group/spamd 0-r1: Group for the SpamAssassin daemon
+acct-group/spectrum 0-r1: A group for the Spectrum messaging transport
+acct-group/spire 0-r1: System group: spire
+acct-group/sqlgrey 0-r1: Group for SQLGrey
+acct-group/squid 0-r1: System group: squid
+acct-group/sshd 0-r1: System group: sshd
+acct-group/stdiscosrv 0-r1: Group for the Syncthing discovery server
+acct-group/steamcmd 0-r1: A group for the SteamCMD server
+acct-group/strelaysrv 0-r1: Group for the Syncthing relay server
+acct-group/stubby 0-r1: Stubby program group (from net-dns/getdns)
+acct-group/stunnel 0-r1: group for stunnel
+acct-group/supervisor 0-r1: Group to grant access to app-admin/supervisor's management
+acct-group/suricata 0-r1: Group for Suricata IDS
+acct-group/svnusers 0-r1: System group: svnusers
+acct-group/swift 0-r1: System group: swift
+acct-group/syncthing 0-r1: Group for the system-wide net-p2p/syncthing server
+acct-group/systemd-coredump 0-r1: System group: systemd-coredump
+acct-group/systemd-journal 0-r1: System group: systemd-journal
+acct-group/systemd-journal-remote 0-r1: System group: systemd-journal-remote
+acct-group/systemd-network 0-r1: System group: systemd-network
 acct-group/systemd-oom 0: System group: systemd-oom
-acct-group/systemd-resolve 0: System group: systemd-resolve
-acct-group/systemd-timesync 0: System group: systemd-timesync
-acct-group/tape 0: System group: tape
-acct-group/teamspeak 0: A group for the TeamSpeak server
-acct-group/telegraf 0: System group: telegraf
+acct-group/systemd-resolve 0-r1: System group: systemd-resolve
+acct-group/systemd-timesync 0-r1: System group: systemd-timesync
+acct-group/tape 0-r1: System group: tape
+acct-group/teamspeak 0-r1: A group for the TeamSpeak server
+acct-group/telegraf 0-r1: System group: telegraf
 acct-group/tinyproxy 0: gid for net-proxy/tinyproxy
-acct-group/tor 0: group for tor daemon
-acct-group/tox 0: Group management for package net-libs/tox
-acct-group/transmission 0: System group: transmission
-acct-group/tsm 0: System group: tsm
-acct-group/tss 0: Trusted Software Stack for TPMs group
+acct-group/tor 0-r1: group for tor daemon
+acct-group/tox 0-r1: Group management for package net-libs/tox
+acct-group/transmission 0-r1: System group: transmission
+acct-group/tsm 0-r1: System group: tsm
+acct-group/tss 0-r1: Trusted Software Stack for TPMs group
 acct-group/ttrssd 0: Group for www-apps/tt-rss
-acct-group/tty 0: System group: tty
-acct-group/turnserver 0: A group for a turn server like coturn
-acct-group/ubridge 0: Group for net-misc/ubridge
-acct-group/ultimaker 0: Group for ultimaker
-acct-group/unbound 0: unbound program group
-acct-group/unifi 0: A group for the UniFi controller
-acct-group/unrealircd 0: System group: unrealircd
+acct-group/tty 0-r1: System group: tty
+acct-group/turnserver 0-r1: A group for a turn server like coturn
+acct-group/ubridge 0-r1: Group for net-misc/ubridge
+acct-group/ultimaker 0-r1: Group for ultimaker
+acct-group/unbound 0-r1: unbound program group
+acct-group/unifi 0-r1: A group for the UniFi controller
+acct-group/unrealircd 0-r1: System group: unrealircd
 acct-group/upmpdcli 0: Group for upmpdcli
-acct-group/uptimed 0: System group: uptimed
-acct-group/usb 0: System group: usb
+acct-group/uptimed 0-r1: System group: uptimed
+acct-group/usb 0-r1: System group: usb
 acct-group/users 0: System group: users
-acct-group/utmp 0: System group: utmp
-acct-group/varnish 0: group for varnish
-acct-group/vault 0: System group: vault
-acct-group/vboxguest 0: System group: vboxguest
-acct-group/vboxsf 0: System group: vboxsf
-acct-group/vboxusers 0: System group: vboxusers
-acct-group/vdradmin 0: Group for www-misc/vdradmin-am
-acct-group/video 0: System group: video
-acct-group/vpopmail 0: System group: vpopmail
-acct-group/wesnoth 0: System group: wesnoth
-acct-group/wheel 0: System group: wheel
-acct-group/x2goprint 0: Group for net-misc/x2goserver
-acct-group/x2gouser 0: Group for net-misc/x2goserver
+acct-group/utmp 0-r1: System group: utmp
+acct-group/varnish 0-r1: group for varnish
+acct-group/vault 0-r1: System group: vault
+acct-group/vboxguest 0-r1: System group: vboxguest
+acct-group/vboxsf 0-r1: System group: vboxsf
+acct-group/vboxusers 0-r1: System group: vboxusers
+acct-group/vdradmin 0-r1: Group for www-misc/vdradmin-am
+acct-group/video 0-r1: System group: video
+acct-group/vpopmail 0-r1: System group: vpopmail
+acct-group/wesnoth 0-r1: System group: wesnoth
+acct-group/wheel 0-r1: System group: wheel
+acct-group/x2goprint 0-r1: Group for net-misc/x2goserver
+acct-group/x2gouser 0-r1: Group for net-misc/x2goserver
 acct-group/xpra 0: group for x11-wm/xpra
-acct-group/xrootd 0: Group for the XRootD server
+acct-group/xrootd 0-r1: Group for the XRootD server
 acct-group/ziproxy 0: System group: ziproxy
-acct-group/znc 0: Group for net-irc/znc
-acct-user/abrt 0: A user for the automatic bug detection and reporting tool
-acct-user/airdcppd 0: User for net-p2p/airdcpp-webclient
-acct-user/alias 0: alias user for qmail mail delivery
-acct-user/amavis 0: User for mail-filter/amavisd-new
-acct-user/amule 0: User for net-p2p/amule
-acct-user/anope 0: User for Anope IRC services
-acct-user/apache 0: System user: apache
+acct-group/znc 0-r1: Group for net-irc/znc
+acct-user/abrt 0-r1: A user for the automatic bug detection and reporting tool
+acct-user/airdcppd 0-r1: User for net-p2p/airdcpp-webclient
+acct-user/alias 0-r1: alias user for qmail mail delivery
+acct-user/amavis 0-r1: User for mail-filter/amavisd-new
+acct-user/amule 0-r1: User for net-p2p/amule
+acct-user/anope 0-r1: User for Anope IRC services
+acct-user/apache 0-r1: System user: apache
 acct-user/argus 0: uid for net-analyzer/argus
-acct-user/asterisk 0: User for asterisk
-acct-user/atheme-services 0: User for Atheme IRC services
-acct-user/automx2 0: User for net-mail/automx2
-acct-user/avahi 0: user for avahi
-acct-user/avahi-autoipd 0: user for avahi-autoipd
-acct-user/bacula 0: A group for the bacula backup system
-acct-user/bareos 0: User for the bareos network backup suite
-acct-user/bedrock 0: A user for the Minecraft Bedrock server
-acct-user/bind_exporter 0: user for bind_exporter
-acct-user/bitcoin 0: System-wide Bitcoin services user
-acct-user/bitlbee 0: User for biltbee
-acct-user/buildbot 0: Buildbot program user
-acct-user/burp 0: User for the app-backup/burp server
-acct-user/cadvisor 0: User for cadvisor
-acct-user/carbon 0: User for graphite/carbon suite
-acct-user/ceph 0: User for ceph
+acct-user/asterisk 0-r1: User for asterisk
+acct-user/atheme-services 0-r1: User for Atheme IRC services
+acct-user/automx2 0-r1: User for net-mail/automx2
+acct-user/avahi 0-r1: user for avahi
+acct-user/avahi-autoipd 0-r1: user for avahi-autoipd
+acct-user/bacula 0-r1: A group for the bacula backup system
+acct-user/bareos 0-r1: User for the bareos network backup suite
+acct-user/bedrock 0-r1: A user for the Minecraft Bedrock server
+acct-user/bind_exporter 0-r1: user for bind_exporter
+acct-user/bitcoin 0-r1: System-wide Bitcoin services user
+acct-user/bitlbee 0-r1: User for biltbee
+acct-user/buildbot 0-r1: Buildbot program user
+acct-user/burp 0-r1: User for the app-backup/burp server
+acct-user/cadvisor 0-r1: User for cadvisor
+acct-user/carbon 0-r1: User for graphite/carbon suite
+acct-user/ceph 0-r1: User for ceph
 acct-user/cgit 0: a fast web-interface for git repositories
-acct-user/chronograf 0: User for chronograf
-acct-user/cinder 0: user for the openstack cinder service
-acct-user/clair 0: User for clair
-acct-user/clamav 0: System user: clamav
-acct-user/cmd5checkpw 0: User for cmd5checkpw
-acct-user/consul 0: User for consul
-acct-user/consul-template 0: User for consul-template
+acct-user/chronograf 0-r1: User for chronograf
+acct-user/cinder 0-r1: user for the openstack cinder service
+acct-user/clair 0-r1: User for clair
+acct-user/clamav 0-r1: System user: clamav
+acct-user/cmd5checkpw 0-r1: User for cmd5checkpw
+acct-user/consul 0-r1: User for consul
+acct-user/consul-template 0-r1: User for consul-template
 acct-user/consul_exporter 0: user for consul_exporter
 acct-user/croc 0: User for net-misc/croc
-acct-user/cvmfs 0: User for the CernVM-FS network file system
-acct-user/cyrus 0-r1: user for cyrus-imapd daemon
+acct-user/cvmfs 0-r1: User for the CernVM-FS network file system
+acct-user/cyrus 0-r2: user for cyrus-imapd daemon
 acct-user/darkstat 0: uid for net-analyzer/darkstat
-acct-user/davfs2 0: System user: davfs2
+acct-user/davfs2 0-r1: System user: davfs2
 acct-user/dbmail 0: System user: dbmail
-acct-user/ddclient 0: A user for the dynamic DNS client
+acct-user/ddclient 0-r1: A user for the dynamic DNS client
 acct-user/dehydrated 0: dehydrated program user
-acct-user/deluge 0: user for deluge
-acct-user/dhcp 0: user for dhcp daemon
-acct-user/dhcpcd 0: user for dhcpcd client
+acct-user/deluge 0-r1: user for deluge
+acct-user/dhcp 0-r1: user for dhcp daemon
+acct-user/dhcpcd 0-r1: user for dhcpcd client
 acct-user/dictd 0: uid for app-text/dictd
-acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
-acct-user/dnsdist 0: A user for net-dns/dnsdist
-acct-user/dnsmasq 0: User for net-dns/dnsmasq
-acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
-acct-user/docker_auth 0: User for docker_auth
-acct-user/dovecot 0: user for dovecot daemon
-acct-user/dovenull 0: user for dovecot daemon
-acct-user/duende 0: System user: duende
-acct-user/elasticsearch 0: Elasticsearch program user
-acct-user/epmd 0: User for Erlang Portmapper Daemon
-acct-user/etcd 0: User for etcd
-acct-user/exabgp 0: User for net-misc/exabgp
-acct-user/fetchmail 0: User for net-mail/fetchmail
-acct-user/fhem 0: A user for the FHEM perl server for house automation
+acct-user/dnscrypt-proxy 0-r1: User for net-dns/dnscrypt-proxy
+acct-user/dnsdist 0-r1: A user for net-dns/dnsdist
+acct-user/dnsmasq 0-r1: User for net-dns/dnsmasq
+acct-user/dnsmasq_exporter 0-r1: user for dnsmasq_exporter
+acct-user/docker_auth 0-r1: User for docker_auth
+acct-user/dovecot 0-r1: user for dovecot daemon
+acct-user/dovenull 0-r1: user for dovecot daemon
+acct-user/duende 0-r1: System user: duende
+acct-user/elasticsearch 0-r1: Elasticsearch program user
+acct-user/epmd 0-r1: User for Erlang Portmapper Daemon
+acct-user/etcd 0-r1: User for etcd
+acct-user/exabgp 0-r1: User for net-misc/exabgp
+acct-user/fetchmail 0-r1: User for net-mail/fetchmail
+acct-user/fhem 0-r1: A user for the FHEM perl server for house automation
 acct-user/flatpak 0: System user: flatpak
 acct-user/flows 0: uid for net-analyzer/flow-tools
 acct-user/freenet 0: User for net-p2p/freenet
 acct-user/frr 0: System user: frr
-acct-user/ftp 0: File Transfer Protocol server user
+acct-user/ftp 0-r1: File Transfer Protocol server user
 acct-user/gatling 0-r1: System user: gatling
-acct-user/geneweb 0: user id for geneweb daemon
-acct-user/gerbera 0: Gerbera UPnP Media Server user
-acct-user/git 0: Git repository hosting user
-acct-user/gkrellmd 0: user for gkrellm daemon
-acct-user/glance 0: user for the glance openstack service
-acct-user/gluster 0: System user: gluster
-acct-user/gpsd 0: user for gpsd
-acct-user/grafana 0: grafana program user
-acct-user/graylog 0: Graylog program user
-acct-user/greetd 0: User for gui-libs/greetd
-acct-user/gvm 0: Greenbone vulnerability management program user
-acct-user/haproxy 0: System user: haproxy
-acct-user/heat 0: user for the heat openstack service
-acct-user/i2p 0: User for system-wide net-vpn/i2p
-acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
-acct-user/icinga 0: Icinga User
-acct-user/influxdb 0: User for influxdb
-acct-user/inspircd 0: User for InspIRCd server daemon
-acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
-acct-user/ippl 0: user for net-analyzer/ippl
+acct-user/geneweb 0-r1: user id for geneweb daemon
+acct-user/gerbera 0-r1: Gerbera UPnP Media Server user
+acct-user/git 0-r1: Git repository hosting user
+acct-user/gkrellmd 0-r1: user for gkrellm daemon
+acct-user/glance 0-r1: user for the glance openstack service
+acct-user/gluster 0-r1: System user: gluster
+acct-user/gpsd 0-r1: user for gpsd
+acct-user/grafana 0-r1: grafana program user
+acct-user/graylog 0-r1: Graylog program user
+acct-user/greetd 0-r1: User for gui-libs/greetd
+acct-user/gvm 0-r1: Greenbone vulnerability management program user
+acct-user/haproxy 0-r1: System user: haproxy
+acct-user/heat 0-r1: user for the heat openstack service
+acct-user/i2p 0-r1: User for system-wide net-vpn/i2p
+acct-user/i2pd 0-r1: User for the system-wide net-vpn/i2pd server
+acct-user/icinga 0-r1: Icinga User
+acct-user/influxdb 0-r1: User for influxdb
+acct-user/inspircd 0-r1: User for InspIRCd server daemon
+acct-user/ipfs 0-r1: User for the system-wide net-p2p/go-ipfs-bin server
+acct-user/ippl 0-r1: user for net-analyzer/ippl
 acct-user/ipsec 0: ipsec (strongswan) program user
 acct-user/jabber 0: A user for various jabber services
-acct-user/kafka 0: User for kafka
-acct-user/kapacitor 0: User for kapacitor
-acct-user/keystone 0: user for the keystone openstack service
-acct-user/kibana 0: Kibana program user
-acct-user/kismet 0: net-wireless/kismet
-acct-user/knot 0: User for knot DNS server
-acct-user/kube-apiserver 0: user for kube-apiserver
-acct-user/kube-controller-manager 0: user for kube-controller-manager
-acct-user/kube-scheduler 0: user for kube-scheduler
+acct-user/kafka 0-r1: User for kafka
+acct-user/kapacitor 0-r1: User for kapacitor
+acct-user/keystone 0-r1: user for the keystone openstack service
+acct-user/kibana 0-r1: Kibana program user
+acct-user/kismet 0-r1: net-wireless/kismet
+acct-user/knot 0-r1: User for knot DNS server
+acct-user/kube-apiserver 0-r1: user for kube-apiserver
+acct-user/kube-controller-manager 0-r1: user for kube-controller-manager
+acct-user/kube-scheduler 0-r1: user for kube-scheduler
 acct-user/ldap 0: A user for ldap
-acct-user/lighttpd 0: A user for lighttpd
-acct-user/lldpd 0: User for net-misc/lldpd
-acct-user/logstash 0: Logstash program user
-acct-user/mail 0: Mail program user
-acct-user/man 1: System user: man
-acct-user/maradns 0: System user: maradns
-acct-user/memcached 0: User for the memcached service
-acct-user/messagebus 0: System user: messagebus
+acct-user/lighttpd 0-r1: A user for lighttpd
+acct-user/lldpd 0-r1: User for net-misc/lldpd
+acct-user/logstash 0-r1: Logstash program user
+acct-user/mail 0-r1: Mail program user
+acct-user/man 1-r1: System user: man
+acct-user/maradns 0-r1: System user: maradns
+acct-user/memcached 0-r1: User for the memcached service
+acct-user/messagebus 0-r1: System user: messagebus
 acct-user/mgraph 0: User for net-mail/mailgraph
-acct-user/milter-regex 0: User for mail-filter/milter-regex
-acct-user/minecraft 0: A user for the Minecraft server
-acct-user/minetest 0 1: A user for the Minetest server
+acct-user/milter-regex 0-r1: User for mail-filter/milter-regex
+acct-user/minecraft 0-r1: A user for the Minecraft server
+acct-user/minetest 0-r1 1-r1: A user for the Minetest server
 acct-user/minidlna 0: System user: minidlna
-acct-user/mongodb 0: MongoDB program user
+acct-user/mongodb 0-r1: MongoDB program user
 acct-user/mongodb_exporter 0: user for mongodb_exporter
-acct-user/monitorix 0: Monitorix system tool user
-acct-user/monkeysphere 0: monkeysphere program user
-acct-user/mosquitto 0: A user for the mosquitto MQTT broker
-acct-user/motion 0: added by portage for motion, a software motion detector
-acct-user/mpd 0: A user for music player daemon (mpd)
-acct-user/msmtpd 0: user for msmtp daemon
-acct-user/munin 0: user for munin
-acct-user/munin-async 0: user for munin async proxy node
-acct-user/murmur 0: user for murmur daemon
-acct-user/mysql 0: MySQL program user
-acct-user/mysqld_exporter 0: mysqld_exporter User
-acct-user/mythtv 0: Mythtv mythbackend server/daemon user
-acct-user/nagios 0: System user: nagios
-acct-user/named 0: User for net-dns/bind
-acct-user/netbox 0: user for netbox
+acct-user/monitorix 0-r1: Monitorix system tool user
+acct-user/monkeysphere 0-r1: monkeysphere program user
+acct-user/mosquitto 0-r1: A user for the mosquitto MQTT broker
+acct-user/motion 0-r1: added by portage for motion, a software motion detector
+acct-user/mpd 0-r1: A user for music player daemon (mpd)
+acct-user/msmtpd 0-r1: user for msmtp daemon
+acct-user/munin 0-r1: user for munin
+acct-user/munin-async 0-r1: user for munin async proxy node
+acct-user/murmur 0-r1: user for murmur daemon
+acct-user/mysql 0-r1: MySQL program user
+acct-user/mysqld_exporter 0-r1: mysqld_exporter User
+acct-user/mythtv 0-r1: Mythtv mythbackend server/daemon user
+acct-user/nagios 0-r1: System user: nagios
+acct-user/named 0-r1: User for net-dns/bind
+acct-user/netbox 0-r1: user for netbox
 acct-user/netdata 1: user for netdata
-acct-user/neutron 0: user for the openstack neutron service
-acct-user/nginx-vts-exporter 0: user for nginx-vts-exporter
-acct-user/ngircd 0: User for ngircd (IRC daemon)
+acct-user/neutron 0-r1: user for the openstack neutron service
+acct-user/nginx-vts-exporter 0-r1: user for nginx-vts-exporter
+acct-user/ngircd 0-r1: User for ngircd (IRC daemon)
 acct-user/nobody 0: System user: nobody
-acct-user/node_exporter 0: node_exporter User
-acct-user/nova 0: user for the openstack nova service
-acct-user/nsd 0: user for nsd daemon
-acct-user/nslcd 0: User for nss-pam-ldapd
-acct-user/ntp 0: user for ntp daemon
+acct-user/node_exporter 0-r1: node_exporter User
+acct-user/nova 0-r1: user for the openstack nova service
+acct-user/nsd 0-r1: user for nsd daemon
+acct-user/nslcd 0-r1: User for nss-pam-ldapd
+acct-user/ntp 0-r1: user for ntp daemon
 acct-user/nzbget 0: User for net-nntp/nzbget
-acct-user/oidentd 0: System user: oidentd
-acct-user/opendkim 0: User for OpenDKIM
-acct-user/openntpd 0: user for openntpd daemon
-acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
-acct-user/openvpn 0: User for net-vpn/openvpn
-acct-user/openvpn_exporter 0: user for openvpn_exporter
-acct-user/oprofile 0: A user for dev-util/oprofile JIT code processing
-acct-user/ossec 0: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
-acct-user/ossecm 0: net-analyzer/ossec-hids (csyslogd, maild)
-acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
+acct-user/oidentd 0-r1: System user: oidentd
+acct-user/opendkim 0-r1: User for OpenDKIM
+acct-user/openntpd 0-r1: user for openntpd daemon
+acct-user/openrct2 0-r1: A user for the OpenRCT2 dedicated server
+acct-user/openvpn 0-r1: User for net-vpn/openvpn
+acct-user/openvpn_exporter 0-r1: user for openvpn_exporter
+acct-user/oprofile 0-r1: A user for dev-util/oprofile JIT code processing
+acct-user/ossec 0-r1: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
+acct-user/ossecm 0-r1: net-analyzer/ossec-hids (csyslogd, maild)
+acct-user/ossecr 0-r1: net-analyzer/ossec-hids (remoted)
 acct-user/p2p 0: User for mldonkey
 acct-user/pcap 0: User for capturing network traffic
-acct-user/pcscd 0: A user for pcsc-lite
-acct-user/pdns 0: System user: pdns
-acct-user/pdnsd 0: user for pdns daemon
+acct-user/pcscd 0-r1: A user for pcsc-lite
+acct-user/pdns 0-r1: System user: pdns
+acct-user/pdnsd 0-r1: user for pdns daemon
 acct-user/pgbouncer 0: PgBouncer program user
-acct-user/placement 0: User for the placement openstack service
-acct-user/plex 0: Plex Media Server user
-acct-user/polkitd 0: System user: polkitd
+acct-user/placement 0-r1: User for the placement openstack service
+acct-user/plex 0-r1: Plex Media Server user
+acct-user/polkitd 0-r1: System user: polkitd
 acct-user/popa3d 0: User for net-mail/popa3d
 acct-user/portage 0: System user: portage
-acct-user/postfix 0: user for postfix daemon
-acct-user/postfix_exporter 0: user for postfix_exporter
-acct-user/postgres 0: PostgreSQL program user
+acct-user/postfix 0-r1: user for postfix daemon
+acct-user/postfix_exporter 0-r1: user for postfix_exporter
+acct-user/postgres 0-r1: PostgreSQL program user
 acct-user/postgrey 0: User for the postgrey mail daemon
-acct-user/postmaster 0: Postmaster user
-acct-user/privoxy 0: A privoxy: privacy oriented web proxy user
-acct-user/prometheus 0: user for prometheus
+acct-user/postmaster 0-r1: Postmaster user
+acct-user/privoxy 0-r1: A privoxy: privacy oriented web proxy user
+acct-user/prometheus 0-r1: user for prometheus
 acct-user/pulse 0: User for running the PulseAudio daemon as a system-wide instance
-acct-user/puppet 0: user for puppet services
-acct-user/puppetdb 0: User for the puppetdb service
-acct-user/qemu 0: System user: qemu
-acct-user/qmaild 0: user for qmail-smtpd
-acct-user/qmaill 0: user for qmail logging
-acct-user/qmailp 0: user for qmail-getpw
-acct-user/qmailq 0: user for qmail queue
-acct-user/qmailr 0: user for qmail-rspawn and qmail-remote
-acct-user/qmails 0: user for qmail-smtpd
-acct-user/quagga 0: System user: quagga
-acct-user/quassel 0: System user: quassel
-acct-user/radius 0: FreeRadius program user
-acct-user/rbldns 0: System user: rbldns
-acct-user/redis 0: Redis program user
-acct-user/redmine 0: Redmine application user
+acct-user/puppet 0-r1: user for puppet services
+acct-user/puppetdb 0-r1: User for the puppetdb service
+acct-user/qemu 0-r1: System user: qemu
+acct-user/qmaild 0-r1: user for qmail-smtpd
+acct-user/qmaill 0-r1: user for qmail logging
+acct-user/qmailp 0-r1: user for qmail-getpw
+acct-user/qmailq 0-r1: user for qmail queue
+acct-user/qmailr 0-r1: user for qmail-rspawn and qmail-remote
+acct-user/qmails 0-r1: user for qmail-smtpd
+acct-user/quagga 0-r1: System user: quagga
+acct-user/quassel 0-r1: System user: quassel
+acct-user/radius 0-r1: FreeRadius program user
+acct-user/rbldns 0-r1: System user: rbldns
+acct-user/redis 0-r1: Redis program user
+acct-user/redmine 0-r1: Redmine application user
 acct-user/root 0: System user: root
-acct-user/rspamd 0: User for rspamd - Rapid spam filtering system
-acct-user/rstudio-server 0: user for sci-mathematics/rstudio
-acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
-acct-user/sabnzbd 0: SABnzbd program user
+acct-user/rspamd 0-r1: User for rspamd - Rapid spam filtering system
+acct-user/rstudio-server 0-r1: user for sci-mathematics/rstudio
+acct-user/rtkit 0-r1: User for the Realtime Policy and Watchdog Daemon
+acct-user/sabnzbd 0-r1: SABnzbd program user
 acct-user/sancp 0: uid for net-analyzer/sancp
-acct-user/sanlock 0: shared storage lock manager
-acct-user/scponly 0: user for chrooted scponly
-acct-user/shellinaboxd 0: shellinabox user
+acct-user/sanlock 0-r1: shared storage lock manager
+acct-user/scponly 0-r1: user for chrooted scponly
+acct-user/shellinaboxd 0-r1: shellinabox user
 acct-user/sks 0: User for the SKS OpenPGP keyserver
-acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
-acct-user/smmsp 0: user for sendmail daemon
-acct-user/smtpd 0: daemon user for smtpd
-acct-user/smtpq 0: queue user for smtpd
+acct-user/slurm 0-r1: User for the slurm - Highly Scalable Resource Manager
+acct-user/smmsp 0-r1: user for sendmail daemon
+acct-user/smtpd 0-r1: daemon user for smtpd
+acct-user/smtpq 0-r1: queue user for smtpd
 acct-user/snapclient 0: Client user for media-sound/snapcast
 acct-user/snapserver 0: Server user for media-sound/snapcast
 acct-user/sniproxy 0: System user: sniproxy
 acct-user/sobexsrv 0: A user for sobexsrv: a secure OBEX server
-acct-user/sogo 0: User for gnustep-apps/sogo
-acct-user/spamd 0: User for the SpamAssassin daemon
-acct-user/spectrum 0: A user for the Spectrum messaging transport
-acct-user/spire 0: user for spiffe runtime environment
-acct-user/sqlgrey 0: User for SQLGrey
-acct-user/squid 0: A user for squid web proxy cache
-acct-user/sshd 0: User for ssh
-acct-user/stdiscosrv 0: User for the Syncthing discovery server
-acct-user/steamcmd 0: A user for the SteamCMD server
-acct-user/strelaysrv 0: User for the Syncthing relay server
-acct-user/stubby 0: Stubby program user (from net-dns/getdns)
-acct-user/stunnel 0: user for stunnel
-acct-user/suricata 0: User for Suricata IDS
-acct-user/svn 0: System user: svn
-acct-user/swift 0: USER for swift - Openstack object storage backend
-acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
-acct-user/systemd-coredump 0: System user: systemd-coredump
-acct-user/systemd-journal-remote 0: System user: systemd-journal-remote
-acct-user/systemd-network 0: System user: systemd-network
+acct-user/sogo 0-r1: User for gnustep-apps/sogo
+acct-user/spamd 0-r1: User for the SpamAssassin daemon
+acct-user/spectrum 0-r1: A user for the Spectrum messaging transport
+acct-user/spire 0-r1: user for spiffe runtime environment
+acct-user/sqlgrey 0-r1: User for SQLGrey
+acct-user/squid 0-r1: A user for squid web proxy cache
+acct-user/sshd 0-r1: User for ssh
+acct-user/stdiscosrv 0-r1: User for the Syncthing discovery server
+acct-user/steamcmd 0-r1: A user for the SteamCMD server
+acct-user/strelaysrv 0-r1: User for the Syncthing relay server
+acct-user/stubby 0-r1: Stubby program user (from net-dns/getdns)
+acct-user/stunnel 0-r1: user for stunnel
+acct-user/suricata 0-r1: User for Suricata IDS
+acct-user/svn 0-r1: System user: svn
+acct-user/swift 0-r1: USER for swift - Openstack object storage backend
+acct-user/syncthing 0-r1: User for the system-wide net-p2p/syncthing server
+acct-user/systemd-coredump 0-r1: System user: systemd-coredump
+acct-user/systemd-journal-remote 0-r1: System user: systemd-journal-remote
+acct-user/systemd-network 0-r1: System user: systemd-network
 acct-user/systemd-oom 0: System user: systemd-oom
-acct-user/systemd-resolve 0: System user: systemd-resolve
-acct-user/systemd-timesync 0: System user: systemd-timesync
-acct-user/teamspeak 0: A user for the TeamSpeak server
-acct-user/telegraf 0: User for telegraf
+acct-user/systemd-resolve 0-r1: System user: systemd-resolve
+acct-user/systemd-timesync 0-r1: System user: systemd-timesync
+acct-user/teamspeak 0-r1: A user for the TeamSpeak server
+acct-user/telegraf 0-r1: User for telegraf
 acct-user/tinyproxy 0: uid for net-proxy/tinyproxy
-acct-user/tor 0: user for tor daemon
-acct-user/tox 0: User for package net-libs/tox
-acct-user/transmission 1: System user: transmission
-acct-user/tss 0: Trusted Software Stack for TPMs user
+acct-user/tor 0-r1: user for tor daemon
+acct-user/tox 0-r1: User for package net-libs/tox
+acct-user/transmission 1-r1: System user: transmission
+acct-user/tss 0-r1: Trusted Software Stack for TPMs user
 acct-user/ttrssd 0: User for www-apps/tt-rss
-acct-user/turnserver 0: A user for a turn server like coturn
-acct-user/tvheadend 0: User for tvheadend
-acct-user/ultimaker 0: User for ultimaker
-acct-user/unbound 0: unbound program user
-acct-user/unifi 0: A user for the UniFi Controller
-acct-user/unrealircd 0: System user: unrealircd
+acct-user/turnserver 0-r1: A user for a turn server like coturn
+acct-user/tvheadend 0-r1: User for tvheadend
+acct-user/ultimaker 0-r1: User for ultimaker
+acct-user/unbound 0-r1: unbound program user
+acct-user/unifi 0-r1: A user for the UniFi Controller
+acct-user/unrealircd 0-r1: System user: unrealircd
 acct-user/upmpdcli 0: User for upmpdcli
-acct-user/uptimed 0: user for uptime daemon
-acct-user/usbmux 0: User for the usbmuxd daemon
-acct-user/varnish 0: user for varnish
-acct-user/vault 0: User for vault
-acct-user/vboxguest 0: user for virtualbox-guest-additions
-acct-user/vdradmin 0: User for www-misc/vdradmin-am
-acct-user/vpopmail 0: user for vpopmail
-acct-user/wesnoth 0: user for games-strategy/wesnoth
-acct-user/x2goprint 0: User for net-misc/x2goserver
-acct-user/x2gouser 0: User for net-misc/x2goserver
-acct-user/xrootd 0: User for the XRootD server
+acct-user/uptimed 0-r1: user for uptime daemon
+acct-user/usbmux 0-r1: User for the usbmuxd daemon
+acct-user/varnish 0-r1: user for varnish
+acct-user/vault 0-r1: User for vault
+acct-user/vboxguest 0-r1: user for virtualbox-guest-additions
+acct-user/vdradmin 0-r1: User for www-misc/vdradmin-am
+acct-user/vpopmail 0-r1: user for vpopmail
+acct-user/wesnoth 0-r1: user for games-strategy/wesnoth
+acct-user/x2goprint 0-r1: User for net-misc/x2goserver
+acct-user/x2gouser 0-r1: User for net-misc/x2goserver
+acct-user/xrootd 0-r1: User for the XRootD server
 acct-user/ziproxy 0: System user: ziproxy
-acct-user/znc 0: User for net-irc/znc
+acct-user/znc 0-r1: User for net-irc/znc
 app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2 2.38.0: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.34.0 2.36.0 2.38.0: D-Bus accessibility specifications and registration daemon

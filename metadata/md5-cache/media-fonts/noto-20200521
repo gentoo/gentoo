@@ -10,5 +10,5 @@ RDEPEND=cjk? ( media-fonts/noto-cjk )
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/googlei18n/noto-fonts/archive/49313785484cd4d1f4c0329ee3a8801f158f5ba1.tar.gz -> noto-20200521.tar.gz
-_eclasses_=font	e052246186f22bd6a37797238374613b
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
 _md5_=1d33a2d95fc206eebd717568d390a2fb
