@@ -170,6 +170,7 @@ acct-group/plex 0: Plex Media Server group
 acct-group/plugdev 0: Group controlling access to removable media
 acct-group/polkitd 0: System group: polkitd
 acct-group/popa3d 0: Group for net-mail/popa3d
+acct-group/portage 0: System group: portage
 acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
 acct-group/postfix_exporter 0: System group: postfix_exporter
@@ -428,6 +429,7 @@ acct-user/placement 0: User for the placement openstack service
 acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
 acct-user/popa3d 0: User for net-mail/popa3d
+acct-user/portage 0: System user: portage
 acct-user/postfix 0: user for postfix daemon
 acct-user/postfix_exporter 0: user for postfix_exporter
 acct-user/postgres 0: PostgreSQL program user
