@@ -97,8 +97,11 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/kvm
 	acct-group/render
 	acct-group/tape
+	acct-group/users
 	acct-group/video
 	acct-group/systemd-journal
+	acct-user/root
+	acct-user/nobody
 	acct-user/systemd-journal-remote
 	acct-user/systemd-coredump
 	acct-user/systemd-network
