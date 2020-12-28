@@ -1,6 +1,6 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=app-text/docbook-xsl-stylesheets dev-libs/libxslt >=sys-devel/gettext-0.19.8 virtual/pkgconfig doc? ( dev-util/gtk-doc ) virtual/pkgconfig
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( dev-libs/libgudev:= virtual/libusb:1 virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) ) doc? ( dev-util/gtk-doc ) dev-libs/libxslt app-text/docbook-xsl-stylesheets >=sys-devel/gettext-0.19.8 virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject-introspection:= ) kernel_linux? ( dev-libs/libgudev:= virtual/libusb:1 virtual/udev ios? ( >=app-pda/libimobiledevice-1:= >=app-pda/libplist-1:= ) )
 DESCRIPTION=D-Bus abstraction for enumerating power devices, querying history and statistics
 EAPI=7
 HOMEPAGE=https://upower.freedesktop.org/
@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/glib-2.38:2 sys-apps/dbus:= introspection? ( dev-libs/gobject
 SLOT=0/3
 SRC_URI=https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0bbd3cbf0fc296b47dd81c1aca603ee9
+_md5_=3b92059bba97343cc793d813926fd18f

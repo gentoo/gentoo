@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=compile configure install prepare
 DEPEND=virtual/libudev:=
 DESCRIPTION=A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 EAPI=7
@@ -10,4 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/libudev:=
 SLOT=0/4
 SRC_URI=mirror://debian/pool/main/liba/libatasmart/libatasmart_0.19.orig.tar.xz mirror://debian/pool/main/liba/libatasmart/libatasmart_0.19-5.debian.tar.xz
-_md5_=4a1afc1033ef96133ef5c6a74a0d2174
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=5e66dce63670308bc251a78e911c8030
