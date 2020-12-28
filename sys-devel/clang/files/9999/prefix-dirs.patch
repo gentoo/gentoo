@@ -8,9 +8,6 @@ Also, a couple of args are populated by inspecting the SDK,
 so, default to EPREFIX/MacOSX.sdk when the sysroot is not specified.
 (This does NOT set sysroot).
 
-The ebuild adds an extra / at the end of EPREFIX so that it is never
-an empty string. 
-
 --- a/clang/lib/Frontend/InitHeaderSearch.cpp	2020-11-30 12:53:42.000000000 -0600
 +++ b/clang/lib/Frontend/InitHeaderSearch.cpp	2020-11-30 13:57:52.000000000 -0600
 @@ -445,6 +445,9 @@
@@ -18,8 +15,8 @@ an empty string.
    if (triple.isOSDarwin()) {
      if (HSOpts.UseStandardSystemIncludes) {
 +      // Add Gentoo Prefix framework dirs first
-+      AddPath("@GENTOO_PORTAGE_EPREFIX@MacOSX.sdk/System/Library/Frameworks", System, true);
-+      AddPath("@GENTOO_PORTAGE_EPREFIX@MacOSX.sdk/Library/Frameworks", System, true);
++      AddPath("@GENTOO_PORTAGE_EPREFIX@/MacOSX.sdk/System/Library/Frameworks", System, true);
++      AddPath("@GENTOO_PORTAGE_EPREFIX@/MacOSX.sdk/Library/Frameworks", System, true);
        // Add the default framework include paths on Darwin.
        AddPath("/System/Library/Frameworks", System, true);
        AddPath("/Library/Frameworks", System, true);
@@ -34,7 +31,7 @@ an empty string.
 -  StringRef isysroot = A->getValue();
 +  //if (!A)
 +  //  return None;
-+  StringRef isysroot = A ? A->getValue() : "@GENTOO_PORTAGE_EPREFIX@MacOSX.sdk";
++  StringRef isysroot = A ? A->getValue() : "@GENTOO_PORTAGE_EPREFIX@/MacOSX.sdk";
    auto SDKInfoOrErr = driver::parseDarwinSDKInfo(VFS, isysroot);
    if (!SDKInfoOrErr) {
      llvm::consumeError(SDKInfoOrErr.takeError());
@@ -43,7 +40,7 @@ an empty string.
    if (!getDriver().SysRoot.empty())
      return getDriver().SysRoot;
 -  return "/";
-+  return "@GENTOO_PORTAGE_EPREFIX@";
++  return "@GENTOO_PORTAGE_EPREFIX@/";
  }
  
  void DarwinClang::AddClangSystemIncludeArgs(const llvm::opt::ArgList &DriverArgs,
