@@ -3624,7 +3624,7 @@ dev-embedded/jal 0.4.62: A high-level language for Microchip PIC and Ubicom SX m
 dev-embedded/kobs-ng 3.0.35.4.1.0: Utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 1.1.12-r1 1.4.8: Library that allows a direct access to a USB device
-dev-embedded/libftdi 0.20-r1 1.4 1.5 9999: Userspace access to FTDI USB interface chips
+dev-embedded/libftdi 0.20-r1 1.4-r1 1.5 9999: Userspace access to FTDI USB interface chips
 dev-embedded/libjaylink 0.1.0 0.2.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
@@ -13206,7 +13206,7 @@ media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.1.10 20.2.4 20.2.6 20.3.1 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.22.1-r1 6.22.1-r100: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.22.1-r1 6.22.1-r100 6.24.0: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in pure Python
@@ -16180,7 +16180,7 @@ sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
 sci-libs/libaec 1.0.2 1.0.4: Adaptive Entropy Coding library
 sci-libs/libbraiding 1.0: Expose the functionality of cbraid as a shared library
 sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
-sci-libs/libccd 2.0 2.1 9999: Library for collision detection between two convex shapes
+sci-libs/libccd 2.1 9999: Library for collision detection between two convex shapes
 sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
@@ -18956,7 +18956,7 @@ x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4 4.0.5: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.15.3 4.16.0: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.7.3 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.7 4.15.8 4.16.0: Unified widget and session management libs for Xfce

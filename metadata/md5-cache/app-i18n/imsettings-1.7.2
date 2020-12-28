@@ -1,14 +1,15 @@
+BDEPEND=dev-util/glib-utils dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/libX11 x11-libs/libgxim x11-libs/libnotify gconf? ( gnome-base/gconf ) gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) xfconf? ( xfce-base/xfconf ) dev-util/glib-utils dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/libX11 x11-libs/libgxim x11-libs/libnotify gconf? ( gnome-base/gconf ) gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) xfconf? ( xfce-base/xfconf )
 DESCRIPTION=Delivery framework for general Input Method configuration
-EAPI=6
+EAPI=7
 HOMEPAGE=https://tagoh.bitbucket.io/imsettings
-IUSE=gconf gtk2 qt5 +introspection static-libs xfconf
+IUSE=gconf gtk2 qt5 +introspection xfconf
 KEYWORDS=amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/libX11 x11-libs/libgxim x11-libs/libnotify gconf? ( gnome-base/gconf ) gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) xfconf? ( xfce-base/xfconf )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/imsettings/downloads/imsettings-1.7.2.tar.bz2
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f0efe701277fa89e6da2360ea12b786b
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=663e491963d510abd27bb04d99996243
