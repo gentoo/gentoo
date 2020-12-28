@@ -5,7 +5,4 @@
 		<email>fordfrog@gentoo.org</email>
 		<name>Miroslav Šulc</name>
 	</maintainer>
-	<use>
-		<flag name="tools">Install supplementary tools (rcc, uic, designer)</flag>
-	</use>
 </pkgmetadata>
