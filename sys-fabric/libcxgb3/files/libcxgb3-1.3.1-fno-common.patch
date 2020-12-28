@@ -1,0 +1,41 @@
+--- a/src/cxio_wr.h
++++ b/src/cxio_wr.h
+@@ -638,9 +638,9 @@ static inline unsigned t3_cq_depth(struct t3_cq *cq)
+ 	return (1UL<<cq->size_log2);
+ }
+ 
+-unsigned long iwch_page_size;
+-unsigned long iwch_page_shift;
+-unsigned long iwch_page_mask;
++extern unsigned long iwch_page_size;
++extern unsigned long iwch_page_shift;
++extern unsigned long iwch_page_mask;
+ 
+ #define PAGE_ALIGN(x) (((x) + iwch_page_mask) & ~iwch_page_mask)
+ 
+--- a/src/iwch.c
++++ b/src/iwch.c
+@@ -63,6 +63,10 @@
+ 	  .device = PCI_DEVICE_ID_CHELSIO_##d,		\
+ 	  .type = CHELSIO_##t }
+ 
++extern unsigned long iwch_page_size;
++extern unsigned long iwch_page_mask;
++extern unsigned long iwch_page_shift;
++
+ struct {
+ 	unsigned vendor;
+ 	unsigned device;
+--- a/src/verbs.c
++++ b/src/verbs.c
+@@ -45,6 +45,10 @@
+ #include "iwch.h"
+ #include "iwch-abi.h"
+ 
++unsigned long iwch_page_size;
++unsigned long iwch_page_shift;
++unsigned long iwch_page_mask;
++
+ int iwch_query_device(struct ibv_context *context, struct ibv_device_attr *attr)
+ {
+ 	struct ibv_query_device cmd;
