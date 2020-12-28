@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -17,8 +17,10 @@ DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 DOCS=( Changelog README INSTALL )
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.2-tinfo.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_compile() {
