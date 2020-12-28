@@ -26,6 +26,8 @@ RDEPEND="
 	syslog? ( virtual/logger )"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 src_configure() {
 	local lng i withval
 
