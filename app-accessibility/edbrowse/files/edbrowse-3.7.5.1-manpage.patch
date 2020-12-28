@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -249,19 +249,7 @@ if (UNIX)
+     endif()
+     # copy to build dir
+     configure_file( ${UnixManFile} ${CMAKE_BINARY_DIR}/edbrowse.1 )
+-    # find 'gzip' - warn if not...
+-    find_program(GZIP_EXE gzip PATHS /bin )
+-    if (GZIP_EXE)
+-        # gzip it in place
+-        execute_process(COMMAND ${GZIP_EXE} -f "edbrowse.1"
+-            WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+-            INPUT_FILE edbrowse.1
+-            OUTPUT_FILE edbrowse.1.gz )
+-        # install it
+-	install(FILES ${CMAKE_BINARY_DIR}/edbrowse.1.gz DESTINATION ${UnixManDir})
+-    else ()
+-        message(WARNING "Unable to locate 'gzip'! No man page...")
+-    endif ()
++    install(FILES ${CMAKE_BINARY_DIR}/edbrowse.1 DESTINATION ${UnixManDir})
+     # install user guide
+     install(FILES doc/usersguide.html doc/usersguide_fr.html doc/sample.ebrc doc/sample_fr.ebrc doc/sample_it.ebrc DESTINATION ${UnixDocDir})
+ endif ()

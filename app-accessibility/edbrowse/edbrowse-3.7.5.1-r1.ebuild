@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils
+
+inherit cmake
 
 DESCRIPTION="Combination editor, browser, and mail client that is 100% text based"
 HOMEPAGE="http://edbrowse.org"
@@ -15,24 +16,30 @@ IUSE="odbc"
 
 RDEPEND="
 	app-text/tidy-html5
-	>=net-misc/curl-7.36.0
-	>=dev-libs/libpcre-7.8
-	>=sys-libs/readline-6.0
 	dev-lang/duktape:=
+	dev-libs/libpcre
+	net-misc/curl
+	sys-libs/readline:=
 	odbc? ( dev-db/unixODBC )"
 DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}
+BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-manpage.patch
+)
+
 src_prepare() {
-	sed -i -e "s:/usr/share/doc/edbrowse:/usr/share/doc/${P}:" CMakeLists.txt
-	cmake-utils_src_prepare
+	cmake_src_prepare
+
+	sed -i -e "s:/usr/share/doc/edbrowse:/usr/share/doc/${PF}:" CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EDBR_ODBC=$(usex odbc)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
