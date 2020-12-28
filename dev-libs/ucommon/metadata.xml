@@ -5,7 +5,4 @@
 	<email>maksbotan@gentoo.org</email>
 	<name>Maxim Koltsov</name>
 </maintainer>
-<use>
-	<flag name="socks">Build with socks proxy support</flag>
-</use>
 </pkgmetadata>
