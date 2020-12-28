@@ -342,10 +342,34 @@ cabal-configure() {
 	fi
 
 	# currently cabal does not respect CFLAGS and LDFLAGS on it's own (bug #333217)
-	# so translate LDFLAGS to ghc parameters (without filtering)
+	# so translate LDFLAGS to ghc parameters (with mild filtering).
 	local flag
-	for flag in   $CFLAGS; do cabalconf+=(--ghc-option="-optc$flag"); done
-	for flag in  $LDFLAGS; do cabalconf+=(--ghc-option="-optl$flag"); done
+	for flag in   $CFLAGS; do
+		case "${flag}" in
+			-flto|-flto=*)
+				# binutils does not support partial linking yet:
+				# https://github.com/gentoo-haskell/gentoo-haskell/issues/1110
+				# https://sourceware.org/PR12291
+				einfo "Filter '${flag}' out of CFLAGS (avoid lto partial linking)"
+				continue
+				;;
+		esac
+
+		cabalconf+=(--ghc-option="-optc$flag")
+	done
+	for flag in  $LDFLAGS; do
+		case "${flag}" in
+			-flto|-flto=*)
+				# binutils does not support partial linking yet:
+				# https://github.com/gentoo-haskell/gentoo-haskell/issues/1110
+				# https://sourceware.org/PR12291
+				einfo "Filter '${flag}' out of LDFLAGS (avoid lto partial linking)"
+				continue
+				;;
+		esac
+
+		cabalconf+=(--ghc-option="-optl$flag")
+	done
 
 	# disable executable stripping for the executables, as portage will
 	# strip by itself, and pre-stripping gives a QA warning.
