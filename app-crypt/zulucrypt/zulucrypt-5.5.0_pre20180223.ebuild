@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils xdg
+inherit xdg cmake
 
 DESCRIPTION="Front end to cryptsetup"
 HOMEPAGE="https://mhogomchungu.github.io/zuluCrypt/"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnome kwallet +qt5 udev"
 REQUIRED_USE="kwallet? ( qt5 )"
 
-CDEPEND="
+DEPEND="
 	dev-libs/libgcrypt:0=
 	sys-fs/cryptsetup:=
 	gnome? ( app-crypt/libsecret )
@@ -28,16 +28,13 @@ CDEPEND="
 		dev-qt/qtwidgets:5
 		kwallet? ( kde-frameworks/kwallet:5 )
 	)"
-
-RDEPEND="
-	${CDEPEND}
+RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
-
-DEPEND="
-	${CDEPEND}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/zuluCrypt-${EGIT_COMMIT}"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_configure() {
 	local mycmakeargs=(
@@ -47,8 +44,7 @@ src_configure() {
 		-DNOGUI=$(usex !qt5)
 		-DQT5=true
 		-DUDEVSUPPORT=$(usex udev)
-		-DINTERNAL_LXQT_WALLET=true
 		-DINTERNAL_ZULUPLAY=true
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
