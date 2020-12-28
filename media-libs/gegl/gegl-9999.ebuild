@@ -38,7 +38,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/json-glib-1.2.6
-	>=media-libs/babl-0.1.78[introspection?,lcms?,vala?]
+	>=media-libs/babl-0.1.84[introspection?,lcms?,vala?]
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
 	>=sys-libs/zlib-1.2.0
