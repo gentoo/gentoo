@@ -36,7 +36,9 @@ RDEPEND="virtual/libusb:1
 		!<dev-embedded/ftdi_eeprom-1.0
 		dev-libs/confuse:=
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-libs/boost )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-tests-no-cxx.patch"

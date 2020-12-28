@@ -30,6 +30,7 @@ DEPEND="${CDEPEND}"
 S=${WORKDIR}/${MY_P}/sources/${PN}
 DOCS=( README.md )
 
+# the tools conflict with tools from QT
 PATCHES=(
 	"${FILESDIR}/${P}-dont-install-tools.patch"
 )
@@ -67,8 +68,11 @@ src_compile() {
 
 src_install() {
 	pyside-tools_install() {
-		CMAKE_USE_DIR="${BUILD_DIR}" cmake_src_install
+		python_doexe "${BUILD_DIR}/pylupdate/pyside2-lupdate"
 	}
 
 	python_foreach_impl pyside-tools_install
+
+	doman pylupdate/pyside2-lupdate.1
+	einstalldocs
 }
