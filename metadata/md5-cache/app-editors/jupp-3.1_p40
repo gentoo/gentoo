@@ -1,12 +1,12 @@
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=configure prepare
 DEPEND=ncurses? ( sys-libs/ncurses:0= ) !app-editors/joe
-DESCRIPTION=portable version of JOE's Own Editor
-EAPI=6
+DESCRIPTION=Portable version of Joe's Own Editor
+EAPI=7
 HOMEPAGE=https://www.mirbsd.org/jupp.htm
 IUSE=ncurses
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-1
 RDEPEND=ncurses? ( sys-libs/ncurses:0= ) !app-editors/joe
 SLOT=0
-SRC_URI=https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp30.tgz
-_md5_=8bdc5edf764f3d16fa27b384d49449e1
+SRC_URI=https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp40.tgz
+_md5_=692e90300bd26d9bd4815bc045fc4478
