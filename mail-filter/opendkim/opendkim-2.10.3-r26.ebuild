@@ -68,6 +68,15 @@ src_prepare() {
 	sed -e 's:dist_doc_DATA:dist_html_DATA:' \
 		-i libopendkim/docs/Makefile.am \
 		|| die
+
+	# The existing hard-coded path under /tmp is vulnerable to exploits
+	# since (for example) a user can create a symlink there to a file
+	# that portage will clobber. Reported upstream at,
+	#
+	#   https://github.com/trusteddomainproject/OpenDKIM/issues/113
+	#
+	sed -e "s:/tmp:${T}:" -i libopendkim/tests/t-testdata.h || die
+
 	eautoreconf
 }
 
@@ -119,6 +128,12 @@ src_configure() {
 
 src_compile() {
 	emake runstatedir=/run
+}
+
+src_test() {
+	# Needed for now due to the expected sequencing of the setup/cleanup
+	# tests, https://github.com/trusteddomainproject/OpenDKIM/issues/110
+	emake -j1 check
 }
 
 src_install() {
