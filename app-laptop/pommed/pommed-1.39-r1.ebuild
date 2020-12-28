@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs linux-info systemd
+EAPI=7
+
+inherit desktop linux-info systemd
 
 DESCRIPTION="Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook"
 HOMEPAGE="http://technologeek.org/projects/pommed/index.html"
@@ -14,23 +15,30 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="gtk X"
 
-COMMON_DEPEND="media-libs/alsa-lib
-	x86? ( sys-apps/pciutils )
-	amd64? (  sys-apps/pciutils )
-	dev-libs/confuse
-	>=sys-apps/dbus-1.1
-	dev-libs/dbus-glib
-	sys-libs/zlib
+DEPEND="
+	media-libs/alsa-lib
 	media-libs/audiofile
+	dev-libs/confuse
+	dev-libs/dbus-glib
+	sys-apps/dbus
+	sys-libs/zlib
+	amd64? ( sys-apps/pciutils )
+	x86? ( sys-apps/pciutils )
 	gtk? ( x11-libs/gtk+:2 )
-	X? ( x11-libs/libX11
+	X? (
+		x11-libs/libX11
 		x11-libs/libXext
-		x11-libs/libXpm )"
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
-RDEPEND="${COMMON_DEPEND}
+		x11-libs/libXpm
+	)"
+RDEPEND="${DEPEND}
 	media-sound/alsa-utils
 	virtual/eject"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 pkg_setup() {
 	if ! use ppc; then
@@ -41,16 +49,12 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}.patch"
-}
-
 src_compile() {
-	cd "${S}"/pommed
+	cd "${S}"/pommed || die
 	emake CC="$(tc-getCC)" OFLIB=1
 
 	if use gtk; then
-		cd "${S}"/gpomme
+		cd "${S}"/gpomme || die
 		local POFILES=""
 		for LANG in ${LINGUAS}; do
 			if [ -f po/${LANG}.po ]; then
@@ -60,7 +64,7 @@ src_compile() {
 		emake CC="$(tc-getCC)" POFILES="${POFILES}"
 	fi
 	if use X; then
-		cd "${S}"/wmpomme
+		cd "${S}"/wmpomme || die
 		emake CC="$(tc-getCC)"
 	fi
 }

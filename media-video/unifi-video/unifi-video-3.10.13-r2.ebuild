@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit systemd user
+inherit systemd
 
 MY_PV="${PV/_beta/-beta.}"
 DESCRIPTION="UniFi Video Server"
@@ -16,8 +16,10 @@ KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="mirror"
 
-DEPEND=""
-RDEPEND="dev-db/mongodb
+DEPEND="acct-group/unifi-video
+	acct-user/unifi-video"
+RDEPEND="${DEPEND}
+	dev-db/mongodb
 	dev-java/commons-daemon
 	sys-apps/lsb-release
 	sys-apps/util-linux
@@ -26,11 +28,6 @@ RDEPEND="dev-db/mongodb
 
 S=${WORKDIR}
 QA_PREBUILT="usr/lib*/${PN}/lib/*.so usr/lib*/${PN}/bin/*"
-
-pkg_setup() {
-	enewuser ${PN}
-	enewgroup ${PN}
-}
 
 src_unpack() {
 	default
@@ -53,9 +50,6 @@ src_install() {
 	LOGPATH=${DATAPATH}/logs
 	VARLOGPATH=/var/log/${PN}
 
-	rm .${CODEPATH}/bin/ubnt.updater
-	rm .${CODEPATH}/tools/updater
-
 	insinto /usr/lib
 	doins -r .${CODEPATH}
 	into /usr
@@ -71,7 +65,6 @@ src_install() {
 	fperms 500 ${CODEPATH}/bin/ubnt.avtool
 	fperms 500 ${CODEPATH}/bin/evostreamms
 	fperms 500 /usr/sbin/${PN}
-	fperms 500 ${CODEPATH}/tools/ufvtools
 	fowners -R ${PN}:${PN} ${CODEPATH}
 	fperms -R 0400 ${CODEPATH}/lib/
 	fperms 500 ${CODEPATH}/lib/
@@ -79,7 +72,7 @@ src_install() {
 	echo "CONFIG_PROTECT=\"${DATAPATH}/system.properties\"" > "${T}"/99${PN}
 	doenvd "${T}"/99${PN}
 
-	dosym /usr/bin/mongod ${CODEPATH}/bin/mongod
+	dosym ../../../bin/mongod ${CODEPATH}/bin/mongod
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service

@@ -5,11 +5,8 @@ EAPI=7
 
 inherit acct-user
 
-ACCT_USER_ID=0
-ACCT_USER_ENFORCE_ID=yes
-ACCT_USER_SHELL="/bin/bash"
-ACCT_USER_HOME="/root"
-ACCT_USER_HOME_PERMS=0700
-ACCT_USER_GROUPS=( root )
+DESCRIPTION="User for uShare"
+ACCT_USER_ID=349
+ACCT_USER_GROUPS=( ushare )
 
 acct-user_add_deps
