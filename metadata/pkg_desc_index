@@ -8443,7 +8443,7 @@ dev-python/mock 3.0.5-r2 4.0.3: Rolling backport of unittest.mock for all Python
 dev-python/mongoengine 0.21.0 0.22.0 0.22.1: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.21.0: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
-dev-python/more-itertools 8.5.0 8.6.0: More routines for operating on iterables, beyond itertools
+dev-python/more-itertools 8.6.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3 1.3.16-r1: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox3 0.24.0: Mock object framework for Python
