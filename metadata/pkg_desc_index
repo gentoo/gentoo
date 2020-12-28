@@ -5615,7 +5615,7 @@ dev-libs/qtcompress 0_p20180513: A public API for QZip in an easy to use module
 dev-libs/qtkeychain 0.10.0 0.11.1: Qt API for storing passwords securely
 dev-libs/quazip 0.9.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/raft 0.9.25: C implementation of the Raft consensus protocol
-dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
+dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 1.1.0-r3 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2020.11.01: An efficient, principled regular expression library
