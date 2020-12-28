@@ -21,7 +21,8 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}/make-4.2.1-glob-v2.patch"
+	"${FILESDIR}"/make-4.2.1-glob-v2.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_configure() {
