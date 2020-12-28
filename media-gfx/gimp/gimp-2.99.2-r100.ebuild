@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
 	>=media-libs/gegl-0.4.26:0.4[cairo,introspection,lcms,vala?]
+	<media-libs/gegl-0.4.28:0.4
 	>=media-libs/gexiv2-0.10.10
 	>=media-libs/harfbuzz-2.6.5
 	>=media-libs/lcms-2.9:2
