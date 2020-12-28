@@ -127,11 +127,6 @@ APACHE2_4_DEPEND="=www-servers/apache-2.4*"
 # INTERNAL FUNCTIONS
 # ==============================================================================
 
-# @FUNCTION: _init_apache2
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 _init_apache2() {
 	debug-print-function $FUNCNAME $*
 
@@ -153,20 +148,10 @@ _init_apache2() {
 	esac
 }
 
-# @FUNCTION: _init_apache2_late
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 _init_apache2_late() {
 	APACHE_BASEDIR="/usr/$(get_libdir)/apache2"
 	APACHE_MODULESDIR="${APACHE_BASEDIR}/modules"
 }
-
-# @FUNCTION: _init_no_apache
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
 
 _init_no_apache() {
 	debug-print-function $FUNCNAME $*

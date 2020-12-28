@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -87,12 +87,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # This variable needs to be set in the ebuild and contains a list of available
 # built-in modules
 
-# @VARIABLE: IUSE_MPMS
-# @DESCRIPTION:
-# Combine IUSE_MPMS_FORK and IUSE_MPMS_THREAD
-
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-
 IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec threads"
 
 for module in ${IUSE_MODULES} ; do

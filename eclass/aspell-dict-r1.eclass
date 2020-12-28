@@ -42,11 +42,6 @@ esac
 
 EXPORT_FUNCTIONS src_configure src_install
 
-# @VARIABLE: _ASPELL_DICT_R1
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ ! ${_ASPELL_DICT_R1} ]]; then
 
 # aspell packages have an idiosyncratic versioning scheme, that is

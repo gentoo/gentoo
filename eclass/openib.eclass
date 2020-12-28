@@ -2,10 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: openib.eclass
-# @MAINTAINER:
-# maintainer-needed@gentoo.org
 # @AUTHOR:
-# Alexey Shvetsov <alexxy@gentoo.org>
+# Original Author: Alexey Shvetsov <alexxy@gentoo.org>
 # @BLURB: Simplify working with OFED packages
 
 inherit eutils rpm versionator
