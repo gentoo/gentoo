@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="A command line timer and stopwatch"
 HOMEPAGE="http://utimer.codealpha.net/utimer"
@@ -12,21 +12,19 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug nls"
 
-DEPEND="
+RDEPEND="
 	dev-libs/glib:2
 	dev-util/intltool"
+DEPEND="${RDEPEND}"
 
-RDEPEND="${RDEPEND}"
-
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-locale.patch
+)
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_configure() {
-	local myconf=( --enable-debug=no )
-	use debug || myconf=( --enable-debug=yes )
-	econf "${myconf[@]}" $(use_enable nls)
-}
-
-src_install() {
-	emake install DESTDIR="${D}"
-	einstalldocs
+	econf \
+		$(use_enable debug) \
+		$(use_enable nls)
 }
