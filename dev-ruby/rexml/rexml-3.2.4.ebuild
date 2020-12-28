@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ruby/rexml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="3"
 
 all_ruby_prepare() {
