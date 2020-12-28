@@ -1,0 +1,127 @@
+--- a/dep.h
++++ b/dep.h
+@@ -134,7 +134,7 @@
+ struct goaldep *read_all_makefiles (const char **makefiles);
+ 
+ /*! The chain of makefiles read by read_makefile.  */
+-struct goaldep *read_makefiles;
++extern struct goaldep *read_makefiles;
+ 
+ void eval_buffer (char *buffer, const gmk_floc *floc);
+ enum update_status update_goal_chain (struct goaldep *goals);
+--- a/globals.c
++++ b/globals.c
+@@ -120,8 +120,6 @@
+    of each job stay together.  */
+ int output_sync = OUTPUT_SYNC_NONE;
+ 
+-const char *default_shell;
+-
+ char *remote_description = 0;
+ 
+ /* Remember the original value of the SHELL variable, from the environment.  */
+--- a/globals.h
++++ b/globals.h
+@@ -85,6 +85,12 @@
+ extern bool b_debugger_preread;
+ 
+ /* Remember the original value of the SHELL variable, from the environment.  */
+-struct variable shell_var;
++extern struct variable shell_var;
++
++/**! The default value of SHELL and the shell that is used when issuing
++   commands on targets.
++*/
++extern const char *default_shell;
++
+ 
+ #endif /*GLOBALS_H*/
+--- a/main.c
++++ b/main.c
+@@ -40,6 +40,8 @@
+ # include <fcntl.h>
+ #endif
+ 
++struct goaldep *read_makefiles;
++
+ extern void initialize_stopchar_map ();
+ 
+ #if defined HAVE_WAITPID || defined HAVE_WAIT3
+--- a/main.h
++++ b/main.h
+@@ -35,10 +35,5 @@
+ /* is default_shell unixy? */
+ extern int unixy_shell;
+ 
+-/**! The default value of SHELL and the shell that is used when issuing
+-   commands on targets.
+-*/
+-extern char *default_shell;
+-
+ /*! Print version information. */
+ extern void print_version (void);
+--- a/make.h
++++ b/make.h
+@@ -333,7 +333,7 @@
+ #endif
+ #ifdef SET_STACK_SIZE
+ # include <sys/resource.h>
+-struct rlimit stack_limit;
++extern struct rlimit stack_limit;
+ #endif
+ 
+ /* We have to have stdarg.h or varargs.h AND v*printf or doprnt to use
+--- a/print.h
++++ b/print.h
+@@ -39,7 +39,7 @@
+ 
+ /* Think of the below not as an enumeration but as #defines done in a
+    way that we'll be able to use the value in a gdb. */
+-enum debug_print_enums_e {
++extern enum debug_print_enums_e {
+   MAX_STACK_SHOW = 1000,
+ } debug_print_enums1;
+ 
+--- a/variable.c
++++ b/variable.c
+@@ -29,6 +29,7 @@
+ #endif
+ #include "hash.h"
+ #include "main.h"
++#include "globals.h"
+ 
+ /* Incremented every time we add or remove a global variable.  */
+ static unsigned long variable_changenum;
+--- a/variable.h
++++ b/variable.h
+@@ -115,7 +115,6 @@
+ extern char *variable_buffer;
+ extern struct variable_set_list *current_variable_set_list;
+ extern struct variable *default_goal_var;
+-extern struct variable shell_var;
+ 
+ /* expand.c */
+ char *variable_buffer_output (char *ptr, const char *string, unsigned int length);
+--- a/debugger/file2line.h
++++ b/debugger/file2line.h
+@@ -19,7 +19,7 @@
+ Boston, MA 02111-1307, USA.  */
+ #ifndef REMAKE_FILE2LINE
+ #define REMAKE_FILE2LINE
+-struct hash_table file2lines;
++extern struct hash_table file2lines;
+ 
+ typedef enum {
+   F2L_TARGET,
+--- a/debugger/file2line.c
++++ b/debugger/file2line.c
+@@ -26,6 +26,8 @@
+ #include "../rule.h"
+ #include "./file2line.h"
+ 
++struct hash_table file2lines;
++
+ unsigned long
+ file2lines_hash_1 (const void *key)
+ {
+
