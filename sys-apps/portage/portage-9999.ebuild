@@ -32,6 +32,7 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
 RDEPEND="
+	acct-user/portage
 	app-arch/zstd
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
