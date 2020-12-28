@@ -10920,7 +10920,7 @@ dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS reposito
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
-dev-vcs/fossil 2.12.1: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 2.12.1 2.13: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.23.3 2.24.3 2.25.4 2.26.2 2.27.0 2.28.0 2.29.2 2.30.0_rc2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-cola 3.5-r1 3.8: The highly caffeinated git GUI
@@ -14836,7 +14836,7 @@ net-libs/nghttp2 1.41.0 1.42.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 12.19.1 12.20.0 14.15.0 14.15.1 15.2.1 15.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-libs/ntirpc 1.7.4 1.8.1 3.2 3.3: Transport Independent RPC library for nfs-ganesha
+net-libs/ntirpc 3.3 3.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
