@@ -69,10 +69,10 @@ src_compile() {
 src_install() {
 	pyside-tools_install() {
 		python_doexe "${BUILD_DIR}/pylupdate/pyside2-lupdate"
-		doman pylupdate/pyside2-lupdate.1
 	}
 
 	python_foreach_impl pyside-tools_install
 
+	doman pylupdate/pyside2-lupdate.1
 	einstalldocs
 }
