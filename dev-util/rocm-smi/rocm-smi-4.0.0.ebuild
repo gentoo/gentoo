@@ -24,9 +24,11 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND=""
-RDEPEND="dev-libs/rocr-runtime"
+RDEPEND="dev-libs/rocr-runtime
+	 ${PYTHON_DEPS}"
 
 src_compile() {
 	einfo "Nothing todo"
