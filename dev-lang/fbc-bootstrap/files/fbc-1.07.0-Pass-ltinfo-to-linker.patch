@@ -1,0 +1,25 @@
+From c62adcd85c4e9d8b793a7a4f71fc88f6fbb79798 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Tue, 27 Aug 2019 20:41:07 +0900
+Subject: [PATCH] Pass -ltinfo to linker
+
+---
+ makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index e093bb1..eb3f759 100644
+--- a/makefile
++++ b/makefile
+@@ -1109,7 +1109,7 @@ endif
+ # Use gcc to link fbc from the bootstrap .o's
+ # (assuming the rtlib was built already)
+ ifneq ($(filter darwin freebsd linux netbsd openbsd solaris,$(TARGET_OS)),)
+-  BOOTSTRAP_LIBS := -lncurses -lm -pthread
++  BOOTSTRAP_LIBS := -ltinfo -lncurses -lm -pthread
+ endif
+ $(BOOTSTRAP_FBC): rtlib $(BOOTSTRAP_OBJ)
+ 	$(QUIET_LINK)$(CC) -o $@ $(libdir)/fbrt0.o bootstrap/$(FBTARGET)/*.o $(libdir)/libfb.a $(BOOTSTRAP_LIBS)
+-- 
+2.22.1
+

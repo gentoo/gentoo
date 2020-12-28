@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		This package is used only to boot strap <pkg>dev-lang/fbc</pkg>.
+		It is not meant to be used by end users directly.
+	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/freebasic/fbc/issues</bugs-to>
+		<doc lang="en">https://www.freebasic.net</doc>
+		<remote-id type="github">freebasic/fbc</remote-id>
+	</upstream>
+</pkgmetadata>
