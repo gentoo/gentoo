@@ -42,7 +42,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/libgeodecomp-${MY_COMMIT}"
 
-PATCHES=( "${FILESDIR}/${P}-mpi.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-mpi.patch"
+	"${FILESDIR}/${P}-opencv.patch"
+)
 
 DOCS=( README )
 
