@@ -39,7 +39,7 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		-Dintrospection=$(multilib_native_usex introspection enabled disabled)
-		-Ddocs=$(multilib_native_usex gtk-doc enabled disabled)
+		-Dgtk_doc=$(multilib_native_usex gtk-doc enabled disabled)
 		-Dman=true
 	)
 	meson_src_configure
