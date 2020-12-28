@@ -12933,7 +12933,7 @@ media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility l
 media-libs/alsa-topology-conf 1.2.2 1.2.3 1.2.4: ALSA topology configuration files
 media-libs/alsa-ucm-conf 1.2.2 1.2.3 1.2.4: ALSA ucm configuration files
 media-libs/alure 1.2-r1 1.2-r2: The OpenAL Utility Toolkit
-media-libs/ampache_browser 1.0.2 1.0.3: Ampache desktop client library
+media-libs/ampache_browser 1.0.3: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
 media-libs/assimp 5.0.1: Importer library to import assets from 3D files
 media-libs/aubio 0.4.9: Library for audio labelling
