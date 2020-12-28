@@ -1,9 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ssl-cert.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
 # @SUPPORTED_EAPIS: 1 2 3 4 5 6 7

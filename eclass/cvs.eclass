@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -12,11 +12,6 @@
 # inheriting. Then either leave the default src_unpack or extend over
 # cvs_src_unpack. If you find that you need to call the cvs_* functions
 # directly, I'd be interested to hear about it.
-
-# @ECLASS-VARIABLE: _CVS_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document
 
 if [[ -z ${_CVS_ECLASS} ]]; then
 _CVS_ECLASS=1
@@ -200,11 +195,6 @@ case ${EAPI:-0} in
 esac
 
 # called from cvs_src_unpack
-
-# @FUNCTION: cvs_fetch
-# @DESCRIPTION:
-# Fetch CVS repo
-
 cvs_fetch() {
 	# Make these options local variables so that the global values are
 	# not affected by modifications in this function.

@@ -95,11 +95,7 @@ inherit depend.apache
 # INTERNAL FUNCTIONS
 # ==============================================================================
 
-# @FUNCTION: apache_cd_dir
-# @INTERNAL
-# @DESCRIPTION:
 # Internal function to construct the default ${APXS2_S} path if required.
-
 apache_cd_dir() {
 	debug-print-function $FUNCNAME $*
 
@@ -117,11 +113,7 @@ apache_cd_dir() {
 	echo "${CD_DIR}"
 }
 
-# @FUNCTION: apache_mod_file
-# @INTERNAL
-# @DESCRIPTION:
 # Internal function to construct the default ${APACHE2_MOD_FILE} if required.
-
 apache_mod_file() {
 	debug-print-function $FUNCNAME $*
 
@@ -131,13 +123,9 @@ apache_mod_file() {
 	echo "${MOD_FILE}"
 }
 
-# @FUNCTION: apache_doc_magic
-# @INTERNAL
-# @DESCRIPTION:
 # Internal function for picking out html files from ${DOCFILES}. It takes an
 # optional first argument `html'; if the first argument is equals `html', only
 # html files are returned, otherwise normal (non-html) docs are returned.
-
 apache_doc_magic() {
 	debug-print-function $FUNCNAME $*
 

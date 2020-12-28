@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
-# @BLURB: support eclass for unpacking VCS snapshot tarballs
+# @BLURB: support eclass for unpacking VCS snapshot tarballs for
+# software written in the Go programming language
 # @DESCRIPTION:
 # This eclass provides a convenience src_unpack() which unpacks the
 # first tarball mentioned in SRC_URI to its appropriate location in
@@ -62,10 +63,6 @@ EXPORT_FUNCTIONS src_unpack
 declare -arg EGO_VENDOR
 
 _golang-vcs-snapshot_set_vendor_uri() {
-	# @ECLASS-VARIABLE: EGO_VENDOR_URI
-	# @DEFAULT_UNSET
-	# @DESCRIPTION:
-	# Determine the appropriate vendor URI
 	EGO_VENDOR_URI=
 	local lib
 	for lib in "${EGO_VENDOR[@]}"; do

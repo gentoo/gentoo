@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: db.eclass
@@ -15,10 +15,6 @@ EXPORT_FUNCTIONS src_test
 DEPEND="test? ( >=dev-lang/tcl-8.4 )"
 
 RDEPEND=""
-
-# @FUNCTION: db_fix_so
-# @DESCRIPTION:
-# Please document me
 
 db_fix_so() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
@@ -73,10 +69,6 @@ db_fix_so() {
 	fi
 }
 
-# @FUNCTION: db_src_install_doc
-# @DESCRIPTION:
-# Please document me
-
 db_src_install_doc() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	# not everybody wants this wad of documentation as it is primarily API docs
@@ -90,10 +82,6 @@ db_src_install_doc() {
 
 	db_src_install_examples
 }
-
-# @FUNCTION: db_src_install_examples
-# @DESCRIPTION:
-# Please document me
 
 db_src_install_examples() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
@@ -114,10 +102,6 @@ db_src_install_examples() {
 	fi
 }
 
-# @FUNCTION: db_src_install_usrbinslot
-# @DESCRIPTION:
-# Please document me
-
 db_src_install_usrbinslot() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	# slot all program names to avoid overwriting
@@ -132,20 +116,12 @@ db_src_install_usrbinslot() {
 	done
 }
 
-# @FUNCTION: db_src_install_headerslot
-# @DESCRIPTION:
-# Please document me
-
 db_src_install_headerslot() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	# install all headers in a slotted location
 	dodir /usr/include/db${SLOT}
 	mv "${ED}"/usr/include/*.h "${ED}"/usr/include/db${SLOT}/ || die
 }
-
-# @FUNCTION: db_src_install_usrlibcleanup
-# @DESCRIPTION:
-# Please document me
 
 db_src_install_usrlibcleanup() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"

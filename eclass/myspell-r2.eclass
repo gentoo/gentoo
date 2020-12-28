@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
 # @BLURB: An eclass to ease the construction of ebuilds for myspell dicts
+# @DESCRIPTION:
 
 EXPORT_FUNCTIONS src_unpack src_install
 

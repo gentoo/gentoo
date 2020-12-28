@@ -5,9 +5,7 @@
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
 # @BLURB: Install extensions for use in mozilla products.
-# @DESCRIPTION:
-# Install extensions for use in mozilla products
-
+#
 if [[ ! ${_MOZEXTENSION} ]]; then
 
 # @ECLASS-VARIABLE: MOZEXTENSION_TARGET
@@ -22,10 +20,6 @@ inherit eutils
 
 DEPEND="app-arch/unzip"
 
-# @FUNCTION: mozversion_extension_location
-# @DESCRIPTION:
-# Get ${PN} from extension location
-
 mozversion_extension_location() {
 	case ${PN} in
 		firefox|firefox-bin|palemoon)
@@ -37,10 +31,6 @@ mozversion_extension_location() {
 
 	return 1
 }
-
-# @FUNCTION: xpi_unpack
-# @DESCRIPTION:
-# Unpack XPI files
 
 xpi_unpack() {
 	local xpi xpiname srcdir
@@ -71,9 +61,6 @@ xpi_unpack() {
 	done
 }
 
-# @FUNCTION: xpi_install
-# @DESCRIPTION:
-# Install XPI files
 
 xpi_install() {
 	local emid
@@ -103,10 +90,6 @@ xpi_install() {
 	fi
 	doins -r "${x}"/* || die "failed to copy extension"
 }
-
-# @FUNCTION: xpi_copy
-# @DESCRIPTION:
-# Copy XPI files
 
 xpi_copy() {
 	local emid

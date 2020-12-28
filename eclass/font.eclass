@@ -13,11 +13,6 @@ case ${EAPI:-0} in
 	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
 
-# @VARIABLE: _FONT_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ ! ${_FONT_ECLASS} ]]; then
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm

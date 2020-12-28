@@ -17,11 +17,6 @@
 # out-of-source builds (default), in-source builds and an implementation of the
 # well-known use_enable function for CMake.
 
-# @VARIABLE: _CMAKE_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# If null set to 1
-
 if [[ -z ${_CMAKE_ECLASS} ]]; then
 _CMAKE_ECLASS=1
 
@@ -140,10 +135,7 @@ _cmake_banned_func() {
 	die "${FUNCNAME[1]} is banned. use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
 }
 
-# @FUNCTION: _cmake_check_build_dir
-# @DESCRIPTION:
 # Determine using IN or OUT source build
-
 _cmake_check_build_dir() {
 	: ${CMAKE_USE_DIR:=${S}}
 	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
@@ -276,12 +268,8 @@ cmake-utils_use() { _cmake_banned_func "" "$@" ; }
 # Banned. Use -DNOFOO=$(usex !foo) instead.
 cmake-utils_useno() { _cmake_banned_func "" "$@" ; }
 
-# @FUNCTION: _cmake_modify-cmakelists
-# @INTERNAL
-# @DESCRIPTION:
 # Internal function for modifying hardcoded definitions.
 # Removes dangerous definitions that override Gentoo settings.
-
 _cmake_modify-cmakelists() {
 	debug-print-function ${FUNCNAME} "$@"
 

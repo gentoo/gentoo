@@ -35,11 +35,6 @@
 #
 # Defaults to the upstream name of the module.
 
-# @VARIABLE: _EMBOSS_R2
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ ! ${_EMBOSS_R2} ]]; then
 
 case ${EAPI:-0} in

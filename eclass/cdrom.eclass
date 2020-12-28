@@ -14,11 +14,6 @@
 # eclass will require RESTRICT="bindist" but the point still stands.
 # The functions are generally called in src_unpack.
 
-# @VARIABLE: _CDROM_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# If null set to 1
-
 if [[ -z ${_CDROM_ECLASS} ]]; then
 _CDROM_ECLASS=1
 
