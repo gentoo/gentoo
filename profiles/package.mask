@@ -33,7 +33,7 @@
 #--- END OF EXAMPLES ---
 
 # libressl is dead!
-libressl
+dev-libs/libressl
 
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-12-28)
