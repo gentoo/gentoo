@@ -17,7 +17,7 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2
 	media-libs/libsdl
 	media-libs/libpng:0
-	ftdi? ( dev-embedded/libftdi:0 )"
+	ftdi? ( dev-embedded/libftdi:1 )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
