@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,24 +10,25 @@ SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
-CDEPEND="app-i18n/ibus
+RDEPEND="
+	app-i18n/ibus
 	app-i18n/librime
+	app-i18n/rime-data
 	x11-libs/libnotify"
-RDEPEND="${CDEPEND}
-	app-i18n/rime-data"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/cmake
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	sed -i \
 		-e "/^libexecdir/s:/lib:/libexec:" \
 		-e "/^[[:space:]]*PREFIX/s:/usr:${EPREFIX}/usr:" \
-		-e "s/ make/ \$(MAKE)/" \
-		Makefile
-	sed -i "/exec>/s:/usr/lib:${EPREFIX}/usr/libexec:" rime.xml
+		-e "s/ make/ \$(MAKE)/" Makefile || die
+	sed -i -e "/exec>/s:/usr/lib:${EPREFIX}/usr/libexec:" rime.xml || die
 
 	default
 }
