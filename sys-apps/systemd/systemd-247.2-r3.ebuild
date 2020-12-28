@@ -95,6 +95,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/disk
 	acct-group/input
 	acct-group/kvm
+	acct-group/lp
 	acct-group/render
 	acct-group/tape
 	acct-group/users
