@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# libressl is dead!
+libressl
+
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-12-28)
 # Masked for testing
 >=dev-lang/tk-8.6.10
