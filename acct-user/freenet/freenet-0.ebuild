@@ -6,9 +6,6 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="User for net-p2p/freenet"
-
-KEYWORDS="~amd64 ~x86"
-
 ACCT_USER_ID=105
 ACCT_USER_GROUPS=( ${PN} )
 ACCT_USER_HOME=/var/freenet
