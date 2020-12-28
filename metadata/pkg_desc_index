@@ -2185,7 +2185,7 @@ app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
 app-i18n/ibus-m17n 1.4.2 1.4.3: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
-app-i18n/ibus-rime 1.2 1.3.0 1.4.0: Chinese Rime Input Method Engine for IBus
+app-i18n/ibus-rime 1.4.0: Chinese Rime Input Method Engine for IBus
 app-i18n/ibus-skk 1.4.2 1.4.3: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 2.0.4_pre20200306162733: Chinese SunPinyin engine for IBus
 app-i18n/ibus-table 1.9.21-r2 1.11.0 1.12.0 1.12.1: Tables engines for IBus
@@ -3622,7 +3622,7 @@ dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microc
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
 dev-embedded/nodemcu-uploader 0.4.3-r1: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
-dev-embedded/openocd 0.9.0 0.10.0 0.10.0-r1 9999: OpenOCD - Open On-Chip Debugger
+dev-embedded/openocd 0.10.0 0.10.0-r1 9999: OpenOCD - Open On-Chip Debugger
 dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
 dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ programmer
@@ -8265,7 +8265,6 @@ dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest
 dev-python/httpbin 0.7.0-r1 0.7.0-r2: HTTP Request and Response Service
 dev-python/httplib2 0.18.1-r1: A comprehensive HTTP client library
 dev-python/httpretty 1.0.3: HTTP client mock for Python
-dev-python/httpstat 1.3.0: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/humanfriendly 8.2: Human friendly output for text interfaces using Python
 dev-python/humanize 3.1.0 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
@@ -10673,7 +10672,7 @@ dev-util/drone-cli 0.8.6 1.1.4 1.2.1: Command-line interface for Drone
 dev-util/dropwatch 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.17 1.17-r1 1.18 1.19: pahole (Poke-a-Hole) and other DWARF2 utilities
-dev-util/dwdiff 2.1.1 2.1.2 2.1.3: diff-like program operating at word level instead of line level
+dev-util/dwdiff 2.1.1 2.1.3: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
 dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
@@ -14757,7 +14756,7 @@ net-libs/libident 0.32-r1: A small library to interface to the Ident protocol se
 net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
-net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
+net-libs/libisds 0.10.8 0.11.1 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.2.0-r1 20.12.0: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
@@ -15081,6 +15080,7 @@ net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.2.0 1.2.2: Synchronize local workstation with time offered by remote webservers
 net-misc/httpie 2.2.0 2.3.0: Modern command line HTTP client
+net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty and clarity
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 7.0.2: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
