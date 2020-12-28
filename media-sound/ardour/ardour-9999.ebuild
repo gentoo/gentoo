@@ -155,8 +155,7 @@ src_install() {
 	doman ${PN}${SLOT}.1
 
 	for s in 16 22 32 48 256 512; do
-		dosym ../../../../ardour${SLOT}/resources/Ardour-icon_${s}px.png \
-			/usr/share/icons/hicolor/${s}x${s}/apps/ardour${SLOT}.png
+		newicon -s ${s} gtk2_ardour/resources/Ardour-icon_${s}px.png ardour${SLOT}.png
 	done
 
 	sed -i \
