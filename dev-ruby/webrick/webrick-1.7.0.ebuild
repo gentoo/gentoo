@@ -2,25 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
-RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
-
-RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+RUBY_FAKEGEM_BINWRAP=""
+RUBY_FAKEGEM_EXTRADOC="README.md"
+RUBY_FAKEGEM_GEMSPEC="webrick.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="An XML toolkit for Ruby"
-HOMEPAGE="https://github.com/ruby/rexml"
-SRC_URI="https://github.com/ruby/rexml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="An HTTP server toolkit"
+HOMEPAGE="https://github.com/ruby/webrick"
+SRC_URI="https://github.com/ruby/webrick/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD-2"
-
+LICENSE="|| ( Ruby-BSD BSD-2 )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-SLOT="3"
+SLOT="0"
+IUSE="test"
 
 all_ruby_prepare() {
-	sed -i -e 's:require_relative ":require "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
-	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+	sed -i -e "s:_relative ': './:" ${RUBY_FAKEGEM_GEMSPEC} || die
 }
