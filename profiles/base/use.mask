@@ -5,6 +5,7 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # libressl is dead!
+curl_ssl_libressl
 libressl
 
 
