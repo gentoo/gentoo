@@ -86,10 +86,12 @@ RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 "
 
+# the xmmintrin patch will no longer be needed come 3.4.1
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
 	"${FILESDIR}"/${PN}-3.0.2_cmake-march-autodetection.patch
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
+	"${FILESDIR}"/${PN}-3.4.0-xmmintrin-sse-only.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
