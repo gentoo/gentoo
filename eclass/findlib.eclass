@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
@@ -15,10 +15,6 @@
 # From this findlib version there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
 [[ ${FINDLIB_USE} ]] && DEPEND="${FINDLIB_USE}? ( ${DEPEND} )"
-
-# @FUNCTION: check_ocamlfind
-# @DESCRIPTION:
-# Please document me
 
 check_ocamlfind() {
 	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ]
