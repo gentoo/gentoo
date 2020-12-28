@@ -7,7 +7,7 @@
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
-	<description>Gentoo Proxy Maintainer Team</description>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
 	Implementation of the 3MF manufacturing file standard from the 3MF
