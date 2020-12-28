@@ -55,7 +55,9 @@ if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
 MESON_DEPEND=">=dev-util/meson-0.54.0
-	>=dev-util/ninja-1.8.2"
+	>=dev-util/ninja-1.8.2
+	dev-util/meson-format-array
+"
 
 if [[ ${EAPI:-0} == [6] ]]; then
 	DEPEND=${MESON_DEPEND}
@@ -94,19 +96,6 @@ fi
 # User-controlled environment variable containing arguments to be passed to
 # meson in meson_src_configure.
 
-read -d '' __MESON_ARRAY_PARSER <<"EOF"
-import shlex
-import sys
-
-# See http://mesonbuild.com/Syntax.html#strings
-def quote(str):
-	escaped = str.replace("\\\\", "\\\\\\\\").replace("'", "\\\\'")
-	return "'{}'".format(escaped)
-
-print("[{}]".format(
-	", ".join([quote(x) for x in shlex.split(" ".join(sys.argv[1:]))])))
-EOF
-
 # @FUNCTION: _meson_env_array
 # @INTERNAL
 # @DESCRIPTION:
@@ -126,7 +115,7 @@ EOF
 #          '--unicode-16=𐐷', '--unicode-32=𐤅']
 #
 _meson_env_array() {
-	python -c "${__MESON_ARRAY_PARSER}" "$@"
+	meson-format-array "$@"
 }
 
 # @FUNCTION: _meson_get_machine_info
