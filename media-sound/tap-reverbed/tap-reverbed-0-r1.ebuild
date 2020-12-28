@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -13,17 +13,21 @@ SRC_URI="mirror://sourceforge/tap-plugins/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-RDEPEND="media-libs/ladspa-sdk
+RDEPEND="
+	media-libs/ladspa-sdk
 	media-plugins/tap-plugins
-	x11-libs/gtk+:2
-	media-sound/jack-audio-connection-kit"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	media-sound/jack-audio-connection-kit
+	x11-libs/gtk+:2"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
-PATCHES=( "${FILESDIR}/${PN}-flags.patch" )
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-flags.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
