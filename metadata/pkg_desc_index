@@ -7998,6 +7998,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.42.0 0.43.0 0.44.0 0.44.1: CloudFormation Linter
+dev-python/cftime 1.3.0: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8485,7 +8486,7 @@ dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib an
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
 dev-python/nest_asyncio 1.4.3: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
-dev-python/netcdf4-python 1.2.2-r1: Python/numpy interface to the netCDF C library
+dev-python/netcdf4-python 1.2.2-r1 1.5.5: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
 dev-python/networkx 2.5: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 2.6.1: Neutron shared routines and utilities.
@@ -15490,7 +15491,7 @@ net-vpn/tor 0.4.4.6 0.4.5.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20201112 1.0.20201221: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20201221: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
@@ -16233,7 +16234,7 @@ sci-libs/mumps 5.1.2-r1 5.3.3: MUltifrontal Massively Parallel sparse direct mat
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
-sci-libs/netcdf 4.3.2-r1 4.6.1 4.6.1-r1: Scientific library and interface for array oriented data access
+sci-libs/netcdf 4.3.2-r1 4.6.1 4.6.1-r1 4.7.4: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
@@ -18997,7 +18998,7 @@ xfce-extra/xfce4-hdaps 1.0.0: Show the status of the IBM Hard Drive Active Prote
 xfce-extra/xfce4-indicator-plugin 2.3.4: A panel plugin that uses indicator-applet to show new messages
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r4: A panel plug-in to show state of Caps, Num and Scroll Lock keys
 xfce-extra/xfce4-mailwatch-plugin 1.3.0: An mail notification panel plug-in for the Xfce desktop environment
-xfce-extra/xfce4-mount-plugin 1.1.3 1.1.4: An mount plug-in for the Xfce panel
+xfce-extra/xfce4-mount-plugin 1.1.3 1.1.4 1.1.5: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.2: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
@@ -19008,7 +19009,7 @@ xfce-extra/xfce4-power-manager 1.6.6-r1 1.7.1 4.16.0: Power manager for the Xfce
 xfce-extra/xfce4-pulseaudio-plugin 0.4.3: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-screensaver 0.1.11: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.7 1.9.8: Xfce4 screenshooter application and panel plugin
-xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
+xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1 1.3.95: A panel plug-in for acpi, lm-sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1 0.5.2: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-statusnotifier-plugin 0.2.2: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3 1.2.4: System load plug-in for Xfce panel
