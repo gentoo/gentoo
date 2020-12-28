@@ -21,6 +21,7 @@ BDEPEND="
 	acct-user/polkitd
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
+	dev-libs/glib
 	dev-libs/gobject-introspection-common
 	dev-libs/libxslt
 	dev-util/glib-utils
