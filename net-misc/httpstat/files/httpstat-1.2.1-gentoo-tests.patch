@@ -28,3 +28,4 @@
  
      title "HTTPSTAT_DEBUG"
      HTTPSTAT_DEBUG=true main $http_url | grep -q 'HTTPSTAT_DEBUG=true'
+ 
