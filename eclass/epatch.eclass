@@ -11,11 +11,6 @@
 # An eclass providing epatch and epatch_user functions to easily apply
 # patches to ebuilds. Mostly superseded by eapply* in EAPI 6.
 
-# @VARIABLE: _EPATCH_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ -z ${_EPATCH_ECLASS} ]]; then
 
 case ${EAPI:-0} in

@@ -1,13 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# @ECLASS: gnuconfig.eclass
-# @MAINTAINER:
-# maintainer-needed@gentoo.org
-# @AUTHOR:
-# Will Woods <wwoods@gentoo.org>
-# @BLURB: Automatically update automake files to newest version
-# @DESCRIPTION:
+#
+# Author: Will Woods <wwoods@gentoo.org>
+#
 # This eclass is used to automatically update files that typically come with
 # automake to the newest version available on the system. The most common use
 # of this is to update config.guess and config.sub when configure dies from
@@ -25,8 +20,6 @@
 
 DEPEND="sys-devel/gnuconfig"
 
-# @FUNCTION: gnuconfig_update
-# @DESCRIPTION:
 # Wrapper function for gnuconfig_do_update. If no arguments are given, update
 # config.sub and config.guess (old default behavior), otherwise update the
 # named files.
@@ -49,12 +42,10 @@ gnuconfig_update() {
 	return $?
 }
 
-# @FUNCTION: gnuconfig_do_update
-# @DESCRIPTION:
 # Copy the newest available version of specified files over any old ones in the
 # source dir. This function shouldn't be called directly - use gnuconfig_update
 #
-# Note: that since bash using dynamic scoping, startdir is available here from
+# Note that since bash using dynamic scoping, startdir is available here from
 # the gnuconfig_update function
 gnuconfig_do_update() {
 	local configsubs_dir target targetlist file
@@ -84,8 +75,6 @@ gnuconfig_do_update() {
 	return 0
 }
 
-# @FUNCTION: gnuconfig_findnewest
-# @DESCRIPTION:
 # this searches the standard locations for the newest config.{sub|guess}, and
 # returns the directory where they can be found.
 gnuconfig_findnewest() {

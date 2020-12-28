@@ -25,11 +25,6 @@ esac
 # @EXAMPLE:
 # inherit cuda
 
-# @VARIABLE: _CUDA_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ -z ${_CUDA_ECLASS} ]]; then
 
 inherit flag-o-matic toolchain-funcs

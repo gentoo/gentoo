@@ -28,11 +28,6 @@
 # )
 # @CODE
 
-# @VARIABLE: _FCAPS_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ -z ${_FCAPS_ECLASS} ]]; then
 _FCAPS_ECLASS=1
 

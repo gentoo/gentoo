@@ -13,6 +13,7 @@ _PORTABILITY_ECLASS=1
 
 # @FUNCTION: treecopy
 # @USAGE: <orig1> [orig2 orig3 ....] <dest>
+# @RETURN:
 # @DESCRIPTION:
 # mimic cp --parents copy, but working on BSD userland as well
 treecopy() {
@@ -117,6 +118,7 @@ get_bmake() {
 # @FUNCTION: get_mounts
 # @USAGE:
 # @RETURN: table of mounts in form "point node fs opts"
+# @MAINTAINER:
 # @DESCRIPTION:
 # Portable method of getting mount names and points.
 # Returns as "point node fs options"
