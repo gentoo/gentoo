@@ -5,9 +5,11 @@ EAPI=7
 
 inherit desktop eutils perl-module
 
+COMMIT="92abbc42dfdd5385c1f9c3a450e2f3da835f8b8d"
+
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"
-SRC_URI="https://github.com/alexrj/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/slic3r/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
@@ -15,7 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
 RESTRICT="!test? ( test )"
 
-# check Build.PL for dependencies
 RDEPEND="!=dev-lang/perl-5.16*
 	>=dev-libs/boost-1.55[threads]
 	dev-perl/Class-XSAccessor
@@ -103,7 +104,7 @@ src_install() {
 	exeinto "${VENDOR_LIB}"/Slic3r
 	doexe slic3r.pl
 
-	dosym "${VENDOR_LIB}/Slic3r/slic3r.pl" /usr/bin/slic3r.pl
+	dosym "${VENDOR_LIB}/Slic3r/slic3r.pl" "${EPREFIX}/usr/bin/slic3r.pl"
 
 	make_desktop_entry "slic3r.pl --gui %F" \
 		Slic3r \
