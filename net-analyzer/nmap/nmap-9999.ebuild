@@ -2,7 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic git-r3 toolchain-funcs
+
+LUA_COMPAT=( lua5-3 )
+LUA_REQ_USE="deprecated"
+
+inherit autotools flag-o-matic git-r3 lua-single toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
@@ -11,8 +15,8 @@ EGIT_REPO_URI="https://github.com/nmap/nmap"
 
 LICENSE="NPSL"
 SLOT="0"
-IUSE="ipv6 libressl libssh2 ncat nping +nse ssl system-lua"
-REQUIRED_USE="system-lua? ( nse )"
+IUSE="ipv6 libressl libssh2 ncat nping +nse ssl +system-lua"
+REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/liblinear:=
@@ -27,7 +31,7 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
+	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
 
@@ -43,6 +47,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
 	"${FILESDIR}"/${PN}-9999-netutil-else.patch
 )
+
+pkg_setup() {
+	use system-lua && lua-single_pkg_setup
+}
 
 src_prepare() {
 	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die
@@ -75,7 +83,7 @@ src_configure() {
 		$(use_with nping) \
 		$(use_with ssl openssl) \
 		$(usex libssh2 --with-zlib) \
-		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
+		$(usex nse --with-liblua=$(usex system-lua yes included '' '') --without-liblua) \
 		$(usex nse --with-zlib) \
 		--cache-file="${S}"/config.cache \
 		--with-libdnet=included \

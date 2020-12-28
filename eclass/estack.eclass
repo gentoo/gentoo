@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: estack.eclass
@@ -7,11 +7,6 @@
 # @BLURB: stack-like value storage support
 # @DESCRIPTION:
 # Support for storing values on stack-like variables.
-
-# @VARIABLE: _ESTACK_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
 
 if [[ -z ${_ESTACK_ECLASS} ]]; then
 

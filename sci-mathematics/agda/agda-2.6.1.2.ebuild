@@ -28,7 +28,7 @@ SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cpphs debug emacs enable-cluster-counting +stdlib"
+IUSE="cpphs debug emacs enable-cluster-counting +stdlib"
 
 RDEPEND=">=dev-haskell/aeson-1.1.2.0:=[profile?] <dev-haskell/aeson-1.6:=[profile?]
 	>=dev-haskell/async-2.2:=[profile?] <dev-haskell/async-2.3:=[profile?]

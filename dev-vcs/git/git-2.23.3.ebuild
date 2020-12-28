@@ -46,7 +46,7 @@ if [[ ${PV} != *9999 ]]; then
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
 	[[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -218,23 +218,6 @@ exportmakeopts() {
 			)
 			extlibs+=( -lpcre )
 		fi
-	fi
-# Disabled until ~m68k-mint can be keyworded again
-#	if [[ ${CHOST} == *-mint* ]] ; then
-#		myopts+=(
-#			NO_MMAP=YesPlease
-#			NO_IPV6=YesPlease
-#			NO_STRLCPY=YesPlease
-#			NO_MEMMEM=YesPlease
-#			NO_MKDTEMP=YesPlease
-#			NO_MKSTEMPS=YesPlease
-#		)
-#	fi
-	if [[ ${CHOST} == ia64-*-hpux* ]]; then
-		myopts+=( NO_NSEC=YesPlease )
-	fi
-	if [[ ${CHOST} == *-*-aix* ]]; then
-		myopts+=( NO_FNMATCH_CASEFOLD=YesPlease )
 	fi
 	if [[ ${CHOST} == *-solaris* ]]; then
 		myopts+=(

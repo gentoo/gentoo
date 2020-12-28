@@ -1,14 +1,15 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 GNOME2_EAUTORECONF=yes
 VALA_MIN_API_VERSION="0.40"
 VALA_USE_DEPEND=vapigen
 
-inherit autotools git-r3 gnome2 python-single-r1 toolchain-funcs vala virtualx
+inherit autotools git-r3 gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -19,7 +20,8 @@ SLOT="0/3"
 KEYWORDS=""
 
 IUSE="aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
 
@@ -35,10 +37,10 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.82[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.84[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.27:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.28:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.10.10
 	>=media-libs/harfbuzz-2.6.5
 	>=media-libs/lcms-2.9:2
@@ -52,7 +54,7 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.40.0:2
 	>=x11-libs/gtk+-3.24.16:3
 	x11-libs/libXcursor
-	>=x11-libs/pango-1.42.4
+	>=x11-libs/pango-1.44.7
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	aqua? ( >=x11-libs/gtk-mac-integration-2.0.0 )
@@ -60,8 +62,10 @@ COMMON_DEPEND="
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
 	lua? (
-		dev-lang/luajit
-		dev-lua/lgi
+		${LUA_DEPS}
+		$(lua_gen_cond_dep '
+			dev-lua/lgi[${LUA_USEDEP}]
+		')
 	)
 	mng? ( media-libs/libmng:= )
 	openexr? ( >=media-libs/openexr-2.3.0:= )
@@ -97,13 +101,15 @@ DEPEND="
 	>=sys-devel/automake-1.11
 	>=sys-devel/gettext-0.21
 	>=sys-devel/libtool-2.4.6
-	virtual/pkgconfig
 	doc? (
 		>=dev-util/gtk-doc-1.32
 		dev-util/gtk-doc-am
 	)
 	vala? ( $(vala_depend) )
 "
+
+# TODO: there are probably more atoms in DEPEND which should be in BDEPEND now
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( "AUTHORS" "HACKING" "NEWS" "README" "README.i18n" )
 
@@ -113,6 +119,8 @@ PATCHES=(
 )
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
+
 	if use python; then
 		python-single-r1_pkg_setup
 	fi
@@ -210,7 +218,7 @@ _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
 	local prepend=gimp-org-
 	(
-		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.99/plug-ins || exit 1
+		cd "${ED}"/usr/$(get_libdir)/gimp/2.99/plug-ins || exit 1
 		for plugin_slash in $(ls -d1 */); do
 		    plugin=${plugin_slash%/}
 		    if [[ -f ${plugin}/${plugin} ]]; then
@@ -236,12 +244,12 @@ src_install() {
 
 	# Workaround for bug #321111 to give GIMP the least
 	# precedence on PDF documents by default
-	mv "${ED%/}"/usr/share/applications/{,zzz-}gimp.desktop || die
+	mv "${ED}"/usr/share/applications/{,zzz-}gimp.desktop || die
 
 	find "${D}" -name '*.la' -type f -delete || die
 
 	# Prevent dead symlink gimp-console.1 from downstream man page compression (bug #433527)
-	mv "${ED%/}"/usr/share/man/man1/gimp-console{-*,}.1 || die
+	mv "${ED}"/usr/share/man/man1/gimp-console{-*,}.1 || die
 
 	_rename_plugins || die
 }

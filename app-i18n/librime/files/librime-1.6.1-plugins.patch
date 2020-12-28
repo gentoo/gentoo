@@ -1,0 +1,247 @@
+https://github.com/rime/librime/issues/431
+
+--- /CMakeLists.txt
++++ /CMakeLists.txt
+@@ -11,6 +11,14 @@
+ 
+ include(GNUInstallDirs)
+ 
++if(NOT DEFINED BIN_INSTALL_DIR)
++    set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
++endif()
++
++if(NOT DEFINED LIB_INSTALL_DIR)
++    set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
++endif()
++
+ option(BUILD_SHARED_LIBS "Build Rime as shared library" ON)
+ option(BUILD_MERGED_PLUGINS "Merge plugins into one Rime library" ON)
+ option(BUILD_STATIC "Build with dependencies as static libraries" OFF)
+@@ -22,8 +30,11 @@
+ option(BOOST_USE_CXX11 "Boost has been built with C++11 support" OFF)
+ option(BOOST_USE_SIGNALS2 "Boost use signals2 instead of signals" ON)
+ option(ENABLE_ASAN "Enable Address Sanitizer (Unix Only)" OFF)
++option(INSTALL_PRIVATE_HEADERS "Install private headers (usually needed for externally built Rime plugins)" OFF)
++option(ENABLE_EXTERNAL_PLUGINS "Enable loading of externally built Rime plugins (from directory set by RIME_PLUGINS_DIR variable)" OFF)
+ 
+-set(rime_data_dir "/share/rime-data" CACHE STRING "Target directory for Rime data")
++set(RIME_DATA_DIR "share/rime-data" CACHE STRING "Target directory for Rime data")
++set(RIME_PLUGINS_DIR "${LIB_INSTALL_DIR}/rime-plugins" CACHE STRING "Target directory for externally built Rime plugins")
+ 
+ if(WIN32)
+   set(ext ".exe")
+@@ -61,7 +72,7 @@
+ set(BOOST_COMPONENTS filesystem regex system)
+ 
+ if(BOOST_USE_SIGNALS2)
+-  add_definitions("-DBOOST_SIGNALS2")
++  set(RIME_BOOST_SIGNALS2 1)
+ else()
+   set(BOOST_COMPONENTS ${BOOST_COMPONENTS} signals)
+ endif()
+@@ -89,7 +100,7 @@
+     add_definitions(-DGOOGLE_GLOG_DLL_DECL=)
+   endif()
+ 
+-  add_definitions(-DRIME_ENABLE_LOGGING)
++  set(RIME_ENABLE_LOGGING 1)
+ 
+ endif()
+ 
+@@ -134,6 +145,11 @@
+   message(WARNING "X11/keysym.h not found.")
+ endif()
+ 
++configure_file(
++  "${PROJECT_SOURCE_DIR}/src/rime/build_config.h.in"
++  "${PROJECT_BINARY_DIR}/src/rime/build_config.h")
++
++include_directories(${PROJECT_BINARY_DIR}/src)
+ include_directories(${PROJECT_SOURCE_DIR}/src)
+ include_directories(${PROJECT_SOURCE_DIR}/thirdparty/include)
+ link_directories(${PROJECT_SOURCE_DIR}/thirdparty/lib)
+@@ -154,14 +170,6 @@
+   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+ endif()
+ 
+-if(NOT DEFINED LIB_INSTALL_DIR)
+-    set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
+-endif()
+-
+-if(NOT DEFINED BIN_INSTALL_DIR)
+-    set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
+-endif()
+-
+ # uninstall target
+ configure_file(
+   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+@@ -175,7 +183,8 @@
+   set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
+   set(bindir "${exec_prefix}/${BIN_INSTALL_DIR}")
+   set(libdir "${exec_prefix}/${LIB_INSTALL_DIR}")
+-  set(pkgdatadir "${prefix}${rime_data_dir}")
++  set(pkgdatadir "${prefix}/${RIME_DATA_DIR}")
++  set(pluginsdir "${exec_prefix}/${RIME_PLUGINS_DIR}")
+   set(includedir "${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
+   configure_file(
+       ${PROJECT_SOURCE_DIR}/rime.pc.in
+@@ -189,11 +198,19 @@
+ 
+ file(GLOB rime_public_header_files ${PROJECT_SOURCE_DIR}/src/*.h)
+ install(FILES ${rime_public_header_files} DESTINATION include)
++if(INSTALL_PRIVATE_HEADERS)
++  file(GLOB rime_private_header_files ${PROJECT_SOURCE_DIR}/src/rime/*.h ${PROJECT_BINARY_DIR}/src/rime/*.h)
++  install(FILES ${rime_private_header_files} DESTINATION include/rime)
++  foreach(rime_private_header_files_dir algo config dict gear lever)
++    file(GLOB rime_private_header_files ${PROJECT_SOURCE_DIR}/src/rime/${rime_private_header_files_dir}/*.h)
++    install(FILES ${rime_private_header_files} DESTINATION include/rime/${rime_private_header_files_dir})
++  endforeach()
++endif()
+ 
+ if(BUILD_DATA)
+   file(GLOB rime_preset_data_files ${PROJECT_SOURCE_DIR}/data/preset/*.yaml)
+   install(FILES ${rime_preset_data_files}
+-    DESTINATION ${CMAKE_INSTALL_PREFIX}${rime_data_dir})
++    DESTINATION ${CMAKE_INSTALL_PREFIX}/${RIME_DATA_DIR})
+ endif()
+ 
+ if(BUILD_SHARED_LIBS)
+@@ -223,6 +240,11 @@
+   set(rime_plugins_library rime-plugins)
+ endif()
+ 
++add_definitions("-DRIME_PLUGINS_DIR=\"${CMAKE_INSTALL_PREFIX}/${RIME_PLUGINS_DIR}\"")
++if(ENABLE_EXTERNAL_PLUGINS)
++  add_definitions(-DRIME_ENABLE_EXTERNAL_PLUGINS)
++endif()
++
+ add_subdirectory(src)
+ 
+ if(BUILD_SHARED_LIBS)
+--- /rime.pc.in
++++ /rime.pc.in
+@@ -2,6 +2,8 @@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
++pkgdatadir=@pkgdatadir@
++pluginsdir=@pluginsdir@
+ 
+ Name: Rime
+ Description: Rime Input Method Engine
+--- /src/CMakeLists.txt
++++ /src/CMakeLists.txt
+@@ -36,6 +36,9 @@
+ if(Gflags_FOUND)
+   set(rime_optional_deps ${rime_optional_deps} ${Gflags_LIBRARY})
+ endif()
++if(ENABLE_EXTERNAL_PLUGINS)
++  set(rime_optional_deps ${rime_optional_deps} dl)
++endif()
+ 
+ set(rime_core_deps
+     ${Boost_LIBRARIES}
+--- /src/rime/build_config.h.in
++++ /src/rime/build_config.h.in
+@@ -0,0 +1,11 @@
++//
++// Copyright RIME Developers
++// Distributed under the BSD License
++//
++#ifndef RIME_BUILD_CONFIG_H_
++#define RIME_BUILD_CONFIG_H_
++
++#cmakedefine RIME_BOOST_SIGNALS2
++#cmakedefine RIME_ENABLE_LOGGING
++
++#endif  // RIME_BUILD_CONFIG_H_
+--- /src/rime/common.h
++++ /src/rime/common.h
+@@ -7,6 +7,8 @@
+ #ifndef RIME_COMMON_H_
+ #define RIME_COMMON_H_
+ 
++#include <rime/build_config.h>
++
+ #include <functional>
+ #include <list>
+ #include <map>
+@@ -20,7 +22,7 @@
+ #include <vector>
+ #include <boost/optional.hpp>
+ #define BOOST_BIND_NO_PLACEHOLDERS
+-#ifdef BOOST_SIGNALS2
++#ifdef RIME_BOOST_SIGNALS2
+ #include <boost/signals2/connection.hpp>
+ #include <boost/signals2/signal.hpp>
+ #else
+@@ -79,7 +81,7 @@
+   return std::make_shared<T>(std::forward<Args>(args)...);
+ }
+ 
+-#ifdef BOOST_SIGNALS2
++#ifdef RIME_BOOST_SIGNALS2
+ using boost::signals2::connection;
+ using boost::signals2::signal;
+ #else
+--- /src/rime/lever/deployment_tasks.cc
++++ /src/rime/lever/deployment_tasks.cc
+@@ -4,6 +4,9 @@
+ //
+ // 2011-12-10 GONG Chen <chen.sst@gmail.com>
+ //
++
++#include <rime/build_config.h>
++
+ #include <algorithm>
+ #include <boost/algorithm/string.hpp>
+ #include <boost/filesystem.hpp>
+--- /src/rime/setup.cc
++++ /src/rime/setup.cc
+@@ -5,6 +5,13 @@
+ // 2011-10-02 GONG Chen <chen.sst@gmail.com>
+ //
+ 
++#include <rime/build_config.h>
++
++#ifdef RIME_ENABLE_EXTERNAL_PLUGINS
++#include <dlfcn.h>
++#include <glob.h>
++#endif // RIME_ENABLE_EXTERNAL_PLUGINS
++
+ #ifdef RIME_ENABLE_LOGGING
+ #include <glog/logging.h>
+ #endif  // RIME_ENABLE_LOGGING
+@@ -36,6 +43,32 @@
+       mm.LoadModule(module);
+     }
+   }
++
++#ifdef RIME_ENABLE_EXTERNAL_PLUGINS
++  fs::path plugins_dir = fs::path(RIME_PLUGINS_DIR);
++  fs::path plugins_files = plugins_dir / "*.so";
++  glob_t glob_buffer;
++  if (glob(plugins_files.string().c_str(), 0, NULL, &glob_buffer) == 0) {
++    for (size_t i = 0; i < glob_buffer.gl_pathc; i++) {
++      fs::path plugin_file(glob_buffer.gl_pathv[i]);
++      fs::path plugin_name = plugin_file.stem();
++      fs::file_status plugin_file_status = fs::status(plugin_file);
++      if (fs::is_regular_file(plugin_file) &&
++          plugin_file_status.permissions() & (fs::owner_exe | fs::group_exe | fs::others_exe)) {
++        void* handle = dlopen(plugin_file.string().c_str(), RTLD_LAZY);
++        if (handle) {
++          if (RimeModule* module = mm.Find(plugin_name.string())) {
++            mm.LoadModule(module);
++          }
++        }
++        else {
++          LOG(ERROR) << "dlopen error: " << dlerror();
++        }
++      }
++    }
++    globfree(&glob_buffer);
++  }
++#endif
+ }
+ 
+ // assume member is a non-null pointer in struct *p.

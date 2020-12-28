@@ -1,4 +1,4 @@
-# Copyright 2007-2019 Gentoo Authors
+# Copyright 2007-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ant-tasks.eclass
@@ -66,7 +66,6 @@ ANT_TASK_DEPNAME=${ANT_TASK_DEPNAME-${ANT_TASK_NAME}}
 
 # @VARIABLE: ANT_TASK_PV
 # @INTERNAL
-# @DESCRIPTION:
 # Version of ant-core this task is intended to register and thus load with.
 ANT_TASK_PV="${PV}"
 

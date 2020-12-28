@@ -1,7 +1,5 @@
-Index: rman-3.2/Makefile
-===================================================================
---- rman-3.2.orig/Makefile
-+++ rman-3.2/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -102,7 +102,7 @@ all:  rman
  
  # everyone but me zaps assertions with the -DNDEBUG flag

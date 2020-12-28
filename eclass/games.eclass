@@ -26,10 +26,6 @@
 # is needed. For more details, see the QA team policies page:
 # https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Policies#Games
 
-# @VARIABLE: _GAMES_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
 
 if [[ -z ${_GAMES_ECLASS} ]]; then
 _GAMES_ECLASS=1

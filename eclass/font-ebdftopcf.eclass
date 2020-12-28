@@ -1,15 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: font-ebdftopcf.eclass
-# @MAINTAINER:
-# Robin H. Johnson <robbat2@gentoo.org>
-# @AUTHOR:
-# Robin H. Johnson <robbat2@gentoo.org>
-# @BLURB: A simple eclass to convert BDF to PCF
-# @DESCRIPTION:
-# Make PCF font generator from BDF uniform and optimal
+# Author: Robin H. Johnson <robbat2@gentoo.org>
+
+# font-ebdftopcf.eclass
+# Eclass to make PCF font generator from BDF uniform and optimal
 # The manpage for this eclass is in media-gfx/ebdftopcf.
+
 # inherit this eclass after font.eclass
 
 # if USE="-X", this eclass is basically a no-op, since bdftopcf requires Xorg.
@@ -19,9 +16,9 @@ IUSE="X"
 DEPEND="X? ( media-gfx/ebdftopcf )"
 RDEPEND=""
 
-# @FUNCTION: ebdftopcf
-# @DESCRIPTION:
-# Convert BDF files to PCF
+#
+# Public functions
+#
 ebdftopcf() {
 	local bdffiles
 	bdffiles="$@"
@@ -32,9 +29,9 @@ ebdftopcf() {
 		|| die "Failed to build PCF files"
 }
 
-# @FUNCTION: font-ebdftopcf_src_compile
-# @DESCRIPTION:
-# Convert fonts from BDF to PCF
+#
+# Public inheritable functions
+#
 font-ebdftopcf_src_compile() {
 	use X && FONT_SUFFIX="pcf.gz"
 	use X || FONT_SUFFIX="bdf"

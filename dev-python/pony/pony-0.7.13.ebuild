@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	test? ( $(python_gen_impl_dep sqlite) )"
+BDEPEND="test? ( $(python_gen_impl_dep sqlite) )"
+RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest

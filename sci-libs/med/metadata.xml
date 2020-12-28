@@ -15,6 +15,6 @@
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<description>Gentoo Proxy Maintainers</description>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 </pkgmetadata>

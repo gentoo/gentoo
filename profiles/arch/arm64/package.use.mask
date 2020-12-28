@@ -47,10 +47,6 @@ net-mail/dovecot vpopmail
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
-# luajit not available on this arch.
-dev-libs/efl luajit
-
 # Sam James <sam@gentoo.org> (2020-09-05)
 # nvidia-texture-tools not useful here
 media-libs/devil nvtt
@@ -73,11 +69,6 @@ dev-lua/mpack test
 # Felix Janda <felix.janda@posteo.de> (2020-08-01)
 # Requires unkeyworded dev-lang/spidermonkey:17
 >=www-client/elinks-0.13.3 javascript
-
-# Mike Pagano <mpagano@gentoo.org> (2020-07-27)
-# Failed build on arm64
-# bug #732966
-dev-util/idea-community jbr11
 
 # Sam James <sam@gentoo.org> (2020-07-10)
 # Failed build with USE=tools
@@ -128,10 +119,6 @@ net-misc/whois xcrypt
 # Dependency has no stable keyword
 # and as for now we have only stable mate versions
 mate-base/mate bluetooth
-
-# Patrick McLean <chutzpah@gentoo.org> (2020-04-03)
-# Lots of deps for little gain
-dev-python/joblib doc
 
 # Matt Turner <mattst88@gentoo.org> (2020-02-02)
 # dev-libs/mongo-c-driver is not keyworded
@@ -212,11 +199,6 @@ media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
 >=x11-libs/wxGTK-3 -sdl
-
-# Roy Bamford <neddyseagoon@gentoo.org> (2019-02-24)
-# kde-apps/cantor lua means luajit which needs luajit-2.1.0_beta3 for arm64
-# It builds OK but is not yet in ::gentoo. bug #678404
-kde-apps/cantor lua
 
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
 # sci-electronics/ngspice not yet keyworded, bug #665416

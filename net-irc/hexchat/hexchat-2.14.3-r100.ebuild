@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit lua-single meson mono-env python-single-r1 xdg
 
@@ -62,6 +62,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-python38.patch" #758758
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
@@ -85,7 +89,7 @@ src_configure() {
 		-Ddbus-service-use-appid=false
 		-Dwith-checksum="$(usex plugin-checksum true false)"
 		-Dwith-fishlim="$(usex plugin-fishlim true false)"
-		-Dwith-lua="$(usex lua ${ELUA} false)"
+		-Dwith-lua="$(usex lua "${ELUA}" false)"
 		-Dwith-perl="$(usex perl "${EPREFIX}"/usr/bin/perl false)"
 		-Dwith-python="$(usex python "${EPYTHON/.*}" false)"
 		-Dwith-sysinfo="$(usex plugin-sysinfo true false)"

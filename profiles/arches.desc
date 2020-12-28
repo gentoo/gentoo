@@ -24,8 +24,6 @@ sparc		stable
 x86		stable
 
 # Prefix keywords
-ppc-aix		testing
-amd64-linux	testing
 arm-linux	testing
 arm64-linux	testing
 ppc64-linux	testing
@@ -34,7 +32,6 @@ arm64-macos	testing
 ppc-macos	testing
 x86-macos	testing
 x64-macos	testing
-m68k-mint	testing
 sparc-solaris	testing
 sparc64-solaris	testing
 x64-solaris	testing

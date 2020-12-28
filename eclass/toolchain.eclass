@@ -1,14 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: toolchain.eclass
-# @MAINTAINER:
-# Toolchain Ninjas <toolchain@gentoo.org>
-# @AUTHOR:
-# Toolchain Ninjas <toolchain@gentoo.org>
+# Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
-# @BLURB: Basic toolchain stuff
-
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"

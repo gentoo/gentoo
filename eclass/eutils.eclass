@@ -19,11 +19,6 @@
 # or eclasses.  Use the more specific split eclasses instead, or native
 # package manager functions when available.
 
-# @ECLASS-VARIABLE: _EUTILS_ECLASS
-# @INTERNAL
-# @DESCRIPTION:
-# Please document me
-
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
 
@@ -73,10 +68,6 @@ emktemp() {
 		fi
 	fi
 }
-
-# @FUNCTION: path_exists
-# @DESCRIPTION:
-# Warn that function has been removed
 
 path_exists() {
 	eerror "path_exists has been removed.  Please see the following post"

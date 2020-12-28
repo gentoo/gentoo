@@ -111,7 +111,6 @@ ruby_implementation_depend() {
 # @FUNCTION: _ruby_get_all_impls
 # @INTERNAL
 # @RETURN: list of valid values in USE_RUBY
-# @DESCRIPTION:
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {

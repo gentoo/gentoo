@@ -1,0 +1,11 @@
+--- a/imsettings-daemon/imsettings-server.c
++++ b/imsettings-daemon/imsettings-server.c
+@@ -93,7 +93,7 @@ GDBusInterfaceVTable __iface_vtable = {
+ 	NULL,
+ 	NULL,
+ };
+-guint signals[LAST_SIGNAL];
++extern guint signals[LAST_SIGNAL];
+ 
+ G_DEFINE_TYPE (IMSettingsServer, imsettings_server, G_TYPE_OBJECT);
+ G_LOCK_DEFINE_STATIC (logger);

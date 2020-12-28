@@ -1,0 +1,80 @@
+From e7b6d5f8b7541a4693c61be5d210fad85a5c9d06 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Sat, 12 Sep 2020 13:37:11 +0200
+Subject: [PATCH] build: Fix -Dautostart=true
+
+Meson doesn't seem to like that we use install_data() with custom target
+results. Make this option toggle the "install" keyword argument in the
+custom target itself.
+---
+ src/miners/fs/meson.build       | 10 +++-------
+ src/miners/rss/meson.build      | 10 +++-------
+ src/tracker-extract/meson.build | 10 +++-------
+ 3 files changed, 9 insertions(+), 21 deletions(-)
+
+diff --git a/src/miners/fs/meson.build b/src/miners/fs/meson.build
+index a770516c9..5a23bd06c 100644
+--- a/src/miners/fs/meson.build
++++ b/src/miners/fs/meson.build
+@@ -54,13 +54,9 @@ desktop_file_untranslated = configure_file(
+ desktop_file = custom_target('tracker-miner-fs-desktop-file',
+     input: desktop_file_untranslated,
+     output: 'tracker-miner-fs.desktop',
+-    command: ['intltool-merge', '--quiet', '--desktop-style', '--utf8', join_paths(meson.source_root(), 'po'), '@INPUT@', '@OUTPUT@'])
+-
+-if get_option('autostart')
+-  install_data(desktop_file,
+-      install: true,
+-      install_dir: join_paths(get_option('sysconfdir'), 'xdg/autostart'))
+-endif
++    command: ['intltool-merge', '--quiet', '--desktop-style', '--utf8', join_paths(meson.source_root(), 'po'), '@INPUT@', '@OUTPUT@'],
++    install: get_option('autostart'),
++    install_dir: join_paths(get_option('sysconfdir'), 'xdg/autostart'))
+ 
+ if install_systemd_user_services
+   configure_file(
+diff --git a/src/miners/rss/meson.build b/src/miners/rss/meson.build
+index f540befe2..0bf0bb765 100644
+--- a/src/miners/rss/meson.build
++++ b/src/miners/rss/meson.build
+@@ -31,13 +31,9 @@ desktop_file_untranslated = configure_file(
+ desktop_file = custom_target('tracker-miner-rss-desktop-file',
+     input: desktop_file_untranslated,
+     output: 'tracker-miner-rss.desktop',
+-    command: ['intltool-merge', '--quiet', '--desktop-style', '--utf8', join_paths(meson.source_root(), 'po'), '@INPUT@', '@OUTPUT@'])
+-
+-if get_option('autostart')
+-  install_data(desktop_file,
+-      install: true,
+-      install_dir: join_paths(get_option('sysconfdir'), 'xdg/autostart'))
+-endif
++    command: ['intltool-merge', '--quiet', '--desktop-style', '--utf8', join_paths(meson.source_root(), 'po'), '@INPUT@', '@OUTPUT@'],
++    install: get_option('autostart'),
++    install_dir: join_paths(get_option('sysconfdir'), 'xdg/autostart'))
+ 
+ if install_systemd_user_services
+   configure_file(
+diff --git a/src/tracker-extract/meson.build b/src/tracker-extract/meson.build
+index 239907179..aec37bfcc 100644
+--- a/src/tracker-extract/meson.build
++++ b/src/tracker-extract/meson.build
+@@ -189,13 +189,9 @@ desktop_file_untranslated = configure_file(
+ desktop_file = custom_target('tracker-extract-desktop-file',
+   input: desktop_file_untranslated,
+   output: 'tracker-extract.desktop',
+-  command: ['intltool-merge', '--quiet', '--desktop-style', '--utf8', join_paths(meson.source_root(), 'po'), '@INPUT@', '@OUTPUT@'])
+-
+-if get_option('autostart')
+-  install_data(desktop_file,
+-      install: true,
+-      install_dir: join_paths(get_option('sysconfdir'), 'xdg/autostart'))
+-endif
++  command: ['intltool-merge', '--quiet', '--desktop-style', '--utf8', join_paths(meson.source_root(), 'po'), '@INPUT@', '@OUTPUT@'],
++  install: get_option('autostart'),
++  install_dir: join_paths(get_option('sysconfdir'), 'xdg/autostart'))
+ 
+ if install_systemd_user_services
+   configure_file(
+-- 
+2.27.0
+

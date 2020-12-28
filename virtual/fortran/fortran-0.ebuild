@@ -13,6 +13,4 @@ RDEPEND="
 	|| (
 		sys-devel/gcc[fortran,openmp?]
 		sys-devel/gcc-apple[fortran,openmp?]
-		dev-lang/ekopath
-		dev-lang/ifc
 		)"

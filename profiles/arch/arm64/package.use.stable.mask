@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-12-23)
+# Needs stable dev-lang/luajit
+kde-apps/cantor lua
+
 # Sam James <sam@gentoo.org> (2020-10-18)
 # Needs dev-tex/hevea which isn't stable yet
 media-gfx/enblend doc

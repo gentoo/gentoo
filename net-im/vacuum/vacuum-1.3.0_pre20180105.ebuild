@@ -88,6 +88,7 @@ src_configure() {
 		-DLANGS="$(l10n_get_locales)"
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
+		-DPLUGIN_adiummessagestyle=OFF
 		-DPLUGIN_statistics=OFF
 		-DPLUGIN_spellchecker=$(usex spell)
 	)

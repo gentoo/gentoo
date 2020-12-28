@@ -1,11 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sven Vermeulen <swift@gentoo.org> (2013-04-19)
 # sys-apps/policycoreutils (semanage command) uses sepolgen, which requires libselinux with USE="python". 
 # sys-apps/policycoreutils also requires libsemanage with USE="python"
 sys-libs/libselinux python
-sys-libs/libsemanage python
 
 # Sven Vermeulen <swift@gentoo.org> (2013-05-21)
 # sys-apps/policycoreutils has PYTHON_USE_WITH="xml" set, so we force it

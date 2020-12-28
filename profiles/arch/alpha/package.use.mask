@@ -221,11 +221,6 @@ dev-libs/libpcre2 jit
 # Pulls in dev-db/redis which is not keyworded on alpha.
 >=dev-libs/hiredis-0.13.1 test
 
-# Tobias Klausmann <klausman@gentoo.org> (2016-10-02)
-# For the one single version noted hereunder, the ebuild does not pull in
-# sys-apps/fakeroot as a test dependency (bug #593768).
-=dev-util/debhelper-9.20160814 test
-
 # Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # networkmanager USE masked due to missing keywords
 gnome-extra/nm-applet teamd
@@ -302,12 +297,6 @@ app-crypt/qca botan
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-
-# Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23)
-# test dependencies need keywording
-dev-haskell/binary test
-dev-haskell/text test
-dev-haskell/vector test
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-11-20)
 # OpenCV likely will never work on Alpha
