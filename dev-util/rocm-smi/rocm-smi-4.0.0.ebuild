@@ -3,6 +3,10 @@
 
 EAPI=6
 
+PYTHON_COMPAT=( python3_{6..8} )
+
+inherit python-r1
+
 DESCRIPTION="ROCm System Management Interface"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROC-smi"
 
@@ -22,8 +26,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-libs/rocr-runtime
-	 =dev-lang/python-3*"
+RDEPEND="dev-libs/rocr-runtime"
 
 src_compile() {
 	einfo "Nothing todo"
