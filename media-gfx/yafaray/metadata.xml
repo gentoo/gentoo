@@ -7,7 +7,7 @@
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<description>Proxy Maintainer Team</description>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		YafaRay is a raytracing open source render engine. Raytracing is a rendering technique for generating realistic images by tracing the path of light through a 3D scene.
