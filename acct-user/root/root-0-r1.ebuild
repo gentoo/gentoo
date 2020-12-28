@@ -13,3 +13,8 @@ ACCT_USER_HOME_PERMS=0700
 ACCT_USER_GROUPS=( root )
 
 acct-user_add_deps
+
+pkg_prerm() {
+	# Don't lock out the superuser
+	:
+}
