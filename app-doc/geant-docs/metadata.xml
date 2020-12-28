@@ -9,4 +9,5 @@
     <email>sci-physics@gentoo.org</email>
     <name>Gentoo Physics Project</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>
