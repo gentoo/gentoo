@@ -34,12 +34,12 @@ distutils_enable_tests pytest
 src_prepare() {
 	# requires unpackaged factory-boy, doesn't seem to relevant
 	# to anything but eyeD3 usage with factory-boy
-	rm test/test_factory.py || die
+	rm tests/test_factory.py || die
 	# requires unpackaged grako
-	rm test/test_display_plugin.py || die
+	rm tests/test_display_plugin.py || die
 
 	if use test; then
-		mv "${WORKDIR}"/eyeD3-test-data test/data || die
+		mv "${WORKDIR}"/eyeD3-test-data tests/data || die
 	fi
 
 	distutils-r1_src_prepare
