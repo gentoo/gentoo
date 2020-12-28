@@ -1,6 +1,7 @@
 acct-group/abrt 0-r1: A group for the automatic bug detection and reporting tool
 acct-group/adm 0-r1: System group: adm
 acct-group/airdcppd 0-r1: Group for net-p2p/airdcpp-webclient
+acct-group/amanda 0: System group: amanda
 acct-group/amavis 0-r1: Group for mail-filter/amavisd-new
 acct-group/amule 0-r1: Group for net-p2p/amule
 acct-group/anope 0-r1: Group for Anope IRC services
@@ -200,6 +201,7 @@ acct-group/sancp 0: gid for net-analyzer/sancp
 acct-group/sanlock 0-r1: shared storage lock manager
 acct-group/scponly 0-r1: group for scponly
 acct-group/shellinaboxd 0-r1: shellinabox group
+acct-group/sigh 0: System group: sigh
 acct-group/simplevirt 0-r1: System group: simplevirt
 acct-group/sks 0: Group for SKS OpenPGP keyserver
 acct-group/slurm 0-r1: A group for the slurm - Highly Scalable Resource Manager
@@ -249,11 +251,13 @@ acct-group/ubridge 0-r1: Group for net-misc/ubridge
 acct-group/ultimaker 0-r1: Group for ultimaker
 acct-group/unbound 0-r1: unbound program group
 acct-group/unifi 0-r1: A group for the UniFi controller
+acct-group/unifi-video 0: Group for Unifi Video
 acct-group/unrealircd 0-r1: System group: unrealircd
 acct-group/upmpdcli 0: Group for upmpdcli
 acct-group/uptimed 0-r1: System group: uptimed
 acct-group/usb 0-r1: System group: usb
 acct-group/users 0: System group: users
+acct-group/ushare 0: Group for uShare
 acct-group/utmp 0-r1: System group: utmp
 acct-group/varnish 0-r1: group for varnish
 acct-group/vault 0-r1: System group: vault
@@ -274,6 +278,7 @@ acct-group/znc 0-r1: Group for net-irc/znc
 acct-user/abrt 0-r1: A user for the automatic bug detection and reporting tool
 acct-user/airdcppd 0-r1: User for net-p2p/airdcpp-webclient
 acct-user/alias 0-r1: alias user for qmail mail delivery
+acct-user/amanda 0: System user: amanda
 acct-user/amavis 0-r1: User for mail-filter/amavisd-new
 acct-user/amule 0-r1: User for net-p2p/amule
 acct-user/anope 0-r1: User for Anope IRC services
@@ -453,7 +458,7 @@ acct-user/radius 0-r1: FreeRadius program user
 acct-user/rbldns 0-r1: System user: rbldns
 acct-user/redis 0-r1: Redis program user
 acct-user/redmine 0-r1: Redmine application user
-acct-user/root 0: System user: root
+acct-user/root 0-r1: System user: root
 acct-user/rspamd 0-r1: User for rspamd - Rapid spam filtering system
 acct-user/rstudio-server 0-r1: user for sci-mathematics/rstudio
 acct-user/rtkit 0-r1: User for the Realtime Policy and Watchdog Daemon
@@ -462,6 +467,7 @@ acct-user/sancp 0: uid for net-analyzer/sancp
 acct-user/sanlock 0-r1: shared storage lock manager
 acct-user/scponly 0-r1: user for chrooted scponly
 acct-user/shellinaboxd 0-r1: shellinabox user
+acct-user/sigh 0: System user: sigh
 acct-user/sks 0: User for the SKS OpenPGP keyserver
 acct-user/slurm 0-r1: User for the slurm - Highly Scalable Resource Manager
 acct-user/smmsp 0-r1: user for sendmail daemon
@@ -506,10 +512,12 @@ acct-user/tvheadend 0-r1: User for tvheadend
 acct-user/ultimaker 0-r1: User for ultimaker
 acct-user/unbound 0-r1: unbound program user
 acct-user/unifi 0-r1: A user for the UniFi Controller
+acct-user/unifi-video 0: User for Unifi Video
 acct-user/unrealircd 0-r1: System user: unrealircd
 acct-user/upmpdcli 0: User for upmpdcli
 acct-user/uptimed 0-r1: user for uptime daemon
 acct-user/usbmux 0-r1: User for the usbmuxd daemon
+acct-user/ushare 0: User for uShare
 acct-user/varnish 0-r1: user for varnish
 acct-user/vault 0-r1: User for vault
 acct-user/vboxguest 0-r1: user for virtualbox-guest-additions
@@ -837,7 +845,7 @@ app-arch/zopfli 1.0.2 1.0.3: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zstd 1.4.4-r4 1.4.5 1.4.8-r1: zstd fast compression library
-app-backup/amanda 3.3.9 3.4.1 3.4.2 3.4.3 3.4.4 3.4.5 3.5-r1 3.5.1-r1: The Advanced Maryland Automatic Network Disk Archiver
+app-backup/amanda 3.3.9 3.5.1-r2: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
@@ -3510,7 +3518,7 @@ dev-db/libdbi-drivers 0.9.0-r1: The libdbi-drivers project maintains drivers for
 dev-db/libiodbc 3.52.12: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
 dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool library
-dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
+dev-db/lmdb 0.9.23 0.9.24 0.9.27: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.2.35 10.2.36 10.3.23-r3 10.3.25 10.3.26 10.3.27 10.4.13-r3 10.4.15 10.4.16 10.4.17 10.5.6 10.5.7 10.5.8: An enhanced, drop-in replacement for MySQL
@@ -12422,7 +12430,7 @@ mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rspamd 2.5-r1 2.6-r2 2.6-r100 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1 0.90: Sieve Command Line Interface
-mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
+mail-filter/sigh 1607.1.2 1607.1.6-r1: S/MIME signing milter
 mail-filter/spamassassin 3.4.4 3.4.4-r1 3.4.4-r2 3.4.4-r3 3.4.4-r4: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
@@ -14126,8 +14134,8 @@ media-video/totem 3.34.1: Media player for GNOME
 media-video/transcode 1.1.7-r4 1.1.7-r5: Utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
-media-video/unifi-video 3.10.10 3.10.11 3.10.12 3.10.13 3.10.13-r1: UniFi Video Server
-media-video/ushare 1.1a-r9: uShare is a UPnP (TM) A/V & DLNA Media Server
+media-video/unifi-video 3.10.13-r2: UniFi Video Server
+media-video/ushare 1.1a-r9 1.1a_p20200824: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager
@@ -15224,7 +15232,7 @@ net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
 net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
 net-misc/sipp 3.6.0: A free Open Source test tool / traffic generator for the SIP protocol
-net-misc/sipsak 0.9.7: small command line tool for testing SIP applications and devices
+net-misc/sipsak 0.9.8: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2 1.1.6_p20200624: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/smb4k 3.0.6: Advanced network neighborhood browser
@@ -15502,7 +15510,7 @@ net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
-net-wireless/dump1090 3.7.2 9999: simple Mode S decoder for RTLSDR devices
+net-wireless/dump1090 3.7.2 4.0 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/gnome-bluetooth 3.34.1 3.34.3: Bluetooth graphical utilities integrated with GNOME
 net-wireless/gnuradio 3.8.2.0-r1 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
@@ -16963,7 +16971,7 @@ sys-apps/superdiag 1.3.0.20200109: Provides the capability to determine the heal
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 246-r2 246.6 247.2-r3 9999: System and service manager for Linux
+sys-apps/systemd 246-r2 246.6 247.2-r3 247.2-r4 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-tmpfiles 246: Creates, deletes and cleans up volatile and temporary files and directories
 sys-apps/sysvinit 2.93 2.96 2.97 2.98: /sbin/init - parent of all processes
@@ -18329,7 +18337,7 @@ x11-misc/fbpanel 7.0-r2: light-weight X11 desktop panel
 x11-misc/fireflies 2.08-r1: Fireflies screensaver: Wicked cool eye candy
 x11-misc/flow-pomodoro 1.2.0-r1: A pomodoro app that blocks distractions while you work
 x11-misc/fluxter 0.1.0: workspace pager dockapp, particularly useful with the Fluxbox window manager
-x11-misc/fpm2 0.79-r1: A GUI password manager utility with password generator
+x11-misc/fpm2 0.79-r1 0.90: A GUI password manager utility with password generator
 x11-misc/fracplanet 0.5.1: Fractal planet and terrain generator
 x11-misc/fraqtive 0.4.8-r2: Open source, multi-platform generator of the Mandelbrot family fractals
 x11-misc/ftmenu 0.4.0-r1: A tray menu for the Fluxbox toolbar

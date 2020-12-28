@@ -1,0 +1,12 @@
+BDEPEND=dev-util/intltool virtual/pkgconfig
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-libs/nettle x11-libs/gtk+:3 x11-libs/libX11
+DESCRIPTION=A GUI password manager utility with password generator
+EAPI=7
+HOMEPAGE=https://als.regnet.cz/fpm2/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-libs/nettle x11-libs/gtk+:3 x11-libs/libX11
+SLOT=2
+SRC_URI=https://als.regnet.cz/fpm2/download/fpm2-0.90.tar.xz
+_md5_=7686799e02a3a794dedb989701914a03
