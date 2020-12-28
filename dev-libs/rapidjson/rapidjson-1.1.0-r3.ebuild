@@ -15,7 +15,6 @@ SLOT="0"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/miloyip/rapidjson.git"
-	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	SRC_URI="https://github.com/miloyip/rapidjson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -29,16 +28,16 @@ DEPEND="
 RDEPEND=""
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-system_gtest.patch"
-	"${FILESDIR}/${PN}-1.1.1-valgrind_optional.patch"
+	"${FILESDIR}/${P}-gcc-7.patch"
+	"${FILESDIR}/${P}-system_gtest.patch"
+	"${FILESDIR}/${P}-valgrind_optional.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
 	sed -i -e 's| -march=native||g' CMakeLists.txt || die
-	sed -i -e 's| -mcpu=native||g' CMakeLists.txt || die
-	sed -i -e 's| -Werror||g' CMakeLists.txt || die
+	sed -i -e 's| -Werror||g' CMakeLists.txt example/CMakeLists.txt test/unittest/CMakeLists.txt || die
 }
 
 src_configure() {

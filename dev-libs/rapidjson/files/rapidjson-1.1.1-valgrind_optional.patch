@@ -1,0 +1,21 @@
+https://github.com/Tencent/rapidjson/issues/1808
+
+--- /test/unittest/CMakeLists.txt
++++ /test/unittest/CMakeLists.txt
+@@ -78,12 +78,15 @@
+     COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/unittest
+     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+ 
+-if(NOT MSVC)
++find_program(VALGRIND_EXECUTABLE valgrind)
++if(VALGRIND_EXECUTABLE)
+     # Not running SIMD.* unit test cases for Valgrind
+     add_test(NAME valgrind_unittest
+         COMMAND valgrind --suppressions=${CMAKE_SOURCE_DIR}/test/valgrind.supp --leak-check=full --error-exitcode=1 ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/unittest --gtest_filter=-SIMD.*
+         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
++endif(VALGRIND_EXECUTABLE)
+ 
++if(NOT MSVC)
+     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+         add_test(NAME symbol_check
+         COMMAND sh -c "objdump -t -C libnamespacetest.a | grep rapidjson ; test $? -ne 0"
