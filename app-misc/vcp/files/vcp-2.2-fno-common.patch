@@ -1,0 +1,47 @@
+--- a/common.h
++++ b/common.h
+@@ -23,8 +23,8 @@
+ #define T_DIR  1 /*      -> DIR              */
+ #define T_NED  2 /* DIR  -> NON-EXISTENT DIR */
+ 
+-WINDOW *mainw;
+-WINDOW *logw;
++extern WINDOW *mainw;
++extern WINDOW *logw;
+ 
+ struct dest_new {
+ 	char *opath;
+--- a/log.c
++++ b/log.c
+@@ -13,6 +13,8 @@
+ #include "screen.h"
+ #include "color.h"
+ 
++extern WINDOW *logw;
++
+ int logaddi(int code, char *base, int var, int var2) {
+ 	
+ 	if(code == LOG_VRB && !vflag)
+--- a/misc.c
++++ b/misc.c
+@@ -22,6 +22,8 @@
+ #include "color.h"
+ #include "screen.h"
+ 
++extern WINDOW *logw;
++
+ int statit(char *path,struct stat *st,int cmdline) {
+ 	if(Rflag) {
+ 		if(pflag || ((Hflag) && !cmdline))
+--- a/screen.c
++++ b/screen.c
+@@ -17,6 +17,9 @@
+ int winw,winh,mainww;
+ int mainwsbw; /* width of status bar */
+ 
++WINDOW *mainw;
++WINDOW *logw;
++
+ /* create windows, draw border and title */
+ void scrn_draw() {
+ 	int dev_null;
