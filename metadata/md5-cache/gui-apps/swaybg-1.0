@@ -1,4 +1,4 @@
-BDEPEND=>=dev-libs/wayland-protocols-1.14 x11-libs/gdk-pixbuf x11-libs/cairo virtual/pkgconfig man? ( app-text/scdoc ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2
+BDEPEND=>=dev-libs/wayland-protocols-1.14 x11-libs/gdk-pixbuf x11-libs/cairo virtual/pkgconfig man? ( app-text/scdoc ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
 DEFINED_PHASES=compile configure install test
 DEPEND=dev-libs/wayland
 DESCRIPTION=A wallpaper utility for Wayland
@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=dev-libs/wayland !<gui-wm/sway-1.1_alpha1
 SLOT=0
 SRC_URI=https://github.com/swaywm/swaybg/archive/1.0.tar.gz -> swaybg-1.0.tar.gz
-_eclasses_=meson	71d293a701d6362387e1214da368c848	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=meson	fdaf2a7b9376934c1c7ddbd32114defb	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=9c682ebd82c753e6ef68966d542381e3
