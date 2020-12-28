@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="diff-like program operating at word level instead of line level"
 HOMEPAGE="https://os.ghalkes.nl/dwdiff.html"
@@ -14,38 +14,25 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="nls"
 
-CDEPEND="dev-libs/icu:="
-
 RDEPEND="
-	${CDEPEND}
+	dev-libs/icu:=
 	sys-apps/diffutils"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
-DEPEND="
-	${CDEPEND}
-	nls? ( sys-devel/gettext )"
-
-PATCHES=(
-	"${FILESDIR}/C99-fix.patch"
-)
+PATCHES=( "${FILESDIR}"/${P}-C99-fix.patch )
 
 src_prepare() {
 	default
-
-	sed -i \
-		-e '/INSTALL/s:COPYING::' \
-		Makefile.in || die
+	sed -i -e '/INSTALL/s:COPYING::' Makefile.in || die
 }
 
 src_configure() {
 	./configure \
-		--prefix=/usr \
-		$(use_with nls gettext) || die "./configure error"
+		--prefix="${EPREFIX}"/usr \
+		$(use_with nls gettext) || die
 }
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
-}
-
-src_install() {
-	emake prefix="${D}/usr" docdir="${D}/usr/share/doc/${PF}" install
 }
