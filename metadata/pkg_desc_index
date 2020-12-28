@@ -3478,7 +3478,7 @@ dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
 dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
 dev-cpp/sparsehash 2.0.3-r1 2.0.4: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 2019.8 2020.2 2020.3: High level abstract threading library
-dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command line arguments
+dev-cpp/tclap 1.2.2: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 0.2.8 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
@@ -8786,7 +8786,7 @@ dev-python/pyscard 1.9.9: Smart cards support in python
 dev-python/pyscreenshot 2.2: Python screenshot library
 dev-python/pyserial 3.4 3.5: Python Serial Port extension
 dev-python/pyside2 5.15.1: Python bindings for the Qt framework
-dev-python/pyside2-tools 5.15.1: PySide development tools (pyside2-lupdate with support for Python)
+dev-python/pyside2-tools 5.15.1-r1: PySide development tools (pyside2-lupdate with support for Python)
 dev-python/pysimdjson 3.1.1-r1: Python bindings for simdjson
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
