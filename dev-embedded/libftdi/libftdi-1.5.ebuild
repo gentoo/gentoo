@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake python-single-r1
 
 MY_P="${PN}1-${PV}"
@@ -21,15 +21,15 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2"
 SLOT="1"
-IUSE="cxx doc examples python static-libs test tools"
+IUSE="cxx doc examples python test tools"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
 	doc? ( app-doc/doxygen )
-	python? ( dev-lang/swig )
-"
-RDEPEND="virtual/libusb:1
+	python? ( dev-lang/swig )"
+RDEPEND="
+	virtual/libusb:1
 	cxx? ( dev-libs/boost )
 	python? ( ${PYTHON_DEPS} )
 	tools? (
@@ -40,9 +40,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/boost )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-tests-no-cxx.patch"
-)
+PATCHES=( "${FILESDIR}"/${P}-tests-no-cxx.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -54,10 +52,10 @@ src_configure() {
 		-DDOCUMENTATION=$(usex doc)
 		-DEXAMPLES=$(usex examples)
 		-DPYTHON_BINDINGS=$(usex python)
-		-DSTATICLIBS=$(usex static-libs)
 		-DBUILD_TESTS=$(usex test)
 		-DFTDI_EEPROM=$(usex tools)
 		-DCMAKE_SKIP_BUILD_RPATH=ON
+		-DSTATICLIBS=OFF
 	)
 	cmake_src_configure
 }
