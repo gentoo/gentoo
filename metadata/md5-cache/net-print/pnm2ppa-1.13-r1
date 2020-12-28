@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl net-print/cups >=net-print/cups-filters-1.0.43-r1[foomatic] sys-libs/glibc syslog? ( virtual/logger )
 SLOT=0
 SRC_URI=mirror://sourceforge/pnm2ppa/pnm2ppa-1.13.tar.gz
-_md5_=844b4c8879699dce5f1e19762d210d39
+_md5_=24560e81859db1f48ce5324280629578
