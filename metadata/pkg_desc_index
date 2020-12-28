@@ -1110,7 +1110,7 @@ app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-manager 3.1.0-r1 3.1.1-r1: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-manager-qt 1.1.4-r2 1.1.5: Cross-platform application for configuring any YubiKey over all USB transports
-app-crypt/zulucrypt 5.1.0 5.4.0_pre20180223 5.4.0: Front end to cryptsetup
+app-crypt/zulucrypt 5.5.0_pre20180223: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
 app-dicts/aspell-bg 4.1.0: Bulgarian language dictionary for aspell
@@ -5656,7 +5656,7 @@ dev-libs/tree-sitter 0.17.3 9999: Tree-sitter is a parser generator tool and an 
 dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
-dev-libs/ucommon 6.0.3 6.5.7 7.0.0: Portable C++ runtime for threads and sockets
+dev-libs/ucommon 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0 2.1.0: A very basic terminfo library
 dev-libs/unittest++ 2.0.0 2.0.0-r1: A lightweight unit testing framework for C++

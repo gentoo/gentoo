@@ -2241,7 +2241,6 @@ dev-libs/totem-pl-parser:archive - Enables ISO detection with app-arch/libarchiv
 dev-libs/totem-pl-parser:crypt - Support AmazonAMZ decoding with dev-libs/libgcrypt
 dev-libs/totem-pl-parser:quvi - Use media-libs/libquvi for parsing video links
 dev-libs/tvision:gpm - Support text mode mouse through sys-libs/gpm
-dev-libs/ucommon:socks - Build with socks proxy support
 dev-libs/userspace-rcu:regression-test - Run regression tests (requires FEATURES=test)
 dev-libs/ustr:ustr-import - Install ustr-import developer program and source code for bundling.
 dev-libs/weston:desktop - Enable the desktop shell
