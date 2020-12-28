@@ -40,6 +40,9 @@ all_ruby_prepare() {
 	# Avoid isolation since dependencies are not properly declared.
 	sed -i -e 's/, :isolate//' Rakefile || die
 
+	# Avoid bundler dependency to make bootstrapping easier
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
