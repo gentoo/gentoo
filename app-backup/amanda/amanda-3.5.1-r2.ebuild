@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools perl-module user systemd toolchain-funcs
+EAPI=7
+
+inherit autotools perl-module systemd toolchain-funcs
 
 DESCRIPTION="The Advanced Maryland Automatic Network Disk Archiver"
 HOMEPAGE="http://www.amanda.org/"
@@ -13,39 +14,43 @@ SLOT="0"
 IUSE="curl gnuplot ipv6 kerberos minimal ndmp nls readline s3 samba systemd xfs"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-RDEPEND="sys-libs/readline:=
-	virtual/awk
-	app-arch/tar
-	dev-lang/perl:=
+DEPEND="
+	acct-group/amanda
+	acct-user/amanda
 	app-arch/dump
-	net-misc/openssh
-	>=dev-libs/glib-2.26.0
-	dev-perl/JSON
+	app-arch/tar
+	dev-libs/glib:2
+	dev-lang/perl:=
 	dev-perl/Encode-Locale
-	nls? ( virtual/libintl )
-	s3? ( >=net-misc/curl-7.10.0 )
-	!s3? ( curl? ( >=net-misc/curl-7.10.0 ) )
-	samba? ( net-fs/samba:= )
+	dev-perl/JSON
+	net-misc/openssh
+	sys-libs/readline:=
+	virtual/awk
 	kerberos? ( app-crypt/mit-krb5 )
+	nls? ( virtual/libintl )
+	samba? ( net-fs/samba:= )
+	s3? ( net-misc/curl )
+	!s3? ( curl? ( net-misc/curl ) )
 	xfs? ( sys-fs/xfsdump )
 	!minimal? (
-		dev-perl/XML-Simple
-		virtual/mailx
 		app-arch/mt-st:=
-		sys-block/mtx
-		gnuplot? ( sci-visualization/gnuplot )
 		app-crypt/aespipe
 		app-crypt/gnupg
+		dev-perl/XML-Simple
+		sys-block/mtx
+		virtual/mailx
+		gnuplot? ( sci-visualization/gnuplot )
 	)"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-	>=app-text/docbook-xsl-stylesheets-1.72.0
+RDEPEND="${DEPEND}"
+BDEPEND="
+	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd
-	dev-libs/libxslt
 	dev-lang/swig
-	"
+	dev-libs/libxslt
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 MYFILESDIR="${T}/files"
 ENVDIR="/etc/env.d"
@@ -59,8 +64,8 @@ TMPENVFILE="${T}/${ENVDFILE}"
 # installed. This variable name must not start with AMANDA_, as we do not want
 # it captured into the env file.
 ENV_SETTINGS_AMANDA="
-AMANDA_GROUP_GID AMANDA_GROUP_NAME
-AMANDA_USER_NAME AMANDA_USER_UID AMANDA_USER_SH AMANDA_USER_HOMEDIR AMANDA_USER_GROUPS
+AMANDA_GROUP_NAME
+AMANDA_USER_NAME AMANDA_USER_HOMEDIR
 AMANDA_SERVER AMANDA_SERVER_TAPE AMANDA_SERVER_TAPE_DEVICE AMANDA_SERVER_INDEX
 AMANDA_TAR_LISTDIR AMANDA_TAR
 AMANDA_PORTS_UDP AMANDA_PORTS_TCP AMANDA_PORTS_BOTH AMANDA_PORTS
@@ -75,13 +80,9 @@ amanda_variable_setup() {
 	currentamanda="$(set | egrep "^AMANDA_" | grep -v '^AMANDA_ENV_SETTINGS' | xargs)"
 
 	# First we set the defaults
-	[[ -z "${AMANDA_GROUP_GID}" ]] && AMANDA_GROUP_GID=87
-	[[ -z "${AMANDA_GROUP_NAME}" ]] && AMANDA_GROUP_NAME=amanda
-	[[ -z "${AMANDA_USER_NAME}" ]] && AMANDA_USER_NAME=amanda
-	[[ -z "${AMANDA_USER_UID}" ]] && AMANDA_USER_UID=87
-	[[ -z "${AMANDA_USER_SH}" ]] && AMANDA_USER_SH=/bin/bash
-	[[ -z "${AMANDA_USER_HOMEDIR}" ]] && AMANDA_USER_HOMEDIR=/var/spool/amanda
-	[[ -z "${AMANDA_USER_GROUPS}" ]] && AMANDA_USER_GROUPS="${AMANDA_GROUP_NAME}"
+	AMANDA_GROUP_NAME=amanda
+	AMANDA_USER_NAME=amanda
+	AMANDA_USER_HOMEDIR=/var/spool/amanda
 
 	# This installs Amanda, with the server. However, it could be a client,
 	# just specify an alternate server name in AMANDA_SERVER.
@@ -127,9 +128,6 @@ pkg_setup() {
 		elog "AMANDA_SERVER=\"myserver\" emerge amanda"
 		elog
 	fi
-
-	enewgroup "${AMANDA_GROUP_NAME}" "${AMANDA_GROUP_GID}"
-	enewuser "${AMANDA_USER_NAME}" "${AMANDA_USER_UID}" "${AMANDA_USER_SH}" "${AMANDA_USER_HOMEDIR}" "${AMANDA_USER_GROUPS}"
 }
 
 src_unpack() {
@@ -138,15 +136,16 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	# gentoo bug #331111
-	sed -i '/^check-local: check-perl$/d' "${S}"/config/automake/scripts.am || die
-	sed -i '/^check-local:/s,syntax-check,,g' "${S}"/perl/Makefile.am || die
+	sed -i '/^check-local: check-perl$/d' config/automake/scripts.am || die
+	sed -i '/^check-local:/s,syntax-check,,g' perl/Makefile.am || die
 
 	# bug with glibc-2.16.0
-	sed -i -e '/gets is a security/d' "${S}"/gnulib/stdio.in.h || die
+	sed -i -e '/gets is a security/d' gnulib/stdio.in.h || die
 
 	# https://bugs.gentoo.org/701416 sandbox violation
-	sed -i -e 's/case `"$SAMBA_CLIENT.*/case "Connection to nosuchhost.amanda.org failed" in/' "${S}"/config/amanda/dumpers.m4 || die
+	sed -i -e 's/case `"$SAMBA_CLIENT.*/case "Connection to nosuchhost.amanda.org failed" in/' config/amanda/dumpers.m4 || die
 
 	eautoreconf
 
@@ -347,7 +346,7 @@ src_install() {
 	if ! use minimal; then
 		einfo "Installing Sample Daily Cron Job for Amanda"
 		insinto /etc/cron.daily
-		newins "${MYFILESDIR}/amanda-cron" amanda
+		newins "${MYFILESDIR}"/amanda-cron amanda
 	fi
 
 	insinto /etc/amanda
@@ -355,10 +354,10 @@ src_install() {
 	doins "${T}/amandahosts"
 	fperms 600 /etc/amanda/amandahosts
 
-	dosym /etc/amanda/amandahosts "${AMANDA_USER_HOMEDIR}/.amandahosts"
+	dosym "${AMANDA_USER_HOMEDIR}/.amandahosts" /etc/amanda/amandahosts
 	insinto "${AMANDA_USER_HOMEDIR}"
 	einfo "Installing .profile for ${AMANDA_USER_NAME} user"
-	newins "${MYFILESDIR}/amanda-profile" .profile
+	newins "${MYFILESDIR}"/amanda-profile .profile
 
 	insinto /etc/amanda
 	doins "${S}/example/amanda-client.conf"
@@ -376,8 +375,7 @@ src_install() {
 	use xfs && keepdir /var/xfsdump/inventory
 
 	local i
-	for i in "${AMANDA_USER_HOMEDIR}" "${AMANDA_TAR_LISTDIR}" \
-		"${AMANDA_TMPDIR}" /etc/amanda; do
+	for i in "${AMANDA_TMPDIR}" /etc/amanda; do
 		einfo "Securing directory (${i})"
 		fowners -R ${AMANDA_USER_NAME}:${AMANDA_GROUP_NAME} ${i}
 	done
@@ -385,8 +383,8 @@ src_install() {
 	fperms 0700 \
 		"${AMANDA_USER_HOMEDIR}" "${AMANDA_TAR_LISTDIR}" \
 		"${AMANDA_TMPDIR}" "${AMANDA_TMPDIR}/dumps" \
-		 "${AMANDA_USER_HOMEDIR}/amanda" \
-		 /etc/amanda
+		"${AMANDA_USER_HOMEDIR}/amanda" \
+		/etc/amanda
 
 	if ! use minimal ; then
 		fperms 0700 \
@@ -411,9 +409,9 @@ src_install() {
 	rm "${D}"/usr/share/amanda/{COPYRIGHT,ChangeLog,NEWS,ReleaseNotes} || die
 	mv "${D}/usr/share/amanda/example" "${D}/usr/share/doc/${PF}/" || die
 	docinto example1
-	newdoc "${FILESDIR}/example_amanda.conf" amanda.conf
-	newdoc "${FILESDIR}/example_disklist-2.5.1_p3-r1" disklist
-	newdoc "${FILESDIR}/example_global.conf" global.conf
+	newdoc "${FILESDIR}"/example_amanda.conf amanda.conf
+	newdoc "${FILESDIR}"/example_disklist-2.5.1_p3-r1 disklist
+	newdoc "${FILESDIR}"/example_global.conf global.conf
 
 	einfo "Cleaning up dud .la files"
 	perl_set_version
