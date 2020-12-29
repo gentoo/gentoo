@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -53,10 +53,10 @@
 # @ECLASS-VARIABLE: K_PREPATCHED
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# if the patchset is prepatched (ie: mm-sources,
-# ck-sources, ac-sources) it will use PR (ie: -r5) as
-# the patchset version for
-# and not use it as a true package revision
+# if the patchset is prepatched (ie: pf-sources,
+# zen-sources etc) it will use PR (ie: -r5) as the
+# patchset version for and not use it as a true package
+# revision
 
 # @ECLASS-VARIABLE:  K_EXTRAEINFO
 # @DEFAULT_UNSET
