@@ -170,7 +170,7 @@ pkg_setup() {
 			~AUFS_FS
 			~EXT4_FS_POSIX_ACL ~EXT4_FS_SECURITY
 		"
-		ERROR_AUFS_FS="CONFIG_AUFS_FS: is required to be set if and only if aufs-sources are used instead of aufs4/aufs3"
+		ERROR_AUFS_FS="CONFIG_AUFS_FS: is required to be set if and only if aufs is patched to kernel instead of using standalone"
 	fi
 
 	if use btrfs; then
