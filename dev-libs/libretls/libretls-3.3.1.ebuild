@@ -12,7 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-libs/openssl:="
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}
+	!dev-libs/libressl"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
