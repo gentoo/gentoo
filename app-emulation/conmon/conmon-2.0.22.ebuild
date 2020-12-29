@@ -16,7 +16,8 @@ RESTRICT="test"
 
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-go/go-md2man"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
