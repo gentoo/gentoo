@@ -1,0 +1,19 @@
+fix build failure when USE=-ssl
+
+--- a/ftp/ftp.c
++++ b/ftp/ftp.c
+@@ -93,12 +93,12 @@
+ static struct sockaddr_storage myctladdr;
+ static int ptflag = 0;
+ static int ptabflg = 0;
++static int
++auth_user(char *u,char *p);
+ #ifdef USE_SSL
+ static SSL_SESSION *ssl_data_session;
+ int             ssl_available=1;
+ static int	pdata = -1;
+-static int
+-auth_user(char *u,char *p);
+ static int 
+ ssl_getc(SSL *ssl_con);
+ static int

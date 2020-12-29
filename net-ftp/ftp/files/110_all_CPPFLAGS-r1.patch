@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/234599
+
+--- a/MRULES
++++ b/MRULES
+@@ -1,8 +1,8 @@
+ # Standard compilation rules (don't use make builtins)
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) $< -c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $< -c
+ 
+ %.o: %.cc
+-	$(CC) $(CFLAGS) $< -c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $< -c
+ 

@@ -1,0 +1,53 @@
+http://bugs.gentoo.org/104311
+
+From the strncpy(3) manpage:
+The strings may not overlap, and the destination string dest must be large 
+enough to receive the copy.
+
+ftp.c:1812:Bounds error: in strncpy with 0x4 for 63 and 0x4 for 1, source and destination objects overlap.
+ftp.c:1812:  Pointer value: 0x4
+ftp.c:1812:  Object `*proxstruct.3':
+ftp.c:1812:    Address in memory:    0x0 .. 0x7
+ftp.c:1812:    Size:                 8408 bytes
+ftp.c:1812:    Element size:         1 bytes
+ftp.c:1812:    Number of elements:   8408
+ftp.c:1812:    Storage class:        static
+Aborted
+
+The bug is hit when ftp.c's pswitch() is called multiple times:
+
+static struct comvars { char name[]; } proxstruct, tmpstruct;
+struct comvars *ip, *op;
+...
+if (flag) {
+	ip = &tmpstruct;
+	op = &proxstruct;
+} else {
+	ip = &proxstruct;
+	op = &tmpstruct;
+}
+...
+if (hostname)
+	strncpy(ip->name, hostname, sizeof(ip->name) - 1);
+...
+hostname = op->name;
+
+so if the code path is:
+	hostname = NULL
+	pswitch(0)
+	hostname = op->name (tmpstruct.name)
+	pswitch(1)
+	strncpy(ip->name (tmpstruct.name), hostname, ...)
+bad things happen
+
+--- a/ftp/ftp.c
++++ b/ftp/ftp.c
+@@ -1808,7 +1808,7 @@
+ 	}
+ 	ip->connect = connected;
+ 	connected = op->connect;
+-	if (hostname) {
++	if (hostname && ip->name != hostname) {
+ 		(void) strncpy(ip->name, hostname, sizeof(ip->name) - 1);
+ 		ip->name[sizeof(ip->name) - 1] = '\0';
+ 	} 

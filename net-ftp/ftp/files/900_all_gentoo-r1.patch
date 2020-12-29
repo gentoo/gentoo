@@ -1,0 +1,86 @@
+diff -urP netkit-ftp-0.17.orig/configure netkit-ftp-0.17/configure
+--- netkit-ftp-0.17.orig/configure	2020-12-28 16:35:08.264253461 -0700
++++ netkit-ftp-0.17/configure	2020-12-28 16:37:39.756272686 -0700
+@@ -24,6 +24,9 @@
+     --binmode=mode        Mode for binaries [755]
+     --manmode=mode        Mode for manual pages [644]
+     --with-c-compiler=cc  Program for compiling C source [guessed]
++    --enable-ipv6         Enable IPv6 support
++    --enable-ssl          Enable SSL support
++
+ EOF
+ 	exit 0;;
+ 	--verbose) ;;
+@@ -39,6 +42,12 @@
+ 	--manmode=*) MANMODE=`echo $1 | sed 's/^[^=]*=//'` ;;
+ 	--with-c-compiler=*) CC=`echo $1 | sed 's/^[^=]*=//'` ;;
+ 	--without-readline|--disable-readline) WITHOUT_READLINE=1;;
++	--enable-readline) WITHOUT_READLINE= WITH_EDITLINEx=1;;
++	--disable-ipv6) ENABLE_IPV6=no;;
++	--enable-ipv6=*) ENABLE_IPV6=`echo $1 | sed 's/^[^=]*=//'`;;
++	--enable-ipv6) ENABLE_IPV6=yes;;
++	--disable-ssl) ENABLE_SSL=no;;
++	--enable-ssl) ENABLE_SSL=yes;;
+ 	*) echo "Unrecognized option: $1"; exit 1;;
+ esac 
+ shift
+@@ -138,12 +147,58 @@
+ 
+ fi
+ 
+-LDFLAGS=
+ LIBS=
+ 
+ rm -f __conftest*
+ 
+ ##################################################
++## Enable SSL
++echo -n "Whether to enable SSL support... "
++if [ x"$ENABLE_SSL" = x"yes" ]; then
++  echo yes
++  CFLAGS="$CFLAGS -DUSE_SSL"
++  ## we should do tests here, but screw it, i'm lazy :P
++  LIBS="$LIBS -lssl -lcrypto"
++else
++  echo no
++fi
++
++##################################################
++## Enable IPv6
++echo -n "Whether to enable IPv6 support... "
++if [ x"$ENABLE_IPV6" = x"yes" ]; then
++    echo yes
++    CFLAGS="$CFLAGS -DINET6"
++else
++    echo no
++fi
++
++## Search IPv6 Library / Headers
++if [ x"$ENABLE_IPV6" = x"yes" ]; then
++    echo -n "Search for IPv6 library... "
++    inet6libdirs="/usr/local/v6/lib /usr/local/lib /usr /usr/inet6/lib"
++    inet6libs="inet6"
++    inet6found=no
++    for inet6libdir in $inet6libdirs; do
++        for inet6lib in $inet6libs; do
++            if [ -d $inet6libdir ] && [ -f $inet6libdir/lib$inet6lib.a ]; then
++                inet6found=yes
++                break 2
++            fi
++        done
++    done
++    if [ x"$inet6found" = x"yes" ]; then
++        echo "$inet6libdir/lib$inet6lib.a"
++        LIBS="$LIBS -L$inet6libdir -l$inet6lib"
++    else
++        echo "not found"
++    fi
++fi
++
++rm -f __conftest*
++
++##################################################
++
+ 
+ printf %s  'Checking for BSD signal semantics... '
+ cat <<EOF >__conftest.c
