@@ -56,6 +56,7 @@ PATCHES=(
 	# Fixes from upstream
 	"${FILESDIR}"/${P}-avoid_bashisms.patch
 	"${FILESDIR}"/${P}-autoconf270.patch
+	"${FILESDIR}"/gnulib-autoconf270.patch
 )
 
 src_prepare() {
