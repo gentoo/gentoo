@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@aisha.cc</email>
+		<name>Aisha Tammy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<use>
+		<flag name="auto-swap">enable auto swapping of compiler</flag>
+		<flag name="cache">enable caching of modules</flag>
+		<flag name="dotfiles">use ~/.lmod.d/.cache instead of ~/.lmod.d/__cache__</flag>
+		<flag name="duplicate">allow duplicate entries in path</flag>
+		<flag name="extend">enable extended default functionality</flag>
+		<flag name="italic">use italics, instead of faint colors, to represent hidden folders</flag>
+		<flag name="module-cmd">export module command</flag>
+		<flag name="nocase">do case insensitive sortings and searches</flag>
+		<flag name="redirect">redirect messages to stdout</flag>
+	</use>
+</pkgmetadata>
