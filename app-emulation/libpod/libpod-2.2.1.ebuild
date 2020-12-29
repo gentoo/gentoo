@@ -121,6 +121,12 @@ src_install() {
 
 	dobashcomp completions/bash/*
 
+	insinto /usr/share/zsh/site-functions
+	doins completions/zsh/*
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins completions/fish/*
+
 	keepdir /var/lib/containers
 }
 
