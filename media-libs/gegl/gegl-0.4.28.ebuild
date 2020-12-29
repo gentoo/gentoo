@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
+# vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
 inherit meson gnome2-utils python-any-r1 vala
@@ -62,6 +63,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-lang/perl
 	>=dev-util/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
@@ -79,11 +81,8 @@ PATCHES=(
 )
 
 python_check_deps() {
+	use test || return 0
 	has_version -b ">=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {
@@ -98,6 +97,21 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/meson.build || die
+
+	# fix skipping mipmap tests due to executable not found
+	for item in "invert-crop.sh" "invert.sh" "rotate-crop.sh" "rotate.sh" "unsharp-crop.sh" "unsharp.sh"; do
+		sed -i "s:/bin/gegl:/bin/gegl-0.4:g" "${S}/tests/mipmap/${item}" || die
+		sed -i "s:/tools/gegl-imgcmp:/tools/gegl-imgcmp-0.4:g" "${S}/tests/mipmap/${item}" || die
+	done
+
+	# fix 'build'headers from *.cl on gentoo-hardened, bug 739816
+	pushd "${S}/opencl/" || die
+	for file in *.cl; do
+		if [ -f "$file" ]; then
+			"${EPYTHON}" cltostring.py "${file}" || die
+		fi
+	done
+	popd || die
 
 	gnome2_environment_reset
 
