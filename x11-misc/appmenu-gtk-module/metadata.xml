@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">shlomif/rinutils</remote-id>
+		<remote-id type="github">derat/xsettingsd</remote-id>
 	</upstream>
 </pkgmetadata>

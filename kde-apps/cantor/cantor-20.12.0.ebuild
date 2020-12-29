@@ -6,11 +6,12 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake"
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
+LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{7,8,9} )
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.75.0
 QTMIN=5.15.1
-inherit ecm kde.org optfeature python-single-r1
+inherit ecm kde.org lua-single optfeature python-single-r1
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://apps.kde.org/en/cantor https://edu.kde.org/cantor/"
@@ -20,9 +21,9 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+analitza julia lua postscript python qalculate R"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) python? ( ${PYTHON_REQUIRED_USE} )"
 
-# TODO Add Sage Mathematics Software backend (http://www.sagemath.org)
+# TODO Add Sage Mathematics Software backend (https://www.sagemath.org)
 DEPEND="
 	app-text/poppler[qt5]
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -50,7 +51,7 @@ DEPEND="
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
 	analitza? ( >=kde-apps/analitza-${PVCUT}:5 )
 	julia? ( dev-lang/julia )
-	lua? ( dev-lang/luajit:2 )
+	lua? ( ${LUA_DEPS} )
 	qalculate? (
 		sci-libs/cln
 		sci-libs/libqalculate:=
@@ -74,6 +75,7 @@ RDEPEND="${DEPEND}
 RESTRICT+=" test"
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 	ecm_pkg_setup
 }
@@ -89,6 +91,10 @@ src_configure() {
 		$(cmake_use_find_package python Python3)
 		$(cmake_use_find_package qalculate Qalculate)
 		$(cmake_use_find_package R R)
+	)
+	use lua && mycmakeargs+=(
+		-DLUAJIT_INCLUDEDIR="${EPREFIX}/$(lua_get_include_dir)"
+		-DLUAJIT_LIBDIR="${EPREFIX}/$(lua_get_cmod_dir)"
 	)
 	use python && mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
 	ecm_src_configure

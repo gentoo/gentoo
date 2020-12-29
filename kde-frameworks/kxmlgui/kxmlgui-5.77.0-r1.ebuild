@@ -35,7 +35,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-no-kwindowsystem.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-kwindowsystem.patch
+	"${FILESDIR}"/${P}-fix-key-recording.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
