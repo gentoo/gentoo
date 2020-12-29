@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2020-12-29)
+# Unusable without alsa.
+# Masked for removal after 2021-02-01
+# Bug #762361
+media-sound/takcd
+
 # Alfredo Tupone <tupone@gentoo.org> (2020-12-28)
 # Masked for testing
 >=dev-lang/tk-8.6.10
