@@ -45,8 +45,7 @@ DOCS=(
 pkg_pretend() {
 	elog
 	elog "GameMode needs a kernel capable of SCHED_ISO to use its soft realtime"
-	elog "feature. Examples of kernels providing that are sys-kernel/ck-sources"
-	elog "and sys-kernel/pf-sources."
+	elog "feature. Example of a kernel providing that is sys-kernel/pf-sources."
 	elog
 	elog "Support for soft realtime is completely optional. It may provide the"
 	elog "following benefits with systems having at least four CPU cores:"
