@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2020-12-29)
+# media-libs/libilbc is (for every package I manage) a drop-in for
+# dev-libs/ilbc-rfc3951.  The latter had net-misc/asterisk,
+# net-libs/pjproject and net-voip/yate as dependencies.  All of which has been
+# bumped to no longer have this dependency.
+# Bug #444470
+dev-libs/ilbc-rfc3951
+
 # Hans de Graaff <graaff@gentoo.org> (2020-12-29)
 # These slots masked for removal in 30 days due to
 # security issues, bug 730786
