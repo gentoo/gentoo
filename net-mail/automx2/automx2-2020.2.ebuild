@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1
 
@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 BDEPEND="acct-user/automx2
-	>=dev-python/flask-migrate-2.5.2[${PYTHON_USEDEP}]"
+	dev-python/flask-migrate[${PYTHON_USEDEP}]
+	dev-python/ldap3[${PYTHON_USEDEP}]"
 RDEPEND="${BDEPEND}"
 
 python_prepare_all() {
@@ -27,7 +28,7 @@ python_prepare_all() {
 
 python_test() {
 	export AUTOMX2_CONF="tests/unittest.conf"
-	${EPYTHON} -m unittest discover tests/ || die
+	${EPYTHON} -m unittest discover tests/ || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
