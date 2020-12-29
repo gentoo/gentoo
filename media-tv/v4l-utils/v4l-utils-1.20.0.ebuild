@@ -47,7 +47,7 @@ PATCHES=(
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 
 pkg_pretend() {
-	if use bpf; then
+	if [[ ${MERGE_TYPE} != binary ]] && use bpf; then
 		local clang=${ac_cv_prog_CLANG:-${CLANG:-clang}}
 		${clang} -target bpf -print-supported-cpus &>/dev/null ||
 			die "${clang} does not support the BPF target. Please check LLVM_TARGETS."
