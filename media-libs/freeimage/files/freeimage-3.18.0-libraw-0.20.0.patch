@@ -1,5 +1,6 @@
-diff --git a/Source/FreeImage/PluginRAW.cpp b/Source/FreeImage/PluginRAW.cpp
-index b3f2a8db..ab0499ff 100644
+https://bugs.gentoo.org/734724
+"FreeImage now uses LibRaw 0.20-Beta2 (GIT patch 2020-05-29)
+git-svn-id: https://svn.code.sf.net/p/freeimage/svn@1842 f6e0daa0-2725-47c6-9c0b-5e6e9cdd0720"
 --- a/Source/FreeImage/PluginRAW.cpp
 +++ b/Source/FreeImage/PluginRAW.cpp
 @@ -59,21 +59,18 @@ public:
