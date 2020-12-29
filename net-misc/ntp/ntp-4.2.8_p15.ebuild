@@ -67,11 +67,11 @@ src_configure() {
 	# blah, no real configure options #176333
 	export ac_cv_header_dns_sd_h=$(usex zeroconf)
 	export ac_cv_lib_dns_sd_DNSServiceRegister=${ac_cv_header_dns_sd_h}
-	# Increase the default memlimit from 32MiB to 128MiB.  #533232
 	local myeconfargs=(
 		--with-lineeditlibs=readline,edit,editline
 		--with-yielding-select
 		--disable-local-libevent
+		# Increase the default memlimit from 32MiB to 128MiB.  #533232
 		--with-memlock=256
 		$(use_enable caps linuxcaps)
 		$(use_enable parse-clocks)

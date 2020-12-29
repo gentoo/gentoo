@@ -52,6 +52,10 @@ PATCHES=(
 	# Upstream attempts to be "smart" by calling ldconfig in
 	# install-exec-hook
 	"${FILESDIR}"/${PN}-1.99.2-remove_ldconfig_call.patch
+
+	# Fixes from upstream
+	"${FILESDIR}"/${P}-avoid_bashisms.patch
+	"${FILESDIR}"/${P}-autoconf270.patch
 )
 
 src_prepare() {
