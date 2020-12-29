@@ -1,5 +1,5 @@
 BDEPEND=sys-devel/libtool
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=compile configure install prepare
 DEPEND=media-sound/sox[png] media-libs/flac[ogg]
 DESCRIPTION=Author a DVD-Audio DVD
 EAPI=7
@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=media-sound/sox[png] media-libs/flac[ogg]
 SLOT=0
 SRC_URI=mirror://sourceforge/dvd-audio/dvda-author-10.06-300.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
-_md5_=94475448bd5157e8a570c0c7efd06a61
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=ffad5fd157aa0d3909d8aec19bb6cf4b

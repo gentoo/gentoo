@@ -2965,11 +2965,13 @@ app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
 app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SGML and XML documents
+app-text/openpaperwork-core 2.0.1: Core part of Paperwork (plugin management)
+app-text/openpaperwork-gtk 2.0.1: Paperwork plugins
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 2.9.2.1: Conversion between markup formats
-app-text/paperwork 1.3.1: a personal document manager for scanned documents (and PDFs)
-app-text/paperwork-backend 1.3.1 1.3.1-r1: Backend part of Paperwork (Python API, no UI)
+app-text/paperwork 1.3.1 2.0.1: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork-backend 1.3.1 1.3.1-r1 2.0.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1 1.53.0: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/pastebinit 1.5.1: A software that lets you send anything you want directly to a pastebin
@@ -9052,7 +9054,7 @@ dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sgmllib3k 1.0.0: Py3k port of sgmllib
 dev-python/sh 1.14.0: Python subprocess interface
 dev-python/shiboken2 5.15.1: Python binding generator for C++ libraries
-dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian text classifier
+dev-python/simplebayes 1.5.7 1.5.8: memory-based, optional-persistence naive bayesian text classifier
 dev-python/simpleeval 0.9.10: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.17.2-r1: Simple, fast, extensible JSON encoder/decoder for Python
