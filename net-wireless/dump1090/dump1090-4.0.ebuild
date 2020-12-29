@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
-	sed -i -e 's#-O2 -g -Wall -Werror -W##' Makefile || die
+	sed -i -e 's#-O3 -g -Wall -Wmissing-declarations -Werror -W##' Makefile || die
 	sed -i -e "s#-lncurses#$($(tc-getPKG_CONFIG) --libs ncurses)#" Makefile || die
 }
 
