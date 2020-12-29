@@ -81,8 +81,8 @@ src_compile() {
 		"-X code.gitea.io/gitea/modules/setting.AppWorkPath=${EPREFIX}/var/lib/gitea"
 	)
 	local makeenv=(
-		TAGS="${gitea_tags[@]}"
-		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[@]}"
+		TAGS="${gitea_tags[*]}"
+		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[*]}"
 	)
 	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${MY_PV}")
 
