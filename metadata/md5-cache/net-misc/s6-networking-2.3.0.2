@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure prepare
-DEPEND=>=sys-devel/make-3.81 static? ( >=dev-lang/execline-2.3.0.2[static-libs] >=dev-libs/skalibs-2.6.0.0[static-libs] >=net-dns/s6-dns-2.2.0.1[static-libs] >=sys-apps/s6-2.6.1.0[static-libs] ssl? ( >=dev-libs/libressl-2.4.5[static-libs] ) ) !static? ( >=dev-lang/execline-2.3.0.2[static=] >=dev-libs/skalibs-2.6.0.0 >=net-dns/s6-dns-2.2.0.1[static=] >=sys-apps/s6-2.6.1.0[static=] ssl? ( >=dev-libs/libressl-2.4.5 ) )
+DEPEND=>=sys-devel/make-3.81 static? ( >=dev-lang/execline-2.3.0.2[static-libs] >=dev-libs/skalibs-2.6.0.0[static-libs] >=net-dns/s6-dns-2.2.0.1[static-libs] >=sys-apps/s6-2.6.1.0[static-libs] ) !static? ( >=dev-lang/execline-2.3.0.2[static=] >=dev-libs/skalibs-2.6.0.0 >=net-dns/s6-dns-2.2.0.1[static=] >=sys-apps/s6-2.6.1.0[static=] )
 DESCRIPTION=suite of small networking utilities for Unix systems
 EAPI=6
 HOMEPAGE=https://www.skarnet.org/software/s6-networking/
-IUSE=ssl static static-libs
+IUSE=static static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
-RDEPEND=>=dev-lang/execline-2.3.0.2:=[!static?] >=sys-apps/s6-2.6.1.0:=[!static?] !static? ( >=dev-libs/skalibs-2.6.0.0:= >=net-dns/s6-dns-2.2.0.1:= ssl? ( >=dev-libs/libressl-2.4.5:= ) )
+RDEPEND=>=dev-lang/execline-2.3.0.2:=[!static?] >=sys-apps/s6-2.6.1.0:=[!static?] !static? ( >=dev-libs/skalibs-2.6.0.0:= >=net-dns/s6-dns-2.2.0.1:= )
 SLOT=0/2.3
 SRC_URI=https://www.skarnet.org/software/s6-networking/s6-networking-2.3.0.2.tar.gz
 _eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
-_md5_=418f08c22eba8310db5ce2dfbd81a8a4
+_md5_=de87785c42f81f96158e18132b203956
