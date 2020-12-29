@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2020-12-29)
+# These slots masked for removal in 30 days due to
+# security issues, bug 730786
+# Use a newer slot instead.
+dev-ruby/rack:2.0
+dev-ruby/rack:2.1
+
 # Sam James <sam@gentoo.org> (2020-12-29)
 # ABI may have been broken in 8.3.0.
 # Masking for now to avoid rebuilds from
