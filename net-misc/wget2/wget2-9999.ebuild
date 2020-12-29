@@ -73,7 +73,6 @@ src_unpack() {
 
 src_prepare() {
 	if [[ "${PV}" == *9999 ]] ; then
-		#sed 's@\(gnulib-tool\)\.py@\1@' -i bootstrap || die
 		local bootstrap_opts=(
 			--gnulib-srcdir=../gnulib
 			--no-bootstrap-sync
