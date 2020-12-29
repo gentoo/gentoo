@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-12-29)
+# ABI may have been broken in 8.3.0.
+# Masking for now to avoid rebuilds from
+# a subslot bump in case a new release occurs.
+# bug 762241
+=dev-libs/crypto++-8.3.0
+
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
 # Masked for removal after 2021-02-01
@@ -230,16 +237,6 @@ media-plugins/kodi-screensaver-rsxs
 net-wireless/qradiolink
 net-libs/liba53
 app-emulation/qt-virt-manager
-
-# Joonas Niilola <juippis@gentoo.org> (2020-12-01)
-# Not maintained in Gentoo, multiple versions behind, unsafe, EAPI-5,
-# Use other kernel source / binary packages instead,
-# https://packages.gentoo.org/categories/sys-kernel
-# Removal in ~30 days.
-# Bugs: #716490 (aufs), #739782 (-ck), #757843 (-xbox)
-sys-kernel/aufs-sources
-sys-kernel/ck-sources
-sys-kernel/xbox-sources
 
 # Aaron Bauman <bman@gentoo.org> (2020-11-30)
 # EAPI=5. Multiple open bugs #603866 #713620
