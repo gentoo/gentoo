@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		-DCCLS_VERSION=${PV}
 		-DUSE_SYSTEM_RAPIDJSON=ON
 		-DCLANG_LINK_CLANG_DYLIB=1
 	)
