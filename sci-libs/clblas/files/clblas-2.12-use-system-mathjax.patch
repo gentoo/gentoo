@@ -1,0 +1,18 @@
+Description: fix output directory for documentation
+ Use default doxygen directory, i.e. under docs/html, rather than the 
+ inappropriate path set by upstream.
+Author: Ghislain Antony Vaillant <ghisvail@gmail.com> 
+Forwarded: no
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/doc/clBLAS.doxy
++++ b/doc/clBLAS.doxy
+@@ -1223,7 +1223,7 @@
+ # installing MathJax.  However, it is strongly recommended to install a local 
+ # copy of MathJax from http://www.mathjax.org before deployment.
+ 
+-MATHJAX_RELPATH        = http://www.mathjax.org/mathjax
++MATHJAX_RELPATH        = /usr/share/javascript/mathjax
+ 
+ # The MATHJAX_EXTENSIONS tag can be used to specify one or MathJax extension 
+ # names that should be enabled during MathJax rendering.

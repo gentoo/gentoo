@@ -1,0 +1,24 @@
+From: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Date: Sat, 21 Jan 2017 16:49:27 +0000
+Subject: Detect CBLAS when building the client
+
+---
+ src/CMakeLists.txt | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index bf351c1..28d6a60 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -267,10 +267,7 @@ if( BUILD_TEST )
+ endif( )
+ 
+ if( BUILD_CLIENT )
+-    if( NETLIB_FOUND )
+-    else( )
+-        message( WARNING "Not find Netlib; BUILD_CLIENT needs the Netlib CBLAS library" )
+-    endif()
++    find_package( Netlib COMPONENTS BLAS REQUIRED )
+ endif()
+ 
+ 
