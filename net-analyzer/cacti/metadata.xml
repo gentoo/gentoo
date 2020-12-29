@@ -5,6 +5,7 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Cacti is a complete network graphing solution designed to harness the
 		power of RRDTool's data storage and graphing functionality. Cacti
