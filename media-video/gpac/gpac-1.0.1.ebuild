@@ -25,6 +25,7 @@ IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k lib
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	media-libs/libogg
+	sys-libs/zlib
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )

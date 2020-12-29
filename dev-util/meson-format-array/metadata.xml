@@ -5,4 +5,5 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
