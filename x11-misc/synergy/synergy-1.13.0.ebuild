@@ -60,9 +60,6 @@ src_prepare() {
 	if use test; then
 		rmdir ext/googletest || die
 		mv "${WORKDIR}/googletest-${GTEST_COMMIT}" ext/googletest || die
-	else
-		[[ ${PV} == 1.12.0 ]] || die "Remove this hack on bump"
-		> ext/googletest/CMakeLists.txt || die
 	fi
 
 	cmake_src_prepare
