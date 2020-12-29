@@ -22,7 +22,10 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="|| ( net-firewall/iptables net-firewall/nftables )"
+RDEPEND="
+	dev-python/psutil[${PYTHON_USEDEP}]
+	|| ( net-firewall/iptables net-firewall/nftables )
+"
 
 CONFIG_CHECK="~NETFILTER_XT_TARGET_HL ~IP_NF_TARGET_REDIRECT ~IP_NF_MATCH_TTL ~NF_NAT"
 
