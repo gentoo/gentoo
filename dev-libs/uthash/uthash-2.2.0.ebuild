@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,9 +15,11 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-lang/perl )"
+BDEPEND="test? ( dev-lang/perl )"
 
-PATCHES=( "${FILESDIR}"/uthash-2.1.0-cflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-cflags.patch
+)
 
 src_test() {
 	cd tests || die
