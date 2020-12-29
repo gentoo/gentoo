@@ -12874,7 +12874,7 @@ media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
-media-gfx/prusaslicer 2.2.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
+media-gfx/prusaslicer 2.2.0-r1: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.75: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qimgv 0.9.1: A cross-platform image viewer with webm support, written in qt5
