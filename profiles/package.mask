@@ -519,10 +519,6 @@ net-misc/gnome-remote-desktop
 # Needs news item, known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
 
-# Robin H. Johnson <robbat2@gentoo.org> (2020-01-26)
-# EAPI conversion caused some regressions, need to redesign old ebuilds.
-=dev-lang/lua-5.1.5-r5
-
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
 # v3.6.4 uses huge amounts of memory: Bug #705682
