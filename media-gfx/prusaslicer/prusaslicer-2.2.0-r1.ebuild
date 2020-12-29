@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/tbb
-	>=dev-libs/boost-1.73.0[threads]
+	>=dev-libs/boost-1.73.0:=[threads]
 	dev-libs/cereal
 	dev-libs/expat
 	dev-libs/miniz
