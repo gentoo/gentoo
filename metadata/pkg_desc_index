@@ -5118,7 +5118,7 @@ dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.6: Lazarus IDE is a feature rich visual pro
 dev-lang/lfe 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
-dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r105 5.2.4-r2 5.2.4-r3 5.3.6-r1 5.3.6-r2 5.4.1-r1 5.4.2: A powerful light-weight programming language designed for extending applications
+dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r105 5.1.5-r106 5.2.4-r2 5.2.4-r3 5.3.6-r1 5.3.6-r2 5.4.1-r1 5.4.2: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r3 2.1.0_beta3-r2: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
@@ -8329,7 +8329,7 @@ dev-python/jaraco-envs 2.0.0-r1: Classes for orchestrating Python (virtual) envi
 dev-python/jaraco-functools 3.0.1-r1 3.1.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r2 3.1.0: Additional facilities to supplement Python's stdlib logging module
-dev-python/jaraco-packaging 8.1.0-r2 8.1.1-r1: Tools to supplement packaging Python releases
+dev-python/jaraco-packaging 8.1.0-r2 8.1.1-r1 8.2.0: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0-r1: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0-r1 3.4.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
@@ -9302,7 +9302,7 @@ dev-python/zope-interface 5.1.2 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
 dev-python/zope-testing 4.7-r2: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
-dev-python/zstandard 0.8.1-r1 0.14.0-r1 0.14.1: Zstandard Bindings for Python
+dev-python/zstandard 0.8.1-r1 0.14.0-r1 0.14.1 0.15.0: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
 dev-qt/assistant 5.15.1 5.15.2: Tool for viewing on-line documentation in Qt help file format
@@ -12243,7 +12243,7 @@ kde-frameworks/kwallet 5.74.0 5.77.0: Framework providing desktop-wide storage f
 kde-frameworks/kwayland 5.74.0 5.77.0: Qt-style client and server library wrapper for Wayland libraries
 kde-frameworks/kwidgetsaddons 5.74.0-r1 5.77.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.74.0 5.77.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.74.0-r2 5.77.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlgui 5.74.0-r2 5.77.0-r1: Framework for managing menu and toolbar actions in an abstract way
 kde-frameworks/modemmanager-qt 5.74.0 5.77.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.74.0 5.77.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.74.0 5.77.0: Oxygen SVG icon theme
@@ -18468,7 +18468,7 @@ x11-misc/sux 1.0-r4 1.0.1: "su" wrapper which transfers X credentials
 x11-misc/svkbd 0.2 0.2.1: Simple Virtual Keyboard
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.6.1 0.6.2: Simple X hotkey daemon
-x11-misc/synergy 1.9.1-r1 1.12.0 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
+x11-misc/synergy 1.9.1-r1 1.12.0 1.13.0 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tdrop 0.3.0 9999: WM-Independent Dropdown Creator
 x11-misc/tint2 16.2 16.6 16.6.1 16.7: tint2 is a lightweight panel/taskbar for Linux.
