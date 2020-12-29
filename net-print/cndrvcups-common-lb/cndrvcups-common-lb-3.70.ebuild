@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 MY_PV="$(ver_rs 1- '')"
 SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
@@ -75,7 +75,7 @@ src_configure() {
 }
 
 src_compile() {
-	change_dir emake
+	change_dir emake AR="$(tc-getAR)"
 
 	# Cannot be moved to 'change_dir' as it doesn't need eautoreconf
 	cd "${S}/c3plmod_ipc" || die
@@ -114,4 +114,6 @@ src_install() {
 	if [[ "$(get_libdir)" != lib ]] && [[ ${SYMLINK_LIB} = yes ]]; then
 		dosym "../$(get_libdir)/libc3pl.so" /usr/lib/libc3pl.so
 	fi
+
+	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
 }
