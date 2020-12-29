@@ -44,13 +44,18 @@ src_configure() {
 }
 
 src_install() {
-	dobin unix/librecad
-	dobin unix/ttf2lff
-	insinto /usr/share/${PN}
-	doins -r unix/resources/*
-	docinto html && dodoc -r librecad/support/doc/*
-	insinto /usr/share/appdata
-	doins unix/appdata/librecad.appdata.xml
-	doicon librecad/res/main/${PN}.png
-	make_desktop_entry ${PN} LibreCAD ${PN} Graphics
+    dobin unix/librecad
+    dobin unix/ttf2lff
+
+    insinto /usr/share/${PN}
+    doins -r unix/resources/*
+
+    docinto html
+    dodoc -r librecad/support/doc/*
+
+    insinto /usr/share/appdata
+    doins unix/appdata/librecad.appdata.xml
+
+    doicon librecad/res/main/${PN}.png
+    make_desktop_entry ${PN} LibreCAD ${PN} Graphics
 }
