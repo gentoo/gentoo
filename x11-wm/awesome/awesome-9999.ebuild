@@ -47,6 +47,10 @@ RDEPEND="${LUA_DEPS}
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 # ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP
+# On the other hand, it means that we should explicitly depend on a version
+# migrated to Lua eclasses so that during the upgrade from unslotted
+# to slotted dev-lang/lua, the package manager knows to emerge migrated
+# ldoc before migrated awesome.
 DEPEND="${RDEPEND}
 	x11-base/xcb-proto
 	x11-base/xorg-proto
@@ -61,7 +65,7 @@ BDEPEND="
 	app-text/asciidoc
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
-	doc? ( dev-lua/ldoc )
+	doc? ( >=dev-lua/ldoc-1.4.6-r100 )
 	test? ( app-shells/zsh )"
 
 # Skip installation of README.md by einstalldocs, which leads to broken symlink
