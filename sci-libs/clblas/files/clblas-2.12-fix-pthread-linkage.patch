@@ -5,9 +5,9 @@ Forwarded: no
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- a/src/library/CMakeLists.txt
 +++ b/src/library/CMakeLists.txt
-@@ -888,6 +888,10 @@
+@@ -889,6 +889,10 @@
  set_target_properties( clBLAS PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/staging" )
- target_link_libraries(clBLAS ${OPENCL_LIBRARIES} ${MATH_LIBRARY})
+ target_link_libraries(clBLAS ${OPENCL_LIBRARIES} ${MATH_LIBRARY} ${THREAD_LIBRARY})
  
 +set(THREADS_PREFER_PTHREAD_FLAG ON)
 +find_package(Threads REQUIRED)
