@@ -1,0 +1,19 @@
+application/pdf; xdg-open '%s'; needsterminal
+application/postscript; xdg-open '%s'; needsterminal
+application/x-info; info --subnodes -o /dev/stdout -f '%s' 2>/dev/null; copiousoutput; description=GNU Info document
+application/x-gtar; tar tvzf -; print=tar tvzf - | print text/plain:-; copiousoutput
+application/x-tar; tar tvf -; print=tar tvf - | print text/plain:-; copiousoutput
+application/x-troff-man; nroff -mandoc -Tutf8; copiousoutput; print=nroff -mandoc -Tutf8 | print text/plain:-
+
+audio/*; xdg-open '%s'; needsterminal
+image/*; xdg-open '%s'; needsterminal
+
+text/html; lynx -dump '%s'; copiousoutput; description=HTML Text; nametemplate=%s.html
+text/troff; man -l '%s'; needsterminal; description=Man page
+text/*; less '%s'; needsterminal
+text/*; gview '%s'; edit=gvim -f '%s'; compose=gvim -f '%s'; test=test "$DISPLAY" != ""
+text/*; view '%s'; edit=vim '%s'; compose=vim '%s'; needsterminal
+text/*; more '%s'; needsterminal
+
+*/*; less '%s'; needsterminal
+*/*; false; print=lpr '%s'
