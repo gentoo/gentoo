@@ -438,7 +438,7 @@ pkg_postinst() {
 	fi
 
 	einfo "Checking setuid permissions"
-	amanda_permissions_fix "${ROOT}"
+	amanda_permissions_fix "${ROOT}/"
 
 	elog "You should configure Amanda in /etc/amanda now."
 	elog
@@ -472,7 +472,7 @@ pkg_postinst() {
 # ONLY root and users in the amanda group should be able to run these binaries!
 amanda_permissions_fix() {
 	local root="$1"
-	[ -z "${root}" ] && die "Failed to pass root argument to amanda_permissions_fix!"
+	[[ -z "${root}" ]] && die "Failed to pass root argument to amanda_permissions_fix!"
 	local le="/usr/libexec/amanda"
 	local i
 	for i in "${le}"/calcsize "${le}"/killpgrp \
