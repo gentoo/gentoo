@@ -20,20 +20,17 @@ IUSE="+ust"
 DEPEND="dev-libs/userspace-rcu:=
 	dev-libs/popt
 	dev-libs/libxml2
-	ust? ( dev-util/lttng-ust:= )
+	ust? ( >=dev-util/lttng-ust-2.12.0:= )
 "
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_pretend() {
-	if kernel_is -lt 2 6 27; then
-		ewarn "${PN} require Linux kernel >= 2.6.27"
-		ewarn "   pipe2(), epoll_create1() and SOCK_CLOEXEC are needed to run"
-		ewarn "   the session daemon. There were introduce in the 2.6.27"
-	fi
+src_configure() {
+	econf $(usex ust "" --without-lttng-ust) --disable-static
 }
 
-src_configure() {
-	econf $(usex ust "" --without-lttng-ust)
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
