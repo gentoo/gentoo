@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Author a DVD-Audio DVD"
 HOMEPAGE="http://dvd-audio.sourceforge.net"
@@ -45,6 +45,10 @@ src_configure() {
 	econf \
 		--with-config="${EPREFIX}/etc" \
 		$(use_with debug debug full)
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)" all
 }
 
 src_install() {
