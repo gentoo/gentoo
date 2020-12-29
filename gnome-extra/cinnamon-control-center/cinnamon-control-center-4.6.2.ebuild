@@ -12,7 +12,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+colord debug input_devices_wacom +networkmanager +modemmanager systemd"
 REQUIRED_USE="modemmanager? ( networkmanager )"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
