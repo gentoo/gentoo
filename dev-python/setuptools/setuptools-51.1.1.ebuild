@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Collection of extensions to Distutils"
 HOMEPAGE="https://github.com/pypa/setuptools https://pypi.org/project/setuptools/"
@@ -24,6 +24,7 @@ BDEPEND="
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-20[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
 	)
@@ -42,12 +43,17 @@ DOCS=( {CHANGES,README}.rst )
 python_test() {
 	distutils_install_for_testing --via-root
 	local deselect=(
+		# TODO
 		setuptools/tests/test_easy_install.py::TestSetupRequires::test_setup_requires_with_allow_hosts
+		# this one's unhappy about pytest-xdist but one test is not worth
+		# losing the speed gain
+		setuptools/tests/test_build_meta.py::TestBuildMetaBackend::test_build_sdist_relative_path_import
 	)
 	# test_easy_install raises a SandboxViolation due to ${HOME}/.pydistutils.cfg
 	# It tries to sandbox the test in a tempdir
-	HOME="${PWD}" pytest -vv setuptools ${deselect[@]/#/--deselect } ||
-		die "Tests failed under ${EPYTHON}"
+	HOME="${PWD}" pytest -vv ${deselect[@]/#/--deselect } \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" \
+		setuptools || die "Tests failed under ${EPYTHON}"
 }
 
 python_install() {
