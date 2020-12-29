@@ -28,7 +28,7 @@ python_prepare_all() {
 
 python_test() {
 	export AUTOMX2_CONF="tests/unittest.conf"
-	${EPYTHON} -m unittest discover tests/ || die
+	${EPYTHON} -m unittest discover tests/ || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
