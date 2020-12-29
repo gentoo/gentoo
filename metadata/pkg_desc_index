@@ -768,7 +768,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.46-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.24.0-r1 1.24.1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r3: A jar program written in C
-app-arch/file-roller 3.32.4 3.36.3 3.38.0: Archive manager for GNOME
+app-arch/file-roller 3.36.3 3.38.0: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.4: Automatic archives creating and extracting library
@@ -5446,7 +5446,7 @@ dev-libs/libmodbus 3.1.6: Modbus library which supports RTU communication over a
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
 dev-libs/libmowgli 1.0.0-r1 2.1.3 2.1.3-r2 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmpack 1.0.5: Simple implementation of msgpack in C
-dev-libs/libmspack 0.9.1_alpha-r1 0.10.1_alpha 9999: A library for Microsoft compression formats
+dev-libs/libmspack 0.10.1_alpha 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.3.0: library to smooth charset/localization issues
 dev-libs/libnest2d 0.4: Library and framework for the 2D bin packaging problem
 dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
@@ -17886,7 +17886,7 @@ www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.7.0 4.7.1: An Apache2 module for running Python WSGI applications
 www-apache/mod_xsendfile 1.0_beta1-r1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
-www-apache/modsecurity-crs 3.0.2 3.1.0 3.3.0: OWASP ModSecurity Core Rule Set
+www-apache/modsecurity-crs 3.3.0: OWASP ModSecurity Core Rule Set
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 6.0.4 6.0.5 6.0.6 6.0.7: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
