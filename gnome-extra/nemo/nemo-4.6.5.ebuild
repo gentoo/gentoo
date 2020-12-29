@@ -12,7 +12,7 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="doc exif +nls selinux tracker xmp"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT=test
