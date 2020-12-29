@@ -5118,7 +5118,7 @@ dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.6: Lazarus IDE is a feature rich visual pro
 dev-lang/lfe 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
-dev-lang/lua 5.1.5-r4 5.1.5-r105 5.1.5-r106 5.2.4-r2 5.2.4-r3 5.3.6-r1 5.3.6-r2 5.4.1-r1 5.4.2 5.4.2-r1: A powerful light-weight programming language designed for extending applications
+dev-lang/lua 5.1.5-r4 5.1.5-r106 5.2.4-r3 5.3.6-r2 5.4.2-r1: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r3 2.1.0_beta3-r2: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
@@ -16850,7 +16850,7 @@ sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the A
 sys-apps/inxi 3.0.33.1 3.0.34.1 3.0.36.1 3.0.38.1 3.1.06.1: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.32.0.200910: An in-band utility for configuring Supermicro IPMI devices
-sys-apps/ipmitool 1.8.18-r1 1.8.18-r2 1.8.18_p20201004-r1 1.8.18_p20201004-r2 1.8.18_p20201004-r3: Utility for controlling IPMI enabled devices.
+sys-apps/ipmitool 1.8.18_p20201004-r1 1.8.18_p20201004-r2 1.8.18_p20201004-r3: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.6 3.1.7: IPMI Management Utilities
 sys-apps/iproute2 5.4.0 5.7.0 5.9.0 5.10.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.6.0-r1 1.7.0: Distribute hardware interrupts across processors on a multiprocessor system
