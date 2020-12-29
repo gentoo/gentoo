@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 EGIT_COMMIT="9c34a8663b85e479e0c083801e89a2b2835228ed"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
@@ -16,7 +18,8 @@ RESTRICT="test"
 
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-go/go-md2man"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
@@ -28,9 +31,12 @@ src_prepare() {
 			-e 's| $(PKG_CONFIG) --exists libsystemd | false |' \
 			-i Makefile || die
 	fi
+	sed -e 's|make -C tools|$(MAKE) -C tools|' -i Makefile || die
+	sed -e 's|^GOMD2MAN = .*|GOMD2MAN = go-md2man|' -i docs/Makefile || die
 }
 
 src_compile() {
+	tc-export CC
 	emake GIT_COMMIT="${EGIT_COMMIT}" \
 		all
 }

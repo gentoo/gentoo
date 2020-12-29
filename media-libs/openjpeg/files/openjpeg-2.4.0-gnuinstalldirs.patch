@@ -4,7 +4,7 @@ Date: Thu, 11 Apr 2019 13:10:57 +0200
 Subject: [PATCH] Use GNUInstallDirs for standard installation directories
 
 Raises minimum cmake version by a little.
-- Later rebased by sam@gentoo.org for 2.4.0
+(Later rebased by sam@gentoo.org for 2.4.0)
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -7,7 +7,7 @@
@@ -81,7 +81,22 @@ Raises minimum cmake version by a little.
  	option(OPJ_USE_DSYMUTIL "Call dsymutil on binaries after build." OFF)
  endif()
  
-@@ -366,14 +335,14 @@ if(BUILD_PKGCONFIG_FILES)
+@@ -342,14 +311,6 @@ install( FILES ${OPENJPEG_BINARY_DIR}/OpenJPEGConfig.cmake
+ )
+ 
+ #-----------------------------------------------------------------------------
+-# install CHANGES and LICENSE
+-if(BUILD_DOC)
+-if(EXISTS ${OPENJPEG_SOURCE_DIR}/CHANGES)
+-  install(FILES CHANGES DESTINATION ${OPENJPEG_INSTALL_DOC_DIR})
+-endif()
+-
+-install(FILES LICENSE DESTINATION ${OPENJPEG_INSTALL_DOC_DIR})
+-endif()
+ 
+ include (cmake/OpenJPEGCPack.cmake)
+ 
+@@ -366,14 +327,14 @@ if(BUILD_PKGCONFIG_FILES)
    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/lib/openjp2/libopenjp2.pc.cmake.in
      ${CMAKE_CURRENT_BINARY_DIR}/libopenjp2.pc @ONLY)
    install( FILES  ${CMAKE_CURRENT_BINARY_DIR}/libopenjp2.pc DESTINATION
@@ -98,7 +113,7 @@ Raises minimum cmake version by a little.
    endif()
  #
    if(BUILD_JPIP)
-@@ -381,7 +350,7 @@ if(BUILD_PKGCONFIG_FILES)
+@@ -381,7 +342,7 @@ if(BUILD_PKGCONFIG_FILES)
    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/lib/openjpip/libopenjpip.pc.cmake.in
      ${CMAKE_CURRENT_BINARY_DIR}/libopenjpip.pc @ONLY)
    install( FILES  ${CMAKE_CURRENT_BINARY_DIR}/libopenjpip.pc DESTINATION
@@ -107,7 +122,7 @@ Raises minimum cmake version by a little.
    endif()
  #
    if(BUILD_JP3D)
-@@ -389,7 +358,7 @@ if(BUILD_PKGCONFIG_FILES)
+@@ -389,7 +350,7 @@ if(BUILD_PKGCONFIG_FILES)
    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/lib/openjp3d/libopenjp3d.pc.cmake.in
      ${CMAKE_CURRENT_BINARY_DIR}/libopenjp3d.pc @ONLY)
    install( FILES  ${CMAKE_CURRENT_BINARY_DIR}/libopenjp3d.pc DESTINATION
@@ -318,7 +333,7 @@ Raises minimum cmake version by a little.
 +mandir=${prefix}/@CMAKE_INSTALL_MANDIR@
 +docdir=${prefix}/@CMAKE_INSTALL_DOCDIR@
 +libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
-+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@OPENJPEG_INSTALL_SUBDIR@ 
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@OPENJPEG_INSTALL_SUBDIR@
  
  Name: openjp3d
  Description: JPEG2000 Extensions for three-dimensional data (Part 10)
