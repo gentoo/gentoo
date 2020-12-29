@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg
+
 DESCRIPTION="A GUI password manager utility with password generator"
 HOMEPAGE="https://als.regnet.cz/fpm2/"
 SRC_URI="https://als.regnet.cz/${PN}/download/${P}.tar.xz"

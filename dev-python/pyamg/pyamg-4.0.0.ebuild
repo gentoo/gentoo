@@ -19,6 +19,8 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]"
+# cannot be enabled by "distutils_enable_tests pytest"
+BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
 
