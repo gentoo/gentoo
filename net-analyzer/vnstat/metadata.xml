@@ -15,4 +15,7 @@
 		The traffic information is analyzed from the /proc filesystem. That way vnStat
 		can be used even without root permissions.
 	</longdescription>
+	<upstream>
+		<changelog>https://humdi.net/vnstat/CHANGES</changelog>
+	</upstream>
 </pkgmetadata>
