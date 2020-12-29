@@ -5481,6 +5481,7 @@ dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.13.1: Generic library for reporting software bugs
 dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.1.5 3.2.0 3.2.1 3.2.3 3.3.0 3.3.1: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libretls 3.3.1: Port of libtls from LibreSSL to OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 4.7.0 4.8.0: C++ implementation of 3mf loading with SIP python bindings
@@ -7970,8 +7971,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 9999: The AWS SDK for Python
-dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 1.16.44 9999: The AWS SDK for Python
+dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 1.19.44 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8508,7 +8509,7 @@ dev-python/nototools 0_pre20200207 0.2.13: Noto fonts support tools and scripts 
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
-dev-python/numexpr 2.7.2: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.19.0 1.19.1 1.19.2 1.19.3 1.19.4: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
@@ -9042,7 +9043,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0 51.1.0: Collection of extensions to Distutils
+dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0 51.1.0 51.1.1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -9184,7 +9185,7 @@ dev-python/tox 3.20.1-r1: virtualenv-based automation of test activities
 dev-python/tqdm 4.53.0 4.54.0 4.54.1 4.55.0 9999: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
-dev-python/transitions 0.8.2-r1: A lightweight, object-oriented state machine implementation in Python
+dev-python/transitions 0.8.2-r1 0.8.6: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 3.2.0: Toolkit to convert between many translation formats
 dev-python/tree-sitter 0.2.0: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0: A requests-like API built on top of twisted.web's Agent
@@ -19003,7 +19004,7 @@ xfce-extra/xfce4-mpc-plugin 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.2: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-notes-plugin 1.8.1-r4: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.6.2: Notification daemon for the Xfce desktop environment
-xfce-extra/xfce4-panel-profiles 1.0.10: Simple application to manage Xfce panel layouts
+xfce-extra/xfce4-panel-profiles 1.0.10 1.0.12: Simple application to manage Xfce panel layouts
 xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.6-r1 1.7.1 4.16.0: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.3: A panel plug-in for PulseAudio volume control
