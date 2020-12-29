@@ -16,6 +16,7 @@
 		can be used even without root permissions.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">vergoh/vnstat</remote-id>
 		<changelog>https://humdi.net/vnstat/CHANGES</changelog>
 	</upstream>
 </pkgmetadata>
