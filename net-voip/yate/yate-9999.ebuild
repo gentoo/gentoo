@@ -24,12 +24,12 @@ IUSE="doc cpu_flags_x86_sse2 sctp dahdi zaptel wpcard tdmcard wanpipe +ilbc +ilb
 
 RDEPEND="
 	postgres? ( dev-db/postgresql:* )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:= )
 	gsm? ( media-sound/gsm )
 	speex? ( media-libs/speex )
 	ssl? ( dev-libs/openssl:0 )
 	zlib? ( sys-libs/zlib )
-	ilbc? ( dev-libs/ilbc-rfc3951 )
+	ilbc? ( media-libs/libilbc )
 	spandsp? ( >=media-libs/spandsp-0.0.3 )
 	dahdi? ( net-misc/dahdi )
 "
@@ -37,7 +37,10 @@ DEPEND="doc? ( app-doc/doxygen )
 	virtual/pkgconfig
 	${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-dont-mess-with-cflags.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.0.0-dont-mess-with-cflags.patch"
+	"${FILESDIR}/${PN}-6.2.0-my_bool.patch"
+)
 
 src_prepare() {
 	default_src_prepare
