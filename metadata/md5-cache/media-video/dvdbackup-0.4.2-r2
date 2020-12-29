@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure
-DEPEND=>=media-libs/libdvdread-4.2.0_pre nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DEPEND=>=media-libs/libdvdread-4.2.0_pre:= nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
 DESCRIPTION=Backup content from DVD to hard disk
 EAPI=7
 HOMEPAGE=http://dvdbackup.sourceforge.net/
 IUSE=nls
 KEYWORDS=amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=GPL-3
-RDEPEND=>=media-libs/libdvdread-4.2.0_pre nls? ( virtual/libintl )
+RDEPEND=>=media-libs/libdvdread-4.2.0_pre:= nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/dvdbackup/dvdbackup-0.4.2.tar.xz
-_md5_=259f996ab21a72584d1b4c6cfcc6badb
+_md5_=0617d0962b057b0d8bdc491b316baa31
