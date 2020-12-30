@@ -90,7 +90,7 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_rest() {
+src_test() {
 	# awesome's test suite starts Xvfb by itself, no need for virtualx eclass
 	HEADLESS=1 cmake_build check -j1
 }
