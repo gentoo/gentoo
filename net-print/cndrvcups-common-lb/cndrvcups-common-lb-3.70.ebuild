@@ -64,6 +64,8 @@ src_prepare() {
 		"s:backenddir = \$(libdir)/cups/backend:backenddir = `cups-config --serverbin`/backend:" \
 		backend/Makefile.am || die
 
+	sed -i -e "s@CC=gcc@CC=$(tc-getCC)@" c3plmod_ipc/Makefile || die
+
 	export "LIBS=-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"
 	change_dir mv configure.in configure.ac
 	change_dir sed -i -e 's/configure.in/configure.ac/' configure.ac
