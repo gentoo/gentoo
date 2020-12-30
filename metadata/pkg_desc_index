@@ -17722,7 +17722,6 @@ virtual/libc 1-r1: Virtual for the C library
 virtual/libcrypt 1-r1 2: Virtual for libcrypt.so
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
 virtual/libffi 3.3_rc0: A virtual for the Foreign Function Interface implementation
-virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libudev 215-r1 232-r1 232-r2 232-r3: Virtual for libudev providers
