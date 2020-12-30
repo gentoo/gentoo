@@ -8,15 +8,15 @@ VALA_USE_DEPEND="vapigen"
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit desktop eutils git-r3 meson python-any-r1 readme.gentoo-r1 vala xdg-utils
+inherit desktop eutils meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-gtk.git"
-KEYWORDS=""
+SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+gtk3 +introspection libressl lz4 mjpeg policykit pulseaudio sasl smartcard usbredir vala webdav"
 
 # TODO:
@@ -66,7 +66,7 @@ RDEPEND="${RDEPEND}
 	x86? ( x11-libs/libva:= )
 "
 DEPEND="${RDEPEND}
-	~app-emulation/spice-protocol-9999
+	>=app-emulation/spice-protocol-0.14.1
 	dev-perl/Text-CSV
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
@@ -90,7 +90,8 @@ python_check_deps() {
 
 src_prepare() {
 	default
-
+	sed -i -e "/^                              '-Werror',/d" \
+		subprojects/spice-common/meson.build || die
 	use vala && vala_src_prepare
 }
 
