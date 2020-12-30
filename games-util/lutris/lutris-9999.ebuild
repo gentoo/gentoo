@@ -42,6 +42,7 @@ RDEPEND="
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
+		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
