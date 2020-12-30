@@ -44,12 +44,20 @@ DEPEND="!dev-util/${PN}:14
 RDEPEND="${DEPEND}
 	dev-java/jansi-native
 	dev-libs/libdbusmenu
-	=dev-util/lldb-10*"
+	=dev-util/lldb-10*
+	|| (
+		dev-java/openjdk:11
+		dev-java/openjdk-bin:11
+	)"
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
 
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-jdk.patch"
+)
 
 src_unpack() {
 	default_src_unpack
@@ -57,6 +65,9 @@ src_unpack() {
 }
 
 src_prepare() {
+
+	default_src_prepare
+
 	if use amd64; then
 		JRE_DIR=jre64
 	else

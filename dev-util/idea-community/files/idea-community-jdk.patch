@@ -1,0 +1,11 @@
+--- a/bin/idea.sh	2020-12-30 15:51:43.743936660 -0500
++++ b/bin/idea.sh	2020-12-30 17:58:16.759719538 -0500
+@@ -66,6 +66,8 @@ PATHS_SELECTOR="IdeaIC2020.3"
+ # shellcheck disable=SC2154
+ if [ -n "$IDEA_JDK" ] && [ -x "$IDEA_JDK/bin/java" ]; then
+   JDK="$IDEA_JDK"
++else
++  JDK="/opt/openjdk-bin-11" && [[ -d "/opt/openjdk-11" ]] && JDK="/usr/lib64/openjdk-bin-11"
+ fi
+ 
+ if [ -z "$JDK" ] && [ -s "${XDG_CONFIG_HOME:-$HOME/.config}/${PRODUCT_VENDOR}/${PATHS_SELECTOR}/idea.jdk" ]; then
