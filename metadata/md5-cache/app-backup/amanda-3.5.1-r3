@@ -11,4 +11,4 @@ RDEPEND=acct-group/amanda acct-user/amanda app-arch/dump app-arch/tar dev-libs/g
 SLOT=0
 SRC_URI=mirror://sourceforge/amanda/amanda-3.5.1.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=ac7804f641d15385c5af8e872e0f360c
+_md5_=9adb99ce6b2a4a1fe7e0b72f43ea677b

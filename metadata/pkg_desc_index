@@ -849,7 +849,7 @@ app-arch/zopfli 1.0.2 1.0.3: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zstd 1.4.4-r4 1.4.5 1.4.8-r1: zstd fast compression library
-app-backup/amanda 3.3.9 3.5.1-r2: The Advanced Maryland Automatic Network Disk Archiver
+app-backup/amanda 3.3.9 3.5.1-r3: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
