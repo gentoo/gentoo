@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ~ppc x86"
-IUSE="gui png unicode xv"
+IUSE="gui png xv"
 RESTRICT="test"
 
 RDEPEND="
