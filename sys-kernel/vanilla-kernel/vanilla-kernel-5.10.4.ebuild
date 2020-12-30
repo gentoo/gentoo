@@ -7,8 +7,8 @@ inherit kernel-build verify-sig
 
 MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
-CONFIG_VER=5.10.0
-CONFIG_HASH=12700e38e8ba0a7be437a4c5804ba0e6417fdc24
+CONFIG_VER=5.10.2
+CONFIG_HASH=b40ee468dab9a27cca8b91fef64d1d43ce0ed1b2
 GENTOO_CONFIG_VER=5.9.8-r1
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
