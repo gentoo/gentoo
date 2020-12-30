@@ -35,6 +35,11 @@ PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 DOCS=( CHANGELOG CREDITS.en README README.MODIFYING TODO TRANSLATION.HOWTO )
 
+src_prepare() {
+	default
+	sed -i -e "s@CC=gcc@CC=$(tc-getCC)@" scripts/bash-based-configure || die
+}
+
 src_configure() {
 	./configure \
 		--prefix="${EPREFIX}"/usr \
