@@ -25,7 +25,7 @@ index 1797df9..90284d8 100644
 +# Use libtool for binary installs, etc.
 +
 +export V
-+export LIBTOOL = $(BROOT)/usr/bin/libtool --quiet --tag=CC
++export LIBTOOL = /usr/bin/libtool --quiet --tag=CC
 +# See libtool manual about how to set this
 +
 +gentoo_clean:
@@ -71,7 +71,7 @@ index 514593d..8af8f99 100644
  
  # (end of Makefile)
 +
-+export LIBTOOL = $(BROOT)/usr/bin/libtool --quiet --tag=CC
++export LIBTOOL = /usr/bin/libtool --quiet --tag=CC
 +export LIB_VERSION = 6:1:1
 +
 +# The following rules use libtool for compiling and linking in order to
