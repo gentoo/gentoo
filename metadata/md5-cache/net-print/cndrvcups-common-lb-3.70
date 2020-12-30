@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/libxml2-2.6:2 >=gnome-base/libglade-2.4:2.0 >=net-print/cups-
 SLOT=0
 SRC_URI=http://gdlp01.c-wss.com/gds/8/0100007658/08/linux-UFRII-drv-v370-uken-05.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=61a8e171e4f62f56a22a8fe00346759d
+_md5_=d1f5ad570d5dd59bbe2ca7a9b9be2e20
