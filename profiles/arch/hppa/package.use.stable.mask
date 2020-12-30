@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# app-text/aspell is not stable on hppa
+app-misc/mc spell
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # app-crypt/heimdal is not stable on hppa
 net-nds/openldap smbkrb5passwd
