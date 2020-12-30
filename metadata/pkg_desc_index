@@ -13117,6 +13117,7 @@ media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjpeg-turbo 1.5.3-r4 2.0.5-r2 2.0.6: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
+media-libs/libkeyfinder 2.2.3: Musical key detection library for digital audio
 media-libs/liblastfm 1.1.0_pre20190625: Collection of libraries to integrate Last.fm services
 media-libs/libldac 2.0.2-r1: LDAC codec library from AOSP
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
@@ -13750,7 +13751,7 @@ media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.5: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
 media-sound/guayadeque 0.4.6 9999: Music management program designed for all music enthusiasts
-media-sound/guitarix 0.41.0 9999: Virtual guitar amplifier for Linux
+media-sound/guitarix 0.41.0 0.42.1 9999: Virtual guitar amplifier for Linux
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r2: Opensource software organ
