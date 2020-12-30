@@ -1,0 +1,62 @@
+commit a538ece28e7b0039580494370d1bc20a41621eb6
+Author: Yuan Liao <liaoyuan@gmail.com>
+Date:   Mon Dec 28 11:01:34 2020 -0800
+
+    Use Python interpreter found by Meson instead of 'python3' in PATH
+    
+    On Gentoo installations, the version of Portage's Python target might be
+    different from the preferred Python interpreter version set by
+    'eselect'.  For example, Portage's 'PYTHON_SINGLE_TARGET' variable may
+    be set to "python3_8" while the interpreter version for
+    '/usr/bin/python3' is 3.9.  In this case, Python dependencies of
+    Lollypop are available for 3.8 but not 3.9, so starting Lollypop with
+    Python 3.9 may fail.
+    
+    This patch reverts a change introduced in Lollypop 1.3.1 which switches
+    the Python interpreter used to run Lollypop from the one found by Meson
+    to 'python3' executable found in PATH.  By using Meson, the shebang line
+    of '/usr/bin/lollypop' can point to the Python interpreter corresponding
+    to Portage's Python target version.  Otherwise, the shebang line will be
+    '#!/usr/bin/env python3', using whatever version of Python interpreter
+    activated by 'eselect', which may cause the issue mentioned above.
+
+diff --git a/lollypop.in b/lollypop.in
+index 305f49da..48502a25 100755
+--- a/lollypop.in
++++ b/lollypop.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!@PYTHON@
+ 
+ import sys
+ import os
+diff --git a/meson.build b/meson.build
+index 833e0682..31ce9caa 100644
+--- a/meson.build
++++ b/meson.build
+@@ -8,6 +8,7 @@ if revision == ''
+ endif
+
+ i18n = import('i18n')
++python = import('python3')
+ py_mod = import('python')
+ project_id = 'org.gnome.Lollypop'
+
+@@ -40,6 +41,7 @@ conf.set('PYTHON_DIR', python_dir)
+ conf.set('libexecdir', LIBEXEC_DIR)
+ conf.set('VERSION', meson.project_version())
+ conf.set('REVISION', revision)
++conf.set('PYTHON', python.find_python().path())
+
+ subdir('data')
+ subproject('po')
+diff --git a/search-provider/lollypop-sp.in b/search-provider/lollypop-sp.in
+index f0eb4bf3..c961a2da 100755
+--- a/search-provider/lollypop-sp.in
++++ b/search-provider/lollypop-sp.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!@PYTHON@
+ # Copyright (c) 2014-2016 Cedric Bellegarde <cedric.bellegarde@adishatz.org>
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
