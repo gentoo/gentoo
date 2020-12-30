@@ -1,13 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-qt/linguist-tools:5 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
-DEPEND=app-text/poppler dev-qt/linguist:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtopengl dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 dev-qt/qttest:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=app-text/poppler dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 dev-qt/qttest:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Cloth patternmaking software
 EAPI=7
 HOMEPAGE=https://gitlab.com/smart-pattern/valentina
 IUSE=l10n_cs l10n_de l10n_el l10n_en l10n_en l10n_es l10n_fi l10n_fr l10n_he l10n_id l10n_it l10n_nl l10n_pt-BR l10n_ro l10n_ru l10n_uk l10n_zh-CN
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=app-text/poppler dev-qt/linguist:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtopengl dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5
+RDEPEND=app-text/poppler dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5
 SLOT=0
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	git-r3	3e7ec3d6619213460c85e2aa48398441	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=19ee8eae59621d96d0d632f3a4f98e56
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=6434b2c8c3204ee6593acaa2c29e46b7
