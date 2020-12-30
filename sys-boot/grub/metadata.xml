@@ -27,7 +27,6 @@
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
 </use>
 <upstream>
-	<remote-id type="sourceforge">dejavu</remote-id>
 	<remote-id type="cpe">cpe:/a:gnu:grub</remote-id>
 </upstream>
 </pkgmetadata>
