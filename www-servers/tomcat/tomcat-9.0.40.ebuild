@@ -5,7 +5,7 @@ EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2 prefix user
+inherit eutils java-pkg-2 java-ant-2 prefix
 
 MY_P="apache-${PN}-${PV}-src"
 
@@ -36,6 +36,8 @@ COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
 	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}
 	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
+	acct-group/tomcat
+	acct-user/tomcat
 	virtual/jre"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
@@ -63,12 +65,6 @@ src_unpack() {
 	mkdir -p "${BND_HOME}" "${BNDLIB_HOME}" || die "Failed to create dir"
 	ln -s "${DISTDIR}/${BND}" "${BND_HOME}/" || die "Failed to symlink bnd-*.jar"
 	ln -s "${DISTDIR}/${BND}" "${BNDLIB_HOME}/" || die "Failed to symlink bndlib-*.jar"
-}
-
-pkg_setup() {
-	java-pkg-2_pkg_setup
-	enewgroup tomcat 265
-	enewuser tomcat 265 -1 /dev/null tomcat
 }
 
 src_prepare() {
