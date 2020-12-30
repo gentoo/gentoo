@@ -42,7 +42,6 @@ DEPEND="!dev-util/${PN}:14
 		dev-java/openjdk-bin:11
 	)"
 RDEPEND="${DEPEND}
-	>=virtual/jdk-1.7:*
 	dev-java/jansi-native
 	dev-libs/libdbusmenu
 	=dev-util/lldb-10*"
