@@ -1,6 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-12-31)
+# Force-enable unicode. We're in 2020 and this should really be available
+# everywhere.
+# See this mailing list thread:
+# https://archives.gentoo.org/gentoo-user/message/efc647eb07fb8c99b2619e3402281edd
+sys-libs/ncurses unicode
+sys-libs/readline unicode
+
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # sys-boot/udk is being removed, and newest revision of refind does not
 # support it already.
