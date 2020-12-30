@@ -18,6 +18,6 @@
 	</flag>
 </use>
 <upstream>
-	<remote-id type="github">coin3d/quarter</remote-id>
+	<remote-id type="github">coin3d/pivy</remote-id>
 </upstream>
 </pkgmetadata>
