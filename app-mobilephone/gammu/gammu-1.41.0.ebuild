@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="bluetooth curl dbi debug irda mysql nls odbc postgres usb"
 
 DEPEND="
 	dev-libs/glib:2=
-	virtual/libgudev:=
+	dev-libs/libgudev:=
 	virtual/libiconv
 	bluetooth? ( net-wireless/bluez:= )
 	curl? ( net-misc/curl:= )
