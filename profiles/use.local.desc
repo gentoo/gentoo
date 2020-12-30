@@ -2466,6 +2466,8 @@ dev-python/passlib:bcrypt - bcrpyt hash algoryptm support
 dev-python/passlib:scrypt - accelerated scrypt algoythm support
 dev-python/passlib:totp - time based one time password support
 dev-python/pillow:imagequant - Build with Image Quantization Library support
+dev-python/pivy:quarter - Use media-libs/quarter for GUI bindings
+dev-python/pivy:soqt - Use media-libs/SoQt for GUI bindings
 dev-python/py-amqp:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/pygame:midi - Enable midi support using media-libs/portmidi
 dev-python/pyglet:image - Enable support for image formats other than PNG and BMP

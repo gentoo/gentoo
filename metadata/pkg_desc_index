@@ -8616,6 +8616,7 @@ dev-python/pillow 7.0.0 7.2.0 8.0.1: Python Imaging Library (fork)
 dev-python/pip 20.2.4 20.3.1 20.3.2 20.3.3: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
+dev-python/pivy 0.6.5: Coin3D bindings for Python
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1-r1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/plotly 1.9.6 4.10.0 4.14.1: Browser-based graphing library for Python
