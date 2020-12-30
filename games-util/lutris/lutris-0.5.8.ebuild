@@ -36,7 +36,6 @@ BDEPEND="
 RDEPEND="
 	app-arch/cabextract
 	app-arch/p7zip
-	app-arch/unrar
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
