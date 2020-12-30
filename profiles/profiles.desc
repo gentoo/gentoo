@@ -31,7 +31,7 @@ amd64		default/linux/amd64/17.1/no-multilib			stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened		stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened/selinux	stable
 amd64		default/linux/amd64/17.1/systemd			stable
-
+amd64		default/linux/amd64/17.1/systemd/desktop/no-multilib	stable
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
 amd64		default/linux/amd64/17.0				dev
