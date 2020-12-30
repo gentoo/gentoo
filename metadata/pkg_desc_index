@@ -12262,7 +12262,7 @@ kde-misc/kdeconnect 20.08.3 20.12.0: Adds communication between KDE Plasma and y
 kde-misc/kdiff3 1.8.4: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
-kde-misc/kio-fuse 4.95.0: FUSE interface for KIO
+kde-misc/kio-fuse 5.0.0: FUSE interface for KIO
 kde-misc/kio-gdrive 20.08.3 20.12.0: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99-r1: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r3: Locate KIO slave
