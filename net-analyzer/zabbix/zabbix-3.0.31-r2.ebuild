@@ -5,7 +5,7 @@ EAPI=7
 
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit flag-o-matic webapp java-pkg-opt-2 user systemd toolchain-funcs
+inherit flag-o-matic webapp java-pkg-opt-2 systemd toolchain-funcs
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
 HOMEPAGE="https://www.zabbix.com/"
@@ -49,6 +49,8 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
+	acct-group/zabbix
+	acct-user/zabbix
 	java? ( >=virtual/jre-1.8:* )
 	mysql? ( virtual/mysql )
 	proxy? ( net-analyzer/fping[suid] )
@@ -121,9 +123,6 @@ pkg_setup() {
 	if use frontend; then
 		webapp_pkg_setup
 	fi
-
-	enewgroup zabbix
-	enewuser zabbix -1 -1 /var/lib/zabbix/home zabbix
 
 	java-pkg-opt-2_pkg_setup
 }
