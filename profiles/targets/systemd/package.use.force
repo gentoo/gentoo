@@ -3,5 +3,4 @@
 
 # Mike Gilbert <floppym@gentoo.org> (2015-04-22)
 # Force systemd to avoid depgraph breakage, bug 547360.
-virtual/libgudev systemd
 virtual/libudev systemd
