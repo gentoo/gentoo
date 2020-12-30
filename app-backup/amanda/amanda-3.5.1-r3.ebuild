@@ -72,7 +72,6 @@ AMANDA_PORTS_UDP AMANDA_PORTS_TCP AMANDA_PORTS_BOTH AMANDA_PORTS
 AMANDA_CONFIG_NAME AMANDA_TMPDIR"
 
 amanda_variable_setup() {
-
 	# Setting vars
 	local currentamanda
 
@@ -86,32 +85,31 @@ amanda_variable_setup() {
 
 	# This installs Amanda, with the server. However, it could be a client,
 	# just specify an alternate server name in AMANDA_SERVER.
-	[[ -z "${AMANDA_SERVER}" ]] && AMANDA_SERVER="${HOSTNAME}"
-	[[ -z "${AMANDA_SERVER_TAPE}" ]] && AMANDA_SERVER_TAPE="${AMANDA_SERVER}"
-	[[ -z "${AMANDA_SERVER_TAPE_DEVICE}" ]] && AMANDA_SERVER_TAPE_DEVICE="/dev/nst0"
-	[[ -z "${AMANDA_SERVER_INDEX}" ]] && AMANDA_SERVER_INDEX="${AMANDA_SERVER}"
-	[[ -z "${AMANDA_TAR_LISTDIR}" ]] && AMANDA_TAR_LISTDIR=${AMANDA_USER_HOMEDIR}/tar-lists
-	[[ -z "${AMANDA_CONFIG_NAME}" ]] && AMANDA_CONFIG_NAME=DailySet1
-	[[ -z "${AMANDA_TMPDIR}" ]] && AMANDA_TMPDIR=/var/tmp/amanda
-	[[ -z "${AMANDA_DBGDIR}" ]] && AMANDA_DBGDIR="$AMANDA_TMPDIR"
+	: ${AMANDA_SERVER:=${HOSTNAME}}
+	: ${AMANDA_SERVER_TAPE:=${AMANDA_SERVER}}
+	: ${AMANDA_SERVER_TAPE_DEVICE:="${EPREFIX}"/dev/nst0}
+	: ${AMANDA_SERVER_INDEX:=${AMANDA_SERVER}}
+	: ${AMANDA_TAR_LISTDIR:=${AMANDA_USER_HOMEDIR}/tar-lists}
+	: ${AMANDA_CONFIG_NAME:=DailySet1}
+	: ${AMANDA_TMPDIR:="${EPREFIX}"/var/tmp/amanda}
+	: ${AMANDA_DBGDIR:=${AMANDA_TMPDIR}}
 	# These are left empty by default
-	[[ -z "${AMANDA_PORTS_UDP}" ]] && AMANDA_PORTS_UDP=
-	[[ -z "${AMANDA_PORTS_TCP}" ]] && AMANDA_PORTS_TCP=
-	[[ -z "${AMANDA_PORTS_BOTH}" ]] && AMANDA_PORTS_BOTH=
-	[[ -z "${AMANDA_PORTS}" ]] && AMANDA_PORTS=
+	: ${AMANDA_PORTS_UDP:=""}
+	: ${AMANDA_PORTS_TCP:=""}
+	: ${AMANDA_PORTS_BOTH:=""}
+	: ${AMANDA_PORTS:=""}
 
 	# What tar to use
-	[[ -z "${AMANDA_TAR}" ]] && AMANDA_TAR=/bin/tar
+	: ${AMANDA_TAR:=/bin/tar}
 
 	# Now pull in the old stuff
-	if [[ -f "${EROOT}${ENVDIR}/${ENVDFILE}" ]]; then
+	if [[ -f ${EROOT}${ENVDIR}/${ENVDFILE} ]]; then
 		# We don't just source it as we don't want everything in there.
 		eval $(egrep "^AMANDA_" "${EROOT}${ENVDIR}/${ENVDFILE}" | grep -v '^AMANDA_ENV_SETTINGS')
 	fi
 
 	# Re-apply the new settings if any
-	[ -n "${currentamanda}" ] && eval $(echo "${currentamanda}")
-
+	[[ -n ${currentamanda} ]] && eval $(echo "${currentamanda}")
 }
 
 pkg_setup() {
@@ -119,7 +117,7 @@ pkg_setup() {
 
 	# If USE=minimal, give out a warning, if AMANDA_SERVER is not set to
 	# another host than HOSTNAME.
-	if use minimal && [ "${AMANDA_SERVER}" = "${HOSTNAME}" ] ; then
+	if use minimal && [[ ${AMANDA_SERVER} == ${HOSTNAME} ]]; then
 		elog "You are installing a client-only version of Amanda."
 		elog "You should set the variable \$AMANDA_SERVER to point at your"
 		elog "Amanda-tape-server, otherwise you will have to specify its name"
@@ -132,7 +130,7 @@ pkg_setup() {
 
 src_unpack() {
 	# we do not want the perl src_unpack
-	default_src_unpack
+	default
 }
 
 src_prepare() {
@@ -159,14 +157,14 @@ src_prepare() {
 	local i # our iterator
 	local sedexpr # var for sed expr
 	sedexpr=''
-	for i in ${ENV_SETTINGS_AMANDA} ; do
+	for i in ${ENV_SETTINGS_AMANDA}; do
 		local val
 		eval "val=\"\${${i}}\""
 		sedexpr="${sedexpr}s|__${i}__|${val}|g;"
 	done
 
 	# now apply the sed expr
-	for i in "${FILESDIR}"/amanda-* ; do
+	for i in "${FILESDIR}"/amanda-*; do
 		sed -re "${sedexpr}" <"${i}" >"${MYFILESDIR}/`basename ${i}`" || die
 	done
 
@@ -188,126 +186,155 @@ src_configure() {
 	addpredict /run/blkid
 	addpredict /etc/blkid.tab
 
-	[ ! -f "${TMPENVFILE}" ] && die "Variable setting file (${TMPENVFILE}) should exist!"
+	[[ ! -f ${TMPENVFILE} ]] && die "Variable setting file (${TMPENVFILE}) should exist!"
 	source "${TMPENVFILE}"
-	local myconf
+	local myconf=()
 
 	einfo "Using ${AMANDA_SERVER_TAPE} for tape server."
-	myconf="${myconf} --with-tape-server=${AMANDA_SERVER_TAPE}"
+	myconf+=( --with-tape-server="${AMANDA_SERVER_TAPE}" )
 	einfo "Using ${AMANDA_SERVER_TAPE_DEVICE} for tape server."
-	myconf="${myconf} --with-tape-device=${AMANDA_SERVER_TAPE_DEVICE}"
+	myconf+=( --with-tape-device="${AMANDA_SERVER_TAPE_DEVICE}" )
 	einfo "Using ${AMANDA_SERVER_INDEX} for index server."
-	myconf="${myconf} --with-index-server=${AMANDA_SERVER_INDEX}"
+	myconf+=( --with-index-server="${AMANDA_SERVER_INDEX}" )
 	einfo "Using ${AMANDA_USER_NAME} for amanda user."
-	myconf="${myconf} --with-user=${AMANDA_USER_NAME}"
+	myconf+=( --with-user="${AMANDA_USER_NAME}" )
 	einfo "Using ${AMANDA_GROUP_NAME} for amanda group."
-	myconf="${myconf} --with-group=${AMANDA_GROUP_NAME}"
+	myconf+=( --with-group="${AMANDA_GROUP_NAME}" )
 	einfo "Using ${AMANDA_TAR} as Tar implementation."
-	myconf="${myconf} --with-gnutar=${AMANDA_TAR}"
+	myconf+=( --with-gnutar="${AMANDA_TAR}" )
 	einfo "Using ${AMANDA_TAR_LISTDIR} as tar listdir."
-	myconf="${myconf} --with-gnutar-listdir=${AMANDA_TAR_LISTDIR}"
+	myconf+=( --with-gnutar-listdir="${AMANDA_TAR_LISTDIR}" )
 	einfo "Using ${AMANDA_CONFIG_NAME} as default config name."
-	myconf="${myconf} --with-config=${AMANDA_CONFIG_NAME}"
+	myconf+=( --with-config="${AMANDA_CONFIG_NAME}" )
 	einfo "Using ${AMANDA_TMPDIR} as Amanda temporary directory."
-	myconf="${myconf} --with-tmpdir=${AMANDA_TMPDIR}"
+	myconf+=( --with-tmpdir="${AMANDA_TMPDIR}" )
 
-	if [ -n "${AMANDA_PORTS_UDP}" ] && [ -n "${AMANDA_PORTS_TCP}" ] && [ -z "${AMANDA_PORTS_BOTH}" ] ; then
+	if [[ -n ${AMANDA_PORTS_UDP} && -n ${AMANDA_PORTS_TCP} && -z ${AMANDA_PORTS_BOTH} ]]; then
 		eerror "If you want _both_ UDP and TCP ports, please use only the"
 		eerror "AMANDA_PORTS environment variable for identical ports, or set"
 		eerror "AMANDA_PORTS_BOTH."
 		die "Bad port setup!"
 	fi
-	if [ -n "${AMANDA_PORTS_UDP}" ]; then
+	if [[ -n ${AMANDA_PORTS_UDP} ]]; then
 		einfo "Using UDP ports ${AMANDA_PORTS_UDP/,/-}"
-		myconf="${myconf} --with-udpportrange=${AMANDA_PORTS_UDP}"
+		myconf+=( --with-udpportrange="${AMANDA_PORTS_UDP}" )
 	fi
-	if [ -n "${AMANDA_PORTS_TCP}" ]; then
+	if [[ -n ${AMANDA_PORTS_TCP} ]]; then
 		einfo "Using TCP ports ${AMANDA_PORTS_TCP/,/-}"
-		myconf="${myconf} --with-tcpportrange=${AMANDA_PORTS_TCP}"
+		myconf+=( --with-tcpportrange="${AMANDA_PORTS_TCP}" )
 	fi
-	if [ -n "${AMANDA_PORTS}" ]; then
+	if [[ -n ${AMANDA_PORTS} ]]; then
 		einfo "Using ports ${AMANDA_PORTS/,/-}"
-		myconf="${myconf} --with-portrange=${AMANDA_PORTS}"
+		myconf+=( --with-portrange="${AMANDA_PORTS}" )
 	fi
 
 	# Extras
 	# Speed option
-	myconf="${myconf} --with-buffered-dump"
+	myconf+=( --with-buffered-dump )
 	# "debugging" in the configuration is NOT debug in the conventional sense.
 	# It is actually just useful output in the application, and should remain
 	# enabled. There are some cases of breakage with MTX tape changers as of
 	# 2.5.1p2 that it exposes when turned off as well.
-	myconf="${myconf} --with-debugging"
+	myconf+=( --with-debugging )
 	# Where to put our files
-	myconf="${myconf} --localstatedir=${AMANDA_USER_HOMEDIR}"
+	myconf+=( --localstatedir="${AMANDA_USER_HOMEDIR}" )
 
 	# Samba support
-	myconf="${myconf} $(use_with samba smbclient /usr/bin/smbclient)"
+	myconf+=( $(use_with samba smbclient /usr/bin/smbclient) )
 
 	# Support for BSD, SSH, BSDUDP, BSDTCP security methods all compiled in by
 	# default
-	myconf="${myconf} --with-bsd-security"
-	myconf="${myconf} --with-ssh-security"
-	myconf="${myconf} --with-bsdudp-security"
-	myconf="${myconf} --with-bsdtcp-security"
+	myconf+=( --with-bsd-security )
+	myconf+=( --with-ssh-security )
+	myconf+=( --with-bsdudp-security )
+	myconf+=( --with-bsdtcp-security )
 
 	# kerberos-security mechanism version 5
-	myconf="${myconf} $(use_with kerberos krb5-security)"
+	myconf+=( $(use_with kerberos krb5-security) )
 
 	# Amazon S3 support
-	myconf="${myconf} `use_enable s3 s3-device`"
+	myconf+=( $(use_enable s3 s3-device) )
 
 	# libcurl is required for S3 but otherwise optional
 	if ! use s3; then
-		myconf="${myconf} $(use_with curl libcurl)"
+		myconf+=( $(use_with curl libcurl) )
 	fi
 
 	# Client only, as requested in bug #127725
-	if use minimal ; then
-		myconf="${myconf} --without-server"
+	if use minimal; then
+		myconf+=( --without-server )
 	else
 		# amplot
-		myconf="${myconf} $(use_with gnuplot)"
+		myconf+=( $(use_with gnuplot) )
 	fi
 
 	# IPv6 fun.
-	myconf="${myconf} `use_with ipv6`"
+	myconf+=( $(use_with ipv6) )
 	# This is to prevent the IPv6-is-working test
 	# As the test fails on binpkg build hosts with no IPv6.
 	use ipv6 && export amanda_cv_working_ipv6=yes
 
 	# I18N
-	myconf="${myconf} `use_enable nls`"
+	myconf+=( $(use_enable nls) )
 
 	# Bug #296634: Perl location
 	perl_set_version
-	myconf="${myconf} --with-amperldir=${VENDOR_LIB}"
+	myconf+=( --with-amperldir="${VENDOR_LIB}" )
 
 	# Bug 296633: --disable-syntax-checks
 	# Some tests are not safe for production systems
-	myconf="${myconf} --disable-syntax-checks"
+	myconf+=( --disable-syntax-checks )
 
 	# build manpages
-	myconf="${myconf} --enable-manpage-build"
+	myconf+=( --enable-manpage-build )
 
 	# Bug #636262
-	myconf="${myconf} $(use_with ndmp ndmp)"
+	myconf+=( $(use_with ndmp ndmp) )
 
 	# bug #483120
 	tc-export AR
 
 	econf \
+		--disable-static \
 		$(use_with readline) \
-		${myconf}
+		"${myconf[@]}"
 }
 
 src_compile() {
 	# Again, do not want the perl-module src_compile
-	default_src_compile
+	default
+}
+
+# We do not want the perl-module tests.
+src_test() {
+	default
+}
+
+# We have had reports of amanda file permissions getting screwed up.
+# Losing setuid, becoming too lax etc.
+# ONLY root and users in the amanda group should be able to run these binaries!
+amanda_permissions_fix() {
+	local root="$1"
+	[[ -z ${root} ]] && die "Failed to pass root argument to amanda_permissions_fix!"
+	local i le=/usr/libexec/amanda
+	for i in "${le}"/calcsize "${le}"/killpgrp "${le}"/rundump "${le}"/runtar; do
+		[[ -e ${root}/${i} ]] || continue
+		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
+		chmod u=srwx,g=rx,o= "${root}"/${i} || die
+	done
+
+	# amanda-security.conf is a config file with similar requirements:
+	# writable only by root
+	# world-readable
+	# 3.3.9: introduced in /etc/amanda-security.conf
+	# 3.4.2: moved to /etc/amanda/amanda-security.conf
+	f=/etc/amanda/amanda-security.conf
+	chown root:root "${root}""${f}" || die
+	chmod u=rw,go=r "${root}""${f}" || die
 }
 
 src_install() {
-	[ ! -f "${TMPENVFILE}" ] && die "Variable setting file (${TMPENVFILE}) should exist!"
+	[[ ! -f ${TMPENVFILE} ]] && die "Variable setting file (${TMPENVFILE}) should exist!"
 	source ${TMPENVFILE}
 
 	einfo "Doing stock install"
@@ -315,18 +342,14 @@ src_install() {
 
 	# Build the envdir file
 	# Don't forget this..
-	einfo "Building environment file"
-	(
-		echo "# These settings are what was present in the environment when this"
-		echo "# Amanda was compiled.  Changing anything below this comment will"
-		echo "# have no effect on your application, but it merely exists to"
-		echo "# preserve them for your next emerge of Amanda"
-		cat "${TMPENVFILE}" | sed "s,=\$,='',g"
-	) >> "${MYFILESDIR}/${ENVDFILE}"
-
-	# Env.d
 	einfo "Installing environment config file"
-	doenvd "${MYFILESDIR}/${ENVDFILE}"
+	newenvd - "${ENVDFILE}" <<- _EOF_
+		# These settings are what was present in the environment when this
+		# Amanda was compiled.  Changing anything below this comment will
+		# have no effect on your application, but it merely exists to
+		# preserve them for your next emerge of Amanda
+		$(cat "${TMPENVFILE}" | sed "s,=\$,='',g")
+	_EOF_
 
 	einfo "Installing systemd service and socket files for Amanda"
 	systemd_dounit "${FILESDIR}"/amanda.socket
@@ -337,7 +360,7 @@ src_install() {
 	# Installing Amanda Xinetd Services Definition
 	einfo "Installing xinetd service file"
 	insinto /etc/xinetd.d
-	if use minimal ; then
+	if use minimal; then
 		newins "${MYFILESDIR}"/amanda-xinetd-2.6.1_p1-client amanda
 	else
 		newins "${MYFILESDIR}"/amanda-xinetd-2.6.1_p1-server amanda
@@ -360,11 +383,11 @@ src_install() {
 	newins "${MYFILESDIR}"/amanda-profile .profile
 
 	insinto /etc/amanda
-	doins "${S}/example/amanda-client.conf"
-	if ! use minimal ; then
+	doins example/amanda-client.conf
+	if ! use minimal; then
 		insinto "/etc/amanda/${AMANDA_CONFIG_NAME}"
-		doins "${S}/example/amanda.conf"
-		doins "${S}/example/disklist"
+		doins example/amanda.conf
+		doins example/disklist
 		keepdir "${AMANDA_USER_HOMEDIR}/${AMANDA_CONFIG_NAME}/index"
 	fi
 
@@ -386,14 +409,14 @@ src_install() {
 		"${AMANDA_USER_HOMEDIR}/amanda" \
 		/etc/amanda
 
-	if ! use minimal ; then
+	if ! use minimal; then
 		fperms 0700 \
 			 "${AMANDA_USER_HOMEDIR}/${AMANDA_CONFIG_NAME}" \
 			 /etc/amanda/${AMANDA_CONFIG_NAME}
 	fi
 
 	einfo "Setting setuid permissions"
-	amanda_permissions_fix "${D}"
+	amanda_permissions_fix "${ED}"
 
 	# Relax permissions again
 	insopts -m0644
@@ -403,11 +426,11 @@ src_install() {
 	dodoc AUTHORS ChangeLog DEVELOPING NEWS README ReleaseNotes UPGRADING
 	# our inetd sample
 	einfo "Installing standard inetd sample"
-	newdoc "${MYFILESDIR}/amanda-inetd.amanda.sample-2.6.0_p2-r2" amanda-inetd.amanda.sample
+	newdoc "${MYFILESDIR}"/amanda-inetd.amanda.sample-2.6.0_p2-r2 amanda-inetd.amanda.sample
 	# Amanda example configs
 	einfo "Installing example configurations"
-	rm "${D}"/usr/share/amanda/{COPYRIGHT,ChangeLog,NEWS,ReleaseNotes} || die
-	mv "${D}/usr/share/amanda/example" "${D}/usr/share/doc/${PF}/" || die
+	rm "${ED}"/usr/share/amanda/{COPYRIGHT,ChangeLog,NEWS,ReleaseNotes} || die
+	mv "${ED}"/usr/share/amanda/example "${ED}"/usr/share/doc/${PF}/ || die
 	docinto example1
 	newdoc "${FILESDIR}"/example_amanda.conf amanda.conf
 	newdoc "${FILESDIR}"/example_disklist-2.5.1_p3-r1 disklist
@@ -415,30 +438,29 @@ src_install() {
 
 	einfo "Cleaning up dud .la files"
 	perl_set_version
-	find "${D}"/"${VENDOR_LIB}" -name '*.la' -delete || die
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	[ ! -f "${TMPENVFILE}" -a "$MERGE_TYPE" == "binary" ] && \
-		TMPENVFILE="${ROOT}${ENVDIR}/${ENVDFILE}"
-	[ ! -f "${TMPENVFILE}" ] && die "Variable setting file (${TMPENVFILE}) should exist!"
+	[[ ! -f ${TMPENVFILE} && ${MERGE_TYPE} == "binary" ]] && TMPENVFILE="${EROOT}${ENVDIR}/${ENVDFILE}"
+	[[ ! -f ${TMPENVFILE} ]] && die "Variable setting file (${TMPENVFILE}) should exist!"
 	source "${TMPENVFILE}"
 
 	# Migration of amandates from /etc to $localstatedir/amanda
-	if [ -f "${ROOT}/etc/amandates" -a \
-		! -f "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/amandates" ]; then
+	if [[ -f ${EROOT}/etc/amandates && ! -f ${EROOT}/${AMANDA_USER_HOMEDIR}/amanda/amandates ]]; then
 		einfo "Migrating amandates from /etc/ to ${AMANDA_USER_HOMEDIR}/amanda"
 		einfo "A backup is also placed at /etc/amandates.orig"
-		cp -dp "${ROOT}/etc/amandates" "${ROOT}/etc/amandates.orig" || die
-		mkdir -p "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/" || die
-		cp -dp "${ROOT}/etc/amandates" "${ROOT}/${AMANDA_USER_HOMEDIR}/amanda/amandates" || die
+		cp -dp "${EROOT}"/etc/amandates "${EROOT}"/etc/amandates.orig || die
+		mkdir -p "${EROOT}/${AMANDA_USER_HOMEDIR}/amanda/" || die
+		cp -dp "${EROOT}"/etc/amandates "${EROOT}"/${AMANDA_USER_HOMEDIR}/amanda/amandates || die
 	fi
-	if [ -f "${ROOT}/etc/amandates" ]; then
+	if [[ -f ${EROOT}/etc/amandates ]]; then
 		einfo "If you have migrated safely, please delete /etc/amandates"
 	fi
 
 	einfo "Checking setuid permissions"
-	amanda_permissions_fix "${ROOT}"
+	amanda_permissions_fix "${EROOT}"/
 
 	elog "You should configure Amanda in /etc/amanda now."
 	elog
@@ -465,34 +487,4 @@ pkg_postinst() {
 	elog "Please note that this package no longer explicitly depends on"
 	elog "virtual/inetd, as it supports modes where an inetd is not needed"
 	elog "(see bug #506028 for details)."
-}
-
-# We have had reports of amanda file permissions getting screwed up.
-# Losing setuid, becoming too lax etc.
-# ONLY root and users in the amanda group should be able to run these binaries!
-amanda_permissions_fix() {
-	local root="$1"
-	[ -z "${root}" ] && die "Failed to pass root argument to amanda_permissions_fix!"
-	local le="/usr/libexec/amanda"
-	local i
-	for i in "${le}"/calcsize "${le}"/killpgrp \
-		"${le}"/rundump "${le}"/runtar ; do
-		[ -e "${root}"/${i} ] || continue
-		chown root:${AMANDA_GROUP_NAME} "${root}"/${i} || die
-		chmod u=srwx,g=rx,o= "${root}"/${i} || die
-	done
-
-	# amanda-security.conf is a config file with similar requirements:
-	# writable only by root
-	# world-readable
-	# 3.3.9: introduced in /etc/amanda-security.conf
-	# 3.4.2: moved to /etc/amanda/amanda-security.conf
-	f=/etc/amanda/amanda-security.conf
-	chown root:root "${root}""${f}" || die
-	chmod u=rw,go=r "${root}""${f}" || die
-}
-
-# We do not want the perl-module tests.
-src_test() {
-	default_src_test
 }
