@@ -53,7 +53,7 @@ RDEPEND="
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
-	x11-libs/libnotify
+	x11-libs/libnotify[introspection]
 "
 
 python_install_all() {
