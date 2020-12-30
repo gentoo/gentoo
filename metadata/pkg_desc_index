@@ -274,6 +274,7 @@ acct-group/x2goprint 0-r1: Group for net-misc/x2goserver
 acct-group/x2gouser 0-r1: Group for net-misc/x2goserver
 acct-group/xpra 0: group for x11-wm/xpra
 acct-group/xrootd 0-r1: Group for the XRootD server
+acct-group/zabbix 0: Group for Zabbix
 acct-group/ziproxy 0: System group: ziproxy
 acct-group/znc 0-r1: Group for net-irc/znc
 acct-user/abrt 0-r1: A user for the automatic bug detection and reporting tool
@@ -529,6 +530,7 @@ acct-user/wesnoth 0-r1: user for games-strategy/wesnoth
 acct-user/x2goprint 0-r1: User for net-misc/x2goserver
 acct-user/x2gouser 0-r1: User for net-misc/x2goserver
 acct-user/xrootd 0-r1: User for the XRootD server
+acct-user/zabbix 0: User for Zabbix
 acct-user/ziproxy 0: System user: ziproxy
 acct-user/znc 0-r1: User for net-irc/znc
 app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
@@ -14438,7 +14440,7 @@ net-analyzer/wireshark 3.4.2 3.4.2-r100 99999999: A network protocol analyzer fo
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31-r2 4.0.26-r1 4.0.27-r1 5.0.5-r1 5.0.6-r1 5.2.1-r1 5.2.2-r1: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31-r2 4.0.26-r1 4.0.27-r1 5.0.5-r1 5.0.6-r1 5.0.7 5.2.1-r1 5.2.2-r1 5.2.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0_p20200913 1.12.0_p20200913-r100 9999: High performance PPTP, PPPoE and L2TP server
