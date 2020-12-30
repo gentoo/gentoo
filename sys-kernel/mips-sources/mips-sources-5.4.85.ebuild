@@ -7,7 +7,7 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="1"				# Tarball revision for patches
+GENPATCHREV="3"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}"
@@ -32,7 +32,7 @@ BASE_KV="$(ver_cut 1-2)"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
+HOMEPAGE="https://www.kernel.org/ https://www.linux-mips.org/ https://www.gentoo.org/"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
@@ -54,13 +54,13 @@ DO_IP32="yes"				# 		   IP32 support		(SGI O2, R5000/RM5200 Only)
 # Machine Stable Version Variables
 SV_IP22=""				# If set && DO_IP22 == "no", indicates last "good" IP22 version
 SV_IP27=""				# 	    DO_IP27 == "no", 			   IP27
-SV_IP28="4.19.x"			# 	    DO_IP28 == "no", 			   IP28
-SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
+SV_IP28="5.0.21"			# 	    DO_IP28 == "no", 			   IP28
+SV_IP30="5.0.21"			# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
 DESCRIPTION="Kernel.org sources for MIPS-based machines"
 SRC_URI="${KERNEL_URI}
-	 https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+	 mirror://gentoo/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
 #//------------------------------------------------------------------------------
 
