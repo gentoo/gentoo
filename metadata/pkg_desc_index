@@ -5205,7 +5205,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.74.0-r1 1.74.0-r2 1.75.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.16.0 2.17.2 2.17.3: C++ crypto library
+dev-libs/botan 2.16.0 2.17.3: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.20.1 1.21.0: Blocking, shuffling and lossless compression library
@@ -5427,7 +5427,7 @@ dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.3 0.1.4: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0 1.5.0: X.509 and CMS (PKCS#7) library
-dev-libs/liblinear 241: A Library for Large Linear Classification
+dev-libs/liblinear 241 242: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
@@ -13258,7 +13258,7 @@ media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Rendere
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
-media-libs/raspberrypi-userland-bin 1.20190709 1.20201022: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland-bin 1.20201022: Raspberry Pi userspace tools and libraries
 media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
@@ -14211,7 +14211,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.19: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3.1 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.11.1-r2 0.11.2 99999999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.11.2 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r2: A tool for determining a firewall's rule set
 net-analyzer/flent 1.3.2: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r11 0.68.6-r1: library and programs to process reports from NetFlow data
@@ -14428,7 +14428,7 @@ net-analyzer/trafshow 5.2.3-r1: Full screen visualization of the network traffic
 net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
-net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
+net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.4.2 3.4.2-r100 99999999: A network protocol analyzer formerly known as ethereal
@@ -15106,7 +15106,7 @@ net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding dev
 net-misc/igmpproxy 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.42_p2: IP Calculator prints broadcast/network/etc for an IP address and netmask
-net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.7 3.8.1 3.9 3.9-r1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
+net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.9-r1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipmiview 2.18.0.201007: A GUI application that allows to manage multiple target systems through BMC
 net-misc/iprange 1.0.4: A tool capable of managing sets of IPs
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
@@ -16933,7 +16933,7 @@ sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13 0.15: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 5.1.0-r2: User-space implementation of chroot, mount --bind, and binfmt_misc
-sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
+sys-apps/pv 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qcontrol 0.4.2-r1 0.4.2-r100: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
 sys-apps/qdirstat 1.7: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
@@ -17503,7 +17503,7 @@ sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.9 5.10: Linux system headers
 sys-kernel/mips-sources 4.14.206 4.19.157 5.4.77: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
-sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.51_p20200902 5.4.72_p20201022 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
+sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.84 5.4.85 5.9.14 5.9.15 5.9.16 5.10.1 5.10.2 5.10.3: Linux kernel built from vanilla upstream sources
