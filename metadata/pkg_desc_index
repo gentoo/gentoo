@@ -1661,7 +1661,7 @@ app-doc/eclass-manpages 20200704 20200913 99999999: Collection of Gentoo eclass 
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.6 4.10.6c 4.10.7: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 4.2: Documentation package for GnuCash
+app-doc/gnucash-docs 4.2 4.4: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools manuals
@@ -2636,7 +2636,7 @@ app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
-app-office/gnucash 4.2 4.2-r1: A personal finance manager
+app-office/gnucash 4.2 4.2-r1 4.4: A personal finance manager
 app-office/gnumeric 1.12.47 1.12.48: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
