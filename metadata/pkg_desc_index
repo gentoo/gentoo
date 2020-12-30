@@ -17271,7 +17271,7 @@ sys-devel/clang 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.999
 sys-devel/clang-common 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20201122 20201129 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20201129 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
