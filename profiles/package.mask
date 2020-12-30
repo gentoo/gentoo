@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-30)
+# Unmaintained.  Entirely replaced by media-libs/libjpeg-turbo,
+# to the point that reverse dependencies no longer build with
+# media-libs/jpeg.  The two libraries are binary-incompatible,
+# and the current method of switching between them is incorrect.
+# Removal in 30 days.  Bug #762634.
+media-libs/jpeg
+
 # Hans de Graaff <graaff@gentoo.org> (2020-12-29)
 # These slots masked for removal in 30 days due to
 # security issues, bug 730786
