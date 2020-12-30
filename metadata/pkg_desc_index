@@ -12407,7 +12407,7 @@ mail-filter/dovecot_deleted_to_trash 0.6: Deleted to trash IMAP plugin for Dovec
 mail-filter/exim-geoip 0.1-r1: This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim
 mail-filter/exim-p0f 0.1-r1: This is p0f version 3 dlfunc library for Exim
 mail-filter/gld 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
-mail-filter/imapfilter 2.6.16 2.6.16-r100: An IMAP mail filtering utility
+mail-filter/imapfilter 2.6.16 2.6.16-r100 2.7.5: An IMAP mail filtering utility
 mail-filter/libmilter 1.0.2 1.0.2_p1 1.0.2_p1-r1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
