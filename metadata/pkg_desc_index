@@ -239,6 +239,7 @@ acct-group/tape 0-r1: System group: tape
 acct-group/teamspeak 0-r1: A group for the TeamSpeak server
 acct-group/telegraf 0-r1: System group: telegraf
 acct-group/tinyproxy 0: gid for net-proxy/tinyproxy
+acct-group/tomcat 0: Group for Apache Tomcat
 acct-group/tor 0-r1: group for tor daemon
 acct-group/tox 0-r1: Group management for package net-libs/tox
 acct-group/transmission 0-r1: System group: transmission
@@ -502,6 +503,7 @@ acct-user/systemd-timesync 0-r1: System user: systemd-timesync
 acct-user/teamspeak 0-r1: A user for the TeamSpeak server
 acct-user/telegraf 0-r1: User for telegraf
 acct-user/tinyproxy 0: uid for net-proxy/tinyproxy
+acct-user/tomcat 0: User for Apache Tomcat
 acct-user/tor 0-r1: user for tor daemon
 acct-user/tox 0-r1: User for package net-libs/tox
 acct-user/transmission 1-r1: System user: transmission
