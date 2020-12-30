@@ -32,7 +32,7 @@ BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
-HOMEPAGE="https://www.kernel.org/ https://www.linux-mips.org/ https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
@@ -60,7 +60,7 @@ SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
 DESCRIPTION="Kernel.org sources for MIPS-based machines"
 SRC_URI="${KERNEL_URI}
-	 mirror://gentoo/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+	https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
 #//------------------------------------------------------------------------------
 
