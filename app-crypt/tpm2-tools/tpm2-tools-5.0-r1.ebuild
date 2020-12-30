@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	sys-devel/autoconf-archive"
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.1-libressl.patch"
+	"${FILESDIR}/${PN}-5.0-libressl.patch"
 	"${FILESDIR}/${PN}-4.3.0-Remove-WError.patch"
 )
 
