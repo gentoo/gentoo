@@ -17,6 +17,9 @@ DIST_AUTHOR=XSAWYERX
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 
+# Yes we can.
+PERL_SINGLE_SLOT=y
+
 if [[ "${PV##*.}" == "9999" ]]; then
 	DIST_VERSION=5.30.0
 else
