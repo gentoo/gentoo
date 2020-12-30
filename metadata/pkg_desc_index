@@ -7977,8 +7977,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 1.16.44 1.16.45 9999: The AWS SDK for Python
-dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 1.19.44 1.19.45 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 1.16.44 1.16.45 1.16.46 9999: The AWS SDK for Python
+dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 1.19.44 1.19.45 1.19.46 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8004,7 +8004,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.42.0 0.43.0 0.44.0 0.44.1: CloudFormation Linter
+dev-python/cfn-python-lint 0.42.0 0.43.0 0.44.0 0.44.1 0.44.2: CloudFormation Linter
 dev-python/cftime 1.3.0: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8734,7 +8734,7 @@ dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.7.1-r1 2.0.0: JSON Web Token implementation in Python
 dev-python/pykerberos 1.3.0 1.3.0-r1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2 2.0.3: A Python implementation of the actor model
-dev-python/pykwalify 1.7.0: Python lib/cli for JSON/YAML schema validation
+dev-python/pykwalify 1.7.0 1.8.0: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1-r1: Code audit tool for python
 dev-python/pylast 4.0.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
@@ -15061,7 +15061,7 @@ net-misc/dropbox 112.4.321: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
-net-misc/electron-cash 4.0.2-r2: Lightweight Bitcoin Cash client (BCH fork of Electrum)
+net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
 net-misc/electrum 4.0.4 4.0.5 4.0.6 4.0.7 4.0.8 4.0.9: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
@@ -15314,7 +15314,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.12.22 2020.12.26 2020.12.29 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.12.22 2020.12.26 2020.12.29 2020.12.31 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
