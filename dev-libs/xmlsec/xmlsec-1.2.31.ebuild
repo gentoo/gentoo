@@ -3,15 +3,14 @@
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting XML"
 HOMEPAGE="https://www.aleksey.com/xmlsec"
 SRC_URI="https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
+S="${WORKDIR}/${PN}1-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc gcrypt gnutls libressl nss +openssl static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
@@ -37,10 +36,9 @@ BDEPEND="virtual/pkgconfig
 		)
 	)"
 
-S="${WORKDIR}/${PN}1-${PV}"
-
 src_configure() {
-	econf \
+	# Bash because of bug #721128
+	CONFIG_SHELL=${BASH} econf \
 		$(use_enable doc docs) \
 		$(use_enable static-libs static) \
 		$(use_with gcrypt) \
@@ -53,7 +51,7 @@ src_configure() {
 }
 
 src_test() {
-	emake TMPFOLDER="${T}" check
+	SHELL=${BASH} emake TMPFOLDER="${T}" check
 }
 
 src_install() {

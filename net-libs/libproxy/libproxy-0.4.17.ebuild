@@ -12,7 +12,7 @@ SRC_URI="https://github.com/libproxy/libproxy/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="gnome kde mono networkmanager spidermonkey test webkit"
 
 RESTRICT="!test? ( test )"
@@ -24,7 +24,7 @@ DEPEND="
 	gnome? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
 	networkmanager? ( sys-apps/dbus:0[${MULTILIB_USEDEP}] )
-	spidermonkey? ( >=dev-lang/spidermonkey-52.0.0:= )
+	spidermonkey? ( dev-lang/spidermonkey:68 )
 	webkit? ( net-libs/webkit-gtk:4 )
 "
 RDEPEND="${DEPEND}
@@ -43,7 +43,7 @@ PATCHES=(
 
 	# prevent dependency loop with networkmanager, libsoup, glib-networking; bug #467696
 	# https://github.com/libproxy/libproxy/issues/28
-	"${FILESDIR}/${P}-avoid-nm-build-dep.patch"
+	"${FILESDIR}/${PN}-0.4.16-avoid-nm-build-dep.patch"
 )
 
 multilib_src_configure() {
