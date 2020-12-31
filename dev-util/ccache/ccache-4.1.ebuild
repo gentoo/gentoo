@@ -46,6 +46,14 @@ src_prepare() {
 		-e "/^EPREFIX=/s:'':'${EPREFIX}':" \
 		"${FILESDIR}"/ccache-config-3 > ccache-config || die
 
+	# Avoid non-ASCII double quotes as they fail on
+	# LANG=fr_FR.iso885915@euro: #762814.
+	sed \
+		-e 's/\xE2\x80\x99/'\''/g' \
+		-e 's/\xE2\x80\x9C/"/g' \
+		-e 's/\xE2\x80\x9D/"/g' \
+		-i doc/MANUAL.adoc || die
+
 	# mainly used in tests
 	tc-export CC OBJDUMP
 }
