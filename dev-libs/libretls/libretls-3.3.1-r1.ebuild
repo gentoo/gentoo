@@ -22,8 +22,7 @@ multilib_src_configure() {
 	local myconf=(
 		--disable-static
 	)
-	ECONF_SOURCE="${S}" econf \
-		"${myconf[@]}"
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
 multilib_src_install() {
