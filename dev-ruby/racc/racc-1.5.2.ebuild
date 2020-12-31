@@ -30,18 +30,15 @@ ruby_add_bdepend "dev-ruby/rake
 all_ruby_prepare() {
 	sed -i -e 's|/tmp/out|${TMPDIR:-/tmp}/out|' test/helper.rb || die "tests fix failed"
 
+	sed -i -e 's/, :isolate//' Rakefile || die
+	sed -i -e '/bundler/ s:^:#:' -e '/rdoc/,/^end/ s:^:#:' Rakefile || die
+
 	# Avoid depending on rake-compiler since we don't use it to compile
 	# the extension.
 	sed -i -e '/rake-compiler/ s:^:#:' -e '/extensiontask/ s:^:#:' Rakefile
 	sed -i -e '/ExtensionTask/,/^  end/ s:^:#:' Rakefile
 	# Which means we need to generate the parser file here
 	rake lib/racc/parser-text.rb || die
-
-	# Avoid isolation since dependencies are not properly declared.
-	sed -i -e 's/, :isolate//' Rakefile || die
-
-	# Avoid bundler and rdoc dependency to make bootstrapping easier
-	sed -i -e '/bundler/ s:^:#:' -e '/rdoc/,/^end/ s:^:#:' Rakefile || die
 
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
