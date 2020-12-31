@@ -90,6 +90,8 @@ src_configure() {
 	fi
 
 	# sndfile support is unconditionally disabled in src/plugin/sndfile/snd_o_wav.c
+	# CPP has to be set explicitly to workaround autoconf-2.69
+	# CPP detection (fixed in 2.70). bug #762748.
 	econf $(use_with X x) \
 		$(use_with svga svgalib) \
 		$(use_enable debug) \
@@ -100,11 +102,12 @@ src_configure() {
 		--with-fdtarball="${DISTDIR}"/${P_FD}.tgz \
 		--sysconfdir="${EPREFIX}"/etc/dosemu/ \
 		--with-docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		IA16_LDFLAGS_EXTRA=${nopie_flag}
+		IA16_LDFLAGS_EXTRA=${nopie_flag} \
+		CPP="$(tc-getCPP)"
 }
 
 src_compile() {
-	# src/makefile.common is fritten manually, uses AR=ar
+	# src/makefile.common is written manually, uses AR=ar
 	emake AR=$(tc-getAR)
 }
 
