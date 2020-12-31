@@ -8,6 +8,7 @@
 # https://archives.gentoo.org/gentoo-user/message/efc647eb07fb8c99b2619e3402281edd
 sys-libs/ncurses unicode
 sys-libs/readline unicode
+app-editors/nano unicode
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # sys-boot/udk is being removed, and newest revision of refind does not
