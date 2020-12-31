@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-inline.patch
 	"${FILESDIR}"/${P}-lto.patch
 	"${FILESDIR}"/${P}-as.patch
+	"${FILESDIR}"/${P}-nm.patch
 )
 
 pkg_pretend() {

@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/762778
+--- a/Makefile.conf.in
++++ b/Makefile.conf.in
+@@ -82,6 +82,8 @@ REQUIRED:=@REQUIRED@
+ OS=@CONFIG_HOST@
+ RANLIB:=@RANLIB@
+ 
++NM:=@NM@
++
+ @ASPI_SUPPORT@
+ @USE_DL_PLUGINS@
+ @USE_APBUILD@
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,6 +39,7 @@ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ AC_PROG_RANLIB
+ AC_PROG_YACC
++AC_CHECK_TOOL(NM, nm)
+ dnl The bison problem
+ if test -z "`echo $YACC | grep bison`" ; then
+   AC_MSG_WARN( )
+--- a/src/arch/linux/Makefile.main
++++ b/src/arch/linux/Makefile.main
+@@ -80,7 +80,7 @@ emu.o: emu.c
+ $(BINPATH)/bin/$(DOSBIN): emu.o $(LIBS_)
+ 	$(LD) $(ALL_LDFLAGS) $(DOSBIN_LDFLAGS) -o $@ emu.o \
+ 	   -Wl,--whole-archive $(LIBS_) -Wl,--no-whole-archive $(LIBS)
+-	@nm $(BINPATH)/bin/$(DOSBIN) | grep -v '\(compiled\)\|\(\.o$$\)\|\( a \)' | \
++	@$(NM) $(BINPATH)/bin/$(DOSBIN) | grep -v '\(compiled\)\|\(\.o$$\)\|\( a \)' | \
+ 		sort > $(BINPATH)/bin/dosemu.map
+ 	@ln -sf $(DOSBIN) $(BINPATH)/bin/dos
+ ifdef X_SUPPORT
+--- a/src/plugin/term/Makefile
++++ b/src/plugin/term/Makefile
+@@ -33,7 +33,7 @@ SLANGLIB:=`relaytool --partial-map partial.map --relay slang \
+ libslang.so.1-UTF8 libslang-utf8.so.1 libslang.so.1 $(SLANGLIB)`
+ 
+ partial.map: $(OBJS)
+-	nm $(OBJS) | LC_ALL=C grep SL | LC_ALL=C sort | LC_ALL=C uniq | \
++	$(NM) $(OBJS) | LC_ALL=C grep SL | LC_ALL=C sort | LC_ALL=C uniq | \
+ 	  LC_ALL=C sed -e 's/ *U \(SL[^_]*_[a-z0-9].*\)/F \1/' \
+ 	               -e 's/ *U \(SL[^_]*_[A-Z0-9].*\)/V \1/' > $@
+ 	echo 'F SLsmg_write_nwchars' >> $@
