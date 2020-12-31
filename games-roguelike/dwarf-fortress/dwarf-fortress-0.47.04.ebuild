@@ -31,8 +31,13 @@ RDEPEND="media-libs/glew:0
 DEPEND="${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses-compat:5[unicode]"
+	sys-libs/ncurses[unicode]"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-segfault-fix-729002.patch"
+	"${FILESDIR}/${P}-ncurses.patch"
+)
 
 S=${WORKDIR}/${MY_PN}_linux
 
@@ -43,8 +48,6 @@ RESTRICT="strip"
 src_prepare() {
 	rm libs/*.so* || die
 	sed -i -e '1i#include <cmath>' g_src/ttf_manager.cpp || die
-
-	eapply "${FILESDIR}/${P}-segfault-fix-729002.patch"
 
 	default
 }
