@@ -7034,7 +7034,7 @@ dev-perl/PDF-API2 2.33.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Builder 3.19.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.430.0: Create PDF documents in Perl
 dev-perl/PDL 2.17.0-r1: Perl Data Language for scientific computing
-dev-perl/PDL-Graphics-Gnuplot 2.11.0-r1: Gnuplot-based plotting for PDL
+dev-perl/PDL-Graphics-Gnuplot 2.11.0-r1 2.13.0: Gnuplot-based plotting for PDL
 dev-perl/PDL-Transform-Color 1.3.0: Useful color system conversions for PDL
 dev-perl/PGPLOT 2.210.0-r1: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
