@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-01-01)
+# RenPy requires Python 2.7 at runtime, and py3 port has not been
+# released yet.  Even if it were, the games would probably need porting
+# anyway.
+# Removal in 30 days.  Bug #735358.
+dev-python/numpy-python2
+games-engines/renpy
+games-misc/katawa-shoujo
+games-rpg/asphyxia
+games-rpg/sakura-spirit
+games-rpg/the-royal-trap
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-30)
 # Unmaintained.  Entirely replaced by media-libs/libjpeg-turbo,
 # to the point that reverse dependencies no longer build with
