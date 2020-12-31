@@ -8766,7 +8766,7 @@ dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.4.1: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r6: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 2.4.7-r1: Easy-to-use Python module for text parsing
-dev-python/pyparted 3.11.6 3.11.7: Python bindings for sys-block/parted
+dev-python/pyparted 3.11.7: Python bindings for sys-block/parted
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.3: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.2-r1: An intrinsic PEG Parser-Interpreter for Python
