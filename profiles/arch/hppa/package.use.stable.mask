@@ -17,6 +17,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-31)
+# The following packages have no stable keywords on hppa:
+#           amqp: net-libs/rabbitmq
+#            dbi: dev-db/libdbi
+#         geoip2: dev-libs/libmaxminddb
+#          kafka: dev-libs/librdkafka
+#        mongodb: dev-libs/mongo-c-driver
+#          redis: dev-db/redis
+#           smtp: net-libs/libesmtp
+#           snmp: net-analyzer/net-snmp
+#   spoof-source: net-libs/libnet
+app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis smtp snmp spoof-source
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-30)
 # dev-libs/libfido2 is not stable on hppa
 net-misc/openssh security-key
@@ -60,10 +73,6 @@ x11-base/xorg-server xorg
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
 # not all needed sphinx modules are stable on hppa.
 dev-python/aiohttp doc
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-11-25)
-# dev-db/redis has no stable keywords on hppa.
-app-admin/syslog-ng redis
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
 # sys-apps/systemd has no stable keywords on hppa.
