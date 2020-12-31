@@ -5,11 +5,11 @@ DESCRIPTION=Static calls apply to a default instantiation
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Class-Default
 IUSE=test
-KEYWORDS=~alpha amd64 hppa ~ia64 ~mips ~ppc sparc x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ~ppc sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Class-Default-1.51.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=f105b8bf47515bcabb3c444875d83ec9
+_md5_=b03db17649eb50235b86861eaa7e0995

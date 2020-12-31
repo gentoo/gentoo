@@ -3,10 +3,10 @@ DEPEND=dev-libs/gmp dev-perl/Math-BigInt-GMP >=virtual/perl-Math-BigInt-1.60 dev
 DESCRIPTION=Diffie-Hellman key exchange system
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Crypt-DH
-KEYWORDS=amd64 hppa x86
+KEYWORDS=amd64 ~hppa x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-libs/gmp dev-perl/Math-BigInt-GMP >=virtual/perl-Math-BigInt-1.60 dev-perl/Crypt-Random dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MITHALDU/Crypt-DH-0.07.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=aad8291fbe34b6159e81ee457541029b
+_md5_=ae7f523a4ea24b23aed195e3a61a1af8

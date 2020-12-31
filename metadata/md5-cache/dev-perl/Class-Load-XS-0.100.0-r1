@@ -5,11 +5,11 @@ DESCRIPTION=XS implementation of parts of Class::Load
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Class-Load-XS
 IUSE=test
-KEYWORDS=amd64 ~arm arm64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=>=dev-perl/Class-Load-0.200.0 virtual/perl-XSLoader dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=0df6bd28491c6dca5ed6f479002b4b4d
+_md5_=5e424bd3c03dc82e79870048dd2b9859

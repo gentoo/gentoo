@@ -3,10 +3,10 @@ DEPEND=>=virtual/perl-Time-HiRes-1.120.0 virtual/perl-ExtUtils-MakeMaker dev-lan
 DESCRIPTION=Perl extension for reading from continously updated files
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/File-Tail
-KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Time-HiRes-1.120.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MG/MGRABNAR/File-Tail-1.3.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=8b0daa1199c7d0fde993294f834e3d62
+_md5_=53d1411a4206ce1c3560beea6c1e3c10

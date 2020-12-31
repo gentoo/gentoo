@@ -4,10 +4,10 @@ DEPEND=dev-lang/perl x11-libs/libX11
 DESCRIPTION=blackbox weather monitor
 EAPI=7
 HOMEPAGE=https://www.netmeister.org/apps/bbweather/
-KEYWORDS=amd64 hppa ppc x86
+KEYWORDS=amd64 ~hppa ppc x86
 LICENSE=GPL-2+
 RDEPEND=dev-lang/perl x11-libs/libX11 net-misc/wget x11-apps/xmessage !<=x11-plugins/gkrellweather-2.0.7-r1
 SLOT=0
 SRC_URI=https://www.netmeister.org/apps/bbweather-0.6.3.tar.bz2
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=23ada06eedf5b8acef604218c1f412c6
+_md5_=0c8993f0f218ec17b3a09257276ba673

@@ -3,8 +3,8 @@ DEPEND=dev-lang/perl >=app-crypt/gnupg-1.2.1
 DESCRIPTION=GPG Keyring Manager to handle large GPG keyrings more easily
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-KEYWORDS=~alpha amd64 hppa ppc sparc x86
+KEYWORDS=~alpha amd64 ~hppa ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/gpg-ringmgr -> gpg-ringmgr-1.12
-_md5_=e62e59142d465502e6e40bf463cbd1d1
+_md5_=1b9ccbd063662818b176b438957c5af2

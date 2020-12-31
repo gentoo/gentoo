@@ -5,10 +5,10 @@ DESCRIPTION=HP48 Calculator Emulator
 EAPI=7
 HOMEPAGE=http://x48.berlios.de/
 IUSE=readline
-KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=GPL-3
 RDEPEND=x11-libs/libX11 x11-libs/libXext readline? ( sys-libs/readline:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/x48.berlios/x48-0.6.4.tar.bz2
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=682d8ed95d6aa3999321930607b11ce0
+_md5_=db11b0b4fa4f6b3d56270041d9f8e753

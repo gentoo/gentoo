@@ -4,10 +4,10 @@ DESCRIPTION=Implementation of the EWF (SMART and EnCase) image format
 EAPI=7
 HOMEPAGE=https://github.com/libyal/libewf
 IUSE=bfio bzip2 debug +fuse nls +ssl static-libs +uuid unicode zlib
-KEYWORDS=amd64 ~arm hppa ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~hppa ppc ~ppc64 x86
 LICENSE=BSD
 RDEPEND=bzip2? ( app-arch/bzip2 ) fuse? ( sys-fs/fuse:0= ) nls? ( virtual/libintl virtual/libiconv ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib )
 RESTRICT=test
 SLOT=0/3
 SRC_URI=https://github.com/libyal/libewf/releases/download/20171104/libewf-experimental-20171104.tar.gz
-_md5_=e7308d70274567615473c392138ae471
+_md5_=e28e85b27d0276dc04a0404bf486db04

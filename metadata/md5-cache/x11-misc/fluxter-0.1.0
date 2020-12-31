@@ -3,9 +3,9 @@ DEPEND=x11-libs/libX11 x11-libs/libSM x11-libs/libICE >=app-portage/elt-patches-
 DESCRIPTION=workspace pager dockapp, particularly useful with the Fluxbox window manager
 EAPI=6
 HOMEPAGE=http://www.isomedia.com/homes/stevencooper
-KEYWORDS=amd64 hppa ppc x86
+KEYWORDS=amd64 ~hppa ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.isomedia.com/homes/stevencooper/files/fluxter-0.1.0.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=160a3d4a5dd1ebdc9d88e92b4ac8f6c5
+_md5_=255afe9f442f30a8915fa211ac3ddf9e

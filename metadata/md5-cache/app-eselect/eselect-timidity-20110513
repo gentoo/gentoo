@@ -2,9 +2,9 @@ DEFINED_PHASES=install
 DESCRIPTION=Manages configuration of TiMidity++ patchsets
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-KEYWORDS=~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
 SRC_URI=mirror://gentoo/timidity.eselect-20110513.bz2
-_md5_=4903bf85f32c9bac8911c29e5ba7c01e
+_md5_=823dd9ad4cd9001e958c8d1ef881ca56

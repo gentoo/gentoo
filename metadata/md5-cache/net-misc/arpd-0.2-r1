@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/libdnet-1.4 >=dev-libs/libevent-0.6 net-libs/libpcap !sys-apps
 DESCRIPTION=ARP server claiming all unassigned addresses (for network monitoring/simulation)
 EAPI=6
 HOMEPAGE=http://www.citi.umich.edu/u/provos/honeyd/
-KEYWORDS=amd64 hppa ppc ~ppc64 sparc x86
+KEYWORDS=amd64 ~hppa ppc ~ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-libs/libdnet-1.4 >=dev-libs/libevent-0.6 net-libs/libpcap !sys-apps/iproute2
 SLOT=0
 SRC_URI=http://www.citi.umich.edu/u/provos/honeyd/arpd-0.2.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=86132883cc0d97ba9c8bef6a0cf005f3
+_md5_=ffadd96de8ba00c14b5ee17d1e11f614

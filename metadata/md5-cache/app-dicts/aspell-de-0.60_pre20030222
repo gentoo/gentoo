@@ -3,10 +3,10 @@ DEPEND=>=app-text/aspell-0.60
 DESCRIPTION=German and Swiss-German language dictionary for aspell
 EAPI=6
 HOMEPAGE=http://aspell.net
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/de/aspell6-de-20030222-1.tar.bz2
 _eclasses_=aspell-dict-r1	79e37698c4f52cac5e606d8692fda04f
-_md5_=b264362ddcfacdb89af7e1d561d0e96c
+_md5_=8389b692c535e947f5f417d5c720ef9f

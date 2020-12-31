@@ -4,11 +4,11 @@ DESCRIPTION=Allows you to have a simple method of writing PostScript files from 
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/PostScript-Simple
 IUSE=test examples
-KEYWORDS=amd64 hppa ~ia64 ppc sparc x86
+KEYWORDS=amd64 ~hppa ~ia64 ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MC/MCNEWTON/PostScript-Simple-0.09.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=93e6eceb209940f7bb7af6d5d53b2bc1
+_md5_=003ca947bf0839c3a588fc00473195c1

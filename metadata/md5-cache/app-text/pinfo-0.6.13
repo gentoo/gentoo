@@ -5,10 +5,10 @@ DESCRIPTION=Hypertext info and man viewer based on (n)curses
 EAPI=7
 HOMEPAGE=https://github.com/baszoetekouw/pinfo
 IUSE=nls readline
-KEYWORDS=~alpha amd64 hppa ~ia64 ~mips ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0= nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=https://github.com/baszoetekouw/pinfo/archive/v0.6.13.tar.gz -> pinfo-0.6.13.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=d523bd955dbd46c9b0a606e7253b5908
+_md5_=9180cbc717aced305ef05a9127c743b2

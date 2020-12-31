@@ -3,10 +3,10 @@ DEPEND=net-libs/zeromq >=virtual/perl-ExtUtils-MakeMaker-6.360.0 dev-lang/perl
 DESCRIPTION=Constants for libzmq
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/ZMQ-Constants
-KEYWORDS=amd64 hppa ppc ppc64 sparc x86
+KEYWORDS=amd64 ~hppa ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=net-libs/zeromq dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DM/DMAKI/ZMQ-Constants-1.04.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=ca6f6787ccae439610e1a7b1757e56a3
+_md5_=9f01df772b15b1c66a9455a1445a8ef2

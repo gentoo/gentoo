@@ -3,10 +3,10 @@ DEPEND=>=net-libs/wvstreams-4.4 virtual/pkgconfig
 DESCRIPTION=Excellent program to automatically configure PPP sessions
 EAPI=6
 HOMEPAGE=https://code.google.com/archive/p/wvstreams/
-KEYWORDS=~alpha amd64 hppa ppc sparc x86
+KEYWORDS=~alpha amd64 ~hppa ppc sparc x86
 LICENSE=LGPL-2
 RDEPEND=>=net-libs/wvstreams-4.4 net-dialup/ppp:=
 SLOT=0
 SRC_URI=https://wvstreams.googlecode.com/files/wvdial-1.61.tar.gz
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=ce1be46b22648e5dc8497bfd506fb345
+_md5_=7b49dd26ee845881e4de1f4d48915878

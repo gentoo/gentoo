@@ -4,10 +4,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Automated method creation module for Perl
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Class-MakeMethods
-KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc s390 sparc x86 ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ppc s390 sparc x86 ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EV/EVO/Class-MakeMethods-1.01.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=ef502bd11597f468c272c0dc47e8a333
+_md5_=c5655aa596d55d19284b4745d5a1460c

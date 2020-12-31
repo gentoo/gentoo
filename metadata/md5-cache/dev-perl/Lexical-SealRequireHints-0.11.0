@@ -4,11 +4,11 @@ DESCRIPTION=Prevent leakage of lexical hints
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Lexical-SealRequireHints
 IUSE=test
-KEYWORDS=amd64 ~arm hppa ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ~arm ~hppa ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!<dev-perl/B-Hooks-OP-Check-0.190.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.011.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=6815b4969b38f58c24ac619d61ec6282
+_md5_=6d662a9f44f7712fe9956d6ec428468d

@@ -4,9 +4,9 @@ DESCRIPTION=Provides an opaque interface to the display's acceleration function
 EAPI=7
 HOMEPAGE=https://ibiblio.org/ggicore/packages/libggi.html
 IUSE=3dfx aalib cpu_flags_x86_mmx debug fbcon svga vis X
-KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86
 LICENSE=MIT
 RDEPEND=>=media-libs/libgii-1.0.2 aalib? ( >=media-libs/aalib-1.2-r1 ) svga? ( >=media-libs/svgalib-1.4.2 ) X? ( x11-libs/libXt x11-libs/libXxf86dga x11-libs/libXxf86vm )
 SLOT=0
 SRC_URI=mirror://sourceforge/ggi/libggi-2.2.2.src.tar.bz2
-_md5_=0dac3b9489c97e7a4e4698c6bc0163ff
+_md5_=4ab97fa334cc4de2b01a5ce02188b13f

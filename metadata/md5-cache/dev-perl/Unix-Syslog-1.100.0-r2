@@ -3,10 +3,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=A Perl module which provides access to the system logger
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Unix-Syslog
-KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=Artistic-2
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MH/MHARNISCH/Unix-Syslog-1.1.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=3ddccbe713660f34a8e2cb6b6556c82c
+_md5_=9c92ec758ed5c5da834580b972752ec1

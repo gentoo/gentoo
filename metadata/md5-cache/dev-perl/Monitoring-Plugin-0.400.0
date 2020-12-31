@@ -4,11 +4,11 @@ DESCRIPTION=Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Monitoring-Plugin
 IUSE=test
-KEYWORDS=amd64 hppa sparc x86
+KEYWORDS=amd64 ~hppa sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Class-Accessor dev-perl/Config-Tiny virtual/perl-File-Spec dev-perl/Math-Calc-Units dev-perl/Params-Validate dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NI/NIERLEIN/Monitoring-Plugin-0.40.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=52d6d2c78094bfe6e361ab46f0891f72
+_md5_=da4db29825efa5ff2be122285850c962

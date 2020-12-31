@@ -4,10 +4,10 @@ DESCRIPTION=Generate or check digests or MACs of files
 EAPI=6
 HOMEPAGE=http://mcrypt.hellug.gr/shash/
 IUSE=static
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=>=app-crypt/mhash-0.8.18-r1 static? ( app-crypt/mhash[static-libs(+)] )
 SLOT=0
 SRC_URI=ftp://mcrypt.hellug.gr/pub/mcrypt/shash/shash-0.2.6.tar.gz
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=32a47b0f028454446fb7aa3605b9ff93
+_md5_=baebae59978b450c60ea9c8366ab0f13

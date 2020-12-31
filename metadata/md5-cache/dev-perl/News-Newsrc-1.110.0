@@ -3,10 +3,10 @@ DEPEND=>=dev-perl/Set-IntSpan-1.70.0 virtual/perl-ExtUtils-MakeMaker dev-lang/pe
 DESCRIPTION=Manage newsrc files
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/News-Newsrc
-KEYWORDS=~alpha amd64 hppa ~ppc x86
+KEYWORDS=~alpha amd64 ~hppa ~ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Set-IntSpan-1.70.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SW/SWMCD/News-Newsrc-1.11.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=8e76b2f4ef4c9952a6ffd40c071ffd8c
+_md5_=16f850c2826da8b08624aefcf80d6abd

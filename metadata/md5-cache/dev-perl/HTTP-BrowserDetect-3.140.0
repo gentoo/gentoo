@@ -4,11 +4,11 @@ DESCRIPTION=Determine Web browser, version, and platform from an HTTP user agent
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/HTTP-BrowserDetect
 IUSE=test
-KEYWORDS=amd64 hppa ~mips ppc x86
+KEYWORDS=amd64 ~hppa ~mips ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/O/OA/OALDERS/HTTP-BrowserDetect-3.14.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=a0aa5e7b8cfdc8cee683d6051c09bed5
+_md5_=201c9eaeb46faeebd3b13cad2fa2c382

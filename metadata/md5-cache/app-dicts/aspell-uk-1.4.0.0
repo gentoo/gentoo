@@ -3,10 +3,10 @@ DEPEND=>=app-text/aspell-0.60
 DESCRIPTION=Ukrainian language dictionary for aspell
 EAPI=6
 HOMEPAGE=http://aspell.net
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/uk/aspell6-uk-1.4.0-0.tar.bz2
 _eclasses_=aspell-dict-r1	79e37698c4f52cac5e606d8692fda04f
-_md5_=11f6d765a423102497069ae5143fb5f5
+_md5_=34c312058cb2302c5fe235993e6f1cd5
