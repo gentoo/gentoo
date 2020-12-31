@@ -1,13 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=ncurses? ( >=sys-libs/ncurses-5.2:0= ) gtk? ( x11-libs/gtk+:2 ) dev-libs/glib:2 nls? ( virtual/libintl ) sdl? ( media-libs/libsdl media-libs/sdl-mixer ) virtual/pkgconfig nls? ( sys-devel/gettext )
 DESCRIPTION=Re-Write of the game Drug Wars
-EAPI=6
+EAPI=7
 HOMEPAGE=http://dopewars.sourceforge.net/
 IUSE=nls ncurses gtk gnome sdl
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=ncurses? ( >=sys-libs/ncurses-5.2:0= ) gtk? ( x11-libs/gtk+:2 ) dev-libs/glib:2 nls? ( virtual/libintl ) sdl? ( media-libs/libsdl media-libs/sdl-mixer )
 SLOT=0
-SRC_URI=mirror://sourceforge/dopewars/dopewars-1.5.12.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=7be1631208ad68d374a789bbe31b48ae
+SRC_URI=https://github.com/benmwebb/dopewars/archive/v1.6.1.tar.gz -> dopewars-1.6.1.tar.gz
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=947fe4e7616bc88afb5c56df05e6da63
