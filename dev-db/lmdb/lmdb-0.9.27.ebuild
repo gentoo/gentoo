@@ -32,8 +32,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	local soname="-Wl,-soname,liblmdb$(get_libname 0)"
-	[[ ${CHOST} == *-darwin* ]] && \
+	if [[ ${CHOST} == *-darwin* ]] ; then
 		soname="-dynamiclib -install_name ${EPREFIX}/usr/$(get_libdir)/liblmdb$(get_libname 0)"
+		replace-flags -O[123456789] -O1
+	fi
 	sed -i -e "s!^CC.*!CC = $(tc-getCC)!" \
 		-e "s!^CFLAGS.*!CFLAGS = ${CFLAGS}!" \
 		-e "s!^AR.*!AR = $(tc-getAR)!" \
