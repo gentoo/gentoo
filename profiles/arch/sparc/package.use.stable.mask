@@ -1,6 +1,11 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2020-12-31)
+# dev-python/mypy is not yet stable here
+# bug 762736
+dev-python/pylama test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-27)
 # app-shells/fish dependency is broken on sparc, bug #727684
 dev-python/argcomplete test
