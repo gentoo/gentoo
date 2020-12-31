@@ -4,10 +4,10 @@ DEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils 
 DESCRIPTION=Utility for reading, writing, erasing and verifying flash ROM chips
 EAPI=7
 HOMEPAGE=https://flashrom.org/
-IUSE=atahpt +atapromise +atavia +buspirate-spi +ch341a-spi +dediprog +developerbox-spi +digilent-spi +drkaiser +dummy +ene-lpc +ft2232-spi +gfxnvidia +internal +it8212 jlink-spi +linux-mtd +linux-spi lspcon-i2c-spi +mec1308 mstarddc-spi +nic3com +nicintel +nicintel-eeprom +nicintel-spi nicnatsemi +nicrealtek +ogp-spi +pickit2-spi +pony-spi +raiden +rayer-spi realtek-mst-i2c-spi +satamv +satasii +serprog stlinkv3-spi +usbblaster-spi +internal-dmi static tools +wiki
+IUSE=atahpt +atapromise +atavia +buspirate-spi +ch341a-spi +dediprog +developerbox-spi +digilent-spi +drkaiser +dummy +ene-lpc +ft2232-spi +gfxnvidia +internal +it8212 jlink-spi +linux-mtd +linux-spi lspcon-i2c-spi +mec1308 mstarddc-spi +nic3com +nicintel +nicintel-eeprom +nicintel-spi nicnatsemi +nicrealtek +ogp-spi +pickit2-spi +pony-spi +raiden-debug-spi +rayer-spi realtek-mst-i2c-spi +satamv +satasii +serprog stlinkv3-spi +usbblaster-spi +internal-dmi static tools +wiki
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils ) atavia? ( sys-apps/pciutils ) ch341a-spi? ( virtual/libusb:1 ) dediprog? ( virtual/libusb:1 ) developerbox-spi? ( virtual/libusb:1 ) digilent-spi? ( virtual/libusb:1 ) drkaiser? ( sys-apps/pciutils ) ft2232-spi? ( dev-embedded/libftdi:= ) gfxnvidia? ( sys-apps/pciutils ) internal? ( sys-apps/pciutils ) it8212? ( sys-apps/pciutils ) jlink-spi? ( dev-embedded/libjaylink ) nic3com? ( sys-apps/pciutils ) nicintel-eeprom? ( sys-apps/pciutils ) nicintel-spi? ( sys-apps/pciutils ) nicintel? ( sys-apps/pciutils ) nicnatsemi? ( sys-apps/pciutils ) nicrealtek? ( sys-apps/pciutils ) ogp-spi? ( sys-apps/pciutils ) pickit2-spi? ( virtual/libusb:0 ) rayer-spi? ( sys-apps/pciutils ) satamv? ( sys-apps/pciutils ) satasii? ( sys-apps/pciutils ) stlinkv3-spi? ( virtual/libusb:1 ) usbblaster-spi? ( dev-embedded/libftdi:= ) ) !internal-dmi? ( sys-apps/dmidecode )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=39cb1aab2f0f999cc27338949aa7fe03
+_md5_=f62cea114505f5641b665f74346086fb
