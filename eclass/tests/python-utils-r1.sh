@@ -183,24 +183,6 @@ test_fix_shebang '#!/usr/bin/foo' python2.7 FAIL
 # regression test for bug #522080
 test_fix_shebang '#!/usr/bin/python ' python2.7 '#!/usr/bin/python2.7 '
 
-# make sure we don't break pattern matching
-test_is "_python_impl_supported python2_5" 1
-test_is "_python_impl_supported python2_6" 1
-test_is "_python_impl_supported python2_7" 0
-test_is "_python_impl_supported python3_1" 1
-test_is "_python_impl_supported python3_2" 1
-test_is "_python_impl_supported python3_3" 1
-test_is "_python_impl_supported python3_4" 1
-test_is "_python_impl_supported python3_5" 1
-test_is "_python_impl_supported python3_6" 0
-test_is "_python_impl_supported python3_7" 0
-test_is "_python_impl_supported python3_8" 0
-test_is "_python_impl_supported pypy1_8" 1
-test_is "_python_impl_supported pypy1_9" 1
-test_is "_python_impl_supported pypy2_0" 1
-test_is "_python_impl_supported pypy" 1
-test_is "_python_impl_supported pypy3" 0
-
 # check _python_impl_matches behavior
 test_is "_python_impl_matches python2_7 -2" 0
 test_is "_python_impl_matches python3_6 -2" 1
