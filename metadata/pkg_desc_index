@@ -8323,7 +8323,7 @@ dev-python/ipywidgets 7.5.1 7.5.1-r1 7.6.0 7.6.1 7.6.2: IPython HTML widgets for
 dev-python/irc 19.0.1: IRC client framework written in Python
 dev-python/iso8601 0.1.12-r1: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
-dev-python/isort 4.3.15 4.3.21_p2-r1 5.6.3 5.7.0: A python utility/library to sort imports
+dev-python/isort 5.6.3 5.7.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.1.0-r1: Classes used by other projects by developer jaraco
