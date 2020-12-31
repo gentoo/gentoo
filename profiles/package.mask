@@ -253,11 +253,6 @@ net-wireless/qradiolink
 net-libs/liba53
 app-emulation/qt-virt-manager
 
-# Aaron Bauman <bman@gentoo.org> (2020-11-30)
-# EAPI=5. Multiple open bugs #603866 #713620
-# Dead upstream. Removal in 30 days.
-net-analyzer/dosdetector
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
 # Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
 # Feel free to manually unmask when not using XFS.
