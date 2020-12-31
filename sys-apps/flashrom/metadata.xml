@@ -37,7 +37,7 @@
 		<flag name="ogp-spi">Enable support for OGP (Open Graphics Project) SPI flashing</flag>
 		<flag name="pickit2-spi">SUpport for SPI flash ROMs accessible via Microchip PICkit2</flag>
 		<flag name="pony-spi">Enable support for SI-Prog like hardware by Lancos</flag>
-		<flag name="raiden">Enable ChromiumOS Servo DUT debug board</flag>
+		<flag name="raiden-debug-spi">Enable ChromiumOS Servo DUT debug board</flag>
 		<flag name="rayer-spi">RayeR SPIPGM hardware support</flag>
 		<flag name="realtek-mst-i2c-spi">Enable support for Realtek MultiStream Transport (MST)</flag>
 		<flag name="satasii">Enable programmer for SiI SATA controllers</flag>
