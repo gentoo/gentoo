@@ -9033,7 +9033,7 @@ dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzb
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
 dev-python/scikit-build 0.11.1: Improved build system generator for Python C/C++/Fortran/Cython extensions
-dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3 1.5.4: Scientific algorithms library for Python
+dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3 1.5.4 1.6.0: Scientific algorithms library for Python
 dev-python/scripttest 1.3.0-r1: A very small text templating language
 dev-python/scrypt 0.8.16: Bindings for the scrypt key derivation function library
 dev-python/seaborn 0.11.1: Statistical data visualization
@@ -15300,7 +15300,7 @@ net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC 
 net-misc/vrrpd 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r3: Client for Wake-On-LAN
 net-misc/websocat 1.6.0 1.6.0-r1: Command-line client for WebSockets, like netcat, with socat-like functions
-net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
+net-misc/wget 1.20.3-r3 1.21: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2 9999: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.5.6-r1 5.5.7 9999: improved Whois Client
@@ -17634,7 +17634,7 @@ sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1 2.6.0: Resource-specific view of proces
 sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r2: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/bpytop 1.0.52: Linux/OSX/FreeBSD resource monitor
+sys-process/bpytop 1.0.52 1.0.54: Linux/OSX/FreeBSD resource monitor
 sys-process/criu 3.14-r2 3.15: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
