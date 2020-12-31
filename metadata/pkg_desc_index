@@ -5384,7 +5384,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1 1.6.2: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.11: Library for some string essentials
 dev-libs/libev 4.31 4.33: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.9.1 1.10.0 9999: Handler library for evdev events
+dev-libs/libevdev 1.10.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.11 2.1.12 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
@@ -5420,7 +5420,7 @@ dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.16.1 1.16.3 1.16.4: Library to handle input devices in Wayland
+dev-libs/libinput 1.16.4: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1 0.20.2 0.21: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -13215,7 +13215,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio
 media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.1.10 20.2.4 20.2.6 20.3.1 20.3.2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.2.4 20.2.6 20.3.2 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.22.1-r1 6.22.1-r100 6.24.0: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -18102,7 +18102,7 @@ x11-apps/xinit 1.4.1: X Window System initializer
 x11-apps/xinput 1.6.3: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r2: A generic touchscreen calibration program for X.Org
 x11-apps/xisxwayland 1 9999: Tool to determine whether the X server in use is Xwayland
-x11-apps/xkbcomp 1.4.3 1.4.4: XKB keyboard description compiler
+x11-apps/xkbcomp 1.4.4: XKB keyboard description compiler
 x11-apps/xkbevd 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.5: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
@@ -18118,7 +18118,7 @@ x11-apps/xmessage 1.0.5-r1: display a message or query in a window (X-based /bin
 x11-apps/xmodmap 1.0.10: utility for modifying keymaps and pointer button mappings in X
 x11-apps/xmore 1.0.3: plain text display program for the X Window System
 x11-apps/xpr 1.0.5: X.Org xpr application
-x11-apps/xprop 1.2.4 1.2.5: property displayer for X
+x11-apps/xprop 1.2.5: property displayer for X
 x11-apps/xrandr 1.5.1: primitive command line interface to RandR extension
 x11-apps/xrdb 1.2.0: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
@@ -18133,10 +18133,10 @@ x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.5: window information utility for X
 x11-apps/xwud 1.0.5: image displayer for X
-x11-base/xcb-proto 1.14-r1 1.14.1: X C-language Bindings protocol headers
+x11-base/xcb-proto 1.14.1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
-x11-base/xorg-server 1.20.8-r1 1.20.10 9999: X.Org X servers
+x11-base/xorg-server 1.20.10 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 390.138-r5 435.21-r7 440.100-r3 450.80.02-r1 455.45.01-r1 460.27.04: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
@@ -18194,9 +18194,9 @@ x11-libs/libGLw 8.0.0-r1: Mesa GLw library
 x11-libs/libICE 1.0.10: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.7.1 2.7.2: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.3-r1: X.Org Session Management library
-x11-libs/libX11 1.6.12 1.7.0: X.Org X11 library
+x11-libs/libX11 1.7.0: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
-x11-libs/libXau 1.0.9 1.0.9-r1: X.Org X authorization library
+x11-libs/libXau 1.0.9-r1: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r2: X.Org Xaw library
 x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2d: Xaw3dXft library
@@ -18217,7 +18217,7 @@ x11-libs/libXrandr 1.5.2: X.Org Xrandr library
 x11-libs/libXrender 0.9.10-r2: X.Org Xrender library
 x11-libs/libXres 1.2.0-r1: X.Org XRes library
 x11-libs/libXt 1.2.0: X.Org X Toolkit Intrinsics library
-x11-libs/libXtst 1.2.3-r1 1.2.3-r2: X.Org Xlib-based client API for the XTEST & RECORD extensions library
+x11-libs/libXtst 1.2.3-r2: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11-r2: X.Org Xv library
 x11-libs/libXvMC 1.0.12: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
@@ -18228,7 +18228,7 @@ x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdlo 0.1.2-r1: A fully open source driver which supports all DisplayLink devices
 x11-libs/libdmx 1.1.4: X.Org dmx library
 x11-libs/libdockapp 0.7.2 0.7.2-r2 0.7.2-r3 0.7.3: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.102 2.4.103 9999: X.Org libdrm library
+x11-libs/libdrm 2.4.103 9999: X.Org libdrm library
 x11-libs/libfakekey 0.3-r1: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.5 1.3.1 9999: A library for file management
 x11-libs/libfm-extra 1.2.5 1.3.1: A library for file management
@@ -18250,10 +18250,10 @@ x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit
 x11-libs/libxcb 1.14: X C-language Bindings library
-x11-libs/libxkbcommon 0.10.0-r1 1.0.1-r1 1.0.3: keymap handling library for toolkits and window systems
+x11-libs/libxkbcommon 1.0.3: keymap handling library for toolkits and window systems
 x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
-x11-libs/libxshmfence 1.3-r1 1.3-r2: Shared memory fences using futexes
+x11-libs/libxshmfence 1.3-r2: Shared memory fences using futexes
 x11-libs/libyui 3.3.3: UI abstraction library
 x11-libs/libyui-gtk 2.44.9: UI abstraction library - GTK plugin
 x11-libs/libyui-ncurses 2.48.3: UI abstraction library - ncurses plugin
@@ -18537,7 +18537,7 @@ x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program
 x11-misc/xkbd 0.8.16-r1 0.8.18 999999: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
-x11-misc/xkeyboard-config 2.30 2.31 9999: X keyboard configuration database
+x11-misc/xkeyboard-config 2.31 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50 5.65 5.66_alpha10 5.66_alpha11 5.66_alpha12: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar

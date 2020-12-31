@@ -8687,7 +8687,6 @@ x11-apps/xsm:rsh - This allows the use of rsh (remote shell) and rcp (remote cop
 x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
 x11-base/xorg-server:elogind - Use elogind to get control over framebuffer when running as regular user
 x11-base/xorg-server:kdrive - Build the kdrive X servers
-x11-base/xorg-server:libglvnd - Use libglvnd for dispatch.
 x11-base/xorg-server:unwind - Enable libunwind usage for backtraces
 x11-base/xorg-server:xcsecurity - Build Security extension
 x11-base/xorg-server:xephyr - Build the Xephyr server
