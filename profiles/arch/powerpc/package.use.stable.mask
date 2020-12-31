@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2020-12-31)
-# dev-python/mypy is not yet stable here
-# bug 762736
-dev-python/pylama test
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
 # unmaintained/broken dependencies. bug #746722
