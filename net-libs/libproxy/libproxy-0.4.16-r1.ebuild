@@ -24,7 +24,7 @@ DEPEND="
 	gnome? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
 	networkmanager? ( sys-apps/dbus:0[${MULTILIB_USEDEP}] )
-	spidermonkey? ( >=dev-lang/spidermonkey-52.0.0:= )
+	spidermonkey? ( dev-lang/spidermonkey:68 )
 	webkit? ( net-libs/webkit-gtk:4 )
 "
 RDEPEND="${DEPEND}
