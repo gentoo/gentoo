@@ -17259,7 +17259,7 @@ sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake 
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1 9999: Tools necessary to build programs
-sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r100 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
+sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r100 8.2.1-r101 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1 2.35.1-r1: Tools necessary to build programs
 sys-devel/bison 3.6.4 3.7.3 3.7.4: A general-purpose (yacc-compatible) parser generator
