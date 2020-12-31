@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
@@ -16,9 +17,7 @@ IUSE="+drop-root libressl +smi +ssl +samba suid test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( samba )"
 
-BDEPEND="
-	drop-root? ( virtual/pkgconfig )
-"
+BDEPEND="drop-root? ( virtual/pkgconfig )"
 RDEPEND="
 	net-libs/libpcap
 	drop-root? (
@@ -43,6 +42,7 @@ DEPEND="
 		dev-lang/perl
 	)
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-libdir.patch
 )
@@ -63,7 +63,7 @@ src_configure() {
 }
 
 src_test() {
-	if [[ ${EUID} -ne 0 ]] || ! use drop-root; then
+	if [[ ${EUID} -ne 0 ]] || ! use drop-root ; then
 		emake check
 	else
 		ewarn "If you want to run the test suite, make sure you either"
@@ -77,7 +77,7 @@ src_install() {
 	dodoc *.awk
 	dodoc CHANGES CREDITS README.md
 
-	if use suid; then
+	if use suid ; then
 		fowners root:pcap /usr/sbin/tcpdump
 		fperms 4110 /usr/sbin/tcpdump
 	fi
