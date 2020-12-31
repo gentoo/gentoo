@@ -351,8 +351,6 @@ multilib_src_configure() {
 	local emesonargs=()
 
 	if use classic; then
-		dri_driver_enable !gallium swrast
-
 		# Intel code
 		dri_driver_enable video_cards_i915 i915
 		dri_driver_enable video_cards_i965 i965
