@@ -29,7 +29,7 @@ cfg-if-1.0.0
 chrono-0.4.11
 clap-2.33.0
 cloudabi-0.0.3
-console-0.13.0
+console-0.14.0
 constant_time_eq-0.1.4
 crc32fast-1.2.0
 crossbeam-utils-0.6.6
@@ -43,18 +43,18 @@ failure_derive-0.1.6
 flate2-1.0.12
 fnv-1.0.6
 fuchsia-cprng-0.1.1
-git2-0.13.13
+git2-0.13.15
 heck-0.3.1
 hermit-abi-0.1.12
 idna-0.2.0
 indexmap-1.3.2
-itertools-0.9.0
+itertools-0.10.0
 itoa-0.4.4
 jobserver-0.1.21
 lazycell-1.2.1
 lazy_static-1.4.0
 libc-0.2.60
-libgit2-sys-0.12.15+1.1.0
+libgit2-sys-0.12.17+1.1.0
 libz-sys-1.1.0
 line-wrap-0.1.1
 linked-hash-map-0.5.2
@@ -94,14 +94,14 @@ serde_json-1.0.40
 shell-words-1.0.0
 smallvec-1.4.0
 strsim-0.8.0
-structopt-0.3.20
-structopt-derive-0.4.13
+structopt-0.3.21
+structopt-derive-0.4.14
 syn-0.15.43
 syn-1.0.11
 syn-mid-0.5.0
 synstructure-0.12.3
 syntect-4.5.0
-terminal_size-0.1.13
+terminal_size-0.1.15
 textwrap-0.11.0
 thread_local-1.0.1
 unicode-bidi-0.3.4
@@ -123,7 +123,8 @@ winapi-i686-pc-windows-gnu-0.4.0
 winapi-util-0.1.4
 winapi-x86_64-pc-windows-gnu-0.4.0
 xml-rs-0.8.0
-yaml-rust-0.4.3"
+yaml-rust-0.4.3
+"
 
 inherit bash-completion-r1 cargo
 
