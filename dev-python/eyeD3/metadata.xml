@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">eyed3</remote-id>
+		<remote-id type="github">nicfit/eyeD3</remote-id>
 	</upstream>
 </pkgmetadata>
