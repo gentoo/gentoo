@@ -287,25 +287,9 @@ arm-linux		default/linux/arm/17.0/armv7a/prefix/kernel-3.2+		exp
 arm64-linux		default/linux/arm64/17.0/prefix/kernel-3.2+	exp
 
 # Mac OS X Profiles
-ppc-macos		prefix/darwin/macos/10.4/ppc			exp
-x86-macos		prefix/darwin/macos/10.4/x86			exp
 ppc-macos		prefix/darwin/macos/10.5/ppc			exp
-x86-macos		prefix/darwin/macos/10.5/x86			exp
-x64-macos		prefix/darwin/macos/10.5/x64			exp
-x86-macos		prefix/darwin/macos/10.6/x86			exp
-x64-macos		prefix/darwin/macos/10.6/x64			exp
-x86-macos		prefix/darwin/macos/10.7/x86			exp
-x64-macos		prefix/darwin/macos/10.7/x64			exp
-x86-macos		prefix/darwin/macos/10.8/x86			exp
-x64-macos		prefix/darwin/macos/10.8/x64			exp
-x86-macos		prefix/darwin/macos/10.9/x86			exp
-x64-macos		prefix/darwin/macos/10.9/x64			exp
-x86-macos		prefix/darwin/macos/10.10/x86			exp
-x64-macos		prefix/darwin/macos/10.10/x64			exp
 x86-macos		prefix/darwin/macos/10.11/x86			exp
 x64-macos		prefix/darwin/macos/10.11/x64			exp
-x86-macos		prefix/darwin/macos/10.12/x86			exp
-x64-macos		prefix/darwin/macos/10.12/x64			exp
 x86-macos		prefix/darwin/macos/10.13/x86			exp
 x64-macos		prefix/darwin/macos/10.13/x64			exp
 x64-macos		prefix/darwin/macos/10.13/x64/gcc		exp
