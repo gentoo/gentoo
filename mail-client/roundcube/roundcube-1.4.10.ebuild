@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit webapp
 
@@ -11,12 +11,10 @@ MY_P=${MY_PN}-${MY_PV}
 
 DESCRIPTION="A browser-based multilingual IMAP client with an application-like user interface"
 HOMEPAGE="https://roundcube.net"
-SRC_URI="https://github.com/${PN}/${MY_PN}/releases/download/${MY_PV}/${MY_P}-complete.tar.gz"
 
 # roundcube is GPL-licensed, the rest of the licenses here are
 # for bundled PEAR components, googiespell and utf8.class.php
 LICENSE="GPL-3 BSD PHP-2.02 PHP-3 MIT public-domain"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="change-password enigma ldap mysql postgres sqlite ssl spell"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
@@ -43,7 +41,32 @@ RDEPEND="
 	spell? ( dev-lang/php[curl,spell] )
 "
 
-S="${WORKDIR}/${MY_P}"
+if [[ ${PV} == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/roundcube/roundcubemail"
+	EGIT_BRANCH="master"
+	BDEPEND="${BDEPEND}
+		app-arch/unzip
+		dev-php/composer
+		net-misc/curl"
+else
+	SRC_URI="https://github.com/${PN}/${MY_PN}/releases/download/${MY_PV}/${MY_P}-complete.tar.gz"
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+fi
+
+src_unpack() {
+	if [[ "${PV}" == *9999* ]]; then
+		git-r3_src_unpack
+		pushd "${S}" > /dev/null || die
+		mv composer.json-dist composer.json || die
+		composer install --no-dev || die
+		./bin/install-jsdeps.sh || die
+		popd > /dev/null || die
+	else
+		default
+	fi
+}
 
 src_install() {
 	webapp_src_preinst
