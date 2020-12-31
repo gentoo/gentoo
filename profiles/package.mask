@@ -258,13 +258,6 @@ app-emulation/qt-virt-manager
 # Dead upstream. Removal in 30 days.
 net-analyzer/dosdetector
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-29)
-# An awful hack-package that was dumped on others, and not touched
-# by the person adding it since.  Depends on obsolete LLVM versions
-# and needs a version bump.
-# Removal in 30 days.  Bug #734732.
-dev-libs/libclangformat-ide
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
 # Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
 # Feel free to manually unmask when not using XFS.
