@@ -16404,7 +16404,7 @@ sci-mathematics/z3 4.8.9: An efficient theorem prover
 sci-misc/ViSP-images 3.2.0 3.3.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.8.6 7.9.3 7.14.2 9999: The Berkeley Open Infrastructure for Network Computing
-sci-misc/cdfplayer 11.2.0 11.3.0: Wolfram Player for the interactive Computable Document Format (CDF)
+sci-misc/cdfplayer 11.2.0 11.3.0 12.2.0: Wolfram Player for the interactive Computable Document Format (CDF)
 sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17 4.18: FITS file format checker
 sci-misc/flashdot 1.1.4-r1: Generator for psychophysical experiments
