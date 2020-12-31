@@ -40,7 +40,6 @@ inherit toolchain-funcs
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
 	pypy3
-	python2_7
 	python3_6 python3_7 python3_8 python3_9
 )
 readonly _PYTHON_ALL_IMPLS
@@ -52,7 +51,7 @@ readonly _PYTHON_ALL_IMPLS
 _PYTHON_HISTORICAL_IMPLS=(
 	jython2_7
 	pypy pypy1_{8,9} pypy2_0
-	python2_{5,6}
+	python2_{5,6,7}
 	python3_{1,2,3,4,5}
 )
 readonly _PYTHON_HISTORICAL_IMPLS
@@ -149,7 +148,13 @@ _python_set_impls() {
 	done
 
 	if [[ ! ${supp[@]} ]]; then
-		die "No supported implementation in PYTHON_COMPAT."
+		# special-case python2_7 for python-any-r1
+		if [[ ${_PYTHON_ALLOW_PY27} ]] && has python2_7 "${PYTHON_COMPAT[@]}"
+		then
+			supp+=( python2_7 )
+		else
+			die "No supported implementation in PYTHON_COMPAT."
+		fi
 	fi
 
 	if [[ ${_PYTHON_SUPPORTED_IMPLS[@]} ]]; then
