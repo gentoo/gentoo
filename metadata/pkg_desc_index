@@ -7257,7 +7257,7 @@ dev-perl/Sub-Info 0.2.0: Tool for inspecting subroutines
 dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.210.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
-dev-perl/Sub-Quote 2.3.1 2.4.0: Efficient generation of subroutines via string eval
+dev-perl/Sub-Quote 2.3.1 2.4.0 2.6.6: Efficient generation of subroutines via string eval
 dev-perl/Sub-Uplevel 0.280.0: Apparently run a function in a higher stack frame
 dev-perl/Switch 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
