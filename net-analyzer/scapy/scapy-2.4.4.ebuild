@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
