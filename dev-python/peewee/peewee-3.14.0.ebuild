@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="sqlite"
 
@@ -17,8 +18,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-python/psycopg[${PYTHON_USEDEP}] )"
-DEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	test? ( dev-python/psycopg[${PYTHON_USEDEP}] )
+"
 
 distutils_enable_sphinx docs
 
