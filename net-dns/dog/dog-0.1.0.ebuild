@@ -80,6 +80,7 @@ IUSE="ssl"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
+	!sys-apps/dog
 "
 DEPEND="
 	${RUST_DEPEND}
