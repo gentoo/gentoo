@@ -1,17 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=ETHER
-DIST_VERSION=2.2005
+DIST_VERSION=2.2014
 DIST_EXAMPLES=("benchmarks/*")
 inherit perl-module
 
 DESCRIPTION="A postmodern object system for Perl 5"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -34,7 +34,7 @@ CONFLICTS="
 	!<=dev-perl/MooseX-AlwaysCoerce-0.130.0
 	!<=dev-perl/MooseX-App-1.220.0
 	!<=dev-perl/MooseX-Attribute-Deflator-2.1.7
-	!<=dev-perl/MooseX-Attribute-Dependent-1.1.0
+	!<=dev-perl/MooseX-Attribute-Dependent-1.1.3
 	!<=dev-perl/MooseX-Attribute-Prototype-0.100.0
 	!<=dev-perl/MooseX-AttributeHelpers-0.220.0
 	!<=dev-perl/MooseX-AttributeIndexes-1.0.0
@@ -93,8 +93,8 @@ RDEPEND="
 	>=dev-perl/Class-Load-XS-0.10.0
 	>=dev-perl/Data-OptList-0.110.0
 	dev-perl/Devel-GlobalDestruction
-	>=dev-perl/Devel-OverloadInfo-0.4.0
-	>=dev-perl/Devel-StackTrace-1.330.0
+	>=dev-perl/Devel-OverloadInfo-0.5.0
+	>=dev-perl/Devel-StackTrace-2.30.0
 	>=dev-perl/Dist-CheckConflicts-0.20.0
 	>=dev-perl/Eval-Closure-0.40.0
 	>=dev-perl/MRO-Compat-0.50.0
@@ -106,20 +106,21 @@ RDEPEND="
 	>=dev-perl/Params-Util-1.0.0
 	>=virtual/perl-Scalar-List-Utils-1.450.0
 	>=dev-perl/Sub-Exporter-0.980.0
-	dev-perl/Sub-Identify
 	>=dev-perl/Sub-Name-0.200.0
 	>=dev-perl/Try-Tiny-0.170.0
 	>=virtual/perl-parent-0.223.0
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
+	>=virtual/perl-JSON-PP-2.273.0
 	test? (
 		>=dev-perl/CPAN-Meta-Check-0.11.0
 		virtual/perl-CPAN-Meta-Requirements
+		virtual/perl-File-Spec
+		virtual/perl-Module-Metadata
 		>=dev-perl/Test-CleanNamespaces-0.130.0
 		>=dev-perl/Test-Fatal-0.1.0
 		>=virtual/perl-Test-Simple-0.960.0
 		>=dev-perl/Test-Requires-0.50.0
-		>=dev-perl/Test-Warnings-0.16.0
 	)
 "
