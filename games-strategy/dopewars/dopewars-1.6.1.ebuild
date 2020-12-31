@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop toolchain-funcs
+inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="Re-Write of the game Drug Wars"
 HOMEPAGE="http://dopewars.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dopewars/${P}.tar.gz"
+SRC_URI="https://github.com/benmwebb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,13 +29,12 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 
+DOCS=( AUTHORS NEWS README.md TODO doc/example-cfg doc/example-igneous )
+
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${P}-CVE-2009-3591.patch
-	sed -i \
-		-e "/priv_hiscore/ s:DPDATADIR:\"/var/lib\":" \
-		-e "/\/doc\// s:DPDATADIR:\"/usr/share\":" \
-		-e 's:index.html:html/index.html:' \
+	eautoreconf
+	sed -i -e 's:index.html:html/index.html:' \
 		src/dopewars.c || die
 	sed -i -e "s/\-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/g" \
 		configure || die
@@ -61,7 +60,8 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	rm -r "${ED}"/usr/share/gnome || die
-	rm -rf "${ED}"/usr/share/doc
+	rm -r "${ED}"/usr/share/doc || die
 	make_desktop_entry "${PN}" "Dopewars" /usr/share/pixmaps/dopewars-weed.png
-	HTML_DOCS="doc/*html" einstalldocs
+	HTML_DOCS="doc/*html doc/help/"
+	einstalldocs
 }
