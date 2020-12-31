@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
@@ -9,9 +10,8 @@ HOMEPAGE="
 	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/libpcap
 "
-SRC_URI="
-	https://github.com/the-tcpdump-group/${PN}/archive/${P/_pre/-bp}.tar.gz
-"
+SRC_URI="https://github.com/the-tcpdump-group/${PN}/archive/${P/_pre/-bp}.tar.gz"
+S="${WORKDIR}/${PN}-${P/_pre/-bp}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,16 +25,12 @@ RDEPEND="
 	rdma? ( sys-cluster/rdma-core )
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	dbus? ( virtual/pkgconfig )
 "
-
-S=${WORKDIR}/${PN}-${P/_pre/-bp}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
