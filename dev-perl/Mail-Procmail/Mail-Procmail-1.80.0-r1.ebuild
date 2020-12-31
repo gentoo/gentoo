@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Mail sorting/delivery module for Perl"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE=""
 
 RDEPEND="virtual/perl-Getopt-Long

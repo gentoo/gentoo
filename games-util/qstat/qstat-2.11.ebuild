@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/qstat/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc64 x86"
 IUSE="debug"
 
 DEPEND="!sys-cluster/torque"

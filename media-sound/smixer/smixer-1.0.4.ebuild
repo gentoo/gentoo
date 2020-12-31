@@ -11,7 +11,7 @@ SRC_URI="http://centerclick.org/programs/${PN}/${PN}${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}"

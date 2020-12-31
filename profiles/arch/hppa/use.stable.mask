@@ -4,6 +4,46 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-db/postgresql is not stable on hppa
+postgres
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-db/{mysql,mariadb}-connector-c is not stable on hppa
+mysql
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-libs/libXpm is not stable on hppa
+xpm
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/libnatspec is not stable on hppa
+natspec
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-vcs/subversion not stable for hppa
+subversion
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-vcs/cvs not stable for hppa
+cvs
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# virtual/opengl not stable for hppa
+opengl
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-libs/fltk is not stable for hppa
+fltk
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-lang/tk is not stable for hppa
+tk
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server and X libraries are not stable for hppa
+X
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-14)
 # dev-lang/php is not stable for hppa
 php

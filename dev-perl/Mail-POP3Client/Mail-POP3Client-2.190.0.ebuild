@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="POP3 client module for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ~ppc64 x86"
 IUSE=""
 
 SRC_TEST="do"

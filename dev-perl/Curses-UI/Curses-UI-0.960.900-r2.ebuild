@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl UI framework based on the curses library"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

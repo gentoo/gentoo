@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION='Check for presence of dependencies'
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc x86"
+KEYWORDS="amd64 ~arm ~hppa ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -15,7 +15,7 @@ SRC_URI="https://github.com/sshock/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc x86 ~x64-macos"
 IUSE="fuse libressl ncurses python qemu readline s3 static-libs threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

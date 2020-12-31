@@ -17,6 +17,55 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-31)
+# The following packages have no stable keywords on hppa:
+#           amqp: net-libs/rabbitmq
+#            dbi: dev-db/libdbi
+#         geoip2: dev-libs/libmaxminddb
+#          kafka: dev-libs/librdkafka
+#        mongodb: dev-libs/mongo-c-driver
+#          redis: dev-db/redis
+#           smtp: net-libs/libesmtp
+#           snmp: net-analyzer/net-snmp
+#   spoof-source: net-libs/libnet
+app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis smtp snmp spoof-source
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# dev-libs/libfido2 is not stable on hppa
+net-misc/openssh security-key
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# app-text/aspell is not stable on hppa
+app-misc/mc spell
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# app-crypt/heimdal is not stable on hppa
+net-nds/openldap smbkrb5passwd
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-python/subunit is not stable on hppa
+dev-libs/check subunit
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/xapian is not stable on hppa
+app-doc/doxygen doxysearch
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server not stable.
+# Mask USE=test for packages using virtualx.eclass.
+dev-lang/tk test
+dev-python/cmd2 test
+dev-python/fonttools test
+dev-python/pillow test
+dev-python/pygobject test
+dev-python/pyperclip test
+dev-python/twisted test
+dev-tcltk/bwidget test
+dev-tcltk/snack test
+dev-tcltk/tcllib test
+dev-util/cmake test
+sys-apps/dbus test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
 # noone actually tests it on real hardware anymore
 x11-base/xorg-server xorg
@@ -24,10 +73,6 @@ x11-base/xorg-server xorg
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
 # not all needed sphinx modules are stable on hppa.
 dev-python/aiohttp doc
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-11-25)
-# dev-db/redis has no stable keywords on hppa.
-app-admin/syslog-ng redis
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
 # sys-apps/systemd has no stable keywords on hppa.

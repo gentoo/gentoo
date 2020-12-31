@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Constants for libzmq"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 
 RDEPEND="
 	net-libs/zeromq

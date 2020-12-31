@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/cbqinit/cbq.init-v${PV} -> ${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc sparc x86"
 IUSE=""
 
 RDEPEND="sys-apps/iproute2"
