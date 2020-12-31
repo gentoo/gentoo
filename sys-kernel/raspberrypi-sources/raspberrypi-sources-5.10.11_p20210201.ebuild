@@ -12,12 +12,12 @@ inherit kernel-2 eapi7-ver
 detect_version
 detect_arch
 
-MY_PV=$(ver_cut 4-)
-MY_PV=${MY_PV/p/}
+KV_FULL=$(ver_cut 4-)
+KV_FULL="raspberrypi-kernel_1.${KV_FULL/p/}-1"
 DESCRIPTION="Raspberry Pi kernel sources"
 HOMEPAGE="https://github.com/raspberrypi/linux"
-SRC_URI="https://github.com/raspberrypi/linux/archive/raspberrypi-kernel_1.${MY_PV}-1.tar.gz"
-S="${WORKDIR}/linux-raspberrypi-kernel_1.${MY_PV}-1"
+SRC_URI="https://github.com/raspberrypi/linux/archive/${KV_FULL}.tar.gz"
+S="${WORKDIR}/linux-${KV_FULL}"
 
 KEYWORDS="~arm ~arm64"
 
