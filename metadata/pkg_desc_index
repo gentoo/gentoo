@@ -5535,7 +5535,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvoikko 4.3: Spell checking, hyphenation and morphological analysis tool for Finnish language
 dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2 0.1.3: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 1.1: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 1.1 1.7: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r2 0.4.2-r1 0.4.3-r1: string internment library, written in C
 dev-libs/libwbxml 0.11.2 0.11.6: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -6903,7 +6903,7 @@ dev-perl/MooX-StrictConstructor 0.10.0: Make your Moo-based object constructors 
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.30.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0-r1: Easily translate Moose code to Moo
-dev-perl/Moose 2.160.500 2.180.600 2.180.700 2.200.400 2.200.500 2.200.700: A postmodern object system for Perl 5
+dev-perl/Moose 2.200.700 2.201.400: A postmodern object system for Perl 5
 dev-perl/Moose-Autobox 0.160.0: Autoboxed wrappers for Native Perl datatypes
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.290.0: Declare class attributes Moose-style
@@ -7052,7 +7052,7 @@ dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
 dev-perl/POSIX-strftime-Compiler 0.420.0: GNU C library compatible strftime for loggers and servers
-dev-perl/PPI 1.236.0: Parse, Analyze and Manipulate Perl (without perl)
+dev-perl/PPI 1.236.0 1.270.0: Parse, Analyze and Manipulate Perl (without perl)
 dev-perl/PPI-HTML 1.80.0: Generate syntax-hightlighted HTML for Perl using PPI
 dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.200.0: Utility methods and base class for manipulating Perl via PPI
