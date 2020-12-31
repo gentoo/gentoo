@@ -31,7 +31,8 @@ distutils_enable_tests pytest
 
 python_test() {
 	# Some tests run the "isort" command
-	distutils_install_for_testing
+	distutils_install_for_testing --via-root
+
 	local skipped_tests=(
 		# Fails without -s, run it separately to avoid unnecessary output
 		tests/unit/test_importable.py
