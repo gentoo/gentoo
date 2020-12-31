@@ -7034,7 +7034,7 @@ dev-perl/PDF-API2 2.33.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Builder 3.19.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.430.0: Create PDF documents in Perl
 dev-perl/PDL 2.17.0-r1: Perl Data Language for scientific computing
-dev-perl/PDL-Graphics-Gnuplot 2.11.0-r1 2.13.0: Gnuplot-based plotting for PDL
+dev-perl/PDL-Graphics-Gnuplot 2.11.0-r1 2.13.0-r1: Gnuplot-based plotting for PDL
 dev-perl/PDL-Transform-Color 1.3.0: Useful color system conversions for PDL
 dev-perl/PGPLOT 2.210.0-r1: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
@@ -12390,7 +12390,7 @@ mail-client/mutt 2.0.2 2.0.3 2.0.4: A small but very powerful text-based mail cl
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20201127 20201127-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.4.8 1.4.9: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.4.8 1.4.10 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 78.6.0: Thunderbird Mail Client
@@ -12837,7 +12837,7 @@ media-gfx/lximage-qt 0.15.0 0.16.0: Qt Image Viewer
 media-gfx/maim 5.6.3 9999: Commandline tool to take screenshots of the desktop
 media-gfx/mandelbulber 2.12-r1: Tool to render 3D fractals
 media-gfx/mcomix 1.3.0_pre20200206 1.3.0_pre20201123 9999: GTK image viewer for comic book archives
-media-gfx/meshlab 2016.12-r4: The open source system for processing and editing 3D triangular meshes
+media-gfx/meshlab 2016.12-r4 2020.12: A system for processing and editing unstructured 3D triangular meshes
 media-gfx/metapixel 1.0.2-r1: a program for generating photomosaics
 media-gfx/mkgallery 1.1-r1: Creates thumbnails and a HTML index file for a directory of jpg files
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
