@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>amynka@gentoo.org</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>3dprint@gentoo.org</email>
 		<name>Gentoo 3D print</name>
 	</maintainer>
-	<longdescription lang="en">
-		Printrun is a set of G-code sending applications for RepRap.
-		It consists of printcore (dumb G-code sender), pronsole (featured command line
-		G-code sender), pronterface (featured G-code sender with graphical user
-		interface), and a small collection of helpful scripts.
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		MeshLab is an open source, portable, and extensible system for the processing and editing of unstructured 3D
+		triangular meshes. The system is aimed to help the processing of the typical not-so-small unstructured models
+		arising in 3D scanning, providing a set of tools for editing, cleaning, healing, inspecting, rendering and
+		converting these kinds of meshes.
 	</longdescription>
+	<use>
+		<flag name="double-precision">Use double type instead of float type for scalars</flag>
+	</use>
 	<upstream>
-		<remote-id type="sourceforge">meshlab</remote-id>
+		<bugs-to>https://github.com/cnr-isti-vclab/meshlab/issues</bugs-to>
+		<remote-id type="github">cnr-isti-vclab/meshlab</remote-id>
 	</upstream>
 </pkgmetadata>
