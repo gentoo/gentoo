@@ -53,7 +53,7 @@ IUSE_PROGRAMMERS="
 	+ogp-spi
 	+pickit2-spi
 	+pony-spi
-	+raiden
+	+raiden-debug-spi
 	+rayer-spi
 	realtek-mst-i2c-spi
 	+satamv
