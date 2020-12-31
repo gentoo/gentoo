@@ -265,11 +265,6 @@ net-analyzer/dosdetector
 # Removal in 30 days.  Bug #734732.
 dev-libs/libclangformat-ide
 
-# David Seifert <soap@gentoo.org> (2020-11-28)
-# Last release in 2002, multiple open bugs, no maintainer, no revdeps.
-# Bug #709512, #713300, #729518, Removal in 30 days.
-app-text/cook
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
 # Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
 # Feel free to manually unmask when not using XFS.
