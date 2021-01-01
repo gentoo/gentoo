@@ -591,7 +591,7 @@ app-admin/conky 1.10.8-r9 1.10.8-r10 1.11.6-r2: An advanced, highly configurable
 app-admin/conserver 8.2.3 8.2.4 8.2.5 8.2.6: Serial Console Manager
 app-admin/consul 1.7.4 1.7.8 1.7.11 1.8.4 1.8.7 1.9.1: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
-app-admin/consul-template 0.25.0: Generic template rendering and notifications with Consul
+app-admin/consul-template 0.25.0 0.25.1: Generic template rendering and notifications with Consul
 app-admin/cpulimit 2.4: Limits the CPU usage of a process
 app-admin/cronlocker 0.4.0_p20180710: synchronize a cron job across multiple hosts using the consul lock feature
 app-admin/cronolog 1.6.2-r5: Log rotation software
