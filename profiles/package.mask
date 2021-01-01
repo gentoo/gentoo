@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-01-01)
+# Needs a port to modern Cabal. No revdeps.
+# Masked for removal. bug #735788, bug #737946
+dev-haskell/hgettext
+
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
 # To be removed shortly.
