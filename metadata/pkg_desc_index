@@ -14015,7 +14015,7 @@ media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in th
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
 media-video/aegisub 3.2.2_p20160518-r2 3.2.2_p20160518-r3 3.2.2_p20160518-r4 3.2.2_p20160518-r100 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
-media-video/aravis 0.7.2 9999: Library for video acquisition using Genicam cameras
+media-video/aravis 0.7.2 0.8.5 9999: Library for video acquisition using Genicam cameras
 media-video/asfrecorder 1.1-r1: Linux WindowsMedia streaming client
 media-video/atomicparsley 0.9.0: Command line program for manipulating iTunes-style metadata in MPEG4 files
 media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
@@ -18449,7 +18449,7 @@ x11-misc/sddm 0.15.0 0.18.1-r3: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.10-r1 1.15 2.0-r2: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.10-r1 1.15 2.0-r2 2.1: The Shared MIME-info Database specification
 x11-misc/shutter 0.94.3_p20200621: Feature-rich screenshot program
 x11-misc/simpleswitcher 20140219 20191008 99999999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
