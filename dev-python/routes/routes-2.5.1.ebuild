@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
 inherit distutils-r1
@@ -31,7 +32,7 @@ BDEPEND="
 	)"
 
 distutils_enable_tests nose
-distutils_enable_sphinx doc
+distutils_enable_sphinx docs
 
 # The testsuite appears to be held back by the author
 
