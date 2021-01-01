@@ -13113,7 +13113,7 @@ media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon forma
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
-media-libs/libilbc 2.0.2 9999: Packaged version of iLBC codec from the WebRTC project
+media-libs/libilbc 2.0.2 3.0.4 9999: Packaged version of iLBC codec from the WebRTC project
 media-libs/libinsane 1.0.7 1.0.8: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
@@ -13145,7 +13145,7 @@ media-libs/libmpdclient 2.19: Library for interfacing Music Player Daemon (media
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.16 1.1.17 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.16 1.1.17 1.1.18 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libmypaint 1.6.1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
