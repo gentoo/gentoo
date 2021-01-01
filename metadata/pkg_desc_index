@@ -12181,8 +12181,8 @@ kde-apps/zeroconf-ioslave 20.08.3 20.12.0: DNSSD (DNS Service Discovery - part o
 kde-frameworks/attica 5.74.0 5.77.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.74.0 5.77.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.74.0 5.77.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/breeze-icons 5.74.0 5.77.0: Breeze SVG icon theme
-kde-frameworks/breeze-icons-rcc 5.74.0 5.77.0: Breeze SVG icon theme binary resource
+kde-frameworks/breeze-icons 5.74.0 5.77.0-r1: Breeze SVG icon theme
+kde-frameworks/breeze-icons-rcc 5.74.0 5.77.0-r1: Breeze SVG icon theme binary resource
 kde-frameworks/extra-cmake-modules 5.74.0 5.77.0: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.74.0-r1 5.77.0: Framework for integrating Qt applications with KDE Plasma workspaces
 kde-frameworks/kactivities 5.74.0 5.77.0: Framework for working with KDE activities
@@ -13235,7 +13235,7 @@ media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
-media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1: A library for reading and writing images
+media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.1-r1 2.4.0: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
@@ -14765,7 +14765,7 @@ net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet 
 net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
-net-libs/libgsasl 1.8.0-r1 1.8.1: The GNU SASL library
+net-libs/libgsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.35 0.5.36: security-aware parser for the HTTP protocol and the related bits and pieces
@@ -15087,7 +15087,7 @@ net-misc/gns3-server 2.2.11: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
-net-misc/gsasl 1.8.0-r1 1.8.1: The GNU SASL client, server, and library
+net-misc/gsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL client, server, and library
 net-misc/gsutil 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP

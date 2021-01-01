@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) idn? ( net-dns/libidn:= ) kerberos? ( virtual/krb5 ) nls? ( >=sys-devel/gettext-0.18.1 ) ntlm? ( net-libs/libntlm )
+DESCRIPTION=The GNU SASL library
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/gsasl/
+IUSE=idn gcrypt kerberos nls ntlm static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-3 LGPL-3
+RDEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) idn? ( net-dns/libidn:= ) kerberos? ( virtual/krb5 ) nls? ( >=sys-devel/gettext-0.18.1 ) ntlm? ( net-libs/libntlm ) !net-misc/gsasl
+SLOT=0
+SRC_URI=mirror://gnu/gsasl/libgsasl-1.10.0.tar.gz
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=bcbd2b4a53b0498954898f687f5e0839
