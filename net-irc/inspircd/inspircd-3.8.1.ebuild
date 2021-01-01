@@ -6,7 +6,7 @@ EAPI="7"
 inherit toolchain-funcs
 
 DESCRIPTION="Inspire IRCd - The Stable, High-Performance Modular IRCd"
-HOMEPAGE="https://inspircd.github.com/"
+HOMEPAGE="https://www.inspircd.org/"
 SRC_URI="https://github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
