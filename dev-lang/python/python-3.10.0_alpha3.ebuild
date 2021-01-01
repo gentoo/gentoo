@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -53,7 +53,10 @@ RDEPEND="app-arch/bzip2:=
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
-	test? ( app-arch/xz-utils[extra-filters(+)] )
+	test? ( app-arch/xz-utils[extra-filters(+)] )"
+# autoconf-archive needed to eautoreconf
+BDEPEND="
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
