@@ -45,11 +45,6 @@ app-emulation/lxd apparmor
 # not yet ready for everyone.
 net-misc/curl quiche
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
-# media-video/pipewire-0.2 will never be stable, to be dropped.
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
 dev-qt/qtsql oci8
