@@ -66,11 +66,6 @@ net-misc/curl quiche
 # iasl is keyworded ~arm64
 sys-firmware/seabios debug
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-14)
-# media-video/pipewire-0.2 will never be stable, to be dropped.
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
-
 # Aaron Bauman (2019-07-29)
 # app-arch/rar not supported
 kde-apps/kdeutils-meta rar
