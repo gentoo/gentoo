@@ -421,7 +421,6 @@ dev-ada/langkit
 dev-ada/libadalang
 dev-ada/libadalang-tools
 dev-ada/gps
-dev-ada/gnatcoll-bindings
 dev-ada/gnatcoll-db
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
