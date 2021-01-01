@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-01-01)
+# NetworkManager has buildin support for WireGuard,
+# this plugin is old and unmaintained, so let's drop it.
+# Removal in 30 days.
+net-vpn/networkmanager-wireguard
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-01-01)
 # Fails with -fno-common, homepage gone, source gone,
 # no maintainer.
