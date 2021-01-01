@@ -13060,7 +13060,7 @@ media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.15.0: Library for SSA/ASS subtitles rendering
 media-libs/libavif 0.8.1 0.8.3 0.8.4 9999: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
-media-libs/libbluray 1.1.2 1.2.0 9999: Blu-ray playback libraries
+media-libs/libbluray 1.1.2 1.2.0 1.2.1 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta19-r1: A library that creates colored ASCII-art graphics
@@ -13639,7 +13639,7 @@ media-radio/xwxapt 3.4.2: GTK+ linux weather satellite APT image decoder softwar
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/abcde 2.9.3-r1: Command line CD encoder
-media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript files
+media-sound/abcm2ps 8.14.4 8.14.6 8.14.11: Program to convert abc files to Postscript files
 media-sound/abcmidi 2020.01.22 2020.06.07: Programs for processing ABC music notation files
 media-sound/aeolus 0.9.9: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
