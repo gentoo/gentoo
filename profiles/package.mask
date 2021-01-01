@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ####################################################################
@@ -31,6 +31,18 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-01)
+# RenPy requires Python 2.7 at runtime, and py3 port has not been
+# released yet.  Even if it were, the games would probably need porting
+# anyway.
+# Removal in 30 days.  Bug #735358.
+dev-python/numpy-python2
+games-engines/renpy
+games-misc/katawa-shoujo
+games-rpg/asphyxia
+games-rpg/sakura-spirit
+games-rpg/the-royal-trap
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-30)
 # Unmaintained.  Entirely replaced by media-libs/libjpeg-turbo,
@@ -395,6 +407,9 @@ dev-lang/spark
 # Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
 # Ported to py3.8 but not yet released
 # Masked to allow py2.7 removal
+# Michał Górny <mgorny@gentoo.org> (2021-01-01)
+# Masking for removal to prevent eclass from crashing on these packages.
+# Removal in 30 days.
 dev-ada/langkit
 dev-ada/libadalang
 dev-ada/libadalang-tools
