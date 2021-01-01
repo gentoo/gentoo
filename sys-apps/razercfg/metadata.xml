@@ -10,8 +10,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
-    requires <pkg>sys-power/pm-utils</pkg></flag>
     <flag name="gui">Installs GUI configuration utility and status bar applet.
     Requires <pkg>dev-python/PyQt5</pkg></flag>
   </use>
