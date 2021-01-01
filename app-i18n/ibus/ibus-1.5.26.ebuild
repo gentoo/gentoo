@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx xdg-utils
+inherit autotools bash-completion-r1 gnome2-utils python-r1 toolchain-funcs vala virtualx xdg-utils
 
 GENTOO_VER=
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
@@ -31,7 +31,8 @@ REQUIRED_USE="emoji? ( gtk )
 	test? ( gtk )
 	vala? ( introspection )"
 
-CDEPEND="app-text/iso-codes
+DEPEND="
+	app-text/iso-codes
 	>=dev-libs/glib-2.65.0:2
 	gnome-base/dconf
 	gnome-base/librsvg:2
@@ -58,14 +59,15 @@ CDEPEND="app-text/iso-codes
 		dev-libs/wayland
 		x11-libs/libxkbcommon
 	)"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	python? (
 		gtk? (
 			x11-libs/gtk+:3[introspection]
 		)
 	)"
-DEPEND="${CDEPEND}
+BDEPEND="
 	$(vala_depend)
+	dev-libs/glib:2
 	dev-util/glib-utils
 	virtual/pkgconfig
 	x11-misc/xkeyboard-config
@@ -122,6 +124,18 @@ src_configure() {
 		python_conf+=( --disable-setup )
 	fi
 
+	if tc-is-cross-compiler && { use emoji || use unicode; }; then
+		mkdir -p "${S}-build"
+		pushd "${S}-build" >/dev/null 2>&1 || die
+		ECONF_SOURCE=${S} econf_build --enable-static \
+			--disable-{dconf,gtk{2,3},python-library,shared,xim} \
+			ISOCODES_{CFLAG,LIB}S=-DSKIP \
+			$(use_enable emoji emoji-dict) \
+			$(use_enable unicode unicode-dict) \
+			$(use_with unicode ucd-dir "${EPREFIX}/usr/share/unicode-data")
+		popd >/dev/null 2>&1 || die
+	fi
+
 	local myconf=(
 		$(use_enable X xim)
 		$(use_enable emoji emoji-dict)
@@ -142,6 +156,22 @@ src_configure() {
 		"${python_conf[@]}"
 	)
 	econf "${myconf[@]}"
+}
+
+src_compile() {
+	if tc-is-cross-compiler && { use emoji || use unicode; }; then
+		emake -C "${S}-build/src" \
+			$(usex emoji emoji-parser '') \
+			$(usex unicode unicode-parser '')
+		emake -C src \
+			$(usex emoji emoji-parser '') \
+			$(usex unicode unicode-parser '')
+		cp \
+			$(usex emoji "${S}-build/src/emoji-parser" '') \
+			$(usex unicode "${S}-build/src/unicode-parser" '') \
+			src || die
+	fi
+	emake
 }
 
 src_test() {
