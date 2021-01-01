@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,8 @@ BDEPEND="
 DEPEND="test? ( dev-qt/qttest:5 )"
 
 RESTRICT+=" !test? ( test )"
+
+PATCHES=( "${FILESDIR}/${P}-image-missing.patch" )
 
 src_prepare() {
 	cmake_src_prepare
