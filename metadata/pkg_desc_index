@@ -16855,7 +16855,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.32.0.200910: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.18_p20201004-r1 1.8.18_p20201004-r2 1.8.18_p20201004-r3: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.6 3.1.7: IPMI Management Utilities
-sys-apps/iproute2 5.4.0 5.7.0 5.9.0 5.10.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 5.7.0 5.10.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.6.0-r1 1.7.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
@@ -16913,7 +16913,7 @@ sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/opal-utils 6.7: OPAL firmware utilities
-sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200529 20201015: osinfo database files
 sys-apps/osinfo-db-tools 1.8.0: Tools for managing the osinfo database
@@ -17167,7 +17167,7 @@ sys-boot/refind 0.11.4 0.12.0-r1: The UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/silo 1.4.14_p20200602: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
-sys-boot/syslinux 6.04_pre1 6.04_pre1-r2: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 6.04_pre1-r2: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/unetbootin 700: UNetbootin installs Linux/BSD distributions to a partition or USB drive
