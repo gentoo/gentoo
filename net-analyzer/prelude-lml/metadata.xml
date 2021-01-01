@@ -16,8 +16,4 @@
 		them into Prelude-IDMEF alerts. Prelude-LML handles events generated
 		by a large set of applications
 	</longdescription>
-	<use>
-		<flag name="tls">Enables Prelude LML support Syslog through TLS
-		using <pkg>net-libs/gnutls</pkg>.</flag>
-	</use>
 </pkgmetadata>
