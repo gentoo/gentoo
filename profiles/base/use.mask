@@ -1,9 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-01)
+# The support for python3.6 target in Gentoo is discontinued.
+# The flags are masked to permit removal of the last backport packages.
+# Once they're gone, the eclass support will be disabled and the flags
+# removed.
+python_targets_python3_6
+python_single_target_python3_6
 
 # Alexis Ballier <aballier@gentoo.org> (2020-10-13)
 # Nothing depends on those ROS messages. dev-ros/geneus
