@@ -2354,7 +2354,7 @@ app-misc/bottlerocket 0.04c-r2: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r3: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1-r1: Application to create and manage beer recipes
 app-misc/btail 0.3-r1: Bayesian logfile filter
-app-misc/byobu 5.130-r1: A set of profiles for the GNU Screen console window manager (app-misc/screen)
+app-misc/byobu 5.130-r1 5.133: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20200601.3.53 20200601.3.59 20200601.3.60: Common CA Certificates PEM files
 app-misc/cadubi 1.3: An application that allows you to draw ASCII-Art images
@@ -8000,7 +8000,7 @@ dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube 
 dev-python/catkin_pkg 0.4.23 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
-dev-python/certifi 10001 10001-r1: Thin replacement for certifi using system certificate store
+dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.42.0 0.43.0 0.44.0 0.44.1 0.44.2: CloudFormation Linter
 dev-python/cftime 1.3.0: Time-handling functionality from netcdf4-python
@@ -8066,7 +8066,7 @@ dev-python/curtsies 0.3.0-r2 0.3.4: Curses-like terminal wrapper, with colored s
 dev-python/cvxopt 1.2.5-r1: Python package for convex optimization
 dev-python/cx_Freeze 6.1 6.4.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
-dev-python/cython 0.29.15 0.29.21 0.29.21-r1: A Python to C compiler
+dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dask 2.30.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7 0.8: A backport of the dataclasses module for Python 3.6
@@ -8500,7 +8500,7 @@ dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.8.0: Python version of node-semver, the semantic versioner for npm
 dev-python/nodeenv 1.3.5: Node.js virtual environment builder
-dev-python/nose 1.3.7-r6 1.3.7-r7: Unittest extension with automatic test suite discovery and easy test authoring
+dev-python/nose 1.3.7-r7: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-exclude 0.5.0-r1: Exclude specific directories from nosetests runs
 dev-python/nose-random 1.0.0: Nose plugin to facilitate randomized unit testing
 dev-python/nose2 0.9.1-r1 0.9.2: Next generation unittest with plugins
@@ -8514,7 +8514,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
 dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.0 1.19.1 1.19.2 1.19.3 1.19.4: Fast array and numerical python library
+dev-python/numpy 1.19.2 1.19.3 1.19.4: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -8730,7 +8730,7 @@ dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyilmbase 2.5.2-r1 2.5.3: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.7.1-r1 2.0.0: JSON Web Token implementation in Python
-dev-python/pykerberos 1.3.0 1.3.0-r1: A high-level Python wrapper for Kerberos/GSSAPI operations
+dev-python/pykerberos 1.3.0-r1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2 2.0.3: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 1.8.0: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1-r1: Code audit tool for python
@@ -9048,7 +9048,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
-dev-python/setuptools 46.4.0-r3 50.3.0 51.0.0 51.1.0 51.1.1: Collection of extensions to Distutils
+dev-python/setuptools 50.3.0 51.0.0 51.1.0 51.1.1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -13224,7 +13224,7 @@ media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmpeg version of headers required to interface with Nvidias codec APIs
-media-libs/openal 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.20.0 1.20.1 1.21.0: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -13798,7 +13798,7 @@ media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.24: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
-media-sound/milkytracker 1.02.00-r1: FastTracker 2 inspired music tracker
+media-sound/milkytracker 1.02.00-r1 1.03.00: FastTracker 2 inspired music tracker
 media-sound/mixxx 2.2.4 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r2: Music On Console - ncurses interface for playing audio files
@@ -14113,7 +14113,7 @@ media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multi
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
-media-video/rav1e 0.3.3 0.3.4 9999: The fastest and safest AV1 encoder
+media-video/rav1e 0.3.3 0.3.4 0.3.5 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
@@ -14813,7 +14813,7 @@ net-libs/libpcap 1.9.1-r3 1.10.0 9999: A system-independent library for user-lev
 net-libs/libpcapnav 0.8-r1: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
-net-libs/libproxy 0.4.15-r1 0.4.15-r2 0.4.16-r1 0.4.17: Library for automatic proxy configuration management
+net-libs/libproxy 0.4.16-r1 0.4.17: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1.22.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
