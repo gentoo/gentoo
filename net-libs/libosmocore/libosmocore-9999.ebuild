@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Utility functions for OsmocomBB, OpenBSC and related projects"
 HOMEPAGE="http://bb.osmocom.org/trac/wiki/libosmocore"
@@ -41,6 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-flags -fcommon
 	econf \
 		$(use_enable pcsc-lite pcsc)
 }
