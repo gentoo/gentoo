@@ -7445,7 +7445,7 @@ dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r2: Time manipulation in the TAI64* formats
 dev-perl/Time-TZOffset 0.40.0: Show timezone offset strings like +0900
-dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
+dev-perl/TimeDate 2.300.0 2.330.0: A Date/Time Parsing Perl Module
 dev-perl/Tk 804.33.0 804.34.0: A Perl Module for Tk
 dev-perl/Tk-CursorControl 0.400.0-r1 0.400.0-r3: Manipulate the mouse cursor programmatically
 dev-perl/Tk-JPEG-Lite 2.14.30-r1 2.15.0: lite JPEG loader for Tk::Photo
