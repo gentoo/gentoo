@@ -10594,7 +10594,7 @@ dev-util/buildbot-waterfall-view 2.8.2 2.8.4: Buildbot waterfall-view plugin
 dev-util/buildbot-worker 2.8.2 2.8.4 9999: BuildBot Worker (slave) Daemon
 dev-util/buildbot-wsgi-dashboards 2.8.2 2.8.4: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
 dev-util/buildbot-www 2.8.2 2.8.4: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
-dev-util/bustle 0.5.4: Draw sequence diagrams of D-Bus traffic
+dev-util/bustle 0.8.0: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
 dev-util/cargo-audit 0.13.1: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-c 0.6.2: Helper program to build and install c-like libraries
