@@ -1,0 +1,17 @@
+This patch (dropping an obsolete extra parameter to grow_stack) landed post
+2.2.7 and we're not likely to ever see a 2.2.8, as development has moved
+on to 3.x now.
+
+https://bugs.gentoo.org/747049
+https://www.mail-archive.com/guile-devel@gnu.org/msg15502.html
+--- a/libguile/continuations.c
++++ b/libguile/continuations.c
+@@ -302,7 +302,7 @@
+ 
+ #if SCM_STACK_GROWS_UP
+   if (dst + continuation->num_stack_items >= &stack_top_element)
+-    grow_stack (cont, mra);
++    grow_stack (cont);
+ #else
+   dst -= continuation->num_stack_items;
+   if (dst <= &stack_top_element)
