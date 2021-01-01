@@ -17090,7 +17090,7 @@ sys-block/di 4.47 4.47.3 4.48: Disk Information Utility
 sys-block/disktype 9-r1: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2 8.0: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 3.7 3.16 3.16-r1 3.17 3.17-r1 3.19 3.20-r2: Jens Axboe's Flexible IO tester
+sys-block/fio 3.19 3.20-r2: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
@@ -17189,7 +17189,7 @@ sys-cluster/crmsh 3.0.3 4.1.0: Pacemaker command line interface for management a
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
-sys-cluster/galera 25.3.25 25.3.26 25.3.28 25.3.28-r1 26.4.2 26.4.3 26.4.4 26.4.5 26.4.6: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.28-r1 26.4.2 26.4.3 26.4.4 26.4.5 26.4.6: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
@@ -17237,7 +17237,7 @@ sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Do
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
 sys-cluster/rdma-core 30.0-r2 31.0 32.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1 4.6.1: Resources pack for Heartbeat / Pacemaker
-sys-cluster/sanlock 3.6.0 3.8.2: shared storage lock manager
+sys-cluster/sanlock 3.8.2: shared storage lock manager
 sys-cluster/singularity 3.6.4 3.7.0: Application containers for Linux
 sys-cluster/slurm 20.11.0.1 20.11.0.1-r100: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.3 2.4.7-r1 3.0.1-r2: Lightning-fast unified analytics engine
@@ -17517,7 +17517,7 @@ sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils librari
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 10.0.1 11.0.0 11.0.1_rc1 11.0.1_rc2 11.0.1.9999 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
-sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
+sys-libs/cracklib 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.5.20_p2-r4 4.6.21_p4-r2 4.6.21_p4-r3 4.7.25_p4-r2 4.7.25_p4-r3 4.8.30-r3 4.8.30-r4 5.1.29-r2 5.3.28-r2 5.3.28-r4 5.3.28-r5 6.0.35-r2 6.0.35-r3 6.1.38 6.2.38 18.1.32 18.1.40: Oracle Berkeley DB
@@ -17631,7 +17631,7 @@ sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1 2.6.0: Resource-specific view of processes
-sys-process/audit 2.6.4 2.7.1 2.8.2 2.8.3 2.8.4 2.8.5 2.8.5-r2: Userspace utilities for storing and processing auditing records
+sys-process/audit 2.8.4 2.8.5 2.8.5-r2: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/bpytop 1.0.52 1.0.54: Linux/OSX/FreeBSD resource monitor
@@ -17938,14 +17938,14 @@ www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 18.0.10 18.0.11 18.0.12 19.0.4 19.0.5 19.0.6 20.0.2 20.0.3 20.0.4: Personal cloud that runs on your own server
 www-apps/nikola 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
-www-apps/novnc 1.0.0 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
+www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
 www-apps/postfixadmin 3.2.3 3.2.4: Web Based Management tool for Postfix style virtual domains and users
-www-apps/prewikka 5.1.1 5.2.0: Graphical front-end analysis console for the Prelude Framework
-www-apps/radicale 1.1.6 2.1.11-r1: A simple CalDAV calendar server
+www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
+www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
