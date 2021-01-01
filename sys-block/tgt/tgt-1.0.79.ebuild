@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 MY_TREE="b43dbc6"
 
@@ -15,30 +15,32 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc x86"
 IUSE="fcoe fcp ibmvio infiniband rbd"
 
-CDEPEND="dev-perl/Config-General
+DEPEND="
+	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
+	dev-perl/Config-General
 	rbd? ( sys-cluster/ceph )
 	infiniband? (
 		sys-fabric/libibverbs:=
 		sys-fabric/librdmacm:=
 	)"
-DEPEND="${CDEPEND}
-	app-text/docbook-xsl-stylesheets"
 RDEPEND="${DEPEND}
 	dev-libs/libaio
 	sys-apps/sg3_utils"
 
 S=${WORKDIR}/fujita-tgt-${MY_TREE}
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 pkg_setup() {
 	tc-export CC
 }
 
 src_prepare() {
+	default
 	sed -i -e 's:\($(CC)\) $^:\1 $(LDFLAGS) $^:' usr/Makefile || die
 	# make sure xml docs are generated before trying to install them
 	sed -i -e "s@install: @& all @g" doc/Makefile || die
-	eapply_user
 }
 
 src_compile() {
