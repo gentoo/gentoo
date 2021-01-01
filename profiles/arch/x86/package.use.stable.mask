@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -33,12 +33,6 @@ app-metrics/collectd collectd_plugins_slurm
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
 # net-libs/libktorrent:5 is not stable anymore, bug #696858
 kde-apps/kget bittorrent
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
-# media-video/pipewire-0.2 will never be stable, to be dropped.
-<dev-libs/weston-9 pipewire
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable

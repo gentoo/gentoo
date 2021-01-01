@@ -1158,7 +1158,7 @@ unipatch() {
 		if echo ${i} | grep -qs -e "\.tar" -e "\.tbz" -e "\.tgz" ; then
 			if [ -n "${UNIPATCH_STRICTORDER}" ]; then
 				unset z
-				STRICT_COUNT=$((10#${STRICT_COUNT} + 1))
+				STRICT_COUNT=$((10#${STRICT_COUNT:=0} + 1))
 				for((y=0; y<$((6 - ${#STRICT_COUNT})); y++));
 					do z="${z}0";
 				done
@@ -1207,7 +1207,7 @@ unipatch() {
 
 				if [ -n "${UNIPATCH_STRICTORDER}" ]; then
 					unset z
-					STRICT_COUNT=$((10#${STRICT_COUNT} + 1))
+					STRICT_COUNT=$((10#${STRICT_COUNT:=0} + 1))
 					for((y=0; y<$((6 - ${#STRICT_COUNT})); y++));
 						do z="${z}0";
 					done
