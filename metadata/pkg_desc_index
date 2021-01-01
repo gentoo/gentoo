@@ -17132,7 +17132,7 @@ sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211 7.1316 7.1410 7.1508: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0-r1: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli-fb 2.1.53: Command shell for managing Linux LIO kernel target
-sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
+sys-block/tgt 1.0.79: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.7.0 0.7.6 0.8.5 0.9.0 9999: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 10.2.2.1 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 24: vblade exports a block device using AoE
