@@ -1,10 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-01)
+# media-video/pipewire:0/0.2 cleanup
+<dev-libs/weston-9 pipewire
 
 # Marek Szuba <marecki@gentoo.org> (2020-12-26)
 # User manual is only available for releases
