@@ -473,52 +473,6 @@ net-analyzer/ntopng
 net-analyzer/pmacct
 net-libs/nDPI
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2020-07-15)
-# In preparation; do not use yet.
-=dev-lang/perl-5.32*
-~virtual/perl-Archive-Tar-2.360.0
-~virtual/perl-autodie-2.320.0
-~virtual/perl-Compress-Raw-Bzip2-2.93.0
-~virtual/perl-Compress-Raw-Zlib-2.93.0
-~virtual/perl-CPAN-2.270.0
-~virtual/perl-DB_File-1.853.0
-~virtual/perl-Devel-PPPort-3.570.0
-~virtual/perl-Digest-MD5-2.550.100_rc
-~virtual/perl-Dumpvalue-1.210.0
-~virtual/perl-Encode-3.60.0
-~virtual/perl-Exporter-5.740.0
-~virtual/perl-ExtUtils-CBuilder-0.280.234
-~virtual/perl-ExtUtils-MakeMaker-7.440.0
-~virtual/perl-Filter-Simple-0.960.0
-~virtual/perl-Getopt-Long-2.510.0
-~virtual/perl-I18N-LangTags-0.440.0
-~virtual/perl-IO-1.430.0
-~virtual/perl-IO-Compress-2.93.0
-~virtual/perl-IPC-Cmd-1.40.0
-~virtual/perl-JSON-PP-4.40.0
-~virtual/perl-Math-BigInt-1.999.818
-~virtual/perl-Math-BigInt-FastCalc-0.500.900
-~virtual/perl-Module-CoreList-5.202.6.200
-~virtual/perl-Module-Load-Conditional-0.700.0
-~virtual/perl-Module-Metadata-1.0.37
-~virtual/perl-Net-Ping-2.720.0
-~virtual/perl-parent-0.238.0
-~virtual/perl-podlators-4.140.0
-~virtual/perl-Pod-Simple-3.400.0
-~virtual/perl-Safe-2.410.0
-~virtual/perl-Scalar-List-Utils-1.550.0
-~virtual/perl-Socket-2.29.0
-~virtual/perl-Storable-3.210.0
-~virtual/perl-Sys-Syslog-0.360.0
-~virtual/perl-Term-ANSIColor-5.10.0
-~virtual/perl-Test-Simple-1.302.175
-~virtual/perl-Thread-Queue-3.140.0
-~virtual/perl-threads-2.250.0
-~virtual/perl-threads-shared-1.610.0
-~virtual/perl-Time-HiRes-1.976.400
-~virtual/perl-Time-Piece-1.340.100
-~virtual/perl-Unicode-Normalize-1.270.0
-
 # Mart Raudsepp <leio@gentoo.org> (2020-06-06)
 # Meson port does not handle multilib yet and has issues
 # regarding runstatedir (not using /run).
