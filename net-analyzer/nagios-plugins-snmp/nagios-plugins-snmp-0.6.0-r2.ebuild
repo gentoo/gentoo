@@ -19,7 +19,9 @@ DEPEND="
 	net-analyzer/net-snmp"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/nagios-plugins-snmp"
+S="${WORKDIR}"/nagios-plugins-snmp
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
