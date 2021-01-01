@@ -1,0 +1,88 @@
+From d2c0fc2b5f1c07c1e0acb1c0127578066b6f9b8e Mon Sep 17 00:00:00 2001
+From: Edward Welbourne <edward.welbourne@qt.io>
+Date: Tue, 24 Nov 2020 12:45:11 +0100
+Subject: [PATCH] Bounds-check time-zone offsets when parsing
+
+Parsing of time-zone offsets should check the offset string conforms
+to the expected format and has valid values in its fields. The
+QDateTime parser, fromOffsetString(), neglected the bounds check on
+hours; the QTzTimeZonePrivate parser, parsePosixTime(), neglected all
+upper bounds checks, only checking against negative valus.
+
+Drive-by - refined phrasing of a comment.
+
+Fixes: QTBUG-88656
+Change-Id: If04cdbe65064108eaa87c42310527783ad21b4c0
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+(cherry picked from commit 380d97e1bd15e753907c378a070bdf7f1c1cf06e)
+Reviewed-by: Edward Welbourne <edward.welbourne@qt.io>
+---
+ src/corelib/time/qdatetime.cpp           |  2 +-
+ src/corelib/time/qtimezoneprivate_tz.cpp | 27 ++++++++++++++++-----------
+ 2 files changed, 17 insertions(+), 12 deletions(-)
+
+diff --git a/src/corelib/time/qdatetime.cpp b/src/corelib/time/qdatetime.cpp
+index e824787880c..a2816e87f4a 100644
+--- a/src/corelib/time/qdatetime.cpp
++++ b/src/corelib/time/qdatetime.cpp
+@@ -240,7 +240,7 @@ static int fromOffsetString(QStringView offsetString, bool *valid) noexcept
+     const QStringView hhRef = time.left(qMin(hhLen, time.size()));
+     bool ok = false;
+     const int hour = C.toInt(hhRef, &ok);
+-    if (!ok)
++    if (!ok || hour > 23) // More generous than QTimeZone::MaxUtcOffsetSecs
+         return 0;
+ 
+     const QStringView mmRef = time.mid(qMin(mmIndex, time.size()));
+diff --git a/src/corelib/time/qtimezoneprivate_tz.cpp b/src/corelib/time/qtimezoneprivate_tz.cpp
+index b816b4ecff2..adc590878d7 100644
+--- a/src/corelib/time/qtimezoneprivate_tz.cpp
++++ b/src/corelib/time/qtimezoneprivate_tz.cpp
+@@ -394,29 +394,34 @@ static int parsePosixTime(const char *begin, const char *end)
+     // Format "hh[:mm[:ss]]"
+     int hour, min = 0, sec = 0;
+ 
+-    // Note that the calls to qstrtoll do *not* check the end pointer, which
+-    // means they proceed until they find a non-digit. We check that we're
+-    // still in range at the end, but we may have read from past end. It's the
+-    // caller's responsibility to ensure that begin is part of a
+-    // null-terminated string.
++    // Note that the calls to qstrtoll do *not* check against the end pointer,
++    // which means they proceed until they find a non-digit. We check that we're
++    // still in range at the end, but we may have read past end. It's the
++    // caller's responsibility to ensure that begin is part of a null-terminated
++    // string.
+ 
++    const int maxHour = QTimeZone::MaxUtcOffsetSecs / 3600;
+     bool ok = false;
+-    hour = qstrtoll(begin, &begin, 10, &ok);
+-    if (!ok || hour < 0)
++    const char *cut = begin;
++    hour = qstrtoll(begin, &cut, 10, &ok);
++    if (!ok || hour < 0 || hour > maxHour || cut > begin + 2)
+         return INT_MIN;
++    begin = cut;
+     if (begin < end && *begin == ':') {
+         // minutes
+         ++begin;
+-        min = qstrtoll(begin, &begin, 10, &ok);
+-        if (!ok || min < 0)
++        min = qstrtoll(begin, &cut, 10, &ok);
++        if (!ok || min < 0 || min > 59 || cut > begin + 2)
+             return INT_MIN;
+ 
++        begin = cut;
+         if (begin < end && *begin == ':') {
+             // seconds
+             ++begin;
+-            sec = qstrtoll(begin, &begin, 10, &ok);
+-            if (!ok || sec < 0)
++            sec = qstrtoll(begin, &cut, 10, &ok);
++            if (!ok || sec < 0 || sec > 59 || cut > begin + 2)
+                 return INT_MIN;
++            begin = cut;
+         }
+     }
+ 
+-- 
+2.16.3
