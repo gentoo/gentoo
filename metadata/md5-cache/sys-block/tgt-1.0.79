@@ -10,4 +10,4 @@ RDEPEND=app-text/docbook-xsl-stylesheets dev-libs/libxslt dev-perl/Config-Genera
 SLOT=0
 SRC_URI=https://github.com/fujita/tgt/tarball/v1.0.79 -> tgt-1.0.79.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=a5882cdd88986971dffd0acabf59cb13
+_md5_=3acc4682052a593d174ccd22b0cfe61e
