@@ -41,6 +41,7 @@ src_prepare() {
 	sed -i -e 's:\($(CC)\) $^:\1 $(LDFLAGS) $^:' usr/Makefile || die
 	# make sure xml docs are generated before trying to install them
 	sed -i -e "s@install: @& all @g" doc/Makefile || die
+	sed -i -e 's|-Werror||g' usr/Makefile || die
 }
 
 src_compile() {
