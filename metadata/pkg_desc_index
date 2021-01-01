@@ -681,7 +681,7 @@ app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.27 2.28 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
 app-admin/pprocm 1.0-r2: ncurses-based program to monitor CPU, disk, network and memory usage
-app-admin/prelude-manager 3.0.0 4.0.0 4.1.1 5.1.0 5.2.0: Bus communication for all Prelude modules
+app-admin/prelude-manager 5.1.0 5.2.0: Bus communication for all Prelude modules
 app-admin/procinfo-ng 2.0.304-r1: Completely rewrite of the old system monitoring app procinfo
 app-admin/profile-cleaner 2.36: Vacuum and reindex browser sqlite databases
 app-admin/ps_mem 3.13_p20200417: A utility to report core memory usage per program
@@ -709,7 +709,7 @@ app-admin/rex 1.13.0 1.13.1 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2019.2.7 2019.2.8 3000.5 3000.6 3001.4-r1 3002.2-r2: Salt is a remote execution and configuration manager
+app-admin/salt 3000.5 3000.6 3001.4-r1 3002.2-r2: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
@@ -1120,7 +1120,7 @@ app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive key
 app-crypt/veracrypt 1.24_p7 1.24_p8: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
-app-crypt/yubikey-manager 3.1.0-r1 3.1.1-r1: Python library and command line tool for configuring a YubiKey
+app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-manager-qt 1.1.4-r2 1.1.5: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zulucrypt 5.5.0_pre20180223: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
@@ -2042,7 +2042,7 @@ app-emulation/protontricks 1.4.1 1.4.2: app-emulation/winetricks wrapper for Pro
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
 app-emulation/qemu 5.1.0-r2 5.1.0-r3 5.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
-app-emulation/qemu-guest-agent 3.1.0 4.0.0 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
+app-emulation/qemu-guest-agent 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
@@ -2050,7 +2050,7 @@ app-emulation/reg 0.16.1: Docker registry v2 command line client
 app-emulation/runc 1.0.0_rc10-r1: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3 2.1.0.2-r1: an s6-based init system for containers
-app-emulation/sen 0.6.0 0.6.1 0.6.1_p20200905: Terminal User Interface for docker engine
+app-emulation/sen 0.6.1_p20200905: Terminal User Interface for docker engine
 app-emulation/simh 3.11.1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/simplevirt 0.0_p20181012-r1: Simple virtual machine manager for Linux (QEMU/KVM)
 app-emulation/ski 1.3.2-r4: ia64 instruction set simulator
@@ -2332,7 +2332,7 @@ app-misc/abook 0.6.1-r2: Abook is a text-based addressbook program designed to u
 app-misc/acdctl 1.1-r1: Apple Cinema Display Control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
-app-misc/anki 2.1.0_beta27 2.1.13-r1 2.1.15: A spaced-repetition memory training program (flash cards)
+app-misc/anki 2.1.15: A spaced-repetition memory training program (flash cards)
 app-misc/asciicast-tools 0.0_pre20190410: Tools for creating recordings of console sessions
 app-misc/asciinema 2.0.2: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r3: A many featured astrology chart calculation program
@@ -2444,7 +2444,7 @@ app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.3: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 2.0.0-r1: Contains the lowlevel lcd drivers for GraphLCD
-app-misc/grc 1.11-r1 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
+app-misc/grc 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2-r1: Real-time Sunlight Wallpaper
 app-misc/gtypist 2.9.5-r1: Universal typing tutor
 app-misc/hatools 2.14: High availability environment tools for shell scripting
@@ -2455,7 +2455,7 @@ app-misc/hilite 1.5-r1: A utility which highlights stderr text in red
 app-misc/hivex 1.3.14 1.3.18: Library for reading and writing Windows Registry 'hive' binary files
 app-misc/hodie 1.5: a Latin date(1)
 app-misc/i2bits 0.1.0: Utility to convert hex or dec to binary format
-app-misc/icdiff 1.9.1 1.9.5: Colourized diff that supports side-by-side diffing
+app-misc/icdiff 1.9.5: Colourized diff that supports side-by-side diffing
 app-misc/imgurbash2 3.1 3.2 9999: Bash script that uploads/deletes images to/from imgur
 app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
@@ -2672,7 +2672,7 @@ app-office/skrooge 2.23.0-r1 2.24.0: Personal finances manager, aiming at being 
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 3.0.0_pre20200601 3.0.1-r1 3.0.2 9999: Free cross-platform LaTeX editor (fork from texmakerX)
-app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
+app-office/unoconv 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.4.5.1: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
 app-office/wps-office 11.1.0.9615 11.1.0.9719: WPS Office is an office productivity suite
@@ -2736,7 +2736,7 @@ app-portage/kuroo 1.0.0 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 6: Handy scripts for ebuild development and more
-app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
+app-portage/mirrorselect 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/nattka 0.2.9 0.2.10 0.2.11 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r2: Simple tool for static analysis of overlays
@@ -3167,7 +3167,7 @@ app-vim/increment 1.1-r1: vim plugin: easily create sequences of incremented val
 app-vim/indentpython 0.3: vim plugin: Indent Python code according to PEP8
 app-vim/info 1.7-r2: vim plugin: GNU info documentation browser
 app-vim/iris 1.0.0: vim plugin: mail client for vim
-app-vim/jedi 0.8_p20171015-r1 0.10.0: vim plugin: binding to the autocompletion library jedi
+app-vim/jedi 0.10.0: vim plugin: binding to the autocompletion library jedi
 app-vim/json 20150511: vim plugin: a better JSON for Vim
 app-vim/l9 1.1: vim plugin: library for vim scripts
 app-vim/languagetool 1.30: grammar checker for various languages
@@ -3248,7 +3248,7 @@ app-vim/vim-flake8 1.6: vim plugin: runs the currently open file through flake8
 app-vim/vim-go 1.13 1.19 1.20: vim plugin: Go development plugin for Vim
 app-vim/vim-hoogle 1.3: vim plugin: use hoogle within vim
 app-vim/vim-jsonnet 0_pre20190502: vim plugin: Filetype plugin for dev-lang/jsonnet
-app-vim/vim-latex 1.10.0-r1 1.10.0-r2: A comprehensive set of tools to view, edit and compile LaTeX documents
+app-vim/vim-latex 1.10.0-r2: A comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-multiple-cursors 2.2-r1: vim plugin: Sublime Text's awesome multiple selection feature for Vim
 app-vim/vim-nftables 0_pre20200224 0_pre20200629-r1: vim plugin:
@@ -3275,8 +3275,8 @@ app-vim/vimbuddy 0.9.2-r1: vim plugin: vimbuddy for the status line
 app-vim/vimcdoc 1.9.0 2.1.0: online vim documentation translated into Chinese
 app-vim/vimclojure 2.3.6-r3: vim plugin: Clojure syntax highlighting, filetype and indent settings
 app-vim/vimcommander 0.81: vim plugin: Total Commander style file explorer
-app-vim/vimoutliner 0.3.6-r1 0.3.6-r3 0.4.0_p20180301-r2: Vim plugin for easy and fast outlining
-app-vim/vimpython 1.13-r2 1.13-r3: vim plugin: A set of menus/shortcuts to work with Python files
+app-vim/vimoutliner 0.3.6-r1 0.4.0_p20180301-r2: Vim plugin for easy and fast outlining
+app-vim/vimpython 1.13-r3: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/vimtex 1.5 99999999: vim plugin: a modern vim plugin for editing LaTeX files
 app-vim/voom 5.3-r1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.3: vim plugin: interface to Web APIs
@@ -5106,7 +5106,7 @@ dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO
 dev-lang/go 1.14.12 1.14.13-r1 1.15.5 1.15.6-r1 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
-dev-lang/hy 0.14.0 0.15.0 0.16.0 0.17.0: A LISP dialect running in python
+dev-lang/hy 0.17.0: A LISP dialect running in python
 dev-lang/icon 9.5.1-r1 9.5.1-r2 9.5.20h: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
@@ -5324,7 +5324,7 @@ dev-libs/judy 1.0.5-r2 1.0.5-r3: A C library that implements a dynamic array
 dev-libs/kasync 0.3.0: C++ library for controlling asynchronous tasks
 dev-libs/kdiagram 2.7.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
-dev-libs/keystone 0.9.1 0.9.1-r1 9999: assembly/assembler framework + bindings
+dev-libs/keystone 0.9.1-r1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.3.2_p20200406: Path searching library for TeX-related files
 dev-libs/kpeoplevcard 0.1: Library to expose vcards to KPeople
@@ -5352,7 +5352,7 @@ dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.3 2.4: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
-dev-libs/libcbor 0.5.0 0.6.0-r1 0.6.1 0.7.0 0.8.0: CBOR protocol implementation for C and others
+dev-libs/libcbor 0.8.0: CBOR protocol implementation for C and others
 dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.4-r1 4.0.7 6.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
@@ -5433,7 +5433,7 @@ dev-libs/liblinear 241 242: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
-dev-libs/liblouis 3.10.0 3.13.0: An open-source braille translator and back-translator
+dev-libs/liblouis 3.13.0: An open-source braille translator and back-translator
 dev-libs/libltdl 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
@@ -5473,8 +5473,8 @@ dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 7.1.2 7.2.1 7.3.0: Standard front-end for writing C++ programs that use PostgreSQL
-dev-libs/libprelude 4.0.0 4.1.0 5.1.1 5.2.0 5.2.0-r10: Prelude-SIEM Framework Library
-dev-libs/libpreludedb 4.0.0-r1 4.1.0-r1 5.1.0 5.2.0: Framework to easy access to the Prelude database
+dev-libs/libprelude 5.1.1 5.2.0 5.2.0-r10: Prelude-SIEM Framework Library
+dev-libs/libpreludedb 5.1.0 5.2.0: Framework to easy access to the Prelude database
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.2 1.4.4: Library for password quality checking and generating random passwords
 dev-libs/libpy 0.2.5-r1: Utilities for writing C++ extension modules
@@ -6711,7 +6711,7 @@ dev-perl/Importer 0.24.0: Alternative interface to modules that export symbols
 dev-perl/Inline 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.780.0: C Language Support for Inline
 dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
-dev-perl/Inline-Python 0.560.0 0.560.0-r1: Easy implementation of Python extensions
+dev-perl/Inline-Python 0.560.0-r1: Easy implementation of Python extensions
 dev-perl/JSON 2.940.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
 dev-perl/JSON-MaybeXS 1.3.9: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
@@ -8843,7 +8843,7 @@ dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-regressions 2.0.2 2.1.1: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
-dev-python/pytest-salt 2019.2.1_p1 2020.1.27: PyTest Salt Plugin
+dev-python/pytest-salt 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
 dev-python/pytest-services 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
@@ -9243,7 +9243,7 @@ dev-python/vpython 7.6.1-r2: VPython for Jupyter notebook
 dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3 0.6.5: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
-dev-python/watchdog 0.8.3-r2 0.10.4 0.10.5 1.0.0 1.0.2: Python API and shell utilities to monitor file system events
+dev-python/watchdog 0.10.4 0.10.5 1.0.0 1.0.2: Python API and shell utilities to monitor file system events
 dev-python/wcmatch 7.1: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
@@ -9305,7 +9305,7 @@ dev-python/zope-interface 5.1.2 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
 dev-python/zope-testing 4.7-r2: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
-dev-python/zstandard 0.8.1-r1 0.14.0-r1 0.14.1 0.15.0: Zstandard Bindings for Python
+dev-python/zstandard 0.14.0-r1 0.14.1 0.15.0: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
 dev-qt/assistant 5.15.1 5.15.2: Tool for viewing on-line documentation in Qt help file format
@@ -10551,7 +10551,7 @@ dev-util/amtterm 1.6: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 4.0.1.0.193.6626763 4.1.0.19.201.6858069: Android development environment based on IntelliJ IDEA
-dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
+dev-util/android-tools 5.1.1_p13 6.0.1_p79 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.34.0: A versatile IDE for GNOME
 dev-util/apitrace 9.0-r1: Tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
@@ -10964,10 +10964,10 @@ dev-vcs/hg-git 0.9.0_rc1-r1 0.9.0: push to and pull from a Git repository using 
 dev-vcs/hub 2.13.0 2.14.1 2.14.2: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
 dev-vcs/lab 0.17.2: Lab wraps Git or Hub, making it simple to interact with repositories on GitLab
-dev-vcs/mercurial 5.2.2-r2 5.3.2-r1 5.4.2-r1 5.5.2 5.6 9999: Scalable distributed SCM
+dev-vcs/mercurial 5.3.2-r1 5.4.2-r1 5.5.2 5.6 9999: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
-dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0 2.2.0 2.3.1 2.5.0: Python command line interface to gitlab API
+dev-vcs/python-gitlab 2.5.0: Python command line interface to gitlab API
 dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
@@ -11788,7 +11788,7 @@ gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
 gnome-base/libgtop 2.40.0-r1: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.21 2.48.8 2.48.9: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.36.3: Default file manager for the GNOME desktop
-gnome-extra/chrome-gnome-shell 10-r3 10-r4: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
+gnome-extra/chrome-gnome-shell 10-r4: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 4.6.7: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 4.6.2: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 4.6.4: A collection of libraries and utilites used by Cinnamon
@@ -14358,9 +14358,9 @@ net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0-r1: Portmon is a network service monitoring daemon
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
-net-analyzer/prelude-correlator 4.0.0 4.1.1 5.1.0 5.2.0: Real time correlator of events received by Prelude Manager
-net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0 5.2.0: The prelude log analyzer
-net-analyzer/prelude-lml-rules 3.0.1 4.0.0 4.1.0 5.1.0 5.2.0: Prelude LML community ruleset
+net-analyzer/prelude-correlator 5.1.0 5.2.0: Real time correlator of events received by Prelude Manager
+net-analyzer/prelude-lml 5.1.0 5.2.0: The prelude log analyzer
+net-analyzer/prelude-lml-rules 5.1.0 5.2.0: Prelude LML community ruleset
 net-analyzer/prettyping 1.0.1: Ping wrapper that produces coloured, easily readable output.
 net-analyzer/pypacker 4.8 4.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/python-gvm 1.1.0 1.2.0 1.5.0 1.6.0: Greenbone Vulnerability Management Python Library
@@ -17937,7 +17937,7 @@ www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible stat
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 18.0.10 18.0.11 18.0.12 19.0.4 19.0.5 19.0.6 20.0.2 20.0.3 20.0.4: Personal cloud that runs on your own server
-www-apps/nikola 7.8.15 7.8.15-r1 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
+www-apps/nikola 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.0.0 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
@@ -18042,7 +18042,7 @@ www-servers/sniproxy 0.5.0 0.6.0-r1: Proxies incoming HTTP and TLS connections b
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.106 7.0.107 8.5.60 8.5.61 9.0.40 9.0.41: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
-www-servers/tornado 4.5.3 6.0.4: Python web framework and asynchronous networking library
+www-servers/tornado 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1 2.0.19.1-r100: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
