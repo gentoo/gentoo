@@ -7777,7 +7777,6 @@ sys-apps/portage:xattr - Preserve extended attributes (filesystem-stored metadat
 sys-apps/proot:care - Build dynamic CARE binary (more info - https://proot-me.github.io)
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
 sys-apps/razercfg:gui - Installs GUI configuration utility and status bar applet. Requires dev-python/PyQt5
-sys-apps/razercfg:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
 sys-apps/rng-tools:jitterentropy - Enable Jitter RNG entropy support
 sys-apps/rng-tools:nistbeacon - Enable NIST beacon entropy support
 sys-apps/rng-tools:pkcs11 - Enable PKCS11 entropy support

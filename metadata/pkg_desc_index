@@ -8715,7 +8715,7 @@ dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer m
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.12.4-r4 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0: Python bindings for libgit2
 dev-python/pyglet 1.5.10 1.5.11 1.5.13 1.5.14: Cross-platform windowing and multimedia library for Python
@@ -14623,7 +14623,7 @@ net-im/mcabber 1.1.0-r1 1.1.0-r2 1.1.2 9999: A small Jabber console client with 
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1: GTK Instant Messenger client
-net-im/poezio 0.12 0.13.1 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
+net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.5-r1 0.11.7-r2 0.11.7-r100: Prosody is a modern XMPP communication server
 net-im/prosody-modules 0_pre20201004 9999: A collection of community-maintained modules for Prosody
@@ -14831,7 +14831,7 @@ net-libs/libssh2 1.9.0_p20200614 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.23 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.14 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.20.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
@@ -14876,7 +14876,7 @@ net-libs/signond 8.60-r2: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/srt 1.4.1-r1 1.4.2 9999: Secure Reliable Transport (SRT) library and tools
-net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1 1.8.0-r1: Stem is a Python controller library for Tor
+net-libs/stem 1.7.0 1.7.1 1.8.0-r1: Stem is a Python controller library for Tor
 net-libs/telepathy-accounts-signon 2.1: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
@@ -15055,7 +15055,7 @@ net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLN
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.80-r1 2020.81: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 112.4.321: Dropbox daemon (pretends to be GUI-less)
-net-misc/dropbox-cli 19 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
+net-misc/dropbox-cli 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
@@ -15088,7 +15088,7 @@ net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1 1.8.1: The GNU SASL client, server, and library
-net-misc/gsutil 4.41 4.45 4.47 4.50: command line tool for interacting with cloud storage services
+net-misc/gsutil 4.50: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
 net-misc/gwhois 20120626-r1: Generic whois
@@ -15175,10 +15175,10 @@ net-misc/nextcloud-client 2.6.5 3.0.2 3.0.3 3.1.0 3.1.1: Desktop Syncing Client 
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p15: Network Time Protocol suite/programs
-net-misc/ntpsec 1.1.7-r1 1.1.8 1.1.9 9999: The NTP reference implementation, refactored
+net-misc/ntpsec 1.1.9 9999: The NTP reference implementation, refactored
 net-misc/nx 3.5.99.16 3.5.99.22 3.5.99.23 3.5.99.24 3.5.99.25: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
-net-misc/nyx 2.0.4 2.1.0-r1: Utility to monitor real time Tor status information
+net-misc/nyx 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.31: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidc-agent 3.3.1 3.3.5-r1: Agent and tools for managing OpenID Connect tokens on the command line
 net-misc/oidentd 2.5.0: Another (RFC1413 compliant) ident daemon
@@ -15210,9 +15210,9 @@ net-misc/ptpd 2.3.1-r1 2.3.1-r2: Precision Time Protocol daemon
 net-misc/puf 1.0.0-r1: A download tool for UNIX-like systems
 net-misc/pulseaudio-dlna 0.6.0_pre20200114 9999: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/putty 0.74 9999: A Free Telnet/SSH Client
-net-misc/pyhoca-cli 0.6.0.1 0.6.1.1 0.6.1.2: X2Go command line client
+net-misc/pyhoca-cli 0.6.1.1 0.6.1.2: X2Go command line client
 net-misc/pyhoca-gui 0.6.1.0 0.6.1.1: X2Go graphical client applet
-net-misc/python-x2go 0.6.0.2 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python API
+net-misc/python-x2go 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python API
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
@@ -15492,7 +15492,7 @@ net-vpn/openconnect 8.09-r1 8.09-r3 8.10 8.10-r1 9999: Free client for Cisco Any
 net-vpn/openfortivpn 1.13.2 1.13.3 1.15.0: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 2.5.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/protonvpn-cli 2.2.0 2.2.2: A VPN command-line tool from protonvpn - python rewrite
+net-vpn/protonvpn-cli 2.2.2: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 1.2.10-r1: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
@@ -15721,7 +15721,7 @@ sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
-sci-astronomy/pyephem 3.7.6.0-r1 3.7.7.1: Astronomical routines for the python programming language
+sci-astronomy/pyephem 3.7.7.1: Astronomical routines for the python programming language
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
 sci-astronomy/sextractor 2.19.5-r1: Extract catalogs of sources from astronomical FITS images
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
@@ -15910,7 +15910,7 @@ sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
 sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.4 2020.9999 2021_beta3 2021.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
-sci-chemistry/mdtraj 1.9.1 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
+sci-chemistry/mdtraj 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
 sci-chemistry/modeller 9.25: Homology or comparative modeling of protein three-dimensional structures
 sci-chemistry/molden 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
@@ -15924,7 +15924,7 @@ sci-chemistry/mpqc 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
 sci-chemistry/msms-bin 2.6.1-r1: MSMS very efficiently computes triangulations of Solvent Excluded Surfaces
 sci-chemistry/mustang 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.10: A powerful and highly parallelized molecular dynamics code
-sci-chemistry/nmrglue 0.5-r1 0.7: A module for working with NMR data in Python
+sci-chemistry/nmrglue 0.7: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
 sci-chemistry/openbabel 2.4.1 2.4.1-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
@@ -16081,7 +16081,7 @@ sci-libs/avogadrolibs 1.91.0_pre20180415 1.93.0: Advanced molecule editor and vi
 sci-libs/beagle 3.0.3-r1: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blis 0.5.2 0.6.0: BLAS-like Library Instantiation Software Framework
 sci-libs/bliss 0.73-r1 0.73-r2: Compute Automorphism Groups and Canonical Labelings of Graphs
-sci-libs/bmrblib 1.0.3 1.0.4: API abstracting the BioMagResBank (BMRB) NMR-STAR format
+sci-libs/bmrblib 1.0.4: API abstracting the BioMagResBank (BMRB) NMR-STAR format
 sci-libs/brial 1.2.8 1.2.10: A C++ library for polynomials over boolean rings
 sci-libs/btf 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
@@ -16138,7 +16138,7 @@ sci-libs/cxsparse 3.2.0: Extended sparse matrix package
 sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9.2.0 9999: Solving partial differential equations with the finite element method
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
-sci-libs/dlib 19.9 19.16-r1: Numerical and networking C++ library
+sci-libs/dlib 19.16-r1: Numerical and networking C++ library
 sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed machine learning.
 sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/eccodes 2.16.0: A set of encoding/decoding APIs and tools for WMO GRIB, BUFR, and GTS messages
@@ -16282,7 +16282,7 @@ sci-libs/scalapack 2.0.2-r1 2.1.0: Subset of LAPACK routines redesigned for hete
 sci-libs/scikit-image 0.13.0-r1 0.17.2: Image processing routines for SciPy
 sci-libs/scikit-learn 0.22.2_p1-r1 0.23.2: Machine learning library for Python
 sci-libs/scikit-optimize 0.8.1: Sequential model-based optimization library
-sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
+sci-libs/scikits 0.1-r2: Common files for python scikits
 sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shapely 1.6.4_p2-r1 1.7.0 1.7.1: Geometric objects, predicates, and operations
@@ -16413,12 +16413,12 @@ sci-misc/ncview 2.1.7: X-based viewer for netCDF files
 sci-misc/netlogo-bin 5.0.3-r1 6.0.2: Cross-platform multi-agent programmable modeling environment
 sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/tango 9.2.5a: Tango is an Open Source solution for SCADA and DCS
-sci-misc/vitables 3.0.0-r1 3.0.0-r2: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
+sci-misc/vitables 3.0.0-r2: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
 sci-physics/bullet 2.86 2.89 3.05 3.07: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6 2006-r7: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
 sci-physics/clhep 2.4.1.3-r2 2.4.4.0: High Energy Physics C++ library
-sci-physics/espresso 4.0_pre20170228 4.0.0-r2 4.1.3 9999: Extensible Simulation Package for Research on Soft matter
+sci-physics/espresso 4.1.3 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/fastjet 3.0.6-r1: Fast implementation of several recombination jet algorithms
 sci-physics/geant 4.10.6-r1 4.10.6_p1-r1 4.10.6_p2 4.10.6.3 4.10.7: Toolkit for simulation of passage of particles through matter
 sci-physics/geant-data 4.10.6-r1 4.10.6_p1-r1 4.10.6.3 4.10.7: Data files for Geant4 physical processes
@@ -16428,7 +16428,7 @@ sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Parti
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20180117 20180222 20180308 20180316 20180822 20181212 20190605 20190807 20190807-r1 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 6.2.3: Les Houches Parton Density Function unified library
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
@@ -16466,7 +16466,7 @@ sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotte
 sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 2018.12.24 9999: 2D and 3D data visualization and analysis program
 sci-visualization/tensorboard 2.3.0 2.4.0: TensorFlow's Visualization Toolkit
-sci-visualization/veusz 3.1 3.2: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 3.2: Qt scientific plotting package with good Postscript output
 sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
 sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 4.3.0: Tool for extracting data points from graphs
@@ -16764,7 +16764,7 @@ sys-apps/collectl 4.3.1: Performance monitoring tool capable of interactive repo
 sys-apps/colorized-logs 2.4 2.5: Tools for logs with ANSI color
 sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.10 1.14: Remote control for Linux virtual consoles
-sys-apps/coreutils 8.30 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
+sys-apps/coreutils 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20201006: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
@@ -16940,7 +16940,7 @@ sys-apps/pv 1.6.6: Pipe Viewer: a tool for monitoring the progress of data throu
 sys-apps/qcontrol 0.4.2-r1 0.4.2-r100: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
 sys-apps/qdirstat 1.7: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
-sys-apps/razercfg 0.39-r2 0.42: Utility for advanced configuration of Razer mice
+sys-apps/razercfg 0.42: Utility for advanced configuration of Razer mice
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
 sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
