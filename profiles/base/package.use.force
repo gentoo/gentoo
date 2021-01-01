@@ -6,9 +6,22 @@
 # everywhere.
 # See this mailing list thread:
 # https://archives.gentoo.org/gentoo-user/message/efc647eb07fb8c99b2619e3402281edd
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-01-01)
+# Add more packages
+#
+# a) no additional deps
 sys-libs/ncurses unicode
 sys-libs/readline unicode
 app-editors/nano unicode
+app-admin/metalog unicode
+app-arch/unzip unicode
+app-arch/zip unicode
+sys-apps/util-linux unicode
+sys-process/procps unicode
+www-client/lynx unicode
+#
+# b) using libidn
+app-text/ghostscript-gpl unicode
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-01)
 # sys-boot/udk is being removed, and newest revision of refind does not
