@@ -1,0 +1,11 @@
+diff -Naur wmpower-0.4.3.orig/configure.in wmpower-0.4.3/configure.in
+--- wmpower-0.4.3.orig/configure.in	2008-11-25 11:05:58.000000000 +0100
++++ wmpower-0.4.3/configure.in	2021-01-03 00:30:15.977692665 +0100
+@@ -3,6 +3,7 @@
+ AC_CONFIG_SRCDIR(src/wmpower.c)
+ AM_INIT_AUTOMAKE([1.7 check-news dist-bzip2])
+ 
++AM_PROG_AR
+ AC_GNU_SOURCE
+ AC_PROG_INSTALL
+ AC_PROG_CC
