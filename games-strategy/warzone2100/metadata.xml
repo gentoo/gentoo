@@ -15,4 +15,8 @@
 		<remote-id type="sourceforge">warzone2100</remote-id>
 		<remote-id type="github">Warzone2100/warzone2100</remote-id>
 	</upstream>
+	<use>
+		<flag name="discord">Enable Discord presence/join integration</flag>
+		<flag name="vulkan">Enable vulkan backend</flag>
+	</use>
 </pkgmetadata>
