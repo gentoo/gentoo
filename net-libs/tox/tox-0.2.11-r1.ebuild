@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ DEPEND="
 		media-libs/libvpx
 		media-libs/opus
 	)
-	daemon? ( dev-libs/libconfig )"
+	daemon? ( dev-libs/libconfig:= )"
 RDEPEND="
 	${DEPEND}
 	daemon? (
