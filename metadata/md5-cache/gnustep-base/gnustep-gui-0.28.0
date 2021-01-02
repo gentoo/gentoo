@@ -5,11 +5,11 @@ DESCRIPTION=Library of GUI classes written in Obj-C
 EAPI=7
 HOMEPAGE=http://www.gnustep.org/
 IUSE=cups gif icu jpeg png speech debug doc test
-KEYWORDS=~alpha amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 ppc sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) app-text/aspell >=gnustep-base/gnustep-base-1.27.0:=[icu?] media-libs/audiofile >=media-libs/tiff-3:= x11-libs/libXt cups? ( >=net-print/cups-1.7.4:= ) gif? ( >=media-libs/giflib-4.1:= ) icu? ( dev-libs/icu:= ) jpeg? ( virtual/jpeg:= ) png? ( >=media-libs/libpng-1.2:= ) speech? ( app-accessibility/flite )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.28.0.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=90e5d831c531a0b64e4c1ef9c66c2fdb
+_md5_=1deae9c63a4f5f54cc403b28f3d04fdc
