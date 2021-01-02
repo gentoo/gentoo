@@ -1,12 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils
+inherit cmake xdg-utils
 
-DESCRIPTION="A puzzle/platform game with a player and its shadow"
-HOMEPAGE="http://meandmyshadow.sourceforge.net/"
+DESCRIPTION="Puzzle/platform game with a player and its shadow"
+HOMEPAGE="https://acmepjz.github.io/meandmyshadow/
+https://github.com/acmepjz/meandmyshadow/"
 SRC_URI="mirror://sourceforge/meandmyshadow/${PV}/${P}-src.tar.gz"
 
 LICENSE="GPL-3 OFL-1.1 CC-BY-SA-2.5"
@@ -41,13 +42,13 @@ src_configure() {
 		-DDESKTOPDIR=/usr/share/applications
 		-DHARDWARE_ACCELERATION=$(usex opengl)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
