@@ -2,23 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="https://sourceforge.net/projects/iperf2/"
 SRC_URI="mirror://sourceforge/${PN}2/${PN}-2.0.13.tar.gz"
+S="${WORKDIR}/${PN}-2.0.13"
 
 LICENSE="HPND"
 SLOT="2"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="ipv6 threads debug"
 
-DOCS="INSTALL README"
+DOCS=( "INSTALL README" )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.12-ipv6.patch
 	"${FILESDIR}"/${P}.patch
 )
-S=${WORKDIR}/${PN}-2.0.13
 
 src_configure() {
 	econf \
@@ -33,6 +35,7 @@ src_compile() {
 
 src_install() {
 	default
+
 	dodoc doc/*
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
