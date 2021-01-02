@@ -23,7 +23,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
 	av? (
-		media-libs/libvpx
+		media-libs/libvpx:=
 		media-libs/opus
 	)
 	daemon? ( dev-libs/libconfig:= )"
