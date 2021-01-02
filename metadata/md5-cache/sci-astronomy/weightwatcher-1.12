@@ -1,10 +1,12 @@
-DEFINED_PHASES=install
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
 DESCRIPTION=Combine weight maps and polygon for astronomical images weighting
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.astromatic.net/software/weightwatcher/
 IUSE=doc
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://www.astromatic.net/download/weightwatcher/weightwatcher-1.12.tar.gz
-_md5_=cdd5875cbff8487ea1871922b83d072f
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=eae19f49113032abfbf03fb042596c8d

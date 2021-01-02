@@ -206,6 +206,7 @@ acct-group/simplevirt 0-r1: System group: simplevirt
 acct-group/sks 0: Group for SKS OpenPGP keyserver
 acct-group/slurm 0-r1: A group for the slurm - Highly Scalable Resource Manager
 acct-group/smmsp 0-r1: System group: smmsp
+acct-group/sms 0: System group: sms
 acct-group/smtpd 0-r1: daemon group for smtpd
 acct-group/smtpq 0-r1: queue group for smtpd
 acct-group/snapserver 0: Server group for media-sound/snapcast
@@ -473,6 +474,7 @@ acct-user/sigh 0: System user: sigh
 acct-user/sks 0: User for the SKS OpenPGP keyserver
 acct-user/slurm 0-r1: User for the slurm - Highly Scalable Resource Manager
 acct-user/smmsp 0-r1: user for sendmail daemon
+acct-user/smsd 0: System user: smsd
 acct-user/smtpd 0-r1: daemon user for smtpd
 acct-user/smtpq 0-r1: queue user for smtpd
 acct-user/snapclient 0: Client user for media-sound/snapcast
@@ -2622,7 +2624,7 @@ app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Sams
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
-app-mobilephone/smstools 3.1.21-r1: Send and receive short messages through GSM modems
+app-mobilephone/smstools 3.1.21-r1 3.1.21-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1-r3: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-office/abiword 3.0.4: Fully featured yet light and fast cross platform word processor
@@ -16970,7 +16972,7 @@ sys-apps/servicelog 1.1.15: Provides utilities for logging service-related event
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
-sys-apps/smartmontools 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
+sys-apps/smartmontools 7.1-r1 7.2 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.5.0.20200722: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r4: Supermicro Update Manager (SUM) kernel module
 sys-apps/smcipmitool 2.24.0.201007-r1: An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
