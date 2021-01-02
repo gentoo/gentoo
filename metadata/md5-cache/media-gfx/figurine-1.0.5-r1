@@ -1,10 +1,12 @@
-DEFINED_PHASES=configure install
-DEPEND=>=media-gfx/transfig-3.2
+DEFINED_PHASES=configure
+DEPEND=media-gfx/transfig
 DESCRIPTION=A vector based graphics editor similar to xfig, but simpler
-EAPI=6
+EAPI=7
 HOMEPAGE=http://figurine.sourceforge.net/
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
+RDEPEND=media-gfx/transfig
 SLOT=0
 SRC_URI=mirror://sourceforge/figurine/figurine-1.0.5.tar.gz
-_md5_=0604febc7195295579a78fb1e75df5c9
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=934608aafb7470de7ed238ad71eb69b8
