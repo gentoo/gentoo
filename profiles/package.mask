@@ -33,6 +33,14 @@
 #--- END OF EXAMPLES ---
 
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
+# sci-physics/cernlib fails to build with gcc-10, last release in 2006,
+# multiple open bugs, all revdeps also broken and declared EOL upstream.
+# Removal in 30 days, bug #763183
+sci-physics/cernlib
+sci-physics/cernlib-montecarlo
+sci-physics/paw
+
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
 # Fails to build with gcc-10, no maintainer, upstream gone,
 # multiple open bugs.
 # Removal in 30 days, bug #677322, bug #707200, bug #716012

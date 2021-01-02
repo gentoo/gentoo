@@ -65,9 +65,9 @@ multilib_src_install_all() {
 	dodoc docs/{quick,cfitsio,fpackguide}.pdf
 	dodoc docs/fitsio.pdf
 
-	insinto /usr/share/doc/${PF}/examples
-	doins cookbook.c testprog.c speed.c smem.c
-	doins cookbook.f testf77.f
+	docinto examples
+	dodoc cookbook.c testprog.c speed.c smem.c
+	dodoc cookbook.f testf77.f
 
 	# Remove static libs
 	find "${ED}" -name '*.a' -delete || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,18 +25,20 @@ DEPEND="doc? ( app-doc/doxygen )"
 DOCS=( ChangeLog.md README.md )
 
 src_configure() {
+	# Tests are built by default so we can't group the test logic below
 	local mycmakeargs=(
 		-DJSON_MultipleHeaders=ON
+		-DJSON_BuildTests=$(usex test)
 	)
 
 	if use test ; then
 		# Define test data directory here to avoid unused var QA warning
 		# #747826
 		mycmakeargs+=(
-			-DJSON_BuildTests=ON
 			-DJSON_TestDataDirectory="${S}/json_test_data"
 		)
 	fi
+
 	cmake_src_configure
 }
 
