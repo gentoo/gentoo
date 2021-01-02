@@ -14807,7 +14807,7 @@ net-libs/libnxml 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 file
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
-net-libs/libosmocore 0.8.0 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
+net-libs/libosmocore 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.9.1-r3 1.10.0 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8-r1: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
@@ -18529,7 +18529,7 @@ x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2 2.5: Turns your root window into an aquarium
 x11-misc/xflux 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.2.0-r1: A GUI for f.lux
-x11-misc/xfractint 20.04_p14 20.04_p16: A fractal generator
+x11-misc/xfractint 20.04_p16: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xiccd 0.3.0: A desktop environment-independent bridge between colord and X

@@ -5986,7 +5986,6 @@ net-libs/liboauth:curl - If enabled, net-misc/curl is used thorugh the libcurl l
 net-libs/liboauth:nss - Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead.
 net-libs/liboping:filecaps - Allow non-root users to use [n]oping utility.
 net-libs/liboping:ncurses - Build ncurses-based version of oping utility (requires sys-libs/ncurses)
-net-libs/libosmocore:embedded - Build for embedded use and disable unsupported features
 net-libs/libosmocore:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite
 net-libs/libpcap:netlink - Use dev-libs/libnl to put wireless interfaces in monitor mode.
 net-libs/libpcap:rdma - Enable RDMA capture support using sys-cluster/rdma-core
