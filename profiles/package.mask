@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
+# Fails to build with gcc-10, no maintainer, upstream gone,
+# multiple open bugs.
+# Removal in 30 days, bug #677322, bug #707200, bug #716012
+net-dialup/diald
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-01-01)
 # NetworkManager has buildin support for WireGuard,
 # this plugin is old and unmaintained, so let's drop it.
