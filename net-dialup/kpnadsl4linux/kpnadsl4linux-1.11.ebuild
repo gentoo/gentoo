@@ -1,9 +1,9 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users"
 HOMEPAGE="http://www.adsl4linux.nl/"
@@ -14,18 +14,21 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
-RDEPEND=">=net-dialup/pptpclient-1.7.0
-	>=net-dialup/ppp-2.4.2"
+RDEPEND="
+	net-dialup/ppp
+	net-dialup/pptpclient"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
-	# Respect CC, CFLAGS and LDFLAGS. Bug #336109
-	epatch "${FILESDIR}/${P}-Makefile.patch"
 	tc-export CC
+	default
 
-	# Fix a typo
-	sed -i -e 's:* at first:/\0:' adslstatus.c || die 'sed on adslstatuc.c failed'
-
-	epatch_user
+	sed -i -e 's:* at first:/\0:' adslstatus.c || die
+	sed -i -e 's/runscript/openrc-run/g' init.d.adsl || die
 }
 
 src_install() {

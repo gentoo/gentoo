@@ -1,5 +1,5 @@
---- Makefile.orig	2013-04-14 16:50:26.676698258 +0400
-+++ Makefile	2013-04-14 16:51:14.107695809 +0400
+--- a/Makefile
++++ b/Makefile
 @@ -1,18 +1,18 @@
  # Makefile for ADSL4Linux 1.11 Gentoo Edition
  
