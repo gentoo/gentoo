@@ -1765,7 +1765,7 @@ app-editors/xemacs 21.4.24-r2 21.5.34-r4 21.5.34-r5: highly customizable open so
 app-editors/xmlcopyeditor 1.2.1.3-r1: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.6: Free (Y)unicode text editor for all unices
-app-editors/zile 2.3.24-r2 2.4.14: Zile is a small Emacs clone
+app-editors/zile 2.3.24-r2 2.4.14 2.4.15: Zile is a small Emacs clone
 app-emacs/actionscript-mode 7.2.2_p20180527: A major mode for GNU Emacs for editing Actionscript 3 files
 app-emacs/adaptive-wrap 0.7: Smart line-wrapping with wrap-prefix
 app-emacs/analog 1.9.99: Monitor lists of files or command output
@@ -15189,7 +15189,7 @@ net-misc/openntpd 6.2_p3-r1 6.2_p3-r2 6.8_p1: Lightweight NTP server ported from
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5 8.4_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.13.0-r1 2.14.0: Production quality, multilayer virtual switch
-net-misc/owncloud-client 2.6.3.14058: Synchronize files from ownCloud Server with your computer
+net-misc/owncloud-client 2.6.3.14058 2.7.4.2934: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 2.1: Packet generator tool for ethernet
 net-misc/pcapfix 1.1.4: Repair and fix broken pcap files
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
