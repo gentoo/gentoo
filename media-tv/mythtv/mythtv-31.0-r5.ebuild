@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -402,6 +402,7 @@ src_install() {
 	fi
 
 	if use autostart; then
+		[[ "$(egethome mythtv)" != /dev/null ]] || die "Home directory of mythtv must not be /dev/null for autostart"
 		newenvd - 95mythtv <<- _EOF_
 			CONFIG_PROTECT=\"$(egethome mythtv)\"
 		_EOF_
@@ -414,7 +415,7 @@ src_install() {
 	find "${ED}/usr/share/mythtv" -type f -name '*.py' -exec expr \( {} : '.*__init__.py' \) = 0 \; \
 		-exec chmod a+x {} \; || die "Failed to make python file $(basename ${file}) executable"
 
-	# Ensure that Python scripts are executed by Python 2
+	# Ensure that Python scripts are executed by Python
 	use python && python_fix_shebang "${ED}/usr/share/mythtv"
 
 	# Make shell & perl scripts executable
