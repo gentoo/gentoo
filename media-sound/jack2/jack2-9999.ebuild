@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,6 +57,7 @@ DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
 
 src_prepare() {
 	default
+	python_fix_shebang waf
 	multilib_copy_sources
 }
 
