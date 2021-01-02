@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit qt5-build
 
 DESCRIPTION="Location (places, maps, navigation) library for the Qt5 framework"
@@ -36,6 +37,8 @@ QT5_TARGET_SUBDIRS=(
 	src/imports/locationlabs
 	src/plugins/geoservices
 )
+
+PATCHES=( "${FILESDIR}"/${P}-qsg-render-thread-crash-{1,2}.patch ) # QTBUG-85260
 
 src_configure() {
 	# src/plugins/geoservices requires files that are only generated when
