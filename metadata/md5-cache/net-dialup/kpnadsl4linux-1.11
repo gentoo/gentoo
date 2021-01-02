@@ -8,4 +8,4 @@ RDEPEND=net-dialup/ppp net-dialup/pptpclient
 SLOT=0
 SRC_URI=http://home.planet.nl/~mcdon001/kpnadsl4linux-1.11.tar.gz http://www.adsl4linux.nl/download/kpnadsl4linux-1.11.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=681496cda14ec77390a99cd4b6006aff
+_md5_=61451d4e2f8c97fd55fb9ddb5683b032
