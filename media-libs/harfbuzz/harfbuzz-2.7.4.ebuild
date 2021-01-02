@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit flag-o-matic meson multilib-minimal python-any-r1 xdg-utils
 
@@ -44,7 +44,7 @@ BDEPEND="
 "
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 	if ! use debug ; then
 		append-cppflags -DHB_NDEBUG
 	fi
@@ -62,6 +62,12 @@ src_prepare() {
 
 	# bug 618772
 	append-cxxflags -std=c++14
+
+	# bug 762415
+	local pyscript
+	for pyscript in $(find -type f -name "*.py") ; do
+		python_fix_shebang -q "${pyscript}"
+	done
 }
 
 meson_multilib_native_feature() {
