@@ -10445,7 +10445,7 @@ dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
 dev-tcltk/snack 2.2.10-r9: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8 6.3 6.8: Multi-Column Listbox Package
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
-dev-tcltk/tcllib 1.19 1.20: Tcl Standard Library
+dev-tcltk/tcllib 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 5.0: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r5 2.3.8: Readline extension to TCL
