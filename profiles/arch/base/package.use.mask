@@ -21,12 +21,6 @@ dev-scheme/guile jit
 # Sam James <sam@gentoo.org> (2020-09-20)
 # (for Mikle Kolyada <zlogene@gentoo.org>)
 # libgcrypt et al no longer support static-libs
-# Need to determine whether crypt is possible dynamically?
-sys-power/suspend crypt
-
-# Sam James <sam@gentoo.org> (2020-09-20)
-# (for Mikle Kolyada <zlogene@gentoo.org>)
-# libgcrypt et al no longer support static-libs
 # Need to determine whether dar's static use
 # is worthwhile without it.
 app-backup/dar static static-libs
