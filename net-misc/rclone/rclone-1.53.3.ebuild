@@ -796,7 +796,7 @@ EGO_SUM=(
 	)
 go-module_set_globals
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 	SRC_URI="https://github.com/rclone/rclone/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${EGO_SUM_SRC_URI}"
 fi
