@@ -1,0 +1,14 @@
+BDEPEND=test? ( app-text/pandoc ) >=app-editors/emacs-25.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Major mode for editing Markdown-formatted text files
+EAPI=7
+HOMEPAGE=https://jblevins.org/projects/markdown-mode/
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3+
+RDEPEND=|| ( app-text/pandoc dev-python/markdown2 dev-python/markdown ) >=app-editors/emacs-25.1:*
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/jrblevin/markdown-mode/archive/v2.4.tar.gz -> markdown-mode-2.4.tar.gz
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_md5_=f98b28880e33311e54928c6812057dd1

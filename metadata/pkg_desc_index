@@ -1872,7 +1872,7 @@ app-emacs/lyskom-elisp-client 0.48_p20180410 0.48_p20200226: Elisp client for th
 app-emacs/magit 2.13.1 2.90.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.13.0 2.13.2 2.13.3: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptography with OpenPGP
-app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
+app-emacs/markdown-mode 2.3 2.4: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/meson-mode 0.2-r1 0.3: A GNU Emacs major mode for Meson build-system files
@@ -7930,7 +7930,7 @@ dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0-r1: Atomic file writes
-dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
+dev-python/atpublic 1.0 2.1.2: A decorator to populate __all__ and the module globals
 dev-python/attrs 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
@@ -8071,7 +8071,7 @@ dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dask 2.30.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dataclasses 0.7 0.8: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
-dev-python/dbusmock 0.19 0.20.0: Easily create mock objects on D-Bus for software testing
+dev-python/dbusmock 0.19 0.20.0 0.21.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
@@ -8211,8 +8211,8 @@ dev-python/flexmock 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flit 2.1.0: Simplified packaging of Python modules
 dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
-dev-python/flufl-i18n 2.0.2: A high level API for Python internationalization.
-dev-python/flufl-lock 5.0.1: NFS-safe file locking with timeouts for POSIX systems.
+dev-python/flufl-i18n 2.0.2 3.1.4: A high level API for Python internationalization
+dev-python/flufl-lock 5.0.1 5.0.4: NFS-safe file locking with timeouts for POSIX systems
 dev-python/fonttools 4.1.0 4.18.1 4.18.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.0.0-r1: Let your Python tests travel through time
@@ -8263,7 +8263,7 @@ dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read a
 dev-python/gst-python 1.16.2: A Python Interface to GStreamer
 dev-python/guessit 3.1.1 3.2.0: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
-dev-python/h11 0.11.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
+dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.10.0: Official Hetzner Cloud python library
@@ -8284,7 +8284,7 @@ dev-python/humanize 3.1.0 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
-dev-python/hypothesis 5.24.4 5.41.3 5.41.5 5.43.3 5.43.4: A library for property based testing
+dev-python/hypothesis 5.24.4 5.41.3 5.41.5 5.43.3 5.43.4 5.43.8: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8757,7 +8757,7 @@ dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl
 dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.1 0.4.2: Python client for Neovim
-dev-python/pyocr 0.7.2: An optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.7.2 0.8: An optical character recognition (OCR) tool wrapper
 dev-python/pyopencl 2020.2.2 2020.3.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
@@ -8985,7 +8985,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.48 3.5.56 3.5.57: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.48 3.5.56 3.5.57 3.5.58: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
