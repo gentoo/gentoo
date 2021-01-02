@@ -20,11 +20,11 @@ IUSE="gnutls libressl mbedtls shm"
 
 # ssl-provider precendence: gnutls, mbedtls, libressl
 # and openssl if none specified
-DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
+DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=
 	dev-libs/libconfig:=
 	gnutls? (
 		dev-libs/nettle:=
-		>=net-libs/gnutls-3.0.0
+		>=net-libs/gnutls-3.0.0:=
 	)
 	!gnutls? (
 		mbedtls? ( net-libs/mbedtls:= )
