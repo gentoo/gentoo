@@ -5176,10 +5176,8 @@ net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
 net-analyzer/flent:plots - Enable drawing plots
 net-analyzer/flowgrind:pcap - Enable packet capturing support using net-libs/libpcap
 net-analyzer/fprobe:messages - enable console messages
-net-analyzer/goaccess:btree - Enable Tokyo Cabinet's on-disk B+ Tree database backend
 net-analyzer/goaccess:geoipv2 - Enable support for GeoIP2 through dev-libs/libmaxminddb
 net-analyzer/goaccess:getline - Use GNU getline() to parse full line requests
-net-analyzer/goaccess:tokyocabinet - Enable Tokyo Cabinet's on-memory hash database backend
 net-analyzer/gr-fosphor:glfw - enable GLFW based interface
 net-analyzer/graphite-web:carbon - Enable carbon support
 net-analyzer/graphite-web:memcached - Enable memcached support

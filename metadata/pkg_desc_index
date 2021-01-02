@@ -13264,7 +13264,7 @@ media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Rendere
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
-media-libs/raspberrypi-userland-bin 1.20201022: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland-bin 1.20201022 1.20201201: Raspberry Pi userspace tools and libraries
 media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
@@ -14229,7 +14229,7 @@ net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
 net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
 net-analyzer/gensink 4.1-r2: A simple TCP benchmark suite
 net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking command-line
-net-analyzer/goaccess 1.3 1.4.2 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
+net-analyzer/goaccess 1.4.2 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 0.0_p20200131 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.5-r1 1.1.7: Enterprise scalable realtime graphing
 net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.1: Greenbone Security Assistant
