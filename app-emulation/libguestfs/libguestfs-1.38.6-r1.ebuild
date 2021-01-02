@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	>=sys-apps/fakechroot-2.8
 	>=app-admin/augeas-1.8.0
 	sys-fs/squashfs-tools:*
-	dev-libs/libconfig
+	dev-libs/libconfig:=
 	sys-libs/readline:0=
 	>=sys-libs/db-4.6:*
 	app-arch/xz-utils
