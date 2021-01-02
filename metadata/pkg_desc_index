@@ -998,7 +998,7 @@ app-crypt/certbot-nginx 1.9.0 1.10.1 9999: Nginx plugin for certbot (Let's Encry
 app-crypt/cfssl 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
-app-crypt/codecrypt 1.7.2 1.8-r1: Post-quantum cryptography tool
+app-crypt/codecrypt 1.7.2-r1 1.8-r2: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
 app-crypt/coolkey 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
@@ -5234,7 +5234,7 @@ dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, ba
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/criterion 2.3.3 2.4_pre20200110: Cross platform unit testing framework for C and C++
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 8.2.0-r2 8.3.0: C++ class library of cryptographic schemes
+dev-libs/crypto++ 8.2.0-r2 8.4.0: C++ class library of cryptographic schemes
 dev-libs/cudnn 8.0.5.39: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxopts 2.2.1-r1: Lightweight C++ command line option parser
@@ -15218,7 +15218,7 @@ net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSP
 net-misc/r8168 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.8.7: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Daemon
-net-misc/rclone 1.52.2 1.53.0 9999: A program to sync files to and from various cloud storage providers
+net-misc/rclone 1.53.3 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
@@ -16239,7 +16239,7 @@ sci-libs/minuit 5.34.14: A C++ physics analysis tool for function minimization
 sci-libs/mkl 2020.4.304: Intel Math Kernel Library
 sci-libs/mpfi 1.5.3 1.5.4: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 2.7.2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
-sci-libs/mumps 5.1.2-r1 5.3.3: MUltifrontal Massively Parallel sparse direct matrix Solver
+sci-libs/mumps 5.1.2-r1 5.3.5: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
