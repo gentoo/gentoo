@@ -1,12 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools eutils ltprune
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
 HOMEPAGE="https://github.com/esnet/iperf/"
 SRC_URI="https://github.com/esnet/iperf/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P/_/}"
 
 LICENSE="BSD"
 SLOT="3"
@@ -18,9 +20,9 @@ DEPEND="!libressl? ( dev-libs/openssl:0= )
 	sctp? ( net-misc/lksctp-tools )"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P/_/}
-
-PATCHES=( "${FILESDIR}"/${PN}-3.0.5-flags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.5-flags.patch
+)
 
 src_prepare() {
 	default
@@ -35,6 +37,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	newconfd "${FILESDIR}"/iperf.confd iperf3
 	newinitd "${FILESDIR}"/iperf3.initd iperf3
 	prune_libtool_files

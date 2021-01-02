@@ -7,6 +7,7 @@ inherit systemd
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
 HOMEPAGE="https://github.com/esnet/iperf/"
 SRC_URI="https://github.com/esnet/iperf/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P/_/}"
 
 LICENSE="BSD"
 SLOT="3"
@@ -18,11 +19,9 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	sctp? ( net-misc/lksctp-tools )
 "
-RDEPEND="
-	${DEPEND}
-"
-S=${WORKDIR}/${P/_/}
-DOCS="README.md RELNOTES.md"
+RDEPEND="${DEPEND}"
+
+DOCS=( "README.md RELNOTES.md" )
 
 src_configure() {
 	econf \
@@ -32,6 +31,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	newconfd "${FILESDIR}"/iperf.confd iperf3
 	newinitd "${FILESDIR}"/iperf3.initd iperf3
 	systemd_dounit contrib/iperf3.service
