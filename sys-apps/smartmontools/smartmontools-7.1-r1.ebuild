@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ HOMEPAGE="https://www.smartmontools.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps +daemon selinux static systemd update_drivedb"
+IUSE="caps +daemon selinux static systemd update-drivedb"
 
 DEPEND="
 	caps? (
@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}
 	daemon? ( virtual/mailx )
 	selinux? ( sec-policy/selinux-smartmon )
 	systemd? ( sys-apps/systemd )
-	update_drivedb? (
+	update-drivedb? (
 		app-crypt/gnupg
 		|| (
 			net-misc/curl
@@ -61,8 +61,8 @@ src_configure() {
 		$(use_with caps libcap-ng)
 		$(use_with selinux)
 		$(use_with systemd libsystemd)
-		$(use_with update_drivedb gnupg)
-		$(use_with update_drivedb update-smart-drivedb)
+		$(use_with update-drivedb gnupg)
+		$(use_with update-drivedb update-smart-drivedb)
 		$(usex systemd "--with-systemdsystemunitdir=$(systemd_get_systemunitdir)" '')
 	)
 	econf "${myeconfargs[@]}"
@@ -84,7 +84,7 @@ src_install() {
 		einstalldocs
 	fi
 
-	if use update_drivedb ; then
+	if use update-drivedb ; then
 		if ! use daemon; then
 			dosbin "${S}"/update-smart-drivedb
 		fi
@@ -93,7 +93,7 @@ src_install() {
 		doexe "${FILESDIR}/${PN}-update-drivedb"
 	fi
 
-	if use daemon || use update_drivedb; then
+	if use daemon || use update-drivedb; then
 		keepdir "${db_path}"
 
 		# Install a copy of the initial drivedb.h to /usr/share/${PN}
@@ -113,7 +113,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use daemon || use update_drivedb; then
+	if use daemon || use update-drivedb; then
 		local initial_db_file="${EROOT}/usr/share/${PN}/drivedb.h"
 		local db_path="${EROOT}/var/db/${PN}"
 
@@ -137,10 +137,10 @@ pkg_postinst() {
 			ewarn ""
 			ewarn "     /usr/sbin/update-smart-drivedb"
 
-			if ! use update_drivedb ; then
+			if ! use update-drivedb ; then
 				ewarn ""
 				ewarn "However, 'update-smart-drivedb' requires that you re-emerge ${PN}"
-				ewarn "with USE='update_drivedb'."
+				ewarn "with USE='update-drivedb'."
 			fi
 		fi
 	fi
