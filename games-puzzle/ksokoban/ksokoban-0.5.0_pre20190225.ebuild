@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 COMMIT="317b1e70a87224c94cac85955a3d666a43527812"
-ECM_HANDBOOK="optional"
+ECM_HANDBOOK="forceoptional"
 KFMIN=5.60.0
 QTMIN=5.12.3
 inherit ecm kde.org
