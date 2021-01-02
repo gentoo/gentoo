@@ -10487,7 +10487,7 @@ dev-tex/hyphen_show 20000425-r1: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.56-r1 3.57 3.59: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
-dev-tex/latex2html 2015 2017.2-r2: Convertor written in Perl that converts LATEX documents to HTML
+dev-tex/latex2html 2015 2017.2-r2 2021: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
 dev-tex/latexdiff 1.3.0 1.3.1.1 9999: Compare two latex files and mark up significant differences
 dev-tex/latexmk 456 465 469: Perl script for automatically building LaTeX documents
@@ -13960,7 +13960,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r4 9999: Minimalistic Murmur (Mumble server)
-media-sound/upmpdcli 1.5.2 1.5.5: UPnP Media Renderer front-end for MPD, the Music Player Daemon
+media-sound/upmpdcli 1.5.2 1.5.5 1.5.7: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi like key bindings
