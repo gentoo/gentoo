@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/traviscross/mtr/archive/v0.94.tar.gz -> mtr-0.94.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	bash-completion-r1	be99724bde4274de21e581204e9d164a	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=98baa8dfa9ada227e691ec2e5112aa54
+_md5_=8c3ec81d3bb2c2ce81e3e4302641966e
