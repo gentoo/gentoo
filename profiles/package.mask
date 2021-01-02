@@ -90,13 +90,6 @@ media-libs/jpeg
 dev-ruby/rack:2.0
 dev-ruby/rack:2.1
 
-# Sam James <sam@gentoo.org> (2020-12-29)
-# ABI may have been broken in 8.3.0.
-# Masking for now to avoid rebuilds from
-# a subslot bump in case a new release occurs.
-# bug 762241
-=dev-libs/crypto++-8.3.0
-
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
 # Masked for removal after 2021-02-01
