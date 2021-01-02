@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,22 +17,22 @@ KEYWORDS="amd64 x86"
 IUSE="notification python qrcode +sound +video +X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-BDEPEND="dev-libs/libconfig"
-
-RDEPEND=">=net-libs/tox-0.2.8:*
+RDEPEND="
+	dev-libs/libconfig:=
+	>=net-libs/tox-0.2.8:=
 	net-misc/curl
-	sys-libs/ncurses:*
+	sys-libs/ncurses:=
 	notification? ( x11-libs/libnotify )
 	python? ( ${PYTHON_DEPS} )
-	qrcode? ( media-gfx/qrencode )
+	qrcode? ( media-gfx/qrencode:= )
 	sound? (
 		media-libs/freealut
 		media-libs/openal
-		net-libs/tox[av]
+		net-libs/tox:=[av]
 	)
 	video? (
-		media-libs/libvpx
-		net-libs/tox[av]
+		media-libs/libvpx:=
+		net-libs/tox:=[av]
 		x11-libs/libX11 )"
 
 DEPEND="${RDEPEND}"
