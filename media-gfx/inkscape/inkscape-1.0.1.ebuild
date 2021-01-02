@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -155,4 +155,7 @@ src_install() {
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
 		python_optimize "${ED}"/usr/share/${PN}/extensions
 	fi
+
+	# Empty directory causes sandbox issues, see bug #761915
+	rm -r ${ED}/usr/share/inkscape/fonts || die "Failed to remove fonts directory."
 }
