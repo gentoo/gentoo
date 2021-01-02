@@ -253,7 +253,7 @@ src_install() {
 
 pkg_preinst() {
 	local _rcfile="/etc/mutt/notmuch-mutt.rc"
-	if use mutt && ! [[ -e ${ROOT}${_rcfile} ]]; then
+	if use mutt && ! [[ -e "${EROOT}"${_rcfile} ]]; then
 		elog "To enable notmuch support in mutt, add the following line"
 		elog "to your mutt config file:"
 		elog ""
