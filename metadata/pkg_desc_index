@@ -2024,7 +2024,7 @@ app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and O
 app-emulation/kompose 1.22.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libguestfs 1.36.13 1.36.15 1.38.6 1.38.6-r100: Tools for accessing, inspect and modifying virtual machine (VM) disk images
+app-emulation/libguestfs 1.36.13-r1 1.36.15-r1 1.38.6-r1 1.38.6-r101: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 2.1.0 2.2.1: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
@@ -2280,7 +2280,7 @@ app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine le
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
 app-laptop/hdaps-gl 0.0.7: OpenGL visualization for HDAPS data
-app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
+app-laptop/hdapsd 20141203-r1: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.72.2-r1: Linux kernel laptop_mode user-space utilities
@@ -2392,7 +2392,7 @@ app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds 
 app-misc/detachtty 9-r1 11.0.0: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
-app-misc/dfshow 0.8.2_beta 0.9.1_beta: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
+app-misc/dfshow 0.8.2_beta-r1 0.9.1_beta-r1: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
 app-misc/digitemp 3.7.1: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
 app-misc/dtach 0.9: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1-r1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
@@ -5361,7 +5361,7 @@ dev-libs/libcharon 4.7.0 4.8.0: This library facilitates communication between C
 dev-libs/libclc 0.2.0_pre20201001: OpenCL C library
 dev-libs/libclsync 0.4.4-r1: Control and monitoring library for clsync
 dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
-dev-libs/libconfig 1.5 1.7.1 1.7.2: Libconfig is a simple library for manipulating structured configuration files
+dev-libs/libconfig 1.7.2: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.8.0-r2 0.9.0-r1 0.9.1-r1: CSS parser and selection engine, written in C
@@ -6169,7 +6169,7 @@ dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1 0.21.0-r2: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.260.0 2.280.0: Interface to Bzip2 compression library
 dev-perl/Compress-LZF 3.800.0-r1: extremely light-weight Lempel-Ziv-Free compression
-dev-perl/Conf-Libconfig 0.100.0-r1: Perl extension for libconfig
+dev-perl/Conf-Libconfig 0.100.0-r2: Perl extension for libconfig
 dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1 1.200.0-r2: use Apache format config files
 dev-perl/Config-Auto 0.440.0-r1: Magical config file parser
@@ -10628,7 +10628,7 @@ dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.12: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/conan 1.28.0 1.28.1: Distributed C/C++ package manager
-dev-util/conf2struct 1.0 1.3 9999: Create C parsers for libconfig and command-line
+dev-util/conf2struct 1.0-r1 1.3-r1 9999: Create C parsers for libconfig and command-line
 dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.88 2.2: Static analyzer of C/C++ code
@@ -13092,7 +13092,7 @@ media-libs/libexif 0.6.22_p20201105: Library for parsing, editing, and saving EX
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.9-r1: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
-media-libs/libffado 2.4.4: Driver for IEEE1394 (Firewire) audio interfaces
+media-libs/libffado 2.4.4-r1: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
 media-libs/libfpx 1.3.1_p10: A library for manipulating FlashPIX images
 media-libs/libfreehand 0.1.2 9999: Library for import of FreeHand drawings
@@ -14646,7 +14646,7 @@ net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.5: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
-net-im/toxic 0.8.3-r1 0.10.0: A curses-based client for Tox
+net-im/toxic 0.8.3-r2 0.10.0-r1: A curses-based client for Tox
 net-im/transwhat 0.2.2_p20190426-r1: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
@@ -14882,7 +14882,7 @@ net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream
 net-libs/telepathy-glib 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 17.09.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
-net-libs/tox 0.2.11 0.2.12 9999: Encrypted P2P, messaging, and audio/video calling platform
+net-libs/tox 0.2.11-r1 0.2.12-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
@@ -15261,7 +15261,7 @@ net-misc/ssh-askpass-fullscreen 1.2: A small SSH Askpass replacement written wit
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.06: Tool for noninteractively performing password authentication with ssh
 net-misc/sshrc 0.6.1 0.6.2: Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
-net-misc/sslh 1.20 1.21 1.21b 1.21c 9999: Port multiplexer - accept both HTTPS and SSH connections on the same port
+net-misc/sslh 1.20-r1 1.21-r1 1.21b-r1 1.21c-r1 9999: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sstp-client 1.0.10-r1 1.0.12: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 1.3.0-r2 1.3.1-r1 9999: CLI for extracting streams from websites to a video player of your choice
@@ -15585,7 +15585,7 @@ net-wireless/soapysdr 0.7.2 9999: vendor and platform neutral SDR support librar
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.4.1 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
-net-wireless/srslte 20.10.1 9999: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/srslte 20.10.1-r1 9999: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/suscan 0.1.0-r1: a realtime DSP processing library
 net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's custom widgets
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
@@ -18417,7 +18417,7 @@ x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
 x11-misc/pcmanfm 1.3.1 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.15.1 0.16.0: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
-x11-misc/picom 8 8.1 8.2 9999: A lightweight compositor for X11 (previously a compton fork)
+x11-misc/picom 8-r1 8.1-r1 8.2-r1 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.3 3.5.3: A fast and easy-to-use tool for creating status bars
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
