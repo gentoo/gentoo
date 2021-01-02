@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit autotools
 
 DESCRIPTION="WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes"
 HOMEPAGE="https://www.dockapps.net/wmbiff"
@@ -26,7 +27,13 @@ BDEPEND="virtual/pkgconfig"
 DOCS="ChangeLog FAQ NEWS README TODO wmbiff/sample.wmbiffrc"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.27-invalid-strncpy.patch
+	"${FILESDIR}"/${P}-ar.patch
 	)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_enable crypt crypto)
