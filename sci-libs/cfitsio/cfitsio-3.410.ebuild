@@ -50,9 +50,9 @@ multilib_src_install_all() {
 	use doc && dodoc docs/{quick,cfitsio,fpackguide}.pdf
 	use doc && use fortran && dodoc docs/fitsio.pdf
 	if use examples; then
-		dodoc examples
-		docinto cookbook.c testprog.c speed.c smem.c
-		use fortran && docinto cookbook.f testf77.f
+		docinto examples
+		dodoc cookbook.c testprog.c speed.c smem.c
+		use fortran && dodoc cookbook.f testf77.f
 	fi
 	prune_libtool_files --all
 }
