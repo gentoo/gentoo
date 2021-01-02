@@ -141,8 +141,7 @@ src_compile() {
 	# Workaround #462602
 	export FAKEROOTKEY=1
 
-	# -j1 because of static archive race
-	emake -j1 alllib PIC="-fPIC"
+	emake alllib PIC="-fPIC"
 	if ! use mpi; then
 		#$(tc-getAR) crs lib/libmumps_common.a libseq/*.o || die
 		LIBADD+=" -Llibseq -lmpiseq"
@@ -159,7 +158,7 @@ src_compile() {
 
 	if use static-libs; then
 		emake clean
-		emake -j1 alllib
+		emake alllib
 	fi
 }
 
