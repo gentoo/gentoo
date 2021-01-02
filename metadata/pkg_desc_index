@@ -2796,7 +2796,7 @@ app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than Sendmail
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
-app-shells/tcsh 6.20.00 6.21.00-r1 6.22.02: Enhanced version of the Berkeley C shell (csh)
+app-shells/tcsh 6.22.02: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.28 3.30: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.50 2.51: Yash is a POSIX-compliant command line shell

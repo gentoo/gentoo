@@ -1,4 +1,4 @@
-BDEPEND=dev-util/gperf media-gfx/imagemagick[png] sys-devel/gettext
+BDEPEND=dev-util/gperf media-gfx/imagemagick[jpeg,png,svg] sys-devel/gettext
 DEFINED_PHASES=compile install postinst postrm preinst prepare
 DEPEND=app-text/libpaper dev-libs/fribidi gnome-base/librsvg:2 >=media-libs/libpng-1.2:0= >=media-libs/freetype-2:2 media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf x11-libs/cairo dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Drawing program designed for young children
@@ -10,4 +10,4 @@ RDEPEND=app-text/libpaper dev-libs/fribidi gnome-base/librsvg:2 >=media-libs/lib
 SLOT=0
 SRC_URI=mirror://sourceforge/tuxpaint/tuxpaint-0.9.24.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=84afef99717fbbb31058be13da99af43
+_md5_=b140d7f74d1acc279e23a3a8a973f0e3
