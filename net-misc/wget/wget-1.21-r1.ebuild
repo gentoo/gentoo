@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit flag-o-matic python-any-r1 toolchain-funcs
 
@@ -56,6 +56,8 @@ DOCS=( AUTHORS MAILING-LIST NEWS README doc/sample.wgetrc )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gnulib-utime-errno.patch  # 763123, drop next release
+	"${FILESDIR}"/${PN}-1.21-avoid_bashisms.patch #762946
+	"${FILESDIR}"/${PN}-1.21-avoid_eautoreconf.patch
 )
 
 pkg_setup() {
