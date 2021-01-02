@@ -102,6 +102,6 @@ src_configure() {
 src_install() {
 	default
 	if ! use audio-notify; then
-		rm -r ${ED}/usr/share/${PN}/sounds || die "Could not remove sounds directory"
+		rm -r "${ED}"/usr/share/${PN}/sounds || die "Could not remove sounds directory"
 	fi
 }
