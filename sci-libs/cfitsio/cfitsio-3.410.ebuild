@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,9 +50,9 @@ multilib_src_install_all() {
 	use doc && dodoc docs/{quick,cfitsio,fpackguide}.pdf
 	use doc && use fortran && dodoc docs/fitsio.pdf
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins cookbook.c testprog.c speed.c smem.c
-		use fortran && doins cookbook.f testf77.f
+		dodoc examples
+		docinto cookbook.c testprog.c speed.c smem.c
+		use fortran && docinto cookbook.f testf77.f
 	fi
 	prune_libtool_files --all
 }
