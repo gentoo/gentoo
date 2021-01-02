@@ -16,7 +16,7 @@ IUSE="+cryptopp"
 
 DEPEND="dev-libs/gmp:=
 	cryptopp? ( >=dev-libs/crypto++-7:= )
-	sci-libs/fftw:3.0"
+	sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}"
 src_prepare() {
 	default
