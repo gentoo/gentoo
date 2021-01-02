@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="bladerf simcard soapysdr uhd zeromq"
 
 DEPEND="
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-libs/libconfig:=
 	net-misc/lksctp-tools
 	net-libs/mbedtls:=
@@ -34,7 +34,7 @@ DEPEND="
 	simcard? ( sys-apps/pcsc-lite )
 	soapysdr? ( net-wireless/soapysdr:= )
 	uhd? ( net-wireless/uhd:= )
-	zeromq? ( net-libs/zeromq )
+	zeromq? ( net-libs/zeromq:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
