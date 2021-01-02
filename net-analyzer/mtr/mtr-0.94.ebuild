@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools bash-completion-r1 fcaps
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
@@ -12,6 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="gtk +ipinfo +ipv6 jansson ncurses"
+# This is an inherited RESTRICT - figure out why!
+RESTRICT="test"
 
 RDEPEND="
 	gtk? (
@@ -21,18 +24,15 @@ RDEPEND="
 	jansson? ( dev-libs/jansson )
 	ncurses? ( sys-libs/ncurses:0= )
 "
-DEPEND="
-	${RDEPEND}
-"
-BDEPEND="
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( AUTHORS FORMATS NEWS README.md SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.88-tinfo.patch
 )
-RESTRICT="test"
 
 src_prepare() {
 	default
