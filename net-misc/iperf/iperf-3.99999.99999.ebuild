@@ -21,7 +21,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( "README.md RELNOTES.md" )
+DOCS=( "README.md" "RELNOTES.md" )
 
 src_configure() {
 	econf \
