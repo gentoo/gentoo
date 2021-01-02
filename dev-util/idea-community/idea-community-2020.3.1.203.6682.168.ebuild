@@ -13,9 +13,6 @@ MY_PN="idea"
 JRE11_BASE="11_0_8"
 JRE11_VER="1098.1"
 
-echo "PV_String IS ${PV_STRING}"
-echo "MY_PN S ${MY_PN}"
-
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
 then
@@ -28,8 +25,6 @@ else
 	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${MY_PV}-no-jbr.tar.gz -> ${MY_PN}IC-${PV_STRING}.tar.gz
 		amd64? ( https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz )"
 fi
-
-echo "SRC_URI is ${SRC_URI}"
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
