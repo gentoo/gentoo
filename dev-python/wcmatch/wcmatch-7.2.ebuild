@@ -39,9 +39,14 @@ BDEPEND="test? (
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# no such file or dir ~homedir
+	# this test makes a really wrong assumption that basename of $HOME
+	# will be a username
 	sed -i -e 's:test_tilde_user:_&:' \
 		tests/test_glob.py || die
+
+	# tests require some files in homedir
+	> "${HOME}"/test1.txt || die
+	> "${HOME}"/test2.txt || die
 
 	# mkdocs-git-revision-date-localized-plugin needs git repo
 	if use doc; then
