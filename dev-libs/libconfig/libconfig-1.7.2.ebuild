@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils ltprune multilib-minimal
+EAPI=7
+
+inherit autotools multilib-minimal
 
 DESCRIPTION="Libconfig is a simple library for manipulating structured configuration files"
 HOMEPAGE="
@@ -46,5 +47,5 @@ multilib_src_test() {
 multilib_src_install() {
 	default
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

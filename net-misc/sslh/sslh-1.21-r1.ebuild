@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -23,7 +23,7 @@ IUSE="caps pcre systemd tcpd"
 RDEPEND="caps? ( sys-libs/libcap )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	>=dev-libs/libconfig-1.5"
+	>=dev-libs/libconfig-1.5:="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	pcre? ( dev-libs/libpcre:= )"

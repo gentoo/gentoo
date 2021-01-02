@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,11 +23,11 @@ PERL_RM_FILES=(
 	"t/pod.t"
 )
 RDEPEND="
-	dev-libs/libconfig
+	dev-libs/libconfig:=
 	virtual/perl-XSLoader
 "
 DEPEND="
-	dev-libs/libconfig
+	dev-libs/libconfig:=
 "
 BDEPEND="${RDEPEND}
 	dev-perl/ExtUtils-PkgConfig
