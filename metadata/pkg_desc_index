@@ -9323,20 +9323,20 @@ dev-qt/qtbluetooth 5.15.1 5.15.2: Bluetooth support library for the Qt5 framewor
 dev-qt/qtcharts 5.15.1 5.15.2: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.15.1 5.15.2: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.15.1-r1 5.15.2: Cross-platform application development framework
+dev-qt/qtcore 5.15.1-r1 5.15.2-r1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.15.1 5.15.2: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.15.1 5.15.2: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.15.1 5.15.2: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.15.1 5.15.2: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.15.1 5.15.2: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.15.1 5.15.2: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.15.1-r1 5.15.2: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qtgui 5.15.1-r1 5.15.2-r1: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 5.15.1 5.15.2: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.15.1 5.15.2: Additional format plugins for the Qt image I/O system
-dev-qt/qtlocation 5.15.1 5.15.2: Location (places, maps, navigation) library for the Qt5 framework
+dev-qt/qtlocation 5.15.1 5.15.2-r1: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
 dev-qt/qtmultimedia 5.15.1 5.15.2: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.15.1-r1 5.15.2: Network abstraction library for the Qt5 framework
+dev-qt/qtnetwork 5.15.1-r1 5.15.2-r1: Network abstraction library for the Qt5 framework
 dev-qt/qtnetworkauth 5.15.1 5.15.2: Network authorization library for the Qt5 framework
 dev-qt/qtopengl 5.15.1 5.15.2: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.15.1 5.15.2: Command line client to QStandardPaths
