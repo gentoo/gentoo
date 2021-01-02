@@ -50,6 +50,7 @@ _systemd_get_dir() {
 
 	if $(tc-getPKG_CONFIG) --exists systemd; then
 		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
+		d=${d#${SYSROOT}}
 		d=${d#${EPREFIX}}
 	else
 		d=${fallback}
