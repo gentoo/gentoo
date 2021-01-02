@@ -15300,7 +15300,7 @@ net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC 
 net-misc/vrrpd 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r3: Client for Wake-On-LAN
 net-misc/websocat 1.6.0 1.6.0-r1: Command-line client for WebSockets, like netcat, with socat-like functions
-net-misc/wget 1.20.3-r3 1.21: Network utility to retrieve files from the WWW
+net-misc/wget 1.20.3-r3 1.21 1.21-r1: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2 9999: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.5.6-r1 5.5.7 9999: improved Whois Client
