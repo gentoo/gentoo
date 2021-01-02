@@ -1,0 +1,15 @@
+BDEPEND=sys-devel/automake:1.11 >=app-portage/elt-patches-20170815 =sys-devel/automake-1.11.6* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=acct-user/ngircd acct-group/ngircd irc-plus? ( virtual/libiconv ) ident? ( net-libs/libident ) pam? ( sys-libs/pam ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib ) test? ( dev-tcltk/expect net-misc/netkit-telnetd )
+DESCRIPTION=An IRC server written from scratch
+EAPI=7
+HOMEPAGE=https://ngircd.barton.de/
+IUSE=debug gnutls ident irc-plus +ipv6 libressl pam +ssl strict-rfc tcpd test zlib
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~x64-macos
+LICENSE=GPL-2
+RDEPEND=acct-user/ngircd acct-group/ngircd irc-plus? ( virtual/libiconv ) ident? ( net-libs/libident ) pam? ( sys-libs/pam ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://arthur.barton.de/pub/ngircd/ngircd-26.1.tar.gz
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=3539b2f47fea84ee20efa3cd28b359fa

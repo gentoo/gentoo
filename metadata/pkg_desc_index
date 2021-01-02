@@ -1044,7 +1044,7 @@ app-crypt/keybase 4.4.2 4.5.0 4.7.0 4.7.2 5.1.1 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98.1-r2 0.98.1-r3: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
-app-crypt/libmd 1.0.1 99999: Message Digest functions from BSD systems
+app-crypt/libmd 1.0.1 1.0.3 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.20.2 0.20.3 0.20.4: GObject library for accessing the freedesktop.org Secret Service API
@@ -14534,7 +14534,7 @@ net-firewall/arptables 0.0.4 0.0.5 0.0.5-r1: set up, maintain, and inspect the t
 net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
 net-firewall/ebtables 2.0.11-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
-net-firewall/firehol 3.1.6-r2: iptables firewall generator
+net-firewall/firehol 3.1.6-r2 3.1.7: iptables firewall generator
 net-firewall/firewalld 0.7.1-r3 0.7.3-r1 0.9.1: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
@@ -14679,7 +14679,7 @@ net-irc/konversation 1.7.7-r1 20.12.0: User friendly IRC Client
 net-irc/kvirc 5.2_pre20200605155236 9999: Advanced IRC Client
 net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
-net-irc/ngircd 26: An IRC server written from scratch
+net-irc/ngircd 26 26.1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
