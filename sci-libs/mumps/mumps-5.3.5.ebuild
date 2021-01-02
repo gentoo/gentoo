@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit fortran-2 toolchain-funcs
+inherit fortran-2 flag-o-matic toolchain-funcs
 
 MYP=MUMPS_${PV}
 
@@ -62,6 +62,9 @@ static_to_shared() {
 }
 
 src_prepare() {
+	# workaround for gcc10 (bug #743442)
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	sed -e "s;^\(CC\s*=\).*;\1$(tc-getCC);" \
 		-e "s;^\(FC\s*=\).*;\1$(tc-getFC);" \
 		-e "s;^\(FL\s*=\).*;\1$(tc-getFC);" \
@@ -82,6 +85,7 @@ src_prepare() {
 src_configure() {
 	LIBADD="$($(tc-getPKG_CONFIG) --libs blas) -Llib -lpord"
 	local ord="-Dpord"
+
 	if use metis && use mpi; then
 		sed -i \
 			-e "s;#\s*\(LMETIS\s*=\).*;\1$($(tc-getPKG_CONFIG) --libs parmetis);" \
@@ -137,8 +141,7 @@ src_compile() {
 	# Workaround #462602
 	export FAKEROOTKEY=1
 
-	# -j1 because of static archive race
-	emake -j1 alllib PIC="-fPIC"
+	emake alllib PIC="-fPIC"
 	if ! use mpi; then
 		#$(tc-getAR) crs lib/libmumps_common.a libseq/*.o || die
 		LIBADD+=" -Llibseq -lmpiseq"
@@ -155,7 +158,7 @@ src_compile() {
 
 	if use static-libs; then
 		emake clean
-		emake -j1 alllib
+		emake alllib
 	fi
 }
 
