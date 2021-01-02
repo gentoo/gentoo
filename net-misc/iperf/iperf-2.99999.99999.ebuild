@@ -15,10 +15,6 @@ IUSE="ipv6 threads debug"
 
 DOCS=( "INSTALL" "README" )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.12-ipv6.patch
-)
-
 src_configure() {
 	econf \
 		$(use_enable debug debuginfo) \
