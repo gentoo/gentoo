@@ -2671,7 +2671,7 @@ app-office/scribus 1.5.6.1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.23.0-r1 2.24.0: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
-app-office/texstudio 3.0.0_pre20200601 3.0.1-r1 3.0.2 9999: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 3.0.0_pre20200601 3.0.4 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.4.5.1: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -2968,13 +2968,13 @@ app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
 app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SGML and XML documents
-app-text/openpaperwork-core 2.0.1: Core part of Paperwork (plugin management)
-app-text/openpaperwork-gtk 2.0.1: Paperwork plugins
+app-text/openpaperwork-core 2.0.1 2.0.2: Core part of Paperwork (plugin management)
+app-text/openpaperwork-gtk 2.0.1 2.0.2: Paperwork plugins
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 2.9.2.1: Conversion between markup formats
-app-text/paperwork 1.3.1 2.0.1: a personal document manager for scanned documents (and PDFs)
-app-text/paperwork-backend 1.3.1 1.3.1-r1 2.0.1: Backend part of Paperwork (Python API, no UI)
+app-text/paperwork 1.3.1 2.0.1 2.0.2: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork-backend 1.3.1 1.3.1-r1 2.0.1 2.0.2: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1 1.53.0: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/pastebinit 1.5.1: A software that lets you send anything you want directly to a pastebin
@@ -13114,7 +13114,7 @@ media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2 3.0.4 9999: Packaged version of iLBC codec from the WebRTC project
-media-libs/libinsane 1.0.7 1.0.8: Crossplatform access to image scanners
+media-libs/libinsane 1.0.7 1.0.8 1.0.9: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjpeg-turbo 1.5.3-r4 2.0.5-r2 2.0.6: MMX, SSE, and SSE2 SIMD accelerated JPEG library
@@ -15398,10 +15398,10 @@ net-print/brlaser 4 6: Brother laser printer driver
 net-print/c2esp 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
-net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80: IJ Printer Driver
+net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80 5.90: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r1 9999: The Common Unix Printing System
-net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
+net-print/cups-bjnp 2.0 2.0.3: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.27.4 1.27.5 1.28.2 1.28.3 9999: Cups filters
 net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
@@ -17939,7 +17939,7 @@ www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure man
 www-apps/nextcloud 18.0.10 18.0.11 18.0.12 19.0.4 19.0.5 19.0.6 20.0.2 20.0.3 20.0.4: Personal cloud that runs on your own server
 www-apps/nikola 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
-www-apps/owncloud 10.4.0 10.4.1 10.5.0: Web-based storage application where all your data is under your own control
+www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
