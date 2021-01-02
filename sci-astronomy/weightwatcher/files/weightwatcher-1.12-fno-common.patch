@@ -1,0 +1,160 @@
+--- a/src/field.c
++++ b/src/field.c
+@@ -42,6 +42,9 @@
+ #include	"prefs.h"
+ #include	"readimage.h"
+ 
++extern prefstruct prefs;
++char gstr[MAXCHAR];
++
+ /********************************* newfield **********************************/
+ /*
+ Returns a pointer to a new field, ready to go!
+--- a/src/fits/fitsbody.c
++++ b/src/fits/fitsbody.c
+@@ -43,6 +43,7 @@
+ #include	"fitscat_defs.h"
+ #include	"fitscat.h"
+ 
++extern int bswapflag;
+ size_t	body_maxram = BODY_DEFRAM,
+ 	body_maxvram = BODY_DEFVRAM,
+ 	body_ramleft, body_vramleft, body_ramflag;
+--- a/src/fits/fitscat.h
++++ b/src/fits/fitscat.h
+@@ -333,6 +333,6 @@ extern  void	error(int, char *, char *),
+ 		warning(char *msg1, char *msg2);
+ 
+ 
+-int		bswapflag;
++extern int		bswapflag;
+ 
+ #endif
+--- a/src/fits/fitscheck.c
++++ b/src/fits/fitscheck.c
+@@ -42,6 +42,7 @@
+ unsigned int	exclude[13] = {0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40,
+ 				0x5b, 0x5c, 0x5d, 0x5e, 0x5f, 0x60};
+ 
++extern int bswapflag;
+ /****** encode_checksum *****************************************************
+ PROTO	void encode_checksum(unsigned int sum, char *str)
+ PURPOSE	Encode a checksum to ASCII
+--- a/src/fits/fitskey.c
++++ b/src/fits/fitskey.c
+@@ -38,6 +38,7 @@
+ #include	"fitscat_defs.h"
+ #include	"fitscat.h"
+ 
++int bswapflag;
+ /****** add_key ****************************************************************
+ PROTO	int add_key(keystruct *key, tabstruct *tab, int pos)
+ PURPOSE	Copy a key from one table to another.
+--- a/src/fits/fitsread.c
++++ b/src/fits/fitsread.c
+@@ -38,6 +38,7 @@
+ #include	"fitscat_defs.h"
+ #include	"fitscat.h"
+ 
++extern int bswapflag;
+ char	padbuf[FBSIZE];
+ 
+ /****** read_cat ***************************************************************
+--- a/src/fits/fitswrite.c
++++ b/src/fits/fitswrite.c
+@@ -39,6 +39,7 @@
+ #include	"fitscat_defs.h"
+ #include	"fitscat.h"
+ 
++extern int bswapflag;
+ 
+ /****** save_cat **************************************************************
+ PROTO	void save_cat(catstruct *cat, char *filename)
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -30,7 +30,7 @@
+ #include "types.h"
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+-char		gstr[MAXCHAR];
++extern char		gstr[MAXCHAR];
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern	void	makeit(void),
+--- a/src/main.c
++++ b/src/main.c
+@@ -51,6 +51,8 @@ EXECUTABLE " [-c <configuration_file>] [-<keyword> <value>]\n"\
+ extern const char	notokstr[];
+ time_t		thetime, thetime2;
+ 
++extern prefstruct prefs;
++
+ /********************************** main ************************************/
+ int	main(int argc, char *argv[])
+ 
+--- a/src/makeit.c
++++ b/src/makeit.c
+@@ -45,6 +45,8 @@
+ #include "readimage.h"
+ #include "xml.h"
+ 
++extern prefstruct prefs;
++
+ /********************************** makeit ***********************************/
+ void	makeit(void)
+   {
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -51,6 +51,9 @@
+ #include 	"prefs.h"
+ #include	"preflist.h"
+ 
++extern int bswapflag;
++prefstruct prefs;
++
+ /********************************* dumpprefs ********************************/
+ /*
+ Print the default preference parameters.
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -86,7 +86,7 @@ typedef struct
+   double	time_diff;			/* Execution time */
+   }	prefstruct;
+ 
+-  prefstruct	prefs;
++extern prefstruct prefs;
+ 
+ 
+ /*-------------------------------- protos -----------------------------------*/
+--- a/src/readimage.c
++++ b/src/readimage.c
+@@ -39,6 +39,7 @@
+ #include	"fits/fitscat.h"
+ #include	"readimage.h"
+ 
++extern int bswapflag;
+ /******************************** readdata **********************************/
+ /*
+ read and convert input data stream in PIXTYPE (float) format.
+--- a/src/vector.c
++++ b/src/vector.c
+@@ -46,6 +46,9 @@
+ 
+ static void	chsort(crosstruct *ra, int n);
+ 
++extern char gstr[MAXCHAR];
++extern prefstruct prefs;
++
+ /********************************** newvec **********************************/
+ /*
+ Returns a pointer to a new polygon, and initialize local context buffer:
+--- a/src/xml.c
++++ b/src/xml.c
+@@ -45,6 +45,7 @@
+ #include "field.h"
+ #include "xml.h"
+ 
++extern  prefstruct prefs;
+ extern time_t		thetime,thetime2;	/* from makeit.c */
+ extern pkeystruct	key[];			/* from preflist.h */
+ extern char		keylist[][32];		/* from preflist.h */
