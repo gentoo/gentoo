@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	sys-apps/fakeroot
 	sys-apps/file
 	app-emulation/libvirt
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=sys-apps/fakechroot-2.8
 	>=app-admin/augeas-1.0.0
 	sys-fs/squashfs-tools:*
@@ -73,9 +73,9 @@ COMMON_DEPEND="
 	)
 	systemtap? ( dev-util/systemtap )
 	ocaml? (
-		>=dev-lang/ocaml-4.02[ocamlopt]
+		>=dev-lang/ocaml-4.02:=[ocamlopt]
 		dev-ml/findlib[ocamlopt]
-		dev-ml/ocaml-gettext
+		dev-ml/ocaml-gettext:=
 		>=dev-ml/ounit-2
 	)
 	erlang? ( dev-lang/erlang )
@@ -92,8 +92,8 @@ COMMON_DEPEND="
 		sys-apps/dbus
 		x11-libs/gtk+:3
 	)
-	net-libs/libtirpc
-	sys-libs/libxcrypt
+	net-libs/libtirpc:=
+	sys-libs/libxcrypt:=
 	"
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
