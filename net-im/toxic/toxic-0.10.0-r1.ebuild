@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,11 +18,11 @@ IUSE="+audio-notify debug doc llvm notification png python qrcode +sound +video 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	video? ( sound X ) "
 
-BDEPEND="dev-libs/libconfig"
-
-RDEPEND="net-libs/tox
+RDEPEND="
+	dev-libs/libconfig:=
+	net-libs/tox:=
 	net-misc/curl
-	sys-libs/ncurses:*
+	sys-libs/ncurses:=
 	audio-notify? (
 		media-libs/freealut
 		media-libs/openal
@@ -31,12 +31,12 @@ RDEPEND="net-libs/tox
 	debug? ( llvm? ( sys-devel/llvm:* ) )
 	python? ( ${PYTHON_DEPS} )
 	qrcode? (
-		media-gfx/qrencode
+		media-gfx/qrencode:=
 		png? ( media-libs/libpng )
 	)
 	sound? (
 		media-libs/openal
-		net-libs/tox[av]
+		net-libs/tox:=[av]
 	)
 	X? (
 		x11-base/xorg-proto
