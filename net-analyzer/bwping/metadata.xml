@@ -10,6 +10,7 @@
 			<email>oleg.derevenetz@gmail.com</email>
 			<name>Oleg Derevenetz</name>
 		</maintainer>
+		<remote-id type="github">oleg-derevenetz/bwping</remote-id>
 		<remote-id type="sourceforge">bwping</remote-id>
 	</upstream>
 	<longdescription>

@@ -3,17 +3,17 @@
 
 EAPI=7
 
-inherit autotools git-r3
+inherit autotools
 
 MY_P=${PN}-${PV/_p/-}
 
 DESCRIPTION="Spine is a fast poller for Cacti (formerly known as Cactid)"
 HOMEPAGE="https://cacti.net/spine_info.php"
-EGIT_REPO_URI="https://github.com/Cacti/spine"
+SRC_URI="https://www.cacti.net/downloads/spine/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="libressl"
 
 BDEPEND="sys-apps/help2man"
