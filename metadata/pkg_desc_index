@@ -8612,7 +8612,7 @@ dev-python/piexif 1.1.3 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0 2.2.0-r1: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
-dev-python/pillow 7.0.0 7.2.0 8.0.1: Python Imaging Library (fork)
+dev-python/pillow 7.0.0 7.2.0 8.0.1 8.1.0: Python Imaging Library (fork)
 dev-python/pip 20.2.4 20.3.1 20.3.2 20.3.3: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
@@ -9246,7 +9246,7 @@ dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3 0.6.5: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.10.4 0.10.5 1.0.0 1.0.2: Python API and shell utilities to monitor file system events
-dev-python/wcmatch 7.1: Wildcard/glob file name matcher
+dev-python/wcmatch 7.1 7.2: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
@@ -19004,7 +19004,7 @@ xfce-extra/xfce4-eyes-plugin 4.5.1: A panel plug-in which adds classic eyes to y
 xfce-extra/xfce4-fsguard-plugin 1.1.1 1.1.2: A filesystem guard plug-in for the Xfce panel
 xfce-extra/xfce4-genmon-plugin 4.0.2 4.1.0: Cyclically spawned executable output on the panel
 xfce-extra/xfce4-hdaps 1.0.0: Show the status of the IBM Hard Drive Active Protection System
-xfce-extra/xfce4-indicator-plugin 2.3.4: A panel plugin that uses indicator-applet to show new messages
+xfce-extra/xfce4-indicator-plugin 2.3.4 2.4.0: A panel plugin that uses indicator-applet to show new messages
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r4: A panel plug-in to show state of Caps, Num and Scroll Lock keys
 xfce-extra/xfce4-mailwatch-plugin 1.3.0: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-mount-plugin 1.1.3 1.1.4 1.1.5: An mount plug-in for the Xfce panel
