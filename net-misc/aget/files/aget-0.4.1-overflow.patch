@@ -37,8 +37,8 @@ than setting GETRECVSIZ bytes to the value of 0. By Kevin Pyle.
  		dr = recv(sd, rbuf, GETRECVSIZ, 0);
  		if ((td->offset + dr) > foffset)
  			dw = pwrite(td->fd, rbuf, foffset - td->offset, td->offset);
---- aget-0.4.1/Head.c	2010-09-20 03:41:27.236019179 +0200
-+++ aget-0.4.1/Head.c	2010-09-20 03:43:00.087098655 +0200
+--- aget-0.4.1/Head.c
++++ aget-0.4.1/Head.c
 @@ -1,5 +1,4 @@
  #ifndef SOLARIS
 -#define _XOPEN_SOURCE 500
