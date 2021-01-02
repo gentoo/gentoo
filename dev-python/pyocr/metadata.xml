@@ -5,6 +5,9 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
 	<longdescription lang="en">
 Pyocr is an optical character recognition (OCR) tool wrapper for python. That is, it helps using OCR tools from a Python program.
 
