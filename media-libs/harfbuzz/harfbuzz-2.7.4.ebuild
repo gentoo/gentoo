@@ -34,8 +34,8 @@ RDEPEND="
 	truetype? ( >=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	>=dev-libs/gobject-introspection-common-1.34
-	test? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
 	virtual/pkgconfig
