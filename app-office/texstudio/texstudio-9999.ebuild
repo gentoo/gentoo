@@ -1,16 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit prefix qmake-utils xdg-utils desktop git-r3
+inherit desktop git-r3 prefix qmake-utils xdg
 
 MY_PV="${PV/_/}"
-
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
-#SRC_URI="https://github.com/texstudio-org/texstudio/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 EGIT_REPO_URI="https://github.com/texstudio-org/texstudio.git"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -45,8 +44,6 @@ DEPEND="${COMMON_DEPEND}"
 
 BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}-${MY_PV}
-
 src_prepare() {
 	default
 	# TODO: find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
@@ -73,14 +70,4 @@ src_install() {
 		newicon -s ${i} utilities/${PN}${i}.png ${PN}.png
 	done
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
