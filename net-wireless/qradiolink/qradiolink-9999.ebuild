@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 fi
 IUSE=""
 
-DEPEND="dev-libs/libconfig[cxx]
+DEPEND="dev-libs/libconfig:=[cxx]
 	net-wireless/gnuradio:=[analog,audio,digital,fec,filter,qt5]
 	net-wireless/gr-osmosdr:=
 	dev-libs/boost:=
