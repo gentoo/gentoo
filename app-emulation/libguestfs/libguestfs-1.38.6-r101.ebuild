@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	sys-apps/fakeroot
 	sys-apps/file
 	libvirt? ( app-emulation/libvirt )
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=sys-apps/fakechroot-2.8
 	>=app-admin/augeas-1.8.0
 	sys-fs/squashfs-tools:*
@@ -72,7 +72,7 @@ COMMON_DEPEND="
 		sys-libs/libsemanage
 	)
 	systemtap? ( dev-util/systemtap )
-	ocaml? ( >=dev-lang/ocaml-4.03[ocamlopt] )
+	ocaml? ( >=dev-lang/ocaml-4.03:=[ocamlopt] )
 	erlang? ( dev-lang/erlang )
 	inspect-icons? (
 		media-libs/netpbm
@@ -86,14 +86,14 @@ COMMON_DEPEND="
 		sys-apps/dbus
 		x11-libs/gtk+:3
 	)
-	net-libs/libtirpc
-	sys-libs/libxcrypt
+	net-libs/libtirpc:=
+	sys-libs/libxcrypt:=
 	"
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
-	>=dev-lang/ocaml-4.03[ocamlopt]
+	>=dev-lang/ocaml-4.03:=[ocamlopt]
 	dev-ml/findlib[ocamlopt]
-	dev-ml/ocaml-gettext
+	dev-ml/ocaml-gettext:=
 	>=dev-ml/ounit-2
 	doc? ( app-text/po4a )
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
