@@ -39,10 +39,7 @@ src_configure() {
 
 src_test() {
 	cd "${BUILD_DIR}/test" || die
-
-	if use test ; then
-		mv "${WORKDIR}/patterns" "${BUILD_DIR}/test/" || die
-	fi
+	mv "${WORKDIR}/patterns" "${BUILD_DIR}/test/" || die
 
 	./testCampaignAll || die
 }
