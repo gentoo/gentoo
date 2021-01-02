@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ BDEPEND="
 CDEPEND="${PYTHON_DEPS}
 	dev-cpp/libxmlpp:2.6[${MULTILIB_USEDEP}]
 	dev-libs/dbus-c++
-	dev-libs/libconfig[cxx,${MULTILIB_USEDEP}]
+	dev-libs/libconfig:=[cxx,${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/libiec61883[${MULTILIB_USEDEP}]
 	sys-apps/dbus
