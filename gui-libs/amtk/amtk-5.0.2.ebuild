@@ -18,7 +18,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.22:3
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.6
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
