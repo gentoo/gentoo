@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -258,6 +258,10 @@ src_configure() {
 		# Change SONAME to avoid conflict across
 		# {native,cross}/binutils, binutils-libs. #666100
 		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)
+
+		# avoid automagic dependency on (currently prefix) systems
+		# systems with debuginfod library, bug #754753
+		--without-debuginfod
 	)
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die
