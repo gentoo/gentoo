@@ -5459,7 +5459,7 @@ dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 1.1.4-r1 1.1.9999 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r2 0.2.1-r1 0.2.2-r1: C library for framebuffer abstraction
 dev-libs/libnsutils 0.0.5-r2 0.1.0-r1: C library for base64 and time
-dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
+dev-libs/libofx 0.9.15 0.10.0: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liborcus 0.15.4 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
