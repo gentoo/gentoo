@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{6,7,8,9} )
-
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit lua python-single-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
@@ -15,9 +14,9 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg
-fftw frei0r gtk jack kdenlive kernel_linux libsamplerate lua melt opencv opengl python
-qt5 rtaudio sdl vdpau vidstab xine xml"
+IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug
+ffmpeg fftw frei0r gtk jack kernel_linux libsamplerate lua opencv opengl python
+qt5 rtaudio rubberband sdl vdpau vidstab xine xml"
 # java perl php tcl
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
@@ -68,6 +67,7 @@ DEPEND="
 		>=media-libs/rtaudio-4.1.2
 		kernel_linux? ( media-libs/alsa-lib )
 	)
+	rubberband? ( media-libs/rubberband )
 	sdl? (
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
@@ -88,7 +88,6 @@ DOCS=( AUTHORS NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
-	"${FILESDIR}"/${P}-fix-regression-w-multiple-affine-filters.patch
 )
 
 pkg_setup() {
@@ -112,6 +111,8 @@ src_configure() {
 	local myconf=(
 		--enable-gpl
 		--enable-gpl3
+		--enable-kdenlive
+		--enable-melt
 		--enable-motion-est
 		--target-arch=$(tc-arch)
 		--disable-gtk2
@@ -126,15 +127,14 @@ src_configure() {
 		$(use_enable frei0r)
 		$(use_enable gtk gdk)
 		$(use_enable jack jackrack)
-		$(use_enable kdenlive)
 		$(use_enable libsamplerate resample)
-		$(use_enable melt)
 		$(use_enable opencv)
 		$(use_enable opengl)
 		$(use_enable qt5 qt)
 		$(use_enable rtaudio)
+		$(use_enable rubberband)
 		$(use_enable sdl sdl2)
-		$(use_enable vidstab vid.stab )
+		$(use_enable vidstab vid.stab)
 		$(use_enable xine)
 		$(use_enable xml)
 		--disable-sox
@@ -156,10 +156,6 @@ src_configure() {
 		myconf+=( $(use_enable cpu_flags_x86_mmx mmx) )
 	else
 		myconf+=( --disable-mmx )
-	fi
-
-	if ! use melt ; then
-		sed -i -e "s;src/melt;;" Makefile || die
 	fi
 
 	# TODO: add swig language bindings
