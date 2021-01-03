@@ -46,6 +46,8 @@ RDEPEND="
 BDEPEND="
 	debug? ( dev-util/dwarves )
 	verify-sig? ( app-crypt/openpgp-keys-kernel )"
+PDEPEND="
+	>=virtual/dist-kernel-${PV}"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/kernel.org.asc
 
