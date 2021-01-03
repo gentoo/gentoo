@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://releases.ansible.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x64-macos"
 IUSE="test"
 RESTRICT="test"
 # doc removed due to https://github.com/ansible/ansible/issues/71395
