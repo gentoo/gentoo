@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pam.eclass
@@ -14,7 +14,7 @@
 if [[ -z ${_PAM_ECLASS} ]]; then
 _PAM_ECLASS=1
 
-inherit flag-o-matic multilib
+inherit flag-o-matic
 
 # @FUNCTION: dopamd
 # @USAGE: <file> [more files]
@@ -209,48 +209,5 @@ cleanpamd() {
 		shift
 	done
 }
-
-# @FUNCTION: pam_epam_expand
-# @USAGE: <pamd file>
-# @DESCRIPTION:
-# Steer clear, deprecated, don't use, bad experiment
-pam_epam_expand() {
-	sed -n -e 's|#%EPAM-\([[:alpha:]-]\+\):\([-+<>=/.![:alnum:]]\+\)%#.*|\1 \2|p' \
-	"$@" | sort -u | while read condition parameter; do
-
-	disable="yes"
-
-	case "$condition" in
-		If-Has)
-		message="This can be used only if you have ${parameter} installed"
-		has_version "$parameter" && disable="no"
-		;;
-		Use-Flag)
-		message="This can be used only if you enabled the ${parameter} USE flag"
-		use "$parameter" && disable="no"
-		;;
-		*)
-		eerror "Unknown EPAM condition '${condition}' ('${parameter}')"
-		die "Unknown EPAM condition '${condition}' ('${parameter}')"
-		;;
-	esac
-
-	if [ "${disable}" = "yes" ]; then
-		sed -i -e "/#%EPAM-${condition}:${parameter/\//\\/}%#/d" "$@"
-	else
-		sed -i -e "s|#%EPAM-${condition}:${parameter}%#||" "$@"
-	fi
-
-	done
-}
-
-# Think about it before uncommenting this one, for now run it by hand
-# pam_pkg_preinst() {
-# 	eshopts_push -o noglob # so that bash doen't expand "*"
-#
-# 	pam_epam_expand "${D}"/etc/pam.d/*
-#
-# 	eshopts_pop # reset old shell opts
-# }
 
 fi
