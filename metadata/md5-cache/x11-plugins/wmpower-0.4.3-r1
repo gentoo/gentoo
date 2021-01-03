@@ -1,4 +1,5 @@
-DEFINED_PHASES=compile configure
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure prepare
 DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-base/xorg-proto
 DESCRIPTION=a dockapp to get/set power management status for laptops (APM, ACPI and CPUfreq)
 EAPI=7
@@ -8,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://sourceforge/wmpower/wmpower-0.4.3.tar.bz2
-_md5_=ba9fdd1e8cee155a0712d5eb02f297b8
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=19008f3a00aa245b678624cea3ec0016

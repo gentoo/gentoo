@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~arm ~arm64 ppc64 x86
 LICENSE=Unlicense
 SLOT=0
 SRC_URI=https://github.com/skeeto/endlessh/archive/1.1.tar.gz -> endlessh-1.1.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	766e423a01cee6c7fbdd2229621aaa0e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=a3d1fb1302b959a2fddd0480a67474b4

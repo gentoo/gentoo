@@ -11,5 +11,5 @@ RDEPEND=acct-user/sqlgrey dev-lang/perl dev-perl/DBI dev-perl/Date-Calc dev-perl
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/sqlgrey/sqlgrey-1.8%20%28stable%29/sqlgrey-1.8.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	766e423a01cee6c7fbdd2229621aaa0e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=4e8d09e1b235c41298cc035a49997fec

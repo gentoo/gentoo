@@ -11,5 +11,5 @@ RDEPEND=argon2? ( dev-libs/libsodium ) bzip2? ( app-arch/bzip2 ) caps? ( sys-lib
 REQUIRED_USE=lua? ( ^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 ) )
 SLOT=0
 SRC_URI=https://dovecot.org/releases/2.3/dovecot-2.3.11.3.tar.gz sieve? ( https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.11.tar.gz ) managesieve? ( https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.11.tar.gz )
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	ssl-cert	8bf95e2477512d096a10bf218de41d5e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	ssl-cert	8bf95e2477512d096a10bf218de41d5e	systemd	766e423a01cee6c7fbdd2229621aaa0e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=74ff8d502c045893f87e80a95a41ebea
