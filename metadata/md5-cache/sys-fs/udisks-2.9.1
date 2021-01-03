@@ -5,11 +5,11 @@ DESCRIPTION=Daemon providing interfaces to work with storage devices
 EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/udisks
 IUSE=acl +daemon debug elogind +introspection lvm nls selinux systemd vdo zram kernel_linux
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2+ GPL-2+
 RDEPEND=>=sys-auth/polkit-0.110 >=sys-libs/libblockdev-2.24[cryptsetup,lvm?,vdo?] virtual/udev acl? ( virtual/acl ) daemon? ( >=dev-libs/glib-2.50:2 >=dev-libs/libatasmart-0.19 >=dev-libs/libgudev-165:= ) elogind? ( >=sys-auth/elogind-219 ) introspection? ( >=dev-libs/gobject-introspection-1.30:= ) lvm? ( sys-fs/lvm2 ) systemd? ( >=sys-apps/systemd-209 ) zram? ( >=sys-libs/libblockdev-2.24[kbd] ) >=sys-block/parted-3 virtual/eject daemon? ( >=sys-apps/util-linux-2.30 ) selinux? ( sec-policy/selinux-devicekit )
 REQUIRED_USE=?? ( elogind systemd ) elogind? ( daemon ) systemd? ( daemon ) zram? ( systemd )
 SLOT=2
 SRC_URI=https://github.com/storaged-project/udisks/releases/download/udisks-2.9.1/udisks-2.9.1.tar.bz2
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	766e423a01cee6c7fbdd2229621aaa0e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1c5aef63ed1e6193ec9a108991cc06f9
+_md5_=4a7fbfa2cbe5acf49c835aa448c085dc
