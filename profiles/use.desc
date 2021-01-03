@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -62,6 +62,7 @@ dbus - Enable dbus support for anything that needs it (gpsd, gnomemeeting, etc)
 debug - Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
 dedicated - Add support for dedicated game servers (some packages do not provide clients and servers at the same time)
 dga - Add DGA (Direct Graphic Access) support for X
+dist-kernel - Enable subslot rebuilds on Distribution Kernel upgrades
 djvu - Support DjVu, a PDF-like document format esp. suited for scanned documents
 doc - Add extra documentation (API, Javadoc, etc). It is recommended to enable per package instead of globally
 dri - Enable direct rendering: used for accelerated 3D and some 2D, like DMA
