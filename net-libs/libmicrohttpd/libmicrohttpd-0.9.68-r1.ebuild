@@ -13,21 +13,16 @@ SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/12"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="+epoll messages ssl static-libs test"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+IUSE="+epoll ssl static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="ssl? (
-		dev-libs/libgcrypt:0=
-		net-libs/gnutls
-	)"
+RDEPEND="ssl? ( >net-libs/gnutls-2.12.20 )"
 
 # We disable tests below because they're broken,
 # but if enabled, we'll need this.
 DEPEND="${RDEPEND}
-	test?	(
-		ssl? ( net-misc/curl[ssl] )
-	)"
+	test?	( net-misc/curl[ssl?] )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -39,11 +34,11 @@ multilib_src_configure() {
 		--enable-bauth \
 		--enable-dauth \
 		--disable-examples \
+		--enable-messages \
 		--enable-postprocessor \
 		--disable-thread-names \
 		$(use_enable epoll) \
 		$(use_enable test curl) \
-		$(use_enable messages) \
 		$(use_enable ssl https) \
 		$(use_with ssl gnutls) \
 		$(use_enable static-libs static)
