@@ -1,16 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-RUBY_FAKEGEM_TASK_DOC=""
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_BINWRAP=""
+
+RUBY_FAKEGEM_GEMSPEC="ruby-progressbar.gemspec"
 
 inherit ruby-fakegem
 
@@ -30,6 +31,4 @@ ruby_add_bdepend "test? ( dev-ruby/rspectacular dev-ruby/timecop )"
 all_ruby_prepare() {
 	sed -i -e '/warning_filter/ s:^:#:' \
 		spec/spec_helper.rb || die
-	# Avoid ruby24 syntax for an unneeded check
-	sed -i -e '/^return/ s:^:#:' spec/ruby-progressbar/refinements/enumerator_spec.rb || die
 }

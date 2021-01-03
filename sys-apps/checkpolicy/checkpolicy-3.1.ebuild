@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,12 +28,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
 
-DEPEND=">=sys-libs/libsepol-${SEPOL_VER}
-	>=sys-libs/libsemanage-${SEMNG_VER}
-	sys-devel/flex
+DEPEND=">=sys-libs/libsepol-${SEPOL_VER}"
+BDEPEND="sys-devel/flex
 	sys-devel/bison"
 
-RDEPEND=">=sys-libs/libsemanage-${SEMNG_VER}"
+RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}"
 
 src_compile() {
 	emake \
@@ -43,8 +42,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" \
-		install
+	default
 
 	if use debug; then
 		dobin "${S}/test/dismod"

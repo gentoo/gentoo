@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -21,14 +21,14 @@ IUSE=""
 ruby_add_rdepend "dev-ruby/nokogiri"
 
 ruby_add_bdepend "test? (
-	dev-ruby/regexp_parser:0
+	dev-ruby/regexp_parser
 	dev-ruby/rspec:3
-	dev-util/aruba
+	dev-util/aruba:1
 	dev-util/cucumber
 )"
 
 all_ruby_prepare() {
-	sed -i -e '/simplecov/I s:^:#:' -e '1igem "regexp_parser", "~>0.2"' spec/spec_helper.rb || die
+	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
 }
 
 each_ruby_test() {
