@@ -1009,7 +1009,7 @@ app-crypt/dehydrated 0.6.5 0.7.0: a client for signing certificates with an ACME
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7 3.0.8: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.4.27 5.0.8 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.4.27 5.0.11 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.5-r1 1.1.5-r100: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0 1.0.1: Save environment variables in a secret vault
@@ -2038,7 +2038,7 @@ app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.4-r1: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1: Opensourced tools for VMware guests
-app-emulation/pcem 16-r1 17: A PC emulator that specializes in running old operating systems and software
+app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/protontricks 1.4.1 1.4.2: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
@@ -14620,7 +14620,7 @@ net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
 net-im/jabber-base 0.01-r2: Base layout package for various jabber services
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/libcommuni 3.5.0_p20200711: A cross-platform IRC framework written with Qt
+net-im/libcommuni 3.5.0_p20200711 3.6.0: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
@@ -15598,7 +15598,7 @@ net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's cu
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 6.0.41 6.0.42 6.0.43 6.1.25 6.1.26: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 6.0.43 6.1.26: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.8.0 0.9.2: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
@@ -17369,7 +17369,7 @@ sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-64
 sys-firmware/vgabios 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
-sys-fs/android-file-transfer-linux 3.9 4.0 4.1 9999: Android File Transfer for Linux
+sys-fs/android-file-transfer-linux 3.9 4.1 4.2 9999: Android File Transfer for Linux
 sys-fs/archivemount 0.8.12: Mount archives using libarchive and FUSE
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
@@ -17389,7 +17389,7 @@ sys-fs/compsize 1.3 9999: Utility to find btrfs compression type/ratio on a file
 sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1 2.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.10.2: Encrypted FUSE filesystem that conceals metadata
-sys-fs/cryptmount 5.3.2: A utility for management and user-mode mounting of encrypted filesystems
+sys-fs/cryptmount 5.3.3: A utility for management and user-mode mounting of encrypted filesystems
 sys-fs/cryptsetup 2.3.2 2.3.3 2.3.4: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
@@ -18408,7 +18408,7 @@ x11-misc/menumaker 0.99.11 0.99.12: Utility that scans through the system and ge
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.24.0 1.24.0-r1: Mozo menu editor for MATE
-x11-misc/mugshot 0.4.2-r1: A lightweight user-configuration application
+x11-misc/mugshot 0.4.2-r1 0.4.3: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1 1.6.1-r1 99999: A background browser and setter for X
 x11-misc/notification-daemon 3.20.0 3.20.0-r1: Notification daemon
@@ -18650,7 +18650,7 @@ x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from ann
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.25.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.5 1.7 9999: SkypeWeb Plugin for Pidgin
-x11-plugins/pidgin-telegram 1.4.3 1.4.4: A libpurple protocol plugin that adds support for the Telegram messenger
+x11-plugins/pidgin-telegram 1.4.4: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
