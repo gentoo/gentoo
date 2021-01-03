@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -129,6 +129,10 @@ src_configure() {
 		--disable-werror
 		# Disable modules that are in a combined binutils/gdb tree. #490566
 		--disable-{binutils,etc,gas,gold,gprof,ld}
+
+		# avoid automagic dependency on (currently prefix) systems
+		# systems with debuginfod library, bgu #754753
+		--without-debuginfod
 	)
 	local sysroot="${EPREFIX}/usr/${CTARGET}"
 	is_cross && myconf+=(
