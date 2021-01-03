@@ -2445,7 +2445,7 @@ app-misc/golly 4.0: simulator for Conway's Game of Life and other cellular autom
 app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1 5.1.3: Genealogical Research and Analysis Management Programming System
-app-misc/graphlcd-base 2.0.0-r1: Contains the lowlevel lcd drivers for GraphLCD
+app-misc/graphlcd-base 2.0.0-r2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11.3: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2-r1: Real-time Sunlight Wallpaper
 app-misc/gtypist 2.9.5-r1: Universal typing tutor
@@ -3579,7 +3579,7 @@ dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
 dev-db/redis 5.0.9-r1 5.0.10 6.0.9 6.0.9-r100: A persistent caching system, key-value and data structures database
-dev-db/repmgr 3.0.1 3.3.2 5.1.0: PostgreSQL Replication Manager
+dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
 dev-db/slony1 2.2.6 2.2.7 2.2.9 2.2.10: A replication system for the PostgreSQL Database Management System
