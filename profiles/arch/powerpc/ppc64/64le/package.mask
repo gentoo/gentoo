@@ -17,6 +17,7 @@
 # little-endian power8 ppc64 configs are provided
 -sys-kernel/gentoo-kernel
 -sys-kernel/vanilla-kernel
+-virtual/dist-kernel
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # libva unmasked on little-endian profile
