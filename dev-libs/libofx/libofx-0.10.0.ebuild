@@ -22,13 +22,12 @@ BDEPEND="
 	test? ( app-crypt/gnupg )
 "
 RDEPEND="
+	>app-text/opensp-1.5
 	>=dev-cpp/libxmlpp-2.40.1:2.6
 	>=net-misc/curl-7.9.7
 	virtual/libiconv
 "
-DEPEND="${RDEPEND}
-	>app-text/opensp-1.5
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
