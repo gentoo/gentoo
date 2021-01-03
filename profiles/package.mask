@@ -110,11 +110,6 @@ dev-ruby/rack:2.1
 # Bug #762361
 media-sound/takcd
 
-# Alfredo Tupone <tupone@gentoo.org> (2020-12-28)
-# Masked for testing
->=dev-lang/tk-8.6.10
->=dev-lang/tcl-8.6.10
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
 # Dead upstream, only two revdeps.
 # Masked for removal in 30 days.
