@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
 	app-arch/xz-utils[abi_x86_32(-)]
+	dev-cpp/yaml-cpp:=[abi_x86_32(-)]
 	dev-libs/libaio[abi_x86_32(-)]
 	dev-libs/libfmt:=[abi_x86_32(-)]
 	dev-libs/libxml2:2[abi_x86_32(-)]
@@ -34,7 +35,7 @@ RDEPEND="
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
+	x11-libs/wxGTK:3.0-gtk3[abi_x86_32(-),X]
 "
 DEPEND="${RDEPEND}
 	dev-cpp/pngpp
@@ -82,11 +83,9 @@ src_configure() {
 		-DXDG_STD=TRUE
 
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
-		-DDOC_DIR=/usr/share/doc/"${PF}"
-		-DGTK3_API=TRUE
-		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
 		# wxGTK must be built against same sdl version
 		-DSDL2_API=TRUE
+		-DUSE_SYSTEM_YAML=TRUE
 		-DUSE_VTUNE=FALSE
 	)
 
@@ -99,6 +98,6 @@ src_install() {
 	#  https://github.com/PCSX2/pcsx2/issues/417
 	#  https://github.com/PCSX2/pcsx2/issues/3077
 	QA_EXECSTACK="usr/bin/PCSX2"
-	QA_TEXTRELS="usr/$(get_libdir)/pcsx2/* usr/bin/PCSX2"
+	QA_TEXTRELS="usr/$(get_libdir)/PCSX2/* usr/bin/PCSX2"
 	cmake_src_install
 }
