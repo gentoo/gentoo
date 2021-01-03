@@ -565,8 +565,8 @@ app-admin/abrt 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.10.0-r2 2.10.1 2.10.4 9999: Model-driven deployment, config management, and command execution framework
-app-admin/ansible-base 2.10.2 2.10.3 2.10.4: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.10.4 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible-base 2.10.4: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28 1.30: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -13880,7 +13880,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2-r1 4.7.3 4.8.2 4.8.3 4.8.4 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r1 4.8.4 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
@@ -15227,6 +15227,7 @@ net-misc/radvd 2.17-r1 2.17-r2 2.18 2.18-r1: Linux IPv6 Router Advertisement Dae
 net-misc/rclone 1.53.3 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
+net-misc/realtek-r8152 2.14.0: Out-of-tree driver for Realtek's 2.5 GbE USB NICs.
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.8-r1 1.4.9 1.4.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
