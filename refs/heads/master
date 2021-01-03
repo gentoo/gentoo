@@ -1,17 +1,13 @@
 certificate version 0.1
-pusher DF84256885283521 1609665221 +0100
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1609665221-7b2096f7ed7b2d61ef69d61f8def7d5880769ac1
+pusher Sam James <sam@gentoo.org> 1609665258 +0000
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1609665258-b6205e2dd66044d8297e265b0fdbb934111f098d
 
-adc48fd9773246e68fdb5d30683c7f48d3ec8407 264a0914c1b13d281f8cbf76548cba173af0b785 refs/heads/master
+264a0914c1b13d281f8cbf76548cba173af0b785 0a0adca4761d6f37650a5e5e0313fc9f006e39c7 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAl/xisUACgkQY5ra4jKe
-JA4dlAf/XSC0E+vajvBCy+VVbSev0qcjIlqSW/F0JdbOE7pjFGk2wmEsV7NUaobX
-hTSrJ2lnPS4KMZM+HGpz2TciQYyY7HTRk3F5+Wt11rcXSzSR3NA23clrRZc/qM0+
-E/k2Zn6//ZRmFmoMvLOrVYahvJVDXrHU+KEycuDxpASXMpjC3KL03aSpZ/m9Z2u6
-3Ny4avfAmv4oa/i3x2JMuYTWVc56i10PScMZhUu2D+LfEhn1Bjaf+uZlw7l82w1t
-5eeegbh0T26uySJYkimYHiUHkBx81F5CsGzkpGYMyCGnnZXt1cXN2TuZiCnxVRRS
-XLWSIWSnQy3qH9AtZKusyg8s9Ys8ow==
-=MGA6
+iIUEABYIAC0WIQSONjK3ErBA5VvN3hCxfj6E5hA8mwUCX/GK6g8cc2FtQGdlbnRv
+by5vcmcACgkQsX4+hOYQPJvRJAEA20LATowpwLx+lQYiCyizNfpNkMEaLYT1DS6T
+ESNVD+gBAPZyUDt7QhTWZ6UeQy2I3/0W1ceufIdce1+Rj8Wcw4MC
+=Y7wl
 -----END PGP SIGNATURE-----
