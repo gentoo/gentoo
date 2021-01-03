@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ RDEPEND="
 	ssl? (
 		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( >=dev-libs/openssl-1.0.0:0= ) )
-	ofx? ( >=dev-libs/libofx-0.9.0 )
+	ofx? ( >=dev-libs/libofx-0.9.0:= )
 	goffice? ( >=x11-libs/goffice-0.10.0 )
 "
 DEPEND="${RDEPEND}
