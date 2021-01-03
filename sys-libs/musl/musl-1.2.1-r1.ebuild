@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,7 +69,7 @@ src_configure() {
 	just_headers && export CC=true
 
 	local sysroot
-	is_crosscompile && sysroot=/usr/${CTARGET}
+	is_crosscompile && sysroot="${EPREFIX}"/usr/${CTARGET}
 	./configure \
 		--target=${CTARGET} \
 		--prefix=${sysroot}/usr \
