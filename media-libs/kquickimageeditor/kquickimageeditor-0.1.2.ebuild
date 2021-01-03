@@ -19,6 +19,8 @@ fi
 LICENSE="LGPL-2.1+"
 SLOT="5"
 
+PATCHES=( "${FILESDIR}"/${P}-no-werror.patch )
+
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 "
