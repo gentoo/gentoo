@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,7 +59,9 @@ multilib_src_install() {
 			mkdir docs || die
 			mv doc_c/html docs/c || die
 
-			use cxx && mv doc_cpp/html docs/cpp || die
+			if use cxx; then
+				mv doc_cpp/html docs/cpp || die
+			fi
 		fi
 
 		if use examples; then
