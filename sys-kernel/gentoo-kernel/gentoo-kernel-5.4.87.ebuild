@@ -46,6 +46,8 @@ RDEPEND="
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
 	debug? ( dev-util/dwarves )"
+PDEPEND="
+	>=virtual/dist-kernel-${PV}"
 
 pkg_pretend() {
 	ewarn "Starting with 5.4.52, Distribution Kernels are switching from Arch"
