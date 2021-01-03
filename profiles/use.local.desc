@@ -5975,8 +5975,9 @@ net-libs/libgsasl:gcrypt - Use dev-libs/libgcrypt for low-level crypto
 net-libs/libgsasl:ntlm - Add support for Microsoft's NTLM mechanism using net-libs/libntlm
 net-libs/libiio:aio - Enable asynchronous IO support
 net-libs/libisds:openssl - Use dev-libs/openssl as crypto backend instead of app-crypt/gpgme and dev-libs/libgcrypt
-net-libs/libmicrohttpd:epoll - use epoll() system call
+net-libs/libmicrohttpd:epoll - Use epoll() system call
 net-libs/libmicrohttpd:messages - enable error messages
+net-libs/libmicrohttpd:thread-names - Assign thread names to internal threads
 net-libs/libnids:glib - Use dev-libs/glib for multiprocessing support
 net-libs/libnids:libnet - Include code requiring net-libs/libnet
 net-libs/libnma:pkcs11 - Enable PKCS#11 support in certificate chooser via app-crypt/gcr

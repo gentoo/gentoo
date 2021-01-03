@@ -14785,7 +14785,7 @@ net-libs/liblockfile 1.16: Implements functions designed to lock the standard ma
 net-libs/libmbim 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70 0.9.71: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70 0.9.71 0.9.72: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2-r1: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
