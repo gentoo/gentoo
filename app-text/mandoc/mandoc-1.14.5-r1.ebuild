@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -93,6 +93,10 @@ src_prepare() {
 	if [[ -n "${MANDOC_CGI_H}" ]]; then
 		cp "${MANDOC_CGI_H}" cgi.h || die
 	fi
+
+	# ./configure does not propagate all configure.local
+	# settings to Makefile.local settings.
+	tc-export AR
 }
 
 src_compile() {
