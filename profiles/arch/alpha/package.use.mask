@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (2020-12-31)
-# dev-python/pyudev is not keyworded
-dev-libs/libwacom test
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-30)
 # Qt5 is not keyworded here.
 x11-misc/synergy gui
