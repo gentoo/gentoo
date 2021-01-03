@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,8 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/libuv"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/raft-0.9.25-Always-skip-init-oom-test.patch )
 
 src_prepare() {
 	default
