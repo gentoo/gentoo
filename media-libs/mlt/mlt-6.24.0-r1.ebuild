@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit lua python-single-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg
-fftw frei0r gtk jack kdenlive kernel_linux libsamplerate lua melt opencv opengl python
+IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug
+ffmpeg fftw frei0r gtk jack kernel_linux libsamplerate lua opencv opengl python
 qt5 rtaudio rubberband sdl vdpau vidstab xine xml"
 # java perl php tcl
 
@@ -111,6 +111,8 @@ src_configure() {
 	local myconf=(
 		--enable-gpl
 		--enable-gpl3
+		--enable-kdenlive
+		--enable-melt
 		--enable-motion-est
 		--target-arch=$(tc-arch)
 		--disable-gtk2
@@ -125,9 +127,7 @@ src_configure() {
 		$(use_enable frei0r)
 		$(use_enable gtk gdk)
 		$(use_enable jack jackrack)
-		$(use_enable kdenlive)
 		$(use_enable libsamplerate resample)
-		$(use_enable melt)
 		$(use_enable opencv)
 		$(use_enable opengl)
 		$(use_enable qt5 qt)
@@ -156,10 +156,6 @@ src_configure() {
 		myconf+=( $(use_enable cpu_flags_x86_mmx mmx) )
 	else
 		myconf+=( --disable-mmx )
-	fi
-
-	if ! use melt ; then
-		sed -i -e "s;src/melt;;" Makefile || die
 	fi
 
 	# TODO: add swig language bindings
