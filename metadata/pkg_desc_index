@@ -13043,6 +13043,7 @@ media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 9999: Kodi platform support library
+media-libs/kquickimageeditor 0.1.2: QtQuick components providing basic image editing capabilities
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
 media-libs/ladspa-sdk 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
@@ -13218,7 +13219,7 @@ media-libs/lv2 1.18.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.2.4 20.2.6 20.3.2 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.22.1-r1 6.22.1-r100 6.24.0: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.22.1-r1 6.24.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in pure Python
@@ -14624,6 +14625,7 @@ net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
+net-im/neochat 1.0: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
@@ -14819,6 +14821,7 @@ net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs app
 net-libs/libproxy 0.4.16-r1 0.4.17: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.12.6 1.14.0 1.16.0 1.16.2 1.16.4 1.18.0 1.18.2 1.20.0 1.20.2 1.22.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
+net-libs/libquotient 0.6.3: Qt5-based SDK to develop applications for Matrix
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 2.3.1: Remote delta-compression library
 net-libs/libsearpc 3.2.0-r1: A simple C language RPC framework
