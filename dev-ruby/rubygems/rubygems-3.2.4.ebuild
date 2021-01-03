@@ -87,7 +87,7 @@ each_ruby_install() {
 }
 
 all_ruby_install() {
-	dodoc History.txt README.md
+	dodoc CHANGELOG.md README.md
 
 	if use server; then
 		newinitd "${FILESDIR}/init.d-gem_server2" gem_server
