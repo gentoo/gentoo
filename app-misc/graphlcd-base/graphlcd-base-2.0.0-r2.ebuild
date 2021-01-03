@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,10 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "HISTORY" "README" "TODO" "docs/." )
 
-PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-libvncserver.patch"
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 src_prepare() {
 	default
@@ -55,7 +58,7 @@ src_configure() {
 	if use lcd_devices_picolcd_256x64; then
 		sed -e "81s:#::" -i Make.config || die
 	fi
-	if use lcd_devices_vnc; then
+	if ! use lcd_devices_vnc; then
 		sed -e "72s:1:0:" -i Make.config || die
 	fi
 
