@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 	kde? ( >=kde-frameworks/krunner-${KFMIN}:5 )
-	ofx? ( dev-libs/libofx )
+	ofx? ( dev-libs/libofx:= )
 "
 DEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kguiaddons-${KFMIN}:5
