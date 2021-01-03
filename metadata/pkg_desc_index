@@ -17565,7 +17565,7 @@ sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the syst
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
-sys-libs/libunwind 1.5.0: Portable and efficient API to determine the call-chain of a program
+sys-libs/libunwind 1.5.0 1.5.0-r1: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.6 0.7-r1 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
