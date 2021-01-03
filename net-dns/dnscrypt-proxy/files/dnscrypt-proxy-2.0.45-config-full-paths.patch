@@ -1,5 +1,3 @@
-diff --git a/dnscrypt-proxy/example-dnscrypt-proxy.toml b/dnscrypt-proxy/example-dnscrypt-proxy.toml
-index 12d9bde..0c7f3e1 100644
 --- a/dnscrypt-proxy/example-dnscrypt-proxy.toml
 +++ b/dnscrypt-proxy/example-dnscrypt-proxy.toml
 @@ -157,7 +157,7 @@ keepalive = 30
