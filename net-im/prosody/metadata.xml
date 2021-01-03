@@ -14,7 +14,6 @@
 		added functionality, or prototype new protocols.
 	</longdescription>
 	<use>
-		<flag name="jit">Use LuaJIT instead of vanilla Lua</flag>
 		<flag name="libevent">Use libevent for event handling</flag>
 	</use>
 </pkgmetadata>
