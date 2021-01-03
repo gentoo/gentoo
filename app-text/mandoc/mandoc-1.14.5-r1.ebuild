@@ -24,7 +24,10 @@ BDEPEND="
 	cgi? ( app-text/highlight )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.14.5-r1-www-install.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-r1-www-install.patch
+	"${FILESDIR}"/${PN}-1.14.5-gcc10.patch
+)
 
 pkg_pretend() {
 	if use system-man ; then
