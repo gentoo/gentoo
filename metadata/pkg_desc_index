@@ -5350,7 +5350,7 @@ dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operation
 dev-libs/libax25 0.0.12_rc5: AX.25 library for hamradio applications
 dev-libs/libb64 1.2.1 2.0.0.1: Fast Base64 encoding/decoding routines
 dev-libs/libbase58 0.1.4 0.1.4-r1: C implementation of Bitcoin's base58 encoding
-dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 0.1.0-r1 0.1.1 0.2 9999: Stand-alone build of libbpf from the Linux kernel
+dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 0.1.0-r1 0.1.1 0.2 0.3 9999: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Library routines related to building,parsing and iterating BSON documents
@@ -5635,7 +5635,7 @@ dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.6.0 0.8.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute Common Language Runtime
-dev-libs/rocksdb 6.14.5 6.14.6: Embeddable, persistent key-value store for fast storage
+dev-libs/rocksdb 6.14.5 6.14.6 6.15.2: Embeddable, persistent key-value store for fast storage
 dev-libs/rocm-comgr 3.9.0 3.10.0 4.0.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 3.10.0 4.0.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
@@ -10438,7 +10438,7 @@ dev-scheme/stklos 1.10-r1: fast and light Scheme implementation
 dev-scheme/termite 0.15-r1: Erlang-style concurrency for Gambit Scheme
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
 dev-scheme/ypsilon 0.9.6_p3: R6RS-compliant Scheme implementation for real-time applications
-dev-tcltk/blt 2.4z-r13 2.4z-r14 2.5.3: Extension to Tk, adding new widgets, geometry managers, and misc commands
+dev-tcltk/blt 2.4z-r13 2.4z-r14 2.5.3-r1: Extension to Tk, adding new widgets, geometry managers, and misc commands
 dev-tcltk/bwidget 1.9.12 1.9.14: High-level widget set for Tcl/Tk
 dev-tcltk/expect 5.45.4: tool for automating interactive applications
 dev-tcltk/expect-lite 4.9.0: quick and easy command line automation tool built on top of expect
