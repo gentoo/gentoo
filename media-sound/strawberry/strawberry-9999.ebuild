@@ -124,7 +124,9 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
-	elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
-	elog "depending on your preferences"
+	if use gstreamer ; then
+		elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
+		elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
+		elog "depending on your preferences"
+	fi
 }
