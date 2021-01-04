@@ -556,7 +556,7 @@ app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federat
 app-accessibility/orca 3.36.5 3.36.6: Extensible screen reader that provides access to the desktop
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
-app-accessibility/speech-dispatcher 0.8.7-r3 0.9.1: Speech synthesis interface
+app-accessibility/speech-dispatcher 0.9.1: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4 2.5.0: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.8: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
@@ -1659,7 +1659,7 @@ app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.17 1.8.17-r1 1.8.20 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
-app-doc/eclass-manpages 20200704 20200913 99999999: Collection of Gentoo eclass manpages
+app-doc/eclass-manpages 20200913 20210104 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.6 4.10.6c 4.10.7: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
@@ -8080,7 +8080,7 @@ dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that 
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.7 0.9.8 0.9.9: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.7 0.9.8 0.9.9 0.9.10: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -14357,7 +14357,7 @@ net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of availabl
 net-analyzer/pbnj 2.04-r1: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.6.2 1.7.1-r1 1.7.2-r1 1.7.3-r2 1.7.4 1.7.4_p1 1.7.5 999999: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.7.4 1.7.4_p1 1.7.5 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0-r1: Portmon is a network service monitoring daemon
@@ -14644,7 +14644,7 @@ net-im/skypeforlinux 8.67.0.96: Instant messaging client, with support for audio
 net-im/slack 4.4.2 4.4.3 4.11.3: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/teams 1.3.00.25560 1.3.00.30857: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
+net-im/teams 1.3.00.25560 1.3.00.30857-r1: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.4.7-r1 2.4.11: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.4.4 2.4.5 2.4.7: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
@@ -17639,7 +17639,7 @@ sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1 2.6.0: Resource-specific view of processes
-sys-process/audit 2.8.4 2.8.5 2.8.5-r2 3.0: Userspace utilities for storing and processing auditing records
+sys-process/audit 2.8.5-r2 3.0: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/bpytop 1.0.52 1.0.54: Linux/OSX/FreeBSD resource monitor
