@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 	gedit? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			app-editors/gedit[introspection,python,${PYTHON_SINGLE_USEDEP}]
+			app-editors/gedit[introspection(+),python,${PYTHON_SINGLE_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		')
 	)
