@@ -82,7 +82,8 @@ readonly ACCT_USER_NAME
 # @ECLASS-VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
 # The shell to use for the user.  If not specified, a 'nologin' variant
-# for the system is used.
+# for the system is used.  This can be overriden in make.conf through
+# ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
 : ${ACCT_USER_SHELL:=-1}
 
 # @ECLASS-VARIABLE: ACCT_USER_HOME
@@ -90,6 +91,8 @@ readonly ACCT_USER_NAME
 # The home directory for the user.  If not specified, /dev/null is used.
 # The directory will be created with appropriate permissions if it does
 # not exist.  When updating, existing home directory will not be moved.
+# This can be overriden in make.conf through
+# ACCT_USER_<UPPERCASE_USERNAME>_HOME variable.
 : ${ACCT_USER_HOME:=/dev/null}
 
 # @ECLASS-VARIABLE: ACCT_USER_HOME_OWNER
@@ -97,11 +100,14 @@ readonly ACCT_USER_NAME
 # @DESCRIPTION:
 # The ownership to use for the home directory, in chown ([user][:group])
 # syntax.  Defaults to the newly created user, and its primary group.
+# This can be overriden in make.conf through
+# ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER variable.
 
 # @ECLASS-VARIABLE: ACCT_USER_HOME_PERMS
 # @DESCRIPTION:
 # The permissions to use for the home directory, in chmod (octal
-# or verbose) form.
+# or verbose) form.  This can be overriden in make.conf through
+# ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS variable.
 : ${ACCT_USER_HOME_PERMS:=0755}
 
 # @ECLASS-VARIABLE: ACCT_USER_GROUPS
@@ -110,6 +116,12 @@ readonly ACCT_USER_NAME
 # List of groups the user should belong to.  This must be a bash
 # array.  The first group specified is the user's primary group, while
 # the remaining groups (if any) become supplementary groups.
+#
+# This can be overriden in make.conf through
+# ACCT_USER_<UPPERCASE_USERNAME>_GROUPS variable, or appended to
+# via ACCT_USER_<UPPERCASE_USERNAME>_GROUPS_ADD.  Please note that
+# due to technical limitations, the override variables are not arrays
+# but space-separated lists.
 
 
 # << Boilerplate ebuild variables >>
@@ -316,23 +328,48 @@ acct-user_pkg_pretend() {
 acct-user_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${ACCT_USER_HOME} != /dev/null ]]; then
+	# serialize for override support
+	local ACCT_USER_GROUPS=${ACCT_USER_GROUPS[*]}
+
+	# support make.conf overrides
+	local override_name=${ACCT_USER_NAME^^}
+	override_name=${override_name//-/_}
+	local var
+	for var in ACCT_USER_{SHELL,HOME{,_OWNER,_PERMS},GROUPS}; do
+		local var_name=ACCT_USER_${override_name}_${var#ACCT_USER_}
+		if [[ -n ${!var_name} ]]; then
+			ewarn "${var_name}=${!var_name} override in effect, support will not be provided."
+		else
+			var_name=${var}
+		fi
+		declare -g "_${var}=${!var_name}"
+	done
+	var_name=ACCT_USER_${override_name}_GROUPS_ADD
+	if [[ -n ${!var_name} ]]; then
+		ewarn "${var_name}=${!var_name} override in effect, support will not be provided."
+		_ACCT_USER_GROUPS+=" ${!var_name}"
+	fi
+
+	# deserialize into an array
+	local groups=( ${_ACCT_USER_GROUPS} )
+
+	if [[ ${_ACCT_USER_HOME} != /dev/null ]]; then
 		# note: we can't set permissions here since the user isn't
 		# created yet
-		keepdir "${ACCT_USER_HOME}"
+		keepdir "${_ACCT_USER_HOME}"
 	fi
 
 	insinto /usr/lib/sysusers.d
 	newins - ${CATEGORY}-${ACCT_USER_NAME}.conf < <(
 		printf "u\t%q\t%q\t%q\t%q\t%q\n" \
 			"${ACCT_USER_NAME}" \
-			"${ACCT_USER_ID/#-*/-}:${ACCT_USER_GROUPS[0]}" \
+			"${ACCT_USER_ID/#-*/-}:${groups[0]}" \
 			"${DESCRIPTION//[:,=]/;}" \
-			"${ACCT_USER_HOME}" \
-			"${ACCT_USER_SHELL/#-*/-}"
-		if [[ ${#ACCT_USER_GROUPS[@]} -gt 1 ]]; then
+			"${_ACCT_USER_HOME}" \
+			"${_ACCT_USER_SHELL/#-*/-}"
+		if [[ ${#groups[@]} -gt 1 ]]; then
 			printf "m\t${ACCT_USER_NAME}\t%q\n" \
-				"${ACCT_USER_GROUPS[@]:1}"
+				"${groups[@]:1}"
 		fi
 	)
 }
@@ -344,26 +381,26 @@ acct-user_src_install() {
 acct-user_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local groups=${ACCT_USER_GROUPS[*]}
 	enewuser ${ACCT_USER_ENFORCE_ID:+-F} -M "${ACCT_USER_NAME}" \
-		"${ACCT_USER_ID}" "${ACCT_USER_SHELL}" "${ACCT_USER_HOME}" \
-		"${groups// /,}"
+		"${ACCT_USER_ID}" "${_ACCT_USER_SHELL}" "${_ACCT_USER_HOME}" \
+		"${_ACCT_USER_GROUPS// /,}"
 
-	if [[ ${ACCT_USER_HOME} != /dev/null ]]; then
+	if [[ ${_ACCT_USER_HOME} != /dev/null ]]; then
 		# default ownership to user:group
-		if [[ -z ${ACCT_USER_HOME_OWNER} ]]; then
-			ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${ACCT_USER_GROUPS[0]}
+		if [[ -z ${_ACCT_USER_HOME_OWNER} ]]; then
+			local group_array=( ${_ACCT_USER_GROUPS} )
+			_ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${group_array[0]}
 		fi
 		# Path might be missing due to INSTALL_MASK, etc.
 		# https://bugs.gentoo.org/691478
-		if [[ ! -e "${ED}/${ACCT_USER_HOME#/}" ]]; then
+		if [[ ! -e "${ED}/${_ACCT_USER_HOME#/}" ]]; then
 			eerror "Home directory is missing from the installation image:"
-			eerror "  ${ACCT_USER_HOME}"
+			eerror "  ${_ACCT_USER_HOME}"
 			eerror "Check INSTALL_MASK for entries that would cause this."
-			die "${ACCT_USER_HOME} does not exist"
+			die "${_ACCT_USER_HOME} does not exist"
 		fi
-		fowners "${ACCT_USER_HOME_OWNER}" "${ACCT_USER_HOME}"
-		fperms "${ACCT_USER_HOME_PERMS}" "${ACCT_USER_HOME}"
+		fowners "${_ACCT_USER_HOME_OWNER}" "${_ACCT_USER_HOME}"
+		fperms "${_ACCT_USER_HOME_PERMS}" "${_ACCT_USER_HOME}"
 	fi
 }
 
@@ -380,10 +417,9 @@ acct-user_pkg_postinst() {
 	fi
 
 	# NB: eset* functions check current value
-	esethome "${ACCT_USER_NAME}" "${ACCT_USER_HOME}"
-	esetshell "${ACCT_USER_NAME}" "${ACCT_USER_SHELL}"
-	local groups=${ACCT_USER_GROUPS[*]}
-	esetgroups "${ACCT_USER_NAME}" "${groups// /,}"
+	esethome "${ACCT_USER_NAME}" "${_ACCT_USER_HOME}"
+	esetshell "${ACCT_USER_NAME}" "${_ACCT_USER_SHELL}"
+	esetgroups "${ACCT_USER_NAME}" "${_ACCT_USER_GROUPS// /,}"
 	# comment field can not contain colons
 	esetcomment "${ACCT_USER_NAME}" "${DESCRIPTION//[:,=]/;}"
 	eunlockuser "${ACCT_USER_NAME}"
