@@ -10435,7 +10435,7 @@ dev-scheme/stklos 1.10-r1: fast and light Scheme implementation
 dev-scheme/termite 0.15-r1: Erlang-style concurrency for Gambit Scheme
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
 dev-scheme/ypsilon 0.9.6_p3: R6RS-compliant Scheme implementation for real-time applications
-dev-tcltk/blt 2.4z-r13 2.4z-r14: Extension to Tk, adding new widgets, geometry managers, and misc commands
+dev-tcltk/blt 2.4z-r13 2.4z-r14 2.5.3: Extension to Tk, adding new widgets, geometry managers, and misc commands
 dev-tcltk/bwidget 1.9.12 1.9.14: High-level widget set for Tcl/Tk
 dev-tcltk/expect 5.45.4: tool for automating interactive applications
 dev-tcltk/expect-lite 4.9.0: quick and easy command line automation tool built on top of expect

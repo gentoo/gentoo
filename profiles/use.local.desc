@@ -4592,7 +4592,9 @@ media-sound/loudness-scanner:sndfile - build the sndfile plugin
 media-sound/mangler:espeak - Text to speech engine
 media-sound/mangler:g15 - Logitech g15 lcd support
 media-sound/mixxx:hid - Enable HID controller support
+media-sound/mixxx:keyfinder - Enable musical key detection support via media-libs/libkeyfinder
 media-sound/mixxx:lv2 - Add support for Ladspa V2 via media-libs/lilv
+media-sound/mixxx:qtkeychain - Enable Secure credential storage support via dev-libs/qtkeychain
 media-sound/mixxx:shout - Enable broadcasting support via media-libs/libshout
 media-sound/moc:cache - Enable tags caching support
 media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
