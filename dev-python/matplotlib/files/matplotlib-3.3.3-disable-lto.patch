@@ -1,0 +1,25 @@
+From 7382d6205bfdc647a8e47c8e417c991d3822eace Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 4 Jan 2021 10:03:32 +0100
+Subject: [PATCH] Disable -flto
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 6e1d19d..ed85d14 100644
+--- a/setup.py
++++ b/setup.py
+@@ -147,7 +147,7 @@ class BuildExtraLibraries(BuildExtCommand):
+                         ranlib = True
+                     else:
+                         ranlib = shutil.which('llvm-ranlib')
+-        if ranlib and has_flag(self.compiler, '-flto'):
++        if False and ranlib and has_flag(self.compiler, '-flto'):
+             for ext in self.extensions:
+                 ext.extra_compile_args.append('-flto')
+             cppflags.append('-flto')
+-- 
+2.30.0
+
