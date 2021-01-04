@@ -62,7 +62,7 @@ src_compile() {
 	myemakeargs=(
 		BUILDTAGS="${options[*]}"
 		DESTDIR="${ED}"
-		LDFLAGS=$(usex hardened '-extldflags -fno-PIC' '')
+		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')"
 	)
 
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
