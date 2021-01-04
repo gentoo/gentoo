@@ -28,7 +28,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/libbpf-9999-paths.patch"
+	"${FILESDIR}/libbpf-0.3.0-paths.patch"
 )
 
 src_compile() {
