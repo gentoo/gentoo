@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8})
-
-inherit flag-o-matic python-any-r1 scons-utils toolchain-funcs
+inherit cmake xdg udev
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
@@ -13,7 +11,6 @@ if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
 else
-	#SRC_URI="https://downloads.mixxx.org/${P}/${P}-src.tar.gz"
 	SRC_URI="https://github.com/mixxxdj/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
 	KEYWORDS="~amd64 ~x86"
@@ -21,10 +18,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac doc ffmpeg hid lv2 mp3 mp4 opus shout wavpack"
+IUSE="aac doc ffmpeg hid keyfinder lv2 mp3 mp4 opus qtkeychain shout wavpack"
 
-# fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
-# got fixed
 RDEPEND="
 	dev-db/sqlite
 	dev-libs/glib:2
@@ -43,12 +38,13 @@ RDEPEND="
 	dev-qt/qtxml:5
 	media-libs/chromaprint
 	media-libs/flac
+	media-libs/libebur128
 	media-libs/libid3tag
 	media-libs/libogg
 	media-libs/libsndfile
-	>=media-libs/libsoundtouch-1.5
+	media-libs/libsoundtouch
 	media-libs/libvorbis
-	>=media-libs/portaudio-19_pre
+	media-libs/portaudio
 	media-libs/portmidi
 	media-libs/rubberband
 	media-libs/taglib
@@ -58,75 +54,68 @@ RDEPEND="
 	virtual/glu
 	virtual/libusb:1
 	virtual/opengl
+	virtual/udev
 	x11-libs/libX11
 	aac? (
 		media-libs/faad2
 		media-libs/libmp4v2:0
 	)
+	ffmpeg? ( media-video/ffmpeg:0= )
 	hid? ( dev-libs/hidapi )
-	lv2? ( >=media-libs/lilv-0.24.2-r3 )
+	keyfinder? ( media-libs/libkeyfinder )
+	lv2? ( media-libs/lilv )
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
-	shout? ( media-libs/libshout )
+	qtkeychain? ( dev-libs/qtkeychain )
+	shout? ( >=media-libs/libshout-2.4.5 )
 	wavpack? ( media-sound/wavpack )
-	ffmpeg? ( media-video/ffmpeg:0= )
-"
-# media-libs/rubberband RDEPENDs on sci-libs/fftw:3.0
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	"
+
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	dev-qt/qttest:5
-	dev-qt/qtxmlpatterns:5
-	${PYTHON_DEPS}
-"
+	dev-qt/qtxmlpatterns:5"
+
+PATCHES=(
+	"${FILESDIR}"/mixxx-9999-docs.patch
+	)
 
 src_prepare() {
-	# use multilib compatible directory for plugins
-	sed -i -e "/env.Alias('install', docs)/d;"'/unix_lib_path =/!b;n;'"s/'lib'/'$(get_libdir)'/" SConscript || die
-
-	default
+	cmake_src_prepare
 }
 
 src_configure() {
-	local myoptimize=0
 
-	# Try to get cpu type based on CFLAGS.
-	# Bug #591968
-	for i in $(get-flag mcpu) $(get-flag march) ; do
-		if [[ ${i} = native ]] ; then
-			myoptimize="native"
-			break
-		fi
-	done
-
-	MYSCONS=(
-		prefix="${EPREFIX}/usr"
-		qtdir="${EPREFIX}/usr/$(get_libdir)/qt5"
-		faad="$(usex aac 1 0)"
-		ffmpeg="$(usex ffmpeg 1 0)"
-		hid="$(usex hid 1 0)"
-		hifieq=1
-		lilv="$(usex lv2 1 0)"
-		m4a="$(usex mp4 1 0)"
-		mad="$(usex mp3 1 0)"
-		optimize="${myoptimize}"
-		opus="$(usex opus 1 0)"
-		qt5=1
-		shoutcast="$(usex shout 1 0)"
-		vinylcontrol=1
-		wv="$(usex wavpack 1 0)"
+	local mycmakeargs=(
+		-DFAAD="$(usex aac on off)"
+		-DFFMPEG="$(usex ffmpeg on off)"
+		-DHID="$(usex hid on off)"
+		-DLILV="$(usex lv2 on off)"
+		-DMAD="$(usex mp3 on off)"
+		-DOPTIMIZE="off"
+		-DCCACHE_SUPPORT="off"
+		-DOPUS="$(usex opus on off)"
+		-DBROADCAST="$(usex shout on off)"
+		-DVINYLCONTROL="on"
+		-DINSTALL_USER_UDEV_RULES=OFF
+		-DWAVPACK="$(usex wavpack on off)"
+		-DQTKEYCHAIN="$(usex qtkeychain on off)"
+		-DKEYFINDER="$(usex keyfinder on off)"
 	)
+
+	cmake_src_configure
 }
 
 src_compile() {
-	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
-	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${MYSCONS[@]}
+	cmake_src_compile
 }
 
 src_install() {
-	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
-	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${MYSCONS[@]} \
-		install_root="${ED}"/usr install
+	cmake_src_install
+	udev_newrules "${S}"/res/linux/mixxx-usb-uaccess.rules 69-mixxx-usb-uaccess.rules
 
-	dodoc README Mixxx-Manual.pdf
+	if use doc ; then
+		dodoc README Mixxx-Manual.pdf
+	fi
 }
