@@ -827,7 +827,7 @@ app-arch/stenc 1.0.7 1.0.8: SCSI Tape Encryption Manager enables AES support for
 app-arch/stormlib 9.23-r1: Library to read and write MPQ archives (Diablo, StarCraft)
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
-app-arch/tar 1.32 1.32.90: Use this to make tarballs :)
+app-arch/tar 1.32-r1 1.32.90-r1: Use this to make tarballs :)
 app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/torrentzip 0.9 0.9-r1: Create identical zip archives over multiple systems

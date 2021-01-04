@@ -1,13 +1,13 @@
 BDEPEND=nls? ( sys-devel/gettext )
 DEFINED_PHASES=configure install prepare
-DEPEND=!static? ( acl? ( virtual/acl ) ) selinux? ( sys-libs/libselinux ) static? ( acl? ( virtual/acl[static-libs(+)] ) ) xattr? ( elibc_glibc? ( sys-apps/attr ) )
+DEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux ) xattr? ( elibc_glibc? ( sys-apps/attr ) )
 DESCRIPTION=Use this to make tarballs :)
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/tar/
-IUSE=acl elibc_glibc minimal nls selinux static userland_GNU xattr
+IUSE=acl elibc_glibc minimal nls selinux userland_GNU xattr
 LICENSE=GPL-3+
-RDEPEND=!static? ( acl? ( virtual/acl ) ) selinux? ( sys-libs/libselinux )
+RDEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux )
 SLOT=0
 SRC_URI=mirror://gnu/tar/tar-1.32.90.tar.xz mirror://gnu-alpha/tar/tar-1.32.90.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=2db5e73da9d50e3cd3ee4ee6056bb16e
+_md5_=4a42098291e6c5a761d09167b0d81849
