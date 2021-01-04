@@ -34,7 +34,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=app-editors/gedit-3.36[introspection,python,${PYTHON_SINGLE_USEDEP}]
+			>=app-editors/gedit-3.36[introspection(+),python,${PYTHON_SINGLE_USEDEP}]
 			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
 			>=dev-python/dbus-python-0.82[${PYTHON_MULTI_USEDEP}]
 			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
