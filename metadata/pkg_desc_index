@@ -10782,7 +10782,7 @@ dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.3_p4-r1: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1-r1 2.10.12-r1 2.11.0-r1: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1 2.12.0: Linux Trace Toolkit - next generation
-dev-util/lttng-ust 2.8.1 2.11.0 2.12.0: Linux Trace Toolkit - UST library
+dev-util/lttng-ust 2.11.0 2.12.0: Linux Trace Toolkit - UST library
 dev-util/lxqt-build-tools 0.7.0 0.8.0: LXQt Build Tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 2.0.99.1 2.0.99.2: GNU make replacement
@@ -14397,7 +14397,7 @@ net-analyzer/sngrep 1.4.6-r3 1.4.7: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.5: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
 net-analyzer/snmptt 1.4.2: SNMP Trap Translator
-net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15 2.9.15.1 2.9.16 2.9.16-r100: The de facto standard for intrusion detection/prevention
+net-analyzer/snort 2.9.15.1 2.9.16 2.9.16-r100: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 1.0.0: flow-based network traffic analyser capable of Cisco NetFlow data export
@@ -17090,7 +17090,7 @@ sys-auth/sssd 2.2.0-r1 2.3.1-r2 2.4.0: System Security Services Daemon provides 
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
-sys-auth/ykpers 1.19.3-r1 1.20.0: Library and tool for personalization of Yubico's YubiKey
+sys-auth/ykpers 1.20.0: Library and tool for personalization of Yubico's YubiKey
 sys-auth/yubico-piv-tool 2.1.1-r2: Command-line tool and p11-kit module for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
