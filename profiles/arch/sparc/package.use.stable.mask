@@ -1,7 +1,7 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-12-04)
+# Sam James <sam@gentoo.org> (2021-01-04)
 # Drags in qt which is not stable here
 # bug #763405
 media-libs/libprojectm jack
