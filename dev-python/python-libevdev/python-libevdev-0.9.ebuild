@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? ( dev-libs/libevdev )
 "
+PDEPEND="dev-libs/libevdev"
 
 python_test() {
 	esetup.py test

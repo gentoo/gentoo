@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Cram is a functional testing framework for command line applications.
 		Cram tests look like snippets of interactive shell sessions. Cram
@@ -10,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">cram</remote-id>
+		<remote-id type="github">brodie/cram</remote-id>
 	</upstream>
 </pkgmetadata>
