@@ -10,4 +10,5 @@
 		<name>Sam James</name>
 		<description>Proxy</description>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
