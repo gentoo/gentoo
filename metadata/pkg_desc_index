@@ -2035,7 +2035,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.5: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.4-r1: Fast, dense and secure container management
+app-emulation/lxd 4.0.4-r1 4.0.4-r2: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
@@ -2170,7 +2170,7 @@ app-i18n/canfep 1.0-r1: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
-app-i18n/enca 1.19-r2: Detect and convert encoding of text files
+app-i18n/enca 1.19-r2 1.19-r3: Detect and convert encoding of text files
 app-i18n/fbterm 1.7_p20190503: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.9.6 4.2.9.7 4.2.9.8 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
@@ -3008,7 +3008,7 @@ app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-l
 app-text/qpdf 9.0.2-r1 9.1.1-r2 10.0.1-r2 10.0.4: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18 0.4.18_p1: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
-app-text/recode 3.6_p20-r1 3.7.6-r1: Convert files between various character sets
+app-text/recode 3.6_p20-r1 3.7.6-r1 3.7.8: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.6_p20180223: Web-based solution for managing scientific literature, references and citations
 app-text/restview 2.9.2: reStructuredText viewer
