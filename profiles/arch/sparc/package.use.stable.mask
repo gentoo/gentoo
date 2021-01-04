@@ -1,6 +1,11 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-01-04)
+# Drags in qt which is not stable here
+# bug #763405
+media-libs/libprojectm jack
+
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-27)
 # app-shells/fish dependency is broken on sparc, bug #727684
 dev-python/argcomplete test
