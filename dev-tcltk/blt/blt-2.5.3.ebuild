@@ -20,6 +20,7 @@ DEPEND="
 	jpeg? ( virtual/jpeg:0= )
 	X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"/${PN}2.5
 
