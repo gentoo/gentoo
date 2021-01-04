@@ -38,7 +38,8 @@ src_compile() {
 		LIBSUBDIR="$(get_libdir)" \
 		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
 		CC="$(tc-getCC)" \
-		AR="$(tc-getAR)"
+		AR="$(tc-getAR)" \
+		V=1
 }
 
 src_install() {
