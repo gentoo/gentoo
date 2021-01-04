@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,14 +34,21 @@ BDEPEND="
 
 HTML_DOCS=( "docs/." )
 
+src_prepare() {
+	default
+
+	# This is a demo app, not a real test
+	rm tests/test-app.lua || die
+
+	# Remove test for executing a non-existent command
+	sed -e '/most-likely-nonexistent-command/d' -i tests/test-utils3.lua || die
+}
+
 lua_src_test() {
-	${ELUA} run.lua || die
+	"${ELUA}" run.lua || die
 }
 
 src_test() {
-	# This is a demo app, not a real test
-	rm tests/test-app.lua
-
 	lua_foreach_impl lua_src_test
 }
 
