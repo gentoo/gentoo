@@ -150,6 +150,7 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/matplotlib-3.3.0-test.patch
 		"${FILESDIR}"/matplotlib-3.3.2-test-extra.patch
+		"${FILESDIR}"/matplotlib-3.3.3-disable-lto.patch
 	)
 
 	# requires jupyter-nbconvert
