@@ -5726,7 +5726,7 @@ dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11: Steel Bank Common Lisp (SBCL) is an im
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.2-r2 1.0.2-r102: Bit Operations Library for the Lua Programming Language
-dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1 2.0.0 2.0.0-r101: Elegant Lua unit testing
+dev-lua/busted 2.0.0 2.0.0-r101: Elegant Lua unit testing
 dev-lua/busted-htest 1.0.0 1.0.0-r100: Pretty output handler for Busted
 dev-lua/dkjson 2.5 2.5-r100: David Kolf's JSON module for Lua
 dev-lua/inifile 1.0 1.0-r100: A simple and complete ini parser for Lua
@@ -5738,10 +5738,10 @@ dev-lua/lua-argparse 0.6.0-r1 0.6.0-r100: Command line argument parser for the L
 dev-lua/lua-bit32 5.3.5-r2 5.3.5-r101: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7 2.1.0.8 2.1.0.8-r100: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.8_p0-r3 0.7.8_p0-r101: OpenSSL binding for Lua
-dev-lua/lua-term 0.3 0.7 0.7-r101: Terminal operations for Lua
+dev-lua/lua-term 0.7 0.7-r101: Terminal operations for Lua
 dev-lua/lua-utf8 0.1.3 0.1.3-r100: A UTF-8 support module for Lua and LuaJIT
 dev-lua/lua-zlib 1.2 1.2-r100: Simple streaming interface to zlib for Lua
-dev-lua/lua_cliargs 2.5_p5 3.0_p1 3.0_p2 3.0_p2-r100: A command-line argument parsing module for Lua
+dev-lua/lua_cliargs 3.0_p2 3.0_p2-r100: A command-line argument parsing module for Lua
 dev-lua/luacheck 0.20.0-r1 0.23.0-r1 0.23.0-r100: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8 0.14.0 0.14.0-r100: A simple coverage analyzer for Lua scripts
 dev-lua/luadbi 0.7.2 0.7.2-r102: A database interface library for Lua
@@ -5755,14 +5755,14 @@ dev-lua/luaposix 35.0 35.0-r100: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1 3.4.0 3.4.0-r100: A package manager for the Lua programming language
 dev-lua/luasec 0.9 0.9-r102 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r5 3.0_rc1_p20200328-r1 3.0_rc1_p20200328-r102: Networking support library for the Lua language
-dev-lua/luassert 1.7.9 1.7.10 1.8.0 1.8.0-r101: Assertion library for Lua
+dev-lua/luassert 1.8.0 1.8.0-r101: Assertion library for Lua
 dev-lua/luasystem 0.2.0_p0 0.2.1_p0 0.2.1_p0-r102: Platform independent system calls for Lua
 dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
 dev-lua/luv 1.32.0.0 1.32.0.0-r102: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0 1.1.2_p0-r101: Mediator pattern implementation for pub-sub management
 dev-lua/messagepack 0.5.2_p20201025 0.5.2_p20201025-r100: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.4 1.0.8-r1 1.0.8-r100: Lua bindings for libmpack
-dev-lua/penlight 1.3.2 1.5.4 1.7.0 1.9.2 1.9.2-r101: Lua utility libraries loosely based on the Python standard libraries
+dev-lua/penlight 1.7.0 1.9.2 1.9.2-r101: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1 1.3_p1-r1 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r1 1.0.93_p20190513-r2 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 0.8.2: A lightweight and colourful test framework
@@ -8573,7 +8573,7 @@ dev-python/ovsdbapp 0.17.2 1.5.0: A library for creating OVSDB applications
 dev-python/owslib 0.20.0: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 20.7 20.8: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
-dev-python/paho-mqtt 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
+dev-python/paho-mqtt 1.5.0 1.5.1: A client class with support for MQTT v5.0, v3.1.1, and v3.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 1.1.2-r1 1.1.4-r1 1.1.5: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
@@ -14630,7 +14630,7 @@ net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-sty
 net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
-net-im/prosody 0.11.5-r1 0.11.7-r2 0.11.7-r100: Prosody is a modern XMPP communication server
+net-im/prosody 0.11.7-r2 0.11.7-r100: Prosody is a modern XMPP communication server
 net-im/prosody-modules 0_pre20201004 9999: A collection of community-maintained modules for Prosody
 net-im/psi 1.5 9999: Qt XMPP client
 net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
@@ -17504,7 +17504,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel build
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.10.3 5.10.4: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.9.246 4.9.247 4.9.248 4.9.249 4.14.209 4.14.211 4.14.212 4.14.213 4.19.160 4.19.162 4.19.163 4.19.164 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.9.16 5.10.2 5.10.3 5.10.4: Full sources including the Gentoo patchset for the 5.10 kernel tree
-sys-kernel/git-sources 5.11_rc1: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.11_rc1 5.11_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
