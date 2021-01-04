@@ -1,7 +1,6 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Notes:  Help with enabling the python support would be great.
 EAPI=7
 
 inherit cmake
@@ -13,6 +12,7 @@ SRC_URI="https://github.com/rpm-software-management/createrepo_c/archive/${PV}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+# Notes: Help with enabling the python support would be great
 
 DEPEND="app-arch/bzip2:=
 	app-arch/rpm
@@ -26,8 +26,7 @@ DEPEND="app-arch/bzip2:=
 RDEPEND="${DEPEND}
 	app-arch/lzma"
 
-src_configure()
-{
+src_configure() {
 	# Other than for python (where tests are failing) we have special no-in-tree dependencies.
 	local mycmakeargs=(
 		-DENABLE_DRPM=OFF
