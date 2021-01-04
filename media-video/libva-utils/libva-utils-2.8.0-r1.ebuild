@@ -7,12 +7,25 @@ if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/intel/libva-utils"
 fi
-inherit autotools
+
+if [[ ${PV} = 2.8.0 ]]; then
+	AUTOCONFIGURED="true"
+else
+	AUTOCONFIGURED="false"
+fi
+
+if ! ${AUTOCONFIGURED}; then
+	inherit autotools
+fi
 
 DESCRIPTION="Collection of utilities and tests for VA-API"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
 if [[ ${PV} != *9999* ]] ; then
-	SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	if ${AUTOCONFIGURED}; then
+		SRC_URI="https://github.com/intel/libva-utils/releases/download/${PV}/${P}.tar.bz2"
+	else
+		SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	fi
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -20,21 +33,15 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="+drm test wayland X"
 RESTRICT="!test? ( test )"
-
 REQUIRED_USE="|| ( drm wayland X )"
 
 BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	>=x11-libs/libva-2.0.0:=[drm?,wayland?,X?]
-	drm? ( >=x11-libs/libdrm-2.4 )
+	>=x11-libs/libva-${PV}:=[drm?,wayland?,X?]
 	wayland? ( >=dev-libs/wayland-1.0.6 )
-	X? (
-		>=x11-libs/libX11-1.6.2
-		>=x11-libs/libXext-1.3.2
-		>=x11-libs/libXfixes-5.0.1
-	)
+	X? ( >=x11-libs/libX11-1.6.2 )
 "
 RDEPEND="${DEPEND}"
 
@@ -43,7 +50,12 @@ DOCS=( NEWS )
 src_prepare() {
 	default
 	sed -e 's/-Werror//' -i test/Makefile.am || die
-	eautoreconf
+	if ${AUTOCONFIGURED}; then
+		sed -e 's/-Werror//' -i test/Makefile.in || die
+		touch ./configure || die
+	else
+		eautoreconf
+	fi
 }
 
 src_configure() {

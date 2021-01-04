@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,18 +11,18 @@ SRC_URI="https://github.com/djcb/mu/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
 IUSE="emacs guile mug"
 
 DEPEND="
-	dev-libs/glib:2
-	dev-libs/gmime:3.0
-	>=dev-libs/xapian-1.4
+	dev-libs/glib:2=
+	dev-libs/gmime:3.0=
+	>=dev-libs/xapian-1.4:=
 	emacs? ( >=app-editors/emacs-24.4:* )
-	guile? ( >=dev-scheme/guile-2.2 )
+	guile? ( >=dev-scheme/guile-2.2:* )
 	mug? (
-		net-libs/webkit-gtk:4
-		x11-libs/gtk+:3
+		net-libs/webkit-gtk:4=
+		x11-libs/gtk+:3=
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -65,10 +65,6 @@ src_install() {
 	fi
 }
 
-src_test() {
-	emake check
-}
-
 pkg_preinst() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog "After upgrading from an old major version, you should"
@@ -81,9 +77,9 @@ pkg_postinst() {
 		einfo "To use mu4e you need to configure it in your .emacs file"
 		einfo "See the manual for more information:"
 		einfo "https://www.djcbsoftware.nl/code/mu/mu4e/"
-	fi
 
-	use emacs && elisp-site-regen
+		elisp-site-regen
+	fi
 }
 
 pkg_postrm() {

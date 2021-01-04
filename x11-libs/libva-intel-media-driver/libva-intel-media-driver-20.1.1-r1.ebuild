@@ -22,10 +22,12 @@ HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD"
 SLOT="0"
-IUSE=""
+IUSE="X"
+
+PATCHES=( "${FILESDIR}"/${PN}-20.2.0_x11_optional.patch )
 
 DEPEND=">=media-libs/gmmlib-${PV}
-	>=x11-libs/libva-2.8.0
+	>=x11-libs/libva-2.7.1[X?]
 	>=x11-libs/libpciaccess-0.13.1-r1:=
 "
 RDEPEND="${DEPEND}"
@@ -34,6 +36,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DMEDIA_BUILD_FATAL_WARNINGS=OFF
 		-DMEDIA_RUN_TEST_SUITE=OFF
+		-DUSE_X11=$(usex X)
 	)
 
 	cmake_src_configure
