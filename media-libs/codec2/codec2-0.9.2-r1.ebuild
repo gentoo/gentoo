@@ -13,11 +13,13 @@ SRC_URI="https://github.com/drowe67/codec2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="examples"
+IUSE="examples test"
+# Not yet passing, but infrastructure added to run
+RESTRICT="test"
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DUNITTEST=OFF
+		-DUNITTEST=$(usex test)
 		-DINSTALL_EXAMPLES=$(usex examples)
 	)
 	cmake_src_configure
