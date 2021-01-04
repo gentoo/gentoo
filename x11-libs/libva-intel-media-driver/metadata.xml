@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>media-video@gentoo.org</email>
-</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="set-as-default">Override libva automatic driver selection and set this (iHD) driver as default one.</flag>
+	</use>
 </pkgmetadata>
