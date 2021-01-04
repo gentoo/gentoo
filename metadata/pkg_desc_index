@@ -5576,7 +5576,7 @@ dev-libs/msgpack 3.2.0 3.3.0: MessagePack is a binary-based efficient data inter
 dev-libs/mxml 3.2: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
 dev-libs/ncnn 20200226 20200413 20200727: A high-performance neural network inference framework
-dev-libs/nettle 3.4.1 3.5.1-r1 3.6-r2 3.6-r3: Low-level cryptographic library
+dev-libs/nettle 3.6-r2 3.6-r3 3.7: Low-level cryptographic library
 dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
@@ -14861,7 +14861,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 1.42.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.19.1 12.20.0 14.15.0 14.15.1 15.2.1 15.3.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.19.1 12.20.1 14.15.0 14.15.1 14.15.4 15.5.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 3.3 3.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17366,7 +17366,7 @@ sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and
 sys-firmware/midisport-firmware 1.2-r1: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 340.32-r1: Kernel and mesa firmware for nouveau (video accel and pgraph)
 sys-firmware/raspberrypi-wifi-ucode 20190114.1_p9 20190114.1_p10: Most up-to-date uCode for the Broadcom wifi chips on Raspberry Pi SBCs
-sys-firmware/seabios 1.10.2 1.11.0 1.11.0-r1 1.12.0: Open Source implementation of a 16-bit x86 BIOS
+sys-firmware/seabios 1.10.2 1.11.0 1.11.0-r1 1.12.0 1.12.0-r1: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.6 0.1.7 0.1.7-r1 9999: Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
 sys-firmware/sof-firmware 1.4.2 1.5.1: Sound Open Firmware (SOF) binary files
