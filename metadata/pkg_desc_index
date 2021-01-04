@@ -18070,7 +18070,7 @@ x11-apps/luit 20190106: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.4.0 9999: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
 x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
 x11-apps/oclock 1.0.4: round X clock
-x11-apps/radeon-profile 20200504-r1 20200824 99999999: Read current clocks of ATi/AMD Radeon cards
+x11-apps/radeon-profile 20200824 20200824-r1 99999999: Read current clocks of ATi/AMD Radeon cards
 x11-apps/radeon-profile-daemon 20190603-r1 99999999: Daemon for radeon-profile GUI
 x11-apps/rgb 1.0.6-r1: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5-r1: X.Org rstart application
