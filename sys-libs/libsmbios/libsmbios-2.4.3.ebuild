@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.28-cppunit-tests.patch"
+	"${FILESDIR}/${PN}-2.4.3-avoid_bashisms.patch" #715202
 )
 
 pkg_setup() {
@@ -57,7 +58,6 @@ src_configure() {
 		$(use_enable python)
 		$(use_enable static-libs static)
 	)
-	CONFIG_SHELL="/bin/bash" \
 	econf "${myeconfargs[@]}"
 }
 
