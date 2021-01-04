@@ -4,6 +4,7 @@
 EAPI=7
 
 MYP=${PN}$(ver_cut 1-2)
+SHVER=$(ver_rs 1 '' $(ver_cut 1-2))
 
 inherit autotools flag-o-matic multilib toolchain-funcs
 
@@ -13,7 +14,7 @@ SRC_URI="mirror://sourceforge/wize/${PN}-src-${PV}.zip
 	https://dev.gentoo.org/~tupone/distfiles/${P}-debian-patches.tar.gz"
 
 IUSE="jpeg static-libs X"
-SLOT="0"
+SLOT="0/${SHVER}"
 LICENSE="BSD"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
@@ -126,8 +127,6 @@ src_install() {
 	done
 
 	# fix for linking against shared lib with -lBLT or -lBLTlite
-	SHVER=$(ver_cut 1-2)
-	SHVER=$(ver_rs 1 '' ${SHVER})
 	dosym libBLT${SHVER}$(get_libname) /usr/$(get_libdir)/libBLT$(get_libname)
 	dosym libBLTlite${SHVER}$(get_libname) /usr/$(get_libdir)/libBLTlite$(get_libname)
 
