@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic multilib toolchain-funcs
+MYP=${PN}$(ver_cut 1-2)
+
+inherit autotools flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Extension to Tk, adding new widgets, geometry managers, and misc commands"
 HOMEPAGE="https://sourceforge.net/projects/wize/"
@@ -22,7 +24,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
 
-S="${WORKDIR}"/${PN}2.5
+S="${WORKDIR}"/${MYP}
 
 MAKEOPTS+=" -j1"
 
@@ -110,7 +112,7 @@ src_install() {
 
 	dodir \
 		/usr/bin \
-		/usr/$(get_libdir)/blt2.4/demos/bitmaps \
+		/usr/$(get_libdir)/${MYP}/demos/bitmaps \
 		/usr/share/man/mann \
 		/usr/include
 
@@ -124,8 +126,10 @@ src_install() {
 	done
 
 	# fix for linking against shared lib with -lBLT or -lBLTlite
-	dosym libBLT24$(get_libname) /usr/$(get_libdir)/libBLT$(get_libname)
-	dosym libBLTlite24$(get_libname) /usr/$(get_libdir)/libBLTlite$(get_libname)
+	SHVER=$(ver_cut 1-2)
+	SHVER=$(ver_rs 1 '' ${SHVER})
+	dosym libBLT${SHVER}$(get_libname) /usr/$(get_libdir)/libBLT$(get_libname)
+	dosym libBLTlite${SHVER}$(get_libname) /usr/$(get_libdir)/libBLTlite$(get_libname)
 
 	use static-libs || \
 		find "${ED}"/usr/$(get_libdir) -name "*.a" -print0 | \
