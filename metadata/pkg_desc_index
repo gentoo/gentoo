@@ -670,7 +670,7 @@ app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement f
 app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.0.20 4.2.3 4.2.6 4.2.8 4.2.10 4.2.11 100.2.0 100.2.1: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.25.3 5.26.0 5.27.0 5.27.1: Monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.25.3 5.26.0 5.27.0 5.27.1 5.27.1-r1: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
@@ -10621,7 +10621,7 @@ dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.7-r1 1.8: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 3.0.20.11.20 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2020.2.4: A complete toolset for C and C++ development
+dev-util/clion 2020.2.4 2020.3.1: A complete toolset for C and C++ development
 dev-util/cloc 1.84 1.86: Count Lines of Code
 dev-util/cmake 3.13.5 3.17.4-r1 3.18.5 3.19.2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -11891,12 +11891,12 @@ gnustep-apps/talksoup 1.1: IRC client for GNUstep
 gnustep-apps/terminal 0.9.9: A terminal emulator for GNUstep
 gnustep-apps/textedit 0.95_pre20100427-r1: A text editor with font, color, and style capabilities for GNUstep
 gnustep-apps/zipper 1.5: Zipper is a tool for inspecting and extracting compressed archives
-gnustep-base/gnustep-back-art 0.25.0 0.25.1 0.26.2 0.27.0 0.28.0: libart_lgpl back-end component for the GNUstep GUI Library
-gnustep-base/gnustep-back-cairo 0.25.0 0.25.1 0.26.2 0.27.0 0.28.0: Cairo back-end component for the GNUstep GUI Library
-gnustep-base/gnustep-back-xlib 0.25.0 0.25.1 0.26.2 0.27.0 0.28.0: Default X11 back-end component for the GNUstep GUI Library
-gnustep-base/gnustep-base 1.24.9-r1 1.25.0 1.25.1 1.26.0 1.26.0-r1 1.27.0: A library of general-purpose, non-graphical Objective C objects
-gnustep-base/gnustep-gui 0.25.0 0.25.1 0.26.2 0.27.0 0.28.0: Library of GUI classes written in Obj-C
-gnustep-base/gnustep-make 2.6.8 2.7.0 2.8.0: GNUstep Makefile Package
+gnustep-base/gnustep-back-art 0.28.0: libart_lgpl back-end component for the GNUstep GUI Library
+gnustep-base/gnustep-back-cairo 0.28.0: Cairo back-end component for the GNUstep GUI Library
+gnustep-base/gnustep-back-xlib 0.28.0: Default X11 back-end component for the GNUstep GUI Library
+gnustep-base/gnustep-base 1.27.0: A library of general-purpose, non-graphical Objective C objects
+gnustep-base/gnustep-gui 0.28.0: Library of GUI classes written in Obj-C
+gnustep-base/gnustep-make 2.8.0: GNUstep Makefile Package
 gnustep-base/gnustep-updater 0.3-r1: Helper tool to upgrade Gentoo GNUstep installations
 gnustep-base/libobjc2 2.0 2.1: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r2 0.5-r3: A tool to create .nfont packages for use with gnustep-back-art
@@ -17708,7 +17708,7 @@ virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
 virtual/glu 9.0-r2: Virtual for OpenGL utility library
-virtual/gnustep-back 0.25.0 0.25.1 0.26.2 0.27.0 0.28.0: Virtual for back-end component for the GNUstep GUI Library
+virtual/gnustep-back 0.28.0: Virtual for back-end component for the GNUstep GUI Library
 virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r2: Virtual for static HTML-enabled webservers
 virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
