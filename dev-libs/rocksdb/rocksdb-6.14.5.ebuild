@@ -44,6 +44,6 @@ src_install() {
 	cmake_src_install
 
 	if ! use static-libs; then
-		rm ${ED}/usr/$(get_libdir)/*.a || die
+		rm "${ED}"/usr/$(get_libdir)/*.a || die
 	fi
 }
