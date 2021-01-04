@@ -8,6 +8,7 @@
 			compatible with <pkg>app-eselect/eselect-ruby</pkg>.
 		</flag>
 	</use>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">docbook</remote-id>
 	</upstream>
