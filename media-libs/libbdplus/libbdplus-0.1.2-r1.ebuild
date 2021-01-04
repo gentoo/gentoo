@@ -24,7 +24,7 @@ RDEPEND="dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
 	aacs? ( >=media-libs/libaacs-0.7.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
-DOCS=( ChangeLog README.md )
+DOCS=( ChangeLog README.txt )
 
 src_prepare() {
 	default
