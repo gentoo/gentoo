@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2021-01-04)
+# This release is broken multiple ways.
+# Do not use
+=app-admin/terraform-0.14.3
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
 # sci-physics/cernlib fails to build with gcc-10, last release in 2006,
 # multiple open bugs, all revdeps also broken and declared EOL upstream.
