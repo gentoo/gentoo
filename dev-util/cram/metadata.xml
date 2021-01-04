@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">cram</remote-id>
+		<remote-id type="github">brodie/cram</remote-id>
 	</upstream>
 </pkgmetadata>
