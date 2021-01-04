@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]] ; then # Live ebuild
 	EGIT_REPO_URI="https://github.com/intel/libva-utils"
 fi
 
-if [[ ${PV} = 2.9.1 ]]; then
+if [[ ${PV} = 2.8.0 ]]; then
 	AUTOCONFIGURED="true"
 else
 	AUTOCONFIGURED="false"
@@ -40,7 +40,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	>=x11-libs/libva-2.9.0:=[drm?,wayland?,X?]
+	>=x11-libs/libva-${PV}:=[drm?,wayland?,X?]
 	wayland? ( >=dev-libs/wayland-1.0.6 )
 	X? ( >=x11-libs/libX11-1.6.2 )
 "
