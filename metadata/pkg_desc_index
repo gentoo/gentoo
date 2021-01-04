@@ -773,7 +773,7 @@ app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write t
 app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
 app-arch/dpkg 1.19.0.5 1.19.6 1.19.7 1.20.0 1.20.2 1.20.3 1.20.5: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
-app-arch/dump 0.4.46-r1: Dump/restore ext2fs backup utilities
+app-arch/dump 0.4.46-r1 0.4.47: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.24.0-r1 1.24.1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r3: A jar program written in C
 app-arch/file-roller 3.36.3 3.38.0: Archive manager for GNOME
