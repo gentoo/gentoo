@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # There's already a "hexedit" package in the tree, so name this one differently
@@ -13,7 +13,7 @@ SRC_URI="http://www.rogoyski.com/adam/programs/hexedit/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	sys-libs/ncurses:=
