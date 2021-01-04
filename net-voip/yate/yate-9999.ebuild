@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -27,15 +27,17 @@ RDEPEND="
 	mysql? ( dev-db/mysql-connector-c:= )
 	gsm? ( media-sound/gsm )
 	speex? ( media-libs/speex )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	zlib? ( sys-libs/zlib )
-	ilbc? ( media-libs/libilbc )
+	ilbc? ( media-libs/libilbc:= )
 	spandsp? ( >=media-libs/spandsp-0.0.3 )
 	dahdi? ( net-misc/dahdi )
 "
-DEPEND="doc? ( app-doc/doxygen )
+DEPEND="${DEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	${RDEPEND}"
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0.0-dont-mess-with-cflags.patch"
@@ -57,7 +59,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--with-archlib=$(get_libdir) \
-		--without-libqt4
+		--without-libqt4 \
 		$(use_enable cpu_flags_x86_sse2 sse2) \
 		$(use_enable sctp) \
 		$(use_enable dahdi) \
