@@ -1,6 +1,18 @@
+From 3a473e08ab9e0cc00518409c3e1bf4edb68aecac Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Mon, 4 Jan 2021 14:51:07 +0100
+Subject: [PATCH] glcdgraphics/font.c: fix compilation with musl
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ glcdgraphics/font.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glcdgraphics/font.c b/glcdgraphics/font.c
+index 20f1274..1b33772 100644
 --- a/glcdgraphics/font.c
 +++ b/glcdgraphics/font.c
-@@ -176,7 +176,7 @@
+@@ -176,7 +176,7 @@ bool cFont::LoadFNT(const std::string & fileName, const std::string & encoding)
   
          int y; int loop; 
          int num = 0;
