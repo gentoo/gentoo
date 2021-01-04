@@ -11,7 +11,7 @@ HOMEPAGE="https://freedv.org/ http://www.rowetel.com/?page_id=452"
 SRC_URI="https://github.com/drowe67/codec2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
