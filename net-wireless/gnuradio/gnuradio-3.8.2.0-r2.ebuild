@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -89,7 +89,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	vocoder? (
 		media-sound/gsm
-		>=media-libs/codec2-0.8.1
+		>=media-libs/codec2-0.8.1:=
 	)
 	wavelet? ( sci-libs/gsl
 			dev-libs/gmp
