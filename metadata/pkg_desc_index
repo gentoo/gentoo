@@ -12970,7 +12970,7 @@ media-libs/cimg 2.9.3: C++ template image processing toolkit
 media-libs/clutter 1.26.4: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27-r1: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
-media-libs/codec2 0.8.1 0.9.2: Low bit rate speech codec
+media-libs/codec2 0.8.1 0.9.2-r1: Low bit rate speech codec
 media-libs/cogl 1.22.8: A library for using 3D graphics hardware to draw pretty pictures
 media-libs/coin 4.0.0: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
@@ -14078,7 +14078,7 @@ media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for t
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
-media-video/libva-utils 2.4.0 2.8.0 2.9.1 9999: Collection of utilities and tests for VA-API
+media-video/libva-utils 2.4.0 2.8.0 2.8.0-r1 2.9.1 2.9.1-r1 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
@@ -14868,7 +14868,7 @@ net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Ser
 net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/pacparser 1.3.7-r1: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
-net-libs/pjproject 2.7.1-r1 2.7.2-r2 2.9-r2 2.10: Open source SIP, Media, and NAT Traversal Library
+net-libs/pjproject 2.7.2-r2 2.9-r2 2.10: Open source SIP, Media, and NAT Traversal Library
 net-libs/quiche 0.5.1 0.6.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
@@ -14950,7 +14950,7 @@ net-mail/mlmmj 1.2.19.0-r1 1.3.0: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
-net-mail/mu 1.4.10 1.4.12 1.4.13: Set of tools to deal with Maildirs, in particular, searching and indexing
+net-mail/mu 1.4.13 1.4.14: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r2 0.31.2 0.31.3: Thread-based e-mail indexer, supporting quick search and tagging
@@ -15471,7 +15471,7 @@ net-proxy/ziproxy 3.3.1-r2: A forwarding, non-caching, compressing web proxy ser
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-rakia 0.8.0-r1: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r3: A link-local XMPP connection manager for Telepathy
-net-voip/yate 6.0.0 6.1.0 9999: The Yate AV Suite
+net-voip/yate 6.2.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
@@ -18254,7 +18254,7 @@ x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module f
 x11-libs/libva 2.5.0-r1 2.6.1 2.7.1 2.8.0 2.9.0 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 2.3.0 2.4.0_pre1 2.4.1 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.2.0 9999: Intel Media Driver for VAAPI (iHD)
+x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.1.1-r1 20.2.0 20.2.0-r1 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit

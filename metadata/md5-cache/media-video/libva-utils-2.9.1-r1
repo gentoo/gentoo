@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=>=x11-libs/libva-2.9.0:=[drm?,wayland?,X?] wayland? ( >=dev-libs/wayland-1.0.6 ) X? ( >=x11-libs/libX11-1.6.2 )
+DESCRIPTION=Collection of utilities and tests for VA-API
+EAPI=7
+HOMEPAGE=https://01.org/linuxmedia/vaapi
+IUSE=+drm test wayland X
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=>=x11-libs/libva-2.9.0:=[drm?,wayland?,X?] wayland? ( >=dev-libs/wayland-1.0.6 ) X? ( >=x11-libs/libX11-1.6.2 )
+REQUIRED_USE=|| ( drm wayland X )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/intel/libva-utils/releases/download/2.9.1/libva-utils-2.9.1.tar.bz2
+_md5_=a7af188ee27df4753fa6f0e054526893
