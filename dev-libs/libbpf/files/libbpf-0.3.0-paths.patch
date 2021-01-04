@@ -1,0 +1,34 @@
+--- a/Makefile
++++ b/Makefile
+@@ -76,7 +76,7 @@ endif
+ PREFIX ?= /usr
+ LIBDIR ?= $(PREFIX)/$(LIBSUBDIR)
+ INCLUDEDIR ?= $(PREFIX)/include
+-UAPIDIR ?= $(PREFIX)/include
++UAPIDIR ?= $(PREFIX)/include/bpf/uapi
+ 
+ TAGS_PROG := $(if $(shell which etags 2>/dev/null),etags,ctags)
+ 
+@@ -101,6 +101,7 @@ $(OBJDIR)/libbpf.so.$(LIBBPF_VERSION): $(SHARED_OBJS)
+ $(OBJDIR)/libbpf.pc:
+ 	$(Q)sed -e "s|@PREFIX@|$(PREFIX)|" \
+ 		-e "s|@LIBDIR@|$(LIBDIR_PC)|" \
++		-e "s|@UAPIDIR@|$(UAPIDIR)|" \
+ 		-e "s|@VERSION@|$(LIBBPF_VERSION)|" \
+ 		< libbpf.pc.template > $@
+ 
+--- a/libbpf.pc.template
++++ b/libbpf.pc.template
+@@ -3,10 +3,11 @@
+ prefix=@PREFIX@
+ libdir=@LIBDIR@
+ includedir=${prefix}/include
++uapidir=@UAPIDIR@
+ 
+ Name: libbpf
+ Description: BPF library
+ Version: @VERSION@
+ Libs: -L${libdir} -lbpf
+ Requires.private: libelf zlib
+-Cflags: -I${includedir}
++Cflags: -I${includedir} -I${uapidir}
