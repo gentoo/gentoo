@@ -12,14 +12,18 @@ SRC_URI="https://github.com/ocaml-community/yojson/archive/${PV}.tar.gz -> ${P}.
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="examples +ocamlopt"
+IUSE="examples +ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.02.3:=[ocamlopt=]
 	dev-ml/easy-format:=[ocamlopt=]
 	>=dev-ml/biniou-1.2:=[ocamlopt=]
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-ml/alcotest )
+"
 BDEPEND=">=dev-ml/cppo-1.6.1"
 
 src_install() {
