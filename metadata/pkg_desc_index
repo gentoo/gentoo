@@ -17381,7 +17381,7 @@ sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
-sys-fs/bees 0.6.1-r2 9999: Best-Effort Extent-Same, a btrfs dedup agent
+sys-fs/bees 0.6.4 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7 1.14.8: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 4.19 5.4.1 5.7 5.9 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
