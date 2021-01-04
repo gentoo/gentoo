@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+		<description>Proxy</description>
+	</maintainer>
+	<longdescription lang="en">
+		SquidTop is a program that connects with Squid and shows a live, top-like display as to what Squid is busy processing.
+	</longdescription>
+</pkgmetadata>
