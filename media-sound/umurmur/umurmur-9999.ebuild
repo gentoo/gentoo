@@ -7,7 +7,7 @@ inherit autotools systemd readme.gentoo-r1
 
 DESCRIPTION="Minimalistic Murmur (Mumble server)"
 HOMEPAGE="https://github.com/umurmur/umurmur"
-if [[ "${PV}" == 9999 ]] ; then
+if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/umurmur/umurmur.git"
 else
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 
 DOC_CONTENTS="
 	A configuration file has been installed at /etc/umurmur/umurmur.conf - you
-	may	want to review it. See also\n
+	may want to review it. See also\n
 	https://github.com/umurmur/umurmur/wiki/Configuration "
 
 S="${WORKDIR}/${P/_}"
