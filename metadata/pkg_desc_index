@@ -8293,7 +8293,7 @@ dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
 dev-python/hypothesis 5.24.4 5.41.3 5.41.5 5.43.3 5.43.4 5.43.8 5.43.9 5.46.0 5.47.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
-dev-python/idna 2.10-r1 3.0: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.6 0.1.7: Enumerate IP addresses on the local network adapters
 dev-python/ijson 3.1.1: Iterative JSON parser with a Pythonic interface
@@ -8992,7 +8992,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.48 3.5.56 3.5.57 3.5.58: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.48 3.5.56 3.5.57 3.5.58 3.5.59: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
@@ -9091,7 +9091,7 @@ dev-python/soupsieve 2.0.1 2.1.0: A modern CSS selector implementation for Beaut
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.2.1 3.3.1 3.4.0 3.4.1: Python documentation generator
+dev-python/sphinx 2.4.4 3.2.1 3.3.1 3.4.0 3.4.1 3.4.2: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9310,7 +9310,7 @@ dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
 dev-python/zope-interface 5.1.2 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
-dev-python/zope-testing 4.7-r2: Zope testing helpers
+dev-python/zope-testing 4.7-r2 4.8: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
 dev-python/zstandard 0.14.0-r1 0.14.1 0.15.0 0.15.1: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
@@ -14919,7 +14919,7 @@ net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1 3.2.3-r3: Fast and scalable sql based email services
 net-mail/django-mailman3 1.3.4: Django-based interfaces interacting with Mailman 3
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.36.4 2.3.11.3 2.3.11.3-r1 2.3.11.3-r2 2.3.11.3-r100: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.36.4 2.3.11.3 2.3.11.3-r1 2.3.11.3-r2 2.3.11.3-r100 2.3.13: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3-r1: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
