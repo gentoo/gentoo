@@ -42,6 +42,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">docker/docker</remote-id>
+		<remote-id type="github">moby/moby</remote-id>
 	</upstream>
 </pkgmetadata>
