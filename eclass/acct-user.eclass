@@ -67,7 +67,8 @@ readonly ACCT_USER_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
-# value must be unique across all user packages.
+# value must be unique across all user packages.  This can be overriden
+# in make.conf through ACCT_USER_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
 # in ::gentoo is prohibited by policy.
@@ -296,25 +297,33 @@ acct-user_pkg_pretend() {
 
 	# verify ACCT_USER_ID
 	[[ -n ${ACCT_USER_ID} ]] || die "Ebuild error: ACCT_USER_ID must be set!"
-	[[ ${ACCT_USER_ID} -eq -1 ]] && return
-	[[ ${ACCT_USER_ID} -ge 0 ]] || die "Ebuild errors: ACCT_USER_ID=${ACCT_USER_ID} invalid!"
+	[[ ${ACCT_USER_ID} -ge -1 ]] || die "Ebuild error: ACCT_USER_ID=${ACCT_USER_ID} invalid!"
+	local user_id=${ACCT_USER_ID}
+
+	# check for the override
+	local override_name=${ACCT_USER_NAME^^}
+	local override_var=ACCT_USER_${override_name//-/_}_ID
+	if [[ -n ${!override_var} ]]; then
+		user_id=${!override_var}
+		[[ ${user_id} -ge -1 ]] || die "${override_var}=${user_id} invalid!"
+	fi
 
 	# check for ACCT_USER_ID collisions early
-	if [[ -n ${ACCT_USER_ENFORCE_ID} ]]; then
-		local user_by_id=$(egetusername "${ACCT_USER_ID}")
+	if [[ ${user_id} -ne -1 && -n ${ACCT_USER_ENFORCE_ID} ]]; then
+		local user_by_id=$(egetusername "${user_id}")
 		local user_by_name=$(egetent passwd "${ACCT_USER_NAME}")
 		if [[ -n ${user_by_id} ]]; then
 			if [[ ${user_by_id} != ${ACCT_USER_NAME} ]]; then
 				eerror "The required UID is already taken by another user."
-				eerror "  UID: ${ACCT_USER_ID}"
+				eerror "  UID: ${user_id}"
 				eerror "  needed for: ${ACCT_USER_NAME}"
 				eerror "  current user: ${user_by_id}"
-				die "UID ${ACCT_USER_ID} taken already"
+				die "UID ${user_id} taken already"
 			fi
 		elif [[ -n ${user_by_name} ]]; then
 			eerror "The requested user exists already with wrong UID."
 			eerror "  username: ${ACCT_USER_NAME}"
-			eerror "  requested UID: ${ACCT_USER_ID}"
+			eerror "  requested UID: ${user_id}"
 			eerror "  current entry: ${user_by_name}"
 			die "Username ${ACCT_USER_NAME} exists with wrong UID"
 		fi
@@ -335,7 +344,7 @@ acct-user_src_install() {
 	local override_name=${ACCT_USER_NAME^^}
 	override_name=${override_name//-/_}
 	local var
-	for var in ACCT_USER_{SHELL,HOME{,_OWNER,_PERMS},GROUPS}; do
+	for var in ACCT_USER_{ID,SHELL,HOME{,_OWNER,_PERMS},GROUPS}; do
 		local var_name=ACCT_USER_${override_name}_${var#ACCT_USER_}
 		if [[ -n ${!var_name} ]]; then
 			ewarn "${var_name}=${!var_name} override in effect, support will not be provided."
@@ -363,7 +372,7 @@ acct-user_src_install() {
 	newins - ${CATEGORY}-${ACCT_USER_NAME}.conf < <(
 		printf "u\t%q\t%q\t%q\t%q\t%q\n" \
 			"${ACCT_USER_NAME}" \
-			"${ACCT_USER_ID/#-*/-}:${groups[0]}" \
+			"${_ACCT_USER_ID/#-*/-}:${groups[0]}" \
 			"${DESCRIPTION//[:,=]/;}" \
 			"${_ACCT_USER_HOME}" \
 			"${_ACCT_USER_SHELL/#-*/-}"
@@ -382,7 +391,7 @@ acct-user_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	enewuser ${ACCT_USER_ENFORCE_ID:+-F} -M "${ACCT_USER_NAME}" \
-		"${ACCT_USER_ID}" "${_ACCT_USER_SHELL}" "${_ACCT_USER_HOME}" \
+		"${_ACCT_USER_ID}" "${_ACCT_USER_SHELL}" "${_ACCT_USER_HOME}" \
 		"${_ACCT_USER_GROUPS// /,}"
 
 	if [[ ${_ACCT_USER_HOME} != /dev/null ]]; then
