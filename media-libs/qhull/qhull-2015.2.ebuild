@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="Geometry library"
 HOMEPAGE="http://www.qhull.org"
 SRC_URI="http://www.qhull.org/download/${PN}-2015-src-7.2.0.tgz -> ${P}.tar.gz"
 
-SLOT="0"
+SLOT="0/7"
 LICENSE="BSD"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs"
