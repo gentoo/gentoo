@@ -19,7 +19,6 @@ RDEPEND="X? (
 	"
 
 PATCHES=( "${FILESDIR}/${P}-iconv.patch" )
-S="${WORKDIR}/${P}"
 
 src_prepare() {
 	xdg_src_prepare
