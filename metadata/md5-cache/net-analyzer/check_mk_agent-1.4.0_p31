@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!!net-analyzer/check_mk app-shells/bash:* xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) )
 SLOT=0
 SRC_URI=http://mathias-kettner.de/support/1.4.0p31/check-mk-raw-1.4.0p31.cre.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	766e423a01cee6c7fbdd2229621aaa0e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=218393481f1a414bf5117dc6416c52f0

@@ -11,5 +11,5 @@ RDEPEND=acct-user/asterisk acct-group/asterisk dev-db/sqlite:3 dev-libs/popt dev
 REQUIRED_USE=gtalk? ( xmpp ) ^^ ( voicemail_storage_file voicemail_storage_odbc voicemail_storage_imap ) voicemail_storage_odbc? ( odbc )
 SLOT=0
 SRC_URI=https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-13.36.0.tar.gz https://downloads.uls.co.za/gentoo/asterisk/gentoo-asterisk-patchset-4.08.tar.bz2
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	766e423a01cee6c7fbdd2229621aaa0e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
 _md5_=755968e8ecab9dfc02c6de7835dcbbfa
