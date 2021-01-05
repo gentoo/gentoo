@@ -2,6 +2,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+user="${GRAFANA_USER:-grafana}"
+group="${GRAFANA_GROUP:-grafana}"
+datadir="${GRAFANA_DATADIR:-/var/lib/grafana}"
+logdir="${GRAFANA_LOGDIR:-/var/log/grafana}"
+
 depend() {
 	need localmount
 }
@@ -9,21 +14,21 @@ depend() {
 start() {
 	ebegin "Starting grafana server"
 
-    checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}"
-    checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}/dashboards"
-    checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}/plugins"
-    checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}/sessions"
-    checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_LOGDIR}"
+    checkpath -d -o "${user}:${group}" -m750 "${datadir}"
+    checkpath -d -o "${user}:${group}" -m750 "${datadir}/dashboards"
+    checkpath -d -o "${user}:${group}" -m750 "${datadir}/plugins"
+    checkpath -d -o "${user}:${group}" -m750 "${datadir}/sessions"
+    checkpath -d -o "${user}:${group}" -m750 "${logdir}"
 
 	start-stop-daemon --start -b \
 		--make-pidfile \
 		--pidfile /run/${SVCNAME}.pid \
 		--chdir /usr/share/grafana \
-		--user ${GRAFANA_USER}:${GRAFANA_GROUP} \
+		--user ${user}:${group} \
 		--exec /usr/bin/grafana-server -- \
 		-config=/etc/grafana/${SVCNAME}.ini \
-		cfg:default.paths.data=${GRAFANA_DATADIR} \
-		cfg:default.paths.logs=${GRAFANA_LOGDIR}
+		cfg:default.paths.data=${datadir} \
+		cfg:default.paths.logs=${logdir}
 
 	eend $?
 }
@@ -33,7 +38,7 @@ stop() {
 
 	start-stop-daemon --stop \
 		--pidfile /run/${SVCNAME}.pid \
-		--user "${GRAFANA_USER}" \
+		--user "${user}" \
 		--retry=TERM/20/KILL/5
 
 	eend $?

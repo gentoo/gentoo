@@ -1,13 +1,13 @@
 # Config file for /etc/init.d/grafana
 
 # The user to run your application as.
-GRAFANA_USER=grafana
+#GRAFANA_USER=grafana
 
 # The group to run your application as.
-GRAFANA_GROUP=grafana
+#GRAFANA_GROUP=grafana
 
 # The grafana datadir
-GRAFANA_DATADIR=/var/lib/grafana
+#GRAFANA_DATADIR=/var/lib/grafana
 
 # The grafana logdir
-GRAFANA_LOGDIR=/var/log/grafana
+#GRAFANA_LOGDIR=/var/log/grafana
