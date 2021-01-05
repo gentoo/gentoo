@@ -812,7 +812,7 @@ app-arch/pdlzip 1.10: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3-r1: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.4-r1: A parallel implementation of gzip
-app-arch/pixz 1.0.6-r1 1.0.7 9999: Parallel Indexed XZ compressor
+app-arch/pixz 1.0.7 9999: Parallel Indexed XZ compressor
 app-arch/plzip 1.8: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
@@ -949,7 +949,7 @@ app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI fronten
 app-cdr/cdrtools 3.02_alpha09 3.02_alpha09-r2 3.02_alpha09-r3: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.1 0.8.1-r1 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cue2toc 0.4: Convert CUE files to cdrdao's TOC format
-app-cdr/cuecue 0.2.2-r2 0.2.2-r3: Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
+app-cdr/cuecue 0.2.2-r3: Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
 app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
 app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
@@ -1734,7 +1734,7 @@ app-editors/le 1.16.1 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1-r1: Simple GTK2 text editor
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20171014 20180408 20200215: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20200215: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.2 0.4.90 0.5.0 0.5.1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.9.3 5.3-r1 5.4 9999: GNU GPL'd Pico clone with more functionality
@@ -8520,7 +8520,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
 dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.2 1.19.3 1.19.4: Fast array and numerical python library
+dev-python/numpy 1.19.2 1.19.3 1.19.4 1.19.5: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -14624,7 +14624,7 @@ net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area 
 net-im/libcommuni 3.5.0_p20200711 3.6.0: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1: Mattermost Desktop application
-net-im/mcabber 1.1.0-r1 1.1.0-r2 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/neochat 1.0: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
@@ -15163,7 +15163,7 @@ net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4-r1 1.4-r2 1.7-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2-r1: utility to synchronize the time with ntp-servers
 net-misc/netevent 2.0_p20200217: Tool to share Linux event devices with other machines
-net-misc/netifrc 0.7.1-r1 0.7.1-r2 9999: Gentoo Network Interface Management Scripts
+net-misc/netifrc 0.7.1-r1 0.7.1-r2 0.7.2 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
@@ -18677,7 +18677,7 @@ x11-plugins/wmapmload 0.3.4-r1: dockapp that monitors your apm battery status
 x11-plugins/wmappl 0.71-r1: Simple application launcher for the Window Maker dock
 x11-plugins/wmbatteries 0.1.3-r1: Dock app for monitoring the current battery status and CPU temperature
 x11-plugins/wmbattery 2.54: A dockable app to report APM, ACPI, or SPIC battery status
-x11-plugins/wmbiff 0.4.28 0.4.35 0.4.36: WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes
+x11-plugins/wmbiff 0.4.36: WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes
 x11-plugins/wmbinclock 0.5-r1: a nifty little binary clock dockapp
 x11-plugins/wmbio 1.02: A Window Maker applet that shows your biorhythm
 x11-plugins/wmblob 1.0.4: a fancy but useless dockapp with moving blobs
