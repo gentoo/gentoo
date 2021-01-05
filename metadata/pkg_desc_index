@@ -5171,7 +5171,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.2.1 8.2.2 8.3.10 8.3.11: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.2.1 8.2.2 8.3.10 8.3.11 8.3.12: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10: Tool Command Language
@@ -8880,7 +8880,7 @@ dev-python/python-debian 0.1.37: Python modules to work with Debian-related data
 dev-python/python-designateclient 4.1.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
-dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.6 3.9.0: HTML documentation for Python
+dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.6 3.8.7 3.9.0 3.9.1: HTML documentation for Python
 dev-python/python-dotenv 0.14.0 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libraries
@@ -9091,7 +9091,7 @@ dev-python/soupsieve 2.0.1 2.1.0: A modern CSS selector implementation for Beaut
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.2.1 3.3.1 3.4.0 3.4.1 3.4.2: Python documentation generator
+dev-python/sphinx 2.4.4 3.2.1 3.3.1-r1 3.4.0-r1 3.4.1-r1 3.4.2-r1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
