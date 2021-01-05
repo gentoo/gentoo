@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs versionator
+inherit toolchain-funcs
 
 DESCRIPTION="A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV."
-HOMEPAGE="http://webdavcgi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://danrohde.github.io/webdavcgi/"
+SRC_URI="https://github.com/DanRohde/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 
 # Provide slotting on minor versions. WebDAV CGI is a web application which
 # can be shared by multiple instances and thus major updates shouldn't be
 # enforced to all users/instances at the same time.
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 
 KEYWORDS="~amd64"
 IUSE="afs git kerberos ldap mysql pdf postgres rcs samba +sqlite +suid"
@@ -27,6 +27,7 @@ RDEPEND="afs? ( net-fs/openafs )
 	dev-perl/DateTime
 	dev-perl/DateTime-Format-Human-Duration
 	dev-perl/File-Copy-Link
+	dev-perl/IO-Compress-Brotli
 	dev-perl/JSON
 	dev-perl/List-MoreUtils
 	dev-perl/MIME-tools
@@ -54,6 +55,16 @@ RDEPEND="afs? ( net-fs/openafs )
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 CGIBINDIR="cgi-bin"
+
+PATCHES=(
+	# Fix unescaped braces, which adresses #674772 and #658470
+	#
+	# The patch originates from
+	# https://github.com/DanRohde/webdavcgi/commit/04e79b7ecbaf3aae5ab813cd4fc0a009c72b1580
+	# and can be remove as soon as this ebuild gets bumped to 1.1.3 which
+	# already includes the change.
+	"${FILESDIR}/${P}-fix-unescaped-braces.patch"
+)
 
 src_compile() {
 	if use suid; then
@@ -146,7 +157,7 @@ src_install() {
 	dodoc CHANGELOG
 	dodoc etc/webdav.conf.complete
 	dodoc "${FILESDIR}/${APACHEEXAMPLECONFIG}"
-	dodoc -r "doc/"
+	dodoc -r "docs/"
 }
 
 pkg_postinst() {
@@ -162,23 +173,34 @@ pkg_postinst() {
 	elog "The WebDAV CGI config is located at ${WEBDAVCONFIG}."
 	elog
 	elog "An example Apache HTTP server configuration snippet is available in"
-	elog "${ROOT%/}/usr/share/doc/${PF} in the file ${APACHEEXAMPLECONFIG}"
+	elog "${EROOT}/usr/share/doc/${PF} in the file ${APACHEEXAMPLECONFIG}"
 	elog
 	elog "An important note to systemd user's running the Apache HTTP server:"
+	elog ""
 	elog "The default apache2.service will be started with private file system"
-	elog "namespaces for /var/tmp and /tmp enabled (PrivateTmp=true)."
+	elog "namespaces for /var/tmp and /tmp enabled (PrivateTmp=true) and with"
+	elog "restricted privileges and securebits flags (NoNewPrivileges=true"
+	elog "SecureBits=noroot-locked)"
+	elog ""
 	elog "This means that you either need to disable PrivateTmp, relocate the"
 	elog "directories starting with /var/tmp within ${WEBDAVCONFIG}"
 	elog "or pre-create the directory structure with a user defined systemd"
 	elog "companion unit using the JoinsNamespaceOf directive."
+	elog ""
+	elog "For those using the setuid/guid webdavwrapper, additional systemd"
+	elog "execution environment relaxation is required."
 	elog
-	elog "To disable the private file system namespace, override the existing"
-	elog "service:"
+	elog "To override the existing systemd service unit:"
 	elog "systemctl edit apache2.service"
+	elog ""
 	elog "[Service]"
+	elog "# Disable private file system namespaces"
 	elog "PrivateTmp=false"
+	elog "# Uncomment the following if you're using the setuid/guid webdavwrapper"
+	elog "#NoNewPrivileges=false"
+	elog "#SecureBits="
 
 	einfo
 	einfo "Detailed installation and configuration instructions can be found at"
-	einfo "http://webdavcgi.sourceforge.net/"
+	einfo "https://danrohde.github.io/webdavcgi/doc.html"
 }

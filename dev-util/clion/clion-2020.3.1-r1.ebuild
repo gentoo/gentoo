@@ -30,13 +30,18 @@ RDEPEND="
 	dev-util/cmake
 	media-libs/alsa-lib
 	media-libs/freetype
+	media-libs/mesa
 	net-print/cups
 	sys-devel/gdb
+	x11-libs/libdrm
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
+	x11-libs/libXdamage
 	x11-libs/libXi
 	x11-libs/libXScrnSaver
+	x11-libs/libXrandr
 	x11-libs/libXtst
+	x11-libs/libXxf86vm
 	x11-libs/pango"
 
 QA_PREBUILT="opt/${P}/*"
@@ -86,6 +91,8 @@ src_install() {
 
 	if [[ -d jbr ]]; then
 		fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
+		# Fix #763582
+		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
