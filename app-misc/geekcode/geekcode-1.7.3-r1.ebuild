@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs flag-o-matic
 
@@ -13,13 +13,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-exit.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
+
 src_prepare() {
-	eapply -p0 "${FILESDIR}/${P}-exit.patch"
+	default
 	sed -i Makefile -e 's| -o | ${LDFLAGS}&|g' || die "sed Makefile"
-
-	eapply_user
-
-	append-flags -fcommon
 }
 
 src_compile() {
