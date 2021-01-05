@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{6,7,8} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="xml"
 VALA_MIN_API_VERSION="0.28"
 
@@ -12,7 +12,7 @@ DESCRIPTION="Collection of extra plugins for the gedit Text Editor"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 IUSE="charmap git +python terminal vala"
@@ -25,7 +25,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libpeas-1.14.1[gtk]
-	>=app-editors/gedit-3.36
+	>=app-editors/gedit-3.38
 
 	>=dev-libs/glib-2.32:2
 	>=x11-libs/gtk+-3.9:3
@@ -34,7 +34,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=app-editors/gedit-3.36[introspection(+),python,${PYTHON_SINGLE_USEDEP}]
+			>=app-editors/gedit-3.36[python,${PYTHON_SINGLE_USEDEP}]
 			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
 			>=dev-python/dbus-python-0.82[${PYTHON_MULTI_USEDEP}]
 			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]

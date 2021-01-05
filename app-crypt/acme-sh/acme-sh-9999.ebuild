@@ -3,30 +3,33 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/Neilpang/${PN/-/.}.git"
-
-inherit git-r3
+inherit git-r3 optfeature
 
 DESCRIPTION="A pure Unix shell script implementing ACME client protocol"
 HOMEPAGE="https://github.com/acmesh-official/acme.sh"
-SRC_URI=""
+EGIT_REPO_URI="https://github.com/acmesh-official/${PN/-/.}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	dev-libs/openssl:0
 	net-misc/curl
-	|| ( dev-libs/libressl dev-libs/openssl:0 )
-	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
-	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
-	virtual/cron
+	net-misc/socat
 "
 
 src_install() {
-	einstalldocs
-	newdoc dnsapi/README.md README-dnsapi.md
 	newdoc deploy/README.md README-deploy.md
+	newdoc dnsapi/README.md README-dnsapi.md
+	rm {deploy,dnsapi}/README.md || die
+	einstalldocs
+
+	exeinto /usr/share/acme.sh
+	doexe acme.sh
+
+	insinto /usr/share/acme.sh
+	doins -r deploy dnsapi notify
 
 	keepdir /etc/acme-sh
 	doenvd "${FILESDIR}"/99acme-sh
@@ -34,17 +37,12 @@ src_install() {
 	insinto /etc/bash/bashrc.d
 	doins "${FILESDIR}"/acme.sh
 
-	exeinto /usr/share/acme.sh
-	doexe acme.sh
-
-	insinto /usr/share/acme.sh/dnsapi
-	doins -r dnsapi/*.sh
-
-	insinto /usr/share/acme.sh/deploy
-	doins -r deploy/*.sh
-
-	insinto /usr/share/acme.sh/notify
-	doins -r notify/*.sh
-
 	dosym ../share/acme.sh/acme.sh usr/bin/acme.sh
+}
+
+pkg_postinst() {
+	einfo "If you wish to use the webserver mode,"
+	einfo "you need to install a supported web server."
+	optfeature "using apache2 webserver mode." www-servers/apache
+	optfeature "using nginx webserver mode." www-servers/nginx
 }

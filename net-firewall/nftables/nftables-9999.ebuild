@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,13 +25,13 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/1"
-IUSE="debug doc +gmp json +modern-kernel python +readline static-libs xtables"
+IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xtables"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	>=net-libs/libnftnl-1.1.8:0=
+	>=net-libs/libnftnl-1.1.9:0=
 	gmp? ( dev-libs/gmp:0= )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	xtables? ( >=net-firewall/iptables-1.6.1 )
@@ -49,6 +49,7 @@ BDEPEND+="
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
+	libedit? ( !readline )
 "
 
 python_make() {
@@ -93,6 +94,7 @@ src_configure() {
 		$(use_enable doc man-doc)
 		$(use_with !gmp mini_gmp)
 		$(use_with json)
+		$(use_with libedit cli editline)
 		$(use_with readline cli readline)
 		$(use_enable static-libs static)
 		$(use_with xtables)
