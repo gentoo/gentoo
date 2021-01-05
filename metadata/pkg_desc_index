@@ -8356,7 +8356,7 @@ dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0: Merge a series of JSON documents
-dev-python/jsonpatch 1.27 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 1.4.1-r2 1.4.2: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
@@ -8595,7 +8595,7 @@ dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of de
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
 dev-python/path-py 15.0.0: A module wrapper for os.path
 dev-python/pathlib2 2.3.5-r1: Fork of pathlib aiming to support the full stdlib Python API
-dev-python/pathspec 0.8.0 0.8.1: Utility library for gitignore style pattern matching of file paths.
+dev-python/pathspec 0.8.1: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
@@ -8617,7 +8617,7 @@ dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0 2.2.0-r1: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 7.0.0 7.2.0 8.0.1 8.1.0: Python Imaging Library (fork)
-dev-python/pip 20.2.4 20.3.1 20.3.2 20.3.3: Installs python packages -- replacement for easy_install
+dev-python/pip 20.3.1 20.3.3: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pivy 0.6.5: Coin3D bindings for Python
@@ -9090,7 +9090,7 @@ dev-python/soupsieve 2.0.1 2.1.0: A modern CSS selector implementation for Beaut
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.2.1 3.3.1-r1 3.4.0-r1 3.4.1-r1 3.4.2-r1: Python documentation generator
+dev-python/sphinx 2.4.4 3.3.1-r1 3.4.2-r1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9121,7 +9121,7 @@ dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-programoutput 0.16: Extension to sphinx to include program output
 dev-python/sphinxcontrib-qthelp 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs outputs serialized HTML files
-dev-python/sphinxcontrib-spelling 5.3.0 5.4.0 7.0.0 7.0.1 7.1.0: Sphinx spelling extension
+dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.2.0: The Scientific Python Development Environment
@@ -11569,7 +11569,7 @@ games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls i
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
 games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
-games-roguelike/angband 4.1.3 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
+games-roguelike/angband 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r2 1.71.0-r100: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
@@ -11900,7 +11900,7 @@ gnustep-base/gnustep-base 1.27.0: A library of general-purpose, non-graphical Ob
 gnustep-base/gnustep-gui 0.28.0: Library of GUI classes written in Obj-C
 gnustep-base/gnustep-make 2.8.0: GNUstep Makefile Package
 gnustep-base/gnustep-updater 0.3-r1: Helper tool to upgrade Gentoo GNUstep installations
-gnustep-base/libobjc2 2.0 2.1: GNUstep Objective-C runtime
+gnustep-base/libobjc2 2.1: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r2 0.5-r3: A tool to create .nfont packages for use with gnustep-back-art
 gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
 gnustep-libs/dbuskit 0.1.1 0.1.1-r1: framework that interfaces Objective-C applications with the D-Bus IPC service
@@ -13204,7 +13204,7 @@ media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango a
 media-libs/libtimidity 0.2.6: MIDI to WAVE converter library
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
-media-libs/libv4l 1.10.1 1.16.6 1.20.0: Separate libraries ebuild from upstream v4l-utils package
+media-libs/libv4l 1.20.0: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.7: The Ogg Vorbis sound file format library
@@ -14014,7 +14014,7 @@ media-tv/tvbrowser-bin 4.2.1: Themeable and easy to use TV Guide - written in Ja
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r3 0.0.1_p20170225-r4 0.0.1_p20170225-r5: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
-media-tv/v4l-utils 1.10.1 1.16.6 1.20.0: Separate utilities ebuild from upstream v4l-utils package
+media-tv/v4l-utils 1.20.0: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
@@ -15191,7 +15191,7 @@ net-misc/oidentd 2.5.0: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
-net-misc/openntpd 6.2_p3-r1 6.2_p3-r2 6.8_p1 6.8_p1-r1: Lightweight NTP server ported from OpenBSD
+net-misc/openntpd 6.2_p3-r2 6.8_p1 6.8_p1-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5 8.4_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.13.0-r1 2.14.0: Production quality, multilayer virtual switch
@@ -18252,7 +18252,7 @@ x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send &
 x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module for libtinynotify
 x11-libs/libva 2.5.0-r1 2.6.1 2.7.1 2.8.0 2.9.0 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 2.3.0 2.4.0_pre1 2.4.1 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva-intel-driver 2.4.1 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.1.1-r1 20.2.0 20.2.0-r1 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
@@ -18997,7 +18997,7 @@ xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-calculator-plugin 0.7.1: A calculator plugin for the Xfce4 panel
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
-xfce-extra/xfce4-cpufreq-plugin 1.2.1 1.2.2: A panel plugin for showing information about cpufreq settings
+xfce-extra/xfce4-cpufreq-plugin 1.2.2: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.1.0 1.2.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.0 0.8.1: A panel plug-in with date, time and embedded calender
 xfce-extra/xfce4-dict 0.8.4: A dict.org querying application and panel plug-in for the Xfce desktop
