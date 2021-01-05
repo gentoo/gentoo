@@ -9,7 +9,12 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="github">Neilpang/acme.sh</remote-id>
+		<bugs-to>https://github.com/acmesh-official/acme.sh/issues</bugs-to>
+		<remote-id type="github">acmesh-official/acme.sh</remote-id>
 	</upstream>
 </pkgmetadata>
