@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
 		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/libvirt-python-0.6.10[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/libvirt-python-6.10.0[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
 	')
