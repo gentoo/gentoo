@@ -23,6 +23,7 @@ DEPEND="
 	>=dev-qt/qtcore-5.12:5
 	>=dev-qt/qtopengl-5.12:5
 	>=dev-qt/qtscript-5.12:5
+	>=dev-qt/qtxml-5.12:5
 	>=dev-qt/qtxmlpatterns-5.12:5
 	media-libs/glew:0
 	=media-libs/lib3ds-1*
