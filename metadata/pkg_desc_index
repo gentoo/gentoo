@@ -7876,7 +7876,7 @@ dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python 
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/GitPython 3.1.11: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
-dev-python/MechanicalSoup 0.12.0: A python library for automating interaction with websites
+dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.54 1.54.1: Python library to access the Github API v3
@@ -7981,8 +7981,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 1.16.44 1.16.45 1.16.46 1.16.47 1.16.48 9999: The AWS SDK for Python
-dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 1.19.44 1.19.45 1.19.46 1.19.47 1.19.48 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.23 1.16.30 1.16.36 1.16.40 1.16.41 1.16.42 1.16.43 1.16.44 1.16.45 1.16.46 1.16.47 1.16.48 1.16.49 9999: The AWS SDK for Python
+dev-python/botocore 1.19.23 1.19.30 1.19.36 1.19.40 1.19.41 1.19.42 1.19.43 1.19.44 1.19.45 1.19.46 1.19.47 1.19.48 1.19.49 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8651,7 +8651,7 @@ dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
 dev-python/prometheus_client 0.9.0: Python client for the Prometheus monitoring system
-dev-python/prompt_toolkit 2.0.10-r1 3.0.7: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
@@ -14632,7 +14632,7 @@ net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.7-r2 0.11.7-r100: Prosody is a modern XMPP communication server
-net-im/prosody-modules 0_pre20201004 9999: A collection of community-maintained modules for Prosody
+net-im/prosody-modules 0_pre20210105 9999: A collection of community-maintained modules for Prosody
 net-im/psi 1.5 9999: Qt XMPP client
 net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
@@ -16797,7 +16797,7 @@ sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting
 sys-apps/earlyoom 1.3 1.6.1 9999: Early OOM Daemon for Linux
 sys-apps/ed 1.15-r1 1.16: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
-sys-apps/edid-decode 0_pre20200720 9999: Decode EDID data in a human-readable format
+sys-apps/edid-decode 0_pre20200720 0_pre20201230 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
@@ -17033,12 +17033,12 @@ sys-auth/AusweisApp2 1.20.2 1.22.0 9999: Official authentication app for German 
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
 sys-auth/elogind 243.7 243.7-r1: The systemd project's logind, extracted to a standalone package
-sys-auth/fprintd 0.8.1 0.8.1-r1: D-Bus service to access fingerprint readers
+sys-auth/fprintd 0.8.1-r2 0.8.1-r3: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 17.0.0 18.0.0 2020.1.9999 2020.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.99.0 1.0 1.90.0 1.90.1 1.90.2 1.90.3: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.99.0 1.0 1.90.1-r1 1.90.2-r1 1.90.3-r1: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
@@ -17057,7 +17057,7 @@ sys-auth/pam-script 1.1.8 1.1.9: PAM module for running scripts during authoriza
 sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly failed authentication
 sys-auth/pam_blue 0.9.0-r1: PAM module providing ability to authenticate via a bluetooth compatible device
 sys-auth/pam_dotfile 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
-sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functionality for authentication
+sys-auth/pam_fprint 0.2-r2: a simple PAM module which uses libfprint's functionality for authentication
 sys-auth/pam_krb5 4.9: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
