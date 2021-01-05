@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 0b1d1ef..17c6251 100644
+index 0b1d1ef..1b98acf 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -3,11 +3,10 @@ ST=strip
@@ -12,7 +12,7 @@ index 0b1d1ef..17c6251 100644
  cqrlog: src/cqrlog.lpi
 -	$(CC) --ws=gtk2 --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
 -	$(ST) src/cqrlog
-+	$(CC) --ws=gtk2 --lazarusdir=/usr/share/lazarus --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
++	$(CC) -d --ws=gtk2 --max-process-count=1 --lazarusdir=/usr/share/lazarus --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
  	gzip tools/cqrlog.1 -c > tools/cqrlog.1.gz
  
  clean:
