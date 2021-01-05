@@ -309,17 +309,6 @@ dev-util/creduce
 # paths.
 =net-libs/gnutls-3.7.0
 
-# Joonas Niilola <juippis@gentoo.org> (2020-12-06)
-# Not keyworded, unmaintained, unbuildable for a long time, EAPI-5.
-# Removal in ~30 days. List sorted by their bug numbers.
-# Bugs: #752432, #752435, #752438, #752441, #752444, #752453.
-media-plugins/kodi-screensaver-crystalmorph
-media-plugins/kodi-visualization-nastyfft
-media-plugins/kodi-screensaver-rsxs
-net-wireless/qradiolink
-net-libs/liba53
-app-emulation/qt-virt-manager
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
 # Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
 # Feel free to manually unmask when not using XFS.
