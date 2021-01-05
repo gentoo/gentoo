@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,13 +22,13 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	<dev-python/alabaster-0.8[${PYTHON_USEDEP}]
-	dev-python/Babel[${PYTHON_USEDEP}]
-	dev-python/docutils[${PYTHON_USEDEP}]
+	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
+	>=dev-python/docutils-0.12[${PYTHON_USEDEP}]
 	dev-python/imagesize[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/snowballstemmer[${PYTHON_USEDEP}]
+	>=dev-python/jinja-2.3[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.5.0[${PYTHON_USEDEP}]
+	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-applehelp[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-devhelp[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-jsmath[${PYTHON_USEDEP}]
