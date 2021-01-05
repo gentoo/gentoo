@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,9 +24,21 @@ RDEPEND="
 		>=dev-python/importlib_metadata-1.6.0[${PYTHON_USEDEP}]
 	' python3_{6,7})
 "
+# pyperclip uses clipboard backends in the following preference order:
+# pygtk, xclip, xsel, klipper, qtpy, pyqt5, pyqt4.
+# klipper is known to be broken in Xvfb, and therefore causes test
+# failures.  to avoid them, we must ensure that one of the backends
+# preferred to it is available (i.e. xclip or xsel) + which(1).
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		sys-apps/which
+		|| (
+			x11-misc/xclip
+			x11-misc/xsel
+		)
+	)
 "
 
 distutils_enable_tests pytest
