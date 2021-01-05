@@ -1,11 +1,11 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install postinst unpack
 DESCRIPTION=A pure Unix shell script implementing ACME client protocol
 EAPI=7
 HOMEPAGE=https://github.com/acmesh-official/acme.sh
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=net-misc/curl || ( dev-libs/libressl dev-libs/openssl:0 ) || ( net-analyzer/netcat net-analyzer/openbsd-netcat ) || ( net-misc/socat www-servers/apache:2 www-servers/nginx ) virtual/cron
+RDEPEND=dev-libs/openssl:0 net-misc/curl net-misc/socat
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=38a9f773ea79602032919a0edb8ea3c6
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	optfeature	6c9aa35fc16df43d7142ef2660e00e25
+_md5_=669b431f394352c25bd465bd961001f7
