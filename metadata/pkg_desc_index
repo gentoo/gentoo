@@ -13262,7 +13262,7 @@ media-libs/portaudio 19.06.00-r1 19.06.00-r2 19.06.00-r3: A free, cross-platform
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
-media-libs/qhull 2015.2: Geometry library
+media-libs/qhull 2015.2 2020.2: Geometry library
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0-r3: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quarter 1.1.0: GUI binding for using Coin/Open Inventor with Qt
