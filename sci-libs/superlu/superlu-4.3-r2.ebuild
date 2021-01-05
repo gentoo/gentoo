@@ -1,37 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=true
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-inherit autotools-utils fortran-2 toolchain-funcs multilib
+inherit autotools fortran-2 toolchain-funcs
 
 MY_PN=SuperLU
 
 DESCRIPTION="Sparse LU factorization library"
 HOMEPAGE="https://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
 SRC_URI="https://crd-legacy.lbl.gov/~xiaoye/SuperLU/${PN}_${PV}.tar.gz"
+S="${WORKDIR}/${MY_PN}_${PV}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples static-libs test"
+IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	virtual/blas"
-DEPEND="${RDEPEND}
+RDEPEND="virtual/blas"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	test? ( app-shells/tcsh )"
-
-S="${WORKDIR}/${MY_PN}_${PV}"
+	test? ( app-shells/tcsh )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${P}-format-security.patch
-	)
+)
 
 src_prepare() {
 	unset VERBOSE
@@ -40,17 +37,22 @@ src_prepare() {
 		-e "s:= ranlib:= $(tc-getRANLIB):g" \
 		-i make.inc || die
 
-	autotools-utils_src_prepare
+	default
+	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=( --with-blas="$($(tc-getPKG_CONFIG) --libs blas)" )
-	autotools-utils_src_configure
+	local myeconfargs=(
+		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
+	)
+
+	econf
+
 	rm EXAMPLE/*itersol1 || die
 }
 
 src_test() {
-	cd "${BUILD_DIR}"/TESTING
+	cd TESTING || die
 	emake -j1 \
 		CC="$(tc-getCC)" \
 		FORTRAN="$(tc-getFC)" \
@@ -65,10 +67,17 @@ src_test() {
 }
 
 src_install() {
-	autotools-utils_src_install
-	use doc && dodoc DOC/ug.pdf && dohtml DOC/html/*
-	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r EXAMPLE FORTRAN
+	default
+
+	if use doc; then
+		dodoc DOC/ug.pdf
+		dodoc DOC/html/*
 	fi
+
+	if use examples; then
+		docinto examples
+		dodoc EXAMPLE FORTRAN
+	fi
+
+	find "${ED}" -name "*.a" -delete || die
 }
