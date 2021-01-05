@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="hardened"
 
 RDEPEND="!<app-emulation/docker-20.10.1"
+BDEPEND="dev-go/go-md2man"
 
 RESTRICT="installsources strip"
 
