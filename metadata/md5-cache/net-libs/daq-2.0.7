@@ -5,10 +5,10 @@ DESCRIPTION=Data Acquisition library, for packet I/O
 EAPI=7
 HOMEPAGE=https://www.snort.org/
 IUSE=ipv6 +afpacket +dump +pcap nfq ipq static-libs
-KEYWORDS=amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dump? ( >=net-libs/libpcap-1.0.0 ) ipq? ( >=net-firewall/iptables-1.4.10 dev-libs/libdnet net-libs/libnetfilter_queue ) nfq? ( >=net-firewall/iptables-1.4.10 dev-libs/libdnet net-libs/libnetfilter_queue ) pcap? ( >=net-libs/libpcap-1.0.0 )
 SLOT=0
 SRC_URI=https://www.snort.org/downloads/snort/daq-2.0.7.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=b725e5bb8699da34f3a4c3e957aeadcf
+_md5_=89f5520690b07c4f029c011d7ff8f2a8
