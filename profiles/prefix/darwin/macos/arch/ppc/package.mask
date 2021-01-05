@@ -12,4 +12,3 @@
 # version 8.2.1 are unmasked for us, allowing a non-gcc-apple path, we
 # dropped all versions inbetween, mask the incompatible ones remaining
 =sys-devel/binutils-apple-8.2.1-r1
-=sys-devel/binutils-apple-11.3.1-r1
