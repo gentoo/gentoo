@@ -84,10 +84,6 @@ REQUIRED_USE="
 	|| ( gstreamer vlc )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.8.5-make_backends_optional.patch" #757780
-)
-
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
@@ -105,13 +101,13 @@ src_configure() {
 		-DLINGUAS="$(l10n_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5DBus=$(usex !dbus)
+		-DENABLE_GSTREAMER="$(usex gstreamer)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
-		-DUSE_GSTREAMER="$(usex gstreamer)"
+		-DENABLE_VLC="$(usex vlc)"
 		-DUSE_SYSTEM_TAGLIB=ON
-		-DUSE_VLC="$(usex vlc)"
 		-DWITH_QT6=OFF
 	)
 
