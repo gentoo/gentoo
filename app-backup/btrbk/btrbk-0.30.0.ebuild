@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,10 @@ RDEPEND="dev-lang/perl
 	net-misc/openssh
 	mbuffer? ( >=sys-block/mbuffer-20180505 )
 	>=sys-fs/btrfs-progs-4.12"
+
+PATCHES=(
+	"${FILESDIR}/${P}-make-install-race.patch"
+)
 
 src_compile() {
 	emake clean

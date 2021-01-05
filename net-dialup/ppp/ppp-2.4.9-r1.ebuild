@@ -5,7 +5,7 @@ EAPI=7
 
 inherit linux-info multilib pam toolchain-funcs
 
-PATCH_TARBALL_NAME="${PN}-2.4.9-patches-01"
+PATCH_TARBALL_NAME="${PN}-2.4.9-patches-02"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
 SRC_URI="https://github.com/paulusmack/ppp/archive/${P}.tar.gz
@@ -26,7 +26,7 @@ DEPEND="
 	libressl? ( dev-libs/libressl:= )
 "
 RDEPEND="${DEPEND}
-	!<net-misc/netifrc-0.7.1"
+	!<net-misc/netifrc-0.7.1-r2"
 PDEPEND="net-dialup/ppp-scripts"
 
 S="${WORKDIR}/${PN}-${P}"
@@ -99,8 +99,8 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC PKG_CONFIG
-	emake COPTS="${CFLAGS} -D_GNU_SOURCE"
+	tc-export AR PKG_CONFIG
+	emake COPTS="${CFLAGS} -D_GNU_SOURCE" CC="$(tc-getCC)"
 
 	# build pppgetpass
 	cd contrib/pppgetpass || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,20 +7,21 @@ EGIT_REPO_URI="https://github.com/Neilpang/${PN/-/.}.git"
 
 inherit git-r3
 
-DESCRIPTION="An ACME Shell script"
-HOMEPAGE="https://github.com/Neilpang/acme.sh"
+DESCRIPTION="A pure Unix shell script implementing ACME client protocol"
+HOMEPAGE="https://github.com/acmesh-official/acme.sh"
 SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
-RDEPEND="net-misc/curl
+RDEPEND="
+	net-misc/curl
 	|| ( dev-libs/libressl dev-libs/openssl:0 )
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
 	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
-	virtual/cron"
+	virtual/cron
+"
 
 src_install() {
 	einstalldocs
@@ -29,15 +30,19 @@ src_install() {
 
 	keepdir /etc/acme-sh
 	doenvd "${FILESDIR}"/99acme-sh
+
 	insinto /etc/bash/bashrc.d
 	doins "${FILESDIR}"/acme.sh
 
 	exeinto /usr/share/acme.sh
 	doexe acme.sh
+
 	insinto /usr/share/acme.sh/dnsapi
 	doins -r dnsapi/*.sh
+
 	insinto /usr/share/acme.sh/deploy
 	doins -r deploy/*.sh
+
 	insinto /usr/share/acme.sh/notify
 	doins -r notify/*.sh
 

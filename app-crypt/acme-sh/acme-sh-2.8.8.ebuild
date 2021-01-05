@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,9 @@ EAPI=7
 MY_PN="${PN/-/.}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="An ACME Shell script"
-HOMEPAGE="https://github.com/Neilpang/acme.sh"
-SRC_URI="https://github.com/Neilpang/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+DESCRIPTION="A pure Unix shell script implementing ACME client protocol"
+HOMEPAGE="https://github.com/acmesh-official/acme.sh"
+SRC_URI="https://github.com/acmesh-official/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -31,15 +31,19 @@ src_install() {
 
 	keepdir /etc/acme-sh
 	doenvd "${FILESDIR}"/99acme-sh
+
 	insinto /etc/bash/bashrc.d
 	doins "${FILESDIR}"/acme.sh
 
 	exeinto /usr/share/acme.sh
 	doexe acme.sh
+
 	insinto /usr/share/acme.sh/dnsapi
 	doins -r dnsapi/*.sh
+
 	insinto /usr/share/acme.sh/deploy
 	doins -r deploy/*.sh
+
 	insinto /usr/share/acme.sh/notify
 	doins -r notify/*.sh
 
