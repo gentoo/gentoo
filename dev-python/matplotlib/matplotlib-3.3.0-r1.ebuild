@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ RDEPEND="
 	media-fonts/stix-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
-	>=media-libs/qhull-2013
+	>=media-libs/qhull-2013:=
 	>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 	cairo? (
 		dev-python/cairocffi[${PYTHON_USEDEP}]
