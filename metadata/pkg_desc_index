@@ -11061,7 +11061,7 @@ games-action/trine 1.08-r3: A physics-based action game with character-dependent
 games-action/trine-enchanted-edition 2.12.508-r3: The original sidescrolling action platformer under the Trine 2 engine
 games-action/trine2 2.01.425-r2: Sidescrolling game of action, puzzles and platforming, Complete Story edition
 games-action/trosh 20-r1 20-r2: A game made in 20 hours for a friend. It has explosions
-games-action/tuxkart 0.4.0-r1: A racing game starring Tux, the Linux penguin
+games-action/tuxkart 0.4.0-r2: A racing game starring Tux, the Linux penguin
 games-action/violetland 0.5: Help a girl named Violet in the struggle with hordes of monsters
 games-action/wordwarvi 1.00-r1: A retro side-scrolling shoot'em up based on the editor war story
 games-action/xblast 2.10.4-r1: Bomberman clone w/network support for up to 6 players
@@ -16303,7 +16303,7 @@ sci-libs/stellarsolver 1.5: Cross-platform Sextractor and Astrometry.net-Based i
 sci-libs/suitesparse 5.4.0: Metapackage for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 5.4.0: Common configurations for all packages in suitesparse
 sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0 5.1.0 5.2.0: Suite of nonlinear solvers
-sci-libs/superlu 5.2.2: Sparse LU factorization library
+sci-libs/superlu 4.3-r2 5.2.2: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.6.0: Fast symbolic manipulation library, written in C++
 sci-libs/symmetrica 3.0.1: C library for representation theory, combinatorics, and more
@@ -16760,7 +16760,7 @@ sys-apps/biosdisk 1.01: FreeDOS based BIOS updating utility for Dell machines
 sys-apps/bleachbit 4.0.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.9-r1 0.9-r2: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.4.1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
-sys-apps/busybox 1.31.1-r3 1.32.0-r1 9999: Utilities for rescue and embedded systems
+sys-apps/busybox 1.31.1-r3 1.32.0-r1 1.32.1 1.33.0 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12a: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
