@@ -238,7 +238,7 @@ src_install() {
 splitting_docker_cli() {
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		ver_test ${V} -lt 20.10.1 && return 0
+		ver_test ${v} -lt 20.10.1 && return 0
 	done
 	return 1
 }
