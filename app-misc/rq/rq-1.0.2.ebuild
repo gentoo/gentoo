@@ -151,7 +151,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="${RUST_DEPEND}"
-RDEPEND=""
+RDEPEND="!dev-python/rq"
 
 src_install() {
 	cargo_src_install
