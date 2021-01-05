@@ -985,7 +985,7 @@ app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.8 9999: An ACME Shell script
 app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
-app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
+app-crypt/aescrypt 3.0.6b 3.14: Advanced file encryption using AES
 app-crypt/aespipe 2.4e 2.4f: Encrypts data from stdin to stdout
 app-crypt/argon2 20190702: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
@@ -10624,7 +10624,7 @@ dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.7-r1 1.8: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 3.0.20.11.20 9999: A tool to display info about the system's OpenCL capabilities
-dev-util/clion 2020.2.4 2020.3.1: A complete toolset for C and C++ development
+dev-util/clion 2020.2.4 2020.3.1-r1: A complete toolset for C and C++ development
 dev-util/cloc 1.84 1.86: Count Lines of Code
 dev-util/cmake 3.13.5 3.17.4-r1 3.18.5 3.19.2: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -17968,7 +17968,7 @@ www-apps/rt 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20200922 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
-www-apps/webdavcgi 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
+www-apps/webdavcgi 1.1.2: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
