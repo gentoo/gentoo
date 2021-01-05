@@ -29,5 +29,3 @@ DEPEND="${RDEPEND}
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3"
-
-PATCHES=( "${FILESDIR}/qt5.patch" )
