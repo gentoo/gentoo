@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ RDEPEND="
 	openni2? ( dev-libs/OpenNI2 )
 	pcap? ( net-libs/libpcap )
 	png? ( media-libs/libpng:0= )
-	qhull? ( media-libs/qhull )
+	qhull? ( media-libs/qhull:= )
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtcore:5
