@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,4 +42,9 @@ src_compile() {
 		"${EPYTHON}" doxybuild.py --doxygen="${EPREFIX}"/usr/bin/doxygen || die
 		HTML_DOCS=( dist/doxygen/jsoncpp*/. )
 	fi
+}
+
+src_test() {
+	# increase test timeout due to failures on slower hardware
+	meson_src_test -t 2
 }
