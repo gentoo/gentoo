@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,5 +38,15 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DBUILD_TESTING=$(usex test)
 	)
+
+	if use test; then
+		# (#760585) Due to network sandboxing of portage, internet connectivity
+		# tests will always fail. If you need a USE flag, because you want/need
+		# to perform these tests manually, please open a bug report for it.
+		mycmakeargs+=(
+			-DENABLE_NET_TESTS=OFF
+		)
+	fi
+
 	cmake_src_configure
 }
