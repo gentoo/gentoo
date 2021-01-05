@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit desktop xdg
 
 DESCRIPTION="A racing game starring Tux, the Linux penguin"
 HOMEPAGE="http://tuxkart.sourceforge.net/"
@@ -10,18 +12,21 @@ SRC_URI="mirror://sourceforge/tuxkart/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
-IUSE=""
 
-RDEPEND=">=media-libs/plib-1.8.0
+RDEPEND="
+	>=media-libs/plib-1.8.0
 	x11-libs/libX11
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXmu
-	virtual/opengl"
-DEPEND="${RDEPEND}
-	x11-libs/libXt"
+	virtual/opengl
+"
+DEPEND="
+	${RDEPEND}
+	x11-libs/libXt
+"
 
 src_prepare() {
 	default
@@ -41,5 +46,8 @@ src_prepare() {
 src_install() {
 	default
 	dodoc doc/*.html
-	rm -rf "${D}/usr/share/tuxkart/" || die
+	rm -r "${ED}"/usr/share/tuxkart/ || die
+
+	newicon -s 256 doc/title_screen.png ${PN}.png
+	make_desktop_entry ${PN} TuxKart
 }
