@@ -26,7 +26,7 @@ DEPEND="
 	libressl? ( dev-libs/libressl:= )
 "
 RDEPEND="${DEPEND}
-	!<net-misc/netifrc-0.7.1"
+	!<net-misc/netifrc-0.7.1-r2"
 PDEPEND="net-dialup/ppp-scripts"
 
 S="${WORKDIR}/${PN}-${P}"
