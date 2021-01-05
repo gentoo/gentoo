@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ FFMPEG_VERSION="87.0.4280.88"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 	proprietary-codecs? (
-		https://dev.gentoo.org/~sultan/distfiles/www-client/${PN}/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
+		https://dev.gentoo.org/~sultan/distfiles/www-client/opera/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
 	)"
 
 IUSE="+proprietary-codecs suid widevine"
