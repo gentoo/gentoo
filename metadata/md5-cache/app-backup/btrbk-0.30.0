@@ -11,4 +11,4 @@ RDEPEND=dev-lang/perl net-misc/openssh mbuffer? ( >=sys-block/mbuffer-20180505 )
 SLOT=0
 SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.30.0.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=4d971ba3275087b8d02b7585a47cafd6
+_md5_=52425609c6df0a2921cd4303aa43c151
