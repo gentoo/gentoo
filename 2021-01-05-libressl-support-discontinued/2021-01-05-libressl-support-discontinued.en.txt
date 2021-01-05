@@ -1,0 +1,71 @@
+Title: LibreSSL support discontinued
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2021-01-05
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: dev-libs/libressl
+
+Starting 2021-02-01, Gentoo will discontinue supporting
+dev-libs/libressl as an alternative to dev-libs/openssl.  While it will
+still be possible for expert users to use LibreSSL on their systems,
+we are only going to provide support for OpenSSL-based systems.  Most
+importantly, we are no longer going to maintain downstream patches for
+LibreSSL support -- it will rely on either package upstreams merging
+such patches themselves, or LibreSSL upstream finally working towards
+better OpenSSL compatibility.
+
+On 2021-02-01, we will mask the relevant USE flags and packages.  If you
+wish to continue using LibreSSL, you will be able to undo these masks
+for the time being.  However, as packages drop patching for LibreSSL
+and the library is eventually removed from ::gentoo, it will become
+necessary to use the user-maintained LibreSSL overlay [1].  As long-term
+support for LibreSSL is not guaranteed, we recommend switching
+to OpenSSL instead.  More information on removal can be found
+on the relevant bug [2].
+
+To switch before the aforementioned date, remove 'libressl' from your
+USE flags and CURL_SSL targets.  Afterwards, it is recommended to
+prefetch all the necessary distfiles before proceeding with the system
+upgrade, in case wget(1) becomes broken in the process:
+
+    emerge --fetchonly dev-libs/openssl net-misc/wget
+    emerge --fetchonly --deep --changed-use @world
+
+A --changed-use @world upgrade should automatically cause LibreSSL
+to be replaced by OpenSSL, and all affected packages to be rebuilt:
+
+    emerge --deselect dev-libs/libressl
+    emerge --changed-use --deep @world
+
+
+LibreSSL has been forked off OpenSSL in 2014 to address a number of
+problems with the original package.  However, since then OpenSSL
+development gained speed and the original reasons for the fork no longer
+apply.  Furthermore, LibreSSL started to repeatedly fall behind
+and cause growing compatibility problems.  While initially these
+problems were related to packages using old/insecure OpenSSL APIs, today
+they are mostly related to LibreSSL missing newer OpenSSL APIs
+(yet declaring false compatibility with newer OpenSSL versions).
+
+With the little testing it gets, our developers and users had to put
+a significant effort into fixing upstream packages.  In some cases
+(e.g. Qt), upstream has explicitly refused to support LibreSSL, forcing
+us to maintain the patches forever.  This in turn means that
+security fixes, regular version bumps or end-user system upgrades are
+often delayed because of necessary LibreSSL patching.  What is even
+worse, major runtime issues managed to sneak in that broke production
+systems running LibreSSL in the past.
+
+To the best of our knowledge, the only benefit LibreSSL has over OpenSSL
+right now is the additional libtls library.  For this reason, we have
+packaged dev-libs/libretls which is a port of this library that links
+to OpenSSL.
+
+All these issues considered, we came to the conclusion that OpenSSL
+should remain the only supported production option for Gentoo systems.
+While the flexibility of Gentoo should make it possible to keep using
+LibreSSL going forward, the effort necessary to provide first-class
+official support for LibreSSL has proven to outweigh the benefit.
+
+[1] https://gitweb.gentoo.org/repo/proj/libressl.git/tree/README.md
+[2] https://bugs.gentoo.org/762847
