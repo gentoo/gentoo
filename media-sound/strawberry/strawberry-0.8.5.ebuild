@@ -63,7 +63,6 @@ COMMON_DEPEND="
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
 RDEPEND="${COMMON_DEPEND}
 	gstreamer? (
-		media-plugins/gst-plugins-libmms:1.0
 		media-plugins/gst-plugins-meta:1.0
 		media-plugins/gst-plugins-soup:1.0
 		media-plugins/gst-plugins-taglib:1.0
