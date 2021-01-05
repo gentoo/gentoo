@@ -6504,6 +6504,7 @@ net-misc/ofono:qmimodem - Enable Qualcomm QMI modem support
 net-misc/ofono:tools - Enable testing tools
 net-misc/oidentd:masquerade - Enable support for masqueraded/NAT connections
 net-misc/olsrd:pud - Install the Node Position Update plugin
+net-misc/openntpd:constraints - Enable HTTPS TLS time constraint support
 net-misc/openntpd:libressl - Enable HTTPS TLS time constraint support using dev-libs/libressl
 net-misc/openssh:X509 - Adds support for X.509 certificate authentication
 net-misc/openssh:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
