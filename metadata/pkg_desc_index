@@ -2548,6 +2548,7 @@ app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/rpick 0.6.1 0.7.0: Helps you pick items from a list by various algorithms
+app-misc/rq 1.0.2: A tool for doing record analysis and transformation
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.11: Command line tool for rundeck
