@@ -3,15 +3,19 @@
 
 EAPI=7
 
-inherit git-r3 optfeature
+MY_PN="${PN/-/.}"
+MY_P="${MY_PN}-${PV}"
+
+inherit optfeature
 
 DESCRIPTION="A pure Unix shell script implementing ACME client protocol"
 HOMEPAGE="https://github.com/acmesh-official/acme.sh"
-EGIT_REPO_URI="https://github.com/acmesh-official/${PN/-/.}.git"
+SRC_URI="https://github.com/acmesh-official/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	dev-libs/openssl:0
