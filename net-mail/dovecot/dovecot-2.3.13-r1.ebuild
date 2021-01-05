@@ -1,18 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
-
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools lua-single ssl-cert systemd toolchain-funcs
+inherit autotools ssl-cert systemd toolchain-funcs
 
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
 major_minor="$(ver_cut 1-2)"
-sieve_version="0.5.11"
+sieve_version="0.5.13"
 if [[ ${PV} == *_rc* ]] ; then
 	rc_dir="rc/"
 else
@@ -32,20 +30,18 @@ SLOT="0"
 LICENSE="LGPL-2.1 MIT"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite vpopmail"
+IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib zstd"
 IUSE_DOVECOT_OTHER="argon2 caps doc ipv6 libressl lucene managesieve rpc selinux sieve solr static-libs suid tcpd textcat unwind"
 
 IUSE="${IUSE_DOVECOT_AUTH} ${IUSE_DOVECOT_COMPRESS} ${IUSE_DOVECOT_OTHER}"
-
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 DEPEND="argon2? ( dev-libs/libsodium )
 	bzip2? ( app-arch/bzip2 )
 	caps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
-	lua? ( ${LUA_DEPS} )
+	lua? ( dev-lang/lua:0= )
 	lucene? ( >=dev-cpp/clucene-2.3 )
 	lzma? ( app-arch/xz-utils )
 	lz4? ( app-arch/lz4 )
@@ -62,7 +58,6 @@ DEPEND="argon2? ( dev-libs/libsodium )
 	tcpd? ( sys-apps/tcp-wrappers )
 	textcat? ( app-text/libexttextcat )
 	unwind? ( sys-libs/libunwind )
-	vpopmail? ( net-mail/vpopmail )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd )
 	virtual/libiconv
@@ -76,14 +71,11 @@ RDEPEND="${DEPEND}
 	net-mail/mailbase"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-apop-fix.patch
-	"${FILESDIR}/${P}"-autoconf-lua-version.patch
 	"${FILESDIR}/${PN}"-unwind-generic.patch
-	"${FILESDIR}/${PN}"-fix-search-crash.patch
+	"${FILESDIR}/${PN}"-socket-name-too-long.patch
 	)
 
 pkg_setup() {
-	use lua && lua-single_pkg_setup
 	if use managesieve && ! use sieve; then
 		ewarn "managesieve USE flag selected but sieve USE flag unselected"
 		ewarn "sieve USE flag will be turned on"
@@ -105,7 +97,7 @@ src_configure() {
 	fi
 
 	# turn valgrind tests off. Bug #340791
-	VALGRIND=no LUAPC="${ELUA}" econf \
+	VALGRIND=no econf \
 		--with-rundir="${EPREFIX}/run/dovecot" \
 		--with-statedir="${EPREFIX}/var/lib/dovecot" \
 		--with-moduledir="${EPREFIX}/usr/$(get_libdir)/dovecot" \
@@ -132,7 +124,6 @@ src_configure() {
 		$( use_with tcpd libwrap ) \
 		$( use_with textcat ) \
 		$( use_with unwind libunwind ) \
-		$( use_with vpopmail ) \
 		$( use_with zlib ) \
 		$( use_with zstd ) \
 		$( use_enable static-libs static ) \
@@ -253,13 +244,6 @@ src_install() {
 			's/#!include auth-ldap.conf.ext/!include auth-ldap.conf.ext/' \
 			"${confd}/10-auth.conf" \
 			|| die "failed to update ldap settings in 10-auth.conf"
-	fi
-
-	if use vpopmail; then
-		sed -i -e \
-			's/#!include auth-vpopmail.conf.ext/!include auth-vpopmail.conf.ext/' \
-			"${confd}/10-auth.conf" \
-			|| die "failed to update vpopmail settings in 10-auth.conf"
 	fi
 
 	if use sieve || use managesieve ; then
