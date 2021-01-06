@@ -8,4 +8,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~conikost/files/edid-decode-0_pre20201230.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=887f4d2c8dd2579ccd7b24a5fbbec929
+_md5_=ed221a3b4b79d335f1bbaf6974cc177f
