@@ -5,10 +5,10 @@ DESCRIPTION=An MP3 technical info viewer and ID3 1.x tag editor
 EAPI=7
 HOMEPAGE=https://ibiblio.org/mp3info/
 IUSE=gtk
-KEYWORDS=amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= gtk? ( >=x11-libs/gtk+-2.6.10:2 )
 SLOT=0
 SRC_URI=https://ibiblio.org/pub/linux/apps/sound/mp3-utils/mp3info/mp3info-0.8.5a.tgz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=136edc336aabc89728aac18338d9845d
+_md5_=c9c243bd444fac962ca83431461498b5

@@ -3,9 +3,9 @@ DEPEND=>=dev-lang/perl-5.8.0
 DESCRIPTION=Trace TCP/UDP/... sessions and fetch application data.
 EAPI=7
 HOMEPAGE=http://chaosreader.sourceforge.net https://github.com/brendangregg/Chaosreader
-KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=dev-lang/perl-5.8.0
 SLOT=0
 SRC_URI=https://github.com/brendangregg/chaosreader/archive/0.96.tar.gz -> chaosreader-0.96.tar.gz
-_md5_=fc345f7405e0c062f7e54d13ff48d980
+_md5_=5f68973d3976134263ec36a60d5c64a7
