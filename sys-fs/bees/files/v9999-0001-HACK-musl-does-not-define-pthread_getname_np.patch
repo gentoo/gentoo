@@ -1,0 +1,50 @@
+From 02bdb636be5abd15836e5e43e9b53517595686c9 Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Thu, 16 Apr 2020 21:21:57 +0200
+Subject: [PATCH v9999] HACK: musl does not define pthread_getname_np()
+
+The glibc alternative musl does not define this setter function. This
+fix is probably wrong because it resets the thread names used for
+logging internally to empty strings.
+
+Link: https://www.openwall.com/lists/musl/2019/07/17/3
+Signed-off-by: Kai Krakow <kai@kaishome.de>
+---
+ lib/task.cc | 2 ++
+ src/bees.cc | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/lib/task.cc b/lib/task.cc
+index 937a477..85da59b 100644
+--- a/lib/task.cc
++++ b/lib/task.cc
+@@ -194,7 +194,9 @@ namespace crucible {
+ 		lock.unlock();
+ 
+ 		char buf[24] = { 0 };
++#ifdef _GNU_SOURCE
+ 		DIE_IF_MINUS_ERRNO(pthread_getname_np(pthread_self(), buf, sizeof(buf)));
++#endif
+ 		DIE_IF_MINUS_ERRNO(pthread_setname_np(pthread_self(), m_title.c_str()));
+ 
+ 		sched_param param = { .sched_priority = 0 };
+diff --git a/src/bees.cc b/src/bees.cc
+index 03a626c..3db5d73 100644
+--- a/src/bees.cc
++++ b/src/bees.cc
+@@ -152,10 +152,12 @@ BeesNote::get_name()
+ 	// OK try the pthread name next.
+ 	char buf[24];
+ 	memset(buf, '\0', sizeof(buf));
++#ifdef _GNU_SOURCE
+ 	int err = pthread_getname_np(pthread_self(), buf, sizeof(buf));
+ 	if (err) {
+ 		return string("pthread_getname_np: ") + strerror(err);
+ 	}
++#endif
+ 	buf[sizeof(buf) - 1] = '\0';
+ 
+ 	// thread_getname_np returns process name
+-- 
+2.26.2
+
