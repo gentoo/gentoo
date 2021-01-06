@@ -5,11 +5,11 @@ DESCRIPTION=Determine file type using magic
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/File-Type
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-IO-0.10.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PM/PMISON/File-Type-0.22.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=ca328c7a411c09d5d08a71a5cc5cdc30
+_md5_=b61147f4b24a8d9a606cf2f5342e3dfc

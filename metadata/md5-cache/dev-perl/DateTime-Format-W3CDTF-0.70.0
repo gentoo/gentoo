@@ -4,11 +4,11 @@ DESCRIPTION=Parse and format W3CDTF datetime strings
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/DateTime-Format-W3CDTF
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/DateTime dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GW/GWILLIAMS/DateTime-Format-W3CDTF-0.07.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=b6390049800f7f1ec1d1217d0bcc694b
+_md5_=51ac55955a588fc94097f3a52d5eb5c9

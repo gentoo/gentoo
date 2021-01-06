@@ -5,11 +5,11 @@ DESCRIPTION=Interface to Bzip2 compression library
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Compress-Bzip2
 IUSE=test
-KEYWORDS=~amd64 ~ia64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~amd64 ~ia64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ ) BZIP2
 RDEPEND=app-arch/bzip2 virtual/perl-Carp virtual/perl-File-Spec dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RU/RURBAN/Compress-Bzip2-2.28.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=da6387b8642e4d649e182cf73b4518ff
+_md5_=4cfec9b1de7838608be2ad60cf8d20de

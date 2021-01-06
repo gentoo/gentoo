@@ -4,11 +4,11 @@ DESCRIPTION=Convert POD to Markdown
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Pod-Markdown
 IUSE=test minimal
-KEYWORDS=amd64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/HTML-Parser ) virtual/perl-Encode virtual/perl-Getopt-Long >=virtual/perl-Pod-Simple-3.270.0 virtual/perl-parent dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RW/RWSTAUNER/Pod-Markdown-3.005.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=af32ec71ab99990b2a5521daee536812
+_md5_=9f7b03e1243597be416843a0f9e04d4f

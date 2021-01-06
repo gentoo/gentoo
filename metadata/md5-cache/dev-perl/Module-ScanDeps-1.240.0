@@ -4,11 +4,11 @@ DESCRIPTION=Recursively scan Perl code for dependencies
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Module-ScanDeps
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-Module-Metadata virtual/perl-Text-ParseWords virtual/perl-version dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.24.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=8da282cf66ca52cc669bc31122e69b7f
+_md5_=e6b5abc5ac3f56bba5e946082927c97d

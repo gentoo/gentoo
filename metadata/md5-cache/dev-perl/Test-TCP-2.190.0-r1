@@ -4,11 +4,11 @@ DESCRIPTION=Testing TCP program
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Test-TCP
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-IO virtual/perl-IO-Socket-IP >=dev-perl/Test-SharedFork-0.290.0 virtual/perl-Test-Simple >=virtual/perl-IO-1.230.0 virtual/perl-Time-HiRes dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=6a35a3bfd58bb67af0c58140246a7ed9
+_md5_=ff839e2e6da3c81a3c99389eeb031cd4

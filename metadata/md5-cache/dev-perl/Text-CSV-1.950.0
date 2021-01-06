@@ -4,11 +4,11 @@ DESCRIPTION=Manipulate comma-separated value strings
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Text-CSV
 IUSE=test +xs
-KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=xs? ( >=dev-perl/Text-CSV_XS-1.20.0 ) virtual/perl-IO dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IS/ISHIGAKI/Text-CSV-1.95.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=1cd436158c80ab0c8d79c03dc5ffc57e
+_md5_=ec0fc12052169af4ce5b35d8fb9e2444

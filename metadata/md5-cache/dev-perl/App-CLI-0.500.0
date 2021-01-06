@@ -4,11 +4,11 @@ DESCRIPTION=Dispatcher module for command line interface programs
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/App-CLI
 IUSE=test
-KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Capture-Tiny virtual/perl-Carp dev-perl/Class-Load >=virtual/perl-Getopt-Long-2.350.0 virtual/perl-Locale-Maketext-Simple virtual/perl-Pod-Simple virtual/perl-Scalar-List-Utils dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PT/PTC/App-CLI-0.50.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=c972a52104d1c4070a30636ee1348628
+_md5_=038dff135031e99e9b169087387b590b

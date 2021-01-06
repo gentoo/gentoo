@@ -4,11 +4,11 @@ DESCRIPTION=Roles with composition parameters
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/MooseX-Role-Parameterized
 IUSE=test
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!<=dev-perl/MooseX-Storage-0.460.0 virtual/perl-Carp dev-perl/Module-Runtime >=dev-perl/Moose-2.30.0 dev-perl/namespace-autoclean >=dev-perl/namespace-clean-0.190.0 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-1.10.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=8aa8c73985914be09563e713a667c8c2
+_md5_=e764b8c0b00b24f61137e519810ec072

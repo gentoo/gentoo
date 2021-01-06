@@ -5,11 +5,11 @@ DESCRIPTION=An easy-to-use and comprehensive named-color library
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Color-Library
 IUSE=test
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Module-Pluggable dev-perl/Class-Accessor dev-perl/Class-Data-Inheritable dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RO/ROKR/Color-Library-0.021.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=87d42856a210e5315c90c50106c37c4c
+_md5_=3289f92a1225f2919a95cb8f3ee7fdf1

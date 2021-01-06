@@ -4,11 +4,11 @@ DESCRIPTION=Inline test suite support for Perl
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Test-Inline
 IUSE=test
-KEYWORDS=amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Algorithm-Dependency-1.02 >=dev-perl/Config-Tiny-2.00 >=dev-perl/File-Find-Rule-0.26 >=dev-perl/File-Flat-1.00 dev-perl/File-Remove >=dev-perl/File-Slurp-9999.04 >=virtual/perl-File-Spec-0.80 dev-perl/File-chmod >=dev-perl/Params-Util-0.05 >=dev-perl/Pod-Tests-0.18 virtual/perl-Test-Simple dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Test-Inline-2.213.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=0db7ac1639aa16819eb7e089d147c387
+_md5_=d0fb8af1e27b46ab5021d872127c7ac2

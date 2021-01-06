@@ -4,10 +4,10 @@ DEPEND=dev-perl/Module-Build dev-lang/perl
 DESCRIPTION=An Encode::Encoding subclass that detects the encoding of data
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Encode-Detect
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JG/JGMYERS/Encode-Detect-1.01.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=2e62faa09b070f3fb8eda10ca76ff497
+_md5_=ceb4f4f9e1df7f8b3a3c299b00527f4d

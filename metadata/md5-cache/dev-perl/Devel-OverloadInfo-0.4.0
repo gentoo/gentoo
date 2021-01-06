@@ -4,11 +4,11 @@ DESCRIPTION=Introspect overloaded operators
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Devel-OverloadInfo
 IUSE=test
-KEYWORDS=amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Exporter-5.570.0 dev-perl/MRO-Compat >=dev-perl/Package-Stash-0.140.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Identify dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.004.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=2d145d63d77a9d062c4044c318084e5b
+_md5_=8d83e5e6346d4c73c5f23f42070f0500
