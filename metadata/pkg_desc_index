@@ -7874,7 +7874,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/GitPython 3.1.11: Library used to interact with Git repositories
+dev-python/GitPython 3.1.11 3.1.12: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
@@ -8193,7 +8193,7 @@ dev-python/flask-assets 0.12: Flask webassets integration
 dev-python/flask-babel 2.0.0: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.4: Adds i18n/l10n support to Flask applications
 dev-python/flask-compress 1.8.0: Compress responses in your Flask app with gzip
-dev-python/flask-cors 3.0.9: A Flask extension for Cross Origin Resource Sharing (CORS)
+dev-python/flask-cors 3.0.9 3.0.10: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3-r1: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Gravatar service easy
 dev-python/flask-htmlmin 2.0.2: Minimize your flask rendered html
@@ -8284,7 +8284,7 @@ dev-python/http-parser 0.9.0: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
 dev-python/httpbin 0.7.0-r1 0.7.0-r2: HTTP Request and Response Service
 dev-python/httplib2 0.18.1-r1: A comprehensive HTTP client library
-dev-python/httpretty 1.0.3: HTTP client mock for Python
+dev-python/httpretty 1.0.3 1.0.5: HTTP client mock for Python
 dev-python/humanfriendly 8.2: Human friendly output for text interfaces using Python
 dev-python/humanize 3.1.0 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
@@ -8333,7 +8333,7 @@ dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.1.0-r1: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 3.0.0-r1 3.1.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 3.0.0-r1: Context managers by jaraco
-dev-python/jaraco-envs 2.0.0-r1: Classes for orchestrating Python (virtual) environments.
+dev-python/jaraco-envs 2.0.0-r1 2.1.0: Classes for orchestrating Python (virtual) environments.
 dev-python/jaraco-functools 3.0.1-r1 3.1.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r2 3.1.0: Additional facilities to supplement Python's stdlib logging module
@@ -8982,7 +8982,7 @@ dev-python/rcssmin 1.0.6: CSS minifier written in python.
 dev-python/rdflib 5.0.0: RDF library containing a triple store and parser/serializer
 dev-python/re-assert 1.1.0: Show where your regex match assertion failed
 dev-python/readme_renderer 28.0: a library for rendering "readme" descriptions for Warehouse
-dev-python/readthedocs-sphinx-ext 2.1.1: Code specific for Read the Docs and Sphinx
+dev-python/readthedocs-sphinx-ext 2.1.1 2.1.2: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 2.0.1 3.0.0 3.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.5.3: Python client for Redis key-value store
@@ -9104,7 +9104,7 @@ dev-python/sphinx-prompt 1.3.0: Sphinx directive to add unselectable prompt
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 2.0.0-r1: Celery Sphinx Theme and Utilities
-dev-python/sphinx_rtd_theme 0.2.4 0.4.3-r1: ReadTheDocs.org theme for Sphinx
+dev-python/sphinx_rtd_theme 0.2.4 0.4.3-r1 0.5.1: ReadTheDocs.org theme for Sphinx
 dev-python/sphinx_selective_exclude 1.0.3: Sphinx selective rendition extensions
 dev-python/sphinxcontrib-applehelp 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
@@ -10460,7 +10460,7 @@ dev-tcltk/tclxml 3.2-r2 3.2.7: Pure Tcl implementation of an XML parser
 dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
 dev-tcltk/thread 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
-dev-tcltk/tkcon 2.5-r1: Tk GUI console
+dev-tcltk/tkcon 2.5-r1 2.7.3: Tk GUI console
 dev-tcltk/tkdnd 2.9.2: Adds native drag & drop capabilities to tk toolkit
 dev-tcltk/tkimg 1.4.7 1.4.9: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2: Collection of utility modules for Tk, and a companion to Tcllib
@@ -15383,7 +15383,7 @@ net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.7: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.21 1.22.1 9999: ncurses directconnect client
-net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0: A fork of nicotine, a Soulseek client in Python
+net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.2.5-r2 4.3.0.1 4.3.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
@@ -16027,7 +16027,7 @@ sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes convert
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
-sci-geosciences/gpxsee 7.29 7.35 7.36 7.37 7.38: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 7.29 7.35 7.36 7.37 7.38 8.1: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.8.3 7.8.4: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
@@ -16935,7 +16935,7 @@ sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Rea
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.13-r1 0.10.14 9999: a framework for package management
-sys-apps/pmount 0.9.99_alpha-r5 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
+sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 3.1-r1 3.1-r2 9999: SELinux core utilities
