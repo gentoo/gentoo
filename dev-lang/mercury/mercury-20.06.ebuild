@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
