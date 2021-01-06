@@ -45,7 +45,8 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt"
+	dev-libs/libxslt
+	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	acct-group/kmem
 	acct-group/tty
