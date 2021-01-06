@@ -13,7 +13,7 @@ SRC_URI="mirror://openbsd/OpenNTPD/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="constraints libressl selinux"
 
 DEPEND="
