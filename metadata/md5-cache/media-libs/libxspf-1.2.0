@@ -4,11 +4,11 @@ DESCRIPTION=Playlist handling library
 EAPI=6
 HOMEPAGE=http://libspiff.sourceforge.net/
 IUSE=static-libs test
-KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=BSD LGPL-2.1
 RDEPEND=>=dev-libs/expat-2 >=dev-libs/uriparser-0.7.5
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/libspiff/libxspf-1.2.0.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a618098d3e43297c9c28d532606d5fc2
+_md5_=a3cc607b3693a76d17c721392a06c719
