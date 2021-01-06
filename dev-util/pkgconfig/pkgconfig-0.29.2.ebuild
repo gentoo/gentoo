@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,11 +50,15 @@ src_prepare() {
 	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		# fix standards conflicts
-		sed -i -e 's/\(_XOPEN_SOURCE\(_EXTENDED\)\?\|__EXTENSIONS__\)/  \1_DISABLED/' \
-			glib/configure || die
-		sed -i -e '/#define\s\+_POSIX_SOURCE/d' \
-			glib/glib/giounix.c || die
+		# fix standards conflict, since gcc-4.5 default is gnu90
+		if tc-is-gcc && [[ $(gcc-major-version) -gt 4 || \
+			( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -ge 5 ) ]] ;
+		then
+			sed -i \
+				-e 's/\<\(_XOPEN_SOURCE_EXTENDED\)\>/\1_DISABLED/' \
+				-e '/\<_XOPEN_SOURCE\>/s/2/600/' \
+				glib/configure || die
+		fi
 	fi
 }
 
