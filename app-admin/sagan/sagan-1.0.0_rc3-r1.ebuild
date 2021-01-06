@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit eutils autotools-utils user
+inherit eutils autotools-utils user flag-o-matic
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.quadrantsec.com/"
@@ -51,7 +51,9 @@ pkg_setup() {
 }
 
 src_configure() {
-	 local myeconfargs=(
+	append-flags -fcommon
+
+	local myeconfargs=(
 		$(use_enable smtp esmtp)
 		$(use_enable lognorm)
 		$(use_enable libdnet)
