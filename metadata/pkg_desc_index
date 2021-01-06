@@ -635,7 +635,7 @@ app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.10.1-r2: a simple but powerful password manager for the terminal
 app-admin/graylog 3.3.8 3.3.9 4.0.1: Free and open source log management
-app-admin/gtkdiskfree 2.0.3 2.0.4_p20200224: Graphical tool to show free disk space like df
+app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.5.2_pre20130823 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.20.0: A command-line interface for Hetzner Cloud
@@ -705,7 +705,7 @@ app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/r10k 3.7.0-r2: Puppet environment and module deployment
 app-admin/radmind 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
-app-admin/rasdaemon 0.6.1-r1 0.6.2-r1 0.6.2-r3 0.6.2-r4 0.6.5 0.6.6: Reliability, Availability and Serviceability logging tool
+app-admin/rasdaemon 0.6.6: Reliability, Availability and Serviceability logging tool
 app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
@@ -2601,7 +2601,7 @@ app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.4.1-r1 0.4.1-r2 0.4.2 0.4.3: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
-app-misc/vcontrold 0.98.8 0.98.10: Daemon for communication with Viessmann Vito heatings
+app-misc/vcontrold 0.98.10: Daemon for communication with Viessmann Vito heatings
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.10.1 0.11: Console file manager with vi(m)-like keybindings
 app-misc/vit 1.3: Perl/Curses front-end for Taskwarrior (app-misc/task)
@@ -10472,7 +10472,7 @@ dev-tcltk/tktreectrl 2.4.1: A flexible listbox widget for Tk
 dev-tcltk/tkzinc 3.3.6: A Tk widget library
 dev-tcltk/tls 1.7.16 1.7.22: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r3: A Tk widget for OpenGL rendering
-dev-tcltk/vtcl 1.6.0-r2: Visual Tcl is a high-quality application development environment
+dev-tcltk/vtcl 1.6.0-r2 1.6.1_alpha1: Visual Tcl is a high-quality application development environment
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
 dev-tex/biber 2.14: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
@@ -14630,7 +14630,7 @@ net-im/neochat 1.0: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
-net-im/profanity 0.6.0 0.7.1 0.9.5: A console based XMPP client inspired by Irssi
+net-im/profanity 0.9.5: A console based XMPP client inspired by Irssi
 net-im/prosody 0.11.7-r2 0.11.7-r100: Prosody is a modern XMPP communication server
 net-im/prosody-modules 0_pre20210105 9999: A collection of community-maintained modules for Prosody
 net-im/psi 1.5 9999: Qt XMPP client
@@ -14767,7 +14767,7 @@ net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptatio
 net-libs/libesmtp 1.0.6-r3 9999: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
-net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
+net-libs/libgadu 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL library

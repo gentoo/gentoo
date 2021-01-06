@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/tk:*
+DESCRIPTION=Visual Tcl is a high-quality application development environment
+EAPI=7
+HOMEPAGE=http://vtcl.sf.net
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/tk:*
+SLOT=0
+SRC_URI=mirror://sourceforge/vtcl/vtcl-1.6.1a1.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773
+_md5_=3ad7431c8530436e0cf44fbceec00f6d
