@@ -1,0 +1,79 @@
+Port to musl.
+
+Patch-by: ernsteiswuerfel
+Bug: https://bugs.gentoo.org/715862
+--- a/fsck_hfs.tproj/dfalib/CatalogCheck.c
++++ b/fsck_hfs.tproj/dfalib/CatalogCheck.c
+@@ -23,6 +23,7 @@
+ #include "Scavenger.h"
+ #include "DecompDataEnums.h"
+ #include "DecompData.h"
++#include <sys/types.h>
+ 
+ /*
+  * information collected when visiting catalog records
+--- a/fsck_hfs.tproj/dfalib/SRepair.c
++++ b/fsck_hfs.tproj/dfalib/SRepair.c
+@@ -35,6 +35,7 @@
+ #include "Scavenger.h"
+ #include <unistd.h>
+ #include <sys/stat.h>
++#include <sys/types.h>
+ #include <stdlib.h>
+ #include "../cache.h"
+ 
+--- a/fsck_hfs.tproj/dfalib/Scavenger.h
++++ b/fsck_hfs.tproj/dfalib/Scavenger.h
+@@ -44,7 +44,7 @@
+ #include <sys/kauth.h>
+ #include <sys/syslimits.h>
+ #endif
+-#include <sys/errno.h>
++#include <errno.h>
+ 
+ #ifdef __cplusplus
+ extern	"C" {
+--- a/fsck_hfs.tproj/fsck_hfs.h
++++ b/fsck_hfs.tproj/fsck_hfs.h
+@@ -24,6 +24,9 @@
+ 
+ #include "cache.h"
+ 
++#ifndef __P
++#define __P(args)       args
++#endif
+ 
+ const extern char	*cdevname;		/* name of device being checked */
+ extern char	*progname;
+--- a/newfs_hfs.tproj/makehfs.c
++++ b/newfs_hfs.tproj/makehfs.c
+@@ -35,7 +35,6 @@
+ #include <time.h>
+ #include "missing.h"
+ #endif
+-#include <sys/errno.h>
+ #include <sys/stat.h>
+ #if !LINUX
+ #include <sys/sysctl.h>
+@@ -69,6 +68,9 @@ extern Boolean _CFStringGetFileSystemRepresentation(CFStringRef string, UInt8 *b
+ #include "newfs_hfs.h"
+ #include "readme.h"
+ 
++#ifndef __P
++#define __P(args)       args
++#endif
+ 
+ #define HFS_BOOT_DATA	"/usr/share/hfsprogs/hfsbootdata"
+ 
+--- a/newfs_hfs.tproj/newfs_hfs.c
++++ b/newfs_hfs.tproj/newfs_hfs.c
+@@ -54,6 +54,9 @@
+ #else
+ #include <varargs.h>
+ #endif
++#ifndef __P
++#define __P(args)       args
++#endif
+ 
+ #define	NOVAL       (-1)
+ #define UMASK       (0755)
