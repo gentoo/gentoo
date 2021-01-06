@@ -4,10 +4,10 @@ DESCRIPTION=Programming language supporting functional, imperative & object-orie
 EAPI=7
 HOMEPAGE=https://ocaml.org/
 IUSE=emacs flambda latex +ocamlopt spacetime xemacs
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=LGPL-2.1
 PDEPEND=emacs? ( app-emacs/ocaml-mode ) xemacs? ( app-xemacs/ocaml )
 RDEPEND=sys-libs/binutils-libs:= spacetime? ( sys-libs/libunwind:= )
 SLOT=0/4.09.0
 SRC_URI=https://github.com/ocaml/ocaml/archive/4.09.0.tar.gz -> ocaml-4.09.0.tar.gz
-_md5_=b2adb3cbabe3591f628af4f22e5d87a7
+_md5_=a1bc09666fbba62ac57c1ce5fa903c4e
