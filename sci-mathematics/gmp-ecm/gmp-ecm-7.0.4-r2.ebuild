@@ -17,9 +17,6 @@ IUSE="+custom-tune openmp static-libs cpu_flags_x86_sse2"
 DEPEND="dev-libs/gmp:="
 RDEPEND="${DEPEND}"
 
-# Can't both be enabled.
-REQUIRED_USE="x86-macos? ( !custom-tune )"
-
 S="${WORKDIR}/ecm-${PV}"
 
 pkg_pretend() {
