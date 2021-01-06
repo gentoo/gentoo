@@ -5170,7 +5170,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.2.1 8.2.2 8.3.10 8.3.11 8.3.12: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.2.1 8.2.2 8.2.3 8.3.12 8.3.13: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10: Tool Command Language
@@ -13656,7 +13656,7 @@ media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r5 1.1-r1 1.1-r101: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 6.3 6.5 6.5-r1 9999: Digital Audio Workstation
+media-sound/ardour 6.5 6.5-r1 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
