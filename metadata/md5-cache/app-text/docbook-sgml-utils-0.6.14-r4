@@ -5,10 +5,10 @@ DESCRIPTION=Shell scripts to manage DocBook documents
 EAPI=7
 HOMEPAGE=https://sourceware.org/docbook-tools/
 IUSE=jadetex
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5 app-text/docbook-dsssl-stylesheets app-text/openjade dev-perl/SGMLSpm ~app-text/docbook-xml-simple-dtd-4.1.2.4 ~app-text/docbook-xml-simple-dtd-1.0 app-text/docbook-xml-dtd ~app-text/docbook-sgml-dtd-3.0 ~app-text/docbook-sgml-dtd-3.1 ~app-text/docbook-sgml-dtd-4.0 ~app-text/docbook-sgml-dtd-4.1 ~app-text/docbook-sgml-dtd-4.2 ~app-text/docbook-sgml-dtd-4.4 jadetex? ( dev-texlive/texlive-formatsextra ) userland_GNU? ( sys-apps/which ) || ( www-client/lynx www-client/links www-client/elinks virtual/w3m )
 SLOT=0
 SRC_URI=https://sourceware.org/pub/docbook-tools/new-trials/SOURCES/docbook-utils-0.6.14.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=545cbe290b4f2f0adbf3753e5ed55fb6
+_md5_=ba673c5fa0e9710f3c18a238b9d0599b

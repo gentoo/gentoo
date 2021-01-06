@@ -3,10 +3,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Distributed, collaborative spam detection and filtering network
 EAPI=6
 HOMEPAGE=http://razor.sourceforge.net/
-KEYWORDS=~alpha amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=Artistic
 RDEPEND=dev-perl/URI dev-perl/Net-DNS virtual/perl-Net-Ping virtual/perl-Time-HiRes dev-perl/Digest-Nilsimsa || ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://sourceforge/razor/razor-agents-2.85.tar.bz2
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=3b286fe58d95879a1d9f8cdf492b9f9d
+_md5_=726523e4713a464cea53dc4f7dd3d955
