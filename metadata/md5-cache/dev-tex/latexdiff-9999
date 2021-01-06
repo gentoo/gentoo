@@ -11,4 +11,4 @@ RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric 
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=c84369bdb6938430b9820a7088eeb985
+_md5_=e9ef1ccc2ce7bdf15e32bf3f1b099b68

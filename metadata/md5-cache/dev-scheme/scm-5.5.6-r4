@@ -5,9 +5,9 @@ DESCRIPTION=SCM is a Scheme implementation from the author of slib
 EAPI=7
 HOMEPAGE=http://swiss.csail.mit.edu/~jaffer/SCM
 IUSE=arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-macos
+KEYWORDS=~amd64 ~x86 ~amd64-linux
 LICENSE=LGPL-3
 RDEPEND=>=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/libtermcap-compat )
 SLOT=0
 SRC_URI=http://groups.csail.mit.edu/mac/ftpdir/scm/scm-5e6.zip
-_md5_=4010c7c4706a9553325a46802125d7c7
+_md5_=4a4fb5ad0853d26dfad30238dced1786
