@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Major modes for MATLAB .m and .tlc files
 EAPI=7
 HOMEPAGE=http://matlab-emacs.sourceforge.net/
-KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/matlab-3.3.6_pre20191010.tar.xz
 _eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
-_md5_=8145adc08b5010f6af3f386a7afb4a4e
+_md5_=225702323d3fcdd936ee74eb9bf45622
