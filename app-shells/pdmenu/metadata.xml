@@ -4,4 +4,8 @@
 	<maintainer type="person">
 		<email>monsieurp@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
+	</maintainer>
 </pkgmetadata>
