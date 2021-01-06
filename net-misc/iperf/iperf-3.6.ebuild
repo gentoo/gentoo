@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/_/}"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="libressl sctp static-libs"
 
 DEPEND="!libressl? ( dev-libs/openssl:0= )
