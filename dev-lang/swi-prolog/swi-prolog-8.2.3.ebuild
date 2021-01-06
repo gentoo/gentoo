@@ -9,7 +9,8 @@ PATCHSET_VER="0"
 
 DESCRIPTION="versatile implementation of the Prolog programming language"
 HOMEPAGE="https://www.swi-prolog.org/"
-SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz"
+SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
+	https://dev.gentoo.org/~keri/distfiles/swi-prolog/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
