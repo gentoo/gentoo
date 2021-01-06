@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
-	>=sys-auth/libfprint-1.90.1
+	sys-auth/libfprint:2
 	sys-auth/polkit
 	pam? (
 		systemd? ( sys-apps/systemd )
