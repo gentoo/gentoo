@@ -3009,7 +3009,7 @@ app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pytextile 3.0.3 4.0.1: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 9.0.2-r1 9.1.1-r2 10.0.1-r2 10.0.4: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 9.0.2-r1 9.1.1-r2 10.0.1-r2 10.0.4 10.1.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18 0.4.18_p1: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1 3.7.6-r1 3.7.8: Convert files between various character sets
