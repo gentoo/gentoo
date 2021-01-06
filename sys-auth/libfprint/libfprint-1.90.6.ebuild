@@ -26,8 +26,7 @@ RDEPEND="dev-libs/glib:2
 
 DEPEND="${RDEPEND}"
 
-BDEPEND="dev-util/gtk-doc
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	introspection? ( dev-libs/gobject-introspection )"
 
 PATCHES=( ${FILESDIR}/${PN}-0.8.2-fix-implicit-declaration.patch )
