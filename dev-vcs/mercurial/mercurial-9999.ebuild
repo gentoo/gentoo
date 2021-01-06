@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,7 +53,7 @@ python_prepare_all() {
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
 	sed -i -e '/    hgenv =/a\' -e '    hgenv.pop("PYTHONPATH", None)' setup.py || die
 	# Use absolute import for zstd
-	sed -i -e 's/from \.* import zstd/import zstd/' \
+	sed -i -e 's/from \.* import zstd/import zstandard as zstd/' \
 		mercurial/utils/compression.py \
 		mercurial/wireprotoframing.py || die
 
