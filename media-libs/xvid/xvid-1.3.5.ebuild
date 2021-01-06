@@ -24,7 +24,6 @@ DEPEND="sys-apps/grep
 	amd64-fbsd? ( ${NASM} )
 	x86? ( || ( ${YASM} ${NASM} ) )
 	x86-fbsd? ( ${NASM} )
-	x86-macos? ( ${NASM} )
 	x64-macos? ( ${NASM} )"
 RDEPEND=""
 
