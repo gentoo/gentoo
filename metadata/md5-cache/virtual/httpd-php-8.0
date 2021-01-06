@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual to provide PHP-enabled webservers
 EAPI=7
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 RDEPEND=|| ( dev-lang/php:8.0[fpm] dev-lang/php:8.0[apache2] dev-lang/php:8.0[cgi] )
 SLOT=8.0
-_md5_=83d690fd090b3ba522305c3879c9631e
+_md5_=51ca6b3dd841943c4f39e19f414b9d7e

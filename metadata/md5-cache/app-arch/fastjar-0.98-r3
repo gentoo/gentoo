@@ -3,9 +3,9 @@ DEPEND=sys-libs/zlib
 DESCRIPTION=A jar program written in C
 EAPI=7
 HOMEPAGE=https://savannah.nongnu.org/projects/fastjar
-KEYWORDS=amd64 ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/zlib !<=dev-java/kaffe-1.1.7-r5
 SLOT=0
 SRC_URI=mirror://nongnu/fastjar/fastjar-0.98.tar.gz
-_md5_=468e6ca5aef0500f924d6473743d3189
+_md5_=f8779a49f2b2913e115dff69b0b8c5cf
