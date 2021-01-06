@@ -1,3 +1,4 @@
+BDEPEND=sys-devel/libtool
 DEFINED_PHASES=compile install test
 DESCRIPTION=Fast public domain large integer arithmetic library
 EAPI=7
@@ -7,4 +8,4 @@ LICENSE=Unlicense
 SLOT=0/1
 SRC_URI=https://github.com/libtom/tomsfastmath/releases/download/v0.13.1/tfm-0.13.1.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=566051f3b4be645599f96d5315354fa0
+_md5_=00f5ebf153d360667250a4ee66c4e536
