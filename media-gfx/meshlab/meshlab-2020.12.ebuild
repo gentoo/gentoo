@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,18 +19,18 @@ IUSE="double-precision -minimal"
 DEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/muParser
-	dev-libs/gmp
+	dev-libs/gmp:=
 	>=dev-qt/qtcore-5.12:5
 	>=dev-qt/qtopengl-5.12:5
 	>=dev-qt/qtscript-5.12:5
 	>=dev-qt/qtxml-5.12:5
 	>=dev-qt/qtxmlpatterns-5.12:5
-	media-libs/glew:0
+	media-libs/glew:0=
 	=media-libs/lib3ds-1*
-	media-libs/openctm
-	media-libs/qhull
+	media-libs/openctm:=
+	media-libs/qhull:=
 	sci-libs/levmar
-	sci-libs/mpir"
+	sci-libs/mpir:="
 
 RDEPEND="${DEPEND}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,12 +24,12 @@ DEPEND="dev-cpp/eigen:3
 	dev-qt/qtscript:5
 	dev-qt/qtxmlpatterns:5
 	>=media-gfx/jhead-3.00-r2
-	media-libs/glew:0
-	media-libs/qhull
+	media-libs/glew:0=
+	media-libs/qhull:=
 	=media-libs/lib3ds-1*
-	media-libs/openctm
+	media-libs/openctm:=
 	sci-libs/levmar
-	sci-libs/mpir"
+	sci-libs/mpir:="
 
 RDEPEND="${DEPEND}"
 
