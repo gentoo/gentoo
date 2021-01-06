@@ -151,7 +151,7 @@ python_prepare_all() {
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
 	sed -i -e 's/__APPLE__/__NO_APPLE__/g' mercurial/cext/osutil.c || die
 	# Use absolute import for zstd
-	sed -i -e 's/from \.* import zstd/import zstd/' \
+	sed -i -e 's/from \.* import zstd/import zstandard as zstd/' \
 		mercurial/utils/compression.py \
 		mercurial/wireprotoframing.py || die
 
