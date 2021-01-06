@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="GNU Trove: High performance collections for Java"
 SRC_URI="mirror://sourceforge/trove4j/${P}.tar.gz"
 HOMEPAGE="http://trove4j.sourceforge.net"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
