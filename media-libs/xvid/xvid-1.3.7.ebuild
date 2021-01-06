@@ -22,7 +22,6 @@ YASM=">=dev-lang/yasm-1"
 BDEPEND="sys-apps/grep"
 DEPEND="amd64? ( || ( ${YASM} ${NASM} ) )
 	x86? ( || ( ${YASM} ${NASM} ) )
-	x86-macos? ( ${NASM} )
 	x64-macos? ( ${NASM} )"
 
 S="${WORKDIR}/${MY_PN}/build/generic"
