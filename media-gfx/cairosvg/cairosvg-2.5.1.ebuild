@@ -36,5 +36,11 @@ src_prepare() {
 		-e '/--flake8/d' \
 		-e '/--isort/d' \
 		-i setup.cfg || die
+
+	# this test compares output against old version; this makes little
+	# sense for us and requires both distfiles around
+	rm test_non_regression/test_non_regression.py || die
+	eapply "${FILESDIR}"/${P}-no-ref.patch
+
 	distutils-r1_src_prepare
 }
