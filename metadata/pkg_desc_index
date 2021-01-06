@@ -9798,7 +9798,7 @@ dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2 0.3.4: A library which provides base32 decoding and encoding
 dev-ruby/bcrypt-ruby 3.1.13 3.1.15 3.1.16: An easy way to keep your users' passwords secure
-dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
+dev-ruby/bcrypt_pbkdf 1.0.0 1.0.1 1.1.0: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
 dev-ruby/bindex 0.8.1: Bindings for your Ruby exceptions
@@ -9818,14 +9818,14 @@ dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4 2.2.0 2.2.3: An easy way to vendor gem d
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
-dev-ruby/capistrano 2.15.5-r2 3.12.1 3.13.0 3.14.0 3.14.1: A distributed application deployment system
+dev-ruby/capistrano 2.15.5-r2 3.13.0 3.14.0 3.14.1 3.15.0: A distributed application deployment system
 dev-ruby/capybara 3.31.0 3.32.2 3.33.0 3.34.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2 1.0.0: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
 dev-ruby/childprocess 3.0.0 4.0.0: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
-dev-ruby/chunky_png 1.3.11 1.3.12 1.3.13 1.3.14 1.3.15: Pure Ruby library that can read and write PNG images
+dev-ruby/chunky_png 1.3.14 1.3.15 1.4.0: Pure Ruby library that can read and write PNG images
 dev-ruby/cinch 2.3.4: IRC Bot Building Framework
 dev-ruby/classifier-reborn 2.2.0: Module to allow Bayesian and other types of classifications
 dev-ruby/climate_control 0.2.0: Easily manage your environment
@@ -9855,7 +9855,7 @@ dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait f
 dev-ruby/crack 0.4.3-r2 0.4.4: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
-dev-ruby/cri 2.15.10: Cri is a library for building easy-to-use commandline tools
+dev-ruby/cri 2.15.10 2.15.11: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.7.1: Sass-based Stylesheet Framework
 dev-ruby/curb 0.9.10 0.9.11: Ruby-language bindings for libcurl
 dev-ruby/curses 1.3.2 1.4.0: Ruby binding for curses, ncurses, and PDCurses
@@ -9868,7 +9868,7 @@ dev-ruby/date_validator 0.10.0: Simple, ORM agnostic, Ruby 1.9 compatible date v
 dev-ruby/dbf 4.1.2 4.1.3: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/ddmemoize 1.0.0: Adds support for memoizing functions
 dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
-dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
+dev-ruby/ddplugin 1.0.2 1.0.3: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
 dev-ruby/delayer 1.1.2: Delay the processing
@@ -10040,7 +10040,7 @@ dev-ruby/mini_magick 4.10.1 4.11.0: Manipulate images with minimal use of memory
 dev-ruby/mini_mime 1.0.1 1.0.2: A lightweight mime type lookup toy
 dev-ruby/minispec-metadata 3.3.1: Define and access metadata in MiniTest::Spec descriptions and specs
 dev-ruby/minitar 0.9: Provides POSIX tarchive management from Ruby programs
-dev-ruby/minitest 4.7.5-r2 5.11.3 5.12.2 5.13.0 5.14.0 5.14.1 5.14.2: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
+dev-ruby/minitest 4.7.5-r2 5.11.3 5.12.2 5.13.0 5.14.0 5.14.1 5.14.2 5.14.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-around 0.5.0: Alternative for setup/teardown dance
 dev-ruby/minitest-bonus-assertions 3.0: Bonus assertions for minitest
 dev-ruby/minitest-global_expectations 1.0.1: Support minitest expectation methods for all objects
@@ -10080,7 +10080,7 @@ dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcapru
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 2.5.2 2.5.3 2.5.4: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.10.10 1.11.0: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.10.10 1.11.0 1.11.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
