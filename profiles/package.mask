@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-06)
+# Post-consolekit cleanup, dead upstream since 2016.
+# https://s3hh.wordpress.com/2016/06/18/whither-cgmanager/
+# Masked for removal in 30 days.
+app-admin/cgmanager
+sys-libs/libnih
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-06)
+# Abandoned upstream, countless bugs. Removal in 30 days. Bug #659616.
+sys-power/pm-utils
+sys-power/pm-quirks
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-06)
 # (on behalf of QA)
 # The new docker version splits the docker(1) executable into a separate

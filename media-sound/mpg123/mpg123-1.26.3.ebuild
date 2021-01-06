@@ -65,9 +65,6 @@ multilib_src_configure() {
 	elif use x86 && gcc-specs-pie ; then
 		# Don't use any mmx, 3dnow, sse and 3dnowext #bug 164504
 		_cpu=generic_fpu
-	elif use x86-macos ; then
-		# ASM doesn't work quite as expected with the Darwin linker
-		_cpu=generic_fpu
 	else
 		use cpu_flags_x86_mmx && _cpu=mmx
 		use cpu_flags_x86_3dnow && _cpu=3dnow
