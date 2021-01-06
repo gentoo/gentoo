@@ -10,5 +10,5 @@ RDEPEND=net-misc/networkmanager sys-apps/ethtool sys-apps/net-tools sys-apps/sma
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://www.supermicro.com/wftp/utility/TAS/TAS_1.6.0_build.200601.zip
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=c7faaf4f0441cf9446aca98ee46f6a81

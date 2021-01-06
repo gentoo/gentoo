@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= sys-apps/attr sys-apps/keyutils:= sys-libs/libcap sys-libs/zlib
 SLOT=0
 SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.12.01.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=6cb418caa929271fe1bbfba4f9912573

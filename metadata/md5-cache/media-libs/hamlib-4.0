@@ -12,5 +12,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.github.com/hamlib/hamlib/releases/download/4.0/hamlib-4.0.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=c1ff65258a188915a2af72999362b98e

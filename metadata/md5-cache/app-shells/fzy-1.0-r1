@@ -8,5 +8,5 @@ LICENSE=MIT
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/jhawthorn/fzy/releases/download/1.0/fzy-1.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=08990bab88e65de187b15c9b4972ab7e

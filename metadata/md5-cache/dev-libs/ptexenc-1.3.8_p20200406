@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=iconv? ( virtual/libiconv ) dev-libs/kpathsea
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-20200406-source.tar.xz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=246f7a65259d9951b706693d25040afd

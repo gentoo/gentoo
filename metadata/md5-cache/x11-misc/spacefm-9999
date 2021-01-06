@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 PROPERTIES=live
 RDEPEND=dev-libs/glib:2 dev-util/desktop-file-utils virtual/udev virtual/freedesktop-icon-theme x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango x11-libs/libX11 x11-misc/shared-mime-info startup-notification? ( x11-libs/startup-notification ) video-thumbnails? ( media-video/ffmpegthumbnailer )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=830a12f77428e19e1d145c29f55f3f9b

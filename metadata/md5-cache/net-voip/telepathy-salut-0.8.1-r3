@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/dbus-glib-0.61 dev-libs/libxml2 >=dev-libs/glib-2.28:2 >=sys-
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://telepathy.freedesktop.org/releases/telepathy-salut/telepathy-salut-0.8.1.tar.gz https://src.fedoraproject.org/rpms/telepathy-salut/raw/master/f/telepathy-salut-0.8.1-python3.patch
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=65a5361fcafef9730a06e0c753ec5ff8

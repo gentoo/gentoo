@@ -9,5 +9,5 @@ LICENSE=IJG
 RDEPEND=!media-libs/libjpeg-turbo:0
 SLOT=0
 SRC_URI=http://www.ijg.org/files/jpegsrc.v9d.tar.gz mirror://debian/pool/main/libj/libjpeg8/libjpeg8_8d-1.debian.tar.gz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=dd0a3f4c4a12cf31a59ec0866500b65b

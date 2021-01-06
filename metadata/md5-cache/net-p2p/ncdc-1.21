@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-libs/glib:2 net-libs/gnutls:= sys-libs/ncurses:0=[unicode] sys-libs/zlib:= geoip? ( dev-libs/geoip dev-libs/libmaxminddb )
 SLOT=0
 SRC_URI=https://dev.yorhel.nl/download/ncdc-1.21.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=db748687e32d9e3097c46dfe9af8cd93

@@ -9,5 +9,5 @@ RDEPEND=app-arch/bzip2:0 app-arch/xz-utils app-arch/lz4 dev-libs/atk dev-libs/ex
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9719/wps-office_11.1.0.9719.XA_amd64.deb
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f591aa2769cd847915ffe10898ca52de
