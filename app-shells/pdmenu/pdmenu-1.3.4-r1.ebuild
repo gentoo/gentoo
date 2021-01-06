@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A simple console menu program"
 HOMEPAGE="http://joeyh.name/code/pdmenu/"
@@ -37,6 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-flags -fcommon
 	CC=$(tc-getCC) econf \
 		$(use_with gpm) \
 		$(use_enable nls)
