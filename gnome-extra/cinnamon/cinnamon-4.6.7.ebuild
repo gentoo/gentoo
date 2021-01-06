@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="gtk-doc +nls +networkmanager"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-accessibility/at-spi2-atk:2
