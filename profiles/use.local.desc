@@ -6777,7 +6777,6 @@ net-proxy/privoxy:fast-redirects - Support fast redirects
 net-proxy/privoxy:force - Allow single-page disable (force load)
 net-proxy/privoxy:fuzz - Exposes Privoxy internals to input from files or stdout. Intended for fuzzing testing
 net-proxy/privoxy:graceful-termination - Allow to shutdown Privoxy through the webinterface
-net-proxy/privoxy:ie-images - Enable a quick but not always reliable auto-detect whether requests from MS Internet Explorer are for an image or not
 net-proxy/privoxy:image-blocking - Allows the +handle-as-image action, to send "blocked" images instead of HTML
 net-proxy/privoxy:lfs - Support large files (>2GB) on 32-bit systems
 net-proxy/privoxy:png-images - Use PNG format instead of GIF for built-in images

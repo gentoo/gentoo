@@ -573,7 +573,7 @@ app-admin/ansible-cmdb 1.28 1.30: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.19.7: A realtime Apache log analyzer
-app-admin/apg 2.3.0b-r7 2.3.0b_p20150129: Another Password Generator
+app-admin/apg 2.3.0b_p20150129: Another Password Generator
 app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration files
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
@@ -15451,7 +15451,7 @@ net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable 
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
-net-proxy/privoxy 3.0.26 3.0.28-r1: A web proxy with advanced filtering capabilities for enhancing privacy
+net-proxy/privoxy 3.0.28-r1: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10 3.2.11: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.4-r1 3.3.5: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
