@@ -24,10 +24,6 @@ app-i18n/enca doc
 kde-apps/artikulate gstreamer
 kde-apps/plasma-telepathy-meta gstreamer
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-21)
-# LSAN is currently broken (due to new glibc?)
-<sys-libs/compiler-rt-sanitizers-12 lsan
-
 # Rick Farina <zerochaos@gentoo.org> (2020-12-21)
 # This use flag enables code which appears to be broken
 net-wireless/gr-osmosdr xtrx
