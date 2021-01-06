@@ -15451,7 +15451,7 @@ net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable 
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
-net-proxy/privoxy 3.0.28-r1: A web proxy with advanced filtering capabilities for enhancing privacy
+net-proxy/privoxy 3.0.28-r1 3.0.29: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10 3.2.11: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.4-r1 3.3.5: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
@@ -17519,7 +17519,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.85 5.4.86 5.10.3 5.10.4: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.249 4.9.249 4.14.213 4.19.164 5.4.86 5.9.15 5.10.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.249 4.9.249 4.14.213 4.19.165 5.4.87 5.9.15 5.10.5: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages

@@ -5,10 +5,10 @@ DESCRIPTION=A graphical user interface toolkit for X
 EAPI=7
 HOMEPAGE=http://xforms-toolkit.org/
 IUSE=doc opengl
-KEYWORDS=~amd64 arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+KEYWORDS=~amd64 arm ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=LGPL-2.1
 RDEPEND=virtual/jpeg:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXpm opengl? ( virtual/opengl )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~monsieurp/packages/xforms-1.2.4.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=dd9802b59c78cfa398b03a446abd975a
+_md5_=4e46331b7346c764c9daa44da1fe14ec
