@@ -3,9 +3,10 @@
 
 EAPI=7
 
+LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit cmake linux-info llvm python-r1
+inherit cmake linux-info llvm lua-single python-r1
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
@@ -15,8 +16,9 @@ SRC_URI="https://github.com/iovisor/bcc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+luajit test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="+lua test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/libbpf-0.3[static-libs(-)]
@@ -24,7 +26,7 @@ RDEPEND="
 	>=dev-libs/elfutils-0.166:=
 	<=sys-devel/clang-12:=
 	<=sys-devel/llvm-12:=[llvm_targets_BPF(+)]
-	luajit? ( dev-lang/luajit )
+	lua? ( ${LUA_DEPS} )
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
@@ -87,8 +89,11 @@ src_configure() {
 		-DCMAKE_USE_LIBBPF_PACKAGE=ON
 		-DKERNEL_INCLUDE_DIRS="${KERNEL_DIR}"
 		-DPYTHON_CMD="${bcc_python_impls%;}"
-		$(usex luajit '-DWITH_LUAJIT=1')
+
 	)
+	if use lua && use lua_single_target_luajit; then
+		mycmakeargs+=( -DWITH_LUAJIT=1 )
+	fi
 
 	cmake_src_configure
 }
