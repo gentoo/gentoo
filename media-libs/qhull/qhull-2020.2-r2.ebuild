@@ -37,3 +37,13 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_compile() {
+	cmake_src_compile
+	cmake_src_compile libqhull
+}
+
+src_install() {
+	cmake_src_install
+	dolib.so "${BUILD_DIR}"/libqhull.so*
+}
