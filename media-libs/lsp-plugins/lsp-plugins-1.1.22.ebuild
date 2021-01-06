@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="LGPL-3"
