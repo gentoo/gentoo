@@ -1734,7 +1734,7 @@ app-editors/le 1.16.1 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1-r1: Simple GTK2 text editor
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20200215: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20200215 20200723: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.2 0.4.90 0.5.0 0.5.1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.9.3 5.3-r1 5.4 9999: GNU GPL'd Pico clone with more functionality
@@ -5208,7 +5208,7 @@ dev-libs/aws-checksums 0.1.10: Cross-Platform HW accelerated CRC32c and CRC32 wi
 dev-libs/aws-sdk-cpp 1.8.105: AWS SDK for C++
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.57 1.68: Provides access to GPIO and other IO functions on the Broadcom BCM2835
-dev-libs/bemenu 0.4.1 0.5.0 9999: dmenu clone for wayland
+dev-libs/bemenu 0.5.0 9999: dmenu clone for wayland
 dev-libs/bglibs 2.04-r1 2.04-r2: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
@@ -13404,7 +13404,7 @@ media-plugins/gst-plugins-libmms 1.14.5 1.16.2: Microsoft Multi Media Server sou
 media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 1.14.5 1.16.2: PNG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-libvisual 1.14.5 1.16.2: Visualization elements for GStreamer
-media-plugins/gst-plugins-lv2 1.14.5 1.16.2-r1: Lv2 elements for Gstreamer
+media-plugins/gst-plugins-lv2 1.16.2-r1: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-meta 1.14.3 1.16.2: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 1.14.5 1.16.2: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 1.14.3 1.16.2: MPEG2 decoder plugin for GStreamer
@@ -14767,7 +14767,7 @@ net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptatio
 net-libs/libesmtp 1.0.6-r3 9999: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
-net-libs/libgadu 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
+net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL library
@@ -16075,7 +16075,7 @@ sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open St
 sci-geosciences/routino 3.1.1 3.2 3.3.2: Routing application based on openstreetmap data
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
-sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer
+sci-geosciences/viking 1.7-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.7.2 9999: Automatic differentiation system for C/C++

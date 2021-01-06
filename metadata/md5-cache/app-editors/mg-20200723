@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 ) virtual/pkgconfig
+DESCRIPTION=MicroGnuEmacs, a port from the BSDs
+EAPI=7
+HOMEPAGE=https://homepage.boetes.org/software/mg/
+IUSE=livecd
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=public-domain
+RDEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )
+SLOT=0
+SRC_URI=https://github.com/hboetes/mg/archive/20200723.tar.gz -> mg-20200723.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_md5_=85f695f18615013315515647d71ec97d
