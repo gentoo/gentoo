@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/cssutils[${PYTHON_USEDEP}]
-	dev-python/importlib_resources[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' python3_{7,8})
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
