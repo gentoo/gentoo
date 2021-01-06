@@ -10573,7 +10573,7 @@ dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert t
 dev-util/bats 0.4.0 0.4.0_p20170219 1.2.1: Bats-core: Bash Automated Testing System
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
 dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
-dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
+dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0-r1: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
 dev-util/bear 2.4.3 2.4.4: Build EAR generates a compilation database for clang tooling
