@@ -43,15 +43,6 @@ src_prepare() {
 	# not a pure /bin/sh script, so it fails on some hosts
 	hprefixify -w 1 autogen.sh
 	eautoreconf
-
-	if use prefix ; then
-		# upstream seems not interested in trying to understand (#584330)
-		# https://lists.gnupg.org/pipermail/gnupg-devel/2017-March/032671.html
-		# again reported as https://dev.gnupg.org/T4474
-		einfo "Forcing -no-undefined libtool flag ..."
-		sed -i -e 's/\$(no_undefined)/-no-undefined/' src/Makefile.in
-		eend $? || die
-	fi
 }
 
 multilib_src_configure() {
