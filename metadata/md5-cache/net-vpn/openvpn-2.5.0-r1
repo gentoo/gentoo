@@ -5,7 +5,7 @@ DESCRIPTION=Robust and highly flexible tunneling application compatible with man
 EAPI=7
 HOMEPAGE=https://openvpn.net/
 IUSE=down-root examples inotify iproute2 libressl lz4 +lzo mbedtls +openssl pam pkcs11 +plugins selinux systemd test userland_BSD kernel_linux
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) ) lz4? ( app-arch/lz4 ) lzo? ( >=dev-libs/lzo-1.07 ) mbedtls? ( net-libs/mbedtls:= ) openssl? ( !libressl? ( >=dev-libs/openssl-0.9.8:0= ) libressl? ( dev-libs/libressl:0= ) ) pam? ( sys-libs/pam ) pkcs11? ( >=dev-libs/pkcs11-helper-1.11 ) systemd? ( sys-apps/systemd ) acct-group/openvpn acct-user/openvpn selinux? ( sec-policy/selinux-openvpn )
 REQUIRED_USE=^^ ( openssl mbedtls ) pkcs11? ( !mbedtls ) !plugins? ( !pam !down-root ) inotify? ( plugins )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://build.openvpn.net/downloads/releases/openvpn-2.5.0.tar.gz -> openvpn-2.5.0-r1.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=a9082a5cec48ea5547882c386afbcf1d
+_md5_=ec13cd6117edd00d7a1e38528c5757ab

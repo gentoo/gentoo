@@ -2,9 +2,9 @@ DEFINED_PHASES=install prepare
 DESCRIPTION=IP Calculator prints broadcast/network/etc for an IP address and netmask
 EAPI=7
 HOMEPAGE=http://jodies.de/ipcalc
-KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2+
 RDEPEND=>=dev-lang/perl-5.6.0
 SLOT=0
 SRC_URI=mirror://debian/pool/main/i/ipcalc/ipcalc_0.42.orig.tar.gz mirror://debian/pool/main/i/ipcalc/ipcalc_0.42-2.debian.tar.xz
-_md5_=55027220d721fa2fba12d75431e71be1
+_md5_=878aac14b557fab061ae009f44eb11d6

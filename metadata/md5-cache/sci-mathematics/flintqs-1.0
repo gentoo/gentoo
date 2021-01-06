@@ -3,9 +3,9 @@ DEPEND=dev-libs/gmp:=
 DESCRIPTION=Multi-polynomial quadratic sieve for integer factorization
 EAPI=7
 HOMEPAGE=https://github.com/sagemath/FlintQS
-KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=GPL-2+
 RDEPEND=dev-libs/gmp:=
 SLOT=0
 SRC_URI=http://files.sagemath.org/spkg/upstream/flintqs/flintqs-1.0.tar.gz
-_md5_=2ff5ba61c26b23cba685bdce034b2973
+_md5_=103d099ae675f5d92cf3e59e60cec740

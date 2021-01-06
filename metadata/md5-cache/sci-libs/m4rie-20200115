@@ -4,9 +4,9 @@ DESCRIPTION=Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 EAPI=7
 HOMEPAGE=https://bitbucket.org/malb/m4rie/
 IUSE=debug static-libs
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-2+
 RDEPEND=>=sci-libs/m4ri-20140914
 SLOT=0
 SRC_URI=https://bitbucket.org/malb/m4rie/downloads/m4rie-20200115.tar.gz
-_md5_=5070fc772c217e10d32192822f8e3221
+_md5_=2d057f87c6b6fe0bd14d2f5f08fd2164
