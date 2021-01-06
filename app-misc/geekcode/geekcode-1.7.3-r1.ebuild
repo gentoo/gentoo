@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Geek code generator"
 HOMEPAGE="https://sourceforge.net/projects/geekcode"
@@ -18,6 +18,8 @@ src_prepare() {
 	sed -i Makefile -e 's| -o | ${LDFLAGS}&|g' || die "sed Makefile"
 
 	eapply_user
+
+	append-flags -fcommon
 }
 
 src_compile() {
