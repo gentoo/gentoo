@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ inherit multilib ruby-fakegem
 DESCRIPTION="FastCGI library for Ruby"
 HOMEPAGE="https://github.com/alphallc/ruby-fcgi-ng"
 
-KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 LICENSE="Ruby"
 
 DEPEND+=" dev-libs/fcgi"
