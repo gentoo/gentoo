@@ -5,11 +5,11 @@ DESCRIPTION=Cinnamon's settings daemon
 EAPI=7
 HOMEPAGE=https://projects.linuxmint.com/cinnamon/
 IUSE=+colord cups input_devices_wacom smartcard systemd test
-KEYWORDS=amd64 ~arm64 ~x86
+KEYWORDS=amd64 ~arm64 x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.38:2 dev-libs/libgudev:= >=gnome-base/libgnomekbd-3.6 >=gnome-extra/cinnamon-desktop-4.6:0= media-libs/fontconfig >=media-libs/lcms-2.2:2 media-libs/libcanberra:0=[gtk3] >=sys-apps/dbus-1.1.2 dev-libs/dbus-glib >=sys-auth/polkit-0.97 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.9.10:3 >=x11-libs/libnotify-0.7.3:0= x11-libs/libX11 x11-libs/libXext x11-libs/libXfixes x11-libs/libXi >=x11-libs/libxklavier-5.0 >=sys-power/upower-0.9.11 colord? ( >=x11-misc/colord-0.1.27:= ) cups? ( >=net-print/cups-1.4[dbus] app-admin/system-config-printer net-print/cups-pk-helper ) input_devices_wacom? ( >=dev-libs/libwacom-0.7 >=gnome-base/librsvg-2.36.2 x11-drivers/xf86-input-wacom x11-libs/libXtst ) smartcard? ( >=dev-libs/nss-3.11.2 ) systemd? ( sys-apps/systemd:0= ) !systemd? ( sys-auth/elogind:0= )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/linuxmint/cinnamon-settings-daemon/archive/4.6.4.tar.gz -> cinnamon-settings-daemon-4.6.4.tar.gz
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=10a2f35a8d30ffaea6eda521d26f2300
+_md5_=a097553e32bb72104156bef1bf66ff2d
