@@ -1,14 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} luajit )
-
 DOCS_BUILDER="doxygen"
 DOCS_DIR="${S}/doc"
 
-inherit docs lua-single meson xdg-utils
+LUA_COMPAT=( lua5-{1..3} luajit )
+
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit docs lua-single meson python-any-r1 xdg-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 HOMEPAGE="https://www.enlightenment.org"
@@ -127,13 +129,16 @@ RDEPEND="${LUA_DEPS}
 	xpresent? ( x11-libs/libXpresent )
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
 	# Deprecated, provided for backward-compatibility. Everything is moved to libefreet.so.
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libefreet_trash.so.1.25.1
 		/usr/$(get_libdir)/libefreet_mime.so.1.25.1"
+
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
@@ -155,6 +160,10 @@ src_prepare() {
 		-e "s/@srcdir@/./g" \
 		Doxyfile || die
 	popd || die
+
+	# Fix python shebangs for python-exec[-native-symlinks], #764086
+	local shebangs=($(grep -rl "#!/usr/bin/env python3" || die))
+	python_fix_shebang -q ${shebangs[*]}
 }
 
 src_configure() {
