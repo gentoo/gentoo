@@ -3,10 +3,10 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 EAPI=5
 HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=90
-KEYWORDS=amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=MIT
 RDEPEND=!app-vim/cvscommand || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/vcscommand-1.99.47.tar.bz2 https://dev.gentoo.org/~radhermit/vim/vcscommand-1.99.47.tar.bz2
 _eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=47333c9076bc3fe984169c738bcad2a2
+_md5_=680a1776d885829667f12c6f6e89a555

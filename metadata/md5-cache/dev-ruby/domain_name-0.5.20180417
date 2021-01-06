@@ -4,7 +4,7 @@ DESCRIPTION=Domain Name manipulation library for Ruby
 EAPI=5
 HOMEPAGE=https://github.com/knu/ruby-domain_name
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 test
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=BSD-2
 RDEPEND=ruby_targets_ruby25? ( >=dev-ruby/unf-0.0.5-r1:0[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/unf-0.0.5-r1:0[ruby_targets_ruby26(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://rubygems.org/gems/domain_name-0.5.20180417.gem
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=dec19594aa85bbea340f5a96dff8c53b
+_md5_=488eb33b7f29736408070cfb4541b3bb
