@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="hub software for Direct Connect"
 HOMEPAGE="http://opendchub.sf.net"
@@ -25,6 +25,7 @@ src_prepare() {
 }
 
 src_configure() {
+	add-flags -fcommon
 	use perl || myconf="--disable-perl --enable-switch_user"
 	econf ${myconf}
 }
