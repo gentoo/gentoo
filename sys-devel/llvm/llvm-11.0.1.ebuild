@@ -66,7 +66,7 @@ PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
 LLVM_COMPONENTS=( llvm )
-LLVM_MANPAGES=build
+LLVM_MANPAGES=pregenerated
 llvm.org_set_globals
 
 python_check_deps() {
