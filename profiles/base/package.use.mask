@@ -6,6 +6,21 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# Block test deps on packages until they can be updated
+# Old phpunit does not work with new PHP and last is vulnerable
+dev-php/PEAR-Crypt_GPG test
+dev-php/PEAR-Text_Wiki_Mediawiki test
+dev-php/PEAR-VersionControl_SVN test
+dev-php/PHP_CodeSniffer test
+dev-php/php-redmine-api test
+dev-php/phptal test
+dev-php/recaptcha test
+dev-php/symfony-config test
+dev-php/symfony-event-dispatcher test
+dev-php/symfony-filesystem test
+dev-php/symfony-finder test
+
 # Sam James <sam@gentoo.org> (2021-01-04)
 # Doc generation is broken, needs gtkdoc-mktmpl (gone from gtk-doc)
 # bug #723438
