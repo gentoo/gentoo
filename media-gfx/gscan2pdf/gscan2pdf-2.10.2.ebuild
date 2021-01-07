@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,13 +25,15 @@ RDEPEND="
 	dev-perl/glib-perl
 	dev-perl/GooCanvas2
 	dev-perl/Gtk3
+	dev-perl/Gtk3-ImageView
 	dev-perl/Gtk3-SimpleList
 	dev-perl/HTML-Parser
 	dev-perl/Image-Sane
 	dev-perl/List-MoreUtils
+	dev-perl/Locale-Codes
 	dev-perl/Locale-gettext
 	dev-perl/Log-Log4perl
-	dev-perl/PDF-API2
+	dev-perl/PDF-Builder
 	dev-perl/Proc-ProcessTable
 	dev-perl/Readonly
 	dev-perl/Set-IntSpan
@@ -50,14 +52,15 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
+		dev-perl/IPC-System-Simple
 		dev-perl/Sub-Override
 		media-libs/fontconfig
 
-		app-text/djvu[tiff]
+		app-text/djvu[jpeg,tiff]
 		app-text/poppler[utils]
-		app-text/tesseract[-opencl,osd(+),tiff]
+		app-text/tesseract[-opencl,osd(+),png,tiff]
 		app-text/unpaper
-		media-gfx/imagemagick[djvu,png,tiff,perl,postscript]
+		media-gfx/imagemagick[djvu,jpeg,png,tiff,perl,postscript]
 		media-gfx/sane-backends[sane_backends_test]
 		media-gfx/sane-frontends
 	)"
@@ -73,7 +76,7 @@ pkg_postinst() {
 	optfeature "encrypting PDFs" app-text/pdftk
 	optfeature "creating PostScript files from PDFs" app-text/poppler[utils]
 	optfeature "adding to an existing PDF" app-text/poppler[utils]
-	optfeature "Optical Character Recognition" app-text/tesseract[osd,tiff]
+	optfeature "Optical Character Recognition" app-text/tesseract[tiff]
 	optfeature "scan post-processing" app-text/unpaper
 	optfeature "automatic document feeder support" media-gfx/sane-frontends
 	optfeature "sending PDFs as email attachments" x11-misc/xdg-utils
@@ -88,7 +91,9 @@ src_test() {
 	echo "  $(best_version app-text/djvu)"
 	echo "  $(best_version app-text/poppler)"
 	echo "  $(best_version app-text/tesseract)"
+	echo "  $(best_version dev-perl/Gtk3-ImageView)"
 	echo "  $(best_version dev-perl/Image-Sane)"
+	echo "  $(best_version dev-perl/PDF-Builder)"
 	echo "  $(best_version media-gfx/imagemagick)"
 	echo "  $(best_version media-gfx/sane-backends)"
 	echo "  $(best_version media-libs/tiff)"
