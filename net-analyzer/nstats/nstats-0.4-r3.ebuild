@@ -10,7 +10,7 @@ HOMEPAGE="http://trash.net/~reeler/nstats/"
 LICENSE="Artistic"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	net-libs/libpcap
