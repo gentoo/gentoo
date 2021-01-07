@@ -65,7 +65,7 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
+	append-flags -fno-strict-aliasing -fcommon
 
 	local mycmakeargs=(
 		-DWITH_YAP_STATIC=$(usex static)
