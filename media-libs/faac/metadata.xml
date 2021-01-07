@@ -8,5 +8,7 @@
 	<upstream>
 		<remote-id type="github">knik0/faac</remote-id>
 		<remote-id type="sourceforge">faac</remote-id>
+		<remote-id type="cpe">cpe:/a:audiocoding:freeware_advanced_audio_coder</remote-id>
+		<remote-id type="cpe">cpe:/a:freeware_advanced_audio_coder_project:freeware_advanced_audio_coder</remote-id>
 	</upstream>
 </pkgmetadata>
