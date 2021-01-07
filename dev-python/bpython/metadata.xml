@@ -12,7 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">bpython</remote-id>
-		<remote-id type="bitbucket">bobf/bpython</remote-id>
 		<remote-id type="github">bpython/bpython</remote-id>
 	</upstream>
 </pkgmetadata>
