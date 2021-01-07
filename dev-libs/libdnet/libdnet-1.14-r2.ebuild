@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 AT_M4DIR="config"
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
@@ -10,27 +11,26 @@ inherit autotools distutils-r1
 DESCRIPTION="simplified, portable interface to several low-level networking routines"
 HOMEPAGE="https://github.com/ofalk/libdnet"
 SRC_URI="https://github.com/ofalk/${PN}/archive/${P}.tar.gz"
-LICENSE="LGPL-2"
+S="${WORKDIR}/${PN}-${P}"
 
+LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="
-	python? ( ${PYTHON_DEPS} )
-"
-RDEPEND="
-	${DEPEND}
-"
+DEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	python? (
 		dev-python/cython[${PYTHON_USEDEP}]
 	)
 "
+
 RESTRICT="test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
 DOCS=( README.md THANKS )
-S="${WORKDIR}/${PN}-${P}"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-1.14-ndisc.patch"
 	"${FILESDIR}/${PN}-1.14-strlcpy.patch"
@@ -53,29 +53,33 @@ src_prepare() {
 	eautoreconf
 
 	if use python; then
-		cd python
+		cd python || die
 		distutils-r1_src_prepare
 	fi
 }
 
 src_configure() {
-	econf --disable-static $(use_with python)
+	econf \
+		--disable-static \
+		$(use_with python)
 }
 
 src_compile() {
 	default
 	if use python; then
-		cd python
+		cd python || die
 		distutils-r1_src_compile
 	fi
 }
 
 src_install() {
 	default
+
 	if use python; then
-		cd python
+		cd python || die
 		unset DOCS
 		distutils-r1_src_install
 	fi
-	find "${D}" -name '*.la' -delete || die
+
+	find "${ED}" -name '*.la' -delete || die
 }
