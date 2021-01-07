@@ -7,6 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">sebastianbergmann/</remote-id>
+		<remote-id type="github">sebastianbergmann/global-state</remote-id>
 	</upstream>
 </pkgmetadata>
