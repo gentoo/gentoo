@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 IUSE="glib +libev libevent tevent +threads static-libs"
+REQUIRED_USE="|| ( glib libev libevent tevent ) "
 
 DEPEND="glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
 	libev? ( >=dev-libs/libev-4.15[${MULTILIB_USEDEP}] )
@@ -21,9 +22,12 @@ DEPEND="glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
 
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="|| ( glib libev libevent tevent ) "
-
 DOCS=( AUTHORS ChangeLog NEWS INSTALL README )
+
+PATCHES=(
+	# Runtime breakage caused by bashisms, bug #762823
+	"${FILESDIR}/${PN}-0.3.1-non-bash.patch"
+)
 
 src_prepare() {
 	default
