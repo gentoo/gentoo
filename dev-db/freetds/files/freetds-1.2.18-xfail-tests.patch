@@ -1,0 +1,22 @@
+From 47b73a60b488dff539e493b29e774c1e3cbb3db4 Mon Sep 17 00:00:00 2001
+From: John Helmert III <jchelmert3@posteo.net>
+Date: Wed, 6 Jan 2021 21:03:28 -0600
+Subject: [PATCH] Xfail tests which fail due to network-sandbox
+
+---
+ src/tds/unittests/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/tds/unittests/Makefile.am b/src/tds/unittests/Makefile.am
+index 66f48f5b..f3d25ea2 100644
+--- a/src/tds/unittests/Makefile.am
++++ b/src/tds/unittests/Makefile.am
+@@ -78,3 +78,5 @@ LDADD		=	libcommon.a ../libtds.la ../../replacements/libreplacements.la $(LTLIBI
+ CLEANFILES	=	tdsdump.out
+ EXTRA_DIST	=	CMakeLists.txt
+ 
++XFAIL_TESTS = t0001 t0002 t0003 t0004 t0005 t0006 dynamic1 dataread \
++	      utf8_1 utf8_2 utf8_3 toodynamic nulls corrupt
+-- 
+2.30.0
+
