@@ -9,7 +9,7 @@ SRC_URI="http://pauillac.inria.fr/~ddr/ledit/distrib/src/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="+ocamlopt"
 
 RESTRICT="installsources !ocamlopt? ( strip )"
