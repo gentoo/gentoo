@@ -1,0 +1,15 @@
+BDEPEND=app-arch/unzip app-text/dos2unix dev-embedded/xa dev-lang/perl sys-apps/texinfo sys-devel/flex sys-devel/gettext virtual/pkgconfig virtual/yacc doc? ( virtual/texi2dvi ) gtk? ( x11-misc/xdg-utils )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=sys-libs/readline:0= virtual/libintl alsa? ( media-libs/alsa-lib ) ethernet? ( >=net-libs/libpcap-0.9.8 >=net-libs/libnet-1.1.2.1:1.1 ) ffmpeg? ( media-video/ffmpeg:= ) flac? ( media-libs/flac ) gif? ( media-libs/giflib:= ) gtk? ( dev-libs/glib:2 media-libs/fontconfig:1.0 media-libs/glew:0= x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango virtual/opengl ) jpeg? ( virtual/jpeg ) lame? ( media-sound/lame ) mpg123? ( media-sound/mpg123 ) ogg? ( media-libs/libogg media-libs/libvorbis ) parport? ( sys-libs/libieee1284 ) pci? ( sys-apps/pciutils ) png? ( media-libs/libpng:0= ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl2[video] ) zlib? ( sys-libs/zlib ) x11-base/xorg-proto dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=The Versatile Commodore Emulator
+EAPI=7
+HOMEPAGE=https://vice-emu.sourceforge.io/
+IUSE=alsa debug doc ethernet ffmpeg flac gif +gtk headless ipv6 jpeg lame mpg123 ogg oss parport pci png portaudio pulseaudio sdl zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=sys-libs/readline:0= virtual/libintl alsa? ( media-libs/alsa-lib ) ethernet? ( >=net-libs/libpcap-0.9.8 >=net-libs/libnet-1.1.2.1:1.1 ) ffmpeg? ( media-video/ffmpeg:= ) flac? ( media-libs/flac ) gif? ( media-libs/giflib:= ) gtk? ( dev-libs/glib:2 media-libs/fontconfig:1.0 media-libs/glew:0= x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango virtual/opengl ) jpeg? ( virtual/jpeg ) lame? ( media-sound/lame ) mpg123? ( media-sound/mpg123 ) ogg? ( media-libs/libogg media-libs/libvorbis ) parport? ( sys-libs/libieee1284 ) pci? ( sys-apps/pciutils ) png? ( media-libs/libpng:0= ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl2[video] ) zlib? ( sys-libs/zlib )
+REQUIRED_USE=|| ( gtk headless sdl ) gtk? ( zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/vice-emu/releases/vice-3.5.tar.gz
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=05eaa17cb44ce3777c8d5d1dd4727c6b
