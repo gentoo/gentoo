@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit autotools elisp-common flag-o-matic gnome2-utils
+inherit autotools elisp-common flag-o-matic gnome2-utils qmake-utils
 
 DESCRIPTION="A multilingual input method framework"
 HOMEPAGE="https://github.com/uim/uim"
@@ -19,26 +19,17 @@ REQUIRED_USE="gtk? ( X )
 	qt5? ( X )
 	xft? ( X )"
 
-CDEPEND="!dev-scheme/sigscheme
-	X? (
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXft
-		x11-libs/libXrender
-		x11-libs/libXt
-	)
+COMMON_DEPEND="
 	anthy? ( app-i18n/anthy )
 	canna? ( app-i18n/canna )
 	curl? ( net-misc/curl )
 	eb? ( dev-libs/eb )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	expat? ( dev-libs/expat )
-	libffi? ( dev-libs/libffi:= )
 	gtk? ( x11-libs/gtk+:3 )
 	gtk2? ( x11-libs/gtk+:2 )
 	libedit? ( dev-libs/libedit )
+	libffi? ( dev-libs/libffi:= )
 	libnotify? ( x11-libs/libnotify )
 	m17n-lib? ( dev-libs/m17n-lib )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -49,13 +40,22 @@ CDEPEND="!dev-scheme/sigscheme
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
-	)"
-DEPEND="${CDEPEND}
-	dev-util/intltool
-	sys-devel/gettext
-	virtual/pkgconfig
-	X? ( x11-base/xorg-proto )"
-RDEPEND="${CDEPEND}
+	)
+	X? (
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXft
+		x11-libs/libXrender
+		x11-libs/libXt
+	)
+"
+DEPEND="${COMMON_DEPEND}
+	X? ( x11-base/xorg-proto )
+"
+RDEPEND="${COMMON_DEPEND}
+	!dev-scheme/sigscheme
 	X? (
 		media-fonts/font-sony-misc
 		l10n_ja? (
@@ -77,7 +77,13 @@ RDEPEND="${CDEPEND}
 			)
 		)
 		l10n_zh-TW? ( media-fonts/intlfonts )
-	)"
+	)
+"
+BDEPEND="
+	dev-util/intltool
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
@@ -86,6 +92,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-zh-TW.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 )
+
 DOCS=( AUTHORS NEWS README RELNOTE doc )
 
 AT_NO_RECURSIVE="yes"
@@ -121,6 +128,7 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with qt5)
 		$(use_with qt5 qt5-immodule)
+		_QMAKE5=$(qt5_get_bindir)/qmake
 		$(use_with skk)
 		$(use_with sqlite sqlite3)
 		$(use_enable ssl openssl)
@@ -214,7 +222,7 @@ pkg_postinst() {
 
 	if use emacs; then
 		elisp-site-regen
-		echo
+		elog
 		elog "uim is autoloaded with Emacs with a minimal set of features:"
 		elog "There is no keybinding defined to call it directly, so please"
 		elog "create one yourself and choose an input method."
