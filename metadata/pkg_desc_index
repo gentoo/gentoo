@@ -9180,7 +9180,7 @@ dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematic
 dev-python/theano-pymc 1.0.13-r1 1.0.14 1.0.15: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
-dev-python/thrift 0.11.0 0.13.0: Python implementation of Thrift
+dev-python/thrift 0.13.0: Python implementation of Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
 dev-python/tikzplotlib 0.9.6: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
