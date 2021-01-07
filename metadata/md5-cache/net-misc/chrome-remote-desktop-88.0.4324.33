@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prepare setup unpack
+DEPEND=kernel_AIX? ( app-arch/deb2targz ) kernel_AIX? ( app-arch/deb2targz )
+DESCRIPTION=access remote computers via Chrome!
+EAPI=7
+HOMEPAGE=https://support.google.com/chrome/answer/1649523 https://chrome.google.com/remotedesktop
+IUSE=xrandr python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
+KEYWORDS=-* ~amd64
+LICENSE=google-chrome
+RDEPEND=app-admin/sudo python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) >=dev-libs/expat-2 dev-libs/glib:2 dev-libs/nspr dev-libs/nss python_single_target_python3_7? ( dev-python/psutil[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/psutil[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/psutil[python_targets_python3_9(-)] ) gnome-base/gconf:2 media-libs/fontconfig media-libs/freetype:2 sys-apps/dbus sys-devel/gcc sys-libs/glibc sys-libs/pam x11-apps/xdpyinfo x11-apps/setxkbmap x11-libs/cairo x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxcb x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXtst x11-libs/pango xrandr? ( x11-apps/xrandr ) x11-base/xorg-server[xvfb]
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=amd64? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_88.0.4324.33_amd64.deb )
+_eclasses_=l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	unpacker	45b49db67094fdafbb6a16a2299e894b
+_md5_=4913619c4e59805bb224b63f5689b9f2
