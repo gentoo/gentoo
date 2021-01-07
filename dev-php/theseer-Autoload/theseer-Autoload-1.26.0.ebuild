@@ -11,7 +11,7 @@ SRC_URI="https://github.com/theseer/${MY_PN}/archive/1.26.0.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

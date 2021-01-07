@@ -16,6 +16,7 @@
     Static PSR-4, PSR-0, and classmap autoloader.
     Includes loader for required and optional dependencies.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">php-fedora/autoloader</remote-id>
   </upstream>
