@@ -21,16 +21,16 @@ SLOT="0"
 IUSE="+arp +hostname ipv6 nis nls plipconfig selinux slattach static"
 REQUIRED_USE="nis? ( hostname )"
 
-RDEPEND="selinux? ( sys-libs/libselinux )"
-DEPEND="${RDEPEND}
+DEPEND="selinux? ( sys-libs/libselinux )"
+RDEPEND="${DEPEND}
+	hostname? ( !sys-apps/coreutils[hostname] )"
+BDEPEND="
 	selinux? ( virtual/pkgconfig )
-	app-arch/xz-utils"
+	app-arch/xz-utils
+"
 if [[ ${PV} == "9999" ]]; then
-	DEPEND+=" nls? ( sys-devel/gettext )"
+	BDEPEND+=" nls? ( sys-devel/gettext )"
 fi
-RDEPEND+="
-	hostname? ( !sys-apps/coreutils[hostname] )
-	!<sys-apps/openrc-0.9.9.3"
 
 set_opt() {
 	local opt=$1 ans

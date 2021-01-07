@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,8 +29,7 @@ if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" nls? ( sys-devel/gettext )"
 fi
 RDEPEND+="
-	hostname? ( !sys-apps/coreutils[hostname] )
-	!<sys-apps/openrc-0.9.9.3"
+	hostname? ( !sys-apps/coreutils[hostname] )"
 
 maint_pkg_create() {
 	cd /usr/local/src/net-tools
