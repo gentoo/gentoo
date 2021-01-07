@@ -2584,7 +2584,7 @@ app-misc/tmux 3.1c 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.4 1.5.5 1.5.6 1.6.2: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.4 1.5.5 1.5.6 1.6.2 1.6.4: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
@@ -15183,7 +15183,7 @@ net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p15: Network Time Protocol suite/programs
 net-misc/ntpsec 1.1.9 9999: The NTP reference implementation, refactored
-net-misc/nx 3.5.99.16 3.5.99.22 3.5.99.23 3.5.99.24 3.5.99.25: NX compression technology core libraries
+net-misc/nx 3.5.99.25: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.31: Open Source mobile telephony (GSM/UMTS) daemon
@@ -17985,7 +17985,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web browser with ssl support
-www-client/microsoft-edge-dev 88.0.705.15 89.0.723.0 89.0.731.0: The web browser from Microsoft
+www-client/microsoft-edge-dev 89.0.731.0 89.0.752.1: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
