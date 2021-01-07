@@ -14756,7 +14756,7 @@ net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchr
 net-libs/libbitcoinconsensus 0.16.3 0.19.1 0.20.0 0.20.1: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.3 0.5.3 0.6.0: C implementation of Bitcoin's getblocktemplate interface
 net-libs/libbloom 1.5-r2 1.6: A simple and small bloom filter implementation in plain C.
-net-libs/libbtbb 2018.08.1 2018.12.1 9999: A library to decode Bluetooth baseband packets
+net-libs/libbtbb 2018.08.1 2018.12.1 2020.12.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcork 0.15.0-r1: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
@@ -15598,7 +15598,7 @@ net-wireless/srslte 20.10.1-r1 9999: Open source SDR LTE software suite from Sof
 net-wireless/suscan 0.1.0-r1: a realtime DSP processing library
 net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's custom widgets
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
-net-wireless/ubertooth 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
+net-wireless/ubertooth 2018.12.1 2020.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 6.0.43 6.1.26: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
