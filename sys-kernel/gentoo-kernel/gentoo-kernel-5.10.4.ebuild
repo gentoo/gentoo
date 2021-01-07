@@ -47,6 +47,8 @@ RDEPEND="
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
 	debug? ( dev-util/dwarves )"
+PDEPEND="
+	~virtual/dist-kernel-${PV}"
 
 src_prepare() {
 	local PATCHES=(
