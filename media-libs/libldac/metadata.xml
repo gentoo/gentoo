@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>zx2c4@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">EHfive/ldacBT</remote-id>
+	</upstream>
 </pkgmetadata>
