@@ -5692,7 +5692,7 @@ dev-libs/vala-common 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Build infrastructure 
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/vc-intrinsics 0_p20200904: LLVM intrinsics representing SIMD semantics of a program targeting GPU
 dev-libs/voikko-fi 2.3 2.4: Finnish dictionary for libvoikko based spell checkers (vvfst format)
-dev-libs/volume_key 0.3.11 0.3.12-r1 0.3.12-r2: Library for manipulating and storing storage volume encryption keys
+dev-libs/volume_key 0.3.12-r1 0.3.12-r2 0.3.12-r3: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.18.0 1.18.91 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
@@ -8242,7 +8242,7 @@ dev-python/genty 1.3.2-r1: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
 dev-python/gevent 20.9.0 20.12.0 20.12.1: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
-dev-python/geventhttpclient 1.4.4-r1 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
+dev-python/geventhttpclient 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.5: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
@@ -17702,6 +17702,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
+virtual/dist-kernel 5.4.86 5.4.87 5.10.4 5.10.5: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
