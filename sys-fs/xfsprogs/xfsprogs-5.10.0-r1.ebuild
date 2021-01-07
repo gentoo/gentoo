@@ -14,14 +14,13 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="icu libedit nls"
 
-LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
-	icu? ( dev-libs/icu:=[static-libs(+)] )
-	libedit? ( dev-libs/libedit[static-libs(+)] )"
-RDEPEND="${LIB_DEPEND//\[static-libs(+)]}
+RDEPEND=">=sys-apps/util-linux-2.17.2
+	dev-libs/inih
+	icu? ( dev-libs/icu:= )
+	libedit? ( dev-libs/libedit )
 	!<sys-fs/xfsdump-3"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-libs/inih
 	nls? ( sys-devel/gettext )
 "
 
