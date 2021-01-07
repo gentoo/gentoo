@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -34,15 +34,19 @@ src_install() {
 	einfo "Setting up container for configuration"
 	dodir /etc/${PN}
 
-	einfo "Fixing symlinks"
-	local link target
-	find "${D}${MY_HTDOCSDIR}" -type l | while read link ; do
-		target=$(readlink "${link}")
-		target=${target/..\/Core/Core}
-		rm "${link}" && ln -s "${target}" "${link}"
+	# setup config in /etc
+	# we are not allowed to use straight-forward absolute symlink :(
+	local root path htdocsdir=${MY_HTDOCSDIR%/}
+	while [[ -n ${htdocsdir} ]] ; do
+		root+="../"
+		htdocsdir=${htdocsdir%/*}
+		# trim duplicate slashes
+		while [[ ${htdocsdir} == */ ]] ; do
+			htdocsdir=${htdocsdir%/}
+		done
 	done
-	dosym /etc/${PN} "${MY_HTDOCSDIR}"/Specific
-	dosym /etc/${PN} "${MY_HTDOCSDIR}"/config
+	dosym ${root%/}/etc/${PN} "${MY_HTDOCSDIR}"/Specific
+	dosym ${root%/}/etc/${PN} "${MY_HTDOCSDIR}"/config
 	dosym . "${MY_HTDOCSDIR}"/html
 
 	webapp_postinst_txt en "${FILESDIR}/postinstall-v0.7-en.txt"
