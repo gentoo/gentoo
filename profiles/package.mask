@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# PHP 7.2 is security vulnerable and end-of-life
+# Please upgrade to a newer slot
+dev-lang/php:7.2
+virtual/httpd-php:7.2
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-01-06)
 # Post-consolekit cleanup, dead upstream since 2016.
 # https://s3hh.wordpress.com/2016/06/18/whither-cgmanager/
