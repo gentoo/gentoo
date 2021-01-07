@@ -10,7 +10,7 @@ SRC_URI="http://tnemeth.free.fr/projets/programmes/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
