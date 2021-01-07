@@ -96,7 +96,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 IUSE="libressl"
 
 RDEPEND="

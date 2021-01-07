@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.14.1-cmake-macro-backward-compat.patch # bug 703306
 	"${FILESDIR}"/${PN}-5.15.1-timezone-{1,2}.patch # bug 737914
 	"${FILESDIR}"/${P}-fix-UB-in-QDateTime.patch # QTBUG-88656
+	"${FILESDIR}"/${P}-fix-alloc-mem-of-QByteArray.patch # QTBUG-87010
 )
 
 pkg_pretend() {
