@@ -5151,7 +5151,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 8.0.0: The PHP language runtime engine
+dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 7.4.14 8.0.0: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r5 3.6.12-r1 3.7.9-r1 3.8.6-r1 3.8.7 3.9.0-r1 3.9.1 3.10.0_alpha3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3: Python script wrapper
@@ -9329,7 +9329,7 @@ dev-qt/qtbluetooth 5.15.1 5.15.2: Bluetooth support library for the Qt5 framewor
 dev-qt/qtcharts 5.15.1 5.15.2: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.15.1 5.15.2: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.15.1-r1 5.15.2-r1: Cross-platform application development framework
+dev-qt/qtcore 5.15.1-r1 5.15.2-r2: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.15.1 5.15.2: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.15.1 5.15.2: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.15.1 5.15.2: The QML and Quick modules for the Qt5 framework
@@ -9365,7 +9365,7 @@ dev-qt/qtsvg 5.15.1 5.15.2: SVG rendering library for the Qt5 framework
 dev-qt/qttest 5.15.1 5.15.2: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 5.15.1 5.15.2: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.15.1 5.15.2: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.15.1 5.15.2: Wayland platform plugin for Qt
+dev-qt/qtwayland 5.15.1 5.15.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.15.1 5.15.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.15.1 5.15.2: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
