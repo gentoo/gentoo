@@ -6,7 +6,7 @@ EAPI=7
 README_GENTOO_SUFFIX="-r2"
 CRATES="dunce-0.1.1"
 
-inherit autotools bash-completion-r1 cargo readme.gentoo-r1
+inherit autotools bash-completion-r1 cargo readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
 HOMEPAGE="https://github.com/AdoptOpenJDK/IcedTea-Web"
@@ -46,6 +46,7 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset
 	# some functionality (tagsoup rhino) is disabled, because dev-java is
 	# unmaintained and a lot of things simply does not build anymore.
 	# native plugins also disabled, modern browsers no longer support it.
