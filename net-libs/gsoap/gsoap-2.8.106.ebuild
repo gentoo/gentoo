@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/gsoap2/gsoap_${PV}.zip"
 
 LICENSE="|| ( gSOAP GPL-2+-with-openssl-exception ) GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc debug examples ipv6 libressl gnutls +ssl"
 
 RDEPEND="
