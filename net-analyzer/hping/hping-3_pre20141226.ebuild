@@ -11,7 +11,7 @@ SRC_URI="https://github.com/antirez/${PN}/archive/${HPING_COMMIT}.zip -> ${P}.zi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc sparc x86"
 IUSE="tcl"
 
 S=${WORKDIR}/${PN}-${HPING_COMMIT}
