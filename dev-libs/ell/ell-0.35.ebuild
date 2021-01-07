@@ -14,7 +14,7 @@ else
 	#remove on next bump
 	inherit autotools
 	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/libs/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
 fi
 LICENSE="LGPL-2.1"
 SLOT="0"
