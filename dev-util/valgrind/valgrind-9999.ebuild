@@ -76,7 +76,6 @@ src_configure() {
 	fi
 
 	# Force bitness on darwin, bug #306467
-	use x86-macos && myconf+=("--enable-only32bit")
 	use x64-macos && myconf+=("--enable-only64bit")
 
 	# Don't use mpicc unless the user asked for it (bug #258832)
