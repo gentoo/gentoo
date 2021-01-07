@@ -49,7 +49,6 @@ java_prepare() {
 		# don't mess with deployment target
 		# set install_name
 		use x64-macos && uarch=x86_64
-		use x86-macos && uarch=i386
 		use ppc-macos && uarch=ppc
 		sed -i \
 			-e "/ARCHES +=/s/=.*$/= ${uarch}/" \

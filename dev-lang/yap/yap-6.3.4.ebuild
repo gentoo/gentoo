@@ -18,7 +18,7 @@ SRC_URI="https://github.com/vscosta/yap-6.3/archive/YAP-${PV}.tar.gz
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc postgres python raptor readline sqlite ssl static threads xml"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
