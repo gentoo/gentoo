@@ -6,16 +6,15 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{8..9} )
 
-EGIT_REPO_URI="https://github.com/mgorny/gentoopm.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="https://github.com/mgorny/gentoopm/"
-SRC_URI=""
+SRC_URI="https://github.com/mgorny/gentoopm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE=""
 
 RDEPEND="
