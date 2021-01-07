@@ -30,7 +30,6 @@ ppc64-linux	testing
 x86-linux	testing
 arm64-macos	testing
 ppc-macos	testing
-x86-macos	testing
 x64-macos	testing
 sparc-solaris	testing
 sparc64-solaris	testing
