@@ -1,5 +1,0 @@
-In order to setup baikal:
-- create /etc/${PN}/ENABLE_INSTALL owner apache:apache
-- point your browser at the instal's URL and follow the setup
-To upgrade baikal, you have to follow the setup instructions
-If you're upgrading from 0.2.7, see http://sabre.io/baikal/upgrade/
