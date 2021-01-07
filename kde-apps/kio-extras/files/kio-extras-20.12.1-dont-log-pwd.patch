@@ -1,0 +1,26 @@
+From 6c099045f6f67069ad7b5f4deb6873cf5f34a4f4 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 7 Jan 2021 14:45:34 +0100
+Subject: [PATCH] don't log passwords
+
+obviously not useful but dangerous
+---
+ smb/smbauthenticator.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smb/smbauthenticator.cpp b/smb/smbauthenticator.cpp
+index 4386e823..d4bf7032 100644
+--- a/smb/smbauthenticator.cpp
++++ b/smb/smbauthenticator.cpp
+@@ -94,7 +94,7 @@ void SMBAuthenticator::auth(const char *server, const char *share, char *workgro
+     //   https://bugzilla.samba.org/show_bug.cgi?id=14326
+ 
+     if (m_frontend.checkCachedAuthentication(info)) {
+-        qCDebug(KIO_SMB_LOG) << "got password through cache" << info.username << info.password;
++        qCDebug(KIO_SMB_LOG) << "got password through cache" << info.username;
+     } else if (!m_defaultUser.isEmpty()) {
+         // user defined a default username/password in kcontrol; try this
+         info.username = m_defaultUser;
+-- 
+GitLab
+
