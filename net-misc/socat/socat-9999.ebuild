@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
-HOMEPAGE="http://www.dest-unreach.org/socat/"
+HOMEPAGE="http://www.dest-unreach.org/socat/ https://repo.or.cz/socat.git"
 EGIT_REPO_URI="https://repo.or.cz/${PN}.git"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
-HOMEPAGE="http://www.dest-unreach.org/socat/"
+HOMEPAGE="http://www.dest-unreach.org/socat/ https://repo.or.cz/socat.git"
 MY_P=${P/_beta/-b}
 S="${WORKDIR}/${MY_P}"
 SRC_URI="http://www.dest-unreach.org/socat/download/${MY_P}.tar.bz2"
