@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -431,7 +431,6 @@ src_prepare() {
 				pushd "${WORKDIR}"/ghc-bin-installer > /dev/null || die
 				use sparc-solaris && unpack ghc-6.10.4-sparc-sun-solaris2.tar.bz2
 				use x86-solaris && unpack ghc-7.0.3-i386-unknown-solaris2.tar.bz2
-				use x86-macos && unpack ghc-7.4.1-i386-apple-darwin.tar.bz2
 				use x64-macos && unpack ghc-7.4.1-x86_64-apple-darwin.tar.bz2
 				popd > /dev/null
 
