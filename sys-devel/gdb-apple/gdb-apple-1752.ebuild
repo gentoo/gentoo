@@ -86,7 +86,7 @@ pkg_postinst() {
 		ewarn "  % sudo chgrp procmod ${EPREFIX}/usr/bin/gdb"
 		ewarn "  % sudo chmod g+s ${EPREFIX}/usr/bin/gdb"
 	fi
-	if use x86-macos || use x64-macos ; then
+	if [[ ${CHOST} == *86* ]] ; then
 		einfo "FSF gdb works on Intel-based OSX platforms, sometimes even"
 		einfo "better than gdb-apple.  You can consider installing FSF gdb"
 		einfo "instead of gdb-apple, since the FSF version is surely more"
