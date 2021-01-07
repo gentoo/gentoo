@@ -796,7 +796,7 @@ app-arch/lz4 1.9.3: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.21: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.21 1.22: Lziprecover is a data recovery tool and decompressor for lzip compressed files
-app-arch/lzlib 1.11: Library for lzip compression
+app-arch/lzlib 1.11 1.12: Library for lzip compression
 app-arch/lzma 9.20-r1 19.00: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
@@ -808,7 +808,7 @@ app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair t
 app-arch/patool 1.12: Portable archive file manager
 app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12 1.1.13: Parallel bzip2 (de)compressor using libbz2
-app-arch/pdlzip 1.10: Public-domain version of lzip compressor
+app-arch/pdlzip 1.10 1.11: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3-r1: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.4-r1: A parallel implementation of gzip
@@ -2762,7 +2762,7 @@ app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 19: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p18 5.1 5.1_p4: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p11-r1 5.0_p18 5.1 5.1_p4: The standard GNU Bourne again shell
 app-shells/bash-completion 2.11 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
