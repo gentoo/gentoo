@@ -7,6 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">doctrine/</remote-id>
+		<remote-id type="github">doctrine/instantiator</remote-id>
 	</upstream>
 </pkgmetadata>
