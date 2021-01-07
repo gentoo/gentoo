@@ -13,7 +13,6 @@ BV_ALPHA=1.0.28
 BV_ARM=1.3.9
 BV_ARM64=1.3.11
 BV_PPC_MACOS=1.0.47
-BV_X86_MACOS=1.1.6
 BV_X64_MACOS=1.2.11
 BV_SPARC_SOLARIS=1.0.23
 BV_X86_SOLARIS=1.2.7
@@ -29,7 +28,6 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
 	arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
 	ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
-	x86-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_MACOS}-x86-darwin-binary.tar.bz2 )
 	x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
 	sparc-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC_SOLARIS}-sparc-solaris-binary.tar.bz2 )
 	x86-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_SOLARIS}-x86-solaris-binary.tar.bz2 )
