@@ -23,8 +23,7 @@ REQUIRED_USE="nis? ( hostname )"
 
 DEPEND="selinux? ( sys-libs/libselinux )"
 RDEPEND="${DEPEND}
-	hostname? ( !sys-apps/coreutils[hostname] )
-	!<sys-apps/openrc-0.9.9.3"
+	hostname? ( !sys-apps/coreutils[hostname] )"
 BDEPEND="
 	selinux? ( virtual/pkgconfig )
 	app-arch/xz-utils
