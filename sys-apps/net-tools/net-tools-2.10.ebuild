@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit flag-o-matic toolchain-funcs
 
@@ -21,16 +21,17 @@ SLOT="0"
 IUSE="+arp +hostname ipv6 nis nls plipconfig selinux slattach static"
 REQUIRED_USE="nis? ( hostname )"
 
-RDEPEND="selinux? ( sys-libs/libselinux )"
-DEPEND="${RDEPEND}
-	selinux? ( virtual/pkgconfig )
-	app-arch/xz-utils"
-if [[ ${PV} == "9999" ]]; then
-	DEPEND+=" nls? ( sys-devel/gettext )"
-fi
-RDEPEND+="
+DEPEND="selinux? ( sys-libs/libselinux )"
+RDEPEND="${DEPEND}
 	hostname? ( !sys-apps/coreutils[hostname] )
 	!<sys-apps/openrc-0.9.9.3"
+BDEPEND="
+	selinux? ( virtual/pkgconfig )
+	app-arch/xz-utils
+"
+if [[ ${PV} == "9999" ]]; then
+	BDEPEND+=" nls? ( sys-devel/gettext )"
+fi
 
 set_opt() {
 	local opt=$1 ans
