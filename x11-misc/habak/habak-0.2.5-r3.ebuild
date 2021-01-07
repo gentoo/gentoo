@@ -10,7 +10,7 @@ SRC_URI="https://sourceforge.net/projects/fvwm-crystal/files/${PN}/${PV}/${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	media-libs/imlib2[X]
