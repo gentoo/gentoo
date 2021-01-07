@@ -2415,7 +2415,7 @@ app-misc/faq 0.0.6: Format agnostic jQ
 app-misc/fdupes 1.5.1 1.6.1-r1 9999: Identify/delete duplicate files residing within specified directories
 app-misc/fdutils 5.5.20060227 5.5.20060227-r1: utilities for configuring and debugging the Linux floppy driver
 app-misc/fhem 6.0: A GPL'd perl server for house automation
-app-misc/figlet 2.2.5 2.2.5-r1 9999: program for making large letters out of ordinary text
+app-misc/figlet 2.2.5-r1 9999: program for making large letters out of ordinary text
 app-misc/flirc 3.22.4 3.24.0 3.25.2: Allows you to pair any remote control with your computer or media center
 app-misc/fr24feed 1.0.25_p3: Flightradar24 data sharing software
 app-misc/freewvs 0.1.1: Scans filesystem for known vulnerable web applications
@@ -5151,7 +5151,7 @@ dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time c
 dev-lang/parrot 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 7.4.14 8.0.0: The PHP language runtime engine
+dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 7.4.14 8.0.0 8.0.1: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r5 3.6.12-r1 3.7.9-r1 3.8.6-r1 3.8.7 3.9.0-r1 3.9.1 3.10.0_alpha3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3: Python script wrapper
@@ -5474,7 +5474,7 @@ dev-libs/libpcre 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.35 10.36: Perl-compatible regular expression library
 dev-libs/libpeas 1.26.0 1.26.0-r100 1.28.0 1.28.0-r100: A GObject plugins library
-dev-libs/libpfm 4.8.0 4.10.1 4.10.1-r1: Hardware-based performance monitoring interface for Linux
+dev-libs/libpfm 4.10.1-r1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
@@ -5488,7 +5488,7 @@ dev-libs/libqtxdg 3.5.0 3.6.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.15: Library to configure gaming mice
 dev-libs/librdkafka 1.4.4 1.5.0 1.5.2 1.5.3: Apache Kafka C/C++ client library
 dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
-dev-libs/librep 0.92.6 0.92.7: Shared library implementing a Lisp dialect
+dev-libs/librep 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.13.1: Generic library for reporting software bugs
 dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.1.5 3.2.0 3.2.1 3.2.3 3.3.0 3.3.1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/libretls 3.3.1-r1: Port of libtls from LibreSSL to OpenSSL
@@ -12972,7 +12972,7 @@ media-libs/cimg 2.9.3: C++ template image processing toolkit
 media-libs/clutter 1.26.4: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27-r1: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
-media-libs/codec2 0.8.1 0.9.2-r1: Low bit rate speech codec
+media-libs/codec2 0.9.2-r1: Low bit rate speech codec
 media-libs/cogl 1.22.8: A library for using 3D graphics hardware to draw pretty pictures
 media-libs/coin 4.0.0: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
@@ -13188,7 +13188,7 @@ media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale mo
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.12-r1 2.0.12-r2 2.0.14: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
-media-libs/libshout 2.4.1-r2 2.4.3 2.4.5: library for connecting and sending data to icecast servers
+media-libs/libshout 2.4.3 2.4.5: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
 media-libs/libsidplayfp 1.8.8: Library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.6: A lightweight, fast implementation of DEC SIXEL graphics codec
@@ -13328,7 +13328,7 @@ media-libs/waffle 1.6.1-r1 9999: Library that allows selection of GL API and of 
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1 1.0.2-r2: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.11: C++ library to create, manipulate and render SVG files
-media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
+media-libs/x264 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
 media-libs/x265 3.4 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.10 1.2.11 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.7: High performance/quality MPEG-4 video de-/encoding solution
@@ -14165,7 +14165,7 @@ media-video/vlc 3.0.11.1 3.0.11.1-r1 3.0.11.1-r101 3.0.9999 9999: Media player a
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/webcamoid 8.7.1: A full featured webcam capture application
-media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline encoder for X264/AVC streams
+media-video/x264-encoder 0.0.20190903 9999: A free commandline encoder for X264/AVC streams
 media-video/xine-ui 0.99.12: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
@@ -14459,7 +14459,7 @@ net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, 
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
 net-dialup/linux-atm 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODEM file transfer protocols
-net-dialup/mgetty 1.2.1 1.2.1-r1: fax and voice modem programs
+net-dialup/mgetty 1.2.1-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.7.1: Serial Communication Program
 net-dialup/moserial 3.0.12: A clean and friendly gtk-based serial terminal
@@ -15894,7 +15894,7 @@ sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.19-r1 2.20 2.21: Unit conversion program
+sci-calculators/units 2.20 2.21: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
 sci-chemistry/MDAnalysis 0.18.0-r1: A python library to analyze and manipulate molecular dynamics trajectories
