@@ -84,6 +84,7 @@ multilib_src_compile() {
 		}
 		use python && python_foreach_impl python_compile
 	else
+		emake -C common
 		emake -C lib
 		emake -C auparse
 	fi
