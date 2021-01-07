@@ -26,6 +26,8 @@ RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
+PDEPEND="
+	>=virtual/dist-kernel-${PV}"
 
 QA_PREBUILT='*'
 
