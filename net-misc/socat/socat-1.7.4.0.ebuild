@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 MY_P=${P/_beta/-b}
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
-HOMEPAGE="http://www.dest-unreach.org/socat/"
+HOMEPAGE="http://www.dest-unreach.org/socat/ https://repo.or.cz/socat.git"
 SRC_URI="http://www.dest-unreach.org/socat/download/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 

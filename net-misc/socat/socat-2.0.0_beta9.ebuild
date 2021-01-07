@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
-HOMEPAGE="http://www.dest-unreach.org/socat/"
+HOMEPAGE="http://www.dest-unreach.org/socat/ https://repo.or.cz/socat.git"
 MY_P=${P/_beta/-b}
 S="${WORKDIR}/${MY_P}"
 SRC_URI="http://www.dest-unreach.org/socat/download/${MY_P}.tar.bz2"
