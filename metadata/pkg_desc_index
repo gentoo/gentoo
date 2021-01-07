@@ -636,7 +636,7 @@ app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the s
 app-admin/gopass 1.10.1-r2: a simple but powerful password manager for the terminal
 app-admin/graylog 3.3.8 3.3.9 4.0.1: Free and open source log management
 app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
-app-admin/hardinfo 0.5.2_pre20130823 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
+app-admin/hardinfo 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.20.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r29: A simple utility to read the temperature of SMART capable hard drives
@@ -830,7 +830,7 @@ app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
 app-arch/tar 1.32-r1 1.32.90-r1: Use this to make tarballs :)
 app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
-app-arch/torrentzip 0.9 0.9-r1: Create identical zip archives over multiple systems
+app-arch/torrentzip 0.9-r1: Create identical zip archives over multiple systems
 app-arch/unace 2.5-r5: ACE unarchiver
 app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
@@ -2072,7 +2072,7 @@ app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13-r1: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 2.2.7-r1 2.2.9-r1: A tool for building and distributing development environments
-app-emulation/vice 3.4_p37498 3.4_p38553: The Versatile Commodore Emulator
+app-emulation/vice 3.4_p38553: The Versatile Commodore Emulator
 app-emulation/virt-manager 2.2.1-r3 3.1.0 3.2.0 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0 9.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
@@ -2140,7 +2140,7 @@ app-eselect/eselect-vi 1.2: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
-app-forensics/afflib 3.7.18 3.7.19: Library that implements the AFF image standard
+app-forensics/afflib 3.7.19: Library that implements the AFF image standard
 app-forensics/afl 2.56b 2.57b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
@@ -2481,7 +2481,7 @@ app-misc/ktoblzcheck 1.49-r2: Library to check account numbers and bank codes of
 app-misc/lcd4linux 0.11.0_pre20170527-r5: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.9_p20200721: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
-app-misc/ledit 2.03 2.04: A line editor to be used with interactive commands
+app-misc/ledit 2.04: A line editor to be used with interactive commands
 app-misc/lfm 3.1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r4 5.11-r5 6.0: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
@@ -5093,7 +5093,7 @@ dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
-dev-lang/coffee-script 2.3.2 2.5.1: A little language that compiles into javascript
+dev-lang/coffee-script 2.5.1: A little language that compiles into javascript
 dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
@@ -5476,7 +5476,7 @@ dev-libs/libpcre2 10.35 10.36: Perl-compatible regular expression library
 dev-libs/libpeas 1.26.0 1.26.0-r100 1.28.0 1.28.0-r100: A GObject plugins library
 dev-libs/libpfm 4.8.0 4.10.1 4.10.1-r1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
-dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
+dev-libs/libplatform 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 7.1.2 7.2.1 7.3.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 5.1.1 5.2.0 5.2.0-r10: Prelude-SIEM Framework Library
@@ -5557,7 +5557,7 @@ dev-libs/light 1.2.2: A program to control backlights (and other hardware lights
 dev-libs/link-grammar 5.8.0: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
-dev-libs/log4cpp 1.1 1.1.3: C++ classes for flexible logging to files, syslog and other destinations
+dev-libs/log4cpp 1.1.3: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/luise 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Interface
@@ -10642,7 +10642,7 @@ dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
-dev-util/cproto 4.7o 4.7q: Generate C function prototypes from C source code
+dev-util/cproto 4.7q: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.8-r1: Red Hat crash utility; used for analyzing kernel core dumps
@@ -11747,7 +11747,7 @@ games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.5.3: Compiler of NML files into GRF/NFO files
 games-util/pyfa 2.32.0 2.33.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
-games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
+games-util/qstat 2.14: Server statics collector supporting many FPS games
 games-util/sc-controller 0.4.8.1 0.4.8.2: User-mode driver and GTK-based GUI for Steam Controllers and others
 games-util/slade 3.1.12a 3.1.12a-r100: Modern editor for Doom-engine based games and source ports
 games-util/springlobby 0.266 0.267 0.269: The official lobby client for SpringRTS community games
@@ -12390,7 +12390,7 @@ mail-client/evolution 3.36.5 3.38.2: Integrated mail, addressbook and calendarin
 mail-client/geary 3.36.3.1: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
-mail-client/mailx 8.1.2.20160123 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
+mail-client/mailx 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 2.0.2 2.0.3 2.0.4: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
@@ -12424,7 +12424,7 @@ mail-filter/libsrs2 1.0.18-r1: libsrs2 is the next generation Sender Rewriting S
 mail-filter/libsrs_alt 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
-mail-filter/mapson 3.3-r1 3.3.1: A challenge/response-based white-list spam filter
+mail-filter/mapson 3.3.1: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 2.6 2.7: A milter-based regular expression filter
 mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
@@ -12444,7 +12444,7 @@ mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filteri
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rspamd 2.5-r1 2.6-r2 2.6-r100 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
-mail-filter/sieve-connect 0.87-r1 0.90: Sieve Command Line Interface
+mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.6-r1: S/MIME signing milter
 mail-filter/spamassassin 3.4.4 3.4.4-r1 3.4.4-r2 3.4.4-r3 3.4.4-r4: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
@@ -12977,7 +12977,7 @@ media-libs/cogl 1.22.8: A library for using 3D graphics hardware to draw pretty 
 media-libs/coin 4.0.0: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
 media-libs/ctl 1.5.2-r1: AMPAS' Color Transformation Language
-media-libs/dav1d 0.7.1 0.8.0 0.8.1 9999: dav1d is an AV1 Decoder :)
+media-libs/dav1d 0.8.0 0.8.1 9999: dav1d is an AV1 Decoder :)
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3 2.0.3: Module/tracker based music format parser and player library
@@ -12987,7 +12987,7 @@ media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 12.05 12.08: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2 1.30: Free MPEG-4 audio codecs by AudioCoding.com
-media-libs/faad2 2.9.2 2.10.0: AAC audio decoding library
+media-libs/faad2 2.10.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10-r1: Run-time filter design and execution library
@@ -13067,7 +13067,7 @@ media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.15.0: Library for SSA/ASS subtitles rendering
 media-libs/libavif 0.8.1 0.8.3 0.8.4 9999: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
-media-libs/libbluray 1.1.2 1.2.0 1.2.1 9999: Blu-ray playback libraries
+media-libs/libbluray 1.2.0 1.2.1 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta19-r1: A library that creates colored ASCII-art graphics
@@ -13246,7 +13246,7 @@ media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0: A library for reading and
 media-libs/openjpeg 1.5.2-r1 2.3.1-r1 2.4.0: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
-media-libs/opusfile 0.11 0.12: A high-level decoding and seeking API for .opus files
+media-libs/opusfile 0.12: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.10.13 1.11.9.0: Advanced shading language for production GI renderers
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829 1.5.4 1.10.1 9999: Library for particle IO and manipulation
@@ -13257,7 +13257,7 @@ media-libs/phonon-vlc 0.11.1: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r2: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
-media-libs/portaudio 19.06.00-r2 19.06.00-r3: A free, cross-platform, open-source, audio I/O library
+media-libs/portaudio 19.06.00-r3: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
@@ -13331,7 +13331,7 @@ media-libs/wxsvg 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20190214 0.0.20190903 0.0.20190903-r1 9999: A free library for encoding X264/AVC streams
 media-libs/x265 3.4 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.10 1.2.11 1.2.9999: Core libraries for Xine movie player
-media-libs/xvid 1.3.5 1.3.5-r1 1.3.7: High performance/quality MPEG-4 video de-/encoding solution
+media-libs/xvid 1.3.7: High performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.8 2.9.2 3.0.1 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
@@ -14241,7 +14241,7 @@ net-analyzer/gvm-libs 10.0.1 11.0.1: Greenbone vulnerability management librarie
 net-analyzer/gvm-tools 2.0.0-r1 2.1.0: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
 net-analyzer/gvmd 8.0.1 9.0.1: Greenbone vulnerability manager, previously named openvas-manager
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
-net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
+net-analyzer/hping 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 9.0 9.0-r1 9.1 9999999: Parallelized network login hacker
@@ -14733,7 +14733,7 @@ net-libs/gnutls 3.6.15 3.7.0: A secure communications library implementing the S
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
 net-libs/grpc 1.28.1-r1 1.32.0: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93 2.8.105 2.8.106: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.106: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3 1.2.2 1.2.3: GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 1.0.0: VNC viewer widget for GTK
 net-libs/gupnp 1.2.4: An object-oriented framework for creating UPnP devs and control points
@@ -15154,7 +15154,7 @@ net-misc/mobile-broadband-provider-info 20190618 20201225: Database of mobile br
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
-net-misc/mrouted 3.9.5-r1 3.9.8: IP multicast routing daemon
+net-misc/mrouted 3.9.8: IP multicast routing daemon
 net-misc/mulk 0.7.0-r1: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncman 0.0.1_p20190327-r2 9999: An ncurses UI for connman, forked from connman-json-client
@@ -15383,7 +15383,7 @@ net-p2p/ktorrent 5.2.0-r1 20.12.0: Powerful BitTorrent client based on KDE Frame
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.7: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
-net-p2p/ncdc 1.21 1.22.1 9999: ncurses directconnect client
+net-p2p/ncdc 1.22.1 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.2.5-r2 4.3.0.1 4.3.1 9999: BitTorrent client in C++ and Qt
@@ -15404,7 +15404,7 @@ net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4 6: Brother laser printer driver
 net-print/c2esp 27: A CUPS filter for Kodak ESP printers
-net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
+net-print/cndrvcups-common-lb 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80 5.90: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
@@ -18499,7 +18499,7 @@ x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs reference
 x11-misc/virtualgl 2.6.4-r1 2.6.5 9999: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.7.1 9999: View Your Mind, a mindmap tool
-x11-misc/wayv 0.3-r2 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
+x11-misc/wayv 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
 x11-misc/wbar 2.3.4-r2 2.3.4-r3: A fast, lightweight quick launch bar
 x11-misc/wdm 1.28-r4 1.28-r5: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
