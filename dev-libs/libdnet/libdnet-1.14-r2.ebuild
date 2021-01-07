@@ -18,6 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 DEPEND="python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
@@ -26,8 +27,6 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 	)
 "
-
-RESTRICT="test"
 
 DOCS=( README.md THANKS )
 
