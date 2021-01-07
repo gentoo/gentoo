@@ -36,7 +36,9 @@ RDEPEND="dev-php/fedora-autoloader
 		dev-lang/php:7.4[cli(-),json(-),unicode(-),xml(-),xmlwriter(-)]
 		dev-lang/php:7.3[cli(-),json(-),unicode(-),xml(-),xmlwriter(-)]
 		dev-lang/php:7.2[cli(-),json(-),unicode(-),xml(-),xmlwriter(-)]
-	)"
+	)
+	!dev-php/phpunit-mock-objects
+"
 
 src_prepare() {
 	default
