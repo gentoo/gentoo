@@ -11,7 +11,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/38111/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	dev-libs/gmp:0=
