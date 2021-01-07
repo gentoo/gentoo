@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P=${P/_beta/-b}
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
@@ -13,8 +13,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="libressl ssl readline ipv6 tcpd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="bindist libressl ssl readline ipv6 tcpd"
 
 DEPEND="
 	ssl? (
@@ -35,13 +35,6 @@ RESTRICT="
 
 DOCS=( BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
-	"${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
-	"${FILESDIR}"/${PN}-1.7.3.4-fno-common.patch
-	"${FILESDIR}"/${PN}-2.0.0_beta9-libressl.patch
-)
-
 pkg_setup() {
 	# bug #587740
 	if use readline && use ssl; then
@@ -51,16 +44,8 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	default
-
-	touch doc/${PN}.1 || die
-
-	eautoreconf
-}
-
 src_configure() {
-	filter-flags -Wall '-Wno-error*' #293324
+	filter-flags '-Wno-error*' #293324
 	tc-export AR
 
 	econf \
