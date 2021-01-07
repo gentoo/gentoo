@@ -5,10 +5,10 @@ DESCRIPTION=A TCP, UDP, and SCTP network bandwidth measurement tool
 EAPI=7
 HOMEPAGE=https://github.com/esnet/iperf/
 IUSE=libressl sctp static-libs
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=BSD
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sctp? ( net-misc/lksctp-tools )
 SLOT=3
 SRC_URI=https://github.com/esnet/iperf/archive/3.9.tar.gz -> iperf-3.9.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=28e2e4a74ab8cf604a5daa3683cf61b2
+_md5_=362db40a30de91a6e18df64d0439d1f9

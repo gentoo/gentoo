@@ -1187,7 +1187,7 @@ app-dicts/gnome-dictionary 3.26.1: Dictionary utility for GNOME
 app-dicts/gwaei 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
 app-dicts/kasumi 2.5-r1: Anthy dictionary maintenance tool
-app-dicts/libydpdict 1.0.2 1.0.4: Library for handling the Collins Dictionary database
+app-dicts/libydpdict 1.0.4: Library for handling the Collins Dictionary database
 app-dicts/mecab-ipadic 2.7.0.20070801: IPA dictionary for MeCab
 app-dicts/mecab-naist-jdic 0.6.3b_p20111013: NAIST Japanese Dictionary
 app-dicts/mecab-unidic 2.1.2: IPA dictionary for MeCab
@@ -1648,7 +1648,7 @@ app-dicts/sword-vlsJoNT 1.0.1: Het Nieuwe Testament by Nicolaas De Jonge
 app-dicts/verbiste 0.1.44: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
 app-dicts/wordnet 3.0-r4 3.0-r5 3.1: A lexical database for the English language
-app-dicts/ydpdict 1.0.2 1.0.3: Interface for the Collins Dictionary
+app-dicts/ydpdict 1.0.3: Interface for the Collins Dictionary
 app-doc/NaturalDocs 1.52-r1: Extensible, multi-language source code documentation generator
 app-doc/abs-guide 10: An in-depth exploration of the art of shell scripting
 app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
@@ -1697,7 +1697,7 @@ app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/beaver 0.4.1-r1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.10 2.2.12: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.4.1: Display-oriented editor for binary files, based on the vi texteditor
-app-editors/curses-hexedit 0.9.7 0.9.7-r1: full screen curses hex editor (with insert/delete support)
+app-editors/curses-hexedit 0.9.7-r1: full screen curses hex editor (with insert/delete support)
 app-editors/dav 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
@@ -5093,7 +5093,7 @@ dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
-dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2 2.5.1: A little language that compiles into javascript
+dev-lang/coffee-script 2.3.2 2.5.1: A little language that compiles into javascript
 dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
@@ -12954,7 +12954,7 @@ media-libs/alsa-lib 1.2.2-r1 1.2.3.2-r1 1.2.4: Advanced Linux Sound Architecture
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alsa-topology-conf 1.2.2 1.2.3 1.2.4: ALSA topology configuration files
 media-libs/alsa-ucm-conf 1.2.2 1.2.3 1.2.4: ALSA ucm configuration files
-media-libs/alure 1.2-r1 1.2-r2: The OpenAL Utility Toolkit
+media-libs/alure 1.2-r2: The OpenAL Utility Toolkit
 media-libs/ampache_browser 1.0.3: Ampache desktop client library
 media-libs/aribb24 1.0.3 1.0.3-r1 1.0.3-r2: Library for decoding ARIB STD-B24 subtitles
 media-libs/assimp 5.0.1: Importer library to import assets from 3D files
@@ -12987,7 +12987,7 @@ media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 12.05 12.08: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2 1.30: Free MPEG-4 audio codecs by AudioCoding.com
-media-libs/faad2 2.9.0 2.9.2 2.10.0: AAC audio decoding library
+media-libs/faad2 2.9.2 2.10.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10-r1: Run-time filter design and execution library
@@ -13124,7 +13124,7 @@ media-libs/libilbc 2.0.2 3.0.4 9999: Packaged version of iLBC codec from the Web
 media-libs/libinsane 1.0.7 1.0.8 1.0.9: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
-media-libs/libjpeg-turbo 1.5.3-r4 2.0.5-r2 2.0.6: MMX, SSE, and SSE2 SIMD accelerated JPEG library
+media-libs/libjpeg-turbo 1.5.3-r4 2.0.6: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/libkeyfinder 2.2.3: Musical key detection library for digital audio
@@ -13152,7 +13152,7 @@ media-libs/libmpdclient 2.19: Library for interfacing Music Player Daemon (media
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.16 1.1.17 1.1.18 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.17 1.1.18 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libmypaint 1.6.1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
@@ -13257,7 +13257,7 @@ media-libs/phonon-vlc 0.11.1: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r2: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
-media-libs/portaudio 19.06.00-r1 19.06.00-r2 19.06.00-r3: A free, cross-platform, open-source, audio I/O library
+media-libs/portaudio 19.06.00-r2 19.06.00-r3: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
@@ -13954,7 +13954,7 @@ media-sound/teamspeak-server 3.12.1 3.13.3: A server software for hosting qualit
 media-sound/tempest_for_eliza 1.0.5-r2: Listen to music on the radio generated by images on your screen
 media-sound/terminatorx 4.0.1-r2: Realtime audio synthesizer allowing you to 'scratch' on sampled audio data
 media-sound/timemachine 0.3.4: JACK client record button remembering the last 10 seconds when pressed
-media-sound/timidity++ 2.14.0-r3 2.15.0: A handy MIDI to WAV converter with OSS and ALSA output support
+media-sound/timidity++ 2.15.0: A handy MIDI to WAV converter with OSS and ALSA output support
 media-sound/timidity-eawpatches 12-r5: Eric Welsh's GUS patches for TiMidity
 media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patches
 media-sound/tk707 0.8-r2: An 7x7 type midi drum sequencer for Linux
@@ -15115,7 +15115,7 @@ net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding dev
 net-misc/igmpproxy 0.2.1_p20200508: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.42_p2: IP Calculator prints broadcast/network/etc for an IP address and netmask
-net-misc/iperf 2.0.13 2.0.14a 2.99999.99999 3.6 3.9-r1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
+net-misc/iperf 2.0.14a 2.99999.99999 3.9-r1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipmiview 2.18.0.201007: A GUI application that allows to manage multiple target systems through BMC
 net-misc/iprange 1.0.4: A tool capable of managing sets of IPs
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
@@ -15342,7 +15342,7 @@ net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.7-r1 1.12.9: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.20.1 2.21: An RSS/Atom feed reader for text terminals
 net-news/rssguard 3.5.9-r1 3.8.3: Tiny RSS and Atom feed reader
-net-news/rsstail 1.8 2.1 2.1_p20200310: A tail-like RSS-reader
+net-news/rsstail 2.1 2.1_p20200310: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.6.10: Command-line RSS feed reader
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
@@ -16082,7 +16082,7 @@ sci-libs/adolc 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 8.300.2 9.800.3 9.850.1: Streamlined C++ linear algebra library
-sci-libs/arpack 3.7.0 3.8.0 9999: Arnoldi package library to solve large scale eigenvalue problems
+sci-libs/arpack 3.8.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18 2.2.19: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/avogadrolibs 1.91.0_pre20180415 1.93.0: Advanced molecule editor and visualizer 2 - libraries
@@ -18628,7 +18628,7 @@ x11-plugins/gkrelltop 2.2.13-r2: a GKrellM2 plugin which displays the top three 
 x11-plugins/gkrellweather 2.0.8-r1: GKrellM2 Plugin that monitors a METAR station and displays weatherinfo
 x11-plugins/gkwebmon 0.2-r2: A web monitor plugin for GKrellM2
 x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for pidgin
-x11-plugins/hexchat-javascript 0.3.1 0.3.2: Javascript interface for HexChat
+x11-plugins/hexchat-javascript 0.3.2: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5-r2: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
 x11-plugins/lurch 0.6.8 0.6.8-r1 0.6.8-r2: OMEMO encryption for libpurple (XEP-0384)
 x11-plugins/pidgin-birthday-reminder 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
