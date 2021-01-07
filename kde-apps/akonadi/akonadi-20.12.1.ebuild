@@ -93,7 +93,7 @@ pkg_setup() {
 		ewarn "In particular, kde-apps/kmail does not work properly with the sqlite backend."
 	fi
 
-	if has_version "kde-apps/akonadi[mysql]" && has_version "dev-db/mysql"; then
+	if has_version "kde-apps/akonadi[mysql]"; then
 		ewarn "Due to configuration incompatibilities we are unable to provide"
 		ewarn "the option to use dev-db/mysql. You must switch to dev-db/mariadb."
 		ewarn "  https://bugs.gentoo.org/709812"
