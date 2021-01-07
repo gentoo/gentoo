@@ -11,7 +11,7 @@ SRC_URI="https://kcat.strangesoft.net/alure-releases/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="dumb examples flac fluidsynth mp3 sndfile static-libs vorbis"
 
 RDEPEND="
