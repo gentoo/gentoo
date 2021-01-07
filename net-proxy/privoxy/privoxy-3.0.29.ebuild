@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
 
 IUSE="+acl brotli client-tags compression editor extended-host-patterns
 extended-statistics external-filters +fast-redirects +force fuzz
-graceful-termination +image-blocking ipv6 lfs mbedtls openssl
+graceful-termination +image-blocking ipv6 lfs +mbedtls openssl
 png-images selinux ssl +stats +threads toggle tools whitelists
 +zlib"
 SLOT="0"
@@ -27,8 +27,10 @@ DEPEND="
 	acct-user/privoxy
 	dev-libs/libpcre
 	brotli? ( app-arch/brotli )
-	mbedtls? ( net-libs/mbedtls )
-	openssl? ( dev-libs/openssl )
+	ssl? (
+		mbedtls? ( net-libs/mbedtls )
+		openssl? ( dev-libs/openssl )
+	)
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}
@@ -46,8 +48,6 @@ REQUIRED_USE="
 	brotli? ( zlib )
 	fuzz? ( zlib )
 	ssl? ( ^^ ( mbedtls openssl ) )
-	mbedtls? ( ssl )
-	openssl? ( ssl )
 "
 
 S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
@@ -79,6 +79,11 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf="--without-mbedtls --without-openssl"
+	if use ssl; then
+		myconf="$(use_with mbedtls) $(use_with openssl)"
+	fi
+
 	# --with-debug only enables debug CFLAGS
 	# --with-docbook and --with-db2html and their deps are useless,
 	#	since docs are already pregenerated in the source tarball
@@ -108,8 +113,7 @@ src_configure() {
 		$(use_enable whitelists trust-files) \
 		$(use_enable zlib) \
 		$(use_with brotli) \
-		$(use_with mbedtls) \
-		$(use_with openssl)
+		${myconf}
 }
 
 src_install() {
