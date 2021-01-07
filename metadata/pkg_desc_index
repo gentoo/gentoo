@@ -5378,7 +5378,7 @@ dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdivecomputer 0.6.0-r1 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1: Suffix-sorting library (for BWT)
-dev-libs/libdnet 1.14-r1 9999: simplified, portable interface to several low-level networking routines
+dev-libs/libdnet 1.14-r1 1.14-r2: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2 0.1a-r3: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
@@ -12977,7 +12977,7 @@ media-libs/cogl 1.22.8: A library for using 3D graphics hardware to draw pretty 
 media-libs/coin 4.0.0: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
 media-libs/ctl 1.5.2-r1: AMPAS' Color Transformation Language
-media-libs/dav1d 0.7.1 0.8.0 9999: dav1d is an AV1 Decoder :)
+media-libs/dav1d 0.7.1 0.8.0 0.8.1 9999: dav1d is an AV1 Decoder :)
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3 2.0.3: Module/tracker based music format parser and player library
@@ -13129,7 +13129,7 @@ media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysti
 media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/libkeyfinder 2.2.3: Musical key detection library for digital audio
 media-libs/liblastfm 1.1.0_pre20190625: Collection of libraries to integrate Last.fm services
-media-libs/libldac 2.0.2-r1: LDAC codec library from AOSP
+media-libs/libldac 2.0.2-r1 2.0.2.3: LDAC codec library from AOSP
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
