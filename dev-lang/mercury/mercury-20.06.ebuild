@@ -15,7 +15,7 @@ SRC_URI="https://dl.mercurylang.org/release-20.06/${MY_P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug doc emacs erlang examples java mono profile readline threads trail"
 
