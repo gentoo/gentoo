@@ -5311,7 +5311,7 @@ dev-libs/icu-le-hb 1.0.3-r1: ICU Layout Engine API on top of HarfBuzz shaping li
 dev-libs/igraph 0.8.3 0.8.5: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1 0-r2: iLBC is a speech codec suitable for robust voice communication over IP
-dev-libs/inih 51 52: inih (INI not invented here) simple .INI file parser
+dev-libs/inih 51 52 52-r1: inih (INI not invented here) simple .INI file parser
 dev-libs/iniparser 3.1-r2 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
@@ -15404,7 +15404,7 @@ net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 4 6: Brother laser printer driver
 net-print/c2esp 27: A CUPS filter for Kodak ESP printers
-net-print/cndrvcups-common-lb 3.70: Common files for Canon drivers
+net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80 5.90: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
@@ -17490,7 +17490,7 @@ sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUS
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.8 3.1.9: xfs dump/restore utilities
-sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0 5.10.0: xfs filesystem utilities
+sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0 5.10.0-r1: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.1.1: Zeroes out all free space on a filesystem
