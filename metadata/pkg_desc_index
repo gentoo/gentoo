@@ -3094,7 +3094,7 @@ app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and 
 app-text/xournalpp 1.0.18-r1 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.02-r4: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
-app-text/yodl 4.02.01 4.02.02-r1: Your Own Document Language: a pre-document language and tools to process it
+app-text/yodl 4.02.01 4.02.02-r1 4.03.00: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.9 9999: DjVu plug-in for zathura
@@ -15150,7 +15150,7 @@ net-misc/mikutter 4.0.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.3.0: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824 1.5.20200928: MiniSSDP Daemon
 net-misc/miniupnpd 2.2.0 2.2.1: MiniUPnP IGD Daemon
-net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
+net-misc/mobile-broadband-provider-info 20190618 20201225: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
@@ -15258,7 +15258,7 @@ net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: res
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sntpd 3.0-r1: A NTP (RFC-1305 and RFC-4330) client and server for unix-alike systems
 net-misc/sobby 0.4.8-r1: Standalone Obby server
-net-misc/socat 1.7.3.4 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
+net-misc/socat 1.7.3.4 1.7.4.0 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.2.1: A daemon that spawns one command per connection, and dampens connection bursts
