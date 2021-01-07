@@ -1,0 +1,60 @@
+From a41e69b30cc07dd758849f8685d322150459e4f1 Mon Sep 17 00:00:00 2001
+From: Elvis Angelaccio <elvis.angelaccio@kde.org>
+Date: Tue, 5 Jan 2021 21:50:34 +0100
+Subject: [PATCH] Fix crash after closing the window while loading a TAR
+ archive
+
+A first problem was in LibarchivePlugin::list() not checking
+isInterruptionRequested() after the while loop. It was wrongly calling
+emitCorruptArchive() instead of aborting as requested.
+
+But according to the stacktrace, the actual crash seemed to be caused by
+the for() loop over qAsConst(m_jobs):
+
+    #0  0x00007ffff5f6a023 in QHashData::nextNode(QHashData::Node*) () from /usr/lib/libQt5Core.so.5
+    #1  0x00007fffe1dcb2ec in QHash<KJob*, QHashDummyValue>::const_iterator::operator++ (this=0x7fffffffc4d0) at /usr/include/qt/QtCore/qhash.h:426
+    #2  0x00007fffe1dcadac in QSet<KJob*>::const_iterator::operator++ (this=0x7fffffffc4d0) at /usr/include/qt/QtCore/qset.h:174
+    #3  0x00007fffe1dca17e in JobTracker::~JobTracker (this=0x555555c319c0) at ../part/jobtracker.cpp:41
+
+Porting to QSetIterator fixes the crash.
+
+BUG: 410092
+FIXED-IN: 20.12.2
+---
+ part/jobtracker.cpp                     | 4 +++-
+ plugins/libarchive/libarchiveplugin.cpp | 4 ++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/part/jobtracker.cpp b/part/jobtracker.cpp
+index e11e402d..a7a57fef 100644
+--- a/part/jobtracker.cpp
++++ b/part/jobtracker.cpp
+@@ -38,7 +38,9 @@ JobTracker::JobTracker(QWidget *parent)
+ 
+ JobTracker::~JobTracker()
+ {
+-    for (KJob *job : qAsConst(m_jobs)) {
++    QSetIterator<KJob *> it(m_jobs);
++    while (it.hasNext()) {
++        auto job = it.next();
+         job->kill();
+     }
+ }
+diff --git a/plugins/libarchive/libarchiveplugin.cpp b/plugins/libarchive/libarchiveplugin.cpp
+index d2c0d7e1..8a6af526 100644
+--- a/plugins/libarchive/libarchiveplugin.cpp
++++ b/plugins/libarchive/libarchiveplugin.cpp
+@@ -113,6 +113,10 @@ bool LibarchivePlugin::list()
+         }
+     }
+ 
++    if (QThread::currentThread()->isInterruptionRequested()) {
++        return false;
++    }
++
+     if (result != ARCHIVE_EOF) {
+         qCCritical(ARK) << "Error while reading archive:"
+                         << result
+-- 
+GitLab
+
