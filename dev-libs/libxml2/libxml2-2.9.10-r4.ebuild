@@ -82,10 +82,6 @@ src_prepare() {
 
 	eprefixify catalog.c xmlcatalog.c runtest.c xmllint.c
 
-	# Fix build for Windows platform
-	# https://bugzilla.gnome.org/show_bug.cgi?id=760456
-	# eapply "${FILESDIR}"/${PN}-2.8.0_rc1-winnt.patch
-
 	# Fix python detection, bug #567066
 	# https://bugzilla.gnome.org/show_bug.cgi?id=760458
 	eapply "${FILESDIR}"/${PN}-2.9.2-python-ABIFLAG.patch
@@ -182,15 +178,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# on windows, xmllint is installed by interix libxml2 in parent prefix.
-	# this is the version to use. the native winnt version does not support
-	# symlinks, which makes repoman fail if the portage tree is linked in
-	# from another location (which is my default). -- mduft
-	if [[ ${CHOST} == *-winnt* ]]; then
-		rm -rf "${ED}"/usr/bin/xmllint
-		rm -rf "${ED}"/usr/bin/xmlcatalog
-	fi
-
 	rm -rf "${ED}"/usr/share/doc/${P}
 	einstalldocs
 
