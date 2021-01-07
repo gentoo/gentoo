@@ -4,10 +4,10 @@ DESCRIPTION=PHP Autoload Builder
 EAPI=7
 HOMEPAGE=https://github.com/theseer/Autoload
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86
 LICENSE=BSD
 RDEPEND=dev-lang/php:* >=dev-php/theseer-DirectoryScanner-1.3 <dev-php/theseer-DirectoryScanner-2 >=dev-php/zetacomponents-Base-1.8 <dev-php/zetacomponents-Base-2 >=dev-php/zetacomponents-ConsoleTools-1.7.1 <dev-php/zetacomponents-ConsoleTools-2
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/theseer/Autoload/archive/1.26.0.tar.gz -> theseer-Autoload-1.26.0.tar.gz
-_md5_=98f69a20dd5318805e939705dc2279b2
+_md5_=cc8e4d94a3df7b75b54b6b196dbf8eba
