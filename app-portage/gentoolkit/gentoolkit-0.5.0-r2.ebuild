@@ -37,6 +37,13 @@ python_prepare_all() {
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
+
+	if use prefix-guest ; then
+		# use correct repo name, bug #632223
+		sed -i \
+			-e "/load_profile_data/s/repo='gentoo'/repo='gentoo_prefix'/" \
+			pym/gentoolkit/profile.py || die
+	fi
 }
 
 pkg_preinst() {
