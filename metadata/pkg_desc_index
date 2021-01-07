@@ -9971,7 +9971,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.3 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 1.7.1 1.8.2 1.8.5 1.8.6: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 1.7.1 1.8.2 1.8.5 1.8.6 1.8.7: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.10.3 1.11.0 1.12.0 1.12.1: High-level image processing helper methods with libvips and ImageMagick
@@ -10269,7 +10269,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5 1.0.5-r1: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sanitize 5.2.1: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 5.2.1 5.2.2: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
