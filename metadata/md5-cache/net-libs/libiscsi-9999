@@ -1,12 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=dev-libs/libgcrypt:0= >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-libs/libgcrypt:0=
 DESCRIPTION=iscsi client library and utilities
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/sahlberg/libiscsi
-IUSE=static-libs
 LICENSE=GPL-2 LGPL-2
 PROPERTIES=live
 RDEPEND=dev-libs/libgcrypt:0=
 SLOT=0
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=db0c29d3b5f21c56e93bfb1a001a2f4f
+_md5_=5a4b1c856ebb176c1eaf21e3a95e167e
