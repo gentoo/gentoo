@@ -15412,7 +15412,7 @@ net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80 5.90: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r1 9999: The Common Unix Printing System
 net-print/cups-bjnp 2.0 2.0.3: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.27.4 1.27.5 1.28.2 1.28.3 9999: Cups filters
+net-print/cups-filters 1.28.3 1.28.7 9999: Cups filters
 net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
