@@ -14,7 +14,7 @@ SRC_URI="https://github.com/moby/moby/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="apparmor aufs btrfs +container-init device-mapper hardened overlay seccomp +temp-cli"
+IUSE="apparmor aufs btrfs +cli +container-init device-mapper hardened overlay seccomp"
 
 DEPEND="
 	acct-group/docker
@@ -40,8 +40,8 @@ RDEPEND="
 	~app-emulation/containerd-1.4.3[apparmor?,btrfs?,device-mapper?,seccomp?]
 	~app-emulation/runc-1.0.0_rc92[apparmor?,seccomp?]
 	~app-emulation/docker-proxy-0.8.0_p20201211
+	cli? ( app-emulation/docker-cli )
 	container-init? ( >=sys-process/tini-0.19.0[static] )
-	temp-cli? ( ~app-emulation/docker-cli-${PV} )
 "
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
@@ -270,20 +270,19 @@ pkg_postinst() {
 		elog
 	fi
 
-	if use temp-cli; then
+	if use cli; then
 		ewarn "Starting with docker 20.10.2, docker has been split into"
 		ewarn "two packages upstream, so Gentoo has followed suit."
 		ewarn
 		ewarn "app-emulation/docker contains the daemon and"
 		ewarn "app-emulation/docker-cli contains the docker command."
 		ewarn
-		ewarn "docker currently installs docker-cli using the temp-cli"
-		ewarn "use flag."
+		ewarn "docker currently installs docker-cli using the cli use flag."
 		ewarn
 		ewarn "This use flag is temporary, so you need to take the"
 		ewarn "following actions:"
 		ewarn
-		ewarn "First, disable the temp-cli use flag for app-emulation/docker"
+		ewarn "First, disable the cli use flag for app-emulation/docker"
 		ewarn
 		ewarn "Then, if you need docker-cli and docker on the same machine,"
 		ewarn "run the following command:"
