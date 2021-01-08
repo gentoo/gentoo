@@ -1994,15 +1994,15 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.5.0 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
-app-emulation/docker 19.03.13-r2 19.03.14 20.10.1: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 19.03.13-r2 19.03.14 20.10.1 20.10.2: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-cli 20.10.1: the command line binary for docker
+app-emulation/docker-cli 20.10.1 20.10.2: the command line binary for docker
 app-emulation/docker-compose 1.27.4 1.28.0_rc1 1.28.0_rc2: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
-app-emulation/docker-proxy 0.8.0_p20200617 0.8.0_p20201105 0.8.0_p20201211: Docker container networking
+app-emulation/docker-proxy 0.8.0_p20200617 0.8.0_p20201105 0.8.0_p20201211 0.8.0_p20201215: Docker container networking
 app-emulation/docker-registry 2.7.1: Docker Registry 2.0
 app-emulation/docker-swarm 1.2.9: Swarm Classic: a container clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
