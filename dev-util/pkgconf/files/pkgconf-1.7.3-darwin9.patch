@@ -1,0 +1,24 @@
+darwin9 does not malloc on NULL resolved_path
+
+https://github.com/pkgconf/pkgconf/pull/208
+
+--- a/libpkgconf/path.c
++++ b/libpkgconf/path.c
+@@ -92,15 +92,11 @@
+ 			return;
+ 		if (S_ISLNK(st.st_mode))
+ 		{
+-			char *linkdest = realpath(path, NULL);
++			char pathbuf[PATH_MAX];
++			char *linkdest = realpath(path, pathbuf);
+ 
+ 			if (linkdest != NULL && stat(linkdest, &st) == -1)
+-			{
+-				free(linkdest);
+ 				return;
+-			}
+-
+-			free(linkdest);
+ 		}
+ 		if (path_list_contains_entry(path, dirlist, &st))
+ 			return;
