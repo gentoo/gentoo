@@ -22,11 +22,14 @@ HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD"
 SLOT="0"
-IUSE="+custom-cflags set-as-default X"
+IUSE="+custom-cflags set-as-default test X"
+
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
 	"${FILESDIR}"/${PN}-20.4.5_custom_cflags.patch
+	"${FILESDIR}"/${PN}-20.4.5_tesing_in_src_test.patch
         )
 
 DEPEND=">=media-libs/gmmlib-20.4.1
@@ -38,7 +41,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-DMEDIA_BUILD_FATAL_WARNINGS=OFF
-		-DMEDIA_RUN_TEST_SUITE=OFF
+		-DMEDIA_RUN_TEST_SUITE=$(usex test)
 		-DBUILD_TYPE=Release
 		-DPLATFORM=linux
 		-DUSE_X11=$(usex X)
