@@ -96,7 +96,7 @@ src_configure() {
 src_install() {
 	default
 	keepdir /var/{lib,log,spool}/pgl
-	rm -rf "${ED%/}"/tmp || die
+	rm -rf "${ED}"/tmp || die
 	find "${ED}" -name '*.la' -delete || die
 }
 
