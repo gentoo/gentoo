@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="ncurses based sudoku game"
 HOMEPAGE="https://jubalh.github.io/nudoku"
@@ -12,15 +12,26 @@ SRC_URI="https://github.com/jubalh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="cairo"
 
-DEPEND="sys-libs/ncurses:0="
+BDEPEND="virtual/pkgconfig"
+DEPEND="
+	cairo? ( x11-libs/cairo )
+	>=sys-devel/gettext-0.20
+	sys-libs/ncurses:=
+	virtual/libintl
+"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.1.0-ncurses-link.patch"
+)
 
 src_prepare() {
 	default
 	eautoreconf
 }
 
-src_install() {
-	emake DESTDIR="${D}" install
+src_configure() {
+	econf $(use_enable cairo)
 }
