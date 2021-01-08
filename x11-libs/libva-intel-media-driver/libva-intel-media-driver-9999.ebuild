@@ -22,9 +22,12 @@ HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD"
 SLOT="0"
-IUSE="set-as-default X"
+IUSE="+custom-cflags set-as-default X"
 
-PATCHES=( "${FILESDIR}"/${PN}-20.2.0_x11_optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
+	"${FILESDIR}"/${PN}-20.4.5_custom_cflags.patch
+        )
 
 DEPEND=">=media-libs/gmmlib-20.4.1
 	>=x11-libs/libva-2.10.0[X?]
@@ -39,6 +42,8 @@ src_configure() {
 		-DBUILD_TYPE=Release
 		-DPLATFORM=linux
 		-DUSE_X11=$(usex X)
+		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
+		-DOVERRIDE_COMPILER_FLAGS=$(usex !custom-cflags)
 	)
 
 	cmake_src_configure
