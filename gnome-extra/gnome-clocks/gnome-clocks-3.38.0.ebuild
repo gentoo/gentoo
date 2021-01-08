@@ -34,7 +34,7 @@ BDEPEND="
 	gui-libs/libhandy:1[vala]
 "
 
-DOCS=( AUTHORS.md CONTRIBUTING.md NEWS.md README.md )
+DOCS=( AUTHORS.md CONTRIBUTING.md README.md )
 
 src_prepare() {
 	xdg_src_prepare
