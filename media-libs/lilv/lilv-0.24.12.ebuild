@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 waf-utils bash-completion-r1 multilib-build multilib-minimal
+inherit python-single-r1 waf-utils bash-completion-r1 multilib-build multilib-minimal
 
 DESCRIPTION="Library to make the use of LV2 plugins as simple as possible for applications"
 HOMEPAGE="http://drobilla.net/software/lilv/"
@@ -14,24 +14,33 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc +dyn-manifest static-libs test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/unittest2[${PYTHON_USEDEP}]
+		')
+	)
+"
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/serd[${MULTILIB_USEDEP}]
 	dev-libs/sord[${MULTILIB_USEDEP}]
 	media-libs/libsndfile
 	media-libs/lv2[${MULTILIB_USEDEP}]
 	media-libs/sratom[${MULTILIB_USEDEP}]
 "
-DEPEND="
-	${RDEPEND}
-	${PYTHON_DEPS}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	test? ( dev-python/unittest2 )
-"
+DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	python_setup
+}
 
 src_prepare() {
 	default
