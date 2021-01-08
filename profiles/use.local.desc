@@ -486,10 +486,10 @@ app-emulation/crun:man - Build and install man pages
 app-emulation/docker:apparmor - Enable AppArmor support.
 app-emulation/docker:aufs - Enables dependencies for the "aufs" graph driver, including necessary kernel flags.
 app-emulation/docker:btrfs - Enables dependencies for the "btrfs" graph driver, including necessary kernel flags.
+app-emulation/docker:cli - This is a temporary use flag which pulls in app-emulation/docker-cli, the docker command line client. This flag is here to assist in the transition to split packages and will be removed in a future release.
 app-emulation/docker:container-init - Makes the a staticly-linked init system tini available inside a container.
 app-emulation/docker:device-mapper - Enables dependencies for the "devicemapper" graph driver, including necessary kernel flags.
 app-emulation/docker:overlay - Enables dependencies for the "overlay" graph driver, including necessary kernel flags.
-app-emulation/docker:temp-cli - This is a temporary use flag which pulls in app-emulation/docker-cli, the docker command line client. This flag is here to assist in the transition to split packages and will be removed in a future release.
 app-emulation/docker-credential-helpers:gnome-keyring - Build secretservice helper which works with gnome-keyring or kwallet using D-Bus.
 app-emulation/docker-credential-helpers:pass - Build pass helper for the pass utility.
 app-emulation/dosemu:fluidsynth - use media-sound/fluidsynth for MIDI emulation
