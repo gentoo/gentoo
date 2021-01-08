@@ -69,6 +69,7 @@ arm		default/linux/arm/17.0/armv4t/desktop		dev
 arm		default/linux/arm/17.0/armv4t/desktop/gnome	dev
 arm		default/linux/arm/17.0/armv4t/desktop/plasma	dev
 arm		default/linux/arm/17.0/armv4t/developer		dev
+arm		default/linux/arm/17.0/armv4t/systemd		dev
 arm		default/linux/arm/17.0/armv5te			dev
 arm		default/linux/arm/17.0/armv5te/desktop		dev
 arm		default/linux/arm/17.0/armv5te/desktop/gnome	dev
