@@ -71,15 +71,6 @@ sys-libs/libnih
 sys-power/pm-utils
 sys-power/pm-quirks
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-06)
-# (on behalf of QA)
-# The new docker version splits the docker(1) executable into a separate
-# app-emulation/docker-cli package.  However, the package is not pulled
-# automatically and the new version does not even warn the user about
-# that.  In other words, the upgrade breaks people's systems hard.
->=app-emulation/docker-20.1.0
->=app-emulation/docker-cli-20.1.0
-
 # Michał Górny <mgorny@gentoo.org> (2021-01-05)
 # The portable version has been discontinued upstream (i.e. it is now
 # available only as tightly coupled part of OpenBSD).  The current
