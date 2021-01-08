@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/intel/media-driver"
 
 LICENSE="MIT BSD"
 SLOT="0"
-IUSE="X"
+IUSE="set-as-default X"
 
 PATCHES=( "${FILESDIR}"/${PN}-20.2.0_x11_optional.patch )
 
@@ -42,4 +42,13 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use set-as-default ; then
+		echo 'LIBVA_DRIVER_NAME="iHD"' > "${T}/55libva-intel-media-driver" || die
+		doenvd "${T}/55libva-intel-media-driver"
+	fi
 }
