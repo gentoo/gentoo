@@ -29,10 +29,14 @@ RDEPEND="
 
 src_prepare() {
 	default
-	sed -i -e 's/^CC=/CC?=/' -e 's/^CFLAGS=/CFLAGS:=/' -e 's/-O3$/${CFLAGS}/' Makefile
+	sed -i \
+		-e 's/^CC=/CC?=/' \
+		-e 's/^CFLAGS=/CFLAGS:=/' \
+		-e 's/-O3$/${CFLAGS}/' \
+		Makefile || die
 }
 
 src_install() {
 	emake prefix="${ED}/usr" install
-	gunzip "${ED}/usr/share/man/man1/iwgtk.1.gz"
+	gunzip "${ED}/usr/share/man/man1/iwgtk.1.gz" || die
 }
