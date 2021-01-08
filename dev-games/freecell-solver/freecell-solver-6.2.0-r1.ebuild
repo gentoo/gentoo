@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ IUSE="tcmalloc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-libs/rinutils
 	$(python_gen_cond_dep '
 		dev-python/pysol_cards[${PYTHON_MULTI_USEDEP}]
 		dev-python/random2[${PYTHON_MULTI_USEDEP}]
@@ -33,11 +34,15 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.html )
 
-PATCHES=( "${FILESDIR}/${PN}-5.22.1-no-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.22.1-no-docs.patch"
+	"${FILESDIR}/${P}-no-git-clone-kthxbye.patch"
+)
 
 src_prepare() {
-	python_fix_shebang board_gen
 	cmake_src_prepare
+	python_fix_shebang board_gen
+	rm -r rinutils || die
 }
 
 src_configure() {
