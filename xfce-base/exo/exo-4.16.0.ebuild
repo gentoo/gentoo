@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="Extensions, widgets and framework library with session support for Xfce"
 HOMEPAGE="https://www.xfce.org/projects/"
@@ -21,8 +21,18 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gtk-doc-am
 	dev-util/intltool
+	dev-util/xfce4-dev-tools
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.16.0-allow-cross.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default
