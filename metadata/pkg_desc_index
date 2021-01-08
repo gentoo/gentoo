@@ -733,7 +733,7 @@ app-admin/syslog-ng 3.26.1-r1 3.28.1-r2 3.29.1 3.30.1: syslog replacement with a
 app-admin/syslog-summary 1.14-r5: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.2.3 12.4.0 12.4.1: System performance tools for Linux
-app-admin/system-config-printer 1.5.13: Graphical user interface for CUPS administration
+app-admin/system-config-printer 1.5.13 1.5.14: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
@@ -12900,7 +12900,7 @@ media-gfx/ristretto 0.10.0: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.4_p20190718-r1: Utility to convert raster images to EPS, PDF and many others
 media-gfx/sane-backends 1.0.30-r2: Scanner Access Now Easy - Backends
-media-gfx/sane-frontends 1.0.14-r5 1.0.14-r6: Scanner Access Now Easy
+media-gfx/sane-frontends 1.0.14-r6: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.16-r1: Interactive post-processing tool for scanned pages
 media-gfx/scour 0.37 0.38.1 0.38.2: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 1.4 9999: Screen capture utility using imlib2 library
@@ -15726,7 +15726,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.4.3 3.5.0: Desktop Planetarium
+sci-astronomy/kstars 3.4.3 3.5.0 3.5.1: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
