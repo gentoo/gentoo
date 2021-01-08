@@ -5265,7 +5265,7 @@ dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.25.1-r2 1.25.1-r10: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.181 0.182: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.28 0.31 0.32 0.33 0.35 0.36 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.35 0.36 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9 2.2.10: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -15555,7 +15555,7 @@ net-wireless/hostapd 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.3 9999: Tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 5.4 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
-net-wireless/iwd 1.8-r3 1.9-r1 1.10 1.11 9999: Wireless daemon for linux
+net-wireless/iwd 1.10 1.11 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2020.09.4 2020.12.2 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
