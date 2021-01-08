@@ -17,7 +17,9 @@ IUSE="cairo"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	cairo? ( x11-libs/cairo )
+	>=sys-devel/gettext-0.20
 	sys-libs/ncurses:=
+	virtual/libintl
 "
 RDEPEND="${DEPEND}"
 
