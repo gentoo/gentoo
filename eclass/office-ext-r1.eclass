@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -6,13 +6,13 @@
 # The office team <office@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 7
 # @BLURB: Eclass for installing libreoffice/openoffice extensions
 # @DESCRIPTION:
 # Eclass for easing maintenance of libreoffice/openoffice extensions.
 
 case "${EAPI:-0}" in
-	5|6) inherit multilib ;;
+	5) inherit multilib ;;
 	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
