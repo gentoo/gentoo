@@ -5,26 +5,22 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-inherit python-any-r1 waf-utils multilib-build multilib-minimal git-r3
+inherit python-any-r1 waf-utils multilib-build multilib-minimal
 
-DESCRIPTION="Library for storing RDF data in memory"
-HOMEPAGE="http://drobilla.net/software/sord/"
-EGIT_REPO_URI="https://github.com/drobilla/sord.git"
+DESCRIPTION="Library for RDF syntax which supports reading and writing Turtle and NTriples"
+HOMEPAGE="http://drobilla.net/software/serd/"
+SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-RDEPEND="
-	dev-libs/libpcre
-	dev-libs/serd
-"
+RDEPEND=""
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 "

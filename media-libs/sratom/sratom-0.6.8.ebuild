@@ -5,15 +5,15 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-inherit python-any-r1 waf-utils multilib-build multilib-minimal git-r3
+inherit python-any-r1 waf-utils multilib-build multilib-minimal
 
-DESCRIPTION="Library for storing RDF data in memory"
-HOMEPAGE="http://drobilla.net/software/sord/"
-EGIT_REPO_URI="https://github.com/drobilla/sord.git"
+DESCRIPTION="Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax"
+HOMEPAGE="http://drobilla.net/software/sratom/"
+SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -22,13 +22,14 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 RDEPEND="
-	dev-libs/libpcre
 	dev-libs/serd
+	dev-libs/sord
+	media-libs/lv2
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 "
-DOCS=( "AUTHORS" "NEWS" "README.md" )
+DOCS=( "NEWS" "README.md" )
 
 src_prepare() {
 	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
