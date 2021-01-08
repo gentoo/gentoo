@@ -1,0 +1,123 @@
+From fcd7a35c1a9ca109fd50ee2660053423916b491b Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Fri, 28 Aug 2020 15:36:40 +0200
+Subject: [PATCH 2/2] fix all zend_parse_parameters call to use zend_long
+
+---
+ geos.c | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/geos.c b/geos.c
+index ffa27b8..0437523 100755
+--- a/geos.c
++++ b/geos.c
+@@ -78,6 +78,7 @@ PHP_FUNCTION(GEOSRelateMatch);
+ # define GEOS_PHP_ADD_ASSOC_ZVAL(a,k,v) add_assoc_zval((a), (k), (v))
+ # define GEOS_PHP_HASH_GET_CUR_KEY(s,k,i) zend_hash_get_current_key((s), (k), (i), 0)
+ # define zend_string char
++# define zend_long long
+ # define ZSTR_VAL(x) (x)
+ # define GEOS_PHP_HASH_GET_CUR_DATA(h,d) zend_hash_get_current_data((h),(void**)&(d))
+ # define GEOS_PHP_ZVAL zval **
+@@ -1281,7 +1282,7 @@ PHP_METHOD(Geometry, relateBoundaryNodeRule)
+     GEOSGeometry *other;
+     zval *zobj;
+     char* pat;
+-    long int bnr = GEOSRELATE_BNR_OGC;
++    zend_long bnr = GEOSRELATE_BNR_OGC;
+     char* retStr;
+ 
+     this = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+@@ -1342,7 +1343,7 @@ PHP_METHOD(Geometry, setPrecision)
+ {
+     GEOSGeometry *this;
+     double gridSize;
+-    long int flags = 0;
++    zend_long flags = 0;
+     GEOSGeometry *ret;
+ 
+     this = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+@@ -1756,7 +1757,7 @@ PHP_METHOD(Geometry, checkValidity)
+     zend_bool retBool;
+     char *reasonVal = NULL;
+     zval *locationVal = NULL;
+-    long int flags = 0;
++    zend_long flags = 0;
+ 
+     this = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+ 
+@@ -1929,7 +1930,7 @@ PHP_METHOD(Geometry, getSRID)
+ PHP_METHOD(Geometry, setSRID)
+ {
+     GEOSGeometry *geom;
+-    long int srid;
++    zend_long srid;
+ 
+     geom = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+ 
+@@ -1965,7 +1966,7 @@ PHP_METHOD(Geometry, geometryN)
+     GEOSGeometry *geom;
+     const GEOSGeometry *c;
+     GEOSGeometry *cc;
+-    long int num;
++    zend_long num;
+ 
+     geom = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+ 
+@@ -2064,7 +2065,7 @@ PHP_METHOD(Geometry, interiorRingN)
+     GEOSGeometry *geom;
+     const GEOSGeometry *c;
+     GEOSGeometry *cc;
+-    long int num;
++    zend_long num;
+ 
+     geom = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+ 
+@@ -2162,7 +2163,7 @@ PHP_METHOD(Geometry, pointN)
+ {
+     GEOSGeometry *geom;
+     GEOSGeometry *c;
+-    long int num;
++    zend_long num;
+ 
+     geom = (GEOSGeometry*)getRelay(getThis(), Geometry_ce_ptr);
+ 
+@@ -2586,7 +2587,7 @@ PHP_METHOD(WKTWriter, setTrim)
+ PHP_METHOD(WKTWriter, setRoundingPrecision)
+ {
+     GEOSWKTWriter *writer;
+-    long int prec;
++    zend_long prec;
+ 
+     writer = (GEOSWKTWriter*)getRelay(getThis(), WKTWriter_ce_ptr);
+ 
+@@ -2607,7 +2608,7 @@ PHP_METHOD(WKTWriter, setRoundingPrecision)
+ PHP_METHOD(WKTWriter, setOutputDimension)
+ {
+     GEOSWKTWriter *writer;
+-    long int dim;
++    zend_long dim;
+ 
+     writer = (GEOSWKTWriter*)getRelay(getThis(), WKTWriter_ce_ptr);
+ 
+@@ -2752,7 +2753,7 @@ PHP_METHOD(WKBWriter, getOutputDimension)
+ PHP_METHOD(WKBWriter, setOutputDimension)
+ {
+     GEOSWKBWriter *writer;
+-    long int dim;
++    zend_long dim;
+ 
+     writer = (GEOSWKBWriter*)getRelay(getThis(), WKBWriter_ce_ptr);
+ 
+@@ -2851,7 +2852,7 @@ PHP_METHOD(WKBWriter, getByteOrder)
+ PHP_METHOD(WKBWriter, setByteOrder)
+ {
+     GEOSWKBWriter *writer;
+-    long int dim;
++    zend_long dim;
+ 
+     writer = (GEOSWKBWriter*)getRelay(getThis(), WKBWriter_ce_ptr);
+ 
+-- 
+2.25.4
+

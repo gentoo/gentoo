@@ -1,0 +1,25 @@
+From 37ede013e720aed2ab4e7ce33699a86dd0ef3730 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Wed, 30 Sep 2020 09:17:54 +0200
+Subject: [PATCH 5/5] fix for 8.0.0RC1
+
+---
+ tests/003_WKTReader.phpt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/003_WKTReader.phpt b/tests/003_WKTReader.phpt
+index fbd4fb1..e02d1c8 100644
+--- a/tests/003_WKTReader.phpt
++++ b/tests/003_WKTReader.phpt
+@@ -100,7 +100,7 @@ class WKTReaderTest extends GEOSTest
+             $this->assertContains('expects exactly 1 parameter',
+                                   $e->getMessage());
+         } catch (Error $e) {
+-            $this->assertContains('expects exactly 1 parameter', $e->getMessage());
++            $this->assertContains('expects exactly 1', $e->getMessage());
+         }
+     }
+ }
+-- 
+2.25.4
+
