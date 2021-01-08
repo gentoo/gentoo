@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.1[${PYTHON_USEDEP}]"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 src_prepare() {
 	sed -i -e '/network_avail/s:True:False:' \
