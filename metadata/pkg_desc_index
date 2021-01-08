@@ -3561,7 +3561,7 @@ dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line
 dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
-dev-db/pg_top 4.0.0 4.0.0-r1: 'top' for PostgreSQL
+dev-db/pg_top 4.0.0-r1: 'top' for PostgreSQL
 dev-db/pgadmin4 4.26 4.29: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 11.0 11.3 11.4: pgBadger is a PostgreSQL log analyzer.
@@ -13046,6 +13046,8 @@ media-libs/jbig2dec 0.18 0.19: A decoder implementation of the JBIG2 image compr
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 9d: Library to load, handle and manipulate images in the JPEG format
+media-libs/kcolorpicker 0.1.4: Qt based color picker with popup menu
+media-libs/kimageannotator 0.4.0: Tool for annotating images
 media-libs/kodi-platform 9999: Kodi platform support library
 media-libs/kquickimageeditor 0.1.2: QtQuick components providing basic image editing capabilities
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
