@@ -57,7 +57,7 @@ PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB
 REQUIRED_USE="|| ( drm wayland X )
 	opengl? ( X )"
 
-# CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs and in git
+# CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs
 DOCS=( NEWS CONTRIBUTING.md README.md )
 
 MULTILIB_WRAPPED_HEADERS=(
