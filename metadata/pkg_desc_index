@@ -17240,7 +17240,7 @@ sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2020.1.1 2020.1.9999 2020.2.0 2020.2.9999: A openstack meta-package for installing the various openstack pieces
-sys-cluster/pacemaker 1.1.16 1.1.24 2.0.5: Pacemaker CRM
+sys-cluster/pacemaker 1.1.24 2.0.5: Pacemaker CRM
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 3.0.0 4.0.0 2020.1.9999 2020.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
