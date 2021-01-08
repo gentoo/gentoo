@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jaco@uls.co.za> (2021-01-22)
+# blocksruntime (clang -fblocks requirement) for asterisk is available on this
+# architecture.
+net-misc/asterisk -blocks
+
 # Nils Freydank <holgersson@posteo.de> (2021-01-18)
 # Depends on media-plugins/gst-plugins-cairo, which isn't keyworded on x86.
 app-misc/pdfpc gstreamer
