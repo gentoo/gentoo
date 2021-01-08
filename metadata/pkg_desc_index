@@ -15556,6 +15556,7 @@ net-wireless/inspectrum 0.2.3 9999: Tool for analysing captured signals from sof
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 5.4 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
 net-wireless/iwd 1.10 1.11 9999: Wireless daemon for linux
+net-wireless/iwgtk 0.4: Lightweight, graphical wifi management utility for Linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2020.09.4 2020.12.2 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
@@ -17451,7 +17452,7 @@ sys-fs/loop-aes 3.7n-r1 3.7q-r1 3.7s: Linux kernel module to encrypt disk partit
 sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.187-r2 2.03.10: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.187-r2 2.03.11: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 4.0.6: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
