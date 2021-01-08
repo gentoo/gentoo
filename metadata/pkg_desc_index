@@ -12176,7 +12176,7 @@ kde-apps/poxml 20.08.3 20.12.1: KDE utility to translate DocBook XML files using
 kde-apps/print-manager 20.08.3 20.12.1: Manage print jobs and printers in Plasma
 kde-apps/rocs 20.08.3 20.12.1: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 20.08.3 20.12.1: KWallet extension for signond
-kde-apps/spectacle 20.08.3 20.12.1: Screenshot capture utility
+kde-apps/spectacle 20.08.3 20.12.1 20.12.1-r1: Screenshot capture utility
 kde-apps/step 20.08.3 20.12.1: Interactive physics simulator
 kde-apps/svgpart 20.08.3 20.12.1: Kpart for viewing SVGs
 kde-apps/sweeper 20.08.3 20.12.1: Privacy settings widget to clean unwanted traces on the system
