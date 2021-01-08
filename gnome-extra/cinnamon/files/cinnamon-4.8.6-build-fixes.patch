@@ -1,0 +1,28 @@
+diff --git a/meson.build b/meson.build
+index a4d49a16..eff937ac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -36,8 +36,6 @@ gio_unix = dependency('gio-unix-2.0')
+ gl = dependency('gl')
+ glib_version = '2.52.0'
+ glib = dependency('glib-2.0', version: '>= ' + glib_version)
+-gstreamer = dependency('gstreamer-1.0')
+-gstreamer_base = dependency('gstreamer-base-1.0')
+ gtk = dependency('gtk+-3.0', version: '>= 3.12.0')
+ muffin = dependency('libmuffin', version: '>= 4.0.3')
+ muffinlibdir = muffin.get_pkgconfig_variable('typelibdir')
+@@ -53,6 +51,14 @@ if has_nm
+     dependency('libnm')
+ endif
+ 
++if get_option('build_recorder')
++	gstreamer = dependency('gstreamer-1.0')
++	gstreamer_base = dependency('gstreamer-base-1.0')
++else
++	gstreamer = dependency('', required: false)
++	gstreamer_base = dependency('', required: false)
++endif
++
+ # on some systems we need to find the math lib to make sure it builds
+ cc = meson.get_compiler('c')
+ math = cc.find_library('m', required: false)
