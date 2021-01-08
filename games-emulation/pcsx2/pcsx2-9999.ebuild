@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake fcaps flag-o-matic git-r3 multilib toolchain-funcs wxwidgets
+inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
@@ -13,29 +13,28 @@ EGIT_SUBMODULES=()
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 RDEPEND="
-	app-arch/bzip2[abi_x86_32(-)]
-	app-arch/xz-utils[abi_x86_32(-)]
-	dev-cpp/yaml-cpp:=[abi_x86_32(-)]
-	dev-libs/libaio[abi_x86_32(-)]
-	dev-libs/libfmt:=[abi_x86_32(-)]
-	dev-libs/libxml2:2[abi_x86_32(-)]
-	media-libs/alsa-lib[abi_x86_32(-)]
-	media-libs/libpng:=[abi_x86_32(-)]
-	media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound]
-	media-libs/libsoundtouch[abi_x86_32(-)]
-	media-libs/portaudio[abi_x86_32(-)]
-	net-libs/libpcap[abi_x86_32(-)]
-	sys-libs/zlib[abi_x86_32(-)]
-	virtual/libudev[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]
-	x11-libs/gtk+:3[abi_x86_32(-)]
-	x11-libs/libICE[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]
-	x11-libs/libXext[abi_x86_32(-)]
-	x11-libs/wxGTK:3.0-gtk3[abi_x86_32(-),X]
+	app-arch/bzip2
+	app-arch/xz-utils
+	dev-cpp/yaml-cpp:=
+	dev-libs/libaio
+	dev-libs/libfmt:=
+	dev-libs/libxml2:2
+	media-libs/alsa-lib
+	media-libs/libpng:=
+	media-libs/libsdl2[haptic,joystick,sound]
+	media-libs/libsoundtouch
+	media-libs/portaudio
+	net-libs/libpcap
+	sys-libs/zlib
+	virtual/libudev
+	virtual/opengl
+	x11-libs/gtk+:3
+	x11-libs/libICE
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/wxGTK:3.0-gtk3[X]
 "
 DEPEND="${RDEPEND}
 	dev-cpp/pngpp
@@ -57,7 +56,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	multilib_toolchain_setup x86
 	# Build with ld.gold fails
 	# https://github.com/PCSX2/pcsx2/issues/1671
 	tc-ld-disable-gold
@@ -65,13 +63,6 @@ src_configure() {
 	# pcsx2 build scripts will force CMAKE_BUILD_TYPE=Devel
 	# if it something other than "Devel|Debug|Release"
 	local CMAKE_BUILD_TYPE="Release"
-
-	if use amd64; then
-		# Passing correct CMAKE_TOOLCHAIN_FILE for amd64
-		# https://github.com/PCSX2/pcsx2/pull/422
-		local MYCMAKEARGS=(-DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake)
-	fi
-
 	local mycmakeargs=(
 		-DARCH_FLAG=
 		-DDISABLE_BUILD_DATE=TRUE
