@@ -5170,7 +5170,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.2.1 8.2.2 8.2.3 8.3.12 8.3.13 8.3.14: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.2.1 8.2.2 8.2.3 8.3.14 8.3.15: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10: Tool Command Language
@@ -8289,7 +8289,7 @@ dev-python/humanfriendly 8.2: Human friendly output for text interfaces using Py
 dev-python/humanize 3.1.0 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
-dev-python/hyperlink 20.0.1: A featureful, correct URL for Python
+dev-python/hyperlink 20.0.1 21.0.0: A featureful, correct URL for Python
 dev-python/hypothesis 5.41.5 5.43.3 5.43.4 5.47.0 5.48.0 5.49.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
@@ -8758,7 +8758,7 @@ dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pymongo 3.11.0-r1 3.11.1 3.11.2: Python driver for MongoDB
 dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pymssql 2.1.3: Simple MSSQL python extension module
-dev-python/pymysql 0.10.1 1.0.0: Pure-Python MySQL Driver
+dev-python/pymysql 0.10.1 1.0.0 1.0.1: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
@@ -9309,7 +9309,7 @@ dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
 dev-python/zope-interface 5.1.2 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0: Zope schema Architecture
-dev-python/zope-testing 4.7-r2 4.8: Zope testing helpers
+dev-python/zope-testing 4.7-r2 4.8 4.9: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
 dev-python/zstandard 0.14.0-r1 0.14.1 0.15.0 0.15.1: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
@@ -15321,7 +15321,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2020.12.22 2020.12.26 2020.12.29 2020.12.31 2021.01.03 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.12.22 2020.12.26 2020.12.29 2020.12.31 2021.01.03 2021.01.08 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
