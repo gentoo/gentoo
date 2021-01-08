@@ -650,7 +650,7 @@ app-admin/kpcli 3.6: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.9.1: Fast way to switch between clusters and namespaces in kubectl
 app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
-app-admin/lastpass-cli 1.3.1-r1 1.3.2 1.3.3: Interfaces with LastPass.com from the command line.
+app-admin/lastpass-cli 1.3.3: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.14: Check for mapped libs and open files that are marked as deleted
 app-admin/lnav 0.8.5 0.9.0: A curses-based tool for viewing and analyzing log files
 app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
@@ -11810,10 +11810,10 @@ gnome-extra/evolution-ews 3.36.5 3.38.2: Evolution module for connecting to Micr
 gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers user configurable context menu actions
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.36.6: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-calculator 3.36.0: A calculator application for GNOME
+gnome-extra/gnome-calculator 3.36.0 3.38.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.36.2 3.38.1 3.38.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.34.0: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.36.2: Clocks application for GNOME
+gnome-extra/gnome-clocks 3.36.2 3.38.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.36.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.36.2 3.38.1: GNOME contact management application
@@ -11932,7 +11932,7 @@ gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/greetd 0.6.1: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
-gui-libs/libhandy 0.0.13 1.0.2: Building blocks for modern adaptive GNOME apps
+gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
 gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.4.0 5.0.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wayfire-plugins-extra 0.6.0 9999: extra plugins for wayfire
