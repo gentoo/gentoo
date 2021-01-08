@@ -28,7 +28,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE="test +custom-cflags"
 
 RESTRICT="!test? ( test )"
 
@@ -36,12 +36,14 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.2_conditional_testing.patch
+	"${FILESDIR}"/${PN}-20.4.1_custom_cflags.patch
 )
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TYPE=Release
 		-DBUILD_TESTING=$(usex test)
+		-DOVERRIDE_COMPILER_FLAGS=$(usex !user-cflags)
 	)
 	cmake_src_configure
 }
