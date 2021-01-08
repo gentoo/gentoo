@@ -8,4 +8,7 @@
     <email>k2k@narod.ru</email>
     <name>Evgeny Grin</name>
   </maintainer>
+  <use>
+    <flag name="custom-cflags">Do not override user CFLAGS like -march, -msse and similar with lib defaults. Not tested by upstream.</flag>
+  </use>
 </pkgmetadata>
