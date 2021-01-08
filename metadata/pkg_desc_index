@@ -17041,7 +17041,7 @@ sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verificati
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 17.0.0 18.0.0 2020.1.9999 2020.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.99.0 1.0 1.90.1-r1 1.90.2-r1 1.90.3-r1: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.99.0 1.0 1.90.1-r1 1.90.2-r1 1.90.6: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
