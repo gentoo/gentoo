@@ -1,0 +1,28 @@
+From b0c2b99b46797ca91bdba1d95fda33808174466b Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Thu, 21 Jan 2021 09:41:40 -0500
+Subject: [PATCH] nemo-icon-canvas-item.c: restore the style context after
+ drawing any caption text.
+
+This seemed to be causing style recalculations to accumulate over
+time, and particularly when changing the style for window focus
+in/out events. This would eventually have a huge impact on user
+interaction.
+
+Fixes #2472
+---
+ libnemo-private/nemo-icon-canvas-item.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libnemo-private/nemo-icon-canvas-item.c b/libnemo-private/nemo-icon-canvas-item.c
+index d1b6cbfad..b32de357d 100644
+--- a/libnemo-private/nemo-icon-canvas-item.c
++++ b/libnemo-private/nemo-icon-canvas-item.c
+@@ -1143,6 +1143,7 @@ draw_label_text (NemoIconCanvasItem *item,
+ 		gtk_render_layout (context, cr,
+ 				   x, text_rect.y0 + details->editable_text_height + LABEL_LINE_SPACING + TEXT_TOP_GAP,
+ 				   additional_layout);
++        gtk_style_context_restore (context);
+ 	}
+ 
+ 	if (item->details->is_highlighted_as_keyboard_focus) {
