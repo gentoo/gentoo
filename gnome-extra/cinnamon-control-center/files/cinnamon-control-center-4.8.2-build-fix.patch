@@ -1,0 +1,36 @@
+From a9d7d0f7f36bc724ecb65019999fc1c4d671bcba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?F=C3=A9lix=20Pi=C3=A9dallu?= <felix@piedallu.me>
+Date: Thu, 31 Dec 2020 10:09:17 +0100
+Subject: [PATCH] Add ifdefs to prevent undefined reference to modem functions
+ in network panel
+
+---
+ panels/network/cc-network-panel.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/panels/network/cc-network-panel.c b/panels/network/cc-network-panel.c
+index 8b28439..38d9842 100644
+--- a/panels/network/cc-network-panel.c
++++ b/panels/network/cc-network-panel.c
+@@ -29,7 +29,9 @@
+ #include <NetworkManager.h>
+ 
+ #include "net-device.h"
++#ifdef BUILD_MODEM
+ #include "net-device-mobile.h"
++#endif
+ #include "net-device-wifi.h"
+ #include "net-device-ethernet.h"
+ #include "net-object.h"
+@@ -651,9 +653,11 @@ panel_add_device (CcNetworkPanel *panel, NMDevice *device)
+         case NM_DEVICE_TYPE_ETHERNET:
+                 device_g_type = NET_TYPE_DEVICE_ETHERNET;
+                 break;
++        #ifdef BUILD_MODEM
+         case NM_DEVICE_TYPE_MODEM:
+                 device_g_type = NET_TYPE_DEVICE_MOBILE;
+                 break;
++        #endif
+         case NM_DEVICE_TYPE_WIFI:
+                 device_g_type = NET_TYPE_DEVICE_WIFI;
+                 break;
