@@ -1,35 +1,42 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
-
-inherit desktop distutils-r1 virtualx xdg
+inherit desktop distutils-r1 qmake-utils virtualx xdg
 
 DESCRIPTION="Qt scientific plotting package with good Postscript output"
 HOMEPAGE="https://veusz.github.io/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="dbus doc hdf5"
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-python/PyQt5[widgets,svg,printsupport,${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]"
-RDEPEND="${CDEPEND}
+COMMON_DEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/PyQt5[widgets,svg,printsupport,${PYTHON_USEDEP}]
+"
+RDEPEND="${COMMON_DEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
-	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )"
-DEPEND="${CDEPEND}
+	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
+"
+DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sip[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+"
 
 src_prepare() {
 	distutils-r1_src_prepare
 	xdg_environment_reset
+}
+
+python_compile() {
+	distutils-r1_python_compile build_ext --qmake-exe=$(qt5_get_bindir)/qmake
 }
 
 python_test() {
