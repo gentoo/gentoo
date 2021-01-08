@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -165,6 +165,11 @@ src_prepare() {
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
+	if use proprietary-codecs; then
+		rm ${VIVALDI_HOME}/lib/libffmpeg.so || die
+		rmdir ${VIVALDI_HOME}/lib || die
+	fi
+
 	eapply_user
 }
 
@@ -181,8 +186,8 @@ src_install() {
 	done
 
 	if use proprietary-codecs; then
-		dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so \
-			  /${VIVALDI_HOME}/lib/libffmpeg.so
+		dosym ../../usr/$(get_libdir)/chromium/libffmpeg.so \
+			  /${VIVALDI_HOME}/libffmpeg.so.$(ver_cut 1-2)
 	fi
 
 	if use widevine; then
@@ -191,4 +196,7 @@ src_install() {
 	else
 		rm "${ED}"/${VIVALDI_HOME}/WidevineCdm || die
 	fi
+
+	[[ ${PN} = vivaldi-snapshot ]] &&
+		dosym ${PN} /${VIVALDI_HOME}/vivaldi
 }
