@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cairo"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="
 	cairo? ( x11-libs/cairo )
 	sys-libs/ncurses:=
