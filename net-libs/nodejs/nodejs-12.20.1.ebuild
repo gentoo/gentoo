@@ -45,6 +45,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-12.20.1-fix_ppc64_crashes.patch
 	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 RESTRICT="test"
