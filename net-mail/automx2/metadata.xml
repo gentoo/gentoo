@@ -10,6 +10,7 @@
 		<name>Marc Schiffbauer</name>
 		<description>Proxy</description>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		automx2 makes configuring a mail account easy. It unites
 		methods for automated mailbox configuration from Apple
