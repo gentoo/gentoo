@@ -9814,7 +9814,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4 2.2.0 2.2.3: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.4 2.2.0 2.2.3 2.2.4: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
@@ -17066,7 +17066,7 @@ sys-auth/pam_fprint 0.2-r2: a simple PAM module which uses libfprint's functiona
 sys-auth/pam_krb5 4.9: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
-sys-auth/pam_mount 2.16-r3 2.17: A PAM module that can mount volumes for a user session
+sys-auth/pam_mount 2.16-r3 2.17 2.18: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.3.1: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_require 0.7-r1: Allows you to require a special group or user to access a service
