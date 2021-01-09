@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
@@ -11,9 +11,9 @@ DESCRIPTION="Astronomical World Coordinate System transformations library"
 HOMEPAGE="https://www.atnf.csiro.au/people/mcalabre/WCS/"
 SRC_URI="ftp://ftp.atnf.csiro.au/pub/software/${PN}/${P}.tar.bz2"
 
-SLOT="0/5"
+SLOT="0/7"
 LICENSE="LGPL-3"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fortran fits pgplot static-libs +tools"
 
 RDEPEND="
@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local myconf=(
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable fortran)
 		$(use_enable tools utils)
@@ -50,16 +51,11 @@ src_configure() {
 	sed -i -e 's/COPYING\*//' GNUmakefile || die
 }
 
-src_compile() {
-	# nasty makefile, debugging means probably full rewrite
-	emake -j1
-}
-
 src_test() {
-	emake -j1 check
+	emake check
 }
 
-src_install() {
+src_install () {
 	default
 	# static libs share the same symbols as shared (i.e. compiled with PIC)
 	# so they are not compiled twice
