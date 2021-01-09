@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,9 +56,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-2.6-cmake-lua-version.patch"
+	"${FILESDIR}/rspamd-2.7-cmake-lua-version.patch"
 	"${FILESDIR}/rspamd-2.6-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-9999-unbundle-zstd.patch"
+	"${FILESDIR}/rspamd-2.7-unbundle-zstd.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
 )
 
