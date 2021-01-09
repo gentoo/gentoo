@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,10 @@ RDEPEND="media-libs/mesa[X(+)]
 	>=sci-libs/fftw-3
 	media-libs/libsdl2
 	"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	app-arch/unzip
+"
 
 src_configure() {
 	econf --disable-static
