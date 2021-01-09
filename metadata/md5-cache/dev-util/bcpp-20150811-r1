@@ -5,5 +5,5 @@ HOMEPAGE=https://invisible-island.net/bcpp/
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=MIT
 SLOT=0
-SRC_URI=ftp://invisible-island.net/bcpp/bcpp-20150811.tgz
-_md5_=2238d59b856faa960c700a504dd55675
+SRC_URI=ftp://ftp.invisible-island.net/bcpp/bcpp-20150811.tgz
+_md5_=5d3272f58a5737fea69b562bd2060ab8
