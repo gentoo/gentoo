@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-11)
+# KF5 PortingAid (from kdelibs4) without any remaining revdeps. Bug #755956
+# Masked for removal in 30 days.
+kde-frameworks/kdesignerplugin
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-01-10)
 # The Duke Nukem 3D demo data files will be now handled by the
 # 'games-fps/duke3d-data' package, so this package isn't
