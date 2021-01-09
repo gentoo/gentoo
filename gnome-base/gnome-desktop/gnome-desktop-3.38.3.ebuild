@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org gnome2-utils meson virtualx xdg
+inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Library with common API for various GNOME modules"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop/"
@@ -10,9 +10,8 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop/"
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1+"
 SLOT="3/19" # subslot = libgnome-desktop-3 soname version
 IUSE="debug gtk-doc +introspection seccomp systemd udev"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
-# cairo[X] needed for gnome-bg
 COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.5:2[introspection?]
 	>=x11-libs/gtk+-3.3.6:3[X,introspection?]
@@ -20,14 +19,13 @@ COMMON_DEPEND="
 	>=gnome-base/gsettings-desktop-schemas-3.27.0[introspection?]
 	x11-misc/xkeyboard-config
 	app-text/iso-codes
-	x11-libs/libX11
 	systemd? ( sys-apps/systemd:= )
 	udev? (
 		sys-apps/hwids
 		virtual/libudev:= )
 	seccomp? ( sys-libs/libseccomp )
 
-	x11-libs/cairo:=[X]
+	x11-libs/cairo:=
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -70,8 +68,4 @@ src_configure() {
 		-Dinstalled_tests=false
 	)
 	meson_src_configure
-}
-
-src_test() {
-	virtx meson_src_test
 }
