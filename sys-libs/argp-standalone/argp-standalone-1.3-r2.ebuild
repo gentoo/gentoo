@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Standalone argp library for use with uclibc"
 HOMEPAGE="http://www.lysator.liu.se/~nisse/misc/"
-SRC_URI="http://www.lysator.liu.se/~nisse/misc/argp-standalone-1.3.tar.gz"
+SRC_URI="http://www.lysator.liu.se/~nisse/misc/${P}.tar.gz"
 
 LICENSE="public-domain GPL-2 GPL-3 XC"
 SLOT="0"
