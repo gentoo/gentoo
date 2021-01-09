@@ -1,7 +1,7 @@
 BDEPEND=doc? ( app-doc/doxygen ) man? ( app-text/docbook-sgml-utils ) verify-sig? ( app-crypt/openpgp-keys-linuxcontainers ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
 DEFINED_PHASES=configure install postinst prepare setup unpack
 DEPEND=app-misc/pax-utils sys-apps/util-linux sys-libs/libcap virtual/awk caps? ( sys-libs/libcap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) >=sys-kernel/linux-headers-4 apparmor? ( sys-apps/apparmor )
-DESCRIPTION=LinuX Containers userspace utilities
+DESCRIPTION=A userspace interface for the Linux kernel containment features
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/ https://github.com/lxc/lxc
 IUSE=apparmor +caps doc examples libressl man pam seccomp selinux +ssl +tools verify-sig kernel_linux verify-sig
@@ -11,4 +11,4 @@ RDEPEND=app-misc/pax-utils sys-apps/util-linux sys-libs/libcap virtual/awk caps?
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxc/lxc-4.0.5.tar.gz verify-sig? ( https://linuxcontainers.org/downloads/lxc/lxc-4.0.5.tar.gz.asc )
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6c9aa35fc16df43d7142ef2660e00e25	pam	b097695df28f3974e3af860d6704d4f2	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	verify-sig	40b4f4f782cf67118f594ce604cc4c0a	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=ba1ad95e447b858053285b5a987005f7
+_md5_=2181d8f99f52e8cd7cef70a475fba294
