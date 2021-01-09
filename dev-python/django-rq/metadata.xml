@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">rq/django-rq</remote-id>
 		<remote-id type="pypi">django-rq</remote-id>
 	</upstream>
 </pkgmetadata>
