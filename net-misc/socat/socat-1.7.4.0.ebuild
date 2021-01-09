@@ -35,6 +35,10 @@ RESTRICT="
 
 DOCS=( BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY )
 
+PATCHES=(
+	"${FILESDIR}/${P}-32bit_build_fix.patch"
+)
+
 pkg_setup() {
 	# bug #587740
 	if use readline && use ssl; then
