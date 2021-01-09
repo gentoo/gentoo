@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 DESCRIPTION="Indents C/C++ source code"
 HOMEPAGE="https://invisible-island.net/bcpp/"
@@ -9,8 +9,7 @@ SRC_URI="ftp://ftp.invisible-island.net/bcpp/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 src_compile() {
 	emake CPPFLAGS='-DBCPP_CONFIG_DIR=\"/etc/bcpp/\"'
@@ -30,6 +29,6 @@ pkg_postinst() {
 	elog "Run bcpp.  Please note that in order to get help for"
 	elog "bcpp, please run bcpp -h and not the command by itself."
 	elog ""
-	elog "Configuration files are at /etc/bcpp."
+	elog "Configuration files are at ${EPREFIX}/etc/bcpp."
 	elog "To use them, use the -c option followed by the filename."
 }
