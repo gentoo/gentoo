@@ -12,7 +12,7 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="test"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
@@ -25,6 +25,8 @@ src_configure() {
 		-DBENCHMARK_ENABLE_GTEST_TESTS=OFF
 		-DBENCHMARK_ENABLE_ASSEMBLY_TESTS=OFF
 	)
+
+	use debug || append-cppflags -DNDEBUG
 
 	cmake_src_configure
 }
