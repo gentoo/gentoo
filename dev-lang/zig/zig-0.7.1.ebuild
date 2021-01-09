@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,22 +19,24 @@ else
 	KEYWORDS="~amd64"
 fi
 
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430 NVPTX
-	PowerPC Sparc SystemZ WebAssembly X86 XCore )
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+	PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
+
 # According to zig's author, zig builds that do not support all targets are not
 # supported by the upstream project.
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]}
 
 RDEPEND="
-	sys-devel/llvm:9
-	!experimental? ( sys-devel/llvm:9[${LLVM_TARGET_USEDEPS// /,}] )
-	sys-devel/clang:9
+	sys-devel/clang:11
+	=sys-devel/lld-11*[shared]
+	sys-devel/llvm:11
+	!experimental? ( sys-devel/llvm:11[${LLVM_TARGET_USEDEPS// /,}] )
 "
 
 DEPEND="${RDEPEND}"
 
-LLVM_MAX_SLOT=9
+LLVM_MAX_SLOT=11
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
@@ -42,19 +44,20 @@ llvm_check_deps() {
 
 src_prepare() {
 	if use experimental; then
-		sed -i '/^NEED_TARGET(/d' cmake/Findllvm.cmake || die "unable to modify cmake/Findllvm.cmake"
+		einfo "Experimental: allow building without all LLVM targets"
+		sed -i '/^  NEED_TARGET(/d' cmake/Findllvm.cmake || die "unable to modify cmake/Findllvm.cmake"
 	fi
 
 	sed -i 's/--prefix "${CMAKE_INSTALL_PREFIX}"/--prefix ".\/${CMAKE_INSTALL_PREFIX}"/' CMakeLists.txt || \
-	    die "unable to fix install path"
+		die "unable to fix install path"
 
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLANG_INCLUDE_DIRS="$(llvm-config --includedir)"
-		-DCLANG_LIBDIRS="$(llvm-config --libdir)"
+		-DZIG_PREFER_CLANG_CPP_DYLIB=on
+		-DZIG_PREFER_LLVM_CONFIG=on
 	)
 
 	cmake_src_configure
