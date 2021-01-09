@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Lua utility libraries loosely based on the Python standard libraries"
-HOMEPAGE="https://github.com/Tieske/Penlight",
+HOMEPAGE="https://github.com/Tieske/Penlight"
 SRC_URI="https://github.com/Tieske/Penlight/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
