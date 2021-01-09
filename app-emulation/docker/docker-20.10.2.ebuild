@@ -14,7 +14,7 @@ SRC_URI="https://github.com/moby/moby/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="apparmor aufs btrfs +cli +container-init device-mapper hardened overlay seccomp"
+IUSE="apparmor aufs btrfs +cli +container-init device-mapper hardened overlay seccomp selinux"
 
 DEPEND="
 	acct-group/docker
@@ -209,7 +209,9 @@ src_compile() {
 			-i hack/make/dynbinary-daemon || die
 		grep -q -- '-fno-PIC' hack/make/dynbinary-daemon || die 'hardened sed failed'
 	fi
-
+	ln -sf ${WORKDIR}/${P}/src/github.com/moby ${WORKDIR}/${P}/src/github.com/docker
+        ln -sf ${WORKDIR}/${P}/src/github.com/moby/moby ${WORKDIR}/${P}/src/github.com/docker/docker
+	
 	# build daemon
 	./hack/make.sh dynbinary || die 'dynbinary failed'
 }
