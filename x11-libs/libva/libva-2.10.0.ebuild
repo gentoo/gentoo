@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
@@ -60,6 +60,15 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_dricommon.h
 	/usr/include/va/va_glx.h
 )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.10.0-unbreak_gnu_sed.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
