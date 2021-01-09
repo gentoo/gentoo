@@ -3378,6 +3378,7 @@ gui-apps/waybar:network - Enable libnl support for network related features
 gui-apps/waybar:popups - Enable popup support with gtk-layer-shell
 gui-apps/waybar:pulseaudio - Enable support for volume control via PulseAudio
 gui-apps/waybar:tray - Enable support for tray
+gui-apps/waybar:wifi - Enable support for wifi/rfkill
 gui-apps/wf-recorder:man - Build and install man pages
 gui-apps/wf-recorder:opencl - Enable OpenCL
 gui-libs/greetd:man - Build and install man pages
