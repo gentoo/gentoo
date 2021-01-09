@@ -113,12 +113,12 @@ office-ext-r1_src_unpack() {
 		if [[ -f "${OFFICE_EXTENSIONS_LOCATION}/${i}" ]] ; then
 			case ${i} in
 				*.oxt)
-					mkdir -p "${WORKDIR}/${i}/"
-					pushd "${WORKDIR}/${i}/" > /dev/null
-					echo ">>> Unpacking "${OFFICE_EXTENSIONS_LOCATION}/${i}" to ${PWD}"
+					mkdir -p "${WORKDIR}/${i}/" || die
+					pushd "${WORKDIR}/${i}/" > /dev/null || die
+					einfo "Unpacking "${OFFICE_EXTENSIONS_LOCATION}/${i}" to ${PWD}"
 					unzip -qo ${OFFICE_EXTENSIONS_LOCATION}/${i}
 					assert "failed unpacking ${OFFICE_EXTENSIONS_LOCATION}/${i}"
-					popd > /dev/null
+					popd > /dev/null || die
 					;;
 				*) unpack ${i} ;;
 			esac
@@ -138,10 +138,10 @@ office-ext-r1_src_install() {
 	for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
 		if use office_implementation_${i}; then
 			for j in ${OFFICE_EXTENSIONS[@]}; do
-				pushd "${WORKDIR}/${j}/" > /dev/null
+				pushd "${WORKDIR}/${j}/" > /dev/null || die
 				insinto /usr/$(get_libdir)/${i}/share/extensions/${j/.oxt/}
 				doins -r *
-				popd > /dev/null
+				popd > /dev/null || die
 			done
 		fi
 	done
