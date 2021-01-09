@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ src_compile() {
 }
 
 src_test() {
-	go test -mod=vendor -v -timeout=30s ./cmd/kube-router ./pkg/... || 
+	go test -mod=vendor -v -timeout=30s ./cmd/kube-router ./pkg/... ||
 		die "tests failed"
 }
 
