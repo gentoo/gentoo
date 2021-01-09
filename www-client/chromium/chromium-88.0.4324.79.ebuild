@@ -1,4 +1,4 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -226,6 +226,8 @@ pkg_setup() {
 src_prepare() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
+
+	rm "${WORKDIR}/patches/chromium-84-blink-disable-clang-format.patch" || die
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
