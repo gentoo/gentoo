@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Convertor written in Perl that converts LATEX documents to HTML"
 HOMEPAGE="https://www.latex2html.org/"
-SRC_URI="http://mirrors.ctan.org/support/latex2html/latex2html-2015.tar.gz"
+SRC_URI="http://mirrors.ctan.org/support/latex2html/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
