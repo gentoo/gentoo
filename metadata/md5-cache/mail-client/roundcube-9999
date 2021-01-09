@@ -11,4 +11,4 @@ RDEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=dev-lang/php-5.4.0[filt
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=9999
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=bc2d8002357dc376293ea8689b5a061f
+_md5_=6ad90ddd99b8bc0c943618acd9252e91
