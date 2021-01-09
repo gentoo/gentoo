@@ -13,32 +13,31 @@ S="${WORKDIR}/${P}-source"
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
-IUSE="X +javascript libressl opengl ssl static-libs"
+IUSE="X +javascript libressl opengl ssl"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
 # bug #653298), the best way to ensure that its dependencies are present is to
 # install system's freeglut.
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	>=dev-lang/mujs-1.0.7:=[static-libs?]
-	media-libs/freetype:2=[static-libs?]
-	media-libs/harfbuzz:=[static-libs?,truetype]
-	media-libs/jbig2dec:=[static-libs?]
-	media-libs/libpng:0=[static-libs?]
-	>=media-libs/openjpeg-2.1:2=[static-libs?]
-	virtual/jpeg[static-libs?]
+	>=dev-lang/mujs-1.0.7:=
+	media-libs/freetype:2=
+	media-libs/harfbuzz:=[truetype]
+	media-libs/jbig2dec:=
+	media-libs/libpng:0=
+	>=media-libs/openjpeg-2.1:2=
+	virtual/jpeg
 	opengl? ( >=media-libs/freeglut-3.0.0:= )
 	ssl? (
-		libressl? ( >=dev-libs/libressl-3.2.0:0=[static-libs?] )
-		!libressl? ( >=dev-libs/openssl-1.1:0=[static-libs?] )
+		libressl? ( >=dev-libs/libressl-3.2.0:0= )
+		!libressl? ( >=dev-libs/openssl-1.1:0= )
 	)
 	X? (
-		x11-libs/libX11[static-libs?]
-		x11-libs/libXext[static-libs?]
-	)"
+		x11-libs/libX11
+		x11-libs/libXext
+	)
+"
 DEPEND="${RDEPEND}"
-
-REQUIRED_USE="opengl? ( !static-libs )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
@@ -113,9 +112,6 @@ _emake() {
 
 src_compile() {
 	_emake XCFLAGS="-fpic"
-
-	use static-libs && \
-		_emake build/debug/lib${PN}.a
 }
 
 src_install() {
@@ -130,8 +126,6 @@ src_install() {
 
 	dosym libmupdf.so.${PV} /usr/$(get_libdir)/lib${PN}.so
 
-	use static-libs && \
-		dolib.a build/debug/lib${PN}.a
 	if use opengl ; then
 		einfo "mupdf symlink points to mupdf-gl (bug 616654)"
 		dosym ${PN}-gl /usr/bin/${PN}
