@@ -1,0 +1,13 @@
+https://sources.debian.org/patches/xf86-video-omap/0.4.5-1.1/null-dereference.patch/
+https://bugs.gentoo.org/707358
+--- a/src/omap_driver.c
++++ v/src/omap_driver.c
+@@ -542,7 +542,7 @@ OMAPPreInit(ScrnInfoPtr pScrn, int flags
+ 	}
+ 
+ 	if (!pScrn->chipset) {
+-		ERROR_MSG("Unknown chipset: %s", pScrn->chipset);
++		ERROR_MSG("Unknown chipset");
+ 		goto fail;
+ 	}
+ 
