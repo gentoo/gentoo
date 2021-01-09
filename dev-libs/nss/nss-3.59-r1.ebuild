@@ -9,7 +9,7 @@ NSPR_VER="4.29"
 RTM_NAME="NSS_${PV//./_}_RTM"
 
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
-HOMEPAGE="https://www.mozilla.org/projects/security/pki/nss/"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
 	cacert? ( https://dev.gentoo.org/~axs/distfiles/${PN}-cacert-class1-class3.patch )"
 
