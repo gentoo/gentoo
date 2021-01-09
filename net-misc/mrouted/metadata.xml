@@ -5,4 +5,7 @@
 	<use>
 		<flag name="rsrr">Enable Routing Support for Resource Reservations, for RSVP</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">troglobit/mrouted</remote-id>
+	</upstream>
 </pkgmetadata>
