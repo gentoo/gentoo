@@ -15,6 +15,10 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-Add-missing-limits-inclusion.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBENCHMARK_ENABLE_TESTING=$(usex test)
