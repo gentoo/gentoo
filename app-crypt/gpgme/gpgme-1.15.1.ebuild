@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 flag-o-matic libtool qmake-utils toolchain-funcs
@@ -14,12 +14,12 @@ SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1/11" # subslot = soname major version
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp static-libs +cxx python qt5"
 
 RDEPEND=">=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.5.3:=
-	>=dev-libs/libgpg-error-1.29:=
+	>=dev-libs/libgpg-error-1.36:=
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtcore:5 )"
 	#doc? ( app-doc/doxygen[dot] )
@@ -101,7 +101,7 @@ src_test() {
 src_install() {
 	default
 	do_python
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	# backward compatibility for gentoo
 	# in the past we had slots
