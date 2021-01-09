@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,9 @@ RDEPEND=">=dev-libs/elfutils-0.142
 DEPEND="${RDEPEND}
 	app-arch/cpio
 	app-text/xmlto
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	')
 	>=sys-devel/gettext-0.18.2
 	libvirt? ( dev-libs/libxml2 )
 "
