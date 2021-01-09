@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Sam James <sam@gentoo.org> (2021-01-09)
+# relapack is experimental, please be careful with use
+# bug #764206
+sci-libs/openblas relapack
+
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # temporarily block tests so that bugs can be resolved
 dev-php/theseer-Autoload test
