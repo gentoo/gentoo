@@ -66,9 +66,7 @@ IUSE="+clang cpu_flags_arm_neon dbus debug eme-free geckodriver +gmp-autoupdate
 	+system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp wayland wifi"
 
-# gcc+lto is broken again, bgo#764590
 REQUIRED_USE="debug? ( !system-av1 )
-	lto? ( clang )
 	screencast? ( wayland )"
 
 BDEPEND="${PYTHON_DEPS}
@@ -103,9 +101,6 @@ BDEPEND="${PYTHON_DEPS}
 				pgo? ( =sys-libs/compiler-rt-sanitizers-9*[profile] )
 			)
 		)
-	)
-	lto? (
-		!clang? ( sys-devel/binutils[gold] )
 	)
 	amd64? ( >=dev-lang/yasm-1.1 )
 	x86? ( >=dev-lang/yasm-1.1 )
@@ -666,9 +661,6 @@ src_configure() {
 
 			mozconfig_add_options_ac '+lto' --enable-lto=cross
 		else
-			# Linking only works when using ld.gold when LTO is enabled
-			mozconfig_add_options_ac "forcing ld=gold due to USE=lto" --enable-linker=gold
-
 			# ThinLTO is currently broken, see bmo#1644409
 			mozconfig_add_options_ac '+lto' --enable-lto=full
 		fi
@@ -686,8 +678,6 @@ src_configure() {
 		if use clang ; then
 			# This is upstream's default
 			mozconfig_add_options_ac "forcing ld=lld due to USE=clang" --enable-linker=lld
-		elif tc-ld-is-gold ; then
-			mozconfig_add_options_ac "linker is set to gold" --enable-linker=gold
 		else
 			mozconfig_add_options_ac "linker is set to bfd" --enable-linker=bfd
 		fi
