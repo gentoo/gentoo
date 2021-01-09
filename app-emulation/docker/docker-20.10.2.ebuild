@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-EGO_PN="github.com/moby/moby"
+EGO_PN=github.com/docker/docker
 GIT_COMMIT=f0014860c1
 inherit bash-completion-r1 linux-info systemd udev golang-vcs-snapshot
 
@@ -196,7 +196,7 @@ src_compile() {
 		fi
 	done
 
-	for tag in apparmor seccomp selinux; do
+	for tag in apparmor seccomp; do
 		if use $tag; then
 			DOCKER_BUILDTAGS+=" $tag"
 		fi
