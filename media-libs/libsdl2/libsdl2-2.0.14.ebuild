@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P="SDL2-${PV}"
@@ -187,7 +188,7 @@ multilib_src_configure() {
 		$(use_with X x)
 	)
 
-	#ECONF_SOURCE="${S}" 
+	#ECONF_SOURCE="${S}"
 	econf "${myeconfargs[@]}"
 }
 

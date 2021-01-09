@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="Practical Music Search: an open source ncurses client for mpd, written in C++"
 HOMEPAGE="https://ambientsound.github.io/pms"
@@ -16,15 +16,15 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+regex doc"
 
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-text/pandoc )
+"
 RDEPEND="
 	sys-libs/ncurses:0=[unicode]
 	media-libs/libmpdclient
 "
-DEPEND="
-	virtual/pkgconfig
-	doc? ( app-text/pandoc )
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
@@ -32,5 +32,5 @@ src_configure() {
 		-DENABLE_REGEX=$(usex regex)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
