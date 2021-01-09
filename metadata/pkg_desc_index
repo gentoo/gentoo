@@ -14724,7 +14724,7 @@ net-libs/davix 0.7.6: High-performance file management over WebDAV/HTTP
 net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-core 0.6.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.6.0: A library to discover and manipulate DLNA renderers
-net-libs/enet 1.2.2-r1 1.3.13 1.3.16: Relatively thin, simple and robust network communication layer on top of UDP
+net-libs/enet 1.2.2-r1 1.3.13 1.3.17: Relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.2.8-r2: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
 net-libs/glib-networking 2.62.4 2.64.3 2.66.0: Network-related giomodules for glib
