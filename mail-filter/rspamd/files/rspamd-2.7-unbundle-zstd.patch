@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3b4bd8469..75582513e 100644
+index 77ad86785..56246807e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -199,6 +199,8 @@ ELSE()
+@@ -202,6 +202,8 @@ ELSE()
  		ROOT ${PCRE_ROOT_DIR} MODULES pcre libpcre pcre3 libpcre3)
  ENDIF()
  
@@ -11,7 +11,7 @@ index 3b4bd8469..75582513e 100644
  ProcessPackage(SQLITE3 LIBRARY sqlite3 INCLUDE sqlite3.h INCLUDE_SUFFIXES include/sqlite3 include/sqlite
  	ROOT ${SQLITE3_ROOT_DIR} MODULES sqlite3 sqlite)
  ProcessPackage(ICUDATA LIBRARY icudata INCLUDE unicode/ucnv.h
-@@ -616,7 +618,6 @@ ADD_SUBDIRECTORY(contrib/http-parser)
+@@ -619,7 +621,6 @@ ADD_SUBDIRECTORY(contrib/http-parser)
  ADD_SUBDIRECTORY(contrib/fpconv)
  ADD_SUBDIRECTORY(contrib/lc-btrie)
  ADD_SUBDIRECTORY(contrib/libottery)
@@ -20,12 +20,12 @@ index 3b4bd8469..75582513e 100644
  	ADD_SUBDIRECTORY(contrib/snowball)
  	SET(WITH_SNOWBALL 1)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 59bab5c15..098329991 100644
+index 54b2e4083..e0e2edd58 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -182,7 +182,6 @@ TARGET_LINK_LIBRARIES(rspamd-server rspamd-fpconv)
+@@ -181,7 +181,6 @@ TARGET_LINK_LIBRARIES(rspamd-server rspamd-http-parser)
+ TARGET_LINK_LIBRARIES(rspamd-server rspamd-fpconv)
  TARGET_LINK_LIBRARIES(rspamd-server rspamd-cdb)
- TARGET_LINK_LIBRARIES(rspamd-server rspamd-lpeg)
  TARGET_LINK_LIBRARIES(rspamd-server lcbtrie)
 -TARGET_LINK_LIBRARIES(rspamd-server rspamd-zstd)
  TARGET_LINK_LIBRARIES(rspamd-server rspamd-fastutf8)
@@ -45,7 +45,7 @@ index bcb25672e..48ca58e94 100644
  #ifdef HAVE_FETCH_H
  #include <fetch.h>
 diff --git a/src/libserver/cfg_utils.c b/src/libserver/cfg_utils.c
-index e2f886aa6..5b214c09c 100644
+index 987123cbb..51c2e1468 100644
 --- a/src/libserver/cfg_utils.c
 +++ b/src/libserver/cfg_utils.c
 @@ -36,8 +36,7 @@
@@ -85,7 +85,7 @@ index 31b0308cb..62ba3d833 100644
  #include "unix-std.h"
  #include "protocol_internal.h"
 diff --git a/src/libserver/task.c b/src/libserver/task.c
-index e7a83a603..c613fffcc 100644
+index 096933803..f78754ab4 100644
 --- a/src/libserver/task.c
 +++ b/src/libserver/task.c
 @@ -25,7 +25,7 @@

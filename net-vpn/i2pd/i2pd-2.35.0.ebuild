@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RDEPEND="
 		dev-libs/boost:=[threads]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
-		upnp? ( net-libs/miniupnpc )
+		upnp? ( net-libs/miniupnpc:= )
 	)"
 DEPEND="${RDEPEND}
 	static? (
@@ -29,14 +29,17 @@ DEPEND="${RDEPEND}
 		sys-libs/zlib[static-libs]
 		!libressl? ( dev-libs/openssl:0=[static-libs] )
 		libressl? ( dev-libs/libressl:0=[static-libs] )
-		upnp? ( net-libs/miniupnpc[static-libs] )
+		upnp? ( net-libs/miniupnpc:=[static-libs] )
 	)"
 
 CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
-PATCHES=( "${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
+PATCHES=(
+	"${FILESDIR}/i2pd-2.25.0-lib-path.patch"
+	"${FILESDIR}/i2pd-2.35.0-avx-detection.patch"
+)
 
 pkg_pretend() {
 	if use i2p-hardening && ! tc-is-gcc; then
@@ -47,7 +50,6 @@ pkg_pretend() {
 src_configure() {
 	mycmakeargs=(
 		-DWITH_AESNI=$(usex cpu_flags_x86_aes ON OFF)
-		-DWITH_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DWITH_HARDENING=$(usex i2p-hardening ON OFF)
 		-DWITH_PCH=OFF
 		-DWITH_STATIC=$(usex static ON OFF)
