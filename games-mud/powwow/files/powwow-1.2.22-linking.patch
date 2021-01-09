@@ -1,0 +1,39 @@
+* Fix ncurses/tinfo linking: https://bugs.gentoo.org/690452
+
+* Fix underlinking (refresh of old patch by hasufell@):
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Feb 18 02:25:38 UTC 2013
+Subject: fix underlinking
+https://bugs.gentoo.org/show_bug.cgi?id=454928
+--- a/configure.ac
++++ b/configure.ac
+@@ -93,10 +93,7 @@ AC_PROG_LN_S
+ AC_CHECK_FUNC(lrand48,,AC_DEFINE(USE_RANDOM))
+ 
+ if test "x${enable_vt100}" != "xyes"; then
+-    AC_SEARCH_LIBS(initscr,[ncurses curses], [], [
+-                   if test "x${enable_vt100}" = "xno" ; then
+-                       AC_MSG_ERROR([*** curses libraries not found])
+-                   fi])
++    PKG_CHECK_MODULES([ncurses], [ncurses])
+ fi
+ 
+ # Dynamic modules
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -6,7 +6,8 @@ bin_PROGRAMS = powwow powwow-muc powwow-movieplay
+ powwow_SOURCES = beam.c cmd.c log.c edit.c cmd2.c eval.c \
+ 		 utils.c main.c tcp.c list.c map.c tty.c \
+ 		 ptr.c
+-powwow_LDFLAGS = @dl_ldflags@
++powwow_LDADD = @dl_ldflags@ @ncurses_LIBS@
++powwow_muc_LDADD = @ncurses_LIBS@
+ powwowdir = $(pkgincludedir)
+ powwow_HEADERS = beam.h cmd.h log.h edit.h cmd2.h eval.h \
+ 		 utils.h main.h tcp.h list.h map.h tty.h \
+@@ -26,4 +26,4 @@ catrw_SOURCES = catrw.c
+ EXTRA_DIST = plugtest.c
+ 
+ plugtest.so: plugtest.c
+-	gcc -shared -o plugtest.so plugtest.c
++	$(CC) $(CFLAGS) -shared -o plugtest.so plugtest.c

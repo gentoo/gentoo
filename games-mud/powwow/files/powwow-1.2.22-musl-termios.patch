@@ -1,0 +1,24 @@
+diff --git a/src/follow.c b/src/follow.c
+index 09456c9..b3363e8 100644
+--- a/src/follow.c
++++ b/src/follow.c
+@@ -26,7 +26,6 @@
+  * many warnings, but seems to be necessary at times. works anyway.
+  */
+ #  include <termios.h>
+-#  include <termio.h>
+ # endif
+ /* #else USE_SGTTY */
+ #endif
+diff --git a/src/tty.c b/src/tty.c
+index 104c780..0d76554 100644
+--- a/src/tty.c
++++ b/src/tty.c
+@@ -44,7 +44,6 @@
+  * many warnings, but seems to be necessary at times. works anyway.
+  */
+ #    include <termios.h>
+-#    include <termio.h>
+ #  endif
+ /* #else USE_SGTTY */
+ #endif
