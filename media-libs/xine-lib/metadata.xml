@@ -35,6 +35,9 @@
 			the file's data. mmap() access should be faster, but might misbehave if the
 			device where the file resides in is removed during playback.
 		</flag>
+		<flag name="nfs">
+			Allow accessing NFS shares via <pkg>net-fs/libnfs</pkg>.
+		</flag>
 		<flag name="truetype">
 			Use <pkg>media-libs/freetype</pkg> for font rendering and
 			<pkg>media-libs/fontconfig</pkg> for font discovery. Enabling this USE flag
@@ -42,6 +45,9 @@
 			easily select which font to use. The support for TrueType fonts in xine-lib
 			is still experimental, and might not be as good looking as the bitmap fonts
 			used with this USE flag disabled.
+		</flag>
+		<flag name="sftp">
+			Use <pkg>net-libs/libssh2</pkg> to access SFTP servers.
 		</flag>
 		<flag name="vdr">
 			Build the VDR plugin
