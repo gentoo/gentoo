@@ -210,7 +210,7 @@ src_compile() {
 		grep -q -- '-fno-PIC' hack/make/dynbinary-daemon || die 'hardened sed failed'
 	fi
 	ln -sf ${WORKDIR}/${P}/src/github.com/moby ${WORKDIR}/${P}/src/github.com/docker
-        ln -sf ${WORKDIR}/${P}/src/github.com/moby/moby ${WORKDIR}/${P}/src/github.com/docker/docker
+	ln -sf ${WORKDIR}/${P}/src/github.com/moby/moby ${WORKDIR}/${P}/src/github.com/docker/docker
 	
 	# build daemon
 	./hack/make.sh dynbinary || die 'dynbinary failed'
