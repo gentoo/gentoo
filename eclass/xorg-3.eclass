@@ -169,28 +169,6 @@ if [[ ${FONT} == yes ]]; then
 	FONT_DIR=${FONT_DIR/type1/Type1}
 	FONT_DIR=${FONT_DIR/speedo/Speedo}
 fi
-
-# @ECLASS-VARIABLE: XORG_STATIC
-# @DESCRIPTION:
-# Enables static-libs useflag. Set to no, if your package gets:
-#
-# QA: configure: WARNING: unrecognized options: --disable-static
-: ${XORG_STATIC:="yes"}
-
-# Add static-libs useflag where useful.
-if [[ ${XORG_STATIC} == yes \
-		&& ${FONT} != yes \
-		&& ${CATEGORY} != app-doc \
-		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-drivers \
-		&& ${CATEGORY} != media-fonts \
-		&& ${PN} != util-macros \
-		&& ${PN} != xbitmaps \
-		&& ${PN} != xorg-cf-files \
-		&& ${PN/xcursor} = ${PN} ]]; then
-	IUSE+=" static-libs"
-fi
-
 BDEPEND+=" virtual/pkgconfig"
 
 # @ECLASS-VARIABLE: XORG_DRI
