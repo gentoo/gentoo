@@ -9,6 +9,7 @@
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Flask-Paranoid</remote-id>
 		<remote-id type="github">miguelgrinberg/flask-paranoid</remote-id>
