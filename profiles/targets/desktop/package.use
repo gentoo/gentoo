@@ -72,11 +72,6 @@ app-text/xmlto text
 # Enable sensible defaults for desktop users (bug #540046)
 dev-python/PyQt5 gui multimedia network printsupport widgets
 
-# Samuli Suominen <ssuominen@gentoo.org> (2014-07-24)
-# Because targets/desktop/make.defaults has USE="bluetooth" but net-libs/libpcap doesn't
-# support BlueZ 5.x, disable USE="bluetooth" by default to avoid conflicting packages:
-net-libs/libpcap -bluetooth
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-05-08)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
 # and the X flag is enabled by default in the desktop profile
