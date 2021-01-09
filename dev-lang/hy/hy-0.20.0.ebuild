@@ -3,33 +3,34 @@
 
 EAPI=7
 
-RESTRICT="test" # needs some pointy sticks. Seriously.
-PYTHON_COMPAT=(python3_7 python3_8 python3_9)
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
+
 DESCRIPTION="A LISP dialect running in python"
 HOMEPAGE="http://hylang.org/"
 SRC_URI="https://github.com/hylang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
-
 KEYWORDS="~amd64 ~x86"
 IUSE="test doc"
 
 RDEPEND=">=dev-python/astor-0.7.1[${PYTHON_USEDEP}]
-	>=dev-python/clint-0.4[${PYTHON_USEDEP}]
-	dev-python/flake8[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
 	>=dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
 	>=dev-python/rply-0.7.6[${PYTHON_USEDEP}]
 	"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.15.0-do-not-install-get_version.py.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.15.0-do-not-install-get_version.py.patch
+	"${FILESDIR}"/${PN}-xfail-macro-test.patch
+)
 
 src_prepare() {
 	default
@@ -40,6 +41,4 @@ python_compile_all() {
 	use doc && emake docs
 }
 
-python_test() {
-	nosetests -vv || die "Tests failed under ${EPYTHON}"
-}
+distutils_enable_tests pytest
