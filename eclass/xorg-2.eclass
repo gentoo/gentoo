@@ -419,9 +419,15 @@ xorg-2_src_configure() {
 		local selective_werror="--disable-selective-werror"
 	fi
 
+	# Check if package supports disabling of static libraries
+	if grep -q -s "able-static" ${ECONF_SOURCE:-.}/configure; then
+		local no_static="--disable-static"
+	fi
+
 	local myeconfargs=(
 		${dep_track}
 		${selective_werror}
+		${no_static}
 		${FONT_OPTIONS}
 		"${xorgconfadd[@]}"
 	)
