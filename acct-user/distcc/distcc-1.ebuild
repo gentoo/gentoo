@@ -6,7 +6,7 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="User used to run distcc daemon"
-ACCT_USER_ID=358
+ACCT_USER_ID=240
 ACCT_USER_GROUPS=( distcc )
 
 acct-user_add_deps
