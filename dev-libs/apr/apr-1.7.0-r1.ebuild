@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-cross-types.patch
 	"${FILESDIR}"/${PN}-1.5.0-sysroot.patch #385775
 	"${FILESDIR}"/${PN}-1.6.3-skip-known-failing-tests.patch
+	"${FILESDIR}"/${PN}-1.7.0-autoconf-2.70.patch #750353
 )
 
 src_prepare() {
