@@ -2550,7 +2550,6 @@ dev-python/ws4py:server - Install server modules
 dev-python/zeep:async - Add async support
 dev-python/zeep:tornado - Add tornado support
 dev-qt/designer:declarative - Build the qdeclarativeview plugin
-dev-qt/designer:webkit - Build the qwebview plugin
 dev-qt/linguist-tools:qml - Enable QML support in lupdate
 dev-qt/qdoc:qml - Enable QML/JS parsing support
 dev-qt/qt-creator:android - Build plugin for Android devices
@@ -2676,7 +2675,6 @@ dev-qt/qtwayland:vulkan - Enable support for Vulkan-based server buffer integrat
 dev-qt/qtwebchannel:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtwebengine:designer - Install the QWebEngineView plugin used to add widgets in dev-qt/designer forms that display web pages.
 dev-qt/qtwebengine:geolocation - Enable physical position determination via dev-qt/qtpositioning
-dev-qt/qtwebengine:jumbo-build - Combine source files to speed up build process.
 dev-qt/qtwebengine:system-ffmpeg - Use the system-wide media-video/ffmpeg instead of bundled.
 dev-qt/qtwebengine:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 dev-qt/qtwebengine:widgets - Enable QtWidgets support
