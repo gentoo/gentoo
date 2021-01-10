@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( hunspell aspell )
 RESTRICT=test
 SLOT=2
 SRC_URI=https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz
-_md5_=b8cd685af0d5eb4602554ae4b1310b55
+_md5_=87369cbdd08e3205625f1be9a0f886ae
