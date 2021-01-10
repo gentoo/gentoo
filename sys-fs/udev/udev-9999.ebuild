@@ -93,16 +93,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cat <<-EOF > "${T}"/40-gentoo.rules
-	# Gentoo specific floppy and usb groups
-	ACTION=="add", SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
-	ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
-	EOF
-
-	if [[ -d "${WORKDIR}/patches" ]]; then
-		eapply "${WORKDIR}/patches"
-	fi
-
 	local PATCHES=(
 	)
 
@@ -222,7 +212,7 @@ multilib_src_install_all() {
 
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
-	doins "${T}"/40-gentoo.rules
+	doins "${FILESDIR}"/40-gentoo.rules
 	doins "${S}"/rules.d/*.rules
 
 	dobashcomp shell-completion/bash/udevadm
