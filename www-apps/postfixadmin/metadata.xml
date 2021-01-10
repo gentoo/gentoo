@@ -9,6 +9,7 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="vacation">Install vacation.pl script and dependencies</flag>
 	</use>
