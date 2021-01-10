@@ -72,6 +72,7 @@ acct-group/gamemode 0: Group for the system-wide games-util/gamemode resource gr
 acct-group/gamestat 0-r1: Group for shared high-score and game state files
 acct-group/gatling 0-r1: System group: gatling
 acct-group/geneweb 0-r1: Group for geneweb daemon
+acct-group/geoclue 0: System group: geoclue
 acct-group/gerbera 0-r1: Gerbera UPnP Media Server group
 acct-group/git 0-r1: System group: git
 acct-group/gkrellmd 0-r1: System group: gkrellmd
@@ -220,6 +221,9 @@ acct-group/spire 0-r1: System group: spire
 acct-group/sqlgrey 0-r1: Group for SQLGrey
 acct-group/squid 0-r1: System group: squid
 acct-group/sshd 0-r1: System group: sshd
+acct-group/stapdev 0: System group: stapdev
+acct-group/stapsys 0: System group: stapsys
+acct-group/stapusr 0: System group: stapusr
 acct-group/stdiscosrv 0-r1: Group for the Syncthing discovery server
 acct-group/steamcmd 0-r1: A group for the SteamCMD server
 acct-group/strelaysrv 0-r1: Group for the Syncthing relay server
@@ -347,6 +351,7 @@ acct-user/frr 0: System user: frr
 acct-user/ftp 0-r1: File Transfer Protocol server user
 acct-user/gatling 0-r1: System user: gatling
 acct-user/geneweb 0-r1: user id for geneweb daemon
+acct-user/geoclue 0: User for running the GeoClue D-Bus geolocation service
 acct-user/gerbera 0-r1: Gerbera UPnP Media Server user
 acct-user/git 0-r1: Git repository hosting user
 acct-user/gkrellmd 0-r1: user for gkrellm daemon
@@ -2008,7 +2013,7 @@ app-emulation/docker-swarm 1.2.9: Swarm Classic: a container clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.2: A visual and cross-platform MIPS64 CPU Simulator
-app-emulation/faudio 19.06 19.09 20.02 20.09 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
+app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.23.0 0.23.1: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
@@ -2435,7 +2440,7 @@ app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.08.01: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/gentoo-elections 0_p20190710: Gentoo election control data and scripts
-app-misc/geoclue 2.4.13 2.5.3-r2: A location information D-Bus service
+app-misc/geoclue 2.4.13 2.5.3-r2 2.5.7: A location information D-Bus service
 app-misc/getopt 1.1.6-r1: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04 1.04_p20150525: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.1.2: A glue between the graphlcd-base library from the GraphLCD project
@@ -2584,7 +2589,7 @@ app-misc/tmux 3.1c 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.4 1.5.5 1.5.6 1.6.2 1.6.4: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.4 1.5.5 1.5.6 1.6.2 1.6.4 1.7.0: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
@@ -2879,7 +2884,7 @@ app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7 2.10.1: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1 0.2.2-r2: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
-app-text/enchant 1.6.1-r1 2.2.8: Spellchecker wrapping library
+app-text/enchant 1.6.1-r1 2.2.8 2.2.15: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1 3.09: Creates or extracts preview images in EPS files, fixes bounding boxes
@@ -5678,7 +5683,7 @@ dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0 2.1.0: A very basic terminfo library
-dev-libs/unittest++ 2.0.0 2.0.0-r1: A lightweight unit testing framework for C++
+dev-libs/unittest++ 2.0.0 2.0.0-r1 2.0.0-r2: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.5 9999: URDF (U-Robot Description Format) headers
@@ -5865,7 +5870,7 @@ dev-ml/ocaml-gettext 0.3.7-r2 0.4.2: Provides support for internationalization o
 dev-ml/ocaml-hashcons 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
-dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 2.0.0: Convert OCaml parsetrees between different major versions
+dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 1.8.0 2.0.0: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-sqlite3 4.3.0: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.5.3-r1 0.5.9: OCaml bindings for OpenSSL
@@ -8199,7 +8204,7 @@ dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Grav
 dev-python/flask-htmlmin 2.0.2: Minimize your flask rendered html
 dev-python/flask-login 0.5.0: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 2.5.2: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-migrate 2.5.2 2.5.3: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 1.0.0: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.6-r2: Easily create navigation for Flask applications.
 dev-python/flask-paginate 0.7.0: Pagination support for flask
@@ -8785,12 +8790,12 @@ dev-python/pyprof2calltree 1.4.4: convert python profile data to kcachegrind cal
 dev-python/pyproj 2.6.1_p1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 9: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pypy 7.3.1-r3 7.3.2 7.3.3_rc1 7.3.3: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-exe 7.3.1 7.3.2 7.3.3_rc1 7.3.3: PyPy executable (build from source)
-dev-python/pypy-exe-bin 7.3.1_p1 7.3.2 7.3.3_rc1 7.3.3: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.1-r3 7.3.2 7.3.2_p37 7.3.3_rc1 7.3.3_rc1_p37 7.3.3 7.3.3_p37: A fast, compliant alternative implementation of the Python (3.7) language
-dev-python/pypy3-exe 7.3.1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1 7.3.3_rc1_p37 7.3.3 7.3.3_p37: PyPy3 executable (build from source)
-dev-python/pypy3-exe-bin 7.3.1_p1 7.3.2-r1 7.3.2_p37-r1 7.3.3_rc1 7.3.3_rc1_p37 7.3.3 7.3.3_p37: PyPy3 executable (pre-built version)
+dev-python/pypy 7.3.3: A fast, compliant alternative implementation of the Python language
+dev-python/pypy-exe 7.3.3: PyPy executable (build from source)
+dev-python/pypy-exe-bin 7.3.3: PyPy executable (pre-built version)
+dev-python/pypy3 7.3.3 7.3.3_p37: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3-exe 7.3.3 7.3.3_p37: PyPy3 executable (build from source)
+dev-python/pypy3-exe-bin 7.3.3 7.3.3_p37: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
@@ -10890,7 +10895,7 @@ dev-util/sysdig-kmod 0.27.0 0.27.1: Kernel module for dev-util/sysdig
 dev-util/sysprof 3.36.0-r1 3.38.1: System-wide Linux Profiler
 dev-util/sysprof-capture 3.36.0-r1 3.38.1-r1: Static library for sysprof capture data generation
 dev-util/sysprof-common 3.38.1: Static library for sysprof capture data generation
-dev-util/systemtap 4.0-r1: A linux trace/probe tool
+dev-util/systemtap 4.0-r1 4.0-r2 4.4: A linux trace/probe tool
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
@@ -11243,7 +11248,7 @@ games-board/simsu 1.3.9: Basic sudoku game
 games-board/sjeng 11.2_p8_p1: Console based chess interface
 games-board/stockfish 10 11: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
-games-board/tali 3.36.4 3.38.2: Beat the odds in a poker-style dice game
+games-board/tali 3.36.4 3.38.2 3.38.3: Beat the odds in a poker-style dice game
 games-board/tetzle 2.1.3: Jigsaw puzzle game that uses tetrominoes for the pieces
 games-board/xboard 4.9.1: GUI for gnuchess and for internet chess servers
 games-board/xfreecell 1.0.5b-r1: A freecell game for X
@@ -11837,7 +11842,7 @@ gnome-extra/gnome-shell-extensions 3.36.7 3.38.1 3.38.2: JavaScript extensions f
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.36.1: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.36.1 3.38.0: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.34.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.36.2 3.36.6: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
@@ -12512,7 +12517,7 @@ media-fonts/artwiz-aleczapka-en 1.3: Artwiz Aleczapko fonts
 media-fonts/artwiz-latin1 1.1: A set of improved Artwiz fonts with bold and full ISO-8859-1 support
 media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
 media-fonts/bitstream-cyberbit 2.0-r2: Cyberbit Unicode (including CJK) font
-media-fonts/cantarell 0.111 0.201: Default fontset for GNOME Shell
+media-fonts/cantarell 0.111 0.201 0.301: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cascadia-code 2009.22: A monospaced font developed for Windows Terminal
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
@@ -12786,7 +12791,7 @@ media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20201029: A program for drawing beautiful 
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.36.0: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.36.0 3.38.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20 2.5.26: Free, redistributable digital camera software application
@@ -13307,6 +13312,7 @@ media-libs/stk 4.6.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/suil 0.10.8 0.10.10: Lightweight C library for loading and wrapping LV2 plugin UIs
 media-libs/svgalib 1.9.25-r7 1.9.25-r8: A library for running svga graphics on the console
+media-libs/svt-av1 0.8.6 9999: Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder)
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
@@ -13951,7 +13957,7 @@ media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/takcd 0.10-r1: Command line CD player
 media-sound/tap-reverbed 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Expressive Synthesis, Transformation, Rendering of Environmental Audio
-media-sound/teamspeak-client 3.5.6-r1 5.0.0_beta32: A client software for quality voice communication via the internet
+media-sound/teamspeak-client 3.5.6-r1 5.0.0_beta36: A client software for quality voice communication via the internet
 media-sound/teamspeak-server 3.12.1 3.13.3: A server software for hosting quality voice communication via the internet
 media-sound/tempest_for_eliza 1.0.5-r2: Listen to music on the radio generated by images on your screen
 media-sound/terminatorx 4.0.1-r2: Realtime audio synthesizer allowing you to 'scratch' on sampled audio data
@@ -14065,7 +14071,7 @@ media-video/ffmpeg2theora 0.30-r1: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1 2.2.2: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
-media-video/gaupol 1.8-r1 1.8-r2: A subtitle editor for text-based subtitles
+media-video/gaupol 1.8-r1 1.8-r2 1.9: A subtitle editor for text-based subtitles
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 0.8.1 1.0.1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
@@ -14276,7 +14282,7 @@ net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and Wh
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 10.0.0_pre20200729 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
-net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
+net-analyzer/masscan 1.0.4 1.0.5 1.3.0: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3-r1: MBrowse is a graphical MIB browser
 net-analyzer/mdns-scan 0.5: a tool for scanning for mDNS/DNS-SD published services
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
@@ -14576,7 +14582,7 @@ net-fs/openafs 1.8.6: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
-net-fs/samba 4.11.13-r1 4.12.7-r2 4.12.8-r1 4.12.9-r1 4.12.10-r1 4.13.1-r1 4.13.2-r1: Samba Suite Version 4
+net-fs/samba 4.12.9-r1 4.12.10-r1 4.13.2-r1 4.13.3: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
@@ -14904,7 +14910,7 @@ net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
-net-mail/automx2 2020.1-r1 2020.2: Email client autoconfiguration service
+net-mail/automx2 2020.1-r1 2020.2 2021.0: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/b4 0.6.1: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
@@ -15156,7 +15162,7 @@ net-misc/mobile-broadband-provider-info 20190618 20201225: Database of mobile br
 net-misc/modemmanager 1.8.2-r1 1.10.0 1.14.8: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
-net-misc/mrouted 3.9.8: IP multicast routing daemon
+net-misc/mrouted 3.9.8 4.2: IP multicast routing daemon
 net-misc/mulk 0.7.0-r1: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncman 0.0.1_p20190327-r2 9999: An ncurses UI for connman, forked from connman-json-client
@@ -16815,7 +16821,7 @@ sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privilege
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
 sys-apps/file 5.37-r1 5.38-r1 5.39-r3 9999: identify a file's format by scanning binary data for patterns
-sys-apps/findutils 4.7.0: GNU utilities for finding files
+sys-apps/findutils 4.7.0 4.8.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64 0.9.64-r1 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
@@ -16938,7 +16944,7 @@ sys-apps/pcmciautils 018_p8-r3: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
-sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
+sys-apps/pick 3.0.1 4.0.0: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.13-r1 0.10.14 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
@@ -17507,8 +17513,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.10.3 5.10.4 5.10.5: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.10.3 5.10.4 5.10.5 5.10.6: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.4.88 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1 5.10.6: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.9.16 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17523,8 +17529,8 @@ sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6: Linux kern
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.236_p207 4.4.240_p209 4.9.236_p154 4.9.240_p155 4.14.198_p96 4.14.202_p97 4.14.206_p99 4.19.142_p63 4.19.148_p64 5.4.66_p38 5.4.70_p40 5.9.1_p20: Full Linux 5.9 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.85 5.4.86 5.4.87 5.10.3 5.10.4 5.10.5: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.249 4.9.249 4.14.213 4.19.165 5.4.87 5.9.15 5.10.5: Full sources for the Linux kernel
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.10.3 5.10.4 5.10.5 5.10.6: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-sources 4.4.250 4.9.250 4.14.214 4.19.166 5.4.88 5.9.15 5.10.6: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -17545,7 +17551,7 @@ sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 2.32-r3 
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.1: Library for managing partitions
-sys-libs/ldb 2.0.12-r1 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
+sys-libs/ldb 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
@@ -17706,7 +17712,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.86 5.4.87 5.10.4 5.10.5: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.86 5.4.87 5.4.88 5.10.4 5.10.5 5.10.6: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
@@ -18766,7 +18772,7 @@ x11-terms/alacritty 0.4.3 0.5.0 0.6.0 9999: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r4: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
-x11-terms/gnome-terminal 3.36.2 3.38.1: The Gnome Terminal
+x11-terms/gnome-terminal 3.36.2 3.38.1 3.38.2: The Gnome Terminal
 x11-terms/guake 3.7.0 9999: Drop-down terminal for GNOME
 x11-terms/kitty 0.19.1 0.19.2 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kitty-terminfo 0.19.1 0.19.2 9999: Terminfo for kitty, an OpenGL-based terminal emulator
@@ -18790,7 +18796,7 @@ x11-terms/xterm 337 351 360 361: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.6.1-r1: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
-x11-themes/adwaita-icon-theme 3.32.0 3.36.1-r1: GNOME default icon theme
+x11-themes/adwaita-icon-theme 3.32.0 3.36.1-r1 3.38.0: GNOME default icon theme
 x11-themes/adwaita-qt 1.1.1 1.1.4: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20201013: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
@@ -18989,7 +18995,7 @@ xfce-base/xfce4-session 4.14.2 4.15.1 4.16.0: A session manager for the Xfce des
 xfce-base/xfce4-settings 4.14.3 4.15.3 4.16.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.1 4.14.3 4.14.4 4.15.0 4.15.1 4.16.0: A configuration management system for Xfce
 xfce-base/xfdesktop 4.14.3 4.15.1 4.16.0: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.14.6 4.15.3 4.16.0: Window manager for the Xfce desktop environment
+xfce-base/xfwm4 4.14.6 4.15.3 4.16.0 4.16.1: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r4: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.4.0: Archive plug-in for the Thunar filemanager
