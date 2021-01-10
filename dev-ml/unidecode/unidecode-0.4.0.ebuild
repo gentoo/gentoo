@@ -5,7 +5,7 @@ EAPI=7
 
 inherit dune
 
-DESCRIPTION="Unicode text normalization"
+DESCRIPTION="Convert unicode strings into its ASCII representation"
 HOMEPAGE="https://github.com/geneweb/unidecode"
 SRC_URI="https://github.com/geneweb/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
