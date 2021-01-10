@@ -8753,6 +8753,10 @@ x11-libs/vte:icu - Enable legacy charset support using dev-libs/icu
 x11-libs/vte:systemd - Support moving terminal child processes to their own systemd user scopes to avoid terminal getting killed due to child causing OOM
 x11-libs/wxGTK:gstreamer - Enable the wxMediaCtrl class for playing audio and video through gstreamer.
 x11-libs/wxGTK:sdl - Use Simple Directmedia Layer (media-libs/libsdl) for audio.
+x11-misc/albert:debug - Enable debugging informations
+x11-misc/albert:python-extensions - Install default python extensions system-wide
+x11-misc/albert:statistics - Enable local statistics
+x11-misc/albert:virtualbox - Enable app-emulation/virtualbox extension
 x11-misc/alock:doc - Build and install manpage with app-text/asciidoc.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-power/bbswitch for PM feature
 x11-misc/colord:argyllcms - Enable ArgyllCMS sensor

@@ -9059,7 +9059,7 @@ dev-python/sentry-sdk 0.19.4 0.19.5: Python client for Sentry
 dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
-dev-python/setproctitle 1.1.10-r1 1.2 1.2.1: Allow customization of the process title
+dev-python/setproctitle 1.2.1: Allow customization of the process title
 dev-python/setuptools 50.3.0 51.0.0 51.1.0 51.1.1 51.1.2: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
@@ -10882,7 +10882,7 @@ dev-util/source-highlight 3.1.9: Generate highlighted source code as an (x)html 
 dev-util/spirv-headers 1.5.4 1.5.4.1 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 10.0.0 10.0.0_p20200909: Bi-directional translator between SPIR-V and LLVM IR
 dev-util/spirv-tools 2020.5_pre20201107 2020.6 9999: Provides an API and commands for processing SPIR-V modules
-dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
+dev-util/splint 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
@@ -17013,7 +17013,7 @@ sys-apps/the_silver_searcher 2.0.0 2.1.0 2.2.0: A code-searching tool similar to
 sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space components
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
-sys-apps/toybox 0.8.0 0.8.1 0.8.3 9999: Common linux commands in a multicall binary
+sys-apps/toybox 0.8.0 0.8.1 0.8.3 0.8.4 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.13.0-r1: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
@@ -18314,7 +18314,7 @@ x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0-r1: OpenGL-based 3D File Manager
 x11-misc/accessx 0951-r2: Interface to the XKEYBOARD extension in X11
 x11-misc/alacarte 3.36.0: Simple GNOME menu editor
-x11-misc/albert 0.14.22 0.16.1: Desktop agnostic launcher
+x11-misc/albert 0.17.2: A fast and flexible keyboard launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/appmenu-gtk-module 0.7.3-r1: Application menu module for GTK
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
