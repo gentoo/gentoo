@@ -31,18 +31,13 @@ SRC_URI="
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="cdinstall demo fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools voidsw vorbis voxels vpx xmp"
+IUSE="duke3d fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools voidsw vorbis voxels vpx xmp"
 REQUIRED_USE="
-	cdinstall? ( !demo )
-	demo? ( !cdinstall )
-	hrp? ( ^^ ( demo cdinstall )
-		!voxels )
-	offensive? ( ^^ ( demo cdinstall ) )
-	opl? ( ^^ ( demo cdinstall )
-		!sc-55 )
-	psx? ( ^^ ( demo cdinstall ) )
-	sc-55? ( ^^ ( demo cdinstall )
-		!opl )
+	hrp? ( duke3d !voxels )
+	offensive? ( duke3d )
+	opl? ( duke3d !sc-55 )
+	psx? ( duke3d )
+	sc-55? ( duke3d !opl )
 	voxels? ( !hrp )
 	vpx? ( opengl )
 "
@@ -82,10 +77,7 @@ BDEPEND="
 	x86? ( dev-lang/nasm )
 "
 
-PDEPEND="
-	cdinstall? ( games-fps/duke3d-data )
-	demo? ( games-fps/duke3d-demodata )
-"
+PDEDEND="duke3d? ( games-fps/duke3d-data )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20190820.8043-log-to-tmpdir.patch"
