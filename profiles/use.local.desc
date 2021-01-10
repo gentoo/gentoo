@@ -3121,8 +3121,9 @@ games-fps/doomsday:fluidsynth - Build the FluidSynth sound driver
 games-fps/doomsday:fmod - Enable support for fmod music and sound effects lib
 games-fps/doomsday:freedoom - Install launcher for doom1.wad from games-fps/freedoom
 games-fps/doomsday:tools - Build additional tools such as doomsday-shell, md2tool and texc
-games-fps/duke3d-data:gog - Extract the data from the GOG.com installer.
-games-fps/eduke32:demo - Install the Duke Nukem 3D demo files, provided by games-fps/duke3d-demodata.
+games-fps/duke3d-data:demo - Extract data files from the shareware version.
+games-fps/duke3d-data:gog - Extract data files from the GOG.com version.
+games-fps/eduke32:duke3d - Install the Duke Nukem 3D data files, provided by games-fps/duke3d-data.
 games-fps/eduke32:fluidsynth - Install media-libs/sdl2-mixer with fluidsynth support.
 games-fps/eduke32:hrp - Install the Duke Nukem 3D High Resolution Pack.
 games-fps/eduke32:offensive - Install the Duke Nukem 3D XXX Pack.
