@@ -9,6 +9,7 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		DokuWiki is a standards compliant, simple to use Wiki, mainly aimed at
 		creating documentation of any kind. It is targeted at developer teams,
