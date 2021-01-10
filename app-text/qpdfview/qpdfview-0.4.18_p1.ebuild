@@ -74,7 +74,7 @@ src_configure() {
 
 	local myqmakeargs=(
 		qpdfview.pro
-		CONFIG+="${myconfig[@]}"
+		CONFIG+="${myconfig[*]}"
 		PLUGIN_INSTALL_PATH="${EPREFIX}/usr/$(get_libdir)/${PN}"
 	)
 	eqmake5 "${myqmakeargs[@]}"
