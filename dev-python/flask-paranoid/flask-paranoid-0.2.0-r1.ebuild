@@ -21,10 +21,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
