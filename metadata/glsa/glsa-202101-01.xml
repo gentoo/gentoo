@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-01">
+  <title>Dovecot: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dovecot, the worst of
+    which could allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">dovecot</product>
+  <announced>2021-01-10</announced>
+  <revised count="1">2021-01-10</revised>
+  <bug>763525</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-mail/dovecot" auto="yes" arch="*">
+      <unaffected range="ge">2.3.13</unaffected>
+      <vulnerable range="lt">2.3.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dovecot is an open source IMAP and POP3 email server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dovecot. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted mail or send a
+      specially crafted IMAP command possibly resulting in a Denial of Service
+      condition or an authenticated remote attacker might be able to discover
+      the file system directory structure and access other users’ emails.
+    </p>
+  </impact>
+  <workaround>
+    <p>The information disclosure vulnerability can be mitigated by disabling
+      IMAP hibernation feature which isn’t enabled by default.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Dovecot users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-2.3.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24386">CVE-2020-24386</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25275">CVE-2020-25275</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-06T15:39:45Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-01-10T09:16:29Z">whissi</metadata>
+</glsa>
