@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-05">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">google-chrome,chromium</product>
+  <announced>2021-01-10</announced>
+  <revised count="1">2021-01-10</revised>
+  <bug>764251</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">87.0.4280.141</unaffected>
+      <vulnerable range="lt">87.0.4280.141</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">87.0.4280.141</unaffected>
+      <vulnerable range="lt">87.0.4280.141</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-87.0.4280.141"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-87.0.4280.141"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15995">CVE-2020-15995</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-16043">CVE-2020-16043</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21106">CVE-2021-21106</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21107">CVE-2021-21107</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21108">CVE-2021-21108</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21109">CVE-2021-21109</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21110">CVE-2021-21110</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21111">CVE-2021-21111</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21112">CVE-2021-21112</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21113">CVE-2021-21113</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21114">CVE-2021-21114</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21115">CVE-2021-21115</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21116">CVE-2021-21116</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-09T16:48:49Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-10T09:21:08Z">sam_c</metadata>
+</glsa>
