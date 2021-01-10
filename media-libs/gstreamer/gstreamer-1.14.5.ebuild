@@ -11,7 +11,7 @@ SRC_URI="https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="+caps +introspection nls +orc test unwind"
 RESTRICT="!test? ( test )"
 
@@ -41,17 +41,6 @@ PATCHES=(
 )
 
 src_configure() {
-	if [[ ${CHOST} == *-interix* ]] ; then
-		export ac_cv_lib_dl_dladdr=no
-		export ac_cv_func_poll=no
-	fi
-	if [[ ${CHOST} == powerpc-apple-darwin* ]] ; then
-		# GCC groks this, but then refers to an implementation (___multi3,
-		# ___udivti3) that don't exist (at least I can't find it), so force
-		# this one to be off, such that we use 2x64bit emulation code.
-		export gst_cv_uint128_t=no
-	fi
-
 	multilib-minimal_src_configure
 }
 
