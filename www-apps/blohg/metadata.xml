@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		blohg is a Mercurial (or Git) based blogging engine written in Python,
 		built with the Flask micro-framework and some of his available extensions.
