@@ -1,0 +1,11 @@
+--- a/projects/stargazer/stg_timer.cpp	2021-01-10 12:09:17.554949870 +0200
++++ b/projects/stargazer/stg_timer.cpp	2021-01-10 12:10:25.593780548 +0200
+@@ -116,7 +116,7 @@
+ struct timespec ts = {(t / TIME_SPEED) / 1000000, ((t / TIME_SPEED) % 1000000) * 1000};
+ return nanosleep(&ts, NULL);
+ #else
+-struct timespec ts = {t / 1000000, (t % 1000000) * 1000};
++struct timespec ts = {static_cast<time_t>(t / 1000000), static_cast<long>((t % 1000000) * 1000)};
+ return nanosleep(&ts, NULL);
+ #endif
+ }
