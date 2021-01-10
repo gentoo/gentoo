@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-02">
+  <title>Firejail: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Firejail, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">firejail</product>
+  <announced>2021-01-10</announced>
+  <revised count="1">2021-01-10</revised>
+  <bug>736816</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/firejail" auto="yes" arch="*">
+      <unaffected range="ge">0.9.64</unaffected>
+      <vulnerable range="lt">0.9.64</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A SUID program that reduces the risk of security breaches by restricting
+      the running environment of untrusted applications using Linux namespaces
+      and seccomp-bpf.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Firejail. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firejail users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/firejail-0.9.64"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17367">CVE-2020-17367</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-17368">CVE-2020-17368</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-16T19:22:48Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-10T09:18:33Z">sam_c</metadata>
+</glsa>
