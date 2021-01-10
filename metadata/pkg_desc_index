@@ -46,7 +46,7 @@ acct-group/dhcpcd 0-r1: System group: dhcpcd
 acct-group/dialout 0-r1: System group: dialout
 acct-group/dictd 0: gid for app-text/dictd
 acct-group/disk 0-r1: System group: disk
-acct-group/distcc 0: System group: distcc
+acct-group/distcc 1: System group: distcc
 acct-group/dnscrypt-proxy 0-r1: Group for net-dns/dnscrypt-proxy
 acct-group/dnsdist 0-r1: A group for net-dns/dnsdist
 acct-group/dnsmasq 0-r1: System group: dnsmasq
@@ -329,7 +329,7 @@ acct-user/deluge 0-r1: user for deluge
 acct-user/dhcp 0-r1: user for dhcp daemon
 acct-user/dhcpcd 0-r1: user for dhcpcd client
 acct-user/dictd 0: uid for app-text/dictd
-acct-user/distcc 0: User used to run distcc daemon
+acct-user/distcc 1: User used to run distcc daemon
 acct-user/dnscrypt-proxy 0-r1: User for net-dns/dnscrypt-proxy
 acct-user/dnsdist 0-r1: A user for net-dns/dnsdist
 acct-user/dnsmasq 0-r1: User for net-dns/dnsmasq
@@ -10801,7 +10801,7 @@ dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.7.0 9999: Collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.2-r1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.55.3 9999: Open source build system
+dev-util/meson 0.55.3 0.56.2 9999: Open source build system
 dev-util/meson-format-array 0: Format shell expressions into a meson array
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw64-runtime 7.0.0-r1 8.0.0: Free Win64 runtime and import library definitions

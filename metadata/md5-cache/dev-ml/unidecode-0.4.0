@@ -1,14 +1,15 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=test? ( dev-ml/ounit2 ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Convert unicode strings into its ASCII representation
 EAPI=7
 HOMEPAGE=https://github.com/geneweb/unidecode
-IUSE=+ocamlopt
+IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
 SLOT=0/0.4.0
 SRC_URI=https://github.com/geneweb/unidecode/archive/v0.4.0.tar.gz -> unidecode-0.4.0.tar.gz
 _eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
-_md5_=d351ae19dd74650dfd78fad189f88f1f
+_md5_=45b55ea2408eb4928185db8ce8760c22
