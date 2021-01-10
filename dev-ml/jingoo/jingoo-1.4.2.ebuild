@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-ml/ppx_deriving
 	dev-ml/uucp
-	dev-ml/uutf"
+	dev-ml/uutf
+	dev-ml/menhir"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-ml/dune"
