@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,9 +15,9 @@ LICENSE="GPL-3+"
 SLOT="0/19"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples +imagemagick +python test"
-RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/jsoncpp:0=
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
 	>=media-libs/libopenshot-audio-0.2.0:0=
-	media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora]
+	media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora,vorbis]
 	net-libs/cppzmq
 	net-libs/zeromq
 	imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] )
