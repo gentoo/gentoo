@@ -430,6 +430,7 @@ xorg-3_src_install() {
 		multilib-minimal_src_install "$@"
 	else
 		emake DESTDIR="${D}" "${install_args[@]}" "$@" install || die "emake install failed"
+		einstalldocs
 	fi
 
 	# Many X11 libraries unconditionally install developer documentation
