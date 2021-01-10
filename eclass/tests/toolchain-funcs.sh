@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 source tests-common.sh
@@ -27,7 +27,8 @@ test-tc-arch-kernel() {
 tbegin "tc-arch-kernel() (KV=2.6.30)"
 test-tc-arch-kernel 2.6.30 \
 	i{3..6}86:x86 x86_64:x86 \
-	powerpc{,64}:powerpc i{3..6}86-gentoo-freebsd:i386
+	powerpc{,64}:powerpc i{3..6}86-gentoo-freebsd:i386 \
+	or1k:openrisc or1k-linux-musl:openrisc
 tend $?
 
 #

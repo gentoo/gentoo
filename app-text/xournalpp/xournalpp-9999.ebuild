@@ -22,7 +22,7 @@ SLOT="0"
 IUSE=""
 
 COMMONDEPEND="
-	app-text/poppler
+	app-text/poppler[cairo]
 	dev-libs/glib
 	dev-libs/libxml2
 	dev-libs/libzip:=

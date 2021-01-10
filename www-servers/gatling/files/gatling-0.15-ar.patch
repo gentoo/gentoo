@@ -1,0 +1,30 @@
+From 64933921d28aa96cbece18e43723117661a8056d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 28 Nov 2020 20:33:21 +0100
+Subject: [PATCH] GNUmakefile: Respect variable AR
+
+GNU make comes with AR predefined:
+$ make -f <(echo $'.PHONY: all\nall:\n\t@echo "AR is \\"$(AR)\\"."')
+AR is "ar".
+
+Original bug report at https://bugs.gentoo.org/756850
+---
+ GNUmakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 6af7b35..e6b32fe 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -195,7 +195,7 @@ dummy.c:
+ 	touch $@
+ 
+ libsocketkludge.a: libsocket libiconv dummy.o
+-	ar q $@ dummy.o
++	$(AR) q $@ dummy.o
+ 	-ranlib $@
+ 
+ LDLIBS+=`cat libsocket libiconv libcrypt`
+-- 
+2.27.0
+

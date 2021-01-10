@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Implements Wake On LAN (Magic Paket) functionality in a small program"
 HOMEPAGE="http://ahh.sourceforge.net/wol/"
@@ -9,8 +11,10 @@ SRC_URI="mirror://sourceforge/ahh/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 IUSE="nls"
+
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
 
 src_configure() {
 	local myeconfargs=(
@@ -19,4 +23,8 @@ src_configure() {
 	)
 
 	econf ${myeconfargs[@]}
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="x11-libs/gdk-pixbuf[X]
+RDEPEND="x11-libs/gdk-pixbuf-xlib
+	>=x11-libs/gdk-pixbuf-2.42.0:2
 	>=x11-libs/libdockapp-0.7:="
 DEPEND="${RDEPEND}"
 

@@ -9,9 +9,6 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
-	<longdescription lang="en">
-		Mozc is a subset of Google Japanese Input (Google 日本語入力) released in open-source form.
-	</longdescription>
 	<use>
 		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>

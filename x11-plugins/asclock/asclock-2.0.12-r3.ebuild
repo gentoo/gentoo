@@ -1,14 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
-IUSE=""
 DESCRIPTION="Clock applet for AfterStep"
-SRC_URI="http://www.tigr.net/afterstep/download/asclock/${P}.tar.gz"
 HOMEPAGE="http://tigr.net/afterstep/applets/"
+SRC_URI="http://www.tigr.net/afterstep/download/asclock/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
@@ -16,7 +16,10 @@ KEYWORDS="amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 DEPEND="x11-libs/libXpm"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-gcc41.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-gcc41.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
@@ -59,7 +62,7 @@ src_install() {
 	insinto ${themesdir}
 	doins -r themes/*
 	dodoc README README.THEMES TODO
-	cd "${D}"/${themesdir} || die
-	rm -f Freeamp/Makefile{,.*} || die
+	cd "${ED}"/${themesdir} || die
+	rm Freeamp/Makefile{,.*} || die
 	ln -s classic default_theme || die
 }

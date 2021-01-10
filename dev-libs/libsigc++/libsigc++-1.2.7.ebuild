@@ -8,11 +8,12 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit autotools gnome2 eutils
 
 DESCRIPTION="Typesafe callback system for standard C++"
-HOMEPAGE="http://libsigc.sourceforge.net/"
+HOMEPAGE="https://libsigcplusplus.github.io/libsigcplusplus/
+	https://github.com/libsigcplusplus/libsigcplusplus"
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="1.2"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="sys-devel/m4"

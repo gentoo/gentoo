@@ -1,7 +1,15 @@
 #!/sbin/runscript
 #
 
-PIDFILE="/run/dbmail-pop3d.pid"
+BIN_DIR=/usr/sbin
+PID_DIR=/run/dbmail
+PID=pid
+
+# Where is the dbmail.conf file located?
+CONFIG=/etc/dbmail/dbmail.conf
+
+## not in 3.1.x yet
+#extra_started_commands="reload"
 
 depend() {
 	need net

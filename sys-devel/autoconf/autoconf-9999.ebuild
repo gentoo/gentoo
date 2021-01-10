@@ -24,8 +24,9 @@ IUSE="emacs"
 BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${BDEPEND}
-	!~sys-devel/${P}:2.5
-	>=sys-devel/autoconf-wrapper-13"
+	>=sys-devel/autoconf-wrapper-14
+	sys-devel/gnuconfig
+	!~sys-devel/${P}:2.5"
 [[ ${PV} == "9999" ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
@@ -40,4 +41,14 @@ src_prepare() {
 	fi
 
 	toolchain-autoconf_src_prepare
+}
+
+src_install() {
+	default
+
+	local f
+	for f in config.{guess,sub} ; do
+		ln -fs ../../gnuconfig/${f} \
+			"${ED}"/usr/share/autoconf-*/build-aux/${f} || die
+	done
 }

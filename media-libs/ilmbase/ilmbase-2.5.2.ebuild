@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/v${PV}.tar
 
 LICENSE="BSD"
 SLOT="0/25" # based on SONAME
-KEYWORDS="~amd64 -arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="large-stack static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -21,6 +21,8 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/openexr-${PV}/IlmBase"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/OpenEXR/IlmBaseConfigInternal.h )
+
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
 multilib_src_configure() {
 	local mycmakeargs=(

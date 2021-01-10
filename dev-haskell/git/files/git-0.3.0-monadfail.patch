@@ -1,0 +1,103 @@
+From ad1e877d8e32bc3f573d92cadf697f0bb67a7da2 Mon Sep 17 00:00:00 2001
+From: Jack Todaro <solpeth@posteo.org>
+Date: Fri, 10 Jul 2020 07:01:08 +1000
+Subject: [PATCH] Data.Git.Monad.hs: port to MonadFail proposal
+
+Signed-off-by: Jack Todaro <solpeth@posteo.org>
+---
+ Data/Git/Monad.hs | 30 ++++++++++++++++++++++--------
+ 1 file changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/Data/Git/Monad.hs b/Data/Git/Monad.hs
+index 480af9f..44a7018 100644
+--- a/Data/Git/Monad.hs
++++ b/Data/Git/Monad.hs
+@@ -17,7 +17,7 @@
+ --
+ -- You can also easily create a new commit: see 'CommitM' and 'withNewCommit'
+ --
+-
++{-# LANGUAGE CPP #-}
+ {-# LANGUAGE FlexibleInstances #-}
+ {-# LANGUAGE OverloadedStrings #-}
+ {-# LANGUAGE Rank2Types #-}
+@@ -74,7 +74,9 @@ module Data.Git.Monad
+     , Git.Person(..)
+     ) where
+ 
+-
++#if !MIN_VERSION_base(4,11,0)
++import qualified Control.Monad.Fail as Fail
++#endif
+ import Data.ByteString (ByteString)
+ import qualified Data.ByteString as B
+ import qualified Data.ByteString.Lazy as BL
+@@ -240,7 +242,11 @@ instance Applicative GitM where
+ instance Monad GitM where
+     return = returnGitM
+     (>>=)  = bindGitM
+-    fail   = failGitM
++#if !MIN_VERSION_base(4,11,0)
++    fail   = Fail.fail
++#endif
++instance MonadFail GitM where
++    fail = failGitM
+ 
+ instance GitMonad GitM where
+     getGit  = getGitM
+@@ -313,7 +319,11 @@ instance Applicative CommitAccessM where
+ instance Monad CommitAccessM where
+     return = returnCommitAccessM
+     (>>=)  = bindCommitAccessM
+-    fail   = failCommitAccessM
++#if !MIN_VERSION_base(4,11,0)
++    fail   = Fail.fail
++#endif
++instance MonadFail CommitAccessM where
++    fail = failCommitAccessM
+ 
+ instance GitMonad CommitAccessM where
+     getGit  = getCommitAccessM
+@@ -423,7 +433,7 @@ getDir fp = do
+ -- >        l <- getDir []
+ -- >        liftGit $ print l
+ --
+-withCommit :: (Resolvable ref, GitMonad git)
++withCommit :: (Resolvable ref, GitMonad git, MonadFail git)
+            => ref
+                 -- ^ the commit revision or reference to open
+            -> CommitAccessM a
+@@ -474,7 +484,11 @@ instance Applicative CommitM where
+ instance Monad CommitM where
+     return = returnCommitM
+     (>>=)  = bindCommitM
+-    fail   = failCommitM
++#if !MIN_VERSION_base(4,11,0)
++    fail   = Fail.fail
++#endif
++instance MonadFail CommitM where
++    fail = failCommitM
+ 
+ instance GitMonad CommitM where
+     getGit  = getCommitM
+@@ -599,7 +613,7 @@ deleteFile path = do
+ -- >        setFile ["README.md"] $ readmeContent <> "just add some more description\n"
+ -- >    branchWrite "master" r
+ --
+-withNewCommit :: (GitMonad git, Resolvable rev)
++withNewCommit :: (GitMonad git, MonadFail git, Resolvable rev)
+               => Git.Person
+                 -- ^ by default a commit must have an Author and a Committer.
+                 --
+@@ -670,7 +684,7 @@ withNewCommit p mPrec m = do
+ --         )
+ -- @
+ --
+-withBranch :: GitMonad git
++withBranch :: (GitMonad git, MonadFail git)
+            => Git.Person
+                 -- ^ the default Author and Committer (see 'withNewCommit')
+            -> Git.RefName
+-- 
+2.27.0
+

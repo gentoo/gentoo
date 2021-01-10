@@ -12,4 +12,7 @@
 		The client software connects to a TeamSpeak server of the user's choice,
 		from which the user may join chat channels.
 	</longdescription>
+	<use>
+		<flag name="system-libcxx">Use <pkg>sys-libs/libcxx</pkg> instead of shipped libs.</flag>
+	</use>
 </pkgmetadata>

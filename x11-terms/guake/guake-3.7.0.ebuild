@@ -8,7 +8,9 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="Drop-down terminal for GNOME"
-HOMEPAGE="https://github.com/Guake/guake https://pypi.org/project/Guake"
+HOMEPAGE="
+	https://github.com/Guake/guake/
+	https://pypi.org/project/guake/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

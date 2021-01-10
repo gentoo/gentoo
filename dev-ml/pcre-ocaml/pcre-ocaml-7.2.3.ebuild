@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ DOCS=( "AUTHORS.txt" "CHANGES.txt" "README.md" )
 src_install() {
 	oasis_src_install
 	if use examples ; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		docinto examples
+		dodoc -r examples
 	fi
 }

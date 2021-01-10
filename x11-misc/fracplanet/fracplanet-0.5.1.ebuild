@@ -6,10 +6,7 @@ EAPI=7
 inherit qmake-utils
 
 DESCRIPTION="Fractal planet and terrain generator"
-HOMEPAGE="
-	http://www.bottlenose.net/share/fracplanet/index.htm
-	https://sourceforge.net/projects/fracplanet/
-"
+HOMEPAGE="https://sourceforge.net/projects/fracplanet/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

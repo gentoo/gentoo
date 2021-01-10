@@ -5,7 +5,4 @@
 <email>php-bugs@gentoo.org</email>
 <name>PHP</name>
 </maintainer>
-<longdescription lang="en">
-The Symfony YAML Component
-</longdescription>
 </pkgmetadata>

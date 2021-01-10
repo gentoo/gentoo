@@ -34,6 +34,7 @@ S="${WORKDIR}/${PN}-master/prboom2"
 
 src_prepare() {
 	eapply -p2 "${FILESDIR}"/prboom-plus-2.5.1.7.82-Add-CMake-install-targets.patch
+	eapply -p2 "${FILESDIR}"/prboom-plus-2.5.1.7.82-Add-install-rules-for-prboom-plus-documentation.patch
 	cmake_src_prepare
 }
 

@@ -17,6 +17,7 @@
 OpenStack logging configuration library provides standardized configuration for all openstack projects.
 It also provides custom formatters, handlers and support for context specific logging (like resource id’s etc).
 </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">oslo.log</remote-id>
     <remote-id type="github">openstack/oslo.log</remote-id>

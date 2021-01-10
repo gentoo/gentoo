@@ -1,0 +1,25 @@
+From 5263f4e391c50c72e000da6c2bcf1123c28192e5 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Wed, 21 Jun 2017 14:05:28 +0200
+Subject: [PATCH] Remove finding WebKitWidgets, not used
+
+---
+ lib/kdev5-php/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/kdev5-php/CMakeLists.txt b/lib/kdev5-php/CMakeLists.txt
+index 2a40b48ae..6ef58b0c9 100644
+--- a/lib/kdev5-php/CMakeLists.txt
++++ b/lib/kdev5-php/CMakeLists.txt
+@@ -28,7 +28,7 @@ include(KDECMakeSettings)
+ include(GenerateExportHeader)
+ include(FeatureSummary)
+ 
+-find_package(Qt5 REQUIRED Core Widgets Test WebKitWidgets)
++find_package(Qt5 REQUIRED Core Widgets Test)
+ find_package(KF5 REQUIRED COMPONENTS Archive ThreadWeaver TextEditor I18n ItemModels KCMUtils)
+ find_package(KDevPlatform ${KDEVPLATFORM_VERSION} REQUIRED)
+ find_package(KDevelop-PG-Qt REQUIRED)
+-- 
+2.28.0
+

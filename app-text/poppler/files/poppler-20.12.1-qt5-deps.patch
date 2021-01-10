@@ -1,0 +1,49 @@
+From e5927c7250afd6b715a9de520851b26e41b7f422 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 9 Dec 2020 01:28:25 +0100
+Subject: [PATCH] Move Qt5 test dependencies into test dir
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     |  6 ++----
+ qt5/CMakeLists.txt | 10 ++++++++--
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1573249a..ab91d537 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -157,10 +157,8 @@ if (ENABLE_QT5)
+   find_package(Qt5Core 5.5)  # Update QT_DISABLE_DEPRECATED_BEFORE in qt5/CMakeLists.txt when increasing this
+   find_package(Qt5Gui)
+   find_package(Qt5Xml)
+-  find_package(Qt5Widgets)
+-  find_package(Qt5Test)
+-  if (NOT (Qt5Core_FOUND AND Qt5Gui_FOUND AND Qt5Xml_FOUND AND Qt5Widgets_FOUND AND Qt5Test_FOUND))
+-    message("-- Package Qt5Core or Qt5Gui or Qt5Xml or Qt5Widgets or Qt5Test not found")
++  if (NOT (Qt5Core_FOUND AND Qt5Gui_FOUND AND Qt5Xml_FOUND))
++    message("-- Package Qt5Core or Qt5Gui or Qt5Xml not found")
+     set(ENABLE_QT5 OFF)
+   endif()
+ endif()
+diff --git a/qt5/CMakeLists.txt b/qt5/CMakeLists.txt
+index 58b42f5e..e3b26cc2 100644
+--- a/qt5/CMakeLists.txt
++++ b/qt5/CMakeLists.txt
+@@ -9,5 +9,11 @@ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050500)
+ add_definitions(-DQT_NO_DEPRECATED_WARNINGS)
+ 
+ add_subdirectory(src)
+-add_subdirectory(tests)
+-add_subdirectory(demos)
++
++if(BUILD_QT5_TESTS)
++  find_package(Qt5Widgets REQUIRED)
++  find_package(Qt5Test REQUIRED)
++
++  add_subdirectory(tests)
++  add_subdirectory(demos)
++endif()
+-- 
+2.29.2
+

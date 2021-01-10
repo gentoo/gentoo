@@ -1,9 +1,9 @@
 # Copyright 2016-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -24,10 +24,11 @@ SLOT="4"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4
+BDEPEND=">=app-i18n/fcitx-4.2.9:4
+	virtual/pkgconfig"
+DEPEND=">=app-i18n/fcitx-4.2.9:4
 	dev-libs/m17n-lib
 	virtual/libintl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 DOCS=()

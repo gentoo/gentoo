@@ -717,6 +717,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-compat.patch
 	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-hide-pipe2.patch
+	eapply "${FILESDIR}"/2.19/glibc-2.19-gcc-10.patch
 
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +

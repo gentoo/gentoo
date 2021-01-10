@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 
-inherit distutils-r1
+inherit edos2unix distutils-r1
 
 DESCRIPTION="Exif manipulation with pure Python"
 HOMEPAGE="https://github.com/hMatoba/Piexif
@@ -22,6 +22,16 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	app-arch/unzip
 	test? ( dev-python/pillow[jpeg] )"
 RDEPEND=""
+
+PATCHES=(
+	# From https://github.com/hMatoba/Piexif/pull/109
+	"${FILESDIR}"/${P}-tests-pillow-7.2.0.patch
+)
+
+src_prepare() {
+	edos2unix tests/s_test.py  # to be able to patch it
+	default
+}
 
 python_test() {
 	"${PYTHON}" setup.py test || die

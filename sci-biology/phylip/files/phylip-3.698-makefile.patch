@@ -1,0 +1,266 @@
+--- a/src/Makefile.unx
++++ b/src/Makefile.unx
+@@ -81,7 +81,6 @@
+ #CC        = cc
+ #
+ #  To use GCC instead:
+-CC        = gcc
+ #
+ # ----------------------------------------------------------------------------
+ #
+@@ -91,7 +90,6 @@
+ #
+ #
+ #A minimal one
+-CFLAGS = 
+ #
+ # A basic one for debugging
+ #CFLAGS  = -g 
+@@ -220,7 +218,7 @@
+ 	@echo "Done."
+ 	@echo ""
+ 
+-put:
++put: all
+ 	@echo "Installing PHYLIP v3.6 binaries in $(EXEDIR)"
+ 	@mkdir -p $(EXEDIR)
+ 	@cp $(PROGS) $(EXEDIR)
+@@ -270,195 +268,195 @@
+ clique.o:       clique.c disc.h phylip.h
+ 
+ clique:         clique.o disc.o phylip.o
+-	$(CC) $(CFLAGS) clique.o disc.o phylip.o $(LIBS) -o clique
++	$(CC) $(LDFLAGS) clique.o disc.o phylip.o $(LIBS) -o clique
+ 
+ cons.o:         cons.c cons.h phylip.h 
+ 
+ consense.o:     consense.c cons.h phylip.h
+ 
+ consense:       consense.o phylip.o cons.o
+-	$(CC) $(CFLAGS) consense.o phylip.o cons.o $(LIBS) -o consense
++	$(CC) $(LDFLAGS) consense.o phylip.o cons.o $(LIBS) -o consense
+ 
+ contml.o:       contml.c cont.h phylip.h
+ 
+ contml:       contml.o cont.o phylip.o
+-	$(CC) $(CFLAGS) contml.o cont.o phylip.o $(LIBS) -o contml
++	$(CC) $(LDFLAGS) contml.o cont.o phylip.o $(LIBS) -o contml
+ 
+ contrast.o:       contrast.c cont.h phylip.h
+ 
+ contrast:       contrast.o cont.o phylip.o
+-	$(CC) $(CFLAGS) contrast.o cont.o phylip.o $(LIBS) -o contrast
++	$(CC) $(LDFLAGS) contrast.o cont.o phylip.o $(LIBS) -o contrast
+ 
+ dnacomp.o:      dnacomp.c seq.h phylip.h
+ 
+ dnacomp:      dnacomp.o seq.o phylip.o
+-	$(CC) $(CFLAGS) dnacomp.o seq.o phylip.o $(LIBS) -o dnacomp
++	$(CC) $(LDFLAGS) dnacomp.o seq.o phylip.o $(LIBS) -o dnacomp
+ 
+ dnadist.o:      dnadist.c seq.h phylip.h
+ 
+ dnadist:      dnadist.o seq.o phylip.o
+-	$(CC) $(CFLAGS) dnadist.o seq.o phylip.o $(LIBS) -o dnadist
++	$(CC) $(LDFLAGS) dnadist.o seq.o phylip.o $(LIBS) -o dnadist
+ 
+ dnainvar.o:      dnainvar.c seq.h phylip.h
+ 
+ dnainvar:      dnainvar.o seq.o phylip.o
+-	$(CC) $(CFLAGS) dnainvar.o seq.o phylip.o $(LIBS) -o dnainvar
++	$(CC) $(LDFLAGS) dnainvar.o seq.o phylip.o $(LIBS) -o dnainvar
+ 
+ dnaml.o:      dnaml.c seq.h phylip.h
+ 
+ dnaml:      dnaml.o seq.o phylip.o
+-	$(CC) $(CFLAGS) dnaml.o seq.o phylip.o $(LIBS) -o dnaml
++	$(CC) $(LDFLAGS) dnaml.o seq.o phylip.o $(LIBS) -o dnaml
+ 
+ dnamlk.o:      dnamlk.c seq.h phylip.h mlclock.h printree.h
+ 
+ dnamlk:      dnamlk.o seq.o phylip.o mlclock.o printree.o
+-	$(CC) $(CFLAGS) dnamlk.o seq.o phylip.o mlclock.o printree.o $(LIBS) -o dnamlk
++	$(CC) $(LDFLAGS) dnamlk.o seq.o phylip.o mlclock.o printree.o $(LIBS) -o dnamlk
+ 
+ dnamove.o:      dnamove.c seq.h moves.h phylip.h
+ 
+ dnamove:      dnamove.o seq.o moves.o phylip.o
+-	$(CC) $(CFLAGS) dnamove.o seq.o moves.o phylip.o $(LIBS) -o dnamove
++	$(CC) $(LDFLAGS) dnamove.o seq.o moves.o phylip.o $(LIBS) -o dnamove
+ 
+ dnapenny.o:      dnapenny.c seq.h phylip.h
+ 
+ dnapenny:      dnapenny.o seq.o phylip.o
+-	$(CC) $(CFLAGS) dnapenny.o seq.o phylip.o $(LIBS) -o dnapenny
++	$(CC) $(LDFLAGS) dnapenny.o seq.o phylip.o $(LIBS) -o dnapenny
+ 
+ dnapars.o:      dnapars.c seq.h phylip.h
+ 
+ dnapars:      dnapars.o seq.o phylip.o
+-	$(CC) $(CFLAGS) dnapars.o seq.o phylip.o $(LIBS) -o dnapars
++	$(CC) $(LDFLAGS) dnapars.o seq.o phylip.o $(LIBS) -o dnapars
+ 
+ dolmove.o:       dolmove.c disc.h moves.h dollo.h phylip.h
+ 
+ dolmove:       dolmove.o disc.o moves.o dollo.o phylip.o
+-	$(CC) $(CFLAGS) dolmove.o disc.o moves.o dollo.o phylip.o $(LIBS) -o dolmove
++	$(CC) $(LDFLAGS) dolmove.o disc.o moves.o dollo.o phylip.o $(LIBS) -o dolmove
+ 
+ dollop.o:       dollop.c disc.h dollo.h phylip.h
+ 
+ dollop:       dollop.o disc.o dollo.o phylip.o
+-	$(CC) $(CFLAGS) dollop.o disc.o dollo.o phylip.o $(LIBS) -o dollop
++	$(CC) $(LDFLAGS) dollop.o disc.o dollo.o phylip.o $(LIBS) -o dollop
+ 
+ dolpenny.o:       dolpenny.c disc.h dollo.h phylip.h
+ 
+ dolpenny:       dolpenny.o disc.o dollo.o phylip.o
+-	$(CC) $(CFLAGS) dolpenny.o disc.o dollo.o phylip.o $(LIBS) -o dolpenny
++	$(CC) $(LDFLAGS) dolpenny.o disc.o dollo.o phylip.o $(LIBS) -o dolpenny
+ 
+ draw.o:   draw.c draw.h phylip.h 
+-	$(CC) $(DFLAGS) -c draw.c
++	$(CC) $(DFLAGS) $(CPPFLAGS) -c draw.c
+ 
+ draw2.o:   draw2.c draw.h phylip.h 
+-	$(CC) $(DFLAGS) -c draw2.c
++	$(CC) $(DFLAGS) $(CPPFLAGS) -c draw2.c
+ 
+ drawgram.o:     drawgram.c draw.h phylip.h
+-	$(CC) $(DFLAGS) -c drawgram.c
++	$(CC) $(DFLAGS) $(CPPFLAGS) -c drawgram.c
+ 
+ drawgram:     drawgram.o draw.o draw2.o phylip.o
+-	$(CC) $(DFLAGS) draw.o draw2.o drawgram.o phylip.o $(DLIBS) -o drawgram
++	$(CC) $(LDFLAGS) draw.o draw2.o drawgram.o phylip.o $(DLIBS) -o drawgram
+ 	
+ # needed by java	
+-libdrawgram.so:   drawgram.o draw.o draw2.o phylip.o
+-	$(CC) $(CFLAGS) -o libdrawgram.so -shared -fPIC drawgram.c draw.c draw2.c phylip.c $(CLIBS)
++libdrawgram.so:
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o libdrawgram.so -Wl,-soname,libdrawgram.so -shared -fPIC drawgram.c draw.c draw2.c phylip.c $(CLIBS)
+ 
+ drawtree.o:     drawtree.c draw.h phylip.h
+-	$(CC) $(DFLAGS)  -shared -fPIC -c drawtree.c
++	$(CC) $(DFLAGS) $(CPPFLAGS) -c drawtree.c
+ 
+ drawtree:     drawtree.o draw.o draw2.o phylip.o
+-	$(CC) $(DFLAGS) draw.o draw2.o drawtree.o phylip.o $(DLIBS) -o drawtree
++	$(CC) $(LDFLAGS) draw.o draw2.o drawtree.o phylip.o $(DLIBS) -o drawtree
+ 
+ # needed by java	
+-libdrawtree.so:     drawtree.o draw.o draw2.o phylip.o
+-	$(CC) $(CFLAGS) -o libdrawtree.so  -shared -fPIC drawtree.c draw.c draw2.c phylip.c $(CLIBS)
++libdrawtree.so:
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o libdrawtree.so -Wl,-soname,libdrawtree.so -shared -fPIC drawtree.c draw.c draw2.c phylip.c $(CLIBS)
+ 
+ factor.o:       factor.c phylip.h
+ 
+ factor:       factor.o phylip.o
+-	$(CC) $(CFLAGS) factor.o phylip.o $(LIBS) -o factor
++	$(CC) $(LDFLAGS) factor.o phylip.o $(LIBS) -o factor
+ 
+ fitch.o:        fitch.c dist.h phylip.h
+ 
+ fitch:        fitch.o dist.o phylip.o
+-	$(CC) $(CFLAGS) fitch.o dist.o phylip.o $(LIBS) -o fitch
++	$(CC) $(LDFLAGS) fitch.o dist.o phylip.o $(LIBS) -o fitch
+ 
+ gendist.o:      gendist.c phylip.h
+ 
+ gendist:      gendist.o phylip.o
+-	$(CC) $(CFLAGS) gendist.o phylip.o $(LIBS) -o gendist
++	$(CC) $(LDFLAGS) gendist.o phylip.o $(LIBS) -o gendist
+ 
+ kitsch.o:        kitsch.c dist.h phylip.h
+ 
+ kitsch:        kitsch.o dist.o phylip.o
+-	$(CC) $(CFLAGS) kitsch.o dist.o phylip.o $(LIBS) -o kitsch
++	$(CC) $(LDFLAGS) kitsch.o dist.o phylip.o $(LIBS) -o kitsch
+ 
+ mix.o:        mix.c disc.h wagner.h phylip.h
+ 
+ mix:        mix.o disc.o wagner.o phylip.o
+-	$(CC) $(CFLAGS) mix.o disc.o wagner.o phylip.o $(LIBS) -o mix
++	$(CC) $(LDFLAGS) mix.o disc.o wagner.o phylip.o $(LIBS) -o mix
+ 
+ move.o:        move.c disc.h moves.h wagner.h phylip.h
+ 
+ move:        move.o disc.o moves.o wagner.o phylip.o
+-	$(CC) $(CFLAGS) move.o disc.o moves.o wagner.o phylip.o $(LIBS) -o move
++	$(CC) $(LDFLAGS) move.o disc.o moves.o wagner.o phylip.o $(LIBS) -o move
+ 
+ neighbor.o:        neighbor.c dist.h phylip.h
+ 
+ neighbor:        neighbor.o dist.o phylip.o
+-	$(CC) $(CFLAGS) neighbor.o dist.o phylip.o $(LIBS) -o neighbor
++	$(CC) $(LDFLAGS) neighbor.o dist.o phylip.o $(LIBS) -o neighbor
+ 
+ pars.o:   pars.c discrete.h phylip.h
+ 
+ pars: pars.o discrete.o phylip.o
+-	$(CC) $(CFLAGS) pars.o discrete.o phylip.o $(LIBS) -o pars
++	$(CC) $(LDFLAGS) pars.o discrete.o phylip.o $(LIBS) -o pars
+ 
+ penny.o:  penny.c disc.h wagner.h phylip.h
+ 
+ penny:  penny.o disc.o wagner.o phylip.o
+-	$(CC) $(CFLAGS) penny.o disc.o wagner.o  phylip.o $(LIBS) -o penny
++	$(CC) $(LDFLAGS) penny.o disc.o wagner.o phylip.o $(LIBS) -o penny
+ 
+ proml.o:      proml.c seq.h phylip.h
+ 
+ proml:      proml.o seq.o phylip.o
+-	$(CC) $(CFLAGS) proml.o seq.o phylip.o $(LIBS) -o proml
++	$(CC) $(LDFLAGS) proml.o seq.o phylip.o $(LIBS) -o proml
+ 
+ promlk.o:      promlk.c seq.h phylip.h mlclock.h printree.h
+ 
+ promlk:      promlk.o seq.o phylip.o mlclock.o printree.o
+-	$(CC) $(CFLAGS) promlk.o seq.o phylip.o mlclock.o printree.o $(LIBS) -o promlk
++	$(CC) $(LDFLAGS) promlk.o seq.o phylip.o mlclock.o printree.o $(LIBS) -o promlk
+ 
+ protdist.o:      protdist.c seq.h phylip.h
+ 
+ protdist:      protdist.o seq.o phylip.o
+-	$(CC) $(CFLAGS) protdist.o seq.o phylip.o $(LIBS) -o protdist
++	$(CC) $(LDFLAGS) protdist.o seq.o phylip.o $(LIBS) -o protdist
+ 
+ protpars.o: protpars.c seq.h phylip.h
+ 
+ protpars: protpars.o seq.o phylip.o
+-	$(CC) $(CFLAGS) protpars.o seq.o phylip.o $(LIBS) -o protpars
++	$(CC) $(LDFLAGS) protpars.o seq.o phylip.o $(LIBS) -o protpars
+ 
+ restdist.o: restdist.c seq.h phylip.h
+ 
+ restdist: restdist.o seq.o phylip.o
+-	$(CC) $(CFLAGS) restdist.o seq.o phylip.o $(LIBS) -o restdist
++	$(CC) $(LDFLAGS) restdist.o seq.o phylip.o $(LIBS) -o restdist
+ 
+ restml.o: restml.c seq.h phylip.h
+ 
+ restml: restml.o seq.o phylip.o
+-	$(CC) $(CFLAGS) restml.o seq.o phylip.o $(LIBS) -o restml
++	$(CC) $(LDFLAGS) restml.o seq.o phylip.o $(LIBS) -o restml
+ 
+ retree.o:       retree.c moves.h phylip.h
+ 
+ retree:       retree.o moves.o phylip.o
+-	$(CC) $(CFLAGS) retree.o moves.o phylip.o $(LIBS) -o retree
++	$(CC) $(LDFLAGS) retree.o moves.o phylip.o $(LIBS) -o retree
+ 
+ seqboot.o:      seqboot.c phylip.h
+ 
+ seqboot:      seqboot.o seq.o phylip.o
+-	$(CC) $(CFLAGS) seqboot.o seq.o phylip.o $(LIBS) -o seqboot
++	$(CC) $(LDFLAGS) seqboot.o seq.o phylip.o $(LIBS) -o seqboot
+ 
+ treedist.o:     treedist.c cons.h phylip.h
+ 
+ treedist:     treedist.o phylip.o cons.o
+-	$(CC) $(CFLAGS) treedist.o cons.o phylip.o $(LIBS) -o treedist
++	$(CC) $(LDFLAGS) treedist.o cons.o phylip.o $(LIBS) -o treedist
+ 
+ 
+ # ----------------------------------------------------------------------------

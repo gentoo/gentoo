@@ -18,6 +18,6 @@
 	</use>
 	<upstream>
 		<bugs-to>https://pcem-emulator.co.uk/phpBB3/viewforum.php?f=2</bugs-to>
-		<remote-id type="bitbucket">pcem_emulator/pcem</remote-id>
+		<remote-id type="github">sarah-walker-pcem/pcem</remote-id>
 	</upstream>
 </pkgmetadata>

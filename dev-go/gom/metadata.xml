@@ -5,9 +5,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		Gom is a dependency manager for Go which is similar to Ruby's bundle.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">mattn/gom</remote-id>
 	</upstream>

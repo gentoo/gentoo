@@ -8,11 +8,11 @@ inherit cmake cuda fortran-2
 
 DESCRIPTION="C++ template library for linear algebra"
 HOMEPAGE="http://eigen.tuxfamily.org/index.php?title=Main_Page"
-SRC_URI="https://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://gitlab.com/libeigen/eigen/-/archive/3.3.7/${P}.tar.bz2 -> ${P}-gitlab.tar.bz2"
 
 LICENSE="MPL-2.0"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_ppc_vsx cuda debug doc openmp test" #zvector
 
 RESTRICT="!test? ( test )"
@@ -49,8 +49,6 @@ DEPEND="
 # Missing:
 # METIS-5
 # GOOGLEHASH
-
-S="${WORKDIR}/${PN}-${PN}-323c052e1731"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo-cmake.patch )
 

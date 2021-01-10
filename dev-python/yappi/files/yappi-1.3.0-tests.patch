@@ -1,0 +1,12 @@
+diff -ur a/tests/test_functionality.py b/tests/test_functionality.py
+--- a/tests/test_functionality.py	2020-04-27 12:57:09.000000000 -0700
++++ b/tests/test_functionality.py	2020-10-30 18:08:35.619553108 -0700
+@@ -338,7 +338,7 @@
+         fsa = utils.find_stat_by_name(stats, "a")
+         self.assertEqual(fsa.module, os.path.basename(fsa.module))
+ 
+-    @unittest.skipIf(os.name == "nt", "do not run on Windows")
++    @unittest.skip("does not like ebuild environment")
+     def test_run_as_script(self):
+         import re
+         p = subprocess.Popen(

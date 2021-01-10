@@ -2,11 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jer@gentoo.org</email>
-	</maintainer>
-	<maintainer type="project">
-		<email>sound@gentoo.org</email>
-		<name>Gentoo Sound project</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="clock">Enable clock screen</flag>

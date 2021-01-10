@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="doctool gtk-doc test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # virtual/pkgconfig needed at runtime, bug #505408
 RDEPEND="
@@ -39,7 +39,13 @@ DEPEND="${RDEPEND}
 	)
 	sys-devel/bison
 	sys-devel/flex
-	test? ( x11-libs/cairo[glib] )
+	test? (
+		x11-libs/cairo[glib]
+		$(python_gen_cond_dep '
+			dev-python/mako[${PYTHON_MULTI_USEDEP}]
+			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 
 pkg_setup() {

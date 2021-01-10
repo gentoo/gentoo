@@ -12,5 +12,4 @@
 	<use>
 		<flag name="lighttpd">Add <pkg>www-servers/lighttpd</pkg> support</flag>
 	</use>
-	<longdescription>RT is an enterprise-grade ticketing system</longdescription>
 </pkgmetadata>

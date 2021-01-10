@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils autotools git-r3 xdg-utils
+inherit flag-o-matic qmake-utils autotools git-r3 xdg
 
 DESCRIPTION="Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections"
 HOMEPAGE="https://qjackctl.sourceforge.io/"
@@ -53,14 +53,6 @@ src_compile() {
 src_install() {
 	default
 
-	gunzip "${D}/usr/share/man/man1/qjackctl.fr.1.gz" || die
 	gunzip "${D}/usr/share/man/man1/qjackctl.1.gz" || die
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	gunzip "${D}/usr/share/man/fr/man1/qjackctl.1.gz" || die
 }

@@ -23,7 +23,7 @@ RDEPEND=">=sys-apps/gentoo-functions-0.10"
 
 _emake() {
 	emake \
-		PV="${PV}" \
+		PV="${PVR}" \
 		SUBLIBDIR="$(get_libdir)" \
 		USE_CC_WRAPPERS="$(usex cc-wrappers)" \
 		USE_NATIVE_LINKS="$(usex native-symlinks)" \

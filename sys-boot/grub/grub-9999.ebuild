@@ -18,7 +18,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 eutils flag-o-matic multibuild pax-utils toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature pax-utils toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -95,9 +95,11 @@ BDEPEND="
 DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
-	sdl? ( media-libs/libsdl )
+	grub_platforms_emu? (
+		sdl? ( media-libs/libsdl )
+	)
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
-	libzfs? ( sys-fs/zfs )
+	libzfs? ( sys-fs/zfs:= )
 	mount? ( sys-fs/fuse:0 )
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="GNU Radio source block for OsmoSDR and rtlsdr and hackrf"
 HOMEPAGE="http://sdr.osmocom.org/trac/wiki/GrOsmoSDR"
@@ -19,49 +19,51 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="airspy bladerf hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
+IUSE="airspy bladerf hackrf iqbalance python rtlsdr sdrplay soapy uhd"
 
+#xtrx? ( net-wireless/libxtrx )
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
-	sci-libs/volk
+	sci-libs/volk:=
 	airspy? ( net-wireless/airspy )
 	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_SINGLE_USEDEP}] )
-	mirisdr? ( net-libs/libmirisdr:= )
 	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.4:= )
 	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr:= )
-	uhd? ( net-wireless/uhd:=[${PYTHON_SINGLE_USEDEP}] )"
+	uhd? ( net-wireless/uhd:=[${PYTHON_SINGLE_USEDEP}] )
+	"
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_configure() {
+	#-DENABLE_XTRX="$(usex xtrx ON OFF)"
 	local mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DENABLE_FILE=ON
-		-DENABLE_AIRSPY="$(usex airspy)"
-		-DENABLE_BLADERF="$(usex bladerf)"
-		-DENABLE_HACKRF="$(usex hackrf)"
-		-DENABLE_IQBALANCE="$(usex iqbalance)"
-		-DENABLE_MIRI="$(usex mirisdr)"
-		-DENABLE_PYTHON="$(usex python)"
-		-DENABLE_RTL="$(usex rtlsdr)"
-		-DENABLE_RTL_TCP="$(usex rtlsdr)"
-		-DENABLE_SOAPY="$(usex soapy)"
-		-DENABLE_UHD="$(usex uhd)"
-		-DENABLE_SDRPLAY="$(usex sdrplay)"
-		-DENABLE_NONFREE="$(usex sdrplay)"
+		-DENABLE_AIRSPY="$(usex airspy ON OFF)"
+		-DENABLE_BLADERF="$(usex bladerf ON OFF)"
+		-DENABLE_HACKRF="$(usex hackrf ON OFF)"
+		-DENABLE_IQBALANCE="$(usex iqbalance ON OFF)"
+		-DENABLE_PYTHON="$(usex python ON OFF)"
+		-DENABLE_RTL="$(usex rtlsdr ON OFF)"
+		-DENABLE_RTL_TCP="$(usex rtlsdr ON OFF)"
+		-DENABLE_SDRPLAY="$(usex sdrplay ON OFF)"
+		-DENABLE_NONFREE="$(usex sdrplay ON OFF)"
+		-DENABLE_SOAPY="$(usex soapy ON OFF)"
+		-DENABLE_UHD="$(usex uhd ON OFF)"
+		-DENABLE_XTRX=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use python; then
 		python_fix_shebang "${ED}"/usr/bin
 		python_optimize

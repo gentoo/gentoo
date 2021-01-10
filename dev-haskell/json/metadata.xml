@@ -16,7 +16,6 @@
 		between Haskell values and JSON.
 	</longdescription>
 	<use>
-		<flag name="generic">Add support for generic encoder (<pkg>dev-haskell/syb</pkg>)</flag>
 		<flag name="mapdict">Encode Haskell maps as JSON dicts</flag>
 		<flag name="parsec">Add support for parsing with Parsec</flag>
 		<flag name="pretty">Add support for using pretty printing combinators</flag>

@@ -5,10 +5,14 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="debug">Enable the extra internal checks.</flag>
+	</use>
 	<longdescription>
-		Chase &amp; Lev work-stealing lock-free double-ended queues (deques).
+		A queue that is push/pop on one end and pop-only on the other.  These are commonly
+		used for work-stealing.
+		This implementation derives directly from the pseudocode in the 2005 SPAA paper:
+		
+		http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.170.1097&amp;rep=rep1&amp;type=pdf
 	</longdescription>
-	<upstream>
-		<remote-id type="github">rrnewton/haskell-lockfree</remote-id>
-	</upstream>
 </pkgmetadata>

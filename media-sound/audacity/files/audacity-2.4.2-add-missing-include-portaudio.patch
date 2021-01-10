@@ -1,0 +1,11 @@
+diff -Naur a/src/AudioIOBase.cpp b/src/AudioIOBase.cpp
+--- a/src/AudioIOBase.cpp	2020-06-19 15:16:47.000000000 +0000
++++ b/src/AudioIOBase.cpp	2020-08-04 19:43:27.985734707 +0000
+@@ -21,6 +21,7 @@
+ #include "prefs/RecordingPrefs.h"
+ #include "widgets/MeterPanelBase.h"
+ 
++#include "portaudio.h"
+ #if USE_PORTMIXER
+ #include "portmixer.h"
+ #endif

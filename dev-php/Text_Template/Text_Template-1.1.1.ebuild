@@ -14,7 +14,7 @@ SRC_URI="http://${PHP_PEAR_URI}/get/${PEAR_P}.tgz"
 DESCRIPTION="Simple template engine"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE=""
 
 DEPEND=">=dev-php/pear-1.9.4"

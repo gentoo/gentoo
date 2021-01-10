@@ -8,7 +8,4 @@
 	<use>
 		<flag name="executable">Build the `ppdot' executable</flag>
 	</use>
-	<longdescription>
-		A library for the analysis and creation of Graphviz DOT files.
-	</longdescription>
 </pkgmetadata>

@@ -1,0 +1,41 @@
+commit 50f8f706e868f8ebac4f2f1392365f994d674463 (HEAD, origin/upgrade-ppxlib-0.18.0)
+Author: Nathan Rebours <nathan.p.rebours@gmail.com>
+Date:   Mon Oct 5 17:56:52 2020 +0200
+
+    Make ppx_custom_printf compatible with ppxlib.0.18.0
+    
+    ppxlib.0.18.0 upgrades to the 4.11 AST which results in a change
+    in string constants representation. This PR makes ppx_custom_printf
+    compatible with the latest ppxlib.
+    
+    You might want for the actual release of ppxlib.0.18.0 before merging
+    this!
+    
+    Signed-off-by: Nathan Rebours <nathan.p.rebours@gmail.com>
+
+diff --git a/ppx_custom_printf.opam b/ppx_custom_printf.opam
+index 80ea710..1cc3d11 100644
+--- a/ppx_custom_printf.opam
++++ b/ppx_custom_printf.opam
+@@ -15,7 +15,7 @@ depends: [
+   "base"          {>= "v0.14" & < "v0.15"}
+   "ppx_sexp_conv" {>= "v0.14" & < "v0.15"}
+   "dune"          {>= "2.0.0"}
+-  "ppxlib"        {>= "0.11.0"}
++  "ppxlib"        {>= "0.18.0"}
+ ]
+ synopsis: "Printf-style format-strings for user-defined string conversion"
+ description: "
+diff --git a/src/ppx_custom_printf.ml b/src/ppx_custom_printf.ml
+index 18ad7fd..e9ad8b3 100644
+--- a/src/ppx_custom_printf.ml
++++ b/src/ppx_custom_printf.ml
+@@ -264,7 +264,7 @@ let expand_format_string ~loc fmt_string =
+ let expand e =
+   match e.pexp_desc with
+   | Pexp_apply ({ pexp_attributes = ident_attrs; _ },
+-                [ (Nolabel, { pexp_desc = Pexp_constant (Pconst_string (str, _))
++                [ (Nolabel, { pexp_desc = Pexp_constant (Pconst_string (str, _, _))
+                             ; pexp_loc = loc; pexp_loc_stack = _
+                             ; pexp_attributes = str_attrs }) ]) ->
+     assert_no_attributes ident_attrs;

@@ -1,5 +1,5 @@
---- vittk-1.3/Makefile.in.orig
-+++ vittk-1.3/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -10,45 +10,45 @@
  	@echo "usage: make install"
  

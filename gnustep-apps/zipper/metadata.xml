@@ -5,7 +5,4 @@
 	<email>gnustep@gentoo.org</email>
 	<name>Gentoo GNUstep Project</name>
 </maintainer>
-<longdescription>
-Zipper is a tool for inspecting the contents of a compressed archive and for extracting.
-</longdescription>
 </pkgmetadata>

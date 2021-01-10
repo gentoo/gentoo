@@ -5,12 +5,12 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="sqlite"
-inherit python-single-r1 gnome2-utils meson xdg-utils
+inherit python-single-r1 gnome2-utils meson xdg
 
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
 SRC_URI="https://adishatz.org/${PN}/${P}.tar.xz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -49,23 +49,24 @@ RDEPEND="${DEPEND}
 
 RESTRICT="test"
 
-pkg_preinst() {
-	gnome2_schemas_savelist
-}
-
 src_install() {
 	meson_src_install
 	python_optimize
 }
 
+pkg_preinst() {
+	gnome2_schemas_savelist
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
 	gnome2_gconf_install
 	gnome2_schemas_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	gnome2_gconf_uninstall
 	gnome2_schemas_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

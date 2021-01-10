@@ -6,8 +6,5 @@
 	<flag name="gtk2">
 		Build with <pkg>x11-libs/gtk+</pkg> version 2 instead of version 3
 	</flag>
-	<flag name="gtk3">
-		Add support for <pkg>x11-libs/gtk+</pkg> version 3 (The GIMP Toolkit)
-	</flag>
 </use>
 </pkgmetadata>

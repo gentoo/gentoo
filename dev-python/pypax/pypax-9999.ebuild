@@ -19,7 +19,7 @@ fi
 
 DESCRIPTION="Python module to get or set either PT_PAX and/or XATTR_PAX flags"
 HOMEPAGE="https://dev.gentoo.org/~blueness/elfix/
-	https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml"
+	https://wiki.gentoo.org/wiki/Project:Hardened/PaX_Quickstart"
 
 LICENSE="GPL-3"
 SLOT="0"

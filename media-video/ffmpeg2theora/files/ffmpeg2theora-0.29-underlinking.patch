@@ -6,8 +6,8 @@ v = pow(v, g) * 255.0;    // mplayer's vf_eq2.c multiplies with 256 here, strang
 
 For build failure and log, see Gentoo bug #504698
 
---- SConstruct
-+++ SConstruct
+--- a/SConstruct
++++ b/SConstruct
 @@ -206,9 +206,8 @@
    if env['crossmingw']:
        env.Append(CCFLAGS=['-Wl,-subsystem,windows'])

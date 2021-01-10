@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Core Library for Google Client Libraries"
@@ -14,7 +14,7 @@ S="${WORKDIR}/${P//google/python}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	dev-python/namespace-google[${PYTHON_USEDEP}]
@@ -29,6 +29,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/grpcio[${PYTHON_USEDEP}]
+		dev-python/rsa[${PYTHON_USEDEP}]
 	)
 "
 

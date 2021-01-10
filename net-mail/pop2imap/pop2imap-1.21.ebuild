@@ -9,7 +9,7 @@ SRC_URI="http://www.linux-france.org/prj/pop2imap/dist/${P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND=""

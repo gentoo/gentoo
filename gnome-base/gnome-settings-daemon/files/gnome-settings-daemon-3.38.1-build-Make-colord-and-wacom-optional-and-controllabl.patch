@@ -1,0 +1,76 @@
+From 0cc1c2f5f5d12169acbb965a21b5d9f6fb4a0767 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 14 Mar 2019 09:43:00 +0200
+Subject: [PATCH 1/3] build: Make colord and wacom optional and controllable
+ via meson_options
+
+---
+ meson.build         | 10 ++++++++--
+ meson_options.txt   |  2 ++
+ plugins/meson.build |  4 ++++
+ 3 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 7dbee64b..dce9bfa1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -142,6 +142,12 @@ if host_is_linux
+   assert(enable_gudev, 'GUdev is not optional on Linux platforms')
+ endif
+ 
++# Check for colord
++enable_colord = get_option('colord')
++if enable_colord
++  colord_dep = dependency('colord', version: '>= 1.3.5')
++endif
++
+ has_timerfd_create = cc.has_function('timerfd_create')
+ config_h.set10('HAVE_TIMERFD', has_timerfd_create)
+ 
+@@ -154,8 +160,8 @@ if enable_wayland
+ endif
+ config_h.set10('HAVE_WAYLAND', enable_wayland)
+ 
+-# wacom (disabled for s390/s390x and non Linux platforms)
+-enable_wacom = host_is_linux_not_s390
++# wacom
++enable_wacom = get_option('wacom')
+ if enable_wacom
+   assert(enable_gudev, 'GUDev support is required for wacom support.')
+   libwacom_dep = dependency('libwacom', version: '>= 0.7')
+diff --git a/meson_options.txt b/meson_options.txt
+index 3e04cf64..6f6eb2fc 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,11 +4,13 @@ option('systemd', type: 'boolean', value: true, description: 'Enable systemd int
+ 
+ option('alsa', type: 'boolean', value: true, description: 'build with ALSA support (not optional on Linux platforms)')
+ option('gudev', type: 'boolean', value: true, description: 'build with gudev device support (not optional on Linux platforms)')
++option('colord', type: 'boolean', value: true, description: 'build with colord support')
+ option('cups', type: 'boolean', value: true, description: 'build with CUPS support')
+ option('network_manager', type: 'boolean', value: true, description: 'build with NetworkManager support (not optional on Linux platforms)')
+ option('rfkill', type: 'boolean', value: true, description: 'build with rfkill support (not optional on Linux platforms)')
+ option('smartcard', type: 'boolean', value: true, description: 'build with smartcard support')
+ option('usb-protection', type: 'boolean', value: true, description: 'build with usb-protection support')
++option('wacom', type: 'boolean', value: true, description: 'build with Wacom devices support')
+ option('wayland', type: 'boolean', value: true, description: 'build with Wayland support')
+ option('wwan', type: 'boolean', value: true, description: 'build with WWAN support')
+ option('colord', type: 'boolean', value: true, description: 'build with colord support')
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 83e01885..20ccb26d 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -20,6 +20,10 @@ all_plugins = [
+ 
+ disabled_plugins = []
+ 
++if not enable_colord
++    disabled_plugins += ['color']
++endif
++
+ if not enable_smartcard
+     disabled_plugins += ['smartcard']
+ endif
+-- 
+2.26.2
+

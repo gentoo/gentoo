@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">crcmod</remote-id>
+		<remote-id type="pypi">crcmod</remote-id>
 	</upstream>
 </pkgmetadata>

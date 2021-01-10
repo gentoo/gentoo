@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -42,7 +42,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 ) )
+	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
@@ -134,11 +134,6 @@ src_configure() {
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_XFER=$(usex xfer)
 	)
-
-	if use python; then
-		python_is_python3 || mycmakeargs+=( -DENABLE_PYTHON2=ON )
-	fi
-
 	cmake_src_configure
 }
 

@@ -1,0 +1,10 @@
+# Which services should be taken into account?
+DHCP4="true"
+DHCP6="false"
+DDNS="false"
+
+# Define your config files here. Otherwise we default to files in /etc/kea
+# (see init script)
+#DHCP4_CONFIG="/etc/kea/dhcp4.conf"
+#DHCP6_CONFIG="/etc/kea/dhcp6.conf"
+#DDNS_CONFIG="/etc/kea/ddns.conf"

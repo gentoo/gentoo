@@ -1,0 +1,27 @@
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -13,6 +13,9 @@
+ #include "support.h"
+ 
+ 
++GtkWidget        *gcolor2;
++GtkWidget        *menu;
++GdkColor          colorvalue;
+ GtkWidget        *savedialog;
+ gchar            *colorname;
+ static GtkWidget *aboutdialog = NULL;
+--- a/src/callbacks.h
++++ b/src/callbacks.h
+@@ -42,9 +42,9 @@
+                            "\302\267 Usability / user interface enhancements\n" \
+                            "\302\267 Code cleanup"
+ 
+-GtkWidget *gcolor2;
+-GtkWidget *menu;
+-GdkColor   colorvalue;
++extern GtkWidget *gcolor2;
++extern GtkWidget *menu;
++extern GdkColor   colorvalue;
+ 
+ enum
+ {

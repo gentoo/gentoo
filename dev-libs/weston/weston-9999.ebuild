@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,9 +14,8 @@ inherit meson readme.gentoo-r1 toolchain-funcs xdg-utils $GIT_ECLASS
 DESCRIPTION="Wayland reference compositor"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
 
-if [[ $PV = 9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
-	KEYWORDS=""
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -25,7 +24,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -65,7 +64,7 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
-	pipewire? ( =media-video/pipewire-0.2*:= )
+	pipewire? ( >=media-video/pipewire-0.2:= )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc2:= )
 	remoting? (
 		media-libs/gstreamer:1.0
@@ -113,6 +112,7 @@ src_configure() {
 		$(meson_use desktop shell-desktop)
 		$(meson_use fullscreen shell-fullscreen)
 		$(meson_use ivi shell-ivi)
+		$(meson_use kiosk shell-kiosk)
 		$(meson_use lcms color-management-lcms)
 		$(meson_use colord color-management-colord)
 		$(meson_use systemd launcher-logind)

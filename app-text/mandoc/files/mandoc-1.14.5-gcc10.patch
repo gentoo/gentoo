@@ -1,0 +1,54 @@
+https://cvsweb.bsd.lv/mandoc/compat_reallocarray.c.diff?r1=1.4&r2=1.5
+https://cvsweb.bsd.lv/mandoc/compat_getline.c.diff?r1=text&tr1=1.1&r2=text&tr2=1.2
+
+https://bugs.gentoo.org/707254
+--- mandoc/compat_reallocarray.c	2014/12/11 09:05:01	1.4
++++ mandoc/compat_reallocarray.c	2020/06/15 01:37:15	1.5
+@@ -1,8 +1,0 @@
+-#include "config.h"
+-
+-#if HAVE_REALLOCARRAY
+-
+-int dummy;
+-
+-#else
+-
+@@ -23,6 +15,7 @@ int dummy;
+  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
++#include "config.h"
+ 
+ #include <sys/types.h>
+ #include <errno.h>
+@@ -45,5 +38,3 @@ reallocarray(void *optr, size_t nmemb, size_t size)
+ 	}
+ 	return realloc(optr, size * nmemb);
+ }
+-
+-#endif /*!HAVE_REALLOCARRAY*/
+--- mandoc/compat_getline.c	2015/11/07 20:52:52	1.1
++++ mandoc/compat_getline.c	2020/06/15 01:37:14	1.2
+@@ -1,8 +1,0 @@
+-#include "config.h"
+-
+-#if HAVE_GETLINE
+-
+-int dummy;
+-
+-#else
+-
+@@ -22,6 +14,7 @@ int dummy;
+  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
++#include "config.h"
+ 
+ #include <sys/types.h>
+ #include <errno.h>
+@@ -64,5 +57,3 @@ getline(char **buf, size_t *bufsz, FILE *fp)
+ 			return pos;
+ 	}
+ }
+-
+-#endif

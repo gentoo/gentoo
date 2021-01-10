@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r1 \
 		systemd
@@ -455,7 +455,12 @@ pkg_config() {
 
 src_test() {
 	if [[ ${UID} -ne 0 ]] ; then
+		# Some ICU tests fail if LC_CTYPE and LC_COLLATE aren't the same. We set
+		# LC_CTYPE to be equal to LC_COLLATE since LC_COLLATE is set by Portage.
+		local old_ctype=${LC_CTYPE}
+		export LC_CTYPE=${LC_COLLATE}
 		emake check
+		export LC_CTYPE=${old_ctype}
 
 		einfo "If you think other tests besides the regression tests are necessary, please"
 		einfo "submit a bug including a patch for this ebuild to enable them."

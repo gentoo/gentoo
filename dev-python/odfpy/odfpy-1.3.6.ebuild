@@ -3,10 +3,7 @@
 
 EAPI=7
 
-# Classifier: Programming Language :: Python :: 2 :: Only
-# py3 fails one test, pypy anpother.
-# Notes on page of home repo reports support of python3.
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -17,16 +14,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="examples test"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-python_test() {
-	pytest -v || die "Tests failed with ${EPYTHON}"
-}
+distutils_enable_tests pytest
 
 python_install_all() {
 	if use examples; then

@@ -1,0 +1,16 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Fix FTBFS with GCC 10
+ Use extern keyword, as linker otherwise sees multiple definitions.
+Bug-Debian: https://bugs.debian.org/956976
+
+--- a/lib/table.c
++++ b/lib/table.c
+@@ -53,7 +53,7 @@
+ static int graphics_disabled = 1;
+ 
+ OptionDesc *app_options;
+-OptionDesc *xwin_options;
++extern OptionDesc *xwin_options;
+ static OptionDesc *options[5];
+ 
+ static OptionDesc ace_options[] = {

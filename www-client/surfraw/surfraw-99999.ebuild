@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ DOCS=(
 )
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.0-completion.patch
+	"${FILESDIR}"/${PN}-99999-sr-completion-path.patch
 )
 
 src_prepare() {
@@ -36,6 +37,19 @@ src_configure() {
 
 src_install() {
 	default
+
+	local sr_man_page
+	for sr_man_page in $(find "${ED}" -lname surfraw.1.gz); do
+		ln -sf surfraw.1 "${sr_man_page/.gz}" || die
+		rm "${sr_man_page}" || die
+	done
+	for sr_man_page in $(find "${ED}" -lname elvi.1sr.gz); do
+		ln -sf elvi.1sr "${sr_man_page/.gz}" || die
+		rm "${sr_man_page}" || die
+	done
+	for sr_man_page in $(find -P "${ED}"/usr/share/man/man1/ -type f -name '*.gz'); do
+		gzip -d "${sr_man_page}" || die
+	done
 
 	newbashcomp surfraw-bash-completion ${PN}
 	bashcomp_alias ${PN} sr

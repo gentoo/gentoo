@@ -5,7 +5,4 @@
 	<email>cluster@gentoo.org</email>
 	<name>Gentoo Cluster Project</name>
 </maintainer>
-<longdescription>
-OpenIB - IBM eServer eHCA Infiniband device driver for Linux on POWER.
-</longdescription>
 </pkgmetadata>

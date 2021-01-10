@@ -1,0 +1,12 @@
+Index: cudf-0.9/_tags
+===================================================================
+--- cudf-0.9.orig/_tags
++++ cudf-0.9/_tags
+@@ -1,5 +1,5 @@
+-<test.ml> or <tests.ml> : pkg_oUnit
+-<test.byte> or <test.native> : pkg_oUnit
++<test.ml> or <tests.ml> : pkg_ounit2
++<test.byte> or <test.native> : pkg_ounit2
+ 
+ <*.ml> or <*.mli> : pkg_extlib
+ <*.byte> or <*.native> : pkg_extlib

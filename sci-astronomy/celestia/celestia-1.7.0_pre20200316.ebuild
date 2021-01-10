@@ -42,7 +42,7 @@ DEPEND="
 	virtual/jpeg:0
 	virtual/opengl
 	glut? ( media-libs/freeglut )
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

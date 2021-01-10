@@ -5,8 +5,4 @@
     <email>cluster@gentoo.org</email>
     <name>Gentoo Cluster Project</name>
   </maintainer>
-  
-  <longdescription>
-    Administration tools for linux virtual server clusters
-  </longdescription>
 </pkgmetadata>

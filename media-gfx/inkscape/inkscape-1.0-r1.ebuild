@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml"
 
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
@@ -19,6 +19,10 @@ IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
 openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+PATCHES=(
+	"${FILESDIR}/missing_atomic_include.patch"
+)
 
 BDEPEND="
 	dev-util/glib-utils

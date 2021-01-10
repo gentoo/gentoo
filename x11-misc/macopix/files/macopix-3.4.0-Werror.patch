@@ -1,0 +1,11 @@
+--- a/m4/visibility.m4
++++ b/m4/visibility.m4
+@@ -32,7 +32,7 @@
+     AC_MSG_CHECKING([whether the -Werror option is usable])
+     AC_CACHE_VAL([gl_cv_cc_vis_werror], [
+       gl_save_CFLAGS="$CFLAGS"
+-      CFLAGS="$CFLAGS -Werror"
++      CFLAGS="$CFLAGS -Werror -setthisupforfailure"
+       AC_COMPILE_IFELSE(
+         [AC_LANG_PROGRAM([[]], [[]])],
+         [gl_cv_cc_vis_werror=yes],

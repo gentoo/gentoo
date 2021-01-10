@@ -6,6 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">ScriptTest</remote-id>
+		<remote-id type="pypi">scripttest</remote-id>
+		<remote-id type="github">pypa/scripttest</remote-id>
 	</upstream>
 </pkgmetadata>

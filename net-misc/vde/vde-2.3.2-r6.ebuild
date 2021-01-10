@@ -13,7 +13,7 @@ HOMEPAGE="https://virtualsquare.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
 IUSE="pcap selinux ssl libressl static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )
@@ -40,7 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-python
+		--disable-python \
 		$(use_enable pcap) \
 		$(use_enable ssl cryptcab) \
 		$(use_enable static-libs static)

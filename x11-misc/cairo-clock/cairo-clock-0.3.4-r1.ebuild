@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit autotools
 
 DESCRIPTION="An analog clock displaying the system-time"
@@ -12,19 +11,21 @@ SRC_URI="http://macslow.thepimp.net/projects/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.8
+RDEPEND="
+	>=dev-libs/glib-2.8
 	>=gnome-base/libglade-2.6
 	>=gnome-base/librsvg-2.14
 	>=x11-libs/cairo-1.2
 	>=x11-libs/gtk+-2.10:2
-	>=x11-libs/pango-1.10"
-DEPEND="${DEPEND}
+	>=x11-libs/pango-1.10
+"
+DEPEND="
+	${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	sys-devel/gettext"
-
+	sys-devel/gettext
+"
 PATCHES=(
 	"${FILESDIR}"/${P}-desktop.patch
 	"${FILESDIR}"/${P}-linker.patch

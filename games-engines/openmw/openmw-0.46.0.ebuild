@@ -36,7 +36,7 @@ RDEPEND="
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
 	media-video/ffmpeg:=
-	>=sci-physics/bullet-2.86:=
+	>=sci-physics/bullet-2.86:=[-double-precision]
 	virtual/opengl
 	osg-fork? ( dev-games/openscenegraph-openmw:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )

@@ -8,8 +8,4 @@
 	<use>
 		<flag name="build-exec">Build the `hps-fractals' executable</flag>
 	</use>
-	<longdescription>
-		Haskell library partially implementing the
-		postscript drawing model.
-	</longdescription>
 </pkgmetadata>

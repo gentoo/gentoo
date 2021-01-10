@@ -4,5 +4,6 @@
 	<!--maintainer-needed-->
 	<upstream>
 		<remote-id type="github">rubik/mando</remote-id>
+		<remote-id type="pypi">mando</remote-id>
 	</upstream>
 </pkgmetadata>

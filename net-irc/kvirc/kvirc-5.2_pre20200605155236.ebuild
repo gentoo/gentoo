@@ -3,7 +3,7 @@
 
 EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=(python{3_7,3_8,3_9})
 
 inherit cmake flag-o-matic python-single-r1 xdg-utils
 
@@ -67,8 +67,8 @@ DEPEND="dev-qt/qtcore:5
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant:0= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0= )
 	)
 	theora? (
 		media-libs/libogg
@@ -141,11 +141,9 @@ src_configure() {
 		-DWANT_QTSVG=OFF
 	)
 	if use python; then
-		local PYTHON_INCLUDEDIR PYTHON_LIBPATH
-		python_export PYTHON_INCLUDEDIR PYTHON_LIBPATH
 		mycmakeargs+=(
-			-DPython3_INCLUDE_DIR="${PYTHON_INCLUDEDIR}"
-			-DPython3_LIBRARY="${PYTHON_LIBPATH}"
+			-DPython3_INCLUDE_DIR="$(python_get_includedir)"
+			-DPython3_LIBRARY="$(python_get_library_path)"
 		)
 	fi
 

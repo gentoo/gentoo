@@ -33,6 +33,7 @@ src_prepare() {
 	use pxeserial && eapply "${FILESDIR}/${PN}-24.1-novga.patch"
 
 	eapply "${FILESDIR}/${PN}-24.2-add-nvme-support.patch"
+	eapply "${FILESDIR}/${PN}-24.x-fix-gcc-10.patch"
 
 	# Do not strip and have parallel make
 	# FIXME: images/Makefile does weird stuff

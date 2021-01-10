@@ -10,20 +10,26 @@ HOMEPAGE="https://www.joedog.org/siege-home https://github.com/JoeDog/siege"
 SRC_URI="http://download.joedog.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc x86 ~x64-macos"
 SLOT="0"
 IUSE="libressl ssl"
 
 RDEPEND="ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+)"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
 	# bundled macros break recent libtool
-	sed -i -e '/AC_PROG_SHELL/d' configure.ac || die
+	# remove /usr/lib from LDFLAGS, bug #732886
+	sed -i \
+	-e '/AC_PROG_SHELL/d' \
+	-e 's/SSL_LDFLAGS="-L.*lib"/SSL_LDFLAGS=""/g' \
+	-e 's/Z_LDFLAGS="-L.*lib"/Z_LDFLAGS=""/g' \
+	configure.ac || die
+
 	rm *.m4 || die "failed to remove bundled macros"
 	eautoreconf
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		MPDLcd is a small adapter which will display the status
+		of a MPD server on a LCD screen, through lcdproc.
+
+		It allows defining various layouts depending on LCD size,
+		with fix or moving parts.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/rbarrois/mpdlcd/issues</bugs-to>
+		<remote-id type="github">rbarrois/mpdlcd</remote-id>
+		<remote-id type="pypi">mpdlcd</remote-id>
+	</upstream>
+</pkgmetadata>

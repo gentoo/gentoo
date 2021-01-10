@@ -5,7 +5,8 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		Lua eselect module
-	</longdescription>
+	<maintainer type="person">
+		<email>mva@gentoo.org</email>
+		<name>Vadim Misbakh-Soloviov</name>
+	</maintainer>
 </pkgmetadata>

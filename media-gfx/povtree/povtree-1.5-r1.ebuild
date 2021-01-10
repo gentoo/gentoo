@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="http://propro.ru/go/Wshop/povtree/${MY_P}.zip"
 # Free for non-commercial use, according to e-mail from authors #446168
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=virtual/jre-1.3"
 DEPEND="app-arch/unzip"

@@ -10,7 +10,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/ximion/${PN}"
 else
 	SRC_URI="https://www.freedesktop.org/software/appstream/releases/AppStream-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 	S="${WORKDIR}/AppStream-${PV}"
 fi
 
@@ -21,7 +21,7 @@ LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/4"
 IUSE="apt doc +introspection qt5 test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # bug 691962
 
 BDEPEND="
 	dev-libs/appstream-glib

@@ -1,0 +1,8 @@
+[Unit]
+Description=ZFS monthly snapshot timer
+Documentation=man:zfs-auto-snapshot(8)
+
+[Timer]
+OnCalendar=monthly
+Persistent=true
+RandomizedDelaySec=600

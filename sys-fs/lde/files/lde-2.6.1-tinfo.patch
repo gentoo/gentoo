@@ -1,0 +1,22 @@
+--- a/macros/configure.in
++++ b/macros/configure.in
+@@ -14,7 +14,6 @@ AC_SUBST(STATIC_LDFLAGS)
+ AC_DEFINE(_GNU_SOURCE)
+ 
+ dnl Must use builtin() as it is overridden by some AC_ macros
+-builtin(include,./curses.m4)
+ builtin(include,./misctests.m4)
+ 
+ dnl Search for ncurses by default
+@@ -187,7 +186,10 @@ AC_ARG_WITH(gpm,
+ dnl ------------------------------------------------------------------
+ dnl  Search for some version of curses
+ dnl ------------------------------------------------------------------
+-AC_CHECK_CURSES
++has_curses=false
++AC_SUBST(CURSES_INCLUDEDIR)
++AC_SUBST(CURSES_LIBS)
++PKG_CHECK_MODULES(ncurses, ncurses, [CURSES_LIBS="$ncurses_LIBS" CURSES_INCLUDEDIR="$ncurses_CFLAGS" has_curses=true])
+ if test "$has_curses" = true
+ then
+ 	AC_DEFINE(LDE_CURSES)

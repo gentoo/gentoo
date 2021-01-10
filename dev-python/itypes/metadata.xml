@@ -5,4 +5,8 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">PavanTatikonda/itypes</remote-id>
+		<remote-id type="pypi">itypes</remote-id>
+	</upstream>
 </pkgmetadata>

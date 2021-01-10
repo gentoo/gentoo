@@ -1,0 +1,56 @@
+From c8be9ccc36a32cc756d05b2c0838c43a57be15f7 Mon Sep 17 00:00:00 2001
+Message-Id: <c8be9ccc36a32cc756d05b2c0838c43a57be15f7.1607284606.git.mprivozn@redhat.com>
+From: Pavel Hrdina <phrdina@redhat.com>
+Date: Thu, 8 Oct 2020 13:09:45 +0200
+Subject: [PATCH] meson: properly handle libpcap if it's explicitly disabled
+
+If libpcap is detected using pkg-config it would ignore the libpcap
+option.
+
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+Reviewed-by: Andrea Bolognani <abologna@redhat.com>
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ meson.build | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index e5a8316668..ec252ddf39 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1101,17 +1101,22 @@ if libparted_dep.found()
+ endif
+ 
+ libpcap_version = '1.5.0'
+-libpcap_dep = dependency('libpcap', version: '>=' + libpcap_version, required: false)
+-if not libpcap_dep.found()
+-  pcap_config_prog = find_program('pcap-config', required: get_option('libpcap'))
+-  if pcap_config_prog.found()
+-    pcap_args = run_command(pcap_config_prog, '--cflags').stdout().strip().split()
+-    pcap_libs = run_command(pcap_config_prog, '--libs').stdout().strip().split()
+-    libpcap_dep = declare_dependency(
+-      compile_args: pcap_args,
+-      link_args: pcap_libs,
+-    )
++if not get_option('libpcap').disabled()
++  libpcap_dep = dependency('libpcap', version: '>=' + libpcap_version, required: false)
++
++  if not libpcap_dep.found()
++    pcap_config_prog = find_program('pcap-config', required: get_option('libpcap'))
++    if pcap_config_prog.found()
++      pcap_args = run_command(pcap_config_prog, '--cflags').stdout().strip().split()
++      pcap_libs = run_command(pcap_config_prog, '--libs').stdout().strip().split()
++      libpcap_dep = declare_dependency(
++        compile_args: pcap_args,
++        link_args: pcap_libs,
++      )
++    endif
+   endif
++else
++  libpcap_dep = dependency('', required: false)
+ endif
+ if libpcap_dep.found()
+   conf.set('WITH_LIBPCAP', 1)
+-- 
+2.26.2
+

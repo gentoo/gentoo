@@ -1,0 +1,13 @@
+diff --git a/common-src/testutils.h b/common-src/testutils.h
+index 31f8973..3bb376f 100644
+--- a/common-src/testutils.h
++++ b/common-src/testutils.h
+@@ -75,7 +75,7 @@ typedef struct TestUtilsTest {
+ #define tu_dbg(...) if (tu_debugging_enabled) { g_fprintf(stderr, __VA_ARGS__); }
+ 
+ /* Is debugging enabled for this test run? (set internally) */
+-int tu_debugging_enabled;
++extern int tu_debugging_enabled;
+ 
+ /*
+  * Main loop

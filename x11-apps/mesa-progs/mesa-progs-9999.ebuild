@@ -30,7 +30,6 @@ RDEPEND="
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	media-libs/glew
 	virtual/glu
 	x11-base/xorg-proto"
 
@@ -40,6 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
+	emake -C src/glad libglad.la
 	emake -C src/xdemos glxgears glxinfo
 
 	if use egl; then

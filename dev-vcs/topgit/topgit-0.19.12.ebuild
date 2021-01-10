@@ -11,13 +11,19 @@ SRC_URI="https://github.com/mackyle/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="sys-apps/sed
 	virtual/awk"
 RDEPEND=">=dev-vcs/git-2.10.0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${PN}-${P}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-Rename-T-to-TESTSUITE.patch"
+)
 
 src_compile() {
 	# Needed because of "hardcoded" paths

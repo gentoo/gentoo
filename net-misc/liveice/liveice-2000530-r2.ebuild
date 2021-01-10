@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Live Source Client For IceCast"
 HOMEPAGE="http://star.arm.ac.uk/~spm/software/liveice.html"
@@ -17,20 +17,18 @@ RDEPEND="media-sound/lame
 	media-sound/mpg123"
 DEPEND=""
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
 
 src_prepare() {
 	default
-	# cannot use LDFLAGS directly as the Makefile uses it for LIBS
-	sed -i Makefile.in \
-		-e 's|-o liveice|$(LLFLAGS) &|' \
-		|| die "sed Makefile.in"
+	eautoreconf
 	tc-export CC
 }
 
-src_compile() {
-	emake LLFLAGS="${LDFLAGS}"
-}
 src_install() {
 	dobin liveice
 	dodoc liveice.cfg README.liveice README.quickstart README_new_mixer.txt Changes.txt

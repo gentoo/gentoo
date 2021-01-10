@@ -1,0 +1,10 @@
+--- a/lpl_ca/CMakeLists.txt	2020-11-15 11:47:55.091788901 +0100
++++ b/lpl_ca/CMakeLists.txt	2020-11-15 11:49:14.881788597 +0100
+@@ -17,6 +17,7 @@
+     ${PROJECT_SOURCE_DIR}/src
+   PRIVATE
+     $<TARGET_PROPERTY:amdrocclr_static,INTERFACE_INCLUDE_DIRECTORIES>)
++target_include_directories(lpl SYSTEM PUBLIC /usr/include/rocclr/elf)
+ 
+ target_compile_options(lpl PUBLIC -Wall)
+ target_link_libraries(lpl PUBLIC pthread)

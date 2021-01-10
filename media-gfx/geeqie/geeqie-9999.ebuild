@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+LUA_COMPAT=( lua5-{1..3} )
 
-inherit autotools git-r3 xdg
+inherit autotools git-r3 lua-single xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
@@ -26,7 +27,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	lirc? ( app-misc/lirc )
-	lua? ( >=dev-lang/lua-5.1:= )
+	lua? ( ${LUA_DEPS} )
 	map? ( media-libs/libchamplain:0.12 )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	tiff? ( media-libs/tiff:0 )
@@ -39,7 +40,8 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-REQUIRED_USE="gpu-accel? ( gtk3 )
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
 
 src_prepare() {

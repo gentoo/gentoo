@@ -1,0 +1,48 @@
+diff --git a/Makefile b/Makefile
+index 079b442..a6ade95 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,7 +22,7 @@ VERSION	= $(shell cat VERSION)
+ PROJECT	= num-utils
+ DIST	= $(PROJECT)-$(VERSION)
+ FILES	= $(shell cat MANIFEST)
+-UTILS	= average bound interval normalize numgrep numprocess numsum random range round
++UTILS	= numaverage numbound numinterval numnormalize numgrep numprocess numsum numrandom numrange numround
+ DOCS	= template README GOALS WARNING
+ TESTS	= file fractionalnums numbers numbers2 README zeros
+ # rpm --showrc is gettin to be hard to parse anymore.
+@@ -62,7 +62,7 @@ install:
+ 
+ 	install -m 0755 -o 0 -g 0 -d		$(DESTDIR)/$(MANDIR)
+ 	for man in $(UTILS) ; do \
+-		install -m 0644 -o 0 -g 0 $$man.1.gz $(DESTDIR)/$(MANDIR) ; done
++		install -m 0644 -o 0 -g 0 $$man.1 $(DESTDIR)/$(MANDIR) ; done
+ 
+ uninstall:
+ 	for util in $(UTILS) ; do \
+@@ -74,14 +74,12 @@ uninstall:
+ 	rmdir $(DESTDIR)/$(DOCDIR)
+ 
+ 	for man in $(UTILS) ; do \
+-		rm -f $(DESTDIR)/$(MANDIR)/$$man.1.gz ; done
++		rm -f $(DESTDIR)/$(MANDIR)/$$man.1 ; done
+ 	rmdir $(DESTDIR)/$(MANDIR)
+ 
+ manpages:
+ 	for doc in $(UTILS) ; do \
+-		pod2man $$doc > $$doc.1 ; \
+-		gzip -9 $$doc.1 ; chmod 644 $$doc.1.gz \
+-		; done
++		pod2man $$doc > $$doc.1 ; done
+ 
+ rpminstall:
+ 	install -m 0755 -d		$(BINDIR)
+@@ -94,7 +93,7 @@ rpminstall:
+ 
+ 	install -m 0755 -d		$(MANDIR)
+ 	for man in $(UTILS) ; do \
+-		install -m 0644 $$man.1.gz $(MANDIR) ; done
++		install -m 0644 $$man.1 $(MANDIR) ; done
+ 
+ clean:
+ 	rm -f $(PROJECT).spec

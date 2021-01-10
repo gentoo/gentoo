@@ -13,14 +13,11 @@ SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS=""
 
-DEPEND="
-	sys-devel/bc
-"
 RDEPEND="
-	${DEPEND}
-	!sys-apps/powerpc-utils
+	!<sys-apps/powerpc-utils-1.1.3.18-r4
 	rtas? ( >=sys-libs/librtas-2.0.2 )
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.5-docdir.patch
 )

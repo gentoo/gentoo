@@ -6,19 +6,20 @@ inherit desktop git-r3 meson toolchain-funcs
 
 DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
 HOMEPAGE="https://www.kraxel.org/blog/linux/fbida/"
-EGIT_REPO_URI="https://git.kraxel.org/cgit/fbida"
+EGIT_REPO_URI="https://git.kraxel.org/git/fbida"
 SRC_URI="
 	mirror://gentoo/ida.png.bz2
 "
 LICENSE="GPL-2 IJG"
 SLOT="0"
 KEYWORDS=""
+
 CDEPEND="
 	!media-gfx/fbi
 	>=media-libs/fontconfig-2.2
 	>=media-libs/freetype-2.0
-	>=x11-libs/motif-2.3:0
-	app-text/poppler
+	>=x11-libs/motif-2.3:0[xft]
+	app-text/poppler[cairo]
 	media-libs/giflib:=
 	media-libs/libepoxy
 	media-libs/libexif
@@ -34,6 +35,8 @@ CDEPEND="
 	x11-libs/libXpm
 	x11-libs/libXt
 	x11-libs/libdrm
+	x11-libs/libxkbcommon
+	x11-libs/pixman
 "
 DEPEND="
 	${CDEPEND}
@@ -45,6 +48,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/ida-desktop.patch
 	"${FILESDIR}"/${PN}-2.10-giflib-4.2.patch
+	"${FILESDIR}"/${PN}-2.14-cpp.patch
 )
 
 src_unpack() {

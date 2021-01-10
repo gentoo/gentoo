@@ -5,9 +5,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		Blackfriday is a markdown proccessor implemented in Go.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">russross/blackfriday</remote-id>
 	</upstream>

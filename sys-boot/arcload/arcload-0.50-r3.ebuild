@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs versionator
+inherit toolchain-funcs
 
 # Hack until upstream renames from 0.5 to 0.50
 MY_PV="${PV/50/5}"
@@ -13,9 +13,11 @@ DESCRIPTION="ARCLoad - SGI Multi-bootloader.  Able to bootload many different SG
 HOMEPAGE="https://www.linux-mips.org/wiki/ARCLoad"
 SRC_URI="https://www.linux-mips.org/pub/linux/mips/people/skylark/${PN}-${MY_PV}.tar.bz2
 	 mirror://gentoo/${P}-patches-v${PATCHREV}.tar.xz"
+
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="-* ~mips"
+
 IUSE="abi_mips_o32"
 DEPEND="sys-boot/dvhtool
 	abi_mips_o32? ( sys-devel/kgcc64 )"
@@ -25,41 +27,21 @@ RESTRICT="strip"
 S="${WORKDIR}/${PN}-${MY_PV}"
 PATCHDIR="${WORKDIR}/${P}-patches"
 
+PATCHES=(
+	"${PATCHDIR}/${P}-shut-gcc4x-up.patch"		# For gcc-4.x, quiet down some of the warnings
+	"${PATCHDIR}/${P}-makefile-targets.patch"	# Tweak Makefile to allow for cross-compiling
+#	"${PATCHDIR}/${P}_deb-elf64-on-m32.patch"	# Load ELF64 images on 32-bit systems - XXX: #543978
+	"${PATCHDIR}/${P}_deb-cmdline-config.patch"	# Pass arcload label name on PROM cmdline
+	"${PATCHDIR}/${P}_deb-config-in-etc.patch"	# Look for arc.cf in /etc and fallback to /
+	"${PATCHDIR}/${P}-local-elf_h.patch"		# Use std sysheaders bits to make compiler happy
+	"${PATCHDIR}/${P}-wreckoff-abiflags-fix.patch"	# Patch wreckoff.c to handle the .MIPS.abiflags section
+	"${PATCHDIR}/${P}-disable-ssp.patch"		# Disable SSP for ELF->ECOFF, as wreckoff can't handle
+	"${PATCHDIR}/${P}-silence-warnings.patch"	# Silence various warnings due to the code being old
+)
+
 src_prepare() {
-	# For gcc-4.x, quiet down some of the warnings
-	epatch "${PATCHDIR}"/${P}-shut-gcc4x-up.patch
-
-	# Redefine the targets in the primary Makefile to give us
-	# finer control over building the tools.  This is for properly
-	# cross-compiling arcload
-	epatch "${PATCHDIR}"/${P}-makefile-targets.patch
-
-	# Patches borrowed from Debian:
-	# - Load ELF64 images on 32-bit systems - XXX: #543978
-	# - Pass an arcload label name directly on the PROM cmdline.
-	# - Look for arc.cf in /etc and fallback to /.
-#	epatch "${PATCHDIR}"/${P}_deb-elf64-on-m32.patch
-	epatch "${PATCHDIR}"/${P}_deb-cmdline-config.patch
-	epatch "${PATCHDIR}"/${P}_deb-config-in-etc.patch
-
-	# Building arcload on different MIPS ABIs can be difficult,
-	# so we include specific bits from standard system headers
-	# to make the compiler happy.  These should rarely, if ever,
-	# change...
-	epatch "${PATCHDIR}"/${P}-local-elf_h.patch
-
-	# Patch wreckoff.c to handle the new .MIPS.abiflags section.
-	epatch "${PATCHDIR}"/${P}-wreckoff-abiflags-fix.patch
-
-	# In order to convert from ELF to ECOFF, we need to disable
-	# SSP, as that adds additional program headers that I don't
-	# know how to handle in wreckoff.c.
-	epatch "${PATCHDIR}"/${P}-disable-ssp.patch
-
-	# The code is old and has a lot of issues.  But it's just a
-	# simple bootloader, so silence the various warnings until
-	# it can be re-written.
-	epatch "${PATCHDIR}"/${P}-silence-warnings.patch
+	default
+	eapply_user
 }
 
 src_compile() {

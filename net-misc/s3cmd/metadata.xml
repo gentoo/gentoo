@@ -9,6 +9,10 @@
     <email>titanofold@gentoo.org</email>
     <name>Aaron W. Swenson</name>
   </maintainer>
+  <maintainer type="person">
+    <email>rich0@gentoo.org</email>
+    <name>Rich Freeman</name>
+  </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>

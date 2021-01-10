@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python SNMP library"
-HOMEPAGE="http://snmplabs.com/pysnmp/ https://pypi.org/project/pysnmp/	https://github.com/etingof/pysnmp"
+HOMEPAGE="https://pypi.org/project/pysnmp/	https://github.com/etingof/pysnmp"
 EGIT_REPO_URI="https://github.com/etingof/pysnmp"
 
 LICENSE="BSD"

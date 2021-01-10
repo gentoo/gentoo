@@ -9,9 +9,7 @@
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>
-  <longdescription lang="en">
-    OpenStack Identity (Keystone) Middleware
-  </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">keystonemiddleware</remote-id>
     <remote-id type="github">openstack/keystonemiddleware</remote-id>

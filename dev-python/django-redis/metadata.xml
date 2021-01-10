@@ -5,4 +5,8 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">jazzband/django-redis</remote-id>
+		<remote-id type="pypi">django-redis</remote-id>
+	</upstream>
 </pkgmetadata>

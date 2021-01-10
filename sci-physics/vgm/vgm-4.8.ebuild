@@ -31,7 +31,10 @@ RDEPEND="
 	root? ( >=sci-physics/root-6.14:=[c++11?,c++14?,c++17?] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
-	test? ( sci-physics/geant-vmc[g4root] )"
+	test? (
+		sci-physics/geant[gdml]
+		sci-physics/geant-vmc[g4root]
+	)"
 RESTRICT="
 	!geant4? ( test )
 	!root? ( test )

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="x264-snapshot-$(ver_cut 3)-2245"
 	SRC_URI="https://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -34,6 +34,13 @@ PATCHES=("${FILESDIR}"/${P}-STRINGS.patch)
 
 multilib_src_configure() {
 	tc-export CC
+
+	if [[ ${ABI} == x86 || ${ABI} == amd64 ]]; then
+		export AS="nasm"
+	else
+		export AS="${CC}"
+	fi
+
 	local asm_conf=""
 
 	if [[ ${ABI} == x86* ]] && { use pic || use !cpu_flags_x86_sse ; } || [[ ${ABI} == "x32" ]] || [[ ${CHOST} == armv5* ]] || [[ ${ABI} == ppc* ]] && { use !cpu_flags_ppc_altivec ; }; then

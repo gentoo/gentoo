@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chr@chymera.eu</email>
+		<email>gentoo@chymera.eu</email>
 		<name>Horea Christian</name>
 	</maintainer>
 	<maintainer type="project">
@@ -16,6 +16,6 @@
 		Supports mapped class inherit.
 	</longdescription>
 	<upstream>
-		<remote-id type="bitbucket">estin/sadisplay</remote-id>
+		<remote-id type="pypi">sadisplay</remote-id>
 	</upstream>
 </pkgmetadata>

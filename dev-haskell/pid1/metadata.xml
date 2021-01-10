@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Please see README.md or view Haddocks at &lt;https://www.stackage.org/package/pid1&gt;
-	</longdescription>
 </pkgmetadata>

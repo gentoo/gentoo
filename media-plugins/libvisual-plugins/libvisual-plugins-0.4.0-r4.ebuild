@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal
 
 PATCHLEVEL=4
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/libvisual/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0.4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="alsa debug gtk jack mplayer opengl"
 
 RDEPEND=">=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
@@ -34,10 +34,11 @@ BDEPEND=">=virtual/pkgconfig-0-r1"
 DEPEND="${RDEPEND}
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]"
 
-DOCS="AUTHORS ChangeLog NEWS README TODO"
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 PATCHES=(
 	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}/${P}-clang.patch"
 )
 
 src_prepare() {

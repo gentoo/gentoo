@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_OPTIONAL=1
 inherit autotools bash-completion-r1 perl-module distutils-r1 flag-o-matic java-pkg-opt-2 toolchain-funcs
 
@@ -14,7 +14,7 @@ SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0/3.0"
 LICENSE="BSD Info-ZIP MIT"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="armadillo +aux-xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
 
 REQUIRED_USE="
@@ -89,6 +89,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 	"${FILESDIR}/${PN}-3.0.2-complete.patch"
 	"${FILESDIR}/${PN}-3.0.2-datadir.patch"
+	"${FILESDIR}/${P}-poppler-20.08.patch" # bug 735828
 )
 
 src_prepare() {

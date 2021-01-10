@@ -1,0 +1,111 @@
+commit 41c1cee88b38bc43002b232ede42dc157364f61a
+Author: Casey Bodley <cbodley@redhat.com>
+Date:   Fri Nov 1 16:04:37 2019 -0400
+
+    cmake: define mgr_cap_obj library when WITH_MGR=OFF
+    
+    resolves the cmake error when WITH_MGR=OFF:
+    
+      Error evaluating generator expression:
+    
+        $<TARGET_OBJECTS:mgr_cap_obj>
+    
+      Objects of target "mgr_cap_obj" referenced but no such target exists.
+    Call Stack (most recent call first):
+      src/mon/CMakeLists.txt:34 (add_library)
+    
+    Signed-off-by: Casey Bodley <cbodley@redhat.com>
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 275a8ebd17..c2a9d7a669 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -473,9 +473,7 @@ if(WITH_LIBRADOSSTRIPER)
+   add_subdirectory(libradosstriper)
+ endif()
+ 
+-if(WITH_MGR)
+-  add_subdirectory(mgr)
+-endif()
++add_subdirectory(mgr)
+ 
+ set(librados_config_srcs
+   librados-config.cc)
+diff --git a/src/mgr/CMakeLists.txt b/src/mgr/CMakeLists.txt
+index 79227bcc1d..e69335eb69 100644
+--- a/src/mgr/CMakeLists.txt
++++ b/src/mgr/CMakeLists.txt
+@@ -1,37 +1,39 @@
+ add_library(mgr_cap_obj OBJECT
+   MgrCap.cc)
+ 
+-set(mgr_srcs
+-  ${CMAKE_SOURCE_DIR}/src/ceph_mgr.cc
+-  ${CMAKE_SOURCE_DIR}/src/mon/PGMap.cc
+-  ActivePyModule.cc
+-  ActivePyModules.cc
+-  BaseMgrModule.cc
+-  BaseMgrStandbyModule.cc
+-  ClusterState.cc
+-  DaemonHealthMetricCollector.cc
+-  DaemonServer.cc
+-  DaemonState.cc
+-  Gil.cc
+-  Mgr.cc
+-  MgrStandby.cc
+-  OSDPerfMetricTypes.cc
+-  OSDPerfMetricCollector.cc
+-  PyFormatter.cc
+-  PyModule.cc
+-  PyModuleRegistry.cc
+-  PyModuleRunner.cc
+-  PyOSDMap.cc
+-  StandbyPyModules.cc
+-  mgr_commands.cc
+-  $<TARGET_OBJECTS:mgr_cap_obj>)
+-add_executable(ceph-mgr ${mgr_srcs})
+-target_include_directories(ceph-mgr SYSTEM PRIVATE "${PYTHON_INCLUDE_DIRS}")
+-target_link_libraries(ceph-mgr
+-  osdc client heap_profiler
+-  global-static ceph-common
+-  Boost::python${MGR_PYTHON_VERSION_MAJOR}${MGR_PYTHON_VERSION_MINOR}
+-  ${MGR_PYTHON_LIBRARIES} ${CMAKE_DL_LIBS} ${GSSAPI_LIBRARIES})
+-set_target_properties(ceph-mgr PROPERTIES
+-  POSITION_INDEPENDENT_CODE ${EXE_LINKER_USE_PIE})
+-install(TARGETS ceph-mgr DESTINATION bin)
++if(WITH_MGR)
++  set(mgr_srcs
++    ${CMAKE_SOURCE_DIR}/src/ceph_mgr.cc
++    ${CMAKE_SOURCE_DIR}/src/mon/PGMap.cc
++    ActivePyModule.cc
++    ActivePyModules.cc
++    BaseMgrModule.cc
++    BaseMgrStandbyModule.cc
++    ClusterState.cc
++    DaemonHealthMetricCollector.cc
++    DaemonServer.cc
++    DaemonState.cc
++    Gil.cc
++    Mgr.cc
++    MgrStandby.cc
++    OSDPerfMetricTypes.cc
++    OSDPerfMetricCollector.cc
++    PyFormatter.cc
++    PyModule.cc
++    PyModuleRegistry.cc
++    PyModuleRunner.cc
++    PyOSDMap.cc
++    StandbyPyModules.cc
++    mgr_commands.cc
++    $<TARGET_OBJECTS:mgr_cap_obj>)
++  add_executable(ceph-mgr ${mgr_srcs})
++  target_include_directories(ceph-mgr SYSTEM PRIVATE "${PYTHON_INCLUDE_DIRS}")
++  target_link_libraries(ceph-mgr
++    osdc client heap_profiler
++    global-static ceph-common
++    Boost::python${MGR_PYTHON_VERSION_MAJOR}${MGR_PYTHON_VERSION_MINOR}
++    ${MGR_PYTHON_LIBRARIES} ${CMAKE_DL_LIBS} ${GSSAPI_LIBRARIES})
++  set_target_properties(ceph-mgr PROPERTIES
++    POSITION_INDEPENDENT_CODE ${EXE_LINKER_USE_PIE})
++  install(TARGETS ceph-mgr DESTINATION bin)
++endif()

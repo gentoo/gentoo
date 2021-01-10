@@ -5,11 +5,12 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake python-any-r1 readme.gentoo-r1
+inherit cmake python-any-r1 qmake-utils readme.gentoo-r1
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
 HOMEPAGE="https://www.dengine.net"
 SRC_URI="https://downloads.sourceforge.net/project/deng/Doomsday%20Engine/${PV}/${P}.tar.gz"
+
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
@@ -31,8 +32,7 @@ RDEPEND="
 	tools? ( sys-libs/ncurses:0= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 "
 PDEPEND="
@@ -52,11 +52,11 @@ src_prepare() {
 }
 
 src_configure() {
-	export QT_SELECT=qt5
 	local mycmakeargs=(
 		-DDENG_ASSIMP_EMBEDDED="OFF"
 		-DDENG_ENABLE_TOOLS="$(usex tools)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DQMAKE=$(qt5_get_bindir)/qmake
 	)
 	cmake_src_configure
 }

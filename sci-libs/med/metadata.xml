@@ -15,11 +15,6 @@
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<description>Gentoo Proxy Maintainers</description>
+		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="hdf5-16-api">
-			Use -DH5_USE_16_API to build the package against old 1.6 API of HDF5
-		</flag>
-	</use>
 </pkgmetadata>

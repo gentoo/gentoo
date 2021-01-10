@@ -21,12 +21,7 @@ SLOT="0"
 
 IUSE="debug nls static-libs"
 
-DEPEND="nls? ( sys-devel/gettext )"
-
-pkg_setup() {
-	# Remove -flto* from flags as this breaks binaries (bug #644048)
-	filter-flags -flto*
-}
+BDEPEND="nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
@@ -40,13 +35,16 @@ src_prepare() {
 	fi
 }
 
-multilib_src_configure() {
-	unset PLATFORM #184564
-	export OPTIMIZER=${CFLAGS}
-	export DEBUG=-DNDEBUG
-
+src_configure() {
+	# Remove -flto* from flags as this breaks binaries (bug #644048)
+	filter-flags -flto*
+	append-ldflags "-Wl,--no-gc-sections" #700116
 	tc-ld-disable-gold #644048
+	append-lfs-flags #760857
+	multilib-minimal_src_configure
+}
 
+multilib_src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-shared
@@ -65,7 +63,7 @@ multilib_src_install() {
 	local lib="${ED}/usr/$(get_libdir)/libattr.so.1"
 	if [[ -e ${lib} ]] ; then
 		local versions=$($(tc-getREADELF) -V "${lib}")
-		local symbols=$((tc-getREADELF) -sW "${lib}")
+		local symbols=$($(tc-getREADELF) -sW "${lib}")
 		if [[ "${versions}" != *"ATTR_1.0"* || \
 		      "${versions}" != *"ATTR_1.1"* || \
 		      "${versions}" != *"ATTR_1.2"* || \

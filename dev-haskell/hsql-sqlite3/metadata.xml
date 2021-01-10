@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A Haskell Interface to SQLite 3 via libsqlite3
-		in the standard library path.
-	</longdescription>
 </pkgmetadata>

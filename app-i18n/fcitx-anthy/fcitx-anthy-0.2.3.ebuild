@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -25,7 +25,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 BDEPEND="virtual/pkgconfig"
-DEPEND=">=app-i18n/fcitx-4.2.9:4[X,xml]
+DEPEND=">=app-i18n/fcitx-4.2.9:4[X,xkb]
 	app-i18n/anthy:=
 	virtual/libintl"
 RDEPEND="${DEPEND}"

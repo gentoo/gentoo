@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1 virtualx
 
 MY_PV=${PV/_beta/b}
@@ -24,11 +24,11 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/pyshp[${PYTHON_USEDEP}]
-	sci-libs/Shapely[${PYTHON_USEDEP}]
+	sci-libs/shapely[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 	sci-libs/gdal[python,${PYTHON_USEDEP}]
 "
 

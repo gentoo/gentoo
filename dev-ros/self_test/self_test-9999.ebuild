@@ -22,3 +22,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? ( dev-ros/rostest )"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

@@ -1,0 +1,34 @@
+From 7288d06f79d935798b917f707b86a33f5b69125a Mon Sep 17 00:00:00 2001
+From: Rok Mandeljc <rok.mandeljc@gmail.com>
+Date: Sat, 2 May 2020 17:37:34 +0200
+Subject: [PATCH] libMirage: utils.h: added missing extern specifiers
+
+The lack thereof seems to be causing errors with gcc 10 on Fedora 32.
+---
+ libmirage/mirage/utils.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libmirage/mirage/utils.h b/libmirage/mirage/utils.h
+index 64611810..fc431d2f 100644
+--- a/mirage/utils.h
++++ b/mirage/utils.h
+@@ -83,8 +83,8 @@ gchar mirage_helper_isrc2ascii (guint8 c);
+ gboolean mirage_helper_validate_isrc (const gchar *isrc);
+ 
+ /* CRC utility functions */
+-guint16 *crc16_1021_lut;
+-guint32 *crc32_d8018001_lut;
++extern guint16 *crc16_1021_lut;
++extern guint32 *crc32_d8018001_lut;
+ 
+ guint16 *mirage_helper_init_crc16_lut (guint16 genpoly);
+ guint32 *mirage_helper_init_crc32_lut (guint32 genpoly, guint slices);
+@@ -139,7 +139,7 @@ const gchar *mirage_helper_encoding_from_bom (const guint8 *buffer);
+ 
+ 
+ /* ECMA-130 Annex B sector data scrambler */
+-guint8 *ecma_130_scrambler_lut;
++extern guint8 *ecma_130_scrambler_lut;
+ 
+ guint8 *mirage_helper_init_ecma_130b_scrambler_lut (void);
+ 

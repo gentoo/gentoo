@@ -6,12 +6,13 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="fribidi">Support for right-to-left languages</flag>
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> crypto backend</flag>
 		<flag name="recorder">Enable recording with <pkg>media-libs/libopenglrecorder</pkg></flag>
+		<flag name="sqlite">Record IP bans, statistics in server mode with <pkg>dev-db/sqlite</pkg></flag>
 		<flag name="wiimote">Support for wiimote input devices</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">supertuxkart/stk-code</remote-id>
 		<remote-id type="sourceforge">supertuxkart</remote-id>
 	</upstream>
 </pkgmetadata>

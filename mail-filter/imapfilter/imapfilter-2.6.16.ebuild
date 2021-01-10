@@ -19,7 +19,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	dev-libs/libpcre
-	dev-lang/lua:*"
+	dev-lang/lua:0="
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS NEWS README samples/*"

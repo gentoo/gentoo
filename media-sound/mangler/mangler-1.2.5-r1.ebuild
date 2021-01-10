@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic ltprune toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Open source VOIP client capable of connecting to Ventrilo 3.x servers"
 HOMEPAGE="http://www.mangler.org/"
@@ -11,9 +12,10 @@ SRC_URI="http://www.mangler.org/downloads/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+alsa opus espeak g15 +gsm oss pulseaudio static-libs +speex +xosd"
+IUSE="+alsa opus espeak g15 +gsm oss pulseaudio +speex +xosd"
 
-RDEPEND="dev-cpp/gtkmm:2.4
+RDEPEND="
+	dev-cpp/gtkmm:2.4
 	gnome-base/librsvg
 	>=dev-libs/dbus-glib-0.80
 	>=dev-libs/glib-2.20.1:2
@@ -28,14 +30,14 @@ RDEPEND="dev-cpp/gtkmm:2.4
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.14 )
 	speex? ( >=media-libs/speex-1.2_rc1 )
 	xosd? ( x11-libs/xosd )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	tc-export CC
-	append-cxxflags -std=c++11
+
 	econf \
-		$(use_enable static-libs static) \
+		--disable-static \
 		$(use_enable gsm) \
 		$(use_enable speex) \
 		$(use_enable opus) \
@@ -49,5 +51,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }

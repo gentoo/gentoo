@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Delta compression suite for using/generating binary patches"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -12,22 +12,22 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux"
-IUSE=""
 
 DEPEND=">=dev-util/diffball-0.7"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
-pkg_setup() {
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${P}-gcc5.patch
+)
+
+src_configure() {
 	tc-export CC
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-make.patch
-	epatch "${FILESDIR}"/${P}-gcc5.patch
-}
-
 src_install() {
-	dobin "${PN}" #make install doesn't support prefix
+	dobin tarsync #make install doesn't support prefix
+	einstalldocs
 }

@@ -1,2 +1,0 @@
-# owfs owftpd configuration
-OWFTPD_OPTS="--nozero -p 127.0.0.1:4381 -s 127.0.0.1:4304 --max_clients 5 --timeout_ftp 600"

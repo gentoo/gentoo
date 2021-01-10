@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/net-ssh/net-scp"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RUBY_PATCHES=(
@@ -30,13 +30,13 @@ RUBY_PATCHES=(
 	)
 
 ruby_add_bdepend "
-	doc? ( || ( dev-ruby/net-ssh:5 dev-ruby/net-ssh:4 ) )
+	doc? ( dev-ruby/net-ssh:5 )
 	test? (
-		|| ( dev-ruby/net-ssh:5 dev-ruby/net-ssh:4 )
+		dev-ruby/net-ssh:5
 		dev-ruby/mocha
 	)"
 
-ruby_add_rdepend "|| ( dev-ruby/net-ssh:5 dev-ruby/net-ssh:4 )"
+ruby_add_rdepend "dev-ruby/net-ssh:5"
 
 all_ruby_prepare() {
 	sed -i -e 's/>= 2.0.0/~> 2.0/' test/common.rb || die

@@ -5,5 +5,4 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
-	<longdescription>MPDCon is a client for the Music Player Daemon</longdescription>
 </pkgmetadata>

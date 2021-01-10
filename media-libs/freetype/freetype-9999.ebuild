@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
-IUSE="X +adobe-cff bindist brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality png static-libs utils"
+IUSE="X +adobe-cff bindist brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality +png static-libs utils"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.xz
@@ -16,7 +16,7 @@ if [[ "${PV}" != 9999 ]] ; then
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.xz )
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.xz
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.xz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
 	inherit autotools git-r3
@@ -46,7 +46,7 @@ BDEPEND="
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
+	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
 )
 
 _egit_repo_handler() {
@@ -80,6 +80,16 @@ src_fetch() {
 
 src_unpack() {
 	_egit_repo_handler ${EBUILD_PHASE}
+
+	if [[ "${PV}" == 9999 ]] ; then
+		# Need to copy stuff from dlg submodule (#758902)
+		local dlg_inc_dir="${S}/submodules/dlg/include/dlg"
+		local dlg_src_dir="${S}/submodules/dlg/src/dlg"
+		local dlg_dest_dir="${S}/src/dlg"
+		mkdir -p "${dlg_dest_dir}/dlg" || die
+		cp "${dlg_inc_dir}"/{dlg,output}.h "${dlg_dest_dir}/dlg" || die
+		cp "${dlg_src_dir}"/* "${dlg_dest_dir}" || die
+	fi
 }
 
 src_prepare() {

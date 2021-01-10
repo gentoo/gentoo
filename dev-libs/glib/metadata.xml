@@ -19,6 +19,10 @@
 			Build support for profiling and tracing using
 			<pkg>dev-util/systemtap</pkg>
 		</flag>
+		<flag name="sysprof">
+			Enable profiling data capture support using
+			<pkg>dev-util/sysprof-capture</pkg>
+		</flag>
 		<flag name="utils">
 			Install gtester-report utility to generate test
 			report files for your software; build gresource utility with

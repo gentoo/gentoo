@@ -33,7 +33,7 @@ REQUIRED_USE="romio? ( mpi )"
 
 RDEPEND="
 	~sci-libs/libsc-${PV}[mpi=,openmp=,romio=,static-libs=,threads=]
-	dev-lang/lua:*
+	dev-lang/lua:0=
 	sys-apps/util-linux
 	virtual/blas
 	virtual/lapack

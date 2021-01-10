@@ -3,7 +3,7 @@
 
 EAPI=7
 
-GENQMAIL_PV=20191010
+GENQMAIL_PV=20200817
 QMAIL_SPP_PV=0.42
 
 QMAIL_TLS_PV=20200107
@@ -56,18 +56,15 @@ SRC_URI="${SRC_URI}
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="authcram gencertdaily highvolume libressl -pop3 qmail-spp ssl test vanilla"
-REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl ) libressl? ( ssl )"
+IUSE="authcram gencertdaily highvolume -pop3 qmail-spp ssl test vanilla"
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	net-dns/libidn2
 	net-mail/queue-repair
 	sys-apps/gentoo-functions
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.1:0= )
 	test? ( dev-libs/check )
 "
 RDEPEND="${DEPEND}

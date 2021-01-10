@@ -4,26 +4,35 @@
 EAPI=7
 
 DESCRIPTION="command line date and time utilities"
-HOMEPAGE="https://www.fresse.org/dateutils/"
-SRC_URI="https://bitbucket.org/hroptatyr/${PN}/downloads/${P}.tar.xz"
+HOMEPAGE="https://www.fresse.org/dateutils/ https://github.com/hroptatyr/dateutils"
+
+case "${PV}" in
+	9999)
+		inherit autotools git-r3
+		EGIT_REPO_URI="https://github.com/hroptatyr/dateutils.git"
+		;;
+	*)
+		SRC_URI="https://github.com/hroptatyr/dateutils/releases/download/v${PV}/${P}.tar.xz"
+		KEYWORDS="~amd64 ~x86"
+esac
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/xz-utils
-	sys-libs/timezone-data"
+BDEPEND="app-arch/xz-utils"
+DEPEND="sys-libs/timezone-data"
 
 # bug 429810
-RDEPEND="!sys-fabric/dapl"
+RDEPEND="${DEPEND}
+	!sys-fabric/dapl"
 
 PATCHES=( "${FILESDIR}"/${P}-unportable-sys-sysctl_h.patch )
 
-src_compile() {
-	emake CFLAGS="${CFLAGS}"
+src_prepare() {
+	default
+	[[ "${PV}" = 9999 ]] && eautoreconf
 }
 
-src_test() {
-	# parallel tests failure
-	emake CFLAGS="${CFLAGS}" -j1 check
+src_configure() {
+	econf CFLAGS="${CFLAGS}"
 }

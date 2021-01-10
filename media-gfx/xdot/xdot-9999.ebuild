@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN=xdot.py
 EGIT_REPO_URI="https://github.com/jrfonseca/${MY_PN}"
@@ -28,20 +29,6 @@ SLOT="0"
 DEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	media-gfx/graphviz
 "
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
-
-src_prepare() {
-	eapply_user
-
-	# Don't require graphviz python(2) supprt, which xdot doesn't use. This allows xdot to support python3.
-	# For more info, see https://bugs.gentoo.org/643126
-	sed -i "/install_requires=\['graphviz'\],/d" setup.py || die
-}

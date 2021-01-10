@@ -5,9 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Lists currently mounted filesystems.
-		
-		Works on: Linux, BSD, Mac OS X, Android
-	</longdescription>
 </pkgmetadata>

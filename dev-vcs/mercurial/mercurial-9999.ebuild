@@ -1,12 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=no
+CARGO_OPTIONAL=1
 
-inherit bash-completion-r1 elisp-common eutils distutils-r1 mercurial flag-o-matic
+inherit bash-completion-r1 cargo elisp-common eutils distutils-r1 mercurial flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -15,9 +17,11 @@ EHG_REPO_URI="https://www.mercurial-scm.org/repo/hg"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="+chg emacs gpg test tk zsh-completion"
+IUSE="+chg emacs gpg test tk rust zsh-completion"
 
-BDEPEND="dev-python/docutils[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/docutils[${PYTHON_USEDEP}]
+	rust? ( ${RUST_DEPEND} )"
 
 RDEPEND="
 	app-misc/ca-certificates
@@ -35,22 +39,42 @@ SITEFILE="70${PN}-gentoo.el"
 # Too many tests fail #608720
 RESTRICT="test"
 
+src_unpack() {
+	mercurial_src_unpack
+	if use rust; then
+		local S="${S}/rust/hg-cpython"
+		cargo_live_src_unpack
+	fi
+}
+
 python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
 	sed -i -e '/    hgenv =/a\' -e '    hgenv.pop("PYTHONPATH", None)' setup.py || die
 	# Use absolute import for zstd
-	sed -i -e 's/from \.* import zstd/import zstd/' \
+	sed -i -e 's/from \.* import zstd/import zstandard as zstd/' \
 		mercurial/utils/compression.py \
 		mercurial/wireprotoframing.py || die
 
 	distutils-r1_python_prepare_all
 }
 
+src_compile() {
+	if use rust; then
+		pushd rust/hg-cpython || die
+		cargo_src_compile
+		popd
+	fi
+	distutils-r1_src_compile
+}
+
 python_compile() {
 	filter-flags -ftracer -ftree-vectorize
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+	if use rust; then
+		local -x HGWITHRUSTEXT="cpython"
+	fi
 	distutils-r1_python_compile build_ext --no-zstd
 }
 
@@ -66,7 +90,14 @@ python_compile_all() {
 	fi
 }
 
+src_install() {
+	distutils-r1_src_install
+}
+
 python_install() {
+	if use rust; then
+		local -x HGWITHRUSTEXT="cpython"
+	fi
 	distutils-r1_python_install build_ext --no-zstd
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,18 +15,21 @@ SLOT="0"
 KEYWORDS="arm"
 IUSE=""
 
-DEPEND=">=dev-lang/lua-5.1:="
+DEPEND=">=dev-lang/lua-5.1:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
+
 	eapply "${WORKDIR}"/*.diff
 	eapply debian/patches/*.patch
 	eapply "${FILESDIR}"/${PV}-Makefile.patch
+
+	sed -i -e "s/LDFLAGS=/LDFLAGS ?=/" Makefile || die
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" qcontrol
+	emake CC="$(tc-getCC)" LDFLAGS="-llua -lpthread ${LDFLAGS}" qcontrol
 }
 
 src_install() {

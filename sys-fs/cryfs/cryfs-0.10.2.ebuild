@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 	S="${WORKDIR}"
 fi
 
@@ -73,6 +73,7 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 	)
 	use custom-optimization || append-flags -O3
+	use debug || append-flags -DNDEBUG
 
 	cmake_src_configure
 }

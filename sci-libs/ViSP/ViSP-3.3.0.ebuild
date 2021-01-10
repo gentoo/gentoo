@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	)
 	dmtx? ( media-libs/libdmtx )
 	gsl? ( sci-libs/gsl )
-	ieee1394? ( media-libs/libdc1394 )
+	ieee1394? ( media-libs/libdc1394:2= )
 	jpeg? ( virtual/jpeg:0 )
 	motif? ( media-libs/SoXt )
 	ogre? (

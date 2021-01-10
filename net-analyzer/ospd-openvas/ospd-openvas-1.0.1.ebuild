@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 systemd
 
@@ -20,8 +20,8 @@ DEPEND="
 	acct-user/gvm
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
-	dev-python/redis-py[${PYTHON_USEDEP}]
-	net-analyzer/ospd[${PYTHON_USEDEP}]
+	>=dev-python/redis-py-3.0.1[${PYTHON_USEDEP}]
+	>=net-analyzer/ospd-2.0.0[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}

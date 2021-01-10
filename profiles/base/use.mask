@@ -1,20 +1,37 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Mikle Kolyada <zlogene@gentoo.org> (2020-08-02)
-# consolekit is masked for removal
-consolekit
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# PHP 7.2 is security vulnerable and end-of-life
+# Please upgrade to a newer slot
+php_targets_php7-2
+php7-2
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-01)
+# The support for python3.6 target in Gentoo is discontinued.
+# The flags are masked to permit removal of the last backport packages.
+# Once they're gone, the eclass support will be disabled and the flags
+# removed.
+python_targets_python3_6
+python_single_target_python3_6
+
+# Alexis Ballier <aballier@gentoo.org> (2020-10-13)
+# Nothing depends on those ROS messages. dev-ros/geneus
+# is half broken in our setup where it looks for packages
+# on the filesystem and causes build failures.
+# See e.g. https://bugs.gentoo.org/741076
+ros_messages_eus
+
+# Michał Górny <mgorny@gentoo.org> (2020-08-22)
+# app-office/openoffice-bin is being removed.
+office_implementation_openoffice
+
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
-
-# Ben Kohler <bkohler@gentoo.org> (2020-05-15)
-# Mask 9.4 target to match <9.5 package.mask entry
-postgres_targets_postgres9_4
 
 # Matt Turner <mattst88@gentoo.org> (2020-03-25)
 # media-libs/libav is masked for removal
@@ -43,6 +60,9 @@ php_targets_php7-0
 # Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 only works on amd64/x86.
 d3d9
+
+# winssl is for prefix/windows/winnt only
+winssl
 
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
@@ -111,3 +131,11 @@ prelude
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # netlink is a Linux-specific interface
 netlink
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-18)
+# mask removed ABI_RISCV flags so they do not trigger rebuild
+# in emerge
+abi_riscv_lp64
+abi_riscv_lp64d
+abi_riscv_ilp32
+abi_riscv_ilp32d

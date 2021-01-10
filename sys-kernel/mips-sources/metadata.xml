@@ -5,10 +5,6 @@
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
-
-	<longdescription>
-		mips-sources are git snapshots from the linux-mips.org git server for MIPS-Based machines
-	</longdescription>
 	<use>
 		<flag name="ip27">Enables additional support for SGI Origin (IP27)</flag>
 		<flag name="ip28">Enables additional support for SGI Indigo2 Impact R10000 (IP28)</flag>

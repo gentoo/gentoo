@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="A library to manipulate gettext files (.po and .mo files)"
-HOMEPAGE="https://bitbucket.org/izi/polib/wiki/Home"
+HOMEPAGE="https://github.com/izimobil/polib https://polib.readthedocs.io/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

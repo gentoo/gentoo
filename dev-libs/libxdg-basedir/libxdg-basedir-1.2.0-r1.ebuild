@@ -10,7 +10,7 @@ SRC_URI="https://github.com/devnev/libxdg-basedir/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ppc ppc64 x86 ~amd64-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x64-macos ~x86-solaris"
 IUSE="doc static-libs"
 
 RDEPEND=""

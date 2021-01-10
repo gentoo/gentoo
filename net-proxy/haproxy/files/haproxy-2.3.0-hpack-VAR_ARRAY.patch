@@ -1,0 +1,37 @@
+From 759146f0de143939b841ba987aabb83aa178a4fc Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@qasl.de>
+Date: Mon, 9 Nov 2020 09:15:21 +0100
+Subject: [PATCH] hpack-tbl-t.h uses VAR_ARRAY and requires compiler.h to be
+ included
+
+This fixes building hpack from contrib, which failed because of the
+undeclared VAR_ARRAY:
+
+make -C contrib/hpack
+...
+cc -O2 -Wall -g -I../../include -fwrapv -fno-strict-aliasing   -c -o gen-enc.o gen-enc.c
+In file included from gen-enc.c:18:
+../../include/haproxy/hpack-tbl-t.h:105:23: error: 'VAR_ARRAY' undeclared here (not in a function)
+  105 |  struct hpack_dte dte[VAR_ARRAY]; /* dynamic table entries */
+...
+
+Signed-off-by: Christian Ruppert <idl0r@qasl.de>
+---
+ include/haproxy/hpack-tbl-t.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/haproxy/hpack-tbl-t.h b/include/haproxy/hpack-tbl-t.h
+index 344f665dd..07f1ca9ea 100644
+--- a/include/haproxy/hpack-tbl-t.h
++++ b/include/haproxy/hpack-tbl-t.h
+@@ -28,6 +28,7 @@
+ #define _HAPROXY_HPACK_TBL_T_H
+ 
+ #include <inttypes.h>
++#include "compiler.h"
+ 
+ /* Dynamic Headers Table, usable for tables up to 4GB long and values of 64kB-1.
+  * The model can be improved by using offsets relative to the table entry's end
+-- 
+2.26.2
+

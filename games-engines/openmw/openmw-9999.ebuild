@@ -33,7 +33,7 @@ RDEPEND="
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
 	media-video/ffmpeg:=
-	>=sci-physics/bullet-2.86:=
+	>=sci-physics/bullet-2.86:=[double-precision]
 	virtual/opengl
 	osg-fork? ( dev-games/openscenegraph-openmw:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
@@ -61,7 +61,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/openmw-0.46.0-mygui-license.patch
+	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
 	"${FILESDIR}"/openmw-0.46.0-recastnavigation.patch
 )
 
@@ -96,6 +96,7 @@ src_configure() {
 		-DMORROWIND_DATA_FILES="${EPREFIX}/usr/share/morrowind-data"
 		-DUSE_SYSTEM_TINYXML=ON
 		-DDESIRED_QT_VERSION=5
+		-DBULLET_USE_DOUBLES=ON
 	)
 
 	cmake_src_configure

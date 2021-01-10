@@ -47,6 +47,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# hack for bug 741840
+	use doc && export GTK_DOC_PATH=/usr/share/gtk-doc
+
 	econf \
 		--disable-rpath \
 		--without-kde4-thumbnailer \

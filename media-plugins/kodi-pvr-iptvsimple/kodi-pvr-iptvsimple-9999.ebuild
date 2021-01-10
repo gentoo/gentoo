@@ -28,7 +28,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=dev-libs/libplatform-2*
 	dev-libs/pugixml
 	~media-tv/kodi-9999
 	sys-libs/zlib

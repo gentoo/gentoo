@@ -5,25 +5,17 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 inherit cmake llvm llvm.org multilib-minimal pax-utils \
-	python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( clang clang-tools-extra )
-LLVM_TEST_COMPONENTS=(
-	llvm/lib/Testing/Support
-	llvm/utils/{lit,llvm-lit,unittest}
-	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
-)
-llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC VE )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY VE )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 # MSVCSetupApi.h: MIT
 # sorttable.js: MIT
@@ -31,20 +23,28 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
-IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
-	test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+IUSE="debug default-compiler-rt default-libcxx default-lld
+	doc +static-analyzer test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
+	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${MULTILIB_USEDEP}]
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
+for x in "${ALL_LLVM_TARGETS[@]}"; do
+	RDEPEND+="
+		${x}? ( ~sys-devel/llvm-${PV}:${SLOT}[${x}] )"
+done
+unset x
+
+DEPEND="${RDEPEND}
+	test? ( sys-libs/compiler-rt )"
 BDEPEND="
-	dev-python/sphinx
+	>=dev-util/cmake-3.16
+	doc? ( dev-python/sphinx )
 	xml? ( virtual/pkgconfig )
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
@@ -54,7 +54,17 @@ PDEPEND="
 	sys-devel/clang-common
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
-	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
+	default-libcxx? ( >=sys-libs/libcxx-${PV} )
+	default-lld? ( sys-devel/lld )"
+
+LLVM_COMPONENTS=( clang clang-tools-extra )
+LLVM_MANPAGES=build
+LLVM_TEST_COMPONENTS=(
+	llvm/lib/Testing/Support
+	llvm/utils/{lit,llvm-lit,unittest}
+	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
+)
+llvm.org_set_globals
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
@@ -66,6 +76,10 @@ PDEPEND="
 #
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
+
+PATCHES=(
+	"${FILESDIR}"/9999/prefix-dirs.patch
+)
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
@@ -79,7 +93,10 @@ src_prepare() {
 
 	llvm.org_src_prepare
 
-	mv ../clang-tools-extra tools/extra || die
+	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
+	eprefixify \
+		lib/Frontend/InitHeaderSearch.cpp \
+		lib/Driver/ToolChains/Darwin.cpp || die
 }
 
 check_distribution_components() {
@@ -110,7 +127,7 @@ check_distribution_components() {
 						;;
 					# conditional to USE=doc
 					docs-clang-html|docs-clang-tools-html)
-						continue
+						use doc || continue
 						;;
 				esac
 
@@ -189,11 +206,15 @@ get_distribution_components() {
 			find-all-symbols
 			modularize
 			pp-trace
-
-			# manpages
-			docs-clang-man
-			docs-clang-tools-man
 		)
+
+		if llvm_are_manpages_built; then
+			out+=(
+				# manpages
+				docs-clang-man
+				docs-clang-tools-man
+			)
+		fi
 
 		use doc && out+=(
 			docs-clang-html
@@ -241,9 +262,12 @@ multilib_src_configure() {
 		# override default stdlib and rtlib
 		-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
 		-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
+		-DCLANG_DEFAULT_LINKER=$(usex default-lld lld "")
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
@@ -251,16 +275,21 @@ multilib_src_configure() {
 	)
 
 	if multilib_is_native_abi; then
+		local build_docs=OFF
+		if llvm_are_manpages_built; then
+			build_docs=ON
+			mycmakeargs+=(
+				-DLLVM_BUILD_DOCS=ON
+				-DLLVM_ENABLE_SPHINX=ON
+				-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
+				-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
+				-DSPHINX_WARNINGS_AS_ERRORS=OFF
+			)
+		fi
 		mycmakeargs+=(
-			# normally copied from LLVM_INCLUDE_DOCS but the latter
-			# is lacking value in stand-alone builds
-			-DCLANG_INCLUDE_DOCS=ON
-			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=ON
-			-DLLVM_BUILD_DOCS=ON
-			-DLLVM_ENABLE_SPHINX=ON
-			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
-			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
-			-DSPHINX_WARNINGS_AS_ERRORS=OFF
+			-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR="${WORKDIR}"/clang-tools-extra
+			-DCLANG_INCLUDE_DOCS=${build_docs}
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=${build_docs}
 		)
 	else
 		mycmakeargs+=(
@@ -381,6 +410,7 @@ multilib_src_install_all() {
 	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	llvm_install_manpages
 	# match 'html' non-compression
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 	# +x for some reason; TODO: investigate

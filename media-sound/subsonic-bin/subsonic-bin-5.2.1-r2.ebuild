@@ -52,11 +52,11 @@ src_install() {
 
 	if use ffmpeg; then
 		dodir ${SUBSONIC_HOME}/transcode
-		dosym /usr/bin/ffmpeg ${SUBSONIC_HOME}/transcode/ffmpeg
+		dosym ../../../../usr/bin/ffmpeg ${SUBSONIC_HOME}/transcode/ffmpeg
 	fi
 
 	if use lame; then
 		dodir ${SUBSONIC_HOME}/transcode
-		dosym /usr/bin/lame ${SUBSONIC_HOME}/transcode/lame
+		dosym ../../../../usr/bin/lame ${SUBSONIC_HOME}/transcode/lame
 	fi
 }

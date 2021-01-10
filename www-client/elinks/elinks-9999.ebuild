@@ -1,10 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
-inherit autotools git-r3 python-any-r1
+EAPI=7
+
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+LUA_COMPAT=( lua5-{1,2} )
+
+inherit autotools git-r3 lua-single python-any-r1
 
 EGIT_REPO_URI="https://github.com/rkd77/felinks"
 
@@ -14,34 +16,42 @@ HOMEPAGE="http://elinks.or.cz/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
-	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
+IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
+	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	brotli? ( app-arch/brotli )
+	brotli? ( app-arch/brotli:= )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
-	idn? ( net-dns/libidn )
-	javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
-	lua? ( >=dev-lang/lua-5:0= )
+	idn? ( net-dns/libidn:= )
+	lua? ( ${LUA_DEPS} )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* )
 	samba? ( net-fs/samba )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+		gnutls? ( net-libs/gnutls:= )
 	)
 	tre? ( dev-libs/tre )
-	X? ( x11-libs/libX11 x11-libs/libXt )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXt
+	)
 	xml? ( >=dev-libs/expat-1.95.4 )
-	zlib? ( >=sys-libs/zlib-1.1.4 )"
+	zlib? ( >=sys-libs/zlib-1.1.4 )
+	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
-	)
+)
 
 src_unpack() {
 	default
@@ -64,18 +74,19 @@ src_configure() {
 		--enable-256-colors
 		--enable-true-color
 		--enable-html-highlight
+		--without-spidermonkey
 		$(use_with gpm)
 		$(use_with brotli)
 		$(use_with bzip2 bzlib)
 		$(use_with guile)
 		$(use_with idn)
-		$(use_with javascript spidermonkey)
-		$(use_with lua)
+		$(use_with lua luapkg lua)
 		$(use_with perl)
 		$(use_with ruby)
 		$(use_with tre)
 		$(use_with X x)
 		$(use_with zlib)
+		$(use_with zstd)
 		$(use_enable bittorrent)
 		$(use_enable finger)
 		$(use_enable ftp)
@@ -94,11 +105,12 @@ src_configure() {
 		myconf+=( --enable-fastmem )
 	fi
 
-	# NOTE about GNUTSL SSL support (from the README -- 25/12/2002)
-	# As GNUTLS is not yet 100% stable and its support in ELinks is not so well
-	# tested yet, it's recommended for users to give a strong preference to OpenSSL whenever possible.
 	if use ssl ; then
-		myconf+=( --with-openssl="${EPREFIX}"/usr )
+		if use gnutls ; then
+			myconf+=( --with-gnutls )
+		else
+			myconf+=( --with-openssl="${EPREFIX}"/usr )
+		fi
 	else
 		myconf+=( --without-openssl --without-gnutls )
 	fi

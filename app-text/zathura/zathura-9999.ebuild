@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 DEPEND=">=dev-libs/girara-0.3.3
 	>=dev-libs/glib-2.50:2
 	>=sys-devel/gettext-0.19.8
-	x11-libs/cairo[X]
+	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	magic? ( sys-apps/file )
 	seccomp? ( sys-libs/libseccomp )

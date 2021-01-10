@@ -7,7 +7,7 @@
 		from banning your applications by conforming to set rate limits.
 	</longdescription>
 	<maintainer type="person">
-		<email>chr@chymera.eu</email>
+		<email>gentoo@chymera.eu</email>
 		<name>Horea Christian</name>
 	</maintainer>
 	<maintainer type="project">
@@ -15,6 +15,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">tomasbasham/ratelimit"</remote-id>
+		<remote-id type="github">tomasbasham/ratelimit</remote-id>
+		<remote-id type="pypi">ratelimit</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -25,6 +25,8 @@ DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )"
 
+PATCHES=( "${FILESDIR}"/${P}-zone_nr.patch )
+
 src_configure() {
 	append-ldflags -L/usr/$(get_libdir)/hamlib
 	econf --enable-fldigi-xmlrpc

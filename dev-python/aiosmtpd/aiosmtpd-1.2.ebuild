@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 PYTHON_COMPAT=( python3_6 python3_7 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
 
 DESCRIPTION="asyncio based SMTP server"

@@ -30,5 +30,6 @@
 	</slots>
 	<upstream>
 		<remote-id type="github">Ultimaker/Uranium</remote-id>
+		<remote-id type="pypi">uranium</remote-id>
 	</upstream>
 </pkgmetadata>

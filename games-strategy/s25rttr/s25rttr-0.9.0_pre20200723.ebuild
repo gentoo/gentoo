@@ -27,13 +27,13 @@ SRC_URI="
 
 LICENSE="GPL-2+ GPL-3 Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/bzip2
-	>=dev-lang/lua-5.1:=
+	>=dev-lang/lua-5.1:0=
 	>=dev-libs/boost-1.73:0=[nls]
 	>=media-libs/libsamplerate-0.1.9
 	>=media-libs/libsdl2-2.0.10-r2[opengl,sound,video]

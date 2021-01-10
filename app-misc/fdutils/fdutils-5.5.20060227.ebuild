@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-5.5-20060227
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-gcc10.patch"
+
 	local d="${WORKDIR}"/debian/patches
 	EPATCH_SOURCE="${d}" epatch $(<"${d}"/series)
 	sed -i -e 's:{LDFLAFS}:(LDFLAGS):' src/Makefile.in || die #337721

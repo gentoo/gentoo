@@ -11,7 +11,7 @@ SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="static"
 
 LIB_DEPEND="sys-libs/zlib[static-libs(+)]"

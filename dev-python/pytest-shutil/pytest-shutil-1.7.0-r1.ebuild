@@ -3,7 +3,6 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 inherit distutils-r1
@@ -45,12 +44,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	# at this point let's not fix python2 stuff
-	if ! python_is_python3; then
-		ewarn "Tests broken on python2, not runninge tests for ${EPYTHON}"
-		return 0
-	fi
-
 	distutils_install_for_testing
 
 	esetup.py test || die "Tests failed under ${EPYTHON}"

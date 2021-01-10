@@ -18,7 +18,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/libpng:0
 	x11-libs/cairo[X?]
 	x11-libs/pango[X?]
-	virtual/libffi
+	dev-libs/libffi
 	virtual/jpeg:0
 	readline? ( dev-libs/libedit )
 	X? ( x11-libs/gtk+[X?] )"

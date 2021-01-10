@@ -1,6 +1,5 @@
-diff -Naur libplist/src/libplist-2.0.pc.in libplist-pcfile/src/libplist-2.0.pc.in
---- libplist/src/libplist-2.0.pc.in	2020-07-18 17:25:52.156222244 +0300
-+++ libplist-pcfile/src/libplist-2.0.pc.in	2020-07-18 17:26:32.752017958 +0300
+--- a/src/libplist-2.0.pc.in
++++ b/src/libplist-2.0.pc.in
 @@ -6,5 +6,5 @@
  Name: @PACKAGE_NAME@
  Description: A library to handle Apple Property Lists whereas they are binary or XML

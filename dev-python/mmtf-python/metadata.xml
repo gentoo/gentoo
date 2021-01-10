@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">rcsb/mmtf-python</remote-id>
+		<remote-id type="pypi">mmtf-python</remote-id>
 	</upstream>
 </pkgmetadata>

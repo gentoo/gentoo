@@ -3,9 +3,6 @@
 
 EAPI=7
 
-# Force users doing their own patches to install their own tools
-AUTOTOOLS_AUTO_DEPEND=no
-
 inherit multilib systemd toolchain-funcs autotools flag-o-matic usr-ldscript
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
@@ -16,7 +13,7 @@ LICENSE="GPL-2"
 # Subslot reflects PV when libxtables and/or libip*tc was changed
 # the last time.
 SLOT="0/1.8.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 IUSE="conntrack ipv6 netlink nftables pcap static-libs"
 
 BUILD_DEPEND="

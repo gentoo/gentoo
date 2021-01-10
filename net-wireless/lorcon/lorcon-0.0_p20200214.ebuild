@@ -20,7 +20,7 @@ else
 	GIT_HASH="7dbf24ee6f7c277240c0fbd988b6902850577772"
 	SRC_URI="https://github.com/kismetwireless/lorcon/archive/${GIT_HASH}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/"${PN}-${GIT_HASH}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ppc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -50,7 +50,7 @@ src_prepare() {
 }
 
 src_configure() {
-	default_src_configure
+	econf --disable-static
 }
 
 src_compile() {
@@ -68,5 +68,5 @@ src_install() {
 		cd pylorcon2 || die
 		distutils-r1_src_install
 	fi
-	find "${D}" -xtype f -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

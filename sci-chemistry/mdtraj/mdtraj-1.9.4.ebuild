@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/pytables[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (

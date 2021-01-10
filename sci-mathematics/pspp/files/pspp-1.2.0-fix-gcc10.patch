@@ -1,0 +1,30 @@
+Upstream: https://git.savannah.gnu.org/cgit/pspp.git/commit/?id=614bbfbc4be1f4f47d55d3fbee9ae20f3a9955bb
+Gentoo Bug: https://bugs.gentoo.org/708548
+
+commit 614bbfbc4be1f4f47d55d3fbee9ae20f3a9955bb
+Author: Ben Pfaff <blp@cs.stanford.edu>
+Date:   Fri Nov 16 20:27:30 2018 -0800
+
+    psppire: Fix multiple definitions of align_enum_type and two others.
+    
+    These were defined in both psppire-dict.c and widgets.c, which causes a
+    problem building with -fno-common (which is desirable because it allows
+    Address Sanitizer to work better).
+
+diff --git a/src/ui/gui/widgets.c b/src/ui/gui/widgets.c
+index 26a5dac4f..6ce129249 100644
+--- a/src/ui/gui/widgets.c
++++ b/src/ui/gui/widgets.c
+@@ -171,9 +171,9 @@ enum_to_string (const GValue *src, GValue *dest)
+ 
+ 
+ 
+-GType align_enum_type;
+-GType measure_enum_type;
+-GType role_enum_type;
++extern GType align_enum_type;
++extern GType measure_enum_type;
++extern GType role_enum_type;
+ 
+ 
+ extern const GEnumValue align[];

@@ -1,37 +1,41 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit git-r3 prefix user webapp
+inherit git-r3 prefix webapp
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-EGIT_REPO_URI="https://git.tt-rss.org/git/${PN}.git"
+EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
 LICENSE="GPL-3"
 SLOT="${PV}" # Single live slot.
-IUSE="+acl daemon +mysqli postgres"
+IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
+PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml"
 
-DEPEND="daemon? ( acl? ( sys-apps/acl ) )"
+DEPEND="
+	daemon? ( acl? ( sys-apps/acl ) )
+"
 
-RDEPEND="${DEPEND}
-	daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,intl,pcntl,pdo] )
-	!daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,intl,pdo] )
-	virtual/httpd-php:*"
+RDEPEND="
+	${DEPEND}
+	daemon? (
+		acct-user/ttrssd
+		acct-group/ttrssd
+		dev-lang/php:*[${PHP_USE},cli,pcntl]
+	)
+	!daemon? (
+		dev-lang/php:*[${PHP_USE}]
+	)
+	virtual/httpd-php:*
+"
 
-DEPEND="!vhosts? ( ${DEPEND} )"
+DEPEND="
+	!vhosts? ( ${DEPEND} )
+"
 
 need_httpd_cgi # From webapp.eclass
-
-pkg_setup() {
-	webapp_pkg_setup
-
-	if use daemon; then
-		enewgroup ttrssd
-		enewuser ttrssd -1 /bin/sh /dev/null ttrssd
-	fi
-}
 
 src_configure() {
 	hprefixify config.php-dist

@@ -12,12 +12,13 @@ SRC_URI="https://github.com/google/honggfuzz/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="clang"
 
 RDEPEND="
 	>=sys-libs/binutils-libs-2.29:=
 	sys-libs/libunwind:=
 	app-arch/xz-utils
+	clang? ( sys-libs/blocksruntime )
 "
 
 DEPEND="${RDEPEND}"
@@ -35,7 +36,7 @@ PATCHES=(
 
 pkg_pretend() {
 	if tc-is-clang; then
-		die "${P} does not work on clang due to incomplete -fblock support: https://bugs.gentoo.org/729256. Please try gcc."
+		use clang || die "${P}: to use clang enable USE=clang for ${P} (bug #729256)."
 	fi
 }
 

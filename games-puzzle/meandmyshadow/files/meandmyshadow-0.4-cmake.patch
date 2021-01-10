@@ -1,5 +1,5 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- meandmyshadow-0.4.orig/CMakeLists.txt
++++ meandmyshadow-0.4/CMakeLists.txt
 @@ -15,13 +15,12 @@
  Find_Package(CURL REQUIRED)
  Find_Package(LibArchive REQUIRED)

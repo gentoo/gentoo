@@ -1,0 +1,157 @@
+Backport of https://github.com/u1f35c/collectd/commit/9e36cd85a2bbd6daa55f1f392f60f9c95573ae2c
+aka https://github.com/collectd/collectd/issues/1574
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -5367,7 +5367,7 @@ AC_SUBST([BUILD_WITH_LIBSENSORS_LIBS])
+ # libsigrok {{{
+ AC_SUBST([LIBSIGROK_CFLAGS])
+ AC_SUBST([LIBSIGROK_LIBS])
+-PKG_CHECK_MODULES([LIBSIGROK], [libsigrok < 0.4],
++PKG_CHECK_MODULES([LIBSIGROK], [libsigrok >= 0.4],
+   [with_libsigrok="yes"],
+   [with_libsigrok="no (pkg-config could not find libsigrok)"]
+ )
+--- a/src/sigrok.c
++++ b/src/sigrok.c
+@@ -127,22 +127,22 @@ static int sigrok_config(oconfig_item_t *ci) {
+   return 0;
+ }
+ 
+-static const char *sigrok_value_type(const struct sr_datafeed_analog *analog) {
++static const char *sigrok_value_type(const struct sr_analog_meaning *meaning) {
+   const char *s;
+ 
+-  if (analog->mq == SR_MQ_VOLTAGE)
++  if (meaning->mq == SR_MQ_VOLTAGE)
+     s = "voltage";
+-  else if (analog->mq == SR_MQ_CURRENT)
++  else if (meaning->mq == SR_MQ_CURRENT)
+     s = "current";
+-  else if (analog->mq == SR_MQ_FREQUENCY)
++  else if (meaning->mq == SR_MQ_FREQUENCY)
+     s = "frequency";
+-  else if (analog->mq == SR_MQ_POWER)
++  else if (meaning->mq == SR_MQ_POWER)
+     s = "power";
+-  else if (analog->mq == SR_MQ_TEMPERATURE)
++  else if (meaning->mq == SR_MQ_TEMPERATURE)
+     s = "temperature";
+-  else if (analog->mq == SR_MQ_RELATIVE_HUMIDITY)
++  else if (meaning->mq == SR_MQ_RELATIVE_HUMIDITY)
+     s = "humidity";
+-  else if (analog->mq == SR_MQ_SOUND_PRESSURE_LEVEL)
++  else if (meaning->mq == SR_MQ_SOUND_PRESSURE_LEVEL)
+     s = "spl";
+   else
+     s = "gauge";
+@@ -172,7 +172,7 @@ static void sigrok_feed_callback(const struct sr_dev_inst *sdi,
+     ERROR("sigrok plugin: Received data from driver \"%s\" but "
+           "can't find a configuration / device matching "
+           "it.",
+-          sdi->driver->name);
++          sr_dev_inst_driver_get(sdi)->name);
+     return;
+   }
+ 
+@@ -191,11 +191,11 @@ static void sigrok_feed_callback(const struct sr_dev_inst *sdi,
+ 
+   /* Ignore all but the first sample on the first probe. */
+   analog = packet->payload;
+-  vl.values = &(value_t){.gauge = analog->data[0]};
++  vl.values = &(value_t){.gauge = ((float *) analog->data)[0]};
+   vl.values_len = 1;
+   sstrncpy(vl.plugin, "sigrok", sizeof(vl.plugin));
+   sstrncpy(vl.plugin_instance, cfdev->name, sizeof(vl.plugin_instance));
+-  sstrncpy(vl.type, sigrok_value_type(analog), sizeof(vl.type));
++  sstrncpy(vl.type, sigrok_value_type(&analog->meaning[0]), sizeof(vl.type));
+ 
+   plugin_dispatch_values(&vl);
+   cfdev->last_dispatch = cdtime();
+@@ -207,6 +207,7 @@ static void sigrok_free_drvopts(struct sr_config *src) {
+ }
+ 
+ static int sigrok_init_driver(struct config_device *cfdev,
++                              struct sr_session *session,
+                               struct sr_dev_driver *drv) {
+   struct sr_config *src;
+   GSList *devlist, *drvopts;
+@@ -248,21 +249,22 @@ static int sigrok_init_driver(struct config_device *cfdev,
+   cfdev->sdi = devlist->data;
+   g_slist_free(devlist);
+   ssnprintf(hwident, sizeof(hwident), "%s %s %s",
+-            cfdev->sdi->vendor ? cfdev->sdi->vendor : "",
+-            cfdev->sdi->model ? cfdev->sdi->model : "",
+-            cfdev->sdi->version ? cfdev->sdi->version : "");
++            sr_dev_inst_vendor_get(cfdev->sdi),
++            sr_dev_inst_model_get(cfdev->sdi),
++            sr_dev_inst_version_get(cfdev->sdi));
+   INFO("sigrok plugin: Device \"%s\" is a %s", cfdev->name, hwident);
+ 
+   if (sr_dev_open(cfdev->sdi) != SR_OK)
+     return -1;
+ 
+-  if (sr_session_dev_add(cfdev->sdi) != SR_OK)
++  if (sr_session_dev_add(session, cfdev->sdi) != SR_OK)
+     return -1;
+ 
+   return 1;
+ }
+ 
+ static void *sigrok_read_thread(void *arg __attribute__((unused))) {
++  struct sr_session *session;
+   struct sr_dev_driver *drv, **drvlist;
+   GSList *l;
+   struct config_device *cfdev;
+@@ -277,11 +279,11 @@ static void *sigrok_read_thread(void *arg __attribute__((unused))) {
+     return NULL;
+   }
+ 
+-  if (!sr_session_new())
++  if (!sr_session_new(sr_ctx, &session))
+     return NULL;
+ 
+   num_devices = 0;
+-  drvlist = sr_driver_list();
++  drvlist = sr_driver_list(sr_ctx);
+   for (l = config_devices; l; l = l->next) {
+     cfdev = l->data;
+     drv = NULL;
+@@ -296,7 +298,7 @@ static void *sigrok_read_thread(void *arg __attribute__((unused))) {
+       return NULL;
+     }
+ 
+-    if ((ret = sigrok_init_driver(cfdev, drv)) < 0)
++    if ((ret = sigrok_init_driver(cfdev, session, drv)) < 0)
+       /* Error was already logged. */
+       return NULL;
+ 
+@@ -305,21 +307,22 @@ static void *sigrok_read_thread(void *arg __attribute__((unused))) {
+ 
+   if (num_devices > 0) {
+     /* Do this only when we're sure there's hardware to talk to. */
+-    if (sr_session_datafeed_callback_add(sigrok_feed_callback, NULL) != SR_OK)
++    if (sr_session_datafeed_callback_add(session, sigrok_feed_callback,
++                                         NULL) != SR_OK)
+       return NULL;
+ 
+     /* Start acquisition on all devices. */
+-    if (sr_session_start() != SR_OK)
++    if (sr_session_start(session) != SR_OK)
+       return NULL;
+ 
+     /* Main loop, runs forever. */
+-    sr_session_run();
++    sr_session_run(session);
+ 
+-    sr_session_stop();
+-    sr_session_dev_remove_all();
++    sr_session_stop(session);
++    sr_session_dev_remove_all(session);
+   }
+ 
+-  sr_session_destroy();
++  sr_session_destroy(session);
+ 
+   sr_exit(sr_ctx);
+ 

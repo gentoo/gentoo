@@ -45,8 +45,8 @@ fi
 
 # ROS only really works with one global python version and the target
 # version depends on the release. Noetic targets 3.7 and 3.8.
-# py3.8 or later are ok to add there as long as dev-ros/* have their deps satisfied.
-PYTHON_COMPAT=( python3_7 )
+# py3.9 or later are ok to add there as long as dev-ros/* have their deps satisfied.
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit ${SCM} python-single-r1 cmake flag-o-matic
 

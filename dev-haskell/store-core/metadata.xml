@@ -5,7 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Fast and lightweight binary serialization
-	</longdescription>
+	<use>
+		<flag name="force-alignment">No description</flag>
+	</use>
 </pkgmetadata>

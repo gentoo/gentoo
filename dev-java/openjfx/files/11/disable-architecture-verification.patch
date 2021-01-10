@@ -1,0 +1,33 @@
+From 715ea681d14364be4fb2bdda120f6bf9ebaa9d5e Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 19 Sep 2020 18:38:05 -0700
+Subject: [PATCH] disable architecture verification
+
+---
+ build.gradle | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/build.gradle b/build.gradle
+index 66a4b3c..f66ee01 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -302,6 +302,7 @@ ext.MAVEN_GROUP_ID = "org.openjfx"
+ // at present building on PI is not supported, but we would only need to make
+ // some changes on assumptions on what should be built (like SWT / Swing) and
+ // such and we could probably make it work.
++/*
+ if (!IS_MAC && !IS_WINDOWS && !IS_LINUX) fail("Unsupported build OS ${OS_NAME}")
+ if (IS_WINDOWS && OS_ARCH != "x86" && OS_ARCH != "amd64") {
+     fail("Unknown and unsupported build architecture: $OS_ARCH")
+@@ -310,7 +311,7 @@ if (IS_WINDOWS && OS_ARCH != "x86" && OS_ARCH != "amd64") {
+ } else if (IS_LINUX && OS_ARCH != "i386" && OS_ARCH != "amd64") {
+     fail("Unknown and unsupported build architecture: $OS_ARCH")
+ }
+-
++*/
+ 
+ // Get the JDK_HOME automatically based on the version of Java used to execute gradle. Or, if specified,
+ // use a user supplied JDK_HOME, STUB_RUNTIME, JAVAC, all of which may be specified
+-- 
+2.28.0
+

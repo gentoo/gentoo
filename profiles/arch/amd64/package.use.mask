@@ -17,6 +17,36 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
+sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
+sys-libs/compiler-rt-sanitizers -gwp-asan
+sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
+
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-07)
+# <app-admin/salt-3000 is Python 3.6 but last Python 3.6
+# compatible dev-python/libvirt-python version was removed
+<app-admin/salt-3000 libvirt
+
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Guile only supports JIT on some arches
+# (See 9.3.8 in the Guile manual)
+dev-scheme/guile -jit
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
+# dev-util/nvidia-cuda-toolkit is keyworded on amd64
+app-metrics/collectd -collectd_plugins_gpu_nvidia
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
+# Columnstore engine is supported on amd64
+dev-db/mariadb -columnstore
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is available for amd64
 www-client/firefox -screencast
@@ -59,12 +89,16 @@ www-client/firefox -eme-free
 # dev-util/sysprof-capture is keyworded on amd64
 x11-wm/mutter -sysprof
 dev-libs/gjs -sysprof
+dev-libs/glib -sysprof
+x11-libs/gtk+ -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
+dev-qt/qt3d -vulkan
 dev-qt/qtdeclarative -vulkan
 dev-qt/qtgui -vulkan
 dev-qt/qtwayland -vulkan
+media-video/pipewire -vulkan
 
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.
@@ -83,9 +117,8 @@ net-misc/curl -quiche
 sys-firmware/seabios -debug
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
-# upstream provides docs and tools for tier-1 arches
+# upstream provides docs only for tier-1 arches
 dev-lang/rust-bin -doc
->=dev-lang/rust-bin-1.37 -clippy -rustfmt
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
 # Early microcode loading is supported on amd64
@@ -116,9 +149,10 @@ x11-apps/igt-gpu-tools -overlay
 # freeipmi is supported on amd64
 app-admin/conserver -freeipmi
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-11-15)
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
+# - aesni plugin is supported on amd64
 # - rdrand plugin is supported on amd64
-net-vpn/strongswan -strongswan_plugins_rdrand
+net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand
 
 # James Le Cuirot <chewi@gentoo.org> (2018-11-02)
 # Vulkan is only available on amd64 at present.
@@ -159,13 +193,10 @@ sys-boot/grub -libzfs
 # [cuda] is unmasked in this profiles.
 media-libs/opencv -contribxfeatures2d
 
-# David Seifert <soap@gentoo.org> (2017-05-20)
-# cpyrit-cuda does not support GCC 4.9 or later
-net-wireless/pyrit cuda
-
-# Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
-# dev-libs/libmaxminddb is keyworded on amd64
-app-admin/rsyslog -mdblookup
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-22)
+# -imhttp: www-servers/civetweb is keyworded on amd64
+# -mdblookup: dev-libs/libmaxminddb is keyworded on amd64
+app-admin/rsyslog -imhttp -mdblookup
 
 # Alexis Ballier <aballier@gentoo.org> (2017-02-21)
 # spacetime works on amd64
@@ -223,18 +254,9 @@ sys-boot/grub:2 -grub_platforms_xen-32
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
 
-# James Le Cuirot <chewi@gentoo.org> (2015-07-28)
-# JavaFX and the browser plugin are included on x64 Linux.
-dev-java/oracle-jdk-bin -javafx -nsplugin
-dev-java/oracle-jre-bin -javafx -nsplugin
-
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus
-
-# Michał Górny <mgorny@gentoo.org> (2015-03-01)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers -steam
 
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
@@ -266,7 +288,7 @@ app-editors/gvim -luajit -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on amd64
-sys-apps/hwloc -gl
+sys-apps/hwloc -gl -nvml
 
 # Michał Górny <mgorny@gentoo.org> (2013-07-22)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).

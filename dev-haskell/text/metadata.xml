@@ -34,9 +34,6 @@
 		&lt;http://hackage.haskell.org/package/text-icu&gt;
 		
 	</longdescription>
-	<use>
-		<flag name="developer">operate in developer mode</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">bos/text</remote-id>
 	</upstream>

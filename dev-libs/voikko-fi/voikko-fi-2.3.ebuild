@@ -5,11 +5,12 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit python-any-r1
+inherit python-any-r1 verify-sig
 
 DESCRIPTION="Finnish dictionary for libvoikko based spell checkers (vvfst format)"
 HOMEPAGE="https://voikko.puimula.org/"
-SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz"
+SRC_URI="https://www.puimula.org/voikko-sources/${PN}/${P}.tar.gz
+	verify-sig? ( https://www.puimula.org/voikko-sources/voikko-fi/${P}.tar.gz.asc )"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -19,7 +20,10 @@ DEPEND="dev-libs/foma
 	dev-libs/libvoikko"
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}
-	dev-libs/libvoikko"
+	dev-libs/libvoikko
+	verify-sig? ( app-crypt/openpgp-keys-voikko )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 
 src_compile() {
 	emake vvfst

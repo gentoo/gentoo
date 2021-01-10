@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
 HOMEPAGE="http://fuse-emulator.sourceforge.net"
@@ -25,7 +27,7 @@ RDEPEND="
 	backend-X? ( x11-libs/libX11 x11-libs/libXext )
 	!backend-fbcon? ( !backend-sdl? ( !backend-svga? ( !backend-X? ( x11-libs/gtk+:3 ) ) ) )
 	gpm? ( sys-libs/gpm )
-	joystick? ( media-libs/libjsw )
+	joystick? ( !backend-sdl? ( media-libs/libjsw ) )
 	png? ( media-libs/libpng:0= sys-libs/zlib )
 	xml? ( dev-libs/libxml2:2 )"
 DEPEND="${RDEPEND}
@@ -35,6 +37,16 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README THANKS )
 
+PATCHES=(
+	"${FILESDIR}"/multiple-definition.patch
+	"${FILESDIR}"/remove-local-prefix.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	local myconf=(
 		--without-win32
@@ -42,7 +54,6 @@ src_configure() {
 		$(use_with ao libao)
 		$(use_with gpm)
 		$(use_with joystick)
-		$(use_enable joystick ui-joystick)
 		$(use_enable memlimit smallmem)
 		$(use_with png)
 		$(use_with xml libxml2)
@@ -59,6 +70,8 @@ src_configure() {
 	else
 		myconf+=("--with-gtk")
 	fi
+
+	use joystick && myconf+=( $(use_enable backend-sdl ui-joystick) )
 
 	econf "${myconf[@]}"
 }

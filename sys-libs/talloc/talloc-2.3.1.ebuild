@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit waf-utils python-single-r1 multilib multilib-minimal
@@ -20,12 +20,12 @@ IUSE="compat +python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="!elibc_FreeBSD? (
-			!elibc_SunOS? (
-				!elibc_Darwin? (
-					dev-libs/libbsd[${MULTILIB_USEDEP}]
-				)
+		!elibc_SunOS? (
+			!elibc_Darwin? (
+				dev-libs/libbsd[${MULTILIB_USEDEP}]
 			)
 		)
+	)
 	python? ( ${PYTHON_DEPS} )
 	!!<sys-libs/talloc-2.0.5"
 DEPEND="${RDEPEND}
@@ -53,6 +53,13 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# Drop irritating ABI names (e.g. cpython-37m)
+		# We're only installing one implementation anyway
+		sed -i "s/+ conf.all_envs\['default'\]\['PYTHON_SO_ABI_FLAG'\]//" wscript || die
+		sed -i "s/name = bld.pyembed_libname('pytalloc-util')/name = 'pytalloc-util'/" wscript || die
+	fi
+
 	# what would you expect of waf? i won't even waste time trying.
 	multilib_copy_sources
 }
@@ -78,19 +85,33 @@ multilib_src_install() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		install_name_tool \
 			-id "${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
-			"${ED}"/usr/$(get_libdir)/libtalloc.2.0.5.dylib || die
+			"${ED}"/usr/$(get_libdir)/libtalloc.${PV}.dylib || die
+
 		if use python ; then
 			install_name_tool \
 				-id "${EPREFIX}"/usr/$(get_libdir)/libpytalloc-util.2.dylib \
-				"${ED}"/usr/$(get_libdir)/libpytalloc-util.2.0.5.dylib || die
+				"${ED}"/usr/$(get_libdir)/libpytalloc-util.${PV}.dylib || die
 			install_name_tool \
-				-change "${S}/bin/default/libtalloc.dylib" \
-					"${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
-				"${ED}"/usr/$(get_libdir)/libpytalloc-util.2.0.5.dylib || die
+				-change "${BUILD_DIR}/bin/default/libtalloc.dylib" \
+				"${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
+				"${ED}"/usr/$(get_libdir)/libpytalloc-util.${PV}.dylib || die
+
 			install_name_tool \
-				-change "${S}/bin/default/libtalloc.dylib" \
-					"${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
-				"${D}"$(python_get_sitedir)/talloc.bundle || die
+				-id "${EPREFIX}"/usr/$(get_libdir)/libpytalloc-util.dylib \
+				"${ED}"/usr/$(get_libdir)/libpytalloc-util.dylib || die
+			install_name_tool \
+				-change "${BUILD_DIR}/bin/default/libtalloc.dylib" \
+				"${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
+				"${ED}"/usr/$(get_libdir)/libpytalloc-util.dylib || die
+
+			install_name_tool \
+				-change "${BUILD_DIR}/bin/default/libpytalloc-util.dylib" \
+				"${EPREFIX}"/usr/$(get_libdir)/libpytalloc-util.dylib \
+				"${D}"$(python_get_sitedir)/talloc*.bundle || die
+			install_name_tool \
+				-change "${BUILD_DIR}/bin/default/libtalloc.dylib" \
+				"${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
+				"${D}"$(python_get_sitedir)/talloc*.bundle || die
 		fi
 	fi
 }

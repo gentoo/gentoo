@@ -4,7 +4,8 @@
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{6,7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils
 
@@ -40,7 +41,10 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-text/txt2man
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+	)
 "
 
 DOCS=( AUTHORS ChangeLog README.md )

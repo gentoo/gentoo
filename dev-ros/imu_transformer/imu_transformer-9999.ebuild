@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/roslaunch
+	dev-ros/tf
 	dev-ros/tf2
 	dev-ros/tf2_ros
 	dev-ros/topic_tools
@@ -29,3 +30,8 @@ DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

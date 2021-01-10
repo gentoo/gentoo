@@ -35,10 +35,6 @@ dev-ml/llvm-ocaml llvm_targets_X86
 sys-devel/clang llvm_targets_X86
 sys-devel/llvm llvm_targets_X86
 
-# Michał Górny <mgorny@gentoo.org> (2013-09-02)
-# Packages with optional 64-bit variant.
-www-plugins/adobe-flash -abi_x86_64
-
 # Diego Elio Pettenò <flameeyes@gmail.com> (2011-04-21)
 # The plugin is 32-bit only (and I'm not even sure if it works with
 # modern iscan); make sure it only installs the firmware for amd64!

@@ -1,0 +1,18 @@
+diff -Naur fuse-1.5.7/configure.ac fuse-1.5.7-patched/configure.ac
+--- fuse-1.5.7/configure.ac	2018-12-09 13:06:11.000000000 +0100
++++ fuse-1.5.7-patched/configure.ac	2020-07-28 17:02:33.678546857 +0200
+@@ -110,14 +110,6 @@
+   AX_STRINGS_STRCASECMP
+ fi
+ 
+-dnl Allow the user to say that various libraries are in one place
+-AC_ARG_WITH(local-prefix,
+-[  --with-local-prefix=PFX local libraries installed in PFX (optional)],
+-CPPFLAGS="$CPPFLAGS -I$withval/include"; LDFLAGS="$LDFLAGS -L$withval/lib",
+-if test "$prefix" != "NONE"; then
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include"; LDFLAGS="$LDFLAGS -L$prefix/lib"
+-fi)
+-
+ dnl Check that libspectrum is available and that it is new enough
+ PKG_CHECK_MODULES([LIBSPECTRUM], [libspectrum >= 1.4.0])
+ 

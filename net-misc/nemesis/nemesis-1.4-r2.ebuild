@@ -23,10 +23,10 @@ DEPEND="
 DOCS="CREDITS ChangeLog README"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fileio.patch
-	"${FILESDIR}"/${P}-libnet-1.0.patch
-	"${FILESDIR}"/${P}-prototcp.patch
-	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${PN}-1.4-fileio.patch
+	"${FILESDIR}"/${PN}-1.4-libnet-1.0.patch
+	"${FILESDIR}"/${PN}-1.4-prototcp.patch
+	"${FILESDIR}"/${PN}-1.4-fno-common.patch
 )
 
 src_prepare() {

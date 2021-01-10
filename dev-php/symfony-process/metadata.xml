@@ -12,9 +12,6 @@
   <maintainer type="project">
     <email>php-bugs@gentoo.org</email>
   </maintainer>
-  <longdescription>
-    The Process component executes commands in sub-processes.
-  </longdescription>
   <upstream>
     <remote-id type="github">symfony/process</remote-id>
   </upstream>

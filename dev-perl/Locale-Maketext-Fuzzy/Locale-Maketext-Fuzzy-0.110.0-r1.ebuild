@@ -11,7 +11,7 @@ DESCRIPTION="Maketext from already interpolated strings"
 
 SLOT="0"
 LICENSE="CC0-1.0"
-KEYWORDS="amd64 hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE=""
 
 src_prepare() {

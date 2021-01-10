@@ -20,7 +20,7 @@ SRC_URI="http://download.librdf.org/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~x86-linux"
 IUSE="lua perl python php ruby test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -29,10 +29,10 @@ BDEPEND="sys-apps/sed
 	virtual/pkgconfig"
 
 RDEPEND=">=dev-libs/redland-1.0.14
-	lua? ( >=dev-lang/lua-5.1 )
+	lua? ( >=dev-lang/lua-5.1:0= )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( dev-lang/ruby dev-ruby/log4r )
+	ruby? ( dev-lang/ruby:* dev-ruby/log4r )
 	php? (
 		php_targets_php7-2? ( dev-lang/php:7.2[-threads] )
 		php_targets_php7-3? ( dev-lang/php:7.3[-threads] )

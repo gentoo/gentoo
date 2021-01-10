@@ -8,7 +8,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		This is a client for the OpenStack Blazar API.
-	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">python-blazarclient</remote-id>
+	</upstream>
 </pkgmetadata>

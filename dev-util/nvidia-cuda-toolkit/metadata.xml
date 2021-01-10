@@ -6,8 +6,11 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<use>
-		<flag name="profiler">Installs the NVIDIA CUDA visual profiler</flag>
-		<flag name="debugger">Installs the CUDA debugger</flag>
-		<flag name="eclipse">Install plugins for eclipse</flag>
+		<flag name="debugger">Install the CUDA debugger</flag>
+		<flag name="eclipse">Install Eclipse plugins</flag>
+		<flag name="nsight">Install profiling and optimizing tools (nsight-compute, nsight-systems)</flag>
+		<flag name="profiler">Install the NVIDIA CUDA profiler (nvprof) and the related libraries</flag>
+		<flag name="sanitizer">Install compute-sanitizer tool</flag>
+		<flag name="vis-profiler">Install the NVIDIA CUDA visual profiler (nvvp)</flag>
 	</use>
 </pkgmetadata>

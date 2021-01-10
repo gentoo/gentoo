@@ -19,18 +19,18 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bs2b calf mda-lv2 rubberband"
+IUSE="bs2b calf rubberband"
 
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
 RDEPEND="
 	>=dev-libs/boost-1.41:=
 	>=dev-cpp/glibmm-2.56.0
-	>=dev-cpp/gtkmm-3.20:3.0
+	>=dev-cpp/gtkmm-3.24:3.0
 	>=dev-libs/glib-2.56:2
 	>=dev-libs/libsigc++-2.10:2
 	>=x11-libs/gtk+-3.18:3
 	>=media-libs/lilv-0.24.2-r1
-	>=media-libs/lsp-plugins-1.1.7[lv2]
+	>=media-libs/lsp-plugins-1.1.24[lv2]
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
 	>=media-libs/gst-plugins-bad-1.12.0:1.0
@@ -39,7 +39,6 @@ RDEPEND="
 	>=media-plugins/gst-plugins-lv2-1.12.0:1.0
 	>=media-plugins/gst-plugins-pulse-1.12.0:1.0
 	calf? ( >=media-plugins/calf-0.90.0[lv2] )
-	mda-lv2? ( media-plugins/mda-lv2 )
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
 	media-libs/libebur128

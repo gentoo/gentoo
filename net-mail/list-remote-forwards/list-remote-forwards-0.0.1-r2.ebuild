@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CABAL_FEATURES="bin test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="List all remote forwards for mail accounts stored in a database"
-HOMEPAGE="http://hackage.haskell.org/package/list-remote-forwards"
+HOMEPAGE="https://hackage.haskell.org/package/list-remote-forwards"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3"

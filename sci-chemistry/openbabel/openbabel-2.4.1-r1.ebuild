@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0"
 
-inherit cmake-utils desktop eutils toolchain-funcs wxwidgets
+inherit cmake-utils desktop optfeature toolchain-funcs wxwidgets
 
 DESCRIPTION="Interconverts file formats used in molecular modeling"
 HOMEPAGE="http://openbabel.org/wiki/Main_Page"
@@ -16,7 +16,7 @@ SRC_URI="
 # See src/CMakeLists.txt for LIBRARY_VERSION
 SLOT="0/5.0.0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc openmp test wxwidgets"
 RESTRICT="!test? ( test )"
 

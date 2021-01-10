@@ -7,7 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Encode-JIS2K</remote-id>
-    <remote-id type="cpan-module"> Encode::JIS2K</remote-id>
-    <remote-id type="cpan-module"> Encode::JIS7::2022JP3 </remote-id>
+    <remote-id type="cpan-module">Encode::JIS2K</remote-id>
+    <remote-id type="cpan-module">Encode::JIS2K::2022JP3</remote-id>
   </upstream>
 </pkgmetadata>

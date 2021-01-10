@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 WX_GTK_VER="3.0-gtk3"
 
 inherit distutils-r1 multiprocessing virtualx wxwidgets
@@ -11,14 +11,16 @@ MY_PN="wxPython"
 MY_PV="${PV}.post2"
 
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
-HOMEPAGE="http://www.wxpython.org/"
+HOMEPAGE="https://www.wxpython.org/"
 SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${MY_PV}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="4.0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~sparc x86"
 IUSE="test webkit"
-RESTRICT="!test? ( test )"
+# Tests broken: #726812, #722716
+RESTRICT="test"
+#RESTRICT="!test? ( test )"
 
 # wxPython doesn't seem to be able to optionally disable features. webkit is
 # optionally patched out because it's so huge, but other elements are not,

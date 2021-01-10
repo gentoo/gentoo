@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">systemd/python-systemd</remote-id>
+		<remote-id type="pypi">python-systemd</remote-id>
 	</upstream>
 </pkgmetadata>

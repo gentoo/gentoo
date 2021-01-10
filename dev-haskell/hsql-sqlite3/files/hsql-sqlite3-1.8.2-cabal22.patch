@@ -1,0 +1,14 @@
+--- a/Setup.lhs
++++ b/Setup.lhs
+@@ -3,2 +3,3 @@
+ \begin{code}
++{-# LANGUAGE CPP #-}
+ import Control.Monad(when)
+@@ -13,3 +14,7 @@ import Distribution.PackageDescription
+     ,emptyBuildInfo)
++#if MIN_VERSION_Cabal(2,2,0)
++import Distribution.PackageDescription.PrettyPrint(writeHookedBuildInfo)
++#else
+ import Distribution.PackageDescription.Parse(writeHookedBuildInfo)
++#endif
+ import Distribution.Simple(UserHooks(preConf,postConf) ,simpleUserHooks 

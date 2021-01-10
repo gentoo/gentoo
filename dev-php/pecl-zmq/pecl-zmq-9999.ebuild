@@ -4,23 +4,23 @@
 EAPI="7"
 
 USE_PHP="php7-2 php7-3 php7-4"
+inherit php-ext-pecl-r3
 
-inherit php-ext-pecl-r3 git-r3
+if [[ ${PV} == "9999" ]]; then
+	SRC_URI=""
+	EGIT_REPO_URI="https://github.com/mkoppanen/php-zmq.git"
+	EGIT_CHECKOUT_DIR="${PHP_EXT_S}"
 
-KEYWORDS=""
+	inherit git-r3
+else
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="PHP Bindings for ZeroMQ messaging"
 LICENSE="BSD"
 SLOT="0"
-IUSE="czmq"
+IUSE=""
 
-RDEPEND="net-libs/zeromq czmq? ( net-libs/czmq:= )"
-DEPEND="${RDEPEND} virtual/pkgconfig"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mkoppanen/php-zmq.git"
-EGIT_CHECKOUT_DIR="${PHP_EXT_S}"
-
-src_configure() {
-	local PHP_EXT_ECONF_ARGS=( $(use_with czmq) )
-	php-ext-source-r3_src_configure
-}
+BDEPEND="virtual/pkgconfig"
+DEPEND="net-libs/zeromq"
+RDEPEND="net-libs/zeromq:="

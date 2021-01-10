@@ -17,10 +17,10 @@ SRC_URI="http://www.jasspa.com/release_20090909/jasspa-mesrc-${PV}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="nanoemacs X xpm"
+IUSE="gui nanoemacs xpm"
 
 RDEPEND="sys-libs/ncurses:0=
-	X? (
+	gui? (
 		x11-libs/libX11
 		xpm? ( x11-libs/libXpm )
 	)
@@ -28,7 +28,7 @@ RDEPEND="sys-libs/ncurses:0=
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	X? (
+	gui? (
 		x11-base/xorg-proto
 		x11-libs/libXt
 	)"
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-ncurses.patch
 	"${FILESDIR}"/${PV}-linux3.patch
 	"${FILESDIR}"/${PV}-cc-detect.patch
+	"${FILESDIR}"/${PV}-glibc-2.32.patch
 )
 
 src_unpack() {
@@ -62,7 +63,7 @@ src_compile() {
 	local pkgdatadir="${EPREFIX}/usr/share/jasspa"
 	local me="" type=c
 	use nanoemacs && me="-ne"
-	use X && type=cw
+	use gui && type=cw
 	use xpm || export XPM_INCLUDE=.		# prevent Xpm autodetection
 
 	cd src || die
@@ -77,23 +78,23 @@ src_compile() {
 src_install() {
 	local me=me type=c
 	use nanoemacs && me=ne
-	use X && type=cw
+	use gui && type=cw
 	newbin src/${me}${type} ${me}
 
 	if ! use nanoemacs; then
 		keepdir /usr/share/jasspa/site
 		insinto /usr/share
 		doins -r "${WORKDIR}"/jasspa
-		use X && domenu "${FILESDIR}"/${PN}.desktop
+		use gui && domenu "${FILESDIR}"/${PN}.desktop
 	fi
 
 	dodoc faq.txt readme.txt change.log
 }
 
 pkg_postinst() {
-	use X && xdg_desktop_database_update
+	use gui && xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	use X && xdg_desktop_database_update
+	use gui && xdg_desktop_database_update
 }

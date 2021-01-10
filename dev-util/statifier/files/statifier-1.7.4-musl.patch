@@ -1,0 +1,28 @@
+--- a/src/my_gdb/my_ptrace.c
++++ b/src/my_gdb/my_ptrace.c
+@@ -13,8 +13,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++typedef int statifier_ptrace_req_t;
++
+ long my_ptrace(
+-	enum __ptrace_request request,
++	statifier_ptrace_req_t request,
+ 	pid_t                 pid,
+ 	void                 *addr,
+ 	void                 *data,
+--- a/src/my_gdb/my_ptrace.h
++++ b/src/my_gdb/my_ptrace.h
+@@ -15,8 +15,10 @@
+ #include <sys/types.h>
+ #include <sys/ptrace.h>
+ 
++typedef int statifier_ptrace_req_t;
++
+ long my_ptrace(
+-	enum __ptrace_request request,
++	statifier_ptrace_req_t request,
+ 	pid_t                 pid,
+ 	void                 *addr,
+ 	void                 *data,

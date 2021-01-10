@@ -1,0 +1,26 @@
+From 12d69a4ee62094b48b37f550d31113e84cca0043 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Mon, 22 Jan 2018 17:24:41 +0100
+Subject: [PATCH] install AppStream metadata into the proper location
+
+AppStream metadata is to be placed in the /usr/share/metainfo/ directory, /usr/share/appdata is a legacy location.
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e3bc7bb1..04474ab3 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -212,7 +212,7 @@ EXTRA_DIST =                        \
+         doom-screensaver.desktop.in \
+         manifest.xml
+ 
+-appdatadir = $(prefix)/share/appdata
++appdatadir = $(prefix)/share/metainfo
+ appdata_DATA =                              \
+         @PROGRAM_PREFIX@doom.appdata.xml    \
+         @PROGRAM_PREFIX@heretic.appdata.xml \
+-- 
+2.26.2
+

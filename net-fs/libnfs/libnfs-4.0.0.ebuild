@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/sahlberg/${PN}.git"
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
@@ -31,6 +31,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-werror
 		$(use_enable static-libs static)
 		$(use_enable utils)
 	)

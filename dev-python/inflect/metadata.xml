@@ -12,6 +12,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">inflect</remote-id>
-		<remote-id type="github">jazzband/inflect</remote-id>
+		<remote-id type="github">jaraco/inflect</remote-id>
+		<bugs-to>https://github.com/jaraco/inflect/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

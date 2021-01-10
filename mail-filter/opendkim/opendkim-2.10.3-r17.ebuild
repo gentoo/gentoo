@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs stats querycache test unbound"
 
 BDEPEND="acct-user/opendkim
-	test? ( dev-lang/lua:* )"
+	test? ( dev-lang/lua:0= )"
 
 COMMON_DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	dev-libs/libbsd
@@ -27,7 +27,7 @@ COMMON_DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	)
 	berkdb? ( >=sys-libs/db-3.2:* )
 	opendbx? ( >=dev-db/opendbx-1.4.0 )
-	lua? ( dev-lang/lua:* )
+	lua? ( dev-lang/lua:0= )
 	ldap? ( net-nds/openldap )
 	lmdb? ( dev-db/lmdb )
 	memcached? ( dev-libs/libmemcached )

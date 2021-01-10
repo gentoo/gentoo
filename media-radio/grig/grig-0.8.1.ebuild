@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="
 	dev-libs/glib:2
 	x11-libs/gtk+:2
-	media-libs/hamlib"
+	<media-libs/hamlib-3.4"
 RDEPEND="${DEPEND}"
 
 src_configure() {

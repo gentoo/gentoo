@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit eutils python-single-r1 toolchain-funcs xdg
+inherit optfeature python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
@@ -79,6 +79,7 @@ src_compile() {
 	"${EPYTHON}" setup.py \
 		--verbose $(usex debug --debug "") \
 		--libdir-name $(get_libdir) \
+		--update-check-interval=0 \
 		linux-package || die "Failed to compile kitty."
 }
 

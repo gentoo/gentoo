@@ -1,0 +1,12 @@
+https://github.com/beetbox/mediafile/commit/d2fc3b59f77c515b02dfe7ad936f89264375d2b4
+--- a/test/test_mediafile.py
++++ b/test/test_mediafile.py
+@@ -907,7 +907,7 @@ class WavpackTest(ReadWriteTestBase, unittest.TestCase):
+         'bitrate': 109312,
+         'format': u'WavPack',
+         'samplerate': 44100,
+-        'bitdepth': 0,
++        'bitdepth': 16,
+         'channels': 1,
+     }
+ 

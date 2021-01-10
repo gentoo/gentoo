@@ -11,7 +11,7 @@ HOMEPAGE="http://siphon.datanerds.net/"
 SRC_URI="http://siphon.datanerds.net/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="net-libs/libpcap"
 RDEPEND="${DEPEND}"

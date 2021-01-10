@@ -3,15 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit autotools desktop python-single-r1 xdg
+inherit autotools desktop xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
 
-if [[ "${PV}" == 9999 ]] ; then
+if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.claws-mail.org/claws.git"
+	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
@@ -20,13 +19,14 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
-REQUIRED_USE="libcanberra? ( notification )
-	libindicate? ( notification )
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+REQUIRED_USE="
+	appindicator? ( notification )
+	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	smime? ( pgp )"
+	smime? ( pgp )
+"
 
 COMMONDEPEND="
 	dev-libs/nettle:=
@@ -52,8 +52,8 @@ COMMONDEPEND="
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
-	gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( >=x11-libs/gtk+-2.24:2 )
+	!gtk2? ( x11-libs/gtk+:3 )
+	gtk2? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	litehtml? (
@@ -66,11 +66,10 @@ COMMONDEPEND="
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
 		dev-libs/glib:2
+		appindicator? ( dev-libs/libindicate:3[gtk] )
 		libcanberra? (  media-libs/libcanberra[gtk] )
-		libindicate? ( dev-libs/libindicate:3[gtk] )
 		libnotify? ( x11-libs/libnotify )
 	)
-	pda? ( >=app-pda/jpilot-0.99 )
 	pdf? ( app-text/poppler[cairo] )
 	pgp? ( >=app-crypt/gpgme-1.0.0 )
 	session? (
@@ -99,10 +98,6 @@ RDEPEND="${COMMONDEPEND}
 	networkmanager? ( net-misc/networkmanager )
 	pdf? ( app-text/ghostscript-gpl )
 	perl? ( dev-lang/perl:= )
-	python? (
-		${PYTHON_DEPS}
-		>=dev-python/pygtk-2.10.3
-	)
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
@@ -114,7 +109,9 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	if [[ "${PV}" == *9999 ]] && ! use gtk2 ; then
+		EGIT_BRANCH="gtk3"
+	fi
 }
 
 src_prepare() {
@@ -130,6 +127,7 @@ src_configure() {
 		--disable-bsfilter-plugin
 		--disable-fancy-plugin
 		--disable-generic-umpc
+		--disable-jpilot #735118
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
 		--enable-alternate-addressbook
@@ -150,20 +148,18 @@ src_configure() {
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
-		$(use_enable gtk3)
 		$(use_enable ipv6)
 		$(use_enable ldap)
 		$(use_enable litehtml litehtml_viewer-plugin)
 		$(use_enable networkmanager)
 		$(use_enable nls)
 		$(use_enable notification notification-plugin)
-		$(use_enable pda jpilot)
 		$(use_enable pdf pdf_viewer-plugin)
 		$(use_enable perl perl-plugin)
 		$(use_enable pgp pgpcore-plugin)
 		$(use_enable pgp pgpinline-plugin)
 		$(use_enable pgp pgpmime-plugin)
-		$(use_enable python python-plugin)
+		--disable-python-plugin
 		$(use_enable rss rssyl-plugin)
 		$(use_enable session libsm)
 		$(use_enable sieve managesieve-plugin)

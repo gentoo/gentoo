@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Utils for the Free Unix Spectrum Emulator by Philip Kendall"
 HOMEPAGE="http://fuse-emulator.sourceforge.net"
@@ -19,6 +21,15 @@ RDEPEND=">=app-emulation/libspectrum-1.4.4[gcrypt?,zlib?]
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/remove-local-prefix.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=(

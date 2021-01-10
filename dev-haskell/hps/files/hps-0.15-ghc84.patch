@@ -1,0 +1,28 @@
+--- a/Graphics/PS/PS.hs
++++ b/Graphics/PS/PS.hs
+@@ -14,2 +14,3 @@ import qualified Graphics.PS.Paper as P
+ import qualified Graphics.PS.Image as I
++import qualified Data.Semigroup as S
+ 
+@@ -248,2 +249,6 @@ newtype MonadMonoid m = MonadMonoid {appMonadMonoid :: m ()}
+ 
++instance Monad m => S.Semigroup (MonadMonoid m) where
++   (<>) (MonadMonoid a) (MonadMonoid b) =
++      MonadMonoid (a >> b)
++
+ instance Monad m => Monoid (MonadMonoid m) where
+--- a/Graphics/PS/Statistics.hs
++++ b/Graphics/PS/Statistics.hs
+@@ -6,2 +6,3 @@ import Graphics.PS.Image
+ import Graphics.PS.Path
++import qualified Data.Semigroup as S
+ 
+@@ -16,2 +17,8 @@ data Statistics = Statistics {nMoveTo :: Integer
+ 
++instance S.Semigroup Statistics where
++    (<>) p q =
++        let (Statistics m1 l1 c1 f1 g1 t1) = p
++            (Statistics m2 l2 c2 f2 g2 t2) = q
++        in Statistics (m1+m2) (l1+l2) (c1+c2) (f1+f2) (g1+g2) (t1+t2)
++
+ instance Monoid Statistics where

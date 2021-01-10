@@ -23,14 +23,14 @@ SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="java lua mono perl php python ruby tcl"
 REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	ruby? ( || ( $(ruby_get_use_targets) ) )"
 
 COMMONDEPEND=">=dev-libs/xapian-1.4.14
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	perl? ( dev-lang/perl:= )
 	php? ( dev-lang/php:=[-threads] )
 	python? (
@@ -192,12 +192,8 @@ src_configure() {
 			--without-php7
 			--without-ruby
 			--without-tcl
+			--with-python3
 		)
-		if python_is_python3; then
-			myconf+=( --with-python3 )
-		else
-			myconf+=( --with-python )
-		fi
 
 		# Avoid sandbox failures when compiling modules
 		addpredict "$(python_get_sitedir)"

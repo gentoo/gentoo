@@ -3,7 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+DISTUTILS_USE_SETUPTOOLS=no
+
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -24,7 +26,6 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( gost )"
 
 RDEPEND="gost? ( dev-libs/gost-engine:= )"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Remove failed tests

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="d2demo"
 DEMO="${MY_PN}${PV//.}.zip"
@@ -17,27 +17,17 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="!<games-action/d2x-0.2.5-r3
 	!games-action/descent2-data"
 
-DEPEND="app-arch/unzip
-	app-arch/unarj"
+BDEPEND="app-arch/unzip
+	app-arch/arj"
 
 S="${WORKDIR}"
 
 src_unpack() {
 	default
 
-	# This is much more fun than simply downloading
-	# http://www.icculus.org/d2x/data/d2shar10.tar.gz
-	unarj e D2_1.SOW || die
-	mv ${MY_PN}.ham{,1} || die
-	unarj e D2_2.SOW || die
-	mv ${MY_PN}.ham{,2} || die
-	mv ${MY_PN}.pig{,2} || die
-	unarj e D2_3.SOW || die
-	mv ${MY_PN}.pig{,3} || die
-
-	# From the sows, big porkie pies shall grow
-	cat ${MY_PN}.ham{1,2} > ${MY_PN}.ham || die
-	cat ${MY_PN}.pig{2,3} > ${MY_PN}.pig || die
+	mv D2_2.SOW D2_1.S01 || die
+	mv D2_3.SOW D2_1.S02 || die
+	arj e -v -y -_ D2_1.SOW || die
 }
 
 src_install() {

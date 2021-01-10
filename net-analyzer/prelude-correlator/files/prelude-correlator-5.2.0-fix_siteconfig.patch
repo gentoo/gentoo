@@ -1,0 +1,10 @@
+--- a/setup.py	2020-09-29 00:30:57.407653336 +0200
++++ b/setup.py	2020-09-29 00:41:37.813997273 +0200
+@@ -67,6 +67,7 @@
+ 
+ class my_install(install):
+     def run(self):
++        self.skip_build = 0
+         for dirname, flist in self.distribution.data_files:
+             prefix = self.prefix
+             if self.prefix == "/usr":

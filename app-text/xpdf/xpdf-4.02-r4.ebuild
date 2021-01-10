@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="The PDF viewer and tools"
 HOMEPAGE="https://www.xpdfreader.com"
@@ -28,7 +28,7 @@ KEYWORDS="amd64 x86"
 IUSE="cmyk cups +fontconfig i18n icons +libpaper metric opi png +textselect utils"
 
 BDEPEND="
-	icons? ( media-gfx/inkscape )
+	icons? ( gnome-base/librsvg )
 "
 DEPEND="
 	cups? (
@@ -65,7 +65,8 @@ src_prepare() {
 		sed -i "s|/usr/local|${EPREFIX}/usr|" "${WORKDIR}"/*/add-to-xpdfrc || die
 	fi
 
-	cmake-utils_src_prepare
+	xdg_environment_reset
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -80,28 +81,25 @@ src_configure() {
 		-DXPDFWIDGET_PRINTING=$(usex cups)
 		-DSYSTEM_XPDFRC="${EPREFIX}/etc/xpdfrc"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use icons; then
-		local inkarg="-e"
-		has_version -b '>media-gfx/inkscape-0.99' && inkarg="-o"
-
 		sizes="16 22 24 32 36 48 64 72 96 128 192 256 512"
 		cd xpdf-qt
 		mkdir $sizes
 		local i
 		for i in $sizes; do
-			inkscape xpdf-icon.svg -w $i -h $i $inkarg $i/xpdf.png
+			rsvg-convert xpdf-icon.svg -w $i -h $i -o $i/xpdf.png
 		done
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	domenu "${FILESDIR}/xpdf.desktop"
 	newicon -s scalable xpdf-qt/xpdf-icon.svg xpdf.svg

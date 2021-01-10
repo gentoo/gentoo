@@ -9,12 +9,12 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ros/catkin"
 fi
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
 
 inherit ${SCM} cmake python-r1 python-utils-r1
 
 DESCRIPTION="Cmake macros and associated python code used to build some parts of ROS"
-HOMEPAGE="http://wiki.ros.org/catkin"
+HOMEPAGE="https://wiki.ros.org/catkin"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/catkin_prefix_path_util_py_v2.patch"
 	"${FILESDIR}/package_xml.patch"
 	"${FILESDIR}/etc.patch"
+	"${FILESDIR}/gtest.patch"
 )
 
 src_prepare() {

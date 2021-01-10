@@ -2,13 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
-DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
-WANT_AUTOMAKE=none
-PATCHSET=3
+DISTUTILS_SINGLE_IMPL=yesplz
 GENTOO_DEPEND_ON_PERL=no
-
+PATCHSET=3
+PYTHON_COMPAT=( python3_{6,7,8} )
+WANT_AUTOMAKE=none
 inherit autotools distutils-r1 git-r3 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
@@ -69,14 +68,15 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
-S=${WORKDIR}/${P/_/.}
-S=${WORKDIR}/${P/_p*/}
 RESTRICT=test
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
+	"${FILESDIR}"/${PN}-5.8.1-net-snmp-config-libdir.patch
+	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
+	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
 	"${FILESDIR}"/${PN}-99999999-tinfo.patch
 )
 
@@ -130,7 +130,8 @@ src_configure() {
 		$(use_with ssl openssl) \
 		$(use_with tcpd libwrap) \
 		$(use_with zlib) \
-		--enable-shared --disable-static \
+		--disable-static \
+		--enable-shared \
 		--with-default-snmp-version="3" \
 		--with-install-prefix="${D}" \
 		--with-ldflags="${LDFLAGS}" \
@@ -142,8 +143,11 @@ src_configure() {
 }
 
 src_compile() {
-	for target in snmplib agent sedscript all; do
-		emake OTHERLDFLAGS="${LDFLAGS}" ${target}
+	emake sedscript
+
+	local subdir
+	for subdir in snmplib agent/mibgroup agent apps .; do
+		emake OTHERLDFLAGS="${LDFLAGS}" -C ${subdir} all
 	done
 
 	use doc && emake docsdox

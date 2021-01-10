@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ DISTFILE_DOC=SAS3_IR_UG.pdf
 SRC_URI_BASE='https://docs.broadcom.com/docs-and-downloads/host-bus-adapters'
 SRC_URI="
 	${SRC_URI_BASE}/host-bus-adapters-common-files/sas_sata_12g_p${PV}/${DISTFILE_BIN}
+	https://docs.broadcom.com/docs/${DISTFILE_BIN}
 	doc? ( "${SRC_URI_BASE}/${DISTFILE_DOC}" )"
 
 S="${WORKDIR}/${MY_P}"
@@ -32,6 +33,7 @@ S="${WORKDIR}/${MY_P}"
 pkg_nofetch() {
 	elog "Broadcom has a mandatory click-through license on thier binaries."
 	elog "Please visit ${HOMEPAGE} and download ${DISTFILE_BIN} from the Mangement Software section."
+	elog "If the file has been moved again, the license form might be available at https://docs.broadcom.com/docs/${DISTFILE_BIN}"
 	elog "After downloading, move ${MY_P} into your DISTDIR directory"
 	if use doc; then
 		elog "Please also download 'SAS-3 Integrated RAID Configuration Utility User Guide' (${DISTFILE_DOC}) "

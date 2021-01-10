@@ -70,6 +70,7 @@ src_configure() {
 		-DENABLE_ASM_CORE=$(usex x86)
 		-DENABLE_ASM_SCALERS=$(usex x86)
 		-DCMAKE_SKIP_RPATH=ON
+		-DENABLE_LTO=OFF
 	)
 	if use wxwidgets; then
 		mycmakeargs+=( -DENABLE_OPENAL=$(usex openal) )

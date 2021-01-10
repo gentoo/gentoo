@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -184,7 +184,7 @@ RDEPEND="
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		kvazaar? ( >=media-libs/kvazaar-1.2.0[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
-		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
+		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
 		rav1e? ( media-video/rav1e:=[capi] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
@@ -214,7 +214,7 @@ RDEPEND="
 		>=sys-libs/libavc1394-0.5.4-r1[${MULTILIB_USEDEP}]
 	)
 	ieee1394? (
-		>=media-libs/libdc1394-2.2.1[${MULTILIB_USEDEP}]
+		>=media-libs/libdc1394-2.2.1:2=[${MULTILIB_USEDEP}]
 		>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
 	)
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
@@ -327,6 +327,8 @@ S=${WORKDIR}/${P/_/-}
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
 	"${FILESDIR}"/${PN}-4.3-fix-build-without-SSSE3.patch
+	"${FILESDIR}"/${PN}-4.3-altivec-novsx-yuv2rgb.patch
+	"${FILESDIR}"/${PN}-4.3.1-srt-1.4.2-build.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -474,6 +476,7 @@ multilib_src_configure() {
 		--ar="$(tc-getAR)" \
 		--nm="$(tc-getNM)" \
 		--ranlib="$(tc-getRANLIB)" \
+		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}" \

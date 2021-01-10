@@ -16,4 +16,5 @@
 		<remote-id type="github">rq/rq</remote-id>
 		<remote-id type="pypi">rq</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

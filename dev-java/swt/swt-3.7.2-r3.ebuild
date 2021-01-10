@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils java-pkg-2 java-ant-2 toolchain-funcs java-osgi
+inherit java-pkg-2 java-ant-2 java-osgi toolchain-funcs
 
 MY_PV="${PV/_rc/RC}"
 MY_DMF="http://archive.eclipse.org/eclipse/downloads/drops/R-${MY_PV}-201202080800"
@@ -33,10 +33,12 @@ COMMON_DEPEND="
 		virtual/glu
 		virtual/opengl
 	)"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	app-arch/unzip
-	virtual/jdk:1.8
 	virtual/pkgconfig
+"
+DEPEND="${COMMON_DEPEND}
+	virtual/jdk:1.8
 	x11-base/xorg-proto
 	x11-libs/libX11
 	x11-libs/libXrender
@@ -48,7 +50,12 @@ RDEPEND="${COMMON_DEPEND}
 S="${WORKDIR}"
 
 # JNI libraries don't need SONAME, bug #253756
-QA_SONAME="usr/$(get_libdir)/libswt-.*.so"
+QA_SONAME="usr/lib.*/libswt-.*.so"
+
+PATCHES=(
+	# Fix Makefiles to respect flags and work with --as-needed
+	"${FILESDIR}"/as-needed-and-flag-fixes-3.6.patch
+)
 
 src_unpack() {
 	local DISTFILE=${A}
@@ -59,18 +66,17 @@ src_unpack() {
 	rm -rf about_files/ || die
 }
 
-java_prepare() {
+src_prepare() {
 	# Replace the build.xml to allow compilation without Eclipse tasks
 	cp "${FILESDIR}/build.xml" "${S}/build.xml" || die "Unable to update build.xml"
 	mkdir "${S}/src" && mv "${S}/org" "${S}/src" || die "Unable to restructure SWT sources"
 
-	# Fix Makefiles to respect flags and work with --as-needed
-	epatch "${FILESDIR}"/as-needed-and-flag-fixes-3.6.patch
-
 	case ${ARCH} in
-		ppc|x86) epatch "${FILESDIR}"/${P}-gio_launch-URI-x86.patch ;;
-		*)       epatch "${FILESDIR}"/${P}-gio_launch-URI.patch ;;
+		ppc|x86) eapply "${FILESDIR}"/${P}-gio_launch-URI-x86.patch ;;
+		*)       eapply "${FILESDIR}"/${P}-gio_launch-URI.patch ;;
 	esac
+
+	default
 }
 
 src_compile() {
@@ -131,7 +137,7 @@ src_compile() {
 	eant compile
 
 	einfo "Copying missing files"
-	cp -i "${S}/version.txt" "${S}/build/version.txt"
+	cp -i "${S}/version.txt" "${S}/build/version.txt" || die
 	cp -i "${S}/src/org/eclipse/swt/internal/SWTMessages.properties" \
 		"${S}/build/org/eclipse/swt/internal/" || die
 
@@ -146,13 +152,14 @@ src_install() {
 
 	sed "s/SWT_ARCH/${swtArch}/" "${FILESDIR}/${PN}-${SLOT}-manifest" > "MANIFEST_TMP.MF" || die
 	use cairo || sed -i -e "/ org.eclipse.swt.internal.cairo; x-internal:=true,/d" "MANIFEST_TMP.MF"
-	sed -i -e "/ org.eclipse.swt.internal.gnome; x-internal:=true,/d" "MANIFEST_TMP.MF"
+	sed -i -e "/ org.eclipse.swt.internal.gnome; x-internal:=true,/d" "MANIFEST_TMP.MF" || die
 	use opengl || sed -i -e "/ org.eclipse.swt.internal.opengl.glx; x-internal:=true,/d" "MANIFEST_TMP.MF"
-	sed -i -e "/ org.eclipse.swt.internal.webkit; x-internal:=true,/d" "MANIFEST_TMP.MF"
+	sed -i -e "/ org.eclipse.swt.internal.webkit; x-internal:=true,/d" "MANIFEST_TMP.MF" || die
 	java-osgi_newjar-fromfile "swt.jar" "MANIFEST_TMP.MF" "Standard Widget Toolkit for GTK 2.0"
 
 	java-pkg_sointo /usr/$(get_libdir)
 	java-pkg_doso *.so
 
-	dohtml about.html
+	docinto html
+	dodoc about.html
 }

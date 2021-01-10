@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_7 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 eutils linux-info
 
@@ -28,8 +29,7 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}
+DEPEND="${CDEPEND}
 	app-admin/sudo"
 
 RDEPEND="

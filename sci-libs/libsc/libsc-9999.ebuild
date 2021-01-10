@@ -1,9 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools toolchain-funcs eutils
+LUA_COMPAT=( lua5-{1..3} )
+
+inherit autotools lua-single toolchain-funcs eutils
 
 DESCRIPTION="Support for parallel scientific applications"
 HOMEPAGE="http://www.p4est.org/"
@@ -23,10 +25,10 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="debug examples mpi openmp romio static-libs threads"
 
-REQUIRED_USE="romio? ( mpi )"
+REQUIRED_USE="${LUA_REQUIRED_USE}
+	romio? ( mpi )"
 
-RDEPEND="
-	dev-lang/lua:*
+RDEPEND="${LUA_DEPS}
 	sys-apps/util-linux
 	virtual/blas
 	virtual/lapack
@@ -35,6 +37,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999_20201220-autoconf_lua_version.patch
+)
 
 DOCS=( AUTHORS NEWS README )
 
@@ -50,8 +56,10 @@ pkg_pretend() {
 src_prepare() {
 	default
 
+	sed -i -e "s/@LUA_IMPL@/${ELUA}/" "${S}"/src/sc_lua.h || die
+
 	# Inject a version number into the build system
-	echo "${PV}" > ${S}/.tarball-version
+	echo "${PV}" > ${S}/.tarball-version || die
 	eautoreconf
 }
 
@@ -66,7 +74,7 @@ src_configure() {
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
 	)
-	econf "${myeconfargs[@]}"
+	econf LUA_IMPL="${ELUA}" "${myeconfargs[@]}"
 }
 
 src_install() {

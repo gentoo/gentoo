@@ -5,6 +5,10 @@
 		<email>desktop-misc@gentoo.org</email>
 		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
 	<longdescription>
 		i3status is a small program (about 1500 SLOC) for generating a status bar for
 		dzen2, xmobar or similar programs. It is designed to be very efficient by

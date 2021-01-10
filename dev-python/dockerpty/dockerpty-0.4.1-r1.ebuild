@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/d11wtq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -26,6 +26,4 @@ DEPEND="
 "
 RDEPEND=">=dev-python/six-1.3.0[${PYTHON_USEDEP}]"
 
-python_test() {
-	py.test tests || die "Tests failed under ${EPYTHON}"
-}
+distutils_enable_tests pytest

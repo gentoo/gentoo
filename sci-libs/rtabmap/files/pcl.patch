@@ -1,0 +1,22 @@
+From 24052a6ebe65fb260ee1d838ca5305b12b15d928 Mon Sep 17 00:00:00 2001
+From: matlabbe <matlabbe@gmail.com>
+Date: Tue, 25 Aug 2020 10:56:30 -0400
+Subject: [PATCH] fixed pcl::getAngle3D not found error on latest pcl version
+ (https://github.com/PointCloudLibrary/pcl/commit/6df3e602a72ea16657f901c9a6911d95b263ba08#diff-8e08415b9972a447d115dbca3f8fa0a1)
+
+---
+ corelib/src/pcl18/surface/impl/texture_mapping.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/corelib/src/pcl18/surface/impl/texture_mapping.hpp b/corelib/src/pcl18/surface/impl/texture_mapping.hpp
+index a30f5766f..fbeedb221 100644
+--- a/corelib/src/pcl18/surface/impl/texture_mapping.hpp
++++ b/corelib/src/pcl18/surface/impl/texture_mapping.hpp
+@@ -41,6 +41,7 @@
+ #include <pcl/common/distances.h>
+ #include <pcl18/surface/texture_mapping.h>
+ #include <pcl/search/octree.h>
++#include <pcl/common/common.h> // for getAngle3D
+ 
+ ///////////////////////////////////////////////////////////////////////////////////////////////
+ template<typename PointInT> std::vector<Eigen::Vector2f, Eigen::aligned_allocator<Eigen::Vector2f> >

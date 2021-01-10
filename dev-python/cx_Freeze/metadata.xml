@@ -10,7 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">cx-freeze</remote-id>
+		<remote-id type="github">marcelotduarte/cx_Freeze</remote-id>
 		<remote-id type="pypi">cx_Freeze</remote-id>
 	</upstream>
 </pkgmetadata>

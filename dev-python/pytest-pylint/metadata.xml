@@ -6,5 +6,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">carsongee/pytest-pylint</remote-id>
+		<remote-id type="pypi">pytest-pylint</remote-id>
+		<bugs-to>https://github.com/carsongee/pytest-pylint/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

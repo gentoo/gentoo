@@ -1,0 +1,11 @@
+--- a/cmake/AwsCFlags.cmake	2020-09-29 09:19:28.820584526 +0200
++++ b/cmake/AwsCFlags.cmake	2020-09-29 09:19:36.068584784 +0200
+@@ -48,7 +48,7 @@
+         list(APPEND AWS_C_FLAGS "${_FLAGS}")
+ 
+     else()
+-        list(APPEND AWS_C_FLAGS -Wall -Werror -Wstrict-prototypes)
++        list(APPEND AWS_C_FLAGS -Wall -Wstrict-prototypes)
+ 
+         if(NOT SET_PROPERTIES_NO_WEXTRA)
+             list(APPEND AWS_C_FLAGS -Wextra)

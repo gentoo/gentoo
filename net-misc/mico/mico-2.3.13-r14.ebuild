@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,7 +16,7 @@ else
 		https://github.com/haubi/mico/compare/${PV}-raw...${PV}-gentoo-${PR}.patch -> ${P}-gentoo-${PR}.patch
 	"
 	PATCHES="${DISTDIR}/${P}-gentoo-${PR}.patch"
-	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt"
+	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt"
 fi
 
 DESCRIPTION="A freely available and fully compliant implementation of the CORBA standard"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Magnus Granberg <zorry@gentoo.org> (2015-01-14)
@@ -6,5 +6,4 @@
 # Bugs 358929, 490276, 513464, 523736 and 512208.
 media-libs/x264 pic
 media-video/ffmpeg pic
-media-libs/mesa pic
 media-libs/xvid pic

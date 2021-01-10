@@ -1,0 +1,13 @@
+Index: image_geometry/CMakeLists.txt
+===================================================================
+--- image_geometry.orig/CMakeLists.txt
++++ image_geometry/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
+ project(image_geometry)
+ 
+ find_package(catkin REQUIRED sensor_msgs)
+-find_package(OpenCV REQUIRED)
++find_package(OpenCV REQUIRED COMPONENTS opencv_core opencv_imgproc opencv_calib3d)
+ 
+ catkin_package(CATKIN_DEPENDS sensor_msgs
+                DEPENDS OpenCV

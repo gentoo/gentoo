@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz -> ${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${P/_/-}"
 fi
 
@@ -59,9 +59,9 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 RDEPEND="${COMMON_DEPEND}
-	media-libs/ladspa-cmt
 	media-plugins/calf
 	media-plugins/caps-plugins
+	media-plugins/cmt-plugins
 	media-plugins/swh-plugins
 	media-plugins/tap-plugins
 "

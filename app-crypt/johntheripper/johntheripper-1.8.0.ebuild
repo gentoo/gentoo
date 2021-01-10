@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://www.openwall.com/john/j/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 CPU_FLAGS="cpu_flags_x86_mmx cpu_flags_x86_sse2 cpu_flags_x86_avx cpu_flags_x86_xop"
 IUSE="custom-cflags openmp ${CPU_FLAGS}"
 
@@ -56,12 +56,8 @@ get_target() {
 		fi
 	elif use ppc-macos; then
 		echo "macosx-ppc32-altivec"
-	elif use x86-macos; then
-		if use cpu_flags_x86_sse2; then
-			echo "macosx-x86-sse2"
-		else
-			echo "macosx-x86"
-		fi
+	elif use x64-macos; then
+		echo "macosx-x86-64"
 	elif use x86-solaris; then
 		echo "solaris-x86-any"
 	elif use x86-fbsd; then

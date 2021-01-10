@@ -1,31 +1,32 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
+LUA_COMPAT=( lua5-{2..3} )
 #PYTHON_COMPAT=( python3_{6,7} )
 
 # 4.3.4 will need python-single-r1
-inherit fcaps fortran-2 linux-info toolchain-funcs
+inherit fcaps fortran-2 linux-info lua-single toolchain-funcs
 
 DESCRIPTION="A performance-oriented tool suite for x86 multicore environments"
 HOMEPAGE="https://github.com/rrze-likwid/likwid"
 SRC_URI="https://ftp.fau.de/pub/likwid/${P}.tar.gz"
 
-# If this ebuild is changed to use the bundled Lua-5.3, then MIT should be
-# added to the LICENSE field.
 LICENSE="GPL-3+ BSD"
 
 SLOT="0"
 KEYWORDS="~amd64" # upstream partial support exists for x86 arm arm64
-IUSE="fortran" # ${PYTHON_REQUIRED_USE}
+IUSE="fortran"
+
+REQUIRED_USE="${LUA_REQUIRED_USE}" # ${PYTHON_REQUIRED_USE}
 
 # lua:
 # likwid's primary functionality is driven by a set of lua scripts installed in
 # /usr/bin/
 # likwid bundles lua-5.3.2, AND supports using a system copy of lua-5.2 or
-# lua-5.3, which we use. This ebuild uses the system copy of Lua instead.
+# lua-5.3.
 #
 # hwloc:
 # likwid bundles a MODIFIED copy of hwloc-2.0.0a1 with specific configuration
@@ -41,7 +42,7 @@ IUSE="fortran" # ${PYTHON_REQUIRED_USE}
 # Python:
 # Python3 is used for one helper script, filter/json, added after 4.3.3
 CDEPEND="dev-lang/perl
-	dev-lang/lua:5.3"
+	${LUA_DEPS}"
 
 # filter/json uses Python3
 RDEPEND="${CDEPEND}"
@@ -68,6 +69,7 @@ PATCHES=(
 
 pkg_setup() {
 	fortran-2_pkg_setup
+	lua-single_pkg_setup
 	#python-single-r1_pkg_setup
 }
 
@@ -104,8 +106,8 @@ export_emake_opts() {
 	local INSTALLED_PREFIX=/usr
 	local INSTALLED_LIBPREFIX=/usr/$(get_libdir) # upstream is '$(INSTALLED_PREFIX)/lib'
 	local INSTALLED_MANPREFIX=/usr/share/man # upstream has it as used but undefined variable.
-	# TODO: support LUA_SINGLE_TARGET here later for Lua 5.2
-	local LUASLOT='5.3'
+	# WARNING: setting LUA_LIB_NAME=${ELUA} does *not* work with LuaJIT, keep this on mind
+	# should likwid upstream ever begin to support it.
 	# If the build is too loud, pass 'Q=@'
 	src_compile_opts=(
 		"Q="
@@ -118,9 +120,9 @@ export_emake_opts() {
 		"CC=$(tc-getCC)"
 		"ANSI_CFLAGS=${CFLAGS}"
 		"INSTRUMENT_BENCH=true"
-		"LUA_INCLUDE_DIR=/usr/include/lua${LUASLOT}"
-		"LUA_LIB_DIR=/usr/$(get_libdir)"
-		"LUA_LIB_NAME=lua${LUASLOT}"
+		"LUA_INCLUDE_DIR=$(lua_get_include_dir)"
+		"LUA_LIB_DIR=$(dirname "$(lua_get_shared_lib)")"
+		"LUA_LIB_NAME=${ELUA}"
 		"LUA_BIN=/usr/bin"
 		"FORTRAN_INTERFACE=$(usex fortran likwid.mod false)"
 		"FC=$(usex fortran "${FC}" false)"

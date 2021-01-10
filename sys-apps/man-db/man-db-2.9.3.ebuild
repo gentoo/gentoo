@@ -12,7 +12,7 @@ if [[ "${PV}" = 9999* ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/man-db.git"
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-3"
@@ -45,6 +45,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-mandb )
 "
 PDEPEND="manpager? ( app-text/manpager )"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.9.3-sandbox-env-tests.patch )
 
 pkg_setup() {
 	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150

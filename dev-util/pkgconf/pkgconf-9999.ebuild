@@ -30,11 +30,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	pkg-config? (
-		!dev-util/pkgconfig
-		!dev-util/pkg-config-lite
-		!dev-util/pkgconfig-openbsd[pkg-config]
-	)
+	pkg-config? ( !dev-util/pkgconfig )
 "
 
 MULTILIB_CHOST_TOOLS=(
@@ -54,7 +50,12 @@ src_prepare() {
 
 multilib_src_configure() {
 	local ECONF_SOURCE="${S}"
-	econf --disable-static
+	local args=(
+		--disable-static
+		--with-system-includedir="${EPREFIX}/usr/include"
+		--with-system-libdir="${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)"
+	)
+	econf "${args[@]}"
 }
 
 multilib_src_test() {

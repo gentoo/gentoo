@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,6 @@ inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
-LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -28,17 +26,28 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6"
 BDEPEND="
-	test? ( >=sys-devel/clang-3.9.0
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
+	test? (
+		>=dev-util/cmake-3.16
+		>=sys-devel/clang-3.9.0
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+	)"
 
 DOCS=( CREDITS.TXT )
+
+LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
+llvm.org_set_globals
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	llvm_pkg_setup
+	# Darwin Prefix builds do not have llvm installed yet, so rely on
+	# bootstrap-prefix to set the appropriate path vars to LLVM instead
+	# of using llvm_pkg_setup.
+	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
+		llvm_pkg_setup
+	fi
 	use test && python-any-r1_pkg_setup
 
 	if ! use libcxxabi && ! tc-is-gcc ; then
@@ -96,6 +105,15 @@ multilib_src_configure() {
 				extra_libs+=( "${compiler_rt}" )
 			fi
 		fi
+	elif [[ ${CHOST} == *-darwin* ]] && tc-is-clang; then
+		# clang-based darwin prefix disables libunwind useflag during
+		# bootstrap, because libunwind is not in the prefix yet.
+		# override the default, though, because clang based libcxx
+		# should never use gcc_s on Darwin.
+		want_gcc_s=OFF
+		# compiler_rt is not available in EPREFIX during bootstrap,
+		# so we cannot link to it yet anyway, so keep the defaults
+		# of want_compiler_rt=OFF and extra_libs=()
 	fi
 
 	# bootstrap: cmake is unhappy if compiler can't link to stdlib
@@ -130,6 +148,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
+			-DPython3_EXECUTABLE="${PYTHON}"
 		)
 	fi
 	cmake_src_configure
@@ -184,8 +203,10 @@ gen_shared_ldscript() {
 
 multilib_src_install() {
 	cmake_src_install
-	gen_shared_ldscript
-	use static-libs && gen_static_ldscript
+	if [[ ${CHOST} != *-darwin* ]] ; then
+		gen_shared_ldscript
+		use static-libs && gen_static_ldscript
+	fi
 }
 
 pkg_postinst() {

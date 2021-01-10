@@ -28,7 +28,7 @@ RDEPEND="!<games-action/d2x-0.2.5-r3
 	!games-action/descent2-demodata"
 
 DEPEND="cdinstall? (
-		app-arch/unarj
+		app-arch/arj
 		dev-util/xdelta:3
 	)
 	!cdinstall? (
@@ -52,7 +52,7 @@ src_unpack() {
 		case ${CDROM_SET} in
 			0)
 				einfo "Found Descent 2 CD"
-				unarj e "${CDROM_ABSMATCH}" || die ;;
+				arj e -y -_ "${CDROM_ABSMATCH}" || die ;;
 			1)
 				einfo "Found Descent 2 installation"
 				cd "${CDROM_ABSMATCH%/*}" || die ;;

@@ -1,0 +1,12 @@
+diff -up snack2.2.10/generic/jkSound.h.seektell snack2.2.10/generic/jkSound.h
+--- snack2.2.10/generic/jkSound.h.seektell	2019-07-30 16:01:37.310992628 -0400
++++ snack2.2.10/generic/jkSound.h	2019-07-30 16:02:29.859840865 -0400
+@@ -603,7 +603,7 @@ extern void Snack_RemoveOptions(int objc
+ 
+ extern void SnackPauseAudio();
+ 
+-#if TCL_MAJOR_VERSION == 8 && TCL_MINOR_VERSION < 4
++#if 1 || TCL_MAJOR_VERSION == 8 && TCL_MINOR_VERSION < 4
+ #define TCL_SEEK Tcl_Seek
+ #define TCL_TELL Tcl_Tell
+ #else

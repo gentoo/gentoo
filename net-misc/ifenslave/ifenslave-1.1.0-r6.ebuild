@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 MY_PN="ifenslave-2.6" # this is NOT an error
 DEBIAN_PV="17"
@@ -12,36 +12,36 @@ DEBIANPKG_BASE="mirror://debian/pool/main/${MY_PN:0:1}/${MY_PN}"
 inherit toolchain-funcs linux-info
 
 DESCRIPTION="Attach and detach slave interfaces to a bonding device"
-HOMEPAGE="http://sf.net/projects/bonding/"
-SRC_URI="${DEBIANPKG_BASE}/${DEBIANPKG_TARBALL}
+HOMEPAGE="https://sf.net/projects/bonding/"
+SRC_URI="
+	${DEBIANPKG_BASE}/${DEBIANPKG_TARBALL}
 	${DEBIANPKG_BASE}/${DEBIANPKG_PATCH}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~mips ppc sparc x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND="sys-devel/gcc
-	>=sys-kernel/linux-headers-2.4.22
-	${RDEPEND}"
+DEPEND=">=sys-kernel/linux-headers-2.4.22"
 
 CONFIG_CHECK="~BONDING"
 WARNING_BONDING="CONFIG_BONDING is required to get bond devices in the kernel"
 
+src_configure() {
+	tc-export CC
+}
+
 src_compile() {
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} ${PN}.c -o ${PN} || die "Failed to compile!"
+	emake ifenslave
 }
 
 src_install() {
 	into /
-	dosbin ${PN}
-	into
+	dosbin ifenslave
 
 	# there really is no better documentation than the sourcecode :-)
-	dodoc ${PN}.c
+	dodoc ifenslave.c
 
-	doman "${WORKDIR}/debian/${PN}.8"
+	doman "${WORKDIR}"/debian/ifenslave.8
 }
 
 pkg_preinst() {

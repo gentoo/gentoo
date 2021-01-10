@@ -5,5 +5,4 @@
     <email>embedded@gentoo.org</email>
     <name>Embedded Gentoo</name>
   </maintainer>
-  <longdescription>An extended version of BSD tftp with passwords</longdescription>
 </pkgmetadata>

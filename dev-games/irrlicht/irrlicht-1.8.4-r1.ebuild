@@ -33,6 +33,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${P}-demoMake.patch
 	"${WORKDIR}"/${P}-patchset/${P}-mesa-10.x.patch
 	"${WORKDIR}"/${P}-patchset/${P}-jpeg-9a.patch
+	"${FILESDIR}/${P}-remove-sys-sysctl.h.patch"
 )
 
 DOCS=( changes.txt readme.txt )
@@ -48,6 +49,12 @@ src_prepare() {
 	sed -i \
 		-e 's:\.\./\.\./media:../media:g' \
 		$(grep -rl '\.\./\.\./media' examples) \
+		|| die 'sed failed'
+
+	# Fix line endings so ${P}-remove-sys-sysctl.h.patch applies
+	sed -i \
+		-e 's/\r$//' \
+		source/Irrlicht/COSOperator.cpp \
 		|| die 'sed failed'
 
 	default

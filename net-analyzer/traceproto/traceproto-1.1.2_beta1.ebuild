@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools
+EAPI=7
+
+inherit autotools
 
 MY_PV=${PV/_/}
 
@@ -18,11 +19,11 @@ IUSE="debug"
 RDEPEND="
 	net-libs/libnet:1.1
 	net-libs/libpcap
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	debug? ( dev-libs/dmalloc )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-doc/doxygen[dot]
 	virtual/pkgconfig
 "
@@ -31,8 +32,13 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch"
+	"${FILESDIR}/${P}-fno-common.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
+	default
 	eautoreconf
 }
 

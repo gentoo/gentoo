@@ -9,9 +9,6 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
-	<longdescription>
-		Lustre is a parallel distributed file system, generally used for large scale cluster computing
-	</longdescription>
 	<use>
 		<flag name="client">Enable kernel client modules</flag>
 		<flag name="dlc">Enable Dynamic LNET Configuration</flag>

@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils cmake-utils
+EAPI=7
+
+inherit cmake
 
 DESCRIPTION="Linux port of Aliens vs Predator"
 HOMEPAGE="http://www.icculus.org/avp/"
@@ -11,36 +12,30 @@ SRC_URI="http://www.icculus.org/avp/files/${P}.tar.gz"
 LICENSE="AvP"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+RESTRICT="bindist mirror"
 
 RDEPEND="
 	media-libs/libsdl[video,joystick,opengl]
 	media-libs/openal"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-CMAKE_BUILD_TYPE=Release
+PATCHES=( "${FILESDIR}"/avp-20150214-fno-common.patch )
 
 src_configure() {
 	local mycmakeargs=(
-		"-DCMAKE_VERBOSE_MAKEFILE=TRUE"
 		-DSDL_TYPE=SDL
 		-DOPENGL_TYPE=OPENGL
 	)
-
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
+	cmake_src_configure
 }
 
 src_install() {
-	dobin "${BUILD_DIR}/${PN}"
-	dodoc README
+	dobin "${BUILD_DIR}"/avp
+	einstalldocs
 }
 
 pkg_postinst() {
-	elog "Please follow the instructions in /usr/share/doc/${PF}"
+	elog "Please follow the instructions in ${EROOT}/usr/share/doc/${PF}"
 	elog "to install the rest of the game."
 }

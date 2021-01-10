@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		NTPClient is an NTP client for UNIX-like systems, RFC 1305 and RFC 4330.
+		Its functionality is a small subset of ntpd, chrony, OpenNTPd, and xntpd.
+		Since it is much smaller, it is also more relevant for embedded systems in need of only a client.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/troglobit/sntpd/issues</bugs-to>
+		<remote-id type="github">troglobit/sntpd</remote-id>
+	</upstream>
+	<use>
+		<flag name="adjtimex">Install adjtimex for the clock adjustment algorithm.</flag>
+	</use>
+</pkgmetadata>

@@ -16,9 +16,9 @@ IUSE="debug libffi"
 
 DEPEND="dev-java/gnu-classpath:0.98
 	|| ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* )
-	libffi? ( virtual/libffi )
-	ppc64? ( virtual/libffi )
-	sparc? ( virtual/libffi )"
+	libffi? ( dev-libs/libffi:= )
+	ppc64? ( dev-libs/libffi:= )
+	sparc? ( dev-libs/libffi:= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(

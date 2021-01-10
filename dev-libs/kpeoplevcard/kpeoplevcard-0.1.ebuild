@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/pim/kpeoplevcard"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1+"

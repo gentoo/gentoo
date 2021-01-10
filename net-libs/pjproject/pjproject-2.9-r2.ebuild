@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="https://www.pjsip.org/"
@@ -39,7 +39,10 @@ RDEPEND="net-libs/libsrtp:=
 	portaudio? ( media-libs/portaudio )
 	resample? ( media-libs/libsamplerate )
 	sdl? ( media-libs/libsdl )
-	speex? ( media-libs/speexdsp )
+	speex? (
+		media-libs/speex
+		media-libs/speexdsp
+	)
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )

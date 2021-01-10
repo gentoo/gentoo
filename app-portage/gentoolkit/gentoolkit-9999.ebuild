@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
@@ -33,6 +33,13 @@ python_prepare_all() {
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
+
+	if use prefix-guest ; then
+		# use correct repo name, bug #632223
+		sed -i \
+			-e "/load_profile_data/s/repo='gentoo'/repo='gentoo_prefix'/" \
+			pym/gentoolkit/profile.py || die
+	fi
 }
 
 pkg_preinst() {
@@ -67,7 +74,6 @@ pkg_postinst() {
 		elog "    app-admin/eclean-kernel"
 		elog "    app-portage/diffmask"
 		elog "    app-portage/flaggie"
-		elog "    app-portage/install-mask"
 		elog "    app-portage/portpeek"
 		elog "    app-portage/smart-live-rebuild"
 	fi

@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit flag-o-matic
 
 DESCRIPTION="Command-line tools and server to remotely administer multiple Unix filesystems"
 HOMEPAGE="https://github.com/Radmind https://sourceforge.net/projects/radmind/"
@@ -24,6 +26,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-gentoo.patch
 	"${FILESDIR}"/${PN}-1.14.1-glibc225.patch
 )
+
+src_configure() {
+	append-cflags -fcommon
+	default
+}
 
 src_install() {
 	default

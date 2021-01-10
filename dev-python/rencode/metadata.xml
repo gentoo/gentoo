@@ -11,5 +11,6 @@ pure Python module written by Petru Paler, Connelly Barnes et al.
 </longdescription>
 	<upstream>
 		<remote-id type="github">aresch/rencode</remote-id>
+		<remote-id type="pypi">rencode</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,4 +8,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">aio-libs/aiosmtpd</remote-id>
+		<remote-id type="pypi">aiosmtpd</remote-id>
+	</upstream>
 </pkgmetadata>

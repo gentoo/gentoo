@@ -5,10 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-  Calcoo is a scientific calculator designed to provide maximum
-  usability.
-</longdescription>
   <upstream>
     <remote-id type="sourceforge">calcoo</remote-id>
   </upstream>

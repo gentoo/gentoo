@@ -11,7 +11,7 @@ SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${P
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 RESTRICT="test"
 
@@ -52,6 +52,7 @@ src_configure() {
 		-Dgnu-efi=true
 		-Defi-cc="$(tc-getCC)"
 		-Defi-ld="$(tc-getLD)"
+		-Defi-libdir="/usr/$(get_libdir)"
 		-Dsplit-usr=true
 		-Drootprefix="${EPREFIX:-/}"
 

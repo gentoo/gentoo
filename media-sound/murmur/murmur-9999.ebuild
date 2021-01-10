@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils systemd readme.gentoo-r1
+inherit cmake systemd readme.gentoo-r1
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -29,7 +29,8 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+dbus debug +ice pch zeroconf"
+IUSE="+dbus grpc +ice test zeroconf"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/murmur
@@ -46,6 +47,7 @@ RDEPEND="
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	dbus? ( dev-qt/qtdbus:5 )
+	grpc? ( net-libs/grpc )
 	ice? ( dev-libs/Ice:= )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
@@ -93,6 +95,8 @@ src_prepare() {
 	# Adjust systemd service file to our config location #689208
 	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
 		-i scripts/${PN}.service || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -100,28 +104,29 @@ src_configure() {
 		[[ -n "${1}" ]] || die "myconf: No use flag given."
 		use ${1} || echo "no-${1}"
 	}
-	local conf_add=(
-		no-client
-		$(myuse dbus)
-		$(usex debug 'symbols debug' release)
-		$(myuse ice)
-		$(myuse pch)
-		$(usex zeroconf '' no-bonjour)
+	local mycmakeargs=(
+		-DBUILD_TESTING="$(usex test)"
+		-Dclient="OFF"
+		-Ddbus="$(usex dbus)"
+		-Dg15="OFF"
+		-Dgrpc="$(usex grpc)"
+		-Dice="$(usex ice)"
+		-Doverlay="OFF"
+		-Dserver="ON"
+		-Dzeroconf="$(usex zeroconf)"
 	)
 
-	eqmake5 main.pro -recursive \
-		CONFIG+="${conf_add[*]}"
+	cmake_src_configure
 }
 
 src_install() {
-	dodoc README CHANGES
+	cmake_src_install
+
+	dodoc README.md CHANGES
 
 	docinto scripts
 	dodoc -r scripts/server
 	docompress -x /usr/share/doc/${PF}/scripts
-
-	local dir="$(usex debug debug release)"
-	dobin "${dir}"/murmurd
 
 	local etcdir="/etc/murmur"
 	insinto ${etcdir}

@@ -12,7 +12,7 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0/$(get_version_component_range 1-2)"
 KEYWORDS="~amd64 ~x86"
-IUSE="ssl static static-libs"
+IUSE="static static-libs"
 
 DEPEND=">=sys-devel/make-3.81
 	static? (
@@ -20,14 +20,12 @@ DEPEND=">=sys-devel/make-3.81
 		>=dev-libs/skalibs-2.6.0.0[static-libs]
 		>=net-dns/s6-dns-2.2.0.1[static-libs]
 		>=sys-apps/s6-2.6.1.0[static-libs]
-		ssl? ( >=dev-libs/libressl-2.4.5[static-libs] )
 	)
 	!static? (
 		>=dev-lang/execline-2.3.0.2[static=]
 		>=dev-libs/skalibs-2.6.0.0
 		>=net-dns/s6-dns-2.2.0.1[static=]
 		>=sys-apps/s6-2.6.1.0[static=]
-		ssl? ( >=dev-libs/libressl-2.4.5 )
 	)
 "
 RDEPEND="
@@ -36,7 +34,6 @@ RDEPEND="
 	!static? (
 		>=dev-libs/skalibs-2.6.0.0:=
 		>=net-dns/s6-dns-2.2.0.1:=
-		ssl? ( >=dev-libs/libressl-2.4.5:= )
 	)
 "
 
@@ -62,7 +59,7 @@ src_configure() {
 		--with-lib=/usr/$(get_libdir)/s6-dns \
 		--with-lib=/usr/$(get_libdir)/skalibs \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs \
-		$(use_enable ssl ssl libressl) \
+		--disable-ssl \
 		$(use_enable !static shared) \
 		$(use_enable static allstatic) \
 		$(use_enable static static-libc) \

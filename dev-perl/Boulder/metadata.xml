@@ -5,7 +5,6 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <longdescription>Parse and read BLASTs, Boulders, Stones</longdescription>
   <upstream>
     <remote-id type="cpan">Boulder</remote-id>
     <remote-id type="cpan-module">Boulder::Blast</remote-id>

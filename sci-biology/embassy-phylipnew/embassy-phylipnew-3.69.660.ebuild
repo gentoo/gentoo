@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,4 +14,7 @@ LICENSE+=" free-noncomm"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 
 S="${WORKDIR}/PHYLIPNEW-3.69.650"
-PATCHES=( "${FILESDIR}"/${PN}-3.69.650_fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.69.650_fix-build-system.patch
+	"${FILESDIR}"/${PN}-3.69.650-fno-common.patch
+)

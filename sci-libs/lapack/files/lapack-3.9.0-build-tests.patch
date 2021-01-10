@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9dbf97..9635ba4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -127,7 +127,7 @@ set(PKG_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ # --------------------------------------------------
+ # Testing
+-option(BUILD_TESTING "Build tests" ${_is_coverage_build})
++option(BUILD_TESTING "Build tests")
+ include(CTest)
+ message(STATUS "Build tests: ${BUILD_TESTING}")
+ 
+@@ -443,4 +443,4 @@ install(FILES
+   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lapack-${LAPACK_VERSION}
+   COMPONENT Development
+   )
+-  
+\ No newline at end of file
++  

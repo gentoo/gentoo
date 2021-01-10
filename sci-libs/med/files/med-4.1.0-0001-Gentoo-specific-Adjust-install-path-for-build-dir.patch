@@ -1,0 +1,26 @@
+From ccc372d4fa95ea2e083505ec5c536a48c49dd151 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 25 Nov 2020 21:08:46 +0100
+Subject: [PATCH] [Gentoo-specific] Adjust install path for build dir
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ tools/mdump/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/mdump/CMakeLists.txt b/tools/mdump/CMakeLists.txt
+index 991b5af..dd2018a 100644
+--- a/tools/mdump/CMakeLists.txt
++++ b/tools/mdump/CMakeLists.txt
+@@ -44,6 +44,6 @@ CONFIGURE_FILE(xmdump3.in ${PROJECT_BINARY_DIR}/xmdump3 @ONLY)
+ CONFIGURE_FILE(xmdump4.in ${PROJECT_BINARY_DIR}/xmdump4 @ONLY)
+ 
+ INSTALL(PROGRAMS ${PROJECT_BINARY_DIR}/xmdump2 ${PROJECT_BINARY_DIR}/xmdump3 ${PROJECT_BINARY_DIR}/xmdump4 DESTINATION bin)
+-INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink mdump4 mdump WORKING_DIRECTORY ${DESTDIR}${CMAKE_INSTALL_PREFIX}/bin)")
+-INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink xmdump4 xmdump WORKING_DIRECTORY ${DESTDIR}${CMAKE_INSTALL_PREFIX}/bin)")
++INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink mdump4 mdump WORKING_DIRECTORY \"\$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/bin\")")
++INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink xmdump4 xmdump WORKING_DIRECTORY \"\$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/bin\")")
+ 
+-- 
+2.29.2
+

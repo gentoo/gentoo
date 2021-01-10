@@ -1,0 +1,27 @@
+https://github.com/MyGUI/mygui/commit/ced30dac10082ff9593a2c971d26b3aebce6b2be.patch
+https://bugs.gentoo.org/732778
+
+Part of:
+
+From ced30dac10082ff9593a2c971d26b3aebce6b2be Mon Sep 17 00:00:00 2001
+From: George Evmenov <george.evmenov@geocv.com>
+Date: Fri, 26 Jun 2015 12:25:26 +0300
+Subject: [PATCH] do not use nullptr define
+
+--- a/MyGUIEngine/include/MyGUI_Prerequest.h
++++ b/MyGUIEngine/include/MyGUI_Prerequest.h
+@@ -19,13 +19,7 @@
+ #define MYGUI_DEFINE_VERSION(major, minor, patch) ((major << 16) | (minor << 8) | patch)
+ 
+ #ifndef MYGUI_DONT_REPLACE_NULLPTR
+-#	if MYGUI_COMPILER == MYGUI_COMPILER_MSVC
+-#		ifndef _MANAGED
+-#			ifndef _NATIVE_NULLPTR_SUPPORTED
+-#				define nullptr 0
+-#			endif
+-#		endif
+-#	else
++#	if __cplusplus < 201103L && !defined(_NATIVE_NULLPTR_SUPPORTED)
+ #		define nullptr 0
+ #	endif
+ #endif

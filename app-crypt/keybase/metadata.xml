@@ -5,9 +5,6 @@
 		<email>nicolasbock@gentoo.org</email>
 		<name>Nicolas Bock</name>
 	</maintainer>
-	<longdescription lang="en">
-		Get a public key, safely, starting just with someone's social media username(s)
-	</longdescription>
 	<upstream>
 		<remote-id type="github">keybase/node-client</remote-id>
 	</upstream>

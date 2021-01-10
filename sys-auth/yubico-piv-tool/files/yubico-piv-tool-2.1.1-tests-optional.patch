@@ -1,0 +1,39 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -125,7 +125,9 @@
+ find_libcrypto()
+ include_directories(${LIBCRYPTO_INCLUDE_DIRS})
+ 
++if (BUILD_TESTING)
+ enable_testing()
++endif()
+ find_package(codecov)
+ 
+ add_subdirectory (lib)
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -92,4 +92,6 @@
+ 
+ install(FILES ykpiv.pc DESTINATION ${YKPIV_INSTALL_PKGCONFIG_DIR})
+ 
++if (BUILD_TESTING)
+ add_subdirectory(tests)
++endif ()
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -78,4 +78,6 @@
+     install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/yubico-piv-tool.1" DESTINATION "${YKPIV_INSTALL_MAN_DIR}/man1")
+ endif(MAN_PAGE)
+ 
++if (BUILD_TESTING)
+ add_subdirectory(tests)
++endif ()
+--- a/ykcs11/CMakeLists.txt
++++ b/ykcs11/CMakeLists.txt
+@@ -102,4 +102,6 @@
+ 
+ install(FILES ykcs11.pc DESTINATION ${YKPIV_INSTALL_PKGCONFIG_DIR})
+ 
++if (BUILD_TESTING)
+ add_subdirectory(tests)
++endif ()

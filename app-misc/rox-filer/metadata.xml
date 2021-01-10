@@ -16,6 +16,7 @@
 	</maintainer>
 	<bugs-to>http://rox.sourceforge.net/desktop/lists</bugs-to>
 	<remote-id type="sourceforge">rox</remote-id>
+	<remote-id type="github">rox-desktop/rox-filer</remote-id>
 </upstream>
 <longdescription lang="en">
 	ROX-Filer is a fast and powerful graphical file manager for the

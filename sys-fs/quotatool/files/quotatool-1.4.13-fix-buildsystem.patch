@@ -1,0 +1,31 @@
+--- a/local.mk.in
++++ b/local.mk.in
+@@ -17,7 +17,8 @@
+ 
+ CC              :=   @CC@
+ CFLAGS          :=   @CFLAGS@
+-CPPFLAGS         =   $(inc) @DEFS@
++LDFLAGS         :=   @LDFLAGS@
++CPPFLAGS         =   @CPPFLAGS@ $(inc) @DEFS@
+ 
+ 
+ INSTALL         :=   @INSTALL@
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,7 @@
+ # compile the program (and the objects)
+ all: $(prog)
+ $(prog): $(objs)
+-	$(CC) -o $(prog) $(objs) $(libs) $(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(prog) $(objs) $(libs)
+ 
+ 
+ 
+--- a/tools/depend.sh
++++ b/tools/depend.sh
+@@ -4,4 +4,4 @@
+ # Generated automatically from depend.sh.in by configure.
+ 
+ set -e
+-gcc -MM $* | sed 's#\($*\)\.o[ :]*#\1.o $@ : #g'
++${CC:-cc} -MM $* | sed 's#\($*\)\.o[ :]*#\1.o $@ : #g'

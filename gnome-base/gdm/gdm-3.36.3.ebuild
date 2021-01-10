@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 
-inherit eutils gnome2 pam readme.gentoo-r1 systemd udev user
+inherit eutils gnome2 pam readme.gentoo-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="GNOME Display Manager for managing graphical display servers and user logins"
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM"
@@ -25,7 +25,7 @@ IUSE="accessibility audit bluetooth-sound branding elogind fprint +introspection
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
 
 # NOTE: x11-base/xorg-server dep is for X_SERVER_PATH etc, bug #295686
 # nspr used by smartcard extension
@@ -187,10 +187,11 @@ src_configure() {
 	)
 
 	if use elogind; then
+		local pkgconfig="$(tc-getPKG_CONFIG)"
 		myconf+=(
 			--with-initial-vt=7 # TODO: Revisit together with startDM.sh and other xinit talks; also ignores plymouth possibility
-			SYSTEMD_CFLAGS=`pkg-config --cflags "libelogind" 2>/dev/null`
-			SYSTEMD_LIBS=`pkg-config --libs "libelogind" 2>/dev/null`
+			SYSTEMD_CFLAGS="$(${pkgconfig} --cflags "libelogind")"
+			SYSTEMD_LIBS="$(${pkgconfig} --libs "libelogind")"
 		)
 	fi
 

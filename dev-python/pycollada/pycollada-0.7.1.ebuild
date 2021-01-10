@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Python library for reading and writing COLLADA documents"
-HOMEPAGE="https://pycollada.readthedocs.org/"
+HOMEPAGE="https://pycollada.readthedocs.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
@@ -22,6 +22,8 @@ SLOT="0"
 IUSE="anondel anonperm anonren anonres caps implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
 
 REQUIRED_USE="implicittls? ( ssl )"
+
+BDEPEND="sys-devel/autoconf-archive"
 
 DEPEND="caps? ( sys-libs/libcap )
 	ldap? ( >=net-nds/openldap-2.0.25 )
@@ -49,11 +51,14 @@ PATCHES=(
 	# https://bugs.gentoo.org/711124
 	"${FILESDIR}/${P}-diraliases_uninitialized_pointer.patch"
 	"${FILESDIR}/${P}-pure_strcmp_OOB_read.patch"
+
+	# https://bugs.gentoo.org/721242
+	"${FILESDIR}/${P}-do-not-call-ar-directly.patch"
 )
 
 src_prepare() {
 	default
-	[[ "${PV}" == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {

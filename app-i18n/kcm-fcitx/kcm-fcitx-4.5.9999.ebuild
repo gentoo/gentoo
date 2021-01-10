@@ -1,9 +1,9 @@
 # Copyright 2013-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -24,7 +24,13 @@ SLOT="4-plasma5"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4
+BDEPEND=">=app-i18n/fcitx-4.2.9:4
+	dev-qt/qtcore:5
+	dev-qt/qtwidgets:5
+	kde-frameworks/extra-cmake-modules:5
+	sys-devel/gettext
+	virtual/pkgconfig"
+DEPEND=">=app-i18n/fcitx-4.2.9:4
 	>=app-i18n/fcitx-qt5-1.1:4
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -36,21 +42,17 @@ RDEPEND=">=app-i18n/fcitx-4.2.9:4
 	kde-frameworks/ki18n:5
 	kde-frameworks/kio:5
 	kde-frameworks/kitemviews:5
-	kde-frameworks/knewstuff:5
 	kde-frameworks/kwidgetsaddons:5
 	virtual/libintl
 	x11-libs/libX11
-	x11-libs/libxkbfile
-	!${CATEGORY}/${PN}:4[-minimal(-)]"
-DEPEND="${RDEPEND}
-	kde-frameworks/extra-cmake-modules:5
-	sys-devel/gettext
-	virtual/pkgconfig"
+	x11-libs/libxkbfile"
+RDEPEND="${DEPEND}
+	!${CATEGORY}/${PN}:4-plasma4[-minimal(-)]"
 
 src_configure() {
 	local mycmakeargs=(
 		-DKDE_INSTALL_USE_QT_SYS_PATHS=yes
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

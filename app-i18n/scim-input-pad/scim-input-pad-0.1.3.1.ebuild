@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit autotools
 
@@ -14,29 +14,35 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-RDEPEND=">=app-i18n/scim-1.2.0
+RDEPEND="
+	>=app-i18n/scim-1.2.0
 	>=x11-libs/gtk+-2.6.0:2"
-
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/intltool-0.33
 	virtual/pkgconfig"
 
 src_prepare() {
-	rm "${S}"/m4/intltool.m4 || die
+	default
+
+	rm m4/intltool.m4 || die
 	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable nls)
+	econf \
+		--disable-static \
+		$(use_enable nls)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ChangeLog README
+	default
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-
 	elog
 	elog "The SCIM input pad should be startable from the SCIM (and Skim)"
 	elog "systray icon right click menu. You will have to restart SCIM"
@@ -49,7 +55,6 @@ pkg_postinst() {
 	elog "table, from the SCIM Input Pad interface."
 	elog
 	elog "To add new characters to the tables, see the documentation"
-	elog "(README file in /usr/share/doc/${PF})."
+	elog "(README file in ${EROOT}/usr/share/doc/${PF})."
 	elog
-
 }

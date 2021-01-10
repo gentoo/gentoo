@@ -3,17 +3,16 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6..9}} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
 DESCRIPTION="Python module used for monitoring filesystems events"
 HOMEPAGE="
-	http://trac.dbzteam.org/pyinotify
 	https://pypi.org/project/pyinotify/
 	https://github.com/seb-m/pyinotify/"
-SRC_URI="http://seb.dbzteam.org/pub/pyinotify/releases/${P}.tar.gz"
+SRC_URI="https://seb.dbzteam.org/pub/pyinotify/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

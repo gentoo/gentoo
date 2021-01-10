@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,23 +51,26 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
-IUSE="berkdb debug doc gdbm ithreads"
+IUSE="berkdb debug doc gdbm ithreads minimal"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
 	sys-libs/zlib
+	virtual/libcrypt:=
 "
 DEPEND="${RDEPEND}"
 PDEPEND="
-	>=app-admin/perl-cleaner-2.5
-	>=virtual/perl-File-Temp-0.230.400-r2
-	>=virtual/perl-Data-Dumper-2.154.0
-	virtual/perl-Test-Harness
+	!minimal? (
+		>=app-admin/perl-cleaner-2.5
+		>=virtual/perl-File-Temp-0.230.400-r2
+		>=virtual/perl-Data-Dumper-2.154.0
+		virtual/perl-Test-Harness
+	)
 "
 # bug 390719, bug 523624
 # virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
@@ -137,8 +140,6 @@ pkg_setup() {
 		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
 		*-solaris*)   osname="solaris" ;;
-		*-interix*)   osname="interix" ;;
-		*-aix*)       osname="aix" ;;
 		*-cygwin*)    osname="cygwin" ;;
 		*)            osname="linux" ;;
 	esac
@@ -339,6 +340,10 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fix install_name (soname) not to reference $D
 		sed -i -e '/install_name `pwd/s/`pwd`/\\$(shrpdir)/' Makefile.SH || die
+
+		# Upstreamed, but not in this version.
+		# Need to recognise macOS 11 / 10.16. #757249
+		eapply "${FILESDIR}/${PN}-5.30.3-darwin-macos11.patch"
 	fi
 
 	default
@@ -460,6 +465,10 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__
 
+	# flock on 32-bit sparc Solaris is broken, fall back to fcntl
+	[[ ${CHOST} == sparc-*-solaris* ]] && \
+		myconf -Ud_flock
+
 	# fix unaligned access misdetection
 	# https://rt.perl.org/Public/Bug/Display.html?id=133495
 	# https://rt.perl.org/Public/Bug/Display.html?id=133803
@@ -475,7 +484,7 @@ src_configure() {
 		# Set a hook to check for each detected library whether it actually works.
 		export libscheck="
 			( echo 'main(){}' > '${T}'/conftest.c &&
-			  $(tc-getCC) -o '${T}'/conftest '${T}'/conftest.c -l\$thislib >/dev/null 2>/dev/null
+				$(tc-getCC) -o '${T}'/conftest '${T}'/conftest.c -l\$thislib >/dev/null 2>/dev/null
 			) || xxx=/dev/null"
 
 		# Use all host paths that might contain useful stuff, the hook above will filter out bad choices.

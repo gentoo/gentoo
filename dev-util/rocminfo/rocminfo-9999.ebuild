@@ -21,12 +21,3 @@ SLOT="0/$(ver_cut 1-2)"
 
 RDEPEND="dev-libs/rocr-runtime"
 DEPEND="${RDEPEND}"
-
-src_configure() {
-	local mycmakeargs=(
-		-DROCM_DIR="${ESYSROOT}/usr"
-		-DROCR_INC_DIR="${ESYSROOT}/usr/include"
-		-DROCR_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
-	)
-	cmake_src_configure
-}

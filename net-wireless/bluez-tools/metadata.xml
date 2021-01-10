@@ -6,10 +6,6 @@
 		<name>Olivier Laurantin</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>cinnamon@gentoo.org</email>
-		<name>Cinnamon Project</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

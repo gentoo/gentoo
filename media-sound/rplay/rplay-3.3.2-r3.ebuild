@@ -11,7 +11,7 @@ SRC_URI="http://rplay.doit.org/dist/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE=""
 
 RDEPEND="media-sound/gsm"
@@ -51,4 +51,6 @@ src_install() {
 		mandir="${ED}/usr/share/man" \
 		sysconfdir="${ED}/etc" \
 		install
+
+	find "${ED}" -name '*.la' -delete || die
 }

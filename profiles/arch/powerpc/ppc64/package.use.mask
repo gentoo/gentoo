@@ -1,6 +1,34 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
+sys-libs/compiler-rt-sanitizers -ubsan -scudo
+sys-libs/compiler-rt-sanitizers -profile
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# fwupd keyworded now on ppc64
+kde-plasma/discover -firmware
+
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+# webengine flag requires unkeyworded plasma-telepathy-meta
+kde-apps/kdenetwork-meta dropbox webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
+# zfs is keyworded on ppc64
+sys-boot/grub -libzfs
+
+# James Le Cuirot <chewi@gentoo.org> (2020-08-19)
+# Cinnamon is not keyworded on this architecture.
+x11-themes/arc-theme cinnamon
+
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
 # Bug #728558
@@ -28,7 +56,7 @@ net-analyzer/pnp4nagios icinga
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # bolt not keyworded on ~ppc64
-kde-plasma/plasma-meta crypt thunderbolt
+kde-plasma/plasma-meta thunderbolt
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
 # not keyworded or irrelevant on ~ppc64, bug 679888
@@ -60,10 +88,6 @@ media-libs/openimageio dicom
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
 net-analyzer/snort open-appid
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-13)
-# missing keyword on media-libs/portmidi
-media-sound/hydrogen portmidi
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
 # missing keyword on dev-python/dbusmock, bug #620024
@@ -107,10 +131,6 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Ben de Groot <yngwin@gentoo.org> (2015-07-20)
-# missing keywords
-media-sound/audacity midi soundtouch
-
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
@@ -142,11 +162,6 @@ x11-misc/rss-glx quesoglc
 # Masking webkit from  libproxy due to TOC failure on webkit
 # and stupid 64bit toolchain.
 net-libs/libproxy webkit
-
-# Brent Baude <ranger@gentoo.org> (2008-06-11)
-# Masking out passwdqc from older pambase since pam_passwdqc is not keyworded
-# new versions require sys-auth/passwdqc which is keyworded
-<=sys-auth/pambase-20200304 passwdqc
 
 # Joseph Jezak <josejx@gentoo.org> (2010-02-12)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)

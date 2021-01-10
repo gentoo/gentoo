@@ -27,7 +27,7 @@ RDEPEND="
 	dev-python/pygame[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	media-video/ffmpeg
 "
 DEPEND="${RDEPEND}"

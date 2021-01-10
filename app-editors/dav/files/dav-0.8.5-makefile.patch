@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index 8b1ff0a..7a57840 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CC=gcc
++CC?=gcc
+ OBJECTS=main.o \
+         buffers.o \
+         fileIO.o \
+@@ -8,8 +8,8 @@ OBJECTS=main.o \
+         undo.o \
+         move.o
+         
+-CFLAGS=-O3 -Wall
+-LDFLAGS=-lncurses -O3 -Wall
++CFLAGS?=O3 -Wall
++LDFLAGS?=lncurses -O3 -Wall
+ 
+ dav: $(OBJECTS) 
+ 	$(CC) $(OBJECTS) $(LDFLAGS) -o dav

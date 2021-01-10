@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/erikd/libsndfile.git"
 else
-	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	SRC_URI="https://github.com/erikd/libsndfile/releases/download/v${PV}/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 inherit python-any-r1 multilib-minimal
 
@@ -24,13 +24,13 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!minimal? (
-		>=media-libs/flac-1.2.1-r5:=[${MULTILIB_USEDEP}]
-		>=media-libs/libogg-1.3.0:=[${MULTILIB_USEDEP}]
-		>=media-libs/libvorbis-1.3.3-r1:=[${MULTILIB_USEDEP}]
-		>=media-libs/opus-1.1:=[${MULTILIB_USEDEP}]
+		media-libs/flac:=[${MULTILIB_USEDEP}]
+		media-libs/libogg:=[${MULTILIB_USEDEP}]
+		media-libs/libvorbis:=[${MULTILIB_USEDEP}]
+		media-libs/opus:=[${MULTILIB_USEDEP}]
 	)
 	alsa? ( media-libs/alsa-lib:= )
-	sqlite? ( >=dev-db/sqlite-3.2 )"
+	sqlite? ( dev-db/sqlite )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
@@ -57,6 +57,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-octave \
+		--disable-werror \
 		$(use_enable static-libs static) \
 		$(use_enable !minimal external-libs) \
 		$(multilib_native_enable full-suite) \

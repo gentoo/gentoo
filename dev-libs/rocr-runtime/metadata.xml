@@ -12,10 +12,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/ROCR-Runtime</remote-id>
     </upstream>
-    <longdescription lang="en">
-        Radeon Open Compute Platform Runtime
-    </longdescription>
-    <use>
-      <flag name="non-free">Enables HSA image support using <pkg>dev-libs/hsa-ext-rocr</pkg></flag>
-    </use>
 </pkgmetadata>

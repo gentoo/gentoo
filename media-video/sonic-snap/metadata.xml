@@ -5,5 +5,4 @@
 	<email>media-video@gentoo.org</email>
 	<name>Gentoo Video project</name>
 </maintainer>
-<longdescription>Minimal webcam app for sn9c10x based camera controllers (mostly USB), with optional MPEG4 support.</longdescription>
 </pkgmetadata>

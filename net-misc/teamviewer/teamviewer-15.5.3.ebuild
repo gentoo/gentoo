@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PN=${PN}${PV/\.*}
-inherit desktop gnome2-utils systemd
+inherit desktop xdg-utils systemd
 
 DESCRIPTION="All-In-One Solution for Remote Access and Support over the Internet"
 HOMEPAGE="https://www.teamviewer.com"
@@ -109,7 +109,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	elog "Please note that parallel installation of multiple versions of"
 	elog "TeamViewer is currently not supported at runtime. Bug #621818"
@@ -132,5 +132,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

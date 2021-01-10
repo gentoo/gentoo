@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit unpacker
 
@@ -17,21 +17,16 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!games-action/descent1-data"
 
-DEPEND="app-arch/unzip
-	app-arch/unarj"
+BDEPEND="app-arch/unzip
+	app-arch/arj"
 
 S="${WORKDIR}"
 
 src_unpack() {
 	unpack_zip ${A}
 
-	unarj e DESCENT1.SOW || die
-	mv descent.pig{,1} || die
-	unarj e DESCENT2.SOW || die
-	mv descent.pig{,2} || die
-
-	# From the sows, big porkie pies shall grow
-	cat descent.pig{1,2} > descent.pig || die
+	mv DESCENT2.SOW DESCENT1.S01 || die
+	arj e -v -y -_ DESCENT1.SOW || die
 }
 
 src_install() {

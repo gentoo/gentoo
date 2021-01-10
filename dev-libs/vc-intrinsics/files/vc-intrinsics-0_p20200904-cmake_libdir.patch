@@ -1,0 +1,21 @@
+--- a/GenXIntrinsics/CMakeLists.txt
++++ b/GenXIntrinsics/CMakeLists.txt
+@@ -52,15 +52,15 @@
+   # we need to limit it to external build
+   if(BUILD_EXTERNAL)
+     install(TARGETS LLVMGenXIntrinsics EXPORT LLVMGenXIntrinsicsTargets
+-      LIBRARY DESTINATION lib
+-      ARCHIVE DESTINATION lib
++      LIBRARY DESTINATION ${TARGET_LIBDIR}
++      ARCHIVE DESTINATION ${TARGET_LIBDIR}
+       RUNTIME DESTINATION bin
+       INCLUDES DESTINATION include
+     )
+ 
+     install(EXPORT LLVMGenXIntrinsicsTargets
+       FILE LLVMGenXIntrinsicsConfig.cmake
+-      DESTINATION lib/cmake/LLVMGenXIntrinsics
++      DESTINATION ${TARGET_LIBDIR}/cmake/LLVMGenXIntrinsics
+     )
+   endif() # BUILD_EXTERNAL
+ endif() # INSTALL_REQUIRED

@@ -1,0 +1,21 @@
+diff --git a/iptc/xtables.py b/iptc/xtables.py
+index cf21029..8f62164 100644
+--- a/iptc/xtables.py
++++ b/iptc/xtables.py
+@@ -4,6 +4,7 @@ import ctypes as ct
+ import os
+ import sys
+ import weakref
++import pathlib
+ 
+ from . import version
+ from .util import find_library, find_libc
+@@ -805,7 +806,7 @@ _lib_xtables, xtables_version = find_library(_searchlib)
+ _xtables_libdir = os.getenv("XTABLES_LIBDIR")
+ if _xtables_libdir is None:
+     import re
+-    ldconfig_path_regex = re.compile('^(/.*):$')
++    ldconfig_path_regex = re.compile(r'^(/.*): \(.*$')
+     import subprocess
+     ldconfig = subprocess.Popen(
+         ('/sbin/ldconfig', '-N', '-v'),

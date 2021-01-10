@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="A C library that implements a dynamic array"
 HOMEPAGE="http://judy.sourceforge.net/"
@@ -30,5 +30,5 @@ multilib_src_configure() {
 
 multilib_src_install_all(){
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

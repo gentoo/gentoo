@@ -1,0 +1,63 @@
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -1,5 +1,7 @@
+ #include "common.h"
+ 
++extern gboolean fwks_quit;
++
+ void on_main_window_delete(GtkWidget *widget, GdkEvent *event, struct Interface *interface)
+ {
+     frameworks_interface_quit(interface);
+--- a/src/camera.c
++++ b/src/camera.c
+@@ -1,6 +1,8 @@
+ #include <math.h>
+ #include "common.h"
+ 
++extern gboolean fwks_quit;
++
+ /* internal function prototypes */
+ gpointer read_thread(gpointer data);
+ void reset_buffer(struct Camera *camera, struct RawBuf *buf);
+--- a/src/colorspace.c
++++ b/src/colorspace.c
+@@ -14,7 +14,7 @@
+ #define BGR24_R(start) start+2
+ 
+ /* Global vars */
+-gint force_palette;
++extern gint force_palette;
+ 
+ void
+ compose_yuv_to_rgb(guint8 y, gint32 ug, gint32 ub, gint32 vg, gint32 vr,
+--- a/src/common.h
++++ b/src/common.h
+@@ -42,4 +42,5 @@
+ #include "frameworks.h"
+ 
+ /* global vars */
+-gboolean fwks_quit;
++extern gboolean fwks_quit;
++extern gint force_palette;
+--- a/src/frameworks.c
++++ b/src/frameworks.c
+@@ -32,7 +32,7 @@ gboolean fwks_quit = FALSE;
+ 
+ /* Hack to allow forcing of palette for webcams that lie about their paletter
+  * (or more likely bugs in frameworks decode the thing wrong... */
+-gint force_palette = -1;
++extern gint force_palette = -1;
+ 
+ int main(int argc, char *argv[])
+ {
+--- a/src/interface.c
++++ b/src/interface.c
+@@ -9,6 +9,8 @@
+ #define FWKS_OVERLAY_OPACITY 60  /* between 0..255, the opacity of the overlays */
+ #define FWKS_OPACITY_FULL 255  /* full opacity */
+ 
++extern gboolean fwks_quit;
++
+ gpointer test_thread(gpointer data);
+ 
+ gpointer display_thread(gpointer data);

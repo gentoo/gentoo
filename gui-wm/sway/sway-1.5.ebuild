@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -33,7 +33,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	media-libs/mesa[gles2,libglvnd]
+	media-libs/mesa[gles2,libglvnd(+)]
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )

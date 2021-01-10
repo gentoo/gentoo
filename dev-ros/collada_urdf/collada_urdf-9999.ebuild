@@ -26,6 +26,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
+	test? (
+		dev-cpp/gtest
+	)
 "
 BDEPEND="
 	dev-ros/cmake_modules

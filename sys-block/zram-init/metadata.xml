@@ -2,11 +2,20 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
-
 	<upstream>
+		<maintainer status="active">
+			<name>Martin Väth</name>
+			<email>martin@mvath.de</email>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/vaeth/zram-init/master/ChangeLog</changelog>
+		<bugs-to>https://github.com/vaeth/zram-init/issues/</bugs-to>
 		<remote-id type="github">vaeth/zram-init</remote-id>
 	</upstream>
 </pkgmetadata>

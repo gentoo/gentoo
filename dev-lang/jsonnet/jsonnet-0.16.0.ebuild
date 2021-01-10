@@ -15,7 +15,7 @@ IUSE="custom-optimization python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 DEPEND="
 	python? ( ${PYTHON_DEPS} )
 "

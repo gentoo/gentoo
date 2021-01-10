@@ -42,6 +42,12 @@ PATCHES=( "${FILESDIR}/gpac.patch" )
 src_configure() {
 	tc-export CC
 
+	if [[ ${ABI} == x86 || ${ABI} == amd64 ]]; then
+		export AS="nasm"
+	else
+		export AS="${CC}"
+	fi
+
 	# let upstream pick the optimization level by default
 	use custom-cflags || filter-flags -O?
 

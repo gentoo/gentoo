@@ -3,9 +3,6 @@
 
 EAPI=7
 
-# Force users doing their own patches to install their own tools
-AUTOTOOLS_AUTO_DEPEND=no
-
 inherit multilib systemd toolchain-funcs autotools flag-o-matic usr-ldscript
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"

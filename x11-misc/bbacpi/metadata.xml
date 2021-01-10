@@ -5,9 +5,6 @@
 		<email>desktop-misc@gentoo.org</email>
 		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
-	<longdescription lang="en">
-Utility for viewing ACPI data via X11
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">bbacpi</remote-id>
 	</upstream>

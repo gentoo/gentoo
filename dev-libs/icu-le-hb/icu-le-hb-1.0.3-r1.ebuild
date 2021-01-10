@@ -12,7 +12,7 @@ SRC_URI="https://github.com/behdad/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="icu"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 # dev-libs/icu is not linked into icu-le-hb but the latter still needs
@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-icu68.patch" #751931
+)
 
 src_prepare() {
 	default

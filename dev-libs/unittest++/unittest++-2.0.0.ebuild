@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A lightweight unit testing framework for C++"
 HOMEPAGE="https://unittest-cpp.github.io/"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,7 +19,8 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${MY_P}"
+# https://github.com/unittest-cpp/unittest-cpp/commit/2423fcac7668aa9c331a2dcf024c3ca06742942d
+PATCHES=( "${FILESDIR}/${P}-fix-tests-with-clang.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare

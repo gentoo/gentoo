@@ -1,21 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python{3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="xml"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20191204"
-EXTRAS_VER="1.36"
+MY_RELEASEDATE="20200710"
+EXTRAS_VER="1.37"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
 
-IUSE="audit dbus pam split-usr"
+IUSE="audit pam split-usr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -41,23 +41,17 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
-	>=sys-libs/libcap-1.10-r10:=
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+),${PYTHON_USEDEP}]
-	sys-libs/libcap-ng:=
 	>=sys-libs/libsepol-${SEPOL_VER}:=
+	sys-libs/libcap-ng:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	sys-devel/gettext
-	dev-python/ipy[${PYTHON_USEDEP}]
-	dbus? (
-		sys-apps/dbus
-		dev-libs/dbus-glib:=
-	)
 	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
 	pam? ( sys-libs/pam:= )
 	${PYTHON_DEPS}"
 
-### libcgroup -> seunshare
-### dbus -> restorecond
+# Avoid dependency loop in the cross-compile case, bug #755173
+# (Still exists in native)
+BDEPEND="sys-devel/gettext"
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
@@ -79,7 +73,7 @@ src_prepare() {
 	cd "${S}" || die "Failed to switch to ${S}"
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live ebuilds please use /etc/portage/patches
-		eapply "${FILESDIR}/policycoreutils-2.7-0001-newrole-not-suid.patch"
+		eapply "${FILESDIR}/policycoreutils-3.1-0001-newrole-not-suid.patch"
 	fi
 
 	# rlpkg is more useful than fixfiles
@@ -107,7 +101,6 @@ src_compile() {
 			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
-			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)"
@@ -126,7 +119,6 @@ src_install() {
 			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
-			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \

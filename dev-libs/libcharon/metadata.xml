@@ -24,6 +24,12 @@
 	<slots>
 		<subslots>soname major version number</subslots>
 	</slots>
+	<longdescription>
+		Library to read and write several 3D-printing related file formats including G-Code and Ultimaker File Package (UFP).
+	</longdescription>
+	<use>
+		<flag name="client">Install the charon client library</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Ultimaker/libCharon</remote-id>
 	</upstream>

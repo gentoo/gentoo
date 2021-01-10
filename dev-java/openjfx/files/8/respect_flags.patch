@@ -1,0 +1,22 @@
+diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
+index 022d073..8bccdd8 100644
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -46,6 +46,9 @@ def commonFlags = [
+         "-fstack-protector",
+         "-W", "-Wall", "-Wno-unused", "-Wno-parentheses", "-Werror=implicit-function-declaration"] // warning flags
+ 
++
++commonFlags.addAll(System.getenv('CFLAGS').trim().split(" "))
++
+ if (!IS_64) {
+     commonFlags += "-m32"
+ }
+@@ -61,6 +64,7 @@ def linkFlags = ["-static-libgcc", "-static-libstdc++", "-shared", commonFlags,
+                  "-z", "relro",
+                  "-Wl,--gc-sections"].flatten()
+ def defaultLinkFlags = linkFlags.flatten()
++linkFlags.addAll(System.getenv('LDFLAGS').trim().split(" "))
+ 
+ def gtk2CCFlags = [  ];
+ def gtk3CCFlags = [ "-Wno-deprecated-declarations" ];

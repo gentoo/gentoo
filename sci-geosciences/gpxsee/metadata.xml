@@ -9,9 +9,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-    GPXSee is a GPS log file viewer and analyzer that supports GPX, TCX, KML, FIT, IGC and NMEA files.
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">gpxsee</remote-id>
   </upstream>

@@ -1,0 +1,31 @@
+--- a/tests/test.lua
++++ b/tests/test.lua
+@@ -10,6 +10,17 @@
+ local json_safe = require "cjson.safe"
+ local util = require "cjson.util"
+ 
++local function json_encode_output_type(value)
++    local text = json.encode(value)
++    if string.match(text, "{.*}") then
++       return "object"
++    elseif string.match(text, "%[.*%]") then
++       return "array"
++    else
++       return "scalar"
++    end
++end
++
+ local function gen_raw_octets()
+     local chars = {}
+     for i = 0, 255 do chars[i + 1] = string.char(i) end
+@@ -292,8 +303,8 @@
+       json.encode, { { [1] = "one", [4] = "sparse test" } },
+       true, { '["one",null,null,"sparse test"]' } },
+     { "Encode sparse array as object",
+-      json.encode, { { [1] = "one", [5] = "sparse test" } },
+-      true, { '{"5":"sparse test","1":"one"}' } },
++      json_encode_output_type, { { [1] = "one", [5] = "sparse test" } },
++      true, { 'object' } },
+     { "Encode table with numeric string key as object",
+       json.encode, { { ["2"] = "numeric string key test" } },
+       true, { '{"2":"numeric string key test"}' } },

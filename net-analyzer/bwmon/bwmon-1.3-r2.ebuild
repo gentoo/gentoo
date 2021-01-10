@@ -16,7 +16,7 @@ DEPEND="
 
 SLOT="0"
 LICENSE="GPL-2 public-domain"
-KEYWORDS="amd64 hppa ppc sparc x86"
+KEYWORDS="amd64 ~hppa ppc sparc x86"
 
 src_prepare() {
 	epatch \

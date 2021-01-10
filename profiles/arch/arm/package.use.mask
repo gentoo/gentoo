@@ -1,6 +1,41 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan
+sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
+sys-libs/compiler-rt-sanitizers -profile -xray
+
+# Rick Farina <zerochaos@gentoo.org> (2020-12-18)
+# net-wireless/libxtrx et all needs testing
+net-wireless/gr-osmosdr xtrx
+
+# Rick Farina <zerochaos@gentoo.org> (2020-12-18)
+# dev-python/thrift not keyworded
+net-wireless/gnuradio ctrlport
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
+# app-i18n/fcitx:4 not keyworded.
+media-libs/libsdl2 fcitx4
+
+# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Dependency only keyworded on specific arm profiles.
+dev-libs/efl avif
+
+# Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
+# dev-util/dogtail is not keyworded for arm
+app-text/atril test
+
+# Sam James <sam@gentoo.org> (2020-09-05)
+# nvidia-texture-tools not useful here
+media-libs/devil nvtt
+games-strategy/0ad nvtt
+
+# James Le Cuirot <chewi@gentoo.org> (2020-08-19)
+# Cinnamon is not keyworded on this architecture.
+x11-themes/arc-theme cinnamon
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # armv5 and older has no virtual/rust support yet, needed by newer
 # gnome-base/librsvg, et al
@@ -54,10 +89,6 @@ net-misc/whois xcrypt
 # and as for now we have only stable mate versions
 mate-base/mate bluetooth
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# media-libs/libheif is not keyworded
-media-gfx/gimp heif
-
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on arm
 dev-util/schroot zfs
@@ -110,10 +141,6 @@ sys-apps/fwupd dell thunderbolt
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 networkauth
-
-# Michał Górny <mgorny@gentoo.org> (2018-10-18)
-# Requires unported sys-libs/netbsd-csu.
-sys-devel/clang-runtime crt
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
@@ -175,10 +202,6 @@ net-misc/bfgminer adl lm-sensors
 # no point in pursuing it right now.
 app-shells/bash-completion test
 
-# James Le Cuirot <chewi@gentoo.org> (2017-04-25)
-# Oracle doesn't include VisualVM on this platform.
-dev-java/oracle-jdk-bin visualvm
-
 # Patrice Clement <monsieurp@gentoo.org> (2017-04-09)
 # Enable MQTT support on supported architectures
 app-metrics/collectd -collectd_plugins_mqtt
@@ -215,13 +238,6 @@ media-sound/rhythmbox upnp-av
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
-
-# David Seifert <soap@gentoo.org> (2016-07-31)
-# media-gfx/graphicsmagick is not keyworded on arm, users will need
-# to enable imagemagick flag and disable graphicsmagick use flag
-# to enable conversion facilities
-sci-mathematics/octave graphicsmagick
-media-gfx/zbar graphicsmagick
 
 # Amy Winston <amynka@gentoo.org> (2016-06-12)
 # does not build on arm at all (upstream bug)
@@ -280,6 +296,8 @@ media-libs/freeimage tiff
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
 # and this kind of reverse engineering work likely violates many agreements, so we mask the flag.
 www-client/chromium widevine
+www-client/vivaldi widevine
+www-client/vivaldi-snapshot widevine
 
 # Markus Meier <maekke@gentoo.org> (2015-01-17)
 # Unkeyworded deps, bug #536226
@@ -290,20 +308,10 @@ net-vpn/strongswan strongswan_plugins_unbound
 app-i18n/anthy canna-2ch
 app-i18n/scim-anthy kasumi
 
-# Gilles Dartiguelongue <eva@gentoo.org> (2014-12-23)
-# New dependencies for wayland support in Gnome 3.14
-# See bug #533420.
-media-libs/clutter egl wayland
-media-libs/clutter-gtk wayland
-
 # Markus Meier <maekke@gentoo.org> (2014-11-29)
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Michael Weber <xmw@gentoo.org> (2014-11-15)
-# missing keywords on media-libs/libharu
-www-client/netsurf pdf-writer
 
 # Markus Meier <maekke@gentoo.org> (2014-11-14)
 # Unkeyworded deps, bug #511532
@@ -353,10 +361,6 @@ mail-filter/opendkim opendbx stats
 # app-text/pandoc is not keyworded on arm arch.
 app-emulation/xen-tools system-qemu doc
 
-# Markus Meier <maekke@gentoo.org> (2014-02-23)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
@@ -397,12 +401,6 @@ sci-libs/linux-gpib firmware
 # MKL not available on this arch
 media-gfx/povray mkl
 
-# Benda Xu <heroxbd@gentoo.org> (2013-04-01)
-# Sam James <sam@gentoo.org> (2020-06-29)
-# net-misc/x11-ssh-askpass nor
-# net-misc/ssh-askpass-fullscreen keyworded
-net-misc/unison gtk
-
 # Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -425,7 +423,6 @@ dev-vcs/subversion java
 media-libs/libjpeg-turbo java
 net-dns/libidn java
 net-misc/tigervnc java
-net-print/cups java
 sys-devel/gettext java
 sys-libs/db java
 

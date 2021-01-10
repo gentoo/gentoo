@@ -10,10 +10,11 @@
 	<flag name="drm">Enable drm compositor support</flag>
 	<flag name="editor">Install wayland-editor example application</flag>
 	<flag name="fbdev">Enable fbdev compositor support</flag>
-	<flag name="fullscreen">Enable fullscreen/kiosk shell</flag>
+	<flag name="fullscreen">Enable fullscreen shell</flag>
 	<flag name="gles2">Use GLESv2 cairo instead of full GL</flag>
 	<flag name="headless">Headless backend and a noop renderer, mainly for testing purposes</flag>
 	<flag name="ivi">Enable the IVI shell</flag>
+	<flag name="kiosk">Enable the kiosk shell</flag>
 	<flag name="launch">Install weston-launch utility</flag>
 	<flag name="pipewire">Enable virtual remote output with Pipewire on DRM backend</flag>
 	<flag name="rdp">Enable Remote Desktop Protocol compositor support</flag>

@@ -1,10 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python2_7 )
-
-inherit python-any-r1
+EAPI=7
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="https://www.gnu.org/software/automake/"
@@ -14,8 +11,8 @@ LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:3}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+IUSE=""
+RESTRICT="test"
 
 RDEPEND="dev-lang/perl
 	>=sys-devel/automake-wrapper-10
@@ -23,8 +20,7 @@ RDEPEND="dev-lang/perl
 	>=sys-apps/texinfo-4.7
 	sys-devel/gnuconfig"
 DEPEND="${RDEPEND}
-	sys-apps/help2man
-	test? ( ${PYTHON_DEPS} )"
+	sys-apps/help2man"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.6-infopage-namechange-r1.patch
@@ -37,10 +33,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8-perl-5.11.patch
 )
 
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
-
 src_prepare() {
 	default
 	export WANT_AUTOCONF=2.5
@@ -49,7 +41,7 @@ src_prepare() {
 # slot the info pages.  do this w/out munging the source so we don't have
 # to depend on texinfo to regen things.  #464146 (among others)
 slot_info_pages() {
-	pushd "${ED%/}"/usr/share/info >/dev/null || die
+	pushd "${ED}"/usr/share/info >/dev/null || die
 	rm -f dir || die
 
 	# Rewrite all the references to other pages.
@@ -83,12 +75,13 @@ src_install() {
 	for x in aclocal automake ; do
 		help2man "perl -Ilib ${x}" > ${x}-${SLOT}.1
 		doman ${x}-${SLOT}.1
-		rm -f "${ED%/}"/usr/bin/${x}
+		rm -f "${ED}"/usr/bin/${x}
 	done
 
 	# remove all config.guess and config.sub files replacing them
 	# w/a symlink to a specific gnuconfig version
 	for x in guess sub ; do
-		dosym ../gnuconfig/config.${x} /usr/share/${PN}-${SLOT}/config.${x}
+		dosym ../gnuconfig/config.${x} \
+			/usr/share/${PN}-${SLOT}/config.${x}
 	done
 }

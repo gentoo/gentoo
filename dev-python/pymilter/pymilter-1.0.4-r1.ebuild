@@ -2,7 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+
+DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit distutils-r1
 
@@ -12,11 +15,16 @@ SRC_URI="https://github.com/sdgathman/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
+KEYWORDS="amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
-RDEPEND="${DEPEND}"
+CDEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )"
+
+DEPEND="${CDEPEND}
+	test? ( $(python_gen_impl_dep sqlite) )"
+
+RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
 

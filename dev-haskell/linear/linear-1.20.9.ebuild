@@ -47,6 +47,8 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/test-framework-hunit-0.3 )
 "
 
+PATCHES=("${FILESDIR}"/${P}-base-orphans-0.8.3.patch)
+
 src_configure() {
 	haskell-cabal_src_configure \
 		--flag=-herbie \

@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">ropemode</remote-id>
+		<remote-id type="github">python-rope/ropemode</remote-id>
 	</upstream>
 </pkgmetadata>

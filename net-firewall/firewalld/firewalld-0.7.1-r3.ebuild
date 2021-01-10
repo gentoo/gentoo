@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit autotools bash-completion-r1 gnome2-utils l10n linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="gui +nftables +iptables"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

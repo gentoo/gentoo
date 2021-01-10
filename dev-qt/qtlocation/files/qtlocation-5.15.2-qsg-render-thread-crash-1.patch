@@ -1,0 +1,66 @@
+From 4fe9e0ed027134a833b2243597a2ccd00987b559 Mon Sep 17 00:00:00 2001
+From: Piotr Mikolajczyk <piotr.mikolajczyk@qt.io>
+Date: Tue, 29 Sep 2020 10:41:23 +0200
+Subject: [PATCH] Fix crash when showing Map QML comp. for 2nd+ time
+
+Crash caused by storing pointer to a node that could be deleted elsewhere
+
+Fixes: QTBUG-85260
+Change-Id: I871123322fac84b8bf91e9bab8ecad08e75c2854
+Reviewed-by: Paolo Angelelli <paolo.angelelli.qt@gmail.com>
+---
+ src/location/labs/qsg/qgeomapobjectqsgsupport.cpp | 29 ++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/src/location/labs/qsg/qgeomapobjectqsgsupport.cpp b/src/location/labs/qsg/qgeomapobjectqsgsupport.cpp
+index 0e1df8f6c..cd1801305 100644
+--- a/src/location/labs/qsg/qgeomapobjectqsgsupport.cpp
++++ b/src/location/labs/qsg/qgeomapobjectqsgsupport.cpp
+@@ -48,7 +48,32 @@ static int findMapObject(QGeoMapObject *o, const QList<MapObject> &list)
+     }
+     return -1;
+ }
++namespace  {
++bool findNodeInStructure(QSGNode *root, QSGNode *item)
++{
++    if (root == nullptr || item == nullptr)
++        return false;
++    if (root == item)
++        return true;
++    auto currentChild = root->firstChild();
++    // First check the direct child nodes and if not found let's dive deeper
++    bool bFound = (item == currentChild);
++
++    while (!bFound && currentChild) {
++        currentChild = currentChild->nextSibling();
++        bFound = (item == currentChild);
++    }
+ 
++    if (!bFound) {
++        currentChild = root->firstChild();
++        while (!bFound && currentChild) {
++            bFound = findNodeInStructure(currentChild, item);
++            currentChild = currentChild->nextSibling();
++        }
++    }
++    return bFound;
++}
++}
+ bool QGeoMapObjectQSGSupport::createMapObjectImplementation(QGeoMapObject *obj, QGeoMapPrivate *d)
+ {
+     QExplicitlySharedDataPointer<QGeoMapObjectPrivate> pimpl =
+@@ -157,9 +182,11 @@ void QGeoMapObjectQSGSupport::updateMapObjects(QSGNode *root, QQuickWindow *wind
+ {
+     if (!root)
+         return;
++    if (!findNodeInStructure(root, m_mapObjectsRootNode))
++         m_mapObjectsRootNode = nullptr;
+     if (!m_mapObjectsRootNode) {
+         m_mapObjectsRootNode = new QDeclarativePolygonMapItemPrivateOpenGL::RootNode();
+-        root->appendChildNode(m_mapObjectsRootNode);
++        root->appendChildNode(m_mapObjectsRootNode); // PASSING OWNERSHIP!
+     }
+ 
+     m_mapObjectsRootNode->removeAllChildNodes();
+-- 
+2.16.3

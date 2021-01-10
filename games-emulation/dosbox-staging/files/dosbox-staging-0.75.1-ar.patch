@@ -1,0 +1,11 @@
+diff -Naur dosbox-staging-0.75.1.orig/configure.ac dosbox-staging-0.75.1/configure.ac
+--- dosbox-staging-0.75.1.orig/configure.ac	2020-08-19 10:49:45.000000000 +0200
++++ dosbox-staging-0.75.1/configure.ac	2020-09-04 23:03:11.375920481 +0200
+@@ -17,6 +17,7 @@
+ AC_CONFIG_HEADER(config.h)
+ 
+ dnl Checks for programs.
++AM_PROG_AR
+ AC_PROG_MAKE_SET
+ AC_PROG_CC
+ AC_PROG_CPP

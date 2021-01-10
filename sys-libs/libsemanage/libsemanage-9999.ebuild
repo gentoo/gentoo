@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20191204"
+MY_RELEASEDATE="20200710"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -27,21 +27,17 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
 	>=sys-libs/libselinux-${SELNX_VER}[${MULTILIB_USEDEP}]
 	>=sys-process/audit-2.2.2[${MULTILIB_USEDEP}]
-	>=dev-libs/ustr-1.0.4-r2[${MULTILIB_USEDEP}]
-	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
+	${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-lang/swig-2.0.4-r1
 	sys-devel/bison
 	sys-devel/flex
-	python? (
-		>=dev-lang/swig-2.0.4-r1
-		virtual/pkgconfig
-	)"
+	virtual/pkgconfig"
 
 # tests are not meant to be run outside of the
 # full SELinux userland repo
@@ -84,7 +80,7 @@ multilib_src_compile() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		all
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi; then
 		building_py() {
 			emake \
 				AR="$(tc-getAR)" \
@@ -102,7 +98,7 @@ multilib_src_install() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${ED}" install
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi; then
 		installation_py() {
 			emake DESTDIR="${ED}" \
 				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
@@ -111,6 +107,11 @@ multilib_src_install() {
 		}
 		python_foreach_impl installation_py
 	fi
+}
+
+multiib_src_install_all() {
+	python_setup
+	python_fix_shebang "${ED}"/usr/libexec/selinux/semanage_migrate_store
 }
 
 pkg_postinst() {
@@ -124,12 +125,4 @@ pkg_postinst() {
 		ewarn "For more information, please see"
 		ewarn "- https://github.com/SELinuxProject/selinux/wiki/Policy-Store-Migration"
 	fi
-
-	# Run the store migration without rebuilds
-	for POLICY_TYPE in ${POLICY_TYPES} ; do
-		if [ ! -d "${EROOT}/var/lib/selinux/${POLICY_TYPE}/active" ] ; then
-			einfo "Migrating store ${POLICY_TYPE} (without policy rebuild)."
-			"${EROOT}/usr/libexec/selinux/semanage_migrate_store" -n -s "${POLICY_TYPE}" || die "Failed to migrate store ${POLICY_TYPE}"
-		fi
-	done
 }

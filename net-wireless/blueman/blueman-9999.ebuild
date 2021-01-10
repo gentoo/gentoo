@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 inherit autotools gnome2-utils linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
@@ -12,7 +12,6 @@ HOMEPAGE="https://github.com/blueman-project/blueman"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/blueman-project/blueman.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV/_/.}/${P/_/.}.tar.xz"
 	S=${WORKDIR}/${P/_/.}

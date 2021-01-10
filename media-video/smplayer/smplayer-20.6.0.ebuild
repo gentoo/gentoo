@@ -34,7 +34,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	|| (
-		media-video/mpv[libass,X]
+		media-video/mpv[libass(+),X]
 		media-video/mplayer[bidi?,libass,png,X]
 	)
 "

@@ -1,9 +1,9 @@
 # Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils gnome2-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -24,16 +24,17 @@ SLOT="4"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4[table]"
-DEPEND="${RDEPEND}
+BDEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/pkgconfig"
+DEPEND=">=app-i18n/fcitx-4.2.9:4[table]"
+RDEPEND="${DEPEND}"
 
 DOCS=(AUTHORS)
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

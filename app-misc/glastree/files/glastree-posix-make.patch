@@ -1,8 +1,8 @@
 Make sure the perl code is valid both with and without the backslashes.
 Some make versions strip them, others don't.
 
---- glastree-1.04/Makefile
-+++ glastree-1.04/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -24,8 +24,8 @@
  
  install:

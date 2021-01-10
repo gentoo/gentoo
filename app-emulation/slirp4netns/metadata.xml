@@ -9,10 +9,6 @@
 		<email>g.braeunlich@disroot.org</email>
 		<name>Gerhard Bräunlich</name>
 	</maintainer>
-	<longdescription lang="en">
-		slirp4netns provides user-mode networking ("slirp")
-		for unprivileged network namespaces.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">rootless-containers/slirp4netns</remote-id>
 	</upstream>

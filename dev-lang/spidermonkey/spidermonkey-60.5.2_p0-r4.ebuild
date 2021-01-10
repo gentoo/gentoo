@@ -17,10 +17,13 @@ SRC_URI="https://dev.gentoo.org/~axs/distfiles/${MY_P}.tar.bz2
 
 LICENSE="NPL-1.1"
 SLOT="60"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="debug +jit minimal +system-icu test"
 
-RESTRICT="!test? ( test ) ia64? ( test )"
+# Disable tests:
+# Version is dead and most issues are related to the use of
+# system's ICU.
+RESTRICT="test"
 
 S="${WORKDIR}/${MY_P%.rc*}"
 

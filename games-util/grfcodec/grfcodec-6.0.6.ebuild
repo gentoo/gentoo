@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ HOMEPAGE="https://dev.openttdcoop.org/projects/grfcodec"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/libpng:0"
@@ -26,6 +26,8 @@ DEPEND="
 	dev-lang/perl
 	dev-libs/boost
 "
+
+PATCHES=("${FILESDIR}/${PN}-6.0.6-gcc10.patch")
 
 src_prepare() {
 	default

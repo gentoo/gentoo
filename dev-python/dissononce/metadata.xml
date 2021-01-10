@@ -14,5 +14,6 @@
 	<upstream>
 		<bugs-to>https://github.com/tgalal/dissononce/issues</bugs-to>
 		<remote-id type="github">tgalal/dissononce</remote-id>
+		<remote-id type="pypi">dissononce</remote-id>
 	</upstream>
 </pkgmetadata>

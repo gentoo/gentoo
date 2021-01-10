@@ -25,6 +25,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	dbus? ( virtual/pkgconfig )
@@ -32,6 +34,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
+	"${FILESDIR}"/${PN}-1.10.0-usbmon.patch
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 

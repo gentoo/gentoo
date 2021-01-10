@@ -5,10 +5,6 @@
     <email>bircoph@gentoo.org</email>
     <name>Andrew Savchenko</name>
   </maintainer>
-  <longdescription>
-  Libclsync is a library for remote control and monitoring of
-  <pkg>app-admin/clsync</pkg> processes.
-</longdescription>
   <use>
     <flag name="extra-debug">Enable extra debugging. This will hurt performance badly. Be ready for tons of output.</flag>
     <flag name="extra-hardened">Enable extra security checks. This may hurt performance.</flag>

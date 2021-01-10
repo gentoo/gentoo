@@ -2,61 +2,52 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
-
 	inherit git-r3
+	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
 else
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
+S="${WORKDIR}/${P/_/-}"
+
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps +refclock +rtc samba +seccomp +sechash selinux"
+REQUIRED_USE="sechash? ( nettle )"
+RESTRICT="test"
 
-IUSE="
-	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock +rtc
-	+seccomp +sechash selinux
-"
+BDEPEND="nettle? ( virtual/pkgconfig )"
 
-REQUIRED_USE="
-	?? ( libedit readline )
-	sechash? ( nettle )
-"
-
-RESTRICT=test
-
-BDEPEND=""
-
-CDEPEND="
-	caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap )
-	libedit? ( dev-libs/libedit )
-	nettle? ( dev-libs/nettle:= )
-	readline? ( >=sys-libs/readline-4.1-r4:= )
-	seccomp? ( sys-libs/libseccomp )
-"
+if [[ ${PV} == "9999" ]]; then
+	# Needed for doc generation in 9999
+	BDEPEND+=" virtual/w3m"
+	REQUIRED_USE+=" html"
+fi
 
 DEPEND="
-	${CDEPEND}
+	caps? (
+		acct-group/ntp
+		acct-user/ntp
+		sys-libs/libcap
+	)
+	libedit? ( dev-libs/libedit )
+	nettle? ( dev-libs/nettle:= )
+	seccomp? ( sys-libs/libseccomp )
 	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
 "
-
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
-
-if [[ ${PV} == "9999" ]]; then
-	BDEPEND+=" virtual/w3m"
-fi
-
-S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
@@ -70,68 +61,61 @@ src_prepare() {
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
 
-	# Copy for potential user fixup
-	cp "${FILESDIR}"/chronyd.conf-r1 "${T}"/chronyd.conf
-	cp examples/chronyd.service "${T}"/chronyd.service
+	sed -i \
+		-e 's|RELOADDNS||g' \
+		-e 's|pkg-config|${PKG_CONFIG}|g' \
+		configure || die
 
-	# Set config for privdrop
+	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf || die
+}
+
+src_configure() {
 	if ! use caps; then
 		sed -i \
-			-e 's/-u ntp//' \
-			"${T}"/chronyd.conf "${T}"/chronyd.service || die
+			-e 's/ -u ntp//' \
+			"${T}"/chronyd.conf examples/chronyd.service || die
 	fi
 
 	if ! use seccomp; then
 		sed -i \
-			-e 's/-F 1//' \
-			"${T}"/chronyd.conf "${T}"/chronyd.service || die
-	fi
-}
-
-src_configure() {
-	tc-export CC
-
-	local CHRONY_EDITLINE
-	# ./configure legend:
-	# --disable-readline : disable line editing entirely
-	# --without-readline : do not use sys-libs/readline (enabled by default)
-	# --without-editline : do not use dev-libs/libedit (enabled by default)
-	if ! use readline && ! use libedit; then
-		CHRONY_EDITLINE='--disable-readline'
-	else
-		CHRONY_EDITLINE+=" $(usex readline '' --without-readline)"
-		CHRONY_EDITLINE+=" $(usex libedit '' --without-editline)"
+			-e 's/ -F 0//' \
+			"${T}"/chronyd.conf examples/chronyd.service || die
 	fi
 
+	tc-export CC PKG_CONFIG
+
+	# Note: ncurses and nss switches are mentioned in the configure script but
+	# do nothing
 	# not an autotools generated script
 	local myconf=(
 		$(use_enable seccomp scfilter)
-		$(usex adns '' --disable-asyncdns)
 		$(usex caps '' --disable-linuxcaps)
 		$(usex cmdmon '' --disable-cmdmon)
 		$(usex ipv6 '' --disable-ipv6)
+		$(usex libedit '' --without-editline)
 		$(usex nettle '' --without-nettle)
 		$(usex ntp '' --disable-ntp)
 		$(usex phc '' --disable-phc)
 		$(usex pps '' --disable-pps)
 		$(usex refclock '' --disable-refclock)
 		$(usex rtc '' --disable-rtc)
+		$(usex samba --enable-ntp-signd '')
 		$(usex sechash '' --disable-sechash)
-		${CHRONY_EDITLINE}
 		${EXTRA_ECONF}
 		--chronysockdir="${EPREFIX}/run/chrony"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--mandir="${EPREFIX}/usr/share/man"
 		--prefix="${EPREFIX}/usr"
 		--sysconfdir="${EPREFIX}/etc/chrony"
+		--with-hwclockfile="${EPREFIX}/etc/adjtime"
 		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
 		--without-nss
 		--without-tomcrypt
 	)
 
-	# print the ./configure call to aid in future debugging
-	echo bash ./configure "${myconf[@]}" >&2
-	bash ./configure "${myconf[@]}" || die
+	# print the ./configure call
+	echo sh ./configure "${myconf[@]}" >&2
+	sh ./configure "${myconf[@]}" || die
 }
 
 src_compile() {
@@ -174,7 +158,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_dounit "${T}"/chronyd.service
+	systemd_dounit examples/chronyd.service
 	systemd_dounit examples/chrony-wait.service
 	systemd_enable_ntpunit 50-chrony chronyd.service
 }

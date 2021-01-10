@@ -1,0 +1,42 @@
+--- a/python/netlink/route/links/bridge.py
++++ b/python/netlink/route/links/bridge.py
+@@ -6,7 +6,7 @@
+ 
+ """
+ 
+-from __future__ import absolute_import
++
+ 
+ from ... import core as netlink
+ from ..  import capi as capi
+@@ -19,10 +19,10 @@
+ 
+     def bridge_assert_ext_info(self):
+         if self._has_ext_info == False:
+-            print """
++            print("""
+             Please update your kernel to be able to call this method.
+             Your current kernel bridge version is too old to support this extention.
+-            """
++            """)
+             raise RuntimeWarning()
+ 
+     def port_state2str(self, state):
+--- a/doc/resolve-asciidoc-refs.py
++++ b/doc/resolve-asciidoc-refs.py
+@@ -22,4 +22,4 @@
+ 
+ rc = re.compile('|'.join(map(re.escape, sorted(refs, reverse=True))))
+ for line in open(sys.argv[1], 'r'):
+-	print rc.sub(translate, line),
++	print(rc.sub(translate, line), end=' ')
+--- a/doc/doxygen-link.py
++++ b/doc/doxygen-link.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python
+ 
+-from __future__ import print_function
++
+ import fileinput
+ import re
+ import sys

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit toolchain-funcs
+inherit systemd toolchain-funcs
 
-MY_RELEASEDATE="20191204"
+MY_RELEASEDATE="20200710"
 
 MY_P="${P//_/-}"
 IUSE=""
@@ -26,14 +26,11 @@ HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libsepol-${PV}:=
-	>=sys-libs/libselinux-${PV}:=
-	dev-libs/dbus-glib
-	dev-libs/libpcre:=
-	>=sys-libs/libcap-1.10-r10:="
+DEPEND="dev-libs/glib:2
+	>=sys-libs/libsepol-${PV}:=
+	>=sys-libs/libselinux-${PV}:="
 
-RDEPEND="${DEPEND}
-	!<sys-apps/policycoreutils-2.7_pre"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
@@ -47,7 +44,9 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	SYSTEMDSYSTEMUNITDIR="$(systemd_get_systemunitdir)" \
+		SYSTEMDUSERUNITDIR=$(systemd_get_userunitdir) \
+		emake DESTDIR="${D}" install
 
 	rm -rf "${D}/etc/rc.d" || die
 

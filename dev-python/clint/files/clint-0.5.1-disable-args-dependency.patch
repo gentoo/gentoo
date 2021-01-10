@@ -1,0 +1,19 @@
+commit e12338aa8f317c6f7e99fc2f4c2dc9424299b4ab
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sun Sep 13 16:54:20 2020 +0200
+
+    Do not require bundled args module
+
+diff --git a/setup.py b/setup.py
+index 0221184..e9e3fa5 100755
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,7 @@ if sys.argv[-1] == "publish":
+     publish()
+     sys.exit()
+ 
+-required = ['args']
++required = ['']
+ 
+ setup(
+     name='clint',

@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="A small program that grabs information and displays it on an external LCD"
-HOMEPAGE="https://lcd4linux.bulix.org/"
+HOMEPAGE="https://github.com/jmccrohan/lcd4linux/"
 SRC_URI="https://dev.gentoo.org/~conikost/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dmalloc outb"
 REQUIRED_USE="
 	?? ( lcd_devices_hd44780 lcd_devices_hd44780-i2c )
@@ -24,7 +24,7 @@ REQUIRED_USE="
 # Some drivers were removed from this list:
 # - lcdlinux: It's an ancient driver, which needs app-misc/lcd-linux, that made it never to the portage tree.
 # - lcdlinux: Besides, app-misc/lcd-linux won't compile on a modern linux kernel.
-# - st2205: It's needs dev-libs/libst2205,  which made it never to the portage tree and is quite outdated.
+# - st2205: It's needs dev-libs/libst2205, which made it never to the portage tree and is quite outdated.
 IUSE_LCD_DEVICES=(
 	ASTUSB BeckmannEgle BWCT CrystalFontz Curses Cwlinux D4D DPF EA232graphic EFN FutabaVFD
 	FW8888 G15 GLCD2USB HD44780 HD44780-I2C IRLCD LCD2USB LCDTerm LEDMatrix LPH7508 LUIse LW_ABP M50530
@@ -73,7 +73,7 @@ DEPEND_LCD_DEVICES="
 	lcd_devices_lcd2usb? ( virtual/libusb:0= )
 	lcd_devices_ledmatrix? ( virtual/libusb:0= )
 	lcd_devices_luise? (
-		dev-libs/luise-bin
+		dev-libs/luise
 		virtual/libusb:0=
 	)
 	lcd_devices_matrixorbitalgx? ( virtual/libusb:0= )
@@ -142,7 +142,11 @@ src_prepare() {
 		rm ax_python_devel.m4
 
 		# Use correct python version.
-		append-libs "-lpython${EPYTHON#python}m"
+		if use python_single_target_python3_6 || use python_single_target_python3_7; then
+			append-libs "-lpython${EPYTHON#python}m"
+		else
+			append-libs "-lpython${EPYTHON#python}"
+		fi
 	fi
 
 	eautoreconf

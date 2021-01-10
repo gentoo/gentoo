@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.5.0-prll.patch"
 	"${FILESDIR}/${PN}-2.6-search-datadir.patch"
 	"${FILESDIR}/${PN}-2.7-bison-parse-param.patch"
+	"${FILESDIR}/${PN}-2.7-AR.patch"
 )
 
 src_prepare() {

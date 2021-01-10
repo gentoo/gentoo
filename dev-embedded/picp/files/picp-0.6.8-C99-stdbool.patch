@@ -1,0 +1,83 @@
+--- a/atoi_base.h
++++ b/atoi_base.h
+@@ -17,6 +17,8 @@
+ #ifndef __ATOI_BASE_H_
+ #define __ATOI_BASE_H_
+ 
++#include <stdbool.h>
++
+ #ifdef WIN32
+ #define	bool	int
+ #endif
+--- a/parse.h
++++ b/parse.h
+@@ -17,6 +17,8 @@
+ #ifndef __PARSE_H_
+ #define __PARSE_H_
+ 
++#include <stdbool.h>
++
+ bool	GetNextByte(FILE *theFile, unsigned int *address, unsigned char *data);
+ void	InitParse();
+ 
+--- a/picsnoop/dos/serial.h
++++ b/picsnoop/dos/serial.h
+@@ -2,7 +2,7 @@
+ #ifndef __SERIAL_H_
+ #define __SERIAL_H_
+ 
+-#define	bool	int
++#include <stdbool.h>
+ 
+ #define	KEYINT		int86(0x16, &regs, &regs)
+ #define	KBHEAD		0x41a
+@@ -10,15 +10,12 @@
+ 
+ 
+ #ifndef	FALSE
+-#define	FALSE	0
++#define	FALSE	false
+ #endif
+ #ifndef	TRUE
+-#define	TRUE	1
++#define	TRUE	true
+ #endif
+ 
+-#define	false	FALSE
+-#define	true	TRUE
+-
+ #define	INUM1		12			// interrupt vector for com1
+ #define	INUM2		11			// interrupt vector for com2
+ 
+--- a/picsnoop/serial.h
++++ b/picsnoop/serial.h
+@@ -2,6 +2,8 @@
+ #ifndef __SERIAL_H_
+ #define __SERIAL_H_
+ 
++#include <stdbool.h>
++
+ #ifdef WIN32
+ #define	bool	int
+ #endif
+--- a/record.c
++++ b/record.c
+@@ -49,6 +49,7 @@
+ //-----------------------------------------------------------------------------
+ 
+ #include <stdio.h>
++#include <stdbool.h>
+ 
+ #ifdef WIN32
+ #include	<windows.h>
+--- a/serial.h
++++ b/serial.h
+@@ -17,6 +17,8 @@
+ #ifndef __SERIAL_H_
+ #define __SERIAL_H_
+ 
++#include <stdbool.h>
++
+ #ifdef WIN32
+ #define	bool	int
+ #endif

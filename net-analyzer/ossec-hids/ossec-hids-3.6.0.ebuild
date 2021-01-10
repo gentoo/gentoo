@@ -19,7 +19,7 @@ RDEPEND="acct-user/ossec
 	acct-user/ossecm
 	acct-user/ossecr
 	dev-libs/libevent
-	dev-libs/libpcre2
+	dev-libs/libpcre2[jit]
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )"

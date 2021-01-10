@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -16,8 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/jsonschema[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="${RDEPEND}"
 
 python_test() {
 	PYTHONPATH="${PWD}" python -m unittest \

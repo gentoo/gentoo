@@ -8,7 +8,4 @@
     <email>bkohler@gentoo.org</email>
     <name>Ben Kohler</name>
   </maintainer>
-  <use>
-    <flag name="librsync-bundled">Use bundled librsync library</flag>
-  </use>
 </pkgmetadata>

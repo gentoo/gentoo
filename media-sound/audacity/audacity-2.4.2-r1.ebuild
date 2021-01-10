@@ -17,9 +17,9 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
-IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame
-	+lv2 mad midi nls ogg oss portmidi +portmixer portsmf sbsms +soundtouch twolame vamp +vorbis +vst"
+KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 x86"
+IUSE="alsa doc ffmpeg +flac id3tag jack +ladspa +lv2 mad ogg oss
+	portmidi +portmixer portsmf sbsms twolame vamp +vorbis +vst"
 
 RESTRICT="test"
 
@@ -53,15 +53,19 @@ RDEPEND="dev-libs/expat
 "
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
+	sys-devel/gettext
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 "
+
+REQUIRED_USE="portmidi? ( portsmf )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.3-Fix-building-against-system-portaudio.patch
 	"${FILESDIR}/${P}-fix-vertical-track-resizing.patch"
 	"${FILESDIR}/${P}-fix-gettimeofday.patch"
 	"${FILESDIR}/${P}-fix-metainfo.patch"
+	"${FILESDIR}/${P}-add-missing-include-portaudio.patch"
+	"${FILESDIR}/${P}-disable-ccache.patch"
 )
 
 src_prepare() {
@@ -91,7 +95,7 @@ src_configure() {
 		-Daudacity_use_pa_alsa=$(usex alsa)
 		-Daudacity_use_pa_jack=$(usex jack linked off)
 		-Daudacity_use_pa_oss=$(usex oss)
-		-Daudacity_use_pch=ON
+		#-Daudacity_use_pch leaving it to the default behavior
 		-Daudacity_use_portaudio=local # only 'local' option is present
 		-Daudacity_use_portmixer=$(usex portmixer local off)
 		-Daudacity_use_portsmf=$(usex portsmf local off)
@@ -107,6 +111,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+
+	# if git is not installed, this (empty) file is not being created and the compilation fails
+	# so we create it manually
+	touch "${BUILD_DIR}/src/private/RevisionIdent.h" || die "failed to create file"
 }
 
 src_install() {

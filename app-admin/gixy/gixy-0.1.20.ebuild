@@ -1,16 +1,17 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Nginx configuration static analyzer"
 HOMEPAGE="https://github.com/yandex/gixy"
 # Use GitHub source insted PyPi to get tarball with tests
-SRC_URI="https://github.com/yandex/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/yandex/gixy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -24,7 +25,7 @@ RDEPEND=">=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/six-1.1.0[${PYTHON_USEDEP}]"
 
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		${RDEPEND}

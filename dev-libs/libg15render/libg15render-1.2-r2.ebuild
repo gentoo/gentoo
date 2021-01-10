@@ -33,14 +33,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-static \
+	local myeconfargs=(
+		--disable-static
 		$(use_enable truetype ttf)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 
 	# no static archives
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }

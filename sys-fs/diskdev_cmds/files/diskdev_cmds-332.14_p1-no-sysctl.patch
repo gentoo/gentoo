@@ -1,0 +1,12 @@
+--- a/newfs_hfs.tproj/makehfs.c
++++ b/newfs_hfs.tproj/makehfs.c
+@@ -37,8 +37,8 @@
+ #endif
+ #include <sys/errno.h>
+ #include <sys/stat.h>
+-#include <sys/sysctl.h>
+ #if !LINUX
++#include <sys/sysctl.h>
+ #include <sys/vmmeter.h>
+ #endif
+ 

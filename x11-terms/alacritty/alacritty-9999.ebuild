@@ -8,7 +8,7 @@ CRATES="
 
 MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
@@ -66,19 +66,20 @@ src_unpack() {
 }
 
 src_configure() {
-	myfeatures=(
+	local myfeatures=(
 		$(usex X x11 '')
 		$(usev wayland)
 	)
+	cargo_src_configure --no-default-features
 }
 
 src_compile() {
 	cd alacritty || die
-	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_compile
 }
 
 src_install() {
-	CARGO_INSTALL_PATH="alacritty" cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_install --path alacritty
 
 	newman extra/alacritty.man alacritty.1
 
@@ -91,7 +92,7 @@ src_install() {
 	doins extra/completions/_alacritty
 
 	domenu extra/linux/Alacritty.desktop
-	newicon extra/logo/alacritty-term.svg Alacritty.svg
+	newicon extra/logo/compat/alacritty-term.svg Alacritty.svg
 
 	newman extra/alacritty.man alacritty.1
 
@@ -104,12 +105,12 @@ src_install() {
 	local DOCS=(
 		alacritty.yml
 		CHANGELOG.md INSTALL.md README.md
-		docs/{ansicode.txt,escape_support.md}
+		docs/{ansicode.txt,escape_support.md,features.md}
 	)
 	einstalldocs
 }
 
 src_test() {
 	cd alacritty || die
-	cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+	cargo_src_test
 }

@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3
+LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
+
+inherit lua-single git-r3 optfeature
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
@@ -10,17 +12,21 @@ EGIT_REPO_URI="https://github.com/martanne/vis.git"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
-IUSE="+ncurses selinux test tre"
+IUSE="+ncurses +lua selinux test tre"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # - Known to also work with NetBSD curses
-# - ::lua package done for using >=dev-lang/lua-5.2
-# which is needed for syntax highlighting and settings but masked in ::gentoo
 DEPEND="dev-libs/libtermkey
 	ncurses? ( sys-libs/ncurses:0= )
+	lua? ( ${LUA_DEPS} )
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
 
 src_prepare() {
 	sed -i 's|STRIP?=.*|STRIP=true|' Makefile || die
@@ -34,6 +40,7 @@ src_configure() {
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		$(use_enable lua) \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
 		$(use_enable tre) || die
@@ -50,4 +57,5 @@ pkg_postrm() {
 
 pkg_postinst() {
 	update_symlinks
+	optfeature "syntax highlighting support" dev-lua/lpeg
 }

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips sparc x86"
 IUSE="doc"
 
 DEPEND="doc? ( app-doc/doxygen )"
@@ -19,6 +19,11 @@ RDEPEND=""
 
 src_prepare() {
 	default
+
+	# Remove -Werror from CFLAGS (#745069)
+	find -name "Makefile.am" -print0 \
+		| xargs --null sed 's@ -Werror@@' -i || die
+
 	eautoreconf
 }
 

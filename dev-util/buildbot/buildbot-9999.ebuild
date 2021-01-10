@@ -55,10 +55,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	doc? (
-		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
-		<dev-python/sphinx-2.1.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-3.2.0[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 		dev-python/pyenchant[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]

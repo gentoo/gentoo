@@ -13,6 +13,7 @@
     like support for people who enjoy using Sphinx but work with languages
     other than Python. The system relies on the Doxygen’s xml output.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">breathe</remote-id>
     <remote-id type="github">michaeljones/breathe</remote-id>

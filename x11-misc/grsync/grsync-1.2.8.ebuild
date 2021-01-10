@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit xdg
+
 DESCRIPTION="A gtk frontend to rsync"
 HOMEPAGE="http://www.opbyte.it/grsync/"
 LICENSE="GPL-2"

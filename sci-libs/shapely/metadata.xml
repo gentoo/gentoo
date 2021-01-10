@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>3dprint@gentoo.org</email>
+    <name>Gentoo 3D Printer Project</name>
+  </maintainer>
+  <longdescription>
+    Shapely is a BSD-licensed Python package for manipulation and analysis of planar geometric objects.
+    It is based on the widely deployed GEOS (the engine of PostGIS) and JTS (from which GEOS is ported) libraries.
+    Shapely is not concerned with data formats or coordinate systems, but can be readily integrated with packages that are.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Toblerity/Shapely</remote-id>
+    <remote-id type="pypi">Shapely</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,8 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/xfce4-cpugraph-plugin-1.1.0-panel-4.15.patch" )
 
 src_install() {
 	default

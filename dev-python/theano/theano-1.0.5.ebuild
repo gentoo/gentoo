@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 MY_P=${P^}
 
@@ -17,13 +17,16 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+# Tests sometimes hang. dev-python/theano-pymc is better. #738416
+# This package is on the way out anyway for that fork.
+RESTRICT="test"
 
 BDEPEND="test? ( dev-python/parameterized[${PYTHON_USEDEP}] )"
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests nose

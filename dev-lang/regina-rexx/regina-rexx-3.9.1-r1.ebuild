@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit autotools eutils toolchain-funcs
+inherit autotools
 
 DESCRIPTION="Portable Rexx interpreter"
 HOMEPAGE="https://regina-rexx.sourceforge.io/"
@@ -12,27 +12,26 @@ SRC_URI="mirror://sourceforge/${PN}/Regina-REXX-${PV}.tar.gz"
 LICENSE="LGPL-2.1 MPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-S=${WORKDIR}/Regina-REXX-${PV}
+S="${WORKDIR}/Regina-REXX-${PV}"
 
-MAKEOPTS+=" -j1"
-
-DOCS=( BUGS HACKERS.txt README.Unix README_SAFE TODO )
+PATCHES=( "${FILESDIR}"/${PN}-3.9.1-makefile.patch )
 
 src_prepare() {
-	sed -e 's/CFLAGS=/UPSTREAM_CFLAGS=/' -i common/incdebug.m4 || die
-
+	default
+	mv configure.{in,ac} || die
 	eautoconf
-	tc-export CC #don't move it as tc-getCC
 }
 
 src_compile() {
-	emake LIBEXE="$(tc-getAR)"
+	emake -j1
 }
 
 src_install() {
-	default
+	emake -j1 DESTDIR="${D}" install
+	DOCS=( BUGS HACKERS.txt README.Unix README_SAFE TODO )
+	einstalldocs
+
 	newinitd "${FILESDIR}"/rxstack-r1 rxstack
 }
 

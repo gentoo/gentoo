@@ -15,6 +15,7 @@
   and a command-line script (nova).
   Each implements 100% of the OpenStack Nova API.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">python-novaclient</remote-id>
     <remote-id type="github">openstack/python-novaclient</remote-id>

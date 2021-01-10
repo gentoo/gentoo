@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2006-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-export-symbols.patch
+	"${FILESDIR}"/${PN}-glibc-2.32.patch
 	"${FILESDIR}"/${PN}-glib-2.32.patch
 	"${FILESDIR}"/${PN}-ruby19.patch
 )

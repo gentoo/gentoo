@@ -5,11 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Reasonably fast data encoding library.
-	</longdescription>
 	<use>
-		<flag name="with-conduit">Build with conduit</flag>
 		<flag name="conduit">Build with conduit</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
@@ -22,11 +22,6 @@ openal
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
 # clamav has no stable versions yet
 clamav
-
-# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
-# dev-lang/python:3.7 is not stable.
-python_targets_python3_8
-python_single_target_python3_8
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable version on sparc

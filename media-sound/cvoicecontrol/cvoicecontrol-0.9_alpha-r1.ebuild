@@ -14,27 +14,20 @@ SRC_URI="http://www.kiecza.net/daniel/linux/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-gentoo-2.patch"
-	"${FILESDIR}/${P}-tinfo.patch" #647166
+	"${FILESDIR}"/${P}-gentoo-2.patch
+	"${FILESDIR}"/${P}-tinfo.patch #64716
+	# Handle documentation with HTML_DOCS instead
+	"${FILESDIR}"/${P}-automake.patch
 )
 
 src_prepare() {
 	default
-	# Handle documentation with dohtml instead.
-	sed \
-		-e "s:SUBDIRS = docs:#SUBDIRS = docs:" \
-		-i cvoicecontrol/Makefile.am || die
-
-	eautoreconf #647166
-
-	sed \
-		-e "s/install-data-am: install-data-local/install-data-am:/" \
-		-i Makefile.in || die
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_install() {

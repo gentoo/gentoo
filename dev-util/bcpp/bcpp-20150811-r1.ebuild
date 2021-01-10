@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="Indents C/C++ source code"
 HOMEPAGE="https://invisible-island.net/bcpp/"
-SRC_URI="ftp://invisible-island.net/bcpp/${P}.tgz"
+SRC_URI="ftp://ftp.invisible-island.net/bcpp/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 src_compile() {

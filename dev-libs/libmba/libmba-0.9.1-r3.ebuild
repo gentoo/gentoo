@@ -37,4 +37,6 @@ src_install() {
 
 	insinto /usr/share/doc/${PF}/examples
 	doins examples/*
+
+	gunzip -v $(find "${ED}" -name '*.[0-9]*.gz') || die
 }

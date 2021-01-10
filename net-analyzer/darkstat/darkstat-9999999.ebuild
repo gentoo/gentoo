@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 user
+
+inherit autotools git-r3
 
 DESCRIPTION="Network traffic analyzer with cute web interface"
 HOMEPAGE="https://unix4lyfe.org/darkstat/"
@@ -16,6 +17,7 @@ BDEPEND="
 	app-editors/vim-core
 "
 DEPEND="
+	acct-user/darkstat
 	dev-libs/libbsd
 	net-libs/libpcap
 	sys-libs/zlib
@@ -55,10 +57,6 @@ src_install() {
 
 	keepdir "${DARKSTAT_CHROOT_DIR}"
 	chown darkstat:0 "${D}${DARKSTAT_CHROOT_DIR}"
-}
-
-pkg_preinst() {
-	enewuser darkstat
 }
 
 pkg_postinst() {

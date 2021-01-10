@@ -2,8 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{6,7} )
+
+PYTHON_COMPAT=( python3_{6..8} )
+
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-r1
@@ -13,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Caribou"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

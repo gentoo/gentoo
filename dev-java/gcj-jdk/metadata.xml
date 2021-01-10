@@ -13,7 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>This provides a JDK wrapper for GCJ, in the style of gcj-java-compat in other distributions.</longdescription>
 	<use>
 		<flag name="awt">Install AWT libraries, needed by some GUIs (not needed to build icedtea)</flag>
 	</use>

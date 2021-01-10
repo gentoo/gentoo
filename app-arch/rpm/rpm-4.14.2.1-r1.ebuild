@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit autotools flag-o-matic perl-module python-single-r1 eapi7-ver
 
@@ -36,7 +36,7 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( >=dev-lang/lua-5.1.0:*[deprecated] )
+	lua? ( >=dev-lang/lua-5.1.0:0=[deprecated] )
 	acl? ( virtual/acl )
 	caps? ( >=sys-libs/libcap-2.0 )
 	zstd? ( app-arch/zstd )

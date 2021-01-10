@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/wsjt/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="dev-qt/qtcore:5
@@ -41,7 +41,8 @@ PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
 		  "${FILESDIR}/${PN}-fix-unicode.patch"
 		  "${FILESDIR}/${PN}-drop-docs.patch"
 		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch"
-		  "${FILESDIR}/${PN}-2.2.0-werror.patch" )
+		  "${FILESDIR}/${PN}-2.2.0-werror.patch"
+		  "${FILESDIR}/${PN}-clang.patch" )
 
 DOCS=( AUTHORS BUGS NEWS README THANKS )
 

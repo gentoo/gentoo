@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ib/xarchiver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 # older pigz versions have incompatible command-line processing
@@ -50,7 +50,7 @@ pkg_postinst() {
 
 	elog "You need external programs for some formats, including:"
 	elog "7zip - app-arch/p7zip"
-	elog "arj - app-arch/unarj app-arch/arj"
+	elog "arj - app-arch/arj"
 	elog "lha - app-arch/lha"
 	elog "lzop - app-arch/lzop"
 	elog "rar - app-arch/unrar app-arch/rar"

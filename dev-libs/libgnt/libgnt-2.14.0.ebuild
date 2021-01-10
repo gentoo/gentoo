@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit meson
 
 DESCRIPTION="Pidgin's GLib Ncurses Toolkit"
-HOMEPAGE="https://bitbucket.org/pidgin/libgnt"
+HOMEPAGE="https://keep.imfreedom.org/libgnt/libgnt"
 SRC_URI="mirror://sourceforge/pidgin/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
 "
 
 PATCHES=(

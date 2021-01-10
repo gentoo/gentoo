@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -15,7 +16,6 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/webob-1.4[${PYTHON_USEDEP}]
 	>=dev-python/mako-0.4.0[${PYTHON_USEDEP}]

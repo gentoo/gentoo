@@ -20,9 +20,19 @@ KEYWORDS=""
 IUSE="+gpg tools"
 
 RDEPEND="
-	gpg? ( app-crypt/gnupg )"
+	gpg? (
+		>=app-crypt/gnupg-2.2.20-r1
+		dev-python/requests[${PYTHON_USEDEP}]
+	)"
+BDEPEND="
+	test? (
+		>=app-crypt/gnupg-2.2.20-r1
+		>=dev-python/pytest-5[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
+	)"
 
-distutils_enable_tests setup.py
+distutils_enable_tests pytest
 
 python_install_all() {
 	distutils-r1_python_install_all

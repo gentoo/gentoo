@@ -10,7 +10,7 @@ SRC_URI="https://github.com/cjlin1/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
 
 src_prepare() {
 	default
@@ -26,6 +26,12 @@ src_prepare() {
 		-e '/^CFLAGS/d;/^CXXFLAGS/d' \
 		-e 's|$${SHARED_LIB_FLAG}|& $(LDFLAGS)|g' \
 		Makefile || die
+
+	# fix install_name on Darwin
+	sed -i \
+		-e '/install_name/s:liblinear.so.$(SHVER):'"${EPREFIX}"'/usr/lib/liblinear.$(SHVER).dylib:' \
+		-e '/LDFLAGS/s:liblinear.so.$(SHVER):liblinear'"$(get_libname '$(SHVER)')"':' \
+		Makefile || die
 }
 
 src_compile() {
@@ -40,8 +46,8 @@ src_compile() {
 }
 
 src_install() {
-	dolib.so ${PN}.so.4
-	dosym ${PN}.so.4 /usr/$(get_libdir)/${PN}.so
+	dolib.so ${PN}$(get_libname 4)
+	dosym ${PN}$(get_libname 4) /usr/$(get_libdir)/${PN}$(get_libname)
 
 	newbin predict ${PN}-predict
 	newbin train ${PN}-train

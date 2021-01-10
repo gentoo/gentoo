@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit autotools multilib-minimal
 
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/k-takata/${PN^o}/releases/download/${P^o}/${P}.tar.g
 
 LICENSE="BSD-2"
 SLOT="0/6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="combination-explosion-check crnl-as-line-terminator static-libs"
 
 DOCS=( AUTHORS HISTORY README{,.ja} doc/{API,FAQ,RE}{,.ja} doc/UnicodeProps.txt )

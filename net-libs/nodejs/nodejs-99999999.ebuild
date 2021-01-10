@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 eutils flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -22,15 +22,17 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.35.0:=
-	>=net-dns/c-ares-1.15.0
-	>=net-libs/nghttp2-1.39.2
+	>=app-arch/brotli-1.0.9
+	>=dev-libs/libuv-1.40.0:=
+	>=net-dns/c-ares-1.16.1
+	>=net-libs/nghttp2-1.41.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-66.1:= )
+	icu? ( >=dev-libs/icu-67.1:= )
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	sys-apps/coreutils
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
 	pax_kernel? ( sys-apps/elfix )
@@ -38,9 +40,6 @@ BDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
-)
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
@@ -95,7 +94,11 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf=(
-		--shared-cares --shared-libuv --shared-nghttp2 --shared-zlib
+		--shared-brotli
+		--shared-cares
+		--shared-libuv
+		--shared-nghttp2
+		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
@@ -159,7 +162,7 @@ src_install() {
 		# npm otherwise tries to write outside of the sandbox
 		local npm_config="usr/$(get_libdir)/node_modules/npm/lib/config/core.js"
 		sed -i -e "s|'/etc'|'${ED}/etc'|g" "${ED}/${npm_config}" || die
-		local tmp_npm_completion_file="$(emktemp)"
+		local tmp_npm_completion_file="$(TMPDIR="${T}" mktemp -t npm.XXXXXXXXXX)"
 		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
 		newbashcomp "${tmp_npm_completion_file}" npm
 		sed -i -e "s|'${ED}/etc'|'/etc'|g" "${ED}/${npm_config}" || die

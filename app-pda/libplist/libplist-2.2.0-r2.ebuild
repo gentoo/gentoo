@@ -12,7 +12,7 @@ SRC_URI="https://cgit.libimobiledevice.org/${PN}.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/2.0-3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="python static-libs"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
@@ -26,7 +26,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( AUTHORS NEWS README.md )
 
-PATCHES=( "${FILESDIR}"/libplist-2.2.0-pkgconfig-lib.patch )
+PATCHES=(
+	"${FILESDIR}"/libplist-2.2.0-fmin.patch
+	"${FILESDIR}"/libplist-2.2.0-pkgconfig-lib.patch
+)
 
 BUILD_DIR="${S}_build"
 

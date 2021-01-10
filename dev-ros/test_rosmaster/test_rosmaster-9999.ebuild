@@ -24,6 +24,11 @@ DEPEND="${RDEPEND}
 
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
 
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}
+
 src_install() {
 	ros-catkin_src_install
 	dodir /usr/share/${PN}

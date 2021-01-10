@@ -1,4 +1,4 @@
-# Copyright 2016-2019 Gentoo Authors
+# Copyright 2016-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of L10N USE_EXPAND flags.
@@ -17,6 +17,7 @@
 # id-ID - Indonesian (Indonesia)
 # kn-IN - Kannada (India)
 # nb-NO - Norwegian Bokmål (Norway)
+# ne-NP - Nepali (Nepal)
 # nn-NO - Norwegian Nynorsk (Norway)
 # pa-IN - Punjabi (India)
 # sa-IN - Sanskrit (India)
@@ -33,10 +34,10 @@ az - Azerbaijani
 be - Belarusian
 bea - Beaver
 bg - Bulgarian
+bla - Siksika
 bn - Bengali
 bn-BD - Bengali (Bangladesh)
 bn-IN - Bengali (India)
-bla - Siksika
 bo - Tibetan
 br - Breton
 brx - Bodo (India)
@@ -89,6 +90,7 @@ fil - Filipino
 fo - Faroese
 fr - French
 fr-CA - French (Canada)
+fur - Friulian
 fy - Western Frisian
 ga - Irish
 gd - Scottish Gaelic
@@ -200,6 +202,7 @@ sw - Swahili (macrolanguage)
 sw-TZ - Swahili (Tanzania)
 syc - Classical Syriac
 syr - Syriac
+szl - Silesian
 ta - Tamil
 ta-LK - Tamil (Sri Lanka)
 te - Telugu
@@ -212,6 +215,7 @@ tlh - Klingon
 tn - Tswana
 to - Tonga (Tonga Islands)
 tr - Turkish
+trs - Chicahuaxtla Triqui
 ts - Tsonga
 tsg - Tausug
 tt - Tatar
@@ -220,6 +224,7 @@ uk - Ukrainian
 ur - Urdu
 uz - Uzbek
 ve - Venda
+vec - Venetian
 vi - Vietnamese
 vls - Vlaams
 xh - Xhosa

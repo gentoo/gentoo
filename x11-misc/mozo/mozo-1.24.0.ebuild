@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit python-r1 mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Mozo menu editor for MATE"

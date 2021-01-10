@@ -15,8 +15,8 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="pam"
+KEYWORDS="amd64 arm arm64 ~ppc"
+IUSE="pam persist"
 
 RDEPEND="pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
@@ -33,5 +33,6 @@ src_configure() {
 		--prefix="${EPREFIX}"/usr \
 		--sysconfdir="${EPREFIX}"/etc \
 		$(use_with pam) \
+		$(use_with persist timestamp) \
 		|| die
 }

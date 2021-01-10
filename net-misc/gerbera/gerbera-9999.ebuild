@@ -29,9 +29,9 @@ DEPEND="
 	>=dev-db/sqlite-3
 	dev-libs/spdlog:=
 	dev-libs/pugixml
-	dev-libs/libfmt:0/6
+	dev-libs/libfmt:0=
 	mysql? ( dev-db/mysql-connector-c )
-	javascript? ( dev-lang/duktape )
+	javascript? ( dev-lang/duktape:= )
 	taglib? ( >=media-libs/taglib-1.11 )
 	lastfm? ( >=media-libs/lastfmlib-0.4 )
 	exif? ( media-libs/libexif )

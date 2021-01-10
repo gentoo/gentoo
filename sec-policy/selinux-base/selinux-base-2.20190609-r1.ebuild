@@ -13,7 +13,7 @@ else
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
 
-	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 -arm ~arm64 ~mips x86"
 fi
 
 IUSE="doc +unknown-perms systemd +ubac +unconfined"
@@ -23,8 +23,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-apps/policycoreutils-2.8
-	virtual/udev"
+RDEPEND=">=sys-apps/policycoreutils-2.8"
 DEPEND="${RDEPEND}
 	sys-devel/m4
 	>=sys-apps/checkpolicy-2.8"

@@ -8,16 +8,24 @@ inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
-LLVM_COMPONENTS=( compiler-rt )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
-IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
-# FIXME: libfuzzer does not enable all its necessary dependencies
-REQUIRED_USE="libfuzzer? ( || ( sanitize xray ) )"
+IUSE="+clang test elibc_glibc"
+# base targets
+IUSE+=" +libfuzzer +profile +xray"
+# sanitizer targets, keep in sync with config-ix.cmake
+# NB: ubsan, scudo deliberately match two entries
+SANITIZER_FLAGS=(
+	asan dfsan lsan msan hwasan tsan ubsan safestack cfi scudo
+	shadowcallstack gwp-asan
+)
+IUSE+=" ${SANITIZER_FLAGS[@]/#/+}"
+REQUIRED_USE="
+	|| ( ${SANITIZER_FLAGS[*]} libfuzzer profile xray )
+	gwp-asan? ( scudo )
+	ubsan? ( cfi )"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 CLANG_SLOT=${SLOT%%.*}
@@ -25,14 +33,24 @@ CLANG_SLOT=${SLOT%%.*}
 DEPEND="
 	>=sys-devel/llvm-6"
 BDEPEND="
+	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
 		!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
-		sys-libs/compiler-rt:${SLOT} )
+		sys-libs/compiler-rt:${SLOT}
+	)
 	${PYTHON_DEPS}"
+
+LLVM_COMPONENTS=( compiler-rt )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+llvm.org_set_globals
+
+PATCHES=(
+	"${FILESDIR}/9999/compiler-rt-prefix-paths.patch"
+)
 
 python_check_deps() {
 	use test || return 0
@@ -59,6 +77,20 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e 's:-Werror::' lib/tsan/go/buildgo.sh || die
 
+	local flag
+	for flag in "${SANITIZER_FLAGS[@]}"; do
+		if ! use "${flag}"; then
+			local cmake_flag=${flag/-/_}
+			sed -i -e "/COMPILER_RT_HAS_${cmake_flag^^}/s:TRUE:FALSE:" \
+				cmake/config-ix.cmake || die
+		fi
+	done
+
+	if use asan && ! use profile; then
+		# TODO: fix these tests to be skipped upstream
+		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
+	fi
+
 	llvm.org_src_prepare
 }
 
@@ -72,6 +104,14 @@ src_configure() {
 		strip-unsupported-flags
 	fi
 
+	local flag want_sanitizer=OFF
+	for flag in "${SANITIZER_FLAGS[@]}"; do
+		if use "${flag}"; then
+			want_sanitizer=ON
+			break
+		fi
+	done
+
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
 		# use a build dir structure consistent with install
@@ -84,8 +124,10 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_CRT=OFF
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)
 		-DCOMPILER_RT_BUILD_PROFILE=$(usex profile)
-		-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+		-DCOMPILER_RT_BUILD_SANITIZERS="${want_sanitizer}"
 		-DCOMPILER_RT_BUILD_XRAY=$(usex xray)
+
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	if use test; then
 		mycmakeargs+=(
@@ -107,8 +149,15 @@ src_configure() {
 
 	if use prefix && [[ "${CHOST}" == *-darwin* ]] ; then
 		mycmakeargs+=(
-			# disable use of SDK for the system itself
-			-DDARWIN_macosx_CACHED_SYSROOT=/
+			# setting -isysroot is disabled with compiler-rt-prefix-paths.patch
+			# this allows adding arm64 support using SDK in EPREFIX
+			-DDARWIN_macosx_CACHED_SYSROOT="${EPREFIX}/MacOSX.sdk"
+			# Set version based on the SDK in EPREFIX
+			# This disables i386 for SDK >= 10.15
+			# Will error if has_use tsan and SDK < 10.12
+			-DDARWIN_macosx_OVERRIDE_SDK_VERSION="$(realpath ${EPREFIX}/MacOSX.sdk | sed -e 's/.*MacOSX\(.*\)\.sdk/\1/')"
+			# Use our libtool instead of looking it up with xcrun
+			-DCMAKE_LIBTOOL="${EPREFIX}/usr/bin/${CHOST}-libtool"
 		)
 	fi
 

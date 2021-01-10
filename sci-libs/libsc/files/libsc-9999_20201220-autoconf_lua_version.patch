@@ -1,0 +1,57 @@
+--- a/config/sc_include.m4
++++ b/config/sc_include.m4
+@@ -281,7 +281,7 @@ AC_DEFUN([SC_CHECK_LIBRARIES],
+ [
+ SC_REQUIRE_LIB([m], [fabs])
+ SC_CHECK_LIB([z], [adler32_combine], [ZLIB], [$1])
+-SC_CHECK_LIB([lua53 lua5.3 lua52 lua5.2 lua51 lua5.1 lua lua5], [lua_createtable],
++SC_CHECK_LIB([$LUA_IMPL], [lua_createtable],
+ 	     [LUA], [$1])
+ SC_CHECK_BLAS_LAPACK([$1])
+ SC_BUILTIN_ALL_PREFIX([$1])
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,7 +74,7 @@ echo "| Checking headers"
+ echo "o---------------------------------------"
+ 
+ AC_CHECK_HEADERS([execinfo.h signal.h sys/time.h sys/types.h time.h])
+-AC_CHECK_HEADERS([lua.h lua5.1/lua.h lua5.2/lua.h lua5.3/lua.h])
++AC_CHECK_HEADERS([$LUA_IMPL/lua.h])
+ 
+ echo "o---------------------------------------"
+ echo "| Checking functions"
+--- a/src/sc_lua.h
++++ b/src/sc_lua.h
+@@ -30,29 +30,9 @@
+ 
+ SC_EXTERN_C_BEGIN;
+ 
+-#ifdef SC_HAVE_LUA5_3_LUA_H
+-#include <lua5.3/lua.h>
+-#include <lua5.3/lualib.h>
+-#include <lua5.3/lauxlib.h>
+-#else
+-#ifdef SC_HAVE_LUA5_2_LUA_H
+-#include <lua5.2/lua.h>
+-#include <lua5.2/lualib.h>
+-#include <lua5.2/lauxlib.h>
+-#else
+-#ifdef SC_HAVE_LUA5_1_LUA_H
+-#include <lua5.1/lua.h>
+-#include <lua5.1/lualib.h>
+-#include <lua5.1/lauxlib.h>
+-#else
+-#ifdef SC_HAVE_LUA_H
+-#include <lua.h>
+-#include <lualib.h>
+-#include <lauxlib.h>
+-#endif
+-#endif
+-#endif
+-#endif
++#include <@LUA_IMPL@/lua.h>
++#include <@LUA_IMPL@/lualib.h>
++#include <@LUA_IMPL@/lauxlib.h>
+ 
+ SC_EXTERN_C_END;
+ 

@@ -1,0 +1,39 @@
+From 3c8eb1ca6be13f185f20ee726f91f31d717947d2 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 28 Nov 2020 21:52:29 +0100
+Subject: [PATCH] Re-add option for building Fortran library
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2262275..7cb014c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,12 +6,15 @@ PROJECT(MEDFile C CXX)
+ ## See http://www.cmake.org/Bug/view.php?id=10227
+ #ENABLE_LANGUAGE(Fortran OPTIONAL)
+ 
+-INCLUDE(CheckLanguage)
+-CHECK_LANGUAGE(Fortran)
+-IF(CMAKE_Fortran_COMPILER)
+-  ENABLE_LANGUAGE(Fortran)
+-ELSE()
+-  MESSAGE(STATUS "No Fortran support")
++OPTION (MEDFILE_BUILD_FORTRAN "Build MED-file fortran library" ON)
++IF (MEDFILE_BUILD_FORTRAN)
++  INCLUDE(CheckLanguage)
++  CHECK_LANGUAGE(Fortran)
++  IF(CMAKE_Fortran_COMPILER)
++    ENABLE_LANGUAGE(Fortran)
++  ELSE()
++    MESSAGE(STATUS "No Fortran support")
++  ENDIF()
+ ENDIF()
+ 
+ ## Version number 
+-- 
+2.29.2
+

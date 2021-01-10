@@ -12,7 +12,8 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/Aorimn/dislocker.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/Aorimn/dislocker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Aorimn/dislocker/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/dislocker-0.7.1-fix-find-ruby.patch"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -31,7 +32,7 @@ CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindRuby"
 
 src_prepare() {
 	if use ruby && [[ ${PV} == "0.7.1" ]]; then
-		PATCHES=( "${FILESDIR}/${P}-fix-find-ruby.patch" )
+		PATCHES=( "${DISTDIR}/${P}-fix-find-ruby.patch" )
 	fi
 	cmake_src_prepare
 

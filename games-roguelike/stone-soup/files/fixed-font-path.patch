@@ -1,0 +1,20 @@
+--- a/Makefile	2020-12-11 23:37:30.506956304 -0600
++++ b/Makefile	2020-12-11 23:40:02.925609235 -0600
+@@ -932,7 +932,7 @@
+     INSTALL_FONTS += "$(PROPORTIONAL_FONT)"
+   endif
+ else
+-  SYS_PROPORTIONAL_FONT = $(shell util/find_font "$(OUR_PROPORTIONAL_FONT)")
++  SYS_PROPORTIONAL_FONT = /usr/share/fonts/dejavu/DejaVuSans.ttf
+   ifneq (,$(SYS_PROPORTIONAL_FONT))
+     ifeq (,$(COPY_FONTS))
+       DEFINES += -DPROPORTIONAL_FONT=\"$(SYS_PROPORTIONAL_FONT)\"
+@@ -952,7 +952,7 @@
+     INSTALL_FONTS += "$(MONOSPACED_FONT)"
+   endif
+ else
+-  SYS_MONOSPACED_FONT = $(shell util/find_font "$(OUR_MONOSPACED_FONT)")
++  SYS_MONOSPACED_FONT = /usr/share/fonts/dejavu/DejaVuSansMono.ttf
+   ifneq (,$(SYS_MONOSPACED_FONT))
+     ifeq (,$(COPY_FONTS))
+       DEFINES += -DMONOSPACED_FONT=\"$(SYS_MONOSPACED_FONT)\"

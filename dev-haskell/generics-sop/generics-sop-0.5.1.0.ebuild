@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Generic Programming using True Sums of Products"
-HOMEPAGE="http://hackage.haskell.org/package/generics-sop"
+HOMEPAGE="https://hackage.haskell.org/package/generics-sop"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

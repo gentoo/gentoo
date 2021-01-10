@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit fixheadtails toolchain-funcs
+inherit fixheadtails flag-o-matic toolchain-funcs
 
 DESCRIPTION="A uniform password checking interface for root applications"
 HOMEPAGE="https://cr.yp.to/checkpwd.html"
@@ -11,7 +11,7 @@ SRC_URI="https://cr.yp.to/checkpwd/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 IUSE="static"
 RESTRICT="mirror bindist"
 

@@ -28,15 +28,24 @@ PATCHES=(
 	"${FILESDIR}"/${P}-glibc-2.30.patch
 	"${FILESDIR}"/${P}-glibc-2.31.patch
 	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 # slightly broken
 RESTRICT="test"
 
+src_prepare() {
+	default
+
+	sed -i "s/\bar\b/$(tc-getAR)/g" libwchar/Makefile.mk || die
+}
+
 src_compile() {
 	append-cppflags -D_GNU_SOURCE
 	emake -j1 \
 		CC="$(tc-getCC)" \
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)" \
 		CFLAGS="${CFLAGS}" \
 		CFLAGS2="${CFLAGS}" \
 		CFLAGSS="${CFLAGS}" \

@@ -5,5 +5,4 @@
 	<email>games@gentoo.org</email>
 	<name>Gentoo Games Project</name>
 </maintainer>
-<longdescription>Camato is a map editor for the game gnocatan. It is made with Ruby and the library Ruby-GTK.</longdescription>
 </pkgmetadata>

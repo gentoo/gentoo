@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>gentoo@aisha.cc</email>
 		<name>Aisha Tammy</name>
-		<description>Proxy-maintainer, assign bugs</description>
 	</maintainer>
 	<longdescription>
 		kanshi allows you to define output profiles that are

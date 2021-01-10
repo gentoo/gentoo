@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Mustache templates for Haskell.
+		
+		Based on @stache@ library, which uses @megaparsec@.
+		This library uses @parsec@, thus the name: @microstache@.
+	</longdescription>
+</pkgmetadata>

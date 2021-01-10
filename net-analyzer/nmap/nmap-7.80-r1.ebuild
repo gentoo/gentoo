@@ -1,21 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit autotools desktop flag-o-matic toolchain-funcs
 
-MY_P=${P/_beta/BETA}
-inherit autotools desktop flag-o-matic toolchain-funcs user
-
-DESCRIPTION="A utility for network discovery and security auditing"
+DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
-SRC_URI="
-	https://nmap.org/dist/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~jer/nmap-logo-64.png
-"
+SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="ipv6 libressl libssh2 ncat nmap-update nping +nse ssl system-lua"
 REQUIRED_USE="system-lua? ( nse )"
 
@@ -51,7 +46,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 )
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die

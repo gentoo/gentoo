@@ -10,7 +10,7 @@ SRC_URI="http://angst.sourceforge.net/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="debug"
 
 DEPEND="
@@ -23,6 +23,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PV}-flags.patch
 	"${FILESDIR}"/${PV}-libnet-1.0.patch
+	"${FILESDIR}"/${PV}-sysctl.h.patch
 )
 
 src_configure() {

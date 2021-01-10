@@ -10,13 +10,18 @@ SRC_URI="http://frippery.org/uml/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~x86"
+KEYWORDS="amd64 arm arm64 ~mips x86"
 IUSE=""
 
 DEPEND="sys-libs/e2fsprogs-libs"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
+	# Bug #712582, fix compile in musl environments.
+	eapply "${FILESDIR}/${PN}-include-sys_types.patch"
+
 	# Honor system CFLAGS.
 	# Use pipes for the sed delimiter to resolve #710818.
 	sed -i \

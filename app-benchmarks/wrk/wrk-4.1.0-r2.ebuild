@@ -32,14 +32,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=(
-	"CHANGES"
-	"NOTICE"
-	"README.md"
-	"SCRIPTING"
-)
+DOCS=( "CHANGES" "NOTICE" "README.md" "SCRIPTING" )
 
-PATCHES=( "${FILESDIR}/${P}-r1-makefile.patch" )
+PATCHES=( "${FILESDIR}/${P}-r2-makefile.patch" )
 
 src_compile() {
 	myemakeargs=(

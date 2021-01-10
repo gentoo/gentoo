@@ -1,0 +1,15 @@
+--- a/Samples/2.0/Tutorials/Tutorial_Terrain/src/Terra/TerrainCell.cpp	2020-04-28 18:10:40.416995414 +0200
++++ b/Samples/2.0/Tutorials/Tutorial_Terrain/src/Terra/TerrainCell.cpp	2020-04-28 18:30:46.074920186 +0200
+@@ -133,7 +133,11 @@
+         gpuPtr[0] = m_verticesPerLine;
+         gpuPtr[1] = m_lodLevel;
+         gpuPtr[2] = vao->getPrimitiveCount() / m_verticesPerLine - 2u;
+-        gpuPtr[3] = *reinterpret_cast<uint32*>( &m_parentTerra->m_skirtSize );
++	/* Triggers: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
++         * gpuPtr[3] = *reinterpret_cast<uint32*>( &m_parentTerra->m_skirtSize );
++	 * See: http://zaynar.co.uk/docs/float-aliasing.html
++	 */
++	memcpy(&gpuPtr[3], &m_parentTerra->m_skirtSize, sizeof(gpuPtr[3]));
+ 
+         //ivec4 xzTexPosBounds
+         ((int32*RESTRICT_ALIAS)gpuPtr)[4] = m_gridX;

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,12 +7,11 @@ inherit autotools xdg
 
 DESCRIPTION="GTK+3 timezone map widget"
 HOMEPAGE="https://launchpad.net/timezonemap"
-SRC_URI="mirror://ubuntu/pool/main/libt/${PN}/${PN}_${PV}.tar.gz"
-RESTRICT="mirror"
+SRC_URI="mirror://debian/pool/main/libt/${PN}/${PN}_${PV}.orig.tar.gz -> ${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="dev-libs/glib:2
 	dev-libs/gobject-introspection:0=

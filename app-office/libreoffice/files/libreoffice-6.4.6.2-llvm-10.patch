@@ -1,0 +1,102 @@
+From 986bd28388df745dd969e7be7c3bda36b2b2cb0e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Thu, 6 Aug 2020 10:50:47 +0100
+Subject: [PATCH] ofz#24641 libc++abi __cxa_exception has grown another member
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+https: //github.com/llvm/llvm-project/commit/f2a436058fcbc11291e73badb44e243f61046183
+
+this is the same problem as
+
+commit f4b6f6a8ae60bdec53512728d00853b73fa18500
+Author: Stephan Bergmann <sbergman@redhat.com>
+Date:   Thu Feb 13 08:40:11 2020 +0100
+
+    Hack to dynamically adapt to __cxa_exceptiom in LLVM 11 libcxxabi
+
+    (where the new change to __cxa_exception effectively reverts the change that
+    prompted 7a9dd3d482deeeb3ed1d50074e56adbd3f928296 "Hack to dynamically adapt to
+    __cxa_exceptiom in LLVM 5.0 libcxxabi")
+
+    Change-Id: Iec4ef1dc188bea2223d99b1b7eb8adec636c98e7
+    Reviewed-on: https://gerrit.libreoffice.org/c/core/+/88583
+    Tested-by: Jenkins
+    Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+
+so c-n-p that solution here
+
+Change-Id: I4475757a766e3ade7b9fcaf6149e535c9f9a4fa4
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/100209
+Tested-by: Caolán McNamara <caolanm@redhat.com>
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+---
+ .../cpp_uno/gcc3_linux_x86-64/except.cxx      | 28 +++++++++++++++++++
+ .../cpp_uno/gcc3_linux_x86-64/share.hxx       | 14 ++++++++++
+ 2 files changed, 42 insertions(+)
+
+diff --git a/bridges/source/cpp_uno/gcc3_linux_x86-64/except.cxx b/bridges/source/cpp_uno/gcc3_linux_x86-64/except.cxx
+index e9e861f1c210..25931671f7dc 100644
+--- a/bridges/source/cpp_uno/gcc3_linux_x86-64/except.cxx
++++ b/bridges/source/cpp_uno/gcc3_linux_x86-64/except.cxx
+@@ -150,6 +150,34 @@ void fillUnoException(uno_Any * pUnoExc, uno_Mapping * pCpp2Uno)
+         return;
+     }
+ 
++#if defined _LIBCPPABI_VERSION // detect libc++abi
++    // Very bad HACK to find out whether we run against a libcxxabi that has a new
++    // __cxa_exception::reserved member at the start, introduced with LLVM 11
++    // <https://github.com/llvm/llvm-project/commit/f2a436058fcbc11291e73badb44e243f61046183>
++    // "[libcxxabi] Insert padding in __cxa_exception struct for compatibility".  The layout of the
++    // start of __cxa_exception is
++    //
++    //  [8 byte  void *reserve]
++    //   8 byte  size_t referenceCount
++    //
++    // where the (bad, hacky) assumption is that reserve (if present) is null
++    // (__cxa_allocate_exception in at least LLVM 11 zero-fills the object, and nothing actively
++    // sets reserve) while referenceCount is non-null (__cxa_throw sets it to 1, and
++    // __cxa_decrement_exception_refcount destroys the exception as soon as it drops to 0; for a
++    // __cxa_dependent_exception, the referenceCount member is rather
++    //
++    //   8 byte  void* primaryException
++    //
++    // but which also will always be set to a non-null value in __cxa_rethrow_primary_exception).
++    // As described in the definition of __cxa_exception
++    // (bridges/source/cpp_uno/gcc3_linux_x86-64/share.hxx), this hack (together with the "#if 0"
++    // there) can be dropped once we can be sure that we only run against new libcxxabi that has the
++    // reserve member:
++    if (*reinterpret_cast<void **>(header) == nullptr) {
++        header = reinterpret_cast<__cxxabiv1::__cxa_exception*>(reinterpret_cast<void **>(header) + 1);
++    }
++#endif
++
+     std::type_info *exceptionType = __cxxabiv1::__cxa_current_exception_type();
+ 
+     typelib_TypeDescription * pExcTypeDescr = nullptr;
+diff --git a/bridges/source/cpp_uno/gcc3_linux_x86-64/share.hxx b/bridges/source/cpp_uno/gcc3_linux_x86-64/share.hxx
+index e8afe35c4f59..53c8841fbbcb 100644
+--- a/bridges/source/cpp_uno/gcc3_linux_x86-64/share.hxx
++++ b/bridges/source/cpp_uno/gcc3_linux_x86-64/share.hxx
+@@ -108,6 +108,20 @@ namespace __cxxabiv1 {
+ struct __cxa_exception {
+ #if defined _LIBCPPABI_VERSION // detect libc++abi
+ #if defined __LP64__ || LIBCXXABI_ARM_EHABI
++#if 0
++    // This is a new field added with LLVM 11
++    // <https://github.com/llvm/llvm-project/commit/f2a436058fcbc11291e73badb44e243f61046183>
++    // "[libcxxabi] Insert padding in __cxa_exception struct for compatibility".  The HACK in
++    // fillUnoException (bridges/source/cpp_uno/gcc3_linux_x86-64/except.cxx) tries to find out at
++    // runtime whether a __cxa_exception has this member.  Once we can be sure that we only run
++    // against new libcxxabi that has this member, we can drop the "#if 0" here and drop the hack
++    // in fillUnoException.
++
++    // Now _Unwind_Exception is marked with __attribute__((aligned)),
++    // which implies __cxa_exception is also aligned. Insert padding
++    // in the beginning of the struct, rather than before unwindHeader.
++    void *reserve;
++#endif
+     std::size_t referenceCount;
+ #endif
+ #endif

@@ -1,0 +1,20 @@
+Description: Fix ftbfs with GCC-10
+
+Author: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Bug-Debian: https://bugs.debian.org/957200
+Forwarded: no
+
+---
+
+--- fdutils-5.5-20060227.orig/src/superformat.h
++++ fdutils-5.5-20060227/src/superformat.h
+@@ -97,7 +97,7 @@ int compute_all_sequences(struct params
+ void compute_track0_sequence(struct params *fd);
+ int calc_skews(struct params *fd0, struct params *fd, int n);
+ extern int verbosity;
+-int header_size;
+-int index_size;
++extern int header_size;
++extern int index_size;
+ 
+ #endif

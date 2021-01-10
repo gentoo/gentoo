@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_6)
+PYTHON_COMPAT=(python3_{6,7,8,9})
 
 WANT_AUTOMAKE=1.16
 
@@ -35,6 +35,6 @@ src_prepare() {
 
 src_install() {
 	default
-	# Remove unnecessary .la files, as recommended by ltprune.eclass
-	find "${ED}" -name '*.la' -delete || die
+	# Remove unnecessary .la and .a files, as recommended by ltprune.eclass
+	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
 }

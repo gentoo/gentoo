@@ -41,6 +41,7 @@
 * 他のPython言語プログラムを組み込むのが簡単。
 * pdbデバッガとprofilerへの統合アクセス。
 </longdescription>
+  <stabilize-allarches/>
   <use>
     <flag name="matplotlib">Add support for <pkg>dev-python/matplotlib</pkg></flag>
     <flag name="notebook">Install requirements for the web notebook based on <pkg>www-servers/tornado</pkg></flag>

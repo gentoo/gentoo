@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 MY_P="ScrollZ-${PV}"
@@ -14,22 +15,25 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-IUSE="gmp gnutls ipv6 socks5 ssl"
+IUSE="gmp gnutls ipv6 ssl"
 REQUIRED_USE="gnutls? ( ssl )"
 
-RDEPEND="
+BDEPEND="virtual/pkgconfig"
+DEPEND="
 	sys-libs/ncurses:0=
 	gmp? ( dev-libs/gmp:0= )
 	ssl? (
 		gnutls? ( net-libs/gnutls:0= )
 		!gnutls? ( dev-libs/openssl:0= )
-		)
+	)
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/ScrollZ-${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3-fcommon.patch"
+)
 
 src_configure() {
 	local _myssl
@@ -45,7 +49,6 @@ src_configure() {
 	tc-export CC #397441, ancient autoconf
 	econf \
 		--with-default-server="irc.gentoo.org" \
-		$(use_with socks5) \
 		$(use_enable ipv6) \
 		--enable-regexp \
 		$(use_enable gmp fish) \
@@ -54,7 +57,7 @@ src_configure() {
 
 src_install() {
 	emake \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		mandir="${EPREFIX}/usr/share/man/man1" \
 		install
 

@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -11,7 +12,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 else
 	SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="Cloud instance initialisation magic"
@@ -34,7 +35,6 @@ CDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${CDEPEND}
 		>=dev-python/httpretty-0.7.1[${PYTHON_USEDEP}]

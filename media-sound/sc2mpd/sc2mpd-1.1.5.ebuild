@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,6 +46,8 @@ src_prepare() {
 	mv ohdevtools-${sha_devtools} openhome/ohdevtools || die "Couldn't mv ohdevtools"
 	mv ohTopology-${sha_topology} openhome/ohTopology || die "Couldn't mv ohTopology"
 	mv ohSongcast-${sha_songcast} openhome/ohSongcast || die "Couldn't mv ohSongcast"
+
+	eapply "${FILESDIR}/${P}-werror.patch"
 
 	cd "${WORKDIR}/openhome/ohNet" || die "Couldn't cd to ohNet dir"
 	epatch "${FILESDIR}/ohnet.makefile.patch"

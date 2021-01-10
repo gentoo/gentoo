@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="doc examples fortran static-libs +tools threads"
 
 RDEPEND="sys-libs/zlib"
@@ -48,9 +48,10 @@ src_install() {
 	use fortran && dodoc docs/fitsio.doc
 	use doc && dodoc docs/{quick,cfitsio,fpackguide}.pdf
 	use doc && use fortran && dodoc docs/fitsio.pdf
+
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins cookbook.c testprog.c speed.c smem.c
-		use fortran && doins cookbook.f testf77.f
+		docinto examples
+		dodoc cookbook.c testprog.c speed.c smem.c
+		use fortran && dodoc cookbook.f testf77.f
 	fi
 }

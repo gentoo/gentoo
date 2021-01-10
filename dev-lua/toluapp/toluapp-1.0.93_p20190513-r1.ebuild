@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="=dev-lang/lua-5.1*:=[deprecated]"
+RDEPEND="=dev-lang/lua-5.1*:0=[deprecated]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${COMMIT_ID}"
@@ -25,4 +25,4 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.93_p20190513-fix-multilib.patch
 )
-CMAKE_REMOVE_MODULES_LIST="dist.cmake lua.cmake FindLua.cmake"
+CMAKE_REMOVE_MODULES_LIST="dist lua FindLua"

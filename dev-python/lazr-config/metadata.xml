@@ -8,7 +8,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Create configuration schemas, and process and validate configurations.
-	</longdescription>
+	<upstream>
+		<remote-id type="pypi">lazr.config</remote-id>
+	</upstream>
 </pkgmetadata>

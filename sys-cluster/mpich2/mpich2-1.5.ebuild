@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/${MY
 
 SLOT="0"
 LICENSE="mpich2"
-KEYWORDS="amd64 ~arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads romio threads"
 
 COMMON_DEPEND="
@@ -51,7 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local c="--enable-shared"
+	local c="--enable-shared --disable-static"
 
 	# The configure statements can be somewhat confusing, as they
 	# don't all show up in the top level configure, however, they
@@ -109,4 +109,6 @@ src_install() {
 	if ! use doc; then
 		rm -rf "${D}"usr/share/doc/${PF}/www*
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

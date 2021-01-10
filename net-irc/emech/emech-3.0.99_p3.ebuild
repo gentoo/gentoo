@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.energymech.net/files/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 IUSE="debug session tcl"
 S="${WORKDIR}/${P/_/}"
@@ -36,6 +36,7 @@ src_prepare() {
 }
 
 myconf() {
+	tc-export CC
 	echo ./configure $*
 	./configure $* || die "./configure failed"
 }
@@ -56,7 +57,6 @@ src_configure() {
 		--with-note \
 		--with-notify \
 		--with-rawdns \
-		--with-redirect \
 		--with-seen \
 		--with-stats \
 		--with-telnet \
@@ -66,6 +66,7 @@ src_configure() {
 		--with-web \
 		--with-wingate \
 		--without-profiling \
+		--without-redirect \
 		$(use_with tcl) \
 		$(use_with session) \
 		$(use_with debug)

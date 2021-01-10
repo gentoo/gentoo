@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic qmake-utils
+inherit desktop flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="GUI for personalization of Yubico's YubiKey"
 HOMEPAGE="https://github.com/Yubico/yubikey-personalization-gui"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Yubico/yubikey-personalization-gui/archive/${P}.tar.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="debug test"
 
 RESTRICT="!test? ( test )"
@@ -52,4 +52,12 @@ src_install() {
 	domenu resources/lin/yubikey-personalization-gui.desktop
 	doicon resources/lin/yubikey-personalization-gui.xpm
 	doicon -s 128 resources/lin/yubikey-personalization-gui.png
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

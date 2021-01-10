@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop ecm kde.org
 
 DESCRIPTION="KDE multimedia abstraction library"
-HOMEPAGE="https://phonon.kde.org/"
+HOMEPAGE="https://community.kde.org/Phonon"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"

@@ -1,0 +1,22 @@
+--- a/doc/ref/api-compound.texi.orig	2020-08-08 22:23:07.000000000 -0400
++++ b/doc/ref/api-compound.texi	2020-08-08 22:23:33.000000000 -0400
+@@ -905,7 +905,7 @@
+ @end deftypefn
+ 
+ @deftypefn {C Function} {const SCM *} scm_vector_elements (SCM vec, scm_t_array_handle *handle, size_t *lenp, ssize_t *incp)
+-Acquire a handle for the vector @var{vec} and return a pointer to the
++Acquire a handle for the vector @var{vec} and return a pointer to the
+ elements of it.  This pointer can only be used to read the elements of
+ @var{vec}.  When @var{vec} is not a vector, an error is signaled.  The
+ handle mustr eventually be released with
+--- a/doc/ref/guile.info-2.orig	2020-08-08 22:22:59.000000000 -0400
++++ b/doc/ref/guile.info-2	2020-08-08 22:25:21.000000000 -0400
+@@ -4192,7 +4192,7 @@
+ 
+  -- C Function: const SCM * scm_vector_elements (SCM vec,
+           scm_t_array_handle *handle, size_t *lenp, ssize_t *incp)
+-     Acquire a handle for the vector VEC and return a pointer to the
++     Acquire a handle for the vector VEC and return a pointer to the
+      elements of it.  This pointer can only be used to read the
+      elements of VEC.  When VEC is not a vector, an error is signaled.
+      The handle mustr eventually be released with

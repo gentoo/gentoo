@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ MY_BUILDV="b7"
 
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 if [[ $(x=( $(get_all_version_components) ); echo ${x[3]}) == '.' ]]; then
@@ -73,6 +73,12 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-static
+}
+
 src_install() {
-	emake install DESTDIR="${D}"
+	default
+	dodoc -r "${WORKDIR}"/mq/src/doc/en/.
+	find "${ED}" -name '*.la' -delete || die
 }

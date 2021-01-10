@@ -5,7 +5,4 @@
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Vim syntax highlighting for udev.rules files.
-	</longdescription>
 </pkgmetadata>

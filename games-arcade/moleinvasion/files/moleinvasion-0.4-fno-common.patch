@@ -1,0 +1,11 @@
+--- a/worldmap.h
++++ b/worldmap.h
+@@ -24,7 +24,7 @@
+ void draw_level_name(int current_level,myList * all_level_desc);
+ 
+ /* on stocke ici toutes les datas evoluant relatives au monde en cours */
+-#ifdef MAIN_WORLDMAP
++#ifndef MAIN_WORLDMAP
+ #define EXTERN_WLD extern
+ #else
+ #define EXTERN_WLD

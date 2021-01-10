@@ -1,0 +1,30 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Fix FTBFS with GCC 10
+Bug-Debian: https://bugs.debian.org/957493
+
+--- a/src/fighter.h
++++ b/src/fighter.h
+@@ -59,8 +59,8 @@
+ /* variables globales                                               */
+ /*==================================================================*/
+ 
+-int FIGHTER_MOVE_X[2][NB_DIRS][5];
+-int FIGHTER_MOVE_Y[2][NB_DIRS][5];
++extern int FIGHTER_MOVE_X[2][NB_DIRS][5];
++extern int FIGHTER_MOVE_Y[2][NB_DIRS][5];
+ 
+ /*==================================================================*/
+ /* fonctions globales                                               */
+--- a/src/random.h
++++ b/src/random.h
+@@ -66,8 +66,8 @@
+ /* variables globales                                               */
+ /*==================================================================*/
+ 
+-void *LW_RANDOM_RAW_MAP;
+-int LW_RANDOM_ON;
++extern void *LW_RANDOM_RAW_MAP;
++extern int LW_RANDOM_ON;
+ 
+ /*==================================================================*/
+ /* fonctions globales                                               */

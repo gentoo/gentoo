@@ -9,12 +9,13 @@ SRC_URI="https://hpjansson.org/chafa/releases/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="static-libs +tools"
 
 RDEPEND="
 	dev-libs/glib:2
 	media-gfx/imagemagick:0=
+	tools? ( >=media-libs/freetype-2.0.0 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

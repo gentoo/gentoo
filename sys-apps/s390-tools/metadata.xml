@@ -1,13 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>s390@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
-A set of user space utilities that should be used together with the
-zSeries (s390) Linux kernel and device drivers
-	</longdescription>
 	<use>
 		<flag name="cryptsetup">build the zkey-cryptsetup utility (requires USE=openssl)</flag>
 		<flag name="fuse">build cmsfs-fuse to read files stored on a z/VM CMS disk</flag>

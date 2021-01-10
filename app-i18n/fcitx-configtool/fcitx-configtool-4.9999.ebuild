@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -24,7 +24,8 @@ SLOT="4"
 KEYWORDS=""
 IUSE=""
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="dev-libs/glib:2
+	virtual/pkgconfig"
 DEPEND=">=app-i18n/fcitx-4.2.9:4
 	app-text/iso-codes
 	dev-libs/glib:2
@@ -39,5 +40,5 @@ src_configure() {
 		-DENABLE_GTK3=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -6,6 +6,6 @@
 		<name>Stefan Strogin</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">EionRobb/purple-hangouts</remote-id>
+		<remote-id type="github">EionRobb/purple-hangouts</remote-id>
 	</upstream>
 </pkgmetadata>

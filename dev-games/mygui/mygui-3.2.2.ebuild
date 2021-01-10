@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlinking.patch
 	"${FILESDIR}"/${P}-build.patch
 	"${FILESDIR}"/${P}-FHS.patch
+	"${FILESDIR}"/${P}-c++17.patch
 )
 
 pkg_setup() {

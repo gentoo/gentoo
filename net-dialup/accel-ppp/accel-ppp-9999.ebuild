@@ -3,8 +3,10 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://git.code.sf.net/p/accel-ppp/code"
-inherit cmake-utils flag-o-matic git-r3 linux-info linux-mod
+LUA_COMPAT=( lua5-1 )
+
+EGIT_REPO_URI="https://github.com/accel-ppp/accel-ppp.git"
+inherit cmake flag-o-matic git-r3 linux-info linux-mod lua-single
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
 HOMEPAGE="https://sourceforge.net/projects/accel-ppp/"
@@ -15,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="debug doc ipoe lua postgres radius shaper snmp valgrind"
 
-RDEPEND="lua? ( dev-lang/lua:0 )
+RDEPEND="lua? ( ${LUA_DEPS} )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( net-analyzer/net-snmp )
 	dev-libs/libpcre
@@ -28,7 +30,8 @@ DOCS=( README )
 
 CONFIG_CHECK="~L2TP ~PPPOE ~PPTP"
 
-REQUIRED_USE="valgrind? ( debug )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	valgrind? ( debug )"
 
 pkg_setup() {
 	if use ipoe; then
@@ -37,6 +40,7 @@ pkg_setup() {
 	else
 		linux-info_pkg_setup
 	fi
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -51,7 +55,7 @@ src_prepare() {
 	# Bug #549918
 	append-ldflags -Wl,-z,lazy
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -71,11 +75,11 @@ src_configure() {
 		-DSHAPER="$(usex shaper)"
 		$(use debug && echo "-DVALGRIND=$(usex valgrind)")
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {
@@ -84,7 +88,7 @@ src_install() {
 		linux-mod_src_install
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	use doc && dodoc -r rfc
 
@@ -96,5 +100,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}d
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}d
 
-	dodir /var/log/accel-ppp
+	keepdir /var/log/accel-ppp
 }

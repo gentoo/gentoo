@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_COMPAT=(python{3_7,3_8,3_9})
 
 inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
 
@@ -25,6 +25,7 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	SRC_URI="https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${P}.tar.gz
 		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/mozc-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch
 		fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${FCITX_PATCH_VERSION}.patch )"
 fi
 
@@ -111,7 +112,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_4.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
-	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
+	eapply -p2 "${DISTDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-environmental_variables.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-server_path_check.patch"

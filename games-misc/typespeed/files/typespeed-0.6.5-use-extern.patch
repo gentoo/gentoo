@@ -1,0 +1,116 @@
+Description: Fix FTBFS with gcc-10
+
+Author: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Bug-Debian: https://bugs.debian.org/957887
+
+---
+
+--- typespeed-0.6.5.orig/src/file.c
++++ typespeed-0.6.5/src/file.c
+@@ -142,6 +142,9 @@ extern int	 hfd;
+ extern char	*rankki[11];
+ extern char	*typorank[12];
+ extern char	*usedwordfile;
++extern struct rules	rules;
++struct rawdata	words;
++struct opt	opt;
+ 
+ char ruledir[MAXPATHLEN];
+ char worddir[MAXPATHLEN];
+--- typespeed-0.6.5.orig/src/menu.c
++++ typespeed-0.6.5/src/menu.c
+@@ -76,6 +76,9 @@ void		 tellstory(void);
+ 
+ extern int	 misses;
+ extern char	*rankki[11];
++extern struct stats	now;
++extern struct rules	rules;
++extern struct opt	opt;
+ 
+ struct positions {
+ 	int rank;
+--- typespeed-0.6.5.orig/src/misc.c
++++ typespeed-0.6.5/src/misc.c
+@@ -75,6 +75,7 @@ char		*xstrdup(char *);
+ void		 xstrncpy(char *, char *, size_t);
+ 
+ extern char	*progname;
++extern struct opt opt;
+ 
+ static int graph = 0;
+ 
+--- typespeed-0.6.5.orig/src/network.c
++++ typespeed-0.6.5/src/network.c
+@@ -116,6 +116,7 @@ void		setnoblock(void);
+ void		writenum(char *, uint32_t);
+ 
+ extern FILE	*netlogfile;
++extern struct opt opt;
+ 
+ static int	 ds = -1;
+ static int	 ss = -1;
+--- typespeed-0.6.5.orig/src/typespeed.c
++++ typespeed-0.6.5/src/typespeed.c
+@@ -146,6 +146,7 @@ char *typorank[12] =
+ 
+ FILE		*netlogfile;
+ struct stats	 best;
++struct stats	 now;
+ int		 hfd;
+ int		 misses;
+ struct stats	 other;
+@@ -155,6 +156,9 @@ char		*usedwordfile;
+ int		 wordcount = 0;
+ int		 wordpos[22];
+ char		 wordstring[22][20];
++struct rules	 rules;
++extern struct rawdata	words;
++extern struct opt	opt;
+ 
+ struct option options[] = {
+ 	{"cheat", no_argument, &opt.cheat, 1},
+--- typespeed-0.6.5.orig/src/typespeed.h
++++ typespeed-0.6.5/src/typespeed.h
+@@ -56,7 +56,7 @@ struct stats {
+ 	clock_t duration;
+ 	unsigned int sinit;
+ 	char name[21];
+-} now;
++};
+ 
+ struct opt {
+ 	int cheat;
+@@ -66,7 +66,7 @@ struct opt {
+ 	int usecolors;
+ 	char name[21];
+ 	char order[3];
+-} opt;
++};
+ 
+ struct rules {
+ 	int misses;
+@@ -85,12 +85,12 @@ struct rules {
+ 	int maxtime;
+ 	char name[31];
+ 	char fname[FILENAME_MAX + 1];
+-} rules;
++};
+ 
+ struct rawdata {
+ 	char *bulk;
+ 	char **word;
+ 	size_t n;
+ 	size_t max;
+-} words;
++};
+ 
+--- typespeed-0.6.5.orig/testsuite/t_loadwords.c
++++ typespeed-0.6.5/testsuite/t_loadwords.c
+@@ -52,6 +52,7 @@ extern void	freewords(void);
+ extern int	loadwords(char *);
+ 
+ extern char	worddir[MAXPATHLEN];
++extern struct rawdata  words;
+ 
+ int
+ main(void)

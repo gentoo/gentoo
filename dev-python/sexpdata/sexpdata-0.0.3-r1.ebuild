@@ -4,12 +4,13 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
 DESCRIPTION="a simple S-expression parser/serializer"
-HOMEPAGE="https://github.com/tkf/sexpdata"
-SRC_URI="https://github.com/tkf/sexpdata/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jd-boyd/sexpdata"
+SRC_URI="https://github.com/jd-boyd/sexpdata/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -17,12 +17,12 @@ HOMEPAGE="https://kmymoney.org"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="5"
-IUSE="activities addressbook calendar hbci holidays quotes webkit"
+IUSE="activities addressbook calendar hbci holidays quotes"
 [[ ${KDE_BUILD_TYPE} = live ]] && IUSE+=" experimental"
 
 BDEPEND="virtual/pkgconfig"
@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
@@ -74,11 +75,6 @@ COMMON_DEPEND="
 		>=sys-libs/gwenhywfar-5.1.2:=[qt5]
 	)
 	holidays? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
-	webkit? (
-		>=dev-qt/qtwebkit-5.212.0_pre20180120:5
-		>=kde-frameworks/kdewebkit-${KFMIN}:5
-	)
-	!webkit? ( >=dev-qt/qtwebengine-${QTMIN}:5[widgets] )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
@@ -100,6 +96,7 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_OFXIMPORTER=ON
+		-DENABLE_WEBENGINE=ON
 		-DENABLE_WEBOOB=OFF
 		-DUSE_QT_DESIGNER=OFF
 		$(cmake_use_find_package activities KF5Activities)
@@ -109,7 +106,6 @@ src_configure() {
 		-DENABLE_LIBICAL=$(usex calendar)
 		-DENABLE_KBANKING=$(usex hbci)
 		$(cmake_use_find_package holidays KF5Holidays)
-		-DENABLE_WEBENGINE=$(usex !webkit)
 	)
 	[[ ${KDE_BUILD_TYPE} = live ]] &&
 		mycmakeargs+=( -DENABLE_UNFINISHEDFEATURES=$(usex experimental) )

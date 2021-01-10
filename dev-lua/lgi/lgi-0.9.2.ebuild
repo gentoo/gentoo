@@ -13,15 +13,15 @@ SRC_URI="https://github.com/pavouk/lgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND=">=dev-lang/lua-5.1:=
+RDEPEND=">=dev-lang/lua-5.1:0=
 		dev-libs/gobject-introspection
 		dev-libs/glib
-		virtual/libffi:0="
+		dev-libs/libffi:0="
 DEPEND="${RDEPEND}
 		test? (
 			x11-libs/cairo[glib]

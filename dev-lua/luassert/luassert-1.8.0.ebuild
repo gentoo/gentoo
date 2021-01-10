@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,13 @@ SRC_URI="https://github.com/Olivine-Labs/luassert/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="luajit test"
 RESTRICT="test" # Requires same version to be installed or busted will fail.
 
 RDEPEND="
 	>=dev-lua/say-1.3_p1[luajit(-)=]
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 	luajit? ( dev-lang/luajit:2 )
 "
 

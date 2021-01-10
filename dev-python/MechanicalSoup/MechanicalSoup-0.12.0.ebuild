@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 
 inherit distutils-r1
 
@@ -14,8 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples test"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
 RDEPEND="
 	>=dev-python/beautifulsoup-4.0[${PYTHON_USEDEP}]
@@ -25,26 +24,19 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		${RDEPEND}
 		>=dev-python/requests-mock-1.3.0[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
+distutils_enable_tests pytest
 distutils_enable_sphinx docs
 
 python_prepare_all() {
-	# We don't need pytest-runner to run tests via pytest
-	sed -i "s/'pytest-runner'//" setup.py || die
-	distutils-r1_python_prepare_all
-}
-
-python_test() {
 	# Override pytest options to skip coverage and flake8
-	pytest -vv --override-ini="addopts=" \
-		|| die "tests failed with ${EPYTHON}"
+	sed -i -e '/^addopts =/d' setup.cfg || die
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {

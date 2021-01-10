@@ -3,9 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="sqlite"
-QTMIN="5.9.4"
 
 if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
@@ -18,46 +17,48 @@ fi
 inherit cmake desktop python-single-r1 qmake-utils xdg
 
 DESCRIPTION="User friendly Geographic Information System"
-HOMEPAGE="https://www.qgis.org/"
+HOMEPAGE="https://www.qgis.org/en/site/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml webkit"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
 BDEPEND="${PYTHON_DEPS}
-	>=dev-qt/linguist-tools-${QTMIN}:5
+	dev-qt/linguist-tools:5
 	sys-devel/bison
 	sys-devel/flex
 "
 COMMON_DEPEND="
-	app-crypt/qca:2[qt5(+),ssl]
+	>=app-crypt/qca-2.3.0:2[ssl]
 	>=dev-db/spatialite-4.2.0
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
-	dev-libs/qtkeychain[qt5(+)]
-	>=dev-qt/designer-${QTMIN}:5
-	>=dev-qt/qtconcurrent-${QTMIN}:5
-	>=dev-qt/qtcore-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5[ssl]
-	>=dev-qt/qtpositioning-${QTMIN}:5
-	>=dev-qt/qtprintsupport-${QTMIN}:5
-	>=dev-qt/qtserialport-${QTMIN}:5
-	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
+	dev-libs/protobuf:=
+	dev-libs/qtkeychain:=
+	dev-qt/designer:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtpositioning:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtserialport:5
+	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	media-gfx/exiv2:=
 	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-6.3.1:=
-	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
-	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
-	3d? ( >=dev-qt/qt3d-${QTMIN}:5 )
+	sys-libs/zlib
+	>=x11-libs/qscintilla-2.10.3:=
+	>=x11-libs/qwt-6.1.3-r2:6=[svg]
+	3d? ( dev-qt/qt3d:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( =sci-geosciences/grass-7*:= )
 	hdf5? ( sci-libs/hdf5:= )
@@ -68,7 +69,7 @@ COMMON_DEPEND="
 		dev-db/oracle-instantclient:=
 		sci-libs/gdal:=[oracle]
 	)
-	polar? ( >=x11-libs/qwtpolar-1.1.1-r1[qt5(+)] )
+	polar? ( >=x11-libs/qwtpolar-1.1.1-r2 )
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
@@ -78,11 +79,11 @@ COMMON_DEPEND="
 			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
 			dev-python/owslib[${PYTHON_MULTI_USEDEP}]
 			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[designer,gui,network,printsupport,sql,svg,${PYTHON_MULTI_USEDEP}]
 			dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
 			dev-python/pytz[${PYTHON_MULTI_USEDEP}]
 			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_MULTI_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.3[${PYTHON_MULTI_USEDEP}]
 			dev-python/requests[${PYTHON_MULTI_USEDEP}]
 			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
 			dev-python/six[${PYTHON_MULTI_USEDEP}]
@@ -90,11 +91,10 @@ COMMON_DEPEND="
 			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
 		')
 	)
-	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
-	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
+	qml? ( dev-qt/qtdeclarative:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-qt/qttest-${QTMIN}:5
+	dev-qt/qttest:5
 "
 RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel
@@ -105,10 +105,10 @@ RESTRICT="test"
 
 PATCHES=(
 	# git master
-	"${FILESDIR}/${PN}-3.10.0-cmake-lib-suffix.patch"
+	"${FILESDIR}/${PN}-3.16.0-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
-	"${FILESDIR}/${PN}-3.4.7-default-qmldir.patch"
+	"${FILESDIR}/${PN}-3.16.1-featuresummary.patch"
+	"${FILESDIR}/${PN}-3.16.1-default-qmldir.patch"
 )
 
 pkg_setup() {
@@ -117,6 +117,8 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
+	sed -e "/QtWebKit.*.py/d" \
+		-i python/PyQt/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -147,7 +149,7 @@ src_configure() {
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
 		-DWITH_QUICK=$(usex qml)
-		-DWITH_QTWEBKIT=$(usex webkit)
+		-DWITH_QTWEBKIT=OFF
 	)
 
 	if use grass; then

@@ -3,6 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -15,10 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 IUSE=""
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/pbr-0.8.0[${PYTHON_USEDEP}]
-"
+DEPEND=">=dev-python/pbr-0.8.0[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/requests-1.1[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]

@@ -11,12 +11,12 @@ SRC_URI="https://aanatoly.github.io/fbpanel/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ppc ppc64 x86"
 IUSE="alsa"
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gdk-pixbuf:2[X]
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	alsa? ( media-libs/alsa-lib )
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-fno-common.patch
 	"${FILESDIR}"/${PN}-7.0-images.patch
 	"${FILESDIR}"/${PN}-7.0-python3-shebangs.patch
+	"${FILESDIR}"/${PN}-7.0-remove-gdk-pixbuf-xlib.h.patch
 )
 
 src_prepare() {

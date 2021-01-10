@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,12 +10,12 @@ SRC_URI="ftp://space.mit.edu/pub/davis/jed/v${PV%.*}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="X gpm xft"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="gpm gui xft"
 
 RDEPEND=">=sys-libs/slang-2
 	gpm? ( sys-libs/gpm )
-	X? (
+	gui? (
 		x11-libs/libX11
 		xft? (
 			>=media-libs/freetype-2
@@ -23,7 +23,7 @@ RDEPEND=">=sys-libs/slang-2
 		)
 	)"
 DEPEND="${RDEPEND}
-	X? (
+	gui? (
 		x11-libs/libXt
 		x11-base/xorg-proto
 	)"
@@ -46,7 +46,7 @@ src_configure() {
 
 src_compile() {
 	emake
-	use X && emake xjed
+	use gui && emake xjed
 }
 
 src_install() {

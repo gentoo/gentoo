@@ -6,14 +6,14 @@ EAPI=7
 MY_PV="${PV/_beta/-beta}"
 MY_PV="${MY_PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
-inherit desktop flag-o-matic xdg
+inherit desktop flag-o-matic qmake-utils xdg
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
 
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 	SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2+"
@@ -129,6 +129,7 @@ src_configure() {
 			use sdl && myclient+=( sdl2 )
 			use gtk && myclient+=( gtk2 )
 			if use qt5 ; then
+				local -x MOCCMD=$(qt5_get_bindir)/moc
 				myclient+=( qt )
 				append-cxxflags -std=c++11
 			fi

@@ -18,13 +18,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug +udev"
 
 COMMON_DEPEND="
+	app-cdr/cdrtools
 	>=app-cdr/dvd+rw-tools-7.1
 	media-libs/libexif:=
 	>=media-libs/wxsvg-1.5.11:=
 	>=media-video/dvdauthor-0.7.1
 	>=media-video/ffmpeg-2.6:0=[encode]
 	>=media-video/xine-ui-0.99.7
-	virtual/cdrtools
 	virtual/jpeg:0
 	x11-libs/wxGTK:${WX_GTK_VER}=[gstreamer,X]
 	sys-apps/dbus

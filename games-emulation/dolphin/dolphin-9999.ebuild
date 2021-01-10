@@ -24,11 +24,11 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan"
 
 RDEPEND="
 	dev-libs/hidapi:0=
-	dev-libs/libfmt:0=
+	>=dev-libs/libfmt-7.1:0=
 	dev-libs/lzo:2=
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
@@ -89,6 +89,10 @@ src_prepare() {
 		# no support for for using system library
 		glslang
 		imgui
+
+		# not packaged, tiny header library
+		rangeset
+
 		# FIXME: xxhash can't be found by cmake
 		xxhash
 		# no support for for using system library
@@ -126,6 +130,9 @@ src_prepare() {
 
 	l10n_find_plocales_changes "Languages/po/" "" '.po'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	 # About 50% compile-time speedup
+	use vulkan || sed -i -e '/Externals\/glslang/d' CMakeLists.txt
 }
 
 src_configure() {
@@ -142,6 +149,7 @@ src_configure() {
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_SDL=OFF # not supported: #666558
+		-DENABLE_VULKAN=$(usex vulkan)
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
@@ -152,6 +160,9 @@ src_configure() {
 		# All dolphin's libraries are private
 		# and rely on circular dependency resolution.
 		-DBUILD_SHARED_LIBS=OFF
+
+		# Avoid warning spam around unset variables.
+		-Wno-dev
 	)
 
 	cmake_src_configure

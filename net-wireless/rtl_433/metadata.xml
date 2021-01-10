@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
-    <flag name="soapy">Build with SoapySDR support</flag>
+    <flag name="soapysdr">Build with SoapySDR support</flag>
   </use>
   <upstream>
     <remote-id type="github">merbanan/rtl_433</remote-id>

@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit qmake-utils gnome2-utils xdg
+inherit qmake-utils xdg
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="https://valentinaproject.bitbucket.io/"
-SRC_URI="https://bitbucket.org/dismine/${PN}/get/v${PV}.zip -> ${P}.zip
+SRC_URI="https://gitlab.com/smart-pattern/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
 	https://dev.gentoo.org/~fordfrog/distfiles/valentina-5858.patch.bz2"
 
 LICENSE="GPL-3"
@@ -21,24 +21,27 @@ for LANG in ${LANGS}; do
 	IUSE="${IUSE} l10n_${LANG}"
 done
 
-CDEPEND="
+RDEPEND="
 	app-text/poppler
-	dev-qt/linguist:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtopengl
+	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}
-	app-arch/unzip"
+DEPEND="
+	${RDEPEND}
+	dev-qt/qttest:5
+"
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 
-S=${WORKDIR}/dismine-${PN}-b639b75d1688
+S=${WORKDIR}/${PN}-v${PV}
 
 PATCHES=(
 	"${FILESDIR}/5823.patch"

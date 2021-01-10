@@ -1,9 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic scons-utils toolchain-funcs
+PYTHON_COMPAT=( python3_{6,7,8})
+
+inherit flag-o-matic python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
@@ -14,7 +16,7 @@ else
 	#SRC_URI="https://downloads.mixxx.org/${P}/${P}-src.tar.gz"
 	SRC_URI="https://github.com/mixxxdj/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -75,11 +77,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-qt/qttest:5
 	dev-qt/qtxmlpatterns:5
+	${PYTHON_DEPS}
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
-	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
 	"${FILESDIR}"/${PN}-2.2.3-qt-5.14.patch
 	"${FILESDIR}"/${PN}-2.2.4-metadata.patch
 )
@@ -94,9 +96,6 @@ src_prepare() {
 src_configure() {
 	local myoptimize=0
 
-	# Required for >=qt-5.7.0 (bug #590690)
-	append-cxxflags -std=c++11
-
 	# Try to get cpu type based on CFLAGS.
 	# Bug #591968
 	for i in $(get-flag mcpu) $(get-flag march) ; do
@@ -106,7 +105,7 @@ src_configure() {
 		fi
 	done
 
-	myesconsargs=(
+	MYSCONS=(
 		prefix="${EPREFIX}/usr"
 		qtdir="${EPREFIX}/usr/$(get_libdir)/qt5"
 		faad="$(usex aac 1 0)"
@@ -127,13 +126,13 @@ src_configure() {
 
 src_compile() {
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
-	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${myesconsargs[@]}
+	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${MYSCONS[@]}
 }
 
 src_install() {
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
-	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${myesconsargs[@]} \
-		install_root="${ED%/}"/usr install
+	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${MYSCONS[@]} \
+		install_root="${ED}"/usr install
 
 	dodoc README Mixxx-Manual.pdf
 }

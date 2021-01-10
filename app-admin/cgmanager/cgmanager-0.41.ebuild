@@ -11,7 +11,7 @@ SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86"
 IUSE="pam selinux"
 
 RDEPEND="sys-libs/libnih[dbus]
@@ -35,7 +35,8 @@ src_configure() {
 	econf \
 		--with-distro=gentoo \
 		--with-pamdir="$(usex pam $(getpam_mod_dir) none)" \
-		--with-init-script=systemd
+		--with-init-script=systemd \
+		--disable-static
 }
 
 src_install() {
@@ -46,4 +47,6 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newinitd "${FILESDIR}"/cgproxy.initd-r1 cgproxy
+
+	find "${ED}" -name '*.la' -delete || die
 }

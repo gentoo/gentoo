@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Tool to refactor valid 3.x syntax into valid 2.x syntax"
@@ -17,7 +17,7 @@ IUSE=""
 
 BDEPEND="app-arch/unzip"
 
-python_prepare() {
+python_prepare_all() {
 	# https://bitbucket.org/amentajo/lib3to2/issues/50/testsuite-fails-with-new-python-35
 	# Remove failing test
 	sed -i -e "/test_argument_unpacking/a \\        return"\
@@ -30,5 +30,5 @@ python_prepare() {
 python_test() {
 	cd "${BUILD_DIR}"/lib || die
 	# the standard test runner fails to properly return failure
-	"${EPYTHON}" -m unittest discover || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }

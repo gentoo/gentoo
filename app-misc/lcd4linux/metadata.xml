@@ -49,4 +49,7 @@
 		<flag name="w1retap">Enable the w1retap plugin.</flag>
 		<flag name="wireless">Enable the wireless plugin, to get wireless statistics.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jmccrohan/lcd4linux</remote-id>
+	</upstream>
 </pkgmetadata>

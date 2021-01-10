@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
@@ -23,11 +23,11 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-apps/policycoreutils-2.8
-	virtual/udev"
-DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/checkpolicy-2.8"
+RDEPEND=">=sys-apps/policycoreutils-2.8"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	>=sys-apps/checkpolicy-2.8
+	sys-devel/m4"
 
 S=${WORKDIR}/
 
@@ -47,7 +47,6 @@ src_configure() {
 	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
 
 	# Update the SELinux refpolicy capabilities based on the users' USE flags.
-
 	if use unknown-perms; then
 		sed -i -e '/^UNK_PERMS/s/deny/allow/' "${S}/refpolicy/build.conf" \
 			|| die "Failed to allow Unknown Permissions Handling"
@@ -77,7 +76,6 @@ src_configure() {
 		cp -a "${S}/refpolicy" "${S}/${i}" || die
 		cd "${S}/${i}" || die
 
-		#cp "${FILESDIR}/modules-2.20120215.conf" "${S}/${i}/policy/modules.conf"
 		sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf" || die
 
 		sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/$i/" \

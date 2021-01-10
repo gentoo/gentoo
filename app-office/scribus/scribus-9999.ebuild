@@ -32,7 +32,7 @@ DEPEND="${PYTHON_DEPS}
 	app-text/libqxp
 	app-text/poppler:=
 	dev-libs/hyphen
-	>=dev-libs/icu-58.2:0=
+	dev-libs/icu:0=
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qtcore:5
@@ -44,7 +44,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-qt/qtxml:5
 	media-libs/fontconfig
 	media-libs/freetype:2
-	>=media-libs/harfbuzz-0.9.42:0=[icu]
+	media-libs/harfbuzz:0=[icu]
 	media-libs/lcms:2
 	media-libs/libcdr
 	media-libs/libfreehand
@@ -56,8 +56,8 @@ DEPEND="${PYTHON_DEPS}
 	net-print/cups
 	sys-libs/zlib[minizip]
 	virtual/jpeg:0=
-	>=x11-libs/cairo-1.10.0[X,svg]
-	boost? ( >=dev-libs/boost-1.67:= )
+	x11-libs/cairo[X,svg]
+	boost? ( dev-libs/boost:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
 	hunspell? ( app-text/hunspell:= )
 	osg? ( dev-games/openscenegraph:= )

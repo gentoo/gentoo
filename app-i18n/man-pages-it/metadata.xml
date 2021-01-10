@@ -8,8 +8,4 @@
 			<name>Giulio Daprelà</name>
 		</maintainer>
 	</upstream>
-	<longdescription lang="en">
-		A somewhat comprehensive collection of Italian Linux man pages.
-	</longdescription>
 </pkgmetadata>
-

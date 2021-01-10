@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		library for building and pretty printing CSS 2.1 code
-	</longdescription>
 </pkgmetadata>

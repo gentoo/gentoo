@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are not supported on all architectures.
+dist-kernel
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl is only supported on specific architectures
@@ -68,7 +72,6 @@ cpu_flags_x86_xop
 # ppc arch specific USE flags
 altivec
 ppcsha1
-power8
 
 # mips arch specific USE flags
 fixed-point
@@ -142,6 +145,7 @@ video_cards_lima
 video_cards_omap
 video_cards_panfrost
 video_cards_tegra
+video_cards_v3d
 video_cards_vc4
 
 # James Le Cuirot <chewi@gentoo.org>
@@ -157,7 +161,6 @@ input_devices_wacom
 
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Only works on x86 or amd64
-lcd_devices_svga
 lcd_devices_luise
 
 # Alex Legler <a3li@gentoo.org> (2009-12-07)
@@ -195,8 +198,6 @@ abi_mips_n32
 abi_mips_n64
 abi_ppc_32
 abi_ppc_64
-abi_riscv_lp64d
-abi_riscv_lp64
 abi_s390_32
 abi_s390_64
 

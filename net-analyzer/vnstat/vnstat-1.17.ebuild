@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit toolchain-funcs user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
@@ -10,7 +11,7 @@ SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 sparc x86"
 IUSE="gd selinux test"
 RESTRICT="!test? ( test )"
 

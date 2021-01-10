@@ -3,7 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -17,8 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pycodestyle[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pycodestyle[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -28,5 +28,5 @@ DEPEND="${RDEPEND}
 	)"
 
 python_test() {
-	py.test -v tests || die "tests failed with ${EPYTHON}"
+	pytest -vv tests || die "tests failed with ${EPYTHON}"
 }

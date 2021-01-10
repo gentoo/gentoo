@@ -1,0 +1,51 @@
+commit 75e22f3c365b62acbad8d8645d5404242800dfba
+Author: Guido Draheim <guidod@gmx.de>
+Date:   Fri Apr 17 20:47:59 2020 +0200
+
+    #88 use shell $DESTDIR instead of make $(DESTDIR)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 442e877..d1284e6 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -145,27 +145,27 @@ string(REPLACE ";" " " all_bins_FILES "${bins_FILES}")
+ string(REPLACE ";" " " all_SDLs_FILES "${SDLs_FILES}")
+ add_custom_target(install-site
+    COMMAND ${BASH} -c "ls -l ${CMAKE_CURRENT_BINARY_DIR}/site.html"
+-   COMMAND ${BASH} -c "mkdir -vp $(DESTDIR)${docdir}  >&2 || ls -ld $(DESTDIR)${docdir} >&2"
+-   COMMAND ${BASH} -c "cd ${outdir} && cp zziplib.html zzipmmapped.html zzipfseeko.html $(DESTDIR)${docdir}/"
+-   COMMAND ${BASH} -c "cd ${srcdir} && cp README.* COPYING.* $(DESTDIR)${docdir}/"
+-   COMMAND ${BASH} -c "cd ${topdir} && cp ChangeLog          $(DESTDIR)${docdir}/"
+-   COMMAND ${BASH} -c "cd ${topdir} && cp ${all_bins_FILES}  $(DESTDIR)${docdir}/"
+-   COMMAND ${BASH} -c "cd ${topdir} && cp ${all_SDLs_FILES}  $(DESTDIR)${docdir}/"
+-   COMMAND ${BASH} -c "cd $(DESTDIR)${docdir} && cp ${outdir}/*.html ."
+-   COMMAND ${BASH} -c "cd $(DESTDIR)${docdir} && ln -s zzip-index.html index.html"
++   COMMAND ${BASH} -c "mkdir -vp $DESTDIR${docdir}  >&2 || ls -ld $DESTDIR${docdir} >&2"
++   COMMAND ${BASH} -c "cd ${outdir} && cp zziplib.html zzipmmapped.html zzipfseeko.html $DESTDIR${docdir}/"
++   COMMAND ${BASH} -c "cd ${srcdir} && cp README.* COPYING.* $DESTDIR${docdir}/"
++   COMMAND ${BASH} -c "cd ${topdir} && cp ChangeLog          $DESTDIR${docdir}/"
++   COMMAND ${BASH} -c "cd ${topdir} && cp ${all_bins_FILES}  $DESTDIR${docdir}/"
++   COMMAND ${BASH} -c "cd ${topdir} && cp ${all_SDLs_FILES}  $DESTDIR${docdir}/"
++   COMMAND ${BASH} -c "cd $DESTDIR${docdir} && cp ${outdir}/*.html ."
++   COMMAND ${BASH} -c "cd $DESTDIR${docdir} && ln -s zzip-index.html index.html"
+    DEPENDS site.html zziplib.html zzipmmapped.html zzipfseeko.html
+    VERBATIM)
+ add_custom_target(install-htmpages
+    COMMAND ${BASH} -c "ls -l ${CMAKE_CURRENT_BINARY_DIR}/*pages.tar"
+-   COMMAND ${BASH} -c "mkdir -vp $(DESTDIR)${docdir}  >&2 || ls -ld $(DESTDIR)${docdir} >&2"
+-   COMMAND ${BASH} -c "cd $(DESTDIR)${docdir} && tar x -f ${outdir}/htmpages.tar"
+-   COMMAND ${BASH} -c "cd $(DESTDIR)${docdir} && mv html man"
++   COMMAND ${BASH} -c "mkdir -vp $DESTDIR${docdir}  >&2 || ls -ld $DESTDIR${docdir} >&2"
++   COMMAND ${BASH} -c "cd $DESTDIR${docdir} && tar x -f ${outdir}/htmpages.tar"
++   COMMAND ${BASH} -c "cd $DESTDIR${docdir} && mv html man"
+    DEPENDS htmpages.tar
+    VERBATIM)
+ add_custom_target(install-manpages
+    COMMAND ${BASH} -c "ls -l ${CMAKE_CURRENT_BINARY_DIR}/*pages.tar"
+-   COMMAND ${BASH} -c "mkdir -vp $(DESTDIR)${mandir}  >&2 || ls -ld $(DESTDIR)${mandir} >&2"
+-   COMMAND ${BASH} -c "cd $(DESTDIR)${mandir} && tar xf ${outdir}/manpages.tar"
++   COMMAND ${BASH} -c "mkdir -vp $DESTDIR${mandir}  >&2 || ls -ld $DESTDIR${mandir} >&2"
++   COMMAND ${BASH} -c "cd $DESTDIR${mandir} && tar xf ${outdir}/manpages.tar"
+    DEPENDS manpages.tar
+    VERBATIM)
+ add_custom_target(install-docs DEPENDS install-manpages install-htmpages install-site)

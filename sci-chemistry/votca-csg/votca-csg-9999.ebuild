@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils multilib
+inherit bash-completion-r1 cmake multilib
 
 IUSE="doc examples extras +gromacs hdf5"
 PDEPEND="extras? ( ~sci-chemistry/${PN}apps-${PV} )"
@@ -13,7 +13,7 @@ if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
 		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	>=app-text/txt2tags-2.5
 	virtual/pkgconfig"
 
-DOCS=( README.md NOTICE CHANGELOG.md )
+DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
 
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
@@ -62,11 +62,11 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex '!hdf5')
 		-DWITH_RC_FILES=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newbashcomp "${ED}"/usr/share/votca/rc/csg-completion.bash csg_call
 	for i in "${ED}"/usr/bin/csg_*; do
 		[[ ${i} = *csg_call ]] && continue

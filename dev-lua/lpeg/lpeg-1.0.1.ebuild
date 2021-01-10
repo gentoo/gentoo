@@ -11,11 +11,11 @@ SRC_URI="http://www.inf.puc-rio.br/~roberto/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="debug doc luajit"
 
 RDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:0= )
 	luajit? ( dev-lang/luajit:2= )"
 
 DEPEND="

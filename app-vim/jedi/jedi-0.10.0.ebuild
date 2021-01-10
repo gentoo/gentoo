@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/davidhalter/jedi-vim"
 SRC_URI="https://github.com/davidhalter/jedi-vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

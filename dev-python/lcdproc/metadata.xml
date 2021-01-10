@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This is a python OOP wrapper library for LCDproc Telnet API,
+		which makes it possible to submit own data to the LCDproc server.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/jinglemansweep/lcdproc/issues</bugs-to>
+		<remote-id type="github">jinglemansweep/lcdproc</remote-id>
+		<remote-id type="pypi">lcdproc</remote-id>
+	</upstream>
+</pkgmetadata>

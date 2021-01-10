@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/aide/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="acl audit curl e2fs mhash postgres prelink selinux static xattr zlib"
+IUSE="acl audit curl e2fs mhash postgres prelink selinux xattr zlib"
 
 COMMON_DEPEND="
 	!mhash? (
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="
-	!static? ( ${COMMON_DEPEND} )
+	${COMMON_DEPEND}
 	prelink? ( sys-devel/prelink )
 	selinux? ( sec-policy/selinux-aide )
 "
@@ -40,25 +40,10 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	static? (
-		!mhash? (
-			dev-libs/libgcrypt:0[static-libs]
-			dev-libs/libgpg-error[static-libs]
-		)
-		mhash? ( app-crypt/mhash[static-libs] )
-		dev-libs/libpcre[static-libs]
-		acl? ( virtual/acl[static-libs] )
-		e2fs? ( sys-fs/e2fsprogs[static-libs] )
-		prelink? ( dev-libs/elfutils[static-libs] )
-		selinux? ( sys-libs/libselinux[static-libs] )
-		xattr? ( sys-apps/attr[static-libs] )
-		zlib? ( sys-libs/zlib[static-libs] )
-	)
 "
 
 REQUIRED_USE="
 	postgres? ( !mhash )
-	static? ( !audit !curl !postgres )
 "
 
 HTML_DOCS=( doc/manual.html )
@@ -94,7 +79,7 @@ src_configure() {
 		# Disable broken l10n support: https://sourceforge.net/p/aide/bugs/98/
 		# This doesn't affect anything because there are no localizations yet.
 		--without-locale
-		$(use_enable static)
+		--disable-static
 		$(use_with zlib)
 		$(use_with curl)
 		$(use_with acl posix-acl)

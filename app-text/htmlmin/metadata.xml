@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">htmlmin</remote-id>
+		<remote-id type="github">mankyd/htmlmin</remote-id>
 	</upstream>
 </pkgmetadata>

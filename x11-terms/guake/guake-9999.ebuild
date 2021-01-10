@@ -8,7 +8,9 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 git-r3 gnome2-utils xdg-utils
 
 DESCRIPTION="Drop-down terminal for GNOME"
-HOMEPAGE="https://github.com/Guake/guake https://pypi.org/project/Guake"
+HOMEPAGE="
+	https://github.com/Guake/guake/
+	https://pypi.org/project/guake/"
 EGIT_REPO_URI="https://github.com/Guake/guake.git"
 
 LICENSE="GPL-2"

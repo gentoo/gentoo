@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -13,7 +14,7 @@ fi
 inherit ${SCM} distutils-r1
 
 DESCRIPTION="Command-line tool for installing ROS system dependencies"
-HOMEPAGE="http://wiki.ros.org/rosdep"
+HOMEPAGE="https://wiki.ros.org/rosdep"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
@@ -38,14 +39,18 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/nose[${PYTHON_USEDEP}]
 	test? (
-		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
+PATCHES=( "${FILESDIR}/tests.patch" )
 
 python_test() {
-	nosetests --with-coverage --cover-package=rosdep2 --with-xunit test || die
+	if has network-sandbox ${FEATURES}; then
+		einfo "Skipping tests due to network sandbox"
+	else
+		env -u ROS_DISTRO nosetests --with-xunit test || die
+	fi
 }
 
 pkg_postrm() {

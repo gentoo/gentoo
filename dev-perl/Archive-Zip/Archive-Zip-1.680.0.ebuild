@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A wrapper that lets you read Zip archive members as if they were files"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -31,3 +31,8 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+# Parallel tests broken
+# See:
+#  https://bugs.gentoo.org/738308
+#  https://github.com/redhotpenguin/perl-Archive-Zip/issues/82
+DIST_TEST="do"

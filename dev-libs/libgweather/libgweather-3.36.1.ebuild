@@ -15,7 +15,7 @@ SLOT="2/3-16-2" # subslot = 3-(libgweather-3 soname suffix) w/ temporary -2 suff
 IUSE="glade gtk-doc +introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
@@ -40,6 +40,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/3.32.1-meson-tweaks.patch # Provide introspection optionality and don't build tests that aren't ran automatically
+	"${FILESDIR}"/3.36.1-tests-locale.patch # Don't fail tests when a locale is not present, https://gitlab.gnome.org/GNOME/libgweather/-/merge_requests/58
+	"${FILESDIR}"/3.36.1-autoskip-network-test.patch
 )
 
 src_prepare() {

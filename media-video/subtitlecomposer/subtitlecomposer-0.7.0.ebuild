@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm
 
 DESCRIPTION="Text-based subtitles editor"
-HOMEPAGE="https://github.com/maxrd2/subtitlecomposer"
+HOMEPAGE="https://subtitlecomposer.kde.org/"
 SRC_URI="https://github.com/maxrd2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -54,7 +54,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-valid-desktop-file.patch" # bug 745429
+	"${FILESDIR}/${P}-mpv-0.33.patch" # bug 760006
+)
 
 S="${WORKDIR}/SubtitleComposer-${PV}"
 

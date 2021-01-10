@@ -1,6 +1,5 @@
-diff -urN wput/Makefile.in wput/Makefile.in
---- wput/Makefile.in	2006-04-04 18:16:52.000000000 +0100
-+++ wput/Makefile.in	2006-11-07 17:31:10.000000000 +0000
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -15,8 +15,12 @@
  
  install: all

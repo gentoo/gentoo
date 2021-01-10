@@ -20,9 +20,6 @@
 		hxt-unicode contains encoding and decoding functions,
 		hxt-charproperties char properties for unicode and XML.
 	</longdescription>
-	<use>
-		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">UweSchmidt/hxt</remote-id>
 	</upstream>

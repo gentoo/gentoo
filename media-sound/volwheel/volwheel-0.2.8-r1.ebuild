@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils
+EAPI=7
+
+inherit xdg
 
 DESCRIPTION="A volume control trayicon with mouse wheel support"
 HOMEPAGE="https://oliwer.net/b/volwheel.html"
@@ -18,16 +19,12 @@ RDEPEND="${DEPEND}
 	dev-perl/Gtk2
 	alsa? ( media-sound/alsa-utils )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-perl516.patch
-	sed -i -e '/^Encoding/d' ${PN}.desktop || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-perl516.patch
+	"${FILESDIR}"/${P}-desktop-QA.patch
+)
 
 src_install() {
-	./install.pl prefix=/usr destdir="${D}" || die
-	dodoc ChangeLog README TODO
+	./install.pl prefix="${EPREFIX}"/usr destdir="${D}" || die
+	einstalldocs
 }
-
-pkg_preinst() {	gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

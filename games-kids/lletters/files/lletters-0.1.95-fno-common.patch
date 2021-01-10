@@ -1,0 +1,41 @@
+diff -r edda3caf942c libqdwav/wav_lib.h
+--- a/libqdwav/wav_lib.h	Sat Oct 03 19:10:00 2020 +0000
++++ b/libqdwav/wav_lib.h	Sat Oct 03 19:12:33 2020 +0000
+@@ -29,11 +29,11 @@
+ 	char   	head[43];
+ } wav_sig;
+ 
+-buffmem_desc	binfo;
+-count_info	cinfo;
++extern buffmem_desc	binfo;
++extern count_info	cinfo;
+ 
+-int 	dsp_fd;
+-int 	*buffer;
++extern int 	dsp_fd;
++extern int 	*buffer;
+ 
+ short 	get_wav_format		(wav_sig *info);
+ int 	open_wav		(char *header, char file_name[]);
+@@ -47,4 +47,4 @@
+ int 	init_parm		(int argc, char *argv[], wav_sig *file_info);
+ int 	open_wav_rec		(wav_sig *info);
+ 
+-int bsize;
++extern int bsize;
+diff -r edda3caf942c libqdwav/wav_read.c
+--- a/libqdwav/wav_read.c	Sat Oct 03 19:10:00 2020 +0000
++++ b/libqdwav/wav_read.c	Sat Oct 03 19:12:33 2020 +0000
+@@ -6,7 +6,11 @@
+ #include <sys/stat.h>
+ #include "wav_lib.h"
+ 
+-
++buffmem_desc	binfo;
++count_info	cinfo;
++int 	dsp_fd;
++int 	*buffer;
++int bsize;
+ 
+ 	/* wav header is 44 bytes long */
+ int open_wav(char *header, char file_name[]){

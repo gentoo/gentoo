@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit cmake python-single-r1 toolchain-funcs
 
@@ -25,10 +25,10 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
 	>=media-libs/libopenshot-audio-0.2.0:0=
+	media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora]
 	net-libs/cppzmq
 	net-libs/zeromq
 	imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] )
-	media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora]
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
@@ -38,7 +38,10 @@ BDEPEND="
 	test? ( dev-libs/unittest++ )
 "
 
-PATCHES=( ${FILESDIR}/${PN}-0.2.5-gcc10.patch )
+PATCHES=(
+	"${FILESDIR}/${P}-gcc10.patch"
+	"${FILESDIR}/${P}-no-hwaccel-testfix.patch"
+)
 
 check_compiler() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then

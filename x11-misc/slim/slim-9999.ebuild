@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,8 +17,7 @@ DESCRIPTION="Simple Login Manager"
 HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="branding pam consolekit"
-REQUIRED_USE="consolekit? ( pam )"
+IUSE="branding pam"
 
 RDEPEND="x11-libs/libXmu
 	x11-libs/libX11
@@ -28,8 +27,6 @@ RDEPEND="x11-libs/libXmu
 	media-libs/libpng:0=
 	virtual/jpeg:=
 	x11-apps/sessreg
-	consolekit? ( sys-auth/consolekit
-		sys-apps/dbus )
 	pam? ( sys-libs/pam
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
@@ -59,7 +56,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_PAM=$(usex pam)
-		-DUSE_CONSOLEKIT=$(usex consolekit)
+		-DUSE_CONSOLEKIT=OFF
 	)
 
 	cmake-utils_src_configure
@@ -126,10 +123,6 @@ pkg_postinst() {
 		elog "/usr/share/doc/${PF} and change your login_cmd in /etc/slim.conf"
 		elog "accordingly."
 		elog
-		ewarn "Please note that slim supports consolekit directly.  Please do not use any "
-		ewarn "old work-arounds (including calls to 'ck-launch-session' in xinitrc scripts)"
-		ewarn "and enable USE=\"consolekit\" instead."
-		ewarn
 	fi
 	if ! use pam; then
 		elog "You have merged ${PN} without USE=\"pam\", this will cause ${PN} to fall back to"

@@ -13,6 +13,7 @@
     The Oslo configuration API supports parsing command line arguments.
   Oslo also supports .ini style configuration files.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">oslo.config</remote-id>
     <remote-id type="launchpad">oslo</remote-id>

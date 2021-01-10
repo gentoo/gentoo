@@ -1,0 +1,53 @@
+From f949445894fa6da9eaa9f26f54bac59888822011 Mon Sep 17 00:00:00 2001
+From: Matt Chang <chchwy@gmail.com>
+Date: Wed, 5 Aug 2020 15:06:29 +1000
+Subject: [PATCH] qmake CONFIG+=NO_TESTS to skip building tests
+
+---
+ pencil2d.pro | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/pencil2d.pro b/pencil2d.pro
+index f9fbca5a2..e1bc4a179 100644
+--- a/pencil2d.pro
++++ b/pencil2d.pro
+@@ -4,22 +4,23 @@
+ 
+ TEMPLATE = subdirs
+ 
+-SUBDIRS = \ # sub-project names
+-    core_lib \
+-    app \
+-    tests
+-
+ # build the project sequentially as listed in SUBDIRS !
+ CONFIG += ordered
+ 
+-# where to find the sub projects - give the folders
++SUBDIRS += core_lib
+ core_lib.subdir = core_lib
+-app.subdir      = app
+-tests.subdir    = tests
+ 
+-# what subproject depends on others
+-app.depends      = core_lib
+-tests.depends    = core_lib
++SUBDIRS += app
++app.subdir = app
++app.depends = core_lib
++
++SUBDIRS += tests
++tests.subdir = tests
++tests.depends = core_lib
++
++NO_TESTS {
++  SUBDIRS -= tests
++}
+ 
+ TRANSLATIONS += translations/pencil.ts \
+                 translations/pencil_ar.ts \
+@@ -48,4 +49,3 @@ TRANSLATIONS += translations/pencil.ts \
+                 translations/pencil_zh_CN.ts \
+                 translations/pencil_zh_TW.ts
+ 
+-macx: LIBS += -framework AppKit

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A set of extra plugins for Qmmp"
 HOMEPAGE="http://qmmp.ylsoftware.com/"
@@ -11,7 +11,7 @@ SRC_URI="http://qmmp.ylsoftware.com/files/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
@@ -28,3 +28,8 @@ DEPEND="${RDEPEND}
 	dev-lang/yasm
 	dev-qt/linguist-tools:5
 "
+
+src_configure() {
+	append-ldflags -Wl,-z,noexecstack
+	cmake_src_configure
+}

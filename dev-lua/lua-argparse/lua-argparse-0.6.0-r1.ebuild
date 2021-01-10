@@ -10,13 +10,13 @@ SRC_URI="https://github.com/mpeterv/argparse/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="doc luajit test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:=
+	>=dev-lang/lua-5.1:0=
 	luajit? ( dev-lang/luajit:2 )"
 BDEPEND="
 	virtual/pkgconfig

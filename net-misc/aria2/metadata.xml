@@ -17,6 +17,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">aria2</remote-id>
-		<remote-id type="github">tatsuhiro-t/aria2</remote-id>
+		<remote-id type="github">aria2/aria2</remote-id>
 	</upstream>
 </pkgmetadata>

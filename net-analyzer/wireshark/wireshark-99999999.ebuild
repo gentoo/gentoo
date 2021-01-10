@@ -2,26 +2,30 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
-inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-utils cmake
+
+LUA_COMPAT=( lua5-{1..2} )
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit fcaps flag-o-matic git-r3 lua-single python-any-r1 qmake-utils xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
 LICENSE="GPL-2"
 
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
 	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
-	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
-	+minizip +netlink +plugins plugin-ifdemo +pcap +qt5 +randpkt +randpktdump
-	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
-	test +text2pcap tfshark +tshark +udpdump zlib
+	+dumpcap +editcap http2 ilbc kerberos libxml2 lto lua lz4 maxminddb
+	+mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +qt5 +randpkt
+	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
+	sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd
 "
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="
+	acct-group/pcap
 	>=dev-libs/glib-2.32:2
 	>=net-dns/c-ares-1.5
 	dev-libs/libgcrypt:0
@@ -30,13 +34,15 @@ CDEPEND="
 	ciscodump? ( >=net-libs/libssh-0.6 )
 	filecaps? ( sys-libs/libcap )
 	http2? ( net-libs/nghttp2 )
+	ilbc? ( media-libs/libilbc )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2 )
-	lua? ( >=dev-lang/lua-5.1:* )
+	lua? ( ${LUA_DEPS} )
 	lz4? ( app-arch/lz4 )
 	maxminddb? ( dev-libs/libmaxminddb )
 	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
+	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
 	qt5? (
 		dev-qt/qtcore:5
@@ -54,6 +60,7 @@ CDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib )
+	zstd? ( app-arch/zstd )
 "
 # We need perl for `pod2html`. The rest of the perl stuff is to block older
 # and broken installs. #455122
@@ -84,15 +91,18 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 REQUIRED_USE="
+	lua? ( ${LUA_REQUIRED_USE} )
 	plugin-ifdemo? ( plugins )
 "
+RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
 
 pkg_setup() {
-	enewgroup wireshark
+	use lua && lua-single_pkg_setup
 }
 
 src_configure() {
@@ -145,19 +155,21 @@ src_configure() {
 		-DBUILD_tshark=$(usex tshark)
 		-DBUILD_udpdump=$(usex udpdump)
 		-DBUILD_wireshark=$(usex qt5)
-		-DCMAKE_INSTALL_DOCDIR="${EROOT}/usr/share/doc/${PF}"
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
 		-DENABLE_BROTLI=$(usex brotli)
 		-DENABLE_CAP=$(usex filecaps caps)
 		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
+		-DENABLE_LTO=$(usex lto)
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_LZ4=$(usex lz4)
 		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex http2)
+		-DENABLE_OPUS=$(usex opus)
 		-DENABLE_PCAP=$(usex pcap)
 		-DENABLE_PLUGINS=$(usex plugins)
 		-DENABLE_PLUGIN_IFDEMO=$(usex plugin-ifdemo)
@@ -166,6 +178,7 @@ src_configure() {
 		-DENABLE_SNAPPY=$(usex snappy)
 		-DENABLE_SPANDSP=$(usex spandsp)
 		-DENABLE_ZLIB=$(usex zlib)
+		-DENABLE_ZSTD=$(usex zstd)
 	)
 
 	cmake_src_configure
@@ -233,17 +246,16 @@ pkg_postinst() {
 	xdg_mimeinfo_database_update
 
 	# Add group for users allowed to sniff.
-	enewgroup wireshark
-	chgrp wireshark "${EROOT}"/usr/bin/dumpcap
+	chgrp pcap "${EROOT}"/usr/bin/dumpcap
 
 	if use dumpcap && use pcap; then
-		fcaps -o 0 -g wireshark -m 4710 -M 0710 \
+		fcaps -o 0 -g pcap -m 4710 -M 0710 \
 			cap_dac_read_search,cap_net_raw,cap_net_admin \
 			"${EROOT}"/usr/bin/dumpcap
 	fi
 
 	ewarn "NOTE: To capture traffic with wireshark as normal user you have to"
-	ewarn "add yourself to the wireshark group. This security measure ensures"
+	ewarn "add yourself to the pcap group. This security measure ensures"
 	ewarn "that only trusted users are allowed to sniff your traffic."
 }
 

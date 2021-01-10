@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Fast OpenStreetMap data tools:
+		* osmconvert - reads and converts OSM data to the selected output file format
+		* osmfilter - filters OSM data
+		* osmupdate - cares about updating an .osm, .o5m or .pbf file
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">osm-c-tools/osmctools</remote-id>
+	</upstream>
+</pkgmetadata>

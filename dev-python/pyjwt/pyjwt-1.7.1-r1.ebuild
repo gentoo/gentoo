@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..9} pypy3 )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 MY_PN="PyJWT"
 DESCRIPTION="JSON Web Token implementation in Python"
@@ -16,7 +16,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=""
 DEPEND="

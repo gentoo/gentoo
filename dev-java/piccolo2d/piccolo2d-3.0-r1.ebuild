@@ -29,7 +29,7 @@ DEPEND="
 
 S="${WORKDIR}/${PN}.java-${PN}-complete-${PV}"
 JAVA_GENTOO_CLASSPATH="swt-3.8"
-JAVA_SRC_DIR="core extras swt"
+JAVA_SRC_DIR=( "core" "extras" "swt" )
 
 java_prepare() {
 	rm -rf core/src/test extras/src/test swt/src/test || die

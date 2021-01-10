@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Authentication for Yesod"
-HOMEPAGE="http://www.yesodweb.com/"
+HOMEPAGE="https://www.yesodweb.com/"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"

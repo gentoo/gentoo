@@ -11,7 +11,7 @@ SRC_URI="https://github.com/karlkleinpaste/${PN}/releases/download/${PV}/${P}.ta
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="static"
 
 src_configure() {

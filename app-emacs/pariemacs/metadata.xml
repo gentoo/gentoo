@@ -5,7 +5,4 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription lang="en">
-    Emacs modes to edit gp scripts and to run gp in emacs.
-  </longdescription>
 </pkgmetadata>

@@ -1,13 +1,41 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-08-03)
-# dev-qt/qtquicktimeline-5.15.0 not yet stable, bug 711120
-# dev-libs/libclangformat-ide not stable and unclear maintainer, bug 711120
->=dev-qt/qt-creator-4.12 clang qmldesigner
+# Sam James <sam@gentoo.org> (2021-01-09)
+# relapack is experimental, please be careful with use
+# bug #764206
+sci-libs/openblas relapack
+
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# temporarily block tests so that bugs can be resolved
+dev-php/theseer-Autoload test
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-12-25)
+# Packages needing stable slotted Lua.
+>=app-i18n/fcitx-4.2.9.8:4 lua
+>=app-i18n/ibus-libpinyin-1.11.92 lua
+app-i18n/ibus-pinyin lua
+
+# James Le Cuirot <sam@gentoo.org> (2020-11-23)
+# Cinnamon is not stable on any architecture.
+x11-themes/arc-theme cinnamon
+
+# Sam James <sam@gentoo.org> (2020-10-09)
+# Depends on dev-libs/boost[python,numpy], not fully working atm
+# bug #733830, bug #746740, bug #753566
+media-gfx/openvdb python numpy
+media-libs/openimageio python
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
+# openjfx:8 will never be stabilized
+dev-java/openjdk:8 javafx
+
+# Pacho Ramos <pacho@gentoo.org> (2020-08-21)
+# app-text/pandoc is hard to stabilize #737612
+sys-apps/earlyoom docs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
@@ -16,7 +44,6 @@ dev-python/matplotlib wxwidgets
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
 app-emulation/xen-tools doc
-dev-python/notebook doc
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-util/shellcheck (dev-lang/ghc) has no stable keywords.
@@ -36,27 +63,14 @@ dev-libs/boost numpy
 # for stable systems
 dev-lang/rust miri nightly parallel-compiler system-bootstrap
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-18)
-# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are stable
-kde-plasma/plasma-meta thunderbolt
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# sci-libs/vtk is not stable anymore
-media-libs/opencv vtk
 
 # Kent Fredric <kentnl@gentoo.org> (2019-08-29)
 # Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
 # instead if you can.
 dev-perl/DBD-mysql mariadb
-
-# Michał Górny <mgorny@gentoo.org> (2019-07-31)
-# Freshly added test dependency for a test-restricted package.  Mask
-# the flag to avoid stabilizing it for the time being.
-dev-python/aiohttp-socks test
 
 # Kent Fredric <kentnl@gentoo.org> (2019-07-30)
 # These features require dev-perl/GD, which currently can't be
@@ -69,17 +83,10 @@ dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
 media-video/vdrsync dvdr
-www-apps/bugzilla extras
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
 # sci-libs/dcmtk is not stable
 media-libs/openimageio dicom
-
-# Bernd Waibel <waebbl@gmail.com> (2019-05-22)
-# Marked experimental, needs build and runtime testing. Due to non-
-# available licenses for arnold and maya I can not test these addons.
-# Build and functional tests and reports on issues are appreciated!
-media-gfx/alembic arnold maya
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-05-10)
 # needs llvm slots which are not stable #678908
@@ -93,10 +100,8 @@ media-gfx/alembic arnold maya
 media-plugins/grilo-plugins chromaprint
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# media-libs/opencv[contrib,contribdnn], net-libs/libmediawiki,
-# net-libs/libkvkontakte all not stable anywhere.
+# net-libs/libmediawiki, net-libs/libkvkontakte not stable anywhere.
 kde-apps/kipi-plugins mediawiki vkontakte
-media-gfx/digikam dnn vkontakte
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
@@ -106,21 +111,9 @@ app-admin/sudo sssd
 # app-misc/ddcutil is not yet stable.
 kde-plasma/powerdevil brightness-control
 
-# Michał Górny <mgorny@gentoo.org> (2018-06-07)
-# sys-libs/netbsd-csu not stable yet.
-sys-devel/clang-runtime crt
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-21)
-# Depends on lots of unstable dependencies
-dev-python/s3fs test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-03)
-# sci-geosciences/grass is not stable
-sci-geosciences/qgis grass
 
 # Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone hasn't been stabilized yet
@@ -175,20 +168,6 @@ kde-apps/cantor julia
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# David Seifert <soap@gentoo.org> (2017-02-12)
-# Unknown future, stable deps are hopelessly
-# broken, only allow for unstable keywords
-# Bug: #581058
-net-misc/asterisk osplookup
-
-# Michael Palimaka <kensington@gentoo.org (2017-01-26)
-# Requires testing version of media-libs/opencv
-media-libs/mlt opencv
-
-# Michael Palimaka <kensington@gentoo.org (2017-01-18)
-# www-client/weboob is horribly outdated and not stable
-app-office/kmymoney weboob
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
 # Has no stable reverse deps requiring this useflag
 # Stable-masking it so Boost 1.62 stabilization can go ahead
@@ -207,10 +186,6 @@ net-libs/gnutls test-full
 # flag until a source based version that doesn't depend
 # on a vulnerable libgcrypt version is in tree
 dev-db/mariadb sst-xtrabackup
-
-# Sergey Popov <pinkbyte@gentoo.org> (2016-02-15)
-# Mask monitoring capabilities of Ganeti on stable branches
-app-emulation/ganeti monitoring
 
 # Pacho Ramos <pacho@gentoo.org> (2015-05-15)
 # Version compatible with current ffmpeg is not ready to be stabilized
@@ -260,7 +235,7 @@ app-emulation/xen-tools ocaml
 # Samuli Suominen <ssuominen@gentoo.org> (2014-03-19)
 # Some open source OpenCL providers cause sandbox violation while accessing /dev/dri/card*
 # from a command like eg. `/usr/bin/mogrify -version`, see bug #472766
-media-gfx/imagemagick opencl
+<media-gfx/imagemagick-7.0.10.34 opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
 # Depends on unstable sci-libs/avogadrolibs

@@ -15,6 +15,7 @@
 	</maintainer>
 	<use>
 		<flag name="lv2">Build lv2 plugins</flag>
+		<flag name="nsm">Build NSM (Non Session Manager) support</flag>
 		<flag name="standalone">Build standalone application</flag>
 	</use>
 </pkgmetadata>

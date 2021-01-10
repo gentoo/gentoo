@@ -20,5 +20,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">boto/boto3</remote-id>
+		<remote-id type="pypi">boto3</remote-id>
 	</upstream>
 </pkgmetadata>

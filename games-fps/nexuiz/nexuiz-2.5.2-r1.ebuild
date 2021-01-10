@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit desktop toolchain-funcs
 
 MY_PN=Nexuiz
 MY_P=${PN}-${PV//./}
@@ -69,15 +69,14 @@ src_prepare() {
 
 	# Make the game automatically look in the correct data directory
 	sed -i \
-		-e "/^CC=/d" \
-		-e "s:-O2:${CFLAGS}:" \
-		-e "/-lm/s:$: ${LDFLAGS}:" \
+		-e 's:-O2:$(CFLAGS):' \
+		-e '/-lm/s:$: $(LDFLAGS):' \
 		-e '/^STRIP/s/strip/true/' \
 		makefile.inc || die
 
 	sed -i \
 		-e '1i DP_LINK_TO_LIBJPEG=1' \
-		-e "s:ifdef DP_.*:DP_FS_BASEDIR=/usr/share/${PN}\n&:" \
+		-e "s:ifdef DP_.*:DP_FS_BASEDIR=${EPREFIX}/usr/share/${PN}\n&:" \
 		makefile || die
 
 	if ! use alsa ; then
@@ -88,6 +87,7 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export CC
 	if use opengl || ! use dedicated ; then
 		emake cl-${PN}
 		if use sdl ; then

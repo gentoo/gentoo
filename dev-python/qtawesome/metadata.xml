@@ -21,6 +21,7 @@
     QtAwesome enables iconic fonts such as Font Awesome and Elusive Icons
     in PyQt and PySide applications.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">QtAwesome</remote-id>
     <remote-id type="github">spyder-ide/qtawesome</remote-id>

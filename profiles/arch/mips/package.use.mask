@@ -1,6 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-05)
+# dev-python/parameterized is not keyworded
+dev-util/gtk-doc test
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
@@ -24,10 +32,6 @@ media-libs/sdl-mixer midi
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
 sys-kernel/mips-sources -ip27 -ip28 -ip30
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
@@ -60,15 +64,11 @@ app-portage/g-sorcery bson
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
 # dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
-dev-python/twisted conch crypt http2 soap test
+dev-python/twisted conch crypt http2 test
 
 # Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
-
-# Thomas Deutschmann <whissi@gentoo.org> (2016-08-23)
-# net-libs/openpgm is not keyworded on mips
-net-libs/zeromq pgm
 
 # Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
@@ -99,11 +99,6 @@ dev-vcs/git mediawiki mediawiki-experimental
 # Not tested
 media-libs/leptonica	webp
 app-text/tesseract	webp
-
-# Pacho Ramos <pacho@gentoo.org> (2013-09-01)
-# CONFIG_AUDITSYSCALL=y is not implemented, bug #438368
-sys-auth/consolekit pam
-sys-auth/pambase consolekit
 
 # Richard Brown <rbrown@gentoo.org> (2008-01-21)
 # Needs dev-ruby/builder, which isn't keyworded

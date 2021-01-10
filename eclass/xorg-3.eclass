@@ -27,6 +27,20 @@ if [[ ${PV} == *9999* ]]; then
 	XORG_EAUTORECONF="yes"
 fi
 
+# If we're a font package, but not the font.alias one
+FONT_ECLASS=""
+if [[ ${CATEGORY} = media-fonts ]]; then
+	case ${PN} in
+	font-alias|font-util)
+		;;
+	font*)
+		# Activate font code in the rest of the eclass
+		FONT="yes"
+		FONT_ECLASS="font"
+		;;
+	esac
+fi
+
 # @ECLASS-VARIABLE: XORG_MULTILIB
 # @DESCRIPTION:
 # If set to 'yes', the multilib support for package will be enabled. Set
@@ -34,13 +48,14 @@ fi
 : ${XORG_MULTILIB:="no"}
 
 # we need to inherit autotools first to get the deps
-inherit autotools libtool multilib toolchain-funcs flag-o-matic ${GIT_ECLASS}
+inherit autotools libtool multilib toolchain-funcs flag-o-matic \
+	${FONT_ECLASS} ${GIT_ECLASS}
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
 fi
 
-EXPORTED_FUNCTIONS="src_prepare src_configure src_unpack src_compile src_install"
+EXPORTED_FUNCTIONS="src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm"
 case "${EAPI:-0}" in
 	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
@@ -66,19 +81,20 @@ IUSE=""
 # @ECLASS-VARIABLE: XORG_MODULE
 # @DESCRIPTION:
 # The subdirectory to download source from. Possible settings are app,
-# doc, data, util, driver, lib, proto, xserver. Set above the
+# doc, data, util, driver, font, lib, proto, xserver. Set above the
 # inherit to override the default autoconfigured module.
 : ${XORG_MODULE:="auto"}
 if [[ ${XORG_MODULE} == auto ]]; then
-	case ${CATEGORY} in
-		app-doc)             XORG_MODULE=doc/     ;;
-		media-fonts)         XORG_MODULE=font/    ;;
-		x11-apps|x11-wm)     XORG_MODULE=app/     ;;
-		x11-misc|x11-themes) XORG_MODULE=util/    ;;
-		x11-base)            XORG_MODULE=xserver/ ;;
-		x11-drivers)         XORG_MODULE=driver/  ;;
-		x11-libs)            XORG_MODULE=lib/     ;;
-		*)                   XORG_MODULE=         ;;
+	case "${CATEGORY}/${P}" in
+		app-doc/*)               XORG_MODULE=doc/     ;;
+		media-fonts/*)           XORG_MODULE=font/    ;;
+		x11-apps/*|x11-wm/*)     XORG_MODULE=app/     ;;
+		x11-misc/*|x11-themes/*) XORG_MODULE=util/    ;;
+		x11-base/*)              XORG_MODULE=xserver/ ;;
+		x11-drivers/*)           XORG_MODULE=driver/  ;;
+		x11-libs/xcb-util-*)     XORG_MODULE=xcb/     ;;
+		x11-libs/*)              XORG_MODULE=lib/     ;;
+		*)                       XORG_MODULE=         ;;
 	esac
 fi
 
@@ -111,12 +127,14 @@ fi
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
-XORG_EAUTORECONF_ARCHES="ppc-aix x86-winnt"
+XORG_EAUTORECONF_ARCHES="x86-winnt"
 EAUTORECONF_DEPEND+="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4"
 if [[ ${PN} != util-macros ]] ; then
-	EAUTORECONF_DEPEND+=" >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0"
+	EAUTORECONF_DEPEND+=" >=x11-misc/util-macros-1.18"
+	# Required even by xorg-server
+	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
@@ -129,26 +147,28 @@ BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
 
-# @ECLASS-VARIABLE: XORG_STATIC
-# @DESCRIPTION:
-# Enables static-libs useflag. Set to no, if your package gets:
-#
-# QA: configure: WARNING: unrecognized options: --disable-static
-: ${XORG_STATIC:="yes"}
+if [[ ${FONT} == yes ]]; then
+	RDEPEND+=" media-fonts/encodings
+		>=x11-apps/mkfontscale-1.2.0"
+	PDEPEND+=" media-fonts/font-alias"
+	DEPEND+=" >=media-fonts/font-util-1.2.0
+		>=x11-apps/mkfontscale-1.2.0"
+	BDEPEND+=" x11-apps/bdftopcf"
 
-# Add static-libs useflag where useful.
-if [[ ${XORG_STATIC} == yes \
-		&& ${CATEGORY} != app-doc \
-		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-drivers \
-		&& ${CATEGORY} != media-fonts \
-		&& ${PN} != util-macros \
-		&& ${PN} != xbitmaps \
-		&& ${PN} != xorg-cf-files \
-		&& ${PN/xcursor} = ${PN} ]]; then
-	IUSE+=" static-libs"
+	# @ECLASS-VARIABLE: FONT_DIR
+	# @DESCRIPTION:
+	# If you're creating a font package and the suffix of PN is not equal to
+	# the subdirectory of /usr/share/fonts/ it should install into, set
+	# FONT_DIR to that directory or directories. Set before inheriting this
+	# eclass.
+	[[ -z ${FONT_DIR} ]] && FONT_DIR=${PN##*-}
+
+	# Fix case of font directories
+	FONT_DIR=${FONT_DIR/ttf/TTF}
+	FONT_DIR=${FONT_DIR/otf/OTF}
+	FONT_DIR=${FONT_DIR/type1/Type1}
+	FONT_DIR=${FONT_DIR/speedo/Speedo}
 fi
-
 BDEPEND+=" virtual/pkgconfig"
 
 # @ECLASS-VARIABLE: XORG_DRI
@@ -224,6 +244,15 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: RDEPEND=${RDEPEND}"
 debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: PDEPEND=${PDEPEND}"
 debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: BDEPEND=${BDEPEND}"
 
+# @FUNCTION: xorg-3_pkg_setup
+# @DESCRIPTION:
+# Setup prefix compat
+xorg-3_pkg_setup() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${FONT} == yes ]] && font_pkg_setup "$@"
+}
+
 # @FUNCTION: xorg-3_src_unpack
 # @DESCRIPTION:
 # Simply unpack source code.
@@ -235,6 +264,8 @@ xorg-3_src_unpack() {
 	else
 		unpack ${A}
 	fi
+
+	[[ -n ${FONT_OPTIONS} ]] && einfo "Detected font directory: ${FONT_DIR}"
 }
 
 # @FUNCTION: xorg-3_reconf_source
@@ -268,6 +299,22 @@ xorg-3_src_prepare() {
 
 	default
 	xorg-3_reconf_source
+}
+
+# @FUNCTION: xorg-3_font_configure
+# @DESCRIPTION:
+# If a font package, perform any necessary configuration steps
+xorg-3_font_configure() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if has nls ${IUSE//+} && ! use nls; then
+		if ! grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
+			die "--disable-all-encodings option not available in configure"
+		fi
+		FONT_OPTIONS+="
+			--disable-all-encodings
+			--enable-iso8859-1"
+	fi
 }
 
 # @FUNCTION: xorg-3_flags_setup
@@ -308,6 +355,8 @@ xorg-3_src_configure() {
 	# @DEFAULT_UNSET
 	local xorgconfadd=("${XORG_CONFIGURE_OPTIONS[@]}")
 
+	[[ -n "${FONT}" ]] && xorg-3_font_configure
+
 	# Check if package supports disabling of dep tracking
 	# Fixes warnings like:
 	#    WARNING: unrecognized options: --disable-dependency-tracking
@@ -320,9 +369,16 @@ xorg-3_src_configure() {
 		local selective_werror="--disable-selective-werror"
 	fi
 
+	# Check if package supports disabling of static libraries
+	if grep -q -s "able-static" ${ECONF_SOURCE:-.}/configure; then
+		local no_static="--disable-static"
+	fi
+
 	local econfargs=(
 		${dep_track}
 		${selective_werror}
+		${no_static}
+		${FONT_OPTIONS}
 		"${xorgconfadd[@]}"
 	)
 
@@ -374,6 +430,7 @@ xorg-3_src_install() {
 		multilib-minimal_src_install "$@"
 	else
 		emake DESTDIR="${D}" "${install_args[@]}" "$@" install || die "emake install failed"
+		einstalldocs
 	fi
 
 	# Many X11 libraries unconditionally install developer documentation
@@ -388,4 +445,81 @@ xorg-3_src_install() {
 
 	# Don't install libtool archives (even for modules)
 	find "${D}" -type f -name '*.la' -delete || die
+
+	[[ -n ${FONT} ]] && remove_font_metadata
+}
+
+# @FUNCTION: xorg-3_pkg_postinst
+# @DESCRIPTION:
+# Run X-specific post-installation tasks on the live filesystem. The
+# only task right now is some setup for font packages.
+xorg-3_pkg_postinst() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ -n ${FONT} ]]; then
+		create_fonts_scale
+		create_fonts_dir
+		font_pkg_postinst "$@"
+
+		ewarn "Installed fonts changed. Run 'xset fp rehash' if you are using non-fontconfig applications."
+	fi
+}
+
+# @FUNCTION: xorg-3_pkg_postrm
+# @DESCRIPTION:
+# Run X-specific post-removal tasks on the live filesystem. The only
+# task right now is some cleanup for font packages.
+xorg-3_pkg_postrm() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ -n ${FONT} ]]; then
+		# if we're doing an upgrade, postinst will do
+		if [[ -z ${REPLACED_BY_VERSION} ]]; then
+			create_fonts_scale
+			create_fonts_dir
+			font_pkg_postrm "$@"
+		fi
+	fi
+}
+
+# @FUNCTION: remove_font_metadata
+# @DESCRIPTION:
+# Don't let the package install generated font files that may overlap
+# with other packages. Instead, they're generated in pkg_postinst().
+remove_font_metadata() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${FONT_DIR} != Speedo && ${FONT_DIR} != CID ]]; then
+		einfo "Removing font metadata"
+		rm -rf "${ED}"/usr/share/fonts/${FONT_DIR}/fonts.{scale,dir,cache-1}
+	fi
+}
+
+# @FUNCTION: create_fonts_scale
+# @DESCRIPTION:
+# Create fonts.scale file, used by the old server-side fonts subsystem.
+create_fonts_scale() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${FONT_DIR} != Speedo && ${FONT_DIR} != CID ]]; then
+		ebegin "Generating fonts.scale"
+			mkfontscale \
+				-a "${EROOT}/usr/share/fonts/encodings/encodings.dir" \
+				-- "${EROOT}/usr/share/fonts/${FONT_DIR}"
+		eend $?
+	fi
+}
+
+# @FUNCTION: create_fonts_dir
+# @DESCRIPTION:
+# Create fonts.dir file, used by the old server-side fonts subsystem.
+create_fonts_dir() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	ebegin "Generating fonts.dir"
+			mkfontdir \
+				-e "${EROOT}"/usr/share/fonts/encodings \
+				-e "${EROOT}"/usr/share/fonts/encodings/large \
+				-- "${EROOT}/usr/share/fonts/${FONT_DIR}"
+	eend $?
 }

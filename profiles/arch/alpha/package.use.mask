@@ -1,5 +1,38 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
+# Test-dep not keyworded on alpha, resolve tree breakage by 
+# b5248bbb1b5557aea56b4e1ee3d0d122e03e97d1
+app-text/enchant test
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-30)
+# Qt5 is not keyworded here.
+x11-misc/synergy gui
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/lash not keyworded, bug #736725
+media-sound/fluidsynth lash
+
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no alpha keyword
+dev-vcs/mercurial rust
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
+# app-i18n/fcitx:4 not keyworded.
+media-libs/libsdl2 fcitx4
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
+# media-libs/libilbc is not ported to alpha
+net-analyzer/wireshark ilbc
+
+# Sam James <sam@gentoo.org> (2020-09-02)
+# dev-python/mysqlclient lacks keywords here
+mail-filter/pyzor mysql
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # alpha has no virtual/rust support, needed by newer gnome-base/librsvg, et al
@@ -15,10 +48,8 @@ app-office/planner eds
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
 gnome-base/gvfs google
-
-# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
-# Mask io-uring & zbc pending keywording
-sys-block/fio -io-uring zbc
+# needs app-text/libgepub which depends on webkit-gtk
+xfce-extra/tumbler epub
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
@@ -156,10 +187,6 @@ dev-db/mariadb numa
 >=gnome-base/gnome-settings-daemon-3.24 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
@@ -198,11 +225,6 @@ dev-libs/libpcre2 jit
 # Tobias Klausmann <klausman@gentoo.org> (2016-10-03)
 # Pulls in dev-db/redis which is not keyworded on alpha.
 >=dev-libs/hiredis-0.13.1 test
-
-# Tobias Klausmann <klausman@gentoo.org> (2016-10-02)
-# For the one single version noted hereunder, the ebuild does not pull in
-# sys-apps/fakeroot as a test dependency (bug #593768).
-=dev-util/debhelper-9.20160814 test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # networkmanager USE masked due to missing keywords
@@ -255,10 +277,6 @@ media-sound/rhythmbox upnp-av
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
@@ -284,12 +302,6 @@ app-crypt/qca botan
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-
-# Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23)
-# test dependencies need keywording
-dev-haskell/binary test
-dev-haskell/text test
-dev-haskell/vector test
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-11-20)
 # OpenCV likely will never work on Alpha
@@ -365,10 +377,6 @@ gnome-extra/sushi office
 # Needs testing
 media-libs/phonon gstreamer vlc
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
-# remove mask when dev-java/fop is keyworded here
-gnome-extra/libgda reports
-
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 tcmalloc
@@ -407,8 +415,6 @@ sys-apps/smartmontools caps
 
 # Raúl Porcel <armin76@gentoo.org> (2010-06-26)
 # custom-optimization doesn't work on alpha
-mail-client/thunderbird custom-optimization
-www-client/firefox custom-optimization
 www-client/seamonkey custom-optimization
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)

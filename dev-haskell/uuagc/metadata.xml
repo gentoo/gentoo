@@ -6,9 +6,6 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="with-loag">Use <pkg>dev-haskell/minisat</pkg> external SAT-solver to schedule all Linear Ordered AGs.</flag>
+		<flag name="loag">Use MiniSat as external SAT-solver to schedule all Linear Ordered AGs</flag>
 	</use>
-	<longdescription>
-		Generates Haskell files from an attribute grammar specification
-	</longdescription>
 </pkgmetadata>

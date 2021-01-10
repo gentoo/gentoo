@@ -6,12 +6,26 @@
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
 # @BLURB: user management in ebuilds
+# @DEPRECATED: acct-user/acct-group packages
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds
 # to quickly make sure users in the installed system are sane.
 
 if [[ -z ${_USER_ECLASS} ]]; then
 _USER_ECLASS=1
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6|7) ;;
+	*)
+		if [[ ${CATEGORY} != acct-* ]]; then
+			eerror "In EAPI ${EAPI}, packages must not inherit user.eclass"
+			eerror "unless they are in the acct-user or acct-group category."
+			eerror "Migrate your package to GLEP 81 user/group management,"
+			eerror "or inherit user-info if you need only the query functions."
+			die "Invalid \"inherit user\" in EAPI ${EAPI}"
+		fi
+		;;
+esac
 
 inherit user-info
 

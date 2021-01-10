@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>m.mairkeimberger@gmail.com</email>
+		<email>mmk@levelnine.at</email>
 		<name>Michael Mair-Keimberger</name>
 	</maintainer>
 	<maintainer type="project">
@@ -12,5 +12,4 @@
 	<longdescription lang="en">
 "ncp" is a utility for copying files in a LAN. It has absolutely no security or integrity checking, no throttling, no features, except one: you don't have to type the coordinates of your peer.
 	</longdescription>
-	<use><flag name="diet">Compile against <pkg>dev-libs/dietlibc</pkg></flag></use>
 </pkgmetadata>

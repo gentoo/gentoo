@@ -21,5 +21,12 @@ RDEPEND="
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/rostest
+	dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	export CATKIN_PREFIX_PATH="${BUILD_DIR}/devel/:${CATKIN_PREFIX_PATH}"
+	ros-catkin_src_test
+}

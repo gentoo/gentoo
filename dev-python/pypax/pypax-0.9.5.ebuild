@@ -13,13 +13,13 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/elfix/elfix-${PV}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 	S="${WORKDIR}/elfix-${PV}"
 fi
 
 DESCRIPTION="Python module to get or set either PT_PAX and/or XATTR_PAX flags"
 HOMEPAGE="https://dev.gentoo.org/~blueness/elfix/
-	https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml"
+	https://wiki.gentoo.org/wiki/Project:Hardened/PaX_Quickstart"
 
 LICENSE="GPL-3"
 SLOT="0"

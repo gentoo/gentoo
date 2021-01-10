@@ -12,7 +12,7 @@ SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="alsa dbus debug examples ipv6 jack ladspa lash network oss portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="
@@ -27,8 +27,8 @@ DEPEND="
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	ladspa? (
-		media-libs/ladspa-cmt[${MULTILIB_USEDEP}]
 		media-libs/ladspa-sdk[${MULTILIB_USEDEP}]
+		media-plugins/cmt-plugins[${MULTILIB_USEDEP}]
 	)
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )

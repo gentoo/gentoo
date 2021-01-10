@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake bash-completion-r1 toolchain-funcs
+inherit cmake bash-completion-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
@@ -65,6 +65,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2020.1.2-cmake.patch"
+	"${FILESDIR}/${P}-boost.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
@@ -95,7 +96,6 @@ src_configure() {
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
 		-DENABLE_SIMD=OFF # see CPU_FLAGS
-		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_SWIFT=OFF # swift pilot client not packaged yet
 		-DENABLE_TERRASYNC=$(usex utils)
@@ -146,12 +146,13 @@ src_install() {
 
 	# Install examples and other misc files
 	if use examples; then
-		insinto /usr/share/doc/"${PF}"/examples
-		doins -r scripts/java scripts/perl scripts/python
-		insinto /usr/share/doc/"${PF}"/examples/c++
-		doins -r scripts/example/*
-		insinto /usr/share/doc/"${PF}"/tools
-		doins -r scripts/atis scripts/tools/*
+		docompress -x /usr/share/doc/"${PF}"/{examples,tools}
+		docinto examples
+		dodoc -r scripts/java scripts/perl scripts/python
+		docinto examples/c++
+		dodoc -r scripts/example/*
+		docinto tools
+		dodoc -r scripts/atis scripts/tools/*
 	fi
 
 	# Install nasal script syntax

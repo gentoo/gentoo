@@ -8,6 +8,7 @@ inherit autotools eutils
 DESCRIPTION="Japanese input method Anthy IMEngine for SCIM"
 HOMEPAGE="http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMAnthy"
 SRC_URI="mirror://sourceforge.jp/scim-imengine/37309/${P}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/scim-anthy-1.2.7-gtk2_build.patch
 	gtk3?	( https://dev.gentoo.org/~heroxbd/${P}-patches.tar.xz )"
 
 LICENSE="GPL-2"
@@ -31,7 +32,7 @@ src_prepare() {
 	if use gtk3; then
 		EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" epatch
 	else
-		epatch "${FILESDIR}/${P}-gtk2_build.patch"
+		epatch "${DISTDIR}/${P}-gtk2_build.patch"
 	fi
 
 	eautoreconf

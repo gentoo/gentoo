@@ -15,8 +15,6 @@
 	</longdescription>
 	<use>
 		<flag name="terminfo">Use the terminfo package for POSIX consoles.</flag>
-		<flag name="libiconv">Explicitly link against the libiconv library.</flag>
-		<flag name="legacy-encoding">Use legacy iconv encoding for POSIX. This is only intended for testing.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">judah/haskeline</remote-id>

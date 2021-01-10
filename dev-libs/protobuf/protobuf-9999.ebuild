@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/23"
+SLOT="0/25"
 KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
@@ -33,9 +33,9 @@ RDEPEND="emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.12.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.12.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.12.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.13.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.13.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.14.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
@@ -89,7 +89,7 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -delete || die
 
 	insinto /usr/share/vim/vimfiles/syntax
 	doins editors/proto.vim

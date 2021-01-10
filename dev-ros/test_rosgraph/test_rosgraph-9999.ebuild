@@ -18,3 +18,8 @@ RDEPEND="dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}] )
 "
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

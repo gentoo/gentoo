@@ -1,0 +1,10 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# unmask ld symlink package, due to missing blocks support we are not
+# able to compile binutils-apple
+sys-devel/binutils-apple
+-sys-devel/native-cctools
+
+# packages which link to framework and therefore fail (blocks)
+dev-util/pkgconfig

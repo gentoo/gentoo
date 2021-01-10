@@ -80,13 +80,16 @@ src_prepare() {
 }
 
 src_compile() {
+	append-cflags -fcommon # https://bugs.gentoo.org/707838
+
 	# Drop jikes support as it seems to be unfriendly with SWT
 	java-pkg_filter-compiler jikes
 
 	local AWT_ARCH
 	local JAWTSO="libjawt.so"
 	if [[ $(tc-arch) == 'ppc64' ]] ; then
-		AWT_ARCH="ppc64"
+		# no big-endian support
+		AWT_ARCH="ppc64le"
 	else
 		AWT_ARCH="amd64"
 	fi

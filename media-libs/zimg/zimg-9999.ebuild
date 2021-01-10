@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="cpu_flags_x86_sse debug static-libs"
+IUSE="debug static-libs"
 
 src_prepare() {
 	default
@@ -28,6 +28,5 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable debug) \
-		$(use_enable cpu_flags_x86_sse x86simd) \
 		$(use_enable static-libs static)
 }

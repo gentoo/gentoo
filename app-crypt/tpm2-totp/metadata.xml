@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">tpm2-software/tpm2-totp</remote-id>
 	</upstream>
+	<use>
+		<flag name="plymouth">Add <pkg>sys-boot/plymouth</pkg> support</flag>
+	</use>
 </pkgmetadata>

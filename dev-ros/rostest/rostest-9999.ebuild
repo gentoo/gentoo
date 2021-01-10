@@ -27,6 +27,7 @@ RDEPEND="${RDEPEND}
 DEPEND="${DEPEND}
 	test? (
 		${RDEPEND}
+		dev-ros/rosservice
 		dev-cpp/gtest
 		dev-ros/rostopic
 	)"

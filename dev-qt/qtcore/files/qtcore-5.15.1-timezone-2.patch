@@ -1,0 +1,47 @@
+From ffc9093a199a542791920b30d1835c3248920aa0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 10 Oct 2020 19:26:35 +0200
+Subject: [PATCH 2/2] Revert "Purge two old time-zone lookup fallbacks"
+
+This reverts commit b0383cbd388336f698ceeac11a4f50cdff931dd9.
+---
+ src/corelib/time/qtimezoneprivate_tz.cpp | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/src/corelib/time/qtimezoneprivate_tz.cpp b/src/corelib/time/qtimezoneprivate_tz.cpp
+index 01f9a6cce0..eea6f5e962 100644
+--- a/src/corelib/time/qtimezoneprivate_tz.cpp
++++ b/src/corelib/time/qtimezoneprivate_tz.cpp
+@@ -1153,6 +1153,29 @@ QByteArray QTzTimeZonePrivate::systemTimeZoneId() const
+         }
+     }
+ 
++    // On Debian Etch up to Jessie, /etc/localtime is a copy of the relevant
++    // zoneinfo file, whose name is recorded in /etc/timezone:
++    if (ianaId.isEmpty()) {
++        QFile tzif(QStringLiteral("/etc/timezone"));
++        if (tzif.open(QIODevice::ReadOnly))
++            ianaId = tzif.readAll().trimmed();
++    }
++
++    // On some Red Hat distros /etc/localtime is real file with name held in /etc/sysconfig/clock
++    // in a line like ZONE="Europe/Oslo" or TIMEZONE="Europe/Oslo"
++    if (ianaId.isEmpty()) {
++        QFile tzif(QStringLiteral("/etc/sysconfig/clock"));
++        if (tzif.open(QIODevice::ReadOnly)) {
++            while (ianaId.isEmpty() && !tzif.atEnd()) {
++                const QByteArray line(tzif.readLine().trimmed());
++                if (line.startsWith("ZONE="))
++                    ianaId = line.mid(6, line.length() - 7);
++                else if (line.startsWith("TIMEZONE="))
++                    ianaId = line.mid(10, line.length() - 11);
++            }
++        }
++    }
++
+     // Some systems (e.g. uClibc) have a default value for $TZ in /etc/TZ:
+     if (ianaId.isEmpty()) {
+         QFile zone(QStringLiteral("/etc/TZ"));
+-- 
+2.28.0
+

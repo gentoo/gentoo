@@ -1,11 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils eutils
+inherit autotools desktop
 
 DESCRIPTION="A GTK program for drawing organic molecules"
 HOMEPAGE="http://ruby.chemie.uni-freiburg.de/~martin/chemtool/"
@@ -23,34 +21,41 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/pango
 	emf? ( media-libs/libemf )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-AUTOTOOLS_IN_SOURCE_BUILD=1
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/1.6.13-no-underlinking.patch
+	"${FILESDIR}"/${P}-no-underlinking.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-fix-tests.patch
 )
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
-	local myeconfargs=(
-		--without-kdedir
-		$(use_with gnome gnomedir /usr)
+	econf \
+		--enable-undo \
+		--enable-menu \
+		--without-kdedir \
+		$(use_with gnome gnomedir "${EPREFIX}"/usr) \
 		$(use_enable emf)
-		--enable-undo
-		--enable-menu
-		)
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
-	insinto /usr/share/${PN}/examples
-	doins "${S}"/examples/*
-	if ! use nls; then rm -rf "${ED}"/usr/share/locale || die; fi
+	insinto /usr/share/chemtool/examples
+	doins -r examples/.
 
 	insinto /usr/share/pixmaps
 	doins chemtool.xpm
-	make_desktop_entry ${PN} Chemtool ${PN} "Education;Science;Chemistry"
+
+	if ! use nls; then
+		rm -rf "${ED}"/usr/share/locale || die
+	fi
+
+	make_desktop_entry chemtool Chemtool chemtool "Education;Science;Chemistry"
 }

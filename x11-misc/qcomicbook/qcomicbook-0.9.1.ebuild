@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="QComicBook"
 CMAKE_IN_SOURCE_BUILD=1
 PLOCALES="cs_CZ de_DE es_ES fi_FI fr_CA fr_FR it_IT ko_KR nl_NL pl_PL pt_BR ru_RU uk_UA zh_CN"
-inherit cmake-utils flag-o-matic l10n
+inherit cmake-utils flag-o-matic l10n xdg
 
 DESCRIPTION="A viewer for comic book archives containing jpeg/png images"
 HOMEPAGE="https://github.com/stolowski/QComicBook"
@@ -55,6 +55,7 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	elog "For using QComicBook with compressed archives you may want to install:"
 	elog "    app-arch/p7zip"
 	elog "    app-arch/unace"

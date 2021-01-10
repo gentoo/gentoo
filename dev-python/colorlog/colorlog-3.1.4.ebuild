@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6..9} )
 
 inherit distutils-r1
 
@@ -14,15 +14,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
+distutils_enable_tests pytest
 
 python_test() {
-	py.test -vv -p no:logging || die
+	pytest -vv -p no:logging || die
 }

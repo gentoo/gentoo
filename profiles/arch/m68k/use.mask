@@ -89,9 +89,6 @@ clang
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Masking since dev-db/sqlite is masked
-sqlite
-
 # Masking these globally, since we don't have X
 gnome
 gnome-keyring

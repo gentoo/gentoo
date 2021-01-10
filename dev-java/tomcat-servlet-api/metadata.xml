@@ -5,7 +5,4 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription>
-	The Apache Tomcat implementation of the Servlet API specification.
-	</longdescription>
 </pkgmetadata>

@@ -1,0 +1,43 @@
+This is essentially the upstream commit 7aea04f7099ad4dde7b1f5900b54ef603eadf25e,
+modified so that MAN_DATE is set to simply '-' - the commit generates
+the date using the script util/getrevision.sh, which is not included in
+release tarballs.
+
+--- a/flashrom.8.tmpl
++++ b/flashrom.8.tmpl
+@@ -40,7 +40,7 @@
+ .    \}
+ .  \}
+ ..
+-.TH FLASHROM 8 "" ""
++.TH FLASHROM 8 "@MAN_DATE@" "@VERSION@" "@MAN_DATE@"
+ .SH NAME
+ flashrom \- detect, read, write, verify and erase flash chips
+ .SH SYNOPSIS
+--- a/meson.build
++++ b/meson.build
+@@ -321,6 +321,7 @@ endif
+ prefix = get_option('prefix')
+ sbindir = join_paths(prefix, get_option('sbindir'))
+ libdir = join_paths(prefix, get_option('libdir'))
++mandir = join_paths(prefix, get_option('mandir'))
+ 
+ install_headers([
+     'libflashrom.h',
+@@ -394,6 +395,16 @@ pkgg.generate(
+   description : 'library to interact with flashrom',
+ )
+ 
++conf.set('VERSION', version)
++conf.set('MAN_DATE', '-')
++configure_file(
++  input : 'flashrom.8.tmpl',
++  output : 'flashrom.8',
++  configuration : conf,
++  install: true,
++  install_dir: join_paths(mandir, 'man8'),
++)
++
+ flashrom_dep = declare_dependency(
+   link_with : flashrom,
+   include_directories : include_directories('.'),

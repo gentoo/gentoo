@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>cb-gentoo@guya.de</email>
-		<name>Christian Buchinger</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		German "frami" standard dictionary with spell check, hyphenation patterns and
 		thesaurus. It includes the complete word list of Björn Jacke's igerman98 and

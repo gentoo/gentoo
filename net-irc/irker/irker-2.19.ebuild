@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="ssl"
 
-inherit eutils python-single-r1 systemd
+inherit optfeature python-single-r1 systemd
 
 DESCRIPTION="Submission tools for IRC notifications"
 HOMEPAGE="http://www.catb.org/esr/irker/ https://gitlab.com/esr/irker"
@@ -14,7 +14,7 @@ SRC_URI="http://www.catb.org/esr/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Dependency notes:

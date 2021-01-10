@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/tix/${MY_P}-src.tar.gz"
 IUSE=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RESTRICT="test"
 
@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	(use x86-macos || use x64-macos) || epatch "${FILESDIR}"/${P}-link.patch
+	[[ ${CHOST} == *-darwin* ]] || epatch "${FILESDIR}"/${P}-link.patch
 	sed \
 		-e 's:-Os::g' \
 		-i configure tclconfig/tcl.m4 || die
@@ -48,7 +48,7 @@ src_install() {
 	# Bug 168897
 	doheader generic/tix.h
 	# Bug 201138
-	if use x86-macos || use x64-macos; then
+	if [[ ${CHOST} == *-darwin* ]] ; then
 		mv "${ED}"/usr/$(get_libdir)/${MY_P}/libTix{,.}${PV}.dylib
 		dosym ${MY_P}/libTix.${PV}.dylib /usr/$(get_libdir)/libTix.${PV}.dylib
 	else

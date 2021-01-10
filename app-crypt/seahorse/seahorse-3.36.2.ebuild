@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 IUSE="ldap zeroconf"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-crypt/gcr[vala]
 	app-crypt/libsecret[vala]
+	gui-libs/libhandy:0.0[vala]
 "
 
 src_prepare() {

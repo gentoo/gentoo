@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ EGIT_COMMIT="d80310976c9707e261e57ebfa9acf4e0b1781460"
 inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DESCRIPTION="Tools for browsing and manipulating docker registries"
 HOMEPAGE="https://github.com/mayflower/docker-ls"

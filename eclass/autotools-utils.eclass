@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools-utils.eclass
@@ -7,6 +7,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 4 5
 # @BLURB: common ebuild functions for autotools-based packages
+# @DEPRECATED: out-of-source
 # @DESCRIPTION:
 # autotools-utils.eclass is autotools.eclass(5) and base.eclass(5) wrapper
 # providing all inherited features along with econf arguments as Bash array,

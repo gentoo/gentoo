@@ -64,6 +64,7 @@ texlive-common_is_file_present_in_texmf() {
 	if [[ -d texmf-dist ]]; then
 		find texmf-dist -name ${1} -exec touch ${mark} {} + || die
 	fi
+	[ -f "${mark}" ]
 }
 
 # @FUNCTION: texlive-common_do_symlinks

@@ -26,3 +26,9 @@ DEPEND="${RDEPEND}
 	)
 "
 PATCHES=( "${FILESDIR}/gcc6.patch" )
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	export CATKIN_PREFIX_PATH="${BUILD_DIR}/devel/:${CATKIN_PREFIX_PATH}"
+	ros-catkin_src_test
+}

@@ -5,8 +5,6 @@
 		<email>bircoph@gentoo.org</email>
 		<name>Andrew Savchenko</name>
 	</maintainer>
-	<longdescription>Free open source implementation of the Object Exchange (OBEX) protocol, 
-used for transferring data to/from mobile devices.</longdescription>
 	<use>
 		<flag name="irda">Enable IrDA support</flag>
 	</use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,17 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
+app-office/libreoffice base
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-02)
+# media-video/pipewire not yet stabilized and without
+# sys-apps/xdg-desktop-portal-gtk not useable at all
+www-client/firefox screencast
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
+# sys-cluster/slurm has no stable keywords
+app-metrics/collectd collectd_plugins_slurm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
 # net-libs/libktorrent:5 is not stable anymore, bug #696858
 kde-apps/kget bittorrent
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
-# media-video/pipewire is not stable yet
-dev-libs/weston pipewire
-<kde-apps/krfb-20.07.80 wayland
-<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
 # dev-db/oracle-instantclient ain't stable
@@ -35,7 +40,9 @@ dev-qt/qtsql oci8
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
-media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d gflags glog tesseract
+# (except what's needed by digikam, dilfridge)
+media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glog tesseract
+<media-libs/opencv-4.4.0 contrib contribdnn
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
@@ -85,4 +92,4 @@ dev-cpp/eigen test
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3 -python_targets_python3_8
+dev-lang/python-exec -python_targets_pypy3

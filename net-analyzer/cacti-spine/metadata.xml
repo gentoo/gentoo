@@ -13,4 +13,7 @@
 		replacement for the default cmd.php poller so you must decide if using
 		Spine makes sense for your installation.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Cacti/spine</remote-id>
+	</upstream>
 </pkgmetadata>

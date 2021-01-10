@@ -9,8 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Free/Open Source micro-blogging client by KDE"
-HOMEPAGE="https://choqok.kde.org/
-https://kde.org/applications/internet/org.kde.choqok"
+HOMEPAGE="https://choqok.kde.org/ https://apps.kde.org/en/choqok"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV%.0}/src/${P}.tar.xz"
@@ -19,7 +18,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="5"
-IUSE="attica konqueror share telepathy"
+IUSE="attica share telepathy"
 
 DEPEND="
 	app-crypt/qca[qt5(+)]
@@ -47,11 +46,6 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	attica? ( >=kde-frameworks/attica-${KFMIN}:5 )
-	konqueror? (
-		>=dev-qt/qtwebkit-5.212.0_pre20180120:5
-		>=kde-frameworks/kparts-${KFMIN}:5
-		>=kde-frameworks/kdewebkit-${KFMIN}:5
-	)
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
 "
@@ -68,8 +62,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package attica KF5Attica)
-		$(cmake_use_find_package konqueror KF5Parts)
-		$(cmake_use_find_package konqueror KF5WebKit)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5WebKit=ON
 		$(cmake_use_find_package share KF5Purpose)
 		$(cmake_use_find_package telepathy TelepathyQt5)
 	)

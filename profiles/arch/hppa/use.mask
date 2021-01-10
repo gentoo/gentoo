@@ -7,13 +7,13 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
+
 # Matt Turner <mattst88@gentoo.org> (2020-07-01)
 # Unlikely.
 vulkan
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-21)
-# ruby2.4 will go away soon, avoid keywording older packages
-ruby_targets_ruby24
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
 # media-libs/libvpx is not keyworded, bug #698956
@@ -81,6 +81,8 @@ clang
 
 # Jeroen Roovers <jer@gentoo.org> (2014-11-07)
 # dev-lang/luajit has not been ported to HPPA
+lua_single_target_luajit
+lua_targets_luajit
 luajit
 luajittex
 
@@ -115,10 +117,6 @@ vlc
 # Jeroen Roovers <jer@gentoo.org> (2012-03-27)
 # app-i18n/ibus is not tested
 ibus
-
-# Jeroen Roovers <jer@gentoo.org> (2012-03-08)
-# The crash reporting facility in www-client/firefox does not compile
-crashreporter
 
 # Jeroen Roovers <jer@gentoo.org> (2012-01-04)
 # dvb is untested on HPPA

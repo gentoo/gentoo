@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit bash-completion-r1
+inherit bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="Online backups for the truly paranoid"
 HOMEPAGE="https://www.tarsnap.com/"
@@ -26,6 +26,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/os-headers" # Required for "magic.h"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.0.39-respect-AR.patch )
+
 S=${WORKDIR}/${PN}-autoconf-${PV}
 
 src_configure() {
@@ -35,6 +37,10 @@ src_configure() {
 		$(use_with bzip2 bz2lib) \
 		--without-lzmadec \
 		$(use_with lzma)
+}
+
+src_compile() {
+	emake AR=$(tc-getAR)
 }
 
 src_install() {

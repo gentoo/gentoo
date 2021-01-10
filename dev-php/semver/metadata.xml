@@ -12,9 +12,6 @@
   <maintainer type="project">
     <email>php-bugs@gentoo.org</email>
   </maintainer>
-  <longdescription>
-    Semantic versioning utilities with the addition of version constraints parsing and checking.
-  </longdescription>
   <upstream>
     <remote-id type="github">composer/semver</remote-id>
   </upstream>

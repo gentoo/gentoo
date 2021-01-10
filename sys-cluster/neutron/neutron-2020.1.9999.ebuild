@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_7 )
-# still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 linux-info
 
@@ -30,9 +30,7 @@ REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						|| ( openvswitch linuxbridge ) )"
 
 CDEPEND=">=dev-python/pbr-4.0.0[${PYTHON_USEDEP}]"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	${CDEPEND}
+DEPEND="${CDEPEND}
 	app-admin/sudo"
 
 RDEPEND="

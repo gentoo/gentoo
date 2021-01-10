@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="pear">Archive_Tar</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

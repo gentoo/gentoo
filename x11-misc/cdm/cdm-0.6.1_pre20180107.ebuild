@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,24 +12,19 @@ SRC_URI="https://dev.gentoo.org/~gienah/snapshots/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pam consolekit"
-REQUIRED_USE="consolekit? ( pam )"
+IUSE="pam"
 
 DEPEND=""
 RDEPEND="${DEPEND}
 	dev-util/dialog
 	x11-apps/xdpyinfo
 	x11-apps/xinit
-	consolekit? ( sys-auth/consolekit
-		sys-apps/dbus )
 	pam? ( sys-libs/pam )"
 
 src_prepare() {
 	default
-	if ! use consolekit; then
-		sed -e 's@consolekit=yes@consolekit=no@' \
+	sed -e 's@consolekit=yes@consolekit=no@' \
 			-i "${S}/src/cdmrc" || die "Could not turn off consolekit in cdmrc"
-	fi
 }
 
 src_install() {

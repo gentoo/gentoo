@@ -34,6 +34,10 @@ BDEPEND="bidi? ( virtual/pkgconfig )
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-c++17.patch
+)
+
 src_prepare() {
 	default
 	# We need to be able to include directories rather than just plain

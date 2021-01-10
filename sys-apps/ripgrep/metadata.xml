@@ -9,11 +9,6 @@
 		Line-oriented search tool that recursively searches your current directory for a regex pattern while respecting your gitignore rules.
 		ripgrep is similar to other popular search tools like The Silver Searcher, ack and grep.
 	</longdescription>
-	<use>
-		<flag name="man" restrict="&gt;=sys-apps/ripgrep-0.10.0-r1">
-			Build and install man pages.
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">BurntSushi/ripgrep</remote-id>
 	</upstream>

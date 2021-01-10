@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit eutils flag-o-matic python-single-r1 toolchain-funcs
 
@@ -44,18 +44,16 @@ SRC_URI="${SRC_URI}
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="+client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
+IUSE="cet +client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	|| ( client server )
 "
 
 # ia64 kernel crashes when gdb testsuite is running
-# hppa kernel crashes when gdb testsuite is running
 RESTRICT="
-	hppa? ( test )
 	ia64? ( test )
 
 	!test? ( test )
@@ -100,6 +98,11 @@ src_prepare() {
 	default
 
 	strip-linguas -u bfd/po opcodes/po
+	export CC_FOR_BUILD=$(tc-getBUILD_CC)
+
+	# avoid using ancient termcap from host on Prefix systems
+	sed -i -e 's/termcap tinfow/tinfow/g' \
+		gdb/configure{.ac,} || die
 }
 
 gdb_branding() {
@@ -126,6 +129,15 @@ src_configure() {
 		--disable-werror
 		# Disable modules that are in a combined binutils/gdb tree. #490566
 		--disable-{binutils,etc,gas,gold,gprof,ld}
+
+		# avoid automagic dependency on (currently prefix) systems
+		# systems with debuginfod library, bug #754753
+		--without-debuginfod
+
+		# Allow user to opt into CET for host libraries.
+		# Ideally we would like automagic-or-disabled here.
+		# But the check does not quite work on i686: bug #760926.
+		$(use_enable cet)
 	)
 	local sysroot="${EPREFIX}/usr/${CTARGET}"
 	is_cross && myconf+=(
@@ -136,16 +148,17 @@ src_configure() {
 
 	if use server && ! use client ; then
 		# just configure+build in the gdbserver subdir to speed things up
-		cd gdb/gdbserver
+		cd gdbserver
 		myconf+=( --program-transform-name='' )
 	else
 		# gdbserver only works for native targets (CHOST==CTARGET).
 		# it also doesn't support all targets, so rather than duplicate
 		# the target list (which changes between versions), use the
-		# "auto" value when things are turned on.
-		is_cross \
-			&& myconf+=( --disable-gdbserver ) \
-			|| myconf+=( $(use_enable server gdbserver auto) )
+		# "auto" value when things are turned on, which is triggered
+		# whenever no --enable or --disable is given
+		if is_cross || use !server ; then
+			myconf+=( --disable-gdbserver )
+		fi
 	fi
 
 	if ! ( use server && ! use client ) ; then
@@ -157,6 +170,7 @@ src_configure() {
 			--disable-install-libiberty
 			# Disable guile for now as it requires guile-2.x #562902
 			--without-guile
+			--enable-obsolete
 			# This only disables building in the readline subdir.
 			# For gdb itself, it'll use the system version.
 			--disable-readline
@@ -189,13 +203,12 @@ src_configure() {
 
 src_install() {
 	if use server && ! use client; then
-		cd gdb/gdbserver || die
+		cd gdbserver || die
 	fi
 	default
 	if use client; then
 		find "${ED}"/usr -name libiberty.a -delete || die
 	fi
-	cd "${S}" || die
 
 	# Delete translations that conflict with binutils-libs. #528088
 	# Note: Should figure out how to store these in an internal gdb dir.
@@ -220,7 +233,7 @@ src_install() {
 	# https://sourceware.org/ml/gdb-patches/2011-12/msg00915.html
 	# Only install if it exists due to the twisted behavior (see
 	# notes in src_configure above).
-	[[ -e gdb/gdbserver/gdbreplay ]] && dobin gdb/gdbserver/gdbreplay
+	[[ -e gdbserver/gdbreplay ]] && dobin gdbserver/gdbreplay
 
 	if use client ; then
 		docinto gdb
@@ -231,7 +244,7 @@ src_install() {
 	dodoc sim/{ChangeLog,MAINTAINERS,README-HACKING}
 	if use server ; then
 		docinto gdbserver
-		dodoc gdb/gdbserver/{ChangeLog,README}
+		dodoc gdbserver/{ChangeLog,README}
 	fi
 
 	if [[ -n ${PATCH_VER} ]] ; then

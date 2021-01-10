@@ -1,0 +1,27 @@
+commit 2423fcac7668aa9c331a2dcf024c3ca06742942d
+Author: Dan Huantes <daniel.f.huantes@saic.com>
+Date:   Thu Aug 15 08:26:41 2019 -0500
+
+    CrasingTestsAreReportedAsFailures no longer core dumps on Clang Release
+    
+    Found that Crashing tests at some point in Clang
+    history were actually caught but testing on
+    Clang 6.0 and Clang 7.0 this is not the case.
+    So added Clang to the list of compilers that
+    don't run this tests.  Noted that several
+    other Pull Requests were failing for the same
+    reason.
+
+diff --git a/tests/TestTest.cpp b/tests/TestTest.cpp
+index 5a4e1ca..0db0650 100644
+--- a/tests/TestTest.cpp
++++ b/tests/TestTest.cpp
+@@ -72,7 +72,7 @@ namespace {
+       CHECK_EQUAL(1, results.GetFailureCount());
+    }
+ 
+-#if !defined(UNITTEST_MINGW) && !defined(UNITTEST_WIN32)
++#if !defined(UNITTEST_MINGW) && !defined(UNITTEST_WIN32) && !defined(__clang__)
+ // Skip this test in debug because some debuggers don't like it.
+ #if defined(NDEBUG)
+    TEST(CrashingTestsAreReportedAsFailures)

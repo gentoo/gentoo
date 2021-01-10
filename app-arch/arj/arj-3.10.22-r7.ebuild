@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 PATCH_LEVEL=15
 MY_P="${PN}_${PV}"
@@ -15,7 +15,7 @@ SRC_URI="mirror://debian/pool/main/a/arj/${MY_P}.orig.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE=""
 
 PATCHES=(
@@ -47,5 +47,6 @@ src_prepare() {
 
 src_configure() {
 	cd gnu || die 'failed to change to the "gnu" directory'
+	tc-export CC # Uses autoconf but not automake.
 	econf
 }

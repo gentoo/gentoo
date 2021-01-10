@@ -11,7 +11,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/Winetricks/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 wtg="winetricks-gentoo-2012.11.24"
@@ -28,6 +28,9 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="gtk kde rar test"
 RESTRICT="!test? ( test )"
+
+# dev-util/shellcheck is not available for x86
+RESTRICT+=" x86? ( test )"
 
 BDEPEND="
 	test? (

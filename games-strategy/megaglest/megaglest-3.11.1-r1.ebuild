@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2010-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # google-breakpad
@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="manual"
 inherit eutils flag-o-matic cmake-utils virtualx wxwidgets gnome2-utils games
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
-HOMEPAGE="http://www.megaglest.org/"
+HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
 SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/megaglest-source-${PV}.tar.xz"
 
 LICENSE="GPL-3 BitstreamVera"
@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static +streflop +tools +unicode wxuniversal +model-viewer videos"
 
+# Newer versions of megaglest-data install directly into /usr
 RDEPEND="
 	~games-strategy/${PN}-data-${PV}
+	<games-strategy/${PN}-data-3.11.1-r1
 	>=dev-lang/lua-5.1:0
 	dev-libs/libxml2
 	media-libs/fontconfig
@@ -71,7 +73,8 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${P}-static-build.patch \
 		"${FILESDIR}"/${P}-cmake.patch \
-		"${FILESDIR}"/${P}-miniupnpc.patch
+		"${FILESDIR}"/${P}-miniupnpc.patch \
+		"${FILESDIR}"/${P}-miniupnpc-api-version-16.patch
 }
 
 src_configure() {

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="Script to encode H.264/AVC/MPEG-4 Part 10 formats"
 HOMEPAGE="https://h264enc.sourceforge.net/"

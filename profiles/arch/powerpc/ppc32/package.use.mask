@@ -1,6 +1,19 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Florian Schmaus <flo@geekplace.eu> (2020-12-03)
+# Rubber's testsuite depends on media-gfx/asymptote and
+# dev-tex/pythontex which are not keyworded on ppc.
+dev-tex/rubber test
+
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no ppc keyword
+dev-vcs/mercurial rust
+
+# Mark Wright <gienah@gentoo.org> (2020-10-11)
+# dev-ml/ounit2 is not keyworded
+dev-ml/cudf test
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # ppc32 has no virtual/rust support yet, needed by newer
 # gnome-base/librsvg, et al
@@ -24,10 +37,10 @@ gnome-base/gnome-control-center flickr
 sci-misc/boinc X
 # needs mail-client/evolution, depends on net-libs/webkit-gtk
 net-mail/lbdb evo
-# needs www-client/epiphany, depends on net-libs/webkit-gtk
-net-misc/gwget epiphany
 # needs dev-util/devhelp, depends on net-libs/webkit-gtk
 dev-util/anjuta devhelp
+# app-text/libgepub depends on webkit-gtk
+xfce-extra/tumbler epub
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on ppc
@@ -69,6 +82,10 @@ net-libs/pjproject g729
 # iasl is stable on ppc
 sys-firmware/seabios -debug
 
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
 # sys-cluster/hpx, sci-libs/silo not keyworded
 sci-libs/libgeodecomp hpx silo
@@ -76,10 +93,6 @@ sci-libs/libgeodecomp hpx silo
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not keyworded
 media-gfx/inkscape cdr visio wpg
-
-# Matt Turner <mattst88@gentoo.org> (2018-10-07)
-# media-libs/x265[power8] fails to build on 32-bit ppc.
-media-libs/x265 power8
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-09-01)
 # The dependency is not keyworded
@@ -130,28 +143,11 @@ app-text/tesseract scrollview
 # Java is no longer supported on ppc.
 app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
-gnome-extra/libgda reports
-
-# Ben de Groot <yngwin@gentoo.org> (2015-07-20)
-# missing keyword
-media-sound/audacity midi soundtouch
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-02)
 # Missing keywords (2015-06-02)
 net-misc/connman openconnect
 
-# Michał Górny <mgorny@gentoo.org> (2015-03-01)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers -steam
-
-# Pacho Ramos <pacho@gentoo.org> (2015-01-14)
-# Missing keywords
-app-misc/workrave mate
-
 # Julian Ospald <hasufell@gentoo.org> (2013-11-23)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
-
-# Maciej Mrozowski <reavertm@gentoo.org> (2010-06-26)
-# Needs media-libs/simage keyworded, bug 325623
-media-libs/coin simage

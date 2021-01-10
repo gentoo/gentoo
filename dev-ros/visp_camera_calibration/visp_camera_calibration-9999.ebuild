@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ros/camera_calibration_parsers
 	dev-ros/roscpp
 	dev-ros/visp_bridge
-	sci-libs/ViSP:=
+	sci-libs/ViSP:=[X]
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}

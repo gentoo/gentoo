@@ -1,0 +1,50 @@
+From c29dffb14e321d927196a9b39b545004e632d3c4 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 21 May 2020 18:35:32 +0200
+Subject: [PATCH] net/dhcpcd.sh: fetch pidfile location from dhcpcd
+
+There's a -P switch for this but we also need to take into account the
+-4 and -6 switches as they both alter the pidfile's name.
+
+Bug: https://bugs.gentoo.org/718114
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ net/dhcpcd.sh | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/net/dhcpcd.sh b/net/dhcpcd.sh
+index 0a306b8..c0639e0 100644
+--- a/net/dhcpcd.sh
++++ b/net/dhcpcd.sh
+@@ -16,9 +16,12 @@ _config_vars="$_config_vars dhcp dhcpcd"
+ 
+ dhcpcd_start()
+ {
+-	local args= opt= opts= pidfile="/run/dhcpcd-${IFACE}.pid" new=true
++	# check for pidfile after we gathered the user's opts because they can
++	# alter the pidfile's name (#718114)
++	local args= opt= pidfile= opts= new=true
+ 	eval args=\$dhcpcd_${IFVAR}
+ 	[ -z "${args}" ] && args=${dhcpcd}
++	pidfile="$(dhcpcd -P ${args} ${IFACE})"
+ 
+ 	# Get our options
+ 	eval opts=\$dhcp_${IFVAR}
+@@ -75,7 +78,13 @@ dhcpcd_start()
+ 
+ dhcpcd_stop()
+ {
+-	local pidfile="/run/dhcpcd-${IFACE}.pid" opts= sig=SIGTERM
++	local args= pidfile= opts= sig=SIGTERM
++
++	# check for pidfile after we gathered the user's opts because they can
++	# alter the pidfile's name (#718114)
++	eval args=\$dhcpcd_${IFVAR}
++	[ -z "${args}" ] && args=${dhcpcd}
++	pidfile="$(dhcpcd -P ${args} ${IFACE})"
+ 	[ ! -f "${pidfile}" ] && return 0
+ 
+ 	ebegin "Stopping dhcpcd on ${IFACE}"
+-- 
+2.27.0.rc0
+

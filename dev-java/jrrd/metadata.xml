@@ -5,9 +5,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<longdescription>
-	Java Interface to Tobias Oetiker's RRDtool
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">opennms</remote-id>
 	</upstream>

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 IUSE="debug sdk test"
 RESTRICT="!test? ( test )"
@@ -51,7 +51,14 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake check
+	_test() {
+		pushd tests || die
+		cmake -S "${S}/tests" -B . || die
+		emake test_ringbuffer
+		ctest -j "$(makeopts_jobs)" --test-load "$(makeopts_loadavg)" || die
+		popd || die
+	}
+	multilib_foreach_abi _test
 }
 
 multilib_src_install_all() {

@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999 ]] ; then
 	SCM="git-r3"
@@ -11,17 +11,18 @@ else
 	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit flag-o-matic toolchain-funcs ${SCM}
+inherit flag-o-matic toolchain-funcs ${SCM} xdg
 
 DESCRIPTION="Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C"
 HOMEPAGE="https://gpac.wp.imt.fr/"
 
 LICENSE="GPL-2"
 # subslot == libgpac major
-SLOT="0/7"
-IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
+SLOT="0/10"
+IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	media-libs/libogg
 	a52? ( media-libs/a52dec )
@@ -30,7 +31,7 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:0= )
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/openjpeg:0 )
+	jpeg2k? ( media-libs/openjpeg:2 )
 	mad? ( media-libs/libmad )
 	opengl? (
 		media-libs/freeglut
@@ -53,31 +54,30 @@ RDEPEND="
 		x11-libs/libXv
 		x11-libs/libXext
 	)
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	xvid? ( media-libs/xvid )
 "
-# disabled upstream, see applications/Makefile
-# wxwidgets? ( =x11-libs/wxGTK-2.8* )
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	dvb? ( sys-kernel/linux-headers )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.7.1-configure.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.1-configure.patch"
+	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
+)
 
 DOCS=(
-	doc/CODING_STYLE
-	doc/GPAC\ UPnP.doc
-	doc/ISO\ 639-2\ codes.txt
-	doc/SceneGenerators
-	doc/ipmpx_syntax.bt
+	share/doc/CODING_STYLE
+	share/doc/GPAC\ UPnP.doc
+	share/doc/ISO\ 639-2\ codes.txt
+	share/doc/SceneGenerators
+	share/doc/ipmpx_syntax.bt
 	Changelog
-	AUTHORS
-	BUGS
 	README.md
-	TODO
 )
-HTML_DOCS="doc/*.html"
+
+HTML_DOCS="share/doc/*.html"
 
 my_use() {
 	local flag="$1" pflag="${2:-$1}"
@@ -97,14 +97,13 @@ src_configure() {
 	tc-export CC CXX AR RANLIB
 
 	local myeconfargs=(
-		--extra-cflags="${CFLAGS}"
+		--extra-cflags="${CFLAGS} $(usex cpu_flags_x86_sse2 '-msse2' '-mno-sse2')"
 		--cc="$(tc-getCC)"
-		--libdir="/$(get_libdir)"
+		--libdir="$(get_libdir)"
 		--verbose
 		--enable-pic
 		--enable-svg
 		--disable-amr
-		--disable-wx
 		--use-js=no
 		--use-ogg=system
 		$(use_enable alsa)
@@ -139,6 +138,6 @@ src_configure() {
 
 src_install() {
 	einstalldocs
-	emake STRIP="true" DESTDIR="${D}" install
-	emake STRIP="true" DESTDIR="${D}" install-lib
+	emake STRIP="true" DESTDIR="${ED}" install
+	emake STRIP="true" DESTDIR="${ED}" install-lib
 }

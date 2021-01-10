@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit autotools eutils
 
@@ -20,6 +20,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
+	eapply_user
+
 	glib-gettextize --force --copy || die
 	eautoreconf
 }
@@ -28,7 +30,7 @@ src_install() {
 	default
 
 	dodoc AUTHORS README doc/*.txt
-	use doc && dohtml -r doc/*.html doc/images
-	insinto /usr/share/doc/${PF}/examples
-	use examples && doins examples/*
+	use doc && dodoc -r doc/*.html doc/images
+	docinto examples
+	use examples && dodoc examples/*
 }

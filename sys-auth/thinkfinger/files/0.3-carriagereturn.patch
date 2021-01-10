@@ -1,5 +1,5 @@
---- pam/pam_thinkfinger-uinput.c	2007-02-27 17:52:50.000000000 +0100
-+++ pam/pam_thinkfinger-uinput.c	2009-02-17 13:56:02.013033249 +0100
+--- a/pam/pam_thinkfinger-uinput.c
++++ b/pam/pam_thinkfinger-uinput.c
 @@ -95,6 +95,7 @@
  	/* our single key keyboard */
  	i  = ioctl (*fd, UI_SET_EVBIT, EV_KEY) < 0;

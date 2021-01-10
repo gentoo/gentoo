@@ -8,7 +8,7 @@
 # @BLURB: Support eclass for packages that are hosted on kde.org infrastructure.
 # @DESCRIPTION:
 # This eclass is mainly providing facilities for the upstream release groups
-# Frameworks, Plasma, Applications to assemble default SRC_URI for tarballs,
+# Frameworks, Plasma, Release Service to assemble default SRC_URI for tarballs,
 # set up git-r3.eclass for stable/master branch versions or restrict access to
 # unreleased (packager access only) tarballs in Gentoo KDE overlay, but it may
 # be also used by any other package hosted on kde.org.
@@ -63,7 +63,7 @@ esac
 
 # @ECLASS-VARIABLE: KDE_UNRELEASED
 # @INTERNAL
-# @DESCRIPTION
+# @DESCRIPTION:
 # An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
 # Any package matching this will have fetch restriction enabled, and receive
 # a proper error message via pkg_nofetch.
@@ -128,11 +128,9 @@ _kde.org_calculate_src_uri() {
 				kjs | \
 				kjsembed | \
 				kmediaplayer | \
-				kross)
-					_src_uri+="portingAids/"
-					;;
+				kross | \
 				kxmlrpcclient)
-					[[ ${PV} = 5.70.* ]] || _src_uri+="portingAids/"
+					_src_uri+="portingAids/"
 					;;
 			esac
 			;;
@@ -174,7 +172,7 @@ _kde.org_calculate_live_repo() {
 	# @DESCRIPTION:
 	# This variable allows easy overriding of default kde mirror service
 	# (anongit) with anything else you might want to use.
-	EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
+	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/kde}
 
 	if [[ ${PV} == ??.??.49.9999 && ${KDE_RELEASE_SERVICE} = true ]]; then
 		EGIT_BRANCH="release/$(ver_cut 1-2)"
@@ -192,7 +190,7 @@ _kde.org_calculate_live_repo() {
 	# @DESCRIPTION:
 	# This variable allows overriding of default repository
 	# name. Specify only if this differs from PN and KDE_ORG_NAME.
-	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}"
+	EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
 }
 
 case ${KDE_BUILD_TYPE} in
@@ -222,7 +220,10 @@ kde.org_pkg_nofetch() {
 	case ${CATEGORY} in
 		kde-frameworks) sched_uri+="/Frameworks" ;;
 		kde-plasma) sched_uri+="/Plasma_5" ;;
-		kde-apps) sched_uri+="/Applications/$(ver_cut 1-2)_Release_Schedule" ;;
+		*)
+			[[ ${KDE_RELEASE_SERVICE} = true ]] &&
+				sched_uri+="/release_service/$(ver_cut 1-2)_Release_Schedule"
+			;;
 	esac
 
 	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "

@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">twilio/flask-restful</remote-id>
+		<remote-id type="github">flask-restful/flask-restful</remote-id>
+		<remote-id type="pypi">Flask-RESTful</remote-id>
 	</upstream>
 </pkgmetadata>

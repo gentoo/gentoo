@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc emacs vim"
 
 RDEPEND="
@@ -27,7 +27,7 @@ RDEPEND="
 		sys-devel/libtool:2
 	)"
 
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	doc? (
 		app-text/texi2html
 		sys-apps/texinfo
@@ -35,7 +35,10 @@ DEPEND="${DEPEND}
 
 SITEFILE="50gtags-gentoo.el"
 
-PATCHES=( "${FILESDIR}/${PN}-6.2.9-tinfo.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.2.9-tinfo.patch"
+	"${FILESDIR}/${PN}-6.6.4-fno-common.patch"
+)
 
 DOCS=( AUTHORS FAQ NEWS README THANKS )
 

@@ -7,14 +7,14 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Generate simple tables in terminals from a nested list of strings"
-HOMEPAGE="https://robpol86.github.io/terminaltables"
+HOMEPAGE="https://robpol86.github.io/terminaltables/"
 SRC_URI="
 	https://github.com/Robpol86/terminaltables/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	test? (

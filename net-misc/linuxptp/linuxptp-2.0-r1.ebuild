@@ -19,6 +19,10 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~PPS ~NETWORK_PHY_TIMESTAMPING ~PTP_1588_CLOCK"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0_nettstamp-systypes.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 }

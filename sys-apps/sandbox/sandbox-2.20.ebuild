@@ -6,12 +6,12 @@ EAPI=7
 inherit flag-o-matic multilib-minimal multiprocessing
 
 DESCRIPTION="sandbox'd LD_PRELOAD hack"
-HOMEPAGE="https://www.gentoo.org/proj/en/portage/sandbox/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Sandbox"
 SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 IUSE=""
 
 DEPEND="app-arch/xz-utils

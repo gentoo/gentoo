@@ -33,8 +33,3 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	"
-
-src_configure() {
-	append-cflags -fcommon # https://github.com/xbmc/audiodecoder.timidity/issues/32
-	kodi-addon_src_configure
-}

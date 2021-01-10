@@ -24,9 +24,12 @@ RDEPEND="
 	)
 	ldap? ( net-nds/openldap:0 )"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	sys-devel/bison:0
-	sys-devel/flex:0"
+	sys-devel/flex:0
+"
 
 suitable_db_version() {
 	local tested_slots="5.3 4.8"
@@ -45,8 +48,12 @@ src_prepare() {
 		"${FILESDIR}/${P}-gcc-10.patch"
 
 	# Link only with specific BerkDB versions
+	# Do not inject default paths for library searching
 	db_version="$(suitable_db_version)"
-	sed -i -e "/\$LIBS -ldb/s/-ldb/-l$(db_libname ${db_version})/" configure.ac || die
+	sed -i \
+		-e "/\$LIBS -ldb/s/-ldb/-l$(db_libname ${db_version})/" \
+		-e '/$LDFLAGS $db_lib $ldap_lib/d' \
+		configure.ac || die
 
 	eapply_user
 	eautoreconf

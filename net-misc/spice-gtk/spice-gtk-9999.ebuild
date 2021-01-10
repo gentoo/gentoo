@@ -6,7 +6,9 @@ EAPI=7
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit desktop eutils git-r3 meson readme.gentoo-r1 vala xdg-utils
+PYTHON_COMPAT=( python3_{7..9} )
+
+inherit desktop eutils git-r3 meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -73,6 +75,18 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
+
+BDEPEND="
+	$(python_gen_any_dep '
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/pyparsing[${PYTHON_USEDEP}]
+	')
+"
+
+python_check_deps() {
+	has_version "dev-python/six[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	default

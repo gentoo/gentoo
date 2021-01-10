@@ -7,7 +7,6 @@
 		<flag name="quota">Add support for user quota on various filesystems</flag>
 		<flag name="shadow">Add shadow support</flag>
 		<flag name="tracker">Add support for spotlight like tracker</flag>
-		<flag name="utils">Install afpstats script</flag>
 		<flag name="ssl">
 			Use <pkg>dev-libs/openssl</pkg> to provide DHX User Access
 			Modules. These are not used with most recent versions of OS X

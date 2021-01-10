@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription>
-		Almost lossless JPEG pixel interpolator, for correcting digital camera
-		defects.
-	</longdescription>
 </pkgmetadata>

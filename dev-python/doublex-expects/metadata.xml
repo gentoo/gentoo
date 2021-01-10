@@ -4,5 +4,6 @@
 	<!--maintainer-needed-->
 	<upstream>
 		<remote-id type="github">jaimegildesagredo/doublex-expects</remote-id>
+		<remote-id type="pypi">doublex-expects</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,86 @@
+--- a/src/nemesis.h
++++ b/src/nemesis.h
+@@ -164,10 +164,10 @@
+ extern int         verbose;
+ extern int         interval;
+ extern int         count;
+-int                got_link;
+-int                got_payload;
+-int                got_ipoptions;
+-int                got_tcpoptions;
++extern int                got_link;
++extern int                got_payload;
++extern int                got_ipoptions;
++extern int                got_tcpoptions;
+ 
+ struct file {
+ 	uint8_t *file_buf; /* pointer to file memory */
+--- a/src/nemesis.c
++++ b/src/nemesis.c
+@@ -10,6 +10,9 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
++int got_payload;
++int mode;
++
+ extern int optind;
+ 
+ static int usage(char *arg)
+--- a/src/nemesis-icmp.c
++++ b/src/nemesis-icmp.c
+@@ -12,6 +12,8 @@
+ #include <pcap.h>
+ #endif
+ 
++int got_origoptions;
++
+ static ETHERhdr etherhdr;
+ static IPhdr    iphdr;
+ static IPhdr    ipunreach;
+--- a/src/nemesis-icmp.h
++++ b/src/nemesis-icmp.h
+@@ -39,8 +39,8 @@
+ #include "nemesis.h"
+ #include <libnet.h>
+ 
+-int mode; /* ICMP injection mode */
+-int got_origoptions;
++extern int mode; /* ICMP injection mode */
++extern int got_origoptions;
+ 
+ int buildicmp(ETHERhdr *, IPhdr *, ICMPhdr *, IPhdr *, struct file *, struct file *, struct file *, libnet_t *);
+ 
+--- a/src/nemesis-ospf.h
++++ b/src/nemesis-ospf.h
+@@ -43,7 +43,7 @@
+ extern NETLSAhdr    netlsahdr;
+ extern SUMLSAhdr    sumlsahdr;
+ 
+-int mode; /* OSPF injection mode */
++extern int mode; /* OSPF injection mode */
+ 
+ int buildospf(ETHERhdr *, IPhdr *, struct file *, struct file *, libnet_t *, int);
+ 
+--- a/src/nemesis-dns.c
++++ b/src/nemesis-dns.c
+@@ -12,6 +12,8 @@
+ #include <pcap.h>
+ #endif
+ 
++int state;
++
+ static ETHERhdr etherhdr;
+ static IPhdr    iphdr;
+ static TCPhdr   tcphdr;
+--- a/src/nemesis-dns.h
++++ b/src/nemesis-dns.h
+@@ -29,7 +29,7 @@
+ #include "nemesis.h"
+ #include <libnet.h>
+ 
+-int state; /* default to UDP */
++extern int state; /* default to UDP */
+ 
+ int builddns(ETHERhdr *, IPhdr *, TCPhdr *, UDPhdr *, DNShdr *, struct file *, struct file *, struct file *, libnet_t *);
+ 

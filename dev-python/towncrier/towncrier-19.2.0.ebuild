@@ -3,16 +3,17 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Building newsfiles for your project"
-HOMEPAGE="https://github.com/hawkowl/towncrier"
-SRC_URI="https://github.com/hawkowl/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/twisted/towncrier"
+SRC_URI="https://github.com/twisted/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="test"
 
 RDEPEND="
@@ -22,7 +23,7 @@ RDEPEND="
 	dev-python/incremental[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		dev-vcs/git
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
@@ -31,7 +32,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RESTRICT="!test? ( test )"
 
 python_test() {
-	distutils_install_for_testing
+	distutils_install_for_testing --via-root
 
 	trial towncrier || die "tests failed with ${EPYTHON}"
 }

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/twogood/unshield/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc x86"
 
 # OpenSSL (or LibreSSL) is detected at build time, and used to determine
 # whether or not a hand-rolled md5 implementation is used. The build

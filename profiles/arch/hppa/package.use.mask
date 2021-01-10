@@ -4,9 +4,37 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matthias Maier <tamiko@gentoo.org> (2020-12-03)
+# Requires sci-mathematics/z3.
+dev-util/cppcheck z3
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-18)
+# Requires dev-python/coverage, bug #743355.
+dev-python/nose coverage
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/lash not keyworded, bug #736725
+media-sound/fluidsynth lash
+
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no hppa keyword
+dev-vcs/mercurial rust
+
+# Joonas Niilola <juippis@gentoo.org> (2020-10-08)
+# Dependency not keyworded on this arch.
+dev-libs/efl avif
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
+# Felix Janda <felix.janda@posteo.de> (2020-08-01)
+# Requires masked dev-lang/spidermonkey:17
+>=www-client/elinks-0.13.3 javascript
+
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
-sys-block/fio -io-uring zbc
+sys-block/fio -io-uring -zbc
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
@@ -62,17 +90,14 @@ dev-python/stevedore doc
 # app-emacs/wanderlust is not keyworded
 app-emacs/elscreen wanderlust
 
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
 # net-libs/libgadu is not keyworded
 net-im/pidgin gadu
 
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
 # sys-apps/systemd is not stable
-net-analyzer/wireshark sdjournal
+# media-libs/libilbc has not been ported to HPPA
+net-analyzer/wireshark ilbc sdjournal
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
@@ -133,14 +158,6 @@ sys-libs/glibc systemtap
 # Göktürk Yüksek <gokturk@gentoo.org> (2017-08-15)
 # Requires java
 app-forensics/sleuthkit java
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=redis that is masked in this profile.
-mail-filter/pyzor test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=systemd that is masked in this profile.
@@ -300,10 +317,6 @@ media-sound/mpd fluidsynth
 # cpudetection and custom-cpuopts does not apply
 # to HPPA (bug #234629)
 media-video/mplayer cpudetection
-
-# Jeroen Roovers <jer@gentoo.org> (2008-09-16)
-# app-text/xindy needs dev-lisp/clisp and clisp does not build (bug #229217)
-app-text/texlive xindy
 
 # Mart Raudsepp <leio@gentoo.org> (2008-04-02)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded

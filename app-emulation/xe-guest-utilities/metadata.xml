@@ -20,7 +20,6 @@
 	<email>xen@gentoo.org</email>
 	<name>Gentoo Xen Project</name>
 </maintainer>
-<longdescription>XenServer Virtual Machine Tools</longdescription>
 <use>
 	<flag name="xenstore">Use xenstore binaries bundled by Citrix instead of building app-emulation/xen-tools</flag>
 </use>

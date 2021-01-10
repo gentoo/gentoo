@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A perl XML down translate module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ppc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

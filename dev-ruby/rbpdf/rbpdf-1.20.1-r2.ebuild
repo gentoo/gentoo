@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 # Avoid the complexity of the "rake" recipe and run the tests manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
@@ -30,6 +30,10 @@ ruby_add_rdepend "
 	=dev-ruby/rbpdf-font-1.19*
 	|| ( dev-ruby/mini_magick dev-ruby/rmagick )
 "
+
+# Two of the tests require png/jpeg support in "magick identify",
+# see bug 738784.
+BDEPEND+=" test? ( virtual/imagemagick-tools[jpeg,png] )"
 
 all_ruby_prepare() {
 	default

@@ -3,8 +3,9 @@
 
 EAPI=5
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_REQ_USE="xml"
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1 eutils
 
@@ -14,7 +15,7 @@ SRC_URI="https://github.com/nphilipp/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="dbus selinux"
 
 RDEPEND="

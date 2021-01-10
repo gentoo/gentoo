@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="ncurses"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils linux-info
+inherit distutils-r1 linux-info optfeature
 
 DESCRIPTION="CLI curses based monitoring tool"
 HOMEPAGE="https://github.com/nicolargo/glances"

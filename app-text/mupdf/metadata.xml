@@ -5,4 +5,8 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 </pkgmetadata>

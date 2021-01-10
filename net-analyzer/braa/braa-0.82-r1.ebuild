@@ -9,7 +9,7 @@ HOMEPAGE="http://s-tech.elsat.net.pl/braa/"
 SRC_URI="http://s-tech.elsat.net.pl/braa/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8-gentoo.diff

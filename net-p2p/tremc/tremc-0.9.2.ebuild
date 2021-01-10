@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="ncurses"
-inherit bash-completion-r1 eutils python-single-r1
+inherit bash-completion-r1 optfeature python-single-r1
 
 DESCRIPTION="Ncurses interface for the Transmission BitTorrent client"
 HOMEPAGE="https://github.com/tremc/tremc"

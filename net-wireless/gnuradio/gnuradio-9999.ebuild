@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake python-single-r1 virtualx xdg-utils
+inherit cmake python-single-r1 virtualx xdg-utils desktop
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -14,9 +14,8 @@ SLOT="0/${PV}"
 
 if [[ ${PV} =~ "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
-	EGIT_BRANCH="pybind"
+	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -47,7 +46,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-libs/boost:0=[python,${PYTHON_USEDEP}]')
 	dev-libs/log4cpp
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
@@ -57,9 +55,9 @@ RDEPEND="${PYTHON_DEPS}
 	alsa? ( media-libs/alsa-lib:= )
 	fec? (
 		sci-libs/gsl
-		sci-libs/scipy
+		dev-python/scipy
 	)
-	filter? ( sci-libs/scipy )
+	filter? ( dev-python/scipy )
 	grc? (
 		$(python_gen_cond_dep 'dev-python/mako[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
@@ -68,7 +66,7 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3[introspection]
 		x11-libs/pango[introspection]
 	)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	portaudio? ( >=media-libs/portaudio-19_pre )
 	qt5? (
 		$(python_gen_cond_dep 'dev-python/PyQt5[opengl,${PYTHON_USEDEP}]')
@@ -78,7 +76,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtwidgets:5
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
-	trellis? ( sci-libs/scipy )
+	trellis? ( dev-python/scipy )
 	uhd? (
 		$(python_gen_cond_dep '>=net-wireless/uhd-3.9.6:=[${PYTHON_SINGLE_USEDEP}]')
 	)
@@ -130,6 +128,7 @@ src_configure() {
 	mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_VOLK=OFF
+		-DENABLE_INTERNAL_VOLK=OFF
 		-DENABLE_GNURADIO_RUNTIME=ON
 		-DENABLE_PYTHON=ON
 		-DENABLE_GR_BLOCKS=ON

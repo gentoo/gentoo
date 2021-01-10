@@ -1,0 +1,65 @@
+--- a/parts.c
++++ b/parts.c
+@@ -19,6 +19,7 @@
+ 
+ #include "pwavecat.h"
+ 
++struct part *parttab[2];
+ 
+ struct part *lookup_part(char *name)
+ {
+--- a/parts.h
++++ b/parts.h
+@@ -12,7 +12,7 @@
+ 	struct part *nxtentr;
+ 	struct part *prventr;
+ 	}; 
+-struct part *parttab[2];
++extern struct part *parttab[2];
+ /* first element points to first entry, second element to last entry */
+ 
+ #endif /* _PARTS_H_ */
+--- a/pwavecat.c
++++ b/pwavecat.c
+@@ -38,6 +38,9 @@
+ //	DWORD data_length;		/* length of data */
+ //	} wave_header;
+ 
++int debug_flag;
++int verbose_flag;
++
+ int modus;
+ int sample_fq;
+ int byte_p_sec;
+--- a/pwavecat.h
++++ b/pwavecat.h
+@@ -12,20 +12,20 @@
+ #include "wave_header.h"
+ #include "parts.h"
+ 
+-int debug_flag;
+-int verbose_flag;
++extern int debug_flag;
++extern int verbose_flag;
+ 
+-int sample_fq;
+-int byte_p_sec;
+-int byte_p_spl;
+-int bit_p_spl;
+-int modus;
+-int have_format_flag;		// set if first wave header is read, now file format is set.
++extern int sample_fq;
++extern int byte_p_sec;
++extern int byte_p_spl;
++extern int bit_p_spl;
++extern int modus;
++extern int have_format_flag;		// set if first wave header is read, now file format is set.
+ 
+ #define MAX_FILES			100
+ #define BUFFER_SIZE			65536
+ 
+-char *input_filename[MAX_FILES];
++extern char *input_filename[MAX_FILES];
+ 
+ #define VERSION "0.4.5"
+ 

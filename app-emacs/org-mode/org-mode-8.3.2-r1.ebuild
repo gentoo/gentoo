@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,11 +7,11 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="An Emacs mode for notes and project planning"
 HOMEPAGE="https://www.orgmode.org/"
-SRC_URI="http://orgmode.org/org-${PV}.tar.gz"
+SRC_URI="https://orgmode.org/org-${PV}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+ contrib? ( GPL-2+ MIT ) odt-schema? ( OASIS-Open )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-macos"
+KEYWORDS="amd64 ppc x86"
 IUSE="contrib doc odt-schema"
 RESTRICT="test"
 

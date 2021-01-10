@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/java"
@@ -7,6 +7,7 @@ command_args="${JAVA_OPTS} -jar ${GRAYLOG_INSTALL_DIR}/graylog.jar server -f ${G
 command_background="true"
 command_user="${GRAYLOG_USER}:${GRAYLOG_GROUP}"
 pidfile="/run/${RC_SVCNAME}.pid"
+retry="30"
 
 output_log="${GRAYLOG_LOG_DIR}/graylog.stdout.log"
 error_log="${GRAYLOG_LOG_DIR}/graylog.stderr.log"

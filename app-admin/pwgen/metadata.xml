@@ -10,8 +10,8 @@
 		<name>Jason Zaman</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>livecd@gentoo.org</email>
-		<name>Gentoo LiveCD Project</name>
+		<email>releng@gentoo.org</email>
+		<name>Gentoo Release Engineering</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

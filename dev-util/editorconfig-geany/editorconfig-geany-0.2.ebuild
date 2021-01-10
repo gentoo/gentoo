@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
 src_prepare() {
 	eapply_user
 	sed -e "s|^\\(EDITORCONFIG_PREFIX =\\).*|\\1 ${EPREFIX}/usr|" \
+		-e "s|\\bcc\\b|$(tc-getCC)|" \
 		-e "s|^\\(CFLAGS =\\).*|\\1 -fPIC $("$(tc-getPKG_CONFIG)" --cflags geany geany) ${CFLAGS}|" \
 		-e "s|^\\(LDFLAGS =.*\\)|\\1 ${LDFLAGS}|" \
 		-e "s|\`pkg-config[^\`]*\`||" \

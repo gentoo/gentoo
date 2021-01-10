@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
@@ -35,7 +36,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	distutils_install_for_testing
+	distutils_install_for_testing --via-root
 
 	local -x PYTHONPATH="${PWD}:${TEST_DIR}/lib" \
 		COLUMNS=80
@@ -51,11 +52,4 @@ python_install_all() {
 
 python_install() {
 	distutils-r1_python_install
-
-	if ! python_is_python3; then
-		printf "# Placeholder for python2\n" \
-			> "${D}$(python_get_sitedir)/${PN,,}/__init__.py"
-
-		python_optimize
-	fi
 }

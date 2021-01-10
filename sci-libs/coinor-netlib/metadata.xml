@@ -5,8 +5,4 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<longdescription lang="en">
-		The COmputational INfrastructure for Operations Research (COIN-OR)
-		models from netlib for testing.
-	</longdescription>
 </pkgmetadata>

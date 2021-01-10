@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/728810
+--- ./doc/internals/release-process.rst
++++ ./doc/internals/release-process.rst
+@@ -97,8 +97,8 @@
+ * ``set PYTHONWARNINGS=`` and do ``make html`` (Windows)
+ 
+ But you can also explicitly enable the pending ones using e.g.
+-``PYTHONWARNINGS=default`` (see the :ref:`Python docs on configuring warnings
+-<python:describing-warning-filters>`) for more details.
++``PYTHONWARNINGS=default`` (see the `Python docs on configuring warnings
++<https://docs.python.org/3/library/warnings.html#describing-warning-filters>`_) for more details.
+ 
+ Release procedures
+ ------------------

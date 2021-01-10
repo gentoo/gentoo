@@ -1,28 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (2020-06-09)
-# fails to compile, needs fixing
-=sys-apps/gentoo-functions-0.13
+# Fabian Groffen <grobian@gentoo.org> (2020-12-20)
+# we need to establish this darwin-xcode version can really be our
+# linker once we figure out TAPI support
+=sys-devel/binutils-apple-8.2.1-r100
 
-# Fabian Groffen <grobian@gentoo.org> (2019-11-11)
-# We mask all system headers, and only unmask the slot matching the OS
-# install in the version profiles
-sys-kernel/xnu-headers:10.12
-sys-libs/darwin-libc-headers:10.12
-sys-kernel/xnu-headers:10.13
-sys-libs/darwin-libc-headers:10.13
-sys-kernel/xnu-headers:10.14
-sys-libs/darwin-libc-headers:10.14
-
-# Fabian Groffen <grobian@gentoo.org> (2019-03-22)
-# Newer versions break because they insist on sysroot usage lacking
-# -lSystem as looked for by clang/llvm.  If your system got this
-# package, you have to emerge -C cmake and re-emerge it.
->=dev-util/cmake-3.14
-
-# James Le Cuirot <chewi@gentoo.org> (2015-07-29)
-# Recent Oracle releases only support recent Mac OS releases. We can't
-# keep old versions due to vulnerabilities.
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
+# Fabian Groffen <grobian@gentoo.org> (2020-11-23)
+# no symbols from libopenbsd-compat
+=net-misc/openssh-8.3_p1-r5
+=net-misc/openssh-8.4_p1-r2

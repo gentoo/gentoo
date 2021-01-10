@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -56,7 +56,7 @@ OBJECTS=unibilium.lo uninames.lo uniutil.lo
+ LIBRARY=libunibilium.la
+ 
+ PODS=$(wildcard doc/*.pod)
+-MANPAGES=$(addprefix man/,$(notdir $(PODS:.pod=.3.gz)))
++MANPAGES=$(addprefix man/,$(notdir $(PODS:.pod=.3)))
+ 
+ TOOLS=$(wildcard tools/*.c)
+ 
+@@ -121,8 +121,8 @@ install-man: build-man
+ .PHONY: build-man
+ build-man: $(MANPAGES)
+ 
+-man/%.3.gz: doc/%.pod
+-	$(POD2MAN) $(POD2MAN_OPTS) $< | gzip > $@
++man/%.3: doc/%.pod
++	$(POD2MAN) $(POD2MAN_OPTS) $< > $@
+ 
+ 
+ # Regenerate static test files, based on existing terminfo entries.

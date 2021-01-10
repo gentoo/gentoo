@@ -1,0 +1,10 @@
+--- a/tests/auto/unit/qzip/qzip.pro	2018-05-13 08:44:01.000000000 -0000
++++ b/tests/auto/unit/qzip/qzip.pro	2020-10-10 14:23:34.377528668 -0000
+@@ -1,6 +1,7 @@
+ CONFIG += testcase
+ TARGET = tst_qzip
+ QT += compress testlib
++QT -= gui
+ SOURCES += tst_qzip.cpp
+ 
+ wince* {

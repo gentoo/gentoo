@@ -8,7 +8,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/rocminfo</remote-id>
     </upstream>
-    <longdescription lang="en">
-        ROCm Application for Reporting System Info
-    </longdescription>
 </pkgmetadata>

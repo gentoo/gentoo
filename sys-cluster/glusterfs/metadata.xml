@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>cluster@gentoo.org</email>
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>jaco@uls.co.za</email>
-		<name>Jaco Kroon</name>
-		<description>Please CC on bugs</description>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>proxy maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		GlusterFS is a cluster file-system capable of scaling to several peta-bytes. It aggregates various storage bricks over Infiniband RDMA or TCP/IP interconnect into one large parallel network file system. GlusterFS is based on a stackable user space design without compromising performance.

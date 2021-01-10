@@ -8,4 +8,7 @@
 	<use>
 		<flag name="pango">Use the pango library to render fonts with non-latin characters</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">leesavide/abcm2ps</remote-id>
+	</upstream>
 </pkgmetadata>

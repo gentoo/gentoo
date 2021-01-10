@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -12,7 +12,6 @@
     <flag name="nftrack">Build nfprofile used by PortTracker</flag>
     <flag name="sflow">Build sflow collector sfcpad</flag>
   </use>
-  <longdescription>The nfdump tools collect and process netflow data on the command line</longdescription>
   <upstream>
     <remote-id type="sourceforge">nfdump</remote-id>
     <remote-id type="github">phaag/nfdump</remote-id>

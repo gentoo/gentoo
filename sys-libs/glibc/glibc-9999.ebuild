@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
@@ -30,14 +30,14 @@ fi
 
 RELEASE_VER=${PV}
 
-GCC_BOOTSTRAP_VER=20180511
+GCC_BOOTSTRAP_VER=20201208
 
 LOCALE_GEN_VER=2.10
 
 SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
-SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
+SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -89,11 +89,19 @@ fi
 # and that gcc already contains the hardened patches.
 # Lastly, let's avoid some openssh nastiness, bug 708224, as
 # convenience to our users.
+
+# gzip, grep, awk are needed by locale-gen, bug 740750
+
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
 	doc? ( sys-apps/texinfo )
+	!compile-locales? (
+		app-arch/gzip
+		sys-apps/grep
+		virtual/awk
+	)
 "
 COMMON_DEPEND="
 	gd? ( media-libs/gd:2= )
@@ -107,9 +115,17 @@ COMMON_DEPEND="
 	!<net-misc/openssh-8.1_p1-r2
 "
 DEPEND="${COMMON_DEPEND}
+	compile-locales? (
+		app-arch/gzip
+		sys-apps/grep
+		virtual/awk
+	)
 	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
+	app-arch/gzip
+	sys-apps/grep
+	virtual/awk
 	sys-apps/gentoo-functions
 "
 
@@ -117,13 +133,13 @@ RESTRICT="!test? ( test )"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
 	BDEPEND+=" !headers-only? (
-		>=${CATEGORY}/binutils-2.24
+		>=${CATEGORY}/binutils-2.27
 		>=${CATEGORY}/gcc-6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	BDEPEND+="
-		>=sys-devel/binutils-2.24
+		>=sys-devel/binutils-2.27
 		>=sys-devel/gcc-6
 	"
 	DEPEND+=" virtual/os-headers "
@@ -301,6 +317,14 @@ setup_target_flags() {
 		mips)
 			# The mips abi cannot support the GNU style hashes. #233233
 			filter-ldflags -Wl,--hash-style=gnu -Wl,--hash-style=both
+		;;
+		ppc|ppc64)
+			# Many arch-specific implementations do not work on ppc with
+			# cache-block not equal to 128 bytes. This breaks memset:
+			#   https://sourceware.org/PR26522
+			#   https://bugs.gentoo.org/737996
+			# Use default -mcpu=. For ppc it means non-multiarch setup.
+			filter-flags '-mcpu=*'
 		;;
 		sparc)
 			# Both sparc and sparc64 can use -fcall-used-g6.  -g7 is bad, though.
@@ -719,7 +743,7 @@ src_unpack() {
 	# Consistency is not guaranteed between pkg_ and src_ ...
 	sanity_prechecks
 
-	use multilib && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
+	use multilib-bootstrap && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
 	setup_env
 
@@ -839,14 +863,6 @@ glibc_do_configure() {
 			# https://sourceware.org/PR24202
 			myconf+=( --enable-stack-protector=no )
 			;;
-		powerpc-*)
-			# Currently gcc on powerpc32 generates invalid code for
-			# __builtin_return_address(0) calls. Normally programs
-			# don't do that but malloc hooks in glibc do:
-			# https://gcc.gnu.org/PR81996
-			# https://bugs.gentoo.org/629054
-			myconf+=( --enable-stack-protector=no )
-			;;
 		*)
 			# Use '=strong' instead of '=all' to protect only functions
 			# worth protecting from stack smashes.
@@ -927,6 +943,11 @@ glibc_do_configure() {
 		$(use_enable static-pie)
 		$(use_enable systemtap)
 		$(use_enable nscd)
+
+		# locale data is arch-independent
+		# https://bugs.gentoo.org/753740
+		libc_cv_complocaledir='${exec_prefix}/lib/locale'
+
 		${EXTRA_ECONF}
 	)
 
@@ -969,7 +990,7 @@ glibc_do_configure() {
 	# is built with MULTILIB_ABIS="amd64 x86" but we want to
 	# add x32 to it, gcc/glibc don't yet support x32.
 	#
-	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
+	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib-bootstrap ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
 			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
@@ -1236,6 +1257,8 @@ glibc_do_src_install() {
 		ppc     /lib/ld.so.1
 		ppc64   /lib64/ld64.so.1
 		# riscv
+		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
+		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
 		lp64d   /lib/ld-linux-riscv64-lp64d.so.1
 		lp64    /lib/ld-linux-riscv64-lp64.so.1
 		# s390
@@ -1310,26 +1333,7 @@ glibc_do_src_install() {
 	insinto /etc
 	doins locale.gen
 
-	# Make sure all the ABI's can find the locales and so we only
-	# have to generate one set
-	local a
-	keepdir /usr/$(get_libdir)/locale
-	for a in $(get_install_abis) ; do
-		if [[ ! -e ${ED}/usr/$(get_abi_LIBDIR ${a})/locale ]] ; then
-			dosym ../$(get_libdir)/locale /usr/$(get_abi_LIBDIR ${a})/locale
-		fi
-	done
-
-	# HACK: If we're building for riscv, we need to additionally make sure that
-	# we can find the locale archive afterwards
-	case ${CTARGET} in
-		riscv*)
-			if [[ ! -e ${ED}/usr/lib/locale ]] ; then
-				dosym ../$(get_libdir)/locale /usr/lib/locale
-			fi
-			;;
-		*) ;;
-	esac
+	keepdir /usr/lib/locale
 
 	cd "${S}"
 
@@ -1456,6 +1460,12 @@ pkg_preinst() {
 	[[ -n ${ROOT} ]] && return 0
 	[[ -d ${ED}/$(get_libdir) ]] || return 0
 	[[ -z ${BOOTSTRAP_RAP} ]] && glibc_sanity_check
+
+	if [[ -L ${EROOT}/usr/lib/locale ]]; then
+		# Help portage migrate this to a directory
+		# https://bugs.gentoo.org/753740
+		rm "${EROOT}"/usr/lib/locale || die
+	fi
 }
 
 pkg_postinst() {

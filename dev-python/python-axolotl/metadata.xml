@@ -17,5 +17,6 @@
 	<upstream>
 		<bugs-to>https://github.com/tgalal/python-axolotl/issues</bugs-to>
 		<remote-id type="github">tgalal/python-axolotl</remote-id>
+		<remote-id type="pypi">python-axolotl</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Statistical computations and models for use with SciPy"
 HOMEPAGE="https://www.statsmodels.org/stable/index.html"
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pandas-0.23.0[${PYTHON_USEDEP}]
 	dev-python/patsy[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 "
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}

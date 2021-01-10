@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="HTTP client package with conduit interface and HTTPS support"
-HOMEPAGE="http://www.yesodweb.com/book/http-conduit"
+HOMEPAGE="https://www.yesodweb.com/book/http-conduit"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

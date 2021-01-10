@@ -1200,7 +1200,7 @@ IUSE="hardened libvirt"
 
 COMMON_DEPEND="libvirt? ( app-emulation/libvirt:=[qemu] )"
 DEPEND="${COMMON_DEPEND}"
-RDEPEND=">=sys-cluster/kubernetes-1.17.3[kubectl]
+RDEPEND=">=sys-cluster/kubectl-1.17.3
 	${COMMON_DEPEND}"
 BDEPEND="dev-go/go-bindata"
 

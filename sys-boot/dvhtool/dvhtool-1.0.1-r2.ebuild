@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit autotools eutils toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Tool to copy kernel(s) into the volume header on SGI MIPS-based workstations"
 HOMEPAGE="http://packages.debian.org/unstable/utils/dvhtool"
@@ -12,23 +12,27 @@ SRC_URI="mirror://debian/pool/main/d/dvhtool/dvhtool_1.0.1.orig.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
+
 IUSE=""
 DEPEND=""
 RDEPEND=""
 
 S="${S}.orig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-debian.diff"
+	"${FILESDIR}/${P}-debian-warn_type_guess.diff"
+	"${FILESDIR}/${P}-debian-xopen_source.diff"
+	"${FILESDIR}/${P}-add-raid-lvm-parttypes.patch"
+)
+
 src_prepare() {
-	# several applicable hunks from a debian patch
-	epatch "${FILESDIR}"/${P}-debian.diff
+	default
 
-	# Newer minor patches from Debian
-	epatch "${FILESDIR}"/${P}-debian-warn_type_guess.diff
-	epatch "${FILESDIR}"/${P}-debian-xopen_source.diff
+	# Fix automake warning
+	mv configure.{in,ac} || die
 
-	# Allow dvhtool to recognize Linux RAID and Linux LVM partitions
-	epatch "${FILESDIR}"/${P}-add-raid-lvm-parttypes.patch
-
+	eapply_user
 	eautoreconf
 }
 

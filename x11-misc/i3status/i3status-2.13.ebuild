@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://i3wm.org/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
@@ -38,9 +38,10 @@ src_install() {
 
 pkg_postinst() {
 	fcaps cap_net_admin usr/bin/${PN}
-	einfo "${PN} can be used with any of the following programs:"
-	einfo "   i3bar (x11-wm/i3)"
-	einfo "   x11-misc/xmobar"
-	einfo "   x11-misc/dzen"
-	einfo "Please refer to manual: man ${PN}"
+
+	elog "${PN} can be used with any of the following programs:"
+	elog "   i3bar (x11-wm/i3)"
+	elog "   x11-misc/xmobar"
+	elog "   x11-misc/dzen"
+	elog "Please refer to manual: man ${PN}"
 }

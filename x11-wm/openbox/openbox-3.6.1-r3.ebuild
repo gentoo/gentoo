@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://git.openbox.org/dana/openbox"
 else
 	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x86-linux"
 fi
 
 SRC_URI+=" branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
@@ -24,7 +24,12 @@ SLOT="3"
 IUSE="branding debug imlib nls session startup-notification static-libs svg xdg"
 REQUIRED_USE="xdg? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/glib:2
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
+RDEPEND="
+	dev-libs/glib:2
 	>=dev-libs/libxml2-2.0
 	>=media-libs/fontconfig-2
 	x11-libs/cairo
@@ -46,9 +51,8 @@ RDEPEND="dev-libs/glib:2
 		')
 	)
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
 "
 

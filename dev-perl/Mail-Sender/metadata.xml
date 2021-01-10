@@ -5,12 +5,6 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <longdescription lang="en">
-    Module for sending mails with attachments through an SMTP server
-  </longdescription>
-  <longdescription lang="ja">
-    SMTPでアタッチメントでメールを送るperlモジュール
-  </longdescription>
   <upstream>
     <remote-id type="cpan">Mail-Sender</remote-id>
     <remote-id type="cpan-module">Mail::Sender</remote-id>

@@ -23,4 +23,14 @@ RDEPEND="
 	dev-libs/tinyxml
 	dev-libs/boost:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+	)
+"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	export CATKIN_PREFIX_PATH="${BUILD_DIR}/devel/:${CATKIN_PREFIX_PATH}"
+	ros-catkin_src_test
+}

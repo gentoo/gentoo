@@ -1,0 +1,15 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -23,9 +23,9 @@
+ GFXDIR="$(datadir)/sdlroids/bmp/"
+ 
+ install-data-local:
+-	@/bin/sh $(srcdir)/mkinstalldirs $(SOUNDSDIR) $(GFXDIR)
+-	$(INSTALL_DATA) $(srcdir)/sounds/*.wav $(SOUNDSDIR)
+-	$(INSTALL_DATA)  $(srcdir)/bmp/*.bmp $(GFXDIR)
++	@/bin/sh $(srcdir)/mkinstalldirs $(DESTDIR)$(SOUNDSDIR) $(DESTDIR)$(GFXDIR)
++	$(INSTALL_DATA) $(srcdir)/sounds/*.wav $(DESTDIR)$(SOUNDSDIR)
++	$(INSTALL_DATA) $(srcdir)/bmp/*.bmp $(DESTDIR)$(GFXDIR)
+ 
+ # Data directories
+ INCLUDES=-Wall 	-Wcast-align -DDATADIR=\"$(datadir)/sdlroids/\"

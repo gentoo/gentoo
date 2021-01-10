@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ HOMEPAGE="https://sourceforge.net/p/libmwaw/wiki/Home/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc static-libs tools"
+IUSE="doc tools"
 
 BDEPEND="
 	sys-devel/libtool
@@ -38,9 +38,9 @@ src_configure() {
 	# zip is hard enabled as the zlib is dep on the rdeps anyway
 	local myeconfargs=(
 		--enable-zip
+		--disable-static
 		--disable-werror
 		$(use_with doc docs)
-		$(use_enable static-libs static)
 		$(use_enable tools)
 	)
 	econf "${myeconfargs[@]}"
@@ -48,5 +48,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }

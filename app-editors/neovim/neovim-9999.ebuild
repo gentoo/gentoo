@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit cmake eutils xdg
+LUA_COMPAT=( lua5-{1..2} luajit )
+
+inherit cmake lua-single optfeature xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
@@ -13,46 +15,56 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+luajit +nvimpager +tui"
+IUSE="+lto +nvimpager +tui"
 
-BDEPEND="
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+# Upstream say the test library needs LuaJIT
+# https://github.com/neovim/neovim/blob/91109ffda23d0ce61cec245b1f4ffb99e7591b62/CMakeLists.txt#L377
+#REQUIRED_USE="test? ( lua_single_target_luajit )"
+#RESTRICT="!test? ( test )"
+
+# Upstream build scripts invoke the Lua interpreter
+BDEPEND="${LUA_DEPS}
 	dev-util/gperf
 	virtual/libiconv
 	virtual/libintl
 	virtual/pkgconfig
 "
-
-DEPEND="
+# TODO: add tests, dev-lua/busted has now got luajit support.
+# bug #584694
+DEPEND="${LUA_DEPS}
+	dev-lua/luv[${LUA_SINGLE_USEDEP}]
+	$(lua_gen_cond_dep '
+		dev-lua/lpeg[${LUA_USEDEP}]
+		dev-lua/mpack[${LUA_USEDEP}]
+	')
+	$(lua_gen_cond_dep '
+		dev-lua/LuaBitOp[${LUA_USEDEP}]
+	' lua5-{1,2})
 	dev-libs/libutf8proc:=
 	dev-libs/libuv:0=
-	>=dev-libs/libvterm-0.1
+	>=dev-libs/libvterm-0.1.2
 	dev-libs/msgpack:0=
-	dev-lua/lpeg[luajit=]
-	dev-lua/luv[luajit=]
-	dev-lua/mpack[luajit=]
+	dev-libs/tree-sitter:=
 	net-libs/libnsl
-	luajit? ( dev-lang/luajit:2 )
-	!luajit? (
-		dev-lang/lua:=
-		dev-lua/LuaBitOp
-	)
 	tui? (
 		dev-libs/libtermkey
 		>=dev-libs/unibilium-2.0.0:0=
 	)
 "
-
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
 "
 
-CMAKE_BUILD_TYPE=Release
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.4-cmake_lua_version.patch
+)
 
 src_prepare() {
 	# use our system vim dir
@@ -63,9 +75,16 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream default to LTO on non-debug builds
+	# Let's expose it as a USE flag because upstream
+	# have preferences for how we should use LTO
+	# if we want it on (not just -flto)
+	# ... but allow turning it off.
 	local mycmakeargs=(
+		-DENABLE_LTO=$(usex lto)
 		-DFEAT_TUI=$(usex tui)
-		-DPREFER_LUA=$(usex luajit no yes)
+		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
+		-DLUA_PRG="${ELUA}"
 	)
 	cmake_src_configure
 }

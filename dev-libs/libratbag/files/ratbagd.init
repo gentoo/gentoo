@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="system daemon to introspect and modify configurable mice"
+pidfile="/run/${SVCNAME}.pid"
+command="/usr/bin/ratbagd"
+start_stop_daemon_args="--quiet"
+command_background="true"
+
+depend() {
+	need dbus
+}

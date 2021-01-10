@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit distutils-r1
 
@@ -13,7 +14,7 @@ SRC_URI="https://github.com/sampsyo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples"
 
 python_install_all() {

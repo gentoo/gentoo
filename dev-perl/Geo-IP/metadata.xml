@@ -9,7 +9,6 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <longdescription>Look up country by IP Address</longdescription>
   <upstream>
     <remote-id type="cpan">Geo-IP</remote-id>
     <remote-id type="cpan-module">Geo::IP</remote-id>

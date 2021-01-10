@@ -9,7 +9,9 @@
 		Collection of Python library code for building Python applications. The
 		code is collected from Google's own Python code base.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">abseil/abseil-py</remote-id>
+		<remote-id type="pypi">absl-py</remote-id>
 	</upstream>
 </pkgmetadata>

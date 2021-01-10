@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/glabels-externs.patch # Fix compilation with -fno-common/gcc10; patch from Fedora
+)
+
 src_configure() {
 	gnome2_src_configure \
 		$(use_with eds libebook) \

@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="doc static-libs test"
+IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
@@ -36,6 +36,8 @@ BDEPEND="
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}/${P}-icu-68.patch" ) # bug 751934
+
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
@@ -44,8 +46,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		$(use_with doc docs)
-		$(use_enable static-libs static)
 		$(use_enable test tests)
 	)
 	econf "${myeconfargs[@]}"

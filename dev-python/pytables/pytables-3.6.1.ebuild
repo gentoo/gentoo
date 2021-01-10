@@ -3,6 +3,7 @@
 
 EAPI=6
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
 
@@ -16,7 +17,7 @@ HOMEPAGE="https://www.pytables.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 LICENSE="BSD"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
@@ -52,10 +53,6 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if ! python_is_python3; then
-		local -x CFLAGS="${CFLAGS}"
-		append-cflags -fno-strict-aliasing
-	fi
 	distutils-r1_python_compile -j1
 }
 

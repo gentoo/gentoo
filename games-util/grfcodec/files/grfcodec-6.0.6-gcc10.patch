@@ -1,0 +1,12 @@
+diff -Nrup a/src/command.cpp b/src/command.cpp
+--- a/src/command.cpp	2015-05-09 04:59:46.000000000 -0600
++++ b/src/command.cpp	2019-09-24 11:37:06.667911307 -0600
+@@ -303,7 +303,7 @@ bool parse_comment(const string&line){
+ 		uint val=find_command(command_part,beaut),togglebit;
+ 		if(val!=(uint)-1&&val!=OFF)_commandState.beautifier=true;
+ 		switch(val){
+-		case -1:
++		case -1u:
+ 			IssueMessage(0,COMMAND_INVALID_ARG,gen[BEAUTIFY].name);
+ 			return true;
+ 		case OFF:_commandState.beautifier=false;break;

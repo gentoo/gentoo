@@ -10,7 +10,7 @@ SRC_URI="https://github.com/thesofproject/sof-bin/archive/stable-v${PV}.tar.gz -
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 S=${WORKDIR}/sof-bin-stable-v${PV}

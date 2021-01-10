@@ -8,7 +8,4 @@
     <upstream>
         <remote-id type="github">RadeonOpenCompute/ROCm-Device-Libs</remote-id>
     </upstream>
-    <longdescription lang="en">
-        Radeon Open Compute Device Libraries
-    </longdescription>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit autotools elisp-common latex-package python-r1
 
 DESCRIPTION="A vector graphics language that provides a framework for technical drawing"
-HOMEPAGE="http://asymptote.sourceforge.net/"
+HOMEPAGE="https://asymptote.sourceforge.io/"
 SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+boehm-gc doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax X"
 RESTRICT="!test? ( test )"
 

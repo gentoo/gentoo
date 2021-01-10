@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=1
 
 DISTUTILS_USE_SETUPTOOLS=no
@@ -26,14 +26,13 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="gtk policykit sasl"
 
-RDEPEND="!app-emulation/virtinst
-	${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
 		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/libvirt-python-6.10.0[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
 	')
@@ -50,7 +49,7 @@ RDEPEND="!app-emulation/virtinst
 	)
 "
 DEPEND="${RDEPEND}
-	dev-lang/perl
+	dev-python/docutils
 	dev-util/intltool
 "
 

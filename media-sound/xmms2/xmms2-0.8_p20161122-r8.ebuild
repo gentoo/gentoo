@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit eutils multiprocessing perl-functions python-single-r1 ruby-single toolchain-funcs
@@ -308,8 +308,11 @@ src_install() {
 	# to avoid code changed let's just un-gzip manpages
 	local m
 	for m in "${ED}"/usr/share/man/man1/*.gz; do
-		einfo "Uncompressing '${m#${ED}}' back."
-		gzip -d "${m}" || die
+		# For some combination of USEs no mans are installed.
+		if [[ -f $m ]]; then
+			einfo "Uncompressing '${m#${ED}}' back."
+			gzip -d "${m}" || die
+		fi
 	done
 }
 

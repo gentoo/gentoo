@@ -5,6 +5,4 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
-	<longdescription lang="en">A utility that displays an ANSI/ASCII logo and some system information</longdescription>
-	<longdescription lang="es">Una utilidad que muestra un logotipo ANSI/ASCII e información del sistema</longdescription>
 </pkgmetadata>

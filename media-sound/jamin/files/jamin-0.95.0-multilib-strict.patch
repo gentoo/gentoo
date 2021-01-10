@@ -1,9 +1,0 @@
---- a/controller/Makefile.am
-+++ b/controller/Makefile.am
-@@ -1,5 +1,5 @@
- plugin_LTLIBRARIES = jamincont_1912.la
--plugindir = @prefix@/lib/ladspa
-+plugindir = @libdir@/ladspa
- jamincont_1912_la_CFLAGS = @OSC_CFLAGS@ -I../src
- jamincont_1912_la_LIBADD = @OSC_LIBS@
- jamincont_1912_la_LDFLAGS = -module -avoid-version -Wc,-nostartfiles

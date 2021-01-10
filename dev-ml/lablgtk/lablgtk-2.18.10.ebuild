@@ -9,7 +9,7 @@ SRC_URI="https://github.com/garrigue/lablgtk/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )"
 SLOT="2/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples glade gnomecanvas +ocamlopt sourceview spell svg"
 
 DEPEND=">=dev-lang/ocaml-4.05:=[ocamlopt?]
@@ -67,7 +67,8 @@ src_install() {
 	rm "${ED}/usr/$(get_libdir)/ocaml/ld.conf" || die
 	dosym lablgtk2/liblablgtk2.a \
 		/usr/$(get_libdir)/ocaml/liblablgtk2.a
-	dosym lablgtk2/liblablgtksourceview2.a \
+	use sourceview && \
+		dosym lablgtk2/liblablgtksourceview2.a \
 		/usr/$(get_libdir)/ocaml/liblablgtksourceview2.a
 
 	if use examples; then

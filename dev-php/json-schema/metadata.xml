@@ -12,10 +12,6 @@
   <maintainer type="project">
     <email>php-bugs@gentoo.org</email>
   </maintainer>
-  <longdescription>
-    A PHP library for validating JSON structures against a given
-    schema.
-  </longdescription>
   <upstream>
     <remote-id type="github">justinrainbow/json-schema</remote-id>
   </upstream>

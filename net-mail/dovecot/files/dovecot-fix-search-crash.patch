@@ -1,0 +1,91 @@
+gentoo bug #756094
+
+From a668d767a710ca18ab6e7177d8e8be22a6b024fb Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <timo.sirainen@open-xchange.com>
+Date: Mon, 31 Aug 2020 20:38:42 +0300
+Subject: [PATCH] lib-mail: message_parser_init_from_parts() - Fix crash if
+ MIME boundaries don't end
+
+If the last "boundary--" doens't exist, the parsing assert-crashed at
+deinit. This mainly happened when searching mails.
+
+Fixes:
+Panic: file message-parser.c: line 175 (message_part_finish): assertion failed: (ctx->nested_parts_count > 0)
+---
+ src/lib-mail/message-parser.c      | 13 ++++++++-----
+ src/lib-mail/test-message-parser.c | 21 ++++++++++++++++++++-
+ 2 files changed, 28 insertions(+), 6 deletions(-)
+
+diff --git a/src/lib-mail/message-parser.c b/src/lib-mail/message-parser.c
+index 011dea9050..8baf622e59 100644
+--- a/src/lib-mail/message-parser.c
++++ b/src/lib-mail/message-parser.c
+@@ -138,6 +138,7 @@ message_part_append(struct message_parser_ctx *ctx)
+ 	struct message_part *parent = ctx->part;
+ 	struct message_part *part;
+ 
++	i_assert(!ctx->preparsed);
+ 	i_assert(parent != NULL);
+ 	i_assert((parent->flags & (MESSAGE_PART_FLAG_MULTIPART |
+ 				   MESSAGE_PART_FLAG_MESSAGE_RFC822)) != 0);
+@@ -171,12 +172,14 @@ static void message_part_finish(struct message_parser_ctx *ctx)
+ {
+ 	struct message_part **const *parent_next_partp;
+ 
+-	i_assert(ctx->nested_parts_count > 0);
+-	ctx->nested_parts_count--;
++	if (!ctx->preparsed) {
++		i_assert(ctx->nested_parts_count > 0);
++		ctx->nested_parts_count--;
+ 
+-	parent_next_partp = array_back(&ctx->next_part_stack);
+-	array_pop_back(&ctx->next_part_stack);
+-	ctx->next_part = *parent_next_partp;
++		parent_next_partp = array_back(&ctx->next_part_stack);
++		array_pop_back(&ctx->next_part_stack);
++		ctx->next_part = *parent_next_partp;
++	}
+ 
+ 	message_size_add(&ctx->part->parent->body_size, &ctx->part->body_size);
+ 	message_size_add(&ctx->part->parent->body_size, &ctx->part->header_size);
+diff --git a/src/lib-mail/test-message-parser.c b/src/lib-mail/test-message-parser.c
+index 13984f939e..a00f0d6200 100644
+--- a/src/lib-mail/test-message-parser.c
++++ b/src/lib-mail/test-message-parser.c
+@@ -178,9 +178,10 @@ static void test_message_parser_small_blocks(void)
+ static void test_message_parser_stop_early(void)
+ {
+ 	struct message_parser_ctx *parser;
+-	struct istream *input;
++	struct istream *input, *input2;
+ 	struct message_part *parts;
+ 	struct message_block block;
++	const char *error;
+ 	unsigned int i;
+ 	pool_t pool;
+ 	int ret;
+@@ -198,6 +199,24 @@ static void test_message_parser_stop_early(void)
+ 							      &block)) > 0) ;
+ 		test_assert(ret == 0);
+ 		message_parser_deinit(&parser, &parts);
++
++		/* test preparsed - first re-parse everything with a stream
++		   that sees EOF at this position */
++		input2 = i_stream_create_from_data(test_msg, i);
++		parser = message_parser_init(pool, input2, &set_empty);
++		while ((ret = message_parser_parse_next_block(parser,
++							      &block)) > 0) ;
++		test_assert(ret == -1);
++		message_parser_deinit(&parser, &parts);
++
++		/* now parse from the parts */
++		i_stream_seek(input2, 0);
++		parser = message_parser_init_from_parts(parts, input2, &set_empty);
++		while ((ret = message_parser_parse_next_block(parser,
++							      &block)) > 0) ;
++		test_assert(ret == -1);
++		test_assert(message_parser_deinit_from_parts(&parser, &parts, &error) == 0);
++		i_stream_unref(&input2);
+ 	}
+ 
+ 	i_stream_unref(&input);

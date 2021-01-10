@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Heavily simplified scipy.signal.spectral module"
@@ -24,7 +24,7 @@ fi
 IUSE="faster +fastest"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
-		faster? ( sci-libs/scipy[${PYTHON_USEDEP}] )
+		faster? ( dev-python/scipy[${PYTHON_USEDEP}] )
 		fastest? ( dev-python/pyFFTW[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"

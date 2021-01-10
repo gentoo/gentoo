@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/158" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE="asio curl dicom debug doc egl examples ffmpeg fltk fox gdal gif glut
 gstreamer jpeg las lua openexr openinventor osgapps pdf png sdl sdl2
 svg tiff truetype vnc wxwidgets xrandr +zlib"
@@ -51,7 +51,7 @@ RDEPEND="
 	)
 	jpeg? ( virtual/jpeg:0 )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
-	lua? ( >=dev-lang/lua-5.1.5:* )
+	lua? ( >=dev-lang/lua-5.1.5:0= )
 	openexr? (
 		media-libs/ilmbase:=
 		media-libs/openexr:=

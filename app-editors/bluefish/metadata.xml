@@ -5,7 +5,6 @@
 	<use>
 	<flag name="gtk3">Enable GTK3 interface (default)</flag>
 	<flag name="gucharmap">Enable gucharmap dictionary plugin</flag>
-	<flag name="python">Enable Python integration for zen-coding plugin</flag>
 	<flag name="spell">Enable spell checking capabilities via enchant library</flag>
 </use>
 </pkgmetadata>

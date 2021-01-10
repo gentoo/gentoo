@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc ppc64 -sparc x86"
 fi
 inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
@@ -196,7 +196,7 @@ RDEPEND="
 	)
 	twolame? ( media-sound/twolame )
 	udev? ( virtual/udev )
-	upnp? ( net-libs/libupnp:= )
+	upnp? ( net-libs/libupnp:=[ipv6] )
 	v4l? ( media-libs/libv4l:= )
 	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )

@@ -1,16 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_COMPAT=( python3_{6..9} )
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 # No, I am not calling ruby-ng
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20191204"
+MY_RELEASEDATE="20200710"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -27,7 +27,7 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="pcre2 python ruby static-libs ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26"
+IUSE="pcre2 python ruby static-libs ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
@@ -35,13 +35,13 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby24? ( dev-lang/ruby:2.4 )
 		ruby_targets_ruby25? ( dev-lang/ruby:2.5 )
 		ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
+		ruby_targets_ruby27? ( dev-lang/ruby:2.7 )
 	)
 	elibc_musl? ( sys-libs/fts-standalone )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	python? ( >=dev-lang/swig-2.0.9 )
 	ruby? ( >=dev-lang/swig-2.0.9 )"
 

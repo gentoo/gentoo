@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Poly/ML is a full implementation of Standard ML available as open-source.
-	</longdescription>
 	<use>
 		<flag name="portable">Build the portable interpreter version of Poly/ML instead of native</flag>
 	</use>

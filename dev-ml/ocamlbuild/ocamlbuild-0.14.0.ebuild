@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+inherit eutils
 
 DESCRIPTION="Generic build tool with built-in rules for building OCaml library and programs"
 HOMEPAGE="https://github.com/ocaml/ocamlbuild"
@@ -9,7 +11,7 @@ SRC_URI="https://github.com/ocaml/ocamlbuild/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
@@ -19,6 +21,10 @@ RDEPEND="${DEPEND}
 "
 DEPEND="${DEPEND}
 	test? ( dev-ml/findlib )"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch
+}
 
 src_configure() {
 	emake -f configure.make Makefile.config \

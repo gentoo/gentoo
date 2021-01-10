@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="SNMP framework in Python - MIBs"
-HOMEPAGE="http://snmplabs.com/pysnmp/ https://github.com/etingof/pysnmp-mibs"
+HOMEPAGE="https://github.com/etingof/pysnmp-mibs"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

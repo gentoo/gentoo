@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit flag-o-matic
 
 MY_P="${PN}-$(ver_rs 2 b)"
 S=${WORKDIR}/${MY_P}
@@ -53,6 +55,8 @@ PATCHES=(
 )
 
 src_configure() {
+	append-flags -fcommon
+
 	local myeconfargs=(
 		--with-dumpdatespath=/etc/dumpdates
 		--with-rmtpath='$(sbindir)/rmt'

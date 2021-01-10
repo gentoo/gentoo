@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# this is a backport. do not add extra impls
 PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
@@ -15,7 +16,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86"
 
 src_test() {
 	cd test || die

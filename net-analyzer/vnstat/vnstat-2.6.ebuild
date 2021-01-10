@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit systemd user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
@@ -10,7 +11,7 @@ SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="gd selinux test"
 RESTRICT="!test? ( test )"
 
@@ -26,6 +27,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-vnstatd )
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2-conf.patch
 	"${FILESDIR}"/${PN}-2.2-drop-root.patch

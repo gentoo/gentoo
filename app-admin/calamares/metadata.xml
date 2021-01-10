@@ -21,7 +21,4 @@
 	<upstream>
 		<remote-id type="github">calamares/calamares</remote-id>
 	</upstream>
-	<use>
-		<flag name="pythonqt">Enable PythonQt-based module interface</flag>
-	</use>
 </pkgmetadata>

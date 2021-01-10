@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
 CROSS_VER=1.3.4
-PATCH_BASE="perl-5.30.0-patches-${PATCH_VER}"
-PATCH_DEV=dilfridge
+PATCH_BASE="perl-5.30.3-patches-${PATCH_VER}"
+PATCH_DEV=kentnl
 
 DIST_AUTHOR=XSAWYERX
 
@@ -41,7 +41,6 @@ SRC_URI="
 	mirror://cpan/src/5.0/${MY_P}.tar.xz
 	mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${MY_P}.tar.xz
 	https://github.com/gentoo-perl/perl-patchset/releases/download/${PATCH_BASE}/${PATCH_BASE}.tar.xz
-	mirror://gentoo/${PATCH_BASE}.tar.xz
 	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
@@ -54,7 +53,7 @@ if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
 # SOMEWHAT EXPERIMENTAL CODE, DO NOT USE WITHOUT AN ADULT PRESENT, CHECK CHANGELOG
 # FOR DETAILS
 KEYWORDS=""
-# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads"
@@ -64,6 +63,7 @@ RDEPEND="
 	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
 	sys-libs/zlib
+	virtual/libcrypt:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}"
@@ -142,8 +142,6 @@ pkg_setup() {
 		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
 		*-solaris*)   osname="solaris" ;;
-		*-interix*)   osname="interix" ;;
-		*-aix*)       osname="aix" ;;
 		*-cygwin*)    osname="cygwin" ;;
 		*)            osname="linux" ;;
 	esac
@@ -252,55 +250,6 @@ src_remove_dual() {
 	done
 }
 
-src_prepare_update_patchlevel_h() {
-	# Copied and modified from debian:
-	# Copyright 2011 Niko Tyni
-	# This program is free software; you can redistribute it and/or modify
-	# it under the same terms as Perl itself.
-	local patchdir="${WORKDIR}/patches"
-	local prefix
-	local patchoutput="patchlevel-gentoo.h"
-
-	[[ -f ${patchdir}/series ]] || return 0
-
-while read patch
-do
-	patchname=$(echo $patch | sed 's/\.diff$//')
-	< $patchdir/$patch sed -e '/^Subject:/ { N; s/\n / / }' | sed -n -e '
-
-	# massage the patch headers
-	s|^Bug: .*https\?://rt\.perl\.org/.*id=\(.*\).*|[perl #\1]|; tprepend;
-	s|^Bug: .*https\?://rt\.cpan\.org/.*id=\(.*\).*|[rt.cpan.org #\1]|; tprepend;
-	s|^Bug-Gentoo: ||; tprepend;
-	s/^\(Subject\|Description\): //; tappend;
-	s|^Origin: .*http://perl5\.git\.perl\.org/perl\.git/commit\(diff\)\?/\(.......\).*|[\2]|; tprepend;
-
-	# post-process at the end of input
-	$ { x;
-		# include the version number in the patchlevel.h description (if available)
-		s/List packaged patches/&'" for ${PF}(#${PATCH_VER})"'/;
-
-		# escape any backslashes and double quotes
-		s|\\|\\\\|g; s|"|\\"|g;
-
-		# add a prefix
-		s|^|\t,"'"$prefix$patchname"' - |;
-		# newlines away
-		s/\n/ /g; s/  */ /g;
-		# add a suffix
-		s/ *$/"/; p
-	};
-	# stop all processing
-	d;
-	# label: append to the hold space
-	:append H; d;
-	# label: prepend to the hold space
-	:prepend x; H; d;
-	'
-done < "${WORKDIR}"/patches/series > "${S}/${patchoutput}"
-echo "${patchoutput}" >> "${S}/MANIFEST"
-}
-
 src_prepare_perlcross() {
 	cp -a ../perl-cross-${CROSS_VER}/* . || die
 
@@ -313,28 +262,143 @@ src_prepare_dynamic() {
 	ln -s ${LIBPERL} libperl$(get_libname ) || die
 }
 
-src_prepare() {
-	local patch
+# Copy a patch into the patch series
+# add_patch SRC_PATH DEST_NAME ['description'] ['bug'] ['bug']
+# - description is optional, but recommended
+# - all arguments after descriptions are bug URLs
+add_patch() {
+	local patchdir="${WORKDIR}/patches"
+	local infodir="${WORKDIR}/patch-info"
+	local src_name dest_name desc
+	src_name="$1"
+	dest_name="$2"
+	desc="$3"
+	shift; shift; shift;
+	einfo "Adding ${dest_name} to patch bundle"
+	cp "${src_name}" "${patchdir}/${dest_name}" || die "Couldn't copy ${src_name} to ${dest_name}"
+	if [[ -n "${desc}" ]]; then
+		printf "%s" "${desc}" > "${infodir}/${dest_name}.desc" || die "Couldn't write ${dest_name}.desc"
+	fi
+	if [[ $# -gt 0 ]]; then
+		# Note: when $@ is more than one element, this emits a
+		# line for each element
+		printf "%s\n" "$@" > "${infodir}/${dest_name}.bugs" || die "Couldn't write ${dest_name}.bugs"
+	fi
+}
+# Remove a patch using a glob expr
+# eg:
+#	 rm_patch *-darin-Use-CC*
+#
+rm_patch() {
+	local patchdir="${WORKDIR}/patches"
+	local expr="$1"
+	local patch="$( cd "${patchdir}"; echo $expr )"
+	einfo "Removing $patch ($expr) from patch bundle"
+	if [[ -e "${patchdir}/${patch}" ]]; then
+		rm -f "${patchdir}/${patch}" || die "Can't remove ${patch} ( $expr )"
+	else
+		ewarn "No ${expr} found in ${patchdir} to remove"
+	fi
+}
+# Yes, this is a reasonable amount of code for something seemingly simple
+# but this is far easier to debug when things go wrong, and things went wrong
+# multiple times while I was getting the exact number of slashes right, which
+# requires circumnavigating both bash and sed escape mechanisms.
+c_escape_string() {
+	local slash dquote
+	slash='\'
+	dquote='"'
+	re_slash="${slash}${slash}"
+	re_dquote="${slash}${dquote}"
 
-	if use hppa ; then
-		eapply "${FILESDIR}/${PN}-5.26.2-hppa.patch" # bug 634162
+	# Convert \ to \\,
+	#         " to \"
+	echo "$1" |\
+		sed "s|${re_slash}|${re_slash}${re_slash}|g" |\
+		sed "s|${re_dquote}|${re_slash}${re_dquote}|g"
+}
+c_escape_file() {
+	c_escape_string "$(cat "$1")"
+}
+
+apply_patchdir() {
+	local patchdir="${WORKDIR}/patches"
+	local infodir="${WORKDIR}/patch-info"
+	local patchoutput="patchlevel-gentoo.h"
+
+	# Inject Patch-Level info into description for patchlevel.h patch
+	# to show in -V
+	local patch_expr="*List-packaged-patches*"
+	local patch="$( cd "${patchdir}"; echo $patch_expr )";
+	einfo "Injecting patch-level info into ${patch}.desc ( $patch_expr )"
+
+	if [[ -e "${patchdir}/${patch}" ]]; then
+		printf "List packaged patches for %s(%s) in patchlevel.h" "${PF}" "${PATCH_BASE}"\
+			>"${infodir}/${patch}.desc" || die "Can't rewrite ${patch}.desc"
+	else
+		eerror "No $patch_expr found in ${patchdir}"
 	fi
 
+	# Compute patch list to apply
+	# different name other than PATCHES to stop default
+	# reapplying it
+	# Single depth is currently only supported, as artifacts can reside
+	# from the old layout being multiple-directories, as well as it grossly
+	# simplifying the patchlevel_gentoo.h generation.
+	local PERL_PATCHES=($(
+		find "${patchdir}" -maxdepth 1 -mindepth 1 -type f -printf "%f\n" |\
+			grep -E '[.](diff|patch)$' |\
+			sort -n
+	))
+
+	for patch in "${PERL_PATCHES[@]}"; do
+		eapply "${WORKDIR}"/patches/${patch}
+	done
+
+	einfo "Generating $patchoutput"
+
+	# This code creates a header file, each iteration
+	# creates one-or-more-lines for each entry found in PERL_PATCHES
+	# and STDOUT is redirected to the .h file
+	for patch in "${PERL_PATCHES[@]}"; do
+		local desc_f="${infodir}/${patch}.desc"
+		local bugs_f="${infodir}/${patch}.bugs"
+
+		printf ',"%s"\n' "${patch}"
+		if [[ ! -e "${desc_f}" ]]; then
+			ewarn "No description provided for ${patch} (expected: ${desc_f} )"
+		else
+			local desc="$(c_escape_file "${desc_f}")"
+			printf ',"- %s"\n' "${desc}"
+		fi
+		if [[ -e "${bugs_f}" ]]; then
+			while read -d $'\n' -r line; do
+				local esc_line="$(c_escape_string "${line}")"
+				printf ',"- Bug: %s"\n' "${esc_line}"
+			done <"${bugs_f}"
+		fi
+	done > "${S}/${patchoutput}"
+	printf "%s\n" "${patchoutput}" >> "${S}/MANIFEST"
+
+}
+src_prepare() {
+	local patchdir="${WORKDIR}/patches"
+
+	# Prepare Patch dir with additional patches / remove unwanted patches
+	# Inject bug/desc entries for perl -V
+	if use hppa ; then
+		# bug 634162
+		add_patch "${FILESDIR}/${PN}-5.26.2-hppa.patch" "100-5.26.2-hppa.patch"\
+			"Fix broken miniperl on hppa"\
+			"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
+	fi
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
-		sed -i '/gentoo\/no-nsl-cl\.patch/d' "${WORKDIR}/patches/series" || die
+		rm_patch "*-nsl-and-cl*"
 	fi
 
-	einfo "[ Applying patches from ${PATCH_BASE} ]"
-	while read patch ; do
-		eapply "${WORKDIR}"/patches/${patch}
-	done < "${WORKDIR}"/patches/series
-	einfo "[ Done with ${PATCH_BASE} ]"
-
-	eapply "${FILESDIR}/${PN}-5.30.3-gentoo-libdirs.patch"
-
-	src_prepare_update_patchlevel_h
+	apply_patchdir
 
 	tc-is-cross-compiler && src_prepare_perlcross
 
@@ -358,6 +422,10 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fix install_name (soname) not to reference $D
 		sed -i -e '/install_name `pwd/s/`pwd`/\\$(shrpdir)/' Makefile.SH || die
+
+		# Upstreamed, but not in this version.
+		# Need to recognise macOS 11 / 10.16. #757249
+		eapply "${FILESDIR}/${PN}-5.30.3-darwin-macos11.patch"
 	fi
 
 	default
@@ -553,6 +621,10 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__
 
+	# flock on 32-bit sparc Solaris is broken, fall back to fcntl
+	[[ ${CHOST} == sparc-*-solaris* ]] && \
+		myconf -Ud_flock
+
 	# fix unaligned access misdetection
 	# https://rt.perl.org/Public/Bug/Display.html?id=133495
 	# https://rt.perl.org/Public/Bug/Display.html?id=133803
@@ -568,7 +640,7 @@ src_configure() {
 		# Set a hook to check for each detected library whether it actually works.
 		export libscheck="
 			( echo 'main(){}' > '${T}'/conftest.c &&
-			  $(tc-getCC) -o '${T}'/conftest '${T}'/conftest.c -l\$thislib >/dev/null 2>/dev/null
+				$(tc-getCC) -o '${T}'/conftest '${T}'/conftest.c -l\$thislib >/dev/null 2>/dev/null
 			) || xxx=/dev/null"
 
 		# Use all host paths that might contain useful stuff, the hook above will filter out bad choices.

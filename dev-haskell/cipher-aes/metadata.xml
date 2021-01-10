@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Fast AES cipher implementation with advanced mode of operations
-	</longdescription>
 	<upstream>
 		<remote-id type="github">vincenthz/hs-cipher-aes</remote-id>
 	</upstream>

@@ -8,6 +8,7 @@
 <use>
   <flag name="backup">Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption</flag>
   <flag name="client-libs">Build the client libraries from the server package instead of the C Connector packages</flag>
+  <flag name="columnstore">Build the ColumnStore storage engine</flag>
   <flag name="extraengine">Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="galera">Enables galera replication</flag>
   <flag name="innodb-lz4">Enables lz4 compression methods for InnoDB/XtraDB</flag>
@@ -28,6 +29,7 @@
   <flag name="sst-mariabackup">Add tools needed to support the mariabackup SST method</flag>
   <flag name="sst-xtrabackup">Add tools needed to support the xtrabackup and xtrabackup-v2 SST methods</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
+  <flag name="s3">Build the S3 storage engine</flag>
   <flag name="test">Install upstream testsuites for end use.</flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>

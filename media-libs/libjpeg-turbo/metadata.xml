@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
+  <slots>
+    <subslots>Reflect ABI of libturbojpeg.so.</subslots>
+  </slots>
   <upstream>
+    <remote-id type="github">libjpeg-turbo/libjpeg-turbo</remote-id>
     <remote-id type="sourceforge">libjpeg-turbo</remote-id>
     <remote-id type="cpe">cpe:/a:libjpeg-turbo:libjpeg-turbo</remote-id>
   </upstream>

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="a graphical music player daemon (MPD) client using GTK+2"
 HOMEPAGE="https://launchpad.net/gimmix"
@@ -34,8 +34,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.7.1-curl-headers.patch
-	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${PN}-0.5.7.2-format-security.patch
 	"${FILESDIR}"/${PN}-0.5.7.2-QA-desktop-file.patch
+	"${FILESDIR}"/${PN}-0.5.7.2-fno-common.patch
 )
 
 src_prepare() {

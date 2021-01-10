@@ -14,5 +14,6 @@
 	<upstream>
 		<bugs-to>https://github.com/RPi-Distro/RTIMULib/issues</bugs-to>
 		<remote-id type="github">RPi-Distro/RTIMULib</remote-id>
+		<remote-id type="pypi">RTIMULib</remote-id>
 	</upstream>
 </pkgmetadata>

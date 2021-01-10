@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Python classes to extract information from the Linux kernel /proc files"
-HOMEPAGE="https://www.kernel.org/pub/scm/libs/python/python-linux-procfs/
+HOMEPAGE="
+	https://git.kernel.org/pub/scm/libs/python/python-linux-procfs/
 	https://kernel.googlesource.com/pub/scm/libs/python/python-linux-procfs/python-linux-procfs/"
 SRC_URI="https://cdn.kernel.org/pub/software/libs/python/${PN}/${P}.tar.xz"
 

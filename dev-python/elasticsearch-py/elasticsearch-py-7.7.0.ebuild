@@ -12,7 +12,7 @@ inherit distutils-r1
 MY_PN=${PN/-py/}
 DESCRIPTION="Official Python low-level client for Elasticsearch"
 HOMEPAGE="https://github.com/elastic/elasticsearch-py"
-SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/elastic/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-${ES_VERSION}-no-jdk-linux-x86_64.tar.gz )"
 
 LICENSE="Apache-2.0"

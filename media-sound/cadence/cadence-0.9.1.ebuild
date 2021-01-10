@@ -12,10 +12,9 @@ HOMEPAGE="https://kxstudio.linuxaudio.org/Applications:Cadence"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/falkTX/Cadence.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/falkTX/Cadence/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/Cadence-${PV}"
 fi
 
@@ -41,6 +40,7 @@ RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-fix-clang.patch
 	"${FILESDIR}"/${P}-fix-qt5.15.patch
 )
 

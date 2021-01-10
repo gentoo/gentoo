@@ -1,0 +1,22 @@
+--- a/config/linux.mk
++++ b/config/linux.mk
+@@ -25,7 +25,7 @@
+ LDFLAGS   = 
+ LOUTFLG   = $(COUTFLG)
+ 
+-AR        = ar cr
++ARFLAGS   = cr
+ AOUTFLG   =
+ 
+ RANLIB    = ranlib
+--- a/configurator/taucs_config.c
++++ b/configurator/taucs_config.c
+@@ -558,7 +558,7 @@
+ 
+       fprintf(f, "%s: $(%s_content) $(STDDEPS)\n",get_full_name(i,0),base);
+       fprintf(f,"\t- $(RM) %s\n",get_full_name(i,0));
+-      fprintf(f,"\t$(AR) $(AOUTFLG)%s $(%s_content)\n",get_full_name(i,0),base);
++      fprintf(f,"\t$(AR) $(ARFLAGS) $(AOUTFLG)%s $(%s_content)\n",get_full_name(i,0),base);
+       fprintf(f,"\t$(RANLIB) %s\n",get_full_name(i,0));
+     }
+ 

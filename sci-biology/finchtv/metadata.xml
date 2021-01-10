@@ -5,7 +5,4 @@
     <email>sci-biology@gentoo.org</email>
     <name>Gentoo Biology Project</name>
   </maintainer>
-  <longdescription lang="en">
-A cross-platform graphical viewer for chromatogram files.
-</longdescription>
 </pkgmetadata>

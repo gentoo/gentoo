@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils
+inherit autotools desktop
 
 DESCRIPTION="A graphical 2D tile-based MMORPG"
 HOMEPAGE="http://daimonin.sourceforge.net/"
-SRC_URI="https://dev.gentoo.org/~soap/distfiles/${P}.zip
+SRC_URI="
+	https://dev.gentoo.org/~soap/distfiles/${P}.zip
 	music? ( mirror://sourceforge/daimonin/daimoninMusicLQ20100827.zip )"
 
 LICENSE="GPL-2"
@@ -22,10 +23,10 @@ RDEPEND="
 	media-libs/sdl-mixer[vorbis]
 	net-misc/curl
 	sys-libs/zlib:="
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/daimonin-code-8183-trunk/client/make/linux
+S="${WORKDIR}/daimonin-code-8183-trunk/client/make/linux"
 
 src_unpack() {
 	unpack ${P}.zip
@@ -42,6 +43,7 @@ src_prepare() {
 
 	pushd ../../src >/dev/null || die
 		eapply "${FILESDIR}"/${PN}-0.10.5-datadir.patch
+		eapply "${FILESDIR}"/${PN}-0.10.8-fno-common.patch
 	popd >/dev/null || die
 
 	eapply_user
@@ -64,6 +66,7 @@ src_install() {
 
 	cd ../.. || die
 	dodoc README*
+
 	newicon bitmaps/pentagram.png "daimonin.png"
 	make_desktop_entry "daimonin" "Daimonin" "daimonin" "Game;Amusement"
 }

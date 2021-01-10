@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_6 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit cmake-utils vcs-snapshot python-single-r1
+inherit cmake vcs-snapshot python-single-r1
 
 DESCRIPTION="A library for particle IO and manipulation"
 HOMEPAGE="https://www.disneyanimation.com/technology/partio.html"
@@ -20,11 +20,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	media-libs/freeglut
-	virtual/opengl
 	sys-libs/zlib:=
+	virtual/opengl
 "
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
+	dev-lang/swig
 	doc? (
 		app-doc/doxygen
 		dev-texlive/texlive-bibtexextra
@@ -33,22 +36,20 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
-	dev-lang/swig:*
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.1.0-Rename-partconv.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
-
 	sed -e '/ADD_SUBDIRECTORY (src\/tests)/d' -i CMakeLists.txt || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
+		$(cmake_use_find_package doc Doxygen)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -10,7 +10,8 @@ inherit autotools distutils-r1
 
 DESCRIPTION="Framework to easy access to the Prelude database"
 HOMEPAGE="https://www.prelude-siem.org"
-SRC_URI="https://www.prelude-siem.org/pkg/src/${PV}/${P}.tar.gz"
+SRC_URI="https://www.prelude-siem.org/pkg/src/${PV}/${P}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/libpreludedb-5.1.0-update_m4_postgresql.patch"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -40,7 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0-fix-python-bindings.patch"
 	"${FILESDIR}/${PN}-5.1.0-fix_gtkdoc_1.32.patch"
 	"${FILESDIR}/${PN}-5.1.0-fix_py38.patch"
-	"${FILESDIR}/${PN}-5.1.0-update_m4_postgresql.patch"
+	"${DISTDIR}/${PN}-5.1.0-update_m4_postgresql.patch"
 )
 
 src_prepare() {
@@ -58,6 +59,7 @@ src_configure() {
 	local myconf=(
 		--enable-easy-bindings
 		--with-swig
+		--without-python2
 		$(use_with mysql)
 		$(use_with postgres postgresql)
 		$(use_with sqlite sqlite3)
@@ -65,13 +67,9 @@ src_configure() {
 
 	if use python; then
 		python_setup
-		if python_is_python3; then
-			myconf+=(--without-python2 --with-python3="${EPYTHON}")
-		else
-			myconf+=(--without-python3 --with-python2="${EPYTHON}")
-		fi
+		myconf+=( --with-python3="${EPYTHON}" )
 	else
-		myconf+=(--without-python2 --without-python3)
+		myconf+=( --without-python3 )
 	fi
 
 	econf "${myconf[@]}"

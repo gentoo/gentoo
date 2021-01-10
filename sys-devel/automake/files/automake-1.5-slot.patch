@@ -1,5 +1,5 @@
---- aclocal.in.orig	2004-10-22 11:11:05.361192040 -0400
-+++ aclocal.in	2004-10-22 11:11:45.362110976 -0400
+--- a/aclocal.in
++++ b/aclocal.in
 @@ -33,5 +33,5 @@
  $prefix = "@prefix@";
  # Note that this isn't pkgdatadir, but a separate directory.
@@ -20,8 +20,8 @@
 +	print "/usr/share/aclocal", "\n";
  	exit 0;
      }
---- automake.in.orig	2004-10-22 11:14:10.787003032 -0400
-+++ automake.in	2004-10-22 11:14:22.072287408 -0400
+--- a/automake.in
++++ b/automake.in
 @@ -32,7 +32,7 @@
  BEGIN
  {

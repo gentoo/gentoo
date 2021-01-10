@@ -12,6 +12,3 @@ FCFLAGS="${CFLAGS}"
 MULTILIB_ABIS="lp64"
 DEFAULT_ABI="lp64"
 ABI="lp64"
-
-# We hide the useflags for the ABIs
-USE_EXPAND_HIDDEN="ABI_RISCV"

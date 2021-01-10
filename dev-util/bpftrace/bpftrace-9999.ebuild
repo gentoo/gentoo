@@ -25,11 +25,10 @@ IUSE="test"
 
 COMMON_DEPEND="
 	dev-util/systemtap
-	sys-devel/clang:=
-	dev-libs/libbpf:=
+	<dev-libs/libbpf-0.2:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
-	<sys-devel/clang-10:=
-	<sys-devel/llvm-10:=[llvm_targets_BPF(+)]
+	<=sys-devel/llvm-12:=[llvm_targets_BPF(+)]
+	<=sys-devel/clang-12:=
 	>=dev-util/bcc-0.13.0:=
 	virtual/libelf
 "
@@ -68,7 +67,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=9 llvm_pkg_setup
+	LLVM_MAX_SLOT=11 llvm_pkg_setup
 }
 
 src_prepare() {

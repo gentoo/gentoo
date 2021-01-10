@@ -5,7 +5,6 @@
 		<email>fordfrog@gentoo.org</email>
 		<name>Miroslav Šulc</name>
 	</maintainer>
-	<longdescription>Command line media player for the Raspberry Pi</longdescription>
 	<upstream>
 		<remote-id type="github">popcornmix/omxplayer</remote-id>
 	</upstream>

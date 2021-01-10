@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake systemd
+inherit cmake systemd tmpfiles
 
 DESCRIPTION="An open source instant messaging transport"
 HOMEPAGE="https://www.spectrum.im"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/SpectrumIM/spectrum2/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp"
 REQUIRED_USE="
 	|| ( mysql postgres sqlite )
@@ -42,7 +42,7 @@ RDEPEND="
 			dev-db/mysql-connector-c
 		)
 	)
-	postgres? ( <=dev-libs/libpqxx-7.0.0:= )
+	postgres? ( dev-libs/libpqxx:= )
 	purple? (
 		dev-libs/glib
 		net-im/pidgin:=
@@ -57,6 +57,11 @@ DEPEND="
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-libpqxx-7-compatibility.patch"
+	"${FILESDIR}/${P}-musl-compatibility.patch"
+)
 
 src_prepare() {
 	# Respect users LDFLAGS
@@ -99,7 +104,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/spectrum2.initd spectrum2
 	systemd_newunit "${FILESDIR}"/spectrum2.service spectrum2.service
-	systemd_newtmpfilesd "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
+	newtmpfiles "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
 
 	einstalldocs
 }

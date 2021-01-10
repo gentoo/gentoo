@@ -13,7 +13,7 @@ SRC_URI="https://github.com/liblouis/liblouis/releases/download/v${PV}/${P}.tar.
 
 LICENSE="LGPL-2.1+"
 SLOT="0/20"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -38,7 +38,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-ucs4
+	econf \
+		--enable-ucs4 \
+		--disable-static
 }
 
 src_compile() {
@@ -68,4 +70,6 @@ src_install() {
 	DOCS=( README AUTHORS NEWS ChangeLog doc/liblouis.txt )
 	HTML_DOCS=( doc/liblouis.html )
 	default
+
+	find "${ED}" -name '*.la' -delete || die
 }

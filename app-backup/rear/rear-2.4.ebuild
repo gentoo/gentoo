@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libressl udev samba"
 
 RDEPEND="
+	app-cdr/cdrtools
 	net-dialup/mingetty
 	net-fs/nfs-utils
 	sys-apps/gawk
@@ -23,7 +24,6 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-block/parted
 	sys-boot/syslinux
-	virtual/cdrtools
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	samba? ( net-fs/cifs-utils )

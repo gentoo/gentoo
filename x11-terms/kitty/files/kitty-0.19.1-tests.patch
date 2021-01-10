@@ -1,0 +1,11 @@
+--- a/kitty/constants.py
++++ b/kitty/constants.py
+@@ -64,7 +64,7 @@
+ def kitty_exe() -> str:
+     rpath = sys._xoptions.get('bundle_exe_dir')
+     if not rpath:
+-        items = os.environ.get('PATH', '').split(os.pathsep) + [os.path.join(base, 'launcher')]
++        items = os.environ.get('PATH', '').split(os.pathsep) + [os.path.join(base, '../linux-package/bin')]
+         seen: Set[str] = set()
+         for candidate in filter(None, items):
+             if candidate not in seen:

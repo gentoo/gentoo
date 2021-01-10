@@ -14,13 +14,13 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT ZPL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="+tz sqlite mysql postgres xapian whoosh ssl jinja pyjwt markdown"
 
 DEPEND=""
 RDEPEND="${DEPEND}
 	tz? ( dev-python/pytz[$PYTHON_USEDEP] )
-	sqlite? ( dev-lang/python:*[sqlite] )
+	sqlite? ( $(python_gen_impl_dep sqlite) )
 	mysql? ( dev-python/mysqlclient[$PYTHON_USEDEP] )
 	postgres? ( >=dev-python/psycopg-2.8[$PYTHON_USEDEP] )
 	xapian? ( >=dev-libs/xapian-bindings-1.0.0[python,$PYTHON_USEDEP] )

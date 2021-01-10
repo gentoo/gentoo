@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/73097/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls test"
 RESTRICT="!test? ( test )"
 
@@ -27,6 +27,7 @@ src_configure() {
 
 	sh ./configure \
 		--prefix="${EPREFIX}"/usr \
+		--exec-prefix="${EPREFIX}" \
 		$(use_enable nls) \
 		CC=$(tc-getCC) \
 		LINGUAS="$(l10n_get_locales | sed "s/en/en@quot en@boldquot/")" \

@@ -36,7 +36,7 @@ else
 		)
 		binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )
 		"
-	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
 	IUSE="+binary"
 	REQUIRED_USE+="
 		!amd64? ( binary )
@@ -96,6 +96,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if ! use binary; then
+		sed -i -r \
+			-e "/function SetupPython3/,/\}/{s,\\\$\(whereis python3\),${EPYTHON},g}" \
+			"${S}"/edksetup.sh || die "Fixing for correct Python3 support failed"
+	fi
 	if  [[ ${PV} != "999999" ]] && use binary; then
 		eapply_user
 		return

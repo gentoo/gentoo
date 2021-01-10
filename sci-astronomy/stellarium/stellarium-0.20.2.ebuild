@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug deep-sky gps media nls stars test"
 
 BDEPEND="
@@ -54,6 +54,11 @@ RESTRICT="!test? ( test )"
 src_prepare() {
 	cmake_src_prepare
 	use debug || append-cppflags -DQT_NO_DEBUG #415769
+
+	if use x86; then
+		# https://github.com/Stellarium/stellarium/issues/1153
+		eapply "${FILESDIR}/stellarium-0.20.2-disable-x86-test.patch"
+	fi
 }
 
 src_configure() {

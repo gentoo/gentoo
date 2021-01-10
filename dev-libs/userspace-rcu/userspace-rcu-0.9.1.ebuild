@@ -11,7 +11,7 @@ SRC_URI="https://lttng.org/files/urcu/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname version
-KEYWORDS="~alpha amd64 arm hppa ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 x86"
 IUSE="static-libs regression-test test"
 RESTRICT="!test? ( test )"
 

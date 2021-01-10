@@ -5,7 +5,6 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
-    <longdescription>StarBurst visualizer for Kodi</longdescription>
     <upstream>
         <remote-id type="github">notspiff/visualization.starburst</remote-id>
     </upstream>

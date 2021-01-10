@@ -18,7 +18,7 @@ external-filters +fast-redirects +force fuzz graceful-termination
 +image-blocking ipv6 lfs png-images selinux +stats +threads toggle
 tools whitelists +zlib"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 sparc x86"
 LICENSE="GPL-2"
 
 DEPEND="
@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}
 	)
 "
 REQUIRED_USE="
+	client-tags? ( threads )
 	compression? ( zlib )
 	fuzz? ( zlib )
 	toggle? ( editor )
@@ -47,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.19-gentoo.patch
 	"${FILESDIR}"/${P}-chdir.patch
 	"${FILESDIR}"/${P}-null-termination.patch
+	"${FILESDIR}"/${P}-strip.patch
 )
 
 pkg_pretend() {

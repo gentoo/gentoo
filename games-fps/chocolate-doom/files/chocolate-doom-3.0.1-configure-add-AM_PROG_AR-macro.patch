@@ -1,0 +1,28 @@
+From 560cdc3e4572cc84d493c5450092b6ce1694bd89 Mon Sep 17 00:00:00 2001
+From: Simon Howard <fraggle@soulsphere.org>
+Date: Sun, 30 Sep 2018 23:34:52 -0400
+Subject: [PATCH] configure: add AM_PROG_AR macro.
+
+Some platforms (eg. Emscripten) have their own version of the ar tool,
+so it is important to pick one that matches the target architecture.
+Without this macro we always use the default system-installed version
+of ar.
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 175d7f3b..6dfced8d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,6 +15,7 @@ AC_CANONICAL_HOST
+ 
+ orig_CFLAGS="$CFLAGS"
+ 
++AM_PROG_AR
+ AC_PROG_CC
+ AC_PROG_RANLIB
+ AC_CHECK_PROG(HAVE_PYTHON, python, true, false)
+-- 
+2.26.2
+

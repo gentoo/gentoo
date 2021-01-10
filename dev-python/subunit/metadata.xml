@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">subunit</remote-id>
+		<remote-id type="pypi">python-subunit</remote-id>
 	</upstream>
 </pkgmetadata>

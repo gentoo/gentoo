@@ -5,9 +5,6 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
-  <longdescription lang="en">
-beanstalked is a fast distributed workqueue service
-</longdescription>
   <upstream>
     <remote-id type="github">kr/beanstalkd</remote-id>
   </upstream>

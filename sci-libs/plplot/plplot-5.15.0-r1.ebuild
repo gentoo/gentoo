@@ -108,6 +108,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.15.0-multiarch.patch
 	"${FILESDIR}"/${PN}-5.15.0-ocaml.patch
 	"${FILESDIR}"/${PN}-5.12.0-safe-string.patch
+	"${FILESDIR}"/${PN}-5.15.0-QPainterPath-include.patch
 )
 
 pkg_setup() {

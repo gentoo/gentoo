@@ -1,12 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+LUA_COMPAT=( lua5-{1..3} )
 
 # The build system currently fails with everything newer than 1.11.
 WANT_AUTOMAKE=1.11
 
-inherit autotools toolchain-funcs eutils
+inherit autotools lua-single toolchain-funcs eutils
 
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"
@@ -29,11 +31,11 @@ SLOT="0"
 
 # TODO petsc
 IUSE="debug doc examples mpi openmp romio static-libs threads +vtk-binary"
-REQUIRED_USE="romio? ( mpi )"
+REQUIRED_USE="${LUA_REQUIRED_USE}
+	romio? ( mpi )"
 
-RDEPEND="
-	~sci-libs/libsc-${PV}[mpi=,openmp=,romio=,static-libs=,threads=]
-	dev-lang/lua:*
+RDEPEND="${LUA_DEPS}
+	~sci-libs/libsc-${PV}[${LUA_SINGLE_USEDEP},mpi=,openmp=,romio=,static-libs=,threads=]
 	sys-apps/util-linux
 	virtual/blas
 	virtual/lapack

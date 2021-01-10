@@ -60,6 +60,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_RAGEL=OFF # bug 739866, broken by ragel-7
 		-DWITH_ABOOKADDRESSBOOK_PLUGIN=ON
 		-DWITH_CRYPTO_MESSAGES=$(usex crypt)
 		-DWITH_GPGMEPP=$(usex crypt)

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit toolchain-funcs
 
-MY_RELEASEDATE="20191204"
+MY_RELEASEDATE="20200710"
 
 MY_P="${P//_/-}"
 IUSE=""
@@ -31,8 +31,7 @@ DEPEND=">=sys-libs/libsepol-${PV}:=
 	dev-libs/libpcre:=
 	>=sys-libs/libcap-1.10-r10:="
 
-RDEPEND="${DEPEND}
-	!<sys-apps/policycoreutils-2.7_pre"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default

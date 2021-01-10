@@ -1,8 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-
-# Fabian Groffen <grobian@gentoo.org> (2008-04-28)
-# mach_override.h missing
-# http://www.erlang.org/pipermail/erlang-questions/2007-July/027870.html
-dev-lang/erlang hipe

@@ -3,7 +3,6 @@
 
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
-# amd64@gentoo.org
 # toolchain@gentoo.org
 # @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @DESCRIPTION:
@@ -397,18 +396,42 @@ multilib_env() {
 			: ${DEFAULT_ABI=ppc64}
 		;;
 		riscv64*)
-			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d}
+			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d -march=rv64imafdc}
 			export CHOST_lp64d=${CTARGET}
 			export CTARGET_lp64d=${CTARGET}
 			export LIBDIR_lp64d="lib64/lp64d"
 
-			export CFLAGS_lp64=${CFLAGS_lp64--mabi=lp64}
+			export CFLAGS_lp64=${CFLAGS_lp64--mabi=lp64 -march=rv64imac}
 			export CHOST_lp64=${CTARGET}
 			export CTARGET_lp64=${CTARGET}
 			export LIBDIR_lp64="lib64/lp64"
 
-			: ${MULTILIB_ABIS=lp64d lp64}
+			export CFLAGS_ilp32d=${CFLAGS_ilp32d--mabi=ilp32d -march=rv32imafdc}
+			export CHOST_ilp32d=${CTARGET/riscv64/riscv32}
+			export CTARGET_ilp32d=${CTARGET/riscv64/riscv32}
+			export LIBDIR_ilp32d="lib32/ilp32d"
+
+			export CFLAGS_ilp32=${CFLAGS_ilp32--mabi=ilp32 -march=rv32imac}
+			export CHOST_ilp32=${CTARGET/riscv64/riscv32}
+			export CTARGET_ilp32=${CTARGET/riscv64/riscv32}
+			export LIBDIR_ilp32="lib32/ilp32"
+
+			: ${MULTILIB_ABIS=lp64d lp64 ilp32d ilp32}
 			: ${DEFAULT_ABI=lp64d}
+		;;
+		riscv32*)
+			export CFLAGS_ilp32d=${CFLAGS_ilp32d--mabi=ilp32d}
+			export CHOST_ilp32d=${CTARGET}
+			export CTARGET_ilp32d=${CTARGET}
+			export LIBDIR_ilp32d="lib32/ilp32d"
+
+			export CFLAGS_ilp32=${CFLAGS_ilp32--mabi=ilp32 -march=rv32imac}
+			export CHOST_ilp32=${CTARGET}
+			export CTARGET_ilp32=${CTARGET}
+			export LIBDIR_ilp32="lib32/ilp32"
+
+			: ${MULTILIB_ABIS=ilp32d ilp32}
+			: ${DEFAULT_ABI=ilp32d}
 		;;
 		s390x*)
 			export CFLAGS_s390=${CFLAGS_s390--m31} # the 31 is not a typo
@@ -474,6 +497,7 @@ multilib_toolchain_setup() {
 		STRIP
 		PKG_CONFIG_LIBDIR
 		PKG_CONFIG_PATH
+		PKG_CONFIG_SYSTEM_INCLUDE_PATH
 		PKG_CONFIG_SYSTEM_LIBRARY_PATH
 	)
 
@@ -523,7 +547,8 @@ multilib_toolchain_setup() {
 		export CHOST=$(get_abi_CHOST $1)
 		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
 		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
-		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/usr/$(get_libdir)
+		export PKG_CONFIG_SYSTEM_INCLUDE_PATH=${EPREFIX}/usr/include
+		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)
 	fi
 }
 

@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">booleanOperations</remote-id>
+	</upstream>
 </pkgmetadata>

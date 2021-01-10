@@ -11,8 +11,8 @@ SRC_URI="https://www.ginac.de/CLN/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples static-libs"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="doc examples"
 
 RDEPEND="dev-libs/gmp:0="
 DEPEND="${RDEPEND}
@@ -35,6 +35,11 @@ src_prepare() {
 	autotools-utils_src_prepare
 }
 
+src_configure() {
+	local myeconfargs=( --disable-static )
+	autotools-utils_src_configure
+}
+
 src_compile() {
 	autotools-utils_src_compile
 	if use doc; then
@@ -53,4 +58,6 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins examples/*.cc
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }

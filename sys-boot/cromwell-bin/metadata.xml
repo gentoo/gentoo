@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <longdescription>Xbox boot loader (prebuilt binary)</longdescription>
   <upstream>
     <remote-id type="sourceforge">xbox-linux</remote-id>
   </upstream>

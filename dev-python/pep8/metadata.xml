@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pep8</remote-id>
-    <remote-id type="github">jcrocholl/pep8</remote-id>
+    <remote-id type="github">PyCQA/pycodestyle</remote-id>
   </upstream>
 </pkgmetadata>

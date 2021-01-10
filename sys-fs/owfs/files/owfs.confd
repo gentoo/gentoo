@@ -1,2 +1,0 @@
-# owfs configuration
-OWFS_OPTS="-m /var/lib/owfs/mnt --allow_other -s 127.0.0.1:4304"

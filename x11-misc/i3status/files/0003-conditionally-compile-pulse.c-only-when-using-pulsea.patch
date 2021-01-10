@@ -1,0 +1,56 @@
+From 1999d5cf555c6f373549840d40f8565dcabad93b Mon Sep 17 00:00:00 2001
+From: Michael Stapelberg <michael@stapelberg.de>
+Date: Thu, 11 Jul 2019 15:23:08 +0200
+Subject: [PATCH 3/7] conditionally compile pulse.c only when using pulseaudio
+
+fixes #352
+---
+ Makefile.am  | 7 +++++--
+ configure.ac | 3 +++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index bb251f0..c2c1c0a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -68,8 +68,11 @@ i3status_SOURCES = \
+ 	src/print_volume.c \
+ 	src/print_wireless_info.c \
+ 	src/print_file_contents.c \
+-	src/process_runs.c \
+-	src/pulse.c
++	src/process_runs.c
++
++if PULSE
++i3status_SOURCES += src/pulse.c
++endif
+ 
+ dist_sysconf_DATA = \
+ 	i3status.conf
+diff --git a/configure.ac b/configure.ac
+index cf9e430..95009ac 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -80,16 +80,19 @@ AC_CANONICAL_HOST
+ PKG_CHECK_MODULES([CONFUSE], [libconfuse])
+ PKG_CHECK_MODULES([YAJL], [yajl])
+ 
++pulse=false
+ case $host_os in
+ 	linux*)
+ 	PKG_CHECK_MODULES([NLGENL], [libnl-genl-3.0])
+ 	PKG_CHECK_MODULES([ALSA], [alsa])
+ 	PKG_CHECK_MODULES([PULSE], [libpulse])
++	pulse=true
+ 	;;
+ 	netbsd*)
+ 	AC_SEARCH_LIBS([prop_string_create], [prop])
+ 	;;
+ esac
++AM_CONDITIONAL([PULSE], [test x$pulse = xtrue])
+ 
+ dnl TODO: check for libbsd for GNU/kFreeBSD
+ 
+-- 
+2.26.2
+

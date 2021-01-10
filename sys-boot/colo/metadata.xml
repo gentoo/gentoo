@@ -5,8 +5,4 @@
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
-
-	<longdescription>
-		COLO is CObalt Linux lOader - a Modern Bootloader for Cobalt MIPS machines.
-	</longdescription>
 </pkgmetadata>

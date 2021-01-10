@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="Perl client used to update dynamic DNS entries"
 HOMEPAGE="https://ddclient.net/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="examples iproute2"
@@ -51,7 +51,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/ddclient.initd-r6 ddclient
 	systemd_newunit "${FILESDIR}"/ddclient.service-r1 ddclient.service
-	systemd_newtmpfilesd "${FILESDIR}"/ddclient.tmpfiles ddclient.conf
+	newtmpfiles "${FILESDIR}"/ddclient.tmpfiles ddclient.conf
 
 	dodoc Change* README* RELEASENOTE TODO UPGRADE
 
@@ -59,4 +59,8 @@ src_install() {
 		docinto examples
 		dodoc sample-*
 	fi
+}
+
+pkg_postinst() {
+	tmpfiles_process ddclient.conf
 }

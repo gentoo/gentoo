@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/floehopper/introspection"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 sparc x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/blankslate:*"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>virtualization@gentoo.org</email>
+    <name>Gentoo Virtualization Project</name>
+  </maintainer>
+  <longdescription>
+    dqlite is a C library that implements an embeddable and replicated SQL 
+    database engine with high-availability and automatic failover.
+
+    The acronym "dqlite" stands for "distributed SQLite", meaning that dqlite 
+    extends SQLite with a network protocol that can connect together various 
+    instances of your application and have them act as a highly-available 
+    cluster, with no dependency on external databases.
+  </longdescription>
+</pkgmetadata>

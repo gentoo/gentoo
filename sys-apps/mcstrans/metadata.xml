@@ -5,9 +5,6 @@
 		<email>selinux@gentoo.org</email>
 		<name>SELinux Team</name>
 	</maintainer>
-	<longdescription>
-		MCS translation daemon translates SELinux contexts to human readable format
-	</longdescription>
 	<upstream>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>
 	</upstream>

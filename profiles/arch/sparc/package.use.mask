@@ -1,6 +1,34 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2020-12-31)
+# dev-python/pyudev is not keyworded
+dev-libs/libwacom test
+
+# Sam James <sam@gentoo.org> (2020-12-27)
+# dev-embedded/libftd2xx unavailable here
+dev-embedded/urjtag ftd2xx
+
+# Matthias Maier <tamiko@gentoo.org> (2020-12-03)
+# Requires sci-mathematics/z3.
+dev-util/cppcheck z3
+
+# Mart Raudsepp <leio@gentoo.org> (2020-11-26)
+# dev-libs/libmanette not keyworded, limited usefulness
+net-libs/webkit-gtk gamepad
+
+# Joonas Niilola <juippis@gentoo.org> (2020-11-16)
+# app-text/libgepub not yet keyworded on this arch. #754762
+xfce-extra/tumbler epub
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
+# app-i18n/fcitx:4 not keyworded.
+media-libs/libsdl2 fcitx4
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # sparc has no virtual/rust support, needed by newer gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
@@ -22,11 +50,6 @@ app-text/texlive-core -xindy
 # for imagemagick.
 media-gfx/inkscape cdr visio wpg
 
-# Michał Górny <mgorny@gentoo.org> (2020-05-06)
-# dev-vcs/mercurial is broken on SPARC and setuptools_scm tests
-# lack proper skipping (to be fixed).
-<=dev-python/setuptools_scm-3.5.0 test
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
 dev-python/werkzeug test
@@ -43,10 +66,6 @@ dev-ruby/tilt test
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-23)
-# don't bother keywording old versions
-<net-analyzer/rrdtool-1.7.2 ruby
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-22)
 # dev-libs/criterion not yet keyworded
@@ -82,7 +101,6 @@ net-im/pidgin gstreamer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # dev-qt/designer is not keyworded on sparc
-sys-libs/gwenhywfar designer
 x11-libs/qwt designer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
@@ -221,10 +239,6 @@ dev-db/mariadb numa
 >=gnome-base/gnome-settings-daemon-3.24 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
 mail-filter/pyzor test
 
@@ -255,10 +269,6 @@ sys-libs/libcxxabi libunwind
 # Missing keywords, bug #599572
 net-libs/gnome-online-accounts gnome
 x11-terms/gnome-terminal gnome-shell
-
-# Pacho Ramos <pacho@gentoo.org> (2017-01-15)
-# Missing keywords, bug #559770
->=net-misc/networkmanager-1.4.4 consolekit
 
 # Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
@@ -319,10 +329,6 @@ dev-qt/qtchooser test
 # Not tested
 net-mail/dovecot lz4
 
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
-
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
@@ -359,11 +365,8 @@ media-libs/clutter-gtk wayland
 
 # Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23, 2015-04-01)
 # test dependencies need keywording
-dev-haskell/binary test
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-haskell/text test
-dev-haskell/vector test
 
 # Pacho Ramos <pacho@gentoo.org> (2014-10-03)
 # Missing keywords, bug #524352
@@ -438,15 +441,11 @@ gnome-extra/sushi office
 # Needs testing
 media-libs/phonon gstreamer vlc
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
-# remove mask when dev-java/fop is keyworded here
-gnome-extra/libgda reports
-
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 systemtap tcmalloc jemalloc
 >=dev-db/mariadb-5.5 systemtap tcmalloc jemalloc
->=dev-db/percona-server-5.5 systemtap tcmalloc jemalloc
+>=dev-db/percona-server-5.5 tcmalloc jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit
@@ -499,9 +498,6 @@ sci-libs/hdf5 mpi
 
 # Needs libmodplug
 media-libs/sdl-sound mikmod
-
-# Needs clisp which won't build
-app-text/texlive xindy
 
 # Needs krb4 USE flag for mit-krb5 (Bug #255579), and we believe it to be unstable.
 net-im/pidgin zephyr

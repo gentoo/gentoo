@@ -1,0 +1,56 @@
+From 9e4119f03f57eec67b97dddbf09d363b638791dc Mon Sep 17 00:00:00 2001
+From: Wojtek Kaniewski <wojtekka@toxygen.net>
+Date: Fri, 18 Sep 2020 20:36:19 +0200
+Subject: [PATCH] Move test script to Python 3
+
+---
+ test.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/test.py b/test.py
+index c56feca..4a754bd 100755
+--- a/test.py
++++ b/test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import os
+ import socket
+@@ -8,7 +8,7 @@ import select
+ (SUCCESS, COMMAND_FAIL, CONNECT_FAIL, DISCONNECT, ACCEPT_FAIL, DATA_MISMATCH) = range(6)
+ labels = ["success", "command fail", "connection fail", "disconnection", "accept fail", "data mismatch"]
+ 
+-def test(expect, client_af, server_af, from_ip, to_ip, args="", client_sends_first="NICK nick\r\n", server_receives="NICK nick\r\n", app_responds="", app_inserts="", server_sends_then=":localhost 001 nick :Welcome\r\n"):
++def test(expect, client_af, server_af, from_ip, to_ip, args="", client_sends_first=b"NICK nick\r\n", server_receives=b"NICK nick\r\n", app_responds=b"", app_inserts=b"", server_sends_then=b":localhost 001 nick :Welcome\r\n"):
+     # Open and close a socket to get random port available
+ 
+     client_sock = socket.socket(client_af, socket.SOCK_STREAM, 0)
+@@ -26,7 +26,7 @@ def test(expect, client_af, server_af, from_ip, to_ip, args="", client_sends_fir
+     server_port = server_sock.getsockname()[1]
+ 
+     all_args = "-1 %s %d %s %d" % (args, client_port, to_ip, server_port)
+-    print "Running with %s" % all_args
++    print ("Running with %s" % all_args)
+     if os.system("./6tunnel " + all_args) != 0:
+         if expect != COMMAND_FAIL:
+             raise Exception("expected %s yet command failed" % labels[expect])
+@@ -139,11 +139,11 @@ test(COMMAND_FAIL, socket.AF_INET6, socket.AF_INET6, '::1', '::1', '-6 -s 127.0.
+ 
+ # Test IRC password options
+ 
+-test(SUCCESS, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-I password', app_inserts="PASS password\r\n")
++test(SUCCESS, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-I password', app_inserts=b"PASS password\r\n")
+ 
+-test(ACCEPT_FAIL, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-i password', client_sends_first="NICK nick\r\n")
++test(ACCEPT_FAIL, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-i password', client_sends_first=b"NICK nick\r\n")
+ 
+-test(ACCEPT_FAIL, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-i password', client_sends_first="PASS invalid\r\nNICK nick\r\n", app_responds=":6tunnel 464 * :Password incorrect\r\n")
++test(ACCEPT_FAIL, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-i password', client_sends_first=b"PASS invalid\r\nNICK nick\r\n", app_responds=b":6tunnel 464 * :Password incorrect\r\n")
+ 
+-test(SUCCESS, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-i password', client_sends_first="PASS password\r\nNICK nick\r\n")
++test(SUCCESS, socket.AF_INET, socket.AF_INET6, '127.0.0.1', '::1', '-i password', client_sends_first=b"PASS password\r\nNICK nick\r\n")
+ 
+-- 
+2.26.2
+

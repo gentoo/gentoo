@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Chameleon</remote-id>
+		<remote-id type="github">malthe/chameleon</remote-id>
 	</upstream>
 </pkgmetadata>

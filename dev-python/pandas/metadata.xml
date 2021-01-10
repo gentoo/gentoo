@@ -5,6 +5,9 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <longdescription lang="en">
   Pandas is a Python package providing fast, flexible, and expressive
   data structures designed to make working with "relational" or

@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit distutils-r1
 
@@ -13,14 +13,13 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="An intrinsic PEG Parser-Interpreter for Python"
 HOMEPAGE="https://fdik.org/pyPEG/
-	https://bitbucket.org/fdik/pypeg/
 	https://pypi.org/project/pyPEG2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 

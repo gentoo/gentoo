@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
@@ -23,6 +23,9 @@ IUSE="systemd +unconfined"
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
 DEPEND="=sec-policy/selinux-base-${PVR}[systemd?]"
 RDEPEND="$DEPEND"
+BDEPEND="
+	sys-apps/checkpolicy
+	sys-devel/m4"
 
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname hotplug init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
 LICENSE="GPL-2"
@@ -69,7 +72,7 @@ src_prepare() {
 
 src_compile() {
 	for i in ${POLICY_TYPES}; do
-		emake NAME=$i SHAREDIR="${ROOT%/}"/usr/share/selinux -C "${S}"/${i}
+		emake NAME=$i SHAREDIR="${ROOT}"/usr/share/selinux -C "${S}"/${i}
 	done
 }
 
@@ -88,8 +91,8 @@ src_install() {
 pkg_postinst() {
 	# Set root path and don't load policy into the kernel when cross compiling
 	local root_opts=""
-	if [[ "${ROOT%/}" != "" ]]; then
-		root_opts="-p ${ROOT%/} -n"
+	if [[ "${ROOT}" != "" ]]; then
+		root_opts="-p ${ROOT} -n"
 	fi
 
 	# Override the command from the eclass, we need to load in base as well here
@@ -105,13 +108,13 @@ pkg_postinst() {
 	for i in ${POLICY_TYPES}; do
 		einfo "Inserting the following modules, with base, into the $i module store: ${MODS}"
 
-		cd "${ROOT%/}/usr/share/selinux/${i}"
+		cd "${ROOT}/usr/share/selinux/${i}"
 
 		semodule ${root_opts} -s ${i} ${COMMAND}
 	done
 
 	# Don't relabel when cross compiling
-	if [[ "${ROOT%/}" == "" ]]; then
+	if [[ "${ROOT}" == "" ]]; then
 		# Relabel depending packages
 		local PKGSET="";
 		if [[ -x /usr/bin/qdepends ]] ; then

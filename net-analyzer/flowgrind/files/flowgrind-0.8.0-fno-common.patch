@@ -1,0 +1,36 @@
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -86,6 +86,10 @@
+ 
+ int daemon_pipe[2];
+ 
++pthread_t daemon_thread;
++char *dump_prefix;
++char *dump_dir;
++
+ pthread_mutex_t mutex;
+ struct request *requests = 0, *requests_last = 0;
+ 
+--- a/src/daemon.h
++++ b/src/daemon.h
+@@ -252,7 +252,7 @@
+ 	int num_flows;
+ };
+ 
+-pthread_t daemon_thread;
++extern pthread_t daemon_thread;
+ 
+ /* Through this pipe we wakeup the thread from select */
+ extern int daemon_pipe[2];
+@@ -268,9 +268,8 @@
+  * large a reply can get */
+ struct report* get_reports(int *has_more);
+ 
+-/* FIXME: shouldn't be global? */
+-char *dump_prefix;
+-char *dump_dir;
++extern char *dump_prefix;
++extern char *dump_dir;
+ 
+ void *daemon_main(void* ptr);
+ void add_report(struct report* report);

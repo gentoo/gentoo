@@ -11,6 +11,6 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=media-libs/openh264-1.3[${MULTILIB_USEDEP}]
+	>=media-libs/openh264-1.3:=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"

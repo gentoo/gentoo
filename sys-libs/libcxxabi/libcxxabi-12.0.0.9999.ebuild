@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,10 +9,6 @@ inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
-# libcxx is needed uncondtionally for the headers
-LLVM_COMPONENTS=( libcxx{abi,} )
-LLVM_TEST_COMPONENTS=( llvm/cmake )
-llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
@@ -32,14 +28,23 @@ DEPEND="${RDEPEND}
 	>=sys-devel/llvm-6"
 BDEPEND="
 	test? ( >=sys-devel/clang-3.9.0
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+	)"
+
+# libcxx is needed uncondtionally for the headers
+LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake/modules )
+llvm.org_set_globals
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	llvm_pkg_setup
+	# darwin prefix builds do not have llvm installed yet, so rely on bootstrap-prefix
+	# to set the appropriate path vars to LLVM instead of using llvm_pkg_setup.
+	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
+		llvm_pkg_setup
+	fi
 	use test && python-any-r1_pkg_setup
 }
 

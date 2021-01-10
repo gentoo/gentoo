@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ltprune.eclass
@@ -6,12 +6,13 @@
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Smart .la file pruning
+# @DEPRECATED: none
 # @DESCRIPTION:
 # A function to locate and remove unnecessary .la files.
 #
 # Discouraged. Whenever possible, please use much simpler:
 # @CODE
-# find "${D}" -name '*.la' -type f -delete || die
+# find "${ED}" -name '*.la' -delete || die
 # @CODE
 
 if [[ -z ${_LTPRUNE_ECLASS} ]]; then

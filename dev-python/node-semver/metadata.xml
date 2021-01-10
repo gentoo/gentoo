@@ -15,7 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">node-semver</remote-id>
-		<remote-id type="github">podhmo/python-semver</remote-id>
-		<bugs-to>https://github.com/podhmo/python-semver/issues</bugs-to>
+		<remote-id type="github">npm/node-semver</remote-id>
 	</upstream>
 </pkgmetadata>

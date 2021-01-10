@@ -9,4 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">pytest-qt</remote-id>
+		<remote-id type="github">pytest-dev/pytest-qt</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -12,8 +12,7 @@ SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
-IUSE="branding pam consolekit"
-REQUIRED_USE="consolekit? ( pam )"
+IUSE="branding pam"
 
 RDEPEND="x11-libs/libXmu
 	x11-libs/libX11
@@ -23,8 +22,6 @@ RDEPEND="x11-libs/libXmu
 	media-libs/libpng:0=
 	virtual/jpeg:=
 	x11-apps/sessreg
-	consolekit? ( sys-auth/consolekit
-		sys-apps/dbus )
 	pam? (	sys-libs/pam
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
@@ -64,7 +61,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use pam USE_PAM)
-		$(cmake-utils_use consolekit USE_CONSOLEKIT)
+		-DUSE_CONSOLEKIT=OFF
 	)
 
 	cmake-utils_src_configure
@@ -128,10 +125,6 @@ pkg_postinst() {
 		elog "/usr/share/doc/${PF} and change your login_cmd in /etc/slim.conf"
 		elog "accordingly."
 		elog
-		ewarn "Please note that slim supports consolekit directly.  Please do not use any "
-		ewarn "old work-arounds (including calls to 'ck-launch-session' in xinitrc scripts)"
-		ewarn "and enable USE=\"consolekit\" instead."
-		ewarn
 	fi
 	if ! use pam; then
 		elog "You have merged ${PN} without USE=\"pam\", this will cause ${PN} to fall back to"

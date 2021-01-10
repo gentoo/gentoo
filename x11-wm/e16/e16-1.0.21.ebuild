@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="audiofile container dbus debug +dialogs doc examples gnome
 libhack modules nls opengl +pango sndfile sound +themes xcomposite
 +xft xi2 xinerama xpresent +xrandr +xrender +xsm +xsync zoom"
@@ -17,6 +17,7 @@ libhack modules nls opengl +pango sndfile sound +themes xcomposite
 REQUIRED_USE="
 	audiofile? ( sound )
 	opengl? ( xcomposite )
+	pango? ( xft )
 	sndfile? ( sound )
 	sound? ( ^^ ( sndfile audiofile ) )
 "

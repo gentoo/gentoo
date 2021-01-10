@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc34.patch
 	"${FILESDIR}"/segfault-on-exit.patch
 	"${FILESDIR}"/${P}-fltk-1.1.patch
+	"${FILESDIR}"/${P}-strsignal.patch
 )
 
 src_prepare() {

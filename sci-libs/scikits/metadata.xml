@@ -5,7 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">Meta package for the scikits. Include a standard example as well.</longdescription>
   <upstream>
     <remote-id type="pypi">scikits.example</remote-id>
   </upstream>

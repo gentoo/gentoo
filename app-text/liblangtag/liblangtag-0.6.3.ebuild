@@ -16,6 +16,7 @@ IUSE="debug doc introspection static-libs test"
 
 BDEPEND="
 	sys-devel/gettext
+	sys-devel/libtool
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-libs/gobject-introspection-common )
 "
@@ -29,6 +30,10 @@ DEPEND="${RDEPEND}
 
 # Upstream expect liblangtag to be installed when one runs tests...
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-for-gtk-doc-1.32.patch"
+)
 
 src_prepare() {
 	default

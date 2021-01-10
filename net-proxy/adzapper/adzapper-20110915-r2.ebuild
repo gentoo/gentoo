@@ -13,7 +13,7 @@ SRC_URI="http://adzapper.sourceforge.net/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"

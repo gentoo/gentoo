@@ -6,8 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 inherit distutils-r1
 
-DESCRIPTION="Python module to talk to Google Chromecast."
-HOMEPAGE="https://github.com/balloob/pychromecast"
+DESCRIPTION="Python module to talk to Google Chromecast"
+HOMEPAGE="https://github.com/home-assistant-libs/pychromecast"
 SRC_URI="mirror://pypi/P/PyChromecast/PyChromecast-${PV}.tar.gz"
 S="${WORKDIR}/PyChromecast-${PV}"
 

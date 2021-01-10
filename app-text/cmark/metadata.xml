@@ -9,9 +9,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription>
-    CommonMark parsing and rendering library and program in C.
-  </longdescription>
   <upstream>
     <remote-id type="github">commonmark/cmark</remote-id>
   </upstream>

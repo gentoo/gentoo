@@ -12,6 +12,7 @@
     <remote-id type="cpan">DBD-SQLite</remote-id>
     <remote-id type="cpan-module">DBD::SQLite</remote-id>
     <remote-id type="cpan-module">DBD::SQLite::Constants</remote-id>
+    <remote-id type="cpan-module">DBD::SQLite::GetInfo</remote-id>
     <remote-id type="cpan-module">DBD::SQLite::VirtualTable</remote-id>
     <remote-id type="cpan-module">DBD::SQLite::VirtualTable::Cursor</remote-id>
     <remote-id type="cpan-module">DBD::SQLite::VirtualTable::FileContent</remote-id>

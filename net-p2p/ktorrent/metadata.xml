@@ -16,10 +16,10 @@
 		<flag name="mediaplayer">Phonon-based media player</flag>
 		<flag name="rss">Syndication plugin for KTorrent, supporting RSS and Atom feeds</flag>
 		<flag name="scanfolder">Scan folders for torrent files and load them</flag>
-		<flag name="search">Search for torrents</flag>
 		<flag name="shutdown">Shutdown when done</flag>
 		<flag name="stats">Shows statistics about torrents in several graphs</flag>
 		<flag name="upnp">Forward ports using UPnP</flag>
+		<flag name="webengine">Embedded search for torrents using <pkg>dev-qt/qtwebengine</pkg></flag>
 		<flag name="zeroconf">Discover peers on the local network using the Zeroconf protocol</flag>
 	</use>
 </pkgmetadata>

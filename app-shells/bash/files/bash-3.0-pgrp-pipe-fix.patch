@@ -6,8 +6,8 @@ http://bugs.gentoo.org/92349
 
 Patch from upstream
 
-*** jobs.c  Wed Sep  8 11:08:16 2004
---- jobs.c      Thu Jun 30 17:21:26 2005
+*** a/jobs.c
+--- b/jobs.c
 ***************
 *** 3456,3459 ****
 --- 3901,3907 ----

@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit check-reqs cmake eutils python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad-pcb.org"
@@ -129,6 +129,13 @@ src_install() {
 		cd Documentation || die
 		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/. development/doxygen/.
 	fi
+}
+
+src_test() {
+	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
+	ln -s "${S}_build/eeschema/_eeschema.kiface" "${S}_build/qa/eeschema/_eeschema.kiface" || die
+
+	default
 }
 
 pkg_postinst() {

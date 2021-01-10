@@ -9,7 +9,4 @@
     <email>java@gentoo.org</email>
     <name>Java</name>
   </maintainer>
-  <longdescription>
-    Plugins for javax.sound, including the PulseAudio support formerly bundled with IcedTea.
-  </longdescription>
 </pkgmetadata>

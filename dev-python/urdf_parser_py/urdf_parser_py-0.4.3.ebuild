@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 inherit distutils-r1
 
 DESCRIPTION="URDF parser for Python"
-HOMEPAGE="http://wiki.ros.org/urdfdom_py"
+HOMEPAGE="https://wiki.ros.org/urdfdom_py"
 SRC_URI="https://github.com/ros/urdf_parser_py/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

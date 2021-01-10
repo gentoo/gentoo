@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0/20"
-KEYWORDS="~amd64 ~arm ~arm64 hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
 IUSE="debug doc examples systemd test"
 RESTRICT="!test? ( test )"
 
@@ -40,6 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		$(use_enable systemd systemd-journal) \
 		$(use_enable debug)
 }
@@ -59,4 +60,6 @@ src_install() {
 
 	use doc && HTML_DOCS=("docs/html/.")
 	einstalldocs
+
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,0 +1,31 @@
+From 354086a51ea676b6575dbb3ec62d749ec0a7c607 Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Fri, 22 May 2020 20:19:57 +0200
+Subject: [PATCH] Locations: America/Godthab was renamed to America/Nuuk
+
+---
+ data/Locations.xml.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/Locations.xml.in b/data/Locations.xml.in
+index 5488867..62529b9 100644
+--- a/data/Locations.xml.in
++++ b/data/Locations.xml.in
+@@ -6482,7 +6482,7 @@
+             -->
+           <name>Danmarkshavn</name>
+         </timezone>
+-        <timezone id="America/Godthab">
++        <timezone id="America/Nuuk">
+           <!-- The primary timezone for Greenland, although sources
+                seem to point towards calling the area "Western
+                Greenland" rathern than just "Greenland".
+@@ -6502,7 +6502,7 @@
+           <name>Thule AFB</name>
+         </timezone>
+       </timezones>
+-      <tz-hint>America/Godthab</tz-hint>
++      <tz-hint>America/Nuuk</tz-hint>
+       <city>
+         <!-- A city in Greenland.
+              The local name in Kalaallisut is "Uummannaq".

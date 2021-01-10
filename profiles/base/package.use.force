@@ -1,6 +1,42 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2020-12-31)
+# Force-enable unicode. We're in 2020 and this should really be available
+# everywhere.
+# See this mailing list thread:
+# https://archives.gentoo.org/gentoo-user/message/efc647eb07fb8c99b2619e3402281edd
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-01-01)
+# Add more packages
+#
+# a) no additional deps
+sys-libs/ncurses unicode
+sys-libs/readline unicode
+app-editors/nano unicode
+app-admin/metalog unicode
+app-arch/unzip unicode
+app-arch/zip unicode
+sys-apps/util-linux unicode
+sys-process/procps unicode
+www-client/lynx unicode
+#
+# b) using libidn
+app-text/ghostscript-gpl unicode
+
+# Michał Górny <mgorny@gentoo.org> (2020-09-01)
+# sys-boot/udk is being removed, and newest revision of refind does not
+# support it already.
+sys-boot/refind gnuefi
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-12-06)
+# Doesn't build without X. Not removing IUSE from ebuild yet in hope that
+# https://github.com/TomenetGame/tomenet/issues/14 will be fixed.
+>=games-roguelike/tomenet-4.7.3 X
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-08-08)
+# Ensure tools flag is enabled for @system set
+sys-apps/kmod tools
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-06-24)
 # Don't let people lose 'cc' or 'f77' by accident.
 sys-devel/gcc-config cc-wrappers
@@ -13,6 +49,7 @@ sys-devel/gcc-config cc-wrappers
 #    https://wiki.gentoo.org/wiki/Project:Toolchain/use_native_symlinks
 sys-devel/binutils-config native-symlinks
 sys-devel/gcc-config      native-symlinks
+sys-devel/gcc-config      cc-wrappers
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Require user configs unless we supply our own .config.
@@ -71,12 +108,10 @@ sys-libs/ncurses-compat tinfo
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
->gnome-base/nautilus-3.29 seccomp
 net-libs/webkit-gtk seccomp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
-dev-libs/libspt libtirpc
 dev-perl/Lab-VXI11 libtirpc
 net-analyzer/argus libtirpc
 net-analyzer/snort libtirpc

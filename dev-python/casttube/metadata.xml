@@ -8,7 +8,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-			casttube provides a way to interact with the Youtube Chromecast api.
-	</longdescription>
+	<upstream>
+		<remote-id type="pypi">casttube</remote-id>
+	</upstream>
 </pkgmetadata>

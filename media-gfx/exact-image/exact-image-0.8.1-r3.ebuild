@@ -18,7 +18,7 @@ RDEPEND="x11-libs/agg[truetype]
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
 	jpeg? ( virtual/jpeg )
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0= )
 	openexr? ( media-libs/openexr )
 	php? ( dev-lang/php:* )
 	perl? ( dev-lang/perl )

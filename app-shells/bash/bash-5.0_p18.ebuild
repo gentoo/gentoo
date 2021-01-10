@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs multilib prefix
+inherit flag-o-matic toolchain-funcs multilib prefix
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/
-PLEVEL=${PV##*_p}
-MY_PV=${PV/_p*}
-MY_PV=${MY_PV/_/-}
-MY_P=${PN}-${MY_PV}
+PLEVEL="${PV##*_p}"
+MY_PV="${PV/_p*}"
+MY_PV="${MY_PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 is_release() {
 	case ${PV} in
 	*_alpha*|*_beta*|*_rc*) return 1 ;;
@@ -19,7 +19,7 @@ is_release() {
 }
 [[ ${PV} != *_p* ]] && PLEVEL=0
 patches() {
-	local opt=$1 plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
+	local opt=${1} plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
 	[[ ${plevel} -eq 0 ]] && return 1
 	eval set -- {1..${plevel}}
 	set -- $(printf "${pn}${pv/\.}-%03d " "$@")
@@ -46,7 +46,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
@@ -58,7 +58,7 @@ RDEPEND="
 	${DEPEND}
 "
 # we only need yacc when the .y files get patched (bash42-005)
-#DEPEND+=" virtual/yacc"
+#BDEPEND="virtual/yacc"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -90,9 +90,9 @@ src_prepare() {
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if is_release ; then
-		rm -rf lib/{readline,termcap}/*
-		touch lib/{readline,termcap}/Makefile.in # for config.status
-		sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
+		rm -rf lib/{readline,termcap}/* || die
+		touch lib/{readline,termcap}/Makefile.in || die # for config.status
+		sed -ri -e 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in || die
 	fi
 
 	# Prefixify hardcoded path names. No-op for non-prefix.
@@ -100,7 +100,7 @@ src_prepare() {
 
 	# Avoid regenerating docs after patches #407985
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
-	touch -r . doc/*
+	touch -r . doc/* || die
 
 	eapply -p0 "${PATCHES[@]}"
 	eapply_user
@@ -247,7 +247,7 @@ pkg_preinst() {
 		# rewrite the symlink to ensure that its mtime changes. having /bin/sh
 		# missing even temporarily causes a fatal error with paludis.
 		local target=$(readlink "${EROOT}"/bin/sh)
-		local tmp=$(emktemp "${EROOT}"/bin)
+		local tmp="${T}"/sh
 		ln -sf "${target}" "${tmp}"
 		mv -f "${tmp}" "${EROOT}"/bin/sh
 	fi

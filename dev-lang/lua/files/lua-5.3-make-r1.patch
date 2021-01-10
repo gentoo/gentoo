@@ -18,7 +18,7 @@ diff -uNr lua-5.3.3.orig/Makefile lua-5.3.3/Makefile
 +# Use libtool for binary installs, etc.
 +
 +export V
-+export LIBTOOL = $(EROOT)usr/bin/libtool --quiet --tag=CC
++export LIBTOOL = libtool --quiet --tag=CC
 +# See libtool manual about how to set this
 +
 +gentoo_clean:
@@ -63,7 +63,7 @@ diff -uNr lua-5.3.3.orig/src/Makefile lua-5.3.3/src/Makefile
  
  # (end of Makefile)
 +
-+export LIBTOOL = $(EROOT)usr/bin/libtool --quiet --tag=CC
++export LIBTOOL = libtool --quiet --tag=CC
 +export LIB_VERSION = 6:1:1
 +
 +# The following rules use libtool for compiling and linking in order to

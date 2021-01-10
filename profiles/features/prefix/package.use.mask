@@ -1,6 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2020-10-15)
+# Requires PAM
+x11-base/xorg-server elogind
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-21)
+# depends on systemd
+sys-apps/ipmitool openbmc
+
 # Benda Xu <heroxbd@gentoo.org> (2019-08-20)
 # avoid gnome-extra/gnome-user-share, which depends on systemd.
 gnome-base/gnome-extra-apps share
@@ -37,10 +45,6 @@ app-editors/emacs m17n-lib
 # NOTE to prefix devs: if it needs to not be a global mask, talk to me because
 # it currently causes failures on linux. It can be made a "less global" mask.
 dev-lang/python berkdb
-
-# Elias Pipping <pipping@gentoo.org> (2007-11-18)
-# feynmf fails to build documentation
-dev-tex/feynmf doc
 
 # Elias Pipping <pipping@gentoo.org> (2007-11-15)
 # pkg_postinst tries to create/delete a user, fails

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit optfeature
 
 DESCRIPTION="Greenbone Vulnerability Management,previously named OpenVAS"
 HOMEPAGE="https://www.greenbone.net/en/"

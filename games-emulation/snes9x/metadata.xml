@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="netplay">Enable playing ROMs over the network (not recommended)</flag>
+		<flag name="libretro">Build libretro port</flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">snes9x-gtk</remote-id>

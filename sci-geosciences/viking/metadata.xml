@@ -16,7 +16,7 @@
       Use <pkg>media-libs/libexif</pkg> for EXIF support
     </flag>
     <flag name="mapnik">
-      Enable a layer based on <pkg>sci-geosciences/mapnik</pkg>
+      Enable a layer based on mapnik
     </flag>
     <flag name="oauth">
       Enable OAuth authentication for OSM

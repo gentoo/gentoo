@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<use>
 		<flag name="dnstap">Enables dnstap packet logging</flag>

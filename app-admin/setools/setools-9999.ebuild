@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-PYTHON_COMPAT=( python{3_6,3_7} )
+EAPI="7"
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
 
 inherit distutils-r1
 
@@ -30,9 +30,8 @@ RDEPEND="${PYTHON_DEPS}
 	X? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)"
-
-DEPEND="${RDEPEND}
-	>=dev-python/cython-0.27
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-python/cython-0.27
 	test? (
 		sys-apps/checkpolicy
 	)"
@@ -42,7 +41,7 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.2.2-remove-gui.patch )
+	use X || local PATCHES=( "${FILESDIR}"/setools-4.3.0-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 

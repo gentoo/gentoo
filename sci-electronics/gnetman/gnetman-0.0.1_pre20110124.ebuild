@@ -1,38 +1,44 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A GNU Netlist Manipulation Library"
 HOMEPAGE="https://sourceforge.net/projects/gnetman/"
 #snapshot from http://gnetman.git.sourceforge.net/git/gitweb.cgi?p=gnetman/gnetman;
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-IUSE="doc examples"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc examples"
 
-S=${WORKDIR}/${P}/src/batch
-
-RDEPEND=">=dev-lang/tcl-8.6:0
+RDEPEND="
+	>=dev-lang/tcl-8.6:0
 	sci-electronics/geda"
 DEPEND="${RDEPEND}
 	dev-db/datadraw"
 
-src_prepare() {
-	sed -e "/^CFLAGS=/s:-g -Wall:${CFLAGS}:" \
-	    -e "/^CFLAGS=/s:-I/usr/include/tcl8.4::" \
-		-e "/^LIBS=/s:-ltcl8.4:-ltcl:" \
-		-e '/^$(TARGET):/,+3s:$(CFLAGS):$(CFLAGS) $(LDFLAGS):' \
-		-i configure || die
-	tc-export CC
-
-	cd ../.. || die
+S="${WORKDIR}/${P}/src/batch"
+PATCHES=(
 	# fix build issues with tcl-8.6, #452034
-	epatch "${FILESDIR}/${P}-tcl86.patch"
+	"${FILESDIR}"/${P}-tcl86.patch
+	# fix build system, #711354
+	"${FILESDIR}"/${P}-build-system.patch
+	# fix -fno-common, #707894
+	"${FILESDIR}"/${P}-fno-common.patch
+)
+
+src_prepare() {
+	cd ../.. || die
+	default
+}
+
+src_configure() {
+	tc-export CC
+	default
 }
 
 src_install() {

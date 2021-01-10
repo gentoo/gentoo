@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -17,23 +17,22 @@ RDEPEND="sys-apps/util-linux"
 
 S="${WORKDIR}/${PN}-${P}"
 
-src_prepare() {
-	default
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-makefile.patch
+)
 
-	sed -i -e 's,^CFLAGS.*,CFLAGS += -Wall,' \
-		-e 's:-o vblade:${LDFLAGS} \0:' \
-		makefile || die
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
 	dosbin vblade
 	dosbin "${FILESDIR}"/vbladed
+
 	doman vblade.8
 	dodoc HACKING NEWS README
+
 	newconfd "${FILESDIR}"/conf.d-vblade vblade
 	newinitd "${FILESDIR}"/init.d-vblade.vblade0-r2 vblade.vblade0
 }

@@ -1,6 +1,22 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no ia64 keyword
+dev-vcs/mercurial rust
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
+# app-i18n/fcitx:4 not keyworded.
+media-libs/libsdl2 fcitx4
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
+# media-libs/libilbc is not ported to ia64
+net-analyzer/wireshark ilbc
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # ia64 has no virtual/rust support, needed by newer gnome-base/librsvg, et al
 >=media-gfx/eog-3.33.1 svg
@@ -34,7 +50,7 @@ app-text/texlive context l10n_ja
 # Requires unsupported dev-python/gevent.
 dev-python/socketpool eventlet gevent
 
-# # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask dependencies requiring ruby.
 # These pull in:
 # - direct ruby dependency:
@@ -52,6 +68,8 @@ gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
 gnome-base/gnome-control-center flickr
 gnome-base/gvfs google
+# app-text/libgepub depends on webkit-gtk.
+xfce-extra/tumbler epub
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=libtesseract, app-text/tesseract is not keyworded
@@ -104,7 +122,6 @@ app-admin/syslog-ng kafka
 # No ia64 arch support for jit. Version 17 USE=debug
 # required USE=jit.
 dev-lang/spidermonkey jit
-=dev-lang/spidermonkey-17* debug
 
 # Mart Raudsepp <leio@gentoo.org> (2019-03-17)
 # Unkeyworded media-libs/opencv dependency, bug #680656
@@ -146,10 +163,6 @@ net-firewall/nftables doc
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Both USE=fluidsynth and USE=timidity are masked in this profile.
 media-libs/sdl-mixer midi
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
@@ -261,10 +274,6 @@ dev-python/pyquery test
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Justin Lecher <jlec@gentoo.org> (2015-10-14)
-# Requires dev-python/ipython which triggers a long dep chain
-dev-python/restkit cli
-
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
@@ -281,10 +290,6 @@ media-sound/pulseaudio ofono-headset
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
 
-# James Le Cuirot <chewi@gentoo.org> (2015-07-11)
-# Requires dev-java/fop but we don't support java on ia64.
-gnome-extra/libgda reports
-
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
 net-misc/spice-gtk smartcard webdav
@@ -300,12 +305,6 @@ media-video/ffmpeg gme ssh
 # Pacho Ramos <pacho@gentoo.org> (2014-01-10)
 # Missing keywords
 net-misc/networkmanager teamd
-
-# Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23)
-# test dependencies need keywording
-dev-haskell/binary test
-dev-haskell/text test
-dev-haskell/vector test
 
 # Christoph Junghans <junghans@gentoo.org> (2014-07-21)
 # Missing keywords on sci-libs/libcerf (bug 517726)
@@ -412,8 +411,6 @@ www-client/elinks javascript
 
 # Raúl Porcel <armin76@gentoo.org> (2010-06-26)
 # custom-optimization doesn't work on ia64
-mail-client/thunderbird custom-optimization
-www-client/firefox custom-optimization
 www-client/seamonkey custom-optimization
 
 # Raúl Porcel <armin76@gentoo.org>

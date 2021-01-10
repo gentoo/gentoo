@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,4 +22,13 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.2.0-ldconfig.patch
 	sed -i -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' configure.ac || die
 	eautoreconf
+}
+
+src_configure() {
+	econf --disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

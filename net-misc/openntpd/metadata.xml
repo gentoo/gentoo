@@ -16,6 +16,7 @@
 		local clock.
 	</longdescription>
 	<use>
+		<flag name="constraints">Enable HTTPS TLS time constraint support</flag>
 		<flag name="libressl">Enable HTTPS TLS time constraint support using <pkg>dev-libs/libressl</pkg></flag>
 	</use>
 </pkgmetadata>

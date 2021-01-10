@@ -5,13 +5,6 @@
 		<name>Joerg Bornkessel</name>
 		<email>hd_brummy@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
-		To program and steer central service over a Browser the VDR 
-	</longdescription>
-	<longdescription lang="de">
-		Zentraler Dienst um ueber einen Browser den VDR zu programmiern
-		und zu steuern.
-	</longdescription>
 	<use>
 		<flag name="themes">Enable more themes via
 			<pkg>x11-themes/xxv-skins</pkg></flag>

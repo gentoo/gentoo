@@ -7,7 +7,8 @@ inherit autotools flag-o-matic linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
-SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz"
+SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch"
 
 LICENSE="torque-2.5"
 SLOT="0"
@@ -47,7 +48,7 @@ RDEPEND="${DEPEND_COMMON}
 S="${WORKDIR}"/${PN}-6a0b37f85c7d644e9217cbab1542792d646f59a6
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gcc7.patch
+	"${DISTDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
 	"${FILESDIR}"/${P}-no-openssl.patch
 	"${FILESDIR}"/${P}-error_buf_overflow_prevent.patch

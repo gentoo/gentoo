@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools elisp-common flag-o-matic readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -11,28 +11,39 @@ if [[ ${PV##*.} = 9999 ]]; then
 	EGIT_BRANCH="master"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
+	SLOT="${PV%%.*}-vcs"
 else
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
-		mirror://gnu-alpha/emacs/pretest/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
 	FULL_VERSION="${PV%%_*}"
+	SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 	S="${WORKDIR}/emacs-${FULL_VERSION}"
-	[[ ${FULL_VERSION} != ${PV} ]] && S="${WORKDIR}/emacs"
+	# PV can be in any of the following formats:
+	# 27.1                 released version (slot 27)
+	# 27.1_rc1             upstream release candidate (27)
+	# 27.0.9999            live ebuild (slot 27-vcs)
+	# 27.0.90              upstream prerelease snapshot (27-vcs)
+	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
+	if [[ ${PV} == *_pre* ]]; then
+		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+		S="${WORKDIR}/emacs"
+	elif [[ ${PV//[0-9]} != "." ]]; then
+		SRC_URI="mirror://gnu-alpha/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
+	fi
+	SLOT="${PV%%.*}"
+	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="28-vcs"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
-REQUIRED_USE="?? ( aqua X )"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
-RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -46,12 +57,12 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	mailutils? ( net-mail/mailutils[clients] )
-	!mailutils? ( net-libs/liblockfile )
+	!mailutils? ( acct-group/mail net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	X? (
+	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -112,10 +123,10 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 				) )
 			)
 		)
-	)"
+	) )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
 BDEPEND="app-eselect/eselect-emacs
 	sys-apps/texinfo
@@ -168,7 +179,14 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
-	if use X; then
+	if ! use gui; then
+		einfo "Configuring to build without window system support"
+		myconf+=" --without-x --without-ns"
+	elif use aqua; then
+		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
+		myconf+=" --with-ns --disable-ns-self-contained"
+		myconf+=" --without-x"
+	else
 		myconf+=" --with-x --without-ns"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
@@ -240,12 +258,17 @@ src_configure() {
 			use xwidgets && ewarn \
 				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 		fi
-	elif use aqua; then
-		einfo "Configuring to build with Nextstep (Cocoa) support"
-		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
+	fi
+
+	if tc-is-cross-compiler; then
+		# Configure a CBUILD directory when cross-compiling to make tools
+		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
+		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
+		popd >/dev/null || die
+		# Don't try to execute the binary for dumping during the build
+		myconf+=" --with-dumping=none"
 	else
-		myconf+=" --without-x --without-ns"
+		myconf+=" --with-dumping=pdumper"
 	fi
 
 	econf \
@@ -257,8 +280,8 @@ src_configure() {
 		--without-compress-install \
 		--without-hesiod \
 		--without-pop \
-		--with-dumping=pdumper \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
+		--with-pdumper \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
@@ -279,13 +302,22 @@ src_configure() {
 		${myconf}
 }
 
-#src_compile() {
-#	# Disable sandbox when dumping. For the unbelievers, see bug #131505
-#	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
-#}
+src_compile() {
+	if tc-is-cross-compiler; then
+		# Build native tools for compiling lisp etc.
+		emake -C "${S}-build" src
+		emake lib	   # Cross-compile dependencies first for timestamps
+		# Save native build tools in the cross-directory
+		cp "${S}-build"/lib-src/make-{docfile,fingerprint} lib-src || die
+		# Specify the native Emacs to compile lisp
+		emake -C lisp all EMACS="${S}-build/src/emacs"
+	fi
+
+	emake
+}
 
 src_install() {
-	emake DESTDIR="${D}" NO_BIN_LINK=t install
+	emake DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
@@ -295,6 +327,12 @@ src_install() {
 	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
+
+	# movemail must be setgid mail
+	if ! use mailutils; then
+		fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+		fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	fi
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
@@ -357,7 +395,7 @@ src_install() {
 
 	dodoc README BUGS CONTRIBUTE
 
-	if use aqua; then
+	if use gui && use aqua; then
 		dodir /Applications/Gentoo
 		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
 		mv nextstep/Emacs.app \
@@ -368,17 +406,25 @@ src_install() {
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
 		be installed at the same time. \"man emacs.eselect\" for details.
-		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
-		strongly recommended that you use app-admin/emacs-updater to rebuild
-		all byte-compiled elisp files of the installed Emacs packages."
-	use X && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
-		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
-		machine would satisfy basic Emacs requirements under X11.
-		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
-		for how to enable anti-aliased fonts."
-	use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
-		\"${EPREFIX}/Applications/Gentoo\". You may want to copy or symlink
-		it into /Applications by yourself."
+		\\n\\nIf you upgrade from a previous major version of Emacs, then
+		it is strongly recommended that you use app-admin/emacs-updater
+		to rebuild all byte-compiled elisp files of the installed Emacs
+		packages."
+	if use gui; then
+		DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+			Installing media-fonts/font-adobe-{75,100}dpi on the X server's
+			machine would satisfy basic Emacs requirements under X11.
+			See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
+			for how to enable anti-aliased fonts."
+		use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
+			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
+			symlink it into /Applications by yourself."
+	fi
+	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
+		a portable dump file due to being cross-compiled.
+		To create this file at run time, execute the following command:
+		\\n${EMACS_SUFFIX} --batch --eval='(dump-emacs-portable
+		\"/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/emacs.pdmp\")'"
 	readme.gentoo_create_doc
 }
 

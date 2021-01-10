@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Basic mime-type handling types and functions
-	</longdescription>
 	<upstream>
 		<remote-id type="github">yesodweb/wai</remote-id>
 	</upstream>

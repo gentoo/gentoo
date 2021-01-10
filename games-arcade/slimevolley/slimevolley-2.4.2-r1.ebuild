@@ -12,7 +12,6 @@ SRC_URI="http://downloads.tuxfamily.org/slime/v242/${PN}_${PV}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 BDEPEND="
 	sys-devel/gettext
@@ -31,6 +30,7 @@ DOCS=( docs/{README,TODO} )
 PATCHES=(
 	"${FILESDIR}"/${P}-nodatalocal.patch
 	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-gcc10.patch
 )
 
 S="${WORKDIR}/${PN}"
@@ -38,7 +38,7 @@ S="${WORKDIR}/${PN}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
-		-DDATA_DIR=/usr/share/slimevolley
+		-DDATA_DIR="${EPREFIX}/usr/share/slimevolley"
 	)
 	cmake_src_configure
 }

@@ -7,6 +7,12 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpan">ExtUtils-Typemaps-Default</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemap::Basic</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemap::Default</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemap::ObjectMap</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemap::STL</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemap::STL::String</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemap::STL::Vector</remote-id>
 		<remote-id type="cpan-module">ExtUtils::Typemaps::Basic</remote-id>
 		<remote-id type="cpan-module">ExtUtils::Typemaps::Default</remote-id>
 		<remote-id type="cpan-module">ExtUtils::Typemaps::ObjectMap</remote-id>

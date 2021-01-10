@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,8 +10,16 @@ SRC_URI="https://www.kernel.org/pub/linux/kernel/people/geoff/cell/ps3-utils/ps3
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~ppc ~ppc64"
-IUSE=""
 
 # fixme: depend on a version of sys-kernel/linux-headers that supports ps3
 
 S=${WORKDIR}/ps3-utils-${PV}
+
+src_configure() {
+	econf --disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}

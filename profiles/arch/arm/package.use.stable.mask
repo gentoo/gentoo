@@ -1,11 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# media-libs/libffado is not stable yet, which itself has unstable and
+# unmaintained/broken dependencies. bug #746722
+media-sound/jack2 ieee1394
 
 # Sam James <sam@gentoo.org> (2020-07-30)
 # glslang is not yet stable on arm
 media-libs/mesa vulkan-overlay
 
-# Sam James <sam@gentoo.org> (2020-06-28)
+# Sam James <sam@gentoo.org> (2020-10-20)
 # Deps not yet stable
 # Migrated from package.use.mask
 app-text/asciidoc test
@@ -15,14 +20,7 @@ dev-util/geany-plugins markdown
 app-arch/rpm test
 net-misc/openssh security-key
 dev-util/geany-plugins markdown
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-02)
-# media-video/pipewire is not stable yet
-dev-libs/weston pipewire
-<kde-apps/krfb-20.07.80 wayland
-<kde-plasma/xdg-desktop-portal-kde-5.19.4 screencast
-<sys-apps/xdg-desktop-portal-1.7.2 screencast
-x11-wm/mutter screencast
+net-misc/unison gtk
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # virtual/jdk is not stable here.

@@ -1,0 +1,28 @@
+From 1d9b8bb59d5610f2c3e9faad6bbd91ceca17fb93 Mon Sep 17 00:00:00 2001
+From: Aliaksey Kandratsenka <alkondratenko@gmail.com>
+Date: Sat, 11 Jul 2020 20:33:40 -0700
+Subject: [PATCH] don't test sbrk hook if we're on linux and don't have __sbrk
+
+"mmap" hooks code for linux only hooks sbrk when __sbrk is
+defined. But musl doesn't offer this function (reasonably so), so
+sbrk hooking doesn't work there. Not big loss, but lets make sure
+tests don't fail.
+
+Lets reference this to issue #1198
+---
+ src/tests/tcmalloc_unittest.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tests/tcmalloc_unittest.cc b/src/tests/tcmalloc_unittest.cc
+index d06c5a86..9d303433 100644
+--- a/src/tests/tcmalloc_unittest.cc
++++ b/src/tests/tcmalloc_unittest.cc
+@@ -1503,7 +1503,7 @@ static int RunAllTests(int argc, char** argv) {
+ 
+     // Test sbrk
+     SetSbrkHook();
+-#if defined(HAVE_SBRK) && defined(__linux) && \
++#if defined(HAVE___SBRK) && defined(__linux) && \
+        (defined(__i386__) || defined(__x86_64__))
+     p1 = sbrk(8192);
+     CHECK(p1 != NULL);

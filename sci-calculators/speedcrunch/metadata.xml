@@ -5,7 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">A fast and usable calculator for power users.</longdescription>
   <upstream>
     <remote-id type="google-code">speedcrunch</remote-id>
     <remote-id type="github">speedcrunch/SpeedCrunch</remote-id>

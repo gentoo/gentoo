@@ -1,0 +1,99 @@
+From eb753a7eb0f49c6ac5b349f81387ca4b4c64342b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 12 Oct 2020 11:46:24 +0200
+Subject: [PATCH] Make QtWebKit usage in WelcomePage optional, with
+ QTextBrowser fallback
+
+Thanks-to: Ralf Habacker <ralf.habacker@freenet.de> for QTextBrowser fallback code.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                    |  7 ++++++-
+ umbrello/CMakeLists.txt           |  4 +++-
+ umbrello/umlappprivate.h          | 13 +++++++++++++
+ 3 files changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 398415f09..7144f0990 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -95,9 +95,14 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+     Test
+     Widgets
+     Xml
+-    WebKitWidgets
+ )
+ 
++find_package(Qt5WebKitWidgets ${QT_MIN_VERSION})
++if(Qt5WebKitWidgets_FOUND)
++    add_definitions(-DWEBKIT_WELCOMEPAGE)
++    set(WEBKIT_WELCOMEPAGE 1)
++endif()
++
+ # search packages used by KDE
+ find_package(KF5 REQUIRED COMPONENTS
+     Archive
+diff --git a/umbrello/CMakeLists.txt b/umbrello/CMakeLists.txt
+index 264b25fde..f3286ae46 100644
+--- a/umbrello/CMakeLists.txt
++++ b/umbrello/CMakeLists.txt
+@@ -549,7 +551,6 @@ else()
+         Qt5::Xml
+         Qt5::PrintSupport
+         Qt5::Svg
+-        Qt5::WebKitWidgets
+         KF5::Archive
+         KF5::Completion
+         KF5::CoreAddons
+@@ -565,6 +566,9 @@ else()
+         ${LIBXML2_LIBRARIES}
+         codeimport
+     )
++    if(WEBKIT_WELCOMEPAGE)
++        target_link_libraries(libumbrello Qt5::WebKitWidgets)
++    endif()
+     ecm_add_app_icon(umbrello_SRCS
+         ICONS
+         ${CMAKE_CURRENT_SOURCE_DIR}/pics/global/16-apps-umbrello.png
+diff --git a/umbrello/umlappprivate.h b/umbrello/umlappprivate.h
+index a85de1f22..a7212cc8d 100644
+--- a/umbrello/umlappprivate.h
++++ b/umbrello/umlappprivate.h
+@@ -42,7 +42,11 @@
+ #include <QFileInfo>
+ #include <QListWidget>
+ #include <QObject>
++#ifdef WEBKIT_WELCOMEPAGE
+ #include <QWebView>
++#else
++#include <QTextBrowser>
++#endif
+ 
+ class QWidget;
+ 
+@@ -160,6 +164,7 @@ public slots:
+         // qDebug() << html;
+         welcomeWindow = new QDockWidget(i18n("Welcome"), parent);
+         welcomeWindow->setObjectName(QLatin1String("WelcomeDock"));
++#ifdef WEBKIT_WELCOMEPAGE
+         QWebView *view = new QWebView;
+         view->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
+         view->setContextMenuPolicy(Qt::NoContextMenu);
+@@ -167,6 +172,14 @@ public slots:
+         view->setHtml(html);
+         view->show();
+         welcomeWindow->setWidget(view);
++#else
++        QTextBrowser *tb = new QTextBrowser(dynamic_cast<QWidget*>(this));
++        tb->setOpenExternalLinks(true);
++        tb->setOpenLinks(false);
++        tb->setHtml(html);
++        connect(tb, SIGNAL(anchorClicked(const QUrl)), this, SLOT(slotWelcomeWindowLinkClicked(const QUrl)));
++        welcomeWindow->setWidget(tb);
++#endif
+         parent->addDockWidget(Qt::RightDockWidgetArea, welcomeWindow);
+ 
+         viewWelcomeWindow = parent->actionCollection()->add<KToggleAction>(QLatin1String("view_show_welcome"));
+-- 
+2.29.2
+
