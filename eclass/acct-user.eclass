@@ -73,12 +73,24 @@ readonly ACCT_USER_NAME
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
 # in ::gentoo is prohibited by policy.
 
+# @ECLASS-VARIABLE: _ACCT_USER_ALREADY_EXISTS
+# @INTERNAL
+# @DESCRIPTION:
+# Status variable which indicates if user already exists.
+
 # @ECLASS-VARIABLE: ACCT_USER_ENFORCE_ID
 # @DESCRIPTION:
 # If set to a non-null value, the eclass will require the user to have
 # specified UID.  If the user already exists with another UID, or
 # the UID is taken by another user, the install will fail.
 : ${ACCT_USER_ENFORCE_ID:=}
+
+# @ECLASS-VARIABLE: ACCT_USER_NO_MODIFY
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, the eclass will not make any changes
+# to an already existing user.
+: ${ACCT_USER_NO_MODIFY:=}
 
 # @ECLASS-VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
@@ -390,6 +402,13 @@ acct-user_src_install() {
 acct-user_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# check if user already exists
+	_ACCT_USER_ALREADY_EXISTS=
+	if [[ -n $(egetent passwd "${ACCT_USER_NAME}") ]]; then
+		_ACCT_USER_ALREADY_EXISTS=1
+	fi
+	readonly _ACCT_USER_ALREADY_EXISTS
+
 	enewuser ${ACCT_USER_ENFORCE_ID:+-F} -M "${ACCT_USER_NAME}" \
 		"${_ACCT_USER_ID}" "${_ACCT_USER_SHELL}" "${_ACCT_USER_HOME}" \
 		"${_ACCT_USER_GROUPS// /,}"
@@ -422,6 +441,14 @@ acct-user_pkg_postinst() {
 
 	if [[ ${EUID} != 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
+	if [[ -n ${ACCT_USER_NO_MODIFY} && -n ${_ACCT_USER_ALREADY_EXISTS} ]]; then
+		eunlockuser "${ACCT_USER_NAME}"
+
+		ewarn "User ${ACCT_USER_NAME} already exists; Not touching existing user"
+		ewarn "due to set ACCT_USER_NO_MODIFY."
 		return 0
 	fi
 
