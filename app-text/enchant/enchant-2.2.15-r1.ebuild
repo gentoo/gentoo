@@ -29,7 +29,7 @@ src_configure() {
 	econf \
 		--datadir="${EPREFIX}"/usr/share/enchant-2 \
 		--disable-static \
-		$(use_enable test relocatable)
+		$(use_enable test relocatable) \
 		$(use_with aspell) \
 		$(use_with hunspell) \
 		--without-nuspell \
