@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic linux-mod toolchain-funcs
+inherit autotools dist-kernel-utils flag-o-matic linux-mod toolchain-funcs
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -147,6 +147,10 @@ pkg_postinst() {
 		ewarn "Automatically removing old modules to avoid problems."
 		rm -r "${EROOT}/lib/modules/${KV_FULL}/addon/zfs" || die "Cannot remove modules"
 		rmdir --ignore-fail-on-non-empty "${EROOT}/lib/modules/${KV_FULL}/addon"
+	fi
+
+	if [[ -z ${ROOT} ]] && use dist-kernel; then
+		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 
 	if use x86 || use arm; then
