@@ -19,18 +19,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+distutils_enable_tests setup.py
+
 RDEPEND="
 	>=dev-python/alembic-0.7[${PYTHON_USEDEP}]
 	>=dev-python/flask-0.9[${PYTHON_USEDEP}]
 	>=dev-python/flask-sqlalchemy-1.0[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? ( >=dev-python/flask-script-0.6[${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}/${MY_P}"
-
-python_test() {
-	esetup.py test || die "Testing failed with ${EPYTHON}"
-}
