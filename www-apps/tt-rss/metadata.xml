@@ -5,6 +5,7 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="daemon">Install additional init scripts for automated RSS updates</flag>
 	</use>
