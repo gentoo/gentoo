@@ -5,4 +5,4 @@ EAPI=7
 
 inherit acct-group
 
-ACCT_GROUP_ID=358
+ACCT_GROUP_ID=240
