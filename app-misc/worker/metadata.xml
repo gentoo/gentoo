@@ -11,4 +11,7 @@
 	<use>
 		<flag name="avfs">Enable support for <pkg>sys-fs/avfs</pkg></flag>
 	</use>
+	<upstream>
+		<changelog>http://www.boomerangsworld.de/cms/worker/changes.html</changelog>
+	</upstream>
 </pkgmetadata>
