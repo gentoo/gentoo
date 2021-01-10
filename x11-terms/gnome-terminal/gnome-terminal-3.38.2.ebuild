@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="debug +gnome-shell +nautilus vanilla"
-SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${P}-cntr-ntfy-autottl-ts.patch.xz )"
+SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.38.1-cntr-ntfy-autottl-ts.patch.xz )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
@@ -55,7 +55,7 @@ src_prepare() {
 		# Automatic title updating based on currently running foreground process
 		# https://src.fedoraproject.org/rpms/gnome-terminal/raw/f31/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
 		# Depends on vte[-vanilla] for OSC 777 and the preexec/precmd/etc patches in VTE
-		eapply "${WORKDIR}"/${P}-cntr-ntfy-autottl-ts.patch
+		eapply "${WORKDIR}"/${PN}-3.38.1-cntr-ntfy-autottl-ts.patch
 	fi
 	gnome2_src_prepare
 }
