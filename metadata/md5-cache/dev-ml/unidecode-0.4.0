@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.4.0
 SRC_URI=https://github.com/geneweb/unidecode/archive/v0.4.0.tar.gz -> unidecode-0.4.0.tar.gz
 _eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
-_md5_=45b55ea2408eb4928185db8ce8760c22
+_md5_=19c6bf13323becc46616584c7e1bbafb

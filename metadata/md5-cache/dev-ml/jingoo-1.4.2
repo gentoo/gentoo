@@ -1,12 +1,14 @@
 BDEPEND=dev-ml/dune
 DEFINED_PHASES=-
-DEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/menhir
+DEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/menhir test? ( dev-ml/ounit )
 DESCRIPTION=OCaml template engine almost compatible with Jinja2.
 EAPI=7
 HOMEPAGE=https://github.com/tategakibunko/jingoo
+IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
 RDEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/menhir
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tategakibunko/jingoo/archive/v1.4.2.tar.gz -> jingoo-1.4.2.tar.gz
-_md5_=a2238a71d2762ec38618ef8b4e532e67
+_md5_=15aad643773cb01537eb77bc51050a14
