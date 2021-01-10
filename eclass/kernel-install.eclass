@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -40,7 +40,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-inherit mount-boot toolchain-funcs
+inherit dist-kernel-utils mount-boot toolchain-funcs
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -69,70 +69,6 @@ BDEPEND="
 		ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] )
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
-
-# @FUNCTION: kernel-install_build_initramfs
-# @USAGE: <output> <version>
-# @DESCRIPTION:
-# Build an initramfs for the kernel.  <output> specifies the absolute
-# path where initramfs will be created, while <version> specifies
-# the kernel version, used to find modules.
-kernel-install_build_initramfs() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
-	local output=${1}
-	local version=${2}
-
-	ebegin "Building initramfs via dracut"
-	dracut --force "${output}" "${version}"
-	eend ${?} || die "Building initramfs failed"
-}
-
-# @FUNCTION: kernel-install_get_image_path
-# @DESCRIPTION:
-# Get relative kernel image path specific to the current ${ARCH}.
-kernel-install_get_image_path() {
-	case ${ARCH} in
-		amd64|x86)
-			echo arch/x86/boot/bzImage
-			;;
-		arm64)
-			echo arch/arm64/boot/Image.gz
-			;;
-		arm)
-			echo arch/arm/boot/zImage
-			;;
-		ppc64)
-			# ./ is required because of ${image_path%/*}
-			# substitutions in the code
-			echo ./vmlinux
-			;;
-		*)
-			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
-			;;
-	esac
-}
-
-# @FUNCTION: kernel-install_install_kernel
-# @USAGE: <version> <image> <system.map>
-# @DESCRIPTION:
-# Install kernel using installkernel tool.  <version> specifies
-# the kernel version, <image> full path to the image, <system.map>
-# full path to System.map.
-kernel-install_install_kernel() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${#} -eq 3 ]] || die "${FUNCNAME}: invalid arguments"
-	local version=${1}
-	local image=${2}
-	local map=${3}
-
-	ebegin "Installing the kernel via installkernel"
-	# note: .config is taken relatively to System.map;
-	# initrd relatively to bzImage
-	installkernel "${version}" "${image}" "${map}"
-	eend ${?} || die "Installing the kernel failed"
-}
 
 # @FUNCTION: kernel-install_update_symlink
 # @USAGE: <target> <version>
@@ -406,16 +342,16 @@ kernel-install_pkg_postinst() {
 		mount-boot_pkg_preinst
 
 		local ver="${PV}${KV_LOCALVERSION}"
-		local image_path=$(kernel-install_get_image_path)
+		local image_path=$(dist-kernel_get_image_path)
 		if use initramfs; then
 			# putting it alongside kernel image as 'initrd' makes
 			# kernel-install happier
-			kernel-install_build_initramfs \
+			dist-kernel_build_initramfs \
 				"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
 				"${ver}"
 		fi
 
-		kernel-install_install_kernel "${ver}" \
+		dist-kernel_install_kernel "${ver}" \
 			"${EROOT}/usr/src/linux-${ver}/${image_path}" \
 			"${EROOT}/usr/src/linux-${ver}/System.map"
 	fi
@@ -441,7 +377,7 @@ kernel-install_pkg_postrm() {
 
 	if [[ -z ${ROOT} ]] && use initramfs; then
 		local ver="${PV}${KV_LOCALVERSION}"
-		local image_path=$(kernel-install_get_image_path)
+		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
 		rm -f "${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" &&
 			find "${EROOT}/usr/src/linux-${ver}" -depth -type d -empty -delete
@@ -458,16 +394,16 @@ kernel-install_pkg_config() {
 	mount-boot_pkg_preinst
 
 	local ver="${PV}${KV_LOCALVERSION}"
-	local image_path=$(kernel-install_get_image_path)
+	local image_path=$(dist-kernel_get_image_path)
 	if use initramfs; then
 		# putting it alongside kernel image as 'initrd' makes
 		# kernel-install happier
-		kernel-install_build_initramfs \
+		dist-kernel_build_initramfs \
 			"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
 			"${ver}"
 	fi
 
-	kernel-install_install_kernel "${ver}" \
+	dist-kernel_install_kernel "${ver}" \
 		"${EROOT}/usr/src/linux-${ver}/${image_path}" \
 		"${EROOT}/usr/src/linux-${ver}/System.map"
 }
