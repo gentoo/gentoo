@@ -21,6 +21,8 @@ fi
 LICENSE="BSD-2 Apache-2.0 BSD ISC LGPL-2.1+ MIT"
 SLOT="0"
 
+DEPEND="amd64? ( dev-lang/yasm )"
+
 PATCHES=( "${FILESDIR}"/${P}-fix-c-only-build.patch )
 
 src_configure() {
