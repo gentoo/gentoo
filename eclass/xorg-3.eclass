@@ -169,28 +169,6 @@ if [[ ${FONT} == yes ]]; then
 	FONT_DIR=${FONT_DIR/type1/Type1}
 	FONT_DIR=${FONT_DIR/speedo/Speedo}
 fi
-
-# @ECLASS-VARIABLE: XORG_STATIC
-# @DESCRIPTION:
-# Enables static-libs useflag. Set to no, if your package gets:
-#
-# QA: configure: WARNING: unrecognized options: --disable-static
-: ${XORG_STATIC:="yes"}
-
-# Add static-libs useflag where useful.
-if [[ ${XORG_STATIC} == yes \
-		&& ${FONT} != yes \
-		&& ${CATEGORY} != app-doc \
-		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-drivers \
-		&& ${CATEGORY} != media-fonts \
-		&& ${PN} != util-macros \
-		&& ${PN} != xbitmaps \
-		&& ${PN} != xorg-cf-files \
-		&& ${PN/xcursor} = ${PN} ]]; then
-	IUSE+=" static-libs"
-fi
-
 BDEPEND+=" virtual/pkgconfig"
 
 # @ECLASS-VARIABLE: XORG_DRI
@@ -391,9 +369,15 @@ xorg-3_src_configure() {
 		local selective_werror="--disable-selective-werror"
 	fi
 
+	# Check if package supports disabling of static libraries
+	if grep -q -s "able-static" ${ECONF_SOURCE:-.}/configure; then
+		local no_static="--disable-static"
+	fi
+
 	local econfargs=(
 		${dep_track}
 		${selective_werror}
+		${no_static}
 		${FONT_OPTIONS}
 		"${xorgconfadd[@]}"
 	)
@@ -446,6 +430,7 @@ xorg-3_src_install() {
 		multilib-minimal_src_install "$@"
 	else
 		emake DESTDIR="${D}" "${install_args[@]}" "$@" install || die "emake install failed"
+		einstalldocs
 	fi
 
 	# Many X11 libraries unconditionally install developer documentation

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-2.eclass
@@ -167,27 +167,6 @@ fi
 
 # If we're a driver package, then enable DRIVER case
 [[ ${PN} == xf86-video-* || ${PN} == xf86-input-* ]] && DRIVER="yes"
-
-# @ECLASS-VARIABLE: XORG_STATIC
-# @DESCRIPTION:
-# Enables static-libs useflag. Set to no, if your package gets:
-#
-# QA: configure: WARNING: unrecognized options: --disable-static
-: ${XORG_STATIC:="yes"}
-
-# Add static-libs useflag where useful.
-if [[ ${XORG_STATIC} == yes \
-		&& ${FONT} != yes \
-		&& ${CATEGORY} != app-doc \
-		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-drivers \
-		&& ${CATEGORY} != media-fonts \
-		&& ${PN} != util-macros \
-		&& ${PN} != xbitmaps \
-		&& ${PN} != xorg-cf-files \
-		&& ${PN/xcursor} = ${PN} ]]; then
-	IUSE+=" static-libs"
-fi
 
 DEPEND+=" virtual/pkgconfig"
 
@@ -440,9 +419,15 @@ xorg-2_src_configure() {
 		local selective_werror="--disable-selective-werror"
 	fi
 
+	# Check if package supports disabling of static libraries
+	if grep -q -s "able-static" ${ECONF_SOURCE:-.}/configure; then
+		local no_static="--disable-static"
+	fi
+
 	local myeconfargs=(
 		${dep_track}
 		${selective_werror}
+		${no_static}
 		${FONT_OPTIONS}
 		"${xorgconfadd[@]}"
 	)

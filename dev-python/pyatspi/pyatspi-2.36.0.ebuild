@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit gnome2 python-r1 virtualx
 
@@ -29,7 +29,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	test? ( sys-apps/dbus )
+	test? ( dev-libs/dbus-glib )
 "
 
 src_prepare() {
