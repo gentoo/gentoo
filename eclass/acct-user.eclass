@@ -165,7 +165,7 @@ acct-user_add_deps() {
 eislocked() {
 	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} != 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
@@ -202,7 +202,7 @@ eislocked() {
 elockuser() {
 	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} != 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
@@ -245,7 +245,7 @@ elockuser() {
 eunlockuser() {
 	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} != 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
@@ -420,7 +420,7 @@ acct-user_pkg_preinst() {
 acct-user_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} != 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
@@ -440,7 +440,7 @@ acct-user_pkg_postinst() {
 acct-user_pkg_prerm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${EUID} != 0 ]] ; then
+	if [[ ${EUID} != 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
