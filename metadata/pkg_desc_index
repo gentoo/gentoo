@@ -9798,7 +9798,7 @@ dev-ruby/aws-sdk-core 2.11.488 3.94.0: Provides API clients for AWS
 dev-ruby/aws-sdk-resources 2.11.488: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.1.2 1.1.4: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
-dev-ruby/backports 3.15.0 3.17.2 3.18.2: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.15.0 3.17.2 3.18.2 3.20.1: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2 0.3.4: A library which provides base32 decoding and encoding
@@ -9941,7 +9941,7 @@ dev-ruby/gist 5.1.0: Potentially the best command line gister.
 dev-ruby/git 1.7.0: Library for using Git in Ruby
 dev-ruby/globalid 0.4.2 0.4.2-r1: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/google-protobuf 3.8.0 3.10.1 3.11.4 3.12.4: Protocol Buffers are Google's data interchange format
+dev-ruby/google-protobuf 3.11.4 3.12.4 3.13.0: Protocol Buffers are Google's data interchange format
 dev-ruby/gpgme 2.0.20: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.7.0-r2 0.8.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 5.1.2: A ruby web page templating engine
@@ -10054,7 +10054,7 @@ dev-ruby/minitest-power_assert 0.3.1: Power Assert for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 3.0.9: Run external commands on Unix or Windows
 dev-ruby/mocha 0.14.0 1.8.0 1.10.2 1.11.2 1.12.0: Mocking and stubbing using a syntax like that of JMock and SchMock
-dev-ruby/moneta 1.3.0 1.4.0: A unified interface to key/value stores
+dev-ruby/moneta 1.3.0 1.4.0 1.4.1: A unified interface to key/value stores
 dev-ruby/mqtt 0.5.0: Pure Ruby gem that implements the MQTT protocol
 dev-ruby/msgpack 1.3.3: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.14.1 1.15.0: A gem to provide swappable JSON backends
@@ -10069,7 +10069,7 @@ dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
-dev-ruby/necromancer 0.5.1: Conversion from one object type to another with a bit of black magic
+dev-ruby/necromancer 0.5.1 0.7.0: Conversion from one object type to another with a bit of black magic
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/neovim-ruby-client 0.8.1-r1: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
@@ -10104,7 +10104,7 @@ dev-ruby/ox 2.12.1 2.13.2 2.13.3 2.13.4 2.14.0: A fast XML parser and Object mar
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.2.0 2.2.1: Terminal painter
 dev-ruby/parallel 1.19.2 1.20.0 1.20.1: Run any code in parallel Processes or Threads
-dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
+dev-ruby/paramesan 0.1.1 1.0.1: Parameterized tests in Ruby
 dev-ruby/parser 2.7.1.3 2.7.1.4 2.7.1.5 2.7.2.0 2.7.2.0-r1: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.4 0.8.0: Terminal strings styling with intuitive and clean API
