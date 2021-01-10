@@ -5967,6 +5967,7 @@ dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing l
 dev-ml/typerep 0.9.0 0.14.0: Library for creating runtime representation of OCaml types
 dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.2: Uchar compatibility library
+dev-ml/uucp 13.0.0-r2: Unicode character properties for OCaml
 dev-ml/uutf 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 0.9.0 0.14.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
