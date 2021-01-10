@@ -882,11 +882,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Electronics</url>
     <description>The Electronics Project handles all electronics related activities in Gentoo.</description>
     <member>
-      <email>calchan@gentoo.org</email>
-      <name>Denis Dupeyron</name>
-      <role>member</role>
-    </member>
-    <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
       <role>member</role>
@@ -3311,19 +3306,9 @@
     <subproject ref="security-audit@gentoo.org"/>
     <subproject ref="security-kernel@gentoo.org"/>
     <member>
-      <email>blueknight@gentoo.org</email>
-      <name>Yury German</name>
-      <role>GLSA Coordinator</role>
-    </member>
-    <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
       <role>GLSA Coordinator</role>
-    </member>
-    <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
-      <role>Member</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
@@ -3935,11 +3920,6 @@
     <name>Xfce Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Xfce</url>
     <description>The Xfce Project aims to bring the current and complete Xfce desktop environment to Gentoo.</description>
-    <member>
-      <email>calchan@gentoo.org</email>
-      <name>Denis Dupeyron</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>

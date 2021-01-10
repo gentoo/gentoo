@@ -8991,7 +8991,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.48 3.5.56 3.5.57 3.5.58 3.5.59: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.56 3.5.57 3.5.58 3.5.59: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
@@ -17509,7 +17509,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.10.3 5.10.4 5.10.5: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.9.16 5.10.2 5.10.3 5.10.4 5.10.5: Full sources including the Gentoo patchset for the 5.10 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.9.16 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
