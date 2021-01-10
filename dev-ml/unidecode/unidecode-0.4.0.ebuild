@@ -17,8 +17,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
-DEPEND="${DEPEND}
-	test? ( dev-ml/ounit2 )"
+DEPEND="test? ( dev-ml/ounit2 )"
 BDEPEND=""
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
