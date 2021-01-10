@@ -3014,7 +3014,7 @@ app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pytextile 3.0.3 4.0.1: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 9.0.2-r1 9.1.1-r2 10.0.1-r2 10.0.4 10.1.0: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 10.0.4 10.1.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18 0.4.18_p1: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1 3.7.6-r1 3.7.8: Convert files between various character sets
@@ -10770,10 +10770,10 @@ dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.6.0-r1 5.6.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.6.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.6.0 5.6.1: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.6.0 5.6.1: Python plugin for KDevelop
+dev-util/kdevelop-php 5.6.1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.6.1: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.3.1: SDK for building Kubernetes APIs using CRDs
@@ -14116,7 +14116,7 @@ media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 25.0.8-r1 25.0.8-r100 9999: Software for Recording and Streaming Live Video Content
 media-video/obs-v4l2sink 0.1.0_p20181012-r2: obs studio output plugin for Video4Linux2 device
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 2.4.4-r1 2.5.1 2.5.1_p20201227: Award-winning free and open-source video editor
+media-video/openshot 2.4.4-r1 2.5.1 2.5.1_p20210103: Award-winning free and open-source video editor
 media-video/orion 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5 4.15.0: A simple Xfce4 media player using GStreamer
@@ -15734,7 +15734,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.4.3 3.5.0 3.5.1: Desktop Planetarium
+sci-astronomy/kstars 3.4.3 3.5.1: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
