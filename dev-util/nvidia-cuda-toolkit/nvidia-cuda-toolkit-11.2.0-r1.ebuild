@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -143,6 +143,7 @@ src_install() {
 		local exes=(
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/libexec/QtWebEngineProcess
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/CrashReporter
+			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/ncu-ui
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/ncu-ui.bin
 			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherTargetLdPreloadHelper
 			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherSubreaper
@@ -183,7 +184,6 @@ src_install() {
 		done
 
 		# remove foreign archs (triggers SONAME warning, #749903)
-		rm -r "${ED}"/${cudadir}/${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64 || die
 		rm -r "${ED}"/${cudadir}/${ncu_dir}/target/linux-desktop-glibc_2_19_0-ppc64le || die
 		rm -r "${ED}"/${cudadir}/${ncu_dir}/target/linux-desktop-t210-a64 || die
 		rm -r "${ED}"/${cudadir}/${nsys_dir}/target-linux-armv8 || die
