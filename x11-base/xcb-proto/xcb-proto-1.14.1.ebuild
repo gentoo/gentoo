@@ -7,7 +7,6 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 XORG_TARBALL_SUFFIX="xz"
 XORG_MODULE=proto/
 XORG_MULTILIB=yes
-XORG_STATIC=no
 
 inherit python-r1 xorg-3
 

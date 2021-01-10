@@ -5,7 +5,6 @@ EAPI=7
 
 XORG_PACKAGE_NAME="lib${PN}"
 # this package just installs some .c and .h files, no libraries
-XORG_STATIC=no
 XORG_DOC=doc
 inherit xorg-3
 

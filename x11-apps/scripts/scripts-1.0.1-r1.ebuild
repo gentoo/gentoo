@@ -3,7 +3,6 @@
 
 EAPI=5
 
-XORG_STATIC="no"
 inherit xorg-2
 
 DESCRIPTION="start an X program on a remote machine"
