@@ -12,7 +12,7 @@ SRC_URI="https://github.com/larsbrinkhoff/httptunnel/archive/${COMMIT}.tar.gz ->
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 
 PATCHES=(
