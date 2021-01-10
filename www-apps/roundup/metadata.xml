@@ -9,6 +9,7 @@
 		<email>cedk@gentoo.org</email>
 		<name>Cédric Krier</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">roundup</remote-id>
 		<remote-id type="sourceforge">roundup</remote-id>
