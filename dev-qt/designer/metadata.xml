@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="declarative">Build the qdeclarativeview plugin</flag>
-		<flag name="webkit">Build the qwebview plugin</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
