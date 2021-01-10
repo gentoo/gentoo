@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sci-geosciences/harmonics-dwf-free-20120302
+DESCRIPTION=Library for reading and writing Tide Constituent Database (TCD) files
+EAPI=7
+HOMEPAGE=http://www.flaterco.com/xtide/libtcd.html
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=>=sci-geosciences/harmonics-dwf-free-20120302
+SLOT=0/1
+SRC_URI=ftp://ftp.flaterco.com/xtide/libtcd-2.2.7-r2.tar.bz2
+_md5_=a828b4633fbaf0bd05667a942dd9bbb4

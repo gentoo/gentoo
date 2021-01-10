@@ -2515,7 +2515,7 @@ app-misc/neofetch 7.1.0 9999: Simple information system script
 app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8.1 2.9 3.0 3.1 3.2 3.3 3.4 3.5: The missing terminal file browser for X
 app-misc/no-more-secrets 0.3.3 9999: Recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/notary 0.6.1-r1: A project that allows anyone to have trust over arbitrary collections of data
-app-misc/note 1.3.3-r1 1.3.3-r2: A note taking perl program
+app-misc/note 1.3.3-r1 1.3.3-r2 1.3.26: A note taking perl program
 app-misc/nullmodem 0.0.6-r1: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
@@ -2561,7 +2561,7 @@ app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
 app-misc/screenie 20120406: A small and lightweight screen wrapper
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
-app-misc/skim 0.6.9 0.7.0 0.8.1: Command-line fuzzy finder
+app-misc/skim 0.6.9 0.7.0 0.8.1 0.9.3: Command-line fuzzy finder
 app-misc/sl 5.02: sophisticated graphical program which corrects your miss typing
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
@@ -2617,7 +2617,7 @@ app-misc/vzstats 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 5.2.7 5.3.4 6.0.1 6.0.2: Wherever Change Directory
 app-misc/when 1.1.37 1.1.40: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
-app-misc/worker 3.8.3 3.8.3-r100: Worker Filemanager: Amiga Directory Opus 4 clone
+app-misc/worker 3.8.3 3.8.3-r100 4.6.1 4.6.1-r100: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
 app-misc/yq 2.9.2-r1 2.11.1: Command-line YAML processor - jq wrapper for YAML documents
 app-misc/ytree 2.02 2.03: A curses-based file manager
@@ -16053,7 +16053,7 @@ sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database
 sci-geosciences/josm 10966 99999: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 3.4.1: Library for free and lossless compression of the LAS LiDAR format
 sci-geosciences/liblas 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR format common in GIS
-sci-geosciences/libtcd 2.2.5_p2 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
+sci-geosciences/libtcd 2.2.5_p2 2.2.7 2.2.7_p2: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapserver 7.6.0 7.6.2: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.4 9999: Qt based map editor for the openstreetmap.org project
@@ -17393,7 +17393,7 @@ sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk part
 sys-fs/aufs-headers 4.1_p20170130 4.14_p20180709 4.14_p20190603: User space headers for aufs3
 sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are always necessary for aufs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
-sys-fs/avfs 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
+sys-fs/avfs 1.1.1 1.1.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.4 9999: Best-Effort Extent-Same, a btrfs dedup agent

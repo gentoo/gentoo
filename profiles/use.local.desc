@@ -8208,6 +8208,7 @@ sys-firmware/sigrok-firmware-fx2lafw:binary - Use official upstream pre-built bi
 sys-firmware/vgabios:binary - Use official upstream pre-built binaries (only default and cirrus images)
 sys-fs/android-file-transfer-linux:fuse - Add FUSE mount helper
 sys-fs/android-file-transfer-linux:zune - Enable support for Microsoft Zune
+sys-fs/avfs:webdav - Allow mounting WebDAV shares via net-libs/neon
 sys-fs/bees:tools - Build extra tools useful for debugging (fiemap, fiewalk)
 sys-fs/btrfs-progs:convert - Build ext2 conversion utility (btrfs-convert)
 sys-fs/btrfs-progs:reiserfs - Enable reiserfs support in btrfs-convert tool.
