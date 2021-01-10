@@ -53,6 +53,8 @@ all_ruby_prepare() {
 	sed -e '/simplecov/,/^end/ s:^:#:' \
 		-e '/reporters/I s:^:#:' \
 		-i test/helper.rb || die
+
+	sed -i -e '/mini_portile2/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_configure() {
