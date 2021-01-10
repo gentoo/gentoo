@@ -19,8 +19,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-distutils_enable_tests setup.py
-
 RDEPEND="
 	>=dev-python/alembic-0.7[${PYTHON_USEDEP}]
 	>=dev-python/flask-0.9[${PYTHON_USEDEP}]
@@ -31,3 +29,5 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${MY_P}"
+
+distutils_enable_tests setup.py
