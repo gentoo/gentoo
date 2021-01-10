@@ -73,7 +73,8 @@ sys-libs/libnih
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-01-06)
 # Abandoned upstream, countless bugs. Replaced by builtin functionality in
-# elogind or systemd. Removal in 30 days. Bug #659616.
+# elogind or systemd. Alternative: sys-power/suspend.
+# Removal in 30 days. Bug #659616
 sys-power/pm-utils
 sys-power/pm-quirks
 
