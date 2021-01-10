@@ -11128,7 +11128,7 @@ games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
 games-arcade/holotz-castle 1.3.14-r1: 2D platform game
 games-arcade/insaneodyssey 000311-r1: Help West Muldune escape from a futuristic mental hospital
 games-arcade/jardinains 2.0-r1: Arkanoid with Gnomes
-games-arcade/jazz2 0.6.5: Open source reimplementation of Jazz Jackrabbit 2
+games-arcade/jazz2 0.6.6: Open source reimplementation of Jazz Jackrabbit 2
 games-arcade/jazz2-data 0-r20200327: Jazz Jackrabbit 2 data files imported for games-arcade/jazz2
 games-arcade/jumpnbump 1.50-r2: A funny multiplayer game about cute little fluffy bunnies
 games-arcade/jvgs 0.5-r1 0.5-r100: An open-source platform game with a sketched and minimalistic look
@@ -17699,7 +17699,7 @@ sys-process/supervise-scripts 4.0-r1: Starting and stopping daemontools managed 
 sys-process/systemd-cron 1.5.14 1.5.15: systemd units to create timers for cron directories and crontab
 sys-process/time 1.7-r3 1.7.2 1.9: Displays info about resources used by a program
 sys-process/tini 0.18.0 0.19.0: A tiny but valid init for containers
-sys-process/tiptop 2.2 2.3.1: top for performance counters
+sys-process/tiptop 2.3.1: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/uksmd 0_pre20200505: Userspace KSM helper daemon
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
