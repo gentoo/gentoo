@@ -5831,6 +5831,7 @@ dev-ml/iTeML 2.7: Inline (Unit) Tests for OCaml
 dev-ml/integers 0.2.2 0.4.0: Various signed and unsigned integer types for OCaml
 dev-ml/jane-street-headers 0.9.0 0.14.0: Jane Street header files
 dev-ml/jbuilder 1.0_beta14: A composable build system for OCaml
+dev-ml/jingoo 1.4.2: OCaml template engine almost compatible with Jinja2.
 dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/jst-config 0.14.0: Compile-time configuration for Jane Street libraries
@@ -5968,6 +5969,7 @@ dev-ml/typerep 0.9.0 0.14.0: Library for creating runtime representation of OCam
 dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.2: Uchar compatibility library
 dev-ml/uucp 13.0.0-r2: Unicode character properties for OCaml
+dev-ml/uunf 13.0.0: Unicode text normalization
 dev-ml/uutf 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 0.9.0 0.14.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml

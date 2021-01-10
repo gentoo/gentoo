@@ -1,0 +1,13 @@
+BDEPEND=dev-ml/opam-installer dev-lang/ocaml
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/ocaml-4:=
+DESCRIPTION=Unicode text normalization
+EAPI=7
+HOMEPAGE=https://erratique.ch/software/uunf https://github.com/dbuenzli/uunf
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4:=
+SLOT=0/13.0.0
+SRC_URI=https://erratique.ch/software/uunf/releases/uunf-13.0.0.tbz
+_eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
+_md5_=6bae0672ce61b7b929586d8c4eb47d51
