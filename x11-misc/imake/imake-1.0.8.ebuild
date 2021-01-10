@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_STATIC=no
 inherit toolchain-funcs xorg-3
 
 DESCRIPTION="C preprocessor interface to the make utility"

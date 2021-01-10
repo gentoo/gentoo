@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_STATIC=no
 XORG_MULTILIB=no
 inherit xorg-3
 

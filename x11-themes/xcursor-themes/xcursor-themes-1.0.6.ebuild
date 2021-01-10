@@ -3,7 +3,6 @@
 
 EAPI=5
 
-XORG_STATIC=no
 XORG_MODULE=data/
 inherit xorg-2
 

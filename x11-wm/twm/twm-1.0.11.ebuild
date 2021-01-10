@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_STATIC=no
 XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
