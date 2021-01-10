@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">avf</remote-id>
+		<changelog>https://sourceforge.net/p/avf/git/ci/master/tree/NEWS</changelog>
 	</upstream>
 </pkgmetadata>
