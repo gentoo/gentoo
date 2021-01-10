@@ -59,6 +59,7 @@ pkg_pretend() {
 }
 
 src_unpack() {
+	[[ ${PV} == 5.4.88 ]] || die "Bump GENTOO_CONFIG_VER!"
 	if use verify-sig; then
 		einfo "Unpacking linux-${PV}.tar.xz ..."
 		verify-sig_verify_detached - "${DISTDIR}"/linux-${PV}.tar.sign \
