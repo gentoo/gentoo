@@ -5,6 +5,7 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">MythTV/mythweb</remote-id>
 	</upstream>
