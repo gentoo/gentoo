@@ -92,5 +92,41 @@ dist-kernel_install_kernel() {
 	eend ${?} || die "Installing the kernel failed"
 }
 
+# @FUNCTION: dist-kernel_reinstall_initramfs
+# @USAGE: <kv-dir> <kv-full>
+# @DESCRIPTION:
+# Rebuild and install initramfs for the specified dist-kernel.
+# <kv-dir> is the kernel source directory (${KV_DIR} from linux-info),
+# while <kv-full> is the full kernel version (${KV_FULL}).
+# The function will determine whether <kernel-dir> is actually
+# a dist-kernel, and whether initramfs was used.
+#
+# This function is to be used in pkg_postinst() of ebuilds installing
+# kernel modules that are included in the initramfs.
+dist-kernel_reinstall_initramfs() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
+	local kernel_dir=${1}
+	local ver=${2}
+
+	local image_path=${kernel_dir}/$(dist-kernel_get_image_path)
+	local initramfs_path=${image_path%/*}/initrd
+	if [[ ! -f ${image_path} ]]; then
+		eerror "Kernel install missing, image not found:"
+		eerror "  ${image_path}"
+		eerror "Initramfs will not be updated.  Please reinstall your kernel."
+		return
+	fi
+	if [[ ! -f ${initramfs_path} ]]; then
+		einfo "No initramfs found at ${initramfs_path}"
+		return
+	fi
+
+	dist-kernel_build_initramfs "${initramfs_path}" "${ver}"
+	dist-kernel_install_kernel "${ver}" "${image_path}" \
+		"${kernel_dir}/System.map"
+}
+
 _DIST_KERNEL_UTILS=1
 fi
