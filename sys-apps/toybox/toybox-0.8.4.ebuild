@@ -20,9 +20,6 @@ HOMEPAGE="https://landley.net/code/toybox/"
 LICENSE="BSD-2"
 SLOT="0"
 
-# makefile is stupid
-#RESTRICT="test"
-
 src_prepare() {
 	default
 	restore_config .config
@@ -31,6 +28,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC STRIP
 	export HOSTCC="$(tc-getBUILD_CC)"
+	# Respect CFLAGS
 	export OPTIMIZE="${CFLAGS}"
 
 	if [[ -f .config ]]; then
