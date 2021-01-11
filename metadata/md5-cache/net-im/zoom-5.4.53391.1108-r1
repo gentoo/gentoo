@@ -1,4 +1,4 @@
-BDEPEND=dev-util/bbe
+BDEPEND=dev-util/bbe bundled-libjpeg-turbo? ( dev-util/patchelf )
 DEFINED_PHASES=install postinst postrm prepare
 DESCRIPTION=Video conferencing and web conferencing service
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=amd64? ( https://zoom.us/client/5.4.53391.1108/zoom_x86_64.tar.xz -> zoom-5.4.53391.1108_x86_64.tar.xz ) x86? ( https://zoom.us/client/5.4.53391.1108/zoom_i686.tar.xz -> zoom-5.4.53391.1108_i686.tar.xz )
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=efcb985d6dee2114813b6136f5b4f3ac
+_md5_=5f5feb0f8db7598e1bf2362f9a691f15

@@ -1,14 +1,14 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=net-libs/libssh2-1.2 php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+DEPEND=>=net-libs/libssh2-1.2 php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 )
 DESCRIPTION=PHP bindings for the libssh2 library
 EAPI=7
 HOMEPAGE=https://pecl.php.net/package/ssh2
-IUSE=php_targets_php7-2 php_targets_php7-3 php_targets_php7-4
+IUSE=php_targets_php7-3 php_targets_php7-4 php_targets_php8-0
 LICENSE=PHP-3.01
 PROPERTIES=live
-RDEPEND=>=net-libs/libssh2-1.2 php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
-REQUIRED_USE=|| ( php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 )
+RDEPEND=>=net-libs/libssh2-1.2 php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 )
+REQUIRED_USE=|| ( php_targets_php7-3 php_targets_php7-4 php_targets_php8-0 )
 SLOT=7
 _eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=5ec9dfe75accd2cbc90ccb0edc63a98e
+_md5_=fbdd9777cb313e8675dbbdbf24b18481
