@@ -106,6 +106,8 @@ multilib_src_test() {
 	# sandbox is breaking long symlink behavior
 	local -x SANDBOX_ON=0
 	local -x LD_PRELOAD=
+	# some locales trigger different output that breaks tests
+	local -x LC_ALL=C
 	emake check
 }
 
