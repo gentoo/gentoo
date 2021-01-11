@@ -120,7 +120,7 @@ _meson_env_array() {
 
 # @FUNCTION: _meson_get_machine_info
 # @USAGE: <tuple>
-# @RETURN: system/cpu_family/cpu variables
+# @RETURN: system/cpu_family/cpu/builtin_options variables
 # @INTERNAL
 # @DESCRIPTION:
 # Translate toolchain tuple into machine values for meson.
@@ -146,6 +146,17 @@ _meson_get_machine_info() {
 
 	# This may require adjustment based on CFLAGS
 	cpu=${tuple%%-*}
+
+	local ver_opt
+	case "${EAPI}" in
+		6) ver_opt=--host-route ;;
+		*) ver_opt=-b ;;
+	esac
+	if has_version "${ver_opt}" '<dev-util/meson-0.56.0'; then
+		builtin_options="[properties]"
+	else
+		builtin_options="[built-in options]"
+	fi
 }
 
 # @FUNCTION: _meson_create_cross_file
@@ -155,7 +166,7 @@ _meson_get_machine_info() {
 # Creates a cross file. meson uses this to define settings for
 # cross-compilers. This function is called from meson_src_configure.
 _meson_create_cross_file() {
-	local system cpu_family cpu
+	local system cpu_family cpu builtin_options
 	_meson_get_machine_info "${CHOST}"
 
 	local fn=${T}/meson.${CHOST}.${ABI}.ini
@@ -174,7 +185,7 @@ _meson_create_cross_file() {
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
 	windres = $(_meson_env_array "$(tc-getRC)")
 
-	[properties]
+	${builtin_options}
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
 	c_link_args = $(_meson_env_array "${CFLAGS} ${LDFLAGS}")
 	cpp_args = $(_meson_env_array "${CXXFLAGS} ${CPPFLAGS}")
@@ -206,11 +217,10 @@ _meson_create_cross_file() {
 # Creates a native file. meson uses this to define settings for
 # native compilers. This function is called from meson_src_configure.
 _meson_create_native_file() {
-	local system cpu_family cpu
+	local system cpu_family cpu builtin_options
 	_meson_get_machine_info "${CBUILD}"
 
 	local fn=${T}/meson.${CBUILD}.${ABI}.ini
-
 	cat > "${fn}" <<-EOF
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getBUILD_AR)")
@@ -225,7 +235,7 @@ _meson_create_native_file() {
 	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
 	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
 
-	[properties]
+	${builtin_options}
 	c_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_CPPFLAGS}")
 	c_link_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_LDFLAGS}")
 	cpp_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_CPPFLAGS}")
