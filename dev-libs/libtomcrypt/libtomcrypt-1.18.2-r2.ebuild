@@ -29,6 +29,7 @@ DEPEND="
 	libtommath? ( dev-libs/libtommath:= )
 	tomsfastmath? ( dev-libs/tomsfastmath:= )
 "
+RDEPEND="${DEPEND}"
 
 mymake() {
 	# Standard boilerplate
