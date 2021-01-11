@@ -6281,7 +6281,6 @@ net-misc/cgminer:minion - Enable support for mining with BlackArrow Bitfury
 net-misc/cgminer:modminer - Enable support for mining with ModMiner FPGAs
 net-misc/cgminer:sp10 - Enable support for Spondoolies SP10
 net-misc/cgminer:sp30 - Enable support for Spondoolies SP30
-net-misc/chrome-remote-desktop:xrandr - Enable support for the XRandR extension for dynamic desktop resizing
 net-misc/chrony:cmdmon - Support for command and monitoring
 net-misc/chrony:html - Install HTML documentation
 net-misc/chrony:nettle - Use dev-libs/nettle for hash functions
