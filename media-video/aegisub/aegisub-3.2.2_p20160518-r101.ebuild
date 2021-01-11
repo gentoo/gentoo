@@ -1,13 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+LUA_COMPAT=( luajit )
+LUA_REQ_USE="lua52compat"
 
 WX_GTK_VER=3.0
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 COMMIT_ID="b118fe7e7a5c37540e2f0aa75af105e272bad234"
 
-inherit autotools flag-o-matic gnome2-utils l10n wxwidgets xdg-utils vcs-snapshot
+inherit autotools flag-o-matic l10n lua-single wxwidgets xdg-utils vcs-snapshot
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/ https://github.com/Aegisub/Aegisub"
@@ -15,16 +18,15 @@ SRC_URI="https://github.com/Aegisub/Aegisub/archive/${COMMIT_ID}.tar.gz -> ${P}.
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
 RESTRICT="!test? ( test )"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
 # Thus unbundling luabins isn't worth the effort.
-RDEPEND="
+RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
-	dev-lang/luajit:2[lua52compat]
 	dev-libs/boost:=[icu,nls,threads]
 	dev-libs/icu:=
 	media-libs/ffmpegsource:=
@@ -42,18 +44,25 @@ RDEPEND="
 	spell? ( app-text/hunspell:= )
 	uchardet? ( app-i18n/uchardet )
 "
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="${RDEPEND}"
+# luarocks is only used as a command-line tool so there is no need to enforce
+# LUA_SINGLE_USEDEP on it. On the other hand, this means we must use version
+# bounds in order to make sure we use a version migrated to Lua eclasses.
+BDEPEND="dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? (
+		${RDEPEND}
 		>=dev-cpp/gtest-1.8.1
-		dev-lua/busted
-		dev-lua/luarocks
+		>=dev-lua/luarocks-3.4.0-r100
+		$(lua_gen_cond_dep '
+			dev-lua/busted[${LUA_USEDEP}]
+		')
 	)
 "
 
-REQUIRED_USE="|| ( alsa openal oss portaudio pulseaudio )"
+REQUIRED_USE="${LUA_REQUIRED_USE}
+	|| ( alsa openal oss portaudio pulseaudio )"
 
 PATCHES=(
 	"${FILESDIR}/${PV}/${P}-fix-system-luajit-build.patch"
@@ -61,7 +70,10 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-support-system-gtest.patch"
 	"${FILESDIR}/${PV}/${P}-fix-icu59-build.patch"
 	"${FILESDIR}/${PV}/${P}-fix-icu62-build.patch"
-
+	"${FILESDIR}/${PV}/${P}-fix-boost170-build.patch"
+	"${FILESDIR}/${PV}/${P}-fix-makefile-for-make4.3.patch"
+	"${FILESDIR}/${PV}/${P}-tests_luarocks_lua_version.patch"
+	"${FILESDIR}/${PV}/${P}-avoid-conveying-positional-parameters-to-source-builtin.patch"
 )
 
 aegisub_check_compiler() {
@@ -76,6 +88,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	aegisub_check_compiler
+	lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -134,16 +147,12 @@ src_test() {
 	emake test-libaegisub
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

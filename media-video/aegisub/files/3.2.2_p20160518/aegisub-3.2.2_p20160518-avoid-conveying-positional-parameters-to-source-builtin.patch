@@ -1,0 +1,47 @@
+commit c663944bb4a9040e49811037fc3984d2d15764be
+Author: Kerin Millar <kfm@plushkava.net>
+Date:   Sun Jan 10 22:52:26 2021 +0000
+
+    Don't convey positional parameters to the . builtin
+    
+    To do so is a bashism; POSIX makes no provision for it. Fortunately, there
+    is no need to begin with. The srcdir variable is already defined at the
+    point that build/version.sh is sourced from the configure script and, thus,
+    does not need to be passed.
+    
+    As version.sh is only ever sourced, that would be a valid fix in and as of
+    itself. However, because version.sh has the executable bit set, there is an
+    implication that the original author may have intended for it to be so; for
+    testing purposes, perhaps. So as to continue to support this potential use
+    case, have the script retain the ability to assign the value of $1 to
+    srcdir, provided that srcdir is empty and provided that at least one
+    positional parameter was specified.
+    
+    Signed-off-by: Kerin Millar <kfm@plushkava.net>
+    Closes: https://bugs.gentoo.org/764881
+
+diff --git a/build/version.sh b/build/version.sh
+index 8cea0a3f3..614c74615 100755
+--- a/build/version.sh
++++ b/build/version.sh
+@@ -1,4 +1,6 @@
+-srcdir="$1"
++if [ -z "$srcdir" ] && [ $# -gt 0 ]; then
++  srcdir=$1
++fi
+ 
+ # If no git repo try to read from the existing git_version.h, for building from tarballs
+ if ! test -d "${srcdir}/.git"; then
+diff --git a/configure.ac b/configure.ac
+index 1d8c93067..d50541f40 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -117,7 +117,7 @@ PKG_PROG_PKG_CONFIG([pkgconfig_required_version])
+ # Developers only
+ #################
+ AC_MSG_CHECKING([for version])
+-. $srcdir/build/version.sh "$srcdir"
++. $srcdir/build/version.sh
+ AC_MSG_RESULT([$BUILD_GIT_VERSION_STRING $VERSION_SOURCE])
+ 
+ AC_MSG_CHECKING([for build date])
