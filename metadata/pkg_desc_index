@@ -728,7 +728,7 @@ app-admin/sshguard 2.4.0 2.4.1 99999: protects hosts from brute force attacks ag
 app-admin/stow 2.2.2-r1 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.9.3_p1 1.9.4_p1 1.9.4_p2 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.9.3_p1 1.9.4_p2 1.9.5 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.2.0 4.2.1: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -7808,7 +7808,7 @@ dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r3: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1 2.0.1-r1: A reusable, persistent handle and resource factory API
 dev-php/pecl-redis 5.1.1 5.2.1 5.2.2 5.3.1 5.3.2: PHP extension for interfacing with Redis
-dev-php/pecl-rrd 2.0.1-r3: RRDtool bindings for PHP
+dev-php/pecl-rrd 2.0.1-r4: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-taint 2.0.5 2.0.6: Extension used for detecting XSS code (tainted strings)
@@ -11178,7 +11178,7 @@ games-arcade/spacerider 0.13-r1: Space-shooter written in C++, using the SDL
 games-arcade/spout 1.3-r1: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7-r1: An ncurses-based space shooter
 games-arcade/supertransball2 1.5-r1: Thrust clone
-games-arcade/supertux 0.6.1.1 0.6.2: A game similar to Super Mario Bros.
+games-arcade/supertux 0.6.2-r1: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1-r1: Syobon Action (also known as Cat Mario or Neko Mario)
 games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r3: Tank combat game with lighthearted, fast paced pandemonium
@@ -12387,7 +12387,7 @@ lxqt-base/lxqt-qtplugin 0.15.1 0.16.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.15.0 0.16.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.15.0 0.16.0: LXQt Session Manager
 lxqt-base/lxqt-sudo 0.15.0 0.16.0: LXQt GUI frontend for sudo
-mail-client/aerc 0.4.0 9999: Email client for your terminal
+mail-client/aerc 0.4.0 0.5.2 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.23 2.24: An easy to use text-based based mail and news client
 mail-client/balsa 2.6.1: Email client for GNOME
@@ -17991,8 +17991,8 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.6.0 78.6.1 84.0 84.0.1-r1 84.0.2: Firefox Web Browser
-www-client/firefox-bin 78.6.0 78.6.1 84.0 84.0.1 84.0.2: Firefox Web Browser
+www-client/firefox 78.6.1 84.0.2: Firefox Web Browser
+www-client/firefox-bin 78.6.1 84.0.2: Firefox Web Browser
 www-client/google-chrome 87.0.4280.141: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.79: The web browser from Google
 www-client/google-chrome-unstable 89.0.4381.6: The web browser from Google
