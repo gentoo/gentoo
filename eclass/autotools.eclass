@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools.eclass
@@ -136,6 +136,12 @@ unset _automake_atom _autoconf_atom
 # Additional options to pass to automake during
 # eautoreconf call.
 
+# @ECLASS-VARIABLE: AT_NOEAUTOHEADER
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Don't run eautoheader command if set to 'yes'; only used to work around
+# packages that don't want their headers being modified.
+
 # @ECLASS-VARIABLE: AT_NOEAUTOMAKE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -236,7 +242,7 @@ eautoreconf() {
 	else
 		eautoconf --force
 	fi
-	eautoheader
+	[[ ${AT_NOEAUTOHEADER} != "yes" ]] && eautoheader
 	[[ ${AT_NOEAUTOMAKE} != "yes" ]] && FROM_EAUTORECONF="yes" eautomake ${AM_OPTS}
 
 	if [[ ${AT_NOELIBTOOLIZE} != "yes" ]] ; then
