@@ -541,6 +541,7 @@ net-misc/gnome-remote-desktop
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Needs news item, known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
+>=dev-cpp/pangomm-2.48
 
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
