@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-08">
+  <title>Pillow: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Pillow, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">pillow</product>
+  <announced>2021-01-11</announced>
+  <revised count="1">2021-01-11</revised>
+  <bug>763210</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pillow" auto="yes" arch="*">
+      <unaffected range="ge">8.1.0</unaffected>
+      <vulnerable range="lt">8.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python Imaging Library (fork)</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Pillow. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pillow users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pillow-8.1.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35653">CVE-2020-35653</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35654">CVE-2020-35654</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35655">CVE-2020-35655</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-04T00:06:19Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-11T09:13:26Z">sam_c</metadata>
+</glsa>

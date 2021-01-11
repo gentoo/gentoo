@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-07">
+  <title>NodeJS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NodeJS, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">nodejs</product>
+  <announced>2021-01-11</announced>
+  <revised count="1">2021-01-11</revised>
+  <bug>726836</bug>
+  <bug>731654</bug>
+  <bug>742893</bug>
+  <bug>754942</bug>
+  <bug>763588</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/nodejs" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/15">15.5.1</unaffected>
+      <unaffected range="ge" slot="0/14">14.15.1</unaffected>
+      <unaffected range="ge" slot="0/12">12.20.1</unaffected>
+      <vulnerable range="lt">15.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript
+      engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NodeJS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NodeJS 15 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nodejs-15.5.1"
+    </code>
+    
+    <p>All NodeJS 14 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nodejs-14.15.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15095">CVE-2020-15095</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8172">CVE-2020-8172</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8174">CVE-2020-8174</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8201">CVE-2020-8201</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8251">CVE-2020-8251</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8265">CVE-2020-8265</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8277">CVE-2020-8277</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8287">CVE-2020-8287</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-10T19:55:45Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-11T09:13:22Z">sam_c</metadata>
+</glsa>
