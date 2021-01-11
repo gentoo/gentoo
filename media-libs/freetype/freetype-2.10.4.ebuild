@@ -90,8 +90,7 @@ src_prepare() {
 		sed -e "s;@VERSION@;$freetype_major$freetype_minor$freetype_patch;" \
 			< configure.raw > configure.ac || die
 		# eautoheader produces broken ftconfig.in
-		eautoheader() { return 0 ; }
-		AT_M4DIR="." eautoreconf
+		AT_NOEAUTOHEADER="yes" AT_M4DIR="." eautoreconf
 		unset freetype_major freetype_minor freetype_patch
 		popd &>/dev/null || die
 	fi
