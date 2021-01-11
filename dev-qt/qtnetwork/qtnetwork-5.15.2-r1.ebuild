@@ -7,6 +7,7 @@ QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="Network abstraction library for the Qt5 framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-${PV}-gcc11.patch.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
@@ -51,6 +52,7 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 PATCHES=(
 	"${FILESDIR}"/${P}-QNetworkAccessManager-memleak.patch # QTBUG-88063
 	"${FILESDIR}"/${PN}-5.15.2-libressl.patch # Bug 562050, not upstreamable
+	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 752012
 )
 
 pkg_setup() {
