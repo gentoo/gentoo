@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,7 +59,7 @@ PATCHES=(
 
 src_prepare() {
 	sed -i -e '/setup_requires/d' setup.py || die
-	sed -e 's:--cov flask_security::' \
+	sed -e 's@--cov flask_security@-p no:httpbin@' \
 		-e 's:--cov-report term-missing::' \
 		-e 's:--black::' \
 		-e 's:--flake8::' \
