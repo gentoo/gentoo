@@ -197,14 +197,6 @@ dev-util/meson test
 # Requires dev-vcs/ghp-import that is masked for removal.
 www-apps/nikola ghpages
 
-# Ulrich Müller <ulm@gentoo.org> (2020-04-08, 2020-11-21)
-# Old versions of libjpeg-turbo have known security issues.
-# The version included with >=zoom-5.3 has an empty DT_RPATH,
-# which is insecure because the loader will search the working
-# directory when it finds an empty path.
-# Use the bundled lib on your own risk. Bug #715106.
-net-im/zoom bundled-libjpeg-turbo
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-deve/gcc
 sys-devel/gcc ada
