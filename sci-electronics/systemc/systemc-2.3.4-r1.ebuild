@@ -24,10 +24,9 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="debug static-libs test"
+IUSE="debug doc examples static-libs test"
+REQUIRED_USE="examples? ( doc )"
 RESTRICT="!test? ( test )"
-
-DOCS=(AUTHORS.md CONTRIBUTING.md INSTALL.md LICENSE NOTICE README.md RELEASENOTES)
 
 src_prepare() {
 	default
@@ -41,12 +40,15 @@ src_configure() {
 		--with-unix-layout
 }
 
-pkg_postinst() {
-	elog "If you want to run the examples, you need to :"
-	elog "    tar xvfz ${PORTAGE_ACTUAL_DISTDIR}/${A}"
-	elog "    cd ${PN}-${MY_PV}"
-	elog "    mkdir build && cd build"
-	elog "    cmake .."
-	elog "    cd examples"
-	elog "    make check"
+src_install() {
+	default
+	if use doc; then
+		if use examples; then
+			docompress -x /usr/share/doc/"${PF}"/examples
+		else
+			rm -r "${ED}"/usr/share/doc/"${PF}"/examples || die
+		fi
+	else
+		rm -r "${ED}"/usr/share/doc/"${PF}" || die
+	fi
 }
