@@ -15,7 +15,7 @@ HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/4.51"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 IUSE="abyss +cgi +curl +cxx +libxml2 threads test"
