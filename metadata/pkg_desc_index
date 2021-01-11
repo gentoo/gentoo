@@ -8311,7 +8311,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.1.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 1.3.8: Minuit numerical function minimization in Python
 dev-python/immutables 0.14: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.1.1 3.3.0: Read metadata from Python packages
+dev-python/importlib_metadata 3.1.1 3.3.0 3.4.0: Read metadata from Python packages
 dev-python/importlib_resources 3.3.0 4.1.1 5.0.0: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
@@ -8626,7 +8626,7 @@ dev-python/piexif 1.1.3 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0 2.2.0-r1: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
-dev-python/pillow 7.0.0 7.2.0 8.0.1 8.1.0: Python Imaging Library (fork)
+dev-python/pillow 8.1.0: Python Imaging Library (fork)
 dev-python/pip 20.3.1 20.3.3: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
@@ -8852,7 +8852,7 @@ dev-python/pytest-httpbin 1.0.0-r1: Easily test your HTTP library against a loca
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 3.3.1 3.4.0 3.5.0: Thin-wrapper around the mock package for easier use with pytest
+dev-python/pytest-mock 3.3.1 3.4.0 3.5.0 3.5.1: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific order
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
@@ -9203,7 +9203,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.20.1-r1 3.21.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.54.0 4.55.0 4.55.1 4.55.2: Add a progress meter to your loops in a second
+dev-python/tqdm 4.54.0 4.55.0 4.55.1 4.55.2 4.56.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1 0.8.6: A lightweight, object-oriented state machine implementation in Python
@@ -14123,7 +14123,7 @@ media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and 
 media-video/openshot 2.4.4-r1 2.5.1 2.5.1_p20210103: Award-winning free and open-source video editor
 media-video/orion 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
-media-video/parole 1.0.5 4.15.0: A simple Xfce4 media player using GStreamer
+media-video/parole 1.0.5 4.15.0 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/pipewire 0.3.10 0.3.18: Multimedia processing graphs
@@ -15079,7 +15079,7 @@ net-misc/dropbox-cli 2020.03.04: Cli interface for dropbox (python), part of nau
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 4.0.4 4.0.5 4.0.6 4.0.7 4.0.8 4.0.9: User friendly Bitcoin client
+net-misc/electrum 4.0.9: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
@@ -16955,7 +16955,7 @@ sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 3.1-r1 3.1-r2 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 3.0.4-r1 3.0.8 3.0.9 3.0.10-r1 3.0.11-r2 3.0.12 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 3.0.9 3.0.12 3.0.13 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r4: PowerPC utilities and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -17969,7 +17969,7 @@ www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your da
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
-www-apps/postfixadmin 3.2.4 3.3.0: Web Based Management tool for Postfix style virtual domains and users
+www-apps/postfixadmin 3.2.4 3.3.1: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
