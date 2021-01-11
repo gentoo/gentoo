@@ -54,6 +54,8 @@ inherit libtool
 # CONSTANT!
 # The latest major unstable and stable version/slot of automake available
 # on each arch.
+# Only add unstable version if it is in a different slot than latest stable
+# version.
 # List latest unstable version first to boost testing adoption rate because
 # most package manager dependency resolver will pick the first suitable
 # version.
@@ -65,7 +67,7 @@ inherit libtool
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
-_LATEST_AUTOMAKE=( 1.16.1:1.16 1.15.1:1.15 )
+_LATEST_AUTOMAKE=( 1.16.2-r1:1.16 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
