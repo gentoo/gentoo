@@ -85,7 +85,7 @@ src_unpack() {
 		# Need to copy stuff from dlg submodule (#758902)
 		local dlg_inc_dir="${S}/submodules/dlg/include/dlg"
 		local dlg_src_dir="${S}/submodules/dlg/src/dlg"
-		local dlg_dest_dir="${S}/src/dlg"
+		local dlg_dest_dir="${S}/include"
 		mkdir -p "${dlg_dest_dir}/dlg" || die
 		cp "${dlg_inc_dir}"/{dlg,output}.h "${dlg_dest_dir}/dlg" || die
 		cp "${dlg_src_dir}"/* "${dlg_dest_dir}" || die
