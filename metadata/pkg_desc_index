@@ -2515,7 +2515,7 @@ app-misc/neofetch 7.1.0 9999: Simple information system script
 app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8.1 2.9 3.0 3.1 3.2 3.3 3.4 3.5: The missing terminal file browser for X
 app-misc/no-more-secrets 0.3.3 9999: Recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/notary 0.6.1-r1: A project that allows anyone to have trust over arbitrary collections of data
-app-misc/note 1.3.3-r1 1.3.3-r2 1.3.26: A note taking perl program
+app-misc/note 1.3.3-r2 1.3.26: A note taking perl program
 app-misc/nullmodem 0.0.6-r1: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
@@ -2561,7 +2561,7 @@ app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
 app-misc/screenie 20120406: A small and lightweight screen wrapper
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
-app-misc/skim 0.6.9 0.7.0 0.8.1 0.9.3: Command-line fuzzy finder
+app-misc/skim 0.7.0 0.8.1 0.9.3: Command-line fuzzy finder
 app-misc/sl 5.02: sophisticated graphical program which corrects your miss typing
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
@@ -5517,7 +5517,7 @@ dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
-dev-libs/libtomcrypt 1.18.2-r1: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
+dev-libs/libtomcrypt 1.18.2-r2: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
 dev-libs/libtommath 1.2.0: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04-r1: portable ISO C library for polynomial basis arithmetic
@@ -10652,7 +10652,7 @@ dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
-dev-util/cproto 4.7q: Generate C function prototypes from C source code
+dev-util/cproto 4.7q 4.7r: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.8-r1: Red Hat crash utility; used for analyzing kernel core dumps
@@ -13254,7 +13254,7 @@ media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
-media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0: A library for reading and writing images
+media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0 2.2.10.1: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.1-r1 2.4.0: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
@@ -14456,7 +14456,7 @@ net-analyzer/wireshark 3.4.2 3.4.2-r100 99999999: A network protocol analyzer fo
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
-net-analyzer/zabbix 3.0.31-r2 4.0.26-r1 4.0.27-r1 5.0.5-r1 5.0.6-r1 5.0.7 5.2.1-r1 5.2.2-r1 5.2.3: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 3.0.31-r2 4.0.27-r1 5.0.6-r1 5.0.7 5.2.2-r1 5.2.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.12.0_p20200913 1.12.0_p20200913-r100 9999: High performance PPTP, PPPoE and L2TP server
@@ -16053,7 +16053,7 @@ sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database
 sci-geosciences/josm 10966 99999: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 3.4.1: Library for free and lossless compression of the LAS LiDAR format
 sci-geosciences/liblas 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR format common in GIS
-sci-geosciences/libtcd 2.2.5_p2 2.2.7 2.2.7_p2: Library for reading and writing Tide Constituent Database (TCD) files
+sci-geosciences/libtcd 2.2.7_p2: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapserver 7.6.0 7.6.2: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.4 9999: Qt based map editor for the openstreetmap.org project
@@ -16770,7 +16770,7 @@ sys-apps/baselayout 2.4.1-r2 2.6-r1 2.7 2.7-r1 9999: Filesystem baselayout and i
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
 sys-apps/baselayout-prefix 2.2-r5 2.6-r1 2.6-r2: Filesystem baselayout and init scripts
 sys-apps/bat 0.15.4 0.17.1: cat(1) clone with syntax highlighting and Git integration
-sys-apps/biosdevname 0.7.2 0.7.3: Sets BIOS-given device names instead of kernel eth* names
+sys-apps/biosdevname 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 1.01: FreeDOS based BIOS updating utility for Dell machines
 sys-apps/bleachbit 4.0.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.9-r1 0.9-r2: Userspace system daemon to enable security levels for Thunderbolt 3
@@ -16787,7 +16787,7 @@ sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 4.3.1: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.4 2.5: Tools for logs with ANSI color
 sys-apps/consolation 0.0.7: libinput based console mouse daemon
-sys-apps/conspy 1.10 1.14 1.16: Remote control for Linux virtual consoles
+sys-apps/conspy 1.14 1.16: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20201006: Linux tool to dump x86 CPUID information about the CPUs
@@ -16820,7 +16820,7 @@ sys-apps/etckeeper 1.18.14 1.18.15: A collection of tools to let /etc be stored 
 sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
 sys-apps/ethtool 5.4 5.8-r1 5.9 5.10: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/exa 0.9.0-r1: A modern replacement for 'ls' written in Rust
-sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requiring root privileges
+sys-apps/fakechroot 2.20.1: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
@@ -17969,7 +17969,7 @@ www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your da
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
-www-apps/postfixadmin 3.2.3 3.2.4 3.3.0: Web Based Management tool for Postfix style virtual domains and users
+www-apps/postfixadmin 3.2.4 3.3.0: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
