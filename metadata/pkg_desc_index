@@ -1674,7 +1674,7 @@ app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 4.2 4.4: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
-app-doc/kicad-doc 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools manuals
+app-doc/kicad-doc 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1-r1: The Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
@@ -16000,13 +16000,13 @@ sci-electronics/gtkwave 3.3.106: A wave viewer for LXT, LXT2, VZT, GHW and stand
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 10.3-r2 11.0 9999: A Verilog simulation and synthesis tool
-sci-electronics/kicad 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools
-sci-electronics/kicad-footprints 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools footprint libraries
-sci-electronics/kicad-i18n 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools GUI translations
-sci-electronics/kicad-meta 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools (meta package)
-sci-electronics/kicad-packages3d 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools 3D package libraries
-sci-electronics/kicad-symbols 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools symbol libraries
-sci-electronics/kicad-templates 5.1.6 5.1.7 5.1.8: Electronic Schematic and PCB design tools project templates
+sci-electronics/kicad 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools
+sci-electronics/kicad-footprints 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools footprint libraries
+sci-electronics/kicad-i18n 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools GUI translations
+sci-electronics/kicad-meta 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools (meta package)
+sci-electronics/kicad-packages3d 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools 3D package libraries
+sci-electronics/kicad-symbols 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools symbol libraries
+sci-electronics/kicad-templates 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools project templates
 sci-electronics/klayout 0.26.5 0.26.8 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/ktechlab 0.50.0-r1: IDE for microcontrollers and electronics
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
