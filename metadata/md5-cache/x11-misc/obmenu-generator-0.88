@@ -7,5 +7,5 @@ LICENSE=GPL-3+
 RDEPEND=dev-lang/perl[gdbm] dev-perl/Data-Dump >=dev-perl/Linux-DesktopFiles-0.90.0 x11-wm/openbox
 SLOT=0
 SRC_URI=https://github.com/trizen/obmenu-generator/archive/0.88.tar.gz -> obmenu-generator-0.88.tar.gz
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
 _md5_=4ff8114188a53cab0fe69ea6b6a8858f

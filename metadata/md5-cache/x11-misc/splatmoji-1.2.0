@@ -10,5 +10,5 @@ RDEPEND=app-shells/bash x11-misc/rofi x11-misc/xdotool x11-misc/xsel
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cspeterson/splatmoji/archive/v1.2.0.tar.gz -> splatmoji-1.2.0.tar.gz
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
 _md5_=73fe7aedeb949f8440252a9747381105

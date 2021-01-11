@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-perl/Authen-DigestMD5 dev-perl/Authen-NTLM dev-perl/CGI dev-perl/DBI dev-perl/Email-Send dev-perl/Email-Valid dev-perl/Net-DNS dev-perl/Params-Validate dev-perl/URI virtual/perl-Data-Dumper virtual/perl-Digest-MD5 virtual/perl-Digest-SHA virtual/perl-Getopt-Long virtual/perl-MIME-Base64 virtual/perl-Time-HiRes virtual/perl-Time-Local
 SLOT=0
 SRC_URI=http://www.jetmore.org/john/code/swaks/swaks-20201014.0.tar.gz
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b
 _md5_=781da15335e526559bf796bcc9bf9f49

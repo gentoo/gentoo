@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=media-video/mplayer[encode,x264] sys-apps/coreutils sys-apps/pv sys-devel/bc sys-process/time
 SLOT=0
 SRC_URI=mirror://sourceforge/h264enc/h264enc-10.4.7.tar.gz
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
 _md5_=3782bc64743fc0ee6bf16182cd53299b

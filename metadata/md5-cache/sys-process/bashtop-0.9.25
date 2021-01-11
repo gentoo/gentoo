@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/aristocratos/bashtop/archive/v0.9.25.tar.gz -> bashtop-0.9.25.tar.gz
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
 _md5_=4d074addf71c049c7b3fca8c0a4c67bf

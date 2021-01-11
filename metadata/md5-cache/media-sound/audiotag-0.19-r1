@@ -7,5 +7,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=https://github.com/downloads/Daenyth/audiotag/audiotag-0.19.tar.bz2
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
 _md5_=37bdd7666799fa8204761574d7191a96

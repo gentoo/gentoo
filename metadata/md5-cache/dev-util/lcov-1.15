@@ -7,5 +7,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-lang/perl dev-perl/JSON dev-perl/PerlIO-gzip
 SLOT=0
 SRC_URI=https://github.com/linux-test-project/lcov/releases/download/v1.15/lcov-1.15.tar.gz
-_eclasses_=optfeature	6c9aa35fc16df43d7142ef2660e00e25	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=3ea0656088dc62e0b8a83ff835ad456c
