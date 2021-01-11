@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-06">
+  <title>Ark: Symlink vulnerability</title>
+  <synopsis>Ark was found to allow arbitrary file overwrite, possibly allowing
+    arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">ark</product>
+  <announced>2021-01-11</announced>
+  <revised count="1">2021-01-11</revised>
+  <bug>743959</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-apps/ark" auto="yes" arch="*">
+      <unaffected range="ge">20.04.3-r2</unaffected>
+      <vulnerable range="lt">20.04.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ark is a graphical file compression/decompression utility with support
+      for multiple formats.
+    </p>
+  </background>
+  <description>
+    <p>KDE Ark did not fully verify symlinks contained within tar archives.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted tar
+      archive using KDE Ark, possibly resulting in execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KDE Ark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-apps/ark-20.04.3-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-24654">CVE-2020-24654</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-10T20:45:32Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-11T09:13:16Z">sam_c</metadata>
+</glsa>
