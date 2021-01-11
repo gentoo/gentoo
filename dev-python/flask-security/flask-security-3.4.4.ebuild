@@ -39,6 +39,7 @@ BDEPEND="
 		>=dev-python/flask-mail-0.9.1[${PYTHON_USEDEP}]
 		>=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}]
 		>=dev-python/flask-sqlalchemy-2.3[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/mongomock-3.19.0[${PYTHON_USEDEP}]
 		>=dev-python/peewee-3.11.2[${PYTHON_USEDEP}]
 		>=dev-python/phonenumbers-8.11.1[${PYTHON_USEDEP}]
