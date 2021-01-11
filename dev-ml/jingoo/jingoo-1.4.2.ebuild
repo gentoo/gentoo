@@ -21,3 +21,8 @@ RDEPEND="dev-ml/ppx_deriving
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit )"
 BDEPEND="dev-ml/dune"
+
+src_install() {
+	default
+	rm -r "${D}"/usr/doc || die
+}
