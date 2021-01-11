@@ -10,7 +10,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Library for interfacing with calendars"
 LICENSE="GPL-2+ test? ( LGPL-3+ )"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 BDEPEND="
