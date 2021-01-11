@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,17 +18,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND=">=dev-games/physfs-3.0
+RDEPEND="
+	>=dev-games/physfs-3.0
 	dev-libs/boost:=
+	media-libs/freetype
 	media-libs/glew:=
-	virtual/opengl
+	media-libs/libpng:0=
+	>=media-libs/libsdl2-2.0.1[joystick,video]
 	media-libs/libvorbis
 	media-libs/openal
-	>=media-libs/libsdl2-2.0.1[joystick,video]
 	>=media-libs/sdl2-image-2.0.0[png,jpeg]
-	>=net-misc/curl-7.21.7"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	>=net-misc/curl-7.21.7
+	virtual/opengl
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/${MY_P}"
 
