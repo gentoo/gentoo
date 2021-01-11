@@ -14031,7 +14031,7 @@ media-tv/v4l-utils 1.20.0: Separate utilities ebuild from upstream v4l-utils pac
 media-tv/w_scan 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
-media-video/aegisub 3.2.2_p20160518-r2 3.2.2_p20160518-r3 3.2.2_p20160518-r4 3.2.2_p20160518-r100 9999: Advanced subtitle editor
+media-video/aegisub 3.2.2_p20160518-r3 3.2.2_p20160518-r101 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
 media-video/aravis 0.7.2 0.8.5 9999: Library for video acquisition using Genicam cameras
 media-video/asfrecorder 1.1-r1: Linux WindowsMedia streaming client
