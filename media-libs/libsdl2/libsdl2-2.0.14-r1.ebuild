@@ -98,6 +98,11 @@ src_prepare() {
 	rm -r src/video/khronos || die
 	ln -s "${ESYSROOT}/usr/include" src/video/khronos || die
 
+	# SDL seems to customize SDL_config.h.in to remove macros like PACKAGE_NAME.
+	# Stub out eautoheader to prevent those macros from being reintroduced.
+	# https://bugs.gentoo.org/764959
+	eautoheader() { :; }
+
 	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
 
 	# libsdl2-2.0.14 build regression. Please check if still needed
