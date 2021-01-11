@@ -1,0 +1,19 @@
+From 0ae88b90f857bfcc2d0ea33d16753d8eed5db9e1 Mon Sep 17 00:00:00 2001
+From: Jeff Law <law@redhat.com>
+Date: Oct 16 2020 20:08:46 +0000
+Subject: Add missing #include for gcc-11
+
+
+diff --git a/src/bluetooth/lecmaccalculator.cpp b/src/bluetooth/lecmaccalculator.cpp
+index b150466..507603c 100644
+--- a/src/bluetooth/lecmaccalculator.cpp
++++ b/src/bluetooth/lecmaccalculator.cpp
+@@ -38,6 +38,8 @@
+ ****************************************************************************/
+ #include "lecmaccalculator_p.h"
+ 
++#include <limits>
++
+ #include "bluez/bluez_data_p.h"
+ 
+ #include <QtCore/qbytearray.h>
