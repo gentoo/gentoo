@@ -85,7 +85,7 @@ src_unpack() {
 		# Need to copy stuff from dlg submodule (#758902)
 		local dlg_inc_dir="${S}/submodules/dlg/include/dlg"
 		local dlg_src_dir="${S}/submodules/dlg/src/dlg"
-		local dlg_dest_dir="${S}/src/dlg"
+		local dlg_dest_dir="${S}/include"
 		mkdir -p "${dlg_dest_dir}/dlg" || die
 		cp "${dlg_inc_dir}"/{dlg,output}.h "${dlg_dest_dir}/dlg" || die
 		cp "${dlg_src_dir}"/* "${dlg_dest_dir}" || die
@@ -100,8 +100,7 @@ src_prepare() {
 		sed -e "s;@VERSION@;$freetype_major$freetype_minor$freetype_patch;" \
 			< configure.raw > configure.ac || die
 		# eautoheader produces broken ftconfig.in
-		eautoheader() { return 0 ; }
-		AT_M4DIR="." eautoreconf
+		AT_NOEAUTOHEADER="yes" AT_M4DIR="." eautoreconf
 		unset freetype_major freetype_minor freetype_patch
 		popd &>/dev/null || die
 	fi
