@@ -10756,7 +10756,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20201116: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2020.3.0.203.5981.155-r1 2020.3.1.203.6682.168: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2020.3.1.203.6682.168 2021.3.1.203.6682.168: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 2.2.0 2.5.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r6: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 11.0: Find unused include directives in C/C++ programs
@@ -16024,7 +16024,7 @@ sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured ED
 sci-electronics/sigrok-cli 0.7.1-r1 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
-sci-electronics/systemc 2.3.1-r1: A C++ based modeling platform for VLSI and system-level co-design
+sci-electronics/systemc 2.3.1-r1 2.3.4: A C++ based modeling platform for VLSI and system-level co-design
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.7.2 0.7.6: HF propagation prediction tool
 sci-electronics/xcircuit 3.9.73: Circuit drawing and schematic capture program
