@@ -12,7 +12,7 @@ SRC_URI="https://github.com/methane/wsaccel/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 
