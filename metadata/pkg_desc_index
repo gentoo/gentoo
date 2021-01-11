@@ -10672,7 +10672,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.9.0 2.0.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.9.0 2.0.0 2.1.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -17560,7 +17560,7 @@ sys-libs/ldb 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libblockdev 2.24 9999: A library for manipulating block devices
+sys-libs/libblockdev 2.24 2.25 9999: A library for manipulating block devices
 sys-libs/libcap 2.43 2.45 2.46: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.11 0.8 0.8.1-r1 0.8.2-r1: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
