@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,7 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 # app-portage/gemato goes without PYTHON_USEDEP since we're calling
 # the executable.
 RDEPEND="
+	acct-user/portage
 	app-arch/zstd
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
@@ -92,11 +93,6 @@ pkg_pretend() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-
-	# Apply ae8b18f868c9bd039643f89f28f9d92ce8966c3c for bug 755950
-	sed -e 's:^\(from portage.util._xattr import\) \(xattr\)$:\1 XATTRS_WORKS, \2:' \
-		-e 's:xattr\.XATTRS_WORKS:XATTRS_WORKS:' \
-		-i lib/portage/util/_compare_files.py || die
 
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 

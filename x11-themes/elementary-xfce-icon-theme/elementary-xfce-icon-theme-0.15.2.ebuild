@@ -8,19 +8,23 @@ MY_P="${PN%-icon-theme}-${PV}"
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
 HOMEPAGE="https://github.com/shimmerproject/elementary-xfce"
 SRC_URI="https://github.com/shimmerproject/elementary-xfce/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain GPL-1 GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=""
-DEPEND="media-gfx/optipng
+BDEPEND="media-gfx/optipng
 	sys-apps/findutils
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3"
 
-S="${WORKDIR}/${MY_P}"
+src_prepare() {
+	sed -i -e 's:-Werror -O0 -pipe:${CFLAGS} ${CPPFLAGS} ${LDFLAGS}:' \
+		svgtopng/Makefile || die
+	default
+}
 
 src_configure() {
 	# custom script
