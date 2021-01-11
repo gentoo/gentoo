@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,7 +56,8 @@ RDEPEND="!games-engines/zoom
 		wayland? ( dev-qt/qtwayland )
 	)"
 
-BDEPEND="dev-util/bbe"
+BDEPEND="dev-util/bbe
+	bundled-libjpeg-turbo? ( dev-util/patchelf )"
 
 QA_PREBUILT="opt/zoom/*"
 
@@ -75,6 +76,11 @@ src_prepare() {
 		bbe -e 's/libpulse.so/IgNoRePuLsE/' zoom >zoom.tmp || die
 		mv zoom.tmp zoom || die
 	fi
+
+	if use bundled-libjpeg-turbo; then
+		# Remove insecure RPATH from bundled lib
+		patchelf --remove-rpath libturbojpeg.so || die
+	fi
 }
 
 src_install() {
@@ -82,7 +88,7 @@ src_install() {
 	exeinto /opt/zoom
 	doins -r json ringtone sip timezones translations
 	doins *.pcm *.sh Embedded.properties version.txt
-	doexe zoom zoom.sh zopen ZoomLauncher
+	doexe zoom zopen ZoomLauncher
 	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libquazip.so
 
@@ -130,14 +136,6 @@ pkg_postinst() {
 		ver_test ${v} -le 5.0.403652.0509 && FORCE_PRINT_ELOG=1
 	done
 	readme.gentoo_print_elog
-
-	if use bundled-libjpeg-turbo; then
-		ewarn "If the \"bundled-libjpeg-turbo\" flag is enabled, you may see a"
-		ewarn "QA notice about insecure RPATHs in the libturbojpeg.so library"
-		ewarn "bundled with the upstream package. Please report this problem"
-		ewarn "directly to Zoom upstream. Do *not* file a Gentoo bug for it."
-		ewarn "See https://bugs.gentoo.org/715106 for further details."
-	fi
 }
 
 pkg_postrm() {
