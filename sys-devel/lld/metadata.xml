@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>llvm@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="shared">Build shared library and install include files</flag>
+	</use>
 </pkgmetadata>

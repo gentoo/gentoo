@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="shared test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
@@ -49,8 +49,7 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=OFF
-
+		-DBUILD_SHARED_LIBS=$(usex shared)
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 	)
@@ -71,6 +70,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
-	# LLD has no shared libraries, so strip it all for the time being
-	rm -r "${ED}"/usr/{include,lib*} || die
+	if ! use shared; then
+		rm -r "${ED}"/usr/{include,lib*} || die
+	fi
 }

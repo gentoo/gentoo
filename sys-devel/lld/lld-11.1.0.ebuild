@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="test"
+IUSE="shared test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="~sys-devel/llvm-${PV}"
@@ -38,8 +38,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=OFF
-
+		-DBUILD_SHARED_LIBS=$(usex shared)
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 	)
 	use test && mycmakeargs+=(
@@ -60,6 +59,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
-	# LLD has no shared libraries, so strip it all for the time being
-	rm -r "${ED}"/usr/{include,lib*} || die
+	if ! use shared; then
+		rm -r "${ED}"/usr/{include,lib*} || die
+	fi
 }
