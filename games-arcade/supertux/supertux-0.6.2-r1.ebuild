@@ -18,7 +18,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
+# =media-libs/libsdl2-2.0.14-r0 can cause supertux binary to move entire
+# content of ${HOME} to ${HOME}/.local/share/supertux2/
+# DO NOT REMOVE THIS BLOCKER!!! See bug #764959
 RDEPEND="
+	!=media-libs/libsdl2-2.0.14-r0
 	>=dev-games/physfs-3.0
 	dev-libs/boost:=
 	media-libs/freetype
