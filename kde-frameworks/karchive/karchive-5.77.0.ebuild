@@ -7,7 +7,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for reading, creation, and manipulation of various archive formats"
 LICENSE="GPL-2 LGPL-2.1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="
