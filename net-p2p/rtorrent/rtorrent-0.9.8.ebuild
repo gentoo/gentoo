@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="~net-libs/libtorrent-0.13.${PV##*.}
 	>=net-misc/curl-7.19.1
 	sys-libs/ncurses:0=
-	xmlrpc? ( dev-libs/xmlrpc-c )"
+	xmlrpc? ( dev-libs/xmlrpc-c:= )"
 RDEPEND="${COMMON_DEPEND}
 	daemon? ( app-misc/screen )
 	selinux? ( sec-policy/selinux-rtorrent )
