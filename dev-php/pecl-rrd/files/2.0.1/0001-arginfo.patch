@@ -1,0 +1,81 @@
+--- a/rrd.c	2020/09/23 07:41:40	350617
++++ b/rrd.c	2020/09/23 09:09:08	350618
+@@ -552,6 +552,9 @@
+ 	ZEND_ARG_INFO(0, file)
+ 	ZEND_ARG_INFO(0, options)
+ ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO(arginfo_rrd_void, 0)
++ZEND_END_ARG_INFO()
+ /* }}} */
+ 
+ /* {{{ */
+@@ -559,7 +562,7 @@
+ 	PHP_FE(rrd_update, arginfo_rrd_update)
+ 	PHP_FE(rrd_create, arginfo_rrd_create)
+ 	PHP_FE(rrd_graph, arginfo_rrd_graph)
+-	PHP_FE(rrd_error, NULL)
++	PHP_FE(rrd_error, arginfo_rrd_void)
+ 	PHP_FE(rrd_fetch, arginfo_rrd_fetch)
+ 	PHP_FE(rrd_first, arginfo_rrd_first)
+ 	PHP_FE(rrd_info, arginfo_rrd_info)
+@@ -569,9 +572,9 @@
+ 	PHP_FE(rrd_tune, arginfo_rrd_tune)
+ 	PHP_FE(rrd_xport, arginfo_rrd_xport)
+ #ifdef HAVE_RRDC_DISCONNECT
+-	PHP_FE(rrdc_disconnect, NULL)
++	PHP_FE(rrdc_disconnect, arginfo_rrd_void)
+ #endif
+-	PHP_FE(rrd_version, NULL)
++	PHP_FE(rrd_version, arginfo_rrd_void)
+ 	PHP_FE_END
+ };
+ /* }}} */
+--- a/rrd_create.c	2020/09/23 07:41:40	350617
++++ b/rrd_create.c	2020/09/23 09:09:08	350618
+@@ -323,10 +323,13 @@
+ 	ZEND_ARG_INFO(0, description)
+ ZEND_END_ARG_INFO()
+ 
++ZEND_BEGIN_ARG_INFO_EX(arginfo_rrdcreator_void, 0, 0, 0)
++ZEND_END_ARG_INFO()
++
+ /* class method table */
+ static zend_function_entry rrd_create_methods[] = {
+ 	PHP_ME(RRDCreator, __construct, arginfo_rrdcreator_construct, ZEND_ACC_PUBLIC)
+-	PHP_ME(RRDCreator, save, NULL, ZEND_ACC_PUBLIC)
++	PHP_ME(RRDCreator, save, arginfo_rrdcreator_void, ZEND_ACC_PUBLIC)
+ 	PHP_ME(RRDCreator, addDataSource, arginfo_rrdcreator_description, ZEND_ACC_PUBLIC)
+ 	PHP_ME(RRDCreator, addArchive, arginfo_rrdcreator_description, ZEND_ACC_PUBLIC)
+ 	PHP_FE_END
+--- a/rrd_graph.c	2020/09/23 07:41:40	350617
++++ b/rrd_graph.c	2020/09/23 09:09:08	350618
+@@ -140,6 +140,7 @@
+ 	array_init(&zv_argv);
+ 
+ 	ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL(obj->zv_arr_options), num_key, zs_key, zv_option_val) {
++		(void)num_key; /* to avoid -Wunused-but-set-variable */
+ 		smart_string option = {0}; /* one argument option */
+ 
+ 		/* option with string key means long option, hence they are used as
+@@ -356,6 +357,9 @@
+ /* }}} */
+ 
+ /* arguments */
++ZEND_BEGIN_ARG_INFO_EX(arginfo_rrd_void, 0, 0, 0)
++ZEND_END_ARG_INFO()
++
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_rrd_path, 0, 0, 1)
+ 	ZEND_ARG_INFO(0, path)
+ ZEND_END_ARG_INFO()
+@@ -367,8 +371,8 @@
+ /* class method table */
+ static zend_function_entry rrd_graph_methods[] = {
+ 	PHP_ME(RRDGraph, __construct, arginfo_rrd_path, ZEND_ACC_PUBLIC)
+-	PHP_ME(RRDGraph, save, NULL, ZEND_ACC_PUBLIC)
+-	PHP_ME(RRDGraph, saveVerbose, NULL, ZEND_ACC_PUBLIC)
++	PHP_ME(RRDGraph, save, arginfo_rrd_void, ZEND_ACC_PUBLIC)
++	PHP_ME(RRDGraph, saveVerbose, arginfo_rrd_void, ZEND_ACC_PUBLIC)
+ 	PHP_ME(RRDGraph, setOptions, arginfo_rrd_options, ZEND_ACC_PUBLIC)
+ 	PHP_FE_END
+ };
