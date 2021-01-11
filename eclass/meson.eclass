@@ -149,7 +149,7 @@ _meson_get_machine_info() {
 
 	local ver_opt
 	case "${EAPI}" in
-		6) ver_opt=--host-route ;;
+		6) ver_opt=--host-root ;;
 		*) ver_opt=-b ;;
 	esac
 	if has_version "${ver_opt}" '<dev-util/meson-0.56.0'; then
