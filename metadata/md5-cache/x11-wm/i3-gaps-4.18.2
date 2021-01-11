@@ -1,4 +1,4 @@
-BDEPEND=app-text/asciidoc app-text/xmlto dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-text/asciidoc app-text/xmlto dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=dev-libs/glib:2 dev-libs/libev dev-libs/libpcre dev-libs/yajl x11-libs/cairo[X,xcb(+)] x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/pango[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm test? ( dev-perl/ExtUtils-PkgConfig dev-perl/IPC-Run dev-perl/Inline dev-perl/Inline-C dev-perl/X11-XCB dev-perl/XS-Object-Magic x11-base/xorg-server[xephyr,xvfb] x11-misc/xvfb-run )
 DESCRIPTION=i3 fork with gaps and some more features
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/libev dev-libs/libpcre dev-libs/yajl x11-libs/c
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Airblader/i3/archive/4.18.2.tar.gz -> i3-gaps-4.18.2.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=ea54fb571cf6ceb87a84446a313f494f

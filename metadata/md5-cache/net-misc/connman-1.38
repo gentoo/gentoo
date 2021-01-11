@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install postinst prepare
 DEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 sys-libs/readline:0= bluetooth? ( net-wireless/bluez ) iptables? ( >=net-firewall/iptables-1.4.8 ) iwd? ( net-wireless/iwd ) l2tp? ( net-dialup/xl2tpd ) nftables? ( >=net-libs/libnftnl-1.0.4:0= >=net-libs/libmnl-1.0.0:0= ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wireguard? ( >=net-libs/libmnl-1.0.0:0= ) wispr? ( net-libs/gnutls ) >=sys-kernel/linux-headers-2.6.39
 DESCRIPTION=Provides a daemon for managing internet connections
@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 sys-libs/readline:0= bluetoo
 REQUIRED_USE=^^ ( iptables nftables )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/network/connman/connman-1.38.tar.xz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=e5590b6f22fa25bdefee5f09fb27aee9

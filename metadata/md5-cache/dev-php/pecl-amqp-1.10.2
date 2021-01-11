@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=net-libs/rabbitmq-c-0.5.2:=[ssl] php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DESCRIPTION=PHP Bindings for AMQP 0-9-1 compatible brokers
@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_t
 RESTRICT=test
 SLOT=0
 SRC_URI=https://pecl.php.net/get/amqp-1.10.2.tgz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=8462244f21a9da79b8b4da6b279972cc

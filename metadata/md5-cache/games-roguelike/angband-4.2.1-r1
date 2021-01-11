@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=X? ( media-fonts/font-misc-misc x11-libs/libX11 ) ncurses? ( sys-libs/ncurses:0=[unicode] ) sdl? ( media-libs/libsdl2[video,X] media-libs/sdl2-image media-libs/sdl2-ttf sound? ( media-libs/libsdl2[sound] media-libs/sdl2-mixer[mp3] ) )
 DESCRIPTION=A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
@@ -11,5 +11,5 @@ RDEPEND=X? ( media-fonts/font-misc-misc x11-libs/libX11 ) ncurses? ( sys-libs/nc
 REQUIRED_USE=sound? ( sdl ) || ( X ncurses )
 SLOT=0
 SRC_URI=https://rephial.org/downloads/4.2/angband-4.2.1.tar.gz https://dev.gentoo.org/~steils/distfiles/angband-4.2.1-man.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=6b92bc2bfd331bd0cfae2a02d7a4b4c2

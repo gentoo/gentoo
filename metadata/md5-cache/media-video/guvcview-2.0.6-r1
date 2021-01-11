@@ -1,4 +1,4 @@
-BDEPEND=dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=>=dev-libs/glib-2.10 media-libs/libpng:0= media-libs/libsdl2 media-libs/libv4l >=media-libs/portaudio-19_pre >=media-video/ffmpeg-2.8:0= virtual/libusb:1 virtual/udev gsl? ( >=sci-libs/gsl-1.15 ) pulseaudio? ( >=media-sound/pulseaudio-0.9.15 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) !qt5? ( >=x11-libs/gtk+-3.6:3 ) >=sys-kernel/linux-headers-3.4-r2 virtual/os-headers
 DESCRIPTION=Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/glib-2.10 media-libs/libpng:0= media-libs/libsdl2 media-libs/libv4l >=media-libs/portaudio-19_pre >=media-video/ffmpeg-2.8:0= virtual/libusb:1 virtual/udev gsl? ( >=sci-libs/gsl-1.15 ) pulseaudio? ( >=media-sound/pulseaudio-0.9.15 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) !qt5? ( >=x11-libs/gtk+-3.6:3 )
 SLOT=0
 SRC_URI=mirror://sourceforge/guvcview/guvcview-src-2.0.6.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=121c6e05a74c4108110c5a841afca601

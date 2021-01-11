@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig v4l? ( >=sys-kernel/linux-headers-2.6.11 ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig v4l? ( >=sys-kernel/linux-headers-2.6.11 ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=>=media-video/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/faac ) alsa? ( media-libs/alsa-lib ) dv? ( media-libs/libdv ) dvd? ( media-libs/libdvdread:0= ) iconv? ( virtual/libiconv ) imagemagick? ( media-gfx/imagemagick:= ) jpeg? ( virtual/jpeg:0= ) lzo? ( >=dev-libs/lzo-2 ) mjpeg? ( media-video/mjpegtools ) mp3? ( media-sound/lame ) mpeg? ( media-libs/libmpeg2 ) ogg? ( media-libs/libogg ) postproc? ( >=media-video/ffmpeg-0.10 ) quicktime? ( >=media-libs/libquicktime-1 ) sdl? ( >=media-libs/libsdl-1.2.5[X?] ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2 ) v4l? ( media-libs/libv4l ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv ) x264? ( media-libs/x264:= ) xml? ( dev-libs/libxml2 ) xvid? ( media-libs/xvid )
 DESCRIPTION=Utilities for transcoding video and audio codecs in different containers
@@ -11,5 +11,5 @@ RDEPEND=>=media-video/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/f
 REQUIRED_USE=cpu_flags_x86_sse? ( cpu_flags_x86_mmx ) cpu_flags_x86_sse2? ( cpu_flags_x86_mmx cpu_flags_x86_sse ) cpu_flags_x86_3dnow? ( cpu_flags_x86_mmx ) nuv? ( lzo )
 SLOT=0
 SRC_URI=https://www.bitbucket.org/france/transcode-tcforge/downloads/transcode-1.1.7.tar.bz2 https://dev.gentoo.org/~mgorny/dist/transcode-1.1.7-patchset.tar.bz2 https://dev.gentoo.org/~whissi/dist/transcode/transcode-1.1.7-ffmpeg4.patch.xz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=3da2cfeb0b57087e66d9a4248b254307

@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst postrm preinst prepare
 DEPEND=alsa? ( media-libs/alsa-lib ) debug? ( sys-libs/ncurses:0= ) network? ( media-libs/sdl2-net ) opengl? ( virtual/opengl ) opus? ( media-libs/opusfile ) media-libs/libpng:0= media-libs/libsdl2[joystick,opengl?,video,X] sys-libs/zlib !games-emulation/dosbox dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Modernized DOSBox soft-fork
@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=alsa? ( media-libs/alsa-lib ) debug? ( sys-libs/ncurses:0= ) network? ( media-libs/sdl2-net ) opengl? ( virtual/opengl ) opus? ( media-libs/opusfile ) media-libs/libpng:0= media-libs/libsdl2[joystick,opengl?,video,X] sys-libs/zlib !games-emulation/dosbox
 SLOT=0
 SRC_URI=https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.1.tar.gz -> dosbox-staging-0.75.1.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=9d76c514c4536bce95b01884e6ccc050

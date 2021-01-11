@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare pretend
 DEPEND=dev-libs/glib:2 gadu? ( <net-libs/libgadu-1.12:0= ) gpg? ( app-crypt/gpgme:1= ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl:0= ) openssl? ( dev-libs/openssl:0= ) perl? ( dev-lang/perl:0= ) readline? ( sys-libs/readline:0= ) rss? ( dev-libs/expat:0= ) ssl? ( net-libs/gnutls:0= ) xmpp? ( dev-libs/expat:0= ) zlib? ( sys-libs/zlib:0= ) ncurses? ( sys-libs/ncurses:0=[unicode=] gpm? ( sys-libs/gpm:0= ) spell? ( app-text/aspell:0= ) ) sqlite? ( dev-db/sqlite:3= ) sys-devel/gettext
 DESCRIPTION=Text-based, multi-protocol instant messenger
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gadu? ( <net-libs/libgadu-1.12:0= ) gpg? ( app-crypt/gpgme:1= ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl:0= ) openssl? ( dev-libs/openssl:0= ) perl? ( dev-lang/perl:0= ) readline? ( sys-libs/readline:0= ) rss? ( dev-libs/expat:0= ) ssl? ( net-libs/gnutls:0= ) xmpp? ( dev-libs/expat:0= ) zlib? ( sys-libs/zlib:0= ) ncurses? ( sys-libs/ncurses:0=[unicode=] gpm? ( sys-libs/gpm:0= ) spell? ( app-text/aspell:0= ) ) sqlite? ( dev-db/sqlite:3= )
 SLOT=0
 SRC_URI=https://github.com/ekg2/ekg2/archive/f427d083ee899d42532c046100490a915b0e8a82.tar.gz -> ekg2-f427d083ee899d42532c046100490a915b0e8a82.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=c9b89420dd00350757194904908f799c

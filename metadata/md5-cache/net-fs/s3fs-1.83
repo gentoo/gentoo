@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0= ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls:= ) nettle? ( dev-libs/nettle:= ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4:0 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0= ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls:= ) nettle? ( dev-libs/nettle:= ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4:0 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Amazon S3 mounting via fuse
 EAPI=6
 HOMEPAGE=https://github.com/s3fs-fuse/s3fs-fuse/
@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( openssl nss gnutls ) nettle? ( gnutls )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.83.tar.gz -> s3fs-1.83.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=0bc2be0d7f303664c50532c6d3bba5fc

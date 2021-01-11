@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare unpack
-DEPEND=>=dev-libs/libmirage-2.0.0:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) dev-libs/libassuan virtual/pkgconfig test? ( app-arch/xz-utils ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=>=dev-libs/libmirage-2.0.0:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) dev-libs/libassuan virtual/pkgconfig test? ( app-arch/xz-utils ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=CD/DVD image converter using libmirage
 EAPI=6
 HOMEPAGE=https://github.com/mgorny/mirage2iso/
@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=>=dev-libs/libmirage-2.0.0:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) pinentry? ( app-crypt/pinentry )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=7bfb098ed27dfa0637e042008d0d70ea

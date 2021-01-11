@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare test
-DEPEND=>=app-emulation/libspectrum-1.4.4 dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) backend-sdl? ( media-libs/libsdl ) backend-svga? ( media-libs/svgalib ) backend-X? ( x11-libs/libX11 x11-libs/libXext ) !backend-fbcon? ( !backend-sdl? ( !backend-svga? ( !backend-X? ( x11-libs/gtk+:3 ) ) ) ) gpm? ( sys-libs/gpm ) joystick? ( !backend-sdl? ( media-libs/libjsw ) ) png? ( media-libs/libpng:0= sys-libs/zlib ) xml? ( dev-libs/libxml2:2 ) backend-fbcon? ( virtual/linux-sources ) dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=app-emulation/libspectrum-1.4.4 dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) backend-sdl? ( media-libs/libsdl ) backend-svga? ( media-libs/svgalib ) backend-X? ( x11-libs/libX11 x11-libs/libXext ) !backend-fbcon? ( !backend-sdl? ( !backend-svga? ( !backend-X? ( x11-libs/gtk+:3 ) ) ) ) gpm? ( sys-libs/gpm ) joystick? ( !backend-sdl? ( media-libs/libjsw ) ) png? ( media-libs/libpng:0= sys-libs/zlib ) xml? ( dev-libs/libxml2:2 ) backend-fbcon? ( virtual/linux-sources ) dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Free Unix Spectrum Emulator by Philip Kendall
 EAPI=6
 HOMEPAGE=http://fuse-emulator.sourceforge.net
@@ -10,5 +10,5 @@ RDEPEND=>=app-emulation/libspectrum-1.4.4 dev-libs/glib:2 alsa? ( media-libs/als
 REQUIRED_USE=?? ( backend-fbcon backend-sdl backend-svga backend-X )
 SLOT=0
 SRC_URI=mirror://sourceforge/fuse-emulator/fuse-1.5.7.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=73274ec6f9409db706923839bd498d71

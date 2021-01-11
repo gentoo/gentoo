@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= sys-apps/groff sys-devel/flex virtual/awk doc? ( dev-texlive/texlive-fontsrecommended virtual/latex-base ) virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=A toolset for processing LinuxDoc DTD SGML files
@@ -10,5 +10,5 @@ LICENSE=GPL-3+ MIT SGMLUG
 RDEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= sys-apps/groff virtual/latex-base >=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://gitlab.com/agmartin/linuxdoc-tools/-/archive/0.9.73/linuxdoc-tools-0.9.73.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	latex-package	e5f296c98696dd02059bc6a5a03282e2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	latex-package	e5f296c98696dd02059bc6a5a03282e2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=66c0c6261850b64fa14be1a728a2ad31

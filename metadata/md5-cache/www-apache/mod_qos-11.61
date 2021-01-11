@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND==www-servers/apache-2* >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND==www-servers/apache-2* >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A QOS module for the apache webserver
 EAPI=5
 HOMEPAGE=http://mod-qos.sourceforge.net/
@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libpcre:3 dev-libs/openssl:0= media-libs/libpng:0= sys-libs/zlib:0= =www-servers/apache-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/mod-qos/mod_qos-11.61.tar.gz
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	autotools	3ec5e49b810b2571ca9c6d76f55867bb	depend.apache	94458fe4e9466f4803360408e60e11fd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	autotools	9677fc170e6d375dc41c14871b33d28c	depend.apache	94458fe4e9466f4803360408e60e11fd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=92418ea9644a530a3ac886e799bb770f

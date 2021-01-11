@@ -1,0 +1,14 @@
+BDEPEND=>=dev-ml/dune-2.7 dev-lang/ocaml dev-ml/opam-installer dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-lang/ocaml:= >=dev-lang/ocaml-4:=
+DESCRIPTION=Error-recovering streaming HTML5 and XML parsers
+EAPI=7
+HOMEPAGE=https://github.com/aantron/markup.ml
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/ocaml:= >=dev-lang/ocaml-4:=
+SLOT=0/1.0.0
+SRC_URI=https://github.com/aantron/markup.ml/archive/1.0.0.tar.gz -> markup-1.0.0.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	opam	4f1cff0457cf4790a5510753a67d1cc1
+_md5_=58a1d88d8b235ff3992bc56f7d65188b

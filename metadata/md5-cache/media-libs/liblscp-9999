@@ -1,4 +1,4 @@
-BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/subversion[http(+)] net-misc/rsync
+BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/subversion[http(+)] net-misc/rsync
 DEFINED_PHASES=configure install preinst prepare unpack
 DESCRIPTION=C++ library for the Linux Sampler control protocol
 EAPI=7
@@ -7,5 +7,5 @@ IUSE=doc
 LICENSE=LGPL-2.1
 PROPERTIES=live
 SLOT=0
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	estack	055c42df72f76a4f45ec92b35e83cd56	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	estack	055c42df72f76a4f45ec92b35e83cd56	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=35becc996fb06f07941564077c4b4ad4

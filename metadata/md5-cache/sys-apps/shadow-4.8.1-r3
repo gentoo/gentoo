@@ -1,4 +1,4 @@
-BDEPEND=app-arch/xz-utils sys-devel/gettext >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-arch/xz-utils sys-devel/gettext >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst preinst prepare
 DEPEND=virtual/libcrypt:= acl? ( sys-apps/acl:0= ) audit? ( >=sys-process/audit-2.6:0= ) cracklib? ( >=sys-libs/cracklib-2.7-r3:0= ) nls? ( virtual/libintl ) pam? ( sys-libs/pam:0= ) skey? ( sys-auth/skey:0= ) selinux? ( >=sys-libs/libselinux-1.28:0= sys-libs/libsemanage:0= ) xattr? ( sys-apps/attr:0= ) >=sys-kernel/linux-headers-4.14
 DESCRIPTION=Utilities to deal with user accounts
@@ -11,5 +11,5 @@ RDEPEND=virtual/libcrypt:= acl? ( sys-apps/acl:0= ) audit? ( >=sys-process/audit
 REQUIRED_USE=?? ( cracklib pam )
 SLOT=0
 SRC_URI=https://github.com/shadow-maint/shadow/releases/download/4.8.1/shadow-4.8.1.tar.xz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=3c58e17712fe199e3796dcd643673bd4

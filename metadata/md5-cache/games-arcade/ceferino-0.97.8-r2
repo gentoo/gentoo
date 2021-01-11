@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=>=media-libs/libsdl-1.2[video] >=media-libs/sdl-image-1.2 >=media-libs/sdl-mixer-1.2 nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=media-libs/libsdl-1.2[video] >=media-libs/sdl-image-1.2 >=media-libs/sdl-mixer-1.2 nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Super-Pang clone (destroy bouncing balloons with your grapnel)
 EAPI=6
 HOMEPAGE=http://www.losersjuegos.com.ar/juegos/ceferino
@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=media-libs/libsdl-1.2[video] >=media-libs/sdl-image-1.2 >=media-libs/sdl-mixer-1.2 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/c/ceferino/ceferino_0.97.8+svn37.orig.tar.gz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=0efa307b5fecb9895b7ee06d5eab4f20

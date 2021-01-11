@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) valgrind? ( dev-util/valgrind ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) valgrind? ( dev-util/valgrind ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare unpack
 DEPEND=brotli? ( app-arch/brotli ) bzip2? ( app-arch/bzip2 ) !gnutls? ( dev-libs/libgcrypt:= ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) ) ) gpgme? ( app-crypt/gpgme dev-libs/libassuan dev-libs/libgpg-error ) http2? ( net-libs/nghttp2 ) idn? ( net-dns/libidn2:= ) lzma? ( app-arch/xz-utils ) pcre? ( dev-libs/libpcre2 ) psl? ( net-libs/libpsl ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib )
 DESCRIPTION=GNU Wget2 is a file and recursive website downloader
@@ -11,5 +11,5 @@ RDEPEND=brotli? ( app-arch/brotli ) bzip2? ( app-arch/bzip2 ) !gnutls? ( dev-lib
 REQUIRED_USE=valgrind? ( test )
 RESTRICT=!test? ( test )
 SLOT=0/0
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=93f8eb82bb8884866bed29e9517fcf5a

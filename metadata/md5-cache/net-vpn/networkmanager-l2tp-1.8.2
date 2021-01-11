@@ -1,4 +1,4 @@
-BDEPEND=>=net-misc/networkmanager-1.2[ppp] dev-libs/dbus-glib net-dialup/ppp[eap-tls] net-dialup/xl2tpd >=dev-libs/glib-2.32 || ( net-vpn/strongswan net-vpn/libreswan ) gnome? ( x11-libs/gtk+:3 app-crypt/libsecret gnome-extra/nm-applet ) sys-devel/gettext dev-util/intltool virtual/pkgconfig app-arch/xz-utils >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=net-misc/networkmanager-1.2[ppp] dev-libs/dbus-glib net-dialup/ppp[eap-tls] net-dialup/xl2tpd >=dev-libs/glib-2.32 || ( net-vpn/strongswan net-vpn/libreswan ) gnome? ( x11-libs/gtk+:3 app-crypt/libsecret gnome-extra/nm-applet ) sys-devel/gettext dev-util/intltool virtual/pkgconfig app-arch/xz-utils >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure prepare
 DESCRIPTION=NetworkManager L2TP plugin
 EAPI=7
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-misc/networkmanager-1.2[ppp] dev-libs/dbus-glib net-dialup/ppp[eap-tls] net-dialup/xl2tpd >=dev-libs/glib-2.32 || ( net-vpn/strongswan net-vpn/libreswan ) gnome? ( x11-libs/gtk+:3 app-crypt/libsecret gnome-extra/nm-applet )
 SLOT=0
 SRC_URI=https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.8.2/NetworkManager-l2tp-1.8.2.tar.xz
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=2665255fc25e57e774b796a3b473682d

@@ -1,4 +1,4 @@
-BDEPEND=>=app-text/xmlto-0.0.26-r1[text(+)] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-text/xmlto-0.0.26-r1[text(+)] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare
 DESCRIPTION=Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 EAPI=7
@@ -10,5 +10,5 @@ RDEPEND=dev-util/desktop-file-utils dev-perl/File-MimeInfo dev-perl/Net-DBus dev
 RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/9816ebb3e6fd9f23e993b8b7fcbd56f92d9c9197/xdg-utils-1.1.3_p20200220.tar.bz2
-_eclasses_=autotools	3ec5e49b810b2571ca9c6d76f55867bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9677fc170e6d375dc41c14871b33d28c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=869bbe5f182c44cb883e360667f1bd6f
