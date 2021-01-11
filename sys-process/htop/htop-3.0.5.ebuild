@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,10 +28,6 @@ DOCS=( ChangeLog README )
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
 S="${WORKDIR}/${P/_}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-3.0.3-tinfo.patch" #690840
-)
 
 pkg_setup() {
 	if ! has_version sys-process/lsof; then
