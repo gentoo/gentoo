@@ -32,11 +32,13 @@ optfeature() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local i j msg
+	local -a arr
 	local desc=$1
 	local flag=0
 	shift
 	for i; do
-		for j in ${i}; do
+		read -r -d '' -a arr <<<"${i}"
+		for j in "${arr[@]}"; do
 			if has_version "${j}"; then
 				flag=1
 			else
@@ -50,8 +52,9 @@ optfeature() {
 	done
 	if [[ ${flag} -eq 0 ]]; then
 		for i; do
+			read -r -d '' -a arr <<<"${i}"
 			msg=" "
-			for j in ${i}; do
+			for j in "${arr[@]}"; do
 				msg+=" ${j} and"
 			done
 			msg="${msg:0: -4} for ${desc}"
