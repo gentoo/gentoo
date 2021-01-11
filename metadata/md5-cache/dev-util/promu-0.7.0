@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=Prometheus Utility Tool
+EAPI=7
+HOMEPAGE=https://github.com/prometheus/promu
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=Apache-2.0 BSD BSD-2 MIT
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/prometheus/promu/archive/v0.7.0.tar.gz -> promu-0.7.0.tar.gz
+_eclasses_=go-module	92660621959e7fab813173772987588b
+_md5_=1000f0659c0186fb6afb435f497a4a79
