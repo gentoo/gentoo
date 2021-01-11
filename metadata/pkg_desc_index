@@ -2773,7 +2773,7 @@ app-shells/bashdb 4.4.1.0.1 5.0.1.1.0 5.0.1.1.2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
 app-shells/ctypes-sh 1.2: Foreign function interface for bash
-app-shells/dash 0.5.11.2 0.5.11.3 0.5.11.3-r1: Debian Almquist Shell
+app-shells/dash 0.5.11.3-r1: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1 3.0.2 3.1.0 3.1.2 9999: Friendly Interactive SHell
@@ -5388,7 +5388,7 @@ dev-libs/libdnsres 0.1a-r2 0.1a-r3: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
-dev-libs/libebml 1.3.9 1.3.10 1.4.0: Extensible binary format library (kinda like XML)
+dev-libs/libebml 1.3.9 1.3.10 1.4.0 1.4.1: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20191211.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
@@ -17227,14 +17227,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: Kubernetes API server
-sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes API server
+sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: Kubernetes Scheduler
-sys-cluster/kubeadm 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.17.14 1.18.14 1.19.6 1.20.0 1.20.1: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Scheduler
+sys-cluster/kubeadm 1.17.14 1.18.14 1.19.6 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.17.14 1.18.14 1.19.6 1.20.1: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
@@ -17674,7 +17674,7 @@ sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with exte
 sys-process/ftop 1.0 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
 sys-process/gnome-usage 3.32.0: A nice way to view information about use of system resources.
-sys-process/htop 3.0.2 3.0.3 3.0.4-r1: interactive process viewer
+sys-process/htop 3.0.2 3.0.4-r1 3.0.5: interactive process viewer
 sys-process/incron 0.5.12_p20191114: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5-r1: tool for identifying where in the system latency is happening
@@ -18270,7 +18270,7 @@ x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module f
 x11-libs/libva 2.5.0-r1 2.6.1 2.7.1 2.8.0 2.9.0 2.9.1 2.10.0 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 2.4.1 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.1.1-r1 20.1.1-r2 20.2.0 20.2.0-r1 20.2.0-r2 9999: Intel Media Driver for VAAPI (iHD)
+x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.1.1-r1 20.1.1-r2 20.2.0 20.2.0-r1 20.2.0-r2 20.4.5 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit
