@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
@@ -55,19 +55,16 @@ CDEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	virtual/libelf:0=
 	virtual/udev
-	dell? (
-		>=sys-libs/libsmbios-2.4.0
-	)
+	dell? ( >=sys-libs/libsmbios-2.4.0 )
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
-	policykit? (
-		>=sys-auth/polkit-0.103
-	)
+	policykit? ( >=sys-auth/polkit-0.103 )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
 		media-libs/fontconfig
 		media-libs/freetype
+		net-libs/gnutls
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
 		sys-libs/efivar
@@ -92,7 +89,7 @@ PATCHES=(
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-	if use nvme; then
+	if use nvme ; then
 		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
 	fi
 }
@@ -126,10 +123,12 @@ src_configure() {
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
 		$(meson_use tpm)
-		$(meson_use uefi plugin_uefi)
+		$(meson_use uefi plugin_uefi_capsule)
+		$(meson_use uefi plugin_uefi_pk)
+		-Dconsolekit="false"
+		-Dcurl="true"
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
-		-Dconsolekit="false"
 	)
 	use ppc64 && emesonargs+=( -Dplugin_msr="false" )
 	export CACHE_DIRECTORY="${T}"
