@@ -6,7 +6,7 @@ inherit eutils desktop
 
 SLOT="0"
 PV_STRING="$(ver_cut 2-6)"
-MY_PV="$(ver_cut 1-2)"
+MY_PV="$(ver_cut 1-3)"
 MY_PN="idea"
 # Using the most recent Jetbrains Runtime binaries available at the time of writing
 # ( jre 11.0.8 build 1098.1  )
