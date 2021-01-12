@@ -1,35 +1,35 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="A vt102 terminal emulator for X"
 HOMEPAGE="http://www.eterm.org/"
 SRC_URI="
 	http://www.eterm.org/download/${P^}.tar.gz
 	!minimal? ( http://www.eterm.org/download/Eterm-bg-${PV}.tar.gz )"
+S="${WORKDIR}/${P^}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos"
 IUSE="escreen minimal cpu_flags_x86_mmx cpu_flags_x86_sse2 unicode +utempter"
 
+BDEPEND="sys-apps/man2html"
 RDEPEND="
+	media-libs/imlib2[X]
+	media-fonts/font-misc-misc
 	x11-libs/libX11
 	x11-libs/libXt
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libast
-	media-libs/imlib2[X]
-	media-fonts/font-misc-misc
 	escreen? ( app-misc/screen )
 "
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README ReleaseNotes bg/README.backgrounds )
 PATCHES=( "${FILESDIR}"/${P}-asm-gnu-stack.patch )
-
-S=${WORKDIR}/${P^}
 
 src_unpack() {
 	unpack ${P^}.tar.gz
@@ -55,6 +55,7 @@ src_configure() {
 src_install() {
 	use escreen && DOCS+=( doc/README.Escreen )
 	default
+
 	# We don't install headers to link against this library
-	rm -f "${ED%/}"/usr/*/libEterm.{so,la} || die
+	rm "${ED}"/usr/*/libEterm.{so,la} || die
 }
