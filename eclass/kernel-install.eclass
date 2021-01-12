@@ -346,7 +346,7 @@ kernel-install_install_all() {
 	local success=
 	# not an actual loop but allows error handling with 'break'
 	while :; do
-		mount-boot_pkg_preinst
+		nonfatal mount-boot_check_status || break
 
 		local image_path=$(dist-kernel_get_image_path)
 		if use initramfs; then
