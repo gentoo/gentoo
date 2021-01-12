@@ -1,6 +1,6 @@
 Run tests in src_test() instead of src_compile() and src_install()
 
----- a/CMakeLists.txt
+--- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -37,6 +37,8 @@ if("${os_name}" STREQUAL "clear-linux-os")
      set(CMAKE_INSTALL_SYSCONFDIR "usr/share/defaults/etc")
