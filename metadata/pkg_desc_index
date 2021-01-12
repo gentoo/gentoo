@@ -7885,7 +7885,7 @@ dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilit
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/GitPython 3.1.11 3.1.12: Library used to interact with Git repositories
-dev-python/GridDataFormats 0.4.0-r1: Reading and writing of data on regular grids in Python
+dev-python/GridDataFormats 0.4.0-r1 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
@@ -8275,7 +8275,7 @@ dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
 dev-python/grpcio 1.32.0-r1: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
-dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read and write it
+dev-python/gsd 1.5.3-r1 2.4.0: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.16.2: A Python Interface to GStreamer
 dev-python/guessit 3.1.1 3.2.0: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
@@ -15911,7 +15911,7 @@ sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.20 2.21: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
-sci-chemistry/MDAnalysis 0.18.0-r1: A python library to analyze and manipulate molecular dynamics trajectories
+sci-chemistry/MDAnalysis 0.18.0-r1 1.0.0: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restraint violations
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
@@ -15930,7 +15930,7 @@ sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed informati
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2019.5-r1 2019.6 2020.4 2020.9999 2021_beta3 2021.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021_beta3 2021.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
@@ -18913,7 +18913,7 @@ x11-themes/tactile3 3.1: The third evolution of Tactile theme series
 x11-themes/tangerine-icon-theme 0.27: a derivative of the standard Tango theme, using a more orange approach
 x11-themes/tango-icon-theme 0.8.90-r1: SVG and PNG icon theme from the Tango project
 x11-themes/tango-icon-theme-extras 0.1.0-r2: Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP
-x11-themes/ubuntu-wallpapers 20.04.2 20.10.3: Ubuntu wallpapers
+x11-themes/ubuntu-wallpapers 20.10.3: Ubuntu wallpapers
 x11-themes/vanilla-dmz-aa-xcursors 0.4.5: Style neutral scalable cursor theme (black version)
 x11-themes/vanilla-dmz-xcursors 0.4.5: Style neutral scalable cursor theme (white version)
 x11-themes/vdr-channel-logos 0.2 0.2-r2: Logos for vdr-skin*
