@@ -4,10 +4,10 @@ DESCRIPTION=Tools for use with Usermode Linux virtual machines
 EAPI=7
 HOMEPAGE=http://user-mode-linux.sourceforge.net/
 IUSE=fuse
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 arm ~x86
 LICENSE=GPL-2
 RDEPEND=fuse? ( sys-fs/fuse:0= ) sys-libs/readline:0=
 SLOT=0
 SRC_URI=http://user-mode-linux.sourceforge.net/uml_utilities_20070815.tar.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=e8472c8c9cca2e274935b9eef5944cfd
+_md5_=b6c614577d14b91052c572e527a7d4b3
