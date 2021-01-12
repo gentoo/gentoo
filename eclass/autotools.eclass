@@ -367,16 +367,16 @@ eautoconf() {
 
 	# Install config.guess and config.sub which are required by many macros
 	# in Autoconf >=2.70.
-	local gnuconfig
+	local _gnuconfig
 	case ${EAPI:-0} in
 		0|1|2|3|4|5|6)
-			gnuconfig="${EPREFIX}/usr/share/gnuconfig"
+			_gnuconfig="${EPREFIX}/usr/share/gnuconfig"
 		;;
 		*)
-			gnuconfig="${BROOT}/usr/share/gnuconfig"
+			_gnuconfig="${BROOT}/usr/share/gnuconfig"
 		;;
 	esac
-	cp "${gnuconfig}"/config.{guess,sub} . || die
+	cp "${_gnuconfig}"/config.{guess,sub} . || die
 
 	autotools_run_tool --at-m4flags autoconf "$@"
 }
