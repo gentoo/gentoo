@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=install postinst prepare
-DEPEND=gnome-base/libglade:2.0 sys-libs/zlib virtual/fam x11-libs/gtk+:2 x11-libs/libX11
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=gnome-base/libglade:2.0 sys-libs/zlib virtual/fam x11-libs/gtk+:2 x11-libs/libX11 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=GUI tool used to make the management of Pure-FTPd a little easier
 EAPI=7
 HOMEPAGE=http://purify.sourceforge.net/
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=gnome-base/libglade:2.0 sys-libs/zlib virtual/fam x11-libs/gtk+:2 x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://sourceforge/purify/pureadmin-0.4.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
-_md5_=9c7e72ac515a514e91067b53c66127ef
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=8acbc492962643f1b3eaea5a0f970e17

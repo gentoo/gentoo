@@ -2830,7 +2830,7 @@ app-text/atril 1.24.0-r1 1.24.0-r2: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.99: barcode generator
 app-text/bdf2psf 1.155: Converter to generate console fonts from BDF source fonts
-app-text/bibclean 2.17: BibTeX bibliography prettyprinter and syntax checker
+app-text/bibclean 2.17 3.04: BibTeX bibliography prettyprinter and syntax checker
 app-text/bibletime 2.11.2 3.0: Qt Bible-study application using the SWORD library
 app-text/bibutils 6.7: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: Search files for a byte sequence specified on the command line
@@ -2881,7 +2881,7 @@ app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/dvipng 1.15-r1 1.17: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
-app-text/dvisvgm 2.1.3 2.6.1 2.7 2.10.1: Converts DVI files to SVG
+app-text/dvisvgm 2.1.3 2.6.1 2.7 2.10.1 2.11: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1 0.2.2-r2: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
 app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
@@ -3044,7 +3044,7 @@ app-text/sword-modules 2.2: All the unlocked modules for app-text/sword, grouped
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
-app-text/teckit 2.5.6: Text Encoding Conversion toolkit
+app-text/teckit 2.5.6 2.5.10: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences
 app-text/tessdata_best 4.0.0: Most accurate trained models for app-text/tesseract
 app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-text/tesseract
@@ -13799,7 +13799,7 @@ media-sound/kmetronome 1.0.1-r1 1.2.0: MIDI based metronome using ALSA sequencer
 media-sound/kmidimon 1.0.0_pre20201003: MIDI monitor for ALSA sequencer
 media-sound/lame 3.100-r3: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r4: LASH Audio Session Handler
-media-sound/lilypond 2.21.5 2.21.6 9999: GNU Music Typesetter
+media-sound/lilypond 2.21.5 2.21.6 2.22.0 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
