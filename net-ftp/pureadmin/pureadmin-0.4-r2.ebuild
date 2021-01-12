@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop
+inherit desktop xdg
 
 DESCRIPTION="GUI tool used to make the management of Pure-FTPd a little easier"
 HOMEPAGE="http://purify.sourceforge.net/"
