@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-10">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>2021-01-12</announced>
+  <revised count="1">2021-01-12</revised>
+  <bug>753269</bug>
+  <bug>761313</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">13.38.1</unaffected>
+      <vulnerable range="lt">13.38.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A Modular Open Source PBX System.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the security advisories referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-13.38.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://downloads.asterisk.org/pub/security/AST-2020-001.html">
+      AST-2020-001
+    </uri>
+    <uri link="https://downloads.asterisk.org/pub/security/AST-2020-002.html">
+      AST-2020-002
+    </uri>
+    <uri link="https://downloads.asterisk.org/pub/security/AST-2020-003.html">
+      AST-2020-003
+    </uri>
+    <uri link="https://downloads.asterisk.org/pub/security/AST-2020-004.html">
+      AST-2020-004
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-04T16:30:21Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-12T17:58:27Z">sam_c</metadata>
+</glsa>
