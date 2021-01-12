@@ -10105,7 +10105,7 @@ dev-ruby/optimist 3.0.1: A commandline option parser for Ruby that just gets out
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.12.1 2.13.2 2.13.3 2.13.4 2.14.0: A fast XML parser and Object marshaller
+dev-ruby/ox 2.13.4 2.14.0 2.14.1: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.2.0 2.2.1: Terminal painter
 dev-ruby/parallel 1.19.2 1.20.0 1.20.1: Run any code in parallel Processes or Threads
@@ -10173,7 +10173,7 @@ dev-ruby/rdiscount 2.2.0.1 2.2.0.2: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 6.1.2 6.2.0 6.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.3.14 2.3.15 2.3.18: Pattern recognition for hosts, services, and content
-dev-ruby/redcarpet 3.4.0 3.5.0 3.5.1: A Ruby wrapper for Upskirt
+dev-ruby/redcarpet 3.4.0 3.5.1: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 4.0.1 4.1.4: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
@@ -10279,7 +10279,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5 1.0.5-r1: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sanitize 5.2.1 5.2.2: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 5.2.1 5.2.2 5.2.3: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
