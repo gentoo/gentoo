@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # base-system@gentoo.org
 # @BLURB: functions for packages that install files into /boot
+# @SUPPORTED_EAPIS: 6 7
 # @DESCRIPTION:
 # This eclass is really only useful for bootloaders.
 #
@@ -13,7 +14,7 @@
 # error if it can't.  It does nothing if /boot isn't a separate partition.
 
 case ${EAPI:-0} in
-	4|5|6|7) ;;
+	6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
