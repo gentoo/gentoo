@@ -17,6 +17,7 @@ if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
+	S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
 	#if [[ ${MY_P} = ${P} ]] ; then
 	#	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 	#else
@@ -233,14 +234,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
-	"${FILESDIR}"/${PN}-3.0.8-qt-5.15.patch # TODO: upstream
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.11.1-srt-1.4.2.patch # bug 758062
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use lua; then
@@ -260,7 +258,7 @@ src_prepare() {
 	fi
 
 	# Make it build with libtool 1.5
-	rm m4/lt* m4/libtool.m4 || die
+	#rm m4/lt* m4/libtool.m4 || die
 
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
@@ -495,7 +493,7 @@ pkg_postinst() {
 		"${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT != /)"
-		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
+		ewarn "Please run ${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
