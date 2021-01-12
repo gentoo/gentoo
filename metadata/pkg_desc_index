@@ -9208,7 +9208,7 @@ dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1 0.8.6: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 3.2.0 3.3.0: Toolkit to convert between many translation formats
-dev-python/tree-sitter 0.2.0: Python bindings to the Tree-sitter parsing library
+dev-python/tree-sitter 0.2.0 0.2.1: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
