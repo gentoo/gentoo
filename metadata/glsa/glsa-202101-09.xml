@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-09">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
+    of which could allow an attacker to take control of VirtualBox.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>2021-01-12</announced>
+  <revised count="1">2021-01-12</revised>
+  <bug>714064</bug>
+  <bug>717626</bug>
+  <bug>717782</bug>
+  <bug>733924</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/6.1">6.1.12</unaffected>
+      <unaffected range="ge" slot="0/6.0">6.0.24</unaffected>
+      <vulnerable range="lt">6.1.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VirtualBox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could take control of VirtualBox resulting in the execution
+      of arbitrary code with the privileges of the process, a Denial of Service
+      condition, or other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Virtualbox 6.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-6.0.24:0/6.0"
+    </code>
+    
+    <p>All Virtualbox 6.1.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-6.1.12:0/6.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2848">CVE-2019-2848</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2850">CVE-2019-2850</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2859">CVE-2019-2859</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2863">CVE-2019-2863</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2864">CVE-2019-2864</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2865">CVE-2019-2865</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2866">CVE-2019-2866</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2867">CVE-2019-2867</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2873">CVE-2019-2873</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2874">CVE-2019-2874</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2875">CVE-2019-2875</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2876">CVE-2019-2876</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2877">CVE-2019-2877</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2926">CVE-2019-2926</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2944">CVE-2019-2944</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2984">CVE-2019-2984</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3002">CVE-2019-3002</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3005">CVE-2019-3005</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3017">CVE-2019-3017</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3021">CVE-2019-3021</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3026">CVE-2019-3026</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3028">CVE-2019-3028</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3031">CVE-2019-3031</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14628">CVE-2020-14628</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14629">CVE-2020-14629</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14646">CVE-2020-14646</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14647">CVE-2020-14647</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14648">CVE-2020-14648</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14649">CVE-2020-14649</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14650">CVE-2020-14650</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14673">CVE-2020-14673</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14674">CVE-2020-14674</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14675">CVE-2020-14675</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14676">CVE-2020-14676</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14677">CVE-2020-14677</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14694">CVE-2020-14694</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14695">CVE-2020-14695</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14698">CVE-2020-14698</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14699">CVE-2020-14699</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14700">CVE-2020-14700</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14703">CVE-2020-14703</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14704">CVE-2020-14704</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14707">CVE-2020-14707</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14711">CVE-2020-14711</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14712">CVE-2020-14712</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14713">CVE-2020-14713</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14714">CVE-2020-14714</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14715">CVE-2020-14715</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2575">CVE-2020-2575</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2674">CVE-2020-2674</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2678">CVE-2020-2678</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2681">CVE-2020-2681</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2682">CVE-2020-2682</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2689">CVE-2020-2689</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2690">CVE-2020-2690</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2691">CVE-2020-2691</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2692">CVE-2020-2692</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2693">CVE-2020-2693</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2698">CVE-2020-2698</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2701">CVE-2020-2701</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2702">CVE-2020-2702</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2703">CVE-2020-2703</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2704">CVE-2020-2704</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2705">CVE-2020-2705</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2725">CVE-2020-2725</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2726">CVE-2020-2726</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2727">CVE-2020-2727</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2741">CVE-2020-2741</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2742">CVE-2020-2742</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2743">CVE-2020-2743</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2748">CVE-2020-2748</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2758">CVE-2020-2758</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2894">CVE-2020-2894</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2902">CVE-2020-2902</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2905">CVE-2020-2905</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2907">CVE-2020-2907</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2908">CVE-2020-2908</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2909">CVE-2020-2909</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2910">CVE-2020-2910</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2911">CVE-2020-2911</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2913">CVE-2020-2913</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2914">CVE-2020-2914</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2929">CVE-2020-2929</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2951">CVE-2020-2951</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2958">CVE-2020-2958</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2959">CVE-2020-2959</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-17T04:23:43Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2021-01-12T17:56:20Z">sam_c</metadata>
+</glsa>
