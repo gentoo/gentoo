@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,10 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.1-headers-reinstall.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-headers-reinstall.patch
+	"${FILESDIR}"/${PN}-0.9.4-autoconf-2.70.patch #749816
+)
 
 src_prepare() {
 	default
