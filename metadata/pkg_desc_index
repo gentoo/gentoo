@@ -12420,7 +12420,7 @@ mail-filter/bmf 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r3: Bayesian spam filter designed with fast algorithms, and tuned for speed
 mail-filter/courier-pythonfilter 3.0.2-r1: Python filtering architecture for the Courier MTA
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
-mail-filter/dcc 1.3.154 1.3.158: Distributed Checksum Clearinghouse
+mail-filter/dcc 1.3.158 1.3.158-r1: Distributed Checksum Clearinghouse
 mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
 mail-filter/dovecot_deleted_to_trash 0.6: Deleted to trash IMAP plugin for Dovecot
 mail-filter/exim-geoip 0.1-r1: This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim
@@ -16291,7 +16291,7 @@ sci-libs/plplot 5.15.0-r1 5.15.0-r100: Multi-language scientific plotting librar
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
-sci-libs/proj 7.0.1 7.1.1: PROJ coordinate transformation software
+sci-libs/proj 7.0.1 7.1.1 7.2.1: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pyshp 2.1.2: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17 2.3.22: Quad-double and double-double float arithmetics
