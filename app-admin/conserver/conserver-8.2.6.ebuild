@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,10 @@ RDEPEND="${DEPEND}
 	pam? ( sys-auth/pambase )"
 
 DOCS=( CHANGES FAQ PROTOCOL README.md conserver/Sun-serial contrib/maketestcerts)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-8.2.6-autoconf-2.70.patch" #750230
+)
 
 src_prepare() {
 	default
