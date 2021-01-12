@@ -1,4 +1,4 @@
-# Copyright 2000-2020 Gentoo Authors
+# Copyright 2000-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -183,7 +183,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( net-libs/srt )
+	srt? ( >=net-libs/srt-1.4.2 )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2
@@ -199,7 +199,7 @@ RDEPEND="
 	)
 	twolame? ( media-sound/twolame )
 	udev? ( virtual/udev )
-	upnp? ( net-libs/libupnp:= )
+	upnp? ( net-libs/libupnp:=[ipv6] )
 	v4l? ( media-libs/libv4l:= )
 	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
@@ -442,6 +442,12 @@ src_configure() {
 	# VLC now requires C++11 after commit 4b1c9dcdda0bbff801e47505ff9dfd3f274eb0d8
 	append-cxxflags -std=c++11
 
+	if use omxil; then
+		# bug #723006
+		# https://trac.videolan.org/vlc/ticket/24617
+		append-cflags -fcommon
+	fi
+
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
 
@@ -475,15 +481,15 @@ src_test() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	if [[ -z ${ROOT} ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
-		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
+	if [[ -z "${EROOT}" ]] && [[ -x "${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
+		einfo "Running ${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
+		"${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" "${EROOT}/usr/$(get_libdir)/vlc/plugins/"
 	else
-		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
+		ewarn "We cannot run vlc-cache-gen (most likely ROOT != /)"
 		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
@@ -492,8 +498,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
-		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
+		rm "${EROOT}"/usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	xdg_pkg_postrm
