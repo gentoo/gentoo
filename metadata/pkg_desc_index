@@ -8735,7 +8735,7 @@ dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of porti
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0: Python bindings for libgit2
 dev-python/pyglet 1.5.10 1.5.11 1.5.13 1.5.14: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.7.3: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.7.3 2.7.4: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
@@ -8942,7 +8942,7 @@ dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaroun
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-socks 1.1.0 1.1.2: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
-dev-python/python-stdnum 1.14: A module to handle standardized numbers and codes
+dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-troveclient 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
@@ -14606,7 +14606,7 @@ net-ftp/ncftp 3.2.6-r2: An extremely configurable ftp client
 net-ftp/proftpd 1.3.7a: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
-net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
+net-ftp/pureadmin 0.4-r1 0.4-r2: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/tftp-hpa 5.2-r1 5.2-r2: port of the OpenBSD TFTP server
 net-ftp/tlswrap 1.04-r3: FTP wrapper which supports TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
@@ -17288,7 +17288,7 @@ sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler a
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1 2.35.1-r1: Tools necessary to build programs
 sys-devel/bison 3.6.4 3.7.3 3.7.4: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20200318 20201117: NetBSD's portable make
+sys-devel/bmake 20200318 20201117 20201222: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 9.0.1 10.0.1 11.0.0 11.0.1 12.0.0.9999: C language family frontend for LLVM
 sys-devel/clang-common 9.0.1 10.0.1 11.0.0 11.0.1 12.0.0.9999: Common files shared between multiple slots of clang
@@ -19014,7 +19014,7 @@ xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-calculator-plugin 0.7.1: A calculator plugin for the Xfce4 panel
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
-xfce-extra/xfce4-cpufreq-plugin 1.2.2: A panel plugin for showing information about cpufreq settings
+xfce-extra/xfce4-cpufreq-plugin 1.2.2 1.2.3: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.1.0 1.2.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.0 0.8.1: A panel plug-in with date, time and embedded calender
 xfce-extra/xfce4-dict 0.8.4: A dict.org querying application and panel plug-in for the Xfce desktop
