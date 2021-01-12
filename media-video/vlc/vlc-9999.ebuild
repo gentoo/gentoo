@@ -485,7 +485,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -z "${EROOT}" ]] && [[ -x "${EROOT}/usr/libexec/vlc/vlc-cache-gen" ]] ; then
+	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/libexec/vlc/vlc-cache-gen" ]] ; then
 		einfo "Running ${EROOT}/usr/libexec/vlc/vlc-cache-gen on ${EROOT}/usr/libexec/vlc/plugins/"
 		"${EROOT}/usr/libexec/vlc/vlc-cache-gen" "${EROOT}/usr/libexec/vlc/plugins/"
 	else
