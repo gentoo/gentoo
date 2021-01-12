@@ -49,10 +49,11 @@ mount-boot_is_disabled() {
 # @INTERNAL
 # @DESCRIPTION:
 # Check if /boot is sane, i.e., mounted as read-write if on a separate
-# partition.  Die if conditions are not fulfilled.
+# partition.  Die if conditions are not fulfilled.  If nonfatal is used,
+# the function will return a non-zero status instead.
 mount-boot_check_status() {
 	# Get out fast if possible.
-	mount-boot_is_disabled && return
+	mount-boot_is_disabled && return 0
 
 	# note that /dev/BOOT is in the Gentoo default /etc/fstab file
 	local fstabstate=$(awk '!/^[[:blank:]]*#|^\/dev\/BOOT/ && $2 == "/boot" \
@@ -60,7 +61,7 @@ mount-boot_check_status() {
 
 	if [[ -z ${fstabstate} ]] ; then
 		einfo "Assuming you do not have a separate /boot partition."
-		return
+		return 0
 	fi
 
 	local procstate=$(awk '$2 == "/boot" { split($4, a, ","); \
@@ -70,18 +71,21 @@ mount-boot_check_status() {
 	if [[ -z ${procstate} ]] ; then
 		eerror "Your boot partition is not mounted at /boot."
 		eerror "Please mount it and retry."
-		die "/boot not mounted"
+		die -n "/boot not mounted"
+		return 1
 	fi
 
 	if [[ ${procstate} == ro ]] ; then
 		eerror "Your boot partition, detected as being mounted at /boot," \
 			"is read-only."
 		eerror "Please remount it as read-write and retry."
-		die "/boot mounted read-only"
+		die -n "/boot mounted read-only"
+		return 2
 	fi
 
 	einfo "Your boot partition was detected as being mounted at /boot."
 	einfo "Files will be installed there for ${PN} to function correctly."
+	return 0
 }
 
 mount-boot_pkg_pretend() {
