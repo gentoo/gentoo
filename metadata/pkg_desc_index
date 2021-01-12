@@ -15522,7 +15522,7 @@ net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN imp
 net-vpn/tor 0.4.4.6 0.4.5.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
-net-vpn/vtun 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
+net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20201221: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
@@ -16250,7 +16250,7 @@ sci-libs/linux-gpib 4.3.0 4.3.2 4.3.3: Driver library for GPIB (IEEE 488.2) hard
 sci-libs/linux-gpib-modules 4.3.0-r1 4.3.2-r1 4.3.3-r1: Kernel modules for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lmfit 5.1 6.4 7.0 8.2.2: library for Levenberg-Marquardt least-squares minimization and curve fitting
-sci-libs/lrslib 062: Self-contained C implementation of the reverse search algorithm
+sci-libs/lrslib 062 071: Self-contained C implementation of the reverse search algorithm
 sci-libs/m4ri 20200115 20200125: Method of four russian for inversion (M4RI)
 sci-libs/m4rie 20200115: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 sci-libs/mathgl 2.4.1-r2 2.4.4: Math Graphics Library
