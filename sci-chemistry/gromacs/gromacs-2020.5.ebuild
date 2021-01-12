@@ -5,13 +5,25 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-SRC_URI="
-	http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
-	doc? ( http://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
-	test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
-KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux ~x64-macos"
+DISTUTILS_SINGLE_IMPL=1
+
+inherit bash-completion-r1 cmake cuda distutils-r1 eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+
+if [[ $PV = *9999* ]]; then
+	EGIT_REPO_URI="
+		https://gitlab.com/gromacs/gromacs.git
+		https://github.com/gromacs/gromacs.git
+		git://git.gromacs.org/gromacs.git"
+	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
+	inherit git-r3
+else
+	SRC_URI="
+		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
+		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2"
 
@@ -23,7 +35,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +doc -double-precision +fftw +gmxapi +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +custom-cflags +doc -double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -41,10 +53,21 @@ CDEPEND="
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	${PYTHON_DEPS}
+	!sci-chemistry/gmxapi
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
-	"
+	doc? (
+		app-doc/doxygen
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		')
+		media-gfx/mscgen
+		media-gfx/graphviz
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+		media-gfx/imagemagick
+	)"
 RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
@@ -58,12 +81,34 @@ DOCS=( AUTHORS README )
 
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${PN}-${PV/_/-}"
+if [[ ${PV} != *9999 ]]; then
+	S="${WORKDIR}/${PN}-${PV/_/-}"
+fi
+
+PATCHES=( "${FILESDIR}/${PN}-2020_beta1-pytest.patch" )
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
 	use openmp && ! tc-has-openmp && \
 		die "Please switch to an openmp compatible compiler"
+}
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} != *9999 ]]; then
+		default
+	else
+		git-r3_src_unpack
+		if use test; then
+			EGIT_REPO_URI="git://git.gromacs.org/regressiontests.git" \
+			EGIT_BRANCH="${EGIT_BRANCH}" \
+			EGIT_CHECKOUT_DIR="${WORKDIR}/regressiontests"\
+				git-r3_src_unpack
+		fi
+	fi
 }
 
 src_prepare() {
@@ -88,18 +133,44 @@ src_prepare() {
 	fi
 
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
+
+	# try to create policy for imagemagik
+	mkdir -p ${HOME}/.config/ImageMagick
+	cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE policymap [
+	<!ELEMENT policymap (policy)+>
+	!ATTLIST policymap xmlns CDATA #FIXED ''>
+	<!ELEMENT policy EMPTY>
+	<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+			name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
+			stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+	]>
+	<policymap>
+		<policy domain="coder" rights="read | write" pattern="PS" />
+		<policy domain="coder" rights="read | write" pattern="PS2" />
+		<policy domain="coder" rights="read | write" pattern="PS3" />
+		<policy domain="coder" rights="read | write" pattern="EPS" />
+		<policy domain="coder" rights="read | write" pattern="PDF" />
+		<policy domain="coder" rights="read | write" pattern="XPS" />
+	</policymap>
+	EOF
 }
 
 src_configure() {
 	local mycmakeargs_pre=( ) extra fft_opts=( )
 
-	#go from slowest to fastest acceleration
-	local acce="None"
-	use cpu_flags_x86_sse2 && acce="SSE2"
-	use cpu_flags_x86_sse4_1 && acce="SSE4.1"
-	use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
-	use cpu_flags_x86_avx && acce="AVX_256"
-	use cpu_flags_x86_avx2 && acce="AVX2_256"
+	if use custom-cflags; then
+		#go from slowest to fastest acceleration
+		local acce="None"
+		use cpu_flags_x86_sse2 && acce="SSE2"
+		use cpu_flags_x86_sse4_1 && acce="SSE4.1"
+		use cpu_flags_x86_fma4 && acce="AVX_128_FMA"
+		use cpu_flags_x86_avx && acce="AVX_256"
+		use cpu_flags_x86_avx2 && acce="AVX2_256"
+	else
+		strip-flags
+	fi
 
 	#to create man pages, build tree binaries are executed (bug #398437)
 	[[ ${CHOST} = *-darwin* ]] && \
@@ -137,6 +208,7 @@ src_configure() {
 		-DGMX_OPENMP=$(usex openmp)
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
+		-DGMX_BUILD_MANUAL=$(usex doc)
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
@@ -165,11 +237,13 @@ src_configure() {
 			-DGMX_MPI=OFF
 			-DGMX_THREAD_MPI=$(usex threads)
 			-DGMXAPI=$(usex gmxapi)
+			-DGMX_INSTALL_LEGACY_API=$(usex gmxapi-legacy)
 			"${opencl[@]}"
 			"${cuda[@]}"
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
 			-DGMX_BINARY_SUFFIX="${suffix}"
 			-DGMX_LIBS_SUFFIX="${suffix}"
+			-DGMX_PYTHON_PACKAGE=$(usex python)
 			)
 		BUILD_DIR="${WORKDIR}/${P}_${x}" cmake_src_configure
 		[[ ${CHOST} != *-darwin* ]] || \
@@ -201,6 +275,17 @@ src_compile() {
 		einfo "Compiling for ${x} precision"
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake_src_compile
+		if use python; then
+			BUILD_DIR="${WORKDIR}/${P}_${x}"\
+				cmake_src_compile	python_packaging/all
+			BUILD_DIR="${WORKDIR}/${P}" \
+				distutils-r1_src_compile
+		fi
+		# not 100% necessary for rel ebuilds as available from website
+		if use doc; then
+			BUILD_DIR="${WORKDIR}/${P}_${x}"\
+				cmake_src_compile manual
+		fi
 		use mpi || continue
 		einfo "Compiling for ${x} precision with mpi"
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
@@ -219,8 +304,12 @@ src_install() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
 			cmake_src_install
+		if use python; then
+			BUILD_DIR="${WORKDIR}/${P}_${x}" \
+				cmake_src_install	python_packaging/install
+		fi
 		if use doc; then
-			newdoc "${DISTDIR}/manual-${PV/_/-}.pdf" "${PN}-manual-${PV}.pdf"
+			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
 		fi
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
