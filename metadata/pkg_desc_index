@@ -18001,7 +18001,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web browser with ssl support
-www-client/microsoft-edge-dev 89.0.731.0 89.0.752.1: The web browser from Microsoft
+www-client/microsoft-edge-dev 89.0.731.0 89.0.752.1 89.0.760.0: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
@@ -18992,7 +18992,7 @@ xfce-base/exo 0.12.11 4.15.3 4.16.0: Extensions, widgets and framework library w
 xfce-base/garcon 0.6.4-r2 0.7.3 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.15.7 4.15.8 4.16.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.6 4.16.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.16 4.15.3 4.16.0 4.16.1: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.16 4.15.3 4.16.0 4.16.1 4.16.2: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.2 4.16.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16_pre2 4.16: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.6 4.16.0: Panel for the Xfce desktop environment
