@@ -1,5 +1,5 @@
-BDEPEND=dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig
-DEFINED_PHASES=install postinst postrm
+BDEPEND=dev-util/gtk-doc-am dev-util/intltool dev-util/xfce4-dev-tools sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install postinst postrm prepare
 DEPEND=>=dev-libs/glib-2.50 >=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.15.1:=[gtk3(+)] >=xfce-base/libxfce4util-4.12:=
 DESCRIPTION=Extensions, widgets and framework library with session support for Xfce
 EAPI=7
@@ -9,5 +9,5 @@ LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=dev-libs/glib-2.50 >=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.15.1:=[gtk3(+)] >=xfce-base/libxfce4util-4.12:=
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/exo/4.16/exo-4.16.0.tar.bz2
-_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=57ea1f78b5aac008955f5b19e85b031f
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=4edb3f2c4d18b431826279b780b5d745
