@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,7 +63,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.21.1-fix-font-size.patch
+	"${FILESDIR}"/${P}-fix-font-size.patch
 )
 
 DOCS=( DEDICATION HACKING README.md ROADMAP )
