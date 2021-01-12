@@ -21,4 +21,7 @@
 		command line.
 		generate state transition graphs of the generated engines.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">quex</remote-id>
+	</upstream>
 </pkgmetadata>
