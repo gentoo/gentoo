@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info
 
@@ -14,32 +14,33 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE="lzo socks5 ssl zlib"
 
-RDEPEND="ssl? ( dev-libs/openssl:0 )
+RDEPEND="
 	lzo? ( dev-libs/lzo:2 )
-	zlib? ( sys-libs/zlib )
-	socks5? ( net-proxy/dante )"
-DEPEND="${RDEPEND}
-	sys-devel/bison"
+	socks5? ( net-proxy/dante )
+	ssl? ( dev-libs/openssl:0= )
+	zlib? ( sys-libs/zlib )"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/bison"
 
-DOCS="ChangeLog Credits FAQ README README.Setup README.Shaper TODO"
-
+DOCS=( ChangeLog Credits FAQ README README.Setup README.Shaper TODO )
 CONFIG_CHECK="~TUN"
 
-src_prepare() {
-	sed -i Makefile.in \
-		-e '/^LDFLAGS/s|=|+=|g' \
-		|| die "sed Makefile"
-	eapply "${FILESDIR}"/${P}-includes.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-includes.patch
 	# remove unneeded checking for /etc/vtund.conf
-	eapply -p0 "${FILESDIR}"/${PN}-3.0.2-remove-config-presence-check.patch
+	"${FILESDIR}"/${PN}-3.0.2-remove-config-presence-check.patch
 	# GCC 5 compatibility, patch from https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=778164
-	eapply "${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-gcc5.patch
 	# openssl 1.1 compatibility, bug 674280
-	eapply -l "${FILESDIR}"/${PN}-libssl-1.1.patch
-	# portage takes care about striping binaries itself
-	sed -i 's:$(BIN_DIR)/strip $(DESTDIR)$(SBIN_DIR)/vtund::' Makefile.in || die
+	"${FILESDIR}"/${PN}-libssl-1.1.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-C99-inline.patch
+)
 
-	eapply_user
+src_prepare() {
+	default
+	sed -i -e '/^LDFLAGS/s|=|+=|g' Makefile.in || die
+	sed -i 's:$(BIN_DIR)/strip $(DESTDIR)$(SBIN_DIR)/vtund::' Makefile.in || die
 }
 
 src_configure() {
@@ -54,6 +55,7 @@ src_configure() {
 src_install() {
 	default
 	newinitd "${FILESDIR}"/vtun.rc vtun
-	insinto etc
+	insinto /etc
 	doins "${FILESDIR}"/vtund-start.conf
+	rm -r "${ED}"/var || die
 }

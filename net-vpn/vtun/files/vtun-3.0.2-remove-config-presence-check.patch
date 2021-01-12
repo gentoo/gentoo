@@ -1,5 +1,5 @@
---- Makefile.in.orig	2012-06-11 23:31:11.416075337 +0400
-+++ Makefile.in	2012-06-11 23:31:21.247324839 +0400
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -86,9 +86,7 @@
  
  install_config: 
