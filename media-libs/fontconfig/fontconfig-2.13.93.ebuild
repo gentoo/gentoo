@@ -1,41 +1,54 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools multilib-minimal readme.gentoo-r1 eapi7-ver
+inherit autotools multilib-minimal readme.gentoo-r1
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="https://fontconfig.org/"
-SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
+SRC_URI="https://fontconfig.org/release/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="1.0"
 [[ $(ver_cut 3) -ge 90 ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="doc static-libs"
 
+# Test test-bz106632 is known to be broken, see bug #751232
+# and would require several backports. It will be fixed in
+# next version.
+# check-missing-doc is known to be broken, see bug #733608
+# because fontconfig-2.13.1-static_build.patch introduces a
+# function FcStrBuildFilename which is lacking documentation.
+# However, backporting isn't worth it. Will be fixed in
+# next version.
+RESTRICT="test"
+
+BDEPEND="dev-util/gperf
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig
+	doc? (
+		=app-text/docbook-sgml-dtd-3.1*
+		app-text/docbook-sgml-utils[jadetex]
+	)"
 # Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
 # default and used by every distro.  See bug #283191.
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
-	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
+	!elibc_Darwin? ( !elibc_SunOS? ( sys-apps/util-linux[${MULTILIB_USEDEP}] ) )
 	elibc_Darwin? ( sys-libs/native-uuid )
+	elibc_SunOS? ( sys-libs/libuuid )
 	virtual/libintl[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	>=sys-devel/gettext-0.19.8
-	doc? ( =app-text/docbook-sgml-dtd-3.1*
-		app-text/docbook-sgml-utils[jadetex] )"
+DEPEND="${RDEPEND}"
 PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
 	virtual/ttf-fonts"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.2-docbook.patch # 310157
-	"${FILESDIR}"/${PN}-2.12.3-latin-update.patch # 130466 + make liberation default
-	"${FILESDIR}"/${P}-locale.patch #650332
-	"${FILESDIR}"/${P}-names.patch #650370
-	"${FILESDIR}"/${P}-add-missing-lintl.patch #652674
+	"${FILESDIR}"/${PN}-2.13.93-latin-update.patch # 130466 + make liberation default
+
+	# Patches from upstream (can usually be removed with next version bump)
 )
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
@@ -44,16 +57,23 @@ pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using
 	\`eselect fontconfig\`. Any changes made to /etc/fonts/fonts.conf will be
 	overwritten. If you need to reset your configuration to upstream defaults,
-	delete the directory ${EROOT%/}/etc/fonts/conf.d/ and re-emerge fontconfig."
+	delete the directory ${EROOT}/etc/fonts/conf.d/ and re-emerge fontconfig."
 }
 
 src_prepare() {
 	default
-	export GPERF=$(type -P true)  # avoid dependency on gperf, #631980
-	sed -i -e 's/FC_GPERF_SIZE_T="unsigned int"/FC_GPERF_SIZE_T=size_t/' \
-		configure.ac || die # rest of gperf dependency fix, #631920
 	eautoreconf
-	rm test/out.expected || die #662048
+
+	# https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/272
+	# Please remove on next version bump!
+	if [[ "${PV}" == 2.13.93 ]] ; then
+		local sgmlfile
+		for sgmlfile in doc/*.fncs ; do
+			touch -r ${sgmlfile} ${sgmlfile//.fncs/.sgml} || die
+		done
+	else
+		die "Forgot to clean up src_prepare()"
+	fi
 }
 
 multilib_src_configure() {
@@ -86,8 +106,7 @@ multilib_src_configure() {
 		--with-templatedir="${EPREFIX}"/etc/fonts/conf.avail
 	)
 
-	ECONF_SOURCE="${S}" \
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install() {
@@ -114,21 +133,26 @@ multilib_src_install_all() {
 
 	dodoc doc/fontconfig-user.{txt,pdf}
 
-	if [[ -e ${ED}usr/share/doc/fontconfig/ ]];  then
-		mv "${ED}"usr/share/doc/fontconfig/* "${ED}"/usr/share/doc/${P} || die
-		rm -rf "${ED}"usr/share/doc/fontconfig
+	if [[ -e ${ED}/usr/share/doc/fontconfig/ ]] ;  then
+		mv "${ED}"/usr/share/doc/fontconfig/* \
+			"${ED}"/usr/share/doc/${P} || die
+		rm -rf "${ED}"/usr/share/doc/fontconfig || die
 	fi
 
 	# Changes should be made to /etc/fonts/local.conf, and as we had
 	# too much problems with broken fonts.conf we force update it ...
-	echo 'CONFIG_PROTECT_MASK="/etc/fonts/fonts.conf"' > "${T}"/37fontconfig
+	echo 'CONFIG_PROTECT_MASK="/etc/fonts/fonts.conf"' \
+		> "${T}"/37fontconfig || die
 	doenvd "${T}"/37fontconfig
 
 	# As of fontconfig 2.7, everything sticks their noses in here.
 	dodir /etc/sandbox.d
-	echo 'SANDBOX_PREDICT="/var/cache/fontconfig"' > "${ED}"/etc/sandbox.d/37fontconfig
+	echo 'SANDBOX_PREDICT="/var/cache/fontconfig"' \
+		> "${ED}"/etc/sandbox.d/37fontconfig || die
 
 	readme.gentoo_create_doc
+
+	keepdir /var/cache/${PN}
 }
 
 pkg_preinst() {
@@ -136,15 +160,17 @@ pkg_preinst() {
 	# /etc/fonts/conf.d/ contains symlinks to ../conf.avail/ to include various
 	# config files.  If we install as-is, we'll blow away user settings.
 	ebegin "Syncing fontconfig configuration to system"
-	if [[ -e ${EROOT}/etc/fonts/conf.d ]]; then
-		for file in "${EROOT}"/etc/fonts/conf.avail/*; do
+	if [[ -e ${EROOT}/etc/fonts/conf.d ]] ; then
+		local file f
+		for file in "${EROOT}"/etc/fonts/conf.avail/* ; do
 			f=${file##*/}
-			if [[ -L ${EROOT}/etc/fonts/conf.d/${f} ]]; then
-				[[ -f ${ED}etc/fonts/conf.avail/${f} ]] \
-					&& ln -sf ../conf.avail/"${f}" "${ED}"etc/fonts/conf.d/ &>/dev/null
+			if [[ -L ${EROOT}/etc/fonts/conf.d/${f} ]] ; then
+				[[ -f ${ED}/etc/fonts/conf.avail/${f} ]] \
+					&& ln -sf ../conf.avail/"${f}" \
+						"${ED}"/etc/fonts/conf.d/ &>/dev/null
 			else
-				[[ -f ${ED}etc/fonts/conf.avail/${f} ]] \
-					&& rm "${ED}"etc/fonts/conf.d/"${f}" &>/dev/null
+				[[ -f ${ED}/etc/fonts/conf.avail/${f} ]] \
+					&& rm "${ED}"/etc/fonts/conf.d/"${f}" &>/dev/null
 			fi
 		done
 	fi
@@ -152,12 +178,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	einfo "Cleaning broken symlinks in ${EROOT%/}/etc/fonts/conf.d/"
-	find -L "${EROOT}"etc/fonts/conf.d/ -type l -delete
+	einfo "Cleaning broken symlinks in ${EROOT}/etc/fonts/conf.d/"
+	find -L "${EROOT}"/etc/fonts/conf.d/ -type l -delete
 
 	readme.gentoo_print_elog
 
-	if [[ ${ROOT} = / ]]; then
+	if [[ ${ROOT} == "" ]] ; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf
