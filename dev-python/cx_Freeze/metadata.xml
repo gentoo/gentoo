@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">marcelotduarte/cx_Freeze</remote-id>
-		<remote-id type="pypi">cx_Freeze</remote-id>
+		<remote-id type="pypi">cx-Freeze</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -9,7 +9,9 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Google Authentication Library"
-HOMEPAGE="https://github.com/GoogleCloudPlatform/google-auth-library-python https://pypi.org/project/google-auth/"
+HOMEPAGE="
+	https://github.com/googleapis/google-auth-library-python/
+	https://pypi.org/project/google-auth/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -10,7 +10,7 @@ DESCRIPTION="Remote Python Call (RPyC), a transparent and symmetric RPC library"
 HOMEPAGE="https://rpyc.readthedocs.io/en/latest/
 	https://pypi.org/project/rpyc/
 	https://github.com/tomerfiliba-org/rpyc"
-SRC_URI="https://github.com/tomerfiliba/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tomerfiliba-org/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
