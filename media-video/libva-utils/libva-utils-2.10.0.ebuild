@@ -39,6 +39,8 @@ DEPEND+="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-2.10.0_test_in_sandbox.patch" )
+
 # CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs and in git
 DOCS=( NEWS CONTRIBUTING.md README.md )
 
