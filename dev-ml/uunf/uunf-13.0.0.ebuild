@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-ml/topkg
-	dev-ml/uutf"
+	dev-ml/uutf
+	dev-ml/cmdliner"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-ml/findlib"
 OPAM_FILE=opam
