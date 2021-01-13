@@ -5,7 +5,7 @@ EAPI=6
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
-HOMEPAGE="http://www.infradead.org/~tgr/libnl/"
+HOMEPAGE="https://www.infradead.org/~tgr/libnl/"
 SRC_URI="http://www.infradead.org/~tgr/libnl/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="1.1"

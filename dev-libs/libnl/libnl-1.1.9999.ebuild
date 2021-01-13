@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit git-r3 multilib toolchain-funcs
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
-HOMEPAGE="http://www.infradead.org/~tgr/libnl/"
+HOMEPAGE="https://www.infradead.org/~tgr/libnl/"
 EGIT_REPO_URI="https://github.com/tgraf/libnl-1.1-stable"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
