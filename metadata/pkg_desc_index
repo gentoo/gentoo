@@ -10688,7 +10688,7 @@ dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog b
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 163 164: Will try to get to the bottom of what makes files or directories different
-dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
+dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
@@ -13995,7 +13995,7 @@ media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/wav2json 0.4: Generate waveformjs.org compatible json data out of wav files
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.1: ReplayGain for WAVE audio files
-media-sound/wavpack 5.3.2-r1: Hybrid lossless audio compression tools
+media-sound/wavpack 5.3.2-r1 5.4.0: Hybrid lossless audio compression tools
 media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r2: Simple command line tool to split WAV files
 media-sound/whipper 0.9.0: A Python CD-DA ripper preferring accuracy over speed (forked from morituri)
@@ -18070,7 +18070,7 @@ www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webs
 www-servers/tomcat 7.0.107 8.5.60 8.5.61 9.0.40 9.0.41: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 6.0.4: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1 2.0.19.1-r100: uWSGI server for Python web applications
-www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
+www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.5: list X application resource database

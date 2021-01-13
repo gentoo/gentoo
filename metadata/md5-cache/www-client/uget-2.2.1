@@ -5,11 +5,11 @@ DESCRIPTION=Download manager using gtk+ and libcurl
 EAPI=7
 HOMEPAGE=http://www.ugetdm.com
 IUSE=aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl rss
-KEYWORDS=amd64 ~arm ~ppc ~x86
+KEYWORDS=amd64 ~arm ~ppc x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 dev-libs/libpcre net-misc/curl >=x11-libs/gtk+-3.4:3 gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0 ) aria2? ( net-misc/aria2[xmlrpc] ) appindicator? ( dev-libs/libappindicator:3 ) gstreamer? ( media-libs/gstreamer:1.0 ) libnotify? ( x11-libs/libnotify ) openssl? ( dev-libs/openssl:0 )
 REQUIRED_USE=^^ ( gnutls openssl )
 SLOT=0
 SRC_URI=mirror://sourceforge/urlget/uget-2.2.1.tar.gz
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b67685aca9c40713ef42dc93b8c0480c
+_md5_=c8d0b164b55363008f7e17d57eafd112
