@@ -21,5 +21,6 @@ DOCS=( Readme.md )
 
 src_prepare() {
 	default
+	[[ -f VERSION ]] || echo "${PV}" > VERSION
 	eautoreconf
 }
