@@ -12411,7 +12411,7 @@ mail-client/roundcube 1.4.8 1.4.10 9999: A browser-based multilingual IMAP clien
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
 mail-client/thunderbird 78.6.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.6.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.6.0 78.6.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -13005,7 +13005,7 @@ media-libs/fidlib 0.9.10-r1: Run-time filter design and execution library
 media-libs/flac 1.3.3: free lossless audio encoder and decoder
 media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0-r1: DSSI Soft Synth Interface
-media-libs/fontconfig 2.12.6 2.13.0-r4 2.13.1-r2: A library for configuring and customizing font access
+media-libs/fontconfig 2.13.1-r2 2.13.93: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
 media-libs/fontconfig-ultimate 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freealut 1.1.0-r4: The OpenAL Utility Toolkit
@@ -15931,7 +15931,7 @@ sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed informati
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021_beta3 2021.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021_rc1 2021.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
