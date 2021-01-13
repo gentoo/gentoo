@@ -147,7 +147,7 @@ RDEPEND="
 		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_escl? (
-		app-text/poppler
+		app-text/poppler[cairo]
 		|| (
 			net-dns/avahi[dbus]
 			net-dns/avahi[gtk]
