@@ -21,3 +21,8 @@ DEPEND="test? ( dev-ml/ounit2 )"
 BDEPEND=""
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
+src_install() {
+	dune_src_install
+	mv "${D}"/usr/bin/unidecode{,-gw} || die
+}
