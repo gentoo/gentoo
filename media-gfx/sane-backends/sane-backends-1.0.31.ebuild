@@ -23,6 +23,7 @@ IUSE_SANE_BACKENDS=(
 	canon
 	canon630u
 	canon_dr
+	canon_lide70
 	canon_pp
 	cardscan
 	coolscan
@@ -146,6 +147,7 @@ RDEPEND="
 		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_escl? (
+		app-text/poppler
 		|| (
 			net-dns/avahi[dbus]
 			net-dns/avahi[gtk]
@@ -240,6 +242,7 @@ multilib_src_configure() {
 		$(use_with usb)
 		$(multilib_native_use_with snmp)
 
+		$(usex sane_backends_escl --with-poppler-glib '')
 		# you can only enable this backend, not disable it...
 		$(usex sane_backends_pnm --enable-pnm-backend '')
 		$(usex sane_backends_mustek_pp --enable-parport-directio '')

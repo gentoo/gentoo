@@ -16,6 +16,7 @@ bh - SANE_BACKENDS setting for building the bh backend
 canon - SANE_BACKENDS setting for building the canon backend
 canon630u - SANE_BACKENDS setting for building the canon630u backend
 canon_dr - SANE_BACKENDS setting for building the canon_dr backend
+canon_lide70 - SANE_BACKENDS setting for building the canon_lide70 backend
 canon_pp - SANE_BACKENDS setting for building the canon_pp backend
 cardscan - SANE_BACKENDS setting for building the cardscan backend
 coolscan - SANE_BACKENDS setting for building the coolscan backend
