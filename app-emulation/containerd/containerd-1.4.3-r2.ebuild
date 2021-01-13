@@ -1,18 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 # update on bump, look for https://github.com/docker\
 # docker-ce/blob/<docker ver OR branch>/components/engine/hack/dockerfile/install/containerd.installer
-CONTAINERD_COMMIT="ea765ab"
+CONTAINERD_COMMIT="269548fa27e0089a8b8278fc4fc781d7f65a939b"
 EGO_PN="github.com/containerd/${PN}"
 
 inherit golang-vcs-snapshot toolchain-funcs
 
 DESCRIPTION="A daemon to control runC"
 HOMEPAGE="https://containerd.io/"
-SRC_URI="https://github.com/containerd/${PN}/archive/${CONTAINERD_COMMIT}.tar.gz -> ${P}.tar.gz"
+# NOTE: Drop '.gh' on bump, it's there because of bug #764791
+SRC_URI="https://github.com/containerd/${PN}/archive/${CONTAINERD_COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -78,7 +79,8 @@ src_install() {
 
 	# we already installed manpages, remove markdown source
 	# before installing docs directory
-	rm -rf docs/man || die
+	rm -r docs/man || die
+
 	local DOCS=( README.md PLUGINS.md docs/. )
 	einstalldocs
 }
