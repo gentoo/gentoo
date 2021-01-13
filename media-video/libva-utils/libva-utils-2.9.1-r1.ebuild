@@ -3,29 +3,18 @@
 
 EAPI=7
 
-if [[ ${PV} = *9999* ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/intel/libva-utils"
-fi
-
-if [[ ${PV} = 2.9.1 ]]; then
-	AUTOCONFIGURED="true"
-else
-	AUTOCONFIGURED="false"
-fi
-
-if ! ${AUTOCONFIGURED}; then
-	inherit autotools
-fi
+inherit autotools
 
 DESCRIPTION="Collection of utilities and tests for VA-API"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
-if [[ ${PV} != *9999* ]] ; then
-	if ${AUTOCONFIGURED}; then
-		SRC_URI="https://github.com/intel/libva-utils/releases/download/${PV}/${P}.tar.bz2"
-	else
-		SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	fi
+if [[ ${PV} = *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/intel/libva-utils"
+else
+	# Tarball with pre-built 'configure' not always available, portage use tarballs
+	# without pre-built 'configure' as they are always avaialbe upstream.
+	# SRC_URI="https://github.com/intel/libva-utils/releases/download/${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -36,27 +25,29 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( drm wayland X )"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-DEPEND="
-	>=x11-libs/libva-2.9.0:=[drm?,wayland?,X?]
+BDEPEND="virtual/pkgconfig"
+
+if [[ ${PV} = *9999 ]] ; then
+	DEPEND="~x11-libs/libva-${PV}:=[drm?,wayland?,X?]"
+else
+	DEPEND=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm?,wayland?,X?]"
+fi
+
+DEPEND+="
 	wayland? ( >=dev-libs/wayland-1.0.6 )
 	X? ( >=x11-libs/libX11-1.6.2 )
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( NEWS )
+PATCHES=( "${FILESDIR}/${PN}-2.10.0_test_in_sandbox.patch" )
+
+# CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs and in git
+DOCS=( NEWS CONTRIBUTING.md README.md )
 
 src_prepare() {
 	default
 	sed -e 's/-Werror//' -i test/Makefile.am || die
-	if ${AUTOCONFIGURED}; then
-		sed -e 's/-Werror//' -i test/Makefile.in || die
-		touch ./configure || die
-	else
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_configure() {
@@ -67,9 +58,4 @@ src_configure() {
 		$(use_enable X x11)
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_install() {
-	[[ ${PV} = *9999* ]] && DOCS+=( CONTRIBUTING.md README.md )
-	default
 }
