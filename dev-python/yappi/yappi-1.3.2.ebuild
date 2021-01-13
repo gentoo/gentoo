@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python3_{7..9})
+
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -17,10 +18,10 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-#RDEPEND="
-#	$(python_gen_cond_dep 'dev-python/contextvars[${PYTHON_USEDEP}]' 'python3_6')
-#"
+BDEPEND="test? ( dev-python/gevent[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
 
