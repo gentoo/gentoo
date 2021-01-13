@@ -1,0 +1,22 @@
+Fix no-ipv6
+From https://github.com/brndnmtthws/conky/issues/1033#issue-748414180
+
+diff '--color=auto' -aur a/src/linux.cc b/src/linux.cc
+--- a/src/linux.cc	2019-08-12 14:53:54.000000000 -0700
++++ b/src/linux.cc	2020-11-22 18:44:04.394329722 -0700
+@@ -667,6 +667,7 @@
+   }
+ }
+ 
++#ifdef BUILD_IPV6
+ void update_ipv6_net_stats() {
+   FILE *file;
+   char v6addr[33];
+@@ -731,6 +732,7 @@
+ 
+   fclose(file);
+ }
++#endif /* BUILD_IPV6 */
+ 
+ /**
+  * Parses information from /proc/net/dev and stores them in ???
