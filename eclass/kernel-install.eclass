@@ -343,20 +343,37 @@ kernel-install_install_all() {
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
 	local ver=${1}
 
-	mount-boot_pkg_preinst
+	local success=
+	# not an actual loop but allows error handling with 'break'
+	while :; do
+		mount-boot_pkg_preinst
 
-	local image_path=$(dist-kernel_get_image_path)
-	if use initramfs; then
-		# putting it alongside kernel image as 'initrd' makes
-		# kernel-install happier
-		dist-kernel_build_initramfs \
-			"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
-			"${ver}"
+		local image_path=$(dist-kernel_get_image_path)
+		if use initramfs; then
+			# putting it alongside kernel image as 'initrd' makes
+			# kernel-install happier
+			nonfatal dist-kernel_build_initramfs \
+				"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
+				"${ver}" || break
+		fi
+
+		nonfatal dist-kernel_install_kernel "${ver}" \
+			"${EROOT}/usr/src/linux-${ver}/${image_path}" \
+			"${EROOT}/usr/src/linux-${ver}/System.map" || break
+
+		success=1
+		break
+	done
+
+	if [[ ! ${success} ]]; then
+		eerror
+		eerror "The kernel files were copied to disk successfully but the kernel"
+		eerror "was not deployed successfully.  Once you resolve the problems,"
+		eerror "please run the equivalent of the following command to try again:"
+		eerror
+		eerror "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
+		die "Kernel install failed, please fix the problems and run emerge --config ${CATEGORY}/${PN}:${SLOT}"
 	fi
-
-	dist-kernel_install_kernel "${ver}" \
-		"${EROOT}/usr/src/linux-${ver}/${image_path}" \
-		"${EROOT}/usr/src/linux-${ver}/System.map"
 }
 
 # @FUNCTION: kernel-install_pkg_postinst

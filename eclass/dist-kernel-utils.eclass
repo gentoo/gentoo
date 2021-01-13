@@ -43,7 +43,7 @@ dist-kernel_build_initramfs() {
 
 	ebegin "Building initramfs via dracut"
 	dracut --force "${output}" "${version}"
-	eend ${?} || die "Building initramfs failed"
+	eend ${?} || die -n "Building initramfs failed"
 }
 
 # @FUNCTION: dist-kernel_get_image_path
@@ -89,7 +89,7 @@ dist-kernel_install_kernel() {
 	# note: .config is taken relatively to System.map;
 	# initrd relatively to bzImage
 	installkernel "${version}" "${image}" "${map}"
-	eend ${?} || die "Installing the kernel failed"
+	eend ${?} || die -n "Installing the kernel failed"
 }
 
 # @FUNCTION: dist-kernel_reinstall_initramfs
