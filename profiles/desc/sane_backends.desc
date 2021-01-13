@@ -64,6 +64,7 @@ net - SANE_BACKENDS setting for building the net backend
 niash - SANE_BACKENDS setting for building the niash backend
 p5 - SANE_BACKENDS setting for building the p5 backend
 pie - SANE_BACKENDS setting for building the pie backend
+pieusb - SANE_BACKENDS setting for building the pieusb backend
 pixma - SANE_BACKENDS setting for building the pixma backend
 plustek - SANE_BACKENDS setting for building the plustek backend
 plustek_pp - SANE_BACKENDS setting for building the plustek_pp backend
