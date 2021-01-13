@@ -7883,6 +7883,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/Faker 5.5.1: a Python package that generates fake data for you
 dev-python/GitPython 3.1.11 3.1.12: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -9195,7 +9196,7 @@ dev-python/tikzplotlib 0.9.6: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 1.1.0: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
-dev-python/tld 0.12.2 0.12.3: Extract the top level domain (TLD) from the URL given
+dev-python/tld 0.12.2 0.12.3 0.12.5: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/toml 0.10.2: Python library for handling TOML files
 dev-python/toolz 0.11.1: List processing tools and functional utilities
@@ -9239,6 +9240,7 @@ dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
 dev-python/uvloop 0.14.0: Ultra-fast implementation of asyncio event loop on top of libuv
+dev-python/validators 0.18.2: Python Data Validation for Humans
 dev-python/vcrpy 4.1.1: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.42: Python library for interacting with various VCS systems
 dev-python/vdf 3.3: A module for (de)serialization to and from VDF, Valve's key-value text format
