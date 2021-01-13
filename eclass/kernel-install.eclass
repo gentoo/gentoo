@@ -367,12 +367,11 @@ kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local ver="${PV}${KV_LOCALVERSION}"
+	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${ver}"
 
 	if [[ -z ${ROOT} ]]; then
 		kernel-install_install_all "${ver}"
 	fi
-
-	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${ver}"
 }
 
 # @FUNCTION: kernel-install_pkg_prerm
