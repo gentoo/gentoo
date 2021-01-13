@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
 # python-any-r1 required for a script in
-# backends/pixma/scripts/ 
+# backends/pixma/scripts/
 inherit autotools flag-o-matic multilib-minimal optfeature python-any-r1 systemd toolchain-funcs udev user
 
 # gphoto and v4l are handled by their usual USE flags.
@@ -166,11 +166,11 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	${PYHTON_DEPS}
 	dev-libs/libxml2
 	v4l? ( sys-kernel/linux-headers )
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	sys-devel/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig
