@@ -150,11 +150,6 @@
       <role>catalyst builds for systemd and musl</role>
     </member>
     <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
-      <role>Lead Minion</role>
-    </member>
-    <member>
       <email>kentnl@gentoo.org</email>
       <name>Kent Fredric</name>
       <role>Minion</role>
@@ -1848,11 +1843,6 @@
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
       <role>Developer</role>
     </member>
     <member>

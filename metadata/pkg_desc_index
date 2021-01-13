@@ -5393,7 +5393,7 @@ dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.2: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.11: Library for some string essentials
-dev-libs/libev 4.31 4.33: A high-performance event loop/event model with lots of feature
+dev-libs/libev 4.33: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.10.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.11 2.1.12 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
@@ -8913,7 +8913,7 @@ dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
 dev-python/python-libevdev 0.8 0.9: Python wrappers for the libevdev library
-dev-python/python-linux-procfs 0.6.1: Python classes to extract information from the Linux kernel /proc files
+dev-python/python-linux-procfs 0.6.1 0.6.3: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.18: Access the libmagic file type identification library
@@ -10631,7 +10631,7 @@ dev-util/checkbashisms 2.19.7 2.20.1 2.20.2 2.20.3 2.20.4 2.20.5: Perl script to
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/chroot-wrapper 0.9.3: Wrapper for chroot to set up some bind mounts, namespaces, and control groups
 dev-util/clair 2.1.3 2.1.4: Vulnerability Static Analysis for Containers
-dev-util/clazy 1.8: Compiler plugin which allows clang to understand Qt semantics
+dev-util/clazy 1.8 1.9: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 3.0.20.11.20 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2.4 2020.3.1-r1: A complete toolset for C and C++ development
@@ -12237,7 +12237,7 @@ kde-frameworks/khtml 5.77.0 5.78.0: KHTML web rendering engine
 kde-frameworks/ki18n 5.77.0 5.78.0: Framework based on Gettext for internationalizing user interface text
 kde-frameworks/kiconthemes 5.77.0 5.78.0: Framework for icon theming and configuration
 kde-frameworks/kidletime 5.77.0 5.78.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.77.0 5.78.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kimageformats 5.77.0 5.78.0-r1: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.77.0 5.78.0: Helper library to speed up start of applications on KDE work spaces
 kde-frameworks/kio 5.77.0-r1 5.78.0: Framework providing transparent file and data management
 kde-frameworks/kirigami 5.77.0 5.78.0: Lightweight user interface framework for mobile and convergent applications
@@ -13905,7 +13905,7 @@ media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.6.3 9999: Graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.6.3 9999: Qt application to control FluidSynth
+media-sound/qsynth 0.6.3 0.9.0 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.18 0.9.19: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
@@ -14641,7 +14641,7 @@ net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1: Mattermost Desktop application
 net-im/mcabber 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
-net-im/neochat 1.0: Client for Matrix, the decentralized communication protocol
+net-im/neochat 1.0.1: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
@@ -15470,7 +15470,7 @@ net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
 net-proxy/privoxy 3.0.28-r1 3.0.29: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10 3.2.11: A squid redirector used for blocking unwanted content
-net-proxy/shadowsocks-libev 3.3.4-r1 3.3.5: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
+net-proxy/shadowsocks-libev 3.3.5: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
 net-proxy/sqtop 2015.02.08: Squid Top - top for Squid
 net-proxy/squid 4.13: A full-featured web proxy cache
 net-proxy/squidguard 1.6.0: Combined filter, redirector and access controller plugin for Squid
@@ -17020,7 +17020,7 @@ sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space co
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.8.0 0.8.1 0.8.3 0.8.4 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.13.0-r1: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.13.0-r1 2.15.0: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for building SSL client-server applications
@@ -17650,7 +17650,7 @@ sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.13-r1 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605 1.0_p20200924: Userspace Software Suspend and S2Ram
-sys-power/thermald 2.2 2.3-r1 2.4.1: Thermal daemon for Intel architectures
+sys-power/thermald 2.3-r1 2.4.1: Thermal daemon for Intel architectures
 sys-power/tuxedo-cc-wmi 0.1.4-r1: Kernel Module for Tuxedo WMI
 sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
@@ -18584,7 +18584,7 @@ x11-misc/xscreensaver-app 2.3-r3 2.3-r4: XScreenSaver dockapp for the Window Mak
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1 0.80: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
-x11-misc/xsettingsd 1.0.0: Provides settings to X11 applications via the XSETTINGS specification
+x11-misc/xsettingsd 1.0.0 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
 x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r2 3.0.7: let it snow on your desktop and windows
 x11-misc/xsr 1.0.0: X Steps Recorder
