@@ -38,7 +38,7 @@ SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 	)"
 
 IUSE="+proprietary-codecs suid widevine"
-RESTRICT="bindist mirror"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
