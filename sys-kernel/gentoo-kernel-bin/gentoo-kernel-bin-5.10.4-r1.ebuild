@@ -35,7 +35,7 @@ src_unpack() {
 
 src_test() {
 	kernel-install_test "${PV}" \
-		"${WORKDIR}/usr/src/linux-${PV}/$(kernel-install_get_image_path)" \
+		"${WORKDIR}/usr/src/linux-${PV}/$(dist-kernel_get_image_path)" \
 		"lib/modules/${PV}"
 }
 

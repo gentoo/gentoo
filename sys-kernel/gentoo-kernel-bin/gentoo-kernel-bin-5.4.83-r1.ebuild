@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,7 @@ src_unpack() {
 
 src_test() {
 	kernel-install_test "${PV}" \
-		"${WORKDIR}/usr/src/linux-${PV}/$(kernel-install_get_image_path)" \
+		"${WORKDIR}/usr/src/linux-${PV}/$(dist-kernel_get_image_path)" \
 		"lib/modules/${PV}"
 }
 
