@@ -308,7 +308,7 @@ kernel-install_pkg_pretend() {
 			elog "If you decide to install linux-firmware later, you can rebuild"
 			elog "the initramfs via issuing a command equivalent to:"
 			elog
-			elog "    emerge --config ${CATEGORY}/${PN}"
+			elog "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
 		fi
 	fi
 }
