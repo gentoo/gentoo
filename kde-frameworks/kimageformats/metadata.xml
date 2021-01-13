@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="avif">Support the AVIF image file format</flag>
 		<flag name="eps">Support the EPS graphics file format</flag>
 	</use>
 </pkgmetadata>
