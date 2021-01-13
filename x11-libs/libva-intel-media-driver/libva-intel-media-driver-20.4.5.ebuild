@@ -26,17 +26,17 @@ IUSE="+custom-cflags set-as-default test X"
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-20.4.5_custom_cflags.patch
-	"${FILESDIR}"/${PN}-20.4.5_tesing_in_src_test.patch
-        )
-
 DEPEND=">=media-libs/gmmlib-20.4.1
 	>=x11-libs/libva-2.10.0[X?]
 	>=x11-libs/libpciaccess-0.13.1-r1:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
+	"${FILESDIR}"/${PN}-20.4.5_custom_cflags.patch
+	"${FILESDIR}"/${PN}-20.4.5_tesing_in_src_test.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
