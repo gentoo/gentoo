@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit qmake-utils toolchain-funcs
 MY_P=${PN}-src-${PV}
 
 DESCRIPTION="Modern build tool for software projects"
-HOMEPAGE="https://wiki.qt.io/Qbs"
+HOMEPAGE="https://doc.qt.io/qbs/"
 SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-# see bug 581874 for the qttest dep in RDEPEND
 RDEPEND="
 	dev-qt/qtcore:5=
 	dev-qt/qtgui:5
@@ -25,7 +24,6 @@ RDEPEND="
 	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	test? ( dev-qt/qttest:5 )
 "
 DEPEND="${RDEPEND}
 	doc? (
@@ -36,6 +34,7 @@ DEPEND="${RDEPEND}
 		dev-qt/linguist-tools:5
 		dev-qt/qtdbus:5
 		dev-qt/qtdeclarative:5
+		dev-qt/qttest:5
 	)
 "
 
@@ -52,14 +51,11 @@ src_prepare() {
 
 	# skip several tests that fail and/or have additional deps
 	sed -i \
-		-e 's/findArchiver("7z")/""/'		`# requires p7zip, fails` \
 		-e 's/findArchiver(binaryName,.*/"";/'	`# requires zip and jar` \
 		-e 's/p\.value("nodejs\./true||&/'	`# requires nodejs, bug 527652` \
 		-e 's/\(p\.value\|m_qbsStderr\.contains\)("typescript\./true||&/' `# requires nodejs and typescript` \
 		tests/auto/blackbox/tst_blackbox.cpp || die
-
-	# requires jdk, fails, bug 585398
-	sed -i -e '/blackbox-java\.pro/ d' tests/auto/auto.pro || die
+	sed -i -re '/blackbox-(android|apple|java)\.pro/ d' tests/auto/auto.pro || die
 }
 
 src_configure() {
@@ -102,9 +98,9 @@ src_test() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install
+	emake -j1 INSTALL_ROOT="${D}" install
 
-	dodoc -r changelogs
+	dodoc -r changelogs CONTRIBUTING.md README.md
 
 	# install documentation
 	if use doc; then
