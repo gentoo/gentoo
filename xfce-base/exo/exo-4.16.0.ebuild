@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gtk-doc-am
 	dev-util/intltool
-	dev-util/xfce4-dev-tools
+	>=dev-util/xfce4-dev-tools-4.16.0
 	sys-devel/gettext
 	virtual/pkgconfig"
 
