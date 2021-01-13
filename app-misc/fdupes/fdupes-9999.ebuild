@@ -1,34 +1,41 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic git-r3 toolchain-funcs
-
-MY_P="${PN}-${PV/_pre/-PR}"
+inherit toolchain-funcs
 
 DESCRIPTION="Identify/delete duplicate files residing within specified directories"
 HOMEPAGE="https://github.com/adrianlopezroche/fdupes"
-EGIT_REPO_URI="https://github.com/adrianlopezroche/fdupes.git"
-
+if [[ "${PV}" == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/adrianlopezroche/fdupes.git"
+else
+	SRC_URI="https://github.com/adrianlopezroche/${PN}/releases/download/v${PV}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+fi
 LICENSE="MIT"
 SLOT="0"
+IUSE="+ncurses"
 
-KEYWORDS=""
-SRC_URI=""
-
-S="${WORKDIR}/${MY_P}"
-
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+RDEPEND="
+	dev-libs/libpcre2[pcre32]
+	ncurses? ( sys-libs/ncurses:0= )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( CHANGES CONTRIBUTORS README )
 
-src_configure() {
-	append-lfs-flags
-	tc-export CC
+src_prepare() {
+	default
+	[[ "${PV}" == *9999 ]] && eautoreconf
 }
 
-src_install() {
-	emake PREFIX="/usr" DESTDIR="${D}" install
-	einstalldocs
+src_configure() {
+	econf $(use_with ncurses)
+}
+
+src_compile() {
+	emake CC=$(tc-getCC)
 }
