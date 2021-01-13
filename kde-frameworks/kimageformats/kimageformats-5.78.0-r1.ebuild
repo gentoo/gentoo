@@ -12,11 +12,12 @@ inherit ecm kde.org
 DESCRIPTION="Framework providing additional format plugins for Qt's image I/O system"
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="eps openexr"
+IUSE="avif eps openexr"
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	=kde-frameworks/karchive-${PVCUT}*:5
+	avif? ( >=media-libs/libavif-0.8.2 )
 	eps? ( >=dev-qt/qtprintsupport-${QTMIN}:5 )
 	openexr? (
 		media-libs/ilmbase:=
@@ -29,6 +30,7 @@ DOCS=( src/imageformats/AUTHORS )
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake_use_find_package avif libavif)
 		$(cmake_use_find_package eps Qt5PrintSupport)
 		$(cmake_use_find_package openexr OpenEXR)
 	)
