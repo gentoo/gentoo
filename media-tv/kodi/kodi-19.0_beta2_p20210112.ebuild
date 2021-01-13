@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,14 +19,10 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 else
-	MY_PV=${PV/_p/_r}
-	MY_PV=${MY_PV/_alpha/a}
-	MY_PV=${MY_PV/_beta/b}
-	MY_PV=${MY_PV/_rc/rc}
-	MY_P="${PN}-${MY_PV}"
-	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz"
+	GIT_COMMIT="aecf662b642fef7fd8388135bd23d842094f0690"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
+	S=${WORKDIR}/xbmc-${GIT_COMMIT}
 fi
 
 inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
