@@ -331,6 +331,34 @@ kernel-install_pkg_preinst() {
 	# (no-op)
 }
 
+# @FUNCTION: kernel-install_install_all
+# @USAGE: <ver>
+# @DESCRIPTION:
+# Build an initramfs for the kernel and install the kernel.  This is
+# called from pkg_postinst() and pkg_config().  <ver> is the full
+# kernel version.
+kernel-install_install_all() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
+	local ver=${1}
+
+	mount-boot_pkg_preinst
+
+	local image_path=$(dist-kernel_get_image_path)
+	if use initramfs; then
+		# putting it alongside kernel image as 'initrd' makes
+		# kernel-install happier
+		dist-kernel_build_initramfs \
+			"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
+			"${ver}"
+	fi
+
+	dist-kernel_install_kernel "${ver}" \
+		"${EROOT}/usr/src/linux-${ver}/${image_path}" \
+		"${EROOT}/usr/src/linux-${ver}/System.map"
+}
+
 # @FUNCTION: kernel-install_pkg_postinst
 # @DESCRIPTION:
 # Build an initramfs for the kernel, install it and update
@@ -338,22 +366,10 @@ kernel-install_pkg_preinst() {
 kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local ver="${PV}${KV_LOCALVERSION}"
+
 	if [[ -z ${ROOT} ]]; then
-		mount-boot_pkg_preinst
-
-		local ver="${PV}${KV_LOCALVERSION}"
-		local image_path=$(dist-kernel_get_image_path)
-		if use initramfs; then
-			# putting it alongside kernel image as 'initrd' makes
-			# kernel-install happier
-			dist-kernel_build_initramfs \
-				"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
-				"${ver}"
-		fi
-
-		dist-kernel_install_kernel "${ver}" \
-			"${EROOT}/usr/src/linux-${ver}/${image_path}" \
-			"${EROOT}/usr/src/linux-${ver}/System.map"
+		kernel-install_install_all "${ver}"
 	fi
 
 	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${ver}"
@@ -391,21 +407,7 @@ kernel-install_pkg_postrm() {
 kernel-install_pkg_config() {
 	[[ -z ${ROOT} ]] || die "ROOT!=/ not supported currently"
 
-	mount-boot_pkg_preinst
-
-	local ver="${PV}${KV_LOCALVERSION}"
-	local image_path=$(dist-kernel_get_image_path)
-	if use initramfs; then
-		# putting it alongside kernel image as 'initrd' makes
-		# kernel-install happier
-		dist-kernel_build_initramfs \
-			"${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" \
-			"${ver}"
-	fi
-
-	dist-kernel_install_kernel "${ver}" \
-		"${EROOT}/usr/src/linux-${ver}/${image_path}" \
-		"${EROOT}/usr/src/linux-${ver}/System.map"
+	kernel-install_install_all "${PV}${KV_LOCALVERSION}"
 }
 
 _KERNEL_INSTALL_ECLASS=1
