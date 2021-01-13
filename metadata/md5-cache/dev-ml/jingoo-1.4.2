@@ -1,14 +1,15 @@
-BDEPEND=dev-ml/dune
-DEFINED_PHASES=install
-DEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/menhir test? ( dev-ml/ounit )
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/re dev-ml/menhir test? ( dev-ml/ounit ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=OCaml template engine almost compatible with Jinja2.
 EAPI=7
 HOMEPAGE=https://github.com/tategakibunko/jingoo
-IUSE=test
+IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
-RDEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/menhir
+RDEPEND=dev-ml/ppx_deriving dev-ml/uucp dev-ml/uutf dev-ml/re dev-ml/menhir >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tategakibunko/jingoo/archive/v1.4.2.tar.gz -> jingoo-1.4.2.tar.gz
-_md5_=0a7fe173ad3c3626ba3fe80028b28e6a
+_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
+_md5_=12eddc2c9d8ddba4264a7f694a1b394b
