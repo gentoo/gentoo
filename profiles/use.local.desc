@@ -2513,6 +2513,8 @@ dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
 dev-python/pyzmq:draft - Enable draft API support
 dev-python/rarfile:compressed - Enables the module to support compressed v3 archives by calling the app-arch/unrar.
 dev-python/rfc3986:idna - enable support for the IDNA specification (RFC 5891)
+dev-python/rpyc:gdb - Run tests depending on sys-devel/gdb
+dev-python/rpyc:numpy - Run tests depending on dev-python/numpy, dev-python/pandas
 dev-python/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
 dev-python/shiboken2:docstrings - Expose documentation as Python docstrings (recommended)
 dev-python/shiboken2:numpy - Implicitly convert passed NumPy arrays to Qt lists

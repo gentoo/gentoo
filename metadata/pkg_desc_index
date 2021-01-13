@@ -9035,7 +9035,7 @@ dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package s
 dev-python/routes 2.5.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.7-r1: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
-dev-python/rpyc 4.1.4 4.1.5 5.0.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rpyc 4.1.4 4.1.5 5.0.0 5.0.1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.7.0: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 4.7: Pure-Python RSA implementation
 dev-python/rst-linker 2.1.1: Sphinx plugin to add links and timestamps to the changelog
@@ -12410,7 +12410,7 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.8 1.4.10 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.6.0: Thunderbird Mail Client
+mail-client/thunderbird 78.6.0 78.6.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 78.6.0 78.6.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
