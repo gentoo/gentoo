@@ -15,4 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
+DEPEND="dev-ml/lwt"
+RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}.ml-${PV}"
