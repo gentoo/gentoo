@@ -1,19 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools multilib readme.gentoo-r1 systemd user
+inherit autotools readme.gentoo-r1 systemd user
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Bumblebee-Project/Bumblebee.git"
 	EGIT_BRANCH="develop"
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 else
-	COMMIT="d469a32fc0dfef5b3725c7a5331be2d04b870594"
+	COMMIT="8f3d307b6aabbc2cd8444c6e5a4360f3bf2915ec"
 	SRC_URI="https://github.com/Bumblebee-Project/Bumblebee/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 
 	S="${WORKDIR}/Bumblebee-${COMMIT}"
 fi
