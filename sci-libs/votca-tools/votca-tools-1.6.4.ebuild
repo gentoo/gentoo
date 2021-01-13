@@ -1,14 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit cmake-utils
+inherit cmake eutils multilib
 
-IUSE=""
-DEPEND="=sci-chemistry/csg-${PV} )"
 if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
@@ -19,18 +17,28 @@ else
 	KEYWORDS=""
 fi
 
-DESCRIPTION="Manual for votca-csg"
+DESCRIPTION="Votca tools library"
 HOMEPAGE="http://www.votca.org"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	dev-libs/boost:=
+	dev-libs/expat
+	>=dev-cpp/eigen-3.3
+	sci-libs/fftw:3.0"
 
-DEPEND="
-	app-doc/doxygen[dot]
-	dev-texlive/texlive-latexextra
-	virtual/latex-base
-	dev-tex/pgf
+DEPEND="${RDEPEND}
 	>=app-text/txt2tags-2.5
-	~sci-chemistry/votca-csg-${PV}"
+	virtual/pkgconfig"
+
+DOCS=( NOTICE )
+
+src_configure() {
+	mycmakeargs=(
+		-DWITH_RC_FILES=OFF
+	)
+	cmake_src_configure
+}

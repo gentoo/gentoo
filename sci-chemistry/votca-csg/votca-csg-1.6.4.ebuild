@@ -8,8 +8,10 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 inherit bash-completion-r1 cmake multilib
 
 IUSE="doc examples extras +gromacs hdf5"
+PDEPEND="extras? ( ~sci-chemistry/${PN}apps-${PV} )"
 if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
 		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
@@ -17,6 +19,7 @@ else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS=""
+	PDEPEND="${PDEPEND} doc? ( ~app-doc/${PN}-manual-${PV} )"
 fi
 
 DESCRIPTION="Votca coarse-graining engine"
@@ -37,7 +40,7 @@ DEPEND="${RDEPEND}
 	>=app-text/txt2tags-2.5
 	virtual/pkgconfig"
 
-DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
+DOCS=( README.md NOTICE CHANGELOG.md )
 
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
@@ -58,7 +61,6 @@ src_configure() {
 		-DWITH_GMX=$(usex gromacs)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex '!hdf5')
 		-DWITH_RC_FILES=OFF
-		-DBUILD_CSGAPPS=ON
 	)
 	cmake_src_configure
 }
@@ -70,6 +72,9 @@ src_install() {
 		[[ ${i} = *csg_call ]] && continue
 		bashcomp_alias csg_call "${i##*/}"
 	done
+	if use doc; then
+		[[ ${PV} != *9999* ]] && dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
+	fi
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/tutorials"
 		docompress -x "/usr/share/doc/${PF}/tutorials"
