@@ -18,7 +18,7 @@
  if(CMAKE_BUILD_TYPE STREQUAL "")
    # CMake defaults to leaving CMAKE_BUILD_TYPE empty. This screws up
    # differentiation between debug and release builds.
-@@ -8,45 +18,122 @@
+@@ -8,45 +18,120 @@
  CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel." FORCE)
  endif ()
 
@@ -39,8 +39,6 @@
 +string(TOUPPER ${PROJECT_NAME} PROJECT_UPPER)
 +set_target_properties(${PROJECT_NAME}
 +	PROPERTIES INTERFACE_COMPILE_DEFINITIONS ${PROJECT_UPPER}_STATIC_DEFINE)
-+else()
-+set_property(TARGET ${PROJECT_NAME} PROPERTY C_VISIBILITY_PRESET hidden)
 +endif()
 +
 +set_property(TARGET ${PROJECT_NAME} PROPERTY VERSION ${MINIZ_VERSION})
