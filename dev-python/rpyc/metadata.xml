@@ -13,7 +13,7 @@
 	<upstream>
 		<remote-id type="sourceforge">rpyc</remote-id>
 		<remote-id type="pypi">rpyc</remote-id>
-		<remote-id type="github">tomerfiliba/rpyc</remote-id>
+		<remote-id type="github">tomerfiliba-org/rpyc</remote-id>
 	</upstream>
 	<use>
 		<flag name="numpy">Run tests depending on
