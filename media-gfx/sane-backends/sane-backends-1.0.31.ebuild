@@ -242,7 +242,7 @@ multilib_src_configure() {
 		$(use_with usb)
 		$(multilib_native_use_with snmp)
 
-		$(usex sane_backends_escl --with-poppler-glib '')
+		$(multilib_native_usex sane_backends_escl --with-poppler-glib '')
 		# you can only enable this backend, not disable it...
 		$(usex sane_backends_pnm --enable-pnm-backend '')
 		$(usex sane_backends_mustek_pp --enable-parport-directio '')
