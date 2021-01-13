@@ -41,8 +41,20 @@ dist-kernel_build_initramfs() {
 	local output=${1}
 	local version=${2}
 
+	local rel_image_path=$(dist-kernel_get_image_path)
+	local image=${output%/*}/${rel_image_path##*/}
+
+	local args=(
+		--force
+		# if uefi=yes is used, dracut needs to locate the kernel image
+		--kernel-image "${image}"
+
+		# positional arguments
+		"${output}" "${version}"
+	)
+
 	ebegin "Building initramfs via dracut"
-	dracut --force "${output}" "${version}"
+	dracut "${args[@]}"
 	eend ${?} || die -n "Building initramfs failed"
 }
 
@@ -84,6 +96,23 @@ dist-kernel_install_kernel() {
 	local version=${1}
 	local image=${2}
 	local map=${3}
+
+	# if dracut is used in uefi=yes mode, initrd will actually
+	# be a combined kernel+initramfs UEFI executable.  we can easily
+	# recognize it by PE magic (vs cpio for a regular initramfs)
+	local initrd=${image%/*}/initrd
+	local magic
+	[[ -s ${initrd} ]] && read -n 2 magic < "${initrd}"
+	if [[ ${magic} == MZ ]]; then
+		einfo "Combined UEFI kernel+initramfs executable found"
+		# install the combined executable in place of kernel
+		image=${initrd}.uefi
+		mv "${initrd}" "${image}" || die
+		# put an empty file in place of initrd.  installing a duplicate
+		# file would waste disk space, and removing it entirely provokes
+		# kernel-install to regenerate it via dracut.
+		> "${initrd}"
+	fi
 
 	ebegin "Installing the kernel via installkernel"
 	# note: .config is taken relatively to System.map;
