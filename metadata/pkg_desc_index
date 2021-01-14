@@ -903,7 +903,7 @@ app-backup/restic 0.9.6 0.10.0 0.11.0: A backup program that is fast, efficient 
 app-backup/rsnapshot 1.4.2 1.4.3: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
-app-backup/snapper 0.5.6-r1 0.8.6 0.8.7 0.8.9-r1: Command-line program for btrfs and lvm snapshot management
+app-backup/snapper 0.5.6-r1 0.8.9-r1 0.8.15: Command-line program for btrfs and lvm snapshot management
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/synology-cloud-station-backup 4469: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.37 1.0.39: Online backups for the truly paranoid
@@ -15459,7 +15459,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.27-r1 2.0.14-r2 2.0.19-r1 2.0.20 2.0.9999 2.1.4-r2 2.1.10-r1 2.1.11 2.1.9999 2.2.5-r1 2.2.6-r1 2.2.7 2.2.9999 2.3.2-r1 2.3.3 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.27-r1 1.8.28 2.0.14-r2 2.0.19-r1 2.0.20 2.0.9999 2.1.4-r2 2.1.10-r1 2.1.11 2.1.9999 2.2.5-r1 2.2.6-r1 2.2.8 2.2.9999 2.3.2-r1 2.3.4 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
@@ -17973,7 +17973,7 @@ www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your da
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2: a photo gallery software for the web
-www-apps/postfixadmin 3.2.4 3.3.1: Web Based Management tool for Postfix style virtual domains and users
+www-apps/postfixadmin 3.2.4 3.3.2: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
@@ -17989,7 +17989,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 87.0.4280.141 88.0.4324.79 89.0.4381.6: Open-source version of Google Chrome web browser
+www-client/chromium 87.0.4280.141 88.0.4324.79 89.0.4385.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
