@@ -13,11 +13,11 @@ SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
 # Needs to include licenses for all bundled programs and libraries.
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="apparmor ipv6 nls verify-sig"
 
 DEPEND="app-arch/xz-utils
-	>=app-emulation/lxc-3.0.0[apparmor?,seccomp]
+	>=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)]
 	dev-libs/dqlite
 	dev-libs/lzo
 	dev-libs/raft
@@ -75,14 +75,6 @@ src_prepare() {
 		-e "s:\./configure:./configure --prefix=/usr --libdir=${EPREFIX}/usr/lib/lxd:g" \
 		-e "s:make:make ${MAKEOPTS}:g" \
 		Makefile || die
-
-	# Fix hardcoded ovmf file path, see bug 763180
-	sed -i \
-		-e "s:/usr/share/OVMF:/usr/share/edk2-ovmf:g" \
-		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.secboot.fd:g" \
-		doc/environment.md \
-		lxd/apparmor/instance_qemu.go \
-		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
 }
 
 src_configure() { :; }
