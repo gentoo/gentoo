@@ -3271,6 +3271,8 @@ games-strategy/uqm:music - download and install music files (large)
 games-strategy/uqm:remix - download and install music remix files (large)
 games-strategy/uqm:voice - download and install voice files (large)
 games-strategy/wargus:bne - Support extracting data from the Battle.net Edition
+games-strategy/warzone2100:discord - Enable Discord presence/join integration
+games-strategy/warzone2100:vulkan - Enable vulkan backend
 games-strategy/wesnoth:fribidi - Support for right-to-left languages
 games-strategy/wesnoth:server - Enable compilation of server
 games-util/deutex:man - Build and install man pages
