@@ -18,13 +18,12 @@ HOMEPAGE="https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug justify magic minimal ncurses nls slang +spell +split-usr static unicode"
+IUSE="debug justify magic minimal ncurses nls +spell +split-usr static unicode"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0=[unicode?]
 	sys-libs/ncurses:0=[static-libs(+)]
 	magic? ( sys-apps/file[static-libs(+)] )
-	nls? ( virtual/libintl )
-	!ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) )"
+	nls? ( virtual/libintl )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
@@ -34,7 +33,6 @@ BDEPEND="
 "
 
 REQUIRED_USE="
-	!ncurses? ( slang? ( minimal ) )
 	magic? ( !minimal )
 "
 
@@ -60,7 +58,6 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable unicode utf8)
 		$(use_enable minimal tiny)
-		$(usex ncurses --without-slang $(use_with slang))
 	)
 	econf "${myconf[@]}"
 }
