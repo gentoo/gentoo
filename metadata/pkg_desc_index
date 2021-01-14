@@ -13308,7 +13308,7 @@ media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2020.4_pre20201106 2020.5_pre20201216: Collection of tools, libraries and tests for shader compilation
-media-libs/simage 1.8.0-r1: Image and video texturing library
+media-libs/simage 1.8.0-r1 1.8.1 9999: Image and video texturing library
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
 media-libs/soxr 0.1.3-r1: SoX Resampler library
