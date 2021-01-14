@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2021-01-14)
+# fails to compile with was not declared in this scope errors
+=dev-util/cmake-3.19.3
+
 # Fabian Groffen <grobian@gentoo.org> (2021-01-10)
 # fails to compile on regex and nonull definitions in
 # gnulib/malloc/dynarray-skeleton.c
