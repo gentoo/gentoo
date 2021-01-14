@@ -1,36 +1,30 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Bomberman-like multiplayer game"
 HOMEPAGE="https://savannah.nongnu.org/projects/clanbomber/"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.lzma"
+SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	dev-libs/boost
+	dev-libs/boost:=
 	media-fonts/dejavu
 	media-libs/libsdl[sound,joystick,video]
 	media-libs/sdl-gfx
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog ChangeLog.hg IDEAS NEWS QUOTES README TODO )
-
-PATCHES=(
-		"${FILESDIR}"/${P}-automake112.patch
-		"${FILESDIR}"/${P}-boost150.patch
-		"${FILESDIR}"/${P}-gcc6.patch
-)
 
 src_prepare() {
 	default
@@ -40,9 +34,11 @@ src_prepare() {
 
 src_install() {
 	default
+
 	newicon src/pics/cup2.png ${PN}.png
 	make_desktop_entry ${PN}2 ClanBomber2
-	rm -f "${D}/usr/share/${PN}/fonts/DejaVuSans-Bold.ttf" || die
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
+
+	rm "${ED}/usr/share/${PN}/fonts/DejaVuSans-Bold.ttf" || die
+	dosym ../../fonts/dejavu/DejaVuSans-Bold.ttf \
 		/usr/share/${PN}/fonts/DejaVuSans-Bold.ttf
 }

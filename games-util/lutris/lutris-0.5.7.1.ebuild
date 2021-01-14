@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 DISTUTILS_SINGLE_IMPL="1"
 
@@ -36,7 +36,6 @@ BDEPEND="
 RDEPEND="
 	app-arch/cabextract
 	app-arch/p7zip
-	app-arch/unrar
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -54,7 +53,7 @@ RDEPEND="
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
-	x11-libs/libnotify
+	x11-libs/libnotify[introspection]
 "
 
 PATCHES=(

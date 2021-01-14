@@ -41,6 +41,7 @@ src_prepare() {
 	default
 
 	sed -i \
+		-e "/^PYTHON/s:/usr/bin/python3:${EPYTHON}:" \
 		-e "/^export DOCDIR/s/$/&\-\$(VERSION)/g" \
 		-e "/\$(DESTDIR)\/run\/tuned/d" \
 		-e "/\$(DESTDIR)\/var\/lib\/tuned/d" \
