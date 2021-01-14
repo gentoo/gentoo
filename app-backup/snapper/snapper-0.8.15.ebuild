@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd bash-completion-r1
+inherit autotools systemd bash-completion-r1
 
 DESCRIPTION="Command-line program for btrfs and lvm snapshot management"
 HOMEPAGE="http://snapper.io/"
-SRC_URI="ftp://ftp.suse.com/pub/projects/snapper/${P}.tar.bz2"
+SRC_URI="https://github.com/openSUSE/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="lvm pam xattr"
+IUSE="doc lvm pam test systemd xattr"
 
 RDEPEND="dev-libs/boost:=[threads]
 	dev-libs/libxml2
@@ -28,11 +28,14 @@ RDEPEND="dev-libs/boost:=[threads]
 	xattr? ( sys-apps/attr )"
 
 DEPEND="${RDEPEND}
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 	sys-devel/gettext
 	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/cron-confd.patch
+	"${FILESDIR}"/${P}-testsuite.patch
 )
 
 src_prepare() {
@@ -41,19 +44,25 @@ src_prepare() {
 	sed -e "s,/usr/lib/systemd/system,$(systemd_get_systemunitdir),g" \
 		-i data/Makefile.* \
 		|| die "Failed to fix systemd services and timers installation path"
+	eautoreconf
 }
 
 src_configure() {
 	# ext4 code does not work anymore
 	# snapper does not build without btrfs
 	local myeconfargs=(
+		--disable-silent-rules
 		--with-conf="/etc/conf.d"
-		--disable-zypp
+		--enable-zypp
 		--enable-rollback
+		--enable-btrfs-quota
 		--disable-ext4
 		--enable-btrfs
+		$(use_enable doc)
 		$(use_enable lvm)
 		$(use_enable pam)
+		$(use_enable test tests)
+		$(use_enable systemd)
 		$(use_enable xattr xattrs)
 	)
 
@@ -63,6 +72,7 @@ src_configure() {
 src_install() {
 	default
 	# Existing configuration file required to function
+	keepdir /etc/snapper/configs
 	newconfd data/sysconfig.snapper snapper
 	find "${D}" -name '*.la' -delete || die
 	newbashcomp "${FILESDIR}"/${PN}.bash ${PN}
