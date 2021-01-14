@@ -2438,7 +2438,7 @@ app-misc/gcal 3.6.3 4.1: The GNU Calendar - a replacement for cal
 app-misc/gcalcli 4.2.0: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.1-r1: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
-app-misc/geneweb 6.08.01 7.0.0: Genealogy software program with a Web interface
+app-misc/geneweb 6.08.01 7.0.0-r1: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/gentoo-elections 0_p20190710: Gentoo election control data and scripts
 app-misc/geoclue 2.4.13 2.5.3-r2 2.5.7: A location information D-Bus service
@@ -12162,7 +12162,7 @@ kde-apps/libkdegames 20.08.3 20.12.1: Base library common to many KDE games
 kde-apps/libkdepim 20.08.3 20.12.1: Common PIM libraries
 kde-apps/libkeduvocdocument 20.08.3 20.12.1: Library for reading/writing KVTML
 kde-apps/libkexiv2 20.08.3 20.12.1: Wrapper around exiv2 library
-kde-apps/libkgapi 20.08.3-r1 20.12.1: Library for accessing Google calendar and contact resources
+kde-apps/libkgapi 20.08.3-r1 20.12.1-r1: Library for accessing Google calendar and contact resources
 kde-apps/libkipi 20.08.3 20.12.1: A library for image plugins accross KDE applications
 kde-apps/libkleo 20.08.3 20.12.1: Library for encryption handling
 kde-apps/libkmahjongg 20.08.3 20.12.1: Mahjongg library based on Qt/KDE Frameworks
