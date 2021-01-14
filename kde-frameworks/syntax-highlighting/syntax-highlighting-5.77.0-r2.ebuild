@@ -8,6 +8,8 @@ QTMIN=5.15.1
 inherit ecm kde.org
 
 DESCRIPTION="Framework for syntax highlighting"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-bash-zsh-fixes.patch.xz"
+
 LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="nls"
@@ -22,6 +24,12 @@ DEPEND="
 	>=dev-qt/qtxmlpatterns-${QTMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${WORKDIR}"/${P}-bash-zsh-fixes.patch
+	"${FILESDIR}"/${PN}-5.77.0-bash-zsh-version.patch
+	"${FILESDIR}"/${PN}-5.77.0-bash-zsh-fix.patch
+)
 
 src_install() {
 	ecm_src_install
