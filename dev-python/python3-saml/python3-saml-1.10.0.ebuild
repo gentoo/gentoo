@@ -28,3 +28,9 @@ BDEPEND="
 "
 
 distutils_enable_tests setup.py
+
+src_prepare() {
+	# unpin deps
+	sed -i -e 's:==:>=:' setup.py || die
+	distutils-r1_src_prepare
+}
