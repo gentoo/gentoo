@@ -20,11 +20,6 @@ sys-libs/compiler-rt-sanitizers -profile
 # https://bugs.gentoo.org/751418
 >=sci-astronomy/stellarium-0.20.3 nls
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-10-07)
-# <app-admin/salt-3000 is Python 3.6 but last Python 3.6
-# compatible dev-python/libvirt-python version was removed
-<app-admin/salt-3000 libvirt
-
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
