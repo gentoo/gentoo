@@ -1,6 +1,6 @@
-    Prevent overriding of user-define CFLAGS, including -march flag.
-    The flag -msse4.1 is required otherwise compile will not be able to inline sse4.1 code.
-    Note: code should detect CPU features at runtime and use sse4.1 paths only if supported by CPU.
+Prevent overriding of user-define CFLAGS, including -march flag.
+The flag -msse4.1 is required otherwise compile will not be able to inline sse4.1 code.
+Note: code should detect CPU features at runtime and use sse4.1 paths only if supported by CPU.
 
 --- a/Source/GmmLib/CMakeLists.txt
 +++ b/Source/GmmLib/CMakeLists.txt
