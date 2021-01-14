@@ -21,6 +21,8 @@ HOMEPAGE="http://www.doxygen.org"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="clang debug doc dot doxysearch qt5 sqlite userland_GNU"
+# We need TeX for tests, bug #765472
+RESTRICT="!doc? ( test )"
 
 BDEPEND="sys-devel/bison
 	sys-devel/flex
