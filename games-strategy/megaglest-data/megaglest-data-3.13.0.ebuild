@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit cmake-utils games
+EAPI=7
+inherit cmake
 
 MY_PN="megaglest"
 DESCRIPTION="Data files for the cross-platform 3D realtime strategy game MegaGlest"
-HOMEPAGE="http://www.megaglest.org/"
+HOMEPAGE="https://www.megaglest.org/"
 SRC_URI="https://github.com/MegaGlest/megaglest-data/releases/download/${PV}/megaglest-data-${PV}.tar.xz"
 
 LICENSE="CC-BY-SA-3.0"
@@ -16,27 +16,17 @@ IUSE="doc"
 
 DOCS=( docs/AUTHORS.data.txt docs/CHANGELOG.txt docs/README.txt )
 
-S=${WORKDIR}/${MY_PN}-${PV}
-
-src_prepare() {
-	cmake-utils_src_prepare
-}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
+	# See bug https://bugs.gentoo.org/709450.
 	local mycmakeargs=(
-		-DMEGAGLEST_BIN_INSTALL_PATH="${GAMES_BINDIR}"
-		-DMEGAGLEST_DATA_INSTALL_PATH="${GAMES_DATADIR}/${MY_PN}"
-		-DMEGAGLEST_ICON_INSTALL_PATH="/usr/share/pixmaps"
+		-DMEGAGLEST_APPDATA_INSTALL_PATH=/usr/metainfo
 	)
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
+	cmake_src_configure
 }
 
 src_install() {
 	use doc && HTML_DOCS="docs/glest_factions/"
-	cmake-utils_src_install
-	prepgamesdirs
+	cmake_src_install
 }
