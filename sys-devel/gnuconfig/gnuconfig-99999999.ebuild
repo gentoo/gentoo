@@ -8,7 +8,7 @@ if [[ ${PV} == "99999999" ]] ; then
 
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	S="${WORKDIR}"
 fi
@@ -23,13 +23,14 @@ IUSE=""
 maint_pkg_create() {
 	cd "${S}"
 
+	make ChangeLog || die
 	local ver=$(gawk '{ gsub(/-/, "", $1); print $1; exit }' ChangeLog)
 	[[ ${#ver} != 8 ]] && die "invalid version '${ver}'"
 
 	cp "${FILESDIR}"/${PV}/*.patch . || die
 
-	local tar="${T}/gnuconfig-${ver}.tar.bz2"
-	tar -jcf "${tar}" ./* || die "creating tar failed"
+	local tar="${T}/gnuconfig-${ver}.tar.xz"
+	tar -Jcf "${tar}" ./* || die "creating tar failed"
 	einfo "Packaged tar now available:"
 	einfo "$(du -b "${tar}")"
 }
