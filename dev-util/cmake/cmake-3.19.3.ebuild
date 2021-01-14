@@ -131,8 +131,11 @@ src_prepare() {
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# disable Xcode hooks, bug #652134
-		sed -i -e 's/__APPLE__/__DISABLED_APPLE__/' \
-			Source/cmGlobalXCodeGenerator.cxx || die
+		sed -i -e 's/cm\(\|Global\|Local\)XCode[^.]\+\.\(cxx\|h\)//' \
+			Source/CMakeLists.txt || die
+		sed -i -e '/define CMAKE_USE_XCODE/s/XCODE/NO_XCODE/' \
+			-e '/cmGlobalXCodeGenerator.h/d' \
+			Source/cmake.cxx || die
 		# disable isysroot usage with GCC, we've properly instructed
 		# where things are via GCC configuration and ldwrapper
 		sed -i -e '/cmake_gnu_set_sysroot_flag/d' \
