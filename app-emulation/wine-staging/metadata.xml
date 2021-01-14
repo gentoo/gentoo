@@ -46,6 +46,7 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="themes">Support GTK+:3 window theming through Wine-Staging</flag>		
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
+		<flag name="usb">Use <pkg>virtual/libusb</pkg> to provide USB support</flag>
 		<flag name="vkd3d">Use <pkg>app-emulation/vkd3d</pkg> to provide Direct3D 12 support</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
