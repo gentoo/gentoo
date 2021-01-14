@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,15 +8,15 @@ inherit user systemd
 DESCRIPTION="Extensible continuous integration server"
 HOMEPAGE="https://jenkins.io/"
 LICENSE="MIT"
-SRC_URI="http://mirrors.jenkins-ci.org/war/${PV}/${PN/-bin/}.war -> ${P}.war"
+SRC_URI="http://mirrors.jenkins-ci.org/war-stable/${PV}/${PN/-bin/}.war -> ${P}.war"
 RESTRICT="mirror"
-SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux"
+SLOT="lts"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 RDEPEND="media-fonts/dejavu
 	media-libs/freetype
-	!dev-util/jenkins-bin:lts
+	!dev-util/jenkins-bin:0
 	>=virtual/jre-1.8.0"
 
 S=${WORKDIR}
