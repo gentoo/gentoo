@@ -13,7 +13,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug jack-dbus session"
+IUSE="alsa debug jack-dbus"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -43,6 +43,5 @@ src_configure() {
 	waf-utils_src_configure \
 		$(use debug && echo "--debug") \
 		$(use alsa || echo "--no-alsa") \
-		$(use jack-dbus && echo "--jack-dbus") \
-		$(use session && echo "--jack-session-manage")
+		$(use jack-dbus && echo "--jack-dbus")
 }
