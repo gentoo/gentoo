@@ -9,12 +9,10 @@
     <member is-lead="1">
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>expeditioneer@gentoo.org</email>
       <name>Dennis Lamm</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -29,48 +27,40 @@
   </project>
   <project>
     <email>amd64@gentoo.org</email>
-    <name>AMD64 Project</name>
+    <name>AMD64 Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:AMD64</url>
     <description>The AMD64 Project is devoted to providing stable, secure and up-to-date releases of Gentoo for the AMD64 and EM64T processor families.</description>
     <member is-lead="1">
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Lead</role>
     </member>
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>chainsaw@gentoo.org</email>
       <name>Tony Vroon</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>rich0@gentoo.org</email>
       <name>Richard Freeman</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>slashbeast@gentoo.org</email>
       <name>Piotr Karbowski</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -81,17 +71,16 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Member (Security bugs primarily)</role>
+      <role>Security bugs primarily</role>
     </member>
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Member (Gentoo/ARM Kernel)</role>
+      <role>Kernel</role>
     </member>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Member (Gentoo/ARM)</role>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -101,42 +90,35 @@
     <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
-      <role>Member (Gentoo/ARM)</role>
     </member>
     <member>
       <email>dlan@gentoo.org</email>
       <name>Lan Yixun</name>
-      <role>Member (Gentoo/ARM)</role>
     </member>
     <member>
       <email>maekke@gentoo.org</email>
       <name>Markus Meier</name>
-      <role>Member (Gentoo/ARM)</role>
     </member>
     <member>
       <email>nerdboy@gentoo.org</email>
       <name>Steve Arnold</name>
-      <role>Member (Gentoo/ARM Kernel)</role>
+      <role>Kernel</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Anything/everything</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member (Gentoo/ARM)</role>
     </member>
     <member is-lead="1">
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
-      <role>Lead (Gentoo/ARM)</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member (Gentoo/ARM)</role>
     </member>
   </project>
   <project>
@@ -147,12 +129,11 @@
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>catalyst builds for systemd and musl</role>
+      <role>Catalyst builds for systemd and musl</role>
     </member>
     <member>
       <email>kentnl@gentoo.org</email>
       <name>Kent Fredric</name>
-      <role>Minion</role>
     </member>
     <member>
       <email>leio@gentoo.org</email>
@@ -161,22 +142,18 @@
     <member>
       <email>neddyseagoon@gentoo.org</email>
       <name>Roy Bamford</name>
-      <role>Minion</role>
     </member>
     <member is-lead="1">
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Anything/everything</role>
     </member>
     <member>
       <email>sultan@gentoo.org</email>
       <name>Stephan Hartmann</name>
-      <role>Minor Minion</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Minor Minion</role>
     </member>
   </project>
   <project>
@@ -203,12 +180,10 @@
     <member is-lead="1">
       <email>nerdboy@gentoo.org</email>
       <name>Steve Arnold</name>
-      <role>member</role>
     </member>
     <member is-lead="1">
       <email>tupone@gentoo.org</email>
       <name>Alfredo Tupone</name>
-      <role>member</role>
     </member>
   </project>
   <project>
@@ -219,7 +194,7 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Member ( Security bugs primarily )</role>
+      <role>Security bugs primarily</role>
     </member>
     <member>
       <email>klausman@gentoo.org</email>
@@ -233,7 +208,6 @@
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member ( Gentoo/Alpha )</role>
     </member>
   </project>
   <project>
@@ -268,17 +242,14 @@
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>arzano@gentoo.org</email>
       <name>Max Magorsch</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
-      <role>Developer</role>
     </member>
     <member is-lead="1">
       <email>jstein@gentoo.org</email>
@@ -288,12 +259,10 @@
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -325,7 +294,6 @@
     <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>zx2c4@gentoo.org</email>
@@ -427,17 +395,14 @@
     <member>
       <email>jlec@gentoo.org</email>
       <name>Justin Lecher</name>
-      <role>Biology</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Biology</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Biology</role>
     </member>
   </project>
   <project>
@@ -453,7 +418,6 @@
     <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -464,12 +428,10 @@
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Member</role>
     </member>
     <member>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
-      <role>Member</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -516,22 +478,18 @@
     <member>
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
-      <role>Chemistry</role>
     </member>
     <member>
       <email>jlec@gentoo.org</email>
       <name>Justin Lecher</name>
-      <role>Chemistry</role>
     </member>
     <member>
       <email>nicolasbock@gentoo.org</email>
       <name>Nicolas Bock</name>
-      <role>Chemistry</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Chemistry</role>
     </member>
   </project>
   <project>
@@ -596,32 +554,27 @@
     <member>
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
-      <role>developer</role>
     </member>
     <member>
       <email>bircoph@gentoo.org</email>
       <name>Andrew Savchenko</name>
-      <role>developer</role>
     </member>
     <member>
       <email>mschiff@gentoo.org</email>
       <name>Marc Schiffbauer</name>
-      <role>developer</role>
     </member>
     <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
-      <role>developer</role>
     </member>
     <member>
       <email>ultrabug@gentoo.org</email>
       <name>Ultrabug</name>
-      <role>developer</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>developer (OpenMPI/Slurm)</role>
+      <role>OpenMPI/Slurm</role>
     </member>
   </project>
   <project>
@@ -694,12 +647,10 @@
     <member>
       <email>arzano@gentoo.org</email>
       <name>Max Magorsch</name>
-      <role>Member</role>
     </member>
     <member>
       <email>ultrabug@gentoo.org</email>
       <name>Ultrabug</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -765,7 +716,6 @@
     <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
-      <role>Developer</role>
     </member>
     <member is-lead="1">
       <email>jstein@gentoo.org</email>
@@ -849,7 +799,6 @@
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>jmbsvicetto@gentoo.org</email>
@@ -858,17 +807,14 @@
     <member>
       <email>neddyseagoon@gentoo.org</email>
       <name>Roy Bamford</name>
-      <role>Member</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -879,27 +825,22 @@
     <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
-      <role>member</role>
     </member>
     <member>
       <email>dlan@gentoo.org</email>
       <name>Lan Yixun</name>
-      <role>member</role>
     </member>
     <member>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
-      <role>member</role>
     </member>
     <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
-      <role>member</role>
     </member>
     <member>
       <email>tomjbe@gentoo.org</email>
       <name>Thomas Beierlein</name>
-      <role>member</role>
     </member>
   </project>
   <project>
@@ -974,22 +915,18 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member</role>
     </member>
     <member>
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
-      <role>Member</role>
     </member>
     <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1124,7 +1061,6 @@
     <member>
       <email>eva@gentoo.org</email>
       <name>Gilles Dartiguelongue</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>leio@gentoo.org</email>
@@ -1138,12 +1074,10 @@
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Member</role>
     </member>
     <member>
       <email>sobhan@gentoo.org</email>
       <name>Sobhan Mohammadpour</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1214,32 +1148,28 @@
     <member is-lead="1">
       <email>chewi@gentoo.org</email>
       <name>James Le Cuirot</name>
-      <role>Lead ( Team Lead )</role>
+      <role>Team Lead</role>
     </member>
     <member>
       <email>conikost@gentoo.org</email>
       <name>Conrad Kostecki</name>
-      <role>Member ( general )</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Member (QA and cleaning up bugs)</role>
+      <role>QA and cleaning up bugs</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Member ( general )</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member ( general )</role>
     </member>
     <member>
       <email>steils@gentoo.org</email>
       <name>Stefan Strogin</name>
-      <role>Member ( general )</role>
     </member>
   </project>
   <project>
@@ -1339,7 +1269,6 @@
     <member>
       <email>cynede@gentoo.org</email>
       <name>Cynede</name>
-      <role>Member</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
@@ -1354,12 +1283,10 @@
     <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
-      <role>Member</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1379,12 +1306,10 @@
     <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
-      <role>Member</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1501,12 +1426,11 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Member ( Security bugs primarily )</role>
+      <role>Security bugs primarily</role>
     </member>
     <member>
       <email>hattya@gentoo.org</email>
       <name>Akinori Hattori</name>
-      <role>Member ( Gentoo/IA-64 )</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
@@ -1520,17 +1444,14 @@
     <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
-      <role>Member ( Gentoo/IA-64 )</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member ( Gentoo/IA-64 )</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member ( Gentoo/IA-64 )</role>
     </member>
   </project>
   <project>
@@ -1635,7 +1556,6 @@
     <member>
       <email>fordfrog@gentoo.org</email>
       <name>Miroslav Šulc</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>gyakovlev@gentoo.org</email>
@@ -1645,7 +1565,6 @@
     <member is-lead="1">
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -1656,27 +1575,22 @@
     <member>
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
-      <role>Developer</role>
     </member>
     <member is-lead="1">
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>mschiff@gentoo.org</email>
       <name>Marc Schiffbauer</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -1687,7 +1601,6 @@
     <member>
       <email>eras@gentoo.org</email>
       <name>Eray Aslan</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1780,17 +1693,15 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member, libc++</role>
+      <role>libc++</role>
     </member>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Member</role>
     </member>
     <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
@@ -1800,7 +1711,6 @@
     <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1843,22 +1753,18 @@
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>steils@gentoo.org</email>
       <name>Stefan Strogin</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>zx2c4@gentoo.org</email>
       <name>Jason A. Donenfeld</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -1869,27 +1775,22 @@
     <member>
       <email>hanno@gentoo.org</email>
       <name>Hanno Böck</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Member</role>
     </member>
     <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>Member</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Member</role>
     </member>
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -1957,17 +1858,14 @@
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>kumba@gentoo.org</email>
       <name>Joshua Kinard</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
-      <role>Developer</role>
     </member>
     <member is-lead="1">
       <email>mattst88@gentoo.org</email>
@@ -1977,7 +1875,6 @@
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2037,7 +1934,6 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
@@ -2071,27 +1967,22 @@
     <member>
       <email>eras@gentoo.org</email>
       <name>Eray Aslan</name>
-      <role>Member</role>
     </member>
     <member>
       <email>hattya@gentoo.org</email>
       <name>Akinori Hattori</name>
-      <role>Member</role>
     </member>
     <member>
       <email>mschiff@gentoo.org</email>
       <name>Marc Schiffbauer</name>
-      <role>Member</role>
     </member>
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
-      <role>Member</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -2116,12 +2007,10 @@
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2143,12 +2032,10 @@
     <member>
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
-      <role>member</role>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>member</role>
     </member>
   </project>
   <project>
@@ -2159,22 +2046,18 @@
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Member</role>
     </member>
     <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
-      <role>Member</role>
     </member>
     <member>
       <email>patrick@gentoo.org</email>
       <name>Patrick Lauer</name>
-      <role>Member</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>williamh@gentoo.org</email>
@@ -2267,7 +2150,6 @@
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>ulm@gentoo.org</email>
@@ -2283,7 +2165,6 @@
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
-      <role>Developer</role>
     </member>
     <member is-lead="1">
       <email>dilfridge@gentoo.org</email>
@@ -2298,22 +2179,18 @@
     <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>mudler@gentoo.org</email>
       <name>Ettore Di Giacinto</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>titanofold@gentoo.org</email>
       <name>Aaron W. Swenson</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2441,7 +2318,6 @@
     <member>
       <email>patrick@gentoo.org</email>
       <name>Patrick Lauer</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>titanofold@gentoo.org</email>
@@ -2486,7 +2362,6 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>ppc/ppc64 keywording/stabilisation</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -2512,22 +2387,19 @@
     <member>
       <email>amadio@gentoo.org</email>
       <name>Guilherme Amadio</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>grobian@gentoo.org</email>
       <name>Fabian Groffen</name>
-      <role>Maintainer prefix portage</role>
+      <role>General, maintainer of prefix portage</role>
     </member>
     <member>
       <email>haubi@gentoo.org</email>
       <name>Michael Haubenwallner</name>
-      <role>Developer</role>
     </member>
     <member is-lead="1">
       <email>heroxbd@gentoo.org</email>
       <name>Benda Xu</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2538,12 +2410,10 @@
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>tamiko@gentoo.org</email>
       <name>Matthias Maier</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2617,42 +2487,34 @@
     <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
-      <role>Member</role>
     </member>
     <member>
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
-      <role>Member</role>
     </member>
     <member>
       <email>candrews@gentoo.org</email>
       <name>Craig Andrews</name>
-      <role>Member</role>
     </member>
     <member>
       <email>conikost@gentoo.org</email>
       <name>Conrad Kostecki</name>
-      <role>Member</role>
     </member>
     <member>
       <email>gyakovlev@gentoo.org</email>
       <name>Georgy Yakovlev</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Member</role>
     </member>
     <member>
       <email>juippis@gentoo.org</email>
       <name>Joonas Niilola</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
@@ -2662,32 +2524,26 @@
     <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
-      <role>Member</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Member</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member</role>
     </member>
     <member>
       <email>tamiko@gentoo.org</email>
       <name>Matthias Maier</name>
-      <role>Member</role>
     </member>
     <member>
       <email>titanofold@gentoo.org</email>
       <name>Aaron W. Swenson</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -2739,67 +2595,54 @@
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
-      <role>Minion</role>
     </member>
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
-      <role>Member</role>
     </member>
     <member>
       <email>floppym@gentoo.org</email>
       <name>Mike Gilbert</name>
-      <role>Member</role>
     </member>
     <member>
       <email>gyakovlev@gentoo.org</email>
       <name>Georgy Yakovlev</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Member</role>
     </member>
     <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
-      <role>Member</role>
     </member>
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
-      <role>Member</role>
     </member>
     <member>
       <email>sbraz@gentoo.org</email>
       <name>Louis Sautier</name>
-      <role>Member</role>
     </member>
     <member>
       <email>slashbeast@gentoo.org</email>
       <name>Piotr Karbowski</name>
-      <role>Member</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member</role>
     </member>
     <member>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -2810,17 +2653,14 @@
     <member>
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>pesa@gentoo.org</email>
       <name>Davide Pesavento</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2836,12 +2676,10 @@
     <member>
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -2856,12 +2694,10 @@
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -2928,17 +2764,14 @@
     <member>
       <email>chithanh@gentoo.org</email>
       <name>Chí-Thanh Christopher Nguyễn</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zx2c4@gentoo.org</email>
       <name>Jason A. Donenfeld</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3049,12 +2882,10 @@
     <member>
       <email>naota@gentoo.org</email>
       <name>Naohiro Aota</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -3099,7 +2930,6 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Member ( Gentoo/s390 )</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
@@ -3108,17 +2938,15 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>As-needed stabilisations/keywording</role>
     </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Lead ( Gentoo/s390 )</role>
+      <role>Lead</role>
     </member>
     <member is-lead="1">
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member ( Gentoo/s390 )</role>
     </member>
   </project>
   <project>
@@ -3140,7 +2968,7 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Member ( Security bugs primarily )</role>
+      <role>Security bugs primarily</role>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
@@ -3154,22 +2982,20 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Focus on security/core bugs</role>
+      <role>Mostly security/core bugs</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
-      <role>Member ( Gentoo/SPARC )</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member ( Core-only )</role>
+      <role>Core-only</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member ( Gentoo/SPARC )</role>
     </member>
   </project>
   <project>
@@ -3180,12 +3006,10 @@
     <member>
       <email>bkohler@gentoo.org</email>
       <name>Ben Kohler</name>
-      <role>Member</role>
     </member>
     <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3196,7 +3020,6 @@
     <member>
       <email>grobian@gentoo.org</email>
       <name>Fabian Groffen</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
@@ -3206,7 +3029,6 @@
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3217,7 +3039,6 @@
     <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3298,12 +3119,10 @@
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
-      <role>GLSA Coordinator</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>whissi@gentoo.org</email>
@@ -3313,7 +3132,6 @@
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>GLSA Coordinator</role>
     </member>
     <member>
       <email>zx2c4@gentoo.org</email>
@@ -3343,37 +3161,31 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member ( misc )</role>
     </member>
     <member is-lead="1">
       <email>chainsaw@gentoo.org</email>
       <name>Tony Vroon</name>
-      <role>Lead ( Herd Lead, Audacious and plugins, libnjb )</role>
+      <role>Lead (Project lead, Audacious and plugins, libnjb)</role>
     </member>
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
-      <role>Member ( misc )</role>
     </member>
     <member>
       <email>fordfrog@gentoo.org</email>
       <name>Miroslav Šulc</name>
-      <role>Member ( misc )</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
-      <role>Member ( misc )</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member ( misc )</role>
     </member>
   </project>
   <project>
@@ -3407,32 +3219,26 @@
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Member</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Member</role>
     </member>
     <member>
       <email>rich0@gentoo.org</email>
       <name>Richard Freeman</name>
-      <role>Member</role>
     </member>
     <member>
       <email>tamiko@gentoo.org</email>
       <name>Matthias Maier</name>
-      <role>Member</role>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zx2c4@gentoo.org</email>
       <name>Jason A. Donenfeld</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3443,7 +3249,6 @@
     <member>
       <email>tupone@gentoo.org</email>
       <name>Alfredo Tupone</name>
-      <role>member</role>
     </member>
   </project>
   <project>
@@ -3454,27 +3259,22 @@
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member</role>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Member</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3547,22 +3347,18 @@
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
-      <role>Member</role>
     </member>
     <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
-      <role>Member</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Member</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
@@ -3612,7 +3408,6 @@
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3623,12 +3418,10 @@
     <member>
       <email>hd_brummy@gentoo.org</email>
       <name>Joerg Bornkessel</name>
-      <role>Member</role>
     </member>
     <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3640,27 +3433,26 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member ( FFmpeg, x265, etc. )</role>
+      <role>FFmpeg, x265, etc</role>
     </member>
     <member>
       <email>lordvan@gentoo.org</email>
       <name>Thomas Raschbacher</name>
-      <role>Member ( DVB )</role>
+      <role>DVB</role>
     </member>
     <member is-lead="1">
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
-      <role>Lead ( Gentoo/PPC work, mplayer, ffmpeg )</role>
+      <role>Lead (PPC work, mplayer, ffmpeg)</role>
     </member>
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
-      <role>Member</role>
     </member>
     <member>
       <email>steils@gentoo.org</email>
       <name>Stefan Strogin</name>
-      <role>Member ( OpenShot )</role>
+      <role>OpenShot</role>
     </member>
   </project>
   <project>
@@ -3839,7 +3631,7 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Developer (Security bugs primarily)</role>
+      <role>Security bugs primarily</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -3849,27 +3641,24 @@
     <member>
       <email>nativemad@gentoo.org</email>
       <name>Andreas Schuerch</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
-      <role>keywording/stabilization</role>
+      <role>Keywording/stabilization</role>
     </member>
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Developer (stabilisation/keywording on core)</role>
     </member>
     <member>
       <email>whissi@gentoo.org</email>
       <name>Thomas Deutschmann</name>
-      <role>Developer (stabilization primarily)</role>
+      <role>Stabilization primarily</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
-      <role>Developer (Gentoo/x86)</role>
     </member>
   </project>
   <project>
@@ -3880,7 +3669,6 @@
     <member>
       <email>matsl@gentoo.org</email>
       <name>Mats Lidell</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -3913,17 +3701,14 @@
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
     </member>
     <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3986,17 +3771,14 @@
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
-      <role>Member</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Member</role>
     </member>
   </project>
 </projects>
