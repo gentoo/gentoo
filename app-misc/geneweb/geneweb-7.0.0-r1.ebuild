@@ -32,14 +32,12 @@ QA_FLAGS_IGNORED=(
 	/usr/bin/consang
 	/usr/bin/gwd
 	/usr/bin/gwsetup
-	/usr/bin/ged2gwb2
 	/usr/bin/gwc
 	/usr/bin/ged2gwb
-	/usr/bin/check_base
 	/usr/bin/gwu
-	/usr/bin/gwc1
-	/usr/bin/gwc2
-	/usr/lib/geneweb/gwtp
+	/usr/bin/connex
+	/usr/bin/gwdiff
+	/usr/bin/gwgc
 )
 
 src_configure() {
@@ -58,6 +56,7 @@ src_compile() {
 
 src_install() {
 	default
+	mv "${D}"/usr/bin/{,gw}setup || die
 	rm -r "${D}"/usr/doc || die
 	dodoc ICHANGES etc/README.txt etc/a.gwf
 

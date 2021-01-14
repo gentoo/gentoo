@@ -31,3 +31,5 @@ DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-remember-gmail-auth-token.patch" ) # KDE-Bug 429406
