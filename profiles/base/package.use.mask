@@ -62,9 +62,9 @@ x11-libs/colord-gtk doc
 <dev-ml/llvm-ocaml-11 llvm_targets_AVR
 <sys-devel/clang-11 llvm_targets_AVR
 <sys-devel/llvm-11 llvm_targets_AVR
-<dev-ml/llvm-ocaml-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
-<sys-devel/clang-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
-<sys-devel/llvm-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
+<dev-ml/llvm-ocaml-12 llvm_targets_ARC llvm_targets_VE
+<sys-devel/clang-12 llvm_targets_ARC llvm_targets_VE
+<sys-devel/llvm-12 llvm_targets_ARC llvm_targets_VE
 <dev-ml/llvm-ocaml-12.0.0.9999 llvm_targets_CSKY
 <sys-devel/clang-12.0.0.9999 llvm_targets_CSKY
 <sys-devel/llvm-12.0.0.9999 llvm_targets_CSKY
