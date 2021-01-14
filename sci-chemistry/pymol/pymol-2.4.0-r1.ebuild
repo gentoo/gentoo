@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 desktop optfeature flag-o-matic xdg
+inherit desktop optfeature flag-o-matic xdg distutils-r1
 
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="https://www.pymol.org/"
@@ -50,7 +50,6 @@ python_prepare_all() {
 	sed \
 		-e "s:\"/usr:\"${EPREFIX}/usr:g" \
 		-e "/ext_comp_args.*+=/s:\[.*\]$:\[\]:g" \
-		-e "/import/s:argparse:argparseX:g" \
 		-i setup.py || die
 
 	sed \
