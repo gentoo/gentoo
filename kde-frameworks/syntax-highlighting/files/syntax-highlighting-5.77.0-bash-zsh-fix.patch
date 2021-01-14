@@ -1,0 +1,122 @@
+From ba9b3c5e0ed2fb33b9a896ec910590410978befe Mon Sep 17 00:00:00 2001
+From: Jonathan Poelen <jonathan.poelen@gmail.com>
+Date: Mon, 11 Jan 2021 01:29:01 +0100
+Subject: [PATCH] Bash: fix #5: $ at the end of a double quoted string
+
+---
+ autotests/folding/highlight.sh.fold   | 1 +
+ autotests/html/highlight.sh.dark.html | 1 +
+ autotests/html/highlight.sh.html      | 1 +
+ autotests/input/highlight.sh          | 1 +
+ autotests/reference/highlight.sh.ref  | 1 +
+ data/syntax/bash.xml                  | 5 +++--
+ data/syntax/zsh.xml                   | 3 +--
+ 7 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/autotests/folding/highlight.sh.fold b/autotests/folding/highlight.sh.fold
+index 652fef8f..d7a6b210 100644
+--- a/autotests/folding/highlight.sh.fold
++++ b/autotests/folding/highlight.sh.fold
+@@ -16,6 +16,7 @@ echo 'single quoted string'
+ echo "double quoted string"
+ echo $'string with esc\apes\x0din it'
+ echo $"string meant to be translated"
++echo "$"
+ 
+ 
+ # comments:
+diff --git a/autotests/html/highlight.sh.dark.html b/autotests/html/highlight.sh.dark.html
+index d1d4fb8a..8cbd0929 100644
+--- a/autotests/html/highlight.sh.dark.html
++++ b/autotests/html/highlight.sh.dark.html
+@@ -22,6 +22,7 @@
+ <span style="color:#7f8c8d;">echo</span> <span style="color:#f44f4f;">&quot;double quoted string&quot;</span>
+ <span style="color:#7f8c8d;">echo</span> <span style="color:#f44f4f;">$'string with esc</span><span style="color:#2980b9;">\a</span><span style="color:#f44f4f;">pes</span><span style="color:#2980b9;">\x0d</span><span style="color:#f44f4f;">in it'</span>
+ <span style="color:#7f8c8d;">echo</span> <span style="color:#f44f4f;">$&quot;</span><span style="color:#f44f4f;">string meant to be translated&quot;</span>
++<span style="color:#7f8c8d;">echo</span> <span style="color:#f44f4f;">&quot;$&quot;</span>
+ 
+ 
+ <span style="color:#7a7c7d;"># comments:</span>
+diff --git a/autotests/html/highlight.sh.html b/autotests/html/highlight.sh.html
+index 5d687d86..d176b1cb 100644
+--- a/autotests/html/highlight.sh.html
++++ b/autotests/html/highlight.sh.html
+@@ -22,6 +22,7 @@
+ <span style="color:#644a9b;font-weight:bold;">echo</span> <span style="color:#bf0303;">&quot;double quoted string&quot;</span>
+ <span style="color:#644a9b;font-weight:bold;">echo</span> <span style="color:#bf0303;">$'string with esc</span><span style="color:#0057ae;">\a</span><span style="color:#bf0303;">pes</span><span style="color:#0057ae;">\x0d</span><span style="color:#bf0303;">in it'</span>
+ <span style="color:#644a9b;font-weight:bold;">echo</span> <span style="color:#bf0303;">$&quot;</span><span style="color:#bf0303;">string meant to be translated&quot;</span>
++<span style="color:#644a9b;font-weight:bold;">echo</span> <span style="color:#bf0303;">&quot;$&quot;</span>
+ 
+ 
+ <span style="color:#898887;"># comments:</span>
+diff --git a/autotests/input/highlight.sh b/autotests/input/highlight.sh
+index 177e104f..5c2ae7b1 100644
+--- a/autotests/input/highlight.sh
++++ b/autotests/input/highlight.sh
+@@ -16,6 +16,7 @@ echo 'single quoted string'
+ echo "double quoted string"
+ echo $'string with esc\apes\x0din it'
+ echo $"string meant to be translated"
++echo "$"
+ 
+ 
+ # comments:
+diff --git a/autotests/reference/highlight.sh.ref b/autotests/reference/highlight.sh.ref
+index 181c36af..edaf18ab 100644
+--- a/autotests/reference/highlight.sh.ref
++++ b/autotests/reference/highlight.sh.ref
+@@ -16,6 +16,7 @@
+ <Builtin>echo</Builtin><Normal Text> </Normal Text><String DoubleQ>"double quoted string"</String DoubleQ><br/>
+ <Builtin>echo</Builtin><Normal Text> </Normal Text><String SingleQ>$'string with esc</String SingleQ><String Escape>\a</String Escape><String SingleQ>pes</String SingleQ><String Escape>\x0d</String Escape><String SingleQ>in it'</String SingleQ><br/>
+ <Builtin>echo</Builtin><Normal Text> </Normal Text><String Transl.>$"</String Transl.><String DoubleQ>string meant to be translated"</String DoubleQ><br/>
++<Builtin>echo</Builtin><Normal Text> </Normal Text><String DoubleQ>"$"</String DoubleQ><br/>
+ <Normal Text></Normal Text><br/>
+ <Normal Text></Normal Text><br/>
+ <Comment># comments:</Comment><br/>
+diff --git a/data/syntax/bash.xml b/data/syntax/bash.xml
+index 3171247b..3b804f90 100644
+--- a/data/syntax/bash.xml
++++ b/data/syntax/bash.xml
+@@ -30,7 +30,7 @@
+         <!ENTITY heredocq "(?|&quot;([^&quot;]+)&quot;|'([^']+)'|\\(.[^&wordseps;&substseps;]*))">
+ ]>
+ 
+-<language name="Bash" version="20" kateversion="5.62" section="Scripts" extensions="*.sh;*.bash;*.ebuild;*.eclass;*.nix;.bashrc;.bash_profile;.bash_login;.profile;PKGBUILD;APKBUILD" mimetype="application/x-shellscript" casesensitive="1" author="Wilbert Berendsen (wilbert@kde.nl)" license="LGPL">
++<language name="Bash" version="21" kateversion="5.62" section="Scripts" extensions="*.sh;*.bash;*.ebuild;*.eclass;*.nix;.bashrc;.bash_profile;.bash_login;.profile;PKGBUILD;APKBUILD" mimetype="application/x-shellscript" casesensitive="1" author="Wilbert Berendsen (wilbert@kde.nl)" license="LGPL">
+ 
+ <!-- (c) 2004 by Wilbert Berendsen (wilbert@kde.nl)
+     Changes by Matthew Woehlke (mw_triad@users.sourceforge.net)
+@@ -943,7 +943,8 @@
+         <DetectChar attribute="Backquote" context="RegularBackq" char="`"/>
+       </context>
+       <context attribute="String DoubleQ" lineEndContext="#stay" name="StringDQDispatchVariables">
+-        <IncludeRules context="DispatchVariables"/>
++        <IncludeRules context="DispatchSubstVariables"/>
++        <IncludeRules context="DispatchVarnameVariables"/>
+         <DetectChar attribute="String DoubleQ" context="#pop" char="$"/>
+       </context>
+       <context attribute="String DoubleQ" lineEndContext="#pop" name="StringDQEscape">
+diff --git a/data/syntax/zsh.xml b/data/syntax/zsh.xml
+index ada258c8..5aa83290 100644
+--- a/data/syntax/zsh.xml
++++ b/data/syntax/zsh.xml
+@@ -55,7 +55,7 @@
+         <!ENTITY int "(?:[0-9]++(_++[0-9]++)*+)">
+         <!ENTITY exp "(?:[eE][-+]?&int;)">
+ ]>
+-<language name="Zsh" version="12" kateversion="5.62" section="Scripts" extensions="*.sh;*.zsh;.zshrc;.zprofile;.zlogin;.zlogout;.profile" mimetype="application/x-shellscript" casesensitive="1" author="Jonathan Poelen (jonathan.poelen@gmail.com)" license="MIT">
++<language name="Zsh" version="13" kateversion="5.62" section="Scripts" extensions="*.sh;*.zsh;.zshrc;.zprofile;.zlogin;.zlogout;.profile" mimetype="application/x-shellscript" casesensitive="1" author="Jonathan Poelen (jonathan.poelen@gmail.com)" license="MIT">
+ 
+   <highlighting>
+     <list name="keywords">
+@@ -893,7 +893,6 @@
+       </context>
+       <context attribute="String DoubleQ" lineEndContext="#stay" name="StringDQDispatchVariables">
+         <IncludeRules context="DispatchSubstVariables"/>
+-        <Detect2Chars attribute="String SingleQ" context="#pop!StringEsc" char="$" char1="'"/>
+         <IncludeRules context="DispatchVarNameVariables"/>
+         <DetectChar attribute="String DoubleQ" context="#pop" char="$"/>
+       </context>
+-- 
+GitLab
+
