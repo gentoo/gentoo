@@ -115,6 +115,7 @@ acct-group/locate 0-r1: System group: locate
 acct-group/logstash 0-r1: Logstash program group
 acct-group/lp 0-r1: System group: lp
 acct-group/lpadmin 0-r1: System group: lpadmin
+acct-group/lxc 0: Group for app-emulation/lxc
 acct-group/lxd 0-r1: Group for app-emulation/lxd
 acct-group/mail 0-r1: Mail program group
 acct-group/man 0-r1: System group: man
@@ -386,6 +387,7 @@ acct-user/ldap 0: A user for ldap
 acct-user/lighttpd 0-r1: A user for lighttpd
 acct-user/lldpd 0-r1: User for net-misc/lldpd
 acct-user/logstash 0-r1: Logstash program user
+acct-user/lxc 0: User for app-emulation/lxc
 acct-user/mail 0-r1: Mail program user
 acct-user/man 1-r1: System user: man
 acct-user/maradns 0-r1: System user: maradns
@@ -2041,7 +2043,7 @@ app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.8.0-r2 6.9.0-r1 6.10.0-r2 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
-app-emulation/lxc 4.0.5: A userspace interface for the Linux kernel containment features
+app-emulation/lxc 4.0.5 4.0.6: A userspace interface for the Linux kernel containment features
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.4-r1 4.0.4-r2: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
