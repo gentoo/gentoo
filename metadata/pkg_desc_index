@@ -2045,7 +2045,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.5 4.0.6: A userspace interface for the Linux kernel containment features
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.4-r1 4.0.4-r2: Fast, dense and secure container management
+app-emulation/lxd 4.0.4-r3 4.0.4-r4: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
@@ -10751,7 +10751,7 @@ dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-bu
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
 dev-util/hermes 2.8: Lua based testing manager
-dev-util/hfstospell 0.5.2: HFST spell checker library and command line tool
+dev-util/hfstospell 0.5.2 0.5.2-r1: HFST spell checker library and command line tool
 dev-util/hip 4.0.0: C++ Heterogeneous-Compute Interface for Portability
 dev-util/howdoi 2.0.7 2.0.8: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
