@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_avx2 +cpu_flags_x86_ssse3 static-libs"
 
-RDEPEND="dev-libs/boost"
+RDEPEND="dev-libs/boost:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
@@ -35,8 +35,6 @@ src_prepare() {
 }
 
 src_configure() {
-	CMAKE_BUILD_TYPE=Release
-
 	use cpu_flags_x86_ssse3 && append-flags -mssse3
 	use cpu_flags_x86_avx2  && append-flags -mavx2
 
