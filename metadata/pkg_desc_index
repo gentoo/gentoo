@@ -1667,7 +1667,7 @@ app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com an
 app-doc/csound-manual 6.15-r1: The Csound reference manual
 app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.17 1.8.17-r1 1.8.20 9999: Documentation system for most programming languages
+app-doc/doxygen 1.8.17 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200913 20210104 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
@@ -5385,7 +5385,7 @@ dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementatio
 dev-libs/libdivecomputer 0.6.0-r1 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.14-r1 1.14-r2: simplified, portable interface to several low-level networking routines
-dev-libs/libdnsres 0.1a-r2 0.1a-r3: A non-blocking DNS resolver library
+dev-libs/libdnsres 0.1a-r3: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
@@ -14288,7 +14288,7 @@ net-analyzer/kapacitor 1.4.1-r1 1.5.1 1.5.5: Monitoring, processing and alerting
 net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5_p1: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
-net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
+net-analyzer/lilac 1.0.3-r1: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 10.0.0_pre20200729 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.4 1.0.5 1.3.0: Mass IP port scanner
