@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 MY_PV=${PV/_p/ga}
 MY_P=${PN}-${MY_PV}
@@ -13,7 +13,7 @@ S=${WORKDIR}/${PN}-${SUB_PV}
 FONT_PN="x3270"
 FONT_S="${S}/${FONT_PN}"
 
-inherit eutils font
+inherit font
 
 DESCRIPTION="Complete 3270 access package"
 HOMEPAGE="http://x3270.bgp.nu/"
@@ -21,7 +21,7 @@ SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc s390 sparc x86"
+KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
 IUSE="cjk doc ncurses ssl tcl X"
 
 RDEPEND="ssl? ( dev-libs/openssl:0= )
@@ -53,7 +53,7 @@ suite3270_makelist() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.5_p8-tinfo.patch
+	default
 
 	# Some subdirs (like c3270/x3270/s3270) install the same set of data files
 	# (they have the same contents).  Wrap that in a retry to avoid errors.
@@ -72,7 +72,6 @@ src_prepare() {
 }
 
 src_configure() {
-	echo "${INSTALL}"
 	econf \
 		--cache-file="${S}"/config.cache \
 		--enable-s3270 \

@@ -22,7 +22,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx default-lld
 	doc +static-analyzer test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -58,7 +58,7 @@ PDEPEND="
 	default-lld? ( sys-devel/lld )"
 
 LLVM_COMPONENTS=( clang clang-tools-extra )
-LLVM_MANPAGES=pregenerated
+LLVM_MANPAGES=build
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
