@@ -66,7 +66,8 @@ IUSE="+clang cpu_flags_arm_neon dbus debug eme-free
 	+system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp wayland wifi"
 
-REQUIRED_USE="wifi? ( dbus )"
+REQUIRED_USE="x86? ( lto? ( clang ) )
+	wifi? ( dbus )"
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
