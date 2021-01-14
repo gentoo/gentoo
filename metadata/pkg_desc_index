@@ -9893,7 +9893,7 @@ dev-ruby/did_you_mean 1.2.1 1.3.1 1.4.0 1.5.0: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.3 1.4 1.4.1 1.4.4: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/diva 1.0.2 1.0.2-r1: Implementation of expression for handling things.
 dev-ruby/dnsruby 1.61.2 1.61.3: A pure Ruby DNS client library
-dev-ruby/docile 1.3.2 1.3.3 1.3.4: Turns any Ruby object into a DSL
+dev-ruby/docile 1.3.2 1.3.3 1.3.4 1.3.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.20180417 0.5.20190701: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.7.6: Loads environment variables from .env into ENV
 dev-ruby/duktape-rb 2.3.0.0-r2: Ruby bindings to the Duktape JavaScript interpeter
@@ -10081,7 +10081,7 @@ dev-ruby/necromancer 0.5.1 0.7.0: Conversion from one object type to another wit
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/neovim-ruby-client 0.8.1-r1: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
-dev-ruby/net-http-persistent 3.0.0 3.1.0 4.0.0: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
+dev-ruby/net-http-persistent 3.0.0 3.1.0 4.0.0 4.0.1: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.2.1-r1 3.0.0: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 3.0.0: SFTP in pure Ruby
@@ -10772,7 +10772,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.249.2 2.249.3 2.263.1 2.264 2.267 2.268: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.1 2.263.2 2.268 2.275: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
