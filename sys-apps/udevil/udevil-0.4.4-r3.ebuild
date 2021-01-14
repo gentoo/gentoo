@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.3-flags.patch
 	"${FILESDIR}"/${PN}-0.4.4-stat.patch
 	"${FILESDIR}"/${PN}-0.4.4-include-sysmacros.patch
+	"${FILESDIR}"/${PN}-0.4.4-no-libtool.patch
 )
 
 src_prepare() {
