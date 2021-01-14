@@ -1,4 +1,7 @@
-diff --git a/Source/GmmLib/CMakeLists.txt b/Source/GmmLib/CMakeLists.txt
+Prevent overriding of user-define CFLAGS, including -march flag.
+The flag -msse4.1 is required otherwise compile will not be able to inline sse4.1 code.
+Note: code should detect CPU features at runtime and use sse4.1 paths only if supported by CPU.
+
 --- a/Source/GmmLib/CMakeLists.txt
 +++ b/Source/GmmLib/CMakeLists.txt
 @@ -54,6 +54,10 @@ if(NOT DEFINED BS_USE_OSDM_BUILD_SYSTEM)
@@ -12,7 +15,6 @@ diff --git a/Source/GmmLib/CMakeLists.txt b/Source/GmmLib/CMakeLists.txt
  # begin -- label bldsys file prologue
  # WARNING: The "project" statement triggers reading of CMAKE_TOOLCHAIN_FILE
  #   and so must precede the inclusion below of bs_init.cmake .
-diff --git a/Source/GmmLib/Linux.cmake b/Source/GmmLib/Linux.cmake
 --- a/Source/GmmLib/Linux.cmake
 +++ b/Source/GmmLib/Linux.cmake
 @@ -38,7 +38,10 @@ SET (GMMLIB_COMPILER_FLAGS_COMMON
@@ -26,14 +28,18 @@ diff --git a/Source/GmmLib/Linux.cmake b/Source/GmmLib/Linux.cmake
      # General optimization options
      -march=${GMMLIB_MARCH}
      -mpopcnt
-@@ -50,16 +53,28 @@ SET (GMMLIB_COMPILER_FLAGS_COMMON
-     -msse4.1
+@@ -47,19 +50,31 @@ SET (GMMLIB_COMPILER_FLAGS_COMMON
+     -msse3
+     -mssse3
+     -msse4
+-    -msse4.1
      -msse4.2
-     -mfpmath=sse
 +    )
 +endif()
 +
 +list (APPEND GMMLIB_COMPILER_FLAGS_COMMON
++    -msse4.1 # SSE4.1 compiler support is required to build
+     -mfpmath=sse
      -finline-functions
      -fno-short-enums
      -Wa,--noexecstack
