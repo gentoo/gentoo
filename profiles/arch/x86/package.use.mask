@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-01-14)
+# Needs libsdl2[vulkan]
+# Vulkan may be supported on x86, as per
+# Qt unmasking below, but not able to test
+# libsdl2 + Vulkan on x86 at the moment.
+games-strategy/warzone2100 vulkan
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
 sys-libs/compiler-rt-sanitizers -asan -lsan
