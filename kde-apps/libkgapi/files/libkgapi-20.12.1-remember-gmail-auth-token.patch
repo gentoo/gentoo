@@ -1,0 +1,30 @@
+From d81d247026ac993ac5717ca471c7fcf1778951f2 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Wed, 6 Jan 2021 15:54:52 +0100
+Subject: [PATCH] Don't reset account scopes if not necessary
+
+This triggers unnecesary authentication prompts
+
+BUG: 429406
+---
+ src/core/accountmanager.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/accountmanager.cpp b/src/core/accountmanager.cpp
+index b9af6c1..f68563e 100644
+--- a/src/core/accountmanager.cpp
++++ b/src/core/accountmanager.cpp
+@@ -81,7 +81,9 @@ public:
+                     currentScopes.push_back(requestedScope);
+                 }
+             }
+-            account->setScopes(currentScopes);
++            if (currentScopes != account->scopes()) {
++                account->setScopes(currentScopes);
++            }
+         }
+         auto *job = new AuthJob(account, apiKey, apiSecret);
+         job->setUsername(account->accountName());
+-- 
+GitLab
+
