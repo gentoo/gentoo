@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,8 +59,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	# make better desktop files
-	"${FILESDIR}"/${PN}-1.5.0-desktop.patch
 	# add a ~/.celestia for extra directories
 	"${FILESDIR}"/${PN}-1.6.99-cfg.patch
 	# allow forcing CMake to look for a specific Lua version instead of the newest branch installed
@@ -88,7 +86,7 @@ src_configure() {
 	)
 	# Upstream always looks for LuaJIT first unless stopped, and we only need
 	# the version specification when linking against PUC Lua
-	if use lua && ! use lua_single_target_luajit; then
+	if use lua && ! use lua_single_target_luajit ; then
 		mycmakeargs+=(
 			-DCMAKE_DISABLE_FIND_PACKAGE_LuaJIT=ON
 			-DLUA_VERSION=$(lua_get_version)
@@ -100,20 +98,13 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	local size
-	for size in 16 22 32 48 ; do
-		newicon -s ${size} "${S}"/src/celestia/kde/data/hi${size}-app-${PN}.png ${PN}.png
-	done
 	newicon -s 128 "${S}"/src/celestia/gtk/data/${PN}-logo.png ${PN}.png
 	doicon -s scalable "${S}"/src/celestia/gtk/data/${PN}.svg
 
-	use glut && domenu ${PN}.desktop
-	if use qt5 ; then
-		sed \
-			-e "/^Name/s@\$@ (qt5 interface)@" \
-			-e "/^Exec/s@${PN}@${PN}-qt@" \
-			${PN}.desktop > "${T}"/${PN}-qt5.desktop || die
-		domenu "${T}"/${PN}-qt5.desktop
-	fi
+	local backend
+	for backend in glut qt5 ; do
+		use ${backend} && domenu debian/celestia-${backend/qt5/qt}.desktop
+	done
+
 	dodoc AUTHORS README TRANSLATORS *.txt
 }
