@@ -81,10 +81,12 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS="OFF"
+		-DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF
+		-DWZ_DISTRIBUTOR="Gentoo"
 		-DWZ_PORTABLE="OFF"
-		-DENABLE_NLS="$(usex nls)"
 		-DWZ_ENABLE_BACKEND_VULKAN="$(usex vulkan)"
+		-DBUILD_SHARED_LIBS="OFF"
+		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_DISCORD="$(usex discord)"
 	)
 	cmake_src_configure
