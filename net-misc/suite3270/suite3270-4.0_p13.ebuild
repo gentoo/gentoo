@@ -92,7 +92,7 @@ src_install() {
 		cd "${S}/${p}"
 		docinto ${p}
 		dodoc README*
-		use doc && dohtml html/*
+		use doc && dodoc -r html
 	done
 
 	use X && font_src_install
