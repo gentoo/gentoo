@@ -9,12 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription lang="en">
-	Automatic is a RSS daemon that downloads torrent files
-	matching regular expression patterns at certain intervals.
-	It is capable of adding downloaded torrents directly to Transmission.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">1100101/Automatic</remote-id>
-	</upstream>
 </pkgmetadata>

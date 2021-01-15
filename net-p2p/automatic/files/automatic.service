@@ -1,0 +1,12 @@
+[Unit]
+Description=RSS downloader that adds torrents directly to Transmission
+
+[Service]
+Type=simple
+User=automatic
+ExecStart=/usr/bin/automatic -v 1 -a -l /var/log/automatic/automatic.log -c /etc/automatic.conf
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
