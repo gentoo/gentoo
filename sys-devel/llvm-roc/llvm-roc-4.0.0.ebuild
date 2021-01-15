@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ src_prepare() {
 		ebegin "Use ${EPREFIX} as default sysroot"
 		cd lib/Driver/ToolChains >/dev/null || die
 		ebegin "Use dynamic linker from ${EPREFIX}"
-		sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX%/}/\"@" Linux.cpp
+		sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX}/\"@" Linux.cpp
 		eend $?
 
 		ebegin "Remove --sysroot call on ld for native toolchain"
