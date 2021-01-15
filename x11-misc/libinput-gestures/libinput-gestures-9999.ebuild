@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
-inherit python-single-r1 xdg-utils
+inherit python-single-r1 xdg
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
 HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
@@ -23,10 +23,10 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-libs/libinput-1.8.0
+	dev-libs/libinput
 	x11-misc/wmctrl
 	x11-misc/xdotool"
-DEPEND=">=dev-libs/libinput-1.8.0
+DEPEND="dev-libs/libinput
 	dev-util/desktop-file-utils"
 
 src_prepare() {
@@ -50,8 +50,4 @@ pkg_postinst() {
 	if ! has_version kde-plasma/kde-cli-tools:5 ; then
 		elog "${PN}-setup script supports Plasma 5 via kde-plasma/kde-cli-tools:5."
 	fi
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
