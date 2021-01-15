@@ -2764,7 +2764,7 @@ app-portage/pram 9 10: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
 app-portage/repoman 2.3.23 3.0.1 3.0.2 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
-app-portage/smart-live-rebuild 1.3.6 1.3.6-r1 9999: Check live packages for updates and emerge them as necessary
+app-portage/smart-live-rebuild 1.3.6 1.3.6-r1 1.3.7 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
