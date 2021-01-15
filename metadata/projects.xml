@@ -1705,7 +1705,6 @@
     <member>
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
-      <role>Maintainer</role>
     </member>
   </project>
   <project>
@@ -1859,6 +1858,20 @@
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
+    </member>
+  </project>
+  <project>
+    <email>ml@gentoo.org</email>
+    <name>ML Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:ML</url>
+    <description>The ML Project maintains packages related to the ML programming language family.</description>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+    </member>
+    <member>
+      <email>tupone@gentoo.org</email>
+      <name>Alfredo Tupone</name>
     </member>
   </project>
   <project>
