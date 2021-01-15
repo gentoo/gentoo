@@ -2092,8 +2092,8 @@ app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 5.18 5.20 5.21 5.22-r2 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0.3 5.0.1 5.0.2 5.0.3 5.0.3-r1 5.19 5.20 5.21 5.22-r2 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 5.20 5.21 5.22-r2 6.0 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 5.0.2 5.0.3-r1 5.20 5.21 5.22-r2 6.0 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20200412 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -5554,7 +5554,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.6.1 1.6.2: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.10-r4: XML C parser and toolkit
-dev-libs/libxmlb 0.1.15 0.2.0 0.2.1: Library to help create and query binary XML blobs
+dev-libs/libxmlb 0.1.15 0.2.1: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.23 4.24: platform abstraction code for tucnak package
@@ -14591,7 +14591,7 @@ net-fs/openafs 1.8.6: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
-net-fs/samba 4.12.9-r1 4.12.10-r1 4.13.2-r1 4.13.3: Samba Suite Version 4
+net-fs/samba 4.12.9-r1 4.12.10-r1 4.12.11 4.13.2-r1 4.13.3: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
