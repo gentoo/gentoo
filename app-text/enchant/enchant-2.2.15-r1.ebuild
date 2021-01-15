@@ -11,13 +11,14 @@ LICENSE="LGPL-2.1+"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
-IUSE="aspell +hunspell test"
+IUSE="aspell +hunspell test voikko"
 REQUIRED_USE="|| ( hunspell aspell )"
 
 RDEPEND="
 	>=dev-libs/glib-2.6:2
 	aspell? ( app-text/aspell )
-	hunspell? ( >=app-text/hunspell-1.2.1:0= )"
+	hunspell? ( >=app-text/hunspell-1.2.1:0= )
+	voikko? ( dev-libs/libvoikko )"
 DEPEND="${RDEPEND}
 	test? ( >=dev-libs/unittest++-2.0.0-r2 )"
 BDEPEND="virtual/pkgconfig"
@@ -32,9 +33,9 @@ src_configure() {
 		$(use_enable test relocatable) \
 		$(use_with aspell) \
 		$(use_with hunspell) \
+		$(use_with voikko) \
 		--without-nuspell \
 		--without-hspell \
-		--without-voikko \
 		--without-applespell \
 		--without-zemberek \
 		--with-hunspell-dir="${EPREFIX}"/usr/share/hunspell/
