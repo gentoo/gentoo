@@ -2718,7 +2718,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.34.11: Search and query ebuilds
+app-portage/eix 0.34.11 0.34.12: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r3 0.7.9: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 3.0-r2: Elog viewer for Gentoo
@@ -5346,7 +5346,7 @@ dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar 
 dev-libs/kqoauth 0.98-r3: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.2.0-r1: Framework for creation and generation of reports in multiple formats
 dev-libs/kuserfeedback 1.0.0: Framework to collect user feedback for applications via telemetry and surveys
-dev-libs/leatherman 1.12.2 1.12.3 1.12.4: A C++ toolkit
+dev-libs/leatherman 1.12.2 1.12.4: A C++ toolkit
 dev-libs/level-zero 0.91.10 1.0.0: oneAPI Level Zero headers, loader and validation layer
 dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
@@ -8947,7 +8947,7 @@ dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and 
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-troveclient 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
-dev-python/python-utils 2.3.0 2.4.0 2.5.0: Collection of small Python functions & classes
+dev-python/python-utils 2.3.0 2.4.0 2.5.1: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.29: A fully functional X client library for Python, written in Python
@@ -9161,7 +9161,7 @@ dev-python/subunit 1.4.0: A streaming protocol for test results
 dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
 dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
 dev-python/svg-path 4.0.2: SVG path objects and parser
-dev-python/svgwrite 1.4: Python Package to write SVG files
+dev-python/svgwrite 1.4 1.4.1: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 2.0.1: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
@@ -12349,7 +12349,7 @@ kde-plasma/plasma-sdk 5.19.5 5.20.5: Useful applications for Plasma development
 kde-plasma/plasma-systemmonitor 5.20.0-r1: New version of KSysGuard built on top of the new KStats daemon and using QML
 kde-plasma/plasma-thunderbolt 5.19.5 5.20.5: Plasma integration for controlling Thunderbolt devices
 kde-plasma/plasma-vault 5.19.5 5.20.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.19.5-r2 5.20.5: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r1: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.19.5 5.20.5: Wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.19.5 5.20.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.19.5 5.20.5: PolKit agent module for KDE Plasma
