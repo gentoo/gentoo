@@ -2243,7 +2243,7 @@ app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-it 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
 app-i18n/man-pages-l10n 4.0.0: A somewhat comprehensive collection of man page translations
-app-i18n/man-pages-ru 4.16.2383.2383.20180422 5.03.2390.2390.20191017: A collection of Russian translations of Linux manual pages
+app-i18n/man-pages-ru 5.03.2390.2390.20191017: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.6.3.2: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mecab-skkserv 0.03: mecab-skkserv is a Kana-Kanji conversion server using MeCab
 app-i18n/mozc 2.23.2815.102 2.26.4220_p20201212102434_p20201219202429 9999: Mozc - Japanese input method editor
