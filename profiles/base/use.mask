@@ -10,14 +10,6 @@
 php_targets_php7-2
 php7-2
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-01)
-# The support for python3.6 target in Gentoo is discontinued.
-# The flags are masked to permit removal of the last backport packages.
-# Once they're gone, the eclass support will be disabled and the flags
-# removed.
-python_targets_python3_6
-python_single_target_python3_6
-
 # Alexis Ballier <aballier@gentoo.org> (2020-10-13)
 # Nothing depends on those ROS messages. dev-ros/geneus
 # is half broken in our setup where it looks for packages
