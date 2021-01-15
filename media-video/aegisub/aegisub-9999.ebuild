@@ -12,8 +12,8 @@ PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_B
 inherit autotools l10n lua-single wxwidgets xdg-utils git-r3
 
 DESCRIPTION="Advanced subtitle editor"
-HOMEPAGE="http://www.aegisub.org/ https://github.com/Aegisub/Aegisub"
-EGIT_REPO_URI="https://github.com/${PN^}/${PN^}.git"
+HOMEPAGE="http://www.aegisub.org/ https://github.com/wangqr/Aegisub"
+EGIT_REPO_URI="https://github.com/wangqr/${PN^}.git"
 # Submodules are used to pull bundled libraries.
 EGIT_SUBMODULES=()
 
