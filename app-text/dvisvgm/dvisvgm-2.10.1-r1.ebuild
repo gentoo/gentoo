@@ -19,8 +19,15 @@ IUSE="test"
 # would make it harder for prefix installs.
 RESTRICT="test"
 
-RDEPEND="virtual/tex-base
-	>=app-arch/brotli-1.0.5
+BDEPEND="
+	app-text/asciidoc
+	app-text/xmlto
+	dev-libs/libxslt
+	virtual/pkgconfig
+	test? ( dev-cpp/gtest )
+"
+RDEPEND="
+	>=app-arch/brotli-1.0.5:=
 	app-text/ghostscript-gpl
 	dev-libs/kpathsea:=
 	dev-libs/openssl:=
@@ -28,14 +35,10 @@ RDEPEND="virtual/tex-base
 	>=media-gfx/potrace-1.10-r1
 	media-libs/freetype:2
 	>=media-libs/woff2-1.0.2
-	dev-libs/kpathsea
-	sys-libs/zlib"
-DEPEND="${RDEPEND}
-	app-text/xmlto
-	app-text/asciidoc
-	dev-libs/libxslt
-	virtual/pkgconfig
-	test? ( dev-cpp/gtest )"
+	sys-libs/zlib
+	virtual/tex-base
+"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local myargs=(
