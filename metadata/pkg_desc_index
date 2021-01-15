@@ -14568,7 +14568,7 @@ net-firewall/nftlb 0.6: nftables load balancer
 net-firewall/nufw 2.2.22-r3: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.4.6: Port Scanning Attack Detection daemon
-net-firewall/rtsp-conntrack 3.7-r2 4.18-r1: RTSP conntrack module for Netfilter
+net-firewall/rtsp-conntrack 4.18-r1 5.3: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r3: iptables firewall generator (fork of firehol)
 net-firewall/shorewall 5.2.8: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall

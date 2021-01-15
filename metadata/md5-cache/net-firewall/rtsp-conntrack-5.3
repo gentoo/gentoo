@@ -4,10 +4,10 @@ DESCRIPTION=RTSP conntrack module for Netfilter
 EAPI=7
 HOMEPAGE=http://mike.it-loops.com/rtsp
 IUSE=kernel_linux kernel_linux dist-kernel
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) )
 SLOT=0
-SRC_URI=http://mike.it-loops.com/rtsp/rtsp-module-3.7.tar.gz
+SRC_URI=https://github.com/maru-sama/rtsp-linux/archive/5.3.tar.gz -> rtsp-conntrack-5.3.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=2d01882ac13da4b3f6b24c762027b943
+_md5_=65ef82f864ca0866942683aefa57c6d1
