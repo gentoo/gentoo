@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 	"${FILESDIR}/${PN}-2.3.3-user-AR.patch"
+	"${FILESDIR}/${PN}-2.3.3-no-libtool.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(

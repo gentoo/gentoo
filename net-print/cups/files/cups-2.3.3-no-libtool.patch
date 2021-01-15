@@ -1,0 +1,25 @@
+This is not needed and causes problems with more strict
+implementations of libtool.
+
+With slibtool it fails.
+
+--- a/backend/Makefile
++++ b/backend/Makefile
+@@ -118,7 +118,7 @@ install-exec:	$(INSTALLXPC)
+ 	echo Installing backends in $(SERVERBIN)/backend
+ 	$(INSTALL_DIR) -m 755 $(SERVERBIN)/backend
+ 	for file in $(RBACKENDS); do \
+-		$(LIBTOOL) $(INSTALL_BIN) -m 700 $$file $(SERVERBIN)/backend; \
++		$(INSTALL_BIN) -m 700 $$file $(SERVERBIN)/backend; \
+ 	done
+ 	for file in $(UBACKENDS); do \
+ 		$(INSTALL_BIN) $$file $(SERVERBIN)/backend; \
+@@ -142,7 +142,7 @@ install-exec:	$(INSTALLXPC)
+ install-xpc:	ipp
+ 	echo Installing XPC backends in $(SERVERBIN)/apple
+ 	$(INSTALL_DIR) -m 755 $(SERVERBIN)/apple
+-	$(LIBTOOL) $(INSTALL_BIN) ipp $(SERVERBIN)/apple
++	$(INSTALL_BIN) ipp $(SERVERBIN)/apple
+ 	for file in $(IPPALIASES); do \
+ 		$(RM) $(SERVERBIN)/apple/$$file; \
+ 		$(LN) ipp $(SERVERBIN)/apple/$$file; \
