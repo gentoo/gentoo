@@ -10,6 +10,7 @@ acct-group/argus 0: gid for net-analyzer/argus
 acct-group/asterisk 0-r1: Group for asterisk
 acct-group/atheme-services 0-r1: Group for Atheme IRC services
 acct-group/audio 0-r1: System group: audio
+acct-group/automatic 0: System group: automatic
 acct-group/automx2 0-r1: Group for net-mail/automx2
 acct-group/avahi 0-r1: group for avahi
 acct-group/avahi-autoipd 0-r1: group for avahi-autoipd
@@ -295,6 +296,7 @@ acct-user/apache 0-r1: System user: apache
 acct-user/argus 0: uid for net-analyzer/argus
 acct-user/asterisk 0-r1: User for asterisk
 acct-user/atheme-services 0-r1: User for Atheme IRC services
+acct-user/automatic 0: System user: automatic
 acct-user/automx2 0-r1: User for net-mail/automx2
 acct-user/avahi 0-r1: user for avahi
 acct-user/avahi-autoipd 0-r1: user for avahi-autoipd
@@ -13670,7 +13672,7 @@ media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r5 1.1-r1 1.1-r101: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 6.5 6.5-r1 9999: Digital Audio Workstation
+media-sound/ardour 6.5-r1 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
@@ -14632,7 +14634,7 @@ net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client 
 net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
-net-im/gitter-bin 3.1.0 4.1.0: Chat and network platform
+net-im/gitter-bin 4.1.0 4.1.0-r1: Chat and network platform
 net-im/jabber-base 0.01-r2: Base layout package for various jabber services
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20200711 3.6.0: A cross-platform IRC framework written with Qt
@@ -15372,7 +15374,7 @@ net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them 
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.10.1 2.11.0: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
-net-p2p/automatic 0.8.3: RSS downloader for Tranmission
+net-p2p/automatic 0.8.3 0.8.3-r1: RSS downloader for Tranmission
 net-p2p/bitcoin-cli 0.16.3 0.19.1 0.20.0 0.20.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.16.3 0.19.1 0.20.0 0.20.1: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.16.3 0.19.1 0.20.0 0.20.1: Original Bitcoin crypto-currency wallet for automated services

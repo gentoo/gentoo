@@ -4166,6 +4166,7 @@ media-libs/libavif:dav1d - Enable support for the dav1d codec decoding
 media-libs/libavif:extras - Build extra apps (avifenc, avifdec) and test files
 media-libs/libavif:gdk-pixbuf - Build a gdk-pixbuf loader
 media-libs/libavif:rav1e - Enable support for the rav1e codec encoding
+media-libs/libavif:svt-av1 - Enable support for the SVT-AV1 encoder
 media-libs/libbdplus:aacs - Add support for decryption of AACS
 media-libs/libbluray:aacs - Add support for decryption of AACS
 media-libs/libbluray:bdplus - Use media-libs/libbdplus for BD+ decryption
