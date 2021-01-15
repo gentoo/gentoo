@@ -374,7 +374,7 @@ multilib_src_configure() {
 	local platforms
 	use X && platforms+="x11"
 	use wayland && platforms+=",wayland"
-	[[ -n $platforms ]] && emesonargs+=(-Dplatforms=${platforms#,})
+	emesonargs+=(-Dplatforms=${platforms#,})
 
 	if use X || use egl; then
 		emesonargs+=(-Dglvnd=true)
