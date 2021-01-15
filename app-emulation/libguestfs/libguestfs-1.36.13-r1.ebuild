@@ -3,9 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
-
-inherit eutils autotools linux-info perl-functions python-single-r1 versionator
+inherit eutils autotools linux-info perl-functions versionator
 
 MY_PV_1="$(get_version_component_range 1-2)"
 MY_PV_2="$(get_version_component_range 2)"
@@ -19,10 +17,8 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/"${MY_PV_1}""
 
 KEYWORDS="~amd64"
-IUSE="bash-completion debug doc erlang +fuse gtk inspect-icons introspection lua ocaml +perl python ruby selinux static-libs systemtap test"
+IUSE="bash-completion debug doc erlang +fuse gtk inspect-icons introspection lua ocaml +perl ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Failures - doc
 # Failures - bash-completion, see GBZ #486306
@@ -60,7 +56,6 @@ COMMON_DEPEND="
 		>=app-misc/hivex-1.3.1[perl?]
 		dev-perl/String-ShellQuote
 	)
-	python? ( ${PYTHON_DEPS} )
 	fuse? ( sys-fs/fuse:= )
 	introspection? (
 		>=dev-libs/glib-2.26:2
@@ -109,8 +104,6 @@ DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 pkg_setup() {
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
-
-		use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -137,7 +130,7 @@ src_configure() {
 		--with-extra="-gentoo" \
 		--with-readline \
 		--disable-php \
-		$(use_enable python) \
+		--disable-python \
 		--without-java \
 		$(use_enable perl) \
 		$(use_enable fuse) \
