@@ -134,13 +134,6 @@ net-vpn/networkmanager-wireguard
 # Removal in 30 days. See bug #706824.
 app-benchmarks/contest
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-01)
-# Python 3.6 backports.  Unnecessary for py3.7+.
-# Removal in 14 days.
-dev-python/aiocontextvars
-dev-python/contextvars
-dev-python/dataclasses
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-01-01)
 # Needs a port to modern Cabal. No revdeps.
 # Masked for removal. bug #735788, bug #737946
