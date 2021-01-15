@@ -17,10 +17,6 @@ php7-2
 # See e.g. https://bugs.gentoo.org/741076
 ros_messages_eus
 
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# app-office/openoffice-bin is being removed.
-office_implementation_openoffice
-
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
