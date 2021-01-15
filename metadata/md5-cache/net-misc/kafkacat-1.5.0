@@ -4,10 +4,10 @@ DESCRIPTION=Generic command line non-JVM Apache Kafka producer and consumer
 EAPI=6
 HOMEPAGE=https://github.com/edenhill/kafkacat
 IUSE=+avro +json
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=BSD-2
 RDEPEND=>=dev-libs/librdkafka-0.9.4 avro? ( dev-libs/avro-c dev-libs/libserdes ) json? ( dev-libs/yajl )
 SLOT=0
 SRC_URI=https://github.com/edenhill/kafkacat/archive/1.5.0.tar.gz -> kafkacat-1.5.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=6ad8ea179cc84a3133abd60e2ff619f1
+_md5_=fe6983128e22bf68e3ff3a6f5e8f6c4f

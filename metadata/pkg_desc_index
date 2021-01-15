@@ -12412,8 +12412,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.8 1.4.10 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.6.0 78.6.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.6.0 78.6.1: Thunderbird Mail Client
+mail-client/thunderbird 78.6.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.6.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -15144,7 +15144,7 @@ net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.5.1 2.6.0: A high-throughput distributed messaging system
-net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
+net-misc/kafkacat 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.8.1-r1 1.8.2 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knock 0.7-r1: Simple port-knocking daemon
