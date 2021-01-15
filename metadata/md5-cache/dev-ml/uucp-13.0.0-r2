@@ -1,13 +1,13 @@
-BDEPEND=dev-ml/opam-installer dev-lang/ocaml
+BDEPEND=dev-ml/ocamlbuild dev-ml/opam-installer dev-lang/ocaml
 DEFINED_PHASES=compile install
-DEPEND=dev-ml/topkg >=dev-lang/ocaml-4:=
+DEPEND=dev-ml/topkg dev-ml/findlib >=dev-lang/ocaml-4:=
 DESCRIPTION=Unicode character properties for OCaml
 EAPI=7
 HOMEPAGE=https://erratique.ch/software/uucp https://github.com/dbuenzli/uucp
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
-RDEPEND=dev-ml/topkg >=dev-lang/ocaml-4:=
+RDEPEND=dev-ml/topkg dev-ml/findlib >=dev-lang/ocaml-4:=
 SLOT=0/13.0.0
 SRC_URI=https://erratique.ch/software/uucp/releases/uucp-13.0.0.tbz
 _eclasses_=opam	4f1cff0457cf4790a5510753a67d1cc1
-_md5_=1a222908e2f0f7e8cd6575bdde635a2b
+_md5_=4a27ceec805efbcff4b7cd52397326e9
