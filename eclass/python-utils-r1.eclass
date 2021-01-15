@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -41,7 +41,7 @@ inherit toolchain-funcs
 _PYTHON_ALL_IMPLS=(
 	pypy3
 	python2_7
-	python3_6 python3_7 python3_8 python3_9
+	python3_7 python3_8 python3_9
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -53,7 +53,7 @@ _PYTHON_HISTORICAL_IMPLS=(
 	jython2_7
 	pypy pypy1_{8,9} pypy2_0
 	python2_{5,6}
-	python3_{1,2,3,4,5}
+	python3_{1..6}
 )
 readonly _PYTHON_HISTORICAL_IMPLS
 
@@ -68,38 +68,6 @@ readonly _PYTHON_HISTORICAL_IMPLS
 # is that the ebuilds are intended to be used within multiple contexts
 # which can involve revisions of this eclass that support a different
 # set of Python implementations.
-
-# @FUNCTION: _python_impl_supported
-# @USAGE: <impl>
-# @INTERNAL
-# @DESCRIPTION:
-# Check whether the implementation <impl> (PYTHON_COMPAT-form)
-# is still supported.
-#
-# Returns 0 if the implementation is valid and supported. If it is
-# unsupported, returns 1 -- and the caller should ignore the entry.
-# If it is invalid, dies with an appopriate error messages.
-_python_impl_supported() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: takes exactly 1 argument (impl)."
-
-	local impl=${1}
-
-	# keep in sync with _PYTHON_ALL_IMPLS!
-	# (not using that list because inline patterns shall be faster)
-	case "${impl}" in
-		python2_7|python3_[6789]|pypy3)
-			return 0
-			;;
-		jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[56]|python3_[12345])
-			return 1
-			;;
-		*)
-			[[ ${PYTHON_COMPAT_NO_STRICT} ]] && return 1
-			die "Invalid implementation in PYTHON_COMPAT: ${impl}"
-	esac
-}
 
 # @FUNCTION: _python_verify_patterns
 # @USAGE: <pattern>...
@@ -149,10 +117,26 @@ _python_set_impls() {
 	if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
 		die 'PYTHON_COMPAT must be an array.'
 	fi
-	for i in "${PYTHON_COMPAT[@]}"; do
-		# trigger validity checks
-		_python_impl_supported "${i}"
-	done
+	if [[ ! ${PYTHON_COMPAT_NO_STRICT} ]]; then
+		for i in "${PYTHON_COMPAT[@]}"; do
+			# check for incorrect implementations
+			# we're using pattern matching as an optimization
+			# please keep them in sync with _PYTHON_ALL_IMPLS
+			# and _PYTHON_HISTORICAL_IMPLS
+			case ${i} in
+				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9])
+					;;
+				*)
+					if has "${i}" "${_PYTHON_ALL_IMPLS[@]}" \
+						"${_PYTHON_HISTORICAL_IMPLS[@]}"
+					then
+						die "Mis-synced patterns in _python_set_impls: missing ${i}"
+					else
+						die "Invalid implementation in PYTHON_COMPAT: ${i}"
+					fi
+			esac
+		done
+	fi
 
 	local supp=() unsupp=()
 
