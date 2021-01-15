@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,6 +43,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--runstatedir="${EPREFIX}"/run
 		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
@@ -66,7 +67,7 @@ src_install() {
 		sed 's@ -r 10M:10@@' -i "${ED}"/etc/conf.d/sysklogd || die
 	fi
 
-	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {
