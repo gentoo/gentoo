@@ -65,7 +65,7 @@ PDEPEND="
 src_prepare() {
 	# 005 does not compile bigdecimal and is questionable because it
 	# compiles ruby in a non-standard way, may be dropped
-	eapply "${FILESDIR}"/2.7/010*.patch
+	eapply "${FILESDIR}"/2.7/{002,010}*.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"
