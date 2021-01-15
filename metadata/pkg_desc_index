@@ -905,7 +905,7 @@ app-backup/restic 0.9.6 0.10.0 0.11.0: A backup program that is fast, efficient 
 app-backup/rsnapshot 1.4.2 1.4.3: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
-app-backup/snapper 0.5.6-r1 0.8.9-r1 0.8.15: Command-line program for btrfs and lvm snapshot management
+app-backup/snapper 0.5.6-r1 0.8.9-r1 0.8.15-r1: Command-line program for btrfs and lvm snapshot management
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/synology-cloud-station-backup 4469: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.37 1.0.39: Online backups for the truly paranoid
@@ -10657,7 +10657,7 @@ dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
 dev-util/cproto 4.7q 4.7r: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
-dev-util/crash 7.2.8-r1: Red Hat crash utility; used for analyzing kernel core dumps
+dev-util/crash 7.2.8-r1 7.2.9 9999: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.11.0_pre20191110: C-Reduce - a plugin-based C program reducer
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
@@ -17028,7 +17028,7 @@ sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCS
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
-sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
+sys-apps/udevil 0.4.4-r3 0.4.4-r4: mount and unmount removable devices without a password
 sys-apps/unscd 0.54-r1: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8 1.0.0: Daemon protecting your computer against BadUSB
