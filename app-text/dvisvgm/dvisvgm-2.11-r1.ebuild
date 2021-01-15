@@ -27,7 +27,7 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 RDEPEND="
-	>=app-arch/brotli-1.0.5
+	>=app-arch/brotli-1.0.5:=
 	app-text/ghostscript-gpl
 	dev-libs/kpathsea:=
 	dev-libs/openssl:=
@@ -35,7 +35,6 @@ RDEPEND="
 	>=media-gfx/potrace-1.10-r1
 	media-libs/freetype:2
 	>=media-libs/woff2-1.0.2
-	dev-libs/kpathsea
 	sys-libs/zlib
 	virtual/tex-base
 "
