@@ -11,7 +11,7 @@ SRC_URI="https://sourceforge.net/projects/jack-smf-utils/files/${PN}/${PV}/${P}.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="lash"
 
 RDEPEND="
