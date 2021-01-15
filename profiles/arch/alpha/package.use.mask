@@ -1,10 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
-# Test-dep not keyworded on alpha, resolve tree breakage by 
-# b5248bbb1b5557aea56b4e1ee3d0d122e03e97d1
-app-text/enchant test
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-30)
 # Qt5 is not keyworded here.
