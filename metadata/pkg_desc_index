@@ -7908,7 +7908,6 @@ dev-python/SaltTesting 2018.9.21: Required testing tools needed in the several S
 dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
-dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0: File support for asyncio
 dev-python/aiohttp 3.6.2-r1 3.7.1-r1 3.7.2-r1 3.7.3: http client/server for asyncio
@@ -7993,8 +7992,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.30 1.16.36 1.16.43 1.16.50 1.16.51 1.16.52 1.16.53 1.16.54 9999: The AWS SDK for Python
-dev-python/botocore 1.19.30 1.19.36 1.19.43 1.19.50 1.19.51 1.19.52 1.19.53 1.19.54 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.30 1.16.36 1.16.43 1.16.50 1.16.51 1.16.52 1.16.53 1.16.54 1.16.55 9999: The AWS SDK for Python
+dev-python/botocore 1.19.30 1.19.36 1.19.43 1.19.50 1.19.51 1.19.52 1.19.53 1.19.54 1.19.55 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8063,7 +8062,6 @@ dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise 
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
 dev-python/construct 2.10.56: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0_p1-r1: Backports and enhancements for the contextlib module
-dev-python/contextvars 2.4: Backport of Python 3.7 contextvars module (PEP 567) for Python 3.6
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
 dev-python/coreschema 0.0.4: Core Schema
@@ -8087,7 +8085,6 @@ dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dask 2.30.0: Task scheduling and blocked algorithms for parallel processing
-dev-python/dataclasses 0.7 0.8: A backport of the dataclasses module for Python 3.6
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19 0.20.0 0.21.0 0.22.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
@@ -8261,7 +8258,7 @@ dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
-dev-python/google-api-core 1.17.0 1.24.0: Core Library for Google Client Libraries
+dev-python/google-api-core 1.17.0 1.24.0 1.25.0: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
 dev-python/google-auth 1.24.0: Google Authentication Library
@@ -8302,7 +8299,7 @@ dev-python/humanize 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 5.43.4 5.49.0 6.0.1: A library for property based testing
+dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8432,7 +8429,7 @@ dev-python/lxml 4.6.2-r1: A Pythonic binding for the libxml2 and libxslt librari
 dev-python/lz4 3.1.1: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1 0.37.1: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
-dev-python/mako 1.1.3-r1: A Python templating language
+dev-python/mako 1.1.3-r1 1.1.4: A Python templating language
 dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
@@ -8502,7 +8499,7 @@ dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manag
 dev-python/nbclient 0.5.1: A client library for executing Jupyter notebooks
 dev-python/nbconvert 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
-dev-python/nbformat 5.0.8 5.1.0 5.1.1: Reference implementation of the Jupyter Notebook format
+dev-python/nbformat 5.0.8 5.1.0 5.1.1 5.1.2: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
@@ -8544,7 +8541,7 @@ dev-python/octave_kernel 0.32.0-r1: Jupyter kernel for octave
 dev-python/odfpy 1.3.6: Python API and tools to manipulate OpenDocument files
 dev-python/olefile 0.46-r1: Python package to parse, read and write Microsoft OLE2 files
 dev-python/onkyo-eiscp 1.2.7: Control Onkyo A/V receivers over the network
-dev-python/openpyxl 3.0.5: Pure python reader and writer of Excel OpenXML files
+dev-python/openpyxl 3.0.5 3.0.6: Pure python reader and writer of Excel OpenXML files
 dev-python/openstackdocstheme 2.2.5: Theme and extension support for Sphinx documentation
 dev-python/openstacksdk 0.50.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.3.0: Optimized Einsum: A tensor contraction order optimizer
@@ -8895,7 +8892,7 @@ dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.6 3.8.7 3.9.0 3.9.1: HTML documen
 dev-python/python-dotenv 0.14.0 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libraries
-dev-python/python-email-validator 1.1.1 1.1.2: A robust email syntax and deliverability validation library
+dev-python/python-email-validator 1.1.2: A robust email syntax and deliverability validation library
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
 dev-python/python-evdev 1.3.0: Python library for evdev bindings
@@ -8948,7 +8945,7 @@ dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and 
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-troveclient 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
-dev-python/python-utils 2.3.0 2.4.0: Collection of small Python functions & classes
+dev-python/python-utils 2.3.0 2.4.0 2.5.0: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.29: A fully functional X client library for Python, written in Python
@@ -10682,7 +10679,7 @@ dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session f
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 13.2.1: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.123: Debian/Ubuntu bootstrap scripts
-dev-util/debugedit 4.16.0 4.16.1 4.16.1.2: Stand-alone debugedit from RPM
+dev-util/debugedit 4.16.1.2: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24 0.26-r1: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME

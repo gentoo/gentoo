@@ -1,15 +1,15 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/lwt >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=dev-ml/lwt dev-ml/uutf >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Error-recovering streaming HTML5 and XML parsers
 EAPI=7
 HOMEPAGE=https://github.com/aantron/markup.ml
 IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=BSD
-RDEPEND=dev-ml/lwt >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=dev-ml/lwt dev-ml/uutf >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.0.0
 SRC_URI=https://github.com/aantron/markup.ml/archive/1.0.0.tar.gz -> markup-1.0.0.tar.gz
 _eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
-_md5_=87aa717da9511b892a59ed6b1c91b06d
+_md5_=92a908a2713061fa969a7e35599a6e7d
