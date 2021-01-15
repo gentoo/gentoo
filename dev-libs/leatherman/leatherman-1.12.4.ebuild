@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 IUSE="debug static-libs test"
 #RESTRICT="!test? ( test )"
 RESTRICT="test"  # restricted til we don't need the shared_nowide patch
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 SLOT="0/${PV}"
 
 RDEPEND="net-misc/curl"
