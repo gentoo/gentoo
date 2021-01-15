@@ -40,8 +40,7 @@ for x in "${ALL_LLVM_TARGETS[@]}"; do
 done
 unset x
 
-DEPEND="${RDEPEND}
-	test? ( ~sys-libs/compiler-rt-${PV} )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-util/cmake-3.16
 	doc? ( dev-python/sphinx )
