@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare setup test
-DEPEND=test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) )
+DEPEND=test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) )
 DESCRIPTION=easy hugepage access
 EAPI=7
 HOMEPAGE=https://github.com/libhugetlbfs/libhugetlbfs
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/libhugetlbfs/libhugetlbfs/archive/2.22.tar.gz -> libhugetlbfs-2.22.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=3f1c9ad5cd6f4997399216619a723158

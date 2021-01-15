@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare setup test
-DEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) acct-user/mosquitto acct-group/mosquitto srv? ( net-dns/c-ares:= ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcpd? ( sys-apps/tcp-wrappers ) test? ( dev-util/cunit ) websockets? ( net-libs/libwebsockets[lejp] )
+DEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 ) acct-user/mosquitto acct-group/mosquitto srv? ( net-dns/c-ares:= ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcpd? ( sys-apps/tcp-wrappers ) test? ( dev-util/cunit ) websockets? ( net-libs/libwebsockets[lejp] )
 DESCRIPTION=An Open Source MQTT v3 Broker
 EAPI=7
 HOMEPAGE=https://mosquitto.org/ https://github.com/eclipse/mosquitto
@@ -12,5 +12,5 @@ REQUIRED_USE=test? ( bridge )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://mosquitto.org/files/source/mosquitto-1.6.10.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=e40f47b2d56d1b9e8822370d88a29068

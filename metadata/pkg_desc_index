@@ -2465,7 +2465,7 @@ app-misc/hddled 0.3: Show hard disk activity using the scroll lock LED
 app-misc/hello 2.10-r1: GNU "Hello, world" application
 app-misc/hexcompare 1.0.4: ncurses-based visual comparison of binary files
 app-misc/hilite 1.5-r1: A utility which highlights stderr text in red
-app-misc/hivex 1.3.14 1.3.18: Library for reading and writing Windows Registry 'hive' binary files
+app-misc/hivex 1.3.18: Library for reading and writing Windows Registry 'hive' binary files
 app-misc/hodie 1.5: a Latin date(1)
 app-misc/i2bits 0.1.0: Utility to convert hex or dec to binary format
 app-misc/icdiff 1.9.5: Colourized diff that supports side-by-side diffing

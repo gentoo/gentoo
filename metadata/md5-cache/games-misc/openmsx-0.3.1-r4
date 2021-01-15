@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install setup
-DEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 )
+DEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 )
 DESCRIPTION=Open source music base set for OpenTTD
 EAPI=7
 HOMEPAGE=https://wiki.openttd.org/OpenMSX https://github.com/OpenTTD/OpenMSX
@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~arm ~ppc64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://cdn.openttd.org/openmsx-releases/0.3.1/openmsx-0.3.1-source.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=97ba8b77ae27d90f506a9e6e22430693

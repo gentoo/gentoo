@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup
-DEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) efi? ( >=sys-devel/binutils-2.22[multitarget] ) !efi? ( >=sys-devel/binutils-2.22 )
+DEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) efi? ( >=sys-devel/binutils-2.22[multitarget] ) !efi? ( >=sys-devel/binutils-2.22 )
 DESCRIPTION=The Xen virtual machine monitor
 EAPI=7
 HOMEPAGE=https://www.xenproject.org
@@ -11,5 +11,5 @@ REQUIRED_USE=arm? ( debug )
 RESTRICT=test splitdebug strip
 SLOT=0
 SRC_URI=https://downloads.xenproject.org/release/xen/4.14.0/xen-4.14.0.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.14.0-upstream-patches-6.tar.xz https://github.com/hydrapolic/gentoo-dist/raw/master/xen/xen-4.14.0-upstream-patches-6.tar.xz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=548c6daba8a377ee1d951f42dfd454b6

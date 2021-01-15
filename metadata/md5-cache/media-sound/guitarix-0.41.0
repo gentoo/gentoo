@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
-DEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) nsm? ( media-libs/liblo ) zeroconf? ( net-dns/avahi ) ) || ( dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] dev-lang/python:3.6[threads(+)] ) dev-lang/sassc virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.1.2:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) nsm? ( media-libs/liblo ) zeroconf? ( net-dns/avahi ) ) || ( dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] ) dev-lang/sassc virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Virtual guitar amplifier for Linux
 EAPI=6
 HOMEPAGE=https://guitarix.org/
@@ -10,5 +10,5 @@ RDEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=med
 REQUIRED_USE=|| ( lv2 standalone )
 SLOT=0
 SRC_URI=mirror://sourceforge/guitarix/guitarix/guitarix2-0.41.0.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1a8e1efd11dd599844619cc923fed9c5

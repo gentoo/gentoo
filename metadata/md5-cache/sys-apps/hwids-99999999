@@ -1,4 +1,4 @@
-BDEPEND=net-misc/curl udev? ( || ( ( dev-lang/python:3.9 dev-python/pyparsing[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/pyparsing[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/pyparsing[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ( dev-lang/python:3.6 dev-python/pyparsing[python_targets_python3_6(-),-python_single_target_python3_6(-)] ) ) ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=net-misc/curl udev? ( || ( ( dev-lang/python:3.9 dev-python/pyparsing[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/pyparsing[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/pyparsing[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst prepare setup unpack
 DESCRIPTION=Hardware (PCI, USB, OUI, IAB) IDs databases
 EAPI=7
@@ -8,5 +8,5 @@ LICENSE=|| ( GPL-2 BSD ) public-domain
 PROPERTIES=live
 RDEPEND=udev? ( virtual/udev )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=74b65e7b6320714e48798e065ec7afe6

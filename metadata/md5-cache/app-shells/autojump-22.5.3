@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
+DEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 DESCRIPTION=change directory command that learns
 EAPI=6
 HOMEPAGE=https://github.com/wting/autojump
-IUSE=ipython test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
+IUSE=ipython test python_targets_python3_7 python_targets_python3_8
 KEYWORDS=amd64 ~hppa ~mips ~ppc ~ppc64 x86 ~x64-macos
 LICENSE=GPL-3
-RDEPEND=ipython? ( python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] )
-REQUIRED_USE=ipython? ( || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) )
+RDEPEND=ipython? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] )
+REQUIRED_USE=ipython? ( || ( python_targets_python3_7 python_targets_python3_8 ) )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/wting/autojump/archive/release-v22.5.3.tar.gz -> autojump-22.5.3.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=3374e6a1298028cf84e1f60b4c65cacd

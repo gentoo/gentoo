@@ -1,4 +1,4 @@
-BDEPEND=>=sys-devel/gcc-4.4 || ( ( dev-lang/python:3.7 dev-util/scons[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ( dev-lang/python:3.6 dev-util/scons[python_targets_python3_6(-),-python_single_target_python3_6(-)] ) )
+BDEPEND=>=sys-devel/gcc-4.4 || ( ( dev-lang/python:3.7 dev-util/scons[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) )
 DEFINED_PHASES=compile configure install prepare setup
 DEPEND=>=sys-devel/gcc-4.4 dev-libs/openssl:0= >=dev-libs/boost-1.41:0= dev-libs/check >=dev-cpp/asio-1.10.1[ssl] <dev-cpp/asio-1.12.0
 DESCRIPTION=Synchronous multi-master replication engine that provides the wsrep API
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/openssl:0= >=dev-libs/boost-1.41:0=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://nyc2.mirrors.digitalocean.com/mariadb/mariadb-10.4.10/galera-26.4.3/src/galera-26.4.3.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=d2f5789d34ac3bf445a30df753a14f2a

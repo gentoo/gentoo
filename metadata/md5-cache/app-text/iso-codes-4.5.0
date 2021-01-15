@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) sys-devel/gettext
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) sys-devel/gettext
 DEFINED_PHASES=prepare setup
 DESCRIPTION=ISO language, territory, currency, script codes and their translations
 EAPI=7
@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1+
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/iso-codes-4.5.0/iso-codes-iso-codes-4.5.0.tar.gz -> iso-codes-4.5.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=046f42ca9f35d981752b3648dec2c8cb

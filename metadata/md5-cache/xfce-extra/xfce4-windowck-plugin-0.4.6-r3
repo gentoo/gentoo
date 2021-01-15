@@ -1,6 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install postinst postrm prepare setup
-DEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 <xfce-base/libxfce4ui-4.15:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= <xfce-base/xfce4-panel-4.15:=[gtk2(+)] >=xfce-base/xfconf-4.10:= || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/intltool dev-util/xfce4-dev-tools media-gfx/imagemagick[png] sys-devel/gettext virtual/pkgconfig
+DEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 <xfce-base/libxfce4ui-4.15:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= <xfce-base/xfce4-panel-4.15:=[gtk2(+)] >=xfce-base/xfconf-4.10:= || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) dev-util/intltool dev-util/xfce4-dev-tools media-gfx/imagemagick[png] sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=Xfce plugin puts the maximized window title and windows buttons on the panel
 EAPI=7
 HOMEPAGE=https://github.com/cedl38/xfce4-windowck-plugin
@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 <xfce-base/libxfce4ui-4.15:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= <xfce-base/xfce4-panel-4.15:=[gtk2(+)] >=xfce-base/xfconf-4.10:=
 SLOT=0
 SRC_URI=https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.6.tar.gz -> xfce4-windowck-plugin-0.4.6.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=64785e7c5c356d7168fa375859d7193c

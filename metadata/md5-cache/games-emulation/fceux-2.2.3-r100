@@ -1,4 +1,4 @@
-BDEPEND=|| ( ( dev-lang/python:3.9 dev-util/scons[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-util/scons[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-util/scons[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ( dev-lang/python:3.6 dev-util/scons[python_targets_python3_6(-),-python_single_target_python3_6(-)] ) )
+BDEPEND=|| ( ( dev-lang/python:3.9 dev-util/scons[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-util/scons[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-util/scons[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) )
 DEFINED_PHASES=compile install prepare setup
 DEPEND=lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) ) media-libs/libsdl[opengl?,video] logo? ( media-libs/gd[png] ) opengl? ( virtual/opengl ) gtk? ( x11-libs/gtk+:3 ) sys-libs/zlib[minizip]
 DESCRIPTION=A portable Famicom/NES emulator, an evolution of the original FCE Ultra
@@ -11,5 +11,5 @@ RDEPEND=lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) ) media-libs/libsd
 REQUIRED_USE=lua? ( ^^ ( lua_single_target_lua5-1 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/fceultra/fceux-2.2.3.src.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=33ff779f0812a988d0b100194a9465b9

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install setup test
-DEPEND=sys-fs/fuse:0 test? ( || ( ( dev-lang/python:3.9 dev-python/pytest[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/pytest[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/pytest[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ( dev-lang/python:3.6 dev-python/pytest[python_targets_python3_6(-),-python_single_target_python3_6(-)] ) ) )
+DEPEND=sys-fs/fuse:0 test? ( || ( ( dev-lang/python:3.9 dev-python/pytest[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/pytest[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/pytest[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) )
 DESCRIPTION=Self-syncing tree-merging file system based on FUSE
 EAPI=7
 HOMEPAGE=https://github.com/rpodgorny/unionfs-fuse
@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=sys-fs/fuse:0
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=0938c3f7c0f19b7c5c096f9a35fee9c6

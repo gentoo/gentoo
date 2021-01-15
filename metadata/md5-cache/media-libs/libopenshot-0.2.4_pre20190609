@@ -1,16 +1,16 @@
 BDEPEND=doc? ( app-doc/doxygen ) python? ( dev-lang/swig ) test? ( dev-libs/unittest++ ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare pretend setup test
-DEPEND=net-libs/cppzmq dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] >=media-libs/libopenshot-audio-0.1.9_pre20190502:0= imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] ) media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) )
+DEPEND=net-libs/cppzmq dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] >=media-libs/libopenshot-audio-0.1.9_pre20190502:0= imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] ) media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) )
 DESCRIPTION=Video editing library used by OpenShot
 EAPI=7
 HOMEPAGE=https://www.openshot.org/
-IUSE=doc examples +imagemagick +python test python_single_target_python3_6 python_single_target_python3_7
+IUSE=doc examples +imagemagick +python test +python_single_target_python3_7
 KEYWORDS=amd64 x86
 LICENSE=GPL-3+
-RDEPEND=net-libs/cppzmq dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] >=media-libs/libopenshot-audio-0.1.9_pre20190502:0= imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] ) media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 ) )
+RDEPEND=net-libs/cppzmq dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] >=media-libs/libopenshot-audio-0.1.9_pre20190502:0= imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] ) media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 ) )
 RESTRICT=!test? ( test )
 SLOT=0/17
 SRC_URI=https://github.com/OpenShot/libopenshot/archive/0d4ea7fe71e88bcee4a7fd1404bd52c8e2169997.tar.gz -> libopenshot-0.2.4_pre20190609.tar.gz
-_eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=e750b70d1f36825cc0e46fdcbb268cdf

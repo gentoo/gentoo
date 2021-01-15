@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig doc? ( || ( dev-lang/python:3.9[xml] dev-lang/python:3.8[xml] dev-lang/python:3.7[xml] dev-lang/python:3.6[xml] ) sys-apps/groff ) nls? ( sys-devel/gettext ) test? ( net-libs/socket_wrapper net-vpn/ocserv sys-libs/uid_wrapper )
+BDEPEND=virtual/pkgconfig doc? ( || ( dev-lang/python:3.9[xml] dev-lang/python:3.8[xml] dev-lang/python:3.7[xml] ) sys-apps/groff ) nls? ( sys-devel/gettext ) test? ( net-libs/socket_wrapper net-vpn/ocserv sys-libs/uid_wrapper )
 DEFINED_PHASES=configure install prepare pretend setup test unpack
 DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3.6.13:0= dev-libs/libtasn1:0= app-crypt/tpm2-tss ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken )
 DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= )
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-8.10.tar.gz ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20200930.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	e41e32d357e5bdd388b5be2ce24f3883	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=9e2327cb4fb53c6d53b49f55f1fe2307
