@@ -13,6 +13,9 @@ EGIT_SUBMODULES=()
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/bzip2
@@ -41,6 +44,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/pngpp
 	dev-cpp/sparsehash
 "
+BDEPEND="test? ( dev-cpp/gtest )"
 
 FILECAPS=(
 	"CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/PCSX2
