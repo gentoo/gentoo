@@ -16,7 +16,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror"
+RESTRICT="fetch mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
@@ -54,7 +54,7 @@ pkg_setup() {
 src_unpack() {
 	default
 
-	local MY_T="${WORKDIR}/HDX_RealTime_Media_Engine_2.9.200_for_Linux$(usex amd64 '_x64' '')"
+	local MY_T="${WORKDIR}/HDX_RealTime_Media_Engine_${MY_PV}_for_Linux$(usex amd64 '_x64' '')"
 	local deb_base_name="citrix-hdx-realtime-media-engine"
 	unpack_deb ${MY_T}/${zip_dir}/${deb_base_name}_$(ver_rs 3 -)_${zip_arch}.deb
 }
