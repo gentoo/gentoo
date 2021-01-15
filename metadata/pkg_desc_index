@@ -7877,7 +7877,7 @@ dev-php/theseer-DirectoryScanner 1.3.2: A recursive directory scanner and filter
 dev-php/theseer-tokenizer 1.1.0 1.1.3 1.2.0: Convert tokenized PHP source code into XML and other formats
 dev-php/twig 1.40.1-r1 1.42.3 1.42.3-r1: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8 3.0.1: A PHP debugging and profiling extension
+dev-php/xdebug 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8 3.0.1 3.0.2: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.9.4 2.9.5 2.9.6 2.9.7 2.9.8: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xdebug-handler 1.3.0 1.3.1 1.4.1 1.4.3: Restart a CLI process without loading the xdebug extension
 dev-php/xhprof 2.1.4 2.2.3: A Hierarchical Profiler for PHP
