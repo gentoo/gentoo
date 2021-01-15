@@ -2415,7 +2415,7 @@ app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/elasticsearch 6.8.13 7.8.1 7.9.2 7.9.3 7.10.0: Open Source, Distributed, RESTful, Search Engine
 app-misc/emelfm2 0.9.1-r4 0.9.1-r5: A file manager that implements the popular two-pane design
-app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
+app-misc/empty 0.6.20b 0.6.21b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
 app-misc/evtest 1.33 1.34: test program for capturing input device events
