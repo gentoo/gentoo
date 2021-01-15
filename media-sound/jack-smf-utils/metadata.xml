@@ -9,9 +9,8 @@
 	Jack-smf-utils is a set of two utilities - jack-smf-player and
 	jack-smf-recorder - whose purpose is to play and record MIDI streams from/to
 	Standard Midi Files (i.e. the files with .mid extension) using JACK MIDI.
-	There is also smfsh, "SMF shell" that is kind of interactive, command line
-	SMF files manipulation tool which started its life as a debugging aid. And
-	finally libsmf, C library for loading, writing and manipulating the contents
-	of SMF files.
 </longdescription>
+<upstream>
+	<remote-id type="sourceforge">jack-smf-utils</remote-id>
+</upstream>
 </pkgmetadata>
