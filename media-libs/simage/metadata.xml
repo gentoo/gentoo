@@ -5,6 +5,6 @@
 		<email>reavertm@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="bitbucket">Coin3D/coin</remote-id>
+		<remote-id type="github">coin3d/simage</remote-id>
 	</upstream>
 </pkgmetadata>
