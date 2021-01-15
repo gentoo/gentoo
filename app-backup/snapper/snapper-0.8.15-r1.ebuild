@@ -13,8 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc lvm pam test systemd xattr"
+RESTRICT="test"
 
 RDEPEND="dev-libs/boost:=[threads]
+	dev-libs/json-c
 	dev-libs/libxml2
 	dev-libs/icu:=
 	sys-apps/acl
