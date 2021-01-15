@@ -137,7 +137,6 @@ app-benchmarks/contest
 # Michał Górny <mgorny@gentoo.org> (2021-01-01)
 # Python 3.6 backports.  Unnecessary for py3.7+.
 # Removal in 14 days.
-dev-python/aiocontextvars
 dev-python/contextvars
 dev-python/dataclasses
 
