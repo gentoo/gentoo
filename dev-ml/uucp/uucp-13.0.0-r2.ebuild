@@ -14,9 +14,10 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-ml/topkg"
+DEPEND="dev-ml/topkg
+	dev-ml/findlib"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="dev-ml/ocamlbuild"
 OPAM_FILE=opam
 
 src_compile() {
