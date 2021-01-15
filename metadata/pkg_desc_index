@@ -2882,7 +2882,7 @@ app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/dvipng 1.15-r1 1.17: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
-app-text/dvisvgm 2.10.1 2.11: Converts DVI files to SVG
+app-text/dvisvgm 2.10.1-r1 2.11-r1: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1 0.2.2-r2: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
 app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
