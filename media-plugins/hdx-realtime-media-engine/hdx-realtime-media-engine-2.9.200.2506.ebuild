@@ -16,7 +16,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="mirror"
+RESTRICT="fetch mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
