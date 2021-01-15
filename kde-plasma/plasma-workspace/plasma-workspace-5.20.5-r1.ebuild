@@ -141,7 +141,11 @@ PDEPEND="
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
+	"${FILESDIR}/${P}-avoid-render-invisible-contents.patch" # KDE-Bug 347772
+	"${FILESDIR}/${P}-fix-crash-on-screen-changes.patch" # KDE-Bug 425711
+)
 
 RESTRICT+=" test"
 

@@ -18,10 +18,6 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
-PATCHES=(
-	"${FILESDIR}"/python-utils-2.5.0-no-install-tests.patch
-)
-
 python_prepare_all() {
 	find . -name '__pycache__' -prune -exec rm -r {} + || die "Cleaning __pycache__ failed"
 	find . -name '*.pyc' -delete || die "Cleaning *.pyc failed"
