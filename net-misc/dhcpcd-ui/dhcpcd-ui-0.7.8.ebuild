@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd xdg
+inherit qmake-utils systemd xdg
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
 HOMEPAGE="https://roy.marples.name/projects/dhcpcd-ui/"
@@ -53,6 +53,7 @@ src_configure() {
 		$(use_with ncurses curses)
 		$(use_with qt5 qt)
 	)
+	QMAKE="$(qt5_get_bindir)/qmake" \
 	econf "${myeconfargs[@]}"
 }
 
