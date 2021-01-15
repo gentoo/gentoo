@@ -10,4 +10,4 @@ RDEPEND=ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libX11 x11-libs/libXaw x11-li
 SLOT=0
 SRC_URI=mirror://sourceforge/x3270/suite3270-4.0ga13-src.tgz
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=216dce38e16665655af787366fb65f3c
+_md5_=4cda6ec89401110f26ae9077e42810b4
