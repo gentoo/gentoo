@@ -23,6 +23,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	media-libs/alsa-lib
 	media-libs/libpng:=
+	media-libs/libsamplerate
 	media-libs/libsdl2[haptic,joystick,sound]
 	media-libs/libsoundtouch
 	media-libs/portaudio
