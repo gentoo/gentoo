@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}"/iscan-2.30.1.1-gcc6.patch
 	"${FILESDIR}"/iscan-2.30.3.1-fix-x86-unknown-types.patch
 	"${FILESDIR}"/iscan-2.30.4.2-sscanf.patch
+	"${FILESDIR}"/iscan-2.30.4.2-c99.patch
 )
 
 QA_PRESTRIPPED="usr/lib.*/libesmod.so.*"
