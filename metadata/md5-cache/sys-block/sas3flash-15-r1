@@ -9,5 +9,5 @@ LICENSE=LSI
 RESTRICT=strip fetch mirror
 SLOT=0
 SRC_URI=https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_12g_p15/SAS3FLASH_P15.zip doc? ( https://docs.broadcom.com/docs-and-downloads/oracle/files/sas3Flash_quickRefGuide_rev1-0.pdf )
-_eclasses_=mount-boot	1d350bab4d6e73d65352ec6f1fd43ede
+_eclasses_=mount-boot	060ced4c5e0fd737db17cbb609bbf557
 _md5_=6acdf8e7afbdfb60d818fd4611b3be94

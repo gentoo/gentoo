@@ -7,5 +7,5 @@ LICENSE=GPL-2 raspberrypi-videocore-bin
 PROPERTIES=live
 RESTRICT=binchecks strip
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	mount-boot	1d350bab4d6e73d65352ec6f1fd43ede	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	mount-boot	060ced4c5e0fd737db17cbb609bbf557	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=9778c544cd8f443d7ebbae6d489a54ec

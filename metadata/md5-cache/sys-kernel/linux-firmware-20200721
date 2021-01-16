@@ -11,5 +11,5 @@ REQUIRED_USE=initramfs? ( redistributable )
 RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
 SRC_URI=https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/linux-firmware-20200721.tar.xz
-_eclasses_=mount-boot	1d350bab4d6e73d65352ec6f1fd43ede	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
+_eclasses_=mount-boot	060ced4c5e0fd737db17cbb609bbf557	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
 _md5_=abe58ca1d9b02f3bd621374ede7bbe01

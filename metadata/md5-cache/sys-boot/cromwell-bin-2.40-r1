@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/xbox-linux/cromwell-2.40.tar.gz
-_eclasses_=mount-boot	1d350bab4d6e73d65352ec6f1fd43ede
+_eclasses_=mount-boot	060ced4c5e0fd737db17cbb609bbf557
 _md5_=1fa707e1b4f58b99eb9cc48a9c090f05

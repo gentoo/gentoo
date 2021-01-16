@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( initramfs split-ucode )
 RESTRICT=binchecks bindist mirror strip
 SLOT=0
 SRC_URI=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20201112.tar.gz https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/raw/437f382b1be4412b9d03e2bbdcda46d83d581242/intel-ucode/06-4e-03 -> intel-ucode-sig_0x406e3-rev_0xd6.bin https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20201116.tar.xz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	mount-boot	1d350bab4d6e73d65352ec6f1fd43ede	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	mount-boot	060ced4c5e0fd737db17cbb609bbf557	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=5d4c59c2ca809d0a52c3d675c2ba165e
