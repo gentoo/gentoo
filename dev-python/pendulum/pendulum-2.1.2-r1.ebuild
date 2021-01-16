@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 # commented for future tests fixups
 RESTRICT="test"
 
-RDEPEND="
+DEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytzdata[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
