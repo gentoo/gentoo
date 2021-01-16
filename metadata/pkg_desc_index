@@ -16835,7 +16835,7 @@ sys-apps/firejail 0.9.64 0.9.64-r1 9999: Security sandbox for any type of proces
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 1.2-r1 1.2-r2 1.2-r3 9999: Utility for reading, writing, erasing and verifying flash ROM chips
-sys-apps/flatpak 1.8.2 1.9.2: Linux application sandboxing and distribution framework
+sys-apps/flatpak 1.8.2 1.8.5 1.9.2 1.10.0: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.05.00 20.11.00: Firmware Test Suite
 sys-apps/fwupd 1.4.6 1.5.4 1.5.5: Aims to make updating firmware on Linux automatic, safe and reliable
