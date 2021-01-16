@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -26,7 +26,7 @@ RESTRICT=test
 
 ruby_add_rdepend "
 	>=dev-ruby/thor-0.18:0
-	|| ( dev-ruby/bundler:2 >=dev-ruby/bundler-1.2:0 )
+	dev-ruby/bundler:2
 "
 
 all_ruby_prepare() {
