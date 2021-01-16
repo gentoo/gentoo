@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -139,6 +139,10 @@ python_prepare_all() {
 		-i tests/test_frozenlist.py || die
 	sed -e 's:test_proxy_https_bad_response:_&:' \
 		-i tests/test_proxy_functional.py || die
+
+	# newer chardet works too
+	sed -e 's|chardet>=2.0,<4.0|chardet>=2.0|' \
+		-i setup.py aiohttp.egg-info/requires.txt || die
 
 	distutils-r1_python_prepare_all
 }
