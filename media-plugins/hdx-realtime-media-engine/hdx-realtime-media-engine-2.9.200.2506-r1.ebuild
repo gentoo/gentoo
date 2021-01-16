@@ -20,7 +20,7 @@ RESTRICT="fetch mirror strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
-	net-misc/icaclient
+	>=net-misc/icaclient-20.12.0.12-r1
 	|| (
 		media-sound/pulseaudio
 		media-sound/apulse
@@ -66,7 +66,6 @@ src_install() {
 	local destfiles=(
 		DialTone_US.wav
 		EULA.rtf
-		HDXRTME.so
 		InboundCallRing.wav
 	)
 
@@ -74,8 +73,25 @@ src_install() {
 	for el in "${destfiles[@]}" ; do
 		doins "${el}"
 	done
+
+	exeinto "${ICAROOT}"/rtme
+	doexe RTMEconfig RTMediaEngineSRV
+
 	for el in /var/{lib,log}/RTMediaEngineSRV /var/lib/Citrix/HDXRMEP ; do
 		keepdir ${el}
 		fperms a+rw ${el}
 	done
+
+	insinto "${ICAROOT}"
+	doins HDXRTME.so
+}
+
+pkg_postinst() {
+	ebegin "add info about our plugin to the module.ini of the Citrix receiver"
+	local inifile="${BROOT}${ICAROOT}/config/module.ini"
+	if cp "${inifile}" . ; then
+		"${BROOT}${ICAROOT}"/rtme/RTMEconfig -install -ignoremm \
+			&& cp new_module.ini "${inifile}"
+	fi
+	eend $?
 }
