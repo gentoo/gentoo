@@ -2554,7 +2554,7 @@ app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
-app-misc/rpick 0.6.1 0.7.0: Helps you pick items from a list by various algorithms
+app-misc/rpick 0.7.0 0.7.1: Helps you pick items from a list by various algorithms
 app-misc/rq 1.0.2: A tool for doing record analysis and transformation
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
@@ -7910,6 +7910,7 @@ dev-python/SaltTesting 2018.9.21: Required testing tools needed in the several S
 dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
+dev-python/abydos 0.5.0: Abydos NLP/IR library
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0: File support for asyncio
 dev-python/aiohttp 3.6.2-r1 3.7.1-r1 3.7.2-r1 3.7.3: http client/server for asyncio
@@ -7994,8 +7995,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.30 1.16.36 1.16.43 1.16.50 1.16.51 1.16.52 1.16.53 1.16.54 1.16.55 9999: The AWS SDK for Python
-dev-python/botocore 1.19.30 1.19.36 1.19.43 1.19.50 1.19.51 1.19.52 1.19.53 1.19.54 1.19.55 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.30 1.16.36 1.16.43 1.16.50 1.16.51 1.16.52 1.16.53 1.16.54 1.16.55 1.16.56 9999: The AWS SDK for Python
+dev-python/botocore 1.19.30 1.19.36 1.19.43 1.19.50 1.19.51 1.19.52 1.19.53 1.19.54 1.19.55 1.19.56 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8560,6 +8561,7 @@ dev-python/os-vif 2.2.0: OpenStack Cinder brick library for managing local volum
 dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.4-r1: XenAPI library for OpenStack projects
 dev-python/osc-lib 2.2.1: A package of common support modules for writing OSC plugins.
+dev-python/oset 0.1.3: Ordered Set
 dev-python/oslo-cache 2.6.1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 4.3.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 8.3.3: Oslo Configuration API
@@ -8625,7 +8627,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 1.18.0 2.2.0-r1 2.3.0: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 1.18.0 2.2.0-r1 2.3.0 2.4.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.0: Python Imaging Library (fork)
 dev-python/pip 20.3.1 20.3.3: Installs python packages -- replacement for easy_install
@@ -8694,6 +8696,7 @@ dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.5.0 2.6.0 2.6.1: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pybtex 0.23.0: BibTeX-compatible bibliography processor
+dev-python/pybtex-docutils 0.2.2: A docutils backend for pybtex
 dev-python/pycadf 2.9.0-r1 3.1.1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.20.0: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
@@ -8917,7 +8920,7 @@ dev-python/python-libevdev 0.8 0.9: Python wrappers for the libevdev library
 dev-python/python-linux-procfs 0.6.1 0.6.3: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
-dev-python/python-magic 0.4.18: Access the libmagic file type identification library
+dev-python/python-magic 0.4.18 0.4.19: Access the libmagic file type identification library
 dev-python/python-magnumclient 3.2.1: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 2.3.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.7: Math extension for Python-Markdown
@@ -8971,6 +8974,7 @@ dev-python/pyusb 1.1.0: USB support for Python
 dev-python/pyvirtualdisplay 1.3.2: Python wrapper for Xvfb, Xephyr and Xvnc
 dev-python/pywavelets 1.1.1: Discrete Wavelet Transforms in Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
+dev-python/pyxDamerauLevenshtein 1.6.1: Implements the Damerau-Levenshtein edit distance algorithm for Python in Cython
 dev-python/pyxattr 0.7.1 0.7.2: Python interface to xattr
 dev-python/pyxdg 0.26-r2 0.27: A Python module to deal with freedesktop.org specifications
 dev-python/pyyaml 5.3.1-r1: YAML parser and emitter for Python
@@ -9119,6 +9123,7 @@ dev-python/sphinx_rtd_theme 0.2.4 0.4.3-r1 0.5.1: ReadTheDocs.org theme for Sphi
 dev-python/sphinx_selective_exclude 1.0.3: Sphinx selective rendition extensions
 dev-python/sphinxcontrib-applehelp 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
+dev-python/sphinxcontrib-bibtex 2.0.0: Sphinx extensions for BibTeX style citations
 dev-python/sphinxcontrib-blockdiag 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-devhelp 1.0.2: Sphinx extension which outputs Devhelp documents
 dev-python/sphinxcontrib-doxylink 1.6.1: Extension to link to external Doxygen API documentation
@@ -9135,7 +9140,7 @@ dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
-dev-python/spyder 4.2.0: The Scientific Python Development Environment
+dev-python/spyder 4.2.0 4.2.1: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.10.0 1.10.1: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
@@ -9185,6 +9190,7 @@ dev-python/testresources 2.0.1: A pyunit extension for managing expensive test r
 dev-python/testscenarios 0.5.0-r1: A pyunit extension for dependency injection
 dev-python/testtools 2.4.0-r1: Extensions to the Python standard library unit testing framework
 dev-python/text-unidecode 1.3: Tthe most basic port of the Text::Unidecode Perl library
+dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
@@ -12475,7 +12481,7 @@ mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple messa
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.5.8 3.6_pre20201212: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.8 3.6_pre20210110: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
@@ -14656,7 +14662,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.39.2: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.39.5: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.67.0.96: Instant messaging client, with support for audio and video
 net-im/slack 4.4.2 4.4.3 4.11.3: Team collaboration tool
@@ -15106,8 +15112,8 @@ net-misc/gerbera 1.6.1-r1 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7 0.1.8 0.1.9: Remote desktop daemon for GNOME using pipewire
-net-misc/gns3-gui 2.2.11: Graphical Network Simulator
-net-misc/gns3-server 2.2.11: GNS3 server to asynchronously manage emulators
+net-misc/gns3-gui 2.2.11 2.2.17: Graphical Network Simulator
+net-misc/gns3-server 2.2.11 2.2.17: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
@@ -15336,7 +15342,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1355-r1 0.4.1432: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.03 2021.01.08 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.01.03 2021.01.08 2021.01.16 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18412,7 +18418,7 @@ x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.2 5.3: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/libinput-gestures 2.48 9999: Actions gestures on your touchpad using libinput
+x11-misc/libinput-gestures 2.48 2.56 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.9.0-r2: A simple locker using lightdm
 x11-misc/lightdm 1.30.0-r2: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.7-r1 2.0.8: LightDM GTK+ Greeter
