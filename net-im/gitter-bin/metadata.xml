@@ -14,9 +14,6 @@
 	grow and connect communities through messaging, content
 	and discovery.
 	</longdescription>
-	<use>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
-	</use>
 	<upstream>
 		<doc>https://gitter.zendesk.com/hc/en-us</doc>
 	</upstream>
