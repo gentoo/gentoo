@@ -26,7 +26,7 @@ BDEPEND="
 	test? (
 		>=dev-python/attrs-20.2.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-5[${PYTHON_USEDEP}]
-		>=dev-python/pillow-5.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pillow-5.0.0[${PYTHON_USEDEP},jpeg]
 		>=dev-python/psutil-5[${PYTHON_USEDEP}]
 		>=dev-python/pytest-6[${PYTHON_USEDEP}]
 		>=dev-python/pytest-timeout-1.4.2[${PYTHON_USEDEP}]
