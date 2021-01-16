@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
-DESCRIPTION="Group of utilities to build beautiful and testable command line interfaces."
+DESCRIPTION="Group of utilities to build beautiful and testable command line interfaces"
 HOMEPAGE="https://github.com/sdispater/clikit"
 SRC_URI="https://github.com/sdispater/clikit/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
