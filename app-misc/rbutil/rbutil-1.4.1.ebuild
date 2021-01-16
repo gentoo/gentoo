@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,26 +28,36 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
-S="${WORKDIR}/RockboxUtility-v${PV}/${PN}/${PN}qt"
+S="${WORKDIR}/RockboxUtility-v${PV}"
+QTDIR="${PN}/${PN}qt"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-quazip.patch
+	"${FILESDIR}"/0001-imxtools-sbtools-fix-compilation-with-gcc-10.patch
 )
 
 src_prepare() {
 	xdg_src_prepare
-	rm -rv quazip/ zlib/ || die
+	rm -rv "${QTDIR}"/{quazip,zlib}/ || die
 }
 
 src_configure() {
+	cd "${QTDIR}" || die
+
 	# Generate binary translations.
-	lrelease ${PN}qt.pro || die
+	"$(qt5_get_bindir)"/lrelease ${PN}qt.pro || die
 
 	# noccache is required to call the correct compiler.
 	eqmake5 CONFIG+="noccache $(use debug && echo dbg)"
 }
 
+src_compile() {
+	emake -C "${QTDIR}"
+}
+
 src_install() {
+	cd "${QTDIR}" || die
+
 	local icon size
 	for icon in icons/rockbox-*.png; do
 		size=${icon##*-}
