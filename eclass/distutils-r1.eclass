@@ -316,22 +316,25 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
+	deps="dev-python/sphinx[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
 		else
 			deps+="
 				${d}[\${PYTHON_USEDEP}]"
+			if [[ ! ${autodoc} ]]; then
+				die "${FUNCNAME}: do not pass --no-autodoc if external plugins are used"
+			fi
 		fi
 	done
 
-	if [[ ! ${autodoc} && -n ${deps} ]]; then
-		die "${FUNCNAME}: do not pass --no-autodoc if external plugins are used"
-	fi
 	if [[ ${autodoc} ]]; then
-		deps="$(python_gen_any_dep "
-			dev-python/sphinx[\${PYTHON_USEDEP}]
-			${deps}")"
+		if [[ ${DISTUTILS_SINGLE_IMPL} ]]; then
+			deps="$(python_gen_cond_dep "${deps}")"
+		else
+			deps="$(python_gen_any_dep "${deps}")"
+		fi
 
 		python_check_deps() {
 			use doc || return 0
