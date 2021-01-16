@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-releases-v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-libs/gmp:0="
 DEPEND="${RDEPEND}"
