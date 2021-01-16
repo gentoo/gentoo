@@ -8090,7 +8090,7 @@ dev-python/cx_Freeze 6.4.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 2.30.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 2.30.0 2021.1.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.19 0.20.0 0.21.0 0.22.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
@@ -8432,7 +8432,7 @@ dev-python/logutils 0.3.5: The logutils package provides a set of handlers for t
 dev-python/loky 2.9.0: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6 0.5.8: A Python implementation of Lunr.js
 dev-python/lxml 4.6.2-r1: A Pythonic binding for the libxml2 and libxslt libraries
-dev-python/lz4 3.1.1: LZ4 Bindings for Python
+dev-python/lz4 3.1.1 3.1.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1 0.37.1: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
 dev-python/mako 1.1.3-r1 1.1.4: A Python templating language
@@ -9238,7 +9238,7 @@ dev-python/typed-ast 1.4.1 1.4.2: Python typed-ast backported
 dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.7.1: A portable, lightweight MessagePack serializer and deserializer
-dev-python/ubelt 0.9.1: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
+dev-python/ubelt 0.9.1 0.9.4: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 4.0.1: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
@@ -19012,7 +19012,7 @@ xfce-base/libxfce4ui 4.14.1 4.15.7 4.15.8 4.16.0: Unified widget and session man
 xfce-base/libxfce4util 4.14.0 4.15.6 4.16.0: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3 4.16.0 4.16.1 4.16.2: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.15.2 4.16.0: A tool to find and launch installed applications for the Xfce desktop
-xfce-base/xfce4-meta 4.14-r2 4.16_pre2 4.16: The Xfce Desktop Environment (meta package)
+xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.6 4.16.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.1 4.16.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.15.3 4.16.0: Configuration system for the Xfce desktop environment

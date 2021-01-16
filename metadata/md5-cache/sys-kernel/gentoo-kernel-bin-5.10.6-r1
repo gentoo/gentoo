@@ -11,5 +11,5 @@ RDEPEND=!sys-kernel/gentoo-kernel:5.10.6 !sys-kernel/vanilla-kernel:5.10.6 !sys-
 RESTRICT=!test? ( test ) test? ( userpriv ) arm? ( test )
 SLOT=5.10.6
 SRC_URI=arm64? ( https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-5.10.6-1.xpak -> gentoo-kernel-5.10.6-1.arm64.xpak )
-_eclasses_=dist-kernel-utils	b34afdda4e332efa6e6ce413ff23afa3	kernel-install	860c02c5f6c1c6e9ea8985365096deb3	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	kernel-install	bbb93bcf3858afee3412c25be17786e7	mount-boot	1d350bab4d6e73d65352ec6f1fd43ede	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=2ada635b65a8f836e5083ca2c043a3c4

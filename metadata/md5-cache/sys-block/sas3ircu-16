@@ -9,5 +9,5 @@ LICENSE=LSI
 RESTRICT=strip fetch mirror
 SLOT=0
 SRC_URI=https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_12g_p16/SAS3IRCU_P16.zip https://docs.broadcom.com/docs/SAS3IRCU_P16.zip doc? ( https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/SAS3_IR_UG.pdf )
-_eclasses_=mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
+_eclasses_=mount-boot	1d350bab4d6e73d65352ec6f1fd43ede
 _md5_=4c8b41b638dbc42344c6b2b6d85597dd

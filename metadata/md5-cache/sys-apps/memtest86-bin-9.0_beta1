@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64
 LICENSE=PassMark-EULA
 SLOT=0
 SRC_URI=https://www.memtest86.com/downloads/memtest86-usb-9.0-beta-1.zip -> memtest86-bin-9.0_beta1.zip
-_eclasses_=mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
+_eclasses_=mount-boot	1d350bab4d6e73d65352ec6f1fd43ede
 _md5_=d1463403f6f8597b331577e984c05c93
