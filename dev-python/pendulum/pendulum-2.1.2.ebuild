@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Drop-in replacement for the standard datetime class"
-HOMEPAGE="https://pendulum.eustace.io/"
+HOMEPAGE="https://pendulum.eustace.io/ https://github.com/sdispater/pendulum"
 SRC_URI="https://github.com/sdispater/pendulum/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
