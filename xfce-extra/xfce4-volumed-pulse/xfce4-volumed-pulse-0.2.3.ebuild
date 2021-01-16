@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Daemon to control volume up/down and mute keys for pulseaudio"
 HOMEPAGE="https://git.xfce.org/apps/xfce4-volumed-pulse/"
@@ -18,8 +18,8 @@ RDEPEND=">=dev-libs/glib-2.16:2=
 	>=x11-libs/gtk+-3.20:3=
 	>=xfce-base/xfconf-4.8:=
 	libnotify? ( x11-libs/libnotify:= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local myconf=(
