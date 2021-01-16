@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mount-boot.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @BLURB: functions for packages that install files into /boot
 # @SUPPORTED_EAPIS: 6 7
+# @BLURB: functions for packages that install files into /boot
 # @DESCRIPTION:
 # This eclass is really only useful for bootloaders.
 #
