@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_derivers:= >=dev-ml/ppxlib-0.20.0:= dev-ml/result:= dev-ml/cppo test? ( dev-ml/ounit2 ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Type-driven code generation for OCaml
+EAPI=7
+HOMEPAGE=https://github.com/ocaml-ppx/ppx_deriving
+IUSE=+ocamlopt test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_derivers:= >=dev-ml/ppxlib-0.20.0:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
+SLOT=0/5.2
+SRC_URI=https://github.com/ocaml-ppx/ppx_deriving/archive/v5.2.tar.gz -> ppx_deriving-5.2.tar.gz
+_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
+_md5_=1328462542636ee99d013bae80449aca
