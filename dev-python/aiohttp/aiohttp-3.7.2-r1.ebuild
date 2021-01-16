@@ -71,6 +71,10 @@ python_prepare_all() {
 	sed -e 's:test_mark_formdata_as_processed:_&:' \
 		-i tests/test_formdata.py || die
 
+	# newer chardet works too
+	sed -e 's|chardet>=2.0,<4.0|chardet>=2.0|' \
+		-i setup.py aiohttp.egg-info/requires.txt || die
+
 	# takes a very long time, then fails
 	rm tests/test_pytest_plugin.py || die
 
