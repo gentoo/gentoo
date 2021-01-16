@@ -1,0 +1,27 @@
+From 141c9c218c31dfd6f4f9e47f25cc2764d2bb4b63 Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Sat, 13 Jun 2020 19:11:15 +0200
+Subject: [PATCH] imxtools/sbtools: fix compilation with gcc 10
+
+---
+ utils/imxtools/sbtools/misc.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/utils/imxtools/sbtools/misc.h b/utils/imxtools/sbtools/misc.h
+index f803fbb..5c6b2fc 100644
+--- a/utils/imxtools/sbtools/misc.h
++++ b/utils/imxtools/sbtools/misc.h
+@@ -40,8 +40,8 @@ extern bool g_debug;
+ extern bool g_force;
+ 
+ typedef struct crypto_key_t *key_array_t;
+-int g_nr_keys;
+-key_array_t g_key_array;
++extern int g_nr_keys;
++extern key_array_t g_key_array;
+ 
+ typedef void (*misc_printf_t)(void *user, const char *fmt, ...);
+ 
+-- 
+2.26.2
+
