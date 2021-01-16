@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/matthewrudy/memoist"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/minitest )"
