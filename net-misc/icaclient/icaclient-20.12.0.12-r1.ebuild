@@ -22,10 +22,10 @@ ICAROOT="/opt/Citrix/ICAClient"
 QA_PREBUILT="${ICAROOT#/}/*"
 
 RDEPEND="
+	app-crypt/libsecret
 	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libxml2
-	dev-libs/openssl-compat:1.0.0
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-misc-misc
 	media-fonts/font-cursor-misc
@@ -41,8 +41,6 @@ RDEPEND="
 	media-libs/speex
 	net-libs/libsoup:2.4
 	net-libs/webkit-gtk:4
-	net-misc/curl
-	net-misc/nx
 	sys-apps/util-linux
 	sys-libs/libcxx
 	sys-libs/libcxxabi
@@ -93,6 +91,11 @@ pkg_setup() {
 src_prepare() {
 	default
 	rm lib/UIDialogLibWebKit.so || die
+
+	# We need to avoid module.ini file getting added to the package's
+	# content because media-plugins/hdx-realtime-media-engine modifies
+	# this file on installation. See pkg_postinst()
+	mv nls/en/module.ini "${T}" || die
 }
 
 src_install() {
@@ -118,7 +121,8 @@ src_install() {
 	doins -r usb
 
 	insinto "${ICAROOT}"/config
-	doins config/* config/.* nls/en/*.ini
+	# nls/en/*.ini is being handled by pkg_postinst()
+	doins config/* config/.*
 	for tmpl in {appsrv,wfclient}.template ; do
 		newins nls/en/${tmpl} ${tmpl/template/ini}
 	done
@@ -231,6 +235,12 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+
+	local inidest="${BROOT}${ICAROOT}/config"
+	if [[ ! -e "${inidest}"/module.ini ]] ; then
+		mv "${T}"/module.ini "${inidest}/" \
+			|| ewarn 'Failed to install plugin.ini file'
+	fi
 }
 
 pkg_postrm() {
