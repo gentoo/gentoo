@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ src_prepare() {
 
 src_configure() {
 	# Generate binary translations.
-	lrelease ${PN}qt.pro || die
+	"$(qt5_get_bindir)"/lrelease ${PN}qt.pro || die
 
 	# noccache is required to call the correct compiler.
 	eqmake5 CONFIG+="noccache $(use debug && echo dbg)"
