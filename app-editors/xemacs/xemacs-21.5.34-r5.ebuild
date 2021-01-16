@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -70,6 +70,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-configure-libc-version.patch"
 	eapply "${FILESDIR}/${P}-ar.patch"
 	eapply "${FILESDIR}/${P}-strsignal.patch"
+	eapply "${FILESDIR}/${P}-process-test-qa.patch"
 
 	eapply_user
 
