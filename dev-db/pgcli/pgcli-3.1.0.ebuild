@@ -31,6 +31,7 @@ BDEPEND="
 	test? (
 		dev-db/postgresql
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
