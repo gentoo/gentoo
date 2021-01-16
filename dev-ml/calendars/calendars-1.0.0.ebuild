@@ -13,8 +13,7 @@ SRC_URI="https://github.com/geneweb/${PN}/archive/v${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
+DEPEND="test? ( dev-ml/ounit2 )"
