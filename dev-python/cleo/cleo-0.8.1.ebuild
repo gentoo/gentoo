@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="
 	test? (
 		dev-python/clikit[${PYTHON_USEDEP}]
+		dev-python/crashtest[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)"
 
