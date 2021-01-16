@@ -1116,7 +1116,7 @@ app-crypt/signify 23 24 29 30: Cryptographically sign and verify files
 app-crypt/signing-party 2.10-r1 2.11: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
-app-crypt/ssss 0.5.6 0.5.7: Shamir's Secret Sharing Scheme
+app-crypt/ssss 0.5.7: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92-r1: Software Token for Linux/UNIX
 app-crypt/swtpm 0.5.1-r1: Libtpms-based TPM emulator
@@ -11654,11 +11654,11 @@ games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.16.40.02 1.16.201.02: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.16.201.02: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.16.4: The official server for the sandbox video game
+games-server/minecraft-server 1.16.4 1.16.5: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
