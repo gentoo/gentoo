@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 systemd optfeature
 
@@ -29,7 +30,6 @@ RDEPEND="
 	>=dev-python/sentry-sdk-0.14.4[${PYTHON_USEDEP}]
 	>=net-misc/ubridge-0.9.14
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	default
