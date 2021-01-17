@@ -11,4 +11,4 @@ RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:
 SLOT=0
 SRC_URI=http://brianstafford.info/libesmtp/libesmtp-1.0.6.tar.bz2
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=5785b5eb9165c163d00967b223105e86
+_md5_=2c982ed93970542c5571f4cbc623fb7a

@@ -10,4 +10,4 @@ RDEPEND=spirv-tools? ( dev-util/spirv-tools:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_
 SLOT=0
 SRC_URI=https://dl.winehq.org/vkd3d/source/vkd3d-1.1.tar.xz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=81e53ce2028c9d13384ea5092c47bf2b
+_md5_=058d231a2007b182d3a18e268deda249

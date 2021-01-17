@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=>=dev-lang/ocaml-4.09.0[ocamlopt?] >=dev-ml/ocamlbuild-0.14.0 dev-ml/menhir dev-ml/num coq? ( >=sci-mathematics/coq-8.9.1 ) doc? ( dev-tex/rubber ) gtk? ( >=dev-ml/lablgtk-2.18.8[sourceview] ) emacs? ( >=app-editors/emacs-23.1:* ) html? ( dev-tex/hevea ) hypothesis-selection? ( dev-ml/ocamlgraph ) zarith? ( dev-ml/zarith ) zip? ( >=dev-ml/camlzip-1.07 )
+DEPEND=>=dev-lang/ocaml-4.09.0:=[ocamlopt=] >=dev-ml/ocamlbuild-0.14.0 dev-ml/menhir:= dev-ml/num:= coq? ( >=sci-mathematics/coq-8.9.1 ) doc? ( dev-tex/rubber ) gtk? ( >=dev-ml/lablgtk-2.18.8:=[sourceview] ) emacs? ( >=app-editors/emacs-23.1:* ) html? ( dev-tex/hevea:= ) hypothesis-selection? ( dev-ml/ocamlgraph:= ) zarith? ( dev-ml/zarith:= ) zip? ( >=dev-ml/camlzip-1.07:= )
 DESCRIPTION=Platform for deductive program verification
 EAPI=7
 HOMEPAGE=http://why3.lri.fr/
 IUSE=coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=>=dev-lang/ocaml-4.09.0[ocamlopt?] >=dev-ml/ocamlbuild-0.14.0 dev-ml/menhir dev-ml/num coq? ( >=sci-mathematics/coq-8.9.1 ) doc? ( dev-tex/rubber ) gtk? ( >=dev-ml/lablgtk-2.18.8[sourceview] ) emacs? ( >=app-editors/emacs-23.1:* ) html? ( dev-tex/hevea ) hypothesis-selection? ( dev-ml/ocamlgraph ) zarith? ( dev-ml/zarith ) zip? ( >=dev-ml/camlzip-1.07 )
+RDEPEND=>=dev-lang/ocaml-4.09.0:=[ocamlopt=] >=dev-ml/ocamlbuild-0.14.0 dev-ml/menhir:= dev-ml/num:= coq? ( >=sci-mathematics/coq-8.9.1 ) doc? ( dev-tex/rubber ) gtk? ( >=dev-ml/lablgtk-2.18.8:=[sourceview] ) emacs? ( >=app-editors/emacs-23.1:* ) html? ( dev-tex/hevea:= ) hypothesis-selection? ( dev-ml/ocamlgraph:= ) zarith? ( dev-ml/zarith:= ) zip? ( >=dev-ml/camlzip-1.07:= )
 REQUIRED_USE=html? ( doc )
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf915d31e87a8f1c967d54 -> why3-2019-20190517-197BB-src.tar.gz
-_md5_=504677dc911f338b5708fa4fd1a4edd7
+_md5_=c148026336fc23183403ceda38553051

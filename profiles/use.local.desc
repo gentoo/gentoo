@@ -701,7 +701,6 @@ app-emulation/xen-tools:api - Build the C libxenapi bindings
 app-emulation/xen-tools:flask - Enable the Flask XSM module from NSA
 app-emulation/xen-tools:hvm - Enable support for hardware based virtualization (VT-x,AMD-v)
 app-emulation/xen-tools:ipxe - Enable ipxe support
-app-emulation/xen-tools:ocaml - Enable support for the ocaml language
 app-emulation/xen-tools:ovmf - Enable support to boot UEFI guest vm, needed by hvm
 app-emulation/xen-tools:pygrub - Install the pygrub boot loader
 app-emulation/xen-tools:qemu - Enable IOEMU support via the use of qemu-dm

@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install
-DEPEND=>=dev-lang/ocaml-3.12.1[ocamlopt?] dev-ml/zarith gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] ) dev-ml/camlzip <=dev-ml/ocplib-simplex-0.3
+DEPEND=>=dev-lang/ocaml-3.12.1:=[ocamlopt=] dev-ml/zarith:= gtk? ( >=dev-ml/lablgtk-2.14:2=[sourceview,ocamlopt=] ) dev-ml/camlzip:= <=dev-ml/ocplib-simplex-0.3:=
 DESCRIPTION=Automatic theorem prover
 EAPI=6
 HOMEPAGE=https://alt-ergo.ocamlpro.com
 IUSE=examples gtk +ocamlopt
 KEYWORDS=amd64
 LICENSE=CeCILL-C
-RDEPEND=>=dev-lang/ocaml-3.12.1[ocamlopt?] dev-ml/zarith gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] ) dev-ml/camlzip <=dev-ml/ocplib-simplex-0.3
+RDEPEND=>=dev-lang/ocaml-3.12.1:=[ocamlopt=] dev-ml/zarith:= gtk? ( >=dev-ml/lablgtk-2.14:2=[sourceview,ocamlopt=] ) dev-ml/camlzip:= <=dev-ml/ocplib-simplex-0.3:=
 SLOT=0
 SRC_URI=https://alt-ergo.ocamlpro.com/http/alt-ergo-1.30/alt-ergo-1.30.tar.gz
-_md5_=d167e36408e397f7fe7c48b46d65059a
+_md5_=518d34ae3b7e3a5998d256394b6c3e43
