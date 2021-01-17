@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-test-racecondition.patch"
 	"${FILESDIR}/${P}-disable-dns-using-test.patch"
 	"${FILESDIR}/${P}-disable-smtp-auth-tests.patch"
+	"${FILESDIR}/${P}-c++11.patch"
 )
 
 pkg_setup() {
