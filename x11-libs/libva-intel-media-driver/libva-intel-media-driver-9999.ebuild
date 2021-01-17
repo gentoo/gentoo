@@ -34,8 +34,8 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-20.4.5_custom_cflags_v2.patch
-	"${FILESDIR}"/${PN}-20.4.5_tesing_in_src_test.patch
+	"${FILESDIR}"/${PN}-20.4.5_custom_cflags.patch
+	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
 )
 
 src_configure() {
