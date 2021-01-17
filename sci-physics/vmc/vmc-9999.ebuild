@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,8 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-DESCRIPTION="The Virtual Monte Carlo core library."
-HOMEPAGE="https://vmc-project.github.io/"
+DESCRIPTION="The Virtual Monte Carlo core library"
+HOMEPAGE="https://vmc-project.github.io/ https://github.com/vmc-project/vmc"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -25,8 +25,8 @@ IUSE="+c++11 c++14 c++17 doc"
 REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
 
 RDEPEND=">=sci-physics/root-6.18:=[c++11?,c++14?,c++17?,-vmc]"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 DOCS=(README.md History)
 
