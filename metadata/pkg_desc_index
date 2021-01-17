@@ -7955,7 +7955,7 @@ dev-python/attrs 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
-dev-python/autobahn 20.7.1 20.12.2: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 20.7.1 20.12.2 20.12.3: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -10616,15 +10616,15 @@ dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/build2 0.13.0: cross-platform toolchain for building and packaging C++ code
-dev-util/buildbot 2.8.2-r1 2.8.4 9999: BuildBot build automation system
-dev-util/buildbot-badges 2.8.2 2.8.4: Buildbot badges plugin produces an image in SVG or PNG format...
-dev-util/buildbot-console-view 2.8.2 2.8.4: Buildbot console-view plugin
-dev-util/buildbot-grid-view 2.8.2 2.8.4: BuildBot grid view web interface
-dev-util/buildbot-pkg 2.8.2 2.8.4: BuildBot common www build tools for packaging releases
-dev-util/buildbot-waterfall-view 2.8.2 2.8.4: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 2.8.2 2.8.4 9999: BuildBot Worker (slave) Daemon
-dev-util/buildbot-wsgi-dashboards 2.8.2 2.8.4: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
-dev-util/buildbot-www 2.8.2 2.8.4: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot 2.8.2-r1 2.8.4 2.10.0 9999: BuildBot build automation system
+dev-util/buildbot-badges 2.8.2 2.8.4 2.10.0: Buildbot badges plugin produces an image in SVG or PNG format...
+dev-util/buildbot-console-view 2.8.2 2.8.4 2.10.0: Buildbot console-view plugin
+dev-util/buildbot-grid-view 2.8.2 2.8.4 2.10.0: BuildBot grid view web interface
+dev-util/buildbot-pkg 2.8.2 2.8.4 2.10.0: BuildBot common www build tools for packaging releases
+dev-util/buildbot-waterfall-view 2.8.2 2.8.4 2.10.0: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 2.8.2 2.8.4 2.10.0 9999: BuildBot Worker (slave) Daemon
+dev-util/buildbot-wsgi-dashboards 2.8.2 2.8.4 2.10.0: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
+dev-util/buildbot-www 2.8.2 2.8.4 2.10.0: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bustle 0.8.0: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20200330 20200910: the best variant of the Yacc parser generator
 dev-util/cargo-audit 0.13.1: Audit Cargo.lock for security vulnerabilities
@@ -17245,14 +17245,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes API server
-sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes API server
+sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Scheduler
-sys-cluster/kubeadm 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Scheduler
+sys-cluster/kubeadm 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
