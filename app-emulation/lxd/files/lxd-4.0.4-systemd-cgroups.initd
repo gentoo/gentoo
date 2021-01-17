@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+depend() {
+	need cgroups
+}
+
+start() {
+	ebegin "Mounting systemd cgroups for openrc"
+	mkdir -p /sys/fs/cgroup/systemd
+	mount -t cgroup -o none,name=systemd systemd /sys/fs/cgroup/systemd
+	eend $? "Failed to mount systemd cgroups"
+}
+
+stop() {
+	ebegin "Unmounting systemd cgroups"
+	umount -R /sys/fs/cgroup/systemd
+	eend $? "Failed to unmount systemd cgroups"
+}
