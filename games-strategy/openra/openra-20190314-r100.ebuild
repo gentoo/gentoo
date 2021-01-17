@@ -45,12 +45,15 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RESTRICT="mirror test"
 
+MONO_DEP=">=dev-lang/mono-4.2"
 BDEPEND="
 	app-arch/unzip
-	>=dev-lang/mono-4.2
+	${MONO_DEP}
 "
-DEPEND="${BDEPEND}
-	dev-dotnet/libgdiplus"
+DEPEND="
+	dev-dotnet/libgdiplus
+	${MONO_DEP}
+"
 RDEPEND="${DEPEND}
 	app-misc/ca-certificates
 	${LUA_DEPS}

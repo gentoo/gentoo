@@ -40,12 +40,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+debug geoip"
 RESTRICT="mirror test"
 
+MONO_DEP=">=dev-lang/mono-4.2"
 BDEPEND="
 	app-arch/unzip
-	>=dev-lang/mono-4.2
+	${MONO_DEP}
 "
-DEPEND="${BDEPEND}
-	dev-dotnet/libgdiplus"
+DEPEND="
+	>=dev-lang/mono-4.2
+	dev-dotnet/libgdiplus
+	${MONO_DEP}
+"
 RDEPEND="${DEPEND}
 	app-misc/ca-certificates
 	=dev-lang/lua-5.1*:0
