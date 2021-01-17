@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 XORG_MULTILIB=yes
+XORG_EAUTORECONF=yes
 inherit xorg-3
 
 DESCRIPTION="Library providing generic access to the PCI bus and devices"
@@ -22,11 +23,8 @@ pkg_setup() {
 	)
 }
 
-multilib_src_install() {
-	default
-
-	if multilib_is_native_abi; then
-		dodir /usr/bin
-		/bin/sh libtool --mode=install "$(type -P install)" -c scanpci/scanpci "${ED}"/usr/bin || die
-	fi
+src_prepare() {
+	# Let autotools install scanpci (#765706)
+	sed 's@^noinst_@bin_@' -i scanpci/Makefile.am || die
+	xorg-3_src_prepare
 }
