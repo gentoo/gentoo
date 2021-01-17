@@ -29,11 +29,13 @@ SLOT="0"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-DEPEND="virtual/pkgconfig"
-BDEPEND="test? (
-	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/nose[${PYTHON_USEDEP}]
-)"
+BDEPEND="
+	virtual/pkgconfig
+	test? (
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests setup.py
 
