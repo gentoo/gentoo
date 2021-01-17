@@ -17152,7 +17152,7 @@ sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.5.3 2.6.0 2.7.0: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network block device
+sys-block/nbd 3.19 3.20 3.21 9999: Userland client/server for kernel network block device
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2 2.1.3: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
@@ -17245,14 +17245,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes API server
-sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: Kubernetes API server
+sys-cluster/kube-controller-manager 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Scheduler
-sys-cluster/kubeadm 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.17.14 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: Kubernetes Scheduler
+sys-cluster/kubeadm 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.18.14 1.18.15 1.19.6 1.19.7 1.20.1 1.20.2: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
