@@ -474,6 +474,7 @@ kde-apps/kdebase-meta:5
 # port them to Python 3.
 # Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
 games-strategy/0ad
+~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
