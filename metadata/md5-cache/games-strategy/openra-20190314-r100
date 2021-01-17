@@ -1,16 +1,16 @@
-BDEPEND=>=dev-lang/mono-4.2
+BDEPEND=app-arch/unzip >=dev-lang/mono-4.2
 DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
-DEPEND=>=dev-lang/mono-4.2 dev-dotnet/libgdiplus
+DEPEND=dev-dotnet/libgdiplus >=dev-lang/mono-4.2
 DESCRIPTION=A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
 EAPI=7
 HOMEPAGE=https://www.openra.net/
 IUSE=+debug geoip +lua_single_target_lua5-1
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3 Apache-2.0 BSD GPL-2 MIT
-RDEPEND=>=dev-lang/mono-4.2 dev-dotnet/libgdiplus app-misc/ca-certificates lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) media-libs/freetype:2 media-libs/libsdl2[opengl,video] media-libs/openal geoip? ( net-misc/geoipupdate )
+RDEPEND=dev-dotnet/libgdiplus >=dev-lang/mono-4.2 app-misc/ca-certificates lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) media-libs/freetype:2 media-libs/libsdl2[opengl,video] media-libs/openal geoip? ( net-misc/geoipupdate )
 REQUIRED_USE=^^ ( lua_single_target_lua5-1 )
 RESTRICT=mirror test
 SLOT=0
 SRC_URI=https://github.com/OpenRA/OpenRA/archive/release-20190314.tar.gz -> openra-20190314.tar.gz https://github.com/OpenRA/Eluant/releases/download/20160124/Eluant.dll -> Eluant-20160124.dll https://github.com/OpenRA/OpenAL-CS/releases/download/20151227/OpenAL-CS.dll.config -> OpenAL-CS-20151227.dll.config https://github.com/OpenRA/OpenAL-CS/releases/download/20151227/OpenAL-CS.dll -> OpenAL-CS-20151227.dll https://github.com/OpenRA/SDL2-CS/releases/download/20161223/SDL2-CS.dll.config -> SDL2-CS-20161223.dll.config https://github.com/OpenRA/SDL2-CS/releases/download/20161223/SDL2-CS.dll -> SDL2-CS-20161223.dll https://www.nuget.org/api/v2/package/FuzzyLogicLibrary/1.2.0 -> FuzzyLogicLibrary-1.2.0.zip https://www.nuget.org/api/v2/package/MaxMind.Db/2.0.0 -> MaxMind.Db-2.0.0.zip https://www.nuget.org/api/v2/package/Open.Nat/2.1.0 -> Open.Nat-2.1.0.zip https://www.nuget.org/api/v2/package/rix0rrr.BeaconLib/1.0.1 -> rix0rrr.BeaconLib-1.0.1.zip https://www.nuget.org/api/v2/package/SharpFont/4.0.1 -> SharpFont-4.0.1.zip https://www.nuget.org/api/v2/package/SharpZipLib/0.86.0 -> SharpZipLib-0.86.0.zip
 _eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=bf4ffe8bf0facbecd3a413fd970a6adb
+_md5_=04e300ef4fdf409c3330a91e1a0dc722

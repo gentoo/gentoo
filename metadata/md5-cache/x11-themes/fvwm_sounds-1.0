@@ -1,10 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=Sounds for use with FVWM
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.fvwm.org/
 KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2 FVWM
 RDEPEND=>=x11-wm/fvwm-2.6.2
 SLOT=0
 SRC_URI=mirror://gentoo/fvwm_sounds-1.0.tgz
-_md5_=306302497da70e4f1b13b97905547aaf
+_md5_=0094d72791030d97a5768b89c438de7c
