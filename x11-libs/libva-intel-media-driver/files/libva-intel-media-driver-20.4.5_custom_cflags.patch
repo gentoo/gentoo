@@ -1,4 +1,7 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+    Prevent overriding of user-define CFLAGS, including -march flag.
+
+    The flag -msse4.1 is required otherwise compile will not be able to inline sse4.1 code.
+
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -52,6 +52,8 @@ option (BUILD_CMRTLIB "Build and Install cmrtlib together with media driver" ON)
@@ -10,7 +13,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
  include(GNUInstallDirs)
  
  if (BUILD_CMRTLIB)
-diff --git a/cmrtlib/linux/CMakeLists.txt b/cmrtlib/linux/CMakeLists.txt
+
 --- a/cmrtlib/linux/CMakeLists.txt
 +++ b/cmrtlib/linux/CMakeLists.txt
 @@ -33,15 +33,19 @@ endif()
@@ -33,7 +36,7 @@ diff --git a/cmrtlib/linux/CMakeLists.txt b/cmrtlib/linux/CMakeLists.txt
  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fno-strict-aliasing -D_FORTIFY_SOURCE=2")
  set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG} -D_DEBUG -D__DEBUG -O0")
  
-diff --git a/media_driver/cmake/linux/media_compile_flags_linux.cmake b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+
 --- a/media_driver/cmake/linux/media_compile_flags_linux.cmake
 +++ b/media_driver/cmake/linux/media_compile_flags_linux.cmake
 @@ -36,7 +36,10 @@ set(MEDIA_COMPILER_FLAGS_COMMON
@@ -47,14 +50,19 @@ diff --git a/media_driver/cmake/linux/media_compile_flags_linux.cmake b/media_dr
      # General optimization options
      -march=${UFO_MARCH}
      -mpopcnt
-@@ -48,19 +51,29 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+@@ -44,23 +47,33 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -msse2
+     -msse3
+     -mssse3
+-    -msse4.1
      -msse4.2
      -msse4
-     -mfpmath=sse
 +)
 +endif(OVERRIDE_COMPILER_FLAGS)
 +
 +list (APPEND MEDIA_COMPILER_FLAGS_COMMON
++    -msse4.1	# SSE4.1 support is required to build the library
+     -mfpmath=sse
      -finline-functions
      -funswitch-loops
      -fno-short-enums
@@ -124,4 +132,5 @@ diff --git a/media_driver/cmake/linux/media_compile_flags_linux.cmake b/media_dr
  
      foreach (flag ${MEDIA_COMPILER_CXX_FLAGS_COMMON})
          SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
+
 
