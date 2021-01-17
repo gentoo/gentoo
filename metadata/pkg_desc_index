@@ -5181,9 +5181,9 @@ dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.1 8.2.2 8.2.3 8.3.16 8.3.17: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
-dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10: Tool Command Language
+dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10 8.6.11: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
-dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1 8.6.10: Tk Widget Set
+dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1 8.6.10 8.6.11: Tk Widget Set
 dev-lang/tuprolog 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.20 0.40.20 0.40.23 0.40.24 0.44.11 0.46.10 0.46.13 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
@@ -17641,7 +17641,7 @@ sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2 1.2.11-r3: Standard (de)compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
-sys-power/acpi_call 1.1.0-r5 3.17-r2 9999: A kernel module that enables you to call ACPI methods
+sys-power/acpi_call 1.2.1 9999: A linux kernel module that enables calls to ACPI
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.2 1.2-r1: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
