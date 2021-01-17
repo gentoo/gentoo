@@ -1,10 +1,10 @@
 # Copyright 2014-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-WX_GTK_VER="3.0-gtk3"
+EAPI=7
 
-inherit desktop toolchain-funcs wxwidgets xdg-utils
+WX_GTK_VER="3.0-gtk3"
+inherit desktop toolchain-funcs wxwidgets xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -54,7 +54,8 @@ DEPEND="
 	x11-libs/libX11
 	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 	lobby? ( >=net-libs/gloox-1.0.20 )
-	nvtt? ( media-gfx/nvidia-texture-tools )"
+	nvtt? ( >=media-gfx/nvidia-texture-tools-2.1.0 )"
+
 RDEPEND="${DEPEND}"
 PDEPEND="~games-strategy/0ad-data-${PV}"
 
@@ -94,7 +95,9 @@ src_configure() {
 		--bindir="/usr/bin"
 		--libdir="/usr/$(get_libdir)"/${PN}
 		--datadir="/usr/share/${PN}"
-		)
+	)
+
+	tc-export CC CXX
 
 	# stock premake5 does not work, use the shipped one
 	emake -C "${S}"/build/premake/premake5/build/gmake2.unix
@@ -146,12 +149,4 @@ src_install() {
 	dodoc binaries/system/readme.txt
 	doicon -s 128 build/resources/${PN}.png
 	make_desktop_entry ${PN}
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
