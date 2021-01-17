@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,6 @@ inherit cmake
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vmc-project/geant4_vmc.git"
-	KEYWORDS=""
 else
 	MY_PV=$(ver_rs 1-2 - $(ver_cut 2-))
 	SRC_URI="https://github.com/vmc-project/geant4-vmc/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -17,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Virtual Monte Carlo Geant4 implementation"
-HOMEPAGE="http://root.cern.ch/root/vmc/VirtualMC.html"
+HOMEPAGE="https://github.com/vmc-project/vmc"
 
 LICENSE="GPL-3"
 SLOT="4"
@@ -37,8 +36,8 @@ RDEPEND="
 	>=sci-physics/geant-4.10.6[c++11?,c++14?,c++17?,opengl,geant3?]
 	>=sci-physics/root-6.18:=[c++11?,c++14?,c++17?]
 	vgm? ( >=sci-physics/vgm-4.8:=[c++11?,c++14?,c++17?] )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 RESTRICT="
 	!examples? ( test )
 	!geant3? ( test )
