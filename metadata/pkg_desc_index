@@ -11810,7 +11810,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.36.0-r1 3.38.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.36.1 3.38.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.36.7 3.38.2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.36.7 3.38.2 3.38.3: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1 3.38.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.44.1: Virtual filesystem implementation for GIO
@@ -17553,7 +17553,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.19.148_p64 4.19.160_p69 5.4.70_p40 5.4.84_p47 5.10.1_p20: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.251 4.9.251 4.14.215 4.19.167 5.4.89 5.10.7: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.252 4.9.252 4.14.216 4.19.168 5.4.90 5.10.8: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -18979,7 +18979,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.6.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.36.7-r1 3.38.2: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2015061300-r1 3_p2015061300-r100 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
