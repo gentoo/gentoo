@@ -15067,7 +15067,7 @@ net-misc/chrony 4.0 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.11.01: Qt GUI for Connman with system tray icon
-net-misc/cni-plugins 0.8.6 0.8.7: Standard networking plugins for container networking
+net-misc/cni-plugins 0.8.6 0.8.7 0.9.0: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.38 9999: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
