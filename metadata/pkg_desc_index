@@ -797,7 +797,7 @@ app-arch/innoextract 1.9: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.5_p20181227-r1: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i_p20201004: Utility for creating and opening lzh archives
-app-arch/libarchive 3.4.3 3.5.0 3.5.1: Multi-format archive and compression library
+app-arch/libarchive 3.5.1: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lxqt-archiver 0.2.0 0.3.0: Qt GUI File Archiver
@@ -8100,7 +8100,7 @@ dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the averag
 dev-python/defcon 0.6.0-r1 0.7.2: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.7 0.9.8 0.9.9 0.9.10: Automation Library for Denon AVR receivers
-dev-python/deprecated 1.2.10: Python @deprecated decorator to deprecate old API
+dev-python/deprecated 1.2.10 1.2.11: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-match-patch 20181111 20200713: Diff, match and patch algorithms for plain text
@@ -8535,7 +8535,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
 dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.2 1.19.3 1.19.4 1.19.5: Fast array and numerical python library
+dev-python/numpy 1.19.4 1.19.5: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -15091,7 +15091,7 @@ net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.80-r1 2020.81: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 112.4.321: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 112.4.321 113.4.507: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
@@ -16436,7 +16436,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019 2019-r1 2019-r2: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3 20.02.4 20.04.0 20.07.0 20.09.0: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3 20.02.4 20.04.0 20.07.0 20.09.0 20.12.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.8.9: An efficient theorem prover
