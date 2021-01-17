@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Userland client/server for kernel network block device"
 HOMEPAGE="http://nbd.sourceforge.net/"
@@ -10,11 +10,13 @@ if [[ "${PV}" = 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/NetworkBlockDevice/nbd.git"
 else
 	SRC_URI="mirror://sourceforge/nbd/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug gnutls netlink zlib"
+
+BDEPEND="virtual/pkgconfig"
 
 RDEPEND="
 	>=dev-libs/glib-2.26.0
@@ -22,9 +24,7 @@ RDEPEND="
 	netlink? ( >=dev-libs/libnl-3.1 )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
 
 if [[ "${PV}" = 9999 ]] ; then
 	DEPEND+="
