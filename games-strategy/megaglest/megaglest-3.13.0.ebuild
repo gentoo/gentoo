@@ -34,19 +34,19 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/ftgl
-	media-libs/glew:0=
+	media-libs/glew:=
 	net-libs/libircclient
 	media-libs/libpng:0
-	media-libs/libsdl[X,sound,joystick,opengl,video]
+	media-libs/libsdl2[X,sound,joystick,opengl,video]
 	media-libs/libvorbis
 	media-libs/openal
-	net-libs/gnutls
-	net-libs/miniupnpc
+	net-libs/gnutls:=
+	net-libs/miniupnpc:=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/opengl
 	virtual/glu
-	virtual/jpeg:0
+	virtual/jpeg:0=
 	x11-libs/libX11
 	x11-libs/libXext
 	editor? ( x11-libs/wxGTK:3.0-gtk3[X,opengl] )
