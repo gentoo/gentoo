@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="lib that implements the client side of the SMTP protocol"
@@ -19,7 +20,9 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}"
+
 DOCS=( AUTHORS ChangeLog NEWS Notes README TODO )
+
 PATCHES=(
 	"${FILESDIR}/${P}-openssl-1.1-api-compatibility.patch"
 )
@@ -31,8 +34,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
 		--enable-all \
+		$(use_enable static-libs static) \
 		$(use_enable ntlm) \
 		$(use_enable threads pthreads) \
 		$(use_enable debug) \
@@ -41,6 +44,7 @@ src_configure() {
 
 src_install() {
 	default
-	insinto /usr/share/doc/${PF}/xml
-	doins doc/api.xml
+
+	docinto xml
+	dodoc doc/api.xml
 }
