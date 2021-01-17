@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-test-racecondition.patch"
 	"${FILESDIR}/${P}-disable-dns-using-test.patch"
 	"${FILESDIR}/${P}-disable-smtp-auth-tests.patch"
+	"${FILESDIR}/${P}-c++11.patch"
 )
 
 pkg_setup() {
