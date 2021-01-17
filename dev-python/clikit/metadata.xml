@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">sdispater/clikit</remote-id>
+    <remote-id type="github">clikit</remote-id>
   </upstream>
 </pkgmetadata>
