@@ -1,0 +1,15 @@
+BDEPEND=sys-apps/help2man virtual/pkgconfig editor? ( x11-base/xorg-server[xvfb] x11-apps/xhost ) model-viewer? ( x11-base/xorg-server[xvfb] x11-apps/xhost ) sys-devel/make dev-util/cmake
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) ~games-strategy/megaglest-data-3.13.0 dev-libs/libxml2 dev-libs/xerces-c[icu] media-libs/fontconfig media-libs/freetype media-libs/ftgl media-libs/glew:= net-libs/libircclient media-libs/libpng:0 media-libs/libsdl2[X,sound,joystick,opengl,video] media-libs/libvorbis media-libs/openal net-libs/gnutls:= net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/opengl virtual/glu virtual/jpeg:0= x11-libs/libX11 x11-libs/libXext editor? ( x11-libs/wxGTK:3.0-gtk3[X,opengl] ) fribidi? ( dev-libs/fribidi ) model-viewer? ( x11-libs/wxGTK:3.0-gtk3[X] ) videos? ( media-video/vlc )
+DESCRIPTION=Cross-platform 3D realtime strategy game
+EAPI=7
+HOMEPAGE=https://megaglest.org/ https://github.com/MegaGlest/megaglest-source
+IUSE=debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 +streflop +tools +unicode wxuniversal +model-viewer videos lua_single_target_lua5-1 lua_single_target_lua5-2
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 BitstreamVera
+RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) ~games-strategy/megaglest-data-3.13.0 dev-libs/libxml2 dev-libs/xerces-c[icu] media-libs/fontconfig media-libs/freetype media-libs/ftgl media-libs/glew:= net-libs/libircclient media-libs/libpng:0 media-libs/libsdl2[X,sound,joystick,opengl,video] media-libs/libvorbis media-libs/openal net-libs/gnutls:= net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/opengl virtual/glu virtual/jpeg:0= x11-libs/libX11 x11-libs/libXext editor? ( x11-libs/wxGTK:3.0-gtk3[X,opengl] ) fribidi? ( dev-libs/fribidi ) model-viewer? ( x11-libs/wxGTK:3.0-gtk3[X] ) videos? ( media-video/vlc )
+REQUIRED_USE=^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 )
+SLOT=0
+SRC_URI=https://github.com/MegaGlest/megaglest-source/releases/download/3.13.0/megaglest-source-3.13.0.tar.xz
+_eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=948a6b67a409aa1633cf0a8b5d83928e
