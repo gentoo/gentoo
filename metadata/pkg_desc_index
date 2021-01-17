@@ -16284,7 +16284,7 @@ sci-libs/mumps 5.3.5: MUltifrontal Massively Parallel sparse direct matrix Solve
 sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
-sci-libs/netcdf 4.3.2-r1 4.7.4: Scientific library and interface for array oriented data access
+sci-libs/netcdf 4.3.2-r1 4.6.1-r1 4.7.4: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
 sci-libs/netcdf-fortran 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
@@ -18959,7 +18959,7 @@ x11-wm/bspwm 0.9.9 0.9.10: Tiling window manager based on binary space partition
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 6.6 6.7 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.2 9999: a dynamic window manager for X11
-x11-wm/e16 1.0.21: Enlightenment Window Manager (E16)
+x11-wm/e16 1.0.21 1.0.22: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.24.2-r1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
