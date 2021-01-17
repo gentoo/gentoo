@@ -9201,7 +9201,7 @@ dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
-dev-python/theano-pymc 1.0.13-r1 1.0.14 1.0.15: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/theano-pymc 1.0.13-r1 1.0.14 1.0.15 1.1.0: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.13.0: Python implementation of Thrift
