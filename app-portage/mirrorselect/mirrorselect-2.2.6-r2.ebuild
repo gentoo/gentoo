@@ -13,19 +13,18 @@ DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
 SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.gz
 	https://dev.gentoo.org/~dolsen/releases/mirrorselect/mirrorselect-test
-	"
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ipv6"
-
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+IUSE="ipv6"
 
 RDEPEND="
 	dev-util/dialog
 	>=net-analyzer/netselect-0.4[ipv6(+)?]
 	>=dev-python/ssl-fetch-0.3[${PYTHON_USEDEP}]
-	"
+"
 
 python_prepare_all() {
 	python_setup
