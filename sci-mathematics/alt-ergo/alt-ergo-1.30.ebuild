@@ -12,11 +12,11 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples gtk +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
-	dev-ml/zarith
+DEPEND=">=dev-lang/ocaml-3.12.1:=[ocamlopt?]
+	dev-ml/zarith:=
 	gtk? ( >=dev-ml/lablgtk-2.14:2=[sourceview,ocamlopt?] )
-	dev-ml/camlzip
-	<=dev-ml/ocplib-simplex-0.3"
+	dev-ml/camlzip:=
+	<=dev-ml/ocplib-simplex-0.3:="
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES INSTALL.md README.md )
