@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,11 +45,12 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RESTRICT="mirror test"
 
-BDEPEND=">=dev-lang/mono-4.2"
-
+BDEPEND="
+	app-arch/unzip
+	>=dev-lang/mono-4.2
+"
 DEPEND="${BDEPEND}
 	dev-dotnet/libgdiplus"
-
 RDEPEND="${DEPEND}
 	app-misc/ca-certificates
 	${LUA_DEPS}
