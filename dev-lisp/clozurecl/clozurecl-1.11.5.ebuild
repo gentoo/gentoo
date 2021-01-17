@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"/${MY_PN}
 ENVD="${T}/50ccl"
 
-PATCHES=( "${FILESDIR}"/${P}-no-pie-32.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-pie-32.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
