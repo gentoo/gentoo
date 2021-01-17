@@ -31,14 +31,14 @@ src_configure() {
 	econf --disable-static
 }
 
-src_install() {
-	emake DESTDIR="${ED}" install
-	dodoc AUTHORS README NEWS
-	find "${ED}" -name '*.la' -delete || die
-}
-
 src_test() {
 	cd "${S}/test" || die
 	chmod +x dotests.pl || die
 	./dotests.pl || die "tests failed"
+}
+
+src_install() {
+	emake DESTDIR="${D}" install
+	dodoc AUTHORS README NEWS
+	find "${ED}" -name '*.la' -delete || die
 }
