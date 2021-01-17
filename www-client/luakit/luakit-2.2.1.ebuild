@@ -77,6 +77,7 @@ src_install() {
 		DESTDIR="${D}" \
 		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
 		PREFIX="${EPREFIX}/usr" \
+		USE_LUAJIT=$(usex luajit 1 0) \
 		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		install
 

@@ -5,4 +5,7 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">whatever</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">sdispater/pastel</remote-id>
+    <remote-id type="pypi">pastel</remote-id>
   </upstream>
 </pkgmetadata>
