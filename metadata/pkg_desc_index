@@ -11697,8 +11697,8 @@ games-sports/trigger 0.6.1-r1: Free OpenGL rally car racing game
 games-sports/trophy 2.0.3-r1: 2D Racing Game
 games-sports/ultimatestunts 0.7.7-r1: Remake of the famous Stunts game
 games-sports/xmoto 0.6.1-r1 0.6.1-r100: A challenging 2D motocross platform game, where physics play an important role
-games-strategy/0ad 0.0.23_alpha 0.0.23b_alpha: A free, real-time strategy game
-games-strategy/0ad-data 0.0.23_alpha 0.0.23b_alpha: Data files for 0ad
+games-strategy/0ad 0.0.23_alpha 0.0.23b_alpha 0.0.24_alpha_pre20210116040036: A free, real-time strategy game
+games-strategy/0ad-data 0.0.23_alpha 0.0.23b_alpha 0.0.24_alpha_pre20210116040036: Data files for 0ad
 games-strategy/colobot 0.1.12 9999: A real-time strategy game, where you can program your bots
 games-strategy/colobot-data 0.1.12: Data package for colobot (Colonize with Bots)
 games-strategy/crimson 0.5.3-r1: Tactical war game in the tradition of Battle Isle
@@ -17245,14 +17245,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes API server
-sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes API server
+sys-cluster/kube-controller-manager 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Scheduler
-sys-cluster/kubeadm 1.17.14 1.18.14 1.19.6 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.17.14 1.18.14 1.19.6 1.20.1: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.17.14 1.18.14 1.19.6 1.20.1: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Scheduler
+sys-cluster/kubeadm 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.17.14 1.18.14 1.18.15 1.19.6 1.20.1: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
@@ -17344,7 +17344,7 @@ sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol re
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/rust-std 1.46.0 1.47.0 1.48.0: Rust standard library, standalone (for crossdev)
-sys-devel/slibtool 0.5.28 0.5.31: A skinny libtool implementation, written in C
+sys-devel/slibtool 0.5.28 0.5.31 9999: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.2 9999: C semantic parser
 sys-devel/ucpp 1.3.4 1.3.5: Library for preprocessing C compliant to ISO-C99
