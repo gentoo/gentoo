@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,6 +29,7 @@ IUSE="debug lto"
 
 RDEPEND="
 	dev-libs/libsodium
+	media-fonts/sil-charis
 	media-libs/libsdl2[haptic]
 	media-libs/sdl2-mixer
 	media-libs/sdl2-ttf
@@ -37,6 +38,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.0-no_bundled_font.patch" #704508
+)
 
 src_configure() {
 	local mycmakeargs=(
