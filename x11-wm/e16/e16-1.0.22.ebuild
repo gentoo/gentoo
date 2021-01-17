@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+alsa audiofile container dbus debug +dialogs doc examples
 gnome libhack modules nls opengl +pango player pulseaudio +sndfile
 sound +themes xcomposite +xft xi2 xinerama xpresent +xrandr
@@ -18,9 +18,11 @@ sound +themes xcomposite +xft xi2 xinerama xpresent +xrandr
 REQUIRED_USE="
 	opengl? ( xcomposite )
 	pango? ( xft )
-	sound? ( ^^ ( alsa player pulseaudio ) )
-	alsa?       ( ^^ ( sndfile audiofile ) )
-	pulseaudio? ( ^^ ( sndfile audiofile ) )
+	sound? (
+		^^ ( alsa player pulseaudio )
+		alsa?       ( ^^ ( sndfile audiofile ) )
+		pulseaudio? ( ^^ ( sndfile audiofile ) )
+	)
 "
 
 BDEPEND="
