@@ -37,7 +37,7 @@ pkg_setup() {
 	linux-mod_pkg_setup
 
 	BUILD_TARGETS="modules"
-	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
+	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERNELDIR=${KERNEL_DIR}"
 }
 
 src_install() {
