@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">toastdriven/pylev</remote-id>
+    <remote-id type="pypi">pylev</remote-id>
   </upstream>
 </pkgmetadata>
