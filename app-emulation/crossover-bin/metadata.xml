@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>ryao@gentoo.org</email>
-		<name>Richard Yao</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="capi">Enable ISDN support via CAPI</flag>
 		<flag name="osmesa">Add support for OpenGL in bitmaps using libOSMesa</flag>
