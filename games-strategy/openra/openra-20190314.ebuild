@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,11 +40,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+debug geoip"
 RESTRICT="mirror test"
 
-BDEPEND=">=dev-lang/mono-4.2"
-
-DEPEND="${BDEPEND}
-	dev-dotnet/libgdiplus"
-
+MONO_DEP=">=dev-lang/mono-4.2"
+BDEPEND="
+	app-arch/unzip
+	${MONO_DEP}
+"
+DEPEND="
+	>=dev-lang/mono-4.2
+	dev-dotnet/libgdiplus
+	${MONO_DEP}
+"
 RDEPEND="${DEPEND}
 	app-misc/ca-certificates
 	=dev-lang/lua-5.1*:0
