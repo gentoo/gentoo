@@ -3,6 +3,7 @@
 
 EAPI=7
 
+FORTRAN_NEEDED=fortran
 inherit fortran-2
 
 DESCRIPTION="Library to order a sparse matrix prior to Cholesky factorization"
