@@ -39,6 +39,7 @@ RDEPEND="${DEPEND}
 	networkmanager? ( net-misc/networkmanager:= )
 "
 BDEPEND="
+	app-arch/unzip
 	sys-devel/libtool:2
 	virtual/pkgconfig
 "
