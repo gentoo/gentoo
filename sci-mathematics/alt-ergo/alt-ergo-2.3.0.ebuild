@@ -12,9 +12,9 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples gtk +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt?]
+DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	dev-ml/zarith:=
-	dev-ml/lablgtk:2=[sourceview,ocamlopt?]
+	dev-ml/lablgtk:2=[sourceview,ocamlopt=]
 	dev-ml/camlzip
 	sci-mathematics/psmt2-frontend
 	>=dev-ml/ocplib-simplex-0.4:=
