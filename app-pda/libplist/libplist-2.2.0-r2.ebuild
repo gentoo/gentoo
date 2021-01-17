@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
 	local myeconfargs=( $(use_enable static-libs static) )
 
 	do_configure() {
@@ -101,10 +101,10 @@ src_install() {
 		doins cython/plist.pxd
 	fi
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
-	# temporary fix for 2.2.0 release: 
-	# b.g.o 733082, 
+	# temporary fix for 2.2.0 release:
+	# bug #733082,
 	# https://github.com/libimobiledevice/libplist/issues/163
 	# upstream commit 137716df3f197a7184c1fba88fcb30480dafd6e0
 	dosym ./libplist-2.0.pc /usr/$(get_libdir)/pkgconfig/libplist.pc
