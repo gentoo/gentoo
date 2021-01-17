@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>maksbotan@gentoo.org</email>
-	<name>Maxim Koltsov</name>
-</maintainer>
+<!-- maintainer-needed -->
+<!--
 <maintainer type="person">
 	<email>rich@annexia.org</email>
 	<name>Richard Jones</name>
 	<description>Upstream - please CC on bugs that concerns upstream</description>
 </maintainer>
+-->
 <use>
 	<flag name="erlang">Build Erlang bindings</flag>
 	<flag name="fuse">Enable image mount support via fuse</flag>
