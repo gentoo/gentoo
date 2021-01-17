@@ -17,12 +17,15 @@ IUSE="bsdpty minimal multicall pam +shadow static +syslog zlib"
 
 LIB_DEPEND="
 	zlib? ( sys-libs/zlib[static-libs(+)] )
-	>=dev-libs/libtommath-1.2.0[static-libs(+)]
 "
 RDEPEND="
 	acct-group/sshd
 	acct-user/sshd
-	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	!static? (
+		>=dev-libs/libtomcrypt-1.18.2-r2
+		>=dev-libs/libtommath-1.2.0
+		${LIB_DEPEND//\[static-libs(+)]}
+	)
 	pam? ( sys-libs/pam )
 "
 DEPEND="
@@ -47,6 +50,12 @@ set_options() {
 	)
 }
 
+pkg_setup() {
+	if use static ; then
+		ewarn "Using bundled copies of libtommath and libtomcrypt"
+	fi
+}
+
 src_prepare() {
 	default
 	sed \
@@ -59,13 +68,14 @@ src_prepare() {
 }
 
 src_configure() {
-	# XXX: Need to add libtomcrypt to the tree and re-enable this.
-	#	--disable-bundled-libtom
-	# We disable the hardening flags as our compiler already enables them
-	# by default as is appropriate for the target.
+	# Notes:
+	# 1) We use bundled libtom* when static build is enabled because
+	#    libtomcrypt lacks it and we don't particularly want to add it.
+	# 2) We disable the hardening flags as our compiler already enables them
+	#    by default as is appropriate for the target.
 	local myeconfargs=(
 		--disable-harden
-		--disable-bundled-libtom
+		$(use_enable static bundled-libtom)
 		$(use_enable zlib)
 		$(use_enable pam)
 		$(use_enable !bsdpty openpty)
@@ -73,6 +83,7 @@ src_configure() {
 		$(use_enable static)
 		$(use_enable syslog)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
