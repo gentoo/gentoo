@@ -7992,7 +7992,7 @@ dev-python/blinker 1.4-r2: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 2.0.1: Generate block-diagram image from text
 dev-python/blosc 1.9.2 1.10.0 1.10.1: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
-dev-python/blurb 1.0.7: Tool to create and manage NEWS blurbs for CPython
+dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
 dev-python/boto3 1.16.30 1.16.36 1.16.43 1.16.50 1.16.51 1.16.52 1.16.53 1.16.54 1.16.55 1.16.56 9999: The AWS SDK for Python
@@ -8006,10 +8006,10 @@ dev-python/breathe 4.22.1 4.25.0 4.25.1: Sphinx Doxygen renderer
 dev-python/brotlicffi 0.8.0: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
-dev-python/bsddb3 6.2.7: Python bindings for Berkeley DB
+dev-python/bsddb3 6.2.7 6.2.9: Python bindings for Berkeley DB
 dev-python/cached-property 1.5.2: A cached-property for decorating methods in classes
 dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
-dev-python/cachetools 4.1.1: Extensible memoizing collections and decorators
+dev-python/cachetools 4.1.1 4.2.0: Extensible memoizing collections and decorators
 dev-python/cairocffi 1.2.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.3-r1: Python wrapper for libcangjie
 dev-python/capturer 3.0: Easily capture stdout/stderr of the current process and subprocesses
@@ -8255,7 +8255,7 @@ dev-python/genshi 0.7.3-r1: Python toolkit for stream-based generation of output
 dev-python/genson 1.1.0: GenSON is a powerful, user-friendly JSON Schema generator built in Python
 dev-python/genty 1.3.2-r1: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
-dev-python/gevent 20.9.0 20.12.0 20.12.1: Coroutine-based network library
+dev-python/gevent 20.9.0 20.12.0 20.12.1 21.1.0: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/git-review 1.28.0: Tool to submit code to Gerrit
@@ -8310,7 +8310,7 @@ dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar fi
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.7: Enumerate IP addresses on the local network adapters
-dev-python/ijson 3.1.1: Iterative JSON parser with a Pythonic interface
+dev-python/ijson 3.1.1 3.1.3: Iterative JSON parser with a Pythonic interface
 dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.1.0 2.2.0: easy-to-use, pythonic, and complete IMAP client library
@@ -8610,7 +8610,7 @@ dev-python/pastedeploy 2.1.1: Load, configure, and compose WSGI applications and
 dev-python/pastel 0.2.1: Bring colors to your terminal
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
-dev-python/path-py 15.0.0: A module wrapper for os.path
+dev-python/path-py 15.0.0 15.0.1: A module wrapper for os.path
 dev-python/pathlib2 2.3.5-r1: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.8.1: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
@@ -8773,7 +8773,7 @@ dev-python/pymdown-extensions 8.0.1: Extensions for Python Markdown.
 dev-python/pymdown-lexers 0_pre20180905: Additional lexers for use in Pygments
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.3 5.0.3: A wrapper around the mediainfo library
-dev-python/pymetar 1.1-r1: Downloads and decodes to the weather report for a given station ID
+dev-python/pymetar 1.1-r1 1.2: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pymongo 3.11.0-r1 3.11.1 3.11.2: Python driver for MongoDB
 dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
@@ -9290,7 +9290,7 @@ dev-python/werkzeug 1.0.1-r1: Collection of various utilities for WSGI applicati
 dev-python/whatever 0.6: A collection of fancy functional tools focused on practicality
 dev-python/wheel 0.36.2: A built-package format for Python
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
-dev-python/whisper 1.1.5: Fixed size round-robin style database
+dev-python/whisper 1.1.5 1.1.7: Fixed size round-robin style database
 dev-python/whoosh 2.7.4-r1: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.5.1 3.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.12.1: Module for decorators, wrappers and monkey patching
