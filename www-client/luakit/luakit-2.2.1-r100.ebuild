@@ -83,6 +83,7 @@ src_install() {
 		DESTDIR="${ED}" \
 		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
 		PREFIX="${EPREFIX}/usr" \
+		USE_LUAJIT=$(usex lua_single_target_luajit 1 0) \
 		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		install
 
