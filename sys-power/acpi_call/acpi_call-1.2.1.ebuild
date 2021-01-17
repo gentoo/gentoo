@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit git-r3 linux-info linux-mod
+inherit linux-info linux-mod
 
 DESCRIPTION="A linux kernel module that enables calls to ACPI"
 HOMEPAGE="https://github.com/nix-community/acpi_call"
-EGIT_REPO_URI="https://github.com/teleshoes/acpi_call.git"
+SRC_URI="https://github.com/nix-community/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="examples"
 
 BUILD_TARGETS="default"
