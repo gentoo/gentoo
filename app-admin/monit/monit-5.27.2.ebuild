@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 pam systemd
+inherit bash-completion-r1 pam systemd eutils
 
 DESCRIPTION="Monitoring and managing daemons or similar programs running on a Unix system"
 HOMEPAGE="http://mmonit.com/monit/"
@@ -41,8 +41,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	dodoc README
 
 	insinto /etc; insopts -m600; doins monitrc
 	newinitd "${FILESDIR}"/monit.initd-5.0-r1 monit
