@@ -1,0 +1,132 @@
+From 96be75ecbdf8c429a35cc0556c49cb71e0135801 Mon Sep 17 00:00:00 2001
+From: Javier Martinez Canillas <javierm@redhat.com>
+Date: Tue, 19 May 2020 17:53:03 +0200
+Subject: [PATCH] net: Break out nested function
+
+Nested functions are not supported in C, but are permitted as an extension
+in the GNU C dialect. Commit cb2f15c5448 ("normal/main: Search for specific
+config files for netboot") added a nested function which caused the build
+to break when compiling with clang.
+
+Break that out into a static helper function to make the code portable again.
+
+Reported-by: Daniel Axtens <dja@axtens.net>
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+Tested-by: Daniel Axtens <dja@axtens.net>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/net/net.c | 65 +++++++++++++++++++++++----------------------
+ 1 file changed, 33 insertions(+), 32 deletions(-)
+
+diff --git a/grub-core/net/net.c b/grub-core/net/net.c
+index c42f0f4f7..3a310c939 100644
+--- a/grub-core/net/net.c
++++ b/grub-core/net/net.c
+@@ -1735,42 +1735,43 @@ grub_net_restore_hw (void)
+   return GRUB_ERR_NONE;
+ }
+ 
+-grub_err_t
+-grub_net_search_config_file (char *config)
++static int
++grub_config_search_through (char *config, char *suffix,
++			    grub_size_t num_tries, grub_size_t slice_size)
+ {
+-  grub_size_t config_len;
+-  char *suffix;
++  while (num_tries-- > 0)
++    {
++      grub_file_t file;
+ 
+-  auto int search_through (grub_size_t num_tries, grub_size_t slice_size);
+-  int search_through (grub_size_t num_tries, grub_size_t slice_size)
+-  {
+-    while (num_tries-- > 0)
+-      {
+-        grub_file_t file;
++      grub_dprintf ("net", "attempt to fetch config %s\n", config);
+ 
+-        grub_dprintf ("net", "attempt to fetch config %s\n", config);
++      file = grub_file_open (config, GRUB_FILE_TYPE_CONFIG);
+ 
+-        file = grub_file_open (config, GRUB_FILE_TYPE_CONFIG);
++      if (file)
++        {
++          grub_file_close (file);
++          return 0;
++        }
++      else
++        {
++          if (grub_errno == GRUB_ERR_IO)
++            grub_errno = GRUB_ERR_NONE;
++        }
+ 
+-        if (file)
+-          {
+-            grub_file_close (file);
+-            return 0;
+-          }
+-        else
+-          {
+-            if (grub_errno == GRUB_ERR_IO)
+-              grub_errno = GRUB_ERR_NONE;
+-          }
++      if (grub_strlen (suffix) < slice_size)
++        break;
+ 
+-        if (grub_strlen (suffix) < slice_size)
+-          break;
++      config[grub_strlen (config) - slice_size] = '\0';
++    }
+ 
+-        config[grub_strlen (config) - slice_size] = '\0';
+-      }
++  return 1;
++}
+ 
+-    return 1;
+-  }
++grub_err_t
++grub_net_search_config_file (char *config)
++{
++  grub_size_t config_len;
++  char *suffix;
+ 
+   config_len = grub_strlen (config);
+   config[config_len] = '-';
+@@ -1801,7 +1802,7 @@ grub_net_search_config_file (char *config)
+       if (client_uuid)
+         {
+           grub_strcpy (suffix, client_uuid);
+-          if (search_through (1, 0) == 0)
++          if (grub_config_search_through (config, suffix, 1, 0) == 0)
+             return GRUB_ERR_NONE;
+         }
+ 
+@@ -1816,7 +1817,7 @@ grub_net_search_config_file (char *config)
+         if (*ptr == ':')
+           *ptr = '-';
+ 
+-      if (search_through (1, 0) == 0)
++      if (grub_config_search_through (config, suffix, 1, 0) == 0)
+         return GRUB_ERR_NONE;
+ 
+       /* By IP address */
+@@ -1831,7 +1832,7 @@ grub_net_search_config_file (char *config)
+                            ((n >> 24) & 0xff), ((n >> 16) & 0xff),      \
+                            ((n >> 8) & 0xff), ((n >> 0) & 0xff));
+ 
+-            if (search_through (8, 1) == 0)
++            if (grub_config_search_through (config, suffix, 8, 1) == 0)
+               return GRUB_ERR_NONE;
+             break;
+           }
+@@ -1848,7 +1849,7 @@ grub_net_search_config_file (char *config)
+                 *ptr = '-';
+ 
+             grub_snprintf (suffix, GRUB_NET_MAX_STR_ADDR_LEN, "%s", buf);
+-            if (search_through (1, 0) == 0)
++            if (grub_config_search_through (config, suffix, 1, 0) == 0)
+               return GRUB_ERR_NONE;
+             break;
+           }
