@@ -1,8 +1,0 @@
---- a/cmdtocanonij3/filter/Makefile.am.old	2018-01-14 18:14:20.645473030 +0100
-+++ b/cmdtocanonij3/filter/Makefile.am	2018-01-14 18:14:36.078219959 +0100
-@@ -1,4 +1,4 @@
--filterdir=$(libdir)/cups/filter
-+filterdir=$(libexecdir)/cups/filter
- 
- filter_PROGRAMS= cmdtocanonij3
- 
