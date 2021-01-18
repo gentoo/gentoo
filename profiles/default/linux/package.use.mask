@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
-# Gromacs python module install br0ken
-sci-chemistry/gromacs python
-
 # Peter Levine <plevine457@gmail.com> (2019-10-01)
 # Native inotify support is preferred on linux.
 # https://bugs.gentoo.org/697476

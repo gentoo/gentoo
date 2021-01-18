@@ -242,6 +242,10 @@ net-irc/telepathy-idle test
 # libcxxrt is unmaintained and it's going to be removed.
 sys-libs/libcxx libcxxrt
 
+# Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
+# Gromacs python module install br0ken
+sci-chemistry/gromacs python
+
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
 # PHP 7.1 is end of life and has security issues Bug 703326
 # Associated packages are not ready for new versions tracked in bug 702110
