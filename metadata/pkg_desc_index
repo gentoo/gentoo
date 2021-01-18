@@ -2040,7 +2040,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13-r1 1.36.15-r1 1.38.6-r1 1.38.6-r101: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 2.1.0 2.2.1: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 2.2.1: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.8.0-r2 6.9.0-r1 6.10.0-r2 7.0.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
@@ -2682,7 +2682,7 @@ app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.6.1 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.23.0-r1 2.24.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.23.0-r1 2.24.0 2.24.6: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 3.0.0_pre20200601 3.0.4 9999: Free cross-platform LaTeX editor (fork from texmakerX)
@@ -2973,7 +2973,7 @@ app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.2: Tail with multiple windows
-app-text/mupdf 1.17.0 1.18.0-r2: A lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.18.0-r2: A lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4 1.2.4-r1: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -5430,7 +5430,7 @@ dev-libs/libgudev 233-r1 234: GObject bindings for libudev
 dev-libs/libgusb 0.3.3 0.3.5: GObject wrapper for libusb
 dev-libs/libgweather 3.36.1: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
-dev-libs/libical 3.0.8: An implementation of basic iCAL protocols
+dev-libs/libical 3.0.8 3.0.9: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
@@ -14851,7 +14851,7 @@ net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs app
 net-libs/libproxy 0.4.16-r1 0.4.17: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.22.2 1.26.6 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library
-net-libs/libquotient 0.6.3: Qt5-based SDK to develop applications for Matrix
+net-libs/libquotient 0.6.3 0.6.4: Qt5-based SDK to develop applications for Matrix
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 2.3.1: Remote delta-compression library
 net-libs/libsearpc 3.2.0-r1: A simple C language RPC framework
@@ -16849,7 +16849,7 @@ sys-apps/firejail 0.9.64 0.9.64-r1 9999: Security sandbox for any type of proces
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 1.2-r1 1.2-r2 1.2-r3 9999: Utility for reading, writing, erasing and verifying flash ROM chips
-sys-apps/flatpak 1.8.5 1.9.2 1.10.0: Linux application sandboxing and distribution framework
+sys-apps/flatpak 1.8.5 1.10.0: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.05.00 20.11.00: Firmware Test Suite
 sys-apps/fwupd 1.4.6 1.5.4 1.5.5: Aims to make updating firmware on Linux automatic, safe and reliable
