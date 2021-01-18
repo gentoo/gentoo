@@ -117,7 +117,7 @@ src_install() {
 	fi
 
 	# This directory contains SVG images which we don't want to compress
-	use doc && touch "${ED}"/usr/share/doc/${PF}/doc/images.ecompress.skip
+	use doc && docompress -x /usr/share/doc/${PF}/doc
 }
 
 pkg_postinst() {
