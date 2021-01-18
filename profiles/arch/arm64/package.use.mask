@@ -301,7 +301,7 @@ dev-libs/libpeas lua
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=eds requires USE=gnome that is masked here.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
-# NeddySeagoon <neddysegoon@gentoo.org> (2017-08-21)
+# Roy Bamford <neddysegoon@gentoo.org> (2017-08-21)
 # Pulls in sci-libs/coinor-mp which wants immintrin.h not on arm64
 # Markus Meier <maekke@gentoo.org> (2012-12-08)
 # mask app-office/libreoffice java extensions
@@ -323,7 +323,7 @@ dev-python/python-neutronclient test
 # missing keywords media-libs/lastfmlib
 net-misc/gerbera lastfm
 
-# NeddySeagoon <neddysegoon@gentoo.org> (2017-08-24)
+# Roy Bamford <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
 
