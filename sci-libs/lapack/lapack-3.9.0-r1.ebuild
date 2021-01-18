@@ -2,39 +2,55 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake-utils
+
+inherit cmake
 
 DESCRIPTION="BLAS,CBLAS,LAPACK,LAPACKE reference implementations"
 HOMEPAGE="https://www.netlib.org/lapack/"
-SRC_URI="https://www.netlib.org/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/Reference-LAPACK/lapack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="lapacke doc eselect-ldso"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 # TODO: static-libs 64bit-index
+IUSE="lapacke deprecated doc eselect-ldso test"
+RESTRICT="!test? ( test )"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	eselect-ldso? ( >=app-eselect/eselect-blas-0.2
-	>=app-eselect/eselect-lapack-0.2 )
 	!app-eselect/eselect-cblas
 	virtual/fortran
+	eselect-ldso? (
+		>=app-eselect/eselect-blas-0.2
+		>=app-eselect/eselect-lapack-0.2
+	)
 	doc? ( app-doc/blas-docs )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.9.0-build-tests.patch"
+)
+
+src_prepare() {
+	use deprecated && eapply "${FILESDIR}/${P}-deprecated-headers.patch"
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DCBLAS=ON
 		-DLAPACKE=$(usex lapacke)
+		-DBUILD_DEPRECATED=$(usex deprecated)
 		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_TESTING=$(usex test)
 	)
-	cmake-utils_src_configure
+
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	use eselect-ldso || return
 	# Create private lib directory for eselect::blas (ld.so.conf)
