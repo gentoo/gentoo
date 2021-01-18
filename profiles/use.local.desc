@@ -4493,8 +4493,11 @@ media-sound/audiotools:dvda - Enable DVD-Audio support
 media-sound/audiotools:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
 media-sound/beets:badfiles - Validate MP3 & FLAC files
 media-sound/beets:chromaprint - Enable support for acoustic fingerprinting plugin using media-libs/chromaprint
+media-sound/beets:cors - Enable cors support for the webserver dev-python/flask-cors
 media-sound/beets:discogs - Enable support for the discogs API plugin
 media-sound/beets:ffmpeg - Enable support for the convert plugin to transcode files via media-video/ffmpeg
+media-sound/beets:gstreamer - Enable support for the gstreamer backend
+media-sound/beets:icu - Enable support for the icu plugin to support non-ASCII characters in dev-db/sqlite
 media-sound/beets:lastfm - Enable support for importing personal last.fm playcounts and music genres from last.fm tags
 media-sound/beets:mpd - Enable support for media-sound/mpd server emulation and statistic gathered from media-sound/mpd
 media-sound/beets:replaygain - Enable support for Replay Gain metadata calculation during import

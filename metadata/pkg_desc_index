@@ -1667,7 +1667,7 @@ app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs L
 app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
 app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.15-r1: The Csound reference manual
-app-doc/devmanual 0_pre20200207 9999: The Gentoo Development Guide
+app-doc/devmanual 0_pre20200207 0_pre20210118 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.17 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
@@ -8111,7 +8111,7 @@ dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type t
 dev-python/diff-match-patch 20181111 20200713: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.3: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
-dev-python/diskcache 5.0.3 5.1.0: Disk and file backed cache
+dev-python/diskcache 5.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
@@ -13707,7 +13707,7 @@ media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/baudline 1.08-r1: A time-frequency browser designed for visualization of spectral domains
-media-sound/beets 1.4.9-r2 9999: Media library management system for obsessive-compulsive music geeks
+media-sound/beets 1.4.9-r3 9999: Media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11_p20160207: Qt5 MPD client with experimental UI
 media-sound/bitmeter 1.2-r2: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
@@ -18699,7 +18699,7 @@ x11-plugins/purple-facebook 20170608 20170831 20190113: Facebook protocol plugin
 x11-plugins/purple-hangouts 0_p20181202 0_p20200710: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-mattermost 1.2-r1: A libpurple/Pidgin plugin for Mattermost
-x11-plugins/vicious 2.3.1 2.3.3: Modular widget library for x11-wm/awesome
+x11-plugins/vicious 2.3.1 2.5.0: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmDownload 0.1.2a-r3: dockapp that displays how much data you've received on each eth and ppp device
 x11-plugins/wmMatrix 0.2-r2: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
@@ -18958,7 +18958,7 @@ x11-wm/2bwm 0.3 9999: A fast, floating window manager
 x11-wm/aewm 1.3.12-r1: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.22.01_p20200826: Amiga Workbench inspired window manager for Xorg
-x11-wm/awesome 4.2-r3 4.3-r2 4.3-r100 9999: A dynamic floating and tiling window manager
+x11-wm/awesome 4.2-r3 4.3-r2 4.3-r101 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.76: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.9.9 0.9.10: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
