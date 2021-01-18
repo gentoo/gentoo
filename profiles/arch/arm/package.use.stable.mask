@@ -84,6 +84,10 @@ media-sound/mpd fluidsynth
 # frei0r-plugins is not stable yet, mask it on stable versions
 media-video/ffmpeg frei0r
 
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi
+
 # Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
 media-libs/libbluray java
@@ -151,7 +155,3 @@ net-misc/connman l2tp pptp
 gnome-base/gvfs google
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
-
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
