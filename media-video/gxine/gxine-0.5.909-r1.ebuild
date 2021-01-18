@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="l10n_cs l10n_de lirc nls udev xinerama"
 
 DEPEND="
