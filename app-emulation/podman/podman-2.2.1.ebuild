@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -131,9 +131,9 @@ src_install() {
 }
 
 pkg_preinst() {
-	LIBPOD_ROOTLESS_UPGRADE=false
+	PODMAN_ROOTLESS_UPGRADE=false
 	if use rootless; then
-		has_version 'app-emulation/libpod[rootless]' || LIBPOD_ROOTLESS_UPGRADE=true
+		has_version 'app-emulation/podman[rootless]' || PODMAN_ROOTLESS_UPGRADE=true
 	fi
 }
 
@@ -148,7 +148,7 @@ pkg_postinst() {
 		elog "cp /etc/containers/policy.json{.example,}"
 		want_newline=true
 	fi
-	if [[ ${LIBPOD_ROOTLESS_UPGRADE} == true ]] ; then
+	if [[ ${PODMAN_ROOTLESS_UPGRADE} == true ]] ; then
 		${want_newline} && elog ""
 		elog "For rootless operation, you need to configure subuid/subgid"
 		elog "for user running podman. In case subuid/subgid has only been"
