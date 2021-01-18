@@ -1,26 +1,33 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..9} )
 
-inherit cmake-utils fortran-2 python-any-r1
+inherit cmake fortran-2 python-any-r1
 
 MY_P="${P}-Source"
 
 DESCRIPTION="A set of encoding/decoding APIs and tools for WMO GRIB, BUFR, and GTS messages"
 HOMEPAGE="https://confluence.ecmwf.int/display/ECC"
 SRC_URI="https://confluence.ecmwf.int/download/attachments/45757960/${MY_P}.tar.gz
-	extra-test? ( http://download.ecmwf.org/test-data/eccodes/${PN}_test_data.tar.gz )"
+	extra-test? ( http://download.ecmwf.org/test-data/eccodes/${PN}_test_data.tar.gz
+	http://download.ecmwf.org/test-data/eccodes/data/mercator.grib2 )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="defs examples extra-test -fortran memfs netcdf jpeg2k png python szip test threads"
-RESTRICT="!test? ( test )"
-REQUIRED_USE="threads? ( !fortran ) test? ( defs !memfs ) extra-test? ( test ) !test? ( memfs? ( python ) )"
+IUSE="+defs examples extra-test fortran memfs netcdf jpeg2k openmp png python szip test threads"
+
+REQUIRED_USE="
+	fortran? ( !threads ( openmp ) )
+	openmp? ( !threads ( fortran ) )
+	threads? ( !fortran !openmp )
+	test? ( defs !memfs )
+	extra-test? ( test )
+	!test? ( memfs? ( python ) )"
 
 RDEPEND="
 	sys-libs/zlib
@@ -45,24 +52,29 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
+		-DINSTALL_LIB_DIR="$(get_libdir)"
+		-DCMAKE_SKIP_INSTALL_RPATH=TRUE
 		-DENABLE_ECCODES_THREADS=$(usex threads TRUE FALSE)
+		-DENABLE_ECCODES_OMP_THREADS=$(usex openmp TRUE FALSE)
 		-DENABLE_EXAMPLES=OFF  # no need to build examples
 		-DENABLE_INSTALL_ECCODES_DEFINITIONS=$(usex defs TRUE FALSE)
 		-DENABLE_FORTRAN=$(usex fortran TRUE FALSE)
 		-DENABLE_PYTHON=OFF  # py2 support is deprecated
 		-DENABLE_NETCDF=$(usex netcdf TRUE FALSE)
 		-DENABLE_JPG=$(usex jpeg2k TRUE FALSE)
+		-DENABLE_JPG_LIBOPENJPEG=$(usex jpeg2k TRUE FALSE)
 		-DENABLE_PNG=$(usex png TRUE FALSE)
 		-DENABLE_MEMFS=$(usex memfs TRUE FALSE)
 		-DENABLE_EXTRA_TESTS=$(usex extra-test TRUE FALSE)
 		-DBUILD_SHARED_LIBS=ON
-		-DINSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
 	)
-	cmake-utils_src_configure
+	use fortran && mycmakeargs+=( -DCMAKE_Fortran_FLAGS="-fallow-argument-mismatch" )
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples; then
 		insinto "/usr/share/${PN}/examples"
@@ -73,7 +85,11 @@ src_install() {
 }
 
 src_test() {
-	use extra-test && cp -r "${WORKDIR}"/data/* "${BUILD_DIR}"/data/
+	if use extra-test; then
+		touch "${WORKDIR}"/data/.downloaded
+		cp -r "${WORKDIR}"/data/* "${BUILD_DIR}"/data/
+		cp "${DISTDIR}"/mercator.grib2 "${BUILD_DIR}"/data/
+	fi
 
-	cmake-utils_src_test
+	cmake_src_test
 }
