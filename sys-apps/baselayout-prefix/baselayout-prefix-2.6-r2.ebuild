@@ -24,6 +24,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="build kernel_FreeBSD kernel_linux +split-usr"
 
+RDEPEND="!sys-apps/baselayout"  #681760
+
 my_prefix_commits=(
 	# commits in reverse order as listed by:
 	# git log --decorate=no --oneline --no-abbrev-commit origin/master..
