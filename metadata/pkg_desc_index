@@ -2922,7 +2922,7 @@ app-text/html-xml-utils 7.7 7.8: A number of simple utilities for manipulating H
 app-text/html2text 1.3.2a-r2 2.0.0 9999: HTML to text converter
 app-text/html401 19991224-r4: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
-app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
+app-text/htmldoc 1.8.30 1.9.11-r1: Convert HTML pages into a PDF document
 app-text/htmlinc 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlmin 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmlrecode 1.3.1-r1: Recodes HTML file using a new character set
@@ -5145,8 +5145,8 @@ dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
 dev-lang/lua 5.1.5-r4 5.1.5-r106 5.2.4-r3 5.3.6-r2 5.4.2-r1: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.5-r3 2.1.0_beta3-r2: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
-dev-lang/mercury 14.01.1-r1 20.01 20.01.1 20.01.2 20.06: Mercury is a modern general-purpose logic/functional programming language
-dev-lang/mercury-extras 14.01.1 20.01 20.01.1 20.01.2 20.06: Additional libraries and tools that are not part of the Mercury standard library
+dev-lang/mercury 20.06: Mercury is a modern general-purpose logic/functional programming language
+dev-lang/mercury-extras 20.06: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
@@ -5170,7 +5170,7 @@ dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 7.4.14 8.0.0 8.0.1: The PH
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.18-r5 3.6.12-r1 3.7.9-r1 3.8.6-r1 3.8.7 3.9.0-r1 3.9.1 3.10.0_alpha3: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3: Python script wrapper
-dev-lang/qu-prolog 10.4 10.5 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
+dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 2020.12 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.7.2 3.0.0 3.0.0-r1: An object-oriented scripting language
@@ -13206,7 +13206,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 7.19.3: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 2.43.1 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 2.43.0 2.43.1 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
@@ -14895,7 +14895,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 1.42.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.20.1 14.15.4 15.5.1 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.20.1 14.15.4 15.5.1 15.6.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 3.3 3.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
