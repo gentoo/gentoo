@@ -21,8 +21,7 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/xerces-c[icu]
 	dev-libs/libpcre
-	!aqua? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
-	aqua? ( x11-libs/wxGTK:${WX_GTK_VER}[aqua] )
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
