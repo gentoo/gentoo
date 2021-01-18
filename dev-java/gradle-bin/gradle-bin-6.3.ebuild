@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,14 +26,14 @@ RDEPEND=">=virtual/jdk-1.8"
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	local gradle_dir="${EPREFIX}/usr/share/${PN}-${SLOT}"
+	local gradle_dir="/usr/share/${PN}-${SLOT}"
 
 	insinto "${gradle_dir}"
 	doins -r lib/
 
 	exeinto "${gradle_dir}"/bin
 	doexe bin/${MY_PN}
-	dosym "../${gradle_dir##*/usr/}/bin/gradle" "/usr/bin/${MY_PN}-${SLOT}"
+	dosym "../${gradle_dir#/usr/}/bin/gradle" "/usr/bin/${MY_PN}-${SLOT}"
 
 	docinto html
 	dodoc -r docs/release-notes.html
