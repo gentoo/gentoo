@@ -5,10 +5,10 @@ DESCRIPTION=GTK+ Front-End for libxine
 EAPI=7
 HOMEPAGE=http://xine.sourceforge.net/
 IUSE=l10n_cs l10n_de lirc nls udev xinerama
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=media-libs/xine-lib[gtk] x11-libs/gtk+:2 dev-lang/spidermonkey:0 dev-libs/glib x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libxcb lirc? ( app-misc/lirc ) nls? ( virtual/libintl ) udev? ( dev-libs/libgudev:= ) xinerama? ( x11-libs/libXinerama )
 SLOT=0
 SRC_URI=mirror://sourceforge/xine/gxine-0.5.909.tar.xz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=349878cbc119c5e6220d127f37103b80
+_md5_=58752bf64cd02c51b1c062538acd64b2
