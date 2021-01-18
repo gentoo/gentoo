@@ -10,7 +10,6 @@ inherit cmake pam readme.gentoo-r1 systemd
 # settled on "poppassd-ceti" (instead of "poppassd_ceti" or no suffix).
 MY_PN="poppassd-ceti"
 MY_P="${MY_PN}-${PV}"
-S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="Password change daemon with PAM support"
 HOMEPAGE="https://github.com/kravietz/poppassd-ceti"
@@ -19,9 +18,16 @@ SRC_URI="https://github.com/kravietz/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.t
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
-DEPEND="sys-libs/pam"
-RDEPEND="${DEPEND}"
+# Tests seem to hang.
+RESTRICT="test"
+
+RDEPEND="sys-libs/pam"
+DEPEND="${RDEPEND}
+	test? ( app-admin/sudo )"
+
+S="${WORKDIR}/${MY_P}"
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="poppassd is installed, but has to be run as root to work.
