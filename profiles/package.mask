@@ -41,7 +41,7 @@ games-strategy/0ad
 ~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
 
 # Jonas Stein <jstein@gentoo.org> (2021-01-17)
-# Removal in 30 days.  
+# Removal in 30 days.
 # Fails to compile Bug #765697.
 x11-misc/rss-glx
 
@@ -74,9 +74,9 @@ virtual/httpd-php:7.2
 =dev-php/PHP_TokenStream-1.4.11-r1
 
 # Joonas Niilola <juippis@gentoo.org> (2020-01-07)
-# Eterm's development stopped 2014 and upstream brought to life 
-# its successor, terminology. Eterm is unmaintained in Gentoo with 
-# multiple bugs open for a long time. Switch to any available 
+# Eterm's development stopped 2014 and upstream brought to life
+# its successor, terminology. Eterm is unmaintained in Gentoo with
+# multiple bugs open for a long time. Switch to any available
 # alternative, https://packages.gentoo.org/categories/x11-terms
 # For Esetroot replacement, use feh from media-gfx/feh or wmsetbg
 # from x11-wm/windowmaker.
@@ -84,8 +84,8 @@ virtual/httpd-php:7.2
 x11-terms/eterm
 
 # Joonas Niilola <juippis@gentoo.org> (2020-01-07)
-# Doesn't compile, no maintainer, EAPI-5. Last version bump 3 years 
-# ago. Use any of the available alternatives, 
+# Doesn't compile, no maintainer, EAPI-5. Last version bump 3 years
+# ago. Use any of the available alternatives,
 # https://packages.gentoo.org/categories/x11-terms
 # Removal in ~30 days. Bug: #764353
 x11-terms/pangoterm
