@@ -118,6 +118,11 @@ src_prepare() {
 	sed \
 		-e '/db_repsite/s,Skipping:,Skipping,g' \
 		-i "${S_BASE}"/test/tcl/reputils.tcl || die
+
+	# Version script for ld.{gold,lld} which do not supprt --default-symver
+	cat > "${S}"/db-version-script.ver <<-EOF
+	libdb-${SLOT}.so {*;};
+	EOF
 }
 
 multilib_src_configure() {
@@ -152,7 +157,12 @@ multilib_src_configure() {
 	# Add linker versions to the symbols. Easier to do, and safer than header file
 	# mumbo jumbo.
 	if use userland_GNU ; then
-		append-ldflags -Wl,--default-symver
+		# ld.{gold,lld} do not supprt --default-symver
+		if tc-ld-is-gold || tc-ld-is-lld; then
+			append-ldflags -Wl,--version-script="${S}"/db-version-script.ver
+		else
+			append-ldflags -Wl,--default-symver
+		fi
 	fi
 
 	if multilib_is_native_abi && use java ; then
