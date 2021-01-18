@@ -13,6 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/devmanual.git"
 else
+	# "make dist" in devmanual repo
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 	S="${WORKDIR}/${PN}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
