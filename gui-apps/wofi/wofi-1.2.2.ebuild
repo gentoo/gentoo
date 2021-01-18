@@ -9,7 +9,7 @@ then
 	inherit mercurial
 	EHG_REPO_URI="https://hg.sr.ht/~scoopta/wofi"
 else
-	SRC_URI="https://hg.sr.ht/~scoopta/wofi/archive/v${PV}.tar.gz"
+	SRC_URI="https://hg.sr.ht/~scoopta/wofi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-v${PV}"
 	KEYWORDS="~amd64"
 fi
