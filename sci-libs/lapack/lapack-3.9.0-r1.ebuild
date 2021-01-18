@@ -29,8 +29,13 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.9.0-build-tests.patch"
-	"${FILESDIR}/${P}-deprecated-headers.patch"
 )
+
+src_prepare() {
+	use deprecated && eapply "${FILESDIR}/${P}-deprecated-headers.patch"
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
