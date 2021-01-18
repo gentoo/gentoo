@@ -10286,7 +10286,7 @@ dev-ruby/ruby2ruby 2.4.2 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.14.2 3.15.0 3.15.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.2.0 3.2.3 3.2.4: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.2.0 3.2.3 3.2.4 3.2.5: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
