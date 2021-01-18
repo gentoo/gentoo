@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 COMMIT="9266d14b5ca4e29b970fa03272318e5f99386e06"
 DESCRIPTION="Library for parsing, editing, and saving EXIF data"
-HOMEPAGE="https://libexif.github.io/ https://github.com/libexif/libexif"
+HOMEPAGE="https://libexif.github.io/"
 SRC_URI="https://github.com/libexif/libexif/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 #SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PN}-${PV//./_}-release/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
