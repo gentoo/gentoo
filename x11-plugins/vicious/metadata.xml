@@ -8,4 +8,7 @@
 	<use>
 		<flag name="contrib">Install extra widgets, some for less common hardware, some contributed by Vicious users.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">vicious-widgets/vicious</remote-id>
+	</upstream>
 </pkgmetadata>
