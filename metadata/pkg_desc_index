@@ -10238,7 +10238,7 @@ dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gegl 3.4.3: Ruby GEGL bindings
-dev-ruby/ruby-gettext 3.2.9 3.3.5 3.3.6: Native Language Support Library and Tools modeled after GNU gettext package
+dev-ruby/ruby-gettext 3.2.9 3.3.5 3.3.6 3.3.7: Native Language Support Library and Tools modeled after GNU gettext package
 dev-ruby/ruby-gio2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby binding of gio-2
 dev-ruby/ruby-glib2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Gnome2 bindings
