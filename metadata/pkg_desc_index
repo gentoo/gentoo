@@ -9076,7 +9076,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.1: Allow customization of the process title
-dev-python/setuptools 50.3.0 51.0.0 51.1.0 51.1.1 51.1.2 51.3.1: Collection of extensions to Distutils
+dev-python/setuptools 50.3.0 51.0.0 51.1.0 51.1.1 51.1.2 51.3.1 51.3.3: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
