@@ -15745,34 +15745,34 @@ ros-meta/vision_visp 0.11.1 9999: Virtual package providing ViSP related package
 ros-meta/visualization_tutorials 0.11.0 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.5.0 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
-sci-astronomy/casa-data 99999 20160222 20170703: Data and tables for the CASA software
-sci-astronomy/cdsclient 3.8.1 3.8.4: Collection of scripts to access the CDS databases
-sci-astronomy/celestia 1.7.0_pre20200316 1.7.0_pre20200316-r100 9999: OpenGL 3D space simulator
-sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
+sci-astronomy/casa-data 99999 20170703: Data and tables for the CASA software
+sci-astronomy/cdsclient 3.8.4: Collection of scripts to access the CDS databases
+sci-astronomy/celestia 1.7.0_pre20200316-r100 9999: OpenGL 3D space simulator
+sci-astronomy/cpl 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
-sci-astronomy/erfa 1.2.0 1.3.0 1.4.0: Essential Routines for Fundamental Astronomy
+sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/esomidas 17.02-r1: European Southern Observatory Munich Image Data Analysis System
-sci-astronomy/esorex 3.10.2 3.12 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
+sci-astronomy/esorex 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/fitsh 0.9.2: Software package for astronomical image processing
 sci-astronomy/fitspng 0.3.5: FITS to PNG converter
 sci-astronomy/funtools 1.4.7: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2-r1: Stellar simulation program
 sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
-sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
+sci-astronomy/healpix 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
 sci-astronomy/kstars 3.4.3 3.5.1: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
-sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
+sci-astronomy/montage 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
 sci-astronomy/pyephem 3.7.7.1: Astronomical routines for the python programming language
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
 sci-astronomy/sextractor 2.19.5-r1: Extract catalogs of sources from astronomical FITS images
-sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
+sci-astronomy/skycat 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
-sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
+sci-astronomy/sofa_c 20170420: Library for algorithms for models in fundamental astronomy
 sci-astronomy/stellarium 0.20.2 0.20.3: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
@@ -15840,7 +15840,7 @@ sci-biology/fasta 36.3.5e: FASTA is a DNA and Protein sequence alignment softwar
 sci-biology/fasttree 2.1.8: Fast inference of approximately-maximum-likelihood phylogenetic trees
 sci-biology/fastx_toolkit 0.0.14: Tools for Short Read FASTA/FASTQ file processing
 sci-biology/finchtv 1.3.1-r2 1.3.1-r3: Graphical viewer for chromatogram files
-sci-biology/foldingathome 7.5.1-r3 7.6.13: Folding@Home is a distributed computing project for protein folding
+sci-biology/foldingathome 7.6.13: Folding@Home is a distributed computing project for protein folding
 sci-biology/gatk 2.4: The Genome Analysis Toolkit
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
@@ -15885,11 +15885,11 @@ sci-biology/probcons 1.12-r1: Probabilistic Consistency-based Multiple Alignment
 sci-biology/prodigal 2.6.3: Prokaryotic Dynamic Programming Genefinding Algorithm
 sci-biology/profphd 1.0.40: Secondary structure and solvent accessibility predictor
 sci-biology/prosite 2017.02: A protein families and domains database
-sci-biology/psipred 3.4 3.5: Protein Secondary Structure Prediction
+sci-biology/psipred 3.5: Protein Secondary Structure Prediction
 sci-biology/pysam 0.16.0.1: Python interface for the SAM/BAM sequence alignment and mapping format
 sci-biology/qrna 2.0.3c-r3: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
-sci-biology/rebase 1701 1702 1703 1704 1803 1806 1810 1901: A restriction enzyme database
+sci-biology/rebase 1901: A restriction enzyme database
 sci-biology/recon 1.08: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
@@ -15916,9 +15916,9 @@ sci-biology/velvet 1.2.10: A sequence assembler for very short reads
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 3.1.5 3.1.6 3.2.3: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 3.2.3: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
-sci-calculators/datamash 1.4 1.5 1.6 1.7: command-line program for basic numeric, textual and statistical operations
+sci-calculators/datamash 1.7: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4-r1: GTK+ based algebraic and RPN calculator
 sci-calculators/grpn 1.4.0: A reverse polish notation (RPN) calculator based on GTK+ and libmath
 sci-calculators/hcalc 1.2-r1: DJ's Hex Calculator
@@ -15934,14 +15934,14 @@ sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.20 2.21: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
-sci-chemistry/MDAnalysis 0.18.0-r1 1.0.0: A python library to analyze and manipulate molecular dynamics trajectories
+sci-chemistry/MDAnalysis 1.0.0: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restraint violations
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
-sci-chemistry/avogadro2 1.90.0_p20180211 1.93.0: Advanced molecule editor and visualizer 2
-sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
+sci-chemistry/avogadro2 1.93.0: Advanced molecule editor and visualizer 2
+sci-chemistry/bodr 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/cara-bin 1.8.4-r2: Analysis of NMR spectra and Computer Aided Resonance Assignment
-sci-chemistry/chemex 2018.10.2 2018.10.3: Program to fit chemical exchange induced shift and relaxation data
+sci-chemistry/chemex 2018.10.3: Program to fit chemical exchange induced shift and relaxation data
 sci-chemistry/chemical-mime-data 0.1.94-r4: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
@@ -15972,7 +15972,7 @@ sci-chemistry/mustang 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrglue 0.7: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
-sci-chemistry/openbabel 2.4.1 2.4.1-r1: Interconverts file formats used in molecular modeling
+sci-chemistry/openbabel 2.4.1-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
 sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using tools such as Perl, awk, etc
 sci-chemistry/pdbcns 2.0.010504: Convert atom names for amino acids/nucleic acid bases between PDB and CNS format
@@ -15983,7 +15983,7 @@ sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between mole
 sci-chemistry/procheck 3.5.4-r3: Checks the stereochemical quality of a protein structure
 sci-chemistry/propka 3.2.0: pKa-value prediction of ionizable groups in protein and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 2.4.0 2.4.0-r1: A Python-extensible molecular graphics system
+sci-chemistry/pymol 2.4.0-r1: A Python-extensible molecular graphics system
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.6: Generation high quality raster images of proteins or other molecules
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology nomenclature and conformer-list development
@@ -15993,17 +15993,17 @@ sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/vmd 1.9.4_alpha43: Visual Molecular Dynamics
-sci-chemistry/votca-csg 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 1.6.3 1.6.4 9999: Votca coarse-graining engine
-sci-chemistry/votca-csgapps 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 1.6.3 1.6.4: Extra applications for votca-csg
-sci-chemistry/votca-ctp 1.5 1.5.1: Votca charge transport module
-sci-chemistry/votca-xtp 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 1.6.3 1.6.4 9999: Votca excitation and charge properties module
+sci-chemistry/votca-csg 1.5.1 1.6 1.6.4 9999: Votca coarse-graining engine
+sci-chemistry/votca-csgapps 1.5.1 1.6 1.6.4: Extra applications for votca-csg
+sci-chemistry/votca-ctp 1.5.1: Votca charge transport module
+sci-chemistry/votca-xtp 1.6 1.6.4 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
-sci-electronics/Stage 4.1.1 4.3.0 9999: The Stage Robot Simulator
+sci-electronics/Stage 4.3.0 9999: The Stage Robot Simulator
 sci-electronics/drahnr-oregano 0.84.40: Application for the schematic capturing and simulation of electrical circuits
 sci-electronics/drawtiming 0.7.1-r2: Command line tool for drawing timing diagrams
-sci-electronics/eagle 7.3.0-r1 7.4.0-r1 7.6.0-r1 7.7.0-r1: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
+sci-electronics/eagle 7.3.0-r1 7.7.0-r1: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electric 9.03: Complete Electronic Design Automation system for many forms of circuit design
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espresso logic minimization tool
@@ -16023,20 +16023,20 @@ sci-electronics/gtkwave 3.3.106: A wave viewer for LXT, LXT2, VZT, GHW and stand
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 10.3-r2 11.0 9999: A Verilog simulation and synthesis tool
-sci-electronics/kicad 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools
-sci-electronics/kicad-footprints 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools footprint libraries
-sci-electronics/kicad-i18n 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools GUI translations
-sci-electronics/kicad-meta 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools (meta package)
-sci-electronics/kicad-packages3d 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools 3D package libraries
-sci-electronics/kicad-symbols 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools symbol libraries
-sci-electronics/kicad-templates 5.1.6 5.1.7 5.1.8 5.1.9: Electronic Schematic and PCB design tools project templates
+sci-electronics/kicad 5.1.9: Electronic Schematic and PCB design tools
+sci-electronics/kicad-footprints 5.1.9: Electronic Schematic and PCB design tools footprint libraries
+sci-electronics/kicad-i18n 5.1.9: Electronic Schematic and PCB design tools GUI translations
+sci-electronics/kicad-meta 5.1.9: Electronic Schematic and PCB design tools (meta package)
+sci-electronics/kicad-packages3d 5.1.9: Electronic Schematic and PCB design tools 3D package libraries
+sci-electronics/kicad-symbols 5.1.9: Electronic Schematic and PCB design tools symbol libraries
+sci-electronics/kicad-templates 5.1.9: Electronic Schematic and PCB design tools project templates
 sci-electronics/klayout 0.26.5 0.26.8 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/ktechlab 0.50.0-r1: IDE for microcontrollers and electronics
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/librepcb 0.1.3: Free EDA software to develop printed circuit boards
 sci-electronics/magic 7.5.202-r1 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.4.52: LVS tool (layout versus schematic comparison)
-sci-electronics/ngspice 27 27-r1 31-r1: The Next Generation Spice (Electronic Circuit Simulator)
+sci-electronics/ngspice 31-r1: The Next Generation Spice (Electronic Circuit Simulator)
 sci-electronics/osqoop 1.2.0_pre20170131: Multi-platform open source software oscilloscope based on Qt
 sci-electronics/pcb 4.2.2: GPL Electronic Design Automation: Printed Circuit Board editor
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
@@ -16047,11 +16047,11 @@ sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured ED
 sci-electronics/sigrok-cli 0.7.1-r1 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
-sci-electronics/systemc 2.3.1-r1 2.3.4-r1: A C++ based modeling platform for VLSI and system-level co-design
+sci-electronics/systemc 2.3.4-r1: A C++ based modeling platform for VLSI and system-level co-design
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
-sci-electronics/voacapl 0.7.2 0.7.6: HF propagation prediction tool
+sci-electronics/voacapl 0.7.6: HF propagation prediction tool
 sci-electronics/xcircuit 3.9.73: Circuit drawing and schematic capture program
-sci-electronics/xnec2c 3.5.1 4.1.1: A GTK+ graphical interactive version of nec2c
+sci-electronics/xnec2c 4.1.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.2: Soundcard Oscilloscope for X
 sci-geosciences/GeographicLib 1.50.1: C++ classes for performing conversions between geographic coordinates
 sci-geosciences/bt747 2.1.7-r1 2.1.7-r2: MTK GPS Datalogger Device Control
@@ -17044,7 +17044,7 @@ sys-apps/toybox 0.8.0 0.8.1 0.8.3 0.8.4 9999: Common linux commands in a multica
 sys-apps/tuned 2.13.0-r1 2.15.0: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
-sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for building SSL client-server applications
+sys-apps/ucspi-ssl 0.99e: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3 0.4.4-r4: mount and unmount removable devices without a password
