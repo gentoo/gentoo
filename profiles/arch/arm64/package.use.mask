@@ -26,8 +26,8 @@ net-proxy/haproxy device-atlas
 media-sound/clementine lastfm
 
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-01)
-# hfs xfs fail build and/or tests on arm64 
-# See bug #747181 
+# hfs xfs fail build and/or tests on arm64
+# See bug #747181
 sys-block/gparted xfs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
