@@ -10,7 +10,7 @@ SRC_URI="https://i3wm.org/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="pulseaudio"
 
 BDEPEND="virtual/pkgconfig"
