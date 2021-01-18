@@ -4,4 +4,7 @@
   <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">adrian-thurston/ragel</remote-id>
+  </upstream>
 </pkgmetadata>
