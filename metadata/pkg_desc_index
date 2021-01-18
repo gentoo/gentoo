@@ -679,7 +679,7 @@ app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement f
 app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.0.20 4.2.3 4.2.6 4.2.8 4.2.10 4.2.11 100.2.0 100.2.1: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.25.3 5.26.0 5.27.0 5.27.1 5.27.1-r1: Monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.27.1 5.27.1-r1 5.27.2: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
@@ -2611,7 +2611,7 @@ app-misc/uptimed 0.4.1-r1 0.4.1-r2 0.4.2 0.4.3: System uptime record daemon that
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcontrold 0.98.10: Daemon for communication with Viessmann Vito heatings
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
-app-misc/vifm 0.10.1 0.11: Console file manager with vi(m)-like keybindings
+app-misc/vifm 0.11: Console file manager with vi(m)-like keybindings
 app-misc/vit 1.3: Perl/Curses front-end for Taskwarrior (app-misc/task)
 app-misc/vittk 1.3: A front end for Taskwarrior (app-misc/task)
 app-misc/vlock 2.2.3-r1: A console screen locker
@@ -3543,7 +3543,7 @@ dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.2.35 10.2.36 10.3.23-r3 10.3.25 10.3.26 10.3.27 10.4.13-r3 10.4.15 10.4.16 10.4.17 10.5.6 10.5.7 10.5.8: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.11 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
-dev-db/mongodb 3.6.13 3.6.17 4.0.19 4.0.20 4.2.8 4.2.10 4.2.11 4.4.1 4.4.2: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 4.2.8 4.2.11 4.4.1 4.4.2: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.22.2_p20201026 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
@@ -8850,7 +8850,7 @@ dev-python/pytest 4.6.11-r1 5.4.3 6.1.2 6.2.0 6.2.1: Simple powerful testing wit
 dev-python/pytest-aiohttp 0.3.0-r1: pytest plugin for aiohttp support
 dev-python/pytest-asyncio 0.14.0: Library for testing asyncio code with pytest
 dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
-dev-python/pytest-cov 2.8.1 2.10.1: py.test plugin for coverage reporting
+dev-python/pytest-cov 2.8.1 2.10.1 2.11.0: py.test plugin for coverage reporting
 dev-python/pytest-datadir 1.3.1: Pytest plugin for manipulating test data directories and files
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
 dev-python/pytest-django 4.1.0: A Django plugin for py.test
@@ -10492,7 +10492,7 @@ dev-tcltk/thread 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkcon 2.5-r1 2.7.3: Tk GUI console
 dev-tcltk/tkdnd 2.9.2: Adds native drag & drop capabilities to tk toolkit
-dev-tcltk/tkimg 1.4.7 1.4.9 1.4.11: Adds a lot of image formats to Tcl/Tk
+dev-tcltk/tkimg 1.4.9 1.4.11: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2 0.7: Collection of utility modules for Tk, and a companion to Tcllib
 dev-tcltk/tkpiechart 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application
 dev-tcltk/tkpng 0.9: Implements support for loading and using PNG images with Tcl/Tk
@@ -13810,7 +13810,7 @@ media-sound/jack-audio-connection-kit 0.125.0-r1: A low-latency audio server
 media-sound/jack-keyboard 2.7.2-r1: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.8_rc1-r1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0-r1: Utilities for MIDI streams and files using Jack MIDI
-media-sound/jack2 1.9.16 9999: Jackdmp jack implemention for multi-processor machine
+media-sound/jack2 1.9.16 1.9.17 9999: Jackdmp jack implemention for multi-processor machine
 media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.4 1.6.6: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
@@ -14374,7 +14374,7 @@ net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
-net-analyzer/nstats 0.4-r2 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
+net-analyzer/nstats 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/ntopng 3.8.1-r4 4.0: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
@@ -14979,7 +14979,7 @@ net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail mess
 net-mail/metamail 2.7.53.3-r2: Metamail (with Debian patches) - Generic MIME package
 net-mail/mhonarc 2.6.19: Perl Mail-to-HTML Converter
 net-mail/mhonarc-gentoo 2.6.18-r2: Perl Mail-to-HTML Converter, Gentoo fork
-net-mail/mlmmj 1.2.19.0-r1 1.3.0: Mailing list managing made joyful
+net-mail/mlmmj 1.3.0: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
@@ -15196,7 +15196,7 @@ net-misc/ncman 0.0.1_p20190327-r2 9999: An ncurses UI for connman, forked from c
 net-misc/ncp 1.2.4-r2: Utility for copying files in a LAN (npoll, npush)
 net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
-net-misc/nemesis 1.4-r1 1.4-r2 1.7-r1: A commandline-based, portable human IP stack for UNIX/Linux
+net-misc/nemesis 1.7-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2-r1: utility to synchronize the time with ntp-servers
 net-misc/netevent 2.0_p20200217: Tool to share Linux event devices with other machines
 net-misc/netifrc 0.7.1-r1 0.7.1-r2 0.7.2 9999: Gentoo Network Interface Management Scripts
@@ -15441,10 +15441,10 @@ net-print/brlaser 4 6: Brother laser printer driver
 net-print/c2esp 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
-net-print/cnijfilter2 5.20 5.40 5.50 5.70 5.80 5.90: IJ Printer Driver
+net-print/cnijfilter2 5.90: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r1 9999: The Common Unix Printing System
-net-print/cups-bjnp 2.0 2.0.3: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
+net-print/cups-bjnp 2.0.3: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.28.3 1.28.7 9999: Cups filters
 net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
@@ -18332,7 +18332,7 @@ x11-libs/xcb-util-keysyms 0.4.0-r2: X C-language Bindings sample implementations
 x11-libs/xcb-util-renderutil 0.3.9-r3: X C-language Bindings sample implementations
 x11-libs/xcb-util-wm 0.4.1-r3: X C-language Bindings sample implementations
 x11-libs/xcb-util-xrm 1.3-r1: X C-language Bindings sample implementations
-x11-libs/xforms 1.2.4 1.2.4-r1: A graphical user interface toolkit for X
+x11-libs/xforms 1.2.4-r1: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
 x11-libs/xpa 2.1.18: Messaging system providing communication between programs
 x11-libs/xtrans 1.4.0: X.Org xtrans library
@@ -18411,7 +18411,7 @@ x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog
 x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
 x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.4 3.4.3: A GTK+ based xmessage clone
-x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
+x11-misc/habak 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.13: Simple screen locker
@@ -18620,7 +18620,7 @@ x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X 
 x11-misc/xtrace 1.4.0: X11 protocol trace utility
 x11-misc/xtrlock 2.12 2.13: A simplistic screen locking program for X
 x11-misc/xvfb-run 1.18.4_p2 1.19.3_p2 1.20.8_p2: Run a command in a virtual X server environment
-x11-misc/xvkbd 3.7 3.9 4.0 4.1: virtual keyboard for X window system
+x11-misc/xvkbd 4.1: virtual keyboard for X window system
 x11-misc/xwallpaper 0.6.2-r1 0.6.4 0.6.5 9999: Wallpaper setting utility for X
 x11-misc/xwit 3.4_p15 3.4_p16: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
@@ -18755,7 +18755,7 @@ x11-plugins/wmix 3.5: Dockapp mixer for OSS or ALSA
 x11-plugins/wmlife 1.0.1-r1: dockapp running Conway's Game of Life (and program launcher)
 x11-plugins/wmload 0.9.7-r1: yet another dock application showing a system load gauge
 x11-plugins/wmlongrun 0.3.1: A dockapp to monitor LongRun on a Transmeta Crusoe processor
-x11-plugins/wmmaiload 2.3.0-r1 2.3.0-r2: dockapp that monitors one or more mailboxes
+x11-plugins/wmmaiload 2.3.0-r2: dockapp that monitors one or more mailboxes
 x11-plugins/wmmand 1.3.2-r1: a dockable mandelbrot browser
 x11-plugins/wmmemload 0.1.8-r1: dockapp that displays memory and swap space usage
 x11-plugins/wmmenu 1.3-r2: a popup menu of icons like in AfterStep, as a dockapp
@@ -18812,7 +18812,7 @@ x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background 
 x11-terms/pangoterm 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.14.1-r1 0.15.0 0.16.1 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root window
-x11-terms/roxterm 3.9.3 3.9.4: A terminal emulator designed to integrate with the ROX environment
+x11-terms/roxterm 3.9.4: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.22-r3 9.22-r6 9.22-r7 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X

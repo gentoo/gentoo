@@ -942,11 +942,6 @@
       <name>Jimi Huotari</name>
       <role>Member ( Administrator )</role>
     </member>
-    <member is-lead="1">
-      <email>desultory@gentoo.org</email>
-      <name>Desultory</name>
-      <role>Member ( Administrator )</role>
-    </member>
     <member>
       <email>john_r_graham@gentoo.org</email>
       <name>John R. Graham</name>
@@ -960,11 +955,6 @@
     <member>
       <email>neddyseagoon@gentoo.org</email>
       <name>Roy Bamford</name>
-      <role>Member ( Administrator )</role>
-    </member>
-    <member>
-      <email>xaviermiller@gentoo.org</email>
-      <name>Xavier Miller</name>
       <role>Member ( Administrator )</role>
     </member>
   </project>
