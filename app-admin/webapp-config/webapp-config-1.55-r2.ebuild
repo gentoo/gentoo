@@ -8,27 +8,22 @@ DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 prefix
 
-if [[ ${PV} = 9999* ]]
-then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git"
-	inherit git-r3
-	KEYWORDS=""
-else
-	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-fi
-
+MY_COMMIT="55b6d681dd3df9954094a5fc3732c391e9544036" # https://bugs.gentoo.org/711750
 DESCRIPTION="Gentoo's installer for web-based applications"
 HOMEPAGE="https://sourceforge.net/projects/webapp-config/ https://wiki.gentoo.org/wiki/Project:Webapps/webapp-config"
+SRC_URI="https://github.com/gentoo/webapp-config//archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="+portage"
 
 DEPEND="app-text/xmlto
 	sys-apps/gentoo-functions"
 RDEPEND="
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )"
+
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
