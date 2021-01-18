@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,71 +7,73 @@ LUA_COMPAT=( lua5-{1..3} luajit )
 
 inherit cmake desktop lua-single pax-utils
 
+if [[ ${PV} == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
+else
+	SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+fi
+
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
-SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="dbus doc gnome test"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RESTRICT="test"
+RESTRICT="test" # https://bugs.gentoo.org/654084
 
 RDEPEND="${LUA_DEPS}
 	dev-libs/glib:2
-	>=dev-libs/libxdg-basedir-1
+	dev-libs/libxdg-basedir
 	$(lua_gen_cond_dep 'dev-lua/lgi[${LUA_USEDEP}]')
 	x11-libs/cairo[X,xcb(+)]
-	x11-libs/gdk-pixbuf:2[introspection]
-	>=x11-libs/libxcb-1.6[xkb]
-	>=x11-libs/pango-1.19.3[introspection]
-	>=x11-libs/startup-notification-0.10_p20110426
-	>=x11-libs/xcb-util-0.3.8
+	x11-libs/gdk-pixbuf:2
+	x11-libs/libxcb[xkb]
+	x11-libs/pango[introspection]
+	x11-libs/startup-notification
+	x11-libs/xcb-util
 	x11-libs/xcb-util-cursor
-	>=x11-libs/xcb-util-keysyms-0.3.4
-	>=x11-libs/xcb-util-wm-0.3.8
-	>=x11-libs/xcb-util-xrm-1.0
+	x11-libs/xcb-util-keysyms
+	x11-libs/xcb-util-wm
+	x11-libs/xcb-util-xrm
 	x11-libs/libXcursor
 	x11-libs/libxkbcommon[X]
-	>=x11-libs/libX11-1.3.99.901
-	dbus? ( >=sys-apps/dbus-1 )
-"
-
-# graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
+	x11-libs/libX11
+	dbus? ( sys-apps/dbus )"
 # ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP.
 # On the other hand, it means that we should explicitly depend on a version
 # migrated to Lua eclasses so that during the upgrade from unslotted
 # to slotted dev-lang/lua, the package manager knows to emerge migrated
 # ldoc before migrated awesome.
 DEPEND="${RDEPEND}
-	>=app-text/asciidoc-8.4.5
-	app-text/xmlto
-	dev-util/gperf
-	virtual/pkgconfig
-	media-gfx/imagemagick[png]
-	>=x11-base/xcb-proto-1.5
+	x11-base/xcb-proto
 	x11-base/xorg-proto
-	doc? ( >=dev-lua/ldoc-1.4.6-r100 )
 	test? (
-		app-shells/zsh
 		x11-base/xorg-server[xvfb]
 		$(lua_gen_cond_dep '
 			dev-lua/busted[${LUA_USEDEP}]
 			dev-lua/luacheck[${LUA_USEDEP}]
 		')
-	)
-"
+	)"
+# graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
+BDEPEND="app-text/asciidoc
+	media-gfx/imagemagick[png]
+	virtual/pkgconfig
+	doc? ( >=dev-lua/ldoc-1.4.6-r100 )
+	test? ( app-shells/zsh )"
 
 # Skip installation of README.md by einstalldocs, which leads to broken symlink
 DOCS=()
+
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0-convert-path.patch"  # bug #408025
-	"${FILESDIR}/${PN}-xsession.patch"          # bug #408025
-	"${FILESDIR}/${PN}-4.0-cflag-cleanup.patch" # bug #509658
-	"${FILESDIR}/${PN}-4.3-fno-common.patch"    # bug #707262
+	"${FILESDIR}"/${PN}-4.0-convert-path.patch  # bug #408025
+	"${FILESDIR}"/${PN}-xsession.patch          # bug #408025
+	"${FILESDIR}"/${PN}-4.0-cflag-cleanup.patch # bug #509658
+	"${FILESDIR}"/${PN}-4.3-fno-common.patch    # bug #707262
 )
 
 src_configure() {
@@ -90,7 +92,7 @@ src_configure() {
 
 src_test() {
 	# awesome's test suite starts Xvfb by itself, no need for virtualx eclass
-	HEADLESS=1 cmake_src_make check -j1
+	HEADLESS=1 cmake_build check -j1
 }
 
 src_install() {
