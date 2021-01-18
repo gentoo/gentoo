@@ -319,6 +319,10 @@ media-video/mjpegtools sdlgfx
 # Those require USE=doc that is masked in this profile.
 dev-python/python-neutronclient test
 
+# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
+# missing keywords media-libs/lastfmlib
+net-misc/gerbera lastfm
+
 # NeddySeagoon <neddysegoon@gentoo.org> (2017-08-24)
 # Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
@@ -445,7 +449,3 @@ dev-libs/gobject-introspection -doctool
 
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
-
-# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
-# missing keywords media-libs/lastfmlib
-net-misc/gerbera lastfm
