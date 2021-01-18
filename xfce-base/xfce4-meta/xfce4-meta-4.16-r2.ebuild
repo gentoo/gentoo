@@ -32,9 +32,6 @@ RDEPEND="x11-themes/hicolor-icon-theme
 		media-fonts/dejavu
 		virtual/freedesktop-icon-theme
 		)
-	pulseaudio? (
-		xfce-extra/xfce4-pulseaudio-plugin
-		xfce-extra/xfce4-volumed-pulse
-	)
+	pulseaudio? ( xfce-extra/xfce4-pulseaudio-plugin )
 	svg? ( gnome-base/librsvg )
 	upower? ( >=xfce-extra/xfce4-power-manager-4.16 )"
