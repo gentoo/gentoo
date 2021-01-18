@@ -17,7 +17,7 @@ GVFS_DEPEND=">=gnome-base/gvfs-1.18.3"
 DEPEND=">=dev-libs/glib-2.50
 	>=x11-libs/gdk-pixbuf-2.14
 	>=x11-libs/gtk+-3.22:3
-	>=xfce-base/exo-0.12:=
+	>=xfce-base/exo-4.15.3:=
 	>=xfce-base/libxfce4ui-4.15.3:=
 	>=xfce-base/libxfce4util-4.15.2:=
 	>=xfce-base/xfconf-4.12:=
