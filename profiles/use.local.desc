@@ -515,10 +515,6 @@ app-emulation/libguestfs:fuse - Enable image mount support via fuse
 app-emulation/libguestfs:inspect-icons - Use media-gfx/icoutils for acces icon file in image and inspect it
 app-emulation/libguestfs:libvirt - Use app-emulation/libvirt to manipulate VMs
 app-emulation/libguestfs:systemtap - Use dev-util/systemtap to inspect VM via "probes" way
-app-emulation/libpod:apparmor - Enable AppArmor support.
-app-emulation/libpod:btrfs - Enables dependencies for the "btrfs" graph driver, including necessary kernel flags.
-app-emulation/libpod:fuse - Enables fuse dependencies (fuse-overlayfs is especially useful for rootless mode).
-app-emulation/libpod:rootless - Enables dependencies for running in rootless mode.
 app-emulation/libspectrum:gcrypt - Use dev-libs/libgcrypt for low-level crypto of some features, including logfiles.
 app-emulation/libvirt:apparmor - Enable AppArmor support
 app-emulation/libvirt:dtrace - Enable dtrace support via dev-util/systemtap
@@ -563,6 +559,10 @@ app-emulation/open-vm-tools:multimon - Enable multimon (Requires X)
 app-emulation/open-vm-tools:resolutionkms - Build the linux/unix resolutionkms module
 app-emulation/open-vm-tools:vgauth - Build vgauth
 app-emulation/pcem:networking - Enable support for emulation of network cards.
+app-emulation/podman:apparmor - Enable AppArmor support.
+app-emulation/podman:btrfs - Enables dependencies for the "btrfs" graph driver, including necessary kernel flags.
+app-emulation/podman:fuse - Enables fuse dependencies (fuse-overlayfs is especially useful for rootless mode).
+app-emulation/podman:rootless - Enables dependencies for running in rootless mode.
 app-emulation/punes:cg - Add support for Nvidia CG Toolkit
 app-emulation/q4wine:ico - Enable ico support via media-gfx/icoutils
 app-emulation/q4wine:iso - Support unprivileged mounting of ISO9660 images via sys-fs/fuseiso

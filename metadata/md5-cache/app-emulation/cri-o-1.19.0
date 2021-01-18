@@ -7,9 +7,9 @@ HOMEPAGE=https://cri-o.io/
 IUSE=btrfs +device-mapper selinux systemd
 KEYWORDS=~amd64 ~arm64
 LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0
-RDEPEND=app-crypt/gpgme:= app-emulation/conmon app-emulation/runc dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= net-firewall/conntrack-tools net-firewall/iptables net-misc/cni-plugins net-misc/socat sys-apps/iproute2 sys-libs/libseccomp:= btrfs? ( sys-fs/btrfs-progs ) device-mapper? ( sys-fs/lvm2:= ) selinux? ( sys-libs/libselinux:= ) systemd? ( sys-apps/systemd:= ) !<app-emulation/libpod-1.3.2-r1
+RDEPEND=app-crypt/gpgme:= app-emulation/conmon app-emulation/runc dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= net-firewall/conntrack-tools net-firewall/iptables net-misc/cni-plugins net-misc/socat sys-apps/iproute2 sys-libs/libseccomp:= btrfs? ( sys-fs/btrfs-progs ) device-mapper? ( sys-fs/lvm2:= ) selinux? ( sys-libs/libselinux:= ) systemd? ( sys-apps/systemd:= ) !<app-emulation/podman-1.3.2-r1
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/cri-o/cri-o/archive/v1.19.0.tar.gz -> cri-o-1.19.0.tar.gz
 _eclasses_=go-module	92660621959e7fab813173772987588b
-_md5_=f316a5358082ace9769d1821c1aeeb9f
+_md5_=76d5673d6cf28a2bcdd402229f6270fa
