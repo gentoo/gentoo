@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/Cairo >=dev-perl/glib-perl-1.210.0 dev-perl/Gtk3 dev-perl/Readonly virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Carp-Always dev-perl/Test-Differences dev-perl/Test-MockObject dev-perl/Try-Tiny media-gfx/imagemagick[jpeg,perl,png,svg,X] virtual/perl-Test-Simple ) dev-lang/perl test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Image viewer widget for Gtk3
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Gtk3-ImageView
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Cairo >=dev-perl/glib-perl-1.210.0 dev-perl/Gtk3 dev-perl/Readonly dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RA/RATCLIFFE/Gtk3-ImageView-6.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_md5_=41d0c90191630f38fa473043a842d906

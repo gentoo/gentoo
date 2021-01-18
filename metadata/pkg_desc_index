@@ -2084,7 +2084,7 @@ app-emulation/vice 3.4_p38553 3.5: The Versatile Commodore Emulator
 app-emulation/virt-manager 2.2.1-r3 3.1.0 3.2.0 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0 9.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
-app-emulation/virtio-win 0.1.173.9 0.1.185.1 0.1.187.1: VirtIO drivers for Windows virtual machines running on KVM
+app-emulation/virtio-win 0.1.173.9 0.1.185.1 0.1.187.1 0.1.190.1: VirtIO drivers for Windows virtual machines running on KVM
 app-emulation/virtualbox 6.0.24-r1 6.1.16-r1: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 6.0.24-r1 6.1.16-r1: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-extpack-oracle 6.0.24.139119-r1 6.1.16.140961-r1: PUEL extensions for VirtualBox
@@ -2435,7 +2435,7 @@ app-misc/g15macro 1.0.3-r2: Macro recording plugin to G15daemon
 app-misc/g15message 1.0.0-r2: A simple message/alert client for G15daemon
 app-misc/g15mpd 1.0.0-r2: MPD (music player daemon) plugin to G15daemon
 app-misc/g15stats 1.9.7-r1: CPU, memory, swap, network stats for G15 Keyboard
-app-misc/g810-led 0.3.6: Led controller for Logitech G- Keyboards
+app-misc/g810-led 0.3.6 0.4.2: Led controller for Logitech G- Keyboards
 app-misc/gcal 3.6.3 4.1: The GNU Calendar - a replacement for cal
 app-misc/gcalcli 4.2.0: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.1-r1: Manage your collections of movies, games, books, music and more
@@ -2525,7 +2525,7 @@ app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.6 1.2.8: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 4.3.0 4.4.0: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 4.3.0 4.4.0 4.4.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
 app-misc/pfm 2.12.3-r1: A terminal-based file manager written in Perl
@@ -2986,7 +2986,7 @@ app-text/openpaperwork-core 2.0.1 2.0.2: Core part of Paperwork (plugin manageme
 app-text/openpaperwork-gtk 2.0.1 2.0.2: Paperwork plugins
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
-app-text/pandoc 2.9.2.1: Conversion between markup formats
+app-text/pandoc 2.9.2.1 2.11.3.1: Conversion between markup formats
 app-text/paperwork 1.3.1 2.0.1 2.0.2: a personal document manager for scanned documents (and PDFs)
 app-text/paperwork-backend 1.3.1 1.3.1-r1 2.0.1 2.0.2: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
@@ -3876,6 +3876,7 @@ dev-haskell/cipher-aes128 0.7.0.5-r1: AES and common modes using AES-NI when ava
 dev-haskell/cipher-camellia 0.0.2: Camellia block cipher primitives
 dev-haskell/cipher-des 0.0.6: DES and 3DES primitives
 dev-haskell/cipher-rc4 0.1.4: Fast RC4 cipher implementation
+dev-haskell/citeproc 0.3.0.1: Generates citations and bibliography from CSL styles
 dev-haskell/classy-prelude 1.5.0: A typeclass-based Prelude
 dev-haskell/clientsession 0.9.1.2: Securely store session data in a client-side cookie
 dev-haskell/clock 0.7.2: High-resolution clock functions: monotonic, realtime, cputime
@@ -3884,6 +3885,9 @@ dev-haskell/cmark-gfm 0.2.1: Fast, accurate GitHub Flavored Markdown parser and 
 dev-haskell/cmdargs 0.10.20: Command line argument processing
 dev-haskell/code-page 0.1.3: Windows code page library for Haskell
 dev-haskell/colour 2.3.5: A model for human colour/color perception
+dev-haskell/commonmark 0.1.1.2: Pure Haskell commonmark parser
+dev-haskell/commonmark-extensions 0.2.0.4: Pure Haskell commonmark parser
+dev-haskell/commonmark-pandoc 0.2.0.1: Bridge between commonmark and pandoc AST
 dev-haskell/comonad 5.0.7: Haskell package providing comonads
 dev-haskell/comonad-transformers 4.0: This package has been merged into comonad 4.0
 dev-haskell/comonads-fd 4.0: This package has been merged into comonad 4.0
@@ -3957,7 +3961,7 @@ dev-haskell/dlist 0.8.0.7: Difference lists
 dev-haskell/dlist-instances 0.1.1.1: Difference lists instances
 dev-haskell/dns 4.0.1: DNS library in Haskell
 dev-haskell/doclayout 0.3: A prettyprinting library for laying out text documents
-dev-haskell/doctemplates 0.8.2: Pandoc-style document templates
+dev-haskell/doctemplates 0.8.2 0.9: Pandoc-style document templates
 dev-haskell/doctest 0.16.3: Test interactive Haskell examples
 dev-haskell/double-conversion 2.0.2.0: Fast conversion between double precision floating point and text
 dev-haskell/drbg 0.5.5: Deterministic random bit generator (aka PRNG) based HMACs, Hashes, and Ciphers
@@ -4041,7 +4045,7 @@ dev-haskell/hackage-security 0.5.3.0-r3: Hackage security library
 dev-haskell/haddock 2.14.3.0.7.8.3 2.16.1 2.17.2 2.23.1: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-api 2.16.1 2.17.3 2.23.1: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-library 1.1.1 1.2.1 1.4.2 1.8.0: Library exposing some functionality of Haddock
-dev-haskell/hakyll 4.13.4.0: A static website compiler library
+dev-haskell/hakyll 4.13.4.0 4.13.4.1: A static website compiler library
 dev-haskell/half 0.3-r1: Half-precision floating-point
 dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/happstack-server 7.6.0: Web related tools and services
@@ -4086,7 +4090,7 @@ dev-haskell/hs3 0.5.9: Interface to Amazon's Simple Storage Service (S3)
 dev-haskell/hsb2hs 0.3.1: Preprocesses a file, adding blobs from files as string literals
 dev-haskell/hscolour 1.24.4: Colourise Haskell code
 dev-haskell/hslogger 1.3.1.0-r1: Versatile logging framework
-dev-haskell/hslua 1.0.3.1: A Lua language interpreter embedding in Haskell
+dev-haskell/hslua 1.0.3.1 1.1.2: A Lua language interpreter embedding in Haskell
 dev-haskell/hslua-module-system 0.2.1: Lua module wrapper around Haskell's System module
 dev-haskell/hslua-module-text 0.2.1: Lua module for text
 dev-haskell/hsopenssl 0.11.4.17: Partial OpenSSL binding for Haskell
@@ -4147,7 +4151,7 @@ dev-haskell/io-streams-haproxy 1.0.1.0-r1: HAProxy protocol 1.5 support for io-s
 dev-haskell/iproute 1.7.8: IP Routing Table
 dev-haskell/ipynb 0.1: Data structure for working with Jupyter notebooks (ipynb)
 dev-haskell/iwlib 0.1.0: Bindings for the iw C library
-dev-haskell/jira-wiki-markup 1.1.4: Parse jira wiki text into an abstract syntax tree
+dev-haskell/jira-wiki-markup 1.1.4 1.3.2: Parse jira wiki text into an abstract syntax tree
 dev-haskell/js-flot 0.8.3: Obtain minified flot code
 dev-haskell/js-jquery 3.3.1: Obtain minified jQuery code
 dev-haskell/json 0.10: Support for serialising Haskell to and from JSON
@@ -4267,7 +4271,7 @@ dev-haskell/options 1.2.1.1: A powerful and easy-to-use command-line option pars
 dev-haskell/optparse-applicative 0.15.1.0: Utilities and combinators for parsing command line options
 dev-haskell/optparse-simple 0.1.1.3: Simple interface to optparse-applicative
 dev-haskell/pandoc-citeproc 0.17.0.2: Supports using pandoc with citeproc
-dev-haskell/pandoc-types 1.20: Types for representing a structured document
+dev-haskell/pandoc-types 1.20 1.22: Types for representing a structured document
 dev-haskell/pango 0.13.8.1: Binding to the Pango text rendering engine
 dev-haskell/pantry 0.4.0.2: Content addressable Haskell package management
 dev-haskell/parallel 3.2.2.0: Parallel programming library
@@ -4384,8 +4388,8 @@ dev-haskell/simple-sendfile 0.2.28: Cross platform library for the sendfile syst
 dev-haskell/singleton-bool 0.1.5-r1: Type level booleans
 dev-haskell/size-based 0.1.2.0: Sized functors, for size-based enumerations
 dev-haskell/skein 1.0.9.4: Skein, a family of cryptographic hash functions. Includes Skein-MAC as well
-dev-haskell/skylighting 0.8.5: syntax highlighting library
-dev-haskell/skylighting-core 0.8.5: syntax highlighting library
+dev-haskell/skylighting 0.8.5 0.10.2: syntax highlighting library
+dev-haskell/skylighting-core 0.8.5 0.10.2: syntax highlighting library
 dev-haskell/smallcheck 1.2.0: A property-based testing library
 dev-haskell/snap-core 1.0.4.2: Snap: A Haskell Web Framework (core interfaces and types)
 dev-haskell/snap-server 1.1.1.2: A fast, iteratee-based, epoll-enabled web server for the Snap Framework
@@ -4469,6 +4473,7 @@ dev-haskell/thyme 0.3.5.5: A faster time library
 dev-haskell/time-compat 1.9.3: This packages tries to compat as much of \'time\' features as possible
 dev-haskell/time-locale-compat 0.1.1.5: Compatibility of TimeLocale between old-locale and time-1.5
 dev-haskell/time-manager 0.0.0: Scalable timer
+dev-haskell/timeit 2.0: Time a computation
 dev-haskell/timezone-olson 0.1.9: A pure Haskell parser and renderer for binary Olson timezone files
 dev-haskell/timezone-series 0.1.9: Enhanced timezone handling for Data.Time
 dev-haskell/tls 1.5.4: TLS/SSL protocol native implementation (Server and Client)
@@ -6612,7 +6617,7 @@ dev-perl/Gtk2-Notify 0.50.0: A perl interface to the notification library
 dev-perl/Gtk2-SourceView2 0.100.0-r1: Perl binding for the C library gtksourceview
 dev-perl/Gtk2-Unique 0.50.0-r2: Perl binding for C libunique library
 dev-perl/Gtk3 0.34.0: Perl interface to the 3.x series of the gtk+ toolkit
-dev-perl/Gtk3-ImageView 4.0.0: Image viewer widget for Gtk3
+dev-perl/Gtk3-ImageView 4.0.0 6.0.0: Image viewer widget for Gtk3
 dev-perl/Gtk3-SimpleList 0.170.0: A simple interface to GTK+ 3's complex MVC list widget
 dev-perl/Guard 1.23.0: Safe cleanup blocks
 dev-perl/HTML-Clean 0.800.0-r2: Cleans up HTML code for web browsers, not humans
@@ -8700,7 +8705,7 @@ dev-python/pyatspi 2.36.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.5.0 2.6.0 2.6.1: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
-dev-python/pybtex 0.23.0: BibTeX-compatible bibliography processor
+dev-python/pybtex 0.23.0 0.24.0: BibTeX-compatible bibliography processor
 dev-python/pybtex-docutils 0.2.2: A docutils backend for pybtex
 dev-python/pycadf 2.9.0-r1 3.1.1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.20.0: Python bindings for the cairo library
@@ -8744,7 +8749,7 @@ dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of porti
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0: Python bindings for libgit2
 dev-python/pyglet 1.5.10 1.5.11 1.5.13 1.5.14: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.7.3 2.7.4: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.7.4: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
@@ -8754,7 +8759,7 @@ dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyilmbase 2.5.2-r1 2.5.3: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
-dev-python/pyjwt 1.7.1-r1 2.0.0: JSON Web Token implementation in Python
+dev-python/pyjwt 1.7.1-r1 2.0.0 2.0.1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.3.0-r1 1.3.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2 2.0.3: A Python implementation of the actor model
 dev-python/pykwalify 1.7.0 1.8.0: Python lib/cli for JSON/YAML schema validation
@@ -11939,7 +11944,7 @@ gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user i
 gnustep-libs/sope 4.1.1 4.3.2: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.3.1 9999: Grab images from a Wayland compositor.
-gui-apps/gtkgreet 0.6-r1 9999: gtk based greeter for greetd
+gui-apps/gtkgreet 0.6-r1 0.7 9999: gtk based greeter for greetd
 gui-apps/kanshi 1.1.0 9999: dynamic display configuration (autorandr for wayland)
 gui-apps/lavalauncher 1.7.1 2.0.0 9999: Simple launcher for wayland
 gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works on Sway.
@@ -11950,13 +11955,13 @@ gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.5 9999: Screen locker for Wayland
 gui-apps/tuigreet 0.1.1 0.2.0: TUI greeter for greetd login manager
 gui-apps/waybar 0.9.3-r1 0.9.4 0.9.5 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors
-gui-apps/wayland-logout 1.0 9999: general logout scripts for wayland compositors
+gui-apps/wayland-logout 1.1 9999: general logout scripts for wayland compositors
 gui-apps/wcm 0.5.0 0.6.0 9999: Wayfire Config Manager
 gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositors
 gui-apps/wf-shell 0.5.0 0.6.1 9999: A compiz like 3D wayland compositor
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
-gui-libs/greetd 0.6.1: ipc based login daemon
+gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
 gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
@@ -12418,7 +12423,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 2.0.2 2.0.3 2.0.4: A small but very powerful text-based mail client
+mail-client/mutt 2.0.2 2.0.4-r1: A small but very powerful text-based mail client
 mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20201127 20201127-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
@@ -14988,7 +14993,7 @@ net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Po
 net-mail/pop-before-smtp 1.42: Simple daemon to control email relay based on successful POP or IMAP logins
 net-mail/pop2imap 1.21: Synchronize mailboxes between a pop and an imap servers
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
-net-mail/poppassd_ceti 1.8.7: Password change daemon with PAM support
+net-mail/poppassd_ceti 1.8.7 1.8.9: Password change daemon with PAM support
 net-mail/postfix-logwatch 1.40.03-r4: A log analyzer for postfix
 net-mail/postorius 1.3.3: A web user interface for GNU Mailman 3
 net-mail/qlogtools 3.1-r1: Qmail Log processing tools
@@ -17954,7 +17959,7 @@ www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.77 8.8.12 8.9.12 9.0.10 9.1.2: PHP-based open-source platform and content management system
 www-apps/gitea 1.13.0 9999: A painless self-hosted Git service
-www-apps/gitit 0.13.0.0: Wiki using happstack, git or darcs, and pandoc
+www-apps/gitit 0.13.0.0 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 7.3.1 7.3.3 7.3.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
 www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
@@ -18064,7 +18069,7 @@ www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that ca
 www-servers/apache 2.4.46 2.4.46-r1 2.4.46-r4: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
-www-servers/caddy 2.0.0 2.2.1: Fast, cross-platform HTTP/2 web server with automatic HTTPS
+www-servers/caddy 2.0.0 2.2.1 2.2.3: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/civetweb 1.11 1.12: Embedded C/C++ web server
 www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.16-r1: High performance web server
@@ -19011,7 +19016,7 @@ xfce-base/garcon 0.6.4-r2 0.7.3 0.8.0: Xfce's freedesktop.org specification comp
 xfce-base/libxfce4ui 4.14.1 4.15.7 4.15.8 4.16.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.15.6 4.16.0: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.8.16 4.15.3 4.16.0 4.16.1 4.16.2: File manager for the Xfce desktop environment
-xfce-base/xfce4-appfinder 4.14.0 4.15.2 4.16.0: A tool to find and launch installed applications for the Xfce desktop
+xfce-base/xfce4-appfinder 4.14.0 4.15.2 4.16.0 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.15.6 4.16.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.15.1 4.16.0: A session manager for the Xfce desktop environment

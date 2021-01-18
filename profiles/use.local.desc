@@ -1471,6 +1471,8 @@ dev-haskell/cabal-install:native-dns - Enable use of the resolv and windns packa
 dev-haskell/chaselev-deque:debug - Enable the extra internal checks.
 dev-haskell/chell:color-output - use colors in program output
 dev-haskell/chimera:representable - Define Representable instance from adjunctions package
+dev-haskell/citeproc:executable - Build citeproc executable
+dev-haskell/citeproc:icu - Use Haskell bindings to the ICU library
 dev-haskell/cmark:system-cmark - use app-text/cmark instead of bundled copy
 dev-haskell/cmdargs:quotation - Build quote module
 dev-haskell/cmdargs:testprog - Build the test program
@@ -1514,6 +1516,7 @@ dev-haskell/hlint:gpl - Use GPL libraries, specifically hscolour.
 dev-haskell/hps:build-exec - Build the `hps-fractals' executable
 dev-haskell/hs3:network-uri - Get Network.URI from the network-uri package
 dev-haskell/hslogger:network-3 - Use network-3
+dev-haskell/hslua:hardcode-reg-keys - Don't use CAPI to determine the names of certain registry key names but Use hard coded values for instead. This flag is required when compiling against Lua 5.3.3 or earlier, as those do not expose the necessary information in the @lauxlib.h@ header file.
 dev-haskell/hsopenssl:fast-bignum - Enable fast moving of bignums between OpenSSL and GMP (GHC Only)
 dev-haskell/http:conduit10 - Use version 1.0.x or below of the conduit package (for the test suite).
 dev-haskell/http:network-uri - Get Network.URI from the network-uri package.
