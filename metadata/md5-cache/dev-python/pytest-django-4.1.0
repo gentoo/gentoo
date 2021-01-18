@@ -5,7 +5,7 @@ DESCRIPTION=A Django plugin for py.test
 EAPI=7
 HOMEPAGE=https://pypi.org/project/pytest-django/ https://pytest-django.readthedocs.org https://github.com/pytest-dev/pytest-django
 IUSE=python_targets_pypy3 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=amd64 arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=>=dev-python/pytest-5.4[python_targets_pypy3(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_pypy3(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] python_targets_pypy3? ( >=dev-python/pypy3-7.3.0:0= ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_pypy3(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/pytest-dev/pytest-django/archive/v4.1.0.tar.gz -> pytest-django-4.1.0.gh.tar.gz
 _eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=3a36e2e6e4ac8b1e95e1bb2a25900b02
+_md5_=18843e1568745c3a2cec1612974695ec

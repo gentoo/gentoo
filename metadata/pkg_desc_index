@@ -2770,7 +2770,7 @@ app-portage/smart-live-rebuild 1.3.6 1.3.6-r1 1.3.7 9999: Check live packages fo
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
-app-portage/unsymlink-lib 19: Convert your system to SYMLINK_LIB=no
+app-portage/unsymlink-lib 19 20: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.5.3: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r2 5.0_p11-r1 5.0_p18 5.1 5.1_p4: The standard GNU Bourne again shell
 app-shells/bash-completion 2.11 9999: Programmable Completion for bash
@@ -8241,7 +8241,7 @@ dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4: NFS-safe file locking with timeouts for POSIX systems
-dev-python/fonttools 4.18.1 4.18.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 4.18.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.0.0-r1: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -8739,7 +8739,7 @@ dev-python/pydocstyle 5.1.1: Python docstring style checker
 dev-python/pydot 1.4.1: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyelftools 0.26 0.27: pure-Python library for analyzing ELF files and DWARF debugging information
-dev-python/pyenchant 3.1.0 3.2.0: Python bindings for the Enchant spellchecking system
+dev-python/pyenchant 3.2.0: Python bindings for the Enchant spellchecking system
 dev-python/pyfakefs 4.3.2 4.3.3: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
 dev-python/pyflakes 2.2.0: Passive checker for Python programs
@@ -9238,7 +9238,7 @@ dev-python/twine 3.2.0 3.3.0: Collection of utilities for publishing packages on
 dev-python/twisted 19.10.0 20.3.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
-dev-python/txaio 20.4.1 20.12.1: Compatibility API between asyncio/Twisted/Trollius
+dev-python/txaio 20.12.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.6: Asynchronous Python HTTP for Humans
 dev-python/typed-ast 1.4.1 1.4.2: Python typed-ast backported
@@ -13206,7 +13206,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 7.19.3: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 2.43.0 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 2.43.1 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
@@ -15356,7 +15356,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.03 2021.01.08 2021.01.16 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.01.16 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
