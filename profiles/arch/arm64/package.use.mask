@@ -141,7 +141,7 @@ net-dialup/freeradius mongodb
 # Unkeyworded dep.
 kde-apps/cantor julia
 
-# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
 net-wireless/kismet ubertooth
 
