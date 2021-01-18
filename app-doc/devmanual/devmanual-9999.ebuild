@@ -25,7 +25,8 @@ IUSE="+offline"
 BDEPEND="dev-libs/libxml2
 	dev-libs/libxslt
 	gnome-base/librsvg
-	media-fonts/open-sans"
+	media-fonts/open-sans
+	${PYTHON_DEPS}"
 
 PATCHES=( "${FILESDIR}"/${PN}-eclasses.patch )
 

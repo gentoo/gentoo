@@ -70,7 +70,7 @@ x11-libs/colord-gtk doc
 <sys-devel/llvm-12.0.0.9999 llvm_targets_CSKY
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-03)
-# Doc building seem to be very random without any predictability, 
+# Doc building seem to be very random without any predictability,
 # bug #734104
 media-gfx/blender doc
 
@@ -115,7 +115,7 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 sci-geosciences/viking mapnik
 
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
-# Highly experimental, may cause breakages when updating. Use with 
+# Highly experimental, may cause breakages when updating. Use with
 # caution!
 dev-libs/efl efl-one
 
@@ -241,6 +241,10 @@ net-irc/telepathy-idle test
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # libcxxrt is unmaintained and it's going to be removed.
 sys-libs/libcxx libcxxrt
+
+# Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
+# Gromacs python module install br0ken
+sci-chemistry/gromacs python
 
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
 # PHP 7.1 is end of life and has security issues Bug 703326

@@ -26,8 +26,8 @@ net-proxy/haproxy device-atlas
 media-sound/clementine lastfm
 
 # Roy Bamford <neddyseagoon@gentoo.org< (2020-12-01)
-# hfs xfs fail build and/or tests on arm64 
-# See bug #747181 
+# hfs xfs fail build and/or tests on arm64
+# See bug #747181
 sys-block/gparted xfs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-08)
@@ -123,6 +123,10 @@ sys-libs/glibc -static-pie
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
 # Not keyworded on arm64
 net-misc/whois xcrypt
+
+# Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
+# Some test deps aren't keyworded on arm64
+dev-python/kazoo test
 
 # Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
 # Dependency has no stable keyword

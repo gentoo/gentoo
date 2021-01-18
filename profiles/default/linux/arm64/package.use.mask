@@ -1,10 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
-# Some test deps aren't keyworded on arm64
-dev-python/kazoo test
-
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
 # This target supports VTV #547040.
 >=sys-devel/gcc-6 -vtv
