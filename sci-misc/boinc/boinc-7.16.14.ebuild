@@ -1,23 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+MY_PV=$(ver_cut 1-2)
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools eutils gnome2-utils linux-info systemd user wxwidgets
-
-MY_PV="7.10"
+inherit autotools desktop linux-info systemd wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
-HOMEPAGE="http://boinc.ssl.berkeley.edu/"
-SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz
-	X? ( https://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> ${PN}.tif )"
-RESTRICT="mirror"
+HOMEPAGE="https://boinc.ssl.berkeley.edu/"
 
-LICENSE="LGPL-2.1"
+SRC_URI="X? ( https://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> ${PN}.tif )"
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/BOINC/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI+=" https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
+fi
+
+LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="X cuda curl_ssl_gnutls curl_ssl_libressl +curl_ssl_openssl"
 
 REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_libressl curl_ssl_openssl ) "
@@ -25,6 +30,8 @@ REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_libressl curl_ssl_openssl ) "
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
 COMMON_DEPEND="
+	acct-group/boinc
+	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-2.1
@@ -38,8 +45,13 @@ COMMON_DEPEND="
 		media-libs/freeglut
 		virtual/jpeg:0=
 		x11-libs/gtk+:3
+		x11-libs/libICE
 		>=x11-libs/libnotify-0.7
+		x11-libs/libSM
+		x11-libs/libXi
+		x11-libs/libXmu
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		virtual/jpeg
 	)
 "
 DEPEND="${RDEPEND}
@@ -54,12 +66,10 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
-	"${FILESDIR}"/fix_webview.patch
-	# xlocale.h was removed in modern glibc, bug 639108
-	"${FILESDIR}"/${MY_PV}-fix_xlocale.patch
+	"${FILESDIR}"/${PN}-${MY_PV}-fix_webview.patch
+	# bug #732024
+	"${FILESDIR}"/${PN}-${MY_PV}-remove-usr_lib.patch
 )
-
-S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
 pkg_setup() {
 	# Bug 578750
@@ -85,6 +95,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# bug #732024
+	if test "x$(get_libdir)" = "xlib64"; then
+	    sed -i -e 's,/:/lib:/usr/lib:,:/lib64:/usr/lib64:,g' m4/sah_check_lib.m4 || die
+	fi
+
 	default
 
 	# prevent bad changes in compile flags, bug 286701
@@ -92,10 +107,16 @@ src_prepare() {
 
 	eautoreconf
 
-	use X && need-wxwidgets unicode
+	use X && setup-wxwidgets
+
+	# bug #732024
+	if test "x$(get_libdir)" = "xlib64"; then
+	    sed -i -e 's,/lib\([ /;:"]\),/lib64\1,g' configure || die
+	fi
 }
 
 src_configure() {
+	LDFLAGS="-L${EPREFIX}/usr/$(get_libdir) -L${EPREFIX}/$(get_libdir) ${LDFLAGS}" \
 	econf --disable-server \
 		--enable-client \
 		--enable-dynamic-client-linkage \
@@ -122,36 +143,24 @@ src_install() {
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
 
 		# Rename the desktop file to boincmgr.desktop to (hot)fix bug 599910
-		mv "${ED%/}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
+		mv "${ED}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
 			die "Failed to rename desktop file"
 	fi
 
 	# cleanup cruft
-	rm -rf "${ED%/}"/etc || die "rm failed"
+	rm -r "${ED}"/etc || die "rm failed"
 	find "${D}" -name '*.la' -delete || die "Removing .la files failed"
 
 	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.init.in > ${PN}.init || die
 	newinitd ${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-
-	enewgroup ${PN}
-	# note this works only for first install so we have to
-	# elog user about the need of being in video group
-	local groups="${PN}"
-	if use cuda; then
-		groups+=",video"
-	fi
-	enewuser ${PN} -1 -1 /var/lib/${PN} "${groups}"
 }
 
 pkg_postinst() {
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
+	if use X; then
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+		xdg_icon_cache_update
 	fi
 
 	elog
@@ -173,12 +182,10 @@ pkg_postinst() {
 		elog "Remember to launch init script before using manager. Or changing the password."
 		elog
 	fi
-	if use cuda; then
-		elog "To be able to use CUDA you should add boinc user to video group."
-		elog "Run as root:"
-		elog "gpasswd -a boinc video"
-		elog
-	fi
+	elog "To be able to use CUDA or OpenCL you should add the boinc user to the video group."
+	elog "Run as root:"
+	elog "gpasswd -a boinc video"
+	elog
 	# Add information about BOINC supporting OpenCL
 	elog "BOINC supports OpenCL. To use it you have to eselect"
 	if use cuda; then
@@ -190,7 +197,9 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
+	if use X; then
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+		xdg_icon_cache_update
 	fi
 }
