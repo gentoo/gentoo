@@ -148,7 +148,7 @@ src_install() {
 	fi
 
 	# cleanup cruft
-	rm -rf "${ED}"/etc || die "rm failed"
+	rm -r "${ED}"/etc || die "rm failed"
 	find "${D}" -name '*.la' -delete || die "Removing .la files failed"
 
 	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.init.in > ${PN}.init || die
