@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-01-18)
+# Older versions: need Python 2
+# Newer versions: ported to Python 3, but need
+# testing on real hardware.
+# bug #735352
+games-strategy/0ad
+~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
+
 # Jonas Stein <jstein@gentoo.org> (2021-01-17)
 # Removal in 30 days.  
 # Fails to compile Bug #765697.
@@ -465,16 +473,6 @@ kde-apps/kdebase-meta:5
 =dev-python/pypy3-7.3.3_p37*
 =dev-python/pypy3-exe-7.3.3_p37*
 =dev-python/pypy3-exe-bin-7.3.3_p37*
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-09)
-# These packages (or package versions) still require Python 2.7.
-# They are either dead upstream, their Python 3 porting efforts are
-# not progressing or their maintainers are simply unresponsive.
-# Please do not remove any packages from this list unless you actually
-# port them to Python 3.
-# Removal in 30 days.  Please find relevant bugs on tracker bug #694800.
-games-strategy/0ad
-~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
 # Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
