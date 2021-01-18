@@ -48,4 +48,5 @@ src_install() {
 
 	# NOTE: dev-util/ragel needs the static libraries
 	# and .la files, unfortunately.
+	# (May have better luck if we use the CMake port?)
 }
