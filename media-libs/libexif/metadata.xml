@@ -4,6 +4,7 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="cpe">cpe:/a:curtis_galloway:libexif</remote-id>
+		<remote-id type="github">libexif/libexif</remote-id>
 		<remote-id type="sourceforge">libexif</remote-id>
 	</upstream>
 </pkgmetadata>
