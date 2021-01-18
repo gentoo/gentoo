@@ -33,6 +33,7 @@ acct-group/cinder 0-r1: System group: cinder
 acct-group/clair 0-r1: System group: clair
 acct-group/clamav 0-r1: System group: clamav
 acct-group/cmd5checkpw 0-r1: System group: cmd5checkpw
+acct-group/colord 0: System group: colord
 acct-group/consul 0-r1: System group: consul
 acct-group/consul-template 0-r1: System group: consul-template
 acct-group/consul_exporter 0: System group: consul_exporter
@@ -73,6 +74,7 @@ acct-group/fvwm-crystal 0-r1: System group: fvwm-crystal
 acct-group/gamemode 0: Group for the system-wide games-util/gamemode resource group
 acct-group/gamestat 0-r1: Group for shared high-score and game state files
 acct-group/gatling 0-r1: System group: gatling
+acct-group/gdm 0: System group: gdm
 acct-group/geneweb 0-r1: Group for geneweb daemon
 acct-group/geoclue 0: System group: geoclue
 acct-group/gerbera 0-r1: Gerbera UPnP Media Server group
@@ -319,6 +321,7 @@ acct-user/cinder 0-r1: user for the openstack cinder service
 acct-user/clair 0-r1: User for clair
 acct-user/clamav 0-r1: System user: clamav
 acct-user/cmd5checkpw 0-r1: User for cmd5checkpw
+acct-user/colord 0: User for running the colord service
 acct-user/consul 0-r1: User for consul
 acct-user/consul-template 0-r1: User for consul-template
 acct-user/consul_exporter 0: user for consul_exporter
@@ -355,6 +358,7 @@ acct-user/freenet 0: User for net-p2p/freenet
 acct-user/frr 0: System user: frr
 acct-user/ftp 0-r1: File Transfer Protocol server user
 acct-user/gatling 0-r1: System user: gatling
+acct-user/gdm 0: User for running GDM
 acct-user/geneweb 0-r1: user id for geneweb daemon
 acct-user/geoclue 0: User for running the GeoClue D-Bus geolocation service
 acct-user/gerbera 0-r1: Gerbera UPnP Media Server user
@@ -2442,7 +2446,7 @@ app-misc/gcal 3.6.3 4.1: The GNU Calendar - a replacement for cal
 app-misc/gcalcli 4.2.0: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.1-r1: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
-app-misc/geneweb 6.08.01 7.0.0-r1: Genealogy software program with a Web interface
+app-misc/geneweb 6.08.01 7.0.0-r2: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/gentoo-elections 0_p20190710: Gentoo election control data and scripts
 app-misc/geoclue 2.4.13 2.5.3-r2 2.5.7: A location information D-Bus service
@@ -5513,7 +5517,7 @@ dev-libs/libsavitar 4.7.0 4.8.0: C++ implementation of 3mf loading with SIP pyth
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928 0.1_pre20190401: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
-dev-libs/libsigc++ 1.2.7 2.10.1 2.10.3: Typesafe callback system for standard C++
+dev-libs/libsigc++ 1.2.7 2.10.1 2.10.3 2.10.6: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.18: A portable fork of NaCl, a higher-level cryptographic library
@@ -18220,7 +18224,7 @@ x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-libs/agg 2.5-r3: High quality rendering engine library for C++
 x11-libs/c++-gtk-utils 2.0.34 2.2.19: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.16.0-r4 9999: A vector graphics library with cross-device output support
-x11-libs/colord-gtk 0.1.26: GTK support library for colord
+x11-libs/colord-gtk 0.1.26 0.2.0: GTK support library for colord
 x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
 x11-libs/fltk 1.3.5-r4 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.57-r1 1.7.67: C++ Toolkit for developing Graphical User Interfaces easily and effectively
