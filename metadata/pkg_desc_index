@@ -8040,7 +8040,7 @@ dev-python/chardet 3.0.4-r1 4.0.0: Universal encoding detector
 dev-python/chart-studio 1.1.0: Browser-based graphing library for Python
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cheetah3 3.2.6: Python-powered template engine and code generator
-dev-python/cheroot 8.5.0: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
+dev-python/cheroot 8.5.0 8.5.2: Cheroot is the high-performance, pure-Python HTTP server used by CherryPy.
 dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
@@ -8537,7 +8537,7 @@ dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning fil
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 6.1.3 6.1.5 6.1.6 6.2.0: Jupyter Interactive Notebook
 dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
-dev-python/nototools 0_pre20200207 0.2.13: Noto fonts support tools and scripts plus web site generation
+dev-python/nototools 0.2.13: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
@@ -8642,7 +8642,7 @@ dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 1.18.0 2.2.0-r1 2.3.0 2.4.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.0: Python Imaging Library (fork)
-dev-python/pip 20.3.1 20.3.3: Installs python packages -- replacement for easy_install
+dev-python/pip 20.3.3: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pivy 0.6.5: Coin3D bindings for Python
@@ -8925,7 +8925,7 @@ dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-keystoneclient 4.1.1: Client Library for OpenStack Identity
-dev-python/python-language-server 0.36.1 0.36.2: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.36.2: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0 0.12.1: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
@@ -8957,7 +8957,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.1.0 1.1.2 1.2.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.1.2 1.2.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
@@ -8997,7 +8997,7 @@ dev-python/pyzmq 19.0.2 20.0.0: Lightweight and super-fast messaging library bui
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5 2.11.6: Python bindings for QScintilla
-dev-python/qtawesome 1.0.1 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
+dev-python/qtawesome 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.7.6 5.0.1: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
@@ -9128,7 +9128,7 @@ dev-python/sphinx-issues 1.2.0: A Sphinx extension for linking to your project's
 dev-python/sphinx-jinja 0.3.0: A sphinx extension to include jinja based templates into a sphinx doc
 dev-python/sphinx-multiversion 0.2.4: Add support for multiple versions to sphinx
 dev-python/sphinx-notfound-page 0.5: Create a custom 404 page with absolute URLs hardcoded.
-dev-python/sphinx-panels 0.4.1 0.5.2: A sphinx extension for creating panels in a grid layout
+dev-python/sphinx-panels 0.5.2: A sphinx extension for creating panels in a grid layout
 dev-python/sphinx-prompt 1.3.0: Sphinx directive to add unselectable prompt
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
@@ -9197,7 +9197,7 @@ dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3 0.9.1: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
-dev-python/testfixtures 6.16.0 6.17.0 6.17.1: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 6.17.0 6.17.1: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testpath 0.4.4-r1: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
@@ -9281,7 +9281,7 @@ dev-python/vpython 7.6.1-r2: VPython for Jupyter notebook
 dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3 0.6.5: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
-dev-python/watchdog 1.0.0 1.0.2: Python API and shell utilities to monitor file system events
+dev-python/watchdog 1.0.2: Python API and shell utilities to monitor file system events
 dev-python/wcmatch 7.1 7.2: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
@@ -9331,7 +9331,7 @@ dev-python/zVMCloudConnector 1.4.1: a development sdk for managing z/VM
 dev-python/zc-lockfile 2.0: Basic inter-process locks
 dev-python/zconfig 3.5.0: A configuration library supporting a hierarchical schema-driven configuration model
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
-dev-python/zeroconf 0.24.4 0.28.6 0.28.7 0.28.8: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
+dev-python/zeroconf 0.28.7 0.28.8: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zipp 3.4.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.4.0: Zope Configuration Architecture
