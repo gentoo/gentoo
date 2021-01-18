@@ -7968,7 +7968,7 @@ dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
-dev-python/aws-sam-translator 1.32.0-r1 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
+dev-python/aws-sam-translator 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
@@ -8002,8 +8002,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3: Amazon Web Services API
-dev-python/boto3 1.16.30 1.16.36 1.16.43 1.16.50 1.16.51 1.16.52 1.16.53 1.16.54 1.16.55 1.16.56 9999: The AWS SDK for Python
-dev-python/botocore 1.19.30 1.19.36 1.19.43 1.19.50 1.19.51 1.19.52 1.19.53 1.19.54 1.19.55 1.19.56 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.36 1.16.43 1.16.50 1.16.56 9999: The AWS SDK for Python
+dev-python/botocore 1.19.36 1.19.43 1.19.50 1.19.56 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8029,7 +8029,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.43.0 0.44.0 0.44.1 0.44.2 0.44.3: CloudFormation Linter
+dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3: CloudFormation Linter
 dev-python/cftime 1.3.0: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8099,7 +8099,7 @@ dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dask 2.30.0 2021.1.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
-dev-python/dbusmock 0.19 0.20.0 0.21.0 0.22.0: Easily create mock objects on D-Bus for software testing
+dev-python/dbusmock 0.20.0 0.22.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
@@ -8750,7 +8750,7 @@ dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL
 dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0: Python bindings for libgit2
-dev-python/pyglet 1.5.10 1.5.11 1.5.13 1.5.14: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.5.13 1.5.14: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.4: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
@@ -8791,7 +8791,7 @@ dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.2: Python client for Neovim
 dev-python/pyocr 0.7.2 0.8: An optical character recognition (OCR) tool wrapper
-dev-python/pyopencl 2020.2.2 2020.3.1: Python wrapper for OpenCL
+dev-python/pyopencl 2020.3.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0-r1 20.0.0-r1 20.0.1: Python interface to the OpenSSL library
@@ -8869,12 +8869,12 @@ dev-python/pytest-httpbin 1.0.0-r1: Easily test your HTTP library against a loca
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
-dev-python/pytest-mock 3.3.1 3.4.0 3.5.0 3.5.1: Thin-wrapper around the mock package for easier use with pytest
+dev-python/pytest-mock 3.4.0 3.5.1: Thin-wrapper around the mock package for easier use with pytest
 dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific order
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-regressions 2.0.2 2.1.1: Easy to use fixtures to write regression tests
+dev-python/pytest-regressions 2.1.1: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
@@ -8885,7 +8885,7 @@ dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.4.2-r1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.34.0-r1 2.1.0 2.2.0 2.2.0-r1: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.34.0-r1 2.2.0 2.2.0-r1: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.17.0: Manage external processes across test runs
 dev-python/pytest-xvfb 2.0.0: A pytest plugin to run Xvfb for tests
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
@@ -16793,7 +16793,7 @@ sys-apps/baobab 3.34.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1 2.7 2.7-r1 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
-sys-apps/baselayout-prefix 2.2-r5 2.6-r1 2.6-r2: Filesystem baselayout and init scripts
+sys-apps/baselayout-prefix 2.6-r2: Filesystem baselayout and init scripts
 sys-apps/bat 0.15.4 0.17.1 0.17.1-r1: cat(1) clone with syntax highlighting and Git integration
 sys-apps/biosdevname 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 1.01: FreeDOS based BIOS updating utility for Dell machines
@@ -17544,7 +17544,7 @@ sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.4.88 5.4.88-r1 5.4.89 5.4.89-r1 5.4.90 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1 5.10.6 5.10.6-r1 5.10.7 5.10.7-r1 5.10.8: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.4.88 5.4.88-r1 5.4.89 5.4.89-r1 5.4.90 5.4.90-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1 5.10.6 5.10.6-r1 5.10.7 5.10.7-r1 5.10.8 5.10.8-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.4.251 4.4.252 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.9.251 4.9.252 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.14.215 4.14.216 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 4.19.167 4.19.168 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -18019,7 +18019,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.6.1 84.0.2: Firefox Web Browser
 www-client/firefox-bin 78.6.1 84.0.2: Firefox Web Browser
 www-client/google-chrome 87.0.4280.141: The web browser from Google
-www-client/google-chrome-beta 88.0.4324.87: The web browser from Google
+www-client/google-chrome-beta 88.0.4324.96: The web browser from Google
 www-client/google-chrome-unstable 89.0.4385.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18032,7 +18032,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 73.0.3856.344: A fast and secure web browser
 www-client/opera-beta 74.0.3911.22 74.0.3911.42: A fast and secure web browser
-www-client/opera-developer 75.0.3925.0 75.0.3932.0: A fast and secure web browser
+www-client/opera-developer 75.0.3925.0 75.0.3932.0 75.0.3939.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.0 1.14.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -18062,7 +18062,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 87.0.4280.141 88.0.4324.87_beta 89.0.4385.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 87.0.4280.141 88.0.4324.96_beta 89.0.4385.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
