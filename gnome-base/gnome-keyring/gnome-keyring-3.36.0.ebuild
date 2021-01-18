@@ -1,8 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
+EAPI=7
 PYTHON_COMPAT=( python3_{6..9} )
 
 inherit fcaps gnome2 pam python-any-r1 virtualx
@@ -19,16 +18,18 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x
 # Replace gkd gpg-agent with pinentry[gnome-keyring] one, bug #547456
 RDEPEND="
 	>=app-crypt/gcr-3.27.90:=[gtk]
-	>=dev-libs/glib-2.44:2
+	>=app-crypt/gnupg-2.0.28:=
+	>=app-eselect/eselect-pinentry-0.5
 	app-misc/ca-certificates
+	>=dev-libs/glib-2.44:2
 	>=dev-libs/libgcrypt-1.2.2:0=
 	caps? ( sys-libs/libcap-ng )
 	pam? ( sys-libs/pam )
 	selinux? ( sec-policy/selinux-gnome )
-	>=app-crypt/gnupg-2.0.28:=
 	ssh-agent? ( net-misc/openssh )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=app-eselect/eselect-pinentry-0.5
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt
