@@ -4,11 +4,11 @@ DESCRIPTION=Submission tools for IRC notifications
 EAPI=7
 HOMEPAGE=http://www.catb.org/esr/irker/ https://gitlab.com/esr/irker
 IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=amd64 arm arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 ~sparc x86
 LICENSE=BSD-2
 RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[ssl] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9[ssl] >=dev-lang/python-exec-2:=[python_targets_python3_9] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=http://www.catb.org/esr/irker/irker-2.19.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=64960d08efa91d252539dee743f139ec
+_md5_=413766e663eaff3180e5bf52821f2357
