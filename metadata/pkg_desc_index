@@ -20,6 +20,7 @@ acct-group/bedrock 0-r1: A group for the Minecraft Bedrock server
 acct-group/bind_exporter 0-r1: System group: bind_exporter
 acct-group/bitcoin 0-r1: A group for users with access to system-wide Bitcoin services
 acct-group/bitlbee 0-r1: System group: bitlbee
+acct-group/boinc 0: Group for sci-misc/boinc
 acct-group/buildbot 0-r1: Buildbot program group
 acct-group/burp 0-r1: Group for the app-backup/burp server
 acct-group/cadvisor 0-r1: System group: cadvisor
@@ -306,6 +307,7 @@ acct-user/bedrock 0-r1: A user for the Minecraft Bedrock server
 acct-user/bind_exporter 0-r1: user for bind_exporter
 acct-user/bitcoin 0-r1: System-wide Bitcoin services user
 acct-user/bitlbee 0-r1: User for biltbee
+acct-user/boinc 0: User for sci-misc/boinc
 acct-user/buildbot 0-r1: Buildbot program user
 acct-user/burp 0-r1: User for the app-backup/burp server
 acct-user/cadvisor 0-r1: User for cadvisor
@@ -16447,7 +16449,7 @@ sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.8.9: An efficient theorem prover
 sci-misc/ViSP-images 3.2.0 3.3.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
-sci-misc/boinc 7.8.6 7.9.3 7.14.2 9999: The Berkeley Open Infrastructure for Network Computing
+sci-misc/boinc 7.14.2 7.16.14 9999: The Berkeley Open Infrastructure for Network Computing
 sci-misc/cdfplayer 11.2.0 11.3.0 12.2.0: Wolfram Player for the interactive Computable Document Format (CDF)
 sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17 4.18: FITS file format checker
@@ -17286,7 +17288,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/rdma-core 30.0-r2 31.0 32.0 33.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1 4.6.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.8.2: shared storage lock manager
-sys-cluster/singularity 3.6.4 3.7.0: Application containers for Linux
+sys-cluster/singularity 3.6.4 3.7.0 3.7.1: Application containers for Linux
 sys-cluster/slurm 20.11.0.1 20.11.0.1-r100: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.4.3 2.4.7-r1 3.0.1-r2: Lightning-fast unified analytics engine
 sys-cluster/swift 2.25.1 2.26.0 2020.1.9999 2020.2.9999: A highly available, distributed, and eventually consistent object/blob store
