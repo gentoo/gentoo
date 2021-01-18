@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools toolchain-funcs xdg
 
 DESCRIPTION="Convert HTML pages into a PDF document"
-HOMEPAGE="http://www.msweet.org/projects.php?Z1"
+HOMEPAGE="https://www.msweet.org/htmldoc/"
 SRC_URI="https://github.com/michaelrsweet/${PN}/releases/download/v${PV}/${P}-source.tar.gz"
 
 SLOT="0"
