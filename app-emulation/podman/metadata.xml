@@ -6,10 +6,13 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<longdescription lang="en">
-		libpod provides a library for applications looking to use the
-		Container Pod concept popularized by Kubernetes. libpod also
-		contains a tool called podman for managing Pods, Containers,
-		and Container Images.
+		Podman (the POD MANager) is a tool for managing containers
+		and images, volumes mounted into those containers, and pods
+		made from groups of containers. Podman is based on libpod,
+		a library for container lifecycle management that is also
+		contained in this repository. The libpod library provides
+		APIs for managing containers, pods, container images,
+		and volumes.
 	</longdescription>
 	<use>
 		<flag name="apparmor">
@@ -28,6 +31,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">containers/libpod</remote-id>
+		<remote-id type="github">containers/podman</remote-id>
 	</upstream>
 </pkgmetadata>
