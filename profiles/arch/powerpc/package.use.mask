@@ -65,7 +65,7 @@ app-emulation/qemu sdl-image
 # requires fwupd, which is not yet keyworded
 kde-plasma/discover firmware
 
-# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
 # rtl-sdr needs net-wireless/rtl-sdr
 net-wireless/kismet rtlsdr ubertooth

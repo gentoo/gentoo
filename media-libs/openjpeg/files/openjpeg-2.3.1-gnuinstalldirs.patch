@@ -1,5 +1,5 @@
 From fecc8e9e23f78de94c41bc641b3e5b9e9a84560b Mon Sep 17 00:00:00 2001
-From: Andreas Sturmlechner <asturm@gentoo.com>
+From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Thu, 11 Apr 2019 13:10:57 +0200
 Subject: [PATCH] Use GNUInstallDirs for standard installation directories
 
