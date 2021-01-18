@@ -15,14 +15,14 @@ IUSE="+ocamlopt"
 RESTRICT="strip"
 
 RDEPEND="dev-lang/ocaml[ocamlopt?]
-	dev-ml/camlp5[ocamlopt?]
+	<dev-ml/camlp5-8:=[ocamlopt?]
 	acct-user/geneweb
 	acct-group/geneweb
-	dev-ml/jingoo
-	dev-ml/uunf
-	>=dev-ml/markup-1.0.0
-	dev-ml/unidecode
-	dev-ml/calendars"
+	dev-ml/jingoo:=
+	dev-ml/uunf:=
+	>=dev-ml/markup-1.0.0:=
+	dev-ml/unidecode:=
+	dev-ml/calendars:="
 DEPEND="${RDEPEND}
 	dev-ml/cppo"
 
