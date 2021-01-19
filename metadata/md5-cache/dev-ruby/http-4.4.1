@@ -5,7 +5,7 @@ DESCRIPTION=An easy-to-use client library for making requests from Ruby
 EAPI=7
 HOMEPAGE=https://github.com/tarcieri/http
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 doc test test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby25? ( >=dev-ruby/addressable-2.3:0[ruby_targets_ruby25(-)] >=dev-ruby/http-cookie-1.0:0[ruby_targets_ruby25(-)] >=dev-ruby/http-form_data-2.2:2[ruby_targets_ruby25(-)] =dev-ruby/http-parser-1.2*[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( >=dev-ruby/addressable-2.3:0[ruby_targets_ruby26(-)] >=dev-ruby/http-cookie-1.0:0[ruby_targets_ruby26(-)] >=dev-ruby/http-form_data-2.2:2[ruby_targets_ruby26(-)] =dev-ruby/http-parser-1.2*[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( >=dev-ruby/addressable-2.3:0[ruby_targets_ruby27(-)] >=dev-ruby/http-cookie-1.0:0[ruby_targets_ruby27(-)] >=dev-ruby/http-form_data-2.2:2[ruby_targets_ruby27(-)] =dev-ruby/http-parser-1.2*[ruby_targets_ruby27(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( virtual/rubygems[ruby_targets_ruby27(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=4
 SRC_URI=https://rubygems.org/gems/http-4.4.1.gem
 _eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=3cf1e1bd725fef02206bb1044104a9bb
+_md5_=4d0af0f1ca88132e6234b94bba72c68a
