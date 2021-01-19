@@ -11,6 +11,7 @@ app-text/enchant test
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and
 # dev-tex/pythontex which are not keyworded on ppc.
+# bug #766150
 dev-tex/rubber test
 
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
