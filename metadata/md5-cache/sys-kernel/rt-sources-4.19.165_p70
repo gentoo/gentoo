@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
+EAPI=6
+HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://www.kernel.org/pub/linux/kernel/projects/rt/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+IUSE=symlink build deblob
+KEYWORDS=~amd64 ~arm64
+LICENSE=GPL-2
+RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
+RESTRICT=binchecks strip
+SLOT=4.19.165_p70
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.165.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.19-gnu/deblob-4.19 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.19-gnu/deblob-check -> deblob-check-4.19 ) https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/patch-4.19.165-rt70.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-4.19.165-rt70.patch.xz
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	kernel-2	29b0ddf528a34e7e8c7c179cfbdb5c26	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_md5_=5b802ba4c941f8e25109fb10e8799c8e
