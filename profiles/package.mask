@@ -293,11 +293,6 @@ app-text/ots
 # Removal in 30 days.  Bug #669452.
 net-misc/dhcpd-pools
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  Last bumped in 2018.  Vulnerable.  No revdeps.
-# Removal in 30 days.  Bug #736050.
-dev-db/aerospike-server-community
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
