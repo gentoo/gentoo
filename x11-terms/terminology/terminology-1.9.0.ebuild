@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson xdg-utils
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit meson python-any-r1 xdg-utils
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/about-terminology"
@@ -19,8 +21,21 @@ RDEPEND="|| ( dev-libs/efl[gles2-only] dev-libs/efl[opengl] )
 	app-arch/lz4
 	dev-libs/efl[eet,fontconfig]"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+
+	# Fix python shebangs for python-exec[-native-symlinks], #766081
+	local shebangs=($(grep -rl "#!/usr/bin/env python3" || die))
+	python_fix_shebang -q ${shebangs[*]}
+}
 
 src_configure() {
 	local emesonargs=(
