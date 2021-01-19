@@ -5194,7 +5194,7 @@ dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10 8.6.11: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
-dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1 8.6.10 8.6.11: Tk Widget Set
+dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1 8.6.10 8.6.11 8.6.11.1: Tk Widget Set
 dev-lang/tuprolog 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.20 0.40.20 0.40.23 0.40.24 0.44.11 0.46.10 0.46.13 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
