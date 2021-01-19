@@ -282,11 +282,6 @@ net-mail/vacation
 # Removal in 30 days.  Bug #675364.
 net-ftp/tlswrap
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Upstream gone.  Last bumped in 2007.  Fails to build, again.
-# Removal in 30 days.  Bug #648964.
-app-text/ots
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
