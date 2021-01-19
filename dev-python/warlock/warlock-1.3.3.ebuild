@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python object model built on JSON schema and JSON patch"
 HOMEPAGE="https://github.com/bcwaldon/warlock"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/bcwaldon/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
