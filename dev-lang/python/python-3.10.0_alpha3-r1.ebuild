@@ -9,7 +9,7 @@ inherit autotools check-reqs flag-o-matic multiprocessing pax-utils \
 
 MY_P="Python-${PV/_alpha/a}"
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.10.0a1"
+PATCHSET="python-gentoo-patches-3.10.0a3-r1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
