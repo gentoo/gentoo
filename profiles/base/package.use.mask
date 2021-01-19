@@ -10,11 +10,6 @@
 # Requires masked media-sound/mp3_check.
 app-cdr/burncdda mp3
 
-# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
-# Test-dep needs keywording on multiple arches, best to just mask it
-# globally for now. Resolves issue by b5248bbb1b5
-app-text/enchant test
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # Block test deps on packages until they can be updated
 # Old phpunit does not work with new PHP and last is vulnerable
