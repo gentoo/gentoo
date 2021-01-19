@@ -256,11 +256,6 @@ dev-python/awesome-slugify
 dev-haskell/derive
 app-forensics/quickfuzz
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-19)
-# Made redundant by compiler-rt's crt implementation.  No revdeps left.
-# Removal in 30 days.  Bug #760711.
-sys-libs/netbsd-csu
-
 # Mike Pagano <mpagano@gentoo.org> (2020-12-18)
 # Serious data corruption bug when using F2FS,
 # see https://bugzilla.kernel.org/show_bug.cgi?id=210765
