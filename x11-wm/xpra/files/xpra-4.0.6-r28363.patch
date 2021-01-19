@@ -1,0 +1,238 @@
+Index: selinux/xpra_socketactivation/xpra_socketactivation.te
+===================================================================
+--- a/selinux/xpra_socketactivation/xpra_socketactivation.te	(revision 28285)
++++ b/selinux/xpra_socketactivation/xpra_socketactivation.te	(revision 28363)
+@@ -27,6 +27,7 @@
+ 	type unconfined_t;
+ 	type bin_t;
+ 	type avahi_t;
++	type config_home_t;
+ 
+ 	attribute can_read_shadow_passwords;
+ }
+@@ -55,6 +56,9 @@
+ allow xpra_t xpra_conf_t:dir { getattr open read search };
+ files_search_etc(xpra_t)
+ 
++allow xpra_t config_home_t:dir { getattr search };
++allow xpra_t config_home_t:file { getattr ioctl open read };
++
+ type xpra_socket_t;
+ files_type(xpra_socket_t)
+ 
+Index: setup.py
+===================================================================
+--- a/setup.py	(revision 28285)
++++ b/setup.py	(revision 28363)
+@@ -1533,8 +1533,9 @@
+                     for k,v in subs.items():
+                         data = data.replace(k, v)
+                 with open(dst_file, "wb") as f:
+-                    return f.write(data)
++                    f.write(data)
+                 if chmod:
++                    print("chmod(%s, %s)" % (dst_file, oct(chmod)))
+                     os.chmod(dst_file, chmod)
+ 
+             if printing_ENABLED and POSIX:
+Index: unittests/unit/net/crypto_test.py
+===================================================================
+--- a/unittests/unit/net/crypto_test.py	(revision 28285)
++++ b/unittests/unit/net/crypto_test.py	(revision 28363)
+@@ -88,7 +88,7 @@
+         start = monotonic_time()
+         self.do_test_backend(data, enc_iterations, dec_iterations)
+         end = monotonic_time()
+-        elapsed = end-start
++        elapsed = max(0.0001, end-start)
+         speed = (asize*16) * (enc_iterations + dec_iterations) / elapsed
+         iter_time = elapsed*1000/(enc_iterations + dec_iterations)
+         print("%10iKB: %5.1fms: %16iMB/s" % (asize*16//1024, iter_time, speed//1024//1024))
+Index: win32/MINGW_BUILD.sh
+===================================================================
+--- a/win32/MINGW_BUILD.sh	(revision 28285)
++++ b/win32/MINGW_BUILD.sh	(revision 28363)
+@@ -286,6 +286,8 @@
+ #why is it shipping those files??
+ find lib/ -name "*dll.a" -exec rm {} \;
+ #only keep the actual loaders, not all the other crap cx_Freeze put there:
++#but keep librsvg
++mv lib/gdk-pixbuf-2.0/2.10.0/loaders/librsvg* ./
+ mkdir lib/gdk-pixbuf-2.0/2.10.0/loaders.tmp
+ mv lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-*.dll lib/gdk-pixbuf-2.0/2.10.0/loaders.tmp/
+ rm -fr lib/gdk-pixbuf-2.0/2.10.0/loaders
+@@ -326,6 +328,9 @@
+ #and keep pdfium:
+ mv lib/*pdfium*.dll ./
+ pushd lib > /dev/null
++#cx_Freeze forgets these two!?
++cp $MINGW_PREFIX/bin/libatk-*dll ./
++cp $MINGW_PREFIX/bin/libgtk-*dll ./
+ #remove all the pointless duplication:
+ for x in `ls *dll`; do
+ 	find ./ -mindepth 2 -name "${x}" -exec rm {} \;
+Index: xpra/client/gtk_base/gtk_client_window_base.py
+===================================================================
+--- a/xpra/client/gtk_base/gtk_client_window_base.py	(revision 28285)
++++ b/xpra/client/gtk_base/gtk_client_window_base.py	(revision 28363)
+@@ -1806,10 +1806,16 @@
+ 
+     def _set_backing_size(self, ww, wh):
+         b = self._backing
++        bw = self._client.cx(ww)
++        bh = self._client.cy(wh)
++        if max(ww, wh)>=32000 or min(ww, wh)<0:
++            raise Exception("invalid window size %ix%i" % (ww, wh))
++        if max(bw, bh)>=32000:
++            raise Exception("invalid window backing size %ix%i" % (bw, bh))
+         if b:
+-            b.init(ww, wh, self._client.cx(ww), self._client.cy(wh))
++            b.init(ww, wh, bw, bh)
+         else:
+-            self.new_backing(self._client.cx(ww), self._client.cy(wh))
++            self.new_backing(bw, bh)
+ 
+     def resize(self, w, h, resize_counter=0):
+         ww, wh = self.get_size()
+Index: xpra/net/file_transfer.py
+===================================================================
+--- a/xpra/net/file_transfer.py	(revision 28285)
++++ b/xpra/net/file_transfer.py	(revision 28363)
+@@ -580,6 +580,10 @@
+ 
+     def _process_open_url(self, packet):
+         url, send_id = packet[1:3]
++        try:
++            url = strtobytes(url).decode("utf8")
++        except UnicodeDecodeError:
++            url = bytestostr(url)
+         if not self.open_url:
+             filelog.warn("Warning: received a request to open URL '%s'", url)
+             filelog.warn(" but opening of URLs is disabled")
+@@ -670,12 +674,12 @@
+         filelog("process send-data-request: send_id=%s, url=%s, printit=%s, openit=%s", s(send_id), url, printit, openit)
+         def cb_answer(accept):
+             filelog("accept%s=%s", (url, printit, openit), accept)
++            self.send("send-data-response", send_id, accept)
+         #filenames and url are always sent encoded as utf8:
+         try:
+             url = strtobytes(url).decode("utf8")
+         except:
+             url = bytestostr(url)
+-            self.send("send-data-response", send_id, accept)
+         if dtype==b"file":
+             if not self.file_transfer:
+                 cb_answer(False)
+Index: xpra/net/socket_util.py
+===================================================================
+--- a/xpra/net/socket_util.py	(revision 28285)
++++ b/xpra/net/socket_util.py	(revision 28363)
+@@ -622,7 +622,7 @@
+             log.info(" %s does not exist", dirname)
+         #only show extra information if the socket permissions
+         #would have been accessible by the group:
+-        if POSIX and (sperms & 0o40):
++        elif POSIX and (sperms & 0o40):
+             uid = getuid()
+             username = get_username_for_uid(uid)
+             groups = get_groups(username)
+Index: xpra/platform/xposix/paths.py
+===================================================================
+--- a/xpra/platform/xposix/paths.py	(revision 28285)
++++ b/xpra/platform/xposix/paths.py	(revision 28363)
+@@ -102,12 +102,12 @@
+ 
+ def do_get_user_conf_dirs(uid):
+     #per-user configuration location:
+-    #(but never use /root/.xpra)
++    #(but never use /root/.xpra or /root/.config/xpra)
+     if uid is None:
+         uid = os.getuid()
+     dirs = []
+-    dirs += [os.path.join(os.environ.get("XDG_CONFIG_HOME", "~/.config"), "xpra")]
+     if uid>0:
++        dirs += [os.path.join(os.environ.get("XDG_CONFIG_HOME", "~/.config"), "xpra")]
+         dirs.append("~/.xpra")
+     return dirs
+ 
+Index: xpra/platform/xposix/sd_listen.pyx
+===================================================================
+--- a/xpra/platform/xposix/sd_listen.pyx	(revision 28285)
++++ b/xpra/platform/xposix/sd_listen.pyx	(revision 28363)
+@@ -52,7 +52,7 @@
+     return sockets
+ 
+ def get_sd_socket_type(fd):
+-    from xpra.net.common import TCP_SOCKTYPES
++    from xpra.net.bytestreams import TCP_SOCKTYPES
+     socktype = os.environ.get("XPRA_SD%i_SOCKET_TYPE" % fd)
+     if not socktype:
+         socktype = os.environ.get("XPRA_SD_SOCKET_TYPE", "tcp")
+Index: xpra/server/mixins/audio_server.py
+===================================================================
+--- a/xpra/server/mixins/audio_server.py	(revision 28285)
++++ b/xpra/server/mixins/audio_server.py	(revision 28363)
+@@ -121,7 +121,7 @@
+             from xpra.platform.xposix.paths import _get_xpra_runtime_dir, get_runtime_dir
+             rd = osexpand(get_runtime_dir())
+             if not os.path.exists(rd) or not os.path.isdir(rd):
+-                log.warn("Warning: the runtime directory '%s' does not exist,")
++                log.warn("Warning: the runtime directory '%s' does not exist,", rd)
+                 log.warn(" cannot start a private pulseaudio server")
+             else:
+                 xpra_rd = _get_xpra_runtime_dir()
+Index: xpra/server/window/motion.pyx
+===================================================================
+--- a/xpra/server/window/motion.pyx	(revision 28285)
++++ b/xpra/server/window/motion.pyx	(revision 28363)
+@@ -79,7 +79,7 @@
+         for i,v in enumerate(arr):
+             self.a2[i] = <uint64_t> abs(v)
+ 
+-    def update(self, pixels, int16_t x, int16_t y, uint16_t width, uint16_t height, uint16_t rowstride, uint8_t bpp=4):
++    def update(self, pixels, int16_t x, int16_t y, uint16_t width, uint16_t height, uint32_t rowstride, uint8_t bpp=4):
+         """
+             Add a new image to compare with,
+             checksum its rows into a2,
+Index: xpra/server/window/window_video_source.py
+===================================================================
+--- a/xpra/server/window/window_video_source.py	(revision 28285)
++++ b/xpra/server/window/window_video_source.py	(revision 28363)
+@@ -1785,6 +1785,13 @@
+             scrolllog("no scrolling: detection has already been used on this image")
+             #we've already checked
+             return False
++        x = image.get_target_x()
++        y = image.get_target_y()
++        w = image.get_width()
++        h = image.get_height()
++        if w>=32000 or h>=32000:
++            scrolllog("no scrolling: the image is too large, %ix%i", w, h)
++            return False
+         #don't download the pixels if we have a GPU buffer,
+         #since that means we're likely to be able to compress on the GPU too with NVENC:
+         if not image.has_pixels():
+@@ -1792,10 +1799,6 @@
+         if self.content_type=="video" or not self.non_video_encodings:
+             scrolllog("no scrolling: content is video")
+             return False
+-        x = image.get_target_x()
+-        y = image.get_target_y()
+-        w = image.get_width()
+-        h = image.get_height()
+         if w<MIN_SCROLL_IMAGE_SIZE or h<MIN_SCROLL_IMAGE_SIZE:
+             scrolllog("no scrolling: image size %ix%i is too small, minimum is %ix%i",
+                       w, h, MIN_SCROLL_IMAGE_SIZE, MIN_SCROLL_IMAGE_SIZE)
+Index: xpra/x11/x11_server_core.py
+===================================================================
+--- a/xpra/x11/x11_server_core.py	(revision 28285)
++++ b/xpra/x11/x11_server_core.py	(revision 28363)
+@@ -687,7 +687,7 @@
+                 #we can use XRRSetScreenSize:
+                 try:
+                     with xsync:
+-                        RandR.xrr_set_screen_size(w, h, self.xdpi or self.dpi, self.ydpi or self.dpi)
++                        RandR.xrr_set_screen_size(w, h, self.xdpi or self.dpi or 96, self.ydpi or self.dpi or 96)
+                 except XError:
+                     screenlog("XRRSetScreenSize failed", exc_info=True)
+             screenlog("calling RandR.get_screen_size()")
