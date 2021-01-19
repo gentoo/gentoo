@@ -230,36 +230,17 @@ media-gfx/wkhtmltopdf
 app-doc/clsync-docs
 dev-libs/libclsync
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-22)
-# Renamed version of dev-python/pycryptodome.  The ebuild is missing
-# fixes from the original.  Maintaining and installing two copies
-# of the same thing makes little sense, so we're forcing the former
-# everywhere.
-# Removal in 14 days.
-dev-python/pycryptodomex
-
 # Eray Aslan <eras@gentoo.org> (2020-12-21)
 # Vulnerable. upgrade to >= 2.3.11.3. Masked until
 # mail-filter/dovecot_deleted_to_trash is treecleaned
 # to prevent breaking the tree (bug #756217)
 =net-mail/dovecot-2.2.36.4
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-20)
-# Requires old dev-python/unidecode.  Last commit in 2017.  No revdeps.
-# Suggested replacement: dev-python/python-slugify.
-# Removal in 30 days.  Bug #714718.
-dev-python/awesome-slugify
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
 # https://github.com/ndmitchell/derive/pull/37
 dev-haskell/derive
 app-forensics/quickfuzz
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-19)
-# Made redundant by compiler-rt's crt implementation.  No revdeps left.
-# Removal in 30 days.  Bug #760711.
-sys-libs/netbsd-csu
 
 # Mike Pagano <mpagano@gentoo.org> (2020-12-18)
 # Serious data corruption bug when using F2FS,
@@ -269,49 +250,6 @@ sys-libs/netbsd-csu
 =sys-kernel/gentoo-sources-5.10.1
 =sys-kernel/vanilla-sources-5.10.1
 =sys-kernel/vanilla-sources-5.10.0
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  Last bumped in 2008.  Last upstream (beta) in 2014.
-# The current Gentoo version fails to install.
-# Removal in 30 days.  Bug #701044.
-net-mail/vacation
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  Homepage gone.  Last bumped in 2008.  Carries multiple
-# patches.  Fails to build again.
-# Removal in 30 days.  Bug #675364.
-net-ftp/tlswrap
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Upstream gone.  Last bumped in 2007.  Fails to build, again.
-# Removal in 30 days.  Bug #648964.
-app-text/ots
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  The current Gentoo version fails to build, it needs
-# a version bump.
-# Removal in 30 days.  Bug #669452.
-net-misc/dhcpd-pools
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  Last bumped in 2018.  Vulnerable.  No revdeps.
-# Removal in 30 days.  Bug #736050.
-dev-db/aerospike-server-community
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Abandoned upstream, circa 2013.  Vulnerable.  No revdeps.
-# Removal in 30 days.  Bug #744217.
-app-text/peg-markdown
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Abandoned in 2008.  No reverse dependencies left.
-# Removal in 30 days.  Bug #652192.
-dev-libs/ustr
-
-# Jack Todaro <solpeth@posteo.org> (2020-12-17)
-# Old and redundant package. Has not been kept
-# up to date and no longer works. Masked for removal.
-sci-mathematics/agda-lib-ffi
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
