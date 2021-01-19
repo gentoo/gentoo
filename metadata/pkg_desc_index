@@ -18007,7 +18007,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.6.1 84.0.2: Firefox Web Browser
 www-client/firefox-bin 78.6.1 84.0.2: Firefox Web Browser
-www-client/google-chrome 87.0.4280.141: The web browser from Google
+www-client/google-chrome 88.0.4324.96: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.96: The web browser from Google
 www-client/google-chrome-unstable 89.0.4385.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -18015,7 +18015,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.8.9_p1 2.9.0_pre4 2.9.0_pre5: An excellent console-based web browser with ssl support
-www-client/microsoft-edge-dev 89.0.731.0 89.0.752.1 89.0.760.0: The web browser from Microsoft
+www-client/microsoft-edge-dev 89.0.731.0 89.0.752.1 89.0.760.0 89.0.767.0: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
@@ -18051,7 +18051,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 87.0.4280.141 88.0.4324.96_beta 89.0.4385.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 88.0.4324.96_beta 88.0.4324.96 89.0.4385.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
@@ -18483,7 +18483,7 @@ x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.9-r2 2.1.1: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.101 2.0.0 2.0.1 2.1.0: Qt GUI Screenshot Utility
-x11-misc/sct 0.5 0.5-r1: Set color temperature of the screen
+x11-misc/sct 0.5-r1: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.18.1-r3: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 1-r1 9999: Simple plaintext presentation tool
