@@ -58,11 +58,6 @@ dev-db/qdbm java
 app-text/dblatex inkscape
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
-# Requires not stabilised dev-python/restkit
-dev-python/wsgiproxy2 test
-dev-python/pyquery test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # Requires not stabilised dev-python/matplotlib
 dev-python/numpydoc test
 dev-python/ipython matplotlib
