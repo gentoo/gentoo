@@ -276,12 +276,6 @@ sys-libs/netbsd-csu
 # Removal in 30 days.  Bug #701044.
 net-mail/vacation
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  Homepage gone.  Last bumped in 2008.  Carries multiple
-# patches.  Fails to build again.
-# Removal in 30 days.  Bug #675364.
-net-ftp/tlswrap
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
