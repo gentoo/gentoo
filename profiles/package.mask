@@ -340,14 +340,6 @@ dev-lang/cilk
 # Removal in 30 days.
 sci-libs/xkaapi
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-10)
-# Synergy 2.0 was a beta branch, and it should have never been marked
-# stable.  It never reached feature parity with 1.x, and upstream
-# eventually abandoned it.  The users are asked to 'downgrade' to 1.x
-# that is actively maintained.  The buggy 2.0.0 version will be removed
-# in 30 days.
->=x11-misc/synergy-2
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
