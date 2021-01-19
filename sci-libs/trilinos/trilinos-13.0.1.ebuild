@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake-utils toolchain-funcs multilib toolchain-funcs
+CMAKE_MAKEFILE_GENERATOR=emake
+inherit cmake-utils toolchain-funcs multilib
 
 DESCRIPTION="Scientific library collection for large scale problems"
 HOMEPAGE="http://trilinos.sandia.gov/"
@@ -14,7 +14,6 @@ SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz
 	https://dev.gentoo.org/~tamiko/distfiles/${PN}-13.0.0-patches-${PATCHSET}.tar.xz"
 
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-
 LICENSE="BSD LGPL-2.1"
 SLOT="0"
 
