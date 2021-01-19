@@ -298,11 +298,6 @@ net-misc/dhcpd-pools
 # Removal in 30 days.  Bug #736050.
 dev-db/aerospike-server-community
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Abandoned upstream, circa 2013.  Vulnerable.  No revdeps.
-# Removal in 30 days.  Bug #744217.
-app-text/peg-markdown
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
