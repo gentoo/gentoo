@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2011-01-19)
+# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
+# Test-dep needs keywording on multiple arches, best to just mask it
+# globally for now. Resolves issue by b5248bbb1b5
+# bug #766147
+app-text/enchant test
+
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and
 # dev-tex/pythontex which are not keyworded on ppc.
