@@ -32,7 +32,7 @@ app-metrics/collectd collectd_plugins_slurm
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
 # net-libs/libktorrent:5 is not stable anymore, bug #696858
-kde-apps/kget bittorrent
+<kde-apps/kget-20.12 bittorrent
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
