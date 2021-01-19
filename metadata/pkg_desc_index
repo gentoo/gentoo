@@ -5168,7 +5168,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 7.4.14 8.0.0 8.0.1: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r5 3.6.12-r1 3.7.9-r1 3.8.6-r1 3.8.7 3.9.0-r1 3.9.1 3.10.0_alpha3: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r5 3.6.12-r1 3.6.12-r2 3.7.9-r1 3.7.9-r2 3.8.6-r1 3.8.7-r1 3.9.0-r1 3.9.1-r1 3.10.0_alpha3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3 2.4.6-r4: Python script wrapper
 dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -16869,7 +16869,7 @@ sys-apps/haveged 1.9.2-r1 1.9.8c 1.9.13 1.9.14: A simple entropy daemon using th
 sys-apps/hd-idle 1.05-r1: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.58 9.60: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.16: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.16 1.47.17: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
@@ -17535,7 +17535,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.4.88 5.4.88-r1 5.4.89 5.4.89-r1 5.4.90 5.4.90-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1 5.10.6 5.10.6-r1 5.10.7 5.10.7-r1 5.10.8 5.10.8-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.4.251 4.4.252 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.9.251 4.9.252 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.14.215 4.14.216 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 4.19.167 4.19.168 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8: Full sources including the Gentoo patchset for the 5.10 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.4.251 4.4.252 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.9.251 4.9.252 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.14.215 4.14.216 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 4.19.167 4.19.168 4.19.169 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -17610,7 +17610,7 @@ sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt,
 sys-libs/llvm-libunwind 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 1.2.1-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 1.2.1-r1 1.2.2 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.2-r1: console display library
