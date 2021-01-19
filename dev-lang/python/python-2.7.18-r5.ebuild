@@ -65,7 +65,6 @@ DEPEND="${RDEPEND}
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 	!<=dev-lang/python-exec-2.4.6-r1"
-PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
 pkg_setup() {
 	if use berkdb; then
@@ -345,25 +344,4 @@ src_install() {
 	local pymajor=${PYVER%.*}
 	dosym "python${PYVER}" "/usr/bin/python${pymajor}"
 	dosym "python${PYVER}-config" "/usr/bin/python${pymajor}-config"
-}
-
-eselect_python_update() {
-	if [[ -z "$(eselect python show)" || \
-			! -f "${EROOT}/usr/bin/$(eselect python show)" ]]; then
-		eselect python update
-	fi
-
-	if [[ -z "$(eselect python show --python${PV%%.*})" || \
-			! -f "${EROOT}/usr/bin/$(eselect python show --python${PV%%.*})" ]]
-	then
-		eselect python update --python${PV%%.*}
-	fi
-}
-
-pkg_postinst() {
-	eselect_python_update
-}
-
-pkg_postrm() {
-	eselect_python_update
 }
