@@ -27,19 +27,7 @@ DEPEND="${RDEPEND}
 	dev-ml/cppo
 	test? ( dev-ml/ounit )"
 
-QA_FLAGS_IGNORED=(
-	/usr/bin/gwb2ged
-	/usr/bin/update_nldb
-	/usr/bin/consang
-	/usr/bin/gwd
-	/usr/bin/gwsetup
-	/usr/bin/gwc
-	/usr/bin/ged2gwb
-	/usr/bin/gwu
-	/usr/bin/connex
-	/usr/bin/gwdiff
-	/usr/bin/gwgc
-)
+QA_FLAGS_IGNORED='.*'
 
 src_configure() {
 	ocaml ./configure.ml
