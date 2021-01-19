@@ -287,12 +287,6 @@ net-ftp/tlswrap
 # Removal in 30 days.  Bug #648964.
 app-text/ots
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# Unmaintained.  The current Gentoo version fails to build, it needs
-# a version bump.
-# Removal in 30 days.  Bug #669452.
-net-misc/dhcpd-pools
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
