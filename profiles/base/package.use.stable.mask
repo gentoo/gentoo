@@ -37,10 +37,6 @@ dev-java/openjdk:8 javafx
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
-# dev-python/wxpython:4.0 w/ py3 is not stable, bug #714566
-dev-python/matplotlib wxwidgets
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # app-text/pandoc (dev-lang/ghc) has no stable keywords.
 app-emulation/xen-tools doc
