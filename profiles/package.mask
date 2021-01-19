@@ -313,47 +313,6 @@ dev-libs/ustr
 # up to date and no longer works. Masked for removal.
 sci-mathematics/agda-lib-ffi
 
-# Eray Aslan <eras@gentoo.org> (2020-12-14)
-# Dead. Last release in 2014. Only works with vulnerable dovecot version.
-# Recent Outlook versions should have this functionality built in.  Switch to a
-# better mail client if you are still using this package. Removal in 30 days.
-# Bug #756217
-mail-filter/dovecot_deleted_to_trash
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-13)
-# Dead.  Last commit in 2014.  Does not work with modern versions
-# of Sphinx.  No revdeps.  Alternative: dev-python/sphinx-issues.
-# Removal in 30 days.  Bug #720066.
-dev-python/sphinxcontrib-issuetracker
-
-# David Seifert <soap@gentoo.org> (2020-12-11)
-# Last MIT release in 2007, declared EOL by Intel in 2017.
-# Build and test failures, abandoned parallelism paradigm,
-# no revdeps. If you're really still using this, switch to
-# OpenMP. Bug #572130, #643590, Removal in 30 days.
-dev-lang/cilk
-
-# Aisha Tammy <gentoo@aisha.cc> (2020-12-11)
-# last update upstream in 2017, does not build.
-# OpenMP is a better alternative.
-# Bug #717692, #741594
-# Removal in 30 days.
-sci-libs/xkaapi
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-10)
-# Synergy 2.0 was a beta branch, and it should have never been marked
-# stable.  It never reached feature parity with 1.x, and upstream
-# eventually abandoned it.  The users are asked to 'downgrade' to 1.x
-# that is actively maintained.  The buggy 2.0.0 version will be removed
-# in 30 days.
->=x11-misc/synergy-2
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-10)
-# Stuck on LLVM 9.  Superseded by dev-util/cvise that features better
-# parallelization and more acive development.
-# Removal in 30 days.  Bug #735762.
-dev-util/creduce
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
