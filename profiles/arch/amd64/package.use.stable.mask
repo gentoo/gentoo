@@ -45,10 +45,6 @@ app-emulation/lxd apparmor
 # not yet ready for everyone.
 net-misc/curl quiche
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
-# dev-db/oracle-instantclient ain't stable
-dev-qt/qtsql oci8
-
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
 # (except what's needed by digikam, dilfridge)

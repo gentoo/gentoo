@@ -34,10 +34,6 @@ app-metrics/collectd collectd_plugins_slurm
 # net-libs/libktorrent:5 is not stable anymore, bug #696858
 kde-apps/kget bittorrent
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
-# dev-db/oracle-instantclient ain't stable
-dev-qt/qtsql oci8
-
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
 # (except what's needed by digikam, dilfridge)
