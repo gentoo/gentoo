@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,10 +38,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-COMMON_DEPEND="acct-group/openvpn_exporter
-	acct-group/openvpn_exporter"
-	DEPEND="${COMMON_DEPEND}"
-	RDEPEND="${COMMON_DEPEND}"
+COMMON_DEPEND="
+	acct-user/openvpn_exporter
+	acct-group/openvpn_exporter
+"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 src_compile() {
 	go build -o ${PN} || die
