@@ -29,6 +29,10 @@ src_prepare() {
 	# bug #733426
 	sed -i -e 's/(\[ASCIIDOC\], \[asciidoc\], \[asciidoc\]/S([ASCIIDOC], [asciidoc asciidoctor]/' configure.ac || die
 
+	# bug #766069
+	sed -i -e "s:gcc:$(tc-getCC):" test/colm.d/gentests.sh || die
+	sed -i -e "s:g++:$(tc-getCXX):" test/colm.d/gentests.sh || die
+
 	eautoreconf
 }
 
