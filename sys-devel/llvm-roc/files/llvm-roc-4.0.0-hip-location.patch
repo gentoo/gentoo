@@ -1,0 +1,47 @@
+replace hardcoded hip finder with Gentoo paths.
+
+Author: Benda Xu <heroxbd@gentoo.org>
+
+Index: llvm-project-rocm-4.0.0/clang/lib/Driver/ToolChains/AMDGPU.cpp
+===================================================================
+--- llvm-project-rocm-4.0.0.orig/clang/lib/Driver/ToolChains/AMDGPU.cpp
++++ llvm-project-rocm-4.0.0/clang/lib/Driver/ToolChains/AMDGPU.cpp
+@@ -116,37 +116,8 @@ RocmInstallationDetector::getInstallatio
+     return Candidates;
+   }
+ 
+-  // Try to find relative to the compiler binary.
+-  const char *InstallDir = D.getInstalledDir();
++  Candidates.emplace_back(D.SysRoot + "/usr/lib/hip", /*StrictChecking=*/true);
+ 
+-  // Check both a normal Unix prefix position of the clang binary, as well as
+-  // the Windows-esque layout the ROCm packages use with the host architecture
+-  // subdirectory of bin.
+-
+-  // Strip off directory (usually bin)
+-  StringRef ParentDir = llvm::sys::path::parent_path(InstallDir);
+-  StringRef ParentName = llvm::sys::path::filename(ParentDir);
+-
+-  // Some builds use bin/{host arch}, so go up again.
+-  if (ParentName == "bin") {
+-    ParentDir = llvm::sys::path::parent_path(ParentDir);
+-    ParentName = llvm::sys::path::filename(ParentDir);
+-  }
+-
+-  // Some versions of the rocm llvm package install to /opt/rocm/llvm/bin
+-  if (ParentName == "llvm")
+-    ParentDir = llvm::sys::path::parent_path(ParentDir);
+-
+-  Candidates.emplace_back(ParentDir.str(), /*StrictChecking=*/true);
+-
+-  // Device library may be installed in clang resource directory.
+-  Candidates.emplace_back(D.ResourceDir, /*StrictChecking=*/true);
+-
+-  Candidates.emplace_back(D.SysRoot + "/opt/rocm", /*StrictChecking=*/true);
+-  if (ParentName.startswith("aomp")) {
+-    // Some versions of the aomp package install to /opt/rocm/aomp/bin
+-    Candidates.emplace_back(ParentDir.str());
+-  }
+   return Candidates;
+ }
+ 
