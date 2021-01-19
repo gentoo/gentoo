@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2021-01-19)
+# Requires masked media-sound/mp3_check.
+app-cdr/burncdda mp3
+
 # Joonas Niilola <juippis@gentoo.org> (2021-01-10)
 # Test-dep needs keywording on multiple arches, best to just mask it
 # globally for now. Resolves issue by b5248bbb1b5
