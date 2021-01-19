@@ -230,14 +230,6 @@ media-gfx/wkhtmltopdf
 app-doc/clsync-docs
 dev-libs/libclsync
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-22)
-# Renamed version of dev-python/pycryptodome.  The ebuild is missing
-# fixes from the original.  Maintaining and installing two copies
-# of the same thing makes little sense, so we're forcing the former
-# everywhere.
-# Removal in 14 days.
-dev-python/pycryptodomex
-
 # Eray Aslan <eras@gentoo.org> (2020-12-21)
 # Vulnerable. upgrade to >= 2.3.11.3. Masked until
 # mail-filter/dovecot_deleted_to_trash is treecleaned
