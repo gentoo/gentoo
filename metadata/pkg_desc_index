@@ -18823,7 +18823,7 @@ x11-terms/rxvt-unicode 9.22-r3 9.22-r6 9.22-r7 9999: rxvt clone with xft and uni
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 2.0.1: Multiple GNOME terminals in one window
-x11-terms/terminology 1.8.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
+x11-terms/terminology 1.8.1 1.9.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2 0.8.10: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 360 361: Terminal Emulator for X Windows
