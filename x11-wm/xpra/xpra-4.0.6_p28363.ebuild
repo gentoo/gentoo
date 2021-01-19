@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=no
-inherit xdg distutils-r1 eutils flag-o-matic tmpfiles prefix
+inherit xdg distutils-r1 eutils tmpfiles prefix
 
 MY_P="${PN}-${PV%_p*}"
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
@@ -139,10 +139,6 @@ python_configure_all() {
 		$(use_with webp)
 		--with-x11
 	)
-
-	# see https://www.xpra.org/trac/ticket/1080
-	# and http://trac.cython.org/ticket/395
-	append-cflags -fno-strict-aliasing
 
 	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
 }
