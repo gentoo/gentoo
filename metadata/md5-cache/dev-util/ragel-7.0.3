@@ -1,4 +1,4 @@
-BDEPEND=doc? ( || ( app-text/asciidoc dev-ruby/asciidoctor ) dev-texlive/texlive-latex dev-python/pygments media-gfx/transfig ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=doc? ( || ( app-text/asciidoc dev-ruby/asciidoctor ) app-text/dblatex app-text/ghostscript-gpl dev-libs/libxml2 dev-texlive/texlive-latex dev-python/pygments media-gfx/transfig ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=~dev-util/colm-0.14.6
 DESCRIPTION=Compiles finite state machines from regular languages into executable code
@@ -11,4 +11,4 @@ RDEPEND=~dev-util/colm-0.14.6
 SLOT=0
 SRC_URI=https://www.colm.net/files/ragel/ragel-7.0.3.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=560eec79a7d5c3354fa61d57a2ac7a58
+_md5_=129b596db2a2c13fd6ac4d5589202fcf

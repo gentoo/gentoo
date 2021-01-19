@@ -5489,6 +5489,7 @@ net-dns/dnsmasq:dnssec - Enable support DNSSEC validation and caching.
 net-dns/dnsmasq:dumpfile - Include code to dump packets to a libpcap-format file for debugging
 net-dns/dnsmasq:id - Whether report *.bind CHAOS info to clients, otherwise forward such requests upstream instead
 net-dns/dnsmasq:libidn2 - Enable support for Internationalized Domain Names, via net-dns/libidn2 rather than net-dns/libidn
+net-dns/dnsmasq:nettlehash - Use hashing functions from dev-libs/nettle
 net-dns/dnsmasq:script - Enable support for calling scripts when leases change.
 net-dns/dnsmasq:tftp - Enables built in TFTP server for netbooting.
 net-dns/dnssec-validator:dlv - Enable support for the DNSSEC look-aside validation

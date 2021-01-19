@@ -4,10 +4,10 @@ DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl
 DESCRIPTION=Client for Wake-On-LAN
 EAPI=7
 HOMEPAGE=https://github.com/jpoliv/wakeonlan/
-KEYWORDS=amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm ~arm64 ppc sparc x86 ~amd64-linux ~x86-linux
 LICENSE=Artistic GPL-2
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/jpoliv/wakeonlan/archive/wakeonlan-0.41.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=c148d542f7b394db16a10a438a16ad8b
+_md5_=4a42bb8f913639cd1e23418582e366ab
