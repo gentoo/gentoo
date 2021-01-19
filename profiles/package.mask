@@ -308,11 +308,6 @@ app-text/peg-markdown
 # Removal in 30 days.  Bug #652192.
 dev-libs/ustr
 
-# Jack Todaro <solpeth@posteo.org> (2020-12-17)
-# Old and redundant package. Has not been kept
-# up to date and no longer works. Masked for removal.
-sci-mathematics/agda-lib-ffi
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
