@@ -9,8 +9,8 @@ inherit xdg distutils-r1 eutils tmpfiles prefix
 
 MY_P="${PN}-${PV%_p*}"
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
-HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
-SRC_URI="http://xpra.org/src/${MY_P}.tar.xz"
+HOMEPAGE="https://xpra.org/"
+SRC_URI="https://xpra.org/src/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
