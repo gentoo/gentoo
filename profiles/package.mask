@@ -333,13 +333,6 @@ dev-python/sphinxcontrib-issuetracker
 # OpenMP. Bug #572130, #643590, Removal in 30 days.
 dev-lang/cilk
 
-# Aisha Tammy <gentoo@aisha.cc> (2020-12-11)
-# last update upstream in 2017, does not build.
-# OpenMP is a better alternative.
-# Bug #717692, #741594
-# Removal in 30 days.
-sci-libs/xkaapi
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
