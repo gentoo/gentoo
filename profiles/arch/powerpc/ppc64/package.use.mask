@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-01-19)
@@ -92,10 +92,6 @@ sys-apps/flashrom jlink-spi
 # https://bugs.gentoo.org/689606
 lxqt-base/lxqt-meta admin powermanagement processviewer screenshot sudo
 lxqt-base/lxqt-panel cpuload networkmonitor pulseaudio sysstat
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
-# sci-libs/dcmtk is not keyworded
-media-libs/openimageio dicom
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64

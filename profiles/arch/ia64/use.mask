@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -33,10 +33,6 @@ lua_single_target_luajit
 lua_targets_luajit
 luajit
 luajittex
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
 
 # No hardware to test by the team
 3dfx
@@ -73,6 +69,7 @@ lqr
 capi
 lensfun
 kde
+kwallet
 metalink
 upnp
 fdk

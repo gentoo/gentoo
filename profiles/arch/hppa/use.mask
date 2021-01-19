@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -49,10 +49,6 @@ dmraid
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
 
 # Jeroen Roovers <jer@gentoo.org> (2016-01-31)
 # USE=xwidgets requires net-libs/webkit-gtk
@@ -172,6 +168,7 @@ darcs
 # Jeroen Roovers <jer@gentoo.org> (2010-04-05)
 # Mask USE=kde (bug #304363).
 kde
+kwallet
 
 # Jeroen Roovers <jer@gentoo.org> (2010-02-28)
 # app-accessibility/flite does not work (bug #307241)
