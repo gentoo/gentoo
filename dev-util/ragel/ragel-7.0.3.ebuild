@@ -14,9 +14,16 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc"
 
+# Notes from bug #766090
+# dev-libs/libxml2's xmllint ends up being called by asciidoc here
+# app-text/dblatex too
+# app-text/ghostscript-gpl too
 BDEPEND="
 	doc? (
 		|| ( app-text/asciidoc dev-ruby/asciidoctor )
+		app-text/dblatex
+		app-text/ghostscript-gpl
+		dev-libs/libxml2
 		dev-texlive/texlive-latex
 		dev-python/pygments
 		media-gfx/transfig
