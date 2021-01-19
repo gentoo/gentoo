@@ -2755,7 +2755,7 @@ app-portage/java-ebuilder 0.5.1 9999: Java team tool for semi-automatic creation
 app-portage/kuroo 1.0.0 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
-app-portage/mgorny-dev-scripts 6: Handy scripts for ebuild development and more
+app-portage/mgorny-dev-scripts 6 7: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/nattka 0.2.11 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
@@ -15418,7 +15418,7 @@ net-p2p/qbittorrent 4.2.5-r2 4.3.0.1 4.3.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.7.1 1.10.0 1.11.1 1.12.0: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.10.0 1.12.1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r2: A torrent file parser
 net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
