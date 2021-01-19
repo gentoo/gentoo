@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -175,6 +175,7 @@ src_configure() {
 			--with-zlib=system
 			--with-native-debug-symbols=$(usex debug internal none)
 			$(usex headless-awt --disable-headful '')
+			$(tc-is-clang && echo "--with-toolchain-type=clang")
 		)
 
 	# PaX breaks pch, bug #601016
