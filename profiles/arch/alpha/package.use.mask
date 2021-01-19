@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-01-19)
+# Avoid pulling in a large unkeyworded dep
+# which is largely a desktop application
+# bug #766186
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2021-01-19)
 # app-text/dblatex not yet keyworded
 # bug #766186
 dev-util/ragel doc
