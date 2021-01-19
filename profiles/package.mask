@@ -320,12 +320,6 @@ sci-mathematics/agda-lib-ffi
 # Bug #756217
 mail-filter/dovecot_deleted_to_trash
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-13)
-# Dead.  Last commit in 2014.  Does not work with modern versions
-# of Sphinx.  No revdeps.  Alternative: dev-python/sphinx-issues.
-# Removal in 30 days.  Bug #720066.
-dev-python/sphinxcontrib-issuetracker
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
