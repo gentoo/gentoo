@@ -2991,7 +2991,6 @@ app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SG
 app-text/openpaperwork-core 2.0.1 2.0.2: Core part of Paperwork (plugin management)
 app-text/openpaperwork-gtk 2.0.1 2.0.2: Paperwork plugins
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
-app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 2.9.2.1 2.11.3.1: Conversion between markup formats
 app-text/paperwork 1.3.1 2.0.1 2.0.2: a personal document manager for scanned documents (and PDFs)
 app-text/paperwork-backend 1.3.1 1.3.1-r1 2.0.1 2.0.2: Backend part of Paperwork (Python API, no UI)
@@ -3006,7 +3005,6 @@ app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.7: generator of sandwich OCR pdf files
 app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
-app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
 app-text/pelican 4.2.0 4.5.1 4.5.3 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
@@ -3517,7 +3515,6 @@ dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 0.2.8 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
 dev-cpp/yaml-cpp 0.6.3-r3: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
-dev-db/aerospike-server-community 4.1.0.1 9999: Flash-optimized, in-memory, nosql database
 dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 2.10: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
@@ -5702,7 +5699,6 @@ dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.5 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.9.1 0.9.3 0.9.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1 0.9.2 0.10.1 0.10.2 0.11.1 0.12.1: userspace RCU (read-copy-update) library
-dev-libs/ustr 1.0.4-r8 1.0.4-r9: Low-overhead managed string library for C
 dev-libs/utfcpp 3.1 3.1.1 3.1.2 9999: UTF-8 C++ library
 dev-libs/uthash 2.1.0 2.2.0: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
@@ -7970,7 +7966,6 @@ dev-python/automat 20.2.0: Self-service finite-state machines for the programmer
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
-dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.33.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
@@ -8726,7 +8721,6 @@ dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA docum
 dev-python/pycountry 20.7.3: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20-r1: C parser and AST generator written in Python
 dev-python/pycryptodome 3.9.9 3.9.9-r1: A self-contained cryptographic library for Python
-dev-python/pycryptodomex 3.9.8 3.9.9: A self-contained cryptographic library for Python
 dev-python/pycson 0.8: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
@@ -14632,7 +14626,6 @@ net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written 
 net-ftp/pure-ftpd 1.0.49-r2 9999: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1 0.4-r2: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/tftp-hpa 5.2-r1 5.2-r2: port of the OpenBSD TFTP server
-net-ftp/tlswrap 1.04-r3: FTP wrapper which supports TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
 net-ftp/uftpd 2.13: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r3: Very Secure FTP Daemon written with speed, size and security in mind
@@ -15024,7 +15017,6 @@ net-mail/swaks 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, inc
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.18: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
-net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33-r6 5.4.33-r7: Collection of programs to manage virtual email on Qmail servers
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains
@@ -15092,7 +15084,6 @@ net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 8.1.9 9.3.4 9.4.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.7-r1 0.7.8: Desktop notification and configuration for dhcpcd
-net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
@@ -16368,7 +16359,6 @@ sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Gr
 sci-libs/xylib 1.6: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/agda 2.6.1.2: A dependently typed functional programming language and proof assistant
-sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.6.1.2.1.4: Agda standard library
 sci-mathematics/alt-ergo 1.30 2.3.0: Automatic theorem prover
 sci-mathematics/arb 2.17.0 2.18.1: C library for arbitrary-precision interval arithmetic
@@ -17422,7 +17412,7 @@ sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.4 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7 1.14.8: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 5.4.1 5.9 5.10_rc1 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 5.4.1 5.9 5.10 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.2.0: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17624,7 +17614,6 @@ sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protoc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.2-r1: console display library
 sys-libs/ncurses-compat 6.1_p20190609 6.2: console display library (ABI version 5)
-sys-libs/netbsd-csu 9.0_beta: crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain
 sys-libs/newlib 3.3.0 3.3.0-r1 4.0.0 4.1.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
 sys-libs/nss_wrapper 1.1.6 1.1.10: Wrapper for the user, group and hosts NSS API
@@ -18009,7 +17998,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 87.0.4280.141 88.0.4324.87 89.0.4385.0: Open-source version of Google Chrome web browser
+www-client/chromium 87.0.4280.141 88.0.4324.96 89.0.4385.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit

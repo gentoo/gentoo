@@ -1244,7 +1244,6 @@ dev-cpp/libjson-rpc-cpp:redis-client - Build support for Redis client using dev-
 dev-cpp/libjson-rpc-cpp:redis-server - Build support for Redis server using dev-libs/hiredis
 dev-cpp/libjson-rpc-cpp:stubgen - Build header stub code generator (needed for development and when pregenerated headers are not bundled)
 dev-cpp/sourcetrail:examples - Install example projects.
-dev-db/aerospike-server-community:tools - Install extra tools
 dev-db/etcd:server - Installs etcd daemon
 dev-db/firebird:server - Install the server components of Firebird, not just the client
 dev-db/firebird:xinetd - Install ClassicServer
@@ -2243,7 +2242,6 @@ dev-libs/totem-pl-parser:crypt - Support AmazonAMZ decoding with dev-libs/libgcr
 dev-libs/totem-pl-parser:quvi - Use media-libs/libquvi for parsing video links
 dev-libs/tvision:gpm - Support text mode mouse through sys-libs/gpm
 dev-libs/userspace-rcu:regression-test - Run regression tests (requires FEATURES=test)
-dev-libs/ustr:ustr-import - Install ustr-import developer program and source code for bundling.
 dev-libs/weston:desktop - Enable the desktop shell
 dev-libs/weston:drm - Enable drm compositor support
 dev-libs/weston:editor - Install wayland-editor example application
