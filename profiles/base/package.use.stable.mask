@@ -84,10 +84,6 @@ dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
 media-video/vdrsync dvdr
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
-# sci-libs/dcmtk is not stable
-media-libs/openimageio dicom
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-05-10)
 # needs llvm slots which are not stable #678908
 # also prone to weird compilation failures
