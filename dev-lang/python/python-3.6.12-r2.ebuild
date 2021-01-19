@@ -4,23 +4,23 @@
 EAPI="7"
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic multiprocessing pax-utils \
+inherit autotools flag-o-matic multiprocessing pax-utils \
 	python-utils-r1 toolchain-funcs
 
-MY_P="Python-${PV/_/}"
+MY_P="Python-${PV}"
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.9.0rc1"
+PATCHSET="python-gentoo-patches-${PV}-r2"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
-SRC_URI="https://www.python.org/ftp/python/${PV%_*}/${MY_P}.tar.xz
+SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
-SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test tk wininst +xml"
+SLOT="${PYVER}/${PYVER}m"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test +threads tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -31,7 +31,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="app-arch/bzip2:=
 	app-arch/xz-utils:=
 	dev-libs/libffi:=
-	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
@@ -58,17 +57,6 @@ DEPEND="${RDEPEND}
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 
-# large file tests involve a 2.5G file being copied (duplicated)
-CHECKREQS_DISK_BUILD=5500M
-
-pkg_pretend() {
-	use test && check-reqs_pkg_pretend
-}
-
-pkg_setup() {
-	use test && check-reqs_pkg_setup
-}
-
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
 	rm -fr Modules/expat || die
@@ -82,12 +70,20 @@ src_prepare() {
 	default
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
+		Lib/distutils/command/install.py \
+		Lib/distutils/sysconfig.py \
+		Lib/site.py \
+		Lib/sysconfig.py \
+		Lib/test/test_site.py \
+		Makefile.pre.in \
+		Modules/Setup.dist \
+		Modules/getpath.c \
+		configure.ac \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
 	# force correct number of jobs
 	# https://bugs.gentoo.org/737660
 	local jobs=$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")
-	sed -i -e "s:-j0:-j${jobs}:" Makefile.pre.in || die
 	sed -i -e "/self\.parallel/s:True:${jobs}:" setup.py || die
 
 	eautoreconf
@@ -128,11 +124,6 @@ src_configure() {
 		use hardened && replace-flags -O3 -O2
 	fi
 
-	# https://bugs.gentoo.org/700012
-	if is-flagq -flto || is-flagq '-flto=*'; then
-		append-cflags $(test-flags-CC -ffat-lto-objects)
-	fi
-
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	tc-export CXX
 
@@ -140,9 +131,6 @@ src_configure() {
 	# Needed on FreeBSD unless Python 3.2 is already installed.
 	# Please query BSD team before removing this!
 	append-ldflags "-L."
-
-	# Fix implicit declarations on cross and prefix builds. Bug #674070.
-	use ncurses && append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
 
 	local dbmliborder
 	if use gdbm; then
@@ -155,8 +143,10 @@ src_configure() {
 		# a chance for users rebuilding python before glibc
 		ac_cv_header_stropts_h=no
 
+		--with-fpectl
 		--enable-shared
 		$(use_enable ipv6)
+		$(use_with threads)
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'
 		--with-computed-gotos
@@ -169,6 +159,12 @@ src_configure() {
 	)
 
 	OPT="" econf "${myeconfargs[@]}"
+
+	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
+		eerror "configure has detected that the sem_open function is broken."
+		eerror "Please ensure that /dev/shm is mounted as a tmpfs with mode 1777."
+		die "Broken sem_open function (bug 496328)"
+	fi
 }
 
 src_compile() {
@@ -194,7 +190,7 @@ src_test() {
 	fi
 
 	# Skip failing tests.
-	local skipped_tests="gdb"
+	local skipped_tests="gdb faulthandler"
 
 	for test in ${skipped_tests}; do
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
@@ -220,7 +216,7 @@ src_test() {
 	done
 
 	elog "If you would like to run them, you may:"
-	elog "cd '${EPREFIX}/usr/lib/python${PYVER}/test'"
+	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${PYVER}/test'"
 	elog "and run the tests separately."
 
 	if [[ ${result} -ne 0 ]]; then
@@ -229,7 +225,7 @@ src_test() {
 }
 
 src_install() {
-	local libdir=${ED}/usr/lib/python${PYVER}
+	local libdir=${ED}/usr/$(get_libdir)/python${PYVER}
 
 	emake DESTDIR="${D}" altinstall
 
@@ -266,6 +262,9 @@ src_install() {
 
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
 	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+
+	use threads || rm -r "${libdir}/multiprocessing" || die
+	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
 
@@ -317,11 +316,13 @@ src_install() {
 	chmod +x "${scriptdir}/python${pymajor}-config" || die
 	ln -s "python${pymajor}-config" \
 		"${scriptdir}/python-config" || die
-	# 2to3, pydoc
+	# 2to3, pydoc, pyvenv
 	ln -s "../../../bin/2to3-${PYVER}" \
 		"${scriptdir}/2to3" || die
 	ln -s "../../../bin/pydoc${PYVER}" \
 		"${scriptdir}/pydoc" || die
+	ln -s "../../../bin/pyvenv-${PYVER}" \
+		"${scriptdir}/pyvenv" || die
 	# idle
 	if use tk; then
 		ln -s "../../../bin/idle${PYVER}" \

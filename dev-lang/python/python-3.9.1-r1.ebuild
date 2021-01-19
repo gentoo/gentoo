@@ -7,9 +7,9 @@ WANT_LIBTOOL="none"
 inherit autotools check-reqs flag-o-matic multiprocessing pax-utils \
 	python-utils-r1 toolchain-funcs
 
-MY_P="Python-${PV/_alpha/a}"
+MY_P="Python-${PV/_/}"
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.10.0a1"
+PATCHSET="python-gentoo-patches-3.9.1-r1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
@@ -53,10 +53,7 @@ RDEPEND="app-arch/bzip2:=
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
-	test? ( app-arch/xz-utils[extra-filters(+)] )"
-# autoconf-archive needed to eautoreconf
-BDEPEND="
-	sys-devel/autoconf-archive
+	test? ( app-arch/xz-utils[extra-filters(+)] )
 	virtual/pkgconfig
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
