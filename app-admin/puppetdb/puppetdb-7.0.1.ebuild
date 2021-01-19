@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://downloads.puppetlabs.com/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND+=">=virtual/jdk-1.8.0"
 DEPEND+="acct-user/puppetdb
