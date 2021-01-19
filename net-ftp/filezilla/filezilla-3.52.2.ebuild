@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.22.1-debug.patch
 	"${FILESDIR}"/${PN}-3.47.0-metainfo.patch
 	"${FILESDIR}"/${PN}-3.47.0-disable-shellext_conf.patch
+	"${FILESDIR}"/${PN}-3.52.2-slibtool.patch
 )
 
 pkg_pretend() {
