@@ -1077,7 +1077,7 @@ app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison opt
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
 app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signatures
-app-crypt/mit-krb5 1.18.2-r2 1.18.3: MIT Kerberos V
+app-crypt/mit-krb5 1.18.2-r2 1.18.2-r3 1.18.3 1.18.3-r1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.36-r2 0.41 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
@@ -2013,7 +2013,7 @@ app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.13-r2 19.03.14 20.10.2: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-cli 20.10.2: the command line binary for docker
-app-emulation/docker-compose 1.27.4 1.28.0_rc1 1.28.0_rc2 1.28.0_rc3: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.27.4 1.28.0_rc1 1.28.0_rc2 1.28.0_rc3 1.28.0: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
@@ -5716,7 +5716,7 @@ dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.25 1.4.17 1.4.18: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17 1.4.17-r100: SWIG and JNI bindings for Xapian
+dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17 1.4.17-r100 1.4.18: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 3.2.3 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.39.11-r1 1.51.06 1.51.06-r2: A lightweigt RPC library based on XML and HTTP
@@ -8026,7 +8026,7 @@ dev-python/carbon 1.1.5: Backend data caching and persistence daemon for Graphit
 dev-python/case 1.5.3: Python unittest Utilities
 dev-python/castellan 1.2.2 3.6.0: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
-dev-python/catkin_pkg 0.4.23 9999: Standalone Python library for the catkin package system
+dev-python/catkin_pkg 0.4.23-r1 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
@@ -9413,28 +9413,28 @@ dev-ros/actionlib_tools 1.13.2 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 0.2.0 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 1.17.1 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/ament_cmake_copyright 0.9.5 0.10.0 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 9999: The core of the ament buildsystem in CMake
+dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 1.0.3 9999: The core of the ament buildsystem in CMake
 dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
 dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
-dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 9999: Export definitions to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
-dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 9999: Export interfaces to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 9999: Export libraries to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 9999: Export link flags to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 9999: Export targets to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_gmock 1.0.0 1.0.1 9999: The ability to add Google mock-based tests in the ament buildsystem
-dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 9999: The ability to add gtest-based tests in the ament buildsystem
-dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 9999: The functionality to deduplicate libraries in the ament buildsystem
+dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export definitions to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
+dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export interfaces to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export libraries to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export link flags to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export targets to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_gmock 1.0.0 1.0.1 1.0.3 9999: The ability to add Google mock-based tests in the ament buildsystem
+dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to add gtest-based tests in the ament buildsystem
+dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 1.0.3 9999: The functionality to deduplicate libraries in the ament buildsystem
 dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
-dev-ros/ament_cmake_pytest 1.0.0 1.0.1 9999: The ability to run Python tests using pytest in the ament buildsystem
-dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 9999: The ability to use Python in the ament buildsystem
+dev-ros/ament_cmake_pytest 1.0.0 1.0.1 1.0.3 9999: The ability to run Python tests using pytest in the ament buildsystem
+dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to use Python in the ament buildsystem
 dev-ros/ament_cmake_ros 0.9.0 9999: ROS specific CMake bits in the ament buildsystem
-dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 9999: Add defs, include dirs and libs to a target in the ament buildsystem
-dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 9999: The ability to add tests in the ament buildsystem
+dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 9999: Add defs, include dirs and libs to a target in the ament buildsystem
+dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to add tests in the ament buildsystem
 dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 9999: The CMake API for ament_uncrustify to check code against styleconventions
-dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 9999: Override the exported package version in the ament buildsystem
+dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 1.0.3 9999: Override the exported package version in the ament buildsystem
 dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 9999: he CMake API for ament_xmllint to check XML file using xmmlint
 dev-ros/ament_copyright 0.10.0 9999: The ability to check source files for copyright and license information.
 dev-ros/ament_cppcheck 0.10.0 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
@@ -9447,9 +9447,9 @@ dev-ros/ament_pep257 0.10.0 9999: Checks code against style conventions in PEP 8
 dev-ros/ament_uncrustify 0.10.0 9999: The ability to check code against style conventions using uncrustify
 dev-ros/ament_xmllint 0.10.0 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
-dev-ros/audio_capture 0.3.6 0.3.7 0.3.8 9999: Transports audio from a source to a destination
-dev-ros/audio_common_msgs 0.3.6 0.3.7 0.3.8 9999: Messages for transmitting audio via ROS
-dev-ros/audio_play 0.3.6 0.3.7 0.3.8 9999: Outputs audio to a speaker from a source node
+dev-ros/audio_capture 0.3.6 0.3.7 0.3.8 0.3.10 9999: Transports audio from a source to a destination
+dev-ros/audio_common_msgs 0.3.6 0.3.7 0.3.8 0.3.10 9999: Messages for transmitting audio via ROS
+dev-ros/audio_play 0.3.6 0.3.7 0.3.8 0.3.10 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.17.0 1.17.1 9999: Trajectory Rollout and Dynamic Window approaches to robot navigation on a plane
 dev-ros/bond 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.8.5 1.8.6 9999: C++ implementation of bond, for checking when another process has terminated
@@ -9514,20 +9514,21 @@ dev-ros/geometry_msgs 1.13.0 1.13.1 9999: Messages for common geometric primitiv
 dev-ros/global_planner 1.17.0 1.17.1 9999: Path planner library and node
 dev-ros/gmapping 1.4.1 1.4.2 9999: ROS wrapper for OpenSlam's Gmapping
 dev-ros/hardware_interface 0.19.1 0.19.2 0.19.3 0.19.4 9999: Hardware Interface base class
-dev-ros/hector_compressed_map_transport 0.4.1 0.5.0 9999: Means for transporting compressed map data through the use of image_transport
-dev-ros/hector_geotiff 0.4.1 0.5.0 9999: Saves occupancy grid map, robot trajectory and object data to GeoTiff images
-dev-ros/hector_geotiff_plugins 0.4.1 0.5.0 9999: Plugins that extend geotiff maps generated by hector_geotiff
-dev-ros/hector_imu_attitude_to_tf 0.4.1 0.5.0 9999: Publish the roll/pitch attitude angles reported via a imu message to tf
-dev-ros/hector_imu_tools 0.4.1 0.5.0 9999: Tools for processing IMU messages
-dev-ros/hector_map_server 0.4.1 0.5.0 9999: Service for retrieving the map, as well as for raycasting based obstacle queries
-dev-ros/hector_map_tools 0.4.1 0.5.0 9999: Functions related to accessing information from OccupancyGridMap maps
-dev-ros/hector_mapping 0.4.1 0.5.0 9999: SLAM that can be used without odometry and on platforms that exhibit roll/pitch
-dev-ros/hector_marker_drawing 0.4.1 0.5.0 9999: Convenience functions for easier publishing of visualization markers
-dev-ros/hector_nav_msgs 0.4.1 0.5.0 9999: Messages and services used in the hector_slam stack
+dev-ros/hector_compressed_map_transport 0.5.1 9999: Means for transporting compressed map data through the use of image_transport
+dev-ros/hector_geotiff 0.5.1 9999: Saves occupancy grid map, robot trajectory and object data to GeoTiff images
+dev-ros/hector_geotiff_launch 0.5.1 9999: Launch files for the hector_geotiff mapper
+dev-ros/hector_geotiff_plugins 0.4.1 0.5.0 0.5.1 9999: Plugins that extend geotiff maps generated by hector_geotiff
+dev-ros/hector_imu_attitude_to_tf 0.5.1 9999: Publish the roll/pitch attitude angles reported via a imu message to tf
+dev-ros/hector_imu_tools 0.4.1 0.5.0 0.5.1 9999: Tools for processing IMU messages
+dev-ros/hector_map_server 0.4.1 0.5.0 0.5.1 9999: Service for retrieving the map, as well as for raycasting based obstacle queries
+dev-ros/hector_map_tools 0.4.1 0.5.0 0.5.1 9999: Functions related to accessing information from OccupancyGridMap maps
+dev-ros/hector_mapping 0.4.1 0.5.0 0.5.1 9999: SLAM that can be used without odometry and on platforms that exhibit roll/pitch
+dev-ros/hector_marker_drawing 0.4.1 0.5.0 0.5.1 9999: Convenience functions for easier publishing of visualization markers
+dev-ros/hector_nav_msgs 0.5.1 9999: Messages and services used in the hector_slam stack
 dev-ros/hector_pose_estimation 0.3.0-r1 9999: hector_pose_estimation node and the hector_pose_estimation nodelet
 dev-ros/hector_pose_estimation_core 0.3.0-r1 9999: Extended Kalman Filter (EKF) that estimates the 6DOF pose of the robot
-dev-ros/hector_slam_launch 0.4.1 0.5.0 9999: Launch files for launching hector_slam with different robot scenarios
-dev-ros/hector_trajectory_server 0.4.1 0.5.0 9999: Keeps track of tf trajectories and makes this data accessible
+dev-ros/hector_slam_launch 0.5.1 9999: Launch files for launching hector_slam with different robot scenarios
+dev-ros/hector_trajectory_server 0.4.1 0.5.0 0.5.1 9999: Keeps track of tf trajectories and makes this data accessible
 dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.15.0-r1 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.15.2-r1 1.15.3 9999: Single image rectification and color processing
@@ -15689,8 +15690,8 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
-ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 9999: The entry point package for the ament buildsystem
-ros-meta/audio_common 0.3.6 0.3.7 0.3.8 9999: Common code for working with audio in ROS
+ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 1.0.3 9999: The entry point package for the ament buildsystem
+ros-meta/audio_common 0.3.6 0.3.7 0.3.8 0.3.10 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.13.0 1.13.1 9999: Messages that are widely used by other ROS packages
@@ -15706,7 +15707,7 @@ ros-meta/geometry 1.13.2 9999: Common geometric calculations
 ros-meta/geometry2 0.7.2 0.7.3 0.7.5 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.3 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
-ros-meta/hector_slam 0.4.1 0.5.0 9999: hector_mapping and related packages
+ros-meta/hector_slam 0.5.1 9999: hector_mapping and related packages
 ros-meta/image_common 1.12.0 9999: Common code for working with images in ROS
 ros-meta/image_pipeline 1.15.2 1.15.3 9999: Fills the gap between raw images from a camera and higher-level processing
 ros-meta/image_transport_plugins 1.14.0 9999: Plugins for creating topics in representations other than raw pixel data
@@ -17985,7 +17986,7 @@ www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 t
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
-www-apps/piwigo 2.10.2: a photo gallery software for the web
+www-apps/piwigo 2.10.2 11.0.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.4: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server
