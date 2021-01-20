@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 
 BDEPEND="virtual/pkgconfig"
 
+RESTRICT="!test? ( test )"
+
 S="${WORKDIR}/${MY_P}"
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
