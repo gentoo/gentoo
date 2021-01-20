@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,14 +64,12 @@ BDEPEND="
 CMAKE_BUILD_TYPE=RelWithDebInfo
 PATCHES=(
 	"${FILESDIR}/qwt.patch"
-	"${FILESDIR}/boost173.patch"
 	"${FILESDIR}/cmake.patch"
-	"${FILESDIR}/boost174.patch"
 )
 
 src_configure() {
-	# doesnt build with as-needed
-	#append-ldflags "-Wl,--no-as-needed"
+	# find OGRE properly
+	sed -e "s#lib/OGRE#$(get_libdir)/OGRE#" -i cmake/gazebo-config.cmake.in || die
 
 	local mycmakeargs=(
 		"-DUSE_UPSTREAM_CFLAGS=OFF"
