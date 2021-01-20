@@ -22,6 +22,10 @@ BDEPEND="
 
 DOCS=( d0_blind_id.txt )
 
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch"
+)
+
 src_prepare() {
 	default
 
