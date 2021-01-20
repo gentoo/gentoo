@@ -67,9 +67,9 @@ CDEPEND="${PYTHON_DEPS}
 		net-libs/gnutls
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
+		sys-fs/udisks
 		sys-libs/efivar
 		x11-libs/cairo
-		sys-fs/udisks
 	)
 "
 # Block sci-chemistry/chemical-mime-data for bug #701900
