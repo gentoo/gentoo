@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
+IUSE="doc"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 # Requires specl, which is not in the tree yet
@@ -22,7 +23,8 @@ RESTRICT="test"
 DEPEND="${LUA_DEPS}"
 RDEPEND="${DEPEND}
 	lua_targets_lua5-1? ( dev-lua/lua-bit32[lua_targets_lua5-1(-)] )
-	lua_targets_luajit? ( dev-lua/lua-bit32[lua_targets_luajit(-)] )"
+	lua_targets_luajit? ( dev-lua/lua-bit32[lua_targets_luajit(-)] )
+"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
@@ -39,13 +41,15 @@ src_prepare() {
 lua_src_compile() {
 	pushd "${BUILD_DIR}" || die
 
-	./build-aux/luke package="${PN}" version="${PV}" \
+	# LDOC=true means disable ldoc update documentation
+	./build-aux/luke --verbose package="${PN}" version="${PV}" \
+		LDOC=true \
 		PREFIX="${ED}/usr" \
 		INST_LIBDIR="${ED}/$(lua_get_cmod_dir)" \
 		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
 		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die
 
-	popd
+	popd || die
 }
 
 src_compile() {
@@ -56,15 +60,17 @@ lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
 	./build-aux/luke install \
+		LDOC=true \
 		PREFIX="${ED}/usr" \
 		INST_LIBDIR="${ED}/$(lua_get_cmod_dir)" \
 		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
 		|| die
 
-	popd
+	popd || die
 }
 
 src_install() {
 	lua_foreach_impl lua_src_install
-	dodoc -r doc NEWS.md README.md
+	dodoc {NEWS,README}.md
+	use doc && dodoc -r doc
 }

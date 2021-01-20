@@ -91,9 +91,6 @@ src_compile() {
 	# and building actual bindings
 	go install -v -work -x -tags=no_env ${EGO_PN}/cmd/... || die
 
-	# Conversely, this step DOES install the actual bindings but there seems
-	# to be no way of only building them.
-	# Note: passing -test actually DISABLES running tests
 	"${GOPATH}"/bin/qtsetup -failfast -test=false || die
 }
 
@@ -117,7 +114,7 @@ src_install() {
 	insinto $(dirname "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
 	doins -r pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}
 
-	# Not sure if we actually need these - but just in case
+	# Not sure if we still need qtsetup - but just in case, install all binaries
 	exeinto "$(get_golibdir)"/bin
 	doexe bin/*
 }
