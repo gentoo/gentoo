@@ -6,7 +6,7 @@ ROS_REPO_URI="https://github.com/tu-darmstadt-ros-pkg/hector_slam"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
-CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/nav_msgs dev-ros/geometry_msgs"
+CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/nav_msgs dev-ros/geometry_msgs dev-ros/std_msgs"
 
 inherit ros-catkin
 
