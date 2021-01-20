@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic prefix
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/"
@@ -42,10 +42,9 @@ src_prepare() {
 	# Remove "clinfo" - use "dev-util/clinfo" instead
 	[ -d tools/clinfo ] && rm -rf tools/clinfo || die
 
-	# Wrong position of a '"' results in a list of strings instead of a single string and the build fails...
-	sed -e "s:set(CMAKE_SHARED_LINKER_FLAGS \${CMAKE_SHARED_LINKER_FLAGS} \":set(CMAKE_SHARED_LINKER_FLAGS \"\${CMAKE_SHARED_LINKER_FLAGS} :" -i "${S}/amdocl/CMakeLists.txt"
-
 	cmake_src_prepare
+
+	hprefixify amdocl/CMakeLists.txt
 }
 
 src_configure() {
