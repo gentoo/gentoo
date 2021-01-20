@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">vivien/i3blocks</remote-id>
 	</upstream>
+	<use>
+		<flag name="contrib">Install contrib modules</flag>
+	</use>
 </pkgmetadata>
