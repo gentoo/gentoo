@@ -10,13 +10,17 @@ SRC_URI="https://github.com/jirka-h/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ppc ~ppc64 x86"
 IUSE="selinux static-libs threads"
 
 RDEPEND="
 	!<sys-apps/openrc-0.11.8
 	selinux? ( sec-policy/selinux-entropyd )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.9.8c-threads_build_fix.patch"
+)
 
 src_configure() {
 	local myeconfargs=(
@@ -38,4 +42,6 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/service.gentoo ${PN}.service
 	insinto /etc
 	doins "${FILESDIR}"/haveged.conf
+
+	find "${ED}" -type f -name "*.la" -delete || die
 }
