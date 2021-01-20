@@ -11,5 +11,5 @@ RDEPEND=dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl !dev-lua/luasec lua_ta
 REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
 SLOT=0
 SRC_URI=https://github.com/wahern/luaossl/archive/rel-20200709.tar.gz -> luaossl-rel-20200709.tar.gz
-_eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	661d14f97b7d04273143565853fdfbfe	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=aa7fbaa1d7cda1b36f36ee5631d90f66

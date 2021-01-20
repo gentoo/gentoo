@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( icu idn ) lua? ( ^^ ( lua_single_target_luajit lua_single_targ
 RESTRICT=test
 SLOT=4/0
 SRC_URI=https://swift.im/downloads/releases/swift-4.0.2/swift-4.0.2.tar.gz https://dev.gentoo.org/~conikost/distfiles/patches/swift-4.0.2-python3-compatibility.patch.gz
-_eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	661d14f97b7d04273143565853fdfbfe	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
 _md5_=b2ee6a58d0bd94597f8802b703a3aa5d

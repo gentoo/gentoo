@@ -3105,7 +3105,7 @@ app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.28-r3: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
-app-text/xournalpp 1.0.18-r1 9999: Handwriting notetaking software with PDF annotation support
+app-text/xournalpp 1.0.18-r1 1.0.20 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.02-r4: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02-r1 4.03.00: Your Own Document Language: a pre-document language and tools to process it
@@ -5716,7 +5716,7 @@ dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.25 1.4.17 1.4.18: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17 1.4.17-r100 1.4.18: SWIG and JNI bindings for Xapian
+dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17 1.4.18-r1: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 3.2.3 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.39.11-r1 1.51.06 1.51.06-r2: A lightweigt RPC library based on XML and HTTP
@@ -6764,7 +6764,7 @@ dev-perl/LWPx-ParanoidAgent 1.120.0: Subclass of LWP::UserAgent that protects yo
 dev-perl/LaTeX-Driver 0.300.2: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.92.0: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6-r1: Perl extension for the automatic generation of LaTeX tables
-dev-perl/Lab-Measurement 3.692 3.721 9999: Measurement control and automation with Perl
+dev-perl/Lab-Measurement 3.721 3.740 9999: Measurement control and automation with Perl
 dev-perl/Lab-VXI11 0.20.0: Perl interface to the VXI-11 Test&Measurement backend
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 1.20.0 9999: Perl bindings to the LabOne API of Zurich Instruments
 dev-perl/Lchown 1.10.0-r2 1.10.0-r3: Use the lchown(2) system call from Perl
@@ -12843,7 +12843,7 @@ media-gfx/imagemagick 6.9.11.46 6.9.11.52 7.0.10.46 7.0.10.52 9999: A collection
 media-gfx/imageworsener 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
-media-gfx/inkscape 1.0-r1 1.0.1 9999: SVG based generic vector-drawing program
+media-gfx/inkscape 1.0.1 1.0.2 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.4.2-r1 3.63.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-esdip 1.0.0.5-r1: Plugin for 'epkowa' backend for image manipulation
@@ -16117,7 +16117,7 @@ sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoi
 sci-libs/adolc 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.4.6 2.4.6-r1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 8.300.2 9.850.1: Streamlined C++ linear algebra library
+sci-libs/armadillo 8.300.2 9.850.1 10.2.0: Streamlined C++ linear algebra library
 sci-libs/arpack 3.8.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.19: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
@@ -16869,7 +16869,7 @@ sys-apps/groff 1.22.4: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
 sys-apps/habitat 0.54.0: Application automation framework
-sys-apps/haveged 1.9.2-r1 1.9.8c 1.9.13 1.9.14: A simple entropy daemon using the HAVEGE algorithm
+sys-apps/haveged 1.9.8c-r1 1.9.14-r1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hd-idle 1.05-r1: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.58 9.60: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
@@ -18013,7 +18013,7 @@ www-client/firefox 78.6.1 84.0.2: Firefox Web Browser
 www-client/firefox-bin 78.6.1 84.0.2: Firefox Web Browser
 www-client/google-chrome 88.0.4324.96: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.96: The web browser from Google
-www-client/google-chrome-unstable 89.0.4385.0: The web browser from Google
+www-client/google-chrome-unstable 89.0.4389.9: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
@@ -18055,7 +18055,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 88.0.4324.96_beta 88.0.4324.96 89.0.4385.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 88.0.4324.96_beta 88.0.4324.96 89.0.4389.9_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
