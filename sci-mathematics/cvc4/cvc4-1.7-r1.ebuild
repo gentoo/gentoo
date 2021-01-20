@@ -1,9 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+PYTHON_COMPAT=( python3_{6,7,8} )
+
+inherit python-any-r1 cmake-utils
 
 DESCRIPTION="automatic theorem prover for satisfiability modulo theories (SMT) problems"
 HOMEPAGE="http://cvc4.cs.stanford.edu/web/"
@@ -21,6 +23,7 @@ RDEPEND="dev-libs/antlr-c
 	cln? ( sci-libs/cln )
 	!cln? ( dev-libs/gmp:= )"
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}"/CVC4-${PV}
 
