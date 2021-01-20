@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -132,6 +132,15 @@ pkg_setup() {
 src_prepare() {
 	default
 	chmod +x configure || die
+
+	# Since Java 9 the default keystore format is PKCS12 but
+	# /etc/ssl/certs/java/cacerts, which is setup by baselayout-java,
+	# is still in JKS format. Note that we switch to JKS, even though
+	# keystore.type.compat=true in java.security is set, because some
+	# security providers do not support keystore.type.compat=true
+	# (e.g. versions of Bouncycastle). #712290
+	sed -e "s:^keystore\.type=pkcs12:keystore.type=jks:" \
+		-i "src/java.base/share/conf/security/java.security" || die
 }
 
 src_configure() {
