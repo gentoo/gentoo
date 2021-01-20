@@ -2673,8 +2673,8 @@ app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.0 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.4: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.7.2 7.0.4.2 7.0.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 6.4.7.2_p1 6.4.7.2_p2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.4.7.2_p1 6.4.7.2_p2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 6.4.7.2_p2: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.4.7.2_p2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.7.2 7.0.4.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2: WYSIWYM frontend for LaTeX, DocBook, etc.
@@ -5324,8 +5324,8 @@ dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.3.0 5.4.0: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
-dev-libs/icu 67.1 68.1 68.2: International Components for Unicode
-dev-libs/icu-layoutex 67.1 68.1 68.2: External layout part of International Components for Unicode
+dev-libs/icu 68.2: International Components for Unicode
+dev-libs/icu-layoutex 68.2: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3-r1: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.8.3 0.8.5: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
@@ -7904,7 +7904,7 @@ dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interact
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.54.1: Python library to access the Github API v3
-dev-python/PyICU 2.5 2.6: Python bindings for dev-libs/icu
+dev-python/PyICU 2.6: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.15.1 5.15.2: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.24: Private sip module for PyQt5
