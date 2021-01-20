@@ -3,10 +3,10 @@ DEPEND=|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip ) sys-libs/ncurses:0= v
 DESCRIPTION=A powerful and user-friendly console text editor
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/moe/
-KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm x86 amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://gnu/moe/moe-1.10.tar.lz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	unpacker	45b49db67094fdafbb6a16a2299e894b
-_md5_=dc29d46c2c60c29238cf7319fad92bbc
+_md5_=ed76c05f834152013a6a63aba17a3017

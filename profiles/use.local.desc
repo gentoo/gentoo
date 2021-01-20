@@ -7456,7 +7456,6 @@ sci-mathematics/maxima:cmucl - Compile maxima with CMU Common Lisp (dev-lisp/cmu
 sci-mathematics/maxima:ecls - Compile maxima with Embeddable Common Lisp (dev-lisp/ecls)
 sci-mathematics/maxima:gcl - Compile maxima with GNU Common Lisp (dev-lisp/gcl)
 sci-mathematics/maxima:sbcl - Compile maxima with Steel Bank Common Lisp (dev-lisp/sbcl)
-sci-mathematics/minisat:extended-solver - Build extended version of SAT solver with additional features.
 sci-mathematics/msieve:ecm - Enable support for the GMP-ECM library
 sci-mathematics/normaliz:extras - Install Macaulay2 and sci-mathematics/singularpackages as shipped by upstream
 sci-mathematics/octave:glpk - Add support for sci-mathematics/glpk for linear programming
@@ -7505,9 +7504,7 @@ sci-misc/nco:udunits - Add sci-libs/udunits files support
 sci-misc/tango:dbserver - Enable build of tango dbserver
 sci-misc/tango:mariadb - Use dev-db/mariadb
 sci-misc/tango:zeromq - Allow to use ZeroMQ broker via net-libs/zeromq
-sci-physics/bullet:bullet3 - Build Bullet 3
 sci-physics/bullet:double-precision - Build libraries in double precision
-sci-physics/bullet:extras - Build additional libraries
 sci-physics/bullet:tbb - Enable multithreading with the Intel Threads Building Block dev-cpp/tbb
 sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig
 sci-physics/espresso:cuda - Enable cuda support
