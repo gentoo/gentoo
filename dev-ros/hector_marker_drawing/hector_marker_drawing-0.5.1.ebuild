@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,16 +8,14 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Publish the roll/pitch attitude angles reported via a imu message to tf"
+DESCRIPTION="Convenience functions for easier publishing of visualization markers"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-ros/tf
-	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-"
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-cpp/eigen:3"
