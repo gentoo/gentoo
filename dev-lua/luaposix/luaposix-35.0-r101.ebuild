@@ -49,7 +49,7 @@ lua_src_compile() {
 		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
 		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die
 
-	popd
+	popd || die
 }
 
 src_compile() {
@@ -66,7 +66,7 @@ lua_src_install() {
 		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
 		|| die
 
-	popd
+	popd || die
 }
 
 src_install() {
