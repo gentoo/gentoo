@@ -1,24 +1,23 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
-	SRC_URI="
-	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
-	https://dev.gentoo.org/~blueness/musl-misc/getent.c
-	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
-	KEYWORDS=""
 else
-	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz
-	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
-	https://dev.gentoo.org/~blueness/musl-misc/getent.c
-	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
+	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz"
 	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 fi
+GETENT_COMMIT="79d453a0cd3be7dfa4a2e941816e0a820bac085c"
+GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
+SRC_URI+="
+	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
+	https://raw.githubusercontent.com/floppym/aports/${GETENT_COMMIT}/main/musl/getent.c -> ${GETENT_FILE}
+	https://dev.gentoo.org/~blueness/musl-misc/iconv.c
+"
 
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
@@ -60,6 +59,18 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+	else
+		unpack "${P}.tar.gz"
+	fi
+	mkdir misc || die
+	cp "${DISTDIR}"/getconf.c misc/getconf.c || die
+	cp "${DISTDIR}/${GETENT_FILE}" misc/getent.c || die
+	cp "${DISTDIR}"/iconv.c misc/iconv.c || die
+}
+
 src_configure() {
 	tc-getCC ${CTARGET}
 	just_headers && export CC=true
@@ -84,7 +95,7 @@ src_compile() {
 			CFLAGS="${CFLAGS}" \
 			CPPFLAGS="${CPPFLAGS}" \
 			LDFLAGS="${LDFLAGS}" \
-			VPATH="${DISTDIR}"
+			VPATH="${WORKDIR}/misc"
 	fi
 }
 

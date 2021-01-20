@@ -3,9 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..4} luajit )
-
-inherit toolchain-funcs flag-o-matic lua-single systemd
+inherit toolchain-funcs flag-o-matic systemd
 
 DESCRIPTION="Small forwarding DNS server"
 HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/doc.html"
@@ -34,7 +32,7 @@ COMMON_DEPEND="
 		!libidn2? ( net-dns/libidn:0= )
 		libidn2? ( >=net-dns/libidn2-2.0:= )
 	)
-	lua? ( ${LUA_DEPS} )
+	lua? ( dev-lang/lua:0= )
 	conntrack? ( net-libs/libnetfilter_conntrack:= )
 	nls? ( sys-devel/gettext )
 "
@@ -55,11 +53,10 @@ RDEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="
 	dhcp-tools? ( dhcp )
-	lua? (
-		script
-		${LUA_REQUIRED_USE}
-	)
-	libidn2? ( idn )"
+	dnssec? ( !nettlehash )
+	lua? ( script )
+	libidn2? ( idn )
+"
 
 use_have() {
 	local no_only
@@ -116,8 +113,8 @@ src_configure() {
 		$(use_have lua luascript)
 		$(use_have -n script)
 		$(use_have -n tftp)
-		$(use_have -n dnssec)
-		$(use_have -n nettlehash)
+		$(use_have dnssec)
+		$(use_have nettlehash)
 		$(use_have static dnssec_static)
 		$(use_have -n dumpfile)
 	)
