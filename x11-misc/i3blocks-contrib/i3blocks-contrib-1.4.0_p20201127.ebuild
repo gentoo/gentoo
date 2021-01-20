@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND=""
-RDEPEND="x11-misc/i3blocks"
+RDEPEND="!<x11-misc/i3blocks-1.5
+	>=x11-misc/i3blocks-1.5"
 BDEPEND=""
 
 src_prepare() {
