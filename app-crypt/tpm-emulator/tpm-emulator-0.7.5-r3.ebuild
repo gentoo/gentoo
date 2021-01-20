@@ -1,30 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 MODULES_OPTIONAL_USE="modules"
-inherit user linux-mod cmake-utils udev
+inherit cmake linux-mod udev
 
 MY_P=${P/-/_}
 DESCRIPTION="Emulator driver for tpm"
 HOMEPAGE="https://github.com/PeterHuewe/tpm-emulator"
 SRC_URI="https://github.com/PeterHuewe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE="mtm-emulator"
-RDEPEND="dev-libs/gmp:="
+
+RDEPEND="
+	acct-group/tpm
+	acct-user/tpm
+	dev-libs/gmp:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-static-libs.patch
 )
 
 pkg_setup() {
-	enewgroup tss
-	enewuser tss -1 -1 /var/lib/tpm tss
 	if use modules; then
 		CONFIG_CHECK="MODULES"
 		MODULE_NAMES="tpmd_dev(extra:tpmd_dev/linux:)"
@@ -39,18 +43,20 @@ src_configure() {
 		-DMTM_EMULATOR=$(usex mtm-emulator ON OFF)
 		-DBUILD_DEV=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 
-	use modules && ln -s "${BUILD_DIR}/config.h" tpmd_dev/linux
+	if use modules; then
+		ln -s "${BUILD_DIR}/config.h" tpmd_dev/linux || die
+	fi
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use modules && linux-mod_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use modules; then
 		linux-mod_src_install
 		udev_newrules "tpmd_dev/linux/tpmd_dev.rules" 60-tpmd_dev.rules
