@@ -1133,7 +1133,7 @@ app-crypt/tpm-emulator 0.7.5-r3: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1 1.3.9.2: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.5.0: A PKCS#11 interface for TPM2 hardware
-app-crypt/tpm2-tools 4.3.0 5.0: Tools for the TPM 2.0 TSS
+app-crypt/tpm2-tools 4.3.0-r1 5.0-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
 app-crypt/tpm2-tss 2.4.3 2.4.5 3.0.3: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
@@ -2005,7 +2005,7 @@ app-emulation/containers-storage 1.18.1 1.20.2 1.23.3: containers/storage librar
 app-emulation/cri-o 1.17.1 1.18.3 1.19.0: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 19.0.1-r1: Commercial version of app-emulation/wine with paid support
-app-emulation/crun 0.14.1 0.15: A fast and low-memory footprint OCI Container Runtime fully written in C
+app-emulation/crun 0.15 0.16: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.5.0 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
@@ -3090,7 +3090,7 @@ app-text/wscr 1.2-r2: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapers 0.9.0: Personal document indexing system
-app-text/xapian-omega 1.4.14 1.4.15 1.4.16 1.4.17: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.4.14 1.4.15 1.4.16 1.4.17 1.4.18: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
@@ -5773,7 +5773,7 @@ dev-lua/luafilesystem 1.8.0-r1 1.8.0-r101: File System Library for the Lua progr
 dev-lua/luajson 1.3.3-r1 1.3.4 1.3.4-r100: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.5 1.2.5-r100: A lua binding for the OpenLDAP client libraries
 dev-lua/luaossl 20200709 20200709-r100: Most comprehensive OpenSSL module in the Lua universe
-dev-lua/luaposix 35.0 35.0-r100: Bindings for POSIX APIs
+dev-lua/luaposix 35.0 35.0-r101: Bindings for POSIX APIs
 dev-lua/luarocks 3.3.1 3.5.0: A package manager for the Lua programming language
 dev-lua/luasec 0.9 0.9-r102 9999: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r5 3.0_rc1_p20200328-r1 3.0_rc1_p20200328-r102: Networking support library for the Lua language
@@ -11757,7 +11757,7 @@ games-util/atlas 0.6.1_beta_pre20181202: Chart Program to use with Flightgear Fl
 games-util/biounzip 1.1a: Unpacks BioZip archives
 games-util/catcodec 1.0.5: Decodes and encodes sample catalogues for OpenTTD
 games-util/datutil 2.46: Converter for dat files for Rom Managers
-games-util/deutex 5.2.0: WAD composer for Doom, Heretic, Hexen, and Strife
+games-util/deutex 5.2.0 5.2.2: WAD composer for Doom, Heretic, Hexen, and Strife
 games-util/dfarc 3.12-r1 3.14: Frontend and .dmod installer for GNU FreeDink
 games-util/dzip 2.9-r3: compressor/uncompressor for demo recordings from id's Quake
 games-util/etswitch 0.1.14-r1: *nix minimizer for a few games
@@ -14681,7 +14681,7 @@ net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r4 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.25560 1.3.00.30857-r1: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.4.7-r1 2.4.11: Official desktop client for Telegram
-net-im/telegram-desktop-bin 2.4.4 2.4.5 2.4.7: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 2.4.4 2.4.7 2.5.1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.5: An account manager and channel dispatcher for the Telepathy framework
@@ -15770,7 +15770,7 @@ sci-astronomy/sextractor 2.19.5-r1: Extract catalogs of sources from astronomica
 sci-astronomy/skycat 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.20.2 0.20.3: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.20.2 0.20.3 0.20.4: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
@@ -16063,7 +16063,7 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxsee 7.29 8.1: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
-sci-geosciences/grass 7.8.4: A free GIS with raster and vector functionality, as well as 3D vizualization
+sci-geosciences/grass 7.8.4 7.8.5: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
@@ -17512,7 +17512,7 @@ sys-fs/squashfs-tools-ng 1.0.3 9999: A new set of tools for working with SquashF
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
-sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
+sys-fs/tmsu 0.7.4 0.7.5: Files tagger and virtual tag-based filesystem
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 243-r2 245.5-r1 246-r1 247.2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc

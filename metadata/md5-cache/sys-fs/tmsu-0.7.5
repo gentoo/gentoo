@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-lang/go dev-libs/go-fuse test? ( sys-fs/fuse:0 )
+DESCRIPTION=Files tagger and virtual tag-based filesystem
+EAPI=7
+HOMEPAGE=https://github.com/oniony/TMSU/wiki
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=AGPL-3 AGPL-3+ BSD-4 GPL-3+ MIT
+RDEPEND=sys-fs/fuse:0
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/oniony/TMSU//archive/v0.7.5.tar.gz -> tmsu-0.7.5.tar.gz https://github.com/mattn/go-sqlite3/archive/v1.12.0.tar.gz -> github.com-mattn-go-sqlite3-v1.12.0.tar.gz
+_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_md5_=d412b823b6d22cde1f03e6f4f2724c28
