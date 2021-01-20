@@ -11,7 +11,7 @@ SRC_URI="https://als.regnet.cz/${PN}/download/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/glib:2

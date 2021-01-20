@@ -1,0 +1,13 @@
+This fixes build with sys-devel/slibtool
+
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -178,7 +178,7 @@ libdia_la_SOURCES =  \
+ #		render.h \
+ #		render.c 
+ 
+-libdia_la_LDFLAGS = -avoid-version --export-dynamic
++libdia_la_LDFLAGS = -avoid-version -export-dynamic
+ libdia_la_LIBADD = $(GTK_LIBS)
+ 
+ AM_CPPFLAGS = \
