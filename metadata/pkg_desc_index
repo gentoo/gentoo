@@ -1674,7 +1674,7 @@ app-doc/clsync-docs 0.4.4-r1: Clsync and libclsync API documentation
 app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.15-r1: The Csound reference manual
 app-doc/devmanual 0_pre20200207 0_pre20210118 9999: The Gentoo Development Guide
-app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
+app-doc/diveintopython 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.17 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200913 20210104 99999999: Collection of Gentoo eclass manpages
@@ -2596,7 +2596,7 @@ app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written
 app-misc/tmate 2.3.1 2.4.0: Instant terminal sharing
 app-misc/tmux 3.1c 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
-app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
+app-misc/tmux-xpanes 4.1.1 4.1.2: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
 app-misc/tmuxp 1.5.4 1.5.5 1.5.6 1.6.2 1.6.4 1.7.0: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
@@ -15292,7 +15292,7 @@ net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.2.1: A daemon that spawns one command per connection, and dampens connection bursts
 net-misc/spice-gtk 0.37-r2 0.38 0.38-r1 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
-net-misc/spiped 1.6.0-r1: secure pipe daemon
+net-misc/spiped 1.6.0-r1 1.6.1: secure pipe daemon
 net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.2: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
@@ -19001,7 +19001,7 @@ x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 3.0.2-r1 3.0.5-r2 4.0.4 4.0.5: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 3.0.5-r2 4.0.5 4.0.6_p28363: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.11 4.16.0: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.4-r2 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.16.0: Unified widget and session management libs for Xfce
