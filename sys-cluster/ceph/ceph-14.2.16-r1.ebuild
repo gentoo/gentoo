@@ -44,7 +44,7 @@ DEPEND="
 	app-shells/bash:0
 	app-misc/jq:=
 	dev-libs/crypto++:=
-	dev-libs/rocksdb:=
+	<dev-libs/rocksdb-6.15:=
 	dev-libs/leveldb:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	dev-libs/libnl:3=
@@ -92,7 +92,7 @@ DEPEND="
 		openssl? ( dev-libs/openssl:= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	system-boost? ( =dev-libs/boost-1.72*[threads,context,python,${PYTHON_USEDEP}] )
+	system-boost? ( dev-libs/boost[threads,context,python,${PYTHON_USEDEP}] )
 	xfs? ( sys-fs/xfsprogs:= )
 	zfs? ( sys-fs/zfs:= )
 	${PYTHON_DEPS}
