@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re dlz/mysql and threads, needs to be verified..
@@ -12,9 +12,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit python-r1 eutils autotools toolchain-funcs flag-o-matic multilib db-use systemd
+inherit python-r1 autotools toolchain-funcs flag-o-matic  db-use systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -33,7 +33,7 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps +dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux static-libs
@@ -41,8 +41,9 @@ urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
+# Upstream dropped the old geoip library, but the BIND configuration for using
+# GeoIP remained the same.
 REQUIRED_USE="
-	?? ( geoip geoip2 )
 	postgres? ( dlz )
 	berkdb? ( dlz )
 	mysql? ( dlz )
@@ -63,7 +64,7 @@ DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
-	geoip? ( >=dev-libs/geoip-1.4.6 )
+	geoip? ( dev-libs/libmaxminddb )
 	geoip2? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
@@ -84,10 +85,6 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	# should fix https://bugs.gentoo.org/741162 taken from:
-	# https://gitlab.isc.org/isc-projects/bind9/-/merge_requests/4073
-	"${FILESDIR}/bind-9.16.6-bug-741162.patch"
-
 	"${FILESDIR}/ldap-library-path-on-multilib-machines.patch"
 )
 
@@ -148,9 +145,18 @@ bind_configure() {
 		$(use_with zlib)
 		"${@}"
 	)
-
-	use geoip && myeconfargs+=( --enable-geoip )
-	use geoip2 && myeconfargs+=( --with-maxminddb )
+	# This is for users to start to migrate back to USE=geoip, rather than
+	# USE=geoip2
+	if use geoip ; then
+		myeconfargs+=( $(use_with geoip maxminddb) --enable-geoip )
+	elif use geoip2 ; then
+		# Added 2020/09/30
+		# Remove USE=geoip2 support after 2020/03/01
+		ewarn "USE=geoip2 is deprecated; update your USE flags!"
+		myeconfargs+=( $(use_with geoip2 maxminddb) --enable-geoip )
+	else
+		myeconfargs+=( --without-maxminddb --disable-geoip )
+	fi
 
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
@@ -258,7 +264,7 @@ src_install() {
 	fperms 0770 /var/log/named /var/bind/{,sec,dyn}
 
 	systemd_newunit "${FILESDIR}/named.service-r1" named.service
-	systemd_dotmpfilesd "${FILESDIR}"/named.conf
+	dotmpfiles "${FILESDIR}"/named.conf
 	exeinto /usr/libexec
 	doexe "${FILESDIR}/generate-rndc-key.sh"
 }
@@ -273,7 +279,9 @@ python_install() {
 }
 
 pkg_postinst() {
-	if [ ! -f '/etc/bind/rndc.key' ]; then
+	tmpfiles_process "${FILESDIR}"/named.conf
+
+	if [ ! -f '/etc/bind/rndc.key' && ! -f '/etc/bind/rndc.conf' ]; then
 		if use urandom; then
 			einfo "Using /dev/urandom for generating rndc.key"
 			/usr/sbin/rndc-confgen -r /dev/urandom -a
