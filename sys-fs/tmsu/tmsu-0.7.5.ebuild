@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,14 +30,19 @@ DEPEND="
 
 src_prepare() {
 	default
-	mkdir "${WORKDIR}/${P}/src/${EGO_PN}vendor/src"
-	mv "${WORKDIR}/${P}/src/${EGO_PN}vendor/github.com" "${WORKDIR}/${P}/src/${EGO_PN}vendor/src/"
+	mkdir "${WORKDIR}/${P}/src/${EGO_PN}vendor/src" || die
+	mv "${WORKDIR}/${P}/src/${EGO_PN}vendor/github.com" "${WORKDIR}/${P}/src/${EGO_PN}vendor/src/" || die
 }
 
 src_compile() {
-	pushd "${WORKDIR}/${P}/src/${EGO_PN}"
+	pushd "${WORKDIR}/${P}/src/${EGO_PN}" || die
 		GOPATH="${WORKDIR}/${P}/src/${EGO_PN}vendor/" emake
 	popd || die
+}
+
+src_test() {
+	cd "${WORKDIR}/${P}/src/github.com/oniony/TMSU/tests" || die
+	./runall || die
 }
 
 src_install() {
@@ -46,9 +51,4 @@ src_install() {
 	doman  "${WORKDIR}/${P}/src/${EGO_PN}misc/man/tmsu."*
 	insinto /usr/share/zsh/site-functions
 	doins "${WORKDIR}/${P}/src/${EGO_PN}misc/zsh/_tmsu"
-}
-
-src_test() {
-	cd "${WORKDIR}/${P}/src/github.com/oniony/TMSU/tests" || die
-	./runall || die
 }
