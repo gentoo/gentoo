@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/hector_marker_drawing
 	dev-ros/hector_trajectory_server
 	dev-ros/hector_geotiff
+	dev-ros/hector_geotiff_launch
 	dev-ros/hector_imu_attitude_to_tf
 	dev-ros/hector_mapping
 	dev-ros/hector_map_tools
