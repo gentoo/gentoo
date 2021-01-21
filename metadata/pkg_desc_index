@@ -3553,12 +3553,12 @@ dev-db/mongodb 4.2.8 4.2.11 4.4.1 4.4.2: A high-performance, open source, schema
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.22.2_p20201026 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
-dev-db/myodbc 8.0.22: ODBC driver for MySQL
-dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22: A fast, multi-threaded, multi-user SQL database server
+dev-db/myodbc 8.0.22 8.0.23: ODBC driver for MySQL
+dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 5.7.33 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22 8.0.23: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
-dev-db/mysql-connector-c 8.0.22: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c 8.0.22 8.0.23: C client library for MariaDB/MySQL
+dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22 8.0.23: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance MySQL tuning script
@@ -8502,7 +8502,7 @@ dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignme
 dev-python/mygpoclient 1.8: A gpodder.net client library
 dev-python/mypy 0.790: Optional static typing for Python
 dev-python/mypy_extensions 0.4.3-r1: Optional static typing for Python
-dev-python/mysql-connector-python 8.0.22: Python client library for MariaDB/MySQL
+dev-python/mysql-connector-python 8.0.22 8.0.23: Python client library for MariaDB/MySQL
 dev-python/mysqlclient 1.4.6-r1: Fork of MySQL-python
 dev-python/nagiosplugin 1.3.2-r1: A class library for writing nagios-compatible plugins
 dev-python/namespace-google 1-r1: Namespace package declaration for google
@@ -10497,7 +10497,7 @@ dev-tcltk/thread 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkcon 2.5-r1 2.7.3: Tk GUI console
 dev-tcltk/tkdnd 2.9.2: Adds native drag & drop capabilities to tk toolkit
-dev-tcltk/tkimg 1.4.9 1.4.11: Adds a lot of image formats to Tcl/Tk
+dev-tcltk/tkimg 1.4.9 1.4.11 1.4.12: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2 0.7: Collection of utility modules for Tk, and a companion to Tcllib
 dev-tcltk/tkpiechart 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application
 dev-tcltk/tkpng 0.9: Implements support for loading and using PNG images with Tcl/Tk
@@ -16403,7 +16403,7 @@ sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lrcalc 1.2: Littlewood-Richardson Calculator
-sci-mathematics/mathematica 12.1.1-r1: Wolfram Mathematica
+sci-mathematics/mathematica 10.3.1-r1 12.1.0 12.1.1-r1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.42.1 5.44.0: Free computer algebra environment based on Macsyma
