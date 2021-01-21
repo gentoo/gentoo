@@ -6,7 +6,7 @@ EAPI="7"
 inherit autotools
 
 DESCRIPTION="A brokerless kernel"
-HOMEPAGE="http://www.zeromq.org/"
+HOMEPAGE="https://zeromq.org/"
 SRC_URI="https://github.com/zeromq/libzmq/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
