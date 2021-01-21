@@ -1092,6 +1092,7 @@ app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo rel
 app-crypt/openpgp-keys-kernel 20201103: OpenPGP keys used to sign Linux kernel releases
 app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-related packages
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
+app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
 app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
@@ -5171,7 +5172,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.4.13 7.4.14 8.0.0 8.0.1: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r5 2.7.18-r6 3.6.12-r1 3.6.12-r2 3.7.9-r1 3.7.9-r2 3.8.6-r1 3.8.7-r1 3.9.0-r1 3.9.1-r1 3.10.0_alpha3-r1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r5 2.7.18-r6 3.6.12-r1 3.6.12-r2 3.7.9-r1 3.7.9-r2 3.8.6-r1 3.8.7-r1 3.9.0-r1 3.9.1-r1 3.10.0_alpha3-r1 3.10.0_alpha4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3 2.4.6-r4: Python script wrapper
 dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -7991,7 +7992,7 @@ dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/binaryornot 0.4.4-r2: Ultra-lightweight pure Python package to guess whether a file is binary or text
-dev-python/bitarray 1.6.1: efficient arrays of booleans -- C extension
+dev-python/bitarray 1.6.1 1.6.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 20.8_beta1: The uncompromising Python code formatter
 dev-python/bleach 3.2.1: an easy whitelist-based HTML-sanitizing tool
@@ -9283,7 +9284,7 @@ dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3 0.6.5: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 1.0.2: Python API and shell utilities to monitor file system events
-dev-python/wcmatch 7.1 7.2: Wildcard/glob file name matcher
+dev-python/wcmatch 7.1 7.2 8.0: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
