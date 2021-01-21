@@ -4,11 +4,11 @@ DESCRIPTION=A replication system for the PostgreSQL Database Management System
 EAPI=7
 HOMEPAGE=https://slony.info/
 IUSE=doc perl postgres_targets_postgres13 postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5
-KEYWORDS=~amd64 ppc ~x86
+KEYWORDS=amd64 ppc ~x86
 LICENSE=BSD GPL-2
 RDEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13=[server,threads] ) postgres_targets_postgres12? ( dev-db/postgresql:12=[server,threads] ) postgres_targets_postgres11? ( dev-db/postgresql:11=[server,threads] ) postgres_targets_postgres10? ( dev-db/postgresql:10=[server,threads] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server,threads] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server,threads] ) perl? ( dev-perl/DBD-Pg )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://slony.info/downloads/2.2/source/slony1-2.2.10.tar.bz2 doc? ( https://slony.info/downloads/2.2/source/slony1-2.2.10-docs.tar.bz2 )
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=87173b7f2e29dd4d997e8bbf079886f5
+_md5_=a4a1a7e27f3dd5220efe2f6df53bcb02

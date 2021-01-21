@@ -2803,7 +2803,7 @@ app-shells/mksh 59 59c 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/pdmenu 1.3.4-r1 1.3.6: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
-app-shells/peco 0.5.7: Simplistic interactive filtering tool
+app-shells/peco 0.5.7 0.5.8: Simplistic interactive filtering tool
 app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
 app-shells/powerline 2.7-r1 2.7-r2 9999: The ultimate statusline/prompt utility.
 app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
@@ -3461,7 +3461,7 @@ dev-cpp/aixlog 1.4.0 9999: Header-only C++ logging library
 dev-cpp/amqp-cpp 4.3.10: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/argparse 2.1: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
-dev-cpp/asio 1.10.8 1.17.0 1.18.0: Asynchronous Network Library
+dev-cpp/asio 1.10.8 1.17.0 1.18.0 1.18.1: Asynchronous Network Library
 dev-cpp/atkmm 2.28.0: C++ interface for the ATK library
 dev-cpp/benchmark 1.5.1 1.5.2: A microbenchmark support library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
@@ -14271,12 +14271,12 @@ net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking com
 net-analyzer/goaccess 1.4.2 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 0.0_p20200131 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 1.1.5-r1 1.1.7: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 8.0.1-r1 9.0.1: Greenbone Security Assistant
+net-analyzer/greenbone-security-assistant 9.0.1: Greenbone Security Assistant
 net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/gvm 10.0.1 11.0.0: Greenbone Vulnerability Management,previously named OpenVAS
 net-analyzer/gvm-libs 10.0.1 11.0.1: Greenbone vulnerability management libraries, previously named openvas-libraries
 net-analyzer/gvm-tools 2.0.0-r1 2.1.0: Remote control for Greenbone Vulnerability Manager, previously named openvas-cli
-net-analyzer/gvmd 8.0.1 9.0.1: Greenbone vulnerability manager, previously named openvas-manager
+net-analyzer/gvmd 9.0.1: Greenbone vulnerability manager, previously named openvas-manager
 net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
@@ -15115,7 +15115,7 @@ net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/frr 7.5: The FRRouting Protocol Suite
-net-misc/gallery-dl 1.15.2-r1 1.15.3 1.16.0 9999: Download image galleries and collections from several image hosting sites
+net-misc/gallery-dl 1.15.2-r1 1.15.3 1.16.0 1.16.3 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -18833,7 +18833,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20201018: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20201018 0_pre20210121: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
