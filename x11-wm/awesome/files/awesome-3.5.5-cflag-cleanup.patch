@@ -1,0 +1,12 @@
+diff -u awesome-3.5.5/awesomeConfig.cmake awesome-3.5.5.new/awesomeConfig.cmake
+--- awesome-3.5.5/awesomeConfig.cmake   2014-08-24 23:28:04.178646000 -0400
++++ awesome-3.5.5.new/awesomeConfig.cmake   2014-08-24 23:28:44.204646000 -0400
+@@ -16,7 +16,7 @@
+ option(GENERATE_DOC "generate API documentation" ON)
+ 
+ # {{{ CFLAGS
+-add_definitions(-O1 -std=gnu99 -ggdb3 -rdynamic -fno-strict-aliasing -Wall -Wextra
++add_definitions(-std=gnu99 -fno-strict-aliasing -Wall -Wextra
+     -Wchar-subscripts -Wundef -Wshadow -Wcast-align -Wwrite-strings
+     -Wsign-compare -Wunused -Wno-unused-parameter -Wuninitialized -Winit-self
+     -Wpointer-arith -Wformat-nonliteral
