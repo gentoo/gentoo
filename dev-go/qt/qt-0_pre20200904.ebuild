@@ -48,6 +48,7 @@ RDEPEND="dev-qt/designer:5=
 	dev-qt/qt-docs:5=[html]
 	dev-qt/qtbluetooth:5=
 	dev-qt/qtcharts:5=
+	dev-qt/qtcore:5=
 	dev-qt/qtdatavis3d:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgamepad:5=
