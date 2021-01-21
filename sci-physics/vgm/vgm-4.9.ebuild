@@ -48,6 +48,9 @@ DOCS=(
 	doc/VGM.html
 	doc/VGMversions.html
 )
+PATCHES=(
+	"${FILESDIR}"/"${PN}-copy-test-seed.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
