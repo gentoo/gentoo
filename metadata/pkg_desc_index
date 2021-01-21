@@ -7830,7 +7830,7 @@ dev-php/pecl-timezonedb 2020.4: Timezone Database to be used with PHP's date and
 dev-php/pecl-translit 0.6.3 0.7.1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.1.3-r1: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.1.0 1.2.0: A wrapper around libuuid
-dev-php/pecl-xdiff 2.0.1-r2: PHP extension for generating diff files
+dev-php/pecl-xdiff 2.1.0_pre: PHP extension for generating diff files
 dev-php/pecl-yaml 2.2.0 2.2.1: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.3 1.2.3-r1: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/pecl-zmq 1.1.3-r3 9999: PHP Bindings for ZeroMQ messaging
@@ -10675,7 +10675,7 @@ dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects fr
 dev-util/cppcheck 1.88 2.2: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
-dev-util/cppunit 1.14.0 1.15.1 9999: C++ port of the famous JUnit framework for unit testing
+dev-util/cppunit 1.14.0 1.15.1-r1 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
 dev-util/cproto 4.7q 4.7r: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
