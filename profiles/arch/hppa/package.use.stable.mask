@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-01-21)
+# media-gfx/transfig ends up pulling in Xorg
+# bug #766051
+dev-util/ragel doc
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-31)
 # The following packages have no stable keywords on hppa:
 #           amqp: net-libs/rabbitmq
