@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ port of the famous JUnit framework for unit testing"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/cppunit"
 if [[ "${PV}" == *9999 ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/cppunit.git"
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/${P}.tar.gz"
@@ -30,9 +30,13 @@ BDEPEND="
 DOCS=( AUTHORS BUGS NEWS README THANKS TODO doc/FAQ )
 [[ "${PV}" == 9999 ]] || DOCS+=( ChangeLog )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.15.1-slibtool.patch"
+)
+
 src_prepare() {
 	default
-	[[ "${PV}" == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
