@@ -3391,6 +3391,10 @@
     <name>Undertakers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Undertakers</url>
     <description>The Community Relations Undertakers project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
+    <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
