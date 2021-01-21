@@ -9113,7 +9113,7 @@ dev-python/snakeoil 0.8.8 0.8.9 9999: misc common functionality and useful optim
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1-r1 0.6.0: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
-dev-python/snowballstemmer 2.0.0: Stemmer algorithms generated from Snowball algorithms
+dev-python/snowballstemmer 2.0.0 2.1.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r3: A simple Python socket pool
@@ -9248,7 +9248,7 @@ dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backp
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.7.1: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.9.1 0.9.4: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
-dev-python/ujson 1.35-r1 4.0.1: Ultra fast JSON encoder and decoder for Python
+dev-python/ujson 1.35-r1 4.0.1 4.0.2: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 1.1.1 1.1.2: Module providing ASCII transliterations of Unicode text
@@ -16934,7 +16934,7 @@ sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often f
 sys-apps/mcstrans 3.1 9999: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4 5.01-r5: Memory tester based on memtest86
-sys-apps/memtest86-bin 9.0_beta1: Stand alone memory testing software for x86 computers
+sys-apps/memtest86-bin 9.0_beta1 9.0_beta2: Stand alone memory testing software for x86 computers
 sys-apps/memtester 4.3.0 4.4.0 4.5.0: userspace utility for testing the memory subsystem for faults
 sys-apps/miller 5.3.0 5.10.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
@@ -17949,7 +17949,7 @@ www-apps/bugzilla 5.0.6-r1: Bugzilla is the Bug-Tracking System from the Mozilla
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.3 1.2.3-r1 1.2.3-r100 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20190510-r1: A graphical web-based front-end for visualizing RRD collected by collectd
-www-apps/chromedriver-bin 87.0.4280.20: WebDriver for Chrome
+www-apps/chromedriver-bin 88.0.4324.96: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
