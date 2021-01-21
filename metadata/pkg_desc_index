@@ -14675,7 +14675,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.39.5: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.39.6: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.67.0.96: Instant messaging client, with support for audio and video
 net-im/slack 4.4.2 4.4.3 4.11.3: Team collaboration tool
@@ -14950,7 +14950,7 @@ net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r3: Fast and scalable sql based email services
 net-mail/django-mailman3 1.3.4: Django-based interfaces interacting with Mailman 3
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.36.4 2.3.11.3 2.3.11.3-r1 2.3.11.3-r2 2.3.13 2.3.13-r1 2.3.13-r100: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.3.11.3 2.3.11.3-r1 2.3.11.3-r2 2.3.13 2.3.13-r1 2.3.13-r100: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3-r1: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3 7.2.2: Simple yet powerful mailing list manager for qmail
@@ -15537,7 +15537,7 @@ net-vpn/openconnect 8.09-r1 8.09-r3 8.10 8.10-r1 9999: Free client for Cisco Any
 net-vpn/openfortivpn 1.13.2 1.13.3 1.15.0: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 2.5.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/protonvpn-cli 2.2.2: A VPN command-line tool from protonvpn - python rewrite
+net-vpn/protonvpn-cli 2.2.2 2.2.4: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 1.2.10-r1: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
@@ -16483,7 +16483,7 @@ sci-physics/root 6.20.08 6.22.06 9999: C++ data analysis framework and interpret
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
-sci-physics/vgm 4.8 9999: Virtual Geometry Model for High Energy Physics Experiments
+sci-physics/vgm 4.8 4.9 9999: Virtual Geometry Model for High Energy Physics Experiments
 sci-physics/vmc 1.0_p3 9999: The Virtual Monte Carlo core library
 sci-physics/xfoil 6.99: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.7.0-r2: Yet more Objects for (High Energy Physics) Data Analysis
