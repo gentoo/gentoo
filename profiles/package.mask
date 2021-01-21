@@ -248,12 +248,6 @@ media-gfx/wkhtmltopdf
 app-doc/clsync-docs
 dev-libs/libclsync
 
-# Eray Aslan <eras@gentoo.org> (2020-12-21)
-# Vulnerable. upgrade to >= 2.3.11.3. Masked until
-# mail-filter/dovecot_deleted_to_trash is treecleaned
-# to prevent breaking the tree (bug #756217)
-=net-mail/dovecot-2.2.36.4
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
 # https://github.com/ndmitchell/derive/pull/37
