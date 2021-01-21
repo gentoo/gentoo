@@ -2005,7 +2005,7 @@ app-emulation/containerd 1.3.7 1.3.9 1.4.3-r2: A daemon to control runC
 app-emulation/containers-storage 1.18.1 1.20.2 1.23.3: containers/storage library
 app-emulation/cri-o 1.17.1 1.18.3 1.19.0: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
-app-emulation/crossover-bin 19.0.1-r1: Commercial version of app-emulation/wine with paid support
+app-emulation/crossover-bin 19.0.1-r1 19.0.2 20.0.2: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.15 0.16: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.5.0 9999: Golden Disk Image builder.
@@ -2510,7 +2510,7 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
-app-misc/mc 4.8.25-r1 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.25-r1 4.8.26 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 24: Repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
@@ -16030,7 +16030,7 @@ sci-electronics/kicad-meta 5.1.9: Electronic Schematic and PCB design tools (met
 sci-electronics/kicad-packages3d 5.1.9: Electronic Schematic and PCB design tools 3D package libraries
 sci-electronics/kicad-symbols 5.1.9: Electronic Schematic and PCB design tools symbol libraries
 sci-electronics/kicad-templates 5.1.9: Electronic Schematic and PCB design tools project templates
-sci-electronics/klayout 0.26.5 0.26.8 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
+sci-electronics/klayout 0.26.5 0.26.8 0.26.9 9999: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/ktechlab 0.50.0-r1: IDE for microcontrollers and electronics
 sci-electronics/labone 16.12.42529: Platform independent instrument control for Zurich Instruments devices
 sci-electronics/librepcb 0.1.3: Free EDA software to develop printed circuit boards
@@ -18605,7 +18605,7 @@ x11-misc/xsensors 0.70-r1 0.80: A hardware health information viewer, interface 
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsettingsd 1.0.0 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
 x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
-x11-misc/xsnow 1.42-r2 3.0.7: let it snow on your desktop and windows
+x11-misc/xsnow 3.0.7 3.2.2: let it snow on your desktop and windows
 x11-misc/xsr 1.0.0: X Steps Recorder
 x11-misc/xsri 2.1.0_p17_p12: The xsri wallpaper setter from RedHat
 x11-misc/xss-lock 0.3.0_p20140302-r1: Use external locker as X screen saver
