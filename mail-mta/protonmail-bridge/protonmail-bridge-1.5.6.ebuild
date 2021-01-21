@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit go-module xdg-utils
+inherit go-module systemd xdg-utils
 
 EGO_SUM=(
 	"github.com/0xAX/notificator v0.0.0-20191016112426-3962a5ea8da1"
@@ -27,16 +27,16 @@ EGO_SUM=(
 	"github.com/ProtonMail/go-apple-mobileconfig v0.0.0-20160701194735-7ea9927a11f6/go.mod"
 	"github.com/ProtonMail/go-autostart v0.0.0-20181114175602-c5272053443a"
 	"github.com/ProtonMail/go-autostart v0.0.0-20181114175602-c5272053443a/go.mod"
-	"github.com/ProtonMail/go-imap v0.0.0-20201102134601-418cd74e9474"
-	"github.com/ProtonMail/go-imap v0.0.0-20201102134601-418cd74e9474/go.mod"
+	"github.com/ProtonMail/go-imap v0.0.0-20201228133358-4db68cea0cac"
+	"github.com/ProtonMail/go-imap v0.0.0-20201228133358-4db68cea0cac/go.mod"
 	"github.com/ProtonMail/go-imap-id v0.0.0-20190926060100-f94a56b9ecde"
 	"github.com/ProtonMail/go-imap-id v0.0.0-20190926060100-f94a56b9ecde/go.mod"
 	"github.com/ProtonMail/go-mime v0.0.0-20190923161245-9b5a4261663a"
 	"github.com/ProtonMail/go-mime v0.0.0-20190923161245-9b5a4261663a/go.mod"
-	"github.com/ProtonMail/go-rfc5322 v0.2.0"
-	"github.com/ProtonMail/go-rfc5322 v0.2.0/go.mod"
-	"github.com/ProtonMail/go-smtp v0.0.0-20181206232543-8261df20d309"
-	"github.com/ProtonMail/go-smtp v0.0.0-20181206232543-8261df20d309/go.mod"
+	"github.com/ProtonMail/go-rfc5322 v0.4.0"
+	"github.com/ProtonMail/go-rfc5322 v0.4.0/go.mod"
+	"github.com/ProtonMail/go-rfc5322 v0.5.0"
+	"github.com/ProtonMail/go-rfc5322 v0.5.0/go.mod"
 	"github.com/ProtonMail/go-vcard v0.0.0-20180326232728-33aaa0a0c8a5"
 	"github.com/ProtonMail/go-vcard v0.0.0-20180326232728-33aaa0a0c8a5/go.mod"
 	"github.com/ProtonMail/gopenpgp/v2 v2.0.1"
@@ -90,8 +90,6 @@ EGO_SUM=(
 	"github.com/emersion/go-imap-move v0.0.0-20190710073258-6e5a51a5b342/go.mod"
 	"github.com/emersion/go-imap-quota v0.0.0-20200423100218-dcfd1b7d2b41"
 	"github.com/emersion/go-imap-quota v0.0.0-20200423100218-dcfd1b7d2b41/go.mod"
-	"github.com/emersion/go-imap-specialuse v0.0.0-20200722111535-598ff00e4075"
-	"github.com/emersion/go-imap-specialuse v0.0.0-20200722111535-598ff00e4075/go.mod"
 	"github.com/emersion/go-imap-unselect v0.0.0-20171113212723-b985794e5f26"
 	"github.com/emersion/go-imap-unselect v0.0.0-20171113212723-b985794e5f26/go.mod"
 	"github.com/emersion/go-mbox v1.0.2"
@@ -99,11 +97,17 @@ EGO_SUM=(
 	"github.com/emersion/go-message v0.11.1/go.mod"
 	"github.com/emersion/go-message v0.12.1-0.20200903165315-e1abe21f389a"
 	"github.com/emersion/go-message v0.12.1-0.20200903165315-e1abe21f389a/go.mod"
+	"github.com/emersion/go-message v0.12.1-0.20201221184100-40c3f864532b"
+	"github.com/emersion/go-message v0.12.1-0.20201221184100-40c3f864532b/go.mod"
 	"github.com/emersion/go-sasl v0.0.0-20191210011802-430746ea8b9b/go.mod"
 	"github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21"
 	"github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21/go.mod"
+	"github.com/emersion/go-smtp v0.14.0"
+	"github.com/emersion/go-smtp v0.14.0/go.mod"
 	"github.com/emersion/go-textwrapper v0.0.0-20160606182133-d0e65e56babe"
 	"github.com/emersion/go-textwrapper v0.0.0-20160606182133-d0e65e56babe/go.mod"
+	"github.com/emersion/go-textwrapper v0.0.0-20200911093747-65d896831594"
+	"github.com/emersion/go-textwrapper v0.0.0-20200911093747-65d896831594/go.mod"
 	"github.com/emersion/go-vcard v0.0.0-20190105225839-8856043f13c5"
 	"github.com/emersion/go-vcard v0.0.0-20190105225839-8856043f13c5/go.mod"
 	"github.com/etcd-io/bbolt v1.3.3/go.mod"
@@ -192,6 +196,7 @@ EGO_SUM=(
 	"github.com/magiconair/properties v1.8.0/go.mod"
 	"github.com/martinlindhe/base36 v1.0.0"
 	"github.com/martinlindhe/base36 v1.0.0/go.mod"
+	"github.com/martinlindhe/base36 v1.1.0/go.mod"
 	"github.com/mattn/go-colorable v0.1.2/go.mod"
 	"github.com/mattn/go-colorable v0.1.4"
 	"github.com/mattn/go-colorable v0.1.4/go.mod"
@@ -318,6 +323,7 @@ EGO_SUM=(
 	"golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod"
 	"golang.org/x/sync v0.0.0-20190423024810-112230192c58"
 	"golang.org/x/sync v0.0.0-20190423024810-112230192c58/go.mod"
+	"golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e"
 	"golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e/go.mod"
 	"golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33/go.mod"
 	"golang.org/x/sys v0.0.0-20180909124046-d0be0721c37e/go.mod"
@@ -338,6 +344,8 @@ EGO_SUM=(
 	"golang.org/x/text v0.3.2/go.mod"
 	"golang.org/x/text v0.3.3"
 	"golang.org/x/text v0.3.3/go.mod"
+	"golang.org/x/text v0.3.5-0.20201125200606-c27b9fd57aec"
+	"golang.org/x/text v0.3.5-0.20201125200606-c27b9fd57aec/go.mod"
 	"golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod"
 	"golang.org/x/tools v0.0.0-20181221001348-537d06c36207/go.mod"
 	"golang.org/x/tools v0.0.0-20190327201419-c70d86f8b7cf/go.mod"
@@ -398,7 +406,10 @@ src_prepare() {
 
 src_compile() {
 	if use gui; then
-		emake build
+		emake \
+			QT_DOC_DIR="/usr/share/qt5-doc" \
+			QT_PKG_CONFIG=true \
+			build
 	else
 		emake build-nogui
 	fi
@@ -411,15 +422,20 @@ src_test() {
 src_install() {
 	# A slight hack to allow this package (which is currently limited to CLI mode)
 	# and protonmail-bridge-bin (which supports GUI mode) to co-exist.
-	local bin_name
+	local bin_name unit_name
 	if use gui; then
 		bin_name="${PN}"
+		unit_name="${FILESDIR}/${PN}.service"
 	else
 		bin_name="${PN}-cli"
+		unit_name="${PN}-cli.service"
+		sed -e "s|${PN}|${bin_name}|" "${FILESDIR}"/${PN}.service > ${unit_name} || die
 	fi
 
 	exeinto /usr/bin
 	newexe proton-bridge ${bin_name}
+
+	systemd_douserunit ${unit_name}
 
 	# FIXME: USE=gui will probably need more files
 
