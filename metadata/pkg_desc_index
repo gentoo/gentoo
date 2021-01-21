@@ -7825,9 +7825,9 @@ dev-php/pecl-redis 5.3.2: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r4: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
-dev-php/pecl-taint 2.0.5 2.0.6: Extension used for detecting XSS code (tainted strings)
+dev-php/pecl-taint 2.1.0: Extension used for detecting XSS code (tainted strings)
 dev-php/pecl-timezonedb 2020.4: Timezone Database to be used with PHP's date and time functions
-dev-php/pecl-translit 0.6.3 0.7.1: Transliterates non-latin character sets to latin
+dev-php/pecl-translit 0.7.1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.1.3-r1: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.2.0: A wrapper around libuuid
 dev-php/pecl-xdiff 2.1.0_pre: PHP extension for generating diff files
