@@ -19,7 +19,7 @@ DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
-SLOT="0"
+SLOT="0/${PV%%.*}"
 IUSE="debug emacs +fuse +georeplication infiniband ipv6 libressl +libtirpc rsyslog static-libs +syslog test +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
