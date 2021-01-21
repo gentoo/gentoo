@@ -15,7 +15,6 @@
     <flag name="endomorphism">Enable endomorphism</flag>
     <flag name="experimental">Allow experimental USE flags</flag>
     <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
-    <flag name="schnorr">Enable Schnorr signature module</flag>
     <flag name="test-openssl">Enable OpenSSL comparison tests</flag>
   </use>
   <upstream>
