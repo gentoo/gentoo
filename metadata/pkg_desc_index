@@ -8992,7 +8992,7 @@ dev-python/pyx 0.15: Python package for the generation of encapsulated PostScrip
 dev-python/pyxDamerauLevenshtein 1.6.1: Implements the Damerau-Levenshtein edit distance algorithm for Python in Cython
 dev-python/pyxattr 0.7.1 0.7.2: Python interface to xattr
 dev-python/pyxdg 0.26-r2 0.27: A Python module to deal with freedesktop.org specifications
-dev-python/pyyaml 5.3.1-r1 5.4: YAML parser and emitter for Python
+dev-python/pyyaml 5.3.1-r1 5.4.1: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.8: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 19.0.2 20.0.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
