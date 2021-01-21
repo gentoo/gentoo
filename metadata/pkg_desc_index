@@ -12303,7 +12303,7 @@ kde-frameworks/threadweaver 5.77.0 5.78.0: Framework for managing threads using 
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
 kde-misc/kdeconnect 20.08.3 20.12.1: Adds communication between KDE Plasma and your smartphone
-kde-misc/kdiff3 1.8.4: Frontend to diff3 based on KDE Frameworks
+kde-misc/kdiff3 1.8.4 1.8.5: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
 kde-misc/kio-fuse 5.0.0: FUSE interface for KIO
@@ -18005,7 +18005,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 87.0.4280.141 88.0.4324.96 89.0.4385.0: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.96 89.0.4385.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
