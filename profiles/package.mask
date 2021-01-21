@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-01-21)
+# Masked for testing and further work - the golang-vcs-snapshot variant
+# seems to be incompatible with revdeps using go-module, the variant
+# using the latter is still broken.
+dev-go/qt
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-19)
 # Fails to build.  Last release in 2000.
 # Removal on 2021-02-18.  Bug #722204.
