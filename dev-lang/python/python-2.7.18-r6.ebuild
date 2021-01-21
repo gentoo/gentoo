@@ -4,7 +4,8 @@
 EAPI="7"
 WANT_LIBTOOL="none"
 
-inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
+inherit autotools flag-o-matic pax-utils \
+	python-utils-r1 toolchain-funcs verify-sig
 
 MY_P="Python-${PV}"
 PYVER=$(ver_cut 1-2)
@@ -13,7 +14,10 @@ PATCHSET="python-gentoo-patches-2.7.18-r6"
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
+	verify-sig? (
+		https://www.python.org/ftp/python/${PV%_*}/${MY_P}.tar.xz.asc
+	)"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
@@ -59,12 +63,16 @@ RDEPEND="app-arch/bzip2:=
 	xml? ( >=dev-libs/expat-2.1:= )"
 # bluetooth requires headers from bluez
 DEPEND="${RDEPEND}
-	bluetooth? ( net-wireless/bluez )
+	bluetooth? ( net-wireless/bluez )"
+BDEPEND="
 	virtual/pkgconfig
+	verify-sig? ( app-crypt/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 	!<=dev-lang/python-exec-2.4.6-r1"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
 
 pkg_setup() {
 	if use berkdb; then
@@ -79,6 +87,13 @@ pkg_setup() {
 			ewarn "You might need to migrate your databases."
 		fi
 	fi
+}
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.asc}
+	fi
+	default
 }
 
 src_prepare() {
