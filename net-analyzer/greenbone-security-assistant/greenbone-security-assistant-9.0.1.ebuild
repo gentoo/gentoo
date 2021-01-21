@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,6 +54,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.1-node.patch"
 	# Remove ugly uninstall-snippet that causes failing re-emerge.
 	"${FILESDIR}/${P}-uninstall-snippet.patch"
+	# Replace deprecated glibc sys_siglist with strsignal
+	"${FILESDIR}/${P}-glibc_siglist.patch"
 )
 
 src_prepare() {
