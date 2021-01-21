@@ -40,6 +40,10 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+)
+
 python_make() {
 	emake \
 		-C py \
