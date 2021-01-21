@@ -59,6 +59,7 @@ BDEPEND="
 	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	!sys-devel/gcc[libffi(-)]"
+PDEPEND="app-eselect/eselect-python"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 
 # large file tests involve a 2.5G file being copied (duplicated)
