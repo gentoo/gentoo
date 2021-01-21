@@ -15,7 +15,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/1.15"
 IUSE="doc examples static-libs"
 
 RDEPEND=""
