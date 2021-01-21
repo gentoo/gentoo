@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2020-01-21)
+# All kernels >= 4.17 removed IrDA drivers and support,
+# the package has also multiple bugs open and is unmaintained.
+# Removal in 30 days.
+net-wireless/irda-utils
+
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
