@@ -75,6 +75,9 @@ multilib_src_install_all() {
 			|| die "Failed to build $i"
 	done
 
+	rm -rf "${ED}/usr/$(get_libdir)/${PN}-${MAJOR}/private" \
+		|| die "failed to remove bundled libs"
+
 	mv "${D}/usr/bin/myodbc-installer" \
 		"${D}/usr/bin/myodbc-installer-${MAJOR}" || die "failed to move slotted binary"
 }
