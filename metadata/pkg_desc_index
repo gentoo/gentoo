@@ -9106,6 +9106,7 @@ dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2 9999: Python 3 library for XMPP
+dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
 dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 0.8.9 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
