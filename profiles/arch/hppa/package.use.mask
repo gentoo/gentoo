@@ -11,6 +11,7 @@ dev-util/ragel doc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this arch
+# bug #750032
 sys-apps/groff uchardet
 
 # Sam James <sam@gentoo.org> (2021-01-19)
