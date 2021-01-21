@@ -11976,7 +11976,7 @@ gui-libs/wlroots 0.11.0 0.12.0 9999: Pluggable, composable, unopinionated module
 gui-libs/wpebackend-fdo 1.8.0: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2-r1: Wayland compositor inspired by CWM
-gui-wm/sway 1.5.1 1.5.1-r1 9999: i3-compatible Wayland window manager
+gui-wm/sway 1.5.1-r1 9999: i3-compatible Wayland window manager
 gui-wm/wayfire 0.5.0 0.6.0 9999: compiz like 3D wayland compositor
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
@@ -13919,7 +13919,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2-r1 4.8.4 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r1 4.8.4 5.0.0 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
