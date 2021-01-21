@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -166,6 +166,7 @@ src_configure() {
 		--enable-paranoia
 		--enable-early-chroot
 		--sysconfdir=${e}
+		--with-randomdev=/dev/random
 		$(use_enable ipv6 dhcpv6)
 		$(use_with ldap)
 		$(use ldap && use_with ssl ldapcrypto || echo --without-ldapcrypto)
@@ -178,6 +179,7 @@ src_configure() {
 	local el
 	eval econf \
 		$(for el in $(awk '/^bindconfig/,/^$/ {print}' ../Makefile.in) ; do if [[ ${el} =~ ^-- ]] ; then printf ' %s' ${el//\\} ; fi ; done | sed 's,@\([[:alpha:]]\+\)dir@,${binddir}/\1,g') \
+		--with-randomdev=/dev/random \
 		--disable-symtable \
 		--without-make-clean
 }
