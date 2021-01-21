@@ -8,7 +8,6 @@ inherit cmake
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vmc-project/${PN}.git"
-	KEYWORDS=""
 else
 	MY_PV=$(ver_rs 1- -)
 	SRC_URI="https://github.com/vmc-project/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -17,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
-HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html"
+HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html https://github.com/vmc-project/vgm/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -78,7 +77,7 @@ src_test() {
 	cd "${BUILD_DIR}"/test || die
 	# See upstream issue: https://github.com/vmc-project/vgm/issues/5
 	sed -i 's/ ScaledSolids / /' test3_suite.sh || die
-	PATH="${BUILD_DIR}"/test:$PATH ./test_suite.sh || die
+	PATH="${BUILD_DIR}"/test:${PATH} ./test_suite.sh || die
 }
 
 src_install() {
