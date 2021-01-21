@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	S="${WORKDIR}/${P}/${PN}"
 else
 	SRC_URI="https://github.com/phokz/mod-auth-external/archive/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/mod-auth-external-${P}"
 fi
 
