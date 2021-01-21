@@ -1,0 +1,51 @@
+diff -Nuar awesome-3.5.9.orig/build-utils/lgi-check.sh awesome-3.5.9/build-utils/lgi-check.sh
+--- awesome-3.5.9.orig/build-utils/lgi-check.sh	2016-03-06 14:05:54.000000000 +0000
++++ awesome-3.5.9/build-utils/lgi-check.sh	2019-01-23 21:36:35.973967623 +0000
+@@ -1,5 +1,7 @@
+ #!/bin/sh
+ 
++LUA=${LUA:=lua}
++
+ die()
+ {
+ 	exec >&2
+@@ -22,11 +24,11 @@
+ }
+ 
+ # Check if we have lgi
+-lua -e 'require("lgi")' || die
++$LUA -e 'require("lgi")' || die
+ 
+ # Check the version number
+ # Keep this in sync with lib/gears/surface.lua.in!
+-lua -e 'if tonumber(string.match(require("lgi.version"), "(%d%.%d)")) < 0.7 then error("lgi too old, need at least version 0.7.0") end' || die
++$LUA -e 'if tonumber(string.match(require("lgi.version"), "(%d%.%d)")) < 0.7 then error("lgi too old, need at least version 0.7.0") end' || die
+ 
+ # Check for the needed gi files
+-lua -e 'l = require("lgi") assert(l.cairo, l.Pango, l.PangoCairo)' || die
++$LUA -e 'l = require("lgi") assert(l.cairo, l.Pango, l.PangoCairo)' || die
+diff -Nuar awesome-3.5.9.orig/awesomeConfig.cmake awesome-3.5.9/awesomeConfig.cmake
+--- awesome-3.5.9.orig/awesomeConfig.cmake	2019-01-23 22:01:17.364046606 +0000
++++ awesome-3.5.9/awesomeConfig.cmake	2019-01-23 21:50:30.152919084 +0000
+@@ -66,6 +66,7 @@
+ include(FindPkgConfig)
+ # lua 5.1
+ include(FindLua51)
++set(ENV{LUA} "${LUA_EXECUTABLE}")
+ # }}}
+ 
+ # {{{ Check if documentation can be build
+diff -Nuar awesome-3.5.9.orig/CMakeLists.txt awesome-3.5.9/CMakeLists.txt
+--- awesome-3.5.9.orig/CMakeLists.txt	2016-03-06 14:05:54.000000000 +0000
++++ awesome-3.5.9/CMakeLists.txt	2019-01-23 22:00:08.715111414 +0000
+@@ -105,7 +105,9 @@
+ 
+ # check for lgi and the needed gobject introspection files
+ add_custom_target(lgi-check ALL
+-    COMMAND ${SOURCE_DIR}/build-utils/lgi-check.sh)
++    COMMAND ${CMAKE_COMMAND} -E env LUA=${LUA_EXECUTABLE} ${SOURCE_DIR}/build-utils/lgi-check.sh
++    COMMENT "Verifying LGI module")
++#   VERBATIM)
+ 
+ # atoms
+ file(MAKE_DIRECTORY ${BUILD_DIR}/common)
