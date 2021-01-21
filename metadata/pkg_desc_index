@@ -14874,7 +14874,7 @@ net-libs/libssh2 1.9.0_p20200614 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.23 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10 1.2.11: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.20.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
@@ -18956,7 +18956,7 @@ x11-wm/2bwm 0.3 9999: A fast, floating window manager
 x11-wm/aewm 1.3.12-r1: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.22.01_p20200826: Amiga Workbench inspired window manager for Xorg
-x11-wm/awesome 4.2-r3 4.3-r101 9999: A dynamic floating and tiling window manager
+x11-wm/awesome 4.3-r2 4.3-r101 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.76: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.9.9 0.9.10: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
