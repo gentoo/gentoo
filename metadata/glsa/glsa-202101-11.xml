@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-11">
+  <title>Zabbix: Root privilege escalation</title>
+  <synopsis>Multiple vulnerabilities were discovered in Gentoo's ebuild for
+    Zabbix which could lead to root privilege escalation.
+  </synopsis>
+  <product type="ebuild">zabbix</product>
+  <announced>2021-01-21</announced>
+  <revised count="1">2021-01-21</revised>
+  <bug>629882</bug>
+  <bug>629884</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/zabbix" auto="yes" arch="*">
+      <unaffected range="ge" slot="0/3.0">3.0.30</unaffected>
+      <unaffected range="ge" slot="0/4.0">4.0.18</unaffected>
+      <vulnerable range="lt">4.4.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Zabbix is software for monitoring applications, networks, and servers.</p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s Zabbix ebuild did not properly set
+      permissions or placed the pid file in an unsafe directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Zabbix 3.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/zabbix-3.0.30:0/3.0"
+    </code>
+    
+    <p>All Zabbix  4.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/zabbix-4.0.18:0/4.0"
+    </code>
+    
+    <p>All other Zabbix users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/zabbix-4.4.6"
+    </code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-16T06:25:12Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2021-01-21T19:18:35Z">b-man</metadata>
+</glsa>
