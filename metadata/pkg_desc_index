@@ -3779,7 +3779,7 @@ dev-go/goversion 1.2.0: Print version used to build Go executables
 dev-go/gox 1.0.1: A dead simple, no frills Go cross compile tool
 dev-go/licenseclassifier 0_pre20200402 9999: A set of tools that analyzes text to determine type of license
 dev-go/qr 0_p20161121: Basic QR code library for Go
-dev-go/qt 0_pre20200904: Qt5 Go bindings
+dev-go/qt 0_pre20200904 0_pre20200904-r1: Qt5 Go bindings
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
 dev-haskell/abstract-deque 0.3: Abstract, parameterized interface to mutable Deques
@@ -7821,7 +7821,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r3: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1 2.0.1-r1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 5.1.1 5.2.1 5.2.2 5.3.1 5.3.2: PHP extension for interfacing with Redis
+dev-php/pecl-redis 5.3.2: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r4: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
@@ -15265,7 +15265,7 @@ net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of anoth
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/realtek-r8152 2.14.0: Out-of-tree driver for Realtek's 2.5 GbE USB NICs.
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.4.8-r1 1.4.9 1.4.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.4.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.2.3-r1 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
