@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="library for MPEG TS/DVB PSI tables decoding and generation"
+DESCRIPTION="Library for MPEG TS/DVB PSI tables decoding and generation"
 HOMEPAGE="https://www.videolan.org/libdvbpsi"
 SRC_URI="https://download.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
@@ -13,7 +13,6 @@ SLOT="0/10"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs"
 
-RDEPEND=""
 BDEPEND="
 	doc? (
 		app-doc/doxygen
@@ -41,5 +40,5 @@ src_compile() {
 src_install() {
 	use doc && local HTML_DOCS=( doc/doxygen/html/. )
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
