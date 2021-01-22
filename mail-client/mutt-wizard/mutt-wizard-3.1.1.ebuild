@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,10 +12,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/LukeSmithxyz/mutt-wizard.git"
 else
-	COMMIT=1492a11b3ee0a1c3f5544a351089ff154521b68b
-	SRC_URI="https://github.com/LukeSmithxyz/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/LukeSmithxyz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="GPL-3"

@@ -69,10 +69,10 @@ COMMON_DEPEND="
 		>=dev-lang/ocaml-4.02:=[ocamlopt]
 		dev-ml/findlib[ocamlopt]
 		|| (
-			<dev-ml/ocaml-gettext-0.4.2:=
-			dev-ml/ocaml-gettext-stub:=
+			<dev-ml/ocaml-gettext-0.4.2[ocamlopt]
+			dev-ml/ocaml-gettext-stub[ocamlopt]
 		)
-		>=dev-ml/ounit-2
+		>=dev-ml/ounit-2[ocamlopt]
 	)
 	erlang? ( dev-lang/erlang )
 	inspect-icons? (
