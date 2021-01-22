@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit python-any-r1 scons-utils toolchain-funcs user flag-o-matic
+inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="https://galeracluster.com"
-SRC_URI="http://nyc2.mirrors.digitalocean.com/mariadb/mariadb-10.4.5/${P}/src/${P}.tar.gz"
+SRC_URI="https://releases.galeracluster.com/galera-4/source/galera-4-${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
@@ -22,25 +22,26 @@ CDEPEND="
 	dev-libs/openssl:0=
 	>=dev-libs/boost-1.41:0=
 	"
+
 BDEPEND=">=sys-devel/gcc-4.4"
+
 DEPEND="${BDEPEND}
 	${CDEPEND}
 	dev-libs/check
 	>=dev-cpp/asio-1.10.1[ssl]
 	<dev-cpp/asio-1.12.0
 	"
+
 #Run time only
 RDEPEND="${CDEPEND}"
 
 # Respect {C,LD}FLAGS.
-PATCHES=( "${FILESDIR}/galera-4.1-strip-extra-cflags.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-26.4.6-strip-extra-cflags.patch
+	"${FILESDIR}"/${PN}-26.4.5-respect-toolchain.patch
+)
 
-pkg_preinst() {
-	if use garbd ; then
-		enewgroup garbd
-		enewuser garbd -1 -1 -1 garbd
-	fi
-}
+S="${WORKDIR}/galera-4-${PV}"
 
 src_prepare() {
 	default
@@ -55,16 +56,12 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC CXX
-	# Uses hardware specific code that seems to depend on SSE4.2
-	if use cpu_flags_x86_sse4_2 ; then
-		append-cflags -msse4.2
-	else
-		append-cflags -DCRC32C_NO_HARDWARE
-	fi
+	tc-export AR CC CXX OBJDUMP
+
 	# strict_build_flags=0 disables -Werror, -pedantic, -Weffc++,
 	# and -Wold-style-cast
 	MYSCONS=(
+		crc32c_no_hardware=$(usex cpu_flags_x86_sse4_2 0 1)
 		tests=$(usex test 1 0)
 		strict_build_flags=0
 		system_asio=1
@@ -80,7 +77,7 @@ src_install() {
 	if use garbd ; then
 		dobin garb/garbd
 		newconfd "${FILESDIR}/garb.cnf" garbd
-		newinitd "${FILESDIR}/garb.sh" garbd
+		newinitd "${FILESDIR}/garb.init" garbd
 		doman man/garbd.8
 	fi
 	exeinto /usr/$(get_libdir)/${PN}
