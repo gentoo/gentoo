@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -119,7 +119,11 @@ src_install() {
 
 	# The pamd file isn't what we need, use pamd_mimic_system
 	rm -rf "${ED}/etc/pam.d" || die
-	pamd_mimic_system netatalk auth account password session
+
+
+	if use pam; then
+		pamd_mimic_system netatalk auth account password session
+	fi
 
 	sed \
 		-e "s|:SBINDIR:|${EPREFIX}/usr/sbin|g" \
