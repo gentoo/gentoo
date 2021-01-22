@@ -283,13 +283,6 @@ app-forensics/quickfuzz
 media-plugins/kodi-game-libretro-nestopia
 media-plugins/kodi-game-libretro-dosbox
 
-# Alexys Jacob <ultrabug@gentoo.org> (2020-11-09)
-# Mask dev-db/mongodb versions which do not support python3 so we
-# can move forward in cleaning python2 from tree. Bug #708954.
-# We keep the ebuilds available since some of those versions are still
-# supported by upstream. See: https://jira.mongodb.org/browse/SERVER-52687
-<dev-db/mongodb-4.2.8
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-05)
 # will be upgraded after new lua release
 www-apps/liquid_feedback_frontend
