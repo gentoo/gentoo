@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,5 +41,8 @@ src_install() {
 	default
 
 	rm -f "${ED%/}"/etc/pam.d/wdm || die
-	pamd_mimic system-local-login wdm auth account password session
+
+	if use pam; then
+		pamd_mimic system-local-login wdm auth account password session
+	fi
 }
