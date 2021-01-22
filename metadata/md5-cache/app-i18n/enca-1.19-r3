@@ -5,10 +5,10 @@ DESCRIPTION=Detect and convert encoding of text files
 EAPI=7
 HOMEPAGE=https://cihar.com/software/enca/
 IUSE=doc +iconv recode
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=iconv? ( virtual/libiconv ) recode? ( app-text/recode:= )
 SLOT=0
 SRC_URI=https://dl.cihar.com/enca/enca-1.19.tar.xz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=4886ebeeab3f2e66b6936c61bca08525
+_md5_=a5a5f3b990ac20e3c52a8a2d67e380bc

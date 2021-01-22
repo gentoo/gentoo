@@ -2,10 +2,10 @@ DEFINED_PHASES=install unpack
 DESCRIPTION=CD image containing guest additions for VirtualBox
 EAPI=7
 HOMEPAGE=https://www.virtualbox.org/
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=GPL-2+ LGPL-2.1+ MIT SGI-B-2.0 CDDL
 RDEPEND=!app-emulation/virtualbox-bin !=app-emulation/virtualbox-9999
 RESTRICT=mirror
 SLOT=0/6.1
 SRC_URI=https://download.virtualbox.org/virtualbox/6.1.18/VBoxGuestAdditions_6.1.18.iso
-_md5_=80f9f8c9f0b5bc3f0d6b48d7ee475909
+_md5_=6f23e298f9ab8601d56e84810d9fcfa2

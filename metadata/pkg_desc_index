@@ -3511,6 +3511,7 @@ dev-cpp/robin-map 0.6.3 9999: C++ fast hash map and hash set using robin hood ha
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
 dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
 dev-cpp/sparsehash 2.0.3-r1 2.0.4: An extremely memory-efficient hash_map implementation
+dev-cpp/string-theory 3.3: A flexible modern C++ library for string manipulation and storage
 dev-cpp/tbb 2019.8 2020.2 2020.3: High level abstract threading library
 dev-cpp/tclap 1.2.2: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.81: An STL-like tree class
@@ -3732,6 +3733,7 @@ dev-games/irrlicht-headers 1.8.4: Irrlicht 3D engine headers
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
+dev-games/libsmacker 1.1.1_p35: A cross-platform C library for decoding .smk Smacker Video files.
 dev-games/mercator 0.3.3: WorldForge library primarily aimed at terrain
 dev-games/mygui 3.2.2 3.4.0: A library for creating GUIs for games and 3D applications
 dev-games/newton 3.14: Integrated solution for real time simulation of physics environments
@@ -11723,7 +11725,7 @@ games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and ga
 games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/hedgewars 1.0.0-r1 1.0.0-r100: A turn-based strategy, artillery, action and comedy game
-games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
+games-strategy/ja2-stracciatella 0.12.1_p7072 0.17.0: An improved, cross-platform, stable Jagged Alliance 2 runtime
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/julius 1.4.1: Feature-faithful open source re-implementation of Caesar III
 games-strategy/knights-demo 1.32-r2: Anglo-Saxon medieval army battles and resource management
