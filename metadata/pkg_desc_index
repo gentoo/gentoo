@@ -634,7 +634,7 @@ app-admin/exo 1.22.2: Command-line tool for everything at Exoscale: compute, sto
 app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 6.8.13 7.8.1 7.9.2 7.9.3 7.10.0: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fluentd 1.2.6-r1 1.3.1 1.3.2 1.3.3 1.4.0 1.4.1 1.4.2 1.9.0: data collector and unified logging layer (project under CNCF)
 app-admin/fsvs 1.2.5-r2: Backup/restore for subversion backends
@@ -675,7 +675,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.14.0 3.17.0 3.18.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.1.2: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.0-r1: Tool for managing events and logs
+app-admin/logstash-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
@@ -2422,7 +2422,7 @@ app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
-app-misc/elasticsearch 6.8.13 7.8.1 7.9.2 7.9.3 7.10.0: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Open Source, Distributed, RESTful, Search Engine
 app-misc/emelfm2 0.9.1-r4 0.9.1-r5: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b 0.6.21b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
@@ -3571,8 +3571,8 @@ dev-db/oracle-instantclient-jdbc 12: Transition package moving to single dev-db/
 dev-db/oracle-instantclient-odbc 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 8.0.21.12 8.0.22.13: Fully compatible, enhanced and open source drop-in replacement for MySQL
-dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.15 2.4.20 8.0.13: Hot backup utility for MySQL based servers
+dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1 3.3.0: Advanced command-line tools to perform a variety of MySQL and system tasks
+dev-db/percona-xtrabackup 2.4.15 2.4.20 2.4.21 8.0.13 8.0.22.15: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 4.0.0-r1: 'top' for PostgreSQL
@@ -3596,7 +3596,7 @@ dev-db/pspg 3.1.5: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
-dev-db/redis 5.0.9-r1 5.0.10 6.0.9 6.0.9-r100: A persistent caching system, key-value and data structures database
+dev-db/redis 5.0.9-r1 5.0.10 6.0.9 6.0.9-r1 6.0.9-r100: A persistent caching system, key-value and data structures database
 dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
@@ -5515,7 +5515,7 @@ dev-libs/libretls 3.3.1-r1: Port of libtls from LibreSSL to OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 4.7.0 4.8.0: C++ implementation of 3mf loading with SIP python bindings
-dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928 0.1_pre20190401: Optimized C library for EC operations on curve secp256k1
+dev-libs/libsecp256k1 0.1_pre20190401: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.1 2.10.3 2.10.6: Typesafe callback system for standard C++
@@ -5656,7 +5656,7 @@ dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.6.0 0.8.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute Common Language Runtime
-dev-libs/rocksdb 6.14.5 6.14.6 6.15.2: Embeddable, persistent key-value store for fast storage
+dev-libs/rocksdb 6.14.5 6.14.6 6.15.2 6.15.4: Embeddable, persistent key-value store for fast storage
 dev-libs/rocm-comgr 3.9.0 3.10.0 4.0.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 3.10.0 4.0.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
@@ -10615,7 +10615,7 @@ dev-util/bear 2.4.3 2.4.4: Build EAR generates a compilation database for clang 
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
-dev-util/bitcoin-tx 0.16.3 0.19.1 0.20.0 0.20.1: Command-line Bitcoin transaction tool
+dev-util/bitcoin-tx 0.20.1: Command-line Bitcoin transaction tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
 dev-util/bless 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
@@ -14790,7 +14790,7 @@ net-libs/libaccounts-glib 1.25-r1 1.25-r2: Accounts SSO (Single Sign-On) managem
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
-net-libs/libbitcoinconsensus 0.16.3 0.19.1 0.20.0 0.20.1: Bitcoin Core consensus library
+net-libs/libbitcoinconsensus 0.20.1: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.3 0.5.3 0.6.0: C implementation of Bitcoin's getblocktemplate interface
 net-libs/libbloom 1.5-r2 1.6: A simple and small bloom filter implementation in plain C.
 net-libs/libbtbb 2018.08.1 2018.12.1 2020.12.1 9999: A library to decode Bluetooth baseband packets
@@ -14822,7 +14822,7 @@ net-libs/liblockfile 1.16: Implements functions designed to lock the standard ma
 net-libs/libmbim 1.18.0 1.24.4: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69 0.9.70 0.9.71 0.9.72: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.65-r1 0.9.68-r1 0.9.69 0.9.70-r1 0.9.71 0.9.72: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2-r1: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
@@ -14934,7 +14934,7 @@ net-libs/webkit-gtk 2.30.3 2.30.4 2.30.4-r1: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
-net-libs/zeromq 4.3.3: A brokerless kernel
+net-libs/zeromq 4.3.3 4.3.4: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
@@ -15394,9 +15394,9 @@ net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.10.1 2.11.0: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3 0.8.3-r1: RSS downloader for Tranmission
-net-p2p/bitcoin-cli 0.16.3 0.19.1 0.20.0 0.20.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
-net-p2p/bitcoin-qt 0.16.3 0.19.1 0.20.0 0.20.1: An end-user Qt GUI for the Bitcoin crypto-currency
-net-p2p/bitcoind 0.16.3 0.19.1 0.20.0 0.20.1: Original Bitcoin crypto-currency wallet for automated services
+net-p2p/bitcoin-cli 0.20.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
+net-p2p/bitcoin-qt 0.20.1: An end-user Qt GUI for the Bitcoin crypto-currency
+net-p2p/bitcoind 0.20.1: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitflu 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.4.1_p20160925-r2: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.13: Program for displaying classified advertisement items
@@ -17970,7 +17970,7 @@ www-apps/jekyll-sass-converter 1.5.2 2.1.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 1.4.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.0: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
