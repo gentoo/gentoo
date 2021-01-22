@@ -10,7 +10,7 @@ HOMEPAGE="http://www.tvdr.de/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 		https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
