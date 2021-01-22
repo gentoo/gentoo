@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -261,7 +261,9 @@ src_install() {
 	# postfix set-permissions expects uncompressed man files
 	docompress -x /usr/share/man
 
-	pamd_mimic_system smtp auth account
+	if use pam; then
+		pamd_mimic_system smtp auth account
+	fi
 
 	if use sasl; then
 		insinto /etc/sasl2
