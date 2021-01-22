@@ -242,7 +242,6 @@ sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabric
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
 dev-libs/libsecp256k1 -asm
-<dev-libs/libsecp256k1-0.0.0_pre20161213 asm
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
