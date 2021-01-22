@@ -2979,7 +2979,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.5 1.14.5-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/master-pdf-editor 5.3.22 5.4.38-r1 5.6.80: A complete solution for viewing and editing PDF files
+app-text/master-pdf-editor 5.3.22 5.4.38-r1 5.6.80 5.7.08: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
@@ -9889,7 +9889,7 @@ dev-ruby/commander 4.5.2: The complete solution for Ruby command-line executable
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
-dev-ruby/concurrent-ruby 1.0.5 1.1.7: Modern concurrency tools including agents, futures, promises, thread pools, more
+dev-ruby/concurrent-ruby 1.0.5 1.1.7 1.1.8: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.6.0 1.7.0: A high performance event framework for Ruby which uses the libev C library
@@ -10127,7 +10127,7 @@ dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML 
 dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
-dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
+dev-ruby/oauth 0.5.4 0.5.5: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.18.0-r1 4.19.0 4.20.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.1: A generalized Rack framework for multiple-provider authentication
@@ -10303,7 +10303,7 @@ dev-ruby/ruby2ruby 2.4.2 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.14.2 3.15.0 3.15.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.2.0 3.2.3 3.2.4 3.2.5: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.2.0 3.2.3 3.2.4 3.2.5 3.2.6: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
