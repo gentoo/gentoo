@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-12">
+  <title>Wireshark: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Wireshark, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">wireshark</product>
+  <announced>2021-01-22</announced>
+  <revised count="1">2021-01-22</revised>
+  <bug>759541</bug>
+  <bug>760800</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/wireshark" auto="yes" arch="*">
+      <unaffected range="ge">3.4.2</unaffected>
+      <vulnerable range="lt">3.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Wireshark is a network protocol analyzer formerly known as ethereal.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Wireshark. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Wireshark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/wireshark-3.4.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26418">CVE-2020-26418</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26419">CVE-2020-26419</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26420">CVE-2020-26420</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26421">CVE-2020-26421</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26422">CVE-2020-26422</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-22T00:09:25Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-22T16:10:45Z">sam_c</metadata>
+</glsa>

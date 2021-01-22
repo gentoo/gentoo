@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-16">
+  <title>KDE Connect: Denial of service</title>
+  <synopsis>A vulnerability in KDE Connect could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">kde-connect</product>
+  <announced>2021-01-22</announced>
+  <revised count="1">2021-01-22</revised>
+  <bug>746401</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-misc/kdeconnect" auto="yes" arch="*">
+      <unaffected range="ge">20.04.3-r1</unaffected>
+      <vulnerable range="lt">20.04.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>KDE Connect is a project that enables all your devices to communicate
+      with each other.
+    </p>
+  </background>
+  <description>
+    <p>Multiple issues causing excessive resource consumption were found in KDE
+      Connect.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KDE Connect users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-misc/kdeconnect-20.04.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26164">CVE-2020-26164</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-22T00:28:04Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-22T16:16:11Z">sam_c</metadata>
+</glsa>

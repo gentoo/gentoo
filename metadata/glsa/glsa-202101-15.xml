@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-15">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
+    of which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>2021-01-22</announced>
+  <revised count="1">2021-01-22</revised>
+  <bug>750782</bug>
+  <bug>766348</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge">6.1.18</unaffected>
+      <vulnerable range="lt">6.1.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VirtualBox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VirtualBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-6.1.18"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14872">CVE-2020-14872</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14881">CVE-2020-14881</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14884">CVE-2020-14884</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14885">CVE-2020-14885</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14886">CVE-2020-14886</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14889">CVE-2020-14889</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14892">CVE-2020-14892</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2073">CVE-2021-2073</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2074">CVE-2021-2074</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2086">CVE-2021-2086</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2111">CVE-2021-2111</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2112">CVE-2021-2112</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2119">CVE-2021-2119</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2120">CVE-2021-2120</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2121">CVE-2021-2121</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2123">CVE-2021-2123</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2124">CVE-2021-2124</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2125">CVE-2021-2125</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2126">CVE-2021-2126</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2127">CVE-2021-2127</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2128">CVE-2021-2128</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2129">CVE-2021-2129</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2130">CVE-2021-2130</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-2131">CVE-2021-2131</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-18T03:00:34Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-22T16:14:33Z">sam_c</metadata>
+</glsa>
