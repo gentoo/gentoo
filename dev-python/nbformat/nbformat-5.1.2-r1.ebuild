@@ -26,12 +26,16 @@ RDEPEND="
 	>=dev-python/traitlets-4.1[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
 	"
-DEPEND="
+BDEPEND="
 	test? (
 		dev-python/fastjsonschema[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	"
+
+PATCHES=(
+	"${FILESDIR}"/nbformat-5.1.2-package-data.patch
+)
 
 distutils_enable_sphinx docs \
 	dev-python/numpydoc
