@@ -1681,7 +1681,7 @@ app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com an
 app-doc/csound-manual 6.15-r1: The Csound reference manual
 app-doc/devmanual 0_pre20200207 0_pre20210118 9999: The Gentoo Development Guide
 app-doc/diveintopython 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.17 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most programming languages
+app-doc/doxygen 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200913 20210104 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
