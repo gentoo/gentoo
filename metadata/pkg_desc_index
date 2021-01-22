@@ -8012,8 +8012,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.36 1.16.43 1.16.50 1.16.56 1.16.57 9999: The AWS SDK for Python
-dev-python/botocore 1.19.36 1.19.43 1.19.50 1.19.56 1.19.57 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.36 1.16.43 1.16.50 1.16.56 1.16.57 1.16.58 9999: The AWS SDK for Python
+dev-python/botocore 1.19.36 1.19.43 1.19.50 1.19.56 1.19.57 1.19.58 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8522,7 +8522,7 @@ dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manag
 dev-python/nbclient 0.5.1: A client library for executing Jupyter notebooks
 dev-python/nbconvert 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
-dev-python/nbformat 5.0.8 5.1.0 5.1.1 5.1.2: Reference implementation of the Jupyter Notebook format
+dev-python/nbformat 5.0.8 5.1.2-r1: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
@@ -9007,7 +9007,7 @@ dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5 2.11.6: Python bindings for QScintilla
 dev-python/qtawesome 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 4.7.6 5.0.1: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 4.7.6 5.0.1 5.0.2: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
 dev-python/quex 0.71.0-r1: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -9291,7 +9291,7 @@ dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3 0.6.5: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 1.0.2: Python API and shell utilities to monitor file system events
-dev-python/wcmatch 7.1 7.2 8.0: Wildcard/glob file name matcher
+dev-python/wcmatch 7.1 7.2 8.0 8.0.1: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
@@ -9322,7 +9322,7 @@ dev-python/wxpython 4.0.7: A blending of the wxWindows C++ class library with Py
 dev-python/xapp 2.0.1: Python bindings for x11-libs/xapps
 dev-python/xarray 0.16.2: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
-dev-python/xdoctest 0.15.0: A rewrite of Python's builtin doctest module but without all the weirdness
+dev-python/xdoctest 0.15.0 0.15.2: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
@@ -12434,7 +12434,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 2.0.2 2.0.4-r1: A small but very powerful text-based mail client
+mail-client/mutt 2.0.2 2.0.4-r1 2.0.5: A small but very powerful text-based mail client
 mail-client/mutt-wizard 3.1.1 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20201127 20201127-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
@@ -18042,7 +18042,7 @@ www-client/opera-developer 75.0.3925.0 75.0.3932.0 75.0.3939.0: A fast and secur
 www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.0 1.14.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
-www-client/seamonkey 2.53.5.1 2.53.6_beta1: Seamonkey Web Browser
+www-client/seamonkey 2.53.5.1 2.53.6: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
@@ -19083,7 +19083,7 @@ xfce-extra/xfce4-verve-plugin 2.0.0 2.0.1: A comfortable command line plugin for
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1 0.6.2: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.2: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.4.6 2.5.2: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.5.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1 0.8.2: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5 0.8.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
