@@ -37,6 +37,7 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
+		<remote-id type="github">opencv/opencv</remote-id>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
 		<remote-id type="github">Itseez/opencv_contrib</remote-id>
 	</upstream>
