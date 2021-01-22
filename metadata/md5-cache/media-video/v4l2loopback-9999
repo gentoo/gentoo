@@ -1,7 +1,7 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
 DEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
-DESCRIPTION=v4l2 loopback device which output is it's own input
+DESCRIPTION=v4l2 loopback device whose output is its own input
 EAPI=7
 HOMEPAGE=https://github.com/umlaeute/v4l2loopback
 IUSE=examples kernel_linux kernel_linux dist-kernel
@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) )
 SLOT=0
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=a60878905c74e81e52ad040239a6ca56
+_md5_=465132b49950e21ecbb97f32409a7e67

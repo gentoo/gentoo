@@ -2047,7 +2047,7 @@ app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and O
 app-emulation/kompose 1.22.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libguestfs 1.36.13-r1 1.36.15-r1 1.38.6-r1 1.38.6-r101: Tools for accessing, inspect and modifying virtual machine (VM) disk images
+app-emulation/libguestfs 1.36.13-r2 1.36.15-r2 1.38.6-r1 1.38.6-r102: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.8.0-r2 6.9.0-r1 6.10.0-r2 7.0.0 9999: C toolkit to manipulate virtual machines
@@ -5885,6 +5885,8 @@ dev-ml/ocaml-expat 1.1.0-r1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.6.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.7-r2 0.4.2: Provides support for internationalization of OCaml program
+dev-ml/ocaml-gettext-camomile 0.4.2: Support for internationalization of OCaml programs using the Camomile library
+dev-ml/ocaml-gettext-stub 0.4.2: Support for internationalization of OCaml programs using native gettext library
 dev-ml/ocaml-hashcons 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
@@ -13124,7 +13126,7 @@ media-libs/libdiscid 0.6.2: Client library to create MusicBrainz enabled tagging
 media-libs/libdmtx 0.7.4 0.7.5: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r4: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
-media-libs/libdvbpsi 1.3.1 1.3.2: library for MPEG TS/DVB PSI tables decoding and generation
+media-libs/libdvbpsi 1.3.1 1.3.2 1.3.3: Library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
 media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.0.0 6.0.1 6.1.0 9999: Library for DVD navigation tools
@@ -14106,7 +14108,7 @@ media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially su
 media-video/gaupol 1.8-r1 1.8-r2 1.9: A subtitle editor for text-based subtitles
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
-media-video/gpac 0.8.1 1.0.1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+media-video/gpac 1.0.1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/guvcview 2.0.6-r1: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.909-r1: GTK+ Front-End for libxine
 media-video/h264enc 10.4.7-r1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
@@ -14191,7 +14193,7 @@ media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.13-r2: UniFi Video Server
 media-video/ushare 1.1a-r9 1.1a_p20200824: uShare is a UPnP (TM) A/V & DLNA Media Server
-media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device which output is it's own input
+media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device whose output is its own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager
 media-video/vcsi 7-r1: Create thumbnail sheets from video files
@@ -15039,7 +15041,7 @@ net-misc/apt-cacher-ng 3.5_p1-r1 9999999: Yet another caching HTTP proxy for Deb
 net-misc/aria2 1.34.0-r2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 13.38.1 13.38.1-r1 16.15.1 16.15.1-r1: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 13.38.1 13.38.1-r1 13.38.1-r2 16.15.1 16.15.1-r1 16.15.1-r2: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
@@ -18820,7 +18822,7 @@ x11-terms/terminator 2.0.1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.8.1 1.9.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1 1.5.0 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2 0.8.10: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 337 351 360 361: Terminal Emulator for X Windows
+x11-terms/xterm 337 351 360 361 362 363: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/QGnomePlatform 0.6.1-r1: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines

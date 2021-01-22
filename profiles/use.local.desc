@@ -2309,6 +2309,9 @@ dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
 dev-ml/ocaml-cstruct:ppx - Enable the ppx syntax extension
 dev-ml/ocaml-fileutils:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
+dev-ml/ocaml-gettext:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
+dev-ml/ocaml-gettext-camomile:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
+dev-ml/ocaml-gettext-stub:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
 dev-ml/pgocaml:camlp4 - Enable PG'Ocaml syntax extension.
@@ -6182,7 +6185,9 @@ net-misc/aria2:metalink - Enable support for metalink.
 net-misc/aria2:nettle - Use dev-libs/nettle for message digests, plus dev-libs/gmp for bittorrent (if enabled). If this flag is disabled, dev-libs/libgcrypt is used instead. This flag is ignored if dev-libs/openssl is used.
 net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
 net-misc/aria2:ssh - Enable SFTP support.
+net-misc/asterisk:blocks - Utlize -fblocks (only supported by, and required when using, clang/LLVM)
 net-misc/asterisk:cluster - Enable high-availability support through the Corosync Cluster Engine
+net-misc/asterisk:codec2 - Enable Codec2 support in asterisk
 net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
 net-misc/asterisk:gtalk - Enable support for Google Talk services
 net-misc/asterisk:http - Enable embedded web server
