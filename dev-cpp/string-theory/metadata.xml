@@ -9,4 +9,7 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">zrax/string_theory</remote-id>
+  </upstream>
 </pkgmetadata>
