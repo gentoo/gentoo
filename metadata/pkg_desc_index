@@ -2571,7 +2571,7 @@ app-misc/rq 1.0.2: A tool for doing record analysis and transformation
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.11: Command line tool for rundeck
-app-misc/screen 4.8.0 9999: screen manager with VT100/ANSI terminal emulation
+app-misc/screen 4.8.0-r1 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 3.9.1 9999: Bash Screenshot Information Tool
 app-misc/screenie 20120406: A small and lightweight screen wrapper
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
@@ -7809,7 +7809,7 @@ dev-php/pecl-apcu_bc 1.0.4-r1 1.0.5: Provides APC backwards compatibility functi
 dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1 7.1.0_rc2: dBase database file access functions
 dev-php/pecl-dio 0.2.0-r1: Direct I/O functions for PHP
-dev-php/pecl-eio 2.0.4: PHP wrapper for libeio library
+dev-php/pecl-eio 2.0.4-r1: PHP wrapper for libeio library
 dev-php/pecl-event 2.5.3 2.5.3-r1 2.5.7: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4 1.1.1-r5: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
@@ -14515,7 +14515,7 @@ net-dialup/mwavem 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
 net-dialup/openl2tp 1.8-r2: Userspace tools for kernel L2TP implementation
 net-dialup/picocom 3.1: minimal dumb-terminal emulation program
-net-dialup/ppp 2.4.8 2.4.9-r1: Point-to-Point Protocol (PPP)
+net-dialup/ppp 2.4.8-r1 2.4.9-r2: Point-to-Point Protocol (PPP)
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
 net-dialup/pptpclient 1.10.0: Linux client for PPTP
@@ -18596,7 +18596,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.65 5.66_alpha10 5.66_alpha11 5.66_alpha12: Just another screensaver application for X
+x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha10-r1 5.66_alpha11-r1 5.66_alpha12-r1: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
@@ -18609,7 +18609,7 @@ x11-misc/xplanet 1.3.1-r1: Render images of the earth into the X root window
 x11-misc/xprintidle 2.0 2.1: Prints user's X server idle time in milliseconds
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrootconsole 0.6-r1: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.38-r2 5.43-r4 5.44-r3: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.38-r3 5.43-r5 5.44-r4: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3 2.3-r4: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1 0.80: A hardware health information viewer, interface to lm-sensors

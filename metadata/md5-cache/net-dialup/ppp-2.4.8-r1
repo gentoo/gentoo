@@ -3,12 +3,12 @@ DEPEND=activefilter? ( net-libs/libpcap ) atm? ( net-dialup/linux-atm ) pam? ( s
 DESCRIPTION=Point-to-Point Protocol (PPP)
 EAPI=7
 HOMEPAGE=https://ppp.samba.org/
-IUSE=activefilter atm dhcp gtk ipv6 libressl pam radius kernel_linux
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+IUSE=activefilter atm dhcp eap-tls gtk ipv6 libressl pam radius kernel_linux
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86
 LICENSE=BSD GPL-2
 PDEPEND=net-dialup/ppp-scripts
-RDEPEND=activefilter? ( net-libs/libpcap ) atm? ( net-dialup/linux-atm ) pam? ( sys-libs/pam ) gtk? ( x11-libs/gtk+:2 ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) !<net-misc/netifrc-0.7.1-r2
-SLOT=0/2.4.9
-SRC_URI=https://github.com/paulusmack/ppp/archive/ppp-2.4.9.tar.gz https://dev.gentoo.org/~polynomial-c/ppp-2.4.9-patches-02.tar.xz http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz
+RDEPEND=activefilter? ( net-libs/libpcap ) atm? ( net-dialup/linux-atm ) pam? ( sys-libs/pam ) gtk? ( x11-libs/gtk+:2 ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) !<net-misc/netifrc-0.7.1
+SLOT=0/2.4.8
+SRC_URI=https://github.com/paulusmack/ppp/archive/ppp-2.4.8.tar.gz https://dev.gentoo.org/~polynomial-c/ppp-2.4.8-patches-02.tar.xz http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=c2d7ab1ec9ebe31ab642ed71822be03e
+_md5_=af5c77c22f1f5b2d2e9c27299f7aa48d
