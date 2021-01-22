@@ -4,11 +4,11 @@ DESCRIPTION=Python bindings for QtWebEngine
 EAPI=7
 HOMEPAGE=https://www.riverbankcomputing.com/software/pyqtwebengine/intro
 IUSE=debug python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=GPL-3
 RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/PyQt5-5.14[gui,network,printsupport,ssl,webchannel,widgets,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/PyQt5-sip-4.19.22:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] dev-qt/qtcore:5 dev-qt/qtwebengine:5[widgets]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=mirror://pypi/P/PyQtWebEngine/PyQtWebEngine-5.15.2.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=e73cfd2e8472fd4857485766c320bb8d
+_md5_=831d44964d4a2a006d5cb30d51fc558c
