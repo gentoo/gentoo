@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,6 +55,8 @@ src_prepare() {
 	local confENVDEF="-DMAXDAEMONS=64"
 	local conf_sendmail_LIBS=""
 
+	confENVDEF="${confLIBS} -DHAS_GETHOSTBYNAME2=1"
+
 	use sasl && confLIBS="${confLIBS} -lsasl2"  \
 		&& confENVDEF="${confENVDEF} -DSASL=2" \
 		&& confCCOPTS="${confCCOPTS} -I/usr/include/sasl" \
@@ -87,7 +89,7 @@ src_prepare() {
 		-e "s/@@conf_sendmail_LIBS@@/${conf_sendmail_LIBS}/" \
 		"${FILESDIR}"/site.config.m4 > devtools/Site/site.config.m4 || die "sed failed"
 
-	echo "APPENDDEF(\`confLIBDIRS', \`-L${EROOT}/usr/$(get_libdir)')" >> devtools/Site/site.config.m4 || die "echo failed"
+	echo "APPENDDEF(\`confLIBDIRS', \`-L${EPREFIX}/usr/$(get_libdir)')" >> devtools/Site/site.config.m4 || die "echo failed"
 
 	eapply_user
 }
@@ -144,37 +146,38 @@ src_install() {
 	newdoc cf/README README.cf
 	newdoc cf/cf/README README.install-cf
 
-	cp -pPR cf/* "${D}"/usr/share/sendmail-cf || die "copy failed"
+	cp -pPR cf/* "${ED}"/usr/share/sendmail-cf || die "copy failed"
 
 	docinto contrib
 	dodoc contrib/*
 
 	insinto /etc/mail
 
-	if use mbox
-	then
+	if use mbox; then
 		newins "${FILESDIR}"/sendmail.mc-r1 sendmail.mc
 	else
 		newins "${FILESDIR}"/sendmail-procmail.mc sendmail.mc
 	fi
 
-	m4 "${D}"/usr/share/sendmail-cf/m4/cf.m4 "${D}"/etc/mail/sendmail.mc \
-		> "${D}"/etc/mail/sendmail.cf || die "cf.m4 failed"
+	# See discussion on bug #730890
+	m4 "${ED}"/usr/share/sendmail-cf/m4/cf.m4 \
+	        <(grep -v "${EPREFIX}"/usr/share/sendmail-cf/m4/cf.m4 "${ED}"/etc/mail/sendmail.mc) \
+	        > "${ED}"/etc/mail/sendmail.cf || die "cf.m4 failed"
 
 	echo "include(\`/usr/share/sendmail-cf/m4/cf.m4')dnl" \
-		> "${D}"/etc/mail/submit.mc || die "echo failed"
+		> "${ED}"/etc/mail/submit.mc || die "echo failed"
 
-	cat "${D}"/usr/share/sendmail-cf/cf/submit.mc >> "${D}"/etc/mail/submit.mc || die "submit.mc cat failed"
+	cat "${ED}"/usr/share/sendmail-cf/cf/submit.mc >> "${ED}"/etc/mail/submit.mc || die "submit.mc cat failed"
 
 	echo "# local-host-names - include all aliases for your machine here" \
 		> "${D}"/etc/mail/local-host-names || die "local-host-names echo failed"
 
-	cat <<- EOF > "${D}"/etc/mail/trusted-users
+	cat <<- EOF > "${ED}"/etc/mail/trusted-users
 		# trusted-users - users that can send mail as others without a warning
 		# apache, mailman, majordomo, uucp are good candidates
 	EOF
 
-	cat <<- EOF > "${D}"/etc/mail/access
+	cat <<- EOF > "${ED}"/etc/mail/access
 		# Check the /usr/share/doc/sendmail/README.cf file for a description
 		# of the format of this file. (search for access_db in that file)
 		# The /usr/share/doc/sendmail/README.cf is part of the sendmail-doc
@@ -183,7 +186,7 @@ src_install() {
 
 	EOF
 
-	cat <<- EOF > "${D}"/etc/conf.d/sendmail
+	cat <<- EOF > "${ED}"/etc/conf.d/sendmail
 		# Config file for /etc/init.d/sendmail
 		# add start-up options here
 		SENDMAIL_OPTS="-bd -q30m -L sm-mta" # default daemon mode
@@ -194,7 +197,7 @@ src_install() {
 
 	if use sasl; then
 		dodir /etc/sasl2
-		cat <<- EOF > "${D}"/etc/sasl2/Sendmail.conf
+		cat <<- EOF > "${ED}"/etc/sasl2/Sendmail.conf
 		pwcheck_method: saslauthd
 		mech_list: PLAIN LOGIN
 
