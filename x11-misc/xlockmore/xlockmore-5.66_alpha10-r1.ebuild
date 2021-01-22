@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,6 +56,13 @@ S=${WORKDIR}/${P/_alpha/ALPHA}
 
 src_prepare() {
 	default
+
+	sed -i \
+		-e '/XLOCKLIBPATHS="-L/d' \
+		-e '/XMLOCKLIBPATHS="-L/d' \
+		-e 's|/lib|'"${EPREFIX}/$(get_libdir)"'|g' \
+		configure.ac || die
+
 	eautoreconf
 }
 
@@ -98,9 +105,8 @@ src_install() {
 	local DOCS=( README docs/{3d.howto,cell_automata,HACKERS.GUIDE,Purify,Revisions,TODO} )
 	default
 
-	pamd_mimic_system xlock auth
-
 	if use pam; then
+		pamd_mimic_system xlock auth
 		fperms 755 /usr/bin/xlock
 	else
 		fperms 4755 /usr/bin/xlock
