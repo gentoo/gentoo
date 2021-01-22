@@ -5,11 +5,11 @@ DESCRIPTION=MIDI and audio sequencer and notation editor
 EAPI=7
 HOMEPAGE=https://www.rosegardenmusic.com/
 IUSE=lirc test
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/alsa-lib:= >=media-libs/dssi-1.0.0:= media-libs/ladspa-sdk:= media-libs/liblo:= media-libs/liblrdf:= media-libs/libsamplerate:= media-libs/libsndfile:= sci-libs/fftw:3.0 sys-libs/zlib:= virtual/jack x11-libs/libSM:= lirc? ( app-misc/lirc:= )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/rosegarden/rosegarden-20.12.tar.bz2
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=19278a8b9b610f8fd58189da7f89f55d
+_md5_=ea4cd95492a4e6d9d89c18ed0a7f75dc

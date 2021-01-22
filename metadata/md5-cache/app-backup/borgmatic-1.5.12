@@ -4,7 +4,7 @@ DESCRIPTION=Automatically create, prune and verify backups with borgbackup
 EAPI=7
 HOMEPAGE=https://torsion.org/borgmatic/
 IUSE=test python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=GPL-3
 RDEPEND=app-backup/borgbackup python_single_target_python3_7? ( dev-python/colorama[python_targets_python3_7(-)] >=dev-python/pykwalify-1.6.0[python_targets_python3_7(-)] dev-python/requests[python_targets_python3_7(-)] <dev-python/ruamel-yaml-0.17.0[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/colorama[python_targets_python3_8(-)] >=dev-python/pykwalify-1.6.0[python_targets_python3_8(-)] dev-python/requests[python_targets_python3_8(-)] <dev-python/ruamel-yaml-0.17.0[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/colorama[python_targets_python3_9(-)] >=dev-python/pykwalify-1.6.0[python_targets_python3_9(-)] dev-python/requests[python_targets_python3_9(-)] <dev-python/ruamel-yaml-0.17.0[python_targets_python3_9(-)] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/setuptools-42.0.2[python_targets_python3_9(-)] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
@@ -12,4 +12,4 @@ RESTRICT=test !test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/b/borgmatic/borgmatic-1.5.12.tar.gz
 _eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=78911794534dcfa3e327b501b9475164
+_md5_=5b351e1c4db5eabe3528d94a8ebb8ecf
