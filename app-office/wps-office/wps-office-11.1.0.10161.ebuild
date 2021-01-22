@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit unpacker xdg
 MY_PV="$(ver_cut 4)"
 
 DESCRIPTION="WPS Office is an office productivity suite"
-HOMEPAGE="https://www.wps.cn/product/wpslinux/ http://wps-community.org/"
+HOMEPAGE="https://www.wps.cn/product/wpslinux/ http://linux.wps.com/"
 
 KEYWORDS="~amd64"
 
@@ -43,7 +43,6 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libsndfile
 	media-libs/libvorbis
-	media-libs/libpng-compat:1.2
 	media-libs/libpng:0
 	media-sound/pulseaudio
 	net-libs/libasyncns
@@ -84,7 +83,8 @@ src_install() {
 	doexe "${S}"/usr/bin/*
 
 	insinto /usr/share
-	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
+	# Skip mime subdir to not get prefence over rest of office suites
+	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,templates}
 
 	insinto /opt/kingsoft/wps-office
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
