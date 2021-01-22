@@ -48,6 +48,7 @@ acct-group/dhcp 0-r1: System group: dhcp
 acct-group/dhcpcd 0-r1: System group: dhcpcd
 acct-group/dialout 0-r1: System group: dialout
 acct-group/dictd 0: gid for app-text/dictd
+acct-group/dirsrv 0: Group for net-nds/389-ds-base
 acct-group/disk 0-r1: System group: disk
 acct-group/distcc 1: System group: distcc
 acct-group/dnscrypt-proxy 0-r1: Group for net-dns/dnscrypt-proxy
@@ -338,6 +339,7 @@ acct-user/deluge 0-r1: user for deluge
 acct-user/dhcp 0-r1: user for dhcp daemon
 acct-user/dhcpcd 0-r1: user for dhcpcd client
 acct-user/dictd 0: uid for app-text/dictd
+acct-user/dirsrv 0: User for net-nds/389-ds-base
 acct-user/distcc 1: User used to run distcc daemon
 acct-user/dnscrypt-proxy 0-r1: User for net-dns/dnscrypt-proxy
 acct-user/dnsdist 0-r1: A user for net-dns/dnsdist
@@ -497,6 +499,7 @@ acct-user/smtpd 0-r1: daemon user for smtpd
 acct-user/smtpq 0-r1: queue user for smtpd
 acct-user/snapclient 0: Client user for media-sound/snapcast
 acct-user/snapserver 0: Server user for media-sound/snapcast
+acct-user/sndiod 0: Daemon user for sndio
 acct-user/sniproxy 0: System user: sniproxy
 acct-user/sobexsrv 0: A user for sobexsrv: a secure OBEX server
 acct-user/sogo 0-r1: User for gnustep-apps/sogo
@@ -13465,6 +13468,7 @@ media-plugins/gst-plugins-rtmp 1.14.5 1.16.2: RTMP source/sink plugin for GStrea
 media-plugins/gst-plugins-shout2 1.14.5 1.16.2: Icecast server sink plugin for GStreamer
 media-plugins/gst-plugins-sidplay 1.14.3 1.16.2: Sid decoder plugin for GStreamer
 media-plugins/gst-plugins-smoothstreaming 1.14.5 1.16.2: Smooth Streaming plugin for GStreamer
+media-plugins/gst-plugins-sndio 1.8.0.1: Sndio audio sink and source for GStreamer
 media-plugins/gst-plugins-soundtouch 1.14.5 1.16.2: Beats-per-minute detection and pitch controlling plugin for GStreamer
 media-plugins/gst-plugins-soup 1.14.5 1.16.2: HTTP client source/sink plugin for GStreamer
 media-plugins/gst-plugins-speex 1.14.5 1.16.2: Speex encoder/decoder plugin for GStreamer
@@ -13702,6 +13706,7 @@ media-sound/ardour 6.5-r1 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
+media-sound/aucatctl 0.1: A tool for controlling aucat and/or sndiod volume through MIDI
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.10.1-r1 4.0.5 9999: Lightweight and versatile audio player
 media-sound/audacity 2.4.2-r1: Free crossplatform audio editor
@@ -13966,6 +13971,7 @@ media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settin
 media-sound/snapcast 0.20.0 9999: Synchronous multi-room audio player
 media-sound/snd 17.4-r1: Snd is a sound editor
 media-sound/sndfile-tools 1.04-r1 9999: Small collection of programs that use libsndfile
+media-sound/sndio 1.7.0: small audio and MIDI framework part of the OpenBSD project
 media-sound/sndpeek 1.41-r1: real-time audio visualization
 media-sound/solfege 3.23.4: GNU program to help practicing ear training
 media-sound/sonata 1.7_beta1_p20200212: Elegant GTK+ music client for the Music Player Daemon (MPD)
@@ -15363,6 +15369,7 @@ net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtub
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
+net-nds/389-ds-base 1.4.4.9: 389 Directory Server (core libraries and daemons)
 net-nds/adtool 1.3.3-r1: Utility for Active Directory administration
 net-nds/gssproxy 0.8.3 0.8.4: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written in Java
