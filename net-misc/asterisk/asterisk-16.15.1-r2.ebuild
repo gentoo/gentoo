@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,7 +56,7 @@ DEPEND="acct-user/asterisk
 	caps? ( sys-libs/libcap )
 	blocks? ( sys-libs/blocksruntime )
 	cluster? ( sys-cluster/corosync )
-	codec2? ( media-libs/codec2 )
+	codec2? ( media-libs/codec2:= )
 	curl? ( net-misc/curl )
 	dahdi? (
 		net-libs/libpri
