@@ -183,8 +183,6 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}"/mozilla
 
-	eapply "${FILESDIR}/${P}-confvars_use_posix_sh.patch"
-
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
 	while read -r -d $'\0' file ; do
