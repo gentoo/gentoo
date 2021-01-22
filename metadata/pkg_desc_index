@@ -14627,7 +14627,7 @@ net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r2: WebDAV filesystem with special features for accessing subversion repositories
-net-ftp/atftp 0.7.2-r1 0.7.2-r2: Advanced TFTP implementation client/server
+net-ftp/atftp 0.7.2-r1 0.7.2-r2 0.7.2-r3: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
 net-ftp/filezilla 3.51.0 3.52.0.5 3.52.2: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r6: A transparent ftp proxy
