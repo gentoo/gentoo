@@ -1,19 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools flag-o-matic pam
+EAPI=6
+inherit autotools eutils flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
 HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
 SRC_URI="
-	https://www.sillycycle.com/xlock/${P/_alpha/ALPHA}.tar.xz
-	https://www.sillycycle.com/xlock/recent-releases/${P/_alpha/ALPHA}.tar.xz
+	https://www.sillycycle.com/xlock/${P}.tar.xz
+	https://www.sillycycle.com/xlock/recent-releases/${P}.tar.xz
 "
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86"
 IUSE="crypt debug gtk imagemagick motif nas opengl pam truetype xinerama xlockrc vtlock"
 
 REQUIRED_USE="
@@ -50,19 +50,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.46-freetype261.patch
 	"${FILESDIR}"/${PN}-5.47-CXX.patch
 	"${FILESDIR}"/${PN}-5.47-strip.patch
-	"${FILESDIR}"/${PN}-5.64_alpha0-LDFLAGS.patch
 )
-S=${WORKDIR}/${P/_alpha/ALPHA}
 
 src_prepare() {
 	default
-
-	sed -i \
-		-e '/XLOCKLIBPATHS="-L/d' \
-		-e '/XMLOCKLIBPATHS="-L/d' \
-		-e 's|/lib|'"${EPREFIX}/$(get_libdir)"'|g' \
-		configure.ac || die
-
 	eautoreconf
 }
 
@@ -71,7 +62,7 @@ src_configure() {
 
 	if use opengl && use truetype; then
 			myconf=( --with-ftgl )
-			append-cppflags -DFTGL213
+			append-flags -DFTGL213
 		else
 			myconf=( --without-ftgl )
 	fi
@@ -105,9 +96,8 @@ src_install() {
 	local DOCS=( README docs/{3d.howto,cell_automata,HACKERS.GUIDE,Purify,Revisions,TODO} )
 	default
 
-	pamd_mimic_system xlock auth
-
 	if use pam; then
+		pamd_mimic_system xlock auth
 		fperms 755 /usr/bin/xlock
 	else
 		fperms 4755 /usr/bin/xlock
