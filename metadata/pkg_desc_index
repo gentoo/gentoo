@@ -8424,7 +8424,7 @@ dev-python/ldap3 2.8.1: A strictly RFC 4511 conforming LDAP V3 pure Python clien
 dev-python/ldappool 2.4.1: A connection pool for python-ldap
 dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
-dev-python/libcloud 3.1.0: Unified Interface to the Cloud - python support libs
+dev-python/libcloud 3.1.0 3.3.0: Unified Interface to the Cloud - python support libs
 dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1 1.7.2: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
@@ -13226,7 +13226,7 @@ media-libs/libquvi-scripts 0.9.20131130-r1 0.9.20131130-r2 0.9.20131130-r100: Em
 media-libs/libraw 0.20.0 0.20.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.3-r2: framebuffer abstraction library, written in C
-media-libs/libsamplerate 0.1.9-r1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
+media-libs/libsamplerate 0.1.9-r1 0.2.0 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.12-r1 2.0.12-r2 2.0.14-r1: Simple Direct Media Layer
