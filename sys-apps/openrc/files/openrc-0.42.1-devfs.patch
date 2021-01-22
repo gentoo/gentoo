@@ -1,0 +1,15 @@
+allow devfs to mount inside lxc container
+
+upstream bug: https://github.com/OpenRC/openrc/issues/272
+
+--- a/init.d/devfs.in
++++ b/init.d/devfs.in
+@@ -15,7 +15,7 @@ depend()
+ {
+ 	provide dev-mount
+ 	before dev
+-	keyword -docker -lxc -prefix -systemd-nspawn -vserver
++	keyword -docker -prefix -systemd-nspawn -vserver
+ }
+ 
+ mount_dev()
