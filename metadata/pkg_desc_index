@@ -15154,7 +15154,7 @@ net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty 
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 7.0.2: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 20.10.0.6 20.12.0.12-r1: ICA Client for Citrix Presentation servers
+net-misc/icaclient 20.10.0.6 20.12.0.12-r1 20.12.0.12-r2: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
@@ -17128,14 +17128,14 @@ sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.12-r1 0.13-r1: Realtime Policy and Watchdog Daemon
 sys-auth/seatd 0.4.0-r1 9999: Minimal seat management daemon and universal library
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
-sys-auth/solo-python 0.0.26: Python tool and library for SoloKeys
+sys-auth/solo-python 0.0.26 0.0.27: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
 sys-auth/sssd 2.2.0-r1 2.3.1-r2 2.4.0: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.20.0: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubico-piv-tool 2.1.1-r2: Command-line tool and p11-kit module for the YubiKey PIV application
+sys-auth/yubico-piv-tool 2.1.1-r2 2.2.0: Command-line tool and p11-kit module for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 2.01.22270-r1 3.04.23699 3.04.23731: Microsemi Adaptec RAID Controller Command Line Utility
@@ -17965,7 +17965,7 @@ www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
-www-apps/drupal 7.77 8.8.12 8.9.12 9.0.10 9.1.2: PHP-based open-source platform and content management system
+www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
 www-apps/gitea 1.13.0 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 7.3.1 7.3.3 7.3.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB

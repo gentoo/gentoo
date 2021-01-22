@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/php[gd,hash(+),mysql?,pdo,postgres?,simplexml,sqlite?,xml] virtual/httpd-php uploadprogress? ( dev-php/pecl-uploadprogress ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
-SLOT=9.0.10
-SRC_URI=https://ftp.drupal.org/files/projects/drupal-9.0.10.tar.gz
+SLOT=9.0.11
+SRC_URI=https://ftp.drupal.org/files/projects/drupal-9.0.11.tar.gz
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
 _md5_=b6ec4ee3b1ed75fd18f01c064305d900
