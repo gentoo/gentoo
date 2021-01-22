@@ -91,7 +91,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-lang/ocaml-4.03:=[ocamlopt]
 	dev-ml/findlib[ocamlopt]
 	|| (
-		<dev-ml/ocaml-gettext-0.4.2[ocamlopt]
+		<dev-ml/ocaml-gettext-0.4.2
 		dev-ml/ocaml-gettext-stub[ocamlopt]
 	)
 	>=dev-ml/ounit-2[ocamlopt]
