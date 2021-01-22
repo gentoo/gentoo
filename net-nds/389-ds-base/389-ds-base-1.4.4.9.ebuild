@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -198,14 +198,16 @@ src_configure() {
 		--disable-cockpit
 	)
 
-		econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 
-		rm "${S}"/.cargo/config || die
+	rm "${S}"/.cargo/config || die
 }
 
 src_compile() {
 	export CARGO_HOME="${ECARGO_HOME}"
+
 	default
+
 	if use doc; then
 		doxygen "${S}"/docs/slapi.doxy || die
 	fi
@@ -238,7 +240,7 @@ src_install() {
 
 	# cope with libraries being in /usr/lib/dirsrv
 	dodir /etc/env.d
-	echo "LDPATH=/usr/$(get_libdir)/dirsrv" > "${D}"/etc/env.d/08dirsrv
+	echo "LDPATH=/usr/$(get_libdir)/dirsrv" > "${ED}"/etc/env.d/08dirsrv || die
 
 	if use doc; then
 		cd "${S}" || die
