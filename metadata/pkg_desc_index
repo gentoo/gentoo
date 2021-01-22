@@ -5525,7 +5525,7 @@ dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.1 2.10.3 2.10.6: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
-dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
+dev-libs/libslz 1.1.0 1.2.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.18: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.3 0.2.3-r1: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r4: Library for handling root privilege
@@ -13932,7 +13932,7 @@ media-sound/pulseeffects 4.7.2-r1 4.8.4 5.0.0 9999: Limiter, compressor, reverbe
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.6.3 0.9.0 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.9.0 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
@@ -18016,7 +18016,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.96 89.0.4385.0: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.96 89.0.4389.9: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
