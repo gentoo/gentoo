@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,14 +21,14 @@ BDEPEND="
 	dev-ml/dune-configurator
 "
 RDEPEND="
-	dev-ml/base:=
-	>=dev-ml/camomile-0.8.3:=
-	>=dev-ml/ocaml-fileutils-0.4.0:=
+	dev-ml/base:=[ocamlopt=]
+	>=dev-ml/camomile-0.8.3:=[ocamlopt=]
+	>=dev-ml/ocaml-fileutils-0.4.0:=[ocamlopt=]
 	sys-devel/gettext
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-ml/ounit )
+	test? ( dev-ml/ounit[ocamlopt=] )
 "
 
 src_install() {
