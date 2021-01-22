@@ -70,4 +70,6 @@ src_install() {
 
 	dodoc libmilter/README
 	dodoc libmilter/docs/*
+
+	find "${ED}" -name '*.a' -delete || die
 }
