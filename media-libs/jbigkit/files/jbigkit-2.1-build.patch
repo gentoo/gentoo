@@ -1,7 +1,7 @@
 This patch has been mailed to upstream. No reply at this time. Status unknown.
 
---- libjbig/Makefile
-+++ libjbig/Makefile
+--- a/libjbig/Makefile
++++ b/libjbig/Makefile
 @@ -1,28 +1,58 @@
  # Unix makefile for the JBIG-KIT library
  
@@ -70,8 +70,8 @@ This patch has been mailed to upstream. No reply at this time. Status unknown.
  
  jbig.o: jbig.c jbig.h jbig_ar.h
  jbig85.o: jbig85.c jbig85.h jbig_ar.h
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,10 +1,10 @@
  # Unix makefile for JBIG-KIT
  
@@ -94,8 +94,8 @@ This patch has been mailed to upstream. No reply at this time. Status unknown.
  	tar cvaf jbigkit-$(VERSION).tar.gz jbigkit-$(VERSION)
  
  release:
---- pbmtools/Makefile
-+++ pbmtools/Makefile
+--- a/pbmtools/Makefile
++++ b/pbmtools/Makefile
 @@ -1,11 +1,11 @@
  # Unix makefile for the JBIG-KIT PBM tools
  
