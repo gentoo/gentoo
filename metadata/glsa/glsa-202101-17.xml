@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-17">
+  <title>Dnsmasq: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dnsmasq, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">dnsmasq</product>
+  <announced>2021-01-22</announced>
+  <revised count="1">2021-01-22</revised>
+  <bug>766126</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.83</unaffected>
+      <vulnerable range="lt">2.83</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dnsmasq is a lightweight and easily-configurable DNS forwarder and DHCP
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dnsmasq. Please review
+      the references below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by sending specially crafted DNS replies, could possibly
+      execute arbitrary code with the privileges of the process, perform a
+      cache poisoning attack or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dnsmasq users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/dnsmasq-2.83"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25681">CVE-2020-25681</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25682">CVE-2020-25682</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25683">CVE-2020-25683</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25684">CVE-2020-25684</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25685">CVE-2020-25685</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25686">CVE-2020-25686</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-25687">CVE-2020-25687</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-21T20:58:48Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-01-22T17:55:39Z">whissi</metadata>
+</glsa>
