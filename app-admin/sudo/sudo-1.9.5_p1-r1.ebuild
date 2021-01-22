@@ -197,9 +197,10 @@ src_install() {
 		insinto /etc/openldap/schema
 		newins doc/schema.OpenLDAP sudo.schema
 	fi
-
-	pamd_mimic system-auth sudo auth account session
-	pamd_mimic system-auth sudo-i auth account session
+	if use pam; then
+		pamd_mimic system-auth sudo auth account session
+		pamd_mimic system-auth sudo-i auth account session
+	fi
 
 	keepdir /var/db/sudo/lectured
 	fperms 0700 /var/db/sudo/lectured
