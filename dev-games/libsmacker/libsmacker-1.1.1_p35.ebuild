@@ -7,13 +7,22 @@ inherit autotools
 
 DESCRIPTION="A cross-platform C library for decoding .smk Smacker Video files."
 HOMEPAGE="http://libsmacker.sourceforge.net"
-SRC_URI="https://sourceforge.net/projects/libsmacker/files/libsmacker-1.1/${P}r35.tar.gz/download -> ${P}.tar.gz"
+SRC_URI="https://sourceforge.net/projects/libsmacker/files/libsmacker-$(ver_cut 1-2)/${P/_p/r}.tar.gz/download -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
+}
+
+src_install() {
+	default
+
+	# No .la files or static libraries
+	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -name '*.a' -delete || die
 }
