@@ -266,15 +266,6 @@ dev-libs/libclsync
 dev-haskell/derive
 app-forensics/quickfuzz
 
-# Mike Pagano <mpagano@gentoo.org> (2020-12-18)
-# Serious data corruption bug when using F2FS,
-# see https://bugzilla.kernel.org/show_bug.cgi?id=210765
-# Feel free to manually unmask when not using F2FS.
-=sys-kernel/gentoo-sources-5.10.0
-=sys-kernel/gentoo-sources-5.10.1
-=sys-kernel/vanilla-sources-5.10.1
-=sys-kernel/vanilla-sources-5.10.0
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
@@ -284,47 +275,6 @@ app-forensics/quickfuzz
 # Fails to validate certificates which have multiple trusted
 # paths.
 =net-libs/gnutls-3.7.0
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-11-24)
-# Serious data corruption bug when using XFS, see https://www.spinics.net/lists/linux-xfs/msg47004.html
-# Feel free to manually unmask when not using XFS.
-=sys-kernel/gentoo-sources-5.9.10
-=sys-kernel/gentoo-sources-5.9.9
-=sys-kernel/gentoo-sources-5.4.79
-=sys-kernel/gentoo-sources-5.4.78
-=sys-kernel/gentoo-sources-4.19.159
-=sys-kernel/gentoo-sources-4.19.158
-=sys-kernel/gentoo-sources-4.14.208
-=sys-kernel/gentoo-sources-4.14.207
-=sys-kernel/gentoo-sources-4.9.245
-=sys-kernel/gentoo-sources-4.9.244
-=sys-kernel/pf-sources-5.9_p5
-=sys-kernel/vanilla-sources-5.9.10
-=sys-kernel/vanilla-sources-5.9.9
-=sys-kernel/vanilla-sources-5.4.79
-=sys-kernel/vanilla-sources-5.4.78
-=sys-kernel/vanilla-sources-4.19.159
-=sys-kernel/vanilla-sources-4.19.158
-=sys-kernel/vanilla-sources-4.14.208
-=sys-kernel/vanilla-sources-4.14.207
-=sys-kernel/vanilla-sources-4.9.245
-=sys-kernel/vanilla-sources-4.9.244
-=sys-kernel/vanilla-kernel-5.9.10
-=sys-kernel/vanilla-kernel-5.9.9
-=sys-kernel/vanilla-kernel-5.4.79
-=sys-kernel/vanilla-kernel-5.4.78
-=sys-kernel/gentoo-kernel-5.9.10
-=sys-kernel/gentoo-kernel-5.9.9
-=sys-kernel/gentoo-kernel-5.4.79
-=sys-kernel/gentoo-kernel-5.4.78
-=sys-kernel/gentoo-kernel-bin-5.9.10-r1
-=sys-kernel/gentoo-kernel-bin-5.9.10
-=sys-kernel/gentoo-kernel-bin-5.9.9-r1
-=sys-kernel/gentoo-kernel-bin-5.9.9
-=sys-kernel/gentoo-kernel-bin-5.4.79-r1
-=sys-kernel/gentoo-kernel-bin-5.4.79
-=sys-kernel/gentoo-kernel-bin-5.4.78-r1
-=sys-kernel/gentoo-kernel-bin-5.4.78
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
