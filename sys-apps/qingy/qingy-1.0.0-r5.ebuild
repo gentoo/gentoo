@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -101,7 +101,10 @@ src_install() {
 	use emacs && elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 
 	rm "${D}"/etc/pam.d/qingy
-	pamd_mimic system-local-login qingy auth account password session
+
+	if use pam; then
+		pamd_mimic system-local-login qingy auth account password session
+	fi
 
 	systemd_newunit "${FILESDIR}/${PN}_at.service" "${PN}@.service"
 }
