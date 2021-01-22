@@ -1,13 +1,14 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib-minimal
+inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="small audio and MIDI framework part of the OpenBSD project"
 HOMEPAGE="http://www.sndio.org/"
 SRC_URI="http://www.sndio.org/${P}.tar.gz"
+
 LICENSE="ISC"
 SLOT="0/7.0"
 KEYWORDS="~amd64"
@@ -28,12 +29,15 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	tc-export CC
+
 	./configure \
-		--prefix=/usr \
-		--libdir=/usr/$(get_libdir) \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--privsep-user=sndiod \
 		--with-libbsd \
-		$(use_enable alsa)
+		$(use_enable alsa) \
+	|| die "Configure failed"
 }
 
 src_install() {
