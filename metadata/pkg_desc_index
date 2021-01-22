@@ -8655,7 +8655,7 @@ dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requiremen
 dev-python/pivy 0.6.5: Coin3D bindings for Python
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1-r1 1.6.1 1.7.0: Provides an API for querying the distutils metadata written in a PKG-INFO file
-dev-python/plotly 1.9.6 4.10.0 4.14.1: Browser-based graphing library for Python
+dev-python/plotly 1.9.6 4.10.0 4.14.1 4.14.3: Browser-based graphing library for Python
 dev-python/plotly-geo 1.0.0: Browser-based graphing library for Python
 dev-python/pluggy 0.13.1-r1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 1.0.0: Support library for building plugins sytems in Python
@@ -12432,7 +12432,7 @@ mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 2.0.2 2.0.4-r1: A small but very powerful text-based mail client
-mail-client/mutt-wizard 0_pre20200808 9999: A system for automatically configuring neomutt and isync
+mail-client/mutt-wizard 3.1.1 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20201127 20201127-r1 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.4.8 1.4.10 9999: A browser-based multilingual IMAP client with an application-like user interface
@@ -12619,7 +12619,7 @@ media-fonts/font-sun-misc 1.0.3-r2: X.Org Sun fonts
 media-fonts/font-util 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r2: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r2: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 5.14.0 5.15.1 9999: The iconic font
+media-fonts/fontawesome 5.14.0 5.15.1 5.15.2 9999: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
@@ -13126,7 +13126,7 @@ media-libs/libdiscid 0.6.2: Client library to create MusicBrainz enabled tagging
 media-libs/libdmtx 0.7.4 0.7.5: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r4: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
-media-libs/libdvbpsi 1.3.1 1.3.2 1.3.3: Library for MPEG TS/DVB PSI tables decoding and generation
+media-libs/libdvbpsi 1.3.2 1.3.3: Library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
 media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.0.0 6.0.1 6.1.0 9999: Library for DVD navigation tools
@@ -16400,7 +16400,7 @@ sci-mathematics/gimps 30.3.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65 5.0: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
-sci-mathematics/gmp-ecm 7.0.4-r2 9999: Elliptic Curve Method for Integer Factorization
+sci-mathematics/gmp-ecm 7.0.4-r2 7.0.4-r3 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gp2c 0.0.11.3 0.0.12: A GP to C translator
 sci-mathematics/gretl 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
@@ -17505,7 +17505,7 @@ sys-fs/ntfs3g 2017.3.23-r3 2017.3.23.5-r1: Open source read-write NTFS driver th
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/quota 4.05-r1 4.06: Linux quota tools
 sys-fs/quotatool 1.6.2: Command-line utility for filesystem quotas
-sys-fs/rar2fs 1.29.3: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.29.4: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/reiser4progs 1.2.1 2.0.3 2.0.4: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities

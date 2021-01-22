@@ -8,4 +8,4 @@ PROPERTIES=live
 RDEPEND=app-admin/pass mail-client/neomutt[notmuch] mail-mta/msmtp net-mail/isync[ssl]
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	optfeature	6a2add34e06e5a05d88471a33ccdd73e
-_md5_=037937ea8f5b6ea28d715475101cf214
+_md5_=c9a347f87e79f27d0b66be11cdf7cfc9
