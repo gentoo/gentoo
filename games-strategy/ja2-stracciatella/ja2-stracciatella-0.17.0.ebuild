@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -91,42 +91,47 @@ winapi-i686-pc-windows-gnu-0.4.0
 winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo cmake xdg-utils
+inherit cargo cmake xdg
 
 DESCRIPTION="An improved, cross-platform, stable Jagged Alliance 2 runtime"
 HOMEPAGE="https://github.com/ja2-stracciatella/"
-SRC_URI="https://github.com/ja2-stracciatella/ja2-stracciatella/releases/tag/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/ja2-stracciatella/ja2-stracciatella/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	editor? ( https://github.com/ja2-stracciatella/free-ja2-resources/releases/download/v1/editor.slf -> ${P}-editor.slf )
 "
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
-LICENSE="CC-BY-NC-2.0 SFI-SCLA"
+LICENSE="public-domain SFI-SCLA"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="cdinstall editor ru-gold test"
+# Run with ja2 --unittest
+# Needs data files?
 RESTRICT="test"
+#RESTRICT="!test? ( test )"
 
-DEPEND="media-libs/libsdl2[X,sound,video]
-		!~media-libs/libsdl2-2.0.6
-		>=dev-lang/rust-1.40.0
-		>=x11-libs/fltk-1.3.5[opengl]
-		>=dev-cpp/string-theory-3.1
-		>=dev-games/libsmacker-1.1.1
-		>=dev-libs/rapidjson-1.1.0
+DEPEND="
+	media-libs/libsdl2[X,sound,video]
+	!~media-libs/libsdl2-2.0.6
+	>=virtual/rust-1.40.0
+	>=x11-libs/fltk-1.3.5[opengl]
+	>=dev-cpp/string-theory-3.1
+	>=dev-games/libsmacker-1.1.1
+	>=dev-libs/rapidjson-1.1.0
 "
-
-BDEPEND="
-		test? ( >=dev-cpp/gtest-1.9.0_pre20190607 )
-"
-
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	cdinstall? ( games-strategy/ja2-stracciatella-data )
 "
+DEPEND+="test? ( >=dev-cpp/gtest-1.9.0_pre20190607 )"
 
 LANGS="l10n_de +l10n_en l10n_fr l10n_it l10n_nl l10n_pl l10n_ru"
 
 IUSE="$IUSE $LANGS"
 REQUIRED_USE="^^ ( ${LANGS//+/} )"
+
+src_prepare() {
+	cmake_src_prepare
+}
 
 src_configure() {
 		local mycmakeargs=()
@@ -151,6 +156,7 @@ src_configure() {
 			-DWITH_RUST_BINARIES=OFF
 			-DBUILD_LAUNCHER=OFF
 			-DOPENGL_GL_PREFERENCE=GLVND
+			-DINSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
 			-DEXTRA_DATA_DIR="${EPREFIX}/usr/share/ja2"
 		)
 
@@ -179,9 +185,5 @@ pkg_postinst() {
 		elog "Make sure the filenames are lowercase."
 	fi
 
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 }
