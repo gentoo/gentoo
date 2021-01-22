@@ -1,19 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils flag-o-matic multilib pam
+EAPI=7
+inherit autotools desktop eutils flag-o-matic multilib pam
 
 DESCRIPTION="A modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
-	https://www.jwz.org/xscreensaver/${P}.tar.gz
+	https://www.jwz.org/xscreensaver/${P}.tar.gz -> ${P}-r1.tar.gz
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="caps gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
 
 COMMON_DEPEND="
 	>=gnome-base/libglade-2
@@ -32,6 +32,7 @@ COMMON_DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXt
 	x11-libs/libXxf86vm
+	caps? ( sys-libs/libcap )
 	jpeg? ( virtual/jpeg:0 )
 	new-login? (
 		gdm? ( gnome-base/gdm )
@@ -62,6 +63,15 @@ DEPEND="
 	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-remove-libXxf86misc-dep.patch
+	"${FILESDIR}"/${PN}-5.05-interix.patch
+	"${FILESDIR}"/${PN}-5.20-blurb-hndl-test-passwd.patch
+	"${FILESDIR}"/${PN}-5.20-test-passwd-segv-tty.patch
+	"${FILESDIR}"/${PN}-5.20-tests-miscfix.patch
+	"${FILESDIR}"/${PN}-5.31-pragma.patch
+	"${FILESDIR}"/${PN}-5.43-gentoo.patch
+)
 
 src_prepare() {
 	sed -i configure.in -e '/^ALL_LINGUAS=/d' || die
@@ -74,17 +84,9 @@ src_prepare() {
 			configure{,.in} || die
 	fi
 
-	eapply \
-		"${FILESDIR}"/${PN}-remove-libXxf86misc-dep.patch \
-		"${FILESDIR}"/${PN}-5.05-interix.patch \
-		"${FILESDIR}"/${PN}-5.20-blurb-hndl-test-passwd.patch \
-		"${FILESDIR}"/${PN}-5.20-test-passwd-segv-tty.patch \
-		"${FILESDIR}"/${PN}-5.20-tests-miscfix.patch \
-		"${FILESDIR}"/${PN}-5.28-comment-style.patch \
-		"${FILESDIR}"/${PN}-5.31-pragma.patch \
-		"${FILESDIR}"/${PN}-5.35-gentoo.patch
+	default
 
-	use offensive || eapply "${FILESDIR}"/${PN}-5.35-offensive.patch
+	use offensive || eapply "${FILESDIR}"/${PN}-5.43-offensive.patch
 
 	eapply_user
 
@@ -102,6 +104,7 @@ src_configure() {
 	export RPM_PACKAGE_VERSION=no #368025
 
 	econf \
+		$(use_with caps setcap-hacks) \
 		$(use_with jpeg) \
 		$(use_with new-login login-manager) \
 		$(use_with opengl gl) \
@@ -134,8 +137,10 @@ src_install() {
 
 	dodoc README{,.hacking}
 
-	use pam && fperms 755 /usr/bin/${PN}
-	pamd_mimic_system ${PN} auth
+	if use pam; then
+		fperms 755 /usr/bin/${PN}
+		pamd_mimic_system ${PN} auth
+	fi
 
 	rm -f "${ED}"/usr/share/${PN}/config/{electricsheep,fireflies}.xml
 }
