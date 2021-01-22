@@ -2701,7 +2701,7 @@ app-office/texstudio 3.0.0_pre20200601 3.0.4 9999: Free cross-platform LaTeX edi
 app-office/unoconv 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.4.5.1: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
-app-office/wps-office 11.1.0.9615 11.1.0.9719: WPS Office is an office productivity suite
+app-office/wps-office 11.1.0.10161: WPS Office is an office productivity suite
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
 app-officeext/ct2n 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
@@ -7960,7 +7960,7 @@ dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0: Better dates and times for Python
 dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
-dev-python/asteval 0.9.18: Evaluator of Python expression using ast module
+dev-python/asteval 0.9.21: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astroid 2.4.2-r1: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
@@ -10933,7 +10933,7 @@ dev-util/sysprof-capture 3.36.0-r1 3.38.1-r1: Static library for sysprof capture
 dev-util/sysprof-common 3.38.1: Static library for sysprof capture data generation
 dev-util/systemtap 4.0-r1 4.0-r2 4.4: A linux trace/probe tool
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
-dev-util/tkdiff 4.2: Graphical front end to the diff program
+dev-util/tkdiff 4.2 5.1: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
 dev-util/trace-cmd 2.8.3 2.9.1 9999: User-space front-end for Ftrace
 dev-util/treecc 0.3.10-r1: Compiler-compiler tool for aspect-oriented programming
@@ -12951,6 +12951,7 @@ media-gfx/simple-scan 3.36.4 3.36.7: Simple document scanning utility
 media-gfx/slic3r 1.3.0-r3 1.3.1_pre20200824 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/solvespace 2.3: Parametric 2d/3d CAD
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
+media-gfx/svg2rlg 0.4.0: Converts SVG files to PDFs or reportlab graphics
 media-gfx/sxiv 26 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
@@ -16508,7 +16509,7 @@ sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.2.8-r1 5.4.1-r1 5.5.9999 5.5.9999-r1: Command-line driven interactive plotting program
-sci-visualization/gr 0.50.0-r2: Universal framework for cross-platform visualization applications
+sci-visualization/gr 0.50.0-r2 0.53.0: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.55-r4 2.56: Framework for Scanning Mode Microscopy data analysis
@@ -18022,7 +18023,7 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.6.1 84.0.2: Firefox Web Browser
+www-client/firefox 78.6.1 84.0.2 85.0_rc1: Firefox Web Browser
 www-client/firefox-bin 78.6.1 84.0.2: Firefox Web Browser
 www-client/google-chrome 88.0.4324.96: The web browser from Google
 www-client/google-chrome-beta 88.0.4324.96: The web browser from Google
@@ -18329,7 +18330,7 @@ x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/spread-sheet-widget 0.3-r1 0.6: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.21: Touchscreen Access Library
-x11-libs/vte 0.28.2-r209 0.60.3 0.62.1: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r209 0.60.3 0.62.1 0.62.2: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.4-r2 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.9: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
