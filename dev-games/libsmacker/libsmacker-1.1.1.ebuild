@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A cross-platform C library for decoding .smk Smacker Video files."
-HOMEPAGE="https://libsmacker.sourceforge.net"
+HOMEPAGE="http://libsmacker.sourceforge.net"
 SRC_URI="https://sourceforge.net/projects/libsmacker/files/libsmacker-1.1/${P}r35.tar.gz/download -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
