@@ -1,21 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit linux-info multilib pam toolchain-funcs
 
-PATCH_VER="02"
+PATCH_TARBALL_NAME="${PN}-2.4.9-patches-02"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
 SRC_URI="https://github.com/paulusmack/ppp/archive/${P}.tar.gz
-	https://dev.gentoo.org/~polynomial-c/${P}-patches-${PATCH_VER}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/${PATCH_TARBALL_NAME}.tar.xz
 	http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="activefilter atm dhcp eap-tls gtk ipv6 libressl pam radius"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="activefilter atm dhcp gtk ipv6 libressl pam radius"
 
 DEPEND="
 	activefilter? ( net-libs/libpcap )
@@ -26,7 +26,7 @@ DEPEND="
 	libressl? ( dev-libs/libressl:= )
 "
 RDEPEND="${DEPEND}
-	!<net-misc/netifrc-0.7.1"
+	!<net-misc/netifrc-0.7.1-r2"
 PDEPEND="net-dialup/ppp-scripts"
 
 S="${WORKDIR}/${PN}-${P}"
@@ -34,9 +34,6 @@ S="${WORKDIR}/${PN}-${P}"
 src_prepare() {
 	mv "${WORKDIR}/dhcp" "${S}/pppd/plugins" || die
 
-	if ! use eap-tls ; then
-		rm "${WORKDIR}"/patches/8?_all_eaptls-* || die
-	fi
 	eapply "${WORKDIR}"/patches
 
 	if use atm ; then
@@ -55,9 +52,10 @@ src_prepare() {
 		sed -i '/^#USE_PAM=y/s:^#::' pppd/Makefile.linux || die
 	fi
 
-	if use ipv6 ; then
-		einfo "Enabling IPv6"
-		sed -i '/#HAVE_INET6/s:#::' pppd/Makefile.linux || die
+	if ! use ipv6 ; then
+		einfo "Disabling IPv6"
+		sed -i '/^HAVE_INET6/s:^:#:' pppd/Makefile.linux || die
+	else
 		echo "+ipv6" >> etc.ppp/options || die
 	fi
 
@@ -101,8 +99,8 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC PKG_CONFIG
-	emake COPTS="${CFLAGS} -D_GNU_SOURCE"
+	tc-export AR PKG_CONFIG
+	emake COPTS="${CFLAGS} -D_GNU_SOURCE" CC="$(tc-getCC)"
 
 	# build pppgetpass
 	cd contrib/pppgetpass || die
@@ -124,7 +122,7 @@ src_install() {
 	# Install pppd header files
 	emake -C pppd INSTROOT="${D}" install-devel
 
-	dosbin pppd/plugins/rp-pppoe/pppoe-discovery
+	dosbin pppd/plugins/pppoe/pppoe-discovery
 
 	dodir /etc/ppp/peers
 	insinto /etc/ppp
@@ -135,7 +133,9 @@ src_install() {
 	insopts -m0644
 	doins etc.ppp/options
 
-	pamd_mimic_system ppp auth account session
+	if use pam; then
+		pamd_mimic_system ppp auth account session
+	fi
 
 	local PLUGINS_DIR="/usr/$(get_libdir)/pppd/${PV}"
 	insinto "${PLUGINS_DIR}"
@@ -144,7 +144,7 @@ src_install() {
 	doins pppd/plugins/passprompt.so
 	doins pppd/plugins/passwordfd.so
 	doins pppd/plugins/winbind.so
-	doins pppd/plugins/rp-pppoe/rp-pppoe.so
+	doins pppd/plugins/pppoe/pppoe.so
 	doins pppd/plugins/pppol2tp/openl2tp.so
 	doins pppd/plugins/pppol2tp/pppol2tp.so
 	if use atm ; then
@@ -206,8 +206,8 @@ pkg_postinst() {
 		local ERROR_PPP_BSDCOMP="CONFIG_PPP_BSDCOMP:\t missing BSD-Compress compression (optional, but highly recommended)"
 		local WARNING_PPP_MPPE="CONFIG_PPP_MPPE:\t missing MPPE encryption (optional, mostly used by PPTP links)"
 		CONFIG_CHECK="${CONFIG_CHECK} ~PPPOE ~PACKET"
-		local WARNING_PPPOE="CONFIG_PPPOE:\t missing PPPoE support (optional, needed by rp-pppoe plugin)"
-		local WARNING_PACKET="CONFIG_PACKET:\t missing AF_PACKET support (optional, used by rp-pppoe and dhcpc plugins)"
+		local WARNING_PPPOE="CONFIG_PPPOE:\t missing PPPoE support (optional, needed by pppoe plugin)"
+		local WARNING_PACKET="CONFIG_PACKET:\t missing AF_PACKET support (optional, used by pppoe and dhcpc plugins)"
 		if use atm ; then
 			CONFIG_CHECK="${CONFIG_CHECK} ~PPPOATM"
 			local WARNING_PPPOATM="CONFIG_PPPOATM:\t missing PPPoA support (optional, needed by pppoatm plugin)"
@@ -222,10 +222,14 @@ pkg_postinst() {
 		cp -pP "${EROOT}/etc/ppp/chap-secrets.example" "${EROOT}/etc/ppp/chap-secrets"
 
 	# lib name has changed
-	sed -i -e "s:^pppoe.so:rp-pppoe.so:" "${EROOT}/etc/ppp/options" || die
+	sed -i -e "s:^rp-\(pppoe.so\):\1:" "${EROOT}/etc/ppp/options" || die
 
 	echo
 	elog "Pon, poff and plog scripts have been supplied for experienced users."
 	elog "Users needing particular scripts (ssh,rsh,etc.) should check out the"
 	elog "/usr/share/doc/${PF}/scripts directory."
+
+	if [[ -n ${REPLACING_VERSIONS} ]] ; then
+		ewarn '"rp-pppoe.so" plugin has been renamed to "pppoe.so"'
+	fi
 }
