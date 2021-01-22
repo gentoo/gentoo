@@ -22,7 +22,7 @@ IUSE="x-pack"
 RDEPEND="
 	acct-group/kibana
 	acct-user/kibana
-	>=net-libs/nodejs-10.21.0
+	>=net-libs/nodejs-10.23.1
 	<net-libs/nodejs-14
 	x-pack? (
 		dev-libs/expat
