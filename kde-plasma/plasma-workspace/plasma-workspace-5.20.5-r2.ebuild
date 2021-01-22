@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-avoid-render-invisible-contents.patch" # KDE-Bug 347772
 	"${FILESDIR}/${P}-fix-crash-on-screen-changes.patch" # KDE-Bug 425711
 	"${FILESDIR}/${P}-fix-digitalclock-agenda-view.patch" # KDE-Bug 431433
+	"${FILESDIR}/${P}-wayland-fix-XKB-variable-setup.patch"
 )
 
 src_prepare() {
