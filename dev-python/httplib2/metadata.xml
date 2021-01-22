@@ -7,8 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="google-code">httplib2</remote-id>
     <remote-id type="pypi">httplib2</remote-id>
-    <remote-id type="github">jcgregorio/httplib2</remote-id>
+    <remote-id type="github">httplib2/httplib2</remote-id>
   </upstream>
 </pkgmetadata>
