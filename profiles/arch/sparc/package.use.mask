@@ -204,12 +204,6 @@ dev-lang/spidermonkey jit
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
-# No stable nftables yet. Let new iptables stabilization
-# to pick nftables up. Meanwhile keep old iptables off
-# nftables.
-<net-firewall/iptables-1.6.2 nftables
-
 # Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
 # app-text/mupdf sparc keyword was dropped in bug #631970
 net-print/cups-filters pdf
