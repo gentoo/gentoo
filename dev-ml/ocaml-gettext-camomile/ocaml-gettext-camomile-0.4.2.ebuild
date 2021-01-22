@@ -11,6 +11,7 @@ inherit dune
 DESCRIPTION="Support for internationalization of OCaml programs using the Camomile library"
 HOMEPAGE="https://github.com/gildor478/ocaml-gettext"
 SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
@@ -23,11 +24,14 @@ BDEPEND="
 	dev-ml/dune-configurator
 "
 RDEPEND="
-	dev-ml/ocaml-gettext:=
+	dev-ml/base:=[ocamlopt]
+	dev-ml/camomile:=[ocamlopt]
+	dev-ml/ocaml-gettext:=[ocamlopt=]
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-ml/ounit )
+	test? (
+		dev-ml/ounit[ocamlopt=]
+		dev-ml/ocaml-fileutils[ocamlopt=]
+	)
 "
-
-S="${WORKDIR}/${MY_PN}-${PV}"
