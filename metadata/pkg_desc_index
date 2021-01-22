@@ -8107,7 +8107,7 @@ dev-python/cx_Freeze 6.4.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 2.30.0 2021.1.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 2.30.0 2021.1.0 2021.1.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.20.0 0.22.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
