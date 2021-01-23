@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 ECM_HANDBOOK="forceoptional"
 ECM_HANDBOOK_DIR="docs"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.74.0
+KFMIN=5.75.0
 QTMIN=5.15.1
 inherit ecm kde.org
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/en/parley"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -49,3 +49,14 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-apps/kdeedu-data-${PVCUT}:5
 "
+
+src_prepare() {
+	ecm_src_prepare
+	cmake_comment_add_subdirectory plugins
+}
+
+pkg_postinst() {
+	ecm_pkg_postinst
+	elog "Plugins are disabled in Gentoo due to lack of Python-3 compatible"
+	elog "kross-interpreters, bug #766333."
+}
