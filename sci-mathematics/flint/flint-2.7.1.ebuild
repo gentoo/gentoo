@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,20 +25,25 @@ BDEPEND="doc? (
 	app-text/texlive-core
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
+	dev-tex/latexmk
 	)
 	${PYTHON_DEPS}"
 DEPEND="dev-libs/gmp:=
 	dev-libs/mpfr:=
-	ntl? ( dev-libs/ntl:= )"
+	ntl? ( dev-libs/ntl:= )
+	virtual/cblas"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-2.6.0-multilib-strict.patch" )
+# ninja doesn't like "-lcblas" so using make.
+CMAKE_MAKEFILE_GENERATOR="emake"
 
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_NTL="$(usex ntl)"
 		-DBUILD_TESTING="$(usex test)"
 		-DBUILD_DOCS="$(usex doc)"
+		-DCBLAS_INCLUDE_DIRS="${EPREFIX}/usr/include"
+		-DCBLAS_LIBRARIES="-lcblas"
 	)
 
 	cmake_src_configure
