@@ -550,11 +550,11 @@ esetup.py() {
 # For most of the packages, tests built in BUILD_DIR are good enough.
 #
 # The function supports two install modes.  The current default is
-# the legacy --via-home mode.  However, it has problems with newer
-# versions of setuptools (50.3.0+).  The --via-root mode generally
-# works for these packages, and it will probably become the default
-# in the future, once we test all affected packages.  Please note
-# that proper testing sometimes requires unmerging the package first.
+# --via-root mode.  Previously, the function defaulted to --via-home
+# mode but it has been broken by new versions of setuptools (50.3.0+).
+# If you find that --via-root does not work but --via-home does, please
+# file a bug to let us know.  Please note that proper testing sometimes
+# requires unmerging the package first.
 distutils_install_for_testing() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -575,7 +575,7 @@ distutils_install_for_testing() {
 	PATH=${bindir}:${PATH}
 	PYTHONPATH=${libdir}:${PYTHONPATH}
 
-	local install_method=home
+	local install_method=root
 	case ${1} in
 		--via-home)
 			install_method=home
