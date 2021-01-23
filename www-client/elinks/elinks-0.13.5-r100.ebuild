@@ -15,7 +15,7 @@ S="${WORKDIR}/felinks-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gnutls gpm guile idn ipv6
 	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
