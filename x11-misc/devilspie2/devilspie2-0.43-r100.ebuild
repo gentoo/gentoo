@@ -14,7 +14,7 @@ SRC_URI="https://download.savannah.gnu.org/releases/devilspie2/devilspie2_${PV}-
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
