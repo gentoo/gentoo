@@ -515,7 +515,6 @@ sys-devel/automake:1.10
 <sys-libs/glibc-2.32-r3
 <sys-devel/binutils-2.34
 <sys-devel/binutils-hppa64-2.34
-<sys-libs/binutils-libs-2.34
 
 # Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # Old versions of CUDA and their reverse dependencies. They do not
