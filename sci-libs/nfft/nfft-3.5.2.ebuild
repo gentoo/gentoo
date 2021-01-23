@@ -42,7 +42,10 @@ src_configure() {
 
 src_install() {
 	default
-	use doc || rm -r "${ED}/usr/share/doc/${P}/html" || die
+
+	if ! use doc; then
+		rm -r "${ED}"/usr/share/doc/${P}/html || die
+	fi
 
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
