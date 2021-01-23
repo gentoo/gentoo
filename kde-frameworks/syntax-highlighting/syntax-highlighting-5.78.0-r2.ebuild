@@ -8,6 +8,8 @@ QTMIN=5.15.1
 inherit ecm kde.org
 
 DESCRIPTION="Framework for syntax highlighting"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PN}-5.77.0-bash-zsh-fixes.tar.xz"
+
 LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="nls"
@@ -24,7 +26,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.77.0-bash-zsh-fix.patch
+	"${WORKDIR}/${PN}-5.77.0-bash-zsh-fixes"/0010-Bash-fix-5-at-the-end-of-a-double-quoted-string.patch
+	"${WORKDIR}/${PN}-5.77.0-bash-zsh-fixes"/0011-Bash-fix-in-xy-and-more-Parameter-Expansion-Operator.patch
+	"${WORKDIR}/${PN}-5.77.0-bash-zsh-fixes"/0012-Bash-Zsh-fix-cmd-in-a-case.patch
 )
 
 src_install() {
