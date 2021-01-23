@@ -32,9 +32,9 @@ src_install() {
 
 	dosym spool/mail /var/mail
 
-	newpamd "${FILESDIR}"/common-pamd-include pop
-	newpamd "${FILESDIR}"/common-pamd-include imap
 	if use pam ; then
+		newpamd "${FILESDIR}"/common-pamd-include pop
+		newpamd "${FILESDIR}"/common-pamd-include imap
 		local p
 		for p in pop3 pop3s pops ; do
 			dosym pop /etc/pam.d/${p}

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,9 +32,10 @@ src_install() {
 
 	dosym spool/mail /var/mail
 
-	newpamd "${FILESDIR}"/common-pamd-include pop
-	newpamd "${FILESDIR}"/common-pamd-include imap
 	if use pam ; then
+		newpamd "${FILESDIR}"/common-pamd-include pop
+		newpamd "${FILESDIR}"/common-pamd-include imap
+
 		local p
 		for p in pop3 pop3s pops ; do
 			dosym pop /etc/pam.d/${p}
