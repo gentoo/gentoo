@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hishamhm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	dev-lua/busted[${LUA_USEDEP}]

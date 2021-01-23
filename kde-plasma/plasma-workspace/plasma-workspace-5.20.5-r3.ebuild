@@ -145,6 +145,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
 	"${FILESDIR}/${P}-avoid-render-invisible-contents.patch" # KDE-Bug 347772
+	"${FILESDIR}/${P}-fix-wake-screensaver-mode-w-keypress.patch" # KDE-Bug 431286
 	"${FILESDIR}/${P}-fix-crash-on-screen-changes.patch" # KDE-Bug 425711
 	"${FILESDIR}/${P}-fix-digitalclock-agenda-view.patch" # KDE-Bug 431433
 	"${FILESDIR}/${P}-wayland-fix-XKB-variable-setup.patch"
