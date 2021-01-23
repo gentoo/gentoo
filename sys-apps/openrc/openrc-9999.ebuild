@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -125,9 +125,11 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install gentoo pam.d files
-	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
-	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	if use pam; then
+		# install gentoo pam.d files
+		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	fi
 
 	# install documentation
 	dodoc ChangeLog *.md
