@@ -15,14 +15,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-python/python-dateutil-2.4.2[${PYTHON_USEDEP}]
-	>=dev-python/text-unidecode-1.3[${PYTHON_USEDEP}]"
+	>=dev-python/text-unidecode-1.3[${PYTHON_USEDEP}]
+	!dev-ruby/faker"
 DEPEND=""
 BDEPEND="test? (
 	dev-python/freezegun[${PYTHON_USEDEP}]
+	dev-python/random2[${PYTHON_USEDEP}]
 	dev-python/validators[${PYTHON_USEDEP}]
 	)"
 
 # Specific test dependency for one country post code tests
-PATCHES=( "${FILESDIR}"/${PN}-5.5.1-ukposttest.patch )
+PATCHES=( "${FILESDIR}"/${PN}-5.6.5-ukposttest.patch )
 
 distutils_enable_tests pytest
