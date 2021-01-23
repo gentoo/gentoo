@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -83,7 +83,10 @@ src_install() {
 	doins contrib/0hourly
 
 	newinitd "${FILESDIR}/${PN}-1.3-initd" ${PN}
-	newpamd "${FILESDIR}/${PN}-1.4.3-pamd" crond
+
+	if use pam; then
+		newpamd "${FILESDIR}/${PN}-1.4.3-pamd" crond
+	fi
 
 	systemd_newunit contrib/cronie.systemd cronie.service
 
