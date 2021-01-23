@@ -83,7 +83,9 @@ src_install() {
 	docinto examples
 	dodoc -r conserver.cf/samples/.
 
-	newpamd "${FILESDIR}"/conserver.pam-pambase conserver
+	if use pam; then
+		newpamd "${FILESDIR}"/conserver.pam-pambase conserver
+	fi
 }
 
 src_test() {

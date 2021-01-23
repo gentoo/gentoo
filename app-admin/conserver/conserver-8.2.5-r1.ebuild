@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools pam ssl-cert
 
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-with-attribution"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug ipv6 freeipmi kerberos libressl pam ssl test tcpd"
 RESTRICT="!test? ( test )"
 
@@ -31,9 +31,7 @@ DEPEND="debug? ( dev-libs/dmalloc:= )
 RDEPEND="${DEPEND}
 	pam? ( sys-auth/pambase )"
 
-DOCS=( CHANGES FAQ PROTOCOL README conserver/Sun-serial contrib/maketestcerts)
-
-PATCHES=( "${FILESDIR}/${PV}-libressl.patch" )
+DOCS=( CHANGES FAQ PROTOCOL README.md conserver/Sun-serial contrib/maketestcerts)
 
 src_prepare() {
 	default
@@ -81,7 +79,9 @@ src_install() {
 	docinto examples
 	dodoc -r conserver.cf/samples/.
 
-	newpamd "${FILESDIR}"/conserver.pam-pambase conserver
+	if use pam; then
+		newpamd "${FILESDIR}"/conserver.pam-pambase conserver
+	fi
 }
 
 src_test() {
