@@ -1,0 +1,37 @@
+From 1d28361a69d773ba0d026119ff197d38900eac0a Mon Sep 17 00:00:00 2001
+From: Bert Gijsbers <gijsbers@science.uva.nl>
+Date: Sat, 23 Jan 2021 16:02:21 +0100
+Subject: [PATCH] Don't unarm menu popup buttons for issue #527.
+
+---
+ src/ybutton.cc | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/ybutton.cc b/src/ybutton.cc
+index 1c11756d..745a8f21 100644
+--- a/src/ybutton.cc
++++ b/src/ybutton.cc
+@@ -58,7 +58,7 @@ YButton::~YButton() {
+     }
+     popdown();
+     if (fPopup && fPopup->isShared() == false) {
+-        delete fPopup;
++        delete fPopup; fPopup = nullptr;
+     }
+     if (--buttonObjectCount == 0) {
+         normalButtonFont = null;
+@@ -289,8 +289,13 @@ void YButton::handleButton(const XButtonEvent &button) {
+             setSelected(false);
+         }
+     }
++    bool unarm = fEnabled && fArmed
++              && button.type == ButtonRelease
++              && button.button == Button1
++              && getClickCount() == 1
++              && dragging();
+     YWindow::handleButton(button);
+-    if (fEnabled && button.type == ButtonRelease && button.button == Button1) {
++    if (unarm && !fPopupActive) {
+         setArmed(false, false);
+     }
+ }
