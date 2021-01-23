@@ -2032,7 +2032,7 @@ app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focus
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.23.0 0.23.1: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.5.20 2.5.21 2.5.22: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.20 2.5.22 2.5.24: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.7: Free Unix Spectrum Emulator by Philip Kendall

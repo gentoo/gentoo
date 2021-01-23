@@ -2083,6 +2083,7 @@ dev-libs/libevent:verbose-debug - Support for verbose debug logging
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libffi-compat:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libflatarray:cuda - Enables plugins for NVIDIA GPUs (e.g. CUDAAllocator)
+dev-libs/libgcrypt:asm - Enable assembly for optimization
 dev-libs/libgcrypt:o-flag-munging - Enable O-flag mangling during build
 dev-libs/libgdata:crypt - Use app-crypt/gcr for keeping tokens and passwords in non-pageable memory for improved security
 dev-libs/libgdata:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
