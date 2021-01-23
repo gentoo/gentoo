@@ -10667,7 +10667,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06-r1 3.0.20.11.20 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.2.4 2020.3.1-r1: A complete toolset for C and C++ development
 dev-util/cloc 1.84 1.86: Count Lines of Code
-dev-util/cmake 3.13.5 3.17.4-r1 3.18.5 3.19.2 3.19.3: Cross platform Make
+dev-util/cmake 3.13.5 3.17.4-r1 3.18.5 3.19.3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
@@ -13991,7 +13991,7 @@ media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
-media-sound/supercollider 3.11.0-r1 3.11.2: An environment and a programming language for real time audio synthesis.
+media-sound/supercollider 3.11.2: Environment and programming language for real time audio synthesis
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r2: A simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
@@ -17335,7 +17335,7 @@ sys-devel/dwz 0.13: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 8.4.0-r2 9.3.0-r1 9.3.0-r2 10.2.0-r5 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
-sys-devel/gcc-config 2.3.2-r1 9999: Utility to manage compilers
+sys-devel/gcc-config 2.3.2-r1 2.3.3 9999: Utility to manage compilers
 sys-devel/gdb 10.1 9999: GNU debugger
 sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.21: GNU locale utilities
