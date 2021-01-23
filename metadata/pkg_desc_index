@@ -602,7 +602,7 @@ app-admin/bitwarden-desktop-bin 1.23.1: Bitwarden password manager desktop clien
 app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
-app-admin/cdist 6.9.3: A usable configuration management system
+app-admin/cdist 6.9.4: A usable configuration management system
 app-admin/cgmanager 0.41 0.42: Control Group manager daemon
 app-admin/checksec 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2 2.2.3 2.4.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
@@ -5122,7 +5122,7 @@ dev-lang/crystal 0.35.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.2 1.11.3: Elixir programming language
-dev-lang/erlang 23.0.4 23.1.4 23.1.5 23.2 23.2.1 23.2.2: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.1.5 23.2 23.2.1 23.2.2 23.2.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -5859,7 +5859,7 @@ dev-ml/lablgl 1.05-r1 1.06-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5 2.18.8-r1 2.18.10 3.1.1: OCaml bindings to GTK-3
 dev-ml/lablgtk-sourceview 3.1.1: OCaml bindings to GTK-3
 dev-ml/labltk 8.06.2 8.06.7 8.06.9: OCaml interface to the Tcl/Tk GUI framework
-dev-ml/llvm-ocaml 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: OCaml bindings for LLVM
+dev-ml/llvm-ocaml 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
 dev-ml/lwt 5.3.0-r1: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
@@ -8055,7 +8055,7 @@ dev-python/cherrypy 18.6.0: CherryPy is a pythonic, object-oriented HTTP framewo
 dev-python/chump 1.6.0-r1: API wrapper for Pushover
 dev-python/citeproc-py 0.4.0-r1: Yet another Python CSL Processor
 dev-python/cjkwrap 2.2-r1: A library for wrapping and filling UTF-8 CJK text
-dev-python/clang-python 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Python bindings for sys-devel/clang
+dev-python/clang-python 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cleo 0.8.1: Python tool for building testable command-line interfaces
 dev-python/cli_helpers 2.1.0 9999: Python helpers for common CLI tasks
 dev-python/click 6.7-r2 7.1.2-r1: A Python package for creating beautiful command line interfaces
@@ -8183,7 +8183,7 @@ dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r2: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
-dev-python/elementpath 2.0.5 2.1.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 2.0.5 2.1.1 2.1.2: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.4: A powerful and robust templating system for Python
@@ -8434,7 +8434,7 @@ dev-python/libtmux 0.8.5: python api for tmux
 dev-python/libvirt-python 6.8.0 6.9.0 6.10.0 7.0.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
-dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
+dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
@@ -10467,7 +10467,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.4.0: Guile bindings of git
-dev-scheme/guile-json 4.4.1: JSON module for Guile
+dev-scheme/guile-json 4.4.1 4.5.1: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -10717,7 +10717,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 164-r1: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 164-r1 165: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10818,7 +10818,7 @@ dev-util/lcov 1.13-r2 1.14 1.14_p2 1.15 9999: A graphical front-end for GCC's co
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/libabigail 1.6: Suite of tools for checking ABI differences between ELF objects
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lldb 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: The LLVM debugger
+dev-util/lldb 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0-r1: List available userspace I/O (UIO) devices
 dev-util/ltrace 0.7.3_p4-r1: trace library calls made at runtime
@@ -10874,7 +10874,7 @@ dev-util/qbs 1.16.0 1.18.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.5.1 4.5.1-r1 5.0.0 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.5.1-r1 5.0.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.10 7.0.0.12 7.0.3: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
@@ -10904,7 +10904,7 @@ dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.12.0-r1: Dependency manager for the Crystal language
+dev-util/shards 0.12.0-r1 0.13.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
@@ -16971,7 +16971,7 @@ sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/opal-utils 6.7: OPAL firmware utilities
-sys-apps/openrc 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.42.1-r1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20200529 20201015: osinfo database files
 sys-apps/osinfo-db-tools 1.8.0: Tools for managing the osinfo database
@@ -17323,9 +17323,9 @@ sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1 2.35.1-r1: Tools necessa
 sys-devel/bison 3.6.4 3.7.3 3.7.4: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318 20201117 20201222: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
-sys-devel/clang 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: C language family frontend for LLVM
-sys-devel/clang-common 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Common files shared between multiple slots of clang
-sys-devel/clang-runtime 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Meta-ebuild for clang runtime libraries
+sys-devel/clang 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: C language family frontend for LLVM
+sys-devel/clang-common 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Common files shared between multiple slots of clang
+sys-devel/clang-runtime 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20201129 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17333,7 +17333,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.3-r1 3.3.3-r2: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.13: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 8.4.0-r2 9.3.0-r1 9.3.0-r2 10.2.0-r3 10.2.0-r4 10.2.0-r5 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
+sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 8.4.0-r2 9.3.0-r1 9.3.0-r2 10.2.0-r5 10.2.1_pre9999 11.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.3.2-r1 9999: Utility to manage compilers
 sys-devel/gdb 10.1 9999: GNU debugger
@@ -17343,9 +17343,9 @@ sys-devel/gnuconfig 20200621 20210107 99999999: Updated config.sub and config.gu
 sys-devel/icecream 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 6.4.0 6.5.0 7.3.0 7.5.0 8.3.0 8.4.0 9.3.0-r1 9.3.0-r2 10.2.0: 64bit kernel compiler
 sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
-sys-devel/lld 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: The LLVM linker (link editor)
-sys-devel/llvm 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Low Level Virtual Machine
-sys-devel/llvm-common 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Common files shared between multiple slots of LLVM
+sys-devel/lld 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: The LLVM linker (link editor)
+sys-devel/llvm 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Low Level Virtual Machine
+sys-devel/llvm-common 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Common files shared between multiple slots of LLVM
 sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r1: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
@@ -17573,8 +17573,8 @@ sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
-sys-libs/compiler-rt 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Compiler runtime library for clang (built-in part)
-sys-libs/compiler-rt-sanitizers 9.0.1 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
+sys-libs/compiler-rt 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Compiler runtime library for clang (built-in part)
+sys-libs/compiler-rt-sanitizers 9.0.1 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
@@ -17597,15 +17597,15 @@ sys-libs/libblockdev 2.24 2.25 9999: A library for manipulating block devices
 sys-libs/libcap 2.43 2.45 2.46: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.11 0.8 0.8.1-r1 0.8.2-r1: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
-sys-libs/libcxx 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
-sys-libs/libcxxabi 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: Low level support for a standard C++ library
+sys-libs/libcxx 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxxabi 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Low level support for a standard C++ library
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
 sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libnih 1.0.3-r4: Light-weight 'standard library' of C functions
-sys-libs/libomp 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
+sys-libs/libomp 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.8.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2-r1: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
@@ -17625,7 +17625,7 @@ sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged ap
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.8: Library implementation for listing Vital Product Data
 sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt, bcrypt, and others
-sys-libs/llvm-libunwind 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 12.0.0.9999: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 1.2.1-r1 1.2.2-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
@@ -17968,7 +17968,7 @@ www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
 www-apps/gitea 1.13.0 9999: A painless self-hosted Git service
-www-apps/gitit 0.13.0.0 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
+www-apps/gitit 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 7.3.1 7.3.3 7.3.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
 www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
@@ -18425,7 +18425,7 @@ x11-misc/hsetroot 1.0.5: Tool which allows you to compose wallpapers ('root pixm
 x11-misc/i3blocks 1.4-r1 1.5 1.5-r1: highly flexible status line for the i3 window manager
 x11-misc/i3blocks-contrib 1.4.0_p20201127: A set of scripts for i3blocks, contributed by the community
 x11-misc/i3lock 2.13: Simple screen locker
-x11-misc/i3status 2.13 2.13-r1: generates a status bar for dzen2, xmobar or similar
+x11-misc/i3status 2.13-r1: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
 x11-misc/iconbox 0.2: App for placing icons in a menu which auto-hides
@@ -19025,7 +19025,7 @@ xfce-base/exo 0.12.11 4.16.0: Extensions, widgets and framework library with ses
 xfce-base/garcon 0.6.4-r2 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.14.1 4.16.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.14.0 4.16.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.8.16 4.16.2: File manager for the Xfce desktop environment
+xfce-base/thunar 1.8.16 4.16.2 4.17.0: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.14.4 4.16.0: Panel for the Xfce desktop environment
