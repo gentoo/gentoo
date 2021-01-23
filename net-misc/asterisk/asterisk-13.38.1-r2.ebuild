@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.asterisk.org/pub/telephony/asterisk/releases/${P}.tar
 	https://downloads.uls.co.za/gentoo/asterisk/gentoo-asterisk-patchset-4.08.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 IUSE_VOICEMAIL_STORAGE=(
 	+voicemail_storage_file

@@ -11,7 +11,7 @@ DESCRIPTION="A HTTP benchmarking tool"
 HOMEPAGE="https://www.github.com/wg/wrk"
 SRC_URI="https://www.github.com/wg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE="libressl"
