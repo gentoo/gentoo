@@ -1,17 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools eutils flag-o-matic pam user systemd
 
+MY_P="${PN}_${PV}"
+
 DESCRIPTION="Queues jobs for later execution"
-HOMEPAGE="https://packages.qa.debian.org/a/at.html"
-SRC_URI="mirror://debian/pool/main/a/at/${PN}_${PV}.orig.tar.gz"
+HOMEPAGE="http://blog.calhariz.com/index.php/tag/at https://packages.qa.debian.org/a/at.html"
+SRC_URI="http://software.calhariz.com/at/${MY_P}.orig.tar.gz
+	mirror://debian/pool/main/a/at/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="pam selinux"
 
 DEPEND="virtual/mta
@@ -47,10 +50,10 @@ src_prepare() {
 
 src_configure() {
 	local my_conf=(
-		--sysconfdir=/etc/at
-		--with-jobdir=/var/spool/at/atjobs
-		--with-atspool=/var/spool/at/atspool
-		--with-etcdir=/etc/at
+		--sysconfdir="${EPREFIX}"/etc/at
+		--with-jobdir="${EPREFIX}"/var/spool/at/atjobs
+		--with-atspool="${EPREFIX}"/var/spool/at/atspool
+		--with-etcdir="${EPREFIX}"/etc/at
 		--with-daemon_username=at
 		--with-daemon_groupname=at
 		$(usex pam '' --without-pam)
@@ -64,11 +67,14 @@ src_install() {
 
 	newinitd "${FILESDIR}"/atd.rc8 atd
 	newconfd "${FILESDIR}"/atd.confd atd
-	newpamd "${FILESDIR}"/at.pamd-3.1.13-r1 atd
+
+	if use pam; then
+		newpamd "${FILESDIR}"/at.pamd-3.1.13-r1 atd
+	fi
 
 	# Preserve existing .SEQ files (bug #386625)
 	local seq_file="${EROOT}/var/spool/at/atjobs/.SEQ"
-	if [ -f "${seq_file}" ] ; then
+	if [[ -f "${seq_file}" ]] ; then
 		einfo "Preserving existing .SEQ file (bug #386625)."
 		cp -p "${seq_file}" "${ED}"/var/spool/at/atjobs/ || die
 	fi
