@@ -140,7 +140,7 @@ multilib_src_configure() {
 		$(use_enable test)
 	)
 
-	tc-ld-disable-gold #470634
+	tc-ld-force-bfd #470634 #729510
 
 	# compilation with -O0 fails on amd64, see bug #171231
 	if [[ ${ABI} == amd64 ]]; then
