@@ -612,7 +612,7 @@ app-admin/clog 1.3.0: clog is a colorized log tail utility
 app-admin/clsync 0.4.4 0.4.5 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.8.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r9 1.10.8-r10 1.11.6-r2: An advanced, highly configurable system monitor for X
-app-admin/conserver 8.2.3 8.2.4 8.2.5 8.2.6: Serial Console Manager
+app-admin/conserver 8.2.3-r1 8.2.4-r1 8.2.5-r1 8.2.6-r1: Serial Console Manager
 app-admin/consul 1.7.4 1.7.8 1.7.11 1.8.4 1.8.7 1.9.1: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.25.0 0.25.1: Generic template rendering and notifications with Consul
@@ -11872,13 +11872,13 @@ gnome-extra/gnome-shell-extension-appindicator 33 34: Support Ubuntu AppIndicato
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-bing-wallpaper 27 28: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16-r1: Allow to connect bluetooth paired devices from gnome control panel
-gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20200901: Control the blur effect on gnome-shell lock screen
-gnome-extra/gnome-shell-extension-dash-to-panel 39 40: An icon taskbar for the Gnome Shell
-gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1 20.04.0-r2: A GNOME Shell extension for providing desktop icons
+gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20200901 20201211: Control the blur effect on gnome-shell lock screen
+gnome-extra/gnome-shell-extension-dash-to-panel 40: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1 20.04.0-r2 20.10.0: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 41 42 44: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.36.7 3.38.1 3.38.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
-gnome-extra/gnome-shell-frippery 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
+gnome-extra/gnome-shell-frippery 3.34.2 3.38.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.36.1 3.38.0: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.34.0: Customize advanced GNOME 3 options
@@ -11896,7 +11896,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 4.6.5: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24-r1 1.16.0 1.18.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.36.3 3.38.0 3.38.1: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.36.3 3.38.1: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
@@ -12379,7 +12379,7 @@ kde-plasma/plasma-sdk 5.19.5 5.20.5: Useful applications for Plasma development
 kde-plasma/plasma-systemmonitor 5.20.0-r1: New version of KSysGuard built on top of the new KStats daemon and using QML
 kde-plasma/plasma-thunderbolt 5.19.5 5.20.5: Plasma integration for controlling Thunderbolt devices
 kde-plasma/plasma-vault 5.19.5 5.20.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r1 5.20.5-r2: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r1 5.20.5-r3: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.19.5 5.20.5: Wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.19.5 5.20.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.19.5 5.20.5: PolKit agent module for KDE Plasma
@@ -17552,8 +17552,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.4.88 5.4.88-r1 5.4.89 5.4.89-r1 5.4.90 5.4.90-r1 5.4.91 5.4.91-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1 5.10.6 5.10.6-r1 5.10.7 5.10.7-r1 5.10.8 5.10.8-r1 5.10.9 5.10.9-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.10.9 5.10.9-r1 5.10.10: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.4.251 4.4.252 4.4.253 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.9.251 4.9.252 4.9.253 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.14.215 4.14.216 4.14.217 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 4.19.167 4.19.168 4.19.169 4.19.170 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.4.92 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9 5.10.10: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17568,8 +17568,8 @@ sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.1
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.252 4.9.252 4.14.216 4.19.169 5.4.91 5.10.9: Full sources for the Linux kernel
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-sources 4.4.253 4.9.253 4.14.217 4.19.170 5.4.92 5.10.10: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -17687,7 +17687,7 @@ sys-power/uhubctl 1.8-r1: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
-sys-process/at 3.1.23 3.2.1: Queues jobs for later execution
+sys-process/at 3.1.23-r1 3.2.1-r1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1 2.6.0: Resource-specific view of processes
 sys-process/audit 2.8.5-r2 3.0: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
@@ -17750,7 +17750,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
