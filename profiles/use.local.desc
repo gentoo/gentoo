@@ -4347,7 +4347,6 @@ media-libs/sdl2-mixer:fluidsynth - Use media-sound/fluidsynth for MIDI support
 media-libs/sdl2-mixer:midi - basic support for MIDI files
 media-libs/sdl2-mixer:mod - basic support for MOD files
 media-libs/sdl2-mixer:playtools - Install playwave and playmus tools (useful for testing)
-media-libs/sdl2-mixer:smpeg - Use media-libs/smpeg for MP3 support
 media-libs/sdl2-mixer:tremor - enable OGG Vorbis music via libtremor
 media-libs/sdl2-mixer:wav - support WAVE files
 media-libs/sge:image - enable sdl-image support

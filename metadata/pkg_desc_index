@@ -5280,7 +5280,7 @@ dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
-dev-libs/ding-libs 0.4.0 0.5.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
+dev-libs/ding-libs 0.6.1: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.5.1: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7 999999: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
@@ -12837,7 +12837,7 @@ media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r2: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.35-r1 1.3.36 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
-media-gfx/graphviz 2.42.3-r1 2.44.1-r1: Open Source Graph Visualization Software
+media-gfx/graphviz 2.44.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11 2.9.1 2.10.2: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.10.0: Image viewer and browser for Gnome
@@ -13034,7 +13034,7 @@ media-libs/faad2 2.10.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10-r1: Run-time filter design and execution library
-media-libs/flac 1.3.3 1.3.3-r1: free lossless audio encoder and decoder
+media-libs/flac 1.3.3-r1: free lossless audio encoder and decoder
 media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0-r1: DSSI Soft Synth Interface
 media-libs/fontconfig 2.13.1-r2 2.13.93: A library for configuring and customizing font access
@@ -13048,7 +13048,7 @@ media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins 
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.6.0-r1 1.8.0: A GTK+ widget for interactive graph-like environments
-media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
+media-libs/gavl 1.4.0-r1 1.4.0-r2: Library for handling uncompressed audio and video data
 media-libs/gd 2.3.0: Graphics library for fast image creation
 media-libs/gegl 0.4.24 0.4.26 0.4.26-r1 0.4.28 9999: A graph based image processing framework
 media-libs/gexiv2 0.12.1 9999: GObject-based wrapper around the Exiv2 library
@@ -13133,9 +13133,9 @@ media-libs/libdv 1.0.0-r4: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
 media-libs/libdvbpsi 1.3.2 1.3.3: Library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
-media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
-media-libs/libdvdnav 6.0.0 6.0.1 6.1.0 9999: Library for DVD navigation tools
-media-libs/libdvdread 6.0.0 6.0.1 6.0.2 6.1.1 9999: Library for DVD navigation tools
+media-libs/libdvdcss 1.4.2 1.4.2-r1: A portable abstraction library for DVD decryption
+media-libs/libdvdnav 6.1.0 9999: Library for DVD navigation tools
+media-libs/libdvdread 6.1.1 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.13: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
@@ -13177,12 +13177,12 @@ media-libs/liblastfm 1.1.0_pre20190625: Collection of libraries to integrate Las
 media-libs/libldac 2.0.2-r1 2.0.2.3: LDAC codec library from AOSP
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.31: Lightweight OSC (Open Sound Control) implementation
-media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
+media-libs/liblqr 0.4.2-r1: Easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.2 9999: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.24.0-r1 1.24.1: Mixer library for MATE Desktop
-media-libs/libmatroska 1.5.2 1.6.2: Extensible multimedia container format based on EBML
+media-libs/libmatroska 1.6.2: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 20.03 20.08 20.09: MediaInfo libraries
 media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
@@ -13190,11 +13190,11 @@ media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
-media-libs/libmp3splt 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
+media-libs/libmp3splt 0.9.2-r1 0.9.2-r2: Library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
-media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
+media-libs/libmpeg2 0.5.1-r2 0.5.1-r3: Library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
 media-libs/libmtp 1.1.17 1.1.18 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
@@ -13202,7 +13202,7 @@ media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webse
 media-libs/libmypaint 1.6.1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.6-r1: decoding library for BMP and ICO image file formats, written in C
-media-libs/libnsgif 0.2.1-r1 0.2.1-r3: decoding library for the GIF image file format, written in C
+media-libs/libnsgif 0.2.1-r3: decoding library for the GIF image file format, written in C
 media-libs/libnspsl 0.1.3-r2 0.1.5-r1 0.1.6-r1: C library for decoding BMP and ICO images
 media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.4: the Ogg media file format library
@@ -13217,7 +13217,7 @@ media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of A
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 7.19.3: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 2.43.0 2.43.1 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
-media-libs/libpng 1.6.37 1.6.37-r2: Portable Network Graphics library
+media-libs/libpng 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.1.0-r2 3.1.8 9999: A graphical music visualization plugin similar to milkdrop
@@ -13253,10 +13253,10 @@ media-libs/libv4l 1.20.0: Separate libraries ebuild from upstream v4l-utils pack
 media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.7: The Ogg Vorbis sound file format library
-media-libs/libvpx 1.7.0-r1 1.8.2 1.9.0: WebM VP8 and VP9 Codec SDK
-media-libs/libwebp 1.0.2 1.0.3 1.1.0: A lossy image compression format
+media-libs/libvpx 1.7.0-r1 1.9.0: WebM VP8 and VP9 Codec SDK
+media-libs/libwebp 1.1.0: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r8: A library for reading vector images in Microsoft's Windows Metafile Format (WMF)
-media-libs/libxmi 1.3: C/C++ function library for rasterizing 2-D vector graphics
+media-libs/libxmi 1.3 1.3-r1: C/C++ function library for rasterizing 2-D vector graphics
 media-libs/libxspf 1.2.0-r1: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.3.2 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
@@ -13276,7 +13276,7 @@ media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmpeg version of headers required to interface with Nvidias codec APIs
-media-libs/openal 1.20.0 1.20.1 1.21.0: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.20.1 1.21.0: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -13330,10 +13330,10 @@ media-libs/sdl-sound 1.0.3-r2: A library for handling the decoding of various so
 media-libs/sdl-terminal 1.1.3-r1: library that provides a pseudo-ansi color terminal that can be used with any SDL application
 media-libs/sdl-ttf 2.0.11-r1: library that allows you to use TrueType fonts in SDL applications
 media-libs/sdl2-gfx 1.0.4: Graphics drawing primitives library for SDL2
-media-libs/sdl2-image 2.0.4 2.0.5: Image file loading library
-media-libs/sdl2-mixer 2.0.2-r1 2.0.4: Simple Direct Media Layer Mixer Library
+media-libs/sdl2-image 2.0.5: Image file loading library
+media-libs/sdl2-mixer 2.0.4: Simple Direct Media Layer Mixer Library
 media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
-media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts in SDL applications
+media-libs/sdl2-ttf 2.0.15: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2020.4_pre20201106 2020.5_pre20201216: Collection of tools, libraries and tests for shader compilation
@@ -13342,8 +13342,8 @@ media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
 media-libs/soxr 0.1.3-r1: SoX Resampler library
 media-libs/spandsp 0.0.6: SpanDSP is a library of DSP functions for telephony
-media-libs/speex 1.2.0-r1 1.2.0-r2: Audio compression format designed for speech
-media-libs/speexdsp 1.2_rc3-r2 1.2_rc3-r3: Audio compression format designed for speech -- DSP
+media-libs/speex 1.2.0-r2: Audio compression format designed for speech
+media-libs/speexdsp 1.2_rc3-r3: Audio compression format designed for speech -- DSP
 media-libs/sratom 0.6.6 0.6.8: Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.6.1: Synthesis ToolKit in C++
@@ -13529,7 +13529,7 @@ media-plugins/kodi-pvr-hts 8.2.2 9999: Tvheadend Live TV and Radio PVR client ad
 media-plugins/kodi-pvr-iptvsimple 7.1.0 7.2.0 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 6.0.1 8.0.0 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 7.1.1 7.2.0 9999: MythTV PVR for Kodi
-media-plugins/kodi-pvr-nextpvr 8.0.3 9999: Kodi's NextPVR client addon
+media-plugins/kodi-pvr-nextpvr 8.2.0 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 6.0.0 7.0.0 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 5.0.0 6.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 6.0.0 6.0.1 6.0.2 7.0.0 9999: Kodi's Stalker client addon
@@ -18215,7 +18215,7 @@ x11-drivers/xf86-video-geode 2.11.20: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-intel 2.99.917_p20200310 2.99.917_p20200515 2.99.917_p20201215 9999: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5 2.0.0: Matrox video driver
-x11-drivers/xf86-video-nouveau 1.0.16: Accelerated Open Source driver for nVidia cards
+x11-drivers/xf86-video-nouveau 1.0.16 1.0.17: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-omap 0.4.5: OMAP video driver
 x11-drivers/xf86-video-openchrome 0.6.0: X.Org driver for VIA/S3G cards

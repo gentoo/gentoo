@@ -1,0 +1,12 @@
+BDEPEND=doc? ( app-doc/doxygen )
+DEFINED_PHASES=compile configure install test
+DESCRIPTION=A portable abstraction library for DVD decryption
+EAPI=7
+HOMEPAGE=https://www.videolan.org/developers/libdvdcss.html
+IUSE=doc abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=1.2
+SRC_URI=https://download.videolan.org/pub/libdvdcss/1.4.2/libdvdcss-1.4.2.tar.bz2
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=ee8968d16d0e42df658e2cb3dfebec04
