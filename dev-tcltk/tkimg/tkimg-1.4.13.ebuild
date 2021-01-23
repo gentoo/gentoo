@@ -46,6 +46,9 @@ src_prepare() {
 		libtiff/tifftclDecls.h
 	default
 	find compat/libtiff/config -name ltmain.sh -delete
+	sed -i \
+		-e 's:"--with-CC=$TIFFCC"::' \
+		libtiff/configure.ac || die
 
 	eautoreconf
 	for dir in zlib libpng libtiff libjpeg base bmp gif ico jpeg pcx pixmap png\
