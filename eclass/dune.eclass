@@ -23,6 +23,9 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 EXPORT_FUNCTIONS src_compile src_test src_install
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
