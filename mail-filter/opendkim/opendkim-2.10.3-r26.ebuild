@@ -60,6 +60,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-libmilter-search.patch"
 )
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	default
 	sed -e 's:/var/db/dkim:/var/lib/opendkim:g' \
