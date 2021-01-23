@@ -18,10 +18,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? (
 	dev-python/Faker[${PYTHON_USEDEP}]
-	dev-python/tox[${PYTHON_USEDEP}]
+	dev-python/pytest-cov[${PYTHON_USEDEP}]
 	)"
 
 # Calls system binary directly
 PATCHES=( "${FILESDIR}"/${PN}-0.12.5-names_cli_test.patch )
 
-distutils_enable_tests setup.py
+distutils_enable_tests pytest
