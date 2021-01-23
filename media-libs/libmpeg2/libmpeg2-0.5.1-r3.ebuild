@@ -5,8 +5,8 @@ EAPI=7
 
 inherit autotools multilib-minimal
 
-DESCRIPTION="library for decoding mpeg-2 and mpeg-1 video"
-HOMEPAGE="http://libmpeg2.sourceforge.net/"
+DESCRIPTION="Library for decoding mpeg-2 and mpeg-1 video"
+HOMEPAGE="https://libmpeg2.sourceforge.io/"
 SRC_URI="http://libmpeg2.sourceforge.net/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -14,17 +14,18 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="sdl X"
 
-RDEPEND="sdl? ( media-libs/libsdl )
+RDEPEND="
+	sdl? ( media-libs/libsdl )
 	X? (
-		x11-libs/libXv
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libXt
-	)"
+		x11-libs/libXv
+	)
+"
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
-
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
+	X? ( x11-base/xorg-proto )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-altivec.patch
