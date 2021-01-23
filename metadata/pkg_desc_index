@@ -12305,7 +12305,7 @@ kde-frameworks/qqc2-desktop-style 5.77.0 5.78.0: Style for QtQuickControls 2 tha
 kde-frameworks/solid 5.77.0 5.78.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.77.0 5.78.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syndication 5.77.0 5.78.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.77.0-r1 5.77.0-r2 5.78.0-r1: Framework for syntax highlighting
+kde-frameworks/syntax-highlighting 5.77.0-r1 5.77.0-r2 5.77.0-r3 5.78.0-r2: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.77.0 5.78.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
