@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
+# Depends on media-video/rav1e which needs Rust
+>=media-libs/libheif-1.10.0 rav1e
+
 # Sam James <sam@gentoo.org> (2021-01-21)
 # Needs keywording of new test dependency
 # bug #766441
