@@ -37,7 +37,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kinit-${KFMIN}:5
-	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5=
 	>=kde-frameworks/kitemviews-${KFMIN}:5
 	>=kde-frameworks/kjobwidgets-${KFMIN}:5
 	>=kde-frameworks/knewstuff-${KFMIN}:5
@@ -61,6 +61,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-apps/kio-extras-${PVCUT}:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-knetattach-button.patch" ) # KDE-Bug 431626
 
 src_configure() {
 	local mycmakeargs=(

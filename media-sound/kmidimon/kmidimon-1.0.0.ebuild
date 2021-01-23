@@ -7,8 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="MIDI monitor for ALSA sequencer"
 HOMEPAGE="https://kmidimon.sourceforge.io/"
-SRC_URI="https://sourceforge.net/code-snapshots/svn/k/km/${PN}/code/${PN}-code-r217-trunk.zip -> ${P}.zip"
-S="${WORKDIR}/${PN}-code-r217-trunk"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

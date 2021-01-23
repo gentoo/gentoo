@@ -1,0 +1,193 @@
+From 33270dd4423eea329b8f20db17f8d70ab7b108da Mon Sep 17 00:00:00 2001
+From: Norbert Preining <norbert@preining.info>
+Date: Tue, 19 Jan 2021 06:43:14 +0900
+Subject: [PATCH] Show button to open knetattach inline with URL nav on
+ remove:// view
+
+This is a backport of b1cadeba939155282a9fadf7d7b025d6529c489e
+
+  From b1cadeba939155282a9fadf7d7b025d6529c489e Mon Sep 17 00:00:00 2001
+  From: Nate Graham <nate@kde.org>
+  Date: Tue, 15 Dec 2020 23:03:00 -0700
+  Subject: [PATCH] Show button to open knetattach inline with URL nav on
+   Remote:// view
+
+  In conjunction with
+  https://invent.kde.org/frameworks/kio/-/merge_requests/260,
+  the net result is to hide the knetattach launcher in the view, and show
+  it inline with Dolphin's URL navigator toolbar when viewing the
+  remote:// view, just like how we add an "Empty Trash" button when
+  viewing trash://.
+
+The backport ensures that even with frameworks << 5.78 only one network
+button is shown.
+
+BUG: 431626
+---
+ src/dolphinnavigatorswidgetaction.cpp | 61 +++++++++++++++++++++++++++
+ src/dolphinnavigatorswidgetaction.h   | 20 ++++++++-
+ 2 files changed, 80 insertions(+), 1 deletion(-)
+
+diff --git a/src/dolphinnavigatorswidgetaction.cpp b/src/dolphinnavigatorswidgetaction.cpp
+index b8c77c69b..b25c60d0c 100644
+--- a/src/dolphinnavigatorswidgetaction.cpp
++++ b/src/dolphinnavigatorswidgetaction.cpp
+@@ -10,9 +10,13 @@
+ #include "trash/dolphintrash.h"
+ 
+ #include <KLocalizedString>
++#include <KNotificationJobUiDelegate>
++#include <KService>
+ #include <KXMLGUIFactory>
+ #include <KXmlGuiWindow>
+ 
++#include <KIO/ApplicationLauncherJob>
++
+ #include <QApplication>
+ #include <QDomDocument>
+ #include <QHBoxLayout>
+@@ -154,7 +158,13 @@ void DolphinNavigatorsWidgetAction::adjustSpacing()
+     }
+     int trailingSpacing = (m_globalXOfSplitter + m_splitter->width())
+                           - (m_globalXOfPrimary + m_widthOfPrimary);
++#if KIO_VERSION < QT_VERSION_CHECK(5, 78, 0)
+     if (trailingSpacing < 0 || emptyTrashButton(Primary)->isVisible()) {
++#else
++    if (trailingSpacing < 0 || emptyTrashButton(Primary)->isVisible()
++                            || networkFolderButton(Primary)->isVisible()
++    ) {
++#endif
+         trailingSpacing = 0;
+     }
+     const int widthLeftForUrlNavigator = m_splitter->widget(0)->width() - leadingSpacing - trailingSpacing;
+@@ -181,7 +191,13 @@ void DolphinNavigatorsWidgetAction::adjustSpacing()
+ 
+     trailingSpacing = (m_globalXOfSplitter + m_splitter->width())
+                       - (m_globalXOfSecondary + m_widthOfSecondary);
++#if KIO_VERSION < QT_VERSION_CHECK(5, 78, 0)
+     if (trailingSpacing < 0 || emptyTrashButton(Secondary)->isVisible()) {
++#else
++    if (trailingSpacing < 0 || emptyTrashButton(Secondary)->isVisible()
++                            || networkFolderButton(Secondary)->isVisible()
++    ) {
++#endif
+         trailingSpacing = 0;
+     } else {
+         const int widthLeftForUrlNavigator2 = m_splitter->widget(1)->width() - trailingSpacing;
+@@ -212,6 +228,11 @@ QWidget *DolphinNavigatorsWidgetAction::createNavigatorWidget(Side side) const
+     auto emptyTrashButton = newEmptyTrashButton(urlNavigator, navigatorWidget);
+     layout->addWidget(emptyTrashButton);
+ 
++#if !(KIO_VERSION < QT_VERSION_CHECK(5, 78, 0))
++    auto networkFolderButton = newNetworkFolderButton(urlNavigator, navigatorWidget);
++    layout->addWidget(networkFolderButton);
++#endif
++
+     connect(urlNavigator, &KUrlNavigator::urlChanged, this, [this]() {
+         // We have to wait for DolphinUrlNavigator::sizeHint() to update which
+         // happens a little bit later than when urlChanged is emitted.
+@@ -249,6 +270,38 @@ QPushButton *DolphinNavigatorsWidgetAction::newEmptyTrashButton(const DolphinUrl
+     return emptyTrashButton;
+ }
+ 
++#if !(KIO_VERSION < QT_VERSION_CHECK(5, 78, 0))
++QPushButton *DolphinNavigatorsWidgetAction::networkFolderButton(DolphinNavigatorsWidgetAction::Side side)
++{
++    int sideIndex = (side == Primary ? 0 : 1);
++    if (side == Primary) {
++        return static_cast<QPushButton *>(m_splitter->widget(sideIndex)->layout()->itemAt(3)->widget());
++    }
++    return static_cast<QPushButton *>(m_splitter->widget(sideIndex)->layout()->itemAt(2)->widget());
++}
++
++QPushButton *DolphinNavigatorsWidgetAction::newNetworkFolderButton(const DolphinUrlNavigator *urlNavigator, QWidget *parent) const
++{
++    auto networkFolderButton = new QPushButton(QIcon::fromTheme(QStringLiteral("folder-add")),
++                                        i18nc("@action:button", "Add Network Folder"), parent);
++    networkFolderButton->setFlat(true);
++    connect(networkFolderButton, &QPushButton::clicked,
++            this, [networkFolderButton]() {
++                KService::Ptr service = KService::serviceByDesktopName(QStringLiteral("org.kde.knetattach"));
++                auto *job = new KIO::ApplicationLauncherJob(service, networkFolderButton);
++                auto *delegate = new KNotificationJobUiDelegate;
++                delegate->setAutoErrorHandlingEnabled(true);
++                job->setUiDelegate(delegate);
++                job->start();
++            });
++    networkFolderButton->hide();
++    connect(urlNavigator, &KUrlNavigator::urlChanged, this, [networkFolderButton, urlNavigator]() {
++        networkFolderButton->setVisible(urlNavigator->locationUrl().scheme() == QLatin1String("remote"));
++    });
++    return networkFolderButton;
++}
++#endif
++
+ QWidget *DolphinNavigatorsWidgetAction::spacing(Side side, Position position) const
+ {
+     int sideIndex = (side == Primary ? 0 : 1);
+@@ -257,9 +310,17 @@ QWidget *DolphinNavigatorsWidgetAction::spacing(Side side, Position position) co
+         return m_splitter->widget(sideIndex)->layout()->itemAt(0)->widget();
+     }
+     if (side == Primary) {
++#if KIO_VERSION < QT_VERSION_CHECK(5, 78, 0)
+         return m_splitter->widget(sideIndex)->layout()->itemAt(3)->widget();
++#else
++        return m_splitter->widget(sideIndex)->layout()->itemAt(4)->widget();
++#endif
+     }
++#if KIO_VERSION < QT_VERSION_CHECK(5, 78, 0)
+     return m_splitter->widget(sideIndex)->layout()->itemAt(2)->widget();
++#else
++    return m_splitter->widget(sideIndex)->layout()->itemAt(3)->widget();
++#endif
+ }
+ 
+ void DolphinNavigatorsWidgetAction::updateText()
+diff --git a/src/dolphinnavigatorswidgetaction.h b/src/dolphinnavigatorswidgetaction.h
+index bbd8cf127..ce199b3f0 100644
+--- a/src/dolphinnavigatorswidgetaction.h
++++ b/src/dolphinnavigatorswidgetaction.h
+@@ -10,6 +10,7 @@
+ 
+ #include "dolphinurlnavigator.h"
+ 
++#include <kio_version.h>
+ #include <QSplitter>
+ #include <QTimer>
+ #include <QWidgetAction>
+@@ -30,7 +31,8 @@ class QPushButton;
+  *      The secondary side only exists for split view and is created by
+  *      createSecondaryUrlNavigator() when necessary.
+  * - Each side is a QWidget which I call NavigatorWidget with a QHBoxLayout.
+- * - Each NavigatorWidget consists an UrlNavigator, an emptyTrashButton and spacing.
++ * - Each NavigatorWidget consists an UrlNavigator, an emptyTrashButton, a
++ *   networkFolderButton (for frameworks >= 5.78), and spacing.
+  * - Only the primary navigatorWidget has leading spacing. Both have trailing spacing.
+  *      The spacing is there to align the UrlNavigator with its DolphinViewContainer.
+  */
+@@ -131,6 +133,22 @@ private:
+      */
+     QPushButton *newEmptyTrashButton(const DolphinUrlNavigator *urlNavigator, QWidget *parent) const;
+ 
++#if !(KIO_VERSION < QT_VERSION_CHECK(5, 78, 0))
++    /**
++     * Used to retrieve the networkFolderButtons for the navigatorWidgets on
++     * both sides.
++     */
++    QPushButton *networkFolderButton(Side side);
++
++    /**
++     * Creates a new add "network folder" button.
++     * @param urlNavigator Only when this UrlNavigator shows the remote directory
++     *                     will the button be visible.
++     * @param parent       The object that should be the button's parent.
++     */
++    QPushButton *newNetworkFolderButton(const DolphinUrlNavigator *urlNavigator, QWidget *parent) const;
++#endif
++
+     enum Position {
+         Leading,
+         Trailing
+-- 
+GitLab
+
