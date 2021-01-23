@@ -561,7 +561,7 @@ app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2 2.38.0: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.34.0 2.36.0 2.38.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 6.1: Daemon that provides access to the Linux/Unix console for a blind person
-app-accessibility/caribou 0.4.21-r1: Input assistive technology intended for switch and pointer users
+app-accessibility/caribou 0.4.21-r1 0.4.21-r2: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.5.1-r1: Combination editor, browser, and mail client that is 100% text based
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop

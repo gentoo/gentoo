@@ -4,7 +4,7 @@ DESCRIPTION=Lua String Hashing/Indexing Library
 EAPI=7
 HOMEPAGE=http://olivinelabs.com/busted/
 IUSE=test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
 LICENSE=MIT
 RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/say/archive/v1.3-1.tar.gz -> say-1.3_p1.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=cca7568a60192d73eca2df4aa97718f8
+_md5_=2583f4693da0033fc1d967b8cf94eb1e

@@ -4,7 +4,7 @@ DESCRIPTION=Embedded lua scripts for libquvi
 EAPI=7
 HOMEPAGE=http://quvi.sourceforge.net/
 IUSE=offensive +lua_single_target_lua5-1
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc x86
 LICENSE=AGPL-3
 RDEPEND=lua_single_target_lua5-1? ( >=dev-lua/LuaBitOp-1.0.1-r1[lua_targets_lua5-1(-)] >=dev-lua/luaexpat-1.3.0-r1[lua_targets_lua5-1(-)] >=dev-lua/luajson-1.1.1[lua_targets_lua5-1(-)] >=dev-lua/luasocket-3.0_rc1-r2[lua_targets_lua5-1(-)] )
 REQUIRED_USE=^^ ( lua_single_target_lua5-1 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/quvi/libquvi-scripts-0.9.20131130.tar.xz
 _eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=9963793c2038ce6b0cafddd694c6e9c9
+_md5_=82f5c667541bb0948b1edc777c64c82a

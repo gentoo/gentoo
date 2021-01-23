@@ -5,7 +5,7 @@ DESCRIPTION=A scriptable multi-threaded benchmark tool based on LuaJIT
 EAPI=7
 HOMEPAGE=https://github.com/akopytov/sysbench
 IUSE=+aio attachsql drizzle +largefile mysql postgres test +lua_single_target_luajit python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=GPL-2+
 RDEPEND=aio? ( dev-libs/libaio ) mysql? ( dev-db/mysql-connector-c:= ) postgres? ( dev-db/postgresql:= ) test? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) lua_single_target_luajit? ( dev-lang/luajit:= )
 REQUIRED_USE=^^ ( lua_single_target_luajit ) ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/akopytov/sysbench/archive/1.0.20.tar.gz -> sysbench-1.0.20.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
-_md5_=51da2adad7ee3a75eec28a481fcd5813
+_md5_=33340b4ddc3a9de28712b042373f7bc3

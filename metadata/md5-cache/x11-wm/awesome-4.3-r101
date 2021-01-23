@@ -5,7 +5,7 @@ DESCRIPTION=A dynamic floating and tiling window manager
 EAPI=7
 HOMEPAGE=https://awesomewm.org/
 IUSE=dbus doc gnome test lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) dev-libs/glib:2 dev-libs/libxdg-basedir lua_single_target_luajit? ( dev-lua/lgi[lua_targets_luajit(-)] ) lua_single_target_lua5-1? ( dev-lua/lgi[lua_targets_lua5-1(-)] ) lua_single_target_lua5-2? ( dev-lua/lgi[lua_targets_lua5-2(-)] ) lua_single_target_lua5-3? ( dev-lua/lgi[lua_targets_lua5-3(-)] ) x11-libs/cairo[X,xcb(+)] x11-libs/gdk-pixbuf:2 x11-libs/libxcb[xkb] x11-libs/pango[introspection] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm x11-libs/libXcursor x11-libs/libxkbcommon[X] x11-libs/libX11 dbus? ( sys-apps/dbus )
 REQUIRED_USE=^^ ( lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/awesomeWM/awesome-releases/raw/master/awesome-4.3.tar.xz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b8b6641eeb28317afed3ab5fd3141a5f
+_md5_=3ff167b7a63116d6d1272ed8607017fa
