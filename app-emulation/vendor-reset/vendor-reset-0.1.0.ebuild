@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/gnif/vendor-reset/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/gnif/vendor-reset/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Linux kernel vendor specific hardware reset module"
