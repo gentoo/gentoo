@@ -423,7 +423,9 @@ src_install() {
 	newinitd "${FILESDIR}"/sshd-r1.initd sshd
 	newconfd "${FILESDIR}"/sshd-r1.confd sshd
 
-	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
+	if use pam; then
+		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
+	fi
 
 	tweak_ssh_configs
 

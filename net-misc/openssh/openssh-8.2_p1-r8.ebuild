@@ -8,9 +8,6 @@ inherit user-info flag-o-matic multilib autotools pam systemd toolchain-funcs
 # Make it more portable between straight releases
 # and _p? releases.
 PARCH=${P/_}
-
-# PV to USE for HPN patches
-#HPN_PV="${PV^^}"
 HPN_PV="8.1_P1"
 
 HPN_VER="14.20"
@@ -21,7 +18,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="12.5.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.4.3" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -36,7 +33,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
+IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie sctp security-key selinux +ssl static test X X509 xmss"
 
 RESTRICT="!test? ( test )"
 
@@ -58,7 +55,7 @@ LIB_DEPEND="
 	)
 	libedit? ( dev-libs/libedit:=[static-libs(+)] )
 	sctp? ( net-misc/lksctp-tools[static-libs(+)] )
-	security-key? ( >=dev-libs/libfido2-1.4.0:=[static-libs(+)] )
+	security-key? ( dev-libs/libfido2:=[static-libs(+)] )
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? (
 		!libressl? (
@@ -138,9 +135,6 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-putty-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
 
-	# workaround for https://bugs.gentoo.org/734984
-	use X509 || eapply "${FILESDIR}"/${PN}-8.3_p1-sha2-include.patch
-
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 
 	local PATCHSET_VERSION_MACROS=()
@@ -151,6 +145,7 @@ src_prepare() {
 		popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
+		eapply "${FILESDIR}"/${P}-X509-${X509_VER}-tests.patch
 
 		# We need to patch package version or any X.509 sshd will reject our ssh client
 		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
@@ -188,15 +183,14 @@ src_prepare() {
 		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
 		pushd "${hpn_patchdir}" &>/dev/null || die
 		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-glue.patch
-		eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-libressl.patch
+		eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-libressl.patch
 		if use X509; then
 		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
 		#	# X509 and AES-CTR-MT don't get along, let's just drop it
 		#	rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
-
-			eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-X509-glue.patch
+			eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-X509-glue.patch
 		fi
-		use sctp && eapply "${FILESDIR}"/${PN}-8.2_p1-hpn-${HPN_VER}-sctp-glue.patch
+		use sctp && eapply "${FILESDIR}"/${P}-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
 
 		eapply "${hpn_patchdir}"
@@ -256,10 +250,6 @@ src_prepare() {
 
 	eapply_user #473004
 
-	# These tests are currently incompatible with PORTAGE_TMPDIR/sandbox
-	sed -e '/\t\tpercent \\/ d' \
-		-i regress/Makefile || die
-
 	tc-export PKG_CONFIG
 	local sed_args=(
 		-e "s:-lcrypto:$(${PKG_CONFIG} --libs openssl):"
@@ -290,13 +280,6 @@ src_configure() {
 	use static && append-ldflags -static
 	use xmss && append-cflags -DWITH_XMSS
 
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# Solaris' glob.h doesn't have things like GLOB_TILDE, configure
-		# doesn't check for this, so force the replacement to be put in
-		# place
-		append-cppflags -DBROKEN_GLOB
-	fi
-
 	local myconf=(
 		--with-ldflags="${LDFLAGS}"
 		--disable-strip
@@ -316,7 +299,7 @@ src_configure() {
 		$(use_with pam)
 		$(use_with pie)
 		$(use_with selinux)
-		$(usex X509 '' "$(use_with security-key security-key-builtin)")
+		$(use_with security-key security-key-builtin)
 		$(use_with ssl openssl)
 		$(use_with ssl md5-passwords)
 		$(use_with ssl ssl-engine)
@@ -350,12 +333,10 @@ src_test() {
 	mkdir -p "${sshhome}"/.ssh
 	for t in "${tests[@]}" ; do
 		# Some tests read from stdin ...
-		HOMEDIR="${sshhome}" HOME="${sshhome}" TMPDIR="${T}" \
-			SUDO="" SSH_SK_PROVIDER="" \
-			TEST_SSH_UNSAFE_PERMISSIONS=1 \
-			emake -k -j1 ${t} </dev/null \
-				&& passed+=( "${t}" ) \
-				|| failed+=( "${t}" )
+		HOMEDIR="${sshhome}" HOME="${sshhome}" SUDO="" \
+		emake -k -j1 ${t} </dev/null \
+			&& passed+=( "${t}" ) \
+			|| failed+=( "${t}" )
 	done
 
 	einfo "Passed tests: ${passed[*]}"
@@ -418,7 +399,9 @@ src_install() {
 	newinitd "${FILESDIR}"/sshd-r1.initd sshd
 	newconfd "${FILESDIR}"/sshd-r1.confd sshd
 
-	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
+	if use pam; then
+		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
+	fi
 
 	tweak_ssh_configs
 
@@ -429,12 +412,6 @@ src_install() {
 
 	diropts -m 0700
 	dodir /etc/skel/.ssh
-
-	# https://bugs.gentoo.org/733802
-	if ! use scp; then
-		rm "${ED}"/usr/{bin/scp,share/man/man1/scp.1} \
-			|| die "failed to remove scp"
-	fi
 
 	keepdir /var/empty
 
