@@ -1,0 +1,14 @@
+Thanks-to: Chris Mayo
+https://bugs.gentoo.org/533774
+
+--- a/configure	2021-01-21 10:14:17.000000000 +0100
++++ b/configure	2021-01-23 14:24:06.178883282 +0100
+@@ -937,7 +937,7 @@
+ runstatedir='${localstatedir}/run'
+ includedir='${prefix}/include'
+ oldincludedir='/usr/include'
+-docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
++docdir='${docdir}'
+ infodir='${datarootdir}/info'
+ htmldir='${docdir}'
+ dvidir='${docdir}'
