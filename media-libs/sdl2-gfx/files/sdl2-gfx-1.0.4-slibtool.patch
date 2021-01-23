@@ -14,11 +14,8 @@ This fixes build with sys-devel/slibtool
          ac_default_prefix=/boot/develop/tools/gnupro
 --- SDL2_gfx-1.0.4/Makefile.am
 +++ SDL2_gfx-1.0.4/Makefile.am
-@@ -21,9 +21,11 @@
- 
- libSDL2_gfx_la_LDFLAGS = 	\
- 	-no-undefined		\
--	-release $(LT_RELEASE)	\
+@@ -24,6 +24,9 @@
+ 	-release $(LT_RELEASE)	\
  	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
  
 +libSDL2_gfx_la_LIBADD =		\
