@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit bash-completion-r1 linux-info multilib pam python-single-r1
+inherit autotools bash-completion-r1 linux-info multilib pam python-single-r1
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -40,6 +40,10 @@ REQUIRED_USE="
 
 DOCS="doc/linux-cifs-client-guide.odt"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-6.12-ln_in_destdir.patch" #766594
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
@@ -64,6 +68,8 @@ src_prepare() {
 		# https://bugs.gentoo.org/612584
 		eapply "${FILESDIR}/${PN}-6.7-heimdal.patch"
 	fi
+
+	eautoreconf
 }
 
 src_configure() {
