@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
@@ -18,9 +18,6 @@ KEYWORDS="~amd64 ~x86"
 
 distutils_enable_sphinx docs/src dev-python/sphinx_rtd_theme
 distutils_enable_tests unittest
-
-# only required for py3.6 compatibility
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 python_prepare_all() {
 	echo "VERSION='${PV}'" > cdist/version.py || die
