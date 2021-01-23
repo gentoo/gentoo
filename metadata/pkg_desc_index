@@ -9254,7 +9254,7 @@ dev-python/typed-ast 1.4.1 1.4.2: Python typed-ast backported
 dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.7.1: A portable, lightweight MessagePack serializer and deserializer
-dev-python/ubelt 0.9.1 0.9.4: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
+dev-python/ubelt 0.9.4: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 4.0.1 4.0.2: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
@@ -11924,7 +11924,7 @@ gnustep-apps/lapispuzzle 1.2: a Tetris-like game where each player is effected b
 gnustep-apps/laternamagica 0.5: an image viewer and slideshow application
 gnustep-apps/mpdcon 1.5.1: GNUstep client for the Music Player Daemon
 gnustep-apps/pictureframe 1.1.3: digital picture frame software
-gnustep-apps/pikopixel 1.0_beta9-r1 1.0_beta9-r2 1.0_beta9-r3 1.0_beta9-r4: a free application for drawing & editing pixel-art images
+gnustep-apps/pikopixel 1.0_beta9-r4 1.0_beta10: a free application for drawing & editing pixel-art images
 gnustep-apps/preview 0.9: Simple image viewer
 gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.2: An IDE for GNUstep
@@ -12497,7 +12497,7 @@ mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey
 mail-filter/zdkimfilter 1.8 2.1 2.2: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13 1.0.14: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.93.0.4-r1 4.94-r1: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.93.0.4-r2 4.94-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1 1.8.12 1.8.13 1.8.14: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -13159,7 +13159,7 @@ media-libs/libgpod 0.8.3-r3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libhdhomerun 20190621 20200521: SiliconDust HDHomeRun Utilties
-media-libs/libheif 1.9.1 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+media-libs/libheif 1.9.1 1.10.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
@@ -15240,7 +15240,7 @@ net-misc/omniORB 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.2_p3-r2 6.8_p1 6.8_p1-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 8.1_p1-r4 8.2_p1-r7 8.3_p1-r5 8.4_p1-r2: Port of OpenBSD's free SSH release
+net-misc/openssh 8.1_p1-r5 8.2_p1-r8 8.3_p1-r6 8.4_p1-r3: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.14.1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.3.14058 2.7.4.2934: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 2.1: Packet generator tool for ethernet
@@ -15938,7 +15938,7 @@ sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/keurocalc 1.3.0: Universal currency converter and calculator
 sci-calculators/orpie 1.5.2-r1: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 3-r1 4: the programmers calculator
-sci-calculators/qalculate-gtk 0.9.9 2.8.1 3.15.0: Modern multi-purpose calculator
+sci-calculators/qalculate-gtk 0.9.9 2.8.1 3.15.0 3.16.0: Modern multi-purpose calculator
 sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
@@ -16269,7 +16269,7 @@ sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Librar
 sci-libs/liborigin 3.0.0: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
-sci-libs/libqalculate 0.9.9 2.8.1 3.15.0-r1: A modern multi-purpose calculator library
+sci-libs/libqalculate 0.9.9 2.8.1 3.15.0-r1 3.16.1: A modern multi-purpose calculator library
 sci-libs/libsc 2.2 2.2-r100 9999: Support for parallel scientific applications
 sci-libs/libsigrok 0.5.2 0.5.2-r1 9999: Basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.5.3 9999: Provide (streaming) protocol decoding functionality
@@ -17503,7 +17503,7 @@ sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0 2.32.0 2.32.1: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
-sys-fs/mtd-utils 1.5.2 2.0.2 2.1.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
+sys-fs/mtd-utils 2.1.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.24 4.0.25 4.0.26: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.8.3-r2 0.8.4 0.8.5: Device mapper target autoconfig
@@ -17694,7 +17694,7 @@ sys-process/bcron 0.11: A new cron system designed with secure operations in min
 sys-process/bpytop 1.0.52 1.0.54: Linux/OSX/FreeBSD resource monitor
 sys-process/criu 3.14-r2 3.15: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.5: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.5-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/ctop 0.7.3: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
