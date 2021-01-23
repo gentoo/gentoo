@@ -1,0 +1,9 @@
+https://github.com/eXeC64/imv/issues/299
+--- a/src/backend_freeimage.c	2020-12-17 15:30:42.000000000 -0500
++++ b/src/backend_freeimage.c	2021-01-23 12:03:46.175921640 -0500
+@@ -8,4 +8,5 @@
+ #include <FreeImage.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ struct private {
