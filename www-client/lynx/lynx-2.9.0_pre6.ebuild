@@ -3,12 +3,6 @@
 
 EAPI=7
 
-# VERSIONING SCHEME TRANSLATION
-# Upstream	:	Gentoo
-# rel.		:	_p
-# pre.		:	_rc
-# dev.		:	_pre
-
 case ${PV} in
 	*_pre*) MY_P="${PN}${PV/_pre/dev.}" ;;
 	*_rc*)  MY_P="${PN}${PV/_rc/pre.}" ;;
@@ -53,10 +47,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.9_p1-parallel.patch
 )
 
-pkg_setup() {
-	! use ssl && elog "SSL support disabled; you will not be able to access secure websites."
-}
-
 src_configure() {
 	local myconf=(
 		--enable-nested-tables
@@ -77,9 +67,13 @@ src_configure() {
 		$(use_enable cjk)
 		$(use_enable unicode japanese-utf8)
 		$(use_with bzip2 bzlib)
-		$(usex ssl "--with-$(usex gnutls gnutls ssl)=${EPREFIX}/usr" "")
-		--with-screen=$(usex unicode "ncursesw" "ncurses")
+		--with-screen=$(usex unicode ncursesw ncurses)
 	)
+	if use ssl; then
+		myconf+=(
+			--with-$(usex gnutls gnutls ssl)="${EPREFIX}/usr"
+		)
+	fi
 
 	econf "${myconf[@]}"
 }
