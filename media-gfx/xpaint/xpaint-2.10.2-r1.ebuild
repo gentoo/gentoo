@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Image editor with tiff, jpeg and png support"
@@ -11,7 +12,8 @@ SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="jpeg2k pgf tiff"
+IUSE="pgf tiff"
+# jpeg2k disabled for blocking media-libs/openjpeg:0 security cleanup, bug 735592
 
 RDEPEND="
 	media-libs/fontconfig
@@ -26,17 +28,17 @@ RDEPEND="
 	x11-libs/libXpm
 	x11-libs/libXt
 	sys-libs/zlib
-	virtual/jpeg:0
-	jpeg2k? ( media-libs/openjpeg:0= )
+	media-libs/libjpeg-turbo:=
 	pgf? ( media-libs/libpgf )
 	tiff? (
 		media-libs/jbigkit:0=
 		media-libs/tiff:0
 	)
 "
-DEPEND="${RDEPEND}
-	sys-devel/flex
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/bison
+	sys-devel/flex
 	virtual/pkgconfig
 "
 
@@ -48,7 +50,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable tiff) \
-		$(use_enable jpeg2k libopenjpeg)
+		--disable-libopenjpeg
 }
 
 src_compile() {
