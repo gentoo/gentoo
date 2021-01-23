@@ -15,7 +15,7 @@ SRC_URI="https://github.com/axkibe/lsyncd/archive/release-${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
