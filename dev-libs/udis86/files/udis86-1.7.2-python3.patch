@@ -1,0 +1,42 @@
+--- a/scripts/ud_opcode.py
++++ b/scripts/ud_opcode.py
+@@ -130,8 +130,8 @@
+             '/mod'   : lambda v: '00' if v == '!11' else '01',
+             # Mode extensions:
+             # (16, 32, 64) => (00, 01, 02)
+-            '/o'     : lambda v: "%02x" % (int(v) / 32),
+-            '/a'     : lambda v: "%02x" % (int(v) / 32),
++            '/o'     : lambda v: "%02x" % (int(v) // 32),
++            '/a'     : lambda v: "%02x" % (int(v) // 32),
+             '/m'     : lambda v: '00' if v == '!64' else '01',
+             # SSE
+             '/sse'   : lambda v: UdOpcodeTables.OpcExtIndex['sse'][v],
+@@ -227,7 +227,7 @@
+ 
+     def print_table( self, table, pfxs ):
+         print("%s   |" % pfxs)
+-        keys = table[ 'entries' ].keys()
++        keys = list(table[ 'entries' ].keys())
+         if ( len( keys ) ):
+             keys.sort()
+         for idx in keys:
+--- a/tests/oprgen.py
++++ b/tests/oprgen.py
+@@ -686,7 +686,7 @@
+     def generate_yasm( self, mode, seed ):
+         opr_combos = {}
+         random.seed( seed )
+-        print "[bits %s]" % mode
++        print("[bits %s]" % mode)
+         for insn in self.InsnTable:
+             if insn[ 'mnemonic' ] in self.ExcludeList:
+                 continue
+@@ -728,7 +728,7 @@
+                 else:
+                     operands = None
+             if operands is not None:
+-                print "\t%s %s" % (insn['mnemonic'], operands)
++                print("\t%s %s" % (insn['mnemonic'], operands))
+                 opr_combos[fusedName]['covered'] = True
+ 
+         # stats
