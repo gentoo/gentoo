@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=media-libs/libjpeg-turbo media-libs/libpng:*
 SLOT=0
 SRC_URI=https://dl.suckless.org/farbfeld/farbfeld-4.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=10b4cb71ca246267e92e13f58636f767

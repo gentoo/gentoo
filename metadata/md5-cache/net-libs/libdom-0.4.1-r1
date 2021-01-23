@@ -12,5 +12,5 @@ REQUIRED_USE=test? ( xml )
 RESTRICT=!test? ( test )
 SLOT=0/0.4.1
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libdom-0.4.1-src.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	8d6ce5a28a5af61bfb3a264ac8d46867	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	8d6ce5a28a5af61bfb3a264ac8d46867	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=f8ea31beb2259b8946e187369ba34321

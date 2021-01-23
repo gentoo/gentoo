@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~arm ~hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://github.com/Parchive/par2cmdline/releases/download/v0.8.0/par2cmdline-0.8.0.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=d8a07c57f99641f6da64a4ea20cb5a6d

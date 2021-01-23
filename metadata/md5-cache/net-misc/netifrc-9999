@@ -8,5 +8,5 @@ LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=sys-apps/gentoo-functions >=sys-apps/openrc-0.15 !<sys-fs/udev-init-scripts-27
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=c1a11a1440594745be3f272a27d1dcc8

@@ -7,5 +7,5 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86
 LICENSE=|| ( Apache-2.0 CC0-1.0 )
 SLOT=0/1
 SRC_URI=https://github.com/P-H-C/phc-winner-argon2/archive/20190702.tar.gz -> argon2-20190702.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=8b43d66d725b6277fbe0e6ef1d742a19

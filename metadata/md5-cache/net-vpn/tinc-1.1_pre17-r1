@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) lzo? ( dev-libs/lzo:2 ) ncurses? ( sys-libs/ncurses:= ) readline? ( sys-libs/readline:= ) upnp? ( net-libs/miniupnpc ) zlib? ( sys-libs/zlib ) vde? ( net-misc/vde )
 SLOT=0
 SRC_URI=http://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz https://dev.gentoo.org/~dlan/distfiles/tinc-1.1-upstream-patches-2.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=bdc76d25a96c735ee0d00258bf08d55d

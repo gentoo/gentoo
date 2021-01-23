@@ -10,5 +10,5 @@ LICENSE=|| ( WTFPL-2 public-domain )
 RDEPEND=gmp? ( dev-libs/gmp:= ) libtommath? ( dev-libs/libtommath:= ) tomsfastmath? ( dev-libs/tomsfastmath:= )
 SLOT=0/1
 SRC_URI=https://github.com/libtom/libtomcrypt/releases/download/v1.18.2/crypt-1.18.2.tar.xz -> libtomcrypt-1.18.2.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=b92e8b0cb377e3bed3bf0c07dbc2c1a9

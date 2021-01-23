@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86
 LICENSE=GPL-2
 SLOT=0/7
 SRC_URI=mirror://sourceforge/reiser4/libaal-1.0.7.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
 _md5_=48a6fee8cdb951588bd22780f0498208

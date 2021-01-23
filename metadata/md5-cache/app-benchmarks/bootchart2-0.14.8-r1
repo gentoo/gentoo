@@ -10,5 +10,5 @@ RDEPEND=!app-benchmarks/bootchart sys-apps/lsb-release
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/mmeeks/bootchart/archive/0.14.8.tar.gz -> bootchart2-0.14.8.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=b701d8412b8ce30b2402000839ddacbc

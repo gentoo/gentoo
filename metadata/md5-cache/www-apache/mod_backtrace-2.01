@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND==www-servers/apache-2*[debug] unwind? ( sys-libs/libunwind ) =www-servers/apache-2*
 SLOT=0
 SRC_URI=https://emptyhammock.com/downloads/wku_bt-2.01.zip
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=037f9117045f18f25a2b6435045a171f

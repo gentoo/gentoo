@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=app-arch/zpaq-6.19
 SLOT=0
 SRC_URI=http://mattmahoney.net/dc/bwt_j3.zip http://mattmahoney.net/dc/bwt_slowmode1.zip http://mattmahoney.net/dc/exe_j1.zip http://mattmahoney.net/dc/jpg_test2.zip http://mattmahoney.net/dc/min.zip http://mattmahoney.net/dc/fast.cfg -> zpaq-fast.cfg http://mattmahoney.net/dc/mid.cfg -> zpaq-mid.cfg http://mattmahoney.net/dc/max.cfg -> zpaq-max.cfg http://mattmahoney.net/dc/bmp_j4c.zip http://mattmahoney.net/dc/lz1.zip http://mattmahoney.net/dc/lazy100.zip http://mattmahoney.net/dc/lazy210.zip
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=67fbf012096c71cb5736a797659fc3a9

@@ -8,5 +8,5 @@ LICENSE=Artistic
 RDEPEND=dev-libs/9libs
 SLOT=0
 SRC_URI=https://www.netlib.org/research/9libs/wily-9libs.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1389911fc33a3f7da6b25057a89971a4

@@ -9,5 +9,5 @@ RDEPEND=acct-group/unifi-video acct-user/unifi-video dev-db/mongodb dev-java/com
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://dl.ubnt.com/firmwares/ufv/v3.10.13/unifi-video.Ubuntu18.04_amd64.v3.10.13.deb
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=d7a93a96b985fb5119aa89335f9e82cf

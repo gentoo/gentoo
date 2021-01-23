@@ -12,5 +12,5 @@ REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 py
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-28.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=2670f554ccfd6850683ac2c376690ae2

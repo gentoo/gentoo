@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/libical-0.27 >=virtual/gnustep-back-0.20.0 dbus? ( gnustep-libs/dbuskit ) >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
 SLOT=0
 SRC_URI=https://github.com/poroussel/simpleagenda/archive/v0.44.tar.gz -> simpleagenda-0.44.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnustep-2	1051c5dfb0d9429bef576c60536dac89	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnustep-2	1051c5dfb0d9429bef576c60536dac89	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=56c7a8d789bcbd765a6e5d959a2fb818

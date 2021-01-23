@@ -6,5 +6,5 @@ KEYWORDS=amd64 arm x86
 LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~conikost/files/idle3-tools-0.9.3_pre20120123.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=29d957f9c3e8dde7f2f06debaecccc0b

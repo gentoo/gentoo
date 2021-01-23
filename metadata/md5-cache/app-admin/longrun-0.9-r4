@@ -8,5 +8,5 @@ KEYWORDS=-ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/cpu/crusoe/longrun-0.9.tar.bz2 mirror://debian/pool/main/l/longrun/longrun_0.9-19.diff.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=197c8dc7e7a6cd2175ee6a522ec787ac

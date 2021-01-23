@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( lua_single_target_luajit lua_single_target_lua5-1 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/stevedonovan/LDoc/archive/1.4.6.tar.gz -> ldoc-1.4.6.tar.gz
-_eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=11f83881e2b67fb8dd37636463e3c7bd

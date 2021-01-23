@@ -9,5 +9,5 @@ LICENSE=HPND
 RDEPEND=virtual/ssh x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXt
 SLOT=0
 SRC_URI=https://github.com/sigmavirus24/x11-ssh-askpass/archive/1.2.4.1.tar.gz -> x11-ssh-askpass-1.2.4.1.gh.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=695c1fd4f0f348eeb564b80432079426

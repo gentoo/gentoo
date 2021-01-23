@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg:0 ) png? ( >=media-libs/libpng-1.4:0 ) postscript? ( app-text/ghostscript-gpl ) rle? ( media-libs/urt ) svga? ( media-libs/svgalib ) tiff? ( >=media-libs/tiff-3.5.5:0 ) xml? ( dev-libs/libxml2 ) zlib? ( sys-libs/zlib ) X? ( x11-libs/libX11 )
 SLOT=0
 SRC_URI=mirror://gentoo/netpbm-10.76.00.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=9a60240d29c701fdee2ea1eaf1e94cdd

@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( icu idn ) gconf? ( client ) spell? ( client )
 RESTRICT=test
 SLOT=4/0
 SRC_URI=https://swift.im/downloads/releases/swift-4.0.2/swift-4.0.2.tar.gz https://dev.gentoo.org/~conikost/distfiles/patches/swift-4.0.2-python3-compatibility.patch.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=58f5e28646d7dd1a65d7bd7972f2ef8b

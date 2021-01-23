@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 kde-frameworks/kconfig:5 kde-frameworks/knotifications:5 kde-frameworks/kwallet:5 sys-fs/encfs
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~asturm/distfiles/kencfs-plasma-2.0.2a.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=18a680106bebbf9c1c128f94c19c03fe

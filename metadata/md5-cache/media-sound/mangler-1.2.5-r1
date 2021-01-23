@@ -10,5 +10,5 @@ LICENSE=GPL-3 LGPL-2.1 ZLIB
 RDEPEND=dev-cpp/gtkmm:2.4 gnome-base/librsvg >=dev-libs/dbus-glib-0.80 >=dev-libs/glib-2.20.1:2 >=x11-libs/gtk+-2.16:2 x11-libs/libX11 x11-libs/libXi alsa? ( media-libs/alsa-lib ) opus? ( media-libs/opus ) espeak? ( app-accessibility/espeak ) g15? ( app-misc/g15daemon ) gsm? ( media-sound/gsm ) pulseaudio? ( >=media-sound/pulseaudio-0.9.14 ) speex? ( >=media-libs/speex-1.2_rc1 ) xosd? ( x11-libs/xosd )
 SLOT=0
 SRC_URI=http://www.mangler.org/downloads/mangler-1.2.5.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=0ac339131ec2158ec6056bfd85e9862c

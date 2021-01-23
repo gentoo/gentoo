@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=acct-user/monitorix acct-group/monitorix dev-perl/Config-General dev-perl/DBI dev-perl/HTTP-Server-Simple dev-perl/IO-Socket-SSL dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/XML-Simple net-analyzer/rrdtool[graph,perl] dev-perl/CGI
 SLOT=0
 SRC_URI=https://www.monitorix.org/monitorix-3.12.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=73bb6bb252504448300bd36193cd7de2

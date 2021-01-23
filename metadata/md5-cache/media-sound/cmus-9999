@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cddb? ( media-libs/libcddb ) cdio? ( dev-libs/libcdio-paranoia ) discid? ( media-libs/libdiscid ) elogind? ( sys-auth/elogind ) ffmpeg? ( media-video/ffmpeg:= ) flac? ( media-libs/flac ) jack? ( virtual/jack ) libsamplerate? ( media-libs/libsamplerate ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) pulseaudio? ( media-sound/pulseaudio ) systemd? ( sys-apps/systemd ) tremor? ( media-libs/tremor ) !tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) ) wavpack? ( media-sound/wavpack ) pidgin? ( dev-python/dbus-python net-im/pidgin )
 REQUIRED_USE=tremor? ( vorbis ) mp4? ( aac )
 SLOT=0
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=8c07261124bd6060819bf7209343f3f9

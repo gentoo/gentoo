@@ -7,5 +7,5 @@ IUSE=ipv6 threads debug
 LICENSE=HPND
 PROPERTIES=live
 SLOT=2
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1e4b7964c97096b9143c225f67513e22

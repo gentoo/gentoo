@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=media-libs/libmtp-1.1.0 >=sys-fs/fuse-2.6:0
 SLOT=0
 SRC_URI=https://github.com/JasonFerrara/jmtpfs/archive/v0.5.tar.gz -> jmtpfs-0.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=763047d70fba4965b72a269978ce2927

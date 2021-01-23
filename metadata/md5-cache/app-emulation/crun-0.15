@@ -11,5 +11,5 @@ RDEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/crun/releases/download/0.15/crun-0.15.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=3d730e6c58a9948999e7c505fd601714

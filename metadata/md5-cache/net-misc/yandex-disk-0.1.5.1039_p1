@@ -9,5 +9,5 @@ LICENSE=YDSLA
 RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=amd64? ( https://repo.yandex.ru/yandex-disk/rpm/stable/x86_64/yandex-disk-0.1.5.1039-1.fedora.x86_64.rpm ) x86? ( https://repo.yandex.ru/yandex-disk/rpm/stable/i386/yandex-disk-0.1.5.1039-1.fedora.i386.rpm )
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	rpm	760ff223c2c4299b68ea901e24c4cabd	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	rpm	760ff223c2c4299b68ea901e24c4cabd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=3ff547dfa83b0e9a8c158d18288b2330

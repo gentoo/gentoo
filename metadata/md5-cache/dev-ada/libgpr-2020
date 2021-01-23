@@ -10,5 +10,5 @@ RDEPEND=dev-ada/xmlada[shared?,static-libs?,static-pic?,ada_target_gnat_2016(-)?
 REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=gprbuild-2020-20200429-19BD2-src.tar.gz -> gprbuild-2020-20200429-19BD2-src.tar.gz
-_eclasses_=ada	2e62916779222e4f23755b01896c54af	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=ada	2e62916779222e4f23755b01896c54af	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=6e670f7a02d601778ff5497ceb06d3ab

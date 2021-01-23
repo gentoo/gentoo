@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtwidgets:5= x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango
 SLOT=5
 SRC_URI=https://github.com/qt/qtstyleplugins/archive/335dbece103e2cbf6c7cf819ab6672c2956b17b3.tar.gz -> qtstyleplugins-5.0.0_p20170311.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=be1f0eea23ef24a351906e3e34f5ea17

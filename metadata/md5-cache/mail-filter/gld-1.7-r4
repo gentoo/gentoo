@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/zlib !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) !postgres? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:*[server] )
 SLOT=0
 SRC_URI=http://www.gasmi.net/down/gld-1.7.tgz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=58553ffdf885d45574381de53442f1c8

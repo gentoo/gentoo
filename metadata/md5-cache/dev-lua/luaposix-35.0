@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/lua:0= dev-lua/lua-bit32
 SLOT=0
 SRC_URI=https://github.com/luaposix/luaposix/archive/v35.0.tar.gz -> luaposix-35.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=b6d9122dc9b7d3b82f847eb37611d178

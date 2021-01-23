@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libpng:0 x11-libs/libICE x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://sourceforge/xblast/xblast-2.10.4.tar.gz mirror://sourceforge/xblast/images-2005-01-06.tar.gz mirror://sourceforge/xblast/levels-2005-01-06.tar.gz mirror://sourceforge/xblast/models-2005-01-06.tar.gz mirror://sourceforge/xblast/musics-2005-01-06.tar.gz mirror://sourceforge/xblast/sounds.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1054ff1acd04e35e9131d3a61691fd4e

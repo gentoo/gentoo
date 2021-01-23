@@ -11,5 +11,5 @@ RDEPEND=virtual/blas virtual/lapack || ( sci-libs/metis sci-libs/parmetis ) virt
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.tau.ac.il/~stoledo/taucs/2.2/taucs.tgz -> taucs-2.2.tgz
-_eclasses_=fortran-2	b4796813ccda91c9c0d3463fc90aa969	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=fortran-2	b4796813ccda91c9c0d3463fc90aa969	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=70cb1a13db6d7ab0ae66ad91fe219481

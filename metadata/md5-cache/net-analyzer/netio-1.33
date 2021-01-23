@@ -8,5 +8,5 @@ LICENSE=free-noncomm
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://www.ars.de/netio133.zip
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=f1b579eedcef7efe9284a6c66d80e86f

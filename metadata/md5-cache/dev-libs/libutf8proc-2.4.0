@@ -9,5 +9,5 @@ LICENSE=MIT
 RESTRICT=!test? ( test )
 SLOT=0/2.4.0
 SRC_URI=https://github.com/JuliaStrings/utf8proc/archive/v2.4.0.tar.gz -> libutf8proc-2.4.0.tar.gz cjk? ( https://dev.gentoo.org/~hattya/distfiles/libutf8proc-EastAsianWidth-12.1.0.xz )
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=45aac323035986c133e891223753d075

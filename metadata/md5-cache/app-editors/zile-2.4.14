@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/boehm-gc-7.2:= sys-libs/ncurses:0= acl? ( virtual/acl )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.4.14.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=be80ece5eb5e4c717e96562f3e52f6c8

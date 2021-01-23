@@ -10,5 +10,5 @@ RDEPEND=media-libs/freetype >=media-libs/libpng-1.4:0 virtual/jpeg x11-libs/libX
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Tk-804.034.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f
 _md5_=40453a09663aaf0ec8305e06ac73d6e2

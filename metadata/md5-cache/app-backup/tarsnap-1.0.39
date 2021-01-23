@@ -9,5 +9,5 @@ LICENSE=tarsnap
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/e2fsprogs-libs sys-libs/zlib acl? ( sys-apps/acl ) bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) xattr? ( sys-apps/attr )
 SLOT=0
 SRC_URI=https://www.tarsnap.com/download/tarsnap-autoconf-1.0.39.tgz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=2af61ae2ef4f59325d1591675609f74b

@@ -9,5 +9,5 @@ LICENSE=BSD ISC
 RDEPEND=>=app-text/mupdf-1.10:0= app-text/djvu:0= !media-gfx/fbida[fbcon(-)]
 SLOT=0
 SRC_URI=https://github.com/aligrudi/fbpdf/archive/27c9e28e9199a2491d0ee0a885760bedb1d4547b.tar.gz -> fbpdf-0_p20200614-27c9e28e9199a2491d0ee0a885760bedb1d4547b.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=380772be568c56c72769f032492af54a

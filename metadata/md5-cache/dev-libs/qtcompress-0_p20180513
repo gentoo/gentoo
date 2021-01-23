@@ -11,5 +11,5 @@ RDEPEND=dev-qt/qtcore:5 sys-libs/zlib
 RESTRICT=!test? ( test )
 SLOT=0/5.11.0
 SRC_URI=https://github.com/nezticle/qtcompress/archive/23f8831826cd72aedf99fc3699148b6c994fd677.tar.gz -> qtcompress-0_p20180513.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f
 _md5_=e6af6db54bed6e8bfe72d6d0e0f86eb1

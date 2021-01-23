@@ -11,5 +11,5 @@ RDEPEND=php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/
 REQUIRED_USE=|| ( php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 php_targets_php8-0 )
 SLOT=0
 SRC_URI=https://github.com/igbinary/igbinary/archive/3.1.6.tar.gz -> igbinary-3.1.6.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=6895c1233a613b269013b33d26184960

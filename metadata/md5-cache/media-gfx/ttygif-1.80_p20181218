@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=x11-apps/xwd app-misc/ttyrec media-gfx/imagemagick
 SLOT=0
 SRC_URI=https://github.com/icholy/ttygif/archive/362bc381c1c2449509e732d68f07656caf46b420.tar.gz -> ttygif-1.80_p20181218.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=38b04d85f3f33ec7a5cdca18cc7b45ff

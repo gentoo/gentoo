@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-maco
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/hilite-1.5.c
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=837d0bd352d3b5a5d26131990a92e1cc

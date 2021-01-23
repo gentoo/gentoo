@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/lzo app-arch/bzip2 sys-libs/zlib:=
 SLOT=0
 SRC_URI=https://github.com/ckolivas/lrzip/archive/b9220181288c5c9920ff00f00005b31a9e40e387.tar.gz -> lrzip-0.631_p20190619.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=b35ba635d393c6f1840536a3ada1f487

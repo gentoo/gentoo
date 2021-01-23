@@ -11,5 +11,5 @@ RDEPEND=dev-java/commons-logging:0 dev-java/java-service-wrapper:0 dev-java/tomc
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.i2p2.de/releases/0.9.48/i2psource_0.9.48.tar.bz2
-_eclasses_=java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=93ffb5572c8c4619019cff40203886bd

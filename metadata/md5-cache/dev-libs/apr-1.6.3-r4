@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=elibc_glibc? ( >=sys-apps/util-linux-2.16 ) elibc_mintlib? ( >=sys-apps/util-linux-2.18 ) selinux? ( sec-policy/selinux-base-policy )
 SLOT=1/1.6
 SRC_URI=mirror://apache/apr/apr-1.6.3.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=670c8310a1f2799a2b4e0f9e6cbb64e4

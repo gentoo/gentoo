@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=!<x11-apps/radeon-profile-daemon-20190603-r1 dev-qt/qtcharts:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 x11-libs/libX11 x11-libs/libXrandr
 SLOT=0
 SRC_URI=https://github.com/marazmista/radeon-profile/archive/20200824.tar.gz -> radeon-profile-20200824.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=322c85ae490588abcd70f5e80f22f3da

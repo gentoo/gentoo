@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/userspace-rcu:= dev-libs/popt dev-libs/libxml2 ust? ( >=dev-util/lttng-ust-2.12.0:= )
 SLOT=0/2.12
 SRC_URI=https://lttng.org/files/lttng-tools/lttng-tools-2.12.0.tar.bz2
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=41175a9773051681ef4f422254945cb4

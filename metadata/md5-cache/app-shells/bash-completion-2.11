@@ -11,5 +11,5 @@ RDEPEND=>=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !!net-fs/mc
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/scop/bash-completion/releases/download/2.11/bash-completion-2.11.tar.xz eselect? ( https://github.com/mgorny/bashcomp2/releases/download/v2.0.3/bashcomp-2.0.3.tar.gz )
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=6f526e1eee5625fc97295f6cee295652

@@ -6,5 +6,5 @@ KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.linalco.com/ragnar/ide-smart-1.4.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=5dd8f8fb80f351e9bd1e94d09b57a095

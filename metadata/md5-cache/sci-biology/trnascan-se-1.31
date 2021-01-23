@@ -6,5 +6,5 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://lowelab.ucsc.edu/software/tRNAscan-SE.tar.gz -> trnascan-se-1.31.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=3f4bcdf31fe276f90a95e2f4b311deae

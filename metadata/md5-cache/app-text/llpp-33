@@ -11,5 +11,5 @@ RDEPEND=>=app-text/mupdf-1.17.0:0= app-arch/bzip2 media-libs/fontconfig:1.0 medi
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=https://github.com/moosotc/llpp/archive/v33.tar.gz -> llpp-33.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=c4435f4f15273afb8d2f9bfb33815a9d

@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=sys-libs/ncurses:0=[unicode]
 SLOT=0
 SRC_URI=https://github.com/dvorka/hstr/archive/2.0.tar.gz -> hstr-2.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=f38a00439075bbf23d6c57dd59015f32

@@ -10,5 +10,5 @@ LICENSE=XCIN GPL-2
 RDEPEND=app-i18n/libchewing >=app-i18n/libtabe-0.2.6 >=sys-libs/db-4.5:* x11-libs/libX11 unicode? ( media-fonts/arphicfonts )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xcin/xcin_2.5.2.99.pre2+cvs20030224.orig.tar.gz mirror://debian/pool/main/x/xcin/xcin_2.5.2.99.pre2+cvs20030224-1.4.diff.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=f2e61d4e893ae85e2c791cc69975ed98

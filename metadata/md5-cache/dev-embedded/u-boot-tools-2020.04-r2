@@ -7,5 +7,5 @@ KEYWORDS=amd64 arm ~arm64 ~ppc64 ~riscv x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.denx.de/pub/u-boot/u-boot-2020.04.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=2563d3bfb5fa770b6ae2aaff4b617920

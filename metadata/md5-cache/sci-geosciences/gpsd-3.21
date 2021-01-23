@@ -12,5 +12,5 @@ REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm ) gps
 RESTRICT=!test? ( test )
 SLOT=0/27
 SRC_URI=mirror://nongnu/gpsd/gpsd-3.21.tar.xz
-_eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=25ff2212b8d98b4d85e9c2c9c31b473c

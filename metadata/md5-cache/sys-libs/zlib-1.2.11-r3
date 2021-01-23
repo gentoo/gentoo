@@ -10,5 +10,5 @@ LICENSE=ZLIB
 RDEPEND=!<dev-libs/libxml2-2.7.7
 SLOT=0/1
 SRC_URI=https://zlib.net/zlib-1.2.11.tar.gz http://www.gzip.org/zlib/zlib-1.2.11.tar.gz http://www.zlib.net/current/beta/zlib-1.2.11.tar.gz elibc_Cygwin? ( https://github.com/cygwinports/zlib/raw/22a3462cae33a82ad966ea0a7d6cbe8fc1368fec/1.2.11-gzopen_w.patch -> zlib-1.2.11-cygwin-gzopen_w.patch https://github.com/cygwinports/zlib/raw/22a3462cae33a82ad966ea0a7d6cbe8fc1368fec/1.2.7-minizip-cygwin.patch -> zlib-1.2.7-cygwin-minizip.patch )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
 _md5_=462d7c240f0a1c85599ddcee2bfd7faf

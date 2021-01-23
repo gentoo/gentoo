@@ -11,5 +11,5 @@ PDEPEND=manpager? ( app-text/manpager )
 RDEPEND=!sys-apps/man >=dev-libs/libpipeline-1.5.0 sys-apps/groff gdbm? ( sys-libs/gdbm:= ) !gdbm? ( berkdb? ( sys-libs/db:= ) ) !berkdb? ( !gdbm? ( sys-libs/gdbm:= ) ) seccomp? ( sys-libs/libseccomp ) zlib? ( sys-libs/zlib ) acct-group/man acct-user/man selinux? ( sec-policy/selinux-mandb )
 SLOT=0
 SRC_URI=mirror://nongnu/man-db/man-db-2.9.3.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=4d456e74f9ee27823470c917bf103701

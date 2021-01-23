@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=http://panteltje.com/panteltje/dvd/submux-dvd-0.5.2.tgz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c00df7348c145d4b79ae4cbb2b49b053

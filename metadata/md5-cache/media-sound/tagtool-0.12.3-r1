@@ -10,5 +10,5 @@ RDEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8
 REQUIRED_USE=|| ( mp3 vorbis )
 SLOT=0
 SRC_URI=https://sourceforge.net/projects/tagtool/files/tagtool/0.12.3/tagtool-0.12.3.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=88bc6d02b876a52982e7dcba204e72c9

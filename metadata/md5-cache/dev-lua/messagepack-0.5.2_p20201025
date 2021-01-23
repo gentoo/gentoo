@@ -10,5 +10,5 @@ RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://framagit.org/fperrad/lua-MessagePack/-/archive/18f316b3f62c02bf2b7a3096701780f78a4d2c67/lua-MessagePack-18f316b3f62c02bf2b7a3096701780f78a4d2c67.tar.gz -> messagepack-0.5.2_p20201025.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=3bde9c64f0559e1deb37cbc4300d101e

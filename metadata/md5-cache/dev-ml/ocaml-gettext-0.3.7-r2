@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-3.12.1:= <dev-lang/ocaml-4.10.0:= >=dev-ml/ocaml-fileut
 RESTRICT=!test? ( test )
 SLOT=0/0.3.7
 SRC_URI=https://github.com/gildor478/ocaml-gettext/archive/0.3.7.tar.gz -> ocaml-gettext-0.3.7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	df74899b0837d14d75b7e6bb42422b14	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	df74899b0837d14d75b7e6bb42422b14	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=2b162d6e9783072fc4041212c49de77e

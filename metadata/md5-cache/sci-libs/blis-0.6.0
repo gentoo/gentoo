@@ -10,5 +10,5 @@ RDEPEND=eselect-ldso? ( !app-eselect/eselect-cblas >=app-eselect/eselect-blas-0.
 REQUIRED_USE=?? ( openmp pthread serial ) ?? ( eselect-ldso 64bit-index )
 SLOT=0
 SRC_URI=https://github.com/flame/blis/archive/0.6.0.tar.gz -> blis-0.6.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=21db04221d10cbaf6a51f4e51d4f5b23

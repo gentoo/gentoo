@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=acct-group/ipfs acct-user/ipfs sys-fs/fuse:0
 SLOT=0
 SRC_URI=amd64? ( https://dist.ipfs.io/go-ipfs/v0.4.22/go-ipfs_v0.4.22_linux-amd64.tar.gz ) x86? ( https://dist.ipfs.io/go-ipfs/v0.4.22/go-ipfs_v0.4.22_linux-386.tar.gz ) arm? ( https://dist.ipfs.io/go-ipfs/v0.4.22/go-ipfs_v0.4.22_linux-arm.tar.gz ) https://raw.githubusercontent.com/ipfs/go-ipfs/v0.4.22/misc/completion/ipfs-completion.bash -> go-ipfs-bin-0.4.22.bash
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=b09443401aa772b30edb498468737ff6

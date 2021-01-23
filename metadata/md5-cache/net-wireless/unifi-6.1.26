@@ -11,5 +11,5 @@ RDEPEND=acct-group/unifi acct-user/unifi dev-db/mongodb virtual/jre:1.8
 RESTRICT=bindist mirror
 SLOT=0/6.1
 SRC_URI=https://dl.ui.com/unifi/6.1.26-a072032c50/UniFi.unix.zip -> unifi-6.1.26.zip
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c15f27b9abb11e4875c4ec9b2feeaa2c

@@ -11,5 +11,5 @@ RDEPEND=app-crypt/qca:2[debug?,qt5(+)] dev-qt/qtnetwork:5 app-crypt/qca:2[ssl] !
 RESTRICT=!test? ( test )
 SLOT=5
 SRC_URI=https://dev.gentoo.org/~johu/distfiles/qoauth-2.0.1_pre20160315.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1257e20ff605a90b67ebc0901833b37e

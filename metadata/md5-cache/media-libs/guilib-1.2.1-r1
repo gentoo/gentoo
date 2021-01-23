@@ -10,5 +10,5 @@ LICENSE=public-domain
 RDEPEND=>=media-libs/libsdl-1.0.1
 SLOT=0
 SRC_URI=https://www.libsdl.org/projects/GUIlib/src/GUIlib-1.2.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=0af37d350d1ce640f00dfb57d3530733

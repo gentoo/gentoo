@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=caps? ( sys-libs/libcap ) cgroups? ( dev-libs/libcgroup ) clsync? ( dev-libs/glib:2 ) mhash? ( app-crypt/mhash ) !app-doc/clsync-docs !dev-libs/libclsync
 REQUIRED_USE=|| ( clsync socket-library ) || ( gio inotify ) mhash? ( cluster ) seccomp? ( caps )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=e6ac99911a42b006dd217c9e3f0333e9

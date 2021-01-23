@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=gnustep-base/gnustep-gui-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
 SLOT=0
 SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.26.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnustep-2	1051c5dfb0d9429bef576c60536dac89	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnustep-2	1051c5dfb0d9429bef576c60536dac89	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=e9f0a37335e4a6169a9939b0cf405a0f

@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64
 LICENSE=GPL-2
 SLOT=0/6.3.2
 SRC_URI=https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-20200406-source.tar.xz https://dev.gentoo.org/~zlogene/distfiles/texlive/kpathsea-texmf.d-10.tar.xz https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-kpathsea-2020.tar.xz doc? ( https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-kpathsea.doc-2020.tar.xz )
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	texlive-common	0ed8c0ce6e8c9bb49ab84344ac802665	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	texlive-common	0ed8c0ce6e8c9bb49ab84344ac802665	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=03ddf5afb9f6014215dcc23d7507f0d1

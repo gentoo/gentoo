@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~arm ~arm64 ~ppc x86
 LICENSE=Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )
 SLOT=0
 SRC_URI=https://github.com/mackyle/blocksruntime/archive/9cc93ae2b58676c23fd02cf0c686fa15b7a3ff81.tar.gz -> blocksruntime-0_pre20171027.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=ddd261cfa17de297849c0141ad55cb41

@@ -9,5 +9,5 @@ RDEPEND=x11-libs/libXaw
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/xcruiser/xcruiser-0.30.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=95377d00eff2858a6424cb2147bd1bb0

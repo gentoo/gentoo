@@ -11,5 +11,5 @@ RDEPEND=>=dev-lua/say-1.3_p1[luajit(-)=] !luajit? ( >=dev-lang/lua-5.1:0= ) luaj
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/luassert/archive/v1.8.0.tar.gz -> luassert-1.8.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=5992cc951204c9b51b58939063d6ea2d

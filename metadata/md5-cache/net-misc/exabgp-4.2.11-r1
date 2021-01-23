@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targe
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Exa-Networks/exabgp/archive/4.2.11.tar.gz -> exabgp-4.2.11.tar.gz
-_eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=fdcab749a56b986d910063887e1278dd

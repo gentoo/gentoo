@@ -7905,7 +7905,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/Faker 5.5.1: a Python package that generates fake data for you
+dev-python/Faker 5.6.5: a Python package that generates fake data for you
 dev-python/GitPython 3.1.11 3.1.12: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -18984,7 +18984,7 @@ x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.8.2 0.8.3 0.9.0 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.18.2 4.19: i3 fork with gaps and some more features
-x11-wm/icewm 1.9.2 2.0.0 2.0.1: Ice Window Manager with Themes
+x11-wm/icewm 1.9.2 2.0.1 2.1.0: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.6.0 9999: Lumina desktop environment
@@ -19013,7 +19013,7 @@ x11-wm/treewm 0.4.5-r2: WindowManager that arranges the windows in a tree (not i
 x11-wm/twm 1.0.11: X.Org Tab Window Manager
 x11-wm/vtwm 5.4.7-r2: TWM descendant that implements a Virtual Desktop
 x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
-x11-wm/windowmaker 0.95.8-r1 0.95.9-r1 9999: The fast and light GNUstep window manager
+x11-wm/windowmaker 0.95.8-r1 0.95.9-r1 0.95.9-r2 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 20180520 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11

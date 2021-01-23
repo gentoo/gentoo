@@ -11,5 +11,5 @@ RDEPEND=>=virtual/jre-1.5 dev-java/xerces:2 dev-java/xml-commons-external:1.4 >=
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=http://odftoolkit.org/projects/odfdom/downloads/download/current-version%252Fodfdom-0.8.6-sources.zip -> odfdom-0.8.6-sources.zip
-_eclasses_=java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=dcba39eb0158ce4e7334898a388ca24f

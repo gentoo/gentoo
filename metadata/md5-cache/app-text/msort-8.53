@@ -10,5 +10,5 @@ LICENSE=GPL-3 LGPL-3
 RDEPEND=dev-libs/tre icu? ( dev-libs/icu:= ) !icu? ( dev-libs/libutf8proc:= ) libuninum? ( dev-libs/libuninum:= )
 SLOT=0
 SRC_URI=https://billposer.org/Software/Downloads/msort-8.53.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c1fe848fe9ffad98a67dd3c20e4273d1

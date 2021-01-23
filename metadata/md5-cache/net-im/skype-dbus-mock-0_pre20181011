@@ -10,5 +10,5 @@ RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec
 REQUIRED_USE=|| ( python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/maelnor/skype-dbus-mock/archive/3a9e2882ac5c0ad6be3c5cb5c7da008b4cfa51da.tar.gz -> skype-dbus-mock-0_pre20181011.tar.gz
-_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=434296815686313eed90087248d68d5f

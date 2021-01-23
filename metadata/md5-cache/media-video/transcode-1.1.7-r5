@@ -11,5 +11,5 @@ RDEPEND=>=media-video/ffmpeg-0.10 a52? ( media-libs/a52dec ) aac? ( media-libs/f
 REQUIRED_USE=cpu_flags_x86_sse? ( cpu_flags_x86_mmx ) cpu_flags_x86_sse2? ( cpu_flags_x86_mmx cpu_flags_x86_sse ) cpu_flags_x86_3dnow? ( cpu_flags_x86_mmx ) nuv? ( lzo )
 SLOT=0
 SRC_URI=https://www.bitbucket.org/france/transcode-tcforge/downloads/transcode-1.1.7.tar.bz2 https://dev.gentoo.org/~mgorny/dist/transcode-1.1.7-patchset.tar.bz2 https://dev.gentoo.org/~whissi/dist/transcode/transcode-1.1.7-ffmpeg4.patch.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=3da2cfeb0b57087e66d9a4248b254307
