@@ -2681,7 +2681,7 @@ app-office/libreoffice-bin 6.4.7.2_p2: A full office productivity suite. Binary 
 app-office/libreoffice-bin-debug 6.4.7.2_p2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.7.2 7.0.4.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
-app-office/lyx 2.3.5.2-r2: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.3.5.2-r2 2.3.6.1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneydance 2021.2006: A cross-platform personal finance application
@@ -8123,7 +8123,7 @@ dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type t
 dev-python/diff-match-patch 20181111 20200713: Diff, match and patch algorithms for plain text
 dev-python/dill 0.3.3: Serialize all of python (almost)
 dev-python/discogs-client 2.2.2: Official Python API client for Discogs
-dev-python/diskcache 5.1.0: Disk and file backed cache
+dev-python/diskcache 5.1.0 5.2.1: Disk and file backed cache
 dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
@@ -8322,7 +8322,7 @@ dev-python/humanize 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2: A library for property based testing
+dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2 6.0.3: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -9091,7 +9091,7 @@ dev-python/sentry-sdk 0.19.5: Python client for Sentry
 dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
-dev-python/setproctitle 1.2.1: Allow customization of the process title
+dev-python/setproctitle 1.2.1 1.2.2: Allow customization of the process title
 dev-python/setuptools 50.3.0 51.0.0 51.1.0 51.1.1 51.1.2 51.3.1 51.3.3: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
@@ -9115,7 +9115,7 @@ dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2 9999: Python 3 library for XMPP
 dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
-dev-python/smmap 3.0.4: A pure Python implementation of a sliding window memory map manager
+dev-python/smmap 3.0.4 3.0.5: A pure Python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 0.8.9 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1-r1 0.6.0: Python library for the snappy compression library from Google
@@ -10024,7 +10024,7 @@ dev-ruby/instantiator 0.0.7: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
 dev-ruby/itextomml 1.6.0: Native Ruby bindings to itex2MML, which converts itex equations to MathML
-dev-ruby/jbuilder 2.10.0 2.10.1: Create JSON structures via a Builder-style DSL
+dev-ruby/jbuilder 2.10.0 2.10.1 2.11.0: Create JSON structures via a Builder-style DSL
 dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
 dev-ruby/jquery-rails 4.4.0: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
@@ -12803,7 +12803,7 @@ media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.14-r2 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fdm-materials 4.7.0 4.8.0: FDM materials for media-gfx/cura
-media-gfx/feh 3.3 3.4 3.4.1 3.5 3.6 3.6.1: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 3.6 3.6.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
@@ -13027,7 +13027,7 @@ media-libs/elgato-streamdeck 0.8.1 9999: Python library to control the Elgato St
 media-libs/elles_icc_profiles 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 12.05 12.08: Read and write meta information in image, audio and video files
+media-libs/exiftool 12.08 12.16: Read and write meta information in image, audio and video files
 media-libs/faac 1.30: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.10.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.1: Fraunhofer AAC codec library
@@ -14607,7 +14607,7 @@ net-firewall/shorewall 5.2.8: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9 3.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6 5.1.6-r1: Kernel based automounter
-net-fs/btfs 2.20 2.22: a bittorrent filesystem based on FUSE
+net-fs/btfs 2.22 2.23: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.11 6.12: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.7.2-r1 2.7.3: HTTP read-only file system for distributing software
@@ -18000,7 +18000,7 @@ www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 t
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
-www-apps/piwigo 2.10.2 11.0.0: a photo gallery software for the web
+www-apps/piwigo 2.10.2 11.1.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.4: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server

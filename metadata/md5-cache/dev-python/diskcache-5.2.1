@@ -1,0 +1,15 @@
+BDEPEND=test? ( >=dev-python/django-2.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) doc? ( || ( ( dev-lang/python:3.9[sqlite] dev-python/sphinx[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8[sqlite] dev-python/sphinx[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7[sqlite] dev-python/sphinx[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) test? ( >=dev-python/pytest-4.5.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) python_targets_python3_7? ( dev-lang/python:3.7[sqlite] ) python_targets_python3_8? ( dev-lang/python:3.8[sqlite] ) python_targets_python3_9? ( dev-lang/python:3.9[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Disk and file backed cache
+EAPI=7
+HOMEPAGE=http://www.grantjenks.com/docs/diskcache/ https://github.com/grantjenks/python-diskcache/
+IUSE=doc test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Apache-2.0
+RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7[sqlite] ) python_targets_python3_8? ( dev-lang/python:3.8[sqlite] ) python_targets_python3_9? ( dev-lang/python:3.9[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/grantjenks/python-diskcache/archive/v5.2.1.tar.gz -> diskcache-5.2.1.gh.tar.gz
+_eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	1a94dc06d324bd0dab754e11abe6d27e
+_md5_=4227a2015aeb36328e2e1987e08042f4
