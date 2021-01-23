@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit multilib-minimal
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libbdplus.git"
 else
@@ -19,12 +20,12 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="aacs"
 
-RDEPEND="dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
+RDEPEND="
+	dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
 	dev-libs/libgpg-error[${MULTILIB_USEDEP}]
-	aacs? ( >=media-libs/libaacs-0.7.0[${MULTILIB_USEDEP}] )"
+	aacs? ( >=media-libs/libaacs-0.7.0[${MULTILIB_USEDEP}] )
+"
 DEPEND="${RDEPEND}"
-
-DOCS=( ChangeLog README.md )
 
 src_prepare() {
 	default
