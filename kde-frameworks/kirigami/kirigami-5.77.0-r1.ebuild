@@ -18,6 +18,9 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
+# requires package to already be installed
+RESTRICT+=" test"
+
 BDEPEND="
 	>=dev-qt/linguist-tools-${QTMIN}:5
 "
@@ -34,8 +37,10 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 "
 
-# requires package to already be installed
-RESTRICT+=" test"
+PATCHES=(
+	# KDE-Bugs #428461, #431419
+	"${FILESDIR}/${P}-no-reverseTwinsChanged-destr-FormLayout.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
