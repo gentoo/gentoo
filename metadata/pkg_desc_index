@@ -2675,7 +2675,7 @@ app-office/kexi 3.2.0-r1: Visual database applications creator
 app-office/kmymoney 5.1.0 5.1.1: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.95: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
-app-office/ledger 3.2.0 3.2.1: Double-entry accounting system with a command-line reporting interface
+app-office/ledger 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.4: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.7.2 7.0.4.2 7.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.7.2_p2: A full office productivity suite. Binary package
@@ -10683,7 +10683,7 @@ dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects fr
 dev-util/cppcheck 1.88 2.2: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
-dev-util/cppunit 1.14.0 1.15.1-r1 9999: C++ port of the famous JUnit framework for unit testing
+dev-util/cppunit 1.14.0 1.15.1-r2 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
 dev-util/cproto 4.7q 4.7r: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
@@ -11621,7 +11621,7 @@ games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with r
 games-roguelike/nethack 3.6.6: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
-games-roguelike/stone-soup 0.25.1-r1 0.25.1-r100 0.25.1-r101 0.26.0: Role-playing roguelike game of exploration and treasure-hunting in dungeons
+games-roguelike/stone-soup 0.25.1-r100 0.25.1-r101 0.26.0: Role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.7.3: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b-r1: Gothic science fantasy roguelike game
@@ -13957,7 +13957,7 @@ media-sound/ripperx 2.7.3: GTK program to rip CD audio tracks to Ogg, MP3 or FLA
 media-sound/rosegarden 20.06 20.12: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
-media-sound/sc2mpd 1.1.5 1.1.7: Implements the SongCast protocol for use by upmpdcli and mpd
+media-sound/sc2mpd 1.1.7: Implements the SongCast protocol for use by upmpdcli and mpd
 media-sound/schismtracker 20180810-r1: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/scream 3.6 9999: Plays sound received from network or from a QEMU Windows VM
@@ -14015,7 +14015,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r4 0.2.18 9999: Minimalistic Murmur (Mumble server)
-media-sound/upmpdcli 1.5.2 1.5.5 1.5.7: UPnP Media Renderer front-end for MPD, the Music Player Daemon
+media-sound/upmpdcli 1.5.5 1.5.7: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vimpc 0.09.2 0.09.2-r1 9999: An ncurses based mpd client with vi like key bindings

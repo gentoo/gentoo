@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/2.1.0
 SRC_URI=https://github.com/let-def/ocaml-migrate-parsetree/archive/v2.1.0.tar.gz -> ocaml-migrate-parsetree-2.1.0.tar.gz
-_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
 _md5_=0ce9b4afb396215cf239d5c061c4160d

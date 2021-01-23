@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=test
 SLOT=0/1.1
 SRC_URI=https://github.com/OCamlPro/ocplib-endian/archive/1.1.tar.gz -> ocplib-endian-1.1.tar.gz
-_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
 _md5_=a8d677753756c68ed564338b6192372b

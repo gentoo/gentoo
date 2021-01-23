@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_enumerate/archive/v0.14.0.tar.gz -> ppx_enumerate-0.14.0.tar.gz
-_eclasses_=dune	31e50aa986270c1f8ba957a9dd3f6fcf
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
 _md5_=fc00931e9bae2c8d7cca61d7dd9d8b0a
