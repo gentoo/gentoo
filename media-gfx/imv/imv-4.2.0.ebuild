@@ -49,6 +49,11 @@ BDEPEND="
 	app-text/asciidoc
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.2.0-add-string-inc.patch"
+	"${FILESDIR}/${PN}-4.2.0-wayland-roundtrip-after-scale.patch"
+)
+
 src_prepare() {
 	default
 
