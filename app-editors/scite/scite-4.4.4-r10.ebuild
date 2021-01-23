@@ -53,6 +53,10 @@ pkg_pretend() {
 	fi
 }
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	tc-export AR CC CXX RANLIB
 
