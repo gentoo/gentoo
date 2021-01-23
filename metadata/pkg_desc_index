@@ -2092,6 +2092,7 @@ app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13-r1: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1: Manipulation tool for OCI images
 app-emulation/vagrant 2.2.7-r1 2.2.9-r1: A tool for building and distributing development environments
+app-emulation/vendor-reset 0.1.0 9999: Linux kernel vendor specific hardware reset module
 app-emulation/vice 3.4_p38553 3.5: The Versatile Commodore Emulator
 app-emulation/virt-manager 2.2.1-r3 3.1.0 3.2.0 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 7.0 8.0 9.0: Graphical console client for connecting to virtual machines
@@ -12978,7 +12979,7 @@ media-gfx/xdot 1.1 1.2 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.7b: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
-media-gfx/xpaint 2.10.2: Image editor with tiff, jpeg and png support
+media-gfx/xpaint 2.10.2-r1: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r3: graphical scanning frontend
 media-gfx/xv 3.10a-r19: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
@@ -13287,7 +13288,7 @@ media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
 media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0 2.2.10.1: A library for reading and writing images
-media-libs/openjpeg 1.5.2-r1 2.3.1-r1 2.4.0: Open-source JPEG 2000 library
+media-libs/openjpeg 2.3.1-r1 2.4.0: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
 media-libs/opusfile 0.12: A high-level decoding and seeking API for .opus files
@@ -17553,7 +17554,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.85 5.4.85-r1 5.4.86 5.4.86-r1 5.4.87 5.4.87-r1 5.4.88 5.4.88-r1 5.4.89 5.4.89-r1 5.4.90 5.4.90-r1 5.4.91 5.4.91-r1 5.10.3 5.10.3-r1 5.10.4 5.10.4-r1 5.10.5 5.10.5-r1 5.10.6 5.10.6-r1 5.10.7 5.10.7-r1 5.10.8 5.10.8-r1 5.10.9 5.10.9-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.4.251 4.4.252 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.9.251 4.9.252 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.14.215 4.14.216 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 4.19.167 4.19.168 4.19.169 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9: Full sources including the Gentoo patchset for the 5.10 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.247 4.4.248 4.4.249 4.4.250 4.4.251 4.4.252 4.4.253 4.9.246 4.9.247 4.9.248 4.9.249 4.9.250 4.9.251 4.9.252 4.9.253 4.14.209 4.14.211 4.14.212 4.14.213 4.14.214 4.14.215 4.14.216 4.14.217 4.19.160 4.19.162 4.19.163 4.19.164 4.19.165 4.19.166 4.19.167 4.19.168 4.19.169 4.19.170 5.4.80-r1 5.4.84 5.4.85 5.4.86 5.4.87 5.4.88 5.4.89 5.4.90 5.4.91 5.4.92 5.10.2 5.10.3 5.10.4 5.10.5 5.10.6 5.10.7 5.10.8 5.10.9 5.10.10: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
