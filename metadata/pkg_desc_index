@@ -2963,7 +2963,7 @@ app-text/liblangtag 0.6.3: An interface library to access tags for identifying l
 app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.17 9999: Library parsing many pre-OSX MAC text formats
 app-text/libnumbertext 1.0.6: Number to number name and money text conversion libraries
-app-text/libodfgen 0.1.7 9999: Library to generate ODF documents from libwpd and libwpg
+app-text/libodfgen 0.1.7 0.1.8 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24_p5 1.1.28: Library for handling paper characteristics
 app-text/libqxp 0.0.2: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.9: Library for rendering Postscript documents
@@ -7986,7 +7986,7 @@ dev-python/backcall 0.2.0: Specifications for callback functions passed in to an
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1-r1: Backport of new features in Python's weakref module
 dev-python/backports-zoneinfo 0.2.1-r1: Backport of the standard library zoneinfo module
-dev-python/backrefs 4.5.0 4.6: Wrapper around re or regex that adds additional back references
+dev-python/backrefs 4.5.0 4.6 5.0: Wrapper around re or regex that adds additional back references
 dev-python/bandit 1.6.2-r1: A security linter from OpenStack Security
 dev-python/bareos 19.2.8: python bindings for bareos network backup suite
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
@@ -8012,8 +8012,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.36 1.16.43 1.16.50 1.16.56 1.16.57 1.16.58 9999: The AWS SDK for Python
-dev-python/botocore 1.19.36 1.19.43 1.19.50 1.19.56 1.19.57 1.19.58 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.36 1.16.43 1.16.50 1.16.56 1.16.57 1.16.58 1.16.59 9999: The AWS SDK for Python
+dev-python/botocore 1.19.36 1.19.43 1.19.50 1.19.56 1.19.57 1.19.58 1.19.59 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8457,7 +8457,7 @@ dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Dr
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.11 3.3.3: Python implementation of the markdown markup language
-dev-python/markdown2 2.3.10: Python Markdown language reimplementation
+dev-python/markdown2 2.3.10 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
@@ -8507,7 +8507,7 @@ dev-python/multidict 5.1.0: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mygpoclient 1.8: A gpodder.net client library
-dev-python/mypy 0.790: Optional static typing for Python
+dev-python/mypy 0.790 0.800: Optional static typing for Python
 dev-python/mypy_extensions 0.4.3-r1: Optional static typing for Python
 dev-python/mysql-connector-python 8.0.22 8.0.23: Python client library for MariaDB/MySQL
 dev-python/mysqlclient 1.4.6-r1: Fork of MySQL-python
@@ -8612,7 +8612,7 @@ dev-python/packaging 20.7 20.8: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.0 1.5.1: A client class with support for MQTT v5.0, v3.1.1, and v3.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 1.1.2-r1 1.1.4-r1 1.1.5: Powerful data structures for data analysis and statistics
+dev-python/pandas 1.1.2-r1 1.1.4-r1 1.1.5 1.2.1: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4 0.7.5 0.8.1: Parameterized testing with any Python test framework
@@ -8686,7 +8686,7 @@ dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
 dev-python/prometheus_client 0.9.0: Python client for the Prometheus monitoring system
-dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9 3.0.10 3.0.11: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9 3.0.10 3.0.11 3.0.13: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
@@ -8739,7 +8739,7 @@ dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1: Data parsing and validation using Python type hints
-dev-python/pydata-sphinx-theme 0.4.1: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pydata-sphinx-theme 0.4.1 0.4.2: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
@@ -9029,7 +9029,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.56 3.5.57 3.5.58 3.5.59: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.56 3.5.57 3.5.58 3.5.59 3.5.60: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
@@ -9089,7 +9089,7 @@ dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
 dev-python/sentry-sdk 0.19.5: Python client for Sentry
 dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_eval
-dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
+dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.1: Allow customization of the process title
 dev-python/setuptools 50.3.0 51.0.0 51.1.0 51.1.1 51.1.2 51.3.1 51.3.3: Collection of extensions to Distutils
@@ -9217,7 +9217,7 @@ dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
-dev-python/theano-pymc 1.0.13-r1 1.0.14 1.0.15 1.1.0: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/theano-pymc 1.0.13-r1 1.0.14 1.0.15 1.1.0 1.1.1 1.1.2: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.13.0: Python implementation of Thrift
@@ -12016,7 +12016,7 @@ kde-apps/calendarjanitor 20.08.3 20.12.1: Tool to scan calendar data for buggy i
 kde-apps/calendarsupport 20.08.3 20.12.1: Calendar support library
 kde-apps/cantor 20.08.3 20.12.1: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 20.08.3 20.12.1: CVS frontend by KDE
-kde-apps/dolphin 20.08.3 20.12.1: Plasma filemanager focusing on usability
+kde-apps/dolphin 20.08.3 20.12.1-r1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins-dropbox 20.08.3 20.12.1: Dolphin plugin for Dropbox service integration
 kde-apps/dolphin-plugins-git 20.08.3 20.12.1: Dolphin plugin for Git integration
 kde-apps/dolphin-plugins-mercurial 20.08.3 20.12.1: Dolphin plugin for Mercurial integration
@@ -12360,7 +12360,7 @@ kde-plasma/ksysguard 5.19.5 5.20.5: Network-enabled task manager and system moni
 kde-plasma/kwallet-pam 5.19.5 5.20.5 5.20.5-r1: PAM module to not enter KWallet password again after login
 kde-plasma/kwayland-integration 5.19.5 5.20.5: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwayland-server 5.19.5 5.20.5: Wayland Server Components built on KDE Frameworks
-kde-plasma/kwin 5.19.5-r1 5.20.5: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwin 5.19.5-r1 5.20.5 5.20.5-r1: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.19.5 5.20.5: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.19.5 5.20.5: Plasma screen management library
 kde-plasma/libksysguard 5.19.5 5.20.5: Task management and system monitoring library
@@ -12378,7 +12378,7 @@ kde-plasma/plasma-sdk 5.19.5 5.20.5: Useful applications for Plasma development
 kde-plasma/plasma-systemmonitor 5.20.0-r1: New version of KSysGuard built on top of the new KStats daemon and using QML
 kde-plasma/plasma-thunderbolt 5.19.5 5.20.5: Plasma integration for controlling Thunderbolt devices
 kde-plasma/plasma-vault 5.19.5 5.20.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r1: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r1 5.20.5-r2: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.19.5 5.20.5: Wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.19.5 5.20.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.19.5 5.20.5: PolKit agent module for KDE Plasma
@@ -13831,7 +13831,7 @@ media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/kid3 3.8.4: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1-r1 1.2.0: MIDI based metronome using ALSA sequencer
-media-sound/kmidimon 1.0.0_pre20201003: MIDI monitor for ALSA sequencer
+media-sound/kmidimon 1.0.0: MIDI monitor for ALSA sequencer
 media-sound/lame 3.100-r3: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r4: LASH Audio Session Handler
 media-sound/lilypond 2.21.6 2.22.0 9999: GNU Music Typesetter
@@ -16119,7 +16119,7 @@ sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn pl
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 1.3.0 1.4.0 1.4.0-r100 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and update OSM data files
-sci-geosciences/qgis 3.16.0-r1 3.16.2 3.16.3 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.16.2 3.16.3 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.15.1 1.15.2: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.2 3.3.2: Routing application based on openstreetmap data
@@ -17072,7 +17072,7 @@ sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30_p20190617: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.8.0: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.8.0 1.8.0-r1: Desktop integration portal
 sys-apps/xdg-desktop-portal-gtk 1.8.0: portal backend implementation that is using GTK+ and various pieces of GNOME
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
