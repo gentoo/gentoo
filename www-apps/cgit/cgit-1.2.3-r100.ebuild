@@ -19,7 +19,7 @@ SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="doc +highlight libressl +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
