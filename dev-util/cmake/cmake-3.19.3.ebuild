@@ -3,7 +3,7 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="emake" # TODO: Re-check with 3.19, see commit 491dddfb; bug #596460
+CMAKE_MAKEFILE_GENERATOR="emake" # TODO RunCMake.LinkWhatYouUse fails consistently w/ ninja
 CMAKE_REMOVE_MODULES_LIST=( none )
 inherit bash-completion-r1 cmake elisp-common flag-o-matic multiprocessing \
 	toolchain-funcs virtualx xdg-utils
@@ -44,6 +44,7 @@ BDEPEND="
 		dev-python/requests
 		dev-python/sphinx
 	)
+	test? ( app-arch/libarchive[zstd] )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -108,7 +109,6 @@ cmake_src_test() {
 	#    CMakeOnly.AllFindModules: pthread issues
 	#    CTest.updatecvs: fails to commit as root
 	#    Fortran: requires fortran
-	#    RunCMake.CommandLineTar: whatever...
 	#    RunCMake.CompilerLauncher: also requires fortran
 	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
 	#        debugedit binary is not in the expected location
@@ -120,7 +120,7 @@ cmake_src_test() {
 		-j "$(makeopts_jobs)" \
 		--test-load "$(makeopts_loadavg)" \
 		${ctestargs} \
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|DependencyGraph|Fortran|RunCMake.CommandLineTar|RunCMake.CompilerLauncher|RunCMake.IncompatibleQt|RunCMake.ObsoleteQtMacros|RunCMake.PrecompileHeaders|RunCMake.CPack_(DEB|RPM)|TestUpload)" \
+		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|DependencyGraph|Fortran|RunCMake.CompilerLauncher|RunCMake.IncompatibleQt|RunCMake.ObsoleteQtMacros|RunCMake.PrecompileHeaders|RunCMake.CPack_(DEB|RPM)|TestUpload)" \
 		|| die "Tests failed"
 
 	popd > /dev/null

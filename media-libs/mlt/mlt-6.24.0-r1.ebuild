@@ -51,7 +51,7 @@ DEPEND="
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
 	lua? ( ${LUA_DEPS} )
-	opencv? ( >=media-libs/opencv-3.2.0:= )
+	opencv? ( >=media-libs/opencv-3.2.0:= <media-libs/opencv-4.5.1:= )
 	opengl? ( media-video/movit )
 	python? ( ${PYTHON_DEPS} )
 	qt5? (
