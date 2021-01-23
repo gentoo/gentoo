@@ -6,8 +6,8 @@ r4209 | gmerlin | 2014-06-02 16:38:33 +0200 (Mon, 02 Jun 2014) | 2 lines
 
 Index: gavl/cputest.c
 ===================================================================
---- gavl/cputest.c	(revision 4208)
-+++ gavl/cputest.c	(revision 4209)
+--- a/gavl/cputest.c	(revision 4208)
++++ b/gavl/cputest.c	(revision 4209)
 @@ -69,6 +69,8 @@
       int rval = 0;
      int eax, ebx, ecx, edx;
