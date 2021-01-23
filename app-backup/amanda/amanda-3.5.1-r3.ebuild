@@ -27,6 +27,7 @@ DEPEND="
 	sys-libs/readline:=
 	virtual/awk
 	kerberos? ( app-crypt/mit-krb5 )
+	ndmp? ( net-libs/libtirpc:= )
 	nls? ( virtual/libintl )
 	samba? ( net-fs/samba:= )
 	s3? ( net-misc/curl )
@@ -135,6 +136,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+	use ndmp && eapply "${FILESDIR}"/${P}-tirpc.patch
 	# gentoo bug #331111
 	sed -i '/^check-local: check-perl$/d' config/automake/scripts.am || die
 	sed -i '/^check-local:/s,syntax-check,,g' perl/Makefile.am || die
