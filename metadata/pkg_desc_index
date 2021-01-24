@@ -5655,6 +5655,7 @@ dev-libs/raft 0.9.25: C implementation of the Raft consensus protocol
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 1.1.0-r3 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
+dev-libs/rccl 4.0.0-r1: ROCm Communication Collectives Library (RCCL)
 dev-libs/re2 0.2020.11.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r1 1.0.17.1-r100: Language bindings for Redland
@@ -7906,6 +7907,7 @@ dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x synta
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
 dev-python/Faker 5.6.5: a Python package that generates fake data for you
 dev-python/GitPython 3.1.11 3.1.12: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1 0.5.0: Reading and writing of data on regular grids in Python
@@ -10888,6 +10890,7 @@ dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocm-smi 4.0.0 9999: ROCm System Management Interface
 dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 9999: ROCm Application for Reporting System Info
+dev-util/roctracer 4.0.0-r1: Callback/Activity Library for Performance tracing AMD GPU's
 dev-util/rosdep 0.20.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.22-r1 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
@@ -16224,6 +16227,8 @@ sci-libs/h5hut 1.99.13: High-Performance I/O Library for Particle-based Simulati
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.13 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.10.5 1.10.5-r1: General purpose library and file format for storing scientific data
+sci-libs/hipCUB 4.0.0-r1: A thin wrapper library on top of rocPRIM or CUB
+sci-libs/hipSPARSE 4.0.0-r1: ROCm SPARSE marshalling library
 sci-libs/htslib 1.10.2: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.18.2: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
@@ -16333,6 +16338,11 @@ sci-libs/pyshp 2.1.2: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.22: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
+sci-libs/rocFFT 4.0.0-r1: Next generation FFT implementation for ROCm
+sci-libs/rocPRIM 4.0.0-r1: HIP parallel primitives for developing performant GPU-accelerated code on ROCm
+sci-libs/rocRAND 4.0.0-r1: Generate pseudo-random and quasi-random numbers
+sci-libs/rocSPARSE 4.0.0-r1: Basic Linear Algebra Subroutines for sparse computation
+sci-libs/rocThrust 4.0.0-r1: Thrust dependent software on AMD GPUs
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
 sci-libs/rtabmap 0.20.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
