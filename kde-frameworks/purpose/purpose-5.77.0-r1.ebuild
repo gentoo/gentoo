@@ -11,7 +11,7 @@ inherit ecm kde.org optfeature xdg-utils
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="bluetooth +dolphin +kaccounts"
 
 DEPEND="
@@ -42,7 +42,9 @@ RESTRICT+=" test"
 
 src_prepare() {
 	ecm_src_prepare
-	cmake_run_in src/plugins cmake_comment_add_subdirectory bluetooth
+
+	use bluetooth ||
+		cmake_run_in src/plugins cmake_comment_add_subdirectory bluetooth
 }
 
 src_configure() {
