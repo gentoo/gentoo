@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,10 +18,10 @@ IUSE=""
 
 DESCRIPTION="The Zen Kernel Live Sources"
 
-ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen2/v${PV}-zen2.patch.xz"
+ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen1/v${PV}-zen1.patch.xz"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-UNIPATCH_LIST="${DISTDIR}/v${PV}-zen2.patch.xz"
+UNIPATCH_LIST="${DISTDIR}/v${PV}-zen1.patch.xz"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
