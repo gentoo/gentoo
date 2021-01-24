@@ -25,6 +25,6 @@
 </use>
 <upstream>
 	<bugs-to>https://github.com/alembic/alembic/issues</bugs-to>
-	<remote-id type="github">https://github.com/alembic/alembic</remote-id>
+	<remote-id type="github">alembic/alembic</remote-id>
 </upstream>
 </pkgmetadata>
