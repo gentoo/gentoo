@@ -19,7 +19,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-# X libs are not needed for OSX (aqua)
 DEPEND="
 	>=dev-libs/glib-2.64:2
 	>=dev-libs/libpeas-1.14.1[gtk]
