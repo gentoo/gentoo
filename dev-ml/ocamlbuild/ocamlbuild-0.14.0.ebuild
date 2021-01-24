@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Generic build tool with built-in rules for building OCaml library and programs"
 HOMEPAGE="https://github.com/ocaml/ocamlbuild"
@@ -22,9 +20,9 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	test? ( dev-ml/findlib )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch
+)
 
 src_configure() {
 	emake -f configure.make Makefile.config \

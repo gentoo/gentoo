@@ -17,6 +17,7 @@ IUSE="+ocamlopt"
 RDEPEND="
 	dev-lang/ocaml:=
 	dev-ml/base:=
+	dev-ml/base_bigstring:=
 	dev-ml/bin-prot:=
 	dev-ml/configurator:=
 	dev-ml/fieldslib:=

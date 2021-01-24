@@ -12,13 +12,14 @@ S="${WORKDIR}/dune-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	~dev-ml/dune-2.8.2
 	test? (
+		dev-ml/core_bench
 		dev-ml/menhir
 		dev-ml/opam
 		dev-ml/ppx_expect
