@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,7 +64,10 @@ src_install() {
 			doman ${b}/${b}.1
 			if [[ ${b} != rcp ]]; then
 				newins "${FILESDIR}"/${b}.xinetd ${b}
-				newpamd "${FILESDIR}/${b}.pamd-pambase" ${b}
+
+				if use pam; then
+					newpamd "${FILESDIR}/${b}.pamd-pambase" ${b}
+				fi
 			fi
 		fi
 	done
