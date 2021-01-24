@@ -4059,7 +4059,6 @@ media-gfx/photoqt:freeimage - Support additional image formats using media-libs/
 media-gfx/pngcrush:system-libs - Use libpng and libz provided by system
 media-gfx/potrace:metric - default to a4 paper size and metric measurement
 media-gfx/povray:io-restrictions - POV-Ray's mechanism for control of I/O operations
-media-gfx/povray:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
 media-gfx/pstoedit:emf - Enable media-libs/libemf support
 media-gfx/pstoedit:pptx - Enable support for generating PowerPoint pptx files
