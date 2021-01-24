@@ -63,9 +63,6 @@ python_prepare_all() {
 		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
 	fi
 
-	# TODO
-	rm tests/functional/test_new_resolver_user.py || die
-
 	distutils-r1_python_prepare_all
 
 	if use test; then
@@ -81,43 +78,23 @@ python_test() {
 		return 0
 	fi
 
-	# these will be built in to an expression passed to pytest to exclude
-	local exclude_tests=(
-		git
-		svn
-		bazaar
-		mercurial
-		version_check
-		uninstall_non_local_distutils
-		pep518_uses_build_env
-		install_package_with_root
-		install_editable_with_prefix
-		install_user_wheel
-		install_from_current_directory_into_usersite
-		uninstall_editable_from_usersite
-		uninstall_from_usersite_with_dist_in_global_site
-		build_env_isolation
-		user_config_accepted
-		# these fail with new setuptools + distutils_install_for_testing
-		double_install_fail
-		multiple_exclude_and_normalization
+	local deselect=(
+		tests/functional/test_install.py::test_double_install_fail
+		tests/functional/test_list.py::test_multiple_exclude_and_normalization
+		'tests/unit/test_commands.py::test_index_group_handle_pip_version_check[False-False-True-download]'
+		'tests/unit/test_commands.py::test_index_group_handle_pip_version_check[False-False-True-install]'
+		'tests/unit/test_commands.py::test_index_group_handle_pip_version_check[False-False-True-list]'
+		'tests/unit/test_commands.py::test_index_group_handle_pip_version_check[False-False-True-wheel]'
 	)
 
 	distutils_install_for_testing --via-root
-
-	# generate the expression to exclude failing tests
-	local exclude_expr
-	printf -v exclude_expr "or %s " "${exclude_tests[@]}" || die
-	exclude_expr="not (${exclude_expr#or })" || die
 
 	local -x GENTOO_PIP_TESTING=1 \
 		PATH="${TEST_DIR}/scripts:${PATH}" \
 		PYTHONPATH="${TEST_DIR}/lib:${BUILD_DIR}/lib"
 
-	pytest -vv \
-		-k "${exclude_expr}" \
-		-m "not network" \
-		|| die "Tests fail with ${EPYTHON}"
+	pytest -vv ${deselect[@]/#/--deselect } -m "not network" ||
+		die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
