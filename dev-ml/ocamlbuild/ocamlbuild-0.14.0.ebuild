@@ -20,9 +20,9 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	test? ( dev-ml/findlib )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch
+)
 
 src_configure() {
 	emake -f configure.make Makefile.config \
