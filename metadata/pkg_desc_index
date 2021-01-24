@@ -826,7 +826,7 @@ app-arch/ncompress 4.2.4.5 4.2.4.6: Classic compress & uncompress programs for .
 app-arch/p7zip 16.02-r4 16.02-r5 16.02-r6: Port of 7-Zip archiver for Unix
 app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
-app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
+app-arch/pax 20161104 20201030: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12 1.1.13: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.10 1.11: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
@@ -1778,7 +1778,7 @@ app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup 
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
-app-editors/texworks 0.6.5 0.6.5-r100: A simple interface for working with TeX documents
+app-editors/texworks 0.6.5-r100: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 8.2.0814-r100 9999: Vim, an improved vi-style text editor
@@ -5272,7 +5272,7 @@ dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximat
 dev-libs/cxxopts 2.2.1-r1: Lightweight C++ command line option parser
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p14-r2: REINER SCT cyberJack USB chipcard reader user space driver
-dev-libs/cyrus-sasl 2.1.27-r3 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/date 3.0.0: A date and time library based on the C++11/14/17 <chrono> header
@@ -15437,7 +15437,7 @@ net-p2p/mldonkey 3.1.7: Multi-network P2P application written in Ocaml, with Gtk
 net-p2p/ncdc 1.22.1 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/qbittorrent 4.2.5-r2 4.3.0.1 4.3.1 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.3.1 4.3.3 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
@@ -17331,7 +17331,7 @@ sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 9999: Tools neces
 sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1: Tools necessary to build programs
-sys-devel/bison 3.6.4 3.7.3 3.7.4: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.6.4 3.7.3 3.7.4 3.7.5: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318 20201117 20201222: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: C language family frontend for LLVM
@@ -18894,7 +18894,7 @@ x11-themes/goddard-backgrounds 13.0.0.3-r1: Fedora 13 official background artwor
 x11-themes/golden-xcursors 0.8-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/greybird 3.20.1-r2 3.22.9 3.22.10 3.22.11 3.22.12 9999: The default theme from Xubuntu
 x11-themes/gtk-chtheme 0.3.1-r3: GTK-2.0 Theme Switcher
-x11-themes/gtk-engines 2.20.2-r2 2.20.2-r100: GTK+2 standard engines and themes
+x11-themes/gtk-engines 2.20.2-r100: GTK+2 standard engines and themes
 x11-themes/gtk-engines-adwaita 3.28: Adwaita GTK+2 theme engine
 x11-themes/gtk-engines-aurora 1.5.1: Aurora GTK+ 2.x Theme Engine
 x11-themes/gtk-engines-candido 0.9.1: Candido GTK+ 2.x Theme Engine
