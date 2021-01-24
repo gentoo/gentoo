@@ -12,7 +12,7 @@ S="${WORKDIR}/dune-${PV}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
@@ -24,6 +24,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	test? (
+		dev-ml/core_bench
 		  dev-ml/menhir
 		  dev-ml/opam
 		  dev-ml/ppx_expect
