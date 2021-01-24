@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="cpu_flags_x86_avx doc examples static-libs utils test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=media-libs/ilmbase-${PV}:=[${MULTILIB_USEDEP}]
+	~media-libs/ilmbase-${PV}:=[static-libs?,${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
@@ -28,14 +28,14 @@ S="${WORKDIR}/${P}/OpenEXR"
 DOCS=( PATENTS README.md )
 
 src_prepare() {
-	cmake_src_prepare
-
 	# Fix path for testsuite
 	sed -i -e "s:/var/tmp/:${T}:" "${S}"/IlmImfTest/tmpDir.h || die "failed to set temp path for tests"
 
 	if use abi_x86_32 && use test; then
 		eapply "${FILESDIR}/${PN}-2.5.2-0001-IlmImfTest-main.cpp-disable-tests.patch"
 	fi
+
+	multilib_foreach_abi cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -45,7 +45,8 @@ multilib_src_configure() {
 		-DINSTALL_OPENEXR_EXAMPLES=$(usex examples)
 		-DOPENEXR_BUILD_BOTH_STATIC_SHARED=$(usex static-libs)
 		-DOPENEXR_BUILD_UTILS=$(usex utils)
-		-DOPENEXR_INSTALL_PKG_CONFIG=ON				# default
+		-DOPENEXR_INSTALL_PKG_CONFIG=ON
+		-DOPENEXR_USE_CLANG_TIDY=OFF		# don't look for clang-tidy
 	)
 
 	cmake_src_configure

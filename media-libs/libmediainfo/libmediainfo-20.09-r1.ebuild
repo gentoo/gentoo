@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic
-
 MY_PN="MediaInfo"
+inherit autotools edos2unix flag-o-matic
+
 DESCRIPTION="MediaInfo libraries"
 HOMEPAGE="https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfoLib"
 SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
@@ -13,25 +13,30 @@ SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="curl doc mms static-libs"
-
-RDEPEND="sys-libs/zlib
-	dev-libs/tinyxml2:=
-	>=media-libs/libzen-0.4.37[static-libs=]
-	curl? ( net-misc/curl )
-	mms? ( >=media-libs/libmms-0.6.1[static-libs=] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+IUSE="curl doc mms"
 
 # tests try to fetch data from online sources
 RESTRICT="test"
 
-S=${WORKDIR}/${MY_PN}Lib/Project/GNU/Library
+RDEPEND="
+	dev-libs/tinyxml2:=
+	>=media-libs/libzen-0.4.37
+	sys-libs/zlib
+	curl? ( net-misc/curl )
+	mms? ( >=media-libs/libmms-0.6.1 )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+
+PATCHES=( "${FILESDIR}"/${P}-pkgconfig.patch )
+
+S="${WORKDIR}"/${MY_PN}Lib/Project/GNU/Library
 
 src_prepare() {
-	eapply -p4 "${FILESDIR}"/${PN}-0.7.63-pkgconfig.patch
-	eapply_user
+	default
 
 	sed -i 's:-O2::' configure.ac || die
 	append-cppflags -DMEDIAINFO_LIBMMS_DESCRIBE_SUPPORT=0
@@ -42,18 +47,18 @@ src_prepare() {
 src_configure() {
 	econf \
 		--enable-shared \
+		--disable-static \
+		--disable-staticlibs \
 		--with-libtinyxml2 \
 		$(use_with curl libcurl) \
-		$(use_with mms libmms) \
-		$(use_enable static-libs static) \
-		$(use_enable static-libs staticlibs)
+		$(use_with mms libmms)
 }
 
 src_compile() {
 	default
 
 	if use doc; then
-		cd "${WORKDIR}"/${MY_PN}Lib/Source/Doc
+		cd "${WORKDIR}"/${MY_PN}Lib/Source/Doc || die
 		doxygen Doxyfile || die
 	fi
 }
