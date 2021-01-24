@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit findlib
 
@@ -21,9 +21,11 @@ DEPEND="${RDEPEND}"
 
 src_install() {
 	findlib_src_preinst
+
 	mkdir -p "${ED}"/usr/bin
 	emake PREFIX="${ED}"/usr install
 	dodoc README.md Changes
+
 	if use examples ; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
