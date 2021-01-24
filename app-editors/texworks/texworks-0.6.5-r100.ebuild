@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit lua-single python-single-r1 cmake virtualx xdg-utils
 
