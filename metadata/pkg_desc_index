@@ -1014,7 +1014,7 @@ app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
 app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
-app-crypt/ccid 1.4.30 1.4.31 1.4.32 1.4.33: CCID free software driver
+app-crypt/ccid 1.4.33 1.4.34: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
 app-crypt/certbot 1.9.0 1.10.1 1.11.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 1.9.0 1.10.1 1.11.0 9999: Apache plugin for certbot (Let's Encrypt Client)
@@ -5815,7 +5815,7 @@ dev-ml/cairo-ocaml 1.2.0-r1: Ocaml bindings for the cairo vector graphics librar
 dev-ml/cairo2 0.6.1: Binding to Cairo, a 2D Vector Graphics Library
 dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/calendars 1.0.0: Convert dates between gregorian/julian/french/hebrew calendars
-dev-ml/camlbz2 0.6.0-r1: OCaml bindings for libbz (AKA, bzip2)
+dev-ml/camlbz2 0.6.0-r1 0.7.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0 1.2: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlp4 4.05_p1 4.08_p1 4.10_p1 4.11_p1: System for writing extensible parsers for programming languages
@@ -5843,7 +5843,7 @@ dev-ml/dune-configurator 2.7.1 2.8.2: A composable build system for OCaml
 dev-ml/dune-private-libs 2.7.1 2.8.2: A composable build system for OCaml
 dev-ml/easy-format 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
-dev-ml/extlib 1.7.7: Standard library extensions for O'Caml
+dev-ml/extlib 1.7.7 1.7.8: Standard library extensions for O'Caml
 dev-ml/facile 1.1.3: OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0 0.14.0: Folding over record fields
 dev-ml/findlib 1.8.1-r2: OCaml tool to find/use non-standard packages
@@ -5971,7 +5971,7 @@ dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 0.9.0 0.14.1: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 0.9.0 0.14.1: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/ppxfind 1.4: ocamlfind ppx tool
-dev-ml/ppxlib 0.18.0 0.20.0: Base library and tools for ppx rewriters
+dev-ml/ppxlib 0.18.0 0.20.0 0.21.0: Base library and tools for ppx rewriters
 dev-ml/qcheck 0.7: QuickCheck inspired property-based testing for OCaml
 dev-ml/re 1.9.0: Regular expression library for OCaml
 dev-ml/re2 0.9.0 0.9.1: OCaml bindings for RE2

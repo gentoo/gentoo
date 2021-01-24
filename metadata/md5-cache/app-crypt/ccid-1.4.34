@@ -9,6 +9,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 )
 SLOT=0
-SRC_URI=https://ccid.apdu.fr/files/ccid-1.4.31.tar.bz2
+SRC_URI=https://ccid.apdu.fr/files/ccid-1.4.34.tar.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=06aa85158934293032e12d879b8f1808
+_md5_=41afffaff522d4ac3726ee41b09f3315
