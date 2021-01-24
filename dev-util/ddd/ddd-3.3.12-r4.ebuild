@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -77,11 +77,6 @@ pkg_postinst() {
 	if ! has_version sci-visualization/gnuplot; then
 		echo
 		elog "To enable data visualization in DDD, install sci-visualization/gnuplot."
-		elog "For flat file package.use layout:"
-		elog "   echo '${CATEGORY}/${PN} gnuplot' >> /etc/portage/package.use && emerge -va gnuplot"
-		elog "For directory package.use layout:"
-		elog "   echo '${CATEGORY}/${PN} gnuplot' > /etc/portage/package.use/ddd && emerge -va gnuplot"
-		elog
 	fi
 	echo
 	elog "Important notice: if you encounter DDD crashes during visualization, you might"
