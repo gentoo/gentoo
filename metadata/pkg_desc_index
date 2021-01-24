@@ -12304,7 +12304,7 @@ kde-frameworks/networkmanager-qt 5.77.0 5.78.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.77.0 5.78.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.77.0-r1 5.78.0: Plasma framework
 kde-frameworks/prison 5.77.0 5.78.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.77.0 5.78.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/purpose 5.77.0-r1 5.78.0-r1: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.77.0 5.78.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
 kde-frameworks/solid 5.77.0 5.78.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.77.0 5.78.0: Framework for providing spell-checking through abstraction of popular backends
@@ -17327,10 +17327,10 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 9999: Tools necessary to build programs
+sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 2.36 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.36: Tools necessary to build programs
 sys-devel/bison 3.6.4 3.7.3 3.7.4 3.7.5: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318 20201117 20201222: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17582,7 +17582,7 @@ sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Lin
 sys-kernel/vanilla-sources 4.4.253 4.9.253 4.14.217 4.19.170 5.4.92 5.10.10: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.9.11 5.9.13: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.36: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
@@ -18750,7 +18750,7 @@ x11-plugins/wmcliphist 2.1-r2: Dockable clipboard history application for Window
 x11-plugins/wmclock 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 x11-plugins/wmclockmon 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcms 0.3.5-r4: WindowMaker CPU and Memory Usage Monitor Dock App
-x11-plugins/wmcoincoin 2.6.2_p20140602 2.6.3: a dockapp for browsing dacode news and board sites
+x11-plugins/wmcoincoin 2.6.3: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8-r1: A pager dockapp
 x11-plugins/wmcpuload 1.1.1: a dockapp for monitoring CPU usage with a LCD display
 x11-plugins/wmcpuwatch 0.2-r1: dockapp showing the load of every logical CPU on the system
@@ -18906,7 +18906,7 @@ x11-themes/gtk-engines-qtpixmap 0.28-r2: Theme engine based on GTK pixmap engine
 x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
 x11-themes/gtk-engines-rezlooks 0.6-r1: Rezlooks GTK+ Engine
 x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
-x11-themes/gtk-engines-unico 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
+x11-themes/gtk-engines-unico 1.0.3_pre20140109 1.0.3_pre20140109-r1: The Unico GTK+ 3.x theming engine
 x11-themes/gtk-theme-switch 2.1.0-r1: Utility to switch and preview GTK+ theme
 x11-themes/haematite-xcursors 1.0: A simple crispy dark-grey xcursor theme
 x11-themes/hicolor-icon-theme 0.17: Fallback theme for the freedesktop icon theme specification
