@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2021-01-24)
+# Dead package, wrongly named, only installs
+# really old scikit-examples.
+# Removal in 14 days
+sci-libs/scikits
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-24)
 # Last release in 2004. Fails to build with gcc-10 and openssl-1.1.
 # Removal on 2021-02-23.  Bugs #707004, #677170, #562724
