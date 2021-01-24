@@ -6,6 +6,6 @@
 		<name>ML</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">janestreet/spawn</remote-id>
+		<remote-id type="github">janestreet/timezone</remote-id>
 	</upstream>
 </pkgmetadata>
