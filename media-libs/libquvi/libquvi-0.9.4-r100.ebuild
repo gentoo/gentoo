@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/quvi/${PV:0:3}/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/8" # subslot = libquvi soname version
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 sparc x86"
 IUSE="examples nls static-libs"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
