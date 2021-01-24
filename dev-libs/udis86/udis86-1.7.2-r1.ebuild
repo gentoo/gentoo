@@ -18,8 +18,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	test? (
-		${PYTHON_DEPS}
 		amd64? ( dev-lang/yasm )
 		x86? ( dev-lang/yasm )
 	)"
@@ -28,10 +28,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-python3.patch
 )
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	default
@@ -43,7 +39,7 @@ multilib_src_configure() {
 		--disable-static \
 		--enable-shared \
 		--with-pic \
-		PYTHON="${EPYTHON}"
+		--with-python="${PYTHON}"
 }
 
 multilib_src_install_all() {
