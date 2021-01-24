@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/NFFT/nfft/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc openmp static-libs"
+IUSE="doc openmp"
 
 RDEPEND="sci-libs/fftw:3.0[threads,openmp?]"
 DEPEND="${RDEPEND}"
@@ -34,16 +34,19 @@ pkg_pretend() {
 
 src_configure() {
 	econf \
-	    --enable-all \
+		--enable-all \
 		--enable-shared \
-		$(use_enable openmp) \
-		$(use_enable static-libs static)
+		--disable-static \
+		$(use_enable openmp)
 }
 
 src_install() {
 	default
-	use doc || rm -r "${ED}/usr/share/doc/${P}/html" || die
 
-	# infft uses pkg-config to record its private dependencies
+	if ! use doc; then
+		rm -r "${ED}"/usr/share/doc/${P}/html || die
+	fi
+
+	# no static archives
 	find "${ED}" -name '*.la' -delete || die
 }

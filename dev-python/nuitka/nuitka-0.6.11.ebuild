@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 flag-o-matic optfeature
 
 DESCRIPTION="Python to native compiler"
 HOMEPAGE="https://www.nuitka.net"
@@ -16,11 +16,14 @@ SRC_URI="https://nuitka.net/releases/${P^}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-BDEPEND="dev-util/scons[${PYTHON_USEDEP}]"
-
-RDEPEND="${BDEPEND}
-	dev-python/appdirs[${PYTHON_USEDEP}]"
+RDEPEND="dev-util/scons[${PYTHON_USEDEP}]"
+BDEPEND="
+	${RDEPEND}
+	test? ( dev-util/ccache )
+"
 
 DOCS=( Changelog.pdf Developer_Manual.pdf README.pdf )
 S="${WORKDIR}/${P^}"
@@ -36,6 +39,11 @@ python_install() {
 	distutils-r1_python_install
 	python_optimize
 	doman doc/nuitka.1 doc/nuitka3.1 doc/nuitka3-run.1 doc/nuitka-run.1
+}
+
+python_test() {
+	append-ldflags -Wl,--no-warn-search-mismatch
+	./tests/basics/run_all.py search || die
 }
 
 pkg_postinst() {

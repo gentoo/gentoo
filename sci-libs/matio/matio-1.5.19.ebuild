@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ HOMEPAGE="https://sourceforge.net/projects/matio/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0/9" # subslot = soname version
+SLOT="0/11" # subslot = soname version
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples hdf5 sparse"
 
@@ -42,5 +42,5 @@ src_install() {
 	fi
 
 	# no static archives
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -name "*.la" -delete || die
 }

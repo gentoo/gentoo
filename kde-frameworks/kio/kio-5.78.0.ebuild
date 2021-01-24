@@ -16,6 +16,9 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="acl +handbook kerberos +kwallet X"
 
+# tests hang
+RESTRICT+=" test"
+
 RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -68,8 +71,7 @@ PDEPEND="
 	>=kde-frameworks/kded-${PVCUT}:5
 "
 
-# tests hang
-RESTRICT+=" test"
+PATCHES=( "${FILESDIR}/${PN}-5.77.0-gcc11.patch" ) # bug 766480
 
 src_configure() {
 	local mycmakeargs=(
