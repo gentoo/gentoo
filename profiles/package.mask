@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-24)
+# Ancient package no one else is packaging, blocks autotools-multilib cleanup.
+# Masked for removal in 30 days.
+x11-themes/gtk-engines-unico
+
 # Conrad Kostecki <conikost@gentoo.org> (2020-01-21)
 # All kernels >= 4.17 removed IrDA drivers and support,
 # the package has also multiple bugs open and is unmaintained.
