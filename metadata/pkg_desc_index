@@ -12692,7 +12692,7 @@ media-fonts/mplus-fonts 2.2.4-r1: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre063 0_pre063_p1: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
-media-fonts/noto 20190524 20200308 20200521: Google's font family that aims to support all the world's languages
+media-fonts/noto 20190524 20200308 20200521 20201226: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20190416: Google's CJK font family
 media-fonts/noto-emoji 20200317-r1 20200916 20201214: Google Noto Emoji fonts
 media-fonts/nunito 1.0-r1: A Sans Serif font with rounded terminals
@@ -15969,7 +15969,7 @@ sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
 sci-chemistry/elem 1.0.3-r2: periodic table of the elements
 sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed information on the chemical elements
-sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
+sci-chemistry/gmxapi 0.0.7.1-r1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
 sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021_rc1 2021.9999 9999: The ultimate molecular dynamics simulation package
@@ -17592,7 +17592,7 @@ sys-libs/compiler-rt-sanitizers 9.0.1 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 1
 sys-libs/cracklib 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
-sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.5.20_p2-r4 4.6.21_p4-r2 4.6.21_p4-r3 4.7.25_p4-r2 4.7.25_p4-r3 4.8.30-r3 4.8.30-r4 5.1.29-r2 5.3.28-r2 5.3.28-r4 5.3.28-r5 6.0.35-r2 6.0.35-r3 6.1.38 6.2.38 18.1.40: Oracle Berkeley DB
+sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.5.20_p2-r4 4.6.21_p4-r2 4.6.21_p4-r3 4.7.25_p4-r2 4.7.25_p4-r3 4.8.30-r3 4.8.30-r4 5.1.29-r2 5.3.28-r2 5.3.28-r4 5.3.28-r5 6.0.35-r2 6.0.35-r3 6.1.38 6.2.38 18.1.32 18.1.40: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.45.5 1.45.6: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
