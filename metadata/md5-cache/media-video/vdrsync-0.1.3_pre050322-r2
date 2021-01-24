@@ -3,9 +3,9 @@ DESCRIPTION=converting vdr-recordings to mpeg2, dvd or other similar formats
 EAPI=7
 HOMEPAGE=http://vdrsync.vdr-portal.de/
 IUSE=dvdr
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.0 media-fonts/corefonts media-video/mjpegtools dvdr? ( >=media-libs/gd-2.0.15 >=dev-perl/GD-2.0.7 >=dev-perl/GDTextUtil-0.86 >=media-video/dvdauthor-0.6.8 )
 SLOT=0
 SRC_URI=http://vdrsync.vdr-portal.de/releases/vdrsync-050322.tgz
-_md5_=93ff1c17c4e4c7da2cf91c1fe6b4a18d
+_md5_=f65d019b2150675851266c2eea02e5e7

@@ -5,10 +5,10 @@ DESCRIPTION=Great Qt GUI front-end for mplayer/mpv
 EAPI=7
 HOMEPAGE=https://www.smplayer.eu/
 IUSE=autoshutdown bidi debug mpris
-KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux
+KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux
 LICENSE=GPL-2+ BSD-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5= dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib autoshutdown? ( dev-qt/qtdbus:5 ) mpris? ( dev-qt/qtdbus:5 ) || ( media-video/mpv[libass(+),X] media-video/mplayer[bidi?,libass,png,X] )
 SLOT=0
 SRC_URI=mirror://sourceforge/smplayer/smplayer-20.6.0.tar.bz2
 _eclasses_=l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8bc670b811d32116143c502823b3e3ce
+_md5_=1d4237c3c9983d1caa0c18aa9117c78b

@@ -1,4 +1,4 @@
-BDEPEND=test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) amd64? ( dev-lang/yasm ) x86? ( dev-lang/yasm ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) test? ( amd64? ( dev-lang/yasm ) x86? ( dev-lang/yasm ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install prepare setup test
 DESCRIPTION=Disassembler library for the x86/-64 architecture sets
 EAPI=7
@@ -10,4 +10,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/udis86/udis86-1.7.2.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=1a6dab82bfa4a921324c98e275eddc5f
+_md5_=a3e29a712411bc3631e798d979d5356d

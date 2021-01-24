@@ -13241,7 +13241,7 @@ media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
 media-libs/libsidplayfp 1.8.8: Library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.6: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
-media-libs/libsndfile 1.0.30 9999: C library for reading and writing files containing sampled sound
+media-libs/libsndfile 1.0.30 1.0.31 9999: C library for reading and writing files containing sampled sound
 media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input and output
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r2: framebuffer abstraction library, written in C
@@ -13957,7 +13957,7 @@ media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be us
 media-sound/rhythmbox 3.4.4: Music management and playback software for GNOME
 media-sound/rip 1.07-r1: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: GTK program to rip CD audio tracks to Ogg, MP3 or FLAC
-media-sound/rosegarden 20.06 20.12: MIDI and audio sequencer and notation editor
+media-sound/rosegarden 20.12: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/sc2mpd 1.1.7: Implements the SongCast protocol for use by upmpdcli and mpd

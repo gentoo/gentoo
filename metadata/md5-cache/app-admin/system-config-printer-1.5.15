@@ -5,7 +5,7 @@ DESCRIPTION=Graphical user interface for CUPS administration
 EAPI=7
 HOMEPAGE=https://github.com/OpenPrinting/system-config-printer
 IUSE=gnome-keyring policykit python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7[xml] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[xml] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9[xml] >=dev-lang/python-exec-2:=[python_targets_python3_9] ) dev-libs/glib:2 net-print/cups[dbus] virtual/libusb:1 >=virtual/udev-172 x11-libs/gtk+:3[introspection] x11-libs/libnotify[introspection] x11-libs/pango[introspection] python_single_target_python3_7? ( dev-python/dbus-python[python_targets_python3_7(-)] dev-python/pycairo[python_targets_python3_7(-)] dev-python/pycups[python_targets_python3_7(-)] dev-python/pygobject:3[python_targets_python3_7(-)] dev-python/requests[python_targets_python3_7(-)] dev-python/urllib3[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/dbus-python[python_targets_python3_8(-)] dev-python/pycairo[python_targets_python3_8(-)] dev-python/pycups[python_targets_python3_8(-)] dev-python/pygobject:3[python_targets_python3_8(-)] dev-python/requests[python_targets_python3_8(-)] dev-python/urllib3[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/dbus-python[python_targets_python3_9(-)] dev-python/pycairo[python_targets_python3_9(-)] dev-python/pycups[python_targets_python3_9(-)] dev-python/pygobject:3[python_targets_python3_9(-)] dev-python/requests[python_targets_python3_9(-)] dev-python/urllib3[python_targets_python3_9(-)] ) gnome-keyring? ( app-crypt/libsecret[introspection] ) policykit? ( net-print/cups-pk-helper )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/OpenPrinting/system-config-printer/releases/download/v1.5.15/system-config-printer-1.5.15.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=925e416ccd8186a237326c9147a754db
+_md5_=23cb43ce9473059ef85ea04317f3e722
