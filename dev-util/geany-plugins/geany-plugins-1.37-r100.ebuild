@@ -13,7 +13,7 @@ SRC_URI="https://plugins.geany.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ppc ppc64 ~sparc x86"
 
 IUSE="gtk2 ctags debugger enchant git gpg gtkspell lua markdown nls pretty-printer scope soup workbench"
 REQUIRED_USE="gtk2? ( !markdown ) lua? ( ${LUA_REQUIRED_USE} )"

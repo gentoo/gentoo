@@ -25,7 +25,7 @@ SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="java lua mono perl php python ruby tcl"
 REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )
 	lua? ( ${LUA_REQUIRED_USE} )
