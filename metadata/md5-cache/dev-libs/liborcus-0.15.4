@@ -1,15 +1,15 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) spreadsheet-model? ( dev-libs/libixion:0/0.15 ) dev-util/mdds:1/1.5
+DEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) spreadsheet-model? ( dev-libs/libixion:0/0.15 ) dev-util/mdds:1/1.5
 DESCRIPTION=Standalone file import filter library for spreadsheet documents
 EAPI=7
 HOMEPAGE=https://gitlab.com/orcus/orcus/blob/master/README.md
-IUSE=python +spreadsheet-model tools python_single_target_python3_7 python_single_target_python3_8
+IUSE=python +spreadsheet-model tools python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 x86
 LICENSE=MIT
-RDEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) spreadsheet-model? ( dev-libs/libixion:0/0.15 )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 ) )
+RDEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) spreadsheet-model? ( dev-libs/libixion:0/0.15 )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0/0.15
 SRC_URI=https://kohei.us/files/orcus/src/liborcus-0.15.4.tar.xz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=cec616264499c37421fce0141ef90bc2
+_md5_=5d725a40be20984c962dd15d3326b38f

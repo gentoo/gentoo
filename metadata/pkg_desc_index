@@ -2194,7 +2194,7 @@ app-i18n/canfep 1.0-r1: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2 3.7_p3-r3: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
-app-i18n/enca 1.19-r2 1.19-r3: Detect and convert encoding of text files
+app-i18n/enca 1.19-r3: Detect and convert encoding of text files
 app-i18n/fbterm 1.7_p20190503: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.9.6 4.2.9.7 4.2.9.8 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
@@ -3031,7 +3031,7 @@ app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-l
 app-text/qpdf 10.0.4 10.1.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18 0.4.18_p1: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
-app-text/recode 3.6_p20-r1 3.7.6-r1 3.7.8: Convert files between various character sets
+app-text/recode 3.7.6-r1 3.7.8: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.6_p20180223: Web-based solution for managing scientific literature, references and citations
 app-text/restview 2.9.2: reStructuredText viewer
@@ -3474,7 +3474,7 @@ dev-cpp/catch 1.12.2 1.9999 2.5.0 2.13.3 9999: Modern C++ header-only framework 
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
-dev-cpp/cpp-taskflow 2.4.0-r1 2.6.0: Modern C++ Parallel Task Programming
+dev-cpp/cpp-taskflow 3.0.0: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.4: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8-r1 3.3.9: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
@@ -5240,7 +5240,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.74.0-r1 1.74.0-r2 1.75.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.16.0 2.17.3: C++ crypto library
+dev-libs/botan 2.17.3: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.20.1 1.21.0: Blocking, shuffling and lossless compression library
@@ -5630,7 +5630,7 @@ dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
-dev-libs/pegtl 2.8.3-r1: Header-only library for creating parsers according to Parsing Expression Grammar
+dev-libs/pegtl 3.2.0: Header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 76 77 78: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.1.1: Plasma Specific Protocols for Wayland
@@ -7812,7 +7812,7 @@ dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1 7.1.0_rc2: dBase database file access functions
 dev-php/pecl-dio 0.2.0-r1: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.4-r1: PHP wrapper for libeio library
-dev-php/pecl-event 2.5.3 2.5.3-r1 2.5.7: PHP wrapper for libevent2
+dev-php/pecl-event 2.5.7: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4 1.1.1-r5: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
 dev-php/pecl-http 3.2.1 3.2.3 3.2.3-r1 3.2.4 4.0.0_beta1 4.0.0: Extended HTTP Support for PHP
@@ -8553,7 +8553,7 @@ dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0.2.13: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
-dev-python/nuitka 0.6.9.1 0.6.9.6: Python to native compiler
+dev-python/nuitka 0.6.11: Python to native compiler
 dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.19.4 1.19.5: Fast array and numerical python library
 dev-python/numpy-python2 1.16.6: Fast array and numerical python library
@@ -12309,7 +12309,7 @@ kde-frameworks/qqc2-desktop-style 5.77.0 5.78.0: Style for QtQuickControls 2 tha
 kde-frameworks/solid 5.77.0 5.78.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.77.0 5.78.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syndication 5.77.0 5.78.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.77.0-r1 5.77.0-r2 5.77.0-r3 5.78.0-r2: Framework for syntax highlighting
+kde-frameworks/syntax-highlighting 5.77.0-r1 5.77.0-r3 5.78.0-r2: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.77.0 5.78.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
@@ -12364,7 +12364,7 @@ kde-plasma/ksysguard 5.19.5 5.20.5: Network-enabled task manager and system moni
 kde-plasma/kwallet-pam 5.19.5 5.20.5 5.20.5-r1: PAM module to not enter KWallet password again after login
 kde-plasma/kwayland-integration 5.19.5 5.20.5: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwayland-server 5.19.5 5.20.5: Wayland Server Components built on KDE Frameworks
-kde-plasma/kwin 5.19.5-r1 5.20.5 5.20.5-r1: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwin 5.19.5-r1 5.20.5-r1: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.19.5 5.20.5: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.19.5 5.20.5: Plasma screen management library
 kde-plasma/libksysguard 5.19.5 5.20.5: Task management and system monitoring library
@@ -12382,7 +12382,7 @@ kde-plasma/plasma-sdk 5.19.5 5.20.5: Useful applications for Plasma development
 kde-plasma/plasma-systemmonitor 5.20.0-r1: New version of KSysGuard built on top of the new KStats daemon and using QML
 kde-plasma/plasma-thunderbolt 5.19.5 5.20.5: Plasma integration for controlling Thunderbolt devices
 kde-plasma/plasma-vault 5.19.5 5.20.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r1 5.20.5-r3: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.19.5-r2 5.20.5-r3: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.19.5 5.20.5: Wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.19.5 5.20.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.19.5 5.20.5: PolKit agent module for KDE Plasma
@@ -13900,7 +13900,7 @@ media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.34 0.39: Ncurses client for the Music Player Daemon (MPD)
 media-sound/ncmpcpp 0.8.2-r1 0.9.1 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
-media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
+media-sound/ogg2mp3 0.6.1-r1: Perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
 media-sound/openmpt123 0.5.4: libopenmpt-based command line player for tracked music files (modules)
@@ -14180,7 +14180,7 @@ media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webc
 media-video/shotcut 20.10.31 20.11.28: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.4.2 0.4.3 9999: A Simple Screen Recorder
-media-video/smplayer 20.4.2 20.6.0: Great Qt GUI front-end for mplayer/mpv
+media-video/smplayer 20.6.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 20.1.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
@@ -15562,7 +15562,7 @@ net-vpn/tor 0.4.4.6 0.4.5.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20201221: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-modules 1.0.20201221 1.0.20210124: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200513 1.0.20200827: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
@@ -16245,7 +16245,7 @@ sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and commu
 sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/keras-applications 1.0.8-r1: Keras deep learning library reference implementations of deep learning models
 sci-libs/keras-preprocessing 1.1.0-r1 1.1.2: Easy data preprocessing and data augmentation for deep learning models
-sci-libs/kim-api 2.1.3-r1: Application Programming Interface for atomistic simulations
+sci-libs/kim-api 2.2.1: Application Programming Interface for atomistic simulations
 sci-libs/klu 1.3.9 1.3.9-r1: Sparse LU factorization for circuit simulation
 sci-libs/lapack 3.8.0 3.8.0-r1 3.9.0: BLAS,CBLAS,LAPACK,LAPACKE reference implementations
 sci-libs/ldl 2.2.6: Simple but educational LDL^T matrix factorization algorithm
@@ -16258,7 +16258,7 @@ sci-libs/libccd 2.1 9999: Library for collision detection between two convex sha
 sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
-sci-libs/libecpint 1.0.2: Efficient evaluation of integrals over ab initio effective core potentials
+sci-libs/libecpint 1.0.4: Efficient evaluation of integrals over ab initio effective core potentials
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
 sci-libs/libgenome 1.3-r1: Library for sci-biology/mauve
 sci-libs/libgeodecomp 0.5.0_pre20201009: An auto-parallelizing library to speed up computer simulations
@@ -16285,7 +16285,7 @@ sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calc
 sci-libs/libticalcs2 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.7: Library for TI calculator files
-sci-libs/libxc 2.2.3 3.0.0: A library of exchange-correlation functionals for use in DFT
+sci-libs/libxc 2.2.3 3.0.0 5.1.0: A library of exchange-correlation functionals for use in DFT
 sci-libs/linbox 1.6.3: C++ template library for integer and finite-field linear algebra
 sci-libs/linux-gpib 4.3.0 4.3.2 4.3.3: Driver library for GPIB (IEEE 488.2) hardware
 sci-libs/linux-gpib-modules 4.3.0-r1 4.3.2-r1 4.3.3-r1: Kernel modules for GPIB (IEEE 488.2) hardware
@@ -16295,7 +16295,7 @@ sci-libs/lrslib 062 071: Self-contained C implementation of the reverse search a
 sci-libs/m4ri 20200115 20200125: Method of four russian for inversion (M4RI)
 sci-libs/m4rie 20200115: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 sci-libs/mathgl 2.4.4: Math Graphics Library
-sci-libs/matio 1.5.17: Library for reading and writing matlab files
+sci-libs/matio 1.5.19: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/med 4.1.0: A library to store and exchange meshed data or computation results
 sci-libs/metis 4.0.3-r1 4.0.3-r2 5.1.0-r4: A package for unstructured serial graph partitioning
@@ -16304,13 +16304,13 @@ sci-libs/mkl 2020.4.304: Intel Math Kernel Library
 sci-libs/mpfi 1.5.4: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 5.3.5: MUltifrontal Massively Parallel sparse direct matrix Solver
-sci-libs/nanoflann 1.2.3 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
+sci-libs/nanoflann 1.3.2 9999: C++ header-only library for Nearest Neighbor (NN) search wih KD-trees
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.3.2-r1 4.6.1-r1 4.7.4: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
 sci-libs/netcdf-fortran 4.4.3: Scientific library and interface for array oriented data access
-sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
+sci-libs/nfft 3.5.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.6.2-r1: Non-linear optimization library
 sci-libs/numkit 1.1.2: Numerical first aid kit (with numpy/scipy)
 sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
@@ -16320,7 +16320,7 @@ sci-libs/octomap 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Bas
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.12-r1 0.3.13: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
-sci-libs/openlibm 0.7.2: High quality system independent, open source libm
+sci-libs/openlibm 0.7.3: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.4.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 2.2 2.2-r100 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
@@ -16376,7 +16376,7 @@ sci-libs/tensorflow 2.4.0: Computation framework using data flow graphs for scal
 sci-libs/tensorflow-estimator 2.3.0 2.4.0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 13.0.1: Scientific library collection for large scale problems
-sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
+sci-libs/udunits 2.1.24-r1 2.2.20 2.2.28: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
@@ -16474,7 +16474,7 @@ sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.18: FITS file format checker
 sci-misc/flashdot 1.1.4-r1: Generator for psychophysical experiments
 sci-misc/gt-itm 19961004-r2: Routines to generate / analyze graphs using models for internetwork topology
-sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
+sci-misc/h5utils 1.12.1-r2 1.13.1: Utilities for visualization and conversion of HDF5 files
 sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis and generation of words
 sci-misc/nco 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.7: X-based viewer for netCDF files

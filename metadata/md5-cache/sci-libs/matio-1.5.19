@@ -8,6 +8,6 @@ IUSE=doc examples hdf5 sparse
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD-2
 RDEPEND=sys-libs/zlib hdf5? ( sci-libs/hdf5:= )
-SLOT=0/9
-SRC_URI=mirror://sourceforge/matio/matio-1.5.17.tar.gz
-_md5_=aa97376a859c2c5b2a2a7ee6e398d94e
+SLOT=0/11
+SRC_URI=mirror://sourceforge/matio/matio-1.5.19.tar.gz
+_md5_=d71b5d4297b68c76165222cb8d3d5036
