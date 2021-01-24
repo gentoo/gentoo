@@ -1,9 +1,10 @@
-# Copyright 2016-2020 Gentoo Authors
+# Copyright 2016-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit meson toolchain-funcs
+inherit meson python-any-r1 toolchain-funcs
 
 DESCRIPTION="UEFI boot manager from systemd (formerly gummiboot)"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd/systemd-boot/"
@@ -16,6 +17,7 @@ IUSE=""
 RESTRICT="test"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
