@@ -5,7 +5,7 @@ EAPI=7
 
 inherit dune
 
-DESCRIPTION="Jane Street's alternative to the standard library"
+DESCRIPTION="Time-zone handling for OCaml"
 HOMEPAGE="https://github.com/janestreet/timezone"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
