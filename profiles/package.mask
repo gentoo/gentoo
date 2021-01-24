@@ -243,12 +243,6 @@ media-sound/takcd
 # Masked for removal in 30 days.
 media-libs/qt-gstreamer
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Dead upstream, depends on dead media-libs/qt-gstreamer.
-# If anyone is actually using this productively, *do tell*.
-# Masked for removal in 30 days.
-kde-apps/ktp-call-ui
-
 # Andrew Savchenko <bircoph@gentoo.org> (2020-12-26)
 # All docs and socket library functionality are merged back into single
 # app-admin/clsync package using USE="apidoc doc socket-library" starting
