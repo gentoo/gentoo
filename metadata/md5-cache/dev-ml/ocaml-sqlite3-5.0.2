@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/ocaml-4.05 dev-ml/dune-configurator dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-db/sqlite-3.3.3 dev-ml/base:= dev-ml/stdio:= dev-ml/configurator:= test? ( dev-ml/ppx_inline_test ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=A package for ocaml that provides access to SQLite databases
+EAPI=7
+HOMEPAGE=http://mmottl.github.io/sqlite3-ocaml/
+IUSE=+ocamlopt test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-db/sqlite-3.3.3 >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
+SLOT=0/5.0.2
+SRC_URI=https://github.com/mmottl/sqlite3-ocaml/archive/5.0.2.tar.gz -> ocaml-sqlite3-5.0.2.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=94d8d8fad43e4bbad80b21b6593be980
