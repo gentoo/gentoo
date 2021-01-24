@@ -8769,7 +8769,7 @@ dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.2 5.2.1 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
-dev-python/pyilmbase 2.5.2-r1 2.5.3: IlmBase Python bindings
+dev-python/pyilmbase 2.5.2-r1 2.5.4: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.7.1-r1 2.0.0 2.0.1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.3.0-r1 1.3.1: A high-level Python wrapper for Kerberos/GSSAPI operations
@@ -13081,7 +13081,7 @@ media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
-media-libs/ilmbase 2.3.0 2.5.2 2.5.3: OpenEXR ILM Base libraries
+media-libs/ilmbase 2.3.0 2.5.2 2.5.4: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.6.1 1.7.1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
@@ -13163,7 +13163,7 @@ media-libs/libhdhomerun 20190621 20200521: SiliconDust HDHomeRun Utilties
 media-libs/libheif 1.9.1 1.10.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
-media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
+media-libs/libiec61883 1.2.0-r1 1.2.0-r2: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2 3.0.4 9999: Packaged version of iLBC codec from the WebRTC project
 media-libs/libinsane 1.0.7 1.0.8 1.0.9: Crossplatform access to image scanners
@@ -13184,7 +13184,7 @@ media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.24.0-r1 1.24.1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.6.2: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
-media-libs/libmediainfo 20.03 20.08 20.09: MediaInfo libraries
+media-libs/libmediainfo 20.09-r1: MediaInfo libraries
 media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4 0.6.4-r1: Library for accessing Microsoft Media Server (MMS) media streaming protocol
@@ -13282,7 +13282,7 @@ media-libs/opencolorio 1.1.1: A color management framework for visual effects an
 media-libs/opencore-amr 0.1.3-r1 0.1.5-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3 1.0.3-r1: OpenCTM - the Open Compressed Triangle Mesh.
 media-libs/opencv 4.1.2-r3 4.5.0 4.5.1: A collection of algorithms and sample code for various computer vision problems
-media-libs/openexr 2.3.0 2.5.2-r1 2.5.3: ILM's OpenEXR high dynamic-range image file format libraries
+media-libs/openexr 2.3.0 2.5.2-r1 2.5.4: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
@@ -15403,7 +15403,7 @@ net-nntp/pan 0.145 0.146: A newsreader for GNOME
 net-nntp/sabnzbd 3.0.0-r1 3.0.1 3.0.2 3.1.0 3.1.1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.3: A s-lang based newsreader
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
-net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
+net-nntp/tin 2.4.2 2.4.5: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.10.1 2.11.0: Cross-platform Direct Connect client
 net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3 0.8.3-r1: RSS downloader for Tranmission
@@ -18813,8 +18813,8 @@ x11-terms/cool-retro-term 1.1.1-r2: terminal emulator which mimics the look and 
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.36.2 3.38.1 3.38.2: The Gnome Terminal
 x11-terms/guake 3.7.0 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.19.1 0.19.2 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
-x11-terms/kitty-terminfo 0.19.1 0.19.2 9999: Terminfo for kitty, an OpenGL-based terminal emulator
+x11-terms/kitty 0.19.1 0.19.2 0.19.3 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty-terminfo 0.19.1 0.19.2 0.19.3 9999: Terminfo for kitty, an OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.24.0 1.24.1: The MATE Terminal
