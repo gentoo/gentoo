@@ -72,7 +72,8 @@ src_test() {
 lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
-	exeinto $(lua_get_cmod_dir)
+	mycmoddir=$(lua_get_cmod_dir)
+	exeinto ${mycmoddir#$EPREFIX}
 	doexe bit.so
 
 	popd
