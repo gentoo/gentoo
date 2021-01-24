@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-hypothesis-fix.patch"
+)
+
 python_prepare_all() {
 	# Remove support for bukuserver - complex depgraph which isn't all
 	# sufficiently packaged in Gentoo
@@ -73,12 +77,17 @@ python_test() {
 		tests/test_bukuDb.py::TestBukuDb::test_tnyfy_url
 		tests/test_bukuDb.py::test_add_rec_exec_arg
 		tests/test_bukuDb.py::test_load_firefox
-		tests/test_bukuDb.py::test_print_rec_hypothesis
+		tests/test_bukuDb.py::test_print_db
+		tests/test_bukuDb.py::test_print_rec
 		tests/test_bukuDb.py::test_refreshdb
 
-		# Passes when called alone, fails when run from the suite,
-		# but only when the network is disabled
+		# Hard to debug sandbox issue - these pass when run outside portage
+		# There also appears to be some state issue between these, because
+		# skipping one can result in a later one failing.
 		tests/test_bukuDb.py::test_delete_rec_index_and_delay_commit[1-True-False]
+		tests/test_bukuDb.py::test_delete_rec_index_and_delay_commit[1-False-True]
+		tests/test_bukuDb.py::test_delete_rec_index_and_delay_commit[1-False-False]
+		tests/test_bukuDb.py::test_delete_rec_index_and_delay_commit[1-True-True]
 	)
 
 	# tests/test_server.py is bukuserver tests, ignore it
