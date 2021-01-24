@@ -5276,11 +5276,11 @@ dev-libs/cyrus-sasl 2.1.27-r3 2.1.27-r4: The Cyrus SASL (Simple Authentication a
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/date 3.0.0: A date and time library based on the C++11/14/17 <chrono> header
-dev-libs/dbus-c++ 0.9.0-r3: Provides a C++ API for D-BUS
+dev-libs/dbus-c++ 0.9.0-r3 0.9.0-r4: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
-dev-libs/ding-libs 0.6.1: set of utility libraries (mostly used by sssd)
+dev-libs/ding-libs 0.6.1 0.6.1-r1: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.5.1: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7 999999: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
@@ -5325,7 +5325,7 @@ dev-libs/granite 5.2.5-r1: Elementary OS library that extends GTK+
 dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template system
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
-dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
+dev-libs/hidapi 0.8.0_rc1_p20140719 0.8.0_rc1_p20140719-r1: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.14.1 1.0.0: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
@@ -5490,7 +5490,7 @@ dev-libs/libnl 1.1.4-r1 1.1.9999 3.5.0 99999999: Libraries providing APIs to net
 dev-libs/libnsfb 0.2.0-r2 0.2.1-r1 0.2.2-r1: C library for framebuffer abstraction
 dev-libs/libnsutils 0.0.5-r2 0.1.0-r1: C library for base64 and time
 dev-libs/libofx 0.9.15 0.10.0: Library to support the Open Financial eXchange XML format
-dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
+dev-libs/liboil 0.3.17-r2 0.3.17-r3: Library of simple functions that are optimized for various CPUs
 dev-libs/liborcus 0.15.4 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1 0.32-r2: reimplement libdjb - excellent libraries from Dan Bernstein
@@ -5702,7 +5702,7 @@ dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the 
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 7.0.0: Portable C++ runtime for threads and sockets
-dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
+dev-libs/udis86 1.7-r2 1.7.2-r1: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0 2.1.0: A very basic terminfo library
 dev-libs/unittest++ 2.0.0 2.0.0-r1 2.0.0-r2: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
@@ -7987,7 +7987,7 @@ dev-python/backcall 0.2.0: Specifications for callback functions passed in to an
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
 dev-python/backports-weakref 1.0_p1-r1: Backport of new features in Python's weakref module
 dev-python/backports-zoneinfo 0.2.1-r1: Backport of the standard library zoneinfo module
-dev-python/backrefs 4.5.0 4.6 5.0: Wrapper around re or regex that adds additional back references
+dev-python/backrefs 4.5.0 4.6 5.0 5.0.1: Wrapper around re or regex that adds additional back references
 dev-python/bandit 1.6.2-r1: A security linter from OpenStack Security
 dev-python/bareos 19.2.8: python bindings for bareos network backup suite
 dev-python/bashate 0.6.0: A pep8 equivalent for bash scripts
@@ -8388,7 +8388,7 @@ dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
-dev-python/jsonmerge 1.6.0: Merge a series of JSON documents
+dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 1.4.2 1.5.0: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
@@ -8759,7 +8759,7 @@ dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 1.4.0: Python bindings for libgit2
+dev-python/pygit2 1.4.0 1.5.0: Python bindings for libgit2
 dev-python/pyglet 1.5.13 1.5.14: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.4: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
@@ -9402,7 +9402,7 @@ dev-qt/qtserialport 5.15.2: Serial port abstraction library for the Qt5 framewor
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
 dev-qt/qtspeech 5.15.2: Text-to-speech library for the Qt5 framework
 dev-qt/qtsql 5.15.2: SQL abstraction library for the Qt5 framework
-dev-qt/qtstyleplugins 5.0.0_p20170311: Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
+dev-qt/qtstyleplugins 5.0.0_p20170311-r1: Additional style plugins for Qt5 (gtk2, cleanlook, plastic, motif)
 dev-qt/qtsvg 5.15.2: SVG rendering library for the Qt5 framework
 dev-qt/qttest 5.15.2: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 5.15.2: Translation files for the Qt5 framework
@@ -13111,7 +13111,7 @@ media-libs/libaom 1.0.0-r2 2.0.0 2.0.1 9999: Alliance for Open Media AV1 Codec S
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.15.0: Library for SSA/ASS subtitles rendering
 media-libs/libavif 0.8.1 0.8.3 0.8.4 9999: Library for encoding and decoding .avif files
-media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
+media-libs/libbdplus 0.1.2 0.1.2-r1 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.2.0 1.2.1 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
@@ -13189,7 +13189,7 @@ media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
-media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
+media-libs/libmodplug 0.8.9.0 0.8.9.0-r1: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.2-r1 0.9.2-r2: Library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
