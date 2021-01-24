@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/quvi/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="offensive"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
