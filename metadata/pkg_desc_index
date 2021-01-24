@@ -3466,7 +3466,7 @@ dev-cpp/aixlog 1.4.0 9999: Header-only C++ logging library
 dev-cpp/amqp-cpp 4.3.10: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/argparse 2.1: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
-dev-cpp/asio 1.10.8 1.17.0 1.18.0 1.18.1: Asynchronous Network Library
+dev-cpp/asio 1.10.8 1.17.0 1.18.1: Asynchronous Network Library
 dev-cpp/atkmm 2.28.0: C++ interface for the ATK library
 dev-cpp/benchmark 1.5.1 1.5.2: A microbenchmark support library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
@@ -5717,7 +5717,7 @@ dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencod
 dev-libs/vala-common 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Build infrastructure for packages that use Vala
 dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
 dev-libs/vc-intrinsics 0_p20200904: LLVM intrinsics representing SIMD semantics of a program targeting GPU
-dev-libs/voikko-fi 2.3 2.4: Finnish dictionary for libvoikko based spell checkers (vvfst format)
+dev-libs/voikko-fi 2.4: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.12-r3: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.18.0 1.18.91 1.18.92 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
@@ -13724,7 +13724,7 @@ media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/baudline 1.08-r1: A time-frequency browser designed for visualization of spectral domains
-media-sound/beets 1.4.9-r3 9999: Media library management system for obsessive-compulsive music geeks
+media-sound/beets 1.4.9-r4 9999: Media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11_p20160207: Qt5 MPD client with experimental UI
 media-sound/bitmeter 1.2-r2: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
@@ -15099,7 +15099,7 @@ net-misc/croc 8.6.7: Easily and securely send things from one computer to anothe
 net-misc/csync 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.74.0-r2: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2 3.1.0-r3: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
-net-misc/dahdi-tools 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
+net-misc/dahdi-tools 3.1.0 3.1.0-r1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
@@ -15290,8 +15290,8 @@ net-misc/s3cmd 2.1.0: Command line client for Amazon S3
 net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1 2.3.2.0: Suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sftp
-net-misc/seafile 7.0.9 7.0.10: File syncing and sharing software with file encryption and group sharing
-net-misc/seafile-client 7.0.9-r1 7.0.10: Seafile desktop client
+net-misc/seafile 7.0.9 7.0.10 8.0.1: File syncing and sharing software with file encryption and group sharing
+net-misc/seafile-client 7.0.9-r1 7.0.10 8.0.1: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r2: Small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
@@ -18857,7 +18857,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20201018 0_pre20210121: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20210121: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
