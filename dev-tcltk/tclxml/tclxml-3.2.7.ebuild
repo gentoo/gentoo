@@ -13,7 +13,7 @@ SRC_URI="https://github.com/wjoye/${PN}/archive/v${PV}.tar.gz
 IUSE="debug threads"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc sparc x86"
 
 DEPEND="
 	>=dev-lang/tcl-8.2:0
