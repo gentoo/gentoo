@@ -4,8 +4,9 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools bash-completion-r1 l10n linux-info lua-single perl-functions xdg-utils
+inherit autotools bash-completion-r1 l10n linux-info lua-single perl-functions python-single-r1 xdg-utils flag-o-matic
 
 MY_PV_1="$(ver_cut 1-2)"
 MY_PV_2="$(ver_cut 2)"
@@ -19,10 +20,11 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/"${MY_PV_1}""
 
 KEYWORDS="~amd64"
-IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua ocaml +perl ruby selinux static-libs systemtap test"
+IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua ocaml +perl python ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Failures - doc
 
@@ -59,6 +61,7 @@ COMMON_DEPEND="
 		>=app-misc/hivex-1.3.1[perl?]
 		dev-perl/String-ShellQuote
 	)
+	python? ( ${PYTHON_DEPS} )
 	fuse? ( sys-fs/fuse:= )
 	introspection? (
 		>=dev-libs/glib-2.26:2
@@ -117,6 +120,7 @@ pkg_setup() {
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
 
 		use lua && lua-single_pkg_setup
+		use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -134,6 +138,9 @@ src_configure() {
 	# configured kernel.
 	export vmchannel_test=no
 
+	# bug #703118
+	append-ldflags "-L/usr/$(get_libdir)/xcrypt"
+
 	econf \
 		--with-bashcompletiondir="$(get_bashcompdir)" \
 		$(use_with libvirt) \
@@ -142,7 +149,7 @@ src_configure() {
 		--with-extra="-gentoo" \
 		--with-readline \
 		--disable-php \
-		--disable-python \
+		$(use_enable python) \
 		--without-java \
 		$(use_enable perl) \
 		$(use_enable fuse) \
