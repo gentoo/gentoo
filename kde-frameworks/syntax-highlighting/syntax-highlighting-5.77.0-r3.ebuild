@@ -11,7 +11,7 @@ DESCRIPTION="Framework for syntax highlighting"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-bash-zsh-fixes.tar.xz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="nls"
 
 BDEPEND="
