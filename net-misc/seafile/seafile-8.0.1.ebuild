@@ -20,18 +20,18 @@ IUSE="libressl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
-	dev-libs/glib:2
-	dev-libs/libevent
-	dev-libs/jansson
 	$(python_gen_cond_dep '
 		dev-python/future[${PYTHON_MULTI_USEDEP}]
 	')
-	sys-libs/zlib
-	net-misc/curl
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
-	dev-db/sqlite:3"
+	dev-db/sqlite:3
+	dev-libs/glib:2
+	dev-libs/jansson
+	dev-libs/libevent
+	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
+	net-misc/curl
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	$(vala_depend)"
 
