@@ -6,6 +6,7 @@ EAPI=7
 DOCS_BUILDER="doxygen"
 DOCS_DIR="${S}/doc"
 
+LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1..3} luajit )
 
 PYTHON_COMPAT=( python3_{7,8,9} )
