@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-24)
+# Last release in 2004. Fails to build with gcc-10 and openssl-1.1.
+# Removal on 2021-02-23.  Bugs #707004, #677170, #562724
+app-crypt/sign
+
 # Conrad Kostecki <conikost@gentoo.org> (2020-01-21)
 # All kernels >= 4.17 removed IrDA drivers and support,
 # the package has also multiple bugs open and is unmaintained.
