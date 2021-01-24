@@ -2560,7 +2560,7 @@ app-misc/realpath 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.25.19 1.27.12: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
-app-misc/remind 03.01.15 03.02.00 03.03.00 03.03.01: Ridiculously functional reminder program
+app-misc/remind 03.01.15 03.03.05: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2 0.7.0 0.8.0: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9.4 1.0.0: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
@@ -5345,7 +5345,7 @@ dev-libs/intel-neo 20.16.16582 20.37.17906: Intel Graphics Compute Runtime for L
 dev-libs/isl 0.23-r1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.12 2.13.1 2.13.1-r1: C library for encoding, decoding and manipulating JSON data
-dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
+dev-libs/jemalloc 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.15 9999: A JSON implementation in C
 dev-libs/json-glib 1.4.4 1.6.0: Library providing GLib serialization and deserialization for the JSON format
@@ -5609,7 +5609,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
-dev-libs/nss 3.58-r2 3.60 3.60.1: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.58-r2 3.60.1 3.61: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
@@ -13143,7 +13143,7 @@ media-libs/libepoxy 1.5.4 1.5.5 9999: Library for handling OpenGL function point
 media-libs/libexif 0.6.22_p20201105: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.9-r1: Library to extract metadata from files of arbitrary type
-media-libs/libfame 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
+media-libs/libfame 0.9.1-r2 0.9.1-r3: MPEG-1 and MPEG-4 video encoding library
 media-libs/libffado 2.4.4-r1: Driver for IEEE1394 (Firewire) audio interfaces
 media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
 media-libs/libfpx 1.3.1_p10: A library for manipulating FlashPIX images
@@ -13187,7 +13187,7 @@ media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 20.03 20.08 20.09: MediaInfo libraries
 media-libs/libmetalink 0.1.3-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
-media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
+media-libs/libmms 0.6.4 0.6.4-r1: Library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0 0.8.9.0-r1: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.2-r1 0.9.2-r2: Library for mp3splt to split mp3 and ogg files without decoding
@@ -13279,7 +13279,7 @@ media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmp
 media-libs/openal 1.20.1 1.21.0: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
-media-libs/opencore-amr 0.1.3-r1 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
+media-libs/opencore-amr 0.1.3-r1 0.1.5-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3 1.0.3-r1: OpenCTM - the Open Compressed Triangle Mesh.
 media-libs/opencv 4.1.2-r3 4.5.0 4.5.1: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0 2.5.2-r1 2.5.3: ILM's OpenEXR high dynamic-range image file format libraries
@@ -13754,7 +13754,7 @@ media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based on Darkice Ice Stream
 media-sound/daudio 0.3-r1: Distributed audio on the local network
 media-sound/dbmeasure 0.0.20100217: ALSA Volume Control Attenuation Measurement Tool
 media-sound/dcadec 0.2.0: DTS Coherent Acoustics decoder with support for HD extensions
-media-sound/dcaenc 2-r1 9999: DTS Coherent Acoustics audio encoder
+media-sound/dcaenc 2-r2: DTS Coherent Acoustics audio encoder
 media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/deadbeef 1.8.4: DeaDBeeF is a modular audio player similar to foobar2000
 media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
@@ -14163,7 +14163,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5 4.15.0 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.3.10 0.3.18: Multimedia processing graphs
+media-video/pipewire 0.3.10 0.3.18 0.3.20: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
@@ -14997,7 +14997,7 @@ net-mail/mlmmj 1.3.0: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
-net-mail/mu 1.4.13 1.4.14: Set of tools to deal with Maildirs, in particular, searching and indexing
+net-mail/mu 1.4.13 1.4.15: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5 6: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r2 0.31.2 0.31.3: Thread-based e-mail indexer, supporting quick search and tagging
@@ -15495,7 +15495,7 @@ net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
-net-proxy/mitmproxy 5.1.1 5.2-r1 5.3.0 6.0.1: An interactive, SSL-capable, man-in-the-middle HTTP proxy
+net-proxy/mitmproxy 6.0.2: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
@@ -17718,7 +17718,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 2.0.14 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20201122 20201222 20210122: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20201222 20210122: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment

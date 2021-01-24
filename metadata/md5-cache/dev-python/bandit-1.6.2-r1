@@ -5,7 +5,7 @@ DESCRIPTION=A security linter from OpenStack Security
 EAPI=7
 HOMEPAGE=https://github.com/PyCQA/bandit
 IUSE=test python_targets_python3_7 python_targets_python3_8
-KEYWORDS=amd64 ~arm64 ~s390 x86
+KEYWORDS=amd64 ~arm ~arm64 ~s390 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-python/pbr-2.0.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/GitPython-1.0.1[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/pyyaml-5.3.1[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/six-1.10.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/stevedore-1.20.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/b/bandit/bandit-1.6.2.tar.gz https://github.com/PyCQA/bandit/commit/45494c94d59eea5ddbe0204f3781b90108cbde30.patch -> bandit-1.6.2_py38-1.patch https://github.com/PyCQA/bandit/commit/3d0824676974e7e2e9635c10bc4f12e261f1dbdf.patch -> bandit-1.6.2_py38-2.patch
 _eclasses_=distutils-r1	f847d402a7ecea58af1958f5b4ec23da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=97c532d36823b3defb5ce149d5a73eb1
+_md5_=5b6649493568d75041165690bd27575d
