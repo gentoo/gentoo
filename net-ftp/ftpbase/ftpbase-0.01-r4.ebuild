@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils pam user
+inherit pam
 
 DESCRIPTION="FTP layout package"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -30,10 +30,7 @@ src_install() {
 	insinto /etc
 	doins "${FILESDIR}/ftpusers"
 
-	cp "${FILESDIR}/ftp-pamd-include" "${T}" || die
-	if use elibc_FreeBSD; then
-		sed -i -e "/pam_listfile.so/s/^.*$/account  required  pam_ftpusers.so no_warn disallow/" \
-			"${T}"/ftp-pamd-include || die
+	if use pam; then
+		newpamd "${FILESDIR}"/ftp-pamd-include ftp
 	fi
-	newpamd "${T}"/ftp-pamd-include ftp
 }
