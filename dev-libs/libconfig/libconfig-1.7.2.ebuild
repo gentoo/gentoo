@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hyperrealm/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-2.1"
 SLOT="0/11"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 sparc x86 ~x86-linux"
 IUSE="+cxx static-libs"
 
 DEPEND="
