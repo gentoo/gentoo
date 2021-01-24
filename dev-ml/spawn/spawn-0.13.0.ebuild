@@ -12,4 +12,7 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="ocamlopt"
+IUSE="ocamlopt test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( dev-ml/ppx_expect )"
