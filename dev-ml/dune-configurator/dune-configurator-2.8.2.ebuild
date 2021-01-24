@@ -25,9 +25,9 @@ RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	test? (
 		dev-ml/core_bench
-		  dev-ml/menhir
-		  dev-ml/opam
-		  dev-ml/ppx_expect
+		dev-ml/menhir
+		dev-ml/opam
+		dev-ml/ppx_expect
 	)
 "
 # TODO for test deps:
