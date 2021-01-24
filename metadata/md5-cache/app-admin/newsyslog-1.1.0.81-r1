@@ -1,5 +1,5 @@
+BDEPEND=sys-apps/groff
 DEFINED_PHASES=configure install
-DEPEND=sys-apps/groff
 DESCRIPTION=a highly configurable program for managing and archiving log files
 EAPI=7
 HOMEPAGE=http://www.weird.com/~woods/projects/newsyslog.html
@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=virtual/cron app-arch/gzip
 SLOT=0
 SRC_URI=http://download.openpkg.org/components/cache/newsyslog/newsyslog-1.1.0.81.tar.gz
-_md5_=b698f2898a289fa1edbffaf620cb33c4
+_md5_=f9f291ff0b0e53a975acd626ba674002

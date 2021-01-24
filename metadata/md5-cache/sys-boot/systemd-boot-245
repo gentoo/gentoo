@@ -1,5 +1,5 @@
-BDEPEND=app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/intltool-0.50 dev-util/gperf >=dev-util/patchelf-0.10 virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
-DEFINED_PHASES=compile configure install test
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/intltool-0.50 dev-util/gperf >=dev-util/patchelf-0.10 virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install setup test
 DEPEND=>=sys-apps/util-linux-2.30 >=sys-boot/gnu-efi-3.0.2 sys-libs/libcap
 DESCRIPTION=UEFI boot manager from systemd (formerly gummiboot)
 EAPI=7
@@ -10,5 +10,5 @@ RDEPEND=>=sys-apps/util-linux-2.30 !sys-apps/systemd
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/systemd/systemd/archive/v245.tar.gz -> systemd-245.tar.gz
-_eclasses_=meson	fdaf2a7b9376934c1c7ddbd32114defb	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=7334f894edab693bcad0843597c134f0
+_eclasses_=meson	fdaf2a7b9376934c1c7ddbd32114defb	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=71ddefef1f10ab557deb12a82b0d0916
