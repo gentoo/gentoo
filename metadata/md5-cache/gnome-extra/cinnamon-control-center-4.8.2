@@ -1,0 +1,16 @@
+BDEPEND=dev-util/glib-utils >=dev-util/intltool-0.40.1 >=sys-devel/gettext-0.17 virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.44.0:2 >=gnome-base/libgnomekbd-3.0.0:0= >=gnome-extra/cinnamon-desktop-4.8:0= >=gnome-extra/cinnamon-menus-4.8:0= media-libs/fontconfig >=sys-auth/polkit-0.103 >=x11-libs/gdk-pixbuf-2.23.0:2 >=x11-libs/gtk+-3.16.0:3 >=x11-libs/libnotify-0.7.3:0= x11-libs/libX11 >=x11-libs/libxklavier-5.1 colord? ( >=x11-misc/colord-0.1.14:0= ) input_devices_wacom? ( >=dev-libs/libwacom-0.7 >=gnome-extra/cinnamon-settings-daemon-4.8:0= >=x11-libs/libXi-1.2 ) networkmanager? ( >=gnome-extra/nm-applet-1.2.0 >=net-misc/networkmanager-1.2.0:=[modemmanager?] modemmanager? ( >=net-misc/modemmanager-0.7 ) ) app-text/iso-codes x11-base/xorg-proto dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Cinnamons's main interface to configure various aspects of the desktop
+EAPI=7
+HOMEPAGE=https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-control-center
+IUSE=+colord input_devices_wacom +networkmanager +modemmanager systemd test test
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.44.0:2 >=gnome-base/libgnomekbd-3.0.0:0= >=gnome-extra/cinnamon-desktop-4.8:0= >=gnome-extra/cinnamon-menus-4.8:0= media-libs/fontconfig >=sys-auth/polkit-0.103 >=x11-libs/gdk-pixbuf-2.23.0:2 >=x11-libs/gtk+-3.16.0:3 >=x11-libs/libnotify-0.7.3:0= x11-libs/libX11 >=x11-libs/libxklavier-5.1 colord? ( >=x11-misc/colord-0.1.14:0= ) input_devices_wacom? ( >=dev-libs/libwacom-0.7 >=gnome-extra/cinnamon-settings-daemon-4.8:0= >=x11-libs/libXi-1.2 ) networkmanager? ( >=gnome-extra/nm-applet-1.2.0 >=net-misc/networkmanager-1.2.0:=[modemmanager?] modemmanager? ( >=net-misc/modemmanager-0.7 ) ) x11-themes/adwaita-icon-theme colord? ( >=gnome-extra/gnome-color-manager-3 ) input_devices_wacom? ( gnome-extra/cinnamon-settings-daemon[input_devices_wacom] ) systemd? ( >=sys-apps/systemd-31 ) !systemd? ( app-admin/openrc-settingsd )
+REQUIRED_USE=modemmanager? ( networkmanager )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cinnamon-control-center/archive/4.8.2.tar.gz -> cinnamon-control-center-4.8.2.tar.gz
+_eclasses_=meson	fdaf2a7b9376934c1c7ddbd32114defb	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=eb9e2b120530e56f041d40eb5de8a495

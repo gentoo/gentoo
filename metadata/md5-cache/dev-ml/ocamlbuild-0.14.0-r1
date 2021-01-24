@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] !<dev-ml/findlib-1.6.1-r1
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/ocaml/ocamlbuild/archive/0.14.0.tar.gz -> ocamlbuild-0.14.0.tar.gz
-_md5_=716573bcd23b2058b582389f4ccfb5fd
+_md5_=8091fab1d7be1f7571d6d81ebc61f829

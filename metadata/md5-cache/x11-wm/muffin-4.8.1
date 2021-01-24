@@ -1,0 +1,15 @@
+BDEPEND=dev-util/glib-utils dev-util/gtk-doc dev-util/gtk-doc-am >=dev-util/intltool-0.35 sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=configure install postinst postrm prepare test
+DEPEND=>=dev-libs/glib-2.37.3:2[dbus] >=dev-libs/json-glib-1.0 >=gnome-extra/cinnamon-desktop-4.8:0= gnome-extra/zenity >=media-libs/libcanberra-0.26[gtk3] virtual/opengl >=x11-libs/cairo-1.14:=[X] x11-libs/gdk-pixbuf:2[introspection?] >=x11-libs/gtk+-3.9.12:3[X,introspection?] x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libxcb >=x11-libs/libXcomposite-0.3 x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes >=x11-libs/libXi-1.6.0 >=x11-libs/libxkbcommon-0.4.3 x11-libs/libxkbfile x11-libs/libXrandr x11-libs/libXrender >=x11-libs/pango-1.14.0[X,introspection?] >=x11-libs/startup-notification-0.7:= x11-misc/xkeyboard-config introspection? ( >=dev-libs/gobject-introspection-0.9.12:= ) xinerama? ( x11-libs/libXinerama ) x11-base/xorg-proto test? ( app-text/docbook-xml-dtd:4.5 )
+DESCRIPTION=Compositing window manager forked from Mutter for use with Cinnamon
+EAPI=7
+HOMEPAGE=https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/muffin
+IUSE=+introspection test xinerama test
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.37.3:2[dbus] >=dev-libs/json-glib-1.0 >=gnome-extra/cinnamon-desktop-4.8:0= gnome-extra/zenity >=media-libs/libcanberra-0.26[gtk3] virtual/opengl >=x11-libs/cairo-1.14:=[X] x11-libs/gdk-pixbuf:2[introspection?] >=x11-libs/gtk+-3.9.12:3[X,introspection?] x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libxcb >=x11-libs/libXcomposite-0.3 x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes >=x11-libs/libXi-1.6.0 >=x11-libs/libxkbcommon-0.4.3 x11-libs/libxkbfile x11-libs/libXrandr x11-libs/libXrender >=x11-libs/pango-1.14.0[X,introspection?] >=x11-libs/startup-notification-0.7:= x11-misc/xkeyboard-config introspection? ( >=dev-libs/gobject-introspection-0.9.12:= ) xinerama? ( x11-libs/libXinerama )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/linuxmint/muffin/archive/4.8.1.tar.gz -> muffin-4.8.1.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=6f33ebbdd9d41dc236c131c4747c488e
