@@ -16,6 +16,9 @@ LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="acl +handbook kerberos +kwallet X"
 
+# tests hang
+RESTRICT+=" test"
+
 RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -68,10 +71,10 @@ PDEPEND="
 	>=kde-frameworks/kded-${PVCUT}:5
 "
 
-# tests hang
-RESTRICT+=" test"
-
-PATCHES=( "${FILESDIR}/${P}-crashfix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-crashfix.patch"
+	"${FILESDIR}/${P}-gcc11.patch" # bug 766480
+)
 
 src_configure() {
 	local mycmakeargs=(
