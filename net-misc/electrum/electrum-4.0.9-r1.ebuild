@@ -27,7 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	dev-python/bitstring[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	<dev-python/dnspython-2[${PYTHON_USEDEP}]
+	>=dev-python/dnspython-2[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
 	dev-python/PySocks[${PYTHON_USEDEP}]
 	dev-python/qrcode[${PYTHON_USEDEP}]
