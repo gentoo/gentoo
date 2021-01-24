@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2021-01-24)
+# Dead package, wrongly named, only installs
+# really old scikit-examples.
+# Removal in 14 days
+sci-libs/scikits
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-24)
 # Last release in 2004. Fails to build with gcc-10 and openssl-1.1.
 # Removal on 2021-02-23.  Bugs #707004, #677170, #562724
@@ -545,8 +551,6 @@ app-admin/amazon-ec2-init
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
 # FAIL:07:02:35 (00:00:00) Dump/load of ./TESTDIR.3/recd001.db failed.
 # FAIL:07:02:35 (00:00:00) db_verify_preop: expected 0, got 1
-# Lars Wendler <polynomial-c@gentoo.org> (2019-01-25)
-# Also masked because of mostly incompatible license (AGPL-3)
 =sys-libs/db-6.1*
 =sys-libs/db-6.2*
 =sys-libs/db-18.1*
