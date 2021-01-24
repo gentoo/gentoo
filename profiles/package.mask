@@ -261,12 +261,6 @@ media-sound/tomahawk
 # Masked for removal in 30 days.
 media-video/smtube
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Depends on deprecated dev-qt/qtwebkit, no maintainer, bug #709880.
-# Alternatives: dev-python/weasyprint, xhtml2pdf (not packaged, bug #699356)
-# Masked for removal in 30 days.
-media-gfx/wkhtmltopdf
-
 # Andrew Savchenko <bircoph@gentoo.org> (2020-12-26)
 # All docs and socket library functionality are merged back into single
 # app-admin/clsync package using USE="apidoc doc socket-library" starting
