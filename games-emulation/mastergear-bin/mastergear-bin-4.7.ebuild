@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ RDEPEND=">=sys-libs/glibc-2.15
 	|| ( media-sound/pulseaudio media-sound/apulse )"
 
 S="${WORKDIR}"
+QA_PREBUILT="usr/bin/mastergear"
 
 src_install() {
 	newbin mg mastergear

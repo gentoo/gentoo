@@ -93,5 +93,7 @@ src_install() {
 		newenvd "${FILESDIR}"/01-cvs-env.d 01cvs
 	fi
 
-	newpamd "${FILESDIR}"/cvs.pam-include-1.12.12 cvs
+	if use pam; then
+		newpamd "${FILESDIR}"/cvs.pam-include-1.12.12 cvs
+	fi
 }

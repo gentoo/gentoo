@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit xdg cmake
 
-MY_PV="2019-03-04-Release-2.7.0"
+MY_PV="2020-08-23-Release-2.7.5"
 DESCRIPTION="An open-source multiplatform software for playing card games over a network"
 HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
 SRC_URI="https://github.com/Cockatrice/Cockatrice/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -13,7 +13,8 @@ SRC_URI="https://github.com/Cockatrice/Cockatrice/archive/${MY_PV}.tar.gz -> ${P
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client +oracle server"
+IUSE="+client +oracle test server"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
@@ -38,18 +39,11 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	client? ( dev-libs/protobuf )
 	server? ( dev-libs/protobuf )
+	test? ( dev-cpp/gtest )
 "
 DEPEND="${RDEPEND}"
 
-# As the default help/about display the sha1 we need it
-SHA1='294b433'
-
 S="${WORKDIR}/Cockatrice-${MY_PV}"
-
-PATCHES=(
-	"${FILESDIR}"/use-ccache.patch
-	"${FILESDIR}"/${P}-qt-5.15.patch
-)
 
 src_configure() {
 	local mycmakeargs=(
@@ -58,11 +52,12 @@ src_configure() {
 		-DWITH_CLIENT=$(usex client)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_SERVER=$(usex server)
+		-DTEST=$(usex test)
 		-DICONDIR="${EPREFIX}/usr/share/icons"
 		-DDESKTOPDIR="${EPREFIX}/usr/share/applications" )
 
 	# Add date in the help about, come from git originally
-	sed -e 's/^set(PROJECT_VERSION_FRIENDLY.*/set(PROJECT_VERSION_FRIENDLY \"'${SHA1}'\")/' \
+	sed -e 's/^set(PROJECT_VERSION_FRIENDLY.*/set(PROJECT_VERSION_FRIENDLY \"'${MY_PV}'\")/' \
 		-i cmake/getversion.cmake || die "sed failed!"
 
 	cmake_src_configure
