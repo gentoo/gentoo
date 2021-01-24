@@ -1,0 +1,47 @@
+This fixes build with sys-devel/slibtool
+
+--- gtk-engines-2.20.2/configure.ac
++++ gtk-engines-2.20.2/configure.ac
+@@ -27,6 +27,9 @@
+ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE],["$GETTEXT_PACKAGE"],[Gettext package])
+ AM_GLIB_GNU_GETTEXT
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ AC_ARG_ENABLE(all, 		[  --disable-all           skip all engines/themes by default], [defaultval=$enableval], 	[defaultval="yes"])
+ AC_ARG_ENABLE(clearlooks, 	[  --disable-clearlooks    skip ClearLooks engine/theme], 	[clearlooks=$enableval], 	[clearlooks="$defaultval"])
+ AC_ARG_ENABLE(crux, 		[  --disable-crux          skip Crux engine/theme], 		[crux=$enableval], 		[crux="$defaultval"])
+--- gtk-engines-2.20.2/engines/hc/Makefile.am
++++ gtk-engines-2.20.2/engines/hc/Makefile.am
+@@ -38,7 +38,7 @@
+ 	./src/hc-style.c
+ 
+ libhcengine_la_LDFLAGS = -module -avoid-version -no-undefined -export-symbols $(top_srcdir)/engines/engine.symbols
+-libhcengine_la_LIBADD = $(top_builddir)/engines/support/libsupport.la $(GTK_LIBS)
++libhcengine_la_LIBADD = $(top_builddir)/engines/support/libsupport.la $(GTK_LIBS) $(LIBM)
+ 
+ -include $(top_srcdir)/git.mk
+ 
+--- gtk-engines-2.20.2/engines/mist/Makefile.am
++++ gtk-engines-2.20.2/engines/mist/Makefile.am
+@@ -16,7 +16,7 @@
+ 	./src/mist.c
+ 
+ libmist_la_LDFLAGS = -module -avoid-version -no-undefined -export-symbols $(top_srcdir)/engines/engine.symbols
+-libmist_la_LIBADD = $(top_builddir)/engines/support/libsupport.la $(GTK_LIBS)
++libmist_la_LIBADD = $(top_builddir)/engines/support/libsupport.la $(GTK_LIBS) $(LIBM)
+ 
+ -include $(top_srcdir)/git.mk
+ 
+--- gtk-engines-2.20.2/engines/thinice/Makefile.am
++++ gtk-engines-2.20.2/engines/thinice/Makefile.am
+@@ -18,7 +18,7 @@
+ 	./src/thinice_main.c
+ 
+ libthinice_la_LDFLAGS = -module -avoid-version -no-undefined -export-symbols $(top_srcdir)/engines/engine.symbols
+-libthinice_la_LIBADD = $(top_builddir)/engines/support/libsupport.la $(GTK_LIBS)
++libthinice_la_LIBADD = $(top_builddir)/engines/support/libsupport.la $(GTK_LIBS) $(LIBM)
+ 
+ -include $(top_srcdir)/git.mk
+ 
