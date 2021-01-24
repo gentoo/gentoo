@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/base:= dev-ml/configurator:= dev-ml/core_kernel:= dev-ml/ppx_assert:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/sexplib:= dev-ml/spawn:= dev-ml/stdio:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Jane Street's alternative to the standard library
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/core
+IUSE=ocamlopt
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-ml/base:= dev-ml/configurator:= dev-ml/core_kernel:= dev-ml/ppx_assert:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/sexplib:= dev-ml/spawn:= dev-ml/stdio:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=test
+SLOT=0/0.14.0
+SRC_URI=https://github.com/janestreet/core/archive/v0.14.0.tar.gz -> core-0.14.0.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=387b7a5c05cd6b807fed4680f4c6d61d

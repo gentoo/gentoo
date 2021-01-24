@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Spawning sub-processes
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/spawn
+IUSE=ocamlopt
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.13.0
+SRC_URI=https://github.com/janestreet/spawn/archive/v0.13.0.tar.gz -> spawn-0.13.0.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=4a5468f775d66cdd094bda0ac961a886

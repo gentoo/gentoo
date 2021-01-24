@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-ml/core-0.14.0:= >=dev-ml/core_kernel-0.14.0:= >=dev-ml/ppx_jane-0.14.0:= dev-ml/textutils:= >=dev-ml/re-1.8.0:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Micro-benchmarking library for OCaml
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/core_bench
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=>=dev-ml/core-0.14.0:= >=dev-ml/core_kernel-0.14.0:= >=dev-ml/ppx_jane-0.14.0:= dev-ml/textutils:= >=dev-ml/re-1.8.0:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.14.0
+SRC_URI=https://github.com/janestreet/core_bench/archive/v0.14.0.tar.gz -> core_bench-0.14.0.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=e300b347110640cb03ef1386a126795e

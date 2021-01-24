@@ -4,10 +4,10 @@ DESCRIPTION=Elliptic Curve Method for Integer Factorization
 EAPI=7
 HOMEPAGE=https://gitlab.inria.fr/zimmerma/ecm
 IUSE=+custom-tune openmp static-libs cpu_flags_x86_sse2
-KEYWORDS=~amd64 ~x86 ~ppc-macos ~x64-macos
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~ppc-macos ~x64-macos
 LICENSE=GPL-3 LGPL-3
 RDEPEND=dev-libs/gmp:=
 SLOT=0
 SRC_URI=https://gitlab.inria.fr/zimmerma/ecm/uploads/9cd422ec80268f8a885e499e17f98056/ecm-7.0.4.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=3142d9e118ebc4b49913396b05663319
+_md5_=726d83816eb308f76a8fe692b27eb145
