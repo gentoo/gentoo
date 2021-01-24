@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C++ header-only library for Nearest Neighbor (NN) search wih KD-trees"
 HOMEPAGE="https://github.com/jlblancoc/nanoflann"
@@ -18,18 +18,16 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-cpp/eigen:3"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	cmake-utils_src_prepare
-
-	# do not compile examples
-	cmake_comment_add_subdirectory examples
-}
-
-src_test() {
-	"${CMAKE_MAKEFILE_GENERATOR}" -C "${BUILD_DIR}" -j1 test
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_EXAMPLES=$(usex examples)
+		-DBUILD_TESTS=$(usex test)
+	)
+	cmake_src_configure
 }
