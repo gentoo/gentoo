@@ -3,6 +3,7 @@
 
 EAPI=7
 
+GNOME2_EAUTORECONF="yes"
 GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 LUA_COMPAT=( lua5-{1..4} )
@@ -38,15 +39,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-change-bullet.patch
 	"${FILESDIR}"/${P}-tooltips.patch
 	"${FILESDIR}"/${P}-window-dragging.patch
+	"${FILESDIR}"/${P}-slibtool.patch #766680
+	"${FILESDIR}"/${P}-automake-1.14.patch # taken from Debian
 )
 
 src_prepare() {
-	gnome2_src_prepare
 	# pkgconfig wrapper set up by lua-single.eclass is not multilib-compatible
 	# at present so point Autoconf directly to the correct implementation.
-	# We patch configure rather than configure.ac because running 'eautoreconf'
-	# results for some reason in corrupted test Makefiles.
-	sed -i -e "s|\"lua\"|\"${ELUA}\"|g" configure || die
+	sed -i -e "/PKG_CHECK_MODULES(LUA,/s|lua|${ELUA}|" configure.ac || die
+
+	gnome2_src_prepare
 }
 
 multilib_src_configure() {

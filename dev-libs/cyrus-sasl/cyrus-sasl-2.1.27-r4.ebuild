@@ -217,7 +217,9 @@ multilib_src_install_all() {
 	docinto html
 	dodoc doc/html/*.html
 
-	newpamd "${FILESDIR}/saslauthd.pam-include" saslauthd
+	if use pam; then
+		newpamd "${FILESDIR}/saslauthd.pam-include" saslauthd
+	fi
 
 	newinitd "${FILESDIR}/pwcheck.rc6" pwcheck
 	systemd_dounit "${FILESDIR}/pwcheck.service"
