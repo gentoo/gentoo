@@ -63,6 +63,8 @@ fi
 
 PATCHES=(
 	"${FILESDIR}/iputils-20200821-getrandom-fallback.patch"
+	"${FILESDIR}/iputils-20200821-fclose.patch"
+	"${FILESDIR}/iputils-20200821-install-sbindir.patch"
 )
 
 src_prepare() {
