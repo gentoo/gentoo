@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	xinerama? ( x11-libs/libXinerama )
 "
 RDEPEND="${COMMON_DEPEND}
+	>=app-accessibility/caribou-0.3
 	sys-apps/accountsservice[introspection]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -60,8 +61,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
-	python_fix_shebang src
+	default
+	python_fix_shebang install-scripts src
 }
 
 src_configure() {
