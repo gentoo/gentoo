@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="CC-BY-SA-3.0 CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk3"
+IUSE=""
 
 DEPEND="app-arch/xz-utils"
 RDEPEND="
@@ -55,8 +55,4 @@ src_compile() {
 src_install() {
 	insinto /usr/share/themes
 	doins -r Radiance* Ambiance*
-
-	use gtk3 || {
-		rm -R "${D}"/usr/share/themes/*/gtk-3.* || die
-	}
 }
