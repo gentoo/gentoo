@@ -57,6 +57,6 @@ src_install() {
 	doins -r Radiance* Ambiance*
 
 	use gtk3 || {
-		rm -R "${D}"/usr/share/themes/*/gtk-3.0 || die
+		rm -R "${D}"/usr/share/themes/*/gtk-3.* || die
 	}
 }
