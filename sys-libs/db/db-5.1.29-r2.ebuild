@@ -37,8 +37,7 @@ REQUIRED_USE="test? ( tcl )"
 # the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4:0 )
 	test? ( >=dev-lang/tcl-8.4:0 )
-	java? ( >=virtual/jdk-1.5 )
-	>=sys-devel/binutils-2.16.1"
+	java? ( >=virtual/jdk-1.5 )"
 RDEPEND="tcl? ( dev-lang/tcl:0 )
 	java? ( >=virtual/jre-1.5 )"
 
