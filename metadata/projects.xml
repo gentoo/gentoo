@@ -576,6 +576,28 @@
     </member>
   </project>
   <project>
+    <email>codec@gentoo.org</email>
+    <name>Core libraries for gfx / audio / video formats</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Codec</url>
+    <description>The codec project maintains core libraries for gfx / audio / video formats, partly in cooperation with other projects.</description>
+    <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+    </member>
+    <member>
+      <email>whissi@gentoo.org</email>
+      <name>Thomas Deutschmann</name>
+    </member>
+  </project>
+  <project>
     <email>comrel@gentoo.org</email>
     <name>Community Relations</name>
     <url>https://wiki.gentoo.org/wiki/Project:ComRel</url>
