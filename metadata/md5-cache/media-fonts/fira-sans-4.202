@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=Default monospaced typeface for FirefoxOS, designed for legibility
+EAPI=7
+HOMEPAGE=https://mozilla.github.io/Fira
+IUSE=otf +ttf X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=OFL-1.1
+REQUIRED_USE=|| ( otf ttf )
+SLOT=0
+SRC_URI=https://github.com/mozilla/Fira/archive/4.202.tar.gz -> Fira-4.202.tar.gz
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_md5_=1c88a5f7bbb7ac7e813acf9b76c0e94b
