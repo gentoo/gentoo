@@ -1106,7 +1106,7 @@ app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pdfcrack 0.19: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 113: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.33: A PGP packet visualizer
-app-crypt/pinentry 1.1.0-r4: Simple passphrase entry dialogs which utilize the Assuan protocol
+app-crypt/pinentry 1.1.0-r4 1.1.1: Simple passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/pius 3.0.0-r1: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
@@ -2018,7 +2018,7 @@ app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.13-r2 19.03.14 20.10.2: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-cli 20.10.2: the command line binary for docker
-app-emulation/docker-compose 1.27.4 1.28.0_rc1 1.28.0_rc2 1.28.0_rc3 1.28.0: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.27.4 1.28.0 1.28.1: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
@@ -2696,7 +2696,7 @@ app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.6.1 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.23.0-r1 2.24.0 2.24.6: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.23.0-r1 2.24.6: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 3.0.0_pre20200601 3.0.4 9999: Free cross-platform LaTeX editor (fork from texmakerX)
@@ -11447,7 +11447,7 @@ games-fps/wolfgl 0.93-r2: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/yamagi-quake2 7.43 7.45: Quake 2 engine focused on single player
-games-kids/gcompris 0.97-r1 1.0: Full featured educational application for children from 2 to 10
+games-kids/gcompris 1.0: Full featured educational application for children from 2 to 10
 games-kids/gmult 8.0-r1: Multiplication Puzzle emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r4: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
@@ -14631,7 +14631,7 @@ net-fs/openafs 1.8.7: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
-net-fs/samba 4.12.9-r1 4.12.10-r1 4.12.11 4.13.2-r1 4.13.3: Samba Suite Version 4
+net-fs/samba 4.12.9-r1 4.12.10-r1 4.12.11 4.13.2-r1 4.13.3-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
@@ -15470,7 +15470,7 @@ net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF fil
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0-r2: Dymo SDK for LabelWriter/LabelManager printers
-net-print/epson-inkjet-printer-escpr 1.7.7 1.7.8: Epson Inkjet Printer Driver (ESC/P-R)
+net-print/epson-inkjet-printer-escpr 1.7.8: Epson Inkjet Printer Driver (ESC/P-R)
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foo2zjs 20200221 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20170331 4.0.20180126 4.0.20190226: Printer information files for foomatic-db-engine to generate ppds
@@ -16161,7 +16161,7 @@ sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094j 094m-r1: C library implementing the Double Description Method
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
 sci-libs/ceres-solver 1.14.0: Nonlinear least-squares minimizer
-sci-libs/cfitsio 3.360 3.410 3.490: C and Fortran library for manipulating FITS files
+sci-libs/cfitsio 3.490: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cgnslib 3.4.0: CFD General Notation System standard library
 sci-libs/cholmod 2.1.2 3.0.13 3.0.14: Sparse Cholesky factorization and update/downdate library
@@ -17604,7 +17604,7 @@ sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 2.32-r3 
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.1: Library for managing partitions
-sys-libs/ldb 2.1.4-r1 2.2.0-r1: An LDAP-like embedded database
+sys-libs/ldb 2.1.4-r1 2.2.0-r2: LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
@@ -17663,7 +17663,7 @@ sys-libs/slang 2.3.2: Multi-platform library designed to allow a developer to cr
 sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/talloc 2.3.1: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
-sys-libs/tdb 1.4.3: A simple database API
+sys-libs/tdb 1.4.3: Simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
 sys-libs/timezone-data 2020d 2020e 2020f: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
@@ -18922,7 +18922,7 @@ x11-themes/kvantum 0.16.1: SVG-based theme engine for Qt5, KDE Plasma and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
-x11-themes/light-themes 17.04_p20170406 17.04_p20170406-r1 19.04: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
+x11-themes/light-themes 17.04_p20170406 17.04_p20170406-r1 19.04 20.10: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
 x11-themes/lovelock-backgrounds 14.91.1.1-r1: Fedora 15 official background artwork
 x11-themes/lxqt-themes 0.15.0 0.16.0: LXQt Themes
 x11-themes/mate-backgrounds 1.24.1: A set of backgrounds packaged with the MATE desktop

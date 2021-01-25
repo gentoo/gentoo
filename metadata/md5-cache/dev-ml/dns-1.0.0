@@ -9,5 +9,5 @@ RDEPEND=>=dev-ml/ocaml-base64-2.0.0:= >=dev-ml/ocaml-cstruct-3.0.2:=[ppx] dev-ml
 RESTRICT=test
 SLOT=0/1.0.0
 SRC_URI=https://github.com/mirage/dns/archive/v1.0.0.tar.gz -> ocaml-dns-1.0.0.tar.gz
-_eclasses_=findlib	df74899b0837d14d75b7e6bb42422b14	opam	4f1cff0457cf4790a5510753a67d1cc1
+_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	opam	4f1cff0457cf4790a5510753a67d1cc1
 _md5_=6ce03d8214e5fe840ad2c595ed1061f5

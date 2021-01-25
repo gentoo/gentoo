@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-3.10:=[ocamlopt?]
 SLOT=0/8.00
 SRC_URI=https://github.com/camlp5/camlp5/archive/rel8.00.tar.gz -> camlp5-8.00.tar.gz
-_eclasses_=findlib	df74899b0837d14d75b7e6bb42422b14	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=48e986473caf2140f5658c17b94bdad3
