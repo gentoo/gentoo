@@ -3754,7 +3754,7 @@ dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/recastnavigation 1.5.1_p20200511: Navigation mesh construction toolset for games
-dev-games/simgear 2020.1.2 9999: Development library for simulation games
+dev-games/simgear 2020.3.5 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.4.3-r1: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
@@ -8024,7 +8024,7 @@ dev-python/boto3 1.16.36 1.16.43 1.16.50 1.16.56 1.16.57 1.16.58 1.16.59 9999: T
 dev-python/botocore 1.19.36 1.19.43 1.19.50 1.19.56 1.19.57 1.19.58 1.19.59 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
-dev-python/bpython 0.20.1: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.0.1: Bash style brace expansion for Python
 dev-python/braintree 4.4.0: Braintree Python Library
 dev-python/breathe 4.22.1 4.25.0 4.25.1: Sphinx Doxygen renderer
@@ -8047,7 +8047,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.0-r3 1.14.4: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4: CloudFormation Linter
+dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4 0.44.5: CloudFormation Linter
 dev-python/cftime 1.3.0: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8290,7 +8290,7 @@ dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
-dev-python/google-api-core 1.24.0 1.25.0: Core Library for Google Client Libraries
+dev-python/google-api-core 1.24.0 1.25.0 1.25.1: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
 dev-python/google-auth 1.24.0: Google Authentication Library
@@ -8981,7 +8981,7 @@ dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and 
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-troveclient 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
-dev-python/python-utils 2.3.0 2.4.0 2.5.1 2.5.2: Collection of small Python functions & classes
+dev-python/python-utils 2.3.0 2.4.0 2.5.1 2.5.2 2.5.3: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.29: A fully functional X client library for Python, written in Python
@@ -9358,7 +9358,7 @@ dev-python/zope-event 4.5.0-r1: Event publishing / dispatch, used by Zope Compon
 dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
 dev-python/zope-interface 5.2.0: Interfaces for Python
-dev-python/zope-schema 6.0.0: Zope schema Architecture
+dev-python/zope-schema 6.0.0 6.0.1: Zope schema Architecture
 dev-python/zope-testing 4.7-r2 4.8 4.9: Zope testing helpers
 dev-python/zope-testrunner 5.2: Zope testrunner script
 dev-python/zstandard 0.14.0-r1 0.14.1 0.15.0 0.15.1: Zstandard Bindings for Python
@@ -11695,8 +11695,8 @@ games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.63 0.64 0.64-r100: Open source clone of Theme Hospital
 games-simulation/crashtest 1.1-r1: Educational car crash simulator
 games-simulation/crrcsim 0.9.13: model-airplane flight simulation program
-games-simulation/flightgear 2020.1.2 9999: Open Source Flight Simulator
-games-simulation/flightgear-data 2020.1.2 9999: FlightGear data files
+games-simulation/flightgear 2020.3.5 9999: Open Source Flight Simulator
+games-simulation/flightgear-data 2020.3.5 9999: FlightGear data files
 games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
@@ -15375,7 +15375,7 @@ net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage servi
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
 net-misc/youtube-dl 2021.01.16 2021.01.24.1 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
-net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
+net-misc/zerotier 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/389-ds-base 1.4.4.9: 389 Directory Server (core libraries and daemons)
