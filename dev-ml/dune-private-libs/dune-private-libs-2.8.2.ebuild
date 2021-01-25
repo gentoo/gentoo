@@ -17,7 +17,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	~dev-ml/dune-2.8.2
+	~dev-ml/dune-${PV}
 	test? (
 		dev-ml/core_bench
 		dev-ml/menhir
