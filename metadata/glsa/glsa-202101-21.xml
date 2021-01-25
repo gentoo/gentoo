@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-21">
+  <title>Flatpak: Sandbox escape</title>
+  <synopsis>A vulnerability was discovered in Flatpak which could allow a
+    remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">flatpak</product>
+  <announced>2021-01-25</announced>
+  <revised count="1">2021-01-25</revised>
+  <bug>765457</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/flatpak" auto="yes" arch="*">
+      <unaffected range="ge">1.10.0</unaffected>
+      <vulnerable range="lt">1.10.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Flatpak is a Linux application sandboxing and distribution framework.</p>
+  </background>
+  <description>
+    <p>A bug was discovered in the flatpak-portal service that can allow
+      sandboxed applications to execute arbitrary code on the host system (a
+      sandbox escape).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      Flatpak app possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>As a workaround, this vulnerability can be mitigated by preventing the
+      flatpak-portal service from starting, but that mitigation will prevent
+      many Flatpak apps from working correctly. It is highly recommended to
+      upgrade.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Flatpak users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/flatpak-1.10.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21261">CVE-2021-21261</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-22T00:26:55Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-25T00:07:24Z">b-man</metadata>
+</glsa>
