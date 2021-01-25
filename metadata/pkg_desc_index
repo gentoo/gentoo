@@ -8110,7 +8110,7 @@ dev-python/cursive 0.2.2-r1: Cursive implements OpenStack-specific validation of
 dev-python/curtsies 0.3.4 0.3.5: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5-r1: Python package for convex optimization
 dev-python/cwcwidth 0.1.1: Python bindings for wc(s)width
-dev-python/cx_Freeze 6.4.2: Create standalone executables from Python scripts
+dev-python/cx_Freeze 6.4.2 6.5.3: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
