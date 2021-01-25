@@ -35,7 +35,6 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
-	"${FILESDIR}/${P}-boost.patch"
 	"${FILESDIR}/${PN}-2020.1.2-do-not-assume-libc++-clang.patch"
 )
 
@@ -54,8 +53,7 @@ src_configure() {
 		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
-		-DENABLE_SIMD=OFF # see CPU_FLAGS
-		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SIMD=$(usex cpu_flags_x86_sse2)
 		-DENABLE_SOUND=ON
 		-DENABLE_TESTS=$(usex test)
 		-DSIMGEAR_HEADLESS=OFF
@@ -65,10 +63,5 @@ src_configure() {
 		-DUSE_AEONWAVE=OFF
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO perhaps track it
 	)
-
-	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse
-	fi
-
 	cmake_src_configure
 }

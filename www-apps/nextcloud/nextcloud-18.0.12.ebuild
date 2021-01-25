@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,6 +36,8 @@ src_install() {
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/data
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/config
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
+
+	webapp_postinst_txt en "${FILESDIR}"/php-argon2-en.txt
 
 	webapp_src_install
 }
