@@ -92,7 +92,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.400.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.93.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.40.0        json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.6.20    corelist
+	src_remove_dual      perl-core/Module-CoreList    5.202.101.23  corelist
 	src_remove_dual      perl-core/Pod-Checker        1.730.0       podchecker
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Pod-Usage          1.690.0       pod2usage
