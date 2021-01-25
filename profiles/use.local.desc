@@ -1879,6 +1879,7 @@ dev-lang/vala:valadoc - Installs valadoc documentation generation tool
 dev-lang/yap:R - Enable support for connecting R to Prolog
 dev-lang/yap:raptor - Enable support for Raptor RDF syntax libarary
 dev-lang/zig:experimental - Enable builds that do not support all of LLVM's target architectures
+dev-libs/aml:examples - Build and install examples
 dev-libs/antlr-c:debugger - Compiles debug info into the library
 dev-libs/appstream:apt - Enables Debians APT support
 dev-libs/appstream-glib:fonts - Enable fonts support for appstream-builder.
@@ -3387,10 +3388,19 @@ gui-apps/waybar:popups - Enable popup support with gtk-layer-shell
 gui-apps/waybar:pulseaudio - Enable support for volume control via PulseAudio
 gui-apps/waybar:tray - Enable support for tray
 gui-apps/waybar:wifi - Enable support for wifi/rfkill
+gui-apps/waypipe:dmabuf - Use dmabuf for data exchange and hardware decoding
+gui-apps/waypipe:ffmpeg - Link with ffmpeg for software decoding
+gui-apps/waypipe:man - Build and install man pages
+gui-apps/waypipe:systemtap - Enable SystemTAP/DTrace tracing
+gui-apps/wayvnc:gbm - enable GPU-side screencopy (experimental)
+gui-apps/wayvnc:tracing - Trace kernel and memory calls
 gui-apps/wf-recorder:man - Build and install man pages
 gui-apps/wf-recorder:opencl - Enable OpenCL
 gui-libs/greetd:man - Build and install man pages
 gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
+gui-libs/neatvnc:examples - Build and install examples
+gui-libs/neatvnc:jpeg - Enable fast encodings
+gui-libs/neatvnc:tracing - Trace kernel and memory calls
 gui-libs/wlroots:X - Enable support for X11 applications (XWayland)
 gui-libs/wlroots:elogind - Enable support for rootless session via elogind
 gui-libs/wlroots:icccm - Use xcb-icccm (from x11-libs/xcb-util-wm) util library for improved Xwayland introspection
