@@ -9,9 +9,9 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Hüttel</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>netmon@gentoo.org</email>
-		<name>Gentoo network monitoring and analysis project</name>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="libssh2">Enable SSH support through <pkg>net-libs/libssh2</pkg></flag>
