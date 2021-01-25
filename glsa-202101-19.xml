@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-19">
+  <title>OpenJDK: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJDK, the worst of
+    which could result in the arbitrary execution of code. 
+  </synopsis>
+  <product type="ebuild">openjdk</product>
+  <announced>2021-01-25</announced>
+  <revised count="1">2021-01-25</revised>
+  <bug>705992</bug>
+  <bug>750833</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/openjdk" auto="yes" arch="*">
+      <unaffected range="ge">8.272_p10</unaffected>
+      <vulnerable range="lt">8.272_p10</vulnerable>
+    </package>
+    <package name="dev-java/openjdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">8.272_p10</unaffected>
+      <vulnerable range="lt">8.272_p10</vulnerable>
+    </package>
+    <package name="dev-java/openjdk-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">8.272_p10</unaffected>
+      <vulnerable range="lt">8.272_p10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJDK is a free and open-source implementation of the Java Platform,
+      Standard Edition.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJDK. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJDK users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/openjdk-8.272_p10"
+    </code>
+    
+    <p>All OpenJDK (binary) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/openjdk-bin-8.272_p10"
+    </code>
+    
+    <p>All OpenJDK JRE (binary) users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/openjdk-jre-bin-8.272_p10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14779">CVE-2020-14779</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14781">CVE-2020-14781</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14782">CVE-2020-14782</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14792">CVE-2020-14792</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14796">CVE-2020-14796</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14797">CVE-2020-14797</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14798">CVE-2020-14798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14803">CVE-2020-14803</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2583">CVE-2020-2583</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2590">CVE-2020-2590</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2593">CVE-2020-2593</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2601">CVE-2020-2601</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2604">CVE-2020-2604</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2654">CVE-2020-2654</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-2659">CVE-2020-2659</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-01T10:46:07Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-25T00:02:23Z">b-man</metadata>
+</glsa>
