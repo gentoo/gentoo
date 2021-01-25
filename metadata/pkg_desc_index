@@ -5674,7 +5674,7 @@ dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directo
 dev-libs/s2n 0.10.21-r1: simple, small, fast and secure C99 implementation of the TLS/SSL protocols
 dev-libs/satyr 0.31: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 9.2.0 9.3.0: Simulation Description Format (SDF) parser
-dev-libs/serd 0.30.6 0.30.8: Library for RDF syntax which supports reading and writing Turtle and NTriples
+dev-libs/serd 0.30.6 0.30.8 0.30.10: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02-r1: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/simdjson 0.4.7 0.6.1 0.7.1 0.8.0: SIMD accelerated C++ JSON library
