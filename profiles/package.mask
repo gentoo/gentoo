@@ -238,35 +238,6 @@ dev-ruby/rack:2.1
 # Bug #762361
 media-sound/takcd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Dead upstream, only two revdeps.
-# Masked for removal in 30 days.
-media-libs/qt-gstreamer
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Dead upstream, depends on dead media-libs/qt-gstreamer.
-# If anyone is actually using this productively, *do tell*.
-# Masked for removal in 30 days.
-kde-apps/ktp-call-ui
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Depends on deprecated dev-qt/qtwebkit, abandoned upstream.
-# Alternatives: Plenty. media-sound/cantata, media-sound/clementine,
-# media-sound/elisa, media-sound/strawberry, media-sound/yarock, ...
-# Masked for removal in 30 days.
-media-sound/tomahawk
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Depends on deprecated dev-qt/qtwebkit, no maintainer, bug #688852.
-# Masked for removal in 30 days.
-media-video/smtube
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Depends on deprecated dev-qt/qtwebkit, no maintainer, bug #709880.
-# Alternatives: dev-python/weasyprint, xhtml2pdf (not packaged, bug #699356)
-# Masked for removal in 30 days.
-media-gfx/wkhtmltopdf
-
 # Andrew Savchenko <bircoph@gentoo.org> (2020-12-26)
 # All docs and socket library functionality are merged back into single
 # app-admin/clsync package using USE="apidoc doc socket-library" starting

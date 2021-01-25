@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,12 +14,13 @@ SRC_URI="https://github.com/openMSX/openMSX/releases/download/RELEASE_${PV//./_}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+joystick"
 
 RDEPEND="dev-lang/tcl:0=
 	media-libs/alsa-lib
 	media-libs/libogg
 	media-libs/libpng:0=
-	media-libs/libsdl2[sound,video]
+	media-libs/libsdl2[joystick=,sound,video]
 	media-libs/libtheora
 	media-libs/libvorbis
 	media-libs/sdl2-ttf
@@ -28,6 +29,8 @@ RDEPEND="dev-lang/tcl:0=
 	virtual/opengl"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
+
+PATCHES=( "${FILESDIR}/${P}-libsdl-joystick-fix.patch" )
 
 DOC_CONTENTS="
 If you want to if you want to emulate real MSX systems and not
