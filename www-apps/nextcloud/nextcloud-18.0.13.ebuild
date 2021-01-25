@@ -37,5 +37,7 @@ src_install() {
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/config
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
 
+	webapp_postinst_txt en "${FILESDIR}"/php-argon2-en.txt
+
 	webapp_src_install
 }
