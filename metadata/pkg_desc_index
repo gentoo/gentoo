@@ -8032,7 +8032,7 @@ dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web pr
 dev-python/bsddb3 6.2.7 6.2.9: Python bindings for Berkeley DB
 dev-python/cached-property 1.5.2: A cached-property for decorating methods in classes
 dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
-dev-python/cachetools 4.1.1 4.2.0: Extensible memoizing collections and decorators
+dev-python/cachetools 4.1.1 4.2.0 4.2.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 1.2.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.3-r1: Python wrapper for libcangjie
 dev-python/capturer 3.0: Easily capture stdout/stderr of the current process and subprocesses
@@ -8338,7 +8338,7 @@ dev-python/ijson 3.1.1 3.1.3: Iterative JSON parser with a Pythonic interface
 dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.1.0 2.2.0: easy-to-use, pythonic, and complete IMAP client library
-dev-python/iminuit 1.3.8 2.2.1: Minuit numerical function minimization in Python
+dev-python/iminuit 1.3.8 2.2.1 2.3.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 3.3.0 3.4.0: Read metadata from Python packages
 dev-python/importlib_resources 3.3.0 4.1.1 5.0.0 5.1.0: Read resources from Python packages
@@ -8369,7 +8369,7 @@ dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.3.21_p2-r1 5.6.3 5.7.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
-dev-python/jaraco-classes 3.1.0-r1: Classes used by other projects by developer jaraco
+dev-python/jaraco-classes 3.1.0-r1 3.2.0: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 3.0.0-r1 3.1.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 3.0.0-r1: Context managers by jaraco
 dev-python/jaraco-envs 2.0.0-r1 2.1.0: Classes for orchestrating Python (virtual) environments.
@@ -8415,7 +8415,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10: Personal shell command keeper and snippets manager
-dev-python/keyring 21.5.0 21.7.0 21.8.0: Provides access to the system keyring service
+dev-python/keyring 21.5.0 21.7.0 21.8.0 22.0.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8443,7 +8443,7 @@ dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
-dev-python/llfuse 1.3.6: Python bindings for the low-level FUSE API
+dev-python/llfuse 1.3.6 1.4.0: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 1.0.0: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
@@ -8524,7 +8524,7 @@ dev-python/namespace-paste 1-r1: Namespace package declaration for paste
 dev-python/namespace-repoze 1: Namespace package declaration for repoze
 dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinxcontrib
 dev-python/namespace-zope 1-r1: Namespace package declaration for zope
-dev-python/natsort 7.1.0: Natural sorting for Python
+dev-python/natsort 7.1.0 7.1.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manager
 dev-python/nbclient 0.5.1: A client library for executing Jupyter notebooks
 dev-python/nbconvert 6.0.7: Converting Jupyter Notebooks
@@ -8974,7 +8974,7 @@ dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-socks 1.1.2 1.2.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
-dev-python/python-sshpubkeys 3.1.0 3.2.1: OpenSSH public key parser for Python
+dev-python/python-sshpubkeys 3.1.0 3.2.1 3.3.0: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
@@ -9333,7 +9333,7 @@ dev-python/xdoctest 0.15.0 0.15.2: A rewrite of Python's builtin doctest module 
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.3.1 1.4.1: An XML Schema validator and decoder
+dev-python/xmlschema 1.3.1 1.4.1 1.4.2: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
@@ -15103,7 +15103,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1 4.4.2 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 8.1.9 8.1.9-r1 9.3.4 9.4.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 8.1.9-r1 9.3.4 9.4.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.7-r1 0.7.8: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
@@ -17604,7 +17604,7 @@ sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.24 2.25 9999: A library for manipulating block devices
-sys-libs/libcap 2.43 2.45 2.46: POSIX 1003.1e capabilities
+sys-libs/libcap 2.43 2.46 2.47: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.11 0.8 0.8.1-r1 0.8.2-r1: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0.9999: New implementation of the C++ standard library, targeting C++11
