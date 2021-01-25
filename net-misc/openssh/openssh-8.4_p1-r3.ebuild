@@ -294,6 +294,9 @@ src_configure() {
 		append-cppflags -DBROKEN_GLOB
 	fi
 
+	# use replacement, RPF_ECHO_ON doesn't exist here
+	[[ ${CHOST} == *-darwin* ]] && export ac_cv_func_readpassphrase=no
+
 	local myconf=(
 		--with-ldflags="${LDFLAGS}"
 		--disable-strip
