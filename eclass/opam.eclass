@@ -17,6 +17,9 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 # @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
 # @DESCRIPTION:
 # Override dependency for OPAM_INSTALLER

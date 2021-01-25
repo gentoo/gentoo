@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND="dev-libs/xapian:0/30
+DEPEND="~dev-libs/xapian-1.4.18:0/30
 	dev-lang/perl
 	dev-libs/libpcre
 	sys-libs/zlib"
