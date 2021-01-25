@@ -10180,7 +10180,7 @@ dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1 1.5.2: A LALR(1) parser generator for Ruby
 dev-ruby/rack 2.0.9 2.1.4 2.2.3: A modular Ruby webserver interface
-dev-ruby/rack-attack 6.3.1: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 6.3.1 6.4.0: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.12.0 1.12.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
 dev-ruby/rack-protection 2.1.0: This gem protects against typical web attacks
