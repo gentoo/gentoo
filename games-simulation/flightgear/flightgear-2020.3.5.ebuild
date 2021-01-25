@@ -64,8 +64,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2020.1.2-cmake.patch"
-	"${FILESDIR}/${P}-boost.patch"
+	"${FILESDIR}/${PN}-2020.3.5-cmake.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
@@ -95,7 +94,7 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
-		-DENABLE_SIMD=OFF # see CPU_FLAGS
+		-DENABLE_SIMD=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_SWIFT=OFF # swift pilot client not packaged yet
 		-DENABLE_TERRASYNC=$(usex utils)
@@ -118,9 +117,6 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)
-	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse
-	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
 	else
