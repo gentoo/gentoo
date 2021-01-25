@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit autotools flag-o-matic linux-info python-single-r1 systemd
+inherit autotools flag-o-matic linux-info lua-single python-single-r1 systemd
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata-ids.org/"
@@ -14,13 +15,13 @@ SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened logrotate lua luajit lz4 nflog +nfqueue redis systemd test"
+IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened logrotate lua lz4 nflog +nfqueue redis systemd test"
 
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	?? ( lua luajit )
-	bpf? ( af-packet )"
+	bpf? ( af-packet )
+	lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
 	acct-group/suricata
@@ -35,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	>=net-libs/libhtp-0.5.35
+	>=net-libs/libhtp-0.5.36
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng
@@ -43,8 +44,7 @@ RDEPEND="${PYTHON_DEPS}
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/libmaxminddb )
 	logrotate?  ( app-admin/logrotate )
-	lua?        ( dev-lang/lua:0= )
-	luajit?     ( dev-lang/luajit:* )
+	lua?        ( ${LUA_DEPS} )
 	lz4?        ( app-arch/lz4 )
 	nflog?      ( net-libs/libnetfilter_log )
 	nfqueue?    ( net-libs/libnetfilter_queue )
@@ -92,8 +92,6 @@ src_configure() {
 		$(use_enable geoip) \
 		$(use_enable hardened gccprotect) \
 		$(use_enable hardened pie) \
-		$(use_enable lua) \
-		$(use_enable luajit) \
 		$(use_enable lz4) \
 		$(use_enable nflog) \
 		$(use_enable nfqueue) \
@@ -101,6 +99,13 @@ src_configure() {
 		$(use_enable test unittests) \
 		"--disable-coccinelle"
 	)
+	if use lua; then
+		if use lua_single_target_luajit; then
+			myeconfargs+=( --enable-luajit )
+		else
+			myeconfargs+=( --enable-lua )
+		fi
+	fi
 
 	if use debug; then
 		myeconfargs+=( $(use_enable debug) )
@@ -144,7 +149,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog ""
+	elog
 	if use systemd; then
 		elog "Suricata requires either the mode of operation (e.g. --af-packet) or the interface to listen on (e.g. -i eth0)"
 		elog "to be specified on the command line. The provided systemd unit launches Suricata in af-packet mode and relies"
@@ -155,7 +160,7 @@ pkg_postinst() {
 	else
 		elog "The ${PN} init script expects to find the path to the configuration"
 		elog "file as well as extra options in /etc/conf.d."
-		elog ""
+		elog
 		elog "To create more than one ${PN} service, simply create a new .yaml file for it"
 		elog "then create a symlink to the init script from a link called"
 		elog "${PN}.foo - like so"
@@ -164,12 +169,12 @@ pkg_postinst() {
 		elog "   cd /etc/init.d"
 		elog "   ln -s ${PN} ${PN}.foo"
 		elog "Then edit /etc/conf.d/${PN} and make sure you specify sensible options for foo."
-		elog ""
+		elog
 		elog "You can create as many ${PN}.foo* services as you wish."
 	fi
 
 	if use bpf; then
-		elog ""
+		elog
 		elog "eBPF/XDP files must be compiled (using sys-devel/clang[llvm_targets_BPF]) before use"
 		elog "because their configuration is hard-coded. You can find the default ones in"
 		elog "    ${EPREFIX}/usr/share/doc/${PF}/ebpf"
@@ -179,17 +184,19 @@ pkg_postinst() {
 	fi
 
 	if use debug; then
-		elog ""
+		elog
 		elog "You have enabled the debug USE flag. Please read this link to report bugs upstream:"
 		elog "https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Reporting_Bugs"
 		elog "You need to also ensure the FEATURES variable in make.conf contains the"
 		elog "'nostrip' option to produce useful core dumps or back traces."
 	fi
 
-	elog ""
-	elog "To download and install an initial set of rules, run:"
-	elog "    emerge --config =${CATEGORY}/${PF}"
-	elog ""
+	elog
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		elog "To download and install an initial set of rules, run:"
+		elog "    emerge --config =${CATEGORY}/${PF}"
+	fi
+	elog
 }
 
 pkg_config() {
