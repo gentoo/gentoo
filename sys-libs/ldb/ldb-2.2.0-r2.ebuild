@@ -1,20 +1,23 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
+inherit python-single-r1 waf-utils multilib-minimal
 
-inherit python-single-r1 waf-utils multilib-minimal eutils
-
-DESCRIPTION="An LDAP-like embedded database"
+DESCRIPTION="LDAP-like embedded database"
 HOMEPAGE="https://ldb.samba.org"
-SRC_URI="https://www.samba.org/ftp/pub/${PN}/${P}.tar.gz"
+SRC_URI="https://samba.org/ftp/pub/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="doc +ldap +lmdb python test"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	test? ( python )"
 
 RESTRICT="!test? ( test )"
 
@@ -22,24 +25,24 @@ RDEPEND="
 	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.3.1[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.3[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.10.2[python(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	ldap? ( net-nds/openldap )
 	lmdb? ( >=dev-db/lmdb-0.9.16[${MULTILIB_USEDEP}] )
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		sys-libs/talloc[python,${PYTHON_SINGLE_USEDEP}]
+		sys-libs/tdb[python,${PYTHON_SINGLE_USEDEP}]
+		sys-libs/tevent[python,${PYTHON_SINGLE_USEDEP}]
+	)
 "
-
-DEPEND="dev-libs/libxslt
-	doc? ( app-doc/doxygen )
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
+	dev-libs/libxslt
 	virtual/pkgconfig
-	${PYTHON_DEPS}
-	${RDEPEND}
+	doc? ( app-doc/doxygen )
 "
-
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	test? ( python )"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
@@ -100,7 +103,7 @@ multilib_src_install() {
 	if multilib_is_native_abi && use doc; then
 		doman  apidocs/man/man3/*.3
 		docinto html
-		dodoc -r apidocs/html/*
+		dodoc -r apidocs/html/.
 	fi
 
 	use python && python_optimize #726454

@@ -1,11 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE="threads(+)"
-
 inherit waf-utils python-single-r1 multilib multilib-minimal
 
 DESCRIPTION="Samba talloc library"
@@ -18,8 +17,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="compat +python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="test"
 
-RDEPEND="!elibc_FreeBSD? (
+RDEPEND="
+	!elibc_FreeBSD? (
 		!elibc_SunOS? (
 			!elibc_Darwin? (
 				dev-libs/libbsd[${MULTILIB_USEDEP}]
@@ -27,15 +28,15 @@ RDEPEND="!elibc_FreeBSD? (
 		)
 	)
 	python? ( ${PYTHON_DEPS} )
-	!!<sys-libs/talloc-2.0.5"
-DEPEND="${RDEPEND}
-	sys-devel/gettext
+	!!<sys-libs/talloc-2.0.5
+"
+DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
-	${PYTHON_DEPS}"
+	sys-devel/gettext
+"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
-
-RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=(
 	# python goes only for native
