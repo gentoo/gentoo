@@ -58,6 +58,7 @@ BDEPEND="
 			dev-python/mock[${PYTHON_MULTI_USEDEP}]
 			dev-python/pyacoustid[${PYTHON_MULTI_USEDEP}]
 			dev-python/pylast[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 			dev-python/python-mpd[${PYTHON_MULTI_USEDEP}]
 			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
 			|| (
@@ -73,10 +74,7 @@ BDEPEND="
 			media-libs/gst-plugins-good:1.0
 			media-sound/mp3val
 			media-sound/mp3gain
-			|| (
-				dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-				media-plugins/gst-plugins-libav:1.0
-			)
+			media-plugins/gst-plugins-libav:1.0
 			media-video/ffmpeg:0[encode]
 		)
 	')"
