@@ -3754,7 +3754,7 @@ dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/recastnavigation 1.5.1_p20200511: Navigation mesh construction toolset for games
-dev-games/simgear 2020.3.5 9999: Development library for simulation games
+dev-games/simgear 2020.3.6 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.4.3-r1: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
@@ -5491,7 +5491,7 @@ dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4-r1 1.1.9999 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r2 0.2.1-r1 0.2.2-r1: C library for framebuffer abstraction
 dev-libs/libnsutils 0.0.5-r2 0.1.0-r1: C library for base64 and time
-dev-libs/libofx 0.9.15 0.10.0: Library to support the Open Financial eXchange XML format
+dev-libs/libofx 0.9.15 0.10.0 0.10.1: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2 0.3.17-r3: Library of simple functions that are optimized for various CPUs
 dev-libs/liborcus 0.15.4 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
@@ -11695,8 +11695,8 @@ games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.63 0.64 0.64-r100: Open source clone of Theme Hospital
 games-simulation/crashtest 1.1-r1: Educational car crash simulator
 games-simulation/crrcsim 0.9.13: model-airplane flight simulation program
-games-simulation/flightgear 2020.3.5 9999: Open Source Flight Simulator
-games-simulation/flightgear-data 2020.3.5 9999: FlightGear data files
+games-simulation/flightgear 2020.3.6 9999: Open Source Flight Simulator
+games-simulation/flightgear-data 2020.3.6 9999: FlightGear data files
 games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
@@ -13309,7 +13309,7 @@ media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro
 media-libs/phonon 4.11.1-r1: KDE multimedia abstraction library
 media-libs/phonon-gstreamer 4.10.0: GStreamer backend for the Phonon multimedia library
 media-libs/phonon-vlc 0.11.1: VLC backend for the Phonon multimedia library
-media-libs/plib 1.8.5-r2: multimedia library used by many games
+media-libs/plib 1.8.5-r2 1.8.5-r3: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
 media-libs/portaudio 19.06.00-r3: A free, cross-platform, open-source, audio I/O library
@@ -15375,7 +15375,7 @@ net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage servi
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
 net-misc/youtube-dl 2021.01.16 2021.01.24.1 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
-net-misc/zerotier 1.4.6: A software-based managed Ethernet switch for planet Earth
+net-misc/zerotier 1.4.6 1.6.2: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/389-ds-base 1.4.4.9: 389 Directory Server (core libraries and daemons)
@@ -15657,7 +15657,7 @@ net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's cu
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 2020.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 6.0.43 6.1.26: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 6.0.43 6.0.45 6.1.26: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.8.8 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.8.0 0.9.2: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
@@ -18003,7 +18003,7 @@ www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition de
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/mediawiki 1.35.1: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
-www-apps/moodle 3.5.15 3.7.9 3.8.6 3.9.3 3.10: The Moodle Course Management System
+www-apps/moodle 3.5.16 3.8.7 3.9.4 3.10.1: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
