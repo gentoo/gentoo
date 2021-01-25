@@ -10,7 +10,8 @@
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
 
-
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
 
 # From this findlib version there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
