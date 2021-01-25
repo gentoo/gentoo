@@ -34,8 +34,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-0.9.0-cmake-no-git-version.patch" )
-
 src_prepare() {
 	cmake_src_prepare
 
