@@ -1037,7 +1037,7 @@ app-crypt/ekeyd 1.1.5-r1 1.1.5-r100: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0 1.0.1: Save environment variables in a secret vault
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.36.0 3.38.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.36.0 3.38.0 3.38.1: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
@@ -15170,7 +15170,7 @@ net-misc/ipmiview 2.18.0.201007: A GUI application that allows to manage multipl
 net-misc/iprange 1.0.4: A tool capable of managing sets of IPs
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
-net-misc/iputils 20190709-r1 20200821 99999999: Network monitoring tools including ping and ping6
+net-misc/iputils 20190709-r1 20200821-r1 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0: IPv6 address calculator
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
@@ -17533,7 +17533,7 @@ sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.4.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 11.4 11.5: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.4_p1: tools to create and extract Squashfs filesystems
-sys-fs/squashfs-tools-ng 1.0.3 9999: A new set of tools for working with SquashFS images
+sys-fs/squashfs-tools-ng 1.0.3 1.0.4 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
