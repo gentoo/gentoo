@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -61,7 +61,9 @@ fi
 
 [ "${PV}" == "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
 
-PATCHES=()
+PATCHES=(
+	"${FILESDIR}/iputils-20200821-getrandom-fallback.patch"
+)
 
 src_prepare() {
 	default
