@@ -67,10 +67,10 @@ src_configure() {
 		$(use_enable qt5 pinentry-qt) \
 		$(use_with caps libcap) \
 		--enable-pinentry-tty \
-		FLTK_CONFIG="${EROOT}/usr/bin/fltk-config" \
+		FLTK_CONFIG="${ESYSROOT}/usr/bin/fltk-config" \
 		MOC="$(qt5_get_bindir)"/moc \
-		GPG_ERROR_CONFIG="${EROOT}/usr/bin/${CHOST}-gpg-error-config" \
-		LIBASSUAN_CONFIG="${EROOT}/usr/bin/libassuan-config" \
+		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config" \
+		LIBASSUAN_CONFIG="${ESYSROOT}/usr/bin/libassuan-config" \
 		$("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g')
 }
 
