@@ -24,6 +24,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.0-Disable-tests-failing-with-OCaml-4.08.0.patch
 )
 
+QA_FLAGS_IGNORED='.*'
+
 src_configure() {
 	emake -f configure.make Makefile.config \
 		PREFIX="${EPREFIX}/usr" \
