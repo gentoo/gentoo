@@ -25,7 +25,7 @@ esac
 case $(ver_cut 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
-		CDEPEND=">=dev-libs/apr-1.5.1:=
+		COMMON_DEPEND=">=dev-libs/apr-1.5.1:=
 			!www-apache/mod_macro" #492578 #477702
 	;;
 	*)
@@ -121,7 +121,7 @@ _apache2_set_mpms() {
 _apache2_set_mpms
 unset -f _apache2_set_mpms
 
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
