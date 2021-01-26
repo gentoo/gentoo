@@ -27,4 +27,7 @@
 		<flag name="smime-classic">Build classic-smime backend to support
 			S/MIME</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">neomutt/neomutt</remote-id>
+	</upstream>
 </pkgmetadata>
