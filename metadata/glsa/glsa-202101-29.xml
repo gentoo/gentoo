@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">openjpeg</product>
   <announced>2021-01-26</announced>
-  <revised count="1">2021-01-26</revised>
+  <revised count="2">2021-01-26</revised>
   <bug>711260</bug>
   <bug>718918</bug>
   <access>remote</access>
@@ -15,7 +15,7 @@
     <package name="media-libs/openjpeg" auto="yes" arch="*">
       <unaffected range="ge" slot="2">2.4.0</unaffected>
       <vulnerable range="lt" slot="2">2.4.0</vulnerable>
-      <vulnerable range="lt" slot="1">*</vulnerable>
+      <vulnerable range="lt" slot="1">1.5.2-r1</vulnerable>
     </package>
   </affected>
   <background>
@@ -40,16 +40,14 @@
       # emerge --ask --oneshot --verbose "&gt;=media-libs/openjpeg-2.4.0:2"
     </code>
     
-    <p>OpenJPEG 1 has been discontinued and any dependent packages should now
-      be using OpenJPEG 2 or have dropped support for the library.
+    <p>Gentoo has discontinued support OpenJPEG 1.x and any dependent packages
+      should now be using OpenJPEG 2 or have dropped support for the library.
+      We recommend that users unmerge OpenJPEG 1.x:
     </p>
     
     <code>
-      # emerge --sync
-      # emerge --ask --oneshot --verbose --depclean
-      "&gt;=media-libs/openjpeg:1"
+      # emerge --unmerge "media-libs/openjpeg:1"
     </code>
-    
   </resolution>
   <references>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-21010">CVE-2018-21010</uri>
@@ -63,5 +61,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27845">CVE-2020-27845</uri>
   </references>
   <metadata tag="requester" timestamp="2021-01-25T20:17:39Z">sam_c</metadata>
-  <metadata tag="submitter" timestamp="2021-01-26T00:15:25Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T02:54:20Z">sam_c</metadata>
 </glsa>
