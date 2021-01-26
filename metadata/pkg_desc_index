@@ -14538,8 +14538,8 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
-net-dns/bind 9.16.8 9.16.10: Berkeley Internet Name Domain - Name Server
-net-dns/bind-tools 9.16.8 9.16.10: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind 9.16.8 9.16.10 9.16.11: Berkeley Internet Name Domain - Name Server
+net-dns/bind-tools 9.16.8 9.16.10 9.16.11: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.17.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
@@ -18090,7 +18090,7 @@ www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 2.4.456 2.5.207: A PDF reader in JavaScript
 www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.4.46 2.4.46-r1 2.4.46-r4: The Apache Web Server
+www-servers/apache 2.4.46 2.4.46-r4 2.4.46-r5: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0 2.2.1 2.2.3: Fast, cross-platform HTTP/2 web server with automatic HTTPS
