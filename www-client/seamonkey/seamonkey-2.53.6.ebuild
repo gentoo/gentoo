@@ -68,12 +68,13 @@ DEPEND="
 	amd64? (
 		${ASM_DEPEND}
 	)
+	lto? ( sys-devel/binutils[gold] )
 	x86? (
 		${ASM_DEPEND}
 	)
 "
 
-CDEPEND="
+COMMON_DEPEND="
 	>=app-text/hunspell-1.5.4:=
 	dev-libs/atk
 	>=dev-libs/glib-2.26:2
@@ -134,11 +135,10 @@ CDEPEND="
 	)
 "
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
-DEPEND+="${CDEPEND}
-	lto? ( sys-devel/binutils[gold] )
+DEPEND+="${COMMON_DEPEND}
 	amd64? ( virtual/opengl )
 	x86? ( virtual/opengl )
 "
@@ -365,14 +365,14 @@ src_configure() {
 
 	if use lto ; then
 		# Linking only works when using ld.gold when LTO is enabled
-		mozconfig_add_options_ac "forcing ld=gold due to USE=lto" --enable-linker=gold
+		mozconfig_annotate "forcing ld=gold due to USE=lto" --enable-linker=gold
 		# ThinLTO is currently broken, see bmo#1644409
-		mozconfig_add_options_ac '+lto' --enable-lto=full
+		mozconfig_annotate '+lto' --enable-lto=full
 	else
 		if tc-ld-is-gold ; then
-			mozconfig_add_options_ac "linker is set to gold" --enable-linker=gold
+			mozconfig_annotate "linker is set to gold" --enable-linker=gold
 		else
-			mozconfig_add_options_ac "linker is set to bfd" --enable-linker=bfd
+			mozconfig_annotate "linker is set to bfd" --enable-linker=bfd
 		fi
 	fi
 	# LTO flag was handled via configure

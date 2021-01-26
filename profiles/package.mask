@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
+# Dead upstream (last release 2007), unmaintained, multiple issues, 
+# no reverse dependencies.
+# Removal in 30 days. Bug #744019
+sys-power/ncpufreqd
+
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
+# Dead upstream, no live HOMEPAGE and SRC_URI.
+# Removal in 30 days. Bug #744013
+app-text/csvfix
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-01-26)
 # In preparation. Do not use yet.
 ~dev-lang/perl-5.32.1

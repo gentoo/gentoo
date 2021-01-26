@@ -5,7 +5,9 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">josephwright/beamer</remote-id>
+		<changelog>https://github.com/josephwright/beamer/blob/master/CHANGELOG.md</changelog>
 	</upstream>
 </pkgmetadata>
