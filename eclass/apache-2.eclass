@@ -291,7 +291,10 @@ setup_modules() {
 	MY_MODS=()
 
 	if use ldap ; then
-		MY_CONF+=( --enable-authnz_ldap=${mod_type} --enable-ldap=${mod_type} )
+		MY_CONF+=(
+			--enable-authnz_ldap=${mod_type}
+			--enable-ldap=${mod_type}
+		)
 		MY_MODS+=( ldap authnz_ldap )
 	else
 		MY_CONF+=( --disable-authnz_ldap --disable-ldap )
