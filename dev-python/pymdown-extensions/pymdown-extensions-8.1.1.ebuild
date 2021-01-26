@@ -18,8 +18,8 @@ inherit distutils-r1 docs
 
 DESCRIPTION="Extensions for Python Markdown."
 HOMEPAGE="
-	https://github.com/facelessuser/pymdown-extensions
-	https://pypi.org/project/pymdown-extensions
+	https://github.com/facelessuser/pymdown-extensions/
+	https://pypi.org/project/pymdown-extensions/
 "
 SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
