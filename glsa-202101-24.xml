@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-24">
+  <title>cfitsio: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cfitsio, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">cfitsio</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>673944</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sci-libs/cfitsio" auto="yes" arch="*">
+      <unaffected range="ge">3.490</unaffected>
+      <vulnerable range="lt">3.490</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A C and Fortran library for manipulating FITS files.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cfitsio. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cfitsio users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sci-libs/cfitsio-3.490"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3846">CVE-2018-3846</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3847">CVE-2018-3847</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3848">CVE-2018-3848</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3849">CVE-2018-3849</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-25T23:40:35Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T00:12:33Z">sam_c</metadata>
+</glsa>
