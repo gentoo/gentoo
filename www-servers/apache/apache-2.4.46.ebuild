@@ -138,12 +138,6 @@ LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 
-# Enable http2 by default (bug #563452)
-# FIXME: Move to apache-2.eclass once this has reached stable.
-IUSE="${IUSE/apache2_modules_http2/+apache2_modules_http2}"
-# New suexec options (since 2.4.34)
-IUSE="${IUSE} +suexec-caps suexec-syslog split-usr"
-
 COMMON_DEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
 	apache2_modules_proxy_http2? ( >=net-libs/nghttp2-1.2.1 )
