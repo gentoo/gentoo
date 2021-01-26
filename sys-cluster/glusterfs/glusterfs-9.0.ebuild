@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
 IUSE="debug emacs +fuse +georeplication ipv6 libressl +libtirpc rsyslog static-libs +syslog test +xml"
 
-REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} xml )
 	ipv6? ( libtirpc )"
 
 # the tests must be run as root
@@ -84,7 +84,7 @@ src_prepare() {
 
 	# build rpc-transport and xlators only once as shared libs
 	find rpc/rpc-transport xlators -name Makefile.am -exec \
-		sed -i 's|.*$(top_srcdir).*\.sym|\0 -shared|' || die
+		sed -i 's|.*$(top_srcdir).*\.sym|\0 -shared|' {} + || die
 
 	# fix execution permissions
 	chmod +x libglusterfs/src/gen-defaults.py || die
