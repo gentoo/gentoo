@@ -31,6 +31,7 @@ RDEPEND=">=dev-python/markdown-3.2[${PYTHON_USEDEP}]"
 
 BDEPEND="
 	test? (
+		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
