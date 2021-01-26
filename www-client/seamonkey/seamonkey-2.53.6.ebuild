@@ -44,7 +44,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
-IUSE="+chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack minimal
+IUSE="+chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack lto minimal
 neon pulseaudio +roaming selinux startup-notification ${SYSTEM_IUSE[@]} test
 wifi"
 RESTRICT="!test? ( test )"
@@ -138,6 +138,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-mozilla )
 "
 DEPEND+="${CDEPEND}
+	lto? ( sys-devel/binutils[gold] )
 	amd64? ( virtual/opengl )
 	x86? ( virtual/opengl )
 "
@@ -162,7 +163,17 @@ pkg_setup() {
 
 pkg_pretend() {
 	# Ensure we have enough disk space to compile
-	if use debug || use test ; then
+	if use debug || use lto || use test ; then
+		CHECKREQS_DISK_BUILD="16G"
+	else
+		CHECKREQS_DISK_BUILD="12G"
+	fi
+	check-reqs_pkg_setup
+}
+
+spkg_setup() {
+	# Ensure we have enough disk space to compile
+	if use debug || use lto || use test ; then
 		CHECKREQS_DISK_BUILD="16G"
 	else
 		CHECKREQS_DISK_BUILD="12G"
@@ -236,11 +247,11 @@ src_configure() {
 	# get your own set of keys.
 	_google_api_key=AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc
 
-	####################################
+	######################################
 	#
 	# mozconfig, CFLAGS and CXXFLAGS setup
 	#
-	####################################
+	######################################
 
 	mozconfig_init
 
@@ -351,6 +362,22 @@ src_configure() {
 				media/libvpx/moz.build || die
 		fi
 	fi
+
+	if use lto ; then
+		# Linking only works when using ld.gold when LTO is enabled
+		mozconfig_add_options_ac "forcing ld=gold due to USE=lto" --enable-linker=gold
+		# ThinLTO is currently broken, see bmo#1644409
+		mozconfig_add_options_ac '+lto' --enable-lto=full
+	else
+		if tc-ld-is-gold ; then
+			mozconfig_add_options_ac "linker is set to gold" --enable-linker=gold
+		else
+			mozconfig_add_options_ac "linker is set to bfd" --enable-linker=bfd
+		fi
+	fi
+	# LTO flag was handled via configure
+	filter-flags '-flto*'
+
 	##################################
 	# Former mozconfig_config() end  #
 	##################################
