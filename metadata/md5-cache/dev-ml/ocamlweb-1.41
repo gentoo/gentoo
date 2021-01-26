@@ -9,4 +9,4 @@ RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=https://www.lri.fr/~filliatr/ftp/ocamlweb/ocamlweb-1.41.tar.gz
 _eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
-_md5_=00b4f275fbd91c011c3105c4257a5575
+_md5_=989c5f34241e67dd638d7599430b5144

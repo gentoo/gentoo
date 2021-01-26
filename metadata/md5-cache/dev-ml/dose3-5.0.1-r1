@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/cudf:= >=dev-ml/extlib-1.7.0:=
 RESTRICT=test
 SLOT=0/5.0.1
 SRC_URI=https://gforge.inria.fr/frs/download.php/file/36063/dose3-5.0.1.tar.gz
-_md5_=0673432dee2bf94f2212fa6e01b5e75d
+_md5_=efbff672ae1dab0be3e16967635a8b3b
