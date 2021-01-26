@@ -129,22 +129,51 @@ _apache2_set_mpms() {
 _apache2_set_mpms
 unset -f _apache2_set_mpms
 
-DEPEND="${COMMON_DEPEND}
+# Dependencies
+RDEPEND="
 	dev-lang/perl
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
+	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
+	apache2_modules_http2? (
+		>=net-libs/nghttp2-1.2.1
+		kernel_linux? ( sys-apps/util-linux )
+	)
+	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
 	apache2_modules_mime? ( app-misc/mime-types )
+	apache2_modules_proxy_http2? (
+		>=net-libs/nghttp2-1.2.1
+		kernel_linux? ( sys-apps/util-linux )
+	)
+	apache2_modules_session_crypto? (
+		libressl? ( dev-libs/apr-util[libressl] )
+		!libressl? ( dev-libs/apr-util[openssl] )
+	)
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
+	selinux? ( sec-policy/selinux-apache )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
 		libressl? ( dev-libs/libressl:0= )
+		kernel_linux? ( sys-apps/util-linux )
 	)
-	!=www-servers/apache-1*"
-RDEPEND+=" ${DEPEND}
-	selinux? ( sec-policy/selinux-apache )"
+"
+
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	suexec? ( suexec-caps? ( sys-libs/libcap ) )
+"
+if [[ ${EAPI} == 6 ]] ; then
+	DEPEND+=" ${BDEPEND}"
+fi
 PDEPEND="~app-admin/apache-tools-${PV}"
+
+REQUIRED_USE+="
+	apache2_modules_http2? ( ssl )
+	apache2_modules_md? ( ssl )
+"
 
 S="${WORKDIR}/httpd-${PV}"
 
