@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit go-module
+inherit go-module systemd
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
@@ -946,8 +946,15 @@ src_compile() {
 
 src_install() {
 	dobin minio
+
+	insinto /etc/defult
+	doins "${FILESDIR}"/minio.default
+
 	dodoc -r README.md CONTRIBUTING.md docs
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	keepdir /var/{lib,log}/${PN}
-	fowners ${PN}:${PN} /var/{lib,log}/${PN}
+
+	systemd_dounit "${FILESDIR}"/minio.service
+	newinitd "${FILESDIR}"/minio.initd minio
+
+	keepdir /var/{lib,log}/minio
+	fowners minio:minio /var/{lib,log}/minio
 }
