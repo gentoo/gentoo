@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,6 @@ IUSE="doc libnet rgmanager"
 
 RDEPEND="sys-apps/iproute2
 	sys-cluster/cluster-glue
-	!<sys-cluster/heartbeat-3.0
 	libnet? ( net-libs/libnet:1.1 )"
 DEPEND="${RDEPEND}
 	doc? (
