@@ -132,6 +132,7 @@ acct-group/milter-regex 0-r1: Group for mail-filter/milter-regex
 acct-group/minecraft 0-r1: A group for the Minecraft server
 acct-group/minetest 0-r1: A group for the Minetest server
 acct-group/minidlna 0: System group: minidlna
+acct-group/minio 0: System group: minio
 acct-group/mongodb 0-r1: MongoDB program group
 acct-group/mongodb_exporter 0: System group: mongodb_exporter
 acct-group/monitorix 0-r1: Monitorix system tool group
@@ -409,6 +410,7 @@ acct-user/milter-regex 0-r1: User for mail-filter/milter-regex
 acct-user/minecraft 0-r1: A user for the Minecraft server
 acct-user/minetest 0-r1 1-r1: A user for the Minetest server
 acct-user/minidlna 0: System user: minidlna
+acct-user/minio 0: A user for minio
 acct-user/mongodb 0-r1: MongoDB program user
 acct-user/mongodb_exporter 0: user for mongodb_exporter
 acct-user/monitorix 0-r1: Monitorix system tool user
@@ -10464,7 +10466,7 @@ dev-scheme/chicken 4.13.0-r1: Scheme interpreter and native Scheme to C compiler
 dev-scheme/elk 3.99.8: Scheme implementation designed to be embeddable extension to C/C++ applications
 dev-scheme/escm 1.1-r1: escm - Embedded Scheme Processor
 dev-scheme/gambit 4.8.8-r1 4.8.8-r2 4.9.3: Gambit-C is a native Scheme to C compiler and interpreter
-dev-scheme/gauche 0.9.6-r1 0.9.9: A Unix system friendly Scheme Interpreter
+dev-scheme/gauche 0.9.9 0.9.10: A Unix system friendly Scheme Interpreter
 dev-scheme/gauche-cdb 0.3.1-r1: CDB binding for Gauche
 dev-scheme/gauche-gl 0.6: OpenGL binding for Gauche
 dev-scheme/gauche-gtk 0.6_pre1-r1: GTK2 binding for Gauche
@@ -14623,7 +14625,7 @@ net-fs/davfs2 1.5.4 1.5.5 1.5.6-r1 1.6.0: Linux FUSE (or coda) driver that allow
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35 2020.07.11.05.18.52: Minio client provides alternatives for ls, cat on cloud storage and filesystems
-net-fs/minio 2020.06.22.03.12.50 2021.01.16.02.19.44: An Amazon S3 compatible object storage server
+net-fs/minio 2021.01.16.02.19.44-r1: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
@@ -17266,7 +17268,7 @@ sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7: Synchronous multi-master re
 sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
-sys-cluster/glusterfs 7.7 7.8-r1 9999: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 7.7 7.8-r1 7.9 8.3 9.0 9999: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heat 14.1.0 15.0.0 2020.1.9999 2020.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.5.1 9999: C++ runtime system for parallel and distributed applications
@@ -18099,7 +18101,7 @@ www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.16-r1: High performance web server
 www-servers/gunicorn 20.0.4: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
-www-servers/lighttpd 1.4.55-r1 1.4.55-r100: Lightweight high-performance web server
+www-servers/lighttpd 1.4.55-r1 1.4.55-r100 1.4.58: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4 1.19.5 1.19.5-r1 1.19.6 1.19.6-r100: Robust, small and high performance http and reverse proxy server
