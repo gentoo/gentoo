@@ -88,10 +88,18 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec threads"
+IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec +suexec-caps suexec-syslog split-usr threads"
 
 for module in ${IUSE_MODULES} ; do
-	IUSE="${IUSE} apache2_modules_${module}"
+	case ${module} in
+		# Enable http2 by default (bug #563452)
+		http2)
+			IUSE+=" +apache2_modules_${module}"
+		;;
+		*)
+			IUSE+=" apache2_modules_${module}"
+		;;
+	esac
 done
 
 _apache2_set_mpms() {
