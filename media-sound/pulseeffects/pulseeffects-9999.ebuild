@@ -61,6 +61,17 @@ pkg_postinst() {
 	gnome2_gconf_install
 	gnome2_schemas_update
 	xdg_icon_cache_update
+	if [[ "${PV}" != 9999 ]]; then
+		local v
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test "${v}" -lt "5.0.0"; then
+				if ver_test ${REPLACED_BY_VERSION} -ge "5.0.0"; then
+					elog "PulseEffects has switched to pipewire as it's audio backend"
+					elog "See https://wiki.gentoo.org/wiki/Pipewire for how to use the new backend"
+				fi
+			fi
+		done
+	fi
 }
 
 pkg_postrm() {
