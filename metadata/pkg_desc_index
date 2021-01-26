@@ -15284,7 +15284,7 @@ net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of anoth
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/realtek-r8152 2.14.0: Out-of-tree driver for Realtek's 2.5 GbE USB NICs.
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.4.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.4.10 1.4.10-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.2.3-r1 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
@@ -18319,7 +18319,7 @@ x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 2.4.1 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-intel-media-driver 18.3.0 18.4.1 20.1.1 20.1.1-r1 20.1.1-r2 20.2.0 20.2.0-r1 20.2.0-r2 20.4.5 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
-x11-libs/libvdpau 1.2 1.3 1.4 99999: VDPAU wrapper and trace libraries
+x11-libs/libvdpau 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit
 x11-libs/libxcb 1.14: X C-language Bindings library
 x11-libs/libxkbcommon 1.0.3: keymap handling library for toolkits and window systems
@@ -18558,7 +18558,7 @@ x11-misc/urxvt-perls 2.3-r1: Perl extensions for rxvt-unicode
 x11-misc/urxvt-tabbedex 20.49: An extended version of rxvt-unicode's tabbed perl extension
 x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode terminal emulator
 x11-misc/util-macros 1.19.2-r2 1.19.3: X.Org autotools utility macros
-x11-misc/vdpauinfo 1.3 1.4 99999: Displays info about your card's VDPAU support
+x11-misc/vdpauinfo 1.4 99999: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
 x11-misc/virtualgl 2.6.4-r1 2.6.5 9999: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
