@@ -144,7 +144,7 @@ IUSE="${IUSE/apache2_modules_http2/+apache2_modules_http2}"
 # New suexec options (since 2.4.34)
 IUSE="${IUSE} +suexec-caps suexec-syslog split-usr"
 
-CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
+COMMON_DEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
 	apache2_modules_proxy_http2? ( >=net-libs/nghttp2-1.2.1 )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
@@ -153,9 +153,9 @@ CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 		!libressl? ( dev-libs/apr-util[openssl] )
 	)"
 
-DEPEND+="${CDEPEND}
+DEPEND+="${COMMON_DEPEND}
 	suexec? ( suexec-caps? ( sys-libs/libcap ) )"
-RDEPEND+="${CDEPEND}"
+RDEPEND+="${COMMON_DEPEND}"
 
 REQUIRED_USE="apache2_modules_http2? ( ssl )
 	apache2_modules_md? ( ssl )"
