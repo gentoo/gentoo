@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Manage a stack of patches using GIT as a backend"
-HOMEPAGE="http://www.procode.org/stgit/"
+HOMEPAGE="https://stacked-git.github.io"
 UPSTREAM_VER=
 [[ -n ${UPSTREAM_VER} ]] && \
 	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
