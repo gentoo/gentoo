@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -457,8 +457,8 @@ AH_TEMPLATE(DRBD_LEGACY_84, [Include support for drbd-8.4 kernel code])
+ AH_TEMPLATE(WINDRBD, [Include support for windrbd (do not use this under Linux)])
+ 
+ AC_SUBST(DRBD_LIB_DIR, [$localstatedir/lib/$PACKAGE_TARNAME])
+-AC_SUBST(DRBD_RUN_DIR, [$localstatedir/run/$PACKAGE_TARNAME])
+-AC_SUBST(DRBD_LOCK_DIR, [$localstatedir/lock])
++AC_SUBST(DRBD_RUN_DIR, [/run/$PACKAGE_TARNAME])
++AC_SUBST(DRBD_LOCK_DIR, [/run/lock])
+ AC_SUBST(DRBD_CONFIG_DIR, [$sysconfdir])
+ AC_SUBST(DRBD_BIN_DIR, [$exec_prefix/bin])
+ 
