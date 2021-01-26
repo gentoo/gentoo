@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aisha Tammy <gentoo@aisha.cc> (2021-02-05)
+# Drop dead package, last update in 2004.
+# No longer has any reverse dependencies.
+# Removal in 14 days.
+media-fonts/ahem
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-02-01)
 # no package uses it
 # Removal on 2021-03-04
