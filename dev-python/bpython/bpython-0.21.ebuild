@@ -32,7 +32,7 @@ BDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	"
 
-DOCS=( AUTHORS CHANGELOG sample.theme light.theme )
+DOCS=( AUTHORS.rst CHANGELOG.rst )
 
 distutils_enable_sphinx doc/sphinx/source --no-autodoc
 distutils_enable_tests unittest
