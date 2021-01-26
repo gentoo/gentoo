@@ -1,0 +1,27 @@
+commit f3b4beb18f256e733a4c699e96118d47a2191b74
+Author: Shiro Kawai <shiro@acm.org>
+Date:   Wed Dec 23 16:22:10 2020 -1000
+
+    Fix sys-ctermid out-of-extent memory access bug
+
+    https://github.com/shirok/Gauche/issues/740
+
+diff --git a/src/libsys.scm b/src/libsys.scm
+index f253c08a4..7f433c184 100644
+--- a/src/libsys.scm
++++ b/src/libsys.scm
+@@ -460,11 +460,11 @@
+ (define-cproc sys-mkdtemp (template::<string>) Scm_SysMkdtemp)
+ 
+ ;; ctermid
+-(define-cproc sys-ctermid () ::<const-cstring>
++(define-cproc sys-ctermid ()
+   (.if "defined(GAUCHE_WINDOWS)"
+-       (return "CON")
++       (return '"CON")
+        (let* ([buf::(.array char [(+ L_ctermid 1)])])
+-         (return (ctermid buf)))))
++         (return (SCM_MAKE_STR_COPYING (ctermid buf))))))
+ 
+ ;;---------------------------------------------------------------------
+ ;; stdlib.h
