@@ -461,7 +461,7 @@ apache-2_pkg_setup() {
 		elog
 	fi
 
-	if [[ "${EAPI}" -ge 7 ]] && use apache2_modules_lua ; then
+	if [[ ${EAPI} != 6 ]] && use apache2_modules_lua ; then
 		lua-single_pkg_setup
 	fi
 }
