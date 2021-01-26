@@ -9,4 +9,4 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] tk? ( dev-ml/labltk:= )
 SLOT=0
 SRC_URI=http://download.camlcity.org/download/findlib-1.8.1.tar.gz
-_md5_=77491c487b64515af83ffceae33db802
+_md5_=84aecfdca812e2448c549dd5344196e1
