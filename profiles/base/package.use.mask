@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
+# Upstream considers this module being a high security risk
+# http://httpd.apache.org/docs/current/mod/mod_lua.html
+www-servers/apache apache2_modules_lua
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-19)
 # Requires masked media-sound/mp3_check.
 app-cdr/burncdda mp3
