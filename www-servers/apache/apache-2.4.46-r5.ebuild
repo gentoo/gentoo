@@ -188,7 +188,7 @@ src_install() {
 		/usr/share/man/man8/{rotatelogs.8,htcacheclean.8}
 	)
 	for i in ${apache_tools_prune_list[@]} ; do
-		rm "${ED%/}"/${i} || die "Failed to prune apache-tools bits"
+		rm "${ED}"/${i} || die "Failed to prune apache-tools bits"
 	done
 
 	# install apxs in /usr/bin (bug #502384) and put a symlink into the
@@ -210,7 +210,7 @@ src_install() {
 	doins "${FILESDIR}"/41_mod_http2.conf
 
 	# Fix path to apache libdir
-	sed "s|@LIBDIR@|$(get_libdir)|" -i "${ED%/}"/usr/sbin/apache2ctl || die
+	sed "s|@LIBDIR@|$(get_libdir)|" -i "${ED}"/usr/sbin/apache2ctl || die
 }
 
 pkg_postinst() {
