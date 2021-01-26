@@ -10,7 +10,7 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
+inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -18,6 +18,13 @@ inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
 case ${EAPI:-0} in
 	0|1|2|3|4|5)
 		die "This eclass is banned for EAPI<6"
+	;;
+	6)
+		inherit eapi7-ver
+	;;
+	*)
+		LUA_COMPAT=( lua5-{1..4} )
+		inherit lua-single
 	;;
 esac
 
@@ -452,6 +459,10 @@ apache-2_pkg_setup() {
 			elog "  accf_data_load=\"YES\""
 		fi
 		elog
+	fi
+
+	if use apache2_modules_lua ; then
+		lua-single_pkg_setup
 	fi
 }
 
