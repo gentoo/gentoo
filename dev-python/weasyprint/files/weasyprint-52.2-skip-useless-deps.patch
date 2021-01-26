@@ -1,0 +1,25 @@
+diff --git a/setup.cfg b/setup.cfg
+index 5b3dcb3..7b3e1a3 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -96,7 +96,6 @@ build-dir = docs/_build
+ test = pytest
+ 
+ [tool:pytest]
+-addopts = --flake8 --isort
+ norecursedirs = build dist .cache .eggs .git
+ 
+ [coverage:run]
+diff --git a/weasyprint/tests/test_layout/test_inline.py b/weasyprint/tests/test_layout/test_inline.py
+index bb5f637..391e3cd 100644
+--- a/weasyprint/tests/test_layout/test_inline.py
++++ b/weasyprint/tests/test_layout/test_inline.py
+@@ -630,7 +630,7 @@ def test_font_stretch():
+     p_1, p_2 = body.children
+     normal = p_1.width
+     condensed = p_2.width
+-    assert condensed < normal
++    assert condensed <= normal
+ 
+ 
+ @assert_no_logs
