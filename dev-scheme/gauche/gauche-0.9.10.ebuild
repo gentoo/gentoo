@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit autotools eapi7-ver
+inherit autotools
 
 MY_P="${P^g}"
 
@@ -12,8 +12,8 @@ HOMEPAGE="http://practical-scheme.net/gauche/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
-SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+SLOT="0/$(ver_cut 1-2)7"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 libressl mbedtls test"
 RESTRICT="!test? ( test )"
 
@@ -27,12 +27,15 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-gauche.m4.patch
 	"${FILESDIR}"/${PN}-ext-ldflags.patch
+	"${FILESDIR}"/${PN}-gauche.m4.patch
+	"${FILESDIR}"/${PN}-info.patch
+	"${FILESDIR}"/${PN}-rfc.tls.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
-	"${FILESDIR}"/${P}-rfc.tls.patch
+	"${FILESDIR}"/${P}-srfi-134.patch
+	"${FILESDIR}"/${P}-sys-ctermid.patch
 )
-DOCS=( AUTHORS ChangeLog HACKING README )
+DOCS=( AUTHORS ChangeLog HACKING.adoc README.adoc )
 
 src_prepare() {
 	default
