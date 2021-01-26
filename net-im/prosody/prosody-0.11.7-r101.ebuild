@@ -15,14 +15,14 @@ SRC_URI="https://prosody.im/downloads/source/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 x86"
-IUSE="icu +idn +libevent libressl mysql postgres +sqlite +ssl test +zlib"
+IUSE="icu +idn +libevent libressl mysql postgres selinux +sqlite +ssl test +zlib"
 REQUIRED_USE="
 	^^ ( icu idn )
 	${LUA_REQUIRED_USE}
 "
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+DEPEND="
 	$(lua_gen_cond_dep 'dev-lua/luaexpat[${LUA_USEDEP}]')
 	$(lua_gen_cond_dep 'dev-lua/luafilesystem[${LUA_USEDEP}]')
 	$(lua_gen_cond_dep 'dev-lua/luasocket[${LUA_USEDEP}]')
@@ -41,7 +41,10 @@ RDEPEND="
 	${LUA_DEPS}
 "
 
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-jabber )
+"
 
 BDEPEND="
 	virtual/pkgconfig
