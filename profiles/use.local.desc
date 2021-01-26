@@ -8610,6 +8610,7 @@ www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/seamonkey:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
 www-client/seamonkey:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/seamonkey:lto - Enable Link Time Optimization (LTO). Requires Gold linker
 www-client/seamonkey:roaming - Build roaming extension support (default on)
 www-client/seamonkey:system-av1 - Use the system-wide media-libs/dav1d and media-libs/libaom library instead of bundled
 www-client/seamonkey:system-harfbuzz - Use the system-wide media-libs/harfbuzz instead of bundled
