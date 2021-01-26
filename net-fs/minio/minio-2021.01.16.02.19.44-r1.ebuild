@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit go-module user
+inherit go-module
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
@@ -919,12 +919,12 @@ KEYWORDS="~amd64 ~amd64-linux"
 
 RESTRICT+=" test"
 
-S="${WORKDIR}/${PN}-RELEASE.${MY_PV}"
+BDEPEND="
+	acct-user/minio
+	acct-group/minio
+"
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-}
+S="${WORKDIR}/${PN}-RELEASE.${MY_PV}"
 
 src_prepare() {
 	default
