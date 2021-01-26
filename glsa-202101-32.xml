@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-32">
+  <title>Mutt, NeoMutt: Information disclosure</title>
+  <synopsis>A weakness was discovered in Mutt and NeoMutt's TLS handshake
+    handling
+  </synopsis>
+  <product type="ebuild">NeoMutt</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>755833</bug>
+  <bug>755866</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mutt" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2</unaffected>
+      <vulnerable range="lt">2.0.2</vulnerable>
+    </package>
+    <package name="mail-client/neomutt" auto="yes" arch="*">
+      <unaffected range="ge">20201120</unaffected>
+      <vulnerable range="lt">20201120</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mutt is a small but very powerful text-based mail client.</p>
+    
+    <p>NeoMutt is a command line mail reader (or MUA). It’s a fork of Mutt
+      with added features.
+    </p>
+  </background>
+  <description>
+    <p>A weakness in TLS handshake handling was found which may allow
+      information disclosure.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause information disclosure.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/mutt-2.0.2"
+    </code>
+    
+    <p>All NeoMutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/neomutt-20201120"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28896">CVE-2020-28896</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-26T00:28:06Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T23:39:28Z">sam_c</metadata>
+</glsa>
