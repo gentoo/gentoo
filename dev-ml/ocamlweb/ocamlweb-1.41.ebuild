@@ -12,11 +12,14 @@ SRC_URI="https://www.lri.fr/~filliatr/ftp/ocamlweb/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 DEPEND=">=dev-lang/ocaml-4.08.0:=
 	virtual/latex-base
-	dev-texlive/texlive-latexextra
-	"
+	dev-texlive/texlive-latexextra"
+BDEPEND="test? ( dev-tex/hevea )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.41-strip.patch"
@@ -26,7 +29,7 @@ PATCHES=(
 QA_FLAGS_IGNORED=/usr/bin/ocamlweb
 
 src_compile() {
-	emake
+	default
 }
 
 src_install() {
