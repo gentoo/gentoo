@@ -7,6 +7,13 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
+# Fails to build:
+#
+#   TEST-UNEXPECTED-FAIL | check_nsmodules | libxul.so | NSModules are not ordered appropriately
+#
+www-client/seamonkey lto
+
+# Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
 # Upstream considers this module being a high security risk
 # http://httpd.apache.org/docs/current/mod/mod_lua.html
 www-servers/apache apache2_modules_lua

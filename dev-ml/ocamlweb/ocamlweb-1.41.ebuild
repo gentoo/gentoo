@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.41-strip.patch"
 	"${FILESDIR}/${PN}-1.41-ocaml-4.08.0.patch"
 	)
+
+QA_FLAGS_IGNORED=/usr/bin/ocamlweb
 
 src_compile() {
 	emake

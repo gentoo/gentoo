@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 name="Prosody XMPP server"
@@ -10,6 +10,7 @@ pidfile="${jabber_pid}/prosody.pid"
 prosody_config="/etc/jabber/prosody.cfg.lua"
 
 command="/usr/bin/prosody"
+commandctl="/usr/bin/prosodyctl"
 command_group="jabber"
 command_user="jabber"
 
@@ -19,7 +20,7 @@ checkconfig() {
 		return 1
 	fi
 
-	luac -p "${prosody_config}"
+	${commandctl} check config
 	return $?
 }
 

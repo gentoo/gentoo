@@ -92,7 +92,7 @@ src_install() {
 
 	keepdir /var/spool/jabber
 
-	newinitd "${FILESDIR}"/prosody.initd-r4 prosody
+	newinitd "${FILESDIR}"/prosody.initd-r5 prosody
 	systemd_newunit "${FILESDIR}"/prosody.service-r2 prosody.service
 
 	newtmpfiles "${FILESDIR}"/prosody.tmpfilesd-r1 prosody.conf
