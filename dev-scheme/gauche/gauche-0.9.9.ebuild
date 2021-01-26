@@ -31,7 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gauche.m4.patch
 	"${FILESDIR}"/${PN}-info.patch
 	"${FILESDIR}"/${PN}-rfc.tls.patch
-	"${FILESDIR}"/${PN}-xz-info.patch
+	"${FILESDIR}"/${P}-xz-info.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING.adoc README.adoc )
 
