@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,6 +15,8 @@ IUSE="doc +ocamlopt tk"
 DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"
 RDEPEND="${DEPEND}"
+
+QA_FLAGS_IGNORED='.*'
 
 PATCHES=( "${FILESDIR}"/externalmeta7.patch )
 
