@@ -881,7 +881,7 @@ app-backup/amanda 3.5.1-r3: The Advanced Maryland Automatic Network Disk Archive
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
-app-backup/backupninja 1.1.0 1.2.0: lightweight, extensible meta-backup system
+app-backup/backupninja 1.1.0 1.2.0 1.2.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5 9.6.6 9.6.7: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.10 19.2.9: Featureful client/server network backup suite
@@ -9433,28 +9433,28 @@ dev-ros/actionlib_tools 1.13.2 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 0.2.0 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 1.17.1 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/ament_cmake_copyright 0.9.5 0.10.0 0.10.1 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 1.0.3 9999: The core of the ament buildsystem in CMake
+dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The core of the ament buildsystem in CMake
 dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 0.10.1 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
 dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 0.10.1 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
-dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export definitions to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
-dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export interfaces to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export libraries to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export link flags to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export targets to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_gmock 1.0.0 1.0.1 1.0.3 9999: The ability to add Google mock-based tests in the ament buildsystem
-dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to add gtest-based tests in the ament buildsystem
-dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 1.0.3 9999: The functionality to deduplicate libraries in the ament buildsystem
+dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export definitions to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
+dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export interfaces to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export libraries to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export link flags to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export targets to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_gmock 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to add Google mock-based tests in the ament buildsystem
+dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to add gtest-based tests in the ament buildsystem
+dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The functionality to deduplicate libraries in the ament buildsystem
 dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 0.10.1 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
-dev-ros/ament_cmake_pytest 1.0.0 1.0.1 1.0.3 9999: The ability to run Python tests using pytest in the ament buildsystem
-dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to use Python in the ament buildsystem
+dev-ros/ament_cmake_pytest 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to run Python tests using pytest in the ament buildsystem
+dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to use Python in the ament buildsystem
 dev-ros/ament_cmake_ros 0.9.0 9999: ROS specific CMake bits in the ament buildsystem
-dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 9999: Add defs, include dirs and libs to a target in the ament buildsystem
-dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to add tests in the ament buildsystem
+dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Add defs, include dirs and libs to a target in the ament buildsystem
+dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to add tests in the ament buildsystem
 dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 0.10.1 9999: The CMake API for ament_uncrustify to check code against styleconventions
-dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 1.0.3 9999: Override the exported package version in the ament buildsystem
+dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Override the exported package version in the ament buildsystem
 dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 0.10.1 9999: he CMake API for ament_xmllint to check XML file using xmmlint
 dev-ros/ament_copyright 0.10.0 0.10.1 9999: The ability to check source files for copyright and license information.
 dev-ros/ament_cppcheck 0.10.0 0.10.1 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
@@ -9630,7 +9630,7 @@ dev-ros/qt_gui_app 0.4.1 0.4.2 9999: Instance of the integrated graphical user i
 dev-ros/qt_gui_cpp 0.4.2-r1 9999: C++-bindings for qt_gui and creates bindings for every generator available
 dev-ros/qt_gui_py_common 0.4.1 0.4.2 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.2 9999: Wrappers for generating floating point values, integers and quaternions
-dev-ros/realtime_tools 1.16.0-r1 9999: Set of tools that can be used from a hard realtime thread
+dev-ros/realtime_tools 1.16.1 9999: Set of tools that can be used from a hard realtime thread
 dev-ros/resource_retriever 1.12.6 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.3.0 9999: Launch files to open an RGBD device
 dev-ros/robot_localization 2.6.8 9999: Package of nonlinear state estimation nodes
@@ -14574,7 +14574,7 @@ net-dns/maradns 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 1.11: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.3.4: An authoritative only, high performance, open source name server
+net-dns/nsd 4.3.4 4.3.5: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.10.0 3.11.0: A framework for managing DNS information
@@ -14625,7 +14625,7 @@ net-fs/davfs2 1.5.4 1.5.5 1.5.6-r1 1.6.0: Linux FUSE (or coda) driver that allow
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35 2020.07.11.05.18.52: Minio client provides alternatives for ls, cat on cloud storage and filesystems
-net-fs/minio 2021.01.16.02.19.44-r1: An Amazon S3 compatible object storage server
+net-fs/minio 2021.01.16.02.19.44-r2: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
@@ -15714,7 +15714,7 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
-ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 1.0.3 9999: The entry point package for the ament buildsystem
+ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.6 0.3.7 0.3.8 0.3.10 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
