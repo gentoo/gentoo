@@ -1,31 +1,47 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-PYTHON_REQ_USE='threads(+),xml(+)'
+PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_REQ_USE="threads(+),xml(+)"
 inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam
+
+DESCRIPTION="Samba Suite Version 4"
+HOMEPAGE="https://samba.org/"
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
+if [[ ${PV} = *_rc* ]]; then
+	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
+else
+	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+fi
+S="${WORKDIR}/${MY_P}"
 
-SRC_PATH="stable"
-[[ ${PV} = *_rc* ]] && SRC_PATH="rc"
-
-SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
-[[ ${PV} = *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-
-DESCRIPTION="Samba Suite Version 4"
-HOMEPAGE="https://www.samba.org/"
 LICENSE="GPL-3"
-
 SLOT="0"
-
 IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gpg iprint
 json ldap pam profiling-data python quota selinux snapper syslog
 system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	addc? ( python json winbind )
+	addns? ( python )
+	ads? ( acl ldap winbind )
+	cluster? ( ads )
+	gpg? ( addc )
+	test? ( python )
+	!ads? ( !addc )
+	?? ( system-heimdal system-mitkrb5 )
+"
+
+# the test suite is messed, it uses system-installed samba
+# bits instead of what was built, tests things disabled via use
+# flags, and generally just fails to work in a way ebuilds could
+# rely on in its current state
+RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/policy.h
@@ -38,7 +54,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/ctdb_version.h
 )
 
-CDEPEND="
+COMMON_DEPEND="
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
 	dev-lang/perl:=
 	dev-libs/icu:=[${MULTILIB_USEDEP}]
@@ -49,31 +65,27 @@ CDEPEND="
 	>=net-libs/gnutls-3.4.7[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-libs/e2fsprogs-libs[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.2.0[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.3.0[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.2.0[ldap(+)?,${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.3.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.3.1[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.3[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.10.2[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
-	pam? ( sys-libs/pam )
 	acl? ( virtual/acl )
 	$(python_gen_cond_dep "
 		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
 		addns? (
-			net-dns/bind-tools[gssapi]
 			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
+			net-dns/bind-tools[gssapi]
 		)
 	")
 	ceph? ( sys-cluster/ceph )
-	cluster? (
-		net-libs/rpcsvc-proto
-		!dev-db/ctdb
-	)
+	cluster? ( net-libs/rpcsvc-proto )
 	cups? ( net-print/cups )
 	debug? ( dev-util/lttng-ust )
 	dmapi? ( sys-apps/dmapi )
@@ -81,56 +93,44 @@ CDEPEND="
 	gpg? ( app-crypt/gpgme )
 	json? ( dev-libs/jansson )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+	pam? ( sys-libs/pam )
+	python? (
+		sys-libs/ldb[python,${PYTHON_SINGLE_USEDEP}]
+		sys-libs/talloc[python,${PYTHON_SINGLE_USEDEP}]
+		sys-libs/tdb[python,${PYTHON_SINGLE_USEDEP}]
+		sys-libs/tevent[python,${PYTHON_SINGLE_USEDEP}]
+	)
 	snapper? ( sys-apps/dbus )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-DEPEND="${CDEPEND}
-	${PYTHON_DEPS}
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+DEPEND="${COMMON_DEPEND}
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
-	virtual/pkgconfig
 	|| (
 		net-libs/rpcsvc-proto
 		<sys-libs/glibc-2.26[rpc(+)]
 	)
 	test? (
 		!system-mitkrb5? (
-			>=sys-libs/nss_wrapper-1.1.3
 			>=net-dns/resolv_wrapper-1.1.4
 			>=net-libs/socket_wrapper-1.1.9
+			>=sys-libs/nss_wrapper-1.1.3
 			>=sys-libs/uid_wrapper-1.2.1
 		)
 	)"
-RDEPEND="${CDEPEND}
-	python? ( ${PYTHON_DEPS} )
+RDEPEND="${COMMON_DEPEND}
 	client? ( net-fs/cifs-utils[ads?] )
+	python? ( ${PYTHON_DEPS} )
 	selinux? ( sec-policy/selinux-samba )
 "
-
-REQUIRED_USE="
-	addc? ( python json winbind )
-	addns? ( python )
-	ads? ( acl ldap winbind )
-	cluster? ( ads )
-	gpg? ( addc )
-	test? ( python )
-	!ads? ( !addc )
-	?? ( system-heimdal system-mitkrb5 )
-	${PYTHON_REQUIRED_USE}
+BDEPEND="${PYTHON_DEPS}
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
+	virtual/pkgconfig
 "
-
-# the test suite is messed, it uses system-installed samba
-# bits instead of what was built, tests things disabled via use
-# flags, and generally just fails to work in a way ebuilds could
-# rely on in its current state
-RESTRICT="test"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
@@ -274,7 +274,7 @@ multilib_src_install() {
 			-e '/path =/s@/usr/local/samba/lib/@/var/lib/samba/@' \
 			-e '/path =/s@/usr/local/samba/@/var/lib/samba/@' \
 			-e '/path =/s@/usr/spool/samba@/var/spool/samba@' \
-			-i "${ED%/}"/etc/samba/smb.conf.default || die
+			-i "${ED}"/etc/samba/smb.conf.default || die
 
 		# Install init script and conf.d file
 		newinitd "${CONFDIR}/samba4.initd-r1" samba
@@ -310,11 +310,13 @@ multilib_src_test() {
 }
 
 pkg_postinst() {
-	ewarn "Be aware that this release contains the best of all of Samba's"
-	ewarn "technology parts, both a file server (that you can reasonably expect"
-	ewarn "to upgrade existing Samba 3.x releases to) and the AD domain"
-	ewarn "controller work previously known as 'samba4'."
-
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		elog "Be aware that this release contains the best of all of Samba's"
+		elog "technology parts, both a file server (that you can reasonably expect"
+		elog "to upgrade existing Samba 3.x releases to) and the AD domain"
+		elog "controller work previously known as 'samba4'."
+		elog
+	fi
 	elog "For further information and migration steps make sure to read "
 	elog "https://samba.org/samba/history/${P}.html "
 	elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
