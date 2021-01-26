@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">josephwright/beamer</remote-id>
+		<changelog>https://github.com/josephwright/beamer/blob/master/CHANGELOG.md</changelog>
 	</upstream>
 </pkgmetadata>
