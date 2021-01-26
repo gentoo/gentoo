@@ -68,12 +68,13 @@ DEPEND="
 	amd64? (
 		${ASM_DEPEND}
 	)
+	lto? ( sys-devel/binutils[gold] )
 	x86? (
 		${ASM_DEPEND}
 	)
 "
 
-CDEPEND="
+COMMON_DEPEND="
 	>=app-text/hunspell-1.5.4:=
 	dev-libs/atk
 	>=dev-libs/glib-2.26:2
@@ -134,11 +135,10 @@ CDEPEND="
 	)
 "
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
-DEPEND+="${CDEPEND}
-	lto? ( sys-devel/binutils[gold] )
+DEPEND+="${COMMON_DEPEND}
 	amd64? ( virtual/opengl )
 	x86? ( virtual/opengl )
 "
