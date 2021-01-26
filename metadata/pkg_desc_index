@@ -14549,7 +14549,7 @@ net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for 
 net-dns/dnscrypt-proxy 2.0.44 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.5.0 1.5.1 1.5.1-r100: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
-net-dns/dnsmasq 2.81 2.82 2.82-r100 2.83-r1 2.83-r101: Small forwarding DNS server
+net-dns/dnsmasq 2.81 2.82 2.82-r100 2.83-r1 2.83-r101 2.84 2.84-r100: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r1 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
@@ -17824,7 +17824,7 @@ virtual/perl-Carp 1.500.0-r3: Virtual for Carp
 virtual/perl-Compress-Raw-Bzip2 2.89.0-r1 2.93.0: Virtual for Compress-Raw-Bzip2
 virtual/perl-Compress-Raw-Zlib 2.84.0 2.93.0: Virtual for Compress-Raw-Zlib
 virtual/perl-DB_File 1.843.0 1.853.0: Virtual for DB_File
-virtual/perl-Data-Dumper 2.174.0-r1: Virtual for Data-Dumper
+virtual/perl-Data-Dumper 2.174.0-r2 2.174.10_rc: Virtual for Data-Dumper
 virtual/perl-Devel-PPPort 3.520.0 3.570.0: Virtual for Devel-PPPort
 virtual/perl-Digest 1.170.100_rc-r10: Virtual for Digest
 virtual/perl-Digest-MD5 2.550.0-r2 2.550.100_rc: Virtual for Digest-MD5
@@ -17859,7 +17859,7 @@ virtual/perl-Math-BigInt-FastCalc 0.500.800 0.500.900: Virtual for Math-BigInt-F
 virtual/perl-Math-BigRat 0.261.400-r1: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.100-r4: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.100_rc-r10: Virtual for Memoize
-virtual/perl-Module-CoreList 5.202.6.13.0_rc 5.202.6.200: Virtual for Module-CoreList
+virtual/perl-Module-CoreList 5.202.6.13.0_rc 5.202.6.200 5.202.101.230: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.340.0-r1: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.680.0-r3 0.700.0: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r13: Virtual for Module-Loaded
@@ -17871,7 +17871,7 @@ virtual/perl-Perl-OSType 1.10.0-r4: Virtual for Perl-OSType
 virtual/perl-Pod-Escapes 1.70.0-r7: Virtual for Pod-Escapes
 virtual/perl-Pod-Parser 1.630.0-r8: Virtual for Pod-Parser
 virtual/perl-Pod-Simple 3.350.0-r3 3.400.0: Virtual for Pod-Simple
-virtual/perl-Safe 2.400.0-r3 2.410.0: Virtual for Safe
+virtual/perl-Safe 2.400.0-r3 2.410.0-r1 2.410.100_rc: Virtual for Safe
 virtual/perl-Scalar-List-Utils 1.500.0-r2 1.550.0: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
 virtual/perl-Socket 2.27.0-r2 2.29.0: Virtual for Socket
 virtual/perl-Storable 3.150.0 3.210.0: Virtual for Storable

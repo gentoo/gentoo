@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Module-CoreList
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+RDEPEND=|| ( =dev-lang/perl-5.32.1* ~perl-core/Module-CoreList-5.202.101.230 ) dev-lang/perl:= !<perl-core/Module-CoreList-5.202.101.230 !>perl-core/Module-CoreList-5.202.101.230-r999
+SLOT=0
+_md5_=6f8f991da9347364ddfb205ff1efaa40
