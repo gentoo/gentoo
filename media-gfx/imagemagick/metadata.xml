@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="project">
+    <email>codec@gentoo.org</email>
+    <name>Gentoo Codec Project</name>
+  </maintainer>
   <maintainer type="person">
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
