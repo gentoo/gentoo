@@ -1,0 +1,16 @@
+BDEPEND=test? ( ruby_targets_ruby25? ( dev-ruby/listen:3[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( dev-ruby/listen:3[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby25? ( test? ( >=www-apps/jekyll-2[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby26? ( test? ( >=www-apps/jekyll-2[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby25? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby26? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] !!dev-ruby/psych[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] !!dev-ruby/psych[ruby_targets_ruby26(-)] ) test? ( ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] ) )
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
+DESCRIPTION=Rebuild your Jekyll site when a file changes with the --watch switch
+EAPI=7
+HOMEPAGE=https://github.com/jekyll/jekyll-watch
+IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 test test
+KEYWORDS=~amd64 ~arm64
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby25? ( dev-ruby/listen:3[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( dev-ruby/listen:3[ruby_targets_ruby26(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
+REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 )
+RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
+SLOT=0
+SRC_URI=https://github.com/jekyll/jekyll-watch/archive/v2.2.1.tar.gz -> jekyll-watch-2.2.1.tar.gz
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	6ee14a23a169409059ed36d4dddc3197	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=faa3481cc57531afe75f91288c8b5f9b

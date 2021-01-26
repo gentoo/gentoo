@@ -2670,7 +2670,7 @@ app-office/gnucash 4.2 4.2-r1 4.4: A personal finance manager
 app-office/gnumeric 1.12.47 1.12.48: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
-app-office/homebank 5.2.2 5.2.8 5.3.2 5.4.2: Free, easy, personal accounting for everyone
+app-office/homebank 5.2.2 5.2.8 5.3.2 5.4.2 5.4.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.13.0_beta2: Stylish way of giving presentations with Python
@@ -9204,7 +9204,7 @@ dev-python/svgwrite 1.4 1.4.1: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 2.0.1: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
-dev-python/sympy 1.6.2 1.7.1-r1: Computer Algebra System in pure Python
+dev-python/sympy 1.7.1-r1: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
 dev-python/tappy 3.0: Test Anything Protocol (TAP) tools
@@ -9432,10 +9432,10 @@ dev-ros/actionlib_msgs 1.13.0 1.13.1 9999: Common messages to interact with an a
 dev-ros/actionlib_tools 1.13.2 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 0.2.0 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 1.17.1 9999: Probabilistic localization system for a robot moving in 2D
-dev-ros/ament_cmake_copyright 0.9.5 0.10.0 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_cmake_copyright 0.9.5 0.10.0 0.10.1 9999: The auto-magic functions for ease to use of the ament linters
 dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 1.0.3 9999: The core of the ament buildsystem in CMake
-dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
-dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
+dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 0.10.1 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
+dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 0.10.1 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
 dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export definitions to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
 dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export include directories to downstream packages in the ament buildsystem
@@ -9447,25 +9447,25 @@ dev-ros/ament_cmake_gmock 1.0.0 1.0.1 1.0.3 9999: The ability to add Google mock
 dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to add gtest-based tests in the ament buildsystem
 dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 9999: Export include directories to downstream packages in the ament buildsystem
 dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 1.0.3 9999: The functionality to deduplicate libraries in the ament buildsystem
-dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
+dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 0.10.1 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
 dev-ros/ament_cmake_pytest 1.0.0 1.0.1 1.0.3 9999: The ability to run Python tests using pytest in the ament buildsystem
 dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to use Python in the ament buildsystem
 dev-ros/ament_cmake_ros 0.9.0 9999: ROS specific CMake bits in the ament buildsystem
 dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 9999: Add defs, include dirs and libs to a target in the ament buildsystem
 dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 1.0.3 9999: The ability to add tests in the ament buildsystem
-dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 9999: The CMake API for ament_uncrustify to check code against styleconventions
+dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 0.10.1 9999: The CMake API for ament_uncrustify to check code against styleconventions
 dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 1.0.3 9999: Override the exported package version in the ament buildsystem
-dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 9999: he CMake API for ament_xmllint to check XML file using xmmlint
-dev-ros/ament_copyright 0.10.0 9999: The ability to check source files for copyright and license information.
-dev-ros/ament_cppcheck 0.10.0 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
-dev-ros/ament_cpplint 0.10.0 9999: The ability to check code against the Google style conventions using cpplint
-dev-ros/ament_flake8 0.10.0 9999: The ability to check code for style and syntax conventions with flake8
-dev-ros/ament_lint 0.9.5 0.10.0 9999: Common API for ament linter packages
-dev-ros/ament_lint_auto 0.9.5 0.10.0 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_lint_cmake 0.10.0 9999: Lint CMake code using cmakelint and generate xUnit test result files
-dev-ros/ament_pep257 0.10.0 9999: Checks code against style conventions in PEP 8 and generate test result files
-dev-ros/ament_uncrustify 0.10.0 9999: The ability to check code against style conventions using uncrustify
-dev-ros/ament_xmllint 0.10.0 9999: Checks XML files like the package manifest using xmllint
+dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 0.10.1 9999: he CMake API for ament_xmllint to check XML file using xmmlint
+dev-ros/ament_copyright 0.10.0 0.10.1 9999: The ability to check source files for copyright and license information.
+dev-ros/ament_cppcheck 0.10.0 0.10.1 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
+dev-ros/ament_cpplint 0.10.0 0.10.1 9999: The ability to check code against the Google style conventions using cpplint
+dev-ros/ament_flake8 0.10.0 0.10.1 9999: The ability to check code for style and syntax conventions with flake8
+dev-ros/ament_lint 0.9.5 0.10.0 0.10.1 9999: Common API for ament linter packages
+dev-ros/ament_lint_auto 0.9.5 0.10.0 0.10.1 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_lint_cmake 0.10.0 0.10.1 9999: Lint CMake code using cmakelint and generate xUnit test result files
+dev-ros/ament_pep257 0.10.0 0.10.1 9999: Checks code against style conventions in PEP 8 and generate test result files
+dev-ros/ament_uncrustify 0.10.0 0.10.1 9999: The ability to check code against style conventions using uncrustify
+dev-ros/ament_xmllint 0.10.0 0.10.1 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.6 0.3.7 0.3.8 0.3.10 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.6 0.3.7 0.3.8 0.3.10 9999: Messages for transmitting audio via ROS
@@ -9872,7 +9872,7 @@ dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled ap
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
 dev-ruby/capistrano 2.15.5-r2 3.13.0 3.14.0 3.14.1 3.15.0: A distributed application deployment system
-dev-ruby/capybara 3.31.0 3.32.2 3.33.0 3.34.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 3.32.2 3.33.0 3.34.0 3.35.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2 1.0.0: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -10544,7 +10544,7 @@ dev-tex/hevea 2.31 2.35: HeVeA is a quite complete and fast LaTeX to HTML transl
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425-r1: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
-dev-tex/latex-beamer 3.56-r1 3.57 3.59: LaTeX class for creating presentations using a video projector
+dev-tex/latex-beamer 3.56-r1 3.57 3.59 3.60: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2015 2017.2-r2 2021: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
@@ -10811,7 +10811,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.1 2.263.2 2.268 2.275: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.1 2.263.2 2.263.3 2.268 2.275: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -12501,7 +12501,7 @@ mail-filter/rspamd 2.6-r2 2.6-r100 2.7 2.7-r100 9999: Rapid spam filtering syste
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.6-r1: S/MIME signing milter
-mail-filter/spamassassin 3.4.4 3.4.4-r1 3.4.4-r2 3.4.4-r3 3.4.4-r4: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.4 3.4.4-r1 3.4.4-r2 3.4.4-r3 3.4.4-r4 3.4.4-r5: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
@@ -15233,7 +15233,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.22.10-r12 1.26.0-r1 1.26.2-r1 1.26.4 1.26.6 1.28.0: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.22.10-r12 1.26.0-r1 1.26.2-r1 1.26.4 1.26.6 1.28.0-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.6.5 3.1.1 3.1.1-r1: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
@@ -17997,7 +17997,7 @@ www-apps/jekyll 4.1.1 4.2.0: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.2.2 2.0.0: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-sass-converter 1.5.2 2.1.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 1.4.0: Automatically generate a sitemap.xml for your Jekyll site
-www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
+www-apps/jekyll-watch 2.2.1 2.2.1-r1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
 www-apps/kibana-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer

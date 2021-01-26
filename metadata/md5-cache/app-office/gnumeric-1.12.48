@@ -5,7 +5,7 @@ DESCRIPTION=The GNOME Spreadsheet
 EAPI=7
 HOMEPAGE=http://www.gnumeric.org/
 IUSE=+introspection libgda perl python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 sys-libs/zlib >=dev-libs/glib-2.40.0:2 >=gnome-extra/libgsf-1.14.33:= >=x11-libs/goffice-0.10.48:0.10 >=dev-libs/libxml2-2.4.12:2 >=x11-libs/pango-1.24.0:= >=x11-libs/gtk+-3.8.7:3 x11-libs/cairo:=[svg] introspection? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-libs/gobject-introspection-1:= ) perl? ( dev-lang/perl:= ) libgda? ( gnome-extra/libgda:5[gtk] )
 REQUIRED_USE=introspection? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnumeric/1.12/gnumeric-1.12.48.tar.xz
 _eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=84139bbb104f77b19a137ae122d807d5
+_md5_=119ab44789a151f5106132076c9080d6
