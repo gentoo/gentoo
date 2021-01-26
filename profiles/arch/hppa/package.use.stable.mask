@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Rolf Eike Beer <eike@sf-mail.de> (2021-01-26)
+# The following packages have no stable keywords on hppa:
+#       openntpd: net-misc/openntpd
+#   parse-clocks: net-misc/pps-tools
+#           snmp: net-analyzer/net-snmp
+net-misc/ntp openntpd parse-clocks snmp
+
 # Sam James <sam@gentoo.org> (2021-01-21)
 # media-gfx/transfig ends up pulling in Xorg
 # bug #766051
