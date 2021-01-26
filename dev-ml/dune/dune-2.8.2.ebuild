@@ -17,6 +17,8 @@ DEPEND="dev-lang/ocaml"
 RDEPEND="${DEPEND}
 	!dev-ml/jbuilder"
 
+QA_FLAGS_IGNORED=/usr/bin/dune
+
 src_configure() {
 	:
 }
