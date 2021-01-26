@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-23">
+  <title>PEAR Archive_Tar: Directory traversal</title>
+  <synopsis>Multiple vulnerabilities have been found in PEAR Archive_Tar, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">PEAR-Archive_Tar</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>755653</bug>
+  <bug>766036</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/PEAR-Archive_Tar" auto="yes" arch="*">
+      <unaffected range="ge">1.4.12</unaffected>
+      <vulnerable range="lt">1.4.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>This class provides handling of tar files in PHP.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PEAR Archive_Tar.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PEAR-Archive_Tar users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/PEAR-Archive_Tar-1.4.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28948">CVE-2020-28948</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28949">CVE-2020-28949</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-36193">CVE-2020-36193</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-25T23:43:27Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T00:10:53Z">sam_c</metadata>
+</glsa>

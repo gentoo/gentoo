@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-29">
+  <title>OpenJPEG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJPEG, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">openjpeg</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>711260</bug>
+  <bug>718918</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/openjpeg" auto="yes" arch="*">
+      <unaffected range="ge" slot="2">2.4.0</unaffected>
+      <vulnerable range="lt" slot="2">2.4.0</vulnerable>
+      <vulnerable range="lt" slot="1">*</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJPEG is an open-source JPEG 2000 library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJPEG. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJPEG 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/openjpeg-2.4.0:2"
+    </code>
+    
+    <p>OpenJPEG 1 has been discontinued and any dependent packages should now
+      be using OpenJPEG 2 or have dropped support for the library.
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose --depclean
+      "&gt;=media-libs/openjpeg:1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-21010">CVE-2018-21010</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12973">CVE-2019-12973</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-15389">CVE-2020-15389</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27814">CVE-2020-27814</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27841">CVE-2020-27841</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27842">CVE-2020-27842</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27843">CVE-2020-27843</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27844">CVE-2020-27844</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-27845">CVE-2020-27845</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-25T20:17:39Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T00:15:25Z">sam_c</metadata>
+</glsa>

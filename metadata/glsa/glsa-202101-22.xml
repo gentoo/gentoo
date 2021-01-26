@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-22">
+  <title>libvirt: Unintended access to /dev/mapper/control</title>
+  <synopsis>A vulnerability in libvirt may allow root privilege escalation.</synopsis>
+  <product type="ebuild">libvirt</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>739948</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/libvirt" auto="yes" arch="*">
+      <unaffected range="ge">6.7.0</unaffected>
+      <vulnerable range="lt">6.7.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libvirt is a C toolkit for manipulating virtual machines.</p>
+  </background>
+  <description>
+    <p>A file descriptor for /dev/mapper/control was insufficiently protected.</p>
+  </description>
+  <impact type="high">
+    <p>A local attacker may be able to escalate to root privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libvirt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/libvirt-6.7.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-14339">CVE-2020-14339</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-10-05T23:25:12Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T00:10:19Z">sam_c</metadata>
+</glsa>

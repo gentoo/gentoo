@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-25">
+  <title>Mutt: Denial of service</title>
+  <synopsis>A vulnerability in Mutt could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">mutt</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>765790</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mutt" auto="yes" arch="*">
+      <unaffected range="ge">2.0.4-r1</unaffected>
+      <vulnerable range="lt">2.0.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mutt is a small but very powerful text-based mail client.</p>
+  </background>
+  <description>
+    <p>A memory leak could occur when a crafted email message is received.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/mutt-2.0.4-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3181">CVE-2021-3181</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-25T23:33:22Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T00:13:00Z">sam_c</metadata>
+</glsa>
