@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-27">
+  <title>FreeRADIUS: Root privilege escalation</title>
+  <synopsis>Multiple vulnerabilities were discovered in Gentoo's systemd unit
+    for FreeRADIUS which could lead to root privilege escalation.
+  </synopsis>
+  <product type="ebuild">freeradius</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>630910</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-dialup/freeradius" auto="yes" arch="*">
+      <unaffected range="ge">3.0.20-r1</unaffected>
+      <vulnerable range="lt">3.0.20-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeRADIUS is a modular, high performance free RADIUS suite.</p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s FreeRADIUS systemd unit set
+      permissions on an unsafe directory on start.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeRADIUS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/freeradius-3.0.20-r1"
+    </code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-25T21:55:08Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T00:13:46Z">sam_c</metadata>
+</glsa>
