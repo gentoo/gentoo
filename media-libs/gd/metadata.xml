@@ -26,7 +26,6 @@ and so forth.
 	<upstream>
 		<remote-id type="github">libgd/libgd</remote-id>
 		<bugs-to>https://github.com/libgd/libgd/issues</bugs-to>
-		<remote-id type="bitbucket">libgd/gd-libgd</remote-id>
 	</upstream>
 	<use>
 		<flag name="webp">Enable support for the webp format</flag>
