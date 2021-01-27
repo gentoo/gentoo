@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson gnome2-utils python-any-r1 xdg
+inherit meson gnome2-utils python-any-r1
 
 DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-desktop"
@@ -41,6 +41,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	python_fix_shebang install-scripts
+}
 
 pkg_postinst() {
 	gnome2_schemas_update
