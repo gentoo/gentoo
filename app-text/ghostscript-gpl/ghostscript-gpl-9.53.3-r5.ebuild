@@ -149,6 +149,7 @@ src_configure() {
 		--with-ijs \
 		--with-jbig2dec \
 		--with-libpaper \
+		--with-openprinting \
 		--with-system-libtiff \
 		--without-luratech \
 		$(use_enable cups) \
