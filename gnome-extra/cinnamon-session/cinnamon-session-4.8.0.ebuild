@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson gnome2-utils xdg
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit meson gnome2-utils python-any-r1 xdg-utils
 
 DESCRIPTION="Cinnamon session manager"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-session"
@@ -40,6 +42,7 @@ RDEPEND="
 	>=gnome-extra/cinnamon-desktop-4.8
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/intltool-0.40.6
 	virtual/pkgconfig
 
@@ -47,6 +50,11 @@ BDEPEND="
 		app-text/xmlto
 		dev-libs/libxslt )
 "
+
+src_prepare() {
+	default
+	python_fix_shebang data
+}
 
 src_configure() {
 	local emesonargs=(
@@ -58,11 +66,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	xdg_pkg_postinst
+	xdg_icon_cache_update
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	xdg_pkg_postrm
+	xdg_icon_cache_update
 	gnome2_schemas_update
 }
