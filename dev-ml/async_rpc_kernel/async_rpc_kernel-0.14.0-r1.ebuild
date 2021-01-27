@@ -18,5 +18,6 @@ RDEPEND="
 	dev-ml/async_kernel:=
 	dev-ml/core_kernel:=
 	dev-ml/ppx_jane:=
+	dev-ml/protocol_version_header:=
 "
 DEPEND="${RDEPEND}"

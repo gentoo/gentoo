@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vivien/i3blocks-contrib/archive/${COMMIT}.tar.gz -> 
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND=""
 RDEPEND="!<x11-misc/i3blocks-1.5
