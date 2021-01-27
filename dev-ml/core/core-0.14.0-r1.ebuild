@@ -20,6 +20,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-ml/base:=
 	dev-ml/core_kernel:=
+	dev-ml/jst-config:=
 	dev-ml/ppx_assert:=
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_jane:=
