@@ -21,12 +21,10 @@ RDEPEND="
 	dev-ml/base:=
 	dev-ml/core_kernel:=
 	dev-ml/jst-config:=
-	dev-ml/ppx_assert:=
-	dev-ml/ppx_driver:=
 	dev-ml/ppx_jane:=
 	dev-ml/sexplib:=
 	dev-ml/spawn:=
 	dev-ml/stdio:=
-	dev-ml/ocaml-migrate-parsetree:=
+	dev-ml/timezone:=
 "
 DEPEND="${RDEPEND}"
