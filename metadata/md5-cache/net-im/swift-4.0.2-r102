@@ -5,7 +5,7 @@ DESCRIPTION=An elegant, secure, adaptable and intuitive XMPP Client
 EAPI=7
 HOMEPAGE=https://www.swift.im/
 IUSE=expat +icu +idn lua test zeroconf lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=BSD BSD-1 CC-BY-3.0 GPL-3 OFL-1.1
 RDEPEND=dev-db/sqlite:3 dev-libs/boost:= dev-libs/openssl:0= net-libs/libnatpmp net-libs/miniupnpc:= sys-libs/zlib expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2:2 ) icu? ( dev-libs/icu:= ) idn? ( net-dns/libidn:= ) lua? ( lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) )
 REQUIRED_USE=|| ( icu idn ) lua? ( ^^ ( lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 ) )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=4/0
 SRC_URI=https://swift.im/downloads/releases/swift-4.0.2/swift-4.0.2.tar.gz https://dev.gentoo.org/~conikost/distfiles/patches/swift-4.0.2-python3-compatibility.patch.gz
 _eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	f630b6d8702353cdc13f2d4dd882e16e	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=b2ee6a58d0bd94597f8802b703a3aa5d
+_md5_=4db7a81ae476169dd9efcdbf725df5e0
