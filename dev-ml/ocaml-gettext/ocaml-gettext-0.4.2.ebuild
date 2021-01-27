@@ -21,7 +21,7 @@ BDEPEND="
 	dev-ml/dune-configurator
 "
 RDEPEND="
-	dev-ml/base:=[ocamlopt=]
+	dev-ml/base:=
 	>=dev-ml/camomile-0.8.3:=[ocamlopt=]
 	>=dev-ml/ocaml-fileutils-0.4.0:=[ocamlopt=]
 	sys-devel/gettext
