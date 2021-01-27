@@ -120,7 +120,6 @@ src_install() {
 	# The pamd file isn't what we need, use pamd_mimic_system
 	rm -rf "${ED}/etc/pam.d" || die
 
-
 	if use pam; then
 		pamd_mimic_system netatalk auth account password session
 	fi
