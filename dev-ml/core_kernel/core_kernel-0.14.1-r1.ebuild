@@ -19,7 +19,6 @@ RDEPEND="
 	dev-ml/base:=
 	dev-ml/base_bigstring:=
 	dev-ml/bin-prot:=
-	dev-ml/configurator:=
 	dev-ml/fieldslib:=
 	dev-ml/jane-street-headers:=
 	dev-ml/ppx_assert:=
