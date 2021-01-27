@@ -14,6 +14,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
+# Wants quickcheck_deprecated for now
+RESTRICT="test"
+
 RDEPEND="
 	dev-lang/ocaml:=
 	dev-ml/base:=
