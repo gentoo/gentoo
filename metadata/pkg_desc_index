@@ -5836,15 +5836,15 @@ dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
 dev-ml/core_kernel 0.9.0 0.9.1 0.14.1-r2: System-independent part of Core
 dev-ml/cppo 1.4.1 1.5.0 1.6.6 1.6.7: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11 1.16.1-r1: Cryptographic primitives library for Objective Caml
-dev-ml/csexp 1.3.2: Parsing and printing of S-expressions in Canonical form
+dev-ml/csexp 1.3.2-r1: Parsing and printing of S-expressions in Canonical form
 dev-ml/csv 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.9: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dns 1.0.0: A pure OCaml implementation of the DNS protocol
-dev-ml/dose3 5.0.1-r1: Library to perform analysis on package repositories
+dev-ml/dose3 5.0.1-r1 5.0.1_p16: Library to perform analysis on package repositories
 dev-ml/dune 2.1.0 2.7.1 2.8.2: A composable build system for OCaml
-dev-ml/dune-configurator 2.7.1 2.8.2: A composable build system for OCaml
-dev-ml/dune-private-libs 2.7.1 2.8.2: A composable build system for OCaml
+dev-ml/dune-configurator 2.7.1 2.8.2-r1: A composable build system for OCaml
+dev-ml/dune-private-libs 2.7.1 2.8.2-r1: A composable build system for OCaml
 dev-ml/easy-format 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
 dev-ml/extlib 1.7.7 1.7.8: Standard library extensions for O'Caml
