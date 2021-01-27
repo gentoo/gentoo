@@ -32,8 +32,6 @@ esac
 case $(ver_cut 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
-		COMMON_DEPEND=">=dev-libs/apr-1.5.1:=
-			!www-apache/mod_macro" #492578 #477702
 	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
@@ -139,6 +137,7 @@ unset -f _apache2_set_mpms
 # Dependencies
 RDEPEND="
 	dev-lang/perl
+	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
