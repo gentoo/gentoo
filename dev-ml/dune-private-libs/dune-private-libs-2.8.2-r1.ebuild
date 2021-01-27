@@ -26,8 +26,8 @@ BDEPEND="
 	)
 "
 DEPEND="
-	dev-ml/csexp:=
-	dev-ml/findlib:=
+	dev-ml/csexp:=[ocamlopt=]
+	dev-ml/findlib:=[ocamlopt=]
 "
 RDEPEND="${DEPEND}"
 
