@@ -1523,7 +1523,6 @@ dev-haskell/http-streams:network-uri - Get Network.URI from the network-uri pack
 dev-haskell/httpd-shed:buildexamples - Build example executables.
 dev-haskell/httpd-shed:network-bsd - Get Network.BSD from the network-bsd package.
 dev-haskell/httpd-shed:network-uri - Get Network.URI from the network-uri package.
-dev-haskell/icalendar:network-uri - use network-uri package
 dev-haskell/io-streams:network - Include network support
 dev-haskell/io-streams:zlib - Include zlib support
 dev-haskell/json:mapdict - Encode Haskell maps as JSON dicts
@@ -8605,7 +8604,6 @@ www-client/opera-beta:widevine - Unsupported closed-source DRM capability (requi
 www-client/opera-developer:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
 www-client/opera-developer:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/qutebrowser:scripts - Installs userscripts from the misc/userscripts directory to /usr/share/qutebrowser/userscripts.
-www-client/seamonkey:calendar - Build Mozilla's calendar
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/seamonkey:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles

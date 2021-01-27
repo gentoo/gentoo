@@ -10,4 +10,4 @@ RDEPEND=<dev-lang/ocaml-4.11.0:=[ocamlopt?]
 SLOT=0/7.11
 SRC_URI=https://github.com/camlp5/camlp5/archive/rel711.tar.gz -> camlp5-7.11.tar.gz
 _eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6
-_md5_=004bbe5b7f9d521bf18f8ab4ac2bb6ed
+_md5_=cde1dbd375f335b2f7f5140d4c1e0617
