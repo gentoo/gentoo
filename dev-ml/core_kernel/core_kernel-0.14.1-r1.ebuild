@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ml/bin-prot:=
 	dev-ml/fieldslib:=
 	dev-ml/jane-street-headers:=
+	dev-ml/jst-config:=
 	dev-ml/ppx_assert:=
 	dev-ml/ppx_base:=
 	dev-ml/ppx_driver:=
