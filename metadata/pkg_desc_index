@@ -2917,7 +2917,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1 2.5.0: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.52-r1 9.53.3-r4: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.52-r1 9.53.3-r5: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
 app-text/grip 4.5.2-r2: Preview GitHub Markdown files like Readme locally before committing them
@@ -5387,7 +5387,7 @@ dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
-dev-libs/libbytesize 2.3 2.4: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
+dev-libs/libbytesize 2.3 2.4 2.5: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcbor 0.8.0: CBOR protocol implementation for C and others
 dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
@@ -5425,7 +5425,7 @@ dev-libs/libevent 2.1.11 2.1.12 2.1.9999 9999: Library to execute a function whe
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
-dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
+dev-libs/libfastjson 0.99.8 0.99.9: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.5.0-r1 1.6.0: Provides library functionality for FIDO 2.0
@@ -5516,7 +5516,7 @@ dev-libs/libpwquality 1.4.2 1.4.4: Library for password quality checking and gen
 dev-libs/libpy 0.2.5-r1: Utilities for writing C++ extension modules
 dev-libs/libqtxdg 3.5.0 3.6.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.15: Library to configure gaming mice
-dev-libs/librdkafka 1.4.4 1.5.0 1.5.2 1.5.3: Apache Kafka C/C++ client library
+dev-libs/librdkafka 1.4.4 1.5.0 1.5.2 1.5.3 1.6.0: Apache Kafka C/C++ client library
 dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.13.1: Generic library for reporting software bugs
@@ -12863,7 +12863,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.52 6.9.11.58 7.0.10.52 7.0.10.58 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.58 6.9.11.60 7.0.10.58 7.0.10.60 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -17569,8 +17569,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.10.9 5.10.10 5.10.11: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.9.246 4.9.251 4.9.252 4.9.253 4.14.209 4.14.215 4.14.216 4.14.217 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.10.8 5.10.9 5.10.10 5.10.11: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17585,7 +17585,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.1
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.10.9 5.10.10 5.10.11: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.253 4.9.253 4.14.217 4.19.171 5.4.93 5.10.11: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17767,7 +17767,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.10.9 5.10.10: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.4.93 5.10.9 5.10.10 5.10.11: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
