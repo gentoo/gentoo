@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-31">
+  <title>Cacti: Remote code execution</title>
+  <synopsis>A vulnerability in Cacti could lead to remote code execution.</synopsis>
+  <product type="ebuild">cacti</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>765019</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/cacti" auto="yes" arch="*">
+      <unaffected range="ge">1.2.16-r1</unaffected>
+      <vulnerable range="lt">1.2.16-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Cacti is a complete frontend to rrdtool.</p>
+  </background>
+  <description>
+    <p>The side_id parameter in data_debug.php does not properly verify input
+      allowing SQL injection.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Cacti users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/cacti-1.2.16-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35701">CVE-2020-35701</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-26T00:34:29Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T23:38:21Z">sam_c</metadata>
+</glsa>

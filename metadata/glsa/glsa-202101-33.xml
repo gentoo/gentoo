@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-33">
+  <title>sudo: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in sudo, the worst of
+    which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>2021-01-26</announced>
+  <revised count="1">2021-01-26</revised>
+  <bug>764986</bug>
+  <bug>767364</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.9.5_p2</unaffected>
+      <vulnerable range="lt">1.9.5_p2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo (su “do”) allows a system administrator to delegate authority
+      to give certain users (or groups of users) the ability to run some (or
+      all) commands as root or another user while providing an audit trail of
+      the commands and their arguments.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in sudo. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Local users are able to gain unauthorized privileges on the system or
+      determine the existence of files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.9.5_p2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-23239">CVE-2021-23239</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-23240">CVE-2021-23240</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3156">CVE-2021-3156</uri>
+    <uri link="https://www.sudo.ws/alerts/sudoedit_selinux.html">Upstream
+      advisory (CVE-2020-23240)
+    </uri>
+    <uri link="https://www.sudo.ws/alerts/unescape_overflow.html">Upstream
+      advisory (CVE-2021-3156)
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-26T22:52:21Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-26T23:40:46Z">sam_c</metadata>
+</glsa>
