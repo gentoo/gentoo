@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jonathan Davies <jpds@protonmail.com> (2021-01-27)
+# No SELinux on ARM
+net-im/prosody selinux
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
 # Depends on media-video/rav1e which needs Rust
 >=media-libs/libheif-1.10.0 rav1e
@@ -333,10 +337,6 @@ app-i18n/scim-anthy kasumi
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Markus Meier <maekke@gentoo.org> (2014-11-14)
-# Unkeyworded deps, bug #511532
-net-im/prosody libevent mysql postgres sqlite
 
 # Alexis Ballier <aballier@gentoo.org> (2014-10-24)
 # sci-libs/hdf is not supported on arm
