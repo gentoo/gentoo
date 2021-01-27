@@ -24,14 +24,14 @@ BDEPEND="
 	dev-ml/dune-configurator
 "
 RDEPEND="
-	dev-ml/base:=[ocamlopt]
+	dev-ml/base:=
 	dev-ml/camomile:=[ocamlopt]
-	dev-ml/ocaml-gettext:=[ocamlopt=]
+	dev-ml/ocaml-gettext:=
 "
 DEPEND="
 	${RDEPEND}
 	test? (
 		dev-ml/ounit[ocamlopt=]
-		dev-ml/ocaml-fileutils[ocamlopt=]
+		dev-ml/ocaml-fileutils
 	)
 "
