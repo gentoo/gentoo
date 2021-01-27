@@ -19,7 +19,6 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-ml/base:=
-	dev-ml/configurator:=
 	dev-ml/core_kernel:=
 	dev-ml/ppx_assert:=
 	dev-ml/ppx_driver:=
