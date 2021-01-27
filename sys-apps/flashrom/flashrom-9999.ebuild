@@ -74,7 +74,7 @@ LIB_DEPEND="
 	developerbox-spi? ( virtual/libusb:1[static-libs(+)] )
 	digilent-spi? ( virtual/libusb:1[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
-	ft2232-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+	ft2232-spi? ( dev-embedded/libftdi:1=[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
 	internal? ( sys-apps/pciutils[static-libs(+)] )
 	it8212? ( sys-apps/pciutils[static-libs(+)] )
@@ -91,7 +91,7 @@ LIB_DEPEND="
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
 	stlinkv3-spi? ( virtual/libusb:1[static-libs(+)] )
-	usbblaster-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+	usbblaster-spi? ( dev-embedded/libftdi:1=[static-libs(+)] )
 "
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
