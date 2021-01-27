@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers sys-apps/iucode_tool
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=da97d0a2a2ac5efdaebcdf041afaed52
+_md5_=c61e296655eda0604c945d251227c84d
