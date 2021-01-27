@@ -5801,12 +5801,12 @@ dev-lua/say 1.3_p1 1.3_p1-r1 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 0.8.2: A lightweight and colourful test framework
 dev-ml/astring 0.8.3 0.8.5: Alternative String module for OCaml
-dev-ml/async 0.9.0: Jane Street Capital's asynchronous execution library
-dev-ml/async_extra 0.9.0: Jane Street Capital's asynchronous execution library (extra)
-dev-ml/async_kernel 0.9.0: Jane Street Capital's asynchronous execution library (core)
-dev-ml/async_rpc_kernel 0.9.0: Platform-independent core of Async RPC library
-dev-ml/async_ssl 0.9.0 0.9.1: An Async-pipe-based interface with OpenSSL.
-dev-ml/async_unix 0.9.0: Jane Street Capital's asynchronous execution library (unix)
+dev-ml/async 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library
+dev-ml/async_extra 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (extra)
+dev-ml/async_kernel 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (core)
+dev-ml/async_rpc_kernel 0.9.0 0.14.0: Platform-independent core of Async RPC library
+dev-ml/async_ssl 0.9.0 0.9.1 0.14.0: An Async-pipe-based interface with OpenSSL.
+dev-ml/async_unix 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/base 0.9.1 0.9.2 0.9.3 0.9.4 0.14.0 0.14.1: Standard library for OCaml
 dev-ml/base_bigstring 0.14.0: String type based on Bigarray, for use in I/O and C-bindings
 dev-ml/base_quickcheck 0.14.0: Randomized testing framework, designed for compatibility with Base
@@ -5976,6 +5976,7 @@ dev-ml/ppx_typerep_conv 0.9.0 0.14.1: Generation of runtime types from type decl
 dev-ml/ppx_variants_conv 0.9.0 0.14.1: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/ppxfind 1.4: ocamlfind ppx tool
 dev-ml/ppxlib 0.18.0 0.20.0 0.21.0: Base library and tools for ppx rewriters
+dev-ml/protocol_version_header 0.14.0: Platform-independent core of Async RPC library
 dev-ml/qcheck 0.7: QuickCheck inspired property-based testing for OCaml
 dev-ml/re 1.9.0: Regular expression library for OCaml
 dev-ml/re2 0.9.0 0.9.1: OCaml bindings for RE2
@@ -18065,7 +18066,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.5.2115.87: A browser for our friends
-www-client/vivaldi-snapshot 3.6.2165.3 3.6.2165.22: A browser for our friends
+www-client/vivaldi-snapshot 3.6.2165.22 3.6.2165.26: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
@@ -19045,7 +19046,7 @@ xfce-base/libxfce4util 4.14.0 4.16.0: A basic utility library for the Xfce deskt
 xfce-base/thunar 1.8.16 4.16.2 4.17.0: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.14.0 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.14.4 4.16.0: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.14.4 4.16.0 4.16.1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.14.2 4.16.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.14.3 4.16.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.14.4 4.16.0: A configuration management system for Xfce
