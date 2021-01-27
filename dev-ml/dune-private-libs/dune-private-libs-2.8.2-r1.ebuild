@@ -10,19 +10,14 @@ HOMEPAGE="https://github.com/ocaml/dune"
 SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	~dev-ml/dune-private-libs-${PV}:=
-	dev-ml/csexp:=
-	dev-ml/result:=
-"
-RDEPEND="${DEPEND}"
-DEPEND="${DEPEND}
+BDEPEND="
+	~dev-ml/dune-${PV}
 	test? (
 		dev-ml/core_bench
 		dev-ml/menhir
@@ -30,6 +25,12 @@ DEPEND="${DEPEND}
 		dev-ml/ppx_expect
 	)
 "
+DEPEND="
+	dev-ml/csexp:=[ocamlopt=]
+	dev-ml/findlib:=[ocamlopt=]
+"
+RDEPEND="${DEPEND}"
+
 # TODO for test deps:
 # Add cram?
 # Add dev-ml/js_of_ocaml once dev-ml/ocaml-base64 is ported to Dune
@@ -38,7 +39,7 @@ DEPEND="${DEPEND}
 src_prepare() {
 	default
 
-	# Keep this list in sync with dev-ml/dune-private-libs
+	# Keep this list in sync with dev-ml/dune-configurator
 	local bad_tests=(
 		# List of tests calling git, mercurial, etc
 		test/blackbox-tests/test-cases/dune-project-meta/main.t
@@ -103,6 +104,6 @@ src_prepare() {
 	rm -r ${bad_tests[@]} || die "Failed to remove broken/inappropriate tests"
 }
 
-src_configure(){
+src_configure() {
 	:
 }
