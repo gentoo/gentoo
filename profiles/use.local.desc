@@ -5783,8 +5783,6 @@ net-im/spectrum2:purple - Enables the libpurple backend, based on net-im/pidgin.
 net-im/spectrum2:sms - Enables the SMS backend, based on app-mobilephone/smstools.
 net-im/spectrum2:twitter - Enables the Twitter backend.
 net-im/spectrum2:whatsapp - Enables the WhatsApp backend, based on net-im/transwhat.
-net-im/swift:client - Build the full graphical XMPP client.
-net-im/swift:gconf - Enable configuration through gnome-base/gconf.
 net-im/teams:system-ffmpeg - Use the system-wide media-video/ffmpeg instead of bundled.
 net-im/teams:system-mesa - Use the system-wide media-libs/mesa instead of bundled.
 net-im/telegram-desktop:enchant - Enable the app-text/aspell spell-checking backend
