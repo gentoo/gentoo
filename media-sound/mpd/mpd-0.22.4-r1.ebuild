@@ -282,7 +282,6 @@ src_install() {
 	keepdir /var/lib/mpd
 	keepdir /var/lib/mpd/music
 	keepdir /var/lib/mpd/playlists
-	keepdir /var/lib/mpd/log
 
 	rm -r "${ED}"/usr/share/doc/mpd || die
 
