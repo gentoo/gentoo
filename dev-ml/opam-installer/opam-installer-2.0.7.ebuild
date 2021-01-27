@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-lang/ocaml-4.02.3"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-lang/ocaml-4.02.3"
+DEPEND="${RDEPEND}
+	dev-ml/findlib"
 
 S="${WORKDIR}/opam-full-${PV/_/-}"
 OPAM_INSTALLER="${S}/opam-installer"
