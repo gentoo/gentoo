@@ -12,7 +12,7 @@ S="${WORKDIR}/dune-${PV}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
