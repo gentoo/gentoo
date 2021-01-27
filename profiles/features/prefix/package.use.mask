@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-01-27)
+# Requires PAM
+gnome-base/gdm elogind fprint
+lxde-base/lxdm elogind
+
 # Fabian Groffen <grobian@gentoo.org> (2020-10-15)
 # Requires PAM
 x11-base/xorg-server elogind
