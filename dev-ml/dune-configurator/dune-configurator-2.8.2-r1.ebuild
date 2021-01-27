@@ -17,9 +17,9 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	~dev-ml/dune-private-libs-${PV}:=
-	dev-ml/csexp:=
-	dev-ml/result:=
+	~dev-ml/dune-private-libs-${PV}:=[ocamlopt=]
+	dev-ml/csexp:=[ocamlopt=]
+	dev-ml/result:=[ocamlopt=]
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
