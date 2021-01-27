@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-35">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in phpMyAdmin, allowing
+    remote attackers to conduct XSS.
+  </synopsis>
+  <product type="ebuild">phpmyadmin</product>
+  <announced>2021-01-27</announced>
+  <revised count="1">2021-01-27</revised>
+  <bug>747805</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge" slot="4.9.6">4.9.6</unaffected>
+      <vulnerable range="lt" slot="4.9.6">4.9.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>phpMyAdmin is a web-based management tool for MySQL databases.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in phpMyAdmin. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All phpMyAdmin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.9.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26934">CVE-2020-26934</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26935">CVE-2020-26935</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-11-19T19:31:06Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-01-27T16:14:41Z">b-man</metadata>
+</glsa>
