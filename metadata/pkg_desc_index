@@ -12455,8 +12455,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.8 1.4.10 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.16 14.9.19: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.6.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.6.1: Thunderbird Mail Client
+mail-client/thunderbird 78.6.1 78.7.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.6.1 78.7.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -14254,7 +14254,7 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1 0.6.2: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 2.1 2.2: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 1.2.14 1.2.16 1.2.16-r1: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti 1.2.16-r1: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.2.13 1.2.14 1.2.16 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.99.4.5: parses logfiles of a wide variety of web proxy servers and generates reports
 net-analyzer/carl 0.9-r3 0.9-r4: An rsync logfile analyzer
