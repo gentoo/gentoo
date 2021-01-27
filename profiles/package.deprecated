@@ -17,12 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-22)
-# This is a renamed dev-python/pycryptodome.  Since the latter has more
-# revdeps, please sed your package s:Cryptodome:Crypto:,
-# s:pycryptodomex:pycryptodome:.
-dev-python/pycryptodomex
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
 # dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
 dev-qt/qtwebkit
