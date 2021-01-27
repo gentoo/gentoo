@@ -35,6 +35,7 @@ src_configure() {
 }
 
 src_compile() {
+	ulimit -s 11530000
 	emake out
 	if use ocamlopt; then
 		emake opt
