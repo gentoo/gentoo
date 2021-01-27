@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson pax-utils virtualx
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit meson pax-utils python-any-r1 virtualx
 
 DESCRIPTION="Linux Mint's fork of gjs for Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cjs"
@@ -33,8 +35,14 @@ DEPEND="
 	)
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	python_fix_shebang build
+}
 
 src_configure() {
 	local emesonargs=(
