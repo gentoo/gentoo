@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal
+
+inherit autotools multilib-minimal
 
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="
@@ -36,6 +37,12 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
 S=${WORKDIR}/${P/_/-}-stable
+
+src_prepare() {
+	default
+	# bug #767472
+	elibtoolize
+}
 
 multilib_src_configure() {
 	# fix out-of-source builds
