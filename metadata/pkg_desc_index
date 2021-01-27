@@ -625,7 +625,7 @@ app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during
 app-admin/diamond 4.0.515.20170311-r1 4.0.515.20200620-r1: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
-app-admin/doas 6.0 6.6.1: Run commands as super user or another user, alternative to sudo from OpenBSD
+app-admin/doas 6.0 6.6.1 6.8: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/docker-bench 0.2.2: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
