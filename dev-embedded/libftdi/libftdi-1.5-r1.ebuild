@@ -68,6 +68,13 @@ src_test() {
 src_install() {
 	cmake_src_install
 
+	# Fix up pkgconfig files
+	# bug #766818
+	if use cxx ; then
+		sed -i -e "s/libftdipp1/libftdi1/" "${ED}"/usr/lib64/pkgconfig/libftdi1.pc || die
+		sed -i -e "s/libftdi1/libftdipp1/" "${ED}"/usr/lib64/pkgconfig/libftdipp1.pc || die
+	fi
+
 	use python && python_optimize
 	dodoc AUTHORS ChangeLog README TODO
 
