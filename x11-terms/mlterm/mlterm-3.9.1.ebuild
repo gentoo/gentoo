@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,12 +12,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
-REQUIRED_USE="gtk2? ( gtk )"
+IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland +X xft"
+REQUIRED_USE="|| ( X fbcon wayland )
+	gtk2? ( gtk )"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
-	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )
 	brltty? ( app-accessibility/brltty )
 	cairo? ( x11-libs/cairo[X(+)] )
@@ -50,6 +50,7 @@ RDEPEND="x11-libs/libICE
 	uim? ( app-i18n/uim )
 	utempter? ( sys-libs/libutempter )
 	wayland? ( dev-libs/wayland )
+	X? ( x11-libs/libX11 )
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -84,7 +85,8 @@ src_configure() {
 		$(use_enable scim)
 		$(use_enable skk)
 		$(use_enable uim)
-		--with-gui=xlib$(usex fbcon ",fb" "")$(usex wayland ",wayland" "")
+		$(use_with X)
+		--with-gui=$(usex X ",xlib" "")$(usex fbcon ",fb" "")$(usex wayland ",wayland" "")
 		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
 		--with-utmp=$(usex utempter utempter none)
 		--enable-optimize-redrawing
