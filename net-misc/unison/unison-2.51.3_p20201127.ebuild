@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
-	local myconf="all"
+	local myconf
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
@@ -57,13 +57,12 @@ src_compile() {
 
 	use ocamlopt || myconf="$myconf NATIVE=false"
 
-	# Discard cflags as it will try to pass them to ocamlc...
-	emake $myconf CFLAGS=""
-
 	if use doc; then
-		myconf="$myconf docs HEVEA=false"
-		emake $myconf CFLAGS=""
+		emake $myconf CFLAGS="" HEVEA=false docs
 	fi
+
+	# Discard cflags as it will try to pass them to ocamlc...
+	emake $myconf CFLAGS="" src
 }
 
 src_test() {
