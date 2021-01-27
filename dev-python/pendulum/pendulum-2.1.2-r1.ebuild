@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 # Requires timezone information which is not installed by default
 # with dev-python/pytzdata, and otherwise approx. 50 out of 1600
-# tests are failing for now. Keeping the test dependencies 
+# tests are failing for now. Keeping the test dependencies
 # commented for future tests fixups
 RESTRICT="test"
 
