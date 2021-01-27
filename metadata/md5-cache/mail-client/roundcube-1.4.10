@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=1.4.10
 SRC_URI=https://github.com/roundcube/roundcubemail/releases/download/1.4.10/roundcubemail-1.4.10-complete.tar.gz
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=88fe5cdb70ddcb16beab00f7eb48ba4a
+_md5_=82de7098c919d67921d988577048732f
