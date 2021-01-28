@@ -2007,7 +2007,6 @@ dev-libs/efl:hyphen - Enable text hyphenation support
 dev-libs/efl:ibus - Enable Intelligent Input Bus
 dev-libs/efl:ico - Enable Ico image loader
 dev-libs/efl:json - Enable lottie animation support
-dev-libs/efl:luajit - USE dev-lang/luajit instead of dev-lang/lua
 dev-libs/efl:mono - Enable mono bindings
 dev-libs/efl:physics - Enable Bullet physics effects and support
 dev-libs/efl:pmaps - Enable PMAPS image loader
