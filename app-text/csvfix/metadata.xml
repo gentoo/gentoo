@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="bitbucket">neilb/csvfix</remote-id>
+    <remote-id type="github">jheusser/csvfix</remote-id>
   </upstream>
 </pkgmetadata>
