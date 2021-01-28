@@ -1092,6 +1092,7 @@ app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4: A command line tool for interacting 
 app-crypt/nitrokey-app 1.4-r1 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
+app-crypt/openpgp-keys-bcl 20210128: OpenPGP keys used by Brian C. Lane
 app-crypt/openpgp-keys-django 20201105 20201201: OpenPGP keys used to sign Django releases
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
@@ -2070,7 +2071,7 @@ app-emulation/podman 2.2.1: Library and podman tool for running OCI-based contai
 app-emulation/protontricks 1.4.1 1.4.2 1.4.3: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.106: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.1.0-r2 5.1.0-r3 5.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.1.0-r3 5.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -5126,7 +5127,7 @@ dev-lang/crystal 0.35.1 0.36.0: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.2 1.11.3: Elixir programming language
-dev-lang/erlang 23.0.4 23.1.5 23.2 23.2.1 23.2.2 23.2.3: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.2 23.2.1 23.2.2 23.2.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -8023,8 +8024,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8093,7 +8094,7 @@ dev-python/configshell-fb 1.1.28: A Python library for building configuration sh
 dev-python/confuse 1.0.0 1.4.0: Confuse is a configuration library for Python that uses YAML
 dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
-dev-python/construct 2.10.56 2.10.57: A powerful declarative parser for binary data
+dev-python/construct 2.10.56 2.10.57 2.10.58: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0_p1-r1: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
@@ -8208,7 +8209,7 @@ dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard 
 dev-python/eventlet 0.26.1 0.30.0: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/exdown 0.7.1: Extract code blocks from markdown
-dev-python/execnet 1.7.1-r1: Rapid multi-Python deployment
+dev-python/execnet 1.7.1-r1 1.8.0: Rapid multi-Python deployment
 dev-python/executing 0.5.3 0.5.4: Get information about what a Python frame is currently doing
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
@@ -8334,7 +8335,7 @@ dev-python/humanize 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2 6.0.3: A library for property based testing
+dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2 6.0.3 6.0.4: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8539,7 +8540,7 @@ dev-python/nbsphinx 0.7.1-r1: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.1-r1: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
-dev-python/nest_asyncio 1.4.3: Patch asyncio to allow nested event loops
+dev-python/nest_asyncio 1.4.3 1.5.1: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2-r1 1.5.5: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
@@ -8655,7 +8656,7 @@ dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime clas
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.10: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.15 8.12.16: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.15 8.12.16 8.12.17: Python port of Google's libphonenumber
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
@@ -8895,7 +8896,7 @@ dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific or
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-regressions 2.1.1: Easy to use fixtures to write regression tests
+dev-python/pytest-regressions 2.1.1 2.2.0: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2020.1.27: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
@@ -9073,7 +9074,7 @@ dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.3 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.5.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
-dev-python/rply 0.7.7-r1: Pure python parser generator that also works with RPython
+dev-python/rply 0.7.7-r1 0.7.8: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 4.1.5 5.0.0 5.0.1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.7.0: simple, lightweight library for creating and processing background jobs
@@ -10479,7 +10480,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.4.0: Guile bindings of git
-dev-scheme/guile-json 4.4.1 4.5.1: JSON module for Guile
+dev-scheme/guile-json 4.5.1: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -10729,7 +10730,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 164-r1 165: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 165: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -10886,7 +10887,7 @@ dev-util/qbs 1.16.0 1.18.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.5.1-r1 5.0.0 5.1.0 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.5.1-r1 5.1.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.10 7.0.0.12 7.0.3: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
@@ -10917,7 +10918,7 @@ dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.12.0-r1 0.13.0: Dependency manager for the Crystal language
+dev-util/shards 0.13.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
@@ -11004,7 +11005,7 @@ dev-vcs/git-cola 3.5-r1 3.8: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
-dev-vcs/git-lfs 2.11.0 2.12.1 9999: Command line extension and specification for managing large files with git
+dev-vcs/git-lfs 2.11.0 2.13.1 9999: Command line extension and specification for managing large files with git
 dev-vcs/git-mailz 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog files
@@ -17189,7 +17190,7 @@ sys-block/nbd 3.19 3.20 3.21 9999: Userland client/server for kernel network blo
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2 2.1.3: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100: iSNS server and client for Linux
-sys-block/parted 3.3-r2: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.3-r2 3.4: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 4.2.0 20.12.1: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
@@ -18050,7 +18051,7 @@ www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browse
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1-r100 9999: A fast, extensible, and customizable web browser
-www-client/lynx 2.8.9_p1 2.9.0_pre5 2.9.0_pre6 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
+www-client/lynx 2.9.0_pre5 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
 www-client/microsoft-edge-dev 89.0.731.0 89.0.752.1 89.0.760.0 89.0.767.0 89.0.774.4: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support

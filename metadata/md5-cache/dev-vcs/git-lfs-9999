@@ -10,4 +10,4 @@ RDEPEND=dev-vcs/git
 RESTRICT=strip !test? ( test )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	go-module	92660621959e7fab813173772987588b
-_md5_=f6c34eea9acd02b060fa22ef99de760c
+_md5_=5c4b7442fc3382de2bb5e17b30b2edf1
