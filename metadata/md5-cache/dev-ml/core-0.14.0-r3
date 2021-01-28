@@ -5,11 +5,11 @@ DESCRIPTION=Jane Street's alternative to the standard library
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/core
 IUSE=ocamlopt
-KEYWORDS=~amd64 ~arm
+KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=MIT
 RDEPEND=dev-ml/base:= dev-ml/core_kernel:= dev-ml/jst-config:= dev-ml/ppx_jane:= dev-ml/sexplib:= dev-ml/spawn:= dev-ml/stdio:= dev-ml/timezone:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/core/archive/v0.14.0.tar.gz -> core-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=0a26c58d29d01bcff6e7c6480cb8e40b
+_md5_=103fe0ecf8f94a02ebf33afd9324d603

@@ -4,10 +4,10 @@ DESCRIPTION=Complete 3270 access package
 EAPI=7
 HOMEPAGE=http://x3270.bgp.nu/
 IUSE=cjk doc ncurses ssl tcl X X
-KEYWORDS=~amd64 ~ppc s390 sparc ~x86
+KEYWORDS=amd64 ~ppc s390 sparc ~x86
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt ) ncurses? ( sys-libs/ncurses:= sys-libs/readline:0= ) tcl? ( dev-lang/tcl:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/x3270/suite3270-4.0ga13-src.tgz
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=8585528dbc94362c35bcb10f926545f2
+_md5_=073f3f0fc6ffab77b30437fce311ea04

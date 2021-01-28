@@ -359,10 +359,6 @@
       <role>base-system team lead</role>
     </member>
     <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Specialized block devices and lots of other miscellaneous stuff</role>
@@ -1986,10 +1982,6 @@
       <name>Marc Schiffbauer</name>
     </member>
     <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
     </member>
@@ -2442,10 +2434,6 @@
       <name>Andreas Schuerch</name>
     </member>
     <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
       <email>stasibear@gentoo.org</email>
       <name>Erik Mackdanz</name>
     </member>
@@ -2627,10 +2615,6 @@
     <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
-    </member>
-    <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
     </member>
     <member>
       <email>sbraz@gentoo.org</email>
@@ -3193,10 +3177,6 @@
       <name>Jonas Stein</name>
     </member>
     <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
     </member>
@@ -3467,10 +3447,6 @@
       <role>Lead (PPC work, mplayer, ffmpeg)</role>
     </member>
     <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
       <email>steils@gentoo.org</email>
       <name>Stefan Strogin</name>
       <role>OpenShot</role>
@@ -3484,10 +3460,6 @@
     <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
-    </member>
-    <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
     </member>
     <member>
       <email>tranquility@gentoo.org</email>
