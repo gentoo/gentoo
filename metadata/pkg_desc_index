@@ -5137,7 +5137,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1 8.10.2 8.10.3: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.14.13-r1 1.14.14 1.15.6-r1 1.15.7 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.14.14 1.15.7 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/hy 0.17.0: A LISP dialect running in python
@@ -17570,7 +17570,7 @@ sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.10.9 5.10.10 5.10.11: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.9.246 4.9.251 4.9.252 4.9.253 4.14.209 4.14.215 4.14.216 4.14.217 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.10.8 5.10.9 5.10.10 5.10.11: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
