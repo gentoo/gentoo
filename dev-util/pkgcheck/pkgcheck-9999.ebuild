@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1 optfeature
@@ -19,8 +19,6 @@ HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND="
@@ -28,8 +26,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.8.9[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.10.14[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.9.0[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.11.0[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -37,14 +35,11 @@ RDEPEND+="
 	dev-python/pathspec[${PYTHON_USEDEP}]
 	dev-python/tree-sitter[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
 
 python_install_all() {
 	local DOCS=( NEWS.rst )
