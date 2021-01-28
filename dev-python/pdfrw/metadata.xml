@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pdfrw</remote-id>
-		<remote-id type="github">pmaupin/pdfrw</remote-id>
+		<remote-id type="github">sarnold/pdfrw</remote-id>
 	</upstream>
 </pkgmetadata>
