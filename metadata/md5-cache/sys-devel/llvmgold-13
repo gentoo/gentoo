@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=LLVMgold plugin symlink for autoloading
+EAPI=7
+HOMEPAGE=https://llvm.org/
+LICENSE=public-domain
+PROPERTIES=live
+RDEPEND=sys-devel/llvm:13[gold] !sys-devel/llvm:0
+SLOT=0
+_md5_=b385d4332633bbd59f89a6c65acef4b7

@@ -7,5 +7,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 PROPERTIES=live
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	llvm.org	f9a86faa44b9076b1603ff7c37564776	multiprocessing	cac3169468f893670dac3e7cb940e045
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	llvm.org	ac34ccc0ab197b128f6d3d2a4fe1cc5e	multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=69b5382e6a4c27c13e4114449b987724
