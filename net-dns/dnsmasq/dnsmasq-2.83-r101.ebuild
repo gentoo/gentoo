@@ -88,6 +88,10 @@ use_have() {
 	done
 }
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 pkg_pretend() {
 	if use static; then
 		einfo "Only sys-libs/gmp and dev-libs/nettle are statically linked."

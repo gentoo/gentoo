@@ -13,10 +13,10 @@ SRC_URI="http://www.thekelleys.org.uk/dnsmasq/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec +dumpfile id idn libidn2"
-IUSE+=" +inotify ipv6 lua nls script selinux static tftp"
+IUSE+=" +inotify ipv6 lua nettlehash nls script selinux static tftp"
 
 DM_LINGUAS=(de es fi fr id it no pl pt_BR ro)
 
@@ -55,11 +55,17 @@ RDEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="
 	dhcp-tools? ( dhcp )
+	dnssec? ( !nettlehash )
 	lua? (
 		script
 		${LUA_REQUIRED_USE}
 	)
-	libidn2? ( idn )"
+	libidn2? ( idn )
+"
+
+PATCHES=(
+	"${FILESDIR}/dnsmasq-2.84-version-string.patch"
+)
 
 use_have() {
 	local no_only
@@ -84,6 +90,10 @@ use_have() {
 		uword="${1}"
 		shift
 	done
+}
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
 }
 
 pkg_pretend() {
@@ -117,6 +127,7 @@ src_configure() {
 		$(use_have -n script)
 		$(use_have -n tftp)
 		$(use_have dnssec)
+		$(use_have nettlehash)
 		$(use_have static dnssec_static)
 		$(use_have -n dumpfile)
 	)
