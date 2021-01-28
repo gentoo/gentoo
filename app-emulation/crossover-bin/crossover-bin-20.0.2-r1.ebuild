@@ -55,6 +55,7 @@ BDEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	!prefix? ( sys-libs/glibc )
@@ -86,7 +87,9 @@ RDEPEND="${DEPEND}
 	ssl? ( net-libs/gnutls:0/30[abi_x86_32(-)] )
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
+	dev-libs/glib:2
 	dev-libs/gobject-introspection
+	dev-libs/openssl
 	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
@@ -111,6 +114,7 @@ RDEPEND="${DEPEND}
 	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
+	x11-libs/vte:2.91[introspection]
 "
 
 pkg_nofetch() {
