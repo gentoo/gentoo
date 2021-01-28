@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-01-28)
+# The new pkgcheck version triggers lots of false positives due
+# to Prefix profiles being broken.  Bug #720224.
+>=dev-util/pkgcheck-0.8
+>=sys-apps/pkgcore-0.11
+
 # Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
 # Dead upstream (last release 2007), unmaintained, multiple issues, 
 # no reverse dependencies.
