@@ -50,7 +50,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/waypipe-0.7.2-werror.patch
-	"${FILESDIR}"/waypipe-0.7.2-no-simd.patch
 )
 
 src_configure() {
