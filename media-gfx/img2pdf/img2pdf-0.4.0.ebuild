@@ -37,8 +37,12 @@ RDEPEND="dev-python/pikepdf[${PYTHON_USEDEP}]
 distutils_enable_tests pytest
 
 src_prepare() {
-	default
-	use !gui && sed -i '/gui_scripts/d' setup.py
+	distutils-r1_python_prepare_all
+
+	# Remove gui executable if there's no demand/support for it.
+	if ! use gui; then
+		sed -i '/gui_scripts/d' setup.py || die
+	fi
 }
 
 python_test() {
