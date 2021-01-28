@@ -29,7 +29,8 @@ if [[ ${PV} == *9999 ]]; then
 else
 	RDEPEND="
 		>=dev-python/snakeoil-0.8.9[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.10.14[${PYTHON_USEDEP}]"
+		>=sys-apps/pkgcore-0.10.14[${PYTHON_USEDEP}]
+		<sys-apps/pkgcore-0.11"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]

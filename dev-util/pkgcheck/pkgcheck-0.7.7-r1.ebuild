@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,8 @@ if [[ ${PV} == *9999 ]]; then
 else
 	RDEPEND="
 		>=dev-python/snakeoil-0.8.8[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.10.13[${PYTHON_USEDEP}]"
+		>=sys-apps/pkgcore-0.10.13[${PYTHON_USEDEP}]
+		<sys-apps/pkgcore-0.11"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
