@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,6 +45,7 @@ S=${WORKDIR}/${PN}-v${PV}
 
 PATCHES=(
 	"${FILESDIR}/5823.patch"
+	"${FILESDIR}/${P}-disable-vcs-version.patch"
 	"${WORKDIR}/valentina-5858.patch"
 )
 
