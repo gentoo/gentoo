@@ -347,3 +347,7 @@ pkg_postinst() {
 		esac
 	fi
 }
+
+pkg_prerm() {
+	(use frontend || use server) && webapp_pkg_prerm
+}
