@@ -5174,7 +5174,7 @@ dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.4.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.3: Nils Weller's C Compiler
-dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0 4.10.0 4.10.2 4.11.1: Programming language supporting functional, imperative & object-oriented styles
+dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.05.0-r2 4.09.0 4.10.0 4.10.2 4.11.1: Programming language supporting functional, imperative & object-oriented styles
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/orc 0.4.28-r1 0.4.29 0.4.31: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 8.1.0-r2: Virtual machine designed to compile and execute bytecode for dynamic languages
