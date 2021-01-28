@@ -279,6 +279,7 @@ get_distribution_components() {
 			llvm-opt-report
 			llvm-pdbutil
 			llvm-profdata
+			llvm-profgen
 			llvm-ranlib
 			llvm-rc
 			llvm-readelf
