@@ -39,6 +39,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qthelp:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5
 	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
