@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam multilib libtool systemd tmpfiles
+inherit pam multilib libtool systemd tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -129,6 +129,7 @@ set_secure_path() {
 src_configure() {
 	local SECURE_PATH
 	set_secure_path
+	tc-export PKG_CONFIG #767712
 
 	# audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
