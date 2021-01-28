@@ -1,4 +1,4 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 sparc x86"
 fi
 
 PYTHON_COMPAT=( python3_{6,7,8} )
