@@ -11,4 +11,4 @@ RDEPEND=app-text/poppler dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 de
 SLOT=0
 SRC_URI=https://gitlab.com/smart-pattern/valentina/-/archive/v0.6.1/valentina-v0.6.1.tar.bz2 https://dev.gentoo.org/~fordfrog/distfiles/valentina-5858.patch.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=aaadfa072fdc17f53f65c4dce9849617
+_md5_=18dea6db0cebd6c7a3aedee27d4bd155
