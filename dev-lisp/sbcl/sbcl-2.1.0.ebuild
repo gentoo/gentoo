@@ -99,6 +99,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/bsd-sockets-test-2.0.5.patch
 	# bugs #560276, #561018
 	eapply "${FILESDIR}"/sb-posix-test-1.2.15.patch
+	# bug #767742
+	eapply "${FILESDIR}"/etags-2.1.0.patch
 
 	eapply "${FILESDIR}"/verbose-build-2.0.3.patch
 
