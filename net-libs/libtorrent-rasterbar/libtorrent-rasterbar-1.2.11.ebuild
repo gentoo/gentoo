@@ -71,7 +71,7 @@ src_configure() {
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
-		--with-boost
+		--with-boost="${ESYSROOT}/usr"
 		--with-libiconv
 		--enable-logging
 	)
