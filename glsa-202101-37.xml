@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-37">
+  <title>VLC: Buffer overflow</title>
+  <synopsis>A buffer overflow in VLC might allow remote attacker(s) to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>2021-01-29</announced>
+  <revised count="1">2021-01-29</revised>
+  <bug>765040</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">3.0.12.1</unaffected>
+      <vulnerable range="lt">3.0.12.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>VLC was found to have a buffer overflow when handling crafted MKV files.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted MKV
+      file using VLC possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-3.0.12.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-26664">CVE-2020-26664</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-28T02:32:59Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-29T00:04:09Z">sam_c</metadata>
+</glsa>
