@@ -231,9 +231,10 @@ multilib_src_configure() {
 
 	use gphoto2 && lbackends="gphoto2"
 	use v4l && lbackends+=" v4l"
+	use sane_backends_escl && multilib_is_native_abi && lbackends+=" escl"
 	local backend
 	for backend in ${IUSE_SANE_BACKENDS[@]} ; do
-		if use "sane_backends_${backend}" && [[ "${backend}" != pnm ]] ; then
+		if use "sane_backends_${backend}" && [[ "${backend}" != pnm ]] && [[ "${backend}" != escl ]] ; then
 			lbackends+=" ${backend}"
 		fi
 	done
