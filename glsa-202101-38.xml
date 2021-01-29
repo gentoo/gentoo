@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-38">
+  <title>NSD: Symbolic link traversal</title>
+  <synopsis>A vulnerability was discovered in NSD which could allow a local
+    attacker to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">nsd</product>
+  <announced>2021-01-29</announced>
+  <revised count="1">2021-01-29</revised>
+  <bug>758977</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-dns/nsd" auto="yes" arch="*">
+      <unaffected range="ge">4.3.4</unaffected>
+      <vulnerable range="lt">4.3.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>An authoritative only, high performance, open source name server</p>
+  </background>
+  <description>
+    <p>A local vulnerability was discovered that would allow for a local
+      symlink attack due to how NSD handles PID files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NSD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/nsd-4.3.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28935">CVE-2020-28935</uri>
+    <uri link="https://www.nlnetlabs.nl/downloads/nsd/CVE-2020-28935.txt">
+      Upstream advisory
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-04-22T15:47:22Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-01-29T00:05:16Z">b-man</metadata>
+</glsa>
