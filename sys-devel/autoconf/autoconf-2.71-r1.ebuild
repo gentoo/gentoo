@@ -63,7 +63,7 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	toolchain-autoconf_src_install
 
 	local f
 	for f in config.{guess,sub} ; do
