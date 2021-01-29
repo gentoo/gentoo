@@ -30,7 +30,7 @@ BDEPEND="
 	${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}/9999/${PN}-prefix-paths.patch"
+	"${FILESDIR}/11.1.0/${PN}-prefix-paths.patch"
 )
 
 python_check_deps() {
