@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ GPL-2"
 IUSE="debug"
 SLOT="0"
 
