@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202101-36">
+  <title>ImageMagick: Command injection</title>
+  <synopsis>A vulnerability in ImageMagick's handling of PDF was discovered
+    possibly allowing code execution.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>2021-01-29</announced>
+  <revised count="1">2021-01-29</revised>
+  <bug>756829</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">7.0.10.41-r1</unaffected>
+      <unaffected range="ge">6.9.11.41-r1</unaffected>
+      <vulnerable range="lt">7.0.10.41-r1</vulnerable>
+      <vulnerable range="lt">6.9.11.41-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A collection of tools and libraries for many image formats.</p>
+  </background>
+  <description>
+    <p>A flaw in ImageMagick’s handling of password protected PDFs was
+      discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF
+      using ImageMagick possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Do not open untrusted PDFs.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick 7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-gfx/imagemagick-7.0.10.41-r1"
+    </code>
+    
+    <p>All ImageMagick 6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-gfx/imagemagick-6.9.11.41-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-29599">CVE-2020-29599</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-01-28T02:24:26Z">sam_c</metadata>
+  <metadata tag="submitter" timestamp="2021-01-29T00:02:42Z">sam_c</metadata>
+</glsa>
