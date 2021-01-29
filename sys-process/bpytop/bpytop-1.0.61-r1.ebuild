@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,5 +23,11 @@ RDEPEND="
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}/bpytop-1.0.51-tests.patch"
+	"${FILESDIR}/bpytop-1.0.61-tests.patch"
 )
+
+src_install() {
+	insinto "/usr/share/${PN}/themes"
+	doins bpytop-themes/*.theme
+	distutils-r1_src_install
+}
