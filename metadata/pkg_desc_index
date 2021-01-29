@@ -18718,7 +18718,7 @@ x11-plugins/pidgin-opensteamworks 1.7: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
-x11-plugins/pidgin-sipe 1.23.3 1.25.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
+x11-plugins/pidgin-sipe 1.23.3 1.25.0-r1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.5 1.7 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-telegram 1.4.4 1.4.6: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
@@ -18900,7 +18900,7 @@ x11-themes/gnustep-neos-theme 0.1: GNUstep theme closely following the original 
 x11-themes/gnustep-silver-theme 3.1-r1: a GNUstep silver theme
 x11-themes/goddard-backgrounds 13.0.0.3-r1: Fedora 13 official background artwork
 x11-themes/golden-xcursors 0.8-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
-x11-themes/greybird 3.20.1-r2 3.22.9 3.22.10 3.22.11 3.22.12 9999: The default theme from Xubuntu
+x11-themes/greybird 3.20.1-r2 3.22.12 3.22.14: Greybird Desktop Suite
 x11-themes/gtk-chtheme 0.3.1-r3: GTK-2.0 Theme Switcher
 x11-themes/gtk-engines 2.20.2-r100: GTK+2 standard engines and themes
 x11-themes/gtk-engines-adwaita 3.28: Adwaita GTK+2 theme engine
