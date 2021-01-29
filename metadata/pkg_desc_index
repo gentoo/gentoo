@@ -2034,7 +2034,7 @@ app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
-app-emulation/firecracker-bin 0.23.0 0.23.1: Secure and fast microVMs for serverless computing (static build)
+app-emulation/firecracker-bin 0.23.0 0.23.1 0.24.1: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.0.20 2.5.22 2.5.24: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
@@ -10316,7 +10316,7 @@ dev-ruby/ruby2ruby 2.4.2 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.14.2 3.15.0 3.15.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.2.0 3.2.3 3.2.4 3.2.5 3.2.6: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.1.6 3.2.0 3.2.3 3.2.4 3.2.5 3.2.6 3.2.7: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -17327,7 +17327,7 @@ sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style 
 sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd
 sys-cluster/zookeeper-bin 3.4.13-r1: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.12: Simple, lightweight, dependable CLI for ZooKeeper
-sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 2.70-r2 2.71 9999: Used to create autoconfiguration files
+sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 2.70-r2 2.71-r1 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1 14 15: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.16-r1: Program and text file generation
