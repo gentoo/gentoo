@@ -25,7 +25,9 @@ DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
 LICENSE="GPL-3"
-SLOT="${PV/_*}"
+#SLOT="${PV/_*}"
+# autoconf-2.71 is a bugfix release of autoconf-2.70. Let's keep the same slot
+SLOT="2.70"
 IUSE="emacs"
 
 BDEPEND=">=sys-devel/m4-1.4.16
@@ -61,7 +63,7 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	toolchain-autoconf_src_install
 
 	local f
 	for f in config.{guess,sub} ; do
