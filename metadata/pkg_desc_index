@@ -7948,7 +7948,7 @@ dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-po
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5: SOCKS proxy connector for aiohttp
 dev-python/aiorpcX 0.18.4-r1 0.18.5: Generic async RPC implementation, including JSON-RPC
-dev-python/aiosmtpd 1.2 1.2.2: asyncio based SMTP server
+dev-python/aiosmtpd 1.2 1.2.2 1.2.4: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.4.3 1.5.0 1.5.1 1.5.2: database migrations tool, written by the author of SQLAlchemy
@@ -8024,8 +8024,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8115,7 +8115,7 @@ dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function base
 dev-python/cursive 0.2.2-r1: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.3.4 0.3.5: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5-r1: Python package for convex optimization
-dev-python/cwcwidth 0.1.1: Python bindings for wc(s)width
+dev-python/cwcwidth 0.1.1 0.1.2: Python bindings for wc(s)width
 dev-python/cx_Freeze 6.4.2 6.5.3: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
@@ -8377,7 +8377,7 @@ dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrus
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.1.0-r1 3.2.0: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 3.0.0-r1 3.1.0: Models and classes to supplement the stdlib collections module
-dev-python/jaraco-context 3.0.0-r1: Context managers by jaraco
+dev-python/jaraco-context 3.0.0-r1 4.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.0.0-r1 2.1.0: Classes for orchestrating Python (virtual) environments.
 dev-python/jaraco-functools 3.0.1-r1 3.1.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Complements itertools and more_itertools
@@ -8640,7 +8640,7 @@ dev-python/pastedeploy 2.1.1: Load, configure, and compose WSGI applications and
 dev-python/pastel 0.2.1: Bring colors to your terminal
 dev-python/patch-ng 1.17.4: Library to parse and apply unified diffs, fork of dev-python/patch
 dev-python/path-and-address 2.0.1: Functions for server CLI applications used by humans
-dev-python/path-py 15.0.0 15.0.1: A module wrapper for os.path
+dev-python/path-py 15.0.0 15.0.1 15.1.0: A module wrapper for os.path
 dev-python/pathlib2 2.3.5-r1: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathspec 0.8.1: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
@@ -9245,7 +9245,7 @@ dev-python/toml 0.10.2: Python library for handling TOML files
 dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2: virtualenv-based automation of test activities
+dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2 3.21.3: virtualenv-based automation of test activities
 dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
@@ -9335,7 +9335,7 @@ dev-python/wxpython 4.0.7: A blending of the wxWindows C++ class library with Py
 dev-python/xapp 2.0.1 2.0.2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.16.2: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
-dev-python/xdoctest 0.15.0 0.15.2: A rewrite of Python's builtin doctest module but without all the weirdness
+dev-python/xdoctest 0.15.0 0.15.2 0.15.3: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
@@ -10870,7 +10870,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -17002,7 +17002,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middlewa
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.13-r1 0.10.14 0.11.0 9999: a framework for package management
+sys-apps/pkgcore 0.10.13-r1 0.10.14 0.10.14-r1 0.11.0 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
@@ -17471,7 +17471,7 @@ sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.2: Btrfs and xfs deduplication utility
-sys-fs/e2fsprogs 1.45.5 1.45.6: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.45.6 1.45.7: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 111_p20170609-r1: eCryptfs userspace utilities
@@ -17598,7 +17598,7 @@ sys-libs/cracklib 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.5.20_p2-r4 4.6.21_p4-r2 4.6.21_p4-r3 4.7.25_p4-r2 4.7.25_p4-r3 4.8.30-r3 4.8.30-r4 5.1.29-r2 5.3.28-r2 5.3.28-r4 5.3.28-r5 6.0.35-r2 6.0.35-r3 6.1.38 6.2.38 18.1.32 18.1.40: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.45.5 1.45.6: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.45.6 1.45.7: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.5 1.6.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
