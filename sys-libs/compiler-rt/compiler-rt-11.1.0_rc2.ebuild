@@ -32,7 +32,7 @@ LLVM_COMPONENTS=( compiler-rt )
 llvm.org_set_globals
 
 PATCHES=(
-	"${FILESDIR}/9999/${PN}-prefix-paths.patch"
+	"${FILESDIR}/11.1.0/${PN}-prefix-paths.patch"
 )
 
 python_check_deps() {
