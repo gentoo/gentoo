@@ -19,10 +19,9 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-LLVM_MAX_SLOT=12
+LLVM_MAX_SLOT=11
 DEPEND="
 	|| (
-		sys-devel/clang:12
 		sys-devel/clang:11
 		sys-devel/clang:10
 	)
