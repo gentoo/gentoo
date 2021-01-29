@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools eutils prefix multilib-minimal
+inherit autotools prefix multilib-minimal
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.haxx.se/"
@@ -17,7 +17,22 @@ IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl
 IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
 
-#lead to lots of false negatives, bug #285669
+# c-ares must be disabled for threads
+# only one default ssl provider can be enabled
+REQUIRED_USE="
+	winssl? ( elibc_Winnt )
+	threads? ( !adns )
+	ssl? (
+		^^ (
+			curl_ssl_gnutls
+			curl_ssl_mbedtls
+			curl_ssl_nss
+			curl_ssl_openssl
+			curl_ssl_winssl
+		)
+	)"
+
+# lead to lots of false negatives, bug #285669
 RESTRICT="!test? ( test )"
 
 RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
@@ -72,23 +87,7 @@ BDEPEND="virtual/pkgconfig
 		dev-lang/perl
 	)"
 
-# c-ares must be disabled for threads
-# only one default ssl provider can be enabled
-REQUIRED_USE="
-	winssl? ( elibc_Winnt )
-	threads? ( !adns )
-	ssl? (
-		^^ (
-			curl_ssl_gnutls
-			curl_ssl_mbedtls
-			curl_ssl_nss
-			curl_ssl_openssl
-			curl_ssl_winssl
-		)
-	)"
-
-DOCS=( CHANGES README docs/FEATURES.md docs/INTERNALS.md \
-	docs/FAQ docs/BUGS.md docs/CONTRIBUTE.md )
+DOCS=( CHANGES README docs/{FEATURES.md,INTERNALS.md,FAQ,BUGS.md,CONTRIBUTE.md} )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/curl/curlbuild.h
@@ -98,15 +97,18 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/curl-config
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.30.0-prefix.patch
+	"${FILESDIR}"/${PN}-respect-cflags-3.patch
+	"${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
+)
+
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-7.30.0-prefix.patch
-	eapply "${FILESDIR}"/${PN}-respect-cflags-3.patch
-	eapply "${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
+	default
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
 	sed -i '/CURL_MAC_CFLAGS/d' configure.ac || die #637252
 
-	eapply_user
 	eprefixify curl-config.in
 	eautoreconf
 }
@@ -175,72 +177,74 @@ multilib_src_configure() {
 	# 3) --with/without options third.
 	# grep -- --with configure | grep Check | awk '{ print $4 }' | sort
 
+	myconf+=(
+		$(use_enable alt-svc)
+		--enable-crypto-auth
+		--enable-dict
+		--disable-ech
+		--enable-file
+		$(use_enable ftp)
+		$(use_enable gopher)
+		$(use_enable hsts)
+		--enable-http
+		$(use_enable imap)
+		$(use_enable ldap)
+		$(use_enable ldap ldaps)
+		--disable-ntlm-wb
+		$(use_enable pop3)
+		--enable-rt
+		--enable-rtsp
+		$(use_enable samba smb)
+		$(use_with ssh libssh2)
+		$(use_enable smtp)
+		$(use_enable telnet)
+		$(use_enable tftp)
+		--enable-tls-srp
+		$(use_enable adns ares)
+		--enable-cookies
+		--enable-dateparse
+		--enable-dnsshuffle
+		--enable-doh
+		--enable-hidden-symbols
+		--enable-http-auth
+		$(use_enable ipv6)
+		--enable-largefile
+		--enable-manual
+		--enable-mime
+		--enable-netrc
+		$(use_enable progress-meter)
+		--enable-proxy
+		--disable-sspi
+		$(use_enable static-libs static)
+		$(use_enable threads threaded-resolver)
+		$(use_enable threads pthreads)
+		--disable-versioned-symbols
+		--without-amissl
+		--without-bearssl
+		--without-cyassl
+		--without-darwinssl
+		--without-fish-functions-dir
+		$(use_with idn libidn2)
+		$(use_with kerberos gssapi "${EPREFIX}"/usr)
+		$(use_with metalink libmetalink)
+		$(use_with http2 nghttp2)
+		--without-libpsl
+		$(use_with nghttp3)
+		$(use_with nghttp3 ngtcp2)
+		$(use_with quiche)
+		$(use_with rtmp librtmp)
+		$(use_with brotli)
+		--without-schannel
+		--without-secure-transport
+		--without-spnego
+		--without-winidn
+		--without-wolfssl
+		--with-zlib
+		$(use_with zstd)
+	)
+
 	ECONF_SOURCE="${S}" \
-	econf \
-		$(use_enable alt-svc) \
-		--enable-crypto-auth \
-		--enable-dict \
-		--disable-ech \
-		--enable-file \
-		$(use_enable ftp) \
-		$(use_enable gopher) \
-		$(use_enable hsts) \
-		--enable-http \
-		$(use_enable imap) \
-		$(use_enable ldap) \
-		$(use_enable ldap ldaps) \
-		--disable-ntlm-wb \
-		$(use_enable pop3) \
-		--enable-rt  \
-		--enable-rtsp \
-		$(use_enable samba smb) \
-		$(use_with ssh libssh2) \
-		$(use_enable smtp) \
-		$(use_enable telnet) \
-		$(use_enable tftp) \
-		--enable-tls-srp \
-		$(use_enable adns ares) \
-		--enable-cookies \
-		--enable-dateparse \
-		--enable-dnsshuffle \
-		--enable-doh \
-		--enable-hidden-symbols \
-		--enable-http-auth \
-		$(use_enable ipv6) \
-		--enable-largefile \
-		--enable-manual \
-		--enable-mime \
-		--enable-netrc \
-		$(use_enable progress-meter) \
-		--enable-proxy \
-		--disable-sspi \
-		$(use_enable static-libs static) \
-		$(use_enable threads threaded-resolver) \
-		$(use_enable threads pthreads) \
-		--disable-versioned-symbols \
-		--without-amissl \
-		--without-bearssl \
-		--without-cyassl \
-		--without-darwinssl \
-		--without-fish-functions-dir \
-		$(use_with idn libidn2) \
-		$(use_with kerberos gssapi "${EPREFIX}"/usr) \
-		$(use_with metalink libmetalink) \
-		$(use_with http2 nghttp2) \
-		--without-libpsl \
-		$(use_with nghttp3) \
-		$(use_with nghttp3 ngtcp2) \
-		$(use_with quiche) \
-		$(use_with rtmp librtmp) \
-		$(use_with brotli) \
-		--without-schannel \
-		--without-secure-transport \
-		--without-spnego \
-		--without-winidn \
-		--without-wolfssl \
-		--with-zlib \
-		$(use_with zstd) \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 
 	if ! multilib_is_native_abi; then
 		# avoid building the client
@@ -280,6 +284,6 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${ED}" -type f -name '*.la' -delete
-	rm -rf "${ED}"/etc/
+	find "${ED}" -type f -name '*.la' -delete || die
+	rm -rf "${ED}"/etc/ || die
 }
