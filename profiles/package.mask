@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2021-01-29)
+# Masked as recommended by upstream, see bug #767814
+# for details.
+# Please DOWNGRADE your libgcrypt package.
+~dev-libs/libgcrypt-1.9.0
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-28)
 # The new pkgcheck version triggers lots of false positives due
 # to Prefix profiles being broken.  Bug #720224.
@@ -39,7 +45,7 @@
 >=sys-apps/pkgcore-0.11
 
 # Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
-# Dead upstream (last release 2007), unmaintained, multiple issues, 
+# Dead upstream (last release 2007), unmaintained, multiple issues,
 # no reverse dependencies.
 # Removal in 30 days. Bug #744019
 sys-power/ncpufreqd
