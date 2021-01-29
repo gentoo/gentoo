@@ -56,7 +56,7 @@ src_configure() {
 		$(use_enable !openssl nss)
 		$(use_enable openssl)
 	)
-	econf "${myeconfsrgs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
