@@ -8324,6 +8324,7 @@ sys-libs/compiler-rt-sanitizers:gwp-asan - Build GWP-ASAN runtime.
 sys-libs/compiler-rt-sanitizers:hwasan - Build Hardware ASAN runtime.
 sys-libs/compiler-rt-sanitizers:libfuzzer - Build fuzzing runtime.
 sys-libs/compiler-rt-sanitizers:lsan - Build Leak Sanitizer runtime.
+sys-libs/compiler-rt-sanitizers:memprof - Build memory profiler runtime.
 sys-libs/compiler-rt-sanitizers:msan - Build Memory Sanitizer runtime.
 sys-libs/compiler-rt-sanitizers:profile - Build profiling runtime.
 sys-libs/compiler-rt-sanitizers:safestack - Build SafeStack runtime.
