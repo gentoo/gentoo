@@ -62,7 +62,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.10.0-unbreak_gnu_sed.patch"
+	"${FILESDIR}/${PN}-2.10.0-fix_wayland_build.patch"
 )
 
 src_prepare() {

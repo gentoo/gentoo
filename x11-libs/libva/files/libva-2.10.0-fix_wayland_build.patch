@@ -1,0 +1,29 @@
+From 3a71a012b72480ffdf1e2361845036f3cc9d7154 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Sat, 9 Jan 2021 13:17:38 +0000
+Subject: [PATCH] autotools: use shell grouping instead of sed to prepend a
+ line
+
+dash and pdksh don't support $'...'
+
+/bin/sed: -e expression #1, char 2: unknown command: `1'
+---
+ va/wayland/Makefile.am | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/va/wayland/Makefile.am b/va/wayland/Makefile.am
+index f48afb4d..40a54616 100644
+--- a/va/wayland/Makefile.am
++++ b/va/wayland/Makefile.am
+@@ -70,8 +70,9 @@ va_wayland_drm.c: $(protocol_source_h)
+ %-client-protocol-export.c : %.xml
+ 	$(AM_V_GEN)$(WAYLAND_SCANNER) code < $< > $@
+ %-client-protocol.c: %-client-protocol-export.c
+-	$(AM_V_GEN)$(SED) -e $$'1i\\\n#include "sysdeps.h"\n' \
+-	                   -e 's@WL_EXPORT@DLL_HIDDEN@g' < $< > $@
++	$(AM_V_GEN){ echo '#include "sysdeps.h"'; $(SED) \
++		-e 's@WL_EXPORT@DLL_HIDDEN@g' \
++		< $<; } > $@
+ 
+ EXTRA_DIST = \
+ 	wayland-drm.xml         \
