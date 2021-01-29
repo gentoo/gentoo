@@ -1088,7 +1088,7 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysphere 0.36-r2 0.41 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
-app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4: A command line tool for interacting with Nitrokey devices
+app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5: A command line tool for interacting with Nitrokey devices
 app-crypt/nitrokey-app 1.4-r1 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
@@ -5438,7 +5438,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.8.6 1.8.7 1.9.0: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.8.6 1.8.7 1.9.1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
@@ -14072,7 +14072,7 @@ media-tv/mythtv 31.0-r5: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
-media-tv/tvbrowser-bin 4.2.1: Themeable and easy to use TV Guide - written in Java
+media-tv/tvbrowser-bin 4.2.2: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r3 0.0.1_p20170225-r4 0.0.1_p20170225-r5: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
@@ -14678,7 +14678,7 @@ net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client 
 net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
-net-im/gitter-bin 4.1.0 4.1.0-r1: Chat and network platform
+net-im/gitter-bin 4.1.0-r1 5.0.1: Chat and network platform
 net-im/jabber-base 0.01-r2: Base layout package for various jabber services
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20200711 3.6.0: A cross-platform IRC framework written with Qt
