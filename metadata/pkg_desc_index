@@ -10769,7 +10769,7 @@ dev-util/geany-plugins 1.36-r2 1.37 1.37-r100: A collection of different plugins
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/git-delta 0.4.4 0.5.0 0.5.1: A syntax-highlighting pager for git
-dev-util/github-cli 0.8.0 0.9.0-r1 0.10.1 0.11.0 1.0.0 1.4.0 1.5.0 9999: GitHub CLI
+dev-util/github-cli 1.4.0 1.5.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.36.0: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.62.6 2.64.5 2.66.2 2.66.3 2.66.4: Build utilities for GLib using projects
