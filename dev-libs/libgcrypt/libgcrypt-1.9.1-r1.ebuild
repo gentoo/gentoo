@@ -21,6 +21,7 @@ BDEPEND="doc? ( virtual/texi2dvi )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
+	"${FILESDIR}"/${PN}-1.9.1-fix-no-asm-on-amd64-x86.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
