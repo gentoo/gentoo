@@ -73,6 +73,8 @@ src_configure() {
 		# of -ltinfo)
 		-DCURSES_NEED_NCURSES=ON
 
+		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${PV%_*}"
+
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
