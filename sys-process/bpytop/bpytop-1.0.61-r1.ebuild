@@ -25,3 +25,9 @@ distutils_enable_tests pytest
 PATCHES=(
 	"${FILESDIR}/bpytop-1.0.61-tests.patch"
 )
+
+src_install() {
+	insinto "/usr/share/${PN}/themes"
+	doins bpytop-themes/*.theme
+	distutils-r1_src_install
+}
