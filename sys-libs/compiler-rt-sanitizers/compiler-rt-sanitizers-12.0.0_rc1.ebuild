@@ -14,7 +14,7 @@ SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+clang test elibc_glibc"
 # base targets
-IUSE+=" +libfuzzer +profile +xray"
+IUSE+=" +libfuzzer +memprof +profile +xray"
 # sanitizer targets, keep in sync with config-ix.cmake
 # NB: ubsan, scudo deliberately match two entries
 SANITIZER_FLAGS=(
@@ -123,6 +123,7 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
 		-DCOMPILER_RT_BUILD_CRT=OFF
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)
+		-DCOMPILER_RT_BUILD_MEMPROF=$(usex memprof)
 		-DCOMPILER_RT_BUILD_PROFILE=$(usex profile)
 		-DCOMPILER_RT_BUILD_SANITIZERS="${want_sanitizer}"
 		-DCOMPILER_RT_BUILD_XRAY=$(usex xray)
