@@ -36,7 +36,7 @@ BDEPEND="
 	${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}/9999/compiler-rt-prefix-paths.patch"
+	"${FILESDIR}/11.1.0/compiler-rt-prefix-paths.patch"
 )
 
 python_check_deps() {
