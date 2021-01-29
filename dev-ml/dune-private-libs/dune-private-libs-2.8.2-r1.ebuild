@@ -28,6 +28,7 @@ BDEPEND="
 DEPEND="
 	dev-ml/csexp:=[ocamlopt=]
 	dev-ml/findlib:=[ocamlopt=]
+	>=dev-lang/ocaml-4.09:=
 "
 RDEPEND="${DEPEND}"
 
