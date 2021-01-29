@@ -8104,7 +8104,7 @@ dev-python/coverage 4.5.4 5.3 5.3.1 5.4: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
-dev-python/croniter 0.3.30 0.3.37 1.0.1 1.0.2: Python module to provide iteration for datetime object
+dev-python/croniter 0.3.30 0.3.37 1.0.1 1.0.2 1.0.5: Python module to provide iteration for datetime object
 dev-python/cryptography 3.2.1 3.3.1: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
@@ -9250,7 +9250,7 @@ dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0: Add a progress meter to your loops 
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.2-r1 0.8.6: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 3.2.0 3.3.0: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 3.2.0 3.3.0 3.3.1: Toolkit to convert between many translation formats
 dev-python/tree-sitter 0.2.0 0.2.1: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1: #1 quality TLS certs while you wait, for the discerning tester
@@ -9335,7 +9335,7 @@ dev-python/wxpython 4.0.7: A blending of the wxWindows C++ class library with Py
 dev-python/xapp 2.0.1 2.0.2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.16.2: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
-dev-python/xdoctest 0.15.0 0.15.2 0.15.3: A rewrite of Python's builtin doctest module but without all the weirdness
+dev-python/xdoctest 0.15.0 0.15.2 0.15.3 0.15.4: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
@@ -10870,7 +10870,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -17002,7 +17002,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middlewa
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.13-r1 0.10.14 0.10.14-r1 0.11.0 9999: a framework for package management
+sys-apps/pkgcore 0.10.13-r1 0.10.14 0.10.14-r1 0.11.0 0.11.1 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
