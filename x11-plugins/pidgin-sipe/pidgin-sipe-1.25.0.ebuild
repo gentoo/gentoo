@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,23 +37,26 @@ RDEPEND="
 	)
 "
 
-DEPEND="dev-util/intltool
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-util/intltool
 	virtual/pkgconfig
-	${RDEPEND}
 "
 
 src_configure() {
-	econf \
-		--enable-purple \
-		--disable-quality-check \
-		$(use_enable telepathy) \
-		$(use_enable debug) \
-		$(use_enable ocs2005-message-hack) \
-		$(use_with dbus) \
-		$(use_with kerberos krb5) \
-		$(use_with voice vv) \
-		$(use_enable !openssl nss) \
+	local myeconfargs=(
+		--enable-purple
+		--disable-quality-check
+		$(use_enable telepathy)
+		$(use_enable debug)
+		$(use_enable ocs2005-message-hack)
+		$(use_with dbus)
+		$(use_with kerberos krb5)
+		$(use_with voice vv)
+		$(use_enable !openssl nss)
 		$(use_enable openssl)
+	)
+	econf "${myeconfsrgs[@]}"
 }
 
 src_install() {
