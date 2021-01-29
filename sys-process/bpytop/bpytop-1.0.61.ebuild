@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} pypy3 )
+PYTHON_COMPAT=( python3_{6..9} )
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit distutils-r1
 
@@ -23,11 +23,5 @@ RDEPEND="
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}/bpytop-1.0.51-tests.patch"
+	"${FILESDIR}/bpytop-1.0.61-tests.patch"
 )
-
-src_install() {
-	insinto "/usr/share/${PN}/themes"
-	doins bpytop-themes/*.theme
-	distutils-r1_src_install
-}
