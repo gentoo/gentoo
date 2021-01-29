@@ -62,4 +62,6 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}"
 	dodoc AUTHORS ChangeLog NEWS TODO README
+
+	find "${ED}" -type f -name "*.la" -delete || die
 }
