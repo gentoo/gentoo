@@ -114,6 +114,7 @@ src_install() {
 	insinto /usr/share/containers
 	doins vendor/github.com/containers/common/pkg/seccomp/seccomp.json
 
+	newconfd "${FILESDIR}"/podman.confd podman
 	newinitd "${FILESDIR}"/podman.initd podman
 
 	insinto /etc/logrotate.d
