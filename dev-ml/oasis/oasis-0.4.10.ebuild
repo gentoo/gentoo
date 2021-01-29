@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-ml/ocaml-data-notation-0.0.11:=
+RDEPEND="
 	dev-ml/ocamlbuild:=[ocamlopt]
 	dev-ml/camlp4:=
 "
