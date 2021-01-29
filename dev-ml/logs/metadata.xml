@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
 	<use>
 		<flag name="cli">Enables the Logs_cli library that provides command line support for controlling Logs.</flag>
 		<flag name="fmt">Enables the Logs_fmt reporter.</flag>
