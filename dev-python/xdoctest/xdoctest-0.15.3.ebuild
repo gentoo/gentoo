@@ -9,6 +9,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="A rewrite of Python's builtin doctest module but without all the weirdness"
+HOMEPAGE="https://github.com/Erotemic/xdoctest/"
 SRC_URI="
 	https://github.com/Erotemic/xdoctest/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
