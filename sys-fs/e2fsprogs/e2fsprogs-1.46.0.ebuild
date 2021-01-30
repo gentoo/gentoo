@@ -85,7 +85,7 @@ src_configure() {
 		--disable-fsck
 		--disable-uuidd
 		$(use_enable lto)
-		$(use_enable threads pthread)
+		$(use_with threads pthread)
 	)
 	ac_cv_path_LDCONFIG=: econf "${myeconfargs[@]}"
 

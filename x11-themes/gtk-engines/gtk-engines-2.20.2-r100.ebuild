@@ -43,6 +43,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-automake-1.14.patch # taken from Debian
 )
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	# pkgconfig wrapper set up by lua-single.eclass is not multilib-compatible
 	# at present so point Autoconf directly to the correct implementation.
