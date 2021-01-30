@@ -7,8 +7,9 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/${PN}"
 	GIT_ECLASS="git-r3"
 else
-	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/raw/website/files/release/${P}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+	KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
+	S="${WORKDIR}"/${PN}-v${PV}
 fi
 inherit meson multilib-minimal ${GIT_ECLASS}
 
@@ -47,7 +48,7 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		-Dbuild-manpages=true
+		-Dbuild-manpages=$(multilib_is_native_abi && echo true || echo false)
 		-Dbuild-tests=false
 	)
 	meson_src_configure
@@ -60,5 +61,7 @@ multilib_src_compile() {
 multilib_src_install() {
 	meson_src_install
 
-	! use doc && rm -rf "${D}"/usr/share/doc/waffle1
+	! use doc && rm -rf \
+		"${D}"/usr/share/doc/waffle1 \
+		"${D}"/usr/share/man/man{3,7}
 }
