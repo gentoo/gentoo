@@ -4,11 +4,11 @@ DESCRIPTION=A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 EAPI=6
 HOMEPAGE=http://www.mydns.pl/
 IUSE=alias debug nls mysql postgres ssl static status
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=mysql? ( dev-db/mysql-connector-c:= ) nls? ( virtual/libintl ) postgres? ( dev-db/postgresql ) ssl? ( dev-libs/openssl:0= ) virtual/libiconv
 REQUIRED_USE=^^ ( mysql postgres )
 SLOT=0
 SRC_URI=mirror://sourceforge/mydns-ng/mydns-1.2.8.31.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=81e493b8d5d3bb8255efec0f51eed018
+_md5_=9380dd7c53c0e011fce63345579b37b7
