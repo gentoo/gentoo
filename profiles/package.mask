@@ -348,7 +348,6 @@ dev-lang/spark
 # Removal in 30 days.
 dev-ada/langkit
 dev-ada/libadalang
-dev-ada/libadalang-tools
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
