@@ -253,35 +253,11 @@ games-rpg/asphyxia
 games-rpg/sakura-spirit
 games-rpg/the-royal-trap
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-30)
-# Unmaintained.  Entirely replaced by media-libs/libjpeg-turbo,
-# to the point that reverse dependencies no longer build with
-# media-libs/jpeg.  The two libraries are binary-incompatible,
-# and the current method of switching between them is incorrect.
-# Removal in 30 days.  Bug #762634.
-media-libs/jpeg
-
-# Hans de Graaff <graaff@gentoo.org> (2020-12-29)
-# These slots masked for removal in 30 days due to
-# security issues, bug 730786
-# Use a newer slot instead.
-dev-ruby/rack:2.0
-dev-ruby/rack:2.1
-
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
 # Masked for removal after 2021-02-01
 # Bug #762361
 media-sound/takcd
-
-# Andrew Savchenko <bircoph@gentoo.org> (2020-12-26)
-# All docs and socket library functionality are merged back into single
-# app-admin/clsync package using USE="apidoc doc socket-library" starting
-# from clsync-0.4.5.
-# No reverse dependencies. Removal in 30 days.
-<app-admin/clsync-0.4.5
-app-doc/clsync-docs
-dev-libs/libclsync
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
