@@ -1,0 +1,51 @@
+
+# HG changeset patch
+# User Todd C. Miller <Todd.Miller@sudo.ws>
+# Date 1611924154 25200
+# Node ID e0d4f196ba027604154f79ddd03a0b90f90c9607
+# Parent  cd1c7615e861083e9e9b61d0e0070354e227ea5c
+Fix NO_ROOT_MAILER, broken by the eventlog refactor in sudo 1.9.4.
+init_eventlog_config() is called immediately after initializing the
+Defaults settings, which is before struct sudo_user is setup.  This
+adds a call to eventlog_set_mailuid() if NO_ROOT_MAILER is defined
+after the invoking user is determined.  Reported by Roman Fiedler.
+
+diff -r cd1c7615e861 -r e0d4f196ba02 plugins/sudoers/logging.c
+--- a/plugins/sudoers/logging.c	Tue Dec 08 12:35:21 2020 -0700
++++ b/plugins/sudoers/logging.c	Fri Jan 29 05:42:34 2021 -0700
+@@ -786,11 +786,6 @@
+ init_eventlog_config(void)
+ {
+     int logtype = 0;
+-#ifdef NO_ROOT_MAILER
+-    uid_t mailuid = user_uid;
+-#else
+-    uid_t mailuid = ROOT_UID;
+-#endif
+     debug_decl(init_eventlog_config, SUDOERS_DEBUG_LOGGING);
+ 
+     if (def_syslog)
+@@ -805,7 +800,7 @@
+     eventlog_set_syslog_alertpri(def_syslog_badpri);
+     eventlog_set_syslog_maxlen(def_syslog_maxlen);
+     eventlog_set_file_maxlen(def_loglinelen);
+-    eventlog_set_mailuid(mailuid);
++    eventlog_set_mailuid(ROOT_UID);
+     eventlog_set_omit_hostname(!def_log_host);
+     eventlog_set_logpath(def_logfile);
+     eventlog_set_time_fmt(def_log_year ? "%h %e %T %Y" : "%h %e %T");
+diff -r cd1c7615e861 -r e0d4f196ba02 plugins/sudoers/policy.c
+--- a/plugins/sudoers/policy.c	Tue Dec 08 12:35:21 2020 -0700
++++ b/plugins/sudoers/policy.c	Fri Jan 29 05:42:34 2021 -0700
+@@ -518,6 +518,10 @@
+     /* Some systems support fexecve() which we use for digest matches. */
+     cmnd_fd = -1;
+ 
++#ifdef NO_ROOT_MAILER
++    eventlog_set_mailuid(user_uid);
++#endif
++
+     /* Dump settings and user info (XXX - plugin args) */
+     for (cur = info->settings; *cur != NULL; cur++)
+ 	sudo_debug_printf(SUDO_DEBUG_INFO, "settings: %s", *cur);
+
