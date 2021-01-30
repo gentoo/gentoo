@@ -9874,7 +9874,7 @@ dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled ap
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
 dev-ruby/capistrano 2.15.5-r2 3.13.0 3.14.0 3.14.1 3.15.0: A distributed application deployment system
-dev-ruby/capybara 3.32.2 3.33.0 3.34.0 3.35.0 3.35.1: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 3.32.2 3.33.0 3.34.0 3.35.0 3.35.1 3.35.3: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2 1.0.0: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -10247,11 +10247,11 @@ dev-ruby/rspec-core 2.99.2-r2 3.8.2 3.9.1 3.9.3 3.10.0 3.10.1: A Behaviour Drive
 dev-ruby/rspec-expectations 2.99.2 3.8.4 3.8.6 3.9.1 3.9.4 3.10.0 3.10.1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
-dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.1 3.10.0 3.10.1: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.1 3.10.0 3.10.1 3.10.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 3.8.3 3.9.1 4.0.1 4.0.2: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
-dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0 3.9.1 3.9.2 3.9.4 3.10.0 3.10.1: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-support 3.8.2 3.8.3 3.9.4 3.10.0 3.10.1 3.10.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.8 0.70.8-r1: RSpec support and matchers
 dev-ruby/rss 0.2.9: Family of libraries that support various formats of XML feeds.
 dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Atk bindings
@@ -10317,7 +10317,7 @@ dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Pro
 dev-ruby/ruby_parser 3.14.2 3.15.0 3.15.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
 dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.8 3.0.9 3.1.4 3.1.5 3.1.6 3.2.0 3.2.3 3.2.4 3.2.5 3.2.6 3.2.7: Centralized Ruby extension management system
-dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
+dev-ruby/rubyntlm 0.6.2 0.6.3: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
@@ -10813,7 +10813,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.1 2.263.2 2.263.3 2.268 2.275 2.277: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.3 2.277: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
