@@ -12,7 +12,7 @@ else
 	S=${WORKDIR}/${PN}-${P}
 fi
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit cmake python-any-r1 ${scm_eclass}
 

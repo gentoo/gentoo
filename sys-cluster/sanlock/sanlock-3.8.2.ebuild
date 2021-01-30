@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit linux-info python-r1 systemd
 
 DESCRIPTION="shared storage lock manager"

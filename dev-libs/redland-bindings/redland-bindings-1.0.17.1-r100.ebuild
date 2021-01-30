@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 USE_PHP="php7-2 php7-3 php7-4"
 PHP_EXT_ECONF_ARGS="--with-php=yes --without-lua --without-perl --without-python --without-ruby"

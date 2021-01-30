@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit cmake-multilib python-any-r1 toolchain-funcs
 
 DESCRIPTION="Nonlinear least-squares minimizer"

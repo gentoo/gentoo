@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 DISTUTILS_USE_SETUPTOOLS=no
 
 DB_COMMIT="bdf02cbf0a8d017c6c1bddeffd6f03d5d90695ed"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 # TODO: revert to rdepend once this is merged
 # https://github.com/openstack/cliff/pull/3
 DISTUTILS_USE_SETUPTOOLS=manual

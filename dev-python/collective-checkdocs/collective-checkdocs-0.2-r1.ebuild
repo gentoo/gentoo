@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 # TODO: revert to rdepend once this is merged:
 # https://github.com/collective/collective.checkdocs/pull/11
 DISTUTILS_USE_SETUPTOOLS=manual

@@ -4,7 +4,7 @@
 EAPI=7
 # Set to 'manual' to avoid triggering install QA check
 DISTUTILS_USE_SETUPTOOLS=manual
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1

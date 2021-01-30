@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools bash-completion-r1 gnome2-utils l10n linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"

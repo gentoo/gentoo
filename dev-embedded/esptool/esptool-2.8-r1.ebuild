@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} ) # apps work with 3_9 but test depend is not fulfilled
+PYTHON_COMPAT=( python3_{7,8,9} ) # apps work with 3_9 but test depend is not fulfilled
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
