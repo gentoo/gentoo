@@ -95,7 +95,7 @@ src_test() {
 src_install() {
 	mymake -f makefile.shared \
 		DATAPATH="${EPREFIX}/usr/share/doc/${PF}" \
-		DESTDIR="${ED}" \
+		DESTDIR="${D}" \
 		install install_docs
 
 	find "${ED}" '(' -name '*.la' -o -name '*.a' ')' -delete || die
