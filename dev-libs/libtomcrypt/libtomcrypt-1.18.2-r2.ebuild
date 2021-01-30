@@ -17,7 +17,7 @@ LICENSE="|| ( WTFPL-2 public-domain )"
 # Helpful site:
 # https://abi-laboratory.pro/index.php?view=timeline&l=libtomcrypt
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc ~x86 ~x64-macos"
 IUSE="+gmp +libtommath tomsfastmath"
 
 BDEPEND="
@@ -95,7 +95,7 @@ src_test() {
 src_install() {
 	mymake -f makefile.shared \
 		DATAPATH="${EPREFIX}/usr/share/doc/${PF}" \
-		DESTDIR="${ED}" \
+		DESTDIR="${D}" \
 		install install_docs
 
 	find "${ED}" '(' -name '*.la' -o -name '*.a' ')' -delete || die
