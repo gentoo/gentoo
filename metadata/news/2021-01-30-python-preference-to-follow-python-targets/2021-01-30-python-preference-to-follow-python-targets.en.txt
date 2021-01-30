@@ -1,0 +1,48 @@
+Title: Python preference to follow PYTHON_TARGETS
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2021-01-30
+Revision: 1
+News-Item-Format: 2.0
+
+On 2021-02-01 stable users will switch to a new method of updating
+the preferred Python versions that employs the configuration update
+mechanism in order to follow PYTHON_TARGETS.  We will also deprecate
+app-eselect/eselect-python, and it will stop being installed by default
+after 2021-07-01.  If you wish to use the newest Python version present
+in your PYTHON_TARGETS, you only have to accept configuration changes.
+If you wish to customize the behavior, read on.
+
+Since 2017, /usr/bin/python and the related non-versioned symlinks
+are wrapped through dev-lang/python-exec.  The list of preferred Python
+implementations is stored in /etc/python-exec/python-exec.conf and/or
+per-program /etc/python-exec/<basename>.conf configuration files.
+To preserve backwards compatibility, app-eselect/eselect-python remained
+a wrapper that updated this file.
+
+However, this mechanism alone has proven inconvenient to end users who
+had to update python-exec.conf whenever the default PYTHON_TARGETS
+changed.  Thanks to the fallback logic, this was not a major problem
+for software installed via Gentoo packages that always ensure that
+a supported implementation is used.  However, users have reported that
+whenever the preference for /usr/bin/python mismatched their
+PYTHON_TARGETS, their custom scripts would break due to unsatisfied
+dependencies.  This does not follow the principle of least surprise.
+
+For this reason, we have decided to change the default python-exec
+configuration to match PYTHON_TARGETS by default, in the eclass
+preference order, that is from the newest CPython version to oldest,
+with alternative Python implementations coming afterwards.  This change
+will be propagated via the configuration protection mechanism whenever
+dev-lang/python-exec-conf is installed or rebuilt due to PYTHON_TARGETS
+changes.  This will permit the users to interactively confirm
+the updates.
+
+If the new default is not correct for you, please use your preferred
+configuration update tool to discard or edit the new configuration file.
+
+Furthermore, dev-lang/python will no longer attempt to automatically
+update the Python interpreter preference, or pull in eselect-python
+automatically.  If you wish to continue using it, please install/record
+it explicitly to ensure that it is not unmerged, e.g.:
+
+    emerge -n app-eselect/eselect-python
