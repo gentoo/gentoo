@@ -11986,6 +11986,7 @@ gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositor
 gui-apps/wf-shell 0.5.0 0.6.1 9999: A compiz like 3D wayland compositor
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
+gui-libs/display-manager-init 1.0: RC init files for starting display and login managers
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
@@ -17058,7 +17059,7 @@ sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 246-r2 246.6 247.2-r4 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-tmpfiles 246: Creates, deletes and cleans up volatile and temporary files and directories
-sys-apps/sysvinit 2.93 2.96 2.97 2.98: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.93 2.96 2.97 2.98 2.98-r1: /sbin/init - parent of all processes
 sys-apps/tas 1.6.0.200601: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.6-r1 6.7: The GNU info program and utilities
@@ -18171,7 +18172,7 @@ x11-apps/xfontsel 1.0.6: point and click selection of X11 font names
 x11-apps/xgamma 1.0.6: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.5: X graphics demo
 x11-apps/xhost 1.0.8: Controls host and/or user access to a running X server
-x11-apps/xinit 1.4.1: X Window System initializer
+x11-apps/xinit 1.4.1 1.4.1-r1: X Window System initializer
 x11-apps/xinput 1.6.3: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r2: A generic touchscreen calibration program for X.Org
 x11-apps/xisxwayland 1 9999: Tool to determine whether the X server in use is Xwayland
@@ -18209,7 +18210,7 @@ x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.14.1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
-x11-base/xorg-server 1.20.10 9999: X.Org X servers
+x11-base/xorg-server 1.20.10 1.20.10-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 390.138-r5 435.21-r7 440.100-r3 450.80.02-r1 455.45.01-r1 460.27.04: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
