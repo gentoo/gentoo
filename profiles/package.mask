@@ -261,13 +261,6 @@ games-rpg/the-royal-trap
 # Removal in 30 days.  Bug #762634.
 media-libs/jpeg
 
-# Hans de Graaff <graaff@gentoo.org> (2020-12-29)
-# These slots masked for removal in 30 days due to
-# security issues, bug 730786
-# Use a newer slot instead.
-dev-ruby/rack:2.0
-dev-ruby/rack:2.1
-
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
 # Masked for removal after 2021-02-01
