@@ -33,6 +33,9 @@ SERVER="localhost"
 # port for webinterface, usually 4080
 PORT="4080"
 
+# port for telnet interface, usually 4000
+TELNET_PORT="4000"
+
 # to enable password restricted access,
 # uncomment and set BOTH following vars:
 #USERNAME="admin"

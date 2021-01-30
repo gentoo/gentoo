@@ -35,26 +35,55 @@ start() {
 	eend $?
 }
 
-setup_uri() {
-	BASE="http://"
-	if [ -n "${USERNAME}" -a -n "${PASSWORD}" ]; then
-		BASE="${BASE}${USERNAME}:${PASSWORD}@"
+send_telnet_commands() {
+	if [ -z "${TELNET_PORT+x}" ]; then
+		return 1
 	fi
-	BASE="${BASE}${SERVER}:${PORT}"
+	local cmds=
+	if [ -n "${USERNAME}" -a -n "${PASSWORD}" ]; then
+		cmds="auth ${USERNAME} ${PASSWORD}\n"
+	fi
+	cmds="$cmds\nansi false\n"
+	while [ $# -gt 0 ]; do
+		cmds="$cmds$1\n"
+		shift
+	done
+	printf "$cmds\nexit\n" | nc -w "${MLDONKEY_TIMEOUT}" localhost "${TELNET_PORT}" 2> /dev/null
+	return $?
+}
+
+send_http_commands() {
+	if [ -z "${PORT+x}" ]; then
+		return 1
+	fi
+	local base="http://"
+	if [ -n "${USERNAME}" -a -n "${PASSWORD}" ]; then
+		base="${base}${USERNAME}:${PASSWORD}@"
+	fi
+	base="${base}${SERVER}:${PORT}"
+	local retval=0
+	while [ $retval -eq 0 -a $# -gt 0 ]; do
+		wget -q -O /dev/stdout --timeout="${MLDONKEY_TIMEOUT}" "${base}/submit?q=${1// /+}" 2> /dev/null
+		retval=$?
+		shift
+	done
+	return $retval
+}
+
+send_commands() {
+	send_telnet_commands "$@" &> /dev/null || send_http_commands "$@" &> /dev/null
+	return $?
 }
 
 stop() {
 	ebegin "Stopping ${SVCNAME} -- please wait"
 
-	setup_uri
-	wget --spider --timeout="${MLDONKEY_TIMEOUT}" "${BASE}"/submit?q=close_fds -q
-	wget --spider --timeout="${MLDONKEY_TIMEOUT}" "${BASE}"/submit?q=save -q
-	wget --spider --timeout="${MLDONKEY_TIMEOUT}" "${BASE}"/submit?q=kill -q
+	send_commands close_fds save kill
 
 	# give it a chance to die:
 	local timeout=${MLDONKEY_TIMEOUT}
 	while [ $timeout -gt 0 ]; do
-		if ! start-stop-daemon --test --quiet --stop \
+		if ! start-stop-daemon --test --quiet --quiet --stop \
 			--exec "${MLDONKEY_BINARY}" \
 			--pidfile /var/run/"${SVCNAME}".pid ; then
 			eend 0
@@ -87,32 +116,23 @@ reload() {
 
 slow() {
 	ebegin "Reducing bandwidth to ${LOW_DOWN}k/${LOW_UP}k"
-	setup_uri
-	wget --spider --timeout="${MLDONKEY_TIMEOUT}" \
-		"${BASE}/submit?q=set+max_hard_download_rate+${LOW_DOWN}" -q
-	wget --spider --timeout=${MLDONKEY_TIMEOUT} \
-		"${BASE}/submit?q=set+max_hard_upload_rate+${LOW_UP}" -q
+	send_commands "set max_hard_download_rate ${LOW_DOWN}" "set max_hard_upload_rate ${LOW_UP}"
 	eend $?
 }
 
 fast() {
 	ebegin "Increasing bandwidth to ${HIGH_DOWN}k/${HIGH_UP}k"
-
-	setup_uri
-	wget --spider --timeout="${MLDONKEY_TIMEOUT}" \
-		"${BASE}/submit?q=set+max_hard_upload_rate+${HIGH_UP}" -q
-	wget --spider --timeout="${MLDONKEY_TIMEOUT}" \
-		"${BASE}/submit?q=set+max_hard_download_rate+${HIGH_DOWN}" -q
+	send_commands "set max_hard_upload_rate ${HIGH_UP}" "set max_hard_download_rate ${HIGH_DOWN}"
 	eend $?
 }
 
 
 info() {
-	setup_uri
-	local result=$(wget --timeout="${MLDONKEY_TIMEOUT}" \
-		-O - "${BASE}"/submit?q=vo 2>/dev/null | \
-		grep -C1 max_hard_upload | \
-		grep value=\" | cut -d\" -f2)
+	set -o pipefail
+	local result=$(
+		send_telnet_commands "voo max_hard_upload_rate" | grep -a 'max_hard_upload_rate.* =' | cut -d \  -f 3 ||
+		send_http_commands "voo max_hard_upload_rate" | fgrep name=value | sed -e 's/.*value="//' -e 's/".*//'
+	)
 	if [ "${result}" = "${LOW_UP}" ]; then
 		einfo "${SVCNAME} runs slow"
 	else
