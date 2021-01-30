@@ -74,6 +74,10 @@ REQUIRED_USE="
 
 MAKEOPTS+=" SAMPLES="
 
+PATCHES=(
+	"${FILESDIR}/${P}-NO_ROOT_MAILER_fix.patch" #767946
+)
+
 src_prepare() {
 	default
 	elibtoolize
