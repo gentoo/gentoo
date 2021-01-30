@@ -349,17 +349,12 @@ dev-lang/spark
 dev-ada/langkit
 dev-ada/libadalang
 dev-ada/libadalang-tools
-dev-ada/gps
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
 >=dev-libs/vala-common-0.49
 dev-lang/vala:0.50
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-28)
-# Masked for the time being due to dep on LLVM 8.  Bug #720236.
-<=dev-ada/gps-2019-r1
 
 # Sam James <sam@gentoo.org> (2020-07-20)
 # Serious security vulnerabilities, including
