@@ -280,7 +280,6 @@ media-sound/takcd
 # from clsync-0.4.5.
 # No reverse dependencies. Removal in 30 days.
 <app-admin/clsync-0.4.5
-app-doc/clsync-docs
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
