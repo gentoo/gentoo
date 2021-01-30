@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="A collection of fancy functional tools focused on practicality"
@@ -16,14 +16,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 BDEPEND="
-	${RDEPEND}
 	test? (
-		dev-python/whatever[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
+		dev-python/whatever[${PYTHON_USEDEP}]
+	)
+"
 
 python_test() {
 	distutils_install_for_testing --via-root
