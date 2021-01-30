@@ -347,7 +347,6 @@ dev-lang/spark
 # Masking for removal to prevent eclass from crashing on these packages.
 # Removal in 30 days.
 dev-ada/langkit
-dev-ada/libadalang
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
