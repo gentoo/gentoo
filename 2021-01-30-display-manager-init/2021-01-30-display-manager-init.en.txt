@@ -1,0 +1,43 @@
+Title: New OpenRC Display Manager Initializer Scripts
+Author: Aisha Tammy <gentoo@aisha.cc>
+Posted: 2021-01-30
+Revision: 4
+News-Item-Format: 2.0
+Display-If-Installed: sys-apps/openrc
+
+There has been a refactoring of the old 'xdm' init script and its
+requirements from various packages into an independent package:
+
+	gui-libs/display-manager-init
+
+This package provides the 'display-manager' startup script for
+handling your chosen display manager, without depending on
+Xorg server. The old 'xdm' init script is no longer supported
+and is going to be removed in the next version of xorg-server,
+so it is imperative that you shift to display-manager-init.
+
+To update to the new DM init scripts, you need to manually add the
+package in your @world set:
+
+	emerge -vuDU gui-libs/display-manager-init
+
+To start using the new init scripts, either copy your
+existing /etc/conf.d/xdm to /etc/conf.d/displaymanager or
+change the DISPLAYMANAGER variable in
+/etc/conf.d/display-manager to your preferred DM:
+
+	DISPLAYMANAGER="gdm"
+
+and remove 'xdm' from the default runlevel and add 'display-manager':
+
+	rc-update del xdm default
+	rc-update add display-manager default
+
+The changes are complete and on the next reboot, 'display-manager'
+will start your chosen DM.
+
+To switch to the new scripts without rebooting, run the following
+commands in a tty:
+
+	rc-service xdm stop
+	rc-service display-manager start
