@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -21,7 +21,7 @@ SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.8.0:3 >=dev-ruby/thread_order-1.1.0 )"
+ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.9.0:3 >=dev-ruby/thread_order-1.1.0 )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
@@ -44,4 +44,8 @@ all_ruby_prepare() {
 each_ruby_prepare() {
 	# Use the ruby version being tested
 	sed -i -e '/shell_out/ s:ruby:'${RUBY}':' spec/rspec/support/spec/shell_out_spec.rb || die
+}
+
+each_ruby_test() {
+	RUBYLIB=lib ${RUBY} -S rspec spec || die
 }
