@@ -253,14 +253,6 @@ games-rpg/asphyxia
 games-rpg/sakura-spirit
 games-rpg/the-royal-trap
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-30)
-# Unmaintained.  Entirely replaced by media-libs/libjpeg-turbo,
-# to the point that reverse dependencies no longer build with
-# media-libs/jpeg.  The two libraries are binary-incompatible,
-# and the current method of switching between them is incorrect.
-# Removal in 30 days.  Bug #762634.
-media-libs/jpeg
-
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
 # Masked for removal after 2021-02-01
