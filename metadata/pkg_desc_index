@@ -8167,7 +8167,7 @@ dev-python/django-taggit 1.2.0: simple tagging for django
 dev-python/django-taggit-serializer 0.1.7: the django taggit serializer for the django rest framework
 dev-python/django-timezone-field 4.0: A Django app providing database and form fields for pytz timezone objects
 dev-python/django_polymorphic 3.0.0: Seamless Polymorphic Inheritance for Django Models
-dev-python/djangorestframework 3.11.1: Web APIs with django made easy
+dev-python/djangorestframework 3.12.2: Web APIs with django made easy
 dev-python/dkimpy 1.0.5: DKIM and ARC email signing and verification library
 dev-python/dns-lexicon 3.3.4: Manipulate DNS records on various DNS providers in a standardized/agnostic way
 dev-python/dnspython 1.16.0-r1 2.0.0 2.1.0: DNS toolkit for Python
@@ -8184,7 +8184,7 @@ dev-python/doit-py 0.5.0: doit tasks for python stuff
 dev-python/dominate 2.6.0: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.1: Expects matchers for Doublex test doubles assertions
-dev-python/drf-yasg 1.17.1: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
+dev-python/drf-yasg 1.20.0: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
 dev-python/duecredit 0.7.0 0.8.0: Publications (and donations) tracer
 dev-python/dulwich 0.20.6 0.20.15: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7 2.7.1: Easy thumbnails for Django
@@ -8466,7 +8466,7 @@ dev-python/m2r 0.2.1: Markdown to reStructuredText converter
 dev-python/mako 1.1.3-r1 1.1.4: A Python templating language
 dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
-dev-python/manuel 1.9.0: Manuel lets you build tested documentation
+dev-python/manuel 1.9.0 1.10.1: Lets you mix and match traditional doctests with custom test syntax
 dev-python/markdown 2.6.11 3.3.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1: A wrapper around various text markups
@@ -9201,7 +9201,7 @@ dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
 dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
 dev-python/svg-path 4.0.2: SVG path objects and parser
 dev-python/svgwrite 1.4 1.4.1: Python Package to write SVG files
-dev-python/swagger-spec-validator 2.5.0: validate Swagger specs against Swagger 1.1 or 2.0 specification
+dev-python/swagger-spec-validator 2.7.3: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 2.0.1: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
 dev-python/sympy 1.7.1-r1: Computer Algebra System in pure Python
