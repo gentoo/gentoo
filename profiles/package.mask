@@ -249,7 +249,6 @@ dev-haskell/hgettext
 # Removal in 30 days.  Bug #735358.
 dev-python/numpy-python2
 games-engines/renpy
-games-misc/katawa-shoujo
 
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
