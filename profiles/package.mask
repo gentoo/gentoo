@@ -274,13 +274,6 @@ dev-ruby/rack:2.1
 # Bug #762361
 media-sound/takcd
 
-# Andrew Savchenko <bircoph@gentoo.org> (2020-12-26)
-# All docs and socket library functionality are merged back into single
-# app-admin/clsync package using USE="apidoc doc socket-library" starting
-# from clsync-0.4.5.
-# No reverse dependencies. Removal in 30 days.
-<app-admin/clsync-0.4.5
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
 # https://github.com/ndmitchell/derive/pull/37
