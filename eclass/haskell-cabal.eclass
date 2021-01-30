@@ -62,6 +62,28 @@ inherit eutils ghc-package multilib toolchain-funcs
 # linking 'setup' faster.
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
+# @ECLASS-VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup haddock'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_HADDOCK_FLAGS="--haddock-options=--latex --haddock-options=--pretty-html"
+: ${CABAL_EXTRA_HADDOCK_FLAGS:=}
+
+# @ECLASS-VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup haddock --hoogle'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_HOOGLE_FLAGS="--haddock-options=--show-all"
+: ${CABAL_EXTRA_HOOGLE_FLAGS:=}
+
+# @ECLASS-VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup hscolour'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
+: ${CABAL_EXTRA_HSCOLOUR_FLAGS:=}
+
+
 # @ECLASS-VARIABLE: CABAL_EXTRA_TEST_FLAGS
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup test'.
@@ -232,43 +254,17 @@ cabal-mksetup() {
 		> "${setup_src}" || die "failed to create default Setup.hs"
 }
 
+haskell-cabal-run_verbose() {
+	echo "$@"
+	"$@" || die "failed: $@"
+}
+
 cabal-hscolour() {
-	set -- hscolour "$@"
-	echo ./setup "$@"
-	./setup "$@" || die "setup hscolour failed"
+	haskell-cabal-run_verbose ./setup hscolour "$@"
 }
 
 cabal-haddock() {
-	set -- haddock "$@"
-	echo ./setup "$@"
-	./setup "$@" || die "setup haddock failed"
-}
-
-cabal-hoogle() {
-	ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
-}
-
-cabal-hscolour-haddock() {
-	# --hyperlink-source implies calling 'setup hscolour'
-	set -- haddock --hyperlink-source
-	echo ./setup "$@"
-	./setup "$@" --hyperlink-source || die "setup haddock --hyperlink-source failed"
-}
-
-cabal-hoogle-haddock() {
-	set -- haddock --hoogle
-	echo ./setup "$@"
-	./setup "$@" || die "setup haddock --hoogle failed"
-}
-
-cabal-hoogle-hscolour-haddock() {
-	cabal-hscolour-haddock
-	cabal-hoogle-haddock
-}
-
-cabal-hoogle-hscolour() {
-	ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
-	cabal-hscolour
+	haskell-cabal-run_verbose ./setup haddock "$@"
 }
 
 cabal-die-if-nonempty() {
@@ -546,23 +542,16 @@ cabal_src_compile() {
 	has src_configure ${HASKELL_CABAL_EXPF} || haskell-cabal_src_configure "$@"
 	cabal-build
 
-	if [[ -n "${CABAL_USE_HADDOCK}" ]] && use doc; then
-		if [[ -n "${CABAL_USE_HSCOLOUR}" ]] && use hscolour; then
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# hoogle, hscolour and haddock
-				cabal-hoogle-hscolour-haddock
-			else
-				# haddock and hscolour
-				cabal-hscolour-haddock
-			fi
-		else
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# hoogle and haddock
-				cabal-hoogle-haddock
-			else
-				# just haddock
-				cabal-haddock
-			fi
+	if [[ -n "$CABAL_USE_HADDOCK" ]] && use doc; then
+		if [[ -n "$CABAL_USE_HSCOLOUR" ]] && use hscolour; then
+			# --hyperlink-source implies calling 'setup hscolour'
+			haddock_args+=(--hyperlink-source)
+		fi
+
+		cabal-haddock "${haddock_args[@]}" $CABAL_EXTRA_HADDOCK_FLAGS
+
+		if [[ -n "$CABAL_USE_HOOGLE" ]] && use hoogle; then
+			cabal-haddock --hoogle $CABAL_EXTRA_HOOGLE_FLAGS
 		fi
 		if [[ -n "${CABAL_REBUILD_AFTER_DOC_WORKAROUND}" ]]; then
 			ewarn "rebuild-after-doc-workaround is enabled. This is a"
@@ -571,19 +560,12 @@ cabal_src_compile() {
 			cabal-build
 		fi
 	else
-		if [[ -n "${CABAL_USE_HSCOLOUR}" ]] && use hscolour; then
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# hoogle and hscolour
-				cabal-hoogle-hscolour
-			else
-				# just hscolour
-				cabal-hscolour
-			fi
-		else
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# just hoogle
-				cabal-hoogle
-			fi
+		if [[ -n "$CABAL_USE_HSCOLOUR" ]] && use hscolour; then
+			cabal-hscolour $CABAL_EXTRA_HSCOLOUR_FLAGS
+		fi
+
+		if [[ -n "$CABAL_USE_HOOGLE" ]] && use hoogle; then
+			ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
 		fi
 	fi
 }
