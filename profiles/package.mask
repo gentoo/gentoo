@@ -340,14 +340,6 @@ kde-apps/kdebase-meta:5
 # Masked to allow py2.7 removal
 dev-lang/spark
 
-# Alfredo Tupone <tupone@gentoo.org> (2020-08-16)
-# Ported to py3.8 but not yet released
-# Masked to allow py2.7 removal
-# Michał Górny <mgorny@gentoo.org> (2021-01-01)
-# Masking for removal to prevent eclass from crashing on these packages.
-# Removal in 30 days.
-dev-ada/langkit
-
 # Mart Raudsepp <leio@gentoo.org> (2020-08-15)
 # Development release, needs testing to ensure valac-0.50
 # works for existing packages
