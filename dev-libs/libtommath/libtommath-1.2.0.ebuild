@@ -65,6 +65,11 @@ src_test() {
 src_install() {
 	_emake -f makefile.shared install
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local path="usr/$(get_libdir)/libtommath.${PV}.dylib"
+		install_name_tool -id "${EPREFIX}/${path}" "${ED}/${path}" || die "Failed to adjust install_name"
+	fi
+
 	# We only link against -lc, so drop the .la file.
 	find "${ED}" -name '*.la' -delete || die
 	if ! use static-libs ; then
