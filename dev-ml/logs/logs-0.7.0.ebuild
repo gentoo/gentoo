@@ -31,6 +31,17 @@ DEPEND="${RDEPEND}
 	test? ( dev-ml/mtime )
 "
 
+src_prepare() {
+	default
+	sed -i \
+		-e "/test\/test_fmt/d" \
+		-e "/test\/test_formatter/d" \
+		-e "/test\/tool/d" \
+		-e "/test\/test_lwt/d" \
+		pkg/pkg.ml \
+		|| die
+}
+
 src_compile() {
 	ocaml pkg/pkg.ml build \
 		--with-js_of_ocaml $(usex javascript true false) \
@@ -38,6 +49,7 @@ src_compile() {
 		--with-cmdliner $(usex cli true false) \
 		--with-lwt $(usex fmt true false) \
 		--tests $(usex test true false) \
+		--with-base-threads true \
 		|| die
 }
 
