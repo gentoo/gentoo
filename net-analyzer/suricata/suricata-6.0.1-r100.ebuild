@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools flag-o-matic linux-info lua-single python-single-r1 systemd
 

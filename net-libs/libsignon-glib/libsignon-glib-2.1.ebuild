@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"

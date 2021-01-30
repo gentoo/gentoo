@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake-multilib linux-info llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"

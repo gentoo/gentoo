@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 
 inherit toolchain-funcs flag-o-matic distutils-r1
 

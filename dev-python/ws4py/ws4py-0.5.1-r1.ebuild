@@ -7,7 +7,7 @@
 # pypy is viable but better with a cutdown set of deps
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="threads(+)?"
 
 MY_PN="WebSocket-for-Python"

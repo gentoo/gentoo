@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 # The package uses entry points but setup.py is weird
 # so the eclass doesn't detect it
 DISTUTILS_USE_SETUPTOOLS=manual

@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
 # The selftests fail with pypy, and urlgrabber segfaults for me.
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 toolchain-funcs
 

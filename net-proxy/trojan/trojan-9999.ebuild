@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 EGIT_REPO_URI="https://github.com/trojan-gfw/trojan.git"
 
 inherit cmake git-r3 python-any-r1 systemd

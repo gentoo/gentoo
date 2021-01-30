@@ -4,7 +4,7 @@
 EAPI="7"
 
 # Require python-2 with sqlite USE flag
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..8} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 systemd

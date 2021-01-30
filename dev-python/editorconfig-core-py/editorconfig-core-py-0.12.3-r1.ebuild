@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake distutils-r1
 
 TESTVER="abb579e00f2deeede91cb485e53512efab9c6474"

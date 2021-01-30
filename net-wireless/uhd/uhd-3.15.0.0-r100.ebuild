@@ -4,7 +4,7 @@
 EAPI=6
 #not sure why, but eapi 7 fails
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils multilib
 

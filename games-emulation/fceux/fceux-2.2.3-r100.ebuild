@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit python-any-r1 desktop lua-single scons-utils toolchain-funcs
 

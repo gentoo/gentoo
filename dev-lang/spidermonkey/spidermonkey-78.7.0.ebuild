@@ -9,7 +9,7 @@ SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-03.tar.xz"
 
 LLVM_MAX_SLOT=11
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 WANT_AUTOCONF="2.1"
 

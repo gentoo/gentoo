@@ -5,7 +5,7 @@ EAPI=6
 
 GNOME2_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 PYTHON_REQ_USE="xml"
 

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
 inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils xdg

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_7 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1

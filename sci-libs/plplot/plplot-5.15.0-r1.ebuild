@@ -5,7 +5,7 @@ EAPI=6
 
 WX_GTK_VER=3.0-gtk3
 FORTRAN_NEEDED=fortran
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit cmake-utils flag-o-matic fortran-2 java-pkg-opt-2 python-single-r1 toolchain-funcs virtualx wxwidgets
 

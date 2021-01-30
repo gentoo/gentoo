@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 PYTHON_REQ_USE="sqlite"
 
 inherit gnome.org meson python-single-r1 virtualx xdg

@@ -4,7 +4,7 @@
 EAPI=6
 
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit gnome2 python-single-r1
 

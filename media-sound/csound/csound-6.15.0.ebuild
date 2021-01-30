@@ -7,7 +7,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit cmake python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then

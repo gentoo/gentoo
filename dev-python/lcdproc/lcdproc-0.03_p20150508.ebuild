@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_COMMIT="973628fc326177c9deaf3f2e1a435159eb565ae0"
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 

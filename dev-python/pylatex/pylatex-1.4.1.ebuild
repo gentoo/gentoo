@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="PyLaTeX"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 optfeature
 

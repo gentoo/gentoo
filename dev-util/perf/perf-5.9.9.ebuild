@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit bash-completion-r1 estack eutils llvm toolchain-funcs prefix python-r1 linux-info
 
 DESCRIPTION="Userland tools for Linux Performance Counters"

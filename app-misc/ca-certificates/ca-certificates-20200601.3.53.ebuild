@@ -26,7 +26,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit eutils python-any-r1
 

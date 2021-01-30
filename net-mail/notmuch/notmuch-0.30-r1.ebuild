@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_OPTIONAL=1
 NEED_EMACS="24.1"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit bash-completion-r1 distutils-r1 elisp-common eutils flag-o-matic \
 	pax-utils toolchain-funcs
