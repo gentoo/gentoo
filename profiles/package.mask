@@ -252,7 +252,6 @@ games-engines/renpy
 games-misc/katawa-shoujo
 games-rpg/asphyxia
 games-rpg/sakura-spirit
-games-rpg/the-royal-trap
 
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
