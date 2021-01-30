@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
-EGIT_COMMIT="a32832192"
+EGIT_COMMIT="421b54a8a"
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
 MY_PV_HRP="5.4"
@@ -31,7 +31,7 @@ SRC_URI="
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="duke3d fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools voidsw vorbis voxels vpx xmp"
+IUSE="duke3d fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools voidsw voxels vpx xmp"
 REQUIRED_USE="
 	hrp? ( duke3d !voxels )
 	offensive? ( duke3d )
@@ -50,8 +50,10 @@ S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}-${EGIT_COMMIT}"
 
 RDEPEND="
 	media-libs/flac
+	media-libs/libogg
 	media-libs/libsdl2[alsa,joystick,opengl?,sound,video]
-	media-libs/sdl2-mixer[flac,fluidsynth?,midi,timidity?,vorbis?]
+	media-libs/libvorbis
+	media-libs/sdl2-mixer[flac,fluidsynth?,midi,timidity?,vorbis]
 	sys-libs/zlib
 	gtk? ( x11-libs/gtk+:2 )
 	opengl? (
@@ -60,10 +62,6 @@ RDEPEND="
 	)
 	png? ( media-libs/libpng:0= )
 	vpx? ( media-libs/libvpx:= )
-	vorbis? (
-		media-libs/libogg
-		media-libs/libvorbis
-	)
 	xmp? ( media-libs/exempi:2= )
 "
 
@@ -122,7 +120,6 @@ src_compile() {
 		FORCEDEBUG=0
 		HAVE_FLAC=1
 		HAVE_GTK2=$(usex gtk 1 0)
-		HAVE_VORBIS=$(usex vorbis 1 0)
 		HAVE_XMP=$(usex xmp 1 0)
 		LINKED_GTK=$(usex gtk 1 0)
 		LTO=1
