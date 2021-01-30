@@ -7,19 +7,19 @@ inherit cmake desktop xdg
 
 DESCRIPTION="The PDF viewer and tools"
 HOMEPAGE="https://www.xpdfreader.com"
-SRC_URI="https://xpdfreader-dl.s3.amazonaws.com/${P}.tar.gz
+SRC_URI="https://dl.xpdfreader.com/old/${P}.tar.gz
 	i18n? (
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-arabic.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-chinese-simplified.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-chinese-traditional.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-cyrillic.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-greek.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-hebrew.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-japanese.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-korean.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-latin2.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-thai.tar.gz
-		https://xpdfreader-dl.s3.amazonaws.com/xpdf-turkish.tar.gz
+		https://dl.xpdfreader.com/xpdf-arabic.tar.gz
+		https://dl.xpdfreader.com/xpdf-chinese-simplified.tar.gz -> xpdf-chinese-simplified-20201222.tar.gz
+		https://dl.xpdfreader.com/xpdf-chinese-traditional.tar.gz -> xpdf-chinese-traditional-20201222.tar.gz
+		https://dl.xpdfreader.com/xpdf-cyrillic.tar.gz
+		https://dl.xpdfreader.com/xpdf-greek.tar.gz
+		https://dl.xpdfreader.com/xpdf-hebrew.tar.gz
+		https://dl.xpdfreader.com/xpdf-japanese.tar.gz -> xpdf-japanese-20201222.tar.gz
+		https://dl.xpdfreader.com/xpdf-korean.tar.gz -> xpdf-korean-20201222.tar.gz
+		https://dl.xpdfreader.com/xpdf-latin2.tar.gz
+		https://dl.xpdfreader.com/xpdf-thai.tar.gz
+		https://dl.xpdfreader.com/xpdf-turkish.tar.gz
 	)"
 
 LICENSE="|| ( GPL-2 GPL-3 ) i18n? ( BSD )"
