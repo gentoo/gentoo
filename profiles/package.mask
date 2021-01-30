@@ -180,9 +180,10 @@ app-admin/cgmanager
 sys-libs/libnih
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-01-06)
-# Abandoned upstream, countless bugs. Replaced by builtin functionality in
-# elogind or systemd. Alternative: sys-power/suspend.
-# Removal in 30 days. Bug #659616
+# Abandoned upstream, countless bugs. Replaced by builtin functions in elogind
+# or systemd. Alternatives: sys-power/suspend, sys-power/hibernate-script.
+# See also: https://wiki.gentoo.org/wiki/Suspend_and_hibernate
+# Removal on 2021-02-19. Bugs #659616, #764773
 sys-power/pm-utils
 sys-power/pm-quirks
 
