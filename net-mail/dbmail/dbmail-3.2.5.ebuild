@@ -87,7 +87,7 @@ src_install() {
 	keepdir /var/lib/dbmail
 	fperms 750 /var/lib/dbmail
 	fowners dbmail:dbmail /var/lib/dbmail
-	
+
 	readme.gentoo_create_doc
 }
 
