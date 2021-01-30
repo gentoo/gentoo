@@ -7,7 +7,7 @@ inherit cmake desktop xdg
 
 DESCRIPTION="The PDF viewer and tools"
 HOMEPAGE="https://www.xpdfreader.com"
-SRC_URI="https://dl.xpdfreader.com/old/${P}.tar.gz
+SRC_URI="https://dl.xpdfreader.com/${P}.tar.gz
 	i18n? (
 		https://dl.xpdfreader.com/xpdf-arabic.tar.gz
 		https://dl.xpdfreader.com/xpdf-chinese-simplified.tar.gz -> xpdf-chinese-simplified-20201222.tar.gz
@@ -24,7 +24,7 @@ SRC_URI="https://dl.xpdfreader.com/old/${P}.tar.gz
 
 LICENSE="|| ( GPL-2 GPL-3 ) i18n? ( BSD )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cmyk cups +fontconfig i18n icons +libpaper metric opi png +textselect utils"
 
 BDEPEND="
@@ -52,8 +52,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-automagic.patch
 	"${FILESDIR}"/${PN}-visibility.patch
 	"${FILESDIR}"/${PN}-shared-libs.patch
-	"${FILESDIR}"/${PN}-CVE-2019-17064.patch
 )
+
+DOCS=( ANNOUNCE CHANGES README )
 
 src_prepare() {
 	sed -i \
