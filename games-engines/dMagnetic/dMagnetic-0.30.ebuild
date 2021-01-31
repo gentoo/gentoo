@@ -21,7 +21,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake ${PN} \
+	emake all \
 		  CC="$(tc-getCC)" \
 		  LINK="$(tc-getCC) ${LDFLAGS}"
 }
