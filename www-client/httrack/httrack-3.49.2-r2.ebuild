@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit eutils xdg-utils
+inherit autotools multilib eutils xdg-utils
 
 DESCRIPTION="HTTrack Website Copier, Open Source Offline Browser"
 HOMEPAGE="https://www.httrack.com/"
@@ -25,6 +25,20 @@ DOCS=( AUTHORS README greetings.txt history.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.48.13-minizip.patch
 )
+
+src_prepare() {
+	default
+
+	# We need to patch use of /usr/lib because it is a problem with
+	# linker lld with profile 17.1 on amd64 (see https://bugs.gentoo.org/732272).
+	# The grep sandwich acts as a regression test so that a future
+	# version bump cannot break patching without noticing.
+	grep -wq '{ZLIB_HOME}/lib' m4/check_zlib.m4 || die
+	sed "s,{ZLIB_HOME}/lib,{ZLIB_HOME}/$(get_libdir)," -i m4/check_zlib.m4 || die
+	grep -w '{ZLIB_HOME}/lib' m4/check_zlib.m4 && die
+
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_enable static-libs static)
