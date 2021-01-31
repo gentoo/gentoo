@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-lang/ocaml:="
+DEPEND="dev-lang/ocaml:0/4.05.0"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/cppo"
