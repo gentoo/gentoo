@@ -10377,8 +10377,8 @@ dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of c
 dev-ruby/tdiff 0.3.4: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.7.1: Small Ruby library that colors strings using ANSI escape sequences
-dev-ruby/terminal-table 1.8.0-r2 2.0.0: Simple, feature rich ascii table generation library
-dev-ruby/test-unit 3.3.3 3.3.4 3.3.5 3.3.6 3.3.7 3.3.8 3.3.9: An xUnit family unit testing framework for Ruby
+dev-ruby/terminal-table 1.8.0-r2 2.0.0 3.0.0: Simple, feature rich ascii table generation library
+dev-ruby/test-unit 3.3.3 3.3.7 3.3.8 3.3.9 3.4.0: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.2: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.6: Simply adds a declarative test method syntax to test/unit
@@ -10424,7 +10424,7 @@ dev-ruby/uglifier 4.2.0: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.5 0.0.7.6 0.0.7.7: Unicode Normalization Form support library for CRuby
-dev-ruby/unicode-display_width 1.7.0: Adds String#display_width to get the display size using EastAsianWidth.txt
+dev-ruby/unicode-display_width 1.7.0 2.0.0: Adds String#display_width to get the display size using EastAsianWidth.txt
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1 2.2.0: Simple library to generate UUIDs
 dev-ruby/vagrant_cloud 2.0.3-r1: Vagrant Cloud API Library
