@@ -91,6 +91,7 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 		-DWITH_VORBIS=$(usex vorbis)
 	)
+	use test && mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
 
 	if use kde ; then
 		mycmakeargs+=( "-DWITH_APPS=KDE;CLI" )
