@@ -3452,15 +3452,10 @@ dev-ada/gnat-suite-bin 2016 2017 2018 2019: GNAT Ada suite
 dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll-bindings 2019-r2 2020-r1: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1 2020: GNAT Component Collection Core packages
-dev-ada/gnatcoll-db 2019: GNAT Component Collection
 dev-ada/gnatmem 2019-r1 2020: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2019-r1: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r2 2019-r1 2020: Multi-Language Management
-dev-ada/gps 2019-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017-r1 2018-r2 2019-r1: A complete Ada graphical toolkit
-dev-ada/langkit 2018 2019 2019-r1: A Python framework to generate language parsers
-dev-ada/libadalang 2018-r2 2019-r1: high performance semantic engine for the Ada programming language
-dev-ada/libadalang-tools 2019-r1: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
