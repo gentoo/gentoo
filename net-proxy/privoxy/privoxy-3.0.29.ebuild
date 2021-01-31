@@ -47,7 +47,7 @@ REQUIRED_USE="
 	compression? ( zlib )
 	brotli? ( zlib )
 	fuzz? ( zlib )
-	ssl? ( ^^ ( mbedtls openssl ) )
+	ssl? ( ^^ ( mbedtls openssl ) threads )
 "
 
 S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
@@ -57,13 +57,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.28-chdir.patch
 	"${FILESDIR}"/${PN}-3.0.28-null-termination.patch
 	"${FILESDIR}"/${PN}-3.0.28-strip.patch
+	"${FILESDIR}"/${P}-pthread.patch
 )
 
 pkg_pretend() {
 	if ! use threads; then
 		ewarn
 		ewarn "Privoxy may be very slow without threads support, consider to enable them."
-		ewarn "See also http://www.privoxy.org/faq/trouble.html#GENTOO-RICERS"
+		ewarn "See also https://www.privoxy.org/faq/trouble.html#GENTOO-RICERS"
 		ewarn
 	fi
 }
