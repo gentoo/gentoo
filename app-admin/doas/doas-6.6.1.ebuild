@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="Run commands as super user or another user, alternative to sudo from OpenBSD"
+DESCRIPTION="Run commands as super/another user (alt sudo) (unofficial port from OpenBSD)"
 
 MY_PN=OpenDoas
 MY_P=${MY_PN}-${PV}
