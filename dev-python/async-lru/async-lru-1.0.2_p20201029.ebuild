@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
+		<dev-python/pytest-6.2[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)"
 
