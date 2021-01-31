@@ -1,13 +1,14 @@
-DEFINED_PHASES=compile configure install test
-DEPEND=>=sci-libs/cln-1.2.2 virtual/pkgconfig doc? ( app-doc/doxygen media-gfx/transfig virtual/texi2dvi dev-texlive/texlive-fontsrecommended )
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig doc? ( app-doc/doxygen dev-texlive/texlive-fontsrecommended media-gfx/transfig virtual/texi2dvi )
+DEFINED_PHASES=compile configure install setup
+DEPEND=>=sci-libs/cln-1.2.2
 DESCRIPTION=C++ library and tools for symbolic calculations
 EAPI=7
 HOMEPAGE=https://www.ginac.de/
-IUSE=doc static-libs
+IUSE=doc examples
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=sci-libs/cln-1.2.2
 SLOT=0
 SRC_URI=http://www.ginac.de/ginac-1.7.11.tar.bz2
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=361f4172ce4c5a54bbc57892ef5d2ca8
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=55426d1156ac0590535a83c0918bf8b6

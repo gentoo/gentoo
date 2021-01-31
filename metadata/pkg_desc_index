@@ -1759,7 +1759,7 @@ app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20200215 20200723: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10 1.11: A powerful and user-friendly console text editor
-app-editors/mousepad 0.4.2 0.4.90 0.5.0 0.5.1: GTK+-based editor for the Xfce Desktop Environment
+app-editors/mousepad 0.4.2 0.4.90 0.5.0 0.5.1 0.5.2: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.9.3 5.3-r1 5.4 5.5 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1 3.3.0: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
@@ -2110,8 +2110,8 @@ app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 5.20 5.21 5.22-r2 6.0 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 5.0.2 5.0.3-r1 5.20 5.21 5.22-r2 6.0 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 5.20 5.21 5.22-r2 6.0 6.1 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 5.0.2 5.0.3-r1 5.20 5.21 5.22-r2 6.0 6.1 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20200412 20201206 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -2464,7 +2464,7 @@ app-misc/getopt 1.1.6-r1: getopt(1) replacement supporting GNU-style long option
 app-misc/glastree 1.04 1.04_p20150525: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.1.2: A glue between the graphlcd-base library from the GraphLCD project
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
-app-misc/gnote 3.36.2: Desktop note-taking application
+app-misc/gnote 3.36.2 3.38.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23 1.0.26 1.0.27: A simple JIRA commandline client in Go
@@ -2907,7 +2907,7 @@ app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1 3.09: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.36.7 3.36.8: Simple document viewer for GNOME
+app-text/evince 3.36.7 3.36.9: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fb2edit 0.1.0: Create and edit fb2 books
@@ -7970,6 +7970,7 @@ dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astroid 2.4.2-r1: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
+dev-python/async-lru 1.0.2_p20201029: Simple lru_cache for asyncio
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atomicwrites 1.4.0-r1: Atomic file writes
@@ -8328,7 +8329,7 @@ dev-python/humanize 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 20.0.1 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2 6.0.3 6.0.4 6.1.0: A library for property based testing
+dev-python/hypothesis 5.43.4 5.49.0 6.0.1 6.0.2 6.0.3 6.0.4 6.1.0 6.1.1: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8383,7 +8384,7 @@ dev-python/jedi 0.17.2-r1 0.18.0: Autocompletion library for Python
 dev-python/jeepney 0.6.0: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 4.2.1 4.2.2: Python wrapper for jikan.moe API.
-dev-python/jinja 2.11.2-r1: A full-featured template engine for Python
+dev-python/jinja 2.11.2-r1 2.11.3: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
@@ -9125,6 +9126,7 @@ dev-python/snakeoil 0.8.8 0.8.9 0.9.0 9999: misc common functionality and useful
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1-r1 0.6.0: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
+dev-python/sniffio 1.2.0: Sniff out which async library your code is running under
 dev-python/snowballstemmer 2.0.0 2.1.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
@@ -9284,7 +9286,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.19: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.2.1 20.3.0 20.3.1 20.4.0: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.2.1 20.3.0 20.3.1 20.4.0 20.4.1: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
@@ -10722,7 +10724,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 165: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 165 166: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -11835,7 +11837,7 @@ gnome-base/libglade 2.6.4-r3: Library to construct graphical interfaces at runti
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
 gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
 gnome-base/libgtop 2.40.0-r1: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.21 2.48.8 2.48.9 2.50.2: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.21 2.48.8 2.48.9 2.50.2 2.50.3: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.36.3: Default file manager for the GNOME desktop
 gnome-extra/chrome-gnome-shell 10-r4: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 4.6.7 4.8.6: A fork of GNOME Shell with layout similar to GNOME 2
@@ -13129,7 +13131,7 @@ media-libs/libdc1394 2.2.5-r1 2.2.6: Library to interface with IEEE 1394 cameras
 media-libs/libdca 0.0.7: Library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.3 1.0.5 1.0.8 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.2: Client library to create MusicBrainz enabled tagging applications
-media-libs/libdmtx 0.7.4 0.7.5: Barcode data matrix reading and writing library
+media-libs/libdmtx 0.7.5: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r4: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
 media-libs/libdvbpsi 1.3.2 1.3.3: Library for MPEG TS/DVB PSI tables decoding and generation
@@ -13320,7 +13322,7 @@ media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.9.0: An audio time-stretching and pitch-shifting library and utility program
-media-libs/sbc 1.4 1.5: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
+media-libs/sbc 1.5: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdl-gfx 2.0.26 2.0.26-r1: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
 media-libs/sdl-mixer 1.2.12-r4: Simple Direct Media Layer Mixer Library
@@ -13972,7 +13974,7 @@ media-sound/sidplayfp 1.4.4: Sidplay2 fork with resid-fp
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/snapcast 0.20.0 9999: Synchronous multi-room audio player
 media-sound/snd 17.4-r1: Snd is a sound editor
-media-sound/sndfile-tools 1.04-r1 9999: Small collection of programs that use libsndfile
+media-sound/sndfile-tools 1.04-r1 1.5 9999: Small collection of programs that use libsndfile
 media-sound/sndio 1.7.0: small audio and MIDI framework part of the OpenBSD project
 media-sound/sndpeek 1.41-r1: real-time audio visualization
 media-sound/solfege 3.23.4: GNU program to help practicing ear training
@@ -14162,7 +14164,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5 4.15.0 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.3.10 0.3.18 0.3.20: Multimedia processing graphs
+media-video/pipewire 0.3.18 0.3.20: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
@@ -14623,7 +14625,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/samba 4.12.9-r1 4.12.11 4.13.3-r1 4.13.4 4.14.0_rc1: Samba Suite Version 4
-net-fs/smbnetfs 0.6.2: FUSE filesystem for SMB shares
+net-fs/smbnetfs 0.6.2 0.6.3: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r2: WebDAV filesystem with special features for accessing subversion repositories
@@ -14796,7 +14798,7 @@ net-libs/kdsoap 1.9.50_pre20200317 1.10.0: Qt-based client-side and server-side 
 net-libs/kdsoap-ws-discovery-client 0.2_pre20200317 0.2_pre20200927: WS-Discovery client library based on KDSoap
 net-libs/kimap2 0.3.0: Library for interacting with IMAP servers - successor of kimap
 net-libs/ldns 1.7.1-r1 1.7.1-r2: a library with the aim to simplify DNS programming in C
-net-libs/libaccounts-glib 1.25-r1 1.25-r2: Accounts SSO (Single Sign-On) management library for GLib applications
+net-libs/libaccounts-glib 1.25-r2: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
@@ -15761,7 +15763,7 @@ sci-astronomy/cdsclient 3.8.4: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.7.0_pre20200316-r100 9999: OpenGL 3D space simulator
 sci-astronomy/cpl 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
-sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
+sci-astronomy/erfa 1.4.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/esomidas 17.02-r1: European Southern Observatory Munich Image Data Analysis System
 sci-astronomy/esorex 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/fitsh 0.9.2: Software package for astronomical image processing
@@ -16358,7 +16360,7 @@ sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/stellarsolver 1.5: Cross-platform Sextractor and Astrometry.net-Based internal astrometric solver
 sci-libs/suitesparse 5.4.0: Metapackage for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 5.4.0: Common configurations for all packages in suitesparse
-sci-libs/sundials 3.2.1 5.2.0: Suite of nonlinear solvers
+sci-libs/sundials 5.2.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r2 5.2.2: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.6.0: Fast symbolic manipulation library, written in C++
@@ -17150,7 +17152,7 @@ sys-block/blktrace 1.1.0 1.1.0-r1 1.2.0: show detailed info about what is happen
 sys-block/buffer 1.19-r3: A tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.47 4.47.3 4.48: Disk Information Utility
+sys-block/di 4.47.3 4.48 4.48.0.1: Disk Information Utility
 sys-block/disktype 9-r1: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2 8.0: Utilities to detect broken or counterfeit flash storage
@@ -17574,7 +17576,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.10.9 5.10.10 5.10.11 5.10.12: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.254 4.9.254 4.14.218 4.19.171 5.4.94 5.10.12: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.254 4.9.254 4.14.218 4.19.172 5.4.94 5.10.12: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.36: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
