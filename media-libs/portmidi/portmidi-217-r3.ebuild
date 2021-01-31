@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_OPTIONAL=1
 # ninja: error: build.ninja:521: multiple rules generate pm_java/pmdefaults.jar [-w dupbuild=err]
 CMAKE_MAKEFILE_GENERATOR="emake"

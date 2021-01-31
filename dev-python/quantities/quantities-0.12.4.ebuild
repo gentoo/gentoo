@@ -7,7 +7,7 @@ MY_PN="python-quantities"
 MY_PV="$(ver_cut 1-3)"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1

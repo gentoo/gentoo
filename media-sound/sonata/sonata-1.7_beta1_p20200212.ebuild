@@ -4,7 +4,7 @@
 EAPI=7
 
 COMMIT=0c807e593f7571a654ad055cb126652d7f3a698d
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 DISTUTILS_SINGLE_IMPL="true"
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 inherit desktop distutils-r1

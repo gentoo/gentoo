@@ -4,7 +4,7 @@
 EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR=ninja}
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake llvm python-single-r1
 
 DESCRIPTION="Super-parallel Python port of the C-Reduce"

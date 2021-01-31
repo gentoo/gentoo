@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake python-any-r1

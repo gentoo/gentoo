@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_REMOVE_MODULES_LIST=( FindPython Support )
 inherit bash-completion-r1 check-reqs cmake python-single-r1
 

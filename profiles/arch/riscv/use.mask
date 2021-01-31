@@ -6,9 +6,6 @@
 
 # Unmask systemd
 -systemd
-# Our Python has a lot of trouble with the two-level libdir.
-python_targets_python2_7
-python_single_target_python2_7
 
 # Ben Kohler <bkohler@gentoo.org> (2019-01-09)
 # no fam providers keyworded yet

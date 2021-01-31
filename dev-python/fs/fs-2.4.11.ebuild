@@ -5,7 +5,7 @@ EAPI=7
 
 # Not yet ready for 3.9
 # https://github.com/PyFilesystem/pyfilesystem2/issues/421
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 optfeature

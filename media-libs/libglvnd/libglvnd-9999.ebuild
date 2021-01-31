@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 VIRTUALX_REQUIRED=manual
 
 inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1 virtualx
