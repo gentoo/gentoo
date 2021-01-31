@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Daemon protecting your computer against BadUSB"
 HOMEPAGE="https://github.com/USBGuard/usbguard"
 SRC_URI="https://github.com/USBGuard/usbguard/releases/download/${P}/${P}.tar.gz"
@@ -44,6 +46,15 @@ DEPEND="${CDEPEND}
 		dev-util/gdbus-codegen
 	)
 	"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-pthreads-link.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myargs=(
