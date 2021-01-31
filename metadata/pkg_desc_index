@@ -625,7 +625,7 @@ app-admin/cygwin-rebase 4.4.4 9999: Core of the automatic rebase facility during
 app-admin/diamond 4.0.515.20170311-r1 4.0.515.20200620-r1: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
-app-admin/doas 6.0 6.6.1 6.8 6.8.1: Run commands as super user or another user, alternative to sudo from OpenBSD
+app-admin/doas 6.0 6.6.1 6.8 6.8.1: Run commands as super/another user (alt sudo) (unofficial port from OpenBSD)
 app-admin/docker-bench 0.2.2: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
@@ -1089,7 +1089,7 @@ app-crypt/monkeysphere 0.36-r2 0.41 0.44: Leverage the OpenPGP web of trust for 
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nitrocli 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5: A command line tool for interacting with Nitrokey devices
-app-crypt/nitrokey-app 1.4-r1 1.4.2 9999: Cross platform personalization tool for the Nitrokey
+app-crypt/nitrokey-app 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-bcl 20210128: OpenPGP keys used by Brian C. Lane
@@ -2667,7 +2667,7 @@ app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various sou
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnome-todo 3.28.1-r1: Personal task manager
 app-office/gnucash 4.2 4.2-r1 4.4: A personal finance manager
-app-office/gnumeric 1.12.47 1.12.48: The GNOME Spreadsheet
+app-office/gnumeric 1.12.48: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
 app-office/homebank 5.2.8 5.4.2 5.4.3: Free, easy, personal accounting for everyone
@@ -3468,7 +3468,7 @@ dev-cpp/asio 1.10.8 1.17.0 1.18.1: Asynchronous Network Library
 dev-cpp/atkmm 2.28.0: C++ interface for the ATK library
 dev-cpp/benchmark 1.5.1 1.5.2: A microbenchmark support library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.12.2 1.9999 2.5.0 2.13.3 2.13.4 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.12.2 1.9999 2.13.3 2.13.4 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
@@ -8013,7 +8013,7 @@ dev-python/blessed 1.17.11 1.17.12: Library for making terminal apps using color
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r2: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 2.0.1: Generate block-diagram image from text
-dev-python/blosc 1.9.2 1.10.0 1.10.1 1.10.2: High performance compressor optimized for binary data
+dev-python/blosc 1.10.1 1.10.2: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
@@ -8094,7 +8094,7 @@ dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/rendere
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
 dev-python/coreschema 0.0.4: Core Schema
 dev-python/cov-core 1.15.0-r2: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 4.5.4 5.3 5.3.1 5.4: Code coverage measurement for Python
+dev-python/coverage 4.5.4 5.3.1 5.4: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
@@ -8267,7 +8267,7 @@ dev-python/fs 2.4.11 2.4.12: Filesystem abstraction layer
 dev-python/fsspec 0.8.5: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
-dev-python/funcy 1.14 1.14-r1 1.15: A collection of fancy functional tools focused on practicality
+dev-python/funcy 1.14-r1 1.15: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 1.0.0: Python FUSE bindings
 dev-python/fusepy 3.0.1: Python FUSE bindings using ctypes
 dev-python/future 0.18.2-r1: Easy, clean, reliable Python 2/3 compatibility
@@ -11028,7 +11028,7 @@ dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 2.5 2.8 2.11: Google tool for managing git, particularly multiple repos
-dev-vcs/rsvndump 0.6 0.6-r1: Dump a remote Subversion repository
+dev-vcs/rsvndump 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.21 0.23: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.14.0-r1: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
@@ -12649,7 +12649,7 @@ media-fonts/iosevka 1.14.1: Slender typeface for code, from code
 media-fonts/ipaex 002.01: Japanese IPA extended TrueType fonts
 media-fonts/ipamonafont 1.0.8: Hacked version of IPA fonts, which is suitable for browsing 2ch
 media-fonts/ja-ipafonts 003.02-r1 003.03: TrueType fonts developed by Japanese Information-technology Promotion Agency
-media-fonts/jetbrains-mono 2.001 2.210: A free and open-source typeface for developers
+media-fonts/jetbrains-mono 2.225: A free and open-source typeface for developers
 media-fonts/jisx0213-fonts 20040425-r2: Japanese fixed fonts that cover JIS0213 charset
 media-fonts/jomolhari 0.003c: Bhutanese style dbu-can font for Tibetan/Dzongkha text named after Mt Jomolhari
 media-fonts/jsmath 1.0: Raster fonts for jsmath
@@ -15156,7 +15156,7 @@ net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty 
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 7.0.2: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 20.10.0.6 20.12.0.12-r1 20.12.0.12-r2: ICA Client for Citrix Presentation servers
+net-misc/icaclient 20.12.0.12-r2 21.1.0.14: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
@@ -16360,7 +16360,7 @@ sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/stellarsolver 1.5: Cross-platform Sextractor and Astrometry.net-Based internal astrometric solver
 sci-libs/suitesparse 5.4.0: Metapackage for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 5.4.0: Common configurations for all packages in suitesparse
-sci-libs/sundials 5.2.0: Suite of nonlinear solvers
+sci-libs/sundials 3.2.1 5.2.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r2 5.2.2: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.6.0: Fast symbolic manipulation library, written in C++
@@ -18245,7 +18245,7 @@ x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf load
 x11-libs/gdk-pixbuf-xlib 2.40.2: Deprecated Xlib integration for GdkPixbuf
 x11-libs/gl2ps 1.3.9 1.4.0 1.4.2: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
-x11-libs/goffice 0.10.47 0.10.48: A library of document-centric objects and utilities
+x11-libs/goffice 0.10.48: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4-r1: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.32-r1 3.24.20 3.24.22 3.24.24 3.24.24-r1: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.4: Useful Additional GTK+ widgets
@@ -19003,7 +19003,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.6.3 4.8.1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3 3.38.3-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2015061300-r1 3_p2015061300-r100 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
