@@ -2907,7 +2907,7 @@ app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1 3.09: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.36.7: Simple document viewer for GNOME
+app-text/evince 3.36.7 3.36.8: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fb2edit 0.1.0: Create and edit fb2 books
@@ -12843,7 +12843,7 @@ media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex
 media-gfx/graphviz 2.44.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11 2.9.1 2.10.2: Scan documents, perform OCR, produce PDFs and DjVus
-media-gfx/gthumb 3.10.0: Image viewer and browser for Gnome
+media-gfx/gthumb 3.10.0 3.10.2: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0-r1: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to other graphics formats
@@ -13793,7 +13793,7 @@ media-sound/gmtp 1.3.11-r1: A simple MTP client for MP3 players
 media-sound/gmusicbrowser 1.1.15_p20190315 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.36.4.1 3.36.7: Music management for Gnome
-media-sound/gnome-sound-recorder 3.34.0: Simple sound recorder
+media-sound/gnome-sound-recorder 3.34.0 3.38.1: Simple sound recorder
 media-sound/gnump3d 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.2.1-r1: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
@@ -14510,7 +14510,7 @@ net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODE
 net-dialup/mgetty 1.2.1-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.7.1: Serial Communication Program
-net-dialup/moserial 3.0.12: A clean and friendly gtk-based serial terminal
+net-dialup/moserial 3.0.12 3.0.15: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
 net-dialup/openl2tp 1.8-r2: Userspace tools for kernel L2TP implementation
