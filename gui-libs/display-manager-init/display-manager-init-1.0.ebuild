@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,5 +33,19 @@ src_install() {
 pkg_preinst() {
 	if [[ ${REPLACING_VERSIONS} == "" && -f "${EROOT}"/etc/conf.d/xdm && ! -f "${EROOT}"/etc/conf.d/display-manager ]]; then
 		mv "${EROOT}"/etc/conf.d/{xdm,display-manager} || die
+	fi
+	local rlevel using_xdm
+	using_xdm=no
+	for rlevel in boot default sysinit; do
+		if [[ -e "${EROOT}"/etc/runlevels/${rlevel}/xdm ]]; then
+			using_xdm=yes
+		fi
+	done
+	if [[ "${using_xdm}" = "yes" ]]; then
+		ewarn "The 'xdm' service has been removed as it is"
+		ewarn "being replaced by the 'display-manager' service."
+		ewarn "Please migrate to using 'display-manager' and"
+		ewarn "remember to use dispatch-conf to update the"
+		ewarn "config protected service files."
 	fi
 }
