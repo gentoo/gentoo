@@ -40,6 +40,7 @@ SLOT="0"
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
 IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl power-control pulseaudio raspberry-pi samba systemd +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
@@ -224,6 +225,14 @@ src_configure() {
 	use X && platform+=( x11 )
 	local core_platform_name="${platform[@]}"
 	local mycmakeargs=(
+		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
+		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
+		-DENABLE_SSE4_1=$(usex cpu_flags_x86_sse4_1)
+		-DENABLE_SSE4_2=$(usex cpu_flags_x86_sse4_2)
+		-DENABLE_AVX=$(usex cpu_flags_x86_avx)
+		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
+		-DENABLE_NEON=$(usex cpu_flags_arm_neon)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-DVERBOSE=ON
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
