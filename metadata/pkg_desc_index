@@ -8564,7 +8564,6 @@ dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.11: Python to native compiler
 dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.19.4 1.19.5: Fast array and numerical python library
-dev-python/numpy-python2 1.16.6: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
 dev-python/oauth2client 4.1.3-r1: Library for accessing resources protected by OAuth 2.0
@@ -11376,7 +11375,6 @@ games-engines/odamex 0.8.3: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.46.0 9999: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 3.0.0: Multimedia interpreter for TADS text adventures
-games-engines/renpy 6.99.12.4-r4 7.3.5: Visual novel engine written in python
 games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 2.1.2 2.2.0 9999: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 2.1.0 2.2.0: utilities for the SCUMM game engine
@@ -11486,7 +11484,6 @@ games-misc/funny-manpages 1.3_rc5-r1 2.3: funny manpages collected from various 
 games-misc/gBhed 0.17-r1: An Al Bhed translator
 games-misc/games-envd 0: Environment file for gentoo games
 games-misc/gtklife 5.2: A Conway's Life simulator for Unix
-games-misc/katawa-shoujo 1.3.1-r2: Bishoujo-style visual novel by Four Leaf Studios
 games-misc/little-inferno 20130509: Throw your toys into your fire, and play with them as they burn
 games-misc/lolcat 90.8.8-r1 100.0.1 100.0.1-r1: Rainbows and unicorns!
 games-misc/lucidlife 0.9.2-r1: A Conway's Life simulator written in GTK+2 - fork from Gtklife
@@ -11638,7 +11635,6 @@ games-roguelike/tomenet 4.7.3: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b-r1: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/adonthell 0.3.8: Roleplaying game engine
-games-rpg/asphyxia 1.0: Visual novel where the main character has one day to make peace with her friend
 games-rpg/avadon 1.0.4_p1331768904: Epic fantasy role-playing adventure in an enormous and unique world
 games-rpg/baldurs-gate-ee 2.3.67.3-r1 2.5.23121: Baldur's Gate: Enhanced Edition
 games-rpg/bass 1.3 1.3-r1: Beneath a Steel Sky: a SciFi thriller set in a bleak vision of the future
@@ -11671,10 +11667,8 @@ games-rpg/manaplus 1.9.3.23-r1 9999: OpenSource 2D MMORPG client for Evol Online
 games-rpg/openglad 0.98-r1: An SDL clone of Gladiator, a classic RPG game
 games-rpg/pcgen 6.04.01-r1: D&D character generator
 games-rpg/queen 1-r1: Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
-games-rpg/sakura-spirit 0: Adult-themed visual novel and dating simulator set in Japan
 games-rpg/soltys 1.0-r2: Classic adventure game
 games-rpg/sumwars 0.5.8-r1 0.5.8-r100: a multi-player, 3D action role-playing game
-games-rpg/the-royal-trap 1.2: Visual novel where you help a prince choose his royal bride
 games-rpg/to-the-moon 0: Two doctors traversing the memories of a dying man to fulfill his last wish
 games-rpg/vendetta-online-bin 1.8.296-r1: Space-based MMORPG
 games-rpg/wasteland2 1.9.0.13: Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout
@@ -13281,7 +13275,7 @@ media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.2.6 20.3.3 20.3.4 21.0.0_rc3 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.24.0-r1: Open source multimedia framework for television broadcasting
-media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
+media-libs/munt-mt32emu 2.3.0 2.4.2: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r2: Network Audio System
@@ -17265,7 +17259,7 @@ sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
 sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7: Synchronous multi-master replication engine that provides the wsrep API
-sys-cluster/ganglia 3.7.1-r1 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
+sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 7.7 7.8-r1 7.9 8.3 9.0 9999: GlusterFS is a powerful network/cluster filesystem

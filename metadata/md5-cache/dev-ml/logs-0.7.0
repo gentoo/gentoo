@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install test
+DEFINED_PHASES=compile install prepare test
 DEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) fmt? ( dev-ml/fmt:= ) cli? ( dev-ml/cmdliner:=[ocamlopt] ) lwt? ( dev-ml/lwt:= ) dev-ml/opam dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib test? ( dev-ml/mtime ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Logging infrastructure for OCaml
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.7.0
 SRC_URI=https://erratique.ch/software/logs/releases/logs-0.7.0.tbz
 _eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6
-_md5_=805fd92673485ec47e7235ec494680b3
+_md5_=4905526b103c199a5852f2b239d584c1
