@@ -1,0 +1,64 @@
+From 4efe62089eff54ac844c70382d432f2abb24c06e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 31 Jan 2021 20:38:41 +0100
+Subject: [PATCH] Use include(CTest) and BUILD_TESTING to make Qt5Test and
+ Python optional
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 92d50265..557a208d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -211,8 +211,11 @@ endif()
+ set(CFG_QMLSRCDIR "${kid3_SOURCE_DIR}/src/qml")
+ 
+ find_package(Threads)
+-set(Python_ADDITIONAL_VERSIONS 3)
+-find_package(PythonInterp REQUIRED)
++include(CTest)
++if(BUILD_TESTING)
++  set(Python_ADDITIONAL_VERSIONS 3)
++  find_package(PythonInterp REQUIRED)
++endif()
+ include (CheckCXXSourceCompiles)
+ include (CheckCXXCompilerFlag)
+ include (CheckLibraryExists)
+@@ -256,7 +259,10 @@ else()
+   find_package(Qt5Core)
+ endif()
+ if(Qt5Core_FOUND)
+-  set(_qtComponents Core Gui Widgets Network Xml Multimedia LinguistTools Test)
++  set(_qtComponents Core Gui Widgets Network Xml Multimedia LinguistTools)
++  if(BUILD_TESTING)
++    set(_qtComponents ${_qtComponents} Test)
++  endif()
+   if(WITH_DBUS)
+     set(_qtComponents ${_qtComponents} DBus)
+   endif()
+@@ -472,12 +478,13 @@ if(ANDROID)
+ endif()
+ 
+ 
+-enable_testing()
+-add_test(NAME test_cli_functions
+-         COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/src/test/test_cli_functions.py)
+-add_custom_target(check ${CMAKE_CTEST_COMMAND} --output-on-failure)
+-if(NOT CMAKE_VERSION VERSION_LESS "3.17")
+-  list(APPEND CMAKE_CTEST_ARGUMENTS --output-on-failure)
++if(BUILD_TESTING)
++  add_test(NAME test_cli_functions
++           COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/src/test/test_cli_functions.py)
++  add_custom_target(check ${CMAKE_CTEST_COMMAND} --output-on-failure)
++  if(NOT CMAKE_VERSION VERSION_LESS "3.17")
++    list(APPEND CMAKE_CTEST_ARGUMENTS --output-on-failure)
++  endif()
+ endif()
+ 
+ 
+-- 
+2.30.0
+

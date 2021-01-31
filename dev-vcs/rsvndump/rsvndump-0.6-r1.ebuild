@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools multilib
 
 DESCRIPTION="Dump a remote Subversion repository"
 HOMEPAGE="http://rsvndump.sourceforge.net"
@@ -29,6 +29,18 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# We need to patch use of /usr/lib because it is a problem with
+	# linker lld with profile 17.1 on amd64 (see https://bugs.gentoo.org/739028).
+	# The grep sandwich acts as a regression test so that a future
+	# version bump cannot break patching without noticing.
+	grep -wq svn_prefix/lib m4/find_svn.m4 || die
+	sed "s,svn_prefix/lib,svn_prefix/$(get_libdir)," -i m4/find_svn.m4 || die
+	grep -w svn_prefix/lib m4/find_svn.m4 && die
+	grep -wq SVN_PREFIX/lib configure.ac || die
+	sed "s,SVN_PREFIX/lib,SVN_PREFIX/$(get_libdir)," -i configure.ac || die
+	grep -w SVN_PREFIX/lib configure.ac && die
+
 	eautoreconf
 }
 
