@@ -22,14 +22,14 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	eapply_user
+	default
 
 	# We need to patch use of /usr/lib because it is a problem with
-	# linker lld with profile 17.1 on amd64 (see https://bugs.gentoo.org/729600)
+	# linker lld with profile 17.1 on amd64 (see https://bugs.gentoo.org/729600).
 	# The grep sandwich acts as a regression test so that a future
-	# version bump cannot break patching without noticing
+	# version bump cannot break patching without noticing.
 	grep -wq _PREFIX/lib m4/xstar-check-libs.m4 || die
-    sed "s,_PREFIX/lib,_PREFIX/$(get_libdir)," -i m4/xstar-check-libs.m4 || die
+	sed "s,_PREFIX/lib,_PREFIX/$(get_libdir)," -i m4/xstar-check-libs.m4 || die
 	grep -w _PREFIX/lib m4/xstar-check-libs.m4 && die
 
 	eautoreconf
