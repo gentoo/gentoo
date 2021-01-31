@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="DLNA/UPnP-AV compliant media server"
 HOMEPAGE="https://sourceforge.net/projects/minidlna/"
 SRC_URI="
 	https://downloads.sourceforge.net/project/minidlna/${PN}/${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~xmw/minidlna-gentoo-artwork.patch.xz"
+	mirror://gentoo/minidlna-gentoo-artwork.patch.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -38,6 +38,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 PATCHES=(
 	"${WORKDIR}"/minidlna-gentoo-artwork.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-fd-leak.patch
 )
 
 src_prepare() {
