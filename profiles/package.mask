@@ -242,18 +242,6 @@ dev-haskell/hgettext
 # bug 762715
 <net-irc/unrealircd-5.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-01)
-# RenPy requires Python 2.7 at runtime, and py3 port has not been
-# released yet.  Even if it were, the games would probably need porting
-# anyway.
-# Removal in 30 days.  Bug #735358.
-dev-python/numpy-python2
-games-engines/renpy
-games-misc/katawa-shoujo
-games-rpg/asphyxia
-games-rpg/sakura-spirit
-games-rpg/the-royal-trap
-
 # Jonas Stein <jstein@gentoo.org> (2020-12-29)
 # Unusable without alsa.
 # Masked for removal after 2021-02-01
