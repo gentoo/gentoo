@@ -26,6 +26,13 @@ BDEPEND="
 
 distutils_enable_tests nose
 
+src_prepare() {
+	# remove unnecessary version restriction
+	# https://github.com/gitpython-developers/gitdb/issues/67
+	sed -i -e '/smmap/s:,<4::' setup.py || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	local i
 
