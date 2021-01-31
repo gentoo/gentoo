@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools multilib
 
 DESCRIPTION="Dump a remote Subversion repository"
 HOMEPAGE="http://rsvndump.sourceforge.net"
