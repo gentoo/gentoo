@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-02-01)
+# LibreSSL support is discontinued.  Plaase read the relevant news item
+# and either migrate to dev-libs/openssl, or use the unsupported
+# user-maintained libressl overlay.
+# Removal on 2021-05-01.  Bug #762847.
+dev-libs/libressl
+
 # Ulrich Müller <ulm@gentoo.org> (2021-01-29)
 # Pretest versions, masked for testing.
 ~app-editors/emacs-27.1.91
@@ -198,49 +205,12 @@ app-crypt/acme-client
 # Removal in 30 days, bug #444470
 dev-libs/ilbc-rfc3951
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
-# sci-physics/cernlib fails to build with gcc-10, last release in 2006,
-# multiple open bugs, all revdeps also broken and declared EOL upstream.
-# Removal in 30 days, bug #763183
-sci-physics/cernlib
-sci-physics/cernlib-montecarlo
-sci-physics/paw
-
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
-# Fails to build with gcc-10, no maintainer, upstream gone,
-# multiple open bugs.
-# Removal in 30 days, bug #677322, bug #707200, bug #716012
-net-dialup/diald
-
-# Conrad Kostecki <conikost@gentoo.org> (2021-01-01)
-# NetworkManager has buildin support for WireGuard,
-# this plugin is old and unmaintained, so let's drop it.
-# Removal in 30 days.
-net-vpn/networkmanager-wireguard
-
-# Stephan Hartmann <sultan@gentoo.org> (2021-01-01)
-# Fails with -fno-common, homepage gone, source gone,
-# no maintainer.
-# Removal in 30 days. See bug #706824.
-app-benchmarks/contest
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-01-01)
-# Needs a port to modern Cabal. No revdeps.
-# Masked for removal. bug #735788, bug #737946
-dev-haskell/hgettext
-
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
 # To be removed shortly.
 # https://www.unrealircd.org/docs/UnrealIRCd_4_EOL
 # bug 762715
 <net-irc/unrealircd-5.0.0
-
-# Jonas Stein <jstein@gentoo.org> (2020-12-29)
-# Unusable without alsa.
-# Masked for removal after 2021-02-01
-# Bug #762361
-media-sound/takcd
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
