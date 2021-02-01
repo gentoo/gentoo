@@ -39,7 +39,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl power-control pulseaudio raspberry-pi samba systemd +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cdio cec +css dav1d dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -79,7 +79,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
 	')
-	>=dev-libs/libcdio-2.1.0
+	cdio? ( >=dev-libs/libcdio-2.1.0 )
 	>=dev-libs/libfmt-6.1.2
 	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )
@@ -242,6 +242,7 @@ src_configure() {
 		-DENABLE_BLUETOOTH=$(usex bluetooth)
 		-DENABLE_BLURAY=$(usex bluray)
 		-DENABLE_CCACHE=OFF
+		-DENABLE_ISO9660PP=$(usex cdio)
 		-DENABLE_CEC=$(usex cec)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DVDCSS=$(usex css)
@@ -259,6 +260,7 @@ src_configure() {
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
 		-DENABLE_MARIADBCLIENT=$(usex mariadb)
+		-DENABLE_MDNS=OFF # used only on Android
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
@@ -268,6 +270,7 @@ src_configure() {
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
+		-DENABLE_SNDIO=OFF
 		-DENABLE_TESTING=$(usex test)
 		-DENABLE_UDEV=$(usex udev)
 		-DENABLE_UDFREAD=$(usex udf)
