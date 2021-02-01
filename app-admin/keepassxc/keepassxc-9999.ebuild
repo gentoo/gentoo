@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
@@ -69,6 +69,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/keepassxreboot/keepassxc/issues/5801
+	filter-flags -flto*
+
 	local mycmakeargs=(
 		-DWITH_CCACHE="$(usex ccache)"
 		-DWITH_GUI_TESTS=OFF
