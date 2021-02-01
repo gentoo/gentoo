@@ -4788,13 +4788,15 @@ media-sound/yoshimi:lv2 - Add support for Ladspa V2
 media-sound/zynaddsubfx:dssi - Enable support for DSSI Soft Synth Interface
 media-tv/kodi:airplay - enable AirPlay support
 media-tv/kodi:bluray - Enable playback of Blu-ray filesystems
+media-tv/kodi:caps - Use sys-libs/libcap to bind to privileged ports as non-root
+media-tv/kodi:cdio - Enable reading of Audio-CD, Video-CD, and CD-ROM disks and images by dev-libs/libcdio
 media-tv/kodi:cec - Enable support for HDMI-CEC devices via libcec
 media-tv/kodi:dav1d - Enables AV1 decoding via media-libs/dav1d
 media-tv/kodi:dvd - Enable optical (CD/DVD drive) support
 media-tv/kodi:gbm - Use the Graphics Buffer Manager for EGL on KMS.
 media-tv/kodi:gles - Enable support for GLES
 media-tv/kodi:libusb - Use virtual/libusb for usb device hotplug support. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use sys-fs/udev.
-media-tv/kodi:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
+media-tv/kodi:lirc - Enable support for IR remote controls using app-misc/lirc
 media-tv/kodi:mariadb - Add MariaDB support
 media-tv/kodi:nfs - Enable NFS client support
 media-tv/kodi:power-control - Enable control of shutdown, reboot, suspend, and hibernate

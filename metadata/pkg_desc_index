@@ -14056,7 +14056,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 19.0_beta2_p20210112 19.0_rc1 19.0_rc1-r1 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 19.0_rc1-r2 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 31.0-r5: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
@@ -15554,7 +15554,7 @@ net-vpn/protonvpn-cli 2.2.2 2.2.4: A VPN command-line tool from protonvpn - pyth
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 1.2.10-r1 1.4.0 1.4.1: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.4.6 0.4.5.2_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.4.6 0.4.5.4_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -17589,7 +17589,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.5 1.6.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.18.1-r1 1.19: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 2.32-r3 2.32-r5 2.32-r6 2.32-r7 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 2.32-r3 2.32-r5 2.32-r6 2.32-r7 2.33 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.1: Library for managing partitions
@@ -17635,7 +17635,7 @@ sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.24 1.2.0-r1 1.2.1 1.2.1-r1 1.2.2-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
-sys-libs/ncurses 6.2-r1: console display library
+sys-libs/ncurses 6.2-r1 6.2_p20210123: console display library
 sys-libs/ncurses-compat 6.1_p20190609 6.2: console display library (ABI version 5)
 sys-libs/newlib 3.3.0 3.3.0-r1 4.0.0 4.1.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
