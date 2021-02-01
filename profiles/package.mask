@@ -218,12 +218,6 @@ net-dialup/diald
 # Removal in 30 days.
 net-vpn/networkmanager-wireguard
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-01-01)
-# Fails with -fno-common, homepage gone, source gone,
-# no maintainer.
-# Removal in 30 days. See bug #706824.
-app-benchmarks/contest
-
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
 # To be removed shortly.
