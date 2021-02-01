@@ -10652,7 +10652,7 @@ dev-util/buildbot-www 2.8.2 2.8.4 2.10.0 2.10.1: BuildBot base web interface, us
 dev-util/bustle 0.8.0: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20200330 20200910 20210109: the best variant of the Yacc parser generator
 dev-util/cargo-audit 0.13.1: Audit Cargo.lock for security vulnerabilities
-dev-util/cargo-c 0.6.2 0.7.0: Helper program to build and install c-like libraries
+dev-util/cargo-c 0.6.2 0.7.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.14 3.0.15 9999: Release metatool used for creating releases based on Gentoo Linux
@@ -13194,7 +13194,7 @@ media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4 0.6.4-r1: Library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0 0.8.9.0-r1: Library for playing MOD-like music files
-media-libs/libmp3splt 0.9.2-r1 0.9.2-r2: Library for mp3splt to split mp3 and ogg files without decoding
+media-libs/libmp3splt 0.9.2-r2: Library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
