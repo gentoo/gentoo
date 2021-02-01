@@ -195,8 +195,15 @@ eislocked() {
 	*)
 		# NB: 'no password' and 'locked' are indistinguishable
 		# but we also expire the account which is more clear
-		[[ $(getent shadow "$1" | cut -d: -f2) == '!'* ]] &&
-			[[ $(getent shadow "$1" | cut -d: -f8) == 1 ]]
+		local shadow
+		if [[ -n "${ROOT}" ]]; then
+			shadow=$(grep "^$1:" "${ROOT}/etc/shadow")
+		else
+			shadow=$(getent shadow "$1")
+		fi
+
+		[[ $( echo ${shadow} | cut -d: -f2) == '!'* ]] &&
+			[[ $(echo ${shadow} | cut -d: -f8) == 1 ]]
 		;;
 	esac
 }
@@ -223,14 +230,22 @@ elockuser() {
 	eislocked "$1"
 	[[ $? -eq 0 ]] && return 0
 
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
-		pw lock "$1" || die "Locking account $1 failed"
-		pw user mod "$1" -e 1 || die "Expiring account $1 failed"
+		pw lock "${opts[@]}" "$1" || die "Locking account $1 failed"
+		pw user mod "${opts[@]}" "$1" -e 1 || die "Expiring account $1 failed"
 		;;
 
 	*-netbsd*)
-		usermod -e 1 -C yes "$1" || die "Locking account $1 failed"
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: usermod ${opts[@]} -e 1 -C yes \"$1\" in a chroot"
+		else
+			usermod "${opts[@]}" -e 1 -C yes "$1" || die "Locking account $1 failed"
+		fi
 		;;
 
 	*-openbsd*)
@@ -238,7 +253,7 @@ elockuser() {
 		;;
 
 	*)
-		usermod -e 1 -L "$1" || die "Locking account $1 failed"
+		usermod "${opts[@]}" -e 1 -L "$1" || die "Locking account $1 failed"
 		;;
 	esac
 
@@ -266,14 +281,22 @@ eunlockuser() {
 	eislocked "$1"
 	[[ $? -eq 1 ]] && return 0
 
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
-		pw user mod "$1" -e 0 || die "Unexpiring account $1 failed"
-		pw unlock "$1" || die "Unlocking account $1 failed"
+		pw user mod "${opts[@]}" "$1" -e 0 || die "Unexpiring account $1 failed"
+		pw unlock "${opts[@]}" "$1" || die "Unlocking account $1 failed"
 		;;
 
 	*-netbsd*)
-		usermod -e 0 -C no "$1" || die "Unlocking account $1 failed"
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"usermod ${opts[@]} -e 0 -C no $1\" in a chroot"
+		else
+			usermod "${opts[@]}" -e 0 -C no "$1" || die "Unlocking account $1 failed"
+		fi
 		;;
 
 	*-openbsd*)
@@ -282,7 +305,7 @@ eunlockuser() {
 
 	*)
 		# silence warning if account does not have a password
-		usermod -e "" -U "$1" 2>/dev/null || die "Unlocking account $1 failed"
+		usermod "${opts[@]}" -e "" -U "$1" 2>/dev/null || die "Unlocking account $1 failed"
 		;;
 	esac
 
@@ -418,7 +441,13 @@ acct-user_pkg_preinst() {
 		# default ownership to user:group
 		if [[ -z ${_ACCT_USER_HOME_OWNER} ]]; then
 			local group_array=( ${_ACCT_USER_GROUPS} )
-			_ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${group_array[0]}
+			if [[ -n "${ROOT}" ]]; then
+				local euid=$(egetent passwd ${ACCT_USER_NAME} | cut -d: -f3)
+				local egid=$(egetent passwd ${ACCT_USER_NAME} | cut -d: -f4)
+				_ACCT_USER_HOME_OWNER=${euid}:${egid}
+			else
+				_ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${group_array[0]}
+			fi
 		fi
 		# Path might be missing due to INSTALL_MASK, etc.
 		# https://bugs.gentoo.org/691478
