@@ -17,11 +17,11 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	hprefixify ${PN}.ini src/toplevel/${PN}.c
+	hprefixify src/toplevel/${PN}{,_helpscreens}.c
 }
 
 src_compile() {
-	emake ${PN} \
+	emake all \
 		  CC="$(tc-getCC)" \
 		  LINK="$(tc-getCC) ${LDFLAGS}"
 }
