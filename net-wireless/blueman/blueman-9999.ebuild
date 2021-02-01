@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -117,7 +117,7 @@ src_install() {
 		doins "${FILESDIR}/01-org.blueman.rules"
 	fi
 
-	rm "${D}"/$(python_get_sitedir)/*.la || die
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
