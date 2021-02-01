@@ -27,6 +27,7 @@ RDEPEND="
 	dev-ml/base:=
 	dev-ml/camomile:=[ocamlopt=]
 	dev-ml/ocaml-gettext:=
+	!<dev-ml/ocaml-gettext-0.4.2
 "
 DEPEND="
 	${RDEPEND}
