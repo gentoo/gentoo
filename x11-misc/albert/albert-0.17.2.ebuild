@@ -27,10 +27,11 @@ SRC_URI="
 	)
 "
 
-LICENSE="GPL-3+"
+LICENSE="all-rights-reserved"	# unclear licensing #766129
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug +python +python-extensions +statistics virtualbox"
+RESTRICT="mirror bindist"
 
 REQUIRED_USE="python-extensions? ( python )"
 
