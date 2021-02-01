@@ -212,12 +212,6 @@ sci-physics/paw
 # Removal in 30 days, bug #677322, bug #707200, bug #716012
 net-dialup/diald
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-01-01)
-# NetworkManager has buildin support for WireGuard,
-# this plugin is old and unmaintained, so let's drop it.
-# Removal in 30 days.
-net-vpn/networkmanager-wireguard
-
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
 # To be removed shortly.
