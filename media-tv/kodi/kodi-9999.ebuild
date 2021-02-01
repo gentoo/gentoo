@@ -270,6 +270,7 @@ src_configure() {
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
+		-DENABLE_SNDIO=OFF
 		-DENABLE_TESTING=$(usex test)
 		-DENABLE_UDEV=$(usex udev)
 		-DENABLE_UDFREAD=$(usex udf)
