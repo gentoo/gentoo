@@ -6,4 +6,3 @@
 # dependencies.
 # See bug 426764.
 sci-physics/cernlib
-sci-physics/cernlib-montecarlo
