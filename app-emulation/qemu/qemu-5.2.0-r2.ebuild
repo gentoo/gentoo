@@ -229,6 +229,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-5.2.0-strings.patch
 	"${FILESDIR}"/${PN}-5.2.0-fix-firmware-path.patch
+	"${FILESDIR}"/${PN}-5.2.0-no-pie-ld.patch
 )
 
 QA_PREBUILT="
