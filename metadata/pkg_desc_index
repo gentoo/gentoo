@@ -933,7 +933,6 @@ app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3 1.98: Hard drive bottleneck testing benchmark suite
 app-benchmarks/bootchart2 0.14.8-r1: Performance analysis and visualization of the system boot process
-app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for maximum loading
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
@@ -4084,7 +4083,6 @@ dev-haskell/heaps 0.3.6.1: Asymptotically optimal Brodal/Okasaki heaps
 dev-haskell/hedgehog 1.0.4: Release with confidence
 dev-haskell/hex 0.1.2: Convert strings into hexadecimal and back
 dev-haskell/hexpat 0.20.13: XML parser/formatter based on expat
-dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
 dev-haskell/hi-file-parser 0.1.0.0: Parser for GHC's hi files
 dev-haskell/highlighting-kate 0.6.4: Syntax highlighting
 dev-haskell/hinotify 0.3.10: Haskell binding to inotify
@@ -13999,7 +13997,6 @@ media-sound/supercollider 3.11.2: Environment and programming language for real 
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r2: A simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
-media-sound/takcd 0.10-r1: Command line CD player
 media-sound/tap-reverbed 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Expressive Synthesis, Transformation, Rendering of Environmental Audio
 media-sound/teamspeak-client 3.5.6-r1 5.0.0_beta36: A client software for quality voice communication via the internet
@@ -14501,7 +14498,6 @@ net-dialup/accel-ppp 1.12.0_p20200913 1.12.0_p20200913-r100 9999: High performan
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.51.0-r1: A serial terminal, like minicom, written in Qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
-net-dialup/diald 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
 net-dialup/freeradius 3.0.20-r1 3.0.21-r1: Highly configurable free RADIUS server
@@ -14707,7 +14703,7 @@ net-im/transwhat 0.2.2_p20190426-r1: A WhatsApp XMPP Gateway based on Spectrum 2
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.4.53391.1108-r1 5.4.57450.1220 5.4.57862.0110: Video conferencing and web conferencing service
+net-im/zoom 5.4.53391.1108-r1 5.4.57862.0110 5.5.6955.0131: Video conferencing and web conferencing service
 net-irc/anope 2.0.9: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
@@ -14893,7 +14889,7 @@ net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP
 net-libs/libupnpp 0.20.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 4.1.6: A flexible pure-C library for implementing network protocols
-net-libs/libyang 1.0.184: YANG data modeling language library
+net-libs/libyang 1.0.184 1.0.215: YANG data modeling language library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
@@ -15545,7 +15541,6 @@ net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0-r1: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-vpn/networkmanager-strongswan 1.5.2: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6-r2: NetworkManager VPNC plugin
-net-vpn/networkmanager-wireguard 0_pre20191128-r5 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.1 1.1.1: Openconnect SSL VPN server
 net-vpn/openconnect 8.09-r1 8.09-r3 8.10 8.10-r1 9999: Free client for Cisco AnyConnect SSL VPN software
@@ -16481,8 +16476,6 @@ sci-misc/oww 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/tango 9.2.5a: Tango is an Open Source solution for SCADA and DCS
 sci-misc/vitables 3.0.0-r2: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
 sci-physics/bullet 3.07: Continuous Collision Detection and Physics Library
-sci-physics/cernlib 2006-r5 2006-r7: CERN program library for High Energy Physics
-sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
 sci-physics/clhep 2.4.1.3-r2 2.4.4.0: High Energy Physics C++ library
 sci-physics/espresso 4.1.3 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/fastjet 3.0.6-r1: Fast implementation of several recombination jet algorithms
@@ -16497,7 +16490,6 @@ sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 6.2.3: Les Houches Parton Density Function unified library
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
-sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86-r1 8.2.26: Lund Monte Carlo high-energy physics event generator
 sci-physics/qmeq 1.0_p202004: Quantum master equation package for Quantum dot transport calculations
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
@@ -17459,7 +17451,7 @@ sys-fs/diskdev_cmds 332.14_p1-r4: HFS and HFS+ utils ported from OSX, supplies m
 sys-fs/dislocker 0.7.1-r2 0.7.1-r3 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
-sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
+sys-fs/dosfstools 4.1 4.2: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.2: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.6 1.45.7 1.46.0: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem

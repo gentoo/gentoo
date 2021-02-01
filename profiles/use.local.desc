@@ -7496,7 +7496,6 @@ sci-misc/tango:mariadb - Use dev-db/mariadb
 sci-misc/tango:zeromq - Allow to use ZeroMQ broker via net-libs/zeromq
 sci-physics/bullet:double-precision - Build libraries in double precision
 sci-physics/bullet:tbb - Enable multithreading with the Intel Threads Building Block dev-cpp/tbb
-sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig
 sci-physics/espresso:cuda - Enable cuda support
 sci-physics/espresso:examples - Installs the examples
 sci-physics/fastjet:cgal - Use sci-mathematics/cgal instead of bundled algorithms
