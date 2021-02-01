@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-php/ca-bundle-1.1.3
 	>=dev-php/psr-log-1.1.0
 	dev-php/fedora-autoloader
-	>=dev-php/json-schema-5.2.7
+	>=dev-php/json-schema-5.2.10
 	>=dev-php/jsonlint-1.7.1
 	>=dev-php/phar-utils-1.0.1
 	>=dev-php/semver-1.4.2

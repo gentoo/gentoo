@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"
 SLOT="7"
-IUSE="ssl curl_ssl_gnutls curl_ssl_libressl curl_ssl_nss +curl_ssl_openssl"
+IUSE="ssl curl_ssl_gnutls curl_ssl_nss +curl_ssl_openssl"
 
 COMMON_DEPEND="app-arch/brotli:=
 	dev-libs/libevent
@@ -28,12 +28,12 @@ COMMON_DEPEND="app-arch/brotli:=
 	>=dev-php/pecl-raphf-2.0.1:7[php_targets_php7-3(-)?,php_targets_php7-4(-)?]
 	net-dns/libidn2
 	sys-libs/zlib
-	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls=,curl_ssl_libressl=,curl_ssl_nss=,curl_ssl_openssl=] )
+	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=] )
 	!ssl? ( net-misc/curl[-ssl] )
 "
 DEPEND="
-	php_targets_php7-3? ( ${COMMON_DEPEND} dev-lang/php:7.3[hash,session,iconv] )
-	php_targets_php7-4? ( ${COMMON_DEPEND} dev-lang/php:7.4[session,iconv] )"
+	php_targets_php7-3? ( ${COMMON_DEPEND} dev-lang/php:7.3[hash(+),session(-),iconv(-)] )
+	php_targets_php7-4? ( ${COMMON_DEPEND} dev-lang/php:7.4[session(-),iconv(-)] )"
 RDEPEND="${DEPEND}
 	php_targets_php8-0? ( dev-php/pecl-http:8[php_targets_php8-0(-)] )"
 

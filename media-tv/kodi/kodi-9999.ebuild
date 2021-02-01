@@ -10,7 +10,7 @@ LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
 FFMPEG_VERSION="4.3.1"
 CODENAME="Matrix"
 FFMPEG_KODI_VERSION="Beta1"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
@@ -39,7 +39,8 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio raspberry-pi samba systemd +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl power-control pulseaudio raspberry-pi samba systemd +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
@@ -49,6 +50,7 @@ REQUIRED_USE="
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
+	power-control? ( dbus )
 "
 RESTRICT="!test? ( test )"
 
@@ -88,17 +90,17 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
 	media-fonts/roboto
-	media-libs/dav1d
 	>=media-libs/fontconfig-2.13.1
 	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
 	!raspberry-pi? ( media-libs/mesa[egl] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
-		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d,encode,postproc]
+		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d?,encode,postproc]
 		libressl? ( media-video/ffmpeg[libressl,-openssl] )
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
 	)
+	!system-ffmpeg? ( dav1d? ( media-libs/dav1d ) )
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	>=net-misc/curl-7.68.0[http2]
@@ -147,6 +149,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${COMMON_DEPEND}
 	lirc? ( app-misc/lirc )
+	power-control? ( || ( sys-apps/systemd sys-auth/elogind ) )
 	udisks? ( sys-fs/udisks:2 )
 	upower? ( sys-power/upower )
 "
@@ -222,7 +225,16 @@ src_configure() {
 	use X && platform+=( x11 )
 	local core_platform_name="${platform[@]}"
 	local mycmakeargs=(
+		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
+		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
+		-DENABLE_SSE4_1=$(usex cpu_flags_x86_sse4_1)
+		-DENABLE_SSE4_2=$(usex cpu_flags_x86_sse4_2)
+		-DENABLE_AVX=$(usex cpu_flags_x86_avx)
+		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
+		-DENABLE_NEON=$(usex cpu_flags_arm_neon)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-DVERBOSE=ON
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AIRTUNES=$(usex airplay)
@@ -234,10 +246,15 @@ src_configure() {
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DVDCSS=$(usex css)
 		-DENABLE_INTERNAL_CROSSGUID=OFF
+		-DENABLE_INTERNAL_RapidJSON=OFF
+		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FSTRCMP=OFF
+		-DENABLE_INTERNAL_FLATBUFFERS=OFF
+		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_GTEST=OFF
 		-DENABLE_INTERNAL_UDFREAD=OFF
+		-DENABLE_INTERNAL_SPDLOG=OFF
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
@@ -273,6 +290,11 @@ src_configure() {
 		mycmakeargs+=( -DWITH_FFMPEG="yes" )
 	else
 		mycmakeargs+=( -DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz" )
+	fi
+
+	if ! echo "${CFLAGS}" | grep -Fwqe '-DNDEBUG' - && ! echo "${CFLAGS}" | grep -Fwqe '-D_DEBUG' - ; then
+		CFLAGS+=' -DNDEBUG' # Kodi requires one of the 'NDEBUG' or '_DEBUG' defines
+		CXXFLAGS+=' -DNDEBUG'
 	fi
 
 	cmake_src_configure
