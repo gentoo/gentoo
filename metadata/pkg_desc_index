@@ -666,7 +666,7 @@ app-admin/helm 3.3.4 3.4.1 3.4.2: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.46: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.6.1 2.6.2 2.6.3 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.6.2 2.6.3 2.6.4 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.6: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -755,7 +755,7 @@ app-admin/syslog-ng 3.26.1-r1 3.28.1-r2 3.29.1 3.30.1: syslog replacement with a
 app-admin/syslog-summary 1.14-r5: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.2.3 12.4.0 12.4.1: System performance tools for Linux
-app-admin/system-config-printer 1.5.13 1.5.15: Graphical user interface for CUPS administration
+app-admin/system-config-printer 1.5.15: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
@@ -5061,7 +5061,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.25 1.2.26: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 8.5.60 8.5.61 9.0.40 9.0.41: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 8.5.61 9.0.41: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -8046,7 +8046,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.4: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4 0.44.5: CloudFormation Linter
-dev-python/cftime 1.3.0: Time-handling functionality from netcdf4-python
+dev-python/cftime 1.3.0 1.4.0: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8073,7 +8073,7 @@ dev-python/cliff 3.5.0 3.6.0: Command Line Interface Formulation Framework
 dev-python/clikit 0.6.2: Group of utilities to build beautiful and testable command line interfaces
 dev-python/clint 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.6.0: Extended pickling support for Python objects
-dev-python/cmd2 1.4.0: Extra features for standard library's cmd module
+dev-python/cmd2 1.4.0 1.5.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2-r1: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3-r1 0.4.4: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8241,7 +8241,7 @@ dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.5.2 2.5.3 2.6.0: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 1.0.0: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.6-r2: Easily create navigation for Flask applications.
-dev-python/flask-paginate 0.7.0 0.8.0: Pagination support for flask
+dev-python/flask-paginate 0.7.0 0.8.0 0.8.1: Pagination support for flask
 dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for Flask
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
@@ -8406,7 +8406,7 @@ dev-python/junit-xml 1.9: Create JUnit XML test result documents
 dev-python/jupyter 1.0.0-r3: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 6.1.6-r2 6.1.10 6.1.11: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.1.0-r2: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.6.3-r1: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.6.3-r1 4.7.1: Core common functionality of Jupyter projects
 dev-python/jupyterlab_pygments 0.1.2: Pygments theme making use of JupyterLab CSS variables
 dev-python/jwcrypto 0.8.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
@@ -8443,7 +8443,7 @@ dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
-dev-python/llfuse 1.3.6 1.4.0: Python bindings for the low-level FUSE API
+dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 1.0.0: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
@@ -8465,7 +8465,7 @@ dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.9.0 1.10.1: Lets you mix and match traditional doctests with custom test syntax
 dev-python/markdown 2.6.11 3.3.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
-dev-python/markups 3.0.0-r1: A wrapper around various text markups
+dev-python/markups 3.0.0-r1 3.1.0: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 3.2.2-r2 3.3.0-r1 3.3.2 3.3.3-r1 3.3.4: Pure python plotting library with matlab like syntax
@@ -8655,7 +8655,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 1.18.0 2.2.0-r1 2.3.0 2.4.0 2.5.0 2.5.1: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 1.18.0 2.2.0-r1 2.3.0 2.4.0 2.5.0 2.5.1 2.5.2: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.0: Python Imaging Library (fork)
 dev-python/pip 20.3.3 21.0 21.0.1: Installs python packages -- replacement for easy_install
@@ -8922,7 +8922,7 @@ dev-python/python-designateclient 4.1.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-docs 2.7.18 3.6.12 3.7.9 3.8.6 3.8.7 3.9.0 3.9.1: HTML documentation for Python
-dev-python/python-dotenv 0.14.0 0.15.0: Manage .env files
+dev-python/python-dotenv 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-email-validator 1.1.2: A robust email syntax and deliverability validation library
@@ -8995,7 +8995,7 @@ dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mo
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2020.4.4 2021.1 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
-dev-python/pytz 2020.4 2020.5: World timezone definitions for Python
+dev-python/pytz 2020.4 2020.5 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
@@ -13810,7 +13810,7 @@ media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.5: Metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
 media-sound/guayadeque 0.4.6 9999: Music management program designed for all music enthusiasts
-media-sound/guitarix 0.41.0 0.42.1 9999: Virtual guitar amplifier for Linux
+media-sound/guitarix 0.42.1 9999: Virtual guitar amplifier for Linux
 media-sound/helm 0.9.0-r1: Open source polyphonic software synthesizer with lots of modulation
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r2: Opensource software organ
@@ -14490,7 +14490,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.4.2 3.4.2-r100 3.4.3 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.4.2-r100 3.4.3 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
@@ -18107,7 +18107,7 @@ www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.107 8.5.60 8.5.61 9.0.40 9.0.41: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
+www-servers/tomcat 7.0.107 8.5.61 9.0.41: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1 2.0.19.1-r100: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
