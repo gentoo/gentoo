@@ -5,11 +5,6 @@
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
-  <use>
-    <flag name='gtk2'>Install theme for GTK+-2.0</flag>
-    <flag name='gtk3'>Install theme for GTK+-3.0</flag>
-    <flag name='xfce'>Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
-  </use>
   <longdescription>
     Greybird Xfce Desktop Suite. Contains the default Xubuntu theme for 
     gnome-shell, gtk-2, gtk-3, metacity, pantheon, unity and Xfce. Comes with 
