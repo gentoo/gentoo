@@ -2116,9 +2116,9 @@ app-emulation/winetricks 20200412 20201206 99999999: Easy way to install DLLs ne
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.13.2-r2 4.13.2-r3 4.14.0-r7: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.13.2 4.14.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.13.2-r1 4.13.2-r2 4.14.0-r5: Xen tools including QEMU and xl
+app-emulation/xen 4.13.2-r2 4.13.2-r3 4.13.2-r4 4.14.0-r7 4.14.1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.13.2 4.14.0 4.14.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.13.2-r1 4.13.2-r2 4.14.0-r5 4.14.1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
@@ -7788,7 +7788,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.10.15 1.10.20: Dependency Manager for PHP
+dev-php/composer 1.10.15 1.10.20 2.0.9: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
@@ -7862,6 +7862,7 @@ dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Tem
 dev-php/phpunit 5.7.15-r3 8.5.11 8.5.14: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
 dev-php/psr-log 1.0.2 1.1.0 1.1.2 1.1.3: Common interface for logging libraries
+dev-php/reactphp-promise 2.8.0: A lightweight implementation of CommonJS Promises/A for PHP
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
 dev-php/recaptcha 1.2.1: PHP client library for Google's reCAPTCHA service
 dev-php/scrypt 1.4.2 9999: A PHP wrapper fo the scrypt hashing algorithm
@@ -7878,7 +7879,7 @@ dev-php/sebastian-resource-operations 1.0.0 2.0.1: Provides a list of PHP built-
 dev-php/sebastian-type 1.1.3: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
-dev-php/semver 1.4.2 1.5.1 1.7.0 1.7.1: Semantic versioning utilities, constraint parsing, and checking
+dev-php/semver 1.4.2 1.5.1 1.7.0 1.7.1 3.2.4: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.33 3.1.36: A template engine for PHP
 dev-php/spdx-licenses 1.2.0 1.4.0-r1 1.5.0 1.5.3 1.5.4: Tools for working with and validating SPDX licenses
@@ -15424,7 +15425,7 @@ net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.7.0: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
-net-p2p/gtk-gnutella 1.1.15 1.2.0-r1: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.2.0-r1 20.12.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
@@ -17123,7 +17124,7 @@ sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys
 sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20201103 999999999: PAM base configuration files
+sys-auth/pambase 20201103 20210201 999999999: PAM base configuration files
 sys-auth/passwdqc 1.4.0-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
