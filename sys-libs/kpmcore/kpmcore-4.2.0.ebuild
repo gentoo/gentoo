@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,9 @@ LICENSE="GPL-3"
 SLOT="5/10"
 IUSE=""
 
+# bug 689468, tests need polkit etc.
+RESTRICT+=" test"
+
 BDEPEND="
 	>=kde-frameworks/kauth-${KFMIN}:5
 	virtual/pkgconfig
@@ -36,5 +39,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# bug 689468, tests need polkit etc.
-RESTRICT+=" test"
+PATCHES=( "${FILESDIR}/${P}-kf-5.77.patch" ) # bug 768249
