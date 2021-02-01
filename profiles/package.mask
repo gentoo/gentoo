@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-02-01)
+# no package uses it
+# Removal on 2021-03-04
+dev-ml/ocaml-data-notation
+
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
 # LibreSSL support is discontinued.  Plaase read the relevant news item
 # and either migrate to dev-libs/openssl, or use the unsupported
