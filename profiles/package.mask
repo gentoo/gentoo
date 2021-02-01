@@ -206,12 +206,6 @@ sci-physics/cernlib
 sci-physics/cernlib-montecarlo
 sci-physics/paw
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
-# Fails to build with gcc-10, no maintainer, upstream gone,
-# multiple open bugs.
-# Removal in 30 days, bug #677322, bug #707200, bug #716012
-net-dialup/diald
-
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
 # To be removed shortly.
