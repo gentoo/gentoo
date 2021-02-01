@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-02-01)
+# LibreSSL support is discontinued.  Plaase read the relevant news item
+# and either migrate to dev-libs/openssl, or use the unsupported
+# user-maintained libressl overlay.
+# Removal on 2021-05-01.  Bug #762847.
+dev-libs/libressl
+
 # Ulrich Müller <ulm@gentoo.org> (2021-01-29)
 # Pretest versions, masked for testing.
 ~app-editors/emacs-27.1.91
