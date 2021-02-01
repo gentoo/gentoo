@@ -7,7 +7,7 @@ DESCRIPTION="RC init files for starting display and login managers"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:X11"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 S="${FILESDIR}"
