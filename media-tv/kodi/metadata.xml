@@ -24,7 +24,7 @@
 		<flag name="udf">Enable UDF support. Required for playing blurays.</flag>
 		<flag name="udev">Use <pkg>sys-fs/udev</pkg> rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.</flag>
 		<flag name="webserver">Enable internal webserver</flag>
-		<flag name="xslt">Enable XSLT support using <pkg>dev-libs/libxslt</pkg></flag>
+		<flag name="xslt">Enable metadata XSLT scrapers support with <pkg>dev-libs/libxslt</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://trac.kodi.tv/</bugs-to>
