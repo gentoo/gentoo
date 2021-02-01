@@ -198,12 +198,6 @@ app-crypt/acme-client
 # Removal in 30 days, bug #444470
 dev-libs/ilbc-rfc3951
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-02)
-# sci-physics/cernlib fails to build with gcc-10, last release in 2006,
-# multiple open bugs, all revdeps also broken and declared EOL upstream.
-# Removal in 30 days, bug #763183
-sci-physics/cernlib
-
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
 # To be removed shortly.
