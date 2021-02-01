@@ -11642,6 +11642,7 @@ games-rpg/comi 1: The Curse of Monkey Island, the third game in the series
 games-rpg/costume-quest 2.0.0.3: A Halloween adventure from Tim Schafer's Double Fine Productions
 games-rpg/daimonin-client 0.10.8: A graphical 2D tile-based MMORPG
 games-rpg/dear-esther 20130608: Ghost story, told using first-person gaming technologies
+games-rpg/deponia-doomsday 1.2.0267: The fourth and final instalment of the Deponia point-and-click adventures
 games-rpg/deponia-tcj 3.3.0156: The Complete Journey: The first three Deponia point-and-click adventures
 games-rpg/draci-historie 2012-r1: Bert the little dragon searches for his father
 games-rpg/drascula 1.0-r3: Drascula: The Vampire Strikes Back
@@ -15026,7 +15027,7 @@ net-mail/relay-ctrl 3.1.1-r2 3.1.1-r3 3.2: SMTP Relaying Control designed for qm
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10-r1: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 3.12.2: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 3.12.2-r1: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r5: A serialmail is a collection of tools for passing mail across serial links
@@ -17560,7 +17561,7 @@ sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.10.9 5.10.10 5.10.11 5.10.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils

@@ -3198,6 +3198,7 @@ games-roguelike/stone-soup:tiles - Enable for graphical (tiled) build. (can be e
 games-roguelike/tomenet:client - Compile client
 games-roguelike/tomenet:server - Compile server
 games-rpg/daimonin-client:music - Install extra music
+games-rpg/deponia-doomsday:bonus - Install the bonus content (Art Book, Concept Art, Soundtrack)
 games-rpg/drascula:sound - Install optional audio files
 games-rpg/dreamweb:doc - High-resolution scans of the written material in the original UK game box
 games-rpg/freedroidrpg:devtools - Compile the additional dev tools
