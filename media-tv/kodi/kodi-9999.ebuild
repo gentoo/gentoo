@@ -277,6 +277,11 @@ src_configure() {
 		mycmakeargs+=( -DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz" )
 	fi
 
+	if ! echo "${CFLAGS}" | grep -Fwqe '-DNDEBUG' - && ! echo "${CFLAGS}" | grep -Fwqe '-D_DEBUG' - ; then
+		CFLAGS+=' -DNDEBUG' # Kodi requires one of the 'NDEBUG' or '_DEBUG' defines
+		CXXFLAGS+=' -DNDEBUG'
+	fi
+
 	cmake_src_configure
 }
 
