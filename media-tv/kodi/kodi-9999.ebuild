@@ -225,6 +225,7 @@ src_configure() {
 	local core_platform_name="${platform[@]}"
 	local mycmakeargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-DVERBOSE=ON
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AIRTUNES=$(usex airplay)
