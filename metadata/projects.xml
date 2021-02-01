@@ -389,10 +389,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Biology</url>
     <description>The Biology Project handles all biology related activities in Gentoo.</description>
     <member>
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
-    </member>
-    <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
     </member>
@@ -474,10 +470,6 @@
     <member>
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
-    </member>
-    <member>
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
     </member>
     <member>
       <email>nicolasbock@gentoo.org</email>
@@ -1081,10 +1073,6 @@
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
     </member>
-    <member>
-      <email>sobhan@gentoo.org</email>
-      <name>Sobhan Mohammadpour</name>
-    </member>
   </project>
   <project>
     <email>gnu-emacs@gentoo.org</email>
@@ -1184,11 +1172,6 @@
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Merge man</role>
-    </member>
-    <member>
-      <email>mudler@gentoo.org</email>
-      <name>Ettore Di Giacinto</name>
       <role>Merge man</role>
     </member>
     <member is-lead="1">
@@ -1831,10 +1814,6 @@
     <name>MATE Desktop</name>
     <url>https://wiki.gentoo.org/wiki/Project:MATE</url>
     <description>The MATE Project aims to bring the current and complete MATE Desktop Environment to Gentoo.</description>
-    <member>
-      <email>mudler@gentoo.org</email>
-      <name>Ettore Di Giacinto</name>
-    </member>
     <member is-lead="1">
       <email>NP-Hardass@gentoo.org</email>
       <name>NP-Hardass</name>
@@ -2180,10 +2159,6 @@
     <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
-    </member>
-    <member>
-      <email>mudler@gentoo.org</email>
-      <name>Ettore Di Giacinto</name>
     </member>
     <member>
       <email>titanofold@gentoo.org</email>
@@ -3070,11 +3045,6 @@
       <name>Benda Xu</name>
       <role>Astronomy, Mathematics, Physics</role>
     </member>
-    <member is-lead="1">
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
-      <role>Chemistry, Biology, *</role>
-    </member>
     <member>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
@@ -3460,10 +3430,6 @@
     <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
-    </member>
-    <member>
-      <email>tranquility@gentoo.org</email>
-      <name>Ole Reifschneider</name>
     </member>
   </project>
   <project>

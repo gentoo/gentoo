@@ -5413,7 +5413,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.2: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.11: Library for some string essentials
 dev-libs/libev 4.33: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.10.0 9999: Handler library for evdev events
+dev-libs/libevdev 1.10.0 1.11.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.11 2.1.12 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1-r1: library that provides an easy API to Linux serial ports
@@ -7788,7 +7788,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.9.3 1.10.1 1.10.5 1.10.6 1.10.7 1.10.8 1.10.9 1.10.10 1.10.13 1.10.15: Dependency Manager for PHP
+dev-php/composer 1.10.15 1.10.20: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1: Utility to instantiate objects in PHP without invoking their constructors
@@ -7816,7 +7816,7 @@ dev-php/pecl-eio 2.0.4-r1: PHP wrapper for libeio library
 dev-php/pecl-event 2.5.7: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4 1.1.1-r5: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0-r2: PHP wrapper around the gpgme library
-dev-php/pecl-http 3.2.1 3.2.3 3.2.3-r1 3.2.4 4.0.0_beta1 4.0.0: Extended HTTP Support for PHP
+dev-php/pecl-http 3.2.1 3.2.4 4.0.0: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-lzf 1.6.8-r1: This package handles LZF de/compression
 dev-php/pecl-mailparse 3.1.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
@@ -7844,8 +7844,8 @@ dev-php/pecl-xdiff 2.1.0_pre: PHP extension for generating diff files
 dev-php/pecl-yaml 2.2.0 2.2.1: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.3 1.2.3-r1: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/pecl-zmq 1.1.3-r3 9999: PHP Bindings for ZeroMQ messaging
-dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
-dev-php/phar-io-version 2.0.1: Library for handling version information and constraints
+dev-php/phar-io-manifest 1.0.3 2.0.1: Reading phar.io manifest information from a PHP Archive (PHAR)
+dev-php/phar-io-version 2.0.1 3.0.4: Library for handling version information and constraints
 dev-php/phar-utils 1.0.0 1.0.1 1.1.0 1.1.1: PHAR file format utilities, for when PHP phars you up
 dev-php/phing 2.16.1 2.16.3: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2-r1: Creates highlighted code by reading xml reports from codesniffer or phpunit
@@ -7859,7 +7859,7 @@ dev-php/phpdocumentor-type-resolver 0.2.1: PSR-5 based resolver of Class names, 
 dev-php/phpmd 2.6.0 2.8.2: PHP mess detector
 dev-php/phpspec-prophecy 1.7.0 1.8.0 1.9.0 1.10.0 1.10.1 1.10.3-r1: Highly opinionated mocking framework
 dev-php/phptal 1.3.1: A templating engine for PHP5 that implements Zope Page Templates syntax
-dev-php/phpunit 5.7.15-r3 8.5.11: A PHP Unit Testing framework
+dev-php/phpunit 5.7.15-r3 8.5.11 8.5.14: A PHP Unit Testing framework
 dev-php/phpunit-mock-objects 3.4.3 3.4.3-r1: Mock Object library for PHPUnit
 dev-php/psr-log 1.0.2 1.1.0 1.1.2 1.1.3: Common interface for logging libraries
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
@@ -13524,7 +13524,7 @@ media-plugins/kodi-inputstream-rtmp 3.1.1-r1 3.3.0 3.4.0 9999: Kodi's RTMP input
 media-plugins/kodi-peripheral-joystick 1.7.0 1.7.1 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 6.0.1 6.0.2 7.0.0 9999: Kodi's ARGUS TV client addon
-media-plugins/kodi-pvr-demo 6.0.1 7.0.0 9999: Demo PVR for Kodi
+media-plugins/kodi-pvr-demo 7.1.0 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 8.0.0 9.0.0 9.0.1 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 6.0.6 6.0.7 7.0.0 7.1.0 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 5.1.0 6.0.0 9999: Kodi's Filmon client addon
@@ -14055,7 +14055,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 19.0_beta2_p20210112 19.0_rc1 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 19.0_beta2_p20210112 19.0_rc1 19.0_rc1-r1 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 31.0-r5: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
@@ -14915,7 +14915,7 @@ net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/pacparser 1.3.7-r1: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.2-r2 2.9-r2 2.10: Open source SIP, Media, and NAT Traversal Library
-net-libs/quiche 0.5.1 0.6.0 9999: Implementation of the QUIC transport protocol and HTTP/3
+net-libs/quiche 0.5.1 0.6.0 0.7.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
