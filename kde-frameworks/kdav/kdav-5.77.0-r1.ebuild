@@ -30,8 +30,9 @@ RDEPEND="${DEPEND}
 src_test() {
 	# bug 616808 - DavItemFetchJobTest requires D-Bus
 	# bug 653602 - DavItemsListJobTest mimetypes unsupported
+	# bug 765061 - kdav-davcollectionsmultifetchjobtest ## fixed in 5.78.0
 	local myctestargs=(
-		-E "(kdav-davitemfetchjob|kdav-davitemslistjob)"
+		-E "(kdav-davitemfetchjob|kdav-davitemslistjob|kdav-davcollectionsmultifetchjobtest)"
 	)
 	ecm_src_test
 }
