@@ -204,7 +204,6 @@ dev-libs/ilbc-rfc3951
 # Removal in 30 days, bug #763183
 sci-physics/cernlib
 sci-physics/cernlib-montecarlo
-sci-physics/paw
 
 # Sam James <sam@gentoo.org> (2021-01-01)
 # UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
