@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PN=${PN}${PV/\.*}
-inherit desktop xdg-utils systemd
+inherit desktop systemd xdg
 
 DESCRIPTION="All-In-One Solution for Remote Access and Support over the Internet"
 HOMEPAGE="https://www.teamviewer.com"
@@ -31,7 +31,7 @@ RDEPEND="
 	!sys-auth/consolekit
 "
 
-# For consolekit incompatibility see https://forums.gentoo.org/viewtopic-p-8332956.html?sid=3cc21e5a27935e38975ee85bf03317ae#8332956
+# For consolekit incompatibility see https://forums.gentoo.org/viewtopic-p-8332956.html#8332956
 
 RESTRICT="bindist mirror"
 
@@ -109,28 +109,28 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
-	elog "Please note that parallel installation of multiple versions of"
-	elog "TeamViewer is currently not supported at runtime. Bug #621818"
-	elog ""
-	elog "Before using TeamViewer, you need to start its daemon:"
-	elog "OpenRC:"
-	elog "# /etc/init.d/teamviewerd start"
-	elog "# rc-update add teamviewerd default"
-	elog
-	elog "Systemd:"
-	elog "# systemctl start teamviewerd.service"
-	elog "# systemctl enable teamviewerd.service"
-	elog
-	elog "To display additional command line options simply run:"
-	elog "$ teamviewer help"
-	elog
-	elog "Most likely TeamViewer will work normally only on systems with systemd"
-	elog "or elogind. See this thread for additional info:"
-	elog "https://forums.gentoo.org/viewtopic-p-8332956.html?sid=3cc21e5a27935e38975ee85bf03317ae#8332956"
-}
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
 
-pkg_postrm() {
-	xdg_icon_cache_update
+		elog "Please note that parallel installation of multiple versions of"
+		elog "TeamViewer is currently not supported at runtime. Bug #621818"
+		elog ""
+		elog "Before using TeamViewer, you need to start its daemon:"
+		elog "OpenRC:"
+		elog "# /etc/init.d/teamviewerd start"
+		elog "# rc-update add teamviewerd default"
+		elog
+		elog "Systemd:"
+		elog "# systemctl start teamviewerd.service"
+		elog "# systemctl enable teamviewerd.service"
+		elog
+		elog "To display additional command line options simply run:"
+		elog "$ teamviewer help"
+		elog
+		elog "Most likely TeamViewer will work normally only on systems with systemd"
+		elog "or elogind. See this thread for additional info:"
+		elog "https://forums.gentoo.org/viewtopic-p-8332956.html#8332956"
+	fi
 }
