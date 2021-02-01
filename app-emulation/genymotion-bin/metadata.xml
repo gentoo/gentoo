@@ -5,10 +5,6 @@
 		<email>fedeliallalinea@gmail.com</email>
 		<name>Marco Genasci</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>mudler@gentoo.org</email>
-		<name>Ettore Di Giacinto</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
