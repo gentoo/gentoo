@@ -13,9 +13,10 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-DEPEND="dev-lang/ocaml"
-RDEPEND="${DEPEND}
+RDEPEND=">=dev-lang/ocaml-4.08:=
 	!dev-ml/jbuilder"
+DEPEND="${RDEPEND}
+	dev-ml/findlib"
 
 QA_FLAGS_IGNORED=/usr/bin/dune
 
