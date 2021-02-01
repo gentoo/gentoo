@@ -14,9 +14,8 @@ SRC_URI="https://github.com/elementary/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="doc"
 
 BDEPEND="
 	$(vala_depend)
@@ -28,38 +27,20 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-libs/glib-2.50:2
-	dev-libs/libgee:0.8[introspection]
 	>=x11-libs/gtk+-3.22:3[introspection]
+	dev-libs/libgee:0.8[introspection]
 "
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
 	vala_src_prepare
-	if use doc; then
-		sed -i \
-			"s/find_program('valadoc')/find_program('valadoc-$(vala_best_api_version)')/g" \
-			doc/meson.build || die "Failed to replace valadoc"
-		local doc_sed_list=(
-			"lib/Widgets/AboutDialog.vala"
-			"lib/Widgets/AlertView.vala"
-			"lib/Widgets/AsyncImage.vala"
-			"lib/Widgets/Avatar.vala"
-			"lib/Widgets/CellRendererBadge.vala"
-			"lib/Widgets/DynamicNotebook.vala"
-			"lib/Widgets/MessageDialog.vala"
-			"lib/Widgets/ModeButton.vala"
-			"lib/Widgets/OverlayBar.vala"
-			"lib/Widgets/SeekBar.vala"
-			"lib/Widgets/StorageBar.vala"
-			"lib/Widgets/Toast.vala"
-			"lib/Widgets/Welcome.vala"
-		)
-		for src_file in "${doc_sed_list[@]}"; do
-			sed -ie "s@{{../doc@{{${BUILD_DIR}/doc@g" \
-				"./${src_file}" || die "Failed to fix docs for ./${src_file}"
-		done
-	fi
+
+	# Fix docs
+	sed -i "s/find_program('valadoc')/find_program('valadoc-$(vala_best_api_version)')/g" doc/meson.build \
+		|| die "Failed to replace valadoc"
+	find lib/Widgets -type f -name "*.vala" -exec sed -ie "s@{{../doc@{{${BUILD_DIR}/doc@g" {} \; \
+		|| die "Failed to fix docs"
 }
 
 src_configure() {
