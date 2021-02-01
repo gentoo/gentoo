@@ -14659,7 +14659,7 @@ net-im/dino 0.1.0 0.2.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/discord-bin 0.0.13: All-in-one voice and text chat for gamers
 net-im/ejabberd 20.04 20.07: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
-net-im/element-desktop-bin 1.7.16: A glossy Matrix collaboration client for desktop (binary package)
+net-im/element-desktop-bin 1.7.18: A glossy Matrix collaboration client for desktop (binary package)
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 6.1.4: Multiprotocol chatbot designed to be easily deployable and maintainable
 net-im/gajim 1.2.1 1.2.2: Jabber client written in PyGTK
@@ -15962,7 +15962,7 @@ sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed informati
 sci-chemistry/gmxapi 0.0.7.1-r1: Gromacs API bindings
 sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021_rc1 2021.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021 2021.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/mdtraj 1.9.4: Read, write and analyze MD trajectories with only a few lines of Python code
@@ -17555,7 +17555,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel build
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.10.9 5.10.10 5.10.11 5.10.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12: Full sources including the Gentoo patchset for the 5.10 kernel tree
-sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
