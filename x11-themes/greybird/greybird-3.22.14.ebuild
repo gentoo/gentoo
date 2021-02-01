@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shimmerproject/${PN^}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 
 # Theme files, no test case available.
 RESTRICT="test"
