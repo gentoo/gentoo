@@ -8915,9 +8915,6 @@ x11-themes/gentoo-artwork:grub - Install extra sys-boot/grub themes
 x11-themes/gentoo-artwork:icons - Install icons
 x11-themes/gentoo-artwork:lilo - Install extra sys-boot/lilo themes
 x11-themes/gentoo-artwork:pixmaps - Install pixmaps
-x11-themes/greybird:gtk2 - Install theme for GTK+-2.0
-x11-themes/greybird:gtk3 - Install theme for GTK+-3.0
-x11-themes/greybird:xfce - Install theme for xfce-base/xfwm4
 x11-themes/gtk-engines-murrine:animation-rtl - Progressbar animation from right to left
 x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-themes
 x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right to left

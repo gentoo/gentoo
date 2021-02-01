@@ -11,4 +11,4 @@ RDEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) idn? ( net-dns/libidn:= ) kerberos? ( 
 SLOT=0
 SRC_URI=mirror://gnu/gsasl/gsasl-1.8.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f2e11fc2f73d6d65899cca23b40aaad0
+_md5_=05f2c94f4f1a67f786e5513f9d9ca0a9

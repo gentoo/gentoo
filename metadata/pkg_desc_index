@@ -18032,8 +18032,8 @@ www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-establish
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.6.1 78.7.0 84.0.2 85.0: Firefox Web Browser
-www-client/firefox-bin 78.6.1 78.7.0 84.0.2 85.0: Firefox Web Browser
+www-client/firefox 78.7.0 84.0.2 85.0: Firefox Web Browser
+www-client/firefox-bin 78.7.0 84.0.2 85.0: Firefox Web Browser
 www-client/google-chrome 88.0.4324.96: The web browser from Google
 www-client/google-chrome-beta 89.0.4389.23: The web browser from Google
 www-client/google-chrome-unstable 90.0.4400.8: The web browser from Google
@@ -18891,7 +18891,7 @@ x11-themes/gnustep-neos-theme 0.1: GNUstep theme closely following the original 
 x11-themes/gnustep-silver-theme 3.1-r1: a GNUstep silver theme
 x11-themes/goddard-backgrounds 13.0.0.3-r1: Fedora 13 official background artwork
 x11-themes/golden-xcursors 0.8-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
-x11-themes/greybird 3.20.1-r2 3.22.12 3.22.14: Greybird Desktop Suite
+x11-themes/greybird 3.22.14: Greybird Desktop Suite
 x11-themes/gtk-chtheme 0.3.1-r3: GTK-2.0 Theme Switcher
 x11-themes/gtk-engines 2.20.2-r100: GTK+2 standard engines and themes
 x11-themes/gtk-engines-adwaita 3.28: Adwaita GTK+2 theme engine
