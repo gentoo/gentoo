@@ -138,14 +138,6 @@ x11-misc/rss-glx
 # Masked for removal in 30 days.
 kde-frameworks/kdesignerplugin
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-01-10)
-# The Duke Nukem 3D demo data files will be now handled by the
-# 'games-fps/duke3d-data' package, so this package isn't
-# needed anymore. Just remove it and switch to the above one.
-# Enable use flag 'demo' for demo data files.
-# Removal in 14 days.
-games-fps/duke3d-demodata
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-01-09)
 # media-sound/patchage used to depend on it but the dependency
 # has been dropped in v1.0.0. There are no other packages in the tree
