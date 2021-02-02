@@ -6,13 +6,12 @@ EAPI=7
 inherit prefix
 
 DESCRIPTION="Translates acronyms for you"
-HOMEPAGE="http://netbsd.org/"
+HOMEPAGE="https://netbsd.org/"
 SRC_URI="https://sourceforge.net/projects/bsd${PN}/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE=""
 
 DEPEND="!games-misc/bsd-games"
 RDEPEND="${DEPEND}"
