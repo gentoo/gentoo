@@ -9,7 +9,6 @@
 		<flag name="airplay">enable AirPlay support</flag>
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to bind to privileged ports as non-root</flag>
-		<flag name="cdio">Enable reading of Audio-CD, Video-CD, and CD-ROM disks and images by <pkg>dev-libs/libcdio</pkg></flag>
 		<flag name="cec">Enable support for HDMI-CEC devices via libcec</flag>
 		<flag name="gbm">Use the Graphics Buffer Manager for EGL on KMS.</flag>
 		<flag name="gles">Enable support for GLES</flag>
