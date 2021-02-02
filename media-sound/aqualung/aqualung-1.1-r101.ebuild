@@ -57,6 +57,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-var-collision.patch"
 )
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_configure() {
 	econf \
 		--disable-rpath \
