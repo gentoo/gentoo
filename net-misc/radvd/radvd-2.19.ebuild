@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd user eutils readme.gentoo-r1 toolchain-funcs
 
@@ -15,11 +15,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="kernel_FreeBSD selinux test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="virtual/pkgconfig"
 CDEPEND="dev-libs/libdaemon"
 DEPEND="${CDEPEND}
 	sys-devel/bison
 	sys-devel/flex
-	virtual/pkgconfig
 	test? ( dev-libs/check )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-radvd )
