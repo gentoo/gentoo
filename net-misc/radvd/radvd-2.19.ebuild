@@ -65,8 +65,8 @@ src_install() {
 }
 
 DISABLE_AUTOFORMATTING=1
-DOC_CONTENTS="Please create a configuration file ${ROOT}etc/radvd.conf.
-See ${ROOT}usr/share/doc/${PF} for an example.
+DOC_CONTENTS="Please create a configuration file ${ROOT}/etc/radvd.conf.
+See ${ROOT}/usr/share/doc/${PF} for an example.
 
 grsecurity users should allow a specific group to read /proc
 and add the radvd user to that group, otherwise radvd may
