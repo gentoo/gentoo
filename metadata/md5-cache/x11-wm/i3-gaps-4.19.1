@@ -1,0 +1,15 @@
+BDEPEND=app-text/asciidoc app-text/xmlto dev-lang/perl virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install postinst test
+DEPEND=dev-libs/glib:2 dev-libs/libev dev-libs/libpcre dev-libs/yajl x11-libs/cairo[X,xcb(+)] x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/pango[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm test? ( dev-perl/ExtUtils-PkgConfig dev-perl/IPC-Run dev-perl/Inline dev-perl/Inline-C dev-perl/X11-XCB dev-perl/XS-Object-Magic x11-apps/xhost x11-base/xorg-server[xephyr,xvfb] x11-misc/xvfb-run )
+DESCRIPTION=i3 fork with gaps and some more features
+EAPI=7
+HOMEPAGE=https://github.com/Airblader/i3
+IUSE=doc test
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/glib:2 dev-libs/libev dev-libs/libpcre dev-libs/yajl x11-libs/cairo[X,xcb(+)] x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/pango[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm dev-lang/perl dev-perl/AnyEvent-I3 dev-perl/JSON-XS !x11-wm/i3
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/Airblader/i3/archive/4.19.1.tar.gz -> i3-gaps-4.19.1.tar.gz
+_eclasses_=meson	fdaf2a7b9376934c1c7ddbd32114defb	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=a1536a85f1d44b363ef2ed6d1de560f1

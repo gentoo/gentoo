@@ -8,4 +8,4 @@ RDEPEND=!<x11-misc/i3blocks-1.5 >=x11-misc/i3blocks-1.5
 SLOT=0
 SRC_URI=https://github.com/vivien/i3blocks-contrib/archive/154001e5713c26c70063446022919225b6f916f0.tar.gz -> i3blocks-contrib-1.4.0_p20201127.tar.gz
 _eclasses_=vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=741bed01b794add574f1fe421d8f4537
+_md5_=a77f594eabe042447ae77af28b8b1c4b
