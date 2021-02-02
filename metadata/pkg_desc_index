@@ -2966,7 +2966,7 @@ app-text/libgxps 0.3.1: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.3: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.17 9999: Library parsing many pre-OSX MAC text formats
-app-text/libnumbertext 1.0.6: Number to number name and money text conversion libraries
+app-text/libnumbertext 1.0.6 1.0.7: Number to number name and money text conversion libraries
 app-text/libodfgen 0.1.7 0.1.8 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24_p5 1.1.28: Library for handling paper characteristics
 app-text/libqxp 0.0.2: Library parsing QuarkXpress documents
@@ -7783,7 +7783,7 @@ dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extensio
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
-dev-php/adodb 5.20.14 5.20.18: Database abstraction layer for PHP
+dev-php/adodb 5.20.14 5.20.18 5.20.20: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
@@ -9179,7 +9179,7 @@ dev-python/spyder-notebook 0.3.1: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -12921,7 +12921,7 @@ media-gfx/phototonic 2.1: Image viewer and organizer
 media-gfx/pixels2pgf 0.1 9999: Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles
 media-gfx/plantuml 1.2020.0: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
-media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
+media-gfx/pngcheck 2.3.0 3.0.2: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngquant 2.12.3 2.12.6: Command-line utility and library for lossy compression of PNG images
@@ -17686,7 +17686,7 @@ sys-power/sispmctl 4.0 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605 1.0_p20200924: Userspace Software Suspend and S2Ram
 sys-power/thermald 2.3-r1 2.4.1-r1: Thermal daemon for Intel architectures
 sys-power/tuxedo-cc-wmi 0.1.4-r1: Kernel Module for Tuxedo WMI
-sys-power/uhubctl 1.8-r1: USB hub per-port power control
+sys-power/uhubctl 1.8-r1 2.3.0: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
@@ -18043,7 +18043,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 73.0.3856.344: A fast and secure web browser
 www-client/opera-beta 74.0.3911.22 74.0.3911.42 74.0.3911.63: A fast and secure web browser
-www-client/opera-developer 75.0.3925.0 75.0.3932.0 75.0.3939.0 75.0.3946.0: A fast and secure web browser
+www-client/opera-developer 75.0.3925.0 75.0.3932.0 75.0.3939.0 75.0.3946.0 75.0.3953.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.0 1.14.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine

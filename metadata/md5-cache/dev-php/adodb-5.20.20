@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Database abstraction layer for PHP
+EAPI=7
+HOMEPAGE=https://adodb.org/ https://github.com/ADOdb/ADOdb
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD LGPL-2.1+
+RDEPEND=dev-lang/php:*
+SLOT=0
+SRC_URI=https://github.com/ADOdb/ADOdb/archive/v5.20.20.tar.gz -> adodb-5.20.20.tar.gz
+_md5_=58c95b5f56b11a22f12c2a1c0cbcb2c7
