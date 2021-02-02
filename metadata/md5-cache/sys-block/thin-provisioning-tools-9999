@@ -1,14 +1,14 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=!static? ( dev-libs/expat dev-libs/libaio dev-libs/boost:= ) static? ( dev-libs/expat[static-libs(+)] dev-libs/libaio[static-libs(+)] dev-libs/boost:=[static-libs(+)] ) test? ( || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) >=dev-cpp/gtest-1.8.0 dev-util/cucumber dev-util/aruba )
+DEPEND=!static? ( dev-libs/expat dev-libs/libaio ) static? ( dev-libs/expat[static-libs(+)] dev-libs/libaio[static-libs(+)] ) test? ( || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) >=dev-cpp/gtest-1.8.0 dev-util/cucumber dev-util/aruba ) dev-libs/boost
 DESCRIPTION=A suite of tools for thin provisioning on Linux
 EAPI=7
 HOMEPAGE=https://github.com/jthornber/thin-provisioning-tools
 IUSE=static test
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=!static? ( dev-libs/expat dev-libs/libaio dev-libs/boost:= )
+RDEPEND=!static? ( dev-libs/expat dev-libs/libaio )
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=74a44ab33927ffc6ac810d0222ef18cb
+_md5_=4375f1adf93fe4e343d95b669d37cde5
