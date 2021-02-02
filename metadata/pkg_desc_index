@@ -10813,10 +10813,10 @@ dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.6.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.6.1 5.6.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.6.1: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.6.1: Python plugin for KDevelop
+dev-util/kdevelop-php 5.6.1 5.6.2: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.6.1 5.6.2: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
 dev-util/kubebuilder 2.3.1: SDK for building Kubernetes APIs using CRDs
@@ -18003,7 +18003,7 @@ www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 t
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
-www-apps/piwigo 2.10.2 11.1.0: a photo gallery software for the web
+www-apps/piwigo 2.10.2 11.1.0 11.2.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.5: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server

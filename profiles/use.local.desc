@@ -4788,7 +4788,6 @@ media-sound/zynaddsubfx:dssi - Enable support for DSSI Soft Synth Interface
 media-tv/kodi:airplay - enable AirPlay support
 media-tv/kodi:bluray - Enable playback of Blu-ray filesystems
 media-tv/kodi:caps - Use sys-libs/libcap to bind to privileged ports as non-root
-media-tv/kodi:cdio - Enable reading of Audio-CD, Video-CD, and CD-ROM disks and images by dev-libs/libcdio
 media-tv/kodi:cec - Enable support for HDMI-CEC devices via libcec
 media-tv/kodi:dav1d - Enables AV1 decoding via media-libs/dav1d
 media-tv/kodi:dvd - Enable optical (CD/DVD drive) support
