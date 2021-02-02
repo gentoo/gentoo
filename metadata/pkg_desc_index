@@ -9571,16 +9571,16 @@ dev-ros/kdl_parser_py 1.14.1 9999: Python tools to construct a KDL tree from an 
 dev-ros/laser_assembler 1.7.8 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.11 9999: Assorted filters designed to operate on 2D planar laser scanners
-dev-ros/laser_geometry 1.6.5 9999: Class for converting from a 2D laser scan into a point cloud
+dev-ros/laser_geometry 1.6.6 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.6 9999: Converts representations of LaserScan and MultiEchoLaserScan
-dev-ros/libmavconn 1.2.0 1.4.0 9999: MAVLink communication library
+dev-ros/libmavconn 1.2.0 1.4.0 1.5.2 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.11.0 9999: Tutorial showing how to build a C++ program with RViz displays and features
-dev-ros/map_msgs 1.14.0 9999: Messages commonly used in mapping packages
+dev-ros/map_msgs 1.14.1 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.17.0 1.17.1 9999: Offers map data as a ROS service
-dev-ros/mavlink-gbp-release 2020.9.10: MAVLink message marshaling library
-dev-ros/mavros 1.2.0 1.4.0 9999: MAVLink extendable communication node for ROS
-dev-ros/mavros_extras 1.2.0 1.4.0 9999: Extra nodes and plugins for mavros
-dev-ros/mavros_msgs 1.2.0 1.4.0 9999: Messages for MAVROS
+dev-ros/mavlink-gbp-release 2020.9.10 2021.2.2: MAVLink message marshaling library
+dev-ros/mavros 1.2.0 1.4.0 1.5.2 9999: MAVLink extendable communication node for ROS
+dev-ros/mavros_extras 1.2.0 1.4.0 1.5.2 9999: Extra nodes and plugins for mavros
+dev-ros/mavros_msgs 1.2.0 1.4.0 1.5.2 9999: Messages for MAVROS
 dev-ros/media_export 0.3.0 9999: Allow ROS packages to export media paths to each other
 dev-ros/message_filters 1.15.8 1.15.9 9999: Set of message filters which take in messages and outputs those at a later time
 dev-ros/message_generation 0.4.1 9999: Build-time dependencies for generating language bindings of messages
@@ -9589,15 +9589,15 @@ dev-ros/message_to_tf 0.3.0 9999: Translates pose information from different kin
 dev-ros/mk 1.15.5 1.15.6 1.15.7 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/monocam_settler 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
 dev-ros/move_base 1.17.0 1.17.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
-dev-ros/move_base_msgs 1.14.0 9999: Holds the action description and relevant messages for the move_base package
+dev-ros/move_base_msgs 1.14.1 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.17.0 1.17.1 9999: Move slow and clear
 dev-ros/moveit_msgs 0.11.1 9999: Messages, services and actions used by MoveIt
 dev-ros/nav_core 1.17.0 1.17.1 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.13.0 1.13.1 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.17.0 1.17.1 9999: Fast interpolated navigation function for creating plans for a mobile base
 dev-ros/nmea_msgs 1.1.0 9999: Messages related to data in the NMEA format
-dev-ros/nodelet 1.10.0-r1 9999: Runs multiple algorithms in the same process with zero copy transport
-dev-ros/nodelet_topic_tools 1.10.0 9999: Common nodelet tools such as a mux, demux and throttle
+dev-ros/nodelet 1.10.0-r1 1.10.1 9999: Runs multiple algorithms in the same process with zero copy transport
+dev-ros/nodelet_topic_tools 1.10.0 1.10.1 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.12 0.2.0 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.2 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.5 9999: Messages and serializations / conversion for the OctoMap library
@@ -9630,7 +9630,7 @@ dev-ros/random_numbers 0.3.2 9999: Wrappers for generating floating point values
 dev-ros/realtime_tools 1.16.1 9999: Set of tools that can be used from a hard realtime thread
 dev-ros/resource_retriever 1.12.6 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.3.0 9999: Launch files to open an RGBD device
-dev-ros/robot_localization 2.6.9 9999: Package of nonlinear state estimation nodes
+dev-ros/robot_localization 2.7.0 9999: Package of nonlinear state estimation nodes
 dev-ros/robot_pose_ekf 1.14.5 9999: Estimate the 3D pose of a robot from pose measurements from various sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.15.1 9999: Package for publishing the state of a robot to tf
@@ -9712,7 +9712,7 @@ dev-ros/rqt_py_console 0.4.9 9999: Python GUI plugin providing an interactive Py
 dev-ros/rqt_reconfigure 0.5.3 9999: Provides the way to view and edit the parameters from dynamic_reconfigure
 dev-ros/rqt_robot_dashboard 0.5.8 9999: Infrastructure for building robot dashboard plugins in rqt
 dev-ros/rqt_robot_monitor 0.5.13 9999: Displays messages that are published by diagnostic_aggregator
-dev-ros/rqt_robot_steering 0.5.11 9999: GUI plugin for steering a robot using Twist messages
+dev-ros/rqt_robot_steering 0.5.12 9999: GUI plugin for steering a robot using Twist messages
 dev-ros/rqt_runtime_monitor 0.5.8 9999: GUI plugin viewing DiagnosticsArray messages
 dev-ros/rqt_rviz 0.6.1 9999: GUI plugin embedding RViz
 dev-ros/rqt_service_caller 0.4.9 9999: GUI plugin for calling arbitrary services
@@ -9741,8 +9741,8 @@ dev-ros/stereo_image_proc 1.15.2 1.15.3 9999: Stereo and single image rectificat
 dev-ros/stereo_msgs 1.13.0 1.13.1 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.8.5 1.8.6 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.9.4 1.9.6 1.10.1 1.10.2 1.10.3 9999: diagnostic_aggregator tests
-dev-ros/test_nodelet 1.10.0 9999: Nodelet unit tests
-dev-ros/test_nodelet_topic_tools 1.10.0 9999: Nodelet topic tools unit tests
+dev-ros/test_nodelet 1.10.0 1.10.1 9999: Nodelet unit tests
+dev-ros/test_nodelet_topic_tools 1.10.0 1.10.1 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.15.8 1.15.9 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.15.8 1.15.9 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.15.7 1.15.8 1.15.9 9999: Unit tests for roscpp
@@ -9780,7 +9780,7 @@ dev-ros/urdf 1.13.2 9999: C++ parser for the Unified Robot Description Format (U
 dev-ros/urdf_parser_plugin 1.13.2 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.5.0 9999: URDF tutorials
 dev-ros/urg_c 1.0.405 9999: URG Helper / URG Widget / URG Library / urg_c
-dev-ros/urg_node 0.1.14 9999: ROS wrapper for the Hokuyo urg_c library
+dev-ros/urg_node 0.1.15 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.6 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.11.1-r1 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.11.1 9999: Converts between ROS structures and ViSP structures
@@ -15728,9 +15728,9 @@ ros-meta/image_transport_plugins 1.14.0 9999: Plugins for creating topics in rep
 ros-meta/imu_pipeline 0.3.0 9999: Tools for processing IMU messages for easier use by later subscribers
 ros-meta/imu_tools 1.2.2 9999: Various tools for IMU devices
 ros-meta/laser_pipeline 1.6.4 9999: Meta-package for processing laser data
-ros-meta/mavros 1.2.0 1.4.0 9999: Metapackage for mavros packages
+ros-meta/mavros 1.2.0 1.4.0 1.5.2 9999: Metapackage for mavros packages
 ros-meta/navigation 1.17.0 1.17.1 9999: 2D navigation stack
-ros-meta/nodelet_core 1.10.0 9999: Nodelet Core Metapackage
+ros-meta/nodelet_core 1.10.0 1.10.1 9999: Nodelet Core Metapackage
 ros-meta/perception 1.5.0 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.7.1 1.7.2 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.12.4 1.13.0 9999: URDF description and 3D models of robot components of the PR2 robot
