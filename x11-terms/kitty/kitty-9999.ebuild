@@ -56,7 +56,7 @@ BDEPEND="virtual/pkgconfig"
 	$(python_gen_cond_dep '>=dev-python/sphinx-1.7[${PYTHON_MULTI_USEDEP}]')"
 
 PATCHES=(
-	"${FILESDIR}"/kitty-0.17.2-flags.patch
+	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-remove-terminfo.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
