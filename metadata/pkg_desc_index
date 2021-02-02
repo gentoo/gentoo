@@ -8047,7 +8047,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.4: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4 0.44.5: CloudFormation Linter
-dev-python/cftime 1.3.0 1.4.0: Time-handling functionality from netcdf4-python
+dev-python/cftime 1.3.0 1.4.0 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -9187,7 +9187,7 @@ dev-python/sshtunnel 0.3.1: Pure Python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
 dev-python/stapler 1.0.0_p20200531: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.3.0: A simple statsd client
-dev-python/statsmodels 0.11.1 0.12.0 0.12.1 9999: Statistical computations and models for use with SciPy
+dev-python/statsmodels 0.11.1 0.12.0 0.12.1 0.12.2: Statistical computations and models for use with SciPy
 dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
 dev-python/stevedore 3.3.0: Manage dynamic plugins for Python applications
 dev-python/stomp-py 6.1.0: Python client library for the STOMP messaging protocol
@@ -10606,7 +10606,7 @@ dev-util/ald 0.1.7-r2: Assembly Language Debugger
 dev-util/amtterm 1.6: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 4.0.1.0.193.6626763 4.1.0.19.201.6858069 4.1.1.0.201.6953283: Android development environment based on IntelliJ IDEA
+dev-util/android-studio 4.0.1.0.193.6626763 4.1.0.19.201.6858069 4.1.1.0.201.6953283 4.1.2.0.201.7042882: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.34.0: A versatile IDE for GNOME
 dev-util/apitrace 9.0-r1: Tool for tracing, analyzing, and debugging graphics APIs
