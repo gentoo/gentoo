@@ -22,9 +22,7 @@ IUSE="static test"
 RESTRICT="!test? ( test )"
 
 LIB_DEPEND="dev-libs/expat[static-libs(+)]
-	dev-libs/libaio[static-libs(+)]
-	dev-libs/boost:=[static-libs(+)]
-"
+	dev-libs/libaio[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
@@ -38,7 +36,7 @@ DEPEND="${RDEPEND}
 		dev-util/cucumber
 		dev-util/aruba
 	)
-"
+	dev-libs/boost"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-build-fixes.patch
