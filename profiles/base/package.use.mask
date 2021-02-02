@@ -110,12 +110,11 @@ kde-apps/kipi-plugins vkontakte
 media-gfx/exact-image lua
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
-# USE=doc broken on 1.47.0
+# USE=doc broken on 1.47.0 and later
 # error: unresolved link to `crate::os::unix::ffi::OsStrExt`
-#
-# USE=miri seems to be not working on 1.48.0
-~dev-lang/rust-1.47.0 doc
-~dev-lang/rust-1.48.0 doc miri
+# miri seems to be not working on 1.48.0 and later
+>=dev-lang/rust-1.47.0 doc
+>=dev-lang/rust-1.48.0 doc miri
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
