@@ -25,7 +25,7 @@ app-cdr/burncdda mp3
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # Block test deps on packages until they can be updated
 # Old phpunit does not work with new PHP and last is vulnerable
-dev-php/PEAR-Crypt_GPG test
+<dev-php/PEAR-Crypt_GPG-1.6.4 test
 dev-php/PEAR-Text_Wiki_Mediawiki test
 dev-php/PEAR-VersionControl_SVN test
 dev-php/PHP_CodeSniffer test
