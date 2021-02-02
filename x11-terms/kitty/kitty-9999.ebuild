@@ -30,6 +30,7 @@ RDEPEND="
 	>=media-libs/harfbuzz-1.5.0:=
 	media-libs/libcanberra
 	media-libs/libpng:0=
+	media-libs/lcms
 	sys-apps/dbus
 	sys-libs/zlib
 	x11-libs/libxcb[xkb]
