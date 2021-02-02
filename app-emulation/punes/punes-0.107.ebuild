@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,9 +12,10 @@ SRC_URI="https://github.com/punesemu/puNES/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cg"
+IUSE="cg ffmpeg"
 
 RDEPEND="
+	ffmpeg? ( media-video/ffmpeg:= )
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtsvg:5
@@ -30,6 +31,10 @@ BDEPEND="
 
 S="${WORKDIR}/puNES-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/${P}_ffmpeg-configure.patch"
+)
+
 src_prepare() {
 	default
 
@@ -42,7 +47,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_with cg opengl-nvidia-cg)
+		$(use_with cg opengl-nvidia-cg) \
+		$(use_with ffmpeg)
 }
 
 pkg_postinst() {

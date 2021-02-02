@@ -19,6 +19,8 @@ RDEPEND="!<x11-misc/i3blocks-1.5
 	>=x11-misc/i3blocks-1.5"
 BDEPEND=""
 
+PATCHES=( "${FILESDIR}"/${PN}-respect-CFLAGS.patch )
+
 src_prepare() {
 	sed -i -e '/^$(_BLOCKS):/ s/$/ installdirs/' Makefile
 	default
