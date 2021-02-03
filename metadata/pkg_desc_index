@@ -1146,7 +1146,7 @@ app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a huma
 app-crypt/tpm2-tss 2.4.3 2.4.5 3.0.3: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
-app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1 2020.02.11.2: GnuPG archive keys of the Ubuntu archive
+app-crypt/ubuntu-keyring 2020.02.11.2 2020.06.17.1: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p7 1.24_p8: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.2.1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
@@ -2540,7 +2540,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.6 1.2.8: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.6 1.2.8 1.2.9: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.4.0 4.4.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
@@ -15167,7 +15167,7 @@ net-misc/ipmiview 2.18.0.201007: A GUI application that allows to manage multipl
 net-misc/iprange 1.0.4: A tool capable of managing sets of IPs
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r2: ipsvd is a set of internet protocol service daemons for Unix
-net-misc/iputils 20190709-r1 20200821-r2 99999999: Network monitoring tools including ping and ping6
+net-misc/iputils 20190709-r1 20200821-r2 20210202 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0: IPv6 address calculator
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
@@ -18028,7 +18028,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.7.0 85.0 85.0-r1: Firefox Web Browser
 www-client/firefox-bin 78.7.0 85.0: Firefox Web Browser
 www-client/google-chrome 88.0.4324.146: The web browser from Google
-www-client/google-chrome-beta 89.0.4389.23: The web browser from Google
+www-client/google-chrome-beta 89.0.4389.40: The web browser from Google
 www-client/google-chrome-unstable 90.0.4400.8: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18071,7 +18071,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 88.0.4324.146 89.0.4389.23_beta 90.0.4400.8_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 88.0.4324.146 89.0.4389.40_beta 90.0.4400.8_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
