@@ -28,6 +28,11 @@ src_configure() {
 		NATDYNLINK=$(usex ocamlopt true false)
 }
 
+src_compile() {
+	emake src/ocamlbuild_config.cmo
+	default
+}
+
 src_install() {
 	emake CHECK_IF_PREINSTALLED=false DESTDIR="${D}" install
 	dodoc Changes
