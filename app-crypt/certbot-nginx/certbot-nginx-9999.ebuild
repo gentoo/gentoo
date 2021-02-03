@@ -27,6 +27,6 @@ IUSE=""
 RDEPEND="
 	>=app-crypt/acme-1.4.0[${PYTHON_USEDEP}]
 	>=app-crypt/certbot-1.6.0[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-17.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pyparsing-2.2.0[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
