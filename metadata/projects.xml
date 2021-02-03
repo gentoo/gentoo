@@ -291,10 +291,6 @@
     <name>Security Audit Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Auditing</url>
     <description>The Security Audit Project is focused upon auditing packages for security issues. The aim of the project is to audit as many of the packages available through Gentoo Linux stable Portage tree as possible for potential flaws.</description>
-    <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
-    </member>
     <member is-lead="1">
       <email>zx2c4@gentoo.org</email>
       <name>Jason A. Donenfeld</name>
@@ -1202,10 +1198,6 @@
       <role>Lead, developer, tester,...</role>
     </member>
     <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
-    </member>
-    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Project overview, infrastructure liaison, Gleps</role>
@@ -1638,10 +1630,6 @@
       <name>Aaron Bauman</name>
     </member>
     <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
-    </member>
-    <member>
       <email>whissi@gentoo.org</email>
       <name>Thomas Deutschmann</name>
     </member>
@@ -1753,10 +1741,6 @@
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-    </member>
-    <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
@@ -2539,10 +2523,6 @@
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
       <role>Facebook (admin), Twitter</role>
-    </member>
-    <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
     </member>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
