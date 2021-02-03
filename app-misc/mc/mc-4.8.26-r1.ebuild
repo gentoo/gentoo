@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+PATCHES=("${FILESDIR}"/${P}-shadow-crash.patch)
+
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
