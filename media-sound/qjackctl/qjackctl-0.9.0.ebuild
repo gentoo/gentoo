@@ -31,6 +31,10 @@ RDEPEND="${DEPEND}
 	dev-qt/qtsvg:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-disable-git.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCONFIG_ALSA_SEQ=$(usex alsa 1 0)
