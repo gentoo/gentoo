@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -428,7 +428,7 @@ pkg_postinst() {
 
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least ${MY_MAJOR_RELEASE_NUMBER} ${v}; then
+		if ! ver_test ${v} -ge ${MY_MAJOR_RELEASE_NUMBER}; then
 			# This is an upgrade
 
 			elog "You are upgrading from a previous major version. It is highly recommended that you read"
