@@ -12,7 +12,7 @@ S="${WORKDIR}/MilkyTracker-${PV}"
 
 LICENSE="|| ( GPL-3 MPL-1.1 ) AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="alsa jack"
 
 RDEPEND="
