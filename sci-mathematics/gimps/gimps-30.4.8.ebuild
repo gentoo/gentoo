@@ -33,20 +33,20 @@ RDEPEND="net-misc/curl
 	>=dev-libs/gmp-6.1.2"
 
 S="${WORKDIR}"
-I="/opt/gimps"
+OPTINSTALLDIR="/opt/gimps"
 
 QA_PREBUILT="opt/gimps/mprime"
 
 DOCS=( license.txt readme.txt stress.txt whatsnew.txt undoc.txt )
 
 src_install() {
-	dodir ${I}
+	dodir ${OPTINSTALLDIR}
 	keepdir /var/lib/gimps
 	pax-mark m mprime
-	cp mprime "${D}/${I}" || die
-	fperms a-w "${I}/mprime"
-	fowners root:0 "${I}"
-	fowners root:0 "${I}/mprime"
+	cp mprime "${D}/${OPTINSTALLDIR}" || die
+	fperms a-w "${OPTINSTALLDIR}/mprime"
+	fowners root:0 "${OPTINSTALLDIR}"
+	fowners root:0 "${OPTINSTALLDIR}/mprime"
 
 	einstalldocs
 
