@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -947,6 +947,10 @@ glibc_do_configure() {
 		# locale data is arch-independent
 		# https://bugs.gentoo.org/753740
 		libc_cv_complocaledir='${exec_prefix}/lib/locale'
+
+		# -march= option tricks build system to infer too
+		# high ISA level: https://sourceware.org/PR27318
+		libc_cv_include_x86_isa_level=no
 
 		${EXTRA_ECONF}
 	)
