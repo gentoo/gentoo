@@ -1917,7 +1917,7 @@ app-emacs/muse 3.20-r1: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20200303: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20200303 20210203: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
@@ -14200,7 +14200,7 @@ media-video/transcode 1.1.7-r5: Utilities for transcoding video and audio codecs
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.13-r2: UniFi Video Server
-media-video/ushare 1.1a-r9 1.1a_p20200824: uShare is a UPnP (TM) A/V & DLNA Media Server
+media-video/ushare 1.1a_p20200824: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device whose output is its own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager
@@ -14366,7 +14366,7 @@ net-analyzer/nessus-agent-bin 8.2.1: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.13.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.28.0 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.29.0 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.7: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1 0.8.6: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
@@ -15276,7 +15276,7 @@ net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of anoth
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/realtek-r8152 2.14.0: Out-of-tree driver for Realtek's 2.5 GbE USB NICs.
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.4.10 1.4.10-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.4.10 1.4.10-r1 1.4.11: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.2.3-r1 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
@@ -17053,7 +17053,7 @@ sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space co
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.8.0 0.8.1 0.8.3 0.8.4 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.13.0-r1 2.15.0: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.13.0-r1 2.15.0-r1: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.99e: Command-line tools for building SSL client-server applications
