@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_7 )
+EAPI=7
+
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Simplified object-oriented Python extension module for libpcap"
@@ -13,18 +14,25 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	net-libs/libpcap
-"
-DEPEND="
-	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+RDEPEND="net-libs/libpcap"
+DEPEND="${RDEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.3-mktemp.patch
 )
 
 python_compile() {
 	local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+
+	# Needed to gain Python 3.9 compatibility
+	cython pcap.pyx || die "Failed to regenerate pcap.pyx"
+
+	# Now build as usual
 	distutils-r1_python_compile
+}
+
+python_test() {
+	cd tests || die
+	"${EPYTHON}" test.py || die
 }
