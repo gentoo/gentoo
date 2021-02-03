@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -900,7 +900,7 @@ pkg_postinst() {
 		# do not need to distinguish between stable and mainline
 		local _need_to_fix_CVE2013_0337=1
 
-		if version_is_at_least "1.4.1-r2" "${_replacing_version}"; then
+		if ver_test ${_replacing_version} -ge 1.4.1-r2; then
 			# We are updating an installation which should already be fixed
 			_need_to_fix_CVE2013_0337=0
 			debug-print "Skipping CVE-2013-0337 ... existing installation should not be affected!"
@@ -911,7 +911,7 @@ pkg_postinst() {
 
 		# Do we need to inform about HTTPoxy mitigation?
 		# In repository since commit 8be44f76d4ac02cebcd1e0e6e6284bb72d054b0f
-		if ! version_is_at_least "1.10" "${_replacing_version_branch}"; then
+		if ver_test ${_replacing_version_branch} -lt 1.10; then
 			# Updating from <1.10
 			_has_to_show_httpoxy_mitigation_notice=1
 			debug-print "Need to inform about HTTPoxy mitigation!"
@@ -934,7 +934,7 @@ pkg_postinst() {
 					_fixed_in_pvr=
 			esac
 
-			if [[ -z "${_fixed_in_pvr}" ]] || version_is_at_least "${_fixed_in_pvr}" "${_replacing_version}"; then
+			if [[ -z "${_fixed_in_pvr}" ]] || ver_test ${_replacing_version} -ge ${_fixed_in_pvr}; then
 				# We are updating an installation where we already informed
 				# that we are mitigating HTTPoxy per default
 				_has_to_show_httpoxy_mitigation_notice=0
@@ -949,7 +949,7 @@ pkg_postinst() {
 		# All branches up to 1.11 are affected
 		local _need_to_fix_CVE2016_1247=1
 
-		if ! version_is_at_least "1.10" "${_replacing_version_branch}"; then
+		if ver_test ${_replacing_version_branch} -lt 1.10; then
 			# Updating from <1.10
 			_has_to_adjust_permissions=1
 			debug-print "Need to adjust permissions to fix CVE-2016-1247!"
@@ -972,7 +972,7 @@ pkg_postinst() {
 					_fixed_in_pvr=
 			esac
 
-			if [[ -z "${_fixed_in_pvr}" ]] || version_is_at_least "${_fixed_in_pvr}" "${_replacing_version}"; then
+			if [[ -z "${_fixed_in_pvr}" ]] || ver_test ${_replacing_version} -ge ${_fixed_in_pvr}; then
 				# We are updating an installation which should already be adjusted
 				# or which was never affected
 				_need_to_fix_CVE2016_1247=0
