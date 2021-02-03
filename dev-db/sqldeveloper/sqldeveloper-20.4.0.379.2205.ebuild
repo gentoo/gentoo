@@ -17,12 +17,12 @@ KEYWORDS="-* ~amd64"
 
 IUSE="mssql mysql postgres sybase"
 
-RDEPEND="mssql? ( dev-java/jtds:1.3 )
+RDEPEND=">=dev-java/openjdk-8:*[javafx]
+	>=virtual/jre-1.8:*
+	mssql? ( dev-java/jtds:1.3 )
 	mysql? ( dev-java/jdbc-mysql:0 )
 	postgres? ( dev-java/jdbc-postgresql:0 )
-	sybase? ( dev-java/jtds:1.3 )
-	>=dev-java/openjdk-8:*[javafx]
-	>=virtual/jre-1.8:*"
+	sybase? ( dev-java/jtds:1.3 )"
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
