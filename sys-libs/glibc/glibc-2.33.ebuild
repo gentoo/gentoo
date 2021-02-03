@@ -948,6 +948,10 @@ glibc_do_configure() {
 		# https://bugs.gentoo.org/753740
 		libc_cv_complocaledir='${exec_prefix}/lib/locale'
 
+		# -march= option tricks build system to infer too
+		# high ISA level: https://sourceware.org/PR27318
+		libc_cv_include_x86_isa_level=no
+
 		${EXTRA_ECONF}
 	)
 
