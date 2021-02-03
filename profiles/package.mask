@@ -202,13 +202,6 @@ app-crypt/acme-client
 # Removal in 30 days, bug #444470
 dev-libs/ilbc-rfc3951
 
-# Sam James <sam@gentoo.org> (2021-01-01)
-# UnrealIRCd 4.x is EOL. Please upgrade to 5.x.
-# To be removed shortly.
-# https://www.unrealircd.org/docs/UnrealIRCd_4_EOL
-# bug 762715
-<net-irc/unrealircd-5.0.0
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
 # Needs a port to haskell-src-exts compatible with ghc-8.8.
 # https://github.com/ndmitchell/derive/pull/37
