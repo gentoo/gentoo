@@ -8385,7 +8385,7 @@ dev-python/jedi 0.17.2-r1 0.18.0: Autocompletion library for Python
 dev-python/jeepney 0.6.0: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 4.2.1 4.2.2: Python wrapper for jikan.moe API.
-dev-python/jinja 2.11.2-r1 2.11.3: A full-featured template engine for Python
+dev-python/jinja 2.11.3: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
@@ -14744,7 +14744,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
 net-irc/telepathy-idle 0.2.0-r3: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.6 5.0.7 5.0.7-r1 5.0.7-r2: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.9 3.0 3.0-r100 9999: Portable and multi-interface IRC client
+net-irc/weechat 2.9 3.0 3.0-r100 3.0.1 9999: Portable and multi-interface IRC client
 net-irc/znc 1.8.1 1.8.2 9999: An advanced IRC Bouncer
 net-irc/znc-clientbuffer 1.0.48: A ZNC module which provides client specific buffers
 net-irc/znc-igloo-push 20200520: A ZNC module which provides push notifications for Igloo client
@@ -17360,7 +17360,7 @@ sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian
 sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
-sys-devel/rust-std 1.46.0 1.47.0 1.48.0: Rust standard library, standalone (for crossdev)
+sys-devel/rust-std 1.46.0 1.47.0 1.48.0 1.49.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.28 0.5.31 9999: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.2 9999: C semantic parser
