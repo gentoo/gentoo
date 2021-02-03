@@ -1003,7 +1003,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 1.9.0 1.10.1 1.11.0 9999: An implementation of the ACME protocol
+app-crypt/acme 1.10.1 1.11.0 1.12.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.8-r1 9999: A pure Unix shell script implementing ACME client protocol
 app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -1019,10 +1019,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.33 1.4.34: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.9.0 1.10.1 1.11.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 1.9.0 1.10.1 1.11.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 1.10.1 1.11.0 1.12.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 1.10.1 1.11.0 1.12.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0-r1: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 1.9.0 1.10.1 1.11.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 1.10.1 1.11.0 1.12.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -15435,7 +15435,7 @@ net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2: A fork of nicotine, a Soulseek cli
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.3.1 4.3.3 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
-net-p2p/retroshare 0.6.5: P2P private sharing application
+net-p2p/retroshare 0.6.5 0.6.5-r1: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/syncthing 1.10.0 1.12.1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
@@ -18483,7 +18483,7 @@ x11-misc/polybar 3.4.3 3.5.4: A fast and easy-to-use tool for creating status ba
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
 x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
-x11-misc/py3status 3.31: py3status is an extensible i3status wrapper written in python
+x11-misc/py3status 3.32: py3status is an extensible i3status wrapper written in python
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0 5.1.2: Lightweight and cross-platform clipboard history applet
