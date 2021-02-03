@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Virtual for BSD-like make (to be used with get_bmake)"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos"
+KEYWORDS="amd64 ppc x86 ~ppc-macos"
 
 RDEPEND="kernel_linux? ( sys-devel/bmake )
 	kernel_SunOS? ( sys-devel/bmake )
