@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/jpeg virtual/libusb:1 graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] ) !graphicsmagick? ( media-gfx/imagemagick:=[cxx] ) gui? ( dev-cpp/gtkmm:2.4 ) test? ( app-text/tesseract[png,tiff,training,-opencl] media-fonts/dejavu virtual/imagemagick-tools[png,tiff] )
+DESCRIPTION=EPSON Image Scan v3 for Linux
+EAPI=7
+HOMEPAGE=https://support.epson.net/linux/en/imagescanv3.php https://gitlab.com/utsushi/utsushi
+IUSE=graphicsmagick gui test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/jpeg virtual/libusb:1 graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] ) !graphicsmagick? ( media-gfx/imagemagick:=[cxx] ) gui? ( dev-cpp/gtkmm:2.4 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_3.65.0.orig.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1e59e990efaf1691417202fc64c85bb3
