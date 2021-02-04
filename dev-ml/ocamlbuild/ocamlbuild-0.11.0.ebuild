@@ -24,7 +24,7 @@ DEPEND="${DEPEND}
 src_prepare() {
 	sed -i \
 		-e "/package_exists/s:camlp4.macro:xxxxxx:" \
-		-e "/package_exists/s:menhirLib.macro:xxxxxx:" \
+		-e "/package_exists/s:menhirLib:xxxxxx:" \
 		testsuite/external.ml || die
 	default
 }
