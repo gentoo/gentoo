@@ -1,0 +1,10 @@
+--- a/src/client/client.h
++++ b/src/client/client.h
+@@ -49,7 +49,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ #ifdef QMAX
+ #define random()	((rand () & 0x7fff) / ((float)0x7fff))
+ #define crandom()	(2.0 * (random() - 0.5))
+-vec3_t clientOrg; //lerped org of client for server->client side effects
+ 
+ void vectoangles2 (vec3_t value1, vec3_t angles);
+ 
