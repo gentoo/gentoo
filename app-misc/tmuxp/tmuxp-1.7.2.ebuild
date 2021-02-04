@@ -36,7 +36,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/tmuxp-1.6.4-tests.patch"
-	"${FILESDIR}/tmuxp-1.7.0-tests.patch"
+	"${FILESDIR}/tmuxp-1.7.2-tests.patch"
 )
 
 distutils_enable_tests --install pytest
