@@ -2608,7 +2608,7 @@ app-misc/tmux 3.1c 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1 4.1.2: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.4 1.5.5 1.5.6 1.6.2 1.6.4 1.7.0: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.4 1.6.5 1.7.2: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
@@ -8292,7 +8292,7 @@ dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.24.0 1.25.0 1.25.1: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.24.0: Google Authentication Library
+dev-python/google-auth 1.24.0 1.25.0: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
@@ -15493,7 +15493,7 @@ net-proxy/haproxy 1.8.27-r1 1.8.28 2.0.14-r2 2.0.19-r1 2.0.20 2.0.9999 2.1.4-r2 
 net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/microsocks 1.0.1_p20200805: Multithreaded, small, efficient SOCKS5 server
+net-proxy/microsocks 1.0.2: Multithreaded, small, efficient SOCKS5 server
 net-proxy/mitmproxy 6.0.2: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
