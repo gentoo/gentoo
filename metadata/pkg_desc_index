@@ -5060,7 +5060,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.25 1.2.26: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 8.5.61 9.0.41: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 8.5.61 8.5.63 9.0.41: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -12510,7 +12510,7 @@ mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple messa
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.6_pre20210110-r1: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.6_pre20210201: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge 1.5.4 1.5.7: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
@@ -14906,7 +14906,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 1.42.0 1.43.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.20.1 14.15.4 15.5.1 15.6.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.20.1 14.15.4 15.6.0 15.8.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 3.3 3.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -18017,7 +18017,7 @@ www-apps/webdavcgi 1.1.2: A Perl CGI for accessing and sharing files, or calenda
 www-apps/webmcp 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 5.6: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 5.6.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 88.0.4324.96 89.0.4389.23 90.0.4400.8: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
@@ -18100,7 +18100,7 @@ www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.107 8.5.61 9.0.41: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
+www-servers/tomcat 7.0.107 8.5.61 8.5.63 9.0.41: Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1 2.0.19.1-r100: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
