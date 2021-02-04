@@ -16,7 +16,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
 	acct-group/postfix
@@ -36,10 +36,8 @@ DEPEND="
 	postgres? ( dev-db/postgresql:* )
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1.1:0= )
-		libressl? ( >=dev-libs/libressl-2.9.1:0= )
-	)"
+	ssl? ( >=dev-libs/openssl-1.1.1:0= )
+	"
 
 RDEPEND="${DEPEND}
 	memcached? ( net-misc/memcached )
@@ -58,9 +56,7 @@ RDEPEND="${DEPEND}
 	!net-mail/fastforward
 	selinux? ( sec-policy/selinux-postfix )"
 
-# no libressl support yet for >=postfix_pre20200725
-REQUIRED_USE="ldap-bind? ( ldap sasl )
-	!libressl"
+REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
