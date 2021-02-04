@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-DESCRIPTION="a client for signing certificates with an ACME-server"
+DESCRIPTION="A client for signing certificates with an ACME-server"
 HOMEPAGE="https://github.com/lukas2511/dehydrated"
 SRC_URI="https://github.com/lukas2511/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
