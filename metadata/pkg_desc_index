@@ -4206,7 +4206,7 @@ dev-haskell/maccatcher 2.1.5-r1: Obtain the host MAC address on *NIX and Windows
 dev-haskell/magic 1.1: Interface to C file/magic library
 dev-haskell/markdown-unlit 0.5.0: Literate Haskell support for Markdown
 dev-haskell/math-functions 0.3.3.0: Special functions and Chebyshev polynomials
-dev-haskell/megaparsec 8.0.0: Monadic parser combinators
+dev-haskell/megaparsec 8.0.0 9.0.1: Monadic parser combinators
 dev-haskell/memory 0.15.0: memory and related abstraction stuff
 dev-haskell/memotrie 0.6.10: Trie-based memo functions
 dev-haskell/mersenne-random-pure64 0.2.2.0: Generate high quality pseudorandom numbers purely using a Mersenne Twister
@@ -7983,7 +7983,7 @@ dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 20.7.1 20.12.2 20.12.3: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
-dev-python/autopep8 1.5.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.5.4 1.5.5 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.33.0 1.34.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
@@ -8850,7 +8850,7 @@ dev-python/pyscreenshot 2.2: Python screenshot library
 dev-python/pyserial 3.5: Python Serial Port extension
 dev-python/pyside2 5.15.1: Python bindings for the Qt framework
 dev-python/pyside2-tools 5.15.1-r1: PySide development tools (pyside2-lupdate with support for Python)
-dev-python/pysimdjson 3.1.1-r1: Python bindings for simdjson
+dev-python/pysimdjson 3.1.1-r1 3.2.0: Python bindings for simdjson
 dev-python/pysmi 0.3.4: Python Lex & Yacc
 dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
@@ -8979,7 +8979,7 @@ dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and 
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-troveclient 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
-dev-python/python-utils 2.3.0 2.4.0 2.5.1 2.5.2 2.5.3 2.5.5: Collection of small Python functions & classes
+dev-python/python-utils 2.3.0 2.4.0 2.5.1 2.5.2 2.5.3 2.5.5 2.5.6: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.29: A fully functional X client library for Python, written in Python
@@ -15365,7 +15365,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
