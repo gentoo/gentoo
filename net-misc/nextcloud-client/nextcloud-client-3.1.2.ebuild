@@ -14,21 +14,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc dolphin libressl nautilus test"
 
-COMMON_DEPEND=">=dev-db/sqlite-3.4:3
+COMMON_DEPEND=">=dev-db/sqlite-3.34:3
 	dev-libs/qtkeychain[gnome-keyring,qt5(+)]
-	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtquickcontrols2:5
-	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwebengine:5[widgets]
+	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
-	sys-fs/inotify-tools
+	sys-libs/zlib
 	dolphin? (
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/kio:5
@@ -40,6 +38,8 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtxml:5
 	doc? (
 		dev-python/sphinx
 		dev-tex/latexmk
