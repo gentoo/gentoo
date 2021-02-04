@@ -26,10 +26,10 @@ RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 	)
 	seccomp? ( sys-libs/libseccomp )
 "
-# >=linux-headers-4.11 to pick linux headers with statx, bug #737094
+# >=linux-headers-5.8 to pick linux headers with faccessat2, bug #768624
 DEPEND="
 	${RDEPEND}
-	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-4.11 ) )
+	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-5.8 ) )
 "
 BDEPEND="
 	caps? ( virtual/pkgconfig )
