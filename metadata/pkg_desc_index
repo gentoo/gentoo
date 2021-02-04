@@ -13532,7 +13532,7 @@ media-plugins/kodi-pvr-hts 8.2.2 9999: Tvheadend Live TV and Radio PVR client ad
 media-plugins/kodi-pvr-iptvsimple 7.1.0 7.2.0 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 6.0.1 8.0.0 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 7.1.1 7.2.0 9999: MythTV PVR for Kodi
-media-plugins/kodi-pvr-nextpvr 8.2.0 9999: Kodi's NextPVR client addon
+media-plugins/kodi-pvr-nextpvr 8.2.1 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 6.0.0 7.0.0 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 5.0.0 6.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 6.0.0 6.0.1 6.0.2 7.0.0 9999: Kodi's Stalker client addon
@@ -17555,7 +17555,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.10.9 5.10.10 5.10.11 5.10.12: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12: Full sources including the Gentoo patchset for the 5.10 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.4.255 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.9.255 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.14.219 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 4.19.173 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
