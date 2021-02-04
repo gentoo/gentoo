@@ -3020,7 +3020,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.61 0.61-r1 0.62: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928 0.9.6_p20190928-r100: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 20.11.0 20.12.1 21.01.0 21.02.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 20.11.0 21.01.0 21.02.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -7941,11 +7941,11 @@ dev-python/aiohttp 3.6.2-r1 3.7.1-r1 3.7.2-r1 3.7.3: http client/server for asyn
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.18.4-r1 0.18.5: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.18.4-r1 0.18.5 0.19: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.4.3 1.5.0 1.5.1 1.5.2 1.5.3: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.4.3 1.5.0 1.5.1 1.5.2 1.5.3 1.5.4: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0 8.1.1: A library for parsing ISO 8601 strings
@@ -8019,8 +8019,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8307,7 +8307,7 @@ dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1 2.4.0: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.16.2: A Python Interface to GStreamer
-dev-python/guessit 3.2.0: Python library for guessing information from video filenames
+dev-python/guessit 3.2.0 3.3.0: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
@@ -12276,7 +12276,7 @@ kde-frameworks/kiconthemes 5.77.0 5.78.0: Framework for icon theming and configu
 kde-frameworks/kidletime 5.77.0 5.78.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.77.0 5.78.0-r1: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.77.0 5.78.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.77.0-r1 5.78.0: Framework providing transparent file and data management
+kde-frameworks/kio 5.77.0-r1 5.78.0-r1: Framework providing transparent file and data management
 kde-frameworks/kirigami 5.77.0 5.77.0-r1 5.78.0-r1: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.77.0 5.78.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.77.0 5.78.0: Framework providing additional widgets for item models
@@ -15112,7 +15112,7 @@ net-misc/dropbox-cli 2020.03.04: Cli interface for dropbox (python), part of nau
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 4.0.9-r1: User friendly Bitcoin client
+net-misc/electrum 4.0.9-r1 4.0.9-r2: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
@@ -15365,7 +15365,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.16 2021.01.24.1 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17502,7 +17502,7 @@ sys-fs/lvm2 2.02.187-r2 2.03.11: User-land utilities for LVM2 (device-mapper) so
 sys-fs/lxcfs 4.0.6 4.0.7: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
-sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0 2.32.0 2.32.1: A featureful union filesystem
+sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0 2.32.0 2.32.1 2.32.2: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 2.1.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
