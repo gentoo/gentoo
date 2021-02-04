@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=compile configure install prepare
 DEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] test? ( dev-ml/findlib )
 DESCRIPTION=Generic build tool with built-in rules for building OCaml library and programs
 EAPI=7
@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?] !<dev-ml/findlib-1.6.1-r1
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/ocaml/ocamlbuild/archive/0.14.0.tar.gz -> ocamlbuild-0.14.0.tar.gz
-_md5_=91617aa7d18be4c513082d693404e18a
+_md5_=8580480631ced333c9c0abf6f841fc75
