@@ -60,7 +60,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.13a_p20121015-parse-empty.patch \
 		"${FILESDIR}"/${PN}-1.13a_p20121015-draw-charset.patch \
 		"${FILESDIR}"/${PN}-1.13a_p20121015-draw-stringtoolong.patch \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-implicit-declaration.patch
+		"${FILESDIR}"/${PN}-1.13a_p20121015-implicit-declaration.patch \
+		"${FILESDIR}"/${PN}-1.13a_p20121015-fno-common.patch
 
 	if ! use imlib; then
 		epatch "${FILESDIR}"/${PN}-1.13a-libpng15.patch
