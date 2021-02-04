@@ -71,7 +71,10 @@ PDEPEND="
 	>=kde-frameworks/kded-${PVCUT}:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.77.0-gcc11.patch" ) # bug 766480
+PATCHES=(
+	"${FILESDIR}/${PN}-5.77.0-gcc11.patch" # bug 766480
+	"${FILESDIR}/${P}-copyjob-crash.patch" # KDE-Bug 431731
+)
 
 src_configure() {
 	local mycmakeargs=(
