@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,18 +10,22 @@ SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="acl +daemon debug elogind +introspection lvm nls selinux systemd vdo"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="acl +daemon debug elogind +introspection lvm nls selinux systemd vdo zram"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
 	elogind? ( daemon )
 	systemd? ( daemon )
+	zram? ( systemd )
 "
+
+# See configure.ac file for the required min version
+BLOCKDEV_MIN_VER="2.25"
 
 COMMON_DEPEND="
 	>=sys-auth/polkit-0.110
-	>=sys-libs/libblockdev-2.24[cryptsetup,lvm?,vdo?]
+	>=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[cryptsetup,lvm?,vdo?]
 	virtual/udev
 	acl? ( virtual/acl )
 	daemon? (
@@ -33,6 +37,7 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	lvm? ( sys-fs/lvm2 )
 	systemd? ( >=sys-apps/systemd-209 )
+	zram? ( >=sys-libs/libblockdev-${BLOCKDEV_MIN_VER}[kbd] )
 "
 # util-linux -> mount, umount, swapon, swapoff (see also #403073)
 RDEPEND="${COMMON_DEPEND}
@@ -96,6 +101,7 @@ src_configure() {
 		$(use_enable lvm lvmcache)
 		$(use_enable nls)
 		$(use_enable vdo)
+		$(use_enable zram)
 	)
 	econf "${myeconfargs[@]}"
 }
