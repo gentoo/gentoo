@@ -21,6 +21,14 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	test? ( dev-ml/findlib )"
 
+src_prepare() {
+	sed -i \
+		-e "/package_exists/s:camlp4.macro:xxxxxx:" \
+		-e "/package_exists/s:menhirLib.macro:xxxxxx:" \
+		testsuite/external.ml || die
+	default
+}
+
 src_configure() {
 	emake -f configure.make Makefile.config \
 		PREFIX="${EPREFIX}/usr" \
@@ -29,6 +37,11 @@ src_configure() {
 		OCAML_NATIVE=$(usex ocamlopt true false) \
 		OCAML_NATIVE_TOOLS=$(usex ocamlopt true false) \
 		NATDYNLINK=$(usex ocamlopt true false)
+}
+
+src_compile() {
+	emake src/ocamlbuild_config.cmo
+	default
 }
 
 src_install() {
