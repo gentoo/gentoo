@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst
-DESCRIPTION=a client for signing certificates with an ACME-server
+DESCRIPTION=A client for signing certificates with an ACME-server
 EAPI=7
 HOMEPAGE=https://github.com/lukas2511/dehydrated
 IUSE=+cron
@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=acct-group/dehydrated acct-user/dehydrated app-shells/bash net-misc/curl cron? ( virtual/cron )
 SLOT=0
 SRC_URI=https://github.com/lukas2511/dehydrated/archive/v0.7.0.tar.gz -> dehydrated-0.7.0.tar.gz
-_md5_=ac1233bb0263cf09353c07b5768b396f
+_md5_=7b04e01be35fedb934ac9254a2d258a3

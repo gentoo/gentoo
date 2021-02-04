@@ -1,14 +1,14 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install unpack
-DEPEND=dev-libs/expat media-libs/libsndfile media-libs/libglvnd doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo[X] ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo[X] )
+DEFINED_PHASES=compile install postinst postrm preinst prepare unpack
+DEPEND=dev-libs/expat media-libs/libsndfile media-libs/libglvnd[X] doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo[X] ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo[X] ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Linux Studio Plugins
 EAPI=7
 HOMEPAGE=https://lsp-plug.in
 IUSE=doc jack ladspa +lv2
 LICENSE=LGPL-3
 PROPERTIES=live
-RDEPEND=dev-libs/expat media-libs/libsndfile media-libs/libglvnd doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo[X] ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo[X] )
+RDEPEND=dev-libs/expat media-libs/libsndfile media-libs/libglvnd[X] doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo[X] ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo[X] )
 REQUIRED_USE=|| ( jack ladspa lv2 )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=687c31c0a380150a3177e9ccd5bd9321
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7de43a28ab5fa86a3a49bdd2434fd2bd
