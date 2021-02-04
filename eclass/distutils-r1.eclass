@@ -780,23 +780,14 @@ distutils-r1_python_compile() {
 
 	_distutils-r1_copy_egg_info
 
-	local build_args=()
 	# distutils is parallel-capable since py3.5
-	# to avoid breaking stable ebuilds, enable it only if either:
-	# a. we're dealing with EAPI 7
-	# b. we're dealing with Python 3.7 or PyPy3
-	if python_is_python3 && [[ ${EPYTHON} != python3.4 ]]; then
-		if [[ ${EAPI} != [56] || ${EPYTHON} != python3.[56] ]]; then
-			local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
-			if [[ ${jobs} == INF ]]; then
-				local nproc=$(get_nproc)
-				jobs=$(( nproc + 1 ))
-			fi
-			build_args+=( -j "${jobs}" )
-		fi
+	local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+	if [[ ${jobs} == INF ]]; then
+		local nproc=$(get_nproc)
+		jobs=$(( nproc + 1 ))
 	fi
 
-	esetup.py build "${build_args[@]}" "${@}"
+	esetup.py build -j "${jobs}" "${@}"
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -869,9 +860,8 @@ distutils-r1_python_install() {
 	# python likes to compile any module it sees, which triggers sandbox
 	# failures if some packages haven't compiled their modules yet.
 	addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
-	addpredict "${EPREFIX}/usr/$(get_libdir)/${EPYTHON}"
-	addpredict /usr/lib/pypy2.7
 	addpredict /usr/lib/pypy3.6
+	addpredict /usr/lib/pypy3.7
 	addpredict /usr/lib/portage/pym
 	addpredict /usr/local # bug 498232
 
