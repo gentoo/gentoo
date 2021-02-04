@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This is industrial-strength monadic parser combinator library. Megaparsec is
-		a fork of Parsec library originally written by Daan Leijen.
-	</longdescription>
 </pkgmetadata>
