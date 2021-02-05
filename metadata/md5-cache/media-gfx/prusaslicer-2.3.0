@@ -1,16 +1,16 @@
 BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
-DEPEND=dev-cpp/eigen:3 dev-cpp/tbb >=dev-libs/boost-1.73.0:=[nls,threads] dev-libs/cereal dev-libs/expat dev-libs/gmp:= dev-libs/miniz dev-libs/mpfr:= >=media-gfx/openvdb-5.0.0 media-libs/ilmbase:= media-libs/libpng:0= media-libs/qhull:= sci-libs/libigl sci-libs/nlopt >=sci-mathematics/cgal-5.0:= sys-apps/dbus sys-libs/zlib:= gui? ( dev-libs/glib:2 media-libs/glew:0= net-misc/curl virtual/glu virtual/opengl x11-libs/gtk+:3 x11-libs/wxGTK:3.0-gtk3[X,opengl] ) media-libs/qhull[static-libs] dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-cpp/eigen:3 dev-cpp/tbb >=dev-libs/boost-1.73.0:=[nls,threads] dev-libs/cereal dev-libs/expat dev-libs/gmp:= >=dev-libs/miniz-2.1.0-r2 dev-libs/mpfr:= >=media-gfx/openvdb-5.0.0 media-libs/ilmbase:= media-libs/libpng:0= media-libs/qhull:= sci-libs/libigl sci-libs/nlopt >=sci-mathematics/cgal-5.0:= sys-apps/dbus sys-libs/zlib:= gui? ( dev-libs/glib:2 media-libs/glew:0= net-misc/curl virtual/glu virtual/opengl x11-libs/gtk+:3 x11-libs/wxGTK:3.0-gtk3[X,opengl] ) media-libs/qhull[static-libs] dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 EAPI=7
 HOMEPAGE=https://www.prusa3d.com/prusaslicer/
 IUSE=gui test
 KEYWORDS=~amd64 ~x86
 LICENSE=AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT
-RDEPEND=dev-cpp/eigen:3 dev-cpp/tbb >=dev-libs/boost-1.73.0:=[nls,threads] dev-libs/cereal dev-libs/expat dev-libs/gmp:= dev-libs/miniz dev-libs/mpfr:= >=media-gfx/openvdb-5.0.0 media-libs/ilmbase:= media-libs/libpng:0= media-libs/qhull:= sci-libs/libigl sci-libs/nlopt >=sci-mathematics/cgal-5.0:= sys-apps/dbus sys-libs/zlib:= gui? ( dev-libs/glib:2 media-libs/glew:0= net-misc/curl virtual/glu virtual/opengl x11-libs/gtk+:3 x11-libs/wxGTK:3.0-gtk3[X,opengl] )
+RDEPEND=dev-cpp/eigen:3 dev-cpp/tbb >=dev-libs/boost-1.73.0:=[nls,threads] dev-libs/cereal dev-libs/expat dev-libs/gmp:= >=dev-libs/miniz-2.1.0-r2 dev-libs/mpfr:= >=media-gfx/openvdb-5.0.0 media-libs/ilmbase:= media-libs/libpng:0= media-libs/qhull:= sci-libs/libigl sci-libs/nlopt >=sci-mathematics/cgal-5.0:= sys-apps/dbus sys-libs/zlib:= gui? ( dev-libs/glib:2 media-libs/glew:0= net-misc/curl virtual/glu virtual/opengl x11-libs/gtk+:3 x11-libs/wxGTK:3.0-gtk3[X,opengl] )
 REQUIRED_USE=test? ( gui )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/prusa3d/PrusaSlicer/archive/version_2.3.0.tar.gz -> prusaslicer-2.3.0.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=84c851676845a213bb1061b3886707d2
+_md5_=42bb764cf42f8972c614515ec9f990b4
