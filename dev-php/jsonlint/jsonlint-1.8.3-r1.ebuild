@@ -23,7 +23,7 @@ src_prepare() {
 	phpab \
 		--output src/Seld/JsonLint/autoload.php \
 		--template fedora2 \
-		--basedir src \
+		--basedir src/Seld/JsonLint \
 		src \
 		|| die
 }

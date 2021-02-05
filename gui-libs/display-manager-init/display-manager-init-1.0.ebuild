@@ -7,10 +7,10 @@ DESCRIPTION="RC init files for starting display and login managers"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:X11"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux"
 
-S="${FILESDIR}"
+S="${WORKDIR}"
 
 RDEPEND="
 	sys-apps/gentoo-functions
@@ -42,10 +42,13 @@ pkg_preinst() {
 		fi
 	done
 	if [[ "${using_xdm}" = "yes" ]]; then
-		ewarn "The 'xdm' service has been removed as it is"
-		ewarn "being replaced by the 'display-manager' service."
-		ewarn "Please migrate to using 'display-manager' and"
-		ewarn "remember to use dispatch-conf to update the"
+		ewarn "The 'xdm' service has been replaced by new 'display-manager'"
+		ewarn "service, please switch now:"
+		ewarn
+		ewarn "  # rc-update del xdm default"
+		ewarn "  # rc-update add display-manager default"
+		ewarn
+		ewarn "Remember to run etc-update or dispatch-conf to update the"
 		ewarn "config protected service files."
 	fi
 }
