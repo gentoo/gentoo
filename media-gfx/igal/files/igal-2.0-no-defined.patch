@@ -1,0 +1,20 @@
+--- a/igal2
++++ b/igal2
+@@ -228,7 +228,7 @@ if ($opt_AddSubdir) {
+ 			push(@directories, $file);
+ 		}
+ 	}
+-	if (defined(@directories)) {
++	if (@directories) {
+ 		@directories = sort @directories;      # sort alphabetically, by name
+ 	} else {
+ 		print "Information: Option --AddSubdir is set, but can't find any matching subdiretories!\n";
+@@ -625,7 +625,7 @@ $indexfile =~ s/<!--#IGAL-OPTIONS#-->/@igal_options/g;     # set comment about i
+ $indexfile =~ s/<!--#IGAL-CSS#-->/$opt_dest$csstemplate/g; # set the name (and path) of css template file
+ 
+ # Generate the links for directories
+-if ($opt_AddSubdir && defined(@directories)) {
++if ($opt_AddSubdir && @directories) {
+ 
+ 	if (! -e "$opt_d/$opt_dest.$directorylinefile") {
+ 		print "No $opt_dest.$directorylinefile file ... getting a copy from $LIBDIR/\n";
