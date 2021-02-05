@@ -5,11 +5,11 @@ DESCRIPTION=Manage a stack of patches using GIT as a backend
 EAPI=7
 HOMEPAGE=https://stacked-git.github.io
 IUSE=doc python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=amd64 ~arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-vcs/git-1.6.3.3 python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/ctmarinas/stgit/archive/v0.23.tar.gz -> stgit-0.23.tar.gz
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	distutils-r1	e8980b05bfb91c37dea52d0da131ef6c	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=c52be35448340ef392b682a7d75d1d0e
+_md5_=864dd06f7b4ef41b2679d033fcacc33e

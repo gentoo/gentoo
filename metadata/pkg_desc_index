@@ -1070,7 +1070,7 @@ app-crypt/keybase 4.4.2 4.5.0 4.7.0 4.7.2 5.1.1 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98.1-r2 0.98.1-r3: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
-app-crypt/libmd 1.0.1 1.0.3 99999: Message Digest functions from BSD systems
+app-crypt/libmd 1.0.3 99999: Message Digest functions from BSD systems
 app-crypt/libnitrokey 3.5 3.6 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.20.2 0.20.3 0.20.4: GObject library for accessing the freedesktop.org Secret Service API
@@ -12465,7 +12465,7 @@ mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
 mail-filter/exim-geoip 0.1-r1: This is an IPv4 and IPv6 capable GeoIP dlfunc library for Exim
 mail-filter/exim-p0f 0.1-r1: This is p0f version 3 dlfunc library for Exim
 mail-filter/gld 1.7-r4: A standalone anti-spam greylisting algorithm on top of Postfix
-mail-filter/imapfilter 2.6.16-r100 2.7.5: An IMAP mail filtering utility
+mail-filter/imapfilter 2.7.5: An IMAP mail filtering utility
 mail-filter/libmilter 1.0.2 1.0.2_p1 1.0.2_p1-r1: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
@@ -13525,7 +13525,7 @@ media-plugins/kodi-inputstream-rtmp 3.1.1-r1 3.3.0 3.4.0 9999: Kodi's RTMP input
 media-plugins/kodi-peripheral-joystick 1.7.0 1.7.1 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 6.0.1 6.0.2 7.0.0 9999: Kodi's ARGUS TV client addon
-media-plugins/kodi-pvr-demo 7.1.0 9999: Demo PVR for Kodi
+media-plugins/kodi-pvr-demo 7.1.1 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 8.0.0 9.0.0 9.0.1 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 6.0.6 6.0.7 7.0.0 7.1.0 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 5.1.0 6.0.0 9999: Kodi's Filmon client addon
@@ -17472,8 +17472,8 @@ sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic t
 sys-fs/fatresize 1.0.4 1.1.0: Resize FAT partitions using libparted
 sys-fs/fatsort 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.9-r1 3.9.1 3.9.2 3.9.3 3.10.0 3.10.1: An interface for filesystems implemented in userspace
-sys-fs/fuse-common 3.9.1 3.9.2 3.9.3 3.10.1: Common files for multiple slots of sys-fs/fuse
+sys-fs/fuse 2.9.9-r1 3.9.1 3.9.3 3.10.1 3.10.2: An interface for filesystems implemented in userspace
+sys-fs/fuse-common 3.9.1 3.9.3 3.10.1: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.3.0: exFAT filesystem FUSE module
 sys-fs/fuse-overlayfs 1.1.2 1.2.0 1.3.0: FUSE implementation for overlayfs
