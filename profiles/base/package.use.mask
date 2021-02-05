@@ -140,7 +140,6 @@ sys-cluster/drbd-utils heartbeat
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
-app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
