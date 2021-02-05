@@ -636,7 +636,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.6: Run arbitrary commands when files change
 app-admin/eselect 1.4.16 1.4.17 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.22.2 1.23.0: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.24.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -5193,7 +5193,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.2.1 8.2.2 8.2.3 8.3.16 8.3.17: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.2.2 8.2.3 8.3.16 8.3.17 8.3.18: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10 8.6.11: Tool Command Language
@@ -17571,7 +17571,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.255 4.9.255 4.14.219 4.19.173 5.4.95 5.10.13: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.256 4.9.256 4.14.219 4.19.173 5.4.95 5.10.13: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.36: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
