@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/cereal
 	dev-libs/expat
 	dev-libs/gmp:=
-	dev-libs/miniz
+	>=dev-libs/miniz-2.1.0-r2
 	dev-libs/mpfr:=
 	>=media-gfx/openvdb-5.0.0
 	media-libs/ilmbase:=
