@@ -39,3 +39,7 @@ src_prepare() {
 
 	default
 }
+
+src_install() {
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+}
