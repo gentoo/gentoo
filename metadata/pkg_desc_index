@@ -1058,7 +1058,7 @@ app-crypt/heimdal 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
-app-crypt/jetring 0.27: GPG keyring maintenance using changesets
+app-crypt/jetring 0.27 0.30: GPG keyring maintenance using changesets
 app-crypt/jitterentropy 2.1.2 2.2.0: Hardware RNG based on CPU timing jitter
 app-crypt/jitterentropy-rngd 1.1.0: Jitter RNG daemon
 app-crypt/johntheripper 1.8.0: fast password cracker
@@ -7821,7 +7821,7 @@ dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-lzf 1.6.8-r1: This package handles LZF de/compression
 dev-php/pecl-mailparse 3.1.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.3: Bindings for the libmcrypt library
-dev-php/pecl-memcache 4.0.5.2: PHP extension for using memcached
+dev-php/pecl-memcache 4.0.5.2-r1 8.0: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.5-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongodb 1.7.4 1.7.5 1.8.0 1.8.1: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
@@ -16941,7 +16941,7 @@ sys-apps/lshw 02.18b 02.18b-r1: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/lsvpd 1.7.11: Utility to List Device Vital Product Data (VPD)
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
-sys-apps/man-db 2.9.3 2.9.3-r1 9999: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.9.3 2.9.3-r1 2.9.3-r2 9999: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 5.09 5.10: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a 2017a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages

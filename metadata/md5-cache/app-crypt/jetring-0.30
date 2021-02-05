@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=app-crypt/gnupg
+DESCRIPTION=GPG keyring maintenance using changesets
+EAPI=7
+HOMEPAGE=http://joeyh.name/code/jetring/
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-crypt/gnupg dev-lang/perl
+SLOT=0
+SRC_URI=mirror://debian/pool/main/j/jetring/jetring_0.30.tar.xz
+_md5_=d90dba0c0732eed38c0505afd5d6372f
