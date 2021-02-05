@@ -29,12 +29,13 @@ RDEPEND="sys-apps/pciutils
 		x11-apps/xwininfo
 	)"
 
-export PREFIX=${EPREFIX}/usr
-
-src_prepare () {
+src_prepare() {
 	if use prefix; then
+		# bug #693526
 		hprefixify neofetch
-		sed -e "/has emerge/s:\${br_prefix}:${EPREFIX}:" -i neofetch
+		sed -e "/has emerge/s:\${br_prefix}:${EPREFIX}:" -i neofetch \
+			|| die "Failed to adjust for Prefix"
 	fi
+
 	default
 }
