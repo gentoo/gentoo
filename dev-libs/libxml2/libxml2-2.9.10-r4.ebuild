@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit libtool flag-o-matic python-r1 autotools prefix multilib-minimal
 
 DESCRIPTION="XML C parser and toolkit"
-HOMEPAGE="http://www.xmlsoft.org/"
+HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
 
 LICENSE="MIT"
 SLOT="2"
