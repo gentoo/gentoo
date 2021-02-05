@@ -5590,7 +5590,7 @@ dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ progr
 dev-libs/marisa 0.2.5 0.2.6 9999: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.7.0 2.7.4 2.7.7: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
-dev-libs/miniz 2.1.0-r1 9999: A lossless, high performance data compression library
+dev-libs/miniz 2.1.0-r2 9999: A lossless, high performance data compression library
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
@@ -7941,7 +7941,7 @@ dev-python/aiohttp 3.6.2-r1 3.7.1-r1 3.7.2-r1 3.7.3: http client/server for asyn
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.18.4-r1 0.18.5 0.19: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.18.4-r1 0.18.5 0.19 0.19.1: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
@@ -8019,8 +8019,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8183,7 +8183,7 @@ dev-python/doublex 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.1: Expects matchers for Doublex test doubles assertions
 dev-python/drf-yasg 1.20.0: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
 dev-python/duecredit 0.7.0 0.8.0: Publications (and donations) tracer
-dev-python/dulwich 0.20.6 0.20.15: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.20.6 0.20.15 0.20.18: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7 2.7.1: Easy thumbnails for Django
 dev-python/easyprocess 0.3: Easy to use Python subprocess interface
 dev-python/ebuildtester 0.1.16 0.1.16-r1: A dockerized approach to test a Gentoo package within a clean stage3 container
@@ -8446,7 +8446,7 @@ dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 1.0.0: Python bindings for the Lightning Database
+dev-python/lmdb 1.0.0 1.1.0: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
@@ -8812,7 +8812,7 @@ dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0-r1 20.0.0-r1 20.0.1: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5
-dev-python/pyotp 2.4.1 2.5.1: PyOTP is a Python library for generating and verifying one-time passwords.
+dev-python/pyotp 2.4.1 2.5.1 2.6.0: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r6: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 2.4.7-r1: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.11.7: Python bindings for sys-block/parted
@@ -8974,7 +8974,7 @@ dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-socks 1.1.2 1.2.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
-dev-python/python-sshpubkeys 3.1.0 3.2.1 3.3.0: OpenSSH public key parser for Python
+dev-python/python-sshpubkeys 3.1.0 3.2.1 3.3.0 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14 1.15: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
@@ -12933,7 +12933,7 @@ media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
-media-gfx/prusaslicer 2.2.0-r1: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
+media-gfx/prusaslicer 2.2.0-r1 2.3.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.75: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qimgv 0.9.1: A cross-platform image viewer with webm support, written in qt5
@@ -13310,7 +13310,7 @@ media-libs/portaudio 19.06.00-r3: A free, cross-platform, open-source, audio I/O
 media-libs/portmidi 217-r3: Library for real time MIDI input and output
 media-libs/ptex 2.3.2: Per-Face Texture Mapping for Production Rendering
 media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
-media-libs/qhull 2015.2 2020.2-r2: Geometry library
+media-libs/qhull 2015.2 2020.2-r3: Geometry library
 media-libs/qtav 1.12.0-r3: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quarter 1.1.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
