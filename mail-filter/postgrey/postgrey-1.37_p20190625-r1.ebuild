@@ -7,7 +7,7 @@ inherit systemd
 
 COMMIT="eb420c5dee57dd54e6f63bad5d74e85f5cc9535d"
 DESCRIPTION="Postgrey is a Postfix policy server implementing greylisting"
-HOMEPAGE="http://postgrey.schweikert.ch/"
+HOMEPAGE="https://postgrey.schweikert.ch/"
 SRC_URI="https://github.com/schweikert/postgrey/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
