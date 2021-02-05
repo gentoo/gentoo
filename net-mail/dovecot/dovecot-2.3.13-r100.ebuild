@@ -78,7 +78,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-autoconf-lua-version.patch
 	"${FILESDIR}/${PN}"-unwind-generic.patch
 	"${FILESDIR}/${PN}"-socket-name-too-long.patch
-	)
+	"${FILESDIR}/${P}"-32-bit-tests-1.patch
+	"${FILESDIR}/${P}"-32-bit-tests-2.patch
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
