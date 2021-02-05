@@ -6,7 +6,7 @@ EAPI=7
 inherit libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="XSLT libraries and tools"
-HOMEPAGE="http://www.xmlsoft.org/"
+HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxslt"
 SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
