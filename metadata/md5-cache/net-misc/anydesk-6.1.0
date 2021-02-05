@@ -1,0 +1,13 @@
+BDEPEND=dev-util/patchelf virtual/pkgconfig
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Feature rich multi-platform remote desktop application
+EAPI=7
+HOMEPAGE=https://anydesk.com
+KEYWORDS=-* ~amd64
+LICENSE=AnyDesk-TOS BSD BSD-2 openssl ZLIB
+RDEPEND=dev-libs/atk dev-libs/glib:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/glu media-libs/mesa[X(+)] sys-auth/polkit x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/gtkglext x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libxcb x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libxkbfile x11-libs/libXmu x11-libs/libXrandr x11-libs/libXrender x11-libs/libXt x11-libs/libXtst x11-libs/pango
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=https://download.anydesk.com/linux/anydesk-6.1.0-amd64.tar.gz https://download.anydesk.com/linux/generic-linux/anydesk-6.1.0-amd64.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=ce735b64b58d0bc87e91eb4981351419

@@ -657,7 +657,7 @@ app-admin/gnome-abrt 1.3.6: A utility for viewing problems that have occurred wi
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.10.1-r2 1.11.0: a simple but powerful password manager for the terminal
-app-admin/graylog 3.3.8 3.3.9 4.0.1: Free and open source log management
+app-admin/graylog 3.3.9 3.3.10 4.0.2: Free and open source log management
 app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
@@ -2116,9 +2116,9 @@ app-emulation/winetricks 20200412 20201206 99999999: Easy way to install DLLs ne
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.13.2-r2 4.13.2-r3 4.13.2-r4 4.14.0-r7 4.14.1: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.13.2 4.14.0 4.14.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.13.2-r1 4.13.2-r2 4.14.0-r5 4.14.1: Xen tools including QEMU and xl
+app-emulation/xen 4.13.2-r4 4.14.1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.13.2 4.14.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.13.2-r2 4.14.1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
@@ -3555,7 +3555,7 @@ dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/mongodb 4.2.8 4.2.11 4.4.1 4.4.2: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.22.2_p20201026 9999: CLI for MySQL Database with auto-completion and syntax highlighting
-dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
+dev-db/mydumper 0.9.5-r1 0.10.1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 8.0.22 8.0.23: ODBC driver for MySQL
 dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 5.7.33 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22 8.0.23: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
@@ -3599,7 +3599,7 @@ dev-db/pspg 3.1.5: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
-dev-db/redis 5.0.9-r1 5.0.10 6.0.9 6.0.9-r1 6.0.9-r100: A persistent caching system, key-value and data structures database
+dev-db/redis 5.0.9-r1 5.0.10 6.0.9 6.0.9-r1 6.0.9-r100 6.0.10: A persistent caching system, key-value and data structures database
 dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
@@ -12454,7 +12454,7 @@ mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
 mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1: sendmail milter for amavisd-new
-mail-filter/amavisd-new 2.12.0-r5: High-performance interface between the MTA and content checkers
+mail-filter/amavisd-new 2.12.0-r5 2.12.1: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r3: Bayesian spam filter designed with fast algorithms, and tuned for speed
 mail-filter/courier-pythonfilter 3.0.2-r1: Python filtering architecture for the Courier MTA
@@ -14322,12 +14322,12 @@ net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner w
 net-analyzer/labrea 2.5_p1: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3-r1: Web-based configuration tool written to configure Nagios
-net-analyzer/linkchecker 10.0.0_pre20200729 10.0.0 9999: Check websites for broken links
+net-analyzer/linkchecker 10.0.0_pre20200729 10.0.1 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.4 1.0.5 1.3.0 1.3.1: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3-r1: MBrowse is a graphical MIB browser
 net-analyzer/mdns-scan 0.5: a tool for scanning for mDNS/DNS-SD published services
-net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+net-analyzer/monitoring-plugins 2.2-r4 2.3: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
@@ -15043,7 +15043,7 @@ net-misc/AQtion 2.2.7-r1 2.3.1-r1 2.3.4-r1: Aquantia AQC multigigabit NIC linux 
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 5.5.6-r1 6.0.0-r1 6.0.1: Feature rich multi-platform remote desktop application
+net-misc/anydesk 5.5.6-r1 6.0.0-r1 6.0.1 6.1.0: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.5_p1-r1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
@@ -18424,7 +18424,7 @@ x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for 
 x11-misc/gxmessage 2.20.4 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
-x11-misc/i3blocks 1.4-r1 1.5 1.5-r1: highly flexible status line for the i3 window manager
+x11-misc/i3blocks 1.5-r1: highly flexible status line for the i3 window manager
 x11-misc/i3blocks-contrib 1.4.0_p20201127: A set of scripts for i3blocks, contributed by the community
 x11-misc/i3lock 2.13: Simple screen locker
 x11-misc/i3status 2.13-r1: generates a status bar for dzen2, xmobar or similar

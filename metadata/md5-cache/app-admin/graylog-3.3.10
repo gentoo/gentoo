@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=!app-admin/graylog2 acct-group/graylog acct-user/graylog >=virtual/jdk-1.8:*
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://downloads.graylog.org/releases/graylog/graylog-3.3.8.tgz
+SRC_URI=https://downloads.graylog.org/releases/graylog/graylog-3.3.10.tgz
 _md5_=8146b6e3f2efaff05b9a1b873e06b410

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst
+DEPEND=dev-lang/perl curl? ( dev-libs/uriparser net-misc/curl ) ldap? ( net-nds/openldap ) mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) ) postgres? ( dev-db/postgresql:= ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( net-libs/gnutls ) ) radius? ( net-dialup/freeradius-client ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] )
+DESCRIPTION=50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+EAPI=7
+HOMEPAGE=https://www.monitoring-plugins.org/
+IUSE=curl gnutls ipv6 ldap libressl mysql dns fping game postgres radius samba snmp ssh +ssl
+KEYWORDS=~amd64 ~arm ~arm64 ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl curl? ( dev-libs/uriparser net-misc/curl ) ldap? ( net-nds/openldap ) mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c ) ) postgres? ( dev-db/postgresql:= ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( net-libs/gnutls ) ) radius? ( net-dialup/freeradius-client ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] ) acct-group/nagios acct-user/nagios !net-analyzer/nagios-plugins
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.monitoring-plugins.org/download/monitoring-plugins-2.3.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=cff44eb05ee458fb8fd95eae483a03c0
