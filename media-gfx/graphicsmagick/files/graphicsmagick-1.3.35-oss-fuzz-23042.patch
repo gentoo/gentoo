@@ -1,0 +1,42 @@
+diff -r 24ed4812e580 -r b0aa53a5f970 coders/wpg.c
+--- a/coders/wpg.c	Tue Jun 02 07:45:45 2020 -0500
++++ b/coders/wpg.c	Sat Jun 06 14:12:18 2020 -0500
+@@ -413,9 +413,12 @@
+ 
+ /** Call this function to ensure that all data matrix is filled with something. This function
+  * is used only to error recovery. */
+-static void ZeroFillMissingData(unsigned char *BImgBuff,unsigned long x, unsigned long y, Image *image,
+-                                int bpp, long ldblk)
++static MagickPassFail ZeroFillMissingData(unsigned char *BImgBuff,unsigned long x, unsigned long y, Image *image,
++                                          int bpp, long ldblk)
+ {
++  MagickPassFail
++    status = MagickPass;
++
+   while(y<image->rows && image->exception.severity!=UndefinedException)
+   {
+     if((long) x<ldblk) 
+@@ -427,9 +430,13 @@
+         x = 0;		/* Next pass will need to clear whole row */
+     }
+     if(InsertRow(BImgBuff,y,image,bpp) == MagickFail)
+-      break;
++      {
++        status = MagickFail;
++        break;
++      }
+     y++;
+   }
++  return status;
+ }
+ 
+ 
+@@ -528,7 +535,6 @@
+                 }
+               if(InsertRow(BImgBuff,y,image,bpp)==MagickFail)
+                 { 
+-                  ZeroFillMissingData(BImgBuff,x,y,image,bpp,ldblk);
+                   MagickFreeMemory(BImgBuff);
+                   return(-6);
+                 }
+
