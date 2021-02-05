@@ -399,8 +399,7 @@ x11-libs/gtk+ cloudprint
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
 # No lua keyworded for this arch yet
-# libpcre jit is not (yet?) support on this arch
-www-servers/nginx nginx_modules_http_lua pcre-jit
+www-servers/nginx nginx_modules_http_lua
 
 # Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
