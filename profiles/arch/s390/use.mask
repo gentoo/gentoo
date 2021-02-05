@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Sam James <sam@gentoo.org> (2021-02-05)
+# No luajit available for s390
+luajittex
+
 # Matt Turner <mattst88@gentoo.org> (2019-12-05)
 # media-libs/libglvnd is not keyworded
 libglvnd
