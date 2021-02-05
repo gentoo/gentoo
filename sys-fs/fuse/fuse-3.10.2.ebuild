@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit meson multilib-minimal flag-o-matic udev python-any-r1
 
@@ -31,13 +31,6 @@ python_check_deps() {
 
 pkg_setup() {
 	use test && python_setup
-}
-
-src_prepare() {
-	default
-
-	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
-	filter-flags '-flto*'
 }
 
 multilib_src_configure() {
