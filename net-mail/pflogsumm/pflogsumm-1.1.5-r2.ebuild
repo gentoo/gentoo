@@ -9,7 +9,7 @@ SRC_URI="https://jimsun.linxnet.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm sparc ~x86"
+KEYWORDS="amd64 ~arm sparc x86"
 
 RDEPEND="dev-lang/perl
 	dev-perl/Date-Calc"
