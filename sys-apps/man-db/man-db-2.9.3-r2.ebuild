@@ -12,7 +12,7 @@ if [[ "${PV}" = 9999* ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/man-db.git"
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-3"
@@ -49,7 +49,8 @@ RDEPEND="
 PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
-	"${FILESDIR}"/man-db-2.9.3-sandbox-env-tests.patch
+	"${FILESDIR}"/${PN}-2.9.3-sandbox-env-tests.patch
+	"${FILESDIR}"/man-db-2.9.3-clock_gettime64.patch
 	"${FILESDIR}"/man-db-2.9.3-darwin-libdb-intl.patch
 )
 
