@@ -15,11 +15,10 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86_avx2"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9.6-simd.patch
 	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${PN}-0.9.9.8-big-endian-tests.patch
 )
 
 src_configure() {
