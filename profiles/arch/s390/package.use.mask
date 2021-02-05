@@ -34,7 +34,7 @@ net-analyzer/rrdtool rados
 dev-vcs/git pcre-jit
 
 # Lars Wendler <polynomial-c@gentoo.org> (2016-11-17)
-# jit not supported on ia64 (bug #600052).
+# jit not supported on s390
 dev-libs/libpcre2 jit
 
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
