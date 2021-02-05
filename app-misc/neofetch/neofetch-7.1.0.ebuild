@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit prefix
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
@@ -26,3 +28,13 @@ RDEPEND="sys-apps/pciutils
 		x11-apps/xrandr
 		x11-apps/xwininfo
 	)"
+
+export PREFIX=${EPREFIX}/usr
+
+src_prepare () {
+	if use prefix; then
+		hprefixify neofetch
+		sed -e "/has emerge/s:\${br_prefix}:${EPREFIX}:" -i neofetch
+	fi
+	default
+}
