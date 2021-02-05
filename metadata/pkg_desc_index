@@ -13280,7 +13280,7 @@ media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmpeg version of headers required to interface with Nvidias codec APIs
-media-libs/openal 1.20.1 1.21.0: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.20.1 1.21.0 1.21.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -13291,7 +13291,7 @@ media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
 media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
-media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0 2.2.10.1: A library for reading and writing images
+media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0 2.2.10.1 2.2.11.1: A library for reading and writing images
 media-libs/openjpeg 2.3.1-r1 2.4.0: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
@@ -14556,7 +14556,7 @@ net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 0_pre20200925 9999: A lightweight DNS-over-HTTPS proxy
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.9.7 2.9.8 3.0.2 3.0.3: High-performance authoritative-only DNS server
+net-dns/knot 2.9.8 3.0.4: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.36: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -16315,7 +16315,7 @@ sci-libs/octomap 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Bas
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.12-r1 0.3.13: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
-sci-libs/openlibm 0.7.3: High quality system independent, open source libm
+sci-libs/openlibm 0.7.3 0.7.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.4.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 2.2 2.2-r100 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
