@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
 
 # This is here to serve as a note to myself, and future developers.
@@ -46,9 +46,11 @@ depend() {
 	# (#291269) Start after quota, since some dm need readable home
 	# (#390609) gdm-3 will fail when dbus is not running
 	# (#366753) starting keymaps after X causes problems
+	# (#768834) race condition with elogind
 	after bootmisc consolefont modules netmount
 	after readahead-list ypbind autofs openvpn gpm lircmd
 	after quota keymaps
+	after elogind
 	before alsasound
 
 	# Start before GUI
