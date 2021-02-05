@@ -1,45 +1,63 @@
 Title: New OpenRC Display Manager Initializer Scripts
 Author: Aisha Tammy <gentoo@aisha.cc>
+Author: Andreas Sturmlechner <asturm@gentoo.org>
 Posted: 2021-01-30
-Revision: 5
+Revision: 6
 News-Item-Format: 2.0
 Display-If-Installed: sys-apps/openrc
 
-There has been a refactoring of the old 'xdm' init script and its
-requirements from various packages into an independent package:
+There has been a refactoring of the old 'xdm' init script into a new
+script called 'display-manager', provided by a new package that will
+be introduced by your @world update routine as a dependency of
+x11-base/xorg-server-1.20.10-r1:
 
 	gui-libs/display-manager-init
 
-This package provides the 'display-manager' startup script for
-handling your chosen display manager, without depending on
-Xorg server. The old 'xdm' init script is no longer supported
-and is going to be removed in the next version of xorg-server,
-so it is imperative that you shift to display-manager-init.
-The current package is ~ARCH and will be available for stable
-users on 2nd March 2021.
+The package is now in ~arch and will be available to stable users
+starting with 2nd March 2021. [1]
 
-To update to the new DM init scripts, you need to manually add the
-package into your @world set:
+Its purpose is to provide the same startup mechanism for your chosen
+display manager (like GDM, SDDM etc. [2]) as xdm did previously, but
+without depending on x11-base/xorg-server. This is necessary to
+support new DMs that no longer depend on Xorg.
 
-	emerge -vuDU gui-libs/display-manager-init
+Existing settings from /etc/conf.d/xdm will be migrated to new
+/etc/conf.d/display-manager config, however after installation it is
+vital not to forget to run either `etc-update` or `dispatch-conf`.
+Afterwards check that /etc/conf.d/display-manager contains the
+desired value for DISPLAYMANAGER.
 
-To start using the new init scripts, either copy your
-existing /etc/conf.d/xdm to /etc/conf.d/display-manager or
-change the DISPLAYMANAGER variable in
-/etc/conf.d/display-manager to your preferred DM:
+The old 'xdm' init script is no longer supported and henceforth
+removed from x11-base/xorg-server-1.20.10-r1, so it is imperative that
+you switch from xdm to display-manager service in default runlevel:
 
-	DISPLAYMANAGER="gdm"
-
-and remove 'xdm' from the default runlevel and add 'display-manager':
-
-	rc-update del xdm default
-	rc-update add display-manager default
+	# rc-update del xdm default
+	# rc-update add display-manager default
 
 The changes are complete and on the next reboot, 'display-manager'
 will start your chosen DM.
 
-To switch to the new scripts without rebooting, run the following
+To switch to the new script without rebooting, run the following
 commands in a tty:
 
-	rc-service xdm stop
-	rc-service display-manager start
+	# rc-service xdm stop
+	# rc-service display-manager start
+
+Finally, the following action is necessary *ONLY* if you are running
+	a) a DM (and rest of system) without Xorg
+	b) a DM from an overlay, to make sure display-manager persists
+
+	# emerge --noreplace gui-libs/display-manager-init
+
+
+[1] To make this change *now*, and proceed with this news item already,
+stable users would need to add the following entries to
+/etc/portage/package.accept_keywords [3] and update @world:
+
+	~sys-apps/sysvinit-2.98
+	~x11-apps/xinit-1.4.1
+	~x11-base/xorg-server-1.20.10
+	~gui-libs/display-manager-init-1.0
+
+[2] https://wiki.gentoo.org/wiki/Display_manager
+[3] https://wiki.gentoo.org/wiki//etc/portage/package.accept_keywords
