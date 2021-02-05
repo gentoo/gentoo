@@ -149,6 +149,7 @@ RDEPEND="
 	acct-group/nova"
 
 #PATCHES=(
+#	"${FILESDIR}/filename"
 #)
 
 pkg_setup() {
