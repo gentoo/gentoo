@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -13,17 +13,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-CDEPEND="dev-libs/glib:=
+COMMON_DEPEND="dev-db/mysql-connector-c:=
+	dev-libs/glib:=
 	dev-libs/libpcre:=
 	dev-libs/openssl:0=
-	sys-libs/zlib:=
-	virtual/mysql"
-DEPEND="${CDEPEND}
+	sys-libs/zlib:="
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )"
-RDEPEND="${CDEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-mariadb-define.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-atomic.patch" #654314
+)
 
 src_prepare() {
 	# respect user cflags; do not expand ${CMAKE_C_FLAGS} (!)
