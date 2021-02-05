@@ -3,7 +3,7 @@ DEFINED_PHASES=compile configure install postinst preinst prepare unpack
 DEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) libedit? ( dev-libs/libedit ) nettle? ( dev-libs/nettle:= ) seccomp? ( sys-libs/libseccomp ) html? ( dev-ruby/asciidoctor ) pps? ( net-misc/pps-tools )
 DESCRIPTION=NTP client and server programs
 EAPI=7
-HOMEPAGE=https://chrony.tuxfamily.org/
+HOMEPAGE=https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git
 IUSE=+caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps +refclock +rtc samba +seccomp +sechash selinux
 LICENSE=GPL-2
 PROPERTIES=live
@@ -12,4 +12,4 @@ REQUIRED_USE=sechash? ( nettle ) html
 RESTRICT=test
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=dcdd0b8b42ebb1241b4a5585c34a8750
+_md5_=d569ae23d676b706b61b60f007e25ec0
