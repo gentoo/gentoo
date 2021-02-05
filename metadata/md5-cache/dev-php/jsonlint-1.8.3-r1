@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=dev-php/fedora-autoloader dev-lang/php:*
 SLOT=0
 SRC_URI=https://github.com/Seldaek/jsonlint/archive/1.8.3.tar.gz -> jsonlint-1.8.3.tar.gz
-_md5_=decf872e3c37686995b19b586812bd21
+_md5_=a4107fb8a3539ae50668b98f72e4e083
