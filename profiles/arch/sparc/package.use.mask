@@ -1,10 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Tomáš Mózes <hydrapolic@gmail.com> (2021-02-04)
-# Dependency not keyworded on this arch.
- net-analyzer/monitoring-plugins curl
-
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
