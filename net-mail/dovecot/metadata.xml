@@ -17,4 +17,7 @@
     <flag name="textcat">Add libtextcat language guessing support for full text search (FTS)</flag>
     <flag name="zstd">Add support for zstd (de)compression</flag>
   </use>
+  <upstream>
+    <remote-id type="github">dovecot/core</remote-id>
+  </upstream>
 </pkgmetadata>
