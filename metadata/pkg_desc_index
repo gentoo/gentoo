@@ -5437,7 +5437,7 @@ dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used d
 dev-libs/libgit2 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
 dev-libs/libgnome-games-support 1.6.1: Library for code common to Gnome games
-dev-libs/libgnt 2.14.0: Pidgin's GLib Ncurses Toolkit
+dev-libs/libgnt 2.14.0 2.14.1: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.38 1.39 1.41: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
@@ -10764,7 +10764,7 @@ dev-util/geany 1.36 1.37 1.37.1 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.36-r2 1.37 1.37-r100: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
-dev-util/git-delta 0.5.1: A syntax-highlighting pager for git
+dev-util/git-delta 0.5.1 0.6.0: A syntax-highlighting pager for git
 dev-util/github-cli 1.4.0 1.5.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.36.0: A user interface designer for GTK+ and GNOME
