@@ -8,7 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>
 # Mike Pagano <mpagano@gentoo.org>
 # <so many, many others, please add yourself>
-# @SUPPORTED_EAPIS: 2 3 4 5 6
+# @SUPPORTED_EAPIS: 2 3 4 5 6 7
 # @BLURB: Eclass for kernel packages
 # @DESCRIPTION:
 # This is the kernel.eclass rewrite for a clean base regarding the 2.6
@@ -198,11 +198,11 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-inherit toolchain-funcs
+inherit estack toolchain-funcs
 [[ ${EAPI:-0} == [012345] ]] && inherit epatch
-[[ ${EAPI:-0} == [0123456] ]] && inherit estack eapi7-ver
+[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
 case ${EAPI:-0} in
-	2|3|4|5|6)
+	2|3|4|5|6|7)
 		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
@@ -600,10 +600,8 @@ kernel_is_2_6() {
 
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
-	DEPEND="!build? (
-		sys-apps/sed
-		>=sys-devel/binutils-2.11.90.0.31
-	)"
+	[[ ${EAPI} == [0-6] ]] && DEPEND="!build? ( sys-apps/sed )" ||
+	BDEPEND="!build? ( sys-apps/sed )"
 	RDEPEND="!build? (
 		dev-lang/perl
 		sys-devel/bc
@@ -638,7 +636,8 @@ if [[ ${ETYPE} == sources ]]; then
 			# tree has been dropped from the kernel.
 			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
 
-			DEPEND+=" deblob? ( ${PYTHON_DEPS} )"
+			[[ ${EAPI} == [0-6] ]] && DEPEND+=" deblob? ( ${PYTHON_DEPS} )" ||
+			BDEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
 			if [[ -n KV_MINOR ]]; then
 				DEBLOB_PV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
@@ -855,7 +854,7 @@ compile_headers() {
 
 		# autoconf.h isnt generated unless it already exists. plus, we have
 		# no guarantee that any headers are installed on the system...
-		[[ -f ${EROOT}usr/include/linux/autoconf.h ]] \
+		[[ -f ${EROOT%/}/usr/include/linux/autoconf.h ]] \
 			|| touch include/linux/autoconf.h
 
 		# if K_DEFCONFIG isn't set, force to "defconfig"
@@ -932,10 +931,10 @@ install_headers() {
 	# of this crap anymore :D
 	if kernel_is ge 2 6 18 ; then
 		env_setup_xmakeopts
-		emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. ${xmakeopts} || die
+		emake headers_install INSTALL_HDR_PATH="${ED%/}"${ddir}/.. ${xmakeopts} || die
 
 		# let other packages install some of these headers
-		rm -rf "${ED}"${ddir}/scsi || die #glibc/uclibc/etc...
+		rm -rf "${ED%/}"${ddir}/scsi || die #glibc/uclibc/etc...
 		return 0
 	fi
 
@@ -943,15 +942,15 @@ install_headers() {
 	# $S values where the cmdline to cp is too long
 	pushd "${S}" >/dev/null
 	dodir ${ddir}/linux
-	cp -pPR "${S}"/include/linux "${ED}"${ddir}/ || die
-	rm -rf "${ED}"${ddir}/linux/modules || die
+	cp -pPR "${S}"/include/linux "${ED%/}"${ddir}/ || die
+	rm -rf "${ED%/}"${ddir}/linux/modules || die
 
 	dodir ${ddir}/asm
-	cp -pPR "${S}"/include/asm/* "${ED}"${ddir}/asm || die
+	cp -pPR "${S}"/include/asm/* "${ED%/}"${ddir}/asm || die
 
 	if kernel_is 2 6 ; then
 		dodir ${ddir}/asm-generic
-		cp -pPR "${S}"/include/asm-generic/* "${ED}"${ddir}/asm-generic || die
+		cp -pPR "${S}"/include/asm-generic/* "${ED%/}"${ddir}/asm-generic || die
 	fi
 
 	# clean up
@@ -983,7 +982,7 @@ install_sources() {
 		done
 	fi
 
-	mv "${WORKDIR}"/linux* "${ED}"usr/src || die
+	mv "${WORKDIR}"/linux* "${ED%/}"/usr/src || die
 
 	if [[ -n "${UNIPATCH_DOCS}" ]] ; then
 		for i in ${UNIPATCH_DOCS}; do
@@ -1025,19 +1024,19 @@ postinst_sources() {
 
 	# if we are to forcably symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} -gt 0 ]]; then
-		[[ -h ${EROOT}usr/src/linux ]] && { rm "${EROOT}"usr/src/linux || die; }
+		[[ -h ${EROOT%/}/usr/src/linux ]] && { rm "${EROOT%/}"/usr/src/linux || die; }
 		MAKELINK=1
 	fi
 
 	# if the link doesnt exist, lets create it
-	[[ ! -h ${EROOT}usr/src/linux ]] && MAKELINK=1
+	[[ ! -h ${EROOT%/}/usr/src/linux ]] && MAKELINK=1
 
 	if [[ ${MAKELINK} == 1 ]]; then
-		ln -sf linux-${KV_FULL} "${EROOT}"usr/src/linux || die
+		ln -sf linux-${KV_FULL} "${EROOT%/}"/usr/src/linux || die
 	fi
 
 	# Don't forget to make directory for sysfs
-	[[ ! -d ${EROOT}sys ]] && kernel_is 2 6 && { mkdir "${EROOT}"sys || die ; }
+	[[ ! -d ${EROOT%/}/sys ]] && kernel_is 2 6 && { mkdir "${EROOT%/}"/sys || die ; }
 
 	echo
 	elog "If you are upgrading from a previous kernel, you may be interested"
@@ -1585,7 +1584,7 @@ kernel-2_src_prepare() {
 	# apply any user patches
 	case ${EAPI:-0} in
 		0|1|2|3|4|5) epatch_user ;;
-		6) eapply_user ;;
+		*) eapply_user ;;
 	esac
 }
 
@@ -1685,11 +1684,11 @@ kernel-2_pkg_postrm() {
 	[[ ${ETYPE} == headers ]] && return 0
 
 	# If there isn't anything left behind, then don't complain.
-	[[ -e ${EROOT}usr/src/linux-${KV_FULL} ]] || return 0
+	[[ -e ${EROOT%/}/usr/src/linux-${KV_FULL} ]] || return 0
 	echo
 	ewarn "Note: Even though you have successfully unmerged "
 	ewarn "your kernel package, directories in kernel source location: "
-	ewarn "${EROOT}usr/src/linux-${KV_FULL}"
+	ewarn "${EROOT%/}/usr/src/linux-${KV_FULL}"
 	ewarn "with modified files will remain behind. By design, package managers"
 	ewarn "will not remove these modified files and the directories they reside in."
 	echo
