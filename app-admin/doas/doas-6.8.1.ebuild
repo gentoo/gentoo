@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~sparc"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~sparc"
 IUSE="pam persist"
 
 BDEPEND="virtual/yacc"
