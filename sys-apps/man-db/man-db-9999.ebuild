@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd prefix
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
