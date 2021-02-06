@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1 virtualx
@@ -34,21 +35,6 @@ BDEPEND="
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/mock
-
-python_prepare_all() {
-	# setup.py was removed in commit f04323cfa575caf8a25a9236f55fe6baf1a33b20
-	# for some reason, DISTUTULS_USE_SETUPTOOLS="pyproject.toml" is not working
-	# it complains about file not found, setup.cfg does exist
-
-	cat > setup.py <<EOF || die
-from setuptools import setup
-
-if __name__ == "__main__":
-	setup()
-EOF
-
-	distutils-r1_python_prepare_all
-}
 
 python_test() {
 	local -x MPLBACKEND=Agg
