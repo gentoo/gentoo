@@ -1,0 +1,26 @@
+From c7d8a7374284186136d72fc285f9e55045b306fb Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 3 Feb 2021 23:31:23 +0100
+Subject: [PATCH] allow default search path for Qt5
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ adm/cmake/qt.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/adm/cmake/qt.cmake b/adm/cmake/qt.cmake
+index 535e6a20..6c2141dd 100644
+--- a/adm/cmake/qt.cmake
++++ b/adm/cmake/qt.cmake
+@@ -24,7 +24,7 @@ set(CMAKE_PREFIX_PATH ${3RDPARTY_QT_DIR})
+ 
+ # Now we can apply standard CMake finder for Qt5. We do this mostly
+ # to have qt5_wrap_cpp() function available and Qt5_FOUND variable filled
+-find_package(Qt5 QUIET COMPONENTS Widgets Quick Xml PATHS ${3RDPARTY_QT_DIR} NO_DEFAULT_PATH)
++find_package(Qt5 COMPONENTS Widgets Quick Xml REQUIRED)
+ if (NOT ${Qt5_FOUND})
+   # Now we can apply standard CMake finder for Qt. We do this mostly
+   # to have qt4_wrap_cpp() function available
+-- 
+2.30.0
+
