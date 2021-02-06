@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 MY_P="${PN}5-${PV/_}"
 
-DESCRIPTION="CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client"
+DESCRIPTION="Ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal client"
 SRC_URI="http://www.centerim.org/download/cim5/${MY_P}.tar.gz"
 HOMEPAGE="http://www.centerim.org/"
 SLOT="0"
@@ -16,7 +16,7 @@ IUSE="debug nls"
 DEPEND=">=sys-libs/ncurses-5.2:=
 	>=net-im/pidgin-2.7.0
 	>=dev-libs/glib-2.16.0
-	>=dev-libs/libsigc++-2.2.0"
+	>=dev-libs/libsigc++-2.2.0:2"
 RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )"
 DEPEND="${DEPEND}
