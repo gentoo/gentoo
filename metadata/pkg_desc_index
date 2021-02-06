@@ -13270,7 +13270,7 @@ media-libs/libyami 1.3.2 9999: Yet Another Media Infrastructure: Media codec wit
 media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.10-r1 0.24.12: Library to make the use of LV2 plugins as simple as possible for applications
-media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 1.1.22 1.1.24 9999: Linux Studio Plugins
+media-libs/lsp-plugins 1.1.22 1.1.24 1.1.29 9999: Linux Studio Plugins
 media-libs/lv2 1.18.0 1.18.2: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
@@ -16806,7 +16806,7 @@ sys-apps/baobab 3.34.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1 2.7 2.7-r1 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
-sys-apps/baselayout-prefix 2.6-r2: Filesystem baselayout and init scripts
+sys-apps/baselayout-prefix 2.6-r3: Filesystem baselayout and init scripts
 sys-apps/bat 0.15.4 0.17.1 0.17.1-r1: cat(1) clone with syntax highlighting and Git integration
 sys-apps/biosdevname 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 1.01: FreeDOS based BIOS updating utility for Dell machines
