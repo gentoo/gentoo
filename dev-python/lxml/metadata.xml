@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">lxml</remote-id>
 		<remote-id type="github">lxml/lxml</remote-id>
+		<bugs-to>https://bugs.launchpad.net/lxml</bugs-to>
 	</upstream>
 </pkgmetadata>
