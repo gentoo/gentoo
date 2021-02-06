@@ -9,4 +9,7 @@
 		<flag name="foomatic">Build the included foomatic-rip printer driver. Strongly recommended.</flag>
 		<flag name="pclm">Enable PCLm support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">OpenPrinting/cups-filters</remote-id>
+	</upstream>
 </pkgmetadata>
