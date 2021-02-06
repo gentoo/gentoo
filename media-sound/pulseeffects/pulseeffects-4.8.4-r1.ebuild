@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ IUSE="bs2b calf rubberband"
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
 RDEPEND="
 	>=dev-libs/boost-1.41:=
-	>=dev-cpp/glibmm-2.56.0
+	>=dev-cpp/glibmm-2.56.0:2
 	>=dev-cpp/gtkmm-3.24:3.0
 	>=dev-libs/glib-2.56:2
 	>=dev-libs/libsigc++-2.10:2
