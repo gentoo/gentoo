@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-06)
+# media-sound/sndio is not yet keyworded here
+# bug #769098, bug #769122
+media-libs/openal sndio
+
 # Sam James <sam@gentoo.org> (2021-01-19)
 # app-text/dblatex not yet keyworded
 # bug #766186
