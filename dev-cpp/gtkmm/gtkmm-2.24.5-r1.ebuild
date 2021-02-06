@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,8 +18,8 @@ RDEPEND="
 	>=dev-cpp/glibmm-2.34.1:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-2.24.15:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.28:2[${MULTILIB_USEDEP}]
-	>=dev-cpp/atkmm-2.22.7[${MULTILIB_USEDEP}]
-	>=dev-cpp/cairomm-1.10.0-r1[${MULTILIB_USEDEP}]
+	>=dev-cpp/atkmm-2.22.7:0[${MULTILIB_USEDEP}]
+	>=dev-cpp/cairomm-1.10.0-r1:0[${MULTILIB_USEDEP}]
 	>=dev-cpp/pangomm-2.34.0:1.4[${MULTILIB_USEDEP}]
 	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
 "
