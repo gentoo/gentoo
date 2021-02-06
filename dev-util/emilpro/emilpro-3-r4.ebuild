@@ -23,12 +23,12 @@ SLOT="0"
 IUSE="+system-binutils"
 
 DEPEND="
+	dev-cpp/cairomm:0
+	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0
 	dev-cpp/libxmlpp:2.6
-	dev-cpp/glibmm
-	dev-cpp/pangomm
-	dev-cpp/cairomm
+	dev-cpp/pangomm:1.4
 	dev-libs/libsigc++:2
 	dev-libs/glib:2
 	system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r2:=[multitarget] )
