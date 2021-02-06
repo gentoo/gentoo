@@ -42,6 +42,7 @@ DEPEND="
 	dev-libs/json-c:=
 	dev-libs/libpcre
 	dev-libs/libxml2:2
+	dev-libs/openssl:=
 	media-libs/tiff
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
@@ -124,6 +125,7 @@ src_configure() {
 		--enable-driver-grib
 		--with-bash-completion="$(get_bashcompdir)"
 		--with-cpp14
+		--with-crypto
 		--with-cryptopp=no
 		--with-expat
 		--with-geotiff
