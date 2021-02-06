@@ -5,10 +5,10 @@ DESCRIPTION=IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 EAPI=7
 HOMEPAGE=https://www.strongswan.org/
 IUSE=+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11 +strongswan_plugins_led +strongswan_plugins_lookip +strongswan_plugins_systime-fix +strongswan_plugins_unity +strongswan_plugins_vici strongswan_plugins_aesni strongswan_plugins_blowfish strongswan_plugins_bypass-lan strongswan_plugins_ccm strongswan_plugins_chapoly strongswan_plugins_ctr strongswan_plugins_forecast strongswan_plugins_gcm strongswan_plugins_ha strongswan_plugins_ipseckey strongswan_plugins_newhope strongswan_plugins_ntru strongswan_plugins_padlock strongswan_plugins_rdrand strongswan_plugins_save-keys strongswan_plugins_unbound strongswan_plugins_whitelist kernel_linux
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
 LICENSE=GPL-2 RSA DES
 RDEPEND=non-root? ( acct-user/ipsec acct-group/ipsec ) gmp? ( >=dev-libs/gmp-4.1.5:= ) gcrypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] ) mysql? ( dev-db/mysql-connector-c:= ) sqlite? ( >=dev-db/sqlite-3.3.1 ) systemd? ( sys-apps/systemd ) networkmanager? ( net-misc/networkmanager ) pam? ( sys-libs/pam ) strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns ) virtual/logger sys-apps/iproute2 !net-vpn/libreswan selinux? ( sec-policy/selinux-ipsec )
 SLOT=0
 SRC_URI=https://download.strongswan.org/strongswan-5.9.1.tar.bz2
 _eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=17ac2baa54e737a4dc736587e3d44401
+_md5_=57ac32c819d357f2f9e718aabe824446

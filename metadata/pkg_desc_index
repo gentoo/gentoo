@@ -15370,7 +15370,7 @@ net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage servi
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
 net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
-net-misc/zerotier 1.4.6 1.6.2: A software-based managed Ethernet switch for planet Earth
+net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/389-ds-base 1.4.4.9: 389 Directory Server (core libraries and daemons)
@@ -16892,7 +16892,7 @@ sys-apps/haveged 1.9.8c-r1 1.9.14-r1: A simple entropy daemon using the HAVEGE a
 sys-apps/hd-idle 1.05-r1: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.58 9.60: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.16 1.47.17: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.16 1.47.17 1.48.1: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
@@ -17436,7 +17436,7 @@ sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.4 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.5 1.14.7 1.14.8 1.14.9: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 5.4.1 5.9 5.10 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 5.4.1 5.10 5.10.1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.2.0: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17727,7 +17727,7 @@ sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
 sys-process/procps 3.3.16-r2 3.3.16-r3: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12-r1: Process information and statistics using the kernel /proc interface
-sys-process/psmisc 23.1-r1 23.2-r2 23.3-r1: A set of tools that use the proc filesystem
+sys-process/psmisc 23.3-r1 23.4: A set of tools that use the proc filesystem
 sys-process/rtirq 20180209 20191121: Modify realtime scheduling policy and priority of IRQ handlers
 sys-process/runit 2.1.1-r2 2.1.2 2.1.2-r1: A UNIX init scheme with service supervision
 sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling policy
