@@ -1,11 +1,6 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
-# uchardet not stable/keyworded yet on this arch
-# bug #750032
-sys-apps/groff uchardet
-
 # Sam James <sam@gentoo.org> (2021-01-19)
 # Joonas Niilola <juippis@gentoo.org> (2021-01-10)
 # Test-dep needs keywording on multiple arches, best to just mask it
