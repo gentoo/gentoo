@@ -518,6 +518,8 @@ distutils_enable_tests() {
 esetup.py() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
@@ -529,7 +531,7 @@ esetup.py() {
 		setup_py=( -m pyproject2setuppy.main )
 	fi
 
-	set -- "${EPYTHON:-python}" "${setup_py[@]}" "${mydistutilsargs[@]}" "${@}"
+	set -- "${EPYTHON}" "${setup_py[@]}" "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}"
