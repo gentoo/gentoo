@@ -7982,7 +7982,7 @@ dev-python/attrs 20.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r2: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
-dev-python/autobahn 20.7.1 20.12.2 20.12.3: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 20.7.1 20.12.2 20.12.3 21.1.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.4 1.5.5 9999: Automatically formats Python code to conform to the PEP 8 style guide
@@ -8021,15 +8021,15 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 1.17.3 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 1.20.3 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.0.1: Bash style brace expansion for Python
 dev-python/braintree 4.4.0: Braintree Python Library
 dev-python/breathe 4.22.1-r1 4.25.0-r1 4.25.1-r1 4.26.1: Sphinx Doxygen renderer
-dev-python/brotlicffi 0.8.0: Python binding to the Brotli library
+dev-python/brotlicffi 0.8.0 1.0.9.1: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.7 6.2.9: Python bindings for Berkeley DB
@@ -8309,7 +8309,7 @@ dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1 2.4.0: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.16.2: A Python Interface to GStreamer
-dev-python/guessit 3.2.0 3.3.0: Python library for guessing information from video filenames
+dev-python/guessit 3.2.0 3.3.0 3.3.1: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
@@ -8448,7 +8448,7 @@ dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 1.0.0 1.1.0: Python bindings for the Lightning Database
+dev-python/lmdb 1.0.0 1.1.0 1.1.1: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
@@ -9195,7 +9195,7 @@ dev-python/stestr 2.1.0-r1: A parallel Python test runner built around subunit
 dev-python/stevedore 3.3.0: Manage dynamic plugins for Python applications
 dev-python/stomp-py 6.1.0: Python client library for the STOMP messaging protocol
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
-dev-python/stripe 2.46.0: Stripe python bindings
+dev-python/stripe 2.46.0 2.55.2: Stripe python bindings
 dev-python/subunit 1.4.0: A streaming protocol for test results
 dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
 dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
@@ -10744,7 +10744,7 @@ dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in
 dev-util/drone-cli 0.8.6 1.1.4 1.2.1: Command-line interface for Drone
 dev-util/dropwatch 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
-dev-util/dwarves 1.17 1.17-r1 1.18 1.19: pahole (Poke-a-Hole) and other DWARF2 utilities
+dev-util/dwarves 1.17 1.17-r1 1.18 1.19 1.19-r1: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.3: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0: An EFL-based IDE
@@ -10774,7 +10774,7 @@ dev-util/glib-utils 2.62.6 2.64.5 2.66.2 2.66.3 2.66.4: Build utilities for GLib
 dev-util/global 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 10.11.0.0_pre20200924 10.11.0.0_pre20201216 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
-dev-util/gnome-builder 3.36.1 3.38.1: An IDE for writing GNOME-based software
+dev-util/gnome-builder 3.36.1 3.38.1 3.38.2: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2020.3: Golang IDE by JetBrains
@@ -10936,7 +10936,7 @@ dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-con
 dev-util/stepman 0.10.0 0.10.2 0.10.4 0.10.5: Step collection manager for Bitrise CLI
 dev-util/strace 5.4 5.8 5.9 5.10 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.9: Stressful Application Test
-dev-util/stripe-mock 0.79.0 0.88.0: Mock HTTP server that responds like the real Stripe API
+dev-util/stripe-mock 0.79.0 0.88.0 0.102.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/sysdig 0.27.0 0.27.1 0.27.1-r100: A system exploration and troubleshooting tool
 dev-util/sysdig-kmod 0.27.0 0.27.1: Kernel module for dev-util/sysdig
@@ -11900,7 +11900,7 @@ gnome-extra/mousetweaks 3.32.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 4.6.5 4.8.4: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.24-r1 1.16.0 1.18.0: NetworkManager connection editor and applet
+gnome-extra/nm-applet 1.18.0 1.20.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.36.3 3.38.1: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
@@ -14855,7 +14855,7 @@ net-libs/libnftnl 1.1.7 1.1.8 1.1.9 9999: Netlink API to the in-kernel nf_tables
 net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r7: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
-net-libs/libnma 1.8.24 1.8.28 1.8.30: NetworkManager GUI library
+net-libs/libnma 1.8.30: NetworkManager GUI library
 net-libs/libnpupnp 4.0.14-r1: A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 net-libs/libnsl 0-r1 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
@@ -15226,7 +15226,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.22.10-r12 1.26.0-r1 1.26.2-r1 1.26.4 1.26.6 1.28.0-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.22.10-r12 1.26.4 1.26.6 1.28.0-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.6.5 3.1.1 3.1.1-r1 3.1.2: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
@@ -15539,7 +15539,7 @@ net-vpn/logmein-hamachi 2.1.0.198 2.1.0.203: LogMeIn Hamachi VPN tunneling engin
 net-vpn/mullvad-netns 0.2 9999: Script to run a command within a Mullvad network namespace
 net-vpn/networkmanager-fortisslvpn 1.2.8-r2 1.2.10: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.8.0 1.8.2: NetworkManager L2TP plugin
-net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
+net-vpn/networkmanager-libreswan 1.2.12 1.2.14: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.12: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8-r2: NetworkManager PPTP VPN plugin
@@ -18029,9 +18029,9 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.7.0 78.7.1 85.0-r1 85.0.1: Firefox Web Browser
 www-client/firefox-bin 78.7.0 78.7.1 85.0 85.0.1: Firefox Web Browser
-www-client/google-chrome 88.0.4324.146: The web browser from Google
+www-client/google-chrome 88.0.4324.150: The web browser from Google
 www-client/google-chrome-beta 89.0.4389.40: The web browser from Google
-www-client/google-chrome-unstable 90.0.4400.8: The web browser from Google
+www-client/google-chrome-unstable 90.0.4408.0: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
@@ -18073,7 +18073,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 88.0.4324.146 89.0.4389.40_beta 90.0.4400.8_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 88.0.4324.150 89.0.4389.40_beta 90.0.4408.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
