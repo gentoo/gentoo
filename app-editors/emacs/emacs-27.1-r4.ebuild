@@ -131,6 +131,7 @@ BDEPEND="app-eselect/eselect-emacs
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
+	!<=app-editors/emacs-27.1.9999-r0:27-vcs
 	!app-editors/emacs-vcs:27
 	app-eselect/eselect-emacs"
 
@@ -154,7 +155,7 @@ src_prepare() {
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
-	AT_M4DIR=m4 eautoreconf
+	#AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {

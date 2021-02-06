@@ -154,7 +154,7 @@ src_prepare() {
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
-	AT_M4DIR=m4 eautoreconf
+	#AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
