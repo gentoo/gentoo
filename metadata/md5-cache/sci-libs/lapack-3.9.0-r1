@@ -3,8 +3,8 @@ DEFINED_PHASES=compile configure install postinst postrm prepare test
 DEPEND=!app-eselect/eselect-cblas virtual/fortran eselect-ldso? ( >=app-eselect/eselect-blas-0.2 >=app-eselect/eselect-lapack-0.2 ) doc? ( app-doc/blas-docs )
 DESCRIPTION=BLAS,CBLAS,LAPACK,LAPACKE reference implementations
 EAPI=7
-HOMEPAGE=http://www.netlib.org/lapack/
-IUSE=lapacke doc eselect-ldso test
+HOMEPAGE=https://www.netlib.org/lapack/
+IUSE=lapacke deprecated doc eselect-ldso test
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=BSD
 RDEPEND=!app-eselect/eselect-cblas virtual/fortran eselect-ldso? ( >=app-eselect/eselect-blas-0.2 >=app-eselect/eselect-lapack-0.2 ) doc? ( app-doc/blas-docs )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz -> lapack-3.9.0.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=eede4acc5fff0a775d4dbcbd93253659
+_md5_=00f12e4b28db9ba31cf9e28a6cdc0d68

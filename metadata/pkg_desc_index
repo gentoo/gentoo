@@ -3016,7 +3016,7 @@ app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.7: generator of sandwich OCR pdf files
 app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
-app-text/pelican 4.2.0 4.5.1 4.5.3 9999: A tool to generate a static blog, with restructured text or markdown input files
+app-text/pelican 4.2.0-r1 4.5.1-r1 4.5.3 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.61 0.61-r1 0.62: Tools to ease the translation of documentation
@@ -8895,7 +8895,7 @@ dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-regressions 2.1.1 2.2.0: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
-dev-python/pytest-salt 2020.1.27: PyTest Salt Plugin
+dev-python/pytest-salt 2020.1.27-r1: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.94.4: The new generation of the pytest-salt Plugin
 dev-python/pytest-services 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
@@ -9953,7 +9953,7 @@ dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0 2.7.0-r1: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.8 1.3.9: A library to read EXIF info from JPEG and TIFF images
-dev-ruby/facter 3.14.14 3.14.15 9999: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.14.14 3.14.15 3.14.16 9999: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2 1.2.3: A fake filesystem. Use it in your tests
 dev-ruby/faker 2.14.0 2.15.1: A library for generating fake data such as names, addresses, and phone numbers
@@ -13283,7 +13283,7 @@ media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 9999: A real-time noise suppression plugin for voice
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmpeg version of headers required to interface with Nvidias codec APIs
-media-libs/openal 1.20.1 1.21.0 1.21.1: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.20.1 1.21.0 1.21.1-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.5-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -15153,7 +15153,7 @@ net-misc/hashcash 1.22-r2: Utility to generate hashcash tokens
 net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.2.0 1.2.2: Synchronize local workstation with time offered by remote webservers
-net-misc/httpie 2.2.0 2.3.0 2.4.0: Modern command line HTTP client
+net-misc/httpie 2.3.0 2.4.0: Modern command line HTTP client
 net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty and clarity
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 7.0.2: Enterprise client-server fax package for class 1 and 2 fax modems
@@ -16245,7 +16245,7 @@ sci-libs/keras-applications 1.0.8-r1: Keras deep learning library reference impl
 sci-libs/keras-preprocessing 1.1.0-r1 1.1.2: Easy data preprocessing and data augmentation for deep learning models
 sci-libs/kim-api 2.2.1: Application Programming Interface for atomistic simulations
 sci-libs/klu 1.3.9 1.3.9-r1: Sparse LU factorization for circuit simulation
-sci-libs/lapack 3.8.0 3.8.0-r1 3.9.0: BLAS,CBLAS,LAPACK,LAPACKE reference implementations
+sci-libs/lapack 3.8.0 3.8.0-r1 3.9.0-r1: BLAS,CBLAS,LAPACK,LAPACKE reference implementations
 sci-libs/ldl 2.2.6: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3.1: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
@@ -18021,7 +18021,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.96 89.0.4389.23 90.0.4400.8: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.96 88.0.4324.150 89.0.4389.23 90.0.4400.8: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
