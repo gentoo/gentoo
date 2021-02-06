@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools flag-o-matic desktop
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
-HOMEPAGE="http://www.fvwm.org/"
+HOMEPAGE="https://www.fvwm.org/"
 SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2 FVWM"
+LICENSE="GPL-2+ FVWM"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="bidi debug doc netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
