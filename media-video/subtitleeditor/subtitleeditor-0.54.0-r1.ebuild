@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ IUSE="debug nls"
 RDEPEND="
 	>=app-text/enchant-1.4:0
 	app-text/iso-codes
-	>=dev-cpp/cairomm-1.12
+	>=dev-cpp/cairomm-1.12:0
 	>=dev-cpp/glibmm-2.46:2
 	>=dev-cpp/gtkmm-3.18:3.0
 	>=dev-cpp/gstreamermm-1.0:1.0=
