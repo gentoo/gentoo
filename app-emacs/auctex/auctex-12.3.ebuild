@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="preview-latex"
 
 RDEPEND="virtual/latex-base
@@ -22,7 +22,6 @@ RDEPEND="virtual/latex-base
 	)"
 BDEPEND="${RDEPEND}"
 
-ELISP_PATCHES="${P}-autoload.patch"
 TEXMF="/usr/share/texmf-site"
 
 src_configure() {

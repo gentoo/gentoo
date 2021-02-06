@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+NEED_EMACS=24
 
 inherit elisp readme.gentoo-r1
 
@@ -11,11 +12,11 @@ SRC_URI="https://orgmode.org/org-${PV}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+ contrib? ( GPL-2+ MIT ) odt-schema? ( OASIS-Open )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="contrib doc odt-schema"
 RESTRICT="test"
 
-DEPEND="doc? ( virtual/texi2dvi )"
+BDEPEND="doc? ( virtual/texi2dvi )"
 
 S="${WORKDIR}/org-${PV}"
 SITEFILE="50${PN}-gentoo.el"
@@ -47,7 +48,7 @@ src_install() {
 	fi
 
 	elisp-site-file-install "${T}/${SITEFILE}"
-	dodoc README doc/library-of-babel.org doc/orgcard.txt etc/ORG-NEWS
+	dodoc README etc/ORG-NEWS
 	use doc && dodoc doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
 
 	DOC_CONTENTS="Org mode has a large variety of run-time dependencies,
