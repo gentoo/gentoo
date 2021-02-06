@@ -19,6 +19,7 @@ BDEPEND="
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 			dev-python/breathe[${PYTHON_USEDEP}]
 		')
 	)
