@@ -2639,7 +2639,7 @@ app-misc/when 1.1.37 1.1.40: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 3.8.3-r100 4.6.1-r100: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/xmind 3.5.3.201506180105-r2 3.7.6_p201801311814: A brainstorming and mind mapping software tool
-app-misc/yq 2.9.2-r1 2.11.1: Command-line YAML processor - jq wrapper for YAML documents
+app-misc/yq 2.9.2-r1 2.11.1 2.12.0: Command-line YAML processor - jq wrapper for YAML documents
 app-misc/ytree 2.02 2.03: A curses-based file manager
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 8.0.1-r1: GRIB File Viewer - Weather data visualization
@@ -2899,14 +2899,14 @@ app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
-app-text/dvipng 1.15-r1 1.17: Translate DVI files into PNG or GIF graphics
+app-text/dvipng 1.17: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
 app-text/dvisvgm 2.10.1-r1 2.11-r1: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1 0.2.2-r2: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
 app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
-app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
+app-text/epspdf 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1 3.09: Creates or extracts preview images in EPS files, fixes bounding boxes
 app-text/evince 3.36.7 3.36.9: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
@@ -8028,7 +8028,7 @@ dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.0.1: Bash style brace expansion for Python
 dev-python/braintree 4.4.0: Braintree Python Library
-dev-python/breathe 4.22.1 4.25.0 4.25.1: Sphinx Doxygen renderer
+dev-python/breathe 4.22.1-r1 4.25.0-r1 4.25.1-r1 4.26.1: Sphinx Doxygen renderer
 dev-python/brotlicffi 0.8.0: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
@@ -10544,11 +10544,11 @@ dev-tex/hevea 2.31 2.35: HeVeA is a quite complete and fast LaTeX to HTML transl
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425-r1: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
-dev-tex/latex-beamer 3.56-r1 3.57 3.59 3.60: LaTeX class for creating presentations using a video projector
+dev-tex/latex-beamer 3.59 3.60: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2015 2017.2-r2 2021: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
-dev-tex/latexdiff 1.3.0 1.3.1.1 9999: Compare two latex files and mark up significant differences
+dev-tex/latexdiff 1.3.1.1 9999: Compare two latex files and mark up significant differences
 dev-tex/latexmk 456 465 469: Perl script for automatically building LaTeX documents
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
