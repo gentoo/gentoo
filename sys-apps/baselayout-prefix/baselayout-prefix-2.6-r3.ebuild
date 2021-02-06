@@ -240,6 +240,12 @@ src_install() {
 	emake ROOT="${ROOT}" DESTDIR="${D}" install
 	dodoc ChangeLog
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# add SDK path which contains development manpages
+		echo "MANPATH=${EPREFIX}/MacOSX.sdk/usr/share/man" \
+			> "${ED}"/etc/env.d/98macos-sdk
+	fi
+
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
 	doins Makefile
