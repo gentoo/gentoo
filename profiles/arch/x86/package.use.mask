@@ -383,8 +383,6 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
 
-x11-terms/eterm cpu_flags_x86_sse2
-
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection
 

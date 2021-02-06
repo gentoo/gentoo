@@ -378,7 +378,6 @@ app-crypt/johntheripper cpu_flags_x86_mmx
 media-libs/libfame cpu_flags_x86_mmx
 media-libs/sdl-gfx cpu_flags_x86_mmx
 media-libs/smpeg cpu_flags_x86_mmx
-x11-terms/eterm cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext

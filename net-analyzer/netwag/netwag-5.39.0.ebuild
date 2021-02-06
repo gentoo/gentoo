@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: netwib, netwox and netwag go together, bump all or bump none
 
 EAPI=5
 
-DESCRIPTION="Tcl/tk interface to netwox (Toolbox of 222 utilities for testing Ethernet/IP networks)"
+DESCRIPTION="Tcl/tk interface to netwox (Toolbox of 222 utilities for testing networks)"
 HOMEPAGE="
 	http://ntwag.sourceforge.net/
 	http://www.laurentconstantin.com/en/netw/netwag/
@@ -24,7 +24,6 @@ DEPEND="
 	|| (
 		x11-terms/xterm
 		kde-apps/konsole
-		x11-terms/eterm
 		x11-terms/gnome-terminal
 	)
 "
@@ -37,9 +36,6 @@ src_prepare() {
 		-e 's:/man$:/share/man:g' \
 		-e "s:/usr/local:/usr:" \
 		config.dat || die
-	sed -i \
-		-e 's|eterm|Eterm|g' \
-		genemake || die
 }
 
 src_configure() {
