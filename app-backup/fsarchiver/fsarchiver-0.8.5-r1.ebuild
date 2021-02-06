@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ DEPEND="${CDEPEND}
 		lzo? ( dev-libs/lzo[static-libs] )
 		zstd? ( app-arch/zstd[static-libs] )
 	)"
-RDEPEND="${DDEPEND}"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
