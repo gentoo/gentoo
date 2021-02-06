@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ LICENSE="MIT"
 SLOT="0"
 
 DEPEND="
-	dev-cpp/glibmm
+	dev-cpp/glibmm:2
 	>=gui-libs/wlroots-0.11.0
 	>=gui-wm/wayfire-${PV%.*}
 	x11-libs/cairo

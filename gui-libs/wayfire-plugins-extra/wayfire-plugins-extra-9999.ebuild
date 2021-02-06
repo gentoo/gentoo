@@ -20,7 +20,7 @@ LICENSE="MIT"
 SLOT="0"
 
 DEPEND="
-	dev-cpp/glibmm
+	dev-cpp/glibmm:2
 	>=gui-libs/wlroots-0.11.0
 	>=gui-wm/wayfire-${PV%.*}
 	x11-libs/cairo
