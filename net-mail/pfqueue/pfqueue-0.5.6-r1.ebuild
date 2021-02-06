@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils ltprune toolchain-funcs
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="pfqueue is an ncurses console-based tool for managing Postfix queued messages"
 HOMEPAGE="http://pfqueue.sourceforge.net/"
@@ -11,14 +12,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-RDEPEND="
-	sys-libs/ncurses
-	sys-devel/libtool
-"
+BDEPEND="sys-devel/libtool"
+RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 
+DOCS=( README ChangeLog NEWS TODO AUTHORS )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tinfo.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
+	default
+
 	eautoreconf
 }
 
@@ -26,9 +32,8 @@ src_configure() {
 	econf --disable-static
 }
 
-DOCS=( README ChangeLog NEWS TODO AUTHORS )
-
 src_install() {
 	default
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 }
