@@ -1,0 +1,26 @@
+From a8aa40ec021dac8310d77bcec71ee298f6773926 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Thu, 4 Feb 2021 22:29:57 +0100
+Subject: [PATCH] add Gentoo configuration type
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 100d6133..887a1cd7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/adm/cmake")
+ 
+ set (CMAKE_SUPPRESS_REGENERATION TRUE)
+ 
+-set (CMAKE_CONFIGURATION_TYPES Release Debug RelWithDebInfo CACHE INTERNAL "" FORCE)
++set (CMAKE_CONFIGURATION_TYPES Release Debug RelWithDebInfo Gentoo CACHE INTERNAL "" FORCE)
+ 
+ # macro: include patched file if it exists
+ macro (OCCT_INCLUDE_CMAKE_FILE BEING_INCLUDED_FILE)
+-- 
+2.30.0
+
