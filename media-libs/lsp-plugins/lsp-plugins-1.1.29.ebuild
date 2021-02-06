@@ -1,22 +1,32 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit xdg
+
 DESCRIPTION="Linux Studio Plugins"
 HOMEPAGE="https://lsp-plug.in"
-SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${P}.tar.gz"
-S="${WORKDIR}/${PN}-${P}"
+
+if [[ ${PV} == *9999 ]];then
+	inherit git-r3
+	SRC_URI=""
+	EGIT_REPO_URI="https://github.com/sadko4u/lsp-plugins"
+	EGIT_BRANCH="devel"
+else
+	SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="doc jack ladspa +lv2"
 REQUIRED_USE="|| ( jack ladspa lv2 )"
 
 DEPEND="
 	dev-libs/expat
 	media-libs/libsndfile
+	media-libs/libglvnd[X]
 	doc? ( dev-lang/php:* )
 	jack? (
 		virtual/jack
@@ -31,11 +41,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-src_prepare() {
-	eapply_user
-	sed -i '/install_.*: all/s/ all//g' Makefile
-}
-
 src_compile() {
 	use doc && MODULES+="doc"
 	use jack && MODULES+=" jack"
@@ -45,8 +50,5 @@ src_compile() {
 }
 
 src_install() {
-	use doc && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_doc
-	use jack && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_jack
-	use ladspa && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_ladspa
-	use lv2 && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_lv2
+	emake PREFIX="/usr" DESTDIR="${ED}" LIB_PATH="/usr/$(get_libdir)" install
 }
