@@ -10,8 +10,8 @@ MY_PV_2="$(get_version_component_range 2)"
 [[ $(( $(get_version_component_range 2) % 2 )) -eq 0 ]] && SD="stable" || SD="development"
 
 DESCRIPTION="Tools for accessing, inspect  and modifying virtual machine (VM) disk images"
-HOMEPAGE="http://libguestfs.org/"
-SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
+HOMEPAGE="https://libguestfs.org/"
+SRC_URI="https://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/"${MY_PV_1}""
