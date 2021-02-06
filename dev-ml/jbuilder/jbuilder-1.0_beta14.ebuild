@@ -21,7 +21,10 @@ RESTRICT="!test? ( test )"
 DEPEND="<=dev-lang/ocaml-4.05.0:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	test? ( dev-ml/menhir )
+	test? (
+		dev-ml/menhir
+		dev-ml/findlib
+	)
 "
 OPAMSWITCH="system"
 
