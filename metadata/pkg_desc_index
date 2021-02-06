@@ -10911,7 +10911,7 @@ dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
 dev-util/sccache 0.2.13 9999: ccache/distcc like tool with support for rust and cloud storage
 dev-util/schroot 1.6.10_p7: Utility to execute commands in a chroot environment
-dev-util/scons 3.1.1 3.1.2 4.0.1 4.1.0-r1: Extensible Python-based build utility
+dev-util/scons 4.0.1 4.1.0-r1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
@@ -13305,7 +13305,7 @@ media-libs/partio 1.1.0_p20170829 1.5.4 1.10.1 9999: Library for particle IO and
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.11.1-r1: KDE multimedia abstraction library
 media-libs/phonon-gstreamer 4.10.0: GStreamer backend for the Phonon multimedia library
-media-libs/phonon-vlc 0.11.1: VLC backend for the Phonon multimedia library
+media-libs/phonon-vlc 0.11.1 0.11.2: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r2 1.8.5-r3: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images

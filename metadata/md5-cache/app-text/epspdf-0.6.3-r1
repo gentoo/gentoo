@@ -4,10 +4,10 @@ DESCRIPTION=GUI and command-line converter for [e]ps and pdf
 EAPI=7
 HOMEPAGE=http://tex.aanhet.net/epspdf/
 IUSE=doc tk
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=!<dev-texlive/texlive-pictures-2011-r1 >=dev-texlive/texlive-basic-2011 app-text/ghostscript-gpl tk? ( dev-lang/tk )
 SLOT=0
 SRC_URI=http://tex.aanhet.net/epspdf/epspdf.0.6.3.tgz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	texlive-common	0ed8c0ce6e8c9bb49ab84344ac802665
-_md5_=0ddf49f9789489bf29697c01c3afbcbb
+_md5_=e0eba6ca9e6d4ce7461f9d8a5c631332
