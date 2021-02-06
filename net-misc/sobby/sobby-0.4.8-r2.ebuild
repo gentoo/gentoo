@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic user
+EAPI=7
+inherit flag-o-matic
 
 DESCRIPTION="Standalone Obby server"
 HOMEPAGE="http://gobby.0x539.de/"
@@ -12,22 +12,23 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="zeroconf"
 
-RDEPEND="
-	>=dev-cpp/glibmm-2.6
-	>=dev-libs/libsigc++-2.0
+DEPEND="
+	>=dev-cpp/glibmm-2.6:2
+	>=dev-libs/libsigc++-2.0:2
 	>=dev-libs/gmp-4.1.4:0
 	>=dev-cpp/libxmlpp-2.6:2.6
 	>=net-libs/net6-1.3.12
 	>=net-libs/obby-0.4.6[zeroconf=]
 "
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
+	acct-group/sobby
+	acct-user/sobby
+"
+BDEPEND="
+	acct-group/sobby
+	acct-user/sobby
 	virtual/pkgconfig
 "
-
-pkg_setup() {
-	enewgroup sobby
-	enewuser sobby -1 -1 /var/lib/sobby sobby
-}
 
 src_configure() {
 	append-cxxflags -std=c++11
@@ -43,12 +44,7 @@ src_install() {
 	insinto /etc/sobby
 	doins "${FILESDIR}/sobby.xml"
 
-	keepdir /var/lib/sobby
-
-	fperms -R 0700 /var/lib/sobby
 	fperms -R 0700 /etc/sobby
-
-	fowners sobby:sobby /var/lib/sobby
 	fowners -R sobby:sobby /etc/sobby
 }
 
