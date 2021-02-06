@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="doc"
 COMMON_DEPEND="
 	>=x11-libs/pango-1.41.0[${MULTILIB_USEDEP}]
 	>=dev-cpp/glibmm-2.48.0:2[${MULTILIB_USEDEP}]
-	>=dev-cpp/cairomm-1.12.0[${MULTILIB_USEDEP}]
+	>=dev-cpp/cairomm-1.12.0:0[${MULTILIB_USEDEP}]
 	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
