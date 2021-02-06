@@ -84,7 +84,7 @@ src_configure() {
 
 	eqmake5 CONFIG+="${qConfigs[*]}" \
 		RS_MAJOR_VERSION=$(ver_cut 1) RS_MINOR_VERSION=$(ver_cut 2) \
-		RS_MINI_VERSION=$(ver_cut 3) RS_EXTRA_VERSION="-gentoo-${PR}"
+		RS_MINI_VERSION=$(ver_cut 3) RS_EXTRA_VERSION="-gentoo-${PR}" \
 		RS_UPNP_LIB=miniupnpc
 }
 
