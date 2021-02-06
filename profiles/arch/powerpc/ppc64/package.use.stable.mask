@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-02-06)
+# Drags in too much unstable GNOME for now
+# bug #727572
+mail-client/claws-mail gdata
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-07)
 # Unstable test deps.
 dev-cpp/eigen test
