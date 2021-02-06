@@ -59,8 +59,6 @@ if [[ ${PV} == "99999999" ]] ; then
 	"
 fi
 
-[ "${PV}" == "99999999" ] || S="${WORKDIR}/${PN}-${PV}"
-
 PATCHES=()
 
 src_prepare() {
