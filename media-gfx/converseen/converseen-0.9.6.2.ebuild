@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,10 +6,11 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Batch image converter and resizer based on ImageMagick"
-HOMEPAGE="http://converseen.fasterland.net/"
+HOMEPAGE="https://converseen.fasterland.net/
+	https://github.com/Faster3ck/Converseen/"
 SRC_URI="https://github.com/Faster3ck/Converseen/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
