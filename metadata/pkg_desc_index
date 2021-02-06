@@ -607,7 +607,6 @@ app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 6.9.4: A usable configuration management system
-app-admin/cgmanager 0.41 0.42: Control Group manager daemon
 app-admin/checksec 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2 2.2.3 2.4.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
@@ -5849,6 +5848,7 @@ dev-ml/findlib 1.8.1-r2: OCaml tool to find/use non-standard packages
 dev-ml/fmt 0.8.4: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
+dev-ml/graphics 5.1.1: The OCaml graphics library
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/iTeML 2.7: Inline (Unit) Tests for OCaml
 dev-ml/integers 0.2.2 0.4.0: Various signed and unsigned integer types for OCaml
@@ -5902,7 +5902,7 @@ dev-ml/ocaml-sqlite3 4.3.0-r1 5.0.2: A package for ocaml that provides access to
 dev-ml/ocaml-ssl 0.5.3-r1 0.5.9 0.5.10: OCaml bindings for OpenSSL
 dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.10.1 0.11.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
-dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1: O'Caml Graph library
+dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1 2.0.0: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.9: Generate OCaml modules from source files
 dev-ml/ocamlnet 4.1.2 4.1.8: Modules for OCaml application-level Internet protocols
@@ -9419,7 +9419,7 @@ dev-qt/qttranslations 5.15.2: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.15.2: Customizable input framework and virtual keyboard for Qt
 dev-qt/qtwayland 5.15.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.15.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.15.2: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebengine 5.15.2 5.15.2_p20210126: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.15.2: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwebview 5.15.2: Module for displaying web content in a QML application using the Qt5 framework
@@ -11981,7 +11981,7 @@ gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositor
 gui-apps/wf-shell 0.5.0 0.6.1 9999: A compiz like 3D wayland compositor
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
-gui-libs/display-manager-init 1.0: RC init files for starting display and login managers
+gui-libs/display-manager-init 1.0-r1: RC init files for starting display and login managers
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
@@ -13140,7 +13140,7 @@ media-libs/libdv 1.0.0-r4: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbcsa 1.1.0: Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
 media-libs/libdvbpsi 1.3.2 1.3.3: Library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
-media-libs/libdvdcss 1.4.2 1.4.2-r1: A portable abstraction library for DVD decryption
+media-libs/libdvdcss 1.4.2-r1: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.1.0 9999: Library for DVD navigation tools
 media-libs/libdvdread 6.1.1 9999: Library for DVD navigation tools
 media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standard
@@ -17609,7 +17609,6 @@ sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
 sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
-sys-libs/libnih 1.0.3-r4: Light-weight 'standard library' of C functions
 sys-libs/libomp 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.8.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
