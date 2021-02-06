@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,11 +15,13 @@ KEYWORDS="amd64 ~ppc x86"
 # Package warrants IUSE doc and possibly examples
 IUSE="exif"
 
-RDEPEND="media-gfx/imagemagick
+RDEPEND="
 	 dev-perl/Image-Size
 	 dev-perl/URI
 	 dev-perl/Locale-gettext
-	 exif? ( media-libs/exiftool )"
+	 exif? ( media-libs/exiftool )
+	 virtual/imagemagick-tools
+"
 
 S="${WORKDIR}/${PN}-${P}"
 
