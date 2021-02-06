@@ -50,6 +50,16 @@ src_prepare() {
 	tc-export CC OBJDUMP
 }
 
+src_configure() {
+	local mycmakeargs=(
+		-DUSE_CCACHE=OFF
+		-DUSE_FASTER_LINKER=OFF
+		-DZSTD_FROM_INTERNET=OFF
+	)
+
+	cmake_src_configure
+}
+
 src_install() {
 	cmake_src_install
 
