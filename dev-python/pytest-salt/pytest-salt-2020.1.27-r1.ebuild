@@ -22,6 +22,7 @@ RDEPEND="
 	>=dev-python/psutil-4.2.0[${PYTHON_USEDEP}]
 	dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 	dev-python/pytest-tempdir[${PYTHON_USEDEP}]
+	dev-python/msgpack[${PYTHON_USEDEP}]
 "
 #BDEPEND="
 #	test? ( app-admin/salt[${PYTHON_USEDEP}] )
