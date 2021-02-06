@@ -939,7 +939,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.3.1: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.3.1 5.3.2: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.2: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/hyperfine 1.11.0: A command-line benchmarking tool (runs other benchmarks)
@@ -1802,7 +1802,7 @@ app-emacs/apache-mode 2.2.0: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1 10.8_p20190407: A Portable Emacs Library is a library for making portable Emacs Lisp programs
 app-emacs/async 1.9.3: Simple library for asynchronous processing in Emacs
 app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
-app-emacs/auctex 11.92 12.1-r1 12.2: Extensible package for writing and formatting TeX files in Emacs
+app-emacs/auctex 11.92 12.2 12.3: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.7: Basic edit toolkit
@@ -1922,7 +1922,7 @@ app-emacs/nxml-gentoo-schemas 20200303 20210203: Extension for nxml-mode with Ge
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
-app-emacs/org-mode 8.3.2-r1 9.3.6 9.4: An Emacs mode for notes and project planning
+app-emacs/org-mode 9.4 9.4.4: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/pariemacs 3.14: sci-mathematics/pari emacs mode
@@ -13104,7 +13104,7 @@ media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
 media-libs/ladspa-sdk 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0 0.4.0-r1: C++ library to scrobble tracks on Last.fm
-media-libs/lcms 2.11: A lightweight, speed optimized color management engine
+media-libs/lcms 2.11 2.12: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4 1.80.0: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r2 2.0.0_rc1-r1: library for managing 3D-Studio Release 3 and 4 .3DS files
@@ -17351,7 +17351,7 @@ sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r1 4.0.1: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r2 4.0.1: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 9 10 11 12 13: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
@@ -18004,7 +18004,7 @@ www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 t
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
-www-apps/piwigo 2.10.2 11.1.0 11.2.0: a photo gallery software for the web
+www-apps/piwigo 2.10.2 11.2.0 11.3.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.5: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.11-r1: A simple CalDAV calendar server
