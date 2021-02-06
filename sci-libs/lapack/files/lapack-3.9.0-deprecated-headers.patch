@@ -1,3 +1,6 @@
+https://sources.debian.org/patches/lapack/3.9.0-3/missing-lapacke-prototypes.patch/
+https://github.com/Reference-LAPACK/lapack/issues/365
+
 From 87536aa3c8bb0af00f66088fb6ac05d87509e011 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?S=C3=A9bastien=20Villemot?= <sebastien@debian.org>
 Date: Sat, 23 Nov 2019 12:22:20 +0100
