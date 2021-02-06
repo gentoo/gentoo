@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~bkohler/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips ~x86"
 IUSE="nls gpm examples"
 
 DEPEND="
