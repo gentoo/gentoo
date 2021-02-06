@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,8 +19,8 @@ RDEPEND="
 	>=dev-cpp/gtkmm-3.18.0:3.0
 	>=x11-libs/gtksourceview-3.18.0:3.0
 
-	dev-cpp/atkmm
-	dev-cpp/cairomm
+	dev-cpp/atkmm:0
+	dev-cpp/cairomm:0
 	dev-cpp/pangomm:1.4
 "
 DEPEND="${RDEPEND}

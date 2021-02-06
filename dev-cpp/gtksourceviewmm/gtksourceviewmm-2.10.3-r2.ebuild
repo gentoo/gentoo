@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1"
 
 RDEPEND="
 	>=dev-cpp/gtkmm-2.12:2.4
-	dev-cpp/atkmm
+	dev-cpp/atkmm:0
 	>=x11-libs/gtksourceview-2.10.0:2.0
 	!>=dev-cpp/libgtksourceviewmm-1
 "
