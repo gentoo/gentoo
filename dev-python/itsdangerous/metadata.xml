@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">itsdangerous</remote-id>
+    <remote-id type="github">pallets/itsdangerous</remote-id>
   </upstream>
 </pkgmetadata>
