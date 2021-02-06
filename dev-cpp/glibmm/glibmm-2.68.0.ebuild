@@ -8,24 +8,22 @@ DESCRIPTION="C++ interface for glib2"
 HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
-SLOT="2"
+SLOT="2.68"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/libsigc++:3[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.63.0:2[${MULTILIB_USEDEP}]
+	dev-libs/libsigc++:3[doc?,${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	sys-devel/m4
-	dev-lang/perl
 	doc? (
-		app-doc/doxygen
+		app-doc/doxygen[dot]
+		dev-lang/perl
 		dev-libs/libxslt
-		media-gfx/graphviz
 	)
 "
 
