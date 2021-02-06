@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
-RDEPEND=">=dev-cpp/glibmm-2.28
+RDEPEND=">=dev-cpp/glibmm-2.28:2
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0"
 DEPEND="${RDEPEND}
