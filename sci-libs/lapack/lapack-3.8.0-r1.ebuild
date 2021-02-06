@@ -6,8 +6,8 @@ CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils
 
 DESCRIPTION="BLAS,CBLAS,LAPACK,LAPACKE reference implementations"
-HOMEPAGE="http://www.netlib.org/lapack/"
-SRC_URI="http://www.netlib.org/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.netlib.org/lapack/"
+SRC_URI="https://www.netlib.org/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
