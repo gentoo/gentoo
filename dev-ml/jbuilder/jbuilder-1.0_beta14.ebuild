@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=""
+DEPEND="<=dev-lang/ocaml-4.05.0:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	test? ( dev-ml/menhir )
