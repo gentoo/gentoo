@@ -10,15 +10,19 @@ inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
+SRC_URI="https://inkscape.org/gallery/item/21571/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
 IUSE="cdr dbus dia exif graphicsmagick imagemagick inkjar jemalloc jpeg lcms
 openmp postscript spell static-libs svg2 visio wpg"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+PATCHES=(
+	"${FILESDIR}/missing_atomic_include.patch"
+)
 
 BDEPEND="
 	dev-util/glib-utils
@@ -28,14 +32,14 @@ BDEPEND="
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.57.0:=[cairo]
-	>=dev-cpp/cairomm-1.12
-	>=dev-cpp/glibmm-2.54.1
+	>=dev-cpp/cairomm-1.12:0
+	>=dev-cpp/glibmm-2.54.1:2
 	dev-cpp/gtkmm:3.0
-	>=dev-cpp/pangomm-2.40
+	>=dev-cpp/pangomm-2.40:1.4
 	>=dev-libs/boehm-gc-7.1:=
 	dev-libs/double-conversion:=
 	>=dev-libs/glib-2.41
-	>=dev-libs/libsigc++-2.8
+	>=dev-libs/libsigc++-2.8:2
 	>=dev-libs/libxml2-2.7.4
 	>=dev-libs/libxslt-1.1.25
 	dev-libs/gdl:3
@@ -98,7 +102,7 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="test"
 
-S="${WORKDIR}"/${P}_2021-01-15_e86c870879
+S="${WORKDIR}"/${P}_2020-09-07_3bc2e813f5
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
