@@ -2259,7 +2259,7 @@ app-i18n/libskk 1.0.2 1.0.5: GObject-based library to deal with Japanese kana-to
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-it 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
-app-i18n/man-pages-l10n 4.0.0: A somewhat comprehensive collection of man page translations
+app-i18n/man-pages-l10n 4.0.0 4.2.0: A somewhat comprehensive collection of man page translations
 app-i18n/man-pages-ru 5.03.2390.2390.20191017: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.6.3.2: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mecab-skkserv 0.03: mecab-skkserv is a Kana-Kanji conversion server using MeCab
@@ -5570,7 +5570,7 @@ dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
-dev-libs/libxls 1.6.1 1.6.2: A library which can read Excel (xls) files
+dev-libs/libxls 1.6.2: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.10-r4: XML C parser and toolkit
 dev-libs/libxmlb 0.1.15 0.2.1: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.34-r1: XSLT libraries and tools
@@ -10663,7 +10663,7 @@ dev-util/catalyst 3.0.14 3.0.15 9999: Release metatool used for creating release
 dev-util/catfish 1.4.13 4.15.0 4.16.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.9 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.16.0 0.17.0: A tool for generating C bindings to Rust code
-dev-util/ccache 3.7.12 4.1 4.2: fast compiler cache
+dev-util/ccache 4.1 4.2: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20201219 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
@@ -10728,7 +10728,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 165 166: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 166: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -14627,7 +14627,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/samba 4.12.9-r1 4.12.11 4.13.3-r1 4.13.4 4.14.0_rc2: Samba Suite Version 4
-net-fs/smbnetfs 0.6.2 0.6.3: FUSE filesystem for SMB shares
+net-fs/smbnetfs 0.6.3: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r2: WebDAV filesystem with special features for accessing subversion repositories
@@ -15438,7 +15438,7 @@ net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2: A fork of nicotine, a Soulseek cli
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.3.1 4.3.3 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
-net-p2p/retroshare 0.6.5 0.6.5-r1: P2P private sharing application
+net-p2p/retroshare 0.6.5 0.6.5-r2: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/syncthing 1.10.0 1.12.1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
@@ -17590,7 +17590,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.5 1.6.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.18.1-r1 1.19: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r8 2.30-r9 2.31-r6 2.31-r7 2.32-r2 2.32-r3 2.32-r5 2.32-r6 2.32-r7 2.33 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r2 2.32-r3 2.32-r5 2.32-r6 2.32-r7 2.33 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.2: Library for managing partitions
@@ -17654,7 +17654,7 @@ sys-libs/talloc 2.3.1 2.3.2: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: Simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
-sys-libs/timezone-data 2020d 2020e 2020f 2021a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2020e 2020f 2021a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2 1.2.11-r3: Standard (de)compression library
