@@ -8862,8 +8862,6 @@ x11-plugins/wmudmount:gcr - Enable support for secure memory with app-crypt/gcr
 x11-plugins/wmudmount:secret - Enable support for secret service with app-crypt/libsecret
 x11-terms/aterm:background - Enable background image support via media-libs/libafterimage
 x11-terms/aterm:xgetdefault - Enable resources via X instead of aterm small version
-x11-terms/eterm:escreen - Enable built-in app-misc/screen support
-x11-terms/eterm:utempter - Include libutempter support
 x11-terms/gnome-terminal:gnome-shell - Integrate with gnome-base/gnome-shell search
 x11-terms/gnome-terminal:nautilus - Build gnome-base/nautilus extension
 x11-terms/guake:utempter - Include utmp management support via sys-libs/libutempter
