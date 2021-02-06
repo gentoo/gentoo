@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.9.0-build-tests.patch"
+	"${FILESDIR}/${P}-build-tests.patch"
 )
 
 src_prepare() {
