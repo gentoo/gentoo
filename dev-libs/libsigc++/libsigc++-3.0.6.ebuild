@@ -14,7 +14,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="
+	doc? (
+		app-doc/doxygen[dot]
+		dev-lang/perl
+		dev-libs/libxslt
+	)
+"
 
 src_prepare() {
 	default
