@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils libtool ltprune user
 
 DESCRIPTION="An Embeddable Fulltext Search Engine"
-HOMEPAGE="http://groonga.org/"
-SRC_URI="http://packages.groonga.org/source/${PN}/${P}.tar.gz"
+HOMEPAGE="https://groonga.org/"
+SRC_URI="https://packages.groonga.org/source/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
