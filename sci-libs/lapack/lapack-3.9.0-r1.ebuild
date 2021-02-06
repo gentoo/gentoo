@@ -6,14 +6,14 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="BLAS,CBLAS,LAPACK,LAPACKE reference implementations"
-HOMEPAGE="http://www.netlib.org/lapack/"
+HOMEPAGE="https://www.netlib.org/lapack/"
 SRC_URI="https://github.com/Reference-LAPACK/lapack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 # TODO: static-libs 64bit-index
-IUSE="lapacke doc eselect-ldso test"
+IUSE="lapacke deprecated doc eselect-ldso test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
@@ -28,13 +28,20 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.9.0-build-tests.patch"
+	"${FILESDIR}/${P}-build-tests.patch"
 )
+
+src_prepare() {
+	use deprecated && eapply "${FILESDIR}/${P}-deprecated-headers.patch"
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DCBLAS=ON
 		-DLAPACKE=$(usex lapacke)
+		-DBUILD_DEPRECATED=$(usex deprecated)
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTING=$(usex test)
 	)

@@ -18,7 +18,7 @@ LICENSE="LGPL-2+ BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="
-	alsa coreaudio debug jack oss portaudio pulseaudio sdl qt5
+	alsa coreaudio debug jack oss portaudio pulseaudio sdl sndio qt5
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
 	cpu_flags_arm_neon
 "
@@ -34,6 +34,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
+	sndio? ( media-sound/sndio[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )"
@@ -53,6 +54,7 @@ src_configure() {
 			-DALSOFT_REQUIRE_PORTAUDIO=$(usex portaudio)
 			-DALSOFT_REQUIRE_PULSEAUDIO=$(usex pulseaudio)
 			-DALSOFT_REQUIRE_SDL2=$(usex sdl)
+			-DALSOFT_REQUIRE_SNDIO=$(usex sndio)
 			-DALSOFT_UTILS=$(multilib_is_native_abi && echo "ON" || echo "OFF")
 			-DALSOFT_NO_CONFIG_UTIL=$(usex qt5 "$(multilib_is_native_abi && echo "OFF" || echo "ON")" ON)
 			-DALSOFT_EXAMPLES=OFF
