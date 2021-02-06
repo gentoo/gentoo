@@ -5,10 +5,6 @@
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-07-13)
-# Luajit does not work on s390
-app-text/texlive-core luajittex
-
 # Hans de Graaff <graaff@gentoo.org> (2019-04-08)
 # Obsolete ruby version, no newer versions keyworded or stable.
 dev-vcs/subversion ruby
@@ -38,7 +34,7 @@ net-analyzer/rrdtool rados
 dev-vcs/git pcre-jit
 
 # Lars Wendler <polynomial-c@gentoo.org> (2016-11-17)
-# jit not supported on ia64 (bug #600052).
+# jit not supported on s390
 dev-libs/libpcre2 jit
 
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)

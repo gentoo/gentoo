@@ -397,11 +397,6 @@ app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
-# No lua keyworded for this arch yet
-# libpcre jit is not (yet?) support on this arch
-www-servers/nginx nginx_modules_http_lua pcre-jit
-
 # Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
