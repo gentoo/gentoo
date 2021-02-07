@@ -75,7 +75,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
-	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
@@ -153,7 +152,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
 	x11-libs/libdrm
-	xslt? ( dev-libs/libxslt )
+	xslt? (
+		dev-libs/libxslt
+		>=dev-libs/libxml2-2.9.4
+	)
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${COMMON_DEPEND}
