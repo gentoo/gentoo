@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cannadic.eclass
@@ -6,14 +6,23 @@
 # cjk@gentoo.org
 # @AUTHOR:
 # Mamoru KOMACHI <usata@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Function for Canna compatible dictionaries
 # @DESCRIPTION:
 # The cannadic eclass is used for installation and setup of Canna
 # compatible dictionaries within the Portage system.
 
-inherit eutils
+case ${EAPI:-0} in
+	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[6-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
 
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_postrm src_install
+
+if [[ ! ${_CANNADIC_ECLASS} ]]; then
+
+inherit eutils
 
 HOMEPAGE="http://canna.osdn.jp/"		# you need to change this!
 SRC_URI="mirror://gentoo/${P}.tar.gz"
@@ -139,3 +148,6 @@ cannadic_pkg_postrm() {
 
 	einfo
 }
+
+_CANNADIC_ECLASS=1
+fi
