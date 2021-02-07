@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
 # apache-devs@gentoo.org
-# @SUPPORTED_EAPIS: 0 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
 # This eclass handles depending on apache in a sane way and provides information
@@ -41,15 +41,15 @@
 # @CODE
 
 case ${EAPI:-0} in
-	0|2|3|4|5)
-		inherit multilib
-		;;
-	6|7)
-		;;
-	*)
-		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
-		;;
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-5]) inherit multilib ;;
+	6|7)   ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
+
+EXPORT_FUNCTIONS pkg_setup
+
+if [[ ! ${_DEPEND_APACHE_ECLASS} ]]; then
 
 # ==============================================================================
 # INTERNAL VARIABLES
@@ -78,7 +78,7 @@ esac
 # @ECLASS-VARIABLE: APACHE_BASEDIR
 # @DESCRIPTION:
 # Path to the server root directory.
-# This variable is set by the want/need_apache functions (EAPI=0 through 5)
+# This variable is set by the want/need_apache functions (EAPI=4 through 5)
 # or depend.apache_pkg_setup (EAPI=6 and later).
 
 # @ECLASS-VARIABLE: APACHE_CONFDIR
@@ -99,7 +99,7 @@ esac
 # @ECLASS-VARIABLE: APACHE_MODULESDIR
 # @DESCRIPTION:
 # Path where we install modules.
-# This variable is set by the want/need_apache functions (EAPI=0 through 5)
+# This variable is set by the want/need_apache functions (EAPI=4 through 5)
 # or depend.apache_pkg_setup (EAPI=6 and later).
 
 # @ECLASS-VARIABLE: APACHE_DEPEND
@@ -141,8 +141,8 @@ _init_apache2() {
 	APACHE_MODULES_CONFDIR="${APACHE_CONFDIR}/modules.d"
 	APACHE_VHOSTS_CONFDIR="${APACHE_CONFDIR}/vhosts.d"
 
-	case ${EAPI:-0} in
-		0|2|3|4|5)
+	case ${EAPI} in
+		4|5)
 			_init_apache2_late
 			;;
 	esac
@@ -177,8 +177,8 @@ depend.apache_pkg_setup() {
 
 	local myiuse=${1:-apache2}
 
-	case ${EAPI:-0} in
-		0|2|3|4|5)
+	case ${EAPI} in
+		4|5)
 			if has ${myiuse} ${IUSE}; then
 				if use ${myiuse}; then
 					_init_apache2
@@ -327,12 +327,6 @@ has_apache() {
 has_apache_threads() {
 	debug-print-function $FUNCNAME $*
 
-	case ${EAPI:-0} in
-		0|1)
-			die "depend.apache.eclass: has_apache_threads is not supported for EAPI=${EAPI:-0}"
-			;;
-	esac
-
 	if ! has_version 'www-servers/apache[threads]'; then
 		return
 	fi
@@ -356,12 +350,6 @@ has_apache_threads() {
 has_apache_threads_in() {
 	debug-print-function $FUNCNAME $*
 
-	case ${EAPI:-0} in
-		0|1)
-			die "depend.apache.eclass: has_apache_threads_in is not supported for EAPI=${EAPI:-0}"
-			;;
-	esac
-
 	if ! has_version 'www-servers/apache[threads]'; then
 		return
 	fi
@@ -378,4 +366,5 @@ has_apache_threads_in() {
 	fi
 }
 
-EXPORT_FUNCTIONS pkg_setup
+_DEPEND_APACHE_ECLASS=1
+fi
