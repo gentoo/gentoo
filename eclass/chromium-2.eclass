@@ -6,7 +6,16 @@
 # Chromium Herd <chromium@gentoo.org>
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Shared functions for chromium and google-chrome
+
+case ${EAPI:-0} in
+	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[6-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+if [[ ! ${_CHROMIUM_2_ECLASS} ]]; then
 
 inherit eutils linux-info
 
@@ -19,8 +28,6 @@ fi
 # @DESCRIPTION:
 # Ensures the system kernel supports features needed for SUID sandbox to work.
 chromium_suid_sandbox_check_kernel_config() {
-	has "${EAPI:-0}" 0 1 2 3 && die "EAPI=${EAPI} is not supported"
-
 	if [[ "${MERGE_TYPE}" == "source" || "${MERGE_TYPE}" == "binary" ]]; then
 		# Warn if the kernel does not support features needed for sandboxing.
 		# Bug #363987.
@@ -44,8 +51,6 @@ chromium_suid_sandbox_check_kernel_config() {
 # List of language packs available for this package.
 
 _chromium_set_l10n_IUSE() {
-	[[ ${EAPI:-0} == 0 ]] && die "EAPI=${EAPI} is not supported"
-
 	local lang
 	for lang in ${CHROMIUM_LANGS}; do
 		# Default to enabled since we bundle them anyway.
@@ -176,3 +181,6 @@ gyp_use() {
 	local gypflag="-D${2:-use_${1//-/_}}="
 	usex "$1" "${gypflag}" "${gypflag}"  "${3-1}" "${4-0}"
 }
+
+_CHROMIUM_2_ECLASS=1
+fi
