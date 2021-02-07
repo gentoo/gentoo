@@ -10104,7 +10104,7 @@ dev-ruby/mixlib-shellout 3.0.9: Run external commands on Unix or Windows
 dev-ruby/mocha 0.14.0 1.8.0 1.10.2 1.11.2 1.12.0: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/moneta 1.3.0 1.4.0 1.4.1: A unified interface to key/value stores
 dev-ruby/mqtt 0.5.0: Pure Ruby gem that implements the MQTT protocol
-dev-ruby/msgpack 1.3.3: Binary-based efficient data interchange format for ruby binding
+dev-ruby/msgpack 1.3.3 1.4.2: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.14.1 1.15.0: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
@@ -10182,7 +10182,7 @@ dev-ruby/puppet_forge 2.3.3 2.3.4: Tools to access Forge API information on Modu
 dev-ruby/puppetdb-termini 6.13.0 7.0.1: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
-dev-ruby/racc 1.4.14 1.4.16-r1 1.5.2: A LALR(1) parser generator for Ruby
+dev-ruby/racc 1.4.14 1.4.16-r1 1.5.2 1.5.2-r1: A LALR(1) parser generator for Ruby
 dev-ruby/rack 2.2.3: A modular Ruby webserver interface
 dev-ruby/rack-attack 6.3.1 6.4.0: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.12.0 1.12.1: Enable HTTP caching for Rack-based applications that produce freshness info
@@ -12649,7 +12649,7 @@ media-fonts/inconsolata-hellenic 1.19-r1: Hellenisation of the wonderful, monosp
 media-fonts/inconsolata-lgc 1.3.0: Modified version of Inconsolata Hellenic adding the Cyrillic alphabet
 media-fonts/infinality-ultimate-meta 1: Meta package for infinality-ultimate with fonts
 media-fonts/intlfonts 1.2.1-r1: International X11 fixed fonts
-media-fonts/iosevka 1.14.1: Slender typeface for code, from code
+media-fonts/iosevka 4.5.0: Slender typeface for code, from code
 media-fonts/ipaex 002.01: Japanese IPA extended TrueType fonts
 media-fonts/ipamonafont 1.0.8: Hacked version of IPA fonts, which is suitable for browsing 2ch
 media-fonts/ja-ipafonts 003.02-r1 003.03: TrueType fonts developed by Japanese Information-technology Promotion Agency
@@ -13940,7 +13940,7 @@ media-sound/pulseeffects 4.7.2-r1 4.8.4 5.0.0 9999: Limiter, compressor, reverbe
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.9.0 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.9.0 0.9.1 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
