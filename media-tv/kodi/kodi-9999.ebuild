@@ -43,7 +43,7 @@ IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus dvd gbm gles lcms l
 IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	|| ( gles opengl )
+	^^ ( gles opengl )
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
