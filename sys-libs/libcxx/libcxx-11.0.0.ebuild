@@ -15,7 +15,7 @@ llvm.org_set_globals
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~riscv x86 ~x64-macos"
-IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind +static-libs test"
+IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind static-libs test"
 REQUIRED_USE="libunwind? ( libcxxabi )"
 RESTRICT="!test? ( test )"
 
