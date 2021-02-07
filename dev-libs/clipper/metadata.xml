@@ -11,6 +11,7 @@
     </longdescription>
     <upstream>
         <bugs-to>https://sourceforge.net/p/polyclipping/bugs/</bugs-to>
+        <doc>http://www.angusj.com/delphi/clipper/documentation/Docs/Overview/_Body.htm</doc>
         <remote-id type="sourceforge">polyclipping</remote-id>
     </upstream>
 </pkgmetadata>
