@@ -4,7 +4,7 @@
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
@@ -23,12 +23,15 @@
 # }
 # @CODE
 
-inherit toolchain-funcs
-
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
-	*) die "EAPI ${EAPI} unsupported (yet)."
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
+
+if [[ ! ${_BASH_COMPLETION_R1_ECLASS} ]]; then
+
+inherit toolchain-funcs
 
 # @FUNCTION: _bash-completion-r1_get_bashdir
 # @INTERNAL
@@ -93,8 +96,7 @@ get_bashhelpersdir() {
 # @FUNCTION: dobashcomp
 # @USAGE: <file> [...]
 # @DESCRIPTION:
-# Install bash-completion files passed as args. Has EAPI-dependant failure
-# behavior (like doins).
+# Install bash-completion files passed as args.
 dobashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -108,8 +110,7 @@ dobashcomp() {
 # @FUNCTION: newbashcomp
 # @USAGE: <file> <newname>
 # @DESCRIPTION:
-# Install bash-completion file under a new name. Has EAPI-dependant failure
-# behavior (like newins).
+# Install bash-completion file under a new name.
 newbashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -136,3 +137,6 @@ bashcomp_alias() {
 			|| return
 	done
 }
+
+_BASH_COMPLETION_R1_ECLASS=1
+fi
