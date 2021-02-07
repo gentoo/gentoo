@@ -3,7 +3,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/libltdl:0 bzip2? ( app-arch/bzip2 ) fpx? ( media-libs/libfpx ) imagemagick? ( !media-gfx/imagemagick ) jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl:= ) png? ( media-libs/libpng:0= ) postscript? ( app-text/ghostscript-gpl ) svg? ( dev-libs/libxml2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-fonts/urw-fonts >=media-libs/freetype-2 ) webp? ( media-libs/libwebp:= ) wmf? ( media-libs/libwmf ) X? ( x11-libs/libSM x11-libs/libXext ) zlib? ( sys-libs/zlib )
 DESCRIPTION=Collection of tools and libraries for many image formats
 EAPI=7
-HOMEPAGE=http://www.graphicsmagick.org/
+HOMEPAGE=http://www.graphicsmagick.org/ http://hg.code.sf.net/p/graphicsmagick/code/
 IUSE=bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma openmp perl png postscript q16 q32 static-libs svg threads tiff truetype webp wmf X zlib
 KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=MIT
@@ -11,4 +11,4 @@ RDEPEND=dev-libs/libltdl:0 bzip2? ( app-arch/bzip2 ) fpx? ( media-libs/libfpx ) 
 SLOT=0/1.3
 SRC_URI=mirror://sourceforge/graphicsmagick/GraphicsMagick-1.3.36.tar.xz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=ca6df1040350b3a93812eadc7b004552
+_md5_=271569486a299a7a0e2b3a0d6aaa7c2c
