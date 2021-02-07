@@ -13,4 +13,5 @@
     <bugs-to>https://github.com/mgorny/eselect-lib-bin-symlink/issues/</bugs-to>
     <remote-id type="github">mgorny/eselect-lib-bin-symlink</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

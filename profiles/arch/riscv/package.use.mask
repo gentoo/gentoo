@@ -67,8 +67,8 @@ app-arch/p7zip wxwidgets
 app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
-app-crypt/pinentry fltk gnome-keyring
-app-doc/doxygen clang doc 
+app-crypt/pinentry gnome-keyring
+app-doc/doxygen clang doc
 app-editors/emacs alsa json lcms mailutils
 app-misc/pax-utils python
 app-text/asciidoc test

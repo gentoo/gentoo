@@ -384,7 +384,6 @@ dev-lang/gnat-gpl go
 
 # Pacho Ramos <pacho@gentoo.org> (2018-11-11)
 # pm-utils will be removed, bug #659616
-sys-apps/razercfg pm-utils
 sys-power/powermgmt-base pm-utils
 
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
@@ -670,7 +669,7 @@ sci-libs/mathgl octave
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
 #
 # Mask pdnsd's Linux-specific USE flags.
-net-dns/pdnsd isdn urandom
+net-dns/pdnsd urandom
 
 # Raúl Porcel <armin76@gentoo.org> (2011-02-13)
 # Masked until devs know how to use repoman

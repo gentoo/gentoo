@@ -11,10 +11,9 @@ dev-vcs/subversion ruby
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-06-03)
 # Not tested
-app-crypt/pinentry fltk
 dev-python/cssselect doc
 # not really interested in supporting alternative
-# VCS for oberlays yet.
+# VCS for overlays yet.
 app-portage/layman darcs mercurial
 dev-python/setuptools_scm test
 # no lua support for vim

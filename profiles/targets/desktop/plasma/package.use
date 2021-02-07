@@ -34,7 +34,7 @@ media-libs/mesa egl wayland
 x11-apps/mesa-progs egl
 
 # Required by kde-apps/kdenlive
-media-libs/mlt ffmpeg frei0r kdenlive melt rubberband
+media-libs/mlt ffmpeg frei0r rubberband
 
 # Required by media-gfx/digikam
 media-libs/opencv contrib contribdnn
