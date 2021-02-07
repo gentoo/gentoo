@@ -106,7 +106,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		libressl? ( media-video/ffmpeg[libressl,-openssl] )
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
 	)
-	!system-ffmpeg? ( dav1d? ( media-libs/dav1d ) )
+	!system-ffmpeg? (
+		app-arch/bzip2
+		dav1d? ( media-libs/dav1d ) 
+	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	>=net-misc/curl-7.68.0[http2]
@@ -164,7 +167,6 @@ RDEPEND="${COMMON_DEPEND}
 	upower? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
-	app-arch/bzip2
 	app-arch/xz-utils
 	dev-lang/swig
 	dev-libs/crossguid
