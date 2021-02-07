@@ -54,6 +54,7 @@ REQUIRED_USE="
 	vdpau? (
 		X
 		opengl
+		!gbm
 	)
 	zeroconf? ( dbus )
 "
