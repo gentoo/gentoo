@@ -14,6 +14,7 @@
 		PrusaSlicer is based on Slic3r by Alessandro Ranellucci and the RepRap community.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/prusa3d/PrusaSlicer/issues</bugs-to>
 		<remote-id type="github">prusa3d/PrusaSlicer</remote-id>
 	</upstream>
 </pkgmetadata>
