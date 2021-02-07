@@ -96,7 +96,7 @@ src_prepare() {
 
 		# We need to make sure this integrates well into Qt 5.15.2 installation.
 		# Otherwise revdeps fail w/o heavy changes. This is the simplest way to do it.
-		sed -e "/^MODULE_VERSION/s/5.*/${QTMIN}/" -i .qmake.conf || die
+		sed -e "/^MODULE_VERSION/s/5.*/${QTVER}/" -i .qmake.conf || die
 	fi
 
 	# QTBUG-88657 - jumbo-build is broken
