@@ -4,10 +4,10 @@ DEPEND=>=sys-apps/lm-sensors-3 dev-libs/glib:2 x11-libs/gtk+:3 dev-util/desktop-
 DESCRIPTION=A hardware health information viewer, interface to lm-sensors
 EAPI=7
 HOMEPAGE=https://github.com/Mystro256/xsensors/
-KEYWORDS=~amd64 ~ppc x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/lm-sensors-3 dev-libs/glib:2 x11-libs/gtk+:3
 SLOT=0
 SRC_URI=https://github.com/Mystro256/xsensors/archive/0.80.tar.gz -> xsensors-0.80.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=fd0023f901368cc6ba15165ceb423b36
+_md5_=a46cc28ef480ccdd9bb5a4f2b23c62cc
