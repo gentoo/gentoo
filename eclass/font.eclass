@@ -8,14 +8,15 @@
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	[56]) inherit eutils ;;
-	7) ;;
-	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[56])  inherit eutils ;;
+	7)     ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
-if [[ ! ${_FONT_ECLASS} ]]; then
-
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
+
+if [[ ! ${_FONT_ECLASS} ]]; then
 
 # @ECLASS-VARIABLE: FONT_SUFFIX
 # @DEFAULT_UNSET
