@@ -21,6 +21,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+	test? (
+		dev-python/wheel[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
