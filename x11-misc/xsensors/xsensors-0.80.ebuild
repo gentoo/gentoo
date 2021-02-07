@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Mystro256/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	>=sys-apps/lm-sensors-3
