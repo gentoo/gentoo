@@ -12,7 +12,7 @@
         <email>3dprint@gentoo.org</email>
         <name>Gentoo 3D print</name>
     </maintainer>
-	<upstream>
-		<bugs-to>https://code.google.com/archive/p/lib3ds/issues</bugs-to>
-	</upstream>
+    <upstream>
+        <bugs-to>https://code.google.com/archive/p/lib3ds/issues</bugs-to>
+    </upstream>
 </pkgmetadata>
