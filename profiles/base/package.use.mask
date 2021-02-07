@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2021-02-07)
+# Fails to build with USE=doc for now.
+# Needs rework to use Python eclasses
+# for conditional doc dependencies.
+# bug #759523
+sci-libs/gdal doc
+
 # Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
 # Fails to build:
 #
