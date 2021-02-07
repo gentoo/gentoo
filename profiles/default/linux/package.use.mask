@@ -48,4 +48,4 @@ app-arch/libarchive -e2fsprogs
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
 #
 # Unmask pdnsd's Linux-specific USE flags.
-net-dns/pdnsd -isdn -urandom
+net-dns/pdnsd -urandom
