@@ -18,7 +18,6 @@ IUSE="debug elogind nls pam systemd"
 DEPEND="
 	x11-libs/libxcb
 	x11-libs/gtk+:3
-	nls? ( sys-devel/gettext )
 	pam? ( sys-libs/pam )"
 # We only use the pam modules and not actually link to the code
 RDEPEND="${DEPEND}
@@ -26,7 +25,9 @@ RDEPEND="${DEPEND}
 	systemd? ( sys-apps/systemd[pam] )
 "
 BDEPEND=">=dev-util/intltool-0.40
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 DOCS=( AUTHORS README TODO )
 
 REQUIRED_USE="?? ( elogind systemd ) elogind? ( pam ) systemd? ( pam )"
