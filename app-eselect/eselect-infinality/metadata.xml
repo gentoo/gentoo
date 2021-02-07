@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">amadio/eselect-infinality</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
