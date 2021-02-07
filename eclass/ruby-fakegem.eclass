@@ -115,7 +115,7 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSIONS
 # @DEFAULT_UNSET
-# @DESCRIPTION
+# @DESCRIPTION:
 # List of extensions supported by this gem. Each extension is listed as
 # the configuration script that needs to be run to generate the
 # extension.
