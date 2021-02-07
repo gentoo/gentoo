@@ -384,7 +384,6 @@ dev-lang/gnat-gpl go
 
 # Pacho Ramos <pacho@gentoo.org> (2018-11-11)
 # pm-utils will be removed, bug #659616
-sys-apps/razercfg pm-utils
 sys-power/powermgmt-base pm-utils
 
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
