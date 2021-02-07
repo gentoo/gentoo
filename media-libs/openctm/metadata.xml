@@ -15,6 +15,7 @@
 		OpenCTM - the Open Compressed Triangle Mesh file format - is a file format, a software library and a tool set for compression of 3D triangle meshes.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://sourceforge.net/p/openctm/bug-reports/</bugs-to>
 		<remote-id type="sourceforge">openctm</remote-id>
 	</upstream>
 </pkgmetadata>
