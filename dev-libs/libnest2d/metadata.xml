@@ -18,6 +18,7 @@
 		as well.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/tamasmeszaros/libnest2d/issues</bugs-to>
 		<remote-id type="github">tamasmeszaros/libnest2d</remote-id>
 	</upstream>
 </pkgmetadata>
