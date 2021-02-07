@@ -13,7 +13,7 @@ LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 FONT_S="${S}"
