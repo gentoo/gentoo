@@ -88,7 +88,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libcdio-2.1.0[cxx]
 	>=dev-libs/libfmt-6.1.2
 	dev-libs/libfstrcmp
-	gbm? (	media-libs/mesa[gbm] )
+	gbm? (
+		media-libs/mesa[gbm]
+		x11-libs/libxkbcommon
+	)
 	gles? (
 		!raspberry-pi? ( media-libs/mesa[gles2] )
 	)
@@ -139,6 +142,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-cpp/waylandpp-0.2.3:=
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
+		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
 	X? (
@@ -150,7 +154,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
 	x11-libs/libdrm
-	>=x11-libs/libxkbcommon-0.4.1
 	xslt? ( dev-libs/libxslt )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
