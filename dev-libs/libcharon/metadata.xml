@@ -31,6 +31,7 @@
 		<flag name="client">Install the charon client library</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/Ultimaker/libCharon/issues</bugs-to>
 		<remote-id type="github">Ultimaker/libCharon</remote-id>
 	</upstream>
 </pkgmetadata>
