@@ -4,7 +4,7 @@
 # DEPRECATED
 # This eclass has been deprecated and must not be used by any new
 # ebuilds or eclasses. Replacements for particular phase functions
-# in EAPI 2+:
+# in EAPI 4+:
 #
 # base_src_unpack() - default (or unpacker_src_unpack if unpacker.eclass
 #     was inherited)
@@ -22,25 +22,23 @@
 # QA Team <qa@gentoo.org>
 # @AUTHOR:
 # Original author: Dan Armak <danarmak@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: The base eclass defines some default functions and variables.
 # @DEPRECATED: none
 # @DESCRIPTION:
 # The base eclass defines some default functions and variables.
 
-if [[ -z ${_BASE_ECLASS} ]]; then
-_BASE_ECLASS=1
-
-inherit eutils
-
-BASE_EXPF="src_unpack src_compile src_install"
-case "${EAPI:-0}" in
-	0|1) ;;
-	2|3|4|5) BASE_EXPF+=" src_prepare src_configure" ;;
-	*) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
+case ${EAPI:-0} in
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-5]) ;;
+	*)     die "${ECLASS}.eclass is banned in EAPI ${EAPI}" ;;
 esac
 
-EXPORT_FUNCTIONS ${BASE_EXPF}
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install
+
+if [[ -z ${_BASE_ECLASS} ]]; then
+
+inherit eutils
 
 # @ECLASS-VARIABLE: DOCS
 # @DEFAULT_UNSET
@@ -91,8 +89,8 @@ base_src_unpack() {
 
 # @FUNCTION: base_src_prepare
 # @DESCRIPTION:
-# The base src_prepare function, which is exported
-# EAPI is greater or equal to 2. Here the PATCHES array is evaluated.
+# The base src_prepare function, which is exported.
+# Here the PATCHES array is evaluated.
 base_src_prepare() {
 	debug-print-function $FUNCNAME "$@"
 	debug-print "$FUNCNAME: PATCHES=$PATCHES"
@@ -142,8 +140,7 @@ base_src_prepare() {
 
 # @FUNCTION: base_src_configure
 # @DESCRIPTION:
-# The base src_configure function, which is exported when
-# EAPI is greater or equal to 2. Runs basic econf.
+# The base src_configure function, which is exported. Runs basic econf.
 base_src_configure() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -153,8 +150,7 @@ base_src_configure() {
 
 # @FUNCTION: base_src_compile
 # @DESCRIPTION:
-# The base src_compile function, calls src_configure with
-# EAPI older than 2.
+# The base src_compile function.
 base_src_compile() {
 	debug-print-function $FUNCNAME "$@"
 
@@ -212,4 +208,5 @@ base_src_install_docs() {
 	popd > /dev/null
 }
 
+_BASE_ECLASS=1
 fi
