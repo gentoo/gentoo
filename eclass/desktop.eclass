@@ -4,10 +4,16 @@
 # @ECLASS: desktop.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: support for desktop files, menus, and icons
 
+case ${EAPI:-0} in
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
-_DESKTOP_ECLASS=1
 
 # @FUNCTION: make_desktop_entry
 # @USAGE: <command> [name] [icon] [type] [fields]
@@ -395,4 +401,5 @@ newicon() {
 	_iconins ${FUNCNAME} "$@"
 }
 
+_DESKTOP_ECLASS=1
 fi
