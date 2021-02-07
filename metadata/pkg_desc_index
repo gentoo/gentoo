@@ -5369,7 +5369,7 @@ dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Googl
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
-dev-libs/libarcus 4.7.0 4.8.0: This library facilitates communication between Cura and its backend
+dev-libs/libarcus 4.8.0: This library facilitates communication between Cura and its backend
 dev-libs/libassuan 2.5.3 2.5.4: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19_p5: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 7.6.10: Implementation for atomic memory update operations
@@ -5388,7 +5388,7 @@ dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and 
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.4-r1 4.0.7 6.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
-dev-libs/libcharon 4.7.0 4.8.0: This library facilitates communication between Cura and its backend
+dev-libs/libcharon 4.8.0: This library facilitates communication between Cura and its backend
 dev-libs/libclc 0.2.0_pre20201001: OpenCL C library
 dev-libs/libclthreads 2.4.2: POSIX threads C++ access library
 dev-libs/libconfig 1.7.2: Libconfig is a simple library for manipulating structured configuration files
@@ -5518,7 +5518,7 @@ dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.1.5 3.2.0 3.2.1 3.2.3 3.3.0 3.3.1: F
 dev-libs/libretls 3.3.1-r1: Port of libtls from LibreSSL to OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.6.1 3.6.4 9999: A C/C++ implementation of a Sass CSS compiler
-dev-libs/libsavitar 4.7.0 4.8.0: C++ implementation of 3mf loading with SIP python bindings
+dev-libs/libsavitar 4.8.0: C++ implementation of 3mf loading with SIP python bindings
 dev-libs/libsecp256k1 0.1_pre20190401 0.1_pre20201028: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
@@ -5686,7 +5686,7 @@ dev-libs/spdlog 1.5.0-r1 1.7.0 1.8.2 9999: Very fast, header only, C++ logging l
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6-r1: Unified runtime system for heterogeneous multicore architectures
-dev-libs/stb 20200205 20200713: single-file public domain (or MIT licensed) libraries for C/C++
+dev-libs/stb 20200713: single-file public domain (or MIT licensed) libraries for C/C++
 dev-libs/stfl 0.24-r2 0.24-r3: A library which implements a curses-based widget set for text terminals
 dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvectors
 dev-libs/template-glib 3.34.0: Templating library for GLib
@@ -9272,7 +9272,7 @@ dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv modul
 dev-python/unidecode 1.1.2 1.2.0: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
-dev-python/uranium 4.7.0 4.8.0: A Python framework for building 3D printing related applications
+dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
@@ -12395,7 +12395,6 @@ kde-plasma/polkit-kde-agent 5.20.5: PolKit agent module for KDE Plasma
 kde-plasma/powerdevil 5.20.5: Power management for KDE Plasma Shell
 kde-plasma/sddm-kcm 5.20.5: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.20.5: Control Center to configure KDE Plasma desktop
-kde-plasma/user-manager 5.19.5: Simple system settings module to manage the users of your system
 kde-plasma/xdg-desktop-portal-kde 5.20.5: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.20.5: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
@@ -12786,8 +12785,8 @@ media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimet
 media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMagick
 media-gfx/cropgui 0.4.1 0.5: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/cura 4.7.0-r1 4.8.0: A 3D model slicing application for 3D printing
-media-gfx/curaengine 4.7.0 4.8.0: A 3D model slicing engine for 3D printing
+media-gfx/cura 4.8.0: A 3D model slicing application for 3D printing
+media-gfx/curaengine 4.8.0: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 3.2.1-r1 3.4.0-r1 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r2: Command-line decoder for raw digital photos
@@ -12812,7 +12811,7 @@ media-gfx/exiv2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.3 1.3.3: Framebuffer screenshot utility
 media-gfx/fbida 2.14-r2 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
-media-gfx/fdm-materials 4.7.0 4.8.0: FDM materials for media-gfx/cura
+media-gfx/fdm-materials 4.8.0: FDM materials for media-gfx/cura
 media-gfx/feh 3.6 3.6.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
@@ -12936,7 +12935,7 @@ media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.11 9999: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
-media-gfx/prusaslicer 2.2.0-r1 2.3.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
+media-gfx/prusaslicer 2.3.0: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.75: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qimgv 0.9.1: A cross-platform image viewer with webm support, written in qt5
@@ -17558,7 +17557,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.4.95 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1 5.10.13: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.4.255 4.4.256 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.9.255 4.9.256 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.14.219 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 4.19.173 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13: Full sources including the Gentoo patchset for the 5.10 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.4.255 4.4.256 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.9.255 4.9.256 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.14.219 4.14.220 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 4.19.173 4.19.174 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18021,7 +18020,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.150 89.0.4389.23 90.0.4400.8: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.150 89.0.4389.40 90.0.4400.8: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
@@ -18485,7 +18484,7 @@ x11-misc/polybar 3.4.3 3.5.4: A fast and easy-to-use tool for creating status ba
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
 x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
-x11-misc/py3status 3.32: py3status is an extensible i3status wrapper written in python
+x11-misc/py3status 3.33: py3status is an extensible i3status wrapper written in python
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0 5.1.2: Lightweight and cross-platform clipboard history applet

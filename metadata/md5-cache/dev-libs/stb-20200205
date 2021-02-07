@@ -1,9 +1,0 @@
-DEFINED_PHASES=install prepare
-DESCRIPTION=single-file public domain (or MIT licensed) libraries for C/C++
-EAPI=7
-HOMEPAGE=https://github.com/nothings/stb
-KEYWORDS=~amd64 ~arm64 ~x86
-LICENSE=|| ( MIT Unlicense )
-SLOT=0
-SRC_URI=https://github.com/nothings/stb/archive/f54acd4e13430c5122cab4ca657705c84aa61b08.tar.gz -> stb-20200205.tar.gz
-_md5_=ea32b8f62ff611f2e9179ff3b07ee0af
