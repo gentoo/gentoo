@@ -13,7 +13,7 @@ dev-vcs/subversion ruby
 # Not tested
 dev-python/cssselect doc
 # not really interested in supporting alternative
-# VCS for oberlays yet.
+# VCS for overlays yet.
 app-portage/layman darcs mercurial
 dev-python/setuptools_scm test
 # no lua support for vim
