@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A One Time Password and S/Key calculator for X"
-HOMEPAGE="http://killa.net/infosec/otpCalc/"
-SRC_URI="http://killa.net/infosec/otpCalc/otpCalc-${PV}.tar.gz
+HOMEPAGE="http://www.killa.net/infosec/otpCalc/"
+SRC_URI="http://www.killa.net/infosec/otpCalc/otpCalc-${PV}.tar.gz
 	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-1.tar.xz"
 
 LICENSE="GPL-2+" # bundled crypto functions are not used
