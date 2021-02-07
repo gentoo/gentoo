@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# Using strip-linguas in eutils
-inherit eutils autotools systemd
+inherit l10n autotools systemd
 
 DESCRIPTION="LXDE Display Manager"
 HOMEPAGE="https://wiki.lxde.org/en/LXDM"
@@ -14,12 +13,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 
-IUSE="debug elogind +gtk3 nls pam systemd"
+IUSE="debug elogind nls pam systemd"
 
 DEPEND="
 	x11-libs/libxcb
-	gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( x11-libs/gtk+:2 )
+	x11-libs/gtk+:3
 	nls? ( sys-devel/gettext )
 	pam? ( sys-libs/pam )"
 # We only use the pam modules and not actually link to the code
@@ -59,7 +57,7 @@ src_configure() {
 		--with-xconn=xcb \
 		--with-systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--disable-consolekit \
-		$(use_enable gtk3) \
+		--enable-gtk3 \
 		$(use_enable nls) \
 		$(use_enable debug) \
 		$(use_with pam)
