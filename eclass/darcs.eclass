@@ -10,6 +10,7 @@
 #               <rphillips@gentoo.org> (tla eclass author)
 # Andres Loeh   <kosmikus@gentoo.org> (darcs.eclass author)
 # Alexander Vershilov <alexander.vershilov@gmail.com> (various contributions)
+# @SUPPORTED_EAPIS: 7
 # @BLURB: This eclass provides functions for fetch and unpack darcs repositories
 # @DEPRECATED: none
 # @DESCRIPTION:
@@ -18,16 +19,22 @@
 # Define the EDARCS_REPOSITORY variable at least.
 # The ${S} variable is set to ${WORKDIR}/${P}.
 
+case ${EAPI:-0} in
+	[0-6]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	7)     ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS src_unpack
+
+if [[ ! ${_DARCS_ECLASS} ]]; then
+
 # TODO:
 
 # support for tags
 
 # eshopts_{push,pop}
-case "${EAPI:-0}" in
-	4|5|6) inherit eutils ;;
-	7)     inherit estack ;;
-	*) ;;
-esac
+inherit estack
 
 # Don't download anything other than the darcs repository
 SRC_URI=""
@@ -217,4 +224,5 @@ darcs_src_unpack() {
 
 }
 
-EXPORT_FUNCTIONS src_unpack
+_DARCS_ECLASS=1
+fi
