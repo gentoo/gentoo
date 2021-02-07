@@ -761,7 +761,7 @@ app-admin/system-config-printer 1.5.15: Graphical user interface for CUPS admini
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.28 0.13.3 0.13.4 0.13.5 0.14.4 0.14.5: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.12.28 0.13.3 0.13.4 0.13.5 0.14.4 0.14.5 0.14.6: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -1045,7 +1045,7 @@ app-crypt/gcr 3.36.0 3.38.0 3.38.1: Libraries for cryptographic UIs and accessin
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
-app-crypt/gnupg 2.2.20-r2 2.2.25 2.2.26 2.2.27: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 2.2.25 2.2.27: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.9.2: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -9419,7 +9419,7 @@ dev-qt/qttranslations 5.15.2: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.15.2: Customizable input framework and virtual keyboard for Qt
 dev-qt/qtwayland 5.15.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.15.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.15.2 5.15.2_p20210126: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebengine 5.15.2 5.15.2_p20210205: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.15.2: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwebview 5.15.2: Module for displaying web content in a QML application using the Qt5 framework
@@ -13945,7 +13945,7 @@ media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.6.3 9999: Graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.6.3 0.9.0 9999: Qt application to control FluidSynth
+media-sound/qsynth 0.6.3 0.9.0 0.9.1 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.19: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
@@ -18868,7 +18868,7 @@ x11-themes/gargantuan-icon-theme 1.7: Gargantuan Icon Theme
 x11-themes/gartoon 0.5-r2: Gartoon SVG icon theme
 x11-themes/gartoon-redux 1.10-r1: A massively improved variant of the well-known Gartoon theme
 x11-themes/geany-themes 1.22.2-r1: A collection of colour schemes for Geany
-x11-themes/gentoo-artwork 0.4.2-r1: A collection of miscellaneous Gentoo Linux logos and artwork
+x11-themes/gentoo-artwork 0.4.2-r1: Collection of miscellaneous Gentoo Linux logos and artwork
 x11-themes/gentoo-artwork-livecd 2006.1 2007.0: A collection of Gentoo Linux wallpapers for the LiveCD
 x11-themes/gentoo-xcursors 0.3.2: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
