@@ -780,7 +780,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4 0.103.0-r2: Clam Anti-Virus Scanner
-app-antivirus/clamtk 6.06: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.06 6.07: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1 1.3.0: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -10040,7 +10040,7 @@ dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
 dev-ruby/jquery-rails 4.4.0: jQuery! For Rails! So great
 dev-ruby/jquery-ui-rails 6.0.1-r1: The jQuery UI assets for the Rails 3.2+ asset pipeline
 dev-ruby/jsobfu 0.4.2: A Javascript code obfuscator
-dev-ruby/json 2.3.0 2.3.1 2.5.1: A JSON implementation as a Ruby extension
+dev-ruby/json 2.3.0 2.3.1 2.5.1 2.5.1-r1: A JSON implementation as a Ruby extension
 dev-ruby/json_schema 0.20.8 0.20.9: A JSON Schema V4 and Hyperschema V4 parser and validator
 dev-ruby/jwt 2.2.2: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
@@ -10133,7 +10133,7 @@ dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcapru
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 2.5.4 2.5.5: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.10.10 1.11.1-r1: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.10.10 1.11.1-r1 1.11.1-r2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -16850,7 +16850,7 @@ sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting
 sys-apps/earlyoom 1.3 1.6.1 9999: Early OOM Daemon for Linux
 sys-apps/ed 1.16 1.17: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
-sys-apps/edid-decode 0_pre20200720 0_pre20201230 9999: Decode EDID data in a human-readable format
+sys-apps/edid-decode 0_pre20201230 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
