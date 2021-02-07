@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
@@ -6,12 +6,22 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original author: Matthieu Sozeau <mattam@gentoo.org> (retired)
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
+
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+if [[ ! ${_FINDLIB_ECLASS} ]]; then
+_FINDLIB_ECLASS=1
 
 # From this findlib version there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
@@ -32,8 +42,6 @@ check_ocamlfind() {
 # We use the stublibs style, so no ld.conf needs to be
 # updated when a package installs C shared libraries.
 findlib_src_preinst() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-	has "${EAPI:-0}" 0 1 2 && use !prefix && ED="${D}"
 	check_ocamlfind
 
 	# destdir is the ocaml sitelib
@@ -42,11 +50,11 @@ findlib_src_preinst() {
 	# strip off prefix
 	destdir=${destdir#${EPREFIX}}
 
-	dodir ${destdir} || die "dodir failed"
+	dodir ${destdir}
 	export OCAMLFIND_DESTDIR=${ED}${destdir}
 
 	# stublibs style
-	dodir ${destdir}/stublibs || die "dodir failed"
+	dodir ${destdir}/stublibs
 	export OCAMLFIND_LDCONF=ignore
 }
 
@@ -57,3 +65,5 @@ findlib_src_install() {
 	findlib_src_preinst
 	make DESTDIR="${D}" "$@" install || die "make failed"
 }
+
+fi
