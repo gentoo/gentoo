@@ -51,6 +51,7 @@ REQUIRED_USE="
 	udisks? ( dbus )
 	upower? ( dbus )
 	power-control? ( dbus )
+	zeroconf? ( dbus )
 "
 RESTRICT="!test? ( test )"
 
