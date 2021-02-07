@@ -8,4 +8,5 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
