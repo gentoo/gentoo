@@ -12,7 +12,7 @@ MY_PN="Rtree"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="R-Tree spatial index for Python GIS"
-HOMEPAGE="https://rtree.readthedocs.io/en/latest/"
+HOMEPAGE="https://rtree.readthedocs.io"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="MIT"
 
