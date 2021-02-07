@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -24,11 +24,11 @@ if [[ ${__AUTOTOOLS_AUTO_DEPEND+set} == "set" ]] ; then
 fi
 
 if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
-_AUTOTOOLS_ECLASS=1
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
-	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
 inherit libtool
@@ -78,12 +78,7 @@ if [[ -n ${WANT_AUTOMAKE} ]]; then
 		# the autoreconf tool, so this requirement is correct.  #401605
 		none) ;;
 		latest)
-			# Use SLOT deps if we can.  For EAPI=0, we get pretty close.
-			if [[ ${EAPI:-0} != 0 ]] ; then
-				_automake_atom="|| ( `printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }` )"
-			else
-				_automake_atom="|| ( `printf '>=sys-devel/automake-%s ' ${_LATEST_AUTOMAKE[@]/%:*}` )"
-			fi
+			_automake_atom="|| ( `printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }` )"
 			;;
 		*)      _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*" ;;
 	esac
@@ -124,7 +119,7 @@ RDEPEND=""
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI:-0} in
-		0|1|2|3|4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
+		4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
 		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
 	esac
 fi
@@ -471,7 +466,7 @@ autotools_env_setup() {
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
 			local hv_args=""
-			case ${EAPI:-0} in
+			case ${EAPI} in
 				5|6)
 					hv_args="--host-root"
 					;;
@@ -649,4 +644,5 @@ autotools_m4sysdir_include() {
 	_autotools_m4dir_include "${paths[@]}"
 }
 
+_AUTOTOOLS_ECLASS=1
 fi
