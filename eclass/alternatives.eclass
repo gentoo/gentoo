@@ -4,6 +4,7 @@
 # @ECLASS: alternatives.eclass
 # @AUTHOR:
 # Original author: Alastair Tse <liquidx@gentoo.org> (03 Oct 2003)
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Creates symlink to the latest version of multiple slotted packages.
 # @DESCRIPTION:
 # When a package is SLOT'ed, very often we need to have a symlink to the
@@ -38,6 +39,16 @@
 # link to. It is probably more robust against version upgrades. You should
 # consider using this unless you are want to do something special.
 
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_postinst pkg_postrm
+
+if [[ ! ${_ALTERNATIVES_ECLASS} ]]; then
+
 # @ECLASS-VARIABLE: SOURCE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -52,7 +63,6 @@
 # @DESCRIPTION:
 # automatic deduction based on a symlink and a regex mask
 alternatives_auto_makesym() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local SYMLINK REGEX ALT myregex
 	SYMLINK=$1
 	REGEX=$2
@@ -73,7 +83,6 @@ alternatives_auto_makesym() {
 }
 
 alternatives_makesym() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	local ALTERNATIVES=""
 	local SYMLINK=""
 	local alt pref
@@ -139,4 +148,5 @@ alternatives_pkg_postrm() {
 	fi
 }
 
-EXPORT_FUNCTIONS pkg_postinst pkg_postrm
+_ALTERNATIVES_ECLASS=1
+fi
