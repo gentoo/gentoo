@@ -71,6 +71,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
+	dev-libs/crossguid
 	>=dev-libs/flatbuffers-1.11.0
 	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
@@ -168,7 +169,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	dev-lang/swig
-	dev-libs/crossguid
 	dev-libs/rapidjson
 	dev-util/cmake
 	media-libs/giflib
