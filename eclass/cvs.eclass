@@ -4,7 +4,7 @@
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
 # vapier@gentoo.org (and anyone who wants to help)
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
@@ -13,8 +13,15 @@
 # cvs_src_unpack. If you find that you need to call the cvs_* functions
 # directly, I'd be interested to hear about it.
 
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS src_unpack
+
 if [[ -z ${_CVS_ECLASS} ]]; then
-_CVS_ECLASS=1
 
 # TODO:
 
@@ -177,7 +184,7 @@ PROPERTIES+=" live"
 
 # add cvs to deps
 # ssh is used for ext auth
-DEPEND="dev-vcs/cvs"
+BDEPEND="dev-vcs/cvs"
 
 if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	#default to ssh
@@ -185,14 +192,10 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	if [[ ${CVS_RSH} != "ssh" ]] ; then
 		die "Support for ext auth with clients other than ssh has not been implemented yet"
 	fi
-	DEPEND+=" net-misc/openssh"
+	BDEPEND+=" net-misc/openssh"
 fi
 
-case ${EAPI:-0} in
-	4|5|6) ;;
-	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
-esac
+[[ ${EAPI} == [56] ]] && DEPEND="${BDEPEND}"
 
 # called from cvs_src_unpack
 cvs_fetch() {
@@ -533,6 +536,5 @@ cvs_src_unpack() {
 	einfo "CVS module ${ECVS_MODULE} is now in ${WORKDIR}"
 }
 
-EXPORT_FUNCTIONS src_unpack
-
+_CVS_ECLASS=1
 fi
