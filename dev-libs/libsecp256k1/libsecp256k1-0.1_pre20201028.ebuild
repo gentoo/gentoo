@@ -59,7 +59,7 @@ src_configure() {
 		$(use_enable test-openssl openssl-tests) \
 		$(use_enable ecdh module-ecdh) \
 		$(use_enable extrakeys module-extrakeys) \
-		--with-asm=$asm_opt \
+		--with-asm=${asm_opt} \
 		--with-bignum=$(usex gmp gmp no) \
 		$(use_enable recovery module-recovery) \
 		$(use_enable schnorr module-schnorrsig) \
