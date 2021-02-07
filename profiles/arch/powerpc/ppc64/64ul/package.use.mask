@@ -20,7 +20,7 @@ media-gfx/krita vc
 
 # Joonas Niilola <juippis@gentoo.org> (2020-02-01)
 # luajit not keyworded on ppc64, #696222
-dev-libs/efl luajit
+dev-libs/efl lua_single_target_luajit
 
 # Brian Evans <grknight@gentoo.org> (2015-11-23)
 # unmask galera for dev-db/mariadb
