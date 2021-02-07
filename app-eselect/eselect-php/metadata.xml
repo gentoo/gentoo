@@ -12,4 +12,5 @@
   <use>
     <flag name="fpm">Enable the FastCGI Process Manager SAPI</flag>
   </use>
+  <stabilize-allarches/>
 </pkgmetadata>
