@@ -37,6 +37,10 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="dev-qt/linguist-tools:5"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-no-git.patch"
+)
+
 DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
 src_prepare() {
