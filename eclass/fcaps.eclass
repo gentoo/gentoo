@@ -4,6 +4,7 @@
 # @ECLASS: fcaps.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: function to set POSIX file-based capabilities
 # @DESCRIPTION:
 # This eclass provides a function to set file-based capabilities on binaries.
@@ -28,13 +29,20 @@
 # )
 # @CODE
 
+case ${EAPI:-0} in
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_postinst
+
 if [[ -z ${_FCAPS_ECLASS} ]]; then
-_FCAPS_ECLASS=1
 
 IUSE="+filecaps"
 
 # Since it is needed in pkg_postinst() it must be in RDEPEND
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	[0-6])
 		RDEPEND="filecaps? ( sys-libs/libcap )"
 	;;
@@ -189,6 +197,5 @@ fcaps_pkg_postinst() {
 	done
 }
 
-EXPORT_FUNCTIONS pkg_postinst
-
+_FCAPS_ECLASS=1
 fi
