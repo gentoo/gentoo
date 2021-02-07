@@ -1728,7 +1728,7 @@ app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
-app-editors/emacs 18.59-r13 23.4-r20 24.5-r9 25.3-r8 26.3-r3 27.1-r3 27.1.91 27.1.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r13 23.4-r20 23.4-r21 24.5-r9 24.5-r10 25.3-r8 25.3-r9 26.3-r3 26.3-r4 27.1-r3 27.1-r4 27.1.91-r1 27.1.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -9032,7 +9032,7 @@ dev-python/re-assert 1.1.0: Show where your regex match assertion failed
 dev-python/readme_renderer 28.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 2.1.1 2.1.2 2.1.3: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 3.0.1: Python library that performs advanced searches in strings
-dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
+dev-python/recommonmark 0.6.0 0.6.0-r1 0.7.1: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.5.3: Python client for Redis key-value store
 dev-python/reedsolomon 1.5.4: Pure-Python Reed Solomon encoder/decoder
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
@@ -12888,7 +12888,7 @@ media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r5 9999: Generic 2D CAD program
-media-gfx/llgal 0.13.19: Command-line static web gallery generator
+media-gfx/llgal 0.13.19-r1: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.6.0-r1: Graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.15.0 0.16.0: Qt Image Viewer
 media-gfx/maim 5.6.3 9999: Commandline tool to take screenshots of the desktop
@@ -15005,7 +15005,7 @@ net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r2 0.31.2 0.31.3: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/onionrouter 0.6.1 9999: .onion discovery via SRV DNS lookups for use with postfix
 net-mail/pflogsumm 1.1.5-r1 1.1.5-r2: Pflogsumm is a log analyzer for Postfix logs
-net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
+net-mail/pfqueue 0.5.6-r1: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: Simple daemon to control email relay based on successful POP or IMAP logins
 net-mail/pop2imap 1.21: Synchronize mailboxes between a pop and an imap servers
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
@@ -16212,7 +16212,7 @@ sci-libs/fplll 5.3.2 5.4.0: Implementations of the floating-point LLL reduction 
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 3.0.4-r1 3.2.0-r1 3.2.1: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 3.0.4-r1 3.2.0-r1 3.2.1-r1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.8.1 3.9.0-r2: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r3: Reference implementation of the Dirfile, format for time-ordered binary data
@@ -18051,7 +18051,7 @@ www-client/seamonkey 2.53.6: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.5.2115.87 3.6.2165.34: A browser for our friends
+www-client/vivaldi 3.6.2165.34 3.6.2165.36: A browser for our friends
 www-client/vivaldi-snapshot 3.6.2165.26 3.6.2165.32: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
