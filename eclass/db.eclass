@@ -4,20 +4,28 @@
 # @ECLASS: db.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Internal eclass used by sys-libs/db ebuilds
+
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS src_test
+
+if [[ ! ${_DB_ECLASS} ]]; then
 
 inherit eutils multilib multiprocessing
 
 IUSE="doc test examples"
-
-EXPORT_FUNCTIONS src_test
 
 DEPEND="test? ( >=dev-lang/tcl-8.4 )"
 
 RDEPEND=""
 
 db_fix_so() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	LIB="${EROOT}/usr/$(get_libdir)"
 
 	cd "${LIB}" || die
@@ -72,7 +80,6 @@ db_fix_so() {
 }
 
 db_src_install_doc() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	# not everybody wants this wad of documentation as it is primarily API docs
 	if use doc; then
 		dodir /usr/share/doc/${PF}/html
@@ -86,7 +93,6 @@ db_src_install_doc() {
 }
 
 db_src_install_examples() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	if use examples ; then
 		local langs=( c cxx stl )
 		[[ "${IUSE/java}" != "${IUSE}" ]] \
@@ -105,7 +111,6 @@ db_src_install_examples() {
 }
 
 db_src_install_usrbinslot() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	# slot all program names to avoid overwriting
 	local fname
 	for fname in "${ED}"/usr/bin/db*
@@ -119,14 +124,12 @@ db_src_install_usrbinslot() {
 }
 
 db_src_install_headerslot() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	# install all headers in a slotted location
 	dodir /usr/include/db${SLOT}
 	mv "${ED}"/usr/include/*.h "${ED}"/usr/include/db${SLOT}/ || die
 }
 
 db_src_install_usrlibcleanup() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
 	LIB="${ED}/usr/$(get_libdir)"
 	# Clean out the symlinks so that they will not be recorded in the
 	# contents (bug #60732)
@@ -201,3 +204,6 @@ db_src_test() {
 		eerror "You must have USE=tcl to run the sys-libs/db testsuite."
 	fi
 }
+
+_DB_ECLASS=1
+fi
