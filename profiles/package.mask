@@ -32,6 +32,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-02-07)
+# Discontinued upstream.  Last release was for Xfce 4.12, last commit
+# in 2015.  Still uses GTK+2.
+# Removal on 2021-03-09.  Bug #732750.
+app-office/orage
+
+# Michał Górny <mgorny@gentoo.org> (2021-02-07)
+# These plugins have not been ported to Xfce 4.16 / GTK+3.
+# They do not build against to-be-stable xfce4-panel.
+# Removal on 2021-03-09.  Bug #732754.
+xfce-extra/multiload-nandhp
+xfce-extra/xfce4-embed-plugin
+xfce-extra/xfce4-equake-plugin
+xfce-extra/xfce4-hdaps
+xfce-extra/xfce4-kbdleds-plugin
+xfce-extra/xfce4-windowck-plugin
+
+# Michał Górny <mgorny@gentoo.org> (2021-02-07)
+# Fails to start due to unpackaged Ruby modules.  Abandoned upstream
+# in 2010.
+# Removal on 2021-03-09.  Bug #769371.
+xfce-extra/eatmonkey
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-02-01)
 # no package uses it
 # Removal on 2021-03-04
@@ -73,11 +96,6 @@ app-text/csvfix
 # wddx in general failed overall as a protocol. No real maintainer.
 # Removal in 30 days. Bug #688066
 net-analyzer/jffnms
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-24)
-# (New and QML-based) functionality moved into kde-plasma/plasma-desktop:5
-# Masked for removal in 14 days.
-kde-plasma/user-manager:5
 
 # Aisha Tammy <gentoo@aisha.cc> (2021-01-24)
 # Dead package, wrongly named, only installs
