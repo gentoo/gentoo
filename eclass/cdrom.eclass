@@ -4,6 +4,7 @@
 # @ECLASS: cdrom.eclass
 # @MAINTAINER:
 # games@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Functions for CD-ROM handling
 # @DESCRIPTION:
 # Acquire CD(s) for those lovely CD-based emerges.  Yes, this violates
@@ -14,8 +15,13 @@
 # eclass will require RESTRICT="bindist" but the point still stands.
 # The functions are generally called in src_unpack.
 
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
 if [[ -z ${_CDROM_ECLASS} ]]; then
-_CDROM_ECLASS=1
 
 inherit portability
 
@@ -305,4 +311,5 @@ _cdrom_set_names() {
 	fi
 }
 
+_CDROM_ECLASS=1
 fi
