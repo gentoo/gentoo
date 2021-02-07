@@ -177,7 +177,6 @@ DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-cpp/gtest-1.10.0 )
 	virtual/pkgconfig
 	virtual/jre
-	x86? ( dev-lang/nasm )
 "
 
 CONFIG_CHECK="~IP_MULTICAST"
