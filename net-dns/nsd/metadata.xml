@@ -23,4 +23,7 @@
 			Install a plugin for <pkg>net-analyzer/munin</pkg> to graph
 			statistical data from nsd.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">NLnetLabs/nsd</remote-id>
+	</upstream>
 </pkgmetadata>
