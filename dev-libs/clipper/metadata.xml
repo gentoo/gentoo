@@ -10,6 +10,7 @@
         and line &amp; polygon offsetting. The library is based on Vatti's clipping algorithm.
     </longdescription>
     <upstream>
+        <bugs-to>https://sourceforge.net/p/polyclipping/bugs/</bugs-to>
         <remote-id type="sourceforge">polyclipping</remote-id>
     </upstream>
 </pkgmetadata>
