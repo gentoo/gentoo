@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ada.eclass
@@ -6,7 +6,7 @@
 # Ada team <ada@gentoo.org>
 # @AUTHOR:
 # Tupone Alfredo <tupone@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: An eclass for Ada packages
 # @DESCRIPTION:
 # This eclass set the IUSE and REQUIRED_USE to request the ADA_TARGET
@@ -23,19 +23,15 @@
 #
 # Mostly copied from python-single-r1.eclass
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	6|7)
-		# EAPI=5 is required for sane USE_EXPAND dependencies
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI:-0} in
+	[0-6]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	7)     ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
 EXPORT_FUNCTIONS pkg_setup
+
+if [[ ! ${_ADA_ECLASS} ]]; then
 
 # @ECLASS-VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
@@ -462,3 +458,6 @@ ada_pkg_setup() {
 
 	[[ ${MERGE_TYPE} != binary ]] && ada_setup
 }
+
+_ADA_ECLASS=1
+fi
