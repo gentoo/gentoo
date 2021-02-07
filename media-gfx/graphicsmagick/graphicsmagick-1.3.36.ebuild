@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
 DESCRIPTION="Collection of tools and libraries for many image formats"
-HOMEPAGE="http://www.graphicsmagick.org/"
+HOMEPAGE="http://www.graphicsmagick.org/ http://hg.code.sf.net/p/graphicsmagick/code/"
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
 
