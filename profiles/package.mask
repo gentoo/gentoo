@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
+# No longer actively supported upstream.
+# Removal needed to clean-up {ilmbase,openexr}-2.3.0
+# Masked for removal in 30 days.
+media-gfx/openexr_viewers
+
 # Sam James <sam@gentoo.org> (2021-02-27)
 # Fails to build with GCC 10 (or otherwise!)
 # bug #708508, bug #728026, bug #542280
