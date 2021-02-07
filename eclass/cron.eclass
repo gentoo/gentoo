@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cron.eclass
@@ -6,6 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Some functions for cron
 # @DESCRIPTION:
 # Purpose: The main motivation for this eclass was to simplify
@@ -18,13 +19,19 @@
 #
 # Please assign any bugs regarding this eclass to cron-bugs@gentoo.org.
 
-inherit eutils flag-o-matic
+case ${EAPI:-0} in
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
 
 EXPORT_FUNCTIONS pkg_postinst
 
-SLOT="0"
+if [[ ! ${_CRON_ECLASS} ]]; then
 
-DEPEND=">=sys-apps/sed-4.0.5"
+inherit eutils flag-o-matic
+
+SLOT="0"
 
 RDEPEND=">=sys-process/cronbase-0.3.2"
 for pn in vixie-cron bcron cronie dcron fcron; do
@@ -158,3 +165,6 @@ cron_pkg_postinst() {
 	einfo "    https://wiki.gentoo.org/wiki/Cron"
 	echo
 }
+
+_CRON_ECLASS=1
+fi
