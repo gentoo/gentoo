@@ -5289,7 +5289,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.25.1-r10: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.181 0.182: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.181 0.182 0.183: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.35 0.36 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9 2.2.10: Stream-oriented XML parser library
@@ -18422,7 +18422,7 @@ x11-misc/grsync 1.2.6 1.2.8 1.3.0: A gtk frontend to rsync
 x11-misc/grub2-theme-preview 2.1.0: Preview a GRUB 2.x theme using KVM/QEMU
 x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog, just like xexec
 x11-misc/gtk2fontsel 0.1-r1: A font selection tool similar to xfontsel
-x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
+x11-misc/gtkdialog 0.8.3_p20200202 99999: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.4 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.5: Tool which allows you to compose wallpapers ('root pixmaps') for X
@@ -18618,7 +18618,7 @@ x11-misc/xrootconsole 0.6-r1: A utility that displays its input in a text box on
 x11-misc/xscreensaver 5.38-r3 5.43-r5 5.44-r4: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3 2.3-r4: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
-x11-misc/xsensors 0.70-r1 0.80: A hardware health information viewer, interface to lm-sensors
+x11-misc/xsensors 0.80: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsettingsd 1.0.0 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
 x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
