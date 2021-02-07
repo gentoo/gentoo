@@ -18,8 +18,6 @@ provided.
 <remote-id type="google-code">gtkdialog</remote-id>
 </upstream>
 <use>
-<flag name="glade">Enable support for <pkg>gnome-base/libglade</pkg></flag>
 <flag name="gtk2">Build with GTK+2 instead of GTK+3</flag>
-<flag name="vte">Enable support for <pkg>x11-libs/vte</pkg></flag>
 </use>
 </pkgmetadata>
