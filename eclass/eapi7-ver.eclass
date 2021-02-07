@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Ulrich Müller <ulm@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: Testing implementation of EAPI 7 version manipulators
 # @DESCRIPTION:
 # A stand-alone implementation of the version manipulation functions
@@ -57,9 +57,9 @@
 # the version string, it is truncated silently.
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
-	7) die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass" ;;
-	*) die "${ECLASS}: EAPI=${EAPI} unknown" ;;
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-6]) ;;
+	*)     die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass" ;;
 esac
 
 # @FUNCTION: _ver_parse_range
