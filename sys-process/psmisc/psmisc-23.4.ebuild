@@ -12,7 +12,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 nls selinux X"
 
-RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
+RDEPEND="!=app-i18n/man-pages-l10n-4.0.0-r0
+	>=sys-libs/ncurses-5.7-r7:0=
 	nls? ( virtual/libintl )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}"

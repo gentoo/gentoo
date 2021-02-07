@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ IUSE="${MY_L10N[@]/#/l10n_}"
 REQUIRED_USE="|| ( ${MY_L10N[@]/#/l10n_} )"
 
 RDEPEND="virtual/man
+	!>=sys-process/psmisc-23.4
 	l10n_de? ( !app-i18n/man-pages-de )
 	l10n_fr? ( !app-i18n/man-pages-fr )
 	l10n_nl? ( !app-i18n/man-pages-nl )
