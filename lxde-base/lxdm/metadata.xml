@@ -5,9 +5,6 @@
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>
-	<use>
-		<flag name="gtk3">Use GTK+3 instead of 2</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">lxde</remote-id>
 	</upstream>
