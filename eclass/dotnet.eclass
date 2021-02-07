@@ -3,7 +3,7 @@
 
 # @ECLASS: dotnet.eclass
 # @MAINTAINER: dotnet@gentoo.org
-# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common settings and functions for mono and dotnet related packages
 # @DESCRIPTION:
 # The dotnet eclass contains common environment settings that are useful for
@@ -12,20 +12,27 @@
 # of dotnet packages.
 
 case ${EAPI:-0} in
-	0)
-		die "this eclass doesn't support EAPI 0" ;;
-	[1-6])
-		inherit eapi7-ver multilib
-		DEPEND="dev-lang/mono" ;;
-	*)
-		BDEPEND="dev-lang/mono" ;;
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
+
+EXPORT_FUNCTIONS pkg_setup
+
+if [[ ! ${_DOTNET_ECLASS} ]]; then
+_DOTNET_ECLASS=1
 
 inherit mono-env
 
 # @ECLASS-VARIABLE: USE_DOTNET
 # @DESCRIPTION:
 # Use flags added to IUSE
+
+BDEPEND="dev-lang/mono"
+if [[ ${EAPI} == [56] ]]; then
+	inherit eapi7-ver multilib
+	DEPEND="${BDEPEND}"
+fi
 
 # SET default use flags according on DOTNET_TARGETS
 for x in ${USE_DOTNET}; do
@@ -142,4 +149,4 @@ dotnet_multilib_comply() {
 	fi
 }
 
-EXPORT_FUNCTIONS pkg_setup
+fi
