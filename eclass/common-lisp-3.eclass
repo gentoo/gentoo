@@ -1,13 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: functions to support the installation of Common Lisp libraries
 # @DESCRIPTION:
 # Since Common Lisp libraries share similar structure, this eclass aims
 # to provide a simple way to write ebuilds with these characteristics.
+
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS src_compile src_install
+
+if [[ ! ${_COMMON_LISP_3_ECLASS} ]]; then
 
 inherit eutils
 
@@ -35,8 +46,6 @@ CLSYSTEMROOT="${ROOT%/}"/usr/share/common-lisp/systems
 CLPACKAGE="${PN}"
 
 PDEPEND="virtual/commonlisp"
-
-EXPORT_FUNCTIONS src_compile src_install
 
 # @FUNCTION: common-lisp-3_src_compile
 # @DESCRIPTION:
@@ -234,3 +243,6 @@ common-lisp-export-impl-args() {
 	esac
 	export CL_BINARY CL_NORC CL_LOAD CL_EVAL
 }
+
+_COMMON_LISP_3_ECLASS=1
+fi
