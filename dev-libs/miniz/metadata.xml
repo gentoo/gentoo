@@ -15,6 +15,7 @@
 		fastlz/minilzo.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/richgel999/miniz/issues</bugs-to>
 		<remote-id type="github">richgel999/miniz</remote-id>
 	</upstream>
 </pkgmetadata>
