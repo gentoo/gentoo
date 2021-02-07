@@ -444,7 +444,8 @@ all_fakegem_compile() {
 each_fakegem_compile() {
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
 		emake V=1 -C ${extension%/*}
-		cp "${extension%/*}"/*$(get_modname) "${RUBY_FAKEGEM_EXTENSION_LIBDIR}" || die "Copy of extension into ${RUBY_FAKEGEM_EXTENSION_LIBDIR} failed"
+		mkdir -p "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}"
+		cp "${extension%/*}"/*$(get_modname) "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}/" || die "Copy of extension into ${RUBY_FAKEGEM_EXTENSION_LIBDIR} failed"
 	done
 }
 
