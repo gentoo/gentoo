@@ -1,0 +1,14 @@
+[Unit]
+Description=MSTP daemon
+Before=network.target
+
+[Service]
+Type=forking
+ExecStart=/sbin/mstpd
+PIDFile=/var/run/mstpd.pid
+Restart=on-failure
+PrivateTmp=yes
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
