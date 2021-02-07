@@ -10261,7 +10261,7 @@ dev-ruby/ruby-clutter-gstreamer 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gtk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Clutter-GTK bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-elf 1.0.8: Ruby library to access ELF files information
-dev-ruby/ruby-feedparser 0.9.4 0.9.6: Ruby library to parse ATOM/RSS feeds
+dev-ruby/ruby-feedparser 0.9.4 0.9.6 0.9.7: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GdkPixbuf2 bindings
@@ -10454,7 +10454,7 @@ dev-ruby/wisper 2.0.1: A micro library providing objects with Publish-Subscribe 
 dev-ruby/x25519 1.0.8: Key exchange via the X25519 (Curve25519) Elliptic Curve Diffie-Hellman function
 dev-ruby/xdr 3.0.1: Read/write XDR encoded data structures
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
-dev-ruby/xmlrpc 0.3.0 0.3.1: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP
+dev-ruby/xmlrpc 0.3.0 0.3.1 0.3.2: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP
 dev-ruby/xpath 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20 0.9.25 0.9.26: Documentation generation tool for the Ruby programming language
@@ -18096,7 +18096,7 @@ www-servers/nginx-unit 1.20.0 1.21.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.12.5-r1 4.3.4-r1 4.3.7 5.0.4 5.1.1 5.2.0: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.12.5-r1 4.3.4-r1 4.3.7 5.0.4 5.1.1 5.2.0 5.2.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
