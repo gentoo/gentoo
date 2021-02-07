@@ -18021,7 +18021,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.96 88.0.4324.150 89.0.4389.23 90.0.4400.8: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.150 89.0.4389.23 90.0.4400.8: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
@@ -19079,7 +19079,7 @@ xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.95: A panel plug-in for acpi, lm-se
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1 0.5.2: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-statusnotifier-plugin 0.2.2: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3 1.2.4: System load plug-in for Xfce panel
-xfce-extra/xfce4-taskmanager 1.2.3 1.4.0 1.5.0: Easy to use task manager
+xfce-extra/xfce4-taskmanager 1.2.3 1.4.0 1.4.1 1.5.0: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.1.1: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.1: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
