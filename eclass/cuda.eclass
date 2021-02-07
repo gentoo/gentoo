@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
