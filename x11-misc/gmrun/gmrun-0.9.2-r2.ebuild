@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="amd64 ~mips ~ppc x86"
+KEYWORDS="amd64 ~mips ppc x86"
 
 RDEPEND="
 	dev-libs/glib:2
