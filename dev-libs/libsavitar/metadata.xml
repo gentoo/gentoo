@@ -25,6 +25,7 @@
 		<subslots>soname major version number</subslots>
 	</slots>
 	<upstream>
+		<bugs-to>https://github.com/Ultimaker/libSavitar/issues</bugs-to>
 		<remote-id type="github">Ultimaker/libSavitar</remote-id>
 	</upstream>
 </pkgmetadata>
