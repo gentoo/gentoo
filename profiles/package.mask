@@ -74,11 +74,6 @@ app-text/csvfix
 # Removal in 30 days. Bug #688066
 net-analyzer/jffnms
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-24)
-# (New and QML-based) functionality moved into kde-plasma/plasma-desktop:5
-# Masked for removal in 14 days.
-kde-plasma/user-manager:5
-
 # Aisha Tammy <gentoo@aisha.cc> (2021-01-24)
 # Dead package, wrongly named, only installs
 # really old scikit-examples.
