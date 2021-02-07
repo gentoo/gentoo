@@ -296,7 +296,7 @@ src_configure() {
 		-DCORE_PLATFORM_NAME="${core_platform_name}"
 	)
 
-	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 
 	use X && use opengl && mycmakeargs+=( -DENABLE_GLX=ON )
 
