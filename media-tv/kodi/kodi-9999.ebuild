@@ -167,12 +167,10 @@ RDEPEND="${COMMON_DEPEND}
 	upower? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
-	app-arch/xz-utils
 	dev-lang/swig
 	dev-libs/crossguid
 	dev-libs/rapidjson
 	dev-util/cmake
-	dev-util/gperf
 	media-libs/giflib
 	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
