@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
@@ -38,6 +38,14 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
+case ${EAPI:-0} in
+	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[5-7]) ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup
+
 if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY
@@ -59,13 +67,6 @@ if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
-
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_setup
 
 # Obsolete function executing all the checks and printing out results
 check_reqs() {
