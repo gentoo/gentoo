@@ -143,6 +143,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
 	X? (
 		media-libs/mesa[X]
+		opengl? ( media-libs/libglvnd[X] )
 		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
@@ -294,6 +295,8 @@ src_configure() {
 	)
 
 	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+
+	use X && use opengl && mycmakeargs+=( -DENABLE_GLX=ON )
 
 	if use system-ffmpeg; then
 		mycmakeargs+=( -DWITH_FFMPEG="yes" )
