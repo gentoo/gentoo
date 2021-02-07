@@ -43,7 +43,7 @@
 # For more information, please see the Python Guide:
 # https://dev.gentoo.org/~mgorny/python-guide/
 
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
