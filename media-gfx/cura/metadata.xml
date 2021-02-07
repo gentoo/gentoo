@@ -28,6 +28,7 @@
 		<flag name="usb">Access 3D printers via USB</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/Ultimaker/Cura/issues</bugs-to>
 		<remote-id type="github">Ultimaker/Cura</remote-id>
 	</upstream>
 </pkgmetadata>
