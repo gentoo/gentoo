@@ -9,4 +9,5 @@
 		<email>pgsql-bugs@gentoo.org</email>
 		<name>PostgreSQL and Related Package Development</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
