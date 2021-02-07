@@ -1,13 +1,13 @@
-BDEPEND=dev-qt/linguist-tools:5 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure postinst postrm preinst prepare unpack
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/alsa-lib >=media-libs/liblscp-0.5.6:= x11-libs/libX11 libgig? ( >=media-libs/libgig-3.3.0:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+BDEPEND=dev-qt/linguist-tools:5 dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/alsa-lib media-libs/liblscp:= x11-libs/libX11 libgig? ( media-libs/libgig:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Graphical frontend to the LinuxSampler engine
 EAPI=7
 HOMEPAGE=https://qsampler.sourceforge.io/ https://www.linuxsampler.org/
 IUSE=debug +libgig
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/alsa-lib >=media-libs/liblscp-0.5.6:= x11-libs/libX11 libgig? ( >=media-libs/libgig-3.3.0:= ) >=media-sound/linuxsampler-0.5
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/alsa-lib media-libs/liblscp:= x11-libs/libX11 libgig? ( media-libs/libgig:= ) media-sound/linuxsampler
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=155ee63862bf7d853867ba60fd829236
+_eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=957a8afdd9520b0448eb6677b4b08c4f

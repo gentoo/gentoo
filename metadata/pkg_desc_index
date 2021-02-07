@@ -2431,7 +2431,7 @@ app-misc/dvtm 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
 app-misc/elasticsearch 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Open Source, Distributed, RESTful, Search Engine
-app-misc/emelfm2 0.9.1-r4 0.9.1-r5: A file manager that implements the popular two-pane design
+app-misc/emelfm2 0.9.1-r5: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b 0.6.21b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
@@ -12403,7 +12403,7 @@ lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring O
 lxde-base/lxde-common 0.99.1 0.99.2: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0-r1 0.5.1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
-lxde-base/lxdm 0.5.3-r1 0.5.3-r2: LXDE Display Manager
+lxde-base/lxdm 0.5.3-r2: LXDE Display Manager
 lxde-base/lxinput 0.3.5 0.3.5-r1: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.5: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
@@ -13944,7 +13944,7 @@ media-sound/qjackctl 0.9.0 0.9.1 9999: Qt GUI to control the JACK Audio Connecti
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsampler 0.6.3 9999: Graphical frontend to the LinuxSampler engine
+media-sound/qsampler 0.6.3 0.9.1 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.3 0.9.0 0.9.1 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
@@ -15134,7 +15134,7 @@ net-misc/gallery-dl 1.15.2-r1 1.15.3 1.16.0 1.16.3 9999: Download image gallerie
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.6.1-r1 9999: UPnP Media Server
+net-misc/gerbera 1.6.4 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7 0.1.8 0.1.9: Remote desktop daemon for GNOME using pipewire
