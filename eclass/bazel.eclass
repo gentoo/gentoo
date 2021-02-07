@@ -13,7 +13,7 @@
 #
 # This eclass does not export any phase functions.
 
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
