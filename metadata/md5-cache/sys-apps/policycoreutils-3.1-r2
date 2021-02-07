@@ -5,7 +5,7 @@ DESCRIPTION=SELinux core utilities
 EAPI=7
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
 IUSE=audit pam split-usr python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm64 ~mips ~x86
+KEYWORDS=amd64 ~arm64 ~mips x86
 LICENSE=GPL-2
 PDEPEND=sys-apps/semodule-utils sys-apps/selinux-python
 RDEPEND=>=sys-libs/libselinux-3.1:=[python,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=sys-libs/libsemanage-3.1:=[python(+),python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=sys-libs/libsepol-3.1:= sys-libs/libcap-ng:= >=app-admin/setools-4.2.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] audit? ( >=sys-process/audit-1.5.1[python,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) pam? ( sys-libs/pam:= ) python_targets_python3_7? ( dev-lang/python:3.7[xml] ) python_targets_python3_8? ( dev-lang/python:3.8[xml] ) python_targets_python3_9? ( dev-lang/python:3.9[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] app-misc/pax-utils
@@ -13,4 +13,4 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targe
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20200710/policycoreutils-3.1.tar.gz https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-1.37.tar.bz2
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=fbfa497fccf92d2be01d6e80cb55ad97
+_md5_=d5b5b054e0a34d1cc3a5ea2089e8628f
