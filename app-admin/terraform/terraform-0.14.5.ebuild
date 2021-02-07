@@ -959,7 +959,7 @@ SRC_URI+="${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD-2 BSD-4 ECL-2.0 imagemagick ISC JSON MIT MIT-with-advertising MPL-2.0 unicode"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RESTRICT="test"
 
