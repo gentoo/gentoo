@@ -60,7 +60,13 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="
+	>=dev-libs/lzo-2.04
+	>=dev-libs/flatbuffers-1.11.0
+	>=media-libs/libjpeg-turbo-2.0.4:=
+	>=media-libs/libpng-1.6.26:0=
+"
+COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	airplay? (
 		>=app-pda/libplist-2.0.0
 		net-libs/shairplay
@@ -72,11 +78,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/crossguid
-	>=dev-libs/flatbuffers-1.11.0
 	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
-	>=dev-libs/lzo-2.04
 	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
 	$(python_gen_cond_dep '
@@ -161,20 +165,23 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND} ${COMMON_TARGET_DEPEND}
 	lirc? ( app-misc/lirc )
 	power-control? ( || ( sys-apps/systemd sys-auth/elogind ) )
 	udisks? ( sys-fs/udisks:2 )
 	upower? ( sys-power/upower )
 "
-DEPEND="${COMMON_DEPEND}
-	dev-lang/swig
+DEPEND="${COMMON_DEPEND} ${COMMON_TARGET_DEPEND}
 	dev-libs/rapidjson
+	test? ( >=dev-cpp/gtest-1.10.0 )
+"
+BDEPEND="${COMMON_DEPEND}
+	dev-lang/swig
 	dev-util/cmake
 	media-libs/giflib
+	>=dev-libs/flatbuffers-1.11.0
 	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
-	test? ( >=dev-cpp/gtest-1.10.0 )
 	virtual/pkgconfig
 	virtual/jre
 "
