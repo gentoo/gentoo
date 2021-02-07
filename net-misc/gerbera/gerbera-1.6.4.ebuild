@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ DEPEND="
 	lastfm? ( >=media-libs/lastfmlib-0.4 )
 	exif? ( media-libs/libexif )
 	exiv2? ( media-gfx/exiv2 )
-	ffmpeg? (  >=media-video/ffmpeg-2.2:0= )
+	ffmpeg? ( >=media-video/ffmpeg-2.2:0= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	curl? ( net-misc/curl )
 	magic? ( sys-apps/file )
