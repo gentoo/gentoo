@@ -51,6 +51,10 @@ REQUIRED_USE="
 	udisks? ( dbus )
 	upower? ( dbus )
 	power-control? ( dbus )
+	vdpau? (
+		X
+		opengl
+	)
 	zeroconf? ( dbus )
 "
 RESTRICT="!test? ( test )"
