@@ -33,14 +33,14 @@ else
 	fi
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
 RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
@@ -94,13 +94,10 @@ RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 			)
 		)
 		gtk? (
-			gtk2? ( x11-libs/gtk+:2 )
-			!gtk2? (
-				x11-libs/gtk+:3
-				xwidgets? (
-					net-libs/webkit-gtk:4=
-					x11-libs/libXcomposite
-				)
+			x11-libs/gtk+:3
+			xwidgets? (
+				net-libs/webkit-gtk:4=
+				x11-libs/libXcomposite
 			)
 		)
 		!gtk? (
@@ -230,13 +227,7 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use gtk2; then
-				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
-				use xwidgets && ewarn \
-					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
-			else
-				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			fi
+			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -255,12 +246,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		if ! use gtk; then
-			use gtk2 && ewarn \
-				"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
-			use xwidgets && ewarn \
-				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
-		fi
+		! use gtk && use xwidgets && ewarn \
+			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
 	if tc-is-cross-compiler; then
