@@ -10,6 +10,7 @@
         library for performing proximity and collision queries on pairs of geometric models.
     </longdescription>
     <upstream>
+        <bugs-to>https://github.com/kxgames/vecrec/issues</bugs-to>
         <remote-id type="github">kxgames/vecrec</remote-id>
         <remote-id type="pypi">vecrec</remote-id>
     </upstream>
