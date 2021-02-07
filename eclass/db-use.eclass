@@ -5,9 +5,11 @@
 # Bugs: maintainer-needed@gentoo.org
 
 # multilib is used for get_libname in all EAPI
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6) inherit eapi7-ver multilib ;;
-	*) inherit multilib ;;
+case ${EAPI:-0} in
+	[0-3]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[4-6]) inherit eapi7-ver multilib ;;
+	7)     ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
 #Convert a version to a db slot
@@ -30,7 +32,6 @@ db_ver_to_slot() {
 
 #Find the version that correspond to the given atom
 db_findver() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -ne 1 ]; then
 		eerror "Function db_findver needs one argument" >&2
 		eerror "args given:" >&2
@@ -58,7 +59,6 @@ db_findver() {
 # to test for, it will aim to find the library corresponding to it.
 
 db_includedir() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -eq 0 ]; then
 		VER="$(db_findver sys-libs/db)" || return 1
 		VER="$(db_ver_to_slot "$VER")"
@@ -92,7 +92,6 @@ db_includedir() {
 # packages to test for, it will aim to find the library corresponding to it.
 
 db_libname() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 	if [ $# -eq 0 ]; then
 		VER="$(db_findver sys-libs/db)" || return 1
 		if [ -e "${EPREFIX}/usr/$(get_libdir)/libdb-${VER}$(get_libname)" ]; then
