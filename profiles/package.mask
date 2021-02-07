@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-07)
+# No longer actively supported upstream.
+# Removal needed to clean-up {ilmbase,openexr}-2.3.0
+# Masked for removal in 30 days.
+media-gfx/openexr_viewers
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-02-01)
 # no package uses it
 # Removal on 2021-03-04
