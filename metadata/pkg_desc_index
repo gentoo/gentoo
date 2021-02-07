@@ -761,7 +761,7 @@ app-admin/system-config-printer 1.5.15: Graphical user interface for CUPS admini
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/terraform 0.12.28 0.13.3 0.13.4 0.13.5 0.14.4 0.14.5 0.14.6: A tool for building, changing, and combining infrastructure safely
+app-admin/terraform 0.14.5 0.14.6: A tool for building, changing, and combining infrastructure safely
 app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
@@ -7989,7 +7989,7 @@ dev-python/autopep8 1.5.4 1.5.5 9999: Automatically formats Python code to confo
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.33.0 1.34.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.160: Universal Command Line Environment for AWS
+dev-python/awscli 1.18.160 1.19.3: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
@@ -12649,7 +12649,7 @@ media-fonts/inconsolata-hellenic 1.19-r1: Hellenisation of the wonderful, monosp
 media-fonts/inconsolata-lgc 1.3.0: Modified version of Inconsolata Hellenic adding the Cyrillic alphabet
 media-fonts/infinality-ultimate-meta 1: Meta package for infinality-ultimate with fonts
 media-fonts/intlfonts 1.2.1-r1: International X11 fixed fonts
-media-fonts/iosevka 4.5.0: Slender typeface for code, from code
+media-fonts/iosevka 1.14.1: Slender typeface for code, from code
 media-fonts/ipaex 002.01: Japanese IPA extended TrueType fonts
 media-fonts/ipamonafont 1.0.8: Hacked version of IPA fonts, which is suitable for browsing 2ch
 media-fonts/ja-ipafonts 003.02-r1 003.03: TrueType fonts developed by Japanese Information-technology Promotion Agency
@@ -14618,7 +14618,7 @@ net-fs/davfs2 1.5.4 1.5.5 1.5.6-r1 1.6.0: Linux FUSE (or coda) driver that allow
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.31.19.17.35 2021.01.16.02.45.34: Minio client provides alternatives for ls, cat on cloud storage and filesystems
-net-fs/minio 2021.01.16.02.19.44-r2: An Amazon S3 compatible object storage server
+net-fs/minio 2021.01.16.02.19.44-r2 2021.02.07.01.31.02: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
@@ -16899,7 +16899,7 @@ sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0 5.5.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hw-probe 1.6_beta2-r1: A tool to probe for hardware, check it's operability and find drivers
-sys-apps/hwids 20200204 20200306 20200813.1 20201207 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
+sys-apps/hwids 20200813.1 20201207 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.13 2.3.0: displays the hardware topology in convenient formats
 sys-apps/i2c-tools 4.1-r1 4.2: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
