@@ -33,6 +33,7 @@ IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfuti
 REQUIRED_USE="
 	homed? ( cryptsetup pam )
 	importd? ( curl gcrypt lzma )
+	pwquality? ( homed )
 "
 RESTRICT="!test? ( test )"
 
