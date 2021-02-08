@@ -20,6 +20,10 @@ RDEPEND="
 	>=dev-python/uncertainties-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.2[${PYTHON_USEDEP}]
 "
+# past from future needed for tests, bug #737978
+BDEPEND="${RDEPEND}
+	test? ( dev-python/future[${PYTHON_USEDEP}] )
+"
 
 distutils_enable_tests pytest
 
