@@ -5910,7 +5910,7 @@ dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from st
 dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
 dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.7.10 0.9.1: OCaml interface to the libcurl library
-dev-ml/opam 1.3.1-r1 2.0.7: A source-based package manager for OCaml
+dev-ml/opam 1.3.1-r1 2.0.7 2.0.8: A source-based package manager for OCaml
 dev-ml/opam-client 2.0.7: opam client libraries
 dev-ml/opam-core 2.0.7: Core libraries for opam
 dev-ml/opam-file-format 2.1.0: Parser and printer for the opam file syntax
@@ -8024,7 +8024,7 @@ dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/bracex 2.0.1 2.1.0: Bash style brace expansion for Python
+dev-python/bracex 2.0.1 2.1.0 2.1.1: Bash style brace expansion for Python
 dev-python/braintree 4.4.0: Braintree Python Library
 dev-python/breathe 4.25.1-r1 4.26.1: Sphinx Doxygen renderer
 dev-python/brotlicffi 0.8.0 1.0.9.1: Python binding to the Brotli library
@@ -8397,7 +8397,7 @@ dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
-dev-python/jsonpickle 1.4.2 1.5.0 1.5.1 1.5.2: Python library for serializing any arbitrary object graph into JSON
+dev-python/jsonpickle 1.4.2 1.5.0 1.5.1 1.5.2 2.0.0: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.4.2 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
@@ -10776,7 +10776,7 @@ dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files 
 dev-util/gnome-builder 3.36.1 3.38.1 3.38.2: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
-dev-util/goland 2020.3: Golang IDE by JetBrains
+dev-util/goland 2020.3.2: Golang IDE by JetBrains
 dev-util/google-perftools 2.7-r1 2.8: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
@@ -15086,7 +15086,7 @@ net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Acce
 net-misc/cmst 2020.11.01: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.6 0.8.7 0.9.0: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
-net-misc/connman 1.38 1.39 9999: Provides a daemon for managing internet connections
+net-misc/connman 1.38 1.39 1.39-r1 9999: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1 0_pre20191003-r2: Desktop notification integration for connman
@@ -18072,7 +18072,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 88.0.4324.150 89.0.4389.40_beta 90.0.4408.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
-www-plugins/lightspark 0.8.2-r1 0.8.3: High performance flash player
+www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 2.4.456 2.5.207: A PDF reader in JavaScript
 www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory

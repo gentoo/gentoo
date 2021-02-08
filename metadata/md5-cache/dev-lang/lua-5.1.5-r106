@@ -5,10 +5,10 @@ DESCRIPTION=A powerful light-weight programming language designed for extending 
 EAPI=7
 HOMEPAGE=https://www.lua.org/
 IUSE=+deprecated readline abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=>=app-eselect/eselect-lua-3 readline? ( >=sys-libs/readline-6.2_p5-r1:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !dev-lang/lua:0
 SLOT=5.1
 SRC_URI=https://www.lua.org/ftp/lua-5.1.5.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	portability	b2e405b5a3f051d58b50c9ffc6b883cf	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=4dfbc4aabdb50c58b149e085697e7c51
+_md5_=24c2fb196faac3fe53bc47251cfc267f

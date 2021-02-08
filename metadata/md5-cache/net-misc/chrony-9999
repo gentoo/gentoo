@@ -8,8 +8,8 @@ IUSE=+caps +cmdmon debug html ipv6 libedit +nettle nss +ntp +phc +nts pps +refcl
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) nts? ( net-libs/gnutls:= ) libedit? ( dev-libs/libedit ) nettle? ( dev-libs/nettle:= ) nss? ( dev-libs/nss:= ) seccomp? ( sys-libs/libseccomp ) html? ( dev-ruby/asciidoctor ) pps? ( net-misc/pps-tools ) selinux? ( sec-policy/selinux-chronyd ) virtual/tmpfiles
-REQUIRED_USE=sechash? ( || ( nettle nss libtomcrypt ) ) nettle? ( !nss ) !sechash? ( !nss ) !sechash? ( !nts? ( !nettle ) ) nts? ( nettle ) html
+REQUIRED_USE=sechash? ( || ( nettle nss libtomcrypt ) ) nettle? ( !nss ) nss? ( !nettle ) libtomcrypt? ( !nettle !nss ) !sechash? ( !nss ) !sechash? ( !nts? ( !nettle ) ) nts? ( nettle ) html
 RESTRICT=test
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=8d86d2261d0c9a4d78fd57438dd15464
+_md5_=3ac613d31771d37c0521b27fe765a826
