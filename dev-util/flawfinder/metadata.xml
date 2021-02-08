@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
 	<upstream>
 		<changelog>https://sourceforge.net/p/flawfinder/code/ci/master/tree/ChangeLog</changelog>
 		<bugs-to>https://sourceforge.net/p/flawfinder/bugs/</bugs-to>
