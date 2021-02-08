@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ DEPEND="
 		media-libs/gst-plugins-bad:1.0
 		media-libs/gstreamer:1.0
 	)
-	rar? ( app-arch/unrar )
+	rar? ( app-arch/unrar:= )
 	ssl? (
 		gnutls? (
 			net-libs/gnutls:=
