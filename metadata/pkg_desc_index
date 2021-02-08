@@ -1728,7 +1728,7 @@ app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
-app-editors/emacs 18.59-r13 23.4-r20 23.4-r21 24.5-r9 24.5-r10 25.3-r8 25.3-r9 26.3-r3 26.3-r4 27.1-r3 27.1-r4 27.1.91-r1 27.1.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r13 23.4-r20 24.5-r9 24.5-r10 25.3-r8 25.3-r9 26.3-r3 26.3-r4 27.1-r3 27.1-r4 27.1.91-r1 27.1.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -2839,7 +2839,7 @@ app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1 1.2.1-r1: A thesaurus lib, tool and database
 app-text/an 1.2_p6: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.17: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.17 2.18: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
@@ -8102,7 +8102,7 @@ dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python 
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 0.3.30 0.3.37 1.0.1 1.0.2 1.0.5 1.0.6: Python module to provide iteration for datetime object
-dev-python/cryptography 3.2.1 3.3.1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.2.1 3.3.1 3.3.2: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8112,7 +8112,7 @@ dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function base
 dev-python/cursive 0.2.2-r1: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.3.4 0.3.5: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.2.5-r1: Python package for convex optimization
-dev-python/cwcwidth 0.1.1 0.1.2: Python bindings for wc(s)width
+dev-python/cwcwidth 0.1.1 0.1.2 0.1.4: Python bindings for wc(s)width
 dev-python/cx_Freeze 6.4.2 6.5.3: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
@@ -8399,7 +8399,7 @@ dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
-dev-python/jsonpickle 1.4.2 1.5.0 1.5.1: Python library for serializing any arbitrary object graph into JSON
+dev-python/jsonpickle 1.4.2 1.5.0 1.5.1 1.5.2: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.4.2 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
@@ -8449,7 +8449,7 @@ dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web develo
 dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 1.0.0 1.1.0 1.1.1: Python bindings for the Lightning Database
-dev-python/lmfit 1.0.1: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
+dev-python/lmfit 1.0.1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.0-r1 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
 dev-python/logbook 1.5.3: A logging replacement for Python
@@ -8504,7 +8504,7 @@ dev-python/mock 3.0.5-r2 4.0.3: Rolling backport of unittest.mock for all Python
 dev-python/mongoengine 0.22.1: A Python Object-Document-Mapper for working with MongoDB
 dev-python/mongomock 3.21.0 3.22.0 3.22.1: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
-dev-python/more-itertools 8.6.0: More routines for operating on iterables, beyond itertools
+dev-python/more-itertools 8.6.0 8.7.0: More routines for operating on iterables, beyond itertools
 dev-python/moto 1.3.14-r3 1.3.16-r1: Mock library for boto
 dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox3 0.24.0: Mock object framework for Python
@@ -8646,7 +8646,7 @@ dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into set
 dev-python/pdfrw 0.4_p1: PDF file reader/writer library
 dev-python/pebble 4.5.3 4.6.0: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
-dev-python/peewee 3.13.2 3.14.0: Small Python ORM
+dev-python/peewee 3.13.2 3.14.0 3.14.1: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
 dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime class
 dev-python/pep8 1.7.1: Python style guide checker
@@ -10793,7 +10793,7 @@ dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory model
 dev-util/hermes 2.8: Lua based testing manager
 dev-util/hfstospell 0.5.2 0.5.2-r1: HFST spell checker library and command line tool
 dev-util/hip 4.0.0 4.0.0-r1: C++ Heterogeneous-Compute Interface for Portability
-dev-util/howdoi 2.0.7 2.0.8: A code search tool
+dev-util/howdoi 2.0.7 2.0.8 2.0.10: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20201116: A collection of tools and scripts
@@ -13321,7 +13321,6 @@ media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20201022 1.20201201: Raspberry Pi userspace tools and libraries
-media-libs/raul 1.0.0_pre20200718 9999: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
@@ -14004,7 +14003,7 @@ media-sound/taginfo 1.2-r2: A simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/tap-reverbed 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Expressive Synthesis, Transformation, Rendering of Environmental Audio
-media-sound/teamspeak-client 3.5.6-r1 5.0.0_beta36: A client software for quality voice communication via the internet
+media-sound/teamspeak-client 3.5.6-r1 5.0.0_beta40: A client software for quality voice communication via the internet
 media-sound/teamspeak-server 3.13.3: A server software for hosting quality voice communication via the internet
 media-sound/tempest_for_eliza 1.0.5-r2: Listen to music on the radio generated by images on your screen
 media-sound/terminatorx 4.0.1-r2: Realtime audio synthesizer allowing you to 'scratch' on sampled audio data
@@ -15162,7 +15161,7 @@ net-misc/icaclient 20.12.0.12-r2 21.1.0.14: ICA Client for Citrix Presentation s
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.2.1_p20200508 0.3: A multicast routing daemon which uses IGMP forwarding
+net-misc/igmpproxy 0.3: A multicast routing daemon which uses IGMP forwarding
 net-misc/ip-sentinel 0.12-r1: Prevent unauthorized usage of IP addresses
 net-misc/ipcalc 0.42_p2: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.14a 2.99999.99999 3.9-r1 3.99999.99999: A TCP, UDP, and SCTP network bandwidth measurement tool
@@ -15492,7 +15491,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.27-r1 1.8.28 2.0.14-r2 2.0.19-r1 2.0.20 2.0.9999 2.1.4-r2 2.1.10-r1 2.1.11 2.1.9999 2.2.5-r1 2.2.6-r1 2.2.8 2.2.9999 2.3.2-r1 2.3.4 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.28 2.0.14-r2 2.0.20 2.0.9999 2.1.4-r2 2.1.11 2.1.9999 2.2.5-r1 2.2.8 2.2.9 2.2.9999 2.3.4 2.3.5 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
@@ -17144,7 +17143,7 @@ sys-auth/ykpers 1.20.0: Library and tool for personalization of Yubico's YubiKey
 sys-auth/yubico-piv-tool 2.1.1-r2 2.2.0: Command-line tool and p11-kit module for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
-sys-block/arcconf 2.01.22270-r1 3.04.23699 3.04.23731: Microsemi Adaptec RAID Controller Command Line Utility
+sys-block/arcconf 2.01.22270-r1 3.04.23731: Microsemi Adaptec RAID Controller Command Line Utility
 sys-block/blktrace 1.1.0 1.1.0-r1 1.2.0: show detailed info about what is happening on a block device io queue
 sys-block/buffer 1.19-r3: A tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
@@ -17247,8 +17246,8 @@ sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 16.2.0 16.2.1 17.0.1 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
-sys-cluster/corosync 2.3.5 2.4.5 3.1.0: OSI Certified implementation of a complete cluster engine
-sys-cluster/crmsh 3.0.3 4.1.0: Pacemaker command line interface for management and configuration
+sys-cluster/corosync 3.1.0: OSI Certified implementation of a complete cluster engine
+sys-cluster/crmsh 4.2.1: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
@@ -17291,7 +17290,7 @@ sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2020.1.1 2020.1.9999 2020.2.0 2020.2.9999: A openstack meta-package for installing the various openstack pieces
-sys-cluster/pacemaker 1.1.24 2.0.5: Pacemaker CRM
+sys-cluster/pacemaker 2.0.5: Pacemaker CRM
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
 sys-cluster/placement 3.0.0 4.0.0 2020.1.9999 2020.2.9999: A HTTP service for managing, selecting, and claiming cloud resources.
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
@@ -17573,7 +17572,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.256 4.9.256 4.14.219 4.19.173 5.4.95 5.10.13: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.256 4.9.256 4.14.220 4.19.174 5.4.96 5.10.14: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.36: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -18199,7 +18198,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.10 1.20.10-r1 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.138-r5 435.21-r7 440.100-r3 450.80.02-r1 455.45.01-r1 460.27.04: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.138-r5 390.141 435.21-r7 440.100-r3 450.80.02-r1 450.102.04 455.45.01-r1 460.27.04 460.39-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
@@ -18706,7 +18705,7 @@ x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from ann
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.25.0-r1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-skypeweb 1.5 1.7 9999: SkypeWeb Plugin for Pidgin
-x11-plugins/pidgin-telegram 1.4.4 1.4.6: A libpurple protocol plugin that adds support for the Telegram messenger
+x11-plugins/pidgin-telegram 1.4.6: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
