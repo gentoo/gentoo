@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,14 +20,14 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon debug html ipv6 libedit +nettle nss +ntp +phc +nts pps +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html ipv6 libedit +nettle nss +ntp +phc +nts pps +refclock +rtc samba +seccomp +sechash selinux libtomcrypt"
 REQUIRED_USE="
-	sechash? ( || ( nettle nss  ) )
+	sechash? ( || ( nettle nss libtomcrypt ) )
 	nettle? ( !nss )
 	!sechash? ( !nss )
 	!sechash? ( !nts? ( !nettle ) )
 	nts? ( nettle )
-	"
+"
 RESTRICT="test"
 
 BDEPEND="nettle? ( virtual/pkgconfig )"
@@ -110,7 +110,7 @@ src_configure() {
 		$(usex rtc '' --disable-rtc)
 		$(usex samba --enable-ntp-signd '')
 		$(usex sechash '' --disable-sechash)
-		${EXTRA_ECONF}
+		$(usex libtomcrypt '' --disable-tomcrypt)
 		--chronysockdir="${EPREFIX}/run/chrony"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--mandir="${EPREFIX}/usr/share/man"
@@ -118,7 +118,7 @@ src_configure() {
 		--sysconfdir="${EPREFIX}/etc/chrony"
 		--with-hwclockfile="${EPREFIX}/etc/adjtime"
 		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
-		--without-tomcrypt
+		${EXTRA_ECONF}
 	)
 
 	# print the ./configure call
