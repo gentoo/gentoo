@@ -173,10 +173,16 @@ src_install() {
 
 pkg_preinst() {
 	HAD_CAPS=false
+	HAD_SECCOMP=false
 
-	if has_version 'net-misc/chrony[caps]'; then
+	if has_version 'net-misc/chrony[caps]' ; then
 		HAD_CAPS=true
 	fi
+
+	if has_version 'net-misc/chrony[seccomp]' ; then
+		HAD_SECCOMP=true
+	fi
+
 }
 
 pkg_postinst() {
@@ -186,5 +192,12 @@ pkg_postinst() {
 		ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by ntp:ntp"
 		ewarn "e.g. chown -R ntp:ntp ${EROOT}/var/{lib,log}/chrony"
 		ewarn "This is necessary for chrony to drop privileges"
+	fi
+
+	if [[ ! ${HAD_SECCOMP} ]] && use seccomp ; then
+		elog "To enable seccomp in enforcing mode, please modify:"
+		elog "- /etc/conf.d/chronyd for OpenRC"
+		elog "- systemctl edit chronyd for systemd"
+		elog "to use -F 1 or -F -1 instead of -F 0 (see man chronyd)"
 	fi
 }
