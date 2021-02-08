@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Littlewood-Richardson Calculator
+EAPI=7
+HOMEPAGE=https://sites.math.rutgers.edu/~asbuch/lrcalc/
+IUSE=static-libs test
+KEYWORDS=~amd64 ~x86 ~ppc-macos ~x64-macos
+LICENSE=GPL-3+
+RESTRICT=!test? ( test )
+SLOT=0/2
+SRC_URI=https://sites.math.rutgers.edu/~asbuch/lrcalc/lrcalc-2.0.tar.gz
+_md5_=eeb2c6332091444c146f948d7413fa85
