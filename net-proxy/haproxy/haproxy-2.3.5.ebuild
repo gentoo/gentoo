@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 else
 	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
-systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
+IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
+ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
@@ -74,9 +74,7 @@ pkg_setup() {
 src_compile() {
 	local -a args=(
 		V=1
-		TARGET=linux2628
-		USE_GETADDRINFO=1
-		USE_TFO=1
+		TARGET=linux-glibc
 	)
 
 	# TODO: PCRE2_WIDTH?
@@ -85,6 +83,8 @@ src_compile() {
 	args+=( $(haproxy_use net_ns NS) )
 	args+=( $(haproxy_use pcre PCRE) )
 	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
+	args+=( $(haproxy_use pcre2 PCRE2) )
+	args+=( $(haproxy_use pcre2-jit PCRE2_JIT) )
 	args+=( $(haproxy_use ssl OPENSSL) )
 	args+=( $(haproxy_use slz SLZ) )
 	args+=( $(haproxy_use zlib ZLIB) )
@@ -94,16 +94,24 @@ src_compile() {
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
 
-	# For now, until the strict-aliasing breakage will be fixed
-	append-cflags -fno-strict-aliasing
+	# Bug #668002
+	if use ppc || use arm || use hppa; then
+		TARGET_LDFLAGS=-latomic
+	fi
 
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+	if use prometheus-exporter; then
+		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
+	fi
+
+	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" TARGET_LDFLAGS="${TARGET_LDFLAGS}" ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
+			# Those two includes are a workaround for hpack Makefile missing those
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 		done
 	fi
 }
@@ -145,12 +153,12 @@ src_install() {
 	if use examples ; then
 		docinto examples
 		dodoc examples/*.cfg
-		dodoc examples/seamless_reload.txt
+		dodoc doc/seamless_reload.txt
 	fi
 
 	if use vim-syntax ; then
 		insinto /usr/share/vim/vimfiles/syntax
-		doins examples/haproxy.vim
+		doins contrib/syntax-highlight/haproxy.vim
 	fi
 }
 
