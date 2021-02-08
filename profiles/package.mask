@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-08)
+# Abandoned upstream. Was never ported from gtk-2.
+# A possible alternative is media-gfx/geeqie (gqview fork).
+# Removal in 3 months. Bug #769440.
+media-gfx/gqview
+
 # Alexys Jacob <ultrabug@gentoo.org> (2021-02-08)
 # Multiple QA issues, CVE affected, unmaintained for packaging upstream.
 # Removal on 2021-03-08.  Bug #769509
@@ -198,12 +204,6 @@ app-crypt/acme-client
 # (All of which has been bumped to no longer have this dependency.)
 # Removal in 30 days, bug #444470
 dev-libs/ilbc-rfc3951
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
-# Needs a port to haskell-src-exts compatible with ghc-8.8.
-# https://github.com/ndmitchell/derive/pull/37
-dev-haskell/derive
-app-forensics/quickfuzz
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
