@@ -10,11 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag restrict="&gt;dev-libs/tvision-2.2.1-r4" name="gpm">
+		<flag name="gpm">
 			Support text mode mouse through <pkg>sys-libs/gpm</pkg>
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">tvision</remote-id>
+		<remote-id type="github">set-soft/tvision</remote-id>
 	</upstream>
 </pkgmetadata>
