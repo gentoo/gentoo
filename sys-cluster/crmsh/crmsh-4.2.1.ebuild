@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 AUTOTOOLS_AUTORECONF=true
 KEYWORDS=""
@@ -11,7 +11,7 @@ SRC_URI=""
 
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/crmsh/crmsh"
-	inherit git-2
+	inherit git-3
 	S="${WORKDIR}/${PN}-${MY_TREE}"
 else
 	SRC_URI="https://github.com/crmsh/crmsh/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -35,10 +35,11 @@ RDEPEND="${DEPEND}
 	dev-python/lxml[${PYTHON_USEDEP}]"
 
 src_configure() {
-	./autogen.sh
+	./autogen.sh || die
 	econf
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
+	python_foreach_impl python_optimize
 }
