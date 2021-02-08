@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexys Jacob <ultrabug@gentoo.org> (2021-02-08)
+# Multiple QA issues, CVE affected, unmaintained for packaging upstream.
+# Removal on 2021-03-08.  Bug #769509
+app-admin/mms-agent
+
 # Michał Górny <mgorny@gentoo.org> (2021-02-07)
 # Fails tests (and does not seem to test the old installed version
 # at least partially).  Needs further testing.
@@ -159,12 +164,6 @@ x11-misc/rss-glx
 # KF5 PortingAid (from kdelibs4) without any remaining revdeps. Bug #755956
 # Masked for removal in 30 days.
 kde-frameworks/kdesignerplugin
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-01-09)
-# media-sound/patchage used to depend on it but the dependency
-# has been dropped in v1.0.0. There are no other packages in the tree
-# depending on it. Also having issues compiling it. Removal in 30 days.
-media-libs/raul
 
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life

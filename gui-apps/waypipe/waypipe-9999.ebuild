@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,7 +50,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/waypipe-0.7.2-werror.patch
-	"${FILESDIR}"/waypipe-0.7.2-no-simd.patch
 )
 
 src_configure() {

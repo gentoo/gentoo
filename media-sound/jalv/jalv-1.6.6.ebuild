@@ -14,7 +14,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gtk gtk2 gtkmm portaudio qt5"
+IUSE="gtk gtkmm portaudio qt5"
 
 RDEPEND="
 	dev-libs/serd
@@ -24,7 +24,6 @@ RDEPEND="
 	media-libs/sratom
 	media-libs/suil
 	gtk? ( x11-libs/gtk+:3 )
-	gtk2? ( x11-libs/gtk+:2 )
 	gtkmm? ( dev-cpp/gtkmm:2.4 )
 	portaudio? ( media-libs/portaudio )
 	!portaudio? ( virtual/jack )
@@ -41,6 +40,10 @@ BDEPEND="
 "
 DOCS=( AUTHORS NEWS README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-suil-always.patch"
+)
+
 src_configure() {
 	use qt5 && export PATH="$(qt5_get_bindir):${PATH}"
 	waf-utils_src_configure \
@@ -48,7 +51,6 @@ src_configure() {
 		--no-qt4 \
 		$(use qt5       || echo --no-qt5)       \
 		$(use gtk       || echo --no-gtk3)      \
-		$(use gtk2      || echo --no-gtk2)      \
 		$(use gtkmm     || echo --no-gtkmm)     \
 		$(use portaudio && echo --portaudio)
 }

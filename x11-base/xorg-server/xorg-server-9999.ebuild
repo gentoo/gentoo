@@ -84,7 +84,7 @@ CDEPEND="
 		sys-auth/elogind[pam]
 		sys-auth/pambase[elogind]
 	)
-	!!x11-drivers/nvidia-drivers[-libglvnd(-)]
+	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 
 DEPEND="${CDEPEND}
