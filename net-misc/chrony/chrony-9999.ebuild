@@ -188,10 +188,14 @@ pkg_preinst() {
 pkg_postinst() {
 	tmpfiles_process chronyd.conf
 
-	if [[ -n ${REPLACING_VERSIONS} ]] && use caps && ! ${HAD_CAPS}; then
-		ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by ntp:ntp"
-		ewarn "e.g. chown -R ntp:ntp ${EROOT}/var/{lib,log}/chrony"
-		ewarn "This is necessary for chrony to drop privileges"
+	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
+		if use caps && ! ${HAD_CAPS} ; then
+			ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by ntp:ntp"
+			ewarn "e.g. chown -R ntp:ntp ${EROOT}/var/{lib,log}/chrony"
+			ewarn "This is necessary for chrony to drop privileges"
+		elif ! use caps && ! ${HAD_CAPS} ; then
+			ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by root:root"
+		fi
 	fi
 
 	if [[ ! ${HAD_SECCOMP} ]] && use seccomp ; then
