@@ -3,12 +3,12 @@
 
 EAPI="7"
 inherit autotools systemd tmpfiles
-COMMIT=0e270034a00f070e04497e6f085a25d290c0f637
+
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/connman/connman.git"
 else
-	SRC_URI="https://git.kernel.org/pub/scm/network/connman/connman.git/snapshot/connman-${COMMIT}.tar.gz"
+	SRC_URI="https://www.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -46,8 +46,6 @@ RDEPEND=">=dev-libs/glib-2.16
 
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.39"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default
