@@ -17,7 +17,11 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-RDEPEND=">=dev-lang/ocaml-4.02.3"
+RDEPEND="
+	>=dev-lang/ocaml-4.02.3
+	dev-ml/cmdliner:=
+	~dev-ml/opam-format-${PV}
+"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
 
