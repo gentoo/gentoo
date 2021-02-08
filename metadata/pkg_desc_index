@@ -2183,7 +2183,6 @@ app-forensics/magicrescue 1.1.10: Find deleted files in block devices
 app-forensics/memdump 1.01-r1: Simple memory dumper for UNIX-Like systems
 app-forensics/ovaldi 5.10.1.7: Free implementation of OVAL
 app-forensics/pasco 20040505_p1-r1: IE Activity Parser
-app-forensics/quickfuzz 0.1_p20160920 9999: An experimental grammar fuzzer in Haskell using QuickCheck
 app-forensics/radamsa 0.6: A general purpose fuzzer
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
@@ -3960,7 +3959,6 @@ dev-haskell/dbus 1.2.16: A client library for the D-Bus IPC system
 dev-haskell/dec 0.0.3: Decidable propositions
 dev-haskell/deepseq-generics 0.2.0.0: GHC.Generics-based Control.DeepSeq.rnf implementation
 dev-haskell/dense-linear-algebra 0.1.0.0: Simple and incomplete pure haskell implementation of linear algebra
-dev-haskell/derive 2.5.26: A program and library to derive instances for data types
 dev-haskell/deriving-compat 0.5.8: Backports of GHC deriving extensions
 dev-haskell/dictionary-sharing 0.1.0.0: Sharing/memoization of class members
 dev-haskell/diff 0.4.0: O(ND) diff algorithm in haskell
@@ -5061,7 +5059,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.26: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 8.5.61 8.5.63 9.0.41 9.0.43 10.0.2: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 7.0.108 8.5.61 8.5.63 9.0.41 9.0.43 10.0.2: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -15174,7 +15172,7 @@ net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0: IPv6 address calculator
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.5.1 2.6.0: A high-throughput distributed messaging system
+net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.5.1 2.6.0 2.6.1 2.7.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.8.1-r1 1.8.2 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
@@ -17310,7 +17308,7 @@ sys-cluster/ucx 1.2.2-r1 1.3.0 1.5.2: Unified Communication X
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd
-sys-cluster/zookeeper-bin 3.4.13-r1: A high-performance coordination service for distributed applications.
+sys-cluster/zookeeper-bin 3.4.13-r1 3.5.9 3.6.2: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.12: Simple, lightweight, dependable CLI for ZooKeeper
 sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 2.70-r2 2.71-r1 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
@@ -18101,7 +18099,7 @@ www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.107 8.5.61 8.5.63 9.0.41 9.0.43 10.0.2: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
+www-servers/tomcat 7.0.107 7.0.108 8.5.61 8.5.63 9.0.41 9.0.43 10.0.2: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1 2.0.19.1-r100: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
