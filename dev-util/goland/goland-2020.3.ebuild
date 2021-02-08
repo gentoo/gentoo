@@ -55,7 +55,7 @@ src_install() {
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
 	newicon "bin/${PN}.png" "${PN}.png"
-	make_desktop_entry "${PN}" "gogland" "${PN}" "Development;IDE;"
+	make_desktop_entry "${PN}" "goland" "${PN}" "Development;IDE;"
 }
 
 pkg_postinst() {
