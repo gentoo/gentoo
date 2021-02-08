@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop multilib
+inherit desktop findlib
 
 MY_PV=${PV/_p/pl}
 MY_P=${PN}-${MY_PV}
@@ -11,24 +11,26 @@ MY_P=${PN}-${MY_PV}
 DESCRIPTION="Proof assistant written in O'Caml"
 HOMEPAGE="http://coq.inria.fr/"
 SRC_URI="https://github.com/coq/coq/archive/V${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk debug +ocamlopt doc"
 
-RESTRICT=test
+RESTRICT="test"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.11.0:=[ocamlopt?]
-	dev-ml/camlp5:=[ocamlopt?]
-	dev-ml/num:=
+	dev-ml/zarith
+	|| (
+		dev-ml/num
+		<dev-lang/ocaml-4.09.0[ocamlopt?]
+	)
 	gtk? (
 		dev-ml/lablgtk:3=[sourceview,ocamlopt?]
 		dev-ml/lablgtk-sourceview:3=[ocamlopt?]
-		)"
+	)"
 DEPEND="${RDEPEND}
-	dev-ml/findlib
 	doc? (
 		media-libs/netpbm[png,zlib]
 		virtual/latex-base
@@ -38,8 +40,6 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-mathscience
 		dev-texlive/texlive-latexextra
 		)"
-
-S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	ocaml_lib=$(ocamlc -where)
@@ -51,7 +51,7 @@ src_configure() {
 		-coqdocdir /usr/$(get_libdir)/coq/coqdoc
 		-docdir /usr/share/doc/${PF}
 		-configdir /etc/xdg/${PN}
-		)
+	)
 
 	use debug && myconf+=( -debug )
 	use doc || myconf+=( -with-doc no )
