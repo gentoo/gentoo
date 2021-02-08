@@ -1,32 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit dune
 
-DESCRIPTION="opam solver"
+DESCRIPTION="opam state libraries"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="+ocamlopt test"
-RESTRICT="!test? ( test )"
+IUSE="+ocamlopt"
 
 RDEPEND="
-	dev-ml/opam-format:=
-		dev-ml/opam-file-format:=
-		dev-ml/re:=
-	>=dev-ml/mccs-1.1.4:=
-	dev-ml/dose3:=
-	dev-ml/cudf:=
+	~dev-ml/opam-repository-${PV}:=
+	dev-ml/re:=
+	dev-ml/opam-file-format:=
 "
-DEPEND="${RDEPEND}
-	test? ( dev-ml/opam-client )"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/opam-${PV/_/-}"
+RESTRICT="test"
 
 src_prepare() {
 	default

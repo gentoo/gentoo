@@ -1,30 +1,31 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit dune
 
-DESCRIPTION="A source-based package manager for OCaml"
-HOMEPAGE="http://opam.ocaml.org/"
+DESCRIPTION="opam solver"
+HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
-LICENSE="LGPL-2.1-with-linking-exception"
+S="${WORKDIR}/opam-${PV/_/-}"
+
+LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-ml/cmdliner:=
-	dev-ml/cudf:=
-	dev-ml/dose3:=
-	dev-ml/extlib:=
-	dev-ml/opam-client:=
+	~dev-ml/opam-format-${PV}:=
 	dev-ml/opam-file-format:=
-	dev-ml/re:="
-
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/opam-${PV/_/-}"
+	dev-ml/re:=
+	>=dev-ml/mccs-1.1.4:=
+	dev-ml/dose3:=
+	dev-ml/cudf:=
+"
+DEPEND="${RDEPEND}
+	test? ( dev-ml/opam-client )"
 
 src_prepare() {
 	default

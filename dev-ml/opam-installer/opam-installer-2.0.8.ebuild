@@ -6,24 +6,24 @@ EAPI=7
 # We are opam
 OPAM_INSTALLER_DEP=" "
 OPAM_SKIP_VALIDATION=yes
-
 inherit opam
 
 DESCRIPTION="Core installer for opam packages"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/releases/download/${PV}/opam-full-${PV}.tar.gz"
+S="${WORKDIR}/opam-full-${PV/_/-}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
-RDEPEND=">=dev-lang/ocaml-4.02.3"
+RDEPEND="
+	>=dev-lang/ocaml-4.02.3
+	dev-ml/cmdliner:=
+	~dev-ml/opam-format-${PV}
+"
 DEPEND="${RDEPEND}
 	dev-ml/findlib"
-
-S="${WORKDIR}/opam-full-${PV/_/-}"
-OPAM_INSTALLER="${S}/opam-installer"
 
 src_configure() {
 	econf \

@@ -1,29 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit dune
 
-DESCRIPTION="opam repository libraries"
+DESCRIPTION="opam state libraries"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
+S="${WORKDIR}/opam-${PV/_/-}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
+RESTRICT="test"
 
 RDEPEND="
-	dev-ml/opam-format:=
-		dev-ml/re:=
-	dev-ml/dose3:=
+	dev-ml/re:=
 	dev-ml/opam-file-format:=
+	~dev-ml/opam-repository-${PV}:=
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/opam-${PV/_/-}"
-RESTRICT="test"
 
 src_prepare() {
 	default
