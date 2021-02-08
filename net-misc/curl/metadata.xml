@@ -26,6 +26,7 @@
 		<flag name="smtp">Enable Simple Mail Transfer Protocol support</flag>
 		<flag name="ssh">Enable SSH urls in curl using libssh2</flag>
 		<flag name="ssl">Enable crypto engine support (via openssl if USE='-gnutls -nss')</flag>
+		<flag name="sslv3">Support for the old/insecure SSLv3 protocol</flag>
 		<flag name="telnet">Enable Telnet protocol support</flag>
 		<flag name="tftp">Enable TFTP support</flag>
 		<flag name="winssl">Enable winssl ssl backend</flag>
