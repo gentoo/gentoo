@@ -35,6 +35,7 @@
 		<flag name="refclock">Support for reference clocks</flag>
 		<flag name="rtc">Support for the Linux Real Time Clock interface</flag>
 		<flag name="sechash">Enable support for hashes other than MD5</flag>
+		<flag name="libtomcrypt">Support different hashes via <pkg>dev-libs/libtomcrypt</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:chrony_project:chrony</remote-id>
