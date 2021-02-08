@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc6.patch"
 	"${FILESDIR}/${P}-flags.patch"
 	"${FILESDIR}/${P}-fix-overloaded-abs.patch"
+	"${FILESDIR}/${P}-Gentoo-specific-fix-linker-paths.patch"
 )
 
 src_configure() {
@@ -62,7 +63,6 @@ src_install() {
 		libdir="\$(prefix)/$(get_libdir)"
 
 	einstalldocs
-	dosym rhtvision /usr/include/tvision
 
 	# remove CVS directory which gets copied over
 	rm -r "${ED}/usr/share/doc/${P}/html/CVS" || die
