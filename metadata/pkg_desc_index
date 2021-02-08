@@ -2036,7 +2036,7 @@ app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focus
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.23.0 0.23.1 0.24.1: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.5.22 2.5.24: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.20 2.5.22 2.5.24 2.5.25: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
@@ -8562,7 +8562,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.11: Python to native compiler
 dev-python/numexpr 2.7.2 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.4 1.19.5: Fast array and numerical python library
+dev-python/numpy 1.19.4 1.19.5 1.20.1: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
 dev-python/oauth2client 4.1.3-r1: Library for accessing resources protected by OAuth 2.0
@@ -15231,7 +15231,7 @@ net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p15: Network Time Protocol suite/programs
 net-misc/ntpsec 1.1.9 1.2.0 9999: The NTP reference implementation, refactored
-net-misc/nx 3.5.99.25: NX compression technology core libraries
+net-misc/nx 3.5.99.25 3.5.99.26: NX compression technology core libraries
 net-misc/nxplayer 5.1.24.1: Client for NoMachine remote servers
 net-misc/nyx 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.31: Open Source mobile telephony (GSM/UMTS) daemon
@@ -17555,10 +17555,10 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.4.95 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1 5.10.13: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.4.95 5.4.96 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1 5.10.13 5.10.14: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.4.255 4.4.256 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.9.255 4.9.256 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.14.219 4.14.220 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 4.19.173 4.19.174 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Full sources including the Gentoo patchset for the 5.10 kernel tree
-sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6 5.11_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
@@ -17571,7 +17571,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.1
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.256 4.9.256 4.14.219 4.19.173 5.4.95 5.10.13: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17752,7 +17752,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
@@ -17962,7 +17962,7 @@ www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for pr
 www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
 www-apps/bugzilla 5.0.6-r1: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
-www-apps/cgit 1.2.3-r100 9999: a fast web-interface for git repositories
+www-apps/cgit 1.2.3-r100 1.2.3-r200 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20190510-r1: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/chromedriver-bin 88.0.4324.96: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree

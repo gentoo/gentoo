@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 alsa? ( media-libs/alsa-lib )
+DESCRIPTION=An HP-42S Calculator Simulator
+EAPI=7
+HOMEPAGE=https://thomasokken.com/free42/
+IUSE=+alsa
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 alsa? ( media-libs/alsa-lib )
+SLOT=0
+SRC_URI=https://thomasokken.com/free42/upstream/free42-nologo-2.5.25.tgz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=01ba79849eed4a182cbed17e2faafe04
