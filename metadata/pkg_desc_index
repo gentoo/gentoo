@@ -5791,7 +5791,7 @@ dev-lua/mpack 1.0.8-r100: Lua bindings for libmpack
 dev-lua/penlight 1.9.2-r101: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
-dev-ml/alcotest 0.8.2: A lightweight and colourful test framework
+dev-ml/alcotest 0.8.2 1.2.3: A lightweight and colourful test framework
 dev-ml/astring 0.8.3 0.8.5: Alternative String module for OCaml
 dev-ml/async 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (extra)
@@ -5910,15 +5910,15 @@ dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from st
 dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
 dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.7.10 0.9.1: OCaml interface to the libcurl library
-dev-ml/opam 1.3.1-r1 2.0.7 2.0.8: A source-based package manager for OCaml
-dev-ml/opam-client 2.0.7: opam client libraries
-dev-ml/opam-core 2.0.7: Core libraries for opam
-dev-ml/opam-file-format 2.1.0: Parser and printer for the opam file syntax
-dev-ml/opam-format 2.0.7: Core libraries for opam
-dev-ml/opam-installer 2.0.7: Core installer for opam packages
-dev-ml/opam-repository 2.0.7: opam repository libraries
-dev-ml/opam-solver 2.0.7: opam solver
-dev-ml/opam-state 2.0.7: opam state libraries
+dev-ml/opam 1.3.1-r1 2.0.7-r1 2.0.8-r1: A source-based package manager for OCaml
+dev-ml/opam-client 2.0.7-r1 2.0.8: opam client libraries
+dev-ml/opam-core 2.0.7 2.0.8: Core libraries for opam
+dev-ml/opam-file-format 2.1.0 2.1.2: Parser and printer for the opam file syntax
+dev-ml/opam-format 2.0.7-r1 2.0.8: Core libraries for opam
+dev-ml/opam-installer 2.0.7-r1 2.0.8: Core installer for opam packages
+dev-ml/opam-repository 2.0.7-r1 2.0.8: opam repository libraries
+dev-ml/opam-solver 2.0.7-r1 2.0.8: opam solver
+dev-ml/opam-state 2.0.7-r1 2.0.8: opam state libraries
 dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 2.0.6: Unit testing framework for OCaml
 dev-ml/ounit2 2.2.3 2.2.4: Unit testing framework for OCaml

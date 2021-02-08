@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=test? ( dev-ml/alcotest ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Parser and printer for the opam file syntax
+EAPI=7
+HOMEPAGE=https://github.com/ocaml/opam-file-format
+IUSE=+ocamlopt test
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
+SLOT=0/2.1.2
+SRC_URI=https://github.com/ocaml/opam-file-format/archive/2.1.2.tar.gz -> opam-file-format-2.1.2.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=c5b354130d0ca3639dcd6d0a4b38202d
