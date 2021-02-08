@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # No EAPI=7 support in wxwidgets.eclass.
-EAPI=6
+EAPI=7
 
 inherit wxwidgets
 
@@ -29,11 +29,11 @@ IUSE=""
 DEPEND="app-text/poppler[cairo]
 	dev-libs/glib
 	x11-libs/cairo
-	x11-libs/wxGTK:3.0[X]"
+	x11-libs/wxGTK:3.0-gtk3[X]"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	WX_GTK_VER="3.0"
+	WX_GTK_VER="3.0-gtk3"
 	setup-wxwidgets
 	default
 }
