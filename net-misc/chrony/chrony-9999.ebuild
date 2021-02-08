@@ -21,9 +21,12 @@ S="${WORKDIR}/${P/_/-}"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+caps +cmdmon debug html ipv6 libedit +nettle nss +ntp +phc +nts pps +refclock +rtc samba +seccomp +sechash selinux libtomcrypt"
+# nettle > nss > libtomcrypt in configure
 REQUIRED_USE="
 	sechash? ( || ( nettle nss libtomcrypt ) )
 	nettle? ( !nss )
+	nss? ( !nettle )
+	libtomcrypt? ( !nettle !nss )
 	!sechash? ( !nss )
 	!sechash? ( !nts? ( !nettle ) )
 	nts? ( nettle )
