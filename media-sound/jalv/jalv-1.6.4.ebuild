@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="gtk gtk2 gtkmm portaudio qt5"
+IUSE="gtk gtkmm portaudio qt5"
 
 RDEPEND="
 	>=dev-libs/serd-0.24.0
@@ -24,7 +24,6 @@ RDEPEND="
 	>=media-libs/sratom-0.6.0
 	>=media-libs/suil-0.10.0
 	gtk? ( >=x11-libs/gtk+-3.0.0:3 )
-	gtk2? ( >=x11-libs/gtk+-2.18.0:2 )
 	gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 )
 	portaudio? ( media-libs/portaudio )
 	!portaudio? ( virtual/jack )
@@ -50,7 +49,6 @@ src_configure() {
 		--no-qt4 \
 		$(use qt5       || echo --no-qt5)       \
 		$(use gtk       || echo --no-gtk3)      \
-		$(use gtk2      || echo --no-gtk2)      \
 		$(use gtkmm     || echo --no-gtkmm)     \
 		$(use portaudio && echo --portaudio)
 }
