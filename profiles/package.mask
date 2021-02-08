@@ -50,7 +50,6 @@ app-office/orage
 xfce-extra/multiload-nandhp
 xfce-extra/xfce4-embed-plugin
 xfce-extra/xfce4-equake-plugin
-xfce-extra/xfce4-hdaps
 xfce-extra/xfce4-kbdleds-plugin
 xfce-extra/xfce4-windowck-plugin
 
