@@ -1,9 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/musl
 sys-libs/glibc
 sys-libs/pam
+
+# David Seifert <soap@gentoo.org> (2021-02-08)
+# nvidia-drivers only works against glibc.
+x11-drivers/nvidia-drivers
 
 # Version 8.31 is broken on uclibc, but not 8.30 or 8.32
 ~sys-apps/coreutils-8.31
