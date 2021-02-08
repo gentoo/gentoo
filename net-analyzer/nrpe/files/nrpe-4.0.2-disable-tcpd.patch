@@ -1,0 +1,62 @@
+Stripped ./configure portion for Gentoo, instead relying on eautoreconf.
+
+From 8bce40cff68c0a7d88b465eb345267ad5176461a Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@iewc.co.za>
+Date: Mon, 8 Feb 2021 17:07:30 +0200
+Subject: [PATCH] Patch to allow passing --enable-tcpd or --disable-tcpd.
+
+If passing --enable-tcpd and libwrap is not available, ./configure will
+fail.
+
+If passing --disable-tcpd, libwrap will be completely ignore.
+
+If not passed, current behaviour still applies.
+
+Signed-off-by: Jaco Kroon <jaco@iewc.co.za>
+---
+ configure.ac | 28 +++++++++++++++++++++++-----
+ 2 files changed, 52 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3981bb0..e3c1a15 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -237,12 +237,30 @@ AC_CHECK_FUNCS([getopt_long],,AC_CHECK_LIB([iberty],[getopt_long],OTHERLIBS="$OT
+ dnl Checks for library functions.
+ AC_CHECK_LIB(nsl,main,SOCKETLIBS="$SOCKETLIBS -lnsl")
+ AC_CHECK_LIB(socket,socket,SOCKETLIBS="$SOCKETLIBS -lsocket")
+-AC_CHECK_LIB(wrap,main,[
+-	LIBWRAPLIBS="$LIBWRAPLIBS -lwrap"
+-	AC_DEFINE(HAVE_LIBWRAP,[1],[Have the TCP wrappers library])
+-	AC_TRY_LINK([#include <tcpd.h>
+-		],[int a = rfc931_timeout;],AC_DEFINE(HAVE_RFC931_TIMEOUT))
++
++AC_ARG_ENABLE([tcpd],
++	AS_HELP_STRING([--disable-tcpd],[disables support for tcpd even if present]),[
++	if test x$enableval = xyes; then
++		check_for_tcpd=yes
++	else
++		check_for_tcpd=no
++	fi
++	],check_for_tcpd=optional)
++
++AC_MSG_CHECKING(check_for_tcpd=$check_for_tcpd)
++if test x$check_for_tcpd != xno; then
++	AC_CHECK_LIB(wrap,main,[
++		LIBWRAPLIBS="$LIBWRAPLIBS -lwrap"
++		AC_DEFINE(HAVE_LIBWRAP,[1],[Have the TCP wrappers library])
++		AC_TRY_LINK([#include <tcpd.h>
++			],[int a = rfc931_timeout;],AC_DEFINE(HAVE_RFC931_TIMEOUT))
++	],[
++		if test x$check_for_tcpd = xyes; then
++			AC_MSG_ERROR(--enable-tcpd specified but unable to locate libwrap.)
++		fi
+ 	])
++fi
++
+ AC_CHECK_FUNCS(strdup strstr strtoul strtok_r initgroups closesocket sigaction scandir)
+ 
+ dnl socklen_t check - from curl
+-- 
+2.26.2
+
