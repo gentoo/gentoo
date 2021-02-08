@@ -17,7 +17,7 @@ IUSE="bash-completion dbus ldap policykit static-libs systemd"
 REQUIRED_USE="policykit? ( dbus )"
 
 CDEPEND="
-	dev-libs/pegtl
+	<dev-libs/pegtl-3
 	>=dev-libs/libsodium-0.4.5:=
 	>=dev-libs/protobuf-2.5.0:=
 	>=sys-cluster/libqb-0.16.0:=

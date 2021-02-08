@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ IUSE="bash-completion dbus ldap policykit systemd"
 REQUIRED_USE="policykit? ( dbus )"
 
 CDEPEND="
-	dev-libs/pegtl
+	<dev-libs/pegtl-3
 	>=dev-libs/libsodium-0.4.5:=
 	>=dev-libs/protobuf-2.5.0:=
 	>=sys-cluster/libqb-0.16.0:=
