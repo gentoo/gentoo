@@ -5,7 +5,6 @@ EAPI=7
 
 # We are opam
 OPAM_INSTALLER_DEP=" "
-#OPAM_INSTALLER="${S}/opam-installer"
 inherit dune
 
 DESCRIPTION="Core libraries for opam"
