@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=dev-ml/zarith || ( dev-ml/num <dev-lang/ocaml-4.09.0[ocamlopt?] ) gtk? ( dev-ml/lablgtk:3=[sourceview,ocamlopt?] dev-ml/lablgtk-sourceview:3=[ocamlopt?] ) doc? ( media-libs/netpbm[png,zlib] virtual/latex-base dev-tex/hevea dev-texlive/texlive-latexrecommended dev-texlive/texlive-pictures dev-texlive/texlive-mathscience dev-texlive/texlive-latexextra ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Proof assistant written in O'Caml
+EAPI=7
+HOMEPAGE=http://coq.inria.fr/
+IUSE=gtk debug +ocamlopt doc
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-ml/zarith || ( dev-ml/num <dev-lang/ocaml-4.09.0[ocamlopt?] ) gtk? ( dev-ml/lablgtk:3=[sourceview,ocamlopt?] dev-ml/lablgtk-sourceview:3=[ocamlopt?] )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/coq/coq/archive/V8.13.0.tar.gz -> coq-8.13.0.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	findlib	9674d5e3d151793fecab20e2bb73e6c6
+_md5_=fe020940e6d28a9f5b56f25fd781902c
