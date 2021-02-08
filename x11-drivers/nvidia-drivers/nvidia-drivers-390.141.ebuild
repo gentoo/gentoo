@@ -464,3 +464,7 @@ pkg_postinst() {
 		elog
 	fi
 }
+
+pkg_postrm() {
+	use driver && linux-mod_pkg_postrm
+}
