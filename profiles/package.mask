@@ -205,12 +205,6 @@ app-crypt/acme-client
 # Removal in 30 days, bug #444470
 dev-libs/ilbc-rfc3951
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-12-20)
-# Needs a port to haskell-src-exts compatible with ghc-8.8.
-# https://github.com/ndmitchell/derive/pull/37
-dev-haskell/derive
-app-forensics/quickfuzz
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
