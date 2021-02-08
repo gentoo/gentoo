@@ -41,6 +41,10 @@ BDEPEND="
 "
 DOCS=( AUTHORS NEWS README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-suil-always.patch"
+)
+
 src_configure() {
 	use qt5 && export PATH="$(qt5_get_bindir):${PATH}"
 	waf-utils_src_configure \
