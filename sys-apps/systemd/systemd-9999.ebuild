@@ -1,4 +1,4 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,8 +31,9 @@ SLOT="0/2"
 IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb +zstd"
 
 REQUIRED_USE="
-	homed? ( cryptsetup )
+	homed? ( cryptsetup pam )
 	importd? ( curl gcrypt lzma )
+	pwquality? ( homed )
 "
 RESTRICT="!test? ( test )"
 

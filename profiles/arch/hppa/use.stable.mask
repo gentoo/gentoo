@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Rolf Eike Beer <eike@sf-mail.de> (2021-02-08)
+# dev-lang/lua:5.2 not stable on hppa
+lua_single_target_lua5-2
+
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-db/postgresql is not stable on hppa
 postgres
