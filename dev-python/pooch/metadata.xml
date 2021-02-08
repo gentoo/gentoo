@@ -10,6 +10,8 @@
         with support for versioning and corruption checks.
     </longdescription>
     <upstream>
+        <bugs-to>https://github.com/fatiando/pooch/issues</bugs-to>
+        <doc>https://www.fatiando.org/pooch/</doc>
         <remote-id type="github">fatiando/pooch</remote-id>
         <remote-id type="pypi">pooch</remote-id>
     </upstream>
