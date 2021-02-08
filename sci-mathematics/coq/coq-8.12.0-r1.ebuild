@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,13 +20,15 @@ IUSE="gtk debug +ocamlopt doc"
 RESTRICT=test
 
 RDEPEND="
-	>=dev-lang/ocaml-4.11.0:=[ocamlopt?]
 	dev-ml/camlp5:=[ocamlopt?]
-	dev-ml/num:=
+	|| (
+		dev-ml/num
+		<dev-lang/ocaml-4.09.0[ocamlopt?]
+	)
 	gtk? (
 		dev-ml/lablgtk:3=[sourceview,ocamlopt?]
 		dev-ml/lablgtk-sourceview:3=[ocamlopt?]
-		)"
+	)"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	doc? (
