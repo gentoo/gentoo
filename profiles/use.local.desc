@@ -6273,9 +6273,13 @@ net-misc/cgminer:modminer - Enable support for mining with ModMiner FPGAs
 net-misc/cgminer:sp10 - Enable support for Spondoolies SP10
 net-misc/cgminer:sp30 - Enable support for Spondoolies SP30
 net-misc/chrony:cmdmon - Support for command and monitoring
+net-misc/chrony:debug - Get DEBUG_LOG output from chronyd when passing -dd parameter
 net-misc/chrony:html - Install HTML documentation
-net-misc/chrony:nettle - Use dev-libs/nettle for hash functions
+net-misc/chrony:libtomcrypt - Support different hashes via dev-libs/libtomcrypt
+net-misc/chrony:nettle - Use dev-libs/nettle for hash functions or nts
+net-misc/chrony:nss - Use dev-libs/nss for hash functions
 net-misc/chrony:ntp - Support for the Network Time Protocol (NTP)
+net-misc/chrony:nts - Support for Network Time Security (NTS). Uses net-libs/gnutls
 net-misc/chrony:phc - Support for the PTP (Precision Time Protocol) Hardware Clock (PHC) interface
 net-misc/chrony:pps - Support for the Linux Pulse Per Second (PPS) interface
 net-misc/chrony:refclock - Support for reference clocks

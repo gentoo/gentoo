@@ -9,4 +9,4 @@ LICENSE=Boost-1.0
 SLOT=0/8
 SRC_URI=https://www.cryptopp.com/cryptopp820.zip
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=993a5df663762bf85cd7e95c559dc75e
+_md5_=73881dd595f5ebcc7db972300a1168ac

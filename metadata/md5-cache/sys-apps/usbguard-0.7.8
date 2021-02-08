@@ -1,15 +1,15 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=dev-libs/pegtl >=dev-libs/libsodium-0.4.5:= >=dev-libs/protobuf-2.5.0:= >=sys-cluster/libqb-0.16.0:= sys-devel/gcc:*[cxx] >=sys-libs/libcap-ng-0.7.0 >=sys-libs/libseccomp-2.0.0 >=sys-process/audit-2.7.7 bash-completion? ( >=app-shells/bash-completion-2.0 ) dbus? ( dev-libs/glib:2 sys-apps/dbus policykit? ( sys-auth/polkit[introspection] ) ) ldap? ( net-nds/openldap ) systemd? ( sys-apps/systemd ) app-text/asciidoc dev-cpp/catch:1 dbus? ( dev-libs/libxml2 dev-libs/libxslt dev-util/gdbus-codegen )
+DEPEND=<dev-libs/pegtl-3 >=dev-libs/libsodium-0.4.5:= >=dev-libs/protobuf-2.5.0:= >=sys-cluster/libqb-0.16.0:= sys-devel/gcc:*[cxx] >=sys-libs/libcap-ng-0.7.0 >=sys-libs/libseccomp-2.0.0 >=sys-process/audit-2.7.7 bash-completion? ( >=app-shells/bash-completion-2.0 ) dbus? ( dev-libs/glib:2 sys-apps/dbus policykit? ( sys-auth/polkit[introspection] ) ) ldap? ( net-nds/openldap ) systemd? ( sys-apps/systemd ) app-text/asciidoc dev-cpp/catch:1 dbus? ( dev-libs/libxml2 dev-libs/libxslt dev-util/gdbus-codegen )
 DESCRIPTION=Daemon protecting your computer against BadUSB
 EAPI=7
 HOMEPAGE=https://github.com/USBGuard/usbguard
 IUSE=bash-completion dbus ldap policykit static-libs systemd
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=dev-libs/pegtl >=dev-libs/libsodium-0.4.5:= >=dev-libs/protobuf-2.5.0:= >=sys-cluster/libqb-0.16.0:= sys-devel/gcc:*[cxx] >=sys-libs/libcap-ng-0.7.0 >=sys-libs/libseccomp-2.0.0 >=sys-process/audit-2.7.7 bash-completion? ( >=app-shells/bash-completion-2.0 ) dbus? ( dev-libs/glib:2 sys-apps/dbus policykit? ( sys-auth/polkit[introspection] ) ) ldap? ( net-nds/openldap ) systemd? ( sys-apps/systemd ) virtual/udev
+RDEPEND=<dev-libs/pegtl-3 >=dev-libs/libsodium-0.4.5:= >=dev-libs/protobuf-2.5.0:= >=sys-cluster/libqb-0.16.0:= sys-devel/gcc:*[cxx] >=sys-libs/libcap-ng-0.7.0 >=sys-libs/libseccomp-2.0.0 >=sys-process/audit-2.7.7 bash-completion? ( >=app-shells/bash-completion-2.0 ) dbus? ( dev-libs/glib:2 sys-apps/dbus policykit? ( sys-auth/polkit[introspection] ) ) ldap? ( net-nds/openldap ) systemd? ( sys-apps/systemd ) virtual/udev
 REQUIRED_USE=policykit? ( dbus )
 SLOT=0
 SRC_URI=https://github.com/USBGuard/usbguard/releases/download/usbguard-0.7.8/usbguard-0.7.8.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=9c74c8b4ba497f18a7425f9c42446795
+_md5_=8d5fc419ad60e4942c92820e12b3b624
