@@ -5745,12 +5745,12 @@ dev-lisp/clisp 2.49.92: A portable, bytecode-compiled implementation of Common L
 dev-lisp/clozurecl 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
 dev-lisp/clx 0.7.5: CLX is the Common Lisp interface to the X11 protocol primarily for SBCL.
 dev-lisp/cmucl 21c: CMU Common Lisp is an implementation of ANSI Common Lisp
-dev-lisp/ecls 16.1.3 20.4.24: ECL is an embeddable Common Lisp implementation
+dev-lisp/ecls 16.1.3 20.4.24 21.2.1: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.12: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/roswell 20.01.14.104 20.04.14.105 20.05.14.106: A lisp installer and launcher for major environment
-dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11 2.1.0: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11 2.1.0 2.1.1: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.2-r102: Bit Operations Library for the Lua Programming Language
@@ -8659,7 +8659,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 1.18.0 2.2.0-r1 2.3.0 2.4.0 2.5.0 2.5.1 2.5.2: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.5.2: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.0: Python Imaging Library (fork)
 dev-python/pip 20.3.3 21.0 21.0.1: Installs python packages -- replacement for easy_install
@@ -8773,7 +8773,7 @@ dev-python/pyglet 1.5.13 1.5.14: Cross-platform windowing and multimedia library
 dev-python/pygments 2.7.4: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
-dev-python/pygpgme 0.3-r2: A Python wrapper for the GPGME library
+dev-python/pygpgme 0.3-r2 0.3-r3: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
@@ -12764,7 +12764,7 @@ media-fonts/x11fonts-jmk 3.0-r3 3.0-r4: This package contains character-cell fon
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
-media-gfx/ahoviewer 1.6.5-r2: A GTK2 image viewer, manga reader, and booru browser
+media-gfx/ahoviewer 1.6.5-r3: A GTK2 image viewer, manga reader, and booru browser
 media-gfx/album 4.13-r2 4.15-r1: HTML photo album generator
 media-gfx/alembic 1.7.12 1.7.16: Open framework for storing and sharing scene data
 media-gfx/apng2gif 1.8: create a GIF from an APNG
@@ -15110,7 +15110,7 @@ net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLN
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.80-r2 2020.81-r2: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 114.4.426 115.4.601: Dropbox daemon (pretends to be GUI-less)
-net-misc/dropbox-cli 2020.03.04: Cli interface for dropbox (python), part of nautilus-dropbox
+net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
@@ -16459,7 +16459,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019-r2: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 20.12.2: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 20.12.2 21.01.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.8.9 4.8.10: An efficient theorem prover
@@ -17501,7 +17501,7 @@ sys-fs/lsscsi 0.31: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.11: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 4.0.6 4.0.7: FUSE filesystem for LXC
+sys-fs/lxcfs 4.0.7: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0 2.32.0 2.32.1 2.32.2: A featureful union filesystem
@@ -17704,7 +17704,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
-sys-process/evisum 0.5.8 0.5.9 0.5.10: System and process monitor written with EFL
+sys-process/evisum 0.5.9 0.5.10: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
