@@ -15,11 +15,10 @@ SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.ta
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="
-	dev-ml/opam-core:=
-		dev-ml/re:=
+	~dev-ml/opam-core-${PV}:=
+	dev-ml/re:=
 	dev-ml/opam-file-format:=
 "
 DEPEND="${RDEPEND}
