@@ -15,11 +15,12 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	dev-ml/cmdliner:=
+	~dev-ml/opam-repository-${PV}:=
 	~dev-ml/opam-state-${PV}:=
+	~dev-ml/opam-solver-${PV}:=
 	dev-ml/opam-file-format:=
 	dev-ml/re:=
-	~dev-ml/opam-solver-${PV}:=
-	dev-ml/cmdliner:=
 "
 DEPEND="${RDEPEND}"
 
