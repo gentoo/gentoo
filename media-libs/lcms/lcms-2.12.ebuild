@@ -43,5 +43,5 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name "*.la" -delete || die
 
-	use doc && dodoc doc/*.odt
+	use doc && dodoc doc/*.pdf
 }
