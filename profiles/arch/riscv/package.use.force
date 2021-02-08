@@ -1,0 +1,6 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# we, kinda, need this on riscv ...
+sys-devel/llvm llvm_targets_RISCV
+sys-devel/clang llvm_targets_RISCV
