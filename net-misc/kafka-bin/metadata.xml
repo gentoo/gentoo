@@ -6,5 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="internal-zookeeper">Use bundled local zookeeper instance</flag>
+		<flag name="connect">Install init for Kafka Connect Distributed mode</flag>
 	</use>
 </pkgmetadata>
