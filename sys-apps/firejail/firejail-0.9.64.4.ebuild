@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit toolchain-funcs python-single-r1 linux-info
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SRC_URI="https://github.com/netblue30/${PN}/releases/download/${PV}/${P}.tar.xz"
 else
 	inherit git-r3
@@ -51,6 +51,11 @@ src_prepare() {
 
 	if use contrib; then
 		python_fix_shebang -f contrib/*.py
+	fi
+
+	# some tests were missing from this release's tarball
+	if use test; then
+		sed -i -r -e 's/^(test:.*) test-private-lib (.*)/\1 \2/; s/^(test:.*) test-fnetfilter (.*)/\1 \2/' Makefile.in || die
 	fi
 }
 
