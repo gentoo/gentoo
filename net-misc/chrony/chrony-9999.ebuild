@@ -6,7 +6,7 @@ EAPI=7
 inherit systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
-HOMEPAGE="https://chrony.tuxfamily.org/"
+HOMEPAGE="https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git"
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
