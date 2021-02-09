@@ -11,13 +11,6 @@ media-libs/openal sndio
 # bug #766186
 dev-util/ragel doc
 
-# Sam James <sam@gentoo.org> (2021-01-19)
-# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
-# Test-dep needs keywording on multiple arches, best to just mask it
-# globally for now. Resolves issue by b5248bbb1b5
-# bug #766147
-app-text/enchant test
-
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and
 # dev-tex/pythontex which are not keyworded on ppc.
