@@ -32,7 +32,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-08)
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-02-08)
 # Abandoned upstream. Was never ported from gtk-2.
 # A possible alternative is media-gfx/geeqie (gqview fork).
 # Removal in 3 months. Bug #769440.
