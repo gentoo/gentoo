@@ -79,8 +79,6 @@ src_install() {
 	else
 		into /
 		newsbin static ebtables
-		insinto /etc
-		doins ethertypes
 	fi
 
 	newman ebtables-legacy.8 ebtables.8
