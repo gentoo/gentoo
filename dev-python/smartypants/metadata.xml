@@ -6,7 +6,9 @@
 	<name>Steve Arnold</name>
 </maintainer>
 <longdescription lang="en">
-	smartypants is a Python fork of SmartyPants (wha?)
+	smartypants does transformations of plain old ASCII straight quotes,
+	plain dashes, and plain dots, into smart quotes, em-dashes, and
+	proper ellipses.
 </longdescription>
 <upstream>
 	<remote-id type="pypi">smartypants</remote-id>
