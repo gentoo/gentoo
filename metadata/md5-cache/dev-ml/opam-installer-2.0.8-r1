@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/ocaml-4.02.3 dev-ml/cmdliner:= ~dev-ml/opam-format-2.0.8 >=de
 SLOT=0/2.0.8
 SRC_URI=https://github.com/ocaml/opam/releases/download/2.0.8/opam-full-2.0.8.tar.gz
 _eclasses_=opam	b4de444efce371928602cbf4cd91307e
-_md5_=f3804c2b8b1e61decde6f37d6c08b7a9
+_md5_=72329a603faf9f87cbea9f87a8e9e273

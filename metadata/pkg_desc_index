@@ -779,7 +779,7 @@ app-admin/xkcdpass 1.17.3-r1 1.17.6: Password generator inspired by XKCD 936
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.102.4 0.103.0-r2: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.102.4 0.103.1: Clam Anti-Virus Scanner
 app-antivirus/clamtk 6.06 6.07: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.2.0-r1 1.3.0: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
@@ -5914,10 +5914,10 @@ dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.7.10 0.9.1: OCaml interface to the libcurl library
 dev-ml/opam 1.3.1-r1 2.0.7-r1 2.0.8-r1: A source-based package manager for OCaml
 dev-ml/opam-client 2.0.7-r1 2.0.8: opam client libraries
-dev-ml/opam-core 2.0.7 2.0.8: Core libraries for opam
+dev-ml/opam-core 2.0.7 2.0.8-r1: Core libraries for opam
 dev-ml/opam-file-format 2.1.0 2.1.2: Parser and printer for the opam file syntax
-dev-ml/opam-format 2.0.7-r1 2.0.8: Core libraries for opam
-dev-ml/opam-installer 2.0.7-r1 2.0.8: Core installer for opam packages
+dev-ml/opam-format 2.0.7-r1 2.0.8-r1: Core libraries for opam
+dev-ml/opam-installer 2.0.7-r1 2.0.8-r1: Core installer for opam packages
 dev-ml/opam-repository 2.0.7-r1 2.0.8: opam repository libraries
 dev-ml/opam-solver 2.0.7-r1 2.0.8: opam solver
 dev-ml/opam-state 2.0.7-r1 2.0.8: opam state libraries
@@ -5957,7 +5957,7 @@ dev-ml/ppx_module_timer 0.14.0: Ppx rewriter that records top-level module start
 dev-ml/ppx_optcomp 0.9.0-r3 0.14.0: Optional compilation for OCaml
 dev-ml/ppx_optional 0.9.0 0.14.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.9.0 0.14.0: A ppx rewriter that inlines reverse application operators |> and |!
-dev-ml/ppx_sexp_conv 0.9.0-r1 0.14.1: Support Library for type-driven code generators
+dev-ml/ppx_sexp_conv 0.9.0-r1 0.14.1 0.14.2: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.9.0 0.14.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.9.0 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
@@ -7777,7 +7777,7 @@ dev-php/PEAR-XML_Parser 1.3.7-r1 1.3.8: XML parsing class based on PHP's SAX par
 dev-php/PEAR-XML_RSS 1.1.0_alpha1 1.1.0: PHP parser for RDF and RSS documents
 dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing XML files
 dev-php/PEAR-XML_Util 1.4.5: XML utility class
-dev-php/PHPMailer 5.2.28 6.1.6 6.1.7: Full-featured email creation and transfer class for PHP
+dev-php/PHPMailer 6.1.6 6.1.7 6.2.0: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10-r1 7.0.12: Collection, processing, and rendering for PHP code coverage
 dev-php/PHP_CodeSniffer 3.5.4 3.5.6 3.5.8: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9 2.1.2-r1: Utility class for timing
@@ -7833,7 +7833,7 @@ dev-php/pecl-propro 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.4.1: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.4.0_beta1-r3: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 2.0.0-r2 2.0.1 2.0.1-r1: A reusable, persistent handle and resource factory API
-dev-php/pecl-redis 5.3.2: PHP extension for interfacing with Redis
+dev-php/pecl-redis 5.3.2 5.3.3: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 2.0.1-r4: RRDtool bindings for PHP
 dev-php/pecl-ssh2 1.1.2 1.2 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message brokers
@@ -7849,7 +7849,7 @@ dev-php/pecl-zmq 1.1.3-r3 9999: PHP Bindings for ZeroMQ messaging
 dev-php/phar-io-manifest 1.0.3 2.0.1: Reading phar.io manifest information from a PHP Archive (PHAR)
 dev-php/phar-io-version 2.0.1 3.0.4: Library for handling version information and constraints
 dev-php/phar-utils 1.0.0 1.0.1 1.1.0 1.1.1: PHAR file format utilities, for when PHP phars you up
-dev-php/phing 2.16.1 2.16.3: PHP project build system based on Apache Ant
+dev-php/phing 2.16.1 2.16.3 2.16.4: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2-r1: Creates highlighted code by reading xml reports from codesniffer or phpunit
 dev-php/php-redmine-api 1.5.9 1.5.16: A simple, object-oriented, PHP Redmine API client
 dev-php/phpDocumentor 2.9.0: Automatic documenting of php api directly from the source
@@ -7868,17 +7868,17 @@ dev-php/reactphp-promise 2.8.0: A lightweight implementation of CommonJS Promise
 dev-php/realpath_turbo 2.0.0: PHP extension to re-enable realpath cache when using open_basedir restriction
 dev-php/recaptcha 1.2.1: PHP client library for Google's reCAPTCHA service
 dev-php/scrypt 1.4.2 9999: A PHP wrapper fo the scrypt hashing algorithm
-dev-php/sebastian-code-unit-reverse-lookup 1.0.1: Looks up which function or method a line of code belongs to
+dev-php/sebastian-code-unit-reverse-lookup 1.0.1 1.0.2 2.0.3: Looks up which function or method a line of code belongs to
 dev-php/sebastian-comparator 1.2.4 3.0.2: Compare PHP values for equality
 dev-php/sebastian-diff 1.4.1-r1 3.0.2: PHP Diff implementation
 dev-php/sebastian-environment 2.0.0 4.2.3: Helps writing PHP code that has runtime-specific execution paths
 dev-php/sebastian-exporter 2.0.0 3.1.2: Export PHP variables for visualization
 dev-php/sebastian-global-state 1.1.1 3.0.0: Snapshotting of global state
 dev-php/sebastian-object-enumerator 2.0.1 3.0.3: Traverses array structures and object graphs to enumerate all referenced objects
-dev-php/sebastian-object-reflector 1.1.1: Allows reflection of object attributes, including inherited and non-public ones
+dev-php/sebastian-object-reflector 1.1.1 1.1.2 2.0.4: Allows reflection of object attributes, including inherited and non-public ones
 dev-php/sebastian-recursion-context 2.0.0 3.0.0: Recursively process PHP variables
 dev-php/sebastian-resource-operations 1.0.0 2.0.1: Provides a list of PHP built-in functions that operate on resources
-dev-php/sebastian-type 1.1.3: Collection of value objects that represent the types of the PHP type system
+dev-php/sebastian-type 1.1.3 1.1.4: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
 dev-php/semver 1.4.2 1.5.1 1.7.0 1.7.1 3.2.4: Semantic versioning utilities, constraint parsing, and checking
@@ -7914,7 +7914,7 @@ dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python 
 dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
 dev-python/Faker 5.6.5: a Python package that generates fake data for you
-dev-python/GitPython 3.1.11 3.1.12: Library used to interact with Git repositories
+dev-python/GitPython 3.1.11 3.1.12 3.1.13: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.4.0-r1 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
@@ -8391,7 +8391,7 @@ dev-python/jinja 2.11.3: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
-dev-python/joblib 1.0.0: Tools to provide lightweight pipelining in Python
+dev-python/joblib 1.0.0 1.0.1: Tools to provide lightweight pipelining in Python
 dev-python/josepy 1.4.0 1.5.0 1.6.0: JOSE protocol implementation in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
@@ -8510,7 +8510,7 @@ dev-python/moviepy 1.0.1-r1: Video editing with Python
 dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpdlcd 0.5.2: A small tool to display the MPD status on a LCDproc server.
 dev-python/mpi4py 3.0.3: Message Passing Interface for Python
-dev-python/mpmath 1.1.0: Python library for arbitrary-precision floating-point arithmetic
+dev-python/mpmath 1.1.0 1.2.1: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.6.2 1.0.2: MessagePack (de)serializer for Python
 dev-python/mss 6.1.0: An ultra fast cross-platform multiple screenshots module in python using ctypes
 dev-python/multidict 5.1.0: multidict implementation
@@ -9245,7 +9245,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2 3.21.3 3.21.4: virtualenv-based automation of test activities
-dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0: Add a progress meter to your loops in a second
+dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0 4.56.1: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.6: A lightweight, object-oriented state machine implementation in Python
@@ -9375,7 +9375,7 @@ dev-qt/pixeltool 5.15.2: Qt screen magnifier
 dev-qt/qdbus 5.15.2: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 5.15.2: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.15.2: Qt documentation generator
-dev-qt/qt-creator 4.12.3 9999: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.12.3-r1 9999: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.15.2_p202011130614: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.15.2: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.15.2: Bluetooth support library for the Qt5 framework
@@ -10869,7 +10869,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 0.8.2 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -14549,7 +14549,7 @@ net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r1 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.2.3: Tools to ease the validation of DNSSEC related technologies
 net-dns/dnstop 20140915-r2: Displays various tables of DNS traffic on your network
-net-dns/dnsviz 0.8.2 0.8.2-r1 0.9.1: Tool suite for analysis and visualization of DNS and DNSSEC
+net-dns/dnsviz 0.8.2 0.8.2-r1 0.9.1 0.9.2: Tool suite for analysis and visualization of DNS and DNSSEC
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/dog 0.1.0: A command-line DNS client like dig
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
@@ -14579,7 +14579,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1 2.3.3.0: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.13.0 1.13.0-r1: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.13.0 1.13.0-r1 1.13.1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/valtz 0.8: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0 2.1.1: Arno's iptables firewall script
@@ -14707,7 +14707,7 @@ net-im/transwhat 0.2.2_p20190426-r1: A WhatsApp XMPP Gateway based on Spectrum 2
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
-net-im/zoom 5.4.53391.1108-r1 5.4.57862.0110 5.5.6955.0131 5.5.6981.0202: Video conferencing and web conferencing service
+net-im/zoom 5.4.53391.1108-r1 5.5.6981.0202 5.5.7011.0206: Video conferencing and web conferencing service
 net-irc/anope 2.0.9: Anope IRC Services
 net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
@@ -17462,7 +17462,7 @@ sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and ap
 sys-fs/ecryptfs-utils 111_p20170609-r1: eCryptfs userspace utilities
 sys-fs/encfs 1.9.5 1.9.5-r1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
-sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 3.2.9 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 3.2.9 3.2.10 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.3.0: exFAT filesystem utilities
 sys-fs/exfatprogs 1.0.4 1.1.0 9999: Userspace utilities for new exfat filesystem (kernel 5.7+)
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system

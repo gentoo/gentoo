@@ -11,4 +11,4 @@ RDEPEND=~dev-ml/opam-core-2.0.8:= dev-ml/re:= dev-ml/opam-file-format:= >=dev-la
 SLOT=0/2.0.8
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.8.tar.gz -> opam-2.0.8.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=cba29d701abb685c21dba96f658ec2d5
+_md5_=2e6a9a390942c71e7f00ab3f38d259a6
