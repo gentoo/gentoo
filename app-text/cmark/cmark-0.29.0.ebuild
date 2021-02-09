@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-python38_tests.patch"
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

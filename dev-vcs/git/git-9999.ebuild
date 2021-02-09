@@ -6,7 +6,7 @@ EAPI=7
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd
 
@@ -20,12 +20,12 @@ if [[ ${PV} == *9999 ]]; then
 	# 9999-r0: maint
 	# 9999-r1: master
 	# 9999-r2: next
-	# 9999-r3: pu
+	# 9999-r3: seen
 	case "${PVR}" in
 		9999) EGIT_BRANCH=maint ;;
 		9999-r1) EGIT_BRANCH=master ;;
 		9999-r2) EGIT_BRANCH=next;;
-		9999-r3) EGIT_BRANCH=pu ;;
+		9999-r3) EGIT_BRANCH=seen ;;
 	esac
 fi
 

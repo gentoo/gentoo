@@ -20,12 +20,12 @@ if [[ ${PV} == *9999 ]]; then
 	# 9999-r0: maint
 	# 9999-r1: master
 	# 9999-r2: next
-	# 9999-r3: pu
+	# 9999-r3: seen
 	case "${PVR}" in
 		9999) EGIT_BRANCH=maint ;;
 		9999-r1) EGIT_BRANCH=master ;;
 		9999-r2) EGIT_BRANCH=next;;
-		9999-r3) EGIT_BRANCH=pu ;;
+		9999-r3) EGIT_BRANCH=seen ;;
 	esac
 fi
 

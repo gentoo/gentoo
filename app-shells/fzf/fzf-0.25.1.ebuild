@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="A general-purpose command-line fuzzy finder, written in GoLang"
 HOMEPAGE="https://github.com/junegunn/fzf"
 
 # For fancy versioning only. Bump on the next release!
-MY_GIT_REV=00a3610
+MY_GIT_REV=6654239
 
 EGO_SUM=(
 	"github.com/gdamore/encoding v1.0.0"
