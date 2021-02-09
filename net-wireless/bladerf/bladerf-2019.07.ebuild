@@ -24,7 +24,6 @@ MY_PN="bladeRF"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Nuand/${MY_PN}.git"
-	KEYWORDS="amd64 x86"
 else
 	MY_PV=${PV/\_/-}
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
