@@ -46,20 +46,22 @@ src_prepare() {
 		de/su.1
 		# sys-process/procps
 		{de,fr,pl}/free.1
-		{de,nl,pl}/fuser.1
-		{de,pl}/killall.1
 		{de,fr}/pgrep.1
 		{de,fr}/pmap.1
-		de/peekfd.1
-		de/prtstat.1
-		de/pslog.1
-		{de,pl}/pstree.1
+		{de,fr,pl}/ps.1
 		{de,fr}/pwdx.1
 		{de,fr}/tload.1
 		{de,fr,pl}/uptime.1
 		{de,fr}/sysctl.conf.5
 		{de,fr}/sysctl.8
 		{de,fr}/vmstat.8
+		# sys-process/psmisc
+		{de,nl,pl}/fuser.1
+		{de,pl}/killall.1
+		de/peekfd.1
+		de/prtstat.1
+		de/pslog.1
+		{de,pl}/pstree.1
 	)
 	printf '%s\n' "${noinst_manpages[@]}" \
 		| sed 's%^\(.*\)/\(.*\)\.\(.*\)$%po/\1/man\3/\2.\3.po%' | xargs rm
