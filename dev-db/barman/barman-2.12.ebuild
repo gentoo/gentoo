@@ -26,6 +26,13 @@ RDEPEND="
 	dev-db/postgresql[server]
 "
 
+BDEPEND="
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+	)
+"
+
 distutils_enable_tests pytest
 
 src_prepare() {
