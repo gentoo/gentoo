@@ -18,13 +18,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 IUSE="brotli test"
 RESTRICT="!test? ( test )"
 
+# dev-python/{pyopenssl,cryptography,idna,certifi} are optional runtime
+# dependencies. Do not add them to RDEPEND. They should be unnecessary with
+# modern versions of python (>= 3.2).
 RDEPEND="
 	>=dev-python/PySocks-1.5.8[${PYTHON_USEDEP}]
 	<dev-python/PySocks-2.0[${PYTHON_USEDEP}]
-	dev-python/certifi[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
-	>=dev-python/idna-2.0.0[${PYTHON_USEDEP}]
 	brotli? ( dev-python/brotlicffi[${PYTHON_USEDEP}] )
 "
 BDEPEND="
