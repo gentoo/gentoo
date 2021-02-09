@@ -18,6 +18,7 @@ IUSE="${MY_L10N[@]/#/l10n_}"
 REQUIRED_USE="|| ( ${MY_L10N[@]/#/l10n_} )"
 
 RDEPEND="virtual/man
+	!>=sys-process/procps-3.3.17
 	!>=sys-process/psmisc-23.4
 	l10n_de? ( !app-i18n/man-pages-de )
 	l10n_fr? ( !app-i18n/man-pages-fr )
