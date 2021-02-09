@@ -43,12 +43,6 @@ python_test() {
 		tests/test_proxy.py::test_socks5_auth
 	)
 
-	[[ ${EPYTHON} == pypy3 ]] && deselect+=(
-		# known pypy3.7 bug
-		# https://foss.heptapod.net/pypy/pypy/-/issues/3396
-		tests/test_https.py::test_sni_set_servername_callback
-	)
-
 	# tests in python* are replaced by tests/
 	# upstream fails at cleaning up stuff
 	pytest -vv ${deselect[@]/#/--deselect } tests ||
