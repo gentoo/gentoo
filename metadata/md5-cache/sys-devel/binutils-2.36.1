@@ -1,0 +1,15 @@
+BDEPEND=doc? ( sys-apps/texinfo ) test? ( dev-util/dejagnu sys-devel/bc ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc >=app-portage/elt-patches-20170815
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib sys-devel/gnuconfig
+DESCRIPTION=Tools necessary to build programs
+EAPI=7
+HOMEPAGE=https://sourceware.org/binutils/
+IUSE=default-gold doc +gold multitarget +nls +plugins static-libs test vanilla
+LICENSE=GPL-3+
+RDEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib
+REQUIRED_USE=default-gold? ( gold )
+RESTRICT=!test? ( test )
+SLOT=2.36
+SRC_URI=mirror://gnu/binutils/binutils-2.36.1.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/binutils-2.36.1-patches-1.tar.xz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=63bf8995ee9e67050b620a1c77011cef

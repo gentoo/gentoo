@@ -2882,7 +2882,7 @@ app-text/dblatex 0.3.11 0.3.11-r1: Transform DocBook using TeX macros
 app-text/delta 20060803-r1: Heuristically minimizes interesting files
 app-text/dictd 1.13.0-r1: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13 1.14: Diction and style checkers for english and german texts
-app-text/diff-pdf 0.3 0.4.1: A simple tool for visually comparing two PDF files
+app-text/diff-pdf 0.3 0.4.1-r1: A simple tool for visually comparing two PDF files
 app-text/diffpdf 2.1.3-r2: Program that textually or visually compares two PDF files
 app-text/ding 1.8.1 1.9: Tk based dictionary (German-English) (incl. dictionary itself)
 app-text/discount 2.2.7: A Markdown-to HTML translator written in C
@@ -5606,7 +5606,7 @@ dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
 dev-libs/nss 3.58-r2 3.60.1 3.61: Mozilla's Network Security Services library that implements PKI support
-dev-libs/nss-pem 1.0.5 1.0.6: PEM file reader for Network Security Services (NSS)
+dev-libs/nss-pem 1.0.5 1.0.6 1.0.7: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
 dev-libs/ocl-icd 2.2.12-r3: Alternative to vendor specific OpenCL ICD loaders
@@ -8019,8 +8019,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 1.17.3 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 1.20.3 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 1.17.3 1.17.4 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 1.20.3 1.20.4 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8046,7 +8046,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.4: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4 0.44.5 0.44.6: CloudFormation Linter
+dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4 0.44.5 0.44.6 0.44.7: CloudFormation Linter
 dev-python/cftime 1.3.0 1.4.0 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -9301,7 +9301,7 @@ dev-python/waitress 1.4.4: A pure-Python WSGI server
 dev-python/wand 0.6.3 0.6.5: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 1.0.2: Python API and shell utilities to monitor file system events
-dev-python/wcmatch 7.1 7.2 8.0 8.0.1: Wildcard/glob file name matcher
+dev-python/wcmatch 7.1 7.2 8.0 8.0.1 8.1: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
@@ -15563,9 +15563,9 @@ net-wireless/aircrack-ng 1.6-r1 1.6_p20200722 9999: WLAN tools for breaking 802.
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
-net-wireless/bladerf 2019.07 9999: Libraries for supporing the BladeRF hardware from Nuand
-net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
-net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
+net-wireless/bladerf 2019.07 2021.02 9999: Libraries for supporing the BladeRF hardware from Nuand
+net-wireless/bladerf-firmware 2.2.0 2.3.2 2.4.0: bladeRF FX3 firmware images
+net-wireless/bladerf-fpga 0.7.3 0.11.0 0.12.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.3.9: A Bluetooth configuration tool
 net-wireless/blueman 2.1.4 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.55: Bluetooth Tools and System Daemons for Linux
@@ -17318,10 +17318,10 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36 9999: Tools necessary to build programs
+sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36 2.36.1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.35.2 2.36: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.35.2 2.36 2.36.1: Tools necessary to build programs
 sys-devel/bison 3.6.4 3.7.3 3.7.4 3.7.5: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318 20201117 20210110: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17573,7 +17573,7 @@ sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.9
 sys-kernel/vanilla-sources 4.4.256 4.9.256 4.14.220 4.19.174 5.4.96 5.10.14: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36 2.36.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 12.0.0_rc1 12.0.0.9999 13.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
