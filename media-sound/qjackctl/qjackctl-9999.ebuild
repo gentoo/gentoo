@@ -37,7 +37,6 @@ src_configure() {
 		-DCONFIG_DBUS=$(usex dbus 1 0)
 		-DCONFIG_DEBUG=$(usex debug 1 0)
 		-DCONFIG_PORTAUDIO=$(usex portaudio 1 0)
-		-DCONFIG_JACK_VERSION=1
 	)
 	cmake_src_configure
 }
