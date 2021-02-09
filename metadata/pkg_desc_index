@@ -102,6 +102,7 @@ acct-group/inspircd 0-r1: System group: inspircd
 acct-group/ipfs 0-r1: Group for the system-wide net-p2p/go-ipfs-bin server
 acct-group/ipsec 0: ipsec (strongswan) program group
 acct-group/jabber 0: A group for various jabber services
+acct-group/jenkins 0: Jenkins program group
 acct-group/kafka 0-r1: System group: kafka
 acct-group/kapacitor 0-r1: System group: kapacitor
 acct-group/keystone 0-r1: System group: keystone
@@ -388,6 +389,7 @@ acct-user/ipfs 0-r1: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0-r1: user for net-analyzer/ippl
 acct-user/ipsec 0: ipsec (strongswan) program user
 acct-user/jabber 0: A user for various jabber services
+acct-user/jenkins 0: Jenkins program user
 acct-user/kafka 0-r1: User for kafka
 acct-user/kapacitor 0-r1: User for kapacitor
 acct-user/keystone 0-r1: user for the keystone openstack service
@@ -10812,7 +10814,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.3 2.277: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.3-r1 2.279: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -17320,10 +17322,10 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36 2.36.1 9999: Tools necessary to build programs
+sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36.1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 9999: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.35.2 2.36 2.36.1: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Tools necessary to build programs
 sys-devel/bison 3.6.4 3.7.3 3.7.4 3.7.5: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20200318 20201117 20210110: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17575,7 +17577,7 @@ sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.9
 sys-kernel/vanilla-sources 4.4.256 4.9.256 4.14.220 4.19.174 5.4.96 5.10.14: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36 2.36.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.33.1-r1 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 11.1.0_rc3 12.0.0_rc1 12.0.0.9999 13.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 9.0.1 9.0.1-r1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 11.1.0_rc3 12.0.0_rc1 12.0.0.9999 13.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
@@ -18030,13 +18032,13 @@ www-client/firefox 78.7.0 78.7.1 85.0-r1 85.0.1 85.0.2: Firefox Web Browser
 www-client/firefox-bin 78.7.0 78.7.1 85.0 85.0.1 85.0.2: Firefox Web Browser
 www-client/google-chrome 88.0.4324.150: The web browser from Google
 www-client/google-chrome-beta 89.0.4389.40: The web browser from Google
-www-client/google-chrome-unstable 90.0.4408.0: The web browser from Google
+www-client/google-chrome-unstable 90.0.4412.3: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.9.0_pre5 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
-www-client/microsoft-edge-dev 89.0.774.4 89.0.774.14 90.0.782.0: The web browser from Microsoft
+www-client/microsoft-edge-dev 90.0.782.0 90.0.789.1: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
@@ -18072,7 +18074,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 88.0.4324.150 89.0.4389.40_beta 90.0.4408.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 88.0.4324.150 89.0.4389.40_beta 90.0.4412.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
