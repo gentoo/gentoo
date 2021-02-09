@@ -1,0 +1,11 @@
+--- a/pidgin/libpurple/protocols/facebook/api.h	2019-01-13 15:19:45.000000000 +0100
++++ b/pidgin/libpurple/protocols/facebook/api.h	2021-02-09 19:26:42.571155515 +0100
+@@ -104,7 +104,7 @@
+  * server started checking this.
+  */
+ 
+-#define FB_ORCA_AGENT "[FBAN/Orca-Android;FBAV/192.0.0.31.101;FBPN/com.facebook.orca;FBLC/en_US;FBBV/52182662]"
++#define FB_ORCA_AGENT "[FBAN/Orca-Android;FBAV/537.0.0.31.101;FBPN/com.facebook.orca;FBLC/en_US;FBBV/52182662]"
+ 
+ /**
+  * FB_API_AGENT:
