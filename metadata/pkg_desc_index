@@ -17562,7 +17562,7 @@ sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot a
 sys-kernel/kergen 0.1.5: Kernel config generator
 sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19.114 5.4.39 5.10.0: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 20201218 99999999: Linux firmware files
+sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 20201218 20210208 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.9 5.10: Linux system headers
 sys-kernel/mips-sources 4.14.213 4.19.163 5.4.85: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.10_p8 5.10_p9 5.10_p10 5.10_p11: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
