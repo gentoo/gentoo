@@ -2258,7 +2258,7 @@ app-i18n/libskk 1.0.2 1.0.5: GObject-based library to deal with Japanese kana-to
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-it 4.00: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
-app-i18n/man-pages-l10n 4.0.0 4.2.0: A somewhat comprehensive collection of man page translations
+app-i18n/man-pages-l10n 4.0.0 4.2.0-r1: A somewhat comprehensive collection of man page translations
 app-i18n/man-pages-ru 5.03.2390.2390.20191017: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.6.3.2: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mecab-skkserv 0.03: mecab-skkserv is a Kana-Kanji conversion server using MeCab
@@ -2809,7 +2809,7 @@ app-shells/loksh 6.8 6.8.1: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6 0.5.2: Context-aware bash history search replacement (ctrl-r)
 app-shells/mksh 59 59c 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
-app-shells/pdmenu 1.3.4-r1 1.3.6: A simple console menu program
+app-shells/pdmenu 1.3.6: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.7 0.5.8: Simplistic interactive filtering tool
 app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
@@ -9007,7 +9007,7 @@ dev-python/pyusb 1.1.0 1.1.1: USB support for Python
 dev-python/pyvirtualdisplay 1.3.2: Python wrapper for Xvfb, Xephyr and Xvnc
 dev-python/pywavelets 1.1.1: Discrete Wavelet Transforms in Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
-dev-python/pyxDamerauLevenshtein 1.6.1: Implements the Damerau-Levenshtein edit distance algorithm for Python in Cython
+dev-python/pyxDamerauLevenshtein 1.6.1 1.6.2: Implements the Damerau-Levenshtein edit distance algorithm for Python in Cython
 dev-python/pyxattr 0.7.1 0.7.2: Python interface to xattr
 dev-python/pyxdg 0.26-r2 0.27: A Python module to deal with freedesktop.org specifications
 dev-python/pyyaml 5.3.1-r1 5.4.1: YAML parser and emitter for Python
@@ -9042,7 +9042,7 @@ dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git 
 dev-python/reportlab 3.5.56 3.5.57 3.5.58 3.5.59 3.5.60: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
-dev-python/requests 2.24.0-r1 2.25.0 2.25.1: HTTP library for human beings
+dev-python/requests 2.24.0-r1 2.25.0 2.25.1-r1: HTTP library for human beings
 dev-python/requests-cache 0.5.2: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1 1.2.0: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
@@ -9277,7 +9277,7 @@ dev-python/uranium 4.8.0: A Python framework for building 3D printing related ap
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0: Python module for downloading files
-dev-python/urllib3 1.25.11 1.26.2 1.26.2-r1 1.26.2-r2 1.26.2-r3 1.26.3: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.25.11 1.26.2 1.26.2-r1 1.26.2-r2 1.26.2-r3 1.26.3-r1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
@@ -16393,7 +16393,7 @@ sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.11.3 5.1 5.2: C++ library for geometric algorithms and data structures
 sci-mathematics/cliquer 1.21: C routines for finding cliques in an arbitrary weighted graph
-sci-mathematics/coq 8.6.1-r1 8.9.1-r1 8.12.0-r1 8.13.0: Proof assistant written in O'Caml
+sci-mathematics/coq 8.6.1-r1 8.9.1-r1 8.11.2 8.12.0-r1 8.13.0: Proof assistant written in O'Caml
 sci-mathematics/cvc4 1.7-r1: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
@@ -16458,7 +16458,7 @@ sci-mathematics/sympow 2.023.6: Symmetric power elliptic curve L-functions
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/why3-for-spark 2018 2019-r2: Platform for deductive program verification
+sci-mathematics/why3-for-spark 2018 2019-r2 2020: Platform for deductive program verification
 sci-mathematics/wxmaxima 18.11.4 20.12.2 21.01.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
@@ -18020,14 +18020,14 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.150 89.0.4389.40 90.0.4400.8: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.150 89.0.4389.40 90.0.4408.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.7.0 78.7.1 85.0-r1 85.0.1: Firefox Web Browser
-www-client/firefox-bin 78.7.0 78.7.1 85.0 85.0.1: Firefox Web Browser
+www-client/firefox 78.7.0 78.7.1 85.0-r1 85.0.1 85.0.2: Firefox Web Browser
+www-client/firefox-bin 78.7.0 78.7.1 85.0 85.0.1 85.0.2: Firefox Web Browser
 www-client/google-chrome 88.0.4324.150: The web browser from Google
 www-client/google-chrome-beta 89.0.4389.40: The web browser from Google
 www-client/google-chrome-unstable 90.0.4408.0: The web browser from Google
@@ -18040,7 +18040,7 @@ www-client/microsoft-edge-dev 89.0.774.4 89.0.774.14 90.0.782.0: The web browser
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
-www-client/opera 74.0.3911.75: A fast and secure web browser
+www-client/opera 74.0.3911.107: A fast and secure web browser
 www-client/opera-beta 74.0.3911.22 74.0.3911.42 74.0.3911.63: A fast and secure web browser
 www-client/opera-developer 75.0.3925.0 75.0.3932.0 75.0.3939.0 75.0.3946.0 75.0.3953.0 75.0.3960.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5

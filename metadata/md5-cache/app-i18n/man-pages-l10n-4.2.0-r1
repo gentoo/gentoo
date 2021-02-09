@@ -10,4 +10,4 @@ RDEPEND=virtual/man l10n_de? ( !app-i18n/man-pages-de ) l10n_fr? ( !app-i18n/man
 REQUIRED_USE=|| ( l10n_de l10n_fr l10n_nl l10n_pl l10n_pt-BR l10n_ro )
 SLOT=0
 SRC_URI=https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v4.2.0/manpages-l10n-v4.2.0.tar.bz2
-_md5_=ee4260e455a828a8621219f7c80b773c
+_md5_=b83a12011b4dfed4c2cb44c0b60a7c3f
