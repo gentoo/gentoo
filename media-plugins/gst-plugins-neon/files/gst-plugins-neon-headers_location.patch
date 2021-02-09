@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/716786
+
+--- a/ext/neon/gstneonhttpsrc.c
++++ b/ext/neon/gstneonhttpsrc.c
+@@ -25,7 +25,7 @@
+ #include <unistd.h>
+ #endif /* _HAVE_UNISTD_H */
+ 
+-#include <ne_redirect.h>
++#include <neon/ne_redirect.h>
+ 
+ #define STATUS_IS_REDIRECTION(status)     ((status) >= 300 && (status) < 400)
+ 
+--- a/ext/neon/gstneonhttpsrc.h
++++ b/ext/neon/gstneonhttpsrc.h
+@@ -23,9 +23,9 @@
+ 
+ G_BEGIN_DECLS
+ 
+-#include <ne_session.h>
+-#include <ne_request.h>
+-#include <ne_socket.h>
++#include <neon/ne_session.h>
++#include <neon/ne_request.h>
++#include <neon/ne_socket.h>
+ 
+ #define GST_TYPE_NEONHTTP_SRC \
+   (gst_neonhttp_src_get_type())
