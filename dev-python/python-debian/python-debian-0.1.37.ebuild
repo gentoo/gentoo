@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Python modules to work with Debian-related data formats"
-HOMEPAGE="https://packages.debian.org/sid/python-debian"
+HOMEPAGE="https://salsa.debian.org/python-debian-team/python-debian"
 SRC_URI="mirror://debian/pool/main/${P:0:1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2 GPL-3"
