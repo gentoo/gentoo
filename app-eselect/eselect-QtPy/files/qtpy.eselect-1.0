@@ -1,0 +1,11 @@
+# Copyright 2009-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EDITOR_VAR="QT_API"
+EDITOR_ENVFILE="/etc/env.d/99qtpy"
+EDITOR_LIST="pyqt5:/usr/bin/pyrcc5 pyside2:/usr/include/PySide2/QtCore/pyside2_qtcore_python.h"
+
+inherit editor-variable
+
+DESCRIPTION="Manage the ${EDITOR_VAR} environment variable"
+MAINTAINER="andrewammerlaan@riseup.net"
