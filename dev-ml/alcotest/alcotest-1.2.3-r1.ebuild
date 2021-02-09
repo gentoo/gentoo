@@ -16,7 +16,9 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	dev-ml/astring:=
+	dev-ml/async_unix:=
 	dev-ml/cmdliner:=
+	dev-ml/core:=
 	dev-ml/core_kernel:=
 	dev-ml/fmt:=
 	dev-ml/re:=
