@@ -36,8 +36,10 @@ timescale_configure() {
 	local CMAKE_USE_DIR=$BUILD_DIR
 	local mycmakeargs=( "-DPG_CONFIG=/usr/bin/pg_config${MULTIBUILD_VARIANT}" "-DREGRESS_CHECKS=OFF" )
 
-	# licensing is tied to features, this useflag disables the non-apache2 licensed bits"
-	use proprietary-extensions || mycmakeargs += "-DAPACHE_ONLY=ON"
+	# licensing is tied to features, this useflag disables the non-apache2 licensed bits
+	if ! use proprietary-extensions ; then
+		mycmakeargs+=("-DAPACHE_ONLY=ON")
+	fi
 	cmake_src_configure
 }
 
