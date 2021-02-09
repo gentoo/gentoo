@@ -32,6 +32,7 @@ RDEPEND="
 		!sys-apps/coreutils[kill]
 		!sys-apps/util-linux[kill]
 	)
+	!<app-i18n/man-pages-l10n-4.2.0-r1
 	!<app-i18n/man-pages-de-2.12-r1
 	!<app-i18n/man-pages-pl-0.7-r1
 "
