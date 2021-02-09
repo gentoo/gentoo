@@ -12,6 +12,7 @@
 # of ancient deps and is not installable.
 # bug #769680
 dev-ml/logs javascript
+dev-ml/mtime javascript
 
 # Sam James <sam@gentoo.org> (2021-02-07)
 # Fails to build with USE=doc for now.
