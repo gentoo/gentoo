@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-09)
+# dev-libs/libgdata is not (yet?) stable on arm
+# bug #769767, bug #769764
+mail-client/claws-mail gdata
+
 # Michał Górny <mgorny@gentoo.org> (2021-02-07)
 # app-text/libgepub is not yet stable here, and it has huuuge deps.
 xfce-extra/tumbler epub
