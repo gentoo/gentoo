@@ -3,11 +3,13 @@
 
 EAPI=7
 
-MY_PV=$(ver_rs 3 -)
+inherit toolchain-funcs
 
+MY_PV=$(ver_rs 3 -)
 DESCRIPTION="Text User Interface that implements the well known CUA widgets"
 HOMEPAGE="http://tvision.sourceforge.net/"
 SRC_URI="mirror://sourceforge/tvision/rhtvision_${MY_PV}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,8 +18,6 @@ IUSE="+X debug gpm"
 
 DOCS=( readme.txt THANKS TODO )
 HTML_DOCS=( www-site/. )
-
-S=${WORKDIR}/${PN}
 
 # installed lib links to those
 RDEPEND="
@@ -49,6 +49,8 @@ PATCHES=(
 )
 
 src_configure() {
+	tc-export CC CXX
+
 	# Note: Do not use econf here, this isn't an autoconf configure script,
 	# but a perl based script which simply calls config.pl
 	./configure --fhs \
