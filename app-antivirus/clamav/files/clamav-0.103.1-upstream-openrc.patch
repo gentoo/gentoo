@@ -1,5 +1,37 @@
+From 7d7ca4f425909368cd78cd587120703754bcd608 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 9 Feb 2021 14:24:09 -0500
+Subject: [PATCH 1/1] Add OpenRC service scripts integrated with the build
+ system.
+
+---
+ Makefile.am                                   | 11 ++++++
+ clamav-milter/Makefile.am                     | 21 ++++++++++++
+ clamav-milter/openrc/clamav-milter.in.in      | 34 +++++++++++++++++++
+ clamd/Makefile.am                             | 19 +++++++++++
+ clamd/openrc/clamd.in.in                      | 33 ++++++++++++++++++
+ clamonacc/Makefile.am                         | 19 +++++++++++
+ clamonacc/openrc/clamonacc.in.in              | 18 ++++++++++
+ configure.ac                                  | 16 ++++++++-
+ etc/Makefile.am                               | 22 +++++++++++-
+ ...sample => clamav-milter.conf.sample.in.in} |  5 +--
+ ...md.conf.sample => clamd.conf.sample.in.in} |  4 +--
+ ...onf.sample => freshclam.conf.sample.in.in} |  2 +-
+ freshclam/Makefile.am                         | 20 +++++++++++
+ freshclam/openrc/freshclam.in.in              |  8 +++++
+ m4/reorganization/libs/openrc.m4              |  8 +++++
+ 15 files changed, 233 insertions(+), 7 deletions(-)
+ create mode 100644 clamav-milter/openrc/clamav-milter.in.in
+ create mode 100644 clamd/openrc/clamd.in.in
+ create mode 100644 clamonacc/openrc/clamonacc.in.in
+ rename etc/{clamav-milter.conf.sample => clamav-milter.conf.sample.in.in} (98%)
+ rename etc/{clamd.conf.sample => clamd.conf.sample.in.in} (99%)
+ rename etc/{freshclam.conf.sample => freshclam.conf.sample.in.in} (99%)
+ create mode 100644 freshclam/openrc/freshclam.in.in
+ create mode 100644 m4/reorganization/libs/openrc.m4
+
 diff --git a/Makefile.am b/Makefile.am
-index 12e7fcc28..a3c47e23a 100644
+index 42a58e7..c4d82ad 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -52,6 +52,17 @@ nodist_include_HEADERS = clamav-types.h clamav-version.h
@@ -21,7 +53,7 @@ index 12e7fcc28..a3c47e23a 100644
  	($(MAKE); cd unit_tests; $(MAKE) lcov)
  quick-check:
 diff --git a/clamav-milter/Makefile.am b/clamav-milter/Makefile.am
-index 1ec4afff6..c75c2b4a3 100644
+index 38d9b94..46885a7 100644
 --- a/clamav-milter/Makefile.am
 +++ b/clamav-milter/Makefile.am
 @@ -35,6 +35,27 @@ clamav_milter_SOURCES = \
@@ -54,7 +86,7 @@ index 1ec4afff6..c75c2b4a3 100644
  LIBS = $(top_builddir)/libclamav/libclamav.la $(top_builddir)/shared/libshared.la @CLAMAV_MILTER_LIBS@ @THREAD_LIBS@
 diff --git a/clamav-milter/openrc/clamav-milter.in.in b/clamav-milter/openrc/clamav-milter.in.in
 new file mode 100644
-index 000000000..71053564a
+index 0000000..7105356
 --- /dev/null
 +++ b/clamav-milter/openrc/clamav-milter.in.in
 @@ -0,0 +1,34 @@
@@ -93,7 +125,7 @@ index 000000000..71053564a
 +           "@RUNSTATEDIR@/clamav"
 +}
 diff --git a/clamd/Makefile.am b/clamd/Makefile.am
-index 12b872b1f..725bc2fc1 100644
+index c161586..b59d94c 100644
 --- a/clamd/Makefile.am
 +++ b/clamd/Makefile.am
 @@ -44,6 +44,25 @@ if INSTALL_SYSTEMD_UNITS
@@ -124,7 +156,7 @@ index 12b872b1f..725bc2fc1 100644
  
 diff --git a/clamd/openrc/clamd.in.in b/clamd/openrc/clamd.in.in
 new file mode 100644
-index 000000000..5d38f9a84
+index 0000000..5d38f9a
 --- /dev/null
 +++ b/clamd/openrc/clamd.in.in
 @@ -0,0 +1,33 @@
@@ -162,10 +194,10 @@ index 000000000..5d38f9a84
 +  eend $?
 +}
 diff --git a/clamonacc/Makefile.am b/clamonacc/Makefile.am
-index 181e22056..864a7fc2a 100644
+index 4cb4886..39c2e5d 100644
 --- a/clamonacc/Makefile.am
 +++ b/clamonacc/Makefile.am
-@@ -56,6 +56,25 @@ if INSTALL_SYSTEMD_UNITS
+@@ -58,6 +58,25 @@ if INSTALL_SYSTEMD_UNITS
  systemdsystemunit_DATA = clamav-clamonacc.service
  endif
  
@@ -193,7 +225,7 @@ index 181e22056..864a7fc2a 100644
  
 diff --git a/clamonacc/openrc/clamonacc.in.in b/clamonacc/openrc/clamonacc.in.in
 new file mode 100644
-index 000000000..844cd49dd
+index 0000000..844cd49
 --- /dev/null
 +++ b/clamonacc/openrc/clamonacc.in.in
 @@ -0,0 +1,18 @@
@@ -216,7 +248,7 @@ index 000000000..844cd49dd
 +  need clamd
 +}
 diff --git a/configure.ac b/configure.ac
-index 7b2a777d4..8e0e810f8 100644
+index 33e252e..c8cd60f 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -79,6 +79,12 @@ if test "$enable_experimental" = "yes"; then
@@ -232,7 +264,7 @@ index 7b2a777d4..8e0e810f8 100644
  build_configure_args=`echo "$ac_configure_args" | sed -e 's/[\"]//g'`
  AC_SUBST([BUILD_CONFIGURE_FLAGS], [$build_configure_args])
  
-@@ -104,6 +110,7 @@ m4_include([m4/reorganization/libs/libz.m4])
+@@ -105,6 +111,7 @@ m4_include([m4/reorganization/libs/libz.m4])
  m4_include([m4/reorganization/libs/bzip.m4])
  m4_include([m4/reorganization/libs/unrar.m4])
  m4_include([m4/reorganization/libs/systemd.m4])
@@ -240,7 +272,7 @@ index 7b2a777d4..8e0e810f8 100644
  m4_include([m4/reorganization/code_checks/ipv6.m4])
  m4_include([m4/reorganization/code_checks/dns.m4])
  m4_include([m4/reorganization/code_checks/fanotify.m4])
-@@ -192,7 +199,10 @@ AC_CONFIG_FILES([
+@@ -193,7 +200,10 @@ AC_CONFIG_FILES([
                   libclamav.pc
                   platform.h
                   clamav-types.h
@@ -250,9 +282,9 @@ index 7b2a777d4..8e0e810f8 100644
 +                 etc/clamav-milter.conf.sample.in
 +                 etc/freshclam.conf.sample.in])
  if test "x$enable_libclamav_only" != "xyes"; then
-     AC_CONFIG_FILES([
-                      clamscan/Makefile
-@@ -202,10 +212,14 @@ if test "x$enable_libclamav_only" != "xyes"; then
+     if test "$have_curl" = "no"; then
+         AC_MSG_ERROR([libcurl not found. libcurl (e.g. libcurl-devel) is required in order to build freshclam and clamsubmit.])
+@@ -207,10 +217,14 @@ if test "x$enable_libclamav_only" != "xyes"; then
                       clamd/Makefile
                       clamd/clamav-daemon.service
                       clamd/clamav-daemon.socket
@@ -268,7 +300,7 @@ index 7b2a777d4..8e0e810f8 100644
                       sigtool/Makefile
                       clamconf/Makefile
 diff --git a/etc/Makefile.am b/etc/Makefile.am
-index 487c31429..bee68f1d0 100644
+index c694856..213a978 100644
 --- a/etc/Makefile.am
 +++ b/etc/Makefile.am
 @@ -18,11 +18,31 @@
@@ -303,12 +335,12 @@ index 487c31429..bee68f1d0 100644
 +	rm -f $@ $@.tmp
 +	$(editgnudirs) $@.in > $@.tmp
 +	mv $@.tmp $@
-+>>>>>>> ea2f2442b... etc: convert conf files to templates and make @VARIABLE@ substitutions.
++
 diff --git a/etc/clamav-milter.conf.sample b/etc/clamav-milter.conf.sample.in.in
 similarity index 98%
 rename from etc/clamav-milter.conf.sample
 rename to etc/clamav-milter.conf.sample.in.in
-index bf46b4fc5..c3c5d2000 100644
+index bf46b4f..c3c5d20 100644
 --- a/etc/clamav-milter.conf.sample
 +++ b/etc/clamav-milter.conf.sample.in.in
 @@ -17,7 +17,7 @@ Example
@@ -341,7 +373,7 @@ diff --git a/etc/clamd.conf.sample b/etc/clamd.conf.sample.in.in
 similarity index 99%
 rename from etc/clamd.conf.sample
 rename to etc/clamd.conf.sample.in.in
-index 828dd5ad9..0e0ea4b12 100644
+index a1ca9ec..82ef42c 100644
 --- a/etc/clamd.conf.sample
 +++ b/etc/clamd.conf.sample.in.in
 @@ -74,7 +74,7 @@ Example
@@ -366,7 +398,7 @@ diff --git a/etc/freshclam.conf.sample b/etc/freshclam.conf.sample.in.in
 similarity index 99%
 rename from etc/freshclam.conf.sample
 rename to etc/freshclam.conf.sample.in.in
-index 2f7d14618..3af3a3485 100644
+index 8f4dd49..5a5c42b 100644
 --- a/etc/freshclam.conf.sample
 +++ b/etc/freshclam.conf.sample.in.in
 @@ -51,7 +51,7 @@ Example
@@ -379,7 +411,7 @@ index 2f7d14618..3af3a3485 100644
  # By default when started freshclam drops privileges and switches to the
  # "clamav" user. This directive allows you to change the database owner.
 diff --git a/freshclam/Makefile.am b/freshclam/Makefile.am
-index ab6ac8f1c..6b16b3d3e 100644
+index 9e48119..46ef224 100644
 --- a/freshclam/Makefile.am
 +++ b/freshclam/Makefile.am
 @@ -32,6 +32,26 @@ if INSTALL_SYSTEMD_UNITS
@@ -411,7 +443,7 @@ index ab6ac8f1c..6b16b3d3e 100644
  AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/shared -I$(top_srcdir)/libclamav -I$(top_builddir)/libclamav -I$(top_srcdir)/libclamunrar_iface -I$(top_srcdir)/libfreshclam @CURL_CPPFLAGS@ @SSL_CPPFLAGS@ @FRESHCLAM_CPPFLAGS@ @ZLIB_CFLAGS@ @JSON_CPPFLAGS@ @PCRE_CPPFLAGS@
 diff --git a/freshclam/openrc/freshclam.in.in b/freshclam/openrc/freshclam.in.in
 new file mode 100644
-index 000000000..9feb73747
+index 0000000..9feb737
 --- /dev/null
 +++ b/freshclam/openrc/freshclam.in.in
 @@ -0,0 +1,8 @@
@@ -425,7 +457,7 @@ index 000000000..9feb73747
 +command_args_background="--daemon"
 diff --git a/m4/reorganization/libs/openrc.m4 b/m4/reorganization/libs/openrc.m4
 new file mode 100644
-index 000000000..1a73d1589
+index 0000000..1a73d15
 --- /dev/null
 +++ b/m4/reorganization/libs/openrc.m4
 @@ -0,0 +1,8 @@
@@ -437,3 +469,6 @@ index 000000000..1a73d1589
 +              [enable_openrc=no])
 +AM_CONDITIONAL(INSTALL_OPENRC_SERVICES,
 +               [test "x$enable_openrc" = "xyes"])
+-- 
+2.26.2
+

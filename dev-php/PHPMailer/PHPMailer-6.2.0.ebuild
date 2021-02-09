@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 DESCRIPTION="Full-featured email creation and transfer class for PHP"
 HOMEPAGE="https://github.com/PHPMailer/PHPMailer"
@@ -10,7 +10,10 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc examples idn ssl"
+
+# To help out the Composer children, the tests and examples are missing
+# from the release tarballs.
+IUSE="doc idn ssl"
 
 # The ctype and filter extensions get used unconditionally, with no
 # fallback and no "extension missing" exception. All of the other
@@ -30,35 +33,42 @@ RDEPEND="
 		idn?  ( dev-lang/php:*[ctype,filter,intl,unicode] )
 		!idn? ( dev-lang/php:*[ctype,filter] )
 	)"
-DEPEND="${RDEPEND}
-	doc? ( dev-php/phpDocumentor )"
+BDEPEND="doc? ( dev-php/phpDocumentor )"
+
+src_prepare() {
+	default
+
+	# OAuth.php relies on a (now non-nonexistent) autoloader. We remove
+	# it early so that we don't generate documentation for it later on.
+	rm src/OAuth.php || die 'failed to remove src/OAuth.php'
+}
 
 src_compile() {
 	if use doc; then
-		phpdoc --filename="class.*.php" \
-			   --target="./html" \
-			   --cache-folder="${T}" \
-			   --title="${PN}" \
-			   --sourcecode \
-			   --force \
-			   --progressbar \
-			   || die "failed to generate API documentation"
+		phpdoc --filename="src/*.php" \
+			--target="./html" \
+			--cache-folder="${T}" \
+			--title="${PN}" \
+			--sourcecode \
+			--force \
+			--progressbar \
+			|| die "failed to generate API documentation"
 	fi
 }
 
 src_install() {
-	# To help out the Composer kids, most of the documentation and
-	# tests are missing from the release tarballs.
+	# The PHPMailer class loads its language files
+	# using a relative path, so we need to keep the "src" here.
 	insinto "/usr/share/php/${PN}"
-	doins -r *.php language extras
+	doins -r language src
 
-	use examples && dodoc -r examples
+	dodoc README.md SECURITY.md
 	use doc && dodoc -r html/*
 }
 
 pkg_postinst() {
 	elog "${PN} has been installed in /usr/share/php/${PN}/."
-	elog "To use it in a script, require('${PN}/${PN}Autoload.php'),"
-	elog "and then use the ${PN} class normally. Most of the examples in"
-	elog "the documentation should work without further modification."
+	elog "Upstream no longer provides an autoloader, so you will need"
+	elog "to include each source file (for example: PHPMailer.php,"
+	elog "Exception.php,...) that you need."
 }
