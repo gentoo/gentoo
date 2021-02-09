@@ -4,7 +4,7 @@
 # No EAPI=7 support in wxwidgets.eclass.
 EAPI=7
 
-inherit wxwidgets
+inherit autotools wxwidgets
 
 DESCRIPTION="A simple tool for visually comparing two PDF files"
 HOMEPAGE="http://vslavik.github.io/diff-pdf/ https://github.com/vslavik/diff-pdf/"
@@ -31,6 +31,13 @@ DEPEND="app-text/poppler[cairo]
 	x11-libs/cairo
 	x11-libs/wxGTK:3.0-gtk3[X]"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-no-poppler-cairo-check.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	WX_GTK_VER="3.0-gtk3"
