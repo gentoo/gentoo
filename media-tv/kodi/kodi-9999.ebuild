@@ -261,7 +261,7 @@ src_configure() {
 		-DENABLE_CLANGFORMAT=OFF
 		-DENABLE_CLANGTIDY=OFF
 		-DENABLE_CPPCHECK=OFF
-		-DENABLE_ISO9660PP=ON
+		-DENABLE_ISO9660PP=$(usex optical)
 		-DENABLE_CEC=$(usex cec)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DVDCSS=$(usex css)
