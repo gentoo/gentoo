@@ -46,10 +46,9 @@ SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="cet +client lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
+IUSE="cet lzma multitarget nls +python +server source-highlight test vanilla xml xxhash"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	|| ( client server )
 "
 
 # ia64 kernel crashes when gdb testsuite is running
@@ -60,15 +59,13 @@ RESTRICT="
 "
 
 RDEPEND="
-	client? (
-		dev-libs/mpfr:0=
-		>=sys-libs/ncurses-5.2-r2:0=
-		>=sys-libs/readline-7:0=
-		lzma? ( app-arch/xz-utils )
-		python? ( ${PYTHON_DEPS} )
-		xml? ( dev-libs/expat )
-		sys-libs/zlib
-	)
+	dev-libs/mpfr:0=
+	>=sys-libs/ncurses-5.2-r2:0=
+	>=sys-libs/readline-7:0=
+	sys-libs/zlib
+	lzma? ( app-arch/xz-utils )
+	python? ( ${PYTHON_DEPS} )
+	xml? ( dev-libs/expat )
 	source-highlight? (
 		dev-util/source-highlight
 	)
@@ -80,11 +77,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
 	sys-apps/texinfo
-	client? (
-		virtual/yacc
-		test? ( dev-util/dejagnu )
-		nls? ( sys-devel/gettext )
-	)"
+	virtual/yacc
+	nls? ( sys-devel/gettext )
+	test? ( dev-util/dejagnu )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
@@ -146,49 +142,39 @@ src_configure() {
 		--with-gdb-datadir="\${datadir}/gdb/${CTARGET}"
 	)
 
-	if use server && ! use client ; then
-		# just configure+build in the gdbserver subdir to speed things up
-		cd gdbserver
-		myconf+=( --program-transform-name='' )
-	else
-		# gdbserver only works for native targets (CHOST==CTARGET).
-		# it also doesn't support all targets, so rather than duplicate
-		# the target list (which changes between versions), use the
-		# "auto" value when things are turned on, which is triggered
-		# whenever no --enable or --disable is given
-		if is_cross || use !server ; then
-			myconf+=( --disable-gdbserver )
-		fi
+	# gdbserver only works for native targets (CHOST==CTARGET).
+	# it also doesn't support all targets, so rather than duplicate
+	# the target list (which changes between versions), use the
+	# "auto" value when things are turned on, which is triggered
+	# whenever no --enable or --disable is given
+	if is_cross || use !server ; then
+		myconf+=( --disable-gdbserver )
 	fi
 
-	if ! ( use server && ! use client ) ; then
-		# if we are configuring in the top level, then use all
-		# the additional global options
-		myconf+=(
-			--enable-64-bit-bfd
-			--disable-install-libbfd
-			--disable-install-libiberty
-			# Disable guile for now as it requires guile-2.x #562902
-			--without-guile
-			--enable-obsolete
-			# This only disables building in the readline subdir.
-			# For gdb itself, it'll use the system version.
-			--disable-readline
-			--with-system-readline
-			# This only disables building in the zlib subdir.
-			# For gdb itself, it'll use the system version.
-			--without-zlib
-			--with-system-zlib
-			--with-separate-debug-dir="${EPREFIX}"/usr/lib/debug
-			$(use_with xml expat)
-			$(use_with lzma)
-			$(use_enable nls)
-			$(use_enable source-highlight)
-			$(use multitarget && echo --enable-targets=all)
-			$(use_with python python "${EPYTHON}")
-			$(use_with xxhash)
-		)
-	fi
+	myconf+=(
+		--enable-64-bit-bfd
+		--disable-install-libbfd
+		--disable-install-libiberty
+		# Disable guile for now as it requires guile-2.x #562902
+		--without-guile
+		--enable-obsolete
+		# This only disables building in the readline subdir.
+		# For gdb itself, it'll use the system version.
+		--disable-readline
+		--with-system-readline
+		# This only disables building in the zlib subdir.
+		# For gdb itself, it'll use the system version.
+		--without-zlib
+		--with-system-zlib
+		--with-separate-debug-dir="${EPREFIX}"/usr/lib/debug
+		$(use_with xml expat)
+		$(use_with lzma)
+		$(use_enable nls)
+		$(use_enable source-highlight)
+		$(use multitarget && echo --enable-targets=all)
+		$(use_with python python "${EPYTHON}")
+		$(use_with xxhash)
+	)
 	if use sparc-solaris || use x86-solaris ; then
 		# disable largefile support
 		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
@@ -202,13 +188,8 @@ src_configure() {
 }
 
 src_install() {
-	if use server && ! use client; then
-		cd gdbserver || die
-	fi
 	default
-	if use client; then
-		find "${ED}"/usr -name libiberty.a -delete || die
-	fi
+	find "${ED}"/usr -name libiberty.a -delete || die
 
 	# Delete translations that conflict with binutils-libs. #528088
 	# Note: Should figure out how to store these in an internal gdb dir.
@@ -235,11 +216,9 @@ src_install() {
 	# notes in src_configure above).
 	[[ -e gdbserver/gdbreplay ]] && dobin gdbserver/gdbreplay
 
-	if use client ; then
-		docinto gdb
-		dodoc gdb/CONTRIBUTE gdb/README gdb/MAINTAINERS \
-			gdb/NEWS gdb/ChangeLog gdb/PROBLEMS
-	fi
+	docinto gdb
+	dodoc gdb/CONTRIBUTE gdb/README gdb/MAINTAINERS \
+		gdb/NEWS gdb/ChangeLog gdb/PROBLEMS
 	docinto sim
 	dodoc sim/{ChangeLog,MAINTAINERS,README-HACKING}
 	if use server ; then
