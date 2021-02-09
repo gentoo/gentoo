@@ -20,9 +20,8 @@ HOMEPAGE="https://gmic.eu/ https://github.com/dtschump/gmic"
 
 LICENSE="CeCILL-2 GPL-3"
 SLOT="0"
-IUSE="cli curl digikam ffmpeg fftw gimp graphicsmagick jpeg krita opencv openexr openmp png qt5 static-libs tiff X zlib"
+IUSE="cli curl ffmpeg fftw gimp graphicsmagick jpeg krita opencv openexr openmp png qt5 static-libs tiff X zlib"
 REQUIRED_USE="
-	digikam? ( png zlib fftw X )
 	gimp? ( png zlib fftw X )
 	krita? ( png zlib fftw X )
 	qt5? ( png zlib fftw X )
@@ -37,10 +36,6 @@ QT_DEPEND="
 "
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
-	digikam? (
-		media-gfx/digikam
-		${QT_DEPEND}
-	)
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	gimp? (
 		media-gfx/gimp:0/2
@@ -66,7 +61,6 @@ RDEPEND="${COMMON_DEPEND}
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
 DEPEND="${COMMON_DEPEND}
-	digikam? ( dev-qt/linguist-tools )
 	gimp? ( dev-qt/linguist-tools )
 	krita? ( dev-qt/linguist-tools )
 	qt5? ( dev-qt/linguist-tools )
@@ -89,7 +83,7 @@ src_prepare() {
 	cmake_src_prepare
 	sed -i '/CMAKE_CXX_FLAGS/s/-g //' CMakeLists.txt || die
 
-	if use digikam || use gimp || use krita || use qt5; then
+	if use gimp || use krita || use qt5; then
 		# respect user flags
 		sed -e '/CMAKE_CXX_FLAGS_RELEASE/d' \
 			-e '/${CMAKE_EXE_LINKER_FLAGS} -s/d' \
@@ -135,11 +129,6 @@ src_configure() {
 		-DGMIC_PATH="${S}/src"
 	)
 
-	if use digikam; then
-		mycmakeargs+=( -DGMIC_QT_HOST=digikam )
-		BUILD_DIR="${BUILD_DIR}"/digikam cmake_src_configure
-	fi
-
 	if use gimp; then
 		mycmakeargs+=( -DGMIC_QT_HOST=gimp )
 		BUILD_DIR="${BUILD_DIR}"/gimp cmake_src_configure
@@ -161,7 +150,6 @@ src_compile() {
 
 	# build gmic-qt frontends
 	local S="${S}/gmic-qt"
-	use digikam && { BUILD_DIR="${BUILD_DIR}"/digikam cmake_src_compile || die "failed building digikam plugin" ; }
 	use gimp && { BUILD_DIR="${BUILD_DIR}"/gimp cmake_src_compile || die "failed building gimp plugin" ; }
 	use krita && { BUILD_DIR="${BUILD_DIR}"/krita cmake_src_compile || die "failed building krita plugin" ; }
 	use qt5 && { BUILD_DIR="${BUILD_DIR}"/qt5 cmake_src_compile || die "failed building qt5 GUI" ; }
@@ -177,11 +165,6 @@ src_install() {
 	doins resources/gmic_cluts.gmz
 
 	# install gmic-qt frontends
-	if use digikam; then
-		local DIGIKAMDIR="/usr/$(get_libdir)/qt5/plugins/digikam/editor"
-		exeinto "${DIGIKAMDIR}"
-		doexe "${BUILD_DIR}"/digikam/Editor_GmicQt_Plugin.so
-	fi
 	if use gimp; then
 		exeinto "${PLUGINDIR}"
 		doexe "${BUILD_DIR}"/gimp/gmic_gimp_qt
