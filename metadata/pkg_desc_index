@@ -727,7 +727,7 @@ app-admin/qpage 3.3: Sends messages to an alphanumeric pager via TAP protocol
 app-admin/qtpass 1.3.2-r2: Multi-platform GUI for pass, the standard unix password manager
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/r10k 3.7.0-r2: Puppet environment and module deployment
-app-admin/radmind 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
+app-admin/radmind 1.15.1 1.15.3: Command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/rasdaemon 0.6.6: Reliability, Availability and Serviceability logging tool
 app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
@@ -737,7 +737,7 @@ app-admin/rex 1.13.0 1.13.1 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 3000.5 3000.6 3001.4-r1 3002.2-r2: Salt is a remote execution and configuration manager
+app-admin/salt 3000.5 3000.6 3001.4-r1 3002.2-r2 3002.2-r3: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
@@ -2882,7 +2882,7 @@ app-text/dblatex 0.3.11 0.3.11-r1: Transform DocBook using TeX macros
 app-text/delta 20060803-r1: Heuristically minimizes interesting files
 app-text/dictd 1.13.0-r1: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13 1.14: Diction and style checkers for english and german texts
-app-text/diff-pdf 0.3 0.4.1-r1: A simple tool for visually comparing two PDF files
+app-text/diff-pdf 0.3 0.4.1-r2: A simple tool for visually comparing two PDF files
 app-text/diffpdf 2.1.3-r2: Program that textually or visually compares two PDF files
 app-text/ding 1.8.1 1.9: Tk based dictionary (German-English) (incl. dictionary itself)
 app-text/discount 2.2.7: A Markdown-to HTML translator written in C
@@ -3525,6 +3525,7 @@ dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgr
 dev-db/barman 2.10 2.12: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
+dev-db/citus 9.5.2: Open-source postgresql extension for clustering/multi-node setups
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
@@ -5969,7 +5970,7 @@ dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 0.9.0 0.14.1: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 0.9.0 0.14.1: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/ppxfind 1.4: ocamlfind ppx tool
-dev-ml/ppxlib 0.18.0 0.20.0 0.21.0 0.22.0: Base library and tools for ppx rewriters
+dev-ml/ppxlib 0.18.0 0.20.0 0.21.0-r1 0.22.0-r1: Base library and tools for ppx rewriters
 dev-ml/protocol_version_header 0.14.0: Protocol aware version negotiation for OCaml
 dev-ml/qcheck 0.7: QuickCheck inspired property-based testing for OCaml
 dev-ml/re 1.9.0: Regular expression library for OCaml
@@ -14367,7 +14368,7 @@ net-analyzer/nessus-agent-bin 8.2.1: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.13.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.29.0 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.29.0 1.29.1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.7: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1 0.8.6: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
@@ -14584,7 +14585,7 @@ net-dns/valtz 0.8: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.3 2.1.0 2.1.1: Arno's iptables firewall script
 net-firewall/arptables 0.0.4 0.0.5 0.0.5-r1: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.5 1.4.6: Connection tracking userspace tools
-net-firewall/ebtables 2.0.11-r2: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
+net-firewall/ebtables 2.0.11-r2 2.0.11-r3: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4.1 2.5 2.5.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6-r2 3.1.7: iptables firewall generator
 net-firewall/firewalld 0.7.1-r3 0.7.3-r1 0.9.1: A firewall daemon with D-BUS interface providing a dynamic firewall
@@ -17063,7 +17064,7 @@ sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3 0.4.4-r4: mount and unmount removable devices without a password
 sys-apps/unscd 0.54-r1: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.5.2 2.6.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
-sys-apps/usbguard 0.7.6-r1 0.7.8 1.0.0: Daemon protecting your computer against BadUSB
+sys-apps/usbguard 0.7.6-r1 0.7.8 1.0.0 1.0.0-r1: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 012 013 013-r1: USB enumeration utilities
@@ -17723,7 +17724,7 @@ sys-process/parallel 20201222 20210122: A shell tool for executing jobs in paral
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
-sys-process/procps 3.3.16-r2 3.3.16-r3: standard informational utilities and process-handling tools
+sys-process/procps 3.3.16-r2 3.3.16-r3 3.3.17: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12-r1: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 23.3-r1 23.4: A set of tools that use the proc filesystem
 sys-process/rtirq 20180209 20191121: Modify realtime scheduling policy and priority of IRQ handlers
@@ -17938,7 +17939,7 @@ www-apache/mod_log_rotate 1.01: Log rotation support for mod_log_config based on
 www-apache/mod_log_sql 1.101-r2 1.101-r3: An Apache module for logging to an SQL (MySQL) database
 www-apache/mod_maxminddb 1.2.0: MaxMind DB Apache Module
 www-apache/mod_musicindex 1.4.1-r1: mod_musicindex allows nice displaying of directories containing music files
-www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
+www-apache/mod_nss 1.0.12-r1 1.0.18: SSL/TLS module for the Apache HTTP server
 www-apache/mod_perl 2.0.11: An embedded Perl interpreter for Apache2
 www-apache/mod_qos 11.61 11.65 11.66: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
@@ -17971,7 +17972,7 @@ www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management f
 www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
 www-apps/gitea 1.13.2 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 7.3.1 7.3.3 7.3.4 7.3.7: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 7.3.1 7.3.3 7.3.4 7.3.7 7.4.0: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
 www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration

@@ -1,13 +1,14 @@
+BDEPEND=sys-devel/gettext >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=>=net-im/pidgin-2.0.0[gtk] >=dev-libs/dbus-glib-0.73 dev-libs/libpcre >=sys-devel/gettext-0.17 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/dbus-glib dev-libs/libpcre net-im/pidgin[gtk]
 DESCRIPTION=A Pidgin now playing plugin to publicise the songs you are listening
-EAPI=6
+EAPI=7
 HOMEPAGE=https://code.google.com/p/pidgin-musictracker/
 IUSE=debug
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=>=net-im/pidgin-2.0.0[gtk] >=dev-libs/dbus-glib-0.73 dev-libs/libpcre >=sys-devel/gettext-0.17
+RDEPEND=dev-libs/dbus-glib dev-libs/libpcre net-im/pidgin[gtk]
 SLOT=0
 SRC_URI=https://pidgin-musictracker.googlecode.com/files/pidgin-musictracker-0.4.22.tar.bz2
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=9b872ecefd02d42b45ddd20008ff0a1d
+_md5_=bb78c78e5cee7c34699b29fa31b873e8
