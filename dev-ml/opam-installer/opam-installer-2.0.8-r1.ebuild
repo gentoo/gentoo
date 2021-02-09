@@ -12,6 +12,7 @@ DESCRIPTION="Core installer for opam packages"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
 SRC_URI="https://github.com/ocaml/opam/releases/download/${PV}/opam-full-${PV}.tar.gz"
 S="${WORKDIR}/opam-full-${PV/_/-}"
+OPAM_INSTALLER="${S}/opam-installer"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
