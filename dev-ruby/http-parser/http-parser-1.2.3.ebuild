@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/cotag/http-parser"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 DEPEND+=" >=net-libs/http-parser-2.8.1"
