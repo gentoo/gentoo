@@ -76,7 +76,7 @@ xfce-extra/eatmonkey
 dev-ml/ocaml-data-notation
 
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
-# LibreSSL support is discontinued.  Plaase read the relevant news item
+# LibreSSL support is discontinued.  Please read the relevant news item
 # and either migrate to dev-libs/openssl, or use the unsupported
 # user-maintained libressl overlay.
 # Removal on 2021-05-01.  Bug #762847.
