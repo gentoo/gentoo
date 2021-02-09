@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,8 @@ src_prepare() {
 	eapply "${FILESDIR}/7.3.1-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}/7.3.2-py37-distutils-cxx.patch"
+	# https://foss.heptapod.net/pypy/pypy/-/issues/3396
+	eapply "${FILESDIR}/7.3.3_p37-sni-handle.patch"
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-i lib-python/3/distutils/command/install.py || die
