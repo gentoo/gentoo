@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="1"
+PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -231,7 +231,6 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
-		"${FILESDIR}/chromium-89-webcodecs-deps.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
@@ -320,6 +319,7 @@ src_prepare() {
 		third_party/devtools-frontend/src/third_party
 		third_party/dom_distiller_js
 		third_party/emoji-segmenter
+		third_party/fdlibm
 		third_party/flatbuffers
 		third_party/freetype
 		third_party/fusejs
@@ -367,6 +367,7 @@ src_prepare() {
 		third_party/markupsafe
 		third_party/mesa
 		third_party/metrics_proto
+		third_party/minigbm
 		third_party/modp_b64
 		third_party/nasm
 		third_party/nearby
