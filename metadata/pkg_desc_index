@@ -8919,7 +8919,7 @@ dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.5.0: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.2.4: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.8.1-r2: Extensions to the standard Python datetime module
-dev-python/python-debian 0.1.37: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.37 0.1.39: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 4.1.0: Python bindings to the Designate API.
 dev-python/python-discid 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.45: Gettext support, themed icons and scrollkeeper-based documentation in distutils
