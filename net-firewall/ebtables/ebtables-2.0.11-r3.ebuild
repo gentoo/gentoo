@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
-inherit toolchain-funcs autotools
+inherit autotools
 
 MY_PV="$(ver_rs 3 '-' )"
 MY_P="${PN}-${MY_PV}"
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+perl static"
 
 BDEPEND=">=app-eselect/eselect-iptables-20200508"
@@ -46,7 +46,7 @@ src_prepare() {
 
 	# Don't install perl scripts if USE=perl is disabled.
 	if ! use perl; then
-		sed -e '/sbin_SCRIPTS/ d' -i Makefile.am || die
+		sed -i -e '/^sbin_SCRIPTS/ d' Makefile.am || die
 	fi
 
 	# The bundled autotools are borked, so force a rebuild.
@@ -57,8 +57,7 @@ src_configure() {
 	econf \
 		--bindir="/bin" \
 		--sbindir="/sbin" \
-		--libdir=/$(get_libdir)/${PN} \
-		--sysconfdir="/usr/share/doc/${PF}" \
+		--libdir="/$(get_libdir)/${PN}" \
 		$(use_enable static)
 }
 
@@ -71,11 +70,13 @@ src_install() {
 
 	if ! use static; then
 		emake DESTDIR="${D}" install
-		keepdir /var/lib/ebtables/
 		newinitd "${FILESDIR}"/ebtables.initd-r1 ebtables
 		newconfd "${FILESDIR}"/ebtables.confd-r1 ebtables
 
 		find "${D}" -name '*.la' -type f -delete || die
+
+		# The ethertypes package installs this for us.
+		rm "${ED}"/etc/ethertypes || die
 	else
 		into /
 		newsbin static ebtables
@@ -83,7 +84,6 @@ src_install() {
 
 	newman ebtables-legacy.8 ebtables.8
 	einstalldocs
-	docompress -x /usr/share/doc/${PF}/ethertypes #724138
 }
 
 pkg_postinst() {

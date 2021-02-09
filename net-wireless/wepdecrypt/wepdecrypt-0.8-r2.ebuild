@@ -11,6 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="X"
+
 RDEPEND="
 	dev-libs/openssl:=
 	net-libs/libpcap
@@ -19,19 +20,28 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-	"${FILESDIR}/${P}-fltk.patch"
-	"${FILESDIR}/${P}-buffer.patch" # bug#340148.
-	"${FILESDIR}/${P}-dyn.patch"
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-fltk.patch
+	"${FILESDIR}"/${P}-buffer.patch # bug#340148.
+	"${FILESDIR}"/${P}-dyn.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
 	default
 
-	sed -i 's/make/$(MAKE)/g' Makefile || die "Sed failed"
+	sed -i \
+		-e 's/make/$(MAKE)/g' \
+		-e 's/wepdecrypt-$(VERSION)/${PF}/g' Makefile || die
 }
 
 src_configure() {
 	econf \
-		$(use X || echo --disable-gui)
+		$(use X || echo --disable-gui) \
+		--infodir=/usr/share/doc/${PF}
+}
+
+src_install() {
+	default
+	docompress -x /usr/share/man/man1
 }

@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
+# nss[utils] has /usr/bin/pp
 RDEPEND="
 	>=dev-ml/base-0.11.0:=
 	dev-ml/findlib:=
@@ -24,6 +25,7 @@ RDEPEND="
 	dev-ml/stdlib-shims:=
 	>=dev-ml/ppx_derivers-1.2.1:=
 	>=dev-ml/stdio-0.11.0:=
+	!dev-libs/nss[utils]
 "
 DEPEND="${DEPEND}
 	test? (
