@@ -1323,6 +1323,7 @@ dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
 dev-db/sqlite:secure-delete - Enable overwriting of deleted content with zeros by default (http://sqlite.org/pragma.html#pragma_secure_delete), causing some performance penalty
 dev-db/sqlite:tools - Install additional tools
 dev-db/sqlitestudio:cli - Build CLI interface
+dev-db/timescaledb:proprietary-extensions - Enable proprietary features/extensions licensed under the TimeScale License
 dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most users don't need these)
 dev-db/unixODBC:odbcmanual - Administrator, Internal Structure, Programmer and User documentation
 dev-embedded/avrdude:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
@@ -4650,7 +4651,6 @@ media-sound/ncmpcpp:clock - Enable clock screen
 media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/frequency spectrum modes
 media-sound/patchage:jack-dbus - Use Jack via D-Bus instead of libjack
-media-sound/patchage:session - Include experimental Jack session management (save/restore) support
 media-sound/picard:discid - Enable reading the ID of the inserted CD
 media-sound/picard:fingerprints - Enable calculation and lookup of AcoustID fingerprints
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
