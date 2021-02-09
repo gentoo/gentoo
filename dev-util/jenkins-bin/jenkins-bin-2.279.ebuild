@@ -3,32 +3,31 @@
 
 EAPI=7
 
-inherit user systemd
+inherit systemd
 
 DESCRIPTION="Extensible continuous integration server"
 HOMEPAGE="https://jenkins.io/"
 LICENSE="MIT"
 SRC_URI="http://mirrors.jenkins-ci.org/war/${PV}/${PN/-bin/}.war -> ${P}.war"
-RESTRICT="mirror"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux"
 IUSE=""
 
-RDEPEND="media-fonts/dejavu
+DEPEND="acct-group/jenkins
+	acct-user/jenkins"
+
+RDEPEND="acct-group/jenkins
+	acct-user/jenkins
+	media-fonts/dejavu
 	media-libs/freetype
 	!dev-util/jenkins-bin:lts
 	>=virtual/jre-1.8.0"
 
-S=${WORKDIR}
-
-JENKINS_DIR=/var/lib/jenkins
-
-pkg_setup() {
-	enewgroup jenkins
-	enewuser jenkins -1 -1 ${JENKINS_DIR} jenkins
-}
+S="${WORKDIR}"
 
 src_install() {
+	local JENKINS_DIR=/var/lib/jenkins
+
 	keepdir /var/log/jenkins ${JENKINS_DIR}/backup ${JENKINS_DIR}/home
 
 	insinto /opt/jenkins
