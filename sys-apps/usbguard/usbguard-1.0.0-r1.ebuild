@@ -12,7 +12,7 @@ SRC_URI="https://github.com/USBGuard/usbguard/releases/download/${P}/${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0/1"  # due to libusbguard.so.<1>.0.0
 KEYWORDS="~amd64 ~x86"
-IUSE="bash-completion dbus ldap policykit static-libs systemd test"
+IUSE="bash-completion dbus ldap policykit static-libs systemd test umockdev"
 
 REQUIRED_USE="policykit? ( dbus )"
 
@@ -37,6 +37,7 @@ CDEPEND="
 	)
 	ldap? ( net-nds/openldap )
 	systemd? ( sys-apps/systemd )
+	umockdev? ( dev-util/umockdev )
 	"
 RDEPEND="${CDEPEND}
 	virtual/udev
@@ -69,6 +70,7 @@ src_configure() {
 		$(use_with policykit polkit)
 		$(use_enable static-libs static)
 		$(use_enable systemd)
+		$(use_enable umockdev)
 	)
 
 	econf "${myargs[@]}"
