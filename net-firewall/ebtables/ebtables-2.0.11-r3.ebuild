@@ -70,7 +70,6 @@ src_install() {
 
 	if ! use static; then
 		emake DESTDIR="${D}" install
-		keepdir /var/lib/ebtables/
 		newinitd "${FILESDIR}"/ebtables.initd-r1 ebtables
 		newconfd "${FILESDIR}"/ebtables.confd-r1 ebtables
 
