@@ -9,7 +9,6 @@
     <flag name="argon2">Add support for ARGON2 password schemes</flag>
     <flag name="managesieve">Add managesieve protocol support</flag>
     <flag name="sieve">Add sieve support</flag>
-    <flag name="vpopmail">Add vpopmail support</flag>
     <flag name="lucene">Add lucene full text search (FTS) support using <pkg>dev-cpp/clucene</pkg></flag>
     <flag name="lzma">Add support for lzma (de)compression</flag>
     <flag name="rpc">Add support for NFS quotas</flag>
