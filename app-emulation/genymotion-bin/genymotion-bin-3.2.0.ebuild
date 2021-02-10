@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,10 +17,7 @@ LICENSE="genymotion"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-RDEPEND="|| (
-		app-emulation/virtualbox
-		app-emulation/virtualbox-bin
-	)
+RDEPEND="app-emulation/virtualbox
 	|| (
 		dev-libs/openssl-compat:1.0.0
 		=dev-libs/openssl-1.0*:0
@@ -86,7 +83,6 @@ src_install() {
 	doins -r "${MY_PN}"/{geoservices,Qt,QtGraphicalEffects,QtLocation,QtPositioning,QtQuick,QtQuick.2}
 	doins -r "${MY_PN}"/{icons,imageformats,platforms,plugins,sqldrivers,translations,xcbglintegrations}
 	doins "${MY_PN}"/libQt*
-	doins "${MY_PN}"/libqgsttools_p.so.1
 	doins "${MY_PN}"/qt.conf
 	doins "${MY_PN}"/libicu*
 
