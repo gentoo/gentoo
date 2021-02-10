@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Sam James <sam@gentoo.org> (2021-02-10)
+# dev-embedded/libftd2xx is not marked stable
+# bug #769923
+dev-embedded/urjtag ftd2xx
+
 # Sam James <sam@gentoo.org> (2021-01-27)
 # Experimental feature which may not be as secure
 # as on OpenBSD (where proper kernel support exists).
