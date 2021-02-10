@@ -6,6 +6,6 @@
 		<name>ML</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mirage/alcotest</remote-id>
+		<remote-id type="github">mirage/mirage-clock</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -16,12 +16,17 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	dev-ml/astring:=
+	dev-ml/async_unix:=
 	dev-ml/cmdliner:=
+	dev-ml/core:=
 	dev-ml/core_kernel:=
+	dev-ml/duration:=
 	dev-ml/fmt:=
+	dev-ml/mirage-clock:=
 	dev-ml/re:=
 	dev-ml/result:=
 	dev-ml/logs:=
 	dev-ml/uutf:=
+	dev-ml/uuidm:=
 "
 DEPEND="${RDEPEND}"

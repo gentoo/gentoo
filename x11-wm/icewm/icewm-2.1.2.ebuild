@@ -81,10 +81,6 @@ BDEPEND="
 	nls? ( >=sys-devel/gettext-0.19.8 )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-appmenu_fix.patch"
-)
-
 pkg_pretend() {
 	if use gdk-pixbuf && use imlib ; then
 		einfo 'Confilcting USE flags have been enabled:'
