@@ -9,8 +9,7 @@ inherit autotools linux-info lua-single systemd toolchain-funcs
 
 DESCRIPTION="Asterisk: A Modular Open Source PBX System"
 HOMEPAGE="https://www.asterisk.org/"
-SRC_URI="https://downloads.asterisk.org/pub/telephony/asterisk/releases/${P}.tar.gz
-	https://downloads.uls.co.za/gentoo/asterisk/gentoo-asterisk-patchset-4.08.tar.bz2"
+SRC_URI="https://downloads.asterisk.org/pub/telephony/asterisk/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/${PV%%.*}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
