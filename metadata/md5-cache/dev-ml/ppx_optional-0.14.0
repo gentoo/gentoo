@@ -5,10 +5,10 @@ DESCRIPTION=Pattern matching on flat options
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_optional
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/ppxlib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/result:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_optional/archive/v0.14.0.tar.gz -> ppx_optional-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=7d97bd46f1e4b4e32aa1c694aec165c3
+_md5_=edbb743c41bcb502c7b3296f06bbb4ca

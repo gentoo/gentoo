@@ -5,10 +5,10 @@ DESCRIPTION=Library for creating runtime representation of OCaml types
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/typerep
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/typerep/archive/v0.14.0.tar.gz -> typerep-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=68f98e0661f59950158781fdc0a33d78
+_md5_=177ec33c7bf2127a9901430ce3c5befd

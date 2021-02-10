@@ -4,10 +4,10 @@ DEPEND=~dev-ml/opam-core-2.0.7:= dev-ml/re:= dev-ml/opam-file-format:= dev-ml/do
 DESCRIPTION=Core libraries for opam
 EAPI=7
 HOMEPAGE=https://opam.ocaml.org/ https://github.com/ocaml/opam
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=~dev-ml/opam-core-2.0.7:= dev-ml/re:= dev-ml/opam-file-format:= dev-ml/dose3:= >=dev-lang/ocaml-4:=
 SLOT=0/2.0.7
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.7.tar.gz -> opam-2.0.7.tar.gz
 _eclasses_=opam	b4de444efce371928602cbf4cd91307e
-_md5_=a060488fec5bb9079dfbddd640077e13
+_md5_=7254c679a9063b2893ae7df2250e7ed8

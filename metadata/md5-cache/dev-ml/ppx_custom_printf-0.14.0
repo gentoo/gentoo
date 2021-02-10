@@ -5,10 +5,10 @@ DESCRIPTION=Printf-style format-strings for user-defined string conversion
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_custom_printf
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppx_sexp_conv-0.14.1:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_custom_printf/archive/v0.14.0.tar.gz -> ppx_custom_printf-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=6500615a133d978c514dfa73524cff0e
+_md5_=666cd25cc42f7f70c9be6bac9b778684

@@ -5,10 +5,10 @@ DESCRIPTION=Pure OCaml library that allows replacing Pervasives with Stdlib befo
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/stdlib-shims
 IUSE=ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0
 SRC_URI=https://github.com/ocaml/stdlib-shims/releases/download/0.2.0/stdlib-shims-0.2.0.tbz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=96bfc495ca8297816d6184606249f41e
+_md5_=35d939f2782fd963c0ae999383db1374

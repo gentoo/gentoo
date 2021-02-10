@@ -5,10 +5,10 @@ DESCRIPTION=Randomized testing framework, designed for compatibility with Base
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/base_quickcheck
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_base-0.14.0:= >=dev-ml/ppx_fields_conv-0.14.1:= >=dev-ml/ppx_let-0.14.0:= >=dev-ml/ppx_sexp_message-0.14.0:= >=dev-ml/ppx_sexp_value-0.14.0:= dev-ml/splittable_random:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/base_quickcheck/archive/v0.14.0.tar.gz -> base_quickcheck-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=8302d68cb59178d8f9a9aa9c03cf496d
+_md5_=ae730d967e550b7dafc420183acb7c89
