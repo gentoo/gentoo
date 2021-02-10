@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dbuenzli/uuidm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 BDEPEND="
