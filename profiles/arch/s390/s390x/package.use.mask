@@ -3,5 +3,6 @@
 
 # Sam James <sam@gentoo.org> (2021-02-05)
 # libpcre2 has JIT support for s390x (not s390)
-dev-libs/libpcre2 -jit
-dev-vcs/git -pcre-jit
+# but it doesn't seem to build right now?
+dev-libs/libpcre2 jit
+dev-vcs/git pcre-jit
