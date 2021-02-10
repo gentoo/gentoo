@@ -5550,7 +5550,7 @@ dev-libs/libucl 0.8.1-r1 0.8.1-r100 9999: Universal configuration library parser
 dev-libs/libudfread 1.1.0 1.1.1 9999: Library for reading UDF from raw devices and image files
 dev-libs/libuev 2.2.0 2.3.0 2.3.1: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.7: Lib for the use of linux kernel's sysfs gpio interface from C programs
-dev-libs/libunibreak 4.0 4.1 4.2: Line and word breaking library
+dev-libs/libunibreak 4.0 4.1 4.2 4.3: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
