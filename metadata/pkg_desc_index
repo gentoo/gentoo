@@ -11987,7 +11987,7 @@ gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositor
 gui-apps/wf-shell 0.5.0 0.6.1 0.7.0 9999: A compiz like 3D wayland compositor
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
-gui-libs/display-manager-init 1.0-r1: RC init files for starting display and login managers
+gui-libs/display-manager-init 1.0-r1 1.0-r2: RC init files for starting display and login managers
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
