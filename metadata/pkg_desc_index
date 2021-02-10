@@ -10484,7 +10484,7 @@ dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.4.0: Guile bindings of git
-dev-scheme/guile-json 4.5.1: JSON module for Guile
+dev-scheme/guile-json 4.5.1 4.5.2: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -18025,7 +18025,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.150 89.0.4389.40 90.0.4408.0: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.150 89.0.4389.40 90.0.4412.3: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
