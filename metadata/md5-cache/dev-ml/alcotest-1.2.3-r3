@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/astring:= dev-ml/async_unix:= dev-ml/cmdliner:= dev-ml/core:= dev-ml/core_kernel:= dev-ml/duration:= >=dev-ml/fmt-0.8.9:= dev-ml/mirage-clock:= dev-ml/re:= dev-ml/result:= dev-ml/logs:= dev-ml/uutf:= dev-ml/uuidm:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=A lightweight and colourful test framework
+EAPI=7
+HOMEPAGE=https://github.com/mirage/alcotest/
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/astring:= dev-ml/async_unix:= dev-ml/cmdliner:= dev-ml/core:= dev-ml/core_kernel:= dev-ml/duration:= >=dev-ml/fmt-0.8.9:= dev-ml/mirage-clock:= dev-ml/re:= dev-ml/result:= dev-ml/logs:= dev-ml/uutf:= dev-ml/uuidm:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/1.2.3
+SRC_URI=https://github.com/mirage/alcotest/archive/1.2.3.tar.gz -> alcotest-1.2.3.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=ed9929604e8b4b690d43cf9d96eb48e7

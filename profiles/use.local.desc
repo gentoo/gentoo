@@ -6114,7 +6114,6 @@ net-mail/dovecot:rpc - Add support for NFS quotas
 net-mail/dovecot:sieve - Add sieve support
 net-mail/dovecot:solr - Add solr full text search (FTS) support
 net-mail/dovecot:textcat - Add libtextcat language guessing support for full text search (FTS)
-net-mail/dovecot:vpopmail - Add vpopmail support
 net-mail/dovecot:zstd - Add support for zstd (de)compression
 net-mail/fetchmail:socks - Enable support for socks proxy
 net-mail/fetchmail:tk - Enable support for Tk GUI toolkit, in particular it installs fetchmailconf
