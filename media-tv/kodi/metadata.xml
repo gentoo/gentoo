@@ -12,7 +12,7 @@
 		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to bind to privileged ports as non-root</flag>
 		<flag name="cec">Enable support for HDMI-CEC devices via libcec</flag>
 		<flag name="gbm">Use the Graphics Buffer Manager for EGL on KMS.</flag>
-		<flag name="gles">Enable support for GLES</flag>
+		<flag name="gles">Use simplified OpenGLES instead of full-scale OpenGL</flag>
 		<flag name="lirc">Enable support for IR remote controls using <pkg>app-misc/lirc</pkg></flag>
 		<flag name="mariadb">Enable support store of media library metadata on local or remote MariaDB</flag>
 		<flag name="mysql">Enable support store of media library metadata on local or remote MySQL</flag>
