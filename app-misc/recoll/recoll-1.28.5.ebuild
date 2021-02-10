@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..9} )
 
-inherit eutils linux-info optfeature python-single-r1 qmake-utils
+inherit linux-info optfeature python-single-r1 qmake-utils
 
 DESCRIPTION="A personal full text search package"
 HOMEPAGE="https://www.lesbonscomptes.com/recoll/"
@@ -100,7 +100,7 @@ src_configure() {
 }
 
 src_install() {
-	emake STRIP="$(type -P true)" DESTDIR="${D}" install
+	emake STRIP="$(type -P true || die)" DESTDIR="${D}" install
 	python_optimize
 
 	# html docs should be placed in /usr/share/doc/${PN}/html
