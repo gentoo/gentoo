@@ -1,11 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-01-19)
-# app-text/dblatex not yet keyworded
-# bug #766186
-dev-util/ragel doc
-
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
 sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
