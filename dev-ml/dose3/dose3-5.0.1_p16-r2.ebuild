@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ml/cudf:=[ocamlopt=]
 	>=dev-ml/extlib-1.7.0:=[ocamlopt=]
 	>=dev-ml/ocamlgraph-1.8.6:=[ocamlopt=]
+	<dev-ml/ocamlgraph-1.8.9:=[ocamlopt=]
 	dev-ml/re:=[ocamlopt=]
 	parmap? ( dev-ml/parmap:=[ocamlopt=] )
 	zip? ( dev-ml/camlzip:=[ocamlopt=] )
