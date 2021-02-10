@@ -9,4 +9,4 @@ RDEPEND=x11-wm/awesome
 SLOT=0
 SRC_URI=https://github.com/vicious-widgets/vicious/archive/v2.5.0.tar.gz -> vicious-2.5.0.tar.gz
 _eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
-_md5_=e13cdcbaa355e9bc72cce73e6bfd0bf2
+_md5_=ef248d8ca3b5df7d712a70b9637429ed
