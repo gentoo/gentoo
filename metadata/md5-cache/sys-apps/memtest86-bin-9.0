@@ -1,0 +1,10 @@
+BDEPEND=app-arch/unzip sys-fs/fatcat
+DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+DESCRIPTION=Stand alone memory testing software for x86 computers
+EAPI=7
+HOMEPAGE=http://www.memtest86.com/
+LICENSE=PassMark-EULA
+SLOT=0
+SRC_URI=https://www.memtest86.com/downloads/memtest86-usb.zip -> memtest86-bin-9.0.zip
+_eclasses_=mount-boot	060ced4c5e0fd737db17cbb609bbf557
+_md5_=e759ae9fd3933b6ae212fe5003aa96af
