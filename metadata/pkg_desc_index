@@ -8299,7 +8299,7 @@ dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.24.0 1.25.1 1.26.0: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.24.0 1.25.0: Google Authentication Library
+dev-python/google-auth 1.24.0 1.25.0 1.26.0: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
@@ -8701,7 +8701,7 @@ dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
 dev-python/prometheus_client 0.9.0: Python client for the Prometheus monitoring system
-dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9 3.0.10 3.0.11 3.0.13 3.0.14: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9 3.0.10 3.0.11 3.0.13 3.0.14 3.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
@@ -9250,7 +9250,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2 3.21.3 3.21.4: virtualenv-based automation of test activities
-dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0 4.56.1: Add a progress meter to your loops in a second
+dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0 4.56.1 4.56.2: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.6: A lightweight, object-oriented state machine implementation in Python
