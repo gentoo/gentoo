@@ -5837,7 +5837,7 @@ dev-ml/csv 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.9: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dns 1.0.0: A pure OCaml implementation of the DNS protocol
-dev-ml/dose3 5.0.1-r1 5.0.1_p16-r2: Library to perform analysis on package repositories
+dev-ml/dose3 5.0.1-r2 5.0.1_p16-r2: Library to perform analysis on package repositories
 dev-ml/dune 2.1.0 2.7.1 2.8.2: A composable build system for OCaml
 dev-ml/dune-configurator 2.7.1 2.8.2-r1: A composable build system for OCaml
 dev-ml/dune-private-libs 2.7.1 2.8.2-r1: A composable build system for OCaml
