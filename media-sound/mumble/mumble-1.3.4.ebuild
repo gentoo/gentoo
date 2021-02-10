@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ else
 			https://dl.mumble.info/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P/_*}"
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="BSD MIT"
@@ -151,7 +151,7 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	echo
-	elog "Visit http://mumble.sourceforge.net/ for futher configuration instructions."
+	elog "Visit https://wiki.mumble.info/ for futher configuration instructions."
 	elog "Run mumble-overlay to start the OpenGL overlay (after starting mumble)."
 	echo
 }

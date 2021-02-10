@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml"
 
 inherit meson python-any-r1 vala xdg-utils
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="gpg gtk-doc +introspection +man pkcs7 test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+IUSE="gpg gtk-doc +introspection +man pkcs7 test vala"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib:=
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/glib:2
 	)
 	introspection? ( dev-libs/gobject-introspection:= )
 	pkcs7? ( net-libs/gnutls )
-	dev-lang/vala:="
+	vala? ( dev-lang/vala:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	$(python_gen_any_dep '
@@ -47,8 +47,7 @@ python_check_deps() {
 
 src_prepare() {
 	xdg_environment_reset
-# TODO: make vala optional
-	vala_src_prepare
+	use vala && vala_src_prepare
 	default
 }
 
@@ -60,6 +59,7 @@ src_configure() {
 		$(meson_use man)
 		$(meson_use pkcs7)
 		$(meson_use test tests)
+		$(meson_use vala vapi)
 	)
 	meson_src_configure
 }
