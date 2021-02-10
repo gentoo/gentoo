@@ -3549,7 +3549,7 @@ dev-db/libdbi-drivers 0.9.0-r1: The libdbi-drivers project maintains drivers for
 dev-db/libiodbc 3.52.12: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
 dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool library
-dev-db/lmdb 0.9.23 0.9.24 0.9.27: An ultra-fast, ultra-compact key-value embedded data store
+dev-db/lmdb 0.9.23 0.9.24 0.9.26 0.9.27: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.2.35 10.2.36 10.3.23-r3 10.3.25 10.3.26 10.3.27 10.4.13-r3 10.4.15 10.4.16 10.4.17 10.5.6 10.5.7 10.5.8: An enhanced, drop-in replacement for MySQL
@@ -15372,7 +15372,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 2021.02.10 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17560,8 +17560,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.4.95 5.4.96 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1 5.10.13 5.10.14: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.4.97 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14 5.10.15: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.4.95 5.4.96 5.4.97 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1 5.10.13 5.10.14 5.10.15: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.251 4.4.252 4.4.253 4.4.254 4.4.255 4.4.256 4.4.257 4.9.246 4.9.251 4.9.252 4.9.253 4.9.254 4.9.255 4.9.256 4.9.257 4.14.209 4.14.215 4.14.216 4.14.217 4.14.218 4.14.219 4.14.220 4.14.221 4.19.160 4.19.168 4.19.169 4.19.170 4.19.171 4.19.172 4.19.173 4.19.174 4.19.175 5.4.80-r1 5.4.90 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.4.97 5.10.8 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14 5.10.15: Full sources including the Gentoo patchset for the 5.10 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6 5.11_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17576,7 +17576,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.1
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.80 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.4.97 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14 5.10.15: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.257 4.9.257 4.14.221 4.19.175 5.4.97 5.10.15: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.6 5.10.10: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17757,7 +17757,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.4.97 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14 5.10.15: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
