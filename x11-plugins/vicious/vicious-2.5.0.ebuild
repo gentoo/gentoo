@@ -18,7 +18,7 @@ RDEPEND="x11-wm/awesome"
 
 src_install() {
 	insinto /usr/share/awesome/lib/vicious
-	doins -r widgets helpers.lua init.lua
+	doins -r widgets spawn.lua helpers.lua init.lua
 
 	if use contrib; then
 		insinto /usr/share/awesome/lib/vicious/contrib
