@@ -25,6 +25,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc emacs"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	dev-lang/erlang
 "
