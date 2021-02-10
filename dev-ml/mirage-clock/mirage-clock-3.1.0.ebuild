@@ -11,5 +11,5 @@ SRC_URI="https://github.com/mirage/mirage-clock/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+ocamlopt"
