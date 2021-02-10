@@ -5,10 +5,10 @@ DESCRIPTION=Binary protocol generator
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/bin_prot
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppx_compare-0.14.0:= >=dev-ml/ppx_custom_printf-0.14.0:= >=dev-ml/ppx_fields_conv-0.14.0:= >=dev-ml/ppx_optcomp-0.14.0:= >=dev-ml/ppx_sexp_conv-0.14.0:= >=dev-ml/ppx_variants_conv-0.14.0:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/bin_prot/archive/v0.14.0.tar.gz -> bin_prot-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=29fbe929bff44748f7cce46a149e6715
+_md5_=831c2c089696ff00bc5aefdf6c9127f2

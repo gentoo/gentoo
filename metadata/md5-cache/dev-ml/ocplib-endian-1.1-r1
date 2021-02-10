@@ -5,11 +5,11 @@ DESCRIPTION=Functions to read and write int16/32/64 from strings, bytes, and big
 EAPI=7
 HOMEPAGE=https://github.com/OCamlPro/ocplib-endian
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=test
 SLOT=0/1.1
 SRC_URI=https://github.com/OCamlPro/ocplib-endian/archive/1.1.tar.gz -> ocplib-endian-1.1.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=31cf79d97d1daab81d4e974b567fe7e2
+_md5_=77fb429798142ba3e6bb90a32ad848cb

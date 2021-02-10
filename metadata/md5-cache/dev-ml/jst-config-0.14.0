@@ -5,10 +5,10 @@ DESCRIPTION=Compile-time configuration for Jane Street libraries
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/jst-config
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/base:= dev-ml/ppx_assert:= dev-ml/stdio:= dev-ml/dune-configurator:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/jst-config/archive/v0.14.0.tar.gz -> jst-config-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=a25d8855a8091fc0cb2d900defe362b3
+_md5_=93db7f0afa1d4621265b47c24013bd60

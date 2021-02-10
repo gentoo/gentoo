@@ -5,10 +5,10 @@ DESCRIPTION=Code style checker for Jane Street Packages
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_js_style
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= dev-ml/octavius:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_js_style/archive/v0.14.0.tar.gz -> ppx_js_style-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=8a90fc800b8c7912f0554a784018174e
+_md5_=8f967e1f78932050239778e343da920b

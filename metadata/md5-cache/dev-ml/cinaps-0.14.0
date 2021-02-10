@@ -5,11 +5,11 @@ DESCRIPTION=Trivial metaprogramming tool
 EAPI=7
 HOMEPAGE=https://github.com/ocaml-ppx/cinaps
 IUSE=+ocamlopt test
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/findlib:= dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/ocaml-ppx/cinaps/archive/v0.14.0.tar.gz -> cinaps-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=07b8ad123d9cf27fd5eb88acbf576376
+_md5_=42115665924ed23a5730b61ac2f5b7d4

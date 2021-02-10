@@ -5,10 +5,10 @@ DESCRIPTION=Reports the current time
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/time_now
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/base:= dev-ml/jane-street-headers:= dev-ml/jst-config:= dev-ml/ppx_base:= dev-ml/ppx_optcomp:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/time_now/archive/v0.14.0.tar.gz -> time_now-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=cee573ebcf20ea2e287bb01510759db8
+_md5_=b5a70022946af9ac8e77d125cbb5deaa

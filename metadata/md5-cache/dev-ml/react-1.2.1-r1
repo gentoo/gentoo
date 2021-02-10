@@ -5,11 +5,11 @@ DESCRIPTION=OCaml module for functional reactive programming
 EAPI=7
 HOMEPAGE=http://erratique.ch/software/react https://github.com/dbuenzli/react
 IUSE=test
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.2.1
 SRC_URI=http://erratique.ch/software/react/releases/react-1.2.1.tbz
 _eclasses_=opam	b4de444efce371928602cbf4cd91307e
-_md5_=8728cbb7710722504bcddb28d3211016
+_md5_=f5324748a50c2419b8770887c0954038

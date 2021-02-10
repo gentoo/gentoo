@@ -5,10 +5,10 @@ DESCRIPTION=PRNG that can be split into independent streams
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/splittable_random
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/ppx_assert:= dev-ml/ppx_bench:= dev-ml/ppx_inline_test:= dev-ml/ppx_sexp_message:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/splittable_random/archive/v0.14.0.tar.gz -> splittable_random-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=02fa5a6a0d281f711d1da92bed64ee48
+_md5_=2c2b92f30636cc88d027baba46782cc5
