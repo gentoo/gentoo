@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit meson xdg
 
 DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
