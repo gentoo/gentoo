@@ -2066,7 +2066,7 @@ app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment 
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.4-r5: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
-app-emulation/open-vm-tools 11.2.0_p16938113-r1: Opensourced tools for VMware guests
+app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/podman 2.2.1: Library and podman tool for running OCI-based containers in Pods
@@ -8839,7 +8839,7 @@ dev-python/pypugjs 5.9.5 5.9.8: Pug (Jade) syntax adapter for Django, Jinja2 and
 dev-python/pypy 7.3.3: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.3: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.3 7.3.3_p37: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3 7.3.3 7.3.3_p37-r1: A fast, compliant alternative implementation of the Python (3.7) language
 dev-python/pypy3-exe 7.3.3 7.3.3_p37: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.3 7.3.3_p37: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
@@ -17509,7 +17509,7 @@ sys-fs/lvm2 2.02.187-r2 2.03.11: User-land utilities for LVM2 (device-mapper) so
 sys-fs/lxcfs 4.0.7: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
-sys-fs/mergerfs 2.28.3-r1 2.29.0 2.30.0 2.31.0 2.32.0 2.32.1 2.32.2: A featureful union filesystem
+sys-fs/mergerfs 2.32.1 2.32.2 2.32.3: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 2.1.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)

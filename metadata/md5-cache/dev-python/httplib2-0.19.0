@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/h/httplib2/httplib2-0.19.0.tar.gz
 _eclasses_=distutils-r1	e8980b05bfb91c37dea52d0da131ef6c	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	f1d4277b3ad100890cbd62e137f0a769	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=25caebe32e9feac9bfb6f32455acf1fc
+_md5_=e7d53c298217e34611ed8cd3ac50441e
