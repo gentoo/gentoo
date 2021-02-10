@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=test? ( dev-ml/alcotest ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Duration - conversions to various time units
+EAPI=7
+HOMEPAGE=https://github.com/hannesm/duration
+IUSE=+ocamlopt test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
+SLOT=0/0.1.3
+SRC_URI=https://github.com/hannesm/duration/archive/0.1.3.tar.gz -> duration-0.1.3.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=bced6c1c8cdb40fc9f54fb40149cfcb2

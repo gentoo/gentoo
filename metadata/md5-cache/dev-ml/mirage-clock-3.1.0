@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=A lightweight and colourful test framework
+EAPI=7
+HOMEPAGE=https://github.com/mirage/mirage-clock
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/3.1.0
+SRC_URI=https://github.com/mirage/mirage-clock/archive/v3.1.0.tar.gz -> mirage-clock-3.1.0.tar.gz
+_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_md5_=1a798043fdac7139eda1a79aedc4af36
