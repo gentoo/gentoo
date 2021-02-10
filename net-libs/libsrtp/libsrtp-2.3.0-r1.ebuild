@@ -42,6 +42,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# autoconf-2.7x fix
+	touch ar-lib || die
+
 	eautoreconf
 
 	if use doc; then
