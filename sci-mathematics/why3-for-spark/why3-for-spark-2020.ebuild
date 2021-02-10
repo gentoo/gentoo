@@ -20,7 +20,7 @@ RESTRICT="strip"
 DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	>=dev-ml/ocamlbuild-0.14.0
 	dev-ml/menhir:=
-	dev-ml/num:=
+	<dev-ml/num-1.4:=
 	dev-ml/yojson:=
 	coq? (
 		>=sci-mathematics/coq-8.9.1
