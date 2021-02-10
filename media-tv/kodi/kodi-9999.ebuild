@@ -39,11 +39,10 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus gbm gles lcms libressl libusb lirc mariadb mysql nfs +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	^^ ( gles opengl )
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
@@ -53,7 +52,7 @@ REQUIRED_USE="
 	power-control? ( dbus )
 	vdpau? (
 		X
-		opengl
+		!gles
 		!gbm
 	)
 	zeroconf? ( dbus )
@@ -119,7 +118,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	>=net-misc/curl-7.68.0[http2]
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
-	opengl? ( media-libs/glu )
+	!gles? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
 	raspberry-pi? (
@@ -132,7 +131,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva:=
-		opengl? ( x11-libs/libva[opengl] )
+		!gles? ( x11-libs/libva[opengl] )
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
 		vdpau? ( x11-libs/libva[vdpau] )
 		wayland? ( x11-libs/libva[wayland] )
@@ -152,7 +151,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
 	X? (
 		media-libs/mesa[X]
-		opengl? ( media-libs/libglvnd[X] )
+		!gles? ( media-libs/libglvnd[X] )
 		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
@@ -284,7 +283,7 @@ src_configure() {
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
 		-DENABLE_OPENGLES=$(usex gles)
-		-DENABLE_OPENGL=$(usex opengl)
+		-DENABLE_OPENGL=$(usex !gles)
 		-DENABLE_OPTICAL=$(usex optical)
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
@@ -302,13 +301,13 @@ src_configure() {
 		-Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
-		-DAPP_RENDER_SYSTEM="$(usex opengl gl gles)"
+		-DAPP_RENDER_SYSTEM="$(usex gles gles gl)"
 		-DCORE_PLATFORM_NAME="${core_platform_name}"
 	)
 
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 
-	use X && use opengl && mycmakeargs+=( -DENABLE_GLX=ON )
+	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
 
 	if use system-ffmpeg; then
 		mycmakeargs+=( -DWITH_FFMPEG="yes" )
