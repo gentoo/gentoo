@@ -15217,7 +15217,7 @@ net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
 net-misc/nemesis 1.7-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2-r1: utility to synchronize the time with ntp-servers
 net-misc/netevent 2.0_p20200217: Tool to share Linux event devices with other machines
-net-misc/netifrc 0.7.1-r1 0.7.1-r2 0.7.2 9999: Gentoo Network Interface Management Scripts
+net-misc/netifrc 0.7.1-r1 0.7.1-r2 0.7.2 0.7.3 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
@@ -17461,7 +17461,7 @@ sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1 4.2: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.2: Btrfs and xfs deduplication utility
-sys-fs/e2fsprogs 1.45.6 1.45.7 1.46.0: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.45.6 1.45.7 1.46.0 1.46.1: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 111_p20170609-r1: eCryptfs userspace utilities
@@ -17588,7 +17588,7 @@ sys-libs/cracklib 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r3 4.3.29_p1-r3 4.4.20_p4-r3 4.5.20_p2-r3 4.5.20_p2-r4 4.6.21_p4-r2 4.6.21_p4-r3 4.7.25_p4-r2 4.7.25_p4-r3 4.8.30-r3 4.8.30-r4 5.1.29-r2 5.3.28-r2 5.3.28-r4 5.3.28-r5 6.0.35-r2 6.0.35-r3 6.1.38 6.2.38 18.1.32 18.1.40: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.45.6 1.45.7 1.46.0: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.45.6 1.45.7 1.46.0 1.46.1: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.5 1.6.6: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
