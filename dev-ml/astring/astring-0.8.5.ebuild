@@ -11,7 +11,7 @@ SRC_URI="https://erratique.ch/software/astring/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 OCAML_DEP=">=dev-lang/ocaml-4.05.0:="
 BDEPEND="
