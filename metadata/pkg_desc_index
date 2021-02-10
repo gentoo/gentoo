@@ -9983,7 +9983,7 @@ dev-ruby/fivemat 1.3.7: MiniTest/RSpec/Cucumber formatter that gives each test f
 dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/flickraw 0.9.10: A library to access flickr api in a simple way
 dev-ruby/flog 4.6.4: Flog reports the most tortured code in an easy to read pain report
-dev-ruby/font-awesome-rails 4.7.0.5 4.7.0.6: Font-awesome for the asset pipeline
+dev-ruby/font-awesome-rails 4.7.0.5 4.7.0.6 4.7.0.7: Font-awesome for the asset pipeline
 dev-ruby/forgery 0.8.1: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0-r1: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.5.0-r1 2.5.1: Instafailing RSpec progress bar formatter
