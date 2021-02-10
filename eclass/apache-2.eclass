@@ -507,7 +507,7 @@ apache-2_src_prepare() {
 
 	# Don't rename configure.in _before_ any possible user patches!
 	if [[ -f "configure.in" ]] ; then
-		elog "Renaming configure.in to configure.ac"
+		einfo "Renaming configure.in to configure.ac"
 		mv configure.{in,ac} || die
 	fi
 
