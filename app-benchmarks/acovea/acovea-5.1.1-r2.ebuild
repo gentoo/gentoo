@@ -1,26 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
 DESCRIPTION="Analysis of Compiler Options via Evolutionary Algorithm"
 HOMEPAGE="http://www.coyotegulch.com/products/acovea/"
 SRC_URI="http://www.coyotegulch.com/distfiles/lib${P}.tar.gz"
+S="${WORKDIR}/lib${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="static-libs"
 
 RDEPEND="
 	>=dev-libs/libcoyotl-3.1.0:=
 	>=dev-libs/libevocosm-3.3.0:=
 	dev-libs/expat:="
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/lib${P}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-asneeded.patch
@@ -37,11 +35,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
