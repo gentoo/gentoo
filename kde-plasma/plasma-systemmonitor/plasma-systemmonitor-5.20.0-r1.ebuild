@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/plasma/plasma-systemmonitor"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="|| ( GPL-3 GPL-2 )"
