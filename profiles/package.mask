@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-11)
+# Needs some workarounds in mozilla ebuilds
+# https://bugs.gentoo.org/768543
+=dev-lang/rust-1.50.0
+=dev-lang/rust-bin-1.50.0
+=virtual/rust-1.50.0
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
 # Does not build against vdr-2.4.  Last release in ~2006.
 # Upstream repository is gone.
