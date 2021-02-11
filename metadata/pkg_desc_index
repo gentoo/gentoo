@@ -7964,7 +7964,7 @@ dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highli
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0 2.1.1: A client for the OpenStack Aodh API
 dev-python/apipkg 1.5-r1: Namespace control and lazy-import mechanism
-dev-python/apispec 3.3.0 4.2.0: A pluggable API specification generator.
+dev-python/apispec 3.3.0 4.2.0 4.3.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.4-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.32.2_p1: APSW - Another Python SQLite Wrapper
 dev-python/argcomplete 1.12.2-r1: Bash tab completion for argparse
@@ -8380,15 +8380,15 @@ dev-python/isort 4.3.21_p2-r1 5.6.3 5.7.0: A python utility/library to sort impo
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.1.0-r1 3.2.0: Classes used by other projects by developer jaraco
-dev-python/jaraco-collections 3.0.0-r1 3.1.0: Models and classes to supplement the stdlib collections module
+dev-python/jaraco-collections 3.0.0-r1 3.1.0 3.2.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 3.0.0-r1 4.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.0.0-r1 2.1.0: Classes for orchestrating Python (virtual) environments.
-dev-python/jaraco-functools 3.0.1-r1 3.1.0: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-functools 3.0.1-r1 3.1.0 3.2.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r2 3.1.0: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 8.1.1-r1 8.2.0: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0-r1: Routines for handling streaming data
-dev-python/jaraco-text 3.2.0-r1 3.4.0: Text utilities used by other projects by developer jaraco
+dev-python/jaraco-text 3.2.0-r1 3.4.0 3.5.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.17.2-r1 0.18.0: Autocompletion library for Python
 dev-python/jeepney 0.6.0: Low-level, pure Python DBus protocol wrapper
