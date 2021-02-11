@@ -1,43 +1,34 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic multilib toolchain-funcs
 
 MY_P="wmii+ixp-${PV}"
 
 DESCRIPTION="A dynamic window manager for X11"
-HOMEPAGE="http://wmii.suckless.org/"
+HOMEPAGE="https://github.com/0intro/wmii"
 SRC_URI="http://dl.suckless.org/wmii/${MY_P}.tbz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE=""
-
-CDEPEND="
-	>=sys-libs/libixp-0.5_p20110208-r3
-	x11-libs/libXft
-	x11-libs/libXext
-	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libX11
-	x11-libs/libXinerama
-	>=media-libs/freetype-2
-"
-
-RDEPEND="
-	${CDEPEND}
-	x11-apps/xmessage
-	x11-apps/xsetroot
-	media-fonts/font-misc-misc
-"
 
 DEPEND="
-	${CDEPEND}
-	virtual/pkgconfig
-"
+	media-libs/freetype
+	>=sys-libs/libixp-0.5_p20110208-r3
+	x11-libs/libXext
+	x11-libs/libXft
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+	x11-libs/libXrender
+	x11-libs/libX11"
+RDEPEND="${DEPEND}
+	media-fonts/font-misc-misc
+	x11-apps/xmessage
+	x11-apps/xsetroot"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -61,11 +52,16 @@ src_prepare() {
 	)
 
 	# punt internal copy of sys-libs/libixp #323037
-	rm -f include/ixp{,_srvutil}.h || die
+	rm include/ixp{,_srvutil}.h || die
 	sed -i -e '/libixp/d' Makefile || die
 
 	sed -i -e "/BINSH \!=/d" mk/hdr.mk || die #335083
 	sed -i -e 's/-lXext/& -lXrender -lX11/' cmd/Makefile || die #369115
+}
+
+src_configure() {
+	append-flags -fcommon
+	default
 }
 
 src_compile() {
@@ -81,5 +77,5 @@ src_install() {
 	doexe "${T}/${PN}"
 
 	insinto /usr/share/xsessions
-	doins "${FILESDIR}/${PN}.desktop"
+	doins "${FILESDIR}"/${PN}.desktop
 }
