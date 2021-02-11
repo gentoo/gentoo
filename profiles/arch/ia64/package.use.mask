@@ -153,10 +153,6 @@ media-gfx/shotwell opencv
 # does not define those.
 media-sound/lame debug
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-07-25)
-# USE=server does not compile and needs upstream fix: bug #662040
->=sys-devel/gdb-8.1 server
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Needs sys-apps/fakechroot which isn't keyworded
 app-arch/rpm test
