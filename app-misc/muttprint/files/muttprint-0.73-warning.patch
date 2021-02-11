@@ -1,6 +1,5 @@
-diff -Nur a/muttprint b/muttprint
---- a/muttprint	2012-04-28 13:46:46.109925472 +0200
-+++ b/muttprint	2012-04-28 13:48:40.919924827 +0200
+--- a/muttprint
++++ b/muttprint
 @@ -740,6 +740,8 @@
  	}
  }
