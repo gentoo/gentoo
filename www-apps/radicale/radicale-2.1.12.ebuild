@@ -3,6 +3,7 @@
 
 EAPI="7"
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 eutils systemd
@@ -22,41 +23,14 @@ IUSE="+bcrypt"
 RDEPEND="
 	acct-user/radicale
 	acct-group/radicale
-	sys-apps/util-linux
 	>=dev-python/vobject-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.7.3[${PYTHON_USEDEP}]
+	sys-apps/util-linux
 	bcrypt? ( dev-python/passlib[bcrypt,${PYTHON_USEDEP}] )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 RDIR=/var/lib/${PN}
-
-#pkg_pretend() {
-#	if [[ -f ${RDIR}/.props && ${MERGE_TYPE} != buildonly ]]; then
-#		eerror "It looks like you have a version 1 database in ${RDIR}."
-#		eerror "You must convert this database to version 2 format before upgrading."
-#		eerror "You may want to back up the old database before migrating."
-#		eerror
-#		eerror "If you have kept the Gentoo-default database configuration, this will work:"
-#		eerror "1. Stop any running instance of Radicale."
-#		eerror "2. Run \`radicale --export-storage ~/radicale-exported\`."
-#		eerror "3. Run \`chown -R radicale: ~/radicale-exported\`"
-#		eerror "4. Run \`mv \"${RDIR}\" \"${RDIR}.old\"\`."
-#		eerror "5. Install Radicale version 2."
-#		eerror "6. Run \`mv ~/radicale-exported \"${RDIR}/collections\"\`."
-#		eerror
-#		eerror "For more details, or if you are have a more complex configuration,"
-#		eerror "please see the migration guide: https://radicale.org/1to2/"
-#		eerror "If you do a custom migration, please ensure the database is cleaned out of"
-#		eerror "${RDIR}, including the hidden .props file."
-#		die
-#	fi
-#}
-
-#pkg_setup() {
-#	enewgroup ${PN}
-#	enewuser ${PN} -1 -1 ${RDIR} ${PN}
-#}
 
 python_install_all() {
 	rm README* || die
