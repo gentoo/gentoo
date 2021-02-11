@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-1/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
