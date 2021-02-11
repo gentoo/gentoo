@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -69,6 +69,7 @@ RDEPEND="
 	sys-devel/gettext
 	sys-libs/ncurses:0=
 	sys-libs/readline:=
+	virtual/acl
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
@@ -103,7 +104,7 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	selinux? ( >=sys-libs/libselinux-2.0.85 )
 	virt-network? (
-		net-dns/dnsmasq[script]
+		net-dns/dnsmasq[dhcp,ipv6,script]
 		net-firewall/ebtables
 		>=net-firewall/iptables-1.4.10[ipv6]
 		net-misc/radvd
@@ -209,12 +210,15 @@ pkg_setup() {
 	if [[ -n ${CONFIG_CHECK} ]]; then
 		linux-info_pkg_setup
 	fi
+
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
 	touch "${S}/.mailmap" || die
 
 	default
+	python_fix_shebang .
 
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
@@ -290,6 +294,12 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig || die
 	rm -rf "${D}"/var || die
 	rm -rf "${D}"/run || die
+
+	# Fix up doc paths for revisions
+	if [ $PV != $PVR ]; then
+		mv "${D}"/usr/share/doc/${PN}-${PV}/* "${D}"/usr/share/doc/${PF} || die
+		rmdir "${D}"/usr/share/doc/${PN}-${PV} || die
+	fi
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
