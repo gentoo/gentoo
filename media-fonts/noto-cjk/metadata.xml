@@ -5,8 +5,4 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>pacho@gentoo.org</email>
-		<name>Pacho Ramos</name>
-	</maintainer>
 </pkgmetadata>
