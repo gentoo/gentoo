@@ -40,10 +40,6 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
-PATCHES=(
-	"${FILESDIR}/${P}-gcc10.patch"
-)
-
 src_prepare() {
 	default
 
