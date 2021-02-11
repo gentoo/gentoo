@@ -141,13 +141,6 @@ sys-power/ncpufreqd
 # Removal in 30 days. Bug #744013
 app-text/csvfix
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-01-26)
-# In preparation. Do not use yet.
-~dev-lang/perl-5.32.1
-=virtual/perl-Data-Dumper-2.174.10_rc
-=virtual/perl-Module-CoreList-5.202.101.230
-=virtual/perl-Safe-2.410.100_rc
-
 # Brian Evans <grknight@gentoo.org> (2021-01-25)
 # Dead upstream. Relies on soon to be removed wddx support in PHP.
 # wddx in general failed overall as a protocol. No real maintainer.
