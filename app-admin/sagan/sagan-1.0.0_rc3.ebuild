@@ -80,8 +80,8 @@ src_install() {
 	newinitd "${FILESDIR}"/sagan.init-r1 sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
 
-	insinto /usr/share/doc/${PF}/examples
-	doins -r extra/*
+	docinto examples
+	dodoc -r extra/*
 }
 
 pkg_postinst() {
