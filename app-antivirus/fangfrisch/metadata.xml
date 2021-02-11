@@ -16,6 +16,7 @@
 		Sanesecurity, URLhaus and others. Fangfrisch was designed with
 		security in mind, to be run by an unprivileged user only.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">rseichter/fangfrisch</remote-id>
 		<remote-id type="pypi">fangfrisch</remote-id>
