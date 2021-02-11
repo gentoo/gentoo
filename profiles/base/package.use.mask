@@ -408,8 +408,11 @@ dev-python/paramiko server
 # New and for Gentoo still quite experimental. You've been
 # warned. (Also, works only on x86_64 and with certain CPUs
 # and compiler/binutils combinations.)
-sys-libs/glibc cet
+sys-devel/binutils cet
+sys-devel/binutils-hppa64 cet
 sys-devel/gdb cet
+sys-libs/binutils-libs cet
+sys-libs/glibc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
