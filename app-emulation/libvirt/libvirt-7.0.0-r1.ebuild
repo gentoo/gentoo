@@ -295,6 +295,12 @@ src_install() {
 	rm -rf "${D}"/var || die
 	rm -rf "${D}"/run || die
 
+	# Fix up doc paths for revisions
+	if [ $PV != $PVR ]; then
+		mv "${D}"/usr/share/doc/${PN}-${PV}/* "${D}"/usr/share/doc/${PF} || die
+		rmdir "${D}"/usr/share/doc/${PN}-${PV} || die
+	fi
+
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
 
