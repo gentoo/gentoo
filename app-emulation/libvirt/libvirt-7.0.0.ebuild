@@ -210,12 +210,15 @@ pkg_setup() {
 	if [[ -n ${CONFIG_CHECK} ]]; then
 		linux-info_pkg_setup
 	fi
+
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
 	touch "${S}/.mailmap" || die
 
 	default
+	python_fix_shebang .
 
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r19" "${S}/libvirtd.init" || die
