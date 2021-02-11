@@ -1,6 +1,5 @@
 Description: fix typos
 Author: Andreas Beckmann <anbe@debian.org>
-
 --- a/cuneiform_src/Kern/rblock/sources/c/ltmain.c
 +++ b/cuneiform_src/Kern/rblock/sources/c/ltmain.c
 @@ -344,7 +344,7 @@ i=0; i=i;

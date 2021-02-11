@@ -1,8 +1,5 @@
 Description: Link the leo and r35 libraries with libm.
 Author: Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>, Jakub Wilk <jwilk@debian.org>
-Forwarded: no
-Last-Update: 2011-07-04
-
 --- a/cuneiform_src/Kern/leo/CMakeLists.txt
 +++ b/cuneiform_src/Kern/leo/CMakeLists.txt
 @@ -23,6 +23,7 @@

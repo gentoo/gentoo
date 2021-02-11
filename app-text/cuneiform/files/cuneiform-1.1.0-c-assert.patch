@@ -1,9 +1,5 @@
-Description: Use the standard C assert() macro, rather than custom Cuneiform
-  one.
+Description: Use the standard C assert() macro, rather than custom Cuneiform one.
 Author: Jakub Wilk <jwilk@debian.org>
-Forwarded: no
-Last-Update: 2011-04-30
-
 --- a/cuneiform_src/Kern/lns32/src/myassert.h
 +++ b/cuneiform_src/Kern/lns32/src/myassert.h
 @@ -60,6 +60,8 @@
