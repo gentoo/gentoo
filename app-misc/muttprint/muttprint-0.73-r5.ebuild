@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 
-DEPEND="
+BDEPEND="
 	dev-texlive/texlive-fontsextra
 	dev-lang/perl
 	virtual/latex-base
@@ -23,7 +23,6 @@ DEPEND="
 		app-text/docbook-sgml-utils[jadetex]
 	)
 "
-
 RDEPEND="
 	dev-texlive/texlive-latexextra
 	dev-lang/perl
