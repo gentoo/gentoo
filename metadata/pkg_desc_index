@@ -2063,7 +2063,7 @@ app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc ima
 app-emulation/libguestfs 1.36.13-r2 1.36.15-r2 1.38.6-r1 1.38.6-r102: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
-app-emulation/libvirt 6.8.0-r2 6.9.0-r1 6.10.0-r2 7.0.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.8.0-r2 7.0.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
@@ -8450,7 +8450,7 @@ dev-python/libpillowfight 0.3.0: Small library containing various image processi
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.1: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.5: python api for tmux
-dev-python/libvirt-python 6.8.0 6.9.0 6.10.0 7.0.0 9999: libvirt Python bindings
+dev-python/libvirt-python 6.8.0 7.0.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 9.0.1 10.0.1 11.0.0 11.0.1 11.1.0_rc1 11.1.0_rc2 11.1.0_rc3 12.0.0_rc1 12.0.0.9999 13.0.0.9999: A stand-alone install of the LLVM suite testing tool
