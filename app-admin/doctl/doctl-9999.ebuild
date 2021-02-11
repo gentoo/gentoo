@@ -21,8 +21,10 @@ src_unpack() {
 }
 
 src_compile() {
+	LDFLAGS="-X github.com/digitalocean/doctl.Build=$(git rev-parse --short HEAD)
+		-X github.com/digitalocean/doctl.Label=dev"
 	GOFLAGS="-v -x -mod=vendor" \
-		go build ./cmd/... || die "build failed"
+		go build -ldflags "$LDFLAGS" ./cmd/... || die "build failed"
 
 	./doctl completion bash > doctl.bash || die "completion for bash failed"
 	./doctl completion zsh > doctl.zsh || die "completion for sh failed"
