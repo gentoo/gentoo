@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit readme.gentoo-r1
+
+inherit flag-o-matic readme.gentoo-r1
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -17,14 +18,13 @@ KEYWORDS="amd64 x86"
 IUSE="berkdb crypt debug filelog memtrace lzo snappy"
 
 RDEPEND="
+	app-crypt/mhash
+	dev-db/tokyocabinet
+	sys-fs/fuse:0
 	berkdb? ( sys-libs/db:* )
 	crypt? ( dev-libs/openssl:0= )
 	lzo? ( dev-libs/lzo )
-	snappy? ( app-arch/snappy )
-	>=dev-db/tokyocabinet-1.4.42
-	app-crypt/mhash
-	>=sys-fs/fuse-2.8.0:0=
-"
+	snappy? ( app-arch/snappy )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -35,15 +35,19 @@ DOC_CONTENTS="Default configuration file: /etc/${PN}.cfg.
 
 PATCHES=(
 	# From PLD-Linux, bug #674422
-	"${FILESDIR}/${P}-openssl11.patch"
+	"${FILESDIR}"/${P}-openssl11.patch
 )
 
 src_configure() {
+	append-flags -fcommon
 	econf \
-		$(use_enable debug) $(use_enable debug lckdebug) \
-		$(use_enable filelog) $(use_with crypt crypto) \
-		$(use_with lzo) $(use_enable memtrace) \
+		$(use_enable debug) \
+		$(use_enable debug lckdebug) \
+		$(use_enable filelog) \
+		$(use_enable memtrace) \
 		$(use_with berkdb berkeleydb) \
+		$(use_with crypt crypto) \
+		$(use_with lzo) \
 		$(use_with snappy)
 }
 
