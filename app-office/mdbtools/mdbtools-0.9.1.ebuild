@@ -33,6 +33,9 @@ DOCS=( AUTHORS HACKING NEWS README TODO )
 src_prepare() {
 	default
 
+	# bug #770019
+	sed -i -e 's/-Werror//' configure.ac || die
+
 	eautoreconf
 }
 
