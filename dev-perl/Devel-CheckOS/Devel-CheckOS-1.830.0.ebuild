@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="require that we are running on a particular OS"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
