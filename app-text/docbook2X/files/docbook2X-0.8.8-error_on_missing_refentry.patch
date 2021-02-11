@@ -10,9 +10,8 @@
 ## DP: <URL:http://lists.gnu.org/archive/html/groff/2007-11/msg00023.html>
 
 @DPATCH@
-diff -urNad trunk~/xslt/man/docbook.xsl trunk/xslt/man/docbook.xsl
---- trunk~/xslt/man/docbook.xsl	2006-04-11 21:00:19.000000000 +0200
-+++ trunk/xslt/man/docbook.xsl	2008-02-05 03:31:48.000000000 +0100
+--- a/xslt/man/docbook.xsl
++++ b/xslt/man/docbook.xsl
 @@ -111,11 +111,15 @@
      <xsl:when test="child::refentry">
        <xsl:apply-templates />
