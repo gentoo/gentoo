@@ -20,7 +20,7 @@ SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0/${PV}"
-IUSE="64-bit-bfd multitarget nls static-libs"
+IUSE="64-bit-bfd cet multitarget nls static-libs"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 BDEPEND="nls? ( sys-devel/gettext )"
@@ -89,6 +89,11 @@ multilib_src_configure() {
 		# avoid automagic dependency on (currently prefix) systems
 		# systems with debuginfod library, bug #754753
 		--without-debuginfod
+
+		# Allow user to opt into CET for host libraries.
+		# Ideally we would like automagic-or-disabled here.
+		# But the check does not quite work on i686: bug #760926.
+		$(use_enable cet)
 	)
 
 	# mips can't do hash-style=gnu ...
