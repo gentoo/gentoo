@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~ppc sparc ~x86 ~amd64-linux"
 IUSE="curl dar32 dar64 doc gcrypt gpg lzo nls static static-libs xattr"
 
 RESTRICT="test" # need to be run as root
