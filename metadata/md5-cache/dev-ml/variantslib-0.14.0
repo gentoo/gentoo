@@ -5,10 +5,10 @@ DESCRIPTION=OCaml variants as first class values
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/variantslib
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/variantslib/archive/v0.14.0.tar.gz -> variantslib-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=32036915d26e9e355cdb9e78445986d3
+_md5_=a69c528c22c72bb1b193fb158abda763

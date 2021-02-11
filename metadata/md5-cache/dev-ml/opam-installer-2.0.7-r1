@@ -4,10 +4,10 @@ DEPEND=>=dev-lang/ocaml-4.02.3 dev-ml/cmdliner:= ~dev-ml/opam-format-2.0.7 dev-m
 DESCRIPTION=Core installer for opam packages
 EAPI=7
 HOMEPAGE=https://opam.ocaml.org/ https://github.com/ocaml/opam
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-4.02.3 dev-ml/cmdliner:= ~dev-ml/opam-format-2.0.7 >=dev-lang/ocaml-4:=
 SLOT=0/2.0.7
 SRC_URI=https://github.com/ocaml/opam/releases/download/2.0.7/opam-full-2.0.7.tar.gz
 _eclasses_=opam	b4de444efce371928602cbf4cd91307e
-_md5_=7bb31581df0a852779630d5e58f6a28c
+_md5_=8b9fc978a335f6b70ac5e4b2dccdc515
