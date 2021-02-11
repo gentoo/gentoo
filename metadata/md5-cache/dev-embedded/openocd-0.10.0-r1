@@ -5,11 +5,11 @@ DESCRIPTION=OpenOCD - Open On-Chip Debugger
 EAPI=7
 HOMEPAGE=http://openocd.sourceforge.net
 IUSE=+cmsis-dap dummy +ftdi +jlink parport +usb verbose-io
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm ~x86
 LICENSE=GPL-2+
 RDEPEND=acct-group/plugdev >=dev-lang/jimtcl-0.76:0= cmsis-dap? ( dev-libs/hidapi ) jlink? ( dev-embedded/libjaylink ) usb? ( virtual/libusb:0 virtual/libusb:1 ) ftdi? ( dev-embedded/libftdi:= )
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/project/openocd/openocd/0.10.0/openocd-0.10.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=82fb054a3094ad31577bb014baaa522d
+_md5_=ad4db09c0ab13a03d08e82f8fd04b2ba
