@@ -757,7 +757,7 @@ app-admin/sxid 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 2.1.2 2.2.0 2.2.1 9999: Standard log daemons
 app-admin/syslog-ng 3.26.1-r1 3.28.1-r2 3.29.1 3.30.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r5: Summarizes the contents of a syslog log file
-app-admin/sysrqd 17 17-r1: Daemon providing access to the kernel sysrq functions via network
+app-admin/sysrqd 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.2.3 12.4.0 12.4.1: System performance tools for Linux
 app-admin/system-config-printer 1.5.15: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
@@ -899,7 +899,7 @@ app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore 
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.5.11 2.6.10: A full featured backup tool, aimed for disks
+app-backup/dar 2.5.11 2.6.10 2.6.13: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.15 0.8.16 0.8.17: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
