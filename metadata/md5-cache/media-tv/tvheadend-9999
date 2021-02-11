@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gettext virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 ) sys-devel/gettext virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst setup unpack
 DEPEND=acct-user/tvheadend virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( virtual/linuxtv-dvb-headers ) ffmpeg? ( opus? ( media-libs/opus ) vpx? ( media-libs/libvpx ) x264? ( media-libs/x264 ) x265? ( media-libs/x265 ) )
 DESCRIPTION=Tvheadend is a TV streaming server and digital video recorder
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=acct-user/tvheadend virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( media-tv/dtv-scan-tables ) xmltv? ( media-tv/xmltv )
 REQUIRED_USE=ddci? ( dvb )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=fbd6ce3e0ec9001765fc639b68b4b491
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=ed9e42dc369d7f7d55b42ffa6be649b9
