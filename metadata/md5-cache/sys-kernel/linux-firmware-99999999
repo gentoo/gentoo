@@ -6,9 +6,9 @@ HOMEPAGE=https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git
 IUSE=initramfs +redistributable savedconfig unknown-license savedconfig
 LICENSE=GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) redistributable? ( linux-fw-redistributable ( BSD-2 BSD BSD-4 ISC MIT no-source-code ) ) unknown-license? ( all-rights-reserved )
 PROPERTIES=live
-RDEPEND=!savedconfig? ( redistributable? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !net-dialup/ueagle-atm !net-dialup/ueagle4-atm !sys-block/qla-fc-firmware !sys-firmware/iwl1000-ucode !sys-firmware/iwl6005-ucode !sys-firmware/iwl6030-ucode !sys-firmware/iwl6050-ucode !sys-firmware/iwl3160-ucode !sys-firmware/iwl7260-ucode !sys-firmware/iwl3160-7260-bt-ucode !sys-firmware/raspberrypi-wifi-ucode ) unknown-license? ( !sys-firmware/alsa-firmware[alsa_cards_korg1212] !sys-firmware/alsa-firmware[alsa_cards_maestro3] !sys-firmware/alsa-firmware[alsa_cards_sb16] !sys-firmware/alsa-firmware[alsa_cards_ymfpci] ) )
+RDEPEND=!savedconfig? ( redistributable? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !sys-block/qla-fc-firmware !sys-firmware/iwl1000-ucode !sys-firmware/iwl6005-ucode !sys-firmware/iwl6030-ucode !sys-firmware/iwl6050-ucode !sys-firmware/iwl3160-ucode !sys-firmware/iwl7260-ucode !sys-firmware/iwl3160-7260-bt-ucode !sys-firmware/raspberrypi-wifi-ucode ) unknown-license? ( !sys-firmware/alsa-firmware[alsa_cards_korg1212] !sys-firmware/alsa-firmware[alsa_cards_maestro3] !sys-firmware/alsa-firmware[alsa_cards_sb16] !sys-firmware/alsa-firmware[alsa_cards_ymfpci] ) )
 REQUIRED_USE=initramfs? ( redistributable )
 RESTRICT=strip test unknown-license? ( bindist )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	mount-boot	060ced4c5e0fd737db17cbb609bbf557	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
-_md5_=6189e320047880c794301b388dabc104
+_md5_=84f43187d6add4dd48ff4cc215f036b8

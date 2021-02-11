@@ -8723,7 +8723,7 @@ dev-python/py-cpuinfo 6.0.0 7.0.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-ubjson 0.16.1: Universal Binary JSON encoder/decoder
 dev-python/pyClamd 0.4.0-r2: python interface to Clamd (Clamav daemon)
-dev-python/pyFFTW 0.11.1 0.12.0 9999: A pythonic python wrapper around FFTW
+dev-python/pyFFTW 0.12.0 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyTenable 1.1.3: Tenable API Library for Tenable.io and SecurityCenter
 dev-python/pyacoustid 1.2.0: Python bindings for Chromaprint and the AcoustID web service
