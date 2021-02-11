@@ -12,7 +12,7 @@ else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}"/${MY_P}
-	KEYWORDS="amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${MY_PV}/${MY_P}.tar.gz"
 fi
 
