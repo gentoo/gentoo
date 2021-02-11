@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=3.7/3.7m
 SRC_URI=https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-3.7.9-r2.tar.xz verify-sig? ( https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz.asc )
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	verify-sig	40b4f4f782cf67118f594ce604cc4c0a	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=5bbdadc466cdec587e0a3b1fc909ca0d
+_md5_=d984d2f8d94d1fc4928faeaecaad0a16
