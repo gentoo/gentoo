@@ -2689,7 +2689,7 @@ app-office/libreoffice-l10n 6.4.7.2 7.0.4.2: Translations for the Libreoffice su
 app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2 2.3.6.1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
-app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
+app-office/mdbtools 0.7.1-r2 0.9.1: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneydance 2021.2006: A cross-platform personal finance application
 app-office/moneyguru 3.0.1-r2: Future-aware personal finances management
 app-office/multitalk 1.4-r1: A new type of presentation program

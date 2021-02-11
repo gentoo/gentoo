@@ -995,6 +995,7 @@ app-office/lyx:monolithic-build - This should speed up compilation significantly
 app-office/lyx:rcs - Add support for revision control via dev-vcs/rcs
 app-office/lyx:rtf - Add support for RTF import/export packages
 app-office/magicpoint:contrib - Install additional contributed scripts
+app-office/mdbtools:glib - Use functions provided by dev-libs/glib, not built-in
 app-office/orage:clock-panel-plugin - Build the clock plugin for the XFCE panel
 app-office/scribus:boost - Enable support for Boost based enhancement
 app-office/scribus:hunspell - Enable support for spell checking with app-text/hunspell
