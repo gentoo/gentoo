@@ -2501,7 +2501,7 @@ app-misc/jq 1.6-r3 1.7_pre20201109: A lightweight and flexible command-line JSON
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.10.1-r1 0.10.2: A CalDAV based calendar
 app-misc/khard 0.13.0 0.17.0: Console CardDAV client
-app-misc/klavaro 3.0.1: Another free touch typing tutor program
+app-misc/klavaro 3.0.1-r1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6-r1: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49-r2: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527-r5: A small program that grabs information and displays it on an external LCD
@@ -2529,7 +2529,7 @@ app-misc/mkcert 1.4.1: A zero-config tool to make locally trusted development ce
 app-misc/mmv 1.01b_p18-r1 1.01b_p19: Move/copy/append/link multiple files according to a set of wildcard patterns
 app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
-app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
+app-misc/muttprint 0.73-r5: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2-r1: Tools for controlling the LCD on a Logitech MX5000 keyboard
 app-misc/neofetch 7.1.0 9999: Simple information system script

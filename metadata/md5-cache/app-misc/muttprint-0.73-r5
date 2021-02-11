@@ -1,6 +1,5 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=dev-texlive/texlive-fontsextra dev-lang/perl virtual/latex-base doc? ( app-text/dvipsk app-text/docbook-sgml-utils[jadetex] ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-texlive/texlive-fontsextra dev-lang/perl virtual/latex-base doc? ( app-text/dvipsk app-text/docbook-sgml-utils[jadetex] )
 DESCRIPTION=Script for pretty printing of your mails
 EAPI=7
 HOMEPAGE=http://muttprint.sourceforge.net
@@ -11,4 +10,4 @@ RDEPEND=dev-texlive/texlive-latexextra dev-lang/perl dev-perl/TimeDate dev-perl/
 SLOT=0
 SRC_URI=mirror://sourceforge/muttprint/muttprint-0.73.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=30a6cf71acea6baa8f6db49b01045a24
+_md5_=3ebc46fab33ff05784e06303fbd77daf
