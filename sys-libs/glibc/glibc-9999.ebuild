@@ -775,7 +775,7 @@ src_prepare() {
 		else
 			patchsetname="${RELEASE_VER}-${PATCH_VER}"
 		fi
-		elog "Applying Gentoo Glibc Patchset ${patchsetname}"
+		einfo "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
 	fi
@@ -1406,7 +1406,7 @@ src_install() {
 	foreach_abi glibc_do_src_install
 
 	if ! use static-libs ; then
-		elog "Not installing static glibc libraries"
+		einfo "Not installing static glibc libraries"
 		find "${ED}" -name "*.a" -and -not -name "*_nonshared.a" -delete
 	fi
 }
