@@ -32,6 +32,41 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
+# Does not build against vdr-2.4.  Last release in ~2006.
+# Upstream repository is gone.
+# Depends minimal on very old vdr version
+# Removal on 2021-03-11.  Bug #724700.
+media-plugins/vdr-pilot
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
+# Does not build against vdr-2.4.  Last release in ~2006.
+# Upstream repository is gone.
+# Depends minimal on very old vdr version
+# Removal on 2021-03-11.  Bug #724704.
+media-plugins/vdr-radiolist
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
+# Does not build against vdr-2.4.  Last release in 2008.
+# Upstream repository is gone.
+# Depends minimal on very old vdr version
+# Removal on 2021-03-11.  Bug #724742.
+media-plugins/vdr-proxy
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
+# Does not build against vdr-2.4.  Last release in 2008.
+# Upstream repository is gone.
+# Depends minimal on very old vdr version
+# Removal on 2021-03-11.  Bug #724752.
+media-plugins/vdr-bgprocess
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
+# Does not build against vdr-2.4.  Last release in ~2006.
+# Upstream repository is gone.
+# Depends minimal on very old vdr version
+# Removal on 2021-03-11.  Bug #724734.
+media-plugins/vdr-quicktimer
+
 # Sam James <sam@gentoo.org> (2021-02-10)
 # Causes circular dep with opam
 # seq -> opam-installer -> opam-format -> re -> seq
