@@ -397,7 +397,7 @@
     <email>bug-wranglers@gentoo.org</email>
     <name>Bug Wranglers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Bug-wranglers</url>
-    <description>The Gentoo Bug Wranglers Project elaborates how to proceed with bugs on the Gentoo bug tracker.</description>
+    <description>Bug Wranglers elaborate how to proceed with bugs on the Gentoo bug tracker.</description>
     <member is-lead="1">
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
