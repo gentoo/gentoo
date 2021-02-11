@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyprof2calltree</remote-id>
+		<remote-id type="github">pwaller/pyprof2calltree</remote-id>
 	</upstream>
 </pkgmetadata>
