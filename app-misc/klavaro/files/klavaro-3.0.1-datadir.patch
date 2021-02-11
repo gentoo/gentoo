@@ -1,5 +1,5 @@
---- data/Makefile.am	2014-12-18 23:16:47.513887559 -0500
-+++ data/Makefile.am	2014-12-18 23:16:59.060609420 -0500
+--- a/data/Makefile.am
++++ b/data/Makefile.am
 @@ -151,11 +151,11 @@
  EXTRA_DIST = $(klavaro_data)
  else
@@ -14,8 +14,8 @@
  appdata_in_files = klavaro.appdata.xml.in
  appdata_DATA = $(appdata_in_files:.xml.in=.xml)
  DISTCLEANFILES = $(desktop_DATA) \
---- src/Makefile.am	2014-12-18 23:17:35.956725053 -0500
-+++ src/Makefile.am	2014-12-18 23:17:45.309501898 -0500
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -20,7 +20,7 @@
  
  AM_CPPFLAGS = @GTK_CFLAGS@ \
