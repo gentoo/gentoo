@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A puzzle-solving, brain-stretching game for all ages"
 HOMEPAGE="http://www.tuxradar.com/brainparty"
@@ -42,6 +42,8 @@ src_prepare() {
 	sed -i \
 		"/^int main(/ a\\\\tchdir(\"/usr/share/${PN}\");\n" \
 		main.cpp || die
+
+	tc-export CXX
 }
 
 src_install() {
