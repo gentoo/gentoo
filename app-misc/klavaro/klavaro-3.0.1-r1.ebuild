@@ -15,6 +15,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+BDEPEND="
+	dev-util/intltool
+	dev-util/gtk-builder-convert
+	>=sys-devel/gettext-0.18.3
+"
 RDEPEND="
 	net-misc/curl
 	x11-libs/cairo
@@ -24,11 +29,7 @@ RDEPEND="
 # gtk+3 version needed
 #	x11-libs/gtkdatabox
 
-DEPEND="${RDEPEND}
-	dev-util/intltool
-	>=sys-devel/gettext-0.18.3
-	dev-util/gtk-builder-convert
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-out-of-source.patch
