@@ -8303,7 +8303,7 @@ dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.24.0 1.25.1 1.26.0: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.24.0 1.25.0 1.26.0: Google Authentication Library
+dev-python/google-auth 1.24.0 1.25.0 1.26.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
