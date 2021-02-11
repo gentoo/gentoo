@@ -6,13 +6,13 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Set of libraries and utilities for reading Microsoft Access database (MDB) files"
-HOMEPAGE="http://mdbtools.sourceforge.net"
-SRC_URI="https://github.com/brianb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/mdbtools/mdbtools"
+SRC_URI="https://github.com/brianb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
-IUSE="odbc"
+SLOT="0/3"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="glib odbc"
 
 BDEPEND="
 	app-text/txt2man
@@ -21,15 +21,14 @@ BDEPEND="
 	virtual/yacc
 "
 RDEPEND="
-	dev-libs/glib:2
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	odbc? ( >=dev-db/unixODBC-2.0 )"
+	odbc? ( >=dev-db/unixODBC-2.0 )
+	glib? ( dev-libs/glib:2 )
+"
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS ChangeLog HACKING NEWS README TODO )
-
-PATCHES=( "${FILESDIR}/${P}-parallel-make.patch" )
+DOCS=( AUTHORS HACKING NEWS README TODO )
 
 src_prepare() {
 	default
@@ -39,9 +38,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-gtk-doc
-		--disable-gmdb2
 		--disable-static
+		$(use_enable glib)
 		$(use odbc && echo "--with-unixodbc=${EPREFIX}/usr")
 	)
 
