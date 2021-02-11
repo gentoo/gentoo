@@ -1,0 +1,57 @@
+From: Tom Hughes <tomhughes@chromium.org>
+Fix cross-compilation by removing gsl header/library check (these are enforced
+through ebuild DEPENDS) and using AC_C_BIGENDIAN instead of the non-standard
+AC_C_ENDIAN macro which tries to execute code.
+--- a/configure.ac
++++ b/configure.ac
+@@ -108,48 +108,7 @@
+ AC_SUBST(DIEHARDER_LIBS)
+ AC_SUBST(ACLOCAL_AMFLAGS)
+ 
+-#==================================================================
+-# Checks for libraries, and headers.  Test for dependency libraries
+-# FIRST in reverse order that you need -lwhatever to appear on
+-# compile line as it accumulates libraries to build e.g.
+-#   -lgsl -lgslcblas
+-# for the SECOND test, required (in that order) to succeed.
+-#==================================================================
+-AC_CHECK_HEADER([gsl/gsl_sf_gamma.h],,[AC_MSG_ERROR([Couldn't find GSL headers.  Please install the gsl-devel package.])])
+-AC_CHECK_LIB([gslcblas], [main],,[AC_MSG_ERROR([Couldn't find libgsl. Please install the gsl package.])])
+-AC_CHECK_LIB([gsl],[gsl_sf_gamma])
+-
+-
+-#==================================================================
+-# Check if we're a little-endian or a big-endian system, needed by
+-# brg_endian.h in the build of rng_threefish.  This is a very
+-# certain test, and therefore is checked FIRST in this header file.
+-#==================================================================
+-AC_DEFUN([AC_C_ENDIAN],
+-[AC_CACHE_CHECK(for endianness, ac_cv_c_endian,
+-[
+-  AC_RUN_IFELSE(
+-    [AC_LANG_PROGRAM([], [dnl
+-        long val = 1;
+-        char *c = (char *) &val;
+-        exit(*c == 1);
+-    ])
+-  ],[
+-    ac_cv_c_endian=big
+-  ],[
+-    ac_cv_c_endian=little
+-  ])
+-])
+-if test $ac_cv_c_endian = big; then
+-  AC_SUBST(LITTLE_ENDIAN,0) 
+-fi
+-if test $ac_cv_c_endian = little; then
+-  AC_SUBST(LITTLE_ENDIAN,1) 
+-fi
+-])
+-
+-AC_C_ENDIAN
+- 
++AC_C_BIGENDIAN([AC_SUBST(LITTLE_ENDIAN,0)],[AC_SUBST(LITTLE_ENDIAN,1)])
+ 
+ #==================================================================
+ # Checks for typedefs, structures, and compiler characteristics.
+
