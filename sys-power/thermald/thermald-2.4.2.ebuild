@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic out-of-source systemd
+inherit autotools out-of-source systemd
 
 DESCRIPTION="Thermal daemon for Intel architectures"
-HOMEPAGE="https://01.org/linux-thermal-daemon"
-SRC_URI="https://github.com/01org/thermal_daemon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://01.org/linux-thermal-daemon https://github.com/intel/thermal_daemon"
+SRC_URI="https://github.com/intel/thermal_daemon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -29,14 +29,14 @@ S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
 
 src_prepare() {
+	sed -i -e "/group=/s/power/wheel/g" \
+		data/org.freedesktop.thermald.conf || die
+
 	default
 	eautoreconf
 }
 
 my_src_configure() {
-	# bug 618948
-	append-cxxflags -std=c++14
-
 	ECONF_SOURCE="${S}" econf \
 		--disable-werror \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
