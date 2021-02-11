@@ -11042,7 +11042,7 @@ dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 2.5 2.8 2.11: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.23 1.0: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.14.0-r1: Advanced version control system
+dev-vcs/subversion 1.14.0-r1 1.14.1: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.5.0: Tool collecting path entries across SVN history
@@ -14696,6 +14696,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
+net-im/signal-cli-bin 0.7.4: Send and receive messages of Signal Messenger over a command line interface
 net-im/signal-desktop-bin 1.39.6: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.67.0.96 8.68.0.100: Instant messaging client, with support for audio and video
