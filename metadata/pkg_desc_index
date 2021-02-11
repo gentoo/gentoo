@@ -13633,7 +13633,7 @@ media-plugins/vdr-osdteletext 0.9.4-r1 0.9.5 0.9.7: VDR Plugin: Osd-Teletext dis
 media-plugins/vdr-peer 0.0.1: VDR Plugin: peer-to-peer between multiple VDRs
 media-plugins/vdr-permashift 1.0.1-r1 1.0.4_pre20200301: VDR Plugin: permanent timeshift by recording live TV on RAM
 media-plugins/vdr-pilot 0.0.9-r1: VDR plugin: Another way for viewing EPG and zap to channels
-media-plugins/vdr-pin 0.1.14: VDR plugin: enable/disable parentalrating in records
+media-plugins/vdr-pin 0.1.14 0.1.17: VDR plugin: enable/disable parentalrating in records
 media-plugins/vdr-powermate 0.0.5: VDR PLUGIN: support the Powermate device
 media-plugins/vdr-proxy 0.1.4-r1: VDR Plugin: enable grouping of menu entries, online load/unload
 media-plugins/vdr-pvr350 1.7.5: VDR plugin: use a PVR350 as output device
