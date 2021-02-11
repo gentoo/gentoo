@@ -41,6 +41,8 @@ RDEPEND="${DEPEND}
 	x11-misc/xsettingsd
 "
 
+PATCHES=( "${FILESDIR}/${PN}-5.20.5-window-decorations-reloaded.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DDATA_INSTALL_DIR="${EPREFIX}/usr/share"
