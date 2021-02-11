@@ -10817,7 +10817,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.3-r1 2.279: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.279: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -11039,7 +11039,7 @@ dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/repo 2.5 2.8 2.11: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6-r1: Dump a remote Subversion repository
-dev-vcs/stgit 0.21 0.23: Manage a stack of patches using GIT as a backend
+dev-vcs/stgit 0.23 1.0: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.14.0-r1: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
@@ -14462,7 +14462,7 @@ net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.13-r1 2.0.6: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.13-r1 2.0.6 2.0.7: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 5.0.5-r1 6.0.1-r100: High performance Network IDS, IPS and Network Security Monitoring engine
