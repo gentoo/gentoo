@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.invisible-island.net/bcpp/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 src_compile() {
 	emake CPPFLAGS='-DBCPP_CONFIG_DIR=\"/etc/bcpp/\"'
