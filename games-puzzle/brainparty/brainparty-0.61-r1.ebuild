@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-savegame.patch
 	"${FILESDIR}"/${P}-gcc49.patch
 	"${FILESDIR}"/${P}-gnu_cxx-hash.patch
+	"${FILESDIR}"/${P}-gcc-11.patch
 )
 
 src_prepare() {
