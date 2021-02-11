@@ -8705,7 +8705,7 @@ dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
 dev-python/prometheus_client 0.9.0: Python client for the Prometheus monitoring system
-dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9 3.0.10 3.0.11 3.0.13 3.0.14 3.0.15: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 2.0.10-r1 3.0.7 3.0.9 3.0.10 3.0.11 3.0.13 3.0.14 3.0.15 3.0.16: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
