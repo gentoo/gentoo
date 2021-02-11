@@ -1,22 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=yes
+inherit autotools
 
-inherit autotools-utils versionator
-
-MY_P="${PN}-$(delete_version_separator 2)"
-
+MY_P="${PN}-$(ver_rs 2 '')"
 DESCRIPTION="Another free touch typing tutor program"
 HOMEPAGE="http://klavaro.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${MY_P}.tar.bz2"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	net-misc/curl
@@ -31,13 +28,17 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	>=sys-devel/gettext-0.18.3
 	dev-util/gtk-builder-convert
-	"
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-out-of-source.patch
 	"${FILESDIR}"/${P}-static.patch
 	"${FILESDIR}"/${P}-datadir.patch
 	"${FILESDIR}"/${PN}-desktop-keywords.patch
-	)
+)
 
-S="${WORKDIR}"/${MY_P}
+src_prepare() {
+	default
+
+	eautoreconf
+}
