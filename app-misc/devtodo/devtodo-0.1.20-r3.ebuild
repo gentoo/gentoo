@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=sys-libs/ncurses-5.2:0=
 	>=sys-libs/readline-4.1:0="
@@ -21,7 +22,7 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS ChangeLog QuickStart README doc/scripts.sh doc/scripts.tcsh doc/todorc.example )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.diff
+	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-gcc43.patch
 	"${FILESDIR}"/${P}-bashcom_spaces.patch
 )
