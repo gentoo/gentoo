@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils eutils
+inherit autotools
 
 DESCRIPTION="Script for pretty printing of your mails"
 HOMEPAGE="http://muttprint.sourceforge.net"
@@ -14,20 +14,30 @@ LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 
-DEPEND="dev-lang/perl
-	virtual/latex-base
+DEPEND="
 	dev-texlive/texlive-fontsextra
+	dev-lang/perl
+	virtual/latex-base
 	doc? (
 		app-text/dvipsk
-		app-text/docbook-sgml-utils[jadetex] )"
+		app-text/docbook-sgml-utils[jadetex]
+	)
+"
 
-RDEPEND="dev-lang/perl
+RDEPEND="
+	dev-texlive/texlive-latexextra
+	dev-lang/perl
 	dev-perl/TimeDate
 	dev-perl/Text-Iconv
 	virtual/latex-base
-	dev-texlive/texlive-latexextra"
+"
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
+PATCHES=(
+	"${FILESDIR}/${P}-warning.patch"
+	"${FILESDIR}/${P}-manuals.patch"
+	"${FILESDIR}/${P}-pod-encoding.patch"
+	"${FILESDIR}/${P}-fix-number-of-pages.patch"
+)
 
 patch_docs() {
 	sed -i -e 's/db2pdf/docbook2pdf/' "${S}"/configure.ac || die
@@ -42,10 +52,7 @@ patch_docs() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-warning.patch"
-	epatch "${FILESDIR}/${P}-manuals.patch"
-	epatch "${FILESDIR}/${P}-pod-encoding.patch"
-	epatch "${FILESDIR}/${P}-fix-number-of-pages.patch"
+	default
 
 	if use doc ; then
 		# Patch docbook and docdir
@@ -54,16 +61,13 @@ src_prepare() {
 		# Don't do manuals
 		sed -i -e '/db2pdf/d' "${S}"/configure.ac || die
 	fi
-	sed -i -e "/^docdir/s/$/-${PV}/" "${S}"/Makefile.am || die
+
+	sed -i -e "/^docdir/s/$/-${PVR}/" "${S}"/Makefile.am || die
 
 	# The distfile does not include the png files, nor penguin.jpg
 	sed -i -e '/.*png /d' -e '/penguin.jpg /d' "${S}"/pics/Makefile.am || die
 
 	eautoreconf
-}
-
-src_configure() {
-	econf --docdir="/usr/share/doc/${PF}"
 }
 
 src_compile() {
