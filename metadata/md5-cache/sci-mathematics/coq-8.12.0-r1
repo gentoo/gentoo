@@ -4,11 +4,11 @@ DESCRIPTION=Proof assistant written in O'Caml
 EAPI=7
 HOMEPAGE=http://coq.inria.fr/
 IUSE=gtk debug +ocamlopt doc
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-ml/camlp5:=[ocamlopt?] || ( dev-ml/num <dev-lang/ocaml-4.09.0[ocamlopt?] ) gtk? ( dev-ml/lablgtk:3=[sourceview,ocamlopt?] dev-ml/lablgtk-sourceview:3=[ocamlopt?] )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coq/coq/archive/V8.12.0.tar.gz -> coq-8.12.0.tar.gz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=2a3b4113e84f5a665f0646501c298a41
+_md5_=1435cbc4a3fe356e7c0d971e65f62b74
