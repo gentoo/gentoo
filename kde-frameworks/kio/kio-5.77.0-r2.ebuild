@@ -72,8 +72,9 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.77.0-gcc11.patch" # bug 766480
-	"${FILESDIR}/${P}-copyjob-crash.patch" # KDE-Bug 431731
+	"${FILESDIR}"/${P}-crashfix.patch
+	"${FILESDIR}"/${P}-gcc11.patch # bug 766480
+	"${FILESDIR}"/${P}-fix-default-codec-not-usascii-{1,2}.patch # bug 765430
 )
 
 src_configure() {
