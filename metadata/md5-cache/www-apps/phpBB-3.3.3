@@ -6,9 +6,9 @@ HOMEPAGE=https://www.phpbb.com/
 IUSE=ftp gd mssql mysqli postgres sqlite zlib vhosts
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=|| ( ( virtual/httpd-php:8.0 dev-lang/php:8.0[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.4 dev-lang/php:7.4[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.3 dev-lang/php:7.3[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.2 dev-lang/php:7.2[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ) >=app-admin/webapp-config-1.50.15
+RDEPEND=|| ( ( virtual/httpd-php:8.0 dev-lang/php:8.0[ftp?,gd?,json(+),mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.4 dev-lang/php:7.4[ftp?,gd?,json(+),mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.3 dev-lang/php:7.3[ftp?,gd?,json(+),mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ( virtual/httpd-php:7.2 dev-lang/php:7.2[ftp?,gd?,json(+),mssql?,mysqli?,postgres?,sqlite?,xml,zlib?] ) ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mssql mysqli postgres sqlite )
 SLOT=3.3.3
 SRC_URI=https://download.phpbb.com/pub/release/3.3/3.3.3/phpBB-3.3.3.tar.bz2
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=748ff0a832ba01ee0580020dcddeb262
+_md5_=f081d48ff99daf66b24a86ace40b3587
