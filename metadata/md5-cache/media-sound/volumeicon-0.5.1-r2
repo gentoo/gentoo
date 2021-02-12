@@ -1,4 +1,5 @@
-DEFINED_PHASES=configure
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
 DEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 ) dev-util/intltool sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=A lightweight volume control that sits in your systray
 EAPI=7
@@ -9,4 +10,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 )
 SLOT=0
 SRC_URI=http://nullwise.com/volumeicon/volumeicon-0.5.1.tar.gz
-_md5_=f0dca3b87fa2edfea856f48be0174ec5
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=40de992d219a501518bd58cad8cbdc65

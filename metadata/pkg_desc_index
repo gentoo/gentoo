@@ -14034,7 +14034,7 @@ media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: A high quality Audio CD to audio file encoder
 media-sound/vmpk 0.8.0: Virtual MIDI Piano Keyboard
-media-sound/volumeicon 0.5.1-r1: A lightweight volume control that sits in your systray
+media-sound/volumeicon 0.5.1-r2: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
 media-sound/vorbis-tools 1.4.0-r5 1.4.2: Tools for using the Ogg Vorbis sound file format
 media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorbis files
