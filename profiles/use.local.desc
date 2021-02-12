@@ -3901,10 +3901,7 @@ media-gfx/ahoviewer:rar - Rar archive support
 media-gfx/ahoviewer:zip - Zip archive support
 media-gfx/album:plugins - Install optional plugins
 media-gfx/album:themes - Install optional themes
-media-gfx/alembic:boost - Use dev-libs/boost library
-media-gfx/alembic:examples - Install alembic examples
 media-gfx/alembic:hdf5 - Add support sci-libs/hdf5
-media-gfx/alembic:prman - Compile Alembic plugin for Renderman (experimental)
 media-gfx/alembic:test - Build and run the test-suite
 media-gfx/alembic:zlib - Use sys-libs/zlib for compressions
 media-gfx/apngasm:7z - Enable support for 7zip compression
