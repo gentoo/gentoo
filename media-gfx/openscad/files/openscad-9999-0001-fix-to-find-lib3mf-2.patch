@@ -1,0 +1,36 @@
+From 15bf93ab04e6fd61507f138bcfc6f9c770d9479b Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 11 Feb 2021 23:14:31 +0100
+Subject: [PATCH] fix to find lib3mf-2
+
+Lib3mf-2 uses lowercase name for it's pkg-config file.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ cmake/Modules/FindLib3MF.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/Modules/FindLib3MF.cmake b/cmake/Modules/FindLib3MF.cmake
+index 7a1ee285..b062c09c 100644
+--- a/cmake/Modules/FindLib3MF.cmake
++++ b/cmake/Modules/FindLib3MF.cmake
+@@ -15,14 +15,14 @@ message(STATUS "Searching for lib3mf.")
+ # We still fall back to the rest of detection code here.
+ # Travis CI Ubuntu Trusty environment has some issue with pkg-config
+ # not finding the version.
+-pkg_check_modules(LIB3MF lib3MF)
++pkg_check_modules(LIB3MF lib3mf)
+ 
+ # default to uppercase for 1.0 library name
+ set(LIB3MF_LIB "3MF")
+ 
+ # some distribution packages are missing version information for 2.0
+ if (LIB3MF_VERSION STREQUAL "" AND LIB3MF_FOUND)
+-  if (EXISTS "/usr/include/lib3mf" AND EXISTS "/usr/include/lib3mf/lib3mf_implicit.hpp")
++  if (EXISTS "/usr/include/lib3mf" AND EXISTS "/usr/include/lib3mf/Bindings/Cpp/lib3mf_implicit.hpp")
+     set(LIB3MF_VERSION "2.0.0")
+   endif()
+ endif()
+-- 
+2.30.1
+
