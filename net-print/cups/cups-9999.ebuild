@@ -259,7 +259,7 @@ multilib_src_install_all() {
 	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
-		/var/log/cups /var/spool/cups/tmp
+		/var/cache/cups /var/log/cups /var/spool/cups/tmp
 
 	keepdir /etc/cups/{interfaces,ppd,ssl}
 
